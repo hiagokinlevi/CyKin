@@ -43,15 +43,15 @@ You will (1) frame security decisions as choices under uncertainty; (2) separate
 
 ### 1.1 Decisions under uncertainty
 
-Daniel Mensah is a postgraduate student at the fictional Wexford School of Management and an operational risk manager at Halbrook Mutual, a fictional insurer with two thousand staff and a large network of brokers and claims suppliers. His tutor, Dr. Elena Varga, opens the course by asking what a good security decision is. Daniel learns to describe decisions as choices among options with uncertain consequences, judged by whether the choice made sense given the information, values and time available. Daniel records this point in his course notebook so that later chapters can build on it.
+Daniel Mensah is a postgraduate student at the fictional Wexford School of Management and an operational risk manager at Halbrook Mutual, a fictional insurer with two thousand staff and a large network of brokers and claims suppliers. His tutor, Dr. Elena Varga, opens the course by asking what a good security decision is. Daniel learns to describe decisions as choices among options with uncertain consequences, judged by whether the choice made sense given the information, values and time available. At Halbrook this matters because the risk committee reviews decisions months later, when only the record of what was known at the time can show whether the choice was reasonable.
 
 ### 1.2 Decision versus outcome
 
-A good decision can have a bad outcome, and a poor decision can be lucky. Halbrook once skipped a supplier review to meet a deadline, and nothing went wrong; managers praised the speed. Daniel learns to judge that decision on its reasoning, not its outcome. Did anyone estimate the risk? Was the appetite respected? Was the decision recorded and revisited? Separating the two protects organisations from learning the wrong lesson from luck and from punishing sound decisions that turned out badly. Dr. Varga asks him to explain the idea aloud to a classmate before moving on.
+A good decision can have a bad outcome, and a poor decision can be lucky. Halbrook once skipped a supplier review to meet a deadline, and nothing went wrong; managers praised the speed. Daniel learns to judge that decision on its reasoning, not its outcome. Did anyone estimate the risk? Was the appetite respected? Was the decision recorded and revisited? Separating the two protects organisations from learning the wrong lesson from luck and from punishing sound decisions that turned out badly. Daniel suggests that Halbrook's post-decision reviews ask what was known on the day of the skipped supplier review, not merely whether a breach followed.
 
 ### 1.3 Biases
 
-Daniel studies biases that affect risk decisions: availability, where recent headlines inflate some risks; overconfidence, where experts give ranges that are too narrow; anchoring, where a first number shapes later estimates; and optimism about one's own controls. Hubbard and Seiersen (2016) describe calibration training to reduce overconfidence in security estimates. He learns that structured methods, such as recording assumptions and asking for ranges, are practical defences against bias in governance committees. He notes the assumption behind it so that a reviewer can challenge it later.
+Daniel studies biases that affect risk decisions: availability, where recent headlines inflate some risks; overconfidence, where experts give ranges that are too narrow; anchoring, where a first number shapes later estimates; and optimism about one's own controls. Hubbard and Seiersen (2016) describe calibration training to reduce overconfidence in security estimates. He learns that structured methods, such as recording assumptions and asking for ranges, are practical defences against bias in governance committees. For Halbrook's committee he proposes that every estimate be given as a range with its source, so that anchoring on the first number spoken becomes visible.
 
 ### Worked example
 
@@ -89,15 +89,15 @@ You will (1) survey current GRC frameworks and their uses; (2) assess Halbrook's
 
 ### 2.1 Frameworks in use
 
-Daniel maps the frameworks used at Halbrook. The security programme follows ISO/IEC 27001:2022 and holds certification. The board receives reports structured by NIST CSF 2.0 functions. Enterprise risk management follows ISO 31000:2018 principles. Internal audit uses COBIT 2019 for IT governance reviews. Suppliers provide SOC 2 reports or ISO certificates. He notes that each framework answers a different question and that mature organisations combine them rather than choosing one. The same reasoning will return when Halbrook's auditors visit next year. He adds a short note to the shared course wiki for other students.
+Daniel maps the frameworks used at Halbrook. The security programme follows ISO/IEC 27001:2022 and holds certification. The board receives reports structured by NIST CSF 2.0 functions. Enterprise risk management follows ISO 31000:2018 principles. Internal audit uses COBIT 2019 for IT governance reviews. Suppliers provide SOC 2 reports or ISO certificates. He notes that each framework answers a different question and that mature organisations combine them rather than choosing one. For example, ISO 31000 tells Halbrook how to manage risk, while a supplier's SOC 2 report tells it how far it can rely on that supplier's controls.
 
 ### 2.2 Halbrook's practice
 
-Daniel assesses Halbrook's practice candidly. Policies and certification are mature. Risk assessment uses a five-by-five matrix that the board finds hard to compare with financial risks. Supplier oversight relies on questionnaires that take weeks and are rarely read in depth. Board reporting is long and mostly lists activities. He concludes that Halbrook's weaknesses lie less in controls than in how risk is expressed, how suppliers are overseen and how the board is informed. This makes the governance consequence visible to people outside the engineering team.
+Daniel assesses Halbrook's practice candidly. Policies and certification are mature. Risk assessment uses a five-by-five matrix that the board finds hard to compare with financial risks. Supplier oversight relies on questionnaires that take weeks and are rarely read in depth. Board reporting is long and mostly lists activities. He concludes that Halbrook's weaknesses lie less in controls than in how risk is expressed, how suppliers are overseen and how the board is informed. These three weaknesses become the threads of his later work: loss exceedance reporting, supplier tiering and quantified appetite for the board.
 
 ### 2.3 Trends
 
-Daniel identifies trends: growing interest in quantifying cyber risk in financial terms; regulators expecting boards to oversee cyber risk directly, reflected in the Govern function of NIST CSF 2.0; supply chain risk management becoming central; and continuous control monitoring replacing annual snapshots. He learns that trends should be weighed against the organisation's maturity, and that adopting a fashionable method without the data or skills to support it can make governance worse rather than better. Daniel keeps a dated copy of his working so that the result can be traced.
+Daniel identifies trends: growing interest in quantifying cyber risk in financial terms; regulators expecting boards to oversee cyber risk directly, reflected in the Govern function of NIST CSF 2.0; supply chain risk management becoming central; and continuous control monitoring replacing annual snapshots. He learns that trends should be weighed against the organisation's maturity, and that adopting a fashionable method without the data or skills to support it can make governance worse rather than better. Halbrook, with mature certification but sparse loss data, can adopt quantification only if it starts with a few scenarios and honest ranges.
 
 ### Worked example
 
@@ -135,11 +135,11 @@ You will (1) build a FAIR-style quantitative risk estimate; (2) interpret a loss
 
 ### 3.1 FAIR structure
 
-Daniel studies the FAIR model described by Freund and Jones (2015), which decomposes risk into loss event frequency and loss magnitude, each estimated as a range. For a claims supplier data breach scenario, he works with claims, legal and IT staff to estimate frequency between one event in ten years and nearly one a year, most likely about one in three years, and a loss magnitude with a median near three hundred thousand and a long tail from regulatory fines and remediation. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Daniel studies the FAIR model described by Freund and Jones (2015), which decomposes risk into loss event frequency and loss magnitude, each estimated as a range. For a claims supplier data breach scenario, he works with claims, legal and IT staff to estimate frequency between one event in ten years and nearly one a year, most likely about one in three years, and a loss magnitude with a median near three hundred thousand and a long tail from regulatory fines and remediation. These ranges, not single points, become the inputs to the simulation in the next section.
 
 ### 3.2 The simulation
 
-The lab simulates twenty thousand years. Mean annual loss is about one hundred and seventy thousand. In sixty-eight percent of years there is no loss at all, so the median year costs nothing. The ninetieth percentile is about five hundred and fifty-five thousand and the ninety-ninth about one point nine million. The chance of losing more than a million in a year is about four percent. Daniel notes that the mean alone would hide both the many quiet years and the severe tail. He checks the idea against a second example before relying on it.
+The lab simulates twenty thousand years. Mean annual loss is about one hundred and seventy thousand. In sixty-eight percent of years there is no loss at all, so the median year costs nothing. The ninetieth percentile is about five hundred and fifty-five thousand and the ninety-ninth about one point nine million. The chance of losing more than a million in a year is about four percent. Daniel notes that the mean alone would hide both the many quiet years and the severe tail. A median of zero also explains why managers who have never seen a loss may doubt the scenario is real.
 
 ### Lab — Monte Carlo loss distribution for a supplier breach scenario
 
@@ -172,7 +172,7 @@ P(loss > 1,000k) 0.041
 
 ### 3.3 Explaining it
 
-Daniel presents the result to the risk committee as a loss exceedance statement: in about one year in twenty-five, losses from this scenario could exceed a million. He explains that the figures depend on estimated ranges, shows the assumptions and invites challenge. Committee members compare it with insurance and credit risks they already manage. He learns that specialist evidence persuades when it is translated into familiar terms and when its uncertainty is visible rather than hidden. The point seems small, but it changes how owners act on the result.
+Daniel presents the result to the risk committee as a loss exceedance statement: in about one year in twenty-five, losses from this scenario could exceed a million. He explains that the figures depend on estimated ranges, shows the assumptions and invites challenge. Committee members compare it with insurance and credit risks they already manage. He learns that specialist evidence persuades when it is translated into familiar terms and when its uncertainty is visible rather than hidden. Linking the cyber figure to how the committee already reads insurance exposures makes the one-in-twenty-five statement usable in the same discussion.
 
 ### Worked example
 
@@ -210,15 +210,15 @@ You will (1) identify ethical issues in risk quantification and assurance; (2) h
 
 ### 4.1 Ethics of numbers
 
-Daniel considers ethical issues in quantification. Numbers can be used to justify cutting controls by choosing optimistic inputs, or to frighten boards into spending with pessimistic ones. He learns that ethical practice means documenting sources for each estimate, inviting independent challenge and reporting ranges honestly. He also notes that people affected by risks, such as policyholders whose data could be exposed, rarely appear in loss models, so their interests need explicit attention. Halbrook's security manager later asks for a copy of this analysis. He marks the open questions in red so that they are not forgotten.
+Daniel considers ethical issues in quantification. Numbers can be used to justify cutting controls by choosing optimistic inputs, or to frighten boards into spending with pessimistic ones. He learns that ethical practice means documenting sources for each estimate, inviting independent challenge and reporting ranges honestly. He also notes that people affected by risks, such as policyholders whose data could be exposed, rarely appear in loss models, so their interests need explicit attention. In the supplier breach scenario, he therefore adds a short narrative of the harm to policyholders beside the loss figures.
 
 ### 4.2 Conflicts of interest
 
-Daniel's role creates potential conflicts. He estimates risks for controls his own team runs, and his bonus depends partly on meeting budget targets. Dr. Varga asks how he will manage this. He proposes that internal audit review his key estimates, that he declare the conflict to the risk committee and that budget decisions be made by people other than the estimator. He learns that conflicts are normal in practice and become harmful mainly when they are hidden. Writing the reasoning down also helps him spot a weak step in his argument.
+Daniel's role creates potential conflicts. He estimates risks for controls his own team runs, and his bonus depends partly on meeting budget targets. Dr. Varga asks how he will manage this. He proposes that internal audit review his key estimates, that he declare the conflict to the risk committee and that budget decisions be made by people other than the estimator. He learns that conflicts are normal in practice and become harmful mainly when they are hidden. He also records the declaration in the committee minutes so that later reviewers can see the conflict was known when estimates were accepted.
 
 ### 4.3 Protecting people
 
-Halbrook considers reducing breach notification costs by narrowing what counts as a notifiable incident. Daniel points out that notification obligations come from law and that narrowing them would harm policyholders who need to protect themselves. He recommends instead investing in faster detection so incidents are smaller. He learns that GRC professionals sometimes need to defend people outside the organisation, and that compliance with law is a minimum, not the full measure of ethical conduct. Daniel discusses the trade-off with a classmate who works in finance.
+Halbrook considers reducing breach notification costs by narrowing what counts as a notifiable incident. Daniel points out that notification obligations come from law and that narrowing them would harm policyholders who need to protect themselves. He recommends instead investing in faster detection so incidents are smaller. He learns that GRC professionals sometimes need to defend people outside the organisation, and that compliance with law is a minimum, not the full measure of ethical conduct. Faster detection also reduces the number of policyholders affected, which the notification approach would only have hidden.
 
 ### Worked example
 
@@ -256,15 +256,15 @@ You will (1) design alternative approaches to supplier oversight; (2) compare th
 
 ### 5.1 Three alternatives
 
-Halbrook oversees three hundred suppliers using one long questionnaire for all. Daniel designs alternatives. The first keeps the questionnaire but adds follow-up interviews for key suppliers. The second introduces tiering: suppliers are classified by data access, criticality and connectivity, with deep reviews for high tiers relying on SOC 2 type two reports or ISO/IEC 27001:2022 certificates plus targeted questions, and light reviews for others. The third buys an external rating service. The class compares answers and finds that most differences come from unstated assumptions. Daniel records this point in his course notebook so that later chapters can build on it.
+Halbrook oversees three hundred suppliers using one long questionnaire for all. Daniel designs alternatives. The first keeps the questionnaire but adds follow-up interviews for key suppliers. The second introduces tiering: suppliers are classified by data access, criticality and connectivity, with deep reviews for high tiers relying on SOC 2 type two reports or ISO/IEC 27001:2022 certificates plus targeted questions, and light reviews for others. The third buys an external rating service. Each alternative must be judged against the same criteria, which the next section sets out.
 
 ### 5.2 Comparison
 
-Daniel compares alternatives on criteria agreed with procurement and security: depth of assurance for critical suppliers, review time, burden on suppliers, cost and fit with regulatory expectations for outsourcing. The interview option adds depth but increases time. The rating service is fast but gives outside-in views that miss internal controls. Tiering concentrates effort where it matters and reuses existing assurance reports. He records scores and reasoning in a table that colleagues can challenge. Dr. Varga asks him to explain the idea aloud to a classmate before moving on.
+Daniel compares alternatives on criteria agreed with procurement and security: depth of assurance for critical suppliers, review time, burden on suppliers, cost and fit with regulatory expectations for outsourcing. The interview option adds depth but increases time. The rating service is fast but gives outside-in views that miss internal controls. Tiering concentrates effort where it matters and reuses existing assurance reports. He records scores and reasoning in a table that colleagues can challenge. Dr. Varga points out that a written score table also lets procurement see why the interview option lost despite its depth.
 
 ### 5.3 Selection
 
-The committee selects tiering for a controlled evaluation before full rollout. Daniel notes that the rating service could complement tiering by flagging changes between reviews, and records it as a possible later addition. He also defines what success would mean: faster reviews without losing depth for critical suppliers. He learns that selecting an approach for evaluation, rather than declaring it the answer, keeps the organisation open to evidence and reduces the cost of being wrong. He notes the assumption behind it so that a reviewer can challenge it later.
+The committee selects tiering for a controlled evaluation before full rollout. Daniel notes that the rating service could complement tiering by flagging changes between reviews, and records it as a possible later addition. He also defines what success would mean: faster reviews without losing depth for critical suppliers. He learns that selecting an approach for evaluation, rather than declaring it the answer, keeps the organisation open to evidence and reduces the cost of being wrong. The success definition is set before the trial so the results cannot be reinterpreted afterwards to favour tiering.
 
 ### Worked example
 
@@ -302,11 +302,11 @@ You will (1) design a controlled comparison of governance processes; (2) test a 
 
 ### 6.1 Design
 
-Daniel evaluates tiering on twenty upcoming supplier reviews. With the committee's agreement, ten are randomly assigned to the old questionnaire and ten to the tiered process. Random assignment makes the groups comparable on average, avoiding the risk that easier suppliers end up in one group. The outcome is days from request to completed review. To check depth, an independent reviewer from internal audit scores each completed review for whether it identified the key risks of that supplier. The same reasoning will return when Halbrook's auditors visit next year.
+Daniel evaluates tiering on twenty upcoming supplier reviews. With the committee's agreement, ten are randomly assigned to the old questionnaire and ten to the tiered process. Random assignment makes the groups comparable on average, avoiding the risk that easier suppliers end up in one group. The outcome is days from request to completed review. To check depth, an independent reviewer from internal audit scores each completed review for whether it identified the key risks of that supplier. Blinding the auditor to which process produced each review prevents expectations about tiering from colouring the depth scores.
 
 ### 6.2 Speed
 
-The lab compares mean days. The old process averaged thirty-nine point three days and the tiered process twenty-six point five, a difference of twelve point eight days. A permutation test reshuffles the twenty results five thousand times to see how often chance alone produces a difference this large. The one-sided p-value is about two in ten thousand, so chance is an unlikely explanation. Daniel reports the difference with the caution that ten reviews per group is a small sample. He adds a short note to the shared course wiki for other students.
+The lab compares mean days. The old process averaged thirty-nine point three days and the tiered process twenty-six point five, a difference of twelve point eight days. A permutation test reshuffles the twenty results five thousand times to see how often chance alone produces a difference this large. The one-sided p-value is about two in ten thousand, so chance is an unlikely explanation. Daniel reports the difference with the caution that ten reviews per group is a small sample. With only twenty reviews, one unusually slow supplier could move a group mean by several days, so the depth check in the next section matters.
 
 ### Lab — Permutation test on review duration
 
@@ -334,7 +334,7 @@ one-sided permutation p = 0.0002
 
 ### 6.3 Depth
 
-Speed alone would be misleading if reviews became shallower. The internal auditor, not told which process was used, scores depth. Both groups identified the key risks in most reviews, and the tiered group performed slightly better on high-tier suppliers because reviewers read SOC 2 exceptions rather than skimming questionnaires. Daniel concludes that tiering was faster without loss of depth in this sample. He recommends rollout with continued monitoring of depth scores during the first year. This makes the governance consequence visible to people outside the engineering team.
+Speed alone would be misleading if reviews became shallower. The internal auditor, not told which process was used, scores depth. Both groups identified the key risks in most reviews, and the tiered group performed slightly better on high-tier suppliers because reviewers read SOC 2 exceptions rather than skimming questionnaires. Daniel concludes that tiering was faster without loss of depth in this sample. He recommends rollout with continued monitoring of depth scores during the first year. Monitoring depth scores during rollout guards against reviewers drifting into shallow reviews once speed becomes the visible target.
 
 ### Worked example
 
@@ -372,15 +372,15 @@ You will (1) integrate supplier tiering into procurement and risk; (2) align thr
 
 ### 7.1 Procurement integration
 
-Daniel works with procurement to embed tiering in the purchasing process. A short intake form now asks about data access, criticality and connectivity before any contract. The answers set the tier automatically, and high-tier suppliers cannot be approved without a completed security review. He learns that integration works when governance steps sit inside existing workflows, at the point where decisions are made, rather than in a separate process that staff must remember to start. Daniel keeps a dated copy of his working so that the result can be traced.
+Daniel works with procurement to embed tiering in the purchasing process. A short intake form now asks about data access, criticality and connectivity before any contract. The answers set the tier automatically, and high-tier suppliers cannot be approved without a completed security review. He learns that integration works when governance steps sit inside existing workflows, at the point where decisions are made, rather than in a separate process that staff must remember to start. Because the tier is set at intake, a high-tier supplier can no longer reach contract signature without the security review having started.
 
 ### 7.2 Lines of responsibility
 
-Halbrook uses a model in which business units own and manage risk, a risk and compliance function oversees and challenges, and internal audit provides independent assurance. Daniel clarifies each line's role in supplier risk: procurement and business owners manage, his team sets methods and challenges, and internal audit tests the process annually. He learns that confusion between lines, such as the risk team performing reviews it should challenge, weakens assurance and blurs accountability. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Halbrook uses a model in which business units own and manage risk, a risk and compliance function oversees and challenges, and internal audit provides independent assurance. Daniel clarifies each line's role in supplier risk: procurement and business owners manage, his team sets methods and challenges, and internal audit tests the process annually. He learns that confusion between lines, such as the risk team performing reviews it should challenge, weakens assurance and blurs accountability. Before the change, his team had run some supplier reviews itself, which left no one independent to challenge them.
 
 ### 7.3 Managing change
 
-Some business units resist tiering because high-tier reviews delay contracts. Daniel meets them, explains the reasons and offers early engagement so reviews start before contracts are urgent. He also publishes review times so units can plan. Resistance falls. He learns that change succeeds when people see the reasons, receive practical help and have their legitimate concerns, such as deadlines, addressed rather than dismissed as obstruction. He checks the idea against a second example before relying on it. The point seems small, but it changes how owners act on the result.
+Some business units resist tiering because high-tier reviews delay contracts. Daniel meets them, explains the reasons and offers early engagement so reviews start before contracts are urgent. He also publishes review times so units can plan. Resistance falls. He learns that change succeeds when people see the reasons, receive practical help and have their legitimate concerns, such as deadlines, addressed rather than dismissed as obstruction. Publishing the review times also gives his team a measure that business units can hold it to, which builds trust in the new process.
 
 ### Worked example
 
@@ -418,15 +418,15 @@ You will (1) handle conflicts between compliance and risk; (2) decide under inco
 
 ### 8.1 A critical supplier fails
 
-A high-tier claims supplier's SOC 2 type two report shows exceptions: access reviews were not performed for two quarters. The supplier is critical, and replacing it would take a year. Daniel must recommend what to do. He considers options: accept with compensating controls, require a remediation plan with milestones, increase monitoring or start an exit plan. He recommends a remediation plan, extra monitoring of the supplier's access to Halbrook data and a parallel exit assessment. Halbrook's security manager later asks for a copy of this analysis.
+A high-tier claims supplier's SOC 2 type two report shows exceptions: access reviews were not performed for two quarters. The supplier is critical, and replacing it would take a year. Daniel must recommend what to do. He considers options: accept with compensating controls, require a remediation plan with milestones, increase monitoring or start an exit plan. He recommends a remediation plan, extra monitoring of the supplier's access to Halbrook data and a parallel exit assessment. The parallel exit assessment keeps Halbrook from being trapped if the remediation milestones slip.
 
 ### 8.2 Incomplete evidence
 
-A new cloud provider for fraud analytics offers only a recent ISO/IEC 27001:2022 certificate, whose scope does not clearly include the analytics service. Daniel cannot confirm controls directly. He recommends a limited pilot with synthetic data, contractual rights to audit and a request for a scope statement. He learns that difficult cases rarely offer complete evidence, and that good practice is to limit exposure while evidence is gathered rather than choose between blind trust and refusal. He marks the open questions in red so that they are not forgotten.
+A new cloud provider for fraud analytics offers only a recent ISO/IEC 27001:2022 certificate, whose scope does not clearly include the analytics service. Daniel cannot confirm controls directly. He recommends a limited pilot with synthetic data, contractual rights to audit and a request for a scope statement. He learns that difficult cases rarely offer complete evidence, and that good practice is to limit exposure while evidence is gathered rather than choose between blind trust and refusal. The synthetic-data pilot lets fraud analysts test the service while no policyholder data is exposed to unconfirmed controls.
 
 ### 8.3 Escalation
 
-A business director wants to proceed with the analytics provider using real policyholder data before the scope statement arrives. Daniel escalates to the chief risk officer with a short memo: the decision needed, the options, the risk and his recommendation. The chief risk officer supports the pilot with synthetic data only. Daniel learns that escalation is a normal governance tool, and that a clear memo makes it a decision process rather than a personal dispute. Writing the reasoning down also helps him spot a weak step in his argument.
+A business director wants to proceed with the analytics provider using real policyholder data before the scope statement arrives. Daniel escalates to the chief risk officer with a short memo: the decision needed, the options, the risk and his recommendation. The chief risk officer supports the pilot with synthetic data only. Daniel learns that escalation is a normal governance tool, and that a clear memo makes it a decision process rather than a personal dispute. The memo also leaves a record showing that the director's request and the risk reasoning were both considered.
 
 ### Worked example
 
@@ -464,11 +464,11 @@ You will (1) express risk appetite in quantitative terms; (2) compare risk estim
 
 ### 9.1 Quantified appetite
 
-Halbrook's board has a qualitative appetite statement: low tolerance for cyber risk. Daniel helps translate it into exceedance limits: the probability of annual cyber losses exceeding given amounts should not exceed agreed thresholds, for example no more than a five percent chance of exceeding one million in a year. He learns that quantified appetite makes risk discussions concrete and lets the board compare cyber risk with its tolerances for other financial risks. Daniel discusses the trade-off with a classmate who works in finance. The class compares answers and finds that most differences come from unstated assumptions.
+Halbrook's board has a qualitative appetite statement: low tolerance for cyber risk. Daniel helps translate it into exceedance limits: the probability of annual cyber losses exceeding given amounts should not exceed agreed thresholds, for example no more than a five percent chance of exceeding one million in a year. He learns that quantified appetite makes risk discussions concrete and lets the board compare cyber risk with its tolerances for other financial risks. The five percent limit at one million becomes the benchmark against which the combined curve is tested in the next section.
 
 ### 9.2 Comparing with appetite
 
-Daniel's team estimates a loss exceedance curve for all cyber scenarios combined. The lab compares five points with the appetite. Estimates are within appetite at two hundred and fifty thousand and five hundred thousand, but exceed it at one million, two million and five million: for example, an eight percent chance of exceeding one million against an appetite of five percent. The tail, not the typical year, breaches appetite. He recommends treatments aimed at severe scenarios. Daniel records this point in his course notebook so that later chapters can build on it.
+Daniel's team estimates a loss exceedance curve for all cyber scenarios combined. The lab compares five points with the appetite. Estimates are within appetite at two hundred and fifty thousand and five hundred thousand, but exceed it at one million, two million and five million: for example, an eight percent chance of exceeding one million against an appetite of five percent. The tail, not the typical year, breaches appetite. He recommends treatments aimed at severe scenarios. Treatments such as backup isolation shrink the tail without changing much in ordinary years.
 
 ### Lab — Loss exceedance estimates against board appetite
 
@@ -493,7 +493,7 @@ P(loss > 5000k): estimate 0.004 appetite 0.002 EXCEEDS
 
 ### 9.3 Board assurance
 
-Daniel presents the comparison to the board with the uncertainty behind the curve and the treatments proposed: improved backup isolation and an insurance review. A director asks whether the estimates can be trusted. He explains how the inputs were gathered, that internal audit reviewed the method and that results are ranges. The board approves the treatments and asks for an update in six months. He learns that board assurance depends on transparency about methods as much as on the numbers. Dr. Varga asks him to explain the idea aloud to a classmate before moving on.
+Daniel presents the comparison to the board with the uncertainty behind the curve and the treatments proposed: improved backup isolation and an insurance review. A director asks whether the estimates can be trusted. He explains how the inputs were gathered, that internal audit reviewed the method and that results are ranges. The board approves the treatments and asks for an update in six months. He learns that board assurance depends on transparency about methods as much as on the numbers. Dr. Varga notes that the six-month update gives the board a way to see whether the treatments actually moved the tail.
 
 ### Worked example
 
@@ -531,15 +531,15 @@ You will (1) read GRC research critically; (2) assess methods and claims; (3) re
 
 ### 10.1 Reading strategy
 
-Daniel reads four sources: Gordon and Loeb (2002) on security investment economics, Cox (2008) on risk matrices, Spears and Barki (2010) on user participation in security risk management and Hubbard and Seiersen (2016) on measurement. For each he records the question, method, data, main claim and limits. He learns that reading research for practice means asking not only whether a claim is true but whether it applies to his organisation's setting. He notes the assumption behind it so that a reviewer can challenge it later. The same reasoning will return when Halbrook's auditors visit next year.
+Daniel reads four sources: Gordon and Loeb (2002) on security investment economics, Cox (2008) on risk matrices, Spears and Barki (2010) on user participation in security risk management and Hubbard and Seiersen (2016) on measurement. For each he records the question, method, data, main claim and limits. He learns that reading research for practice means asking not only whether a claim is true but whether it applies to his organisation's setting. Recording the same five fields for each source makes it easier to compare the analytical, survey and practice-based work that follows.
 
 ### 10.2 Assessing methods
 
-Gordon and Loeb offer an analytical model with assumptions about vulnerability and loss functions; its insight that optimal investment is bounded is robust, but exact numbers depend on assumptions. Cox analyses mathematical properties of matrices; his conclusions are logical rather than empirical. Spears and Barki use survey data and interviews with managers; findings depend on context. Hubbard and Seiersen synthesise practice and research to argue for quantification. Daniel notes the different kinds of evidence each provides. He adds a short note to the shared course wiki for other students.
+Gordon and Loeb offer an analytical model with assumptions about vulnerability and loss functions; its insight that optimal investment is bounded is robust, but exact numbers depend on assumptions. Cox analyses mathematical properties of matrices; his conclusions are logical rather than empirical. Spears and Barki use survey data and interviews with managers; findings depend on context. Hubbard and Seiersen synthesise practice and research to argue for quantification. Daniel notes the different kinds of evidence each provides. A logical argument like Cox's can show that matrices mislead in principle, but it cannot say how often they misled Halbrook's own committee.
 
 ### 10.3 Relating to practice
 
-Daniel relates each source to Halbrook. Gordon and Loeb support comparing investments with expected loss reduction. Cox supports moving away from matrices for board reporting. Spears and Barki support involving business owners in supplier risk decisions, which tiering did. Hubbard and Seiersen support calibration training for estimators. He writes a critique noting that none studied an insurer's supplier oversight directly, so his own evaluation adds local evidence. This makes the governance consequence visible to people outside the engineering team. Daniel keeps a dated copy of his working so that the result can be traced.
+Daniel relates each source to Halbrook. Gordon and Loeb support comparing investments with expected loss reduction. Cox supports moving away from matrices for board reporting. Spears and Barki support involving business owners in supplier risk decisions, which tiering did. Hubbard and Seiersen support calibration training for estimators. He writes a critique noting that none studied an insurer's supplier oversight directly, so his own evaluation adds local evidence. His tiering evaluation of twenty reviews is the local evidence that the published sources could not supply.
 
 ### Worked example
 
@@ -577,15 +577,15 @@ You will (1) deliver an applied GRC improvement; (2) measure results against obj
 
 ### 11.1 Project scope
 
-Daniel's applied project brings together his work: quantified risk reporting for the board, supplier tiering and appetite in exceedance terms. Over six months he rolls out tiering to all three hundred suppliers, introduces loss exceedance reporting for the top ten cyber scenarios and trains six estimators in calibration. Objectives include halving average review time, completing deep reviews for all high-tier suppliers and presenting scenarios in financial terms at every board meeting. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Daniel's applied project brings together his work: quantified risk reporting for the board, supplier tiering and appetite in exceedance terms. Over six months he rolls out tiering to all three hundred suppliers, introduces loss exceedance reporting for the top ten cyber scenarios and trains six estimators in calibration. Objectives include halving average review time, completing deep reviews for all high-tier suppliers and presenting scenarios in financial terms at every board meeting. Each objective is measurable, so the results section can report it as met, partly met or missed.
 
 ### 11.2 Results
 
-After six months, average review time fell from about thirty-nine to twenty-four days, close to the objective. All forty-two high-tier suppliers have completed deep reviews, revealing three with significant exceptions now under remediation. The board receives quantified scenarios each quarter and has approved two treatments. Calibration tests show estimators' ranges capturing true answers more often after training. Daniel reports one objective, halving review time, as nearly but not fully met. He checks the idea against a second example before relying on it. The point seems small, but it changes how owners act on the result.
+After six months, average review time fell from about thirty-nine to twenty-four days, close to the objective. All forty-two high-tier suppliers have completed deep reviews, revealing three with significant exceptions now under remediation. The board receives quantified scenarios each quarter and has approved two treatments. Calibration tests show estimators' ranges capturing true answers more often after training. Daniel reports one objective, halving review time, as nearly but not fully met. The three suppliers with significant exceptions show that deep reviews found problems the old questionnaires had missed.
 
 ### 11.3 Handover
 
-Daniel documents methods, tools, estimator guidance and the tiering rules, and trains a colleague to run the process. He records known limitations: estimates depend on a small group of experts, and loss data are sparse. He recommends collecting internal incident cost data to improve future estimates. He learns that applied projects create lasting value only when others can continue them, and that honest reporting of partly met objectives builds credibility. Halbrook's security manager later asks for a copy of this analysis. He marks the open questions in red so that they are not forgotten.
+Daniel documents methods, tools, estimator guidance and the tiering rules, and trains a colleague to run the process. He records known limitations: estimates depend on a small group of experts, and loss data are sparse. He recommends collecting internal incident cost data to improve future estimates. He learns that applied projects create lasting value only when others can continue them, and that honest reporting of partly met objectives builds credibility. Recording the reliance on a small expert group warns his successor where the estimates are most fragile.
 
 ### Worked example
 
@@ -623,15 +623,15 @@ You will (1) review your postgraduate learning critically; (2) transfer methods 
 
 ### 12.1 Final review
 
-Daniel presents his work to Dr. Varga and an external examiner from another insurer. He summarises the decisions, evidence and results and answers questions. The examiner asks whether quantification will survive his departure. Daniel points to the handover, the trained colleague and internal audit's review of the method. Dr. Varga asks what he would do differently; he answers that he would collect incident cost data from the start and involve brokers earlier. Writing the reasoning down also helps him spot a weak step in his argument.
+Daniel presents his work to Dr. Varga and an external examiner from another insurer. He summarises the decisions, evidence and results and answers questions. The examiner asks whether quantification will survive his departure. Daniel points to the handover, the trained colleague and internal audit's review of the method. Dr. Varga asks what he would do differently; he answers that he would collect incident cost data from the start and involve brokers earlier. Both answers point to data and stakeholders he could have engaged earlier, not to flaws in the methods themselves.
 
 ### 12.2 Transfer
 
-Daniel considers how his methods transfer. Tiering applies to any organisation with many suppliers. Loss exceedance reporting suits organisations with boards used to financial risk, such as banks or pension funds, but may need simplification for smaller charities. Calibration training applies wherever experts estimate uncertain quantities. He learns that methods transfer best when their assumptions are explicit, so new users can check whether those assumptions hold in their setting. Daniel discusses the trade-off with a classmate who works in finance. The class compares answers and finds that most differences come from unstated assumptions.
+Daniel considers how his methods transfer. Tiering applies to any organisation with many suppliers. Loss exceedance reporting suits organisations with boards used to financial risk, such as banks or pension funds, but may need simplification for smaller charities. Calibration training applies wherever experts estimate uncertain quantities. He learns that methods transfer best when their assumptions are explicit, so new users can check whether those assumptions hold in their setting. For a small charity, for instance, a single tiering rule based on data access may be enough where Halbrook needed three criteria.
 
 ### 12.3 Continuing development
 
-Daniel plans continuing development: deeper study of statistics for risk, following updates to NIST CSF and ISO standards and joining a professional community on risk quantification. He also commits to mentoring a junior colleague. Dr. Varga notes that GRC practice changes quickly and that his habits of critical reading, controlled evaluation and transparent reporting will remain useful as specific frameworks change. Daniel records this point in his course notebook so that later chapters can build on it. Dr. Varga asks him to explain the idea aloud to a classmate before moving on.
+Daniel plans continuing development: deeper study of statistics for risk, following updates to NIST CSF and ISO standards and joining a professional community on risk quantification. He also commits to mentoring a junior colleague. Dr. Varga notes that GRC practice changes quickly and that his habits of critical reading, controlled evaluation and transparent reporting will remain useful as specific frameworks change. Dr. Varga also suggests he keep his calibration records, so he can later check whether his own estimates stay well calibrated.
 
 ### Worked example
 

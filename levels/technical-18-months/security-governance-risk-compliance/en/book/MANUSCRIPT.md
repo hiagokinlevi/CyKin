@@ -43,15 +43,15 @@ You will (1) describe the services a retail business runs; (2) identify which co
 
 ### 1.1 Fenwick's services
 
-Amina Yusuf is a student on the technical course at the fictional Dunmore Technical College. Her instructor, Ms. Clara Bell, uses one running case: the fictional Fenwick Building Supplies, with six branches, one hundred and eighty staff, an online shop and card terminals at every till. Amina lists Fenwick's services: in-branch sales, the online shop, deliveries, supplier ordering and payroll. Each service relies on computers, software, networks and people, and governance must know these links to protect what matters. Amina records this point in her course notebook so that later chapters can build on it.
+Amina Yusuf is a student on the technical course at the fictional Dunmore Technical College. Her instructor, Ms. Clara Bell, uses one running case: the fictional Fenwick Building Supplies, with six branches, one hundred and eighty staff, an online shop and card terminals at every till. Amina lists Fenwick's services: in-branch sales, the online shop, deliveries, supplier ordering and payroll. Each service relies on computers, software, networks and people, and governance must know these links to protect what matters. Payroll, for example, has no customers watching it, yet a failure there would affect all one hundred and eighty staff at once.
 
 ### 1.2 Components
 
-For each service Amina lists components. In-branch sales rely on till computers, card terminals, the point-of-sale software and the branch network. The online shop relies on a hosted web platform, a payment gateway and the stock database. Deliveries rely on tablets and a route planning service. She learns that drawing these links shows which single component could stop several services, such as the stock database, which both the shop and branches need. Ms. Bell asks her to explain the idea aloud to a classmate before moving on.
+For each service Amina lists components. In-branch sales rely on till computers, card terminals, the point-of-sale software and the branch network. The online shop relies on a hosted web platform, a payment gateway and the stock database. Deliveries rely on tablets and a route planning service. She learns that drawing these links shows which single component could stop several services, such as the stock database, which both the shop and branches need. Ms. Bell asks her to mark the stock database on the diagram, since an outage there would stop both the online shop and every branch till.
 
 ### 1.3 Owners
 
-Amina records an owner for each service and component. The sales director owns in-branch sales; the e-commerce manager owns the online shop; the IT technician team owns tills, networks and the stock database. Two components, the route planning service and the branch Wi-Fi, have no clear owner. She learns that unowned components are often where problems go unnoticed, so assigning owners is one of the first and simplest governance tasks. She notes the assumption behind it so that a reviewer can challenge it later.
+Amina records an owner for each service and component. The sales director owns in-branch sales; the e-commerce manager owns the online shop; the IT technician team owns tills, networks and the stock database. Two components, the route planning service and the branch Wi-Fi, have no clear owner. She learns that unowned components are often where problems go unnoticed, so assigning owners is one of the first and simplest governance tasks. She adds the route planning service and branch Wi-Fi to the IT lead's agenda so owners can be agreed.
 
 ### Worked example
 
@@ -88,15 +88,15 @@ You will (1) describe a branch network design; (2) identify card payment network
 
 ### 2.1 Branch networks
 
-Each Fenwick branch has a network for tills and card terminals, office computers and a guest Wi-Fi for trade customers. Amina learns that these should be separated so a problem in one cannot easily spread to another. She checks two branches: one has separate segments; the other connects everything to one switch. She records the difference and learns that branches built at different times often vary, which governance must find and fix. The same reasoning will return when Fenwick's auditors visit next year. She adds a short note to the shared course wiki for other students.
+Each Fenwick branch has a network for tills and card terminals, office computers and a guest Wi-Fi for trade customers. Amina learns that these should be separated so a problem in one cannot easily spread to another. She checks two branches: one has separate segments; the other connects everything to one switch. She records the difference and learns that branches built at different times often vary, which governance must find and fix. The branch with one switch lets a compromised guest device reach the tills, so she records it as the higher priority of the two. Separate admin accounts also make it easy to see in the logs when administrator rights were actually used.
 
 ### 2.2 Card payment requirements
 
-Card terminals and the till software handle payment card data, which brings PCI DSS v4.0 requirements. Amina learns that keeping payment systems on their own segment, with only necessary connections allowed, reduces the number of systems in scope. She lists the connections the payment segment needs: to the payment gateway for authorisation and to IT management for updates. Anything else should be blocked, and the list itself becomes evidence for assessments. This makes the governance consequence visible to people outside the specialist team. Amina keeps a dated copy of her working so that the result can be traced.
+Card terminals and the till software handle payment card data, which brings PCI DSS v4.0 requirements. Amina learns that keeping payment systems on their own segment, with only necessary connections allowed, reduces the number of systems in scope. She lists the connections the payment segment needs: to the payment gateway for authorisation and to IT management for updates. Anything else should be blocked, and the list itself becomes evidence for assessments. A connection from office computers to the payment segment, for instance, would bring those computers into PCI DSS scope as well.
 
 ### 2.3 Documenting changes
 
-When a branch technician adds a new device or rule, the change should be recorded: what, why, who approved and when. Amina finds that branch changes are often made by phone with no record. She drafts a simple change form and explains that without records, nobody can tell whether the network still matches its design. She learns that change documentation is a basic control supporting both security and troubleshooting. Her lecturer reminds the class that clear reasoning matters more than a polished answer. She checks the idea against a second example before relying on it.
+When a branch technician adds a new device or rule, the change should be recorded: what, why, who approved and when. Amina finds that branch changes are often made by phone with no record. She drafts a simple change form and explains that without records, nobody can tell whether the network still matches its design. She learns that change documentation is a basic control supporting both security and troubleshooting. A change form with fields for what, why, approver and date takes a technician only a minute on the phone call itself.
 
 ### Worked example
 
@@ -133,15 +133,15 @@ You will (1) manage user accounts on business systems; (2) apply least privilege
 
 ### 3.1 User accounts
 
-Amina learns how Fenwick creates accounts for staff on office computers, tills and cloud services. Each person should have their own account so actions can be traced. At tills, staff share a till login, which makes it impossible to know who processed a refund. She recommends individual till logins with quick card sign-in. She learns that individual accounts are the basis of accountability, and that shared accounts usually exist because individual ones were inconvenient. The point seems small, but it changes how owners act on the result.
+Amina learns how Fenwick creates accounts for staff on office computers, tills and cloud services. Each person should have their own account so actions can be traced. At tills, staff share a till login, which makes it impossible to know who processed a refund. She recommends individual till logins with quick card sign-in. She learns that individual accounts are the basis of accountability, and that shared accounts usually exist because individual ones were inconvenient. Individual logins would also let a branch manager see which staff member processed each refund when a till total does not match.
 
 ### 3.2 Least privilege
 
-Office computers give every user local administrator rights so they can install software. Amina explains that this lets malware install itself with full control. She proposes removing local administrator rights and providing a software request process. She tests the change on three computers first, finding that one accounting program needs a setting adjusted. She learns that least privilege must be introduced carefully with testing, so that work continues smoothly. Fenwick's security manager later asks for a copy of this analysis. She marks the open questions in red so that they are not forgotten.
+Office computers give every user local administrator rights so they can install software. Amina explains that this lets malware install itself with full control. She proposes removing local administrator rights and providing a software request process. She tests the change on three computers first, finding that one accounting program needs a setting adjusted. She learns that least privilege must be introduced carefully with testing, so that work continues smoothly. Her three-computer pilot found the accounting program issue before it could stop a whole office.
 
 ### 3.3 Administrator access
 
-IT technicians use administrator accounts for maintenance. Amina recommends separate administrator accounts used only for admin tasks, with multi-factor authentication and logging. She notes that if a technician's everyday account is compromised, attackers should not gain admin rights automatically. She learns that controlling administrator access is one of the most effective security measures, because most serious attacks depend on gaining those rights. Writing the reasoning down also helps her spot a weak step in her argument. Amina discusses the trade-off with a classmate who works in finance.
+IT technicians use administrator accounts for maintenance. Amina recommends separate administrator accounts used only for admin tasks, with multi-factor authentication and logging. She notes that if a technician's everyday account is compromised, attackers should not gain admin rights automatically. She learns that controlling administrator access is one of the most effective security measures, because most serious attacks depend on gaining those rights. Logging admin sessions also gives the IT lead a record to check when a setting changes unexpectedly. Every admin action thus carries a name the IT lead can review.
 
 ### Worked example
 
@@ -178,11 +178,11 @@ You will (1) read structured data formats such as JSON; (2) check configurations
 
 ### 4.1 Data formats
 
-Amina learns that systems export configuration and status data in formats such as CSV and JSON. JSON represents records as named fields, which makes it easy to read in Python with the standard json module. Fenwick's device management tool exports laptop settings as JSON. She learns that understanding data formats lets technicians check many devices quickly instead of clicking through each one, which saves time and reduces mistakes. The class compares answers and finds that most differences come from unstated assumptions. Amina records this point in her course notebook so that later chapters can build on it.
+Amina learns that systems export configuration and status data in formats such as CSV and JSON. JSON represents records as named fields, which makes it easy to read in Python with the standard json module. Fenwick's device management tool exports laptop settings as JSON. She learns that understanding data formats lets technicians check many devices quickly instead of clicking through each one, which saves time and reduces mistakes. In the next lab, the JSON export lets one short script check all four laptops against the baseline at once.
 
 ### 4.2 Baseline check
 
-Fenwick's baseline requires disk encryption, a screen lock within ten minutes, automatic updates and no local administrator rights. The lab checks four laptops. FW-LT01 meets the baseline. FW-LT02 lacks disk encryption. FW-LT03 has a thirty-minute screen lock and local administrator rights. FW-LT04 has automatic updates turned off. A shorter screen lock, such as five minutes, is accepted because it is stricter than the baseline. Ms. Bell asks her to explain the idea aloud to a classmate before moving on. She notes the assumption behind it so that a reviewer can challenge it later.
+Fenwick's baseline requires disk encryption, a screen lock within ten minutes, automatic updates and no local administrator rights. The lab checks four laptops. FW-LT01 meets the baseline. FW-LT02 lacks disk encryption. FW-LT03 has a thirty-minute screen lock and local administrator rights. FW-LT04 has automatic updates turned off. A shorter screen lock, such as five minutes, is accepted because it is stricter than the baseline. Ms. Bell asks the class why FW-LT03 fails twice, and Amina points to its thirty-minute screen lock and its local administrator rights.
 
 ### Lab — Checking laptop settings against a baseline
 
@@ -215,7 +215,7 @@ FW-LT04 DEVIATION auto_update=False
 
 ### 4.3 Reporting deviations
 
-Amina reports each deviation with the laptop name and the failing setting, then asks the owners why. FW-LT02 was set up before encryption was standard. FW-LT03 belongs to a manager who asked for admin rights months ago. FW-LT04 had updates paused during a software problem and never resumed. She learns that each deviation has a story, and that recording the cause helps prevent the same deviation recurring on other devices. The same reasoning will return when Fenwick's auditors visit next year. She adds a short note to the shared course wiki for other students.
+Amina reports each deviation with the laptop name and the failing setting, then asks the owners why. FW-LT02 was set up before encryption was standard. FW-LT03 belongs to a manager who asked for admin rights months ago. FW-LT04 had updates paused during a software problem and never resumed. She learns that each deviation has a story, and that recording the cause helps prevent the same deviation recurring on other devices. FW-LT04's paused updates, for example, suggest adding a review date whenever updates are paused for a software problem.
 
 ### Worked example
 
@@ -252,15 +252,15 @@ You will (1) define the scope of a security task; (2) collect evidence properly;
 
 ### 5.1 Scope
 
-Before any technical security work, Amina learns to agree scope in writing: which systems, which activities and which times are allowed. For her placement at Fenwick, the scope allows reading configuration exports, reviewing logs and checking firewall rules, but not testing for vulnerabilities on live systems. Ms. Bell stresses that working outside scope, even with good intentions, can breach rules or laws and damage trust. This makes the governance consequence visible to people outside the specialist team. Amina keeps a dated copy of her working so that the result can be traced.
+Before any technical security work, Amina learns to agree scope in writing: which systems, which activities and which times are allowed. For her placement at Fenwick, the scope allows reading configuration exports, reviewing logs and checking firewall rules, but not testing for vulnerabilities on live systems. Ms. Bell stresses that working outside scope, even with good intentions, can breach rules or laws and damage trust. Her written scope also lets her answer quickly when someone at Fenwick asks her to test something not on the list.
 
 ### 5.2 Evidence
 
-Amina learns how to collect evidence: record what was checked, when, by whom and how, and keep the original output such as an export file or screenshot. She names files consistently and stores them in a folder where they cannot be changed after collection. She learns that evidence must allow someone else to see exactly what she saw, which matters for audits and for fixing problems later. Her lecturer reminds the class that clear reasoning matters more than a polished answer. She checks the idea against a second example before relying on it.
+Amina learns how to collect evidence: record what was checked, when, by whom and how, and keep the original output such as an export file or screenshot. She names files consistently and stores them in a folder where they cannot be changed after collection. She learns that evidence must allow someone else to see exactly what she saw, which matters for audits and for fixing problems later. An export kept unchanged in a read-only folder can be compared later with a fresh export to see what changed.
 
 ### 5.3 Authorisation limits
 
-During her work, Amina notices a server that appears to allow remote desktop from the internet. Testing it would be outside her scope. She reports it to the IT lead with the evidence she already has: the firewall rule showing the connection. The IT lead investigates and closes it. She learns that the correct response to something outside scope is to report it, not to investigate it herself without permission. The point seems small, but it changes how owners act on the result. Fenwick's security manager later asks for a copy of this analysis.
+During her work, Amina notices a server that appears to allow remote desktop from the internet. Testing it would be outside her scope. She reports it to the IT lead with the evidence she already has: the firewall rule showing the connection. The IT lead investigates and closes it. She learns that the correct response to something outside scope is to report it, not to investigate it herself without permission. The firewall rule she already had in hand was enough evidence for the IT lead to act without her probing the server.
 
 ### Worked example
 
@@ -297,15 +297,15 @@ You will (1) explain how GRC fits with technical work; (2) model Fenwick's gover
 
 ### 6.1 GRC and technicians
 
-Amina learns that governance sets rules and priorities, risk management decides what matters most and compliance checks obligations are met. Technicians make these work: they configure systems, collect evidence and fix problems. Ms. Bell explains that understanding GRC helps technicians see why tasks matter. A baseline check is not busywork; it supports a policy, reduces a risk and produces evidence an assessor may ask for. She marks the open questions in red so that they are not forgotten. Writing the reasoning down also helps her spot a weak step in her argument.
+Amina learns that governance sets rules and priorities, risk management decides what matters most and compliance checks obligations are met. Technicians make these work: they configure systems, collect evidence and fix problems. Ms. Bell explains that understanding GRC helps technicians see why tasks matter. A baseline check is not busywork; it supports a policy, reduces a risk and produces evidence an assessor may ask for. Ms. Bell gives an example: the encryption baseline check reduces the lost laptop risk and answers a question the card payment assessor may ask.
 
 ### 6.2 Fenwick's roles
 
-Fenwick's finance director is accountable for security. An IT lead manages a team of three technicians. Branch managers own local tasks such as confirming staff leavers. An external assessor checks card payment compliance each year. Amina draws these roles and the flow of information between them, noting that technicians report issues to the IT lead, who reports risks to the finance director. Amina discusses the trade-off with a classmate who works in finance. The class compares answers and finds that most differences come from unstated assumptions.
+Fenwick's finance director is accountable for security. An IT lead manages a team of three technicians. Branch managers own local tasks such as confirming staff leavers. An external assessor checks card payment compliance each year. Amina draws these roles and the flow of information between them, noting that technicians report issues to the IT lead, who reports risks to the finance director. The drawing also shows that the external assessor depends on evidence that technicians produce, such as firewall rule lists.
 
 ### 6.3 Connecting tasks
 
-Amina builds a table linking technical tasks to policies, risks and obligations. Laptop encryption links to the data protection policy and the lost device risk. Firewall rule reviews link to the network policy and card payment obligations. Log reviews link to the monitoring policy and account misuse risk. She learns that this table helps technicians prioritise when time is short and explains to managers why technical work deserves resources. Amina records this point in her course notebook so that later chapters can build on it.
+Amina builds a table linking technical tasks to policies, risks and obligations. Laptop encryption links to the data protection policy and the lost device risk. Firewall rule reviews link to the network policy and card payment obligations. Log reviews link to the monitoring policy and account misuse risk. She learns that this table helps technicians prioritise when time is short and explains to managers why technical work deserves resources. When time is short, for instance, the firewall review ranks above a log review because it also carries card payment obligations.
 
 ### Worked example
 
@@ -342,11 +342,11 @@ You will (1) use logs as governance data; (2) count and flag unusual events; (3)
 
 ### 7.1 Logs as data
 
-Systems record events such as sign-ins, changes and errors. Amina learns that logs are governance data: they show whether controls work and whether something unusual happened. Fenwick's cloud services produce sign-in logs with time, result and account. She learns to read them with a script and that keeping logs for a defined period is often required by policy and by payment card rules, so retention must be planned. Ms. Bell asks her to explain the idea aloud to a classmate before moving on. She notes the assumption behind it so that a reviewer can challenge it later.
+Systems record events such as sign-ins, changes and errors. Amina learns that logs are governance data: they show whether controls work and whether something unusual happened. Fenwick's cloud services produce sign-in logs with time, result and account. She learns to read them with a script and that keeping logs for a defined period is often required by policy and by payment card rules, so retention must be planned. Ms. Bell notes that a retention period chosen without checking payment card rules may delete logs that an assessor later asks for.
 
 ### 7.2 Counting failures
 
-The lab reads twelve sign-in log lines and counts failures per account. The admin account has seven failures in a few minutes and is flagged because it exceeds five. j.park has two failures followed by a success, likely a mistyped password. s.ali has one failure. Three accounts had failures in total. Amina notes that repeated failures on an administrator account could indicate someone guessing the password. The same reasoning will return when Fenwick's auditors visit next year. She adds a short note to the shared course wiki for other students.
+The lab reads twelve sign-in log lines and counts failures per account. The admin account has seven failures in a few minutes and is flagged because it exceeds five. j.park has two failures followed by a success, likely a mistyped password. s.ali has one failure. Three accounts had failures in total. Amina notes that repeated failures on an administrator account could indicate someone guessing the password. j.park's success straight after two failures fits a typing error far better than an attack on that account.
 
 ### Lab — Counting failed sign-ins per account
 
@@ -381,7 +381,7 @@ lines 12; accounts with failures 3
 
 ### 7.3 Acting on alerts
 
-Amina reports the admin account alert to the IT lead. They check and find the failures came from an unknown internet address. The account already had multi-factor authentication, so the guesses failed. The IT lead blocks the address and renames the generic admin account. Amina learns that alerts need a response procedure and that context, such as source address and whether other controls held, determines how serious an alert is. This makes the governance consequence visible to people outside the specialist team. Amina keeps a dated copy of her working so that the result can be traced.
+Amina reports the admin account alert to the IT lead. They check and find the failures came from an unknown internet address. The account already had multi-factor authentication, so the guesses failed. The IT lead blocks the address and renames the generic admin account. Amina learns that alerts need a response procedure and that context, such as source address and whether other controls held, determines how serious an alert is. Renaming the generic admin account also makes it a less obvious target for the same guessing.
 
 ### Worked example
 
@@ -418,15 +418,15 @@ You will (1) identify how technical controls fail; (2) plan detection for each f
 
 ### 8.1 How controls fail
 
-Amina learns that controls can fail in many ways. Backups can run but miss files. Updates can be paused and forgotten. Firewall rules can be added and never removed. Accounts can stay active after people leave. Certificates can expire. She writes each as a failure mode: what goes wrong, how it would show and what the impact would be. She learns that thinking about failure in advance makes controls more reliable. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Amina learns that controls can fail in many ways. Backups can run but miss files. Updates can be paused and forgotten. Firewall rules can be added and never removed. Accounts can stay active after people leave. Certificates can expire. She writes each as a failure mode: what goes wrong, how it would show and what the impact would be. She learns that thinking about failure in advance makes controls more reliable. For backups, the failure mode reads: the job runs, misses files and the gap shows only during a restore.
 
 ### 8.2 Detecting failure
 
-For each failure mode, Amina asks how Fenwick would notice. Missed files would show only in restore tests. Paused updates would show in compliance reports. Stale firewall rules would show in rule reviews. Active leaver accounts would show in reconciliation. Expiring certificates would show in expiry checks. She learns that some failures are silent until something breaks, so regular checks must be scheduled to find them before customers or attackers do. She checks the idea against a second example before relying on it. The point seems small, but it changes how owners act on the result.
+For each failure mode, Amina asks how Fenwick would notice. Missed files would show only in restore tests. Paused updates would show in compliance reports. Stale firewall rules would show in rule reviews. Active leaver accounts would show in reconciliation. Expiring certificates would show in expiry checks. She learns that some failures are silent until something breaks, so regular checks must be scheduled to find them before customers or attackers do. Missed backup files, for instance, will stay invisible until a restore test, which is why restore tests appear later in her schedule.
 
 ### 8.3 Register entries
 
-Amina records the main failure modes in Fenwick's risk register with owners and detection checks. For example, the certificate expiry failure mode is owned by the IT lead, with a monthly expiry check. She learns that recording failure modes makes them part of governance, so checks are scheduled and reviewed rather than relying on someone remembering. Fenwick's security manager later asks for a copy of this analysis. She marks the open questions in red so that they are not forgotten. Writing the reasoning down also helps her spot a weak step in her argument.
+Amina records the main failure modes in Fenwick's risk register with owners and detection checks. For example, the certificate expiry failure mode is owned by the IT lead, with a monthly expiry check. She learns that recording failure modes makes them part of governance, so checks are scheduled and reviewed rather than relying on someone remembering. A monthly expiry check owned by the IT lead turns the certificate failure mode into a recurring task instead of a surprise. Linking each failure mode to a named check also tells an assessor which evidence to ask for.
 
 ### Worked example
 
@@ -463,15 +463,15 @@ You will (1) use a simple risk method; (2) apply a control checklist; (3) choose
 
 ### 9.1 Risk method
 
-Fenwick uses a simple method: list risks, rate likelihood and impact from one to five, multiply for a score and treat the highest first. Amina helps rate risks for the online shop. She learns the method is quick but has limits: very different risks can get the same score, and a rare but severe event can look low. She notes these limits and suggests discussing the top risks in more detail rather than relying only on scores. Amina discusses the trade-off with a classmate who works in finance.
+Fenwick uses a simple method: list risks, rate likelihood and impact from one to five, multiply for a score and treat the highest first. Amina helps rate risks for the online shop. She learns the method is quick but has limits: very different risks can get the same score, and a rare but severe event can look low. She notes these limits and suggests discussing the top risks in more detail rather than relying only on scores. A one-in-twenty chance of a payment gateway breach, for example, may score lower than frequent shop slowdowns despite a far worse impact.
 
 ### 9.2 Checklists
 
-Amina uses a control checklist based on the NIST CSF 2.0 small business resources to review Fenwick's basics: inventory, accounts, updates, backups, logging and incident response. Each item is marked in place, partly in place or missing, with evidence. The checklist reveals that incident response is missing a written plan. She learns that checklists help small teams cover essentials without needing deep expertise in every area. The class compares answers and finds that most differences come from unstated assumptions. Amina records this point in her course notebook so that later chapters can build on it.
+Amina uses a control checklist based on the NIST CSF 2.0 small business resources to review Fenwick's basics: inventory, accounts, updates, backups, logging and incident response. Each item is marked in place, partly in place or missing, with evidence. The checklist reveals that incident response is missing a written plan. She learns that checklists help small teams cover essentials without needing deep expertise in every area. The missing incident response plan becomes a register entry with an owner rather than a note on the checklist.
 
 ### 9.3 Choosing tools
 
-Fenwick's small IT team cannot run complex governance software. Amina recommends using tools they already have: the ticketing system for tasks, spreadsheets with validation for the register and short scripts for checks. She learns that the best tool is one the team will actually use and maintain, and that adding software without people to run it often increases risk rather than reducing it. Ms. Bell asks her to explain the idea aloud to a classmate before moving on. She notes the assumption behind it so that a reviewer can challenge it later.
+Fenwick's small IT team cannot run complex governance software. Amina recommends using tools they already have: the ticketing system for tasks, spreadsheets with validation for the register and short scripts for checks. She learns that the best tool is one the team will actually use and maintain, and that adding software without people to run it often increases risk rather than reducing it. Ms. Bell observes that a spreadsheet with validation, kept current by three technicians, gives Fenwick more than an unused governance platform.
 
 ### Worked example
 
@@ -508,15 +508,15 @@ You will (1) configure controls to meet policy; (2) document configuration decis
 
 ### 10.1 Configuring to policy
 
-Amina helps configure controls to match Fenwick's policies. She enables multi-factor authentication for all cloud accounts, sets backup jobs to include the stock database and online shop data, and configures alerts for repeated sign-in failures. For each, she checks the policy requirement and chooses settings that meet it. She learns that configuration is where policy becomes real, and that small setting choices can make a large difference. The same reasoning will return when Fenwick's auditors visit next year. She adds a short note to the shared course wiki for other students.
+Amina helps configure controls to match Fenwick's policies. She enables multi-factor authentication for all cloud accounts, sets backup jobs to include the stock database and online shop data, and configures alerts for repeated sign-in failures. For each, she checks the policy requirement and chooses settings that meet it. She learns that configuration is where policy becomes real, and that small setting choices can make a large difference. Including the stock database in backups, for example, protects the one component that both the shop and the branches depend on.
 
 ### 10.2 Documenting decisions
 
-Some settings involve trade-offs. Amina sets the sign-in alert threshold at five failures within ten minutes. Lower would cause many false alarms from mistyped passwords; higher might miss guessing. She records the decision and reason in the configuration notes. She learns that documenting why a setting was chosen helps future technicians adjust it sensibly rather than guessing or reverting it without understanding. This makes the governance consequence visible to people outside the specialist team. Amina keeps a dated copy of her working so that the result can be traced.
+Some settings involve trade-offs. Amina sets the sign-in alert threshold at five failures within ten minutes. Lower would cause many false alarms from mistyped passwords; higher might miss guessing. She records the decision and reason in the configuration notes. She learns that documenting why a setting was chosen helps future technicians adjust it sensibly rather than guessing or reverting it without understanding. If false alarms later prove frequent, the recorded reason shows exactly which trade-off to revisit. The note sits beside the setting itself, so it is found by whoever next opens the configuration.
 
 ### 10.3 Testing changes
 
-Before changing backup settings, Amina tests restore of the current backup. After the change, she runs a new backup and restores sample files from the stock database. Both tests pass. She records the results. She learns that testing before and after a change shows both that the old state worked and that the change did not break anything, which provides useful evidence of a controlled change. Her lecturer reminds the class that clear reasoning matters more than a polished answer. She checks the idea against a second example before relying on it.
+Before changing backup settings, Amina tests restore of the current backup. After the change, she runs a new backup and restores sample files from the stock database. Both tests pass. She records the results. She learns that testing before and after a change shows both that the old state worked and that the change did not break anything, which provides useful evidence of a controlled change. The before-and-after restore results go into the change record as evidence that the backup change was controlled.
 
 ### Worked example
 
@@ -553,11 +553,11 @@ You will (1) verify firewall rules against an approved list; (2) investigate una
 
 ### 11.1 Approved rules
 
-Fenwick keeps a list of approved firewall rules for its branch network: who may connect to what, on which port. Amina learns that verification compares the actual configuration with the approved list. Differences mean either the list is out of date or the firewall has unapproved rules. PCI DSS v4.0 expects regular review of network security controls, and verification is how that review becomes evidence. The point seems small, but it changes how owners act on the result. Fenwick's security manager later asks for a copy of this analysis.
+Fenwick keeps a list of approved firewall rules for its branch network: who may connect to what, on which port. Amina learns that verification compares the actual configuration with the approved list. Differences mean either the list is out of date or the firewall has unapproved rules. PCI DSS v4.0 expects regular review of network security controls, and verification is how that review becomes evidence. Each difference is then resolved one way or the other: the list is updated with approval, or the rule is removed.
 
 ### 11.2 Finding unapproved rules
 
-The lab compares five firewall rules with three approved ones. Three match. Two are unapproved: one allows remote desktop from anywhere to the payment terminal segment on port 3389, and another allows office computers to reach the payment gateway. Amina treats the first as urgent because it exposes payment systems to the internet. She reports both to the IT lead with the evidence. She marks the open questions in red so that they are not forgotten. Writing the reasoning down also helps her spot a weak step in her argument.
+The lab compares five firewall rules with three approved ones. Three match. Two are unapproved: one allows remote desktop from anywhere to the payment terminal segment on port 3389, and another allows office computers to reach the payment gateway. Amina treats the first as urgent because it exposes payment systems to the internet. She reports both to the IT lead with the evidence. Port 3389 open to the internet on the payment terminal segment is the kind of exposure that PCI DSS segmentation is meant to prevent.
 
 ### Lab — Verifying firewall rules against an approved list
 
@@ -583,7 +583,7 @@ rules 5; unapproved 2
 
 ### 11.3 Investigating and recording
 
-The IT lead finds that a support company added the remote desktop rule for a one-off repair and never removed it. The office rule was added when a manager needed to check payments, which should be done through the gateway's web portal instead. Both rules are removed. Amina records the verification, findings, causes and fixes. She learns that verification finds what change control missed, so both controls are needed. Amina discusses the trade-off with a classmate who works in finance. The class compares answers and finds that most differences come from unstated assumptions.
+The IT lead finds that a support company added the remote desktop rule for a one-off repair and never removed it. The office rule was added when a manager needed to check payments, which should be done through the gateway's web portal instead. Both rules are removed. Amina records the verification, findings, causes and fixes. She learns that verification finds what change control missed, so both controls are needed. The support company's rule also shows why the contract should require temporary rules to be removed after work.
 
 ### Worked example
 
@@ -620,15 +620,15 @@ You will (1) practise a control test in a safe lab; (2) follow a written test pr
 
 ### 12.1 Safe lab
 
-In the contained laboratory, Amina practises on a virtual copy of a Fenwick branch: a till computer, an office computer, a firewall and a file server, all running in isolated virtual machines with synthetic data. Nothing connects to Fenwick's real systems. Ms. Bell explains that labs let students try tests and make mistakes without risking business operations or real customer data. Amina records this point in her course notebook so that later chapters can build on it. Ms. Bell asks her to explain the idea aloud to a classmate before moving on.
+In the contained laboratory, Amina practises on a virtual copy of a Fenwick branch: a till computer, an office computer, a firewall and a file server, all running in isolated virtual machines with synthetic data. Nothing connects to Fenwick's real systems. Ms. Bell explains that labs let students try tests and make mistakes without risking business operations or real customer data. Ms. Bell adds that the lab mirrors a real branch closely enough that procedures tested here can be reused at Fenwick.
 
 ### 12.2 Test procedure
 
-Amina follows a written procedure to test the leaver process: create a test user, mark them as a leaver in the lab's HR list, run the reconciliation script and check that the account is flagged and disabled within the agreed time. She records each step and result. The account is flagged but not disabled because the disable step requires manual approval that nobody gave in the lab scenario. She notes the assumption behind it so that a reviewer can challenge it later. The same reasoning will return when Fenwick's auditors visit next year.
+Amina follows a written procedure to test the leaver process: create a test user, mark them as a leaver in the lab's HR list, run the reconciliation script and check that the account is flagged and disabled within the agreed time. She records each step and result. The account is flagged but not disabled because the disable step requires manual approval that nobody gave in the lab scenario. The missing approval is a property of the process, not of the script, which is why the next section compares expected and actual results.
 
 ### 12.3 Comparing
 
-The expected result was disablement within one day. The actual result was flagged but still active. Amina notes the gap: the process depends on a person approving, and no reminder exists if approval is forgotten. She recommends an escalation if approval is not given within one day. She learns that labs reveal process gaps, not just technical faults, because they test the whole sequence from start to finish. She adds a short note to the shared course wiki for other students. This makes the governance consequence visible to people outside the specialist team.
+The expected result was disablement within one day. The actual result was flagged but still active. Amina notes the gap: the process depends on a person approving, and no reminder exists if approval is forgotten. She recommends an escalation if approval is not given within one day. She learns that labs reveal process gaps, not just technical faults, because they test the whole sequence from start to finish. A one-day escalation would also give the leaver process a measurable target for later checks.
 
 ### Worked example
 
@@ -665,15 +665,15 @@ You will (1) troubleshoot a control that produces wrong results; (2) use evidenc
 
 ### 13.1 The problem
 
-Fenwick's weekly backup report shows success, but a restore test from the online shop data fails. Amina is asked to troubleshoot. She lists hypotheses: the backup job covers the wrong folder, the backup is corrupted, or the restore procedure is wrong. She learns that troubleshooting starts with clear hypotheses and evidence for each, rather than changing settings at random and hoping the problem disappears. Amina keeps a dated copy of her working so that the result can be traced. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Fenwick's weekly backup report shows success, but a restore test from the online shop data fails. Amina is asked to troubleshoot. She lists hypotheses: the backup job covers the wrong folder, the backup is corrupted, or the restore procedure is wrong. She learns that troubleshooting starts with clear hypotheses and evidence for each, rather than changing settings at random and hoping the problem disappears. Each hypothesis points to a different check: the folder list, the backup file integrity or the restore steps.
 
 ### 13.2 Testing hypotheses
 
-Amina checks the backup job's folder list and finds it points to an old location used before the shop platform was upgraded. The new data live elsewhere. The backup reports success because it successfully backs up the old, empty folder. She confirms by restoring the old folder, which works but contains outdated files. She learns that a success message only shows that a job ran, not that it protected the right data. She checks the idea against a second example before relying on it.
+Amina checks the backup job's folder list and finds it points to an old location used before the shop platform was upgraded. The new data live elsewhere. The backup reports success because it successfully backs up the old, empty folder. She confirms by restoring the old folder, which works but contains outdated files. She learns that a success message only shows that a job ran, not that it protected the right data. The reliable success messages had hidden the gap since the shop platform upgrade.
 
 ### 13.3 Fixing the cause
 
-Amina updates the folder path, runs a new backup and restores sample files successfully. She also adds a check to the change procedure: when a system is upgraded, backup coverage must be reviewed. She learns that fixing the immediate problem is not enough; the cause was a change process that did not consider backups, so the process must change too. The point seems small, but it changes how owners act on the result. Fenwick's security manager later asks for a copy of this analysis.
+Amina updates the folder path, runs a new backup and restores sample files successfully. She also adds a check to the change procedure: when a system is upgraded, backup coverage must be reviewed. She learns that fixing the immediate problem is not enough; the cause was a change process that did not consider backups, so the process must change too. The new check would have caught the old folder path when the shop platform was upgraded. Without the procedure change, the next platform upgrade could silently break backups again.
 
 ### Worked example
 
@@ -710,11 +710,11 @@ You will (1) automate a recurring check; (2) set warning and alert levels; (3) e
 
 ### 14.1 Choosing what to automate
 
-Amina looks for recurring checks that are easy to automate and costly to forget. Certificate expiry is a good candidate: an expired certificate can stop the online shop or remote access, and checking dates manually is tedious. She writes a script that reads a list of certificates and their expiry dates and reports how many days remain. She learns that automation is best for simple, repetitive checks with clear rules. She marks the open questions in red so that they are not forgotten. Writing the reasoning down also helps her spot a weak step in her argument.
+Amina looks for recurring checks that are easy to automate and costly to forget. Certificate expiry is a good candidate: an expired certificate can stop the online shop or remote access, and checking dates manually is tedious. She writes a script that reads a list of certificates and their expiry dates and reports how many days remain. She learns that automation is best for simple, repetitive checks with clear rules. A certificate list with expiry dates is a simple input with a clear rule, which makes it a safer first automation than complex log analysis.
 
 ### 14.2 Warning levels
 
-The script warns when thirty days or fewer remain and alerts when a certificate has expired. On the first of October, the lab finds the remote access certificate expired three days earlier, the shop certificate due in nineteen days with a warning, and two others fine at forty-five and one hundred and fifty-one days. The expired certificate explains complaints from staff who could not connect from home over the weekend. Amina discusses the trade-off with a classmate who works in finance. The class compares answers and finds that most differences come from unstated assumptions.
+The script warns when thirty days or fewer remain and alerts when a certificate has expired. On the first of October, the lab finds the remote access certificate expired three days earlier, the shop certificate due in nineteen days with a warning, and two others fine at forty-five and one hundred and fifty-one days. The expired certificate explains complaints from staff who could not connect from home over the weekend. Had the script been running a month earlier, the remote access certificate would have triggered a warning about thirty days before it expired.
 
 ### Lab — Certificate expiry warnings and alerts
 
@@ -741,7 +741,7 @@ mail.fenwick.example: 151 days ok
 
 ### 14.3 Reaching owners
 
-An automated check is useless if nobody reads it. Amina sets the script to run daily and send results to the IT lead and the ticketing system, creating a ticket for any warning or alert. The expired certificate is renewed the same day and the shop certificate within a week. She learns that automation must include delivery to owners and a follow-up path, or it becomes another ignored report. Amina records this point in her course notebook so that later chapters can build on it.
+An automated check is useless if nobody reads it. Amina sets the script to run daily and send results to the IT lead and the ticketing system, creating a ticket for any warning or alert. The expired certificate is renewed the same day and the shop certificate within a week. She learns that automation must include delivery to owners and a follow-up path, or it becomes another ignored report. Creating a ticket for each warning gives every result an owner and a closure record.
 
 ### Worked example
 
@@ -778,15 +778,15 @@ You will (1) identify dependencies on external providers; (2) check provider ass
 
 ### 15.1 Dependencies
 
-Fenwick depends on providers: the online shop platform, the payment gateway, the cloud email service and a support company for branch networks. Amina lists what each provides, what data it handles and what happens if it fails. The shop platform and payment gateway are critical; if either fails, online sales stop. She learns that dependencies on providers are part of Fenwick's risk, even though Fenwick does not run those systems. Ms. Bell asks her to explain the idea aloud to a classmate before moving on.
+Fenwick depends on providers: the online shop platform, the payment gateway, the cloud email service and a support company for branch networks. Amina lists what each provides, what data it handles and what happens if it fails. The shop platform and payment gateway are critical; if either fails, online sales stop. She learns that dependencies on providers are part of Fenwick's risk, even though Fenwick does not run those systems. Ms. Bell asks what happens if the cloud email service fails, and Amina notes that orders and supplier messages would stop although sales would continue.
 
 ### 15.2 Provider assurance
 
-Amina checks what assurance each provider offers. The payment gateway publishes its PCI DSS compliance status. The shop platform provides a SOC 2 report under non-disclosure. The support company has no formal assurance. She records these and recommends that the support company's contract include security requirements, such as removing temporary rules after work. She learns that assurance varies widely and that contracts can fill gaps where formal reports do not exist. She notes the assumption behind it so that a reviewer can challenge it later.
+Amina checks what assurance each provider offers. The payment gateway publishes its PCI DSS compliance status. The shop platform provides a SOC 2 report under non-disclosure. The support company has no formal assurance. She records these and recommends that the support company's contract include security requirements, such as removing temporary rules after work. She learns that assurance varies widely and that contracts can fill gaps where formal reports do not exist. For the support company, a contract clause requiring removal of temporary rules would have prevented the remote desktop exposure she found earlier.
 
 ### 15.3 Planning for failure
 
-For critical providers, Amina helps plan responses to failure. If the shop platform fails, Fenwick will post a notice and take phone orders. If the payment gateway fails, branches can still take cards through terminals with a separate connection. She learns that dependency planning makes outages less damaging and that simple manual fallbacks can keep a business running while providers recover. The same reasoning will return when Fenwick's auditors visit next year. She adds a short note to the shared course wiki for other students.
+For critical providers, Amina helps plan responses to failure. If the shop platform fails, Fenwick will post a notice and take phone orders. If the payment gateway fails, branches can still take cards through terminals with a separate connection. She learns that dependency planning makes outages less damaging and that simple manual fallbacks can keep a business running while providers recover. Each fallback should also be tested, since terminals with a separate connection only help if that connection actually works.
 
 ### Worked example
 
@@ -823,15 +823,15 @@ You will (1) write clear technical procedures; (2) include safety and authorisat
 
 ### 16.1 Clear procedures
 
-Amina writes procedures for tasks she has learned: running the baseline check, verifying firewall rules, checking certificates and testing restores. Each procedure lists the purpose, prerequisites, steps, expected results and what to do if results differ. She writes in short numbered steps with exact commands where needed. She learns that good procedures let another technician perform a task correctly the first time without asking the author. This makes the governance consequence visible to people outside the specialist team. Amina keeps a dated copy of her working so that the result can be traced.
+Amina writes procedures for tasks she has learned: running the baseline check, verifying firewall rules, checking certificates and testing restores. Each procedure lists the purpose, prerequisites, steps, expected results and what to do if results differ. She writes in short numbered steps with exact commands where needed. She learns that good procedures let another technician perform a task correctly the first time without asking the author. Including the expected result lets a technician tell at once whether a firewall verification or restore has gone wrong.
 
 ### 16.2 Safety and authorisation
 
-Each procedure includes safety steps. Before changing a firewall, confirm the change is approved and schedule it outside trading hours. Before restoring data, restore to a test location, not over live data. Before running scripts, confirm they run against the correct system. She learns that technical mistakes can stop branches trading, so safety checks are part of professional practice and protect both the business and the technician. Her lecturer reminds the class that clear reasoning matters more than a polished answer. She checks the idea against a second example before relying on it.
+Each procedure includes safety steps. Before changing a firewall, confirm the change is approved and schedule it outside trading hours. Before restoring data, restore to a test location, not over live data. Before running scripts, confirm they run against the correct system. She learns that technical mistakes can stop branches trading, so safety checks are part of professional practice and protect both the business and the technician. Restoring to a test location first, for example, would prevent outdated files from overwriting current online shop data.
 
 ### 16.3 Keeping current
 
-Amina adds an owner and review date to each procedure and a change log at the end. When the shop platform was upgraded, the backup procedure became wrong, which caused the earlier failure. She recommends reviewing procedures whenever related systems change. She learns that out-of-date procedures can be worse than none, because they give confidence while leading people to do the wrong thing. The point seems small, but it changes how owners act on the result. Fenwick's security manager later asks for a copy of this analysis.
+Amina adds an owner and review date to each procedure and a change log at the end. When the shop platform was upgraded, the backup procedure became wrong, which caused the earlier failure. She recommends reviewing procedures whenever related systems change. She learns that out-of-date procedures can be worse than none, because they give confidence while leading people to do the wrong thing. Her review rule would have flagged the backup procedure as soon as the shop platform upgrade was approved.
 
 ### Worked example
 
@@ -868,15 +868,15 @@ You will (1) run a combined control exercise in a safe lab; (2) respond to an in
 
 ### 17.1 The exercise
 
-In the second laboratory, Amina runs a combined exercise on the virtual branch. She performs a baseline check, verifies firewall rules, checks certificates and reconciles accounts. Midway, Ms. Bell injects a problem: a new firewall rule appears allowing file sharing from the guest Wi-Fi to the file server, and a test account becomes active again. Amina must notice and respond using her procedures. She marks the open questions in red so that they are not forgotten. Writing the reasoning down also helps her spot a weak step in her argument.
+In the second laboratory, Amina runs a combined exercise on the virtual branch. She performs a baseline check, verifies firewall rules, checks certificates and reconciles accounts. Midway, Ms. Bell injects a problem: a new firewall rule appears allowing file sharing from the guest Wi-Fi to the file server, and a test account becomes active again. Amina must notice and respond using her procedures. The injected problems match failure modes from her register: a rule added without approval and an account active after it should be off.
 
 ### 17.2 Responding
 
-The firewall verification flags the new rule as unapproved. The account reconciliation flags the reactivated test account. Amina follows the procedures: she records the findings, reports to the instructor acting as IT lead, recommends removing the rule and disabling the account and waits for approval before acting. Once approved, she makes the changes and re-runs both checks, which now pass. Amina discusses the trade-off with a classmate who works in finance. The class compares answers and finds that most differences come from unstated assumptions.
+The firewall verification flags the new rule as unapproved. The account reconciliation flags the reactivated test account. Amina follows the procedures: she records the findings, reports to the instructor acting as IT lead, recommends removing the rule and disabling the account and waits for approval before acting. Once approved, she makes the changes and re-runs both checks, which now pass. Re-running the checks after the changes produces evidence that the fixes worked, not merely that they were attempted. Waiting for approval before acting keeps her within the authority limits she agreed at the start.
 
 ### 17.3 Incident note
 
-Amina writes a short incident note: what was found, when, how it was detected, what actions were taken, by whom and with what approval, and what should prevent recurrence. She suggests that guest Wi-Fi be blocked from internal systems by default, so a single rule cannot open it. She learns that incident notes create a record for learning and accountability, and that writing them promptly keeps details accurate. Amina records this point in her course notebook so that later chapters can build on it.
+Amina writes a short incident note: what was found, when, how it was detected, what actions were taken, by whom and with what approval, and what should prevent recurrence. She suggests that guest Wi-Fi be blocked from internal systems by default, so a single rule cannot open it. She learns that incident notes create a record for learning and accountability, and that writing them promptly keeps details accurate. Blocking guest Wi-Fi by default would turn a single risky rule into a deliberate exception that needs approval.
 
 ### Worked example
 
@@ -913,15 +913,15 @@ You will (1) deliver a supervised technical GRC project; (2) measure results; (3
 
 ### 18.1 The project
 
-For her supervised project, Amina builds a weekly check pack for Fenwick: the baseline check, firewall verification, certificate expiry check and account reconciliation, run by one script that creates tickets for findings. She agrees scope and success criteria with the IT lead: all four checks running weekly, findings reaching tickets and the IT team able to maintain the pack. She keeps a project log of decisions and problems. Ms. Bell asks her to explain the idea aloud to a classmate before moving on. She notes the assumption behind it so that a reviewer can challenge it later.
+For her supervised project, Amina builds a weekly check pack for Fenwick: the baseline check, firewall verification, certificate expiry check and account reconciliation, run by one script that creates tickets for findings. She agrees scope and success criteria with the IT lead: all four checks running weekly, findings reaching tickets and the IT team able to maintain the pack. She keeps a project log of decisions and problems. Ms. Bell notes that the agreed success criteria will let both of them judge the project objectively at the end.
 
 ### 18.2 Results
 
-After six weeks, all four checks run weekly. They find eleven issues, including two laptops without encryption, one unapproved firewall rule and three leaver accounts. All issues become tickets, and nine are closed within two weeks. The IT lead reports that checks that used to be skipped now happen reliably. Amina reports results honestly, noting two tickets still open because they need a supplier's help. The same reasoning will return when Fenwick's auditors visit next year. She adds a short note to the shared course wiki for other students.
+After six weeks, all four checks run weekly. They find eleven issues, including two laptops without encryption, one unapproved firewall rule and three leaver accounts. All issues become tickets, and nine are closed within two weeks. The IT lead reports that checks that used to be skipped now happen reliably. Amina reports results honestly, noting two tickets still open because they need a supplier's help. Two leaver accounts or one unapproved rule found weekly is evidence the pack catches what manual checks had missed.
 
 ### 18.3 Handover
 
-Amina hands over the script, procedures, test data, a list of known limitations and a short training session for the technicians. One technician adds a new check during training, showing the pack can be extended. Ms. Bell assesses the project as meeting all criteria and praises the honest reporting. Amina reflects that technical GRC work is about reliable routines, clear evidence and careful handover rather than complex tools. This makes the governance consequence visible to people outside the specialist team. Amina keeps a dated copy of her working so that the result can be traced.
+Amina hands over the script, procedures, test data, a list of known limitations and a short training session for the technicians. One technician adds a new check during training, showing the pack can be extended. Ms. Bell assesses the project as meeting all criteria and praises the honest reporting. Amina reflects that technical GRC work is about reliable routines, clear evidence and careful handover rather than complex tools. The technician's new check during training is the strongest sign that the pack will survive her departure.
 
 ### Worked example
 

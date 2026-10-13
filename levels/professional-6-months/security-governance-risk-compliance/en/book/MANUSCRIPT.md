@@ -47,11 +47,11 @@ Lena Hoffmann has worked for six years in compliance at Marston Credit Union, a 
 
 ### 1.2 Applying to Marston
 
-For members' account data, confidentiality and integrity matter most: leaks or wrong balances damage trust and may breach law. For the mobile app, availability matters too, since members expect access at any time. Lena lists threats that matter most: account takeover through stolen passwords, fraud through social engineering of call centre staff, ransomware affecting core banking and errors by suppliers. She learns that understanding the business first lets her judge which controls are proportionate. Lena records this point in her course notebook so that later chapters can build on it.
+For members' account data, confidentiality and integrity matter most: leaks or wrong balances damage trust and may breach law. For the mobile app, availability matters too, since members expect access at any time. Lena lists threats that matter most: account takeover through stolen passwords, fraud through social engineering of call centre staff, ransomware affecting core banking and errors by suppliers. She learns that understanding the business first lets her judge which controls are proportionate. Account takeover through stolen passwords, for instance, points to stronger authentication on the app rather than more call centre training.
 
 ### 1.3 Where governance helps
 
-Lena's compliance background helps her see where governance adds value. Many controls exist, but nobody checks whether they work. Risk decisions are made informally by IT without involving business owners. The board receives long reports with little analysis. She sees her new role as connecting these pieces: clear ownership, risk decisions documented with business input, controls tested and board reports that enable decisions. Mr. Reyes notes that her compliance discipline is a strong foundation for this broader work. Mr. Reyes asks her to explain the idea aloud to a classmate before moving on.
+Lena's compliance background helps her see where governance adds value. Many controls exist, but nobody checks whether they work. Risk decisions are made informally by IT without involving business owners. The board receives long reports with little analysis. She sees her new role as connecting these pieces: clear ownership, risk decisions documented with business input, controls tested and board reports that enable decisions. Mr. Reyes notes that her compliance discipline is a strong foundation for this broader work. Mr. Reyes adds that the informal IT risk decisions are the first gap to close, because every later step depends on business owners taking part.
 
 ### Worked example
 
@@ -89,15 +89,15 @@ You will (1) identify stakeholders in a credit union's security; (2) map their e
 
 ### 2.1 Stakeholders
 
-Lena maps stakeholders: members who trust Marston with savings, the board elected by members, the financial regulator, the deposit insurer, card schemes through PCI DSS v4.0 obligations, auditors and suppliers such as the core banking provider. Each has expectations about security. Members expect their money and data to be safe. The regulator expects sound risk management and timely incident reporting. Card schemes expect cardholder data protection. She learns that GRC serves many audiences at once. She notes the assumption behind it so that a reviewer can challenge it later.
+Lena maps stakeholders: members who trust Marston with savings, the board elected by members, the financial regulator, the deposit insurer, card schemes through PCI DSS v4.0 obligations, auditors and suppliers such as the core banking provider. Each has expectations about security. Members expect their money and data to be safe. The regulator expects sound risk management and timely incident reporting. Card schemes expect cardholder data protection. She learns that GRC serves many audiences at once. The deposit insurer and the card schemes, for example, will ask for different evidence about the same controls.
 
 ### 2.2 Expectations
 
-Lena lists each stakeholder's expectations, how they are expressed and how Marston shows it meets them. The regulator's expectations come through rules and supervisory visits; Marston shows compliance through policies, risk reports and audit results. The board's expectations come through risk appetite; Marston shows performance through reports. She learns that mapping expectations to evidence reveals where Marston has no clear way to show it meets an expectation. The same reasoning will return when Marston's auditors visit next year. She adds a short note to the shared course wiki for other students.
+Lena lists each stakeholder's expectations, how they are expressed and how Marston shows it meets them. The regulator's expectations come through rules and supervisory visits; Marston shows compliance through policies, risk reports and audit results. The board's expectations come through risk appetite; Marston shows performance through reports. She learns that mapping expectations to evidence reveals where Marston has no clear way to show it meets an expectation. For member expectations, for instance, Marston has no report at all showing that their data are safe, which becomes an early gap to close.
 
 ### 2.3 Programme purpose
 
-With this context, Lena drafts a purpose statement for Marston's GRC programme: to keep security risk within the board's appetite, meet legal and contractual obligations and give members, the board and regulators reliable evidence that their trust is justified. Mr. Reyes asks how she would know if the programme succeeded. She adds measurable outcomes, such as top risks within appetite, no overdue high findings and clean regulatory reviews. This makes the governance consequence visible to people outside the specialist team. Lena keeps a dated copy of her working so that the result can be traced.
+With this context, Lena drafts a purpose statement for Marston's GRC programme: to keep security risk within the board's appetite, meet legal and contractual obligations and give members, the board and regulators reliable evidence that their trust is justified. Mr. Reyes asks how she would know if the programme succeeded. She adds measurable outcomes, such as top risks within appetite, no overdue high findings and clean regulatory reviews. Each outcome can be checked quarterly, so the purpose statement becomes something the board can hold the programme to.
 
 ### Worked example
 
@@ -135,15 +135,15 @@ You will (1) work within authority and confidentiality limits; (2) handle eviden
 
 ### 3.1 Authority
 
-In her new role, Lena can request evidence from any department, but she cannot change systems or approve exceptions herself. She learns to confirm her authority before acting, especially when asked to look at member data. Marston's internal policy allows GRC staff to access member data only when needed for a specific review, with approval and logging. She learns that respecting these limits protects members and keeps her work defensible. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+In her new role, Lena can request evidence from any department, but she cannot change systems or approve exceptions herself. She learns to confirm her authority before acting, especially when asked to look at member data. Marston's internal policy allows GRC staff to access member data only when needed for a specific review, with approval and logging. She learns that respecting these limits protects members and keeps her work defensible. When a review needs member data, she now files the approval reference with her evidence so the access can be justified afterwards.
 
 ### 3.2 Evidence handling
 
-Lena collects evidence such as access review sign-offs, system reports and test results. She stores it in a restricted folder, names files consistently with date and source, and records where each item came from. She removes member details that are not needed. She learns that evidence must be complete enough to support conclusions, protected from alteration and handled according to its sensitivity, especially when it contains personal or financial information. She checks the idea against a second example before relying on it. The point seems small, but it changes how owners act on the result.
+Lena collects evidence such as access review sign-offs, system reports and test results. She stores it in a restricted folder, names files consistently with date and source, and records where each item came from. She removes member details that are not needed. She learns that evidence must be complete enough to support conclusions, protected from alteration and handled according to its sensitivity, especially when it contains personal or financial information. For an access review sign-off, she records the system it came from and the date it was exported, so another reviewer could obtain the same file.
 
 ### 3.3 Conflicts
 
-Lena previously wrote Marston's data protection procedures. Now she is asked to assess whether they work. Mr. Reyes points out the conflict: she may be inclined to see her own work favourably. She discloses the conflict and asks a colleague to review that area. She learns that in assurance work, independence matters, and that disclosing and managing conflicts is better than pretending they do not exist. Marston's security manager later asks for a copy of this analysis. She marks the open questions in red so that they are not forgotten.
+Lena previously wrote Marston's data protection procedures. Now she is asked to assess whether they work. Mr. Reyes points out the conflict: she may be inclined to see her own work favourably. She discloses the conflict and asks a colleague to review that area. She learns that in assurance work, independence matters, and that disclosing and managing conflicts is better than pretending they do not exist. The colleague's review of the data protection procedures is then reported under the colleague's name, not Lena's.
 
 ### Worked example
 
@@ -181,15 +181,15 @@ You will (1) run a risk assessment using an established process; (2) link risks 
 
 ### 4.1 The process
 
-Lena learns the risk process described in ISO 31000:2018 and applied to information security in ISO/IEC 27005:2022: establish context, identify risks, analyse and evaluate them, treat them, and monitor and review. She runs an assessment for Marston's mobile banking app with the product owner, IT security and fraud teams. They identify risks such as account takeover, fraudulent payments to new payees and app outages, each described with causes and consequences. Writing the reasoning down also helps her spot a weak step in her argument. Lena discusses the trade-off with a classmate who works in finance.
+Lena learns the risk process described in ISO 31000:2018 and applied to information security in ISO/IEC 27005:2022: establish context, identify risks, analyse and evaluate them, treat them, and monitor and review. She runs an assessment for Marston's mobile banking app with the product owner, IT security and fraud teams. They identify risks such as account takeover, fraudulent payments to new payees and app outages, each described with causes and consequences. Writing each risk as a cause leading to a consequence, such as stolen passwords leading to fraudulent payments to new payees, makes treatments easier to target.
 
 ### 4.2 Appetite
 
-Marston's board has stated a low appetite for member financial loss from fraud and a moderate appetite for short service outages. Lena compares each risk with appetite. Account takeover leading to member losses is above appetite and must be treated. Short app outages fall within appetite if recovered within four hours. She learns that appetite turns analysis into decisions: it tells the organisation which risks need action and which can be accepted. The class compares answers and finds that most differences come from unstated assumptions.
+Marston's board has stated a low appetite for member financial loss from fraud and a moderate appetite for short service outages. Lena compares each risk with appetite. Account takeover leading to member losses is above appetite and must be treated. Short app outages fall within appetite if recovered within four hours. She learns that appetite turns analysis into decisions: it tells the organisation which risks need action and which can be accepted. Because the four-hour recovery is the threshold, Marston must also be able to show that it actually recovers within four hours.
 
 ### 4.3 Treatment decisions
 
-For account takeover, the team chooses stronger authentication for new payees and transaction monitoring. The product owner agrees to own the treatment with a target date. For outages, the team accepts the current recovery capability and documents the acceptance. Lena records each decision with its owner, date and reasons. She learns that recorded decisions show regulators and auditors that risks were considered and managed deliberately. Lena records this point in her course notebook so that later chapters can build on it. Mr. Reyes asks her to explain the idea aloud to a classmate before moving on.
+For account takeover, the team chooses stronger authentication for new payees and transaction monitoring. The product owner agrees to own the treatment with a target date. For outages, the team accepts the current recovery capability and documents the acceptance. Lena records each decision with its owner, date and reasons. She learns that recorded decisions show regulators and auditors that risks were considered and managed deliberately. Mr. Reyes notes that the documented outage acceptance should name the product owner and be revisited if outages begin to exceed four hours.
 
 ### Worked example
 
@@ -227,11 +227,11 @@ You will (1) use control self-assessment results; (2) compare them with independ
 
 ### 5.1 Self-assessment
 
-Marston asks control owners to rate their controls each quarter from zero, not in place, to four, fully effective and evidenced. Lena learns that self-assessment is cheap and engages owners, but tends to be optimistic. To test this, she compares owners' ratings with an independent review by internal audit for four control domains: access management, change management, backups and vendor management. Both used the same rating scale and definitions. She notes the assumption behind it so that a reviewer can challenge it later. The same reasoning will return when Marston's auditors visit next year.
+Marston asks control owners to rate their controls each quarter from zero, not in place, to four, fully effective and evidenced. Lena learns that self-assessment is cheap and engages owners, but tends to be optimistic. To test this, she compares owners' ratings with an independent review by internal audit for four control domains: access management, change management, backups and vendor management. Both used the same rating scale and definitions. Using identical definitions means any gap between the two sets of ratings reflects judgement, not different scales.
 
 ### 5.2 The comparison
 
-The lab computes average ratings. Access management self-rates at three point two five against two point five from review, a gap of three quarters of a point. Change management self-rates two point six seven against one point six seven, a gap of one. Backups self-rate four against three point five. Vendor management self-rates two point six seven against one point three three, the largest gap at one point three three. Every domain rates itself higher than the review. She adds a short note to the shared course wiki for other students.
+The lab computes average ratings. Access management self-rates at three point two five against two point five from review, a gap of three quarters of a point. Change management self-rates two point six seven against one point six seven, a gap of one. Backups self-rate four against three point five. Vendor management self-rates two point six seven against one point three three, the largest gap at one point three three. Every domain rates itself higher than the review. The pattern is consistent, but the size of each gap is what directs Lena's attention in the next section.
 
 ### Lab — Self-assessment versus independent review
 
@@ -255,7 +255,7 @@ vendor: self 2.67 review 1.33 gap +1.33
 
 ### 5.3 Interpreting
 
-Lena does not conclude that owners are dishonest. She asks why gaps differ. Vendor management owners rated controls as working because contracts include security clauses, while reviewers found that nobody checks supplier compliance. Backups have the smallest gap because restore tests produce clear evidence. She recommends tightening rating definitions to require evidence and focusing independent review on domains with the largest gaps, starting with vendor management. This makes the governance consequence visible to people outside the specialist team. Lena keeps a dated copy of her working so that the result can be traced.
+Lena does not conclude that owners are dishonest. She asks why gaps differ. Vendor management owners rated controls as working because contracts include security clauses, while reviewers found that nobody checks supplier compliance. Backups have the smallest gap because restore tests produce clear evidence. She recommends tightening rating definitions to require evidence and focusing independent review on domains with the largest gaps, starting with vendor management. Requiring evidence for a rating of four would, for example, stop vendor management claiming effectiveness from contract clauses alone.
 
 ### Worked example
 
@@ -293,15 +293,15 @@ You will (1) design a GRC workflow for findings; (2) set severity-based targets;
 
 ### 6.1 Findings workflow
 
-Lena designs a workflow for audit and review findings. Each finding is logged with a description, severity, owner, agreed action and target date. Owners update progress monthly. When an owner claims completion, Lena checks evidence before closing. Overdue findings escalate to the owner's executive. She learns that a clear workflow makes accountability visible and prevents findings from being forgotten after the audit report is filed. Her lecturer reminds the class that clear reasoning matters more than a polished answer. She checks the idea against a second example before relying on it.
+Lena designs a workflow for audit and review findings. Each finding is logged with a description, severity, owner, agreed action and target date. Owners update progress monthly. When an owner claims completion, Lena checks evidence before closing. Overdue findings escalate to the owner's executive. She learns that a clear workflow makes accountability visible and prevents findings from being forgotten after the audit report is filed. Checking evidence before closure prevents a finding being marked done when only a plan exists.
 
 ### 6.2 Severity targets
 
-Lena proposes targets by severity: high findings closed within thirty days, medium within ninety and low within one hundred and eighty. She explains that targets must be realistic; a high finding needing a system replacement may need an agreed interim measure and a longer plan. She learns that target dates without realistic plans encourage false closure, while plans with interim measures keep risk managed while longer fixes proceed. The point seems small, but it changes how owners act on the result. Marston's security manager later asks for a copy of this analysis.
+Lena proposes targets by severity: high findings closed within thirty days, medium within ninety and low within one hundred and eighty. She explains that targets must be realistic; a high finding needing a system replacement may need an agreed interim measure and a longer plan. She learns that target dates without realistic plans encourage false closure, while plans with interim measures keep risk managed while longer fixes proceed. A high finding needing a system replacement could, for example, be held within target by an interim restriction while the replacement is planned.
 
 ### 6.3 Reporting
 
-Lena reports to the executive risk committee monthly: open findings by severity, overdue findings with owners and reasons, and findings closed with evidence. She leads with overdue high findings. The committee asks owners of overdue items to explain delays. She learns that reporting works when it is short, consistent and leads to action at the right level, rather than simply informing people that problems exist. She marks the open questions in red so that they are not forgotten. Writing the reasoning down also helps her spot a weak step in her argument.
+Lena reports to the executive risk committee monthly: open findings by severity, overdue findings with owners and reasons, and findings closed with evidence. She leads with overdue high findings. The committee asks owners of overdue items to explain delays. She learns that reporting works when it is short, consistent and leads to action at the right level, rather than simply informing people that problems exist. Leading with overdue high findings means the committee's limited time goes to the items most likely to need executive help.
 
 ### Worked example
 
@@ -339,7 +339,7 @@ You will (1) choose sample sizes for control testing; (2) test a control's opera
 
 ### 7.1 Sample sizes
 
-Lena needs to test whether Marston's new-payee authentication works for every payment. Testing all payments is impractical, so she samples. The lab computes the smallest sample with no deviations that supports each tolerable deviation rate with ninety-five percent confidence. For ten percent, twenty-nine items suffice; for five percent, fifty-nine; for three percent, ninety-nine. She learns that tighter conclusions require larger samples, and that the tolerable rate should reflect the control's importance. Lena discusses the trade-off with a classmate who works in finance. The class compares answers and finds that most differences come from unstated assumptions.
+Lena needs to test whether Marston's new-payee authentication works for every payment. Testing all payments is impractical, so she samples. The lab computes the smallest sample with no deviations that supports each tolerable deviation rate with ninety-five percent confidence. For ten percent, twenty-nine items suffice; for five percent, fifty-nine; for three percent, ninety-nine. She learns that tighter conclusions require larger samples, and that the tolerable rate should reflect the control's importance. Fifty-nine is the size she will use for new-payee authentication in the next section.
 
 ### Lab — Zero-deviation sample sizes for three tolerable rates
 
@@ -360,11 +360,11 @@ tolerable 3%: sample 99 with no deviations
 
 ### 7.2 Testing
 
-Because new-payee authentication protects member funds, Lena chooses a five percent tolerable rate and samples fifty-nine new-payee payments at random from the quarter. For each, she checks the authentication log shows a successful second factor before the payment. All fifty-nine show it. She records the sample method, the selected items, the checks and the results so another person could repeat the test. Lena records this point in her course notebook so that later chapters can build on it. Mr. Reyes asks her to explain the idea aloud to a classmate before moving on.
+Because new-payee authentication protects member funds, Lena chooses a five percent tolerable rate and samples fifty-nine new-payee payments at random from the quarter. For each, she checks the authentication log shows a successful second factor before the payment. All fifty-nine show it. She records the sample method, the selected items, the checks and the results so another person could repeat the test. Mr. Reyes points out that random selection across the whole quarter matters, because a sample from one week could miss a period when the control failed.
 
 ### 7.3 Conclusions
 
-Lena concludes that, with ninety-five percent confidence, the control failed in no more than five percent of new-payee payments during the quarter. She notes limits: the test covers the app channel only, not branch payments, and checks that authentication happened, not that it was resistant to all attacks. She learns that clear conclusions with stated limits are more valuable than broad claims that the control works. She notes the assumption behind it so that a reviewer can challenge it later. The same reasoning will return when Marston's auditors visit next year.
+Lena concludes that, with ninety-five percent confidence, the control failed in no more than five percent of new-payee payments during the quarter. She notes limits: the test covers the app channel only, not branch payments, and checks that authentication happened, not that it was resistant to all attacks. She learns that clear conclusions with stated limits are more valuable than broad claims that the control works. Branch payments would need a separate sample before any statement about all new-payee payments could be made.
 
 ### Worked example
 
@@ -402,15 +402,15 @@ You will (1) analyse a governance case under supervision; (2) identify control a
 
 ### 8.1 The case
 
-Mr. Reyes gives Lena a synthetic case from a peer credit union. A supplier managing the card platform was breached, exposing some member card data. The credit union had a contract with security clauses and received an annual certificate, but nobody reviewed the supplier's assurance report, which noted exceptions in access management. After the breach, the regulator asked why the exceptions were not followed up. She adds a short note to the shared course wiki for other students. This makes the governance consequence visible to people outside the specialist team.
+Mr. Reyes gives Lena a synthetic case from a peer credit union. A supplier managing the card platform was breached, exposing some member card data. The credit union had a contract with security clauses and received an annual certificate, but nobody reviewed the supplier's assurance report, which noted exceptions in access management. After the breach, the regulator asked why the exceptions were not followed up. The unread exceptions in access management are exactly the kind of warning that a review of the assurance report would have caught.
 
 ### 8.2 Analysis
 
-Lena identifies failures at several levels. At control level, supplier access management had known weaknesses. At process level, assurance reports were received but not read. At governance level, nobody owned supplier risk, and the board never saw supplier risk reported. She notes that this pattern mirrors Marston's own vendor management gap found in self-assessment. She learns that cases are most valuable when they reveal patterns relevant to one's own organisation. Lena keeps a dated copy of her working so that the result can be traced.
+Lena identifies failures at several levels. At control level, supplier access management had known weaknesses. At process level, assurance reports were received but not read. At governance level, nobody owned supplier risk, and the board never saw supplier risk reported. She notes that this pattern mirrors Marston's own vendor management gap found in self-assessment. She learns that cases are most valuable when they reveal patterns relevant to one's own organisation. Marston's largest self-assessment gap, vendor management at one point three three, therefore becomes the focus of her recommendations.
 
 ### 8.3 Recommendations
 
-Lena recommends that Marston assign an owner for supplier risk, review assurance reports for critical suppliers with a checklist that highlights exceptions, track exceptions as findings and report supplier risk to the board twice a year. She keeps the recommendations proportionate to Marston's size. Mr. Reyes asks how she would measure success; she proposes tracking the share of critical suppliers with reviewed reports and the time to follow up exceptions. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Lena recommends that Marston assign an owner for supplier risk, review assurance reports for critical suppliers with a checklist that highlights exceptions, track exceptions as findings and report supplier risk to the board twice a year. She keeps the recommendations proportionate to Marston's size. Mr. Reyes asks how she would measure success; she proposes tracking the share of critical suppliers with reviewed reports and the time to follow up exceptions. Both measures can be reported in the twice-yearly supplier risk update to the board.
 
 ### Worked example
 
@@ -448,15 +448,15 @@ You will (1) write governance reports for executives and boards; (2) communicate
 
 ### 9.1 Board reporting
 
-Lena drafts Marston's quarterly security report to the board. It opens with decisions needed, then top risks against appetite, significant findings and their status, incidents and lessons, and supplier risk. It uses plain language and keeps to four pages. Each risk shows a trend and an owner. She learns that board reports should support oversight: directors need to know what is going wrong and what they are being asked to decide. She checks the idea against a second example before relying on it. The point seems small, but it changes how owners act on the result.
+Lena drafts Marston's quarterly security report to the board. It opens with decisions needed, then top risks against appetite, significant findings and their status, incidents and lessons, and supplier risk. It uses plain language and keeps to four pages. Each risk shows a trend and an owner. She learns that board reports should support oversight: directors need to know what is going wrong and what they are being asked to decide. A director who reads only the first page should still know which decisions are being asked of the board.
 
 ### 9.2 Bad news
 
-The report must include the vendor management weakness. An executive suggests describing it as an improvement opportunity rather than a weakness. Lena explains that the board needs an accurate picture, and that softening language could mislead directors who have legal duties of oversight. She agrees to present the issue together with the remediation plan and progress. She learns that honest framing with a plan maintains trust better than euphemism. Marston's security manager later asks for a copy of this analysis. She marks the open questions in red so that they are not forgotten.
+The report must include the vendor management weakness. An executive suggests describing it as an improvement opportunity rather than a weakness. Lena explains that the board needs an accurate picture, and that softening language could mislead directors who have legal duties of oversight. She agrees to present the issue together with the remediation plan and progress. She learns that honest framing with a plan maintains trust better than euphemism. Presenting the vendor management weakness with its remediation plan lets the board judge progress rather than only learn of a problem.
 
 ### 9.3 Ethics
 
-Later, a manager asks Lena to delay logging a finding until after the regulator's visit. She declines, explaining that the finding must be recorded when identified and that delaying it would mislead the regulator. She offers to help the manager prepare a remediation plan to present alongside it. She learns that professional ethics in GRC often means resisting small pressures to shape the record, and that offering help makes refusal easier to accept. Writing the reasoning down also helps her spot a weak step in her argument.
+Later, a manager asks Lena to delay logging a finding until after the regulator's visit. She declines, explaining that the finding must be recorded when identified and that delaying it would mislead the regulator. She offers to help the manager prepare a remediation plan to present alongside it. She learns that professional ethics in GRC often means resisting small pressures to shape the record, and that offering help makes refusal easier to accept. Logging the finding when identified also protects the manager, since a later discovery of the delay would damage trust with the regulator.
 
 ### Worked example
 
@@ -494,7 +494,7 @@ You will (1) measure the quality of the findings process; (2) identify ageing pr
 
 ### 10.1 Ageing
 
-Lena checks how long open findings have been outstanding against their severity targets. The lab examines eight open findings. Of three high findings, two are past the thirty-day target, at forty-eight and ninety-five days. Of three medium findings, one is past ninety days at one hundred and thirty. Of two low findings, one is past one hundred and eighty days at two hundred. Four of eight findings are overdue, half of all open items. Lena discusses the trade-off with a classmate who works in finance.
+Lena checks how long open findings have been outstanding against their severity targets. The lab examines eight open findings. Of three high findings, two are past the thirty-day target, at forty-eight and ninety-five days. Of three medium findings, one is past ninety days at one hundred and thirty. Of two low findings, one is past one hundred and eighty days at two hundred. Four of eight findings are overdue, half of all open items. Ageing alone does not explain why these four stalled, which is why she turns to the owners next.
 
 ### Lab — Ageing of open findings by severity
 
@@ -519,11 +519,11 @@ total open 8; overdue 4
 
 ### 10.2 Why findings stall
 
-Lena interviews owners of the four overdue findings. The ninety-five-day high finding needs a supplier change the supplier has not prioritised. The forty-eight-day high finding has a fix ready but waiting for a change window. The medium finding's owner left Marston and nobody took it over. The low finding was considered unimportant and forgotten. She learns that ageing data show where to look, but conversations reveal causes, which differ for each finding. The class compares answers and finds that most differences come from unstated assumptions.
+Lena interviews owners of the four overdue findings. The ninety-five-day high finding needs a supplier change the supplier has not prioritised. The forty-eight-day high finding has a fix ready but waiting for a change window. The medium finding's owner left Marston and nobody took it over. The low finding was considered unimportant and forgotten. She learns that ageing data show where to look, but conversations reveal causes, which differ for each finding. The orphaned medium finding, for example, needs a process fix, while the supplier issue needs contractual pressure.
 
 ### 10.3 Fixes
 
-Lena proposes specific fixes: escalate the supplier issue through contract management, schedule an extra change window for the ready fix, reassign orphaned findings automatically when owners leave and review low findings quarterly so they are either fixed or formally accepted. She also suggests adding the reason for delay to each overdue finding in the committee report. She learns that improving process quality means addressing distinct causes rather than applying one general push. Lena records this point in her course notebook so that later chapters can build on it.
+Lena proposes specific fixes: escalate the supplier issue through contract management, schedule an extra change window for the ready fix, reassign orphaned findings automatically when owners leave and review low findings quarterly so they are either fixed or formally accepted. She also suggests adding the reason for delay to each overdue finding in the committee report. She learns that improving process quality means addressing distinct causes rather than applying one general push. The added delay reasons also let the committee see whether the same cause keeps recurring.
 
 ### Worked example
 
@@ -561,15 +561,15 @@ You will (1) carry out a supervised assurance review of a synthetic supplier; (2
 
 ### 11.1 The task
 
-In the supervised laboratory, Lena reviews a synthetic SOC 2 type two report from a fictional card processing supplier. Mr. Reyes asks her to determine whether the report covers the services Marston uses, whether the period is current, what exceptions were noted and which complementary controls Marston must operate itself. She uses a checklist based on the AICPA trust services criteria categories, without treating the synthetic report as a real attestation. Mr. Reyes asks her to explain the idea aloud to a classmate before moving on.
+In the supervised laboratory, Lena reviews a synthetic SOC 2 type two report from a fictional card processing supplier. Mr. Reyes asks her to determine whether the report covers the services Marston uses, whether the period is current, what exceptions were noted and which complementary controls Marston must operate itself. She uses a checklist based on the AICPA trust services criteria categories, without treating the synthetic report as a real attestation. Mr. Reyes adds that each of these questions changes how much Marston can rely on the report, so none can be skipped.
 
 ### 11.2 Reading critically
 
-Lena finds the report covers the card processing service but excludes the fraud monitoring module Marston also uses. The period ended nine months ago. Two exceptions appear: delayed removal of leavers' access and one missed quarterly vulnerability scan. The report lists complementary user entity controls, including that Marston must review its own users' access to the supplier's portal. She notes that Marston has never done this review. She notes the assumption behind it so that a reviewer can challenge it later. The same reasoning will return when Marston's auditors visit next year.
+Lena finds the report covers the card processing service but excludes the fraud monitoring module Marston also uses. The period ended nine months ago. Two exceptions appear: delayed removal of leavers' access and one missed quarterly vulnerability scan. The report lists complementary user entity controls, including that Marston must review its own users' access to the supplier's portal. She notes that Marston has never done this review. That missing portal review is a complementary user entity control, so the gap sits with Marston rather than with the supplier.
 
 ### 11.3 Findings
 
-Lena records findings: the fraud module is outside the report's scope, so separate assurance is needed; the period is ageing, so a bridge letter should be requested; the two exceptions need follow-up with the supplier; and Marston must start reviewing its own portal users. Mr. Reyes confirms her analysis and notes that complementary controls are often missed because organisations assume the supplier handles everything. She adds a short note to the shared course wiki for other students. This makes the governance consequence visible to people outside the specialist team.
+Lena records findings: the fraud module is outside the report's scope, so separate assurance is needed; the period is ageing, so a bridge letter should be requested; the two exceptions need follow-up with the supplier; and Marston must start reviewing its own portal users. Mr. Reyes confirms her analysis and notes that complementary controls are often missed because organisations assume the supplier handles everything. Each of these four items is then logged in her findings workflow with an owner, a severity and a target date.
 
 ### Worked example
 
@@ -607,15 +607,15 @@ You will (1) assemble a practice portfolio; (2) reflect on competence gained; (3
 
 ### 12.1 Portfolio
 
-Lena assembles her portfolio: the stakeholder map and purpose statement, the mobile app risk assessment, the self-assessment comparison, the findings workflow and ageing analysis, the sampled control test, the board report and the supplier report review. For each she writes a short note on what she did, what evidence supports it and what she learned. She removes any real member or staff data, keeping only synthetic or anonymised material. Lena keeps a dated copy of her working so that the result can be traced.
+Lena assembles her portfolio: the stakeholder map and purpose statement, the mobile app risk assessment, the self-assessment comparison, the findings workflow and ageing analysis, the sampled control test, the board report and the supplier report review. For each she writes a short note on what she did, what evidence supports it and what she learned. She removes any real member or staff data, keeping only synthetic or anonymised material. Each note links an artefact to the chapter in which it was produced, so assessors can trace her reasoning.
 
 ### 12.2 Final review
 
-Mr. Reyes and a second assessor review the portfolio. They ask how she would handle a regulator questioning her sample size; she explains the tolerable rate and confidence and offers to extend the sample if needed. They ask what she found hardest; she says resisting pressure to soften reports while keeping good relationships. They judge her competent and note her strength in linking evidence to conclusions. Her lecturer reminds the class that clear reasoning matters more than a polished answer. She checks the idea against a second example before relying on it.
+Mr. Reyes and a second assessor review the portfolio. They ask how she would handle a regulator questioning her sample size; she explains the tolerable rate and confidence and offers to extend the sample if needed. They ask what she found hardest; she says resisting pressure to soften reports while keeping good relationships. They judge her competent and note her strength in linking evidence to conclusions. The sample-size question shows why she recorded the tolerable rate and confidence when she ran the test in chapter 7.
 
 ### 12.3 Next steps
 
-Lena plans her next steps: take on supplier risk ownership at Marston, deepen her knowledge of ISO/IEC 27001:2022 to support a possible certification and mentor a junior colleague in evidence handling. She commits to reviewing her methods yearly as standards and threats change. Mr. Reyes reminds her that GRC practice depends on judgement, honesty and steady follow-through as much as on frameworks. The point seems small, but it changes how owners act on the result. Marston's security manager later asks for a copy of this analysis.
+Lena plans her next steps: take on supplier risk ownership at Marston, deepen her knowledge of ISO/IEC 27001:2022 to support a possible certification and mentor a junior colleague in evidence handling. She commits to reviewing her methods yearly as standards and threats change. Mr. Reyes reminds her that GRC practice depends on judgement, honesty and steady follow-through as much as on frameworks. Taking on supplier risk ownership also closes the governance gap she identified in the peer credit union case.
 
 ### Worked example
 

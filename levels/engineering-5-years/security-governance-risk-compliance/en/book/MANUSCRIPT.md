@@ -508,15 +508,15 @@ You will (1) map network zones to governance scope; (2) assess remote access pat
 
 ### 11.1 Zones and boundaries
 
-Nadia maps Ardwell's network into zones: the corporate office network, the customer payment environment, the control-system network and a zone for vendor remote access. Each boundary between zones is a place where traffic can be controlled and logged. Governance needs this map because scope decisions depend on it. For example, PCI DSS v4.0 applies to the cardholder data environment and connected systems, so good segmentation keeps the payment zone small and reduces the number of systems subject to its requirements. Nadia records this point in her course notebook so that later chapters can build on it.
+Nadia maps Ardwell's network into zones: the corporate office network, the customer payment environment, the control-system network and a zone for vendor remote access. Each boundary between zones is a place where traffic can be controlled and logged. Governance needs this map because scope decisions depend on it. For example, PCI DSS v4.0 applies to the cardholder data environment and connected systems, so good segmentation keeps the payment zone small and reduces the number of systems subject to its requirements. A vendor remote access zone with its own boundary also lets Ardwell log every vendor session at a single point.
 
 ### 11.2 Remote access paths
 
-Vendors maintain control-system equipment over remote connections. Nadia traces each path: from the vendor's site through the internet to Ardwell's remote access gateway, then to a jump host and finally to the equipment. She notes which hops require multi-factor authentication, which are logged and who approves each session. One vendor uses a direct connection that bypasses the jump host. She records it as a finding, because a path without logging or approval breaks the governance assumptions behind the control design. Prof. Brenner asks her to explain the idea aloud to a classmate before moving on.
+Vendors maintain control-system equipment over remote connections. Nadia traces each path: from the vendor's site through the internet to Ardwell's remote access gateway, then to a jump host and finally to the equipment. She notes which hops require multi-factor authentication, which are logged and who approves each session. One vendor uses a direct connection that bypasses the jump host. She records it as a finding, because a path without logging or approval breaks the governance assumptions behind the control design. Prof. Brenner asks what evidence the direct connection leaves behind, and Nadia finds none, which is why it cannot be audited at all.
 
 ### 11.3 Segmentation evidence
 
-Claiming segmentation is not enough; it must be demonstrated. Nadia learns that assessors expect evidence such as firewall rule reviews and tests showing that traffic cannot cross boundaries it should not. She writes a test plan to verify that the corporate network cannot reach the control-system network directly. She also notes that segmentation must be retested after changes, because one new firewall rule can quietly connect zones. The test plan becomes evidence for both internal governance and external assessments. Nadia records this point in her course notebook so that later chapters can build on it.
+Claiming segmentation is not enough; it must be demonstrated. Nadia learns that assessors expect evidence such as firewall rule reviews and tests showing that traffic cannot cross boundaries it should not. She writes a test plan to verify that the corporate network cannot reach the control-system network directly. She also notes that segmentation must be retested after changes, because one new firewall rule can quietly connect zones. The test plan becomes evidence for both internal governance and external assessments. Running the test after every firewall change ties segmentation evidence to change management rather than to an annual calendar.
 
 ### Worked example
 
@@ -552,15 +552,15 @@ You will (1) relate operating system mechanisms to control objectives; (2) defin
 
 ### 12.1 Mechanisms and objectives
 
-Nadia studies how operating systems manage users, permissions, processes and logs. She links each mechanism to a control objective. User accounts and permissions support least privilege. Audit logs support accountability and investigation. Update mechanisms support vulnerability management. Understanding the mechanism helps her judge whether a control claim is credible. A policy saying administrators are restricted means little unless the operating system actually enforces separate administrator accounts and records their use in logs that ordinary users cannot change. Prof. Brenner asks her to explain the idea aloud to a classmate before moving on.
+Nadia studies how operating systems manage users, permissions, processes and logs. She links each mechanism to a control objective. User accounts and permissions support least privilege. Audit logs support accountability and investigation. Update mechanisms support vulnerability management. Understanding the mechanism helps her judge whether a control claim is credible. A policy saying administrators are restricted means little unless the operating system actually enforces separate administrator accounts and records their use in logs that ordinary users cannot change. Prof. Brenner suggests checking whether ordinary users can clear the security log, since that single setting decides whether the accountability claim holds.
 
 ### 12.2 Configuration baselines
 
-Ardwell needs a secure configuration baseline for its office computers and servers: which services are disabled, which settings are enforced and how updates are applied. Nadia drafts a baseline based on vendor guidance and adapts it for Ardwell's needs, recording each deviation with its reason. A baseline turns a vague requirement for secure configuration into specific, testable settings. She learns that baselines need owners and review dates like policies, because operating system versions change and old settings can become irrelevant or harmful. She notes the assumption behind it so that a reviewer can challenge it later.
+Ardwell needs a secure configuration baseline for its office computers and servers: which services are disabled, which settings are enforced and how updates are applied. Nadia drafts a baseline based on vendor guidance and adapts it for Ardwell's needs, recording each deviation with its reason. A baseline turns a vague requirement for secure configuration into specific, testable settings. She learns that baselines need owners and review dates like policies, because operating system versions change and old settings can become irrelevant or harmful. Recording each deviation with its reason lets a later reviewer see whether the reason still applies after an operating system upgrade.
 
 ### 12.3 Measuring drift
 
-Systems drift from their baseline as administrators make changes. Nadia writes a script that compares actual settings with the baseline and reports differences. In a synthetic test of forty servers, a quarter show at least one deviation, mostly an unneeded service enabled for troubleshooting and never turned off. She learns that drift is normal and that the governance question is how quickly it is detected and corrected. Regular measurement turns the baseline from a document into a living control with an observable outcome. The same reasoning will return when Ardwell's auditors visit next year.
+Systems drift from their baseline as administrators make changes. Nadia writes a script that compares actual settings with the baseline and reports differences. In a synthetic test of forty servers, a quarter show at least one deviation, mostly an unneeded service enabled for troubleshooting and never turned off. She learns that drift is normal and that the governance question is how quickly it is detected and corrected. Regular measurement turns the baseline from a document into a living control with an observable outcome. Ten of the forty servers deviating, mostly through troubleshooting services left on, suggests adding a removal step to the troubleshooting procedure.
 
 ### Worked example
 
@@ -634,7 +634,7 @@ rows 6; issues 6; clean rows 2
 
 ### 13.3 Integrity of governance data
 
-A register that anyone can edit without a trace cannot serve as evidence. Nadia recommends moving it into a system that records who changed each entry and when, with approvals for score changes. She notes that falsified or careless edits could make risks look smaller before a board meeting. Version history makes such changes visible. Prof. Brenner adds that the same principles of integrity, access control and audit trails that protect business data apply to the governance data that describe risk. She adds a short note to the shared course wiki for other students.
+A register that anyone can edit without a trace cannot serve as evidence. Nadia recommends moving it into a system that records who changed each entry and when, with approvals for score changes. She notes that falsified or careless edits could make risks look smaller before a board meeting. Version history makes such changes visible. Prof. Brenner adds that the same principles of integrity, access control and audit trails that protect business data apply to the governance data that describe risk. Approvals for score changes also mean a risk can only be lowered before a board meeting with a named person accepting it.
 
 ### Worked example
 
@@ -670,15 +670,15 @@ You will (1) apply secure development practices as governance controls; (2) mana
 
 ### 14.1 Development as a control
 
-Ardwell builds and maintains its customer payment portal. Nadia learns that secure development practices, such as code review, security testing and dependency management, are governance controls as well as engineering habits. ISO/IEC 27002:2022 includes controls for secure development life cycles and secure coding, and PCI DSS v4.0 requires that bespoke software for payment systems is developed securely. She maps each practice in the portal team's workflow to these requirements and notes where evidence already exists in the team's tools. This makes the governance consequence visible to people outside the engineering team.
+Ardwell builds and maintains its customer payment portal. Nadia learns that secure development practices, such as code review, security testing and dependency management, are governance controls as well as engineering habits. ISO/IEC 27002:2022 includes controls for secure development life cycles and secure coding, and PCI DSS v4.0 requires that bespoke software for payment systems is developed securely. She maps each practice in the portal team's workflow to these requirements and notes where evidence already exists in the team's tools. Existing evidence such as code review records in the team's repository can then be reused for audits instead of being recreated.
 
 ### 14.2 Change management
 
-Every change to the portal passes through a ticket, a code review and an approval before deployment. Nadia checks a synthetic month of changes and finds that most are traceable from ticket to deployment, but some emergency fixes skipped review. She recommends a documented emergency path with review after the fact within two working days. Traceable change management lets auditors confirm that what runs in production was approved, and lets engineers find which change introduced a problem when something breaks. She notes the assumption behind it so that a reviewer can challenge it later.
+Every change to the portal passes through a ticket, a code review and an approval before deployment. Nadia checks a synthetic month of changes and finds that most are traceable from ticket to deployment, but some emergency fixes skipped review. She recommends a documented emergency path with review after the fact within two working days. Traceable change management lets auditors confirm that what runs in production was approved, and lets engineers find which change introduced a problem when something breaks. Review within two working days keeps the emergency path fast while restoring traceability for every fix.
 
 ### 14.3 Third-party code
 
-The portal depends on dozens of open-source libraries. Nadia learns that each is a supplier whose vulnerabilities become Ardwell's risk. She proposes a software bill of materials listing each component and its version, with automatic alerts when a known vulnerability is published. She also notes licensing obligations, which are a compliance issue in their own right. Prof. Brenner remarks that modern applications are mostly other people's code, so governance must extend to the components a team never wrote. Nadia keeps a dated copy of her working so that the result can be traced.
+The portal depends on dozens of open-source libraries. Nadia learns that each is a supplier whose vulnerabilities become Ardwell's risk. She proposes a software bill of materials listing each component and its version, with automatic alerts when a known vulnerability is published. She also notes licensing obligations, which are a compliance issue in their own right. Prof. Brenner remarks that modern applications are mostly other people's code, so governance must extend to the components a team never wrote. The bill of materials also tells Ardwell within hours which portal versions are affected when a library vulnerability is announced.
 
 ### Worked example
 
@@ -714,15 +714,15 @@ You will (1) define confidentiality, integrity and availability for Ardwell's as
 
 ### 15.1 Security objectives
 
-Nadia defines what security means for Ardwell's main assets. For customer payment data, confidentiality matters most. For meter readings that drive bills, integrity matters most. For control systems that keep power flowing, availability and safety matter most. She learns that ranking objectives per asset guides control choices, because a control that strengthens confidentiality, such as strict lockout, might weaken availability. Making these priorities explicit helps the board understand why controls differ across the organisation. The same reasoning will return when Ardwell's auditors visit next year.
+Nadia defines what security means for Ardwell's main assets. For customer payment data, confidentiality matters most. For meter readings that drive bills, integrity matters most. For control systems that keep power flowing, availability and safety matter most. She learns that ranking objectives per asset guides control choices, because a control that strengthens confidentiality, such as strict lockout, might weaken availability. Making these priorities explicit helps the board understand why controls differ across the organisation. Strict lockout on control-system consoles, for example, could stop an operator restoring power during an incident.
 
 ### 15.2 Building blocks of risk
 
-Nadia learns the building blocks used in NIST SP 800-30 Rev. 1: threat sources and events, vulnerabilities and predisposing conditions, likelihood and impact. Risk arises when a threat can exploit a vulnerability to cause an impact. She applies this to vendor remote access: the threat is misuse of a vendor account, the vulnerability is a shared password, and the impact is an unplanned outage. Separating the parts helps her see where a control can act, such as replacing the shared password with named accounts. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Nadia learns the building blocks used in NIST SP 800-30 Rev. 1: threat sources and events, vulnerabilities and predisposing conditions, likelihood and impact. Risk arises when a threat can exploit a vulnerability to cause an impact. She applies this to vendor remote access: the threat is misuse of a vendor account, the vulnerability is a shared password, and the impact is an unplanned outage. Separating the parts helps her see where a control can act, such as replacing the shared password with named accounts. Named accounts address the vulnerability, while session logging would help detect the threat event if the vulnerability returned.
 
 ### 15.3 Control types
 
-Controls can prevent, detect or correct, and they can be administrative, technical or physical. Nadia classifies Ardwell's controls for vendor access: named accounts and approval are preventive; session logging is detective; a tested procedure to revoke access during an incident is corrective. She learns that relying on only one type is fragile, because prevention eventually fails. A balanced set allows Ardwell to stop most problems, notice the rest and recover, which is the basis of defence in depth. She adds a short note to the shared course wiki for other students.
+Controls can prevent, detect or correct, and they can be administrative, technical or physical. Nadia classifies Ardwell's controls for vendor access: named accounts and approval are preventive; session logging is detective; a tested procedure to revoke access during an incident is corrective. She learns that relying on only one type is fragile, because prevention eventually fails. A balanced set allows Ardwell to stop most problems, notice the rest and recover, which is the basis of defence in depth. For vendor access, the corrective revoke procedure only counts if it has been tested, since an untested procedure may fail during the incident it was written for.
 
 ### Worked example
 
@@ -758,15 +758,15 @@ You will (1) treat the governance programme as a system with requirements and in
 
 ### 16.1 Programme as a system
 
-Systems engineering treats complex efforts as systems with purposes, components, interfaces and life cycles. Nadia applies this view to Ardwell's governance programme. Its purpose is to keep risk within the board's appetite and demonstrate compliance. Its components include policies, the risk register, control owners, monitoring and audits. Interfaces connect it to finance, operations and regulators. Viewing governance as a system helps her ask engineering questions, such as what happens when one component fails or an interface changes. This makes the governance consequence visible to people outside the engineering team.
+Systems engineering treats complex efforts as systems with purposes, components, interfaces and life cycles. Nadia applies this view to Ardwell's governance programme. Its purpose is to keep risk within the board's appetite and demonstrate compliance. Its components include policies, the risk register, control owners, monitoring and audits. Interfaces connect it to finance, operations and regulators. Viewing governance as a system helps her ask engineering questions, such as what happens when one component fails or an interface changes. When the board changes its appetite, for example, the interface to monitoring must change too, or reports will measure against an old target.
 
 ### 16.2 Traceability
 
-A core systems engineering tool is the traceability matrix. Nadia links each governance requirement, from law, contract or standard, to the controls that satisfy it and to the tests that show they work. Gaps appear as requirements with no control or controls with no test. She recognises this as the same coverage problem studied in compliance mapping. Traceability lets Ardwell answer an auditor's question about any requirement quickly and shows managers which controls exist only to satisfy obligations that may have lapsed. She checks the idea against a second example before relying on it.
+A core systems engineering tool is the traceability matrix. Nadia links each governance requirement, from law, contract or standard, to the controls that satisfy it and to the tests that show they work. Gaps appear as requirements with no control or controls with no test. She recognises this as the same coverage problem studied in compliance mapping. Traceability lets Ardwell answer an auditor's question about any requirement quickly and shows managers which controls exist only to satisfy obligations that may have lapsed. A requirement whose legal source has lapsed, for instance, would show in the matrix as a control kept only by habit.
 
 ### 16.3 Life cycle
 
-Systems have life cycles: concept, development, operation, maintenance and retirement. Governance components do too. Policies are drafted, approved, used, reviewed and withdrawn. Controls are designed, implemented, tested and eventually replaced. Nadia notes that retirement is often neglected; old controls and policies remain on paper long after they stop working. NIST SP 800-37 Rev. 2 frames risk management as continuous across the life cycle, and she adopts its emphasis on monitoring as the step that keeps the system honest. Nadia keeps a dated copy of her working so that the result can be traced.
+Systems have life cycles: concept, development, operation, maintenance and retirement. Governance components do too. Policies are drafted, approved, used, reviewed and withdrawn. Controls are designed, implemented, tested and eventually replaced. Nadia notes that retirement is often neglected; old controls and policies remain on paper long after they stop working. NIST SP 800-37 Rev. 2 frames risk management as continuous across the life cycle, and she adopts its emphasis on monitoring as the step that keeps the system honest. An access review that still lists a retired billing system, for instance, is a control past its retirement point.
 
 ### Worked example
 
@@ -802,15 +802,15 @@ You will (1) describe governance as a feedback loop; (2) identify sensors, set p
 
 ### 17.1 Governance as feedback
 
-In control engineering, a system measures its output, compares it with a set point and adjusts its input to reduce the difference. Nadia sees the same loop in governance. Ardwell's board sets risk appetite as the set point. Monitoring and key risk indicators act as sensors. Decisions about budgets, controls and priorities act as actuators. ISO/IEC 27001:2022 builds this loop into its requirements for monitoring, internal audit, management review and continual improvement, so the management system corrects itself over time. Nadia records this point in her course notebook so that later chapters can build on it.
+In control engineering, a system measures its output, compares it with a set point and adjusts its input to reduce the difference. Nadia sees the same loop in governance. Ardwell's board sets risk appetite as the set point. Monitoring and key risk indicators act as sensors. Decisions about budgets, controls and priorities act as actuators. ISO/IEC 27001:2022 builds this loop into its requirements for monitoring, internal audit, management review and continual improvement, so the management system corrects itself over time. In this loop, internal audit and management review are the steps that compare measured risk with the board's set point.
 
 ### 17.2 Delays
 
-Feedback loops with long delays behave badly. If Ardwell measures control performance once a year, problems grow for months before anyone responds, and corrective actions arrive late. Nadia models a simple loop in which a backlog of findings is reviewed quarterly versus annually and sees that the annual loop lets the backlog swing much further from target. She learns that faster measurement does not guarantee better control, but slow measurement almost guarantees poor control, especially when risks change quickly. Prof. Brenner asks her to explain the idea aloud to a classmate before moving on.
+Feedback loops with long delays behave badly. If Ardwell measures control performance once a year, problems grow for months before anyone responds, and corrective actions arrive late. Nadia models a simple loop in which a backlog of findings is reviewed quarterly versus annually and sees that the annual loop lets the backlog swing much further from target. She learns that faster measurement does not guarantee better control, but slow measurement almost guarantees poor control, especially when risks change quickly. Prof. Brenner adds that quarterly review only helps if decisions are also taken quarterly; a fast sensor with a slow actuator still lags.
 
 ### 17.3 Overreaction
 
-Too strong a response can also cause trouble. After a bad audit, management might impose strict controls everywhere, causing workarounds and complaints, then relax them, then tighten again. Engineers call this oscillation. Nadia suggests proportionate responses tied to the size of the gap and the importance of the asset. Prof. Brenner notes that good governance aims for steady improvement rather than dramatic swings, and that documented decision rules help managers respond consistently instead of reacting to the latest headline or audit report. She notes the assumption behind it so that a reviewer can challenge it later.
+Too strong a response can also cause trouble. After a bad audit, management might impose strict controls everywhere, causing workarounds and complaints, then relax them, then tighten again. Engineers call this oscillation. Nadia suggests proportionate responses tied to the size of the gap and the importance of the asset. Prof. Brenner notes that good governance aims for steady improvement rather than dramatic swings, and that documented decision rules help managers respond consistently instead of reacting to the latest headline or audit report. A rule such as tightening controls only for assets above a defined criticality would damp the swings after a bad audit.
 
 ### Worked example
 
@@ -846,15 +846,15 @@ You will (1) translate governance requirements into architecture principles; (2)
 
 ### 18.1 Principles from requirements
 
-Nadia learns that architecture turns requirements into structure. Ardwell's governance requirements include keeping payment data in a small segment, separating control systems from office systems and controlling vendor access. She writes architecture principles from them: minimise the scope of sensitive data, separate zones by trust level, broker all external access through monitored points and design for recovery. Principles give architects a basis for choices and give auditors a way to check that designs follow policy. The same reasoning will return when Ardwell's auditors visit next year.
+Nadia learns that architecture turns requirements into structure. Ardwell's governance requirements include keeping payment data in a small segment, separating control systems from office systems and controlling vendor access. She writes architecture principles from them: minimise the scope of sensitive data, separate zones by trust level, broker all external access through monitored points and design for recovery. Principles give architects a basis for choices and give auditors a way to check that designs follow policy. The principle of brokering external access through monitored points, for example, directly rules out the direct vendor connection found earlier.
 
 ### 18.2 Architecture review
 
-Nadia joins a review of a proposed new meter data platform. She checks it against each principle. The design stores customer names with meter readings in a cloud service reachable from office laptops, which widens the scope of personal data and creates a new path into a sensitive store. She recommends pseudonymising readings and restricting access to an analytics zone. The review records each concern, the architect's response and the final decision, so the outcome can be traced later. She adds a short note to the shared course wiki for other students.
+Nadia joins a review of a proposed new meter data platform. She checks it against each principle. The design stores customer names with meter readings in a cloud service reachable from office laptops, which widens the scope of personal data and creates a new path into a sensitive store. She recommends pseudonymising readings and restricting access to an analytics zone. The review records each concern, the architect's response and the final decision, so the outcome can be traced later. Pseudonymising readings keeps the analytics value while removing customer names from the store reachable from office laptops.
 
 ### 18.3 Decision records
 
-Ardwell adopts short architecture decision records: the context, the decision, the alternatives considered and the consequences, including risks accepted. Nadia writes one for the meter platform. She learns that decision records help auditors see that risks were considered rather than overlooked, and help future engineers understand why something looks the way it does. Without them, organisations repeat old debates or undo good decisions because nobody remembers the reasons behind them. This makes the governance consequence visible to people outside the engineering team. Nadia keeps a dated copy of her working so that the result can be traced.
+Ardwell adopts short architecture decision records: the context, the decision, the alternatives considered and the consequences, including risks accepted. Nadia writes one for the meter platform. She learns that decision records help auditors see that risks were considered rather than overlooked, and help future engineers understand why something looks the way it does. Without them, organisations repeat old debates or undo good decisions because nobody remembers the reasons behind them. The meter platform record, for example, lists keeping names with readings as a rejected alternative and pseudonymisation as the chosen one.
 
 ### Worked example
 
@@ -890,15 +890,15 @@ You will (1) govern identities across their life cycle; (2) relate cryptographic
 
 ### 19.1 Identity life cycle
 
-Identities at Ardwell are created when staff join, change when they move and must end when they leave. Nadia maps this joiner, mover and leaver process and finds that movers are the weak point: new access is granted quickly but old access is rarely removed. She proposes that the human resources system trigger access changes automatically and that managers confirm access for movers within two weeks. Governance of identity is mainly governance of these transitions, where most excess access begins. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Identities at Ardwell are created when staff join, change when they move and must end when they leave. Nadia maps this joiner, mover and leaver process and finds that movers are the weak point: new access is granted quickly but old access is rarely removed. She proposes that the human resources system trigger access changes automatically and that managers confirm access for movers within two weeks. Governance of identity is mainly governance of these transitions, where most excess access begins. Movers who keep old billing access, for instance, can accumulate rights that no single role would ever grant.
 
 ### 19.2 Cryptography and policy
 
-Nadia studies how encryption protects data at rest and in transit, and how digital signatures protect integrity. She links them to policy: Ardwell's data classification requires encryption for customer payment data and personal data on laptops. ISO/IEC 27002:2022 includes a control on the use of cryptography that expects rules for its use and for key management. She learns that cryptography is only as strong as the policy decisions about where to use it and how to manage it. She checks the idea against a second example before relying on it.
+Nadia studies how encryption protects data at rest and in transit, and how digital signatures protect integrity. She links them to policy: Ardwell's data classification requires encryption for customer payment data and personal data on laptops. ISO/IEC 27002:2022 includes a control on the use of cryptography that expects rules for its use and for key management. She learns that cryptography is only as strong as the policy decisions about where to use it and how to manage it. For personal data on laptops, for example, the policy decision is that encryption is mandatory, while the key management rules decide who can recover a locked device.
 
 ### 19.3 Keys as assets
 
-Keys must be generated, stored, rotated and destroyed under control. Nadia lists Ardwell's important keys, including the payment portal's certificates, and finds one certificate managed by a single engineer with no backup or expiry tracking. If it expired unnoticed, the portal would fail. She records owners, expiry dates and backup arrangements for each key in an inventory. She learns that key management failures are usually governance failures, such as missing ownership, rather than weaknesses in the cryptography itself. The point seems small, but it changes how owners act on the result.
+Keys must be generated, stored, rotated and destroyed under control. Nadia lists Ardwell's important keys, including the payment portal's certificates, and finds one certificate managed by a single engineer with no backup or expiry tracking. If it expired unnoticed, the portal would fail. She records owners, expiry dates and backup arrangements for each key in an inventory. She learns that key management failures are usually governance failures, such as missing ownership, rather than weaknesses in the cryptography itself. Adding expiry dates to the inventory would let the portal certificate be renewed before customers see a failure.
 
 ### Worked example
 
@@ -934,15 +934,15 @@ You will (1) define governance, risk management and compliance and how they rela
 
 ### 20.1 Three related disciplines
 
-Nadia now begins the core GRC courses. Governance sets direction, accountability and oversight: who decides, what the appetite for risk is and how performance is monitored. Risk management identifies, analyses, evaluates and treats risks, following a process like the one described in ISO 31000:2018. Compliance ensures the organisation meets obligations from law, regulation, contracts and adopted standards. They overlap but differ. COBIT 2019 separates governance, which evaluates, directs and monitors, from management, which plans, builds, runs and monitors. Ardwell's security manager later asks for a copy of this analysis.
+Nadia now begins the core GRC courses. Governance sets direction, accountability and oversight: who decides, what the appetite for risk is and how performance is monitored. Risk management identifies, analyses, evaluates and treats risks, following a process like the one described in ISO 31000:2018. Compliance ensures the organisation meets obligations from law, regulation, contracts and adopted standards. They overlap but differ. COBIT 2019 separates governance, which evaluates, directs and monitors, from management, which plans, builds, runs and monitors. At Ardwell, the board's quarterly review of reports is governance in COBIT's sense, while the security manager running the risk process is management.
 
 ### 20.2 Place in the organisation
 
-At Ardwell, the board approves risk appetite and receives quarterly reports. An information security manager runs the risk process and reports through the chief operating officer. Compliance obligations sit with a legal and compliance officer, while internal audit provides independent assurance to the board's audit committee. Nadia draws these relationships and notes that clear reporting lines prevent conflicts of interest, such as the person running controls also judging whether they work, which would weaken assurance. She marks the open questions in red so that they are not forgotten.
+At Ardwell, the board approves risk appetite and receives quarterly reports. An information security manager runs the risk process and reports through the chief operating officer. Compliance obligations sit with a legal and compliance officer, while internal audit provides independent assurance to the board's audit committee. Nadia draws these relationships and notes that clear reporting lines prevent conflicts of interest, such as the person running controls also judging whether they work, which would weaken assurance. Internal audit reporting to the audit committee, rather than to the chief operating officer, is what keeps its assurance independent.
 
 ### 20.3 Obligations
 
-Nadia lists Ardwell's obligations. Card payments bring PCI DSS v4.0 through contracts with its bank. Personal data of customers bring data protection law. As an energy distributor, Ardwell faces sector rules on resilience and incident reporting. The board has also chosen to align with ISO/IEC 27001:2022 and to use NIST CSF 2.0 for reporting. She separates mandatory obligations from voluntary choices, because penalties and flexibility differ, and records the source and owner of each in an obligations register. Writing the reasoning down also helps her spot a weak step in her argument.
+Nadia lists Ardwell's obligations. Card payments bring PCI DSS v4.0 through contracts with its bank. Personal data of customers bring data protection law. As an energy distributor, Ardwell faces sector rules on resilience and incident reporting. The board has also chosen to align with ISO/IEC 27001:2022 and to use NIST CSF 2.0 for reporting. She separates mandatory obligations from voluntary choices, because penalties and flexibility differ, and records the source and owner of each in an obligations register. PCI DSS v4.0 arrives through the bank contract, so its owner needs to be someone who manages that contract relationship.
 
 ### Worked example
 
@@ -978,15 +978,15 @@ You will (1) derive programme requirements from obligations and appetite; (2) wr
 
 ### 21.1 From obligations to requirements
 
-Obligations are often broad. Nadia turns them into specific requirements for Ardwell's programme. For example, a contractual obligation to protect card data becomes requirements to keep a current inventory of cardholder data systems, to restrict access to them by business need and to review that access regularly. The board's appetite statement that no single incident should interrupt supply for more than four hours becomes a recovery requirement for control-system backups and spare equipment. Nadia discusses the trade-off with a classmate who works in finance.
+Obligations are often broad. Nadia turns them into specific requirements for Ardwell's programme. For example, a contractual obligation to protect card data becomes requirements to keep a current inventory of cardholder data systems, to restrict access to them by business need and to review that access regularly. The board's appetite statement that no single incident should interrupt supply for more than four hours becomes a recovery requirement for control-system backups and spare equipment. The four-hour limit then becomes the yardstick against which recovery tests in later chapters are judged.
 
 ### 21.2 Testable requirements
 
-Nadia learns to write requirements so they can be tested. A vague requirement such as access should be appropriate cannot be checked. A testable version says that access to cardholder data systems is reviewed every quarter and that excess access found is removed within ten working days. Each testable requirement names an owner, a frequency, a measurable condition and evidence. She rewrites twelve of Ardwell's requirements this way and finds that three had no clear owner at all. The class compares answers and finds that most differences come from unstated assumptions.
+Nadia learns to write requirements so they can be tested. A vague requirement such as access should be appropriate cannot be checked. A testable version says that access to cardholder data systems is reviewed every quarter and that excess access found is removed within ten working days. Each testable requirement names an owner, a frequency, a measurable condition and evidence. She rewrites twelve of Ardwell's requirements this way and finds that three had no clear owner at all. The three requirements without owners join the register as gaps to be assigned before any test can run.
 
 ### 21.3 Prioritising
 
-Not every requirement is equally urgent. Nadia ranks them by the consequence of failure and by whether they are mandatory. Requirements tied to safety of the electricity supply and to contractual card obligations rank highest. Requirements that support voluntary certification rank next. Improvements for efficiency come last. She presents the ranking to the information security manager with reasons, so that limited staff time goes first to the requirements whose failure would harm customers or breach obligations. Nadia records this point in her course notebook so that later chapters can build on it.
+Not every requirement is equally urgent. Nadia ranks them by the consequence of failure and by whether they are mandatory. Requirements tied to safety of the electricity supply and to contractual card obligations rank highest. Requirements that support voluntary certification rank next. Improvements for efficiency come last. She presents the ranking to the information security manager with reasons, so that limited staff time goes first to the requirements whose failure would harm customers or breach obligations. Ranking with reasons also lets the security manager challenge the order if a voluntary item has become contractual.
 
 ### Worked example
 
@@ -1022,15 +1022,15 @@ You will (1) model the entities of a GRC programme; (2) define relationships bet
 
 ### 22.1 Core entities
 
-Nadia designs a data model for Ardwell's programme. Its core entities are assets, risks, controls, obligations, tests, findings and owners. Each entity has defined attributes, such as a control's type, frequency and owner, or a finding's severity and due date. Defining entities clearly prevents the confusion common in spreadsheets, where one column might hold a risk in one row and a control in another. A clear model is the foundation for any governance tool, whether bought or built. Prof. Brenner asks her to explain the idea aloud to a classmate before moving on.
+Nadia designs a data model for Ardwell's programme. Its core entities are assets, risks, controls, obligations, tests, findings and owners. Each entity has defined attributes, such as a control's type, frequency and owner, or a finding's severity and due date. Defining entities clearly prevents the confusion common in spreadsheets, where one column might hold a risk in one row and a control in another. A clear model is the foundation for any governance tool, whether bought or built. Prof. Brenner notes that a defined finding entity with a due date, for instance, is what lets overdue items be counted automatically.
 
 ### 22.2 Relationships
 
-The value lies in relationships. A risk affects assets and is treated by controls. A control satisfies obligations and is checked by tests. A test produces evidence and may raise findings, each owned by a person. Nadia draws these as a diagram and notes that many-to-many links are common: one control can treat several risks and satisfy several obligations. This explains why a single failed control can create findings across several audits, a pattern Ardwell's managers had noticed but not understood. She notes the assumption behind it so that a reviewer can challenge it later.
+The value lies in relationships. A risk affects assets and is treated by controls. A control satisfies obligations and is checked by tests. A test produces evidence and may raise findings, each owned by a person. Nadia draws these as a diagram and notes that many-to-many links are common: one control can treat several risks and satisfy several obligations. This explains why a single failed control can create findings across several audits, a pattern Ardwell's managers had noticed but not understood. The backup control, for example, may satisfy card, resilience and certification obligations at once, so one failure appears in three audits.
 
 ### 22.3 Answering questions
 
-With the model, Nadia shows how to answer questions that used to take days. Which obligations depend on the backup control? Which risks are treated only by controls that failed their last test? Which owners hold overdue findings? She writes example queries in plain language and in pseudocode. Prof. Brenner notes that good models make governance questions cheap to answer, which encourages managers to ask them more often, strengthening oversight across the organisation. The same reasoning will return when Ardwell's auditors visit next year.
+With the model, Nadia shows how to answer questions that used to take days. Which obligations depend on the backup control? Which risks are treated only by controls that failed their last test? Which owners hold overdue findings? She writes example queries in plain language and in pseudocode. Prof. Brenner notes that good models make governance questions cheap to answer, which encourages managers to ask them more often, strengthening oversight across the organisation. The question about controls that failed their last test is the kind the old spreadsheets could not answer at all.
 
 ### Worked example
 
@@ -1066,15 +1066,15 @@ You will (1) identify threat scenarios for Ardwell; (2) analyse failure modes of
 
 ### 23.1 Threat scenarios
 
-Nadia builds threat scenarios following the structure of NIST SP 800-30 Rev. 1. A criminal group encrypts office systems and demands payment. An insider in billing alters customer accounts. A vendor's compromised laptop connects to control systems. A card skimming script is injected into the payment portal. Each scenario names a threat source, an event, the vulnerabilities exploited and the impact. Scenarios make risk concrete for owners, who find it easier to judge likelihood and impact for a story than for an abstract category. She adds a short note to the shared course wiki for other students.
+Nadia builds threat scenarios following the structure of NIST SP 800-30 Rev. 1. A criminal group encrypts office systems and demands payment. An insider in billing alters customer accounts. A vendor's compromised laptop connects to control systems. A card skimming script is injected into the payment portal. Each scenario names a threat source, an event, the vulnerabilities exploited and the impact. Scenarios make risk concrete for owners, who find it easier to judge likelihood and impact for a story than for an abstract category. The compromised vendor laptop scenario connects directly to the remote access gaps she found in chapter 11.
 
 ### 23.2 Failure modes
 
-Controls themselves can fail. Nadia applies failure mode thinking to Ardwell's access review: reviewers may approve everything without checking, the list of accounts may be incomplete, or removals may be approved but never carried out. For each failure mode she asks how it would be detected and what its effect would be. This analysis reveals that nobody checks whether approved removals happen. She proposes a follow-up test comparing approved removals with actual account changes after each review. This makes the governance consequence visible to people outside the engineering team.
+Controls themselves can fail. Nadia applies failure mode thinking to Ardwell's access review: reviewers may approve everything without checking, the list of accounts may be incomplete, or removals may be approved but never carried out. For each failure mode she asks how it would be detected and what its effect would be. This analysis reveals that nobody checks whether approved removals happen. She proposes a follow-up test comparing approved removals with actual account changes after each review. Comparing approved removals with account changes would catch the most silent of the three failure modes.
 
 ### 23.3 Combining views
 
-Threat analysis asks what could attack Ardwell; failure analysis asks how its defences could quietly stop working. Nadia combines them in the risk register by linking scenarios to the controls they depend on and to those controls' failure modes. A scenario relying on a control with an undetected failure mode is riskier than it looks. Prof. Brenner notes that many real incidents combine an external threat with an internal control failure nobody noticed, so both views are needed. Nadia keeps a dated copy of her working so that the result can be traced.
+Threat analysis asks what could attack Ardwell; failure analysis asks how its defences could quietly stop working. Nadia combines them in the risk register by linking scenarios to the controls they depend on and to those controls' failure modes. A scenario relying on a control with an undetected failure mode is riskier than it looks. Prof. Brenner notes that many real incidents combine an external threat with an internal control failure nobody noticed, so both views are needed. A ransomware scenario relying on backups whose restore has never been tested is a clear example of such hidden risk.
 
 ### Worked example
 
@@ -1110,11 +1110,11 @@ You will (1) distinguish inherent and residual risk; (2) estimate residual risk 
 
 ### 24.1 Inherent and residual
 
-Inherent risk is the risk before considering controls; residual risk is what remains after them. Nadia learns that the distinction helps boards see what controls achieve and where risk remains above appetite. ISO/IEC 27005:2022 describes risk analysis and evaluation within the management system and expects organisations to decide on treatment and accept residual risks formally. For Ardwell she estimates inherent expected loss for four risks in thousands and the effectiveness of each control as the fraction of loss it removes. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Inherent risk is the risk before considering controls; residual risk is what remains after them. Nadia learns that the distinction helps boards see what controls achieve and where risk remains above appetite. ISO/IEC 27005:2022 describes risk analysis and evaluation within the management system and expects organisations to decide on treatment and accept residual risks formally. For Ardwell she estimates inherent expected loss for four risks in thousands and the effectiveness of each control as the fraction of loss it removes. Expressing control effectiveness as a fraction of loss removed makes the residual calculation in the next section possible.
 
 ### 24.2 Calculating residual
 
-The lab multiplies inherent loss by one minus each control's effectiveness, assuming controls act independently. Ransomware falls from ninety thousand to about twenty-two thousand, a reduction of seventy-six percent, through backups and endpoint detection. Billing outage halves from sixty to thirty thousand through failover. Card breach falls from seventy-five to about eleven thousand, an eighty-six percent reduction, through tokenisation and segmentation. Vendor misuse stays at eighty thousand because no control treats it, making it the largest residual risk. She checks the idea against a second example before relying on it.
+The lab multiplies inherent loss by one minus each control's effectiveness, assuming controls act independently. Ransomware falls from ninety thousand to about twenty-two thousand, a reduction of seventy-six percent, through backups and endpoint detection. Billing outage halves from sixty to thirty thousand through failover. Card breach falls from seventy-five to about eleven thousand, an eighty-six percent reduction, through tokenisation and segmentation. Vendor misuse stays at eighty thousand because no control treats it, making it the largest residual risk. Vendor misuse at eighty thousand now exceeds every treated risk, although its inherent loss was below ransomware's ninety thousand.
 
 ### Lab — Inherent and residual risk with control effectiveness
 
@@ -1141,7 +1141,7 @@ vendor misuse: inherent 80k residual 80.0k reduction 0%
 
 ### 24.3 Interpreting residuals
 
-The lab changes the order of risks. Ransomware ranked first inherently, but vendor access misuse ranks first in residual terms because it is untreated. Nadia recommends that treatment of vendor access becomes a priority. She also notes the independence assumption may overstate combined effectiveness, since backups and detection might fail together in a well-planned attack. Effectiveness figures are estimates from workshops and should be checked with testing evidence over time, as later chapters on measurement will show. The point seems small, but it changes how owners act on the result.
+The lab changes the order of risks. Ransomware ranked first inherently, but vendor access misuse ranks first in residual terms because it is untreated. Nadia recommends that treatment of vendor access becomes a priority. She also notes the independence assumption may overstate combined effectiveness, since backups and detection might fail together in a well-planned attack. Effectiveness figures are estimates from workshops and should be checked with testing evidence over time, as later chapters on measurement will show. Workshop estimates such as the seventy-six percent ransomware reduction should be revisited once restore tests and detection tests produce data.
 
 ### Worked example
 
@@ -1177,15 +1177,15 @@ You will (1) design a governance solution for a defined problem; (2) present it 
 
 ### 25.1 The brief
 
-In the first design studio, Nadia's team receives a brief from Ardwell: design a way to manage vendor remote access that satisfies security, keeps outage response fast and produces evidence for audits. The team interviews a control engineer, a vendor technician and the information security manager. Each wants something different. The engineer wants vendors connected within minutes during outages. The technician wants one sign-in, not five. The manager wants every session approved, logged and reviewed. Nadia records this point in her course notebook so that later chapters can build on it.
+In the first design studio, Nadia's team receives a brief from Ardwell: design a way to manage vendor remote access that satisfies security, keeps outage response fast and produces evidence for audits. The team interviews a control engineer, a vendor technician and the information security manager. Each wants something different. The engineer wants vendors connected within minutes during outages. The technician wants one sign-in, not five. The manager wants every session approved, logged and reviewed. These three positions become the design constraints for the next section: speed, a single sign-in and full accountability.
 
 ### 25.2 The design
 
-The team proposes an access broker: vendors sign in with named accounts and multi-factor authentication, request a session for a specific device, receive approval from an on-call engineer through a phone app and work through a recorded jump host. Pre-approved emergency sessions are allowed during declared outages, with review the next day. Sessions end automatically after four hours. The design meets each stakeholder's main concern while removing the shared password and direct connection found earlier. Prof. Brenner asks her to explain the idea aloud to a classmate before moving on.
+The team proposes an access broker: vendors sign in with named accounts and multi-factor authentication, request a session for a specific device, receive approval from an on-call engineer through a phone app and work through a recorded jump host. Pre-approved emergency sessions are allowed during declared outages, with review the next day. Sessions end automatically after four hours. The design meets each stakeholder's main concern while removing the shared password and direct connection found earlier. Prof. Brenner points out that the pre-approved emergency path is the most likely route for misuse, so its next-day review must actually happen.
 
 ### 25.3 Critique and revision
 
-At the studio review, a lecturer asks what happens if the phone app fails during a storm. Another asks who reviews recordings and how often. The team adds a backup approval by phone call with a logged reference and proposes sampling ten percent of recordings each month, focusing on emergency sessions. Nadia learns that critique is most useful when it tests the design against realistic failure, and that a design is not finished until its operation, including review, is planned. She notes the assumption behind it so that a reviewer can challenge it later.
+At the studio review, a lecturer asks what happens if the phone app fails during a storm. Another asks who reviews recordings and how often. The team adds a backup approval by phone call with a logged reference and proposes sampling ten percent of recordings each month, focusing on emergency sessions. Nadia learns that critique is most useful when it tests the design against realistic failure, and that a design is not finished until its operation, including review, is planned. Sampling ten percent of recordings with a focus on emergency sessions puts review effort where approvals were weakest.
 
 ### Worked example
 
@@ -1221,15 +1221,15 @@ You will (1) compare alternative architectures for a GRC capability; (2) weigh c
 
 ### 26.1 Alternatives
 
-Ardwell must decide how to run its GRC programme day to day. Nadia compares three alternatives. The first keeps spreadsheets and shared folders, improved with validation scripts. The second buys a commercial governance platform that holds risks, controls and evidence in one place. The third builds light tooling on Ardwell's existing ticketing system, where controls become recurring tasks and evidence attaches to tickets. Each has different costs, skills needs and risks of failure. The same reasoning will return when Ardwell's auditors visit next year.
+Ardwell must decide how to run its GRC programme day to day. Nadia compares three alternatives. The first keeps spreadsheets and shared folders, improved with validation scripts. The second buys a commercial governance platform that holds risks, controls and evidence in one place. The third builds light tooling on Ardwell's existing ticketing system, where controls become recurring tasks and evidence attaches to tickets. Each has different costs, skills needs and risks of failure. Spreadsheets cost least to start but depend on validation scripts that someone must maintain.
 
 ### 26.2 Criteria and weights
 
-Nadia agrees criteria with the security manager: data integrity and audit trail, effort for control owners, reporting to the board, cost over three years and dependence on scarce skills. She weights integrity and owner effort highest. Spreadsheets score poorly on integrity. The commercial platform scores well on reporting but needs a specialist administrator. The ticketing option scores well on owner effort because staff already use the system. She publishes the scores and weights so reviewers can challenge them. She adds a short note to the shared course wiki for other students.
+Nadia agrees criteria with the security manager: data integrity and audit trail, effort for control owners, reporting to the board, cost over three years and dependence on scarce skills. She weights integrity and owner effort highest. Spreadsheets score poorly on integrity. The commercial platform scores well on reporting but needs a specialist administrator. The ticketing option scores well on owner effort because staff already use the system. She publishes the scores and weights so reviewers can challenge them. Weighting owner effort highly reflects the earlier finding that controls fail when owners lack time.
 
 ### 26.3 The choice
 
-The ticketing option wins narrowly over the platform. Nadia documents the decision with its alternatives and accepted risks: reporting will need extra work, and the ticketing vendor's roadmap could change. She recommends reviewing the choice after a year using measures such as overdue control tasks and time to prepare audit evidence. She notes that the close result means the weights matter, and records that a different weighting favouring board reporting would have chosen the platform instead. This makes the governance consequence visible to people outside the engineering team.
+The ticketing option wins narrowly over the platform. Nadia documents the decision with its alternatives and accepted risks: reporting will need extra work, and the ticketing vendor's roadmap could change. She recommends reviewing the choice after a year using measures such as overdue control tasks and time to prepare audit evidence. She notes that the close result means the weights matter, and records that a different weighting favouring board reporting would have chosen the platform instead. Recording the alternative weighting lets the board see the choice was close and revisit it if reporting becomes the priority.
 
 ### Worked example
 
@@ -1265,15 +1265,15 @@ You will (1) design controls with clear objectives and attributes; (2) select co
 
 ### 27.1 Control objectives
 
-Nadia learns that a well-designed control starts with an objective: what risk it reduces and how. For vendor access, the objective is that only approved, identified vendors reach control systems, only for approved tasks, with a record of what they did. From the objective she derives attributes: type, frequency, owner, automation level and the evidence produced. Without a clear objective, controls drift into rituals that are performed but no longer linked to the risk they were meant to reduce. Nadia keeps a dated copy of her working so that the result can be traced.
+Nadia learns that a well-designed control starts with an objective: what risk it reduces and how. For vendor access, the objective is that only approved, identified vendors reach control systems, only for approved tasks, with a record of what they did. From the objective she derives attributes: type, frequency, owner, automation level and the evidence produced. Without a clear objective, controls drift into rituals that are performed but no longer linked to the risk they were meant to reduce. The vendor access objective, for instance, makes clear that session recording exists to show what vendors did, not only who connected.
 
 ### 27.2 Using a catalogue
 
-Rather than inventing controls, Nadia consults ISO/IEC 27002:2022 and NIST SP 800-53 Rev. 5. The catalogues offer tested ideas: account management, remote access, session audit and supplier relationship controls. She selects and tailors them to Ardwell, recording which catalogue controls are applied, adapted or excluded, and why. This record resembles the statement of applicability that ISO/IEC 27001:2022 requires, and it lets auditors see that the selection followed from risk rather than habit or convenience. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Rather than inventing controls, Nadia consults ISO/IEC 27002:2022 and NIST SP 800-53 Rev. 5. The catalogues offer tested ideas: account management, remote access, session audit and supplier relationship controls. She selects and tailors them to Ardwell, recording which catalogue controls are applied, adapted or excluded, and why. This record resembles the statement of applicability that ISO/IEC 27001:2022 requires, and it lets auditors see that the selection followed from risk rather than habit or convenience. Excluding a catalogue control, for instance, needs a reason tied to Ardwell's risks, such as a control written for a type of system Ardwell does not operate.
 
 ### 27.3 Documenting for testing
 
-Each control description answers who does what, when, using what, and what evidence results. For the monthly recording review, the description names the security analyst, the ten percent sample, the criteria for concern and the report filed in the ticketing system. Nadia checks that an independent tester could verify the control from the description alone. Prof. Brenner notes that ambiguous control descriptions are a common audit problem, because testers and owners then disagree about what the control was supposed to do. She checks the idea against a second example before relying on it.
+Each control description answers who does what, when, using what, and what evidence results. For the monthly recording review, the description names the security analyst, the ten percent sample, the criteria for concern and the report filed in the ticketing system. Nadia checks that an independent tester could verify the control from the description alone. Prof. Brenner notes that ambiguous control descriptions are a common audit problem, because testers and owners then disagree about what the control was supposed to do. The named ten percent sample, for example, gives a tester a fixed number to check rather than a vague instruction to review recordings.
 
 ### Worked example
 
@@ -1309,15 +1309,15 @@ You will (1) plan control implementation with owners and milestones; (2) manage 
 
 ### 28.1 Planning
 
-Ardwell approves the vendor access broker and the ticketing-based GRC tooling. Nadia helps write the implementation plan: phases, owners, milestones, dependencies and acceptance criteria. Phase one moves the two highest-risk vendors to the broker. Phase two moves the rest. Phase three retires the direct connection and shared passwords. Each phase has a test that must pass before the next starts. She learns that phased plans reduce risk, because problems appear while the scope is still small. The point seems small, but it changes how owners act on the result.
+Ardwell approves the vendor access broker and the ticketing-based GRC tooling. Nadia helps write the implementation plan: phases, owners, milestones, dependencies and acceptance criteria. Phase one moves the two highest-risk vendors to the broker. Phase two moves the rest. Phase three retires the direct connection and shared passwords. Each phase has a test that must pass before the next starts. She learns that phased plans reduce risk, because problems appear while the scope is still small. Starting with the two highest-risk vendors means the riskiest connections are brokered first, before the scope widens.
 
 ### 28.2 People and change
 
-New controls change people's work. Vendor technicians must learn new sign-ins, and on-call engineers must approve sessions at night. Nadia helps prepare short guides, a test session for each vendor and a contact for problems. She records concerns, such as approval fatigue at night, and the responses, such as allowing pre-approved maintenance windows. She learns that adoption problems are often treated as user resistance when they are really design issues that the implementation team can fix. Ardwell's security manager later asks for a copy of this analysis.
+New controls change people's work. Vendor technicians must learn new sign-ins, and on-call engineers must approve sessions at night. Nadia helps prepare short guides, a test session for each vendor and a contact for problems. She records concerns, such as approval fatigue at night, and the responses, such as allowing pre-approved maintenance windows. She learns that adoption problems are often treated as user resistance when they are really design issues that the implementation team can fix. Pre-approved maintenance windows reduce night approvals without removing the record of each session.
 
 ### 28.3 Honest status
 
-Nadia builds a status report showing each milestone as complete, on track, at risk or late, with reasons. When one vendor's equipment cannot support the broker, she marks the milestone late and records a temporary compensating control: supervised sessions with an Ardwell engineer present. Prof. Brenner praises the honest status. He notes that reporting everything as green until the deadline is a common failure, and that boards can only help with problems they are told about in time. She marks the open questions in red so that they are not forgotten.
+Nadia builds a status report showing each milestone as complete, on track, at risk or late, with reasons. When one vendor's equipment cannot support the broker, she marks the milestone late and records a temporary compensating control: supervised sessions with an Ardwell engineer present. Prof. Brenner praises the honest status. He notes that reporting everything as green until the deadline is a common failure, and that boards can only help with problems they are told about in time. The supervised sessions keep that vendor's work traceable until its equipment can be replaced or upgraded.
 
 ### Worked example
 
@@ -1353,11 +1353,11 @@ You will (1) measure control performance through test results; (2) set threshold
 
 ### 29.1 What to measure
 
-Nadia learns to separate measures of activity, such as the number of reviews held, from measures of performance, such as the share of control tests passed, and measures of outcome, such as excess access found. NIST CSF 2.0 encourages organisations to monitor and improve their cybersecurity outcomes, and ISO/IEC 27001:2022 requires the organisation to determine what is measured and how results are evaluated. She proposes that Ardwell report mainly performance and outcome measures to the board. Writing the reasoning down also helps her spot a weak step in her argument.
+Nadia learns to separate measures of activity, such as the number of reviews held, from measures of performance, such as the share of control tests passed, and measures of outcome, such as excess access found. NIST CSF 2.0 encourages organisations to monitor and improve their cybersecurity outcomes, and ISO/IEC 27001:2022 requires the organisation to determine what is measured and how results are evaluated. She proposes that Ardwell report mainly performance and outcome measures to the board. Excess access found, for instance, tells the board whether risk is shrinking, while counting reviews held only shows effort.
 
 ### 29.2 Pass rates and thresholds
 
-For one quarter, Ardwell tests five control families. The lab computes pass rates and applies thresholds agreed with management: green at ninety-five percent or more, amber from eighty percent, red below that. Access passes forty-five of forty-eight tests, ninety-four percent, just amber. Patching passes thirty-one of forty, seventy-eight percent, red. Backup passes all twelve. Logging is amber at eighty-seven percent and change management is red at seventy-two percent. Overall, one hundred and thirty-two of one hundred and fifty-five pass. Nadia discusses the trade-off with a classmate who works in finance.
+For one quarter, Ardwell tests five control families. The lab computes pass rates and applies thresholds agreed with management: green at ninety-five percent or more, amber from eighty percent, red below that. Access passes forty-five of forty-eight tests, ninety-four percent, just amber. Patching passes thirty-one of forty, seventy-eight percent, red. Backup passes all twelve. Logging is amber at eighty-seven percent and change management is red at seventy-two percent. Overall, one hundred and thirty-two of one hundred and fifty-five pass. That overall eighty-five percent is the figure the next section warns against reporting on its own.
 
 ### Lab — Control pass rates against thresholds
 
@@ -1385,7 +1385,7 @@ overall 132/155 = 85%
 
 ### 29.3 Not hiding weak areas
 
-The overall figure of eighty-five percent looks reasonable, but it hides two red families. Nadia reports each family separately, leading with the reds and their causes: patching delays on substation equipment and emergency changes without review. She warns that thresholds influence behaviour; if teams are judged only on pass rates, they may test easy cases. She recommends rotating test samples and reviewing how tests are chosen, so the measure stays honest over time. The class compares answers and finds that most differences come from unstated assumptions.
+The overall figure of eighty-five percent looks reasonable, but it hides two red families. Nadia reports each family separately, leading with the reds and their causes: patching delays on substation equipment and emergency changes without review. She warns that thresholds influence behaviour; if teams are judged only on pass rates, they may test easy cases. She recommends rotating test samples and reviewing how tests are chosen, so the measure stays honest over time. Rotating samples prevents patching tests from always landing on office machines and missing substation equipment.
 
 ### Worked example
 
@@ -1421,15 +1421,15 @@ You will (1) verify that controls operate as described; (2) collect and record e
 
 ### 30.1 Planning verification
 
-In the verification laboratory, Nadia tests the vendor access broker against its control descriptions. For each control she writes a test step, the expected result and the evidence to keep. She checks that a vendor without multi-factor authentication cannot sign in, that a session without approval cannot start, that sessions end after four hours and that recordings appear in the archive. She uses a test vendor account in a laboratory copy of the broker, so production is not disturbed. Nadia records this point in her course notebook so that later chapters can build on it.
+In the verification laboratory, Nadia tests the vendor access broker against its control descriptions. For each control she writes a test step, the expected result and the evidence to keep. She checks that a vendor without multi-factor authentication cannot sign in, that a session without approval cannot start, that sessions end after four hours and that recordings appear in the archive. She uses a test vendor account in a laboratory copy of the broker, so production is not disturbed. Each expected result is written before the test runs, so a pass cannot be decided after seeing the outcome.
 
 ### 30.2 Evidence
 
-For each test Nadia records the date, the tester, the steps, the result and supporting artefacts such as screenshots and log extracts. She names files consistently and stores them where they cannot be edited after filing. She learns that evidence must allow another person to understand and repeat the test. An auditor will not accept a statement that a test passed without seeing what was done and what was observed, and a future engineer will need the same detail. Prof. Brenner asks her to explain the idea aloud to a classmate before moving on.
+For each test Nadia records the date, the tester, the steps, the result and supporting artefacts such as screenshots and log extracts. She names files consistently and stores them where they cannot be edited after filing. She learns that evidence must allow another person to understand and repeat the test. An auditor will not accept a statement that a test passed without seeing what was done and what was observed, and a future engineer will need the same detail. Prof. Brenner asks whether a screenshot alone would do, and Nadia adds log extracts because a screenshot cannot show what happened before or after it.
 
 ### 30.3 Findings
 
-Most tests pass, but one fails: a session approved for one device can reach a second device on the same network segment. Nadia records the finding with its severity, the evidence and a recommended fix: restricting the jump host's routes per session. She reports it to the implementation team, who fix it and ask her to retest. The retest passes and is recorded. She learns that verification is valuable precisely because it finds what designers assumed would not happen. She notes the assumption behind it so that a reviewer can challenge it later.
+Most tests pass, but one fails: a session approved for one device can reach a second device on the same network segment. Nadia records the finding with its severity, the evidence and a recommended fix: restricting the jump host's routes per session. She reports it to the implementation team, who fix it and ask her to retest. The retest passes and is recorded. She learns that verification is valuable precisely because it finds what designers assumed would not happen. Restricting jump host routes per session closes the second-device path without slowing approved work.
 
 ### Worked example
 
@@ -1465,15 +1465,15 @@ You will (1) roll out a GRC capability across the organisation; (2) integrate co
 
 ### 31.1 Rolling out the tooling
 
-With the broker running, Ardwell rolls out its ticketing-based GRC tooling. Each control becomes a recurring task assigned to its owner, with the control description, test steps and an evidence field. Nadia helps migrate eighty controls from spreadsheets, checking each for an owner and a frequency. Twelve controls have no clear owner, and three describe practices that no longer exist. Migration thus becomes a cleanup exercise, removing obsolete controls and assigning owners before the first cycle begins. The same reasoning will return when Ardwell's auditors visit next year.
+With the broker running, Ardwell rolls out its ticketing-based GRC tooling. Each control becomes a recurring task assigned to its owner, with the control description, test steps and an evidence field. Nadia helps migrate eighty controls from spreadsheets, checking each for an owner and a frequency. Twelve controls have no clear owner, and three describe practices that no longer exist. Migration thus becomes a cleanup exercise, removing obsolete controls and assigning owners before the first cycle begins. Removing the three obsolete controls also means the first cycle does not produce misleading passes for practices no longer performed.
 
 ### 31.2 Routine integration
 
-Controls work best when they fit existing routines. Nadia links the quarterly access review to the human resources reporting cycle, so reviewers receive current role lists. She schedules patch evidence collection to follow the monthly maintenance window. Owners receive reminders a week before tasks are due, and overdue tasks escalate to managers after five days. She learns that integration into routine work reduces the effort of compliance and makes evidence a by-product of operations rather than a separate burden. She adds a short note to the shared course wiki for other students.
+Controls work best when they fit existing routines. Nadia links the quarterly access review to the human resources reporting cycle, so reviewers receive current role lists. She schedules patch evidence collection to follow the monthly maintenance window. Owners receive reminders a week before tasks are due, and overdue tasks escalate to managers after five days. She learns that integration into routine work reduces the effort of compliance and makes evidence a by-product of operations rather than a separate burden. Linking evidence collection to the maintenance window means patch evidence is fresh when it is gathered.
 
 ### 31.3 Exceptions
 
-Some controls cannot be applied everywhere. An old substation device cannot support current authentication. Nadia helps design an exception process: the owner requests an exception, states the risk and compensating controls, a manager approves it for a limited time and the exception appears in the risk register. Exceptions expire and must be renewed with fresh reasoning. She learns that unmanaged exceptions become hidden permanent gaps, while managed ones keep risk visible and decisions accountable. This makes the governance consequence visible to people outside the engineering team.
+Some controls cannot be applied everywhere. An old substation device cannot support current authentication. Nadia helps design an exception process: the owner requests an exception, states the risk and compensating controls, a manager approves it for a limited time and the exception appears in the risk register. Exceptions expire and must be renewed with fresh reasoning. She learns that unmanaged exceptions become hidden permanent gaps, while managed ones keep risk visible and decisions accountable. The old substation device, for instance, can stay in service under supervised access while its exception and expiry date remain visible.
 
 ### Worked example
 
@@ -1509,11 +1509,11 @@ You will (1) compute the probability that layered controls both fail; (2) accoun
 
 ### 32.1 Layered controls
 
-Ardwell protects vendor access with two layers: the broker's approval check and network rules that block unapproved routes. Nadia asks how likely it is that both fail at once. If the approval check fails five percent of the time and the network rules ten percent, and failures are independent, both fail only half a percent of the time. Layering seems to give strong protection. Reliability engineering, however, warns that independence is an assumption that must be justified before it is trusted. Nadia keeps a dated copy of her working so that the result can be traced.
+Ardwell protects vendor access with two layers: the broker's approval check and network rules that block unapproved routes. Nadia asks how likely it is that both fail at once. If the approval check fails five percent of the time and the network rules ten percent, and failures are independent, both fail only half a percent of the time. Layering seems to give strong protection. Reliability engineering, however, warns that independence is an assumption that must be justified before it is trusted. A single administrator able to change both layers would be one such shared dependency, as the next section shows.
 
 ### 32.2 Common cause
 
-The lab adds a two percent chance of a common cause that defeats both layers at once, such as an administrator account able to change both the broker and the network rules. The joint failure probability rises from one half of a percent to about two and a half percent, five times higher. Nadia sees that the common cause dominates the result. Improving either layer alone barely helps; removing the shared dependency matters far more. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+The lab adds a two percent chance of a common cause that defeats both layers at once, such as an administrator account able to change both the broker and the network rules. The joint failure probability rises from one half of a percent to about two and a half percent, five times higher. Nadia sees that the common cause dominates the result. Improving either layer alone barely helps; removing the shared dependency matters far more. This explains why her design work now focuses on separating administration rather than improving either layer's failure rate.
 
 ### Lab — Joint failure of two controls with and without common cause
 
@@ -1537,7 +1537,7 @@ both fail with 2% common cause 2.49%
 
 ### 32.3 Designing for independence
 
-Nadia recommends separating administration of the broker and network rules between different teams with different accounts, logging changes to both in a system neither team controls and testing them separately. She notes that common causes also include shared training, shared suppliers and shared assumptions. Prof. Brenner adds that governance reports often count layers as if each were independent, so stating dependencies explicitly is a sign of mature risk analysis and a frequent gap in audit evidence. She checks the idea against a second example before relying on it.
+Nadia recommends separating administration of the broker and network rules between different teams with different accounts, logging changes to both in a system neither team controls and testing them separately. She notes that common causes also include shared training, shared suppliers and shared assumptions. Prof. Brenner adds that governance reports often count layers as if each were independent, so stating dependencies explicitly is a sign of mature risk analysis and a frequent gap in audit evidence. Separate teams and accounts would remove the two percent common cause the lab modelled.
 
 ### Worked example
 
@@ -1573,15 +1573,15 @@ You will (1) integrate safety and resilience into governance; (2) plan for conti
 
 ### 33.1 Resilience as a governance goal
 
-For an electricity distributor, preventing every incident is impossible, so the board's real goal is resilience: keeping power flowing and restoring services quickly when things go wrong. Nadia learns that NIST CSF 2.0 includes Respond and Recover functions alongside protection and detection, and that ISO/IEC 27002:2022 covers information security during disruption and ICT readiness for business continuity. She helps Ardwell define recovery time objectives for billing, the payment portal and control systems, agreed with the board. Nadia records this point in her course notebook so that later chapters can build on it.
+For an electricity distributor, preventing every incident is impossible, so the board's real goal is resilience: keeping power flowing and restoring services quickly when things go wrong. Nadia learns that NIST CSF 2.0 includes Respond and Recover functions alongside protection and detection, and that ISO/IEC 27002:2022 covers information security during disruption and ICT readiness for business continuity. She helps Ardwell define recovery time objectives for billing, the payment portal and control systems, agreed with the board. Recovery time objectives give the board a measurable test of resilience, as the billing restore in section 33.3 shows.
 
 ### 33.2 Operating under attack
 
-Nadia joins a workshop on operating while office systems are encrypted by ransomware. Control rooms must keep running on isolated systems with paper procedures for switching. Billing can pause for days without harming customers if communication is clear. The payment portal can redirect customers to pay later. Each decision is recorded in a continuity plan. She learns that resilience planning forces governance to decide in advance which services matter most, rather than improvising priorities during a crisis. Prof. Brenner asks her to explain the idea aloud to a classmate before moving on.
+Nadia joins a workshop on operating while office systems are encrypted by ransomware. Control rooms must keep running on isolated systems with paper procedures for switching. Billing can pause for days without harming customers if communication is clear. The payment portal can redirect customers to pay later. Each decision is recorded in a continuity plan. She learns that resilience planning forces governance to decide in advance which services matter most, rather than improvising priorities during a crisis. Prof. Brenner notes that pausing billing for days is acceptable only because communication to customers was planned in advance.
 
 ### 33.3 Testing recovery
 
-Plans must be tested. Ardwell restores billing from backup in a test environment and measures the time: nine hours against a target of eight. Nadia records the gap, its causes and fixes, such as pre-staging restore scripts. A control-room exercise shows that paper procedures are out of date. She learns that recovery tests often fail first time, which is their purpose, and that recording and closing gaps is what turns a plan on paper into real resilience the board can rely on. She notes the assumption behind it so that a reviewer can challenge it later.
+Plans must be tested. Ardwell restores billing from backup in a test environment and measures the time: nine hours against a target of eight. Nadia records the gap, its causes and fixes, such as pre-staging restore scripts. A control-room exercise shows that paper procedures are out of date. She learns that recovery tests often fail first time, which is their purpose, and that recording and closing gaps is what turns a plan on paper into real resilience the board can rely on. The nine-hour billing restore against an eight-hour target is a gap small enough to fix with pre-staged scripts.
 
 ### Worked example
 
@@ -1617,15 +1617,15 @@ You will (1) integrate GRC with enterprise risk management; (2) connect security
 
 ### 34.1 Enterprise risk
 
-Ardwell already has an enterprise risk register covering financial, operational, regulatory and safety risks. Security risks lived in a separate register, so the board saw them in isolation. Nadia helps integrate them, mapping security risks to enterprise categories and using common scales for likelihood and impact. ISO 31000:2018 promotes integrating risk management into all organisational activities, and COBIT 2019 links IT goals to enterprise goals. Integration lets the board compare cyber risk with other risks on equal terms. The same reasoning will return when Ardwell's auditors visit next year.
+Ardwell already has an enterprise risk register covering financial, operational, regulatory and safety risks. Security risks lived in a separate register, so the board saw them in isolation. Nadia helps integrate them, mapping security risks to enterprise categories and using common scales for likelihood and impact. ISO 31000:2018 promotes integrating risk management into all organisational activities, and COBIT 2019 links IT goals to enterprise goals. Integration lets the board compare cyber risk with other risks on equal terms. Once both use the same scales, a ransomware scenario can be ranked against a financial or safety risk on the board's single register.
 
 ### 34.2 Common language
 
-Integration requires a shared language. Security teams spoke of vulnerabilities and threats; finance spoke of losses and provisions. Nadia drafts a glossary and translation table. A ransomware scenario becomes an operational disruption risk with a financial impact range and a regulatory reporting obligation. She learns that translation is not simplification but connection: each audience keeps its precision while seeing how the risk relates to things it already manages, such as insurance cover and reserves. She adds a short note to the shared course wiki for other students.
+Integration requires a shared language. Security teams spoke of vulnerabilities and threats; finance spoke of losses and provisions. Nadia drafts a glossary and translation table. A ransomware scenario becomes an operational disruption risk with a financial impact range and a regulatory reporting obligation. She learns that translation is not simplification but connection: each audience keeps its precision while seeing how the risk relates to things it already manages, such as insurance cover and reserves. The ransomware translation, for example, gives finance a loss range it can compare with insurance cover.
 
 ### 34.3 Aligned processes
 
-Nadia aligns calendars so security risk reviews feed the quarterly enterprise risk report, internal audit plans consider security findings and procurement checks supplier security before contracts. Each department keeps its own process, but handoffs are defined. She learns that integration fails when it means one team taking over another's work, and succeeds when interfaces are clear. Prof. Brenner notes that this is an application of systems engineering's emphasis on interfaces, which she studied earlier. This makes the governance consequence visible to people outside the engineering team.
+Nadia aligns calendars so security risk reviews feed the quarterly enterprise risk report, internal audit plans consider security findings and procurement checks supplier security before contracts. Each department keeps its own process, but handoffs are defined. She learns that integration fails when it means one team taking over another's work, and succeeds when interfaces are clear. Prof. Brenner notes that this is an application of systems engineering's emphasis on interfaces, which she studied earlier. Procurement checking supplier security before contracts is one such defined handoff, owned by procurement but informed by security.
 
 ### Worked example
 
@@ -1661,15 +1661,15 @@ You will (1) design a board reporting pack for security risk; (2) test it with r
 
 ### 35.1 The brief
 
-In the second studio, Nadia's team designs a quarterly board pack on security risk for Ardwell. The brief asks for no more than four pages, a focus on decisions and honest uncertainty. The team interviews two board members. One wants to know whether risk is rising or falling. The other wants to know what the board is being asked to decide. Neither wants technical detail, but both want to trust the numbers and know where they came from. Nadia keeps a dated copy of her working so that the result can be traced.
+In the second studio, Nadia's team designs a quarterly board pack on security risk for Ardwell. The brief asks for no more than four pages, a focus on decisions and honest uncertainty. The team interviews two board members. One wants to know whether risk is rising or falling. The other wants to know what the board is being asked to decide. Neither wants technical detail, but both want to trust the numbers and know where they came from. The two directors' questions become the first two pages of the design: trends and decisions requested.
 
 ### 35.2 The design
 
-The pack opens with decisions requested. Page two shows the top five residual risks with expected loss ranges and trend arrows. Page three shows control performance by family with red items first. Page four lists major findings, exceptions and incidents with owners and dates. An appendix explains methods and assumptions. The team avoids heat maps without numbers, after reading Cox (2008) on how risk matrices can mislead, and uses ranges and plain sentences instead. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+The pack opens with decisions requested. Page two shows the top five residual risks with expected loss ranges and trend arrows. Page three shows control performance by family with red items first. Page four lists major findings, exceptions and incidents with owners and dates. An appendix explains methods and assumptions. The team avoids heat maps without numbers, after reading Cox (2008) on how risk matrices can mislead, and uses ranges and plain sentences instead. Ranges and plain sentences also let directors see how uncertain each expected loss estimate is.
 
 ### 35.3 Testing and revision
 
-The team tests the pack with three volunteers acting as board members. One misreads a trend arrow as good news when risk was rising. Another cannot find who owns a red control. The team adds labelled arrows with words and puts owner names beside each red item. A volunteer asks why ransomware residual risk fell; the team adds a sentence linking the drop to tested backups. Nadia learns that readers reveal confusion that designers cannot see. She checks the idea against a second example before relying on it.
+The team tests the pack with three volunteers acting as board members. One misreads a trend arrow as good news when risk was rising. Another cannot find who owns a red control. The team adds labelled arrows with words and puts owner names beside each red item. A volunteer asks why ransomware residual risk fell; the team adds a sentence linking the drop to tested backups. Nadia learns that readers reveal confusion that designers cannot see. The labelled trend arrows, for example, fix a misreading that the designers themselves never noticed.
 
 ### Worked example
 
@@ -1705,15 +1705,15 @@ You will (1) estimate the workload of a GRC programme; (2) find bottlenecks as i
 
 ### 36.1 Workload
 
-Nadia estimates the yearly workload of Ardwell's programme: eighty controls with tests at various frequencies, quarterly access reviews across ten systems, monthly recording sampling and annual audits. She counts hours per activity using owners' estimates and finds the total close to two full-time staff, spread thinly across many people. She learns that GRC programmes often fail not from bad design but from underestimated effort, which leads to skipped tests and stale evidence. The point seems small, but it changes how owners act on the result.
+Nadia estimates the yearly workload of Ardwell's programme: eighty controls with tests at various frequencies, quarterly access reviews across ten systems, monthly recording sampling and annual audits. She counts hours per activity using owners' estimates and finds the total close to two full-time staff, spread thinly across many people. She learns that GRC programmes often fail not from bad design but from underestimated effort, which leads to skipped tests and stale evidence. Spread over many people, two full-time equivalents can disappear into other duties, which is how tests get skipped.
 
 ### 36.2 Bottlenecks
 
-As Ardwell plans to add a second control centre and more vendors, Nadia models growth. Access reviews and evidence collection scale with systems and vendors, but the security analyst who checks evidence is a single person. At current growth, her queue would double within a year. Nadia identifies her as the bottleneck and recommends spreading review across trained control owners, with the analyst sampling their work. Finding the narrowest point lets Ardwell invest where it matters most. Ardwell's security manager later asks for a copy of this analysis.
+As Ardwell plans to add a second control centre and more vendors, Nadia models growth. Access reviews and evidence collection scale with systems and vendors, but the security analyst who checks evidence is a single person. At current growth, her queue would double within a year. Nadia identifies her as the bottleneck and recommends spreading review across trained control owners, with the analyst sampling their work. Finding the narrowest point lets Ardwell invest where it matters most. Training control owners to check their own evidence keeps the analyst's role as a sampler rather than the only checker.
 
 ### 36.3 Automation and sampling
 
-Nadia lists tasks that could be automated: collecting patch levels, exporting account lists and checking configuration baselines. Automation reduces effort and improves consistency, though scripts need their own testing and ownership. For tasks requiring judgement, such as reviewing recordings, sampling reduces effort while keeping assurance. She learns that scale in governance comes from designing evidence to flow from systems automatically, reserving human attention for decisions, exceptions and the things automation cannot judge. She marks the open questions in red so that they are not forgotten.
+Nadia lists tasks that could be automated: collecting patch levels, exporting account lists and checking configuration baselines. Automation reduces effort and improves consistency, though scripts need their own testing and ownership. For tasks requiring judgement, such as reviewing recordings, sampling reduces effort while keeping assurance. She learns that scale in governance comes from designing evidence to flow from systems automatically, reserving human attention for decisions, exceptions and the things automation cannot judge. Automated patch level collection, for example, removes a manual task while making monthly evidence consistent.
 
 ### Worked example
 
@@ -1749,15 +1749,15 @@ You will (1) run the GRC programme as an operational service; (2) manage finding
 
 ### 37.1 Running the service
 
-Nadia shadows Ardwell's security manager for a month. Each week begins with a review of overdue control tasks, new findings and exceptions nearing expiry. Mid-week brings meetings with owners whose controls failed. Month-end brings evidence checks and preparation of indicators. She learns that governance is not an annual project but a continuous service with a rhythm, and that the rhythm itself is a control: when weekly reviews lapse, problems accumulate unseen. Writing the reasoning down also helps her spot a weak step in her argument.
+Nadia shadows Ardwell's security manager for a month. Each week begins with a review of overdue control tasks, new findings and exceptions nearing expiry. Mid-week brings meetings with owners whose controls failed. Month-end brings evidence checks and preparation of indicators. She learns that governance is not an annual project but a continuous service with a rhythm, and that the rhythm itself is a control: when weekly reviews lapse, problems accumulate unseen. The weekly review of exceptions nearing expiry, for instance, stops temporary exceptions turning into permanent gaps.
 
 ### 37.2 Findings to closure
 
-Every finding follows a path: recorded with severity and owner, agreed remediation plan, due date, evidence of fix and verification by someone other than the owner. Nadia tracks twenty open findings and notices that several were marked fixed without evidence. She introduces a rule that only the security analyst can close findings, after checking evidence. Closure rates dip briefly, then recover with real fixes. She learns that closure without verification produces comforting numbers but not reduced risk. Nadia discusses the trade-off with a classmate who works in finance.
+Every finding follows a path: recorded with severity and owner, agreed remediation plan, due date, evidence of fix and verification by someone other than the owner. Nadia tracks twenty open findings and notices that several were marked fixed without evidence. She introduces a rule that only the security analyst can close findings, after checking evidence. Closure rates dip briefly, then recover with real fixes. She learns that closure without verification produces comforting numbers but not reduced risk. The brief dip in closure rates showed how many earlier closures had lacked evidence.
 
 ### 37.3 Operational review
 
-Each quarter, the security manager reviews the programme itself: Are tasks on time? Are findings ageing? Are exceptions growing? Which controls fail repeatedly? Nadia helps prepare the review and notes that patch failures have repeated for three quarters on substation devices. The review escalates this to a design problem rather than an owner problem, leading to a project to replace the devices. She learns that operations data reveal where design, not effort, is the real issue. The class compares answers and finds that most differences come from unstated assumptions.
+Each quarter, the security manager reviews the programme itself: Are tasks on time? Are findings ageing? Are exceptions growing? Which controls fail repeatedly? Nadia helps prepare the review and notes that patch failures have repeated for three quarters on substation devices. The review escalates this to a design problem rather than an owner problem, leading to a project to replace the devices. She learns that operations data reveal where design, not effort, is the real issue. Replacing the substation devices removes a cause that no amount of owner effort could fix.
 
 ### Worked example
 
@@ -1793,11 +1793,11 @@ You will (1) distinguish verification from validation; (2) use attribute samplin
 
 ### 38.1 Verification and validation
 
-Verification asks whether a control was built as specified; validation asks whether it achieves its purpose in real operation over time. Nadia verified the broker in the laboratory earlier. Now she must validate that the control operated effectively through a year, in the way internal auditors and service auditors examine operating effectiveness. AICPA's trust services criteria, used in SOC 2 reports, distinguish design from operating effectiveness in the same spirit, though her work is internal and not an attestation. Nadia records this point in her course notebook so that later chapters can build on it.
+Verification asks whether a control was built as specified; validation asks whether it achieves its purpose in real operation over time. Nadia verified the broker in the laboratory earlier. Now she must validate that the control operated effectively through a year, in the way internal auditors and service auditors examine operating effectiveness. AICPA's trust services criteria, used in SOC 2 reports, distinguish design from operating effectiveness in the same spirit, though her work is internal and not an attestation. The broker's lab tests verified design; a year of operation shows whether approval and recording actually happened in practice.
 
 ### 38.2 Sample sizes
 
-Checking every vendor session is impractical, so Nadia samples session records and counts deviations, such as a session without approval. The lab computes exact upper ninety-five percent bounds. Twenty-five clean records give a bound of about eleven percent. Forty clean records give about seven percent. Forty records with one deviation give about eleven percent. Fifty-nine clean records give exactly five percent. If Ardwell's tolerable deviation rate is five percent, she needs at least fifty-nine records with no deviations. Prof. Brenner asks her to explain the idea aloud to a classmate before moving on.
+Checking every vendor session is impractical, so Nadia samples session records and counts deviations, such as a session without approval. The lab computes exact upper ninety-five percent bounds. Twenty-five clean records give a bound of about eleven percent. Forty clean records give about seven percent. Forty records with one deviation give about eleven percent. Fifty-nine clean records give exactly five percent. If Ardwell's tolerable deviation rate is five percent, she needs at least fifty-nine records with no deviations. Prof. Brenner notes that one deviation in forty raises the bound to about eleven percent, so a single exception changes the conclusion sharply.
 
 ### Lab — Exact upper bounds for session-record samples
 
@@ -1826,7 +1826,7 @@ n=59 deviations=0: upper bound 0.050
 
 ### 38.3 Conclusions
 
-Nadia samples fifty-nine sessions at random across the year and finds no deviations, so she concludes with ninety-five percent confidence that the deviation rate is at most five percent. She notes the conclusion covers approval only, not whether vendors did the right work. She also checks emergency sessions separately, because they follow a different path and could hide problems in an overall sample. Prof. Brenner reminds the class that sampling supports bounded statements, never certainty. She notes the assumption behind it so that a reviewer can challenge it later.
+Nadia samples fifty-nine sessions at random across the year and finds no deviations, so she concludes with ninety-five percent confidence that the deviation rate is at most five percent. She notes the conclusion covers approval only, not whether vendors did the right work. She also checks emergency sessions separately, because they follow a different path and could hide problems in an overall sample. Prof. Brenner reminds the class that sampling supports bounded statements, never certainty. Sampling emergency sessions separately keeps their different approval path from being diluted in the overall sample.
 
 ### Worked example
 
@@ -1862,15 +1862,15 @@ You will (1) keep policies, controls and registers current; (2) manage framework
 
 ### 39.1 Keeping things current
 
-A GRC programme decays unless maintained. Policies reference retired systems, controls describe abandoned practices and register entries describe risks that have changed. Nadia sets review dates for every document and control and links them to triggers, such as a major system change or an incident, that force earlier review. She learns that maintainability means designing governance artefacts to be easy to update: short, owned, versioned and linked to the things they describe. The same reasoning will return when Ardwell's auditors visit next year. She adds a short note to the shared course wiki for other students.
+A GRC programme decays unless maintained. Policies reference retired systems, controls describe abandoned practices and register entries describe risks that have changed. Nadia sets review dates for every document and control and links them to triggers, such as a major system change or an incident, that force earlier review. She learns that maintainability means designing governance artefacts to be easy to update: short, owned, versioned and linked to the things they describe. An incident trigger, for example, would force review of the vendor access policy after any misuse, not just at its annual date.
 
 ### 39.2 Framework changes
 
-Standards change editions. ISO/IEC 27001 was revised in 2022, reorganising its reference controls into four themes, and NIST CSF moved to version 2.0 in 2024, adding the Govern function. Nadia learns that each change requires a transition plan: compare old and new requirements, update mappings, adjust controls and train staff. Keeping mappings in structured data rather than prose makes transitions much easier, because changes can be traced item by item instead of rewritten from scratch. This makes the governance consequence visible to people outside the engineering team.
+Standards change editions. ISO/IEC 27001 was revised in 2022, reorganising its reference controls into four themes, and NIST CSF moved to version 2.0 in 2024, adding the Govern function. Nadia learns that each change requires a transition plan: compare old and new requirements, update mappings, adjust controls and train staff. Keeping mappings in structured data rather than prose makes transitions much easier, because changes can be traced item by item instead of rewritten from scratch. Ardwell's mapping of controls to ISO/IEC 27001:2022 themes, for instance, can be checked line by line if it is kept as data.
 
 ### 39.3 Knowledge loss
 
-When the security manager announces retirement, Nadia realises much of the programme lives in her head. Together they write short notes on why key decisions were made, which owners need support and where evidence lives. They pair the manager with her successor for two months. Nadia learns that governance knowledge, especially the reasons behind decisions, is easily lost, and that decision records, runbooks and overlapping handovers are maintainability controls in their own right. Nadia keeps a dated copy of her working so that the result can be traced.
+When the security manager announces retirement, Nadia realises much of the programme lives in her head. Together they write short notes on why key decisions were made, which owners need support and where evidence lives. They pair the manager with her successor for two months. Nadia learns that governance knowledge, especially the reasons behind decisions, is easily lost, and that decision records, runbooks and overlapping handovers are maintainability controls in their own right. The decision record for the vendor broker, for example, explains choices her successor might otherwise reverse.
 
 ### Worked example
 
@@ -1906,15 +1906,15 @@ You will (1) re-verify controls after changes; (2) test GRC tooling itself; (3) 
 
 ### 40.1 Regression testing
 
-After Ardwell upgrades its ticketing system, Nadia re-runs the verification tests for the GRC tooling and the broker. She learns that changes can break controls in unexpected ways. The upgrade changes how recurring tasks are scheduled, so several quarterly control tasks are now due annually. Without regression tests, the change would have silently reduced control frequency for a year. She adds a check that compares scheduled frequencies with the control register after every upgrade, closing that gap. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+After Ardwell upgrades its ticketing system, Nadia re-runs the verification tests for the GRC tooling and the broker. She learns that changes can break controls in unexpected ways. The upgrade changes how recurring tasks are scheduled, so several quarterly control tasks are now due annually. Without regression tests, the change would have silently reduced control frequency for a year. She adds a check that compares scheduled frequencies with the control register after every upgrade, closing that gap. Quarterly tasks becoming annual would also have weakened the access review evidence the auditors rely on.
 
 ### 40.2 Testing the tooling
 
-The GRC tooling itself must be verified. Nadia tests that evidence attachments cannot be altered after closure, that only authorised staff can close findings and that reports count tasks correctly. One report counts reopened findings twice, inflating the open count. She fixes the query and adds a test case. She learns that tools that produce governance evidence deserve the same rigour as the controls they track, since errors in the tool become errors in the board's view of risk. She checks the idea against a second example before relying on it.
+The GRC tooling itself must be verified. Nadia tests that evidence attachments cannot be altered after closure, that only authorised staff can close findings and that reports count tasks correctly. One report counts reopened findings twice, inflating the open count. She fixes the query and adds a test case. She learns that tools that produce governance evidence deserve the same rigour as the controls they track, since errors in the tool become errors in the board's view of risk. The double count of reopened findings would have overstated the open findings reported to the board.
 
 ### 40.3 Reporting regressions
 
-Nadia reports both regressions with severity, cause and fix, and recommends that upgrades to GRC systems follow change management with verification before release. She also proposes keeping a small library of test cases that run after any change. Prof. Brenner notes that the laboratory work shows a key principle: verification is not a one-time event but must be repeated whenever the system changes, because the conditions that made a control work can disappear quietly. The point seems small, but it changes how owners act on the result.
+Nadia reports both regressions with severity, cause and fix, and recommends that upgrades to GRC systems follow change management with verification before release. She also proposes keeping a small library of test cases that run after any change. Prof. Brenner notes that the laboratory work shows a key principle: verification is not a one-time event but must be repeated whenever the system changes, because the conditions that made a control work can disappear quietly. The library of test cases makes repeating verification cheap enough that it will actually be done after each change.
 
 ### Worked example
 
@@ -1950,11 +1950,11 @@ You will (1) choose control investments under a budget; (2) compare optimal and 
 
 ### 41.1 The budget problem
 
-Ardwell's board approves two hundred thousand for new security controls next year. Nadia lists six options with costs and estimated reductions in expected annual loss: multi-factor authentication for remote access, offline backups, a vendor access broker extension, card tokenisation, an awareness refresh and log monitoring. Total costs exceed the budget, so choices must be made. She frames this as an optimisation problem: maximise total estimated loss reduction while keeping cost within the budget. Ardwell's security manager later asks for a copy of this analysis.
+Ardwell's board approves two hundred thousand for new security controls next year. Nadia lists six options with costs and estimated reductions in expected annual loss: multi-factor authentication for remote access, offline backups, a vendor access broker extension, card tokenisation, an awareness refresh and log monitoring. Total costs exceed the budget, so choices must be made. She frames this as an optimisation problem: maximise total estimated loss reduction while keeping cost within the budget. Framing it this way also makes explicit that each option's value rests on a workshop estimate of loss reduction.
 
 ### 41.2 Finding the best set
 
-With only six options, the lab checks every combination. The best set within budget costs one hundred and ninety thousand and reduces estimated loss by six hundred and thirty thousand: multi-factor authentication, offline backups and card tokenisation. Nadia compares this with an intuitive choice that management had suggested, the broker extension and log monitoring, which uses most of the budget for a much smaller reduction. Exhaustive search shows clearly how much value intuition can leave behind. She marks the open questions in red so that they are not forgotten.
+With only six options, the lab checks every combination. The best set within budget costs one hundred and ninety thousand and reduces estimated loss by six hundred and thirty thousand: multi-factor authentication, offline backups and card tokenisation. Nadia compares this with an intuitive choice that management had suggested, the broker extension and log monitoring, which uses most of the budget for a much smaller reduction. Exhaustive search shows clearly how much value intuition can leave behind. The intuitive choice targets vendor access and logging, which matter, but buys far less estimated reduction per thousand spent.
 
 ### Lab — Best control set within a budget
 
@@ -1983,7 +1983,7 @@ budget 200k; best reduction 630k at cost 190k
 
 ### 41.3 Limits
 
-Nadia reports the result with caveats. Reduction estimates come from workshops and are uncertain. Options may interact; backups and tokenisation address different risks, but other pairs might overlap. Some benefits, such as better evidence for audits, are not captured. Gordon and Loeb (2002) remind her that the value of investment depends on vulnerability and potential loss, not cost alone. She recommends using the optimal set as a starting point for discussion, with sensitivity checks on the most uncertain estimates. Writing the reasoning down also helps her spot a weak step in her argument.
+Nadia reports the result with caveats. Reduction estimates come from workshops and are uncertain. Options may interact; backups and tokenisation address different risks, but other pairs might overlap. Some benefits, such as better evidence for audits, are not captured. Gordon and Loeb (2002) remind her that the value of investment depends on vulnerability and potential loss, not cost alone. She recommends using the optimal set as a starting point for discussion, with sensitivity checks on the most uncertain estimates. A sensitivity check might show, for example, whether halving the tokenisation estimate would change the chosen set.
 
 ### Worked example
 
@@ -2019,15 +2019,15 @@ You will (1) frame an applied research question in GRC; (2) choose a method suit
 
 ### 42.1 An applied question
 
-Nadia chooses an applied research question for her final year: does Ardwell's new practice of reporting expected loss ranges to the board change the decisions it makes compared with the old heat map? She narrows it to measurable terms: the number of risk treatment decisions per quarter, the time from proposal to decision and whether decisions follow the largest residual risks. She records that the study can describe changes but cannot fully separate the effect of reporting from other changes. Nadia records this point in her course notebook so that later chapters can build on it.
+Nadia chooses an applied research question for her final year: does Ardwell's new practice of reporting expected loss ranges to the board change the decisions it makes compared with the old heat map? She narrows it to measurable terms: the number of risk treatment decisions per quarter, the time from proposal to decision and whether decisions follow the largest residual risks. She records that the study can describe changes but cannot fully separate the effect of reporting from other changes. The study's three measures are all countable from board minutes, which makes the comparison repeatable.
 
 ### 42.2 Method
 
-She uses a before-and-after comparison of board minutes for four quarters before and four after the change, coding each decision with a codebook she pilots with a classmate. She also interviews two directors. Wohlin and colleagues (2012) describe threats to validity that she adapts: changes in board membership, a major incident that might prompt action and her own bias as someone who helped design the new pack. She records how each could affect results. Prof. Brenner asks her to explain the idea aloud to a classmate before moving on.
+She uses a before-and-after comparison of board minutes for four quarters before and four after the change, coding each decision with a codebook she pilots with a classmate. She also interviews two directors. Wohlin and colleagues (2012) describe threats to validity that she adapts: changes in board membership, a major incident that might prompt action and her own bias as someone who helped design the new pack. She records how each could affect results. Prof. Brenner adds that piloting the codebook with a classmate also reduces the risk that her own bias decides how decisions are coded.
 
 ### 42.3 Critical reading
 
-Nadia reviews published evidence. Hubbard and Seiersen (2016) argue for quantitative methods, while Cox (2008) analyses weaknesses of risk matrices. Spears and Barki (2010) show that involving business users improves security risk management. She notes most sources are analytical or based on other settings, and few measure board decisions directly. Her study can add a small, honest piece of evidence from one cooperative, provided she reports its limits and avoids treating it as general proof. She notes the assumption behind it so that a reviewer can challenge it later.
+Nadia reviews published evidence. Hubbard and Seiersen (2016) argue for quantitative methods, while Cox (2008) analyses weaknesses of risk matrices. Spears and Barki (2010) show that involving business users improves security risk management. She notes most sources are analytical or based on other settings, and few measure board decisions directly. Her study can add a small, honest piece of evidence from one cooperative, provided she reports its limits and avoids treating it as general proof. Her contribution is therefore described as local evidence from one organisation, not as a test of the published claims.
 
 ### Worked example
 
@@ -2063,15 +2063,15 @@ You will (1) work within a real governance function; (2) observe audits and regu
 
 ### 43.1 Placement
 
-Nadia spends a semester on placement in Ardwell's governance team. She supports preparation for the cooperative's first certification audit against ISO/IEC 27001:2022, helping owners assemble evidence and checking the statement of applicability against actual practice. She finds that some controls work well but are poorly documented, while others are documented well but rarely performed. She learns that audits test the link between documents and practice, and that the link is often weaker than managers think. The same reasoning will return when Ardwell's auditors visit next year.
+Nadia spends a semester on placement in Ardwell's governance team. She supports preparation for the cooperative's first certification audit against ISO/IEC 27001:2022, helping owners assemble evidence and checking the statement of applicability against actual practice. She finds that some controls work well but are poorly documented, while others are documented well but rarely performed. She learns that audits test the link between documents and practice, and that the link is often weaker than managers think. The controls performed but undocumented, for example, need only writing up, while those documented but not performed need real work.
 
 ### 43.2 Audit and regulator
 
-She observes the stage one audit, in which the certification body reviews documentation and readiness. Auditors ask how risk acceptance decisions are made and who approves them. Ardwell's answer is clear because of the earlier work on decision records. Later, she sits in on a meeting with the energy regulator about incident reporting expectations. She notes how regulators focus on outcomes such as restoration times and communication, while certification focuses on management system processes. She adds a short note to the shared course wiki for other students.
+She observes the stage one audit, in which the certification body reviews documentation and readiness. Auditors ask how risk acceptance decisions are made and who approves them. Ardwell's answer is clear because of the earlier work on decision records. Later, she sits in on a meeting with the energy regulator about incident reporting expectations. She notes how regulators focus on outcomes such as restoration times and communication, while certification focuses on management system processes. The decision records from chapter 18 thus pay off directly when auditors ask who approves risk acceptance.
 
 ### 43.3 Reflection
 
-Nadia writes a reflection comparing practice with her coursework. Theory presented controls as neatly designed and tested; practice involved negotiation, competing deadlines and incomplete data. Yet the theory helped: data models, testable requirements and sampling gave her tools to bring order to messy situations. She also learns the value of relationships, since owners cooperated more readily once they understood the reasons behind requests. Prof. Brenner notes that reflective practice turns experience into transferable knowledge. This makes the governance consequence visible to people outside the engineering team.
+Nadia writes a reflection comparing practice with her coursework. Theory presented controls as neatly designed and tested; practice involved negotiation, competing deadlines and incomplete data. Yet the theory helped: data models, testable requirements and sampling gave her tools to bring order to messy situations. She also learns the value of relationships, since owners cooperated more readily once they understood the reasons behind requests. Prof. Brenner notes that reflective practice turns experience into transferable knowledge. Owners asked to supply evidence for the audit, for instance, responded faster once she explained which requirement each item supported.
 
 ### Worked example
 
@@ -2107,15 +2107,15 @@ You will (1) scope a capstone governance engineering project; (2) define success
 
 ### 44.1 Scoping
 
-For her capstone, Nadia works with Ardwell's new security manager on a continuous control monitoring service: automated collection of evidence for twenty high-value controls, with alerts when a control fails and a dashboard for owners. The scope excludes controls requiring human judgement. She writes a scope statement, lists stakeholders and agrees on constraints: only the standard library and existing systems, no access to production data beyond what owners already share and delivery within two terms. Nadia keeps a dated copy of her working so that the result can be traced.
+For her capstone, Nadia works with Ardwell's new security manager on a continuous control monitoring service: automated collection of evidence for twenty high-value controls, with alerts when a control fails and a dashboard for owners. The scope excludes controls requiring human judgement. She writes a scope statement, lists stakeholders and agrees on constraints: only the standard library and existing systems, no access to production data beyond what owners already share and delivery within two terms. Limiting the scope to controls with machine-readable evidence keeps the twenty-control target achievable within two terms.
 
 ### 44.2 Success criteria
 
-With the client, Nadia defines success criteria: evidence for at least eighteen of twenty controls collected automatically; alerts within one day of a control failure in tests; owners spending less time on evidence than before, measured by a short survey; and no false closure of findings. Each criterion has a measurement method. She learns that agreeing criteria early prevents disputes later and keeps the project focused on outcomes the client values rather than features that are merely interesting. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+With the client, Nadia defines success criteria: evidence for at least eighteen of twenty controls collected automatically; alerts within one day of a control failure in tests; owners spending less time on evidence than before, measured by a short survey; and no false closure of findings. Each criterion has a measurement method. She learns that agreeing criteria early prevents disputes later and keeps the project focused on outcomes the client values rather than features that are merely interesting. The criterion on false closure links back to her earlier rule that only the analyst may close findings.
 
 ### 44.3 Project risk
 
-Nadia applies risk management to her own project. Risks include data access delays, changes in systems during the project, her own limited time and the chance that owners ignore alerts. For each she records a response: early access requests, interface checks, a schedule buffer and involving owners in alert design. She learns that a GRC engineer who does not manage the risks of her own project undermines her credibility, and that the habits she teaches others apply to her work too. She checks the idea against a second example before relying on it.
+Nadia applies risk management to her own project. Risks include data access delays, changes in systems during the project, her own limited time and the chance that owners ignore alerts. For each she records a response: early access requests, interface checks, a schedule buffer and involving owners in alert design. She learns that a GRC engineer who does not manage the risks of her own project undermines her credibility, and that the habits she teaches others apply to her work too. Involving owners in alert design also addresses the risk that alerts are ignored, since owners helped set them.
 
 ### Worked example
 
@@ -2151,15 +2151,15 @@ You will (1) prepare a design for independent review; (2) respond to reviewers' 
 
 ### 45.1 Preparing
 
-Before building, Nadia submits her monitoring design for independent review by an engineer from another utility and Ardwell's internal auditor. She prepares a short design document: purpose, scope, architecture, data flows, controls covered, failure modes and how evidence integrity is protected. She includes her assumptions explicitly, such as that source systems report accurate timestamps. Independent review works best when reviewers can see what the designer assumed, because hidden assumptions are where reviewers add most value. The point seems small, but it changes how owners act on the result.
+Before building, Nadia submits her monitoring design for independent review by an engineer from another utility and Ardwell's internal auditor. She prepares a short design document: purpose, scope, architecture, data flows, controls covered, failure modes and how evidence integrity is protected. She includes her assumptions explicitly, such as that source systems report accurate timestamps. Independent review works best when reviewers can see what the designer assumed, because hidden assumptions are where reviewers add most value. Stating the timestamp assumption, for example, invites reviewers to ask what happens if a source clock is wrong.
 
 ### 45.2 Concerns raised
 
-The auditor asks whether automated evidence could be manipulated by the people whose controls it monitors. The engineer asks what happens when a source system is unavailable: is a missing report treated as a pass or a failure? Nadia realises her design treated silence as success. She changes it so missing evidence raises an alert and counts as a failed collection. She also adds hashing of evidence files and storage in a location the monitored teams cannot alter. Ardwell's security manager later asks for a copy of this analysis.
+The auditor asks whether automated evidence could be manipulated by the people whose controls it monitors. The engineer asks what happens when a source system is unavailable: is a missing report treated as a pass or a failure? Nadia realises her design treated silence as success. She changes it so missing evidence raises an alert and counts as a failed collection. She also adds hashing of evidence files and storage in a location the monitored teams cannot alter. Treating missing evidence as a failure closes the gap where an unavailable source would have looked like a passing control.
 
 ### 45.3 Recording outcomes
 
-Nadia records each concern, her response and whether reviewers accepted it. Two minor concerns about dashboard wording are deferred to a later release with reasons. The record goes into the project archive and later into her evidence dossier. She learns that review records show auditors and examiners not only the final design but how it improved, and that a design able to absorb criticism is stronger than one that never faced any. She marks the open questions in red so that they are not forgotten.
+Nadia records each concern, her response and whether reviewers accepted it. Two minor concerns about dashboard wording are deferred to a later release with reasons. The record goes into the project archive and later into her evidence dossier. She learns that review records show auditors and examiners not only the final design but how it improved, and that a design able to absorb criticism is stronger than one that never faced any. The deferred wording changes are recorded with reasons so that examiners can see they were weighed, not ignored.
 
 ### Worked example
 
@@ -2195,15 +2195,15 @@ You will (1) build and deploy the monitoring service; (2) measure it against suc
 
 ### 46.1 Building
 
-Nadia builds the service in stages, starting with the five controls whose evidence is easiest to collect. Each collector is a small script with tests, logging and a clear owner. The scheduler runs collectors daily, stores hashed evidence and raises alerts for failures or missing data. She deploys to a test environment first, then to production with the security manager's approval through change management. She keeps a log of every decision and problem for her thesis. Writing the reasoning down also helps her spot a weak step in her argument.
+Nadia builds the service in stages, starting with the five controls whose evidence is easiest to collect. Each collector is a small script with tests, logging and a clear owner. The scheduler runs collectors daily, stores hashed evidence and raises alerts for failures or missing data. She deploys to a test environment first, then to production with the security manager's approval through change management. She keeps a log of every decision and problem for her thesis. Starting with the five easiest controls lets her test the scheduler and hashing before tackling harder sources.
 
 ### 46.2 Measuring
 
-After two months, Nadia measures against the criteria. Nineteen of twenty controls have automated evidence; one depends on a vendor system without an export, so it remains manual. In tests, alerts arrive within a few hours of a simulated failure. The owner survey shows most owners spending less time on evidence, though two find alerts too frequent. No findings were closed falsely. She reports the results honestly, including the manual control and the alert complaints. Nadia discusses the trade-off with a classmate who works in finance.
+After two months, Nadia measures against the criteria. Nineteen of twenty controls have automated evidence; one depends on a vendor system without an export, so it remains manual. In tests, alerts arrive within a few hours of a simulated failure. The owner survey shows most owners spending less time on evidence, though two find alerts too frequent. No findings were closed falsely. She reports the results honestly, including the manual control and the alert complaints. Nineteen of twenty meets the criterion of at least eighteen, while the manual control is recorded as a known limit.
 
 ### 46.3 Handover
 
-Nadia hands the service to Ardwell's operations team with a runbook, an owner for each collector, test cases and a list of known issues. She trains two staff to add new collectors. She tunes alert thresholds with the two unhappy owners before leaving. She learns that a capstone is only successful if the client can run it without her, and that handover documentation is as much a deliverable as the code itself. The class compares answers and finds that most differences come from unstated assumptions.
+Nadia hands the service to Ardwell's operations team with a runbook, an owner for each collector, test cases and a list of known issues. She trains two staff to add new collectors. She tunes alert thresholds with the two unhappy owners before leaving. She learns that a capstone is only successful if the client can run it without her, and that handover documentation is as much a deliverable as the code itself. Tuning thresholds with the two unhappy owners addresses the alert complaints recorded in her measurements.
 
 ### Worked example
 
@@ -2239,15 +2239,15 @@ You will (1) design a failure trial for a GRC service; (2) observe detection and
 
 ### 47.1 Designing the trial
 
-With the security manager, Nadia plans a trial of how the monitoring service behaves under failure. Three failures are injected in a controlled window, with owners informed in advance: a collector script crashes, a source system becomes unavailable and an evidence file is altered after storage. The trial tests whether each failure is detected, how quickly and whether recovery restores correct evidence. The rules exclude any action on production control systems or customer data. Nadia records this point in her course notebook so that later chapters can build on it.
+With the security manager, Nadia plans a trial of how the monitoring service behaves under failure. Three failures are injected in a controlled window, with owners informed in advance: a collector script crashes, a source system becomes unavailable and an evidence file is altered after storage. The trial tests whether each failure is detected, how quickly and whether recovery restores correct evidence. The rules exclude any action on production control systems or customer data. Announcing the trial to owners prevents an injected failure being treated as a real incident.
 
 ### 47.2 Observations
 
-The crashed collector is detected at the next scheduled run and alerts the owner within a day. The unavailable source raises a missing-evidence alert as designed. The altered file is detected by a hash mismatch at the weekly integrity check, but not sooner. Recovery from the crash takes two hours because the runbook omits one step. Nadia records each observation with timestamps and compares it with expectations, noting that detection of tampering is slower than the team assumed. Prof. Brenner asks her to explain the idea aloud to a classmate before moving on.
+The crashed collector is detected at the next scheduled run and alerts the owner within a day. The unavailable source raises a missing-evidence alert as designed. The altered file is detected by a hash mismatch at the weekly integrity check, but not sooner. Recovery from the crash takes two hours because the runbook omits one step. Nadia records each observation with timestamps and compares it with expectations, noting that detection of tampering is slower than the team assumed. Prof. Brenner asks how long an altered file could have gone unnoticed, and the answer, up to a week, motivates the daily check.
 
 ### 47.3 Improvements
 
-The team adds the missing runbook step and moves integrity checks from weekly to daily. They also add an alert when integrity checks themselves fail to run. Nadia notes that the trial revealed weaknesses that would have remained hidden in normal operation. She learns that planned failure trials are the governance equivalent of fire drills: they prove whether detection and recovery work, and they are only safe and useful when carefully scoped and announced. She notes the assumption behind it so that a reviewer can challenge it later.
+The team adds the missing runbook step and moves integrity checks from weekly to daily. They also add an alert when integrity checks themselves fail to run. Nadia notes that the trial revealed weaknesses that would have remained hidden in normal operation. She learns that planned failure trials are the governance equivalent of fire drills: they prove whether detection and recovery work, and they are only safe and useful when carefully scoped and announced. Alerting when an integrity check fails to run closes the same silence-as-success gap she fixed during the design review.
 
 ### Worked example
 
@@ -2283,11 +2283,11 @@ You will (1) assemble an evidence dossier for a governance programme; (2) protec
 
 ### 48.1 Assembling
 
-For her thesis and for Ardwell's auditors, Nadia assembles an evidence dossier: the risk register extract, quarterly control test results, the statement of applicability and board minutes approving risk appetite. Each item has a source, date and owner. She writes a short index explaining what each item proves and how it links to requirements. She learns that a dossier is an argument, not a pile of files: it should let a reader follow the claim that controls work back to evidence. The same reasoning will return when Ardwell's auditors visit next year.
+For her thesis and for Ardwell's auditors, Nadia assembles an evidence dossier: the risk register extract, quarterly control test results, the statement of applicability and board minutes approving risk appetite. Each item has a source, date and owner. She writes a short index explaining what each item proves and how it links to requirements. She learns that a dossier is an argument, not a pile of files: it should let a reader follow the claim that controls work back to evidence. The index, for example, links the board minutes to the claim that risk appetite was formally approved.
 
 ### 48.2 Manifest and mismatch
 
-Nadia computes a digest for each file and stores the manifest separately. Weeks later, she rechecks. Three files match, but the control test results do not: the lab shows a mismatch for that file. Investigation reveals that a test owner had edited the file to change forty-five passed tests to forty-seven after rerunning two tests. The change might be legitimate, but editing evidence in place destroys the record of the original result. She adds a short note to the shared course wiki for other students.
+Nadia computes a digest for each file and stores the manifest separately. Weeks later, she rechecks. Three files match, but the control test results do not: the lab shows a mismatch for that file. Investigation reveals that a test owner had edited the file to change forty-five passed tests to forty-seven after rerunning two tests. The change might be legitimate, but editing evidence in place destroys the record of the original result. The change from forty-five to forty-seven passed tests may reflect real retests, but the original result is no longer visible in the file.
 
 ### Lab — Detecting a changed evidence file
 
@@ -2314,7 +2314,7 @@ soa.md ac050567962d OK
 
 ### 48.3 Handling changes
 
-Nadia restores the original file from the archive and asks the owner to file the retest as new evidence with its own date, so both results remain visible. She updates the procedure to forbid editing filed evidence. She notes that digests detect change but cannot say whether a change was honest. Prof. Brenner explains that integrity of evidence underpins every assurance claim, and that mature programmes treat evidence as append-only, recording corrections as new entries. This makes the governance consequence visible to people outside the engineering team.
+Nadia restores the original file from the archive and asks the owner to file the retest as new evidence with its own date, so both results remain visible. She updates the procedure to forbid editing filed evidence. She notes that digests detect change but cannot say whether a change was honest. Prof. Brenner explains that integrity of evidence underpins every assurance claim, and that mature programmes treat evidence as append-only, recording corrections as new entries. Filing the retest as new evidence keeps both the forty-five and forty-seven results traceable for the auditors.
 
 ### Worked example
 
@@ -2350,15 +2350,15 @@ You will (1) write an engineering thesis on a GRC system; (2) combine design, me
 
 ### 49.1 Structure
 
-Nadia's thesis combines her capstone and applied research. Chapters cover the problem, background and standards, requirements, design and reviews, implementation, verification and failure trials, measurement against criteria, the board-reporting study and conclusions. Each chapter links to dossier evidence. She keeps the main text focused on decisions and results, moving code and detailed test records to appendices. She writes for engineers who might build a similar service and for examiners judging her reasoning. Nadia keeps a dated copy of her working so that the result can be traced.
+Nadia's thesis combines her capstone and applied research. Chapters cover the problem, background and standards, requirements, design and reviews, implementation, verification and failure trials, measurement against criteria, the board-reporting study and conclusions. Each chapter links to dossier evidence. She keeps the main text focused on decisions and results, moving code and detailed test records to appendices. She writes for engineers who might build a similar service and for examiners judging her reasoning. Moving code to appendices keeps the main argument readable for examiners who will not run the scripts.
 
 ### 49.2 Findings
 
-The thesis reports that automated evidence covered nineteen of twenty controls, alerts arrived within hours, owners reported less evidence effort and a failure trial revealed slow tamper detection that was fixed. The board study found more treatment decisions per quarter after ranges replaced the heat map, but a major incident during the period also prompted action, so she cannot separate the effects. She states both findings plainly, with the uncertainty attached to each. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+The thesis reports that automated evidence covered nineteen of twenty controls, alerts arrived within hours, owners reported less evidence effort and a failure trial revealed slow tamper detection that was fixed. The board study found more treatment decisions per quarter after ranges replaced the heat map, but a major incident during the period also prompted action, so she cannot separate the effects. She states both findings plainly, with the uncertainty attached to each. The confounding incident is the same threat to validity she recorded when designing the study in chapter 42.
 
 ### 49.3 Contributions and limits
 
-Nadia claims three contributions: a tested design for low-cost continuous control monitoring, evidence that failure trials reveal hidden weaknesses in GRC tooling and a small observational study of board reporting. Limits include one organisation, a short operating period, self-reported effort and a confounded before-and-after comparison. She recommends future work across several utilities. Prof. Brenner notes that stating limits clearly makes contributions more credible, not less. She checks the idea against a second example before relying on it. The point seems small, but it changes how owners act on the result.
+Nadia claims three contributions: a tested design for low-cost continuous control monitoring, evidence that failure trials reveal hidden weaknesses in GRC tooling and a small observational study of board reporting. Limits include one organisation, a short operating period, self-reported effort and a confounded before-and-after comparison. She recommends future work across several utilities. Prof. Brenner notes that stating limits clearly makes contributions more credible, not less. Self-reported effort, for instance, may overstate savings because owners knew the service was her project.
 
 ### Worked example
 
@@ -2394,15 +2394,15 @@ You will (1) defend an engineering thesis in GRC; (2) answer questions on design
 
 ### 50.1 Presentation
 
-Nadia presents her thesis in twenty minutes: the problem at Ardwell, the design, how reviews and trials improved it, results against criteria and the board study with its limits. She shows a short demonstration of an alert for a failed control and of the integrity check detecting a changed file. She closes with lessons for other organisations. Examiners include Prof. Brenner, an external engineer from a utility and an internal auditor from another sector. Ardwell's security manager later asks for a copy of this analysis.
+Nadia presents her thesis in twenty minutes: the problem at Ardwell, the design, how reviews and trials improved it, results against criteria and the board study with its limits. She shows a short demonstration of an alert for a failed control and of the integrity check detecting a changed file. She closes with lessons for other organisations. Examiners include Prof. Brenner, an external engineer from a utility and an internal auditor from another sector. The integrity check demonstration ties back directly to the altered test results file she found in her dossier.
 
 ### 50.2 Questions
 
-The external engineer asks whether automation might make owners complacent. Nadia answers that the service collects evidence but owners still review exceptions, and that sampling by the analyst continues. The auditor asks whether the evidence would satisfy an external audit. She answers that it supports one but does not replace the auditor's own testing. Prof. Brenner asks about ethics. She explains how she handled access to staff data and why the failure trial was announced and excluded production control systems. She marks the open questions in red so that they are not forgotten.
+The external engineer asks whether automation might make owners complacent. Nadia answers that the service collects evidence but owners still review exceptions, and that sampling by the analyst continues. The auditor asks whether the evidence would satisfy an external audit. She answers that it supports one but does not replace the auditor's own testing. Prof. Brenner asks about ethics. She explains how she handled access to staff data and why the failure trial was announced and excluded production control systems. Her answer on audit reflects the distinction between supporting evidence and the auditor's own testing that she drew in chapter 38.
 
 ### 50.3 Reflection
 
-The examiners pass the thesis and praise the honest treatment of the board study. In her reflection, Nadia notes that the course taught her to see governance as engineering: requirements, design, verification, operation and improvement. She also learned that governance depends on people, trust and clear communication. She plans to join Ardwell's governance team and to keep her habits of testing assumptions, recording decisions and reporting uncertainty honestly in every role she takes on. Writing the reasoning down also helps her spot a weak step in her argument.
+The examiners pass the thesis and praise the honest treatment of the board study. In her reflection, Nadia notes that the course taught her to see governance as engineering: requirements, design, verification, operation and improvement. She also learned that governance depends on people, trust and clear communication. She plans to join Ardwell's governance team and to keep her habits of testing assumptions, recording decisions and reporting uncertainty honestly in every role she takes on. Her plan to join the governance team means the monitoring service she handed over will stay in reach of its designer.
 
 ### Worked example
 
