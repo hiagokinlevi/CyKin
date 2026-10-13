@@ -1023,29 +1023,43 @@ You will (1) explain identity lifecycle, authentication and authorisation; (2) d
 
 Accounts are created when people join, changed when roles change and removed when they leave. Universities have heavy churn each term; stale accounts of graduates are a risk if not disabled.
 
+At Riverton, the student records system feeds the identity provider: enrolment creates an account, a change of course updates group memberships, and graduation starts the alumni period. When that feed fails, accounts drift from reality. Lucas's quarterly check compares active accounts with current enrolment and staff lists, and every account matching neither is sent to its owning team for a decision.
+
 ### 13.2 Authentication and authorisation
 
 Authentication proves identity; authorisation decides what the identity may access. A compromised student account can access that student's mail, files and learning platform.
+
+That is why a student account matters even though it has no administrative rights. With s2047's password, the attacker could read the student's mail, set up forwarding and send phishing that classmates trusted. Authorisation limited the damage to what one student could reach, but that still included other students' marks sent by email, as the privacy chapter shows.
 
 ### 13.3 Multi-factor authentication
 
 MFA requires a second proof. Riverton requires it for staff; for students it is optional. Neither s2047 nor s3310 had enrolled.
 
+Had either student enrolled, the stolen passwords alone would not have been enough at the web sign-in page, since the attacker would also need the second factor from the student's phone. MFA was optional for students because of concerns about support calls and students without smartphones, concerns the university later addressed when it made enrolment compulsory, offering hardware tokens to students without a suitable phone.
+
 ### 13.4 Identity signals
 
 New country or device, impossible travel (two distant locations too close in time), legacy protocols that bypass MFA, and MFA method changes are common signals.
+
+In the campaign, s2047 showed two of them at once: a new country and a legacy protocol. The country was new against a history that contained only the United Kingdom. Each signal alone produces false alarms, such as students on holiday, but combinations are much rarer among genuine users and are worth an analyst's time.
 
 ### 13.5 Legacy protocols
 
 s2047's attacker used a desktop mail protocol that does not support MFA. Even enrolled users could be exposed while such protocols remain enabled.
 
+These protocols send the password directly and have no way to ask for a second factor, so the identity provider either accepts the password alone or blocks the protocol entirely. That is why disabling them was paired with requiring MFA in the case decision: without the first change, the second could be bypassed by any attacker who chose an older mail client.
+
 ### 13.6 Controls
 
 Require MFA for all, disable legacy protocols, and alert on MFA changes and risky sign-ins.
 
+Each control addresses a step in the campaign. MFA stops a stolen password from being enough; disabling legacy protocols removes the route around MFA; alerts on MFA changes catch an attacker who registers their own device; and risky sign-in alerts catch what slips through. Together they make the s2047 sequence much harder to repeat. No single one is enough: MFA without legacy blocking leaves a bypass, and alerts without prevention leave analysts racing an attacker who already has the account.
+
 ### 13.7 Case decision
 
 After the campaign, the university decides to require student MFA and disable legacy mail protocols from next term.
+
+Lucas's worked example on legacy protocol use, described below, informed how the change was rolled out, and the service desk prepared guides for setting up MFA on common phones. Announcing the change a full term ahead gave students time to update old mail apps, and kept the cut-over from coinciding with exam weeks, when support calls would be hardest to handle and students least able to wait.
 
 ### Graduates and leavers
 
@@ -1087,29 +1101,43 @@ You will (1) explain privacy principles relevant to monitoring; (2) apply data m
 
 Common privacy principles include lawfulness and transparency, purpose limitation, data minimisation, accuracy, storage limitation, and security. They apply to SOC monitoring as to any processing of personal data.
 
+For Riverton's SOC, lawfulness and transparency mean the monitoring notice described below; purpose limitation means security logs serve security; minimisation means metadata by default; accuracy means correcting a wrong attribution, such as a sign-in linked to the wrong user; storage limitation means fixed retention periods; and security means the SOC's own systems are protected and access-logged.
+
 ### 14.2 Purpose limitation
 
 Logs collected for security may not be reused for unrelated purposes, such as checking attendance. Riverton's monitoring notice states security as the purpose.
+
+Lucas met this in practice when a lecturer asked whether Wi-Fi logs could show which students had attended a lecture. The answer was no: the logs were collected for security under the monitoring notice, and using them for attendance would be a different purpose that students had not been told about. Dr. Kim replied to the lecturer explaining why.
 
 ### 14.3 Minimisation
 
 The SOC collects metadata needed for detection, not message content. When content is needed, access is approved per case and limited to what answers the question.
 
+In the phishing case, sign-in records, rule details and message counts were enough to confirm both compromises. Content was needed only to judge what s2047's forward rule had exposed, and even then the approval covered subjects of the forwarded messages, not their bodies. Each step in the case notes shows why a piece of data was needed.
+
 ### 14.4 Retention
 
 Sign-in logs are kept 90 days, mail metadata 180 days. Longer retention needs justification.
+
+The periods reflect how investigations work: most compromises are found within days, while some mail-based fraud is noticed weeks later, which is why mail metadata is kept longer. Data needed for an open case is copied into the case file with a note of why it is kept, and the case file has its own review date. When the case closes, the copies are deleted unless the disciplinary process or the DPO needs them, and the reason for any extension is written down.
 
 ### 14.5 Individuals' rights
 
 Students can ask what data is held about them. The SOC's records must be retrievable for such requests, with redaction where other people's data appears.
 
+If s2047's owner asked what the SOC held about her, the response would include her sign-in records and the case notes about her account. The forwarded messages' subjects, which mentioned other students' marks, would be redacted, since disclosing them would expose other people's data. Keeping case files organised by account makes such requests answerable within the deadline.
+
 ### 14.6 Breach assessment
 
 If personal data was exposed — for example, mail forwarded to an attacker — the data protection officer assesses whether to notify regulators and affected people.
 
+The SOC's role is to supply what the DPO needs to decide: what data was exposed, how many people were affected, whether the attacker could have used it, and when. In the s2047 case, that meant the list of forwarded messages and which ones mentioned other students. The decision to notify belonged to the DPO, who weighed the sensitivity of the marks and the attacker's likely use.
+
 ### 14.7 Working with the DPO
 
 The SOC informs the data protection officer early and provides facts, not legal conclusions.
+
+For s2047, Lucas sent the DPO a short note on the morning of the incident: the forwarding rule existed, how many messages had gone out, and that subjects were being reviewed under approval. He did not speculate on whether notification was required. Early contact gave the DPO time to prepare, since some notification deadlines run from discovery. Lucas followed up with each new fact the same day.
 
 ### Transparency
 
@@ -1155,29 +1183,43 @@ You will (1) preserve digital evidence with integrity; (2) measure SOC activitie
 
 In a SOC, evidence includes exported logs, alert records, screenshots of configuration and statements. Evidence must be preserved so its integrity can be shown later.
 
+In the phishing case, Lucas's evidence included the sign-in export, the rule export, a screenshot of the rule's settings, the original phishing message and a short statement from s2047's owner confirming she had entered her password on the fake page. Each item received a reference such as E-3 so case notes could cite it precisely.
+
 ### 15.2 Preservation
 
 Exports are saved read-only with a hash (a digital fingerprint). If a file changes, its hash changes. Case notes record who exported what, when and from where.
+
+Lucas computes a SHA-256 hash of each export as soon as it is saved and writes it in the case notes. If anyone later questions whether the sign-in export was edited, recomputing the hash and comparing it with the recorded value answers the question in seconds. Working copies are made for analysis so the original is never opened for editing.
 
 ### 15.3 Observation and inference
 
 "Sign-in from 198.51.100.x at 02:14" is an observation. "The account was compromised" is an inference. Case notes keep them separate and show the reasoning.
 
+Keeping them apart lets a reader challenge the reasoning without disputing the facts. If someone suggests s2047's owner was simply travelling, the observations stay the same, a sign-in from a Dutch hosting address and an external forwarding rule six minutes later, and the discussion focuses on whether the inference still holds. Here, the owner's statement settled it.
+
 ### 15.4 Measurement
 
 Consistent measures — time to acknowledge, time to contain, number of accounts affected — let the SOC compare incidents and improve. Definitions must be fixed: does "contain" mean password reset or all sessions revoked?
+
+Riverton defines containment as both a password reset and revocation of all sessions, since a reset alone leaves an attacker's existing session working. Under that definition, s2047 was contained at 08:41 and s3310 at 11:20. Recording the definition beside each figure prevents a later report from comparing times measured in different ways.
 
 ### 15.5 Units and clocks
 
 All times in UTC; durations in minutes. Mixed units cause errors.
 
+The campaign shows why: delivery at 01:50, the first compromise at 02:14 and containment of s3310 at 11:20 come from different systems, and a report mixing local and UTC times would misstate how long the attacker had access. Writing durations in minutes, such as the gap between sign-in and rule, avoids confusion between hours and minutes. The worked results show the bug this prevents: a comparison of minutes that ignored hours broke matches across an hour boundary. Lucas's tools now parse every timestamp into a full datetime in UTC before doing any arithmetic, and reports state the zone beside each time.
+
 ### 15.6 Error and uncertainty
 
 Some measures are uncertain: the number of people who clicked is estimated from DNS lookups and reports. Lucas reports a range and its basis.
 
+For the number of people who clicked, the 41 campus DNS lookups give a lower bound, since off-campus clicks are not logged. Reports and sign-in evidence give other partial views. Lucas's case note states a range with its basis rather than a single figure, and explains that the true number is likely to be higher than any one source suggests.
+
 ### 15.7 Case notes
 
 Each step in the campaign response is recorded as it happens, not reconstructed afterwards.
+
+Notes written during the response captured details that would have been lost later, such as the exact time the forward rule was removed and who removed it. When the review chapter builds a timeline of the campaign, it relies on these entries. Reconstructing from memory would have produced plausible but uncertain times that could not be checked against any source. Lucas keeps his notes in the case system, which timestamps each entry automatically.
 
 ### Chain of custody
 
@@ -1223,29 +1265,43 @@ You will (1) describe how a university's networks and services are arranged for 
 
 Riverton runs a student Wi-Fi network, a staff network, a research network, data-centre servers and cloud services for mail and identity. Each has different users and risks.
 
+Each zone suits different controls. Student Wi-Fi serves thousands of personal devices the university does not manage, so it is isolated from internal systems. Research networks host specialised servers run by academic groups, often outside central IT. Cloud mail and identity serve everyone and hold the most valuable logs, which is why the phishing case was investigated mainly through them.
+
 ### 16.2 Trust boundaries
 
 Boundaries separate zones: student Wi-Fi should not reach administrative servers; research servers should be reachable only by their groups. Firewalls enforce boundaries and log crossings.
+
+Firewall logs at these boundaries help the SOC see attempts to cross them. If a device on student Wi-Fi tried to connect to an administrative server, the log would show a blocked connection from that address. A successful crossing between zones that should not talk is a strong signal, since it means either a misconfiguration or an attacker who has found a way through.
 
 ### 16.3 Cloud-first services
 
 Mail and identity live in the cloud, so the most important logs come from cloud providers rather than campus networks. The SOC's architecture must collect cloud logs reliably.
 
+For the phishing campaign, almost every key event, including the sign-ins, the forward rule and the deletion rule, happened in cloud services rather than on campus. If those cloud logs had not been collected, the SOC would have seen only DNS lookups and reports. Lucas checks weekly that cloud log feeds are arriving, since a silent failure would leave the SOC blind.
+
 ### 16.4 Monitoring placement
 
 The SOC monitors identity sign-ins (all users), mail events, firewall logs at zone boundaries and endpoint logs from managed devices. Student devices are visible only through services.
+
+This placement means the SOC sees every sign-in and mailbox change wherever it happens, and crossings between campus zones, but not activity inside a student's laptop. In the phishing case, that was enough, because the attack ran entirely through cloud services. A malware infection on a student's own device would be visible only through its effects on university accounts.
 
 ### 16.5 Research network
 
 Research servers are diverse and loosely managed. A boundary that limits inbound access to university addresses and requires SSH keys reduces exposure.
 
+The physics GPU server shows the risk: it accepted SSH from the whole internet with passwords enabled for some accounts, and it forwarded no logs until recently. Applying both controls would have removed most of the automated guessing in its logs. Neither control needs new hardware. The worked example below describes how the restriction was agreed with the research group.
+
 ### 16.6 Defence in depth
 
 Several layers — mail filtering, MFA, legacy protocol blocking, monitoring of mailbox rules — mean one failure does not lead to widespread compromise.
 
+In the phishing campaign, mail filtering missed the message and only marked it with a banner, but the next layers helped: MFA would have stopped the stolen passwords had the students enrolled, and the z-score screening flagged s2047's burst of sending. Where layers were missing, compromise followed, and s3310's quieter compromise went unflagged for hours. The case decision added MFA and legacy blocking, and later chapters add an alert for suspicious mailbox rules.
+
 ### 16.7 Mapping to frameworks
 
 Lucas maps controls to NIST CSF 2.0 functions to show coverage across Protect, Detect and Respond.
+
+His table lists each control with its function: mail filtering and MFA under Protect, the z-score screening and rule alerts under Detect, password resets and rule removal under Respond. The table showed few controls under Recover, which led to a question about restoring deleted mail that appears again in the case's later chapters. A map with an empty column is useful precisely because it points to work nobody had planned.
 
 ### Administrative systems
 
@@ -1287,29 +1343,43 @@ You will (1) explain hashing, encryption and digital signatures; (2) relate cryp
 
 A cryptographic hash turns any data into a fixed-size fingerprint. It is practically impossible to find two inputs with the same hash. SOCs use hashes to identify files and to check that evidence has not changed.
 
+Lucas uses SHA-256 for both purposes. For evidence, the hash recorded at export time proves the file is unchanged. For identification, a hash of a malicious attachment can be searched across mailboxes to find every exact copy. The worked example below shows the limit of the second use: changing a single character produces a completely different hash.
+
 ### 17.2 Encryption
 
 Encryption makes data unreadable without a key. TLS encrypts web and mail traffic in transit; disk encryption protects lost laptops.
+
+For the SOC, encryption in transit protects students' passwords on campus Wi-Fi from eavesdroppers, but it also protected the phishing page's traffic, so network sensors could not see what victims typed. Disk encryption on staff laptops means a stolen laptop is a lost device rather than a data breach, which changes how the SOC and the DPO respond to the loss.
 
 ### 17.3 Signatures
 
 A digital signature proves who created data and that it has not changed. Email DKIM signatures let receiving servers verify that a message came from the claimed domain.
 
+In the phishing case, the message claimed to come from the library but had no valid DKIM signature for the library's domain, because the attacker did not hold the library's signing key. Receiving servers could therefore tell the message was not genuine. The filter's response, a banner rather than rejection, determined whether students actually saw that warning.
+
 ### 17.4 Passwords
 
 Passwords should be stored as slow, salted hashes so that a stolen database cannot be easily reversed.
+
+Riverton's identity provider stores passwords this way, so a breach of its database would not hand over usable passwords quickly. But the phishing campaign shows the limit: the attacker never needed the database, because victims typed their passwords directly into the fake page. Strong storage protects against one kind of attack and does nothing against another, which is why MFA matters as a second barrier.
 
 ### 17.5 Monitoring and encryption
 
 Encryption hides content from network sensors. The SOC relies on endpoint and service logs that see data before encryption or after decryption.
 
+For mail and identity, the cloud services decrypt traffic as part of their work, so their logs show sign-ins and rules in full. For student devices, the SOC has no such view. This is why the architecture chapter places most monitoring at services, where data is visible, rather than on campus network links where it is encrypted end to end.
+
 ### 17.6 Keys and trust
 
 Cryptography is only as safe as its keys. Compromised signing keys let attackers sign malicious content.
 
+If the library's DKIM signing key had been stolen, the attacker could have sent messages that passed authentication checks, and filters would have treated them as genuine. Riverton keeps signing keys in the mail provider's managed service and rotates them on a schedule. The SOC alerts on any change to the domain's DNS records that publish those keys, since a swapped record would let an attacker's key pass.
+
 ### 17.7 Case
 
 The phishing email failed DKIM for the domain it pretended to come from; receiving filters marked it suspicious, but the banner was easy to ignore.
+
+The banner said the sender could not be verified, in small text above the message. Many students who clicked later said they had not noticed it. Lucas recorded a question for the incident review: whether messages failing authentication for Riverton's own domains should be quarantined rather than delivered with a warning. A banner that most readers overlook protects little, however accurate it is.
 
 ### Certificates
 
@@ -1351,29 +1421,43 @@ You will (1) formulate a research question about SOC practice; (2) choose method
 
 Lucas wonders why students report phishing less than staff (chapter 1). A research question: "What reasons do Riverton students give for not reporting suspicious emails?"
 
+The question focuses on reasons, which logs cannot show, and on Riverton students, which keeps the study manageable. It avoids assuming students are careless; perhaps they did not know how to report, or assumed someone else would. A good question leaves room for answers the researcher did not expect, and that openness shapes the methods chosen next.
+
 ### 18.2 Choosing a method
 
 Surveys reach many people with fixed questions; interviews explore reasons in depth with fewer people; log analysis shows behaviour but not reasons. Lucas combines a short survey with five interviews.
+
+The survey gives a sense of how common each reason is, while the interviews explain reasons the survey's options might miss. Log analysis would add little here, since chapter 1's rates already show the behaviour. Combining methods lets each cover the other's weakness, which the embedded SOC studies cited below also recommend.
 
 ### 18.3 Sampling
 
 A survey of volunteers may over-represent security-interested students. Lucas recruits through several channels and reports who responded.
 
+Lucas posts the survey on the student portal, in two faculty newsletters and through a residence-hall mailing list, rather than only on the security society's channel. He reports how many responded from each faculty, so readers can see whether some groups dominate. A sample of mostly computing students would describe them well and the rest of campus poorly. He also compares respondents' year of study with enrolment figures.
+
 ### 18.4 Ethics
 
 Research with people needs ethics approval, informed consent, anonymity and the right to withdraw. No SOC data about individuals is used.
+
+Lucas applies to the university's ethics committee with his questions, consent form and data plan. Separating the study from SOC data is important: his position as an analyst gives him access to logs, but using them for research would breach the purpose limitation described in the privacy chapter. Respondents are told he works in the SOC, and that nothing they say will be passed to it.
 
 ### 18.5 Designing questions
 
 Neutral wording ("How do you usually handle suspicious emails?") avoids leading answers ("Why don't you report phishing?").
 
+The leading version assumes students do not report and invites them to justify themselves, which may produce defensive or invented reasons. The neutral version lets them describe what they actually do, including reporting. Lucas also avoids technical terms such as DMARC, since students who do not know them may guess or skip the question. Each question asks about one thing only, and the pilot described below tests whether readers understand them as intended.
+
 ### 18.6 Analysis
 
 Survey answers are counted; interview transcripts are coded into themes, with a second student coding a sample to check consistency.
 
+For the interviews, Lucas codes themes such as not knowing how to report, assuming IT already knows and fear of looking foolish. A second student codes two of the five transcripts independently, and they compare results. Where they disagree, they discuss and refine the theme definitions, then recode, so the final themes are not just one person's reading of the transcripts.
+
 ### 18.7 Literature
 
 Sundaramurthy et al. (2014) show how researchers embedded in SOCs revealed practice that surveys missed, encouraging mixed methods.
+
+Their finding matters for Lucas's design: analysts in those studies described their work differently in surveys than researchers observed in practice. Students may likewise say they would report suspicious mail while their behaviour in the campaign suggested otherwise. Combining interviews with chapter 1's measured rates lets him compare what students say with what they did, which neither source could show alone or settle.
 
 ### Analysis plan
 
