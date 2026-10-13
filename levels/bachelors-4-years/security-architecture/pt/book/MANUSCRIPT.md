@@ -1,7 +1,7 @@
 # Arquitetura e Engenharia de Segurança: Curso de Bacharelado
 
 - Idioma: português do Brasil (`pt`); curso 099, curso de bacharelado (4 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–7 de 40 já estão escritos em português, com os exercícios EX001–EX021 e suas resoluções com rubricas de 0 a 3 e 2 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 8–40 (EX022–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–14 de 40 já estão escritos em português, com os exercícios EX001–EX042 e suas resoluções com rubricas de 0 a 3 e 4 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 15–40 (EX043–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de graduação que aprendem a projetar, avaliar e operar a arquitetura de segurança de organizações reais.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios avaliam lógica, buscam caminhos de ataque, calculam intervalos amostrais, pseudonimizam, medem cobertura, contam dependências, verificam o menor privilégio, ajustam uma regra de detecção, estimam uma diferença em diferenças e ponderam opções, tudo sobre dados sintéticos; nada toca um sistema real. Projetos de produção usam produtos e padrões consagrados; nunca crie sua própria criptografia. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -30,9 +30,9 @@ Saltzer e Schroeder (1975), [doi:10.1109/PROC.1975.9939](https://doi.org/10.1109
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) |
 
-Capítulos 8–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-08), até a chegada dos próximos lotes.
+Capítulos 15–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-15), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -361,11 +361,324 @@ Separar redes pode quebrar dependências não documentadas; teste antes. Os serv
 
 - **EX021 — Correção da área de trabalho remota.** O que deve substituir a área de trabalho remota exposta à internet para o fornecedor? *Rubrica:* 3 = um serviço gerenciado de acesso remoto com autenticação multifator;; 2 = gerenciado com MFA;; 1 = deixar como está;; 0 = nenhuma.
 
+<a id="ch-08"></a>
+
+## Capítulo 8 — Programação II
+
+### Objetivos de aprendizagem
+
+Você vai (1) construir um pequeno serviço web com autenticação e autorização; (2) escrever testes para regras de controle de acesso; (3) registrar de forma útil os eventos relevantes para a segurança.
+
+### 8.1 Um pequeno serviço
+
+Em Programação II, Lucas constrói um serviço sintético de consulta de estoque para a equipe das lojas, usando o servidor HTTP da biblioteca padrão do Python para fins de aprendizado. A equipe faz login e depois consulta os níveis de estoque; os gerentes também podem ajustar o estoque. Ele separa a autenticação, que estabelece quem é o usuário, da autorização, que decide o que esse usuário pode fazer. Cada requisição verifica as duas. Ele aprende que misturá-las causa bugs, como verificar apenas que um usuário está logado e esquecer de verificar se ele é gerente antes de permitir um ajuste.
+
+### 8.2 Testar as regras de acesso
+
+Lucas escreve testes para cada combinação de papel e ação: a equipe pode consultar, a equipe não pode ajustar, os gerentes podem fazer as duas coisas, usuários anônimos não podem fazer nenhuma. Ele também testa casos-limite, como um gerente de uma loja ajustando o estoque de outra loja, o que as regras proíbem. Um teste falha: o serviço verifica o papel de gerente, mas não a loja. Ele corrige a verificação e o teste passa. Testar as regras de acesso como uma matriz torna visíveis as verificações ausentes, e esses testes depois protegem a regra quando alguém modifica o código.
+
+### 8.3 Registrar de forma útil
+
+O serviço registra logins, logins com falha, ajustes de estoque e falhas de autorização, com usuário, horário, ação e resultado, mas nunca senhas ou tokens de sessão. Lucas aprende que os logs servem às investigações, então cada entrada precisa responder quem fez o quê, quando e com que resultado. Ele também aprende a evitar registrar dados pessoais em excesso. Hannah revisa seu desenho de logs e pede um identificador de correlação para cada requisição, para que os eventos de diferentes serviços possam ser ligados durante um incidente. Um logging útil é projetado pensando em quem vai lê-lo no futuro.
+
+### Exemplo resolvido
+
+Lucas constrói um serviço de estoque que separa a autenticação da autorização, encontra uma verificação de loja ausente por meio de uma matriz de testes de papel e ação e projeta logs com identificadores de correlação.
+
+> **Caso sintético.** O serviço, os papéis e as lojas são sintéticos.
+
+### Erros e limites
+
+Servidores da biblioteca padrão servem para aprender; a produção usa frameworks mantidos. As matrizes de testes crescem rapidamente com os papéis e os recursos.
+
+### Exercícios
+
+- **EX022 — AuthN versus AuthZ.** Qual é a diferença entre autenticação e autorização? *Rubrica:* 3 = a autenticação estabelece a identidade; a autorização decide as ações permitidas;; 2 = as duas;; 1 = iguais;; 0 = nenhuma.
+
+- **EX023 — Teste que falhou.** Que teste falhou, e por quê? *Rubrica:* 3 = gerente ajustando o estoque de outra loja; a loja não era verificada;; 2 = nomeado;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX024 — Nunca registrado.** O que nunca pode aparecer nos logs? *Rubrica:* 3 = senhas ou tokens de sessão;; 2 = os dois;; 1 = nomes de usuário;; 0 = nenhuma.
+
+<a id="ch-09"></a>
+
+## Capítulo 9 — Dados e bancos de dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar o acesso ao banco de dados segundo o menor privilégio; (2) prevenir injeção por meio de consultas parametrizadas; (3) proteger backups e cópias de teste.
+
+### 9.1 Acesso ao banco com menor privilégio
+
+O banco de dados da loja da Fernway guarda associados, pedidos e estoque. Lucas revisa como as aplicações se conectam. A loja usa uma única conta de banco de dados com todos os direitos sobre tudo, inclusive apagar tabelas. Ele propõe contas separadas: a loja pode ler produtos e gravar pedidos; os relatórios podem ler visões agregadas; só uma conta de administrador, usada raramente e com registro, pode mudar o esquema. Cada conta recebe apenas os direitos de que sua função precisa. Se a loja for comprometida, o atacante herda só os direitos da loja, e não o poder de apagar ou exportar todas as tabelas.
+
+### 9.2 Injeção e parâmetros
+
+Lucas revisa o código de busca da loja e encontra uma consulta montada concatenando strings com a entrada do cliente. Ele demonstra, num banco sintético com o sqlite3 do Python, como um termo de busca forjado devolve todos os registros de associados. A correção é passar a entrada como parâmetros, que o banco trata estritamente como dados. Ele também verifica as demais consultas e encontra mais duas montadas do mesmo jeito. As consultas parametrizadas são um controle simples e consagrado, e mesmo assim a injeção continua comum porque desenvolvedores sob pressão de prazo copiam padrões antigos. Os checklists de revisão de código devem incluí-la explicitamente.
+
+### 9.3 Backups e cópias de teste
+
+O inventário do capítulo 2 encontrou uma cópia de teste do banco de dados no armazenamento em nuvem. Lucas investiga: ela continha dados reais de associados e podia ser lida por qualquer pessoa com o link. Ele recomenda que os ambientes de teste usem dados sintéticos ou mascarados, que os backups sejam criptografados com chaves guardadas separadamente e que as permissões de armazenamento sejam revisadas automaticamente. A ISO/IEC 27002:2022 inclui controles sobre informações de teste e mascaramento de dados. As cópias de dados multiplicam o risco, e a arquitetura precisa tratar cada cópia com o mesmo cuidado que o original, ou evitar criá-la.
+
+### Exemplo resolvido
+
+Lucas divide uma conta de banco de dados todo-poderosa em três contas de menor privilégio, encontra três consultas injetáveis e recomenda dados de teste sintéticos e backups criptografados.
+
+> **Caso sintético.** O conteúdo do banco e as consultas são sintéticos; a ISO/IEC 27002:2022 é real.
+
+### Erros e limites
+
+Dividir as contas exige mudanças e testes na aplicação. Dados mascarados ainda podem ser reidentificáveis se o mascaramento for malfeito.
+
+### Exercícios
+
+- **EX025 — Impacto do comprometimento.** Como contas de banco separadas limitam um comprometimento da loja? *Rubrica:* 3 = o atacante obtém apenas os direitos limitados da conta da loja;; 2 = limitado;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX026 — Contagem de injeções.** Quantas consultas injetáveis Lucas encontrou no total? *Rubrica:* 3 = três;; 2 = três;; 1 = uma;; 0 = nenhuma.
+
+- **EX027 — Regra dos dados de teste.** Que dados os ambientes de teste devem usar? *Rubrica:* 3 = dados sintéticos ou mascarados;; 2 = sintéticos;; 1 = reais;; 0 = nenhuma.
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Ética e prática autorizada
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar por que a autorização é exigida antes de testes de segurança; (2) tratar com ética os dados pessoais encontrados durante o trabalho; (3) aplicar códigos profissionais a dilemas.
+
+### 10.1 A autorização primeiro
+
+Lucas quer testar se o login dos associados da Fernway é vulnerável a credential stuffing. Hannah explica que, mesmo com boas intenções, testar sem autorização por escrito pode violar leis sobre uso indevido de computadores e prejudicar os clientes. A autorização declara o que pode ser testado, como, quando e por quem, e indica um contato para emergências. Ela precisa vir de alguém com autoridade sobre o sistema. No caso da loja, isso inclui as regras do provedor de nuvem, que restringem certos testes. Lucas escreve uma solicitação de teste, Hannah aprova uma versão limitada num ambiente de staging e o teste segue com segurança.
+
+### 10.2 Dados pessoais na prática
+
+Ao revisar logs, Lucas vê nomes, endereços e históricos de pedidos de associados. Ele aprende a acessar só o que a tarefa exige, nunca navegar por curiosidade e nunca copiar dados pessoais para anotações pessoais ou trabalhos do curso. Quando precisa de exemplos para seu trabalho na universidade, ele cria registros sintéticos. A legislação de privacidade de muitos países exige esse cuidado, mas a questão ética é mais simples: os associados confiaram seus dados à Fernway para fazer compras, e não para a conveniência de um estudante. Respeitar essa confiança faz parte da prática profissional.
+
+### 10.3 Dilemas e códigos
+
+Lucas enfrenta um dilema: um amigo que trabalha em outro varejista comenta que a página de checkout deles carrega scripts de um domínio desconhecido. Ele deveria investigar? Os códigos profissionais, como os das sociedades de computação, enfatizam a honestidade, evitar danos e respeitar a autorização. Ele não sonda o outro site. Em vez disso, sugere que o amigo relate o caso internamente à equipe de segurança deles. Ele discute o caso com o Dr. Bellini, que elogia a contenção: ajudar é certo, mas agir sobre sistemas que não se está autorizado a testar causa danos, mesmo quando motivado pela preocupação.
+
+### Exemplo resolvido
+
+Lucas obtém uma autorização por escrito limitada para um teste em staging, usa dados sintéticos nos trabalhos do curso e se recusa a sondar o site de outro varejista.
+
+> **Caso sintético.** A solicitação de teste, os logs e o caso do amigo são sintéticos.
+
+### Erros e limites
+
+As leis variam conforme a jurisdição; busque orientação em caso de dúvida. Os ambientes de staging podem não reproduzir o comportamento da produção.
+
+### Exercícios
+
+- **EX028 — Conteúdo da autorização.** O que uma autorização de teste deve especificar? *Rubrica:* 3 = o quê, como, quando, por quem e um contato de emergência;; 2 = quatro;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX029 — Dados dos trabalhos.** O que Lucas usa como exemplos nos trabalhos do curso? *Rubrica:* 3 = registros sintéticos, não dados de associados;; 2 = sintéticos;; 1 = reais;; 0 = nenhuma.
+
+- **EX030 — Relato do amigo.** O que Lucas aconselhou o amigo a fazer sobre o script suspeito? *Rubrica:* 3 = relatá-lo internamente à equipe de segurança da própria organização;; 2 = relatar;; 1 = sondá-lo;; 0 = nenhuma.
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Sistemas operacionais
+
+### Objetivos de aprendizagem
+
+Você vai (1) comparar os modelos de contas e permissões do Windows e do Linux; (2) fazer o hardening de notebooks e servidores com baselines; (3) gerenciar atualizações numa pequena organização.
+
+### 11.1 Contas e permissões
+
+Lucas estuda como o Windows e o Linux controlam o acesso. Ambos têm usuários e grupos; ambos distinguem administradores de usuários comuns. Na Fernway, todo usuário de notebook das lojas é administrador local, uma conveniência que permite a qualquer malware rodar com direitos totais. Hannah concorda em remover os direitos de administrador local e oferecer um processo de solicitação para a instalação de software. Lucas também revisa um servidor Linux em que vários funcionários compartilham a senha de root. Ele recomenda contas individuais com direitos elevados por meio de comandos registrados, para que as ações possam ser atribuídas a pessoas.
+
+### 11.2 Baselines
+
+Uma baseline é um conjunto documentado de configurações seguras. Para os notebooks, Lucas propõe criptografia de disco completo, bloqueio automático de tela, firewall de host, remoção de software não usado e contas de usuário padrão. Para os servidores, propõe desativar serviços não usados, login de administrador baseado em chaves com autenticação multifator e logging centralizado. Ele relaciona a baseline a famílias de controles do SP 800-53 Rev. 5, como gestão de configuração e controle de acesso, para que a Fernway possa mostrar aos auditores o que faz. Aplicar uma baseline de forma consistente elimina muitas das brechas fáceis das quais os atacantes dependem.
+
+### 11.3 Atualizações
+
+Software sem patches é uma porta de entrada frequente. Os notebooks da Fernway se atualizam automaticamente, mas os caixas rodam uma versão antiga do sistema operacional que o fornecedor ainda suporta apenas com atualizações pagas, e os scanners do armazém nunca foram atualizados. Lucas propõe uma política de atualizações: atualizações automáticas onde possível, uma janela mensal para os servidores, contratos com o fornecedor cobrindo os caixas e um plano de substituição para os scanners. Cada exceção é registrada com um responsável e uma data de revisão. Ele observa que as atualizações mais difíceis são as dos dispositivos que ninguém considera computadores.
+
+### Exemplo resolvido
+
+Lucas remove os direitos de administrador local, substitui uma senha de root compartilhada por contas individuais, propõe baselines para notebooks e servidores e escreve uma política de atualizações com exceções.
+
+> **Caso sintético.** Os dispositivos, as versões e as políticas são sintéticos; o SP 800-53 Rev. 5 é real.
+
+### Erros e limites
+
+Remover os direitos de administrador aumenta os pedidos de suporte no início. Alguns dispositivos de fornecedores não podem ser atualizados sem perder a garantia.
+
+### Exercícios
+
+- **EX031 — Risco do administrador local.** Por que ter todo usuário como administrador local é arriscado? *Rubrica:* 3 = o malware roda com direitos totais;; 2 = direitos totais;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX032 — Correção do root compartilhado.** O que substitui a senha de root compartilhada? *Rubrica:* 3 = contas individuais com elevação registrada;; 2 = individuais;; 1 = nova senha compartilhada;; 0 = nenhuma.
+
+- **EX033 — Atualizações mais difíceis.** Que atualizações Lucas considera as mais difíceis? *Rubrica:* 3 = as de dispositivos que ninguém considera computadores, como scanners e caixas;; 2 = dispositivos;; 1 = notebooks;; 0 = nenhuma.
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Probabilidade e estatística
+
+### Objetivos de aprendizagem
+
+Você vai (1) estimar uma proporção a partir de uma amostra de auditoria; (2) calcular e interpretar um intervalo de confiança; (3) evitar erros estatísticos comuns em relatórios de segurança.
+
+### 12.1 Amostragem para auditoria
+
+A Fernway tem cerca de quatro mil contas de usuários e de serviço distribuídas pelos sistemas. Hannah não consegue revisar todas as contas, então Lucas sorteia uma amostra aleatória de duzentas e verifica em cada uma problemas como falta de responsável ou acessos desatualizados. Ele encontra vinte e seis com problemas. A proporção amostral é de treze por cento. A amostragem aleatória importa: se ele tivesse verificado apenas as contas de que já suspeitava, a estimativa seria enviesada para cima. Ele registra como a amostra foi sorteada, com a semente aleatória, para que a auditoria possa ser repetida e conferida por outra pessoa.
+
+### 12.2 Intervalos de confiança
+
+Uma proporção isolada esconde a incerteza. Lucas calcula um intervalo de confiança de noventa e cinco por cento usando o método de Wilson, que se comporta bem com proporções. O laboratório abaixo mostra a estimativa e o intervalo, e a faixa implícita de contas afetadas na população. Ele relata que entre cerca de nove e dezoito por cento das contas provavelmente têm problemas, algo como 360 a 740 contas. Essa faixa é mais honesta e mais útil do que os treze por cento sozinhos, porque diz a Hannah quanto esforço de limpeza planejar.
+
+### Laboratório — Amostra de auditoria e intervalo de confiança
+
+```python
+# Wilson 95% interval for an account-audit sample (synthetic).
+import math
+N, n, x, z = 4000, 200, 26, 1.96
+p = x / n
+den = 1 + z*z/n; centre = (p + z*z/(2*n)) / den
+half = z * math.sqrt(p*(1-p)/n + z*z/(4*n*n)) / den
+lo, hi = centre - half, centre + half
+print(f"sample {x}/{n} = {p:.1%}; Wilson 95% CI {lo:.1%} to {hi:.1%}")
+print(f"implied affected accounts: {lo*N:.0f} to {hi*N:.0f} of {N}")
+```
+
+Execute com `python3 lab_sample.py`. Saída verificada:
+
+```text
+sample 26/200 = 13.0%; Wilson 95% CI 9.0% to 18.4%
+implied affected accounts: 361 to 735 of 4000
+```
+
+### 12.3 Erros comuns
+
+Lucas lista erros que já viu em relatórios de segurança: porcentagens sem contagens, comparações de números pequenos apresentadas como mudanças dramáticas, médias de dados assimétricos e confusão entre correlação e causa. Um relatório que afirma que os cliques em phishing caíram pela metade depois de um treinamento, com base em quatro cliques que caíram para dois, diz pouco. Ele decide sempre relatar as contagens junto com as proporções, os intervalos quando houver amostragem e o método usado. A estatística não torna um relatório mais científico a menos que seja usada com cuidado; mal usada, empresta uma falsa autoridade a afirmações fracas.
+
+### Exemplo resolvido
+
+Lucas amostra 200 de 4.000 contas, encontra 26 com problemas, calcula um intervalo de Wilson e relata uma faixa de contas afetadas.
+
+> **Caso sintético.** As contas e os achados são sintéticos.
+
+### Erros e limites
+
+Os intervalos supõem amostragem aleatória; amostras por conveniência os invalidam. Os problemas encontrados dependem da consistência de quem revisa.
+
+### Exercícios
+
+- **EX034 — Por que aleatória.** Por que a amostra da auditoria precisa ser aleatória? *Rubrica:* 3 = amostras dirigidas enviesam a estimativa;; 2 = viés;; 1 = mais rápido;; 0 = nenhuma.
+
+- **EX035 — Intervalo do laboratório.** Que intervalo o laboratório relatou? *Rubrica:* 3 = cerca de 9,0 a 18,4 por cento, aproximadamente 361 a 735 contas;; 2 = intervalo;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX036 — De quatro para dois.** Por que os cliques em phishing caíram pela metade, de quatro para dois, é uma evidência fraca? *Rubrica:* 3 = contagens minúsculas tornam a mudança sem significado, explicável pelo acaso;; 2 = números pequenos;; 1 = forte;; 0 = nenhuma.
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Identidade e acesso
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar processos de ciclo de vida da identidade para admissões, movimentações e desligamentos; (2) aplicar o acesso baseado em papéis com segregação de funções; (3) fortalecer a autenticação com métodos resistentes a phishing.
+
+### 13.1 Admissões, movimentações e desligamentos
+
+A maioria dos problemas de acesso encontrados no capítulo 12 veio do ciclo de vida da identidade. Os novos funcionários recebiam acesso copiando a conta de um colega, os funcionários que mudavam de função mantinham os direitos antigos e as contas dos desligados ficavam ativas por semanas. Lucas projeta processos: os admitidos recebem acesso a partir de definições de papéis aprovadas pelos gestores; quem muda de função perde os papéis antigos ao ganhar os novos; os desligados são desativados no último dia, por um gatilho do sistema de RH. Cada etapa é registrada. Os processos de ciclo de vida impedem que o acesso cresça em silêncio, um padrão chamado privilege creep que mina o menor privilégio ao longo do tempo.
+
+### 13.2 Papéis e funções
+
+Lucas define papéis para a Fernway: equipe de loja, gerente de loja, operador de armazém, comprador, auxiliar financeiro e administrador. Cada papel tem um conjunto documentado de permissões. Ele procura combinações tóxicas: um comprador que também pode aprovar pagamentos a fornecedores poderia criar um fornecedor falso e pagá-lo. Ele marca esses pares como conflitos que não podem ser mantidos juntos, implementando a segregação de funções. Os papéis simplificam as revisões de acesso, porque os gestores revisam atribuições de papéis em vez de centenas de permissões individuais. Mas os papéis precisam de manutenção, ou as exceções se acumulam até que os papéis signifiquem pouco.
+
+### 13.3 Autenticação mais forte
+
+A equipe da Fernway usa senhas mais códigos por mensagem de texto. Lucas explica que os códigos por SMS podem ser capturados por phishing em páginas de login falsas que os repassam em tempo real. Métodos resistentes a phishing, como passkeys ou chaves de segurança em hardware que usam criptografia de chave pública vinculada ao site verdadeiro, impedem isso, porque a credencial não funciona num domínio falso. Ele propõe passkeys primeiro para os administradores e o financeiro, e depois para os demais. Também recomenda que a loja dos associados ofereça passkeys como opção. A força da autenticação deve acompanhar o valor do que uma conta pode fazer.
+
+### Exemplo resolvido
+
+Lucas projeta os processos de admissão, movimentação e desligamento, define seis papéis com uma combinação tóxica bloqueada e propõe autenticação resistente a phishing primeiro para a equipe privilegiada.
+
+> **Caso sintético.** Os papéis e os processos são sintéticos.
+
+### Erros e limites
+
+Os modelos de papéis derivam sem revisão regular. Os processos de recuperação de passkeys podem virar um ponto fraco.
+
+### Exercícios
+
+- **EX037 — Privilege creep.** O que é privilege creep, e que processo o impede? *Rubrica:* 3 = acesso que se acumula nas mudanças de função; o processo de movimentação remove os papéis antigos;; 2 = os dois;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX038 — Combinação tóxica.** Que combinação tóxica Lucas bloqueou? *Rubrica:* 3 = comprador que também pode aprovar pagamentos a fornecedores;; 2 = nomeada;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX039 — Fraqueza dos códigos por SMS.** Por que os códigos por SMS são mais fracos do que as passkeys? *Rubrica:* 3 = podem ser capturados por phishing e repassados em tempo real; as passkeys se vinculam ao site verdadeiro;; 2 = repasse;; 1 = mais fortes;; 0 = nenhuma.
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Fundamentos de privacidade
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar os princípios de privacidade aos dados dos associados da Fernway; (2) projetar a pseudonimização para as análises; (3) atender às solicitações dos titulares por meio da arquitetura.
+
+### 14.1 Princípios de privacidade
+
+Lucas estuda os princípios de privacidade comuns às leis de proteção de dados: finalidade legítima, minimização dos dados, exatidão, limitação do armazenamento, segurança e responsabilização. Ele os aplica ao programa de associados da Fernway. Os associados informam o endereço para as entregas e o histórico de compras para as recompensas. A equipe de marketing quer analisar as compras por região. A minimização sugere que eles precisam dos distritos postais e das categorias de produtos, e não de nomes e endereços completos. Lucas aprende que a privacidade molda a arquitetura: o sistema de análise deve receber menos dados do que a loja guarda, por projeto, e não só por política.
+
+### 14.2 Pseudonimização
+
+Para as análises, Lucas projeta a pseudonimização: os identificadores dos associados são substituídos por hashes com chave calculados com HMAC e uma chave secreta guardada pela equipe de dados, e não pelos analistas. O mesmo associado sempre corresponde ao mesmo pseudônimo, de modo que as compras podem ser ligadas, mas os analistas não conseguem revertê-lo sem a chave. O laboratório abaixo mostra isso com associados sintéticos e por que um hash sem chave é mais fraco: qualquer pessoa pode calcular o hash de números de associado candidatos e compará-los. Dados pseudonimizados continuam sendo dados pessoais segundo muitas leis, então ainda precisam de proteção, mas o risco é menor.
+
+### Laboratório — Pseudônimos com chave versus sem chave
+
+```python
+# Keyed (HMAC) vs unkeyed pseudonyms for synthetic member numbers. Teaching only.
+import hmac, hashlib
+KEY = b"synthetic-data-team-key"
+members = ["M100231", "M100232", "M100233"]
+keyed = {m: hmac.new(KEY, m.encode(), hashlib.sha256).hexdigest()[:12] for m in members}
+plain = {m: hashlib.sha256(m.encode()).hexdigest()[:12] for m in members}
+target_plain, target_keyed = plain["M100232"], keyed["M100232"]
+guesses = [f"M1002{i:02d}" for i in range(100)]
+hit_plain = [g for g in guesses if hashlib.sha256(g.encode()).hexdigest()[:12] == target_plain]
+hit_keyed = [g for g in guesses if hashlib.sha256(g.encode()).hexdigest()[:12] == target_keyed]
+print("stable keyed pseudonym:", keyed["M100232"] == hmac.new(KEY, b"M100232", hashlib.sha256).hexdigest()[:12])
+print("guessing unkeyed pseudonym recovers:", hit_plain)
+print("guessing keyed pseudonym (no key) recovers:", hit_keyed)
+```
+
+Execute com `python3 lab_pseudo.py`. Saída verificada:
+
+```text
+stable keyed pseudonym: True
+guessing unkeyed pseudonym recovers: ['M100232']
+guessing keyed pseudonym (no key) recovers: []
+```
+
+### 14.3 Solicitações dos titulares
+
+Os associados podem pedir para ver ou excluir seus dados. Lucas mapeia onde ficam os dados dos associados: o banco de dados da loja, o e-mail marketing, as análises, os backups e o parceiro de entregas. Sem o mapa, a Fernway não conseguiria atender às solicitações por completo. Ele propõe que cada sistema ofereça uma forma de localizar e excluir os registros de um associado, e que os backups expirem num calendário em vez de serem editados. O atendimento às solicitações se torna um teste da arquitetura: se os dados estão espalhados em lugares desconhecidos, a organização não consegue cumprir suas promessas aos associados.
+
+### Exemplo resolvido
+
+Lucas aplica seis princípios de privacidade ao programa de associados, projeta pseudônimos baseados em HMAC para as análises e mapeia cinco locais de dados para as solicitações dos titulares.
+
+> **Caso sintético.** Os associados, os sistemas e as chaves são sintéticos.
+
+### Erros e limites
+
+Dados pseudonimizados podem ser reidentificados pela combinação de campos. Os requisitos legais variam conforme a jurisdição.
+
+### Exercícios
+
+- **EX040 — Minimização nas análises.** De que dados o marketing realmente precisa para a análise por região? *Rubrica:* 3 = distritos postais e categorias de produtos, não nomes ou endereços completos;; 2 = mínimos;; 1 = tudo;; 0 = nenhuma.
+
+- **EX041 — Fraqueza sem chave.** O que o laboratório mostrou sobre os hashes sem chave? *Rubrica:* 3 = qualquer pessoa pode calcular o hash de números de associado candidatos e compará-los; os hashes com chave resistem a isso;; 2 = comparação;; 1 = iguais;; 0 = nenhuma.
+
+- **EX042 — Exclusão nos backups.** Como Lucas trata a exclusão de associados nos backups? *Rubrica:* 3 = os backups expiram num calendário em vez de serem editados;; 2 = expiração;; 1 = editar os backups;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX021 (as de EX022–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Lucas Haddon, o Dr. Marco Bellini, Hannah Osei, a Ashgrove University, a Fernway Outdoor Co-operative e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX042 (as de EX043–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Lucas Haddon, o Dr. Marco Bellini, Hannah Osei, a Ashgrove University, a Fernway Outdoor Co-operative e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** M OR (S AND R), e (M OR S) AND R.
 
@@ -408,6 +721,48 @@ Respostas-modelo para EX001–EX021 (as de EX022–EX120 estão na edição em i
 **EX020.** Porque um atacante que a controle pode redirecionar os clientes e pode passar na validação de certificados para o nome da Fernway.
 
 **EX021.** Um serviço gerenciado de acesso remoto que exija autenticação multifator.
+
+**EX022.** A autenticação estabelece quem é o usuário; a autorização decide o que esse usuário pode fazer.
+
+**EX023.** Um gerente podia ajustar o estoque de outra loja, porque só o papel, e não a loja, era verificado.
+
+**EX024.** Senhas e tokens de sessão.
+
+**EX025.** O atacante herda apenas os direitos de leitura e de gravação de pedidos da loja, e não os poderes sobre o esquema ou de exportação.
+
+**EX026.** Três: a consulta de busca e outras duas montadas do mesmo jeito.
+
+**EX027.** Dados sintéticos ou adequadamente mascarados, nunca registros brutos de associados.
+
+**EX028.** O que pode ser testado, como, quando, por quem, e um contato de emergência.
+
+**EX029.** Registros sintéticos que ele cria, nunca dados reais de associados.
+
+**EX030.** Relatá-lo à equipe de segurança da própria organização, em vez de Lucas investigar.
+
+**EX031.** Porque qualquer malware que um usuário rode ganha controle total do notebook.
+
+**EX032.** Contas individuais que elevam privilégios por meio de comandos registrados.
+
+**EX033.** As atualizações de dispositivos como caixas e scanners, que as pessoas não consideram computadores.
+
+**EX034.** Porque verificar apenas as contas suspeitas enviesaria a estimativa para cima.
+
+**EX035.** Cerca de 9,0% a 18,4%, o que implica aproximadamente 361 a 735 contas afetadas.
+
+**EX036.** Porque, com contagens tão pequenas, a mudança poderia facilmente ser obra do acaso.
+
+**EX037.** O acesso que se acumula conforme as pessoas mudam de função; o processo de movimentação remove os papéis antigos quando novos são concedidos.
+
+**EX038.** Um comprador que também podia aprovar pagamentos a fornecedores, o que permitiria uma fraude com fornecedor falso.
+
+**EX039.** Porque páginas falsas podem capturar e repassar os códigos por SMS, enquanto as passkeys só funcionam no site genuíno.
+
+**EX040.** Distritos postais e categorias de produtos, sem nomes ou endereços completos.
+
+**EX041.** Que um atacante que calcula o hash de números de associado adivinhados consegue identificar pseudônimos sem chave, mas não os com chave sem conhecer a chave.
+
+**EX042.** Os backups expiram num calendário definido, em vez de serem editados registro por registro.
 
 <a id="references"></a>
 ## Referências
