@@ -39,6 +39,56 @@ The first authored priority is the [Incident Response / Rapid / English draft](l
 
 The [complete course guide](COURSE_GUIDE.md) links every planned book and course level. Existing `book/PLAN.md` files record the previous one-chapter-per-subject structure; expand them into the daily sequence as each edition is authored. Their summaries are not abstracts of finished manuscripts.
 
+## Complete translations and cross-language parity
+
+**Required destination:** every course at every level must have its complete instructional content available in all nine editions: English (`en`), Portuguese (`pt`), Spanish (`es`), Hebrew (`he`), French (`fr`), Russian (`ru`), German (`de`), Chinese (`zh`) and Japanese (`ja`). This is a production obligation, not a declaration of current availability. For one area, there are nine level-specific books in each language, not one book combining all levels. Keep one principal `MANUSCRIPT.md` per course and language and one shared course skill.
+
+The daily targets in the [curriculum grid](CURRICULUM_GRID.md) apply independently to each edition. Their sum is 5,220 lessons per area and language; with the current 23 areas, the target is 120,060 lessons per language and 1,080,540 lesson-editions across nine languages. Of those lesson-editions, 960,480 are the eight non-English counterparts. These are arithmetic planning totals, not existing lessons, new books, translated pages or verified completion. There is no maximum lesson count. Existing English teaching, including legacy subject-chapters and their supplements, must not be dropped when mapping to the daily curriculum or translating it.
+
+Follow the [AI guide's language order](AI_GUIDE.md#language-and-citation-rules): complete the English writing and review pass, then Portuguese, Spanish, Hebrew, French, Russian, German, Chinese and Japanese, one language pass at a time. Inventory and preserve existing translations while the reference is reviewed. Do not restart a valid manual translation merely because the English source has changed; compare the actual changes and reconcile them. Public, accurate existing translations remain readable. Reference defects discovered during translation require an explicit correction and renewed comparison, not a silent change to the learner's task.
+
+### What must be translated
+
+Translate the complete instructional package, not an abridgment. Equivalent technical depth means the same concepts, mechanisms, assumptions, reasoning steps, evidence limits and assessment demands at the specified level. Natural language may differ; the learning burden must not be reduced.
+
+| Component | Required language-edition coverage |
+|---|---|
+| Course and lesson guides | Course overview, audience, prerequisites, subject/module names, daily sequence, objectives, materials and previous/index/next navigation |
+| Teaching and examples | All substantive prose, definitions, comparisons, intermediate reasoning, worked examples, case descriptions, counterexamples, common errors, limitations, summaries and glossary entries |
+| Tables and visuals | Table headings and explanatory cells, diagram and flowchart labels, legends, captions, text alternatives and the prose explaining what each relationship means |
+| Laboratories | Prerequisites, authorized or isolated scope, setup and execution instructions, input explanations, expected observations, failure checks, interpretation and safe cleanup |
+| Assessment | Every exercise prompt, learning objective, input, constraint, required artifact, rubric and full worked answer, with accepted alternatives and reasoning, in the same principal book |
+| Sources and rights | Citation explanations, source links, provenance, permissions and third-party notices; referenced external works remain external unless reuse and translation rights have actually been checked |
+| Tutoring and discovery | Edition-aware links and terminology in the single course skill, onboarding and course catalog, without creating a skill per lesson or counting a translated interface as a translated book |
+
+Preserve stable exercise IDs, source record IDs, explicit anchors, formulas, units, chronology, scope, uncertainty and safety conditions. Keep protocol names, API identifiers, commands and machine-readable fields unchanged where translation would alter behavior. Exact lab fixtures, bytes, hashes and literal program output remain exact; translate their explanations rather than silently changing the test. A necessary localized executable variant must be labeled separately and have its own reproduced output. Retaining these technical literals, proper source titles or permitted original quotations is not an untranslated teaching gap; retaining English instructional paragraphs without a translation is.
+
+Check language-specific typography and reading order as well as vocabulary. For Hebrew, verify right-to-left prose alongside left-to-right code, numbers and identifiers. For every language, inspect readable tables, figures, code and exercise/answer navigation in the actual rendered edition. A language detector, matching heading count or same number of words cannot establish fidelity. Do not transplant a different jurisdiction's rules into a case as an unmarked translation.
+
+### Pin the reference and prove completeness
+
+For each translated book, record its source manuscript path and revision, target revision, review scope and date, and the reviewer actually responsible. For each lesson or legacy source unit, map the source anchor to the target anchor and its exercise/answer IDs. Record the source revision last compared. An explicit one-to-many mapping is needed when a legacy chapter becomes several daily lessons; merely splitting headings must not count as new teaching.
+
+Track three distinct quantities rather than one misleading percentage:
+
+| Measure | Denominator and evidence |
+|---|---|
+| Daily curriculum coverage | Required daily lessons for this course; count only actual lessons containing teaching, a worked example, an independently solvable exercise and its worked answer |
+| Translation coverage of available English content | All instructional units in the declared, pinned English book scope, including supplementary teaching and final answers; count a unit only when all required components above have a target counterpart |
+| Reviewed translation parity | The same declared source scope; count only units checked for technical and linguistic equivalence, source/target freshness and the relevant executable and rendering checks |
+
+Report the scope with every percentage: a lesson, a batch, a book or the catalog. A fully translated batch is not a fully translated book. A complete translation of a partial English book is not a complete daily curriculum. Missing sources, inaccessible files, unexamined translations and absent review evidence are **unknown or pending**, never automatically passed. The legacy structural counters in [language coverage](LANGUAGE_LESSON_PROGRESS.md) remain discovery aids until a source-to-target audit is recorded; do not relabel them as translation fidelity or daily-lesson completion.
+
+Before claiming 100% reviewed parity for a book, check every mapped unit and exercise/answer pair, terminology and negation, all required non-prose components, anchors and edition-specific navigation. Run complete executable examples and relevant negative controls where applicable; preserve reported output only when reproduced under the stated environment, or label the run unperformed. A different implementation may corroborate a result but does not establish that the published program executed. Recheck source citations and rights without copying entire third-party works. Record technical, linguistic and rendering limitations rather than inferring approval from a translation tool.
+
+An English revision makes affected target units pending reconciliation until the changed passages and their dependent examples, figures, exercises and answers have been compared again. Keep unaffected translations and their evidence; do not erase the whole edition or pretend it updated automatically. The current book's 100% claim cannot remain valid merely because an earlier snapshot passed. A4 verification is specific to the translated source and layout; an English page count does not verify another edition.
+
+### Public reading and site availability
+
+Publish translated teaching directly in the public edition's principal manuscript, including its worked-answer appendix; do not keep student-facing translation drafts in the private Engine or create duplicate instructional books. Preserve manual changes using the current file SHA and read back the actual published revision. A branch, proposed merge, index entry or language selector alone is not evidence that students can read the translation from `main` or the site.
+
+For both onboarding routes, the selected content language must lead to that language's real course guide, lessons, examples, exercises and worked answers. An English fallback must be explicitly labeled, never counted as translated content. Report interface language, manuscript language, source revision, translation coverage and review state separately. All nine languages are in scope even when the current interface exposes fewer languages. Catalog generation, frontend changes, deployment and live-route verification are separate deliverables; do not report a documentation change or a repository commit as a tested website release. Complete-book approval still requires the full publication gate above.
+
 ## Book directory
 
 Each `book/` starts with `PLAN.md`. Later authored content belongs beside it: manuscript sources, figure sources, safe lab data, exercise assets, worked solutions, references, and release evidence. Avoid publishing private data, access credentials, or unsafe offensive instructions.
