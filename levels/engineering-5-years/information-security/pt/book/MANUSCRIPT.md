@@ -1,7 +1,7 @@
 # Segurança da Informação: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 117, curso de engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–30 de 50 já estão escritos em português, com os exercícios EX001–EX090 e suas resoluções com rubricas de 0 a 3 e 3 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 31–50 (EX091–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–40 de 50 já estão escritos em português, com os exercícios EX001–EX120 e suas resoluções com rubricas de 0 a 3 e 4 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 41–50 (EX121–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que aprendem a construir, verificar e operar controles de segurança da informação para uma empresa de logística.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios conciliam um inventário sintético de ativos com uma varredura sintética de descoberta, conferem configurações sintéticas de servidores contra três regras de linha de base, detectam rajadas de adivinhação de senhas num log sintético de autenticação e verificam restaurações sintéticas de backup contra somas de verificação SHA-256. As normas são citadas pela edição e parafraseadas. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ Anderson (2020), [doi:10.1002/9781119644682](https://doi.org/10.1002/97811196446
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) |
 
-Capítulos 31–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-31), até a chegada dos próximos lotes.
+Capítulos 41–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-41), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1384,11 +1384,457 @@ Os casos-limite não testados muitas vezes revelam discordância entre a defini�
 
 - **EX090 — Testes permanentes.** Por que manter os casos plantados de forma permanente? *Rubrica:* 3 = para conferir rapidamente as mudanças futuras;; 2 = correto;; 1 = nada;; 0 = nenhuma.
 
+<a id="ch-31"></a>
+
+## Capítulo 31 — Segurança da informação: implementação II
+
+### Objetivos de aprendizagem
+
+Você vai (1) implantar a autenticação multifator em escala; (2) gerenciar exceções; (3) acompanhar a adoção em relação a um plano.
+
+### 31.1 Plano de implantação
+
+No quarto ano, Lindiwe ajuda a implementar o plano de autenticação multifator aprovado antes. Os administradores vêm primeiro, com chaves físicas; depois a equipe de escritório, com códigos de aplicativo; depois a equipe do armazém, que compartilha terminais e precisa de outra abordagem. Ela escreve um cronograma por depósito, com sessões de treinamento, preparação da central de atendimento e uma data a partir da qual as senhas sozinhas deixam de funcionar. O Prof. Hale pede que ela planeje a comunicação com o mesmo cuidado que a configuração, porque usuários surpreendidos geram chamados de suporte e soluções de contorno. O líder de segurança aprova o cronograma e as datas de treinamento.
+
+### 31.2 Terminais do armazém
+
+A equipe do armazém usa terminais compartilhados com luvas nas mãos, então as notificações no celular são pouco práticas. A equipe de Lindiwe testa logins de curta duração por aproximação do crachá, combinados com um código pessoal, de modo que cada pessoa seja identificada individualmente e as contas compartilhadas desapareçam. O depósito de teste relata logins mais rápidos do que com a antiga senha compartilhada. Ela aprende que as melhorias de segurança que também eliminam atrito se espalham depressa, enquanto as que acrescentam atrito precisam de uma justificativa forte e de apoio para serem aceitas por uma equipe ocupada. Os leitores de crachá são instalados em todos os terminais do armazém ao longo dos dois meses seguintes.
+
+### 31.3 Exceções
+
+Algumas contas não conseguem usar a autenticação multifator de imediato: uma integração antiga de scanner e duas contas de serviço usadas por fornecedores. Lindiwe registra cada exceção com um dono, um motivo, controles compensatórios, como restrições de rede, e uma data de expiração. O Prof. Hale explica que as exceções sem data de expiração se tornam fraquezas permanentes. Ela programa lembretes três semanas antes de cada expiração, para que os donos tenham de resolver o problema ou justificar uma prorrogação ao líder de segurança. A exceção da integração do scanner é encerrada após três meses, quando o fornecedor entrega uma atualização com suporte a certificados.
+
+### 31.4 Acompanhando a adoção
+
+Lindiwe acompanha a adoção semanalmente: a parcela de contas cadastradas, a parcela de logins que usam um segundo fator e o número de exceções abertas. A adoção entre os administradores chega a todas as contas na primeira quinzena, a equipe de escritório acompanha ao longo de dois meses e os depósitos do armazém avançam um de cada vez. Ela relata o progresso em relação ao plano ao líder de segurança. Ela observa que contar apenas os cadastros poderia enganar, já que os usuários cadastrados ainda poderiam entrar com os métodos antigos até que estes sejam desativados. A desativação dos métodos antigos vem em seguida.
+
+### Exemplo resolvido
+
+Lindiwe implanta a autenticação multifator em fases, por grupo, usa a aproximação do crachá nos terminais do armazém, registra as exceções com datas de expiração e acompanha tanto os cadastros quanto o uso real do segundo fator.
+
+> **Caso sintético.** A implantação é sintética.
+
+### Erros e limites
+
+As exceções sem data de expiração se tornam fraquezas permanentes.
+
+### Exercícios
+
+- **EX091 — Ordem de implantação.** Que grupo vem primeiro? *Rubrica:* 3 = os administradores, com chaves físicas;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+- **EX092 — Método do armazém.** Como a equipe do armazém faz login? *Rubrica:* 3 = aproximação do crachá com um código pessoal;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX093 — Medidas de adoção.** Que três medidas de adoção são acompanhadas? *Rubrica:* 3 = parcela cadastrada, logins com segundo fator, exceções abertas;; 2 = todas;; 1 = algumas;; 0 = nenhuma.
+
+<a id="ch-32"></a>
+
+## Capítulo 32 — Segurança da informação: confiabilidade
+
+### Objetivos de aprendizagem
+
+Você vai (1) verificar a integridade dos backups com somas de verificação; (2) medir o sucesso das restaurações; (3) definir objetivos de recuperação.
+
+### 32.1 Restaurações como evidência
+
+A Saltmarsh acredita que seus backups funcionam porque as rotinas de backup relatam sucesso. Lindiwe explica que uma rotina de backup bem-sucedida mostra que os dados foram copiados, não que podem ser restaurados intactos. Ela propõe testes regulares de restauração que comparem os arquivos restaurados com as somas de verificação registradas no momento do backup. Se um arquivo estiver faltando ou sua soma de verificação for diferente, a restauração falhou para aquele arquivo. O Prof. Hale observa que somente os testes de restauração dão evidências para a exigência da seguradora de backups testados. O líder de segurança agenda o primeiro teste de restauração para o mês seguinte.
+
+### 32.2 O laboratório da restauração
+
+O laboratório cria 500 arquivos sintéticos, registra uma soma de verificação SHA-256 para cada um usando o módulo hashlib do Python e simula uma restauração. Cinco arquivos estão faltando na restauração e três têm somas de verificação divergentes, causadas por um único bit invertido. Isso deixa 492 arquivos verificados, 98,4 por cento. Lindiwe observa que a rotina de backup teria relatado sucesso e que, sem as somas de verificação, os três arquivos corrompidos pareceriam normais até alguém abri-los. Ela mostra ao líder de segurança a lista dos arquivos faltantes e corrompidos, e a equipe concorda em executar a mesma verificação mensalmente, sobre uma amostra rotativa de pastas de todos os servidores.
+
+### Laboratório — Verificando restaurações sintéticas de backup contra somas de verificação SHA-256
+
+```python
+"""Verify synthetic backup restores against SHA-256 checksums (stdlib only)."""
+import hashlib, random
+random.seed(12)
+files = {f"file{i}": random.randbytes(256) for i in range(500)}
+manifest = {k: hashlib.sha256(v).hexdigest() for k, v in files.items()}
+restored = {}
+for k, v in files.items():
+    r = random.random()
+    if r < 0.006: continue                                    # missing from restore
+    if r < 0.014: v = v[:-1] + bytes([v[-1] ^ 1])            # one bit flipped
+    restored[k] = v
+missing = [k for k in files if k not in restored]
+bad = [k for k in restored if hashlib.sha256(restored[k]).hexdigest() != manifest[k]]
+ok = len(files) - len(missing) - len(bad)
+print(f"files {len(files)}; missing {len(missing)}; checksum mismatch {len(bad)}; verified {ok} ({ok/len(files):.1%})")
+```
+
+Execute com `python3 lab_restore.py`. Saída verificada:
+
+```text
+files 500; missing 5; checksum mismatch 3; verified 492 (98.4%)
+```
+
+### 32.3 Investigando as falhas
+
+Lindiwe rastreia os cinco arquivos faltantes até uma pasta acrescentada depois que a seleção do backup foi configurada, de modo que ela nunca foi incluída. Os três arquivos corrompidos vêm de um disco com defeito no servidor de backup. As duas causas têm correção: a seleção é alterada para incluir todas as pastas sob uma pasta-mãe, e o disco é substituído. Ela aprende que os testes de restauração encontram problemas de configuração e de hardware que o monitoramento das rotinas de backup, sozinho, não consegue revelar. O teste mensal de restauração seguinte, executado depois das duas correções, verifica todos os arquivos da sua amostra.
+
+### 32.4 Objetivos de recuperação
+
+Lindiwe ajuda a Saltmarsh a definir objetivos de recuperação: quantos dados o negócio pode se permitir perder e com que rapidez cada sistema precisa voltar. O despacho pode perder no máximo uma hora de dados e precisa voltar em até quatro horas; a folha de pagamento pode perder um dia, mas precisa estar de volta antes do processamento dos pagamentos. Esses objetivos determinam a frequência dos backups e os métodos de restauração. O Prof. Hale observa que os objetivos acordados com os donos do negócio transformam os backups de um hábito técnico num compromisso. Os objetivos são aprovados pelo diretor de operações e pelo diretor financeiro.
+
+### Exemplo resolvido
+
+Lindiwe verifica uma restauração sintética de 500 arquivos com somas de verificação SHA-256, encontra 5 faltantes e 3 corrompidos (492 verificados, 98,4 por cento), rastreia as causas e define objetivos de recuperação.
+
+> **Caso sintético.** Os arquivos são sintéticos; as saídas vêm de lab_restore.py.
+
+### Erros e limites
+
+Uma rotina de backup bem-sucedida não prova que os dados podem ser restaurados intactos.
+
+### Exercícios
+
+- **EX094 — Números da restauração.** Quantos arquivos foram verificados? *Rubrica:* 3 = 492, 98,4 por cento;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX095 — Causa dos faltantes.** Por que cinco arquivos estavam faltando? *Rubrica:* 3 = uma pasta acrescentada depois que a seleção foi configurada;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX096 — Objetivos do despacho.** Quais são os objetivos de recuperação do despacho? *Rubrica:* 3 = perder no máximo uma hora, voltar em até quatro horas;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-33"></a>
+
+## Capítulo 33 — Segurança da informação: segurança e resiliência
+
+### Objetivos de aprendizagem
+
+Você vai (1) planejar a continuidade da operação durante incidentes; (2) projetar alternativas manuais; (3) exercitar planos de resiliência.
+
+### 33.1 Resiliência
+
+Resiliência significa continuar o trabalho essencial durante uma interrupção e se recuperar rapidamente. Lindiwe pergunta aos gerentes de operações da Saltmarsh o que precisa continuar se os sistemas falharem: as entregas de medicamentos refrigerados, a folha de pagamento e a comunicação com os clientes. Ela monta uma lista dos serviços essenciais com os sistemas de que cada um depende. O Prof. Hale explica que o planejamento da resiliência parte dos serviços que o negócio não pode interromper, e não dos sistemas, porque vários sistemas muitas vezes sustentam um serviço e um sistema pode sustentar vários. Lindiwe registra os serviços numa tabela, com os sistemas de que dependem e a maior interrupção tolerável de cada um, conforme acordado com os gerentes.
+
+### 33.2 Alternativas manuais
+
+Se o despacho falhar, os depósitos não conseguem imprimir as listas de entrega. Lindiwe trabalha com os supervisores dos depósitos para projetar uma alternativa manual: uma lista impressa toda noite com as entregas do dia seguinte, guardada num armário trancado, e formulários de confirmação em papel lançados depois no sistema. Para as cargas refrigeradas, os motoristas levam registradores de temperatura independentes, que não dependem da rede. Ela aprende que as melhores alternativas são simples, praticadas e independentes dos sistemas que substituem. Os supervisores testam a lista impressa e os formulários em papel durante um turno tranquilo de domingo, e os motoristas acham os formulários fáceis de preencher.
+
+### 33.3 Exercícios
+
+Os planos que nunca são exercitados muitas vezes falham. Lindiwe organiza um exercício de mesa: um ransomware cifrou o servidor do despacho numa segunda-feira de manhã. Os gerentes percorrem suas ações passo a passo. Eles descobrem que ninguém sabe onde as listas impressas ficam guardadas num dos depósitos e que a lista de contatos de incidentes contém duas pessoas que já saíram da empresa. O Prof. Hale observa que encontrar esse tipo de problema num exercício é exatamente o propósito, e que todo exercício deveria produzir uma breve lista de melhorias. A lista de melhorias tem sete itens.
+
+### 33.4 Segurança física e integridade
+
+Lindiwe retoma a preocupação com a segurança das pessoas do seu primeiro ano: os registros de temperatura dos medicamentos. Durante um incidente cibernético, os registros podem ser perdidos ou alterados. Ela recomenda que os registradores independentes dos motoristas sejam lidos no momento da entrega e que seus resultados sejam guardados separadamente, para que a evidência de temperaturas seguras sobreviva a um comprometimento do sistema. O gerente da frota aceita a recomendação. Ela aprende que a resiliência dos dados ligados à segurança das pessoas precisa de evidências independentes, e não apenas de backups do mesmo sistema. Lindiwe acrescenta esse requisito ao plano de resiliência, e a equipe da frota o inclui no treinamento dos motoristas.
+
+### Exemplo resolvido
+
+Lindiwe identifica os serviços essenciais, projeta alternativas impressas e independentes, conduz um exercício de mesa de ransomware que expõe contatos desatualizados e protege as evidências de temperatura de forma independente.
+
+> **Caso sintético.** Os planos e os exercícios são sintéticos.
+
+### Erros e limites
+
+Um plano de resiliência que nunca foi exercitado costuma conter detalhes desatualizados.
+
+### Exercícios
+
+- **EX097 — Serviços essenciais.** Cite um serviço essencial identificado. *Rubrica:* 3 = as entregas de medicamentos refrigerados;; 2 = um;; 1 = nada;; 0 = nenhuma.
+
+- **EX098 — Descoberta do exercício.** O que o exercício revelou? *Rubrica:* 3 = o local desconhecido das listas impressas e contatos desatualizados;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX099 — Evidência de temperatura.** Como a evidência de temperatura é protegida? *Rubrica:* 3 = registradores independentes lidos na entrega;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-34"></a>
+
+## Capítulo 34 — Segurança da informação: integração
+
+### Objetivos de aprendizagem
+
+Você vai (1) proteger as integrações entre sistemas e parceiros; (2) gerenciar as credenciais de interfaces de programação de aplicações; (3) monitorar os dados trocados com terceiros.
+
+### 34.1 Integrações com parceiros
+
+A Saltmarsh troca dados com varejistas, transportadoras e uma empresa de processamento de folha de pagamento por meio de interfaces automatizadas. Lindiwe lista cada integração com seus dados, sua direção, seu método de autenticação e seu dono. Ela descobre que a conexão de uma transportadora usa uma senha fixa enviada em cada requisição por um canal cifrado, enquanto outra usa certificados. O Prof. Hale observa que as integrações são facilmente esquecidas depois de configuradas e muitas vezes têm acesso amplo, o que as torna atraentes para atacantes. Ela completa a lista com onze integrações e confirma um dono para cada uma com o gerente de negócio responsável.
+
+### 34.2 Credenciais das interfaces
+
+As credenciais das interfaces exigem o mesmo cuidado que as senhas da equipe. Lindiwe recomenda que cada integração tenha sua própria credencial, limitada às operações de que precisa, guardada num cofre de segredos gerenciado e trocada segundo um cronograma. Ela descobre que duas transportadoras compartilham uma única credencial, de modo que revogar o acesso de uma interromperia a outra. Separá-las exige uma semana de coordenação, mas significa que cada parceiro poderá ser gerenciado de forma independente no futuro. Ela move as duas credenciais para o cofre de segredos gerenciado e define a troca a cada noventa dias.
+
+### 34.3 Minimização de dados
+
+A empresa de folha de pagamento recebe os registros completos dos funcionários, inclusive os contatos de emergência, de que não precisa. Lindiwe revisa os campos com a equipe de recursos humanos e remove da exportação seis campos desnecessários. Ela explica que cada campo compartilhado é um campo que pode vazar dos sistemas do parceiro, e que minimizar os dados compartilhados reduz a exposição da Saltmarsh sem nenhum controle técnico. A empresa confirma que a exportação reduzida atende às suas necessidades. A equipe de recursos humanos atualiza a especificação da exportação e registra os motivos da remoção de cada campo.
+
+### 34.4 Monitorando as trocas
+
+Lindiwe configura o monitoramento das interfaces: volumes por parceiro por dia, taxas de erro e padrões incomuns de requisição. Um aumento repentino nas requisições de endereços de clientes feitas com a credencial de um varejista sugeriria uso indevido. Ela define os limiares a partir de três meses de histórico sintético. O Prof. Hale pergunta quem responde a um alerta nos fins de semana; ela acrescenta o dono da integração à escala de plantão, para que os alertas tenham um destinatário claro. O primeiro mês produz dois alertas, ambos explicados por promoções planejadas num dos varejistas, e ela ajusta os limiares de acordo.
+
+### Exemplo resolvido
+
+Lindiwe inventaria as integrações com parceiros, separa uma credencial compartilhada entre transportadoras, remove seis campos desnecessários da folha de pagamento e monitora os volumes das interfaces com um responsável nomeado.
+
+> **Caso sintético.** As integrações são sintéticas.
+
+### Erros e limites
+
+Uma credencial compartilhada entre parceiros não pode ser revogada para um sem afetar o outro.
+
+### Exercícios
+
+- **EX100 — Credencial compartilhada.** Que problema duas transportadoras criaram? *Rubrica:* 3 = compartilhavam uma única credencial;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX101 — Campos removidos.** Quantos campos desnecessários foram removidos? *Rubrica:* 3 = seis;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX102 — Sinal de uso indevido.** O que sugeriria o uso indevido da credencial de um varejista? *Rubrica:* 3 = um aumento repentino nas requisições de endereços;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-35"></a>
+
+## Capítulo 35 — Ateliê de projeto II
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar uma capacidade de monitoramento de segurança; (2) justificar as escolhas de projeto com evidências; (3) apresentar um projeto a quem decide.
+
+### 35.1 O enunciado
+
+O segundo ateliê de projeto pede que a equipe de Lindiwe projete o monitoramento de segurança da Saltmarsh dentro de um orçamento anual fixo. As opções vão de uma equipe interna, que a Saltmarsh não consegue manter vinte e quatro horas por dia, a um serviço gerenciado externo. O projeto precisa usar as medidas de detecção já construídas, cumprir a exigência do cliente varejista de comunicar incidentes em vinte e quatro horas e proteger a privacidade da equipe, como prometido no aviso de monitoramento. A equipe tem oito semanas e precisa apresentar a uma banca que faz o papel do conselho, com um projeto escrito, uma estimativa de custos e um resumo de uma página.
+
+### 35.2 Evidências para as escolhas
+
+A equipe usa as evidências reunidas ao longo do curso: as taxas de eventos do primeiro ano, os atrasos de malha medidos no trabalho de controle e realimentação e o cálculo de alarmes falsos da estatística. Eles estimam os volumes de alertas e o tempo de analista necessário. O monitoramento interno precisaria de pelo menos cinco analistas para uma cobertura contínua, o que excede o orçamento. Um projeto híbrido, com um serviço externo à noite e a equipe da Saltmarsh durante o dia, cabe no orçamento. Eles mostram o cálculo num apêndice, para que a banca possa conferir cada passo.
+
+### 35.3 Salvaguardas de privacidade
+
+A equipe projeta salvaguardas: os logs de navegação ficam visíveis apenas para a equipe de segurança, os analistas externos veem identificadores de conta pseudônimos até que um incidente seja confirmado e há revisões trimestrais de quem acessou os logs. O Prof. Hale questiona se os pseudônimos atrasam as investigações; a equipe mostra que a correspondência pode ser revelada em minutos por um gerente de plantão da Saltmarsh. Os colegas consideram isso um equilíbrio sensato entre a privacidade e a velocidade de resposta. A equipe redige as salvaguardas como cláusulas do contrato com o prestador externo, para que sejam exigíveis, e não promessas informais.
+
+### 35.4 Apresentando
+
+A equipe apresenta a uma banca que faz o papel do conselho da Saltmarsh. Eles começam pelo problema de negócio, a obrigação das vinte e quatro horas e as lacunas noturnas, e depois mostram as opções, os custos e os riscos. A banca pergunta o que acontece se o prestador externo deixar passar um alerta; a equipe aponta os termos do contrato e as revisões mensais por amostragem. Lindiwe aprende que quem decide quer as consequências e os compromissos explicados com clareza, com o detalhe técnico disponível, mas sem estar à frente. A banca aprova o projeto híbrido para um levantamento de custos mais detalhado, e o Prof. Hale dá uma nota alta à apresentação pela clareza.
+
+### Exemplo resolvido
+
+A equipe de Lindiwe usa medições anteriores para dimensionar o monitoramento, escolhe um modelo híbrido dentro do orçamento, acrescenta pseudonimização com revelação rápida e apresenta os riscos e os custos a um conselho simulado.
+
+> **Caso sintético.** O ateliê é sintético.
+
+### Erros e limites
+
+Projetar o monitoramento sem estimar o volume de alertas leva a equipes com pessoal insuficiente.
+
+### Exercícios
+
+- **EX103 — Equipe interna.** De quantos analistas uma cobertura interna contínua precisaria? *Rubrica:* 3 = pelo menos cinco;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX104 — Modelo híbrido.** O que é o modelo híbrido? *Rubrica:* 3 = serviço externo à noite, equipe da Saltmarsh de dia;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX105 — Revelação dos pseudônimos.** Quem pode revelar as identidades pseudônimas? *Rubrica:* 3 = um gerente de plantão da Saltmarsh;; 2 = correto;; 1 = os analistas;; 0 = nenhuma.
+
+<a id="ch-36"></a>
+
+## Capítulo 36 — Segurança da informação: desempenho e escala
+
+### Objetivos de aprendizagem
+
+Você vai (1) avaliar o custo de desempenho dos controles de segurança; (2) escalar o processamento de segurança com o crescimento; (3) testar os controles sob carga.
+
+### 36.1 O custo dos controles
+
+Os controles de segurança consomem recursos. A cifração usa tempo de processador, o registro de logs usa armazenamento e capacidade de rede, e a inspeção acrescenta latência. Lindiwe mede um teste sintético: ativar a cifração de disco completo em notebooks modernos acrescenta uma pequena sobrecarga de processamento que os usuários não percebem, enquanto inspecionar todo o tráfego web cifrado no firewall do depósito praticamente dobra a carga do seu processador. Ela recomenda inspecionar apenas as categorias de tráfego com risco claro, em vez de tudo. A equipe de redes adota a abordagem seletiva e documenta exatamente quais categorias de tráfego são inspecionadas.
+
+### 36.2 Escalando os logs
+
+A Saltmarsh planeja três novos depósitos. Lindiwe usa seu modelo do primeiro ano para estimar os eventos extras por dia e confere se o coletor de logs consegue absorvê-los. No ritmo atual de crescimento, o coletor atinge sua capacidade em até dezoito meses. Ela propõe filtrar os eventos de pouco valor na origem e acrescentar um segundo coletor antes do limite. O Prof. Hale observa que os sistemas de segurança que descartam dados silenciosamente sob carga são piores do que os que falham de forma ruidosa. A equipe de infraestrutura inclui o segundo coletor no orçamento do ano seguinte.
+
+### 36.3 Testes de carga
+
+Lindiwe testa a medida de adivinhação de senhas com dez vezes o volume de logs atual, usando dados sintéticos. Ela termina em poucos segundos, bem dentro da janela de relatório. Ela também testa a conciliação de ativos com dez mil hosts; ela continua rápida porque usa operações de conjuntos. Ela registra os testes para que o crescimento futuro possa ser conferido em relação a eles. Ela aprende que as ferramentas da biblioteca padrão escalam bem para volumes moderados quando os algoritmos são escolhidos com bom senso. Os registros dos testes incluem o tamanho dos dados e o tempo de execução de cada script.
+
+### 36.4 Compromissos em escala
+
+À medida que os volumes crescem, a Saltmarsh precisa escolher entre manter todos os detalhes e reduzir o custo. Lindiwe propõe manter completos os eventos de autenticação e de administração, que são centrais para as investigações, e resumir os eventos rotineiros de permissão do firewall depois de trinta dias. Ela documenta quais perguntas de investigação ficam mais difíceis de responder depois do resumo. O líder de segurança aceita a proposta, com uma revisão após um ano, reconhecendo que o compromisso pode precisar de ajustes. Ela lista as perguntas afetadas num apêndice da política de retenção, para que os investigadores saibam de antemão que detalhes continuam disponíveis.
+
+### Exemplo resolvido
+
+Lindiwe mede a sobrecarga dos controles, descobre que o coletor de logs atinge sua capacidade em dezoito meses, testa a detecção sob carga com dez vezes o volume e propõe manter completos os eventos de autenticação, resumindo os logs rotineiros do firewall.
+
+> **Caso sintético.** As medições são sintéticas.
+
+### Erros e limites
+
+Os sistemas de segurança que descartam dados silenciosamente sob carga dão uma falsa garantia.
+
+### Exercícios
+
+- **EX106 — Custo da inspeção.** O que faz a inspeção de todo o tráfego cifrado? *Rubrica:* 3 = praticamente dobra a carga do processador do firewall;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX107 — Capacidade do coletor.** Quando o coletor atinge sua capacidade? *Rubrica:* 3 = em até dezoito meses;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX108 — Eventos mantidos.** Que eventos são mantidos completos? *Rubrica:* 3 = os eventos de autenticação e de administração;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-37"></a>
+
+## Capítulo 37 — Segurança da informação: operações
+
+### Objetivos de aprendizagem
+
+Você vai (1) conduzir as rotinas de operações de segurança; (2) tratar incidentes com um processo definido; (3) aprender com os incidentes sem atribuir culpa.
+
+### 37.1 Rotinas diárias
+
+As operações de segurança da Saltmarsh funcionam com base em rotinas: revisar os alertas da noite, conferir os backups que falharam, revisar as novas exceções e confirmar que as verificações agendadas foram executadas. Lindiwe escreve uma lista de verificação para o turno da manhã e cronometra cerca de quarenta minutos. O Prof. Hale observa que as rotinas pegam os desvios antes que se tornem incidentes, e que as listas de verificação escritas permitem que funcionários novos cubram ausências sem pular passos que os funcionários experientes executam de memória. Ela testa a lista com dois analistas durante a primeira semana deles, e ambos a completam sem precisar da ajuda de colegas experientes.
+
+### 37.2 Tratamento de incidentes
+
+Lindiwe ajuda a escrever o processo de incidentes da Saltmarsh usando como guia as funções Detectar, Responder e Recuperar do NIST Cybersecurity Framework 2.0, com passos práticos para analisar, conter, erradicar, recuperar e comunicar. Cada passo tem um dono e um modelo. Quando ocorre um incidente sintético, uma conta vítima de phishing que envia faturas a clientes, a equipe segue o processo: bloqueia a conta, remove as regras de encaminhamento, avisa os clientes e comunica o cliente varejista dentro das vinte e quatro horas exigidas. O incidente inteiro é encerrado em dois dias, e Lindiwe registra a linha do tempo no registro de incidentes.
+
+### 37.3 Revisão pós-incidente
+
+Depois do incidente, Lindiwe conduz uma revisão. A pergunta não é quem clicou, mas por que o ataque teve sucesso e como torná-lo mais difícil. A revisão descobre que a conta não tinha autenticação multifator porque estava numa lista de exceções cuja expiração tinha sido prorrogada duas vezes sem revisão. A correção é uma regra segundo a qual uma segunda prorrogação precisa da aprovação do líder de segurança. Ela aprende que as revisões sem culpa revelam fraquezas de processo que a busca de culpados esconderia. O líder de segurança aprova a nova regra na mesma semana.
+
+### 37.4 Métricas
+
+Lindiwe relata métricas operacionais mensalmente: alertas tratados, tempo mediano até a contenção, exceções abertas, conformidade com a linha de base e resultados dos testes de restauração. Ela evita metas que estimulem manipulação, como recompensar menos alertas, o que poderia ser alcançado desligando a detecção. O Prof. Hale explica que boas métricas de segurança descrevem o estado dos controles e a velocidade da resposta, e que os números enviados aos gerentes devem sempre vir acompanhados de contexto. Ela inclui um breve comentário em cada relatório mensal explicando qualquer mudança significativa, para que os leitores não interpretem um aumento de alertas como uma piora da segurança.
+
+### Exemplo resolvido
+
+Lindiwe escreve uma lista de verificação matinal de quarenta minutos, conduz um incidente de conta vítima de phishing por um processo definido, faz uma revisão sem culpa que encontra uma exceção prorrogada repetidas vezes e relata métricas equilibradas.
+
+> **Caso sintético.** O incidente é sintético.
+
+### Erros e limites
+
+Recompensar menos alertas pode estimular o desligamento da detecção.
+
+### Exercícios
+
+- **EX109 — Duração da lista.** Quanto tempo leva a lista de verificação matinal? *Rubrica:* 3 = cerca de quarenta minutos;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX110 — Ações no incidente.** Cite uma ação de contenção tomada. *Rubrica:* 3 = bloquear a conta;; 2 = uma;; 1 = nada;; 0 = nenhuma.
+
+- **EX111 — Causa raiz.** Por que a conta não tinha autenticação multifator? *Rubrica:* 3 = uma exceção prorrogada duas vezes sem revisão;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-38"></a>
+
+## Capítulo 38 — Segurança da informação: validação
+
+### Objetivos de aprendizagem
+
+Você vai (1) validar que os controles atendem às necessidades do negócio; (2) reunir o retorno dos usuários e dos donos; (3) distinguir a verificação da validação.
+
+### 38.1 Verificação e validação
+
+Lindiwe distingue duas perguntas. A verificação pergunta se um controle foi construído conforme especificado; seus testes de laboratório responderam a isso. A validação pergunta se o controle atende à necessidade real. A medida de adivinhação de senhas funciona conforme especificado, mas ela ajuda a Saltmarsh a reduzir a tomada de contas? Ela projeta atividades de validação: entrevistas com a equipe de segurança sobre a utilidade dos alertas, revisão dos incidentes para ver se as medidas os detectaram e comparação com os objetivos do negócio. O Prof. Hale pede que ela aplique essas atividades a todos os controles construídos durante o curso e relate os resultados em conjunto.
+
+### 38.2 Retorno dos donos
+
+Lindiwe entrevista os donos dos sistemas sobre os controles que os afetam. O dono do despacho acha útil a aprovação das mudanças de endereço, mas diz que o limite pega sem necessidade alguns grandes clientes regulares. O dono da folha de pagamento quer relatórios de linha de base mais claros. Ela registra cada ponto e propõe ajustes. O Prof. Hale observa que a visão dos donos revela se os controles se encaixam no trabalho, o que os testes sozinhos não conseguem mostrar, e que os controles de que os donos não gostam muitas vezes são enfraquecidos discretamente. Ela eleva um pouco o limite para os clientes com histórico verificado e registra a mudança com seu raciocínio.
+
+### 38.3 Evidências da revisão de incidentes
+
+Lindiwe revisa seis incidentes sintéticos do ano. Quatro foram detectados por controles construídos durante o curso, um por uma reclamação de cliente e um por uma notificação externa. As duas detecções perdidas apontam lacunas: nenhum monitoramento das regras de encaminhamento de e-mail e nenhum alerta para downloads em massa do portal de clientes. Ela acrescenta as duas ao plano de melhorias. Ela aprende que os incidentes fornecem as evidências de validação mais diretas. As duas lacunas recebem donos nomeados e datas-alvo no plano de melhorias.
+
+### 38.4 Relatório de validação
+
+Seu relatório informa, para cada controle, se ele está verificado, validado, parcialmente validado ou ainda não validado, com as evidências. A medida de adivinhação de senhas está validada por dois incidentes detectados; o controle de mudança de endereço está verificado, mas ainda não validado, porque nenhuma tentativa de fraude ocorreu. O Prof. Hale elogia a distinção honesta. Ela observa que alegar validação sem evidências enganaria o conselho sobre o quanto os controles protegem o negócio. O relatório é apresentado ao comitê de segurança da Saltmarsh, que pede uma nova avaliação depois de seis meses.
+
+### Exemplo resolvido
+
+Lindiwe distingue a verificação da validação, reúne o retorno dos donos, encontra duas lacunas de detecção a partir de seis incidentes e relata o estado de validação de cada controle com evidências.
+
+> **Caso sintético.** Os incidentes são sintéticos.
+
+### Erros e limites
+
+Um controle pode ser construído corretamente e ainda assim não atender à necessidade real.
+
+### Exercícios
+
+- **EX112 — Incidentes detectados.** Quantos dos seis incidentes os controles do curso detectaram? *Rubrica:* 3 = quatro;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX113 — Lacunas perdidas.** Cite uma lacuna de detecção encontrada. *Rubrica:* 3 = as regras de encaminhamento de e-mail;; 2 = uma;; 1 = nada;; 0 = nenhuma.
+
+- **EX114 — Estado do controle de endereço.** Qual é o estado do controle de mudança de endereço? *Rubrica:* 3 = verificado, mas ainda não validado;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-39"></a>
+
+## Capítulo 39 — Segurança da informação: manutenibilidade
+
+### Objetivos de aprendizagem
+
+Você vai (1) manter as ferramentas de segurança fáceis de manter; (2) documentar os controles para os sucessores; (3) planejar a rotatividade da equipe.
+
+### 39.1 Código fácil de manter
+
+Os scripts de Lindiwe agora executam as verificações de linha de base, a medida de adivinhação e os testes de restauração da Saltmarsh. Ela vai sair no fim do curso, então outras pessoas precisam mantê-los. Ela revisa a clareza do seu código: nomes descritivos, comentários que explicam o porquê, e não o quê, testes para cada regra e um único arquivo de configuração para os limiares. O Prof. Hale observa que as ferramentas de segurança muitas vezes falham quando seu autor vai embora, porque ninguém as entende bem o suficiente para alterá-las com segurança. Ela também remove duas funções sem uso encontradas durante a revisão.
+
+### 39.2 Runbooks
+
+Para cada controle, Lindiwe escreve um runbook: propósito, agenda, entradas, como ler os resultados, problemas comuns e com quem falar. O runbook do teste de restauração explica o que fazer quando as somas de verificação divergem, inclusive conferir a saúde do disco e executar de novo a restauração. Ela pede que um colega sem nenhum envolvimento siga cada runbook. Dois passos se mostram pouco claros, e ela os reescreve. Ela aprende que a documentação é testada pelo uso, e não pela leitura do próprio autor. Os runbooks finais são guardados junto com os scripts no controle de versão.
+
+### 39.3 Transferência de responsabilidade
+
+Lindiwe define donos para cada ferramenta na equipe de TI da Saltmarsh e conduz sessões de passagem. Cada dono executa a ferramenta uma vez com ela observando e depois uma vez sozinho. Ela atualiza o modelo de ativos e os registros de decisão para nomear os novos donos. O Prof. Hale explica que a transferência de responsabilidade é um controle por si só: sem ela, as ferramentas ficam órfãs, exatamente como o sistema de câmeras que ela encontrou no terceiro ano. Os novos donos assinam os registros de passagem, e Lindiwe continua disponível por e-mail para dúvidas durante seu último período.
+
+### 39.4 Dependência de pessoas
+
+Lindiwe observa que alguns controles dependem de uma única pessoa, como a revisão mensal por amostragem do líder de segurança. Se essa pessoa estiver ausente, o controle para. Ela recomenda substitutos para cada controle que depende de uma pessoa e os registra nos runbooks. Ela aprende que a facilidade de manutenção se aplica aos processos e às pessoas, assim como ao código, e que a resiliência contra a ausência de funcionários faz parte da engenharia de segurança. Cada substituto executa o controle uma vez durante o período de passagem, e os runbooks registram seus nomes e as datas em que o executaram pela última vez, para que o líder de segurança possa ver quem está pronto.
+
+### Exemplo resolvido
+
+Lindiwe melhora a clareza do código, escreve runbooks testados por um colega, transfere a responsabilidade pelas ferramentas com execuções supervisionadas e acrescenta substitutos para os controles que dependem de uma pessoa.
+
+> **Caso sintético.** As ferramentas e a equipe são sintéticas.
+
+### Erros e limites
+
+As ferramentas cujos autores saem sem fazer a passagem ficam sem manutenção.
+
+### Exercícios
+
+- **EX115 — Configuração.** Onde ficam os limiares? *Rubrica:* 3 = num único arquivo de configuração;; 2 = correto;; 1 = no código;; 0 = nenhuma.
+
+- **EX116 — Teste dos runbooks.** Como os runbooks são testados? *Rubrica:* 3 = um colega segue cada um deles;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX117 — Substitutos.** Por que acrescentar substitutos? *Rubrica:* 3 = os controles param quando uma pessoa está ausente;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-40"></a>
+
+## Capítulo 40 — Laboratório de verificação II
+
+### Objetivos de aprendizagem
+
+Você vai (1) verificar os controles de ponta a ponta; (2) testar a detecção com ataques simulados; (3) registrar os resultados para um dossiê de evidências.
+
+### 40.1 Testes de ponta a ponta
+
+No segundo laboratório de verificação, Lindiwe testa os controles do evento até a resposta. Ela planta uma rajada sintética de adivinhação de senhas e a acompanha até o fim: a medida sinaliza a conta, o alerta chega ao analista de plantão, o analista bloqueia a conta e o chamado registra cada passo com os horários. O Prof. Hale explica que os testes de ponta a ponta encontram falhas de passagem entre ferramentas e pessoas que os testes de componentes isolados deixam escapar. A cadeia inteira se completa em onze minutos no teste sintético, e ela registra o tempo gasto em cada passo.
+
+### 40.2 Ataques simulados
+
+Com autorização por escrito, Lindiwe executa ataques simulados num ambiente de teste que espelha a rede da Saltmarsh: uma conta vítima de phishing que cria uma regra de encaminhamento, um download em massa do portal de clientes e uma mudança de endereço de entrega uma hora antes do despacho. Ela confere que controles detectam cada um. A regra de encaminhamento agora dispara um alerta, depois que a lacuna encontrada na validação foi corrigida. O alerta de download em massa dispara tarde porque seu limiar está alto demais. O alerta de mudança de endereço dispara como projetado, em até dois minutos depois da mudança.
+
+### 40.3 Corrigindo e testando de novo
+
+Lindiwe reduz o limiar de download em massa usando o histórico sintético do capítulo de integração e depois executa de novo a simulação. O alerta agora dispara em poucos minutos. Ela registra os dois resultados, o de antes e o de depois, para que o dossiê de evidências mostre a melhoria e sua causa. O Prof. Hale observa que registrar as falhas e as correções juntas é mais convincente do que mostrar apenas os resultados finais aprovados, porque demonstra que os testes de fato influenciaram os controles. Ela também acrescenta o caso do download em massa ao conjunto permanente de testes usado depois de cada mudança de configuração.
+
+### 40.4 Evidências para o dossiê
+
+Lindiwe reúne todos os registros dos testes: planos, autorizações, entradas, saídas, tempos e correções. Ela os guarda com somas de verificação e um índice. Ela planeja usá-los no dossiê de evidências do último ano, em que cada afirmação sobre a segurança da Saltmarsh precisa apontar para evidências específicas. Ela aprende que um registro de testes bem organizado torna o trabalho de garantia posterior mais rápido e mais confiável. O Prof. Hale revisa o índice e pede que ela acrescente uma breve descrição do propósito de cada teste, para que leitores que não conhecem os controles possam entender por que cada teste foi executado e o que significa uma aprovação ou uma reprovação.
+
+### Exemplo resolvido
+
+Lindiwe testa a detecção de adivinhação de ponta a ponta, simula três ataques, corrige um alerta de download em massa que disparava tarde e testa de novo, e guarda todos os registros para o dossiê.
+
+> **Caso sintético.** Os testes são sintéticos.
+
+### Erros e limites
+
+Mostrar apenas os testes finais aprovados esconde como os controles foram melhorados.
+
+### Exercícios
+
+- **EX118 — Passos de ponta a ponta.** Cite um passo acompanhado de ponta a ponta. *Rubrica:* 3 = o analista bloqueia a conta;; 2 = um;; 1 = nada;; 0 = nenhuma.
+
+- **EX119 — Alerta atrasado.** Que alerta disparou tarde? *Rubrica:* 3 = o de download em massa;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+- **EX120 — Antes e depois.** Por que registrar os resultados de antes e de depois da correção? *Rubrica:* 3 = mostra a melhoria e sua causa;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX090 (as de EX091–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Lindiwe Dube, o Prof. Marcus Hale, a Brightwater Polytechnic, a Saltmarsh Logistics e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX120 (as de EX121–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Lindiwe Dube, o Prof. Marcus Hale, a Brightwater Polytechnic, a Saltmarsh Logistics e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Cerca de quarenta milhões de eventos por dia.
 
@@ -1569,6 +2015,66 @@ Respostas-modelo para EX001–EX090 (as de EX091–EX150 estão na edição em i
 **EX089.** Uma rajada de dez falhas abrangendo exatamente cinco minutos.
 
 **EX090.** Para que as mudanças futuras possam ser conferidas rapidamente.
+
+**EX091.** Os administradores, com chaves físicas.
+
+**EX092.** A aproximação do crachá combinada com um código pessoal.
+
+**EX093.** As contas cadastradas, os logins que usam um segundo fator e as exceções abertas.
+
+**EX094.** 492 arquivos, 98,4 por cento.
+
+**EX095.** Estavam numa pasta acrescentada depois que a seleção do backup foi definida.
+
+**EX096.** Perder no máximo uma hora de dados e voltar em até quatro horas.
+
+**EX097.** As entregas de medicamentos refrigerados.
+
+**EX098.** Um local desconhecido das listas impressas e pessoas que já saíram na lista de contatos.
+
+**EX099.** Registradores independentes, lidos na entrega e guardados separadamente.
+
+**EX100.** Elas compartilhavam uma única credencial.
+
+**EX101.** Seis campos.
+
+**EX102.** Um aumento repentino nas requisições de endereços de clientes.
+
+**EX103.** Pelo menos cinco analistas.
+
+**EX104.** Um serviço externo à noite e a equipe da Saltmarsh de dia.
+
+**EX105.** Um gerente de plantão da Saltmarsh, em minutos.
+
+**EX106.** Praticamente dobra a carga do processador do firewall.
+
+**EX107.** Em até dezoito meses.
+
+**EX108.** Os eventos de autenticação e de administração.
+
+**EX109.** Cerca de quarenta minutos.
+
+**EX110.** Bloquear a conta vítima de phishing.
+
+**EX111.** Sua exceção foi prorrogada duas vezes sem revisão.
+
+**EX112.** Quatro incidentes.
+
+**EX113.** Nenhum monitoramento das regras de encaminhamento de e-mail.
+
+**EX114.** Verificado, mas ainda não validado.
+
+**EX115.** Num único arquivo de configuração.
+
+**EX116.** Um colega sem nenhum envolvimento segue cada runbook.
+
+**EX117.** Alguns controles param se uma única pessoa estiver ausente.
+
+**EX118.** O analista bloqueia a conta sinalizada.
+
+**EX119.** O alerta de download em massa.
+
+**EX120.** Para mostrar a melhoria e sua causa.
 
 <a id="references"></a>
 ## Referências
