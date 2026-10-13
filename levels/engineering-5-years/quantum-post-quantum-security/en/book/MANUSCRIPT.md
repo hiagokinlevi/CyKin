@@ -1928,7 +1928,7 @@ A common inflation is to drop hard-to-inventory devices from the asset list, whi
 
 BPA's first CBOM report: 412 assets, coverage 82%, unknown 18%, 311 vulnerable uses, hybrid negotiation 0% (before rollout). After six months: coverage 94%, unknown 6%, hybrid negotiation 64% of edge connections, vulnerable uses on long-lived data reduced from 37 flows to 8.
 
-The figures tell a consistent story: coverage rose as unknowns fell, and the reduction from 37 exposed flows to 8 reflects the four-gateway change, which removed 29 of them found by the model. Hybrid negotiation at 64% of edge connections rather than 100% is expected, because old scanners and some partner clients do not offer the hybrid group; the report lists them as known exceptions with replacement dates.
+The figures tell a consistent story: coverage rose as unknowns fell, and the reduction from 37 exposed flows to 8 reflects the four-gateway change found by the model, which removed 29 of them. Hybrid negotiation at 64% of edge connections rather than 100% is expected, because old scanners and some partner clients do not offer the hybrid group; the report lists them as known exceptions with replacement dates.
 
 ### 29.6 Common errors and limits
 
