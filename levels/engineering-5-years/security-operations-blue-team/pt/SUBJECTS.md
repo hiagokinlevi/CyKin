@@ -41,11 +41,11 @@ Edição em português do Brasil, escrita a partir da edição de referência em
 | 6 | [29](book/PLAN.md#ch-29) | Operações de segurança e blue team: medição | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-29) | [30 · Rascunho](book/MANUSCRIPT.md#ch-30) |
 | 6 | [30](book/PLAN.md#ch-30) | Laboratório de verificação I | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-30) | [31 · Rascunho](book/MANUSCRIPT.md#ch-31) |
 | 7 | [31](book/PLAN.md#ch-31) | Operações de segurança e blue team: implementação II | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-31) | [32 · Rascunho](book/MANUSCRIPT.md#ch-32) |
-| 7 | [32](book/PLAN.md#ch-32) | Operações de segurança e blue team: confiabilidade | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-32) | [33 · Plano](book/PLAN.md#ch-33) |
-| 7 | [33](book/PLAN.md#ch-33) | Operações de segurança e blue team: safety e resiliência | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-33)) | [34 · Plano](book/PLAN.md#ch-34) |
-| 7 | [34](book/PLAN.md#ch-34) | Operações de segurança e blue team: integração | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-34)) | [35 · Plano](book/PLAN.md#ch-35) |
-| 7 | [35](book/PLAN.md#ch-35) | Ateliê de projeto II | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-35)) | [36 · Plano](book/PLAN.md#ch-36) |
-| 8 | [36](book/PLAN.md#ch-36) | Operações de segurança e blue team: desempenho e escala | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-36)) | [37 · Plano](book/PLAN.md#ch-37) |
+| 7 | [32](book/PLAN.md#ch-32) | Operações de segurança e blue team: confiabilidade | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-32) | [33 · Rascunho](book/MANUSCRIPT.md#ch-33) |
+| 7 | [33](book/PLAN.md#ch-33) | Operações de segurança e blue team: segurança operacional e resiliência | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-33) | [34 · Rascunho](book/MANUSCRIPT.md#ch-34) |
+| 7 | [34](book/PLAN.md#ch-34) | Operações de segurança e blue team: integração | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-34) | [35 · Rascunho](book/MANUSCRIPT.md#ch-35) |
+| 7 | [35](book/PLAN.md#ch-35) | Ateliê de projeto II | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-35) | [36 · Rascunho](book/MANUSCRIPT.md#ch-36) |
+| 8 | [36](book/PLAN.md#ch-36) | Operações de segurança e blue team: desempenho e escala | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-36) | [37 · Plano](book/PLAN.md#ch-37) |
 | 8 | [37](book/PLAN.md#ch-37) | Operações de segurança e blue team: operações | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-37)) | [38 · Plano](book/PLAN.md#ch-38) |
 | 8 | [38](book/PLAN.md#ch-38) | Operações de segurança e blue team: validação | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-38)) | [39 · Plano](book/PLAN.md#ch-39) |
 | 8 | [39](book/PLAN.md#ch-39) | Operações de segurança e blue team: manutenibilidade | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-39)) | [40 · Plano](book/PLAN.md#ch-40) |
