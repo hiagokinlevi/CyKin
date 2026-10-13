@@ -48,13 +48,19 @@ Threat-intelligence research touches three sensitive populations at once: victim
 
 Public visibility does not equal permission. A profile page may be reachable without login, yet its platform's terms may forbid automated collection, and the person's data may still be personal data under GDPR. Tomas's rule: before any collection, write down the lawful basis, the terms that apply, the minimisation step and the retention period. If any of the four is blank, collection waits.
 
+The forum corpus shows the rule working: its posts were reachable without login, but the forum's terms forbade research scraping and no permission was granted, so the "applicable terms" blank could not be filled honestly and the corpus was dropped before any collection.
+
 ### 1.3 Pre-registration
 
 Pre-registering the research question, hypotheses, coding scheme and analysis plan before seeing outcome data protects against unconscious fitting. In CTI, where attribution narratives are seductive, this matters: once a group name such as APT29 (ATT&CK G0016) appears in a report, analysts tend to read every later artefact as confirming it. Heuer's Psychology of Intelligence Analysis documents this tendency in human judgment.
 
+For Tomas, pre-registration fixes in advance the mapping of each estimative phrase to a probability and the rule for coding an outcome. If those were chosen after seeing which claims were confirmed, he could, without meaning to, place a phrase such as "likely" wherever it made the calibration curve look better.
+
 ### 1.4 The ethics file
 
 The file holds: data inventory, lawful basis, TLP handling for each source, de-identification method, storage location, access list, retention clock, and a plan for incidental findings (for example, discovering an unreported live compromise in a sample). That last item is specific to security research and is often missing.
+
+Tomas's file names a concrete route for that last item: if coding reveals evidence that a named organisation may still be compromised, he tells Dr. Sato, who contacts an appropriate coordinator through the sharing community, and he does not probe the organisation himself. The 200 TLP:AMBER+STRICT reports have their own line: lab-only analysis, no quotation, aggregate reporting.
 
 ### Worked example
 
@@ -100,13 +106,19 @@ Hutchins, Cloppert and Amin (2011) proposed the intrusion kill chain — reconna
 
 Several questions remain weakly evidenced: how well confidence language in reports predicts later confirmation; how much indicator sharing actually reduces harm (NIST SP 800-150 describes how to share, not how much benefit results); how reproducible attribution is between independent teams; and how to measure the value of strategic intelligence for decision-makers. Each is researchable with careful design and synthetic or consented data.
 
+Tomas's thesis takes the first question. The others suit different designs: harm reduction from sharing would need outcome data from organisations, and reproducibility of attribution would need independent teams working on the same artefacts, which is why they appear as follow-on work rather than in his proposal.
+
 ### 2.3 OSINT method frontier
 
 Open-source investigation has grown faster than its validation. Questions include geolocation error rates, the reliability of archived web captures, and the privacy costs of aggregating individually harmless public facts. Doctoral work here must weigh research value against the harm of building aggregation tools.
 
+Tomas's corpus deliberately avoids this frontier: it uses reports, not people, and the forum corpus was dropped. A thesis that geolocated images or linked public profiles would need a far heavier ethics file, because each step of aggregation can create a profile of a person that no single public fact revealed.
+
 ### 2.4 Writing the gap
 
 A good gap statement has three parts: what is known (with citations), what is not known (stated precisely), and why it matters to a decision. "Little research exists on CTI" is not a gap; "no published study measures calibration of estimative language in vendor CTI reports against later confirmation" is.
+
+Tomas's own statement follows the three parts: the norm is known, since ICD 203 requires expressing uncertainty and Kent proposed an estimative vocabulary; no measurement of calibration in commercial CTI appeared among the 40 papers and reports he reviewed; and it matters because SOC teams decide whether to block on the strength of those phrases.
 
 ### Worked example
 
@@ -148,21 +160,33 @@ You will (1) frame a falsifiable research question; (2) define constructs and th
 
 "Confidence language matters" cannot fail. "Statements labelled 'highly likely' in the corpus are later confirmed at a rate at least 20 percentage points above statements labelled 'possible'" can fail. A doctoral contribution earns its name by risking refutation.
 
+The 20-point threshold also gives the committee a number to argue with before the data arrive. If they think a 10-point difference would already matter for blocking decisions, the right time to change the threshold is in the proposal, recorded in the pre-registration, not after the calibration curve is drawn.
+
 ### 3.2 Constructs and measures
 
 Construct: analytic confidence as communicated. Measure: the estimative phrase in the key judgment, mapped to a numeric range on a published scale, for example Kent's words of estimative probability. Construct: confirmation. Measure: whether a later authoritative source in the corpus — an indictment summary, a vendor retraction, or a joint advisory — supports or contradicts the claim within 24 months. Every mapping decision is written in a codebook.
+
+The 24-month window is itself a design choice with a cost: claims made late in the corpus have less time to be confirmed, so they are more likely to remain unresolved. The codebook therefore records the report date, and the analysis can check whether resolvability falls for recent reports.
 
 ### 3.3 Design that can fail
 
 Tomas chooses a retrospective cohort design: sample key judgments, code their stated probability, code outcomes blind to the original phrase, and compute calibration. The design fails if outcomes are unknowable for most claims, so the proposal sets a minimum of 300 resolvable judgments before analysis proceeds.
 
+The floor is a pre-registered stopping rule, not a target. If only 180 sampled judgments turn out to be resolvable, Tomas must extend the sample or revise the design under the rule written in advance, and report the shortfall; proceeding quietly with 180 would make the high-confidence bins too thin to estimate.
+
 ### 3.4 Threats to validity
 
 Internal: coders may infer the phrase from context and bias outcome coding. Construct: an "outcome" source may itself rely on the original report. External: commercial reports may differ from government ones. Statistical: small bins give unstable calibration. Writing these down now lets the committee judge the plan rather than the luck of the result.
 
+Each threat has a planned response. Outcome coders see claims with the estimative phrase removed. The circularity check the committee requested flags outcome sources that cite the original report. Commercial and government reports are analysed separately. The main sample over-weights high-confidence judgments so that the top bins are not the smallest, which the pilot showed was the weak point.
+
 ### 3.5 Contribution claim
 
 The claim is narrow: the first measured calibration estimate of estimative language in a defined synthetic-plus-licensed corpus, with an open codebook. It is not "CTI is unreliable".
+
+Keeping the claim narrow is what makes a negative result publishable. If high-confidence statements turn out to be confirmed no more often than possible ones, the thesis still delivers a measured estimate and an open codebook that others can apply to their own corpora; a broad claim would have nowhere to retreat.
+
+The open codebook is part of the claim for that reason: it lets other teams test the same question on their own reports.
 
 ### Worked example
 
@@ -204,6 +228,8 @@ You will (1) replicate a simple published-style baseline before building on it; 
 
 Building on an unreplicated baseline compounds error. A pilot that reproduces a known, simple measurement — such as overlap between two indicator feeds, a quantity often discussed in sharing literature — checks that your pipeline, parsing and definitions behave before the expensive study.
 
+Tomas's pilot uses two such checks: Jaccard overlap between two small synthetic indicator feeds, and a Brier score on twelve pilot judgments. Both quantities can be computed by hand, so a mismatch between the script and the hand calculation points to a bug in parsing or definitions, not to a property of the corpus.
+
 ### Lab 1 — overlap baseline
 
 ```python
@@ -229,6 +255,8 @@ only in B: ['drop.example']
 ### 4.2 Reading overlap
 
 Three of six distinct indicators are shared, a Jaccard of 0.500. Overlap says nothing about quality: two feeds can agree on stale indicators. Bianco's Pyramid of Pain reminds analysts that hashes and IP addresses are cheap for adversaries to change, so high overlap on low-pyramid indicators is modest news.
+
+For Tomas the overlap lab is a pipeline check, not a result: the 0.500 matches what he computes by hand from the six indicators, so the parsing and normalisation code behave as intended before the calibration work depends on them.
 
 ### Lab 2 — calibration pilot
 
@@ -259,9 +287,13 @@ stated 0.1  observed 0.00  (k=3)
 
 Twelve pilot judgments give a Brier score of 0.183 (0 is perfect, 0.25 is what always saying 0.5 earns on balanced outcomes). The 0.9 bin is confirmed only two times in three, suggesting overconfidence at the top; the 0.1 bin is well behaved. With three items per bin, none of this is a finding — it is a test that the code works and a hint about where sample size must be largest.
 
+Tomas checked the first four Brier terms by hand against the script and they matched. He wrote the 0.9-bin hint in his lab notebook as exploratory and asked for the main sample to over-weight high-confidence judgments, turning a three-item curiosity into a design decision recorded before the main data were coded.
+
 ### 4.4 Feasibility decision
 
 The pilot passes if parsing succeeds, coders can resolve outcomes for at least the floor fraction, and the scoring code reproduces hand calculations. It fails if outcomes are mostly unresolvable or coding takes far longer than budgeted.
+
+In Tomas's pilot the third test passed, because the four hand-computed Brier terms matched the script. The time test is the one candidates tend to skip: if coding one judgment takes three times the budget, 300 resolvable judgments become a different project, and the place to find that out is the pilot, not month nine.
 
 ### Worked example
 
@@ -303,6 +335,8 @@ You will (1) organise blind double-coding of a corpus; (2) compute inter-rater a
 
 Two trained coders label each sampled event independently with the Diamond core feature that a key judgment concerns — adversary, capability, infrastructure or victim — and with outcome codes. Coders do not see each other's work until both are finished.
 
+In the lab, ten events are coded; on the full sample of 340 judgments, the same procedure reached kappa 0.74 after one codebook revision. Independence matters because coders who discuss early items converge on each other's habits, which inflates agreement without improving the codebook.
+
 ### Lab 3 — agreement
 
 ```python
@@ -330,17 +364,27 @@ disagreements: [2, 7]
 
 Raw agreement of 0.80 sounds strong, but chance alone would produce 0.31 given how often each label appears. Kappa removes that chance component and gives 0.710, conventionally described as substantial. Disagreements at items 2 and 7 both involve infrastructure versus another feature — a hint that the codebook's definition of infrastructure needs an example about shared hosting.
 
+Tomas's revision added that example, and agreement on the full 340-judgment sample reached kappa 0.74. The chance-agreement figure matters for the thesis: if one label dominated, raw agreement could be high while kappa stayed low, and reporting only the raw figure would have overstated how well the codebook works.
+
 ### 5.3 Adjudication
 
 A third person resolves disagreements using the codebook, and both original codes are preserved. Changing the codebook mid-study requires a version note and, where possible, recoding of earlier items with the new definition.
+
+Tomas's one codebook revision, the shared-hosting example for infrastructure, is the case this rule covers. It carries a version note in the archive, and items coded under the first version were recoded so that kappa on the full sample is computed under a single definition.
+
+The adjudicator's decisions are logged with the codebook rule they relied on, so that a later reader can see whether one coder was overruled systematically.
 
 ### 5.4 Independent validation
 
 A separate team re-runs the analysis from the archived data and code without assistance. Agreement on headline numbers is the validation. Disagreement is not failure; it is information that must be reported.
 
+In Tomas's study the partner lab reproduced the Brier score to three decimals but found one mis-merged file. He fixed it and documented the correction in the thesis rather than in a private note. That error would never have shown up in his own reruns, because his pipeline merged the files the same wrong way every time.
+
 ### 5.5 Sharing results in standard form
 
 Where findings include structured indicators or relationships, STIX 2.1 objects allow others to parse them; however, aggregated research results are usually better shared as tables and code than as indicators.
+
+Tomas's results are a calibration table, a phrase-to-probability mapping and code; none of them is an indicator. Wrapping the calibration table in STIX objects would add parsing work for readers without adding meaning, so his archive publishes CSV with a schema and keeps STIX for any future work that produces threat objects.
 
 ### Worked example
 
@@ -382,21 +426,35 @@ You will (1) solicit adversarial critique of your own study; (2) apply ICD 203 t
 
 A thesis committee is friendly by design. Doctoral candidates should also seek a red-cell reader: someone asked to find the weakest assumption. In CTI method research the classic weak points are circular outcome sources, corpus selection bias toward dramatic incidents, and confidence scales mapped after seeing the data.
 
+Tomas's red-cell reader attacked a point the committee had not raised: confirmed claims are more likely to be followed up in public, which inflates apparent calibration for likely-true statements. The answer, a sensitivity analysis under two assumptions about unresolved claims, changed the abstract.
+
 ### 6.2 ICD 203 as a lens
 
 ICD 203 asks analytic products to describe source quality, express uncertainty, separate information from assumptions and judgments, incorporate alternatives, show relevance, argue clearly, explain changes of judgment, aim for accuracy and use effective visuals. A research paper about CTI should meet the same bar it measures. Tomas runs his draft against that list and finds he never stated how his own conclusion would change if outcome sources were only half as independent as assumed.
+
+Answering that question was what led to the two-assumption sensitivity analysis.
 
 ### 6.3 Point-by-point responses
 
 Each reviewer comment receives a numbered reply: accepted with change (cite page), accepted partially (explain), or declined (explain with evidence). Silence on a comment reads as evasion.
 
+Tomas's reply to the red-cell reader's follow-up-bias comment would be "accepted with change": it names the sensitivity analysis, the two assumptions about unresolved claims and the page where both ranges appear. A reader can check the reply against the thesis without re-reading the whole chapter.
+
+A declined comment needs its evidence on the page as much as an accepted one does.
+
 ### 6.4 Substantive versus cosmetic
 
 A sensitivity analysis that moves the headline Brier from 0.17 to 0.21 is substantive and must reach the abstract. Fixing figure fonts is cosmetic. Candidates who bury substantive changes in an appendix lose trust.
 
+Tomas's sensitivity analysis is that kind of change. Treating unresolved claims under two assumptions produced two ranges, and both went into the abstract, because a reader who saw only the more favourable one would misjudge how much the conclusion depends on follow-up behaviour.
+
+The figure-font fix goes in the change log and nowhere else, while the Brier shift is listed in the response letter as the first substantive change.
+
 ### 6.5 Alternative hypotheses
 
 Analysis of competing hypotheses, discussed by Heuer, asks which evidence is inconsistent with each explanation rather than which is consistent with the favourite. A critique round is a good moment to list alternatives: for example, that apparent overconfidence reflects selective follow-up reporting rather than analyst miscalibration.
+
+Tomas lists that alternative explicitly. Evidence inconsistent with it would be similar follow-up rates for confirmed and unconfirmed claims; the sensitivity analysis is his way of showing how much the conclusion changes if the alternative is true.
 
 ### Worked example
 
@@ -438,21 +496,37 @@ You will (1) structure a thesis so each chapter carries one claim; (2) build a r
 
 Readers should be able to state each chapter's claim in a sentence: integrity design; gap; proposal; baseline replication; main calibration result; robustness under critique. If a chapter has three unrelated claims, split it; if it has none, cut it.
 
+Tomas's six claims follow the chapters: integrity design, gap, proposal, baseline replication, main calibration result and robustness under critique. A chapter whose claim could not be stated in a sentence was split or cut.
+
+The test also caught a draft chapter mixing the gap with the proposal.
+
 ### 7.2 What the archive contains
 
 Code, codebook versions, synthetic test data, aggregate result tables, the pre-registration, and a script that rebuilds every figure. Restricted inputs — TLP:AMBER+STRICT reports, licensed vendor text — are replaced by a manifest of identifiers and SHA-256 hashes so that someone with lawful access can verify they hold the same files.
+
+Tomas's archive holds 14 scripts, 3 codebook versions, a manifest of 1,200 report hashes and synthetic samples that exercise every code path. A colleague with no lab access rebuilt every figure in under an hour, which is the test that matters.
 
 ### 7.3 Environment
 
 Record the Python version and confirm the analysis uses only the standard library, or pin every dependency. Record any random seed used for sampling. "It ran on my laptop" is not reproducibility.
 
+Tomas's labs use only the standard library, which removes most dependency drift; the archive still records the Python version used. The main sample's selection uses a recorded seed, so the 340 judgments can be drawn again from the manifest by anyone with lawful access to the reports.
+
+The archive also records the operating system the figures were built on, because the colleague's one-hour rebuild was done on a different machine.
+
 ### 7.4 Data-availability statement
 
 State what is open, what is restricted and why, and how an authorised researcher can request access. Do not say "available on request" if requests will in practice be refused.
 
+For Tomas the restricted part is the 200 TLP:AMBER+STRICT reports and licensed vendor text. His statement names the sharing community and the licence holder as the routes for access, and the hash manifest lets an authorised researcher confirm they hold the same files.
+
+Those routes were confirmed with both parties before the statement was written.
+
 ### 7.5 Machine-readable outputs
 
 Where the thesis produces reusable structures — for example a mapping of estimative phrases to probability ranges — publish them as plain JSON or CSV with a schema. If the work creates threat objects, STIX 2.1 and TAXII 2.1 provide standard exchange formats, but a methods thesis rarely needs them.
+
+Tomas's phrase-to-probability mapping is the obvious candidate: a CSV with one row per estimative phrase, its numeric range and the codebook version, so that others can apply the same mapping to their own reports.
 
 ### Worked example
 
@@ -494,21 +568,35 @@ You will (1) prepare a defence that foregrounds limits; (2) choose publication v
 
 Examiners test whether you know where your result stops. Open with the claim, the evidence and the three strongest threats to validity. A candidate who raises the follow-up-bias problem before the examiner does controls the conversation.
 
+Tomas's three threats would be follow-up bias, outcome sources that depend on the original report, and a corpus that may over-represent dramatic incidents. His sensitivity analysis answers the first, the circularity check the second, and the stated scope of the corpus limits the third.
+
 ### 8.2 Venues
 
 Peer-reviewed security venues, intelligence-studies journals and practitioner conferences reach different audiences. A methods result about calibration may need both: a journal for the method and a practitioner talk for SOC leaders. Pre-prints speed dissemination but should carry the same limits section as the final paper.
+
+For Tomas, the calibration method and codebook fit a journal; the practical message, how much weight to give "highly likely" in a vendor report when deciding to block, fits a practitioner conference for SOC leaders. The pre-print carries the same sensitivity ranges as the abstract.
 
 ### 8.3 Vendor sensitivity
 
 Even with synthetic or anonymised presentation, a reader may guess which vendor a pattern describes. Offer affected parties a short preview where agreements require it, but do not let preview become veto over honest findings. Never disclose TLP-restricted content to obtain goodwill.
 
+Tomas's handling is the model: results reported by anonymised vendor class, previews given to the two community partners whose agreements required them, one wording change accepted, and a request to drop a negative result declined. The examiner's question at the defence was answered by describing that record.
+
 ### 8.4 TLP in outputs
 
 Public papers are effectively TLP:CLEAR. Anything derived from restricted inputs must be aggregated enough that the source cannot be reconstructed. Check with the sharing community when in doubt.
 
+Tomas's results derived from the 200 TLP:AMBER+STRICT reports appear only as aggregates within vendor classes, and no report is quoted. Where a class is so small that a single report could be identified from its row, the class is merged with another before publication.
+
+The merging rule is written in the archive so that a sharing-community member can check that no restricted report is recoverable from a published row.
+
 ### 8.5 Follow-on work
 
 Natural extensions: a prospective study where analysts record numeric probabilities at writing time; a cross-language comparison; an intervention that trains calibration and measures change. Each needs its own ethics file.
+
+The prospective study answers Tomas's biggest limitation: if analysts record a numeric probability when they write a judgment, there is no need to map phrases afterwards, and the mapping assumption the examiners questioned disappears.
+
+A calibration-training intervention would study analysts as participants, so it needs their informed consent, which the current corpus-only design never required.
 
 ### Worked example
 
