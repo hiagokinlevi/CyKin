@@ -1720,7 +1720,7 @@ Você vai (1) estruturar com clareza um trabalho de conclusão; (2) escrever as 
 
 ### 39.1 Estrutura
 
-Aisha estrutura seu trabalho de conclusão: introdução, revisão da literatura, método, resultados, discussão, limitações, recomendações e conclusão. Cada capítulo começa com seu propósito e termina com um resumo. Ela coloca a pergunta de pesquisa na primeira página. O Dr. Carrow lê um rascunho e sugere mover a investigação dos atrasos dos temporários para os resultados, já que é um achado, e não apenas discussão. Ela também acrescenta uma breve lista de siglas e termos no início, porque examinadores de fora da segurança podem não conhecer termos como autenticação multifator ou revisão de acessos. Uma colega de outro curso lê a introdução e confirma que ela está clara.
+Aisha estrutura seu trabalho de conclusão: introdução, revisão da literatura, método, resultados, discussão, limitações, recomendações e conclusão. Cada capítulo começa com seu propósito e termina com um resumo. Ela coloca a pergunta de pesquisa na primeira página. O Dr. Carrow lê um rascunho e sugere mover a investigação dos atrasos dos temporários para os resultados, já que é um achado, e não apenas discussão. Ela também acrescenta uma breve lista de siglas no início, porque examinadores de fora da segurança podem não conhecer termos como autenticação multifator ou revisão de acessos. Uma colega de outro curso lê a introdução e confirma que ela está clara.
 
 ### 39.2 Limitações
 
