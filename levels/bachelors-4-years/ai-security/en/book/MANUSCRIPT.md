@@ -2603,7 +2603,7 @@ For the token-bucket result, Rina noted that LCH's real traffic peaks on Monday 
 
 The three labs answer different questions, and the decision needs all of them. The injection lab shows *where* to enforce (outside the model); the rate-limit lab shows *how much* capacity protection costs normal users; the base-rate lab shows *how to use* a detector given expected attack frequency. Write one row per control in a summary table: purpose, evidence from the lab, side effect, and decision.
 
-Rina's table had one row each for allowlisting, rate limits and the detector. The detector row showed its side effect most clearly: at a low attack rate most alerts are false, so the decision column read "review only". The allowlisting row had no side effect on benign calls in the lab, and the rate-limit row recorded the chosen setting.
+In Rina's table, the detector row showed its side effect most clearly: at a low attack rate most alerts are false, so the decision column read "review only". The allowlisting row had no side effect on benign calls in the lab, and the rate-limit row recorded the chosen setting.
 
 ### 30.5 Worked example (synthetic LCH case)
 
