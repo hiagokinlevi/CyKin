@@ -1015,17 +1015,25 @@ Incident responders often have broad technical access and work under time pressu
 
 **Scope** lists the systems, data and actions approved for an engagement or incident. **Authorization** names who approved it and when. Good practice records both at intake (Chapter 14 of the technologist book develops intake forms). Scope can expand, but only by the same process: a request, a decision by someone with authority, and a record. Technical access — an administrator password, an EDR console — does not define scope.
 
+In the rota investigation, Dana's approved scope names organizational email, file-share audit logs and managed devices. A personal phone is outside it, however quickly the manager wants an answer, until the incident lead and counsel approve an extension.
+
 ### 10.3 Least intrusive effective method
 
 When two methods would answer the question, choose the one that collects less personal data, changes fewer systems and can be reversed. Example: to learn whether an account signed in from a laptop, query sign-in logs before imaging the laptop; to learn whether a file was sent externally, check gateway metadata before reading message bodies. "Effective" matters: a method too weak to answer the question is not ethical just because it is gentle; it wastes time while harm continues.
+
+Write down which method you chose and which gentler one you rejected.
 
 ### 10.4 Conflict of interest
 
 A conflict exists when a personal or organizational interest could bias judgement: investigating your own manager, your friend, a system you designed, or a vendor you selected. Declare conflicts early and ask for reassignment or independent review. The record of declaration protects both the investigation and you.
 
+In the rota case, the manager who pointed at Sam had a prior dispute with him, which is why Dana records the suggestion as a hypothesis rather than a lead. The same discipline applies to the investigator: if Dana had worked closely with Sam or with the manager, she should say so before the first interview, not after a complaint.
+
 ### 10.5 Consent and its limits
 
 Consent is meaningful when it is informed, specific and freely given. Employees may feel they cannot refuse an employer's request, so organizations usually rely on policy and legal basis rather than on consent alone. When you ask a person for access to a personal device, explain what will be examined, by whom, for how long, and what they may refuse; involve HR or legal staff as policy requires.
+
+Record what the person agreed to, in their words if possible, and whether a witness was present. In the rota case, any examination of Sam's phone would be limited to named folders, and he could withdraw his agreement at any point.
 
 ### 10.6 Worked example (synthetic): the personal phone
 
@@ -1042,6 +1050,8 @@ Escalation record: request, requester, reason, options considered, decision, dec
 
 Write a one-page scope statement for a fictional phishing incident: systems, data types, permitted actions, prohibited actions, approvers and an expansion procedure.
 
+Make each prohibited action concrete, for example "no access to personal devices or personal accounts" rather than "respect privacy". Name the approvers by role, such as the incident lead and the privacy officer, and state how quickly a scope request must be answered during an incident. Add a short log template for requests: who asked, what for, who decided and when. Then test the document against the rota case in this chapter: would it have told Dana clearly what to do when the manager asked about Sam's phone? If not, revise the wording until it would.
+
 ### 10.8 Common errors and limits
 
 - Using technical access as a substitute for authorization.
@@ -1049,6 +1059,9 @@ Write a one-page scope statement for a fictional phishing incident: systems, dat
 - Accepting a stakeholder's suspicion of a named person as a premise.
 - Failing to record declined requests; the refusal is part of the record.
 - Ethics frameworks guide judgement; they do not replace legal advice, which must come from qualified counsel in the relevant jurisdiction.
+
+- Letting urgency justify skipping the scope request, when a short call to the incident lead would settle it.
+- Treating a person's agreement as valid when refusing would plausibly cost them their job.
 
 ### Exercises — chapter 10
 
@@ -1084,25 +1097,37 @@ You will be able to (1) explain processes, services, user sessions and file meta
 
 A **process** is a running program with an identifier (PID), an owner (user account), a parent process, a command line and an executable path. **Lineage** — the chain of parents — is often more informative than the name: `powershell.exe` started by an office document is very different from `powershell.exe` started by a management agent. Names can be imitated; paths, signatures and parents are harder to fake consistently.
 
+In the WS-031 example, `cagent-helper.exe` is started by `updater.exe`, itself launched by a scheduled task under SYSTEM. That chain fits an update, though it does not prove the helper's contents are legitimate.
+
 ### 11.2 Services and scheduled work
 
 A **service** (Windows service, Linux systemd unit, macOS launch daemon) starts automatically and usually runs under a system account. **Scheduled tasks** and cron jobs run at set times. Both are legitimate mechanisms for updates and maintenance — and common **persistence** mechanisms for attackers. The question is never "is there a scheduled task?" but "was this one created by an expected actor, at an expected time, for an expected purpose?"
+
+On WS-031 the task `ClinicAgentUpdate` ran at 02:00 on 5 March as SYSTEM, which matches a maintenance window. That expected timing is a point in favour of the update explanation but not proof: an attacker who controls the updater inherits its schedule and account. The task's creation date and author are worth checking against the change calendar.
 
 ### 11.3 Sessions and accounts
 
 A **session** links activity to a sign-in: interactive (keyboard), remote (RDP/SSH), network (file share), service. Session type matters: a "logon" event for a service account every five minutes is normal; an interactive logon by that account is not.
 
+On WS-031 the interactive sign-in by nurse-07 at 09:15 came seven hours after the helper started. The helper was already running, so her session did not start it; a timeline must keep that order clear rather than linking a user's name to a process by proximity alone. Record each session's type and source with its time.
+
 ### 11.4 File metadata
 
 File systems record timestamps (commonly modification, access, metadata change and, on some systems, creation). They are useful but fragile: copying, extracting archives, antivirus scans and time-zone settings change them, and tools can set them deliberately ("timestomping"). Treat file times as clues to be corroborated, not as clocks you can trust alone. NIST SP 800-86 (2006) discusses such caveats in forensic collection; its tool-specific details need current verification.
+
+For `cagent-helper.exe` on WS-031, a file creation time around 02:01 on 5 March would agree with the process record, but agreement between two artefacts on one host is weaker than comparison with other workstations or the vendor's release.
 
 ### 11.5 Updates
 
 Updates install files, restart services and create processes with unfamiliar names. Many alerts after patch nights are update artefacts. Knowing the change calendar is part of host analysis.
 
+On WS-031 the unfamiliar helper appeared during the scheduled ClinicAgent update, so the first question is whether the vendor's release explains it. Ask the change owner for the update's schedule, expected files and hashes before treating new names as hostile. Equally, an update window is a convenient hiding place, so the calendar narrows the explanations rather than ending the investigation. Keep the change calendar where analysts can read it during a shift, since an alert raised at 02:00 is assessed by whoever is on duty, not by the patching team.
+
 ### 11.6 Log sources
 
 On Windows, the Security event log records sign-ins and, if configured, process creation; Sysmon (if deployed) adds richer process and network events. On Linux, `journald`, `auth.log`/`secure` and the audit daemon play similar roles. Which events exist depends on configuration: an unconfigured audit policy produces silence, not innocence. NIST SP 800-92 (2006) gives general log-management guidance.
+
+Before relying on a log, confirm which events the host was configured to record during the period in question; a policy changed last month may not cover last quarter.
 
 ### 11.7 Worked example (synthetic): an unfamiliar process after an update
 
@@ -1125,6 +1150,10 @@ If ten of ten workstations show the same signed helper with identical hash and t
 - Treating file timestamps as reliable without corroboration.
 - Confusing audit silence with absence of activity.
 - Destructive first steps (killing processes, rebooting) that erase volatile evidence before a decision is made.
+
+- Assuming every host has the same audit configuration, so a missing event on one workstation is read as absence of activity.
+- Linking a signed-in user to a process because they overlapped in time, without checking which session started it.
+- Ignoring the change calendar and treating update artefacts as intrusions, or the reverse.
 
 ### Exercises — chapter 11
 
@@ -1160,17 +1189,25 @@ You will be able to (1) compute and interpret sensitivity, specificity and preci
 
 P(A | B) is the probability of A given B. For detection, the key quantities are **sensitivity** P(alert | malicious), **specificity** P(no alert | benign) and **precision** (positive predictive value) P(malicious | alert). Bayes' theorem links them: precision depends on the **base rate** (prevalence) of malicious events. A rule with 95% sensitivity and 99% specificity, applied where only 1 in 1,000 events is malicious, produces about 10 false alerts for every true one.
 
+The lab's base-rate line makes the point concrete: with sensitivity of 95 per cent, specificity of 99 per cent and one malicious event per thousand, fewer than one alert in ten is true. An analyst who knows this does not lose trust in a rule after a run of false alerts; the rule may be working exactly as its base rate predicts.
+
 ### 12.2 Confusion matrices
 
 Count true positives (TP), false positives (FP), true negatives (TN) and false negatives (FN). Sensitivity = TP/(TP+FN); specificity = TN/(TN+FP); precision = TP/(TP+FP). Every one of these depends on how "malicious" was decided — usually by later investigation, which itself may miss cases (FNs are the hardest to count).
+
+In Lab 12 each department's counts form its own matrix, and the precision of the old rule in Clinical, 8 true alerts out of 40, comes straight from it. False negatives in the lab are given; in practice they are found only when a missed event surfaces later, so they are almost always undercounted.
 
 ### 12.3 Sampling and intervals
 
 A proportion from a sample has sampling error. The **Wilson score interval** is a well-behaved 95% interval for proportions and is easy to compute. Report "precision 0.30 (95% CI 0.21–0.41, 24 of 80 alerts)" rather than "30%".
 
+The interval narrows as the sample grows. In Lab 12 the aggregate for the old rule rests on 100 alerts and its interval spans about twenty points; with five alerts, as in the exercise on intervals, the same method gives a span of more than sixty. Reporting the count beside the interval lets a reader see why. Use intervals for comparison with care: overlapping intervals do not by themselves show that two rules perform the same.
+
 ### 12.4 Simpson's paradox
 
 An association in every subgroup can reverse when subgroups are combined, because subgroup sizes differ. Departments with high prevalence and many alerts can dominate an aggregate rate.
+
+Lab 12 shows the effect with real arithmetic. The new rule is more precise in both Clinical and Admin, yet its overall precision falls, because in the new period most alerts came from Clinical, where malicious sign-ins are rarer. Nothing about the rule got worse; the mix of where alerts arose changed. Whenever an aggregate moves, ask whether the composition of the groups moved too, and report the subgroup figures beside the total so the reader can check.
 
 ### 12.5 Worked example and lab (synthetic): one rule, two departments
 
@@ -1235,6 +1272,10 @@ Interpretation: the new rule has *higher* precision in both departments (0.30 vs
 - Treating "investigated as benign" as certainly benign; labels have error.
 - Reporting proportions from tiny samples without intervals.
 
+- Comparing two periods as if only the rule changed, when the populations and staffing changed too.
+- Treating a narrow interval as proof that labels are correct; the interval covers sampling error, not labelling error.
+- Computing precision on alerts that were investigated while ignoring those closed unread.
+
 ### Exercises — chapter 12
 
 Attempt each exercise before opening the [worked results](#worked-results). Every case, organization, person, address and number in an exercise is synthetic unless a cited public source is named.
@@ -1277,6 +1318,8 @@ In **federation**, an identity provider (IdP) authenticates the user and issues 
 
 Identities are created (joiner), changed (mover) and removed (leaver). Each stage leaves records and creates risk: orphaned accounts of leavers, accumulated permissions of movers, service accounts with no owner.
 
+Each stage should trigger a review. A joiner gets only the access the role needs; a mover loses access from the previous role; a leaver's account is disabled on the last day and its sessions revoked. Service accounts need a named owner and a review date, because they never leave on their own. The svc-reports example shows the risk: a client secret for a service account can remain valid for as long as nobody rotates it, and the question of who could read it has no answer without an owner who knows where it is stored.
+
 ### 13.4 Revocation versus rotation versus disablement
 
 - **Session revocation** ends current sessions; the credential still works for new sign-ins.
@@ -1300,6 +1343,10 @@ Chosen sequence (with owner approval): add a new secret and update the reporting
 - Forgetting MFA re-registration: an attacker may have added their own authenticator.
 - Disabling service accounts without checking dependants.
 - Platform behaviour varies; verify revocation semantics in the provider's documentation.
+
+- Rotating a secret before removing the attacker's means of reading the new one.
+- Assuming disablement ends an active token, when it may stay valid until expiry, as the 60-minute token issued to svc-reports at 03:40 could.
+- Declaring containment without watching for later use of the old credential.
 
 ### Exercises — chapter 13
 
