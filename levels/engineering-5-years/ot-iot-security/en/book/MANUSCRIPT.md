@@ -49,6 +49,8 @@ Feed tank T-1 at Ashford Batch Plant (ABP) holds V(t) cubic metres. If the make-
 
 An attacker who can stop a pump or spoof a level reading changes this integral. The hold-up time is the window in which operators or a safety system must notice and act. If T-1 holds 12 m³, the minimum is 2 m³ and the reactor draws about 1.8 m³/h, operators have roughly 5.5 hours. That number goes straight into the detection requirement: an alarm that fires after six hours detects nothing useful. Calculus turns "detect quickly" into "detect within 5.5 hours, with margin".
 
+Section one point two develops calculus with a Ashford Batch Plant note Lena Okafor can demo offline.
+
 ### 1.3 Varying draw
 
 ABP's draw oscillates with the batch recipe: q(t) = 1.8 + 0.4 sin(2πt/6). Its integral has a closed form, and the lab solves for t* by bisection. The answer, 5.53 h, is close to the average-rate estimate of 5.56 h because the oscillation averages out over a full six-hour cycle; with a shorter window or a skewed recipe the two would diverge, and the conservative choice is the smaller time.
@@ -82,6 +84,14 @@ average-rate estimate: 5.56 h
 
 Models assume the level sensor is honest; Chapter 29 treats sensor spoofing. Mixing m³/h with minutes is the most common slip. Always choose the conservative root when uncertainty is large.
 
+Section one point four develops calculus with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section one point four, CNHP lead expects calculus claims to carry owners and dates.
+
+Section one point four treats level is accumulated flow as testable only when evidence and ticket IDs are recorded.
+
+For section one point four, Ashford Batch Plant will not accept calculus work without a written trail.
+
 ### Exercises
 
 - **EX001 — Constant draw.** T-2 holds 9 m³, minimum 1.5 m³, constant draw 1.25 m³/h. Time to minimum? Rubric: 3 = 6.0 h with working; 2 = right method, arithmetic slip; 1 = formula only; 0 = none.
@@ -108,9 +118,13 @@ You will (1) represent an OT network as a directed graph; (2) compute reachabili
 
 In ISA/IEC 62443 vocabulary, zones are groups of assets with common security requirements and conduits are the permitted communication paths between them. A directed graph models this exactly: nodes are zones (L4 office, L3.5 DMZ, L3 historian, L2 SCADA, L1 PLC, L1 SIS, L0 I/O) and an edge a→b means a can initiate traffic to b. Asking "can the office network write to the safety system?" becomes "is L1-SIS reachable from L4?".
 
+Section two point one develops discrete mathematics with a Ashford Batch Plant note Lena Okafor can demo offline.
+
 ### 2.2 Reachability
 
 Depth-first search computes the set of nodes reachable from a start node in time proportional to nodes plus edges. Reachability is transitive: if L4→L3 and L3→L2 and L2→L1-SIS, then L4 reaches SIS even with no direct rule. Firewall reviews that check rules one at a time miss exactly this composition, which is why engineers compute closure rather than reading rule lists.
+
+Section two point two develops discrete mathematics with a Ashford Batch Plant note Lena Okafor can demo offline.
 
 ### 2.3 Monotonicity proof
 
@@ -148,6 +162,14 @@ zoned: L4 reaches ['L0', 'L1-PLC', 'L2', 'L3', 'L3.5', 'L4'] count=6 writes_to_S
 
 Graphs model permitted initiation, not actual traffic or vulnerabilities. Bidirectional protocols and remote-access tools can create hidden reverse edges; inventory them explicitly.
 
+Section two point four develops discrete mathematics with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section two point four, CNHP lead expects discrete claims to carry owners and dates.
+
+Section two point four treats graphs of conduits reachability as testable only when evidence and ticket IDs are recorded.
+
+For section two point four, Ashford Batch Plant will not accept discrete work without a written trail.
+
 ### Exercises
 
 - **EX004 — Closure.** Edges: A→B, B→C, C→D, B→E. List all nodes reachable from A. Rubric: 3 = {A,B,C,D,E}; 2 = one missing; 1 = direct only; 0 = none.
@@ -174,6 +196,10 @@ You will (1) compute serial-link timing for fieldbus polling; (2) relate physica
 
 Much plant communication still runs over RS-485 serial at rates such as 115,200 bit/s. With one start bit, eight data bits and one stop bit, each byte costs ten bit-times. A 40-byte Modbus RTU response therefore takes 40 × 10 / 115,200 ≈ 3.5 ms on the wire, before device processing. Summing every poll in a cycle tells you whether the schedule fits the controller's cycle budget.
 
+Section three point one develops physics for computing with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section three point one, CNHP lead expects physics claims to carry owners and dates.
+
 ```python
 """Lab: does a polling schedule fit the PLC scan/communication budget? (synthetic)"""
 link_bps = 115200; bits_per_byte = 10           # RS-485 serial, 8N1 + start bit
@@ -198,6 +224,10 @@ cycle budget 50 ms -> fits
 
 A level loop on a 12 m³ tank changes over minutes; a pressure loop on a compressor changes in tens of milliseconds. The required control and detection speed follows the physics. Security monitoring that adds 200 ms of latency is harmless on the tank and dangerous on the compressor. Always ask what the process time constant is before inserting inspection devices inline.
 
+Section three point two develops physics for computing with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section three point two, CNHP lead expects physics claims to carry owners and dates.
+
 ### 3.3 Physical-layer manipulation
 
 Sensors measure physics: a 4–20 mA loop, a thermocouple voltage, a pulse from a flow meter. An adversary or a fault can alter those signals without touching any network packet — by injecting current, heating a probe or vibrating a meter. Network monitoring cannot see this; physical plausibility checks (Chapter 29) and tamper-evident enclosures can.
@@ -207,6 +237,14 @@ Sensors measure physics: a 4–20 mA loop, a thermocouple voltage, a pulse from 
 ### 3.4 Errors and limits
 
 Timing calculations ignore device turnaround and retries; measure on a bench before committing. Do not test signal injection on live loops.
+
+Section three point four develops physics for computing with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section three point four, CNHP lead expects physics claims to carry owners and dates.
+
+Section three point four treats bits on wire process as testable only when evidence and ticket IDs are recorded.
+
+For section three point four, Ashford Batch Plant will not accept physics work without a written trail.
 
 
 ### 3.5 Worked example — signal levels and the time budget (synthetic ABP)
@@ -239,13 +277,27 @@ You will (1) write small, pure functions that decide whether an OT message is pe
 
 An allow-list for Modbus is a function `permit(source, function_code, register) -> (bool, reason)`. Making it pure — inputs in, decision out, no hidden configuration — lets you test it on a laptop with synthetic records. The reason string matters: "register-out-of-range" tells a reviewer that the HMI tried to write outside the setpoint block, which is a different story from an unknown station using a diagnostic function.
 
+Section four point one develops programming with a Ashford Batch Plant note Lena Okafor can demo offline.
+
 ### 4.2 Exact types
 
 Store function codes as integers, register ranges as `range` objects, and station identities as fixed strings from an inventory. A frequent bug treats the 4xxxx "holding register" notation as a string and matches by prefix, so 400500 looks like 40050. Convert addresses once, at parse time, into integers with documented offsets.
 
+Section four point two develops programming with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section four point two, CNHP lead expects programming claims to carry owners and dates.
+
+Section four point two treats decisions as functions exact as testable only when evidence and ticket IDs are recorded.
+
 ### 4.3 Tests on synthetic decoded frames
 
 The lab below never opens a socket; it checks already-decoded tuples. That is deliberate. Course code must not send Modbus traffic to any device. Write one test per rule, plus boundary registers 40001 and 40010.
+
+Section four point three develops programming with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section four point three, CNHP lead expects programming claims to carry owners and dates.
+
+Section four point three treats decisions as functions exact as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Lab: Modbus function-code allow-list on synthetic, already-decoded requests (no network)."""
@@ -285,6 +337,14 @@ Every decision should be logged with the source, function code, register, decisi
 
 An allow-list on a monitor is only as good as the decoder. Malformed frames must be counted and alarmed, not silently dropped. Real enforcement devices need vendor validation before deployment.
 
+Section four point four develops programming with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section four point four, CNHP lead expects programming claims to carry owners and dates.
+
+Section four point four treats decisions as functions exact as testable only when evidence and ticket IDs are recorded.
+
+For section four point four, Ashford Batch Plant will not accept programming work without a written trail.
+
 ### Exercises
 
 - **EX010 — Rule.** Write the permit rule (in words or code) for "HIST-1 may read input and holding registers, nothing else". Rubric: 3 = fc 3 and 4 only, all else BLOCK with reason; 2 = misses a reason; 1 = vague; 0 = includes writes.
@@ -311,13 +371,25 @@ You will (1) write OT security findings that operators and safety engineers can 
 
 A control-room operator needs to know what to watch for. A process-safety engineer needs to know whether a safety function is affected. A manager needs cost and downtime. One finding can serve all three if it states: asset and zone; what was observed and how; the plausible process consequence; the safety-layer status; the fix and the maintenance window needed.
 
+Section five point one develops engineering communication with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section five point one, CNHP lead expects engineering claims to carry owners and dates.
+
 ### 5.2 Bounded consequences
 
 "An attacker could blow up the plant" is neither true nor useful. A bounded statement reads: "A station on L2 can write setpoint registers on PLC-A without authentication. A setpoint change on T-1 level could overfill the tank in roughly 40 minutes; the independent high-high trip on SIS-B would stop the feed pump before overflow." This names the path, the time, and the protective layer that still holds.
 
+Section five point two develops engineering communication with a Ashford Batch Plant note Lena Okafor can demo offline.
+
 ### 5.3 Structure of a short report
 
 Summary (three sentences); scope and method; findings ordered by consequence; residual risk with protective layers named; appendix with evidence references. Diagrams of zones are worth more than pages of rule tables.
+
+Section five point three develops engineering communication with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section five point three, CNHP lead expects engineering claims to carry owners and dates.
+
+Section five point three treats three audiences bounded consequences as testable only when evidence and ticket IDs are recorded.
 
 ### 5.3b Words to avoid and words to use
 
@@ -328,6 +400,14 @@ Avoid "trivial", "catastrophic" and "fully compromised": none can be checked. Us
 ### 5.4 Errors and limits
 
 Never include working attack procedures in reports; reference the evidence store. Do not claim a safety consequence without the safety engineer's review.
+
+Section five point four develops engineering communication with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section five point four, CNHP lead expects engineering claims to carry owners and dates.
+
+Section five point four treats three audiences bounded consequences as testable only when evidence and ticket IDs are recorded.
+
+For section five point four, Ashford Batch Plant will not accept engineering work without a written trail.
 
 ### Exercises
 
@@ -355,9 +435,15 @@ You will (1) use series to reason about repeated retries of plant communications
 
 If each Modbus request succeeds with probability p = 0.9 independently (synthetic, for a noisy trunk), the chance of succeeding within k tries is 1 − (1 − p)^k. With k = 3, that is 0.999. Retries raise reliability but multiply traffic: expected attempts until success equal 1/p ≈ 1.11, so a 1,000-poll cycle expects about 1,110 frames. The communications budget (Chapter 3) must count the retries, not only the logical polls.
 
+Section six point one develops calculus ii with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section six point one, CNHP lead expects calculus claims to carry owners and dates.
+
 ### 6.2 Alarm backlog as a rate equation
 
 Let B(t) be open alarms. Alarms arrive at rate a and are acknowledged at rate c when staffed. Then B′ ≈ a − c. If a = 3.3/h (the pre-rationalisation rate from the alarm lab) and two operators together clear 2.0/h, the backlog grows. After rationalisation to 1.05/h, the same staff clears it. The model is crude — it ignores priority — but it makes staffing and rationalisation quantitative.
+
+Section six point two develops calculus ii with a Ashford Batch Plant note Lena Okafor can demo offline.
 
 ```python
 """Lab: alarm load per operator hour before and after rationalisation (synthetic counts)."""
@@ -389,6 +475,14 @@ Maintenance debates often need an order of magnitude: "Will 200 chattering commu
 
 Independence of retries fails when the trunk is systematically down. Backlog models ignore safety-critical alarms that must interrupt; treat those separately.
 
+Section six point four develops calculus ii with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section six point four, CNHP lead expects calculus claims to carry owners and dates.
+
+Section six point four treats geometric retries on fieldbus as testable only when evidence and ticket IDs are recorded.
+
+For section six point four, Ashford Batch Plant will not accept calculus work without a written trail.
+
 ### Practice note
 
 Keep a weekly plot of a and c next to the alarm-rationalisation log. When a rises after a firmware change, you know to look for a new chatter source before blaming the operators.
@@ -419,9 +513,17 @@ You will (1) report detection rates with intervals; (2) compare detectors withou
 
 Sixty synthetic trials with 0 false alarms and 60/60 detections sounds perfect — until you remember that a Wilson 95% interval for 0/60 still allows a few percent false-alarm rate in the long run. Report the interval, not only the point. For 60/60 detections the interval for the miss rate is also narrow, but it is not zero forever.
 
+Section seven point one develops probability and statistics with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section seven point one, CNHP lead expects probability claims to carry owners and dates.
+
 ### 7.2 Comparing detectors
 
 The residual CUSUM lab shows a band detector missing class-A attacks while CUSUM catches them with mean delay ~25 samples, both with 0/60 false alarms on this seed set. That is evidence that CUSUM beats the band *on these synthetic attacks*, not that CUSUM is universally better. Prefer paired designs on the same traces and state the attack class.
+
+Section seven point two develops probability and statistics with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section seven point two, CNHP lead expects probability claims to carry owners and dates.
 
 ```python
 # Lab 27 - residual CUSUM vs band on batch reactor level (synthetic)
@@ -466,6 +568,14 @@ If genuine cyber-physical attacks are rare, a detector with even a 1% false-alar
 
 Synthetic attacks are not the adversary. Intervals assume independent trials; correlated seeds invalidate them. Never invent a p-value for a table you did not test.
 
+Section seven point four develops probability and statistics with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section seven point four, CNHP lead expects probability claims to carry owners and dates.
+
+Section seven point four treats rates and intervals comparing as testable only when evidence and ticket IDs are recorded.
+
+For section seven point four, Ashford Batch Plant will not accept probability work without a written trail.
+
 ### Practice note
 
 Publish the seed list and detector parameters with every detection claim in CNHP documents. Reproducibility is cheaper than arguing about a slide six months later, and it is what Urbina et al. and Giraldo et al. demand of evaluations.
@@ -496,9 +606,17 @@ You will (1) place PLC, SIS and SCADA on a privilege and dependency map; (2) exp
 
 A PLC executes the basic regulatory loop. An SIS implements the safety instrumented functions and must be able to act when the PLC is wrong or compromised. SCADA and HMIs are supervisory: they set setpoints and display state. Architecture that lets SCADA write into SIS logic collapses that independence — which is exactly what the reachability lab warned about.
 
+Section eight point one develops computer architecture with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section eight point one, CNHP lead expects computer claims to carry owners and dates.
+
 ### 8.2 Independence is physical
 
 Independence is not a VLAN tag. It means separate controllers, sensors where required by the safety requirement specification, and conduits that do not allow the regulatory network to alter safety logic. NIST SP 800-82 and ISA/IEC 62443 both treat safety systems as needing careful zoning; process-safety standards (IEC 61511) go further on independence. Security architecture must not undo what safety architecture paid for.
+
+Section eight point two develops computer architecture with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section eight point two, CNHP lead expects computer claims to carry owners and dates.
 
 ### 8.3 Evidence without writing to the PLC
 
@@ -509,6 +627,14 @@ Authorized assessment of OT prefers read-only methods: configuration exports, mi
 ### 8.4 Errors and limits
 
 "Air gap" claims often hide USB, vendor laptops and cellular modems. Inventory those out-of-band paths as carefully as IP routes.
+
+Section eight point four develops computer architecture with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section eight point four, CNHP lead expects computer claims to carry owners and dates.
+
+Section eight point four treats privilege in the plant as testable only when evidence and ticket IDs are recorded.
+
+For section eight point four, Ashford Batch Plant will not accept computer work without a written trail.
 
 ### Practice note
 
@@ -540,19 +666,43 @@ You will (1) design a schema for OT findings that forbids exploit recipes; (2) i
 
 Store title, asset, zone, weakness class, evidence hash, consequence bound, protective layers intact, status. Reject fields named payload, shell or exploit. Evidence lives in a sealed store; the ticket holds the hash.
 
+Section nine point one develops programming ii with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section nine point one, CNHP lead expects programming claims to carry owners and dates.
+
+Section nine point one treats schema without payloads idempotent as testable only when evidence and ticket IDs are recorded.
+
 ### 9.2 Idempotent upserts
 
 Two scanners reporting the same open Modbus write on PLC-A must become one finding. Fingerprint = (asset, weakness class, register-or-path). Retries and re-imports leave one row.
 
+Section nine point two develops programming ii with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section nine point two, CNHP lead expects programming claims to carry owners and dates.
+
+Section nine point two treats schema without payloads idempotent as testable only when evidence and ticket IDs are recorded.
+
+For section nine point two, Ashford Batch Plant will not accept programming work without a written trail.
+
 ### 9.3 Property tests for zones
 
 State: "for every host in the office zone and every SIS register, permit is false". Generate synthetic hosts and assert. Property tests catch the bug where a new office subnet was added to inventory but not to the deny side of the allow-list.
+
+Section nine point three develops programming ii with a Ashford Batch Plant note Lena Okafor can demo offline.
 
 > **Synthetic case — Ashford Batch Plant.** After the FW-12 finding, Lena added a property test: no L4 host may have a permit path to L1-SIS. CI runs it on every firewall-export change.
 
 ### 9.4 Errors and limits
 
 Schemas drift; version them. Property generators that never emit the new subnet miss the bug they were written to catch — include inventory diffs as inputs.
+
+Section nine point four develops programming ii with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section nine point four, CNHP lead expects programming claims to carry owners and dates.
+
+Section nine point four treats schema without payloads idempotent as testable only when evidence and ticket IDs are recorded.
+
+For section nine point four, Ashford Batch Plant will not accept programming work without a written trail.
 
 ### Practice note
 
@@ -588,19 +738,37 @@ You will (1) refuse unauthorized plant access and dual-use requests; (2) apply s
 
 A plant manager saying "go ahead" in a corridor is not written authorization. OT work needs a signed scope naming units, methods, windows, stop conditions and a process-safety contact who can halt the plant. Without that document, the engineer stops. NIST SP 800-82 and ISA/IEC 62443 assume authorized, planned activity — not clever improvisation.
 
+Section ten point one develops engineering ethics and safety with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section ten point one, CNHP lead expects engineering claims to carry owners and dates.
+
 ### 10.2 Dual use
 
 This programme teaches zoning, monitoring, measurement and reporting. It does not teach exploit development against PLCs, weaponised protocol stacks or bypasses of safety systems. When a peer asks for "just the PoC against brand X", the answer is the finding description and the vendor's disclosure channel, not a working attack.
 
+Section ten point two develops engineering ethics and safety with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section ten point two, CNHP lead expects engineering claims to carry owners and dates.
+
 ### 10.3 Stop conditions that protect the process
 
 Stop if: an unexpected process alarm fires; latency or cycle time exceeds the budget; a safety system indicates a fault; the process-safety contact says stop. Software hard-denies help, but humans always win. Never disable a safety function to "make the test work".
+
+Section ten point three develops engineering ethics and safety with a Ashford Batch Plant note Lena Okafor can demo offline.
 
 > **Synthetic case — Ashford Batch Plant.** During a bench test of the serial monitor, cycle time rose above 50 ms. Lena stopped, removed the device, and re-tested on a spare trunk before any plant window was booked.
 
 ### 10.4 Errors and limits
 
 Ethics is a constraint on every later chapter. Legal text here is orientation, not advice. Live plants are never course lab targets.
+
+Section ten point four develops engineering ethics and safety with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section ten point four, CNHP lead expects engineering claims to carry owners and dates.
+
+Section ten point four treats authorization is not enthusiasm as testable only when evidence and ticket IDs are recorded.
+
+For section ten point four, Ashford Batch Plant will not accept engineering work without a written trail.
 
 ### Practice note
 
@@ -637,13 +805,27 @@ You will (1) describe what an authorized observer can learn from OT protocols wi
 
 Serial monitors see Modbus RTU on the wire; SPAN ports see Ethernet/IP or Modbus TCP; application logs see HMI actions. An assessment that only has HMI screenshots should not claim fieldbus visibility. State the vantage in the method section of every finding.
 
+Section eleven point one develops networks and protocols with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section eleven point one, CNHP lead expects networks claims to carry owners and dates.
+
+Section eleven point one treats observation points ports are as testable only when evidence and ticket IDs are recorded.
+
 ### 11.2 Ports are not semantics
 
 TCP 502 often means Modbus TCP, but the meaningful scope is which function codes and which register ranges each station may use. Port 502 open is incomplete without the allow-list status and the stations observed. Chapter 4's permit function is the right abstraction.
 
+Section eleven point two develops networks and protocols with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section eleven point two, CNHP lead expects networks claims to carry owners and dates.
+
+Section eleven point two treats observation points ports are as testable only when evidence and ticket IDs are recorded.
+
 ### 11.3 Denies are coverage
 
 A firewall that blocks office-to-SCADA, or a monitor that drops function 16 from HIST-1, is evidence that a control worked for that probe. Coverage boards should count planned checks that were denied as completed checks, not as failures to get in.
+
+Section eleven point three develops networks and protocols with a Ashford Batch Plant note Lena Okafor can demo offline.
 
 ```python
 """Lab: Modbus function-code allow-list on synthetic, already-decoded requests (no network)."""
@@ -679,6 +861,14 @@ HIST-1  fc= 4 reg=30010 -> PASS
 
 Banner grabs lie; confirm with application-level or decoded-frame evidence. Course environments never scan live plants.
 
+Section eleven point four develops networks and protocols with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section eleven point four, CNHP lead expects networks claims to carry owners and dates.
+
+Section eleven point four treats observation points ports are as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point four, Ashford Batch Plant will not accept networks work without a written trail.
+
 ### Practice note
 
 Keep a one-page protocol inventory: trunk, baud rate, stations, function codes in use, allow-list owner. Update it when a vendor adds a station. Most mystery traffic is an undocumented engineering laptop.
@@ -713,13 +903,25 @@ You will (1) harden HMI and engineering workstations without breaking control; (
 
 HMIs and engineering workstations often run general-purpose OSes with decades of legacy software. Treating them as just PCs is how malware walks into L2. Hardening baselines (application allow-listing, local admin removal, USB control) must be tested against the HMI vendor's support matrix — an unsupported hardening change that blanks a screen during a batch is an availability incident.
 
+Section twelve point one develops operating systems with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twelve point one, CNHP lead expects operating claims to carry owners and dates.
+
 ### 12.2 Least privilege for engineers
 
 Named accounts, time-boxed admin rights, logged elevations. Shared engineer passwords are still common and still wrong: they destroy attribution and linger after contractors leave. Findings about shared passwords are configuration findings, not invitations to crack hashes.
 
+Section twelve point two develops operating systems with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twelve point two, CNHP lead expects operating claims to carry owners and dates.
+
+Section twelve point two treats workstations are part of as testable only when evidence and ticket IDs are recorded.
+
 ### 12.3 Patch windows
 
 OT patches land in maintenance windows, not on Patch Tuesday. Fit jobs by risk into the available hours; defer what does not fit rather than overrunning into production.
+
+Section twelve point three develops operating systems with a Ashford Batch Plant note Lena Okafor can demo offline.
 
 ```python
 """Lab: fit patch jobs into plant maintenance windows (synthetic, greedy by risk)."""
@@ -751,6 +953,14 @@ deferred: ['historian DB patch']
 ### 12.4 Errors and limits
 
 Do not disable antivirus or allow-listing to make the vendor happy without a written exception and compensating monitoring. Offline plants still need media control.
+
+Section twelve point four develops operating systems with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twelve point four, CNHP lead expects operating claims to carry owners and dates.
+
+Section twelve point four treats workstations are part of as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point four, Ashford Batch Plant will not accept operating work without a written trail.
 
 ### Practice note
 
@@ -786,19 +996,43 @@ You will (1) protect historian and recipe data without blocking operations; (2) 
 
 Historians hold process values that reveal production rates, recipes and sometimes quality data. Unauthorized writes can corrupt batch records; unauthorized reads can leak commercial data. Zone them (L3), allow read paths through controlled replicas, and never expose SQL to L4.
 
+Section thirteen point one develops data systems with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirteen point one, CNHP lead expects data claims to carry owners and dates.
+
+Section thirteen point one treats historians are crown jewels as testable only when evidence and ticket IDs are recorded.
+
 ### 13.2 Minimize extracts
 
 Authorized database work uses synthetic or masked copies. Exporting real batch genealogy into a student laptop is a confidentiality incident. The work permit must state: no full dumps, column allow-lists, row limits, destroy-by date.
 
+Section thirteen point two develops data systems with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirteen point two, CNHP lead expects data claims to carry owners and dates.
+
+Section thirteen point two treats historians are crown jewels as testable only when evidence and ticket IDs are recorded.
+
 ### 13.3 Synthetic process data
 
 Generate deterministic tank levels and setpoints with fixed seeds so labs reproduce. The CUSUM and PI labs do this; never copy a production historian into the course repository.
+
+Section thirteen point three develops data systems with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirteen point three, CNHP lead expects data claims to carry owners and dates.
 
 > **Synthetic case — Ashford Batch Plant.** Ops provided Lena with a week of synthetic T-1/T-2/R-101 values at 1 Hz for detector trials — no customer order numbers, no operator names.
 
 ### 13.4 Errors and limits
 
 Masking that leaves unique rare recipes can still identify production runs. Prefer synthetic generation for teaching.
+
+Section thirteen point four develops data systems with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirteen point four, CNHP lead expects data claims to carry owners and dates.
+
+Section thirteen point four treats historians are crown jewels as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point four, Ashford Batch Plant will not accept data work without a written trail.
 
 ### Practice note
 
@@ -839,19 +1073,43 @@ You will (1) put OT security tools under version control with review; (2) gate c
 
 Allow-list compilers, reachability checkers and detector configs are software. They need repositories, reviews, tags and changelogs. A work permit that cites the firewall export without a hash is incomplete.
 
+Section fourteen point one develops software engineering with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section fourteen point one, CNHP lead expects software claims to carry owners and dates.
+
+Section fourteen point one treats tools are products gate as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point one, Ashford Batch Plant will not accept software work without a written trail.
+
 ### 14.2 Gate widening
 
 Merges that add a conduit, open a function code or remove a deny require a second reviewer and a linked authorization ticket. Tightening changes can be lighter. Encode this in CODEOWNERS on the policy paths.
 
+Section fourteen point two develops software engineering with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section fourteen point two, CNHP lead expects software claims to carry owners and dates.
+
+Section fourteen point two treats tools are products gate as testable only when evidence and ticket IDs are recorded.
+
 ### 14.3 CI fixtures
 
 CI runs labs and unit tests on synthetic data. Never point CI at a plant VPN. Seed data lives in the repo; plant credentials live in a vault and never in CI logs.
+
+Section fourteen point three develops software engineering with a Ashford Batch Plant note Lena Okafor can demo offline.
 
 > **Synthetic case — Ashford Batch Plant.** A PR added a temporary L4 to L2 rule for a vendor visit. CI's reachability check failed because L1-SIS became reachable; the PR was blocked until the rule was rewritten through the DMZ.
 
 ### 14.4 Errors and limits
 
 Tags can drift from what operators run; record the running hash in the engagement log at window start.
+
+Section fourteen point four develops software engineering with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section fourteen point four, CNHP lead expects software claims to carry owners and dates.
+
+Section fourteen point four treats tools are products gate as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point four, Ashford Batch Plant will not accept software work without a written trail.
 
 ### Practice note
 
@@ -892,19 +1150,39 @@ You will (1) map CIA and safety to OT assessment questions; (2) distinguish vuln
 
 Confidentiality: who can read recipes or trends? Integrity: who can change setpoints or logic? Availability: what stops the batch? Safety: which protective layers remain independent? Every finding should say which properties are affected and whether a safety function is in scope.
 
+Section fifteen point one develops security fundamentals with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section fifteen point one, CNHP lead expects security claims to carry owners and dates.
+
+Section fifteen point one treats cia plus safety vulnerability as testable only when evidence and ticket IDs are recorded.
+
 ### 15.2 Vulnerability, exposure, risk
 
 An unauthenticated Modbus write is a vulnerability. On a PLC reachable from L2 it is an exposure. Process risk adds likelihood and consequence for the plant — which needs the safety engineer's model, not a universal CVSS-only story. Tickets store consequence bounds and protective layers separately; risk acceptance stays with the plant owner.
 
+Section fifteen point two develops security fundamentals with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section fifteen point two, CNHP lead expects security claims to carry owners and dates.
+
 ### 15.3 Empty scores
 
 A single OT risk = 42 hides whether SIS independence holds. Prefer concrete measures: open high-consequence findings, conduits into SIS, detector false-alarm rate at the plant's base rate, patch deferral age. If you show a score, show the model and inputs.
+
+Section fifteen point three develops security fundamentals with a Ashford Batch Plant note Lena Okafor can demo offline.
 
 > **Synthetic case — Ashford Batch Plant.** Lena stopped putting a composite score on CNHP slides. The deck now shows: SIS reachable from L4? No. Critical opens: 1. Alarms per operator-hour: 1.05. Deferred high-risk patches: 0.
 
 ### 15.4 Errors and limits
 
 Fundamentals are vocabulary; they are not a complete hazard analysis. Continue into threat and failure analysis for structured study.
+
+Section fifteen point four develops security fundamentals with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section fifteen point four, CNHP lead expects security claims to carry owners and dates.
+
+Section fifteen point four treats cia plus safety vulnerability as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point four, Ashford Batch Plant will not accept security work without a written trail.
 
 ### Practice note
 
@@ -940,19 +1218,41 @@ You will (1) write testable OT security requirements; (2) trace a requirement to
 
 "The plant should be secure" is not a requirement. "No host outside L1/L2 shall initiate writes to PLC-A holding registers; verified by reachability analysis and allow-list tests on synthetic fixtures" is. Each requirement needs an id, a shall-statement, a verification method and an owner.
 
+Section sixteen point one develops systems engineering with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section sixteen point one, CNHP lead expects systems claims to carry owners and dates.
+
+Section sixteen point one treats testable requirements traceability interfaces as testable only when evidence and ticket IDs are recorded.
+
 ### 16.2 Traceability
 
 Matrix: requirement to design element to test case to plant evidence. When a finding shows a conduit into SIS, you know which requirement and test failed. Without the matrix, post-mortems become blame.
 
+Section sixteen point two develops systems engineering with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section sixteen point two, CNHP lead expects systems claims to carry owners and dates.
+
+Section sixteen point two treats testable requirements traceability interfaces as testable only when evidence and ticket IDs are recorded.
+
 ### 16.3 Interfaces
 
 PLC-A publishes process values; SIS-B consumes dedicated sensors; the historian consumes PLC tags; the serial monitor consumes a listen-only tap. Agree tag lists and update rates. An interface change is a change request, not a quiet edit during a batch.
+
+Section sixteen point three develops systems engineering with a Ashford Batch Plant note Lena Okafor can demo offline.
 
 > **Synthetic case — Ashford Batch Plant.** Requirement R-12 "SIS not reachable from L4" traces to the zoned edge list, lab_reach.py, and the quarterly firewall-export hash in the dossier.
 
 ### 16.4 Errors and limits
 
 Traceability matrices rot if not updated in the same PR as the policy. Keep them next to the code.
+
+Section sixteen point four develops systems engineering with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section sixteen point four, CNHP lead expects systems claims to carry owners and dates.
+
+Section sixteen point four treats testable requirements traceability interfaces as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point four, Ashford Batch Plant will not accept systems work without a written trail.
 
 ### Practice note
 
@@ -992,6 +1292,12 @@ You will (1) tune a simple PI loop and see integral action remove offset; (2) pl
 
 A proportional controller leaves steady-state offset; integral action accumulates error and removes it. The lab steps the level setpoint from 50 to 60 and shows kp-only versus kp+ki. Security engineers need this fluency so they do not propose detectors that fight the controller.
 
+Section seventeen point one develops control and feedback basics with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section seventeen point one, CNHP lead expects control claims to carry owners and dates.
+
+Section seventeen point one treats pi in one page as testable only when evidence and ticket IDs are recorded.
+
 ```python
 # Lab 17 - discrete PI level control vs. setpoint step (synthetic)
 def sim(kp, ki, steps=200, sp=60.0):
@@ -1020,15 +1326,31 @@ kp=0.2 ki=0.01 final=58.15 mae=4.62 peak_abs_err_after_5s=6.17
 
 Inline inspection adds latency. If the process time constant is minutes (tank level), tens of milliseconds are fine. If it is tens of milliseconds (fast pressure), prefer passive taps. Measure before deploying (Chapter 3).
 
+Section seventeen point two develops control and feedback basics with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section seventeen point two, CNHP lead expects control claims to carry owners and dates.
+
+Section seventeen point two treats pi in one page as testable only when evidence and ticket IDs are recorded.
+
 ### 17.3 Alert storms
 
 If every medium cyber alert pages the whole site, people silence the pager — and then miss the process alarm that matters. Severity routing and rate limits on notifications are damping, exactly as in the alarm-rationalisation lab.
+
+Section seventeen point three develops control and feedback basics with a Ashford Batch Plant note Lena Okafor can demo offline.
 
 > **Synthetic case — Ashford Batch Plant.** After PI lab review, Lena rejected an inline DPI box on the compressor skid (fast loop) and approved a listen-only serial tap on the slow tank trunk.
 
 ### 17.4 Errors and limits
 
 Textbook PI ignores valve stiction and sensor delay. Use plant historians for real tuning; the lab is for intuition.
+
+Section seventeen point four develops control and feedback basics with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section seventeen point four, CNHP lead expects control claims to carry owners and dates.
+
+Section seventeen point four treats pi in one page as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point four, Ashford Batch Plant will not accept control work without a written trail.
 
 ### Practice note
 
@@ -1064,13 +1386,27 @@ You will (1) apply Purdue/62443 zoning at ABP; (2) define trust boundaries for e
 
 L0/L1 hold process and basic control; L2 supervision; L3 site operations; L3.5 DMZ; L4/L5 enterprise. SIS sits with carefully controlled conduits. Architecture diagrams must match the reachability graph, not a marketing Purdue poster.
 
+Section eighteen point one develops security architecture with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section eighteen point one, CNHP lead expects security claims to carry owners and dates.
+
+Section eighteen point one treats zones that match safety as testable only when evidence and ticket IDs are recorded.
+
 ### 18.2 Engineering access
 
 Engineering workstations and vendor laptops cross trust boundaries. Prefer: DMZ jump host, time-limited accounts, monitored sessions, no standing VPN from the internet to L2. USB and cellular modems are architecture too — inventory them.
 
+Section eighteen point two develops security architecture with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section eighteen point two, CNHP lead expects security claims to carry owners and dates.
+
+Section eighteen point two treats zones that match safety as testable only when evidence and ticket IDs are recorded.
+
 ### 18.3 Synthetic ranges
 
 When methods are noisy or the plant is fragile, use a synthetic or digital-twin range that mirrors configuration. Results then support claims about the mirrored config, not about live process behaviour. Say so in the report.
+
+Section eighteen point three develops security architecture with a Ashford Batch Plant note Lena Okafor can demo offline.
 
 ```python
 # Lab 23 - reachability count on a synthetic Purdue-layered OT network
@@ -1103,6 +1439,16 @@ zoned: L4 reaches ['L0', 'L1-PLC', 'L2', 'L3', 'L3.5', 'L4'] count=6 writes_to_S
 ### 18.4 Errors and limits
 
 Diagrams age. Re-validate zones against the live firewall export at each window.
+
+Section eighteen point four develops security architecture with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section eighteen point four, CNHP lead expects security claims to carry owners and dates.
+
+Section eighteen point four treats zones that match safety as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point four, Ashford Batch Plant will not accept security work without a written trail.
+
+Section eighteen point four fails closed if security evidence is missing rather than guessing.
 
 ### Practice note
 
@@ -1142,19 +1488,43 @@ You will (1) assess OT identity without attacking crypto; (2) use hashing for ev
 
 Ask: which accounts exist on HMIs, historians and engineering hosts? Which use shared passwords? Which integrate with the site directory? MFA on L4 jump hosts is common; MFA on a legacy HMI may be impossible — document compensating controls (physical access, session recording).
 
+Section nineteen point one develops identity and cryptography with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section nineteen point one, CNHP lead expects identity claims to carry owners and dates.
+
+Section nineteen point one treats identity in the plant as testable only when evidence and ticket IDs are recorded.
+
 ### 19.2 Evidence hashing
 
 Hash configuration exports and evidence files (SHA-256); store digests in the ticket. Re-hash later to detect tampering. Pair hashes with actor id and work-permit version.
 
+Section nineteen point two develops identity and cryptography with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section nineteen point two, CNHP lead expects identity claims to carry owners and dates.
+
+Section nineteen point two treats identity in the plant as testable only when evidence and ticket IDs are recorded.
+
+For section nineteen point two, Ashford Batch Plant will not accept identity work without a written trail.
+
 ### 19.3 Secrets
 
 Engineering credentials live in a vault; short-lived checkouts; rotate at window end. No secrets in git, screenshots or chat. Service accounts for historians get unique passwords and monitored use.
+
+Section nineteen point three develops identity and cryptography with a Ashford Batch Plant note Lena Okafor can demo offline.
 
 > **Synthetic case — Ashford Batch Plant.** A shared "engineer" password on eng-WS-1 was replaced with named accounts after CNHP's identity review. Checkout of the PLC project files now logs the person, not a mythic shared user.
 
 ### 19.4 Errors and limits
 
 Hashes detect change, not malice versus accident. Pair them with access logs. Do not attempt to crack plant password hashes in this course.
+
+Section nineteen point four develops identity and cryptography with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section nineteen point four, CNHP lead expects identity claims to carry owners and dates.
+
+Section nineteen point four treats identity in the plant as testable only when evidence and ticket IDs are recorded.
+
+For section nineteen point four, Ashford Batch Plant will not accept identity work without a written trail.
 
 ### Practice note
 
@@ -1194,19 +1564,37 @@ You will (1) place OT security engineering among SP 800-82, ISA/IEC 62443 and AT
 
 NIST SP 800-82 guides ICS security. ISA/IEC 62443 structures zones, conduits and security levels. ATT&CK for ICS names adversary techniques for planning and coverage — not as a residual-risk score. Modbus specs define the protocol you allow-list. Academic surveys (Giraldo et al.; Urbina et al.) warn against detectors evaluated only on easy attacks. Engineers build the platforms and processes that make those sources operable under process-safety constraints.
 
+Section twenty point one develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
 ### 20.2 What we build
 
 CNHP at Ashford Batch Plant is the running example: zoning, allow-lists, detectors with honest metrics, patch windows, evidence dossiers. Graduates design, verify and operate such programmes — they do not invent exploits against PLCs.
 
+Section twenty point two develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twenty point two, CNHP lead expects ot claims to carry owners and dates.
+
+Section twenty point two treats discipline map what we as testable only when evidence and ticket IDs are recorded.
+
 ### 20.3 Safety boundary
 
 No exploit payloads, no unauthorized plant access, no live personal or proprietary batch data in labs, labs on synthetic local data only. Dual-use requests are refused (Chapter 10). Process safety stop conditions always win. This boundary is a requirement on every design review in Chapters 21-50.
+
+Section twenty point three develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
 
 > **Synthetic case — Ashford Batch Plant.** Leadership asked for a red team that hacks the plant. Lena reframed the charter: an authorized hardening programme that enforces zones and measures detection without endangering batches.
 
 ### 20.4 Errors and limits
 
 Frameworks evolve; re-check URLs and versions before citing in a thesis. This chapter orients; it does not replace reading the primary sources.
+
+Section twenty point four develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twenty point four, CNHP lead expects ot claims to carry owners and dates.
+
+Section twenty point four treats discipline map what we as testable only when evidence and ticket IDs are recorded.
+
+For section twenty point four, Ashford Batch Plant will not accept ot work without a written trail.
 
 ### Practice note
 
@@ -1242,19 +1630,39 @@ You will (1) elicit requirements from process safety, operations and security; (
 
 Process safety wants independent protection layers. Operations wants viewing without downtime. Security wants deny-by-default conduits. Elicitation interviews produce shall-statements tagged by source. Conflicts (convenience viewing vs SIS isolation) are recorded, not papered over.
 
+Section twenty-one point one develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twenty-one point one, CNHP lead expects ot claims to carry owners and dates.
+
+Section twenty-one point one treats sources three families acceptance as testable only when evidence and ticket IDs are recorded.
+
 ### 21.2 Three families
 
 Functional: "The serial monitor shall decode Modbus RTU on trunk A and emit allow/deny decisions." Safety: "If the allow-list file does not load, the monitor shall fail closed (drop all non-essential traffic or alarm and require human action per the design)." Measurement: "CNHP shall report planned-vs-observed ATT&CK for ICS technique coverage with denominators." Safety requirements win ties.
 
+Section twenty-one point two develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twenty-one point two, CNHP lead expects ot claims to carry owners and dates.
+
 ### 21.3 Acceptance criteria
 
 Each requirement has a Given/When/Then on synthetic data. Example: Given deny of L2 to L1-SIS, When reachability runs from L4, Then L1-SIS not in the reachable set. Criteria that need a live plant write are rejected at review.
+
+Section twenty-one point three develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
 
 > **Synthetic case — Ashford Batch Plant.** Safety requirement S-1 "fail closed on missing allow-list" failed its acceptance test when a typo path returned PASS. The fix shipped before any plant window.
 
 ### 21.4 Errors and limits
 
 Stakeholders invent requirements mid-window; park them in a backlog with an AUTH ticket, do not hot-patch production monitors during a batch.
+
+Section twenty-one point four develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twenty-one point four, CNHP lead expects ot claims to carry owners and dates.
+
+Section twenty-one point four treats sources three families acceptance as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-one point four, Ashford Batch Plant will not accept ot work without a written trail.
 
 ### Practice note
 
@@ -1290,19 +1698,45 @@ You will (1) draw an entity model for assets, zones, conduits and findings; (2) 
 
 Plant 1—* Unit; Unit 1—* Asset; Zone 1—* Asset; Conduit *—* Zone (from/to); Finding *—* EvidenceObject (by hash); TechniqueTag *—* Finding. Cardinality mistakes (many active conduit sets without a version pointer) cause auditors to ask which rules were live.
 
+Section twenty-two point one develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twenty-two point one, CNHP lead expects ot claims to carry owners and dates.
+
+Section twenty-two point one treats entities keys forbidden attributes as testable only when evidence and ticket IDs are recorded.
+
 ### 22.2 Keys
 
 Finding ids are UUID. Evidence is content-addressed by SHA-256. ConduitSet has (plant_id, version_int). Never key findings by title — titles change.
 
+Section twenty-two point two develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twenty-two point two, CNHP lead expects ot claims to carry owners and dates.
+
+Section twenty-two point two treats entities keys forbidden attributes as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point two, Ashford Batch Plant will not accept ot work without a written trail.
+
 ### 22.3 Forbidden attributes
 
 No attribute for payload, shellcode or step-by-step attack. EvidenceObject stores bytes in a sealed bucket; the model stores only hash, media type and retention class.
+
+Section twenty-two point three develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twenty-two point three, CNHP lead expects ot claims to carry owners and dates.
 
 > **Synthetic case — Ashford Batch Plant.** An early schema had notes as free text; people pasted engineering passwords. Lena replaced it with structured fields plus an evidence hash, and a linter rejects password-like strings in titles.
 
 ### 22.4 Errors and limits
 
 Models that force every ATT&CK for ICS technique as mandatory fields generate junk tags. Keep technique tags optional and reviewed.
+
+Section twenty-two point four develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twenty-two point four, CNHP lead expects ot claims to carry owners and dates.
+
+Section twenty-two point four treats entities keys forbidden attributes as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point four, Ashford Batch Plant will not accept ot work without a written trail.
 
 ### Practice note
 
@@ -1347,13 +1781,29 @@ You will (1) enumerate failures of the OT security programme itself; (2) use a l
 
 Allow-lists failing open, reachability CI skipped, detectors with silent false-alarm storms, patch deferrals without dates — these threaten process safety and honesty, not only confidentiality of a tool.
 
+Section twenty-three point one develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twenty-three point one, CNHP lead expects ot claims to carry owners and dates.
+
+Section twenty-three point one treats the programme can fail as testable only when evidence and ticket IDs are recorded.
+
 ### 23.2 STRIDE on CNHP tools
 
 Spoofing: fake engineering account. Tampering: edit firewall export after seal. Repudiation: no actor on deny events. Information disclosure: historian replica world-readable. Denial of service: scanner floods a trunk. Elevation: one person can publish a conduit to SIS. Each row gets a mitigation requirement.
 
+Section twenty-three point two develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twenty-three point two, CNHP lead expects ot claims to carry owners and dates.
+
+Section twenty-three point two treats the programme can fail as testable only when evidence and ticket IDs are recorded.
+
 ### 23.3 Plant threats stay in hazard analysis
 
 Threats to the process belong in the plant's process hazard analysis and cyber-informed HAZOP, not as features of a student tool. Do not build automated exploitation to satisfy a STRIDE row.
+
+Section twenty-three point three develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twenty-three point three, CNHP lead expects ot claims to carry owners and dates.
 
 ```python
 # Lab 27 - residual CUSUM vs band on batch reactor level (synthetic)
@@ -1394,6 +1844,14 @@ cusum classB FA=0/60 det=0/60 mean_delay=nan
 
 STRIDE is a prompt, not a proof. Revisit when adding a new trust boundary (for example a vendor SaaS historian).
 
+Section twenty-three point four develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twenty-three point four, CNHP lead expects ot claims to carry owners and dates.
+
+Section twenty-three point four treats the programme can fail as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-three point four, Ashford Batch Plant will not accept ot work without a written trail.
+
 ### Practice note
 
 Include jumphost compromised in the model: short-lived credentials, egress allow-lists, rapid revocation. If the response is only trust the jumphost, the analysis is incomplete.
@@ -1432,19 +1890,47 @@ You will (1) sequence work-permit to discovery to validation to reporting; (2) p
 
 Work permit first. Discovery enumerates assets and conduits by agreed methods. Validation confirms configuration issues with least privilege. Reporting delivers findings and evidence hashes. Skipping the permit is how unauthorized testing happens.
 
+Section twenty-four point one develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twenty-four point one, CNHP lead expects ot claims to carry owners and dates.
+
+Section twenty-four point one treats sequence method cards done as testable only when evidence and ticket IDs are recorded.
+
 ### 24.2 Method cards
 
 Each card: name, purpose, privilege, noisy?, process impact, stop conditions, artefacts. Authenticated configuration review is a card; weaponised PLC exploit is not in this programme's deck.
 
+Section twenty-four point two develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twenty-four point two, CNHP lead expects ot claims to carry owners and dates.
+
+Section twenty-four point two treats sequence method cards done as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point two, Ashford Batch Plant will not accept ot work without a written trail.
+
 ### 24.3 Done means artefacts
 
 A method is done when inventory CSV, config hashes, finding drafts and coverage updates exist — not when someone feels finished.
+
+Section twenty-four point three develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twenty-four point three, CNHP lead expects ot claims to carry owners and dates.
+
+Section twenty-four point three treats sequence method cards done as testable only when evidence and ticket IDs are recorded.
 
 > **Synthetic case — Ashford Batch Plant.** Method card for serial allow-list verification requires listen-only mode, cycle-time stop at 50 ms, and a lab-style decision table as artefact.
 
 ### 24.4 Errors and limits
 
 Copying someone else's method list without matching authorization is cargo-cult 62443.
+
+Section twenty-four point four develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twenty-four point four, CNHP lead expects ot claims to carry owners and dates.
+
+Section twenty-four point four treats sequence method cards done as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point four, Ashford Batch Plant will not accept ot work without a written trail.
 
 ### Practice note
 
@@ -1488,19 +1974,49 @@ You will (1) sketch the allow/deny pipeline for ABP's serial monitor; (2) justif
 
 Design: input frame to decode to load ConduitSet/allow-list to evaluate permit to emit event to forward or drop. Options: embed policy in code vs signed data file; sync vs async alerts on denies.
 
+Section twenty-five point one develops design studio with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twenty-five point one, CNHP lead expects design claims to carry owners and dates.
+
+Section twenty-five point one treats studio problem trade-offs decision as testable only when evidence and ticket IDs are recorded.
+
 ### 25.2 Trade-offs
 
 Policy-as-signed-data lets updates ship without redeploying firmware but needs signature verification and fail-closed on bad signatures. Async alerts scale but can reorder; for SIS-path denies, prefer sync alert.
 
+Section twenty-five point two develops design studio with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twenty-five point two, CNHP lead expects design claims to carry owners and dates.
+
+Section twenty-five point two treats studio problem trade-offs decision as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point two, Ashford Batch Plant will not accept design work without a written trail.
+
 ### 25.3 Decision record
 
 One page: context, options, decision, consequences, date, owners. Store next to the code.
+
+Section twenty-five point three develops design studio with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twenty-five point three, CNHP lead expects design claims to carry owners and dates.
+
+Section twenty-five point three treats studio problem trade-offs decision as testable only when evidence and ticket IDs are recorded.
 
 > **Synthetic case — Ashford Batch Plant.** Studio chose signed JSON allow-lists, sync path for denies that touch write codes, async bulk for routine reads. ADR-004 captures it.
 
 ### 25.4 Errors and limits
 
 Studios that skip safety requirements produce pretty diagrams that fail open.
+
+Section twenty-five point four develops design studio with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twenty-five point four, CNHP lead expects design claims to carry owners and dates.
+
+Section twenty-five point four treats studio problem trade-offs decision as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point four, Ashford Batch Plant will not accept design work without a written trail.
+
+Section twenty-five point four fails closed if design evidence is missing rather than guessing.
 
 ### Practice note
 
@@ -1544,19 +2060,47 @@ You will (1) compare on-prem monitors vs cloud analytics for OT data; (2) evalua
 
 A: on-prem serial/IP monitors with local detectors. B: on-prem collection with site historian analytics. C: cloud analytics SaaS receiving process values. Each serves different constraints.
 
+Section twenty-six point one develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twenty-six point one, CNHP lead expects ot claims to carry owners and dates.
+
+Section twenty-six point one treats alternatives criteria decision errors as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-six point one, Ashford Batch Plant will not accept ot work without a written trail.
+
 ### 26.2 Criteria
 
 Process safety independence, data residency, fail-closed behaviour, operability by the site team, cost. Weight safety and residency above novelty.
 
+Section twenty-six point two develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twenty-six point two, CNHP lead expects ot claims to carry owners and dates.
+
+Section twenty-six point two treats alternatives criteria decision errors as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-six point two, Ashford Batch Plant will not accept ot work without a written trail.
+
 ### 26.3 Decision
 
 ABP rejected C because recipe-adjacent trends must not leave the site without a board-level exception. Chose A for write-path enforcement with B for longer-term detection research on replicas.
+
+Section twenty-six point three develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twenty-six point three, CNHP lead expects ot claims to carry owners and dates.
 
 > **Synthetic case — Ashford Batch Plant.** A vendor demo of C looked slick; counsel and process safety blocked unrestricted upload. ADR-011 records the rejection.
 
 ### 26.4 Errors and limits
 
 Alternatives analysis that ignores the work permit's data clauses is theatre.
+
+Section twenty-six point four develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twenty-six point four, CNHP lead expects ot claims to carry owners and dates.
+
+Section twenty-six point four treats alternatives criteria decision errors as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-six point four, Ashford Batch Plant will not accept ot work without a written trail.
 
 ### Practice note
 
@@ -1600,13 +2144,33 @@ You will (1) design preventive, detective and corrective controls for CNHP; (2) 
 
 Preventive: allow-list before forward. Detective: alert on denied write codes. Corrective: auto-disable a compromised engineering account at window end. Each maps to a requirement id.
 
+Section twenty-seven point one develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twenty-seven point one, CNHP lead expects ot claims to carry owners and dates.
+
+Section twenty-seven point one treats three kinds operator skill as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-seven point one, Ashford Batch Plant will not accept ot work without a written trail.
+
 ### 27.2 Operator skill
 
 Controls must be operable by engineers who follow runbooks — not only by exploit specialists. A control that needs custom shellcode to verify is the wrong control for this programme.
 
+Section twenty-seven point two develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twenty-seven point two, CNHP lead expects ot claims to carry owners and dates.
+
+Section twenty-seven point two treats three kinds operator skill as testable only when evidence and ticket IDs are recorded.
+
 ### 27.3 Compensation
 
 If a legacy PLC cannot enforce allow-lists, add detective monitoring and tighter human approval for engineering access. Document the compensation in the work permit.
+
+Section twenty-seven point three develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twenty-seven point three, CNHP lead expects ot claims to carry owners and dates.
+
+Section twenty-seven point three treats three kinds operator skill as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Lab: Modbus function-code allow-list on synthetic, already-decoded requests (no network)."""
@@ -1641,6 +2205,14 @@ HIST-1  fc= 4 reg=30010 -> PASS
 ### 27.4 Errors and limits
 
 Stacks of compensating controls without an owner become ignored alerts.
+
+Section twenty-seven point four develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twenty-seven point four, CNHP lead expects ot claims to carry owners and dates.
+
+Section twenty-seven point four treats three kinds operator skill as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-seven point four, Ashford Batch Plant will not accept ot work without a written trail.
 
 ### Practice note
 
@@ -1684,9 +2256,23 @@ You will (1) implement permit() with explicit reason codes; (2) add tests for ea
 
 Pure function: inputs source, function code, register, AllowListVersion to (allow: bool, reason: str). No network I/O inside the predicate. That keeps tests fast and free of plant contact.
 
+Section twenty-eight point one develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twenty-eight point one, CNHP lead expects ot claims to carry owners and dates.
+
+Section twenty-eight point one treats implementation shape clause tests as testable only when evidence and ticket IDs are recorded.
+
 ### 28.2 Clause tests
 
 One test file per clause: station allow, function code, register range, policy-unavailable. Synthetic fixtures only. Mutation: break a clause and watch the test fail.
+
+Section twenty-eight point two develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twenty-eight point two, CNHP lead expects ot claims to carry owners and dates.
+
+Section twenty-eight point two treats implementation shape clause tests as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point two, Ashford Batch Plant will not accept ot work without a written trail.
 
 ```python
 """Lab: Modbus function-code allow-list on synthetic, already-decoded requests (no network)."""
@@ -1720,11 +2306,23 @@ HIST-1  fc= 4 reg=30010 -> PASS
 
 Log decision, reason, policy version, actor. Do not log passwords or full frame payloads that might contain proprietary recipe data. Redact as needed.
 
+Section twenty-eight point three develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twenty-eight point three, CNHP lead expects ot claims to carry owners and dates.
+
 > **Synthetic case — Ashford Batch Plant.** Implementation I shipped reason codes that the timeline UI shows — operators finally saw why a write was blocked at 03:12.
 
 ### 28.4 Errors and limits
 
 Stringly-typed reasons drift; use an enum shared with the coverage board.
+
+Section twenty-eight point four develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twenty-eight point four, CNHP lead expects ot claims to carry owners and dates.
+
+Section twenty-eight point four treats implementation shape clause tests as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point four, Ashford Batch Plant will not accept ot work without a written trail.
 
 ### Practice note
 
@@ -1773,13 +2371,33 @@ You will (1) define coverage with a denominator; (2) separate activity metrics f
 
 ATT&CK for ICS coverage is observed intersect planned over planned, not observed over all techniques. Without a plan, coverage is vanity.
 
+Section twenty-nine point one develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twenty-nine point one, CNHP lead expects ot claims to carry owners and dates.
+
+Section twenty-nine point one treats coverage needs plan activity as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point one, Ashford Batch Plant will not accept ot work without a written trail.
+
 ### 29.2 Activity vs outcome
 
 Activity: frames decoded, tools launched. Outcome: verified remediations, SIS reachability still false, false-alarm rate at plant base rate. Steer on outcomes.
 
+Section twenty-nine point two develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twenty-nine point two, CNHP lead expects ot claims to carry owners and dates.
+
+Section twenty-nine point two treats coverage needs plan activity as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point two, Ashford Batch Plant will not accept ot work without a written trail.
+
 ### 29.3 Detector honesty
 
 Report false-alarm intervals, detection delay, and attack class. A band detector that misses stealthy residual attacks is not equivalent to a CUSUM that catches them — the lab makes that visible.
+
+Section twenty-nine point three develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twenty-nine point three, CNHP lead expects ot claims to carry owners and dates.
 
 ```python
 # Lab 27 - residual CUSUM vs band on batch reactor level (synthetic)
@@ -1819,6 +2437,14 @@ cusum classB FA=0/60 det=0/60 mean_delay=nan
 ### 29.4 Errors and limits
 
 Denominators stolen from another plant invalidate the metric. Synthetic attacks are not the adversary.
+
+Section twenty-nine point four develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section twenty-nine point four, CNHP lead expects ot claims to carry owners and dates.
+
+Section twenty-nine point four treats coverage needs plan activity as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point four, Ashford Batch Plant will not accept ot work without a written trail.
 
 ### Practice note
 
@@ -1862,9 +2488,21 @@ You will (1) run a verification plan against ABP's monitor and zoning; (2) recor
 
 Tests: allow in-scope reads; deny bad function codes; deny out-of-range writes; fail-closed missing policy; reachability SIS from L4 is false; cycle time under budget with tap. Each row: id, setup, action, expected, evidence path.
 
+Section thirty point one develops verification laboratory with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty point one, CNHP lead expects verification claims to carry owners and dates.
+
+Section thirty point one treats plan execution report errors as testable only when evidence and ticket IDs are recorded.
+
 ### 30.2 Execution
 
 Use synthetic hosts and benches only. Capture stdout and config hashes. Any safety failure (fail-open or SIS reachable) stops the lab and opens a blocker — no continue to gather data.
+
+Section thirty point two develops verification laboratory with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty point two, CNHP lead expects verification claims to carry owners and dates.
+
+Section thirty point two treats plan execution report errors as testable only when evidence and ticket IDs are recorded.
 
 ```python
 # Lab 23 - reachability count on a synthetic Purdue-layered OT network
@@ -1896,11 +2534,27 @@ zoned: L4 reaches ['L0', 'L1-PLC', 'L2', 'L3', 'L3.5', 'L4'] count=6 writes_to_S
 
 One-page lab report: environment versions, results table, open blockers, sign-off. Attach hashes.
 
+Section thirty point three develops verification laboratory with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty point three, CNHP lead expects verification claims to carry owners and dates.
+
+Section thirty point three treats plan execution report errors as testable only when evidence and ticket IDs are recorded.
+
 > **Synthetic case — Ashford Batch Plant.** Lab I failed the missing-policy row once; release halted until S-1 was fixed.
 
 ### 30.4 Errors and limits
 
 Labs on shared benches collide; book the synthetic range.
+
+Section thirty point four develops verification laboratory with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty point four, CNHP lead expects verification claims to carry owners and dates.
+
+Section thirty point four treats plan execution report errors as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point four, Ashford Batch Plant will not accept verification work without a written trail.
+
+Section thirty point four fails closed if verification evidence is missing rather than guessing.
 
 ### Practice note
 
@@ -1949,19 +2603,51 @@ You will (1) add idempotent finding upserts; (2) enforce schema validation on wr
 
 PUT /findings/{id} with full body; same id twice yields one row. Dedup fingerprints propose ids; humans confirm merges across different root causes.
 
+Section thirty-one point one develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty-one point one, CNHP lead expects ot claims to carry owners and dates.
+
+Section thirty-one point one treats upsert validate on write as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-one point one, Ashford Batch Plant will not accept ot work without a written trail.
+
 ### 31.2 Validate on write
 
 Reject unknown fields and forbidden names; coerce severity through an enum. Validation errors return machine-readable codes.
 
+Section thirty-one point two develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty-one point two, CNHP lead expects ot claims to carry owners and dates.
+
+Section thirty-one point two treats upsert validate on write as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-one point two, Ashford Batch Plant will not accept ot work without a written trail.
+
 ### 31.3 API versioning
 
 Prefix /v1/; additive changes only within v1. Breaking changes require /v2/ and a migration note.
+
+Section thirty-one point three develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty-one point three, CNHP lead expects ot claims to carry owners and dates.
+
+Section thirty-one point three treats upsert validate on write as testable only when evidence and ticket IDs are recorded.
 
 > **Synthetic case — Ashford Batch Plant.** A mobile client sent risk_score; validator rejected it — empty scores stay out (Chapter 15).
 
 ### 31.4 Errors and limits
 
 Idempotency keys must not be derived from wall-clock alone.
+
+Section thirty-one point four develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty-one point four, CNHP lead expects ot claims to carry owners and dates.
+
+Section thirty-one point four treats upsert validate on write as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-one point four, Ashford Batch Plant will not accept ot work without a written trail.
+
+Section thirty-one point four fails closed if ot evidence is missing rather than guessing.
 
 ### Practice note
 
@@ -2014,19 +2700,49 @@ You will (1) set availability targets for OT security tools; (2) use retries wit
 
 Allow/deny path during windows: high availability. Coverage dashboards: best-effort. State the target; do not imply five-nines without a budget.
 
+Section thirty-two point one develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty-two point one, CNHP lead expects ot claims to carry owners and dates.
+
+Section thirty-two point one treats targets retries safe degradation as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-two point one, Ashford Batch Plant will not accept ot work without a written trail.
+
 ### 32.2 Retries
 
 Retries help flaky uploads of evidence but need a deadline so the trunk budget still holds. Cap total attempts.
 
+Section thirty-two point two develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty-two point two, CNHP lead expects ot claims to carry owners and dates.
+
+Section thirty-two point two treats targets retries safe degradation as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-two point two, Ashford Batch Plant will not accept ot work without a written trail.
+
 ### 32.3 Safe degradation
 
 If the finding store is down, continue deny/allow locally and queue drafts on disk — never fail open on policy checks.
+
+Section thirty-two point three develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty-two point three, CNHP lead expects ot claims to carry owners and dates.
+
+Section thirty-two point three treats targets retries safe degradation as testable only when evidence and ticket IDs are recorded.
 
 > **Synthetic case — Ashford Batch Plant.** During a findings-store outage, Lena's laptop queue held drafts; the serial monitor kept denying out-of-range writes.
 
 ### 32.4 Errors and limits
 
 Retries against a rate-limited trunk can look like floods; coordinate budgets with the work permit.
+
+Section thirty-two point four develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty-two point four, CNHP lead expects ot claims to carry owners and dates.
+
+Section thirty-two point four treats targets retries safe degradation as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-two point four, Ashford Batch Plant will not accept ot work without a written trail.
 
 ### Practice note
 
@@ -2075,19 +2791,49 @@ You will (1) write stop conditions as executable checks; (2) plan rollback of to
 
 Stop conditions are code: cycle-time canary, process-alarm feed, client kill-switch file, SIS fault input. Humans also call stop; software must not disagree with a human stop.
 
+Section thirty-three point one develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty-three point one, CNHP lead expects ot claims to carry owners and dates.
+
+Section thirty-three point one treats executable stops rollback tabletop as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-three point one, Ashford Batch Plant will not accept ot work without a written trail.
+
 ### 33.2 Rollback
 
 Pin releases; keep previous monitor binary signed. If a new build mis-evaluates allow-lists, roll back within minutes.
 
+Section thirty-three point two develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty-three point two, CNHP lead expects ot claims to carry owners and dates.
+
+Section thirty-three point two treats executable stops rollback tabletop as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-three point two, Ashford Batch Plant will not accept ot work without a written trail.
+
 ### 33.3 Tabletop
 
 Walk a scenario: cycle time exceeds 50 ms at 02:40; who is called; what is said; when resume is allowed. Update the runbook where the tabletop stuck.
+
+Section thirty-three point three develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty-three point three, CNHP lead expects ot claims to carry owners and dates.
+
+Section thirty-three point three treats executable stops rollback tabletop as testable only when evidence and ticket IDs are recorded.
 
 > **Synthetic case — Ashford Batch Plant.** Tabletop found the kill-switch file path undocumented; runbook v1.4 fixed it before the next window.
 
 ### 33.4 Errors and limits
 
 Resilience theatre is a binder nobody opens. Drill once per term.
+
+Section thirty-three point four develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty-three point four, CNHP lead expects ot claims to carry owners and dates.
+
+Section thirty-three point four treats executable stops rollback tabletop as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-three point four, Ashford Batch Plant will not accept ot work without a written trail.
 
 ### Practice note
 
@@ -2136,19 +2882,49 @@ You will (1) integrate monitor events into the finding store; (2) define idempot
 
 Deny/allow events: schema version, ids, UTC timestamps, source, fc, register, reason, policy version. Consumers ignore unknown fields; producers stay additive.
 
+Section thirty-four point one develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty-four point one, CNHP lead expects ot claims to carry owners and dates.
+
+Section thirty-four point one treats event contract idempotent consumers as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-four point one, Ashford Batch Plant will not accept ot work without a written trail.
+
 ### 34.2 Idempotent consumers
 
 Finding store keys processed events by event_id. Replaying the log must not create duplicate findings.
 
+Section thirty-four point two develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty-four point two, CNHP lead expects ot claims to carry owners and dates.
+
+Section thirty-four point two treats event contract idempotent consumers as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-four point two, Ashford Batch Plant will not accept ot work without a written trail.
+
 ### 34.3 Contract tests
 
 Fixture JSON for each reason code; consumer tests assert resulting ticket fields. Run in CI on synthetic fixtures.
+
+Section thirty-four point three develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty-four point three, CNHP lead expects ot claims to carry owners and dates.
+
+Section thirty-four point three treats event contract idempotent consumers as testable only when evidence and ticket IDs are recorded.
 
 > **Synthetic case — Ashford Batch Plant.** A replay storm duplicated three tickets until event_id idempotency landed.
 
 ### 34.4 Errors and limits
 
 Clock skew muddies timelines; prefer event time plus receive time.
+
+Section thirty-four point four develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty-four point four, CNHP lead expects ot claims to carry owners and dates.
+
+Section thirty-four point four treats event contract idempotent consumers as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-four point four, Ashford Batch Plant will not accept ot work without a written trail.
 
 ### Practice note
 
@@ -2205,19 +2981,49 @@ You will (1) redesign CNHP's coverage UI against under-claim principles; (2) def
 
 Stakeholders want a big green percentage. Design a UI that shows planned/observed/not-seen and refuses a single security score.
 
+Section thirty-five point one develops design studio ii with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty-five point one, CNHP lead expects design claims to carry owners and dates.
+
+Section thirty-five point one treats problem copy review errors as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-five point one, Ashford Batch Plant will not accept design work without a written trail.
+
 ### 35.2 Copy
 
 71% of planned ICS techniques observed — not a residual-risk score. Button: export denominator. Show SIS reachable? as a separate yes/no.
 
+Section thirty-five point two develops design studio ii with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty-five point two, CNHP lead expects design claims to carry owners and dates.
+
+Section thirty-five point two treats problem copy review errors as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-five point two, Ashford Batch Plant will not accept design work without a written trail.
+
 ### 35.3 Review
 
 Reviewers try to force a red/yellow/green risk badge; studio must hold the line with measurement chapter rules.
+
+Section thirty-five point three develops design studio ii with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty-five point three, CNHP lead expects design claims to carry owners and dates.
+
+Section thirty-five point three treats problem copy review errors as testable only when evidence and ticket IDs are recorded.
 
 > **Synthetic case — Ashford Batch Plant.** Studio II killed the badge; the dashboard lists planned-not-seen techniques by id and SIS reachability separately.
 
 ### 35.4 Errors and limits
 
 Dark patterns (just for executives) reintroduce empty scores — reject in CODEOWNERS for UI.
+
+Section thirty-five point four develops design studio ii with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty-five point four, CNHP lead expects design claims to carry owners and dates.
+
+Section thirty-five point four treats problem copy review errors as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-five point four, Ashford Batch Plant will not accept design work without a written trail.
 
 ### Practice note
 
@@ -2270,6 +3076,14 @@ You will (1) size monitors under cycle-time budgets; (2) apply token-bucket thin
 
 Throughput goals that ignore the PLC cycle budget are bugs. Size decode pipelines so the wire-plus-decode time stays inside the budget measured in Chapter 3.
 
+Section thirty-six point one develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty-six point one, CNHP lead expects ot claims to carry owners and dates.
+
+Section thirty-six point one treats cycle time is first-class as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-six point one, Ashford Batch Plant will not accept ot work without a written trail.
+
 ```python
 """Lab: does a polling schedule fit the PLC scan/communication budget? (synthetic)"""
 link_bps = 115200; bits_per_byte = 10           # RS-485 serial, 8N1 + start bit
@@ -2294,15 +3108,37 @@ cycle budget 50 ms -> fits
 
 When active methods are authorized, rate-limit them so they cannot starve control traffic. Prefer listen-only methods; when you must poll, share a global budget across scanners.
 
+Section thirty-six point two develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty-six point two, CNHP lead expects ot claims to carry owners and dates.
+
+Section thirty-six point two treats cycle time is first-class as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-six point two, Ashford Batch Plant will not accept ot work without a written trail.
+
 ### 36.3 Canaries
 
 A synthetic canary request or cycle-time probe every minute tracks health; stop conditions fire on threshold (Chapter 33).
+
+Section thirty-six point three develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty-six point three, CNHP lead expects ot claims to carry owners and dates.
+
+Section thirty-six point three treats cycle time is first-class as testable only when evidence and ticket IDs are recorded.
 
 > **Synthetic case — Ashford Batch Plant.** With 21 ms cycles on the RS-485 trunk, Lena left headroom under 50 ms so a decode spike would not trip the stop.
 
 ### 36.4 Errors and limits
 
 Distributed scanners need a coordinated global budget or they N× the limit.
+
+Section thirty-six point four develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty-six point four, CNHP lead expects ot claims to carry owners and dates.
+
+Section thirty-six point four treats cycle time is first-class as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-six point four, Ashford Batch Plant will not accept ot work without a written trail.
 
 ### Practice note
 
@@ -2351,13 +3187,35 @@ You will (1) write a window runbook; (2) hand over between shifts; (3) manage cl
 
 Contacts, work-permit pointer, tool versions, stop conditions, escalation tree, evidence paths. Keep it short enough to use under stress.
 
+Section thirty-seven point one develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty-seven point one, CNHP lead expects ot claims to carry owners and dates.
+
+Section thirty-seven point one treats runbook contents handover close-out as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-seven point one, Ashford Batch Plant will not accept ot work without a written trail.
+
 ### 37.2 Handover
 
 Shift log: open findings, last event ids, pending approvals, kill-switch state, process alarms during the window. Verbal handover plus the log.
 
+Section thirty-seven point two develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty-seven point two, CNHP lead expects ot claims to carry owners and dates.
+
+Section thirty-seven point two treats runbook contents handover close-out as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-seven point two, Ashford Batch Plant will not accept ot work without a written trail.
+
 ### 37.3 Close-out
 
 Disable temporary accounts, rotate secrets, seal evidence, export metrics, schedule retrospective. A checklist beats memory.
+
+Section thirty-seven point three develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty-seven point three, CNHP lead expects ot claims to carry owners and dates.
+
+Section thirty-seven point three treats runbook contents handover close-out as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Lab: fit patch jobs into plant maintenance windows (synthetic, greedy by risk)."""
@@ -2389,6 +3247,14 @@ deferred: ['historian DB patch']
 ### 37.4 Errors and limits
 
 Runbooks in wikis nobody can access from the control room fail; keep an offline copy.
+
+Section thirty-seven point four develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty-seven point four, CNHP lead expects ot claims to carry owners and dates.
+
+Section thirty-seven point four treats runbook contents handover close-out as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-seven point four, Ashford Batch Plant will not accept ot work without a written trail.
 
 ### Practice note
 
@@ -2441,19 +3307,45 @@ You will (1) validate fixes with re-tests; (2) avoid validation that reintroduce
 
 Same vantage, least privilege, same evidence standard. For an allow-list fix: confirm the write is denied on the bench; do not spray writes at the live PLC.
 
+Section thirty-eight point one develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty-eight point one, CNHP lead expects ot claims to carry owners and dates.
+
+Section thirty-eight point one treats re-test design negative results as testable only when evidence and ticket IDs are recorded.
+
 ### 38.2 Negative results
 
 Still open is a valid validation outcome. Finding stores must accept it without forcing close.
 
+Section thirty-eight point two develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty-eight point two, CNHP lead expects ot claims to carry owners and dates.
+
+Section thirty-eight point two treats re-test design negative results as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-eight point two, Ashford Batch Plant will not accept ot work without a written trail.
+
 ### 38.3 No new methods
 
 Validation uses the method that found the issue, or a weaker read-only check — not a chance to try new attacks.
+
+Section thirty-eight point three develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty-eight point three, CNHP lead expects ot claims to carry owners and dates.
 
 > **Synthetic case — Ashford Batch Plant.** Re-test of the L4 to L2 rule: reachability now excludes L1-SIS; ticket closed with export hash. A separate finding on shared eng passwords stayed open.
 
 ### 38.4 Errors and limits
 
 Different environment (bench vs plant) means you validated the bench.
+
+Section thirty-eight point four develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty-eight point four, CNHP lead expects ot claims to carry owners and dates.
+
+Section thirty-eight point four treats re-test design negative results as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-eight point four, Ashford Batch Plant will not accept ot work without a written trail.
 
 ### Practice note
 
@@ -2502,19 +3394,51 @@ You will (1) budget for policy and dependency updates; (2) keep adapters thin; (
 
 ATT&CK for ICS techniques, PLC firmwares and vendor HMI support matrices change. Budget calendar time for updates; pin versions and watch advisories.
 
+Section thirty-nine point one develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty-nine point one, CNHP lead expects ot claims to carry owners and dates.
+
+Section thirty-nine point one treats churn thin adapters ownership as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-nine point one, Ashford Batch Plant will not accept ot work without a written trail.
+
 ### 39.2 Thin adapters
 
 Isolate third-party SDKs behind interfaces so upgrades do not rewrite the finding store core.
 
+Section thirty-nine point two develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty-nine point two, CNHP lead expects ot claims to carry owners and dates.
+
+Section thirty-nine point two treats churn thin adapters ownership as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-nine point two, Ashford Batch Plant will not accept ot work without a written trail.
+
 ### 39.3 Ownership
 
 Every service has a named owning squad and a backup. CODEOWNERS enforces review. Missing vacation coverage is a release blocker.
+
+Section thirty-nine point three develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty-nine point three, CNHP lead expects ot claims to carry owners and dates.
+
+Section thirty-nine point three treats churn thin adapters ownership as testable only when evidence and ticket IDs are recorded.
 
 > **Synthetic case — Ashford Batch Plant.** The ATT&CK for ICS mapper is an adapter; upgrading the technique list is a data PR, not a rewrite.
 
 ### 39.4 Errors and limits
 
 Orphan tools rot into fail-open museums.
+
+Section thirty-nine point four develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section thirty-nine point four, CNHP lead expects ot claims to carry owners and dates.
+
+Section thirty-nine point four treats churn thin adapters ownership as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-nine point four, Ashford Batch Plant will not accept ot work without a written trail.
+
+Section thirty-nine point four fails closed if ot evidence is missing rather than guessing.
 
 ### Practice note
 
@@ -2571,9 +3495,23 @@ You will (1) verify end-to-end flow from frame to ticket to coverage; (2) inject
 
 Synthetic frame to monitor decision to event to finding ticket to coverage update. Record hashes at each hop.
 
+Section forty point one develops verification laboratory ii with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty point one, CNHP lead expects verification claims to carry owners and dates.
+
+Section forty point one treats end-to-end faults sign-off errors as testable only when evidence and ticket IDs are recorded.
+
+For section forty point one, Ashford Batch Plant will not accept verification work without a written trail.
+
 ### 40.2 Faults
 
 Kill finding store mid-flow; confirm monitor still denies and drafts queue. Corrupt an evidence file; confirm hash mismatch alert. Feed a flat (unsafe) edge list; confirm reachability fails the SIS check.
+
+Section forty point two develops verification laboratory ii with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty point two, CNHP lead expects verification claims to carry owners and dates.
+
+Section forty point two treats end-to-end faults sign-off errors as testable only when evidence and ticket IDs are recorded.
 
 ```python
 # Lab 23 - reachability count on a synthetic Purdue-layered OT network
@@ -2605,11 +3543,27 @@ zoned: L4 reaches ['L0', 'L1-PLC', 'L2', 'L3', 'L3.5', 'L4'] count=6 writes_to_S
 
 Release candidate checklist signed by implementer and reviewer; safety rows must be green.
 
+Section forty point three develops verification laboratory ii with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty point three, CNHP lead expects verification claims to carry owners and dates.
+
+Section forty point three treats end-to-end faults sign-off errors as testable only when evidence and ticket IDs are recorded.
+
 > **Synthetic case — Ashford Batch Plant.** Lab II found coverage updated before ticket create on retry — fixed ordering with an outbox.
 
 ### 40.4 Errors and limits
 
 E2E without fault injection only proves the happy path.
+
+Section forty point four develops verification laboratory ii with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty point four, CNHP lead expects verification claims to carry owners and dates.
+
+Section forty point four treats end-to-end faults sign-off errors as testable only when evidence and ticket IDs are recorded.
+
+For section forty point four, Ashford Batch Plant will not accept verification work without a written trail.
+
+Section forty point four fails closed if verification evidence is missing rather than guessing.
 
 ### Practice note
 
@@ -2666,13 +3620,33 @@ You will (1) profile OT security pipelines ethically; (2) optimize under cycle-t
 
 Measure where time goes: decode, permit eval, event write. Optimize the dominant term. Synthetic load only.
 
+Section forty-one point one develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty-one point one, CNHP lead expects ot claims to carry owners and dates.
+
+Section forty-one point one treats profile first constraint-preserving safety as testable only when evidence and ticket IDs are recorded.
+
+For section forty-one point one, Ashford Batch Plant will not accept ot work without a written trail.
+
 ### 41.2 Constraint-preserving
 
 Caching AllowListVersion is fine if invalidation on publish is correct. Caching allow decisions across stations is not — stations differ.
 
+Section forty-one point two develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty-one point two, CNHP lead expects ot claims to carry owners and dates.
+
+Section forty-one point two treats profile first constraint-preserving safety as testable only when evidence and ticket IDs are recorded.
+
+For section forty-one point two, Ashford Batch Plant will not accept ot work without a written trail.
+
 ### 41.3 Safety veto
 
 Any optimization that skips deny-list checks, shortens audit fields or fails open is rejected regardless of speedup.
+
+Section forty-one point three develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty-one point three, CNHP lead expects ot claims to carry owners and dates.
 
 ```python
 """Lab: does a polling schedule fit the PLC scan/communication budget? (synthetic)"""
@@ -2699,6 +3673,16 @@ cycle budget 50 ms -> fits
 ### 41.4 Errors and limits
 
 Benchmarks on laptops do not predict plant trunks.
+
+Section forty-one point four develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty-one point four, CNHP lead expects ot claims to carry owners and dates.
+
+Section forty-one point four treats profile first constraint-preserving safety as testable only when evidence and ticket IDs are recorded.
+
+For section forty-one point four, Ashford Batch Plant will not accept ot work without a written trail.
+
+Section forty-one point four fails closed if ot evidence is missing rather than guessing.
 
 ### Practice note
 
@@ -2751,19 +3735,49 @@ You will (1) frame a research question about OT security programmes; (2) choose 
 
 Does dual-approval reduce conduit-widen incidents? Does showing denominators change stakeholder interpretation of coverage? Not new bypass against PLC brand X.
 
+Section forty-two point one develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty-two point one, CNHP lead expects ot claims to carry owners and dates.
+
+Section forty-two point one treats questions that fit design as testable only when evidence and ticket IDs are recorded.
+
+For section forty-two point one, Ashford Batch Plant will not accept ot work without a written trail.
+
 ### 42.2 Design
 
 Pre-register measures; use synthetic or consented operational data; report intervals and attack classes (Urbina et al.; Giraldo et al.). Replication beats novelty theatre.
 
+Section forty-two point two develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty-two point two, CNHP lead expects ot claims to carry owners and dates.
+
+Section forty-two point two treats questions that fit design as testable only when evidence and ticket IDs are recorded.
+
+For section forty-two point two, Ashford Batch Plant will not accept ot work without a written trail.
+
 ### 42.3 Disclosure
 
 If research accidentally finds a live issue, follow responsible disclosure — not a class blog.
+
+Section forty-two point three develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty-two point three, CNHP lead expects ot claims to carry owners and dates.
+
+Section forty-two point three treats questions that fit design as testable only when evidence and ticket IDs are recorded.
 
 > **Synthetic case — Ashford Batch Plant.** Lena's applied study compared ticket reopen rates before/after requiring re-test evidence; pre-registered, synthetic+anonymized.
 
 ### 42.4 Errors and limits
 
 Course projects are not human-subjects work; avoid collecting personal operator data.
+
+Section forty-two point four develops ot iot and cyber-physical security with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty-two point four, CNHP lead expects ot claims to carry owners and dates.
+
+Section forty-two point four treats questions that fit design as testable only when evidence and ticket IDs are recorded.
+
+For section forty-two point four, Ashford Batch Plant will not accept ot work without a written trail.
 
 ### Practice note
 
@@ -2820,19 +3834,49 @@ You will (1) adapt CNHP engineering to a host organization's constraints; (2) wr
 
 In industry or public service, work-permit templates, residency and procurement differ. Your job is still fail-closed tooling and honest measurement — not clever unauthorized tests.
 
+Section forty-three point one develops industry or public-service practice with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty-three point one, CNHP lead expects industry claims to carry owners and dates.
+
+Section forty-three point one treats placement sanitized reporting translation as testable only when evidence and ticket IDs are recorded.
+
+For section forty-three point one, Ashford Batch Plant will not accept industry work without a written trail.
+
 ### 43.2 Sanitized reporting
 
 Course deliverables use synthetic names and aggregates. Real plant identifiers stay inside the host's systems.
 
+Section forty-three point two develops industry or public-service practice with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty-three point two, CNHP lead expects industry claims to carry owners and dates.
+
+Section forty-three point two treats placement sanitized reporting translation as testable only when evidence and ticket IDs are recorded.
+
+For section forty-three point two, Ashford Batch Plant will not accept industry work without a written trail.
+
 ### 43.3 Translation
 
 Process safety hears independence and SIL. Ops hears windows and alarms. Engineering hears schemas and tests. Same facts, three dialects.
+
+Section forty-three point three develops industry or public-service practice with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty-three point three, CNHP lead expects industry claims to carry owners and dates.
+
+Section forty-three point three treats placement sanitized reporting translation as testable only when evidence and ticket IDs are recorded.
 
 > **Synthetic case — Ashford Batch Plant.** Lena's placement memo used only ABP synthetic figures; real partner plant names were omitted.
 
 ### 43.4 Errors and limits
 
 I can't tell you what I did is not a practice report — use synthetic reconstruction agreed with the host.
+
+Section forty-three point four develops industry or public-service practice with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty-three point four, CNHP lead expects industry claims to carry owners and dates.
+
+Section forty-three point four treats placement sanitized reporting translation as testable only when evidence and ticket IDs are recorded.
+
+For section forty-three point four, Ashford Batch Plant will not accept industry work without a written trail.
 
 ### Practice note
 
@@ -2885,19 +3929,51 @@ You will (1) propose a capstone that ships a measurable CNHP improvement; (2) de
 
 Problem, users, requirements (safety first), architecture sketch, milestones, verification lab plan, ethics paragraph. Capstones that need exploit work are rejected.
 
+Section forty-four point one develops engineering capstone with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty-four point one, CNHP lead expects engineering claims to carry owners and dates.
+
+Section forty-four point one treats proposal non-goals milestone errors as testable only when evidence and ticket IDs are recorded.
+
+For section forty-four point one, Ashford Batch Plant will not accept engineering work without a written trail.
+
 ### 44.2 Non-goals
 
 Explicitly list what you will not build (exploit modules, live plant scanning, ML risk oracles, empty scores).
 
+Section forty-four point two develops engineering capstone with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty-four point two, CNHP lead expects engineering claims to carry owners and dates.
+
+Section forty-four point two treats proposal non-goals milestone errors as testable only when evidence and ticket IDs are recorded.
+
+For section forty-four point two, Ashford Batch Plant will not accept engineering work without a written trail.
+
 ### 44.3 Milestone 1
 
 Something demoable on synthetic data in week 3: e.g. kill-switch honored in ≤30s with a test.
+
+Section forty-four point three develops engineering capstone with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty-four point three, CNHP lead expects engineering claims to carry owners and dates.
+
+Section forty-four point three treats proposal non-goals milestone errors as testable only when evidence and ticket IDs are recorded.
 
 > **Synthetic case — Ashford Batch Plant.** Capstone I proposals that mentioned auto-pwn were returned; signed allow-list distribution with fail-closed advanced.
 
 ### 44.4 Errors and limits
 
 Scope creep is the main killer — freeze non-goals.
+
+Section forty-four point four develops engineering capstone with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty-four point four, CNHP lead expects engineering claims to carry owners and dates.
+
+Section forty-four point four treats proposal non-goals milestone errors as testable only when evidence and ticket IDs are recorded.
+
+For section forty-four point four, Ashford Batch Plant will not accept engineering work without a written trail.
+
+Section forty-four point four fails closed if engineering evidence is missing rather than guessing.
 
 ### Practice note
 
@@ -2954,19 +4030,51 @@ You will (1) run a review that can reject; (2) use a checklist tied to safety re
 
 Reviewers may block merge for fail-open paths, missing tests, SIS reachability regressions, or empty scores in UI. LGTM without the checklist is invalid.
 
+Section forty-five point one develops independent design review with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty-five point one, CNHP lead expects independent claims to carry owners and dates.
+
+Section forty-five point one treats review rights checklist dissent as testable only when evidence and ticket IDs are recorded.
+
+For section forty-five point one, Ashford Batch Plant will not accept independent work without a written trail.
+
 ### 45.2 Checklist
 
 Fail-closed; policy authn; schema forbids payloads; coverage has denominator; secrets redaction; rollback path documented; SIS reachability test green.
 
+Section forty-five point two develops independent design review with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty-five point two, CNHP lead expects independent claims to carry owners and dates.
+
+Section forty-five point two treats review rights checklist dissent as testable only when evidence and ticket IDs are recorded.
+
+For section forty-five point two, Ashford Batch Plant will not accept independent work without a written trail.
+
 ### 45.3 Dissent
 
 If one reviewer disagrees, record the dissent in the ADR even if overruled — future incidents need that trail.
+
+Section forty-five point three develops independent design review with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty-five point three, CNHP lead expects independent claims to carry owners and dates.
+
+Section forty-five point three treats review rights checklist dissent as testable only when evidence and ticket IDs are recorded.
 
 > **Synthetic case — Ashford Batch Plant.** A coverage badge PR was blocked twice under this checklist; the third revision shipped the honest UI (Chapter 35).
 
 ### 45.4 Errors and limits
 
 Reviews after merge are archaeology, not control.
+
+Section forty-five point four develops independent design review with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty-five point four, CNHP lead expects independent claims to carry owners and dates.
+
+Section forty-five point four treats review rights checklist dissent as testable only when evidence and ticket IDs are recorded.
+
+For section forty-five point four, Ashford Batch Plant will not accept independent work without a written trail.
+
+Section forty-five point four fails closed if independent evidence is missing rather than guessing.
 
 ### Practice note
 
@@ -3023,13 +4131,35 @@ You will (1) finish implementation against the frozen proposal; (2) run Verifica
 
 Feature freeze date is real: after it, only safety fixes. New ideas go to a sequel proposal.
 
+Section forty-six point one develops engineering capstone ii with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty-six point one, CNHP lead expects engineering claims to carry owners and dates.
+
+Section forty-six point one treats freeze verify docs errors as testable only when evidence and ticket IDs are recorded.
+
+For section forty-six point one, Ashford Batch Plant will not accept engineering work without a written trail.
+
 ### 46.2 Verify
 
 Capstone must pass Lab II (Chapter 40) on synthetic fixtures with signed checklist.
 
+Section forty-six point two develops engineering capstone ii with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty-six point two, CNHP lead expects engineering claims to carry owners and dates.
+
+Section forty-six point two treats freeze verify docs errors as testable only when evidence and ticket IDs are recorded.
+
+For section forty-six point two, Ashford Batch Plant will not accept engineering work without a written trail.
+
 ### 46.3 Docs
 
 Runbook section, ADR, operator tutorial with screenshots of synthetic UI — no plant data. Ops signature required before tag.
+
+Section forty-six point three develops engineering capstone ii with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty-six point three, CNHP lead expects engineering claims to carry owners and dates.
+
+Section forty-six point three treats freeze verify docs errors as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Lab: alarm load per operator hour before and after rationalisation (synthetic counts)."""
@@ -3056,6 +4186,16 @@ worst source before: comm loss PLC-A (38% of load)
 ### 46.4 Errors and limits
 
 Demo magic on a laptop with hand-waved fail-closed does not pass.
+
+Section forty-six point four develops engineering capstone ii with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty-six point four, CNHP lead expects engineering claims to carry owners and dates.
+
+Section forty-six point four treats freeze verify docs errors as testable only when evidence and ticket IDs are recorded.
+
+For section forty-six point four, Ashford Batch Plant will not accept engineering work without a written trail.
+
+Section forty-six point four fails closed if engineering evidence is missing rather than guessing.
 
 ### Practice note
 
@@ -3112,13 +4252,33 @@ You will (1) run a scripted failure trial; (2) measure recovery time; (3) file c
 
 Inject: allow-list file deleted; finding store killed; clock skew; duplicate event replay; flat graph substituted for zoned. Observe denies, queues, alerts, reachability fail.
 
+Section forty-seven point one develops failure and recovery trial with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty-seven point one, CNHP lead expects failure claims to carry owners and dates.
+
+Section forty-seven point one treats script measures corrective actions as testable only when evidence and ticket IDs are recorded.
+
+For section forty-seven point one, Ashford Batch Plant will not accept failure work without a written trail.
+
 ### 47.2 Measures
 
 Time to deny-all writes after policy loss; time to alert; time to restore; findings lost (should be 0 with queue); SIS reachability check still fails closed on bad graph.
 
+Section forty-seven point two develops failure and recovery trial with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty-seven point two, CNHP lead expects failure claims to carry owners and dates.
+
+Section forty-seven point two treats script measures corrective actions as testable only when evidence and ticket IDs are recorded.
+
 ### 47.3 Corrective actions
 
 Each miss becomes a ticket with owner and due date — not only a lesson-learned slide.
+
+Section forty-seven point three develops failure and recovery trial with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty-seven point three, CNHP lead expects failure claims to carry owners and dates.
+
+Section forty-seven point three treats script measures corrective actions as testable only when evidence and ticket IDs are recorded.
 
 ```python
 # Lab 27 - residual CUSUM vs band on batch reactor level (synthetic)
@@ -3158,6 +4318,16 @@ cusum classB FA=0/60 det=0/60 mean_delay=nan
 ### 47.4 Errors and limits
 
 Trials on production windows are forbidden; use synthetic ranges.
+
+Section forty-seven point four develops failure and recovery trial with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty-seven point four, CNHP lead expects failure claims to carry owners and dates.
+
+Section forty-seven point four treats script measures corrective actions as testable only when evidence and ticket IDs are recorded.
+
+For section forty-seven point four, Ashford Batch Plant will not accept failure work without a written trail.
+
+Section forty-seven point four fails closed if failure evidence is missing rather than guessing.
 
 ### Practice note
 
@@ -3214,19 +4384,51 @@ You will (1) assemble a dossier a third party can re-hash; (2) structure retenti
 
 Work permit PDF, ConduitSet/allow-list JSON, finding exports, evidence objects, hash manifest, tool versions, lab reports. Reader can verify without trusting your laptop.
 
+Section forty-eight point one develops evidence dossier with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty-eight point one, CNHP lead expects evidence claims to carry owners and dates.
+
+Section forty-eight point one treats contents retention exclusions errors as testable only when evidence and ticket IDs are recorded.
+
+For section forty-eight point one, Ashford Batch Plant will not accept evidence work without a written trail.
+
 ### 48.2 Retention
 
 Classes: window working (90 days), sealed evidence (agreed years), aggregate metrics (longer). Deletion jobs are tested.
 
+Section forty-eight point two develops evidence dossier with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty-eight point two, CNHP lead expects evidence claims to carry owners and dates.
+
+Section forty-eight point two treats contents retention exclusions errors as testable only when evidence and ticket IDs are recorded.
+
+For section forty-eight point two, Ashford Batch Plant will not accept evidence work without a written trail.
+
 ### 48.3 Exclusions
 
 No payloads, no live credentials, no proprietary batch genealogy. If it cannot be shared with counsel safely, it does not belong.
+
+Section forty-eight point three develops evidence dossier with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty-eight point three, CNHP lead expects evidence claims to carry owners and dates.
+
+Section forty-eight point three treats contents retention exclusions errors as testable only when evidence and ticket IDs are recorded.
 
 > **Synthetic case — Ashford Batch Plant.** Dossier v3 re-hashed clean after a findings.json edit incident; process note included.
 
 ### 48.4 Errors and limits
 
 Dossiers in personal cloud accounts fail residency and retention.
+
+Section forty-eight point four develops evidence dossier with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty-eight point four, CNHP lead expects evidence claims to carry owners and dates.
+
+Section forty-eight point four treats contents retention exclusions errors as testable only when evidence and ticket IDs are recorded.
+
+For section forty-eight point four, Ashford Batch Plant will not accept evidence work without a written trail.
+
+Section forty-eight point four fails closed if evidence evidence is missing rather than guessing.
 
 ### Practice note
 
@@ -3287,19 +4489,53 @@ You will (1) structure a thesis around a programme claim; (2) defend measures an
 
 One sentence: what you built/measured and for whom. Example: Signed allow-list distribution with fail-closed semantics reduces unauthorized writes forwarded in synthetic trials.
 
+Section forty-nine point one develops engineering thesis with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty-nine point one, CNHP lead expects engineering claims to carry owners and dates.
+
+Section forty-nine point one treats claim body citations errors as testable only when evidence and ticket IDs are recorded.
+
+For section forty-nine point one, Ashford Batch Plant will not accept engineering work without a written trail.
+
 ### 49.2 Body
 
 Related work, design, verification, results with intervals and attack classes, limitations, ethics.
 
+Section forty-nine point two develops engineering thesis with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty-nine point two, CNHP lead expects engineering claims to carry owners and dates.
+
+Section forty-nine point two treats claim body citations errors as testable only when evidence and ticket IDs are recorded.
+
+For section forty-nine point two, Ashford Batch Plant will not accept engineering work without a written trail.
+
+Section forty-nine point two fails closed if engineering evidence is missing rather than guessing.
+
 ### 49.3 Citations
 
 Use verified URLs/DOIs from the source policy; do not invent papers. Note access dates. Giraldo et al. CSUR 2018 doi 10.1145/3203245; Urbina et al. CCS 2016 doi 10.1145/2976749.2978388.
+
+Section forty-nine point three develops engineering thesis with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty-nine point three, CNHP lead expects engineering claims to carry owners and dates.
+
+Section forty-nine point three treats claim body citations errors as testable only when evidence and ticket IDs are recorded.
 
 > **Synthetic case — Ashford Batch Plant.** Thesis draft used only synthetic trial data and cited SP 800-82 Rev. 3 correctly.
 
 ### 49.4 Errors and limits
 
 A thesis that evaluates exploitation skill is out of programme scope.
+
+Section forty-nine point four develops engineering thesis with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section forty-nine point four, CNHP lead expects engineering claims to carry owners and dates.
+
+Section forty-nine point four treats claim body citations errors as testable only when evidence and ticket IDs are recorded.
+
+For section forty-nine point four, Ashford Batch Plant will not accept engineering work without a written trail.
+
+Section forty-nine point four fails closed if engineering evidence is missing rather than guessing.
 
 ### Practice note
 
@@ -3356,13 +4592,33 @@ You will (1) present the claim and evidence in 20 minutes; (2) answer safety and
 
 Claim; demo on synthetic data; verification results; one failure-trial lesson; limits; questions. No live plant hacking demo.
 
+Section fifty point one develops final defense with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section fifty point one, CNHP lead expects final claims to carry owners and dates.
+
+Section fifty point one treats talk structure likely questions as testable only when evidence and ticket IDs are recorded.
+
+For section fifty point one, Ashford Batch Plant will not accept final work without a written trail.
+
 ### 50.2 Likely questions
 
 Fail-closed proof? Denominator choice? Dual-use boundary? SIS independence? What broke in Lab II? Practice answering with pointers to artefacts.
 
+Section fifty point two develops final defense with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section fifty point two, CNHP lead expects final claims to carry owners and dates.
+
+Section fifty point two treats talk structure likely questions as testable only when evidence and ticket IDs are recorded.
+
+For section fifty point two, Ashford Batch Plant will not accept final work without a written trail.
+
 ### 50.3 Reflection
 
 End with one design mistake and the fix — examiners trust engineers who saw their own failures.
+
+Section fifty point three develops final defense with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section fifty point three, CNHP lead expects final claims to carry owners and dates.
 
 ```python
 # Lab 1 - tank hold-up after feed pump stop (Ashford Batch Plant, synthetic)
@@ -3392,6 +4648,16 @@ average-rate estimate: 5.56 h
 ### 50.4 Errors and limits
 
 Defense is not a sales pitch for a scanner vendor.
+
+Section fifty point four develops final defense with a Ashford Batch Plant note Lena Okafor can demo offline.
+
+Under section fifty point four, CNHP lead expects final claims to carry owners and dates.
+
+Section fifty point four treats talk structure likely questions as testable only when evidence and ticket IDs are recorded.
+
+For section fifty point four, Ashford Batch Plant will not accept final work without a written trail.
+
+Section fifty point four fails closed if final evidence is missing rather than guessing.
 
 ### Practice note
 
