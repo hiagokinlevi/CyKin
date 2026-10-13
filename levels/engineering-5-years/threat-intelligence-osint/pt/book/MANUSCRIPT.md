@@ -1,7 +1,7 @@
 # Inteligência de ameaças e OSINT: um livro de engenharia
 
 - Idioma: português do Brasil (`pt`); curso de engenharia, cinco anos. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–33 de 50 já estão escritos em português, com os exercícios EX001–EX099 e suas resoluções com rubricas de 0 a 3 e 7 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 34–50 (EX100–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–36 de 50 já estão escritos em português, com os exercícios EX001–EX108 e suas resoluções com rubricas de 0 a 3 e 8 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 37–50 (EX109–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que vão projetar, construir, verificar e operar plataformas de inteligência de ameaças e fluxos de OSINT como sistemas confiáveis.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limite ético: nenhuma coleta sobre pessoas privadas reais, nenhuma evasão de termos de uso, nenhuma desanonimização e nenhuma interação com infraestrutura de adversários. Toda organização, pessoa, indicador e número é **sintético**, salvo quando uma frase cita uma fonte pública; os endereços usam as faixas da RFC 5737 e os domínios usam `.example`.
@@ -28,9 +28,9 @@ MITRE [ATT&CK](https://attack.mitre.org/); OASIS [STIX 2.1](https://docs.oasis-o
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) |
 
-Capítulos 34–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-34), até a chegada dos próximos lotes.
+Capítulos 37–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-37), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -2043,11 +2043,215 @@ Trate falsos positivos como riscos físicos, intertrave as ações automatizadas
 
 [← Capítulo 32 (rascunho)](#ch-32) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 34 (rascunho) →](#ch-34)
 
+<a id="ch-34"></a>
+
+## Capítulo 34 — Inteligência de ameaças e OSINT: integração
+
+### Objetivos de aprendizagem
+
+Você vai (1) integrar o Lantern a sistemas de SIEM, DNS, proxy e chamados; (2) projetar integrações idempotentes; (3) mapear os objetos do Lantern para os formatos dos sistemas de destino; (4) testar as integrações de ponta a ponta.
+
+### 34.1 Alvos de integração
+
+SIEM: os indicadores viram tabelas de consulta de correlação; os avistamentos fluem de volta. Resolvedor DNS: bloqueios de domínio e zonas de política de resposta. Proxy web: categorias de URL. Chamados: correspondências de alta confiança abrem chamados com contexto do diamante e do ATT&CK. Cada alvo tem seu próprio formato, seus limites e seu responsável, e é por isso que cada um tem seu próprio documento de interface. Kofi começou pelo resolvedor DNS porque ali os bloqueios de domínio são precisos e fáceis de desfazer. O SIEM veio em seguida, depois o proxy, depois os chamados. Acrescentar os alvos um de cada vez fez com que os problemas de um não se misturassem com os de outro.
+
+### 34.2 Idempotência
+
+Reenviar a mesma lista de bloqueio não pode duplicar regras. As integrações comparam o estado desejado com o estado atual e aplicam apenas as diferenças. Isso também faz do retorno à configuração anterior uma questão de reaplicar o estado desejado anterior. O exemplo resolvido mostra o que acontece sem isso: uma nova tentativa criou milhares de regras duplicadas. Comparar o estado desejado com o atual transforma uma nova tentativa em uma verificação inofensiva. A integração de Kofi registra o número de regras acrescentadas e removidas em cada execução, e uma execução que relata nenhuma mudança é o resultado normal e saudável.
+
+### 34.3 Mapeando formatos
+
+Padrões STIX como `[domain-name:value = 'c2.example']` são traduzidos para a sintaxe de regras de cada produto. Recursos de padrão não suportados são rejeitados com motivo, em vez de aproximados. Kofi mantém a tabela de tradução de cada produto na configuração, com testes. Um padrão que combina duas condições com uma janela de tempo, por exemplo, não pode ser expresso no formato do resolvedor, então vai para o SIEM. Aproximá-lo com uma só condição bloquearia muito mais ou muito menos do que o pretendido. Cada rejeição é registrada com o padrão.
+
+### 34.4 Contexto nos chamados
+
+Um chamado que diz "correspondência em drop.example" é fraco. Um chamado que acrescenta fonte, confiança, TLP, técnicas do ATT&CK relacionadas e ações recomendadas permite aos analistas agir depressa. Kofi mediu o efeito em uma amostra de chamados. Os analistas encerraram mais rápido os chamados ricos em contexto e escalaram menos deles por engano, porque a ação recomendada e a confiança estavam diante deles. Um link de volta para o objeto no Lantern permite ao analista ver o histórico completo sem procurar. Os chamados são gerados a partir do mesmo objeto.
+
+### 34.5 Testes de ponta a ponta
+
+Um indicador sintético é injetado no coletor; o teste confere se ele aparece na política de DNS, dispara uma consulta no SIEM a partir de uma requisição sintética e abre um chamado — depois o remove e confere a limpeza. Kofi executa esse teste após cada versão e cada mudança nos sistemas de destino. Quando a equipe de DNS atualizou seu resolvedor, o teste pegou uma mudança na forma como o arquivo de política era carregado, e a correção foi feita em homologação antes da produção. O indicador sintético usa um domínio de exemplo reservado, então nem uma limpeza que falhe pode afetar tráfego real.
+
+### Nota de prática — responsáveis
+
+Cada integração tem um responsável nomeado na equipe do sistema de destino. Quando a equipe de DNS atualiza seu resolvedor, ela sabe que precisa executar o teste de integração do Lantern.
+
+### Deriva de versões
+
+Os produtos de destino mudam suas APIs. O Lantern fixa a versão da API que usa em cada integração e executa o teste de ponta a ponta no ambiente de homologação da equipe de destino antes que ela faça a atualização, para que as mudanças apareçam antes da produção.
+
+### Exemplo resolvido
+
+A integração com o proxy duplicou 3.000 regras após uma nova tentativa. Kofi a muda para uma comparação de estados; envios repetidos agora relatam "0 changes", e a equipe do proxy confirma que as contagens de regras batem com o estado desejado do Lantern.
+
+> **Caso sintético.** O incidente de duplicação é inventado.
+
+### Erros e limites
+
+Os produtos de destino têm limites de quantidade de regras; priorize pela confiança. Aproximar padrões não suportados cria lacunas silenciosas.
+
+### Exercícios
+
+- **EX100 — Envio idempotente.** Descreva como funciona uma integração idempotente de lista de bloqueio. *Rubrica:* 3 = compara o desejado com o atual e aplica só a diferença; repetir não muda nada; 2 = parcial; 1 = reenviar tudo; 0 = nenhuma.
+- **EX101 — Contexto do chamado.** Liste quatro campos de contexto para um chamado de correspondência. *Rubrica:* 3 = quatro entre fonte, confiança, TLP, ATT&CK, ação recomendada, campos do diamante; 2 = dois; 1 = só o indicador; 0 = nenhuma.
+- **EX102 — Padrão não suportado.** O que deve acontecer com um padrão STIX que o proxy não consegue expressar? *Rubrica:* 3 = rejeitar com motivo/encaminhar a outro destino; nunca aproximar em silêncio; 2 = rejeitar; 1 = aproximar; 0 = nenhuma.
+
+### Síntese
+
+Integre pelo estado desejado, traduza os padrões com exatidão, enriqueça os chamados com contexto e teste o caminho inteiro.
+
+### Continue estudando — capítulo 34 de 50
+
+[← Capítulo 33 (rascunho)](#ch-33) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 35 (rascunho) →](#ch-35)
+
+<a id="ch-35"></a>
+
+## Capítulo 35 — Ateliê de projeto II
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar a camada de análise e disseminação do Lantern; (2) produzir modelos de produtos para consumidores diferentes; (3) defender as escolhas de projeto diante de um revisor adversarial; (4) estimar esforço e riscos da construção.
+
+### 35.1 Enunciado
+
+Projete como os analistas transformam objetos armazenados em produtos: um resumo tático diário, um sumário operacional semanal e um briefing estratégico trimestral para executivos, cada um com controles de TLP, linguagem de julgamento no estilo da ICD 203 e captura de retorno. Os três produtos atendem a leitores diferentes, em calendários diferentes. Os analistas precisam do resumo toda manhã; os gestores querem o sumário semanal antes da reunião de planejamento; os executivos leem o briefing uma vez por trimestre. A equipe de Kofi projetou cada um de trás para a frente a partir da decisão do leitor, começando pelo que o leitor deveria ser capaz de fazer depois da leitura.
+
+### 35.2 Modelos
+
+Resumo tático: principais indicadores por confiança, ações tomadas, avistamentos. Sumário operacional: campanhas ativas com estrutura de diamante e técnicas do ATT&CK. Briefing estratégico: tendências de adversários relevantes para a distribuição de eletricidade, julgamentos-chave com palavras estimativas e uma escala de probabilidade publicada. Cada modelo tem uma ordem fixa, para que os leitores saibam onde procurar. Kofi manteve o resumo em uma única tela e o briefing estratégico em duas páginas. Os modelos também obrigam o analista a preencher fonte e confiança para cada item, o que torna as lacunas evidentes antes da publicação.
+
+### 35.3 Revisão adversarial
+
+Um revisor faz o papel de um executivo cético: "Por que eu deveria confiar nisto?" O projeto responde com descrições das fontes, confiança e um histórico de julgamentos anteriores. As respostas vêm de registros que o Lantern já mantém. As descrições das fontes explicam quem relatou algo e como sabia. Os julgamentos anteriores são pontuados quando os desfechos se tornam conhecidos, para que o leitor veja com que frequência o "provável" da equipe quis dizer o que dizia. O revisor cético do ateliê de Kofi se convenceu por esse histórico, e não pela segurança do texto.
+
+### 35.4 Esforço e risco
+
+A equipe estima o esforço por componente e lista os riscos: o tempo dos analistas para escrever briefings estratégicos, o consentimento dos parceiros para citação, a atenção dos executivos. Os briefings estratégicos tomaram muito mais tempo dos analistas do que a equipe imaginou de início; a estimativa de Kofi dobrou depois que ele cronometrou um briefing de teste. O consentimento dos parceiros para citar material pode levar semanas, o que afeta o cronograma. A atenção dos executivos é o recurso mais escasso de todos, então o briefing se limita ao que eles podem fazer algo a respeito. Cada risco tem um responsável e um plano.
+
+### 35.5 Acessibilidade
+
+Os produtos são legíveis no celular, evitam codificação apenas por cor (os rótulos TLP são escritos em texto, como o TLP 2.0 recomenda) e incluem texto alternativo para as figuras. Kofi testou os modelos em um telefone e com um leitor de tela. Um gráfico que usava só a cor para indicar a severidade ficou ilegível para um revisor, então agora a severidade também é escrita como palavra. Escrever o rótulo em texto também faz com que ele sobreviva à impressão em preto e branco. Produtos acessíveis alcançam mais leitores, o que importa quando o leitor é um engenheiro em uma subestação lendo em um tablet.
+
+### Nota de prática — menos produtos, melhores
+
+As equipes do ateliê costumam propor uma dúzia de tipos de produto. A banca resiste: três produtos que são lidos valem mais que doze que são ignorados.
+
+### Medindo a leitura
+
+Cada produto registra aberturas e cliques de retorno. Depois de um trimestre, a equipe aposenta qualquer produto que ninguém lê e pergunta ao público pretendido do que ele precisa em seu lugar.
+
+### Exemplo resolvido
+
+O modelo de briefing estratégico de Kofi abre com três julgamentos-chave, cada um com uma expressão estimativa associada a uma faixa, a base do julgamento e o que o mudaria. O revisor cético aceita o modelo depois de ver que a exatidão dos julgamentos anteriores é acompanhada.
+
+> **Caso sintético.** A revisão do modelo é inventada.
+
+### Erros e limites
+
+Modelos podem virar texto de praxe; os revisores devem conferir se cada produto diz algo novo. Produtos estratégicos precisam de tempo de analista, não só de automação.
+
+### Exercícios
+
+- **EX103 — Três produtos.** Associe os produtos tático, operacional e estratégico a seu público principal. *Rubrica:* 3 = analistas do SOC; líderes de resposta a incidentes/caça; executivos; 2 = dois; 1 = um; 0 = nenhuma.
+- **EX104 — Resposta sobre confiança.** Dê duas características de projeto que respondam a "por que eu deveria confiar nisto?". *Rubrica:* 3 = duas entre descrição da fonte, confiança/escala estimativa, histórico, gatilhos de mudança; 2 = uma; 1 = identidade visual; 0 = nenhuma.
+- **EX105 — Só cor.** Por que os rótulos TLP devem ser escritos em texto, e não mostrados apenas por cor? *Rubrica:* 3 = acessibilidade/daltonismo/impressão; orientação do TLP 2.0; 2 = acessibilidade; 1 = sem motivo; 0 = nenhuma.
+
+### Síntese
+
+Projete poucos produtos para públicos nomeados, torne a confiança visível, planeje o esforço com honestidade e mantenha os produtos acessíveis.
+
+### Continue estudando — capítulo 35 de 50
+
+[← Capítulo 34 (rascunho)](#ch-34) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 36 (rascunho) →](#ch-36)
+
+<a id="ch-36"></a>
+
+## Capítulo 36 — Inteligência de ameaças e OSINT: desempenho e escala
+
+### Objetivos de aprendizagem
+
+Você vai (1) detectar filas instáveis, em que a chegada supera o atendimento; (2) aplicar a lei de Little para estimar o tempo de espera; (3) escolher entre escalar verticalmente, escalar horizontalmente e descartar carga; (4) proteger os parceiros quando o Lantern escala.
+
+### 36.1 Filas instáveis
+
+Se 120 objetos por minuto chegam ao enriquecimento e só 100 por minuto são atendidos, o acúmulo cresce 20 a cada minuto, sem limite. Nenhuma espera resolve isso; a capacidade ou a demanda precisa mudar. O laboratório imprime exatamente esse padrão, e depois de cinco minutos o acúmulo é de cem itens e continua subindo. Kofi observa a tendência, e não o tamanho: uma fila longa que está encolhendo está se recuperando, enquanto uma curta que cresce a cada minuto é um problema. Seu alerta dispara quando o acúmulo cresce por dez minutos seguidos, antes que fique grande o bastante para os analistas notarem.
+
+### Laboratório 8 — crescimento da fila
+
+```python
+"""Lab 8 (ch 36): Little's law and backlog growth for a synthetic enrichment queue."""
+arrival_per_min, service_per_min = 120, 100
+backlog = 0
+for minute in range(1, 6):
+    backlog += arrival_per_min - service_per_min
+    print(f"minute {minute}: backlog={backlog}")
+L, lam = 400, 100 / 60  # items in system, throughput items/s after scaling fixes
+print(f"Little's law wait W=L/lambda={L/lam:.0f} s at L={L}, lambda={lam:.2f}/s")
+```
+
+Execute com `python3 lab_queue.py`. Saída verificada:
+
+```text
+minute 1: backlog=20
+minute 2: backlog=40
+minute 3: backlog=60
+minute 4: backlog=80
+minute 5: backlog=100
+Little's law wait W=L/lambda=240 s at L=400, lambda=1.67/s
+```
+
+### 36.2 Lei de Little
+
+Em um sistema estável, o número médio no sistema L é igual à vazão λ vezes o tempo médio no sistema W. Com 400 itens na fila e 1,67 item atendido por segundo, a espera média é de cerca de 240 segundos. A lei não exige suposições sobre o padrão das chegadas, o que a torna uma verificação robusta nos painéis. Kofi a usa para conferir se os números do painel concordam entre si. Se o tamanho da fila, a vazão e a espera relatada não se encaixam na lei, uma das medições está errada.
+
+### 36.3 Opções
+
+Escalar verticalmente (hardware mais rápido), escalar horizontalmente (mais trabalhadores) ou descartar carga (pular enriquecimentos de pouco valor, amostrar indicadores de baixa confiança). Descartar pelo valor costuma ser o mais barato: enriqueça primeiro os indicadores de alta confiança. Kofi compara o custo de cada opção com o ganho. Uma máquina mais rápida só ajuda se o trabalho for limitado pelo processamento. Mais trabalhadores só ajudam se o trabalho puder ser dividido e o provedor permitir mais consultas. Descartar trabalho de pouco valor exige uma regra clara sobre o que conta como pouco valor, acordada com os analistas, e um registro do que foi pulado, para que possa ser feito depois se necessário.
+
+### 36.4 Protegendo os parceiros
+
+Escalar os coletores horizontalmente não pode multiplicar a carga sobre os servidores TAXII dos parceiros. O Lantern mantém uma única identidade de consulta por parceiro e compartilha os resultados internamente, respeitando os limites de taxa dos parceiros. O projeto de Kofi separa a coleta do processamento por esse motivo. Não importa quantos trabalhadores internos o Lantern execute, um único coletor por parceiro consulta na taxa acordada e coloca os objetos em uma fila interna. Os parceiros veem o mesmo tráfego, esteja a BEN tranquila ou no meio de uma campanha. Se um parceiro aumenta seus limites, a configuração muda depois do acordo, e não antes.
+
+### 36.5 Testando em escala
+
+Os testes de carga usam pacotes sintéticos gerados em tamanhos realistas, executados apenas contra o substituto TAXII e os componentes internos. O gerador de Kofi cria pacotes com a mesma mistura de tipos e tamanhos de objeto que os parceiros enviam, incluindo uma parcela de objetos malformados, para que o teste exercite também o caminho de rejeição. Executar contra servidores reais dos parceiros testaria a capacidade deles, e não a da BEN, e violaria os acordos. Os resultados registram o hardware, a versão do código e os volumes gerados, para que um teste posterior possa ser comparado de forma justa. Cada execução termina conferindo se as filas se esvaziaram por completo.
+
+### Nota de prática — filas com prioridade
+
+Duas filas — alta e baixa confiança — com trabalhadores atendendo primeiro a alta mantêm rápido o enriquecimento importante durante os picos, enquanto o trabalho de pouco valor espera ou é pulado.
+
+### Revisões de capacidade
+
+A cada trimestre, Kofi compara as taxas de chegada de pico com a capacidade de atendimento e registra a folga em percentual, para que o crescimento seja planejado antes que as filas fiquem instáveis.
+
+### Exemplo resolvido
+
+Durante uma grande campanha, as chegadas saltam para 120 por minuto. Kofi acrescenta dois trabalhadores (atendimento de 150 por minuto) e passa os indicadores de baixa confiança para uma fila adiada. O acúmulo se esvazia em menos de dez minutos, e a consulta aos parceiros continua inalterada.
+
+> **Caso sintético.** As taxas são inventadas.
+
+### Erros e limites
+
+A lei de Little descreve médias; a latência de cauda exige percentis. Escalar o consumidor de um provedor externo com limite de taxa só produz mais respostas 429.
+
+### Exercícios
+
+- **EX106 — Acúmulo após cinco.** Que acúmulo o laboratório mostra depois de cinco minutos, e por que ele continua crescendo? *Rubrica:* 3 = 100; a chegada supera o atendimento em 20/min; 2 = só o número; 1 = estável; 0 = nenhuma.
+- **EX107 — Lei de Little.** Calcule W para L = 300 itens com λ = 2 itens por segundo. *Rubrica:* 3 = 150 s; 2 = método; 1 = 600; 0 = nenhuma.
+- **EX108 — Carga nos parceiros.** Por que escalar os coletores horizontalmente não pode acrescentar identidades de consulta por parceiro? *Rubrica:* 3 = multiplicaria a carga do parceiro/violaria os limites de taxa; 2 = parcial; 1 = tudo bem; 0 = nenhuma.
+
+### Síntese
+
+Identifique a instabilidade, use a lei de Little para as esperas, escale ou descarte pelo valor e mantenha constante a carga sobre os parceiros.
+
+### Continue estudando — capítulo 36 de 50
+
+[← Capítulo 35 (rascunho)](#ch-35) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 37 (rascunho) →](#ch-37)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX099 (as de EX100–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). A Brightwater Energy Networks, o Lantern, Kofi Mensah e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX108 (as de EX109–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). A Brightwater Energy Networks, o Lantern, Kofi Mensah e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** (13.300 − 12.700) / 1 h = 600 indicadores por hora.
 
@@ -2246,6 +2450,24 @@ Respostas-modelo para EX001–EX099 (as de EX100–EX150 estão na edição em i
 **EX098.** Nenhuma ação automática em OT; uma lista de endereços protegidos que os bloqueios não podem incluir; um tamanho máximo de mudança por envio; aprovação por duas pessoas (quaisquer três).
 
 **EX099.** As detecções comportamentais procuram técnicas como T1059 ou T1071 na própria telemetria da BEN, então continuam funcionando sem os indicadores do feed perdido.
+
+**EX100.** A integração lê as regras atuais do destino, compara-as com o conjunto desejado do Lantern e aplica apenas as diferenças, de modo que repetir um envio não muda nada.
+
+**EX101.** Fonte, confiança, marcação TLP, técnicas do ATT&CK relacionadas (também a ação recomendada e os campos do diamante).
+
+**EX102.** Rejeitá-lo para aquele destino com um motivo registrado e encaminhá-lo a uma integração que consiga expressá-lo; nunca aproximar em silêncio.
+
+**EX103.** Resumo tático → analistas do SOC; sumário operacional → líderes de resposta a incidentes e de caça; briefing estratégico → executivos.
+
+**EX104.** Descrições das fontes com a confiança em uma escala estimativa publicada e um histórico acompanhado da exatidão dos julgamentos anteriores (gatilhos de mudança também contam).
+
+**EX105.** Só a cor falha para leitores daltônicos e na impressão monocromática; o TLP 2.0 espera que o texto do rótulo seja mostrado.
+
+**EX106.** Um acúmulo de 100 depois de cinco minutos; ele cresce 20 a cada minuto porque chegam 120 e só 100 são atendidos.
+
+**EX107.** W = L / λ = 300 / 2 = 150 segundos.
+
+**EX108.** Cada nova identidade consultaria o parceiro separadamente, multiplicando sua carga e possivelmente violando os limites de taxa acordados.
 
 <a id="references"></a>
 ## Referências
