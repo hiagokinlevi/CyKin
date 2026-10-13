@@ -1,7 +1,7 @@
 # Infraestrutura Crítica e Segurança Setorial: Engenharia de Sistemas Seguros e Resilientes
 
 - Idioma: português do Brasil (`pt`); curso de engenharia, cinco anos; aproximadamente 4.000 horas de estudo planejado (curso 138 de 207 na [trilha de estudo](../../../../../STUDY_PATH.md)). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–43 de 50 já estão escritos em português, com os exercícios EX001–EX086 e suas resoluções; os capítulos 44–50 (EX087–EX100) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–47 de 50 já estão escritos em português, com os exercícios EX001–EX094 e suas resoluções; os capítulos 48–50 (EX095–EX100) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: futuros projetistas de sistemas de segurança para serviços críticos — água, eletricidade, saúde, transporte, finanças e comunicações. Conhecimento de entrada: matemática e física do ensino médio; o livro constrói cálculo, probabilidade, programação, redes e engenharia de sistemas a partir do Capítulo 1.
 - Relação com os demais livros desta área: o [livro de mestrado](../../../../masters-2-years/critical-sector-security/en/book/MANUSCRIPT.md) ensina a projetar, pilotar e defender um estudo empírico com revisão ética; o [livro de doutorado](../../../../doctorate-2-years/critical-sector-security/en/book/MANUSCRIPT.md) exige uma contribuição original e validada de forma independente para o conhecimento. **Este livro de engenharia trata de construir coisas**: derivar requisitos a partir de consequências, escolher arquiteturas, implementar e verificar controles, medir confiabilidade e desempenho, ensaiar a recuperação e defender um sistema projetado com evidências. Seu capítulo de pesquisa (42) existe para resolver decisões de projeto, não para publicar.
 - Autoria e responsabilidade editorial: [hiagokinlevi](https://github.com/hiagokinlevi). O texto didático original, de propriedade do mantenedor, é dedicado sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus próprios direitos e não são relicenciadas aqui.
@@ -78,10 +78,14 @@ Toda afirmação factual sobre uma lei, uma norma, um incidente ou um estudo pub
 41. [Infraestrutura crítica e segurança setorial: otimização de sistemas](#ch-41)
 42. [Infraestrutura crítica e segurança setorial: pesquisa aplicada](#ch-42)
 43. [Prática na indústria ou no serviço público](#ch-43)
+44. [Projeto final de engenharia I](#ch-44)
+45. [Revisão independente de projeto](#ch-45)
+46. [Projeto final de engenharia II](#ch-46)
+47. [Ensaio de falha e recuperação](#ch-47)
 
-Capítulos 44–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-44), até a chegada dos próximos lotes.
+Capítulos 48–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-48), até a chegada dos próximos lotes.
 
-As [resoluções](#worked-results) contêm EX001–EX086. Um [glossário](#glossary) e as [referências](#references) fecham o livro.
+As [resoluções](#worked-results) contêm EX001–EX094. Um [glossário](#glossary) e as [referências](#references) fecham o livro.
 
 
 <a id="ch-01"></a>
@@ -3254,7 +3258,272 @@ A prática ensina as restrições que moldam os projetos reais. Trabalhe dentro 
 <!-- cyberabc:chapter-navigation:start ch-43 -->
 ### Continue estudando — capítulo 43 de 50
 
-[← Capítulo 42](#ch-42) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 44 (inglês) →](../../en/book/MANUSCRIPT.md#ch-44)
+[← Capítulo 42](#ch-42) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 44 →](#ch-44)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-44"></a>
+
+## Capítulo 44 — Projeto final de engenharia I
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) definir um projeto final com patrocinador, escopo, requisitos e critérios de aceitação; (2) planejá-lo com cronograma, registro de riscos e plano de verificação; (3) montar um ambiente de engenharia reprodutível; e (4) ser aprovado numa revisão preliminar de projeto. O projeto final integra o curso num único sistema construído e verificado e continua pelos capítulos 45 a 50.
+
+### 44.1 O que é um projeto final
+
+Um projeto final é um projeto de engenharia substancial no qual o estudante projeta, constrói e verifica um sistema que atende a requisitos reais ou realistas sob restrições. Neste curso, o projeto final precisa: tratar de uma necessidade de segurança ou resiliência de infraestrutura crítica; incluir um artefato funcional (software, configuração, testbed ou protótipo); incluir análises (ameaças/falhas, desempenho, confiabilidade); e ser verificado contra requisitos declarados. O projeto final continua o caso do TMRP, a menos que seu supervisor aprove outro caso sintético ou autorizado. O exemplo resolvido abaixo segue o TMRP: telemetria autenticada segura diante de reinícios para as RTUs legadas da PS1 e da PS2.
+
+### 44.2 Definição do escopo
+
+Um bom escopo de projeto final é estreito o bastante para ser concluído e profundo o bastante para exigir engenharia de verdade. Exemplos: um gateway de telemetria autenticada com verificação por injeção de falhas; um detector baseado em resíduos com um estudo de simulação validado; uma ferramenta de orquestração da recuperação com um ensaio de restauração medido; uma ferramenta de verificação da segmentação com um modelo de política. Escreva um escopo de uma página: necessidade, partes interessadas, entregas, itens fora do escopo, restrições e critérios de aceitação. O escopo do projeto final do TMRP no exemplo resolvido abaixo cabe numa página e deixa de fora o hardware real das RTUs e a rede da operadora.
+
+### 44.3 Planejamento
+
+Planeje com uma estrutura analítica do trabalho, um cronograma com marcos (revisão preliminar de projeto, revisão crítica de projeto, verificação concluída, rascunho do trabalho de conclusão, defesa), um registro de riscos (técnicos, de cronograma, de acesso, de competências) e um plano de verificação que rastreie os requisitos até os testes. Mantenha um diário semanal e atualize o registro de riscos mensalmente. Para o projeto final do TMRP, o cronograma de doze semanas coloca a revisão preliminar de projeto nas primeiras semanas e a revisão independente antes da verificação. Seu registro de riscos inclui a chance de a segurança diante de reinícios se mostrar mais difícil do que o esperado, o que, como mostra depois o resumo da verificação, foi o que aconteceu quando o receptor aceitou repetições após um reinício.
+
+### 44.4 Ambiente
+
+Monte controle de versões, um rastreador de tarefas, um build reprodutível (dependências fixadas ou apenas a biblioteca padrão), testes automatizados e um diretório de resultados em que cada resultado seja armazenado com o commit, as sementes e o ambiente que o produziram. Para o projeto final do TMRP, o gateway usa apenas a biblioteca padrão do Python, então não há dependências a fixar, e cada resultado de campanha é armazenado com sua semente e seu commit. É essa disciplina que permite ao dossiê posterior listar um hash e uma versão para cada resultado.
+
+### 44.5 Exemplo resolvido: escopo do projeto final (sintético)
+
+*Título:* Telemetria autenticada segura diante de reinícios para RTUs legadas. *Necessidade:* N2/N3 do TMRP. *Entregas:* software do gateway (biblioteca padrão do Python), arcabouço de bancada, campanha de injeção de falhas, procedimento de rotação de chaves, trabalho de conclusão. *Fora do escopo:* hardware real das RTUs; rede da operadora. *Restrições:* 12 semanas; dados sintéticos. *Aceitação:* R1, R2 (incluindo reinícios) e R7 verificados na bancada; zero falhas silenciosas numa campanha com semente de 10.000 mensagens em sete classes de falha; rotação de chaves sem perda de telemetria demonstrada. Cada critério de aceitação corresponde a um requisito ou a uma demonstração, para que a revisão crítica de projeto possa conferi-los um a um.
+
+### 44.6 Atividade prática
+
+Escreva o escopo e o plano do seu projeto final e realize uma revisão preliminar de projeto com seu supervisor e um colega. Baseie seu escopo no modelo de uma página: necessidade, partes interessadas, entregas, itens fora do escopo, restrições e critérios de aceitação. Depois prepare um plano curto, com marcos e um registro de riscos. Na revisão, peça ao supervisor e ao colega que contestem sobretudo os critérios de aceitação, porque um critério que não pode ser testado vai causar problemas na revisão crítica de projeto. Registre as constatações deles e suas respostas.
+
+### 44.7 Erros comuns e limites
+
+- Escopos amplos demais ("proteger a concessionária").
+- Nenhum critério de aceitação.
+- Verificação planejada por último.
+- Ambientes não reprodutíveis.
+
+O rascunho de escopo do EX087 mostra os dois primeiros erros: proteger concessionárias de água com um sistema de IA não tem fronteira nem critérios de aceitação. O escopo do projeto final do TMRP os evita nomeando um gateway, três requisitos e uma campanha medida. Seu plano de verificação foi escrito junto com o escopo, e seu ambiente usa apenas a biblioteca padrão, com execuções com semente, de modo que cada resultado pode ser reproduzido. Seus marcos têm datas.
+
+### Exercícios — capítulo 44
+
+**EX087 — Crítica de escopo.** *Objetivo:* estreitar um escopo. *Entradas:* rascunho de escopo "Construir um sistema de IA para proteger concessionárias de água contra ciberataques". *Passos:* liste quatro problemas e reescreva o escopo em uma página. *Evidência esperada:* crítica e reescrita. *Rubrica:* 3 = problemas (sem limites, sem requisitos, sem dados, sem aceitação) e uma reescrita viável e verificável; 2 = reescrita vaga; 1 = apenas a crítica; 0 = nada.
+
+**EX088 — Registro de riscos.** *Objetivo:* planejar para os riscos do projeto. *Entradas:* §44.5. *Passos:* escreva cinco riscos do projeto com probabilidade, impacto, mitigação e gatilho. *Evidência esperada:* tabela. *Rubrica:* 3 = riscos realistas (aumento descontrolado do escopo, projeto da segurança diante de reinícios mais difícil do que o esperado, fidelidade da bancada, tempo, disponibilidade do supervisor) com gatilhos concretos; 2 = sem gatilhos; 1 = genérico; 0 = nada.
+
+### Síntese do capítulo
+
+Um projeto final é um sistema com escopo definido, construído e verificado. Defina a necessidade, as entregas, as restrições e os critérios de aceitação; planeje marcos, riscos e verificação desde o início; e torne o ambiente reprodutível para que cada resultado possa ser rastreado e executado de novo.
+
+<!-- cyberabc:chapter-navigation:start ch-44 -->
+### Continue estudando — capítulo 44 de 50
+
+[← Capítulo 43](#ch-43) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 45 →](#ch-45)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-45"></a>
+
+## Capítulo 45 — Revisão independente de projeto
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) conduzir uma revisão técnica independente do projeto de outra equipe usando critérios estruturados; (2) escrever constatações específicas, evidenciadas e acionáveis; (3) classificar as constatações por gravidade e recomendar encaminhamentos; e (4) receber uma revisão do seu próprio projeto e respondê-la. Ele aplica o rigor ao estilo de Fagan (Capítulo 14) a projetos inteiros e prepara o Projeto final II.
+
+### 45.1 Independência e propósito
+
+Um revisor independente não trabalhou no projeto e não se reporta a seus autores. A independência pega erros que os autores não conseguem ver — pressupostos compartilhados, pontos cegos, verificação otimista. O propósito é melhorar o projeto e a decisão sobre ele, e não marcar pontos. Para o TMRP, o revisor do dossiê do projeto final é alguém que não trabalhou no gateway e não se reporta a seus autores. Essa independência é a razão pela qual o revisor percebeu que o caso de garantia citava o T3 como aprovado enquanto a matriz ainda o registrava como reprovado, uma inconsistência pela qual os autores tinham passado muitas vezes sem notar.
+
+### 45.2 Critérios de revisão
+
+Revise contra: os requisitos (completos, verificáveis, rastreados); a arquitetura (orientada pelas consequências, comportamento diante de falhas e ataques analisado); os controles (especificados com desempenho, camadas independentes); as análises (pressupostos declarados, números consistentes); a verificação (o plano cobre os requisitos, reprovações tratadas com honestidade); as operações (procedimentos, treinamento, recuperação); a manutenibilidade; e o caso de garantia (alegações apoiadas, derrotadores declarados). Cada critério corresponde a um capítulo deste livro: requisitos ao Capítulo 21, arquitetura ao Capítulo 26, controles ao Capítulo 27, verificação aos capítulos 30 e 40, operações ao Capítulo 37 e o caso de garantia ao Capítulo 35. Os revisores do dossiê do TMRP usaram essa lista como checklist.
+
+### 45.3 Escrevendo as constatações
+
+Uma constatação declara: o que foi observado (com uma referência ao documento ou à evidência), por que importa (consequência), o critério em que falha e uma recomendação. Gravidade: **crítica** (a alegação não pode ser apoiada, ou há risco à segurança operacional), **maior** (lacuna significativa que exige mudança antes da aprovação), **menor** (melhoria), **observação** (nenhuma mudança exigida). Evite constatações vagas ("a segurança parece fraca") e o projeto pelo revisor (prescrever sua solução favorita quando várias serviriam). As constatações do TMRP no exemplo resolvido abaixo seguem essa forma. A F4, sobre a fração da bateria, é menor porque a alegação sobrevive com uma fonte acrescentada.
+
+### 45.4 Respondendo à revisão
+
+Os autores respondem a cada constatação: aceitar (com mudança), rejeitar (com raciocínio e evidências) ou adiar (com dono e data). O revisor confere as respostas e encerra ou escalona as constatações. Divergências que não podem ser resolvidas vão para o dono da decisão, com as duas posições registradas. Para o TMRP, os autores aceitaram a F2 e acrescentaram o alarme de estação inativa, e aceitaram a F3 relatando R6 como não atendido e orçando opções no ADR-015. Cada resposta nomeou um dono, e o revisor conferiu a campanha executada de novo antes de encerrar a F2.
+
+### 45.5 Exemplo resolvido: constatações sobre o dossiê do TMRP (sintético)
+
+- **F1 (crítica):** a subalegação C2 do caso de garantia cita o T3 como aprovado, mas a matriz de rastreabilidade (Laboratório 14) registra o T3 como reprovado, e o novo teste na v2 não está registrado. *Recomendação:* registrar as evidências do novo teste ou rebaixar a alegação.
+- **F2 (maior):** o receptor não alarma diante de dados ausentes (descartes silenciosos no Laboratório 15); R7 não pode ser alegado para eventos de perda de dados. *Recomendação:* acrescentar o alarme de estação inativa e executar de novo a campanha.
+- **F3 (maior):** o ensaio de restauração (Capítulo 47) mostra 12 h contra as 8 h de R6; o dossiê declara R6 como atendido. *Recomendação:* relatar R6 como não atendido e apresentar opções.
+- **F4 (menor):** o dimensionamento das baterias usa uma fração utilizável de 0,6 sem fonte; cite os dados do fabricante das baterias.
+- **F5 (observação):** a avaliação ponderada dos conceitos (§25.4) é sensível ao peso da operabilidade; a decisão continua defensável.
+
+### 45.6 Atividade prática
+
+Troque dossiês de projeto final com outro estudante, revise segundo os critérios da §45.2 e escreva pelo menos seis constatações com gravidades. Escolha um revisor que não tenha ajudado no seu projeto. Para cada constatação, inclua a observação com sua referência, a consequência, o critério em que falha e uma recomendação. Use os quatro níveis de gravidade com honestidade. Depois troquem de papéis e responda às constatações sobre seu próprio dossiê com aceitar, rejeitar ou adiar, dando evidências para cada rejeição. Guarde os dois registros no seu dossiê. Atenha-se às evidências.
+
+### 45.7 Erros comuns e limites
+
+- Revisões feitas por pessoas que ajudaram no projeto.
+- Constatações vagas ou sem evidências.
+- Inflação ou deflação da gravidade.
+- Autores que rejeitam constatações sem evidências.
+
+A revisão do TMRP evitou esses erros: o revisor era independente, cada constatação citava um documento, as gravidades correspondiam às consequências, e as respostas dos autores eram apoiadas em evidências e conferidas antes do encerramento. A F5 foi mantida como observação, sem ser inflada. A F1 foi classificada como crítica porque a alegação não podia ser apoiada tal como escrita, e não porque o erro fosse constrangedor, e os autores não rejeitaram nenhuma constatação sem evidências que apoiassem a rejeição.
+
+### Exercícios — capítulo 45
+
+**EX089 — Reescreva constatações fracas.** *Objetivo:* escrever constatações acionáveis. *Entradas:* "a gestão de chaves não está ótima"; "os testes parecem incompletos"; "eu usaria OPC UA no lugar". *Passos:* reescreva cada uma como uma constatação adequada ou explique por que deveria ser retirada. *Evidência esperada:* três reescritas. *Rubrica:* 3 = observação específica, consequência, critério, recomendação; a terceira retirada ou reformulada como preocupação baseada em requisitos; 2 = uma vaga; 1 = mera troca de palavras; 0 = nada.
+
+**EX090 — Responda à F2 e à F3.** *Objetivo:* responder à revisão. *Entradas:* §45.5. *Passos:* escreva as respostas dos autores à F2 e à F3, com encaminhamentos, mudanças, donos e datas. *Evidência esperada:* duas respostas. *Rubrica:* 3 = F2 aceita com mudança de projeto e novo teste, F3 aceita com relato honesto e opções (paralelizar a recuperação, imagens pré-construídas, revisar o requisito com acordo das partes interessadas); 2 = defensiva; 1 = rejeita; 0 = nada.
+
+### Síntese do capítulo
+
+A revisão independente encontra o que os autores não conseguem ver. Revise contra critérios explícitos, escreva constatações específicas, evidenciadas e acionáveis, com gravidades honestas, e responda a cada constatação com aceitar, rejeitar ou adiar — registrado e conferido.
+
+<!-- cyberabc:chapter-navigation:start ch-45 -->
+### Continue estudando — capítulo 45 de 50
+
+[← Capítulo 44](#ch-44) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 46 →](#ch-46)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-46"></a>
+
+## Capítulo 46 — Projeto final de engenharia II
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) concluir a implementação do artefato do projeto final; (2) executar o plano de verificação completo e registrar os resultados; (3) encerrar as constatações da revisão; e (4) ser aprovado numa revisão crítica de projeto com evidências. Ele continua o Capítulo 44 depois da revisão independente e prepara o ensaio de falha e recuperação (Capítulo 47).
+
+### 46.1 Concluindo a construção
+
+Congele o escopo: novas funcionalidades agora ameaçam a verificação. Encerre primeiro as constatações da revisão que exigem mudanças de projeto. Mantenha o ramo principal sempre aprovado em seus testes; marque com uma tag a versão que entra na verificação final. Para o projeto final do TMRP, o escopo foi congelado depois da revisão independente. O alarme de estação inativa da F2 foi a mudança de projeto feita antes que a versão marcada entrasse na verificação final; todas as ideias posteriores foram para uma lista de trabalhos futuros. A correção do reinício veio depois, como uma correção encontrada pela própria verificação, que é o único tipo de mudança permitido depois do congelamento. O ramo principal permaneceu verde.
+
+### 46.2 Executando a verificação
+
+Execute o plano de verificação completo contra a versão marcada: testes unitários, de integração, baseados em propriedades e de injeção de falhas (capítulos 30 e 40). Registre cada resultado com a versão, a semente e o ambiente. Para qualquer reprovação: registre, analise, corrija, execute de novo, registre de novo. Não sobrescreva os resultados anteriores; o histórico é evidência. Para o projeto final do TMRP, a falha do receptor em rejeitar repetições depois de um reinício foi registrada, corrigida com a persistência do último contador por estação e testada de novo, com os dois resultados mantidos. A versão marcada foi a testada. Sua semente foi registrada.
+
+### 46.3 Revisão crítica de projeto
+
+Na revisão crítica de projeto, a banca confere: requisitos atendidos, com evidências; constatações da revisão encerradas ou encaminhadas; riscos residuais declarados e com dono; operações e manutenção preparadas; e prontidão para o ensaio. Leve a matriz de rastreabilidade, os resultados da verificação, o registro de constatações e o caso de garantia. Para o TMRP, a banca viu o resumo da verificação abaixo. Ele inclui a falha no reinício e sua correção, o alarme de estação inativa acrescentado depois da F2 e a demonstração da rotação de chaves. Com a F1 a F3 encerradas ou encaminhadas e R6 relatado com honestidade, a banca pôde tomar uma decisão explícita de prontidão para o ensaio, em vez de uma suposição.
+
+### 46.4 Exemplo resolvido: resumo da verificação do projeto final (sintético)
+
+| Requisito | Testes | Resultado | Notas |
+|---|---|---|---|
+| R1 | T1, T2, campanha (classe corrupção) | Aprovado | 0 falhas silenciosas em 10.000 mensagens |
+| R2 | T2, testes de reinício (dos dois lados), campanha (repetição, reordenação, reinício) | Aprovado após correção | O reinício do receptor inicialmente aceitava repetições; corrigido com a persistência do último contador por estação; testado de novo |
+| R7 | T5, teste do alarme de estação inativa | Aprovado após correção | Detecção de descartes acrescentada depois da F2 |
+| Rotação de chaves | Demonstração | Aprovado | Janela de sobreposição de 10 min com as duas chaves aceitas, depois a chave antiga revogada |
+
+A falha no reinício foi encontrada pelo modelo de falhas estendido do EX080 — um retorno direto do investimento no laboratório de verificação.
+
+### 46.5 Atividade prática
+
+Execute seu plano de verificação completo e produza a tabela-resumo com links para os resultados brutos. Para cada requisito, informe os testes, o resultado e qualquer correção, como no resumo do TMRP. Mantenha os resultados reprovados com suas datas e as correções que se seguiram, e ligue cada linha aos arquivos de resultados brutos, com suas sementes e versões. Se um teste não foi executado, diga isso na tabela em vez de deixá-la em branco. A tabela deve permitir a um revisor rastrear qualquer alegação até um arquivo num único passo.
+
+### 46.6 Erros comuns e limites
+
+- Acrescentar funcionalidades durante a verificação.
+- Sobrescrever resultados reprovados com aprovações posteriores.
+- Entrar na revisão crítica de projeto com constatações críticas em aberto.
+
+O projeto final do TMRP evitou esses erros congelando o escopo depois da revisão, mantendo a falha no reinício no registro ao lado de sua aprovação posterior e encerrando a F1 a F3 antes da revisão crítica de projeto. Os resultados reprovados permaneceram no registro com as correções que se seguiram, para que os revisores pudessem ver como cada aprovação foi conquistada. Nenhuma funcionalidade foi acrescentada durante a verificação. As constatações em aberto foram encerradas primeiro.
+
+### Exercícios — capítulo 46
+
+**EX091 — Projeto da rotação.** *Objetivo:* projetar a rotação de chaves sem perdas. *Entradas:* §46.4. *Passos:* descreva passo a passo o protocolo de rotação, incluindo como o receptor sabe qual chave tentar, a janela de sobreposição, o tratamento de falhas e a revogação. *Evidência esperada:* procedimento. *Rubrica:* 3 = ID da chave no cabeçalho autenticado, receptor aceita as duas chaves durante a janela, os contadores continuam, reversão se a nova chave falhar, chave antiga revogada e destruída; 2 = sem ID da chave; 1 = "trocar a chave"; 0 = nada.
+
+**EX092 — Decisão de prontidão.** *Objetivo:* julgar a prontidão. *Entradas:* todos os requisitos aprovados, exceto uma constatação menor sobre a documentação e uma constatação maior em aberto de que o limiar do alarme de estação inativa (60 s) produz dois alarmes falsos por dia durante o congestionamento da LTE. *Passos:* recomende prosseguir / prosseguir com condições / não prosseguir com o ensaio, com o raciocínio. *Evidência esperada:* recomendação. *Rubrica:* 3 = prosseguir com condições (estudo de ajuste do limiar durante o ensaio, operadores informados), raciocínio sobre a consequência dos alarmes falsos versus uma perda de dados não detectada; 2 = sem condições; 1 = sem raciocínio; 0 = nada.
+
+### Síntese do capítulo
+
+Congele o escopo, encerre as constatações, verifique por completo a versão marcada e mantenha o histórico de reprovações como evidência. Entre na revisão crítica de projeto com rastreabilidade, resultados, constatações e o caso de garantia, e saia dela com uma decisão explícita de prontidão.
+
+<!-- cyberabc:chapter-navigation:start ch-46 -->
+### Continue estudando — capítulo 46 de 50
+
+[← Capítulo 45](#ch-45) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 47 →](#ch-47)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-47"></a>
+
+## Capítulo 47 — Ensaio de falha e recuperação
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) projetar um ensaio controlado de falha e recuperação, com fronteiras de segurança; (2) calcular caminhos críticos e comparar os tempos de recuperação planejados e medidos; (3) observar e registrar o desempenho humano e técnico durante o ensaio; e (4) transformar os resultados do ensaio em situação dos requisitos e mudanças de projeto. Ele valida os requisitos de recuperação (R6) e prepara o dossiê de evidências (Capítulo 48).
+
+### 47.1 Por que ensaiar a recuperação
+
+Uma capacidade de recuperação que não foi exercitada é uma esperança. Backups que não foram restaurados podem estar incompletos; procedimentos que não foram seguidos podem estar errados; tempos que não foram medidos são palpites. A [NIST SP 800-34 Rev. 1](https://csrc.nist.gov/pubs/sp/800/34/r1/upd1/final) trata do planejamento de contingência, incluindo testes, treinamento e exercícios. O próprio ensaio do TMRP mostrou por quê: a meta de restauração de oito horas de R6 parecia razoável até que o caminho crítico fosse medido. Medi-lo era o objetivo.
+
+### 47.2 Projetando o ensaio
+
+Defina o cenário (p. ex., servidores SCADA declarados comprometidos às 02:00), os objetivos (restaurar a operação remota a partir dos backups off-line; manter o abastecimento em modo local o tempo todo), as fronteiras de segurança (ensaio no ambiente de teste ou numa janela planejada com a operação local guarnecida; critérios de interrupção), os observadores e as medições (horário de cada tarefa, desvios do procedimento, decisões). O ensaio do TMRP usou o cenário de servidores SCADA declarados comprometidos, com o abastecimento mantido em modo local o tempo todo. Os observadores registraram o tempo de cada tarefa e todo desvio do procedimento.
+
+### 47.3 Caminho crítico
+
+As tarefas de recuperação têm durações e dependências. O **caminho crítico** é a cadeia mais longa de tarefas dependentes; ele define o tempo mínimo de recuperação. As tarefas fora do caminho crítico têm **folga**. Encurtar a recuperação significa encurtar as tarefas do caminho crítico ou quebrar dependências — e não acelerar tarefas que têm folga. No ensaio do TMRP, a troca de chaves das RTUs tinha seis horas de folga. Acelerá-la não teria mudado nada. Apenas a geração de imagens, a reconstrução e a restauração da configuração definiram o resultado de doze horas, e é por isso que toda opção para atender a R6 visa uma dessas três tarefas, como imagens de reserva pré-construídas ou a geração de imagens em hardware de reserva.
+
+### 47.4 Exemplo resolvido: ensaio de recuperação do TMRP (sintético)
+
+O plano do ensaio (Laboratório 17): isolar (1 h); estabelecer a operação manual (1 h); geração de imagens forenses dos servidores SCADA (3 h); reconstruir o SCADA a partir de mídia off-line (4 h); restaurar a configuração (2 h); trocar as chaves das RTUs (3 h, em paralelo); verificar os setpoints (1 h); retomar o controle remoto (1 h). O caminho crítico passa pela geração de imagens forenses, pela reconstrução e pela restauração da configuração: o controle remoto volta em 12 h, contra as 8 h de R6. A troca de chaves tem 6 h de folga — acelerá-la não leva a nada. Opções para atender às 8 h: imagens de SCADA de reserva pré-construídas (reconstrução de 4 h → 1 h); geração de imagens em paralelo com a reconstrução, em hardware de reserva (remove 3 h do caminho); ou acordo com as partes interessadas para que R6 seja de 12 h, porque o abastecimento é mantido em modo local o tempo todo. O ensaio também mediu que a operação manual foi estabelecida em 50 minutos, atendendo ao requisito de 1 h.
+
+### 47.5 Atividade prática: Laboratório 17
+
+```python
+# Lab 17 - recovery critical path versus the restoration target (synthetic TMRP trial plan, offline)
+T = {  # task: (hours, prerequisites)
+    "isolate": (1, []), "manual_ops": (1, ["isolate"]), "forensic_image": (3, ["isolate"]),
+    "rebuild_scada": (4, ["forensic_image"]), "restore_config": (2, ["rebuild_scada"]),
+    "rekey_rtus": (3, ["isolate"]), "verify_setpoints": (1, ["restore_config", "rekey_rtus"]),
+    "resume_remote": (1, ["verify_setpoints"])}
+ef, prev = {}, {}
+def finish(t):
+    if t not in ef:
+        d, ps = T[t]; start = max((finish(p) for p in ps), default=0)
+        prev[t] = max(ps, key=finish) if ps else None; ef[t] = start + d
+    return ef[t]
+end = finish("resume_remote"); path, n = [], "resume_remote"
+while n: path.append(n); n = prev[n]
+print("restore remote control at", end, "h; critical path:", " -> ".join(reversed(path)))
+print("slack of rekey_rtus:", finish("restore_config") - finish("rekey_rtus"), "h; target 8 h met:", end <= 8)
+```
+
+Saída esperada:
+
+```text
+restore remote control at 12 h; critical path: isolate -> forensic_image -> rebuild_scada -> restore_config -> verify_setpoints -> resume_remote
+slack of rekey_rtus: 6 h; target 8 h met: False
+```
+
+A saída confirma o exemplo resolvido: o controle remoto volta depois de doze horas porque a geração de imagens, a reconstrução e a restauração da configuração correm em série, e a troca de chaves termina seis horas antes de ser necessária. Mude o plano como pede o EX093 e observe o caminho crítico passar para outra cadeia. O laboratório não inclui a operação manual no caminho até o controle remoto, porque ela corre em paralelo; o ensaio a mediu separadamente, em cinquenta minutos, contra o requisito de uma hora. Guarde as duas saídas.
+
+### 47.6 Erros comuns e limites
+
+- Recuperação testada apenas no papel.
+- Ensaios sem critérios de interrupção nem pessoal de segurança.
+- Melhorar tarefas que têm folga.
+- Resultados de ensaio relatados como aprovações quando o requisito não foi atendido.
+- Preservação forense pulada para ganhar tempo, sem uma decisão.
+
+O ensaio do TMRP evitou o quarto erro relatando R6 como não atendido em doze horas, e manteve a geração de imagens forenses em vez de pulá-la sem uma decisão. Os critérios de interrupção e o pessoal local foram definidos antes do início do ensaio, e as opções para atender a R6 visam apenas tarefas do caminho crítico.
+
+### Exercícios — capítulo 47
+
+**EX093 — Encurte o caminho.** *Objetivo:* usar o caminho crítico. *Entradas:* Laboratório 17. *Passos:* (1) faça `rebuild_scada` depender apenas de `isolate` (hardware de reserva, geração de imagens em paralelo) e recalcule; (2) além disso, reduza `rebuild_scada` a 1 h (imagem de reserva) e recalcule; relate o novo caminho crítico a cada vez. *Evidência esperada:* saídas. *Rubrica:* 3 = resultados corretos (execute o código) e a observação de que o caminho crítico passa para outra cadeia; 2 = números certos, caminho não discutido; 1 = não executado; 0 = nada.
+
+**EX094 — Forense versus velocidade.** *Objetivo:* fazer uma escolha documentada. *Entradas:* pular a geração de imagens forenses encurta a recuperação. *Passos:* escreva uma nota de decisão para a diretora de operações: opções, consequências para a investigação, aspectos legais/regulatórios e a prevenção futura, recomendação. *Evidência esperada:* uma página. *Rubrica:* 3 = geração de imagens em paralelo em hardware de reserva como preferida, riscos de perder evidências explicados, dono da decisão; 2 = recomenda pular sem consequências; 1 = vago; 0 = nada.
+
+### Síntese do capítulo
+
+A recuperação precisa ser ensaiada para merecer confiança. Projete ensaios com fronteiras de segurança e medições, encontre o caminho crítico, melhore apenas o que está nele e relate a situação do requisito que o ensaio de fato mostra — depois mude o projeto ou o requisito com as partes interessadas.
+
+<!-- cyberabc:chapter-navigation:start ch-47 -->
+### Continue estudando — capítulo 47 de 50
+
+[← Capítulo 46](#ch-46) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 48 (inglês) →](../../en/book/MANUSCRIPT.md#ch-48)
 
 Os próximos capítulos ainda estão apenas na edição em inglês.
 <!-- cyberabc:chapter-navigation:end -->
@@ -3263,7 +3532,7 @@ Os próximos capítulos ainda estão apenas na edição em inglês.
 
 ## Resoluções e notas de avaliação
 
-Cada resolução mostra uma resposta defensável. Os resultados numéricos foram produzidos executando os laboratórios e os scripts curtos descritos, com Python 3 e as sementes indicadas; seus últimos dígitos podem diferir se você mudar a ordem dos sorteios aleatórios. Nos exercícios de projeto, a rubrica do capítulo importa mais do que coincidir com a redação abaixo. Lowmarsh Regional Water Authority, St Brenna's Hospital, o TMRP e todos os números são sintéticos. Esta edição parcial traz as resoluções de EX001–EX086; as de EX087–EX100 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
+Cada resolução mostra uma resposta defensável. Os resultados numéricos foram produzidos executando os laboratórios e os scripts curtos descritos, com Python 3 e as sementes indicadas; seus últimos dígitos podem diferir se você mudar a ordem dos sorteios aleatórios. Nos exercícios de projeto, a rubrica do capítulo importa mais do que coincidir com a redação abaixo. Lowmarsh Regional Water Authority, St Brenna's Hospital, o TMRP e todos os números são sintéticos. Esta edição parcial traz as resoluções de EX001–EX094; as de EX095–EX100 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
 
 ### Capítulo 1
 
@@ -3522,6 +3791,30 @@ Cada resolução mostra uma resposta defensável. Os resultados numéricos foram
 **EX085.** Avaliado pela rubrica; o acordo precisa nomear os supervisores, o escopo, o método de acesso, a confidencialidade, a integração de segurança, a aprovação da publicação, o caminho para as constatações incidentais e uma declaração explícita de que o estudante não testará nem explorará sistemas fora das tarefas acordadas.
 
 **EX086.** Observação: os operadores registram as mudanças de setpoint num caderno de papel, além de no SCADA. Conexão: Capítulo 13 (proveniência) e Capítulo 37 (operações). Diferença: a prática duplica o log eletrônico; localmente racional, porque o caderno sobrevive às quedas do SCADA, apoia a passagem de turno e é confiável. Pergunta: os dois registros alguma vez divergem, e o caderno poderia servir como verificação independente de integridade?
+
+### Capítulo 44
+
+**EX087.** Problemas: escopo sem limites ("concessionárias de água"), nenhum requisito nem critério de aceitação, nenhuma fonte de dados, tecnologia escolhida antes do problema. Reescrita: p. ex., "Um detector baseado em resíduos para dados de nível falsos num único reservatório sintético: requisitos, estudo de simulação com ruído com semente, critérios de aceitação < 1 alarme falso/mês e detecção de rampas de 0,05 m/h em até 2 h, 12 semanas, apenas dados sintéticos."
+
+**EX088.** Aumento descontrolado do escopo (probabilidade média, impacto alto; mitigação: congelamento do escopo na CDR; gatilho: novos pedidos de funcionalidades depois da semana 6); segurança diante de reinícios mais difícil do que o planejado (M/A; prova de conceito na semana 2; gatilho: projeto não estável até a semana 4); fidelidade da bancada insuficiente (M/M; revisão com o supervisor; gatilho: constatação de um revisor); tempo (A/A; semana de folga; gatilho: atraso de um marco > 1 semana); disponibilidade do supervisor (B/M; revisões agendadas; gatilho: revisão perdida).
+
+### Capítulo 45
+
+**EX089.** (1) "As chaves das 42 estações são geradas no laptop de um engenheiro (procedimento de GC §3.2); o comprometimento desse laptop expõe a frota; falha na intenção de R1; recomenda-se a geração no HSM ou no elemento seguro do gateway." (2) "O comportamento do receptor diante de reinícios não é coberto por nenhum teste (plano de verificação, tabela 4); R2 exige a rejeição de repetições após o reinício; recomendam-se testes conforme o EX060." (3) Retirar como preferência de projeto, ou reformular: "o projeto não declara por que o protocolo escolhido atende a R1 e R7; acrescentar a justificativa."
+
+**EX090.** F2: aceita — alarme de estação inativa em 60 s e registro de lacunas de contador acrescentados; campanha executada de novo com a semente 40; dono: líder do gateway; data: duas semanas. F3: aceita — dossiê corrigido para "R6 não atendido (12 h)"; opções orçadas: geração paralela de imagens em hardware de reserva (9 h), mais imagem de SCADA de reserva (6 h); revisão pelas partes interessadas para decidir entre mudança de projeto e requisito revisado; dono: gerente do TMRP; data: próxima reunião do comitê diretor.
+
+### Capítulo 46
+
+**EX091.** Gere a nova chave no HSM; distribua-a ao gateway com o ID de chave k+1; por 10 minutos o receptor aceita quadros marcados com qualquer dos dois IDs de chave (o ID da chave fica dentro do cabeçalho autenticado); o emissor passa para k+1 e os contadores continuam; se os quadros com k+1 falharem, reverta para k; depois da janela, o receptor rejeita k, e k é destruída nos dois lugares; registre cada passo em log.
+
+**EX092.** Prosseguir com condições: iniciar o ensaio com o limiar de 60 s, monitorado por um engenheiro; coletar dados sobre os alarmes falsos de inatividade durante o congestionamento; ajustar o limiar (p. ex., 90 s para estações não críticas) até uma data declarada; informar aos operadores que alarmes de inatividade durante o congestionamento são esperados. A consequência de não detectar uma perda real de dados supera dois alarmes falsos por dia por um período limitado.
+
+### Capítulo 47
+
+**EX093.** (1) Com a reconstrução dependendo apenas do isolamento: controle remoto em 9 h; caminho crítico isolar → reconstruir → restaurar a configuração → verificar → retomar; a geração de imagens sai do caminho. (2) Com uma reconstrução de 1 h a partir de uma imagem de reserva: 6 h; a cadeia da reconstrução e a cadeia da troca de chaves (isolar → trocar chaves → verificar → retomar) empatam agora em 6 h, então a troca de chaves passou a ser crítica e ganhos adicionais exigem encurtá-la também.
+
+**EX094.** Opções: (a) pular a geração de imagens (mais rápida; evidências perdidas; a causa raiz e a persistência do atacante podem passar despercebidas; possíveis consequências regulatórias ou legais); (b) gerar as imagens primeiro (mais lenta); (c) gerar as imagens em paralelo usando hardware de reserva e reconstruir em hardware limpo (quase a mais rápida; evidências preservadas). Recomendação: (c), com uma decisão pré-aprovada de que a diretora de operações pode autorizar (a) apenas se o abastecimento estiver em risco. Dono: diretora de operações.
 
 <a id="glossary"></a>
 
