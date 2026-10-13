@@ -2883,7 +2883,7 @@ You will (1) run the secured platform day to day; (2) handle alerts, exceptions 
 
 The on-call engineer reviews overnight alerts, the exception expiry list and the drift report. Most days take under 30 minutes.
 
-The order is deliberate. Alerts come first because one might describe something still happening. Expiries come next, since an exception that lapses unnoticed can block a deployment or quietly be renewed without review. The drift report comes last: it lists resources whose live settings differ from the declared configuration, such as a namespace whose default-deny policy was removed by hand. A day that runs much longer than half an hour is noted, because it usually points at a noisy rule.
+The order is deliberate. Alerts come first because one might describe something still happening. Expiries come next, since an exception that lapses unnoticed can block a deployment or quietly be renewed without review. The drift report comes last: it lists resources whose live settings differ from the declared configuration, such as a CPU limit raised by hand during a busy evening. A day that runs much longer than half an hour is noted, because it usually points at a noisy rule.
 
 ### 37.2 Upgrades
 
@@ -3037,29 +3037,43 @@ You will (1) keep the security platform maintainable; (2) reduce custom code; (3
 
 Built-in Pod Security admission is used instead of custom rules where possible; custom policies cover only what the standard does not. Less custom code means less to maintain.
 
+The built-in admission controller is maintained by the Kubernetes project, documented publicly and tested against each release, so Solent inherits that work for free. A custom rule doing the same job has to be written, tested, upgraded and explained by Solent's own engineers. Elena's test for a new custom policy is simple: name the requirement the standard profiles cannot express. Requiring signed images from Solent's own pipeline passes that test; blocking privileged pods does not, since the Restricted profile already does it.
+
 ### 39.2 Policy as code quality
 
 Policies follow a style guide, have tests and comments explaining intent. Dead rules are removed.
+
+The style guide fixes naming, file layout and how denial messages are worded, so that any engineer can read any policy. Each policy has at least one test that must be admitted and one that must be rejected, which stops a rule from silently matching nothing. Comments state the requirement or threat the rule serves. A rule that never fires might be dead or might be guarding something rare, so it is only removed after its owner confirms the need has gone.
 
 ### 39.3 Documentation
 
 Decision records, runbooks and "why" notes live with the code. A new engineer can understand the platform in a week.
 
+Keeping documents beside the code means a change to a policy and the change to its explanation arrive in the same pull request, where a reviewer can see both. Documents stored elsewhere drift out of date quietly. The one-week figure is tested rather than assumed: the onboarding exercise gives a newcomer a real task and only the written material, and every question they have to ask a colleague marks a gap in the documents.
+
 ### 39.4 Dependencies
 
 The policy engine, GitOps controller and signing tools have upgrade schedules and owners, like any dependency.
+
+These three tools sit in the deployment path, so an outdated version can block releases or carry a known flaw into the admission decision itself. Each has a named owner who tracks its release notes and security advisories and plans upgrades through staging, using the same verification suite as cluster upgrades. Versions are pinned in the GitOps repository, so the record shows which version enforced policy on any given day.
 
 ### 39.5 Staff changes
 
 Two engineers know each component; knowledge is shared through pairing and rotation.
 
+With a single expert, a holiday or a resignation can leave a component nobody dares to touch, and changes then pile up or are made carelessly. Pairing on real changes spreads understanding faster than reading alone, and rotating on-call duty ensures each engineer handles alerts from every part of the platform. Elena keeps a small matrix of components and who can work on each, and a column with only one name is treated as a risk to fix.
+
 ### 39.6 Technology change
 
 If Solent changes cloud provider or Kubernetes distribution, controls defined in standard terms (Pod Security Standards, network policies) move more easily than provider-specific ones.
 
+Provider-specific controls, such as a particular cloud's identity bindings or its storage public-access block, would need rewriting on a new platform, so Elena lists them separately with what each protects. The list turns a vague migration worry into a known amount of work. The standard network policy and pod security definitions would move with only small changes, which is one more reason to prefer them when they meet the requirement equally well.
+
 ### 39.7 Technical debt
 
 A list of known shortcuts with dates for removal is reviewed quarterly.
+
+Each entry records the shortcut, why it was taken, the risk it carries and the date by which it should be gone. A shortcut without a date tends to become permanent. The quarterly review either removes items, extends them with a fresh reason, or raises them as risks if they have become dangerous. The list is visible to everyone, so a newcomer who finds something odd can check whether it is known before assuming it is a mistake.
 
 ### Retiring controls
 
@@ -3105,6 +3119,8 @@ You will (1) verify declared versus live configuration across the estate; (2) de
 
 Drift is any difference between the declared configuration in version control and what is live. It may be harmless (an autoscaler changed replicas) or serious (a network policy deleted).
 
+Drift appears in ordinary ways: a hand-run command during an incident, a console change to test something, an automated controller adjusting a value it owns, or a resource recreated without its policies. The declared state is the reference because it was reviewed and approved, while the live state shows only what happened to be applied. Comparing the two regularly shows where approved intent and reality have parted, and which differences matter.
+
 ### Lab — Lab — configuration drift
 
 ```python
@@ -3132,17 +3148,25 @@ DRIFT billing/netpol         desired default-deny  live None
 
 Three of six synthetic settings have drifted. meterhub/image runs digest bb22 instead of the declared aa11. billing/replicas is 4 instead of 2. billing/netpol is missing instead of default-deny. The missing network policy is serious and urgent; the image digest needs investigation (an unapproved image?); the replica count is likely the autoscaler and should be excluded from declared state.
 
+Ranking the three by urgency is the lab's real exercise. The policy comes first because its absence lets any pod reach billing now, the digest second because the running code may be unreviewed, and the replica count last.
+
 ### 40.3 Classification
 
 Security-relevant drift (policies, images, identities, privileges) alerts immediately; operational drift is reported weekly.
+
+The split follows impact. A missing network policy or an unapproved image changes what an attacker could do right now, so waiting a week would leave exposure open. A replica count or a resource limit changing affects cost and performance but rarely security. The categories are written down in advance with examples, so the person classifying a new drift does not have to decide under pressure which bucket it belongs in.
 
 ### 40.4 Response
 
 Serious drift is reverted by reconciliation and investigated: who changed it, why, and was anything exposed in the meantime?
 
+Reverting first limits exposure, but the investigation still matters, because the cause may recur. If the change came through an emergency path, the path needs fixing; if someone changed settings by hand to troubleshoot, the guidance needs updating. The question of exposure is answered from logs: for the missing network policy, Elena checks flow logs for connections that the policy would have blocked during the period it was absent.
+
 ### 40.5 Evidence
 
 Each drift event is recorded with timestamps, cause and resolution.
+
+A record holds the resource, the declared and live values, when the drift was detected, when it began if that can be established, the classification, the cause and the fix. Records support audits and show trends: repeated drift in one namespace suggests that its team lacks a safe way to make a change they need. Elena reviews the records quarterly and links each recurring cause to an improvement item, so repeated drift leads to a change in the process.
 
 ### Weekly drift report
 
@@ -3192,29 +3216,43 @@ You will (1) optimise the secured platform for cost, effort and risk together; (
 
 Elena reviews where time and money go: duplicate scanners checking the same images, alerts that never lead to action, idle node pools reserved for exceptions that ended.
 
+Waste matters for security as well as budget, because effort spent on duplicate work is effort not spent on real gaps, and noisy tools teach people to ignore output. Elena gathers pipeline timings, alert outcomes, cloud bills and the operational-load log, then lists every item that costs time or money without changing a decision. The list is a set of questions to investigate, not a removal plan: each item still needs evidence before anything is switched off.
+
 ### 41.2 Redundant controls
 
 Two image scanners ran in the pipeline with overlapping results. Comparing six months of findings shows one found everything the other did plus more; the weaker one is retired, saving pipeline time.
+
+The comparison matches findings by image digest and vulnerability identifier across both tools for the same builds. Overlap alone would not justify removal; what matters is that the remaining scanner missed nothing the other caught in six months of real images. The retired scanner's configuration is kept in the repository's history, and the decision record notes the comparison period, so the choice can be revisited if the remaining tool's coverage changes.
 
 ### 41.3 Noisy alerts
 
 Alerts are ranked by how often they led to action. Three alert rules with no action in six months are reviewed: two are tuned, one removed with the reason recorded.
 
+An alert that never leads to action either fires on harmless events or detects something nobody owns. Tuning narrows the two useful rules, for example by excluding a known batch job that triggered one of them nightly. The removed rule duplicated a detection that another rule already covered with better context. Each decision is recorded with the six months of data behind it, so a later reviewer can see the rule was not dropped simply because it was annoying.
+
 ### 41.4 Cost
 
 The dedicated node pool for privileged workloads now hosts only the node agent; it is right-sized to the smallest suitable machines.
 
+The pool was sized when several privileged workloads needed isolation; exceptions have since ended as their teams fixed the underlying needs. Keeping it separate still matters, because the node agent has broad host access and should not share nodes with ordinary services. Right-sizing keeps the isolation while cutting the cost. Elena checks the agent's resource use over a month before choosing the machine size, so it does not run short of memory under peak load.
+
 ### 41.5 Risk value
 
-Each improvement candidate is scored on risk reduced per engineer-day. Top items: automate key rotation records, add egress limits to two namespaces, shorten exception approval time.
+Each improvement candidate is scored on risk reduced per engineer-day. Top items: add fix hints to admission rejection messages, add egress limits to two namespaces, and test restoring the signing key from its backup.
+
+Scores are rough estimates agreed by two engineers, which is enough to rank items rather than to predict outcomes precisely. Fix hints in rejection messages help the developers who found rejections unclear in the survey, and cost little. Egress limits close paths that the threat analysis marked as open for data leaving those namespaces. The restore test checks that the signing key backup works, since losing that key would stop every deployment until a new trust chain was set up.
 
 ### 41.6 Guarding against over-optimisation
 
 Removing a control requires evidence it is redundant, not just inconvenient.
 
+Evidence means data showing that another control already covers the same risk, or that the risk itself has gone. A control that rarely fires may be working, since attackers and mistakes are uneven over time. The drift report is the example: it looked redundant because GitOps reverts drift, yet the data showed it catching security-relevant changes outside GitOps. The owner's sign-off adds a second check by someone who knows what the control was for.
+
 ### 41.7 Results
 
 Optimisation saves about 15% of platform security spending and four engineer-hours a week.
+
+The savings come mainly from the retired scanner, the right-sized node pool and fewer alerts to review. Elena reports the figures as estimates for the first year, with the method used to calculate them, so they can be checked at the next yearly review. She also states what did not change: the controls retained, detection results and the number of exceptions. Savings presented without that context could encourage removing controls next time.
 
 ### Sharing savings
 
