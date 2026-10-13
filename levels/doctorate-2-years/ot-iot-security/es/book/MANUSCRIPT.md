@@ -54,7 +54,7 @@ El vocabulario metodológico genérico (verificación frente a validación, núm
 ## Contenido
 
 1. [Integridad y métodos avanzados de investigación](#ch-01)
-2. [Seguridad de TO, IoT y sistemas ciberfísicos: frontera de la investigación](../../en/book/MANUSCRIPT.md#ch-02)
+2. [Seguridad de TO, IoT y sistemas ciberfísicos: frontera de la investigación](#ch-02)
 3. [Propuesta de contribución original](../../en/book/MANUSCRIPT.md#ch-03)
 4. [Replicación de la línea de base y piloto](../../en/book/MANUSCRIPT.md#ch-04)
 5. [Estudio principal y validación independiente](../../en/book/MANUSCRIPT.md#ch-05)
@@ -190,7 +190,90 @@ La investigación en TO estudia lazos de control cuya falla es física. Suba por
 
 ### Siga estudiando — capítulo 01 de 08
 
-[← Página del curso](../../README.md) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 02 (borrador) →](../../en/book/MANUSCRIPT.md#ch-02)
+[← Página del curso](../../README.md) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 02 (borrador) →](#ch-02)
+
+<a id="ch-02"></a>
+
+## Capítulo 2 — Seguridad de TO, IoT y sistemas ciberfísicos: frontera de la investigación
+
+### Resultados de aprendizaje y conexión
+
+Después de este capítulo usted podrá (1) organizar la literatura sobre seguridad de TO en familias de investigación, (2) leer las normas como hipótesis comprobables, (3) evaluar críticamente los artículos sobre detección frente a errores de evaluación conocidos, (4) usar los incidentes públicos solo al nivel en que sus analistas los publicaron y (5) enunciar una laguna falsable. Se apoya en la escalera de afirmaciones del capítulo 1 y alimenta la propuesta del capítulo 3.
+
+### 2.1 Por qué la frontera es difícil de ver
+
+La investigación en seguridad de TO está dispersa entre la ingeniería de control (detección de fallas, control resiliente), la seguridad informática (detección de intrusiones, análisis de protocolos), la ingeniería de seguridad física (análisis de peligros, seguridad funcional) y la práctica industrial (documentos técnicos de fabricantes, avisos gubernamentales). La misma idea aparece con nombres distintos: la *detección de fallas basada en residuos* de un ingeniero de control es la *detección de anomalías basada en la física* de un investigador de seguridad. Por eso, una búsqueda exploratoria debe usar sinónimos de cada comunidad y buscar tanto en bases de datos de ingeniería como en foros de seguridad.
+
+Mantenga una tabla de sinónimos con una columna por comunidad y una fila por idea, y actualícela a medida que el cribado revele términos nuevos. Busque en las bases de datos de ingeniería con el vocabulario de control y en los foros de seguridad con el vocabulario de seguridad; después combine los resultados y elimine los duplicados. Registre de qué comunidad procede cada estudio incluido, para que un lector pueda ver si el mapa está equilibrado o se inclina hacia una tradición.
+
+### 2.2 Familias de investigación
+
+**Arquitectura y segmentación.** El modelo de referencia Purdue, descrito en NIST SP 800-82 Rev. 3, organiza en capas la empresa (niveles 4–5), la gestión de operaciones (3), el control de supervisión (2), el control básico (1) y el proceso físico (0), con una DMZ industrial entre TI y TO. ISA/IEC 62443-3-2 replantea la segmentación como *zonas y conductos* con niveles de seguridad objetivo. Entre las preguntas de investigación están si los diseños de segmentación reducen realmente las rutas de ataque alcanzables y cómo el IIoT conectado a la nube erosiona el modelo por capas.
+
+**Seguridad de protocolos.** Los protocolos industriales clásicos, como Modbus, se diseñaron sin autenticación: la especificación del protocolo de aplicación Modbus define códigos de función y modelos de datos, pero ningún campo de seguridad. DNP3 añadió Secure Authentication; OPC UA incluye un modelo de seguridad. La investigación estudia la adopción, los fallos de implementación y el costo de incorporar seguridad a posteriori en redes deterministas.
+
+**Detección.** La detección basada en la red modela el tráfico; la detección basada en el proceso (basada en la física) modela la planta. Giraldo et al. revisaron la detección basada en la física y encontraron que las evaluaciones rara vez consideran a un adversario que conoce el detector; Urbina et al. propusieron medir cuánto puede desplazar el proceso un atacante *sigiloso* sin superar el umbral del detector, la idea del impacto en el momento de la detección del capítulo 1.
+
+**Coingeniería de seguridad física y ciberseguridad.** Los métodos de análisis de peligros (HAZOP, STPA) se están extendiendo a causas adversariales; IEC 62443 y las normas de seguridad funcional se están alineando. La investigación pregunta cómo una falla de ciberseguridad puede anular una función de seguridad y cómo certificar ambas.
+
+**Evidencia de amenazas.** MITRE ATT&CK for ICS cataloga técnicas de adversarios como *Modify Parameter*, *Spoof Reporting Message* y *Manipulation of View*, cada una fundamentada en informes públicos. Los incidentes públicos (la manipulación por Stuxnet de los accionamientos de las centrifugadoras mientras mostraba valores normales, los cortes de distribución en Ucrania en 2015 y el malware dirigido a sistemas instrumentados de seguridad, TRITON/TRISIS) muestran que la *manipulación de la vista*, la repetición de valores normales ante los operadores, es un objetivo documentado de los adversarios, no uno especulativo.
+
+### 2.3 Las normas como hipótesis
+
+Una norma codifica una creencia experta: "las zonas con nivel de seguridad 2 resisten a los atacantes casuales". Trate tales enunciados como hipótesis. Una tesis puede medir si un diseño de zonas reduce la alcanzabilidad, si una práctica de alarmas recomendada reduce la sobrecarga de los operadores o si un nivel de seguridad es alcanzable dentro del presupuesto de tiempo de escaneo de un controlador. No cite una norma como evidencia de que sus recomendaciones funcionan; cítela como la afirmación que usted pone a prueba.
+
+Escriba en la tesis cada enunciado puesto a prueba tal como lo formula la norma y, a continuación, como la hipótesis medible que usted derivó de él, para que los lectores puedan juzgar la traducción. Un resultado nulo es útil: si un diseño de zonas recomendado no reduce la alcanzabilidad en su topología, eso dice algo sobre el diseño o sobre la topología, y ambas cosas merecen informarse.
+
+### 2.4 Evaluación crítica: qué hace creíble un artículo sobre detección en TO
+
+Aplique la advertencia de Sommer y Paxson (la detección de anomalías funciona mal cuando el espacio "normal" es abierto y los ataques son raros) y la lista de verificación de Arp et al. Pregunte a cada artículo: ¿el conjunto de datos procedía de un banco de pruebas o de una planta? ¿Generaron los ataques las mismas personas que construyeron el detector? ¿Conoce el adversario el detector? ¿Se eligió el umbral sobre el conjunto de prueba? ¿Se informa el impacto en el momento de la detección? Los conjuntos de datos públicos como SWaT, de iTrust, proceden de un banco de pruebas real (a escala reducida) de tratamiento de agua, lo que los hace valiosos, pero cada conjunto de datos tiene un conjunto fijo de ataques y una planta fija; las afirmaciones de generalización más allá de ellos necesitan un segundo contexto.
+
+### 2.5 Ejemplo resuelto: evaluación crítica de los estudios sintéticos S1–S8
+
+| Estudio (sintético) | Datos | ¿Adversario consciente? | Origen del umbral | ¿Se informa el impacto? | Veredicto |
+|---|---|---|---|---|---|
+| S1 | un conjunto de datos público de banco de pruebas | no | conjunto de prueba | no | optimista |
+| S2 | simulación | sí (acotado) | validación | sí | sólido pero de una sola planta |
+| S3 | registros de planta, sin ataques | — | — | — | solo estudio de falsas alarmas |
+| S4 | banco de pruebas | no | conjunto de prueba | no | F1 con ajuste por puntos |
+| S5 | simulación + banco de pruebas | parcial | validación | parcial | prometedor |
+| S6 | solo red | no | validación | no | solo peldaño 1 |
+| S7 | banco de pruebas, falsificación de varios sensores | sí | validación | sí | muestra evasión por repetición + caudal |
+| S8 | revisión | — | — | — | mapa |
+
+El patrón es la laguna: ningún estudio combina (a) un adversario que conoce el detector, (b) umbrales fijados antes de la prueba, (c) el impacto en el momento de la detección y (d) la validación en una segunda planta independiente.
+
+### 2.6 Actividad práctica — Laboratorio 2: codificar el mapa
+
+Copie la tabla en un CSV y cuente, con el módulo `csv` de Python, cuántos estudios cumplen cada criterio. Recuentos esperados a partir de la tabla: adversario plenamente consciente = 2 (S2, S7), umbrales de validación = 4 (S2, S5, S6, S7), impacto plenamente informado = 2 (S2, S7), dos contextos = 1 (S5). Cambie una decisión de codificación y observe cómo cambia el enunciado de la laguna; registre esa sensibilidad en sus notas. Un cambio pequeño puede hacer que un estudio cruce la línea. Si la conciencia del adversario en S5 se codifica como plena en lugar de parcial, tres estudios cumplen ese criterio en lugar de dos, pero ninguno combina todavía las cuatro propiedades, de modo que la laguna se mantiene. Registre cada regla de codificación con un ejemplo y pida a un segundo codificador que codifique la tabla de forma independiente antes de basarse en ella.
+
+### 2.7 Una laguna falsable
+
+Laguna débil: "La detección basada en la física está poco estudiada". Laguna fuerte: "Ninguna evaluación informa a la vez el retardo de detección y la desviación máxima del proceso en el momento de la detección para ataques de repetición de sensor en un lazo de nivel, con umbrales fijados de antemano, en dos plantas independientes; predecimos que un residuo de balance de masa reduce el retardo respecto a una alarma de banda, y que la ventaja desaparece cuando el atacante controla también el sensor de caudal independiente". La versión fuerte nombra la condición bajo la cual la contribución falla.
+
+La laguna fuerte predice su propia falla, que el Setpoint Study confirma más adelante como la clase B. Esa predicción es lo que permite a un comité juzgar la tesis con justicia: si el detector de residuos hubiera detectado también la clase B, habría que revisar la laguna, porque un detector no debería poder ver a través de una mentira coherente en ambos sensores sin alguna otra señal independiente.
+
+### 2.8 Errores comunes y límites
+
+Citar material de marketing de fabricantes como evidencia; tratar las técnicas de ATT&CK como frecuencias (son posibilidades documentadas, no tasas de base); reclamar novedad por el nombre de un conjunto de datos nuevo; describir incidentes más allá de lo que afirman los análisis públicos. Un documento de un fabricante puede señalar una pregunta, pero no puede responderla. ATT&CK le dice que se ha visto la manipulación de la vista, no con qué frecuencia. Un conjunto de datos nuevo solo es novedoso si le permite poner a prueba algo que antes no podía. Al describir Stuxnet, Ucrania o TRITON, diga lo que informaron los analistas citados y deténgase ahí.
+
+### Ejercicios — capítulo 2
+
+- **EX008 — Sinónimos para sensores manipulados.** Construya una tabla de sinónimos con al menos cuatro términos de la ingeniería de control y cuatro de la seguridad para el concepto "detectar datos de sensores manipulados". *Rúbrica:* 3 = ≥4 términos de control + ≥4 de seguridad para sensores manipulados; 2 = 3+3; 1 = solo un lado; 0 = ninguno.
+- **EX009 — Mapa Purdue de Plant A.** Asigne los componentes de Plant A del Setpoint Study a los niveles Purdue 0–3 y nombre el conducto que atraviesa una consulta al historiador. *Rúbrica:* 3 = componentes L0–L3 + la consulta al historiador atraviesa la DMZ TI/TO (3.5) y 3–2; 2 = niveles sin conducto; 1 = parcial; 0 = ninguno.
+- **EX010 — Hipótesis de zonas de 62443.** Reescriba una recomendación de zonas y conductos de IEC 62443 como una hipótesis medible. *Rúbrica:* 3 = hipótesis medible con un recorte ≥90 % de la alcanzabilidad de escritura y método de medición; 2 = hipótesis sin métrica; 1 = eslogan; 0 = ninguno.
+- **EX011 — Evaluar el estudio S4.** Evalúe críticamente el estudio S4 con cinco preguntas de §2.4 e indique qué resultado puede respaldar. *Rúbrica:* 3 = cinco puntos de evaluación + techo de respaldo (señala algunas muestras; no retardo/impacto/generalización); 2 = evaluación sin techo; 1 = vago; 0 = ninguno.
+- **EX012 — Dos técnicas de ATT&CK for ICS.** Elija dos técnicas de ATT&CK for ICS relevantes para el Setpoint Study y explique por qué su presencia en la matriz no es evidencia de frecuencia. *Rúbrica:* 3 = Spoof Reporting Message + Modify Parameter y ninguna afirmación de tasa de base; 2 = técnicas sin salvedad; 1 = una técnica; 0 = ninguno.
+- **EX013 — Invertir la codificación del adversario en S5.** Ejecute el Laboratorio 2, cambie la codificación del adversario de S5 a "sí" e informe cómo cambia el enunciado de la laguna. *Rúbrica:* 3 = recuento de conscientes→3, eliminar el absoluto "ningún estudio consciente", mantener la laguna de combinación; 2 = solo el recuento; 1 = recuento erróneo; 0 = ninguno.
+- **EX014 — Lagunas débil y fuerte sobre DNP3-SA.** Escriba un enunciado de laguna débil y uno fuerte para otro tema de TO (por ejemplo, la adopción de DNP3 Secure Authentication). *Rúbrica:* 3 = débil frente a fuerte con muestra pública + predicción de latencia; 2 = débil/fuerte sin números; 1 = un enunciado; 0 = ninguno.
+
+### Síntesis del capítulo
+
+La frontera se extiende entre comunidades; léala con sinónimos, trate las normas como hipótesis y evalúe los artículos sobre detección según la conciencia del adversario, la filtración del umbral, el informe del impacto y la validación en un segundo contexto. Una laguna solo es útil cuando dice cómo podría cerrarse y cómo podría fallar ese cierre.
+
+### Siga estudiando — capítulo 02 de 08
+
+[← Capítulo 01 (borrador)](#ch-01) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 03 (borrador) →](../../en/book/MANUSCRIPT.md#ch-03)
 
 <a id="worked-results"></a>
 
@@ -207,6 +290,16 @@ Cada respuesta muestra una respuesta defendible; las rúbricas de cada ejercicio
 **EX005.** Programa ladder: T2/T3 (revela la lógica y los enclavamientos de seguridad). Recuentos de alarmas anonimizados: T1. Captura con IP: T2 (topología). P&ID: T3 para plantas reales, T2 para una instalación de laboratorio. Simulador sintético: T0.
 **EX006.** El segmento 1 empieza en el índice 20; primera alarma en 40 → retardo de 20 muestras. El segmento 2 empieza en 80; primera alarma en 85 → retardo de 5. El ajuste por puntos acredita como detectados los 30 y los 10 puntos, lo que oculta el retardo de 20 muestras durante el cual el proceso se desplazó.
 **EX007.** Título y pregunta; antecedentes y laguna; hipótesis H1–H4; modelo de atacante; sistemas (simulador, T2) y cotas de seguridad; niveles de datos y manejo; métricas; plan de análisis con umbrales congelados; condiciones de parada (se alcanza la válvula de flotador, reinicio no planificado, pérdida de registros >1 %) y condiciones de abandono (T2 no puede hacerse seguro; el simulador no supera la verificación); plan de ética y divulgación.
+
+### Capítulo 2
+
+**EX008.** Control: detección y aislamiento de fallas, generación de residuos, redundancia analítica, monitorización basada en observadores, validación de sensores. Seguridad: inyección de datos falsos, falsificación de sensores, manipulación de la vista, ataque de repetición, detección de anomalías basada en la física.
+**EX009.** Nivel 0: tanque, bomba, transmisor de nivel, caudalímetro. Nivel 1: PLC. Nivel 2: SCADA/HMI. Nivel 3: historiador (operaciones). Una consulta al historiador desde la empresa atraviesa el conducto de la DMZ TI/TO (nivel 3.5) y el conducto entre los niveles 3 y 2.
+**EX010.** "Las zonas entre el nivel 2 y el nivel 1 con un conducto limitado a códigos de función de lectura reducen en ≥90 % el número de hosts capaces de emitir escrituras Modbus a los PLC en comparación con una red plana, medido mediante un análisis de alcanzabilidad de la topología sintética".
+**EX011.** S4: datos de banco de pruebas; adversario no consciente; umbral sobre el conjunto de prueba; sin impacto; F1 con ajuste por puntos. Respalda como máximo "el detector señala algunas muestras dentro de estos segmentos de ataque en este banco de pruebas"; no afirmaciones de generalización, retardo o impacto.
+**EX012.** *Spoof Reporting Message* y *Modify Parameter*. La matriz documenta que los adversarios han usado o podrían usar una técnica, con base en informes públicos; no cuenta las ocurrencias en todas las plantas, así que no ofrece ninguna tasa de base.
+**EX013.** El recuento de adversarios conscientes pasa a 3 (S2, S5, S7). El enunciado de la laguna debe eliminar "ningún estudio tiene un adversario que conozca el detector" y mantener la laguna de combinación (consciente + umbrales congelados + impacto + dos contextos), que ningún estudio individual cumple todavía: S5 informa el impacto solo de forma parcial.
+**EX014.** Débil: "DNP3-SA se usa poco". Fuerte: "Ninguna medición informa la proporción de estaciones remotas DNP3 de una muestra pública definida que negocian Secure Authentication, ni la latencia que añade en enlaces serie; predecimos una adopción inferior al 10 % y una latencia superior al presupuesto de sondeo en enlaces de 9,6 kbit/s, y la predicción quedaría refutada por una adopción superior al 30 %".
 
 <a id="glossary"></a>
 
