@@ -48,17 +48,25 @@ You will (1) read rates of change in intelligence workloads; (2) interpret a der
 
 Indicators arrive in Lantern at a rate that changes during the day: low overnight, rising when partner communities in other time zones publish. If N(t) is the cumulative count of indicators received by hour t, its derivative N′(t) is the arrival rate. Engineers size parsers and enrichment workers for the peak of N′, not for the daily average, because queues form when instantaneous arrival exceeds service.
 
+A feed that delivers most of its daily volume in two morning hours needs workers sized for those hours, even though the average looks gentle. Kofi plots the rate rather than the running total when he checks this, because a cumulative curve hides bursts inside its steady climb.
+
 ### 1.2 Slopes from data
 
 Real data are discrete. A difference quotient — (N(t+1) − N(t)) / 1 hour — estimates the rate. Smoothing over several hours reduces noise but hides short bursts; the choice depends on whether you are planning capacity (use peaks) or reporting trends (smooth).
+
+Kofi keeps two views of the same counts for that reason. The raw hourly differences go to the capacity review, where a single busy hour matters. A six-hour moving average goes into the monthly report, where readers want to know whether partner volume is growing. Each chart says which one it is. Missing hours are left as gaps rather than filled, because an invented value would distort both the peak and the trend.
 
 ### 1.3 Areas as totals
 
 If r(t) is the rate of analyst-hours needed to triage alerts, the integral of r over a shift is the total effort. A trapezoid sum over hourly samples is accurate enough for staffing.
 
+With samples every hour, the trapezoid rule averages each pair of neighbouring rates and multiplies by one hour. Summing those slices across an eight-hour shift gives the analyst-hours the shift must cover. If the result is eleven hours of work and three analysts are on shift, the plan has slack; if it is thirty, the team needs help or a narrower triage scope. The estimate is only as good as the samples, so a missing hour is marked, not guessed.
+
 ### 1.4 Limits of local slopes
 
 A burst during a major campaign may show a steep slope. Projecting that slope a month ahead predicts absurd volumes. Derivatives describe now; models of cause are needed for forecasts.
+
+Kofi saw this when a partner published a large backlog of old indicators in one afternoon. The hourly rate jumped tenfold, then fell back the next day. Had he sized Lantern from that afternoon's slope, BEN would have bought hardware for a load that never returned. A forecast needs an explanation of why volume changes, such as a new partner joining, and the slope only tells him that something changed.
 
 ### Practice note — Units and dashboards
 
@@ -100,9 +108,13 @@ You will (1) represent intelligence relationships as a graph; (2) compute reacha
 
 An indicator set is a set; "event uses infrastructure" is a relation. Union, intersection and difference let engineers compare feeds; relations let them link events. STIX 2.1 expresses relations explicitly through relationship objects such as "indicates" or "uses".
 
+Kofi compares two partner feeds by intersecting their domain sets. The overlap tells him how much the second feed adds; the difference shows what only one partner has seen. A union is what Lantern must store. Relations carry more than membership: a pair such as an indicator and the malware it indicates says how two things are connected, and the type of that link matters when an analyst later decides how far to trust it.
+
 ### 2.2 Graphs and pivots
 
 Treat events, infrastructure, capabilities and victims as nodes and their links as edges. The Diamond Model of Caltagirone, Pendergast and Betz describes analytic pivoting along exactly these edges: from an event to its infrastructure, from infrastructure to other events. Breadth-first search counts hops, which is a natural limit on how far an analyst should trust a chain of inferences.
+
+The hop count in the lab therefore doubles as a trust measure. One hop from an event is something the evidence shows directly; three hops is a chain of inferences, each of which could be wrong.
 
 ### Lab 2 — pivot graph
 
@@ -144,9 +156,13 @@ event-7 reachable: False
 
 event-7 and its loader are not reachable from event-1. Two components mean no evidence in this graph links the activities. Claims that both belong to one campaign need new evidence, not wishful edges.
 
+The lab output shows this split plainly: the search from event-1 never reaches event-7 however many hops it allows. An analyst may still suspect a connection, perhaps because the two loaders behave alike, but that suspicion belongs in the notes as a hypothesis to test. Drawing an edge without evidence would make the graph agree with the analyst and teach nobody anything. If new evidence arrives, such as a shared certificate, the edge is added with its source, and the components merge on the record.
+
 ### 2.4 Hop limits
 
 Each hop adds uncertainty. Lantern caps automatic pivots at three hops and labels anything further as an analyst hypothesis.
+
+The limit follows from simple arithmetic. If each link is right nine times in ten, a three-hop chain is right only about seven times in ten, and a five-hop chain little better than half the time. Automatic pivots beyond three hops would fill reports with links that are as likely wrong as right. An analyst can still follow a longer chain by hand, but the result is labelled as a hypothesis, and the reasoning for each extra hop is written down so a reviewer can check it.
 
 ### Practice note — Edge weights
 
@@ -188,21 +204,31 @@ You will (1) relate signal propagation and bandwidth to collection latency; (2) 
 
 Light in fibre travels about 200,000 km per second, so a round trip between continents costs tens of milliseconds before any processing. A TAXII 2.1 poll across an ocean will never be instant; engineers set polling intervals and timeouts with that floor in mind.
 
+Kofi measured a poll from Lantern to a partner server on another continent and saw about a hundred milliseconds before the first byte arrived. That cost is fixed by distance. A timeout shorter than the floor fails every request, while one far longer hides real outages. He sets the timeout at several seconds and records each poll's duration, so a slow partner shows up in the logs instead of as missing data.
+
 ### 3.2 Bandwidth and bulk feeds
 
 A bulk feed of 2 GB each night over a 100 Mbit/s link takes roughly 160 seconds at full rate, ignoring overheads. If the link is shared with operational traffic for substations, scheduling transfers away from peak use is a physical, not merely administrative, decision.
+
+The worked example adds overhead and schedules the transfer at 02:00 for this reason. A large download during the day could compete with telemetry from substations, which BEN cannot afford to delay. Rate limiting the transfer is another option, trading a longer download for a smaller share of the link.
 
 ### 3.3 Storage growth
 
 Storing 50,000 STIX objects per day at about 2 KB each is roughly 100 MB per day, around 36 GB per year before indexes. Indexes and enrichment can triple that. Retention policies are therefore engineering inputs.
 
+Kofi turns these figures into a retention question for the CTI lead: how long must expired indicators stay searchable? Keeping two years of raw objects plus indexes could approach two hundred gigabytes, while summarising expired items after ninety days keeps the store far smaller. The answer depends on whether investigations need old indicators, and that is a requirement to agree with analysts rather than a choice for the storage team.
+
 ### 3.4 Clocks
 
 Server clocks drift. If Lantern's collector and BEN's firewall disagree by two minutes, time-to-block measurements are wrong by two minutes. Network time synchronisation and recorded clock sources matter for evidence.
 
+Kofi checks that every Lantern server and the firewall take time from the same synchronised source, and that each log records which source it used. When the firewall's clock was found running fast during a test, he corrected past measurements by the known offset and noted the correction beside the results. A metric built on unsynchronised clocks can show negative times to block, which is the quickest sign that something is wrong.
+
 ### 3.5 Power and heat
 
 An on-premises Lantern cluster draws power and needs cooling. In an energy company that sounds trivial, but SOC rooms are not data centres; capacity planning includes the room.
+
+Kofi estimated the draw of three servers and found it close to what the room's cooling could remove on a hot afternoon. Adding a fourth server would have needed new cooling, a cost the original plan had missed. Placing the cluster in BEN's data centre instead removed the problem, at the price of a longer network path to the SOC.
 
 ### Practice note — Latency budgets
 
@@ -244,21 +270,31 @@ You will (1) write small, pure functions that transform intelligence records; (2
 
 A parsed indicator is naturally a dictionary: `{"type": "domain", "value": "c2.example", "source": "partner-A", "tlp": "TLP:GREEN"}`. Functions that take one record and return a new one are easy to test and compose.
 
+The dictionary keeps each field named, so code reads clearly and missing fields can be checked. Kofi's functions never change the record they receive; they return a new one, which means an earlier version is still available if a later step goes wrong. A record that lacks a source or a TLP label is rejected at this stage rather than stored without them.
+
 ### 4.2 Pure functions first
 
 A pure function has no side effects: given the same input it returns the same output and writes nothing. Normalising a domain to lower case is pure. Writing to the database is not. Keep the pure parts separate so most of the code can be tested without infrastructure.
+
+Kofi's parser follows that split. The functions that clean and validate a record are pure and have dozens of quick tests. A thin outer layer reads from the feed and writes to the store, and that layer is tested less often against a test database. When a bug appears, the pure tests usually locate it in seconds.
 
 ### 4.3 Defanged text
 
 Reports often "defang" indicators — `hxxp`, `[.]` — so that nobody clicks them. A parser must refang them only inside the platform, never in outputs that humans will paste into browsers. Lantern stores the normal form and renders the defanged form in reports.
 
+The two forms must never be confused. If a report shows a live link and an analyst clicks it, the click may reach attacker infrastructure, which the book's ethical boundary forbids. Kofi's rendering function defangs every domain and address, and a test fails if any report output contains a working scheme.
+
 ### 4.4 Tests
 
 For each function, write three known-answer cases: a normal value, an edge case, and malformed input. Malformed input should produce an explicit error or a rejected flag, never a guessed value.
 
+For a function that normalises a domain, the normal case might be a mixed-case name that should come back in lower case. The edge case could be a name with a trailing dot, and the malformed case a string with a space inside it. Writing these three tests before the function itself often reveals what the function should do when the input is strange, which is where real feeds cause trouble.
+
 ### 4.5 What not to program
 
 Students sometimes ask how to scrape a social platform for threat actors' personal details. Lantern's code collects only from sources whose terms permit it and only the fields needed. Automated collection that evades rate limits, logins or terms is out of scope.
+
+The rule protects people as well as BEN. Personal details of a suspected actor may belong to someone uninvolved, and gathering them can breach privacy law and platform terms. Lantern's sources are listed with the terms that allow their use, and adding a new source needs the CTI lead's approval before any code is written. Kofi's code reviews check that list.
 
 ### Worked example
 
@@ -296,21 +332,31 @@ You will (1) write requirements, design notes and incident summaries in plain En
 
 Every document answers a reader's question. A requirement answers "what must the system do?" A design note answers "why this way?" An intelligence summary answers "what should I do now?" Start with the answer, then support it.
 
+An analyst reading a summary at the start of a shift wants to know whether to block, watch or ignore. If that answer is buried in the fourth paragraph, the reader may act on the wrong one. Kofi puts the recommended action in the first sentence and the evidence below it, so a reader who stops early still acts correctly and one who reads on can check the reasoning.
+
 ### 5.2 Fact, assumption, judgment
 
 "Partner A's feed delivered 12,000 indicators yesterday" is a fact. "Partner A's feed is mostly current" is an assumption unless measured. "We should prioritise Partner A for automated blocking" is a judgment. ICD 203's tradecraft standards ask writers to distinguish information from assumptions and judgments; engineers benefit from the same discipline.
+
+Kofi marks each kind in his drafts. A fact carries its source and date, an assumption says what would confirm it, and a judgment states who made it. Readers can then challenge the right thing.
 
 ### 5.3 TLP on documents
 
 A design note that contains partner names under an AMBER sharing agreement inherits that restriction. Put the TLP 2.0 label in the header and footer. Untagged documents tend to spread.
 
+Kofi's template puts the label in both places so that a printed page still shows it. A document that mixes material should carry the most restrictive label among its parts, or be split so the wider part can travel further. Partner names are often the restricted element, and replacing them with a neutral identifier may let the rest be shared.
+
 ### 5.4 Figures
 
 A single chart of time-to-block by source is clearer than a dashboard of twenty gauges. Label axes with units; state the period and the data source in the caption.
 
+Kofi tested a dashboard of many gauges on the night shift and found nobody could say which source was slowest. A single bar chart sorted by median time to block answered that in seconds. Each chart he publishes now has a caption giving the period, the source of the data and the unit, so a reader can judge whether a change is real or a result of a different measurement.
+
 ### 5.5 Review
 
 Ask a reviewer to state your main point back in one sentence. If they cannot, rewrite.
+
+Kofi tries this with a colleague before sending any design note. When the colleague described his note on enrichment as being about logging, he found the conclusion was in the last paragraph. Moving it to the top fixed the problem. A second check is to ask what action the reader should take; if the reviewer cannot say, the note lacks a clear request. Both checks take a few minutes and spare readers a confusing document.
 
 ### Practice note — Short forms
 
