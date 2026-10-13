@@ -1,7 +1,7 @@
 # Governança de Dados: Curso de Bacharelado
 
 - Idioma: português do Brasil (`pt`); curso 095, bacharelado (4 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–30 de 40 já estão escritos em português, com os exercícios EX001–EX090, suas resoluções com rubricas de 0 a 3 e os três laboratórios (capítulos 18, 21 e 26); os capítulos 31–40 (EX091–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas serão mantidas idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–40 de 40 têm texto didático escrito à mão; os exercícios EX001–EX120 têm resoluções correspondentes com rubricas de 0 a 3; os três laboratórios offline (capítulos 18, 21 e 26) usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: estudantes de bacharelado que aprendem governança de dados desde os princípios, passando por políticas, qualidade, privacidade e retenção, até um trabalho de conclusão de curso.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios medem a completude de cinco campos em registros sintéticos de fidelidade, conferem códigos de loja com uma lista de referência e contam os registros guardados além de uma regra de retenção de três anos de inatividade. As normas são citadas pela edição e parafraseadas. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,7 @@ DAMA-DMBOK2 (2017); ISO/IEC 38505-1:2017; ISO 8000-8:2015; Khatri e Brown (2010)
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) |
-
-Capítulos 31–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-31), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -489,7 +487,7 @@ Amara estuda os papéis mais comuns. Um conselho ou grupo de governança define 
 
 ### 12.2 Atribuindo os papéis
 
-Amara esboça a atribuição de papéis na Harbourline. O diretor de marketing é dono dos dados de fidelidade, a diretora comercial é dona dos dados de produtos e o diretor financeiro é dono dos números de vendas. Um curador em cada equipe mantém as definições e trata os problemas. Os custodiantes da TI operam os sistemas. O diretor de operações preside o grupo de governança. Cada atribuição inclui uma declaração curta das decisões que o papel pode tomar. Ela discute o rascunho com cada pessoa e o ajusta onde as responsabilidades se sobrepunham ou faltavam na primeira versão. Todos os donos assinam.
+Amara esboça a atribuição de papéis na Harbourline. O diretor de marketing é dono dos dados de fidelidade, o diretor comercial é dono dos dados de produtos e o diretor financeiro é dono dos números de vendas. Um curador em cada equipe mantém as definições e trata os problemas. Os custodiantes da TI operam os sistemas. O diretor de operações preside o grupo de governança. Cada atribuição inclui uma declaração curta das decisões que o papel pode tomar. Ela discute o rascunho com cada pessoa e o ajusta onde as responsabilidades se sobrepunham ou faltavam na primeira versão. Todos os donos assinam.
 
 ### 12.3 Responsabilização
 
@@ -1301,11 +1299,411 @@ Mirar a maturidade máxima em tudo desperdiça recursos em organizações pequen
 - **EX089 — Metas acordadas.** Que metas foram acordadas? *Rubrica:* 3 = nível três em tudo e quatro para a qualidade, em dois anos;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
 - **EX090 — Redução do viés.** Como o viés da avaliação pode ser reduzido? *Rubrica:* 3 = incluindo alguém de fora da equipe de dados;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
 
+<a id="ch-31"></a>
+
+## Capítulo 31 — Gestão da mudança
+
+### Objetivos de aprendizagem
+
+Você vai (1) planejar o lado humano das mudanças de governança; (2) lidar com a resistência; (3) sustentar as novas práticas.
+
+### 31.1 Pessoas e mudança
+
+A governança muda o modo como as pessoas trabalham, e as pessoas podem resistir a mudanças que não entendem. Quando a Harbourline introduz os códigos de loja em lista suspensa, alguns gerentes de loja reclamam que isso os atrasa. Amara aprende que mudanças técnicas fracassam quando as pessoas afetadas não são envolvidas cedo. Ela estuda uma abordagem simples: explicar por que a mudança importa, envolver os afetados no desenho, oferecer apoio durante a transição e celebrar os primeiros sucessos, para que a nova prática ganhe credibilidade entre os funcionários. Amara aplica esses passos à mudança da lista suspensa.
+
+### 31.2 Lidando com a resistência
+
+Amara visita duas lojas cujos gerentes resistiram à lista suspensa. Ela descobre que a lista estava ordenada por código, e não pelo nome da loja, o que tornava a seleção lenta para funcionários que conhecem as lojas pelo nome. Ela pede à TI que ordene pelo nome e mostre os códigos ao lado. As reclamações cessam. Ela explica que a resistência muitas vezes contém informações úteis sobre problemas de desenho, e que ouvi-la melhora as mudanças, em vez de apenas vencer a oposição de funcionários difíceis. Amara escreve uma nota curta sobre o episódio para o grupo de governança ler.
+
+### 31.3 Multiplicadores
+
+Amara recomenda uma rede de multiplicadores de dados (*data champions*): uma pessoa em cada loja e equipe que recebe treinamento extra, responde às dúvidas dos colegas e repassa as sugestões aos curadores. Os multiplicadores são voluntários que recebem um pouco de tempo a cada mês. Ela observa que os multiplicadores tornam a governança visível localmente e espalham o conhecimento mais rápido do que as comunicações centrais. A primeira reunião dos multiplicadores produz várias sugestões práticas, entre elas um guia plastificado dos códigos mais comuns para cada caixa. O guia é impresso para todas as lojas em um mês e atualizado sempre que os códigos mudam.
+
+### 31.4 Sustentando a mudança
+
+As novas práticas se apagam sem reforço. Amara propõe incluir as responsabilidades sobre dados na integração dos novos funcionários, mencionar os resultados de qualidade dos dados nas avaliações de desempenho das lojas e renovar o treinamento todo ano. Ela sugere também que o grupo de governança compartilhe breves histórias de sucesso no informativo dos funcionários. O Dr. Lindqvist observa que sustentar a mudança exige atenção muito depois do lançamento, porque as organizações tendem naturalmente a voltar aos hábitos conhecidos quando a atenção passa a outras prioridades. O grupo de governança inclui um item fixo em sua pauta para verificar se esses reforços estão de fato acontecendo.
+
+### Exemplo resolvido
+
+Amara envolve os funcionários afetados, corrige uma lista suspensa ordenada por código que causava resistência, cria uma rede de multiplicadores de dados e sustenta a mudança por meio da integração, das avaliações e de histórias de sucesso.
+
+> **Caso sintético.** As mudanças são sintéticas.
+
+### Erros e limites
+
+Tratar a resistência como obstrução deixa escapar os problemas de desenho que ela revela.
+
+### Exercícios
+
+- **EX091 — Correção da lista suspensa.** O que acabou com as reclamações sobre a lista suspensa? *Rubrica:* 3 = ordenar pelo nome da loja, com os códigos ao lado;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX092 — Papel do multiplicador.** O que fazem os multiplicadores de dados? *Rubrica:* 3 = respondem às dúvidas localmente e repassam as sugestões aos curadores;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
+- **EX093 — Sugestão dos multiplicadores.** O que a primeira reunião dos multiplicadores sugeriu? *Rubrica:* 3 = um guia plastificado dos códigos comuns para os caixas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-32"></a>
+
+## Capítulo 32 — Justificativa de negócio
+
+### Objetivos de aprendizagem
+
+Você vai (1) estimar os custos e os benefícios da governança; (2) apresentar uma justificativa de negócio (*business case*); (3) declarar as premissas com honestidade.
+
+### 32.1 Custos
+
+Amara prepara uma justificativa de negócio para ampliar a governança na Harbourline. Os custos incluem o tempo dos curadores, uma ferramenta de catálogo, treinamento e trabalho de automação. Ela estima cada um com números sintéticos, como as horas por curador por mês multiplicadas pelo custo salarial. Ela lista os custos de três anos, distinguindo os custos únicos dos contínuos. Ela observa que os custos de governança costumam ser subestimados porque o tempo das pessoas é tratado como gratuito, o que mais tarde leva ao abandono dos papéis. Amara pede à equipe financeira que confira suas estimativas de custo antes da apresentação.
+
+### 32.2 Benefícios
+
+Os benefícios são mais difíceis de estimar. Amara considera a redução do tempo gasto conciliando relatórios, menos correspondências duplicadas, menor risco de incidentes graças à eliminação dos dados guardados em excesso, pedidos de estoque melhores graças a códigos corretos e penalidades regulatórias evitadas. Para cada um, ela estima uma faixa com base nas evidências do trabalho anterior, como o número de membros duplicados e o custo de cada correspondência. Ela mantém os benefícios conservadores, explicando que justificativas críveis subestimam os ganhos, em vez de exagerá-los. Ela mostra cada benefício como uma faixa com sua fonte, para que os leitores vejam de onde vieram os números.
+
+### 32.3 Premissas
+
+Toda estimativa se apoia em premissas. Amara as lista com clareza: as horas dos curadores, o custo das correspondências, a parcela do tempo de conciliação de relatórios que a governança consegue eliminar e a probabilidade de um incidente. Ela mostra como os resultados mudam se as premissas principais estiverem erradas, por exemplo se os benefícios forem metade do estimado. A justificativa continua positiva na maioria dos cenários. Ela explica que mostrar a sensibilidade gera confiança, porque os leitores veem que a justificativa não depende de números otimistas. Amara coloca a tabela de sensibilidade em uma única página para os diretores.
+
+### 32.4 Apresentando a justificativa
+
+Amara apresenta a justificativa ao diretor de operações e ao diretor financeiro. Ela começa pelos problemas que eles reconhecem e segue com custos, benefícios, premissas e uma recomendação. O diretor financeiro questiona a estimativa do risco de incidentes, e Amara concorda que é o item mais incerto, mostrando que a justificativa continua positiva sem ele. A justificativa é aprovada, com uma revisão depois de um ano. O Dr. Lindqvist observa que admitir abertamente a incerteza tornou a justificativa mais convincente. Amara registra as perguntas feitas e suas respostas no arquivo da justificativa, para a revisão um ano depois.
+
+### Exemplo resolvido
+
+Amara estima custos de três anos incluindo o tempo das pessoas, faixas conservadoras de benefícios, lista as premissas com análise de sensibilidade e apresenta uma justificativa que continua positiva mesmo sem a incerta estimativa de incidentes.
+
+> **Caso sintético.** Os números são sintéticos.
+
+### Erros e limites
+
+Tratar o tempo das pessoas como gratuito subestima os custos da governança.
+
+### Exercícios
+
+- **EX094 — Custo oculto.** Que custo costuma ser subestimado? *Rubrica:* 3 = o tempo das pessoas;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX095 — Propósito da sensibilidade.** Por que mostrar a sensibilidade às premissas? *Rubrica:* 3 = os leitores veem que a justificativa não depende de otimismo;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX096 — Item questionado.** Que estimativa o diretor financeiro questionou? *Rubrica:* 3 = o risco de incidentes;; 2 = correto;; 1 = outra;; 0 = nenhuma.
+
+<a id="ch-33"></a>
+
+## Capítulo 33 — Projeto em grupo I: planejamento
+
+### Objetivos de aprendizagem
+
+Você vai (1) planejar um projeto de governança em equipe; (2) dividir o trabalho e acordar os papéis; (3) gerenciar os riscos do projeto.
+
+### 33.1 O projeto
+
+No terceiro ano, Amara entra em um projeto em grupo com três colegas. O enunciado pede que projetem a governança do novo serviço de pedidos on-line da Harbourline, que vai coletar endereços de entrega, históricos de pedidos e *tokens* de pagamento. O grupo precisa entregar em dez semanas um plano de governança, um inventário de dados, regras de qualidade, uma tabela de temporalidade e uma avaliação de privacidade. O Dr. Lindqvist faz o papel de cliente, representando o diretor de operações da Harbourline, e vai revisar o andamento em reuniões quinzenais com o grupo. O enunciado do cliente é curto e deixa algumas questões em aberto de propósito.
+
+### 33.2 Dividindo o trabalho
+
+O grupo lista as entregas e escolhe os responsáveis conforme o interesse: Amara cuida das regras de qualidade e da retenção, um colega cuida do inventário, outro da avaliação de privacidade e o quarto coordena e escreve o plano de governança. Cada responsável tem um revisor dentro do grupo. Eles combinam reunir-se toda semana e guardar o trabalho em uma pasta compartilhada com histórico de versões. Amara observa que papéis claros evitam duplicações e lacunas, exatamente como na própria governança. O coordenador mantém uma lista de quem é responsável por cada seção e da situação de sua revisão.
+
+### 33.3 Planejamento
+
+O grupo escreve um plano com marcos semanais. O inventário precisa vir primeiro, porque as regras, a retenção e a privacidade dependem de saber que dados existem. Eles agendam uma reunião com o cliente depois da terceira semana para confirmar o inventário. Amara lembra que o serviço on-line ainda está sendo desenhado, de modo que os campos de dados podem mudar. O grupo planeja atualizar o trabalho depois que o cliente confirmar o desenho final, reservando tempo nas semanas sete e oito. O plano é compartilhado com o Dr. Lindqvist na primeira reunião com o cliente.
+
+### 33.4 Riscos
+
+O grupo identifica os riscos: requisitos pouco claros do cliente, um integrante adoecer e conflitos sobre o estilo de escrita. As respostas incluem confirmar os requisitos por escrito depois de cada reunião com o cliente, revisores capazes de assumir as seções e um guia de estilo compartilhado. Amara sugere também acordar como as decisões serão tomadas se o grupo discordar. O Dr. Lindqvist observa que os projetos em grupo espelham a governança no trabalho, em que papéis, decisões e registros acordados importam tanto quanto a habilidade técnica. O grupo escreve esses acordos na primeira página da pasta compartilhada.
+
+### Exemplo resolvido
+
+O grupo de Amara planeja a governança dos pedidos on-line, atribui responsáveis com revisores, põe o inventário em primeiro lugar, prevê a mudança dos campos e gerencia os riscos com confirmações por escrito e um guia de estilo.
+
+> **Caso sintético.** O projeto é sintético.
+
+### Erros e limites
+
+Começar as regras antes do inventário leva a retrabalho.
+
+### Exercícios
+
+- **EX097 — Responsabilidades de Amara.** Por quais entregas Amara é responsável? *Rubrica:* 3 = regras de qualidade e retenção;; 2 = ambas;; 1 = uma;; 0 = nenhuma.
+- **EX098 — Primeira entrega.** Por que o inventário precisa vir primeiro? *Rubrica:* 3 = as outras entregas dependem de saber que dados existem;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX099 — Resposta ao risco de requisitos.** Como o grupo vai lidar com requisitos pouco claros? *Rubrica:* 3 = confirmando os requisitos por escrito depois das reuniões com o cliente;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-34"></a>
+
+## Capítulo 34 — Projeto em grupo II: entrega
+
+### Objetivos de aprendizagem
+
+Você vai (1) entregar um pacote de governança em equipe; (2) integrar o trabalho de vários autores; (3) apresentar a um cliente.
+
+### 34.1 Construindo o pacote
+
+O grupo constrói suas entregas. O inventário lista vinte e dois campos de dados entre pedidos, clientes, entregas e pagamentos. Amara escreve as regras de qualidade para endereços e janelas de entrega e uma tabela de temporalidade que guarda os históricos de pedidos pelo prazo exigido pela legislação tributária e os endereços de entrega por um ano depois do último pedido. A avaliação de privacidade recomenda que os *tokens* de pagamento fiquem apenas com o processador de pagamentos. O trabalho de cada responsável é revisado antes da integração. O revisor de Amara encontra uma regra de CEP faltando, que ela acrescenta antes da integração.
+
+### 34.2 Problemas de integração
+
+Ao juntar as seções, o grupo encontra inconsistências: o inventário chama um campo de endereço de entrega, as regras o chamam de endereço de envio e a avaliação de privacidade conta dois campos de endereço onde o inventário tem um. Amara propõe usar o inventário como referência para nomes e campos, e cada responsável atualiza sua seção. Ela observa que o problema espelha as disputas de definição da própria Harbourline, e que um glossário compartilhado o teria evitado desde o início. As atualizações levam dois dias, e o grupo acrescenta uma página de glossário.
+
+### 34.3 Apresentação ao cliente
+
+O grupo apresenta o trabalho ao Dr. Lindqvist, no papel de cliente. Ele pergunta por que os endereços de entrega precisam ser guardados por um ano, e Amara explica que isso sustenta os pedidos repetidos e o tratamento de reclamações, com eliminação depois. Ele pergunta o que acontece se o serviço on-line acrescentar uma função de assinatura. O grupo explica como o inventário e a avaliação seriam atualizados pelo processo de mudança. Ele aprova o pacote com pequenas mudanças, elogiando a consistência alcançada depois da integração. O grupo faz as mudanças e entrega o pacote final uma semana depois.
+
+### 34.4 Reflexão
+
+Cada integrante escreve uma reflexão. Amara observa que os problemas de integração lhe ensinaram mais do que qualquer entrega isolada, e que as reuniões semanais e as duplas de revisão do grupo funcionaram bem. Da próxima vez, ela começaria um glossário no primeiro dia. Ela reflete também que defender as escolhas diante de um cliente exigia entender as razões, e não apenas seguir modelos. O Dr. Lindqvist usa as reflexões para melhorar o enunciado do projeto do ano seguinte. Amara guarda a reflexão no diário e usa suas lições ao planejar o trabalho de conclusão e, mais tarde, seu trabalho como curadora.
+
+### Exemplo resolvido
+
+O grupo de Amara entrega um inventário de vinte e dois campos, regras, retenção e uma avaliação de privacidade, resolve as inconsistências de nomes usando o inventário como referência e defende as escolhas diante do cliente.
+
+> **Caso sintético.** O projeto é sintético.
+
+### Erros e limites
+
+Seções escritas separadamente se afastam umas das outras; acorde os nomes primeiro.
+
+### Exercícios
+
+- **EX100 — Contagem de campos.** Quantos campos o inventário listou? *Rubrica:* 3 = vinte e dois;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX101 — Tokens de pagamento.** Quem deve guardar os *tokens* de pagamento? *Rubrica:* 3 = apenas o processador de pagamentos;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX102 — Mudança para a próxima vez.** O que Amara faria diferente? *Rubrica:* 3 = começar um glossário no primeiro dia;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-35"></a>
+
+## Capítulo 35 — Estágio
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar as habilidades de governança em um ambiente de trabalho; (2) adaptar-se às restrições da organização; (3) refletir sobre a prática profissional.
+
+### 35.1 Entrando na equipe
+
+No terceiro ano, Amara faz um estágio na equipe de dados da Harbourline. Todos os exemplos deste livro continuam sintéticos. Ela participa da triagem semanal, mantém o catálogo, executa os relatórios de qualidade e apoia os donos. Ela percebe que o trabalho real envolve interrupções constantes e prioridades concorrentes. Os métodos do curso continuam úteis, mas precisam ser simplificados, como fazer uma versão curta da avaliação de privacidade para mudanças pequenas, em vez do modelo completo. Ela mantém uma lista de cada simplificação e de sua razão, que discute com o líder da equipe de dados.
+
+### 35.2 Trabalhando com as partes interessadas
+
+Amara aprende que convencer gestores ocupados exige mensagens curtas e relevantes. Quando o diretor comercial ignora os e-mails sobre problemas nos dados de produtos, ela prepara um resumo de uma página mostrando como os erros causaram preços errados nas gôndolas de três lojas, com as reclamações de clientes anexadas. Ele responde em um dia e designa uma curadora. Amara reflete que ligar os problemas de dados a resultados que importam para o leitor é mais eficaz do que descrever falhas de regras em termos técnicos. A curadora corrige os erros de preço em uma semana, e as lojas confirmam que as reclamações cessaram.
+
+### 35.3 Uma situação difícil
+
+Um gerente pede a Amara uma lista dos membros que reclamaram de uma loja, com a intenção de ligar para eles sobre o comportamento dos funcionários. Amara não tem certeza de que esse é um uso adequado. Ela consulta o encarregado de proteção de dados, que orienta que o tratamento das reclamações permite contato sobre a própria reclamação, mas não uma pesquisa mais ampla. Amara entrega a lista com essa condição. Ela aprende a perguntar quando está em dúvida, em vez de recusar ou atender automaticamente. O gerente aceita a condição e a registra no arquivo da reclamação.
+
+### 35.4 Reflexão sobre o estágio
+
+Amara escreve um relatório de estágio descrevendo seu trabalho, o que aprendeu e como o conteúdo do curso se aplicou. Ela observa que a governança na Harbourline avançou por muitos passos pequenos, e não por grandes projetos. Ela identifica uma ideia para o trabalho de conclusão: se os multiplicadores de dados melhoram a qualidade dos lançamentos nas lojas. O Dr. Lindqvist incentiva a ideia, observando que ela tem valor prático e pode ser estudada com dados sintéticos desenhados para reproduzir os padrões que ela observou. Amara registra as observações que sugeriram a ideia, para usá-las depois ao desenhar dados sintéticos realistas.
+
+### Exemplo resolvido
+
+Amara simplifica os métodos para o uso no trabalho, convence um diretor com um resumo de uma página focado nos resultados, consulta o encarregado de proteção de dados sobre uma lista de reclamações e identifica uma ideia de trabalho de conclusão sobre multiplicadores de dados.
+
+> **Caso sintético.** O estágio é sintético.
+
+### Erros e limites
+
+Recusar ou atender automaticamente a pedidos incomuns traz risco de erro nos dois casos; pergunte.
+
+### Exercícios
+
+- **EX103 — Método de convencimento.** Como Amara conseguiu a atenção do diretor comercial? *Rubrica:* 3 = um resumo de uma página ligando os erros aos preços nas gôndolas e às reclamações;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX104 — Condição da lista de reclamações.** Que condição se aplicou à lista de reclamações? *Rubrica:* 3 = contato apenas sobre a própria reclamação;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX105 — Ideia de trabalho de conclusão.** Que ideia de trabalho de conclusão surgiu? *Rubrica:* 3 = se os multiplicadores de dados melhoram a qualidade dos lançamentos;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-36"></a>
+
+## Capítulo 36 — Métodos de pesquisa
+
+### Objetivos de aprendizagem
+
+Você vai (1) escolher desenhos de pesquisa para questões de governança; (2) considerar as ameaças à validade; (3) planejar uma pesquisa ética.
+
+### 36.1 Perguntas de pesquisa
+
+Amara aprende a transformar interesses em perguntas de pesquisa. Sua ideia vira: as lojas com multiplicadores de dados têm taxas menores de lançamentos inválidos do que as lojas sem eles, depois de consideradas as diferenças entre as lojas? Ela explica que uma boa pergunta é específica, respondível com os dados disponíveis e útil para os profissionais. O Dr. Lindqvist a ajuda a estreitá-la a partir de uma pergunta ampla sobre se a governança funciona, que seria impossível de responder em um trabalho de conclusão. Ela escreve a pergunta no alto do rascunho da proposta e confere cada seção seguinte com ela.
+
+### 36.2 Desenhos
+
+Ela compara desenhos. Um levantamento mostraria opiniões, mas não efeitos. Uma comparação antes e depois nas lojas com multiplicadores mostraria a mudança, mas não se os multiplicadores a causaram. Comparar as lojas com e sem multiplicadores antes e depois da introdução, um desenho de diferenças em diferenças, leva em conta as mudanças que afetam todas as lojas. Shadish, Cook e Campbell discutem esses desenhos quase-experimentais. Ela escolhe esse desenho, usando dados sintéticos que reproduzem os padrões que observou durante o estágio. Ela explica a escolha ao Dr. Lindqvist, que concorda que o desenho se ajusta à pergunta e ao tempo disponível para um trabalho de conclusão.
+
+### 36.3 Ameaças à validade
+
+Amara lista as ameaças à validade. As lojas que ofereceram multiplicadores voluntariamente podem já ser mais cuidadosas, uma ameaça de seleção. Outras mudanças, como novos leitores de código de barras, podem coincidir com os multiplicadores, uma ameaça de história. Funcionários diferentes podem registrar os lançamentos inválidos de formas diferentes, uma ameaça de mensuração. Ela planeja respostas: comparar as tendências anteriores, registrar as outras mudanças e usar as mesmas regras automatizadas para todas as lojas. Ela observa que nomear as ameaças abertamente fortalece a pesquisa. Ela escreve cada ameaça e sua resposta em uma tabela do capítulo de método, para que os examinadores vejam como o desenho a trata.
+
+### 36.4 Ética
+
+Mesmo com dados sintéticos, Amara considera a ética, porque seu desenho espelha práticas reais. Ela garante que nenhum dado real de lojas ou funcionários apareça e que a geração dos dados sintéticos esteja documentada. Se mais tarde usasse dados reais, precisaria da aprovação do comitê de ética da universidade e da autorização da Harbourline, e agregaria os resultados por loja, para que nenhum funcionário pudesse ser identificado. O Dr. Lindqvist observa que pensar na ética cedo evita problemas depois. Amara registra essas considerações em uma seção de ética da proposta, que o tutor aprova.
+
+### Exemplo resolvido
+
+Amara estreita a pergunta para multiplicadores e lançamentos inválidos, escolhe diferenças em diferenças sobre dados sintéticos, nomeia as ameaças de seleção, história e mensuração e planeja salvaguardas éticas.
+
+> **Caso sintético.** O desenho é sintético; Shadish, Cook e Campbell (2002) é real.
+
+### Erros e limites
+
+Comparações antes e depois, sozinhas, não separam os efeitos das tendências gerais.
+
+### Exercícios
+
+- **EX106 — Desenho escolhido.** Que desenho Amara escolheu? *Rubrica:* 3 = diferenças em diferenças;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX107 — Ameaça de seleção.** Qual é a ameaça de seleção aqui? *Rubrica:* 3 = as lojas voluntárias podem já ser mais cuidadosas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX108 — Exigências dos dados reais.** O que os dados reais exigiriam? *Rubrica:* 3 = aprovação ética e autorização da Harbourline;; 2 = ambas;; 1 = uma;; 0 = nenhuma.
+
+<a id="ch-37"></a>
+
+## Capítulo 37 — Trabalho de conclusão I: proposta
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever uma proposta de trabalho de conclusão; (2) revisar a literatura; (3) planejar a análise e o cronograma.
+
+### 37.1 A proposta
+
+Amara escreve uma proposta com contexto, pergunta de pesquisa, literatura, método, ética, cronograma e contribuição esperada. O contexto explica como os lançamentos inválidos prejudicam o estoque e os relatórios da Harbourline. A pergunta indaga se os multiplicadores de dados reduzem as taxas de lançamentos inválidos. A contribuição são evidências sobre uma prática de governança de baixo custo que organizações pequenas poderiam adotar. Ela limita a proposta a cinco páginas, seguindo a orientação do curso, e a envia ao Dr. Lindqvist para comentários antes do prazo. O tutor devolve os comentários em uma semana, e ela revisa o rascunho.
+
+### 37.2 Literatura
+
+Amara revisa a literatura sobre qualidade de dados, papéis de governança e mudança organizacional. Ela se apoia em Wang e Strong para as dimensões de qualidade, em Khatri e Brown para os domínios de decisão e no DAMA-DMBOK2 para a curadoria. Ela encontra pouca pesquisa sobre redes de multiplicadores voltadas especificamente a dados, embora haja alguma sobre papéis semelhantes em outras áreas. Ela observa que essa lacuna sustenta sua contribuição. Ela confere cada fonte que cita lendo-a, em vez de confiar em resumos escritos por outros. Ela registra cada fonte em um gerenciador de referências, com notas sobre sua relevância.
+
+### 37.3 Plano de análise
+
+Amara planeja a análise: gerar dados sintéticos para vinte lojas ao longo de doze meses, com multiplicadores introduzidos em dez lojas no sexto mês; calcular as taxas de lançamentos inválidos; estimar as diferenças em diferenças; e calcular um intervalo por *bootstrap* com o módulo random do Python. Ela também vai verificar as tendências anteriores à introdução. Ela escreve o plano antes de gerar os dados, para não poder ajustar a análise em direção a um resultado preferido, prática conhecida como pré-registro. Ela envia o plano ao tutor, que guarda uma cópia datada, de modo que qualquer mudança posterior na análise precisará ser explicada no trabalho.
+
+### 37.4 Cronograma
+
+Ela define um cronograma: literatura concluída até o segundo mês, dados e análise até o quarto, redação até o sexto e revisão até o sétimo. Cada marco tem um encontro com o tutor. O Dr. Lindqvist aprova a proposta e pede que ela explique como os padrões dos dados sintéticos foram escolhidos, já que os leitores vão querer saber quão realistas eles são. Ela acrescenta uma seção que descreve as observações do estágio que orientaram os padrões. Ela também reserva duas semanas de folga no cronograma, o que se mostra útil quando uma doença atrasa sua redação.
+
+### Exemplo resolvido
+
+Amara escreve uma proposta de cinco páginas, revisa a literatura e encontra uma lacuna sobre multiplicadores de dados, pré-registra uma análise de diferenças em diferenças com intervalos por *bootstrap* e define um cronograma de sete meses.
+
+> **Caso sintético.** A proposta é sintética; as obras citadas são reais.
+
+### Erros e limites
+
+Planejar a análise depois de ver os dados convida a escolhas enviesadas.
+
+### Exercícios
+
+- **EX109 — Lacuna na literatura.** Que lacuna Amara encontrou? *Rubrica:* 3 = pouca pesquisa sobre redes de multiplicadores de dados;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX110 — Desenho das lojas.** Quantas lojas recebem multiplicadores? *Rubrica:* 3 = dez de vinte;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+- **EX111 — Pré-registro.** Por que escrever o plano antes de gerar os dados? *Rubrica:* 3 = para evitar ajustar a análise em direção a um resultado preferido;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-38"></a>
+
+## Capítulo 38 — Trabalho de conclusão II: resultados
+
+### Objetivos de aprendizagem
+
+Você vai (1) realizar a análise planejada; (2) interpretar os efeitos com sua incerteza; (3) verificar a robustez.
+
+### 38.1 Geração dos dados
+
+Amara gera os dados sintéticos seguindo o plano. Cada loja tem uma taxa-base de lançamentos inválidos sorteada de uma faixa observada nas anotações do estágio, uma variação mensal e uma pequena melhora geral ao longo do tempo. As lojas com multiplicadores recebem uma redução adicional depois do sexto mês. Ela documenta cada parâmetro e fixa a semente aleatória. Ela explica que o efeito conhecido, embutido nos dados, permite aos leitores julgar se o método o recupera, o que é um teste do método, e não uma prova sobre lojas reais. Os parâmetros aparecem em um apêndice.
+
+### 38.2 Resultados
+
+Amara calcula as taxas de lançamentos inválidos antes e depois para os dois grupos. Ambos melhoram, refletindo a tendência geral, mas as lojas com multiplicadores melhoram mais. A estimativa de diferenças em diferenças fica próxima da redução que ela embutiu, e o intervalo por *bootstrap* exclui o zero. Ela informa a estimativa, o intervalo e o número de lojas. Ela evita afirmar que os multiplicadores funcionam na realidade, declarando que o método consegue detectar um efeito desse tamanho nessas condições. Ela apresenta os resultados em uma tabela e em um gráfico que mostram os dois grupos antes e depois.
+
+### 38.3 Robustez
+
+Ela verifica a robustez. As tendências anteriores à introdução são semelhantes nos dois grupos, o que sustenta o desenho. Retirar a loja com a maior taxa-base não muda as conclusões. Repetir a geração com sementes diferentes dá estimativas semelhantes. Ela testa também um cenário em que as lojas com multiplicadores já melhoravam mais rápido, e mostra que o método então superestimaria o efeito, ilustrando a ameaça de seleção que ela havia nomeado e explicando por que as tendências anteriores precisam ser verificadas. Amara relata no trabalho cada verificação de robustez, inclusive a que mostra como o método pode ser enganado por tendências anteriores diferentes.
+
+### 38.4 Interpretação
+
+Amara interpreta as constatações para os profissionais: se os multiplicadores produzirem efeitos semelhantes aos que ela simulou, uma comparação com vinte lojas conseguiria detectá-los; efeitos menores exigiriam mais lojas ou períodos mais longos. Ela sugere que a Harbourline introduza os multiplicadores em etapas, para permitir uma avaliação real. O Dr. Lindqvist elogia a distinção clara entre o que o estudo sintético mostra e o que continua desconhecido, observando que essa honestidade é essencial quando os estudos usam dados sintéticos. Amara escreve essas recomendações em uma seção separada, dirigida aos profissionais, para que os gestores possam lê-las sem os capítulos técnicos.
+
+### Exemplo resolvido
+
+Amara gera dados sintéticos documentados, recupera o efeito embutido dos multiplicadores com um intervalo por *bootstrap* que exclui o zero, verifica as tendências anteriores e as sementes e explica o que o estudo sintético pode e não pode mostrar.
+
+> **Caso sintético.** Os dados e os resultados são sintéticos.
+
+### Erros e limites
+
+Recuperar um efeito embutido mostra que o método funciona, não que o efeito é real.
+
+### Exercícios
+
+- **EX112 — Resultado do intervalo.** O intervalo por *bootstrap* incluía o zero? *Rubrica:* 3 = não;; 2 = correto;; 1 = sim;; 0 = nenhuma.
+- **EX113 — Cenário de melhora mais rápida.** O que acontece se as lojas com multiplicadores já melhoravam mais rápido? *Rubrica:* 3 = o método superestima o efeito;; 2 = correto;; 1 = subestima;; 0 = nenhuma.
+- **EX114 — Recomendação.** O que Amara recomendou à Harbourline? *Rubrica:* 3 = introduzir os multiplicadores em etapas para uma avaliação real;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-39"></a>
+
+## Capítulo 39 — Trabalho de conclusão III: redação
+
+### Objetivos de aprendizagem
+
+Você vai (1) estruturar um trabalho de conclusão; (2) escrever com clareza sobre métodos e limites; (3) citar as fontes corretamente.
+
+### 39.1 Estrutura
+
+Amara estrutura o trabalho de conclusão: introdução, revisão da literatura, método, resultados, discussão, limitações e conclusão, com apêndices para o código e os detalhes da geração dos dados. Cada capítulo começa com seu propósito e termina com um resumo curto. Ela escreve primeiro o capítulo de método, enquanto os detalhes estão frescos, depois os resultados e, por fim, a introdução e a discussão. Ela explica que escrever a introdução por último lhe permite descrever o que o trabalho de fato faz, e não o que ela pretendia de início. Ela planeja a estrutura em um esboço curto, que o tutor revisa antes de ela começar a redigir.
+
+### 39.2 Clareza sobre os métodos
+
+Ela explica o desenho de diferenças em diferenças em linguagem simples, com um diagrama simples que mostra as taxas dos dois grupos antes e depois. Ela descreve a geração dos dados sintéticos de modo que outro estudante possa reproduzi-la. Ela inclui o código comentado em um apêndice. O Dr. Lindqvist observa que capítulos de método claros são o que permite aos examinadores confiar nos resultados, e que a reprodutibilidade é uma forma de respeito pelos leitores que queiram conferir o trabalho. Um colega segue o apêndice e reproduz exatamente o resultado principal, o que ela menciona no capítulo de método.
+
+### 39.3 Limitações
+
+Amara escreve uma seção completa de limitações: dados sintéticos, uma única organização fictícia, premissas simplificadas sobre a variação e a ausência de dados reais de comportamento. Ela explica como cada limitação afeta as conclusões e que pesquisa futura poderia tratá-la. Ela resiste à tentação de minimizar as limitações, reconhecendo que os examinadores valorizam a honestidade e que exagerar as constatações minaria um estudo que, de resto, é cuidadoso. Para cada limitação ela sugere um próximo passo específico, como uma avaliação real em etapas na Harbourline, que substituiria os padrões sintéticos por dados observados e testaria se o efeito existe na prática.
+
+### 39.4 Citações
+
+Amara cita cada fonte em um estilo consistente, conferindo cada referência com o original. Ela cita as normas pela edição, como a segunda edição do DAMA-DMBOK2, e os artigos com seus identificadores de objeto digital (DOI), quando disponíveis. Ela parafraseia, em vez de copiar o texto. O Dr. Lindqvist lembra-lhe que citações inventadas ou imprecisas são uma falta acadêmica grave, e que conferir cada referência faz parte de um trabalho acadêmico honesto, mesmo com os prazos apertando. Ela mantém uma lista de verificação de todas as referências, marcando cada uma como conferida com sua fonte original antes da entrega.
+
+### Exemplo resolvido
+
+Amara estrutura e redige o trabalho começando pelo método, explica o desenho com um diagrama e o código em apêndice, escreve uma seção honesta de limitações e confere cada citação com sua fonte.
+
+> **Caso sintético.** O trabalho é sintético; as obras citadas são reais.
+
+### Erros e limites
+
+Citações não conferidas trazem risco de erro e de má conduta; confira cada uma.
+
+### Exercícios
+
+- **EX115 — Ordem de redação.** Que capítulo Amara escreveu primeiro? *Rubrica:* 3 = o de método;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX116 — Apoio à reprodutibilidade.** Como Amara apoiou a reprodutibilidade? *Rubrica:* 3 = com a geração documentada e o código comentado em um apêndice;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
+- **EX117 — Identificadores das citações.** O que ela incluiu nos artigos, quando disponível? *Rubrica:* 3 = os identificadores de objeto digital (DOI);; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-40"></a>
+
+## Capítulo 40 — Apresentação e defesa oral
+
+### Objetivos de aprendizagem
+
+Você vai (1) apresentar um trabalho de conclusão; (2) responder às perguntas dos examinadores; (3) refletir sobre o curso.
+
+### 40.1 Preparação
+
+Amara prepara uma apresentação de quinze minutos do trabalho: problema, pergunta, desenho, constatações, limites e recomendações. Ela ensaia com os colegas, que fazem perguntas desafiadoras. Ela prepara respostas curtas para as perguntas prováveis, como por que usou dados sintéticos e como a Harbourline poderia fazer uma avaliação real. Ela mantém os slides simples, com uma mensagem cada, e um gráfico que mostra as taxas dos dois grupos antes e depois da introdução dos multiplicadores. Ela ensaia até que a fala caiba com folga no tempo permitido, sobrando espaço para uma pergunta inesperada e uma pequena pausa antes da conclusão.
+
+### 40.2 A defesa oral
+
+Os examinadores perguntam por que uma cooperativa deveria confiar em resultados baseados em dados sintéticos. Amara explica que o estudo mostra que o desenho consegue detectar um efeito de determinado tamanho e recomenda uma avaliação real em etapas. Um examinador pergunta se os multiplicadores poderiam simplesmente relatar menos problemas, em vez de reduzi-los. Amara concorda que isso é possível com relatos manuais e explica que seu desenho usa regras automatizadas aplicadas igualmente a todas as lojas, o que reduz esse risco. Os examinadores aceitam a resposta e passam às recomendações.
+
+### 40.3 Devolutiva
+
+Os examinadores elogiam a clareza das limitações e as recomendações práticas. Eles sugerem que ela poderia ter explorado os efeitos sobre diferentes tipos de lançamentos inválidos, como códigos e preços. Amara aceita a sugestão e a registra como trabalho futuro. Ela é aprovada com uma nota alta. O Dr. Lindqvist lhe diz que a capacidade de explicar os limites com segurança, sem ficar na defensiva, vai lhe servir bem em funções profissionais de governança, onde a incerteza é comum. Amara agradece aos examinadores e registra suas sugestões no diário, para trabalhos futuros.
+
+### 40.4 Olhando para trás
+
+Amara reflete sobre os quatro anos: de aprender o que são dados a projetar a governança, executar verificações, escrever políticas e concluir uma pesquisa. O que ela mais valoriza é o hábito de perguntar quem decide, o que as evidências mostram e quem pode ser afetado. Ela planeja entrar para a equipe de dados da Harbourline como curadora. O próximo curso desta área trata de privacidade e proteção de dados, onde os dados governados encontram os direitos das pessoas que eles descrevem. Ela agradece ao Dr. Lindqvist e aos colegas nos agradecimentos do trabalho de conclusão.
+
+### Exemplo resolvido
+
+Amara apresenta de forma simples, responde a perguntas sobre dados sintéticos e viés de relato, aceita a devolutiva sobre os tipos de lançamento e reflete sobre quatro anos de crescimento antes de entrar na Harbourline como curadora.
+
+> **Caso sintético.** A defesa oral é sintética.
+
+### Erros e limites
+
+Respostas defensivas a perguntas válidas enfraquecem um estudo forte.
+
+### Exercícios
+
+- **EX118 — Resposta ao viés de relato.** Como Amara tratou o viés de relato? *Rubrica:* 3 = regras automatizadas aplicadas igualmente a todas as lojas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX119 — Sugestão dos examinadores.** O que os examinadores sugeriram? *Rubrica:* 3 = explorar os efeitos sobre diferentes tipos de lançamentos inválidos;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX120 — Próxima função.** Que função Amara vai assumir? *Rubrica:* 3 = curadora na equipe de dados da Harbourline;; 2 = correto;; 1 = outra;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX090 (as de EX091–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Amara Okafor, o Dr. Paul Lindqvist, a Universidade Ridgeway, a Harbourline Co-operative e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX120. Amara Okafor, o Dr. Paul Lindqvist, a Universidade Ridgeway, a Harbourline Co-operative e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Harbourline Co-operative, uma cooperativa de supermercados fictícia.
 
@@ -1486,6 +1884,66 @@ Respostas-modelo para EX001–EX090 (as de EX091–EX120 estão na edição em i
 **EX089.** Nível três em todos os domínios e quatro para a qualidade, em dois anos.
 
 **EX090.** Incluir alguém de fora da equipe de dados.
+
+**EX091.** Ordenar pelo nome da loja e mostrar os códigos ao lado.
+
+**EX092.** Responder às dúvidas dos colegas e repassar as sugestões aos curadores.
+
+**EX093.** Um guia plastificado dos códigos comuns em cada caixa.
+
+**EX094.** O tempo das pessoas.
+
+**EX095.** Mostra que a justificativa não depende de números otimistas.
+
+**EX096.** A estimativa do risco de incidentes.
+
+**EX097.** Regras de qualidade e retenção.
+
+**EX098.** As regras, a retenção e a privacidade dependem dele.
+
+**EX099.** Confirmando os requisitos por escrito depois de cada reunião.
+
+**EX100.** Vinte e dois.
+
+**EX101.** Apenas o processador de pagamentos.
+
+**EX102.** Começar um glossário compartilhado no primeiro dia.
+
+**EX103.** Um resumo de uma página mostrando os preços errados nas gôndolas e as reclamações.
+
+**EX104.** Contato apenas sobre a reclamação, não uma pesquisa mais ampla.
+
+**EX105.** Se os multiplicadores de dados melhoram a qualidade dos lançamentos nas lojas.
+
+**EX106.** Diferenças em diferenças.
+
+**EX107.** As lojas que ofereceram multiplicadores voluntariamente podem já ser mais cuidadosas.
+
+**EX108.** Aprovação do comitê de ética da universidade e autorização da Harbourline.
+
+**EX109.** Pouca pesquisa sobre redes de multiplicadores voltadas a dados.
+
+**EX110.** Dez de vinte lojas.
+
+**EX111.** Para que a análise não possa ser ajustada a um resultado preferido.
+
+**EX112.** Não, ele excluía o zero.
+
+**EX113.** O efeito é superestimado.
+
+**EX114.** Introduzir os multiplicadores em etapas, para que possam ser avaliados.
+
+**EX115.** O capítulo de método.
+
+**EX116.** Documentando a geração dos dados e incluindo o código comentado.
+
+**EX117.** Seus identificadores de objeto digital (DOI).
+
+**EX118.** Seu desenho usava regras automatizadas aplicadas igualmente a todas as lojas.
+
+**EX119.** Explorar os efeitos sobre diferentes tipos de lançamentos inválidos.
+
+**EX120.** Curadora na equipe de dados da Harbourline.
 
 <a id="references"></a>
 ## Referências
