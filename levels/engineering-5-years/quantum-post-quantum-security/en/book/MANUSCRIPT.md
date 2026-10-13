@@ -1876,6 +1876,8 @@ You will (1) build and query a CBOM; (2) measure negotiated versus configured al
 
 Inventory evidence comes from code scanning, configuration analysis, passive network observation of handshakes, endpoint logs and vendor declarations. Each sees different things: code shows intent, configuration shows what is offered, passive observation shows what is negotiated, vendors declare what closed products do. Combine them and record the source per finding.
 
+Where sources disagree, the disagreement is itself a finding: if configuration offers the hybrid group but passive observation never sees it negotiated, something in the path is stripping it or clients do not offer it.
+
 ### 29.2 Practical activity — Lab I
 
 ```python
@@ -1904,6 +1906,8 @@ hybrid key exchange present on: ['gateway-1']
 
 The crane PLC's unknown status is a finding, not a gap to hide: it is 20% of this tiny inventory and must be resolved by vendor declaration or testbed analysis.
 
+Note how the script counts uses rather than assets: gateway-1 has hybrid key exchange yet still appears as vulnerable because its signature is RSA-2048, which matches the earlier point that hybrid key exchange leaves authentication untouched. The billing system's AES-256-GCM is correctly absent from the vulnerable list. Extend the records with a source column filter and print how many findings rest only on configuration, then add a sixth asset whose source is a vendor declaration and decide how to report it.
+
 ### 29.3 Metrics
 
 - **Coverage**: assets with at least one cryptographic determination ÷ all assets.
@@ -1912,19 +1916,27 @@ The crane PLC's unknown status is a finding, not a gap to hide: it is 20% of thi
 - **Vulnerable-use count** by function and data lifetime.
 - **Time-to-replace**: elapsed days from policy change to full negotiation of a new algorithm in a service (an agility metric).
 
+Weighting the hybrid share by data class stops a large volume of short-lived telemetry from making progress look better than it is for customs data. Time-to-replace is the only metric that measures agility directly, and the algorithm-break tabletop later in the book uses it. Each metric has a written definition and data source.
+
 ### 29.4 Gaming
 
 "Percentage migrated" can be inflated by redefining assets or counting configuration instead of negotiation. Use auditable denominators and publish definitions.
 
+A common inflation is to drop hard-to-inventory devices from the asset list, which raises coverage without any new knowledge. BPA fixes the denominator to the asset register maintained by operations, which the security team cannot edit, and counts only negotiated groups seen in session logs. Definitions are published alongside each monthly figure, so any change in definition appears as a visible note rather than an unexplained jump in the trend line.
+
 ### 29.5 Worked example
 
 BPA's first CBOM report: 412 assets, coverage 82%, unknown 18%, 311 vulnerable uses, hybrid negotiation 0% (before rollout). After six months: coverage 94%, unknown 6%, hybrid negotiation 64% of edge connections, vulnerable uses on long-lived data reduced from 37 flows to 12.
+
+The figures tell a consistent story: coverage rose as unknowns fell, and the reduction from 37 exposed flows to 12 reflects the four-gateway change found by the model. Hybrid negotiation at 64% of edge connections rather than 100% is expected, because old scanners and some partner clients do not offer the hybrid group; the report lists them as known exceptions with replacement dates.
 
 ### 29.6 Common errors and limits
 
 - Hiding unknowns.
 - Counting configured algorithms as protection.
 - One-source inventories.
+
+Hiding unknowns makes the inventory look complete while systems like the crane PLC remain unassessed; Lab I reports them as 20% so they cannot be overlooked. Counting configured algorithms overstates protection whenever clients or middleboxes prevent negotiation. An inventory built from one source misses what that source cannot see, such as statically linked libraries invisible to package scans or vendor appliances invisible to code scanning. BPA requires at least two sources for any asset holding long-lived data.
 
 ### Engineering note
 
@@ -1954,6 +1966,8 @@ You will (1) verify implementations with known-answer tests; (2) write negative 
 ### 30.1 Known-answer tests
 
 Known-answer tests (KATs) feed fixed inputs and compare outputs with published values. Standards bodies and the NIST Cryptographic Algorithm Validation Program publish vectors; for ML-KEM, deterministic test modes allow fixed randomness so outputs can be compared byte for byte.
+
+Deterministic modes exist only for testing; production code must use fresh randomness, and a build check ensures the test hooks are not reachable in release builds. BPA runs the vector suite on every library update and blocks the upgrade if any vector fails, which catches regressions such as the draft-to-final changes in ML-KEM's encoding.
 
 ### 30.2 Practical activity — Lab V
 
@@ -1990,23 +2004,33 @@ negative/positive test ML-KEM-512 len 1184: rejected (ML-KEM-512: expected 800 b
 
 The length validator is only the first check: FIPS 203 also requires checking that encoded coefficients of an encapsulation key are below *q* (the modulus check) and a hash check on decapsulation keys. Real libraries implement these; your tests should confirm they reject bad keys.
 
+The third test case is the important one: a correctly sized ML-KEM-768 key presented as ML-KEM-512 must be rejected, because a parser that trusts the key's length to choose the parameter set can be steered by an attacker.
+
 ### 30.3 Interoperability
 
 Run handshakes between every pair of client and server implementations in scope; encapsulate with one library and decapsulate with another; sign with the HSM and verify in partner software. Record the matrix. Interoperability failures early in the programme are cheap; in production they are outages.
+
+Testing a library only against itself proves little, since an encoding bug on one side is mirrored on the other and cancels out. Pairs of different implementations expose such mismatches. The matrix also records versions, so when a library is upgraded, only the affected rows are rerun.
 
 ### 30.4 Evidence
 
 Each test run records: implementation and version, test vectors used, result, date, operator. Evidence feeds the verification column of the traceability matrix (Chapter 21).
 
+Evidence must be reproducible: another engineer should be able to rerun the same test with the same versions and vectors and get the same result. BPA stores the test configuration with the result, so an auditor asking how REQ-KE-01 was verified receives the query, its output and the date rather than a statement that testing was done. Results older than the current library version are marked stale and rerun before release.
+
 ### 30.5 Worked example
 
 BPA's interoperability matrix for edge TLS: three server stacks × five client families. Two failures: an old partner library offered the obsolete pre-standard codepoint and could not complete hybrid handshakes; a load balancer stripped unknown groups. Both get work items; neither blocks rollout, because fallback to X25519 works and is logged.
+
+The obsolete codepoint belongs to a draft Kyber implementation, which is why final ML-KEM peers cannot complete the handshake; the partner must update the library. The load balancer problem is more serious because it affects all traffic through it, so its fix is scheduled before the rollout passes that path.
 
 ### 30.6 Common errors and limits
 
 - Only positive tests.
 - Testing a library against itself.
 - Unrecorded results.
+
+Positive tests alone would pass a validator that accepts every key, while Lab V's rejection cases show the validator actually discriminates. Testing a library against itself hides encoding mismatches, which appear only when a different implementation is on the other side, as the obsolete-codepoint failure showed. Unrecorded results cannot support the traceability matrix, so a passed test that nobody wrote down counts for nothing in review. BPA's pipeline stores each run with versions and vectors.
 
 ### Engineering note
 
@@ -2037,27 +2061,39 @@ You will (1) apply constant-time techniques to lattice code; (2) understand faul
 
 Lattice implementations must avoid secret-dependent branches, memory accesses and variable-time instructions. Division is a known trap: compilers and processors may implement division by a constant with variable timing, and KyberSlash showed real leaks from secret-dependent divisions ([Bernstein et al. 2024](https://eprint.iacr.org/2024/1049)). The fix is arithmetic that avoids division (multiplication by precomputed constants and shifts) and verification with timing-analysis tools.
 
+Source code that looks constant-time may not stay so after compilation, so checks run on the binary for each target platform.
+
 ### 31.2 Decapsulation comparison
 
 ML-KEM's implicit rejection compares a re-encrypted ciphertext with the received one. The comparison and the selection between the real key and the rejection key must be constant-time; otherwise timing reveals whether a manipulated ciphertext decrypted "correctly", re-opening chosen-ciphertext attacks.
+
+A naive comparison that stops at the first differing byte finishes sooner for some inputs than for others, and an attacker who submits many crafted ciphertexts can measure the difference. The fix compares every byte and combines the differences with bitwise operations, then selects the key with a mask rather than a branch. Libraries implement this; BPA's review checks that application code never reimplements the comparison or adds an early exit around it.
 
 ### 31.3 Fault attacks
 
 Injecting faults (voltage glitches, clock glitches, lasers) can skip checks or corrupt computations. In signatures, a fault during ML-DSA signing can leak information about the secret key; in deterministic schemes, faults can be especially dangerous. Countermeasures include redundant computation, verifying a signature before releasing it and hardened hardware. These matter for devices an attacker can physically access — gate scanners, smart cards.
 
+Verifying a signature before releasing it costs one extra verification, which for ML-DSA is fast, and it catches faults that corrupted signing. For BPA's central signing service in a secured room, fault risk is low; for devices in the field, an attacker with physical access has time to experiment, so the countermeasures matter more there.
+
 ### 31.4 Randomness and seeds
 
 ML-KEM key generation and encapsulation consume fresh randomness; ML-DSA offers a "hedged" mode mixing fresh randomness with deterministic derivation, which helps against fault and randomness failures ([FIPS 204](https://doi.org/10.6028/NIST.FIPS.204)). Seeds that generate keys are as sensitive as the keys themselves.
 
+A failed random number generator in a hedged scheme degrades to deterministic signing instead of leaking the key, which is why BPA enables hedged ML-DSA in its signing service. ML-KEM's 64-byte seeds must be protected like private keys: anyone who obtains a seed can regenerate the decapsulation key. Storage and backup rules apply to seeds in the same way, including destruction when the key is retired.
+
 ### 31.5 Worked example
 
 BPA's gate-scanner vendor provides an ML-DSA verifier for firmware. Since the device only verifies, secret-key leakage is not at stake on the device; the main risks are faults that skip the verification result. Countermeasure: verify twice with different code paths and check a hash of the image after boot.
+
+Using two different code paths means a single glitch is unlikely to skip both checks in the same way. The post-boot hash check adds a further layer: if a fault let an unsigned image start, the mismatch is detected and the device reports it. These steps cost milliseconds at boot, which the scanner can afford.
 
 ### 31.6 Common errors and limits
 
 - Assuming compilers preserve constant-time intent.
 - Ignoring physical attacks for field devices.
 - Treating seeds as non-sensitive.
+
+Compilers optimise for speed and may introduce branches or table lookups that leak timing, so constant-time claims need checking on compiled code. Field devices such as gate scanners face attackers who can glitch them at leisure, unlike servers in a guarded room. Seeds regenerate keys, so treating them as harmless configuration exposes every key derived from them. BPA's reviews check all three points on each new device class before procurement.
 
 ### Exercises
 
@@ -2084,27 +2120,39 @@ You will (1) identify reliability risks from larger messages and new code paths;
 
 New risks: fragmentation and middlebox drops; timeouts on slow constrained devices; certificate parsing failures; library bugs in new code; exhausted stateful signature keys; HSM performance limits. Each needs detection and response.
 
+Each risk has a matching signal: drops show up as handshake failures by path, timeouts as latency tails on device classes, parsing failures as certificate errors in client logs, and exhausted stateful keys as a counter approaching its limit. BPA's monitoring plan lists the signal, threshold and responder for each risk, so an alert reaches someone who knows what to do rather than a general queue.
+
 ### 32.2 Secure fallback
 
 Fallback can preserve availability but must not create silent downgrade. Design rules: fallback only to approved algorithms; log every fallback with reason; alert when fallback rates rise; set an expiry date on fallback permission; never fall back on authentication failures, only on demonstrable incompatibility.
+
+The last rule is critical: an authentication failure may signal an attack, so retrying with weaker settings would hand the attacker what they want. BPA's portal therefore falls back only after a connection reset on a path listed as incompatible, never after a certificate or signature error.
 
 ### 32.3 Capacity of stateful schemes
 
 An LMS key with tree height 20 supports about one million signatures; a height-10 tree about one thousand. Capacity must exceed expected signing volume over the key's life with margin; monitoring alerts at thresholds (e.g. 70% used) trigger planned rollover.
 
+Tree height trades capacity against key generation time and signature size: each extra level doubles capacity and adds a little to every signature. Because rollover requires distributing a new public key to devices in advance, the alert threshold must leave enough remaining signatures to cover that distribution period.
+
 ### 32.4 Silent failures
 
 The worst reliability failure is security silently disabled: a configuration that falls back to classical-only everywhere because of a typo. Monitoring negotiated groups (Chapter 29) detects this.
 
+BPA guards against this with a daily check that compares the negotiated hybrid share with the previous week; a sudden drop to near zero raises an alert even if no connection failed. Configuration changes to cryptographic policy also require a second reviewer, which catches typos before deployment. A silent failure cannot be seen in error logs because nothing errors; it can only be detected by measuring what is negotiated.
+
 ### 32.5 Worked example
 
 BPA signs about 2,000 firmware images a year across all device families. A height-15 LMS tree (32,768 signatures) per signing site lasts more than a decade at current volume; the team still sets alerts at 50% and 80% and documents rollover to a new key with distribution of its public key in advance.
+
+At 2,000 signatures a year, a 32,768-signature tree lasts about sixteen years per site, which is why capacity is not the constraint. The alerts still matter because volume can change, for example if a new device family is added. Distributing the next public key early means rollover needs no emergency firmware update.
 
 ### 32.6 Common errors and limits
 
 - Fallback without logging or expiry.
 - Under-sized stateful keys.
 - Monitoring configuration instead of negotiation.
+
+Fallback without logging and expiry turns a transition tool into a permanent downgrade path. An LMS key sized too small runs out before devices can receive a new public key, leaving no way to sign updates. Monitoring configuration rather than negotiation misses the silent failures described above, where everything looks enabled but nothing is protected. Each of these was seen in other organizations' early rollouts, which is why BPA's plan names a control for each.
 
 ### Engineering note
 
@@ -2135,27 +2183,39 @@ You will (1) analyse how cryptographic migration interacts with safety-related o
 
 At BPA, cranes, gate systems and vessel-traffic services must keep operating. A failed firmware signature verification can brick a crane controller; a certificate rejected by a gate scanner can stop trucks. Migration steps on such systems require testing on spare units, maintenance windows, verified rollback images and operator sign-off.
 
+Operator sign-off matters because operators know the consequences of a stopped crane or gate during a peak period better than security staff. BPA schedules firmware signature changes outside vessel arrival peaks and keeps a technician on site during the first unit's update. If verification fails on the spare unit, the rollout stops there, before any operational crane is touched.
+
 ### 33.2 Resilient rollout
 
 Use rings: lab → spare unit → one low-impact unit → one site → all. Each ring has a hold period and explicit success criteria. Keep the previous verification key trusted until the new chain is proven, so rollback remains possible.
+
+For crane controllers the hold period is a week of normal operation per ring, and success means no verification failures and no unexplained restarts. Keeping the old key trusted costs little and preserves a path back if the new chain has a fault. It is removed only after every device has run the new chain successfully.
 
 ### 33.3 Cryptographic incident response
 
 Plan for: a vulnerability in a PQC library (patch and re-key), a key compromise (revoke and replace), a stateful key index reuse (treat as compromise), and a cryptanalytic break of an algorithm (switch to the alternative). Hybrids give time in the last case: if ML-KEM were weakened, X25519 still protects against classical attackers while agility replaces the post-quantum component — for example with HQC once standardized ([IR 8545](https://doi.org/10.6028/NIST.IR.8545)).
 
+Each scenario has an owner, a first action and a target time in BPA's plan.
+
 ### 33.4 Tabletop: algorithm break
 
 Scenario: a credible paper reports a practical attack on one post-quantum signature parameter set. Questions: where is it used (CBOM)? What depends on it (roots, firmware)? What is the alternative (SLH-DSA, a different ML-DSA level)? How long does replacement take (time-to-replace metric)? Who decides? The tabletop measures agility directly.
 
+Running the exercise with the CBOM open turns each question into a query, and the time taken to answer shows where the inventory is weak. If no one can say within an hour which devices depend on the affected parameter set, that gap is the main finding.
+
 ### 33.5 Worked example
 
 BPA's tabletop finds that crane firmware trusts only one signature algorithm, with no provision for a second key in the bootloader. Action: the next bootloader release accepts two verification keys of different algorithms (e.g. LMS and ML-DSA), so a break of one does not strand devices.
+
+Without the second key, a break of LMS would leave devices that cannot be updated with no trusted path to receive a fix, since any new firmware would need a signature the bootloader cannot check securely. Adding the second key now, while the bootloader can still be updated, preserves options for the device's remaining lifetime.
 
 ### 33.6 Common errors and limits
 
 - Rolling cryptographic changes to safety systems without spares and rollback.
 - No plan for algorithm compromise.
 - Single-algorithm trust anchors in long-lived devices.
+
+Rolling a firmware signature change to cranes without a tested spare and rollback image risks bricked controllers and stopped operations. Without a plan for algorithm compromise, a break forces improvisation under pressure. Single-algorithm trust anchors in devices with ten-to-twenty-year lifetimes leave no fallback if that algorithm fails, as BPA's tabletop found for crane firmware before the next bootloader release.
 
 ### Exercises
 
@@ -2188,21 +2248,31 @@ You will (1) integrate PQC across TLS, VPN, PKI, code signing and data formats; 
 | Code signing | Signing service, device bootloaders | Device firmware updates |
 | Documents | Bill-of-lading signatures, CMS exports | Partner and customs software |
 
+The dependency column explains most of the schedule: BPA controls its CDN and edge proxy, so web TLS moves first, while documents depend on partner and customs software that BPA cannot change. Reading the map row by row also shows which integration points share a dependency, such as the HSM serving both PKI and code signing, so one delay affects two domains.
+
 ### 34.2 Partner integration
 
 Partners move at their own pace. Publish a migration notice with timelines, supported algorithms and test endpoints; offer an interoperability test environment; keep classical paths available with dated sunset. The customs agency, for example, may accept ML-KEM-wrapped exports only after its own upgrade; parallel recipients in CMS (classical and PQC) bridge the gap.
+
+The test environment is the most useful item, because partners can try their software against BPA's new configuration without risk to production. Dated sunsets give partners a deadline to plan against, and BPA reminds them at fixed intervals before each date.
 
 ### 34.3 Sequencing
 
 Sequence by dependency and value: edge TLS first (independent, high value); PKI root and HSM next (long lead time, enabler for signatures); firmware signing as devices are refreshed; documents with partners; internal services by data lifetime.
 
+The PKI root and HSM come early despite low immediate risk because their lead times are long: procurement, certification and distribution of a new root can take years. Edge TLS goes first because BPA controls both the configuration and the measurement, and its value is immediate against harvest. Firmware signing follows device refresh cycles rather than a calendar date. This order follows dependency, not the order in which teams asked for work.
+
 ### 34.4 End-to-end tests
 
 Integration tests exercise whole flows: a partner client connecting through the edge to an API that signs a document with ML-DSA, stored and replicated over hybrid TLS, verified by a customs test system. Failures in such tests reveal interface mismatches no unit test finds.
 
+For example, a partner client might negotiate the hybrid group correctly while the API rejects the larger signed document because of a size limit in a database field. Only a test that follows the full flow finds this kind of mismatch between components that each passed their own tests.
+
 ### 34.5 Worked example
 
 BPA's integration plan has 14 work packages. A dependency graph shows that the HSM upgrade gates five of them; procurement is therefore started in month one even though signatures are not urgent until month nine.
+
+The HSM gates five work packages because PKI, code signing and document signing all need its new key types. Starting procurement in month one gives about eight months of lead time before signatures become urgent, which matches typical procurement and certification delays. Without the dependency graph, the HSM would likely have been ordered when the signature work began, delaying five packages at once.
 
 ### 34.6 Common errors and limits
 
@@ -2210,10 +2280,13 @@ BPA's integration plan has 14 work packages. A dependency graph shows that the H
 - Forgetting partner sunset dates.
 - No end-to-end tests.
 
+Integrating domains in isolation misses flows that cross them, such as a signed document travelling from the API through replication to customs. Forgotten sunset dates leave classical paths open indefinitely, undoing the migration's protection. Without end-to-end tests, interface mismatches surface in production as outages that each team blames on another. BPA's plan therefore names an owner for each cross-domain flow, keeps a sunset register reviewed monthly, and runs the full partner-to-customs test before each major change.
 
 ### 34.7 Integration readiness checklist
 
 Before BPA switches a partner link to hybrid key exchange, the integration owner confirms four items: the partner's stack advertises the same hybrid group, both sides log the negotiated group, a classical fallback is still allowed only where the agreed exception list permits it, and a joint test window is booked with a rollback contact on each side. A link that fails any item stays on its current configuration and is rescheduled rather than forced.
+
+Rescheduling costs a few days; forcing a failed link costs partner trust.
 
 ### Exercises
 
@@ -2240,19 +2313,27 @@ You will (1) design post-quantum authentication for a document and firmware ecos
 
 Design post-quantum signatures for BPA's (a) electronic bills of lading verifiable for 12 years by partners and courts, and (b) firmware for 3,000 field devices with 10–20 year lifetimes and constrained bootloaders. Constraints: partner verification software varies; some devices cannot be updated beyond one more bootloader version.
 
+The two parts differ in their main constraint. Bills of lading must be verifiable by courts and partners using software BPA does not control, so compatibility and long-term evidence matter most. Firmware devices may receive only one more bootloader update, so whatever is chosen now must last the device's remaining life. Teams that treat both as one problem usually pick a single algorithm that suits neither well.
+
 ### 35.2 Reference solution outline
 
 (a) Bills of lading: sign with ML-DSA-65 alongside the existing ECDSA signature during transition (dual signatures in the document format), add trusted timestamps, and plan re-timestamping (archive timestamp renewal) so that evidence remains valid if an algorithm weakens. (b) Firmware: final bootloader version accepts two verification keys — LMS (SP 800-208, verify-only on device, signing in HSM with state control) and ML-DSA-44 — so that compromise or breakage of one leaves the other; sign every image with both.
 
+Both parts use two algorithms for the same reason: long life with no second chance.
+
 ### 35.3 Panel critique
 
 Legal asks whether dual signatures confuse courts — answer: document policy states either valid signature suffices during transition, both required after a date. Operations asks about signing throughput — LMS capacity sized per Chapter 32. Security asks why not SLH-DSA for firmware — its larger signatures (7.8 kB+ for the small variant) may exceed boot-time and storage budgets on the smallest devices, but it remains a candidate for others.
+
+Each answer refers back to a decision already made, which is what the panel wants to see: evidence, not new opinions.
 
 ### 35.4 Common errors and limits
 
 - Single-algorithm trust anchors for devices that cannot be updated again.
 - Ignoring long-term validation and timestamp renewal.
 - Choosing stateful signatures without state management capability.
+
+Devices that cannot receive another bootloader update need two trust anchors now, since there is no later chance to add one. Legal evidence must remain valid for twelve years, which requires timestamp renewal if an algorithm weakens. Stateful signatures without HSM-enforced state risk index reuse after a restore, so teams lacking that capability should prefer ML-DSA or SLH-DSA.
 
 ### Engineering note
 
@@ -2283,6 +2364,8 @@ You will (1) budget bytes and computation for post-quantum handshakes; (2) measu
 
 ML-KEM adds about 2.3 kB to a hybrid TLS handshake (1,216-byte client share plus 1,120-byte server share). Post-quantum certificates add far more: each ML-DSA-44 certificate carries a 1,312-byte key and a 2,420-byte signature; a chain plus CertificateVerify and Certificate Transparency signatures can exceed 15 kB — beyond TCP's initial congestion window in many configurations, costing an extra round trip.
 
+Key exchange fits in two TCP segments, while a post-quantum certificate chain may need an extra round trip on its own. That is why BPA migrates key exchange first and treats certificates as a separate project.
+
 ### 36.2 Practical activity — Lab B
 
 ```python
@@ -2310,23 +2393,33 @@ SLH-DSA-SHA2-128s    ~ 40144 bytes of certificates and signatures
 
 The ~400-byte per-certificate overhead and the two embedded SCT signatures are simplifying assumptions; real sizes vary. The result explains why authentication migration on the public web is harder than key exchange and why proposals to reduce chain size (such as abridged or merkle-tree certificates) are active research topics.
 
+Reading the output, an ML-DSA-44 chain is about twelve times the size of the ECDSA one, and the SLH-DSA small variant is about thirty times larger. Rerun with `scts=0` to see how much the transparency signatures contribute.
+
 ### 36.3 Computation
 
 ML-KEM operations are fast — often faster than X25519 on servers with vector instructions. ML-DSA signing and verification are fast; SLH-DSA signing is slow (milliseconds to seconds depending on variant). Server capacity planning therefore focuses on bandwidth and signing services rather than KEM CPU.
+
+For BPA, this shifts planning toward bandwidth on vessel satellite links and toward the throughput of the central signing service. SLH-DSA's slow signing is acceptable for an offline root that signs rarely, but not for signing thousands of documents an hour.
 
 ### 36.4 Measurement
 
 Measure handshake latency percentiles (p50, p95, p99) by client type and network path before and after; throughput of signing services; HSM operations per second for new algorithms. Report distributions, not averages.
 
+Averages hide the tail, where the users with poor links sit; a p99 increase of a few milliseconds may hide a few connections that time out entirely. BPA records latency by client type and path because vessels on satellite links behave very differently from office browsers. Measurements are taken for a week before and after each change so that normal daily variation does not mislead the comparison.
+
 ### 36.5 Worked example
 
 BPA measures edge handshakes: p50 latency +0.4 ms, p99 +3 ms after enabling X25519MLKEM768 (synthetic); within budget. A test of an ML-DSA-65 chain on a satellite link to a vessel shows an extra round trip (+600 ms) — so vessel connections keep classical certificates longer and get session resumption tuned.
+
+The edge result shows ML-KEM's cost is small on terrestrial links. The vessel result shows that the large chain, not the key exchange, causes the extra round trip, as Lab B predicted: over 15 kB of authentication data exceeds the initial congestion window. Session resumption avoids sending the chain again on repeat connections.
 
 ### 36.6 Common errors and limits
 
 - Benchmarking only CPU.
 - Averages instead of tail latency.
 - Ignoring congestion-window effects of large chains.
+
+CPU benchmarks show ML-KEM as faster than X25519 yet miss the bandwidth costs that dominate on slow links. Averages hide the vessels' slow connections in the p99 tail. Large chains that exceed the congestion window add a full round trip, which on a 600-millisecond satellite link costs more than all the computation combined. BPA's plan measures each device class and network path separately for exactly this reason.
 
 ### Engineering note
 
