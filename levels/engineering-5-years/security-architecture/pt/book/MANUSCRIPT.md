@@ -1,7 +1,7 @@
 # Arquitetura e Engenharia de Segurança: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 122, curso de engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–34 de 50 já estão escritos em português, com os exercícios EX001–EX102 e suas resoluções com rubricas de 0 a 3 e 10 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 35–50 (EX103–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–42 de 50 já estão escritos em português, com os exercícios EX001–EX126 e suas resoluções com rubricas de 0 a 3 e 13 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 43–50 (EX127–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que vão projetar, verificar e operar sistemas seguros.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios calculam crescimento, fecho transitivo, probabilidades, disponibilidade, árvores de falhas, limites de taxa, diferenças entre regras, métricas e digests sobre dados sintéticos, e usam sqlite3 em memória para mostrar a injeção e sua correção; nada toca um sistema real. Projetos de produção usam produtos e padrões consagrados; nunca crie sua própria criptografia. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ Saltzer e Schroeder (1975), [doi:10.1109/PROC.1975.9939](https://doi.org/10.1109
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) · [41](#ch-41) · [42](#ch-42) |
 
-Capítulos 35–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-35), até a chegada dos próximos lotes.
+Capítulos 43–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-43), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1578,11 +1578,382 @@ Os gateways se tornam pontos únicos de falha e precisam ser resilientes. Os con
 
 - **EX102 — Matriz no vazamento.** Como a matriz de responsabilidades ajudou durante o vazamento do parceiro? *Rubrica:* 3 = esclareceu quem notifica os passageiros e quais tokens a Corvia revoga;; 2 = clareza;; 1 = nenhuma;; 0 = nenhuma.
 
+<a id="ch-35"></a>
+
+## Capítulo 35 — Ateliê de projeto II
+
+### Objetivos de aprendizagem
+
+Você vai (1) liderar um projeto multidisciplinar de um sistema maior; (2) conciliar requisitos conflitantes das partes interessadas; (3) produzir um pacote de projeto adequado para revisão independente.
+
+### 35.1 O briefing
+
+O Ateliê de Projeto II é maior: Sofia lidera uma equipe de seis pessoas, incluindo dois estudantes de outras engenharias, para projetar a arquitetura de segurança da futura bilhetagem baseada em conta (account-based ticketing) da Corvia, em que os passageiros aproximam cartões bancários ou celulares e as tarifas são calculadas no back-office, em vez de armazenadas nos cartões. O briefing inclui requisitos de privacidade, pagamento, acessibilidade e operação. O papel de Sofia é coordenar, não decidir tudo. Ela cria um registro de decisões compartilhado, atribui uma área a cada membro da equipe e faz breves reuniões diárias para que os conflitos apareçam cedo.
+
+### 35.2 Conciliar conflitos
+
+Os requisitos colidem. Os analistas de fraude querem históricos de viagem detalhados guardados por dois anos; a responsável pela privacidade quer noventa dias; o atendimento ao cliente quer os históricos visíveis aos atendentes para as contestações; a responsável pela acessibilidade quer uma recuperação de conta simples para passageiros que perdem o celular, o que os analistas de fraude temem que permita o sequestro de contas. Sofia conduz uma sessão em que cada lado declara a necessidade subjacente. O resultado: dados detalhados por noventa dias, atributos agregados de fraude por dois anos, telas dos atendentes mostrando só as viagens contestadas e recuperação por meio de aproximações verificadas do cartão bancário, em vez de perguntas de segurança. Cada acordo é registrado com sua justificativa.
+
+### 35.3 O pacote de projeto
+
+O pacote final contém a declaração de contexto, os requisitos com métodos de verificação, os modelos de componentes e de fluxo de dados, o modelo de ameaças, a análise de alternativas, as especificações dos controles, os níveis de degradação, as questões em aberto e o registro de decisões. Sofia verifica que todo requisito se liga a controles e testes. O pacote vai para um revisor independente de outra universidade, que identifica duas lacunas: nenhum plano para o comprometimento de chaves no serviço de tokenização e um responsável pouco claro pelas solicitações de exclusão de dados dos passageiros. A equipe de Sofia acrescenta as duas coisas. Produzir um pacote que outras pessoas possam revisar é a entrega, mais do que qualquer diagrama isolado.
+
+### Exemplo resolvido
+
+Sofia lidera um ateliê de seis pessoas sobre a bilhetagem baseada em conta, concilia quatro requisitos conflitantes por meio das necessidades declaradas e monta um pacote revisável que fecha duas lacunas encontradas por um revisor externo.
+
+> **Caso sintético.** O ateliê, a equipe e o revisor são sintéticos.
+
+### Erros e limites
+
+Os acordos do ateliê podem não sobreviver a negociações reais. A completude do pacote não garante a qualidade do projeto.
+
+### Exercícios
+
+- **EX103 — Papel da líder.** Qual é o principal papel de Sofia como líder do ateliê? *Rubrica:* 3 = coordenar, fazer os conflitos aparecerem e manter um registro de decisões, não decidir tudo;; 2 = coordenar;; 1 = decidir tudo;; 0 = nenhuma.
+
+- **EX104 — Acordo de retenção.** A que acordo de retenção a equipe chegou? *Rubrica:* 3 = dados detalhados por 90 dias, atributos agregados de fraude por dois anos;; 2 = os dois;; 1 = um;; 0 = nenhuma.
+
+- **EX105 — Lacunas do revisor.** Que duas lacunas o revisor independente encontrou? *Rubrica:* 3 = nenhum plano de comprometimento de chaves para a tokenização; responsável pouco claro pelas solicitações de exclusão;; 2 = as duas;; 1 = uma;; 0 = nenhuma.
+
+<a id="ch-36"></a>
+
+## Capítulo 36 — Arquitetura e engenharia de segurança: desempenho e escala
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar o custo de desempenho dos controles de segurança; (2) dimensionar o rate limiting com um token bucket; (3) projetar controles que escalem com a demanda.
+
+### 36.1 O custo dos controles
+
+Todo controle consome recursos. Os handshakes de TLS custam CPU; a verificação de assinaturas acrescenta latência a cada registro; o logging consome armazenamento e banda de rede; a inspeção profunda deixa o tráfego mais lento. Em pequena escala, esses custos são invisíveis, mas a bilhetagem baseada em conta vai processar milhões de validações por dia. Sofia mede o custo de cada controle num laboratório e estima os totais no pico. Ela descobre que a verificação de assinaturas é barata por registro, mas se acumula, enquanto um logging de debug verboso excederia os orçamentos de armazenamento em semanas. Medir os custos cedo evita pressões futuras para desligar controles quando o desempenho sofre.
+
+### 36.2 Dimensionar o token bucket
+
+O gateway de parceiros do capítulo 34 precisa limitar as taxas de requisição sem bloquear picos legítimos, como muitas compras de passagens antes de um show. Sofia modela um token bucket: os tokens são repostos a uma taxa constante, cada requisição consome um, e a capacidade do bucket permite rajadas curtas. O laboratório abaixo simula uma rajada sintética de requisições contra dois tamanhos de bucket com a mesma taxa de reposição. O bucket pequeno rejeita muitas requisições legítimas durante a rajada; o maior absorve quase toda ela e ainda limita o abuso prolongado. O dimensionamento vem do tráfego observado, e não de palpites.
+
+### Laboratório — Tratamento de rajadas com token bucket
+
+```python
+# Token bucket vs synthetic burst: 20 req/s refill, burst of 300 requests over 5 s.
+def run(capacity, refill=20.0, seconds=20):
+    tokens, rejected = capacity, 0
+    for t in range(seconds):
+        tokens = min(capacity, tokens + refill)
+        demand = 60 if 5 <= t < 10 else 10
+        ok = min(demand, int(tokens)); tokens -= ok; rejected += demand - ok
+    return rejected
+for cap in (20, 200):
+    print(f"capacity {cap:3d}: rejected {run(cap)} of {5*60 + 15*10} requests")
+```
+
+Execute com `python3 lab_bucket.py`. Saída verificada:
+
+```text
+capacity  20: rejected 200 of 450 requests
+capacity 200: rejected 20 of 450 requests
+```
+
+### 36.3 Projetar para escala
+
+Controles que funcionam para um servidor podem não escalar. Um serviço central de autorização chamado a cada validação vira um gargalo e um ponto único de falha. Sofia propõe guardar em cache as decisões de autorização com vida curta, distribuir a verificação aos nós de ingestão com chaves públicas compartilhadas e particionar os logs por tempo e região. Cada mudança mantém a propriedade de segurança e melhora a escala, e cada uma introduz uma nova consideração, como a rapidez com que as decisões em cache refletem as revogações. Ela documenta esses tradeoffs para que a equipe de operações entenda por que, por exemplo, um token de parceiro revogado pode funcionar por até um minuto.
+
+### Exemplo resolvido
+
+Sofia mede os custos dos controles, dimensiona um token bucket para as rajadas de shows e redesenha a autorização e o logging para escalar, documentando os atrasos de revogação ligados ao cache.
+
+> **Caso sintético.** O tráfego, os custos e os parâmetros do bucket são sintéticos.
+
+### Erros e limites
+
+As medições de laboratório podem não refletir o hardware de produção. Os caches criam janelas em que direitos revogados ainda funcionam.
+
+### Exercícios
+
+- **EX106 — Custo oculto.** Que controle excederia os orçamentos de armazenamento em semanas? *Rubrica:* 3 = logging de debug verboso;; 2 = logging;; 1 = TLS;; 0 = nenhuma.
+
+- **EX107 — Comparação dos buckets.** Como os dois tamanhos de bucket lidaram com a rajada sintética? *Rubrica:* 3 = capacidade 20 rejeitou 200 de 450; capacidade 200 rejeitou 20;; 2 = os dois;; 1 = iguais;; 0 = nenhuma.
+
+- **EX108 — Tradeoff do cache.** Que tradeoff o cache das decisões de autorização introduz? *Rubrica:* 3 = direitos revogados podem continuar funcionando até o cache expirar;; 2 = atraso na revogação;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-37"></a>
+
+## Capítulo 37 — Arquitetura e engenharia de segurança: operações
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar as operações de segurança para a nova arquitetura; (2) definir casos de uso de detecção a partir do modelo de ameaças; (3) planejar a aplicação de patches e a gestão de mudanças preservando as propriedades de segurança.
+
+### 37.1 Operações desde o projeto
+
+Uma arquitetura só é tão boa quanto sua operação. Sofia trabalha com o centro de operações da Corvia para planejar como o novo back-office será operado com segurança: quem monitora quais alertas, quem pode mudar configurações, como os incidentes são escalados e como os acessos são revisados. Ela usa o NIST CSF 2.0, cujas funções são govern, identify, protect, detect, respond e recover, para verificar se cada função tem responsáveis e procedimentos para o novo sistema. Planejar as operações durante o projeto evita construir sistemas que ninguém consegue monitorar ou manter adequadamente depois que a equipe do projeto sai.
+
+### 37.2 Detecção a partir das ameaças
+
+Sofia transforma as ameaças do capítulo 23 em casos de uso de detecção. Para registros de validação repetidos: alertar quando as rejeições por replay de um validador excederem um limiar. Para tabelas de tarifas maliciosas: alertar sobre qualquer versão não publicada. Para a exportação de dados de viagem por insiders: alertar quando as exportações excederem o volume normal ou ocorrerem fora do horário de trabalho. Cada caso de uso lista a fonte de dados, a lógica, os falsos positivos esperados e o playbook de resposta. Derivar a detecção do modelo de ameaças garante que o monitoramento se concentre no que importa para este sistema, e não em alertas genéricos copiados de modelos de fornecedores.
+
+### 37.3 Patches e mudanças
+
+As mudanças podem quebrar propriedades de segurança. Sofia define um processo de mudanças em que qualquer mudança que toque autenticação, criptografia, regras de rede ou logging precisa de revisão de segurança e de uma nova execução dos testes de verificação relevantes dos capítulos 30 e 40. Os patches de rotina seguem um calendário, com caminhos de emergência para vulnerabilidades críticas. Ela também exige que o modelo de arquitetura seja atualizado quando uma mudança alterar fluxos ou componentes. Daniel observa que a maioria das organizações não tem dificuldade em projetar sistemas seguros, e sim em mantê-los seguros ao longo de anos de pequenas mudanças bem-intencionadas.
+
+### Exemplo resolvido
+
+Sofia relaciona o back-office às funções do CSF 2.0, deriva três casos de uso de detecção do modelo de ameaças e define um processo de mudanças com nova verificação de segurança.
+
+> **Caso sintético.** Os casos de uso e os processos são sintéticos; o NIST CSF 2.0 é real.
+
+### Erros e limites
+
+Os limiares de detecção precisam de ajuste depois do lançamento. Os processos de mudança podem virar gargalos se toda mudança exigir revisão completa.
+
+### Exercícios
+
+- **EX109 — Funções do CSF.** Liste as seis funções do CSF 2.0. *Rubrica:* 3 = govern, identify, protect, detect, respond, recover;; 2 = cinco;; 1 = três;; 0 = nenhuma.
+
+- **EX110 — Detecção de exportação por insider.** Como a exportação de dados de viagem por um insider é detectada? *Rubrica:* 3 = alerta sobre volume de exportação incomum ou exportações fora do horário;; 2 = volume ou horário;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX111 — Gatilho de revisão.** Que mudanças precisam de revisão de segurança e nova verificação? *Rubrica:* 3 = as que tocam autenticação, criptografia, regras de rede ou logging;; 2 = três;; 1 = todas as triviais;; 0 = nenhuma.
+
+<a id="ch-38"></a>
+
+## Capítulo 38 — Arquitetura e engenharia de segurança: validação
+
+### Objetivos de aprendizagem
+
+Você vai (1) distinguir validação de verificação; (2) validar a arquitetura contra as necessidades das partes interessadas e o uso real; (3) usar exercícios de red team e estudos com usuários como evidência de validação.
+
+### 38.1 Construir o sistema certo
+
+A verificação perguntou se o sistema foi construído conforme especificado; a validação pergunta se a especificação atende às necessidades reais. Um sistema perfeitamente verificado ainda pode falhar com seus usuários ou deixar passar ameaças reais. Sofia planeja a validação do back-office: revisar com as partes interessadas se as necessidades de privacidade são de fato atendidas na prática diária, observar os atendentes usando as telas de contestação e contratar um exercício de red team autorizado para testar se atacantes realistas conseguem atingir seus objetivos apesar dos controles. A validação muitas vezes encontra problemas nos próprios requisitos, que nenhuma quantidade de verificação revelaria.
+
+### 38.2 Achados do red team
+
+Um red team autorizado de uma empresa especializada, trabalhando sob regras de engajamento escritas que excluem dados reais de passageiros e veículos, tenta obter históricos de viagem. Eles não quebram nenhuma criptografia; em vez disso, aplicam phishing a um atendente e usam o acesso legítimo dele para consultar as viagens de pessoas escolhidas. Todos os controles funcionaram conforme especificado. O achado mostra uma lacuna de requisito: os atendentes podiam consultar qualquer cartão sem uma contestação vinculada. Sofia acrescenta um requisito de que as consultas exigem um caso aberto e são revisadas, algo que a verificação nunca teria encontrado.
+
+### 38.3 Estudos com usuários
+
+Sofia também observa seis atendentes lidando com contestações sintéticas. Eles acham as novas telas confusas e compartilham anotações numa ferramenta de chat, copiando detalhes das viagens para fora do sistema protegido. Isso é uma falha de validação da aceitabilidade psicológica. A equipe redesenha as telas para mostrar as anotações do caso dentro do sistema e elimina a necessidade de copiar dados. Sofia observa que controles de segurança que ignoram os padrões reais de trabalho empurram as pessoas para contornos que minam a arquitetura, então os estudos com usuários são uma atividade de segurança, e não só de usabilidade.
+
+### Exemplo resolvido
+
+Sofia planeja a validação; um red team obtém dados de viagem por meio do acesso legítimo de um atendente vítima de phishing, revelando uma lacuna de requisito, e um estudo com usuários encontra dados copiados para o chat, o que leva ao redesenho das telas.
+
+> **Caso sintético.** O red team, os atendentes e os achados são sintéticos.
+
+### Erros e limites
+
+Os exercícios de red team cobrem apenas os caminhos tentados. Usuários observados podem se comportar de outro modo quando sabem que estão sendo observados.
+
+### Exercícios
+
+- **EX112 — Validação versus verificação.** Como a validação difere da verificação? *Rubrica:* 3 = a validação verifica se a especificação atende às necessidades reais; a verificação, se a construção corresponde à especificação;; 2 = as duas;; 1 = iguais;; 0 = nenhuma.
+
+- **EX113 — Caminho do red team.** Como o red team obteve os históricos de viagem? *Rubrica:* 3 = aplicou phishing a um atendente e usou o acesso legítimo para consultar cartões escolhidos;; 2 = phishing;; 1 = quebrou a criptografia;; 0 = nenhuma.
+
+- **EX114 — Causa do contorno.** Por que os atendentes copiavam dados para o chat? *Rubrica:* 3 = as telas eram confusas e não tinham anotações de caso;; 2 = usabilidade;; 1 = má-fé;; 0 = nenhuma.
+
+<a id="ch-39"></a>
+
+## Capítulo 39 — Arquitetura e engenharia de segurança: manutenibilidade
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar uma segurança manutenível ao longo de uma vida longa; (2) planejar a agilidade criptográfica e a substituição de componentes; (3) gerenciar a dívida técnica nos controles de segurança.
+
+### 39.1 Sistemas de vida longa
+
+Os sistemas de transporte funcionam por décadas. Validadores comprados hoje podem ainda estar operando daqui a quinze anos, muito depois de suas bibliotecas de software deixarem de receber atualizações. Sofia estuda a manutenibilidade: a facilidade de mudar um sistema com segurança. Para a segurança, isso significa a capacidade de aplicar patches a componentes, rotacionar chaves, substituir algoritmos e atualizar regras sem redesenho. Ela revisa o projeto do back-office quanto à manutenibilidade e descobre que o componente de verificação das tarifas tem um único algoritmo de assinatura e uma única chave fixos no código, o que tornaria as mudanças futuras arriscadas e lentas. Ela propõe a seleção de chaves e algoritmos orientada por configuração, com formatos versionados.
+
+### 39.2 Agilidade criptográfica
+
+Os algoritmos envelhecem. O NIST publicou em 2024 os padrões pós-quânticos FIPS 203, 204 e 205, e as organizações vão precisar migrar dos algoritmos de chave pública atuais nos próximos anos. Sofia projeta o formato de assinatura das tarifas com um campo de versão e um identificador de algoritmo, para que o back-office possa aceitar tanto os tipos de assinatura atuais quanto os futuros durante uma transição. Ela inventaria cada lugar em que a criptografia de chave pública é usada, um pré-requisito para planejar a migração. Agilidade não significa suportar todos os algoritmos; significa ser capaz de mudar deliberadamente, com procedimentos testados, quando a mudança se tornar necessária.
+
+### 39.3 Dívida técnica de segurança
+
+Os atalhos se acumulam: uma exceção concedida para uma demonstração que nunca foi removida, uma regra de firewall acrescentada durante um incidente e esquecida, um protocolo obsoleto mantido por causa de um parceiro antigo. Sofia cria um registro de dívida de segurança que lista cada item, seu risco, seu responsável e o plano para removê-lo. Os itens são revistos a cada trimestre, e as novas exceções precisam ter datas de expiração. Ela apresenta o registro ao comitê de arquitetura como parte normal da manutenção, e não como uma confissão. Tornar a dívida visível permite que a organização a pague deliberadamente, em vez de descobri-la durante um incidente.
+
+### Exemplo resolvido
+
+Sofia substitui um algoritmo de assinatura fixo no código por uma seleção versionada e orientada por configuração, inventaria o uso de chave pública para o planejamento pós-quântico e inicia um registro de dívida de segurança.
+
+> **Caso sintético.** Os componentes e os itens de dívida são sintéticos; os FIPS 203, 204 e 205 são reais.
+
+### Erros e limites
+
+A agilidade acrescenta complexidade e riscos de downgrade se algoritmos antigos continuarem aceitos por tempo demais. Os registros de dívida precisam da atenção da alta direção para serem eficazes.
+
+### Exercícios
+
+- **EX115 — Problema do código fixo.** Que problema de manutenibilidade Sofia encontrou na verificação das tarifas? *Rubrica:* 3 = algoritmo de assinatura e chave fixos no código;; 2 = fixo no código;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX116 — Viabilizador da agilidade.** Que características do formato viabilizam a agilidade criptográfica das assinaturas de tarifas? *Rubrica:* 3 = um campo de versão e um identificador de algoritmo;; 2 = os dois;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX117 — Registro de dívida.** O que cada entrada do registro de dívida de segurança inclui? *Rubrica:* 3 = risco, responsável e plano de remoção;; 2 = três;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-40"></a>
+
+## Capítulo 40 — Laboratório de verificação II
+
+### Objetivos de aprendizagem
+
+Você vai (1) verificar a segmentação da rede contra uma matriz de fluxos aprovada; (2) automatizar a verificação de configuração; (3) relatar desvios com evidências.
+
+### 40.1 A matriz de fluxos como especificação
+
+O projeto de rede do back-office define uma matriz de fluxos aprovada: quais zonas podem se conectar a quais, em quais portas. No Laboratório de Verificação II, Sofia verifica se as regras de firewall implementadas correspondem à matriz. Uma regra que permite um fluxo fora da matriz é acesso em excesso; um fluxo da matriz sem regra é uma função quebrada. Ela exporta regras de firewall sintéticas do ambiente de laboratório e as compara programaticamente com a matriz, em vez de ler centenas de regras a olho, o que é lento e sujeito a erros. O próprio script é revisado como qualquer outro controle.
+
+### 40.2 Comparação automatizada
+
+O script de Sofia lê a matriz aprovada e as regras exportadas, normaliza-as e calcula as diferenças. O laboratório abaixo roda sobre dados sintéticos e relata duas regras em excesso, uma que permite que as estações de trabalho da equipe alcancem diretamente o banco de viagens e uma regra any-to-any que sobrou dos testes, e um fluxo ausente da ingestão para o coletor de logs. A comparação roda automaticamente depois de cada mudança, transformando uma auditoria pontual numa verificação contínua. Ela guarda as saídas como evidências ligadas aos tickets de mudança, para que os auditores vejam quando cada desvio apareceu e quando foi fechado.
+
+### Laboratório — Regras de firewall contra a matriz de fluxos
+
+```python
+# Compare synthetic firewall rules with an approved zone flow matrix.
+approved = {("validators", "ingestion", 443), ("ingestion", "journey-db", 5432), ("ingestion", "logging", 6514),
+            ("reporting", "journey-db", 5432), ("admin-jump", "ingestion", 22)}
+rules = ["validators ingestion 443", "ingestion journey-db 5432", "reporting journey-db 5432",
+         "admin-jump ingestion 22", "staff-ws journey-db 5432", "any any any"]
+impl = {(a, b, int(p) if p != "any" else p) for a, b, p in (r.split() for r in rules)}
+for x in sorted(impl - approved, key=str): print("EXCESS ", *x)
+for x in sorted(approved - impl, key=str): print("MISSING", *x)
+```
+
+Execute com `python3 lab_flows.py`. Saída verificada:
+
+```text
+EXCESS  any any any
+EXCESS  staff-ws journey-db 5432
+MISSING ingestion logging 6514
+```
+
+### 40.3 Relatar desvios
+
+Cada desvio vira um achado com a regra, a entrada da matriz que ela viola, o risco e uma correção proposta. A regra any-to-any é crítica porque anula completamente a segmentação; a regra da estação de trabalho para o banco de dados é alta, porque recria o contorno encontrado no capítulo 22; o fluxo de logging ausente é médio, porque enfraquece a detecção em silêncio. O relatório de Sofia também declara o que a verificação cobre: a configuração das regras, não o comportamento em tempo de execução, então um teste complementar envia tráfego sintético para confirmar a aplicação. As evidências de verificação são mais fortes quando as verificações de configuração e os testes de comportamento concordam.
+
+### Exemplo resolvido
+
+Sofia compara regras de firewall sintéticas com a matriz de fluxos aprovada, encontra duas regras em excesso e um fluxo ausente, classifica-os e acrescenta testes de comportamento.
+
+> **Caso sintético.** As zonas, as regras e a matriz são sintéticas.
+
+### Erros e limites
+
+As exportações de configuração podem não refletir as regras em vigor. As matrizes precisam ser mantidas atualizadas, ou a verificação confere o alvo errado.
+
+### Exercícios
+
+- **EX118 — Excesso versus ausência.** Qual é a diferença entre uma regra em excesso e um fluxo ausente? *Rubrica:* 3 = o excesso permite acesso não aprovado; a ausência quebra uma função aprovada;; 2 = os dois;; 1 = iguais;; 0 = nenhuma.
+
+- **EX119 — Desvios do laboratório.** Que desvios o laboratório relatou? *Rubrica:* 3 = excesso estação-da-equipe-para-banco-de-viagens e any-to-any; ausência ingestão-para-logging;; 2 = três;; 1 = um;; 0 = nenhuma.
+
+- **EX120 — Declaração de cobertura.** O que a verificação de configuração não cobre? *Rubrica:* 3 = o comportamento de aplicação em tempo de execução;; 2 = tempo de execução;; 1 = tudo coberto;; 0 = nenhuma.
+
+<a id="ch-41"></a>
+
+## Capítulo 41 — Arquitetura e engenharia de segurança: otimização do sistema
+
+### Objetivos de aprendizagem
+
+Você vai (1) formular a seleção de controles como uma otimização sob orçamento; (2) comparar a seleção gulosa e a exaustiva sobre dados sintéticos; (3) reconhecer os limites da otimização numérica na segurança.
+
+### 41.1 Escolher sob restrições
+
+O orçamento de segurança da Corvia para o próximo ano não consegue financiar todos os controles propostos. Sofia formula a escolha como uma otimização: cada controle candidato tem um custo e uma redução de risco estimada a partir da avaliação de risco do capítulo 24, e o objetivo é maximizar a redução total dentro do orçamento. Essa é uma versão do problema da mochila da matemática discreta. Formular a decisão assim torna as premissas explícitas e permite que as partes interessadas vejam por que um controle foi preferido a outro, em vez de depender de quem argumenta mais alto numa reunião de orçamento.
+
+### 41.2 Guloso versus exaustivo
+
+Sofia compara dois métodos sobre oito controles candidatos sintéticos. Um método guloso escolhe os controles em ordem de redução por unidade de custo até esgotar o orçamento. Uma busca exaustiva testa todas as combinações, o que é viável aqui porque oito itens dão só 256 subconjuntos. O laboratório abaixo mostra que a seleção gulosa chega perto, mas perde a melhor combinação, porque enche o orçamento com itens pequenos e eficientes e não deixa espaço para um controle grande e valioso. Em problemas maiores, a busca exaustiva se torna impossível, e os engenheiros usam algoritmos melhores ou aceitam aproximações conscientemente.
+
+### Laboratório — Seleção de controles gulosa e exaustiva
+
+```python
+# Greedy vs exhaustive control selection under budget (synthetic costs and risk reductions).
+from itertools import combinations
+C = {"mfa-admins": (8, 10), "egress-filter": (15, 13), "log-review": (20, 14), "hsm-keys": (50, 34),
+     "edr-depots": (35, 20), "phish-training": (12, 9), "backup-offline": (25, 17), "waf": (30, 15)}
+B = 100
+g, cost, val = [], 0, 0
+for k, (c, v) in sorted(C.items(), key=lambda kv: kv[1][1] / kv[1][0], reverse=True):
+    if cost + c <= B: g.append(k); cost += c; val += v
+best = max((s for r in range(len(C) + 1) for s in combinations(C, r) if sum(C[k][0] for k in s) <= B),
+           key=lambda s: sum(C[k][1] for k in s))
+print(f"greedy:     value {val}, cost {cost}, {sorted(g)}")
+print(f"exhaustive: value {sum(C[k][1] for k in best)}, cost {sum(C[k][0] for k in best)}, {sorted(best)}")
+```
+
+Execute com `python3 lab_knapsack.py`. Saída verificada:
+
+```text
+greedy:     value 63, cost 80, ['backup-offline', 'egress-filter', 'log-review', 'mfa-admins', 'phish-training']
+exhaustive: value 74, cost 98, ['backup-offline', 'egress-filter', 'hsm-keys', 'mfa-admins']
+```
+
+### 41.3 Limites dos números
+
+A otimização só é tão boa quanto seus dados de entrada. As estimativas de redução de risco são incertas, os controles interagem, de modo que dois controles podem se sobrepor em vez de se somar, e alguns controles são obrigatórios para a conformidade, qualquer que seja a pontuação. Sofia roda a seleção com estimativas baixas e altas e mostra quais controles são escolhidos em todos os cenários; essas são as escolhas robustas. Ela apresenta o resultado como apoio à decisão, e não como uma decisão. Daniel acrescenta que o principal valor do exercício é a conversa que ele força sobre as estimativas, que muitas vezes revela que ninguém sabe quanto um controle popular de fato reduz o risco.
+
+### Exemplo resolvido
+
+Sofia formula os controles do próximo ano como um problema da mochila com orçamento, mostra a seleção gulosa perdendo o ótimo em dados sintéticos e identifica as escolhas robustas nas faixas de estimativa.
+
+> **Caso sintético.** Os controles, os custos e as reduções são sintéticos.
+
+### Erros e limites
+
+A redução de risco aditiva é irrealista quando os controles se sobrepõem. Os controles obrigatórios precisam ser fixados antes da otimização.
+
+### Exercícios
+
+- **EX121 — Tipo de problema.** A que problema clássico a seleção de controles com orçamento se assemelha? *Rubrica:* 3 = o problema da mochila;; 2 = mochila;; 1 = ordenação;; 0 = nenhuma.
+
+- **EX122 — Deficiência do guloso.** No laboratório, como a seleção gulosa se comparou ao ótimo exaustivo? *Rubrica:* 3 = o guloso chegou a 63 com custo 80; o ótimo foi 74 com custo 98 e incluiu hsm-keys;; 2 = os dois valores;; 1 = iguais;; 0 = nenhuma.
+
+- **EX123 — Escolha robusta.** O que torna um controle uma escolha robusta? *Rubrica:* 3 = ele é selecionado tanto com as estimativas baixas quanto com as altas;; 2 = os dois cenários;; 1 = maior pontuação;; 0 = nenhuma.
+
+<a id="ch-42"></a>
+
+## Capítulo 42 — Arquitetura e engenharia de segurança: pesquisa aplicada
+
+### Objetivos de aprendizagem
+
+Você vai (1) formular uma pergunta de pesquisa aplicada a partir da prática de engenharia; (2) desenhar um pequeno estudo usando dados da Corvia com responsabilidade; (3) relatar os achados com seus limites.
+
+### 42.1 Uma pergunta vinda da prática
+
+O projeto de pesquisa aplicada de Sofia pergunta se os certificados de dispositivo de curta duração, introduzidos no capítulo 31, reduziram a janela em que validadores desativados ainda conseguiam se autenticar. A pergunta vem da prática e importa para a Corvia. Ela define o desfecho como os dias entre a desativação e a última autenticação bem-sucedida, compara os dispositivos desativados antes e depois da mudança e lista rivais, como uma melhoria simultânea nos registros de ativos. Herley e van Oorschot (2017) alertam contra afirmações de segurança que não podem ser testadas; a pergunta dela nomeia exatamente o que mostraria ausência de efeito.
+
+### 42.2 Uso responsável dos dados
+
+O estudo usa os logs operacionais da Corvia, que contêm identificadores de dispositivos, mas nenhum dado de passageiros. Sofia combina com Daniel e com o encarregado de proteção de dados quais campos pode usar, guarda os extratos numa área de projeto com controle de acesso e os exclui depois do estudo. Ela pseudonimiza os identificadores de dispositivos em todas as saídas. Até dados técnicos podem ser sensíveis: uma lista de dispositivos que continuaram se autenticando depois da desativação poderia guiar um atacante até os pontos fracos. Seu relatório, portanto, apresenta agregados e distribuições, não listas de dispositivos, e ela compartilha a lista detalhada apenas com o responsável pelas operações.
+
+### 42.3 Achados com limites
+
+Os dispositivos desativados depois da mudança deixaram de se autenticar numa mediana de dois dias, contra onze dias antes. A melhoria dos registros de ativos aconteceu ao mesmo tempo, então Sofia não consegue separar totalmente as duas causas; ela observa que os dispositivos cujos registros de ativos já eram exatos antes da mudança também melhoraram, o que sustenta fracamente o efeito dos certificados. Ela relata o achado com essa limitação e recomenda o monitoramento contínuo. O projeto lhe ensina que até perguntas modestas de engenharia precisam de um desenho cuidadoso para produzir respostas confiáveis.
+
+### Exemplo resolvido
+
+Sofia estuda a autenticação depois da desativação antes e depois dos certificados de curta duração, usa os logs dentro de limites acordados e relata uma queda de onze para dois dias, registrando um fator de confusão.
+
+> **Caso sintético.** Os logs, os dispositivos e os resultados são sintéticos; Herley e van Oorschot (2017) é real.
+
+### Erros e limites
+
+Desenhos antes e depois não conseguem excluir mudanças simultâneas. Contagens pequenas de dispositivos tornam as medianas instáveis.
+
+### Exercícios
+
+- **EX124 — Definição do desfecho.** Que desfecho Sofia mediu? *Rubrica:* 3 = dias entre a desativação e a última autenticação bem-sucedida;; 2 = definido;; 1 = vago;; 0 = nenhuma.
+
+- **EX125 — Cuidado com a lista de dispositivos.** Por que o relatório evita listar dispositivos individuais? *Rubrica:* 3 = uma lista assim poderia guiar atacantes até os pontos fracos;; 2 = mapa para atacantes;; 1 = sem motivo;; 0 = nenhuma.
+
+- **EX126 — Fator de confusão.** Que fator de confusão limita a conclusão? *Rubrica:* 3 = as melhorias nos registros de ativos aconteceram ao mesmo tempo;; 2 = registros de ativos;; 1 = nenhuma;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX102 (as de EX103–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Sofia Mbeki, Daniel Ferreira, a Kestrel Polytechnic University, a Corvia Regional Transit e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX126 (as de EX127–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Sofia Mbeki, Daniel Ferreira, a Kestrel Polytechnic University, a Corvia Regional Transit e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Que o aumento de cada mês é proporcional ao volume atual, de modo que o crescimento absoluto continua se acelerando.
 
@@ -1787,6 +2158,54 @@ Respostas-modelo para EX001–EX102 (as de EX103–EX150 estão na edição em i
 **EX101.** Vender passagens e consultar tarifas, mas não ler históricos de viagem.
 
 **EX102.** Deixou claro qual parte notificava os passageiros afetados e quais tokens a Corvia deveria revogar.
+
+**EX103.** Coordenar a equipe, manter um registro de decisões compartilhado e fazer os conflitos aparecerem cedo.
+
+**EX104.** Dados de viagem detalhados por noventa dias, com atributos agregados de fraude guardados por dois anos.
+
+**EX105.** Nenhum plano para o comprometimento das chaves do serviço de tokenização e nenhum responsável claro pelas solicitações de exclusão dos passageiros.
+
+**EX106.** O logging de debug verboso nos volumes da bilhetagem baseada em conta.
+
+**EX107.** Com a mesma reposição de 20 por segundo, a capacidade 20 rejeitou 200 de 450 requisições, enquanto a capacidade 200 rejeitou só 20.
+
+**EX108.** Um token ou direito revogado pode continuar funcionando até a decisão em cache expirar, por até um minuto.
+
+**EX109.** Govern, identify, protect, detect, respond e recover.
+
+**EX110.** Alertando quando as exportações excedem o volume normal ou ocorrem fora do horário de trabalho.
+
+**EX111.** Mudanças que afetam autenticação, criptografia, regras de rede ou logging.
+
+**EX112.** A verificação checa se o sistema corresponde à sua especificação; a validação checa se a especificação atende às necessidades reais.
+
+**EX113.** Aplicando phishing a um atendente e usando o acesso legítimo de consulta desse atendente.
+
+**EX114.** Porque as telas eram confusas e não ofereciam lugar para as anotações do caso, então eles usavam o chat.
+
+**EX115.** O componente tinha um único algoritmo de assinatura e uma única chave fixos no código.
+
+**EX116.** Um campo de versão e um identificador de algoritmo no formato assinado.
+
+**EX117.** O risco do item, um responsável e um plano para removê-lo.
+
+**EX118.** Uma regra em excesso permite um acesso que não está na matriz; um fluxo ausente bloqueia algo que a matriz exige.
+
+**EX119.** Regras em excesso das estações de trabalho da equipe para o banco de viagens e uma regra de teste any-to-any, além de um fluxo ausente da ingestão para o logging.
+
+**EX120.** Se as regras são de fato aplicadas em tempo de execução, o que exige testes de tráfego de comportamento.
+
+**EX121.** O problema da mochila: maximizar o valor dentro de um limite de peso, aqui o custo.
+
+**EX122.** O guloso chegou a uma redução de 63 usando 80 do orçamento, enquanto o ótimo exaustivo chegou a 74 com custo 98 ao incluir o grande controle hsm-keys.
+
+**EX123.** Ele é escolhido em todos os cenários de estimativa, do baixo ao alto.
+
+**EX124.** O número de dias entre a desativação de um dispositivo e sua última autenticação bem-sucedida.
+
+**EX125.** Porque uma lista de dispositivos que ainda se autenticavam depois da desativação poderia ajudar um atacante a encontrar pontos fracos.
+
+**EX126.** As melhorias nos registros de ativos ocorreram ao mesmo tempo que a mudança dos certificados.
 
 <a id="references"></a>
 ## Referências
