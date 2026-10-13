@@ -1045,7 +1045,7 @@ O primeiro erro é o caso do portal que o Laboratório T, no Capítulo 17, detec
 
 ### 14.7 Configuração do lado do cliente
 
-Os servidores são só metade da negociação. Os clientes escolhem quais key shares enviar primeiro, e uma previsão errada custa a ida e volta a mais descrita na Seção 14.3. Os navegadores modernos e as bibliotecas atuais enviam o key share híbrido por padrão. Para os SDKs próprios e os clientes internos da KLS, defina a lista de grupos explicitamente no código ou na configuração, teste contra o gateway de homologação e registre a versão da biblioteca nas notas de versão, para que os clientes saibam quais versões do SDK negociam a troca de chaves híbrida.
+Os servidores são só metade da negociação. Os clientes escolhem quais key shares enviar primeiro, e uma previsão errada custa a ida e volta a mais descrita na Seção 14.3. Os navegadores modernos e as bibliotecas atuais enviam o key share híbrido por padrão. Para os SDKs próprios e os clientes internos da KLS, defina a lista de grupos explicitamente no código ou na configuração, teste contra o gateway de homologação e registre a versão da biblioteca nas notas de versão, para que os clientes saibam quais versões do SDK negociam a troca de chaves híbrida. O SDK em Go da KLS, por exemplo, define a lista de grupos na sua própria configuração TLS, de modo que um cliente que atualiza o SDK recebe o key share híbrido sem mudar nenhuma linha de código.
 
 ### Exercícios
 
