@@ -72,7 +72,7 @@ Sam pratica a tradução de parágrafos das ROE em testes de pertinência no pap
 
 Dada a VLAN V e as exclusões E, Sam calcula V\E e depois faz a interseção com a lista proposta do dia, P. Só P∩(V\E) pode ser carregado. Ele testa a calculadora com o SWIFT dentro de V e confirma que ele nunca aparece na saída. Um segundo teste coloca em P um endereço fora de V e confirma que ele também é rejeitado. Juntos, os dois testes cobrem as duas formas pelas quais o escopo falha: hosts excluídos vazando de volta e hosts fora da faixa chegando numa planilha amigável. A saída da calculadora é salva com a data, para que a lista carregada no dia possa ser reproduzida depois.
 
-### 1.9 1.11 Cena
+### 1.9 Filtrando uma planilha de agência
 
 Na segunda-feira, Sam recebe de um líder de TI de agência uma planilha de "hosts interessantes". Ele não a importa. Ele reconstrói o escopo a partir das ROE assinadas: a /26, menos o SWIFT em .20, em interseção com os hosts que têm dono no registro de ativos. Três linhas da planilha somem por estarem fora do escopo; uma some por estar excluída. Ele devolve a lista filtrada com a expressão de conjuntos no e-mail. O líder da agência fica irritado por dez minutos e agradecido quando uma quarta linha é reconhecida como um console de pagamento digitado errado. A aritmética de conjuntos no papel escala melhor que a confiança.
 
@@ -144,7 +144,7 @@ TrackScope, FindingsDesk e PulseMap ficam numa zona de avaliação com conduíte
 
 Um bug do PulseMap certa vez fazia n assumir 1 por padrão. O teste de regressão de Sam define n=0 e espera um bloco de erro, não 100%. Com n igual a 1 por padrão, um único host tocado teria aparecido como 100% de cobertura, exatamente a porcentagem enganosa contra a qual o Capítulo 1 alerta. O teste de regressão agora roda em todo build, e o PulseMap se recusa a desenhar um bloco de cobertura sem um denominador explícito vindo do arquivo de escopo. Um bloco de erro é honesto; um número confiante construído sobre um valor padrão não é. A correção saiu com uma entrada no changelog que nomeia o bug.
 
-### 2.10 2.11 Cena
+### 2.10 Game day com o banco de dados fora do ar
 
 Durante um game day da plataforma, Sam derruba o banco de dados do FindingsDesk. O TrackScope continua negando requisições fora do escopo usando seu cache local, enquanto enfileira rascunhos em disco. O PulseMap mostra um aviso de modo degradado. Nenhum tráfego de teste pode "falhar aberto" só porque um sistema de tickets caiu. A nota do game day vira um slide de vendas sobre por que ferramentas de avaliação são ferramentas de segurança. O próprio cache tem um limite de tempo, de modo que uma queda longa acaba negando tudo. Depois do exercício, a equipe anota por quanto tempo o cache pode ser confiável e quem decide quando ele expira.
 
@@ -216,13 +216,11 @@ Clientes sintéticos nos fixtures usam documentos de identidade obviamente falso
 
 Os repositórios da plataforma falham na CI se strings de alta entropia parecem chaves. Sam coloca na lista de permissão apenas fixtures de teste claramente marcados como FAKE. Uma chave de aparência real num arquivo de teste ainda treina as pessoas a ignorar o aviso; por isso, a marcação é obrigatória. Cada fixture permitido é listado com seu dono e o motivo pelo qual é seguro, e a lista é revisada sempre que as regras de CI mudam. Permitir pelo marcador, e não pelo caminho do arquivo, significa que uma chave real colada numa pasta de fixtures continua sendo pega. Quando a CI bloqueia um commit, o desenvolvedor rotaciona a string mesmo que ela só tenha existido localmente.
 
-### 3.10 3.11 Cena
+### 3.10 Quadro de trechos rejeitados
 
 O quadro de revisão de scripts de Sam exibe três trechos rejeitados: uma chamada requests com verify=False, um subprocess com shell=True sobre um nome de host e um laço de novas tentativas sem jitter. Estagiários novos rubricam o quadro depois de lê-lo. O quadro é bobo e eficaz. Quando Sam quase cola verify=False "só em staging", ele vê as próprias iniciais e para. Cada trecho fica ao lado da versão segura: verify ligado com a CA interna do TRB, um subprocess chamado com uma lista de argumentos e um laço de novas tentativas com limite e backoff.
 
-### 3.11 3.20 Extra
-
-O quadro de trechos rejeitados ganha um quarto exemplo sempre que a CI pega um novo antipadrão. Sam data cada trecho. O quadro é um museu vivo de quase-erros. Cada trecho novo traz uma nota de uma linha sobre o que a CI pegou e por que era perigoso, como uma nova tentativa sem limite contra um host lento. Pede-se aos estagiários que expliquem um trecho com as próprias palavras durante a primeira semana. A nota nomeia a regra, não a pessoa que escreveu o código. A equipe de Sam revisa o quadro todo ano e aposenta os trechos cuja regra de CI se tornou rotina.
+O quadro ganha um quarto exemplo sempre que a CI pega um novo antipadrão. Sam data cada trecho. Cada trecho novo traz uma nota de uma linha sobre o que a CI pegou e por que era perigoso, como uma nova tentativa sem limite contra um host lento. Pede-se aos estagiários que expliquem um trecho com as próprias palavras durante a primeira semana. A nota nomeia a regra, não a pessoa que escreveu o código. A equipe de Sam revisa o quadro todo ano e aposenta os trechos cuja regra de CI se tornou rotina.
 
 ### Exemplo resolvido (TRB sintético)
 
@@ -292,13 +290,11 @@ Antes de enviar, Sam lê o sumário executivo em voz alta para alguém de fora d
 
 Achados que escondem os agentes na voz passiva são reescritos. "Senhas foram reutilizadas" vira "A conta de administrador de empréstimos usava a mesma senha da VPN", quando isso é conhecido. Nomear o sistema torna o achado acionável e testável. Quando o agente não é conhecido, a frase diz isso claramente, por exemplo "os logs não mostram qual administrador mudou a configuração". Isso mantém o achado honesto sem inventar um culpado e aponta direto para a lacuna de logs como uma segunda questão a corrigir. Corrigir o rascunho "os desenvolvedores ignoraram a segurança" exigiu apenas uma frase reescrita que nomeava o sistema e o log ausente.
 
-### 4.10 4.11 Cena
+### 4.10 Reescrevendo um achado acusatório
 
-Um rascunho de achado certa vez dizia "os desenvolvedores ignoraram a segurança". O jurídico pediu reescrita antes do material do conselho. Sam produziu: "O serviço de empréstimos aceitava uma senha privilegiada compartilhada; os logs não conseguem atribuir mudanças a uma pessoa." Os mesmos fatos, num tom financiável. Ele guarda as duas versões nas notas de ensino para mostrar a diferença. As duas versões descrevem a mesma lacuna de logs. A reescrita remove a acusação, mas mantém todos os fatos: uma senha privilegiada compartilhada e nenhuma atribuição nos logs. É por isso que ela sobreviveu à revisão jurídica e ainda disse aos donos do serviço de empréstimos exatamente o que mudar.
+Um rascunho de achado certa vez dizia "os desenvolvedores ignoraram a segurança". O jurídico pediu reescrita antes do material do conselho. Sam produziu: "O serviço de empréstimos aceitava uma senha privilegiada compartilhada; os logs não conseguem atribuir mudanças a uma pessoa." Os mesmos fatos, num tom financiável. Ele guarda as duas versões nas notas de ensino para mostrar a diferença. A reescrita remove a acusação, mas mantém todos os fatos: uma senha privilegiada compartilhada e nenhuma atribuição nos logs. É por isso que ela sobreviveu à revisão jurídica e ainda disse aos donos do serviço de empréstimos exatamente o que mudar.
 
-### 4.11 4.20 Extra
-
-Os troféus de tom são adesivos bobos em achados impressos que os desenvolvedores elogiaram como claros. Sam prefere adesivos a métricas que ninguém lê. Cada adesivo registra qual achado foi elogiado e por quê, para que o próximo relatório possa copiar a clareza, e não apenas o adesivo. Clareza que os desenvolvedores notam é clareza que gera correções. Sam guarda os achados elogiados numa pasta como exemplos para estagiários, ao lado do rascunho reescrito "os desenvolvedores ignoraram a segurança", para que os bons e os maus modelos fiquem visíveis. A contagem de achados fica em segundo plano nos relatórios de Sam, porque um achado claro que é corrigido importa mais que uma lista longa.
+Os troféus de tom são adesivos bobos em achados impressos que os desenvolvedores elogiaram como claros. Sam prefere adesivos a métricas que ninguém lê. Cada adesivo registra qual achado foi elogiado e por quê, para que o próximo relatório possa copiar a clareza, e não apenas o adesivo. Clareza que os desenvolvedores notam é clareza que gera correções. Sam guarda os achados elogiados numa pasta como exemplos para estagiários. A contagem de achados fica em segundo plano nos relatórios de Sam, porque um achado claro que é corrigido importa mais que uma lista longa.
 
 ### Exemplo resolvido (TRB sintético)
 
@@ -368,13 +364,11 @@ O baralho de Sam tem um cartão por framework: SP 800-115, PTES, WSTG, ATT&CK, T
 
 O laboratório doméstico de Sam usa RFC1918 e nunca o DNS do TRB. Misturar a VPN com o dever de casa é um quase-acidente relatado, se acontecer. As faixas privadas RFC1918 em casa não podem colidir com o endereçamento do TRB se Sam nunca conectar a VPN do banco enquanto experimenta. Usar o DNS do TRB em casa vazaria nomes internos e poderia mandar tráfego do laboratório para o banco. Se houver uma confusão, ele a relata como quase-acidente, para que a regra de fronteira possa ser melhorada, em vez de torcer em silêncio para que ninguém tenha notado.
 
-### 5.10 5.11 Cena
+### 5.10 Recusando uma demonstração de invasão
 
 Sam recusa um convite de meetup para demonstrar "como hackeamos nosso banco", embora o trabalho tenha sido autorizado. Capturas de tela viajam. Em vez disso, ele oferece uma palestra sobre desenho de ROE com exemplos sintéticos. Os organizadores aceitam. A contenção diante do uso dual inclui o que você se recusa a apresentar. Uma captura de tela de um achado autorizado do TRB ainda mostra nomes de host reais, versões e fraquezas que talvez ainda não tenham sido corrigidas. Depois de exibida na tela de um meetup, ela não pode ser retirada. A palestra sobre ROE compartilha a lição reutilizável sem os detalhes do banco.
 
-### 5.11 5.20 Extra
-
-As palestras alternativas para meetups usam apenas demonstrações com faixas de documentação. Os slides de Sam são públicos; suas capturas de tela do TRB não são. Faixas de documentação como 198.51.100.0/24 tornam impossível que uma demonstração aponte para um host real, e achados sintéticos não carregam nenhuma informação sobre os sistemas do TRB. Antes de publicar, Sam confere cada slide em busca de nomes internos, IDs de tickets e endereços reais. Suas capturas de tela do TRB ficam dentro do FindingsDesk, onde o acesso é controlado e registrado, e são apagadas quando termina o período de retenção do engajamento. O deck público é revisado uma vez pelo dono das ROE antes da publicação.
+A palestra sobre ROE usa apenas demonstrações com faixas de documentação. Os slides de Sam são públicos; suas capturas de tela do TRB não são. Faixas de documentação como 198.51.100.0/24 tornam impossível que uma demonstração aponte para um host real, e achados sintéticos não carregam nenhuma informação sobre os sistemas do TRB. Antes de publicar, Sam confere cada slide em busca de nomes internos, IDs de tickets e endereços reais. Suas capturas de tela do TRB ficam dentro do FindingsDesk, onde o acesso é controlado e registrado, e são apagadas quando termina o período de retenção do engajamento. O deck público é revisado uma vez pelo dono das ROE antes da publicação.
 
 ### Exemplo resolvido (TRB sintético)
 
@@ -444,13 +438,11 @@ Para os nós vizinhos dos pagamentos, Sam procura conjuntos de corte de arestas 
 
 Cada aresta crítica do grafo cita a fonte de inventário ou de varredura sob as ROE. Arestas sem fonte são removidas. Uma fonte pode ser uma entrada do registro de ativos, uma exportação de regras de firewall ou um resultado de varredura autorizada com sua data. Uma aresta desenhada de memória ou por suposição não pode ser verificada; por isso, não pode sustentar um achado, e deixá-la faria o grafo inteiro parecer mais certo do que é. Quando falta uma fonte, Sam pergunta ao dono e só devolve a aresta ao grafo com evidência.
 
-### 6.10 6.11 Cena
+### 6.10 Encontrando o conjunto de corte
 
-Ao traçar um caminho de um modelo de PC de agência comprometido até o ledger-db, Sam encontra quatro arestas. Remover a aresta web→razão (F3) e exigir o jump host para a administração corta os caminhos perigosos restantes. O grafo não precisava de cinquenta nós — precisava do conjunto de corte. Ele apaga as arestas decorativas do slide. Mostrar quatro arestas e o conjunto de corte fez a discussão da correção levar minutos em vez de uma hora, porque os donos podiam ver exatamente quais duas mudanças importavam. O slide agora mostra apenas as quatro arestas do caminho.
+Ao traçar um caminho de um modelo de PC de agência comprometido até o ledger-db, Sam encontra quatro arestas. Remover a aresta web→razão (F3) e exigir o jump host para a administração corta os caminhos perigosos restantes. O grafo não precisava de cinquenta nós — precisava do conjunto de corte. Mostrar quatro arestas e o conjunto de corte fez a discussão da correção levar minutos em vez de uma hora, porque os donos podiam ver exatamente quais duas mudanças importavam.
 
-### 6.11 6.20 Extra
-
-Os slides de conjunto de corte usam no máximo seis arestas. Sam apaga o resto na frente do público para ensinar foco. Um slide com cinquenta arestas esconde as duas que importam; um slide com seis torna o conjunto de corte visível para um executivo em segundos. Apagar as arestas ao vivo também mostra que as removidas eram contexto, não evidência. Sam mantém o grafo completo no apêndice, com fontes para cada aresta, para que os engenheiros ainda possam conferir seu raciocínio e nada fique escondido da revisão.
+Os slides de conjunto de corte de Sam usam no máximo seis arestas. Ele apaga o resto na frente do público para ensinar foco. Um slide com cinquenta arestas esconde as duas que importam; um slide com seis torna o conjunto de corte visível para um executivo em segundos. Apagar as arestas ao vivo também mostra que as removidas eram contexto, não evidência. Sam mantém o grafo completo no apêndice, com fontes para cada aresta, para que os engenheiros ainda possam conferir seu raciocínio e nada fique escondido da revisão.
 
 ### Exemplo resolvido (TRB sintético)
 
@@ -520,13 +512,11 @@ Banners alimentam o inventário, não o teatro de severidade. Sam registra a exp
 
 Os exemplos na documentação passam por um lint que garante que os IPs sejam de faixas de documentação. O lint de Sam reprovou o rascunho de um post de blog que usava um endereço real do TRB; boa captura. O endereço real teria revelado parte do layout de rede do TRB e poderia ter convidado os leitores a sondá-lo. O lint roda em toda mudança de documentação e bloqueia a publicação até que o endereço seja substituído por um exemplo de faixa de documentação, como um da 198.51.100.0/24. O rascunho do blog foi corrigido e o endereço original foi relatado ao dono da rede.
 
-### 7.10 7.11 Cena
+### 7.10 Redirecionando um pedido de FIN scan
 
 Um aluno pede para tentar uma varredura TCP FIN em staging "para o trabalho do curso". Sam mostra a lista de métodos proibidos das ROE e a página de fronteira do curso. Em vez disso, eles fazem um quiz offline de PCAP. A curiosidade é redirecionada, não envergonhada — e não é satisfeita em redes bancárias. O quiz usa capturas sintéticas, então o aluno ainda vê como os pacotes se parecem sem que nenhum tráfego toque uma rede do TRB. Sam também registra o pedido como nota de ensino, sem o nome do aluno, porque ele mostra onde a fronteira do curso precisa ser explicada mais cedo.
 
-### 7.11 7.20 Extra
-
-As respostas do quiz de PCAP nunca incluem bytes de payload de clientes reais. Só PCAPs sintéticos. As capturas sintéticas são geradas com endereços de faixas de documentação e payloads inventados, de modo que nenhum dado de cliente pode vazar pelo material didático. As respostas descrevem cabeçalhos, tempos e padrões de fluxo, que é do que os alunos precisam para raciocinar sobre detecção. Sam regenera os arquivos do quiz quando o curso muda, em vez de editar capturas à mão, para que sua procedência fique clara. Cada arquivo regenerado recebe hash, e o hash é publicado com o quiz. Como todo arquivo do quiz é gerado, os alunos nunca manuseiam capturas que contenham tráfego real de clientes do TRB.
+As respostas do quiz de PCAP nunca incluem bytes de payload de clientes reais. As capturas sintéticas são geradas com endereços de faixas de documentação e payloads inventados, de modo que nenhum dado de cliente pode vazar pelo material didático. As respostas descrevem cabeçalhos, tempos e padrões de fluxo, que é do que os alunos precisam para raciocinar sobre detecção. Sam regenera os arquivos do quiz quando o curso muda, em vez de editar capturas à mão, para que sua procedência fique clara. Cada arquivo regenerado recebe hash, e o hash é publicado com o quiz.
 
 ### Exemplo resolvido (TRB sintético)
 
@@ -594,23 +584,19 @@ As migrações de esquema rodam numa cópia, com checksums antes e depois. Sam r
 
 ### 8.9 Escritas idempotentes
 
-As atualizações de tickets são idempotentes por id do achado. Entregas duplicadas vindas de redes instáveis não conseguem criar F1s duplicados. Como cada atualização é indexada pelo ID do achado, aplicar a mesma requisição duas vezes deixa o ticket no mesmo estado que aplicá-la uma vez. Uma criação repetida do F1 atualiza o F1 em vez de inserir um segundo registro. Isso importa no TRB, onde os links de VPN para a zona de avaliação caem com frequência, e achados duplicados inflariam as contagens nos relatórios ao conselho. Por isso, as contagens para o conselho continuam verdadeiras mesmo nos dias de rede ruim.
-
-### 8.10 8.11 Cena
-
-O dry-run da importação em lote do FindingsDesk certa vez revelou 40 hosts fora das ROE embutidos num CSV de scanner. A importação foi bloqueada. Na retrospectiva, Sam agradece mais ao dry-run do que a qualquer funcionalidade nova lançada naquele mês. Quarenta hosts fora do escopo num banco de dados de avaliação teriam parecido resultados de testes autorizados e poderiam ter motivado trabalho de acompanhamento contra sistemas que ninguém havia aprovado. O dry-run transformou um problema silencioso de dados numa decisão visível, e a configuração do scanner que produziu o CSV foi corrigida antes da janela seguinte.
-
-### 8.11 8.12 Extensão
+As atualizações de tickets são idempotentes por id do achado. Entregas duplicadas vindas de redes instáveis não conseguem criar F1s duplicados. Como cada atualização é indexada pelo ID do achado, aplicar a mesma requisição duas vezes deixa o ticket no mesmo estado que aplicá-la uma vez. Isso importa no TRB, onde os links de VPN para a zona de avaliação caem com frequência, e achados duplicados inflariam as contagens nos relatórios ao conselho.
 
 As atualizações idempotentes de tickets salvaram o TRB quando uma VPN instável reenviou doze vezes a mesma chamada de criação de achado. O FindingsDesk mostrou um F1, não doze. Sam acrescenta essa história ao onboarding para que os engenheiros parem de temer o "exatamente uma vez" como algo acadêmico. Doze tickets F1 duplicados teriam mostrado ao conselho doze achados críticos abertos e acionado o dono doze vezes. A idempotência tornou a falha de rede inofensiva, que é exatamente o que os engenheiros precisam ver antes de confiar no desenho. Os engenheiros novos agora testam as novas tentativas na primeira semana.
 
-### 8.12 8.16 Complemento
+### 8.10 Dry-run da importação em lote
+
+O dry-run da importação em lote do FindingsDesk certa vez revelou 40 hosts fora das ROE embutidos num CSV de scanner. A importação foi bloqueada. Na retrospectiva, Sam agradece mais ao dry-run do que a qualquer funcionalidade nova lançada naquele mês. Quarenta hosts fora do escopo num banco de dados de avaliação teriam parecido resultados de testes autorizados e poderiam ter motivado trabalho de acompanhamento contra sistemas que ninguém havia aprovado. O dry-run transformou um problema silencioso de dados numa decisão visível, e a configuração do scanner que produziu o CSV foi corrigida antes da janela seguinte.
+
+### 8.11 Limiar de aprovação de 100 linhas
 
 O limiar de aprovação de 100 linhas do FindingsDesk existe porque um dump de 2.000 linhas certa vez ficou na fila durante a noite e disparou uma tempestade de alertas para os donos. Sam documenta o id do incidente ao lado da constante no código. Ligar a constante ao registro do incidente diz aos futuros engenheiros por que o limiar existe antes que decidam aumentá-lo. Sem o comentário, 100 parece arbitrário e convida à remoção. Com ele, qualquer pessoa que mude o valor pode ler o que aconteceu quando importações grandes rodaram sem revisão e acionaram os donos a noite inteira. O comentário nomeia o ENG-441 e a data da mudança.
 
-### 8.13 8.20 Extra
-
-O id do incidente da tempestade de alertas noturna é ENG-441 no arquivo do curso. Sam o referencia no comentário da constante. A entrada do arquivo descreve a fila noturna, quantos donos foram acionados e a mudança que introduziu o limiar de aprovação. Um revisor que encontra a constante pode seguir o link e julgar o histórico diretamente. A mesma prática vale para o teto de 500 linhas: todo limite de segurança do FindingsDesk aponta para o motivo pelo qual foi definido, de modo que os limites são mudados de forma deliberada, e não por alguém arrumando o código.
+O id do incidente é ENG-441 no arquivo do curso. A entrada do arquivo descreve a fila noturna, quantos donos foram acionados e a mudança que introduziu o limiar de aprovação. Um revisor que encontra a constante pode seguir o link e julgar o histórico diretamente. A mesma prática vale para o teto de 500 linhas: todo limite de segurança do FindingsDesk aponta para o motivo pelo qual foi definido, de modo que os limites são mudados de forma deliberada, e não por alguém arrumando o código.
 
 ### Exemplo resolvido (TRB sintético)
 

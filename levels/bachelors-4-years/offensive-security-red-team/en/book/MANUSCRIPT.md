@@ -72,7 +72,7 @@ Sam practices translating ROE paragraphs into membership tests on paper before o
 
 Given VLAN V and exclusions E, Sam computes V\E and then intersects with the day's proposed list P. Only P∩(V\E) may be loaded. He unit-tests the calculator with SWIFT inside V and confirms it never appears in output. A second test puts an address outside V into P and confirms it is rejected too. Together the two tests cover the two ways scope fails: excluded hosts leaking back in, and out-of-range hosts arriving in a friendly spreadsheet. The calculator's output is saved with the date so the day's loaded list can be reproduced later.
 
-### 1.9 1.11 Scene
+### 1.9 Filtering a branch spreadsheet
 
 On Monday Sam receives a spreadsheet of "interesting hosts" from a branch IT lead. He does not import it. He rebuilds scope from the signed ROE: the /26, minus SWIFT at .20, intersected with hosts that have owners in the asset register. Three spreadsheet rows vanish as out of scope; one vanishes as excluded. He sends the filtered list back with the set expression in the email. The branch lead is annoyed for ten minutes and grateful when a fourth row is recognised as a mis-typed payment console. Paper set arithmetic scales better than trust.
 
@@ -144,7 +144,7 @@ TrackScope, FindingsDesk and PulseMap sit in an assessment zone with controlled 
 
 A PulseMap bug once defaulted n to 1. Sam's regression test sets n=0 and expects an error tile, not 100%. With n defaulting to 1, a single touched host would have shown as 100% coverage, exactly the misleading percentage Chapter 1 warns against. The regression test now runs on every build, and PulseMap refuses to draw a coverage tile without an explicit denominator from the scope file. An error tile is honest; a confident number built on a default is not. The fix shipped with a changelog entry naming the bug.
 
-### 2.10 2.11 Scene
+### 2.10 Database-outage game day
 
 During a platform game day Sam kills the FindingsDesk database. TrackScope continues to deny out-of-scope requests using its local cache while queueing drafts to disk. PulseMap shows a degraded banner. No test traffic is allowed to "fail open" just because a ticket system is down. The game day note becomes a sales slide for why assessment tooling is safety tooling. The cache itself has a time limit, so a long outage eventually denies everything. After the drill, the team writes down how long the cache may be trusted and who decides when it expires.
 
@@ -216,13 +216,11 @@ Synthetic customers in fixtures use obviously fake national IDs. Sam rejects fix
 
 Platform repos fail CI if high-entropy strings look like keys. Sam whitelists only test fixtures clearly marked FAKE. A real-looking key in a test file still trains people to ignore the warning, so marking is mandatory. Each whitelisted fixture is listed with its owner and the reason it is safe, and the list is reviewed whenever CI rules change. Whitelisting by marker rather than by file path means a real key pasted into a fixtures folder is still caught. When CI blocks a commit, the developer rotates the string even if it was only ever local.
 
-### 3.10 3.11 Scene
+### 3.10 Rejected-snippet board
 
 Sam's script review board hangs three rejected snippets: a requests call with verify=False, a subprocess with shell=True on a hostname, and a retry loop without jitter. New interns initial the board after reading it. The board is silly and effective. When Sam almost pastes verify=False "just in staging", he sees his own initials and stops. Each snippet sits beside the safe version: verify left on with TRB's internal CA, a subprocess called with an argument list, and a retry loop with a cap and backoff.
 
-### 3.11 3.20 Extra
-
-Rejected snippet board gets a fourth example whenever CI catches a new anti-pattern. Sam dates each snippet. The board is a living museum of almost-mistakes. Each new snippet carries a one-line note on what CI caught and why it was dangerous, such as an uncapped retry against a slow host. Interns are asked to explain one snippet in their own words during their first week. The note names the rule, not the person who wrote the code. Sam's team reviews the board yearly and retires snippets whose CI rule has become routine.
+The board gets a fourth example whenever CI catches a new anti-pattern. Sam dates each snippet. Each new snippet carries a one-line note on what CI caught and why it was dangerous, such as an uncapped retry against a slow host. Interns are asked to explain one snippet in their own words during their first week. The note names the rule, not the person who wrote the code. Sam's team reviews the board yearly and retires snippets whose CI rule has become routine.
 
 ### Worked example (synthetic TRB)
 
@@ -292,13 +290,11 @@ Before sending, Sam reads the executive summary aloud to someone outside securit
 
 Findings that hide actors in passive voice are rewritten. "Passwords were reused" becomes "The loan admin account used the same password as VPN" when known. Naming the system makes the finding actionable and testable. When the actor is not known, the sentence says so plainly, for example 'logs do not show which administrator changed the setting'. That keeps the finding honest without inventing a culprit, and it points straight at the logging gap as a second issue to fix. Fixing the 'developers ignored security' draft needed only one rewritten sentence naming the system and the missing log.
 
-### 4.10 4.11 Scene
+### 4.10 Rewriting an accusatory finding
 
-A draft finding once said "developers ignored security". Legal asked for rewrite before the board pack. Sam produced: "The loan service accepted a shared privileged password; logs cannot attribute changes to a person." Same facts, fundable tone. He keeps both versions in teaching notes to show the difference. Both versions describe the same log gap. The rewrite removes the accusation but keeps every fact: a shared privileged password and no attribution in the logs. That is why it survived legal review and still told the loan service owners exactly what to change.
+A draft finding once said "developers ignored security". Legal asked for rewrite before the board pack. Sam produced: "The loan service accepted a shared privileged password; logs cannot attribute changes to a person." Same facts, fundable tone. He keeps both versions in teaching notes to show the difference. The rewrite removes the accusation but keeps every fact: a shared privileged password and no attribution in the logs. That is why it survived legal review and still told the loan service owners exactly what to change.
 
-### 4.11 4.20 Extra
-
-Tone trophies are silly stickers on printed findings that developers praised as clear. Sam prefers stickers to metrics nobody reads. Each sticker records which finding was praised and why, so the next report can copy the clarity rather than just the sticker. Clarity that developers notice is clarity that gets fixes. Sam keeps the praised findings in a folder as examples for interns, alongside the rewritten 'developers ignored security' draft, so both good and bad models are visible. Finding counts stay secondary in Sam's reports, because a clear finding that gets fixed matters more than a long list.
+Tone trophies are silly stickers on printed findings that developers praised as clear. Sam prefers stickers to metrics nobody reads. Each sticker records which finding was praised and why, so the next report can copy the clarity rather than just the sticker. Clarity that developers notice is clarity that gets fixes. Sam keeps the praised findings in a folder as examples for interns. Finding counts stay secondary in Sam's reports, because a clear finding that gets fixed matters more than a long list.
 
 ### Worked example (synthetic TRB)
 
@@ -368,13 +364,11 @@ Sam's deck has one card per framework: SP 800-115, PTES, WSTG, ATT&CK, TIBER-EU,
 
 Sam's home lab uses RFC1918 and never TRB DNS. Mixing VPN into homework is a reported near-miss if it happens. Private RFC1918 ranges at home cannot collide with TRB's addressing if Sam never connects the bank VPN while experimenting. Using TRB DNS from home would leak internal names and could send lab traffic toward the bank. If a mix-up happens, he reports it as a near-miss so the boundary rule can be improved rather than quietly hoping no one noticed.
 
-### 5.10 5.11 Scene
+### 5.10 Declining a hacking demo
 
 Sam declines a meetup invitation to demo "how we hacked our bank" even though the work was authorized. Screenshots travel. He offers instead a talk on ROE design with synthetic examples. The organisers accept. Dual-use restraint includes what you refuse to present. A screenshot of an authorized TRB finding still shows real hostnames, versions and weaknesses that may not yet be fixed. Once shown on a meetup screen, it cannot be withdrawn. The ROE talk shares the reusable lesson without the bank's details.
 
-### 5.11 5.20 Extra
-
-Meetup alternative talks use only documentation-range demos. Sam's slide deck is public; his TRB screenshots are not. Documentation ranges such as 198.51.100.0/24 make it impossible for a demo to point at a real host, and synthetic findings carry no information about TRB's systems. Before publishing, Sam checks every slide for internal names, ticket IDs and real addresses. His TRB screenshots stay inside FindingsDesk, where access is controlled and logged, and are deleted when the engagement's retention period ends. The public deck is reviewed by the ROE owner once before release.
+The ROE talk uses only documentation-range demos. Sam's slide deck is public; his TRB screenshots are not. Documentation ranges such as 198.51.100.0/24 make it impossible for a demo to point at a real host, and synthetic findings carry no information about TRB's systems. Before publishing, Sam checks every slide for internal names, ticket IDs and real addresses. His TRB screenshots stay inside FindingsDesk, where access is controlled and logged, and are deleted when the engagement's retention period ends. The public deck is reviewed by the ROE owner once before release.
 
 ### Worked example (synthetic TRB)
 
@@ -444,13 +438,11 @@ For payments-adjacent nodes, Sam looks for cut sets of edges whose removal would
 
 Each critical graph edge cites the inventory or scan source under ROE. Edges without sources are removed. A source might be an asset register entry, a firewall rule export or an authorized scan result with its date. An edge drawn from memory or assumption cannot be checked, so it cannot support a finding, and leaving it in would make the whole graph look more certain than it is. When a source is missing, Sam asks the owner and adds the edge back only with evidence.
 
-### 6.10 6.11 Scene
+### 6.10 Finding the cut set
 
-Tracing a path from a compromised branch PC model to ledger-db, Sam finds four edges. Removing the web→ledger edge (F3) and requiring jump for admin cuts the remaining dangerous paths. The graph did not need fifty nodes — it needed the cut set. He deletes the decorative edges from the slide. Showing four edges and the cut set made the fix discussion take minutes instead of an hour, because the owners could see exactly which two changes mattered. The slide now shows only the four path edges.
+Tracing a path from a compromised branch PC model to ledger-db, Sam finds four edges. Removing the web→ledger edge (F3) and requiring jump for admin cuts the remaining dangerous paths. The graph did not need fifty nodes — it needed the cut set. Showing four edges and the cut set made the fix discussion take minutes instead of an hour, because the owners could see exactly which two changes mattered.
 
-### 6.11 6.20 Extra
-
-Cut-set slides use at most six edges. Sam deletes the rest in front of the audience to teach focus. A slide with fifty edges hides the two that matter; a slide with six makes the cut set visible to an executive in seconds. Deleting edges live also shows that the removed ones were context, not evidence. Sam keeps the full graph in the appendix, with sources for every edge, so engineers can still check his reasoning and nothing is hidden from review.
+Sam's cut-set slides use at most six edges. He deletes the rest in front of the audience to teach focus. A slide with fifty edges hides the two that matter; a slide with six makes the cut set visible to an executive in seconds. Deleting edges live also shows that the removed ones were context, not evidence. Sam keeps the full graph in the appendix, with sources for every edge, so engineers can still check his reasoning and nothing is hidden from review.
 
 ### Worked example (synthetic TRB)
 
@@ -520,13 +512,11 @@ Banners feed inventory, not severity theatre. Sam files version exposure as low 
 
 Examples in docs are linted to ensure IPs are documentation ranges. Sam's lint failed a blog draft using a real TRB address; good catch. The real address would have revealed part of TRB's network layout and could have invited readers to probe it. The lint runs on every documentation change and blocks publication until the address is replaced with a documentation-range example, such as one from 198.51.100.0/24. The blog draft was corrected and the original address reported to the network owner.
 
-### 7.10 7.11 Scene
+### 7.10 Redirecting a FIN-scan request
 
 A learner asks to try a TCP FIN scan on staging "for the coursework". Sam shows the ROE forbidden-methods list and the course boundary page. They run an offline PCAP quiz instead. Curiosity is redirected, not shamed — and not indulged on bank networks. The quiz uses synthetic captures, so the learner still sees how packets look without any traffic touching a TRB network. Sam also logs the request as a teaching note, without the learner's name, because it shows where the course boundary needs to be explained earlier.
 
-### 7.11 7.20 Extra
-
-PCAP quiz answers never include payload bytes from real customers. Synthetic PCAPs only. Synthetic captures are generated with documentation-range addresses and invented payloads, so no customer data can leak through teaching material. Answers describe headers, timing and flow patterns, which is what learners need for detection reasoning. Sam regenerates the quiz files when the course changes rather than editing captures by hand, so their provenance stays clear. Each regenerated file is hashed and the hash published with the quiz. Because every quiz file is generated, learners never handle captures containing real TRB customer traffic.
+PCAP quiz answers never include payload bytes from real customers. Synthetic captures are generated with documentation-range addresses and invented payloads, so no customer data can leak through teaching material. Answers describe headers, timing and flow patterns, which is what learners need for detection reasoning. Sam regenerates the quiz files when the course changes rather than editing captures by hand, so their provenance stays clear. Each regenerated file is hashed and the hash published with the quiz.
 
 ### Worked example (synthetic TRB)
 
@@ -594,23 +584,19 @@ Schema migrations run on a copy with checksums before and after. Sam records row
 
 ### 8.9 Idempotent writes
 
-Ticket updates are idempotent by finding id. Double delivery from flaky networks cannot create duplicate F1s. Because each update is keyed by finding ID, applying the same request twice leaves the ticket in the same state as applying it once. A retried create for F1 updates F1 rather than inserting a second record. This matters at TRB, where VPN links to the assessment zone drop often, and duplicate findings would inflate counts in board reports. Board counts therefore stay true even on bad network days.
-
-### 8.10 8.11 Scene
-
-FindingsDesk's bulk import dry-run once revealed 40 hosts outside the ROE embedded in a scanner CSV. The import blocked. Sam thanks the dry-run in the retrospective more than any new feature shipped that month. Forty out-of-scope hosts in an assessment database would have looked like authorized test results and could have prompted follow-up work against systems nobody had approved. The dry-run turned a silent data problem into a visible decision, and the scanner configuration that produced the CSV was corrected before the next window.
-
-### 8.11 8.12 Extension
+Ticket updates are idempotent by finding id. Double delivery from flaky networks cannot create duplicate F1s. Because each update is keyed by finding ID, applying the same request twice leaves the ticket in the same state as applying it once. This matters at TRB, where VPN links to the assessment zone drop often, and duplicate findings would inflate counts in board reports.
 
 Idempotent ticket updates saved TRB when a flaky VPN resubmitted the same finding create call twelve times. FindingsDesk showed one F1, not twelve. Sam adds that story to onboarding so engineers stop fearing "exactly-once" as academic. Twelve duplicate F1 tickets would have shown twelve open critical findings to the board and paged the owner twelve times. Idempotency made the network failure harmless, which is exactly what engineers need to see before they trust the design. New engineers now test retries in their first week.
 
-### 8.12 8.16 Pad
+### 8.10 Bulk-import dry run
+
+FindingsDesk's bulk import dry-run once revealed 40 hosts outside the ROE embedded in a scanner CSV. The import blocked. Sam thanks the dry-run in the retrospective more than any new feature shipped that month. Forty out-of-scope hosts in an assessment database would have looked like authorized test results and could have prompted follow-up work against systems nobody had approved. The dry-run turned a silent data problem into a visible decision, and the scanner configuration that produced the CSV was corrected before the next window.
+
+### 8.11 Approval threshold at 100 rows
 
 FindingsDesk's approval threshold at 100 rows exists because a 2,000-row dump once queued overnight and page-stormed owners. Sam documents the incident id beside the constant in code. Linking the constant to the incident record tells future engineers why the threshold exists before they decide to raise it. Without the comment, 100 looks arbitrary and invites removal. With it, anyone changing the value can read what happened when large imports ran unreviewed and paged owners all night. The comment names ENG-441 and the date of the change.
 
-### 8.13 8.20 Extra
-
-Overnight page-storm incident id is ENG-441 in the course archive. Sam links it from the constant's comment. The archive entry describes the overnight queue, how many owners were paged and the change that introduced the approval threshold. A reviewer who finds the constant can follow the link and judge the history directly. The same practice applies to the 500-row cap: every safety limit in FindingsDesk points to the reason it was set, so limits are changed deliberately rather than by someone tidying the code.
+The incident id is ENG-441 in the course archive. The archive entry describes the overnight queue, how many owners were paged and the change that introduced the approval threshold. A reviewer who finds the constant can follow the link and judge the history directly. The same practice applies to the 500-row cap: every safety limit in FindingsDesk points to the reason it was set, so limits are changed deliberately rather than by someone tidying the code.
 
 ### Worked example (synthetic TRB)
 
