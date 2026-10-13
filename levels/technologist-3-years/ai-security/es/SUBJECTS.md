@@ -24,10 +24,10 @@ Edición en español neutro, escrita a partir de la edición de referencia en in
 | 3 | [12](book/PLAN.md#ch-12) | Seguridad de la IA y del aprendizaje automático: flujos de datos | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-12) | [13 · Borrador](book/MANUSCRIPT.md#ch-13) |
 | 3 | [13](book/PLAN.md#ch-13) | Seguridad de la IA y del aprendizaje automático: escenarios de riesgo | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-13) | [14 · Borrador](book/MANUSCRIPT.md#ch-14) |
 | 3 | [14](book/PLAN.md#ch-14) | Seguridad de la IA y del aprendizaje automático: métodos I | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-14) | [15 · Borrador](book/MANUSCRIPT.md#ch-15) |
-| 3 | [15](book/PLAN.md#ch-15) | Seguridad de la IA y del aprendizaje automático: laboratorio guiado | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-15) | [16 · Plan](book/PLAN.md#ch-16) |
-| 4 | [16](book/PLAN.md#ch-16) | Seguridad de la IA y del aprendizaje automático: métodos II | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-16)) | [17 · Plan](book/PLAN.md#ch-17) |
-| 4 | [17](book/PLAN.md#ch-17) | Seguridad de la IA y del aprendizaje automático: herramientas | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-17)) | [18 · Plan](book/PLAN.md#ch-18) |
-| 4 | [18](book/PLAN.md#ch-18) | Seguridad de la IA y del aprendizaje automático: controles | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-18)) | [19 · Plan](book/PLAN.md#ch-19) |
+| 3 | [15](book/PLAN.md#ch-15) | Seguridad de la IA y del aprendizaje automático: laboratorio guiado | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-15) | [16 · Borrador](book/MANUSCRIPT.md#ch-16) |
+| 4 | [16](book/PLAN.md#ch-16) | Seguridad de la IA y del aprendizaje automático: métodos II | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-16) | [17 · Borrador](book/MANUSCRIPT.md#ch-17) |
+| 4 | [17](book/PLAN.md#ch-17) | Seguridad de la IA y del aprendizaje automático: herramientas | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-17) | [18 · Borrador](book/MANUSCRIPT.md#ch-18) |
+| 4 | [18](book/PLAN.md#ch-18) | Seguridad de la IA y del aprendizaje automático: controles | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-18) | [19 · Plan](book/PLAN.md#ch-19) |
 | 4 | [19](book/PLAN.md#ch-19) | Seguridad de la IA y del aprendizaje automático: monitorización | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-19)) | [20 · Plan](book/PLAN.md#ch-20) |
 | 4 | [20](book/PLAN.md#ch-20) | Seguridad de la IA y del aprendizaje automático: resolución de problemas | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-20)) | [21 · Plan](book/PLAN.md#ch-21) |
 | 5 | [21](book/PLAN.md#ch-21) | Seguridad de la IA y del aprendizaje automático: integración de servicios | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-21)) | [22 · Plan](book/PLAN.md#ch-22) |
