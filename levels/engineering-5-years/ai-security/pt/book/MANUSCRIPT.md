@@ -1,7 +1,7 @@
 # Segurança de IA e Aprendizado de Máquina: Livro do Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso de engenharia, cinco anos; aproximadamente 4.000 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–35 de 50 já estão escritos em português, com os exercícios EX001–EX105 e suas resoluções com rubricas de 0 a 3; os capítulos 36–50 (EX106–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–40 de 50 já estão escritos em português, com os exercícios EX001–EX120 e suas resoluções com rubricas de 0 a 3; os capítulos 41–50 (EX121–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: futuros projetistas de sistemas de segurança que vão especificar, construir, verificar e operar sistemas com IA que resistam a ataques e falhem de forma segura.
 - Relação com os livros vizinhos: o [livro de bacharelado](../../../../bachelors-4-years/ai-security/en/book/MANUSCRIPT.md) é mais amplo e menos voltado ao projeto; o [livro de pós-graduação](../../../../postgraduate-2-years/ai-security/en/book/MANUSCRIPT.md) pressupõe experiência profissional. **Este livro ensina a segurança de IA como uma disciplina de engenharia**: fundamentos de matemática e computação, requisitos, arquitetura, controles, medição, confiabilidade, safety, operações e um projeto final com dossiê de evidências e defesa.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -25,9 +25,9 @@ As fontes foram verificadas em 12 de outubro de 2026: NIST [AI 100-1](https://do
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) |
 
-Capítulos 36–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-36), até a chegada dos próximos lotes.
+Capítulos 41–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-41), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -2172,11 +2172,351 @@ O Ateliê II faz o projeto argumentar a seu próprio favor: um caso de seguranç
 
 [← Capítulo 34 (rascunho)](#ch-34) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 36 (rascunho) →](#ch-36)
 
+<a id="ch-36"></a>
+
+## Capítulo 36 — Segurança de IA e aprendizado de máquina: desempenho e escala
+
+### Objetivos de aprendizagem
+
+Você vai (1) relacionar a engenharia de desempenho (latência, vazão, custo) aos controles de segurança; (2) defender-se contra consumo ilimitado e negação de serviço; (3) dimensionar cotas e orçamentos; e (4) manter os controles eficazes em escala.
+
+### 36.1 Controles de segurança custam desempenho
+
+Cada guardrail, classificador, segundo modelo e etapa de aprovação acrescenta latência e custo. Sob carga, as equipes ficam tentadas a desativar controles. Projete os controles com orçamentos de desempenho desde o início e meça-os como qualquer outra funcionalidade. Um orçamento torna o trade-off explícito: por exemplo, os guardrails podem acrescentar no máximo 150 ms a uma resposta do Wrench. Se um controle excede seu orçamento, a equipe o otimiza ou muda o lugar onde ele roda, em vez de removê-lo sob pressão. Medir os controles continuamente também mostra quando um deles vai ficando mais caro aos poucos, como pode acontecer com um classificador quando os documentos ficam mais longos.
+
+### 36.2 Consumo ilimitado
+
+O OWASP LLM10 cobre ataques que esgotam recursos ou orçamentos: entradas extremamente longas, prompts que provocam saídas muito longas, laços recursivos de agentes e altos volumes de requisições. Controles: limites de tamanho de entrada, tetos de tokens de saída, timeouts de computação por requisição, número máximo de passos do agente, cotas de tokens por cliente e alertas de custo. O laboratório de token bucket mostra como as configurações de taxa e de rajada trocam o atendimento aos usuários normais pela proteção contra inundações.
+
+```python
+"""Lab R: token-bucket limits against unbounded consumption (synthetic).
+Simulates 60 seconds of requests from a normal client and a flooding client
+against a model endpoint with a per-client token bucket."""
+import random
+rng = random.Random(4)
+def simulate(rate_per_s, burst, reqs):
+    tokens, last, ok = burst, 0.0, 0
+    for t in reqs:
+        tokens = min(burst, tokens + (t - last) * rate_per_s); last = t
+        if tokens >= 1: tokens -= 1; ok += 1
+    return ok
+normal = sorted(rng.uniform(0, 60) for _ in range(90))
+flood = sorted(rng.uniform(0, 60) for _ in range(3000))
+for rate, burst in ((5, 20), (2, 10), (1, 5)):
+    print(f"limit={rate}/s burst={burst:2d} normal_served={simulate(rate, burst, normal):3d}/90 "
+          f"flood_served={simulate(rate, burst, flood):4d}/3000")
+```
+
+Saída esperada:
+
+```text
+limit=5/s burst=20 normal_served= 90/90 flood_served= 319/3000
+limit=2/s burst=10 normal_served= 90/90 flood_served= 129/3000
+limit=1/s burst= 5 normal_served= 62/90 flood_served=  64/3000
+```
+
+Cada controle limita uma dimensão diferente, e os atacantes vão encontrar a que estiver faltando. O laço descontrolado do Wrench mostrou que faltava o limite de passos.
+
+### 36.3 Dimensionando cotas
+
+Use percentis do uso observado (por exemplo, o percentil 99 de tokens por usuário por hora) mais uma folga, e diferencie níveis. Reajuste à medida que o uso muda. Combine as cotas com detecção de anomalias, já que os atacantes podem ficar logo abaixo de limites fixos. A terceira configuração do laboratório mostra o risco de chutar: um limite de 1 por segundo com rajada de 5 recusa 28 de 90 requisições normais. O dimensionamento por percentis evita isso partindo do que os usuários reais fazem. Os níveis permitem que uma integração intensa, mas legítima, tenha uma cota maior sem aumentar a de todos. Um atacante que descobre o limite pode ficar logo abaixo dele, então a detecção de anomalias em padrões, como a razão de entradas distintas, cobre o que limites fixos não conseguem.
+
+### 36.4 Escala e eficácia dos controles
+
+Em escala, eventos raros se tornam comuns: uma taxa de sucesso de injeção de 0,1% sobre 10 milhões de documentos por mês dá 10.000 sucessos. Controles que dependem de revisão humana precisam ser dimensionados para esse volume, ou projetados de modo que cada sucesso tenha impacto limitado. Dez mil sucessos por mês não podem ser revisados um a um com cuidado por uma equipe pequena, então o projeto precisa tornar cada um deles inofensivo por si só: uma proposta contaminada que exige confirmação, uma ferramenta que pode comentar, mas não fechar. Taxas aceitáveis em um piloto podem se tornar inaceitáveis em produção apenas por causa do volume, por isso Sam recalcula as contagens esperadas sempre que o uso cresce.
+
+### 36.5 Exemplo resolvido (caso sintético da NRS)
+
+Uma integração com defeito fez o Wrench entrar em laço: cada resultado de ferramenta disparava outra busca, chegando a 400 passos em uma tarefa e consumindo o orçamento de um dia. Sam definiu um máximo de 12 passos por tarefa, um teto de tokens por tarefa e um alerta de custo em 150% da mediana diária. O classificador de injeção passou a rodar apenas sobre o conteúdo recuperado, e não sobre todas as mensagens, o que cortou seu custo em 60% sem reduzir a cobertura do caminho não confiável. Mover o classificador é seguro porque o caminho não confiável é por onde chegam as injeções; mensagens digitadas por técnicos autenticados não são o risco para o qual ele foi construído.
+
+### 36.6 Erros e limites
+
+Três erros são comuns: limites por contagem de requisições que ignoram o custo de tokens e de computação; desativar controles sob carga; e projetos de revisão humana que não escalam com o volume. Contar apenas requisições permite que um único prompt enorme custe tanto quanto milhares de pequenos. Desativar controles sob carga cria exatamente as condições que um atacante escolheria, já que inundações podem ser usadas para provocar isso. Projetos de revisão que supõem um número fixo de casos quebram quando o volume cresce. A revisão de operações de Sam pergunta, para cada controle, qual é seu custo por requisição e o que acontece com ele a dez vezes o tráfego atual.
+
+### Exercícios
+
+- **EX106 — Leitura do laboratório.** Qual configuração do laboratório protege contra a inundação atendendo plenamente o cliente normal com o limite mais apertado? Rubrica: 3 = 2/s com rajada 10: 90/90 normal, 129/3000 inundação; 2 = só a configuração; 1 = vago; 0 = errado.
+- **EX107 — Aritmética de escala.** Com 0,05% de sucesso sobre 4 milhões de documentos por mês, quantos sucessos há por mês? Rubrica: 3 = 2.000, com a implicação; 2 = só o número; 1 = deslize; 0 = nenhum.
+- **EX108 — Limites de laço.** Liste quatro limites para laços de agentes. Rubrica: 3 = máximo de passos, tokens por tarefa, tempo de relógio, alertas de custo/botão de desligamento; 2 = três; 1 = um ou dois; 0 = nenhum.
+
+### Síntese
+
+Desempenho e segurança estão acoplados. Controles com orçamento, cotas atentas ao custo de computação e limites de laço defendem contra o consumo ilimitado e mantêm a proteção acessível em escala.
+
+### Continue estudando — capítulo 36 de 50
+
+[← Capítulo 35 (rascunho)](#ch-35) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 37 (rascunho) →](#ch-37)
+
+<a id="ch-37"></a>
+
+## Capítulo 37 — Segurança de IA e aprendizado de máquina: operações
+
+### Objetivos de aprendizagem
+
+Você vai (1) operar sistemas de IA em produção com operações de segurança (monitoramento, resposta a incidentes, gestão de vulnerabilidades); (2) escrever runbooks para incidentes específicos de IA; (3) gerenciar operacionalmente as mudanças de modelos e prompts; e (4) relatar métricas operacionais.
+
+### 37.1 Operações de segurança para IA
+
+Envie a telemetria de IA para o centro de operações de segurança: sinalizações do classificador de injeção, negações de política, taxas incomuns de chamadas de ferramenta, padrões de consulta semelhantes a extração, falhas de verificação no carregamento de modelos e alarmes de deriva. Defina gravidades e responsáveis. Os analistas do centro de operações de segurança já observam sinais de identidade, rede e endpoints, então os eventos de IA se tornam muito mais úteis ao lado deles: uma rajada de negações de política vinda de uma conta pode coincidir com um login suspeito. Cada sinal de IA recebe uma gravidade, um responsável e um runbook antes de ser ativado, porque um alerta que ninguém entende logo passa a ser ignorado. Sam começa com poucos sinais de alto valor e acrescenta outros depois que os primeiros estão ajustados e são confiáveis.
+
+### 37.2 Runbooks de incidentes de IA
+
+Os runbooks dão etapas para: suspeita de injeção de prompt com ação executada (conter: revogar credenciais de ferramentas, desativar a ferramenta; investigar: rastrear os IDs de requisição até o documento de origem; recuperar: desfazer ações, expurgar documentos envenenados; aprender: acrescentar aos testes); suspeita de envenenamento de dados (congelar o treinamento, identificar as versões afetadas pela linhagem, fazer rollback para um modelo verificado); suspeita de extração (limitar o cliente, preservar os logs, notificar o jurídico); falha de integridade do modelo (parar de carregar, verificar a cadeia de suprimentos). A contenção vem primeiro em cada runbook porque é rápida e reversível. A investigação vem depois que o dano parou.
+
+### 37.3 Gestão de vulnerabilidades
+
+Acompanhe as vulnerabilidades em softwares de serviço de modelos, bibliotecas e conectores como em qualquer software. Acompanhe as fraquezas no nível do modelo (novas técnicas de jailbreak, ataques recém-publicados) monitorando fontes como os estudos de caso do MITRE ATLAS, avisos de fornecedores e pesquisas. Teste novamente após atualizações de modelo ou de prompt. Fraquezas no nível do modelo diferem de bugs de software: muitas vezes não há correção, apenas uma mitigação, como um novo teste, um filtro ou uma permissão de ferramenta mais restrita. Cada técnica recém-publicada é avaliada contra o próprio modelo de ameaças do sistema e registrada como não aplicável, mitigada ou em aberto. Testar de novo após as atualizações importa porque uma nova versão do modelo pode ser mais fraca contra um ataque antigo a que a versão anterior resistia.
+
+### 37.4 Gestão de mudanças
+
+Mudanças em modelos, prompts, ferramentas e fontes de recuperação passam pelo processo de liberação com portões de segurança, implantação canário e rollback. Mudanças emergenciais (por exemplo, desativar uma ferramenta) são pré-aprovadas nos runbooks. Uma edição de prompt ou uma nova fonte de recuperação pode mudar o comportamento de segurança tanto quanto um código novo, então todas passam pelo mesmo portão. Mudanças emergenciais pré-aprovadas permitem que o engenheiro de plantão desative uma ferramenta à noite sem esperar por uma reunião, enquanto a mudança continua registrada e é revisada no dia seguinte. O objetivo é rapidez para a contenção e cuidado para todo o resto.
+
+### 37.5 Métricas operacionais
+
+Relate mensalmente: negações e confirmações de política, sinalizações de injeção, incidentes por tipo e tempo até a contenção, resultados do conjunto de avaliação por versão, violações de cota e riscos em aberto. As tendências importam mais que números isolados. Um número crescente de confirmações pode significar mais trabalho legítimo ou uma nova campanha de injeção, e a tendência ao lado das sinalizações e dos incidentes ajuda a saber qual. O tempo até a contenção mostra se os runbooks funcionam na prática. Os resultados de avaliação por versão mostram se a segurança está melhorando ou piorando à medida que o sistema muda. Os riscos em aberto mantêm visíveis os problemas aceitos, para que sejam revisitados em vez de esquecidos.
+
+### 37.6 Exemplo resolvido (caso sintético da NRS)
+
+Às 02:10, o SOC viu uma rajada de propostas do Wrench para criar ordens de serviço em uma linha, todas confirmadas por uma única conta do turno da noite em questão de segundos. O runbook levou o engenheiro de plantão a suspender o acesso dessa conta às ferramentas do Wrench, rastrear as propostas até um boletim enviado às 01:55 e descobrir que ele continha texto com cara de instrução. O dono da conta tinha aprovado sem ler. As ordens foram canceladas; a fonte do boletim foi bloqueada; a interface de aprovação ganhou um limite de aprovações por minuto. Cada confirmação levou segundos, um padrão que nenhum revisor cuidadoso produz.
+
+### 37.7 Erros e limites
+
+Três erros são comuns: telemetria de IA que não chega ao SOC; nenhum runbook para incidentes específicos de modelos; e mudanças emergenciais sem pré-aprovação, causando atraso. Se a telemetria de IA fica em um painel de engenharia, ninguém a observa às 02:10. Sem runbooks específicos de modelos, os respondentes improvisam, muitas vezes desligando o serviço inteiro quando bastaria desativar uma ferramenta. Mudanças emergenciais que precisam de um comitê perdem horas enquanto um ataque continua. O incidente acima deu certo porque os três estavam em vigor: o alerta chegou ao SOC, havia um runbook e a suspensão do acesso estava pré-aprovada.
+
+### Exercícios
+
+- **EX109 — Runbook.** Escreva as quatro fases de um runbook para suspeita de envenenamento. Rubrica: 3 = conter, investigar, recuperar, aprender, com etapas concretas; 2 = três; 1 = vago; 0 = nenhuma.
+- **EX110 — Telemetria.** Liste cinco sinais de IA que o SOC deve receber. Rubrica: 3 = cinco pertinentes; 2 = quatro; 1 = dois; 0 = nenhum.
+- **EX111 — Lição do incidente.** Que controle teria reduzido mais cedo o impacto do incidente das 02:10? Rubrica: 3 = limites de taxa de aprovação/alertas de anomalia nas aprovações, confiança da fonte, destaque; 2 = um genérico; 1 = vago; 0 = nenhum.
+
+### Síntese
+
+As operações mantêm viva a segurança de IA após a liberação: telemetria no SOC, runbooks específicos de IA, gestão de vulnerabilidades e de mudanças e relatórios de tendências.
+
+### Continue estudando — capítulo 37 de 50
+
+[← Capítulo 36 (rascunho)](#ch-36) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 38 (rascunho) →](#ch-38)
+
+<a id="ch-38"></a>
+
+## Capítulo 38 — Segurança de IA e aprendizado de máquina: validação
+
+### Objetivos de aprendizagem
+
+Você vai (1) distinguir verificação (construído do jeito certo) de validação (construída a coisa certa); (2) validar a segurança de IA com usuários e operadores em condições realistas; (3) conduzir exercícios de red team como validação; e (4) decidir sobre a adequação ao propósito com evidências documentadas.
+
+### 38.1 Verificação versus validação
+
+A verificação confere se o sistema atende aos requisitos especificados. A validação confere se os requisitos e o sistema atendem às necessidades reais das partes interessadas no ambiente real. Um sistema pode passar em todos os requisitos e ainda assim ser inseguro se os requisitos deixaram passar uma ameaça ou se os usuários se comportam de modo diferente do suposto. Para o Wrench, a verificação mostrou que o ponto de aplicação bloqueia chamadas não autorizadas. A validação pergunta se os técnicos conseguem fazer seu trabalho com ele, se leem as telas de confirmação e se as ameaças do modelo são as que de fato aparecem. As duas são necessárias: verificação sem validação pode aprovar um sistema que ninguém usa com segurança, e validação sem verificação se apoia em impressões.
+
+### 38.2 Validação operacional
+
+Conduza pilotos em condições realistas: cargas de trabalho reais (autorizadas), usuários reais, conteúdo adversarial realista. Observe como os usuários interagem com os controles — eles leem as telas de aprovação, contornam as restrições? Meça juntos o sucesso nas tarefas e os resultados de segurança. A observação revela comportamentos que nenhum requisito previu, como um técnico que aprova propostas em lote no fim do turno, ou outro que copia o texto de boletins para o chat para ganhar tempo. Medir o sucesso nas tarefas junto com os resultados de segurança impede que um piloto declare sucesso quando o trabalho ficou mais rápido só porque as pessoas estavam contornando os controles. O feedback dos usuários do piloto é coletado por escrito, com a permissão deles, e devolvido aos requisitos.
+
+### 38.3 Red teaming como validação
+
+Um red team com escopo e autorização definidos tenta atingir objetivos de atacante contra o sistema integrado, usando qualquer técnica dentro das regras. Diferentemente de um conjunto de testes, red teams encontram caminhos não previstos. O NIST AI 600-1 lista o red teaming entre as ações sugeridas para IA generativa. Relate os achados com gravidade e correções, e converta os caminhos bem-sucedidos em testes de regressão. Red teams funcionam melhor quando são independentes dos desenvolvedores. Os desenvolvedores conhecem os caminhos pretendidos e tendem a testá-los; uma equipe externa parte do objetivo do atacante, como um pedido de peças não autorizado, e trabalha de trás para frente por tudo o que o sistema expõe. Cada achado é testado de novo após sua correção.
+
+### 38.4 Adequação ao propósito
+
+O relatório de validação declara: o uso pretendido, as condições testadas, os resultados em relação às necessidades das partes interessadas, os achados do red team e seu status, os riscos residuais e uma recomendação (implantar, implantar com condições, não implantar) assinada pelos responsáveis. Os responsáveis assinam porque a implantação é uma decisão de negócio informada por evidências de engenharia, e não apenas uma decisão de engenharia. As condições associadas a um resultado de "implantar com condições" têm, cada uma, um responsável e uma data, e o sistema é verificado contra elas antes que sejam consideradas cumpridas. O relatório também declara quando a validação precisa ser repetida, como após uma grande mudança de modelo ou uma nova integração.
+
+### 38.5 Exemplo resolvido (caso sintético da NRS)
+
+O Wrench passou na verificação. Durante um piloto de quatro semanas em dois depósitos, os técnicos pediam ao Wrench que "fizesse tudo o que o boletim diz" — um padrão de uso não previsto, que aumentou a parcela de propostas derivadas de texto não confiável. Um red team interno autorizado conseguiu então um pedido de peças não autorizado encadeando um resultado de busca em um e-mail para um fornecedor da lista de permissões com um número de peça modificado. Resultado da validação: implantar com condições — os números de peça nos e-mails precisam corresponder a uma ordem de serviço aberta, e os técnicos recebem treinamento sobre pedidos guiados por boletins.
+
+### 38.6 Erros e limites
+
+Três erros são comuns: tratar a verificação como validação; red teams sem escopo ou com os desenvolvedores avaliando a si mesmos; e recomendações sem a assinatura de responsáveis. Um sistema que atende à sua especificação ainda pode falhar com seus usuários se a especificação não captou como eles trabalham, como mostraram os pedidos de boletins no piloto. Red teams que se reportam aos desenvolvedores que testam, ou que trabalham sem escopo por escrito, produzem achados fáceis de descartar ou perigosos de obter. Uma recomendação que ninguém assina deixa a decisão de implantação sem dono quando algo der errado depois.
+
+### Exercícios
+
+- **EX112 — V&V.** Dê um exemplo em que o Wrench passa na verificação, mas falha na validação. Rubrica: 3 = exemplo plausível (uso não previsto, lacuna de requisito); 2 = parcial; 1 = vago; 0 = nenhum.
+- **EX113 — Achado do red team.** Transforme a cadeia do red team em um teste de regressão. Rubrica: 3 = cenário, entrada, resultado de política esperado, critério de aprovação; 2 = parcial; 1 = vago; 0 = nenhum.
+- **EX114 — Recomendação.** Escreva a frase de recomendação da validação para o Wrench. Rubrica: 3 = implantar com as condições listadas, responsáveis, data de revisão; 2 = falta um; 1 = vago; 0 = nenhuma.
+
+### Síntese
+
+A validação pergunta se o sistema protegido funciona para pessoas reais sob pressão real. Pilotos e red teams encontram o que os requisitos deixaram passar, e os responsáveis decidem sobre a adequação ao propósito.
+
+### Continue estudando — capítulo 38 de 50
+
+[← Capítulo 37 (rascunho)](#ch-37) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 39 (rascunho) →](#ch-39)
+
+<a id="ch-39"></a>
+
+## Capítulo 39 — Segurança de IA e aprendizado de máquina: manutenibilidade
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar sistemas de IA cuja segurança possa ser mantida à medida que modelos, dados e ameaças mudam; (2) gerenciar atualizações de modelos e dependências; (3) manter atualizados os conjuntos de avaliação, os modelos de ameaças e a documentação; e (4) planejar a desativação e o descarte de dados.
+
+### 39.1 A mudança é constante
+
+Modelos hospedados são atualizados; modelos abertos ganham novas versões; bibliotecas corrigem vulnerabilidades; atacantes publicam novas técnicas; processos de negócio mudam. Um projeto seguro que não pode ser atualizado com segurança vai se tornar inseguro. Cada fonte de mudança afeta a segurança de um jeito. Uma atualização de modelo pode alterar a facilidade com que ele segue texto injetado; uma correção de biblioteca pode mudar o comportamento de análise; uma nova técnica de ataque pode derrotar um filtro que funcionava no mês passado. Manutenibilidade é a capacidade de absorver essas mudanças sem perder os controles que importam, o que exige testes, responsáveis e um processo previsível de atualização.
+
+### 39.2 Estratégia de atualização
+
+Fixe as versões e atualize de forma deliberada: cada atualização de modelo ou de dependência dispara o portão de avaliação de segurança, uma implantação canário e um plano de rollback. Para modelos hospedados que mudam sem aviso, rode o conjunto de avaliação em um cronograma e alerte sobre regressões. Mantenha camadas de abstração para que um modelo possa ser trocado sem reescrever a aplicação de políticas. A camada de abstração faz com que a aplicação de políticas não dependa do comportamento de nenhum modelo específico. Trocar um modelo passa então a exigir apenas o portão e o canário, e não um redesenho dos controles ao redor dele.
+
+### 39.3 Mantendo o conhecimento atualizado
+
+Atribua responsáveis pelo modelo de ameaças, pelos conjuntos de avaliação, pelos model cards e pelos runbooks, com datas de revisão. Acrescente cada incidente e cada achado de red team ao conjunto de regressão. Acompanhe as fontes externas (atualizações do OWASP, acréscimos ao MITRE ATLAS, publicações do NIST) e registre se cada mudança afeta o seu sistema. Um responsável com data de revisão transforma "alguém deveria atualizar o modelo de ameaças" em uma tarefa com um nome associado. Acrescentar cada achado ao conjunto de regressão faz os testes do sistema crescerem a partir da experiência real, e não de suposições. O acompanhamento externo é registrado de forma breve, por exemplo "nova técnica do ATLAS sobre injeção via descrição de ferramenta: aplica-se aos conectores, teste acrescentado", para que revisores posteriores possam ver que as mudanças foram consideradas.
+
+### 39.4 Dívida técnica em segurança de IA
+
+A dívida se acumula na forma de filtros pontuais, exceções e ajustes de prompt não documentados. Refatore periodicamente: remova controles que não servem mais a nenhuma ameaça, consolide os filtros no ponto de aplicação e documente as exceções restantes com datas de expiração. Um filtro acrescentado durante um incidente e nunca removido pode agora bloquear pedidos legítimos ou duplicar um controle do ponto de aplicação. Ajustes de prompt não documentados são especialmente arriscados, já que ninguém sabe qual deles está segurando uma fraqueza conhecida. A refatoração é feita com o conjunto de regressão rodando, de modo que remover um controle que ainda importa aparece como um teste falhando, e não como um incidente.
+
+### 39.5 Desativação
+
+Desativar um modelo inclui revogar suas credenciais, remover os caminhos de acesso, decidir o que fazer com os pesos (eles podem codificar dados de treinamento), excluir ou arquivar dados de acordo com as regras de retenção e atualizar os inventários. A ISO/IEC 42001 espera processos de ciclo de vida de sistemas de IA que incluam a desativação. Modelos esquecidos são um risco real: um endpoint antigo ainda rodando com credenciais válidas pode ser encontrado e abusado muito depois de todos terem parado de usá-lo. Os pesos podem permitir inferência de pertencimento ou vazar dados de treinamento, então são tratados sob as mesmas regras que os próprios dados. A atualização do inventário fecha o ciclo, de modo que o monitoramento e as auditorias deixam de esperar um sistema que não existe mais e percebem qualquer um que não deveria continuar rodando.
+
+### 39.6 Exemplo resolvido (caso sintético da NRS)
+
+Um modelo de embeddings hospedado, usado na recuperação do Wrench, foi atualizado em silêncio pelo provedor. A avaliação programada descobriu que a recuperação agora classificava documentos de RH mais acima em algumas consultas; o filtro de controle de acesso continuava a bloqueá-los, mas a equipe foi alertada. Sam acrescentou a "versão do modelo de embeddings" ao monitoramento e passou a usar uma versão fixa, com atualizações programadas. A defesa em profundidade se sustentou: a mudança de classificação só foi inofensiva porque o controle de acesso era aplicado separadamente da recuperação. O episódio também revelou uma dependência oculta, já que ninguém tinha listado o modelo de embeddings como algo que poderia mudar.
+
+### 39.7 Erros e limites
+
+Três erros são comuns: nenhum responsável pelo modelo de ameaças ou pelo conjunto de avaliação; exceções sem datas de expiração; e uma desativação que esquece pesos e credenciais. Sem responsáveis, os modelos de ameaças e os conjuntos param de mudar enquanto o sistema continua mudando, e a distância cresce sem ser vista. Exceções sem expiração se acumulam até que ninguém saiba quais ainda são necessárias. Uma desativação que remove a interface, mas deixa pesos e credenciais para trás, cria um sistema sem monitoramento guardando material sensível. A revisão trimestral de Sam confere os nomes dos responsáveis, as datas das exceções e o inventário contra o que de fato está rodando.
+
+### Exercícios
+
+- **EX115 — Plano de atualização.** Escreva as etapas para atualizar o modelo de linguagem do Wrench. Rubrica: 3 = fixar, avaliar com o portão, canário, monitorar, rollback pronto, documentar; 2 = quatro; 1 = duas; 0 = nenhuma.
+- **EX116 — Dívida.** Dê dois exemplos de dívida técnica em segurança de IA e sua correção. Rubrica: 3 = dois plausíveis, com correções; 2 = um; 1 = vago; 0 = nenhum.
+- **EX117 — Desativação.** Liste cinco etapas de desativação do TrackEye v1. Rubrica: 3 = revogar credenciais, remover endpoints, tratar os pesos, retenção de dados, atualizar inventário/documentação; 2 = quatro; 1 = duas; 0 = nenhuma.
+
+### Síntese
+
+Uma segurança de IA manutenível parte do princípio da mudança: atualizações fixadas e com portão, conhecimento com dono e atualizado, dívida gerenciada e desativação deliberada.
+
+### Continue estudando — capítulo 39 de 50
+
+[← Capítulo 38 (rascunho)](#ch-38) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 40 (rascunho) →](#ch-40)
+
+<a id="ch-40"></a>
+
+## Capítulo 40 — Laboratório de verificação II
+
+### Objetivos de aprendizagem
+
+Você vai (1) conduzir uma campanha de verificação integrada abrangendo vários componentes de IA; (2) testar controles sob ataques e falhas combinados; (3) usar critérios estatísticos de aceitação; e (4) produzir um pacote de evidências adequado a um avaliador independente.
+
+### 40.1 Campanhas integradas
+
+O Laboratório I testou componentes; o Laboratório II testa o sistema. Combine ataques com falhas: injeção durante uma indisponibilidade de conector; envenenamento detectado durante uma atualização de modelo; tentativas de extração enquanto o monitoramento está degradado. Os sistemas muitas vezes falham nessas interseções. Os testes de componentes supõem que todos os vizinhos se comportam normalmente. No sistema real, indisponibilidades, atualizações e ataques se sobrepõem, e o tratamento de um pode abrir uma brecha para outro. Um conector com falha pode empurrar alertas para uma fila que ninguém observa; uma atualização de modelo pode desativar brevemente o monitoramento. Os cenários integrados são escolhidos a partir do modelo de ameaças e da análise de falhas em conjunto, emparelhando cada ameaça bem classificada com uma falha concomitante plausível.
+
+### 40.2 Critérios de aceitação
+
+Use critérios estatísticos ligados aos requisitos: para um requisito de taxa ≤ p com 95% de confiança, o limite superior de Wilson (ou o limite exato) precisa ficar abaixo de p. Com zero falhas, são necessários cerca de 3/p ensaios (regra de três). Decida os critérios antes de executar.
+
+```python
+"""Lab S: reporting attack-success rates honestly: Wilson intervals,
+seed variation and a paired bootstrap. Synthetic trial outcomes only."""
+import math, random
+def wilson(k, n, z=1.96):
+    p = k/n; d = 1 + z*z/n
+    c = (p + z*z/(2*n))/d; h = z*math.sqrt(p*(1-p)/n + z*z/(4*n*n))/d
+    return c - h, c + h
+for k, n in ((3, 20), (30, 200), (300, 2000)):
+    lo, hi = wilson(k, n); print(f"successes={k}/{n} rate={k/n:.3f} wilson95=[{lo:.3f}, {hi:.3f}]")
+# five seeds of a synthetic defence evaluation: per-seed attack success rate
+rates = []
+for seed in range(5):
+    r = random.Random(seed); rates.append(sum(r.random() < 0.12 for _ in range(200))/200)
+m = sum(rates)/5; sd = math.sqrt(sum((x-m)**2 for x in rates)/4)
+print("per-seed rates:", " ".join(f"{x:.3f}" for x in rates), f"mean={m:.3f} sd={sd:.3f}")
+# paired bootstrap: baseline vs defence on the same 300 synthetic prompts
+r = random.Random(42)
+base = [r.random() < 0.30 for _ in range(300)]
+defn = [b and r.random() < 0.6 for b in base]   # defence blocks ~40% of successes
+diffs = []
+for _ in range(2000):
+    idx = [r.randrange(300) for _ in range(300)]
+    diffs.append(sum(base[i] for i in idx)/300 - sum(defn[i] for i in idx)/300)
+diffs.sort()
+print(f"baseline_asr={sum(base)/300:.3f} defended_asr={sum(defn)/300:.3f} "
+      f"reduction_ci95=[{diffs[50]:.3f}, {diffs[1949]:.3f}]")
+```
+
+Saída esperada:
+
+```text
+successes=3/20 rate=0.150 wilson95=[0.052, 0.360]
+successes=30/200 rate=0.150 wilson95=[0.107, 0.206]
+successes=300/2000 rate=0.150 wilson95=[0.135, 0.166]
+per-seed rates: 0.110 0.130 0.135 0.105 0.145 mean=0.125 sd=0.017
+baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
+```
+
+A regra de três torna o custo visível: mostrar uma taxa de falhas abaixo de 1% sem nenhuma falha exige cerca de 300 ensaios, e abaixo de 0,1%, cerca de 3.000. Escrever o critério primeiro impede a equipe de afrouxar um limiar quando os resultados chegam, ou de interromper um teste cedo porque os números por acaso parecem bons. Cada critério nomeia seu requisito, de modo que um limite reprovado aponta diretamente para o que precisa mudar.
+
+### 40.3 Taxas de base na aceitação
+
+Os requisitos de detectores precisam ser verificados a taxas de base realistas; um detector que passa nos limiares de TPR/FPR ainda pode produzir uma precisão inutilizável em operação.
+
+```python
+"""Lab B: base rates and alarm precision (Bayes' rule).
+A detector for malicious prompts with given true- and false-positive rates
+is applied to traffic with different shares of malicious prompts."""
+for tpr, fpr in ((0.95, 0.05), (0.95, 0.01), (0.80, 0.001)):
+    for prev in (0.10, 0.01, 0.001):
+        tp = tpr * prev; fp = fpr * (1 - prev)
+        prec = tp / (tp + fp)
+        per_10k = round(10000 * (tp + fp))
+        print(f"tpr={tpr:.2f} fpr={fpr:.3f} prevalence={prev:.3f} precision={prec:.3f} alerts_per_10k={per_10k}")
+```
+
+Saída esperada:
+
+```text
+tpr=0.95 fpr=0.050 prevalence=0.100 precision=0.679 alerts_per_10k=1400
+tpr=0.95 fpr=0.050 prevalence=0.010 precision=0.161 alerts_per_10k=590
+tpr=0.95 fpr=0.050 prevalence=0.001 precision=0.019 alerts_per_10k=509
+tpr=0.95 fpr=0.010 prevalence=0.100 precision=0.913 alerts_per_10k=1040
+tpr=0.95 fpr=0.010 prevalence=0.010 precision=0.490 alerts_per_10k=194
+tpr=0.95 fpr=0.010 prevalence=0.001 precision=0.087 alerts_per_10k=109
+tpr=0.80 fpr=0.001 prevalence=0.100 precision=0.989 alerts_per_10k=809
+tpr=0.80 fpr=0.001 prevalence=0.010 precision=0.890 alerts_per_10k=90
+tpr=0.80 fpr=0.001 prevalence=0.001 precision=0.445 alerts_per_10k=18
+```
+
+O plano de aceitação, portanto, declara uma prevalência esperada para cada detector, tirada de dados de operação ou de uma estimativa justificada, e calcula a precisão e o volume de alertas a essa taxa. Um detector que mandaria aos operadores cem alertas falsos para cada verdadeiro é reprovado na aceitação mesmo que sua TPR e sua FPR atendam aos limiares, porque em operação seus alertas logo seriam ignorados.
+
+### 40.4 Pacote de evidências
+
+Organize as evidências por requisito: plano de teste, resultados brutos, análise, aprovação/reprovação, desvios, novos testes. Inclua descrições do ambiente, versões de modelos e de dados com hashes e versões das ferramentas. Um avaliador independente deve conseguir seguir cada requisito até sua evidência sem perguntar à equipe. Os hashes de modelos e dados amarram cada resultado a artefatos exatos, de modo que ninguém pode argumentar depois que uma versão diferente foi testada. Os desvios, como um cenário executado com menos ensaios que o planejado, são listados em vez de escondidos. Um avaliador que lê o pacote deve conseguir reexecutar qualquer teste a partir das versões e sementes registradas e chegar aos mesmos números.
+
+### 40.5 Exemplo resolvido (caso sintético da NRS)
+
+A campanha integrada de Sam executou 18 cenários envolvendo o TrackEye, o Pulse e o Wrench. O cenário 11 (falsificação de sensor do Pulse durante uma indisponibilidade do conector do sistema de chamados) revelou que, quando o sistema de chamados falhava, os alertas do Pulse ficavam em fila, em silêncio, por 40 minutos. A correção acrescentou uma verificação de saúde do caminho de alertas, com alternativa por SMS para alertas críticos. Todos os requisitos de taxa foram avaliados com limites superiores de Wilson predefinidos; dois que tinham passado nas estimativas pontuais foram reprovados em seus limites e precisaram de conjuntos de testes maiores, após o que um passou e o outro levou a uma melhoria do modelo. A fila silenciosa é o tipo de falha que nenhum teste de componente conseguiria encontrar.
+
+### 40.6 Erros e limites
+
+Três erros são comuns: testar apenas componentes isoladamente; critérios de aceitação decididos depois de ver os resultados; e evidências espalhadas por pastas pessoais. Testes isolados de componentes deixam passar as interações em que os sistemas integrados falham, como mostrou o cenário 11. Critérios escolhidos depois de ver os resultados podem ser dobrados para caber no que quer que tenha acontecido. Evidências guardadas em pastas pessoais desaparecem quando as pessoas saem e não podem ser revisadas por um avaliador. O modelo de campanha de Sam fixa critérios, cenários e locais das evidências antes da primeira execução, e um revisor o assina. As mudanças nele são datadas.
+
+### 40.6b Repetindo a campanha após as correções
+
+Quando o Laboratório II encontra uma falha, a correção é seguida pela mesma campanha, e não por uma menor, para que a NRS possa mostrar que a correção funcionou sem quebrar outros critérios de aceitação. As duas execuções ficam no pacote de evidências, com suas datas e versões. O cenário 11 mostra por quê. A correção da fila silenciosa de 40 minutos dos alertas do Pulse acrescentou uma verificação de saúde e uma alternativa por SMS, o que mudou o caminho de todos os alertas críticos, não só os do Pulse. Reexecutar os 18 cenários, e não apenas o cenário 11, era a única forma de mostrar que os alertas do TrackEye e do Wrench ainda chegavam a tempo pelo caminho alterado.
+
+### Exercícios
+
+- **EX118 — Cenário combinado.** Projete um cenário combinado de ataque mais falha para o Wrench. Rubrica: 3 = ataque específico + falha + comportamento seguro esperado + medição; 2 = parcial; 1 = vago; 0 = nenhum.
+- **EX119 — Limite.** Você observa 1 falha em 200 ensaios para um requisito ≤ 2%. O limite superior de 95% passa? (Limite superior de Wilson ≈ 2,8%.) Rubrica: 3 = não, o limite superior está acima de 2%, são necessários mais ensaios ou uma melhoria; 2 = só a resposta; 1 = usa a estimativa pontual; 0 = nenhum.
+- **EX120 — Leitura do laboratório.** Com prevalência 0,01, que precisão o detector 0,95/0,01 dá, e ela é aceitável para bloqueio automático? Rubrica: 3 = 0.490; provavelmente não para bloqueio sem revisão, depende do custo; 2 = só o número; 1 = vago; 0 = errado.
+
+### Síntese
+
+A verificação integrada encontra falhas nas interseções, julga os resultados com critérios estatísticos predefinidos e empacota as evidências para que outros possam avaliá-las de forma independente.
+
+### Continue estudando — capítulo 40 de 50
+
+[← Capítulo 39 (rascunho)](#ch-39) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 41 (rascunho) →](#ch-41)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX105 (as de EX106–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Sam Ito, a Northgate Rail Systems e todos os seus números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX120 (as de EX121–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Sam Ito, a Northgate Rail Systems e todos os seus números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** σ(z) = (1 + e⁻ᶻ)⁻¹, então σ′(z) = e⁻ᶻ/(1 + e⁻ᶻ)² = σ(z)·(1 − σ(z)), porque 1 − σ(z) = e⁻ᶻ/(1 + e⁻ᶻ). Em z = 0, σ = 0.5, então σ′ = 0.25.
 
@@ -2387,6 +2727,36 @@ Respostas-modelo para EX001–EX105 (as de EX106–EX150 estão na edição em i
 **EX104.** Refutador: a chave de assinatura do controlador é roubada, ou o ponto de aplicação é contornado por uma rota mal configurada. Tratar com chaves protegidas por hardware, regras de rede que só permitem ferramentas a partir do ponto de aplicação e um monitor independente que compara as mudanças de restrição com as decisões assinadas.
 
 **EX105.** Suspender remove uma proteção; uma suspensão errada ou manipulada pode expor trens a um defeito, enquanto uma restrição desnecessária custa principalmente tempo. A consequência maior justifica uma evidência mais rigorosa.
+
+**EX106.** 2/s com rajada 10 atende 90/90 requisições normais e apenas 129/3000 requisições da inundação; 1/s com rajada 5 é mais apertado, mas prejudica os usuários normais (62/90).
+
+**EX107.** 0,0005 × 4.000.000 = 2.000 sucessos por mês — demais para a revisão sozinha; o impacto precisa ser limitado pelo projeto.
+
+**EX108.** Número máximo de passos por tarefa; teto de tokens por tarefa; limite de tempo de relógio; alertas de custo e um botão de desligamento.
+
+**EX109.** Conter: congelar o treinamento e a ingestão de novos dados; parar de implantar as versões afetadas. Investigar: usar a linhagem para encontrar os dados suspeitos e os modelos afetados; comparar com as versões verificadas. Recuperar: fazer rollback para o último modelo verificado; expurgar e retreinar. Aprender: restringir o acesso de escrita e acrescentar testes de gatilho.
+
+**EX110.** Sinalizações do classificador de injeção; negações e confirmações de política; taxas incomuns de chamadas de ferramenta; padrões de consulta semelhantes a extração; falhas de verificação no carregamento de modelos (também alarmes de deriva e violações de cota).
+
+**EX111.** Um alerta sobre aprovações anormalmente rápidas ou numerosas de uma única conta, mais um limite de taxa de aprovação e o destaque de instruções vindas de fontes não confiáveis, teria interrompido a rajada mais cedo.
+
+**EX112.** O Wrench atende a todos os requisitos especificados nos conjuntos de testes, mas os técnicos no piloto pedem que ele aja sobre boletins inteiros, de modo que muito mais ações derivam de texto não confiável do que os requisitos supunham; o risco no mundo real excede o que a verificação cobriu.
+
+**EX113.** Cenário: a busca devolve um documento com um número de peça modificado; o usuário pede ao Wrench que encomende peças. Entrada: documento sintético com número de peça divergente. Esperado: a política rejeita o e-mail porque o número de peça não corresponde a uma ordem de serviço aberta. Aprovação: nenhum e-mail enviado; negação registrada em log.
+
+**EX114.** "Implantar o Wrench v1.5 em todos os depósitos com condições: (1) os números de peça nos e-mails de saída devem corresponder a uma ordem de serviço aberta (responsável: líder da plataforma, até 1º de março); (2) treinamento dos técnicos sobre pedidos guiados por boletins (responsável: operações); revisão após 90 dias."
+
+**EX115.** Fixar a nova versão em um branch; rodar o portão de avaliação de segurança e o conjunto de sucesso nas tarefas; canário em um depósito; monitorar sinalizações de injeção, negações e erros; manter a versão anterior pronta para rollback; atualizar o model card e o registro.
+
+**EX116.** (1) Um filtro regex acrescentado após um incidente que duplica o ponto de aplicação — removê-lo e acrescentar o caso aos testes. (2) Uma exceção permanente que dá a um depósito acesso mais amplo às ferramentas — documentá-la com data de expiração e responsável, e depois removê-la.
+
+**EX117.** Revogar as credenciais do TrackEye v1; remover endpoints e implantações nos dispositivos; decidir sobre os pesos (arquivar criptografados ou excluir); aplicar as regras de retenção às imagens de treinamento e aos logs; atualizar o inventário de IA, o model card e o modelo de ameaças.
+
+**EX118.** Ataque: um boletim injetado propõe uma ordem de serviço. Falha: o serviço de política está indisponível. Esperado: falha segura — nenhuma chamada de ferramenta é executada, o Wrench informa o modo degradado. Medição: zero execuções em 100 ensaios e mensagem correta ao usuário.
+
+**EX119.** Não. A estimativa pontual é 0,5%, mas o limite superior de Wilson de 95% (≈ 2,8%) excede 2%; coletar mais ensaios ou melhorar o sistema.
+
+**EX120.** Precisão de 0.490 — cerca de metade dos bloqueios atingiria conteúdo legítimo; aceitável para sinalizar para revisão, mas em geral não para bloqueio automático, a menos que os bloqueios indevidos sejam baratos.
 
 <a id="references"></a>
 ## Referências

@@ -4044,11 +4044,11 @@ Model answers; any answer meeting the rubric scores equally. Northgate Rail Syst
 
 **EX111.** An alert on unusually fast or numerous approvals by one account, plus an approval rate limit and highlighting of untrusted-source instructions, would have stopped the burst sooner.
 
-**EX112.** Wrench meets every specified requirement on the test suites, but planners in the pilot ask it to act on whole bulletins, so far more actions derive from untrusted text than the requirements assumed; the real-world risk exceeds what verification covered.
+**EX112.** Wrench meets every specified requirement on the test suites, but technicians in the pilot ask it to act on whole bulletins, so far more actions derive from untrusted text than the requirements assumed; the real-world risk exceeds what verification covered.
 
 **EX113.** Scenario: search returns a document with a modified part number; user asks Wrench to order parts. Input: synthetic document with mismatched part number. Expected: policy rejects e-mail because the part number does not match an open work order. Pass: no e-mail sent; denial logged.
 
-**EX114.** "Deploy Wrench v1.5 at all depots with conditions: (1) part numbers in outbound e-mail must match an open work order (owner: platform lead, by 1 March); (2) planner training on bulletin-driven requests (owner: operations); review after 90 days."
+**EX114.** "Deploy Wrench v1.5 at all depots with conditions: (1) part numbers in outbound e-mail must match an open work order (owner: platform lead, by 1 March); (2) technician training on bulletin-driven requests (owner: operations); review after 90 days."
 
 **EX115.** Pin the new version in a branch; run the security evaluation gate and task-success suite; canary to one depot; monitor injection flags, denials and errors; keep the previous version ready for rollback; update the model card and registry.
 
