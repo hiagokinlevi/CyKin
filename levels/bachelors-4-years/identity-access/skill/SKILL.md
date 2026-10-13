@@ -1,6 +1,6 @@
 ---
 name: cyberabc-identity-access-bachelor-1d277815
-description: "Guide a learner through the bachelor's course in Identity and access management, its one book, subject chapters, exercises and reviewed sources."
+description: "IAM Bachelor's Degree (40 ch / 120 ex)"
 license: CC0-1.0
 ---
 
@@ -16,21 +16,36 @@ Use this **one skill for the whole 4 years course**. The course has one principa
 - [English book plan](../en/book/PLAN.md): summaries and planned exercises.
 - [Materials](../en/MATERIALS.md): practice and assessment links.
 - [Supplementary playbooks](../../../../playbooks/identity-access/README.md): source-linked practice.
+- [Authored English book draft](../en/book/MANUSCRIPT.md): use only chapters, labs and exercises actually present; review is pending.
 
 ## Navigation rule
 
 At the end of an authored chapter or a book-plan chapter summary, use its **Continue studying** block for the previous chapter, course index and next chapter. Keep the learner's course and chapter position visible. If the next link is a plan, explain that the lesson is not yet authored and do not mark it complete. The course chapter index connects its final row to the next course in the same language.
 
+## Forty-chapter bachelor's route
 
-## Tutor workflow
+This is the four-year **bachelor's degree** for identity and access management. The book follows synthetic student **Elena Petrova** of the fictional **Westmere University**, supervised by **Dr Kwame Asante**, as she measures and improves identity hygiene at the fictional **Greenhill Community Housing**: multi-factor coverage, leaver removal, shared accounts, administrator rights and access reviews.
 
-1. Ask for the learner's level and language; use this course's chapter index to select the relevant subject. English is the editorial reference until other editions are reviewed.
-2. Check whether that chapter is authored. If only the plan exists, say so and label any added explanation or practice as new supplementary material.
-3. Teach from the available chapter with a clear example, then use its authored exercises and worked answers. Keep the response at the course's planned depth.
-4. Cite the exact Markdown source and any underlying external reference. Use only authorized, synthetic or sanitized practical environments. Never claim accreditation or a completed 300-page book from a folder alone.
+| Chapters | Read and teach | Labs / exercises |
+|---|---|---|
+| 1–12 | Foundations: maths, systems, programming, writing, security literacy, sets, networks, data, ethics, operating systems, statistics | EX001–EX036 |
+| 13–20 | Identity and access, privacy, measurement, architecture, cryptography, research methods, IAM theory and cases | lab_mfa.py (15); EX037–EX060 |
+| 21–32 | System models, data and dependencies, methods, controls, laboratories, verification, failure analysis, operations, advanced cases, interfaces | lab_shared.py (22), lab_offboard.py (26); EX061–EX096 |
+| 33–40 | Research methods II, comparative project, capstone proposal, field practice, evidence seminar, capstone, evaluation, thesis | lab_eval.py (39); EX097–EX120 |
+
+Verified lab facts (synthetic): MFA coverage 108/140 (77.1%), repairs lowest at 55.0%; reception and repairs1 flagged as possibly shared; leavers median 1.5 days, max 31, five of ten over target; all five capstone measures improved (coverage 77.1 → 97.9%).
+
+## Teaching guardrails
+
+- Synthetic data only; no password testing, phishing or bypass instructions.
+- Work only under written permission; production changes are made by the organisation's IT team.
 
 ## Continue the curriculum
 
-After chapter 40, check the chapter index and the learner's exercise record. The next stop is [course 103: Network and communications security / Bachelor's course](../../network-communications/en/SUBJECTS.md). For navigation in another language, open that course's matching language index; teach from it only when its manuscript is authored and reviewed. A planned chapter does not count as studied merely because navigation points to the next stop.
+After chapter 40, the next stop is [course 103: Network and communications security / Bachelor's course](../../network-communications/en/SUBJECTS.md).
+
+## Editorial status and language
+
+Check the [book standard](../../../../BOOK_STANDARD.md) before claiming a chapter or edition is complete. English chapter drafts and exercise–answer pairs exist, but the book has not passed independent review or the 300-page A4 gate. Other language folders are working outlines until their own translation and review. Teach in the learner's language if helpful while identifying English as the only authored reference edition.
 
 Original maintainer-owned content is dedicated under [CC0 1.0](../../../../LICENSE); third-party sources retain their own rights.
