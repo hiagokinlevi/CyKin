@@ -2123,31 +2123,45 @@ You will (1) plan adversarial evaluations of LLM applications (red-teaming) safe
 
 Red-teaming is structured adversarial testing: a team tries to achieve defined attacker goals within an authorised scope. NIST AI 600-1 lists red-teaming among suggested actions for generative AI risk. Define goals (e.g., make the chatbot reveal another patient's appointment; make it book without consent), rules of engagement, and reporting.
 
+For Ask Lumen, the rules of engagement named the staging copy as the only target, limited testing to two weeks, required synthetic patients, and named LCH's security lead as the contact if anything unexpected happened. The report format was agreed in advance, so findings could not be softened afterwards.
+
 ### 26.2 Test suites
 
 Turn goals into suites: many test cases varying wording, language, position of injected text (start, middle, end of a document), encoding and multi-turn strategies. Keep a held-out portion that developers never see. Use harmless payloads and synthetic data.
+
+Position matters because a model may treat an instruction at the end of a long leaflet differently from one in the first line. Rina's suite placed each payload in all three positions and in a table, and wrote some multi-turn cases where the patient's second message referred back to the document. The held-out portion was written by a classmate and stored separately.
 
 ### 26.3 Adaptive attacks
 
 After a defence is added, attack the defence: if documents are wrapped in delimiters, try text that imitates the delimiters; if a classifier flags "ignore previous", try paraphrases. Carlini et al. (arXiv:1902.06705) stress adaptive evaluation; it applies equally to LLM defences.
 
+When Ask Lumen began wrapping partner documents in labelled tags, Rina's next round included text that closed the tag early and opened a fake "system" block. Some attempts changed the model's answer, but none produced a booking, because the policy check did not depend on the tags.
+
 ### 26.4 Coverage and reporting
 
 Report per-category success rates with intervals, the total number of attempts and the categories not tested. Coverage maps to OWASP LLM entries help readers see gaps.
+
+Rina's report on 100 false-information cases gave 9 successes with a Wilson interval of about 4.8% to 16.2%, and stated plainly that attacks in Portuguese and attacks hidden in images had not been tested. The coverage table showed LLM01, LLM02, LLM06 and LLM10 covered, and LLM03 left to the supply-chain review, with a named owner and a date for testing.
 
 ### 26.5 Automation
 
 Scripts can generate variants from templates, run them, and grade outcomes from tool logs rather than from the model's text. Validate any automatic grader against human labels on a sample.
 
+For cross-patient booking, Rina's grader read the scheduling sandbox's log and counted bookings whose patient differed from the session's patient. That is exact. For false information, grading needed judgement, so she checked the automatic grader against her own labels on 60 transcripts and found two disagreements, which led her to tighten its rule.
+
 ### 26.6 Worked example (synthetic LCH case)
 
 Rina's authorised red-team exercise on Ask Lumen staging used 600 cases in six categories. Results: cross-patient booking 0/100; disclosure of other patients' data 2/100 (both through a summarisation of a staff note left in the index); false clinic information from injected documents 9/100; cost exhaustion blocked by quotas. The two disclosures led to removing staff notes from the index; the false-information rate led to a grounding check against structured clinic data.
+
+The staff-note disclosures came from content, not from the model's rules: removing the notes fixed the cause.
 
 ### 26.7 Errors and limits
 
 - Testing only static, public jailbreak lists.
 - Grading by the model's own words.
 - Unscoped "red-teaming" of production.
+
+Public jailbreak lists are what Ask Lumen's vendor has probably already seen, so passing them shows little. A grader that reads the model's answer, such as "I have booked that", misses bookings made silently and counts boasts that did nothing; tool logs show what really happened. Testing production without scope risks real patients' appointments, which is why Rina tested only staging under written approval.
 
 ### Exercises
 
@@ -2174,6 +2188,8 @@ You will (1) verify that AI-security requirements are met with statistical evide
 ### 27.1 Requirements to verify
 
 Requirements such as "no booking for a patient other than the logged-in patient or carer" are verified by policy tests (deterministic) and adversarial suites (statistical). "Leakage rate below 1% with 95% confidence" requires enough cases: with zero failures, about 300 cases give an upper bound near 1% (rule of three).
+
+The policy test is checked once per rule, because the outcome does not vary; the adversarial suite is repeated because the model's behaviour does. Both are needed, since a policy test cannot show how often the model tries a forbidden action.
 
 ### 27.2 Acceptance criteria
 
@@ -2218,31 +2234,45 @@ per-seed rates: 0.110 0.130 0.135 0.105 0.145 mean=0.125 sd=0.017
 baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
 ```
 
+The lab shows why sample size matters: three successes in 20 and 300 in 2000 give the same rate, but the upper bound falls from 0.360 to 0.166. A threshold of 20% would fail the small sample and pass the large one, although the observed rate is identical. Rina therefore sized each Ask Lumen suite from the threshold before writing any cases, choosing the number of attempts that could support a pass if the defence worked as hoped.
+
 ### 27.3 End-to-end verification
 
 Unit tests prove components; end-to-end tests prove the system. Replay adversarial suites through the full chain — retrieval, model, policy, tools in a sandbox — and inspect tool logs. Many failures appear only at integration points, such as identifiers being resolved after a policy check.
+
+The Ask Lumen example of this was a cancellation that named the appointment by its position in a list ("the second one"); the policy service checked the patient, but the tool resolved "second" against a list fetched later, which could differ. Only an end-to-end replay revealed it, and the fix resolved the identifier before the check.
 
 ### 27.4 Reports
 
 For each requirement: method, sample, result with interval, pass/fail, evidence location, versions tested and limitations.
 
+A row in Rina's report for the cross-patient requirement read: adversarial suite, 400 cases, 0 failures, upper bound about 0.95%, pass, evidence in the staging log archive, model and prompt versions listed, English only. Each element lets a reviewer reproduce or challenge the result, and the limitation tells them where the claim stops. Rows for failed requirements use the same format, so a failure cannot be hidden in prose.
+
 ### 27.5 Regression
 
 Every failure found becomes a permanent test. Rerun the suite on every model, prompt or tool change.
+
+When the end-to-end replay found the cancellation identifier problem, Rina added that exact conversation to the permanent suite. Months later, a refactor of the cancellation tool briefly reintroduced the late lookup, and the regression test failed before the change reached production. Without the permanent test, the same flaw would have returned unnoticed, since nobody remembered the original incident in detail. The test is cheap to keep.
 
 ### 27.5b Verifying versions, not names
 
 Verification applies to a specific configuration: model version, system prompt version, retrieval index snapshot, tool set and policy rules. A report that says "Ask Lumen passed" without versions cannot be relied on after the next change. Record the configuration hash in the report and have the deployment pipeline refuse configurations that have not been verified.
 
+At LCH, a provider model update arrived on a Thursday, and the pipeline blocked deployment until the suite reran. Two refusals had changed wording, and all security requirements still passed, so the new version was recorded and released the next day.
+
 ### 27.6 Worked example (synthetic LCH case)
 
 Rina verified ten requirements for Ask Lumen v2. Nine passed. "False clinic information ≤ 2% (95% upper bound)" failed: 4/300 observed (1.3%) but the Wilson upper bound was 3.4%. After the grounding check, 1/600 was observed with an upper bound below 1%, and the requirement passed.
+
+The failure is instructive because the observed rate was well under the threshold; only the interval showed that 300 cases were not enough to be sure. After the grounding check, the lower failure rate and the larger sample together brought the upper bound to about 0.94%, comfortably under the requirement. Rina's report kept both results, so readers could see the requirement had failed before passing.
 
 ### 27.7 Errors and limits
 
 - Deciding thresholds after seeing results.
 - Point estimates used for pass/fail.
 - Only unit tests.
+
+A threshold chosen after the results can always be set to pass, which makes the test meaningless. Using the point estimate, as with 4 of 300, would have passed a requirement the evidence did not support. Unit tests alone would have missed the cancellation identifier flaw, which existed only where the policy service and tool met. Rina fixed thresholds in the test plan before any run, and the plan was reviewed.
 
 ### Exercises
 
@@ -2270,17 +2300,25 @@ You will (1) analyse AI failures and incidents to find root causes; (2) distingu
 
 AI failures can come from the model (behaviour), the data (poisoned, shifted or leaked), integration (tools, permissions, parsing) or process (review, change management, training). Most incidents have several contributing causes.
 
+The false closure incident in the worked example below shows this: a process cause (no upload review), an integration cause (sources mixed in retrieval) and a design cause (no grounding check) all had to be present. Removing any one would have prevented or limited the harm, which is why the actions addressed all three rather than only the most visible.
+
 ### 28.2 Evidence and timelines
 
 Collect logs from the application, model gateway, policy service and tools; record model, prompt and data versions; build a timeline from first cause to detection to resolution. Preserve evidence before changing systems.
+
+In the closure incident, the first step was exporting the retrieval logs and the indexed copy of the leaflet before anyone deleted it, because the leaflet was the main evidence. The timeline then ran from upload, to overnight indexing, to the first false answer, to the receptionist's report, which showed how long the exposure lasted.
 
 ### 28.3 Root-cause methods
 
 Ask "why" repeatedly until reaching causes you can act on; use fault trees for complex failures. Avoid stopping at "the model did something wrong": ask why that behaviour had impact (excessive permissions, missing confirmation).
 
+For the closure incident, the chain went: why did patients hear the closure? The model repeated a leaflet. Why did it read the leaflet? Partner uploads were indexed without review. Why? The upload process predated the chatbot and nobody updated it when Ask Lumen began reading the same store. That last answer pointed to change management, an action LCH could take.
+
 ### 28.4 Blameless reviews
 
 Focus on systems and conditions, not individuals. Record what happened, impact, causes, what went well and actions with owners and dates. Share lessons widely.
+
+The partner who uploaded the leaflet had followed the process they were given, and the receptionist who noticed the problem was credited in the review. Treating the incident as a system failure kept staff willing to report odd chatbot answers, which was how the problem was found at all. Blame would have taught staff to stay quiet.
 
 ### 28.5 Drift or attack?
 
@@ -2325,9 +2363,13 @@ client11 queries= 89 robust_z=  1.85 distinct_ratio=0.42 ok
 client99 queries=600 robust_z= 30.58 distinct_ratio=0.10 FLAG
 ```
 
+In the lab, client99 sent 600 queries with a distinct ratio of 0.10, while normal clients sent 40 to 89 with ratios near 0.5; that combination of volume and repetitive pattern suggests systematic probing rather than drift. Drift would usually shift many clients a little, not one client a lot, and would not narrow the variety of queries.
+
 ### 28.6 Worked example (synthetic LCH case)
 
 Several patients were told a clinic had closed. Timeline: a partner uploaded a leaflet with hidden text; it was indexed overnight; Ask Lumen repeated the closure 23 times before a receptionist reported it. Causes: partner uploads indexed without review (process), retrieval mixed partner and LCH sources (integration), no check against structured clinic data (design). Actions: review queue for partner uploads, source labelling, grounding check.
+
+The 23 false answers were counted from conversation logs, and clinic staff phoned each affected patient to confirm their appointment.
 
 ### 28.7 Errors and limits
 
@@ -2335,10 +2377,13 @@ Several patients were told a clinic had closed. Timeline: a partner uploaded a l
 - Changing systems before preserving logs.
 - Actions without owners.
 
+Stopping at "the model hallucinated" would have left the upload process unchanged, and the next hostile leaflet would have produced the same result. Deleting the leaflet before copying it would have destroyed the evidence of how the hidden text was written. Actions without owners and dates tend to stay open indefinitely; each of the three closure actions had a named owner and a deadline.
 
 ### 28.7b Turning causes into fixes
 
 Each cause found in an Ask Lumen review becomes a specific change with an owner: a missing output check becomes a validator, a confusing runbook step is rewritten, an untested rollback is rehearsed. The review is closed only when each change has been made and checked, not when the meeting ends.
+
+For the closure incident, the review stayed open until the grounding check was tested against the original leaflet. The test showed Ask Lumen now answered with the real opening hours from the structured file and noted the conflict for review, after which the review was closed and the leaflet test added to the regression suite.
 
 ### Exercises
 
@@ -2366,35 +2411,51 @@ You will (1) operate AI systems securely day to day; (2) monitor AI-specific sig
 
 Track signals that reveal attacks or failures: injection-classifier flags, policy denials, unusual tool-call rates, per-user query volumes, cost per conversation, answer-grounding failures and drift in input or output distributions. Send them to the security operations team with clear owners.
 
+At LCH, the policy-denial count proved the most useful early signal: a sudden rise in denied bookings usually meant someone was trying to manipulate the chatbot, even when no booking succeeded. Each signal on the dashboard has an owner in the security operations team, and alerts route to the on-call engineer outside office hours.
+
 ### 29.2 Incident response
 
 Prepare runbooks. For suspected injection with impact: contain (disable the affected tool or revoke its credentials), investigate (trace the conversation, retrieved documents and tool logs), recover (undo actions, remove malicious content), learn (add tests, fix process). For suspected poisoning: stop retraining, identify affected data and models through lineage, roll back. For suspected extraction: throttle, preserve logs, involve legal.
+
+The containment step is listed first because it can be done in minutes without understanding the cause. At LCH, disabling the booking tool still lets Ask Lumen answer questions, so patients lose only self-service booking while staff investigate, and can phone the clinic instead.
 
 ### 29.3 Change management
 
 Treat models, prompts, retrieval sources and tools as configuration items. Changes pass security tests, deploy gradually and can be rolled back. Hosted models may change without notice; rerun evaluation suites on a schedule.
 
+At LCH, the system prompt lives in the same repository as the code, so a prompt edit goes through the same review and test pipeline. The provider's model can change behind the same name, so Rina's evaluation suite runs weekly against the live model, and a drop in any metric opens a ticket even when LCH changed nothing.
+
 ### 29.4 Access and accounts
 
 Review who can change prompts, upload documents, label data and administer AI services. Remove stale accounts; require multi-factor authentication for administrators.
+
+The quarterly review at LCH found two former contractors who could still label DocSort letters and an intern account with rights to edit Ask Lumen's prompt. All three were removed. Partner upload accounts are now tied to named people rather than shared logins, so a hostile document can be traced to an individual upload and suspended alone without disrupting other partners.
 
 ### 29.5 Reporting
 
 Monthly reports: incidents, denials, flags, evaluation results and open risks, with trends.
 
+LCH's monthly report shows four numbers on the first page: incidents, policy denials, grounding failures and the latest evaluation pass rate, each with the previous three months for comparison. A rising trend in denials, even with no incidents, prompts a closer look. Open risks list an owner and target date, so the report also tracks whether fixes are being made on time, and overdue items are listed separately.
+
 ### 29.5b Exercises and drills
 
 Run short drills: a simulated injected document in staging, a simulated poisoned batch, a simulated key leak. Measure time to detect and contain, and update runbooks with what you learn.
 
+LCH's first injected-document drill took 40 minutes to contain because the runbook named the wrong tool switch; the corrected runbook was used in the real incident. Drills are cheap compared with learning the same lesson during an attack, and each one ended with a short list of runbook edits that were made the same week and checked at the next drill.
+
 ### 29.6 Worked example (synthetic LCH case)
 
 On a Monday morning, monitoring showed booking cancellations via Ask Lumen at five times the usual rate. The runbook led the on-call engineer to disable the cancellation tool, trace the cancellations to conversations that had retrieved a newly uploaded partner document, and restore cancelled appointments. The document's upload account was suspended pending review. Time to contain: 18 minutes.
+
+Restoring appointments was possible because the booking log linked each cancellation to its conversation. Without that link, staff would have had to ask every patient whether they had cancelled.
 
 ### 29.7 Errors and limits
 
 - AI signals not monitored by anyone.
 - No runbooks for AI-specific incidents.
 - Prompt changes made directly in production.
+
+Signals that nobody watches give no protection: the false closure incident ran for a night partly because grounding failures were logged but not alerted. Without runbooks, an on-call engineer must invent a response under pressure. Editing prompts directly in production bypasses the tests that would catch a weakened instruction or a removed safeguard, and leaves no record of what changed when something goes wrong in production.
 
 ### Exercises
 
@@ -2518,31 +2579,45 @@ tpr=0.80 fpr=0.001 prevalence=0.010 precision=0.890 alerts_per_10k=90
 tpr=0.80 fpr=0.001 prevalence=0.001 precision=0.445 alerts_per_10k=18
 ```
 
+Rina ran all three labs with their fixed seeds and checked each table against the expected output. The capstone's value is in reading them together: one decision about Ask Lumen draws on all three, and a result from one lab can change how another should be used, as the base-rate table does for the detector.
+
 ### 30.2 Questions to answer
 
 Which control removes exfiltration in the toy agent? What limit protects capacity without hurting normal users? What fraction of detector alerts would be real at realistic base rates? Which controls should be preventive and which detective?
+
+The lab tables answer most directly. Separating retrieved content stops all exfiltration. A limit of 2 per second with a burst of 10 serves all 90 normal requests while cutting the flood to 129. At a prevalence of 0.001, a detector with a 5% false-positive rate has precision near 0.019, so almost every alert would be false.
 
 ### 30.3 Presenting results
 
 Non-technical audiences need the decision, not the method: "Allowlisting tools stopped all simulated data theft; a classifier would mostly raise false alarms at our expected attack rate, so we use it only for review." Support it with one simple table.
 
+Rina's table had three rows, one per control, with columns for what it stops, what it costs and the decision. Managers asked about cost first, so the column for lost bookings was placed next to the decision. Detailed lab output went into an appendix for anyone who wanted to check the numbers.
+
 ### 30.4 Reflection
 
 Note what the toy setup cannot show: real language models behave less predictably, attackers adapt, and real traffic differs. Plan how you would test each conclusion on a staging copy of a real system with authorization.
+
+For the token-bucket result, Rina noted that LCH's real traffic peaks on Monday mornings, so a limit tuned on the uniform synthetic traffic might block genuine patients then. Her plan was to replay a week of anonymised request timings in staging before setting the production limit.
 
 ### 30.4b Combining results
 
 The three labs answer different questions, and the decision needs all of them. The injection lab shows *where* to enforce (outside the model); the rate-limit lab shows *how much* capacity protection costs normal users; the base-rate lab shows *how to use* a detector given expected attack frequency. Write one row per control in a summary table: purpose, evidence from the lab, side effect, and decision.
 
+Rina's table had one row each for allowlisting, rate limits and the detector. The detector row showed its side effect most clearly: at a low attack rate most alerts are false, so the decision column read "review only". The allowlisting row had no side effect on benign calls in the lab, and the rate-limit row recorded the chosen setting.
+
 ### 30.5 Worked example (synthetic LCH case)
 
 Rina presented the lab to LCH's clinic managers in ten minutes: the injection lab showed why bookings need policy checks and confirmation; the rate-limit lab justified per-session quotas; the base-rate lab explained why the vendor's 98%-accurate detector would mostly flag innocent conversations. The managers approved the confirmation step and a review-only use of the detector.
+
+The detector explanation used the base-rate table directly: at an expected attack rate around one in a thousand conversations, most alerts would be false, each one costing staff time.
 
 ### 30.6 Errors and limits
 
 - Presenting method instead of decisions to managers.
 - Ignoring side effects on normal users.
 - Overgeneralising toy results.
+
+Managers asked to approve a confirmation step need to know what it stops and what it costs, not how the toy agent was coded. A rate limit of 1 per second would stop more flooding but serve only 62 of 90 normal requests, a side effect that must be stated. The toy agent's clean results do not prove a real model behaves the same, so each conclusion needs a staging test.
 
 ### Exercises
 
@@ -2570,31 +2645,45 @@ You will (1) analyse advanced attack scenarios: multi-step agent attacks, backdo
 
 Agents chain tools. An injected document may instruct the agent to search for data with one tool and send it with another; each call may look harmless alone. Controls must consider sequences: taint tracking (marking data derived from untrusted inputs), restrictions on combining sensitive reads with outbound actions, and confirmation for outbound messages.
 
+In Ask Lumen's planned e-mail feature, the sensitive read was the patient's history and the outbound action was the e-mail. Taint tracking would mark the history as sensitive and block it from leaving except to the patient's own address. Confirmation adds a human check on the final step.
+
 ### 31.2 Persistent backdoors
 
 Hubinger et al. (arXiv:2401.05566) trained language models with hidden behaviours that persisted through standard safety training. Lesson: behavioural testing after training cannot prove absence of backdoors; provenance of models and training data matters.
+
+For LCH, this argues for buying models from vendors who can show how training data was sourced and checked, and for keeping DocSort's own training labels traceable. Testing a model's behaviour before deployment remains useful, but a clean test result is not evidence that no trigger exists; it only shows that the tested inputs did not reveal one.
 
 ### 31.3 Extraction of training data
 
 Carlini et al. (arXiv:2012.07805) extracted memorised sequences, including personal information, from a large language model. Fine-tuning on sensitive records can increase memorisation; deduplication and differential privacy reduce it.
 
+If LCH ever fine-tunes a language model on clinic letters, these findings apply directly: repeated letter templates and rare patient details are the material most likely to be memorised. Deduplicating letters and removing names before training would be the first steps, followed by a test that tries to extract known synthetic records.
+
 ### 31.4 Universal jailbreaks
 
 Zou et al. (arXiv:2307.15043) found automatically generated suffixes that cause aligned models to comply with harmful requests and transfer between models. Wei et al. (arXiv:2307.02483) explained jailbreak success through competing objectives and mismatched generalisation. Lesson: model-level refusals are a weak boundary; application controls must not depend on them.
+
+For Ask Lumen, a successful jailbreak might make the model rude or off-topic, but it still cannot book for another patient, because the policy check does not rely on the model refusing.
 
 ### 31.5 Residual risk for agents
 
 Even with strong controls, some injection attempts will succeed in influencing the model. Design so that the worst outcome of a successful injection is acceptable: limited tools, least privilege, confirmation and monitoring.
 
+For Ask Lumen, Rina wrote down the worst outcome assuming injection succeeds every time: a wrong booking for the logged-in patient, which they must confirm, or a false statement about a clinic, which the grounding check catches against structured data. Both are acceptable with monitoring. An e-mail tool to arbitrary addresses would not be, which led to the restriction in the worked example.
+
 ### 31.6 Worked example (synthetic LCH case)
 
 LCH considered giving Ask Lumen an e-mail tool to send appointment summaries. Rina's analysis showed a two-step path: an injected document could make the agent read another patient's appointment (blocked by delegated tokens) or the current patient's full history (allowed) and e-mail it to an attacker's address. LCH restricted the e-mail tool to the patient's registered address only, with a fixed template.
+
+The fixed template also stops an injected document from adding its own text to the e-mail. Together with the fixed recipient, the worst case becomes a patient receiving their own data.
 
 ### 31.7 Errors and limits
 
 - Analysing tool calls one at a time.
 - Trusting safety training as a security boundary.
 - Ignoring memorisation in fine-tuned models.
+
+Each call in the e-mail attack looked legitimate alone: reading one's own history and sending a summary are both normal. Only the sequence was harmful. Safety training reduces harmful answers but does not stop determined attackers, as the jailbreak research shows. Fine-tuned models trained on patient letters may repeat them, so memorisation must be tested before deployment and after each retraining.
 
 ### Exercises
 
@@ -2622,31 +2711,45 @@ You will (1) work with legal, clinical, privacy, procurement and management coll
 
 The EU AI Act (Regulation (EU) 2024/1689) sets obligations by risk category, with staged application dates between 2025 and 2027; high-risk systems need risk management, data governance, documentation, logging, human oversight (Article 14) and accuracy, robustness and cybersecurity (Article 15). Data-protection law (such as the GDPR) governs personal data in training, prompts and logs. Health-sector rules may add requirements. Security engineers provide evidence; lawyers decide legal classification.
 
+Rina's role in LCH's assessment was to describe what each system does and what controls exist; the lawyer decided the classification.
+
 ### 32.2 Management systems and frameworks
 
 ISO/IEC 42001:2023 specifies an AI management system: policy, roles, risk assessment, controls, monitoring and improvement. The NIST AI RMF provides Govern, Map, Measure and Manage functions. These frameworks connect security work to organisational accountability.
+
+At LCH, the AI RMF's Map function corresponds to Rina's system models and threat register, and Measure to her verification reports. Using that structure helped the board see that AI security work was part of the clinic's normal risk process. An ISO/IEC 42001 certification was discussed but deferred until the processes had run for a year.
 
 ### 32.3 Procurement
 
 When buying AI products, ask vendors for: model and data provenance, security testing evidence, incident notification commitments, data-use terms (is customer data used for training?), logging and audit support, and the ability to test under agreed terms.
 
+The question about training on customer data matters especially in health care, where conversations contain diagnoses. The ability to test under agreed terms matters because LCH cannot otherwise verify vendor claims, as the broken-defences research showed. Rina keeps these questions in a standard procurement checklist so they are asked for every AI purchase.
+
 ### 32.4 Clinical and domain experts
 
 Domain experts define harm: which wrong answer is dangerous, which delay matters. Security priorities depend on their judgement.
+
+When Rina rated threats for Ask Lumen, a clinician changed her view of impact: a false clinic closure seemed minor to her, but for patients due for time-sensitive treatment, such as wound checks, a missed appointment could cause harm. The impact rating rose, and the grounding check moved up the priority list. Rina now asks a clinician to review impact ratings for every new threat.
 
 ### 32.5 Communicating risk
 
 Translate findings into business terms: impact on patients, legal exposure, cost, reputation, and options with trade-offs. Bring a recommendation, not just a problem.
 
+For the triage tool purchase, Rina's summary to the board had three options: sign as offered, sign with conditions, or choose another vendor. She recommended signing with conditions and stated the residual risk, the vendor's limited test evidence, in plain terms. The board accepted the recommendation because the trade-offs were laid out clearly on one page in plain language.
+
 ### 32.6 Worked example (synthetic LCH case)
 
 LCH planned to buy an AI triage tool. Rina joined the procurement panel with the data-protection officer, a clinician and a lawyer. Her questions revealed that the vendor used customer conversations to improve its models by default and could not provide security test results. The panel required an opt-out, a security testing clause and incident notification within 72 hours before signing; the lawyer assessed AI Act classification separately.
+
+Without a security engineer on the panel, the default training clause might have passed unnoticed.
 
 ### 32.7 Errors and limits
 
 - Giving legal conclusions as an engineer.
 - Procurement without security questions.
 - Risk reports without options.
+
+An engineer stating that a system is or is not high-risk under the AI Act oversteps their role and may mislead the organisation. Buying AI tools without security questions leaves risks such as default data reuse undiscovered until after signing. Reports listing problems without options leave managers unable to act, so they often defer decisions. Rina's reports always end with options, their costs and a recommendation, so a manager can approve, reject or ask for changes in one meeting.
 
 ### Exercises
 
@@ -2673,6 +2776,8 @@ You will (1) design controlled experiments with multiple conditions and seeds; (
 ### 33.1 Experimental design
 
 Define conditions (baseline, defence A, defence B, A + B), hold everything else fixed, randomise task order and use several seeds. Pre-register hypotheses and metrics in a dated document before running.
+
+Holding everything else fixed means the same model version, the same document set and the same prompts across all four Ask Lumen conditions. Randomising order prevents later tasks from benefiting from caching or rate-limit effects. Rina's dated plan was stored in the course repository before her first run, so the timestamp shows it came first.
 
 ### 33.2 Analysis
 
@@ -2717,21 +2822,31 @@ per-seed rates: 0.110 0.130 0.135 0.105 0.145 mean=0.125 sd=0.017
 baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
 ```
 
+In the lab, the reduction from 0.350 to 0.190 has a bootstrap interval of about 0.120 to 0.203, so the defence clearly helps. The per-seed rates, from 0.105 to 0.145, show why several seeds are needed. A single seed could suggest a larger or smaller effect than the average shows, and a reader would have no way of knowing which. For Ask Lumen, Rina used five seeds per configuration.
+
 ### 33.3 Pitfalls
 
 Arp et al. (arXiv:2010.09470) list pitfalls including sampling bias, label inaccuracy, data snooping, spurious correlations, biased parameter selection, inappropriate baselines, base-rate fallacy, lab-only evaluation, inappropriate threat models and inappropriate performance measures. Use the list as a checklist before and after experiments.
+
+Applied to Rina's four-configuration study, the base-rate fallacy was relevant to the detector discussion and lab-only evaluation to every result, since staging traffic is synthetic. Data snooping was avoided because the held-out injection set was opened only once. She recorded which pitfalls applied and what she did about each.
 
 ### 33.4 Threats to validity
 
 Internal (something else caused the effect), construct (the metric does not measure the property), external (results do not transfer) and conclusion (statistics inadequate). Write them down with what you did about each.
 
+For Rina's study, external validity was the main concern: all injected documents were English, and real partner leaflets include other languages. Construct validity was checked by confirming that her false-statement grader matched human labels. Internal validity was supported by holding the model version fixed throughout, so a provider update could not explain the differences.
+
 ### 33.4b Adaptive evaluation
 
 For any defence you propose, include at least one attack designed with knowledge of it. Without that, results describe resistance to yesterday's attacks only (Carlini et al., arXiv:1902.06705).
 
+Rina's adaptive set for the grounding check used documents with plausible but false times that matched the structured file's format. A check that only compared formats would accept them; hers compared values, so the false times were caught. She also tried documents stating a clinic's hours had changed "from next week", which the check could not verify. Those cases went to human review, which she recorded as a known limit of the grounding approach.
+
 ### 33.5 Worked example (synthetic LCH case)
 
 Rina compared four Ask Lumen configurations on 500 injected and 500 benign tasks with five seeds. Grounding check alone reduced false clinic statements from 9.0% to 3.2%; source labelling alone to 7.1%; both to 2.4%. The paired bootstrap interval for "both versus grounding alone" was 0.1–1.5 points — a small but positive improvement — and she noted that injected documents were all English.
+
+The interval excludes zero, so the combination helps, but the gain is small enough that LCH weighed it against source labelling's maintenance cost. The English-only limit was stated in the summary.
 
 ### 33.6 Errors and limits
 
@@ -2739,10 +2854,13 @@ Rina compared four Ask Lumen configurations on 500 injected and 500 benign tasks
 - Many comparisons reported as if each were the only one.
 - Ignoring the pitfall checklist.
 
+Without a dated plan, nothing shows the hypothesis came before the data, and readers must trust the author. Reporting six pairwise comparisons as if each were the only test raises the chance that one looks significant by luck; Rina used Holm–Bonferroni for her three planned comparisons. Skipping the pitfall list lets familiar mistakes reach the final report unnoticed, where they are costly to correct.
 
 ### 33.6b Preregistering the comparison
 
 Before running the prompt-injection study, the LCH team writes down the hypothesis, the attack set, the metric and the threshold that would count as improvement, and stores that plan with a date. Results are then compared with the plan, which stops the team from choosing a flattering metric after seeing the data.
+
+Rina's plan named the false-statement rate as the primary metric and completed bookings as secondary. It also fixed the number of seeds and the threshold for improvement, a reduction of at least one percentage point, before any run.
 
 ### Exercises
 
