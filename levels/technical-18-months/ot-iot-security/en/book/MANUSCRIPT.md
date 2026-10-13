@@ -784,7 +784,7 @@ Write each conduit with its purpose, the traffic it allows and its owner. At HPF
 
 Office users want production data; the line must not accept office connections. So the line pushes data to a server in the DMZ and the office reads it there. No connection then needs to go straight from office to line.
 
-At HPFL the line pushes data to the historian copy in the DMZ, and office users read it there. Vendor access and file transfer also land in the DMZ. That way FW-1 needs no rule allowing office machines straight into the line, which is exactly the kind of rule Chapter 12's worked example removes.
+At HPFL the line pushes data to the historian copy in the DMZ, and office users read it there. Vendor access and file transfer also land in the DMZ. That way FW-1 needs no rule allowing office machines straight into the line, which is exactly the kind of rule the worked example below removes.
 
 ### 12.3 Reading rules
 
@@ -853,7 +853,7 @@ Send the questions to the supplier before purchase and keep the answers with the
 
 IoT devices that talk to a vendor cloud belong in their own segment, not the line VLAN. Allow only the cloud addresses they need, block them from reaching PLCs, and record them in the register with an owner and an update plan.
 
-At HPFL the vibration sensor gateway was placed on a new IoT VLAN allowed only to the vendor's cloud addresses. Check after installation that the gateway cannot reach the PLCs, with the network owner, through a rule review rather than probing.
+At HPFL the network owner chose a new IoT VLAN for the VIB-1 to VIB-4 gateway rather than the line VLAN 20, because the sensors report to a vendor cloud. Check after installation that the gateway cannot reach the PLCs, with the network owner, through a rule review rather than probing.
 
 ### 13.4 End of support
 
