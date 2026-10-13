@@ -380,7 +380,7 @@ The email's subject played on a common worry, and the fake page used Riverton's 
 
 With a stolen password, an attacker signs in as the victim, reads mail, creates rules to hide replies or forward mail, and sends more phishing to contacts. Compromised accounts spread campaigns because messages come from a trusted sender.
 
-In the case, the attacker used s2047 to create a rule moving replies to a hidden folder and then sent the library-fines email to the account's contacts. Recipients saw a message from a classmate's real address, which made them more likely to click. This is how one stolen password can extend a campaign.
+In the case, the attacker used s2047 to create a rule forwarding its mail to an external address and then sent the library-fines email to the account's contacts. Recipients saw a message from a classmate's real address, which made them more likely to click. This is how one stolen password can extend a campaign.
 
 ### 5.4 What a SOC does
 
@@ -452,7 +452,7 @@ Writing the sets out makes the steps clear. R holds the 6,980 recipients, C the 
 
 A detection condition is a logical formula: "sign-in from a new country AND mailbox rule created within 60 minutes". Writing it in logic makes it precise enough to test and review.
 
-Written precisely, the rule can be checked against cases. For s2047, a sign-in from a new country was followed within minutes by a rule hiding replies, so the rule fires. A student who travels home and signs in from there, but creates no rule, does not trigger it. Each part of the condition removes a source of false alarms.
+Written precisely, the rule can be checked against cases. For s2047, a sign-in from a new country was followed six minutes later by a rule forwarding mail to an external address, so the rule fires. A student who travels home and signs in from there, but creates no rule, does not trigger it. Each part of the condition removes a source of false alarms.
 
 ### 6.3 Relations
 
@@ -524,29 +524,43 @@ You will (1) explain IP addressing, DNS, HTTP and email protocols; (2) read sign
 
 Every connection has a source IP address. Identity providers often add a geolocation (country) guessed from the address. Geolocation is approximate: VPNs, mobile networks and cloud services can place users in the wrong country.
 
+In the case, a student who signed in from home over a mobile network appeared to be in another country for a few minutes, because the operator routed traffic through a gateway abroad. Lucas therefore treats a single odd country as a lead, not a conclusion, and looks for supporting signs such as a new mailbox rule or an unusual client application.
+
 ### 7.2 DNS
 
 DNS translates names such as riverton.example.ac.uk into addresses. The phishing page used riverton-library.example.net, a look-alike name. DNS logs from campus resolvers show which devices looked it up.
+
+The look-alike domain was chosen to pass a quick glance: it contained the university's name and the word library, but sat under a different parent domain that Riverton did not own. Lucas checks a suspicious name by reading it from the right, since the part just before the final suffix shows who actually controls it. Here, that was not Riverton.
 
 ### 7.3 HTTP and HTTPS
 
 Web pages use HTTP over TLS. The fake sign-in page received passwords by HTTPS POST; network sensors see only the destination name, not the password.
 
+For the SOC, this means network sensors cannot confirm which students typed their passwords; they can only show that a device connected to the fake page. Confirmation came from the other end, when a stolen password was used at the identity provider. The fake page itself had a valid certificate, so a padlock in the browser proved nothing about the site's honesty.
+
 ### 7.4 Email protocols
 
 Mail travels between servers by SMTP. Message headers record each server hop. Authentication results — SPF, DKIM and DMARC — show whether the sending domain authorised the message; the phishing email failed DMARC for its claimed sender.
+
+Lucas reads the headers from the bottom up, since each server adds its line at the top. The lowest received line showed the message entering from a hosting provider unrelated to Riverton or the library. The failed DMARC result confirmed the sender's address was forged, which helped the mail team write a filter blocking the remaining copies.
 
 ### 7.5 Reading sign-in logs
 
 A sign-in record shows time, user, IP, country, client application and result. s2047's 02:14 sign-in came from an address geolocated to the Netherlands using a desktop mail protocol.
 
+Two details made this record stand out. The country was unusual for a student who had only ever signed in from the United Kingdom, and the client was a desktop mail protocol rather than the web browser s2047 normally used. Older mail protocols often skip the second factor, which is one reason attackers prefer them after stealing a password.
+
 ### 7.6 DNS as evidence
 
 Campus DNS logs show 41 lookups of the look-alike name from university Wi-Fi, a lower bound on clicks from campus.
 
+It is a lower bound for two reasons noted in the worked results: lookups made off campus are not logged, and a device that looked the name up once may have clicked several times without repeating the query because of caching. Lucas reports the figure with both caveats, so nobody reads it as the total number of clicks. It still shows the campaign reached many devices on campus.
+
 ### 7.7 Limits
 
 Network evidence shows connections, not intentions; it needs context from other logs.
+
+A DNS lookup of the fake domain could come from a curious analyst checking the link, not a victim; a sign-in from the Netherlands could be a student on exchange. Lucas pairs each network record with account evidence, such as a rule change or a burst of sent mail, before calling an account compromised. Network data narrows the search; account data confirms it. Each conclusion in his notes names both.
 
 ### Ports and services
 
@@ -588,29 +602,43 @@ You will (1) structure larger analysis programs into functions and modules; (2) 
 
 Lucas's counting scripts grow into a small tool that reads sign-in and mail exports, joins them by user and time, and prints suspicious combinations. Functions separate reading, analysis and output.
 
+The separation meant that when the mail service changed its export format halfway through term, only the reading function needed changing; the analysis and output parts stayed the same. Lucas also added a command-line option for the time window, so analysts could rerun the tool for a different period without editing the code itself.
+
 ### 8.2 Dates and times
 
 The datetime module parses timestamps and converts zones. Mixing local and UTC times is the most common bug in SOC scripts.
+
+When sign-in and mail records come from different services, one may record UTC and the other local time, and during British Summer Time the two differ by an hour. A rule that links events within sixty minutes would then match the wrong pairs or none. Lucas converts every timestamp to a timezone-aware datetime in UTC as it is read, so comparisons later in the tool never need to think about zones.
 
 ### 8.3 JSON
 
 Cloud services export JSON. The json module reads nested records; Lucas writes small functions to extract the fields he needs.
 
+The mail service's rule export nested the rule's conditions and actions several levels deep, and some rules lacked fields others had. Lucas's extract function returns a default when a field is missing, rather than raising an error, and his tests include a rule with no forwarding address so that case is checked. Fields he does not need are ignored, which keeps the function short and makes later format changes less likely to break it.
+
 ### 8.4 Unit tests
 
 unittest checks functions with known inputs: "a rule created 59 minutes after a risky sign-in should match; 61 minutes should not".
+
+Boundary cases like these catch the mistakes most likely to slip through: a comparison written as less-than instead of less-than-or-equal would pass ordinary examples and fail only at exactly sixty minutes. Lucas added a test for that boundary too. When a classmate later refactored the matching function, the tests showed within seconds that the behaviour had not changed. Tests also document intent for the next reader.
 
 ### 8.5 Efficiency
 
 Reading files line by line and using dictionaries for lookups keeps memory small and speed high on large exports.
 
+Lucas's first version loaded every sign-in into a list and searched it for each rule, which took minutes on a month's export. Building a dictionary keyed by user once, then looking up each rule's user, cut the run to a few seconds. The change mattered during the incident, when analysts needed to rerun the tool repeatedly as new data arrived during the day.
+
 ### 8.6 Errors
 
 The tool logs records it cannot parse and continues; at the end it prints totals read, skipped and matched.
 
+During the phishing incident, the tool reported that a few hundred of several hundred thousand sign-in records were skipped, all with a malformed timestamp from one legacy application. Because the count was printed, Lucas could check that none of the skipped records belonged to s2047 or s3310 before trusting the result. Silent skipping would have hidden that question entirely, along with the faulty application.
+
 ### 8.7 Sharing
 
 A README explains inputs, outputs and limits, so other student analysts can run it.
+
+The README lists the expected export files, the command to run, an example of the output and known limits, such as treating unknown time zones as UTC. When a student analyst on the night shift used the tool for the first time during the incident, the README was enough; nobody had to wake Lucas to ask how it worked. The README is updated in the same change as the code.
 
 ### Configuration
 
@@ -656,9 +684,13 @@ You will (1) model security data as tables; (2) write SQL queries with filters, 
 
 Security logs fit naturally into tables: one row per event, columns for time, user, address, country and result. Databases answer questions over millions of rows quickly.
 
+Riverton's SOC loads each day's sign-in export into a database table with those columns plus the client application. During the phishing incident, analysts queried a month of data, several million rows, to find every sign-in by the clicking accounts. The same questions in a spreadsheet would have been slow and error-prone, and harder to repeat exactly.
+
 ### 9.2 SQL basics
 
 SELECT chooses columns, WHERE filters rows, GROUP BY aggregates and ORDER BY sorts. A query such as "successful sign-ins outside the usual country, grouped by user" answers an investigation question in one statement.
+
+Lucas's query selected user, time, country and result from the sign-in table, filtered to successful sign-ins where the country was not GB, grouped by user and counted them. Writing the question as a query also documents it: Dr. Kim could read the statement and confirm it asked what she intended before relying on its answer.
 
 ### Lab — querying sign-ins
 
@@ -686,17 +718,25 @@ s3310 successful sign-ins outside GB: 1
 
 Two accounts had successful sign-ins outside GB: s2047 twice and s3310 once. s3310's success at 02:31 followed a failure at 02:20, suggesting the attacker had its password after a mistake or second attempt.
 
+The pair of records for s3310 matters for the timeline: the failure eleven minutes before the success shows the attacker tried the account more than once. Lucas notes it as consistent with a stolen password, while recognising that it could also mean the attacker mistyped. Either way, the success at 02:31 is when the account was compromised.
+
 ### 9.4 Joins
 
 Joining the sign-in table with the mailbox-rule table on user shows which risky sign-ins were followed by rule changes.
+
+The join found that s2047's unusual-country sign-in was followed six minutes later by a rule forwarding mail to an external address. For s3310, the join returned a deletion rule too, but created more than two hours after the risky sign-in. Lucas recorded both, since a join on user alone shows that a rule exists, while the time difference decides whether the two events are likely to be connected. That difference matters again when the correlation rule is built and tested in the first laboratory.
 
 ### 9.5 Quality
 
 Missing countries, duplicated rows and inconsistent user formats (s2047 versus S2047) distort results. Normalising at load time prevents errors.
 
+In Riverton's data, the identity provider wrote usernames in lower case while one mail export used capitals. Without normalising, a join would have treated s2047 and S2047 as different users and missed the link between sign-in and rule. Lucas converts usernames to lower case and removes duplicate rows as the data is loaded, and records how many were changed in a load report.
+
 ### 9.6 Privacy
 
 Databases with personal data need access control and retention limits. The SOC database keeps sign-in details for 90 days.
+
+Access to the database is limited to SOC staff and the student analysts on shift, and queries are logged. Ninety days covers most investigations, which usually begin within days of an incident. Records needed for an open case, such as s2047's sign-ins, are copied into the case file before deletion, so retention does not destroy evidence still needed for an open case.
 
 ### Indexes
 
@@ -738,29 +778,43 @@ You will (1) apply ethical principles to SOC work at a university; (2) act withi
 
 The SOC acts under the university's information security policy, approved by its governing body. Student analysts may view logs only for assigned alerts and may not search for people they know.
 
+During the phishing incident, Lucas was assigned the alerts for s2047 and s3310 and searched only their records. When a classmate asked him whether her own account had been affected, he directed her to the SOC's reporting address rather than looking it up himself, since checking an unassigned account would have gone beyond his authority.
+
 ### 10.2 Privacy
 
 Students and staff expect privacy. The SOC looks at metadata (sign-ins, rule changes, message counts) by default and reads message content only with case approval from Dr. Kim.
+
+For the phishing case, metadata was enough to confirm both compromises: unusual sign-ins, a new rule and a burst of sent mail. Dr. Kim approved one limited content check, the subjects of the messages s2047's rule had forwarded, to see what the attacker had received. Message bodies were never opened, and the approval was recorded in the case file.
 
 ### 10.3 Conflicts of interest
 
 If an alert involves a friend, classmate or lecturer, a student analyst passes it to another analyst. Lucas declares when an alert involves someone in his course.
 
+In week five, an alert involved a lecturer who taught one of Lucas's modules. He declared the connection to the shift lead and the alert went to another analyst. Declaring a conflict is not an admission of wrongdoing; it protects both the person involved and the credibility of the investigation if the case is later reviewed.
+
 ### 10.4 Confidentiality
 
 Analysts sign a confidentiality agreement. Discussing cases outside the SOC, even anonymously, is not allowed.
+
+Lucas found this hard during the phishing campaign, when classmates asked what had happened. He could repeat the university's public notice about the email but nothing about which accounts were affected. Even a vague remark, such as "someone in our year got hacked", could identify a person in a small cohort. Lucas found it easiest to say that he could not discuss SOC work at all, which classmates soon accepted. The same rule applies after the case is closed and after he leaves the SOC.
 
 ### 10.5 Authorised testing
 
 Phishing simulations and other tests are approved in writing by Dr. Kim and communicated in policy; analysts never run their own tests on university systems.
 
+When Lucas wanted to see how many students would report a mock phishing email, he wrote a proposal rather than sending one. Dr. Kim approved a simulation for the following term with a defined audience, a harmless landing page and a notice in the security policy. Running it without approval could have caused alarm and harmed trust in genuine warnings.
+
 ### 10.6 Proportionality
 
 Responses match the risk: resetting a compromised account is proportionate; suspending a student's network access without evidence is not.
 
+For s2047, the evidence of an external forwarding rule and mass sending justified an immediate reset and session revocation. For a student whose only sign was a single sign-in through a foreign mobile gateway, the proportionate step was to check other signals and, if needed, ask the student, not to lock the account while they were away and depending on it.
+
 ### 10.7 Reporting misconduct
 
 If an analyst sees misuse of SOC access, they report it to Dr. Kim.
+
+Reports go directly to Dr. Kim rather than through other students, so nobody has to confront a peer. Queries in the SOC database are logged, which allows a report to be checked against the record. Dr. Kim treats reports confidentially and protects the person who made them from retaliation, because the SOC's access is only acceptable if misuse is caught and dealt with promptly and fairly.
 
 ### Records of access
 
@@ -802,29 +856,43 @@ You will (1) explain processes, users, permissions and logging in Windows and Li
 
 Operating systems control processes, files and users, and can log logons, process creation, privilege changes and service installation. Logging is configurable: unconfigured systems record little.
 
+On Riverton's managed laptops, logging of logons and process creation is enabled by policy; on research servers, settings depend on whoever installed them. That difference matters later in the case, because a server set up with default settings recorded far less than the SOC needed. Knowing what is logged comes before writing any detection that depends on it.
+
 ### 11.2 Windows and Linux
 
 University staff laptops run Windows; research servers mostly run Linux. Windows records events in event logs; Linux uses system logs and, where configured, the audit subsystem. Both can forward logs to the SOC.
+
+For the SOC, the two need different parsing. A Windows event has a numeric identifier and structured fields, while a Linux authentication log line is text that must be split carefully. Lucas's tool handles both by converting each record into the same small set of fields, such as time, host, user and action, before analysis.
 
 ### 11.3 Users and privileges
 
 Administrators can install software and change settings. Adding a user to an administrators group or to Linux's sudo group is a privilege change worth alerting on.
 
+Such changes are rare and powerful, so they make good alerts: on Riverton's servers, administrator groups change only a few times a year. Each change should match a ticket or a known administrator's action. A change with no matching request, especially at night, suggests that someone has gained access and is securing their foothold.
+
 ### 11.4 Research servers
 
 Research groups often run their own servers with local accounts. The research GPU server in the physics department was set up by a postdoc and forwarded no logs to the SOC until this year.
+
+The GPU server held datasets and expensive computing time, which made it attractive to attackers who mine cryptocurrency. Because it forwarded no logs until recently, the SOC had little history to compare against when the alert arrived. The postdoc who set it up had since moved to another group, so nobody owned it day to day.
 
 ### 11.5 SSH
 
 Linux servers accept remote logins over SSH. Authentication logs show successes and failures with source addresses. Key-based login without passwords reduces guessing risk.
 
+On the physics server, password login was still enabled for some accounts, and the authentication log showed thousands of failed attempts from internet addresses every day. Most were automated guessing. The SOC's concern was the rare success from an unknown address, which, combined with the sudo alert, became the starting point of the week-five investigation of the GPU server.
+
 ### 11.6 Configuration matters
 
 A rule for "new administrator added" works only if the server logs group changes and forwards them.
 
+Forwarding to the SOC had been enabled on the physics server only a few weeks before the alert. Had it been left at its old setting, the sudo change would have stayed in a local file nobody read. Lucas's lesson was that each detection rule needs a check that its source is still logging and forwarding. The SOC now alerts when a server stops sending logs for a day.
+
 ### 11.7 Case
 
 In week five, an alert reports a new sudo user on the physics GPU server.
+
+The alert arrived at 23:40 on a weeknight, with no matching change request. Lucas checked the authentication log first, to see who had signed in shortly before the change and from where. That question, rather than the sudo change itself, determines whether the event is an administrator's late-night fix or an intruder's. He also checked who normally administers the server, so he knew whom to ask before taking any action that might disrupt running research jobs.
 
 ### Worked example
 
@@ -862,9 +930,13 @@ You will (1) describe distributions of user activity; (2) use means, standard de
 
 Each user sends a different number of emails per day. A library staff account sends about 40; most students send a handful. Unusual means unusual for that account.
 
+For s2047, a student who sent a few messages a day, 212 in a day was obviously strange; for the library account, 40 was routine. A single threshold across all accounts would either miss the student or constantly flag the library. Comparing each account with its own history removes most of that problem, though not all.
+
 ### 12.2 Mean and standard deviation
 
 The mean is the typical value; the standard deviation measures spread. A z-score — (today − mean) ÷ standard deviation — shows how many spreads today's value lies from typical.
+
+Lucas computes both from the previous seven days for each account. For an account that sends between two and three messages a day, the standard deviation is small, so a large jump produces a very high z-score. For an account with wide daily swings, the same jump produces a modest score, which is what we want.
 
 ### Lab — unusual outbound mail
 
@@ -891,17 +963,25 @@ staff_lib mean= 41.3 sd= 2.6 today=  47 z=    2.2
 
 s2047 normally sends about 2.4 messages a day; today it sent 212, a z-score of about 215 — far beyond any normal variation. s1001 (z = 2.3) and the library account (z = 2.2) are slightly above typical but well within ordinary days.
 
+The size of s2047's score reflects how steady its history was: with only small daily variation, even a modest rise would score highly, and 212 messages score enormously. The two near-threshold accounts show the opposite case, small rises on accounts whose activity already varies, which is why they are not flagged.
+
 ### 12.4 Thresholds
 
 Lucas flags z above 4. With hundreds of thousands of accounts, a threshold of 2 would flag thousands every day; base rates matter, as Axelsson (2000) showed for intrusion detection.
+
+At four, Riverton's daily screening flags a handful of accounts, which two staff and six students can review. Lucas checked that s2047 would have been flagged at any threshold up to two hundred, so the choice did not affect this case. A lower threshold would have buried it among routine variation and tired the analysts.
 
 ### 12.5 Limits of z-scores
 
 Seven days is a short history; z-scores assume roughly symmetric variation, which counts rarely have. They are a screening tool, not proof.
 
+New accounts have no history at all, and the start of term changes everyone's behaviour at once. A student who sends coursework to a whole class on one day can produce a high score innocently. Lucas treats a flag as a reason to look at an account, combined with other signs, never as a finding on its own.
+
 ### 12.6 Reporting
 
 Lucas reports values with history length and threshold so readers know how the flag was made.
+
+His summary line for s2047 reads: 212 messages today against a seven-day mean of about 2.4, z about 215, threshold 4. A reader can see at once how extreme the value is and how short the history was. Without those details, a flag would be impossible to compare with flags produced by other rules or other analysts. Dr. Kim asked for the same format in every screening report, so trends across weeks could be compared directly.
 
 ### Seasonality
 
