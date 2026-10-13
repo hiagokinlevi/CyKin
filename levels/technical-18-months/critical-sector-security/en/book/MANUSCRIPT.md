@@ -2204,13 +2204,13 @@ These are deliberately simple and explainable (Chapter 8). MITRE ATT&CK for ICS 
 
 One unauthorized host may generate dozens of alerts in a minute. Grouping alerts with the same rule and source into an **episode** — extended while new alerts arrive within a window of the previous one — gives an analyst one item with a count and a time span. The window is a trade-off: too short and one activity becomes many episodes; too long and two separate activities merge. Record the chosen window and why.
 
-Record the chosen window and why. In Lab 17 a five-minute window splits the 07:12 write into its own episode, which is what you want if an analyst might otherwise think the activity had stopped. Too long a window would merge that later write with the earlier burst and hide the gap.
+In Lab 17 the window is measured from the last alert in the episode, not the first, so a steady trickle of alerts every four minutes would extend one episode indefinitely; cap the episode length (for example one hour) or report long episodes as ongoing with their latest time. A five-minute window splits the 07:12 write into its own episode, which is what you want if an analyst might otherwise think the activity had stopped; a much longer window would merge it with the earlier burst and hide the gap.
 
 ### 17.3 The pipeline monitors itself
 
 A detector that silently drops records it cannot parse is blind exactly where an attacker sends malformed traffic. The pipeline must account for every input: *records = parsed + dropped*, checked by an assertion, with dropped records listed and counted. The NIST continuous monitoring guidance makes the same point at programme level: monitoring must itself be monitored ([SP 800-137](https://csrc.nist.gov/pubs/sp/800/137/final)).
 
-Assert that records equal parsed plus dropped, and list every dropped record with time and source. Unparseable traffic from an unknown host should still raise a new-talker finding on the source address, which Lab 17's practical activity adds. A detector that fails closed on its own accounting is fit for duty use.
+In Lab 17 the check is the line `assert parsed + len(dropped) == len(recs)`, and the summary line prints the dropped list itself: one record, 07:03:03 from 10.20.0.31, whose length field announces six following bytes when only two arrive. The drop is counted, but it raises no alert, because the rules run only on parsed frames — the gap the practical activity closes. On duty, treat the drop count as a signal in its own right: a sensor that suddenly drops many records has a capture fault, a parsing bug or a peer sending deliberately malformed traffic, and each of those deserves a ticket.
 
 ### 17.4 Worked example: the 07:03 activity (synthetic)
 
@@ -2294,7 +2294,7 @@ Score Lab 17 against each row and write one improvement for any score below thre
 
 Change the pipeline so that a dropped (malformed) record from an unknown source raises NEW-TALKER, and add a rule that alerts on any write whose value is outside the register's policy range, using the Lab 12 policy table. Record the new output and how the episodes change.
 
-Raise NEW-TALKER for a malformed record from an unknown source, and alert on writes outside the Lab 12 policy range. Re-run and record how the episode list changes, especially whether the malformed line now appears inside the 07:03 new-talker episode. Keep both outputs so the improvement is visible.
+Before changing the code, save the current output as the baseline and write down your prediction: which episode should grow, and how many alerts the value-range rule should add. After the change, the records line must still balance at ten (nine parsed, one dropped): fixing the blind drop changes what the dropped record produces, not whether it is counted. Test the value-range rule in both directions — it must fire on the 0xFFFF writes and stay silent on eng-ws-15's write of 300 (0x012c) at 07:02:10 — then re-score the self-monitoring and rule-provenance rows of 17.5.
 
 ### 17.7 Common errors and limits
 
@@ -2304,10 +2304,12 @@ Raise NEW-TALKER for a malformed record from an unknown source, and alert on wri
 - Believing the sensor sees everything: Chapter 13 found a path to KW-04 that did not pass this sensor.
 - The pipeline's timestamps are the sensor's; correct its clock like any other (Chapter 7).
 
-- Copying rules from a catalogue without a model statement behind them.
-- Choosing an episode window so long that separate activity disappears.
-- Dropping malformed records silently.
-- Believing the sensor sees every path to a station.
+Checks that catch these errors:
+
+- For every rule, quote the line of the system model it enforces; a rule without one is removed, or the model is updated first.
+- Run the episodes at two windows (as in EX067) and confirm the 07:12 write stays visible, either as its own item or as an extended span.
+- Fail the run when records do not equal parsed plus dropped, and review the dropped list every shift.
+- Keep a written list of paths that bypass the sensor (station cellular routers, station-local HMI traffic) beside the detection coverage statement.
 
 ### Exercises — chapter 17
 
@@ -2438,7 +2440,7 @@ Four artefacts verify; `04-tests.csv` does not. Someone added a T10 line after s
 
 After the course, keep three habits: verify before you report, preserve before you change, and correct clocks before you order events. Keep labs contained, and never test real infrastructure without written authorization from its owner. Revisit standards and guidance when they change; every source in this book is dated October 2026.
 
-After the course, keep three habits: verify before you report, preserve before you change, and correct clocks before you order events. Keep labs contained, and never test real infrastructure without written authorization from its owner. Revisit standards and guidance when they change; every source in this book is dated October 2026.
+Turn the course work into a portfolio: scoped plans, lab outputs with their Python versions, troubleshooting logs and the sealed package from this chapter, each seal recorded outside its package. When you move to a new Python version, re-run the labs and compare outputs; a difference is a finding to explain, not to hide. Seek supervised work where you can repeat the whole cycle — scope, baseline, change, verification, handover — on a real system with its owner's signature, and ask your supervisor to score it against the 18.5 rubric.
 
 ### 18.7 Common errors and limits
 
@@ -2448,10 +2450,12 @@ After the course, keep three habits: verify before you report, preserve before y
 - Reporting only successes.
 - Lab 18 uses in-memory text and a temporary directory; real packages include binary exports and large captures, which hash the same way but need storage with access control.
 
-- Choosing a project so broad that verification never finishes.
-- Storing the seal inside the package where an editor can change both.
-- Editing a sealed artefact instead of adding a dated addendum.
-- Reporting only successes and hiding untested requirements.
+Checks that catch these errors:
+
+- Before day one, write each requirement as a test with an expected result; if a requirement cannot be tested inside the window, narrow the scope.
+- Record the seal in at least one place the package's editors cannot change, such as the change record (CHG-2215) or an email to the supervisor.
+- Before handover, re-run the manifest verification; resolve any MISMATCH by restoring the sealed file and adding a dated addendum (EX071), never by re-sealing over version 1.
+- List failed and untested requirements in the handover with owners, as EX072 does.
 
 ### Exercises — chapter 18
 
