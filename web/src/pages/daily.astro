@@ -4,7 +4,7 @@ import { catalog, subjects } from '../lib/catalog';
 const languages = {en:'English',pt:'Português',es:'Español',he:'עברית',fr:'Français',ru:'Русский',de:'Deutsch',zh:'中文',ja:'日本語'};
 ---
 <BaseLayout title="Daily study · CyKin" description="One book per course, with a Monday–Friday reading plan, worked examples and exercises.">
-  <main class="shell daily-shell">
+  <div class="shell daily-shell">
     <h1>Daily study</h1>
     <p>One book per course and language. One lesson, an explained example and an exercise on each study weekday. A planned position is not a written lesson.</p>
     <form method="get" action="/daily/" class="card daily-controls">
@@ -20,7 +20,7 @@ const languages = {en:'English',pt:'Português',es:'Español',he:'עברית',fr
     <section class="card daily-reader"><p id="daily-state" class="muted"></p><h2 id="daily-title">Selected day</h2><nav id="daily-navigation" aria-label="Daily navigation"></nav><div id="daily-content"></div></section>
     <p>Daily mapping and calendar passage do not mark study complete. Existing account progress remains chapter-based; no chapter completion is converted into completed daily lessons.</p>
     <noscript><p>This daily selector requires JavaScript. Read the <a href="https://github.com/hiagokinlevi/CyKin/blob/main/DAILY_STUDY_STANDARD.md">daily-study standard</a> or the public Markdown books without signing in.</p></noscript>
-  </main>
+  </div>
   <script>import '../lib/daily-reader';</script>
 </BaseLayout>
 <style>

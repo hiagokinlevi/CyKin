@@ -22,8 +22,8 @@ GITHUB_RAW = "https://raw.githubusercontent.com/hiagokinlevi/CyKin/main/"
 GITHUB_VIEW = "https://github.com/hiagokinlevi/CyKin/blob/main/"
 CATALOG_PATH = Path(__file__).resolve().parents[1] / "public" / "catalog.json"
 ANCHOR = re.compile(r'^<a id="ch-(\d{2})"></a>\s*$', re.M)
-EXERCISE = re.compile(r'\bEX(\d{3})\b')
-ANSWER = re.compile(r'^###\s+EX(\d{3})\b.*$', re.M)
+EXERCISE = re.compile(r'\bEX(\d{3,})\b')
+ANSWER = re.compile(r'^###\s+EX(\d{3,})\b.*$', re.M)
 MCP_VERSION = "2025-06-18"
 ALLOWED_ORIGINS = {"https://cykin.org", "https://www.cykin.org", "http://localhost:4321", "http://localhost:8787", "http://127.0.0.1:8787"}
 MAX_SOURCE_CHARS = 3_000_000
@@ -39,7 +39,7 @@ class LessonProgress(BaseModel):
 
 
 class ExerciseAttempt(LessonProgress):
-    exercise_id: str = Field(pattern=r"^EX[0-9]{3}$")
+    exercise_id: str = Field(pattern=r"^EX[0-9]{3,}$", max_length=16)
     answer: str = Field(default="", max_length=20_000)
     status: str = Field(pattern=r"^(attempted|completed)$")
 
@@ -433,6 +433,12 @@ async def mcp(request: Request) -> Response:
 @app.get("/mcp")
 async def mcp_get() -> Response:
     return Response(status_code=405, headers={"Allow": "POST"})
+
+
+# Register specific daily routes before the catch-all static asset route.
+from daily_study import install_daily_routes
+
+install_daily_routes(app, catalog=catalog, get_course=get_course, source_text=source_text)
 
 
 @app.get("/{path:path}", include_in_schema=False)

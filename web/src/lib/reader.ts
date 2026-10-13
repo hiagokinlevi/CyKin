@@ -16,8 +16,8 @@ function sourcePath(url: URL): string | null {
   return null;
 }
 
-export function internalSourceLink(href: string, sourceUrl: string, language: string, mode: 'book' | 'lesson' | 'reference' = 'lesson'): string | null {
-  if (href.startsWith('#') && (mode !== 'lesson' || !/^#ch-\d{2}$/i.test(href))) return href;
+export function internalSourceLink(href: string, sourceUrl: string, language: string, mode: 'book' | 'lesson' | 'reference' | 'daily' = 'lesson'): string | null {
+  if (href.startsWith('#') && mode !== 'daily' && (mode !== 'lesson' || !/^#ch-\d{2}$/i.test(href))) return href;
   let url: URL;
   try { url = new URL(href, sourceUrl); } catch { return null; }
   const path = sourcePath(url);
@@ -45,7 +45,7 @@ export function internalSourceLink(href: string, sourceUrl: string, language: st
   return null;
 }
 
-export async function renderMarkdown(target: HTMLElement, markdown: string, sourceUrl: string, language: string, mode: 'book' | 'lesson' | 'reference' = 'lesson'): Promise<void> {
+export async function renderMarkdown(target: HTMLElement, markdown: string, sourceUrl: string, language: string, mode: 'book' | 'lesson' | 'reference' | 'daily' = 'lesson'): Promise<void> {
   for (const old of target.querySelectorAll<HTMLImageElement>('img[data-mermaid-url]')) URL.revokeObjectURL(old.dataset.mermaidUrl!);
   target.innerHTML = DOMPurify.sanitize(await marked.parse(markdown, { gfm: true }), { ADD_TAGS: ['input'], ADD_ATTR: ['class', 'id'] });
   const directory = sourceUrl.split('#')[0].replace(/[^/]+$/, '');
