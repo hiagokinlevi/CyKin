@@ -1,7 +1,7 @@
 # Arquitetura e Engenharia de Segurança: Curso de Tecnólogo
 
 - Idioma: português do Brasil (`pt`); curso 076, curso de tecnólogo (3 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–12 de 30 já estão escritos em português, com os exercícios EX001–EX036 e suas resoluções com rubricas de 0 a 3 e 2 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 13–30 (EX037–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–18 de 30 já estão escritos em português, com os exercícios EX001–EX054 e suas resoluções com rubricas de 0 a 3 e 3 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 19–30 (EX055–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de tecnólogo que vão construir, verificar e operar a arquitetura de segurança em organizações pequenas e médias.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios sinalizam regras de firewall, calculam indicadores de saúde, conferem manifestos, executam regras de alerta, comparam listas de desligados e comparam taxas de reporte, sempre sobre dados sintéticos; nada toca uma rede real. Projetos de produção usam produtos e normas avaliados; nunca crie sua própria criptografia. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -30,9 +30,9 @@ Saltzer e Schroeder (1975), [doi:10.1109/PROC.1975.9939](https://doi.org/10.1109
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) |
 
-Capítulos 13–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-13), até a chegada dos próximos lotes.
+Capítulos 19–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-19), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -536,11 +536,263 @@ Os diagramas envelhecem rápido. Os portais acrescentam trabalho para os pequeno
 
 - **EX036 — Manifesto falso.** O que um criminoso poderia fazer com o fluxo por e-mail? *Rubrica:* 3 = enviar um manifesto falso para desviar encomendas;; 2 = desviar;; 1 = nada;; 0 = nenhuma.
 
+<a id="ch-13"></a>
+
+## Capítulo 13 — Arquitetura e engenharia de segurança: cenários de risco
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever cenários de risco concretos; (2) classificá-los de forma consistente; (3) escolher tratamentos.
+
+### 13.1 Escrever os cenários
+
+Tomás transforma seus achados em cenários: um manifesto falso desvia encomendas de alto valor; um ransomware criptografa a máquina virtual de planejamento de rotas durante o pico; um coletor perdido expõe os dados dos destinatários; a conta de suporte do fornecedor da esteira é usada indevidamente. Cada cenário nomeia uma ameaça, uma fraqueza, um ativo e uma consequência. Cenários concretos são mais fáceis de julgar pelos gestores do que declarações abstratas de risco, porque eles conseguem imaginar o evento e reconhecê-lo pela própria experiência. Ele limita cada cenário a duas ou três frases e evita jargão técnico, para que o gerente de operações e a equipe financeira possam classificá-los sem precisar de explicação da TI.
+
+### 13.2 Classificar de forma consistente
+
+Tomás usa uma escala simples de três níveis para probabilidade e impacto, com exemplos para cada nível, seguindo a estrutura do NIST SP 800-30 Rev. 1. Ele pede que Sam e o gerente de operações classifiquem de forma independente. Eles concordam em três cenários, mas divergem no do coletor perdido: o gerente de operações o classifica com probabilidade alta, porque coletores somem todo mês. Esse conhecimento local muda a classificação. Comparar classificações independentes traz à tona conhecimentos escondidos e torna as classificações finais mais defensáveis. As classificações acordadas são registradas com a data da discussão.
+
+### 13.3 Escolher os tratamentos
+
+Para cada cenário, o grupo escolhe um tratamento. O manifesto falso é reduzido pelo portal de upload e pela validação. O ransomware é reduzido por backups offline e restaurações testadas da máquina de planejamento de rotas. O coletor perdido é reduzido pelo apagamento remoto e pela minimização dos dados nas telas. O uso indevido pelo fornecedor é reduzido por acesso com prazo limitado, aprovado por sessão. Cada tratamento tem um responsável e uma data. Um cenário de classificação baixa, a falha de uma impressora, é aceito, porque cada centro de distribuição mantém impressoras de reserva. A lista de tratamentos é arquivada com os cenários para a próxima revisão.
+
+### Exemplo resolvido
+
+Tomás escreve quatro cenários concretos, compara classificações independentes usando escalas no estilo do SP 800-30 e registra os tratamentos com responsáveis.
+
+> **Caso sintético.** Os cenários e as classificações são sintéticos; o SP 800-30 Rev. 1 é real.
+
+### Erros e limites
+
+Escalas de três níveis são grosseiras. As listas de cenários deixam surpresas de fora.
+
+### Exercícios
+
+- **EX037 — Partes do cenário.** Que quatro partes cada cenário nomeia? *Rubrica:* 3 = ameaça, fraqueza, ativo e consequência;; 2 = três;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX038 — Diferença de classificação.** Por que o gerente de operações classificou mais alto o coletor perdido? *Rubrica:* 3 = coletores somem todo mês;; 2 = conhecimento local;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX039 — Risco aceito.** Que cenário foi aceito, e por quê? *Rubrica:* 3 = falha de impressora; há impressoras de reserva em cada centro;; 2 = impressora;; 1 = ransomware;; 0 = nenhuma.
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Arquitetura e engenharia de segurança: métodos I
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar o STRIDE ao projeto do portal de upload; (2) registrar ameaças e mitigações; (3) revisar o resultado com o desenvolvedor.
+
+### 14.1 STRIDE no portal
+
+A Brightwater constrói o portal de upload de manifestos recomendado no capítulo 12. Tomás aplica ao projeto o STRIDE de Shostack (2014). Spoofing (falsificação de identidade): um criminoso poderia se passar por um varejista, então as contas precisam de login forte. Tampering (adulteração): um manifesto poderia ser alterado em trânsito, então os uploads usam HTTPS. Repudiation (repúdio): um varejista poderia negar ter enviado uma mudança, então os uploads são registrados com a conta. Information disclosure (divulgação de informação): um varejista não pode ver os manifestos de outro. Denial of service (negação de serviço): arquivos enormes poderiam sobrecarregar a importação. Elevation of privilege (elevação de privilégio): uma conta de varejista não pode alcançar funções de administração.
+
+### 14.2 Registrar os resultados
+
+Tomás registra cada ameaça numa tabela com o elemento afetado, a mitigação, o responsável e como a mitigação será testada. Algumas mitigações já existem no framework do portal, como o HTTPS. Outras exigem trabalho: um limite de tamanho de arquivo, a separação dos dados por varejista conferida por um teste e o login multifator para as contas dos varejistas. Ele marca um item, os picos de alteração de endereços, como dependente de informação do negócio sobre o que conta como incomum. Uma tabela torna a revisão rastreável e dá ao desenvolvedor um checklist.
+
+### 14.3 Revisar com o desenvolvedor
+
+Tomás percorre a tabela com o desenvolvedor em trinta minutos. O desenvolvedor aponta uma ameaça que Tomás deixou passar: os e-mails de redefinição de senha do portal poderiam ser interceptados se o e-mail de um varejista estiver comprometido. Eles acrescentam uma mitigação: os links de redefinição expiram em quinze minutos e notificam o segundo contato da conta. O desenvolvedor também contesta uma mitigação como excessiva. A revisão conjunta melhora o resultado, porque os desenvolvedores sabem como o código de fato se comporta, e os tecnólogos trazem uma visão estruturada das ameaças. Eles combinam repetir a revisão sempre que o projeto do portal mudar.
+
+### Exemplo resolvido
+
+Tomás aplica o STRIDE ao portal, registra seis ameaças com mitigações e testes e as revisa com o desenvolvedor, que acrescenta uma ameaça na redefinição de senha.
+
+> **Caso sintético.** O portal é sintético; Shostack (2014) é real.
+
+### Erros e limites
+
+O STRIDE encontra categorias, não todos os ataques. As revisões dependem do tempo disponível.
+
+### Exercícios
+
+- **EX040 — Divulgação de informação.** Que ameaça de divulgação de informação Tomás encontrou? *Rubrica:* 3 = um varejista ver os manifestos de outro;; 2 = entre varejistas;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX041 — Item que exige o negócio.** Que item precisava de informação do negócio? *Rubrica:* 3 = definir picos incomuns de alteração de endereços;; 2 = picos;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX042 — Ameaça esquecida.** Que ameaça o desenvolvedor acrescentou? *Rubrica:* 3 = interceptação dos e-mails de redefinição de senha;; 2 = redefinição;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Arquitetura e engenharia de segurança: laboratório guiado
+
+### Objetivos de aprendizagem
+
+Você vai (1) validar manifestos em busca de mudanças suspeitas; (2) definir limiares a partir dos dados; (3) explicar os alertas à equipe de operações.
+
+### 15.1 A tarefa do laboratório
+
+Ruth propõe um laboratório guiado: escrever um script que compare um novo manifesto com o anterior do mesmo varejista e sinalize mudanças suspeitas, como muitas encomendas desviadas para um único endereço novo. O script roda sobre manifestos sintéticos. Tomás começa listando como é o normal: os varejistas raramente mudam mais do que alguns endereços entre um upload e outro, e quase nunca enviam muitas encomendas para um único endereço novo. Definir primeiro o normal mantém a regra ligada ao negócio, e não a palpites sobre os atacantes.
+
+### Laboratório — Sinalizar desvios suspeitos num manifesto
+
+```python
+# Flag manifests sending more than three parcels to the same new address (synthetic).
+known = {"12 Hill Rd", "4 Mill St", "7 Park Ave", "22 Dock St", "3 Elm Ct"}
+manifests = {"R1": ["12 Hill Rd", "4 Mill St", "8 Oak Way", "7 Park Ave"],
+             "R2": ["9 Quay Lane"] * 5 + ["22 Dock St", "3 Elm Ct"],
+             "R3": ["5 Bay Rd", "5 Bay Rd", "6 Fern Cl", "12 Hill Rd"]}
+for r, addrs in manifests.items():
+    new = {}
+    for a in addrs:
+        if a not in known: new[a] = new.get(a, 0) + 1
+    hits = {a: n for a, n in new.items() if n > 3}
+    print(f"{r}: {len(addrs)} parcels, new addresses {new} -> {'FLAG ' + str(hits) if hits else 'ok'}")
+```
+
+Execute com `python3 lab_manifest.py`. Saída verificada:
+
+```text
+R1: 4 parcels, new addresses {'8 Oak Way': 1} -> ok
+R2: 7 parcels, new addresses {'9 Quay Lane': 5} -> FLAG {'9 Quay Lane': 5}
+R3: 4 parcels, new addresses {'5 Bay Rd': 2, '6 Fern Cl': 1} -> ok
+```
+
+### 15.2 Definir limiares
+
+O script conta as encomendas cujo endereço mudou e as encomendas enviadas a um endereço que aparece pela primeira vez. Tomás define um limiar: sinalizar se mais de três encomendas forem para o mesmo endereço novo. O laboratório encontra o manifesto de um varejista com cinco encomendas desviadas para um único endereço novo, que ele marca para um telefonema ao varejista antes do despacho. Ele confere o limiar contra três meses de histórico sintético, para garantir que ele não teria sinalizado manifestos normais mais de uma vez por semana.
+
+### 15.3 Explicar os alertas
+
+Tomás escreve uma explicação de um parágrafo para os supervisores dos centros de distribuição: o que o alerta significa, por que importa e o que fazer, que é reter as encomendas e ligar para o varejista num número conhecido, e não num número que esteja no manifesto. Ele acrescenta um exemplo do laboratório. Os supervisores perguntam com que frequência os alertas vão aparecer; ele responde com sua estimativa histórica. Explicações claras importam, porque um alerta que ninguém entende é ignorado, e um alerta que diz o que fazer é atendido. A explicação é impressa e mantida na mesa de cada supervisor.
+
+### Exemplo resolvido
+
+Tomás constrói uma regra de comparação de manifestos, define um limiar conferido contra o histórico e escreve uma instrução clara para os supervisores.
+
+> **Caso sintético.** Os manifestos e o histórico são sintéticos.
+
+### Erros e limites
+
+Os limiares deixam passar ataques abaixo deles. Ligar para os varejistas acrescenta atraso.
+
+### Exercícios
+
+- **EX043 — Normal primeiro.** Por que definir o normal antes de escrever a regra? *Rubrica:* 3 = para ligar a regra ao negócio, e não a palpites;; 2 = negócio;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX044 — Achado do laboratório.** O que o laboratório sinalizou? *Rubrica:* 3 = varejista R2: 5 encomendas para o novo endereço 9 Quay Lane;; 2 = cinco;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX045 — Número conhecido.** Por que ligar para o varejista num número conhecido? *Rubrica:* 3 = o número do manifesto pode pertencer ao criminoso;; 2 = fraude;; 1 = é mais rápido;; 0 = nenhuma.
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Arquitetura e engenharia de segurança: métodos II
+
+### Objetivos de aprendizagem
+
+Você vai (1) usar uma árvore de ataque para a esteira; (2) encontrar o caminho de ataque mais barato; (3) priorizar as defesas.
+
+### 16.1 Uma árvore de ataque
+
+Tomás analisa o objetivo "parar a esteira durante a alta temporada". Os ramos incluem: usar indevidamente a conta de suporte remoto do fornecedor, infectar a estação de trabalho da esteira por um pendrive USB, inundar a rede de controle a partir de um PC de escritório comprometido ou danificar fisicamente o controlador. Cada ramo se divide em etapas. Construir a árvore com o engenheiro de manutenção revela que o ramo do USB é realista: os engenheiros copiam arquivos de configuração usando pendrives pessoais. As árvores de ataque trazem o pensamento do atacante para uma forma estruturada e revisável. A árvore pronta cabe numa página e fica guardada com a documentação da esteira.
+
+### 16.2 O caminho mais barato
+
+Tomás estima o esforço de cada folha como baixo, médio ou alto. O dano físico exige acesso ao local e é percebido rapidamente. A inundação exige um caminho do escritório para a rede de controle, que o projeto de zonas do capítulo 8 bloqueia. A conta do fornecedor exige credenciais roubadas, o que é esforço médio. O caminho do USB é de baixo esforço se um malware chegar a um pendrive pessoal. O caminho mais barato é, portanto, a rota do USB, que nenhum controle anterior tratava. A árvore aponta o esforço defensivo para a opção mais fácil do atacante.
+
+### 16.3 Priorizar as defesas
+
+Tomás recomenda pendrives fornecidos pela empresa e verificados para o trabalho de configuração, desativar o armazenamento USB na estação de trabalho da esteira, exceto para um dispositivo aprovado, e um backup offline da configuração do controlador. Para a conta do fornecedor, ele confirma que o acesso com prazo limitado já está em vigor. Ele apresenta as recomendações na ordem dos caminhos de ataque que elas fecham. O engenheiro de manutenção concorda, observando que o backup offline da configuração também aceleraria a recuperação após falhas comuns de hardware, trazendo um benefício para o negócio além da segurança. Sam agenda as três mudanças para a próxima janela de manutenção antes da alta temporada.
+
+### Exemplo resolvido
+
+Tomás constrói uma árvore de ataque para a parada da esteira, descobre que o caminho do USB é o mais barato e prioriza três defesas.
+
+> **Caso sintético.** A árvore e as estimativas são sintéticas.
+
+### Erros e limites
+
+As estimativas de esforço são julgamentos. As árvores deixam de fora ramos que ninguém imaginou.
+
+### Exercícios
+
+- **EX046 — Ramo realista.** Que ramo o engenheiro de manutenção tornou realista? *Rubrica:* 3 = pendrives USB usados para copiar arquivos de configuração;; 2 = USB;; 1 = fornecedor;; 0 = nenhuma.
+
+- **EX047 — Caminho bloqueado.** Por que a inundação a partir de um PC de escritório é improvável? *Rubrica:* 3 = o projeto de zonas bloqueia caminhos do escritório para o controle;; 2 = zonas;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX048 — Benefício extra.** Que benefício para o negócio o backup offline da configuração trouxe? *Rubrica:* 3 = recuperação mais rápida de falhas comuns de hardware;; 2 = recuperação;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Arquitetura e engenharia de segurança: ferramentas
+
+### Objetivos de aprendizagem
+
+Você vai (1) escolher ferramentas para uma pequena equipe de segurança; (2) avaliar uma ferramenta num teste; (3) evitar a proliferação de ferramentas.
+
+### 17.1 Necessidades antes das ferramentas
+
+Fornecedores procuram a Brightwater com produtos de segurança. Tomás lista primeiro as necessidades: inventário de dispositivos, relatório de atualizações, logs centralizados, varredura de vulnerabilidades dos serviços expostos à internet e monitoramento de backups. Ele confere o que os sistemas existentes já fazem: o serviço de gestão de dispositivos cobre o inventário e as atualizações, e o provedor de nuvem oferece logging básico. Só a varredura de vulnerabilidades e os alertas sobre logs são lacunas de verdade. Partir das necessidades, e não dos produtos, evita comprar ferramentas sobrepostas que ninguém tem tempo de operar. Ele escreve a lista de necessidades numa página e pede a Sam que a ordene, para que qualquer compra posterior possa ser rastreada até uma lacuna específica e acordada.
+
+### 17.2 Um teste
+
+Tomás conduz um teste de duas semanas de um scanner externo de vulnerabilidades contra os endereços públicos da Brightwater, com permissão por escrito de Sam e do provedor de hospedagem. Ele define os critérios do teste: exatidão dos achados, alarmes falsos, esforço de operação e custo. O scanner encontra um banner desatualizado de servidor web no antigo portal de clientes e um certificado prestes a expirar. Também relata dois alarmes falsos sobre serviços que não estão rodando. Ele registra o tempo gasto a cada semana, porque uma ferramenta que exige horas de triagem pode não servir para uma equipe de duas pessoas.
+
+### 17.3 Evitar a proliferação
+
+Tomás recomenda um único scanner e o uso do logging em nuvem existente com três regras de alerta, em vez de comprar uma plataforma de monitoramento completa. Ele registra quem opera cada ferramenta, com que frequência e para onde vão os resultados. Cada ferramenta precisa ter um responsável e um propósito ligado a um cenário de risco do capítulo 13. Ferramentas sem responsável viram shelfware, que dá falso conforto. Sam aprova o plano, observando que o custo total é menor do que a cotação inicial de um único fornecedor para uma plataforma tudo-em-um. A lista de ferramentas é revisada todo ano junto com os cenários de risco.
+
+### Exemplo resolvido
+
+Tomás lista as necessidades antes dos produtos, testa um scanner com permissão por escrito segundo critérios definidos e recomenda um conjunto mínimo de ferramentas com responsáveis.
+
+> **Caso sintético.** As ferramentas e os achados são sintéticos.
+
+### Erros e limites
+
+Os testes são curtos e podem deixar problemas passarem. Os planos gratuitos podem mudar.
+
+### Exercícios
+
+- **EX049 — Lacunas de verdade.** Que necessidades eram lacunas de verdade? *Rubrica:* 3 = varredura de vulnerabilidades e alertas sobre logs;; 2 = uma;; 1 = inventário;; 0 = nenhuma.
+
+- **EX050 — Permissão para o teste.** O que Tomás obteve antes da varredura? *Rubrica:* 3 = permissão por escrito de Sam e do provedor de hospedagem;; 2 = permissão;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX051 — Shelfware.** O que acontece com as ferramentas sem responsável? *Rubrica:* 3 = viram shelfware que dá falso conforto;; 2 = shelfware;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Arquitetura e engenharia de segurança: controles
+
+### Objetivos de aprendizagem
+
+Você vai (1) mapear os controles para os cenários de risco; (2) usar um catálogo de controles para conferir a cobertura; (3) registrar evidências para cada controle.
+
+### 18.1 Controles a partir dos cenários
+
+Tomás lista os controles já escolhidos para os cenários de risco da Brightwater: portal de upload com login multifator, validação de manifestos, backups offline, apagamento remoto, acesso do fornecedor com prazo limitado, restrições de USB na estação de trabalho da esteira e atualizações mensais. Ele mapeia cada um para os cenários que reduz. Um controle que reduz vários cenários, como as atualizações mensais, merece atenção extra, porque sua falha enfraqueceria muitas defesas de uma vez. O mapa também mostra que nenhum controle trata ainda a fraude de faturas no financeiro. Ele acrescenta a fraude de faturas à lista de lacunas a fechar em seguida.
+
+### 18.2 Conferir a cobertura
+
+Tomás usa a ISO/IEC 27002:2022 como catálogo para procurar lacunas. Seus controles sobre relacionamento com fornecedores, transferência de informações e descarte seguro levam a três acréscimos: uma cláusula de segurança para o fornecedor da esteira, uma regra de retorno de ligação (call-back) para as mudanças de dados bancários no financeiro e o apagamento dos coletores antes da devolução à empresa de leasing. O catálogo é usado como lista de lembretes, e não como checklist a implementar por inteiro. Tomás registra por que outros controles do catálogo não são necessários no porte da Brightwater. Os motivos ficam num apêndice curto para auditores e clientes.
+
+### 18.3 Evidências
+
+Para cada controle, Tomás registra o que prova que ele funciona: uma captura de tela da configuração multifator do portal, um log de teste de restauração, uma lista de coletores apagados, as aprovações das sessões do fornecedor e o relatório de atualizações. As evidências precisam ser produzidas regularmente, e não uma única vez. Ele configura lembretes para as verificações mensais e trimestrais. Sam observa que a lista de evidências também vai ajudar quando um grande cliente varejista enviar seu questionário de segurança de fornecedores, o que acontece todo ano e antes levava dias de busca. Cada item indica quem o produz e onde ele fica armazenado.
+
+### Exemplo resolvido
+
+Tomás mapeia sete controles para os cenários, usa a ISO/IEC 27002 para acrescentar três e define evidências regulares para cada controle.
+
+> **Caso sintético.** Os controles e as evidências são sintéticos; a ISO/IEC 27002:2022 é real.
+
+### Erros e limites
+
+As evidências podem mostrar a configuração sem provar a eficácia. Os catálogos tentam à implementação excessiva.
+
+### Exercícios
+
+- **EX052 — Controle compartilhado.** Por que as atualizações mensais merecem atenção extra? *Rubrica:* 3 = sua falha enfraquece as defesas contra muitos cenários;; 2 = muitos cenários;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX053 — Acréscimos do catálogo.** Cite dois controles acrescentados a partir da ISO/IEC 27002. *Rubrica:* 3 = cláusula do fornecedor, call-back de mudança bancária, apagamento dos coletores;; 2 = um;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX054 — Benefício nos questionários.** Como a lista de evidências vai ajudar com os clientes? *Rubrica:* 3 = respondendo rapidamente aos questionários de segurança de fornecedores;; 2 = questionários;; 1 = nenhuma;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX036 (as de EX037–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). Tomás Ferreira, Ruth Adeyemi, Sam Okafor, a Kestrel Polytechnic, a Brightwater Logistics e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX054 (as de EX055–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). Tomás Ferreira, Ruth Adeyemi, Sam Okafor, a Kestrel Polytechnic, a Brightwater Logistics e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** O processador (hardware), o firmware do fabricante, um sistema operacional móvel, o aplicativo de leitura e os dados das encomendas que ele trata.
 
@@ -613,6 +865,42 @@ Respostas-modelo para EX001–EX036 (as de EX037–EX090 estão na edição em i
 **EX035.** Autenticação do remetente, criptografia em trânsito e validação do conteúdo.
 
 **EX036.** Enviar um manifesto falso que desvia encomendas.
+
+**EX037.** Uma ameaça, uma fraqueza, um ativo e uma consequência.
+
+**EX038.** Porque, na prática, coletores somem todo mês.
+
+**EX039.** A falha de uma impressora, porque cada centro de distribuição mantém impressoras de reserva.
+
+**EX040.** Um varejista ver os manifestos de outro varejista.
+
+**EX041.** O que conta como pico incomum de alterações de endereço.
+
+**EX042.** A interceptação dos e-mails de redefinição de senha se o e-mail de um varejista estiver comprometido.
+
+**EX043.** Para que a regra reflita os padrões reais do negócio, e não palpites sobre os atacantes.
+
+**EX044.** Cinco encomendas do varejista R2 desviadas para um único endereço novo, 9 Quay Lane.
+
+**EX045.** Porque um número num manifesto forjado poderia pertencer ao criminoso.
+
+**EX046.** O ramo do USB, porque os engenheiros copiam arquivos de configuração usando pendrives pessoais.
+
+**EX047.** Porque o projeto de zonas do capítulo 8 bloqueia os caminhos do escritório para a rede de controle.
+
+**EX048.** Ele acelera a recuperação após falhas comuns de hardware, e não só após ataques.
+
+**EX049.** A varredura de vulnerabilidades dos serviços expostos à internet e os alertas sobre logs.
+
+**EX050.** Permissão por escrito de Sam e do provedor de hospedagem.
+
+**EX051.** Viram shelfware sem uso, que dá falso conforto.
+
+**EX052.** Porque reduz vários cenários, então sua falha enfraquece muitas defesas de uma vez.
+
+**EX053.** Uma regra de call-back para mudanças de dados bancários e o apagamento dos coletores antes da devolução, além de uma cláusula para o fornecedor.
+
+**EX054.** Ela agiliza as respostas aos questionários anuais de segurança de fornecedores dos grandes clientes.
 
 <a id="references"></a>
 ## Referências
