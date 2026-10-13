@@ -619,7 +619,7 @@ Run with `python3 lab_trend.py`. Verified output:
 09:00 setpoint 26.0->21.0 in window
 ```
 
-The windows should be agreed with estates and written down, with any exceptions such as emergency repairs. Outside the window, the question is simply what happened and who did it. Lab 9 checks one theatre setpoint trend against a morning window and flags any change outside it. Review them yearly.
+The windows should be agreed with estates and written down, with any exceptions such as emergency repairs. Outside the window, the question is simply what happened and who did it. Lab 9 checks one theatre setpoint trend against a morning window and flags any change outside it. Review the windows with estates yearly.
 
 ### 9.3 Reading the output
 
@@ -771,7 +771,7 @@ Before isolating, check how each critical controller behaves without the server,
 
 Preserve logs and images before rebuilding; restore BMS-WS and the server from verified backups; check every critical point against local readings; reconnect conduits one at a time.
 
-Agree beforehand where evidence will be stored and who will take it, so that rebuilding is not delayed. At Millbrook BMS-WS was rebuilt from a verified image the next morning and conduits were restored by 14:00 after point checks. Keep the evidence until the incident lead decides it is no longer needed. Record each step and its time.
+Agree beforehand where evidence will be stored and who will take it, so that rebuilding is not delayed. At Millbrook the incident lead had the BMS-WS disk image and the firewall log extract for 22:00–23:00 copied to the evidence store before the rebuild began. Keep the evidence until the incident lead decides it is no longer needed. Record each step and its time.
 
 ### 11.5 Communication
 
