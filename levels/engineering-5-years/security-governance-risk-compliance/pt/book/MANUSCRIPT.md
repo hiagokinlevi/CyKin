@@ -1,7 +1,7 @@
 # Governança, Riscos e Compliance de Segurança: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 120, curso de engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–30 de 50 já estão escritos em português, com os exercícios EX001–EX090 e suas resoluções com rubricas de 0 a 3 e 4 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 31–50 (EX091–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–40 de 50 já estão escritos em português, com os exercícios EX001–EX120 e suas resoluções com rubricas de 0 a 3 e 6 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 41–50 (EX121–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que projetam, verificam e operam um programa de governança, riscos e compliance de segurança como um sistema de engenharia.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios calculam perda esperada, validação de registros, risco residual, taxas de aprovação de controles, falha em camadas, limites de amostragem por atributos, otimização de orçamento e digests de evidências, sempre sobre dados sintéticos. Os números de risco são ilustrações, as normas são citadas pela edição e parafraseadas, e nada aqui é auditoria, atestação ou aconselhamento jurídico reais. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ ISO 31000:2018 (no Brasil, ABNT NBR ISO 31000:2018); ISO/IEC 27001:2022 (no Bras
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) |
 
-Capítulos 31–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-31), até a chegada dos próximos lotes.
+Capítulos 41–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-41), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1217,11 +1217,416 @@ As cópias de laboratório diferem da produção. Os testes cobrem só os casos 
 - **EX089 — Campos da evidência.** O que Nadia registra para cada teste? *Rubrica:* 3 = data, testador, passos, resultado e artefatos;; 2 = evidência;; 1 = nada;; 0 = nenhuma.
 - **EX090 — Teste que falhou.** Que teste falhou? *Rubrica:* 3 = uma sessão aprovada conseguia alcançar um segundo dispositivo;; 2 = roteamento;; 1 = nada;; 0 = nenhuma.
 
+<a id="ch-31"></a>
+
+## Capítulo 31 — Governança, riscos e compliance de segurança: implementação II
+
+### Objetivos de aprendizagem
+
+Você vai (1) implantar uma capacidade de GRC em toda a organização; (2) integrar os controles ao trabalho de rotina; (3) gerenciar as exceções formalmente.
+
+### 31.1 Implantar as ferramentas
+
+Com o broker funcionando, a Ardwell implanta suas ferramentas de GRC baseadas em tickets. Cada controle vira uma tarefa recorrente atribuída ao responsável, com a descrição do controle, os passos de teste e um campo para a evidência. Nadia ajuda a migrar oitenta controles das planilhas, conferindo em cada um o responsável e a frequência. Doze controles não têm responsável claro, e três descrevem práticas que já não existem. A migração vira assim um exercício de limpeza, que remove os controles obsoletos e atribui responsáveis antes do primeiro ciclo. Remover os três obsoletos também evita que o primeiro ciclo produza aprovações enganosas para práticas que ninguém executa mais.
+
+### 31.2 Integração à rotina
+
+Os controles funcionam melhor quando se encaixam nas rotinas existentes. Nadia liga a revisão trimestral de acessos ao ciclo de relatórios de recursos humanos, para que os revisores recebam listas de papéis atualizadas. Programa a coleta das evidências de patch para logo depois da janela mensal de manutenção, quando elas estão frescas. Os responsáveis recebem lembretes uma semana antes do vencimento das tarefas, e as tarefas vencidas sobem para os gestores depois de cinco dias. Ela aprende que a integração à rotina reduz o esforço de compliance e faz da evidência um subproduto das operações, e não um fardo à parte.
+
+### 31.3 Exceções
+
+Alguns controles não podem ser aplicados em toda parte. Um dispositivo antigo de subestação não suporta a autenticação atual. Nadia ajuda a desenhar um processo de exceções: o responsável pede a exceção, declara o risco e os controles compensatórios, um gestor a aprova por tempo limitado e a exceção aparece no registro de riscos. As exceções vencem e precisam ser renovadas com um novo raciocínio. Ela aprende que as exceções sem gestão viram lacunas permanentes ocultas, enquanto as geridas mantêm o risco visível e as decisões responsabilizáveis. O dispositivo antigo pode continuar em operação com acesso supervisionado enquanto sua exceção e o vencimento permanecem visíveis.
+
+### Exemplo resolvido
+
+Nadia migra oitenta controles, encontra doze sem responsável e três obsoletos, integra as tarefas às rotinas e desenha exceções com prazo limitado.
+
+> **Caso sintético.** As contagens de controles e os processos são sintéticos.
+
+### Erros e limites
+
+Os lembretes causam fadiga. As exceções costumam ser renovadas por hábito.
+
+### Exercícios
+
+- **EX091 — Achados da migração.** O que a migração revelou? *Rubrica:* 3 = doze controles sem responsável e três obsoletos;; 2 = limpeza;; 1 = nada;; 0 = nenhuma.
+- **EX092 — Regra de escalonamento.** Quando as tarefas vencidas sobem para os gestores? *Rubrica:* 3 = depois de cinco dias;; 2 = cinco dias;; 1 = nada;; 0 = nenhuma.
+- **EX093 — Vencimento das exceções.** Por que as exceções precisam vencer? *Rubrica:* 3 = para forçar um novo raciocínio e manter o risco visível;; 2 = renovação;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-32"></a>
+
+## Capítulo 32 — Governança, riscos e compliance de segurança: confiabilidade
+
+### Objetivos de aprendizagem
+
+Você vai (1) calcular a probabilidade de dois controles em camadas falharem juntos; (2) levar em conta a falha de causa comum; (3) projetar para a independência.
+
+### 32.1 Controles em camadas
+
+A Ardwell protege o acesso de fornecedores com duas camadas: a verificação de aprovação do broker e as regras de rede que bloqueiam rotas não aprovadas. Nadia pergunta qual a probabilidade de as duas falharem ao mesmo tempo. Se a verificação de aprovação falha em cinco por cento das vezes e as regras de rede em dez, e as falhas são independentes, as duas falham juntas só em meio por cento das vezes. As camadas parecem dar uma proteção forte. A engenharia de confiabilidade, porém, adverte que a independência é uma premissa que precisa ser justificada antes de se confiar nela; um único administrador capaz de mudar as duas camadas seria uma dependência comum, como mostra a seção seguinte.
+
+### 32.2 Causa comum
+
+O laboratório acrescenta uma chance de dois por cento de uma causa comum que derrota as duas camadas de uma vez, como uma conta de administrador capaz de alterar tanto o broker quanto as regras de rede. A probabilidade de falha conjunta sobe de meio por cento para cerca de dois e meio por cento, cinco vezes mais. Nadia vê que a causa comum domina o resultado. Melhorar uma das camadas sozinha quase não ajuda; remover a dependência compartilhada importa muito mais. Isso explica por que seu trabalho de projeto agora se concentra em separar a administração, e não em melhorar a taxa de falha de cada camada.
+
+### Laboratório — Falha conjunta de dois controles com e sem causa comum
+
+```python
+"""Failure probability of two controls: independent vs with a common cause (synthetic)."""
+p1, p2, beta = 0.05, 0.10, 0.02
+ind = p1*p2
+cc = beta + (1-beta)*p1*p2
+print(f"single control A fails {p1:.2%}; B fails {p2:.2%}")
+print(f"both fail if independent {ind:.2%}")
+print(f"both fail with 2% common cause {cc:.2%}")
+```
+
+Execute com `python3 lab_layers.py`. Saída verificada:
+
+```text
+single control A fails 5.00%; B fails 10.00%
+both fail if independent 0.50%
+both fail with 2% common cause 2.49%
+```
+
+### 32.3 Projetar para a independência
+
+Nadia recomenda separar a administração do broker e das regras de rede entre equipes diferentes, com contas diferentes, registrar as mudanças nas duas num sistema que nenhuma das equipes controla e testá-las separadamente. Equipes e contas separadas eliminariam a causa comum de dois por cento modelada no laboratório. Ela observa que as causas comuns também incluem treinamento compartilhado, fornecedores compartilhados e premissas compartilhadas. O Prof. Brenner acrescenta que os relatórios de governança muitas vezes contam as camadas como se cada uma fosse independente, então declarar as dependências explicitamente é sinal de uma análise de riscos madura e uma lacuna frequente nas evidências de auditoria.
+
+### Exemplo resolvido
+
+Nadia calcula falha conjunta de 0,50% para camadas independentes e de 2,49% com uma causa comum de 2%, e então separa a administração para reduzi-la.
+
+> **Caso sintético.** As taxas de falha são sintéticas.
+
+### Erros e limites
+
+As taxas de causa comum são difíceis de estimar. A separação acrescenta custo.
+
+### Exercícios
+
+- **EX094 — Conjunta independente.** Qual é a probabilidade de falha conjunta para camadas independentes? *Rubrica:* 3 = 0,50%;; 2 = 0,005;; 1 = nada;; 0 = nenhuma.
+- **EX095 — Conjunta com causa comum.** Qual é a probabilidade de falha conjunta com uma causa comum de 2%? *Rubrica:* 3 = 2,49%;; 2 = cerca de cinco vezes;; 1 = nada;; 0 = nenhuma.
+- **EX096 — Melhor correção.** O que mais reduz a falha conjunta? *Rubrica:* 3 = remover a dependência compartilhada;; 2 = independência;; 1 = uma camada mais forte;; 0 = nenhuma.
+
+<a id="ch-33"></a>
+
+## Capítulo 33 — Governança, riscos e compliance de segurança: segurança e resiliência
+
+### Objetivos de aprendizagem
+
+Você vai (1) integrar a segurança das pessoas e a resiliência à governança; (2) planejar a continuidade da operação sob ataque; (3) testar os objetivos de recuperação.
+
+### 33.1 Resiliência como meta de governança
+
+Para uma distribuidora de energia, evitar todo incidente é impossível, então a meta real do conselho é a resiliência: manter a energia fluindo e restabelecer os serviços depressa quando algo dá errado. Nadia aprende que o NIST CSF 2.0 inclui as funções Respond e Recover ao lado da proteção e da detecção, e que a ISO/IEC 27002:2022 cobre a segurança da informação durante disrupções e a prontidão de TIC para a continuidade do negócio. Ela ajuda a Ardwell a definir objetivos de tempo de recuperação para o faturamento, o portal de pagamento e os sistemas de controle, acordados com o conselho, que ganha assim um teste mensurável de resiliência.
+
+### 33.2 Operar sob ataque
+
+Nadia participa de uma oficina sobre como operar enquanto os sistemas do escritório estão criptografados por ransomware. As salas de controle precisam continuar funcionando em sistemas isolados, com procedimentos em papel para as manobras. O faturamento pode parar por dias sem prejudicar os clientes se a comunicação for clara. O portal de pagamento pode redirecionar os clientes para pagar depois. Cada decisão é registrada num plano de continuidade. Ela aprende que planejar a resiliência obriga a governança a decidir de antemão que serviços importam mais, em vez de improvisar prioridades na crise. O Prof. Brenner observa que parar o faturamento por dias só é aceitável porque a comunicação aos clientes foi planejada antes.
+
+### 33.3 Testar a recuperação
+
+Os planos precisam ser testados. A Ardwell restaura o faturamento a partir do backup num ambiente de teste e mede o tempo: nove horas contra uma meta de oito. Nadia registra a lacuna, suas causas e as correções, como deixar os scripts de restauração preparados de antemão, o que basta para fechar uma lacuna dessa dimensão. Um exercício na sala de controle mostra que os procedimentos em papel estão desatualizados. Ela aprende que os testes de recuperação costumam falhar da primeira vez, e que esse é justamente seu propósito: registrar e fechar as lacunas é o que transforma um plano no papel numa resiliência real em que o conselho pode confiar.
+
+### Exemplo resolvido
+
+Nadia ajuda a fixar objetivos de recuperação, planeja a operação sob ransomware e registra uma restauração de nove horas contra uma meta de oito.
+
+> **Caso sintético.** Os objetivos e os resultados dos testes são sintéticos; o CSF 2.0 e a ISO/IEC 27002:2022 são reais.
+
+### Erros e limites
+
+Os testes são cenários ensaiados. As crises reais trazem surpresas.
+
+### Exercícios
+
+- **EX097 — Meta do conselho.** Qual é a meta real de resiliência da Ardwell? *Rubrica:* 3 = manter a energia fluindo e restabelecer os serviços depressa;; 2 = resiliência;; 1 = nada;; 0 = nenhuma.
+- **EX098 — Lacuna da restauração.** Como o teste de restauração do faturamento se comparou à meta? *Rubrica:* 3 = nove horas contra oito;; 2 = uma hora acima;; 1 = nada;; 0 = nenhuma.
+- **EX099 — Propósito do teste.** Por que os primeiros testes de recuperação que falham são valiosos? *Rubrica:* 3 = revelam lacunas a fechar;; 2 = aprendizado;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-34"></a>
+
+## Capítulo 34 — Governança, riscos e compliance de segurança: integração
+
+### Objetivos de aprendizagem
+
+Você vai (1) integrar a GRC à gestão de riscos corporativos; (2) ligar o risco de segurança aos relatórios financeiros e operacionais; (3) alinhar os processos entre os departamentos.
+
+### 34.1 Risco corporativo
+
+A Ardwell já tem um registro de riscos corporativos que cobre riscos financeiros, operacionais, regulatórios e de segurança das pessoas. Os riscos de segurança da informação viviam num registro separado, então o conselho os via isoladamente. Nadia ajuda a integrá-los, mapeando os riscos de segurança nas categorias corporativas e usando escalas comuns de probabilidade e impacto. A ISO 31000:2018 promove a integração da gestão de riscos em todas as atividades da organização, e o COBIT 2019 liga as metas de TI às metas corporativas. A integração permite ao conselho comparar o risco cibernético com os demais em pé de igualdade, num único registro.
+
+### 34.2 Linguagem comum
+
+A integração exige uma linguagem compartilhada. As equipes de segurança falavam de vulnerabilidades e ameaças; finanças falava de perdas e provisões. Nadia redige um glossário e uma tabela de tradução. Um cenário de ransomware vira um risco de disrupção operacional com uma faixa de impacto financeiro e uma obrigação de comunicação regulatória, o que dá a finanças uma faixa de perda comparável à cobertura do seguro. Ela aprende que traduzir não é simplificar, mas conectar: cada público mantém sua precisão enquanto vê como o risco se relaciona com coisas que já administra, como a cobertura de seguros e as reservas.
+
+### 34.3 Processos alinhados
+
+Nadia alinha os calendários para que as revisões de riscos de segurança alimentem o relatório trimestral de riscos corporativos, os planos da auditoria interna considerem os achados de segurança e as compras confiram a segurança dos fornecedores antes dos contratos. Cada departamento mantém seu processo, mas as passagens de bastão são definidas. Ela aprende que a integração fracassa quando significa uma equipe tomar o trabalho de outra, e dá certo quando as interfaces são claras. O Prof. Brenner observa que isso aplica a ênfase da engenharia de sistemas nas interfaces, estudada antes. A conferência dos fornecedores pelas compras é uma dessas passagens: de responsabilidade das compras, mas informada pela segurança.
+
+### Exemplo resolvido
+
+Nadia mapeia os riscos de segurança nas categorias corporativas, monta um glossário de tradução e alinha os calendários de revisão entre os departamentos.
+
+> **Caso sintético.** Os registros e os processos são sintéticos; a ISO 31000:2018 e o COBIT 2019 são reais.
+
+### Erros e limites
+
+As escalas comuns podem apagar distinções. A integração exige esforço político.
+
+### Exercícios
+
+- **EX100 — Benefício da integração.** O que a integração dos registros permite ao conselho? *Rubrica:* 3 = comparar o risco cibernético com os demais em pé de igualdade;; 2 = comparação;; 1 = nada;; 0 = nenhuma.
+- **EX101 — Exemplo de tradução.** Como um cenário de ransomware foi traduzido para finanças? *Rubrica:* 3 = disrupção operacional com faixa de impacto financeiro e obrigação de comunicação;; 2 = tradução;; 1 = nada;; 0 = nenhuma.
+- **EX102 — Fracasso da integração.** Quando a integração fracassa? *Rubrica:* 3 = quando uma equipe toma o trabalho de outra;; 2 = tomada;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-35"></a>
+
+## Capítulo 35 — Ateliê de projeto II
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar um pacote de relatório ao conselho sobre o risco de segurança; (2) testá-lo com leitores reais; (3) revisá-lo para ganhar clareza e valor para a decisão.
+
+### 35.1 O briefing
+
+No segundo ateliê, a equipe de Nadia projeta um pacote trimestral para o conselho da Ardwell sobre o risco de segurança. O briefing pede no máximo quatro páginas, foco nas decisões e incerteza honesta. A equipe entrevista dois conselheiros. Um quer saber se o risco está subindo ou caindo. O outro quer saber o que o conselho está sendo chamado a decidir. Nenhum dos dois quer detalhes técnicos, mas ambos querem confiar nos números e saber de onde vieram. As perguntas dos dois conselheiros viram as duas primeiras páginas do projeto: as tendências e as decisões solicitadas, nessa ordem de leitura.
+
+### 35.2 O projeto
+
+O pacote abre com as decisões solicitadas. A página dois mostra os cinco maiores riscos residuais, com faixas de perda esperada e setas de tendência. A página três mostra o desempenho dos controles por família, com os itens vermelhos primeiro. A página quatro lista os principais achados, exceções e incidentes, com responsáveis e datas. Um apêndice explica os métodos e as premissas. Depois de ler Cox (2008) sobre como as matrizes de risco podem enganar, a equipe evita mapas de calor sem números e usa faixas e frases simples, que também permitem aos conselheiros ver quão incerta é cada estimativa de perda esperada.
+
+### 35.3 Teste e revisão
+
+A equipe testa o pacote com três voluntários no papel de conselheiros. Um lê uma seta de tendência como boa notícia quando o risco estava subindo. Outro não encontra quem é o responsável por um controle vermelho. A equipe acrescenta setas com rótulos escritos e põe o nome do responsável ao lado de cada item vermelho. Um voluntário pergunta por que o risco residual do ransomware caiu; a equipe acrescenta uma frase que liga a queda aos backups testados. Nadia aprende que os leitores revelam confusões que os projetistas não conseguem ver: as setas rotuladas corrigem um erro de leitura que a própria equipe nunca tinha notado.
+
+### Exemplo resolvido
+
+A equipe de Nadia projeta um pacote de quatro páginas para o conselho, com as decisões primeiro, testa-o com voluntários e esclarece as tendências e os responsáveis.
+
+> **Caso sintético.** O pacote e os testadores são sintéticos; Cox (2008) é real.
+
+### Erros e limites
+
+Voluntários não são conselheiros reais. Pacotes curtos omitem detalhes.
+
+### Exercícios
+
+- **EX103 — O que os conselheiros querem.** O que os dois conselheiros entrevistados queriam? *Rubrica:* 3 = a direção da tendência e as decisões solicitadas;; 2 = tendência e decisões;; 1 = nada;; 0 = nenhuma.
+- **EX104 — Evitar a matriz.** Por que a equipe evitou mapas de calor sem números? *Rubrica:* 3 = Cox (2008) mostra que as matrizes de risco podem enganar;; 2 = Cox;; 1 = nada;; 0 = nenhuma.
+- **EX105 — Correção da seta.** Como a seta de tendência mal interpretada foi corrigida? *Rubrica:* 3 = setas com rótulos escritos;; 2 = rótulos;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-36"></a>
+
+## Capítulo 36 — Governança, riscos e compliance de segurança: desempenho e escala
+
+### Objetivos de aprendizagem
+
+Você vai (1) estimar a carga de trabalho de um programa de GRC; (2) encontrar os gargalos à medida que ele cresce; (3) reduzir o esforço com automação e amostragem.
+
+### 36.1 Carga de trabalho
+
+Nadia estima a carga anual do programa da Ardwell: oitenta controles com testes em várias frequências, revisões trimestrais de acessos em dez sistemas, amostragem mensal de gravações e auditorias anuais. Ela soma as horas por atividade com as estimativas dos responsáveis e chega a um total próximo de dois funcionários em tempo integral, espalhados de forma rala entre muitas pessoas. Ela aprende que os programas de GRC muitas vezes fracassam não por mau projeto, mas por esforço subestimado, o que leva a testes pulados e evidências velhas. Espalhados por muitas pessoas, dois equivalentes em tempo integral podem sumir em outras tarefas, e é assim que os testes deixam de acontecer.
+
+### 36.2 Gargalos
+
+Como a Ardwell planeja acrescentar um segundo centro de controle e mais fornecedores, Nadia modela o crescimento. As revisões de acesso e a coleta de evidências crescem com os sistemas e os fornecedores, mas a analista de segurança que confere as evidências é uma única pessoa. No ritmo atual, a fila dela dobraria em um ano. Nadia a identifica como o gargalo e recomenda distribuir a revisão entre responsáveis pelos controles treinados, com a analista amostrando o trabalho deles, como amostradora e não como única conferente. Encontrar o ponto mais estreito permite à Ardwell investir onde mais importa.
+
+### 36.3 Automação e amostragem
+
+Nadia lista as tarefas que poderiam ser automatizadas: coletar os níveis de patch, exportar as listas de contas e conferir os baselines de configuração. A automação reduz o esforço e melhora a consistência, embora os scripts precisem de seus próprios testes e responsáveis. A coleta automática dos níveis de patch, por exemplo, elimina uma tarefa manual e deixa a evidência mensal consistente. Para tarefas que exigem julgamento, como revisar gravações, a amostragem reduz o esforço mantendo a garantia. Ela aprende que a escala na governança vem de projetar as evidências para fluírem automaticamente dos sistemas, reservando a atenção humana para decisões, exceções e o que a automação não sabe julgar.
+
+### Exemplo resolvido
+
+Nadia estima um esforço de cerca de dois funcionários em tempo integral, identifica a analista de evidências como gargalo e propõe automação e amostragem.
+
+> **Caso sintético.** As estimativas de carga de trabalho são sintéticas.
+
+### Erros e limites
+
+As estimativas de horas são aproximadas. A automação pode falhar em silêncio.
+
+### Exercícios
+
+- **EX106 — Esforço total.** Quanto esforço, aproximadamente, o programa exige? *Rubrica:* 3 = cerca de dois funcionários em tempo integral;; 2 = dois FTE;; 1 = nada;; 0 = nenhuma.
+- **EX107 — Pessoa-gargalo.** Quem é o gargalo à medida que a Ardwell cresce? *Rubrica:* 3 = a única analista de segurança que confere as evidências;; 2 = analista;; 1 = nada;; 0 = nenhuma.
+- **EX108 — Foco humano.** Para onde deve ir a atenção humana depois que as evidências forem automatizadas? *Rubrica:* 3 = decisões, exceções e tarefas de julgamento;; 2 = julgamento;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-37"></a>
+
+## Capítulo 37 — Governança, riscos e compliance de segurança: operações
+
+### Objetivos de aprendizagem
+
+Você vai (1) operar o programa de GRC como um serviço; (2) conduzir achados e incidentes até o encerramento; (3) revisar as operações regularmente.
+
+### 37.1 Operar o serviço
+
+Nadia acompanha a gestora de segurança da Ardwell por um mês. Cada semana começa com uma revisão das tarefas de controle vencidas, dos novos achados e das exceções perto do vencimento, o que impede que exceções temporárias virem lacunas permanentes. No meio da semana há reuniões com os responsáveis cujos controles falharam. O fim do mês traz a conferência de evidências e a preparação dos indicadores. Ela aprende que a governança não é um projeto anual, mas um serviço contínuo com um ritmo, e que o próprio ritmo é um controle: quando as revisões semanais deixam de acontecer, os problemas se acumulam sem ninguém ver.
+
+### 37.2 Achados até o encerramento
+
+Todo achado segue um caminho: registro com gravidade e responsável, plano de correção acordado, prazo, evidência da correção e verificação por alguém que não seja o responsável. Nadia acompanha vinte achados em aberto e nota que vários foram marcados como corrigidos sem evidência. Ela introduz a regra de que só a analista de segurança pode encerrar achados, depois de conferir a evidência. As taxas de encerramento caem por um tempo, mostrando quantos encerramentos anteriores não tinham evidência, e depois se recuperam com correções reais. Ela aprende que encerrar sem verificar produz números reconfortantes, mas não reduz o risco.
+
+### 37.3 Revisão operacional
+
+A cada trimestre, a gestora de segurança revisa o próprio programa: as tarefas estão em dia? Os achados estão envelhecendo? As exceções estão crescendo? Que controles falham repetidamente? Nadia ajuda a preparar a revisão e nota que as falhas de patch se repetem há três trimestres nos dispositivos das subestações. A revisão escala isso como problema de projeto, e não de responsável, o que leva a um projeto de substituição dos dispositivos, eliminando uma causa que nenhum esforço dos responsáveis resolveria. Ela aprende que os dados de operação revelam onde o problema real é o projeto, e não o esforço.
+
+### Exemplo resolvido
+
+Nadia observa o ritmo semanal, exige encerramento verificado dos achados e ajuda uma revisão trimestral a escalar falhas repetidas de patch como problema de projeto.
+
+> **Caso sintético.** Os achados e as revisões são sintéticos.
+
+### Erros e limites
+
+O encerramento verificado atrasa os relatórios. As revisões podem virar rotina.
+
+### Exercícios
+
+- **EX109 — Ritmo como controle.** Por que o ritmo semanal é, ele mesmo, um controle? *Rubrica:* 3 = quando ele falha, os problemas se acumulam sem ninguém ver;; 2 = ritmo;; 1 = nada;; 0 = nenhuma.
+- **EX110 — Regra de encerramento.** Quem pode encerrar achados pela regra de Nadia? *Rubrica:* 3 = só a analista de segurança, depois de conferir a evidência;; 2 = analista;; 1 = responsável;; 0 = nenhuma.
+- **EX111 — Falhas repetidas.** O que as falhas repetidas de patch nas subestações acabaram sendo? *Rubrica:* 3 = um problema de projeto que levou à substituição dos dispositivos;; 2 = projeto;; 1 = responsável;; 0 = nenhuma.
+
+<a id="ch-38"></a>
+
+## Capítulo 38 — Governança, riscos e compliance de segurança: validação
+
+### Objetivos de aprendizagem
+
+Você vai (1) distinguir verificação de validação; (2) usar a amostragem por atributos para validar a operação dos controles; (3) escolher tamanhos de amostra que sustentem as conclusões.
+
+### 38.1 Verificação e validação
+
+A verificação pergunta se um controle foi construído conforme especificado; a validação pergunta se ele atinge seu propósito na operação real ao longo do tempo. Nadia verificou o broker no laboratório. Agora precisa validar que o controle operou com eficácia ao longo de um ano, como auditores internos e auditores de serviços examinam a eficácia operacional. Os trust services criteria da AICPA, usados nos relatórios SOC 2, distinguem a eficácia do desenho da eficácia operacional no mesmo espírito, embora o trabalho dela seja interno e não uma atestação. Os testes de laboratório verificaram o desenho; um ano de operação mostra se a aprovação e a gravação aconteceram na prática.
+
+### 38.2 Tamanhos de amostra
+
+Conferir todas as sessões de fornecedores é inviável, então Nadia amostra os registros de sessão e conta os desvios, como uma sessão sem aprovação. O laboratório calcula limites superiores exatos de noventa e cinco por cento. Vinte e cinco registros limpos dão um limite de cerca de onze por cento. Quarenta registros limpos dão cerca de sete por cento. Quarenta registros com um desvio dão cerca de onze por cento. Cinquenta e nove registros limpos dão exatamente cinco por cento. Se a taxa tolerável de desvio da Ardwell é de cinco por cento, ela precisa de pelo menos cinquenta e nove registros sem desvios. Um único desvio em quarenta muda bruscamente a conclusão.
+
+### Laboratório — Limites superiores exatos para amostras de registros de sessão
+
+```python
+"""Exact upper 95% bound on deviation rate for attribute samples (stdlib)."""
+from math import comb
+def cdf(k, n, p): return sum(comb(n, i)*p**i*(1-p)**(n-i) for i in range(k+1))
+def upper(k, n):
+    lo, hi = 0.0, 1.0
+    for _ in range(60):
+        m = (lo+hi)/2
+        lo, hi = (m, hi) if cdf(k, n, m) > 0.05 else (lo, m)
+    return hi
+for n, k in [(25, 0), (40, 0), (40, 1), (59, 0)]:
+    print(f"n={n} deviations={k}: upper bound {upper(k, n):.3f}")
+```
+
+Execute com `python3 lab_sample.py`. Saída verificada:
+
+```text
+n=25 deviations=0: upper bound 0.113
+n=40 deviations=0: upper bound 0.072
+n=40 deviations=1: upper bound 0.113
+n=59 deviations=0: upper bound 0.050
+```
+
+### 38.3 Conclusões
+
+Nadia sorteia cinquenta e nove sessões ao longo do ano e não encontra desvios, então conclui, com noventa e cinco por cento de confiança, que a taxa de desvio é de no máximo cinco por cento. Ela observa que a conclusão cobre só a aprovação, e não se os fornecedores fizeram o trabalho certo. Também confere as sessões emergenciais separadamente, porque elas seguem outro caminho de aprovação e seus problemas poderiam se diluir numa amostra geral. O Prof. Brenner lembra à turma que a amostragem sustenta afirmações com limites, nunca certezas, e que cada estrato com caminho próprio merece sua própria amostra.
+
+### Exemplo resolvido
+
+Nadia separa verificação de validação, constata que são precisos cinquenta e nove registros limpos para um limite de cinco por cento e valida as aprovações.
+
+> **Caso sintético.** Os dados das sessões são sintéticos; os TSC da AICPA são reais; isto não é uma atestação.
+
+### Erros e limites
+
+Amostras aleatórias deixam escapar padrões raros. A validação cobre só os atributos testados.
+
+### Exercícios
+
+- **EX112 — Sentido da validação.** O que a validação pergunta que a verificação não pergunta? *Rubrica:* 3 = se o controle atinge seu propósito na operação ao longo do tempo;; 2 = operação;; 1 = nada;; 0 = nenhuma.
+- **EX113 — Amostra mínima.** Quantos registros limpos dão um limite superior de 5%? *Rubrica:* 3 = cinquenta e nove;; 2 = 59;; 1 = 25;; 0 = nenhuma.
+- **EX114 — Estrato separado.** Por que conferir separadamente as sessões emergenciais? *Rubrica:* 3 = seguem outro caminho e poderiam esconder problemas;; 2 = estratos;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-39"></a>
+
+## Capítulo 39 — Governança, riscos e compliance de segurança: manutenibilidade
+
+### Objetivos de aprendizagem
+
+Você vai (1) manter atualizados políticas, controles e registros; (2) gerir as mudanças de edição dos frameworks; (3) evitar a perda de conhecimento.
+
+### 39.1 Manter as coisas atuais
+
+Um programa de GRC decai se não for mantido. As políticas citam sistemas desativados, os controles descrevem práticas abandonadas e as entradas do registro descrevem riscos que mudaram. Nadia fixa datas de revisão para cada documento e controle e as liga a gatilhos, como uma grande mudança de sistema ou um incidente, que forçam uma revisão antecipada; um incidente de mau uso, por exemplo, forçaria a revisão da política de acesso de fornecedores antes da data anual. Ela aprende que manutenibilidade significa projetar os artefatos de governança para serem fáceis de atualizar: curtos, com responsável, versionados e ligados às coisas que descrevem.
+
+### 39.2 Mudanças nos frameworks
+
+As normas mudam de edição. A ISO/IEC 27001 foi revisada em 2022, reorganizando seus controles de referência em quatro temas, e o NIST CSF passou à versão 2.0 em 2024, acrescentando a função Govern. Nadia aprende que cada mudança exige um plano de transição: comparar os requisitos antigos e novos, atualizar os mapeamentos, ajustar os controles e treinar a equipe. Manter os mapeamentos em dados estruturados, e não em prosa, facilita muito as transições, porque as mudanças podem ser rastreadas item por item em vez de reescritas do zero. O mapeamento da Ardwell aos temas da ISO/IEC 27001:2022, guardado como dados, pode ser conferido linha a linha.
+
+### 39.3 Perda de conhecimento
+
+Quando a gestora de segurança anuncia a aposentadoria, Nadia percebe que boa parte do programa vive na cabeça dela. Juntas, elas escrevem notas curtas sobre por que as decisões-chave foram tomadas, que responsáveis precisam de apoio e onde ficam as evidências. A gestora trabalha dois meses em dupla com sua sucessora. Nadia aprende que o conhecimento de governança, sobretudo os motivos das decisões, se perde com facilidade, e que registros de decisão, runbooks e passagens de bastão com sobreposição são controles de manutenibilidade por si só. O registro de decisão do broker, por exemplo, explica escolhas que a sucessora poderia, de outro modo, desfazer.
+
+### Exemplo resolvido
+
+Nadia liga as revisões a gatilhos, planeja as transições de edição dos frameworks e registra o conhecimento antes de uma aposentadoria-chave.
+
+> **Caso sintético.** Os documentos da Ardwell são sintéticos; os fatos sobre as edições da ISO/IEC 27001 e do CSF são reais.
+
+### Erros e limites
+
+Os gatilhos são esquecidos. As notas de passagem ficam incompletas.
+
+### Exercícios
+
+- **EX115 — Gatilhos de revisão.** O que dispara a revisão antecipada dos documentos de governança? *Rubrica:* 3 = grandes mudanças de sistema ou incidentes;; 2 = gatilhos;; 1 = nada;; 0 = nenhuma.
+- **EX116 — Mudança do CSF.** O que o NIST CSF 2.0 acrescentou? *Rubrica:* 3 = a função Govern;; 2 = Govern;; 1 = nada;; 0 = nenhuma.
+- **EX117 — Medida de passagem.** Que medida protege contra a perda do conhecimento da gestora que se aposenta? *Rubrica:* 3 = notas sobre as decisões e uma passagem em dupla de dois meses;; 2 = passagem;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-40"></a>
+
+## Capítulo 40 — Laboratório de verificação II
+
+### Objetivos de aprendizagem
+
+Você vai (1) verificar de novo os controles depois de mudanças; (2) testar as próprias ferramentas de GRC; (3) relatar os achados de regressão.
+
+### 40.1 Testes de regressão
+
+Depois que a Ardwell atualiza seu sistema de tickets, Nadia executa de novo os testes de verificação das ferramentas de GRC e do broker. Ela aprende que as mudanças podem quebrar controles de formas inesperadas. A atualização muda o modo como as tarefas recorrentes são agendadas, e várias tarefas de controle trimestrais passam a vencer anualmente, o que também enfraqueceria as evidências da revisão de acessos em que os auditores confiam. Sem testes de regressão, a mudança teria reduzido em silêncio a frequência dos controles por um ano. Ela acrescenta uma verificação que compara as frequências agendadas com o registro de controles depois de cada atualização.
+
+### 40.2 Testar as ferramentas
+
+As próprias ferramentas de GRC precisam ser verificadas. Nadia testa que os anexos de evidência não podem ser alterados depois do encerramento, que só pessoas autorizadas podem encerrar achados e que os relatórios contam as tarefas corretamente. Um relatório conta duas vezes os achados reabertos, inflando o número de achados em aberto que chegaria ao conselho. Ela corrige a consulta e acrescenta um caso de teste. Ela aprende que as ferramentas que produzem evidências de governança merecem o mesmo rigor que os controles que acompanham, porque os erros da ferramenta viram erros na visão que o conselho tem do risco.
+
+### 40.3 Relatar as regressões
+
+Nadia relata as duas regressões com gravidade, causa e correção, e recomenda que as atualizações dos sistemas de GRC sigam a gestão de mudanças, com verificação antes da liberação. Também propõe manter uma pequena biblioteca de casos de teste executados depois de qualquer mudança, o que torna barato repetir a verificação e aumenta a chance de ela de fato acontecer. O Prof. Brenner observa que o trabalho de laboratório mostra um princípio-chave: a verificação não é um evento único, mas precisa ser repetida sempre que o sistema muda, porque as condições que faziam um controle funcionar podem desaparecer em silêncio.
+
+### Exemplo resolvido
+
+Nadia encontra, depois de uma atualização, uma regressão de agendamento e um erro de contagem dupla num relatório, e cria testes de regressão para os dois.
+
+> **Caso sintético.** As ferramentas e os defeitos são sintéticos.
+
+### Erros e limites
+
+As suítes de regressão envelhecem. Nem toda mudança dispara os testes.
+
+### Exercícios
+
+- **EX118 — Regressão de agendamento.** O que a atualização quebrou? *Rubrica:* 3 = tarefas trimestrais viraram anuais;; 2 = frequência;; 1 = nada;; 0 = nenhuma.
+- **EX119 — Defeito do relatório.** Que erro de relatório Nadia encontrou? *Rubrica:* 3 = achados reabertos contados duas vezes;; 2 = contagem dupla;; 1 = nada;; 0 = nenhuma.
+- **EX120 — Princípio da verificação.** Que princípio o laboratório ilustra? *Rubrica:* 3 = a verificação precisa ser repetida sempre que o sistema muda;; 2 = repetir;; 1 = evento único;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX090 (as de EX091–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Nadia Okafor, o Prof. Tomas Brenner, a Kestrel Polytechnic, a Ardwell Power Cooperative e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX120 (as de EX121–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Nadia Okafor, o Prof. Tomas Brenner, a Kestrel Polytechnic, a Ardwell Power Cooperative e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Se o backlog de achados em aberto está diminuindo, estável ou crescendo.
 
@@ -1402,6 +1807,66 @@ Respostas-modelo para EX001–EX090 (as de EX091–EX150 estão na edição em i
 **EX089.** A data, o testador, os passos, o resultado e os artefatos de apoio.
 
 **EX090.** Uma sessão aprovada para um dispositivo conseguia alcançar um segundo dispositivo no mesmo segmento.
+
+**EX091.** Doze controles sem responsável claro e três que descreviam práticas que já não existiam.
+
+**EX092.** Depois de cinco dias de atraso.
+
+**EX093.** Para que sejam renovadas com um novo raciocínio, em vez de virarem lacunas permanentes ocultas.
+
+**EX094.** 0,50%.
+
+**EX095.** 2,49%, cerca de cinco vezes mais.
+
+**EX096.** Remover a dependência compartilhada, como um único administrador que controla as duas camadas.
+
+**EX097.** Manter a energia fluindo e restabelecer os serviços depressa depois de incidentes.
+
+**EX098.** Nove horas contra uma meta de oito.
+
+**EX099.** Porque revelam lacunas que podem ser registradas e fechadas.
+
+**EX100.** Comparar o risco cibernético com os demais riscos corporativos em pé de igualdade.
+
+**EX101.** Como um risco de disrupção operacional, com uma faixa de impacto financeiro e uma obrigação de comunicação regulatória.
+
+**EX102.** Quando significa uma equipe tomar o trabalho de outra, em vez de definir interfaces.
+
+**EX103.** Se o risco está subindo ou caindo, e o que o conselho precisa decidir.
+
+**EX104.** Porque Cox (2008) mostra que as matrizes de risco podem enganar.
+
+**EX105.** Acrescentando setas com rótulos escritos.
+
+**EX106.** Perto de dois funcionários em tempo integral, espalhados entre muitas pessoas.
+
+**EX107.** A única analista de segurança que confere as evidências.
+
+**EX108.** Para decisões, exceções e tarefas que exigem julgamento.
+
+**EX109.** Porque, quando as revisões semanais deixam de acontecer, os problemas se acumulam sem ninguém ver.
+
+**EX110.** Só a analista de segurança, depois de conferir a evidência.
+
+**EX111.** Um problema de projeto, que levou a um projeto de substituição dos dispositivos.
+
+**EX112.** Se o controle atinge seu propósito na operação real ao longo do tempo.
+
+**EX113.** Cinquenta e nove.
+
+**EX114.** Porque seguem outro caminho, e seus problemas poderiam ficar ocultos numa amostra geral.
+
+**EX115.** Grandes mudanças de sistema ou incidentes.
+
+**EX116.** A função Govern.
+
+**EX117.** Notas escritas sobre as decisões e uma passagem de dois meses em dupla com a sucessora.
+
+**EX118.** Várias tarefas de controle trimestrais foram reagendadas como anuais.
+
+**EX119.** Um relatório contava duas vezes os achados reabertos, inflando o número em aberto.
+
+**EX120.** Que a verificação precisa ser repetida sempre que o sistema muda.
 
 <a id="references"></a>
 ## Referências
