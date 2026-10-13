@@ -143,7 +143,6 @@ Read the output as a statement about the *model*, not about the world. The genom
 - Silent denominators. Assets the scanner cannot see must appear as "unknown", not disappear.
 - Harmful observation. Active scans and downgrade tests on production can cause outages and weaken protection.
 - Lab 1's distribution is arbitrary. Its value is the method of sensitivity analysis, not the probabilities.
-
 - Turning a sensitivity table into a single headline probability.
 
 ### Exercises — chapter 1
@@ -297,7 +296,7 @@ Define what each instrument can and cannot observe, as an attacker model would d
 |---|---|---|
 | **S — static** | Algorithm identifiers and API calls in code; library versions; configuration files; certificate stores reachable on disk | Inside closed appliances; runtime negotiation choices; data encrypted by third parties |
 | **P — passive** | Offered and selected TLS 1.3 groups and signature algorithms; certificate chains in clear (TLS 1.2) or as revealed by endpoint logs; SSH and IKE proposals | Data at rest; traffic on unmonitored segments; encrypted TLS 1.3 certificates without endpoint cooperation |
-| **G — ground truth** | Blind adjudication by engineers E01–E10 with owner documentation | Uses no document records (reported as unknown) |
+| **G — ground truth** | Blind adjudication by engineers E01–E10 with owner documentation | Uses that no document records (reported as unknown) |
 
 Note the TLS 1.3 subtlety: certificates travel encrypted in TLS 1.3, so a purely passive sensor sees the selected key-exchange group but not the server's signature algorithm unless endpoint logging is added. A proposal that ignored this would overclaim passive coverage of signatures.
 
@@ -470,7 +469,7 @@ Each error has a guard in this study: canonical identifiers for uses, adjudicati
 
 - **EX021 — Vocabulary.** Classify three scenarios as repeatability, reproducibility or replicability. Rubric: 3 = all correct with a one-line justification each.
 - **EX022 — Reproduction log.** Write the log entry for InvBench-22 cause 2, separating observation from inference. Rubric: 3 = effect quantified, inference labelled.
-- **EX023 — Extend the classifier.** Add SecP384r1MLKEM1024 and a test for an unknown codepoint 0x0200 to Lab 4. Rubric: 3 = tests pass and unknown stays unknown.
+- **EX023 — Extend the classifier.** Add unit tests to Lab 4 for SecP384r1MLKEM1024 (0x11ED, already in the table) and for an unknown codepoint 0x0200. Rubric: 3 = tests pass and unknown stays unknown.
 - **EX024 — Canonical identity.** Propose a canonicalization rule for a use that handles IP addresses, aliases and load balancers. Rubric: 3 = addresses at least one failure mode of the rule.
 - **EX025 — Split design.** Design development/test splits for HRHN that prevent leakage when two hospitals share a PKI. Rubric: 3 = identifies shared-PKI leakage and mitigates it.
 - **EX026 — Go/no-go.** Given κ = 0.62 and all other criteria met, write the decision memo. Rubric: 3 = decision justified, amendment specific, re-test criterion stated.
@@ -816,7 +815,7 @@ Answers are model responses for self-assessment; a different answer that meets t
 
 **EX002.** Primitive (are the deployed algorithms standardized PQC? metric: algorithm list against FIPS 203/204/205), protocol (do TLS/IKE configurations offer hybrid groups? metric: configuration share), deployment (are they negotiated? metric: negotiated share by sensitivity), organization (are vulnerable uses found and replaced? metric: recall, unknown share, time-to-replace). "80% ready" is meaningless until one object and its denominator are named.
 
-**EX003.** With mode 10: lab results 0.415, slow migration 0.723; with mode 25: 0.097 and 0.325; appointment logs stay 0, genomic archive stays 1. The final "[15,40]" line is invalid in both runs because a mode outside the range violates the triangular distribution's definition — a reminder to validate model inputs. Interpretation: the ranking of record classes is stable even though probabilities move by a factor of four, so prioritization (genomics first, then lab results) is more robust than any single probability.
+**EX003.** With mode 10: lab results 0.415, slow migration 0.723; with mode 25: 0.097 and 0.325; appointment logs stay 0, genomic archive stays 1. With mode 10 the final "[15,40]" line (0.101) is invalid, because a mode outside the range violates the triangular distribution's definition — a reminder to validate model inputs; with mode 25 it is valid and still prints 0.000. Interpretation: the ranking of record classes is stable even though probabilities move by a factor of four, so prioritization (genomics first, then lab results) is more robust than any single probability.
 
 **EX004.** Harms: device instability or reboot during care; alarm floods that desensitize the security team; weakening protection if probes trigger fallback modes. Alternatives: passive capture at the medical-network boundary; vendor documentation and procurement declarations; a testbed unit of each device model for active tests.
 
@@ -856,7 +855,7 @@ Answers are model responses for self-assessment; a different answer that meets t
 
 **EX022.** "Observation: 214 of 1,000 ground-truth items in the released corpus carry the scanner's internal finding ID. Inference (unconfirmed by authors): ground truth was seeded from scanner output, excluding items the scanner could not see; recall is therefore overestimated. Effect: recomputing against owner-documented items alone lowers recall from 0.97 to 0.71."
 
-**EX023.** Add `0x11ED: "hybrid"` (already present) and a test `(0x0200, "unknown")`; all tests pass and unknown values are never mapped to safe.
+**EX023.** Add the tests `(0x11ED, "hybrid")` and `(0x0200, "unknown")`; the table already maps 0x11ED, all six tests pass and unknown values are never mapped to safe.
 
 **EX024.** Canonical use = (service owner record, logical service name, protocol, port). Map IPs through the asset register, aliases through DNS CNAME resolution recorded at snapshot time, and treat a load balancer VIP as one use per backend pool only if backends differ in cryptography. Failure mode: shared VIPs with heterogeneous backends need endpoint data.
 
