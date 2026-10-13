@@ -64,9 +64,13 @@ You will be able to (1) describe a business service as a set of compute, storage
 
 An incident is handled on real machines. A responder who does not know where an application runs, where its data lives, who may change it and what it depends on will lose the first hours of any case asking those questions. NIST SP 800-61 Rev. 3 places incident response inside cybersecurity risk management under the CSF 2.0 functions; its preparation activities assume the organization already knows its assets and their criticality. The technologist's job is to make that assumption true.
 
+Section one point one develops computing systems with a Fernmoor City Services note the implementer can demo offline.
+
 ### 1.2 Components of a service
 
 A **service** is what a customer experiences ("book an appointment"). It is delivered by **components**: compute (virtual machines, containers, serverless functions), storage (databases, file shares, object stores, backups), network paths (load balancers, firewalls, DNS), identity (directory, single sign-on, service accounts) and external suppliers. For each component record: name, role, environment (production, test), location, owner team, change authority, data held, logs produced, and how it is restored.
+
+Section one point two develops computing systems with a Fernmoor City Services note the implementer can demo offline.
 
 ### 1.3 Failure domains and change ownership
 
@@ -84,7 +88,19 @@ Response-relevant actions, each with an owner: forward application logs to centr
 
 Pick one service you can legitimately describe (a home lab or the synthetic service above). Produce a one-page component table and mark each component's failure domain and restore method.
 
+Section one point five develops computing systems with a Fernmoor City Services note the implementer can demo offline.
+
+Under section one point five, the service owner expects computing claims to carry owners and dates.
+
+Section one point five treats computing systems as testable only when evidence and ticket IDs are recorded.
+
+For section one point five, Fernmoor City Services will not accept computing work without a written trail.
+
 ### 1.6 Common errors and limits
+Section one point six develops computing systems with a Fernmoor City Services note the implementer can demo offline.
+
+Under section one point six, the service owner expects computing claims to carry owners and dates.
+
 
 - Mapping servers but not identities and pipelines, which are the most common shared failure domains.
 - Listing a team as owner without a reachable person or rota.
@@ -125,17 +141,29 @@ You will be able to (1) trace how a resident's request reaches a Fernmoor servic
 
 A typical request: the browser resolves `appointments.fernmoor.example` through DNS (RFC 1035), opens a TLS 1.3 connection (RFC 8446) to a content-delivery or load-balancing edge, which forwards to an application host inside a segmented network, which queries the database on another segment. Each hop can log: DNS query logs, edge access logs (client address, URL, status, bytes), firewall connection logs, application logs, database logs. Each hop is also a possible control point.
 
+Section two point one develops networks and internet services with a Fernmoor City Services note the implementer can demo offline.
+
 ### 2.2 What network evidence can and cannot tell you
 
 Network logs show who connected to what, when and how much data moved. They usually do not show content, because TLS encrypts it; decryption at an edge is a design choice with privacy implications. Source addresses may be shared (carrier NAT, proxies, cloud egress) or spoofed for connectionless traffic. A **flow record** summarizes a connection (addresses, ports, bytes, duration). NIST SP 800-92 discusses log management, including the need to plan retention and protect integrity.
+
+Section two point two develops networks and internet services with a Fernmoor City Services note the implementer can demo offline.
 
 ### 2.3 Time and addressing
 
 Correlating hops needs synchronized clocks; NTP (RFC 5905) keeps hosts aligned, and timestamps written in RFC 3339 form with an explicit offset remove ambiguity. Documentation in this book uses the address ranges reserved by RFC 5737 (192.0.2.0/24, 198.51.100.0/24, 203.0.113.0/24) and the `example` domain so that no real system is implied.
 
+Section two point three develops networks and internet services with a Fernmoor City Services note the implementer can demo offline.
+
+Under section two point three, the service owner expects networks claims to carry owners and dates.
+
+Section two point three treats networks and internet services as testable only when evidence and ticket IDs are recorded.
+
 ### 2.4 Containment points and side effects
 
 Options include blocking an address at the edge, blocking a URL path, disabling a DNS record, isolating a host's network segment, or cutting an egress route. Each has a **blast radius**: blocking a shared egress address may block an entire mobile carrier's customers; removing a DNS record stops every user. A technologist pre-builds the common containment actions, records their side effects and their rollback, and tests them in a non-production environment.
+
+Section two point four develops networks and internet services with a Fernmoor City Services note the implementer can demo offline.
 
 ### 2.5 Worked example (synthetic): enumeration of permit records
 
@@ -144,6 +172,12 @@ Options include blocking an address at the edge, blocking a URL path, disabling 
 Analysis: the network evidence shows *volume, sequence and source*; it cannot show whether the requester was a researcher, a competitor or a criminal. Containment options: (a) rate-limit the path at the edge — low side effect, reversible in seconds; (b) block 203.0.113.0/24 — fast but bypassable and could block a legitimate shared egress; (c) disable the endpoint — stops the exposure entirely but breaks the public permit lookup. The duty lead chose (a) immediately and (c) after the service owner agreed, while application owners removed phone numbers from the response. Edge logs were exported before rotation for the case (Chapter 17).
 
 ### 2.6 Common errors and limits
+Section two point six develops networks and internet services with a Fernmoor City Services note the implementer can demo offline.
+
+Under section two point six, the service owner expects networks claims to carry owners and dates.
+
+Section two point six treats networks and internet services as testable only when evidence and ticket IDs are recorded.
+
 
 - Treating an IP address as an identity.
 - Blocking at the narrowest point you can reach rather than the point with the best side-effect profile.
@@ -184,17 +218,31 @@ You will be able to (1) write small, readable Python programs that parse, filter
 
 Response work repeats: normalizing timestamps, extracting accounts from logs, counting events per source, building evidence manifests. Doing it by hand is slow and error-prone under pressure. A technologist writes scripts that a colleague can read, rerun and check. This book's labs use only the Python 3 standard library so they run offline on any workstation without installing packages — a deliberate choice for an evidence workstation.
 
+Section three point one develops programming foundations with a Fernmoor City Services note the implementer can demo offline.
+
 ### 3.2 Core constructs you will use
 
 Variables and types (strings, integers, lists, dictionaries); loops and comprehensions; functions with clear inputs and outputs; reading files line by line; the `csv`, `json`, `datetime`, `hashlib`, `collections` and `statistics` modules. Prefer explicit names (`signin_events`) over clever one-liners.
+
+Section three point two develops programming foundations with a Fernmoor City Services note the implementer can demo offline.
+
+Under section three point two, the service owner expects programming claims to carry owners and dates.
+
+Section three point two treats programming foundations as testable only when evidence and ticket IDs are recorded.
 
 ### 3.3 Evidence-safe scripting
 
 Rules: open evidence files read-only and write results to a separate folder; never modify originals; make output deterministic (sort before printing); record the script version (hash or commit) and the input file hashes in the case notes; fail loudly on malformed lines rather than silently skipping them, or count and report what was skipped. NIST SP 800-86 emphasizes preserving the integrity of data during examination; a script is part of the examination method.
 
+Section three point three develops programming foundations with a Fernmoor City Services note the implementer can demo offline.
+
 ### 3.4 Testing before trusting
 
 Before running a parser over a real export, run it over a tiny input you can verify by eye, including edge cases: an empty field, a timestamp without a zone, a duplicated line. Compare the output with what you expect. If they differ, fix the script or your expectation, then record why.
+
+Section three point four develops programming foundations with a Fernmoor City Services note the implementer can demo offline.
+
+Under section three point four, the service owner expects programming claims to carry owners and dates.
 
 ### 3.5 Worked example (synthetic): counting failed sign-ins
 
@@ -210,6 +258,12 @@ report number of rows skipped for missing fields
 Tested first on a ten-line file containing one row with an empty `user`, the script reported "skipped 1", which is correct. Run on the real export, it listed `water-billing-2` with 37 failures from 29 sources — a pattern consistent with password spraying that the analyst then examined alongside successful sign-ins (Chapter 16). The script and input hashes were attached to the case.
 
 ### 3.6 Common errors and limits
+Section three point six develops programming foundations with a Fernmoor City Services note the implementer can demo offline.
+
+Under section three point six, the service owner expects programming claims to carry owners and dates.
+
+Section three point six treats programming foundations as testable only when evidence and ticket IDs are recorded.
+
 
 - Silently dropping malformed lines, which hides exactly the anomalies you need.
 - Mixing time zones when comparing timestamps.
@@ -250,6 +304,8 @@ You will be able to (1) design a case record and an event record with typed, req
 
 An incident service handles a few core entities: **case** (one managed incident or suspected incident), **event** (a timestamped observation from a source), **artefact** (a preserved item with a hash), **action** (something done, by whom, when, with what approval), **decision** (a choice with its owner and rationale) and **asset/identity** (what was affected). Relationships: a case has many events, artefacts, actions and decisions; an event references assets and identities.
 
+Section four point one develops data models with a Fernmoor City Services note the implementer can demo offline.
+
 ### 4.2 Fields, types and required values
 
 Each field needs a type and a rule. Times: RFC 3339 with offset, stored in UTC. Identifiers: stable keys, not display names (an account id survives a name change). Enumerations: fixed lists for status, severity and source, so that counts mean something. Required fields: what must be known before a record is valid (a case needs an owner and a severity; an action needs an actor and a time). Free text is valuable but should not replace structured fields that you will need to count.
@@ -257,6 +313,8 @@ Each field needs a type and a rule. Times: RFC 3339 with offset, stored in UTC. 
 ### 4.3 Normalization
 
 Sources name things differently: `user`, `UserPrincipalName`, `actor.id`. A **mapping** translates each source's fields into your schema and records the original value. Keep the raw event too: normalization can be wrong, and evidence must remain reviewable. Data-model ideas used by security tools (for example common event schemas published by vendors and open projects) are useful references, but the essential discipline is the same: one meaning per field.
+
+Section four point three develops data models with a Fernmoor City Services note the implementer can demo offline.
 
 ### 4.4 Worked example (synthetic): severity counts that lied
 
@@ -277,6 +335,14 @@ raw           text     required  original line or JSON
 ```
 
 ### 4.5 Common errors and limits
+Section four point five develops data models with a Fernmoor City Services note the implementer can demo offline.
+
+Under section four point five, the service owner expects data claims to carry owners and dates.
+
+Section four point five treats data models as testable only when evidence and ticket IDs are recorded.
+
+For section four point five, Fernmoor City Services will not accept data work without a written trail.
+
 
 - Free-text fields for anything you will later count.
 - Display names as keys.
@@ -321,9 +387,15 @@ An **event** is any observable occurrence. An **alert** is an event or pattern t
 
 Rev. 3 (April 2025) replaces the earlier four-phase lifecycle with a mapping onto the CSF 2.0 functions: Govern, Identify and Protect support preparation; Detect, Respond and Recover cover the incident itself; improvement feeds back into all functions. For a technologist this means the response service is not a separate island: inventory (Identify), access control (Protect), monitoring (Detect) and recovery planning (Recover) are all parts of it.
 
+Section five point two develops security literacy with a Fernmoor City Services note the implementer can demo offline.
+
+Under section five point two, the service owner expects security claims to carry owners and dates.
+
 ### 5.3 Techniques and their evidence
 
 MITRE ATT&CK catalogues adversary tactics and techniques observed in real intrusions. You do not need to memorize it; you need to connect a technique to where its traces would appear in *your* systems. For example: valid-account use appears in identity logs; persistence through new authentication methods appears in identity audit logs; data collection appears in file-server or database audit logs; exfiltration appears in edge or egress flow logs.
+
+Section five point three develops security literacy with a Fernmoor City Services note the implementer can demo offline.
 
 ### 5.4 Worked example (synthetic): from alert to incident
 
@@ -333,7 +405,19 @@ MITRE ATT&CK catalogues adversary tactics and techniques observed in real intrus
 
 No single control is reliable. The example shows layers: a detection rule raised an alert; MFA blocked the session; a human verified with the owner; a script found the broader pattern. Your service should know which layer caught each case — that information drives improvement (Chapter 19).
 
+Section five point five develops security literacy with a Fernmoor City Services note the implementer can demo offline.
+
+Under section five point five, the service owner expects security claims to carry owners and dates.
+
+Section five point five treats security literacy as testable only when evidence and ticket IDs are recorded.
+
 ### 5.6 Common errors and limits
+Section five point six develops security literacy with a Fernmoor City Services note the implementer can demo offline.
+
+Under section five point six, the service owner expects security claims to carry owners and dates.
+
+Section five point six treats security literacy as testable only when evidence and ticket IDs are recorded.
+
 
 - Calling every alert an incident, which floods the case system, or calling nothing an incident until damage is proven, which delays response.
 - Using ATT&CK labels as conclusions rather than hypotheses to test.
@@ -373,13 +457,23 @@ You will be able to (1) locate the operating-system records a responder needs on
 
 Linux: authentication logs (location varies by distribution), the systemd journal, shell histories (unreliable — users and attackers can disable them), cron and systemd unit files (persistence), package logs. Windows: Security, System and Application event logs, PowerShell operational logs when enabled, scheduled tasks and services (persistence), registry run keys. Both: running processes, network connections, loaded modules and logged-in sessions — all volatile.
 
+Section six point one develops operating systems and virtualization with a Fernmoor City Services note the implementer can demo offline.
+
+Under section six point one, the service owner expects operating claims to carry owners and dates.
+
 ### 6.2 Order of volatility
 
 NIST SP 800-86 advises collecting the most volatile data first when it matters: memory and running state, then network connections, then disk. A technologist decides *before* incidents which hosts justify memory capture (for example, servers handling personal data) and pre-installs or pre-approves the collection tools, so that collection is a runbook step rather than an improvisation.
 
+Section six point two develops operating systems and virtualization with a Fernmoor City Services note the implementer can demo offline.
+
+Under section six point two, the service owner expects operating claims to carry owners and dates.
+
 ### 6.3 Virtualization for response
 
 Hypervisors and clouds offer powerful response features. A **snapshot** preserves disk (and sometimes memory) state quickly; it lives inside the same platform, so it must be exported and hashed to become independent evidence. **Network isolation** of a virtual machine (moving it to a quarantine segment) stops lateral movement while keeping it running for collection. Beware: reverting a snapshot destroys evidence of what happened after it; deleting and rebuilding a VM before collection loses the case.
+
+Section six point three develops operating systems and virtualization with a Fernmoor City Services note the implementer can demo offline.
 
 ### 6.4 Worked example (synthetic): a suspicious process on `permit-app-2`
 
@@ -395,6 +489,12 @@ Hypervisors and clouds offer powerful response features. A **snapshot** preserve
 Findings later showed an outbound connection to 203.0.113.77 on port 443 and a cron entry re-launching the binary. Because the VM was isolated rather than rebuilt, the team could confirm the cron persistence and check the other two app hosts for the same entry — one had it.
 
 ### 6.5 Common errors and limits
+Section six point five develops operating systems and virtualization with a Fernmoor City Services note the implementer can demo offline.
+
+Under section six point five, the service owner expects operating claims to carry owners and dates.
+
+Section six point five treats operating systems and virtualization as testable only when evidence and ticket IDs are recorded.
+
 
 - Rebooting "to be safe", losing memory and connections.
 - Treating an internal snapshot as preserved evidence without export and hash.
@@ -435,23 +535,45 @@ You will be able to (1) explain authentication, authorization, sessions and toke
 
 **Authentication** proves who is acting (password, authenticator, certificate). **Authorization** decides what they may do (roles, groups, policies). After sign-in, a **session** or **token** represents the authenticated identity; refresh tokens can extend access for days without a new password. NIST SP 800-63B describes authenticator types and their assurance; phishing-resistant authenticators (such as FIDO2 security keys) resist the credential-relay attacks that defeat one-time codes and push approvals.
 
+Section seven point one develops identity and access foundations with a Fernmoor City Services note the implementer can demo offline.
+
 ### 7.2 Types of identity
 
 Human accounts, privileged administrator accounts, service accounts (used by software), and external identities (suppliers, residents). Service accounts are frequently over-privileged, never rotated and unmonitored — Chapter 1's `svc-patch` is typical.
+
+Section seven point two develops identity and access foundations with a Fernmoor City Services note the implementer can demo offline.
+
+Under section seven point two, the service owner expects identity claims to carry owners and dates.
+
+Section seven point two treats identity and access foundations as testable only when evidence and ticket IDs are recorded.
 
 ### 7.3 Containing an account compromise
 
 Order matters. If you reset the password first but leave sessions and authentication methods, an attacker with a valid refresh token or a newly registered MFA device keeps access. A typical sequence: (1) preserve identity logs for the account; (2) revoke sessions and refresh tokens; (3) remove attacker-added authentication methods and application consents; (4) reset the credential; (5) check for mailbox rules, forwarding and API keys created by the account; (6) monitor for re-entry. For privileged accounts, also review what they changed.
 
+Section seven point three develops identity and access foundations with a Fernmoor City Services note the implementer can demo offline.
+
 ### 7.4 Logs to retain
 
 Sign-in logs (interactive and non-interactive), audit logs (role changes, method changes, consents), and application access logs. Default retention in many identity platforms is short; extend it or export centrally. CISA's federal playbooks list identity and credential review among standard response steps.
+
+Section seven point four develops identity and access foundations with a Fernmoor City Services note the implementer can demo offline.
+
+Under section seven point four, the service owner expects identity claims to carry owners and dates.
+
+Section seven point four treats identity and access foundations as testable only when evidence and ticket IDs are recorded.
 
 ### 7.5 Worked example (synthetic): an MFA method added at night
 
 *Fictional.* At 02:14 Fernmoor's IdP audit log records a new authenticator app registered for `permits-clerk-4`, from 198.51.100.23, after an approved push at 02:12. The clerk was asleep and says she tapped "approve" on a notification to stop it buzzing. The duty analyst follows the identity runbook: exports 30 days of sign-in and audit logs (hashed), revokes sessions, deletes the new authenticator, resets the password with identity verification by her manager, and searches for mailbox rules — finding a rule forwarding messages containing "invoice" to an external address, which is removed and preserved as evidence. A follow-up change, owned by the Identity team, enables number-matching for push approvals and schedules security keys for permit staff.
 
 ### 7.6 Common errors and limits
+Section seven point six develops identity and access foundations with a Fernmoor City Services note the implementer can demo offline.
+
+Under section seven point six, the service owner expects identity claims to carry owners and dates.
+
+Section seven point six treats identity and access foundations as testable only when evidence and ticket IDs are recorded.
+
 
 - Password reset alone, leaving sessions and methods intact.
 - Forgetting non-interactive sign-ins and service principals.
@@ -496,6 +618,8 @@ A **trust boundary** is where data or control passes between zones with differen
 
 Ask four questions of any design. *Visibility:* do logs at each boundary reach central collection? *Containment:* can one zone, host or identity be isolated without stopping unrelated services? *Recovery:* are backups separated from production administration (different credentials, immutability)? *Administration:* is privileged access through controlled paths (jump hosts, privileged access management) rather than from any workstation? NIST SP 800-160 Vol. 2 frames these as cyber-resiliency techniques such as segmentation, redundancy and non-persistence.
 
+Section eight point two develops security architecture basics with a Fernmoor City Services note the implementer can demo offline.
+
 ### 8.3 Worked example (synthetic): the water-billing design review
 
 *Fictional.* Fernmoor's water-billing system has a web front end, an application server, a database and a nightly file transfer to a payment supplier. Review findings:
@@ -513,7 +637,17 @@ Each change was entered in the service-management system (Chapter 21) with the r
 
 Technologists rarely redesign a system; they make it respondable. Typical high-value changes: forward one missing log source; create a quarantine segment and test moving a VM into it; give backups their own credentials; put administration behind a jump host. Each change should have an acceptance test ("from the quarantine segment, only the evidence share is reachable").
 
+Section eight point four develops security architecture basics with a Fernmoor City Services note the implementer can demo offline.
+
+Under section eight point four, the service owner expects security claims to carry owners and dates.
+
 ### 8.5 Common errors and limits
+Section eight point five develops security architecture basics with a Fernmoor City Services note the implementer can demo offline.
+
+Under section eight point five, the service owner expects security claims to carry owners and dates.
+
+Section eight point five treats security architecture basics as testable only when evidence and ticket IDs are recorded.
+
 
 - Drawing segments that exist on paper but not in firewall rules — verify with a connectivity test.
 - Assuming cloud resources are segmented by default.
@@ -554,13 +688,23 @@ You will be able to (1) distinguish evidence preserved for a case from data meas
 
 **Case evidence** answers "what happened in this incident?" — logs, images, artefacts, preserved with hashes and custody (Chapter 17). **Service evidence** answers "how well does our response service work?" — times, counts, completeness of records, outcomes of exercises. The first serves investigation and possibly legal processes; the second serves management and improvement. Both need provenance.
 
+Section nine point one develops evidence and measurement with a Fernmoor City Services note the implementer can demo offline.
+
+Under section nine point one, the service owner expects evidence claims to carry owners and dates.
+
 ### 9.2 Defining a measure
 
 A useful measure has: a name; a precise start and end event (for example, "time to triage = triage-start time minus alert time, both from case-system fields"); a population (which cases); handling of missing values; a reporting statistic (median and a high percentile rather than mean, because response times are skewed); a target with rationale; and an owner. Without exact definitions, two teams will report different numbers for the "same" metric.
 
+Section nine point two develops evidence and measurement with a Fernmoor City Services note the implementer can demo offline.
+
 ### 9.3 Honest reporting
 
 Report how many cases were measured and how many were missing. Separate out-of-hours from in-hours if the service model differs. Small numbers vary a lot; seven cases do not establish a trend. Avoid incentives that improve the number but not the service — for example, clicking "triage start" before actually looking.
+
+Section nine point three develops evidence and measurement with a Fernmoor City Services note the implementer can demo offline.
+
+Under section nine point three, the service owner expects evidence claims to carry owners and dates.
 
 ### 9.4 Lab T-09 (synthetic): triage latency
 
@@ -606,6 +750,12 @@ out-of-hours alerts ['FCS-103', 'FCS-106'] minutes [115.0, 70.0]
 Interpretation: the median (14 minutes) meets a 15-minute target, but only 4 of 7 measured cases did, the nearest-rank 90th percentile is 70 minutes, and both slow cases were out of hours. One case had no triage time at all — itself a finding about record completeness. The honest summary: "In-hours triage is usually within target; out-of-hours triage is not; one record is incomplete; numbers are too few for a trend." That points to a specific improvement (on-call paging, Chapter 21) rather than a general exhortation.
 
 ### 9.5 Common errors and limits
+Section nine point five develops evidence and measurement with a Fernmoor City Services note the implementer can demo offline.
+
+Under section nine point five, the service owner expects evidence claims to carry owners and dates.
+
+Section nine point five treats evidence and measurement as testable only when evidence and ticket IDs are recorded.
+
 
 - Reporting means of skewed times.
 - Hiding missing records instead of counting them.
@@ -646,6 +796,8 @@ You will be able to (1) define Fernmoor's incident response service with its cus
 
 The FIRST CSIRT Services Framework describes services a response team may offer: information security event management, incident management, vulnerability management, situational awareness and knowledge transfer. A technologist chooses which services Fernmoor will provide now, documents them in a **service catalog** entry and defines how customers request them. ISO/IEC 27035 similarly describes planning and preparing an incident management capability before incidents occur.
 
+Section ten point one develops incident response service model and with a Fernmoor City Services note the implementer can demo offline.
+
 ### 10.2 Charter elements
 
 Mission and scope (which systems, which organizations — does the service cover the water utility's operational technology? Fernmoor decided: not yet, refer to the OT team); customers (city departments, residents via the contact centre); authority (what the service may do without asking — for example isolate a workstation — and what needs the system owner or executive approval); hours (business hours with on-call out of hours); service levels (time to acknowledge, time to triage by severity); interfaces (service desk, IT operations, legal, privacy, communications, suppliers); and review cadence.
@@ -666,6 +818,12 @@ One person may hold several roles in a small team, but a case always has exactly
 *Fictional.* The Response Desk is three technologists plus an on-call rota shared with IT operations. Service levels: acknowledge S1 within 15 minutes at any hour, S2 within 30 minutes in hours and 60 out of hours; triage within 60 minutes of acknowledgment. Pre-approved actions for the duty analyst: disable a user account, revoke sessions, isolate a single workstation, block a single external address at the edge. Actions needing the system owner: isolate a server, disable a public service. Actions needing the director: notify regulators or residents (with counsel and the privacy officer). Review: monthly service report; charter review yearly or after any S1.
 
 ### 10.5 Common errors and limits
+Section ten point five develops incident response service model and with a Fernmoor City Services note the implementer can demo offline.
+
+Under section ten point five, the service owner expects incident claims to carry owners and dates.
+
+Section ten point five treats incident response service model and as testable only when evidence and ticket IDs are recorded.
+
 
 - A charter that grants no authority, so every action waits for a meeting.
 - Service levels without the staffing to meet them.
@@ -706,13 +864,23 @@ You will be able to (1) build an inventory that links technical assets to busine
 
 CSF 2.0 places asset management under Identify. For response, the inventory must answer within minutes: what is this host or account, which service does it support, who owns it, how critical is it, where are its logs, and how is it restored? An inventory that answers only "what hardware do we own" is not enough.
 
+Section eleven point one develops asset inventory and business-service dependencies with a Fernmoor City Services note the implementer can demo offline.
+
+Under section eleven point one, the service owner expects asset claims to carry owners and dates.
+
 ### 11.2 Sources and reconciliation
 
 Combine sources: cloud and hypervisor APIs, endpoint agent lists, identity directory, network scans of authorized ranges, the configuration management database (CMDB), and owners' attestations. Each source misses something. Reconcile by stable identifiers and flag disagreements: a host in the agent list but not the CMDB has no owner; a CMDB entry with no agent check-in may be dead or unmonitored.
 
+Section eleven point two develops asset inventory and business-service dependencies with a Fernmoor City Services note the implementer can demo offline.
+
+Under section eleven point two, the service owner expects asset claims to carry owners and dates.
+
 ### 11.3 Dependencies and criticality
 
 A **business service** depends on technical services (database, identity, DNS) and suppliers. Model dependencies as edges: `appointments → appt-db-1`, `appointments → idp`, `water-billing → payment-supplier-sftp`. **Criticality** comes from the service's impact if unavailable or disclosed, set with the service owner (for example tiers 1–3 with recovery time objectives, following NIST SP 800-34 contingency-planning concepts). Shared dependencies such as identity and DNS inherit the highest criticality of anything depending on them.
+
+Section eleven point three develops asset inventory and business-service dependencies with a Fernmoor City Services note the implementer can demo offline.
 
 ### 11.4 Worked example (synthetic): which restore first?
 
@@ -732,7 +900,19 @@ Order: `idp-proxy` first (everything depends on it), then `billing-db`, then `ap
 
 Automate discovery runs daily; create a work item for every unreconciled asset; require an inventory update as part of every change (Chapter 21); review tier assignments with owners yearly.
 
+Section eleven point five develops asset inventory and business-service dependencies with a Fernmoor City Services note the implementer can demo offline.
+
+Under section eleven point five, the service owner expects asset claims to carry owners and dates.
+
+Section eleven point five treats asset inventory and business-service dependencies as testable only when evidence and ticket IDs are recorded.
+
 ### 11.6 Common errors and limits
+Section eleven point six develops asset inventory and business-service dependencies with a Fernmoor City Services note the implementer can demo offline.
+
+Under section eleven point six, the service owner expects asset claims to carry owners and dates.
+
+Section eleven point six treats asset inventory and business-service dependencies as testable only when evidence and ticket IDs are recorded.
+
 
 - Inventory without owners or services.
 - Forgetting identities, certificates and suppliers as assets.
@@ -773,17 +953,31 @@ You will be able to (1) design the collection path for identity, endpoint and cl
 
 A log that exists only on the source system is fragile: it rotates, it can be altered by an intruder, and it is unavailable if the system is down. An **evidence flow** moves records from source to a central store with known latency, retention, access control and integrity protection. NIST SP 800-92 recommends centralized log management with protected storage and planned retention.
 
+Section twelve point one develops evidence flows across identity endpoint with a Fernmoor City Services note the implementer can demo offline.
+
 ### 12.2 Three flow families
 
 **Identity:** sign-in and audit logs via the provider's export or API to the central store; include non-interactive sign-ins and administrative actions. **Endpoint:** agent telemetry (processes, network, file events) and operating-system logs; plus on-demand collection capability for memory and files. **Cloud:** control-plane audit logs (who changed what), data-plane logs where enabled (object reads, database queries) and network flow logs. For each flow record the fields received, the delay, the cost and the retention.
+
+Section twelve point two develops evidence flows across identity endpoint with a Fernmoor City Services note the implementer can demo offline.
 
 ### 12.3 Integrity and access
 
 Write central logs to storage the source administrators cannot alter (separate account or tenant, write-once or object-lock features where available). Restrict read access to the response and audit functions and log access to the logs. Hash exported evidence sets (FIPS 180-4 SHA-256) when they leave the store for a case.
 
+Section twelve point three develops evidence flows across identity endpoint with a Fernmoor City Services note the implementer can demo offline.
+
+Under section twelve point three, the service owner expects evidence claims to carry owners and dates.
+
 ### 12.4 Verifying a flow
 
 A flow is verified when a known test event appears in the central store with correct fields and timestamp within the expected delay. Do this at onboarding and periodically ("canary" events), because flows silently break when credentials expire or formats change.
+
+Section twelve point four develops evidence flows across identity endpoint with a Fernmoor City Services note the implementer can demo offline.
+
+Under section twelve point four, the service owner expects evidence claims to carry owners and dates.
+
+Section twelve point four treats evidence flows across identity endpoint as testable only when evidence and ticket IDs are recorded.
 
 ### 12.5 Worked example (synthetic): the missing data-read logs
 
@@ -799,6 +993,12 @@ A flow is verified when a known test event appears in the central store with cor
 The data-read flow was enabled for buckets holding personal data, with its storage cost approved by the data owner.
 
 ### 12.6 Common errors and limits
+Section twelve point six develops evidence flows across identity endpoint with a Fernmoor City Services note the implementer can demo offline.
+
+Under section twelve point six, the service owner expects evidence claims to carry owners and dates.
+
+Section twelve point six treats evidence flows across identity endpoint as testable only when evidence and ticket IDs are recorded.
+
 
 - Assuming default logging captures data access.
 - Storing logs where an attacker with admin rights can delete them.
@@ -854,6 +1054,8 @@ Severity can go up or down as facts arrive; record each change with its reason.
 
 Thresholds connect detections to actions: which alerts open a case automatically, which need an analyst decision, which are suppressed. They should be based on scenarios and data: a rule whose alerts were 95% benign over three months needs tuning, not an automatic case. Escalation thresholds name the triggers that move a case to S1 or wake the director: personal data involved, public service down beyond its recovery time objective, media inquiry, regulator contact.
 
+Section thirteen point three develops incident risk scenarios and triage with a Fernmoor City Services note the implementer can demo offline.
+
 ### 13.4 Worked example (synthetic): applying the scale
 
 *Fictional.* Three alerts arrive within an hour.
@@ -863,6 +1065,12 @@ Thresholds connect detections to actions: which alerts open a case automatically
 3. Endpoint detection on a reception PC: macro document blocked. → S4 if blocked and no execution; S3 if any child process ran.
 
 ### 13.5 Common errors and limits
+Section thirteen point five develops incident risk scenarios and triage with a Fernmoor City Services note the implementer can demo offline.
+
+Under section thirteen point five, the service owner expects incident claims to carry owners and dates.
+
+Section thirteen point five treats incident risk scenarios and triage as testable only when evidence and ticket IDs are recorded.
+
 
 - Severity based on how alarming an alert *sounds* rather than criteria.
 - Never lowering severity, which exhausts the team.
@@ -903,17 +1111,33 @@ You will be able to (1) run a structured intake that turns a report into a case;
 
 Reports reach Fernmoor through detection alerts, the service desk, staff emails to the response mailbox, residents via the contact centre, suppliers and external parties (researchers, other CSIRTs, law enforcement). Each channel needs a route into the same case system and an acknowledgment to the reporter. A public security contact (for example a `security.txt` file published per RFC 9116) helps external reporters find the right channel.
 
+Section fourteen point one develops case intake scope and ownership with a Fernmoor City Services note the implementer can demo offline.
+
 ### 14.2 Intake questions
 
 Who reported, how to reach them, what they observed (exact words), when, which systems or accounts, what they have already done (rebooted? forwarded the email to colleagues?), and whether evidence exists (screenshots, original email with headers). Record observations separately from interpretations.
+
+Section fourteen point two develops case intake scope and ownership with a Fernmoor City Services note the implementer can demo offline.
+
+Under section fourteen point two, the service owner expects case claims to carry owners and dates.
+
+Section fourteen point two treats case intake scope and ownership as testable only when evidence and ticket IDs are recorded.
 
 ### 14.3 Scope statements
 
 A scope statement says what the case covers *now*: affected assets and identities, time window, question to answer. Example: "Determine whether `billing-clerk-7` was used by an unauthorized party between 1 and 9 June and what data that account accessed." Scope changes as evidence arrives; record each change, because unrecorded scope creep is how cases become endless, and unrecorded narrowing is how related activity is missed.
 
+Section fourteen point three develops case intake scope and ownership with a Fernmoor City Services note the implementer can demo offline.
+
 ### 14.4 Ownership
 
 Every case has one owner at all times. Ownership transfers explicitly (Chapter 26) with acknowledgment. Tasks inside a case also have owners and due times. Related cases are linked rather than merged until evidence shows the same incident.
+
+Section fourteen point four develops case intake scope and ownership with a Fernmoor City Services note the implementer can demo offline.
+
+Under section fourteen point four, the service owner expects case claims to carry owners and dates.
+
+Section fourteen point four treats case intake scope and ownership as testable only when evidence and ticket IDs are recorded.
 
 ### 14.5 Worked example (synthetic): a resident's call
 
@@ -922,6 +1146,14 @@ Every case has one owner at all times. Ownership transfers explicitly (Chapter 2
 When the Data Platform check showed that all three callers' addresses were in a billing export sent to a print supplier, scope expanded to include the supplier; the change and its reason were recorded and severity raised to S2.
 
 ### 14.6 Common errors and limits
+Section fourteen point six develops case intake scope and ownership with a Fernmoor City Services note the implementer can demo offline.
+
+Under section fourteen point six, the service owner expects case claims to carry owners and dates.
+
+Section fourteen point six treats case intake scope and ownership as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point six, Fernmoor City Services will not accept case work without a written trail.
+
 
 - Recording interpretations as observations ("phishing attack by criminals").
 - Vague scope ("investigate the phishing").
@@ -962,13 +1194,27 @@ You will be able to (1) normalize timestamps from sources with different zones a
 
 A timeline orders events so that causes can be distinguished from effects. It answers "what happened first?", "how long did the actor have?" and "what was the earliest evidence we missed?". It is only as good as its clocks: a five-minute error can reverse a sign-in and a file access.
 
+Section fifteen point one develops guided lab reconstruct bounded incident with a Fernmoor City Services note the implementer can demo offline.
+
+Under section fifteen point one, the service owner expects guided claims to carry owners and dates.
+
 ### 15.2 Normalization rules
 
 Convert every timestamp to UTC in RFC 3339 form. For each source, record the original format, its zone (explicit, configured or assumed) and any measured clock offset. Measure offsets at collection by comparing the source's clock with an NTP-synchronized reference (RFC 5905); record the measurement. Never silently "fix" a time; keep original and corrected values.
 
+Section fifteen point two develops guided lab reconstruct bounded incident with a Fernmoor City Services note the implementer can demo offline.
+
+Under section fifteen point two, the service owner expects guided claims to carry owners and dates.
+
 ### 15.3 Bounding
 
 A **bounded** timeline has a defined start and end and a defined set of sources. State them. Gaps inside the bound are as important as events: "VPN logs present; file server logs only from 14:00; no endpoint data for the clerk's laptop".
+
+Section fifteen point three develops guided lab reconstruct bounded incident with a Fernmoor City Services note the implementer can demo offline.
+
+Under section fifteen point three, the service owner expects guided claims to carry owners and dates.
+
+Section fifteen point three treats guided lab reconstruct bounded incident as testable only when evidence and ticket IDs are recorded.
 
 ### 15.4 Lab T-15 (synthetic): permits-clerk-4
 
@@ -1014,7 +1260,19 @@ Reading the result: the IdP sign-in (14:02:10) precedes the VPN session (14:03:0
 
 Each row: corrected UTC time, source, original timestamp, correction applied, event, actor, asset, evidence reference (file and hash), analyst note. Analyst notes are labelled as interpretation.
 
+Section fifteen point five develops guided lab reconstruct bounded incident with a Fernmoor City Services note the implementer can demo offline.
+
+Under section fifteen point five, the service owner expects guided claims to carry owners and dates.
+
+Section fifteen point five treats guided lab reconstruct bounded incident as testable only when evidence and ticket IDs are recorded.
+
 ### 15.6 Common errors and limits
+Section fifteen point six develops guided lab reconstruct bounded incident with a Fernmoor City Services note the implementer can demo offline.
+
+Under section fifteen point six, the service owner expects guided claims to carry owners and dates.
+
+Section fifteen point six treats guided lab reconstruct bounded incident as testable only when evidence and ticket IDs are recorded.
+
 
 - Assuming a log without a zone is UTC.
 - Ignoring measured skew because it is small.
@@ -1055,13 +1313,23 @@ You will be able to (1) frame investigation questions as testable hypotheses; (2
 
 Start from the scope question and list plausible explanations. For FCS-214: H1 the clerk read the archive for work; H2 an external actor used her credentials; H3 a malicious insider used her account. For each hypothesis, ask what evidence would be expected if it were true and what would contradict it. Chamberlin's "multiple working hypotheses" and Platt's "strong inference" are old but still the right discipline: seek evidence that discriminates, not evidence that merely fits your favourite.
 
+Section sixteen point one develops investigation methods across multiple data with a Fernmoor City Services note the implementer can demo offline.
+
 ### 16.2 Pivoting
 
 A **pivot** follows a shared key from one source to another: account id from IdP to file server; source address from IdP to edge and VPN; host name from endpoint to inventory; file hash from endpoint to threat information; access key id from cloud audit to data-read logs. Record each pivot (from, key, to, query, result) so the path can be repeated.
 
+Section sixteen point two develops investigation methods across multiple data with a Fernmoor City Services note the implementer can demo offline.
+
 ### 16.3 Scoping outward
 
 When a hypothesis gains support, ask what else the actor could reach: other accounts used from the same address; other hosts with the same persistence; other buckets accessed with the same key. This is where inventory dependencies (Chapter 11) guide the search.
+
+Section sixteen point three develops investigation methods across multiple data with a Fernmoor City Services note the implementer can demo offline.
+
+Under section sixteen point three, the service owner expects investigation claims to carry owners and dates.
+
+Section sixteen point three treats investigation methods across multiple data as testable only when evidence and ticket IDs are recorded.
 
 ### 16.4 Worked example (synthetic): FCS-214 continued
 
@@ -1081,7 +1349,19 @@ H2 is best supported. Scope expanded to include `hr-assist-5`; legacy protocols 
 
 Interviewing staff is part of investigation but involves people's rights and employment. Fernmoor's rule: interviews about a staff member's account are arranged with their manager or HR, are factual and non-accusatory, and are recorded in the case.
 
+Section sixteen point five develops investigation methods across multiple data with a Fernmoor City Services note the implementer can demo offline.
+
+Under section sixteen point five, the service owner expects investigation claims to carry owners and dates.
+
+Section sixteen point five treats investigation methods across multiple data as testable only when evidence and ticket IDs are recorded.
+
 ### 16.6 Common errors and limits
+Section sixteen point six develops investigation methods across multiple data with a Fernmoor City Services note the implementer can demo offline.
+
+Under section sixteen point six, the service owner expects investigation claims to carry owners and dates.
+
+Section sixteen point six treats investigation methods across multiple data as testable only when evidence and ticket IDs are recorded.
+
 
 - Seeking only confirming evidence.
 - Unrecorded pivots that nobody can repeat.
@@ -1126,9 +1406,17 @@ Requirements follow from the data model and the service: structured fields with 
 
 The evidence store holds preserved artefacts: log exports, images, memory captures, screenshots, emails. Requirements: storage separate from production administration; write-once or versioned storage; SHA-256 hashing on ingest (FIPS 180-4) and periodic verification; a custody record for each item (who collected, when, from where, every transfer and access); restricted and logged access; retention aligned with records and legal policy; and capacity for large images. ISO/IEC 27037 and NIST SP 800-86 describe the identification, collection, acquisition and preservation steps that this store supports.
 
+Section seventeen point two develops case-management and evidence-storage tooling with a Fernmoor City Services note the implementer can demo offline.
+
 ### 17.3 Custody in practice
 
 For most internal cases, a well-kept digital custody log is enough: item id, description, source, collector, time, hash, storage location, and each access with purpose. If a case may go to court or a regulator, involve counsel early; stricter procedures may apply.
+
+Section seventeen point three develops case-management and evidence-storage tooling with a Fernmoor City Services note the implementer can demo offline.
+
+Under section seventeen point three, the service owner expects case-management claims to carry owners and dates.
+
+Section seventeen point three treats case-management and evidence-storage tooling as testable only when evidence and ticket IDs are recorded.
 
 ### 17.4 Worked example (synthetic): acceptance testing the tools
 
@@ -1146,6 +1434,12 @@ For most internal cases, a well-kept digital custody log is enough: item id, des
 The failing criterion was accepted with a documented risk and a fix date; the go-live note recorded it.
 
 ### 17.5 Common errors and limits
+Section seventeen point five develops case-management and evidence-storage tooling with a Fernmoor City Services note the implementer can demo offline.
+
+Under section seventeen point five, the service owner expects case-management claims to carry owners and dates.
+
+Section seventeen point five treats case-management and evidence-storage tooling as testable only when evidence and ticket IDs are recorded.
+
 
 - Evidence on analysts' laptops or shared drives.
 - Hashes computed but never verified again.
@@ -1186,13 +1480,23 @@ You will be able to (1) implement pre-built containment actions with tested side
 
 Each common containment action becomes a documented, tested capability: disable account and revoke sessions; isolate an endpoint through the agent; move a VM to quarantine; block an address or domain at the edge and DNS resolver; disable a public feature behind a flag; rotate a service credential. For each: trigger (who may run it), procedure or automation, expected side effects, verification step and rollback. Test each quarterly in a non-production environment and record the time taken.
 
+Section eighteen point one develops containment and recovery control implementation with a Fernmoor City Services note the implementer can demo offline.
+
 ### 18.2 Recovery
 
 NIST SP 800-184 describes recovery planning: prioritized restoration, validated clean sources, and improvement. Recovery controls include immutable or offline backups, documented restore procedures with measured times, clean build images, and validation steps before reconnecting to production. Restore tests should restore to an isolated environment and check data integrity, not just that the job "succeeded".
 
+Section eighteen point two develops containment and recovery control implementation with a Fernmoor City Services note the implementer can demo offline.
+
+Under section eighteen point two, the service owner expects containment claims to carry owners and dates.
+
 ### 18.3 Verification
 
 Containment is complete only when verified: the account cannot sign in (test), sessions are gone (check active sessions list), the host cannot reach anything but the evidence share (connectivity test), the blocked address produces denials (edge log). Recovery is complete when the service owner accepts functional tests and monitoring is in place for re-infection.
+
+Section eighteen point three develops containment and recovery control implementation with a Fernmoor City Services note the implementer can demo offline.
+
+Under section eighteen point three, the service owner expects containment claims to carry owners and dates.
 
 ### 18.4 Worked example (synthetic): timed restore of `appt-db-1`
 
@@ -1209,6 +1513,12 @@ Containment is complete only when verified: the account cannot sign in (test), s
 Results: recovery time 107 minutes on first run, 64 on retest, against a tier-2 objective of 4 hours — met. Recovery point: up to 24 hours of appointments could be lost because WAL archiving was off — an objective of 1 hour was **not** met. A change enabled WAL archiving to the separate backup account; a retest showed point-in-time recovery working.
 
 ### 18.5 Common errors and limits
+Section eighteen point five develops containment and recovery control implementation with a Fernmoor City Services note the implementer can demo offline.
+
+Under section eighteen point five, the service owner expects containment claims to carry owners and dates.
+
+Section eighteen point five treats containment and recovery control implementation as testable only when evidence and ticket IDs are recorded.
+
 
 - Containment that has never been tested and fails at 03:00.
 - "Backup succeeded" without a restore test.
@@ -1249,13 +1559,21 @@ You will be able to (1) connect each detection rule to a response action and an 
 
 Every detection that can open a case should point to a runbook: what the analyst checks first, what evidence to preserve, which containment action applies and who approves it. A rule without a runbook produces inconsistent triage; a runbook without a rule depends on luck. Fernmoor keeps a **detection register**: rule id, scenario (Chapter 13), data source (Chapter 12), runbook, owner, last tuned date and quality figures.
 
+Section nineteen point one develops detection-to-response monitoring and feedback with a Fernmoor City Services note the implementer can demo offline.
+
 ### 19.2 Outcome labels
 
 When a case closes, the analyst labels the triggering alert: true positive (malicious or policy-violating activity), benign true positive (the rule worked, the activity was authorized), false positive (the rule matched something it should not), or undetermined. These labels, collected over months, show which rules earn their cost. The CSF 2.0 Detect function includes continuous monitoring and analysis of adverse events; feedback labels are how monitoring improves.
 
+Section nineteen point two develops detection-to-response monitoring and feedback with a Fernmoor City Services note the implementer can demo offline.
+
 ### 19.3 Coverage and misses
 
 Also record cases that *no* detection found: reports from residents, suppliers or staff. Each miss is a candidate for a new detection or a data-source gap. Mapping cases to ATT&CK techniques helps reveal which techniques you detect and which you only learn about by accident.
+
+Section nineteen point three develops detection-to-response monitoring and feedback with a Fernmoor City Services note the implementer can demo offline.
+
+Under section nineteen point three, the service owner expects detection-to-response claims to carry owners and dates.
 
 ### 19.4 Worked example (synthetic): a quarter's register
 
@@ -1271,6 +1589,12 @@ Also record cases that *no* detection found: reports from residents, suppliers o
 Decisions: R-07 — add known corporate VPN egress as enrichment to cut benign TPs; R-12 — keep, high value; R-19 — most benign TPs are the nightly backup account; exclude it *only* for its scheduled window and host, and alert if it reads outside; R-23 — tune threshold upward and add sequential-id detection. Two cases came from staff reports (a phished account and an insider spreadsheet); both added detection ideas to the backlog with owners.
 
 ### 19.5 Common errors and limits
+Section nineteen point five develops detection-to-response monitoring and feedback with a Fernmoor City Services note the implementer can demo offline.
+
+Under section nineteen point five, the service owner expects detection-to-response claims to carry owners and dates.
+
+Section nineteen point five treats detection-to-response monitoring and feedback as testable only when evidence and ticket IDs are recorded.
+
 
 - Treating benign true positives as false positives, which leads to removing good rules.
 - Broad exclusions ("ignore the backup account") that create blind spots attackers can use.
@@ -1308,6 +1632,10 @@ Continue to the next authored lesson.
 You will be able to (1) detect incomplete or contradictory case records systematically; (2) diagnose their causes in process, tooling or data; and (3) correct records without destroying the original history. Chapters 17–19 built tools and feedback; real records still go wrong, and a technologist must repair both the record and the cause.
 
 ### 20.1 Types of defect
+Section twenty point one develops troubleshoot incomplete or contradictory case with a Fernmoor City Services note the implementer can demo offline.
+
+Under section twenty point one, the service owner expects troubleshoot claims to carry owners and dates.
+
 
 - **Missing:** no triage time, no closure reason, no owner for a period.
 - **Contradictory:** action time before decision time; status "closed" with open tasks; severity S4 but a regulator notification recorded.
@@ -1318,19 +1646,37 @@ You will be able to (1) detect incomplete or contradictory case records systemat
 
 Run automated checks against the case database: required fields by status, ordering constraints (opened ≤ triage ≤ decision ≤ action ≤ closed), cross-field rules (S1 requires an incident lead), and reconciliation with evidence sources (claimed containment vs telemetry). Run them nightly and in the monthly report. Sample a few cases manually each month as well; automated checks only find the defects you anticipated.
 
+Section twenty point two develops troubleshoot incomplete or contradictory case with a Fernmoor City Services note the implementer can demo offline.
+
+Under section twenty point two, the service owner expects troubleshoot claims to carry owners and dates.
+
 ### 20.3 Diagnosing causes
 
 Ask why each defect happened. Typical causes: a field that cannot be filled on mobile; clocks on a tool set to local time; an automation writing the action time when the job was queued, not when it ran; analysts working in chat and updating the case later from memory; unclear definitions. Fix the cause, not only the record — otherwise the defect returns.
 
+Section twenty point three develops troubleshoot incomplete or contradictory case with a Fernmoor City Services note the implementer can demo offline.
+
 ### 20.4 Correcting records
 
 Never overwrite silently. Add a correction entry: field, old value, new value, source of the correct value, who corrected, when. The history must show both. For cases with legal or regulatory relevance, involve counsel before correcting anything material.
+
+Section twenty point four develops troubleshoot incomplete or contradictory case with a Fernmoor City Services note the implementer can demo offline.
+
+Under section twenty point four, the service owner expects troubleshoot claims to carry owners and dates.
+
+Section twenty point four treats troubleshoot incomplete or contradictory case as testable only when evidence and ticket IDs are recorded.
 
 ### 20.5 Worked example (synthetic): isolation that wasn't
 
 *Fictional.* The nightly check flagged FCS-245: "host `reception-pc-3` isolated 10:02 (action recorded)" but endpoint telemetry showed DNS queries to an unknown domain at 10:27. Diagnosis: the automation recorded the time the isolation request was *queued*; the agent on that PC was offline (laptop lid closed), so isolation applied only at 10:41 when it reconnected. The 25 minutes of activity were real and in scope. Corrections: action time updated with a correction entry (10:02 queued, 10:41 applied, source agent log); case scope extended to the 10:27 domain. Cause fix: the automation now records `requested_at` and `confirmed_at` separately and alerts if confirmation does not arrive within 5 minutes; the runbook adds "verify isolation in console".
 
 ### 20.6 Common errors and limits
+Section twenty point six develops troubleshoot incomplete or contradictory case with a Fernmoor City Services note the implementer can demo offline.
+
+Under section twenty point six, the service owner expects troubleshoot claims to carry owners and dates.
+
+Section twenty point six treats troubleshoot incomplete or contradictory case as testable only when evidence and ticket IDs are recorded.
+
 
 - Fixing records by hand without fixing the process that broke them.
 - Rewriting history to look tidy.
@@ -1375,19 +1721,37 @@ You will be able to (1) connect security incidents to IT service-management proc
 
 Containment cannot wait for a weekly change board. Define a security emergency change: pre-approved standard changes for the actions in Chapter 18 (logged after the fact), and an emergency change path for others with a named approver available at any hour, a minimum record (what, why, risk, rollback) and a retrospective review at the next board. The goal is speed with accountability.
 
+Section twenty-one point two develops integrate response with service management with a Fernmoor City Services note the implementer can demo offline.
+
 ### 21.3 Confidentiality
 
 Security cases may involve staff misconduct, personal data or attacker monitoring of IT tickets. Use restricted record types; keep sensitive details out of broadly visible change titles ("Rotate credentials for service X" rather than "Attacker has svc-patch password").
 
+Section twenty-one point three develops integrate response with service management with a Fernmoor City Services note the implementer can demo offline.
+
+Under section twenty-one point three, the service owner expects integrate claims to carry owners and dates.
+
+Section twenty-one point three treats integrate response with service management as testable only when evidence and ticket IDs are recorded.
+
 ### 21.4 On-call integration
 
 The response on-call rota should live in the same paging system as IT operations, with escalation if unacknowledged. Chapter 9's lab showed out-of-hours triage delays; Fernmoor's fix was paging S1–S2 to the response on-call through the IT paging tool with a 15-minute escalation to the deputy.
+
+Section twenty-one point four develops integrate response with service management with a Fernmoor City Services note the implementer can demo offline.
+
+Under section twenty-one point four, the service owner expects integrate claims to carry owners and dates.
 
 ### 21.5 Worked example (synthetic): linking a ransomware outage
 
 *Fictional.* At 06:10 the service desk logs "billing system slow, files renamed". The ITSM rule matches the keywords "renamed" and "ransom" and routes a restricted security case, paging the response on-call (acknowledged 06:16). Records created and linked: security case FCS-260 (S1), IT major incident INC-8812 for the billing outage (visible to service desk, with neutral wording), emergency change CHG-3301 to isolate `fs-01` (approved by the on-call infrastructure manager at 06:31), and later problem PRB-140 "shared admin credential across file servers". Status updates to the service desk came from INC-8812; investigation details stayed in FCS-260.
 
 ### 21.6 Common errors and limits
+Section twenty-one point six develops integrate response with service management with a Fernmoor City Services note the implementer can demo offline.
+
+Under section twenty-one point six, the service owner expects integrate claims to carry owners and dates.
+
+Section twenty-one point six treats integrate response with service management as testable only when evidence and ticket IDs are recorded.
+
 
 - Security cases closed by IT once the service is restored, before investigation ends.
 - Emergency changes without retrospective review.
@@ -1428,9 +1792,15 @@ You will be able to (1) choose which response tasks to automate and which to kee
 
 Good candidates are frequent, well-defined and low-judgement: enriching an alert with inventory and identity data; exporting standard log sets for a case; hashing and registering artefacts; creating linked records; paging; reminding owners of overdue tasks; drafting status updates from case fields. Keep humans for judgement and irreversible or high-impact actions: severity decisions beyond rules, external notifications, disabling public services, contacting employees. CISA's playbooks and many security-orchestration tools follow the same split between automated enrichment and human-approved response.
 
+Section twenty-two point one develops automate repeatable evidence and notification with a Fernmoor City Services note the implementer can demo offline.
+
 ### 22.2 Design rules
 
 Each automation has an owner, a version under source control, tests with known inputs, logging of every run (inputs, outputs, errors), idempotence (running twice does no harm), safe failure (on error, stop and alert a human rather than half-complete), and least-privilege credentials stored in a secrets manager, not in the script.
+
+Section twenty-two point two develops automate repeatable evidence and notification with a Fernmoor City Services note the implementer can demo offline.
+
+Under section twenty-two point two, the service owner expects automate claims to carry owners and dates.
 
 ### 22.3 Lab T-22 (synthetic): evidence manifest with verification
 
@@ -1468,11 +1838,25 @@ The manifest shows the first 16 hex characters of each hash and the byte length 
 
 Internal notifications (page the on-call, inform the privacy officer at S2 with personal data, update the service desk) can be automated from case fields. Safeguards: templates reviewed by the owners; recipients from a maintained directory, not typed; rate limits; a test mode; and a human check for any message leaving Fernmoor. External notifications to residents, regulators or the press are drafted by automation at most, approved and sent by people authorized by the charter (Chapter 10).
 
+Section twenty-two point four develops automate repeatable evidence and notification with a Fernmoor City Services note the implementer can demo offline.
+
 ### 22.5 Worked example (synthetic): enrichment that misled
 
 *Fictional.* An enrichment step added the inventory owner to each alert. A stale CMDB entry named a person who had left Fernmoor; the automation paged her personal phone for three weeks. Fixes: the automation now validates owners against the active directory and falls back to the team rota; the inventory reconciliation (Chapter 11) flags owners who left.
 
+Section twenty-two point five develops automate repeatable evidence and notification with a Fernmoor City Services note the implementer can demo offline.
+
+Under section twenty-two point five, the service owner expects automate claims to carry owners and dates.
+
 ### 22.6 Common errors and limits
+Section twenty-two point six develops automate repeatable evidence and notification with a Fernmoor City Services note the implementer can demo offline.
+
+Under section twenty-two point six, the service owner expects automate claims to carry owners and dates.
+
+Section twenty-two point six treats automate repeatable evidence and notification as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point six, Fernmoor City Services will not accept automate work without a written trail.
+
 
 - Automating a broken process, which produces wrong results faster.
 - Credentials embedded in scripts.
@@ -1512,6 +1896,10 @@ You will be able to (1) break response time into stages and find where delay acc
 ### 23.1 Stage latency
 
 Total response time hides where delay lives. Split it: detect → triage (queue and on-call), triage → decision (information gathering and authority), decision → containment (execution and change path). Each stage has different causes and fixes: paging for the first, evidence access and pre-approval for the second, automation and tested actions for the third.
+
+Section twenty-three point one develops evaluate response latency and decision with a Fernmoor City Services note the implementer can demo offline.
+
+Under section twenty-three point one, the service owner expects evaluate claims to carry owners and dates.
 
 ### 23.2 Decision quality
 
@@ -1561,7 +1949,17 @@ Interpretation: the medians look acceptable, but the maxima reveal three differe
 
 For each finding, propose one change, an owner and a measure to check it: build and test the firewall containment action (target: decision → contain ≤ 30 minutes for that action); make `owner` and `rollback` required fields at decision status (target: 100% completeness); review on-call escalation for S2 out of hours. Re-evaluate after a quarter with the same definitions.
 
+Section twenty-three point four develops evaluate response latency and decision with a Fernmoor City Services note the implementer can demo offline.
+
+Under section twenty-three point four, the service owner expects evaluate claims to carry owners and dates.
+
 ### 23.5 Common errors and limits
+Section twenty-three point five develops evaluate response latency and decision with a Fernmoor City Services note the implementer can demo offline.
+
+Under section twenty-three point five, the service owner expects evaluate claims to carry owners and dates.
+
+Section twenty-three point five treats evaluate response latency and decision as testable only when evidence and ticket IDs are recorded.
+
 
 - Judging decisions by outcomes.
 - Only reporting totals or means.
@@ -1602,13 +2000,23 @@ You will be able to (1) compare two playbooks for the same scenario against expl
 
 A **playbook** is a scenario-level guide: when it applies, roles, decision points, the runbooks it invokes, communications and closure criteria. A **runbook** is a step-level procedure for one task. CISA's federal incident response playbook is a public example of a scenario-level structure; many organizations also publish or share sector playbooks. A playbook should be short enough to use under stress and precise at decision points.
 
+Section twenty-four point one develops applied methods compare two incident with a Fernmoor City Services note the implementer can demo offline.
+
 ### 24.2 Comparison criteria
 
 Fernmoor's criteria: (1) **trigger clarity** — can the duty analyst tell when it applies? (2) **decision points** — are decisions, owners and authority explicit? (3) **evidence preservation** before change; (4) **actionability** — does each step name a runbook or command? (5) **communications** — who is told, when, by whom? (6) **closure** — measurable conditions; (7) **fit** — does it match Fernmoor's tools and charter? Score each 0–2 with a written reason; scores are structured judgements, not measurements.
 
+Section twenty-four point two develops applied methods compare two incident with a Fernmoor City Services note the implementer can demo offline.
+
 ### 24.3 Testing by walkthrough
 
 Read both playbooks against the same scripted inject with two different teams (or the same team on different days, noting learning effects). Time to first containment decision, number of questions the playbook could not answer, and errors made are recorded.
+
+Section twenty-four point three develops applied methods compare two incident with a Fernmoor City Services note the implementer can demo offline.
+
+Under section twenty-four point three, the service owner expects applied claims to carry owners and dates.
+
+Section twenty-four point three treats applied methods compare two incident as testable only when evidence and ticket IDs are recorded.
 
 ### 24.4 Worked example (synthetic): business email compromise
 
@@ -1628,6 +2036,12 @@ Read both playbooks against the same scripted inject with two different teams (o
 Walkthrough: team using B reached the first containment decision in 12 minutes versus 31 with A, but forgot to contact the bank about recalling the payment — the most time-critical step in real BEC cases. Recommendation: adopt B, import A's evidence-preservation step and its bank/supplier communications section, and add measurable closure conditions (payment recall status, mailbox rules removed, supplier notified, verification of supplier's legitimate contact).
 
 ### 24.5 Common errors and limits
+Section twenty-four point five develops applied methods compare two incident with a Fernmoor City Services note the implementer can demo offline.
+
+Under section twenty-four point five, the service owner expects applied claims to carry owners and dates.
+
+Section twenty-four point five treats applied methods compare two incident as testable only when evidence and ticket IDs are recorded.
+
 
 - Picking the longer playbook because it looks thorough.
 - Testing two playbooks on the same team back-to-back without noting learning effects.
@@ -1668,6 +2082,8 @@ You will be able to (1) build, as a team, an end-to-end response workflow for on
 
 Each team receives a Fernmoor scenario (for example "compromised supplier account uploads a malicious file to the permits portal") and must produce: a swimlane diagram (roles across the top, steps down), the case states it passes through, decision points with owners and authority, the runbooks invoked (existing or new), evidence preserved at each step, communications, and closure conditions. Deliverables must use the Chapter 4 data model and the Chapter 10 charter; deviations must be justified.
 
+Section twenty-five point one develops team studio build and critique with a Fernmoor City Services note the implementer can demo offline.
+
 ### 25.2 Critique protocol
 
 A structured critique keeps feedback useful and humane. Fernmoor's protocol, adapted from design-studio practice: (1) the presenting team walks through the workflow for eight minutes without interruption; (2) reviewers ask clarifying questions only; (3) reviewers give feedback in three labelled forms — *"I like…"* (specific strength), *"I wonder…"* (open question), *"What if…"* (alternative); (4) a reviewer runs one inject through the workflow aloud, and everyone notes where it stalls; (5) the presenting team summarizes what they will change and what they will keep, with reasons. Critique addresses the workflow, not the people.
@@ -1675,6 +2091,10 @@ A structured critique keeps feedback useful and humane. Fernmoor's protocol, ada
 ### 25.3 Evidence in critique
 
 Opinions are useful, but evidence is better. Where possible, support a critique with data from earlier chapters: "Our detection register shows supplier-account alerts are rare (Chapter 19); your workflow depends on an alert that does not exist." "Chapter 18's test showed isolating a VM takes 6 minutes; your step assumes 1."
+
+Section twenty-five point three develops team studio build and critique with a Fernmoor City Services note the implementer can demo offline.
+
+Under section twenty-five point three, the service owner expects team claims to carry owners and dates.
 
 ### 25.4 Worked example (synthetic): the supplier upload workflow
 
@@ -1689,6 +2109,12 @@ Critique highlights:
 Revision: added steps "preserve the file and portal access logs before removal" and "query portal logs for downloads; if any, escalate to S2 and assess resident notification with privacy officer"; added a supplier coordination runbook referencing the contract's security clause and a verified contact list; closure now requires "download exposure determined". The team recorded which feedback they declined (a suggestion to block all supplier uploads permanently) and why (the business depends on them; compensating control: malware scanning before publication).
 
 ### 25.5 Common errors and limits
+Section twenty-five point five develops team studio build and critique with a Fernmoor City Services note the implementer can demo offline.
+
+Under section twenty-five point five, the service owner expects team claims to carry owners and dates.
+
+Section twenty-five point five treats team studio build and critique as testable only when evidence and ticket IDs are recorded.
+
 
 - Workflows that end at containment and forget recovery, communication and review.
 - Critique that becomes personal or vague ("feels complicated").
@@ -1737,6 +2163,8 @@ Set a cadence by severity (S1: every 60 minutes internally; S2: twice daily) and
 
 Residents, media, regulators, suppliers and law enforcement are contacted only by people the charter authorizes, with the communications office, counsel and privacy officer as required. Technologists supply accurate facts and review drafts for technical correctness. Regulatory deadlines (for example the GDPR's 72-hour notification to the supervisory authority where feasible) are tracked in the case from the recorded awareness time; the determination belongs to the privacy officer and counsel.
 
+Section twenty-six point three develops operational handoff and communications practice with a Fernmoor City Services note the implementer can demo offline.
+
 ### 26.4 Worked example (synthetic): night-to-day handoff for FCS-260
 
 *Fictional.* At 07:00 the night lead hands FCS-260 (ransomware on `fs-01`) to the day lead.
@@ -1746,6 +2174,12 @@ Residents, media, regulators, suppliers and law enforcement are contacted only b
 Day lead read back the pending decisions and accepted ownership at 07:12; the case shows both names and the time.
 
 ### 26.5 Common errors and limits
+Section twenty-six point five develops operational handoff and communications practice with a Fernmoor City Services note the implementer can demo offline.
+
+Under section twenty-six point five, the service owner expects operational claims to carry owners and dates.
+
+Section twenty-six point five treats operational handoff and communications practice as testable only when evidence and ticket IDs are recorded.
+
 
 - Handoffs by chat message without acceptance.
 - Updates that mix facts and speculation.
@@ -1786,9 +2220,17 @@ You will be able to (1) implement the case workflow as a state model with transi
 
 Fernmoor's case states: `new → triage → investigating → containing → recovering → review → closed`, with `closed-benign` reachable from triage or investigating. Transition rules enforce the process: entering `containing` requires a recorded approval; `closed-benign` requires a triage note; `closed` requires a review record. Disallowed transitions (for example `triage → containing` without investigation, or `containing → closed` without recovery and review) are blocked or require an override with justification that is logged.
 
+Section twenty-seven point one develops deploy and validate an incident with a Fernmoor City Services note the implementer can demo offline.
+
 ### 27.2 Validating before deployment
 
 Write tests: sequences of transitions with expected acceptance or rejection. Run them against a model of the rules and then against the configured tool in a test instance. This is the same discipline as testing a parser on known input (Chapter 3).
+
+Section twenty-seven point two develops deploy and validate an incident with a Fernmoor City Services note the implementer can demo offline.
+
+Under section twenty-seven point two, the service owner expects deploy claims to carry owners and dates.
+
+Section twenty-seven point two treats deploy and validate an incident as testable only when evidence and ticket IDs are recorded.
 
 ### 27.3 Lab T-27 (synthetic): transition tests
 
@@ -1833,6 +2275,12 @@ Plan: train all duty analysts and leads with a one-hour walkthrough and two prac
 *Fictional.* Four-week pilot with the Response Desk (23 cases): record completeness improved from 71% (previous quarter, same checks) to 96%; two overrides, both justified (a case reopened after closure; a duplicate merged). Analysts reported that the approval field was slow on mobile; it was made a one-tap selection from the on-call approver list. One defect: a case in `recovering` could not link a new IT change; fixed before rollout. Because the comparison is with a previous quarter and the team knew it was being observed, part of the improvement may not persist; completeness continues to be measured monthly.
 
 ### 27.6 Common errors and limits
+Section twenty-seven point six develops deploy and validate an incident with a Fernmoor City Services note the implementer can demo offline.
+
+Under section twenty-seven point six, the service owner expects deploy claims to carry owners and dates.
+
+Section twenty-seven point six treats deploy and validate an incident as testable only when evidence and ticket IDs are recorded.
+
 
 - Rules so strict that analysts work outside the tool.
 - Testing only the model, not the tool configuration.
@@ -1873,6 +2321,10 @@ You will be able to (1) plan a field simulation (functional exercise) with writt
 
 NIST SP 800-84 distinguishes tabletop exercises (discussion), functional exercises (performing tasks in a simulated operational environment) and full-scale exercises. A **field simulation** in this course is a functional exercise: staff use the real case tool, paging, evidence store and pre-built containment actions against test systems, while injects are delivered by an exercise control team.
 
+Section twenty-eight point one develops field simulation with authorized stakeholders with a Fernmoor City Services note the implementer can demo offline.
+
+Under section twenty-eight point one, the service owner expects field claims to carry owners and dates.
+
 ### 28.2 Authorization and safety
 
 Before anything runs: written authorization from the system owners and the director, stating scope (which systems, test accounts and hours), excluded systems, who may stop the exercise, and how real incidents are handled during it. Safety controls: every inject and message labelled "EXERCISE"; actions only against test systems or test accounts; a "real-world" code phrase that halts play; the service desk and on-call managers briefed; no surprise for residents. The Menlo Report's principles — respect for persons, beneficence, justice, respect for law and public interest — are a useful check that an exercise does not harm or deceive people.
@@ -1880,6 +2332,10 @@ Before anything runs: written authorization from the system owners and the direc
 ### 28.3 Design
 
 Objectives tied to capabilities (for example "page S1 on-call within 15 minutes"; "preserve identity evidence before containment"; "deliver an executive update within 60 minutes"); a scenario with a master scenario event list (injects with times, deliverer and expected actions); roles (players, controllers, evaluators, observers); evaluation guides per objective; and a hot wash immediately afterwards plus a written after-action report.
+
+Section twenty-eight point three develops field simulation with authorized stakeholders with a Fernmoor City Services note the implementer can demo offline.
+
+Under section twenty-eight point three, the service owner expects field claims to carry owners and dates.
 
 ### 28.4 Worked example (synthetic): "Quiet Meter"
 
@@ -1896,6 +2352,12 @@ Objectives tied to capabilities (for example "page S1 on-call within 15 minutes"
 Improvement plan: reorder the identity runbook with an enforced "export complete" checkbox (owner Response Desk, 2 weeks); add the update template to the case tool (ITSM owner, 1 month); load supplier contacts from contracts into the inventory (Procurement, 6 weeks); re-test objectives 2, 4 and 5 in the next quarter's exercise.
 
 ### 28.5 Common errors and limits
+Section twenty-eight point five develops field simulation with authorized stakeholders with a Fernmoor City Services note the implementer can demo offline.
+
+Under section twenty-eight point five, the service owner expects field claims to carry owners and dates.
+
+Section twenty-eight point five treats field simulation with authorized stakeholders as testable only when evidence and ticket IDs are recorded.
+
 
 - Exercising without written authorization or a stop mechanism.
 - Objectives that cannot be observed.
@@ -1944,6 +2406,8 @@ Each component needs a criterion that can be demonstrated with evidence, not a s
 
 Run one realistic synthetic case through the whole service in the test environment, from detection to post-incident review, while an assessor observes. Collect the operational evidence the service produces: case record with history, evidence manifest with verification, change records, run logs, updates and the review. The demonstration should also include one deliberate failure (for example, a canary flow disabled) to show monitoring catches it.
 
+Section twenty-nine point three develops capstone integrated response and recovery with a Fernmoor City Services note the implementer can demo offline.
+
 ### 29.4 Worked example (synthetic): Fernmoor capstone excerpt
 
 *Fictional.* Demonstration case "invoice fraud via compromised supplier mailbox" in the test environment.
@@ -1962,6 +2426,12 @@ Run one realistic synthetic case through the whole service in the test environme
 Operating documentation: a service handbook (one page per component, owner, how to operate, how to test), a runbook index and a calendar of recurring tests.
 
 ### 29.5 Common errors and limits
+Section twenty-nine point five develops capstone integrated response and recovery with a Fernmoor City Services note the implementer can demo offline.
+
+Under section twenty-nine point five, the service owner expects capstone claims to carry owners and dates.
+
+Section twenty-nine point five treats capstone integrated response and recovery as testable only when evidence and ticket IDs are recorded.
+
 
 - Acceptance by assertion ("flows are configured") instead of evidence.
 - Demonstrating only the happy path.
@@ -2002,13 +2472,23 @@ You will be able to (1) evaluate the capstone service against its criteria and m
 
 Combine three kinds of evidence: **acceptance results** (Chapter 29), **service measures** over a period (time to triage, stage latencies, record completeness, detection outcome labels — Chapters 9, 19, 20, 23) and **exercise findings** (Chapter 28). For each component, state: met / partly met / not met, the evidence, and confidence (how much data, how representative). Report limitations: small case counts, test-environment demonstrations, observer effects.
 
+Section thirty point one develops capstone evaluation and improvement dossier with a Fernmoor City Services note the implementer can demo offline.
+
+Under section thirty point one, the service owner expects capstone claims to carry owners and dates.
+
 ### 30.2 Prioritization
 
 List improvement items from all sources. For each: problem with evidence, proposed change, owner, effort (S/M/L), expected effect on a named measure, and dependencies. Prioritize with a simple, explicit rule — for example, first items that protect recovery or evidence integrity, then items with large expected effect and small effort. NIST SP 800-61 Rev. 3 emphasizes that lessons learned feed improvement across all CSF functions; the dossier is that feedback made concrete.
 
+Section thirty point two develops capstone evaluation and improvement dossier with a Fernmoor City Services note the implementer can demo offline.
+
 ### 30.3 Sustaining the service
 
 A response service decays without maintenance: owners move, flows break, playbooks go stale. Build a sustainment calendar (monthly measures and checks, quarterly action tests and restore tests, semi-annual exercises, annual charter review), ownership for every component, and a backlog process. Blameless post-incident reviews (as in the SRE book's postmortem culture and Dekker's just culture) keep people reporting problems.
+
+Section thirty point three develops capstone evaluation and improvement dossier with a Fernmoor City Services note the implementer can demo offline.
+
+Under section thirty point three, the service owner expects capstone claims to carry owners and dates.
 
 ### 30.4 Worked example (synthetic): Fernmoor's first-year dossier
 
@@ -2027,6 +2507,12 @@ Top improvements (priority order): (1) restore test for permits share — protec
 The dossier closes with the sustainment calendar, the owner list, open risks formally accepted by the director (OT scope still excluded; referral procedure in place), and a list of what the evaluation could not show.
 
 ### 30.5 Common errors and limits
+Section thirty point five develops capstone evaluation and improvement dossier with a Fernmoor City Services note the implementer can demo offline.
+
+Under section thirty point five, the service owner expects capstone claims to carry owners and dates.
+
+Section thirty point five treats capstone evaluation and improvement dossier as testable only when evidence and ticket IDs are recorded.
+
 
 - Reporting only successes.
 - Improvements without measures, so no one knows whether they worked.
