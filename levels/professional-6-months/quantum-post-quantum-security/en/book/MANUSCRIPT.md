@@ -497,7 +497,7 @@ At MTI the infrastructure team is the system owner for the reinsurer SFTP server
 
 Use simple states: *Unknown* → *Assessed* → *Planned* → *In progress* → *Implemented* → *Verified* → *Closed* (or *Exception*). An item moves to Verified only with evidence of negotiation, not just a change ticket.
 
-Each state needs its own evidence: an inventory record for Assessed, an owner and date for Planned, a change ticket for Implemented and negotiation logs for Verified. Record the date of each state change so the tracker shows how long items take. A move back to an earlier state is also recorded, with a reason, as happened with the broker portal.
+Each state needs its own evidence: an inventory record for Assessed, an owner and date for Planned, a change ticket for Implemented and negotiation logs for Verified. Record the date of each state change so the tracker shows how long items take. A move back to an earlier state is also recorded, with a reason, as happened with the broker portal (Chapter 10).
 
 ### 6.4 Dependencies
 
@@ -716,7 +716,7 @@ Score each option on protection, time, cost, operational risk and dependency, wi
 
 Present your analysis to your supervisor before sharing it: they will check whether the facts are graded correctly, whether options were considered fairly and whether the recommendation stays within what the evidence supports. Incorporate comments and record what changed.
 
-For the archive case, expect questions such as why option B applies to two offices only and whether the cost range is supported by quotes. Your supervisor may also ask whether the claim about firmware version 7.4 has been tested and how the cost was estimated. Answer with the evidence you have and say what you do not yet know.
+For the archive case, expect questions such as why option B applies to two offices only and whether the cost range is supported by quotes. Your supervisor may also ask whether the claim about firmware version 7.4 has been tested. Answer with the evidence you have and say what you do not yet know.
 
 ### 8.9 Common errors and limits
 
@@ -958,13 +958,13 @@ Each criterion maps to a chapter of the book, so feedback tells you which chapte
 
 A participant's Day 2 output: 9 tier-1 assets; priority list headed by archive transfers and reinsurer SFTP; 6 unknowns with tasks; Mosca table across *z* = 10, 15, 20. Supervisor feedback: one supplier claim graded as B should be D; corrected and the priority of that asset reduced pending verification.
 
-The feedback shows why grading matters: the misgraded claim had raised an asset's priority on a supplier's word. Correcting it moved money and attention to items with better evidence. Record such corrections in the log. The participant also noted the change in the daily log.
+The feedback shows why grading matters: the misgraded claim had raised an asset's priority on a supplier's word. Correcting it moved money and attention to items with better evidence. The participant recorded the correction in the daily log.
 
 ### 11.6 Practice task
 
 Complete the five-day lab and keep a short daily log.
 
-Each day, write what you produced, what decision you made and why, and what you would do differently. Keep the log factual and short. Note when a role-player's answer changed your plan. The log feeds the reflection and becomes part of your portfolio. Read the log each morning before starting, so yesterday's lessons shape today's work. Share it with your supervisor at the end of the week. Keep entries brief.
+Each day, write what you produced, what decision you made and why, and what you would do differently. Keep the log factual and short. Note when a role-player's answer changed your plan. The log feeds the reflection and becomes part of your portfolio. Read the log each morning before starting, so yesterday's lessons shape today's work. Share it with your supervisor at the end of the week.
 
 ### 11.7 Reflection
 
@@ -1211,6 +1211,8 @@ Model answers; any answer meeting the rubric scores equally. Numbers about MTI a
 ## Twelve-subject teaching route
 
 This is the **professional** course for practitioners running the migration workflow at the synthetic **Marlow & Tide Insurance (MTI)**: foundations, context, authorized evidence, inventory, tool interpretation, workflow, controls and verification, case analysis, communication, quality and a supervised lab.
+
+<a id="references"></a>
 
 ## References
 
