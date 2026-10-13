@@ -1572,7 +1572,7 @@ For DocSort, this view showed the contractor team between the letter archive and
 
 Rina's system model of Ask Lumen showed a forgotten flow: the chatbot could read the clinic's public web page through a "check opening hours" tool, and that page included a comments section. Comments were untrusted public content flowing into the model. LCH changed the tool to read a structured opening-hours file instead of the whole page.
 
-Nobody had listed the tool because it seemed harmless; drawing the flow made the risk visible. Reading a structured file also made answers more reliable, since staff edit it directly.
+Nobody had listed the tool's data source because the tool seemed harmless; drawing the flow made the risk visible. Reading a structured file also made answers more reliable, since staff edit it directly.
 
 ### 21.6 Errors and limits
 
