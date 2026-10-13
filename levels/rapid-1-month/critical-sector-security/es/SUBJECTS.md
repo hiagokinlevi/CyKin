@@ -11,8 +11,8 @@ Edición en español neutro, escrita a partir de la edición de referencia en in
 | Semana | Capítulo / plan | Asignatura | Horas | Páginas A4 previstas | Meta de ejercicios | Estado didáctico | Siguiente paso |
 |---|---|---|---:|---:|---:|---|---|
 | 1 | [01](book/PLAN.md#ch-01) | Fundamentos y decisiones | 20 | 80 | 13 | [Borrador](book/MANUSCRIPT.md#ch-01) | [02 · Borrador](book/MANUSCRIPT.md#ch-02) |
-| 2 | [02](book/PLAN.md#ch-02) | Alcance, permiso y práctica segura | 20 | 80 | 13 | [Borrador](book/MANUSCRIPT.md#ch-02) | [03 · Plan](book/PLAN.md#ch-03) |
-| 3 | [03](book/PLAN.md#ch-03) | Sistemas, datos y dependencias | 20 | 80 | 12 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-03)) | [04 · Plan](book/PLAN.md#ch-04) |
+| 2 | [02](book/PLAN.md#ch-02) | Alcance, permiso y práctica segura | 20 | 80 | 13 | [Borrador](book/MANUSCRIPT.md#ch-02) | [03 · Borrador](book/MANUSCRIPT.md#ch-03) |
+| 3 | [03](book/PLAN.md#ch-03) | Sistemas, datos y dependencias | 20 | 80 | 12 | [Borrador](book/MANUSCRIPT.md#ch-03) | [04 · Plan](book/PLAN.md#ch-04) |
 | 4 | [04](book/PLAN.md#ch-04) | Laboratorio guiado y síntesis aplicada | 20 | 80 | 12 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-04)) | [Curso 024 →](../../../professional-6-months/cybersecurity/es/SUBJECTS.md) |
 
 Un siguiente paso planificado es un destino de navegación, no una lección escrita. Las columnas de páginas y ejercicios son metas editoriales. El libro solo estará completo cuando su contenido y su maquetación A4 cumplan el criterio de publicación.

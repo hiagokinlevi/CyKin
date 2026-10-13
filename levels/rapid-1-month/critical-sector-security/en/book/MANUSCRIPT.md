@@ -437,10 +437,9 @@ Compare your sketch with Sam's clinic dependency table: did you remember people 
 - Listing upstream dependencies but forgetting downstream people who are harmed.
 - Assuming a backup works without asking what *it* depends on.
 - Stating guesses as facts; in this chapter, a dependency list is a set of questions for the owner.
-- Limits: real OT architectures are far more varied than the simple picture in 3.2.
-
 - Forgetting that one person can be a single point of failure, like the one nurse who knows the clinic's fridge alarm.
 - Contacting a supplier or utility to check a dependency yourself, instead of passing the question to the owner.
+- Limits: real OT architectures are far more varied than the simple picture in 3.2.
 
 ### Exercises — chapter 3
 

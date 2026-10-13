@@ -50,7 +50,7 @@ Toda afirmación factual sobre un marco público, una ley, una orientación o un
 
 1. [Fundamentos y decisiones](#ch-01): servicios esenciales, sectores y funciones, primero la consecuencia, una primera frase de riesgo y las tres decisiones del recién llegado.
 2. [Alcance, permiso y práctica segura](#ch-02): qué significa la autorización, los límites del recién llegado, la comunicación y el intercambio cuidadoso de información.
-3. [Sistemas, datos y dependencias](../../en/book/MANUSCRIPT.md#ch-03): personas, TI, tecnología operativa, datos, proveedores; dependencias aguas arriba y aguas abajo; puntos únicos de fallo.
+3. [Sistemas, datos y dependencias](#ch-03): personas, TI, tecnología operativa, datos, proveedores; dependencias aguas arriba y aguas abajo; puntos únicos de fallo.
 4. [Laboratorio guiado y síntesis aplicada](../../en/book/MANUSCRIPT.md#ch-04): el Lab 4 (¿qué más falla?), una ficha del servicio de una página y una autocomprobación del curso.
 - [Resultados resueltos](#worked-results) · [Glosario](#glossary) · [Referencias](#references)
 
@@ -321,7 +321,150 @@ El permiso lo da el dueño del sistema, es concreto y suele constar por escrito;
 <!-- cyberabc:chapter-navigation:start ch-02 -->
 ### Siga estudiando — capítulo 02 de 04
 
-[← Capítulo 01](#ch-01) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 03 →](../../en/book/MANUSCRIPT.md#ch-03)
+[← Capítulo 01](#ch-01) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 03 →](#ch-03)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-03"></a>
+
+## Capítulo 3 — Infraestructura crítica y seguridad sectorial: sistemas, datos y dependencias
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo será capaz de:
+
+- describir las cinco partes de un servicio esencial: personas, TI, tecnología operativa, datos y proveedores;
+- explicar con palabras sencillas qué hacen los sensores, los controladores, las pantallas de operador y el SCADA, y en qué se diferencia la TO de la informática de oficina;
+- nombrar los principales tipos de datos de un sector y el daño que cada uno podría causar si se pierde, se modifica o se filtra;
+- distinguir las dependencias **aguas arriba**, **aguas abajo** y **compartidas**;
+- detectar un **punto único de fallo** y una **alternativa manual** en una descripción sencilla.
+
+El capítulo 2 fijó sus límites. Aquí aprenderá a *ver* un servicio con claridad desde fuera, lo que prepara el laboratorio guiado del capítulo 4.
+
+### 3.1 Las cinco partes de un servicio
+
+| Parte | Qué es | Ejemplo de Larkfield (sintético) |
+|---|---|---|
+| **Personas** | Personal, contratistas, voluntarios, y el conocimiento que tienen en la cabeza. | El personal de enfermería, Sam en recepción, D. Brandt de turno en la planta de agua. |
+| **TI (tecnologías de la información)** | Ordenadores de oficina, correo electrónico, software de gestión, redes. | Las citas de MedBook, el correo del centro de salud, la facturación. |
+| **TO (tecnología operativa)** | Ordenadores que miden y controlan cosas físicas. | Las bombas y la dosificación de cloro de Larkfield Water; el controlador del frigorífico de vacunas del centro. |
+| **Datos** | La información que el servicio crea y de la que depende. | Historias clínicas, recetas, lecturas de calidad del agua. |
+| **Proveedores** | Empresas externas de las que depende el servicio. | MedBook (software), LinkNet (teléfono e internet), Larkfield Power. |
+
+Los problemas de seguridad pueden empezar en cualquiera de estas partes. Muchos empiezan por las personas (un correo convincente) o por los proveedores (una cuenta de acceso remoto), no por una tecnología ingeniosa.
+
+### 3.2 Una mirada sencilla a la tecnología operativa
+
+No necesita configurar la TO para entenderla. Una imagen simplificada de una estación de bombeo de agua:
+
+- Los **sensores** miden cosas: el nivel de agua de un depósito, la presión en una tubería, la concentración de cloro.
+- Los **actuadores** hacen cosas: arrancar una bomba, abrir una válvula, añadir un producto químico.
+- Un **controlador** —a menudo un **PLC** (autómata programable), un pequeño ordenador robusto— lee los sensores y acciona los actuadores mediante reglas sencillas («si el depósito está por debajo del 30 %, arrancar la bomba 2»).
+- Una **HMI** (interfaz hombre-máquina) es la pantalla del operador, que muestra niveles y alarmas y le permite cambiar configuraciones.
+- El **SCADA** (supervisión, control y adquisición de datos) es el sistema más amplio que reúne en una sala de control las lecturas de muchas instalaciones.
+
+La guía del NIST sobre seguridad de la TO describe estos componentes y por qué la TO se diferencia de la TI ([NIST SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final)). Para un recién llegado importan tres diferencias:
+
+| Informática de oficina | Tecnología operativa |
+|---|---|
+| Se reinicia, se parchea y se sustituye a menudo. | Debe funcionar sin interrupción; los cambios requieren planificación y pruebas. |
+| Lo peor suele ser la pérdida o filtración de datos. | Lo peor puede ser un daño físico o la pérdida de un servicio esencial. |
+| Los dispositivos duran entre 3 y 5 años. | Los dispositivos suelen durar entre 15 y 25 años o más. |
+
+Por eso el capítulo 2 prohibía «solo comprobar»: los dispositivos de TO pueden ser antiguos y sensibles, y lo que controlan es real.
+
+### 3.3 Los datos y lo que podría salir mal
+
+| Tipo de datos | Ejemplo | Filtrados (confidencialidad) | Modificados (integridad) | No disponibles (disponibilidad) |
+|---|---|---|---|---|
+| Personales/de salud | Historias clínicas | Daño a la privacidad; obligaciones legales | Tratamiento equivocado | Atención retrasada |
+| Lecturas operativas | Nivel del depósito, cloro | Ayudan a un atacante a planificar | Los operadores actúan sobre una imagen falsa | Operadores «a ciegas»; hacen falta comprobaciones manuales |
+| Configuraciones | Consigna de dosificación | Ayudan a un atacante a planificar | Funcionamiento inseguro | No se puede ajustar el proceso |
+| De gestión | Facturación, nóminas | Fraude | Facturas erróneas | Problemas de tesorería |
+
+Fíjese en la columna central para los datos operativos: una lectura errónea puede ser más peligrosa que una robada, porque las personas toman decisiones basándose en ella.
+
+### 3.4 Dependencias
+
+Ningún servicio está aislado. Una **dependencia** es algo que un servicio necesita para funcionar.
+
+- Las dependencias **aguas arriba** son lo que necesita *su* servicio: electricidad, agua, teléfono, internet, personal, suministros.
+- Los dependientes **aguas abajo** son quienes necesitan *su* servicio: pacientes, hogares, otros servicios.
+- Las dependencias **compartidas** las usan muchos servicios a la vez: una red telefónica, un depósito de combustible, un proveedor de software. Su fallo golpea a muchos servicios a la vez.
+
+Un **punto único de fallo** es algo cuya pérdida detiene el servicio porque no hay alternativa. Un **respaldo** (un generador, una segunda línea de internet) o una **alternativa manual** (listas de citas en papel, operadores que leen los indicadores a mano) reduce el impacto. Pero un respaldo solo es tan bueno como *sus propias* dependencias: un generador diésel necesita entregas de combustible, que a su vez necesitan carreteras y conductores. El laboratorio del capítulo 4 lo hace visible.
+
+### 3.5 Proveedores y acceso remoto
+
+Muchos servicios esenciales permiten que los proveedores se conecten en remoto para mantener el software y los equipos. Es útil, y también es una puerta. La guía de la CISA para los dueños de TO incluye, entre las mitigaciones principales, reducir la exposición a internet, cambiar las contraseñas por defecto y proteger el acceso remoto ([CISA, Primary Mitigations to Reduce Cyber Threats to Operational Technology](https://www.cisa.gov/resources-tools/resources/primary-mitigations-reduce-cyber-threats-operational-technology)). Los objetivos de rendimiento en ciberseguridad intersectoriales de la CISA (*Cross-Sector Cybersecurity Performance Goals*) establecen también prácticas básicas aplicables a todos los sectores, como la autenticación multifactor y el inventario de activos ([CISA CPGs](https://www.cisa.gov/cross-sector-cybersecurity-performance-goals)). Como recién llegado no gestionará estas cuentas, pero debe reconocer el riesgo cuando oiga «el proveedor entra cuando quiere con una contraseña compartida».
+
+El ataque de *ransomware* de 2021 contra una empresa de oleoductos estadounidense, descrito por la CISA y el FBI en su aviso, es también una lección sobre dependencias: un ataque contra los sistemas informáticos de gestión afectó al funcionamiento de un suministro de combustible del que dependían muchos otros aguas abajo ([CISA AA21-131A](https://www.cisa.gov/news-events/cybersecurity-advisories/aa21-131a)).
+
+### 3.6 Ejemplo resuelto: ¿de qué depende el centro de salud? (sintético)
+
+H. Novak pide a Sam que enumere, para una reunión de personal, lo que necesita el centro para abrir sus puertas. Sam repasa una mañana normal y escribe:
+
+| Dependencia | Tipo | Si se pierde… | Respaldo o alternativa | Notas |
+|---|---|---|---|---|
+| Larkfield Power | Aguas arriba, compartida | Se apagan las luces, los PC y los frigoríficos | Generador diésel (combustible almacenado para 2 horas) | Para cortes más largos, el generador necesita una entrega de combustible. |
+| Teléfono e internet de LinkNet | Aguas arriba, compartida | Sin MedBook, sin citas telefónicas, sin pagos con tarjeta | Ninguno conocido | *¿Punto único de fallo?*: preguntar a K. Ito. |
+| MedBook (nube) | Aguas arriba, proveedor | Sin lista de citas | ¿Lista impresa en papel?: *desconocido* | Preguntar a H. Novak si existe una copia impresa diaria. |
+| Larkfield Water | Aguas arriba, compartida | Sin lavado de manos ni instrumental limpio | Agua embotellada para un día | El centro debe dejar de hacer algunos procedimientos. |
+| Personal | Aguas arriba | Sin servicio | Personal de agencia | Solo una persona de enfermería conoce la alarma del frigorífico. |
+| Pacientes, farmacia | Aguas abajo | — | — | La farmacia depende de las recetas del centro. |
+
+Sam señala tres preguntas, no conclusiones: ¿es LinkNet un punto único de fallo? ¿Hay una alternativa en papel para MedBook? ¿Quién más conoce la alarma del frigorífico? Estas preguntas van a H. Novak, la persona dueña, que decide qué cambiar, si es que hay que cambiar algo.
+
+### 3.7 Actividad práctica
+
+Elija un servicio esencial público cercano (o la planta de Larkfield Water descrita antes). Usando solo información pública y sentido común, dibuje un esquema sencillo de dependencias: el servicio en el centro, las dependencias aguas arriba a la izquierda y los dependientes aguas abajo a la derecha. Rodee con un círculo todo lo compartido, marque con una estrella cualquier posible punto único de fallo y escriba una pregunta que haría al dueño. No contacte con el servicio ni lo sondee. Compare su esquema con la tabla de dependencias del centro de Sam: ¿se acordó de las personas y los proveedores, además de la electricidad y el agua? Si eligió Larkfield Water, su esquema debería mostrar el centro de salud y los hogares aguas abajo y tratar LinkNet como compartida. Formule su pregunta al dueño de modo que pueda responderse con un sí o un no.
+
+### 3.8 Errores comunes y límites
+
+- Pensar solo en los ordenadores y olvidar a las personas, los proveedores y los edificios.
+- Tratar la TO como la informática de oficina («basta con reiniciarlo»).
+- Enumerar las dependencias aguas arriba, pero olvidar a las personas perjudicadas aguas abajo.
+- Dar por hecho que un respaldo funciona sin preguntar de qué depende *él*.
+- Presentar suposiciones como hechos; en este capítulo, una lista de dependencias es un conjunto de preguntas para el dueño.
+- Olvidar que una persona puede ser un punto único de fallo, como la única persona de enfermería que conoce la alarma del frigorífico del centro.
+- Contactar por su cuenta con un proveedor o una empresa de servicios para comprobar una dependencia, en lugar de trasladar la pregunta al dueño.
+- Límites: las arquitecturas reales de TO son mucho más variadas que la imagen sencilla de 3.2.
+
+### Ejercicios — capítulo 3
+
+**EX027 — Cinco partes.** *Objetivo:* clasificar las partes de un servicio. *Insumos:* (a) el controlador del frigorífico de vacunas del centro; (b) MedBook; (c) la persona de enfermería que conoce la alarma del frigorífico; (d) las recetas; (e) LinkNet. *Pasos:* asignar cada uno a personas, TI, TO, datos o proveedores. *Evidencia esperada:* cinco asignaciones. *Rúbrica:* 3 = a TO, b TI (y un proveedor), c personas, d datos, e proveedor; 2 = cuatro; 1 = dos o tres; 0 = menos.
+
+**EX028 — Componentes de TO.** *Objetivo:* explicar con palabras sencillas los términos de TO. *Insumos:* sensor, actuador, PLC, HMI, SCADA. *Pasos:* dar para cada uno una definición sencilla de una línea y un ejemplo de una estación de agua. *Evidencia esperada:* cinco líneas. *Rúbrica:* 3 = todos correctos con ejemplos; 2 = cuatro; 1 = dos o tres; 0 = menos.
+
+**EX029 — TI frente a TO.** *Objetivo:* comparar. *Insumos:* la sección 3.2. *Pasos:* dar dos diferencias y decir por qué cada una importa para la seguridad. *Evidencia esperada:* dos pares. *Rúbrica:* 3 = dos diferencias correctas (continuidad, consecuencia física, vida útil) con sus implicaciones de seguridad (los cambios requieren planificación, el daño puede ser físico, los dispositivos antiguos pueden carecer de protecciones); 2 = diferencias sin implicaciones; 1 = una; 0 = ninguna.
+
+**EX030 — Lectura errónea.** *Objetivo:* ver el riesgo de integridad en la TO. *Insumos:* la HMI de una estación de agua muestra el depósito lleno al 80 %, pero en realidad está al 10 %. *Pasos:* describir lo que podría hacer el operador y la posible consecuencia. *Evidencia esperada:* dos o tres frases. *Rúbrica:* 3 = el operador no arranca las bombas, el depósito se vacía y se pierde presión o suministro para los clientes, incluido el centro de salud; señala que una comprobación manual lo revelaría; 2 = consecuencia sin la acción del operador; 1 = vago; 0 = nada.
+
+**EX031 — Daños a los datos.** *Objetivo:* aplicar la visión de confidencialidad, integridad y disponibilidad a los datos. *Insumos:* «registros de recetas». *Pasos:* describir un daño si se filtran, otro si se modifican y otro si no están disponibles. *Evidencia esperada:* tres daños. *Rúbrica:* 3 = daño a la privacidad/obligación legal; medicamento o dosis equivocados; los pacientes no pueden recibir sus medicamentos; 2 = dos; 1 = uno; 0 = nada.
+
+**EX032 — Aguas arriba, aguas abajo, compartida.** *Objetivo:* clasificar dependencias. *Insumos:* para Larkfield Water: (a) Larkfield Power; (b) los hogares; (c) el proveedor de productos químicos; (d) el centro de salud; (e) LinkNet, que también usan el centro y el banco. *Pasos:* clasificar cada uno. *Evidencia esperada:* cinco respuestas. *Rúbrica:* 3 = a aguas arriba (compartida), b aguas abajo, c aguas arriba, d aguas abajo, e aguas arriba y compartida; 2 = cuatro; 1 = dos o tres; 0 = menos.
+
+**EX033 — Punto único de fallo.** *Objetivo:* detectarlo. *Insumos:* la tabla de 3.6. *Pasos:* nombrar el elemento con más probabilidad de ser un punto único de fallo y explicarlo. *Evidencia esperada:* respuesta y motivo. *Rúbrica:* 3 = LinkNet: no tiene respaldo conocido y su pérdida deja a la vez sin MedBook, teléfono y pagos; se presenta como pregunta por confirmar; 2 = elemento correcto sin cautela; 1 = elige un elemento con respaldo; 0 = nada.
+
+**EX034 — El respaldo del respaldo.** *Objetivo:* seguir las dependencias de un respaldo. *Insumos:* el generador del centro con combustible para dos horas. *Pasos:* enumerar de qué depende el generador en un corte de 24 horas. *Evidencia esperada:* la lista. *Rúbrica:* 3 = entrega de combustible, que necesita carreteras, un proveedor y conductores, además de alguien que sepa ponerlo en marcha y probarlo; 2 = solo el combustible; 1 = «de nada»; 0 = nada.
+
+**EX035 — Alternativa manual.** *Objetivo:* reconocer las alternativas. *Insumos:* la dependencia de MedBook. *Pasos:* proponer una alternativa manual y una condición para que funcione. *Evidencia esperada:* alternativa y condición. *Rúbrica:* 3 = una lista de citas impresa a diario (o un formulario de citas en papel) que esté al día, se guarde de forma segura y que el personal sepa usar; 2 = alternativa sin condición; 1 = «arreglar MedBook»; 0 = nada.
+
+**EX036 — La puerta del proveedor.** *Objetivo:* reconocer el riesgo del acceso remoto. *Insumos:* D. Brandt dice: «el proveedor de las bombas entra desde casa cuando quiere; todo el mundo usa la misma contraseña». *Pasos:* escribir una frase de riesgo y nombrar dos prácticas básicas de la guía de la CISA citada que tengan relación con ella. *Evidencia esperada:* la frase y dos prácticas. *Rúbrica:* 3 = frase de causa, evento y consecuencia sobre el control no autorizado de las bombas; prácticas como proteger el acceso remoto, la autenticación multifactor, cambiar las contraseñas por defecto o compartidas y limitar la exposición a internet; 2 = la frase y una práctica; 1 = solo la práctica; 0 = nada.
+
+**EX037 — La lección del oleoducto.** *Objetivo:* extraer una lección sobre dependencias. *Insumos:* [CISA AA21-131A](https://www.cisa.gov/news-events/cybersecurity-advisories/aa21-131a). *Pasos:* explicar en dos frases por qué un ataque contra los sistemas de gestión de una empresa importó a muchos otros. *Evidencia esperada:* dos frases. *Rúbrica:* 3 = el suministro de combustible del oleoducto es una dependencia compartida aguas arriba para muchos usuarios aguas abajo, así que la perturbación se extendió más allá de la víctima; 2 = solo menciona la perturbación; 1 = solo detalles técnicos; 0 = nada.
+
+**EX038 — Preguntas, no conclusiones.** *Objetivo:* comunicar la incertidumbre. *Insumos:* las tres preguntas de Sam en 3.6. *Pasos:* reescribir una como un mensaje breve a H. Novak, señalando lo que se sabe y lo que se supone. *Evidencia esperada:* el mensaje. *Rúbrica:* 3 = educado, ceñido a los hechos, separa lo que se sabe (no figura ninguna línea de respaldo) de lo que se supone (que no existe) y pide al dueño que decida; 2 = buen mensaje sin separar lo sabido de lo supuesto; 1 = presenta una suposición como hecho; 0 = nada.
+
+### Síntesis del capítulo
+
+Un servicio esencial son personas, TI, tecnología operativa, datos y proveedores que trabajan juntos. La TO mide y controla el mundo físico, debe funcionar sin interrupción y puede causar daños físicos cuando falla, por lo que una lectura errónea puede ser peor que una robada. Los servicios dependen de otros aguas arriba, sirven a personas aguas abajo y comparten dependencias entre sí; los puntos únicos de fallo y los respaldos que tienen sus propias dependencias son donde se esconden los problemas. La lista de dependencias de un recién llegado es un conjunto de buenas preguntas para el dueño.
+
+<!-- cyberabc:chapter-navigation:start ch-03 -->
+### Siga estudiando — capítulo 03 de 04
+
+[← Capítulo 02](#ch-02) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 04 →](../../en/book/MANUSCRIPT.md#ch-04)
 
 Continúe con la siguiente lección escrita.
 <!-- cyberabc:chapter-navigation:end -->
@@ -387,6 +530,32 @@ Estas son respuestas modelo. Una respuesta distinta que cumpla el nivel de exige
 **EX025.** Publicarlo podría señalar a los atacantes un servicio crítico para la seguridad antes de que se corrija, y la afirmación puede ser errónea o estar desactualizada. Mejor: si esa amistad trabaja allí, que se lo diga a su supervisor o a su contacto de seguridad; si no, que use el contacto publicado de la empresa de agua o su vía de divulgación de vulnerabilidades. No publicar detalles.
 
 **EX026.** (1) No le dejó entrar: solo el dueño de la red puede autorizar trabajos. (2) Llamó a Novak y a Ito a los números de la lista del centro: verificar por canales conocidos, nunca por los que da quien llama. (3) Rechazó los «cinco minutos»: los dispositivos y cambios no aprobados pueden perturbar los servicios. (4) Redactó un aviso en cinco partes etiquetado TLP:AMBER+STRICT: comunicar ciñéndose a los hechos y compartir con cuidado.
+
+### Capítulo 3
+
+**EX027.** (a) TO; (b) TI, y MedBook como empresa es un proveedor; (c) personas; (d) datos; (e) proveedor.
+
+**EX028.** Sensor: mide algo (sensor de nivel del depósito). Actuador: hace algo físico (motor de la bomba, válvula). PLC: pequeño ordenador robusto que lee los sensores y acciona los actuadores mediante reglas (arranca la bomba 2 cuando el depósito está bajo). HMI: la pantalla y los mandos del operador (muestra niveles y alarmas). SCADA: sistema que reúne en una sala de control las lecturas de muchas instalaciones (todas las estaciones de bombeo en una sola pantalla).
+
+**EX029.** (1) La TO debe funcionar sin interrupción → los parches y los cambios requieren planificación y pruebas, así que las debilidades conocidas pueden permanecer más tiempo. (2) Un fallo de la TO puede causar daños físicos → los errores de seguridad pueden herir a personas. (3) Los dispositivos de TO duran décadas → muchos carecen de protecciones modernas, como una autenticación robusta.
+
+**EX030.** Al ver un 80 %, el operador no ve necesidad de arrancar las bombas. El depósito se vacía, la presión cae y los hogares y el centro de salud se quedan sin agua. Una comprobación manual del depósito (o una segunda lectura independiente) pondría de manifiesto el valor falso: la integridad importa tanto como la disponibilidad.
+
+**EX031.** Filtrados: se expone información privada de salud de los pacientes; obligaciones legales de notificar. Modificados: se dispensa un medicamento o una dosis equivocados. No disponibles: los pacientes no pueden recibir a tiempo sus medicamentos de uso continuado.
+
+**EX032.** (a) aguas arriba, compartida; (b) aguas abajo; (c) aguas arriba; (d) aguas abajo; (e) aguas arriba, compartida.
+
+**EX033.** LinkNet: no se conoce ningún respaldo y su pérdida detiene a la vez MedBook, las citas telefónicas y los pagos con tarjeta. Es un *posible* punto único de fallo: Sam debe confirmarlo con K. Ito en lugar de afirmarlo.
+
+**EX034.** Entregas de combustible pasadas las dos horas; por tanto, un proveedor de combustible, carreteras abiertas y conductores disponibles; además, una persona que sepa arrancar, hacer funcionar y repostar el generador, y pruebas de que se ha ensayado.
+
+**EX035.** Una lista de citas impresa a diario (o formularios de citas en papel). Condiciones: se imprime cada mañana para que esté al día, se guarda de forma segura porque contiene datos personales y el personal conoce el procedimiento para usarla y, después, volver a introducir los datos.
+
+**EX036.** «Como el proveedor de las bombas usa una única contraseña compartida y puede entrar desde casa en cualquier momento, cualquiera que conozca esa contraseña podría conectarse y cambiar la configuración de las bombas, lo que llevaría a una pérdida de presión o a un funcionamiento inseguro para los clientes.» Prácticas: proteger el acceso remoto (solo cuando haga falta, aprobado y supervisado), autenticación multifactor, cambiar las contraseñas por defecto o compartidas, reducir la exposición a internet (mitigaciones principales de la CISA para la TO; CPG).
+
+**EX037.** El oleoducto suministraba un combustible del que dependían muchas empresas y comunidades, así que era una dependencia compartida aguas arriba. Cuando la empresa sufrió la perturbación, el efecto se extendió a usuarios aguas abajo que no habían sido atacados.
+
+**EX038.** «Hola, H.: al enumerar de qué depende el centro, solo he encontrado un proveedor de internet y teléfono, LinkNet. No sé si hay una línea de respaldo o una alternativa móvil; supongo que no, pero puedo equivocarme. Si no la hay, un corte detendría a la vez MedBook, el teléfono y los pagos con tarjeta. ¿Valdría la pena consultarlo con K. Ito? — Sam»
 
 <a id="glossary"></a>
 
