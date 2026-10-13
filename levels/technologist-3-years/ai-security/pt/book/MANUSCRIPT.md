@@ -675,7 +675,7 @@ Decida com antecedência o que conta como sucesso para o atacante. Para um agent
 
 ### 9.5 Exemplo resolvido (caso sintético da Brightwell)
 
-O ReturnGuard sinaliza devoluções fraudulentas. Jonas encontra fraude em cerca de 1% das devoluções; a taxa de falsos positivos do modelo é de 5%. Usando o laboratório, a precisão fica em cerca de 16%: cinco de cada seis clientes sinalizados são honestos. Ele recomenda um limiar de 1% de falsos positivos (precisão de cerca de 49%) e revisão humana antes de qualquer recusa. A recomendação não afirma que o modelo é ruim; mostra que um evento raro faz a maioria dos alertas estar errada nesse limiar. A revisão humana também protege os clientes honestos dos erros que restam no limiar mais rigoroso. No limiar de 1%, o laboratório ainda dá uma precisão de 0,490, de modo que os revisores veem aproximadamente um cliente honesto para cada fraudador sinalizado.
+O ReturnGuard sinaliza devoluções fraudulentas. Jonas encontra fraude em cerca de 1% das devoluções; a taxa de falsos positivos do modelo é de 5%. Usando o laboratório, a precisão fica em cerca de 16%: cinco de cada seis clientes sinalizados são honestos. Ele recomenda um limiar de 1% de falsos positivos (precisão de 0,490 no laboratório, de modo que os revisores veem aproximadamente um cliente honesto para cada fraudador sinalizado) e revisão humana antes de qualquer recusa. A recomendação não afirma que o modelo é ruim; mostra que um evento raro faz a maioria dos alertas estar errada nesse limiar. A revisão humana também protege os clientes honestos dos erros que restam no limiar mais rigoroso.
 
 ### 9.6 Erros e limites
 
