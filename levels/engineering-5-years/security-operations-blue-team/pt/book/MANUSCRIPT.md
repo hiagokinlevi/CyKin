@@ -1,7 +1,7 @@
 # Operações de Segurança e Blue Team: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 130, curso de engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–32 de 50 já estão escritos em português, com os exercícios EX001–EX096 e suas resoluções com rubricas de 0 a 3 e 6 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 33–50 (EX097–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–36 de 50 já estão escritos em português, com os exercícios EX001–EX108 e suas resoluções com rubricas de 0 a 3 e 7 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 37–50 (EX109–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que vão projetar, construir, verificar e operar sistemas de monitoramento de segurança e os processos de SOC em torno deles.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limite ético e legal: monitore e responda apenas em sistemas que você está autorizado a defender; nada de código de exploração, *payloads*, procedimentos de ataque ou instruções para escapar da detecção. As detecções são ensinadas do lado do defensor, com telemetria sintética. Todas as evidências, pessoas e organizações são **sintéticas**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ NIST [SP 800-61r3](https://doi.org/10.6028/NIST.SP.800-61r3), [SP 800-92](https:
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) |
 
-Capítulos 33–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-33), até a chegada dos próximos lotes.
+Capítulos 37–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-37), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -2139,11 +2139,279 @@ Um monitoramento confiável precisa de metas tanto para o tempo no ar quanto par
 
 [← Capítulo 31 (rascunho)](#ch-31) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 33 (rascunho) →](#ch-33)
 
+<a id="ch-33"></a>
+
+## Capítulo 33 — Operações de segurança e blue team: segurança operacional e resiliência
+
+### Objetivos de aprendizagem
+
+Você vai (1) avaliar os riscos que as ações do SOC trazem para a operação; (2) projetar uma resposta que preserve os serviços críticos; (3) planejar a resiliência do SOC quando os próprios sistemas dele falham; (4) exercitar cenários de resiliência.
+
+### 33.1 Segurança da resposta
+
+As ações de resposta podem prejudicar o negócio. Isolar uma estação de trabalho de um depósito pode parar o despacho por um turno. Os *playbooks* indicam quais ativos são críticos para a segurança ou para o negócio e exigem aprovação antes de isolá-los. Uma estação de despacho parada por um turno pode deixar dezenas de caminhões sem rota e clientes sem entrega. Esse dano pode superar o risco de um processo suspeito, sobretudo se as evidências forem fracas. Exigir aprovação para ativos críticos torna a escolha explícita: o analista apresenta as evidências, o responsável de negócio pesa o impacto operacional, e a decisão e seus motivos ficam registrados no caso.
+
+### 33.2 Serviços críticos
+
+A Lindqvist lista os serviços que precisam continuar: despacho, roteirização dos motoristas, rastreamento para clientes e pagamentos. Para cada um, o SOC combina de antemão as ações aceitáveis e os contatos. Combinar as ações de antemão evita discussões durante um incidente, quando o tempo é curto e a tensão é alta. Para o despacho, a ação combinada pode ser bloquear uma conexão suspeita em vez de isolar a máquina inteira. Cada serviço tem um contato de negócio nomeado, com um telefone que funciona à noite, e a lista é conferida a cada trimestre, porque as pessoas mudam de função.
+
+### 33.3 Resiliência do SOC
+
+O próprio SOC pode falhar: o SIEM pode cair, o sistema de casos pode ficar indisponível ou o escritório do SOC pode ficar inacessível. A função Recover do NIST CSF 2.0 e a SP 800-61r3 pedem que a recuperação seja planejada e praticada. Um SOC que depende inteiramente do SIEM fica às cegas quando o SIEM cai, e é justamente nesse momento que agiria um atacante que causou a queda. Planejar a recuperação significa listar as dependências do próprio SOC, decidir por quanto tempo cada uma pode faltar e preparar alternativas. Praticar esses planos importa, porque passos de recuperação nunca testados costumam falhar na primeira tentativa real.
+
+### 33.4 Alternativas de contingência
+
+Se o SIEM falhar, os analistas podem consultar diretamente as fontes críticas usando contas somente leitura e *runbooks*. Se o sistema de casos falhar, um modelo *offline* compartilhado registra as ações até ele voltar. As contas somente leitura permitem aos analistas examinar os logs de autenticação e de *firewall* nos sistemas de origem sem risco de alterá-los. Os *runbooks* trazem os passos exatos, já que analistas acostumados à interface do SIEM podem não conhecer as ferramentas próprias de cada fonte. O modelo *offline* registra horários, ações e decisões, para que o histórico do caso seja lançado depois no sistema de casos sem lacunas.
+
+### 33.5 Exercícios simulados
+
+Duas vezes por ano o SOC ensaia: "SIEM indisponível por quatro horas durante um ataque ao portal". Os ensaios revelam acessos que faltam, *runbooks* desatualizados e papéis pouco claros. Combinar uma indisponibilidade com um ataque torna o exercício realista: falhas reais muitas vezes coincidem com incidentes, às vezes porque o atacante as causou. Quatro horas é tempo suficiente para que contornos sejam necessários, em vez de simplesmente esperar a volta. Observadores anotam onde os analistas hesitaram, que passos faltaram e que contatos não atenderam, e cada constatação recebe um responsável e um prazo.
+
+### 33.6 Recuperação
+
+Depois de uma falha, o SOC verifica lacunas nos dados, reprocessa os logs retidos em *buffer* e revisa se as detecções deixaram passar algo durante a indisponibilidade. Os logs retidos nas fontes ou nos coletores durante a indisponibilidade podem chegar de uma vez quando o SIEM volta. As regras que rodam sobre dados ao vivo podem não processá-los, então os engenheiros rodam de novo as detecções principais sobre a janela da indisponibilidade. Toda lacuna que não pôde ser recuperada é registrada, para que investigações futuras saibam que aquele período tem dados incompletos. Paolo aprova a lista de lacunas.
+
+### 33.7 Caso
+
+No primeiro exercício, os analistas descobrem que as contas somente leitura para acesso direto aos logs tinham expirado. Ninguém tinha percebido porque as contas nunca eram usadas na operação normal; elas expiraram em silêncio pela política de senhas. Se a indisponibilidade fosse real, os analistas teriam perdido uma hora ou mais para obter aprovação de acesso. A correção é uma verificação trimestral que entra em cada conta de contingência, e um alerta duas semanas antes de qualquer uma delas expirar. Amara também inclui as contas de contingência na lista de revisão de acessos, para que seus responsáveis confirmem a cada trimestre que elas ainda são necessárias.
+
+### Comunicação durante a falha
+
+Quando os sistemas do SOC falham, o SOC informa às operações de TI e ao CISO que visibilidade foi perdida e por quanto tempo, para que os demais tomem cuidado redobrado.
+
+### Exemplo resolvido
+
+O relatório do exercício lista três constatações: contas de acesso direto expiradas (renovadas e incluídas nas verificações trimestrais), passos de *runbook* que citavam servidores desativados (atualizados) e nenhum responsável combinado pela decisão de isolar sistemas de despacho à noite (o gerente de plantão das operações é nomeado). O próximo exercício é agendado.
+
+> **Caso sintético.** O exercício é inventado.
+
+### Erros e limites
+
+Os exercícios são planejados; as falhas reais surpreendem. Mantenha os *runbooks* simples o bastante para serem usados sob tensão.
+
+### Exercícios
+
+- **EX097 — Ativos críticos.** Por que os *playbooks* precisam marcar os ativos críticos? *Rubrica:* 3 = o isolamento pode parar o despacho; exige aprovação; 2 = parcial; 1 = sem motivo; 0 = nada.
+- **EX098 — Contingência do SIEM.** O que os analistas podem fazer se o SIEM falhar? *Rubrica:* 3 = consultar diretamente as fontes críticas com contas somente leitura e *runbooks*; 2 = parcial; 1 = esperar; 0 = nada.
+- **EX099 — Constatações do exercício.** Liste as três constatações do exercício. *Rubrica:* 3 = contas expiradas, *runbooks* desatualizados, nenhum responsável pela decisão à noite; 2 = duas; 1 = uma; 0 = nada.
+
+### Síntese
+
+Uma resposta segura protege os serviços críticos, e um SOC resiliente planeja e ensaia como trabalhar quando os próprios sistemas falham.
+
+### Continue estudando — capítulo 33 de 50
+
+[← Capítulo 32 (rascunho)](#ch-32) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 34 (rascunho) →](#ch-34)
+
+<a id="ch-34"></a>
+
+## Capítulo 34 — Operações de segurança e blue team: integração
+
+### Objetivos de aprendizagem
+
+Você vai (1) integrar o SOC aos sistemas de gestão de serviços de TI, de identidade e de atendimento ao cliente; (2) projetar interfaces e trocas de dados confiáveis; (3) tratar falhas de integração; (4) testar integrações de ponta a ponta.
+
+### 34.1 Por que a integração importa
+
+Uma detecção só é útil se o resultado chega às pessoas e aos sistemas que agem. O alerta de possível tomada de conta precisa chegar ao sistema de casos, à fila do atendimento ao cliente e à plataforma de identidade que guarda as contas. Um alerta parado no SIEM não ajuda ninguém até que um analista aja sobre ele, que um atendente saiba o que dizer ao cliente e que a plataforma de identidade de fato bloqueie a conta. Cada passagem é um ponto onde a informação pode se perder ou atrasar. O projeto de integração mapeia cada passagem, incluindo que dados precisam atravessá-la e com que rapidez.
+
+### 34.2 Gestão de serviços de TI
+
+Alertas que exigem ação da TI, como consertar uma alimentação de logs, viram chamados no sistema de serviços de TI, com um mapeamento de prioridade combinado: "alta" no SOC significa "P2" na TI, com resposta em quatro horas. Sem um mapeamento combinado, uma "alta" do SOC poderia cair na fila da TI como pedido de rotina e esperar dias. O mapeamento traduz a urgência para os termos que a equipe receptora já usa. As quatro horas foram combinadas com a TI como realistas para o quadro de pessoal dela. Os chamados levam um *link* de volta ao caso do SOC, para que as duas equipes acompanhem o andamento.
+
+### 34.3 Plataforma de identidade
+
+A automação chama a interface da plataforma de identidade de clientes para aplicar bloqueios e invalidar sessões. A interface usa uma conta de serviço dedicada, só com essas permissões, e toda chamada é registrada. Uma conta dedicada, só com permissões de bloqueio e invalidação, limita o dano se a automação for mal usada ou comprometida: ela não consegue ler dados de clientes nem trocar senhas. Registrar cada chamada cria uma trilha de auditoria que mostra quais contas foram bloqueadas, quando e por qual alerta. Esses próprios registros são monitorados em busca de volumes incomuns.
+
+### 34.4 Atendimento ao cliente
+
+O atendimento ao cliente vê uma visão simplificada: "conta em bloqueio de segurança, motivo: login suspeito, contatar o cliente pelo telefone cadastrado". Os atendentes não veem logs brutos. Os logs brutos contêm detalhes de que o atendimento não precisa e que poderia interpretar mal ou divulgar. A visão simplificada dá exatamente o que o atendente precisa para agir: que a conta está bloqueada, por que, em termos simples, e como contatar o cliente com segurança. Usar o telefone cadastrado protege contra um atacante que tenha trocado o endereço de e-mail.
+
+### 34.5 Contratos de interface
+
+Cada integração tem um contrato: campos de dados, formatos, limites de taxa, códigos de erro e responsável. Os contratos evitam quebras silenciosas quando um dos lados muda. Os limites de taxa importam porque a automação pode chamar a plataforma de identidade muitas vezes durante um incidente grande. Os códigos de erro permitem à automação distinguir "conta não encontrada" de "plataforma sobrecarregada". Os responsáveis dos dois lados são avisados das mudanças planejadas. Os contratos ficam junto com o código da integração e são testados, para que uma mudança incompatível apareça antes da produção. Números de versão marcam cada revisão do contrato.
+
+### 34.6 Tratamento de falhas
+
+Se a plataforma de identidade não responde, a automação tenta de novo duas vezes e depois gera um alerta de alta prioridade para ação manual. Ela nunca presume sucesso. Presumir sucesso quando a plataforma não responde poderia deixar ativa uma conta comprometida enquanto o SOC acredita que ela está bloqueada. Duas novas tentativas cobrem falhas breves de rede sem atrasar demais. O alerta manual dá ao analista os detalhes necessários para aplicar o bloqueio à mão pelo console da plataforma, e o caso registra qual caminho foi usado.
+
+### 34.7 Testes
+
+Os testes de integração rodam todo mês com uma conta sintética de cliente de teste reservada para esse fim. Uma conta de teste reservada se comporta como um cliente real, mas não pertence a ninguém, então os bloqueios e a invalidação de sessões podem ser exercitados com segurança. Os testes mensais pegam mudanças do lado da plataforma de identidade, como um campo renomeado ou uma permissão revogada. Os resultados dos testes são registrados, e as falhas abrem um chamado para o responsável pela integração. Um teste que deixa a conta reservada bloqueada é ele mesmo uma falha, então o teste termina liberando o bloqueio e verificando que a conta volta a funcionar normalmente.
+
+### Responsáveis pelas integrações
+
+Cada integração tem um responsável de cada lado, que é avisado antes das mudanças.
+
+### Exemplo resolvido
+
+O primeiro teste mensal falha: o bloqueio é aplicado, mas a fila do atendimento ao cliente nunca recebe o caso, porque uma mudança de *firewall* bloqueou a conexão do SOC com o sistema de atendimento. O caminho de tratamento de falhas alerta o engenheiro de plantão, que corrige a regra; o teste é refeito e passa.
+
+> **Caso sintético.** Os sistemas e os testes são inventados.
+
+### Erros e limites
+
+As integrações multiplicam as dependências; cada uma é um novo lugar onde falhar.
+
+### Exercícios
+
+- **EX100 — Mapeamento de prioridades.** Por que mapear explicitamente as prioridades do SOC para as da TI? *Rubrica:* 3 = significado e tempos de resposta compartilhados entre as equipes; 2 = parcial; 1 = estilo; 0 = nada.
+- **EX101 — Conta de menor privilégio.** Como a conta da interface de identidade é limitada? *Rubrica:* 3 = só permissões de bloqueio e invalidação; todas as chamadas registradas; 2 = parcial; 1 = conta de administrador; 0 = nada.
+- **EX102 — Falha no teste.** O que revelou o primeiro teste de integração? *Rubrica:* 3 = uma mudança de *firewall* bloqueou a entrega do caso; o caminho de falha alertou; corrigido; 2 = parcial; 1 = vago; 0 = nada.
+
+### Síntese
+
+As integrações levam as detecções até a ação; contratos, menor privilégio, tratamento de falhas e testes regulares as mantêm funcionando.
+
+### Continue estudando — capítulo 34 de 50
+
+[← Capítulo 33 (rascunho)](#ch-33) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 35 (rascunho) →](#ch-35)
+
+<a id="ch-35"></a>
+
+## Capítulo 35 — Ateliê de projeto II
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar em equipe uma solução para um problema transversal do SOC; (2) equilibrar fatores técnicos, humanos e de custo; (3) produzir um projeto pronto para implementação; (4) criticar de forma construtiva os projetos de outras equipes.
+
+### 35.1 O problema
+
+O turno da noite tem dois analistas. O Ateliê II pede às equipes que reduzam em 40% a carga noturna de alertas sem aumentar os incidentes prioritários perdidos. Dois analistas à noite não conseguem investigar tudo o que chega, então alguns alertas esperam ou são fechados às pressas. Reduzir a carga sem aumentar os incidentes perdidos é uma restrição que puxa em duas direções, e é isso que a torna um problema de projeto, e não um simples corte. As equipes precisam mostrar evidências para as duas metades da meta. Elas recebem um mês de dados anonimizados de alertas e a lista de incidentes do mesmo período, para que as propostas possam ser conferidas com o que de fato aconteceu.
+
+### 35.2 Opções exploradas
+
+A equipe de Amara considera: mover regras de baixa severidade para uma fila matinal; um provedor gerenciado para o excedente; automatizar o enriquecimento, para que cada alerta leve menos tempo; e critérios mais rígidos de promoção de regras. Cada opção ataca a carga de um jeito: o reagendamento tira alertas da noite por completo, o excedente os divide com terceiros, o enriquecimento torna cada um mais rápido e os critérios de promoção impedem que novas regras ruidosas cheguem à noite. Elas podem ser combinadas, mas cada uma tem riscos, como acúmulos pela manhã ou a falta de contexto do provedor. Os custos são estimados para cada uma.
+
+### 35.3 Análise
+
+Usando um mês de dados de alertas, a equipe descobre que 55% dos alertas noturnos vêm de cinco regras, três das quais nunca levaram a um incidente. Mover essas três para a revisão matinal corta 31% da carga noturna. O enriquecimento automatizado economiza cerca de dois minutos por alerta restante. Os dados mudam a discussão de opinião para evidência. Cinco regras gerando mais da metade dos alertas noturnos é uma concentração típica, e três delas sem nenhum incidente, nunca, é forte evidência de baixo valor à noite. Dois minutos economizados em cada alerta restante se somam ao longo de um turno e dão aos analistas tempo para investigações reais.
+
+### 35.4 Fatores humanos
+
+Na sessão do ateliê, os analistas alertam que mover alertas para a manhã cria um acúmulo matinal. A equipe agenda uma janela de revisão matinal de 30 minutos e limita a fila. Os engenheiros poderiam dar o problema por resolvido assim que os alertas saem da fila noturna, mas os analistas sabem que alguém terá de tratá-los depois. Um acúmulo matinal sem controle cresceria e empurraria outros trabalhos para o lado. Agendar uma janela fixa e limitar a fila mantém o trabalho transferido visível e com limite. Os analistas também pedem que a revisão matinal seja dividida em escala, para não cair sobre quem chegar primeiro.
+
+### 35.5 O projeto
+
+Mover três regras para a revisão matinal; automatizar o enriquecimento dos dez tipos de alerta mais frequentes; definir critérios de promoção para novas regras que acionam à noite (precisão acima de 0,3 no modo só de monitoramento); revisar depois de um mês. Cada elemento responde a uma constatação: o reagendamento das três regras sem incidentes, o enriquecimento dos tipos de alerta mais comuns e os critérios de promoção, para que novas regras provem seu valor antes de acionar alguém à noite. Uma precisão acima de 0,3 significa que pelo menos três em cada dez alertas são reais. A revisão de um mês verifica tanto a carga quanto os incidentes perdidos.
+
+### 35.6 Crítica aos outros
+
+A equipe de Amara questiona a proposta de outra equipe de acionar o plantão só para ativos "críticos": o inventário de ativos classifica apenas 40% dos sistemas, então muitos ativos não classificados nunca acionariam ninguém. A falha está nos dados, não na ideia: acionar só para ativos críticos funcionaria se a criticidade fosse conhecida para todos os sistemas. Com apenas 40% classificados, os outros 60% nunca acionariam, acontecesse o que acontecesse neles. A equipe de Amara sugere tratar os ativos não classificados como críticos até que o inventário seja concluído. A outra equipe aceita o argumento e revisa a proposta antes da apresentação final.
+
+### 35.7 Prontidão
+
+O projeto inclui responsáveis, um cronograma e uma reversão: as regras podem voltar a acionar à noite em minutos. Os responsáveis garantem que cada mudança tenha alguém encarregado dela. O cronograma define quando cada parte entra em produção e quando acontece a revisão. Reverter em minutos significa que, se os incidentes perdidos aumentarem, as três regras voltam imediatamente a acionar à noite, o que torna o teste seguro. A revisão de um mês compara as contagens de alertas noturnos e os incidentes prioritários perdidos com o mês anterior, usando as mesmas definições. Paolo e o líder do turno da noite participam dela juntos.
+
+### Exemplo resolvido
+
+O efeito estimado: 31% menos alertas noturnos com a mudança das regras, mais o tempo economizado pelo enriquecimento, o que equivale a uma redução de 42% nos minutos de analista. Risco: um incidente real vindo de uma regra transferida espera até a manhã; mitigado porque essas três regras têm regras companheiras de alta severidade que ainda acionam o plantão.
+
+> **Caso sintético.** Os dados e os projetos são inventados.
+
+### Erros e limites
+
+Estimativas feitas com um mês de dados podem não valer em picos sazonais, como as entregas de fim de ano.
+
+### Exercícios
+
+- **EX103 — Origem da carga.** O que revelaram os dados de alertas? *Rubrica:* 3 = 55% de cinco regras; três nunca levaram a incidentes; 2 = parcial; 1 = vago; 0 = nada.
+- **EX104 — Acúmulo matinal.** Como o projeto respondeu ao alerta dos analistas? *Rubrica:* 3 = janela matinal agendada de 30 minutos e limite da fila; 2 = parcial; 1 = ignorado; 0 = nada.
+- **EX105 — Crítica construtiva.** Que fraqueza a equipe de Amara encontrou em outro projeto? *Rubrica:* 3 = acionar só para ativos críticos deixa de fora os 60% não classificados; 2 = parcial; 1 = vago; 0 = nada.
+
+### Síntese
+
+Problemas transversais de ateliê precisam de dados, da contribuição das pessoas e de crítica construtiva para chegar a projetos implementáveis.
+
+### Continue estudando — capítulo 35 de 50
+
+[← Capítulo 34 (rascunho)](#ch-34) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 36 (rascunho) →](#ch-36)
+
+<a id="ch-36"></a>
+
+## Capítulo 36 — Operações de segurança e blue team: desempenho e escala
+
+### Objetivos de aprendizagem
+
+Você vai (1) dimensionar a ingestão e o armazenamento do SIEM a partir das taxas das fontes; (2) planejar para os picos; (3) medir o desempenho das consultas; (4) decidir o que filtrar, resumir ou mover de camada.
+
+### 36.1 Eventos por segundo
+
+A ingestão é medida em eventos por segundo (EPS). Somar as fontes dá a média; os picos durante incidentes ou no horário comercial podem ser várias vezes maiores. O EPS médio define a base para armazenamento e licenciamento; o EPS de pico define o tamanho dos coletores e do processamento. Um sistema dimensionado só para a média vai atrasar ou descartar eventos justamente quando a atividade dispara, muitas vezes durante um incidente. Os engenheiros medem o EPS por fonte ao longo de várias semanas para ver padrões diários, semanais e sazonais. Amara registra os resultados por fonte em uma tabela.
+
+### Laboratório — dimensionando o *pipeline*
+
+```python
+"""Events-per-second and storage sizing for a SIEM (synthetic sources)."""
+sources = {"portal_web": 900, "windows_events": 1400, "firewall": 2600, "dns": 1100}  # average EPS
+bytes_per_event = 550
+peak_factor = 2.5
+eps = sum(sources.values())
+gb_day = eps * bytes_per_event * 86400 / 1e9
+print(f"average EPS={eps} peak EPS={eps*peak_factor:.0f}")
+print(f"raw GB/day={gb_day:.1f}  90-day hot TB={gb_day*90/1000:.1f}")
+```
+
+Execute com `python3 lab_capacity.py`. Saída verificada:
+
+```text
+average EPS=6000 peak EPS=15000
+raw GB/day=285.1  90-day hot TB=25.7
+```
+
+### 36.2 Lendo o resultado
+
+Quatro fontes dão 6.000 EPS em média e 15.000 em um pico de 2,5×. A 550 bytes por evento, o volume bruto é de 285,1 GB por dia, e 90 dias na camada quente exigiriam 25,7 TB — muito acima da camada de 12 TB, o que confirma a necessidade da divisão em camadas decidida no capítulo 26. A aritmética: 6.000 eventos por segundo vezes 86.400 segundos vezes 550 bytes dá cerca de 285 GB por dia. Noventa dias disso ficam muito além da camada quente. A taxa de pico importa para o processamento, mas não para o armazenamento, já que o armazenamento segue o total diário. A comparação torna a divisão em camadas uma necessidade, e não uma opção.
+
+### 36.3 Picos
+
+Os *pipelines* precisam suportar os picos sem descartar dados prioritários. Os *buffers* absorvem picos curtos; picos prolongados exigem capacidade ou degradação controlada. Um *buffer* funciona como um reservatório: enche durante o pico e esvazia quando a taxa cai. Se um pico dura mais do que o *buffer* comporta, os eventos precisam ser descartados ou processados mais devagar. A degradação controlada decide quais eventos saem primeiro, mantendo intactos os de autenticação e de outras fontes prioritárias. Os tamanhos dos *buffers* são definidos a partir dos picos mais longos medidos em cada fonte no último ano, com uma margem, e a margem é conferida de novo sempre que entra uma fonte nova importante.
+
+### 36.4 Reduzindo o volume
+
+Opções: filtrar eventos sem valor para detecção ou investigação, resumir fontes de alto volume (por exemplo, fluxos de *firewall* em agregados por hora) e dividir o armazenamento em camadas. Cada redução é conferida contra as necessidades de detecção e de investigação antes de ser aplicada. Filtrar remove eventos por completo, então exige o máximo de cuidado: algo que parece inútil agora pode importar numa investigação futura. Resumir mantém o padrão, mas perde detalhes, como os fluxos individuais. A divisão em camadas mantém tudo, mas move os dados mais antigos para um armazenamento mais barato. Cada escolha é registrada com o motivo e as verificações feitas.
+
+### 36.5 Desempenho das consultas
+
+Regras que varrem longos intervalos de tempo ou campos não indexados deixam tudo lento. Os engenheiros medem o tempo de execução das regras e reescrevem as mais lentas. Uma regra que pesquisa trinta dias de logs de *firewall* a cada cinco minutos repete um trabalho enorme e disputa recursos com as buscas dos analistas. Os engenheiros listam as regras por tempo de execução e uso de recursos e então reescrevem as piores, por exemplo estreitando o intervalo de tempo ou usando campos indexados. A melhoria é medida antes e depois. Um relatório de tempos de execução sai toda semana e nomeia as cinco regras mais lentas.
+
+### 36.6 Testes de escala
+
+Antes da alta temporada, a equipe reproduz um dia de logs sintéticos em velocidade 3× no SIEM de teste para verificar se as regras acompanham. Reproduzir a três vezes a velocidade normal simula um pico pesado sem esperar que ele aconteça. O teste observa os atrasos das regras, o tamanho das filas e os eventos descartados. Se as regras ficam para trás, a equipe acrescenta capacidade ou otimiza as consultas antes da temporada movimentada, e não durante ela. Os resultados são comparados com o teste do ano anterior. O dia sintético inclui uma rajada simulada de incidente, para que o teste reflita a carga irregular de um dia movimentado real.
+
+### Visibilidade de custos
+
+Amara publica o custo mensal por fonte, para que os responsáveis vejam quanto custam os seus logs. Equipes que enviam logs de depuração verbosos muitas vezes os reduzem ao ver a conta, sem nenhum pedido do SOC.
+
+### Exemplo resolvido
+
+Com esse volume, a divisão em camadas anterior, 90 dias no SIEM com *firewall* e DNS indo para o *lake* depois de 14 dias, já não cabe, então Amara a aperta: o plano dela mantém os eventos do portal, do Windows e de DNS na camada quente por 30 dias e move os eventos de *firewall* para o *lake* depois de 7 dias, mantendo na camada quente os resumos por hora. O armazenamento quente cai para cerca de 10 TB. Antes de aplicar, ela verifica que nenhuma detecção usa eventos brutos de *firewall* com mais de 7 dias.
+
+> **Caso sintético.** As taxas e os tamanhos vêm do script do laboratório.
+
+### Erros e limites
+
+Os bytes por evento variam por fonte; meça cada fonte em vez de usar uma média única.
+
+### Exercícios
+
+- **EX106 — Resultado do dimensionamento.** Informe o EPS médio, o EPS de pico, os GB/dia e os TB quentes para 90 dias. *Rubrica:* 3 = 6.000; 15.000; 285,1; 25,7; 2 = três; 1 = um; 0 = nada.
+- **EX107 — Redução de volume.** Cite três formas de reduzir o volume armazenado. *Rubrica:* 3 = filtrar, resumir, dividir em camadas; 2 = duas; 1 = uma; 0 = nada.
+- **EX108 — Verificação de segurança.** O que Amara verificou antes de mover de camada os eventos de *firewall*? *Rubrica:* 3 = nenhuma detecção usa eventos brutos de *firewall* com mais de 7 dias; 2 = parcial; 1 = vago; 0 = nada.
+
+### Síntese
+
+Dimensione a partir de taxas medidas, planeje para os picos e reduza o volume só depois de conferir as necessidades de detecção e de investigação.
+
+### Continue estudando — capítulo 36 de 50
+
+[← Capítulo 35 (rascunho)](#ch-35) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 37 (rascunho) →](#ch-37)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX096 (as de EX097–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Amara Osei, Paolo Ricci, a Kingsbridge Engineering University, a Lindqvist Freight e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX108 (as de EX109–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Amara Osei, Paolo Ricci, a Kingsbridge Engineering University, a Lindqvist Freight e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** O acúmulo varia segundo dB/dt = A(t) − C(t): chegadas por hora menos alertas resolvidos por hora.
 
@@ -2336,6 +2604,30 @@ Respostas-modelo para EX001–EX096 (as de EX097–EX150 estão na edição em i
 **EX095.** Os logs de depuração de baixo valor devem ser descartados antes dos de autenticação e de outros logs prioritários, usando filas de prioridade.
 
 **EX096.** O syslog sobre UDP descartava pacotes sob carga; mudar para o encaminhamento TCP com um *buffer* local elevou a completude para 99,96%.
+
+**EX097.** Porque isolá-los pode parar operações do negócio, como o despacho, então é preciso aprovação antes.
+
+**EX098.** Consultar diretamente as fontes críticas com contas somente leitura, seguindo os *runbooks*, e registrar as ações *offline*.
+
+**EX099.** Contas de acesso direto expiradas, *runbooks* que citavam servidores desativados e nenhum responsável nomeado pela decisão noturna de isolar o despacho.
+
+**EX100.** Para que uma "alta" do SOC vire, de forma confiável, um P2 da TI com resposta conhecida em quatro horas.
+
+**EX101.** Ela só pode aplicar bloqueios e invalidar sessões, e toda chamada que faz é registrada.
+
+**EX102.** Uma mudança de *firewall* tinha bloqueado a entrega ao atendimento ao cliente; o caminho de falha alertou o plantão, que corrigiu antes de um novo teste passar.
+
+**EX103.** Cinco regras produziam 55% dos alertas noturnos, e três nunca tinham levado a um incidente.
+
+**EX104.** Com uma janela dedicada de revisão matinal de 30 minutos e um limite para essa fila.
+
+**EX105.** Acionar só para ativos críticos ignoraria os 60% dos sistemas que o inventário não tinha classificado.
+
+**EX106.** 6.000 EPS em média, 15.000 no pico, 285,1 GB por dia e 25,7 TB para 90 dias na camada quente.
+
+**EX107.** Filtrar eventos sem valor, resumir fontes de alto volume e mover os dados mais antigos para um armazenamento mais barato.
+
+**EX108.** Que nenhuma regra de detecção dependia de eventos brutos de *firewall* com mais de sete dias.
 
 <a id="references"></a>
 ## Referências
