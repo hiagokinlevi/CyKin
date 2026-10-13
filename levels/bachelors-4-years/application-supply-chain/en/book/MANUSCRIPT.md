@@ -1471,29 +1471,43 @@ You will (1) define application security and software supply chain security; (2)
 
 Application security protects software from flaws in its design and code. Software supply chain security protects everything that goes into the software and how it reaches users: source code, dependencies, build systems, artifacts and distribution.
 
+The two overlap: a flaw in a dependency is an application weakness that arrived through the supply chain, and a leaked deployment token is a supply-chain weakness that can expose the application. Lena uses both views when she looks at CampusEats, asking what the code does wrong and also how each piece of code and each artifact got to where it runs, and who could have changed it along the way.
+
 ### 19.2 Why the chain matters
 
 CampusEats' code is a small fraction of what runs: most comes from open-source packages. Zimmermann et al. (2019) showed that in the npm ecosystem a few packages and maintainers can affect huge numbers of others, so a single compromise spreads widely.
+
+Lena counts CampusEats' dependencies and finds that its own code is only a small part of what the build installs. A problem in one widely used package could reach the project through several routes at once, which is why the lockfile and the ownership list cover indirect dependencies as well as the ones the society chose directly.
 
 ### 19.3 Trust theory
 
 Thompson's "Reflections on Trusting Trust" (1984) argued that you cannot fully trust code you did not create yourself, including compilers. Practical security therefore builds evidence, such as hashes, signatures and provenance, rather than assuming trust.
 
+For CampusEats, evidence takes simple forms: the lockfile hash shows a package is the one recorded, a signature shows who published a release, and a build record shows which inputs produced a deployed bundle. Each piece of evidence narrows what the society has to take on trust, though it never removes trust completely, since someone must still decide whom to believe.
+
 ### 19.4 Frameworks
 
 NIST SP 800-218 (SSDF) structures secure development practices; SLSA v1.0 defines build provenance levels; OWASP SAMM v2 measures programme maturity; OWASP ASVS defines application requirements.
+
+Each answers a different question. The SSDF says which practices a team should follow; SLSA says how much can be trusted about how an artifact was built; SAMM measures how mature a programme is overall; ASVS lists what an application must do. Lena uses ASVS for CampusEats features and the SSDF for the society's development process, and notes where they overlap so that the same evidence serves both.
 
 ### 19.5 Taxonomy
 
 Ladisa et al. (2023) organised attacks on open-source supply chains by stage and linked them to safeguards, giving a map of where controls belong.
 
+Lena places CampusEats' own controls on that map: secret scanning at the source stage, isolated builds at the build stage and hash checks at the distribution stage. The map shows where the society has nothing, such as checks on who may publish releases of the packages it depends on, so the gaps become explicit decisions rather than unknowns.
+
 ### 19.6 CampusEats in theory
 
 The leaked token was a source-stage problem; the hash mismatch was a distribution-stage check working as designed.
 
+Placing both events on the taxonomy shows the society that its two early incidents sit at opposite ends of the chain. The leak needed controls on what developers commit; the mismatch showed a control at the end of the chain already working. Lena uses this to explain why the society cannot rely on a single tool and needs checks at several stages, each owned by someone.
+
 ### 19.7 Limits of theory
 
 Frameworks describe what good looks like but not how much is enough for a small student project; judgement is needed.
+
+Lena's approach is to pick a few controls that address the society's actual incidents and highest-rated threats, measure them, and add more only when evidence shows a gap. She records which framework practices are deliberately not followed and why, so that the choice can be revisited if the project grows, handles more money or takes on more developers. Grace reviews the list once a year.
 
 ### Worked example
 
@@ -1531,25 +1545,37 @@ You will (1) learn from published supply-chain cases at a conceptual level; (2) 
 
 Real cases show how failures happen in practice. This chapter uses published research summaries, describing what went wrong and what controls help, without technical details of attacks.
 
+Each case below follows the same pattern: a published source, what it found and a lesson for a small project. Lena keeps the lessons practical, since the society's question is always what it should change. The cases also show that most supply-chain failures are not exotic: they exploit ordinary habits such as installing packages without looking at them, trusting a familiar name or postponing updates.
+
 ### 20.2 Malicious packages
 
 Ohm et al. (2020) collected hundreds of malicious packages from public registries. Common patterns included lookalike names, packages that ran code during installation, and takeovers of existing packages. Lesson: check new dependency names, limit install-time network access and watch for unexpected maintainer changes.
+
+Lena applies the lesson immediately: any new dependency proposed for CampusEats is checked for names close to popular packages, its maintainers are reviewed, and its install scripts are noted before approval. These checks take a few minutes per new package and are recorded in the pull request.
 
 ### 20.3 Vulnerable dependencies
 
 Decan et al. (2018) studied how vulnerabilities in npm packages propagate through dependency networks and how long fixes take to reach dependents. Lesson: monitor transitive dependencies and update promptly.
 
+Transitive dependencies are those pulled in by the packages CampusEats chose, and they are most of the installed code. The society's SBOM makes them visible, and the nightly advisory check covers them as well as direct ones. When a fix exists only in a newer version of an intermediate package, the owner of the direct dependency is responsible for chasing the upgrade or recording an exception.
+
 ### 20.4 Build and distribution
 
 Ladisa et al. (2023) describe attacks on build systems and distribution channels. Lesson: isolated builds, signed artifacts, hash checks and provenance.
+
+For CampusEats, the build service is the most valuable target: anything it produces is deployed to every student. Lena checks who can change its configuration, confirms that changes need review and that each build records its inputs. Signing the deployed bundle is noted as a future step, since the hosting platform currently accepts only unsigned uploads from the build service.
 
 ### 20.5 Trust in open source
 
 Wermke et al. (2022) interviewed open-source maintainers about trust and security, finding varied practices and reliance on personal trust. Lesson: consumers should not assume upstream security processes.
 
+Most packages CampusEats uses are maintained by volunteers in their spare time, much like the society itself. Lena treats this with respect rather than blame: the society reports problems politely, contributes fixes where it can and does not expect upstream projects to follow its own controls. Its protection comes from what it checks on its side, such as hashes and reviews.
+
 ### 20.6 CampusEats lessons
 
 The society adopts a lookalike-name check, build network restrictions and weekly dependency updates.
+
+Each change is small enough for volunteers to keep up. The lookalike check runs when a dependency is added, the build restrictions are a one-time configuration, and the weekly update is a short task rotated among members, with tests deciding whether an update is merged. Lena writes each lesson into the society's handbook with the case that motivated it, so new members understand the reason behind each rule.
 
 ### Updating the cards
 
@@ -1591,29 +1617,43 @@ You will (1) draw a data flow diagram for an application and its pipeline; (2) m
 
 Shostack (2014) recommends simple data flow diagrams for threat modelling: external entities (students, payment provider, package registry), processes (web app, build service), data stores (database, artifact store) and data flows between them. Lena draws CampusEats on one page.
 
+Keeping it to one page forces choices about detail, and that makes the diagram usable in a short meeting. The build service and artifact store appear alongside the web app, because supply-chain threats need the build path on the same picture as the runtime path.
+
 ### 21.2 Trust boundaries
 
 She draws dashed lines where trust changes: between students' browsers and the web app, between the web app and the payment provider, between the build service and the public registry, and between the build service and production.
+
+Each boundary is a place where the receiving side must check what it gets, and Lena labels each dashed line with that check. Some boundaries are easy to forget. The one between the build service and production matters as much as the public one, because whatever the build produces is trusted by the live service. Lena checks each line with the person who owns it.
 
 ### 21.3 STRIDE
 
 For each element, the team asks Shostack's STRIDE questions: could someone Spoof an identity, Tamper with data, Repudiate an action, cause Information disclosure, Deny service, or Elevate privilege?
 
+The questions are asked in turn, and answers are written beside the element. Not every question applies everywhere, but asking all six avoids missing a category because nobody thought of it. Lena keeps answers short and specific to CampusEats, naming the data or action at risk rather than repeating the category name.
+
 ### 21.4 Example threats
 
 Spoofing: a forged payment callback (fixed in chapter 17). Tampering: a package altered in transit (lockfile hashes, chapter 22). Information disclosure: secrets in the repository (scanning). Elevation: a volunteer reaching staff functions (role checks). Denial: lunchtime traffic spikes (rate limits and caching).
+
+Each threat has a named control and a test, so the model links directly to the code and the build. Repudiation is covered by logs of staff actions, which let the society show who changed a price or issued a refund. Lena marks threats without a control in a different colour.
 
 ### 21.5 Prioritising
 
 Each threat is rated low, medium or high for likelihood and impact. High-high items must have a control and a test.
 
+Medium items get a control when it is cheap, otherwise a note and a date to revisit. Low items are recorded but not acted on. Ratings are agreed in the session by the people who know each part, and Lena notes when the group disagreed, since disagreement often means the risk is poorly understood and needs more evidence before a decision.
+
 ### 21.6 Four questions
 
 Shostack's four questions frame the session: what are we working on, what can go wrong, what are we going to do about it, did we do a good job?
 
+The last question is the one teams often skip. Lena answers it by checking at the next session whether the controls agreed last time were built and tested, and whether any incident since then involved a threat the model missed. That turns the model from a one-time document into a record the society can learn from.
+
 ### 21.7 Keeping it small
 
 A one-hour session each term keeps the model current without burdening volunteers.
+
+Lena prepares the diagram beforehand, shows only what changed since the last session and keeps a list of decisions. If a major change is planned, such as a new payment provider, an extra session is held for that change alone. Short, regular sessions have kept attendance steady, which matters more than any single detailed model. New members attend one session in their first term, which is also a quick way to learn how CampusEats fits together.
 
 ### Worked example
 
@@ -1651,6 +1691,8 @@ You will (1) explain lockfiles and integrity hashes; (2) verify downloaded packa
 
 CampusEats' lockfile records each package's exact version and a cryptographic hash of its contents. On install, the package manager compares downloaded bytes with the hash and stops if they differ.
 
+The hash is recorded when a package is first added or updated, so it reflects what the society reviewed at that time. Lena checks that the build uses the install command that enforces the lockfile, since some commands quietly update it instead of checking against it. A test in CI confirms this on every build.
+
 ### Lab — Lab — checking hashes
 
 ```python
@@ -1677,21 +1719,31 @@ date-tools-0.4.2  ok
 
 menu-ui and date-tools match their lockfile hashes. pay-client 1.8.0 does not: the downloaded content differs from what was recorded, and installation stops. This is the check that halted the build in Lena's first week.
 
+Lena runs the lab with the original files to show exactly how the check behaves: matching packages install silently and a single mismatch stops everything, without any partial installation. The output names the package and both hashes, which gives the investigation a clear starting point and shows new members what a working integrity check looks like in practice.
+
 ### 22.3 Investigating
 
 A mismatch can mean a corrupted download, a registry problem, a republished package or tampering. The society does not override the check. Lena compares the package metadata and finds the maintainer had rebuilt and re-uploaded 1.8.0 with a small change, which good registries usually prevent. The society reports it to the maintainer and pins the previous known-good version until 1.8.1 is published.
+
+Lena records the investigation in the society's incident notes. The notes record what was checked, what was found and who decided to pin the earlier version, so the decision can be reviewed later.
 
 ### 22.4 SBOMs
 
 A software bill of materials lists every component and version in a build. NTIA (2021) defined minimum elements, including supplier, component name, version, unique identifiers, dependency relationships, the SBOM's author and a timestamp. CampusEats generates an SBOM for every build.
 
+The SBOM is stored with each release, so the society can always say what was in a given version. Lena checks a generated SBOM against the minimum elements and finds that the supplier field is often empty for small packages, so the society fills it from the registry where possible and notes the gaps.
+
 ### 22.5 Using SBOMs
 
 When an advisory appears, searching SBOMs shows which releases contain the affected component.
 
+When an advisory affected a date library, the search took seconds and showed that only the two most recent releases contained the vulnerable version, both still in use. That told the society what needed updating and confirmed that older archived releases were unaffected. Without SBOMs, the same answer would have meant rebuilding each release or reading old lockfiles by hand. Lena times the search in the termly summary.
+
 ### 22.6 Dependency owners
 
 Each direct dependency has a named owner in the society.
+
+The owner watches for advisories, reviews updates and decides when a package should be replaced. The list started with the three packages Lena found with no owner in her first term; now every direct dependency has one, and the CI check stops the build if a new dependency is added without a name. Owners hand over their packages when they leave the society. Lena checks the list each term to make sure no owner has left without a successor.
 
 ### Pinning carefully
 
@@ -1733,9 +1785,13 @@ You will (1) scan code changes for secrets; (2) combine patterns with character-
 
 The token leak showed secrets can slip into repositories. Scanning checks every change before and after it is pushed.
 
+Scanning before a push gives the developer a chance to fix the mistake privately; scanning after a push catches what the first check missed and alerts the society to revoke the secret. CampusEats uses both, as the token leak showed that a single layer was not enough. Lena also runs a one-time scan of the full repository history, which confirms that every secret it finds has already been revoked and gives the society a clean starting point for ongoing scanning.
+
 ### 23.2 Patterns and variety
 
 Many tokens have known prefixes or lengths, so scanners use patterns. Random-looking strings also have high character variety (entropy). Combining both reduces false alarms on long but repetitive strings.
+
+Lena tunes the patterns for the payment provider's key format, which has a fixed prefix, and sets an entropy threshold based on the lab results. She records both settings and the reason for each in the scanner's configuration, so that later changes can be compared with the original choices. Both settings are reviewed each term.
 
 ### Lab — Lab — scanning a diff
 
@@ -1763,17 +1819,25 @@ aaaaaaaa... entropy 0.00 -> low variety, ignore
 
 Two long strings match the pattern. The token-like string has entropy 4.86 bits per character and is flagged as a likely secret. The string of repeated "a" characters has entropy 0.00 and is ignored. The URL and comment lines do not match the pattern.
 
+Lena keeps these four lines as test cases so that tuning cannot quietly break detection. The entropy figure shows why variety helps: a long string is not suspicious by itself, but a long string that looks random is. Lena explains this to new members with the lab output, which makes the scanner's decisions easier to trust.
+
 ### 23.4 Responding
 
 When a secret is found: revoke or rotate it first, then remove it from the code, then check logs for any use. Rewriting history does not undo exposure, because copies may exist.
+
+For CampusEats, rotation is done in the payment provider's dashboard and the secret store together, following the runbook. Lena times the procedure and finds it takes about ten minutes, which is why revoking first is practical rather than a theoretical ideal. Checking logs shows whether the secret was used while exposed.
 
 ### 23.5 Preventing recurrence
 
 Pre-commit hooks, server-side scanning, secret stores, and onboarding training.
 
+Each layer handles a different failure. The hook catches most mistakes on the developer's machine; server-side scanning catches what slips through or bypasses the hook; the secret store gives developers an easy place to put secrets so they are not tempted to hard-code them; and onboarding explains why all this matters, using the society's own token leak as the example. Lena reviews the layers each term to see which caught what.
+
 ### 23.6 Measuring
 
 Lena tracks scanner precision and recall as in chapter 12.
+
+She reuses the labelled commits from that study, adds new synthetic examples each term and compares results across scanner versions. Any real secret found after a push is counted as a miss for the pre-commit hook, which keeps the measure honest. The figures appear in the society's termly summary, next to the number of developers and commits, so changes in activity do not hide changes in performance. This lets trends be compared fairly.
 
 ### Where to scan
 
@@ -1815,29 +1879,43 @@ You will (1) select preventive, detective and corrective controls for the supply
 
 Branch protection with required review; secrets kept out of code; lockfile hashes; lookalike-name checks for new dependencies; isolated builds with limited network.
 
+Preventive controls stop a problem before it happens and are the cheapest when they work. Lena lists each one with what it prevents, who maintains it and how it is tested, and checks that branch protection cannot be turned off by ordinary members. She also checks that every preventive control fails safe: if the lookalike check cannot reach its data, the new dependency waits rather than being approved.
+
 ### 24.2 Detective controls
 
 Secret scanning after push; nightly advisory checks against SBOMs; alerts on failed integrity checks; logs of deployments.
+
+Detective controls assume prevention will sometimes fail. Each alert goes to a named person, and the nightly advisory check posts a summary to the society's channel only when something new appears, so routine runs do not train members to ignore it. Lena checks each detective control by triggering it with a harmless test, such as a synthetic secret, to confirm alerts arrive. Each alert is acknowledged.
 
 ### 24.3 Corrective controls
 
 Secret rotation procedure; dependency update process; rollback to the previous release.
 
+Each corrective control has a written procedure in the runbook and has been tried at least once. The rollback was tested by redeploying the previous release in the test environment, which took a few minutes. Practising before an incident means members know the steps and can act quickly, and it often reveals missing permissions or steps that would otherwise be found at the worst time. Results are written down after each practice.
+
 ### 24.4 Policy in CI
 
 A CI step fails the build when: a high-severity advisory affects a dependency without an approved exception, a new dependency has no owner, or the lockfile is out of date. NIST SP 800-218 practices PW.4 (reuse well-secured software) and RV.1 (identify vulnerabilities continuously) support these checks.
+
+Lena adds a clear message to each failure, so developers know what to fix. For example, a failure for a missing owner names the new package and links to the ownership list. Clear messages make the policy feel like help rather than an obstacle, and members fix most failures without asking anyone. Lena also tracks how often each rule fails the build.
 
 ### 24.5 Exceptions
 
 An exception records the reason, owner and expiry date; expired exceptions fail the build again.
 
+Exceptions are visible in the repository and reviewed when they expire. For example, an advisory affecting a feature CampusEats does not use may get an exception with a short expiry while the owner waits for a fixed release. Because expired exceptions fail the build, they cannot be forgotten. Lena keeps the number of open exceptions in the termly summary as a sign of debt. Each is listed with its owner.
+
 ### 24.6 Effectiveness
 
 Each control has a measure: number of times it caught something, false alarms and time cost.
 
+Lena collects these from logs each term. A control that never catches anything is not necessarily useless, since it may deter mistakes, but one that raises many false alarms or slows every build needs attention. The figures help the society decide where to improve, and they show the security office that controls are being checked rather than merely installed. Time cost is measured per build and per review, so the society can see the burden members carry.
+
 ### 24.7 Proportion
 
 CampusEats is a volunteer project; controls must be light enough that members keep using them.
+
+Lena keeps each check fast, explains its purpose in the handbook and removes checks that cost more than they protect. A control members work around is worse than none, because it gives false confidence. When a new control is proposed, the society tries it for a month and reviews the time it costs and what it caught before making it permanent. Grace supports this trial approach for other student projects.
 
 ### Review cycle
 
