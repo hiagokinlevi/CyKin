@@ -44,13 +44,29 @@ You will (1) explain what cyber threat intelligence is and is not; (2) connect i
 
 Cyber threat intelligence is information about threats that has been checked, interpreted and connected to a decision. A list of bad websites is information; "fraudsters are sending fake donation receipts to our volunteers this week, so we will warn them and block two domains" is intelligence. OSINT — open-source intelligence — is intelligence built from publicly available sources, collected lawfully and ethically.
 
+Section one point one develops threat intelligence and osint foundations with a the organisation note Sam Okafor can demo offline.
+
+Under section one point one, the mentor expects threat claims to carry owners and dates.
+
 ### 1.2 Decisions first
 
 Sam's charity has no security team. Its decisions are simple but real: should we turn on two-step login for the donation account? Do we warn volunteers about a scam? Should we pay for a backup service? Intelligence is useful only if it helps answer such questions.
 
+Section one point two develops threat intelligence and osint foundations with a the organisation note Sam Okafor can demo offline.
+
+Under section one point two, the mentor expects threat claims to carry owners and dates.
+
+Section one point two treats what cti is decisions as testable only when evidence and ticket IDs are recorded.
+
 ### 1.3 Threats to charities
 
 Public sector advisories describe charities facing donation fraud through lookalike websites, phishing for volunteers' email passwords, business email compromise targeting payments to suppliers, and ransomware. Small charities are attractive because they have money flows but little security staff.
+
+Section one point three develops threat intelligence and osint foundations with a the organisation note Sam Okafor can demo offline.
+
+Under section one point three, the mentor expects threat claims to carry owners and dates.
+
+Section one point three treats what cti is decisions as testable only when evidence and ticket IDs are recorded.
 
 ### 1.4 Vocabulary
 
@@ -60,9 +76,21 @@ MITRE ATT&CK catalogues adversary techniques with identifiers — Phishing is T1
 
 Decide what you need to know, collect from a few trusted sources, check and clean, think about what it means for you, tell the people who act, and ask whether it helped.
 
+Section one point five develops threat intelligence and osint foundations with a the organisation note Sam Okafor can demo offline.
+
+Under section one point five, the mentor expects threat claims to carry owners and dates.
+
+Section one point five treats what cti is decisions as testable only when evidence and ticket IDs are recorded.
+
 ### 1.6 Realistic scope
 
 In one month Sam can join CCC, read alerts weekly, warn volunteers, set two-step login on key accounts and keep a simple log. He will not analyse malware or attribute attacks.
+
+Section one point six develops threat intelligence and osint foundations with a the organisation note Sam Okafor can demo offline.
+
+Under section one point six, the mentor expects threat claims to carry owners and dates.
+
+Section one point six treats what cti is decisions as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -110,25 +138,59 @@ You will (1) set written scope and permission for CTI tasks in a small organisat
 
 Sam is a volunteer. The trustees approve a one-page scope: he may read CCC alerts and public advisories, check EFBN's email and website logs through the provider's admin console, advise volunteers and recommend settings. He may not access volunteers' personal devices or accounts, contact suspected fraudsters, or share EFBN data outside without the chair's approval.
 
+Section two point one develops scope permission and safe practice with a the organisation note Sam Okafor can demo offline.
+
+Under section two point one, the mentor expects scope claims to carry owners and dates.
+
 ### 2.2 TLP in practice
 
 CLEAR may be shared publicly. GREEN may go to the charity community but not the public. AMBER stays within EFBN and those it serves on a need-to-know basis; AMBER+STRICT within EFBN only; RED only to named people. When unsure, ask the sender. Unlabelled material is treated cautiously until confirmed.
+
+Section two point two develops scope permission and safe practice with a the organisation note Sam Okafor can demo offline.
+
+Under section two point two, the mentor expects scope claims to carry owners and dates.
 
 ### 2.3 Privacy
 
 Volunteers, donors and clients of the food bank are people with rights. Data-protection law applies to their information even when it appears public. Sam collects only what he needs, keeps it briefly and never posts personal details in alerts.
 
+Section two point three develops scope permission and safe practice with a the organisation note Sam Okafor can demo offline.
+
+Under section two point three, the mentor expects scope claims to carry owners and dates.
+
+Section two point three treats written permission tlp in as testable only when evidence and ticket IDs are recorded.
+
 ### 2.4 Terms of service
 
 Websites and platforms have rules. Scraping, fake accounts and joining closed groups to watch criminals break those rules and may break the law. Sam uses approved, passive sources: official advisories, CCC alerts and certificate-transparency search services within their terms.
+
+Section two point four develops scope permission and safe practice with a the organisation note Sam Okafor can demo offline.
+
+Under section two point four, the mentor expects scope claims to carry owners and dates.
+
+Section two point four treats written permission tlp in as testable only when evidence and ticket IDs are recorded.
 
 ### 2.5 Unsafe actions
 
 Never visit a suspected scam page to "see what it does", download its files or reply to fraudsters. These actions can infect devices, alert criminals or expose the charity. Report scam pages to the platform or hosting provider through official abuse channels with trustee approval.
 
+Section two point five develops scope permission and safe practice with a the organisation note Sam Okafor can demo offline.
+
+Under section two point five, the mentor expects scope claims to carry owners and dates.
+
+Section two point five treats written permission tlp in as testable only when evidence and ticket IDs are recorded.
+
 ### 2.6 Mistakes
 
 If something is shared wrongly, tell the recipient and the chair immediately.
+
+Section two point six develops scope permission and safe practice with a the organisation note Sam Okafor can demo offline.
+
+Under section two point six, the mentor expects scope claims to carry owners and dates.
+
+Section two point six treats written permission tlp in as testable only when evidence and ticket IDs are recorded.
+
+For section two point six, the organisation will not accept scope work without a written trail.
 
 ### Worked example
 
@@ -176,9 +238,21 @@ You will (1) list the charity's systems and the logs they offer; (2) catalogue i
 
 EFBN uses cloud email for staff and volunteer coordinators, an online donation platform, a website, a shared drive and a volunteer sign-up form. All are cloud services; logs live in each provider's admin console. Sam checks which logs exist and for how long: email sign-ins for 30 days, donation platform logins for 90.
 
+Section three point one develops threat intelligence and osint systems with a the organisation note Sam Okafor can demo offline.
+
+Under section three point one, the mentor expects threat claims to carry owners and dates.
+
 ### 3.2 Sources
 
 CCC alerts by email, national charity advisories on a web page, donation platform security notices by email, and volunteer reports through a shared form.
+
+Section three point two develops threat intelligence and osint systems with a the organisation note Sam Okafor can demo offline.
+
+Under section three point two, the mentor expects threat claims to carry owners and dates.
+
+Section three point two treats systems sources reading the as testable only when evidence and ticket IDs are recorded.
+
+For section three point two, the organisation will not accept threat work without a written trail.
 
 ### Lab — source dependencies
 
@@ -210,17 +284,43 @@ independent sources: ['National charity advisories']
 
 CCC alerts and donation platform notices both depend on the coordinator inbox — if that mailbox fails or its owner leaves, both stop. Volunteer reports depend on a form Sam alone owns. Only national advisories are independent of any single person or mailbox. The fix: a shared mailbox read by two people and a second form owner.
 
+Section three point three develops threat intelligence and osint systems with a the organisation note Sam Okafor can demo offline.
+
+Under section three point three, the mentor expects threat claims to carry owners and dates.
+
 ### 3.4 Data to keep
 
 A simple log: date, source, label, what it said, what EFBN did. No volunteer personal data beyond what is needed to follow up.
+
+Section three point four develops threat intelligence and osint systems with a the organisation note Sam Okafor can demo offline.
+
+Under section three point four, the mentor expects threat claims to carry owners and dates.
+
+Section three point four treats systems sources reading the as testable only when evidence and ticket IDs are recorded.
+
+For section three point four, the organisation will not accept threat work without a written trail.
 
 ### 3.5 Intelligence-driven settings
 
 Alerts about stolen charity passwords (Valid Accounts, T1078) justify two-step login on email and the donation platform. Alerts about ransomware (T1486) justify version history and a separate backup of the shared drive.
 
+Section three point five develops threat intelligence and osint systems with a the organisation note Sam Okafor can demo offline.
+
+Under section three point five, the mentor expects threat claims to carry owners and dates.
+
+Section three point five treats systems sources reading the as testable only when evidence and ticket IDs are recorded.
+
 ### 3.6 Dependencies on suppliers
 
 If the donation platform is breached, EFBN depends on the platform's notice. Sam subscribes to its status page and security notices.
+
+Section three point six develops threat intelligence and osint systems with a the organisation note Sam Okafor can demo offline.
+
+Under section three point six, the mentor expects threat claims to carry owners and dates.
+
+Section three point six treats systems sources reading the as testable only when evidence and ticket IDs are recorded.
+
+For section three point six, the organisation will not accept threat work without a written trail.
 
 ### Worked example
 
@@ -267,6 +367,14 @@ You will (1) validate shared indicators before use; (2) match them against a syn
 
 The lab runs offline on synthetic data with Python's standard library. No real mail logs, no network connections, no visiting domains.
 
+Section four point one develops threat intelligence and osint guided with a the organisation note Sam Okafor can demo offline.
+
+Under section four point one, the mentor expects threat claims to carry owners and dates.
+
+Section four point one treats lab rules reading the as testable only when evidence and ticket IDs are recorded.
+
+For section four point one, the organisation will not accept threat work without a written trail.
+
 ### Lab — validate, match and filter
 
 ```python
@@ -303,21 +411,53 @@ shareable with community: ['donate-elmfield.example', '203.0.113.9']
 
 Of four shared indicators, 198.51.100.400 is invalid — an octet above 255 — so three remain. Two log entries match: volunteer vol-07 received mail involving donate-elmfield.example, and the office received mail involving elmfield-giftaid.example. Only donate-elmfield.example and 203.0.113.9 may be shared with the community; elmfield-giftaid.example is TLP:AMBER and stays inside EFBN.
 
+Section four point two develops threat intelligence and osint guided with a the organisation note Sam Okafor can demo offline.
+
+Under section four point two, the mentor expects threat claims to carry owners and dates.
+
 ### 4.3 Acting on matches
 
 vol-07 is contacted kindly: did you click or enter details? If yes, change the password and turn on two-step login. The office match goes to the chair. Both domains are blocked in the email provider's settings.
+
+Section four point three develops threat intelligence and osint guided with a the organisation note Sam Okafor can demo offline.
+
+Under section four point three, the mentor expects threat claims to carry owners and dates.
+
+Section four point three treats lab rules reading the as testable only when evidence and ticket IDs are recorded.
 
 ### 4.4 The summary
 
 The CCC feedback says: "Two indicators from this week's alert reached our mailboxes; both blocked." It lists only the GREEN domain. The AMBER item is not mentioned.
 
+Section four point four develops threat intelligence and osint guided with a the organisation note Sam Okafor can demo offline.
+
+Under section four point four, the mentor expects threat claims to carry owners and dates.
+
+Section four point four treats lab rules reading the as testable only when evidence and ticket IDs are recorded.
+
+For section four point four, the organisation will not accept threat work without a written trail.
+
 ### 4.5 The weekly routine
 
 Monday: read CCC and advisories, log items. Tuesday: check mail and sign-in logs for indicators. Wednesday: warn volunteers if needed. Friday: send feedback to CCC and update the log.
 
+Section four point five develops threat intelligence and osint guided with a the organisation note Sam Okafor can demo offline.
+
+Under section four point five, the mentor expects threat claims to carry owners and dates.
+
+Section four point five treats lab rules reading the as testable only when evidence and ticket IDs are recorded.
+
 ### 4.6 Synthesis of the month
 
 Week 1 gave vocabulary and decisions; week 2 permission and safety; week 3 systems and dependencies; week 4 a working routine.
+
+Section four point six develops threat intelligence and osint guided with a the organisation note Sam Okafor can demo offline.
+
+Under section four point six, the mentor expects threat claims to carry owners and dates.
+
+Section four point six treats lab rules reading the as testable only when evidence and ticket IDs are recorded.
+
+For section four point six, the organisation will not accept threat work without a written trail.
 
 ### Worked example
 
