@@ -7711,6 +7711,58 @@ Compare your run with the [worked BH4 transcript and limitations](#ir-rapid-ch04
 
 ---
 
+### 4.23a A good tabletop score must survive a frozen-evidence audit
+
+**Learning objective:** Distinguish a participant's documented decision from the facilitator's intended storyline and from the end-of-exercise model answer. Before scoring, identify which cards and independently produced receipts the learner could see at the assessed checkpoint. An excellent final narrative cannot repair a contaminated early decision without preserving both versions.
+
+The **facilitator release ledger** records the permitted inputs for Round A (R1–R8), B (R1–R16), C (R1–R24), and the separate Round D branch, P1/C1 and V1 phases. The **participant artifact** records what the learner actually wrote and submitted. The **observer note** records what the facilitator witnessed: an approval explicitly role-played, a question deferred, a source unavailable, or a packet that could not be reconstructed by a new responder. These three records serve different purposes. A printed solution can show a defensible choice, but it cannot prove that the participant made that choice at the right time.
+
+**Contrastive example A — L2 after all releases:** The original L2 packet's timeline, Round B hypotheses, Round C action, recovery note, late status and improvement item reconcile to `2 + 2 + 1 + 0 + 2 + 1 = 8/12`. The recovery claim is contradicted by C1's B19/B20 mismatches and V1's blank audit actor; its zero is not made harmless by a later excellent status. A facilitator should return a specific revision request and retain the original scored version. The passing threshold of 9/12 and the critical-zero rules are **CyberABC classroom criteria**, not a NIST recommendation. A new `D-recovery-v2` may earn a new grade but does not alter the earlier snapshot.
+
+**Contrastive example B — EX048 at 09:45:** EX048's two-sentence update uses only the chosen Branch S **or** P report at 09:45, before the later P1/C1 and V1 releases. An otherwise accurate sentence saying “V1's audit actor failed” would be premature **in EX048**, even though it is appropriate in L2's later all-cards status. Likewise, EX043 at Round B may contain a proposed preservation request, not a finished collection. A learner's claim that “the lead approved it, so the copy exists” lacks an object ID, collector/time, bounded source query and integrity/custody receipt. The proper grade is not “done”; record precisely which evidence state has not been observed.
+
+This is why both **artifact quality** and **exercise validity** must be reviewed. If a facilitator revealed P1 early, the observer should mark the affected round contaminated and conduct a fresh frozen checkpoint rather than awarding retrospective credit to a decision influenced by future evidence. A tabletop is fundamentally a discussion exercise; the [NIST SP 800-84 `4.5](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf) directs evaluators to capture observations and recommendations against pre-established criteria. It does not certify Harbor Library's grading scale or measure a production security control. A separate authorized functional test would be needed to establish system behavior.
+
+#### R4X offline lab — score an artifact and reject invalid evidence separately
+
+**Safety and data:** Python 3 standard library, entirely in memory; no access to sources, mail, cloud accounts or real service actions. Each input is an invented reviewer declaration. `claimed_collected` and `receipt_present` refer only to a proposed classroom preservation assertion, not a verified Harbor Library artifact.
+
+~~~python
+def grade_packet(scores, late_card_in_early, claimed_collected, receipt_present):
+    if late_card_in_early:
+        return "REJECT_EARLY_EVIDENCE"
+    if claimed_collected and not receipt_present:
+        return "REJECT_UNSUPPORTED_COLLECTION"
+    if len(scores) != 6 or any(x not in (0, 1, 2) for x in scores):
+        return "INVALID_RUBRIC"
+    return ("PASS" if sum(scores) >= 9 and scores[2] > 0 and scores[3] > 0
+            else "FAIL") + "_TOTAL_" + str(sum(scores))
+
+cases = [
+    ("L2", [2, 2, 1, 0, 2, 1], False, False, False),
+    ("FUTURE_IN_EX048", [2, 2, 2, 2, 2, 2], True, False, False),
+    ("REQUEST_NOT_COPY", [2, 2, 2, 2, 2, 2], False, True, False),
+    ("SYNTHETIC_PASS", [2, 2, 2, 1, 2, 1], False, False, False),
+]
+for name, scores, late, claim, receipt in cases:
+    print(name, grade_packet(scores, late, claim, receipt))
+~~~
+
+**Exact tested transcript:**
+
+~~~text
+L2 FAIL_TOTAL_8
+FUTURE_IN_EX048 REJECT_EARLY_EVIDENCE
+REQUEST_NOT_COPY REJECT_UNSUPPORTED_COLLECTION
+SYNTHETIC_PASS PASS_TOTAL_10
+~~~
+
+**Negative controls:** The fictitious perfect-looking score in `FUTURE_IN_EX048` is rejected for using information not released at the assessed checkpoint. The similarly high `REQUEST_NOT_COPY` is rejected because the answer asserts completed collection without a receipt. A mathematical passing score cannot cancel either integrity failure. `SYNTHETIC_PASS` reflects only consistent reviewer-entered fixture values, not proof of real participant performance or verified system readiness.
+
+**Activity:** The participant submits the exact four lines, the six-field L2 score table, a separate one-line 09:45 EX048 release rule, and one narrowly scoped follow-up request for an EX043 copy that is still uncollected. The observer must say which failure is a missing participant answer, which is a contaminated exercise, and which is simply absent evidence. Full credit requires keeping Round C approvals separate from later Branch S execution, no invented collection, and a versioned correction after rather than inside the scored original.
+
+**Chapter synthesis:** Harbor Library can teach an honest handoff without closing its fictional incident. A successful participant outcome is a **reproducible decision under released evidence**, plus clear owners and tests for unresolved data, audit and service gates—not a dramatic story of recovery. The book's final exercise result must not be treated as evidence of what a learner actually did.
+
 ### Chapter 4 exercises
 
 Use the four rounds and choose either Branch S or Branch P for your final decisions. Record **event time and card-release round separately**. Round A has R1–R8, Round B adds R9–R16, Round C adds R17–R24, and Round D first supplies a branch result and only later P1/C1 and V1. Do not cite a later card to justify an earlier action; do not invent a real export, restore, account action or person behind `desk-a`. For each answer, submit the named artifact with case ID, source IDs, current round, observation versus proposal or reported action, decision owner, remaining limit and next review. A solo learner may write all roles, but must still record who would approve and who would verify a change.
