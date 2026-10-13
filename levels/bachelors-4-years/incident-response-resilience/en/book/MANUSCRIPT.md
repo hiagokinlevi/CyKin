@@ -2910,21 +2910,31 @@ You will be able to (1) scope a cloud incident by tenant, subscription and ident
 
 Cloud resources are organized in tenants, accounts, subscriptions or projects. An incident's scope includes the identities that can act in that scope, including external ones: guest users, partner applications, managed-service providers with delegated access. Mapping who *can* act is the first step; Chapter 6's reachability applies.
 
+In the referral-letters example, scope starts with the phished administrator but must include the new access key the attacker created, since it is an identity that can act independently of the original account. Guest users and partner applications with delegated access belong on the same list until shown to be irrelevant.
+
 ### 31.2 Tokens and lifetimes
 
 Cloud APIs accept bearer tokens. Access tokens are usually short-lived (often around an hour); refresh tokens can last much longer and obtain new access tokens. Containment must address refresh tokens and sessions, not only passwords. Some platforms support continuous access evaluation to revoke more quickly; whether it applies depends on the service and configuration — check provider documentation.
+
+Case B shows the benefit of short sessions: once the IdP user is disabled, existing role sessions expire within an hour. In Case A the attacker's long-lived key keeps working until someone deactivates it, which is why key review comes first there. Write down the lifetime of every credential type involved before declaring containment.
 
 ### 31.3 Audit events and retention
 
 Cloud platforms log control-plane actions (create, delete, change permissions) and, with additional configuration or licensing, data-plane access (reading objects, mail items). Retention defaults vary and may be short. The Exchange Online case reviewed in Chapter 20 showed how detection depended on the audit logging available to the customer. Before an incident, know which events you have and for how long; during one, export and preserve them early.
 
+The referral-letters cases show the stakes. In Case A, with no data-read logging, nobody can say which letters were read, so exposure must be assumed for the whole bucket. In Case B the read logs, kept in a separate account, list each object, so the privacy assessment can name exactly what was taken and for whom. The difference was decided months before the incident.
+
 ### 31.4 Shared responsibility
 
 Providers secure the underlying platform; customers secure their configurations, identities and data. In incidents the boundary determines who can investigate what: the customer cannot inspect the provider's internal systems, and the provider may not investigate customer configurations without a request. Response plans should name provider support paths and what evidence the provider can supply.
 
+For Harbourline's vendor-hosted booking platform, the vendor controls much of the evidence, so the response plan must say how to request it and how quickly. Agree those paths in the contract, before an incident forces the question.
+
 ### 31.5 Recovery in the cloud
 
 Recovery may mean redeploying infrastructure from code, restoring storage from versioned or immutable backups, and re-establishing trust: rotating keys, removing unknown applications and federation settings. Attackers who gain high privilege can delete backups in the same account; separation of backup accounts is a resilience control.
+
+In the referral-letters cases, Case A's backups sit in the same account the attacker controlled, so they may have been deleted or altered; Case B's sit in a separate account with deletion protection. Recovery in A therefore starts by establishing whether any trustworthy copy exists at all, which is a question B never has to ask.
 
 ### 31.6 Worked example (synthetic): two architectures
 
@@ -2945,6 +2955,11 @@ Provider-dependent assumptions: token lifetimes, revocation behaviour and log av
 - Discovering during an incident that data-access logging was never enabled.
 - Keeping backups where a compromised administrator can delete them.
 - Generalizing one provider's behaviour to another.
+
+- Checking only for the access key the attacker created, not for other new users, roles or policies.
+- Assuming the provider will supply data-read logs that were never enabled.
+- Declaring exposure limited without logs capable of showing what was read.
+- Restoring from backups in the same account without first checking whether the attacker altered or deleted them.
 
 ### Exercises — chapter 31
 
@@ -2984,13 +2999,19 @@ Many laws require notification of personal-data breaches. Under the GDPR, a cont
 
 For each possible exposure: what data types; how many people; whether access, acquisition, alteration or loss is established, suspected or ruled out; the time window; whether the data was encrypted and keys were safe; what containment was done; and the confidence of each statement. "Unknown" is a legitimate and useful answer.
 
+The newsletter fact sheet follows this list: data types for 18,400 subscribers and the health-interest field for 2,100, access possible but not confirmed, and the time Harbourline became aware, 6 May at 14:20. Each line says whether the source is the vendor's statement or Harbourline's own verification, because the specialists weigh those differently.
+
 ### 32.3 Legal hold
 
 When litigation or regulatory action is reasonably anticipated, relevant records must be preserved, overriding normal deletion schedules. Responders should flag the possibility early to counsel, who issues the hold; meanwhile, avoid deleting logs, images or messages related to the incident.
 
+In the newsletter case, the fact sheet already lists a legal hold on vendor communications and logs as an issue for review. Until counsel decides, nobody at Harbourline should delete related messages or exports, even under normal retention rules. Ask the vendor in writing to preserve its own logs too, since Harbourline cannot hold what it does not control.
+
 ### 32.4 Stakeholder communication
 
 Internal and external messages should state confirmed facts, what is being done, what is not yet known, what people should do (if anything) and when the next update will come. Avoid speculation about attackers or motives, avoid minimizing language ("no evidence of misuse" when you have not looked), and avoid promising what you cannot verify.
+
+The internal update in the newsletter case follows this pattern: what the provider reported, that it is not confirmed, what is not involved, who is working on it and when the next update comes. Even "patient medical records are not involved" is a claim that needs a basis, here that they are held in a different system.
 
 ### 32.5 Worked example (synthetic): subscriber list
 
@@ -3013,6 +3034,10 @@ Internal update (to clinic managers): "Our newsletter provider has told us that 
 - Speculating about attacker identity in messages.
 - Losing evidence through routine deletion before counsel assesses a hold.
 - This chapter is not legal advice; deadlines and thresholds vary and change.
+
+- Treating a vendor's statement that an export was deleted as verified.
+- Letting the 72-hour clock start from when a manager read the email, rather than from when the organization became aware, without asking counsel.
+- Sending different versions of the facts to different audiences.
 
 ### Exercises — chapter 32
 
@@ -3048,25 +3073,37 @@ You will be able to (1) define an outcome and an estimand for a response study; 
 
 An **outcome** is a measured variable per case (for example hours to containment, or whether data loss occurred). An **estimand** is the exact quantity you intend to estimate: "the difference in median hours to containment between severity-2 phishing cases handled under playbook B and those handled under playbook A, among cases opened in 2026". Writing the estimand first prevents switching measures after seeing results.
 
+In Lab 33 the estimand is the difference between East's change and West's change in monthly median containment hours, comparing the three months before East adopted playbook B with the three after. Writing it that way commits you to West as the comparison and to medians as the measure before the numbers are seen. A different estimand, such as the mean or a single post month, could give a different answer; that is why it is fixed first.
+
 ### 33.2 Comparison groups
 
 Before/after comparisons confound the playbook with everything else that changed over time. Better options when randomization is impossible: concurrent comparison (some teams adopt first), interrupted time series with several pre- and post-periods, or difference-in-differences against a group that did not change. Each has assumptions you must state.
+
+Lab 33 uses difference-in-differences: West did not adopt the playbook and serves as the comparison. Its key assumption is that, without the playbook, East and West would have followed parallel trends. The pre-period gap narrowed slightly from month to month, so the assumption is not exactly met, and the report should say how that affects the estimate. Without West, the naive before-and-after change would have credited the playbook with improvement that both teams shared.
 
 ### 33.3 Selection bias
 
 If only some cases are handled with the new playbook (for example, analysts choose it for easy cases), the comparison is biased. Assignment rules and their adherence must be recorded.
 
+The exercise on selection shows the risk in Lab 33's setting: if East analysts could choose playbook B case by case, they might use it for simpler cases, making it look better than it is. Assigning the playbook to a whole team or to blocks of time, and analysing by team regardless of use, avoids that bias.
+
 ### 33.4 Data quality
 
 Check completeness, consistency of definitions over time, timestamp sources and label drift (Chapters 15 and 29). Report the share of cases excluded and why.
+
+For Lab 33, that means confirming that East and West defined containment the same way and recorded it from the same system over all six months. If one team changed its form during the period, as in the response-time lab earlier, the comparison could reflect recording rather than performance. Report how many cases each monthly median rests on and how many were excluded for missing times. A medians-only table can hide a month where few cases were recorded.
 
 ### 33.5 Pre-specification and robustness
 
 Write exclusions (for example, merged cases, test cases), the primary analysis and planned robustness checks (alternative outcome definition, excluding a holiday month, handling missing values) before analysis. Robustness checks show whether the conclusion depends on arbitrary choices.
 
+Lab 33's robustness check, excluding the transition month, gives a similar estimate, which suggests the result does not hinge on how month 4 is treated. That check was meaningful because it could have changed the answer. List each check before analysis and report every one, including any that weaken the conclusion, rather than only those that agree with it.
+
 ### 33.6 Ethics
 
 Outcome studies use case records containing personal data and analyst performance data. Minimize and pseudonymize; report aggregates; obtain approval where required (Chapter 18).
+
+In Lab 33 the data are monthly medians per team, which reveal little about individuals. A case-level analysis, which the lab notes would be needed for an uncertainty interval, would bring personal data and analyst performance back into scope: pseudonymize analysts and patients, keep the key separately, and report only aggregates. Make clear to the teams that the study evaluates a playbook, not people, and keep results away from individual performance reviews. Where the case records come from real incidents rather than synthetic ones, seek approval before analysis begins, as the research-methods chapter requires.
 
 ### 33.7 Worked example and lab (synthetic): before and after a playbook
 
@@ -3116,6 +3153,12 @@ Defensible conclusion: "Compared with a team that did not adopt it, the team usi
 - Ignoring how adoption was decided.
 - Presenting point estimates from few aggregated values without uncertainty.
 
+- Assuming parallel trends without checking the pre-period, as Lab 33's narrowing gap shows is necessary.
+- Running robustness checks only until one agrees with the hoped-for result.
+- Reporting a team-level estimate as if it described each analyst's performance.
+- Treating six monthly medians as if they carried the precision of hundreds of cases; without case-level data there is no interval.
+- Ignoring a co-intervention, such as the new tool that may explain part of West's improvement, when it might have affected the two teams differently.
+
 ### Exercises — chapter 33
 
 Attempt each exercise before opening the [worked results](#worked-results). Every case, organization, person, address and number in an exercise is synthetic unless a cited public source is named.
@@ -3150,21 +3193,31 @@ You will be able to (1) define decision criteria and weights for comparing respo
 
 Choose criteria that matter to the organization and can be assessed: time to containment, risk of service disruption, evidence preserved, number of handoffs, privacy intrusion, reliance on scarce skills. Define each with a scale and a method (simulation result, expert judgement, document review). Weights express priorities; agree them with stakeholders *before* scoring.
 
+In the booking-platform comparison, the criteria are time to contain, service disruption, evidence preserved and handoffs, weighted at 35, 30, 15 and 20 per cent. Disruption scores were judged with the service owners, and time to contain was measured in a tabletop. The weights were agreed before any scoring, so the near-tie between the two playbooks cannot be blamed on weights chosen to produce it.
+
 ### 34.2 Scenario selection
 
 A single scenario favours whichever strategy fits it. Use a small set that varies the factors that differentiate strategies: a fast-moving ransomware case, a slow credential-abuse case, a vendor-hosted incident, an incident during a critical clinical period.
+
+The three booking-platform scenarios were chosen to pull the strategies apart: S1, phishing with immediate export, rewards speed; S2, a false alert at Monday clinic opening, punishes automatic disablement; S3, a shared front-desk account used by five people, makes disablement disruptive in a different way. A set of scenarios that all resembled S1 would have made P-Fast look clearly superior, and the weakness revealed by S2 would never have appeared.
 
 ### 34.3 Evidence strength
 
 Grade each score: *measured* (from a simulation or data), *documented* (from a written procedure, not tested), *judged* (expert opinion). A matrix full of judged scores should be presented as an informed opinion, not a measurement.
 
+In the booking-platform table, time to contain and handoffs are measured, evidence preservation is documented and disruption is judged with owners. Because the decisive weakness of P-Fast lies in a judged score, the recommendation should say that further testing of S2 would strengthen it. Carry the grade into the conclusion, not only into the table.
+
 ### 34.4 Trade-offs and sensitivity
 
 Weighted totals hide trade-offs. Show the profile per criterion, then vary weights within plausible ranges to see whether the ranking changes (Chapter 24's sensitivity idea).
 
+In the booking-platform comparison, the totals differ by less than a tenth of a point, yet the profiles differ sharply: P-Fast excels in S1 and fails in S2. Raising the disruption weight by ten points, taken from time, makes P-Gated lead, as the exercise on recomputation confirms. A ranking that flips under a modest, plausible change in weights is not a basis for a firm recommendation. Show the profile beside the totals so a reader sees why.
+
 ### 34.5 Counterexamples
 
 For the recommended strategy, construct a scenario where it performs worse. If you cannot, you probably have not stressed it enough. Report the counterexample and how the organization would manage it.
+
+For P-Fast, the counterexample is S2: a false high-risk alert at Monday clinic opening disables staff accounts just as patients arrive. That is what led to the hybrid recommendation of automatic session revocation, which is reversible and low in disruption, with gated disablement. For P-Gated, a fast automated exfiltration during a night shift with no approver available would be the counterexample. Each counterexample should come with how the organization would manage it.
 
 ### 34.6 Worked example (synthetic): two playbooks, one service
 
@@ -3186,12 +3239,20 @@ Averaged over scenarios, weighted totals: P-Fast = 0.35×5 + 0.30×(7/3) + 0.15�
 
 Question and criteria; scenarios and why; methods for each score with evidence grade; results profile and totals; sensitivity; counterexamples; recommendation; limitations (judged scores, simulation realism, small scenario set).
 
+For the booking-platform comparison, the methods part would explain that time to contain and handoffs came from a tabletop while disruption was judged with owners. The results part shows the per-scenario profile before the near-tied totals, and the counterexample part explains S2. Limitations name the three-scenario set, equal weighting of scenarios and possible bias in owners' judgements. Write limitations last but read them first when reviewing.
+
 ### 34.8 Common errors and limits
 
 - Weights chosen after scoring.
 - Single-scenario evaluation.
 - Presenting judged scores as measurements.
 - Recommending on totals while ignoring a catastrophic weak spot.
+
+- Treating a near-tie in totals as evidence that the strategies are equivalent, when their profiles differ sharply.
+- Choosing scenarios after scoring so that the preferred strategy wins.
+- Recommending a hybrid without re-testing it on all scenarios.
+- Letting one stakeholder group score the criterion that most affects them without a second view.
+- Hiding judged scores inside a weighted total so that a reader cannot tell which parts were measured.
 
 ### Exercises — chapter 34
 
@@ -3227,21 +3288,31 @@ You will be able to (1) write a capstone question and objectives that can be ach
 
 A bachelor's capstone demonstrates that you can apply the discipline's foundations to a bounded problem, make defensible judgements, and report honestly. It is not an original research contribution (doctoral level) nor a full engineered system (engineering level). A good capstone in this course improves one part of an incident workflow and shows, with evidence, whether the improvement worked under stated conditions.
 
+The intake-form proposal in this chapter fits that scale: one part of the workflow, a measurable problem, a simulation with synthetic incidents and volunteers, and criteria set in advance. It would not claim that the form improves response across healthcare, only whether it worked under the stated conditions.
+
 ### 35.2 Question and objectives
 
 The question must be answerable in the time available with the data you can legitimately obtain. Objectives are concrete deliverables: "a configured intake workflow", "a test suite of 12 synthetic cases", "an evaluation report". Each objective links to a success criterion.
+
+In the intake proposal, each objective has a matching deliverable: the form and routing rules, a set of synthetic scenarios with known correct routing, a balanced simulation and an evaluation. If a planned element changes during the work, for instance the number of scenarios actually run, the thesis must say so and explain why, because a reader will compare the proposal with what was done.
 
 ### 35.3 Data plan
 
 State the data sources (synthetic cases you build, public datasets with licences, organizational data only with written authorization), storage and access, retention and deletion at project end. Default to synthetic data: it removes most ethical risk and makes your work reproducible.
 
+For the intake capstone, the data are synthetic scenarios, consent forms and pseudonymous volunteer IDs, deleted after grading. No real incident reports from any clinic are used. Write where the files are stored, who can read them and who deletes them, so the plan can be checked at the end.
+
 ### 35.4 Authorization and ethics
 
 If any real organization or person is involved — even as a stakeholder interviewee or tabletop participant — you need permission from the organization, informed consent from participants and, if your institution requires it, ethics approval. Never test or scan real systems without written authorization from their owner.
 
+The intake proposal involves classmates as volunteer reporters, so they give informed consent, can withdraw, and face no grading consequence for taking part. No real organization's systems are touched, and the institutional ethics check follows course rules. Record these steps before recruitment begins.
+
 ### 35.5 Success criteria and rubric
 
 Success criteria are measurable thresholds agreed before implementation: "all 12 test cases produce a complete intake record with no manual re-entry", "median intake time under 6 minutes in the tabletop". The rubric describes how the work will be graded: question and method, implementation quality, evidence and evaluation, ethics and documentation, communication.
+
+For the intake proposal, the criteria are completeness of at least 90 per cent with the form, routing accuracy of at least 90 per cent, and reporter time no more than two minutes longer than email. Because they are fixed now, the evaluation can report honestly if they are not met, as later happens in the capstone evaluation.
 
 ### 35.6 Worked example (synthetic): improving intake
 
