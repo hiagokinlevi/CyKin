@@ -474,7 +474,7 @@ KLS administrators currently trust host keys through individual `known_hosts` en
 
 ### Exercises
 
-- **EX013 — Prioritise.** Order KLS's five identity items in 7.4 by migration priority and justify. Rubric: 3 = order consistent with lifetime and control.
+- **EX013 — Prioritise.** Order KLS's five identity items in this chapter's worked example by migration priority and justify. Rubric: 3 = order consistent with lifetime and control.
 - **EX014 — Trust stores.** List five trust stores KLS must update for a new internal root. Rubric: 3 = five plausible stores.
 
 ### Synthesis
@@ -849,7 +849,7 @@ Architectures change faster than diagrams. Re-run the trace for each tier-1 flow
 ### Exercises
 
 - **EX023 — Unknown share.** In Lab I, what share of crypto uses (not assets) is quantum-vulnerable? Rubric: 3 = 5 of 8 records ≈ 63 %, noting the unknown record.
-- **EX024 — Controller tickets.** For the trace in 12.5, list the external requests KLS must open. Rubric: 3 = CDN (origin hop support), managed DB provider (replication crypto), object storage/SDK.
+- **EX024 — Controller tickets.** For the trace in this chapter's worked example, list the external requests KLS must open. Rubric: 3 = CDN (origin hop support), managed DB provider (replication crypto), object storage/SDK.
 
 ### Synthesis
 
@@ -2068,7 +2068,7 @@ During KLS's rollout an engineer suggested dropping the hybrid group from the de
 ### Exercises
 
 - **EX053 — Gate list.** Write four gates for stage 3. Rubric: 3 = measurable gates with thresholds.
-- **EX054 — Exception.** Write the exception record for the customer proxy in 27.5. Rubric: 3 = scope, reason, compensating control, owner, expiry.
+- **EX054 — Exception.** Write the exception record for the customer proxy in this chapter's worked example. Rubric: 3 = scope, reason, compensating control, owner, expiry.
 
 ### Synthesis
 
