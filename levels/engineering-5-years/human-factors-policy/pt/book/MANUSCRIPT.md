@@ -1,7 +1,7 @@
 # Fatores Humanos e Política Cibernética: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 121, curso de engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 50 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções com rubricas de 0 a 3 e 5 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 21–50 (EX061–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–30 de 50 já estão escritos em português, com os exercícios EX001–EX090 e suas resoluções com rubricas de 0 a 3 e 9 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 31–50 (EX091–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que projetam, verificam e operam um programa de conscientização e de reporte em segurança como um sistema sociotécnico projetado.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios modelam reportes semanais, esquecimento, taxas, triagem, filas, confiabilidade, orçamentos e testes exatos sobre dados sintéticos; nenhum funcionário, e-mail ou conta real está envolvido. Toda simulação de phishing descrita é anunciada, aprovada com os representantes dos funcionários, evita iscas que explorem sofrimento pessoal e é relatada apenas de forma agregada. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ Adams e Sasse (1999), [doi:10.1145/322796.322806](https://doi.org/10.1145/322796
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) |
 
-Capítulos 21–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
+Capítulos 31–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-31), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -885,11 +885,459 @@ Listas de partes interessadas podem omitir grupos discretos, como os terceirizad
 - **EX059 — Políticas como restrições.** Como Aiko escolhe ler as políticas? *Rubrica:* 3 = como restrições e objetivos de projeto;; 2 = restrições;; 1 = só regras;; 0 = nenhuma.
 - **EX060 — Modo de falha.** Quando o trabalho em fatores humanos fracassa, segundo a Profa. Kerr? *Rubrica:* 3 = quando serve a uma só parte interessada;; 2 = uma parte interessada;; 1 = nada;; 0 = nenhuma.
 
+<a id="ch-21"></a>
+
+## Capítulo 21 — Fatores humanos e política cibernética: requisitos
+
+### Objetivos de aprendizagem
+
+Você vai (1) levantar requisitos de fatores humanos com os funcionários; (2) escrevê-los de forma testável; (3) priorizar os requisitos com as partes interessadas.
+
+### 21.1 Levantar requisitos
+
+Aiko conduz oficinas curtas com operadores, engenheiros de campo e equipe administrativa para entender o que o programa de conscientização e de reportes precisa alcançar para eles. Pergunta sobre e-mails suspeitos recentes, o que os tornou difíceis de julgar e o que os impediu de reportar. Os operadores dizem que não podem deixar os consoles para ler treinamentos longos. Os engenheiros dizem que leem e-mails no celular, dentro das vans. A equipe administrativa diz ter medo de parecer tola se reportar um e-mail legítimo. Cada afirmação se torna um requisito candidato, fundamentado na experiência real, e não em suposições feitas no escritório de segurança.
+
+### 21.2 Requisitos testáveis
+
+Aiko reescreve cada necessidade como um requisito testável. Os módulos de treinamento para operadores devem durar no máximo cinco minutos e poder ser usados em períodos tranquilos. O reporte deve funcionar no celular com um toque. Todo reporte, inclusive os que se revelam inofensivos, deve receber um agradecimento em até um minuto. Nenhum resultado de simulação pode ser compartilhado nominalmente com os gestores diretos. Cada requisito tem uma medida e um teste. Ela evita frases vagas como os funcionários devem estar conscientes, que não podem ser verificadas e, por isso, não conseguem orientar o projeto.
+
+### 21.3 Priorizar
+
+Com vinte requisitos candidatos e orçamento limitado, Aiko conduz uma sessão de priorização com representantes de cada grupo e a equipe de segurança. Eles ordenam os requisitos pelo risco reduzido, pelo benefício para os funcionários e pelo custo. O reporte com um toque no celular e os agradecimentos rápidos ficam no topo, porque são baratos e atacam a barreira mais comum. Uma plataforma completa de simulação fica mais abaixo, porque a ferramenta existente pode ser configurada. Ela registra a ordem e os motivos, para que decisões posteriores possam remeter a eles. A ordem é compartilhada com todos os funcionários em uma nota curta, para que as pessoas vejam que suas preocupações foram ouvidas.
+
+### Exemplo resolvido
+
+Aiko levanta necessidades de três grupos de funcionários, reescreve-as como requisitos testáveis e prioriza vinte deles com as partes interessadas.
+
+> **Caso sintético.** As oficinas e os requisitos são sintéticos.
+
+### Erros e limites
+
+Os participantes das oficinas podem não representar os funcionários mais discretos. As prioridades refletem quem comparece.
+
+### Exercícios
+
+- **EX061 — Medo da equipe administrativa.** Que barreira a equipe administrativa descreveu? *Rubrica:* 3 = medo de parecer tola ao reportar um e-mail legítimo;; 2 = constrangimento;; 1 = nada;; 0 = nenhuma.
+- **EX062 — Requisito vago.** Por que evitar "os funcionários devem estar conscientes" como requisito? *Rubrica:* 3 = não pode ser verificado;; 2 = não testável;; 1 = nada;; 0 = nenhuma.
+- **EX063 — Prioridades principais.** Que requisitos ficaram no topo? *Rubrica:* 3 = reporte com um toque no celular e agradecimentos rápidos;; 2 = os dois;; 1 = plataforma;; 0 = nenhuma.
+
+<a id="ch-22"></a>
+
+## Capítulo 22 — Fatores humanos e política cibernética: modelos de sistema e de dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) modelar o programa de conscientização como um sistema; (2) modelar os fluxos de dados dos reportes e das simulações; (3) identificar onde as pessoas tomam decisões.
+
+### 22.1 O programa como sistema
+
+Aiko modela o programa de conscientização da Greyford como um sistema com entradas, processos e saídas. As entradas incluem inteligência de ameaças, necessidades dos funcionários e requisitos de política. Os processos incluem treinamento, simulações, reportes, triagem e retorno. As saídas incluem reportes mais rápidos, menos ataques bem-sucedidos e evidências para o regulador. Modelar o programa dessa forma mostra que o treinamento é apenas um processo entre vários e que a saída que importa à Greyford depende de reportes e triagem funcionarem bem juntos. Ela desenha o modelo em um diagrama de uma página e o usa para explicar aos gestores por que investir apenas em treinamento deixaria a maior parte do sistema inalterada e pouco afetaria os resultados que eles desejam.
+
+### 22.2 Fluxos de dados
+
+Aiko desenha os fluxos de dados: os funcionários reportam e-mails ao sistema de triagem; a triagem devolve vereditos a quem reportou; os resultados das simulações seguem de forma agregada para um dashboard; a conclusão dos treinamentos segue para os registros do RH. Ela marca onde aparecem dados pessoais e onde eles são agregados. Um fluxo a preocupa: por padrão, a ferramenta de simulação exporta resultados individuais para uma planilha que os gestores podem abrir. Ela recomenda desligar a exportação e configurar apenas relatórios agregados, em coerência com a política do capítulo 13. O fornecedor confirma que a mudança pode ser travada pelos administradores.
+
+### 22.3 Pontos de decisão
+
+Aiko marca cada ponto em que uma pessoa toma uma decisão: um funcionário decidindo se reporta, um analista de triagem decidindo se um e-mail é malicioso, um gestor decidindo se aprova um acesso e um operador decidindo se age com base em um pedido por telefone. Para cada um, anota que informação a pessoa tem, quanto tempo e que pressão. Pontos de decisão com pouca informação e muita pressão, como pedidos urgentes por telefone, são onde a engenharia social tem sucesso, e por isso merecem atenção de projeto em primeiro lugar.
+
+### Exemplo resolvido
+
+Aiko modela o programa como um sistema, mapeia os fluxos de dados e interrompe uma exportação de resultados individuais, e marca os pontos de decisão com suas pressões.
+
+> **Caso sintético.** Os modelos e as ferramentas são sintéticos.
+
+### Erros e limites
+
+Os modelos omitem canais informais, como mensagens de chat. As configurações padrão mudam com as atualizações das ferramentas.
+
+### Exercícios
+
+- **EX064 — Saída do programa.** Que saída mais importa à Greyford? *Rubrica:* 3 = reportes mais rápidos e menos ataques bem-sucedidos;; 2 = resultados;; 1 = conclusão;; 0 = nenhuma.
+- **EX065 — Problema da exportação.** Que fluxo de dados preocupou Aiko? *Rubrica:* 3 = resultados individuais de simulação exportados para uma planilha dos gestores;; 2 = exportação;; 1 = nada;; 0 = nenhuma.
+- **EX066 — Pontos de decisão arriscados.** Que pontos de decisão merecem atenção primeiro? *Rubrica:* 3 = os com pouca informação e muita pressão, como pedidos urgentes por telefone;; 2 = pressão;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-23"></a>
+
+## Capítulo 23 — Fatores humanos e política cibernética: análise de ameaças e falhas
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar como se desenrolam os ataques de engenharia social; (2) classificar erros humanos; (3) desenhar defesas para cada tipo de falha.
+
+### 23.1 Sequências de ataque
+
+Aiko analisa uma sequência realista: um atacante pesquisa os funcionários da Greyford na internet, envia a um engenheiro de campo uma mensagem se passando por um fornecedor de bombas sobre um problema urgente de firmware, faz em seguida uma ligação e pede ao engenheiro que aprove uma sessão remota. Hadnagy (2018) descreve esse tipo de pretexto em várias etapas. Cada etapa oferece uma chance de deter o ataque: limitar o que os funcionários publicam, verificar os contatos de fornecedores, retornar ligações para números conhecidos e exigir a aprovação de uma segunda pessoa para sessões remotas. Ela desenha a sequência como uma linha do tempo, com cada oportunidade de defesa marcada.
+
+### 23.2 Classificar erros
+
+Aiko usa a distinção entre deslizes, lapsos e enganos estabelecida por Reason (1990). Um deslize é uma ação errada, como clicar no botão errado; um lapso é uma falha de memória, como esquecer de bloquear a tela; um engano é um plano errado, como acreditar que um falso fornecedor é legítimo. Cada um exige uma defesa diferente: deslizes pedem interfaces tolerantes, lapsos pedem lembretes ou automação, e enganos pedem informação melhor ou verificação. Classificar os erros interrompe a resposta padrão de mais treinamento para todo problema.
+
+### 23.3 Defesas por tipo
+
+Aiko mapeia as defesas. Para os deslizes, o botão de reporte tem um desfazer e há uma confirmação para o envio de arquivos sensíveis para fora. Para os lapsos, as telas se bloqueiam automaticamente e as chaves de segurança eliminam as senhas esquecidas. Para os enganos, pedidos de fornecedores exigem verificação por retorno de ligação, e os funcionários recebem orientações curtas sobre os pretextos comuns. Ela também registra as violações, a quebra deliberada de regras, que muitas vezes sinalizam regras impraticáveis, e não má intenção, como constataram Adams e Sasse (1999). As violações a levam a revisar as regras antes de reforçá-las. Ela apresenta o mapeamento como uma tabela que a equipe de segurança pode ampliar quando ocorrerem novos incidentes, para que cada falha futura seja classificada antes da escolha da resposta.
+
+### Exemplo resolvido
+
+Aiko analisa um pretexto em várias etapas, classifica os erros em deslizes, lapsos e enganos e associa defesas a cada tipo, tratando as violações como sinais.
+
+> **Caso sintético.** O ataque é sintético; Hadnagy (2018), Reason (1990) e Adams e Sasse (1999) são reais.
+
+### Erros e limites
+
+Na prática, as categorias de erro se sobrepõem. Os atacantes se adaptam às etapas de verificação conhecidas.
+
+### Exercícios
+
+- **EX067 — Etapas do pretexto.** Que etapas compõem o pretexto do fornecedor? *Rubrica:* 3 = pesquisa online, e-mail falsificado, ligação de acompanhamento, pedido de sessão remota;; 2 = três;; 1 = nada;; 0 = nenhuma.
+- **EX068 — Defesa contra lapsos.** O que defende contra os lapsos? *Rubrica:* 3 = lembretes ou automação, como o bloqueio automático;; 2 = automação;; 1 = treinamento;; 0 = nenhuma.
+- **EX069 — Violações como sinais.** O que as violações costumam sinalizar? *Rubrica:* 3 = regras impraticáveis, e não má intenção;; 2 = desenho das regras;; 1 = malícia;; 0 = nenhuma.
+
+<a id="ch-24"></a>
+
+## Capítulo 24 — Fatores humanos e política cibernética: métodos I
+
+### Objetivos de aprendizagem
+
+Você vai (1) conduzir um percurso cognitivo de uma tarefa de segurança; (2) aplicar um questionário curto de forma responsável; (3) combinar métodos para entender um problema.
+
+### 24.1 Percurso cognitivo
+
+Aiko aplica um percurso cognitivo ao processo de redefinição de senha da Greyford. Ela percorre cada ação que o usuário precisa executar, perguntando se ele saberá o que fazer, verá como fazer, entenderá o retorno e saberá que teve sucesso. Descobre que a página de redefinição pede um número de matrícula que a maioria dos funcionários de campo não lembra, e que a mensagem de confirmação é ambígua. Percursos são rápidos, dispensam participantes e encontram muitos problemas cedo, embora dependam de o avaliador imaginar com precisão o usuário.
+
+### 24.2 Um questionário responsável
+
+Aiko aplica um questionário aos funcionários sobre as barreiras ao reporte. O questionário é anônimo, curto e voluntário, e pergunta sobre experiências em vez de testar conhecimentos. Ela evita perguntas indutoras e inclui uma pergunta aberta para comentários. Relata os resultados apenas para grupos de vinte pessoas ou mais. Cento e oitenta funcionários respondem. A barreira mais comum é não saber se algo é suspeito o bastante para ser reportado, seguida de não saber como reportar pelo celular. Ela compartilha os principais resultados com todos os funcionários em até duas semanas, agradecendo e explicando o que vai mudar, para que os respondentes vejam que suas respostas tiveram efeito.
+
+### Laboratório — Contagens e proporções de barreiras nas respostas ao questionário
+
+```python
+# Count reporting barriers from an anonymous survey (synthetic multi-select, n=180).
+n = 180
+barriers = {"unsure if suspicious enough": 71, "don't know how to report on phone": 48, "worried about looking foolish": 33,
+            "no time": 29, "never get feedback": 41, "didn't know reporting existed": 12}
+for b, c in sorted(barriers.items(), key=lambda x: -x[1]): print(f"{b:34} {c:3d}/{n} = {c/n:.0%}")
+```
+
+Execute com `python3 lab_survey.py`. Saída verificada:
+
+```text
+unsure if suspicious enough         71/180 = 39%
+don't know how to report on phone   48/180 = 27%
+never get feedback                  41/180 = 23%
+worried about looking foolish       33/180 = 18%
+no time                             29/180 = 16%
+didn't know reporting existed       12/180 = 7%
+```
+
+### 24.3 Combinar métodos
+
+O percurso encontrou problemas de usabilidade; o questionário encontrou incerteza sobre quando reportar. Juntos, eles sugerem duas correções: melhorar as interfaces de redefinição e de reporte e dizer claramente aos funcionários que qualquer dúvida é um bom motivo para reportar. Aiko observa que nenhum dos métodos, sozinho, teria mostrado as duas coisas. Ela planeja em seguida testes de usabilidade com usuários reais, já que percursos e questionários descrevem problemas, mas não mostram como as pessoas de fato se comportam ao usar o sistema. Registra como cada achado foi obtido, para que os leitores saibam quais afirmações se apoiam em revisão de especialista e quais em relatos dos funcionários, e marca os testes de usabilidade para o mês seguinte.
+
+### Exemplo resolvido
+
+Aiko faz o percurso de uma tarefa de redefinição e encontra dois problemas, aplica de forma responsável um questionário sobre barreiras ao reporte e combina os dois métodos em duas correções.
+
+> **Caso sintético.** O questionário e os achados são sintéticos.
+
+### Erros e limites
+
+Percursos dependem da imaginação do avaliador. Questionários medem percepções, não comportamentos.
+
+### Exercícios
+
+- **EX070 — Perguntas do percurso.** Que quatro perguntas orientam cada passo do percurso? *Rubrica:* 3 = saber o que fazer, ver como, entender o retorno, saber que teve sucesso;; 2 = três;; 1 = nada;; 0 = nenhuma.
+- **EX071 — Principal barreira.** Qual foi a barreira ao reporte mais comum no laboratório? *Rubrica:* 3 = não saber se é suspeito o bastante: 71 de 180;; 2 = incerteza;; 1 = celular;; 0 = nenhuma.
+- **EX072 — Mensagem clara.** Que mensagem trata dessa barreira? *Rubrica:* 3 = qualquer dúvida é um bom motivo para reportar;; 2 = dúvida;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-25"></a>
+
+## Capítulo 25 — Ateliê de projeto I
+
+### Objetivos de aprendizagem
+
+Você vai (1) desenhar em equipe um serviço de reporte e retorno; (2) criticar projetos em um ambiente de ateliê; (3) iterar com base no retorno recebido.
+
+### 25.1 O briefing do ateliê
+
+A Profa. Kerr conduz um ateliê de projeto. A equipe de quatro pessoas de Aiko precisa desenhar um serviço de reporte e retorno para uma operadora regional de transporte fictícia, com motoristas, funcionários de garagem e equipes administrativas. Os requisitos incluem reporte com um toque, retorno rápido e nenhuma culpa individual. A equipe inclui um estudante de computação, uma estudante de psicologia e um estudante de design. Trabalhar entre disciplinas traz ideias diferentes: a estudante de psicologia sugere enquadrar os reportes como uma ajuda aos colegas, e não como um dever de segurança. A equipe combina papéis e cronograma na primeira reunião, e cada membro lidera uma parte do projeto.
+
+### 25.2 Crítica no ateliê
+
+Na crítica intermediária, outras equipes e dois profissionais revisam os projetos. Um profissional aponta que os motoristas não podem usar o celular enquanto dirigem, então o reporte também precisa funcionar em terminais da garagem e por uma simples ligação para uma central. Outro revisor questiona se o resumo mensal será lido. A equipe de Aiko ouve sem se defender e registra cada comentário. A crítica funciona quando os projetistas a tratam como informação, e não como ataque. Eles separam os comentários em obrigatórios e desejáveis antes da sessão seguinte e combinam quem vai tratar de cada um.
+
+### 25.3 Iterar
+
+A equipe revisa o projeto. Acrescenta o reporte pelos terminais da garagem e uma central telefônica, reduz o resumo mensal a três itens com uma imagem e testa o novo enquadramento com cinco funcionários de garagem, que o preferem. Documenta o que mudou e por quê. Na crítica final, os profissionais observam que o projeto agora se ajusta à jornada dos motoristas. Aiko aprende que iterar com base em restrições reais produz projetos que as pessoas de fato usam. A equipe também mantém um log de mudanças curto, listando cada revisão, o comentário que a motivou e o resultado do pequeno teste com os funcionários de garagem, que os revisores finais usam para ver como o projeto evoluiu.
+
+### Exemplo resolvido
+
+A equipe de Aiko desenha um serviço de reporte para uma operadora de transporte, recebe críticas do ateliê sobre os motoristas e itera com terminais, uma central telefônica e um resumo mais curto.
+
+> **Caso sintético.** A operadora de transporte e a equipe são sintéticas.
+
+### Erros e limites
+
+Projetos de ateliê não sofrem as pressões de uma implantação real. Testes pequenos podem favorecer a novidade.
+
+### Exercícios
+
+- **EX073 — Enquadramento da psicologia.** Que enquadramento a estudante de psicologia sugeriu? *Rubrica:* 3 = reportar como ajuda aos colegas;; 2 = ajuda;; 1 = dever;; 0 = nenhuma.
+- **EX074 — Restrição dos motoristas.** Que restrição o profissional levantou? *Rubrica:* 3 = motoristas não podem usar o celular enquanto dirigem;; 2 = direção;; 1 = nada;; 0 = nenhuma.
+- **EX075 — Mudanças no projeto.** Cite duas mudanças feitas após a crítica. *Rubrica:* 3 = reporte por terminais da garagem, central telefônica, resumo mais curto;; 2 = duas;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-26"></a>
+
+## Capítulo 26 — Fatores humanos e política cibernética: alternativas de arquitetura
+
+### Objetivos de aprendizagem
+
+Você vai (1) comparar arquiteturas alternativas para um programa de conscientização em segurança; (2) ponderar as alternativas com critérios humanos e organizacionais; (3) justificar uma escolha de forma aberta.
+
+### 26.1 Três alternativas
+
+Aiko compara três formas de a Greyford organizar seu programa. A primeira é orientada a compliance: um curso online anual e simulações trimestrais medidos pela conclusão e pela taxa de cliques. A segunda é orientada a reportes: reporte fácil, retorno rápido, reciclagens mensais curtas e simulações medidas pela velocidade dos reportes. A terceira é orientada ao projeto: investir principalmente em mudanças técnicas que retirem decisões dos funcionários, como chaves de segurança e filtragem mais forte, com o mínimo de treinamento. Cada uma reflete uma teoria diferente sobre o que torna as pessoas seguras, e cada uma tem pontos fortes que faltam às outras.
+
+### 26.2 Critérios e pontuação
+
+Aiko pontua as alternativas com critérios acordados com as partes interessadas: redução de risco, ônus para os funcionários, custo, evidências regulatórias e confiança dos funcionários. O laboratório calcula os totais ponderados. A opção orientada ao projeto pontua mais alto em risco e ônus, mas é a mais fraca em evidências regulatórias, porque o regulador espera alguns registros de treinamento. A opção orientada a reportes pontua bem na maioria dos critérios. A opção orientada a compliance só é a melhor na facilidade de produzir evidências, o que corresponde à crítica de Bada, Sasse e Nurse (2019) de que essas campanhas raramente mudam comportamentos. As partes interessadas definem os pesos antes de ver qualquer pontuação, o que impede que os pesos sejam ajustados para favorecer uma opção.
+
+### Laboratório — Comparação ponderada de três desenhos de programa
+
+```python
+# Weighted comparison of three awareness programme designs (synthetic 1-5 scores).
+w = {"risk": 0.30, "burden": 0.20, "cost": 0.15, "evidence": 0.15, "trust": 0.20}
+s = {"compliance": {"risk": 2, "burden": 2, "cost": 4, "evidence": 5, "trust": 2},
+     "reporting": {"risk": 4, "burden": 4, "cost": 4, "evidence": 3, "trust": 4},
+     "design": {"risk": 5, "burden": 5, "cost": 2, "evidence": 2, "trust": 4}}
+def tot(wt): return {o: sum(wt[c] * v for c, v in sc.items()) / sum(wt.values()) for o, sc in s.items()}
+print("base:", {o: round(v, 2) for o, v in tot(w).items()})
+print("evidence weight doubled:", {o: round(v, 2) for o, v in tot(dict(w, evidence=0.30)).items()})
+```
+
+Execute com `python3 lab_options.py`. Saída verificada:
+
+```text
+base: {'compliance': 2.75, 'reporting': 3.85, 'design': 3.9}
+evidence weight doubled: {'compliance': 3.04, 'reporting': 3.74, 'design': 3.65}
+```
+
+### 26.3 Uma escolha aberta
+
+Aiko recomenda um híbrido: mudanças técnicas orientadas ao projeto combinadas com o programa orientado a reportes, mantendo um treinamento curto que também produz os registros de que o regulador precisa. Ela explica abertamente os tradeoffs: o híbrido custa mais no primeiro ano, mas reduz o ônus e o risco. Observa que os pesos refletem julgamentos das partes interessadas e mostra que a recomendação se mantém quando o peso das evidências regulatórias é dobrado: os totais passam a 3,74 para a opção orientada a reportes e 3,65 para a orientada ao projeto, ambas ainda bem acima da orientada a compliance, com 3,04, de modo que os dois componentes do híbrido continuam sendo os mais fortes. O conselho aprova o híbrido e pede uma avaliação após doze meses.
+
+### Exemplo resolvido
+
+Aiko compara programas orientados a compliance, a reportes e ao projeto com cinco critérios ponderados e recomenda um híbrido, com uma verificação de sensibilidade.
+
+> **Caso sintético.** As pontuações e os pesos são sintéticos; Bada et al. (2019) é real.
+
+### Erros e limites
+
+Pontuações são julgamentos. Desenhos híbridos podem perder o foco se não forem bem geridos.
+
+### Exercícios
+
+- **EX076 — Fraqueza da opção de projeto.** Em que a opção orientada ao projeto pontua pior? *Rubrica:* 3 = evidências regulatórias;; 2 = evidências;; 1 = risco;; 0 = nenhuma.
+- **EX077 — Totais ponderados.** Quais foram os totais ponderados no laboratório? *Rubrica:* 3 = compliance 2,75, reportes 3,85, projeto 3,90;; 2 = ordem;; 1 = nada;; 0 = nenhuma.
+- **EX078 — Robustez do híbrido.** Como Aiko testou a recomendação do híbrido? *Rubrica:* 3 = dobrando o peso das evidências regulatórias;; 2 = sensibilidade;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-27"></a>
+
+## Capítulo 27 — Fatores humanos e política cibernética: projeto de controles
+
+### Objetivos de aprendizagem
+
+Você vai (1) desenhar controles que apoiem as pessoas em vez de testá-las; (2) aplicar nudges de forma ética; (3) desenhar procedimentos de verificação para pedidos de alto risco.
+
+### 27.1 Controles de apoio
+
+Aiko desenha controles que ajudam os funcionários a fazer a coisa certa. Pedidos de mudança de dados de pagamento disparam um bloqueio automático e um retorno de ligação feito por uma segunda pessoa, usando um número do cadastro do fornecedor, e não o do pedido. Sessões remotas de fornecedores exigem um número de chamado e aprovação no sistema de manutenção. E-mails externos com nomes iguais aos de funcionários exibem um aviso específico. Cada controle elimina a necessidade de um julgamento solitário sob pressão. Saltzer e Schroeder (1975) chamaram isso de aceitabilidade psicológica: controles fáceis de usar corretamente são usados corretamente.
+
+### 27.2 Nudges éticos
+
+Aiko considera os nudges, pequenas mudanças de projeto que tornam a escolha segura mais fácil ou mais visível. Exemplos incluem fazer do botão de reporte a ação mais destacada, definir padrões seguros para o compartilhamento de arquivos e exibir um lembrete curto quando alguém encaminha arquivos internos para fora. Ela estabelece limites éticos: os nudges devem ser transparentes, fáceis de contornar quando houver um bom motivo e nunca manipuladores. Um nudge que engane as pessoas prejudicaria a confiança e contradiria o respeito pelos funcionários do qual o programa depende.
+
+### 27.3 Procedimentos de verificação
+
+Para pedidos de alto risco, como mudanças nas configurações da estação de tratamento solicitadas por telefone, Aiko escreve um procedimento de verificação: registrar o pedido, desligar, retornar a ligação pelo número oficial, confirmar com um segundo engenheiro e registrar o resultado. O procedimento leva cerca de três minutos. Ela o testa com cinco engenheiros em uma dramatização, com um colega fazendo o papel de quem liga, e não em um exercício real de engano. Todos o completam corretamente após uma prática e sugerem um cartão plastificado junto ao telefone. O cartão lista os números oficiais e os passos em palavras simples.
+
+### Exemplo resolvido
+
+Aiko desenha controles para pagamentos, fornecedores e e-mails que eliminam julgamentos solitários, estabelece limites éticos para os nudges e testa um procedimento de retorno de ligação por dramatização.
+
+> **Caso sintético.** Os controles e os testes são sintéticos; Saltzer e Schroeder (1975) é real.
+
+### Erros e limites
+
+Procedimentos de retorno de ligação falham se os cadastros de fornecedores estiverem errados. Os nudges perdem efeito com o tempo.
+
+### Exercícios
+
+- **EX079 — Origem do número de retorno.** De onde deve vir o número para o retorno de ligação? *Rubrica:* 3 = do cadastro do fornecedor, não do pedido;; 2 = fonte conhecida;; 1 = do pedido;; 0 = nenhuma.
+- **EX080 — Limites dos nudges.** Que limites éticos se aplicam aos nudges? *Rubrica:* 3 = transparentes, fáceis de contornar e nunca manipuladores;; 2 = dois;; 1 = nada;; 0 = nenhuma.
+- **EX081 — Dramatização, não engano.** Como o procedimento de verificação foi testado? *Rubrica:* 3 = dramatização com um colega fazendo o papel de quem liga;; 2 = dramatização;; 1 = engano real;; 0 = nenhuma.
+
+<a id="ch-28"></a>
+
+## Capítulo 28 — Fatores humanos e política cibernética: implementação I
+
+### Objetivos de aprendizagem
+
+Você vai (1) implementar o botão de reporte e o serviço de retorno; (2) gerir a mudança organizacional; (3) fazer o lançamento com apoio aos funcionários.
+
+### 28.1 Implementação
+
+Aiko se junta à equipe de TI da Greyford para implementar o serviço de reportes. Eles configuram o botão de reporte da plataforma de e-mail no computador e no celular, conectam-no à ferramenta de triagem, configuram os agradecimentos automáticos e criam modelos para as mensagens de veredito. Testam cada caminho com e-mails sintéticos antes do lançamento. Também configuram o dashboard agregado e removem a exportação individual, como planejado no capítulo 22. A implementação segue os requisitos do capítulo 21, que servem de checklist de aceitação. Cada resultado de teste é registrado com a data e o responsável, para que mudanças posteriores possam ser conferidas nos mesmos caminhos e nada seja presumido como ainda funcionando.
+
+### 28.2 Gerir a mudança
+
+Aiko sabe que novos processos fracassam quando as pessoas não entendem por que eles existem. Ela escreve uma explicação curta para os funcionários: por que reportar importa, o que acontece com os reportes e a promessa de que ninguém será culpado por clicar. Primeiro, orienta os líderes de equipe, para que possam responder às perguntas. Os representantes dos funcionários assinam o comunicado em conjunto. Ela evita mensagens baseadas no medo, que Bada, Sasse e Nurse (2019) identificaram como um motivo do fracasso das campanhas, e se concentra em como reportar protege os colegas e o público. Os líderes de equipe também recebem uma lista curta de perguntas prováveis, com sugestões de resposta.
+
+### 28.3 Lançamento e apoio
+
+O serviço é lançado numa terça-feira, evitando as segundas, quando o volume de e-mails é maior. Aiko mantém um canal de ajuda nas duas primeiras semanas e registra as perguntas. A maioria trata de reportar ou não newsletters e faturas de fornecedores. Ela atualiza a orientação para dizer que faturas inesperadas devem ser reportadas, enquanto newsletters conhecidas podem ser ignoradas. Os reportes na primeira semana triplicam em relação ao endereço de e-mail usado antes para reportar, e os agradecimentos funcionam no computador e no celular. O log do canal de ajuda se torna a primeira fonte da página de perguntas frequentes publicada um mês depois.
+
+### Exemplo resolvido
+
+Aiko implementa o reporte e o retorno, gere a mudança por meio dos líderes de equipe e de comunicados assinados em conjunto, e faz o lançamento com um canal de ajuda.
+
+> **Caso sintético.** Os detalhes da implementação e os números são sintéticos; Bada et al. (2019) é real.
+
+### Erros e limites
+
+Picos de lançamento podem se dissipar. Canais de ajuda exigem tempo da equipe.
+
+### Exercícios
+
+- **EX082 — Checklist de aceitação.** O que serviu de checklist de aceitação? *Rubrica:* 3 = os requisitos do capítulo 21;; 2 = requisitos;; 1 = nada;; 0 = nenhuma.
+- **EX083 — Mensagem evitada.** Que estilo de mensagem Aiko evitou? *Rubrica:* 3 = mensagens baseadas no medo;; 2 = medo;; 1 = nada;; 0 = nenhuma.
+- **EX084 — Pergunta comum.** Do que tratava a maioria das primeiras perguntas? *Rubrica:* 3 = se newsletters e faturas de fornecedores deviam ser reportadas;; 2 = newsletters;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-29"></a>
+
+## Capítulo 29 — Fatores humanos e política cibernética: medição
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir medidas de resultado para o programa; (2) calcular o tempo de exposição a partir dos dados de reportes; (3) evitar incentivos perversos nas métricas.
+
+### 29.1 Medidas de resultado
+
+Aiko define medidas para o programa da Greyford: a mediana do tempo entre a chegada de um e-mail malicioso e o primeiro reporte; a proporção de e-mails maliciosos reportados por pelo menos uma pessoa; a proporção de reportes que são ameaças reais; o ônus para os funcionários, medido por um questionário trimestral de duas perguntas; e, como medida secundária, a taxa de cliques em simulações com dificuldade fixa na Phish Scale. Cada medida tem uma definição, uma fonte de dados e um responsável. Ela põe em primeiro lugar o tempo até o reporte, porque ele se relaciona diretamente com o tempo em que os ataques permanecem ativos. Os responsáveis revisam suas medidas mensalmente com Aiko.
+
+### 29.2 Calcular a exposição
+
+O laboratório calcula, para um mês de e-mails maliciosos sintéticos, o tempo até o primeiro reporte e o número de caixas de entrada expostas até a remoção. A mediana do tempo até o primeiro reporte é de poucos minutos, mas dois e-mails nunca foram reportados e só foram removidos quando o fornecedor do filtro atualizou suas regras, horas depois. Esses dois respondem pela maior parte da exposição. Aiko recomenda investigar por que não foram reportados; os dois imitavam um lembrete interno de folha de ponto que os funcionários esperavam receber. Ela compartilha o achado também com o fornecedor do filtro.
+
+### Laboratório — Tempo até o primeiro reporte e exposição das caixas de entrada
+
+```python
+# Time to first report and inbox-minutes of exposure for a month of malicious emails (synthetic).
+emails = [("invoice lure", 40, 4, 30), ("mailbox full", 25, 6, 30), ("parcel", 60, 3, 25), ("ceo favour", 8, 11, 20),
+          ("bank update", 35, 5, 30), ("timesheet reminder A", 120, None, 360), ("timesheet reminder B", 90, None, 300)]
+# (name, recipients, minutes to first report or None, minutes to removal after report or after filter update)
+total = 0; parts = []
+for name, n, first, rem in emails:
+    mins = (first + rem) if first is not None else rem
+    exp = n * mins; total += exp; parts.append((name, first, exp))
+firsts = sorted(f for _, f, _ in parts if f is not None)
+print(f"median time to first report (reported emails): {firsts[len(firsts) // 2]} min; never reported: {sum(f is None for _, f, _ in parts)}")
+unrep = sum(e for _, f, e in parts if f is None)
+print(f"total inbox-minutes {total}; never-reported share {unrep / total:.0%}")
+```
+
+Execute com `python3 lab_exposure.py`. Saída verificada:
+
+```text
+median time to first report (reported emails): 5 min; never reported: 2
+total inbox-minutes 75613; never-reported share 93%
+```
+
+### 29.3 Incentivos perversos
+
+Aiko adverte contra metas que distorcem o comportamento. Uma meta de reduzir a taxa de cliques poderia ser cumprida enviando simulações mais fáceis e com menos frequência. Uma meta de número de reportes poderia ser cumprida incentivando os funcionários a reportar tudo, sobrecarregando a triagem. Ela propõe acompanhar as medidas em pares, como o número de reportes junto com a proporção de ameaças reais, e nunca vincular a elas remuneração ou punição individual. A medição deve ajudar o programa a aprender, e não criar jogos. Ela escreve essas regras no estatuto do programa, para que futuros gestores não possam introduzir discretamente metas individuais, e pede ao conselho que revise as medidas a cada ano para conferir se ainda servem ao aprendizado.
+
+### Exemplo resolvido
+
+Aiko define cinco medidas com responsáveis, calcula o tempo até o reporte e a exposição a partir de dados sintéticos e acompanha as medidas em pares para evitar incentivos perversos.
+
+> **Caso sintético.** Os dados são sintéticos; a Phish Scale é real.
+
+### Erros e limites
+
+E-mails não reportados só são encontrados se forem detectados de outra forma. Medidas em pares ainda exigem julgamento.
+
+### Exercícios
+
+- **EX085 — Medida principal.** Por que pôr em primeiro lugar o tempo até o reporte? *Rubrica:* 3 = relaciona-se diretamente com o tempo em que os ataques ficam ativos;; 2 = exposição;; 1 = nada;; 0 = nenhuma.
+- **EX086 — Exposição no laboratório.** Quanta exposição veio dos dois e-mails não reportados? *Rubrica:* 3 = os dois nunca reportados causaram 93% dos minutos-caixa de exposição;; 2 = a maior parte;; 1 = nada;; 0 = nenhuma.
+- **EX087 — Medidas em pares.** Por que acompanhar as medidas em pares? *Rubrica:* 3 = para impedir que uma meta seja manipulada à custa de outra;; 2 = manipulação;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-30"></a>
+
+## Capítulo 30 — Laboratório de verificação I
+
+### Objetivos de aprendizagem
+
+Você vai (1) verificar o serviço de reportes em relação aos requisitos; (2) conduzir uma verificação de usabilidade com participantes; (3) registrar as evidências da verificação.
+
+### 30.1 Verificação de requisitos
+
+No laboratório de verificação, Aiko confere cada requisito do capítulo 21. Envia e-mails de teste sintéticos e os reporta pelo computador e pelo celular, cronometrando os agradecimentos. Confere que o dashboard mostra apenas grupos de vinte pessoas ou mais e que não existe exportação individual. Confirma que os módulos de treinamento dos operadores levam menos de cinco minutos. Cada verificação produz um aprovado ou reprovado, com evidências como carimbos de tempo ou capturas de tela. A verificação transforma requisitos em prova, e não em suposição. Os testes são executados duas vezes, em dias diferentes, para descartar efeitos casuais de horário, e qualquer resultado próximo de um limite é repetido.
+
+### 30.2 Verificação de usabilidade
+
+Aiko recruta oito funcionários voluntários para executar tarefas: reportar um e-mail pelo celular, encontrar a mensagem de veredito e encontrar a orientação sobre o que reportar. Mede o sucesso e o tempo sem ajudar. Sete têm sucesso em todas as tarefas; um não consegue encontrar a orientação porque ela só está linkada na intranet. Ela acrescenta um link na mensagem de agradecimento. A verificação de usabilidade confere se os requisitos foram atendidos de um jeito que pessoas reais conseguem usar, algo que verificações técnicas sozinhas não podem confirmar. Ela também registra onde os voluntários hesitaram, mesmo quando tiveram sucesso.
+
+### Laboratório — Resultados da verificação de requisitos
+
+```python
+# Requirement verification results, before and after fixing a notification setting (synthetic).
+reqs = ["one-tap mobile report", "thank-you within 1 minute (desktop)", "thank-you within 1 minute (mobile)",
+        "dashboard groups >= 20 only", "no individual export", "operator module <= 5 minutes"]
+round1 = [True, True, False, True, True, True]
+for r, ok in zip(reqs, round1): print(f"{'PASS' if ok else 'FAIL'} {r}")
+print(f"round 1: {sum(round1)}/{len(reqs)}; round 2 after notification fix: {len(reqs)}/{len(reqs)}")
+```
+
+Execute com `python3 lab_verify.py`. Saída verificada:
+
+```text
+PASS one-tap mobile report
+PASS thank-you within 1 minute (desktop)
+FAIL thank-you within 1 minute (mobile)
+PASS dashboard groups >= 20 only
+PASS no individual export
+PASS operator module <= 5 minutes
+round 1: 5/6; round 2 after notification fix: 6/6
+```
+
+### 30.3 Registrar as evidências
+
+Aiko registra os resultados em uma tabela de verificação que liga cada requisito a seu teste, data, resultado e evidência. Um requisito falha no início: no celular, os agradecimentos levam três minutos em um modelo de aparelho, por causa de uma configuração de notificação. A equipe de TI muda a configuração, e o novo teste passa. A tabela se torna evidência para o regulador e linha de base para a reverificação após mudanças futuras. A Profa. Kerr observa que registrar as falhas torna a verificação mais crível. A tabela é guardada com o documento de requisitos e posta sob controle de versão, para que cada versão futura seja verificada com os mesmos testes e qualquer mudança nos resultados possa ser rastreada.
+
+### Exemplo resolvido
+
+Aiko verifica os requisitos com testes cronometrados, verifica a usabilidade com oito voluntários, corrige um link de orientação e um atraso de notificação e registra as evidências.
+
+> **Caso sintético.** Os testes e os resultados são sintéticos.
+
+### Erros e limites
+
+Voluntários podem ser mais confiantes do que os funcionários típicos. Os modelos de celular variam muito.
+
+### Exercícios
+
+- **EX088 — Verificação do dashboard.** O que Aiko verificou no dashboard? *Rubrica:* 3 = apenas grupos de vinte ou mais e nenhuma exportação individual;; 2 = agregação;; 1 = nada;; 0 = nenhuma.
+- **EX089 — Correção de usabilidade.** Que problema de usabilidade um voluntário revelou? *Rubrica:* 3 = orientação linkada apenas na intranet;; 2 = link;; 1 = nada;; 0 = nenhuma.
+- **EX090 — Verificação no laboratório.** Quantos requisitos passaram em cada rodada de verificação? *Rubrica:* 3 = 5 de 6 passaram, depois 6 de 6 após a correção da notificação;; 2 = 5 e depois 6;; 1 = nada;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX060 (as de EX061–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Aiko Tanabe, a Profa. Joanna Kerr, a Rivenhall Technical University, a Greyford Water e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX090 (as de EX091–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Aiko Tanabe, a Profa. Joanna Kerr, a Rivenhall Technical University, a Greyford Water e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Se os reportes ainda estão subindo, se estabilizaram ou estão recuando depois de uma campanha.
 
@@ -1010,6 +1458,66 @@ Respostas-modelo para EX001–EX060 (as de EX061–EX150 estão na edição em i
 **EX059.** Como um conjunto de restrições e objetivos de projeto para a engenharia.
 
 **EX060.** Quando serve a uma só parte interessada, geralmente a direção, e ignora as demais.
+
+**EX061.** O medo de parecer tola ao reportar um e-mail que se revela legítimo.
+
+**EX062.** Porque não pode ser verificado e, por isso, não consegue orientar o projeto.
+
+**EX063.** O reporte com um toque no celular e os agradecimentos em até um minuto.
+
+**EX064.** Reportes mais rápidos e menos ataques bem-sucedidos, e não a conclusão de treinamentos.
+
+**EX065.** A exportação padrão de resultados individuais da ferramenta para uma planilha que os gestores podiam abrir.
+
+**EX066.** Pontos com pouca informação e muita pressão, como pedidos urgentes por telefone.
+
+**EX067.** Pesquisa online, um e-mail falsificado, uma ligação de acompanhamento e um pedido de aprovação de sessão remota.
+
+**EX068.** Lembretes ou automação, como o bloqueio automático de tela.
+
+**EX069.** Que as regras são impraticáveis, e não que os funcionários têm má intenção.
+
+**EX070.** Se os usuários sabem o que fazer, veem como fazer, entendem o retorno e sabem que tiveram sucesso.
+
+**EX071.** Não saber se algo é suspeito o bastante para reportar, citado por 71 de 180 respondentes.
+
+**EX072.** Que qualquer dúvida é um bom motivo para reportar.
+
+**EX073.** Enquadrar os reportes como ajuda aos colegas, e não como dever de segurança.
+
+**EX074.** Que os motoristas não podem usar o celular enquanto dirigem, então são necessárias outras vias de reporte.
+
+**EX075.** Reporte pelos terminais da garagem e por uma central telefônica, além de um resumo mais curto.
+
+**EX076.** Em evidências regulatórias, porque o regulador espera alguns registros de treinamento.
+
+**EX077.** Orientado a compliance 2,75, orientado a reportes 3,85 e orientado ao projeto 3,90.
+
+**EX078.** Verificando que ela se mantinha quando o peso das evidências regulatórias era dobrado.
+
+**EX079.** Do cadastro do fornecedor, nunca do próprio pedido.
+
+**EX080.** Devem ser transparentes, fáceis de contornar e nunca manipuladores.
+
+**EX081.** Por dramatização, com um colega fazendo o papel de quem liga, e não com um exercício de engano.
+
+**EX082.** Os requisitos testáveis escritos no capítulo 21.
+
+**EX083.** Mensagens baseadas no medo, que muitas vezes levam as campanhas ao fracasso.
+
+**EX084.** Se newsletters e faturas de fornecedores deviam ser reportadas.
+
+**EX085.** Porque se relaciona diretamente com o tempo em que os e-mails maliciosos permanecem ativos.
+
+**EX086.** Os dois e-mails nunca reportados causaram a maior parte da exposição, 93% dos minutos-caixa.
+
+**EX087.** Para que uma medida não possa ser manipulada sem que a medida pareada o revele.
+
+**EX088.** Que mostrava apenas grupos de vinte pessoas ou mais e não oferecia exportação individual.
+
+**EX089.** A orientação sobre o que reportar só estava linkada na intranet, então foi acrescentado um link na mensagem de agradecimento.
+
+**EX090.** Cinco de seis requisitos passaram no início, e todos os seis depois da mudança na configuração de notificação.
 
 <a id="references"></a>
 ## Referências
