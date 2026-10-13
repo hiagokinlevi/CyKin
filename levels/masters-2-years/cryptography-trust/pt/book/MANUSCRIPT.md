@@ -1,7 +1,7 @@
 # Criptografia e Serviços de Confiança: Curso de Mestrado
 
 - Idioma: português do Brasil (`pt`); curso 169, curso de mestrado (2 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–4 de 8 já estão escritos em português, com os exercícios EX001–EX026 e suas resoluções com rubricas de 0 a 3 e 4 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 5–8 (EX027–EX050) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–8 de 8 têm texto didático escrito à mão; os exercícios EX001–EX050 têm resoluções correspondentes com rubricas de 0 a 3; os cinco laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente e a verificação de 300 páginas A4 continuam em aberto.
 - Público: mestrandos que vão conduzir um estudo reprodutível sobre como as organizações operam certificados e a confiança em chaves públicas.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: o livro estuda como são operadas ferramentas avaliadas de TLS, X.509 e ACME. Ele nunca ensina a construir primitivas criptográficas para produção; os laboratórios calculam datas, contagens, taxas e pseudônimos com chave sobre dados sintéticos. Pessoas, organizações e hosts são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,7 @@ Leia na ordem. Os capítulos acompanham um mestrando que pergunta por que certif
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) |
-
-Capítulos 5–8: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-05), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -379,11 +377,251 @@ Contagens sem denominadores enganam; sempre converta em taxas. Estratificar por 
 
 - **EX026 — Fator de confusão não medido.** Que fator de confusão os dados não conseguem tratar? *Rubrica:* 3 = a criticidade do serviço, não registrada de forma consistente;; 2 = "não medido";; 1 = propriedade;; 0 = nenhuma.
 
+<a id="ch-05"></a>
+
+## Capítulo 5 — Proposta e piloto
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever uma proposta que se compromete com desfechos, estratos e análise; (2) pilotar a extração de dados numa pequena fatia; (3) corrigir os erros de extração antes da coleta completa.
+
+### 5.1 A proposta
+
+A proposta de Felipe enuncia o desfecho primário, incidentes de expiração por 100 certificados-ano, comparado entre a renovação manual e a ACME, no geral e dentro dos estratos com dono conhecido e sem dono. O desfecho secundário é a parcela dos incidentes ACME precedidos por uma mudança de infraestrutura nos sete dias anteriores. O plano de análise usa razões de taxas com intervalos por bootstrap, porque os incidentes são poucos e sua distribuição está longe da normal. Ele registra a semente e o número de reamostragens planejados e lista de antemão os campos do inventário que vai usar, para que não possa depois vasculhar o conjunto de dados atrás de uma divisão favorável.
+
+### 5.2 Ligar certificados a incidentes
+
+O passo técnico mais difícil é ligar os chamados aos certificados. Os chamados mencionam nomes de host em texto livre, às vezes com erros de grafia, enquanto o inventário usa nomes totalmente qualificados. Felipe escreve as regras de correspondência de antemão: primeiro, correspondência exata com o nome alternativo do titular; depois, uma lista documentada de apelidos conhecidos; por fim, revisão manual por duas pessoas para o que sobrar. Cada chamado também precisa mencionar a expiração do certificado ou um erro de navegador ou de cliente sobre a validade; chamados que apenas mencionam um certificado durante uma indisponibilidade sem relação são excluídos. As regras vão para o apêndice da proposta.
+
+### 5.3 Conduzir o piloto
+
+O piloto extrai três meses de chamados e a fatia correspondente do inventário: 118 certificados e 11 chamados candidatos. Duas pessoas aplicam as regras de ligação de forma independente. Elas concordam em nove chamados e discordam em dois. Uma discordância envolve um chamado que cita um balanceador de carga que termina o TLS de vários hosts; a outra envolve um certificado intermediário expirado numa cadeia, e não o próprio certificado do servidor. Felipe também descobre que 14 linhas do inventário não têm valor de modo de renovação, porque as planilhas mais antigas nunca o registraram. Ele trata isso como falhas do instrumento a corrigir, e não como resultados a interpretar.
+
+### 5.4 Corrigir os instrumentos
+
+Felipe faz três mudanças nas regras. Os chamados de balanceador de carga são atribuídos ao certificado de fato apresentado aos clientes, conferido contra o campo de endpoint do inventário. Os intermediários expirados são codificados como incidentes de expiração atribuídos ao dono da cadeia, porque a validação de caminho da RFC 5280 falha diante de qualquer certificado expirado no caminho, e não apenas do certificado folha. As linhas sem modo de renovação são preenchidas a partir dos registros de conta do próprio cliente ACME, quando possível, e, caso contrário, marcadas como desconhecidas e relatadas como um grupo separado, e não descartadas em silêncio. Cada mudança é registrada com data antes do início da extração completa.
+
+### 5.5 O que o piloto não diz
+
+O piloto cobre só três meses, então Felipe não calcula nem relata taxas de incidentes a partir dele. Ele o usa para estimar o esforço: a ligação levou cerca de quatro minutos por chamado, então uma extração de dois anos, com cerca de 120 chamados, é viável em um mês. Ele também confirma que a pseudonimização roda na Briarwood antes da exportação e que a chave do HMAC nunca sai do cofre de segredos deles. A Dra. Solberg aprova a proposta revisada, e Felipe agenda a extração completa para um período tranquilo, para que a equipe de infraestrutura possa responder a perguntas sobre chamados ambíguos.
+
+### Exemplo resolvido
+
+Felipe se compromete com taxas por 100 certificados-ano com estratos de propriedade, pilota a ligação com 118 certificados e 11 chamados e corrige as regras para balanceadores de carga, intermediários e modos de renovação ausentes.
+
+> **Caso sintético.** As contagens e os tempos do piloto são inventados; a validação de caminho da RFC 5280 é real.
+
+### Erros e limites
+
+Um piloto curto demais não consegue estimar taxas e não deve tentar. Mudar as regras depois de ver os dados de desfecho, e não durante um piloto, transforma a análise em algo guiado pelo desfecho.
+
+### Exercícios
+
+- **EX027 — Desfecho primário.** Enuncie o desfecho primário e sua comparação. *Rubrica:* 3 = incidentes por 100 certificados-ano, manual vs ACME, no geral e por estrato de propriedade;; 2 = sem estratos;; 1 = contagens;; 0 = nenhuma.
+
+- **EX028 — Ordem da ligação.** Em que ordem os chamados são ligados aos certificados? *Rubrica:* 3 = correspondência exata do SAN, lista de apelidos conhecidos, depois revisão manual por duas pessoas;; 2 = duas etapas;; 1 = só manual;; 0 = nenhuma.
+
+- **EX029 — Discordâncias do piloto.** Sobre o que foram as duas discordâncias do piloto? *Rubrica:* 3 = balanceador de carga que termina vários hosts; certificado intermediário expirado;; 2 = uma;; 1 = erro de digitação;; 0 = nenhuma.
+
+- **EX030 — Regra dos intermediários.** Como os intermediários expirados são codificados, e por quê? *Rubrica:* 3 = como incidentes de expiração do dono da cadeia, pois a validação de caminho da RFC 5280 falha diante de qualquer certificado expirado;; 2 = só a codificação;; 1 = excluídos;; 0 = nenhuma.
+
+- **EX031 — Modo de renovação ausente.** O que acontece com as linhas sem modo de renovação? *Rubrica:* 3 = preencher a partir dos registros da conta ACME; senão, marcar como desconhecido e relatar à parte;; 2 = marcar como desconhecido;; 1 = descartar;; 0 = nenhuma.
+
+- **EX032 — Estimativa de esforço.** Que estimativa de esforço o piloto produziu? *Rubrica:* 3 = cerca de quatro minutos por chamado, cerca de 120 chamados viáveis em um mês;; 2 = só os minutos;; 1 = vaga;; 0 = nenhuma.
+
+<a id="ch-06"></a>
+
+## Capítulo 6 — Coleta e análise de dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) calcular taxas de incidentes por certificado-ano; (2) expressar a incerteza de uma razão de taxas com bootstrap; (3) comparar as estimativas gerais e estratificadas.
+
+### 6.1 O conjunto de dados montado
+
+A extração completa cobre dois anos. Os certificados manuais contribuem com 540 certificados-ano e 23 incidentes de expiração ligados; os certificados ACME, com 900 certificados-ano e 7 incidentes. Restam quarenta e uma linhas com modo de renovação desconhecido e dois incidentes; Felipe as relata à parte e roda uma conferência que mostra que atribuí-las todas a qualquer um dos grupos não muda nenhuma conclusão. Cada número remonta a uma consulta e a uma entrada do log de codificação. Antes de rodar qualquer comparação, ele relê a proposta para confirmar que a análise corresponde ao que registrou, incluindo a semente e o número de reamostragens.
+
+### 6.2 Taxas e a razão de taxas
+
+Uma taxa divide os eventos pela exposição. A renovação manual apresenta 4,26 incidentes por 100 certificados-ano, e a ACME, 0,78, o que dá uma razão de taxas de 5,48: os certificados manuais falharam cerca de cinco vezes e meia mais por unidade de exposição. Uma razão sozinha esconde a incerteza, e sete incidentes ACME é um número pequeno. O bootstrap estima a incerteza reamostrando os certificados-ano com reposição milhares de vezes e recalculando a razão, e depois lendo os 95 por cento centrais dos valores resultantes. Ele faz poucas suposições, o que se adapta a dados de eventos esparsos.
+
+### Laboratório — Razão de taxas com bootstrap
+
+```python
+"""Expiry incidents per 100 certificate-years with a bootstrap interval for the rate ratio (synthetic)."""
+import random
+MANUAL = [1] * 23 + [0] * 517   # 540 manual certificate-years, 23 incidents
+ACME = [1] * 7 + [0] * 893      # 900 ACME certificate-years, 7 incidents
+
+def rate(x): return 100 * sum(x) / len(x)
+
+def main():
+    rr = rate(MANUAL) / rate(ACME)
+    rng = random.Random(7); boots = []
+    for _ in range(5000):
+        m = [rng.choice(MANUAL) for _ in MANUAL]; a = [rng.choice(ACME) for _ in ACME]
+        if sum(a): boots.append(rate(m) / rate(a))
+    boots.sort()
+    lo, hi = boots[int(0.025 * len(boots))], boots[int(0.975 * len(boots))]
+    print(f"manual {rate(MANUAL):.2f} per 100 cert-years, acme {rate(ACME):.2f}")
+    print(f"rate ratio {rr:.2f}, bootstrap 95% interval {lo:.2f}-{hi:.2f} (seed 7, 5000 resamples)")
+
+if __name__ == "__main__":
+    main()
+```
+
+Execute com `python3 lab_rate.py`. Saída verificada:
+
+```text
+manual 4.26 per 100 cert-years, acme 0.78
+rate ratio 5.48, bootstrap 95% interval 2.50-17.50 (seed 7, 5000 resamples)
+```
+
+### 6.3 Ler o intervalo
+
+O intervalo por bootstrap vai de 2,50 a 17,50, com semente 7 e 5.000 reamostragens. O limite inferior bem acima de 1 significa que os dados são difíceis de conciliar com taxas iguais, mas o intervalo é largo e assimétrico, porque um punhado de incidentes ACME domina o denominador da razão. Felipe relata o intervalo no resumo ao lado da estimativa pontual, escrevendo "cerca de 2,5 a 17,5 vezes maior" em vez de "5,48 vezes maior", porque o número único sugeriria mais precisão do que sete eventos conseguem dar. Assim, o leitor pode julgar por si mesmo quanto peso o achado merece.
+
+### 6.4 Estratificar pela propriedade
+
+Entre os certificados com dono conhecido, a renovação manual apresenta 9 incidentes em 335 certificados-ano, 2,69 por 100, e a ACME, 2 em 711, 0,28 por 100, uma razão perto de 9,6. Entre os certificados sem dono, a manual apresenta 14 em 205, 6,83 por 100, e a ACME, 5 em 189, 2,65 por 100, uma razão perto de 2,6. Daí decorrem duas lições. A automação está associada a taxas menores nos dois estratos, então a propriedade não elimina o efeito. E os certificados sem dono falham mais, qualquer que seja o modo: um certificado ACME órfão falha mais ou menos tanto quanto um manual com dono. A propriedade, portanto, importa por si só, e Felipe a assinala como uma segunda alavanca para o capítulo de discussão.
+
+### 6.5 A descrição da colisão com mudanças
+
+Cinco dos sete incidentes ACME vieram depois de uma mudança de infraestrutura nos sete dias anteriores, o que confirma a impressão do piloto. Felipe relata isso de forma descritiva, como a proposta exigia, e acrescenta uma observação concreta dos logs: em quatro desses cinco casos, o cliente ACME registrou erros de renovação por mais de uma semana antes da expiração, mas os logs não eram encaminhados ao monitoramento. Esse achado leva diretamente à ação: alertar sobre falhas de renovação, que o SP 800-57 Part 1 trataria como parte da transição planejada de chaves, fecha uma lacuna que a automação, sozinha, deixa aberta.
+
+### Exemplo resolvido
+
+Felipe relata 4,26 contra 0,78 incidentes por 100 certificados-ano, uma razão de taxas de 5,48 com intervalo por bootstrap de 2,50 a 17,50, uma taxa ACME menor nos dois estratos de propriedade e erros de renovação não monitorados antes da maioria dos incidentes ACME.
+
+> **Caso sintético.** A exposição, os incidentes e os estratos são dados didáticos inventados.
+
+### Erros e limites
+
+Intervalos por bootstrap a partir de pouquíssimos eventos são instáveis; com sete eventos, relate-os como aproximados. A estratificação controla apenas a propriedade.
+
+### Exercícios
+
+- **EX033 — Taxas.** Informe as taxas dos dois modos de renovação por 100 certificados-ano. *Rubrica:* 3 = manual 4,26, ACME 0,78;; 2 = uma;; 1 = contagens;; 0 = nenhuma.
+
+- **EX034 — Intervalo por bootstrap.** Dê a razão de taxas e seu intervalo, com a semente. *Rubrica:* 3 = 5,48, 2,50–17,50, semente 7, 5000 reamostragens;; 2 = razão e intervalo;; 1 = só a razão;; 0 = nenhuma.
+
+- **EX035 — Intervalo largo.** Por que o intervalo é largo e assimétrico? *Rubrica:* 3 = apenas sete incidentes ACME dominam o denominador da razão;; 2 = amostra pequena;; 1 = código ruim;; 0 = nenhuma.
+
+- **EX036 — Razões por estrato.** Dê a razão de taxas dentro de cada estrato de propriedade. *Rubrica:* 3 = cerca de 9,6 com dono conhecido, cerca de 2,6 sem dono;; 2 = uma;; 1 = só as taxas;; 0 = nenhuma.
+
+- **EX037 — Comparação com órfãos.** Como um certificado ACME órfão se compara a um manual com dono? *Rubrica:* 3 = taxa mais ou menos igual (2,65 vs 2,69 por 100);; 2 = semelhante;; 1 = muito menor;; 0 = nenhuma.
+
+- **EX038 — Achado nos logs.** O que os logs mostraram antes dos incidentes ACME, e que correção decorre disso? *Rubrica:* 3 = erros de renovação registrados por mais de uma semana em 4 de 5, sem monitoramento; alertar sobre falhas de renovação;; 2 = só o achado;; 1 = só a correção;; 0 = nenhuma.
+
+<a id="ch-07"></a>
+
+## Capítulo 7 — Redação da dissertação e limitações
+
+### Objetivos de aprendizagem
+
+Você vai (1) estruturar uma dissertação para que cada capítulo sirva à afirmação principal; (2) escrever limitações específicas e úteis; (3) transformar os achados em recomendações que respeitem a força das evidências.
+
+### 7.1 Estruturar em torno da afirmação
+
+A dissertação de Felipe abre com uma afirmação: na Briarwood, a renovação ACME esteve associada a substancialmente menos incidentes de expiração por certificado-ano do que a renovação manual, nos dois estratos de propriedade, e a maioria dos incidentes ACME restantes veio de falhas de renovação não monitoradas após mudanças de infraestrutura. O capítulo de literatura explica por que essa questão estava em aberto; o de métodos define as unidades, as regras de ligação e a pseudonimização; o de resultados relata as taxas, os intervalos e os estratos; a discussão os interpreta. O teste da Dra. Solberg para cada parágrafo é se removê-lo enfraqueceria a afirmação. Os parágrafos que não passam no teste vão para os apêndices ou desaparecem.
+
+### 7.2 Escrever os resultados com simplicidade
+
+O capítulo de resultados começa pela análise primária exatamente como registrada, depois a análise estratificada, depois o achado descritivo da colisão com mudanças. Cada tabela declara a unidade, a exposição, o número de eventos e o método do intervalo. Felipe evita adjetivos como "dramático" e escreve números com intervalos. Onde uma análise foi acrescentada depois do piloto, como a conferência de sensibilidade do modo desconhecido, ele a rotula. Ele inclui o inventário de oito certificados do capítulo 2 apenas como ilustração na seção de contexto, explicitamente não como evidência.
+
+### 7.3 Limitações específicas
+
+Seções de limitações fracas listam ressalvas genéricas. Felipe escreve limitações específicas, cada uma com a direção provável do viés. Os chamados sub-registram as indisponibilidades curtas corrigidas antes que alguém abrisse um registro, o que provavelmente subconta mais os incidentes manuais, porque as renovações manuais muitas vezes são corrigidas à mão em minutos. A criticidade dos serviços não foi medida, então os serviços automatizados podem ser os mais bem mantidos, o que exageraria a vantagem do ACME. O estudo cobre uma rede de saúde com um cliente ACME; organizações que usam desafios DNS-01 com outra infraestrutura podem ver outros padrões de falha.
+
+### 7.4 Recomendações proporcionais às evidências
+
+A partir de evidências fortes, Felipe recomenda automatizar a renovação dos certificados que podem usá-la e designar um dono nomeado para cada certificado, porque as duas associações se mantiveram nos estratos. A partir de evidências mais fracas, descritivas, ele recomenda alertar sobre falhas de renovação ACME e revisar as dependências de certificados durante mudanças de firewall, enquadradas como medidas de baixo custo coerentes com os achados, e não como efeitos provados. Ele também recomenda monitorar os logs do Certificate Transparency, definidos na RFC 6962, para descobrir certificados ausentes do inventário, enquadrando isso como hipótese para trabalhos futuros, já que seu estudo nunca o mediu.
+
+### 7.5 Escrever sobre criptografia com responsabilidade
+
+Como os leitores podem ler por alto, Felipe acrescenta um quadro curto que esclarece o que o estudo não diz. Ele não diz que os certificados ou o TLS são fracos; as falhas foram operacionais, e a criptografia se comportou como a RFC 8446 e a RFC 5280 exigem. Ele não recomenda estender as validades para reduzir as renovações, o que trocaria conveniência operacional por uma janela de exposição maior para chaves comprometidas. E não recomenda construir scripts de renovação próprios no lugar de clientes ACME mantidos, porque ferramentas caseiras reintroduziriam exatamente as falhas silenciosas que o estudo observou.
+
+### Exemplo resolvido
+
+Felipe escreve uma dissertação guiada pela afirmação, limitações específicas com as direções do viés e recomendações graduadas pela força das evidências, além de um quadro sobre o que o estudo não implica a respeito da criptografia.
+
+> **Caso sintético.** Os achados da Briarwood são inventados; a RFC 6962, a RFC 8446 e a RFC 5280 são reais.
+
+### Erros e limites
+
+Recomendar mais do que as evidências sustentam é a falha mais comum das dissertações. Limitações sem uma direção de viés ajudam pouco os leitores.
+
+### Exercícios
+
+- **EX039 — Teste do parágrafo.** Que teste a Dra. Solberg aplicou a cada parágrafo? *Rubrica:* 3 = removê-lo enfraqueceria a afirmação principal? Se não, mover ou cortar;; 2 = relevância;; 1 = tamanho;; 0 = nenhuma.
+
+- **EX040 — Conteúdo das tabelas.** O que cada tabela de resultados precisa declarar? *Rubrica:* 3 = unidade, exposição, número de eventos, método do intervalo;; 2 = três;; 1 = um;; 0 = nenhuma.
+
+- **EX041 — Viés dos chamados.** Em que direção o sub-registro dos chamados provavelmente enviesa os resultados, e por quê? *Rubrica:* 3 = subconta mais os incidentes manuais, pois as correções à mão acontecem em minutos, sem chamado;; 2 = direção;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX042 — Recomendações fortes versus fracas.** Que recomendações se apoiam em evidências fortes, e quais em fracas? *Rubrica:* 3 = automatizar a renovação e designar donos: fortes; alertas e revisão de mudanças: mais fracas;; 2 = parcial;; 1 = todas fortes;; 0 = nenhuma.
+
+- **EX043 — Recomendação de CT.** Como o monitoramento do Certificate Transparency é enquadrado, e por quê? *Rubrica:* 3 = como hipótese para trabalhos futuros, porque o estudo não o mediu;; 2 = enquadrado com cautela;; 1 = provado;; 0 = nenhuma.
+
+- **EX044 — O que ele não diz.** Dê duas coisas que o quadro de esclarecimento diz que o estudo não implica. *Rubrica:* 3 = duas entre: o TLS é fraco, estender as validades, escrever scripts de renovação próprios;; 2 = uma;; 1 = vago;; 0 = nenhuma.
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Revisão independente e defesa
+
+### Objetivos de aprendizagem
+
+Você vai (1) preparar-se para o exame independente de um estudo sobre operações criptográficas; (2) responder aos questionamentos com evidências do pacote; (3) planejar a disseminação para os profissionais.
+
+### 8.1 Exame externo
+
+A Coldwater nomeia uma examinadora externa que trabalha com infraestrutura de chaves públicas em outra universidade. Ela recebe a dissertação, o conjunto de dados pseudonimizado e o pacote de reprodutibilidade e roda de novo a análise antes da defesa. Seu relatório prévio concorda com a razão de taxas e o intervalo, mas questiona duas escolhas: codificar os intermediários expirados como incidentes de expiração e a decisão de relatar à parte os modos de renovação desconhecidos. Felipe prepara uma resposta curta para cada uma, apontando para o log do piloto, para a regra de validação de caminho da RFC 5280 e para a conferência de sensibilidade, em vez de repetir suas conclusões.
+
+### 8.2 Responder à questão dos intermediários
+
+A examinadora argumenta que um intermediário expirado é culpa da autoridade emissora, e não da Briarwood. Felipe responde que os clientes viveram a mesma falha nos dois casos, que a Briarwood escolheu servir aquela cadeia e era responsável por atualizá-la, e que a validação de caminho da RFC 5280 rejeita qualquer certificado expirado no caminho. Em seguida, ele mostra o resultado de sensibilidade: remover os dois casos de intermediários muda a razão de taxas geral de 5,48 para cerca de 5,2, então a conclusão não depende da escolha. Mostrar a alternativa com calma responde à objeção melhor do que defender a regra original.
+
+### 8.3 Perguntas sobre a criptografia
+
+Um membro da banca pergunta se a mudança para certificados pós-quânticos alteraria os achados. Felipe responde que o ML-DSA do FIPS 204 e o SLH-DSA do FIPS 205 trazem chaves e assinaturas maiores e, possivelmente, cadeias híbridas durante a transição, mas que a renovação continua sendo um processo operacional. Se algo muda, a migração acrescenta risco: novas versões de clientes, novos perfis de certificado e mais mudanças, cada uma uma chance para as colisões com mudanças que seu estudo observou. Ele sugere que as recomendações de propriedade e de monitoramento se tornam mais importantes, e não menos, durante a migração. Ele se recusa a prever taxas de incidentes para a migração, já que seus dados não contêm nenhuma.
+
+### 8.4 Disseminação para os profissionais
+
+Depois da defesa, Felipe escreve um resumo de quatro páginas para profissionais da Briarwood e de hospitais semelhantes. Ele dá as taxas e o intervalo em linguagem simples, um checklist com três ações (automatizar onde possível, nomear um dono para cada certificado, alertar sobre falhas de renovação) e o quadro de esclarecimento sobre o que o estudo não implica. O líder de infraestrutura da Briarwood o revisa para garantir que não apareçam nomes de host nem a arquitetura interna. Felipe também oferece o livro de códigos anonimizado e as regras de ligação para reutilização, para que outras organizações possam medir suas próprias taxas de expiração nas mesmas unidades.
+
+### 8.5 Encerrar o estudo
+
+Felipe encerra formalmente o estudo. O comitê de ética recebe um relatório final, e a Briarwood destrói a chave de pseudonimização do HMAC segundo seu próprio procedimento de destruição de chaves, em linha com as fases do ciclo de vida do SP 800-57 Part 1, para que nem mesmo o conjunto de dados de Felipe possa ser ligado de volta aos nomes de host. O pacote de reprodutibilidade continua disponível, com uma nota de que a religação é impossível por projeto. A Dra. Solberg lembra a ele que destruir a chave faz parte da ética do estudo, e não é um incômodo: um pseudônimo é tão forte quanto a proteção da sua chave.
+
+### Exemplo resolvido
+
+Felipe responde à objeção da examinadora sobre os certificados intermediários com um resultado de sensibilidade (de 5,48 para cerca de 5,2), relaciona a migração pós-quântica ao risco de colisão com mudanças e encerra o estudo fazendo a Briarwood destruir a chave de pseudonimização.
+
+> **Caso sintético.** A examinadora, a banca e os números são inventados; o FIPS 204, o FIPS 205 e o SP 800-57 são reais.
+
+### Erros e limites
+
+Respostas defensivas que repetem conclusões não convencem ninguém; mostre as alternativas e seu efeito. Nunca guarde uma chave de pseudonimização além do que o estudo precisa.
+
+### Exercícios
+
+- **EX045 — Preparação da examinadora.** O que a examinadora externa fez antes da defesa? *Rubrica:* 3 = rodou de novo a análise a partir do pacote e escreveu um relatório questionando duas escolhas;; 2 = rodou de novo a análise;; 1 = leu;; 0 = nenhuma.
+
+- **EX046 — Sensibilidade dos intermediários.** Como a remoção dos casos de intermediários afetou o resultado? *Rubrica:* 3 = razão de taxas de 5,48 para cerca de 5,2, conclusão inalterada;; 2 = inalterada;; 1 = invertida;; 0 = nenhuma.
+
+- **EX047 — Argumento de responsabilidade.** Dê dois motivos pelos quais Felipe manteve os intermediários como incidentes da Briarwood. *Rubrica:* 3 = dois entre: mesma falha no cliente, a Briarwood servia a cadeia, a validação de caminho rejeita qualquer certificado expirado;; 2 = um;; 1 = culpa da autoridade;; 0 = nenhuma.
+
+- **EX048 — Efeito pós-quântico.** Como a migração PQ poderia afetar o risco de expiração? *Rubrica:* 3 = FIPS 204/205: chaves maiores, cadeias híbridas, mais mudanças aumentam o risco de colisão; propriedade e monitoramento importam mais;; 2 = parcial;; 1 = nenhum efeito;; 0 = nenhuma.
+
+- **EX049 — Checklist para profissionais.** Liste as três ações do resumo para profissionais. *Rubrica:* 3 = automatizar onde possível, nomear um dono, alertar sobre falhas de renovação;; 2 = duas;; 1 = uma;; 0 = nenhuma.
+
+- **EX050 — Destruição da chave.** Por que a Briarwood destrói a chave do HMAC no encerramento? *Rubrica:* 3 = para que os dados nunca possam ser religados; a força do pseudônimo depende da proteção da chave; ciclo de vida do SP 800-57;; 2 = privacidade;; 1 = espaço em disco;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX026 (as de EX027–EX050 estão na edição em inglês até a tradução dos capítulos correspondentes). Felipe Arantes, a Dra. Ingrid Solberg, a Coldwater Polytechnic, a Briarwood Health Network e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX050. Felipe Arantes, a Dra. Ingrid Solberg, a Coldwater Polytechnic, a Briarwood Health Network e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** A renovação automatizada com ACME está associada a menos incidentes de expiração por certificado-ano do que a renovação manual na Briarwood?
 
@@ -436,6 +674,54 @@ Respostas-modelo para EX001–EX026 (as de EX027–EX050 estão na edição em i
 **EX025.** Cinco de sete, porque uma mudança de firewall ou de proxy bloqueou o desafio ACME e os logs de erro do cliente não eram acompanhados.
 
 **EX026.** O quão crítico é cada serviço, o que a Briarwood não registra de forma consistente.
+
+**EX027.** Incidentes de expiração por 100 certificados-ano, comparando a renovação manual com a ACME no geral e dentro dos grupos com dono conhecido e sem dono.
+
+**EX028.** Primeiro, correspondências exatas do nome alternativo do titular; depois, a lista documentada de apelidos; por fim, revisão independente por duas pessoas.
+
+**EX029.** Um balanceador de carga que termina o TLS de vários hosts e um certificado intermediário, e não folha, expirado.
+
+**EX030.** Como incidentes de expiração do dono da cadeia, porque a validação de caminho segundo a RFC 5280 rejeita qualquer certificado expirado na cadeia.
+
+**EX031.** Preenchidas a partir dos registros de conta do cliente ACME, quando possível; caso contrário, rotuladas como desconhecidas e relatadas como um grupo próprio.
+
+**EX032.** Cerca de quatro minutos por chamado, então ligar cerca de 120 chamados de dois anos cabe em um mês.
+
+**EX033.** Manual 4,26 e ACME 0,78 incidentes por 100 certificados-ano.
+
+**EX034.** Razão de taxas 5,48 com intervalo de 95 por cento por bootstrap de 2,50 a 17,50 (semente 7, 5.000 reamostragens).
+
+**EX035.** O denominador da razão se apoia em apenas sete incidentes ACME, então as reamostragens com pouquíssimos deles inflam a cauda superior.
+
+**EX036.** Cerca de 9,6 entre os certificados com dono conhecido e cerca de 2,6 entre os sem dono.
+
+**EX037.** Mais ou menos igual: os certificados ACME órfãos falham a 2,65 por 100, contra 2,69 dos manuais com dono.
+
+**EX038.** Em quatro de cinco casos, o cliente ACME registrou erros por mais de uma semana sem que ninguém notasse; encaminhar as falhas de renovação ao monitoramento, com alertas.
+
+**EX039.** Se apagar o parágrafo enfraqueceria a afirmação central; os parágrafos que não enfraqueceriam são movidos para os apêndices ou cortados.
+
+**EX040.** A unidade, a exposição medida, quantos eventos ocorreram e como o intervalo foi calculado.
+
+**EX041.** Provavelmente subconta mais os incidentes manuais, porque a equipe muitas vezes corrige as renovações manuais em minutos, sem abrir chamado, o que torna o estudo conservador.
+
+**EX042.** Automatizar a renovação e nomear donos se apoiam em associações vistas nos dois estratos; alertar sobre falhas de renovação e revisar as dependências durante as mudanças se apoiam em evidências descritivas.
+
+**EX043.** Como uma hipótese para pesquisas futuras, já que o estudo nunca mediu se o monitoramento do CT encontra certificados ausentes.
+
+**EX044.** Por exemplo, que o próprio TLS é fraco e que as validades deveriam ser alongadas (e também que scripts próprios deveriam substituir clientes mantidos).
+
+**EX045.** Ela rodou de novo a análise a partir do pacote de reprodutibilidade e enviou um relatório questionando a regra dos intermediários e o tratamento dos modos de renovação desconhecidos.
+
+**EX046.** A razão de taxas geral passou de 5,48 para cerca de 5,2, deixando a conclusão intacta.
+
+**EX047.** Os clientes viram a mesma falha, e a Briarwood escolheu e mantinha a cadeia que servia (além disso, a validação de caminho rejeita qualquer certificado expirado no caminho).
+
+**EX048.** Certificados ML-DSA ou SLH-DSA maiores, cadeias híbridas e muitas mudanças de clientes aumentam as oportunidades de colisões com mudanças, tornando a propriedade e o monitoramento ainda mais importantes.
+
+**EX049.** Automatizar a renovação onde possível, dar a cada certificado um dono nomeado e alertar sobre falhas de renovação.
+
+**EX050.** Destruir a chave torna a religação impossível, já que os pseudônimos são tão seguros quanto sua chave, seguindo as fases do ciclo de vida de chaves do SP 800-57.
 
 <a id="references"></a>
 ## Referências
