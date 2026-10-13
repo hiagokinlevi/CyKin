@@ -813,9 +813,13 @@ You will (1) explain addressing, ports and common protocols; (2) read network te
 
 Networks move data in layers: physical links, IP addressing and routing, TCP or UDP transport, and applications such as HTTPS. Telemetry exists at each layer: link statistics, flow records, and application logs.
 
+Each layer answers different questions. Link statistics show whether a cable or port is saturated; flow records show who talked to whom, for how long and how many bytes moved; application logs show what was asked for and what came back. During the portal burst, flows reveal the volume from one network, but only the web server logs show which usernames were tried.
+
 ### 11.2 Addresses and networks
 
 IPv4 addresses are grouped into networks by prefix. A /24 network shares its first three octets. Attack traffic from one hosting provider often spans many addresses in a few networks, so aggregating by network reveals bursts that per-address counts hide.
+
+Counting per address can make a distributed attack look harmless: fifty addresses with two attempts each never trip a per-address threshold of five. Grouping by /24 collapses them into one network with a hundred attempts. The choice of prefix length is a trade-off, since a wider prefix catches more spread-out activity but also merges unrelated customers behind the same provider.
 
 ### Lab — failures by network
 
@@ -846,17 +850,25 @@ Run with `python3 lab_failed.py`. Verified output:
 
 The 203.0.113.0/24 network produced 6 failures across 7 distinct usernames — many accounts, few attempts each, the pattern of credential stuffing. 198.51.100.0/24 shows 2 failures and a success for one user: a customer mistyping a password.
 
+The pattern matters more than the totals. Many usernames with one attempt each suggests someone working through a list of leaked credentials, hoping some customers reused passwords. A single username with a couple of failures and then a success looks like an ordinary person who forgot which password they used. A rule that only counted failures would treat both networks alike and miss that distinction.
+
 ### 11.4 HTTPS visibility
 
 Encrypted web traffic hides content from network sensors; the web server's own logs show paths, status codes and usernames. Choosing where to observe is an engineering decision.
+
+Breaking encryption on the network to inspect content is possible with interception proxies, but it adds risk, cost and privacy concerns. For the portal, the server already sees decrypted requests, so its logs are the natural place to observe logins. Network sensors still help with volume and timing, while the server logs supply the meaning of each request.
 
 ### 11.5 Attribution limits
 
 An address identifies a connection point, not a person. Shared proxies, cloud ranges and address reuse make blocking and attribution imprecise.
 
+Many customers may share one address behind a mobile carrier's gateway, so blocking it can lock out innocent users. Attackers rent cloud servers and abandon them within hours, so an address that was hostile yesterday may belong to someone else tomorrow. SOC reports therefore describe addresses as sources of activity rather than naming who was behind them. Blocks on addresses are given expiry dates.
+
 ### 11.6 Protocol knowledge
 
 Knowing that login uses POST to /login and returns 401 on failure lets Amara write accurate parsing.
+
+Without that knowledge, a parser might count every request to the login page, including people simply loading the form, as an attempt. Knowing the method, path and status codes lets Amara count only submitted credentials and separate failures from successes. She confirms the details with the portal developers rather than guessing from a sample, since a redirect after login could hide the real outcome.
 
 ### DNS and time
 
@@ -898,29 +910,43 @@ You will (1) explain how operating systems manage processes, files, users and lo
 
 The operating system schedules processes, manages memory, controls access to files and devices, and authenticates users. Every one of these functions can produce security events if auditing is enabled.
 
+Auditing turns these background functions into records: a process starting, a file opened, a user signing in. Most systems ship with only part of this enabled, because full auditing produces large volumes and some performance cost. Choosing which functions to audit is therefore a design decision tied to the detections the SOC intends to run.
+
 ### 12.2 Windows events
 
 Windows records logons, process creation, service installation and policy changes in its event logs when audit policy enables them. Process creation with command line, for example, must be switched on deliberately; without it, many endpoint detections have nothing to match.
+
+A default installation may record that a process started but not the command line it was given, which is where much of the useful detail lives. Group Policy lets administrators enable auditing consistently across many machines. Amara checks a sample of portal servers and finds the command-line setting enabled on the web tier but not on two older application servers.
 
 ### 12.3 Linux logs
 
 Linux systems record authentication in system logs, and the audit subsystem can record file access and program execution according to rules. Like Windows, coverage depends on configuration.
 
+Authentication messages land in files such as the system's auth log or in the systemd journal, depending on the distribution. The audit subsystem uses rules that name what to watch, for example execution of any program by a web service account. Each rule adds volume, so rules are written for specific risks rather than recording everything the system does.
+
 ### 12.4 Users and privilege
 
 Operating systems separate normal users from administrators. Events that change privilege — adding a user to an administrators group, for instance — are high-value signals for detection.
+
+Attackers who gain a foothold usually want more rights, so changes in group membership often appear early in an intrusion. Such changes are also rare in normal operations, which makes them good detection candidates with few false positives. Legitimate changes still occur, so alerts are checked against the change-management record for an approved request. Removals from privileged groups are logged too.
 
 ### 12.5 Services and scheduled tasks
 
 Programs can be set to start automatically. New services and scheduled tasks are common persistence mechanisms described in MITRE ATT&CK, so their creation is worth logging.
 
+Persistence lets an attacker's program survive a reboot or a user logging out. Legitimate software also installs services, especially during updates, so a raw alert on every new service would be noisy. Detections narrow it down, for example to services running from user-writable folders or tasks created by unusual parent processes, and analysts compare against known software deployments.
+
 ### 12.6 Configuration as coverage
 
 Detection coverage is only as good as audit configuration. Amara builds a table listing each detection rule and the OS setting it depends on, then checks that the settings are deployed by policy on every server class.
 
+The table reveals gaps that rule testing alone would miss: a rule can pass its tests in the lab yet never fire in production because the event it needs is not generated there. Amara's check finds that one server class lacks process auditing entirely. Fixing the policy restores coverage for several rules at once, and the table is rechecked after every build change.
+
 ### 12.7 Log size and rotation
 
 Event logs have maximum sizes; when full, old events are overwritten. Forwarding logs to the SIEM promptly prevents loss.
+
+On a busy server, a small event log can wrap in hours, so evidence of an attack in the morning may be gone by the afternoon. Attackers sometimes generate noise deliberately to push older entries out. Forwarding events to the SIEM within seconds keeps a copy outside the host, and alerts on forwarding gaps show when a server stops sending. Log size settings are part of the build standard.
 
 ### Worked example
 
@@ -958,29 +984,43 @@ You will (1) model security data in tables and documents; (2) write queries that
 
 A SIEM is a data system: it ingests records, stores them, indexes fields and answers queries. Good data design makes detections faster and more accurate.
 
+Treating the SIEM as a data system brings in database ideas: schemas, indexes, query plans and capacity. A poorly designed table can make a simple question take minutes, which matters when an analyst is mid-incident. Amara learns to read query statistics, such as how many records were scanned to answer each search. Slow searches are then rewritten or indexed.
+
 ### 13.2 Schemas
 
 If one source calls the user field "user", another "username" and a third "acct", every query must remember all three. Normalising fields to a common schema at ingestion — one name for user, source address, host, action and outcome — simplifies rules and reduces mistakes.
+
+Normalising at ingestion means converting each source's fields once, when data arrives, rather than in every query that reads it. Values need the same care: one source may write 'FAIL', another 'failure', another a numeric code. The mapping for each source is documented and tested, because a mistake there silently breaks every rule that relies on the field.
 
 ### 13.3 Joins
 
 Many questions join data: "which hosts did the account that logged in from 203.0.113.14 touch next?" joins web logs with internal authentication logs on username and time.
 
+Joining on username alone can mislead if two systems spell names differently or if the same name belongs to a customer and an employee. Time adds a second key, limiting matches to events close together. Joins are often costly, so engineers filter each side first, for instance to the one suspect address, before combining them.
+
 ### 13.4 Aggregation
 
 Counting, grouping and windowing (for example, per 10 minutes) are the core of threshold detections.
+
+A threshold detection takes raw events, groups them by a key such as source network, counts them within a time window and compares the count with a limit. Fixed windows can split a burst across a boundary so neither half crosses the threshold. Sliding windows avoid that at higher computational cost, a trade-off Amara tests on the portal data. She records how many bursts each window type finds on the same day of data.
 
 ### 13.5 Indexes and cost
 
 Indexed fields are fast to search; unindexed full-text searches are slow and expensive. Engineers index fields that detections and analysts use most, such as user, host and source address.
 
+An index works like the index of a book: it points straight to records holding a given value, instead of reading every page. Each index takes storage and slows ingestion slightly. Choosing indexed fields from the queries analysts actually run, rather than indexing everything, keeps both search speed and storage cost under control.
+
 ### 13.6 Data quality
 
 Missing values, wrong types and duplicates distort results. Quality checks at ingestion catch them early.
 
+A time field parsed in the wrong zone can shift events by hours and break correlations; duplicate events can double counts and trigger thresholds falsely. Ingestion checks count records failing validation per source and alert when the rate jumps, which often signals a format change after a software update on the sending system. Each source has an owner who is told when its rejection rate rises, so the fix happens at the sender rather than through workarounds in every query.
+
 ### 13.7 Retention per table
 
 Different tables may need different retention: authentication logs kept longer than verbose debug logs.
+
+Authentication records help reconstruct account misuse months later, so they earn long retention. Verbose debug output is rarely useful beyond a few days and costs a great deal to keep. Setting retention per table, with reasons recorded, lets the SOC spend storage where investigations actually need it while meeting legal minimums. The retention table is reviewed yearly with the legal team, and any change is recorded with the reason and approver.
 
 ### Time windows
 
@@ -1022,29 +1062,43 @@ You will (1) apply requirements, design, testing and release practices to detect
 
 Detection rules are software. Writing them as text files in a standard format such as Sigma, storing them in version control and reviewing changes brings software engineering discipline to the SOC.
 
+Version control records who changed a rule, when and why, which answers questions after an incident such as whether a detection was active at the time. A standard format like Sigma also makes rules portable between SIEM products, and lets teams share and review rules using ordinary software tools rather than a vendor console.
+
 ### 14.2 Requirements
 
 Each rule starts with a requirement: what behaviour, on which assets, with what acceptable false-positive rate and response. Requirements trace to threats, often expressed as ATT&CK techniques.
+
+Writing the requirement before the rule keeps the work aimed at a real risk. Stating an acceptable false-positive rate up front gives the test a pass mark. Naming the response tells the rule's author how much detail an alert must carry: an alert that triggers an account lock needs stronger evidence than one that only feeds a daily review.
 
 ### 14.3 Testing
 
 Rules are tested against recorded benign data (to measure false positives) and against safe test events (to confirm they fire). Tests run automatically when a change is proposed.
 
+Recorded benign data might be a week of normal portal logs; safe test events are synthetic records crafted to look like the target behaviour without any real attack. A rule that fires on the synthetic burst but stays quiet on the normal week passes. Running both automatically on every change catches regressions before deployment.
+
 ### 14.4 Review
 
 A second engineer reviews logic, performance and documentation. Review catches overly broad conditions before they flood analysts.
+
+Performance is easy to overlook: a rule that searches every record for a substring might work on test data but strain the SIEM in production. The reviewer also checks that documentation tells an analyst what to do when the rule fires. Paolo uses a short checklist so reviews are consistent across reviewers and rules. Review comments and the author's responses stay attached to the change in version control.
 
 ### 14.5 Release and rollback
 
 New rules deploy first in a "monitor only" mode that records matches without alerting. After a week of acceptable results, they move to alerting. If problems appear, the previous version is restored from version control.
 
+Monitor mode shows how often a rule would fire on live data without adding to the analysts' queue. Acceptable results mean the match rate and precision meet the requirement. Because every version lives in version control, rollback is quick and leaves a record, unlike editing a rule in place in a console with no history.
+
 ### 14.6 Technical debt
 
 Old, untested rules accumulate. Paolo schedules a quarterly review to retire rules that no longer match any asset or threat.
 
+A rule written for a server decommissioned two years ago still consumes processing and may confuse new analysts. Rules whose tests no longer pass, or that have no tests at all, carry hidden risk. The quarterly review lists each rule with its last match, test status and owner, and retired rules are kept in version history rather than deleted outright.
+
 ### 14.7 Documentation
 
 Each rule carries a description, author, references, known benign triggers and response guidance.
+
+Known benign triggers save analysts time: if a backup job routinely trips a rule, the documentation says so and how to recognise it. References link the rule to the threat it addresses. Response guidance gives the first steps, so a newer analyst can act correctly at night without waiting for the rule's author. A rule missing any of these fields fails the automated checks and cannot be merged, so documentation is never left for later and forgotten.
 
 ### Ownership
 
@@ -1086,29 +1140,43 @@ You will (1) explain confidentiality, integrity and availability; (2) relate thr
 
 Confidentiality keeps information from unauthorised people; integrity keeps it accurate and unaltered; availability keeps systems usable. The portal incident touched all three: customer data could be seen, addresses altered, and the login service slowed.
 
+Thinking in all three keeps the response balanced. A team focused only on confidentiality might miss that customers' delivery addresses could have been changed, an integrity problem that could misdirect parcels. Availability suffered too, as genuine customers met slow logins during the burst. Amara's incident notes record the effect on each property separately.
+
 ### 15.2 Threats, vulnerabilities, controls
 
 A threat is a possible cause of harm; a vulnerability is a weakness it can exploit; a control reduces risk. Reused customer passwords are the vulnerability credential stuffing exploits; rate limiting and multi-factor authentication are controls.
+
+Separating the three clarifies what each fix does. Lindqvist cannot stop criminals buying leaked password lists, the threat, and cannot force customers to stop reusing passwords, the vulnerability. It can add controls that make reused passwords less useful, such as slowing repeated attempts and asking for a second factor.
 
 ### 15.3 CSF 2.0 functions
 
 The NIST Cybersecurity Framework 2.0 organises outcomes into Govern, Identify, Protect, Detect, Respond and Recover. A SOC mainly delivers Detect and Respond, but depends on Identify (asset knowledge) and feeds Govern with risk information.
 
+Without Identify, the SOC would not know which systems the portal depends on or who owns them. Feeding Govern means turning incident lessons into risk information that leaders use for decisions, such as funding MFA for customers. Mapping SOC work to the functions also shows where the team relies on others to deliver its own outcomes.
+
 ### 15.4 Prevention and detection
 
 No prevention is perfect. Detection finds what prevention missed, and response limits harm. A balanced programme invests in all three.
+
+Spending everything on prevention leaves the organisation blind when a control fails; spending everything on detection lets avoidable attacks through and floods analysts. Response turns detection into reduced harm, so a detection with no one able to act on it adds little. Budgets are argued using incidents like the portal burst, which needed all three. Each function has its own measures.
 
 ### 15.5 Defence in depth
 
 Several layers — rate limits, bot detection, MFA, monitoring of account changes — mean one failure does not lead to full compromise.
 
+Each layer catches a share of what slips past the one before. Rate limits slow the attempts, bot detection blocks automated clients, MFA stops a correct password from being enough, and monitoring of account changes spots misuse after login. Layers should fail independently, so a single misconfiguration cannot disable several at once. Amara lists which portal layers existed during the burst and which were missing.
+
 ### 15.6 Least privilege
 
 Accounts get only the rights they need, limiting damage when one is misused.
 
+At Lindqvist, the portal's database account can read and update customer records but cannot drop tables or read staff data. If an attacker controlled the portal, the damage would be limited to what that account allows. SOC analysts follow the same rule: they get read access to logs, while response actions such as account locks need separate permissions. Rights are reviewed each quarter and removed when roles change.
+
 ### 15.7 Case mapping
 
 Amara maps the portal incident: the vulnerability (password reuse by customers), the missing control (no MFA option for customers), the detection (her burst rule) and the response (account lock, notice).
+
+The mapping shows where effort would have the most effect. Detection and response worked, but both acted after a customer account had been entered. Adding an MFA option would address the gap before login succeeds. Amara presents the map to Paolo as a one-page table, which later becomes input to the security team's risk discussion with management.
 
 ### Risk as the organiser
 
