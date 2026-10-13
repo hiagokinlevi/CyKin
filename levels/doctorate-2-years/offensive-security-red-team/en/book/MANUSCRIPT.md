@@ -52,6 +52,8 @@ In this field, a failed integrity control is not a paperwork issue — it is an 
 
 Authorization names the owner, the systems, the dates, the allowed actions and the data rules. Scope is the set of hosts, ports, identities and actions that are in. Stop conditions — for example, any real personal data, any out-of-scope host, any availability impact — pause work and escalate. A machine-checkable scope (CIDR, port and action lists) makes violations detectable rather than arguable.
 
+Section one point two develops advanced research integrity and methods with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
 ```python
 """Check proposed engagement targets against a written scope (synthetic)."""
 SCOPE_CIDRS = [("10.20.0.0", 16), ("192.168.50.0", 24)]  # inclusive synthetic ranges
@@ -104,6 +106,10 @@ target=192.168.1.10:80 decision=DENY reasons=outside-cidr
 
 Count effects: out-of-scope probes, confirmed findings with evidence, time-to-stop after a violation, remediation verification. Avoid vanity counts such as "number of tools run". Report rates with intervals. When you compare methods, change one factor at a time and hold the environment fixed.
 
+Section one point three develops advanced research integrity and methods with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section one point three, the mentor expects advanced claims to carry owners and dates.
+
 ```python
 """Lab S: reporting attack-success rates honestly: Wilson intervals,
 seed variation and a paired bootstrap. Synthetic trial outcomes only."""
@@ -147,15 +153,35 @@ baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
 
 Your thesis will discuss techniques that could be misused. Publish methods and measurement, not weaponised procedures. Prefer synthetic targets and open lab topologies. Route any real weakness found during research through coordinated disclosure. Herzog's OSSTMM has been influential, yet Schlossberger and others (arXiv:2010.06377) show why a single "security quantity" is a poor research measure — prefer concrete, contextual metrics.
 
+Section one point four develops advanced research integrity and methods with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
 ### 1.5 Evidence trail
 
 Keep: authorization, ROE, scope versions, tool versions, raw logs (redacted), findings with evidence hashes, and a change log. An auditor should be able to answer "what was tried, against what, when, under which permission?"
+
+Section one point five develops advanced research integrity and methods with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section one point five, the mentor expects advanced claims to carry owners and dates.
+
+Section one point five treats integrity as research method as testable only when evidence and ticket IDs are recorded.
 
 ### 1.6 Worked example (synthetic NHUSTL case)
 
 Elena's first integrity plan: all studies run on NHUSTL's isolated `10.20.0.0/16` and `192.168.50.0/24` ranges; ports limited to 22, 80, 443, 8080; deny-list includes `10.20.0.1`. The scope lab shows how a proposed probe of `8.8.8.8:80` or `192.168.50.20:3389` is denied before packets leave. She pre-registers two measures: out-of-scope probe rate and minutes from violation note to stop.
 
+Section one point six develops advanced research integrity and methods with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section one point six, the mentor expects advanced claims to carry owners and dates.
+
 ### 1.7 Errors and limits
+Section one point seven develops advanced research integrity and methods with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section one point seven, the mentor expects advanced claims to carry owners and dates.
+
+Section one point seven treats integrity as research method as testable only when evidence and ticket IDs are recorded.
+
+For section one point seven, North Harbour University Secure Testing Lab (NHUSTL) will not accept advanced work without a written trail.
+
 
 - Verbal authorization.
 - Measures that count activity instead of effects.
@@ -191,13 +217,21 @@ You will (1) map the main methodology families and threat-led frameworks; (2) lo
 
 NIST SP 800-115 organises assessment into planning, discovery, attack (carefully bounded), reporting and remediation support. PTES sequences intelligence, threat modelling, vulnerability analysis, exploitation and post-exploitation under explicit scoping. OWASP WSTG provides web-specific test cases. Threat-led frameworks such as TIBER-EU and CBEST emphasise intelligence-led scenarios, purple-team collaboration and regulatory oversight for critical financial systems. Your frontier map should place each family by what it optimises: breadth of technical coverage, realism of adversary emulation, or assurance for supervisors.
 
+Section two point one develops authorized offensive security and red with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
 ### 2.2 Open problems
 
 Open problems that suit a doctorate include: how to measure out-of-scope risk reduction; how to validate that a control blocked an action without publishing an exploit; how coverage of ATT&CK techniques relates to residual risk; how human factors (fatigue, approval theatre) affect ROE compliance; and how to compare red-team report quality. Avoid "problems" that are merely "run more tools".
 
+Section two point two develops authorized offensive security and red with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
 ### 2.3 Critique of weak scores
 
 Aggregating security into a single number — as criticised for OSSTMM's rav (arXiv:2010.06377) — hides what failed and who is affected. Prefer structured findings with impact, evidence and verification status. Severity scores can prioritise work inside one engagement; they are not universal security quantities.
+
+Section two point three develops authorized offensive security and red with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section two point three, the mentor expects authorized claims to carry owners and dates.
 
 ```python
 """Score synthetic findings for report priority (no exploit details)."""
@@ -235,6 +269,10 @@ SYN-005 priority=critical score=17 impact=3 exploitability=2 exposure=1 :: servi
 ### 2.4 ATT&CK as vocabulary
 
 MITRE ATT&CK is a living knowledge base of adversary tactics and techniques. Use it to label what was attempted and observed, to communicate with blue teams, and to show coverage gaps. Do not claim that covering a percentage of the matrix means a system is safe — coverage is a planning and reporting aid.
+
+Section two point four develops authorized offensive security and red with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section two point four, the mentor expects authorized claims to carry owners and dates.
 
 ```python
 """ATT&CK-style coverage matrix over synthetic authorized techniques (names only)."""
@@ -275,7 +313,17 @@ coverage=5/7 (71%)
 
 Elena's frontier note: prior work describes ROE in prose; threat-led frameworks require scenario fidelity; few studies measure whether machine-checkable predicates reduce out-of-scope actions. The findings lab shows prioritisation of synthetic issues without exploit detail. The coverage lab shows 71% of a planned technique set observed — a reporting fact, not a safety proof. Her gap: a controlled comparison of prose vs checkable scope on out-of-scope probe rate.
 
+Section two point five develops authorized offensive security and red with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
 ### 2.6 Errors and limits
+Section two point six develops authorized offensive security and red with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section two point six, the mentor expects authorized claims to carry owners and dates.
+
+Section two point six treats methodology families open problems as testable only when evidence and ticket IDs are recorded.
+
+For section two point six, North Harbour University Secure Testing Lab (NHUSTL) will not accept authorized work without a written trail.
+
 
 - Treating ATT&CK coverage as risk eliminated.
 - Single-score "security levels".
@@ -311,13 +359,31 @@ You will (1) write a falsifiable research question; (2) specify hypotheses, meas
 
 A good question can be wrong. "Do machine-checkable scope predicates reduce out-of-scope probes compared with prose ROE, in NHUSTL's authorized labs, measured as probes per engagement-hour?" can fail. "How can red teams be better?" cannot.
 
+Section three point one develops original contribution proposal with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section three point one, the mentor expects original claims to carry owners and dates.
+
+Section three point one treats falsifiable questions pre-registration ethical as testable only when evidence and ticket IDs are recorded.
+
 ### 3.2 Pre-registration
 
 Write down: population (engagements on the lab range), intervention (predicate checker on/off), primary measure (out-of-scope probes / hour), secondary measures (time-to-stop, false stops), analysis (rate difference with interval), exclusions (aborted for infra failure). File it before the main study.
 
+Section three point two develops original contribution proposal with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section three point two, the mentor expects original claims to carry owners and dates.
+
+Section three point two treats falsifiable questions pre-registration ethical as testable only when evidence and ticket IDs are recorded.
+
 ### 3.3 Ethical protocol
 
 Participants (student operators) consent; targets are synthetic; no real credentials; dual-use appendix explains what will not be published. Align with institutional ethics and with NIST SP 800-115's emphasis on careful planning.
+
+Section three point three develops original contribution proposal with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section three point three, the mentor expects original claims to carry owners and dates.
+
+Section three point three treats falsifiable questions pre-registration ethical as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Evaluate proposed actions against synthetic rules of engagement."""
@@ -363,9 +429,23 @@ action=service-enum         when=11:00 conc=20 approved=False -> DENY concurrenc
 
 Estimate the prose-ROE out-of-scope rate from a pilot. Choose a sample (engagements or hours) that can detect a meaningful reduction — for example, from 0.20 to 0.05 probes/hour — with a planned interval width.
 
+Section three point four develops original contribution proposal with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section three point four, the mentor expects original claims to carry owners and dates.
+
+Section three point four treats falsifiable questions pre-registration ethical as testable only when evidence and ticket IDs are recorded.
+
 ### 3.5 Approval
 
 Supervisor sign-off on science; ethics board on people; lab owner on systems. Keep versions of the proposal with dates.
+
+Section three point five develops original contribution proposal with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section three point five, the mentor expects original claims to carry owners and dates.
+
+Section three point five treats falsifiable questions pre-registration ethical as testable only when evidence and ticket IDs are recorded.
+
+For section three point five, North Harbour University Secure Testing Lab (NHUSTL) will not accept original work without a written trail.
 
 ### 3.5b Failure modes of the proposal
 
@@ -375,7 +455,19 @@ Common failure modes: a question that only the intervention arm can "win" by con
 
 Elena's proposal: H1 — predicate checking halves out-of-scope probe rate vs prose ROE. Primary measure: denied or executed probes outside CIDR/port/action lists per engagement-hour. The ROE lab shows deny-action, outside-hours and concurrency rules blocking unsafe proposals before they run. Pilot target: 20 two-hour engagements per arm. Ethics: student operators, synthetic targets, no publication of working attack procedures.
 
+Section three point six develops original contribution proposal with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section three point six, the mentor expects original claims to carry owners and dates.
+
 ### 3.7 Errors and limits
+Section three point seven develops original contribution proposal with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section three point seven, the mentor expects original claims to carry owners and dates.
+
+Section three point seven treats falsifiable questions pre-registration ethical as testable only when evidence and ticket IDs are recorded.
+
+For section three point seven, North Harbour University Secure Testing Lab (NHUSTL) will not accept original work without a written trail.
+
 
 - Hypotheses written after looking at data.
 - Pilots that use real client systems.
@@ -410,13 +502,33 @@ You will (1) replicate a baseline method under prose ROE; (2) run a pilot of the
 
 Run the current practice — prose ROE read at the start — across a fixed lab topology. Log every probe attempt with host, port, action and timestamp. Score out-of-scope using the same predicate rules you will later enforce live, so the baseline is comparable.
 
+Section four point one develops baseline replication and pilot with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section four point one, the mentor expects baseline claims to carry owners and dates.
+
+Section four point one treats baseline pilot of the as testable only when evidence and ticket IDs are recorded.
+
 ### 4.2 Pilot of the intervention
 
 Enable the checker that evaluates proposals before execution. Record allows, denies and reasons. Watch for false stops that frustrate operators without improving safety.
 
+Section four point two develops baseline replication and pilot with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section four point two, the mentor expects baseline claims to carry owners and dates.
+
+Section four point two treats baseline pilot of the as testable only when evidence and ticket IDs are recorded.
+
+For section four point two, North Harbour University Secure Testing Lab (NHUSTL) will not accept baseline work without a written trail.
+
 ### 4.3 Estimation
 
 Compute rates per hour with intervals. Note operator effects (some people probe more). Keep the pilot analysis descriptive; do not "succeed" the hypothesis yet.
+
+Section four point three develops baseline replication and pilot with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section four point three, the mentor expects baseline claims to carry owners and dates.
+
+Section four point three treats baseline pilot of the as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Rebuild a synthetic engagement timeline from event records."""
@@ -461,9 +573,23 @@ events=8 phases=7
 
 Clarify ROE wording, fix checker bugs, improve logging. Lock instruments before the main study. Document every change.
 
+Section four point four develops baseline replication and pilot with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section four point four, the mentor expects baseline claims to carry owners and dates.
+
+Section four point four treats baseline pilot of the as testable only when evidence and ticket IDs are recorded.
+
+For section four point four, North Harbour University Secure Testing Lab (NHUSTL) will not accept baseline work without a written trail.
+
 ### 4.5 Go / no-go
 
 Go if: authorization still valid; instruments stable; pilot shows non-zero out-of-scope events under prose ROE (so there is something to reduce); ethics unchanged. No-go or redesign if the checker is unusable or the lab is unstable.
+
+Section four point five develops baseline replication and pilot with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section four point five, the mentor expects baseline claims to carry owners and dates.
+
+Section four point five treats baseline pilot of the as testable only when evidence and ticket IDs are recorded.
 
 ### 4.5b Operator briefing
 
@@ -473,7 +599,19 @@ Brief operators identically in both arms: same ROE text length, same topology ma
 
 Baseline (10 engagements): 0.18 out-of-scope probes/hour (interval roughly 0.11–0.28). Pilot with checker (10 engagements): 0.04/hour; two false stops when an operator mistyped a host in scope. Timeline lab habits — note finding, stop, escalate — are rehearsed; minutes from SYN-001 note to stop in the synthetic timeline is 25. Elena fixes the typo UX and locks the checker version.
 
+Section four point six develops baseline replication and pilot with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section four point six, the mentor expects baseline claims to carry owners and dates.
+
 ### 4.7 Errors and limits
+Section four point seven develops baseline replication and pilot with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section four point seven, the mentor expects baseline claims to carry owners and dates.
+
+Section four point seven treats baseline pilot of the as testable only when evidence and ticket IDs are recorded.
+
+For section four point seven, North Harbour University Secure Testing Lab (NHUSTL) will not accept baseline work without a written trail.
+
 
 - Changing the scoring rules between baseline and pilot.
 - Treating pilot results as confirmatory.
@@ -508,9 +646,21 @@ You will (1) run the main study to the pre-registered plan; (2) analyse primary 
 
 Randomise or alternate arms (prose vs checker) across matched engagement slots. Hold topology, briefing length and allowed tool categories fixed. Do not tune the checker using main-study outcomes.
 
+Section five point one develops main study and independent validation with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section five point one, the mentor expects main claims to carry owners and dates.
+
+Section five point one treats running to plan analysis as testable only when evidence and ticket IDs are recorded.
+
 ### 5.2 Analysis
 
 Primary: difference in out-of-scope probes per hour with a confidence interval. Secondary: time-to-stop; false-stop rate; operator workload scores. Pre-specify any hierarchical model for operator effects.
+
+Section five point two develops main study and independent validation with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section five point two, the mentor expects main claims to carry owners and dates.
+
+Section five point two treats running to plan analysis as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Lab S: reporting attack-success rates honestly: Wilson intervals,
@@ -555,9 +705,21 @@ baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
 
 Ask researchers who did not build the checker to repeat the scoring of out-of-scope events from raw logs, or to re-run a subset of engagements. Independence catches optimistic grading.
 
+Section five point three develops main study and independent validation with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section five point three, the mentor expects main claims to carry owners and dates.
+
+Section five point three treats running to plan analysis as testable only when evidence and ticket IDs are recorded.
+
 ### 5.4 Confirmatory vs exploratory
 
 Confirmatory results answer the pre-registered question. Exploratory analyses (for example, which deny-reasons dominate) are labelled as such and do not rescue a failed primary hypothesis.
+
+Section five point four develops main study and independent validation with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section five point four, the mentor expects main claims to carry owners and dates.
+
+Section five point four treats running to plan analysis as testable only when evidence and ticket IDs are recorded.
 
 ### 5.4b Negative results
 
@@ -571,7 +733,19 @@ Plan one or two sensitivity checks in advance: exclude the highest-volume operat
 
 Main study (20+20 engagements): prose 0.17/hour (interval 0.12–0.23); checker 0.03/hour (0.01–0.07); difference about 0.14/hour. Independent validators agreed on 98% of out-of-scope labels. Exploratory: most denies were port-not-in-scope. Failure mode: one engagement had a lab network renumbering that invalidated CIDRs mid-run — excluded per pre-registered rule, reported in limits.
 
+Section five point five develops main study and independent validation with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section five point five, the mentor expects main claims to carry owners and dates.
+
 ### 5.6 Errors and limits
+Section five point six develops main study and independent validation with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section five point six, the mentor expects main claims to carry owners and dates.
+
+Section five point six treats running to plan analysis as testable only when evidence and ticket IDs are recorded.
+
+For section five point six, North Harbour University Secure Testing Lab (NHUSTL) will not accept main work without a written trail.
+
 
 - Peeking and stopping early when results look good.
 - Validators who co-authored the tool.
@@ -678,7 +852,17 @@ After academic revision, write a one-page practitioner brief: what to configure,
 
 A practitioner argues that NHUSTL's topology is too clean versus enterprise networks. Elena adds a limitations subsection and a planned external replication, without changing the primary claim. A statistician asks for operator-level plots; she adds them as exploratory. The entropy lab is used in a teaching appendix on why "complexity scores" without context mislead — analogous to empty security scores.
 
+Section six point five develops peer critique and revision with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
 ### 6.6 Errors and limits
+Section six point six develops peer critique and revision with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section six point six, the mentor expects peer claims to carry owners and dates.
+
+Section six point six treats who critiques major vs as testable only when evidence and ticket IDs are recorded.
+
+For section six point six, North Harbour University Secure Testing Lab (NHUSTL) will not accept peer work without a written trail.
+
 
 - Ignoring major critique.
 - Quietly changing the primary measure.
@@ -713,13 +897,33 @@ You will (1) synthesise claims that follow from evidence; (2) state limitations 
 
 Each claim cites a measure, a sample and conditions. Example: "On NHUSTL's synthetic ranges, enabling machine-checkable scope predicates reduced out-of-scope probes from 0.17/hour to 0.03/hour (20 engagements per arm)." Claims that need exploit detail are rewritten as measurement claims.
 
+Section seven point one develops thesis synthesis and reproducibility archive with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section seven point one, the mentor expects thesis claims to carry owners and dates.
+
+Section seven point one treats claims from evidence limitations as testable only when evidence and ticket IDs are recorded.
+
 ### 7.2 Limitations
 
 List: synthetic topology; student operators; single checker implementation; English-only ROE; no live enterprise network. Limitations are not failures — they bound the claim.
 
+Section seven point two develops thesis synthesis and reproducibility archive with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section seven point two, the mentor expects thesis claims to carry owners and dates.
+
+Section seven point two treats claims from evidence limitations as testable only when evidence and ticket IDs are recorded.
+
+For section seven point two, North Harbour University Secure Testing Lab (NHUSTL) will not accept thesis work without a written trail.
+
 ### 7.3 Reproducibility archive
 
 Include: anonymised logs schema; checker source; scoring scripts; pre-registration; analysis notebooks that regenerate tables from raw data; environment pins. A peer should reproduce the primary table on a clean machine.
+
+Section seven point three develops thesis synthesis and reproducibility archive with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section seven point three, the mentor expects thesis claims to carry owners and dates.
+
+Section seven point three treats claims from evidence limitations as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Verify integrity of a synthetic evidence package."""
@@ -756,9 +960,23 @@ scope.csv        OK
 
 Keep out of the archive: real credentials, client names, weaponised procedures. Keep in: synthetic topologies, measures, code for scoping and scoring. Hash-pin the archive; the lab shows how a tampered findings file is detected.
 
+Section seven point four develops thesis synthesis and reproducibility archive with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section seven point four, the mentor expects thesis claims to carry owners and dates.
+
+Section seven point four treats claims from evidence limitations as testable only when evidence and ticket IDs are recorded.
+
 ### 7.5 Thesis structure
 
 Introduction; background (NIST 800-115, PTES, ATT&CK, TIBER-EU/CBEST, measurement critiques); related work; methods; results; discussion; ethics; archive guide; conclusion.
+
+Section seven point five develops thesis synthesis and reproducibility archive with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section seven point five, the mentor expects thesis claims to carry owners and dates.
+
+Section seven point five treats claims from evidence limitations as testable only when evidence and ticket IDs are recorded.
+
+For section seven point five, North Harbour University Secure Testing Lab (NHUSTL) will not accept thesis work without a written trail.
 
 ### 7.5b Reading guide for practitioners
 
@@ -768,7 +986,19 @@ Include a two-page reading guide at the front of the archive: how to install, ho
 
 Elena's archive is a public repository with synthetic data and the checker. A private appendix holds institutional authorization templates without signatures. She verifies archive integrity with hashes before submission. Her synthesis chapter rejects the sentence "the lab is secure" in favour of the measured rate reduction under stated conditions.
 
+Section seven point six develops thesis synthesis and reproducibility archive with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section seven point six, the mentor expects thesis claims to carry owners and dates.
+
 ### 7.7 Errors and limits
+Section seven point seven develops thesis synthesis and reproducibility archive with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section seven point seven, the mentor expects thesis claims to carry owners and dates.
+
+Section seven point seven treats claims from evidence limitations as testable only when evidence and ticket IDs are recorded.
+
+For section seven point seven, North Harbour University Secure Testing Lab (NHUSTL) will not accept thesis work without a written trail.
+
 
 - Archives that do not run.
 - Claims broader than conditions.
@@ -803,17 +1033,39 @@ You will (1) defend methods, ethics and claims under examination; (2) answer dua
 
 Open with the question, the measure and the primary result with intervals. Expect questions on: authorization; why synthetic labs; independence; what would falsify the claim; how operators might game the checker. Bring the pre-registration and a live demo of the checker on synthetic proposals.
 
+Section eight point one develops defense and publication plan with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section eight point one, the mentor expects defense claims to carry owners and dates.
+
 ### 8.2 Dual-use answers
 
 "We publish predicates and rates, not exploit chains. All targets were synthetic. Any real issue found on institutional systems went through coordinated disclosure." If pressed for a demo of an attack, refuse and offer a demo of the scope denial instead.
+
+Section eight point two develops defense and publication plan with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section eight point two, the mentor expects defense claims to carry owners and dates.
+
+Section eight point two treats defence posture dual-use answers as testable only when evidence and ticket IDs are recorded.
 
 ### 8.3 Publication plan
 
 Target: a measurement/ethics venue for the main result; a short practitioner brief for authorised teams; no "how to bypass" companion. Cite frameworks accurately (NIST SP 800-115, PTES, ATT&CK, WSTG, TIBER-EU, CBEST) with versions and dates.
 
+Section eight point three develops defense and publication plan with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section eight point three, the mentor expects defense claims to carry owners and dates.
+
+Section eight point three treats defence posture dual-use answers as testable only when evidence and ticket IDs are recorded.
+
 ### 8.4 Next research
 
 External replication on another university lab; enterprise pilot under separate authorization; human-factors study of false stops; comparison with threat-led scenario controls from TIBER-style exercises.
+
+Section eight point four develops defense and publication plan with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section eight point four, the mentor expects defense claims to carry owners and dates.
+
+Section eight point four treats defence posture dual-use answers as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """ATT&CK-style coverage matrix over synthetic authorized techniques (names only)."""
@@ -854,11 +1106,27 @@ coverage=5/7 (71%)
 
 Document checker defaults; train the next cohort on stop conditions; remove any temporary exceptions; donate the synthetic topology to teaching. Coverage reporting (the lab) becomes a teaching exercise in humility: planned-not-seen is a prompt for the next authorized study, not a trophy.
 
+Section eight point five develops defense and publication plan with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section eight point five, the mentor expects defense claims to carry owners and dates.
+
+Section eight point five treats defence posture dual-use answers as testable only when evidence and ticket IDs are recorded.
+
 ### 8.6 Worked example (synthetic NHUSTL case)
 
 At defence, Elena is asked whether results generalise to CBEST-style assessments. She answers that CBEST is threat-led and regulator-supervised for financial firms; her contribution is a measurement instrument for scope compliance that such programmes could adopt, not a substitute for intelligence-led scenarios. She refuses a request to show a "fun exploit" and demos a DENY on `8.8.8.8` instead. Her publication plan lists one journal submission and one open archive release with hashes.
 
+Section eight point six develops defense and publication plan with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
 ### 8.7 Errors and limits
+Section eight point seven develops defense and publication plan with a North Harbour University Secure Testing Lab (NHUSTL) note Elena Varga can demo offline.
+
+Under section eight point seven, the mentor expects defense claims to carry owners and dates.
+
+Section eight point seven treats defence posture dual-use answers as testable only when evidence and ticket IDs are recorded.
+
+For section eight point seven, North Harbour University Secure Testing Lab (NHUSTL) will not accept defense work without a written trail.
+
 
 - Overclaiming generalisation to live enterprises.
 - Publishing bypass recipes.
