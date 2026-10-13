@@ -42,13 +42,13 @@ Edición en español neutro, escrita a partir de la edición de referencia en in
 | 6 | [30](book/PLAN.md#ch-30) | Laboratorio II | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-30) | [31 · Borrador](book/MANUSCRIPT.md#ch-31) |
 | 7 | [31](book/PLAN.md#ch-31) | Seguridad de la IA y del aprendizaje automático: casos avanzados | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-31) | [32 · Borrador](book/MANUSCRIPT.md#ch-32) |
 | 7 | [32](book/PLAN.md#ch-32) | Seguridad de la IA y del aprendizaje automático: interfaces interdisciplinarias | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-32) | [33 · Borrador](book/MANUSCRIPT.md#ch-33) |
-| 7 | [33](book/PLAN.md#ch-33) | Métodos de investigación II | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-33) | [34 · Plan](book/PLAN.md#ch-34) |
-| 7 | [34](book/PLAN.md#ch-34) | Proyecto comparativo | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-34)) | [35 · Plan](book/PLAN.md#ch-35) |
-| 7 | [35](book/PLAN.md#ch-35) | Propuesta de proyecto final | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-35)) | [36 · Plan](book/PLAN.md#ch-36) |
-| 8 | [36](book/PLAN.md#ch-36) | Práctica de campo o comunitaria | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-36)) | [37 · Plan](book/PLAN.md#ch-37) |
-| 8 | [37](book/PLAN.md#ch-37) | Seminario de revisión de evidencias | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-37)) | [38 · Plan](book/PLAN.md#ch-38) |
-| 8 | [38](book/PLAN.md#ch-38) | Implementación del proyecto final | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-38)) | [39 · Plan](book/PLAN.md#ch-39) |
-| 8 | [39](book/PLAN.md#ch-39) | Evaluación del proyecto final | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-39)) | [40 · Plan](book/PLAN.md#ch-40) |
-| 8 | [40](book/PLAN.md#ch-40) | Trabajo de fin de grado y presentación | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-40)) | [Curso 113 →](../../quantum-post-quantum-security/es/SUBJECTS.md) |
+| 7 | [33](book/PLAN.md#ch-33) | Métodos de investigación II | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-33) | [34 · Borrador](book/MANUSCRIPT.md#ch-34) |
+| 7 | [34](book/PLAN.md#ch-34) | Proyecto comparativo | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-34) | [35 · Borrador](book/MANUSCRIPT.md#ch-35) |
+| 7 | [35](book/PLAN.md#ch-35) | Propuesta de proyecto final | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-35) | [36 · Borrador](book/MANUSCRIPT.md#ch-36) |
+| 8 | [36](book/PLAN.md#ch-36) | Práctica de campo o comunitaria | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-36) | [37 · Borrador](book/MANUSCRIPT.md#ch-37) |
+| 8 | [37](book/PLAN.md#ch-37) | Seminario de revisión de evidencias | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-37) | [38 · Borrador](book/MANUSCRIPT.md#ch-38) |
+| 8 | [38](book/PLAN.md#ch-38) | Implementación del proyecto final | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-38) | [39 · Borrador](book/MANUSCRIPT.md#ch-39) |
+| 8 | [39](book/PLAN.md#ch-39) | Evaluación del proyecto final | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-39) | [40 · Borrador](book/MANUSCRIPT.md#ch-40) |
+| 8 | [40](book/PLAN.md#ch-40) | Trabajo de fin de grado y presentación | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-40) | [Curso 113 →](../../quantum-post-quantum-security/es/SUBJECTS.md) |
 
 Un siguiente paso planificado es un destino de navegación, no una lección escrita. Las columnas de páginas y ejercicios son metas editoriales. El libro solo estará completo cuando su contenido y su maquetación A4 cumplan el criterio de publicación.
