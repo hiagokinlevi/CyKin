@@ -1,7 +1,7 @@
 # Human Factors and Cyber Policy: Postgraduate Course
 
 - Language: English (`en`); course 144, Postgraduate course (2 years).
-- Editorial state: **draft**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; eight offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **draft**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; six offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: working security practitioners leading a human-centred security programme in a mid-sized organisation.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Boundary: the labs compare expected loss, compute risk differences, test weight sensitivity, analyse a stepped rollout with a permutation test and summarise assurance and help desk data, all synthetic; no real staff, emails or accounts are involved. Any phishing simulation described is announced, approved by a panel including staff representatives and HR, avoids lures exploiting personal distress such as pay, bonuses or health, is reported only in aggregate and is never used in performance reviews. All people, organisations, systems and data are **synthetic** unless a sentence cites a public source.

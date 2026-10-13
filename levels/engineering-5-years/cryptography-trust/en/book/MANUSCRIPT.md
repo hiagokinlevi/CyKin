@@ -1,7 +1,7 @@
 # Cryptography and Trust Services: Engineering Course
 
 - Language: English (`en`); course 123, Engineering course (5 years).
-- Editorial state: **draft**. Chapters 1–50 of 50 have hand-written teaching text; exercises EX001–EX150 have matching worked results with 0–3 rubrics; nine offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **draft**. Chapters 1–50 of 50 have hand-written teaching text; exercises EX001–EX150 have matching worked results with 0–3 rubrics; eight offline labs use only the Python 3 standard library on synthetic data, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: engineering students designing, building and operating cryptographic trust services for critical infrastructure.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Boundary: labs exist to understand and verify behaviour against standards and test vectors. Production systems use vetted libraries and hardware security modules; never roll your own cryptography. All people, organisations, keys and devices are **synthetic** unless a sentence cites a public source.
