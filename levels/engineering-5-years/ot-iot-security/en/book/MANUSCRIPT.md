@@ -659,6 +659,8 @@ Stop if: an unexpected process alarm fires; latency or cycle time exceeds the bu
 
 > **Synthetic case — Ashford Batch Plant.** During a bench test of the serial monitor, cycle time rose above 50 ms. Lena stopped, removed the device, and re-tested on a spare trunk before any plant window was booked.
 
+These conditions are printed on the permit.
+
 ### 10.4 Errors and limits
 
 Ethics is a constraint on every later chapter. Legal text here is orientation, not advice. Live plants are never course lab targets.
@@ -742,6 +744,8 @@ HIST-1  fc= 4 reg=30010 -> PASS
 
 > **Synthetic case — Ashford Batch Plant.** The CNHP coverage board lists HIST-1 cannot write as a planned check. The lab's BLOCK on function 16 is a green result for that check, not a red test failed.
 
+Lena's board shows each planned check with its expected result.
+
 ### 11.4 Errors and limits
 
 Banner grabs lie; confirm with application-level or decoded-frame evidence. Course environments never scan live plants.
@@ -755,6 +759,8 @@ Keep a one-page protocol inventory: trunk, baud rate, stations, function codes i
 ### 11.1b Protocol families in the work permit
 
 Work permits should name protocol families explicitly: Modbus TCP with function codes 3/4/6 on registers 40001-40010 is clearer than port 502. If write codes are forbidden from assessment stations, say so. If only listen-only taps are authorized, say so. Ambiguity here becomes an argument during the window when someone wants to try a diagnostic function just to see. Keep a one-page inventory of trunks, baud rates, stations and allow-list owners updated when vendors add devices.
+
+At ABP, Lena's permit for serial verification says listen-only on the RS-485 trunk to PLC-A, names HMI-1's allowed writes, and forbids diagnostic function codes from the assessment laptop. During window W-17 a vendor's request to try a diagnostic was declined for exactly this reason, and evaluated later under its own permit.
 
 ### Exercises
 
@@ -781,6 +787,8 @@ You will (1) harden HMI and engineering workstations without breaking control; (
 ### 12.1 Workstations are part of the control system
 
 HMIs and engineering workstations often run general-purpose OSes with decades of legacy software. Treating them as just PCs is how malware walks into L2. Hardening baselines (application allow-listing, local admin removal, USB control) must be tested against the HMI vendor's support matrix — an unsupported hardening change that blanks a screen during a batch is an availability incident.
+
+At ABP, Lena tests each hardening change on a bench HMI running the same vendor version before it reaches the control room, and records which items the vendor supports.
 
 ### 12.2 Least privilege for engineers
 
@@ -819,6 +827,8 @@ deferred: ['historian DB patch']
 
 > **Synthetic case — Ashford Batch Plant.** The patch lab deferred the historian DB patch because W1 and W2 were full with higher-risk PLC and HMI work. Lena scheduled a dedicated window the next month instead of squeezing it into Sunday morning.
 
+Each deferred job keeps its ticket and date. Deferrals are reviewed monthly.
+
 ### 12.4 Errors and limits
 
 Do not disable antivirus or allow-listing to make the vendor happy without a written exception and compensating monitoring. Offline plants still need media control.
@@ -832,6 +842,8 @@ Every deferred patch gets a ticket with residual risk and a date. Deferred-witho
 ### 12.1b Image and offline analysis
 
 Full-disk images of HMIs are high impact: they take systems offline, may contain proprietary recipes and tempt out-of-scope browsing. Prefer live, least-privilege reads and configuration exports. If an image is truly required, the work permit must name chain-of-custody, encryption at rest, who may mount it, and a destroy-by date — and the course labs still do not practice imaging real hosts. Offline plants still need media control; air gaps that hide USB and cellular modems are not air gaps.
+
+Lena has never needed a full image at ABP.
 
 ### Exercises
 
@@ -873,6 +885,8 @@ Generate deterministic tank levels and setpoints with fixed seeds so labs reprod
 
 > **Synthetic case — Ashford Batch Plant.** Ops provided Lena with a week of synthetic T-1/T-2/R-101 values at 1 Hz for detector trials — no customer order numbers, no operator names.
 
+ABP's week of synthetic T-1, T-2 and R-101 values at one-hertz resolution was generated this way, and its seed is recorded with the dataset. Lena reruns the generator to confirm the file matches before each trial.
+
 ### 13.4 Errors and limits
 
 Masking that leaves unique rare recipes can still identify production runs. Prefer synthetic generation for teaching.
@@ -887,6 +901,7 @@ Draw the data-flow: sensor to PLC to historian to replica to L4 reports. Every a
 
 Modern historians and warehouses offer row and column policies. Assessment questions become: does role R see column C? Does row filter F apply? Test with the role itself. Document the policy engine version; we ran SELECT * against an admin role proves little about analyst exposure. Draw the data-flow from sensor to PLC to historian to replica to L4 reports; every arrow needs an owner and a protocol.
 
+Lena tests ABP's replica with an analyst account before each review. Results go in the review notes.
 
 ### 13.5 Worked example — a minimised historian extract (synthetic ABP)
 
@@ -932,6 +947,8 @@ CI runs labs and unit tests on synthetic data. Never point CI at a plant VPN. Se
 
 > **Synthetic case — Ashford Batch Plant.** A PR added a temporary L4 to L2 rule for a vendor visit. CI's reachability check failed because L1-SIS became reachable; the PR was blocked until the rule was rewritten through the DMZ.
 
+Lena's pipeline loads synthetic fixtures for ABP's zones and allow-list.
+
 ### 14.4 Errors and limits
 
 Tags can drift from what operators run; record the running hash in the engagement log at window start.
@@ -946,6 +963,7 @@ Policy repos use the same dual-approval culture as PLC logic downloads. If downl
 
 Normal improvements ride a release train with Lab I/II. Safety hotfixes may skip features but not verification: a minimal fail-closed regression pack is mandatory. Tag hotfixes clearly so a window can pin either the train build or the hotfix SHA with eyes open. Version pins appear in the kickoff checklist beside the work-permit hash; if the pin and the running binary disagree, the window does not start.
 
+ABP's hotfixes carry their own tag and the regression pack result in the release note, so a window lead can see exactly what was verified.
 
 ### 14.5 Worked example — reviewing a change to permit() (synthetic ABP)
 
@@ -991,6 +1009,8 @@ A single OT risk = 42 hides whether SIS independence holds. Prefer concrete meas
 
 > **Synthetic case — Ashford Batch Plant.** Lena stopped putting a composite score on CNHP slides. The deck now shows: SIS reachable from L4? No. Critical opens: 1. Alarms per operator-hour: 1.05. Deferred high-risk patches: 0.
 
+Each CNHP measure has a definition and a source, so it can be recomputed.
+
 ### 15.4 Errors and limits
 
 Fundamentals are vocabulary; they are not a complete hazard analysis. Continue into threat and failure analysis for structured study.
@@ -1004,6 +1024,8 @@ When someone asks for a traffic-light dashboard, offer three lights that mean so
 ### 15.1b From property to test
 
 If a finding claims integrity impact, the validation plan must include an integrity check (who can still write). If it claims availability impact, validation includes a canary or synthetic probe — not a new attack. Align property, finding and re-test method in one paragraph of the ticket. When someone asks for a traffic-light dashboard, offer lights that mean something: SIS independence, critical opens, patch deferrals past date — refuse overall cyber.
+
+At ABP, the FW-12 finding claimed an integrity exposure, so its re-test checked that the office zone could no longer reach SCADA, using the same reachability method.
 
 ### Exercises
 
@@ -1044,6 +1066,8 @@ Lena keeps the matrix as a file in the CNHP repository, updated in the same pull
 PLC-A publishes process values; SIS-B consumes dedicated sensors; the historian consumes PLC tags; the serial monitor consumes a listen-only tap. Agree tag lists and update rates. An interface change is a change request, not a quiet edit during a batch.
 
 > **Synthetic case — Ashford Batch Plant.** Requirement R-12 "SIS not reachable from L4" traces to the zoned edge list, lab_reach.py, and the quarterly firewall-export hash in the dossier.
+
+Lena keeps the tag list for each interface in the repository, with its owner and update rate.
 
 ### 16.4 Errors and limits
 
@@ -1127,6 +1151,8 @@ If every medium cyber alert pages the whole site, people silence the pager — a
 
 > **Synthetic case — Ashford Batch Plant.** After PI lab review, Lena rejected an inline DPI box on the compressor skid (fast loop) and approved a listen-only serial tap on the slow tank trunk.
 
+Lena's routing at ABP pages the shift lead only for high-severity events.
+
 ### 17.4 Errors and limits
 
 Textbook PI ignores valve stiction and sensor delay. Use plant historians for real tuning; the lab is for intuition.
@@ -1209,6 +1235,8 @@ zoned: L4 reaches ['L0', 'L1-PLC', 'L2', 'L3', 'L3.5', 'L4'] count=6 writes_to_S
 
 > **Synthetic case — Ashford Batch Plant.** CNHP's target architecture is the zoned graph: L4 views through L3.5; SIS engineering only via keyswitch; no L2 to L1-SIS conduit.
 
+Lena's bench copy of ABP's firewall and monitor is such a range; its reports state that results apply to the mirrored configuration only.
+
 ### 18.4 Errors and limits
 
 Diagrams age. Re-validate zones against the live firewall export at each window.
@@ -1253,9 +1281,13 @@ You will (1) assess OT identity without attacking crypto; (2) use hashing for ev
 
 Ask: which accounts exist on HMIs, historians and engineering hosts? Which use shared passwords? Which integrate with the site directory? MFA on L4 jump hosts is common; MFA on a legacy HMI may be impossible — document compensating controls (physical access, session recording).
 
+Lena's identity review at ABP listed every account on HMI-1, the historian and eng-WS-1, with its owner and whether it was shared. The shared engineer password was the clearest finding and was replaced with named accounts. Where MFA could not be added to a legacy HMI, she recorded the compensating controls, such as locked control-room access and session recording on the jump host, and named who checks them.
+
 ### 19.2 Evidence hashing
 
 Hash configuration exports and evidence files (SHA-256); store digests in the ticket. Re-hash later to detect tampering. Pair hashes with actor id and work-permit version.
+
+Lena hashes every firewall export when it is collected and stores the digest in the ticket with the time, her account and the work-permit version. Later reviews re-hash the stored file and compare. A mismatch is investigated before the evidence is used, because a changed export could mean tampering, a careless edit or simply the wrong file. The manifest names the algorithm used.
 
 ### 19.3 Secrets
 
@@ -1263,9 +1295,13 @@ Engineering credentials live in a vault; short-lived checkouts; rotate at window
 
 > **Synthetic case — Ashford Batch Plant.** A shared "engineer" password on eng-WS-1 was replaced with named accounts after CNHP's identity review. Checkout of the PLC project files now logs the person, not a mythic shared user.
 
+At ABP, engineering credentials for PLC-A's project are checked out from the vault for one window and rotated afterwards.
+
 ### 19.4 Errors and limits
 
 Hashes detect change, not malice versus accident. Pair them with access logs. Do not attempt to crack plant password hashes in this course.
+
+A matching hash proves only that a file has not changed since it was hashed, not that it was collected lawfully or interpreted correctly. Lena pairs hash checks with the access log for the evidence store, which shows who touched each file and when. Password findings are reported from configuration and account lists; cracking hashes is outside the programme and outside any permit she holds.
 
 ### Practice note
 
@@ -1305,9 +1341,13 @@ You will (1) place OT security engineering among SP 800-82, ISA/IEC 62443 and AT
 
 NIST SP 800-82 guides ICS security. ISA/IEC 62443 structures zones, conduits and security levels. ATT&CK for ICS names adversary techniques for planning and coverage — not as a residual-risk score. Modbus specs define the protocol you allow-list. Academic surveys (Giraldo et al.; Urbina et al.) warn against detectors evaluated only on easy attacks. Engineers build the platforms and processes that make those sources operable under process-safety constraints.
 
+Lena uses each source for what it is good at and cites the exact revision.
+
 ### 20.2 What we build
 
 CNHP at Ashford Batch Plant is the running example: zoning, allow-lists, detectors with honest metrics, patch windows, evidence dossiers. Graduates design, verify and operate such programmes — they do not invent exploits against PLCs.
+
+The programme's outputs are concrete: a zoned network with tested reachability, allow-lists enforced on Modbus traffic, detectors with published false-alarm intervals, a patch schedule with dated deferrals and a dossier an auditor can verify. Each later chapter adds one part of that system and shows how Lena built and checked it at ABP without endangering a batch.
 
 ### 20.3 Safety boundary
 
@@ -1315,9 +1355,13 @@ No exploit payloads, no unauthorized plant access, no live personal or proprieta
 
 > **Synthetic case — Ashford Batch Plant.** Leadership asked for a red team that hacks the plant. Lena reframed the charter: an authorized hardening programme that enforces zones and measures detection without endangering batches.
 
+Lena checks every design against this boundary.
+
 ### 20.4 Errors and limits
 
 Frameworks evolve; re-check URLs and versions before citing in a thesis. This chapter orients; it does not replace reading the primary sources.
+
+Lena's list of sources records the revision and access date for each standard and paper used in CNHP documents. Before citing a framework in her thesis, she checks whether a newer revision exists and notes any change that affects her argument. The chapter gives only enough orientation to start; reading the primary sources is part of the work.
 
 ### Practice note
 
@@ -1326,6 +1370,8 @@ Keep a one-page "sources we actually use" list in the CNHP binder with access da
 ### 20.1b Neighbouring courses and deliverables
 
 This engineering book assumes comfort with calculus, probability and software engineering from earlier chapters. The bachelor's OT book is broader; the technologist book emphasizes implementation drills. Operators need runbooks and tickets; engineers need schemas, tests and ADRs. Capstone grading looks for both. Keep a one-page sources we actually use list with access dates.
+
+Lena's own deliverables at ABP include both kinds. Her runbooks and tickets serve the operators who run the plant each day, while the schemas, tests and decision records serve the engineers who will maintain the tools after her. Assessors look for both.
 
 ### Exercises
 
@@ -1353,9 +1399,13 @@ You will (1) elicit requirements from process safety, operations and security; (
 
 Process safety wants independent protection layers. Operations wants viewing without downtime. Security wants deny-by-default conduits. Elicitation interviews produce shall-statements tagged by source. Conflicts (convenience viewing vs SIS isolation) are recorded, not papered over.
 
+At ABP, Lena interviewed the process-safety engineer, the shift leads, the control engineers and the IT network team separately, then brought conflicts to a joint meeting. The clearest conflict was the remote-viewing rule FW-12, which operations valued and safety could not accept. It was recorded with both positions, and the resolution, viewing through the DMZ replica, became a requirement with an owner.
+
 ### 21.2 Three families
 
 Functional: "The serial monitor shall decode Modbus RTU on trunk A and emit allow/deny decisions." Safety: "If the allow-list file does not load, the monitor shall fail closed (drop all non-essential traffic or alarm and require human action per the design)." Measurement: "CNHP shall report planned-vs-observed ATT&CK for ICS technique coverage with denominators." Safety requirements win ties.
+
+Lena tags each CNHP requirement with its family, so reviews can check that safety ones are tested first. Ties are settled in writing.
 
 ### 21.3 Acceptance criteria
 
@@ -1363,9 +1413,13 @@ Each requirement has a Given/When/Then on synthetic data. Example: Given deny of
 
 > **Synthetic case — Ashford Batch Plant.** Safety requirement S-1 "fail closed on missing allow-list" failed its acceptance test when a typo path returned PASS. The fix shipped before any plant window.
 
+Criteria are reviewed with the requirement's owner. Each criterion is a test.
+
 ### 21.4 Errors and limits
 
 Stakeholders invent requirements mid-window; park them in a backlog with an AUTH ticket, do not hot-patch production monitors during a batch.
+
+When someone asks for a new monitor rule during a batch, Lena records it in the backlog with an authorization ticket and evaluates it after the window. Changing a production monitor mid-batch risks an outage or a fail-open bug that nobody has tested. The backlog item names who asked, why and when it will be reviewed, so the request is not lost and the person who raised it sees it handled.
 
 ### Practice note
 
@@ -1374,6 +1428,8 @@ Acceptance tests are named after requirement ids and fail CI when skipped. Orpha
 ### 21.1b MoSCoW under safety
 
 Must/Should/Could prioritization still places all safety requirements in Must. A Could that weakens Must (optional deny of write codes) is reclassified or rejected. Product managers do not outvote fail-closed. Put requirement ids in test names and in log fields (req=S-1). Dead requirements without tests should fail CI.
+
+At ABP, S-1 and R-12 are both Must items, and no product decision can move them down. A request to make write-code denies optional for convenience was rejected on this basis, and the rejection is recorded with the requirement it would have weakened.
 
 ### Exercises
 
@@ -1401,9 +1457,13 @@ You will (1) draw an entity model for assets, zones, conduits and findings; (2) 
 
 Plant 1—* Unit; Unit 1—* Asset; Zone 1—* Asset; Conduit *—* Zone (from/to); Finding *—* EvidenceObject (by hash); TechniqueTag *—* Finding. Cardinality mistakes (many active conduit sets without a version pointer) cause auditors to ask which rules were live.
 
+Lena's model gives each ConduitSet a version and records which version was live at any time, so an auditor can see the rules that applied on a given day. Each Finding links to its evidence by hash, and technique tags link to findings only after review.
+
 ### 22.2 Keys
 
 Finding ids are UUID. Evidence is content-addressed by SHA-256. ConduitSet has (plant_id, version_int). Never key findings by title — titles change.
+
+Lena's schema uses these keys throughout CNHP. A finding about FW-12 kept its identifier when its title was reworded after review, and its history stayed intact. Evidence keyed by its hash cannot be silently replaced, since a different file would have a different key. The ConduitSet version number increases with every published change and never reuses an old value.
 
 ### 22.3 Forbidden attributes
 
@@ -1411,9 +1471,13 @@ No attribute for payload, shellcode or step-by-step attack. EvidenceObject store
 
 > **Synthetic case — Ashford Batch Plant.** An early schema had notes as free text; people pasted engineering passwords. Lena replaced it with structured fields plus an evidence hash, and a linter rejects password-like strings in titles.
 
+Lena's linter enforces the list. It runs on every record created or imported, including bulk imports from scanners, and rejects password-like strings in titles. Rejected records return an error explaining which field was refused.
+
 ### 22.4 Errors and limits
 
 Models that force every ATT&CK for ICS technique as mandatory fields generate junk tags. Keep technique tags optional and reviewed.
+
+At ABP, technique tags are added by an analyst after the finding is written, and a second person reviews them. A finding with no fitting technique is left untagged rather than forced into the nearest one. This keeps coverage figures honest, because a junk tag would count as observed coverage for a technique nobody really tested. Tags are reviewed when the ATT&CK for ICS version changes.
 
 ### Practice note
 
@@ -1458,9 +1522,13 @@ You will (1) enumerate failures of the OT security programme itself; (2) use a l
 
 Allow-lists failing open, reachability CI skipped, detectors with silent false-alarm storms, patch deferrals without dates — these threaten process safety and honesty, not only confidentiality of a tool.
 
+Lena lists these failures first in CNHP's threat analysis because they could harm the plant through the tools meant to protect it. A monitor that fails open would let unauthorized writes reach PLC-A while everyone believed they were blocked. A reachability check skipped in continuous integration would let a new conduit to SIS-B merge unseen. Each failure gets a requirement and a test.
+
 ### 23.2 STRIDE on CNHP tools
 
 Spoofing: fake engineering account. Tampering: edit firewall export after seal. Repudiation: no actor on deny events. Information disclosure: historian replica world-readable. Denial of service: scanner floods a trunk. Elevation: one person can publish a conduit to SIS. Each row gets a mitigation requirement.
+
+Lena runs the analysis on each CNHP tool and records rows in the backlog with owners. For ABP, the most serious rows were the monitor failing open and one person publishing a conduit to SIS-B; they became requirement S-1 and the dual-approval gate on conduit changes. Each row is reviewed again when its mitigation ships.
 
 ### 23.3 Plant threats stay in hazard analysis
 
@@ -1501,9 +1569,13 @@ cusum classB FA=0/60 det=0/60 mean_delay=nan
 
 > **Synthetic case — Ashford Batch Plant.** STRIDE row fail open became safety requirement S-1. Row solo conduit publish became the dual-approval gate.
 
+Lena passes plant threats to the process-safety engineer for the hazard analysis. She supplies facts about the tools and network, such as which zones can reach PLC-A, and the engineer judges the process consequences. Nothing in CNHP's tools simulates an attack on the process.
+
 ### 23.4 Errors and limits
 
 STRIDE is a prompt, not a proof. Revisit when adding a new trust boundary (for example a vendor SaaS historian).
+
+Lena repeats the analysis whenever CNHP adds a trust boundary, such as a new remote-access path for a vendor or a change to where alerts are sent. The rows from earlier reviews are kept, so the team can see which threats were added, which mitigations were built and which remain open. A STRIDE table never proves a tool safe; tests and reviews do that.
 
 ### Practice note
 
@@ -1516,6 +1588,8 @@ Abuse cases are intentional adversary actions against CNHP tools. Misuse cases a
 
 
 Feeding the backlog means each STRIDE row has an owner and a due date. Unowned rows are theatre. Include jumphost compromise explicitly: short-lived credentials, egress allow-lists, rapid revocation.
+
+Both kinds feed the backlog.
 
 ### Exercises
 
@@ -1543,9 +1617,13 @@ You will (1) sequence work-permit to discovery to validation to reporting; (2) p
 
 Work permit first. Discovery enumerates assets and conduits by agreed methods. Validation confirms configuration issues with least privilege. Reporting delivers findings and evidence hashes. Skipping the permit is how unauthorized testing happens.
 
+At ABP, every CNHP activity starts with a signed work permit naming units, methods, windows and stop conditions. Discovery uses passive capture and engineering project exports; validation uses configuration review and bench tests. Findings are reported with evidence hashes, and nothing moves to the next step until the previous one has produced its artefacts.
+
 ### 24.2 Method cards
 
 Each card: name, purpose, privilege, noisy?, process impact, stop conditions, artefacts. Authenticated configuration review is a card; weaponised PLC exploit is not in this programme's deck.
+
+Lena keeps ABP's method cards in the repository beside the work-permit template. A permit can only list methods that have a card, and each card states whether the method is noisy and what process impact it could have. Reviewers check the card's stop conditions against the permit, so a method cannot be used under weaker conditions than its card requires.
 
 ### 24.3 Done means artefacts
 
@@ -1553,9 +1631,13 @@ A method is done when inventory CSV, config hashes, finding drafts and coverage 
 
 > **Synthetic case — Ashford Batch Plant.** Method card for serial allow-list verification requires listen-only mode, cycle-time stop at 50 ms, and a lab-style decision table as artefact.
 
+Lena's checklist for each method lists its required artefacts. For serial allow-list verification at ABP, that means the decision table, the capture hash, any draft findings and the updated coverage board. A method with missing artefacts is reopened, not closed with a note promising them later. Lena checks the list at the end of each window.
+
 ### 24.4 Errors and limits
 
 Copying someone else's method list without matching authorization is cargo-cult 62443.
+
+A method list copied from another plant or a published guide may assume authorizations, equipment or process tolerances that ABP does not have. Lena adapts each method to ABP's own permit, writes a card for it and has the card reviewed by control engineering before it is used. A borrowed method without that review is treated as unauthorized, however reputable its source, and stays out of the permit until reviewed.
 
 ### Practice note
 
@@ -1568,6 +1650,8 @@ Quiet methods (listen-only decode, config export) fit more windows. Noisy method
 
 
 Done means artefacts: inventory CSV, config hashes, finding drafts, coverage updates. Method cards without a noisy field are how morning batch windows get congested. Park mid-window ideas in the next planning backlog.
+
+Lena schedules quiet methods first.
 
 ### Field note — method freeze in practice
 
@@ -1599,9 +1683,13 @@ You will (1) sketch the allow/deny pipeline for ABP's serial monitor; (2) justif
 
 Design: input frame to decode to load ConduitSet/allow-list to evaluate permit to emit event to forward or drop. Options: embed policy in code vs signed data file; sync vs async alerts on denies.
 
+Lena's studio team at ABP sketches the whole path on one page and labels where a frame is denied if the policy is missing. The two choices debated were whether the allow-list lives in code or in a signed data file, and whether alerts about denies are sent synchronously or queued. Each option is written down with its consequences before anyone argues for one.
+
 ### 25.2 Trade-offs
 
 Policy-as-signed-data lets updates ship without redeploying firmware but needs signature verification and fail-closed on bad signatures. Async alerts scale but can reorder; for SIS-path denies, prefer sync alert.
+
+Lena's team agrees that a bad signature must stop all non-essential traffic, exactly as requirement S-1 demands for a missing policy. Sync alerts are kept for denies on write codes and SIS-related paths, where delay matters; routine read denies are queued. The team also records what happens if the signing key is lost: the monitor keeps the last valid list and alarms, and no unsigned update is accepted.
 
 ### 25.3 Decision record
 
@@ -1609,9 +1697,13 @@ One page: context, options, decision, consequences, date, owners. Store next to 
 
 > **Synthetic case — Ashford Batch Plant.** Studio chose signed JSON allow-lists, sync path for denies that touch write codes, async bulk for routine reads. ADR-004 captures it.
 
+ADR-004 records the studio's decision on signed JSON allow-lists in this format, with Lena and the control-engineering lead as owners. It sits in the repository next to the policy code, so anyone changing the loader can read why it works the way it does.
+
 ### 25.4 Errors and limits
 
 Studios that skip safety requirements produce pretty diagrams that fail open.
+
+Lena's studio refuses to review a design until it shows where the monitor denies traffic when the allow-list is missing or its signature fails. Designs that cannot answer are sent back before any discussion of layout or tools. The constraint cards make the safety requirements visible on the table from the first minute, so they cannot be forgotten in enthusiasm for a clever architecture. Rejected designs are recorded too.
 
 ### Practice note
 
@@ -1655,9 +1747,13 @@ You will (1) compare on-prem monitors vs cloud analytics for OT data; (2) evalua
 
 A: on-prem serial/IP monitors with local detectors. B: on-prem collection with site historian analytics. C: cloud analytics SaaS receiving process values. Each serves different constraints.
 
+Lena describes each option for ABP in the same structure: where process data goes, who operates it, how it fails and what it costs. Option C would send process values off site, which immediately raises data-residency and recipe-confidentiality questions. Options A and B keep data on site but differ in how quickly they can enforce decisions on the write path.
+
 ### 26.2 Criteria
 
 Process safety independence, data residency, fail-closed behaviour, operability by the site team, cost. Weight safety and residency above novelty.
+
+Lena agrees the weights with the process-safety engineer and the plant manager before scoring. Safety independence and data residency carry the most weight because a failure there cannot be undone by later fixes. Each option is scored with evidence, and options that fail a safety criterion are rejected regardless of their other scores. The weights are published in the analysis so reviewers can challenge them.
 
 ### 26.3 Decision
 
@@ -1665,9 +1761,13 @@ ABP rejected C because recipe-adjacent trends must not leave the site without a 
 
 > **Synthetic case — Ashford Batch Plant.** A vendor demo of C looked slick; counsel and process safety blocked unrestricted upload. ADR-011 records the rejection.
 
+ADR-011 records this decision. The reasons are short: option A enforces decisions locally on the write path and can be run by site engineers; option B adds detection research but needs skills the night shift lacks, so it is kept for daytime work on replicas. Option C remains rejected until residency rules change, which is its recorded revisit trigger.
+
 ### 26.4 Errors and limits
 
 Alternatives analysis that ignores the work permit's data clauses is theatre.
+
+At ABP, the permit's data clauses forbid process values leaving the site without a board-level exception, so option C failed before any technical comparison. Lena records that constraint at the top of the analysis, so readers see why C was rejected without reading the scoring. An analysis that had scored C highly while ignoring the permit would have wasted the board's time and might have pressured someone into granting an exception.
 
 ### Practice note
 
@@ -1680,6 +1780,8 @@ Include rough annual cost and the skills each alternative demands. An option tha
 
 
 Switching costs matter: a monolith that already exports signed allow-lists can grow into services; a SaaS contract with residency exceptions is harder to unwind mid-incident. Prefer options that keep an offline escape hatch for deny/allow.
+
+ADR-011 states its revisit trigger.
 
 ### Field note — skill assumptions
 
