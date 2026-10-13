@@ -33,7 +33,10 @@ WORD = re.compile(r"[A-Za-zÀ-ÿ'][A-Za-zÀ-ÿ'-]*")
 ALLOW = ['content security policy', 'trust services criteria', 'harvest now, decrypt later',
          'harvest now decrypt later', 'fast gradient sign method', 'request link status',
          'unable to get local issuer certificate', 'usable security', 'access review',
-         'unconfirmed user data', 'confirmed user data']
+         'unconfirmed user data', 'confirmed user data',
+         # STRIDE threat categories (kept in English with a gloss, as in EN/PT)
+         'spoofing identity', 'tampering with data', 'repudiation',
+         'information disclosure', 'denial of service', 'elevation of privilege']
 REFHEAD = re.compile(r'^#+ .*(Refer[eê]ncias|Bibliograf|References|Fontes|Fuentes|Leituras|Lecturas)', re.I)
 
 

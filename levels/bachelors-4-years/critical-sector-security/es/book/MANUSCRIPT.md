@@ -70,12 +70,12 @@ Las afirmaciones fácticas sobre leyes, normas, incidentes y estudios publicados
 32. [Infraestructura crítica y seguridad sectorial: interfaces interdisciplinarias](#ch-32)
 33. [Métodos de investigación II](#ch-33)
 34. [Proyecto comparativo](#ch-34)
-35. [Propuesta del proyecto final](../../en/book/MANUSCRIPT.md#ch-35)
-36. [Práctica de campo o comunitaria](../../en/book/MANUSCRIPT.md#ch-36)
-37. [Seminario de revisión de la evidencia](../../en/book/MANUSCRIPT.md#ch-37)
-38. [Implementación del proyecto final](../../en/book/MANUSCRIPT.md#ch-38)
-39. [Evaluación del proyecto final](../../en/book/MANUSCRIPT.md#ch-39)
-40. [Tesis y presentación](../../en/book/MANUSCRIPT.md#ch-40)
+35. [Propuesta del proyecto final](#ch-35)
+36. [Práctica de campo o comunitaria](#ch-36)
+37. [Seminario de revisión de la evidencia](#ch-37)
+38. [Implementación del proyecto final](#ch-38)
+39. [Evaluación del proyecto final](#ch-39)
+40. [Tesis y presentación](#ch-40)
 
 Los [resultados resueltos](#worked-results) contienen EX001–EX080. Un [glosario](#glossary) y las [referencias](#references) cierran el libro.
 
@@ -1919,7 +1919,7 @@ Después de este capítulo usted podrá (1) construir modelos de amenazas estruc
 
 ### 26.1 Modelado de amenazas con flujos de datos
 
-Un **diagrama de flujo de datos** muestra procesos, almacenes de datos, entidades externas, flujos y **límites de confianza** (donde los datos pasan de un nivel de confianza a otro). El modelado de amenazas recorre cada elemento y plantea una lista de preguntas. Una lista muy utilizada, STRIDE (acrónimo de las iniciales de los términos en inglés), pregunta por la suplantación de identidad (**S**), la manipulación de datos (**T**), el repudio (**R**, negar una acción), la divulgación de información (**I**), la denegación de servicio (**D**) y la elevación de privilegios (**E**). Cada flujo que cruza un límite de confianza merece la lista completa. El resultado es una lista de amenazas con el elemento, el tipo de amenaza y una mitigación propuesta.
+Un **diagrama de flujo de datos** muestra procesos, almacenes de datos, entidades externas, flujos y **límites de confianza** (donde los datos pasan de un nivel de confianza a otro). El modelado de amenazas recorre cada elemento y plantea una lista de preguntas. Una lista muy utilizada, STRIDE, pregunta por **S**poofing identity (suplantación de identidad), **T**ampering with data (manipulación de datos), **R**epudiation (repudio, negar una acción), **I**nformation disclosure (divulgación de información), **D**enial of service (denegación de servicio) y **E**levation of privilege (elevación de privilegios). Cada flujo que cruza un límite de confianza merece la lista completa. El resultado es una lista de amenazas con el elemento, el tipo de amenaza y una mitigación propuesta.
 
 ### 26.2 STPA: peligros a partir de la estructura de control
 
@@ -2536,9 +2536,404 @@ La comparación es la habilidad central del grado: criterios explícitos, puntua
 <!-- cyberabc:chapter-navigation:start ch-34 -->
 ### Siga estudiando — capítulo 34 de 40
 
-[← Capítulo 33](#ch-33) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 35 →](../../en/book/MANUSCRIPT.md#ch-35)
+[← Capítulo 33](#ch-33) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 35 →](#ch-35)
 
 Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-35"></a>
+
+## Capítulo 35 — Propuesta del proyecto final
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) elegir un tema de proyecto final que sea comparativo, viable, ético y útil; (2) redactar una propuesta con pregunta, contexto, método, plan de evidencias, ética, riesgos y cronograma; (3) definir de antemano los criterios de éxito y los entregables; y (4) obtener las autorizaciones que su proyecto necesita. Se apoya en los capítulos 18, 25, 30, 33 y 34 e inicia la secuencia del proyecto final (capítulos 35–40).
+
+### 35.1 Qué es un proyecto final de grado
+
+El proyecto final demuestra el resultado del curso: comparar teorías y métodos, evaluar evidencias y diseñar una solución defendible para un problema de un sector crítico. No es la construcción de ingeniería de un sistema completo (eso corresponde al curso de ingeniería) ni una contribución original al conocimiento (eso corresponde al doctorado). Un buen proyecto final de grado toma un **problema de decisión real** —a menudo de una organización de acogida (capítulo 36) o de un tema público bien documentado—, compara **al menos tres opciones o métodos** con criterios y evidencias explícitos, y termina con una **recomendación y sus límites**. Escala típica: unas 400 horas de trabajo a lo largo de dos semestres, una memoria de 10.000–12.000 palabras y una presentación.
+
+### 35.2 Elegir un tema
+
+Ponga a prueba cada candidato con cinco preguntas. **¿Comparativo?** ¿Hay alternativas reales que comparar? **¿Viable?** ¿Puede obtener la evidencia a tiempo: documentos, laboratorios, pruebas autorizadas, entrevistas? **¿Ético y autorizado?** ¿Necesita aprobación ética, permiso de la organización de acogida o medidas de protección de datos (capítulos 10, 14 y 33)? **¿Útil?** ¿Alguien actuaría a partir de la respuesta? **¿Acotado?** ¿Puede decir qué queda fuera del alcance? Los temas fallan con más frecuencia por la viabilidad: «evaluar la seguridad de la red eléctrica nacional» no es un proyecto final; «comparar tres enfoques del acceso remoto de proveedores para un pequeño operador de distribución, usando guías públicas, un laboratorio sintético y dos entrevistas con profesionales» sí lo es.
+
+### 35.3 La propuesta
+
+1. **Título y pregunta** (capítulo 18): población, variables, marco temporal, tipo de respuesta.
+2. **Contexto y motivación**: el servicio, la decisión, quién la necesita.
+3. **Literatura y fuentes**: qué se sabe, con una estrategia de búsqueda registrada.
+4. **Opciones y criterios** (capítulo 34): opciones candidatas, restricciones, criterios con escalas ancladas, cómo se fijarán los pesos.
+5. **Método y plan de evidencias**: para cada criterio, qué evidencia y cómo se obtiene (documentos, mediciones de laboratorio, pruebas autorizadas, entrevistas).
+6. **Ética y autorización**: aprobaciones necesarias, reglas de enfrentamiento, tratamiento de los datos.
+7. **Riesgos para el proyecto**: acceso denegado, datos no disponibles, ampliación descontrolada del alcance, y alternativas de respaldo (p. ej., datos sintéticos si la organización de acogida retira los suyos).
+8. **Criterios de éxito y entregables**: qué existirá al final y cómo se juzgará.
+9. **Cronograma**: hitos alineados con los capítulos 36–40.
+
+### 35.4 Ejemplo resuelto: esquema de una propuesta (sintético)
+
+**Esta propuesta es sintética.** *Pregunta:* «Para un hospital de tamaño medio, ¿cuál de tres enfoques para gestionar dispositivos clínicos sin soporte —sustitución acelerada, aislamiento de red con monitorización o pasarelas seguras gestionadas por el proveedor— reduce mejor la exposición dentro de un presupuesto anual fijo, juzgado por la reducción de consecuencias, la perturbación clínica, el coste y la solidez de la evidencia?». *Contexto:* el CVH (organización de acogida sintética) tiene equipos de imagen y de laboratorio sin soporte (Lab 2). *Fuentes:* guías públicas sobre seguridad de dispositivos médicos y de TO, el informe de la NAO sobre WannaCry, objetivos de desempeño sectoriales. *Método:* un inventario sintético de 120 dispositivos construido a partir de categorías publicadas; un modelo de laboratorio de la exposición con cada opción; dos entrevistas con ingenieros clínicos (aprobación ética solicitada). *Ética:* ningún dato de dispositivos reales; entrevistas anonimizadas; revisión de los resultados por la organización de acogida. *Riesgos:* entrevistas rechazadas → apoyarse en documentos y declarar la laguna. *Criterios de éxito:* comparación con análisis de sensibilidad y condiciones de inversión; recomendación defendida en la presentación. *Cronograma:* propuesta aprobada en la semana 4; recogida de evidencias en las semanas 5–14; análisis en las semanas 15–20; borrador de la memoria en la semana 24; presentación en la semana 28.
+
+### 35.5 Errores comunes y límites
+
+- Temas solo descriptivos, sin comparación.
+- Planes de evidencias que dan por hecho un acceso que todavía no se tiene.
+- Ninguna alternativa de respaldo cuando una organización de acogida se retira.
+- Criterios de éxito redactados después de los resultados.
+
+La propuesta resuelta evita estos errores: compara tres opciones, solicita entrevistas pero cuenta con un respaldo documental y fija los criterios de éxito antes de la recogida de evidencias.
+
+Cada error tiene un síntoma típico. Un tema como «el estado de la seguridad de los dispositivos hospitalarios» produce una descripción sin nada que recomendar. Un plan de evidencias que da por hechos los datos de la organización de acogida antes de que esta haya aceptado se derrumba en la sexta semana. Un proyecto sin alternativa de respaldo se estanca cuando un entrevistado se retira. Los criterios de éxito redactados después de los resultados siempre parecen cumplidos, y por eso la propuesta resuelta los fija en la cuarta semana.
+
+### Ejercicios — capítulo 35
+
+**EX069 — Triaje de temas.** *Objetivo:* aplicar las cinco pruebas. *Entradas:* tres temas candidatos: (a) «¿Es buena la IA para la seguridad?»; (b) «Comparar tres métodos para detectar datos falsos de sensores en un modelo de depósito de agua, usando un conjunto de datos sintético»; (c) «Probar el cortafuegos de mi empresa de agua local». *Pasos:* aplique las cinco preguntas a cada uno y elija. *Evidencia esperada:* tabla y elección. *Rúbrica:* 3 = (a) no está acotado ni es comparativo tal como se formula; (b) viable, comparativo, ético; (c) no autorizado y no ético: se rechaza; se elige (b); 2 = elección correcta, razonamiento débil; 1 = elección equivocada; 0 = nada.
+
+**EX070 — Plan de evidencias.** *Objetivo:* vincular los criterios con la evidencia. *Entradas:* el esquema de propuesta resuelto en este capítulo. *Pasos:* para cada uno de los cuatro criterios, indique la evidencia, su fuente y una amenaza a su validez. *Evidencia esperada:* cuatro filas. *Rúbrica:* 3 = evidencia específica (resultados del modelo de exposición del laboratorio, datos de entrevistas sobre la perturbación, costes publicados, calificación de la calidad de las fuentes) con las amenazas a la validez correspondientes; 2 = tres; 1 = vaga; 0 = nada.
+
+### Síntesis del capítulo
+
+Un proyecto final de grado responde a un problema de decisión real comparando opciones con evidencias y terminando en una recomendación acotada. Una buena propuesta fija la pregunta, los criterios, el plan de evidencias, la ética, los riesgos, los criterios de éxito y el cronograma antes de que empiece el trabajo.
+
+<!-- cyberabc:chapter-navigation:start ch-35 -->
+### Siga estudiando — capítulo 35 de 40
+
+[← Capítulo 34](#ch-34) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 36 →](#ch-36)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-36"></a>
+
+## Capítulo 36 — Práctica de campo o comunitaria
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) prepararse para unas prácticas con un operador de servicios críticos o con una organización comunitaria, incluidos los acuerdos sobre alcance, confidencialidad y supervisión; (2) trabajar de forma segura y útil en un entorno operativo como aprendiz; (3) llevar un diario de práctica reflexiva; y (4) producir resultados que sirvan a la organización de acogida sin exponerla. Se apoya en los capítulos 10, 14, 29, 32 y 35 y aporta evidencias al proyecto final.
+
+### 36.1 Por qué importa la práctica
+
+Los servicios críticos se aprenden sobre el terreno: el olor de una estación de bombeo, el ritmo de un cambio de turno en una sala de control, la forma en que los clínicos usan realmente los dispositivos. La práctica de campo —unas prácticas con un operador, un regulador o un equipo de seguridad, o una práctica comunitaria como ayudar a una pequeña entidad benéfica, una escuela o una clínica a mejorar su seguridad básica— contrasta sus conocimientos con la realidad y da a su proyecto final evidencias con base real. También enseña los comportamientos profesionales que ningún laboratorio puede enseñar: escuchar primero, preguntar antes de tocar y guardar las confidencias.
+
+### 36.2 El acuerdo de prácticas
+
+Antes de empezar, acuerde por escrito con la organización de acogida y con su universidad: el **supervisor** en el centro y el tutor académico; las **actividades** permitidas (observación, revisión de documentos, tareas autorizadas) y prohibidas (cualquier cambio en sistemas en producción sin supervisión; cualquier prueba sin unas RoE escritas); la **confidencialidad**: qué puede registrar, qué puede llevarse y que todo trabajo del curso lo revisa la organización de acogida antes de entregarlo; la **protección de datos**; la formación de acogida en **seguridad y salud** (las instalaciones de TO tienen peligros físicos); y qué ocurre si descubre algo grave (escalarlo de inmediato a su supervisor en el centro, no a sus compañeros de clase).
+
+### 36.3 Trabajar como aprendiz sobre el terreno
+
+La mayor parte de su valor como estudiante procede de **una mirada nueva y tiempo**: documentar lo que el personal experimentado ya no percibe, ordenar un inventario, redactar un procedimiento, comparar la práctica actual con las guías públicas. No juzgue antes de entender: una «mala práctica» puede ser una solución provisional ante una restricción real (el inicio de sesión compartido de la sala de control del capítulo 13). Pregunte por qué. Registre sus observaciones de forma factual, sepárelas de la interpretación y contrástelas con la persona afectada. En la entrada del diario de CW, las llamadas telefónicas de los operadores sobre lecturas extrañas parecían una mala práctica hasta que el supervisor explicó que la herramienta de tiques es lenta por la noche; la hoja en papel de «consulta de sensor» del estudiante funciona con esa restricción.
+
+### 36.4 Práctica comunitaria
+
+Las pequeñas organizaciones que apoyan a comunidades —un banco de alimentos, una clínica rural, un servicio voluntario de ambulancias— a menudo dependen de servicios críticos y tienen poca capacidad de seguridad. Una contribución estructurada y de bajo riesgo: una lista de activos, una revisión de cuentas y copias de seguridad frente a una línea base publicada sencilla, una hoja de contactos de incidentes de una página y una breve sesión con el personal. Se aplican las mismas reglas de autorización y confidencialidad; su deber de diligencia es mayor, no menor, cuando la organización no puede juzgar sus consejos. Para un servicio voluntario de ambulancias, el acuerdo escrito podría enumerar los cuatro entregables, declarar que el estudiante no modificará ningún sistema y nombrar quién conserva después la hoja de contactos.
+
+### 36.5 Diario reflexivo
+
+Lleve un diario semanal con cuatro encabezados: **qué hice**, **qué observé**, **qué me sorprendió y por qué**, **qué haría de otra manera**. La reflexión convierte la experiencia en aprendizaje y aporta evidencias para la evaluación. Mantenga el diario depurado desde el principio: sin nombres de sistemas, direcciones, credenciales ni datos personales; escriba «la pasarela de acceso remoto», no su nombre de host. La entrada de CW escribe «7 de 42 estaciones remotas» en lugar de los nombres de las estaciones, de modo que puede mostrarse a un evaluador sin editarla. La entrada de CW se escribió después del segundo turno de noche, cuando la explicación sobre la lentitud de los tiques estaba fresca, y quedó en el diario propio del estudiante y no en la carpeta compartida de la organización de acogida.
+
+### 36.6 Ejemplo resuelto: la entrada de diario de una semana (sintético)
+
+**Esta entrada es sintética.** *Hice:* acompañé a la sala de control de CW durante dos turnos de noche; ayudé a conciliar el inventario de telemetría con la lista de emplazamientos. *Observé:* 7 de las 42 estaciones remotas del inventario no tenían registrada la versión de firmware; los operadores llaman por teléfono al técnico de la estación cuando una lectura parece errónea en lugar de abrir un tique. *Me sorprendió:* las comprobaciones informales de los operadores detectan los fallos de sensores más rápido que el sistema de alarmas, pero no dejan registro. *De otra manera:* supuse que la falta de tiques era descuido; el supervisor explicó que la herramienta de tiques es lenta por la noche. Propuesta para la organización de acogida: una hoja en papel de «consulta de sensor» con dos campos, transcrita cada mañana, para que el conocimiento se convierta en evidencia. Aprobada por el supervisor del centro para incluirla en el trabajo del curso en forma depurada.
+
+### 36.7 Errores comunes y límites
+
+- Empezar sin un acuerdo escrito.
+- Tomar fotografías, archivos o notas que la organización de acogida no ha aprobado.
+- Juzgar la práctica antes de entender las restricciones.
+- Diarios reflexivos que describen la actividad pero no el aprendizaje.
+
+La entrada del diario de CW evita los cuatro: las prácticas tenían un acuerdo, la propuesta de la hoja en papel se aprobó antes de incluirla, el estudiante preguntó por qué faltaban los tiques antes de juzgar y la entrada registra un supuesto que cambió. El EX072 muestra el segundo error en su forma más peligrosa: una credencial registrada. En CW, el supervisor aprobó la propuesta de la hoja en papel en forma depurada; las lagunas de firmware de las estaciones remotas identificadas por su nombre se quedaron en el centro.
+
+### Ejercicios — capítulo 36
+
+**EX071 — Redacte el acuerdo.** *Objetivo:* organizar unas prácticas seguras. *Entradas:* unas prácticas de cuatro semanas con el equipo de TI del CEDC. *Pasos:* escriba los encabezados del acuerdo con una cláusula específica en cada uno. *Evidencia esperada:* el borrador. *Rúbrica:* 3 = supervisores, actividades permitidas/prohibidas (ningún acceso a cambios en el CAD en producción), confidencialidad y revisión por la organización de acogida, protección de datos (grabaciones de llamadas excluidas), seguridad, vía de escalado; 2 = cláusulas genéricas; 1 = faltan elementos clave; 0 = nada.
+
+**EX072 — Depure un diario.** *Objetivo:* proteger a la organización de acogida. *Entradas:* «Martes: entré en vpn.caldermutual.example como jsmith/Summer2026 para ver la pasarela SWIFT 10.4.2.8; noté que todavía ejecuta la versión 7». *Pasos:* reescríbala para que sea seguro entregarla y siga siendo útil. *Evidencia esperada:* la entrada reescrita y tres elementos eliminados. *Rúbrica:* 3 = elimina el nombre de host, las credenciales, la dirección, la persona y la versión exacta, y conserva el aprendizaje («observé un componente desactualizado de la pasarela de pagos; lo comuniqué al supervisor»); además señala que la credencial nunca debió registrarse y que debe notificarse para cambiarla; 2 = elimina la mayoría; 1 = parcial; 0 = nada.
+
+### Síntesis del capítulo
+
+La práctica de campo y comunitaria ancla el curso en la realidad. Acuerde por escrito el alcance, la confidencialidad, la supervisión y el escalado; aporte una mirada nueva y tiempo; entienda las restricciones antes de juzgar; lleve un diario reflexivo depurado; y deje que la organización de acogida revise todo lo que salga del centro.
+
+<!-- cyberabc:chapter-navigation:start ch-36 -->
+### Siga estudiando — capítulo 36 de 40
+
+[← Capítulo 35](#ch-35) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 37 →](#ch-37)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-37"></a>
+
+## Capítulo 37 — Seminario de revisión de evidencias
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este seminario, usted podrá (1) revisar críticamente un estudio, un informe o una afirmación de un proveedor sobre seguridad con una lista de comprobación estructurada; (2) cuantificar la incertidumbre de resultados con muestras pequeñas mediante intervalos de confianza; (3) dar y recibir una revisión por pares que mejore el trabajo; y (4) decidir cuánto peso merece una evidencia en su proyecto final. Se apoya en los capítulos 15, 18, 27 y 33 y prepara la implementación y la evaluación del proyecto final (capítulos 38–39).
+
+### 37.1 Una lista de comprobación para la revisión
+
+Para cualquier estudio, informe o afirmación: **Pregunta**: ¿qué se afirma exactamente? **Datos**: ¿de dónde proceden, cuántos son, qué tan representativos? **Método**: ¿podría repetirse? ¿hubo una comparación o un control? **Resultados**: ¿se informan las incertidumbres? ¿cuadran los números? **Validez**: ¿de constructo, interna, externa, fiabilidad (capítulo 18)? **Intereses**: ¿quién lo financió o lo elaboró, y qué preferiría encontrar? **Límites**: ¿el trabajo los declara y sus conclusiones se mantienen dentro de ellos? En seguridad, entre las debilidades comunes figuran la evaluación con datos poco realistas, el olvido de la tasa base y resultados que no se trasladan a entornos reales ([Arp et al., 2022](https://www.usenix.org/conference/usenixsecurity22/presentation/arp); [Sommer and Paxson, 2010](https://doi.org/10.1109/SP.2010.25)). En la detección de anomalías en series temporales, Kim y sus colegas mostraron que un protocolo de evaluación muy extendido puede hacer que incluso puntuaciones aleatorias parezcan buenas ([Kim et al., 2022](https://ojs.aaai.org/index.php/AAAI/article/view/20680)).
+
+### 37.2 Muestras pequeñas e intervalos
+
+La evidencia de los servicios críticos procede a menudo de pocas observaciones: cinco simulacros de restauración, veinte ejercicios, una docena de incidentes. Una estimación puntual («el 85 % de los simulacros cumplió el objetivo») oculta su grado de incertidumbre. Un **intervalo de confianza** da un rango de valores plausibles. Dos enfoques habituales para una proporción: el ***bootstrap***, que remuestrea muchas veces los datos observados ([Efron, 1979](https://doi.org/10.1214/aos/1176344552)), y el **intervalo de puntuación de Wilson**, una fórmula que se comporta bien con muestras pequeñas y con proporciones cercanas a 0 o a 1 ([Wilson, 1927](https://doi.org/10.1080/01621459.1927.10502953)). El *bootstrap* es general, pero se comporta mal con tamaños pequeños y cerca de los límites: nunca puede producir un valor por encima del máximo observado, de modo que con 4 éxitos de 5 puede sugerir un límite superior del 100 %.
+
+### 37.3 Ejemplo resuelto y Lab 14 (sintético)
+
+**Este caso es sintético.** El CEDC realizó 20 simulacros de restauración; 17 cumplieron el objetivo de 4 horas. Un operador más pequeño realizó 5; 4 lo cumplieron.
+
+```python
+# Lab 14 - bootstrap confidence interval for a restore-drill success rate (synthetic, seed 14, offline)
+import random
+random.seed(14)
+drills = [1] * 17 + [0] * 3          # 20 restore drills, 17 met the 4-hour objective
+obs = sum(drills) / len(drills)
+boots = sorted(sum(random.choice(drills) for _ in drills) / len(drills) for _ in range(10_000))
+lo, hi = boots[249], boots[9749]
+print(f"observed success = {obs:.2f}; 95% bootstrap interval = [{lo:.2f}, {hi:.2f}]")
+small = [1, 1, 1, 0, 1]
+boots = sorted(sum(random.choice(small) for _ in small) / len(small) for _ in range(10_000))
+print(f"with only 5 drills (4 met): [{boots[249]:.2f}, {boots[9749]:.2f}]")
+from math import sqrt
+def wilson(k, n, z=1.96):
+    p = k / n; d = 1 + z*z/n
+    c = (p + z*z/(2*n)) / d; h = z * sqrt(p*(1-p)/n + z*z/(4*n*n)) / d
+    return c - h, c + h
+print("Wilson 95%% for 17/20: [%.2f, %.2f]; for 4/5: [%.2f, %.2f]" % (*wilson(17, 20), *wilson(4, 5)))
+```
+
+Salida esperada:
+
+```text
+observed success = 0.85; 95% bootstrap interval = [0.70, 1.00]
+with only 5 drills (4 met): [0.40, 1.00]
+Wilson 95% for 17/20: [0.64, 0.95]; for 4/5: [0.38, 0.96]
+```
+
+Ambos métodos dicen en esencia lo mismo: 17 de 20 es compatible con una tasa de éxito real situada entre unos dos tercios y un 95 % aproximadamente; 4 de 5 es compatible con cualquier valor desde menos del 40 % hasta casi siempre. El límite superior de 1,00 del *bootstrap* es un artefacto de remuestrear datos que no contienen ningún valor superior a 1; aquí el intervalo de Wilson es la mejor opción. Para el consejo de administración, el mensaje es: «tenemos evidencia buena, pero no concluyente, de que las restauraciones suelen cumplir las cuatro horas; que fallara una de cada cuatro no nos sorprendería». Cinco simulacros no pueden respaldar una afirmación de fiabilidad.
+
+### 37.4 Revisión por pares
+
+Los grupos del seminario intercambian los capítulos de evidencias de sus proyectos finales. Una revisión útil indica qué afirma el trabajo, qué resulta convincente, los dos o tres problemas más importantes (cada uno con una corrección sugerida) y las cuestiones menores. Revise el trabajo, no a la persona; sea específico («la afirmación sobre el tiempo de restauración se basa en un solo simulacro en un entorno de pruebas; ¿puede añadir las condiciones del simulacro y un intervalo?»). Los autores responden punto por punto: aceptado y cambiado, o rechazado con razones. Al comentario sobre el tiempo de restauración, por ejemplo: «Añadidas las condiciones del simulacro; con un solo simulacro no es posible calcular un intervalo, así que la afirmación se presenta ahora como una única observación».
+
+### 37.5 Errores comunes y límites
+
+- Informar de una proporción sin su tamaño de muestra ni su intervalo.
+- Tratar los bancos de pruebas de los proveedores como evidencia independiente.
+- Revisiones que solo elogian o solo atacan.
+- Ignorar cómo los protocolos de evaluación pueden inflar los resultados.
+
+El Lab 14 muestra el primero: «85 %» sin «de 20» y sin un intervalo oculta que la tasa real puede ser del 64 %. El banco de pruebas propio de un proveedor de detectores (EX074) es el segundo. Una revisión que solo dice «gran trabajo» no ayuda a nadie. El cuarto es lo que señalan Kim y sus colegas sobre los protocolos de evaluación. «La tasa de éxito de la restauración se basa en los 17 de 20 del Lab 14» nombra la evidencia; «los resultados parecen optimistas», no.
+
+### Ejercicios — capítulo 37
+
+**EX073 — ¿Cuántos simulacros?** *Objetivo:* relacionar el tamaño de la muestra con la precisión. *Entradas:* la función de Wilson del Lab 14. *Pasos:* calcule el intervalo de Wilson al 95 % para 34/40 y 85/100 y comente cómo se acumula la evidencia. *Evidencia esperada:* dos intervalos y un comentario. *Rúbrica:* 3 = aproximadamente [0.71, 0.93] y [0.77, 0.91], con una anchura que disminuye más o menos con la raíz cuadrada de n; recomienda un programa de simulacros; 2 = solo los intervalos; 1 = uno; 0 = nada.
+
+**EX074 — Revise una afirmación.** *Objetivo:* aplicar la lista de comprobación. *Entradas:* un folleto de un proveedor (sintético): «Nuestro detector de anomalías de TO alcanzó una exactitud del 99,7 % en un conjunto de datos público de un banco de pruebas de agua». *Pasos:* aplique la lista de comprobación y enumere cuatro preguntas para el proveedor. *Evidencia esperada:* revisión y preguntas. *Rúbrica:* 3 = la exactitud engaña con datos desequilibrados (capítulo 27), realismo y transferibilidad del banco de pruebas, protocolo de evaluación, intereses; preguntas sobre precisión/exhaustividad en el umbral de operación, resultados en despliegues reales, falsas alarmas por día, evaluación independiente; 2 = parcial; 1 = genérica; 0 = nada.
+
+### Síntesis del capítulo
+
+La revisión de evidencias es escepticismo estructurado: pregunta, datos, método, resultados, validez, intereses y límites. Informe de los resultados de muestras pequeñas con intervalos (Wilson para proporciones) y deje que la revisión por pares mejore el trabajo siendo específica, priorizada y respetuosa.
+
+<!-- cyberabc:chapter-navigation:start ch-37 -->
+### Siga estudiando — capítulo 37 de 40
+
+[← Capítulo 36](#ch-36) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 38 →](#ch-38)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-38"></a>
+
+## Capítulo 38 — Implementación del proyecto final
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) ejecutar el plan de un proyecto final controlando el alcance y registrando las decisiones; (2) recoger y gestionar las evidencias de modo que cada resultado remita a su fuente; (3) construir un modelo o laboratorio pequeño y reproducible que respalde su comparación; y (4) afrontar con honestidad los contratiempos: accesos perdidos, resultados sorprendentes. Se apoya en los capítulos 25, 30, 34, 35 y 37 y prepara la evaluación (capítulo 39).
+
+### 38.1 Trabajar con un plan
+
+La implementación convierte la propuesta (capítulo 35) en evidencias. Mantenga tres documentos vivos. Un **diario del proyecto** (fecha, qué hizo, qué decidió y por qué). Un **registro de evidencias** (elemento, fuente, fecha, tipo, cómo se obtuvo, dónde se guarda, qué criterio respalda; capítulo 15). Un **registro de cambios** para cualquier desviación respecto de la propuesta, con el acuerdo de su tutor. La ampliación descontrolada del alcance es el fallo más común de los proyectos finales: las preguntas nuevas son interesantes, pero cada una debe sustituir a algo o esperar a «trabajo futuro». En el punto de control de la semana 14 que se presenta más abajo, el registro de cambios indica qué sustituyó a la segunda entrevista rechazada (una revisión documental de dos guías públicas) y el coste para la validez: la aportación de los profesionales se basa ahora en una sola entrevista.
+
+### 38.2 Construir el modelo de apoyo
+
+La mayoría de los proyectos finales de grado necesitan un pequeño artefacto: un modelo de exposición, una simulación de dependencias, una comparación de detectores, un conjunto de datos codificado. Constrúyalo con los hábitos de los laboratorios: herramientas estándar, semillas fijas, scripts en lugar de pasos manuales, resultados guardados con el hash del script y **pruebas** que comprueben el modelo en casos con respuestas conocidas antes de confiar en él con casos nuevos (capítulo 8). Documente lo que el modelo deja fuera. Un modelo que reproduce un caso sencillo calculado a mano y declara sus supuestos vale más que uno elaborado que nadie puede comprobar.
+
+### 38.3 Recoger evidencias de personas y organizaciones de acogida
+
+Las entrevistas siguen el protocolo y el consentimiento aprobados (capítulo 33). Los documentos de la organización de acogida se tratan según el acuerdo de prácticas (capítulo 36). Todo lo relativo a las vulnerabilidades de un operador real se guarda de forma segura y aparece en la memoria solo en forma depurada y aprobada por la organización de acogida. Si se retira el acceso, use la alternativa de respaldo de su propuesta y registre el cambio; no sustituya en silencio los datos por conjeturas. En el proyecto final sobre dispositivos sin soporte, las notas de las entrevistas se seudonimizan el mismo día, se guardan cifradas y se eliminan según el calendario del formulario de consentimiento. Si la organización de acogida retira su lista de dispositivos, el inventario sintético de la propuesta la sustituye, y el registro de cambios lo indica.
+
+### 38.4 Resultados sorprendentes y negativos
+
+Los resultados que contradicen sus expectativas también son evidencia. Si los simulacros de restauración de su modelo de laboratorio muestran que la opción que usted esperaba que ganara no puede cumplir el objetivo, infórmelo e investigue por qué; quizá haya una dependencia que no había modelado. No ajuste los parámetros hasta que el resultado «parezca correcto»; si cambia un parámetro, registre por qué y muestre ambos resultados. Los hallazgos negativos honestos están entre los resultados más útiles que un proyecto final puede ofrecer a una organización de acogida.
+
+### 38.5 Ejemplo resuelto: un punto de control de la implementación (sintético)
+
+**Este punto de control es sintético.** Semana 14 del proyecto final sobre dispositivos sin soporte (capítulo 35). *Hecho:* inventario sintético de 120 dispositivos construido a partir de categorías publicadas (script `make_inventory.py`, semilla 38, hash registrado); modelo de exposición para tres opciones con pruebas que reproducen un caso de 5 dispositivos resuelto a mano; una entrevista realizada, otra rechazada. *Cambiado:* la segunda entrevista se sustituye por una revisión documental de dos guías públicas (registro de cambios aprobado por el tutor; nota de validez: la perspectiva de los profesionales se basa ahora en una sola entrevista). *Sorpresa:* la opción de la pasarela del proveedor fue la que menos redujo la exposición de los equipos de imagen, porque esos dispositivos también aceptan conexiones del archivo de imágenes, que la pasarela no intermedia. En lugar de tratarlo como un error, el estudiante modela como variante unos controles en el lado del archivo y registra el hallazgo. *Siguiente:* análisis de sensibilidad de los pesos; calificación de las evidencias; borrador del capítulo de resultados.
+
+### 38.6 Errores comunes y límites
+
+- Perder el vínculo entre los resultados y las evidencias que los respaldan.
+- Pasos de análisis manuales que no pueden repetirse.
+- Ajustar un modelo hasta que coincida con las expectativas.
+- Cambios silenciosos de alcance o de método.
+
+El punto de control de la semana 14 evita cada uno: el script del inventario tiene semilla y hash, el modelo se prueba con un caso resuelto a mano, la sorpresa de la pasarela se conserva y la sustitución de la entrevista queda registrada. Cambiar los parámetros de la pasarela del proveedor hasta que la exposición de los equipos de imagen pareciera menor habría sido el tercer error. En el punto de control, el hash de make_inventory.py y el registro de cambios aprobado por el tutor se escribieron el mismo día, no se reconstruyeron al redactar la memoria.
+
+### Ejercicios — capítulo 38
+
+**EX075 — Registro de evidencias.** *Objetivo:* concretar la trazabilidad. *Entradas:* el punto de control de la semana 14 de este capítulo. *Pasos:* escriba cinco filas del registro de evidencias con todos los campos. *Evidencia esperada:* tabla. *Rúbrica:* 3 = cinco filas completas (salida del script del inventario con hash, resultados de las pruebas del modelo, referencia a las notas de la entrevista, dos documentos de guía), cada una vinculada a un criterio; 2 = faltan campos; 1 = una lista; 0 = nada.
+
+**EX076 — Informe de una sorpresa.** *Objetivo:* tratar con honestidad los resultados inesperados. *Entradas:* el hallazgo de la pasarela del punto de control de la semana 14. *Pasos:* escriba un párrafo de resultados de 150 palabras que informe del hallazgo, su causa, la variante probada y sus límites. *Evidencia esperada:* el párrafo. *Rúbrica:* 3 = hallazgo claro, mecanismo, resultado de la variante presentado por separado, límites (inventario sintético, un solo modelo), sin exagerar; 2 = parcial; 1 = oculta o minimiza la sorpresa; 0 = nada.
+
+### Síntesis del capítulo
+
+La implementación es una recogida disciplinada de evidencias: registre las decisiones, inscriba las evidencias, anote los cambios, construya modelos pequeños, probados y reproducibles, proteja los datos de la organización de acogida y de los participantes, e informe de las sorpresas como hallazgos. La credibilidad del proyecto final descansa en la traza que lleva de cada afirmación a su evidencia.
+
+<!-- cyberabc:chapter-navigation:start ch-38 -->
+### Siga estudiando — capítulo 38 de 40
+
+[← Capítulo 37](#ch-37) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 39 →](#ch-39)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-39"></a>
+
+## Capítulo 39 — Evaluación del proyecto final
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) evaluar los resultados de su proyecto final frente a los criterios de éxito fijados en la propuesta; (2) realizar comprobaciones de sensibilidad y de robustez de su comparación; (3) enunciar las limitaciones de forma específica, con la dirección probable de su efecto; y (4) buscar una revisión independiente y responder a ella antes de la memoria final. Se apoya en los capítulos 34, 37 y 38 y prepara la memoria y la presentación (capítulo 40).
+
+### 39.1 Frente a los criterios que usted fijó
+
+La evaluación empieza por los criterios de éxito de la propuesta (capítulo 35). ¿Se cumplieron, se cumplieron en parte o no se cumplieron? Informe de cada uno con honestidad y con evidencias. Después evalúe la propia **comparación**: ¿el registro de evidencias respalda las puntuaciones? ¿Otra persona, usando sus escalas ancladas, daría puntuaciones similares (pregunte a alguien)? ¿Alguna restricción excluyó una opción? En la evaluación resuelta (§39.5) se realizó una entrevista y la segunda se sustituyó por documentos, de modo que el criterio de aportación de los profesionales se presenta como cumplido en parte, en lugar de abandonarlo en silencio. Pedir a una segunda persona que puntúe dos opciones con sus escalas ancladas es una comprobación rápida de la fiabilidad; si sus puntuaciones difieren en más de un punto en algún criterio, sus anclas necesitan una redacción más clara antes de la memoria.
+
+### 39.2 Sensibilidad y robustez
+
+Vuelva a ejecutar su comparación con variaciones plausibles: pesos distintos (Lab 13), evidencias pesimistas y optimistas (la autonomía reducida a la mitad del capítulo 22), supuestos alternativos del modelo (la variante del archivo del capítulo 38). Una recomendación **robusta** se mantiene en la mayoría de las variaciones; una **frágil** depende de un supuesto concreto, que usted debe nombrar. Presente el resultado en una tabla breve: variación, ganadora, comentario. La evaluación resuelta muestra un resultado frágil: la pasarela gana en cuanto el peso del coste supera 0,45, y la sustitución acelerada gana cuando se supone que la monitorización del aislamiento no funciona. Ambas se nombran en la conclusión como condiciones de inversión, de modo que el lector puede ver en qué juicio de valor y en qué supuesto descansa la recomendación.
+
+### 39.3 Limitaciones con dirección
+
+«La muestra era pequeña» es una limitación débil. Una limitación útil dice **qué**, **por qué importa** y **en qué dirección** sesga probablemente el resultado. Por ejemplo: «El modelo de exposición supone que todos los dispositivos sin soporte son igual de explotables; en la práctica, los dispositivos próximos a internet están más expuestos, por lo que el modelo probablemente *subestima* el beneficio del aislamiento para los equipos de imagen». Las limitaciones con dirección permiten a los lectores ajustar sus conclusiones en lugar de descartarlas. Cuando la dirección sea realmente desconocida, como ocurre con el inventario sintético, dígalo de forma explícita en lugar de dejar la limitación sin dirección por omisión.
+
+### 39.4 Revisión independiente
+
+Antes de que la memoria sea definitiva, pida a alguien ajeno a su proyecto (un compañero del seminario, capítulo 37; su supervisor en la organización de acogida; un académico no implicado) que revise el capítulo de evaluación. Registre sus observaciones y sus respuestas. La independencia es el eslabón más débil de la mayoría de las evidencias (capítulo 15); el proyecto final es donde usted practica cómo reforzarla. En la evaluación resuelta, la observación del revisor sobre la monitorización sin personal cambió la tabla principal: la variación pesimista pasó a ser un resultado principal y la recomendación pasó a ser condicional. Anote el papel y la independencia del revisor junto a cada observación, para que un evaluador pueda juzgar cuánto peso tiene la revisión.
+
+### 39.5 Ejemplo resuelto: tabla de evaluación (sintético)
+
+**Esta evaluación es sintética.** Proyecto final sobre dispositivos sin soporte:
+
+| Criterio de éxito (de la propuesta) | Resultado | Evidencia |
+|---|---|---|
+| Comparación de tres opciones con escalas ancladas | Cumplido | Filas 1–14 del registro de evidencias |
+| Análisis de sensibilidad con condiciones de inversión | Cumplido | El aislamiento gana salvo que el peso del coste sea > 0,45 |
+| Aportación de los profesionales sobre la perturbación clínica | Cumplido en parte | Una entrevista; la segunda, sustituida por documentos |
+| Recomendación defendida con sus límites | Cumplido (pendiente de la presentación) | Borrador del capítulo 6 |
+
+| Variación | Ganadora | Comentario |
+|---|---|---|
+| Pesos acordados | Aislamiento con monitorización | Línea base |
+| Peso del coste 0,4 | Aislamiento con monitorización | Robusta |
+| Peso del coste 0,6 | Pasarela del proveedor | Frágil por encima de 0,45 |
+| Controles en el lado del archivo añadidos a la pasarela | Aislamiento (por poco) | Diferencia de la pasarela cerrada en parte |
+| Evidencias pesimistas para el aislamiento | Sustitución acelerada | Depende de que la monitorización funcione de verdad |
+
+Limitaciones (con dirección): inventario sintético (dirección desconocida, y así se declara); una sola entrevista con profesionales (probablemente *subestima* la perturbación clínica del aislamiento, por lo que la puntuación del aislamiento puede ser optimista); el modelo de exposición ignora la selección de objetivos por parte del atacante (probablemente *subestima* el valor de retirar primero los dispositivos más expuestos). Observación principal del revisor: «la ventaja del aislamiento depende de que la monitorización tenga personal; muestre qué ocurre si las alertas no se revisan». Respuesta: la variación pesimista responde a esto y ahora figura en la tabla principal.
+
+### 39.6 Errores comunes y límites
+
+- Mover la portería: evaluar frente a criterios inventados después de los resultados.
+- Análisis de sensibilidad solo sobre parámetros irrelevantes.
+- Limitaciones sin dirección.
+- Revisiones de personas que ayudaron a producir el trabajo.
+
+La evaluación resuelta evita el primero al usar los criterios de la propuesta, varía los pesos que importan, da una dirección a cada limitación y recurre a un revisor que no ayudó a producir el trabajo. El segundo error es común: variar el peso de la solidez de la evidencia, que apenas cambia la clasificación, sin tocar el coste, que la invierte. Una limitación como «una entrevista» sin dirección deja al lector sin forma de ajustar el resultado. Un revisor que ayudó a construir el modelo de exposición no puede aportar una revisión independiente de él.
+
+### Ejercicios — capítulo 39
+
+**EX077 — Limitaciones con dirección.** *Objetivo:* redactar limitaciones útiles. *Entradas:* la comparación del capítulo 34 (Lab 13). *Pasos:* escriba tres limitaciones, cada una con qué, por qué y dirección probable. *Evidencia esperada:* tres limitaciones. *Rúbrica:* 3 = específicas (p. ej., puntuaciones de un solo evaluador: dirección desconocida, se aborda con un segundo puntuador; la puntuación de las copias de seguridad ignora el robo de datos, lo que exagera su beneficio frente al ransomware de doble extorsión; las puntuaciones de coste excluyen el tiempo del personal para los simulacros, lo que exagera la ventaja de coste de las copias de seguridad); 2 = sin dirección; 1 = genéricas; 0 = nada.
+
+**EX078 — Responda a la revisión.** *Objetivo:* gestionar la crítica. *Entradas:* el revisor dice «su evidencia sobre el tiempo de restauración procede de un único entorno de pruebas y de cinco simulacros». *Pasos:* escriba una respuesta que acepte, acepte en parte o rechace con razones, e indique cualquier cambio. *Evidencia esperada:* la respuesta. *Rúbrica:* 3 = acepta la limitación, añade el intervalo de Wilson (capítulo 37), indica las diferencias entre pruebas y producción y la dirección del sesgo, y ajusta la confianza en la recomendación; 2 = acepta sin cambios; 1 = defensiva; 0 = nada.
+
+### Síntesis del capítulo
+
+Evalúe frente a los criterios que fijó antes de los resultados, ponga a prueba la robustez de la comparación, enuncie las limitaciones con su dirección e invite a una revisión independiente. Una recomendación frágil etiquetada con honestidad es más útil que una de apariencia robusta que oculta su supuesto.
+
+<!-- cyberabc:chapter-navigation:start ch-39 -->
+### Siga estudiando — capítulo 39 de 40
+
+[← Capítulo 38](#ch-38) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 40 →](#ch-40)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-40"></a>
+
+## Capítulo 40 — Memoria y presentación
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) estructurar una memoria de grado que informe de un proyecto final comparativo y guiado por la evidencia; (2) redactar una conclusión que responda a la pregunta dentro de los límites de la evidencia; (3) presentar y defender el trabajo ante un público mixto de académicos y profesionales; y (4) responder con honestidad a las preguntas, incluidas las que no sepa contestar. Completa el curso y se apoya en todos los capítulos, en especial el 4, el 15, el 34 y del 35 al 39.
+
+### 40.1 Estructura de la memoria
+
+Una memoria de grado típica de este curso, de 10.000–12.000 palabras:
+
+1. **Resumen** (≈ 250 palabras): pregunta, método, resultado principal, recomendación, limitación clave.
+2. **Introducción**: el servicio, el problema de decisión, la pregunta, por qué importa, la estructura.
+3. **Antecedentes y literatura**: conceptos y trabajos previos, con la estrategia de búsqueda registrada.
+4. **Método**: opciones, restricciones, criterios y escalas, pesos y cómo se fijaron, plan de evidencias, modelos, ética y autorización.
+5. **Resultados**: evidencias por opción y criterio, puntuaciones, análisis de sensibilidad; hechos, no interpretación.
+6. **Discusión**: qué significan los resultados, comparación con la literatura, robustez, limitaciones con dirección.
+7. **Conclusión y recomendación**: la respuesta, la recomendación, las condiciones de inversión, el trabajo futuro.
+8. **Referencias** y **anexos**: registro de evidencias, scripts con hashes, formularios de consentimiento (en blanco), aprobación de la organización de acogida.
+
+Escriba primero el capítulo de método (es el que mejor conoce), después los resultados, y la introducción y la conclusión al final. Cada número de los resultados debe proceder de un script o de una entrada del registro.
+
+### 40.2 La conclusión
+
+Una buena conclusión responde a la pregunta formulada (no a una más amplia) y dice con qué fuerza. Compare: «El aislamiento de red es la mejor manera de proteger los dispositivos médicos» (exagera) frente a «Para un hospital de tamaño medio con el inventario sintético estudiado, el aislamiento con conductos monitorizados fue lo que más redujo la exposición por libra gastada, siempre que las alertas se revisen a diario; la recomendación se invierte si el coste domina la decisión (peso superior a 0,45) o si la monitorización no tiene personal». La segunda es más estrecha y mucho más útil. Las condiciones de inversión de esa conclusión son un peso del coste superior a 0,45, con el que gana la pasarela del proveedor, y unas alertas de monitorización que no se revisan, con las que gana la sustitución acelerada.
+
+### 40.3 La presentación
+
+Veinte minutos ante un tribunal mixto: problema y pregunta (3 min), método (4), resultados (6), recomendación y límites (4), qué haría a continuación (3). Una idea por diapositiva; muestre la tabla de comparación y el resultado de sensibilidad; deje los detalles para diapositivas de reserva. Ensaye en voz alta con un cronómetro y con una persona no especialista. En el proyecto final sobre dispositivos sin soporte, los minutos de resultados muestran la tabla de comparación y la tabla de variaciones de la evaluación, destacando las dos variaciones que cambian la ganadora; los minutos de límites nombran la condición de personal. Las diapositivas de reserva contienen el registro de evidencias y la prueba del modelo. Un ensayo con una persona no especialista suele revelar jerga como «conducto» que necesita una frase de explicación.
+
+### 40.4 Responder a las preguntas
+
+Las preguntas se agrupan en familias: de *alcance* («¿por qué no incluir X?»), de *método* («¿por qué estos pesos?»), de *evidencia* («¿cómo sabe esta puntuación?»), de *validez* («¿se mantendría esto en un hospital grande?»), de *ética* («¿cómo protegió a la organización de acogida?») y de *aplicación* («¿qué debería hacer el hospital el lunes?»). Prepare dos respuestas para cada familia. Cuando no sepa algo, dígalo, explique cómo lo averiguaría y, si descubre un error, reconózcalo y corríjalo. Los tribunales valoran más la honestidad sobre los límites que la improvisación segura.
+
+### 40.5 Ejemplo resuelto: una respuesta defendible (sintético)
+
+**Este intercambio es sintético.** *Tribunal:* «Su recomendación depende de que la monitorización tenga personal. Los hospitales andan escasos de personal. ¿No es poco realista su conclusión?». *Candidato:* «Esa es la principal fragilidad de mi resultado. En la variación pesimista, en la que las alertas no se revisan, gana la sustitución acelerada (tabla 6.3). Por eso mi recomendación es condicional: aislamiento con monitorización donde el hospital pueda comprometerse a una revisión diaria, por ejemplo mediante un servicio compartido en toda la red de colaboración, y sustitución acelerada de los equipos de imagen más expuestos donde no pueda. No pude probar directamente los niveles de personal; un estudio de seguimiento mediría los tiempos de revisión de alertas en varios hospitales».
+
+### 40.6 Errores comunes y límites
+
+- Resultados y discusión mezclados.
+- Conclusiones más amplias que la evidencia.
+- Diapositivas cargadas de texto; quedarse sin tiempo antes de la recomendación.
+- Respuestas defensivas o inventadas a las preguntas difíciles.
+- Revelar en las diapositivas información que identifica a la organización de acogida.
+
+El candidato responde al reto del personal a partir de la tabla 6.3: si las alertas no se revisan, gana la sustitución acelerada, de modo que la recomendación queda condicionada a la revisión diaria. Un capítulo de resultados que dice «el aislamiento es claramente mejor» mezcla interpretación en los resultados. Una conclusión sobre los «dispositivos médicos» en general afirma más de lo que respalda un inventario sintético de 120 dispositivos. Unas diapositivas que llegan a la recomendación en el minuto 19 no dejan tiempo para los límites. Y los nombres de los dispositivos de la organización de acogida en una diapositiva incumplen el acuerdo de prácticas aunque la memoria estuviera depurada.
+
+### Ejercicios — capítulo 40
+
+**EX079 — Redacte el resumen.** *Objetivo:* condensar el proyecto final. *Entradas:* el proyecto final sintético de los capítulos 35–39. *Pasos:* escriba un resumen de 200–250 palabras con pregunta, método, resultado principal, recomendación con su condición y una limitación. *Evidencia esperada:* el resumen. *Rúbrica:* 3 = los cinco elementos, con números donde corresponda, sin exagerar; 2 = falta uno; 1 = solo descriptivo; 0 = nada.
+
+**EX080 — Banco de preguntas.** *Objetivo:* prepararse para la defensa. *Entradas:* su proyecto final (o el sintético). *Pasos:* escriba una pregunta por cada familia enumerada en el apartado sobre cómo responder a las preguntas y una respuesta de tres frases para cada una. *Evidencia esperada:* seis preguntas y sus respuestas. *Rúbrica:* 3 = preguntas difíciles y realistas con respuestas honestas y vinculadas a la evidencia, y al menos una respuesta del tipo «no lo sé, pero…»; 2 = preguntas fáciles; 1 = solo preguntas; 0 = nada.
+
+### Síntesis del capítulo
+
+La memoria informa de una comparación, no de una historia: método, resultados, discusión y una conclusión que responde exactamente a la pregunta formulada, con sus condiciones. Presente con claridad la comparación y su sensibilidad, prepárese para todas las familias de preguntas y responda con honestidad a las difíciles: ese es el hábito profesional que este curso existe para formar.
+
+<!-- cyberabc:chapter-navigation:start ch-40 -->
+### Siga estudiando — capítulo 40 de 40
+
+[← Capítulo 39](#ch-39) · [Índice de capítulos del curso](../SUBJECTS.md) · [Siguiente curso desde el índice de capítulos →](../SUBJECTS.md)
+
+Este es el último capítulo de este curso; el índice enlaza con el siguiente curso del itinerario completo de estudio.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
@@ -2682,6 +3077,30 @@ Las respuestas son resultados modelo, no las únicas aceptables. Acepte una resp
 **EX067.** Puntuación de la segmentación $= 5w + 8(1-w)/3$; copias de seguridad $= 4w + 13(1-w)/3$. Empate: $w = 5(1-w)/3 \Rightarrow 3w = 5 - 5w \Rightarrow w = 5/8 = 0.625$. Ambas puntúan 4,125 en ese punto. Por encima de 0,625 gana la segmentación.
 
 **EX068.** El requisito es una restricción, no un criterio ponderado: una opción que no puede demostrar el restablecimiento en 4 horas queda excluida. Las copias de seguridad con simulacros de restauración pueden aportar la demostración directamente (registros de los simulacros, idealmente observados por terceros independientes). La segmentación y la detección gestionada reducen la probabilidad o la propagación del ransomware, pero no restablecen el servicio; solo cumplen si se combinan con una capacidad de recuperación demostrada. La comparación pasa a ser entre combinaciones que cumplen la restricción.
+
+**EX069.** (a) No es comparativo ni está acotado tal como se formula; podría reformularse. (b) Comparativo, viable con un conjunto de datos sintético, ético, útil para los operadores, acotado: se elige (b). (c) Pruebas no autorizadas contra una empresa de servicios real: no ético y probablemente ilegal; se rechaza (capítulo 10).
+
+**EX070.** Reducción de consecuencias: resultados del modelo de exposición del laboratorio para cada opción; amenaza: los supuestos simplificados de exposición del modelo. Perturbación clínica: datos de las entrevistas y guías publicadas de ingeniería clínica; amenaza: una o dos entrevistas pueden no representar a otros hospitales. Coste: rangos de precios publicados y estimaciones del tiempo del personal; amenaza: los precios varían y pueden estar desactualizados. Solidez de la evidencia: calificación de las fuentes con las preguntas del capítulo 15; amenaza: calificación por una sola persona (mitíguese con un segundo calificador).
+
+**EX071.** Supervisores: el responsable de TI del CEDC, identificado por su nombre, y el tutor académico. Permitido: observación, revisión de documentos, actualizaciones del inventario en el entorno de pruebas; prohibido: cualquier cambio en el CAD o la telefonía en producción, cualquier prueba sin unas RoE escritas. Confidencialidad: no se retiran documentos; el CEDC revisa el trabajo del curso antes de entregarlo. Protección de datos: ningún acceso a grabaciones de llamadas ni a registros de incidentes con datos personales. Seguridad: formación de acogida en el centro, incluidos los procedimientos de emergencia. Escalado: cualquier hallazgo grave se comunica de inmediato y solo al supervisor del centro.
+
+**EX072.** Versión segura: «Martes: revisé con mi supervisor el entorno de la pasarela de pagos; observé un componente que parece más antiguo que la versión con soporte actual; se lo comuniqué a mi supervisor para su seguimiento». Eliminados: el nombre de host, las credenciales, la dirección IP, el nombre de usuario de la persona y la versión exacta. La credencial nunca debe registrarse; comunique al supervisor que se anotó para que pueda cambiarse.
+
+**EX073.** 34/40: Wilson ≈ [0.71, 0.93]. 85/100: ≈ [0.77, 0.91]. La estimación puntual es la misma (0,85), pero el intervalo se estrecha aproximadamente con $1/\sqrt{n}$; para afirmar la fiabilidad con una precisión útil, el CEDC necesita un programa de simulacros periódicos, no una única campaña.
+
+**EX074.** Revisión: la «exactitud» en un conjunto de datos desequilibrado no es informativa (capítulo 27); un único banco de pruebas público puede no representar los sistemas de agua reales (validez externa); el protocolo de evaluación puede inflar los resultados (Kim et al., 2022); el proveedor tiene un interés. Preguntas: precisión y exhaustividad en el umbral que usted recomienda; falsas alarmas por día en despliegues reales; protocolo de evaluación y si los datos de entrenamiento y de prueba se separaron en el tiempo; cualquier evaluación independiente o referencias de clientes en empresas de servicios comparables.
+
+**EX075.** Filas (elemento / fuente / fecha / tipo / cómo se obtuvo / almacenamiento / criterio): (1) inventario sintético, `make_inventory.py` semilla 38 con hash / autor / semana 8 / medición / script / repositorio del proyecto / consecuencia; (2) resultados de las pruebas del modelo para el caso de 5 dispositivos / autor / semana 10 / verificación / script / repositorio / solidez de la evidencia; (3) notas de la entrevista 1, seudónimo P1 / ingeniero clínico / semana 11 / cualitativa / entrevista con consentimiento / almacén cifrado / perturbación clínica; (4) documento de guía A / organismo público / año / documento / descarga / carpeta de referencias / perturbación clínica; (5) documento de guía B / organismo público / año / documento / descarga / carpeta de referencias / consecuencia y coste.
+
+**EX076.** Modelo: «Contra lo esperado, la opción de la pasarela del proveedor fue la que menos redujo la exposición de los equipos de imagen (tabla 5.2). La causa es que los equipos de imagen también aceptan conexiones del archivo de imágenes, que la pasarela no intermedia. Una variante que añade controles en el lado del archivo cerró parte de la diferencia (tabla 5.3), pero el aislamiento siguió puntuando más alto. Se informa de ambos resultados porque la configuración original refleja cómo se despliegan habitualmente las pasarelas. El hallazgo se basa en un inventario sintético y en un solo modelo de exposición; debería contrastarse con datos de red reales antes de generalizarlo».
+
+**EX077.** (1) Las puntuaciones las asignó un solo evaluador: dirección desconocida; mitíguese con un segundo puntuador independiente. (2) La puntuación de las copias de seguridad ignora el robo de datos del ransomware de doble extorsión: probablemente *exagera* el beneficio de las copias de seguridad en relación con las opciones que reducen la intrusión. (3) Las puntuaciones de coste excluyen el tiempo del personal para los simulacros de restauración: probablemente *exagera* la ventaja de coste de las copias de seguridad. Se aceptan otras limitaciones defendibles que indiquen su dirección.
+
+**EX078.** Modelo: «Aceptado. La evidencia sobre el tiempo de restauración procede de cinco simulacros en un único entorno de pruebas. He añadido un intervalo de Wilson al 95 % (0,38–0,96 para 4 de 5) y una tabla de diferencias entre pruebas y producción (volumen de datos, integraciones, personal). Como las restauraciones en producción implican más datos e integraciones, los simulacros probablemente subestiman los tiempos de restauración reales. He rebajado la confianza en la recomendación de alta a media y he recomendado un simulacro a escala de producción observado de forma independiente».
+
+**EX079.** Modelo (≈ 220 palabras): «Los hospitales conservan dispositivos clínicos cuyo software ya no tiene soporte, porque los dispositivos sobreviven a sus sistemas operativos. Este proyecto final se preguntó cuál de tres enfoques (sustitución acelerada, aislamiento de red con monitorización o pasarelas seguras gestionadas por el proveedor) reduce mejor la exposición de un hospital de tamaño medio dentro de un presupuesto fijo. Con un inventario sintético de 120 dispositivos construido a partir de categorías publicadas, un modelo de exposición probado frente a un caso resuelto a mano, una entrevista con un profesional y guías públicas, las opciones se compararon en cuanto a reducción de consecuencias, perturbación clínica, coste y solidez de la evidencia, con pesos fijados de antemano. El aislamiento con monitorización obtuvo la puntuación más alta y siguió siendo la opción preferida salvo que el coste supusiera más del 45 % del peso de la decisión, en cuyo caso se preferían las pasarelas del proveedor, o que las alertas de monitorización no se revisaran, en cuyo caso se prefería la sustitución acelerada de los equipos de imagen más expuestos. Las pasarelas del proveedor rindieron peor con los equipos de imagen porque las conexiones del archivo las eluden. Recomendamos el aislamiento con conductos monitorizados donde pueda asumirse la revisión diaria de alertas, y la sustitución priorizada en los demás casos. La principal limitación es el inventario sintético y la única entrevista, que probablemente hacen que la perturbación clínica del aislamiento parezca menor de lo que es».
+
+**EX080.** Preguntas de ejemplo: alcance, «¿Por qué no incluir los equipos de imagen alojados en la nube?» (fuera del alcance por diseño; cambiaría la exposición; trabajo futuro). Método, «¿Por qué estos pesos?» (fijados con la organización de acogida antes de puntuar; sensibilidad mostrada; inversión en 0,45). Evidencia, «¿Cómo sabe la puntuación de perturbación del aislamiento?» (una entrevista más guías; reconocida como débil; limitación con dirección). Validez, «¿Se mantendría esto en un gran hospital universitario?» («No lo sé; la combinación del inventario es distinta; lo probaría con su distribución por categorías»). Ética, «¿Cómo protegió a la organización de acogida?» (datos sintéticos, entrevista anonimizada, revisión por la organización de acogida). Aplicación, «¿Qué debería hacer el hospital el lunes?» (restringir y monitorizar los conductos de los equipos de imagen; iniciar el expediente de sustitución de los cinco dispositivos más expuestos).
 
 <a id="glossary"></a>
 

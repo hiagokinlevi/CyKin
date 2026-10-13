@@ -2720,23 +2720,15 @@ Antes de começar, acorde por escrito com o anfitrião e a sua universidade: o *
 
 ### 36.3 Trabalhar como aprendiz no local
 
-A maior parte do seu valor como estudante vem de **olhos novos e tempo**: documentar o que a equipe experiente já não percebe, organizar um inventário, redigir um procedimento, comparar a prática atual com as orientações públicas. Não julgue antes de entender — uma "má prática" pode ser um contorno para uma restrição real (o login compartilhado da sala de controle do Capítulo 13). Pergunte por quê. Registre as suas observações de forma factual, separe-as da interpretação e confira-as com a pessoa envolvida.
-
-Na entrada de diário da CW, os telefonemas dos operadores sobre leituras estranhas pareciam má prática até o supervisor explicar que a ferramenta de tíquetes é lenta à noite; a folha de papel de "consulta de sensor" do estudante funciona com essa restrição.
+A maior parte do seu valor como estudante vem de **olhos novos e tempo**: documentar o que a equipe experiente já não percebe, organizar um inventário, redigir um procedimento, comparar a prática atual com as orientações públicas. Não julgue antes de entender — uma "má prática" pode ser um contorno para uma restrição real (o login compartilhado da sala de controle do Capítulo 13). Pergunte por quê. Registre as suas observações de forma factual, separe-as da interpretação e confira-as com a pessoa envolvida. Na entrada de diário da CW, os telefonemas dos operadores sobre leituras estranhas pareciam má prática até o supervisor explicar que a ferramenta de tíquetes é lenta à noite; a folha de papel de "consulta de sensor" do estudante funciona com essa restrição.
 
 ### 36.4 Prática comunitária
 
-As pequenas organizações que apoiam comunidades — um banco de alimentos, uma clínica rural, um serviço voluntário de ambulâncias — muitas vezes dependem de serviços críticos e têm pouca capacidade de segurança. Uma contribuição estruturada e de baixo risco: uma lista de ativos, uma revisão de contas e de backups contra uma linha de base publicada simples, uma folha de contatos de incidentes de uma página e uma sessão curta com a equipe. As mesmas regras de autorização e confidencialidade se aplicam; o seu dever de cuidado é maior, e não menor, quando a organização não consegue julgar o seu conselho.
-
-Para um serviço voluntário de ambulâncias, o acordo escrito poderia listar os quatro produtos, declarar que nenhum sistema será alterado pelo estudante e nomear quem guarda a folha de contatos depois.
+As pequenas organizações que apoiam comunidades — um banco de alimentos, uma clínica rural, um serviço voluntário de ambulâncias — muitas vezes dependem de serviços críticos e têm pouca capacidade de segurança. Uma contribuição estruturada e de baixo risco: uma lista de ativos, uma revisão de contas e de backups contra uma linha de base publicada simples, uma folha de contatos de incidentes de uma página e uma sessão curta com a equipe. As mesmas regras de autorização e confidencialidade se aplicam; o seu dever de cuidado é maior, e não menor, quando a organização não consegue julgar o seu conselho. Para um serviço voluntário de ambulâncias, o acordo escrito poderia listar os quatro produtos, declarar que nenhum sistema será alterado pelo estudante e nomear quem guarda a folha de contatos depois.
 
 ### 36.5 Diário reflexivo
 
-Mantenha um diário semanal com quatro títulos: **o que eu fiz**, **o que eu observei**, **o que me surpreendeu e por quê**, **o que eu faria diferente**. A reflexão transforma a experiência em aprendizado e fornece evidências para a avaliação. Mantenha o diário sanitizado desde o início: nenhum nome de sistema, endereço, credencial ou dado pessoal — escreva "o gateway de acesso remoto", e não o seu nome de host.
-
-A entrada da CW escreve "7 de 42 estações remotas", e não os nomes das estações, para que possa ser mostrada a um avaliador sem edição.
-
-A entrada da CW foi escrita depois do segundo turno da noite, enquanto a explicação sobre a lentidão dos tíquetes estava fresca, e ficou no diário do próprio estudante, e não na pasta compartilhada do anfitrião.
+Mantenha um diário semanal com quatro títulos: **o que eu fiz**, **o que eu observei**, **o que me surpreendeu e por quê**, **o que eu faria diferente**. A reflexão transforma a experiência em aprendizado e fornece evidências para a avaliação. Mantenha o diário sanitizado desde o início: nenhum nome de sistema, endereço, credencial ou dado pessoal — escreva "o gateway de acesso remoto", e não o seu nome de host. A entrada da CW escreve "7 de 42 estações remotas", e não os nomes das estações, para que possa ser mostrada a um avaliador sem edição. A entrada da CW foi escrita depois do segundo turno da noite, enquanto a explicação sobre a lentidão dos tíquetes estava fresca, e ficou no diário do próprio estudante, e não na pasta compartilhada do anfitrião.
 
 ### 36.6 Exemplo resolvido: a entrada de diário de uma semana (sintético)
 
@@ -2749,9 +2741,7 @@ A entrada da CW foi escrita depois do segundo turno da noite, enquanto a explica
 - Julgar a prática antes de entender as restrições.
 - Diários reflexivos que descrevem a atividade, mas não o aprendizado.
 
-A entrada de diário da CW evita os quatro: o estágio tinha um acordo, a proposta da folha de papel foi aprovada antes da inclusão, o estudante perguntou por que faltavam tíquetes antes de julgar, e a entrada registra uma premissa que mudou. O EX072 mostra o segundo erro na sua forma mais perigosa: uma credencial registrada.
-
-Na CW, o supervisor aprovou a proposta da folha de papel em forma sanitizada; as lacunas de firmware das estações nomeadas ficaram no local.
+A entrada de diário da CW evita os quatro: o estágio tinha um acordo, a proposta da folha de papel foi aprovada antes da inclusão, o estudante perguntou por que faltavam tíquetes antes de julgar, e a entrada registra uma premissa que mudou. O EX072 mostra o segundo erro na sua forma mais perigosa: uma credencial registrada. Na CW, o supervisor aprovou a proposta da folha de papel em forma sanitizada; as lacunas de firmware das estações nomeadas ficaram no local.
 
 ### Exercícios — capítulo 36
 
@@ -2823,9 +2813,7 @@ Os dois métodos dizem, em substância, a mesma coisa: 17 de 20 é compatível c
 
 ### 37.4 Revisão por pares
 
-Os grupos do seminário trocam os capítulos de evidências dos trabalhos de conclusão. Uma revisão útil declara o que o trabalho afirma, o que é convincente, os dois ou três problemas mais importantes (cada um com uma correção sugerida) e os pontos menores. Revise o trabalho, e não a pessoa; seja específico ("a afirmação sobre o tempo de restauração se apoia num único exercício num ambiente de teste; você pode acrescentar as condições do exercício e um intervalo?"). Os autores respondem ponto a ponto: aceito e alterado, ou recusado com os motivos.
-
-Ao comentário sobre o tempo de restauração, por exemplo: "Acrescentei as condições do exercício; não é possível um intervalo a partir de um único exercício, então a afirmação agora está declarada como uma única observação."
+Os grupos do seminário trocam os capítulos de evidências dos trabalhos de conclusão. Uma revisão útil declara o que o trabalho afirma, o que é convincente, os dois ou três problemas mais importantes (cada um com uma correção sugerida) e os pontos menores. Revise o trabalho, e não a pessoa; seja específico ("a afirmação sobre o tempo de restauração se apoia num único exercício num ambiente de teste; você pode acrescentar as condições do exercício e um intervalo?"). Os autores respondem ponto a ponto: aceito e alterado, ou recusado com os motivos. Ao comentário sobre o tempo de restauração, por exemplo: "Acrescentei as condições do exercício; não é possível um intervalo a partir de um único exercício, então a afirmação agora está declarada como uma única observação."
 
 ### 37.5 Erros comuns e limites
 
@@ -2834,9 +2822,7 @@ Ao comentário sobre o tempo de restauração, por exemplo: "Acrescentei as cond
 - Revisões que só elogiam ou só atacam.
 - Ignorar como os protocolos de avaliação podem inflar os resultados.
 
-O Laboratório 14 mostra o primeiro: "85 %" sem "de 20" e sem um intervalo esconde que a taxa real pode ser de 64 %. O próprio benchmark de um fornecedor de detectores (EX074) é o segundo. Uma revisão que diz só "ótimo trabalho" não ajuda ninguém. O quarto é o argumento de Kim e colegas sobre os protocolos de avaliação.
-
-"A taxa de detecção se apoia nos 17 de 20 do Laboratório 14" nomeia a evidência; "os resultados parecem otimistas" não nomeia.
+O Laboratório 14 mostra o primeiro: "85 %" sem "de 20" e sem um intervalo esconde que a taxa real pode ser de 64 %. O próprio benchmark de um fornecedor de detectores (EX074) é o segundo. Uma revisão que diz só "ótimo trabalho" não ajuda ninguém. O quarto é o argumento de Kim e colegas sobre os protocolos de avaliação. "A taxa de sucesso da restauração se apoia nos 17 de 20 do Laboratório 14" nomeia a evidência; "os resultados parecem otimistas" não nomeia.
 
 ### Exercícios — capítulo 37
 
@@ -2866,9 +2852,7 @@ Depois deste capítulo, você consegue (1) executar o plano do trabalho de concl
 
 ### 38.1 Trabalhar segundo um plano
 
-A implementação transforma a proposta (Capítulo 35) em evidências. Mantenha três documentos vivos. Um **diário do projeto** (data, o que você fez, o que decidiu e por quê). Um **registro de evidências** (item, fonte, data, tipo, como foi obtido, onde está guardado, qual critério sustenta — Capítulo 15). Um **registro de mudanças** para qualquer desvio da proposta, com a concordância do seu orientador. A ampliação do escopo é a falha mais comum dos trabalhos de conclusão: perguntas novas são interessantes, mas cada uma precisa substituir algo ou esperar pelos "trabalhos futuros".
-
-No ponto de controle da semana 14, abaixo, o registro de mudanças declara o que substituiu a segunda entrevista recusada, uma revisão documental de duas fontes públicas de orientação, e o custo para a validade: a contribuição dos profissionais agora se apoia numa única entrevista.
+A implementação transforma a proposta (Capítulo 35) em evidências. Mantenha três documentos vivos. Um **diário do projeto** (data, o que você fez, o que decidiu e por quê). Um **registro de evidências** (item, fonte, data, tipo, como foi obtido, onde está guardado, qual critério sustenta — Capítulo 15). Um **registro de mudanças** para qualquer desvio da proposta, com a concordância do seu orientador. A ampliação do escopo é a falha mais comum dos trabalhos de conclusão: perguntas novas são interessantes, mas cada uma precisa substituir algo ou esperar pelos "trabalhos futuros". No ponto de controle da semana 14, abaixo, o registro de mudanças declara o que substituiu a segunda entrevista recusada, uma revisão documental de duas fontes públicas de orientação, e o custo para a validade: a contribuição dos profissionais agora se apoia numa única entrevista.
 
 ### 38.2 Construir o modelo de apoio
 
@@ -2876,17 +2860,11 @@ A maioria dos trabalhos de conclusão de bacharelado precisa de um pequeno artef
 
 ### 38.3 Coletar evidências de pessoas e anfitriões
 
-As entrevistas seguem o protocolo aprovado e o consentimento (Capítulo 33). Os documentos do anfitrião são tratados segundo o acordo de estágio (Capítulo 36). Tudo o que diz respeito às vulnerabilidades de um operador real fica guardado com segurança e só aparece na monografia de forma sanitizada e aprovada pelo anfitrião. Se o acesso for retirado, use a alternativa da sua proposta e registre a mudança; não substitua dados por palpites em silêncio.
-
-No ponto de controle da semana 14, a semente (38) e o hash do script de inventário entraram no registro no dia em que o script foi rodado.
-
-No trabalho de conclusão sobre dispositivos sem suporte, as anotações das entrevistas são pseudonimizadas no mesmo dia, guardadas cifradas e apagadas no prazo do termo de consentimento. Se o anfitrião retirar a sua lista de dispositivos, o inventário sintético da proposta a substitui, e o registro de mudanças diz isso.
+As entrevistas seguem o protocolo aprovado e o consentimento (Capítulo 33). Os documentos do anfitrião são tratados segundo o acordo de estágio (Capítulo 36). Tudo o que diz respeito às vulnerabilidades de um operador real fica guardado com segurança e só aparece na monografia de forma sanitizada e aprovada pelo anfitrião. Se o acesso for retirado, use a alternativa da sua proposta e registre a mudança; não substitua dados por palpites em silêncio. No trabalho de conclusão sobre dispositivos sem suporte, as anotações das entrevistas são pseudonimizadas no mesmo dia, guardadas cifradas e apagadas no prazo do termo de consentimento. Se o anfitrião retirar a sua lista de dispositivos, o inventário sintético da proposta a substitui, e o registro de mudanças diz isso.
 
 ### 38.4 Resultados surpreendentes e negativos
 
 Os resultados que contradizem a sua expectativa também são evidência. Se os exercícios de restauração no seu modelo de laboratório mostrarem que a opção que você esperava que vencesse não consegue cumprir o objetivo, reporte isso e investigue por quê — talvez uma dependência que você não modelou. Não ajuste os parâmetros até que o resultado "pareça certo"; se mudar um parâmetro, registre o motivo e mostre os dois resultados. Constatações negativas honestas estão entre os produtos mais úteis que um trabalho de conclusão pode gerar para um anfitrião.
-
-O gateway do fornecedor foi o que menos reduziu a exposição dos dispositivos de imagem, porque eles também aceitam conexões do arquivo de imagens, que o gateway não medeia; o estudante manteve esse resultado e modelou controles do lado do arquivo como uma variante.
 
 ### 38.5 Exemplo resolvido: um ponto de controle da implementação (sintético)
 
@@ -2899,9 +2877,7 @@ O gateway do fornecedor foi o que menos reduziu a exposição dos dispositivos d
 - Ajustar um modelo até ele concordar com as expectativas.
 - Mudanças silenciosas de escopo ou de método.
 
-O ponto de controle da semana 14 evita cada um: o script de inventário tem semente e hash, o modelo é testado num caso resolvido à mão, a surpresa do gateway é mantida e a substituição da entrevista é registrada. Mudar os parâmetros do gateway do fornecedor até a exposição dos dispositivos de imagem parecer menor teria sido o terceiro erro.
-
-No ponto de controle, o hash do make_inventory.py e o registro de mudanças aprovado pelo orientador foram ambos escritos no próprio dia, e não reconstruídos na hora da monografia.
+O ponto de controle da semana 14 evita cada um: o script de inventário tem semente e hash, o modelo é testado num caso resolvido à mão, a surpresa do gateway é mantida e a substituição da entrevista é registrada. Mudar os parâmetros do gateway do fornecedor até a exposição dos dispositivos de imagem parecer menor teria sido o terceiro erro. No ponto de controle, o hash do make_inventory.py e o registro de mudanças aprovado pelo orientador foram ambos escritos no próprio dia, e não reconstruídos na hora da monografia.
 
 ### Exercícios — capítulo 38
 
@@ -2931,35 +2907,19 @@ Depois deste capítulo, você consegue (1) avaliar os resultados do seu trabalho
 
 ### 39.1 Contra os critérios que você definiu
 
-A avaliação começa pelos critérios de sucesso da proposta (Capítulo 35). Eles foram cumpridos, parcialmente cumpridos ou não cumpridos? Reporte cada um com honestidade e com evidências. Depois avalie a própria **comparação**: as notas são sustentadas pelo registro de evidências; outra pessoa, usando as suas escalas ancoradas, daria notas semelhantes (pergunte a alguém); alguma restrição excluiu uma opção?
-
-Houve uma entrevista e a segunda foi substituída por documentos, então o critério é reportado como parcialmente cumprido, e não descartado em silêncio.
-
-Pedir a uma segunda pessoa que pontue duas opções com as suas escalas ancoradas é uma verificação rápida de confiabilidade; se as notas dela diferirem em mais de um ponto em qualquer critério, as suas âncoras precisam de uma redação mais clara antes da monografia.
+A avaliação começa pelos critérios de sucesso da proposta (Capítulo 35). Eles foram cumpridos, parcialmente cumpridos ou não cumpridos? Reporte cada um com honestidade e com evidências. Depois avalie a própria **comparação**: as notas são sustentadas pelo registro de evidências; outra pessoa, usando as suas escalas ancoradas, daria notas semelhantes (pergunte a alguém); alguma restrição excluiu uma opção? Na avaliação resolvida (§39.5), houve uma entrevista e a segunda foi substituída por documentos, então o critério de contribuição dos profissionais é reportado como parcialmente cumprido, e não descartado em silêncio. Pedir a uma segunda pessoa que pontue duas opções com as suas escalas ancoradas é uma verificação rápida de confiabilidade; se as notas dela diferirem em mais de um ponto em qualquer critério, as suas âncoras precisam de uma redação mais clara antes da monografia.
 
 ### 39.2 Sensibilidade e robustez
 
-Rode de novo a sua comparação sob variações plausíveis: pesos diferentes (Laboratório 13), evidências pessimistas e otimistas (a autonomia reduzida à metade do Capítulo 22), premissas alternativas do modelo (a variante do arquivo de imagens do Capítulo 38). Uma recomendação **robusta** se mantém na maioria das variações; uma **frágil** depende de uma premissa específica, que você precisa nomear. Apresente o resultado numa tabela curta: variação, vencedora, comentário.
-
-Na avaliação resolvida, as variações além dos pesos acordados são um peso de custo de 0,4, um peso de custo de 0,6, controles do lado do arquivo acrescentados ao gateway e evidências pessimistas para o isolamento.
-
-A avaliação resolvida mostra um resultado frágil: o gateway vence quando o peso do custo passa de 0,45, e a substituição acelerada vence quando se supõe que o monitoramento do isolamento não funciona. As duas coisas são nomeadas na conclusão como condições de reversão, para que o leitor veja em qual julgamento de valor e em qual premissa a recomendação se apoia.
+Rode de novo a sua comparação sob variações plausíveis: pesos diferentes (Laboratório 13), evidências pessimistas e otimistas (a autonomia reduzida à metade do Capítulo 22), premissas alternativas do modelo (a variante do arquivo de imagens do Capítulo 38). Uma recomendação **robusta** se mantém na maioria das variações; uma **frágil** depende de uma premissa específica, que você precisa nomear. Apresente o resultado numa tabela curta: variação, vencedora, comentário. A avaliação resolvida mostra um resultado frágil: o gateway vence quando o peso do custo passa de 0,45, e a substituição acelerada vence quando se supõe que o monitoramento do isolamento não funciona. As duas coisas são nomeadas na conclusão como condições de reversão, para que o leitor veja em qual julgamento de valor e em qual premissa a recomendação se apoia.
 
 ### 39.3 Limitações com direção
 
-"A amostra era pequena" é uma limitação fraca. Uma limitação útil diz **o quê**, **por que importa** e **em que direção** ela provavelmente enviesa o resultado. Por exemplo: "O modelo de exposição supõe que todo dispositivo sem suporte é igualmente explorável; na prática, os dispositivos próximos da internet estão mais expostos, então o modelo provavelmente *subestima* o benefício do isolamento para os dispositivos de imagem." As limitações com direção permitem que os leitores ajustem as suas conclusões, em vez de descartá-las.
-
-A única entrevista provavelmente subestima a perturbação clínica do isolamento; o modelo de exposição, ao ignorar a escolha de alvos pelo atacante, provavelmente subestima o valor de remover primeiro os dispositivos mais expostos; a direção do inventário sintético é desconhecida.
-
-Quando a direção for genuinamente desconhecida, como no inventário sintético, diga isso explicitamente, em vez de deixar a limitação sem direção por omissão.
+"A amostra era pequena" é uma limitação fraca. Uma limitação útil diz **o quê**, **por que importa** e **em que direção** ela provavelmente enviesa o resultado. Por exemplo: "O modelo de exposição supõe que todo dispositivo sem suporte é igualmente explorável; na prática, os dispositivos próximos da internet estão mais expostos, então o modelo provavelmente *subestima* o benefício do isolamento para os dispositivos de imagem." As limitações com direção permitem que os leitores ajustem as suas conclusões, em vez de descartá-las. Quando a direção for genuinamente desconhecida, como no inventário sintético, diga isso explicitamente, em vez de deixar a limitação sem direção por omissão.
 
 ### 39.4 Revisão independente
 
-Antes de a monografia ficar pronta, peça a alguém de fora do seu projeto — um colega do seminário (Capítulo 37), o seu supervisor no anfitrião, um acadêmico não envolvido — que revise o capítulo de avaliação. Registre os pontos levantados e as suas respostas. A independência é o elo mais fraco da maioria das evidências (Capítulo 15); o trabalho de conclusão é onde você pratica fortalecê-la.
-
-A pergunta do revisor foi o que acontece se os alertas do monitoramento não forem revisados.
-
-Na avaliação resolvida, o ponto do revisor sobre o monitoramento sem pessoal mudou a tabela principal: a variação pessimista virou um resultado de destaque, e a recomendação tornou-se condicional. Registre o papel e a independência do revisor ao lado de cada ponto, para que um avaliador possa julgar quanto peso a revisão carrega.
+Antes de a monografia ficar pronta, peça a alguém de fora do seu projeto — um colega do seminário (Capítulo 37), o seu supervisor no anfitrião, um acadêmico não envolvido — que revise o capítulo de avaliação. Registre os pontos levantados e as suas respostas. A independência é o elo mais fraco da maioria das evidências (Capítulo 15); o trabalho de conclusão é onde você pratica fortalecê-la. Na avaliação resolvida, o ponto do revisor sobre o monitoramento sem pessoal mudou a tabela principal: a variação pessimista virou um resultado de destaque, e a recomendação tornou-se condicional. Registre o papel e a independência do revisor ao lado de cada ponto, para que um avaliador possa julgar quanto peso a revisão carrega.
 
 ### 39.5 Exemplo resolvido: tabela de avaliação (sintético)
 
@@ -2989,9 +2949,7 @@ Limitações (com direção): inventário sintético (direção desconhecida —
 - Limitações sem direção.
 - Revisões feitas por pessoas que ajudaram a produzir o trabalho.
 
-A avaliação resolvida evita o primeiro ao usar os critérios da proposta, varia os pesos que importam, dá uma direção a cada limitação e usa um revisor que não ajudou a produzir o trabalho.
-
-O segundo erro é comum: variar o peso da força da evidência, que quase não muda a ordenação, deixando intocado o custo, que a inverte. Uma limitação como "uma entrevista" sem direção deixa o leitor incapaz de ajustar o resultado. Um revisor que ajudou a construir o modelo de exposição não consegue fazer uma revisão independente dele.
+A avaliação resolvida evita o primeiro ao usar os critérios da proposta, varia os pesos que importam, dá uma direção a cada limitação e usa um revisor que não ajudou a produzir o trabalho. O segundo erro é comum: variar o peso da força da evidência, que quase não muda a ordenação, deixando intocado o custo, que a inverte. Uma limitação como "uma entrevista" sem direção deixa o leitor incapaz de ajustar o resultado. Um revisor que ajudou a construir o modelo de exposição não consegue fazer uma revisão independente dele.
 
 ### Exercícios — capítulo 39
 
@@ -3036,17 +2994,11 @@ Escreva primeiro o capítulo de método (você o conhece melhor), os resultados 
 
 ### 40.2 A conclusão
 
-Uma boa conclusão responde à pergunta feita — e não a uma mais ampla — e diz com que força. Compare: "O isolamento de rede é a melhor forma de proteger dispositivos médicos" (exagera) com "Para um hospital de porte médio com o inventário sintético estudado, o isolamento com conduítes monitorados foi o que mais reduziu a exposição por libra gasta, desde que os alertas sejam revisados diariamente; a recomendação se inverte se o custo dominar a decisão (peso acima de 0,45) ou se o monitoramento não tiver pessoal." A segunda é mais estreita e muito mais útil.
-
-As condições de reversão dessa conclusão são um peso de custo acima de 0,45, em que vence o gateway do fornecedor, e alertas de monitoramento não revisados, em que vence a substituição acelerada.
+Uma boa conclusão responde à pergunta feita — e não a uma mais ampla — e diz com que força. Compare: "O isolamento de rede é a melhor forma de proteger dispositivos médicos" (exagera) com "Para um hospital de porte médio com o inventário sintético estudado, o isolamento com conduítes monitorados foi o que mais reduziu a exposição por libra gasta, desde que os alertas sejam revisados diariamente; a recomendação se inverte se o custo dominar a decisão (peso acima de 0,45) ou se o monitoramento não tiver pessoal." A segunda é mais estreita e muito mais útil. As condições de reversão dessa conclusão são um peso de custo acima de 0,45, em que vence o gateway do fornecedor, e alertas de monitoramento não revisados, em que vence a substituição acelerada.
 
 ### 40.3 A apresentação
 
-Vinte minutos para uma banca mista: problema e pergunta (3 min), método (4), resultados (6), recomendação e limites (4), o que você faria em seguida (3). Uma ideia por slide; mostre a tabela de comparação e o resultado de sensibilidade; ponha os detalhes em slides de reserva. Ensaie em voz alta, com cronômetro e com alguém não especialista.
-
-No trabalho de conclusão sobre dispositivos sem suporte, esse slide mostra as cinco variações e destaca as duas que mudam a vencedora.
-
-No trabalho de conclusão sobre dispositivos sem suporte, os minutos de resultados mostram a tabela de comparação e a tabela de variações da avaliação; os minutos de limites nomeiam a condição de pessoal. Os slides de reserva guardam o registro de evidências e o teste do modelo. Um ensaio com um não especialista costuma revelar jargões como "conduíte", que precisam de uma frase de explicação.
+Vinte minutos para uma banca mista: problema e pergunta (3 min), método (4), resultados (6), recomendação e limites (4), o que você faria em seguida (3). Uma ideia por slide; mostre a tabela de comparação e o resultado de sensibilidade; ponha os detalhes em slides de reserva. Ensaie em voz alta, com cronômetro e com alguém não especialista. No trabalho de conclusão sobre dispositivos sem suporte, os minutos de resultados mostram a tabela de comparação e a tabela de variações da avaliação, destacando as duas variações que mudam a vencedora; os minutos de limites nomeiam a condição de pessoal. Os slides de reserva guardam o registro de evidências e o teste do modelo. Um ensaio com um não especialista costuma revelar jargões como "conduíte", que precisam de uma frase de explicação.
 
 ### 40.4 Responder às perguntas
 
@@ -3064,9 +3016,7 @@ As perguntas se dividem em famílias: *escopo* ("por que não incluir X?"), *mé
 - Respostas defensivas ou inventadas a perguntas difíceis.
 - Revelar nos slides informações que identificam o anfitrião.
 
-O candidato responde ao desafio sobre o pessoal a partir da Tabela 6.3: se os alertas não forem revisados, vence a substituição acelerada, então a recomendação é condicionada à revisão diária.
-
-Um capítulo de resultados que diz "o isolamento é claramente melhor" mistura interpretação nos resultados. Uma conclusão sobre "dispositivos médicos" em geral alega mais do que um inventário sintético de 120 dispositivos sustenta. Slides que chegam à recomendação no minuto 19 não deixam tempo para os limites. E os nomes dos dispositivos de um anfitrião num slide violam o acordo de estágio, mesmo que a monografia tenha sido sanitizada.
+O candidato responde ao desafio sobre o pessoal a partir da Tabela 6.3: se os alertas não forem revisados, vence a substituição acelerada, então a recomendação é condicionada à revisão diária. Um capítulo de resultados que diz "o isolamento é claramente melhor" mistura interpretação nos resultados. Uma conclusão sobre "dispositivos médicos" em geral alega mais do que um inventário sintético de 120 dispositivos sustenta. Slides que chegam à recomendação no minuto 19 não deixam tempo para os limites. E os nomes dos dispositivos de um anfitrião num slide violam o acordo de estágio, mesmo que a monografia tenha sido sanitizada.
 
 ### Exercícios — capítulo 40
 

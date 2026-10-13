@@ -2722,23 +2722,15 @@ Before starting, agree in writing with the host and your university: **superviso
 
 ### 36.3 Working as a learner on site
 
-Most of your value as a student comes from **fresh eyes and time**: documenting what experienced staff no longer notice, tidying an inventory, drafting a procedure, comparing current practice with public guidance. Do not judge before understanding — a "bad practice" may be a workaround for a real constraint (the shared control-room login of Chapter 13). Ask why. Record your observations factually, separate them from interpretation, and check them with the person concerned.
-
-In the CW log entry, the operators' phone calls about odd readings looked like poor practice until the supervisor explained the ticketing tool is slow at night; the student's paper "sensor query" sheet works with that constraint.
+Most of your value as a student comes from **fresh eyes and time**: documenting what experienced staff no longer notice, tidying an inventory, drafting a procedure, comparing current practice with public guidance. Do not judge before understanding — a "bad practice" may be a workaround for a real constraint (the shared control-room login of Chapter 13). Ask why. Record your observations factually, separate them from interpretation, and check them with the person concerned. In the CW log entry, the operators' phone calls about odd readings looked like poor practice until the supervisor explained the ticketing tool is slow at night; the student's paper "sensor query" sheet works with that constraint.
 
 ### 36.4 Community practice
 
-Small organisations that support communities — a food bank, a rural clinic, a volunteer ambulance service — often depend on critical services and have little security capacity. A structured, low-risk contribution: an asset list, account and backup review against a simple published baseline, a one-page incident contact sheet, and a short staff session. The same authorisation and confidentiality rules apply; your duty of care is higher, not lower, when the organisation cannot judge your advice.
-
-For a volunteer ambulance service, the written agreement might list the four deliverables, state that no system will be changed by the student, and name who keeps the contact sheet afterwards.
+Small organisations that support communities — a food bank, a rural clinic, a volunteer ambulance service — often depend on critical services and have little security capacity. A structured, low-risk contribution: an asset list, account and backup review against a simple published baseline, a one-page incident contact sheet, and a short staff session. The same authorisation and confidentiality rules apply; your duty of care is higher, not lower, when the organisation cannot judge your advice. For a volunteer ambulance service, the written agreement might list the four deliverables, state that no system will be changed by the student, and name who keeps the contact sheet afterwards.
 
 ### 36.5 Reflective log
 
-Keep a weekly log with four headings: **what I did**, **what I observed**, **what surprised me and why**, **what I would do differently**. Reflection turns experience into learning and provides evidence for assessment. Keep the log sanitised from the start: no system names, addresses, credentials or personal data — write "the remote-access gateway" not its hostname.
-
-The CW entry writes "7 of 42 outstations" rather than the outstation names, so it can be shown to an assessor without editing.
-
-The CW entry was written after the second night shift, while the slow-ticketing explanation was fresh, and it stayed in the student's own log rather than in the host's shared folder.
+Keep a weekly log with four headings: **what I did**, **what I observed**, **what surprised me and why**, **what I would do differently**. Reflection turns experience into learning and provides evidence for assessment. Keep the log sanitised from the start: no system names, addresses, credentials or personal data — write "the remote-access gateway" not its hostname. The CW entry writes "7 of 42 outstations" rather than the outstation names, so it can be shown to an assessor without editing. The CW entry was written after the second night shift, while the slow-ticketing explanation was fresh, and it stayed in the student's own log rather than in the host's shared folder.
 
 ### 36.6 Worked example: a week's log entry (synthetic)
 
@@ -2751,9 +2743,7 @@ The CW entry was written after the second night shift, while the slow-ticketing 
 - Judging practice before understanding constraints.
 - Reflective logs that describe activity but not learning.
 
-The CW log entry avoids all four: the placement had an agreement, the paper sheet proposal was approved before inclusion, the student asked why tickets were missing before judging, and the entry records a changed assumption. EX072 shows the second error in its most dangerous form: a recorded credential.
-
-At CW, the supervisor approved the paper sheet proposal in sanitised form; the firmware gaps for named outstations stayed on site.
+The CW log entry avoids all four: the placement had an agreement, the paper sheet proposal was approved before inclusion, the student asked why tickets were missing before judging, and the entry records a changed assumption. EX072 shows the second error in its most dangerous form: a recorded credential. At CW, the supervisor approved the paper sheet proposal in sanitised form; the firmware gaps for named outstations stayed on site.
 
 ### Exercises — chapter 36
 
@@ -2825,9 +2815,7 @@ Both methods say the same thing in substance: 17 of 20 is consistent with a true
 
 ### 37.4 Peer review
 
-Seminar groups exchange capstone evidence chapters. A useful review states what the work claims, what is convincing, the two or three most important problems (each with a suggested fix), and minor points. Review the work, not the person; be specific ("the restore-time claim rests on one drill in a test environment; can you add the drill's conditions and an interval?"). Authors respond point by point: accepted and changed, or declined with reasons.
-
-To the restore-time comment, for example: "Added the drill's conditions; an interval is not possible from one drill, so the claim is now stated as a single observation."
+Seminar groups exchange capstone evidence chapters. A useful review states what the work claims, what is convincing, the two or three most important problems (each with a suggested fix), and minor points. Review the work, not the person; be specific ("the restore-time claim rests on one drill in a test environment; can you add the drill's conditions and an interval?"). Authors respond point by point: accepted and changed, or declined with reasons. To the restore-time comment, for example: "Added the drill's conditions; an interval is not possible from one drill, so the claim is now stated as a single observation."
 
 ### 37.5 Common errors and limits
 
@@ -2836,9 +2824,7 @@ To the restore-time comment, for example: "Added the drill's conditions; an inte
 - Reviews that only praise or only attack.
 - Ignoring how evaluation protocols can inflate results.
 
-Lab 14 shows the first: "85 %" without "of 20" and an interval hides that the true rate may be 64 %. A detector vendor's own benchmark (EX074) is the second. A review that says only "great work" helps nobody. The fourth is Kim and colleagues' point about evaluation protocols.
-
-"The detection rate rests on Lab 14's 17 of 20" names the evidence; "the results seem optimistic" does not.
+Lab 14 shows the first: "85 %" without "of 20" and an interval hides that the true rate may be 64 %. A detector vendor's own benchmark (EX074) is the second. A review that says only "great work" helps nobody. The fourth is Kim and colleagues' point about evaluation protocols. "The restore success rate rests on Lab 14's 17 of 20" names the evidence; "the results seem optimistic" does not.
 
 ### Exercises — chapter 37
 
@@ -2868,9 +2854,7 @@ After this chapter you can (1) execute a capstone plan while controlling scope a
 
 ### 38.1 Working to a plan
 
-Implementation turns the proposal (Chapter 35) into evidence. Keep three living documents. A **project log** (date, what you did, what you decided and why). An **evidence register** (item, source, date, type, how obtained, where stored, which criterion it supports — Chapter 15). A **change record** for any departure from the proposal, with your supervisor's agreement. Scope creep is the commonest capstone failure: new questions are interesting, but each must either replace something or wait for "future work".
-
-In the week-14 checkpoint below, the change record states what replaced the declined second interview, a document review of two public guidance sources, and the validity cost: practitioner input now rests on one interview.
+Implementation turns the proposal (Chapter 35) into evidence. Keep three living documents. A **project log** (date, what you did, what you decided and why). An **evidence register** (item, source, date, type, how obtained, where stored, which criterion it supports — Chapter 15). A **change record** for any departure from the proposal, with your supervisor's agreement. Scope creep is the commonest capstone failure: new questions are interesting, but each must either replace something or wait for "future work". In the week-14 checkpoint below, the change record states what replaced the declined second interview, a document review of two public guidance sources, and the validity cost: practitioner input now rests on one interview.
 
 ### 38.2 Building the supporting model
 
@@ -2878,17 +2862,11 @@ Most bachelor capstones need a small artefact: an exposure model, a dependency s
 
 ### 38.3 Collecting evidence from people and hosts
 
-Interviews follow the approved protocol and consent (Chapter 33). Host documents are handled under the placement agreement (Chapter 36). Anything about a real operator's vulnerabilities is held securely and appears in the thesis only in sanitised, host-approved form. If access is withdrawn, use the fallback in your proposal and record the change; do not quietly substitute guesses for data.
-
-In the week-14 checkpoint, the inventory script's seed (38) and hash went into the register the day the script was run.
-
-For the unsupported-devices capstone, interview notes are pseudonymised on the day, stored encrypted, and deleted on the schedule in the consent form. If the host withdraws its device list, the proposal's synthetic inventory replaces it, and the change record says so.
+Interviews follow the approved protocol and consent (Chapter 33). Host documents are handled under the placement agreement (Chapter 36). Anything about a real operator's vulnerabilities is held securely and appears in the thesis only in sanitised, host-approved form. If access is withdrawn, use the fallback in your proposal and record the change; do not quietly substitute guesses for data. For the unsupported-devices capstone, interview notes are pseudonymised on the day, stored encrypted, and deleted on the schedule in the consent form. If the host withdraws its device list, the proposal's synthetic inventory replaces it, and the change record says so.
 
 ### 38.4 Surprising and negative results
 
 Results that contradict your expectation are evidence too. If restore drills in your lab model show that the option you expected to win cannot meet the objective, report it and investigate why — perhaps a dependency you had not modelled. Do not adjust parameters until the result "looks right"; if you change a parameter, record why and show both results. Honest negative findings are among the most useful outputs a capstone can produce for a host.
-
-The vendor gateway reduced exposure least for imaging devices because they also accept connections from the image archive, which the gateway does not mediate; the student kept that result and modelled archive-side controls as a variant.
 
 ### 38.5 Worked example: an implementation checkpoint (synthetic)
 
@@ -2901,9 +2879,7 @@ The vendor gateway reduced exposure least for imaging devices because they also 
 - Tuning a model until it agrees with expectations.
 - Silent changes of scope or method.
 
-The week-14 checkpoint avoids each: the inventory script has a seed and hash, the model is tested on a hand-worked case, the gateway surprise is kept, and the interview substitution is recorded. Changing the vendor-gateway parameters until imaging exposure looked smaller would have been the third error.
-
-In the checkpoint, the hash of make_inventory.py and the supervisor-approved change record were both written on the day, not reconstructed at thesis time.
+The week-14 checkpoint avoids each: the inventory script has a seed and hash, the model is tested on a hand-worked case, the gateway surprise is kept, and the interview substitution is recorded. Changing the vendor-gateway parameters until imaging exposure looked smaller would have been the third error. In the checkpoint, the hash of make_inventory.py and the supervisor-approved change record were both written on the day, not reconstructed at thesis time.
 
 ### Exercises — chapter 38
 
@@ -2933,35 +2909,19 @@ After this chapter you can (1) evaluate your capstone's results against the succ
 
 ### 39.1 Against the criteria you set
 
-Evaluation begins with the proposal's success criteria (Chapter 35). Were they met, partly met or not met? Report each honestly with evidence. Then evaluate the **comparison** itself: are the scores supported by the evidence register; would another person, using your anchored scales, give similar scores (ask one); did any constraint exclude an option?
-
-One interview took place and the second was replaced by documents, so the criterion is reported as partly met rather than quietly dropped.
-
-Asking a second person to score two options with your anchored scales is a quick reliability check; if their scores differ by more than one point on any criterion, your anchors need clearer wording before the thesis.
+Evaluation begins with the proposal's success criteria (Chapter 35). Were they met, partly met or not met? Report each honestly with evidence. Then evaluate the **comparison** itself: are the scores supported by the evidence register; would another person, using your anchored scales, give similar scores (ask one); did any constraint exclude an option? In the worked evaluation (§39.5), one interview took place and the second was replaced by documents, so the practitioner-input criterion is reported as partly met rather than quietly dropped. Asking a second person to score two options with your anchored scales is a quick reliability check; if their scores differ by more than one point on any criterion, your anchors need clearer wording before the thesis.
 
 ### 39.2 Sensitivity and robustness
 
-Re-run your comparison under plausible variations: different weights (Lab 13), pessimistic and optimistic evidence (Chapter 22's halved autonomy), alternative model assumptions (Chapter 38's archive variant). A **robust** recommendation holds across most variations; a **fragile** one depends on a specific assumption, which you must name. Present the result as a short table: variation, winner, comment.
-
-In the worked evaluation the variations beyond the agreed weights are a cost weight of 0.4, a cost weight of 0.6, archive-side controls added to the gateway and pessimistic evidence for isolation.
-
-The worked evaluation shows a fragile result: the gateway wins once cost weight exceeds 0.45, and accelerated replacement wins when isolation's monitoring is assumed not to work. Both are named in the conclusion as reversal conditions, so a reader can see which value judgement and which assumption the recommendation rests on.
+Re-run your comparison under plausible variations: different weights (Lab 13), pessimistic and optimistic evidence (Chapter 22's halved autonomy), alternative model assumptions (Chapter 38's archive variant). A **robust** recommendation holds across most variations; a **fragile** one depends on a specific assumption, which you must name. Present the result as a short table: variation, winner, comment. The worked evaluation shows a fragile result: the gateway wins once cost weight exceeds 0.45, and accelerated replacement wins when isolation's monitoring is assumed not to work. Both are named in the conclusion as reversal conditions, so a reader can see which value judgement and which assumption the recommendation rests on.
 
 ### 39.3 Limitations with direction
 
-"The sample was small" is a weak limitation. A useful limitation says **what**, **why it matters** and **in which direction** it probably biases the result. For example: "The exposure model assumes every unsupported device is equally exploitable; in practice internet-adjacent devices are more exposed, so the model probably *understates* the benefit of isolation for imaging devices." Directional limitations let readers adjust your conclusions rather than discard them.
-
-The single interview probably understates isolation's clinical disruption; the exposure model ignoring attacker targeting probably understates the value of removing the most exposed devices first; the synthetic inventory's direction is unknown.
-
-Where the direction is genuinely unknown, as with the synthetic inventory, say so explicitly rather than leaving the limitation undirected by omission.
+"The sample was small" is a weak limitation. A useful limitation says **what**, **why it matters** and **in which direction** it probably biases the result. For example: "The exposure model assumes every unsupported device is equally exploitable; in practice internet-adjacent devices are more exposed, so the model probably *understates* the benefit of isolation for imaging devices." Directional limitations let readers adjust your conclusions rather than discard them. Where the direction is genuinely unknown, as with the synthetic inventory, say so explicitly rather than leaving the limitation undirected by omission.
 
 ### 39.4 Independent review
 
-Before the thesis is final, ask someone outside your project — a peer from the seminar (Chapter 37), your host supervisor, an academic not involved — to review the evaluation chapter. Record their points and your responses. Independence is the weakest link in most evidence (Chapter 15); the capstone is where you practise strengthening it.
-
-The reviewer's question was what happens if monitoring alerts are not reviewed.
-
-In the worked evaluation the reviewer's point about unstaffed monitoring changed the main table: the pessimistic variation became a headline result, and the recommendation became conditional. Record the reviewer's role and independence beside each point, so an assessor can judge how much weight the review carries.
+Before the thesis is final, ask someone outside your project — a peer from the seminar (Chapter 37), your host supervisor, an academic not involved — to review the evaluation chapter. Record their points and your responses. Independence is the weakest link in most evidence (Chapter 15); the capstone is where you practise strengthening it. In the worked evaluation the reviewer's point about unstaffed monitoring changed the main table: the pessimistic variation became a headline result, and the recommendation became conditional. Record the reviewer's role and independence beside each point, so an assessor can judge how much weight the review carries.
 
 ### 39.5 Worked example: evaluation table (synthetic)
 
@@ -2991,9 +2951,7 @@ Limitations (directional): synthetic inventory (direction unknown — stated as 
 - Limitations without direction.
 - Reviews from people who helped produce the work.
 
-The worked evaluation avoids the first by using the proposal's criteria, varies the weights that matter, gives each limitation a direction, and uses a reviewer who did not help produce the work.
-
-The second error is common: varying the evidence-strength weight, which barely changes the ranking, while leaving cost untouched, which flips it. A limitation such as "one interview" with no direction leaves the reader unable to adjust the result. A reviewer who helped build the exposure model cannot provide independent review of it.
+The worked evaluation avoids the first by using the proposal's criteria, varies the weights that matter, gives each limitation a direction, and uses a reviewer who did not help produce the work. The second error is common: varying the evidence-strength weight, which barely changes the ranking, while leaving cost untouched, which flips it. A limitation such as "one interview" with no direction leaves the reader unable to adjust the result. A reviewer who helped build the exposure model cannot provide independent review of it.
 
 ### Exercises — chapter 39
 
@@ -3038,17 +2996,11 @@ Write the method chapter first (you know it best), results second, introduction 
 
 ### 40.2 The conclusion
 
-A strong conclusion answers the question asked — not a broader one — and says how strongly. Compare: "Network isolation is the best way to secure medical devices" (overclaims) versus "For a mid-sized hospital with the synthetic inventory studied, isolation with monitored conduits reduced exposure most per pound, provided alerts are reviewed daily; the recommendation reverses if cost dominates the decision (weight above 0.45) or if monitoring is unstaffed." The second is narrower and far more useful.
-
-The reversal conditions in that conclusion are a cost weight above 0.45, under which the vendor gateway wins, and unreviewed monitoring alerts, under which accelerated replacement wins.
+A strong conclusion answers the question asked — not a broader one — and says how strongly. Compare: "Network isolation is the best way to secure medical devices" (overclaims) versus "For a mid-sized hospital with the synthetic inventory studied, isolation with monitored conduits reduced exposure most per pound, provided alerts are reviewed daily; the recommendation reverses if cost dominates the decision (weight above 0.45) or if monitoring is unstaffed." The second is narrower and far more useful. The reversal conditions in that conclusion are a cost weight above 0.45, under which the vendor gateway wins, and unreviewed monitoring alerts, under which accelerated replacement wins.
 
 ### 40.3 The presentation
 
-Twenty minutes for a mixed panel: problem and question (3 min), method (4), results (6), recommendation and limits (4), what you would do next (3). One idea per slide; show the comparison table and the sensitivity result; put details in backup slides. Rehearse aloud with a timer and with a non-specialist.
-
-For the unsupported-devices capstone, that slide shows the five variations and highlights the two that change the winner.
-
-For the unsupported-devices capstone, the results minutes show the comparison table and the evaluation's variation table; the limits minutes name the staffing condition. Backup slides hold the evidence register and the model test. A rehearsal with a non-specialist usually reveals jargon such as "conduit" that needs one sentence of explanation.
+Twenty minutes for a mixed panel: problem and question (3 min), method (4), results (6), recommendation and limits (4), what you would do next (3). One idea per slide; show the comparison table and the sensitivity result; put details in backup slides. Rehearse aloud with a timer and with a non-specialist. For the unsupported-devices capstone, the results minutes show the comparison table and the evaluation's variation table, highlighting the two variations that change the winner; the limits minutes name the staffing condition. Backup slides hold the evidence register and the model test. A rehearsal with a non-specialist usually reveals jargon such as "conduit" that needs one sentence of explanation.
 
 ### 40.4 Answering questions
 
@@ -3066,9 +3018,7 @@ Questions fall into families: *scope* ("why not include X?"), *method* ("why the
 - Defensive or invented answers to hard questions.
 - Disclosing host-identifying information in slides.
 
-The candidate answers the staffing challenge from Table 6.3: if alerts are not reviewed, accelerated replacement wins, so the recommendation is conditional on daily review.
-
-A results chapter that says "isolation is clearly better" mixes interpretation into results. A conclusion about "medical devices" generally claims more than a 120-device synthetic inventory supports. Slides that reach the recommendation in minute 19 leave no time for limits. And a host's device names on a slide breach the placement agreement even if the thesis was sanitised.
+The candidate answers the staffing challenge from Table 6.3: if alerts are not reviewed, accelerated replacement wins, so the recommendation is conditional on daily review. A results chapter that says "isolation is clearly better" mixes interpretation into results. A conclusion about "medical devices" generally claims more than a 120-device synthetic inventory supports. Slides that reach the recommendation in minute 19 leave no time for limits. And a host's device names on a slide breach the placement agreement even if the thesis was sanitised.
 
 ### Exercises — chapter 40
 
