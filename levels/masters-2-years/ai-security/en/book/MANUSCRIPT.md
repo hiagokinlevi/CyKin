@@ -657,10 +657,10 @@ Leo's main results (synthetic, five seeds, 20,000 records): TPR at 1% FPR under 
 
 Four errors recur, and each biases results or hides costs; check your analysis for all four:
 
-- Running all seeds of one condition before another; this lets time-dependent problems align with that condition.
-- Analysing before quality checks; this turns bugs, such as a missing seed, into findings.
+- Running all seeds of one condition before another; this lets time-dependent problems, such as a node slowing down, align with that condition.
+- Analysing before quality checks; this turns bugs, such as the missing seed-4 run that Leo's checks found, into findings.
 - Mixing exploratory and confirmatory results; this overstates certainty.
-- Reporting security gains without costs; this hides trade-offs, such as the drop in macro-F1 that Leo reported.
+- Reporting security gains without costs; this hides trade-offs, such as the macro-F1 drop from 0.912 to 0.905 that Leo reported.
 
 ### Exercises
 
@@ -747,7 +747,7 @@ output_rounding=0    queries=6 max_weight_error=0.534 label_agreement=0.882
 
 Four errors recur, and each makes claims harder to trust; check your draft for all four:
 
-- Results and discussion mixed; this blurs what was measured.
+- Results and discussion mixed; this blurs what was measured with how it is interpreted.
 - Limitations that are generic ("more data needed"); they tell examiners nothing about this study.
 - Operational attack detail against named systems; it helps attackers without helping readers.
 - Recommendations stated as findings; a recommendation stated as a finding claims more than the data shows, which is why Leo moved and softened his insurer recommendation.
@@ -841,7 +841,7 @@ Four errors recur, and each weakens the final stage; check your submission for a
 
 - Submitting without anyone reproducing a result; without a reproduction, problems such as Leo's skipped long records reach examiners.
 - Answering questions defensively without evidence; this loses examiners' confidence.
-- Practitioner summaries that drop the conditions; such a summary turns a result under one attack into a general rule.
+- Practitioner summaries that drop the conditions; such a summary turns a result under one attack, on synthetic notes and one architecture, into a general rule.
 - Ignoring required corrections' page references; corrections without page references are hard to check and delay the award.
 
 ### Exercises
