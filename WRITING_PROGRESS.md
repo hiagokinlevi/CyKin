@@ -2,14 +2,14 @@
 
 [Home](README.md) · [Academic area map](AREA_MAP.md) · [Book completion gate](BOOK_STANDARD.md)
 
-The README bookshelf is generated locally from the same data as this table whenever the public catalog is built. Each percentage is **authored English chapter drafts ÷ planned English subject-chapters in that area across all nine courses**. A chapter counts only when its `MANUSCRIPT.md` has at least 300 whitespace-separated words of teaching before its exercises; a `PLAN.md` outline, chapter heading alone or generated summary does not count. This measures **draft coverage**, not content depth, 300-page A4 completion, technical approval or translation progress. The public books still have their separate release gate.
+The README bookshelf is generated locally from the same data as this table whenever the public catalog is built. Each percentage is **authored English chapter drafts ÷ planned English subject-chapters in that area across all nine courses**. A chapter counts only when its `MANUSCRIPT.md` has at least 300 whitespace-separated words of teaching before its exercises; a `PLAN.md` outline, chapter heading alone or generated summary does not count. This is a legacy discovery threshold, not a chapter-size requirement. The percentage measures **draft coverage**, not content depth, A4 book length, technical approval or translation progress. The public books still have their separate release gate.
 
 **Publication update (2026-10-13):** The six early Chapter 2 correction units are consolidated in the [rapid Incident Response English manuscript](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md#ch-02). This changes teaching and executable validation, not the chapter or exercise denominator, and does not create a translation. The full 207-course catalog was recounted from current English manuscripts on 2026-10-13; these figures measure draft coverage, not completed books. The rapid book had a 353-page A4 length measurement for prior SHA-256 `a7b0fb3cc2ef0ee5f3433bdbd6b00ecd70bbd528ad31b5d97fc63f4a42724049`; the current four-weekly-chapter, 20-lesson source was subsequently rerendered at **386 A4 pages** for SHA-256 `7c50b42f658737cce23bb1509ad5fedd3a1db9a9e2d5a7ea01435eb2db820492`; see [the course checkpoint](COURSE_WRITING_PROGRESS.md). This is not editorial approval. No complete-book status is granted by publication alone.
 
 | Sigil | Academic area | Drafted / planned English chapters | Draft coverage | Start reading |
 |---|---|---:|---:|---|
 | IR | Incident response and cyber resilience | 182 / 182 | 100.0% | [Course](levels/rapid-1-month/incident-response-resilience/README.md) |
-| CYBR | Cybersecurity | 3 / 182 | 1.6% | [Course](levels/rapid-1-month/cybersecurity/README.md) |
+| CYBR | Cybersecurity | 8 / 186 | 4.3% | [Course](levels/rapid-1-month/cybersecurity/README.md) |
 | INFO | Information security | 182 / 182 | 100.0% | [Course](levels/rapid-1-month/information-security/README.md) |
 | DATA | Data governance | 182 / 182 | 100.0% | [Course](levels/rapid-1-month/data-governance/README.md) |
 | PRIV | Privacy and data protection | 182 / 182 | 100.0% | [Course](levels/rapid-1-month/privacy-data-protection/README.md) |
@@ -32,6 +32,6 @@ The README bookshelf is generated locally from the same data as this table whene
 | OT | OT, IoT and cyber-physical security | 182 / 182 | 100.0% | [Course](levels/rapid-1-month/ot-iot-security/README.md) |
 | CRIT | Critical infrastructure and sector security | 182 / 182 | 100.0% | [Course](levels/rapid-1-month/critical-sector-security/README.md) |
 
-**Total:** 4,007 / 4,186 planned English chapters have draft teaching (95.7%).
+**Total:** 4,012 / 4,190 currently indexed English chapters have draft teaching (95.8%). This is legacy chapter draft coverage, not daily-lesson or complete-book coverage.
 
 See [all 207 course percentages](COURSE_WRITING_PROGRESS.md) for the level-by-level view. These percentages update when the maintainer runs the private local generator before publishing manuscript changes. They are not live GitHub computations. [Editorial status and verified book count](STRUCTURE_REVIEW.md).

@@ -8,7 +8,7 @@ The numerator counts numbered chapter anchors in `MANUSCRIPT.md`; the denominato
 
 | Language | Public manuscripts / 207 | Authored chapters / currently indexed positions | Explicit daily lessons / level baseline | Chapters with explicit example heading | Chapters with detected exercise | Chapters with navigation | Chapters with Mermaid/image |
 |---|---:|---:|---:|---:|---:|---:|
-| English | 199/207 | 4012/4190 | 0/120060 | 3872/4012 | 4012/4012 | 4012/4012 | 4012/4012 |
+| English | 199/207 | 4012/4190 | 20/120060 | 3872/4012 | 4012/4012 | 4012/4012 | 4012/4012 |
 | Português | 124/207 | 2509/4186 | 0/120060 | 2412/2509 | 2509/2509 | 2509/2509 | 2509/2509 |
 | Español | 27/207 | 516/4186 | 0/120060 | 474/516 | 516/516 | 516/516 | 516/516 |
 

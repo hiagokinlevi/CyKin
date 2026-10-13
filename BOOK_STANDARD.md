@@ -22,7 +22,7 @@ Original educational material owned by the maintainer is dedicated under [CC0 1.
 2. A worked example and a numbered exercise for each authored daily lesson. Every exercise needs a learning objective, inputs, constraints, expected evidence and an assessment rubric. Match each exercise to a worked answer; a global exercise total by itself is not a quality measure.
 3. A final worked-results appendix in the same book, with a matching answer and explanation for every exercise ID. An exercise with no answer is unfinished.
 4. Review citations, rights, accuracy, privacy, ethics, accessibility, language quality and technical reproducibility. Use descriptive link text, ordered headings, text alternatives for figures, labeled code blocks and plain-language summaries for complex tables. Record reviewer, date and edition in the book metadata.
-5. Public works in progress may be read with their real availability shown. Mark a volume **complete** only after its lessons meet this gate. Page count, word count and lesson count are not evidence of completion.
+5. Public works in progress may be read with their real availability shown. Mark a volume **complete** only after its intended course scope is taught across the weekly sequence and each authored lesson meets this gate. Page count, word count and lesson count alone are not evidence of completion.
 
 ## A4 verification edition
 

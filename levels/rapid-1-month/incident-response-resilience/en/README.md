@@ -23,4 +23,4 @@ The [20-lesson index](SUBJECTS.md) lists every day, exercise assignment and next
 
 English is the reference edition and current writing priority. Translation begins after the English collection is written and reviewed; every later edition needs its own technical and language review.
 
-**Completion gate:** at least 300 verified A4 pages for this level, 50 substantial exercises with worked results, verified sources, safe reproducible practice, and technical, rights, accessibility and editorial review. A public manuscript can be studied before the gate passes. Course titles do not confer accreditation.
+**Completion gate:** substantive teaching throughout the intended weekly course, one worked example and exercise with its answer per daily lesson, verified sources, safe reproducible practice, and technical, rights, accessibility and editorial review. The 386-page A4 preflight and existing 50 exercise/answer pairs describe this edition; they do not by themselves approve it. A public manuscript can be studied before review passes. Course titles do not confer accreditation.

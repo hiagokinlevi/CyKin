@@ -1,6 +1,6 @@
 # CyKin structure and progress review
 
-Structural review begun 12 October 2026; rapid-book checkpoint updated 13 October 2026. [Project introduction](README.md) · [academic area map](AREA_MAP.md) · [course guide](guia-geral-cursos-e-livros.md) · [source audit](SOURCE_AUDIT.md).
+Structural review begun 12 October 2026; rapid-book checkpoint updated 13 October 2026. [Project introduction](README.md) · [academic area map](AREA_MAP.md) · [course guide](guia-geral-cursos-e-livros.md) · [source audit](SOURCE_AUDIT.md). Earlier comparisons to a 300-page or 50-exercise threshold below record the policy used at those checkpoints; the current [book standard](BOOK_STANDARD.md) assesses complete, reviewed teaching rather than a page quota. The current weekly-chapter and daily-lesson baselines appear in the [README table](README.md#courses-weekly-chapters-and-daily-lessons).
 
 ## Verified structural snapshot
 
@@ -10,7 +10,7 @@ Structural review begun 12 October 2026; rapid-book checkpoint updated 13 Octobe
 | Academic areas | 23 | One course under each level, nine editions per course and a separate playbook index |
 | Distinct course designs | 207 | Nine levels per area; one principal English book planned per course |
 | Planned language editions | 1,863 | Nine language folders per course; most are structural plans only |
-| English curricular subjects | 4,186 | One subject is one planned chapter within its course's book |
+| Original English curricular subject positions | 4,186 | Legacy module positions; the current English plans index 4,190 chapters after rapid Cybersecurity expanded |
 | Sequential study route | [207 courses / 4,186 English chapter positions](STUDY_PATH.md) | Level first, catalog area next, chapters in order; a linked plan remains unwritten teaching |
 | Course AI skills | 207 | One skill per area-and-level course; no separate subject skills |
 | Book chapter summaries across nine languages | 37,674 | Editorial summaries; other languages still contain English working outlines |
@@ -18,11 +18,11 @@ Structural review begun 12 October 2026; rapid-book checkpoint updated 13 Octobe
 | Authored English chapter drafts | [Current generated count](WRITING_PROGRESS.md) | Area-by-area percentages measure manuscript draft teaching; they do not certify chapter or book completion |
 | Revision-pinned source playbook links | 14 | Supplementary references in matching area playbook indexes |
 | Authored English manuscripts | 199 / 207 | Public manuscripts exist; counts, lesson structure and completion are separate. See the [language inventory](LANGUAGE_LESSON_PROGRESS.md) and [course writing table](COURSE_WRITING_PROGRESS.md). |
-| Complete verified books | 0 | No 300-page A4 volume and complete 50-exercise answer set has passed review |
+| Complete verified books | 0 | No edition has passed the current full teaching, exercise/answer, source and editorial review gate |
 
 ## Completion measure
 
-The folder and plan scaffold covers **207 of 207 courses and 1,863 of 1,863 planned editions (100% of the current catalog's structural coverage)**. This is a coverage measure, not an educational-completion score. Every edition still requires authored teaching, chapter exercises and worked answers, source and technical review, and an A4 release check. **Completed editions: 0 of 1,863 (0%); 1,863 of 1,863 (100%) remain to pass the book gate.** The 199 English manuscripts are public learning texts at different stages; none is approved complete. The current rapid Incident Response source has a **386-page A4 local preflight** for SHA-256 `7c50b42f658737cce23bb1509ad5fedd3a1db9a9e2d5a7ea01435eb2db820492`. Earlier professional, technical, doctoral and Critical Infrastructure measurements belong to older source hashes unless rechecked. The rapid book meets the page-length floor but remains unapproved pending the other gates. The [course-level table](COURSE_WRITING_PROGRESS.md) reports chapter-draft coverage, manuscript words and source-matched A4 length for every English course where a measurement exists.
+The folder and plan scaffold covers **207 of 207 courses and 1,863 of 1,863 planned editions (100% of the current catalog's structural coverage)**. This is a coverage measure, not an educational-completion score. Every edition still requires authored weekly chapters with daily examples, exercises and worked answers, source and technical review, and a source-matched A4 render for any reported page count. **Completed editions: 0 of 1,863 (0%); 1,863 of 1,863 (100%) remain to pass the book gate.** The 199 English manuscripts are public learning texts at different stages; none is approved complete. The current rapid Incident Response source has a **386-page A4 local preflight** for SHA-256 `7c50b42f658737cce23bb1509ad5fedd3a1db9a9e2d5a7ea01435eb2db820492`. Earlier professional, technical, doctoral and Critical Infrastructure measurements belong to older source hashes unless rechecked. This page count is not approval. The [course-level table](COURSE_WRITING_PROGRESS.md) reports chapter-draft coverage, manuscript words and source-matched A4 length where measured.
 
 ### A4 preflight
 
@@ -82,7 +82,7 @@ Each level links all 23 area course homes; each course home links its one skill,
 
 ## Publication and rights
 
-Original maintainer-owned text is dedicated under [CC0 1.0](LICENSE), subject to [rights exceptions](RIGHTS.md). Linked third-party material and independent repositories retain their own rights. The [book standard](BOOK_STANDARD.md) requires an original complete manuscript, at least 50 substantial exercises with worked answers, technical and editorial review, accessible Markdown and at least 300 actual A4 pages in a fixed verification layout. No current draft passes that gate.
+Original maintainer-owned text is dedicated under [CC0 1.0](LICENSE), subject to [rights exceptions](RIGHTS.md). Linked third-party material and independent repositories retain their own rights. The [book standard](BOOK_STANDARD.md) requires complete teaching for the intended course scope, a worked example and exercise with answer for each daily lesson, technical and editorial review, accessible Markdown and honest source-matched A4 reporting. No current edition passes that gate.
 
 ## Sequential progress
 
@@ -97,7 +97,7 @@ Original maintainer-owned text is dedicated under [CC0 1.0](LICENSE), subject to
 | Review and edit the entire English set | Pending | Complete manuscripts and specialist reviews first |
 | Translate and review Portuguese | Pending | Approved English reference set first |
 | Translate Spanish and other DAI languages sequentially | Pending | Portuguese edition reviewed first |
-| Validate finished books | Preliminary 386-page rapid, historical 109-page professional, 124-page technical and 122-page doctoral Incident Response checks; Critical Infrastructure bachelor's 110 pages and doctoral 88; no approved book | Final 300-page-or-longer A4 evidence and reviewer record per edition |
+| Validate finished books | Preliminary 386-page rapid, historical 109-page professional, 124-page technical and 122-page doctoral Incident Response checks; Critical Infrastructure bachelor's 110 pages and doctoral 88; no approved book | Complete teaching and exercise/answer audit, source-matched A4 record and reviewer evidence per edition |
 
 The rapid Incident Response Chapter 3 early review integrated W1-SCOPE route and service coverage checks and RB3-RECHECK dated receipt consistency, corrected R15's unknown deletion anchor, and clarified EX029/EX031. Its original W1 five-line and RB3 twenty-two-line teaching fixtures are preserved; six and eight supplemental lines were independently reproduced. The separate working correction file was consolidated into the one public manuscript and removed. The 333-page A4 result is a length check only; the course remains a draft pending the remaining technical, answer, source, accessibility and language review.
 
