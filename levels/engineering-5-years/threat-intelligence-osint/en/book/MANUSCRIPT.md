@@ -996,7 +996,7 @@ Review is more than reading code. The reviewer runs the tests, checks that the c
 
 CI runs unit tests, property tests and a replay of a synthetic feed through the whole pipeline, comparing outputs with a known-good snapshot. A difference fails the build until explained.
 
-The replay is what made the change in the worked example visible: the snapshot showed exactly how many indicators would stay in blocking. A failing replay is not always a bug. Sometimes the change is intended, and the engineer updates the snapshot with a note explaining why.
+The replay is what made the change in the worked example visible: the snapshot showed exactly how many indicators would stay in blocking: 1,240 more once the decay floor dropped from 30 to 20. A failing replay is not always a bug. Sometimes the change is intended, and the engineer updates the snapshot with a note explaining why.
 
 ### 14.3 Dependencies
 

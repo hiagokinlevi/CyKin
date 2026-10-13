@@ -868,7 +868,7 @@ Toda mudança no Lantern passa por um branch, uma execução automática de test
 
 ### 14.2 Integração contínua
 
-A CI roda testes unitários, testes de propriedades e uma reprodução de um feed sintético pelo pipeline inteiro, comparando as saídas com um snapshot sabidamente bom. Uma diferença faz o build falhar até ser explicada. Foi a reprodução que tornou visível a mudança do exemplo resolvido: o snapshot mostrou exatamente quantos indicadores continuariam no bloqueio. Uma reprodução que falha nem sempre é um bug. Às vezes a mudança é intencional, e o engenheiro atualiza o snapshot com uma nota explicando o porquê.
+A CI roda testes unitários, testes de propriedades e uma reprodução de um feed sintético pelo pipeline inteiro, comparando as saídas com um snapshot sabidamente bom. Uma diferença faz o build falhar até ser explicada. Foi a reprodução que tornou visível a mudança do exemplo resolvido: o snapshot mostrou exatamente quantos indicadores continuariam no bloqueio: 1.240 a mais quando o piso de decaimento caiu de 30 para 20. Uma reprodução que falha nem sempre é um bug. Às vezes a mudança é intencional, e o engenheiro atualiza o snapshot com uma nota explicando o porquê.
 
 ### 14.3 Dependências
 
