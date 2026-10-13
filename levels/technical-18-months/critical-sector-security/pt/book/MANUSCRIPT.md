@@ -1,7 +1,7 @@
 # Infraestrutura Crítica e Segurança Setorial: Prática Técnica Aplicada
 
 - Idioma: português do Brasil (`pt`); curso técnico, dezoito meses; aproximadamente 1.200 horas de estudo planejado (curso 069 de 207 da [trilha de estudo](../../../../../STUDY_PATH.md)). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–5 de 18 já estão escritos em português, com os exercícios EX001–EX020 e suas resoluções; os capítulos 6–18 (EX021–EX072) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–10 de 18 já estão escritos em português, com os exercícios EX001–EX040 e suas resoluções; os capítulos 11–18 (EX041–EX072) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: operadores técnicos — técnicos de redes e de sistemas, técnicos de SCADA e de telemetria, analistas de segurança júnior em centros de operações — que já conhecem redes, sistemas operacionais e scripts básicos e agora trabalham em sistemas que movem água, energia ou o ar dos pacientes. Conhecimento de entrada: redes, sistemas operacionais, scripts e prática segura de laboratório.
 - Como este curso difere dos vizinhos. O [livro de tecnólogo](../../../../technologist-3-years/critical-sector-security/en/book/MANUSCRIPT.md) ensina implementadores a construir, operar e entregar um serviço monitorado completo. Os cursos [profissional](../../../../professional-6-months/critical-sector-security/en/book/MANUSCRIPT.md) e [rápido](../../../../rapid-1-month/critical-sector-security/en/book/MANUSCRIPT.md) tratam de decisões gerenciais e de uma primeira introdução. **Este livro técnico trata da profundidade técnica prática**: abrir os pacotes dos protocolos industriais, auditar e endurecer hosts, configurar e verificar firewalls de conduítes, detectar modos de falha e comandos não autorizados, resolver problemas eliminando hipóteses e produzir evidências que outro técnico possa conferir. Todo capítulo pergunta: *o que exatamente você digitaria, leria, mudaria ou testaria, e como provaria isso?*
 - Autoria e responsabilidade editorial: [hiagokinlevi](https://github.com/hiagokinlevi). O texto didático original, de titularidade do mantenedor, é dedicado sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus próprios direitos e não são relicenciadas aqui.
@@ -53,8 +53,13 @@ Toda afirmação factual sobre um protocolo, uma norma, um incidente público ou
 3. [Sistemas operacionais e identidades](#ch-03) — configuração efetiva do SSH, UIDs, contas de serviço e grupos.
 4. [Scripts e formatos de dados](#ch-04) — análise estrita de CSV/JSON, ordem de validação e coordenadas de registro.
 5. [Escopo de segurança e evidências](#ch-05) — escopo técnico, passivo primeiro, evidências verificáveis.
+6. [Infraestrutura crítica e segurança setorial: modelo de sistema](#ch-06) — zonas, conduítes e diferenças setoriais.
+7. [Infraestrutura crítica e segurança setorial: dados e telemetria](#ch-07) — syslog, relógios e linhas do tempo em UTC.
+8. [Infraestrutura crítica e segurança setorial: modos de falha](#ch-08) — lacunas, valores travados, picos e regras explicáveis.
+9. [Infraestrutura crítica e segurança setorial: ferramentas e métodos](#ch-09) — escolha de método, validação de ferramentas e o CRC do DNP3.
+10. [Infraestrutura crítica e segurança setorial: configuração de controles](#ch-10) — políticas de primeira correspondência, sombreamento e acesso de fornecedores.
 
-Capítulos 6–18: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-06), até a chegada dos próximos lotes.
+Capítulos 11–18: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-11), até a chegada dos próximos lotes.
 
 Apêndices: [Resoluções e notas de avaliação](#worked-results) · [Glossário](#glossary) · [Referências](#references).
 
@@ -694,7 +699,7 @@ Depois que o Laboratório 2 mostrou escritas vindas de uma mesa corporativa, L. 
 | Parada | Qualquer alarme da KW-04, perda de comunicação ou pedido do operador. |
 | Evidências | Exportação da configuração do firewall, saída do teste de conexão, linhas de log do fw-01; hashes na pasta do caso. |
 
-A nota de trabalho depois do teste diz: *Observado* — conexão de 10.30.99.9 para 10.10.4.2:502 concluída às 08:04:11Z; o fw-01 registrou permissão pela regra R4. *Inferido* — os hosts corporativos conseguem alcançar o Modbus das estações por causa da R4 (Capítulo 10). *Feito* — nada foi mudado. *Em aberto* — quem criou a R4 e por quê (responsável: L. Ferreira).
+A nota de trabalho depois do teste diz: *Observado* — a conexão de 10.30.99.9 para 10.10.4.2:502 não se completou às 08:04:11Z; o fw-01 a registrou como bloqueada pela negação padrão. *Inferido* — o fw-01 não deixa as mesas corporativas alcançarem o Modbus das estações; portanto, as escritas de 10.30.3.7 capturadas no Capítulo 2 devem ter usado outro caminho (Capítulos 10 e 13). *Feito* — nada foi mudado. *Em aberto* — qual caminho levou essas escritas (responsável: L. Ferreira).
 
 ### 5.6 Atividade prática
 
@@ -731,7 +736,644 @@ Em ambientes críticos, o escopo protege o processo tanto quanto quem testa. Esc
 <!-- cyberabc:chapter-navigation:start ch-05 -->
 ### Continue estudando — capítulo 05 de 18
 
-[← Capítulo 04](#ch-04) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 06 (inglês) →](../../en/book/MANUSCRIPT.md#ch-06)
+[← Capítulo 04](#ch-04) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-06"></a>
+
+## Capítulo 6 — Infraestrutura crítica e segurança setorial: modelo de sistema
+
+### Objetivos de aprendizagem e conexão
+
+Ao final deste capítulo, você deverá ser capaz de:
+
+- construir um modelo técnico de sistema de um serviço crítico: ativos, zonas, conduítes, protocolos, fronteiras de confiança e a consequência física que cada zona pode causar;
+- usar o vocabulário de zonas e conduítes da ISA/IEC 62443 no nível do técnico;
+- descrever como os serviços de água, saúde e eletricidade diferem tecnicamente — protocolos, tempos, sistemas de segurança e quem pode mudar o quê;
+- marcar no modelo onde ficarão os controles e as detecções de cada capítulo seguinte.
+
+Os Capítulos 1–5 foram os fundamentos gerais. Daqui em diante, o curso os aplica aos setores críticos. O modelo de sistema é o mapa do técnico: sem ele, uma regra de firewall, uma detecção ou uma etapa de resolução de problemas não tem a que se referir.
+
+### 6.1 Zonas e conduítes
+
+A série ISA/IEC 62443 agrupa ativos com requisitos de segurança semelhantes em **zonas** e os caminhos de comunicação entre elas em **conduítes** ([ISA/IEC 62443 overview](https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards)). As regras práticas que um técnico aplica:
+
+- todo ativo pertence a exatamente uma zona;
+- toda comunicação permitida entre zonas é um conduíte declarado, com propósito, protocolo, direção e responsável;
+- o que não está declarado não é permitido e, se observado, é uma constatação (o Laboratório 17 e o Capítulo 11 verificam isso);
+- a proteção de uma zona deve corresponder à pior consequência física dos ativos dentro dela.
+
+A forma comum de um sistema supervisório — campo, controle, supervisão, DMZ de operações, corporativo — aparece na NIST SP 800-82 Rev. 3 como uma arquitetura de exemplo ([SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final)). Use-a como vocabulário, não como modelo pronto: uma instalação real tem exceções históricas, e o trabalho do modelo é mostrá-las.
+
+### 6.2 O que registrar para cada elemento
+
+Para cada **ativo**: nome, endereço, função, zona, responsável, versões de software e firmware, protocolos falados, método de gerência e a consequência física da perda ou do uso indevido. Para cada **conduíte**: zona de origem, zona de destino, protocolo e porta, direção de iniciação, propósito, responsável, ponto de aplicação (qual regra de firewall) e ponto de monitoramento (qual sensor o vê). Para cada **fronteira de confiança**: o que a atravessa e que verificações acontecem ali.
+
+Para a eng-ws-15, registre que ela consegue programar RTUs e que a sua perda ou uso indevido tem consequência em toda a zona. Para cada conduíte, nomeie a regra de firewall que deveria aplicá-lo e o sensor que deveria vê-lo, para que uma verificação posterior saiba onde procurar. Não deixe nenhum ativo sem zona nem nenhum caminho permitido sem um responsável pelo conduíte.
+
+### 6.3 Diferenças setoriais que importam no teclado
+
+- **Água**: estações muito dispersas em enlaces celulares ou de rádio; telemetria Modbus ou DNP3; equipamentos de vida longa; operadores pequenos, com pessoal limitado. As consequências incluem perda de pressão, transbordamento e dosagem química incorreta. O alerta da CISA sobre ataques a CLPs Unitronics expostos à internet em sistemas de água lembra que exposição mais credenciais padrão é suficiente ([CISA AA23-335A](https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-335a)).
+- **Eletricidade**: subestações com relés de proteção cujos tempos são medidos em milissegundos; telecontrole DNP3 ou IEC 60870-5-104 até um centro de controle; IEC 61850 dentro das subestações modernas; separação estrita entre as funções de proteção e as de supervisão. Um técnico nunca altera os ajustes de proteção; eles pertencem aos engenheiros de proteção.
+- **Saúde**: sistemas de gestão predial (ventilação, pressão em quartos de isolamento, monitoramento de gases medicinais), redes de dispositivos clínicos e sistemas de TI num único edifício, muitas vezes compartilhando infraestrutura; a indisponibilidade afeta diretamente os pacientes, e as mudanças estão sujeitas à engenharia clínica e às instruções dos fabricantes dos dispositivos.
+
+Nos três, os **sistemas instrumentados de segurança** e as funções de proteção são projetados para agir independentemente do sistema supervisório. O modelo do técnico os mostra como zonas separadas e nunca roteia tráfego de gerência através deles.
+
+### 6.4 Exemplo resolvido: o modelo do KVROC (sintético)
+
+| Zona | Ativos | Pior consequência | Observações |
+|---|---|---|---|
+| Z1 Campo das estações (10.10.0.0/16) | RTUs KW-01..12, bombas, analisadores | Dosagem errada, transbordamento, perda de abastecimento | Modbus/TCP, sem autenticação |
+| Z2 Centro de controle (10.20.0.0/24) | scada-01, hmi-02, eng-ws-15, hist-02 | Perda da visão e do controle de todas as estações | eng-ws-15 consegue programar RTUs |
+| Z3 Subestação SS-3 | outstation (endereço DNP3 10), relés de proteção | Perda do telecontrole; a proteção é separada | DNP3 sobre o MPLS da operadora via fep-01 |
+| Z4 Gestão predial do hospital | bms-server, controladores | Perda dos alarmes de ventilação e de pressão | Apenas monitorada; o KVROC tem acesso de leitura |
+| Z5 Gerência (10.90.0.0/24) | jump-01, ntp-ops, ad-ops, coletor | O comprometimento alcança todas as zonas | Maior privilégio |
+| Z6 Corporativa (10.30.0.0/16) | mesas, e-mail, servidor de relatórios | Perturbação do negócio | Conectada à internet |
+
+Os conduítes declarados incluem: C1 Z2 scada-01 → Z1 tcp/502 varreduras de leitura; C2 Z2 eng-ws-15 → Z1 tcp/502 escritas durante janelas aprovadas; C3 Z5 jump-01 → Z2 tcp/22; C4 Z2 hist-02 → servidor de relatórios da Z6, envio (push) HTTPS do CSV diário. O Laboratório 2 já mostrou um caminho **não declarado**: mesa da Z6 → Z1 tcp/502. No modelo, ele aparece como uma linha vermelha com uma pergunta: que regra o permite, e desde quando? O Capítulo 10 responde.
+
+### 6.5 Atividade prática
+
+Estenda o modelo com dois conduítes para a Z3 (do fep-01 até a outstation e o caminho de suporte remoto do fornecedor) e um para a Z4. Para cada um, registre propósito, protocolo, iniciador, responsável, ponto de aplicação e ponto de monitoramento. Marque quais conduítes um único host comprometido da Z5 poderia abusar.
+
+Para o caminho de suporte remoto do fornecedor até a Z3, registre se ele termina no host de salto ou se alcança a outstation diretamente. Para a Z4, marque que o KVROC tem apenas acesso de leitura. Depois liste quais desses conduítes um host de salto comprometido na Z5 conseguiria abrir, e quais controles ainda se aplicariam.
+
+### 6.6 Erros comuns e limites
+
+- Zonas desenhadas por sub-rede IP, e não por consequência e confiança.
+- Conduítes sem responsáveis ou propósitos, que ninguém consegue remover depois.
+- Omitir a zona de gerência porque ela é "TI".
+- Modelar o sistema de segurança como um controlador comum.
+- Um modelo que nunca é comparado com o tráfego observado; o Capítulo 11 faz isso.
+
+- Desenhar zonas apenas por sub-rede quando dois hosts da mesma sub-rede têm consequências diferentes.
+- Deixar conduítes sem responsáveis, de modo que ninguém consegue removê-los depois.
+- Colocar uma função de segurança ou de proteção na mesma zona que controladores supervisórios comuns.
+
+### Exercícios — capítulo 6
+
+**EX021 — Posicione os ativos.** *Objetivo:* atribuir zonas pela consequência. *Insumos:* um roteador celular na KW-06; o gateway de suporte remoto do fornecedor para a SS-3; o servidor de relatórios; um notebook usado pelos engenheiros da Kestrel Water nas estações. *Passos:* atribuir cada um a uma zona (existente ou nova) e justificar. *Evidência esperada:* quatro posicionamentos. *Rubrica:* 3 = roteador na fronteira da Z1, com a sua gerência tratada com privilégio de nível Z5; gateway do fornecedor numa zona própria de acesso remoto, não na Z3; servidor de relatórios na Z6; notebook de engenharia como ativo transitório com controles próprios (Capítulo 16); 2 = um fraco; 1 = apenas por sub-rede; 0 = nada.
+
+**EX022 — Escreva um conduíte.** *Objetivo:* declarar um caminho por completo. *Insumos:* o hist-02 precisa enviar um CSV diário ao servidor corporativo de relatórios. *Passos:* escrever a entrada do conduíte com todos os campos. *Evidência esperada:* uma entrada completa. *Rubrica:* 3 = iniciado a partir da Z2 para fora (push, não pull a partir do corporativo), HTTPS para um host e uma porta nomeados, propósito, responsável, regra de aplicação e ponto de monitoramento nomeados, data de revisão; 2 = falta um; 1 = "permitir hist para corporativo"; 0 = nada.
+
+**EX023 — Contraste setorial.** *Objetivo:* reconhecer diferenças técnicas. *Insumos:* uma proposta de aplicar o mesmo cronograma semanal de patch e reinício ao scada-01, ao front end da SS-3 e ao servidor de gestão predial do hospital. *Passos:* explicar, para cada setor, o que precisa ser verificado primeiro. *Evidência esperada:* três parágrafos curtos. *Rubrica:* 3 = água: redundância e interrupção da varredura; rede elétrica: janelas de telecontrole combinadas com a sala de controle da rede, nenhum efeito sobre a proteção; hospital: restrições da engenharia clínica e do fabricante, continuidade dos alarmes de ventilação; 2 = genérico; 1 = aceita um único cronograma; 0 = nada.
+
+**EX024 — Modelo versus captura.** *Objetivo:* comparar o declarado e o observado. *Insumos:* a saída do Laboratório 2 e a lista de conduítes da 6.4. *Passos:* listar todo fluxo observado que não é explicado por um conduíte declarado. *Evidência esperada:* lista com justificativas. *Rubrica:* 3 = as escritas da mesa corporativa (sem conduíte), possivelmente a consulta de identificação do dispositivo, se nenhum conduíte a cobrir, quadros malformados do scada-01 como anomalia a explicar; 2 = apenas as escritas; 1 = nada encontrado; 0 = nada.
+
+### Síntese do capítulo
+
+O modelo de sistema une ativos, zonas, conduítes e consequências num único mapa. Ele diz o que deveria acontecer, para que qualquer outra coisa fique visível como constatação. Os setores diferem em protocolos, tempos e em quem pode mudar o quê, e as funções de segurança e de proteção ficam separadas de tudo o que um técnico toca.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Continue estudando — capítulo 06 de 18
+
+[← Capítulo 05](#ch-05) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-07"></a>
+
+## Capítulo 7 — Infraestrutura crítica e segurança setorial: dados e telemetria
+
+### Objetivos de aprendizagem e conexão
+
+Ao final deste capítulo, você deverá ser capaz de:
+
+- nomear as fontes de telemetria que um técnico usa num ambiente de controle — dados do processo, logs de dispositivos, logs de firewall e de hosts, registros de fluxo, capturas passivas — e o que cada uma pode e não pode mostrar;
+- analisar syslog RFC 5424, calcular facility e severidade a partir do valor de prioridade e tratar as linhas que não são RFC 5424;
+- medir e corrigir deslocamentos de relógio frente a uma referência NTP e construir uma única linha do tempo em UTC;
+- explicar como um relógio não corrigido inverte causa e efeito.
+
+O Capítulo 6 disse onde as coisas estão. Este capítulo trata do que elas lhe dizem, e de se você consegue pôr as histórias delas na ordem certa.
+
+### 7.1 Fontes e pontos cegos
+
+| Fonte | Mostra | Não mostra |
+|---|---|---|
+| Dados do processo (historiador) | Valores e alarmes ao longo do tempo | Quem causou uma mudança |
+| Logs de eventos da IHM e do SCADA | Ações do operador, reconhecimentos de alarmes | Ações feitas diretamente no controlador |
+| Logs do controlador/RTU | Sessões de configuração, mudanças de modo (se suportados e habilitados) | Muitas vezes nada; muitos dispositivos registram pouco |
+| Logs de firewall | Conexões permitidas e bloqueadas na fronteira | Tráfego dentro de uma zona |
+| Logs de hosts (host de salto, servidores) | Logins, comandos, eventos de serviço | Atividade em dispositivos sem registro |
+| Captura passiva / registros de fluxo | Quem conversou com quem, com que função | Conteúdo criptografado; tráfego que não passa pelo sensor |
+
+O guia de gestão de logs do NIST descreve a coleta, a retenção e a proteção desses registros ([SP 800-92](https://csrc.nist.gov/pubs/sp/800/92/final)). A primeira tarefa do técnico é saber qual fonte responde a qual pergunta, e a quais perguntas nenhuma fonte responde.
+
+### 7.2 Estrutura do syslog
+
+A RFC 5424 define o formato moderno do syslog: `<PRI>VERSION TIMESTAMP HOSTNAME APP-NAME PROCID MSGID STRUCTURED-DATA MSG` ([RFC 5424](https://www.rfc-editor.org/rfc/rfc5424)). O valor de prioridade é *facility × 8 + severidade*: `<38>` é a facility 4 (segurança/autorização), severidade 6 (informativa). O timestamp é RFC 3339 com deslocamento, e um traço (`-`) significa "nulo" — para um timestamp, *o remetente não sabia a hora*. Muitos dispositivos ainda enviam o formato BSD mais antigo (`<13>Oct 11 23:15:02 host app: ...`), sem ano e sem fuso; conte essas linhas e analise-as separadamente, em vez de descartá-las.
+
+### 7.3 Tempo
+
+Toda linha do tempo só é tão boa quanto os seus relógios. O NTP (RFC 5905) permite que os hosts meçam o seu **deslocamento** em relação a uma referência ([RFC 5905](https://www.rfc-editor.org/rfc/rfc5905)). Em ambientes de controle, alguns dispositivos não têm cliente NTP, derivam minutos ou são deliberadamente isolados das fontes de tempo. Registre, para todo host que contribui para uma linha do tempo, o seu deslocamento medido num momento conhecido, e corrija os seus timestamps subtraindo-o: *corrigido = informado − (relógio do host − referência)*. Converta tudo para UTC antes de ordenar; deslocamentos locais como `+01:00` estão corretos, mas é fácil ordená-los errado a olho.
+
+### 7.4 Exemplo resolvido: a sequência das 23:14 (sintético)
+
+Na noite de 11 de outubro, um operador relatou que a bomba 2 da KW-04 ligou inesperadamente. Você coletou seis linhas e mediu os deslocamentos dos relógios na manhã seguinte (a RTU estava 212 s atrás da referência).
+
+**Laboratório 7** (salve como `lab07.py` e execute com `python3 lab07.py`):
+
+```python
+# Lab 7 - parse RFC 5424 syslog, correct clock offsets and build a UTC timeline (offline, stdlib)
+# Synthetic lines from the Kestrel Vale operations centre; offsets measured against the NTP reference.
+import re
+from datetime import datetime, timedelta, timezone
+lines = [
+ "<38>1 2026-10-11T23:14:05.120Z fw-01 filterlog - - - block tcp 10.30.3.7:51544 -> 10.10.4.2:502",
+ "<86>1 2026-10-12T00:13:58+01:00 jump-01 sshd 812 - - Accepted publickey for jtan from 10.90.0.40",
+ "<134>1 2026-10-11T23:16:40Z hmi-02 hmi - - - operator setpoint change KW-04 PUMP2 start",
+ "<38>1 2026-10-11T23:15:31Z rtu-kw04 auth - - - config session opened user=eng",
+ "<13>Oct 11 23:15:02 eng-ws-15 app: project download started",
+ "<38>1 - hist-02 histd - - - archive rollover",
+]
+offset_s = {"fw-01": 0.0, "jump-01": 0.4, "hmi-02": 0.0, "rtu-kw04": -212.0}   # host clock minus reference
+pat = re.compile(r"^<(\d{1,3})>1 (\S+) (\S+) (\S+) (\S+) (\S+) (\S+) ?(.*)$")
+events, unparsed = [], []
+for ln in lines:
+    m = pat.match(ln)
+    if not m: unparsed.append(("not RFC 5424", ln)); continue
+    pri, ts, host, app, _pid, _msgid, _sd, msg = m.groups()
+    if ts == "-": unparsed.append(("no timestamp", ln)); continue
+    t = datetime.fromisoformat(ts.replace("Z", "+00:00")).astimezone(timezone.utc)
+    t_corr = t - timedelta(seconds=offset_s.get(host, 0.0))
+    fac, sev = divmod(int(pri), 8)
+    events.append((t_corr, host, f"fac={fac} sev={sev}", msg, offset_s.get(host, 0.0)))
+for t, host, fs, msg, off in sorted(events):
+    note = f" (clock corrected {-off:+.1f} s)" if off else ""
+    print(f"{t.strftime('%H:%M:%S.%f')[:-3]}Z {host:<9} {fs:<11} {msg}{note}")
+for why, ln in unparsed: print("UNPARSED", why, "|", ln)
+```
+
+Saída esperada (Python 3.13.5):
+
+```text
+23:13:57.600Z jump-01   fac=10 sev=6 Accepted publickey for jtan from 10.90.0.40 (clock corrected -0.4 s)
+23:14:05.120Z fw-01     fac=4 sev=6 block tcp 10.30.3.7:51544 -> 10.10.4.2:502
+23:16:40.000Z hmi-02    fac=16 sev=6 operator setpoint change KW-04 PUMP2 start
+23:19:03.000Z rtu-kw04  fac=4 sev=6 config session opened user=eng (clock corrected +212.0 s)
+UNPARSED not RFC 5424 | <13>Oct 11 23:15:02 eng-ws-15 app: project download started
+UNPARSED no timestamp | <38>1 - hist-02 histd - - - archive rollover
+```
+
+Antes da correção, a linha da RTU (23:15:31Z) aparecia *antes* da mudança de setpoint na IHM (23:16:40Z), sugerindo que alguém configurou a RTU e depois o operador agiu. Depois da correção, a sessão da RTU aconteceu às 23:19:03Z — **depois** do comando de partida do operador. A história muda de "alguém adulterou primeiro" para "uma sessão de engenharia se seguiu à ação do operador", o que leva a uma pergunta diferente (quem abriu uma sessão de configuração às 23:19, e por quê). Duas linhas não puderam ser posicionadas: a linha em formato BSD da estação de engenharia não tem ano nem fuso, e a linha do historiador tem timestamp nulo. Elas são relatadas, não descartadas; o "project download started" da estação de engenharia é potencialmente a linha mais importante de todas, e posicioná-lo exige uma verificação própria do relógio e os logs locais da estação.
+
+### 7.5 Atividade prática
+
+Meça o deslocamento de uma máquina sua frente a um servidor NTP público ou local (por exemplo, `chronyc tracking` ou `ntpq -p` no Linux, `w32tm /stripchart` no Windows), registre-o com o horário da medição e repita depois de 24 horas para ver a deriva.
+
+Registre o host, a referência, o deslocamento e o horário da medição. Depois de vinte e quatro horas, compare o novo deslocamento com o antigo para ver a deriva. Guarde as duas leituras com o trabalho de linha do tempo do Laboratório 7, para que uma investigação posterior saiba quão incerta seria uma correção feita a partir de uma única medição.
+
+### 7.6 Erros comuns e limites
+
+- Ordenar pelo texto timestamps com deslocamentos misturados.
+- Corrigir relógios na direção errada; escreva a fórmula toda vez.
+- Descartar linhas que não podem ser analisadas; conte-as e relate-as.
+- Presumir que um deslocamento medido hoje se aplicava ontem à noite; a deriva e a ressincronização o mudam, portanto declare a incerteza.
+- Presumir que a ausência de uma linha de log significa a ausência de um evento — muitos dispositivos simplesmente não registram.
+
+- Ordenar como texto timestamps com deslocamentos misturados e inverter a ordem dos eventos.
+- Corrigir relógios na direção errada; escreva toda vez que o corrigido é igual ao informado menos o deslocamento.
+- Descartar linhas que não podem ser analisadas em vez de contá-las como não analisadas.
+- Tratar uma linha de log ausente como prova de que nada aconteceu.
+
+### Exercícios — capítulo 7
+
+**EX025 — Decodifique prioridades.** *Objetivo:* calcular facility e severidade. *Insumos:* `<86>`, `<134>`, `<11>`, `<165>`. *Passos:* calcular cada uma. *Evidência esperada:* quatro pares com nomes. *Rubrica:* 3 = 86 → 10/6 (authpriv, informativa); 134 → 16/6 (local0, informativa); 11 → 1/3 (user, erro); 165 → 20/5 (local4, aviso); 2 = aritmética certa, faltam os nomes; 1 = parcial; 0 = nada.
+
+**EX026 — Corrija um relógio.** *Objetivo:* aplicar a fórmula do deslocamento. *Insumos:* o fep-01 registra um evento às 02:10:00Z; o seu deslocamento, medido uma hora depois, era de +47 s (host adiantado). *Passos:* dar o horário corrigido e a incerteza que você declararia. *Evidência esperada:* horário corrigido e uma frase sobre a incerteza. *Rubrica:* 3 = 02:09:13Z; incerteza porque o deslocamento foi medido depois e a deriva é desconhecida, por exemplo "± alguns segundos; deslocamento medido às 03:10Z"; 2 = horário certo, sem incerteza; 1 = direção errada; 0 = nada.
+
+**EX027 — Posicione a linha BSD.** *Objetivo:* tratar formatos legados com segurança. *Insumos:* a linha da `eng-ws-15` no Laboratório 7. *Passos:* listar o que você precisa para posicioná-la na linha do tempo e escrever a regra de análise que acrescentaria. *Evidência esperada:* lista e regra. *Rubrica:* 3 = o ano a partir do contexto da coleta, a configuração de fuso do host e o seu deslocamento medido; analisar com atribuição explícita de fuso e marcar o resultado como "fuso presumido"; 2 = regra sem os pressupostos registrados; 1 = descartá-la; 0 = nada.
+
+**EX028 — Pergunta de ponto cego.** *Objetivo:* associar perguntas a fontes. *Insumos:* "Alguém escreveu na KW-04 diretamente pela porta de notebook local da estação?" *Passos:* dizer quais fontes poderiam respondê-la, quais não podem e o que você precisaria acrescentar. *Evidência esperada:* análise curta. *Rubrica:* 3 = o firewall e a captura do centro de controle não veem o tráfego local da estação; os logs da RTU poderiam ver, se ela registrar configurações e escritas; acrescentar um sensor no nível da estação ou o registro na RTU e os registros de acesso físico; 2 = em parte; 1 = "verificar o firewall"; 0 = nada.
+
+### Síntese do capítulo
+
+A telemetria é um conjunto de testemunhas parciais. Saiba o que cada fonte consegue ver, analise os formatos com rigor, contando o que não consegue analisar, e corrija cada relógio frente a uma referência antes de ordenar os eventos. Uma linha do tempo construída sobre relógios não corrigidos pode inverter causa e efeito; uma construída sobre relógios corrigidos, com as suas incertezas declaradas, é evidência.
+
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Continue estudando — capítulo 07 de 18
+
+[← Capítulo 06](#ch-06) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Infraestrutura crítica e segurança setorial: modos de falha
+
+### Objetivos de aprendizagem e conexão
+
+Ao final deste capítulo, você deverá ser capaz de:
+
+- nomear os modos de falha técnicos comuns da telemetria e do controle — lacuna, valor travado, pico, deriva, fora da faixa, timestamp desatualizado, perda da autoridade de controle — e as suas causas habituais;
+- detectá-los numa série temporal com regras simples e explicáveis;
+- explicar por que um valor dentro da faixa ainda pode ser falso, e por que um valor perfeitamente constante é suspeito;
+- manter abertas, ao mesmo tempo, as hipóteses de falha e de ataque até que as evidências as separem.
+
+O Capítulo 7 pôs os eventos em ordem. Este capítulo pergunta, de cada medição: ela é verdadeira? Muitos eventos de segurança aparecem primeiro como "dados ruins", e muitos eventos de dados ruins são falhas comuns. Um técnico precisa reconhecer ambos.
+
+### 8.1 Um catálogo de modos de falha
+
+| Modo | Aparência | Causas comuns | Causas relevantes para a segurança |
+|---|---|---|---|
+| **Lacuna** | Amostras ausentes | Queda do enlace, sobrecarga da varredura (Capítulo 1), reinício do dispositivo | Tráfego bloqueado ou descartado, negação de serviço |
+| **Travado / linha reta** | Valores idênticos por mais tempo do que o processo permite | Sensor congelado, entrada analógica com falha, SCADA servindo o último valor conhecido | Valores reproduzidos ou congelados escondendo uma mudança real |
+| **Pico** | Um salto mais rápido do que a física permite | Ruído elétrico, erro de escala, amostra ruim | Valor injetado |
+| **Deriva** | Divergência lenta da realidade | Incrustação do sensor, idade da calibração | Manipulação lenta (rara, difícil de detectar) |
+| **Fora da faixa** | Valor impossível | Falha de fiação, escala errada | Valor fabricado |
+| **Timestamp desatualizado** | Valor com horário antigo ou futuro | Erro de relógio (Capítulo 7), dados em buffer | Reprodução (replay) |
+| **Perda da autoridade de controle** | Comandos não executados ou executados por outra pessoa | Seletor local/remoto deixado em local, intertravamento | Escrita não autorizada |
+
+O ponto da tabela não é que toda lacuna seja um ataque. É que o mesmo sintoma tem os dois tipos de causa; portanto, as detecções devem relatar o **sintoma** com precisão, e a investigação (Capítulo 13) separa as causas.
+
+### 8.2 Regras que se explicam
+
+Cada detecção deste capítulo é uma regra que uma pessoa consegue ler e verificar:
+
+- **Lacuna**: mais de *N* amostras ausentes consecutivas, em que *N* é definido a partir do ciclo de varredura e da tolerância do processo.
+- **Travado**: mais de *M* leituras consecutivas idênticas, em que *M* reflete quanto um sensor saudável varia naturalmente. Um analisador de cloro que informa exatamente 0,62 por vinte minutos é suspeito, porque analisadores reais oscilam no último dígito.
+- **Pico**: uma mudança entre amostras consecutivas maior do que o **passo máximo fisicamente plausível** — um tanque de 12 m não sobe 6,8 m em um minuto. Isso pega valores que as verificações de faixa deixam passar.
+- **Faixa**: fora dos limites do instrumento ou do processo (Capítulo 4).
+
+Essas regras são grosseiras, mas transparentes: quando uma dispara, todos conseguem ver por quê. Detectores de anomalias estatísticos ou aprendidos podem acrescentar sensibilidade depois; não devem substituir regras que os operadores entendem.
+
+### 8.3 Dentro da faixa não é verdadeiro
+
+Um valor de 9,80 m num tanque de 12 m passa em toda verificação de faixa. Se o minuto anterior marcava 2,96 m e o seguinte 2,97 m, o 9,80 é impossível como medição. Inversamente, um valor constante está sempre "dentro da faixa". As verificações de faixa protegem contra o absurdo; as verificações de **taxa** e de **variação** protegem contra o falso de aparência plausível.
+
+Use um passo máximo tirado do processo, como meio metro por minuto para o nível de um tanque, para que uma única amostra desvairada seja pega mesmo quando estiver dentro da faixa do instrumento. Escreva o limite de passo ao lado do limite de faixa no esquema da tag e revise os dois depois de cada alarme falso.
+
+### 8.4 Exemplo resolvido: quatro tags, vinte minutos (sintético)
+
+**Laboratório 8** (salve como `lab08.py` e execute com `python3 lab08.py`):
+
+```python
+# Lab 8 - classify telemetry failure modes (offline, standard library only)
+# Synthetic one-minute readings from four Kestrel Water tags, 06:00-06:19Z on 2026-10-12.
+series = {
+ "KW-01 LEVEL_M": [3.40,3.41,3.41,3.42,3.43,3.43,3.44,3.45,3.45,3.46,3.47,3.47,3.48,3.49,3.49,3.50,3.51,3.51,3.52,3.53],
+ "KW-02 CL2_MGL": [0.62,0.62,0.62,0.62,0.62,0.62,0.62,0.62,0.62,0.62,0.62,0.62,0.62,0.62,0.62,0.62,0.62,0.62,0.62,0.62],
+ "KW-05 FLOW_LS": [41.0,40.8,41.2,40.9,None,None,None,None,None,None,None,41.1,40.7,41.0,41.3,40.9,41.2,41.0,40.8,41.1],
+ "KW-07 LEVEL_M": [2.95,2.96,2.95,2.97,2.96,2.96,9.80,2.97,2.96,2.98,2.97,2.97,2.98,2.97,2.99,2.98,2.98,2.99,2.98,2.99],
+}
+LIMITS = {"LEVEL_M": (0.0, 12.0), "CL2_MGL": (0.0, 5.0), "FLOW_LS": (0.0, 400.0)}
+MAX_STEP = {"LEVEL_M": 0.5, "CL2_MGL": 0.3, "FLOW_LS": 25.0}   # physically plausible change per minute
+STUCK_MIN, GAP_MIN = 15, 5
+for name, xs in series.items():
+    tag = name.split()[1]; lo, hi = LIMITS[tag]; out = []
+    run, longest = 0, 0
+    for i in range(len(xs)):                     # gaps
+        run = run + 1 if xs[i] is None else 0; longest = max(longest, run)
+    if longest >= GAP_MIN: out.append(f"gap: {longest} consecutive missing minutes")
+    vals = [(i, v) for i, v in enumerate(xs) if v is not None]
+    same, best = 1, 1
+    for (i0, a), (i1, b) in zip(vals, vals[1:]):  # stuck / flatline (exact repeats)
+        same = same + 1 if a == b else 1; best = max(best, same)
+        if abs(b - a) > MAX_STEP[tag] and i1 - i0 == 1:
+            out.append(f"spike: 06:{i1:02d}Z jump {a} -> {b} exceeds {MAX_STEP[tag]}/min")
+    if best >= STUCK_MIN: out.append(f"stuck: {best} identical readings in a row")
+    out += [f"range: {v} outside {lo}-{hi}" for _, v in vals if not lo <= v <= hi]
+    print(f"{name:<14} {'; '.join(out) if out else 'no failure mode detected'}")
+```
+
+Saída esperada (Python 3.13.5):
+
+```text
+KW-01 LEVEL_M  no failure mode detected
+KW-02 CL2_MGL  stuck: 20 identical readings in a row
+KW-05 FLOW_LS  gap: 7 consecutive missing minutes
+KW-07 LEVEL_M  spike: 06:06Z jump 2.96 -> 9.8 exceeds 0.5/min; spike: 06:07Z jump 9.8 -> 2.97 exceeds 0.5/min
+```
+
+A KW-01 se comporta como um tanque enchendo devagar — nenhuma constatação. O cloro da KW-02 é idêntico nas vinte leituras: ou o analisador congelou, ou a RTU está devolvendo um valor armazenado, ou o valor está sendo fornecido por algo que não é o analisador. A KW-05 tem uma lacuna de sete minutos — verifique primeiro o enlace e a varredura (Capítulo 13). A KW-07 mostra uma excursão de uma única amostra até 9,80 m e de volta: uma falha clássica de ruído ou de escala, mas também exatamente o que pareceria uma escrita injetada, isolada, num registrador de relatório. Cada linha é um sintoma com uma descrição precisa; nenhuma é ainda uma causa.
+
+### 8.5 Escolher limiares
+
+Defina os limiares a partir de evidências, não de palpites: examine uma semana de dados saudáveis por tag, encontre o maior passo natural e a mais longa sequência natural de valores idênticos e defina a regra acima deles, com uma margem. Registre o motivo ao lado do número e revise depois de cada alarme falso e de cada evento não detectado. Uma regra de valor travado numa tag que legitimamente fica em 0,00 (uma bomba desligada) precisa de uma condição — por exemplo, aplicá-la apenas enquanto a bomba funciona.
+
+### 8.6 Atividade prática
+
+Acrescente uma verificação de **deriva** ao Laboratório 8: compare a média de cada tag nos cinco primeiros minutos com a sua média nos cinco últimos e sinalize uma mudança maior do que um limite específico da tag. Discuta por que a subida constante da KW-01 *não* deve ser sinalizada, e que informação extra (estado da bomba, vazão de entrada) tornaria significativa a detecção de deriva.
+
+A subida constante da KW-01 é comportamento do processo enquanto uma bomba enche o tanque; assim, uma comparação ingênua de médias a sinalizaria por engano. A deriva se torna significativa quando você conhece o estado da bomba ou a vazão de entrada, ou quando compara dois sensores que deveriam concordar. Defina o limite específico da tag a partir de uma semana de dados saudáveis e registre o motivo ao lado do número.
+
+### 8.7 Erros comuns e limites
+
+- Tratar todo valor ruim como ataque — ou nenhum.
+- Apenas verificações de faixa.
+- Regras de valor travado em tags que legitimamente ficam paradas.
+- Limiares sem justificativa registrada.
+- O Laboratório 8 vê uma série de cada vez; uma investigação real compara tags relacionadas (uma bomba funcionando enquanto a vazão é zero é uma inconsistência entre tags).
+
+- Aplicar uma regra de valor travado a uma tag que legitimamente fica em zero enquanto uma bomba está desligada.
+- Definir limiares a partir de um palpite em vez de dados saudáveis, com uma justificativa registrada.
+- Investigar uma série isoladamente quando um bit de bomba funcionando e uma vazão zero mostrariam uma falha entre tags.
+
+### Exercícios — capítulo 8
+
+**EX029 — Nomeie o modo.** *Objetivo:* classificar sintomas. *Insumos:* (a) o nível sobe 0,01 m/min enquanto a válvula de entrada informa fechada; (b) a vazão marca 0,00 por 40 minutos enquanto a bomba 1 informa funcionando; (c) o historiador mostra valores com timestamps de 03:00–03:10 que chegaram às 03:25; (d) a bomba 2 não liga depois de um comando da IHM, e a RTU informa "local". *Passos:* nomear o modo e duas causas candidatas para cada um. *Evidência esperada:* quatro linhas. *Rubrica:* 3 = (a) inconsistência entre tags/deriva — falha no retorno da válvula ou um vazamento/desvio; (b) travado ou inconsistência entre tags — medidor de vazão com falha ou valor congelado; (c) dados em buffer/desatualizados — queda do enlace com armazenamento e reenvio, ou reprodução; (d) perda da autoridade de controle — seletor local no local, ou intertravamento; 2 = modos certos, causas rasas; 1 = parcial; 0 = nada.
+
+**EX030 — Preveja uma mudança de regra.** *Objetivo:* raciocinar sobre limiares. *Insumos:* o Laboratório 8 com `STUCK_MIN = 25` e `MAX_STEP["LEVEL_M"] = 7.0`. *Passos:* prever a nova saída e depois executar. *Evidência esperada:* previsão e saída real. *Rubrica:* 3 = a KW-02 deixa de ser sinalizada (20 < 25), o pico da KW-07 deixa de ser sinalizado (6,84 < 7,0; 6,83 < 7,0), a lacuna da KW-05 continua sinalizada; explica o que se perde; 2 = quase tudo certo; 1 = palpites; 0 = nada.
+
+**EX031 — Regra condicional de valor travado.** *Objetivo:* reduzir alarmes falsos. *Insumos:* uma tag de vazão marca legitimamente 0,0 quando a sua bomba está desligada. *Passos:* escrever a regra em pseudocódigo usando o estado da bomba. *Evidência esperada:* regra e um caso de teste. *Rubrica:* 3 = aplicar a detecção de valor travado apenas enquanto o estado da bomba = funcionando por pelo menos o intervalo de varredura; inclui um teste com a bomba desligada (sem alerta) e funcionando com vazão constante diferente de zero (alerta); 2 = sem teste; 1 = desativa a regra; 0 = nada.
+
+**EX032 — Plano de falha ou ataque.** *Objetivo:* manter as duas hipóteses abertas. *Insumos:* a KW-02 travada em 0,62. *Passos:* listar três verificações que apontariam para uma falha e três que apontariam para manipulação, todas somente de leitura. *Evidência esperada:* seis verificações. *Rubrica:* 3 = falha: o display local do analisador, os diagnósticos da entrada analógica da RTU, os registros de manutenção; manipulação: escritas inesperadas no registrador de relatório nas capturas, logs de sessões de configuração, comparação com uma amostra manual feita pelas operações; 2 = um lado raso; 1 = apenas uma hipótese; 0 = nada.
+
+### Síntese do capítulo
+
+A telemetria falha de um pequeno número de modos reconhecíveis, e cada sintoma tem causas comuns e maliciosas. Detecte os sintomas com regras transparentes — lacuna, travado, pico, faixa — cujos limiares venham de dados saudáveis e cujos motivos estejam escritos. Estar dentro da faixa não é o mesmo que ser verdadeiro. Relate o sintoma com precisão e deixe a causa para a investigação.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Continue estudando — capítulo 08 de 18
+
+[← Capítulo 07](#ch-07) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 09 →](#ch-09)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-09"></a>
+
+## Capítulo 9 — Infraestrutura crítica e segurança setorial: ferramentas e métodos
+
+### Objetivos de aprendizagem e conexão
+
+Ao final deste capítulo, você deverá ser capaz de:
+
+- escolher a ferramenta técnica certa para uma pergunta num ambiente de controle: exportação de configuração, captura passiva, decodificador de protocolo, consulta a logs, ferramenta de engenharia do fornecedor ou teste ativo;
+- implementar e verificar uma checagem de integridade a partir dos seus parâmetros publicados, usando como exemplo o CRC da camada de enlace do DNP3;
+- explicar a diferença entre um **código de detecção de erros** e a **autenticação**, e por que um CRC válido não prova nada sobre quem enviou um quadro;
+- validar uma ferramenta antes de confiar nela: testes de resposta conhecida, testes negativos e versões documentadas.
+
+Os Capítulos 7 e 8 usaram a telemetria. Este capítulo trata dos próprios instrumentos — como escolhê-los, construir corretamente os pequenos e saber quando eles mentem.
+
+### 9.1 Escolher um método
+
+| Pergunta | Preferir | Evitar, salvo com escopo |
+|---|---|---|
+| O que está configurado? | Exportação de configuração, visão somente de leitura da ferramenta do fornecedor | Sondar portas para inferir a configuração |
+| Quem conversa com quem? | Logs de fluxo, captura passiva numa porta SPAN ou num tap | Varredura ativa |
+| O que um dispositivo executa? | Registros de ativos, inventário da ferramenta de engenharia durante uma sessão aprovada | Identificação (fingerprinting) por sondagem |
+| Uma regra de bloqueio funciona? | Logs do firewall mais um teste de conexão com escopo | Varreduras amplas |
+| Um quadro está bem formado? | Decodificador com verificações de protocolo (Capítulo 2, este capítulo) | Olhar o hexadecimal a olho |
+
+O guia de segurança de TO da NIST SP 800-82 Rev. 3 discute o monitoramento passivo e os riscos das técnicas ativas ([SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final)). Analisadores de pacotes como o Wireshark incluem dissectores para Modbus e DNP3; os seus próprios scripts servem para as verificações que essas ferramentas não fazem por você, e para uma automação repetível e revisável.
+
+### 9.2 O DNP3 na camada de enlace
+
+O DNP3 é amplamente usado no telecontrole de eletricidade e de água. Cada quadro da camada de enlace começa com um cabeçalho de 10 bytes: bytes de início `05 64`, um byte de **comprimento**, um byte de **controle**, um endereço de **destino** de 2 bytes e um de **origem** de 2 bytes (little-endian) e um **CRC** de 2 bytes. Os dados do usuário seguem em blocos de até 16 bytes, cada um com o seu próprio CRC. No byte de controle, o bit 7 (DIR) é ligado nos quadros vindos do mestre, o bit 6 (PRM) nos quadros primários (iniciadores), e os quatro bits baixos são o código de função do enlace — por exemplo, primária 0 "reset link states", primária 4 "unconfirmed user data", secundária 11 "link status". O DNP Users Group publica uma visão geral; a norma completa é a IEEE 1815 ([DNP3 overview](https://www.dnp.org/About/Overview-of-DNP3-Protocol)).
+
+O CRC é o **CRC-16/DNP**: polinômio 0x3D65, valor inicial 0, entrada e saída refletidas, XOR final 0xFFFF, com o valor de verificação de catálogo 0xEA82 para a string ASCII `123456789` ([CRC catalogue](https://reveng.sourceforge.io/crc-catalogue/16.htm)). Refletido, o polinômio é 0xA6BC, que é a constante usada numa implementação bit a bit.
+
+### 9.3 Valide a ferramenta primeiro
+
+Uma rotina de CRC sutilmente errada continua produzindo números. Antes de usá-la, execute um **teste de resposta conhecida**: calcule o CRC de `123456789` e compare com 0xEA82. Depois, um **teste negativo**: mude um bit de um quadro válido e confirme que a verificação falha. O Laboratório 9 faz os dois — a linha `assert` é o teste de resposta conhecida —, e registre a versão do Python, porque o resultado de qualquer ferramenta só é evidência se a ferramenta estiver identificada.
+
+Mantenha no script o assert que verifica o valor de catálogo e faça o job falhar se ele não se sustentar depois de uma mudança na função de CRC. Registre a versão do Python ao lado de todo resultado que será usado como evidência. Execute o teste negativo num quadro que você mesmo corrompeu, para saber que o verificador rejeita CRCs ruins antes de confiar nele numa captura.
+
+### 9.4 Detecção de erros não é autenticação
+
+Um CRC é calculado a partir de parâmetros públicos; qualquer um que consiga enviar um quadro consegue calcular um CRC válido. Ele detecta corrupção acidental, não falsificação. O Laboratório 9 mostra isso diretamente: um quadro vindo de um endereço de origem desconhecido (77) tem um CRC **válido**. Distinguir o genuíno do falsificado exige autenticação criptográfica (o DNP3 Secure Authentication, ou um túnel protegido) ou contexto — endereços de origem conhecidos, caminhos conhecidos, temporização esperada. Compare com o Capítulo 15 do livro de tecnólogo, que usa HMAC (RFC 2104) para a autenticidade ([RFC 2104](https://www.rfc-editor.org/rfc/rfc2104)).
+
+### 9.5 Exemplo resolvido: verificar os cabeçalhos da SS-3 (sintético)
+
+O mestre da Kestrel Grid (endereço DNP3 1) faz a varredura da outstation da subestação SS-3 (endereço 10) por meio do fep-01. Um técnico capturou seis cabeçalhos de enlace.
+
+**Laboratório 9** (salve como `lab09.py` e execute com `python3 lab09.py`):
+
+```python
+# Lab 9 - check DNP3 link-layer headers and their CRC (offline, standard library only)
+# CRC-16/DNP: poly 0x3D65 (reflected 0xA6BC), init 0x0000, reflected in/out, xorout 0xFFFF.
+# Synthetic frames between the Kestrel Grid master (address 1) and substation SS-3 outstation (address 10).
+import struct
+def crc_dnp(data: bytes) -> int:
+    crc = 0
+    for byte in data:
+        crc ^= byte
+        for _ in range(8):
+            crc = (crc >> 1) ^ 0xA6BC if crc & 1 else crc >> 1
+    return crc ^ 0xFFFF
+assert crc_dnp(b"123456789") == 0xEA82          # catalogue check value
+def header(length, ctrl, dest, src):
+    h = bytes([0x05, 0x64, length, ctrl]) + struct.pack("<HH", dest, src)
+    return h + struct.pack("<H", crc_dnp(h))
+capture = [
+    ("master->SS-3", header(0x05, 0xC0, 10, 1).hex()),     # primary function 0: reset link states
+    ("SS-3->master", header(0x05, 0x0B, 1, 10).hex()),     # secondary function 11: link status
+    ("master->SS-3", header(0x11, 0xC4, 10, 1).hex()),     # primary function 4: unconfirmed user data
+    ("master->SS-3", "056411c40a000100" + "ffff"),          # wrong CRC
+    ("unknown->SS-3", header(0x11, 0xC4, 10, 77).hex()),   # source not in station table
+    ("master->SS-3", "0565" + header(0x05, 0xC0, 10, 1).hex()[4:]),  # bad start bytes
+]
+KNOWN_SOURCES = {1}
+for label, hx in capture:
+    b = bytes.fromhex(hx)
+    if b[:2] != b"\x05\x64": print(f"{label:<14} {hx}  REJECT start bytes {b[:2].hex()}"); continue
+    got = struct.unpack("<H", b[8:10])[0]; want = crc_dnp(b[:8])
+    length, ctrl, dest, src = b[2], b[3], *struct.unpack("<HH", b[4:8])
+    if got != want: print(f"{label:<14} {hx}  REJECT crc {got:04x} != {want:04x}"); continue
+    direction = "from master" if ctrl & 0x80 else "from outstation"
+    note = "" if src in KNOWN_SOURCES or src == 10 else "  ALERT unknown source address"
+    print(f"{label:<14} {hx}  ok len={length} ctrl=0x{ctrl:02x} ({direction}, fc={ctrl & 0x0F}) dest={dest} src={src}{note}")
+```
+
+Saída esperada (Python 3.13.5):
+
+```text
+master->SS-3   056405c00a000100b1ac  ok len=5 ctrl=0xc0 (from master, fc=0) dest=10 src=1
+SS-3->master   0564050b01000a006ded  ok len=5 ctrl=0x0b (from outstation, fc=11) dest=1 src=10
+master->SS-3   056411c40a0001000615  ok len=17 ctrl=0xc4 (from master, fc=4) dest=10 src=1
+master->SS-3   056411c40a000100ffff  REJECT crc ffff != 1506
+unknown->SS-3  056411c40a004d0073e6  ok len=17 ctrl=0xc4 (from master, fc=4) dest=10 src=77  ALERT unknown source address
+master->SS-3   056505c00a000100b1ac  REJECT start bytes 0565
+```
+
+Três quadros são válidos e esperados. Um tem o CRC `ffff` onde se esperava `1506` — corrupção ou um quadro fabricado; num enlace ruidoso, uma sequência de falhas de CRC é uma constatação de qualidade do enlace para o provedor de telecomunicações. Um tem bytes de início errados e é rejeitado antes de qualquer outra coisa ser lida. A linha mais importante é a que *passa* no CRC: o endereço de origem 77 não está na tabela de estações. O CRC diz que os bytes chegaram íntegros; só a verificação do endereço diz que vieram de um lugar inesperado.
+
+### 9.6 Atividade prática
+
+Estenda o Laboratório 9 para verificar o CRC de cada bloco de dados do usuário de 16 bytes que segue o cabeçalho. Construa um quadro com 17 bytes de dados do usuário (um bloco completo e um bloco de 1 byte), calcule os CRCs dos dois blocos e corrompa um byte no segundo bloco para mostrar que a verificação o pega.
+
+Construa o quadro com um bloco completo de dezesseis bytes e um bloco de um byte, cada um com o seu próprio CRC. Corrompa um byte no segundo bloco e confirme que só a verificação desse bloco falha. Guarde as etapas de construção nas notas do laboratório, para que um revisor possa reconstruir o mesmo quadro.
+
+### 9.7 Erros comuns e limites
+
+- Confiar num verificador caseiro sem um teste de resposta conhecida.
+- Errar a ordem dos bytes: os endereços e o CRC do DNP3 são little-endian; os campos do Modbus são big-endian.
+- Tratar "CRC válido" como "autêntico".
+- Sondagem ativa quando uma fonte passiva responde à pergunta.
+- O Laboratório 9 verifica apenas os cabeçalhos; as camadas de transporte e de aplicação carregam os comandos e precisam da sua própria decodificação.
+
+- Misturar campos big-endian do Modbus com endereços little-endian do DNP3 no mesmo decodificador sem declarar a ordem dos bytes.
+- Tratar um CRC válido como prova de autenticidade quando o endereço de origem é desconhecido.
+- Sondagem ativa quando uma captura passiva ou uma exportação de configuração responde à pergunta.
+
+### Exercícios — capítulo 9
+
+**EX033 — Teste de resposta conhecida.** *Objetivo:* validar uma ferramenta. *Insumos:* a `crc_dnp` do Laboratório 9. *Passos:* (1) substituir `0xA6BC` por `0x3D65` e executar; (2) explicar o resultado. *Evidência esperada:* saída e explicação. *Rubrica:* 3 = o assert falha, porque um algoritmo que desloca para a direita (refletido) precisa do polinômio refletido; o teste de resposta conhecida pegou um bug plausível antes que qualquer quadro fosse julgado; 2 = observa a falha, sem explicação; 1 = tentativa; 0 = nada.
+
+**EX034 — Decodifique o byte de controle.** *Objetivo:* ler os campos de enlace do DNP3. *Insumos:* os bytes de controle 0xC9, 0x44 e 0x0B. *Passos:* dar DIR, PRM e o código de função de cada um e nomear a função. *Evidência esperada:* três linhas. *Rubrica:* 3 = 0xC9: DIR 1, PRM 1, fc 9 request link status; 0x44: DIR 0, PRM 1, fc 4 unconfirmed user data vindo de uma outstation (por exemplo, uma resposta não solicitada); 0x0B: DIR 0, PRM 0, fc 11 link status; 2 = um errado; 1 = apenas os bits; 0 = nada.
+
+**EX035 — Experimento mental de falsificação.** *Objetivo:* separar integridade e autenticidade. *Insumos:* um quadro com CRC válido, endereço de origem 1 e destino 10, chegando à outstation a partir de um endereço da rede MPLS que não é o fep-01. *Passos:* explicar o que o CRC mostra, o que o endereço mostra e o que realmente estabeleceria a autenticidade. *Evidência esperada:* explicação curta. *Rubrica:* 3 = o CRC mostra que não houve corrupção acidental; o endereço DNP3 1 é autodeclarado; a autenticidade exige o Secure Authentication ou um túnel criptográfico que termine em pontas conhecidas, mais a aplicação do caminho pela rede; 2 = parcial; 1 = "CRC válido, logo genuíno"; 0 = nada.
+
+**EX036 — Seleção de método.** *Objetivo:* escolher o método menos intrusivo. *Insumos:* perguntas: (a) que endereços de mestre DNP3 a SS-3 viu neste mês; (b) se o firewall do fep-01 permite apenas a outstation; (c) a versão de firmware da outstation. *Passos:* escolher um método para cada uma e justificar. *Evidência esperada:* três escolhas. *Rubrica:* 3 = (a) captura passiva ou logs do fep-01 analisados com um decodificador; (b) exportação da configuração mais os logs, depois um teste com escopo, se necessário; (c) registro de ativos ou ferramenta do fornecedor durante uma sessão aprovada, com a concordância do engenheiro de proteção; 2 = uma escolha intrusiva; 1 = varredura; 0 = nada.
+
+### Síntese do capítulo
+
+Escolha o método menos intrusivo que responda à pergunta e valide cada ferramenta antes de confiar nela: testes de resposta conhecida, testes negativos, versões registradas. O CRC da camada de enlace do DNP3 mostra essa disciplina em miniatura — implemente-o a partir dos parâmetros publicados, confira-o frente ao valor de catálogo — e também o seu limite: a detecção de erros prova que os bytes chegaram íntegros, nunca quem os enviou.
+
+<!-- cyberabc:chapter-navigation:start ch-09 -->
+### Continue estudando — capítulo 09 de 18
+
+[← Capítulo 08](#ch-08) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Infraestrutura crítica e segurança setorial: configuração de controles
+
+### Objetivos de aprendizagem e conexão
+
+Ao final deste capítulo, você deverá ser capaz de:
+
+- traduzir os conduítes declarados (Capítulo 6) numa política de firewall de primeira correspondência com negação padrão;
+- avaliar um conjunto de regras frente a fluxos de teste em código e detectar regras **sombreadas** e **redundantes**;
+- reconhecer os padrões de configuração que ampliam o acesso em silêncio — regras amplas "temporárias", "duplicatas" sobrepostas, permissões para qualquer porta;
+- configurar o acesso de fornecedores e o acesso remoto com prazo, com registro e roteado pela zona de gerência;
+- planejar uma mudança de configuração de modo que ela possa ser verificada (Capítulo 11) e revertida.
+
+Os Capítulos 6–9 descreveram e observaram o sistema. Este capítulo o altera, começando pelo controle que mais diretamente limita quem pode alcançar um protocolo sem autenticação: o firewall de conduíte.
+
+### 10.1 Conjuntos de regras como programas
+
+A maioria dos firewalls de rede avalia as regras **de cima para baixo e aplica a primeira correspondência**. O guia de firewalls do NIST descreve o desenho de políticas, a negação padrão e a gestão de conjuntos de regras ([SP 800-41 Rev. 1](https://csrc.nist.gov/pubs/sp/800/41/r1/final)). Pensar num conjunto de regras como um pequeno programa esclarece três defeitos:
+
+- **Regra sombreada**: uma regra posterior cujo tráfego é inteiramente casado por uma regra anterior com a ação oposta. Ela nunca tem efeito, embora o seu comentário diga que tem.
+- **Regra redundante**: uma regra posterior inteiramente casada por uma regra anterior com a mesma ação. Inofensiva hoje; confusa amanhã, quando alguém apagar a anterior.
+- **"Duplicata" ampliadora**: uma regra que parece cópia de outra, mas tem origem, destino ou porta mais amplos. Não é redundante; é uma nova permissão.
+
+A ordem importa; portanto, toda mudança precisa ser revisada no contexto, não como uma linha isolada.
+
+### 10.2 Padrões que corroem uma política
+
+- **Regras temporárias** que sobrevivem ao seu propósito ("permitir corporativo para o centro de controle durante a migração").
+- Permissões para **qualquer porta** (`tcp any`) onde era necessária uma única porta.
+- **Sub-redes como origem** onde era necessário um único host.
+- **Regras sem responsável, chamado ou validade**.
+- **Acesso de gerência a partir de zonas de usuários**, em vez de pelo host de salto.
+
+As mitigações primárias da CISA para tecnologia operacional enfatizam remover a exposição à internet, trocar as senhas padrão, proteger o acesso remoto e segmentar a TI da TO ([CISA primary mitigations for OT](https://www.cisa.gov/resources-tools/resources/primary-mitigations-reduce-cyber-threats-operational-technology)).
+
+### 10.3 Acesso remoto e de fornecedores
+
+Configure o acesso de fornecedores para que ele exista apenas quando necessário: a conta ou o caminho fica desabilitado por padrão; é habilitado para um trabalho com chamado e uma janela fixa; é autenticado com autenticação multifator no host de salto; a sessão é registrada; e um alerta dispara em qualquer uso fora de uma janela habilitada. O alerta da CISA sobre atores patrocinados pelo Estado chinês descreve atores que mantêm acesso de longo prazo a ambientes de infraestrutura crítica, inclusive por meio de contas válidas e acesso remoto ([CISA AA24-038A](https://www.cisa.gov/news-events/cybersecurity-advisories/aa24-038a)) — o motivo pelo qual o acesso permanente é uma constatação mesmo quando ninguém o está usando indevidamente hoje.
+
+### 10.4 Exemplo resolvido: o fw-01 (sintético)
+
+A política do `fw-01` entre as zonas do KVROC tem sete regras. O Laboratório 10 a verifica quanto a sombreamento e frente a cinco fluxos de teste, cada um com o resultado que a lista de conduítes espera.
+
+**Laboratório 10** (salve como `lab10.py` e execute com `python3 lab10.py`):
+
+```python
+# Lab 10 - evaluate a first-match firewall policy and find shadowed rules (offline, stdlib)
+# Synthetic conduit policy for fw-01 between Kestrel Vale zones; addresses are RFC 1918.
+from ipaddress import ip_address, ip_network
+rules = [  # id, action, source, destination, protocol, port (None = any)
+    ("R1", "allow", "10.20.0.10/32", "10.10.0.0/16", "tcp", 502),    # SCADA server polls stations
+    ("R2", "allow", "10.20.0.15/32", "10.10.0.0/16", "tcp", 502),    # engineering workstation
+    ("R3", "allow", "10.90.0.20/32", "10.20.0.0/24", "tcp", 22),     # jump host to control centre
+    ("R4", "allow", "10.30.0.0/16",  "10.20.0.0/24", "tcp", None),   # "temporary" corporate access
+    ("R5", "deny",  "10.30.3.0/24",  "10.20.0.0/24", "tcp", 3389),   # intended: block RDP from desks
+    ("R6", "allow", "10.20.0.0/24",  "10.10.4.0/24", "tcp", 502),    # duplicate of R1 for KW-04
+    ("R7", "deny",  "0.0.0.0/0",     "0.0.0.0/0",    "any", None),   # default deny
+]
+def matches(rule, src, dst, proto, port):
+    _, _, s, d, p, pt = rule
+    return (ip_address(src) in ip_network(s) and ip_address(dst) in ip_network(d)
+            and p in ("any", proto) and pt in (None, port))
+def covers(a, b):   # does earlier rule a match everything rule b matches?
+    return (ip_network(b[2]).subnet_of(ip_network(a[2])) and ip_network(b[3]).subnet_of(ip_network(a[3]))
+            and a[4] in ("any", b[4]) and a[5] in (None, b[5]))
+for i, r in enumerate(rules):
+    for earlier in rules[:i]:
+        if covers(earlier, r):
+            kind = "redundant" if earlier[1] == r[1] else "SHADOWED (never takes effect)"
+            print(f"{r[0]} {kind}: fully covered by {earlier[0]}"); break
+tests = [("10.20.0.10", "10.10.4.2", "tcp", 502, "allow"), ("10.30.3.7", "10.20.0.5", "tcp", 3389, "deny"),
+         ("10.30.3.7", "10.10.4.2", "tcp", 502, "deny"), ("10.30.8.2", "10.20.0.5", "tcp", 445, "deny"),
+         ("10.20.0.12", "10.10.4.2", "tcp", 502, "deny")]
+for src, dst, proto, port, expect in tests:
+    hit = next(r for r in rules if matches(r, src, dst, proto, port))
+    status = "PASS" if hit[1] == expect else "FAIL"
+    print(f"{status} {src}->{dst} {proto}/{port}: {hit[1]} by {hit[0]} (expected {expect})")
+```
+
+Saída esperada (Python 3.13.5):
+
+```text
+R5 SHADOWED (never takes effect): fully covered by R4
+PASS 10.20.0.10->10.10.4.2 tcp/502: allow by R1 (expected allow)
+FAIL 10.30.3.7->10.20.0.5 tcp/3389: allow by R4 (expected deny)
+PASS 10.30.3.7->10.10.4.2 tcp/502: deny by R7 (expected deny)
+FAIL 10.30.8.2->10.20.0.5 tcp/445: allow by R4 (expected deny)
+FAIL 10.20.0.12->10.10.4.2 tcp/502: allow by R6 (expected deny)
+```
+
+Três constatações:
+
+1. **A R5 é sombreada pela R4.** O comentário diz que o RDP vindo das mesas corporativas é bloqueado, mas a R4 já permitiu todo o TCP a partir de 10.30.0.0/16, de modo que a R5 nunca se aplica — o "bloqueio" nunca funcionou.
+2. **A R4 é o problema real.** Uma regra "temporária" permite todas as portas TCP da zona corporativa inteira para dentro do centro de controle. Os seus testes falham (RDP e SMB são permitidos). Repare no que os testes *não* mostram: a mesa corporativa até a porta 502 de uma estação é negada pela R7, de modo que o fw-01 não explica as escritas da mesa corporativa capturadas na KW-04 no Capítulo 2. Esse caminho precisa existir em outro lugar; registre-o como em aberto (o Capítulo 13 o encontra).
+3. **A R6 não é uma duplicata da R1.** Ela permite que a sub-rede inteira do centro de controle escreva na KW-04, incluindo 10.20.0.12, que não tem nada a fazer ali.
+
+Uma mudança sólida: apagar a R4 (depois de confirmar com o responsável o que ainda a usa — os logs do firewall mostrarão); mover o bloqueio de RDP para cima de qualquer permissão, se ele ainda for necessário, ou confiar na negação padrão; substituir a R6 por nada (a R1 e a R2 já cobrem os caminhos necessários). Execute de novo o avaliador com o novo conjunto de regras antes da mudança e os testes ao vivo depois (Capítulo 11).
+
+### 10.5 Planejamento de mudanças
+
+Toda mudança de configuração num ambiente de controle precisa de: o antes e o depois exatos; o motivo (constatação ou requisito); o efeito esperado, escrito como testes; um plano de reversão; a janela combinada com as operações; e quem verifica. O guia do NIST sobre gestão de configuração focada em segurança descreve linhas de base e controle de mudanças ([SP 800-128](https://csrc.nist.gov/pubs/sp/800/128/upd1/final)). A exportação do firewall antes e depois é evidência; calcule o seu hash (Capítulo 5).
+
+Exporte e calcule o hash do conjunto de regras antes e depois da mudança e guarde os dois resumos no registro de mudança. Escreva o efeito esperado como os mesmos testes que o Laboratório 10 executa, para que a verificação seja uma nova execução, e não uma invenção nova. Combine a janela com as operações e nomeie quem vai confirmar que a varredura do SCADA continua atendendo ao requisito de atualidade depois da mudança.
+
+### 10.6 Atividade prática
+
+Reescreva a política do fw-01 a partir da lista de conduítes do Capítulo 6: uma regra por conduíte declarado, cada uma com chamado e responsável no comentário, e depois a negação padrão. Execute o Laboratório 10 sobre a sua versão até que os cinco testes passem e nenhuma regra seja sombreada ou redundante. Acrescente dois testes seus para o conduíte C3.
+
+Ponha cada permissão acima da negação padrão, com chamado e responsável no comentário. Remova a R4 e a R6 em vez de tentar remendá-las. Acrescente dois testes para o conduíte C3: host de salto para o centro de controle em tcp/22 permitido, e uma mesa corporativa para a mesma porta negada. Execute de novo até que todo teste passe e nenhuma regra seja sombreada ou redundante.
+
+### 10.7 Erros comuns e limites
+
+- Revisar uma regra nova sem ler as regras acima dela.
+- Apagar uma regra ampla sem verificar nos logs os seus usuários atuais.
+- Tratar "parece uma duplicata" como "pode ficar".
+- Configurar o acesso de fornecedores como permanentemente habilitado "para emergências".
+- O Laboratório 10 modela uma política de primeira correspondência sem estado, com contenção exata; firewalls reais acrescentam estado, objetos, NAT e zonas, e têm as suas próprias ferramentas de análise.
+
+- Revisar uma regra nova sem ler as regras acima dela, que podem já permitir ou negar o mesmo tráfego.
+- Apagar uma regra ampla sem verificar nos logs do firewall os usuários atuais.
+- Deixar o acesso de fornecedores permanentemente habilitado para emergências.
+
+### Exercícios — capítulo 10
+
+**EX037 — Explique o sombreamento.** *Objetivo:* raciocinar sobre a ordem. *Insumos:* Laboratório 10. *Passos:* (1) mover a R5 para cima da R4 e prever os resultados dos testes; (2) executar e comparar. *Evidência esperada:* previsão e saída. *Rubrica:* 3 = nenhum sombreamento relatado; o teste 2 (RDP) passa (negado pela R5); o teste 4 (SMB) continua falhando (permitido pela R4); o teste 5 continua falhando (R6); 2 = quase tudo; 1 = palpites; 0 = nada.
+
+**EX038 — Conserte a política.** *Objetivo:* produzir um conjunto de regras correto. *Insumos:* Laboratório 10. *Passos:* remover a R4 e a R6 (manter a R5 ou removê-la com justificativa); executar. *Evidência esperada:* nova lista de regras e saída com cinco linhas PASS. *Rubrica:* 3 = cinco linhas PASS; justificativa para a R5 (redundante com a negação padrão quando a R4 sai, portanto remover ou manter para um registro explícito); observa a necessidade de verificar antes nos logs os usuários da R4; 2 = passa, sem justificativa; 1 = parcial; 0 = nada.
+
+**EX039 — Configuração do acesso de fornecedores.** *Objetivo:* configurar um acesso com prazo. *Insumos:* o fornecedor dos relés da SS-3 precisa de acesso remoto cerca de duas vezes por ano. *Passos:* especificar o estado da conta, as etapas de habilitação, o caminho, a autenticação, o registro, os alertas e a validade. *Evidência esperada:* uma especificação de configuração. *Rubrica:* 3 = desabilitada por padrão; habilitada pelo plantão do KVROC mediante um chamado aprovado pela Kestrel Grid; caminho pelo jump-01 com MFA e gravação da sessão; nunca diretamente para a rede dos relés; alerta em uso fora de uma janela; validade automática; revisão no dia seguinte; 2 = falta um elemento; 1 = "VPN para o fornecedor"; 0 = nada.
+
+**EX040 — Detecte ampliações.** *Objetivo:* estender o avaliador. *Insumos:* a `covers` do Laboratório 10. *Passos:* acrescentar uma verificação que relate quando uma regra posterior com a mesma ação se sobrepõe *parcialmente* a uma anterior e é mais ampla na origem ou no destino. *Evidência esperada:* código e saída. *Rubrica:* 3 = relata a R6 como ampliação da R1 (a origem /24 contém a /32 da R1; o destino /24 está dentro do /16; mesma porta), explica por que isso merece revisão; 2 = detecta, sem explicação; 1 = tentativa; 0 = nada.
+
+### Síntese do capítulo
+
+Um conjunto de regras de firewall é um programa de primeira correspondência, e os seus defeitos são defeitos de programa: regras sombreadas que nunca agem, regras redundantes que confundem e regras parecidas que ampliam o acesso. Configure os conduítes com uma regra por propósito declarado e negação padrão, mantenha o acesso de fornecedores desabilitado até ser necessário e planeje cada mudança com os seus testes e a sua reversão. Depois, verifique, que é o assunto do próximo capítulo.
+
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Continue estudando — capítulo 10 de 18
+
+[← Capítulo 09](#ch-09) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 11 (inglês) →](../../en/book/MANUSCRIPT.md#ch-11)
 
 Os próximos capítulos ainda estão apenas na edição em inglês.
 <!-- cyberabc:chapter-navigation:end -->
@@ -740,7 +1382,7 @@ Os próximos capítulos ainda estão apenas na edição em inglês.
 
 ## Resoluções e notas de avaliação
 
-Cada resolução mostra uma resposta defensável e o que a rubrica recompensa. Uma resposta diferente recebe a pontuação máxima quando atende ao mesmo padrão de evidências, escopo e honestidade sobre os limites. Os resultados numéricos vêm dos laboratórios offline deste livro, executados com o Python 3.13.5 e apenas a biblioteca padrão; quando um resultado depende de um laboratório modificado, a modificação é descrita para que você possa reproduzi-la. Todos os números descrevem dados sintéticos; nunca os apresente como constatações sobre operadores reais. Esta edição parcial traz as resoluções de EX001–EX020; as de EX021–EX072 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
+Cada resolução mostra uma resposta defensável e o que a rubrica recompensa. Uma resposta diferente recebe a pontuação máxima quando atende ao mesmo padrão de evidências, escopo e honestidade sobre os limites. Os resultados numéricos vêm dos laboratórios offline deste livro, executados com o Python 3.13.5 e apenas a biblioteca padrão; quando um resultado depende de um laboratório modificado, a modificação é descrita para que você possa reproduzi-la. Todos os números descrevem dados sintéticos; nunca os apresente como constatações sobre operadores reais. Esta edição parcial traz as resoluções de EX001–EX040; as de EX041–EX072 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
 
 ### Capítulo 1: EX001–EX004
 
@@ -791,6 +1433,56 @@ Cada resolução mostra uma resposta defensável e o que a rubrica recompensa. U
 **EX019 — Registro de evidência.** O quê: `fw-01-rules-20261013.txt` (exportação bruta). Origem: fw-01, CLI de gerência, versão do firmware registrada. Tempo: 2026-10-13T08:12:40Z, host coletor sincronizado com o ntp-ops (deslocamento de +0,1 s). Coletor: R. Kaur. Método: o comando exato de exportação. Integridade: a saída de `sha256sum fw-01-rules-20261013.txt` registrada no registro do caso, guardada separada do arquivo.
 
 **EX020 — Alternativas passivas.** Quem conversa com a KW-07: logs de fluxo do fw-01 e do roteador, ou uma captura SPAN. Firmware: registros de ativos, o inventário da ferramenta do fornecedor durante uma sessão de engenharia aprovada. Telnet: a exportação de configuração da RTU e a documentação do fornecedor sobre os serviços padrão. Um teste ativo só se justifica se os registros forem conflitantes, numa janela com escopo e com as operações presentes, como um único teste de conexão.
+
+### Capítulo 6: EX021–EX024
+
+**EX021 — Posicione os ativos.** Roteador celular da KW-06: na fronteira da Z1; a sua interface de gerência é tão privilegiada quanto a Z5 e pertence ao inventário e às verificações de deriva. Gateway do fornecedor da SS-3: numa zona própria de acesso remoto, conectando-se apenas via jump-01, nunca posicionado na Z3. Servidor de relatórios: Z6. Notebook de engenharia: um ativo transitório com controles próprios (Capítulo 16), nunca permanentemente em zona alguma.
+
+**EX022 — Escreva um conduíte.** C4: origem hist-02 (Z2) → destino report-01 (Z6) tcp/443; iniciado a partir da Z2 (push); propósito: CSV diário do relatório de operações; responsável: o líder de dados de operações da Kestrel Water; aplicação: regra do fw-01 com chamado; monitoramento: alerta do coletor se não houver envio até as 06:30 ou em qualquer conexão da Z6 para o hist-02; revisão anual.
+
+**EX023 — Contraste setorial.** Água: confirmar um servidor SCADA redundante ou agendar fora dos períodos críticos; duração da interrupção da varredura combinada com as operações. Rede elétrica: reinícios do front end combinados com a sala de controle da rede, procedimentos de perda de telecontrole prontos; proteção não afetada, mas confirmar. Hospital: engenharia clínica e o nível de patch suportado pelo fabricante do sistema de gestão predial; continuidade dos alarmes de ventilação e dos quartos de isolamento durante o reinício. Um único cronograma semanal não serve para nenhum deles.
+
+**EX024 — Modelo versus captura.** Não explicados pelos conduítes declarados: as escritas de 10.30.3.7 → KW-04 (nenhum conduíte corporativo para a Z1); a consulta de função 43 do scada-01, se o C1 for declarado apenas como "varreduras de leitura" (acrescentá-la explicitamente, se confirmada como recurso); dois quadros malformados do scada-01 — uma anomalia a explicar (falha de driver ou um programa diferente nesse host).
+
+### Capítulo 7: EX025–EX028
+
+**EX025 — Decodifique prioridades.** `<86>`: 86 = 10 × 8 + 6 → facility 10 (authpriv), severidade 6 (informativa). `<134>`: 16 × 8 + 6 → local0, informativa. `<11>`: 1 × 8 + 3 → user, erro. `<165>`: 20 × 8 + 5 → local4, aviso (notice).
+
+**EX026 — Corrija um relógio.** Um deslocamento de +47 s significa que o host está adiantado; corrigido = 02:10:00 − 47 s = **02:09:13Z**. Declare a incerteza: "deslocamento medido por volta das 03:10Z; deriva ao longo da hora desconhecida; tratar como ±5 s, a menos que haja dados de deriva".
+
+**EX027 — Posicione a linha BSD.** Necessário: o ano (a partir do contexto da coleta — a data da exportação), o fuso horário configurado na estação e o seu deslocamento medido. Regra: as linhas que casam com `^<\d+>[A-Z][a-z]{2} [ \d]\d \d\d:\d\d:\d\d ` são analisadas com ano e fuso explícitos, tirados de uma tabela por host, e o evento é marcado `assumed_zone=true` na linha do tempo. Se o fuso ou o deslocamento do host forem desconhecidos, ponha-o numa lista separada de "não posicionados", em vez de adivinhar.
+
+**EX028 — Pergunta de ponto cego.** Os logs do firewall do centro de controle e o sensor da Z2 não conseguem ver o tráfego entre um notebook e a RTU no switch local ou na porta serial da estação. Os próprios logs da RTU poderiam ver, se ela registrar sessões de configuração e escritas e se o registro estiver habilitado. Acrescentar: registro de eventos da RTU encaminhado quando o enlace estiver ativo, um sensor passivo no nível da estação onde se justificar e registros de acesso físico (alarmes de porta, livro de visitas ao local).
+
+### Capítulo 8: EX029–EX032
+
+**EX029 — Nomeie o modo.** (a) Inconsistência entre tags ou deriva: falha no retorno de posição da válvula, ou vazão entrando por outra rota (desvio, vazamento, válvula manual). (b) Valor travado / inconsistência entre tags: medidor de vazão com falha, ou um valor congelado ou substituído. (c) Dados desatualizados/em buffer: armazenamento e reenvio depois de uma queda do enlace, ou uma reprodução. (d) Perda da autoridade de controle: seletor local/remoto deixado em "local" depois de uma manutenção, ou um intertravamento impedindo a partida.
+
+**EX030 — Preveja uma mudança de regra.** Com `STUCK_MIN = 25` e `MAX_STEP = 7.0` para o nível: a KW-02 deixa de ser sinalizada (20 < 25); os passos de 6,84 e 6,83 da KW-07 ficam abaixo de 7,0, portanto não há pico; a lacuna da KW-05 continua relatada; a KW-01 não muda. Saída verificada: apenas `KW-05 FLOW_LS gap: 7 consecutive missing minutes`. O que se perde: o analisador congelado e a excursão de uma única amostra — ambos potencialmente relevantes para a segurança.
+
+**EX031 — Regra condicional de valor travado.** `if pump_state == "running" for the whole run and run_length_identical(flow) >= M: alert("flow stuck while pump running")`. Testes: bomba desligada por 40 min com vazão 0,0 → sem alerta; bomba funcionando com vazão exatamente 41,0 por M amostras → alerta; bomba funcionando com variação natural → sem alerta.
+
+**EX032 — Plano de falha ou ataque.** Indicadores de falha: o display local do analisador difere do valor informado ou mostra um código de falha; diagnósticos da entrada analógica da RTU (laço aberto, entrada congelada); registros de manutenção mostrando calibração ou trabalho no analisador. Indicadores de manipulação: escritas capturadas no registrador de relatório ou num registrador de escala relacionado; uma sessão de configuração da RTU na janela; uma amostra manual pontual feita pelas operações que discorda de 0,62, enquanto o display do analisador concorda com a amostra. Todas são somente de leitura ou feitas pelas operações.
+
+### Capítulo 9: EX033–EX036
+
+**EX033 — Teste de resposta conhecida.** Com `0x3D65` no laço que desloca para a direita, o assert falha (`AssertionError`) e o programa para antes de julgar qualquer quadro. Uma implementação com bits refletidos (LSB primeiro) precisa usar o polinômio refletido 0xA6BC; a forma normal 0x3D65 pertence às implementações MSB primeiro. O teste de resposta conhecida transformou um bug silencioso e plausível numa falha imediata.
+
+**EX034 — Decodifique o byte de controle.** 0xC9 = 1100 1001: DIR 1 (do mestre), PRM 1, função 9 — request link status. 0x44 = 0100 0100: DIR 0 (da outstation), PRM 1 (primário), função 4 — unconfirmed user data, como usado, por exemplo, na resposta não solicitada de uma outstation. 0x0B = 0000 1011: DIR 0, PRM 0, função 11 — link status (secundário).
+
+**EX035 — Experimento mental de falsificação.** O CRC mostra apenas que os bytes não foram corrompidos acidentalmente. O endereço de origem DNP3 1 é um campo que o remetente escreve; qualquer host pode reivindicá-lo. A autenticidade precisa de proteção criptográfica — o DNP3 Secure Authentication, ou um túnel cujas pontas sejam autenticadas (por exemplo, TLS terminando no fep-01 e na outstation ou no seu gateway) —, mais a aplicação pela rede de que só o caminho do fep-01 alcança a outstation. A origem de rede inesperada é, em si, a constatação.
+
+**EX036 — Seleção de método.** (a) Passivo: decodificar uma captura no fep-01 ou os seus logs ao longo do mês e listar os endereços de origem. (b) Exportação da configuração do firewall do fep-01 e os seus logs; um único teste de conexão com escopo apenas se a exportação for ambígua. (c) Registro de ativos; caso contrário, a ferramenta do fornecedor em modo somente de leitura durante uma sessão aprovada, combinada com o engenheiro de proteção ou de telecontrole da Kestrel Grid — nunca sondando a outstation.
+
+### Capítulo 10: EX037–EX040
+
+**EX037 — Explique o sombreamento.** Com a R5 acima da R4: nenhuma regra sombreada é relatada; testes: 1 PASS, 2 PASS (negado pela R5), 3 PASS, 4 FAIL (SMB permitido pela R4), 5 FAIL (R6). A reordenação cumpriu a promessa do comentário sobre o RDP, mas não resolveu a regra ampla.
+
+**EX038 — Conserte a política.** Remover a R4 e a R6. Os cinco testes dão PASS (RDP e SMB agora negados pela R7; 10.20.0.12 negado pela R7). A R5 passa a ser redundante com a negação padrão; mantenha-a apenas se for desejada uma categoria de log separada para as tentativas de RDP (e então ela deve ficar acima de qualquer permissão); caso contrário, remova-a. Antes de remover a R4, verifique 30 dias de logs do fw-01 para listar o que usava a R4 e dê a cada uso legítimo o seu próprio conduíte.
+
+**EX039 — Configuração do acesso de fornecedores.** `vendor-ss3` desabilitada por padrão. A Kestrel Grid abre um chamado; o plantão do KVROC habilita a conta por uma janela fixa (por exemplo, 4 h) na ferramenta de acesso; o fornecedor se conecta ao jump-01 com MFA; a sessão é gravada; o jump-01 permite apenas o endereço de gerência do gateway do fornecedor e a porta de engenharia específica na SS-3, nunca a rede inteira da subestação; um alerta dispara em qualquer login fora de uma janela habilitada; a conta se desabilita automaticamente; no dia útil seguinte, o log da sessão é revisado frente ao chamado.
+
+**EX040 — Detecte ampliações.** Acrescentar: `def overlaps(a, b): return ip_network(a[2]).overlaps(ip_network(b[2])) and ip_network(a[3]).overlaps(ip_network(b[3])) and (a[4] in ("any", b[4]) or b[4] == "any") and (a[5] is None or b[5] is None or a[5] == b[5])` e, para uma regra posterior com a mesma ação que se sobrepõe, mas não está coberta, relatá-la quando a sua origem ou o seu destino não for uma sub-rede da anterior. A saída verificada acrescenta `R6 broadens R1: same action, wider source 10.20.0.0/24`, o mesmo para a R2, e `R7 broadens R5` — esta última é a negação padrão pretendida e deve ser excluída (por exemplo, pulando as regras cuja origem e cujo destino são ambos `0.0.0.0/0`). A revisão é necessária porque, numa leitura rápida, a regra parece uma duplicata, mas concede à sub-rede inteira do centro de controle acesso de escrita à KW-04.
 
 <a id="glossary"></a>
 
