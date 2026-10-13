@@ -1,7 +1,7 @@
 # Governança, Riscos e Compliance de Segurança: Curso de Tecnólogo
 
 - Idioma: português do Brasil (`pt`); curso 074, curso de tecnólogo (3 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–12 de 30 já estão escritos em português, com os exercícios EX001–EX036 e suas resoluções com rubricas de 0 a 3 e 1 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 13–30 (EX037–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–21 de 30 já estão escritos em português, com os exercícios EX001–EX063 e suas resoluções com rubricas de 0 a 3 e 4 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 22–30 (EX064–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de tecnólogo que constroem, operam e avaliam os processos práticos de GRC de uma organização com várias unidades.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios verificam a atualidade das evidências, calculam a perda esperada, resumem CSVs de testes de controles, acompanham um indicador contra um limiar e conciliam uma lista de funcionários com as contas, sempre sobre dados sintéticos. Os números de risco são ilustrações, as normas são citadas pela edição e parafraseadas, e nada aqui é auditoria, atestação ou aconselhamento jurídico reais. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ ISO 31000:2018 (no Brasil, ABNT NBR ISO 31000:2018); ISO/IEC 27001:2022 (no Bras
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) |
 
-Capítulos 13–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-13), até a chegada dos próximos lotes.
+Capítulos 22–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-22), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -490,11 +490,412 @@ Os mapas deixam escapar fluxos informais, como fotos tiradas no celular. Os cont
 - **EX035 — Acordos ausentes.** Que partes não tinham acordo escrito? *Rubrica:* 3 = dois laboratórios;; 2 = laboratórios;; 1 = seguradoras;; 0 = nenhuma.
 - **EX036 — Problema do agendamento.** O que havia de errado com o site de agendamento? *Rubrica:* 3 = coletava histórico médico de que não precisava;; 2 = dados em excesso;; 1 = nada;; 0 = nenhuma.
 
+<a id="ch-13"></a>
+
+## Capítulo 13 — Governança, riscos e compliance de segurança: cenários de risco
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever cenários de risco para a Riverton; (2) identificar causas e consequências; (3) escolher cenários para análise detalhada.
+
+### 13.1 Escrever cenários
+
+Priya escreve os cenários de risco como histórias curtas, com uma causa, um evento e consequências. Um ransomware criptografa os computadores da recepção de uma clínica e se espalha para o arquivo de imagens, parando o atendimento por dias. Uma recepcionista envia o prontuário de um paciente ao laboratório errado. Um script malicioso no site de agendamento captura dados de cartão. Um notebook com listas de pacientes sem criptografia é furtado de um carro. Ela aprende que os cenários ajudam os gestores a imaginar os riscos de forma concreta e a julgá-los com bom senso. A história do notebook furtado, por exemplo, aponta direto para a criptografia como o controle que mudaria seu desfecho.
+
+### 13.2 Causas e consequências
+
+Para cada cenário, Priya lista as causas, como phishing ou falta de segmentação, e as consequências para os pacientes, as finanças, os reguladores e a reputação. No cenário de ransomware, as consequências incluem consultas canceladas, perda de receita, notificação ao regulador se houver prontuários afetados e reclamações de pacientes. Ela aprende que listar as causas aponta para os controles preventivos, enquanto listar as consequências aponta para o planejamento de recuperação e resposta. No ransomware, o phishing como causa aponta para os controles de e-mail, e as consultas canceladas apontam para a recuperação. Nos prontuários enviados ao destinatário errado, a causa costuma ser uma escolha apressada na recepção.
+
+### 13.3 Escolher cenários
+
+Com o gerente de operações, Priya escolhe quatro cenários para análise detalhada, com base no impacto provável e na preocupação da direção: ransomware numa clínica, prontuários enviados ao destinatário errado, captura de dados de cartão (skimming) no site de agendamento e notebooks perdidos. Os demais cenários ficam registrados para revisão posterior. Ela aprende que o esforço de análise deve se concentrar nos cenários que mais importam, e que uma lista curta e bem escolhida é mais útil do que uma lista longa que ninguém analisa. Registrar os outros cenários os mantém no registro para a próxima revisão, em vez de descartá-los.
+
+### Exemplo resolvido
+
+Priya escreve quatro cenários com causas e consequências e os seleciona para análise detalhada.
+
+> **Caso sintético.** Os cenários são sintéticos.
+
+### Erros e limites
+
+Os cenários refletem os limites da imaginação. A seleção envolve julgamento.
+
+### Exercícios
+
+- **EX037 — Estrutura do cenário.** Que três partes cada cenário contém? *Rubrica:* 3 = causa, evento e consequências;; 2 = três;; 1 = nada;; 0 = nenhuma.
+- **EX038 — Uso das causas.** Para onde apontam as causas listadas? *Rubrica:* 3 = para os controles preventivos;; 2 = prevenção;; 1 = recuperação;; 0 = nenhuma.
+- **EX039 — Lista curta.** Por que se concentrar numa lista curta de cenários? *Rubrica:* 3 = o esforço deve ir para onde mais importa;; 2 = foco;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Governança, riscos e compliance de segurança: métodos I
+
+### Objetivos de aprendizagem
+
+Você vai (1) estimar a perda anual esperada dos cenários; (2) comparar os cenários em dinheiro; (3) reconhecer a incerteza das estimativas.
+
+### 14.1 Estimar
+
+Para os quatro cenários escolhidos, Priya pede aos gestores que estimem quantas vezes por ano cada um pode acontecer e um custo típico quando acontece. O ransomware numa clínica poderia acontecer cerca de uma vez a cada sete anos, a cento e oitenta mil. Os prontuários enviados ao destinatário errado, duas vezes por ano, a quatro mil. O skimming de cartão, uma vez em vinte anos, a duzentos e vinte mil. Um notebook perdido, uma vez por ano, a nove mil. Essas frequências e custos aproximados alimentam diretamente a comparação de perda esperada da seção seguinte.
+
+### 14.2 Comparar
+
+O laboratório multiplica a frequência pelo custo. O ransomware tem a maior perda anual esperada, vinte e sete mil; o skimming de cartão, onze mil; os notebooks perdidos, nove mil; e os prontuários enviados ao destinatário errado, oito mil. O total é de cinquenta e cinco mil por ano. Priya observa que os prontuários enviados errado acontecem com mais frequência, mas custam menos por ano, enquanto o ransomware é raro, mas o mais caro. A perda esperada ajuda a comparar cenários muito diferentes numa só escala. Poder pôr o ransomware em vinte e sete mil e os prontuários em oito mil na mesma escala é o que torna o ranking possível.
+
+### Laboratório — Perda anual esperada de quatro cenários da Riverton
+
+```python
+"""Expected annual loss per scenario and in total (synthetic Riverton estimates)."""
+sc = [("ransomware at a clinic", 0.15, 180_000), ("patient record misdirected", 2.0, 4_000),
+      ("card skimming on booking site", 0.05, 220_000), ("lost clinic laptop", 1.0, 9_000)]
+for n, f, m in sc: print(f"{n}: {f} x {m:,} = {f*m:,.0f}")
+print(f"total {sum(f*m for _, f, m in sc):,.0f}")
+```
+
+Execute com `python3 lab_ale.py`. Saída verificada:
+
+```text
+ransomware at a clinic: 0.15 x 180,000 = 27,000
+patient record misdirected: 2.0 x 4,000 = 8,000
+card skimming on booking site: 0.05 x 220,000 = 11,000
+lost clinic laptop: 1.0 x 9,000 = 9,000
+total 55,000
+```
+
+### 14.3 Incerteza
+
+O Sr. Lind pergunta quão confiantes os gestores estavam. Priya admite que as estimativas são aproximadas e que o custo do ransomware poderia ser muito maior se prontuários fossem roubados e muitos pacientes precisassem ser notificados. Ela registra cada estimativa com um valor baixo e um alto e anota a fonte. Aprende que números únicos são úteis para comparar, mas devem sempre ser lidos com sua incerteza, sobretudo nos eventos raros e graves, em que as médias escondem o que poderia de fato acontecer. No ransomware, por exemplo, o valor alto incluiria os custos de notificação caso prontuários fossem roubados.
+
+### Exemplo resolvido
+
+Priya calcula perdas anuais esperadas que somam cinquenta e cinco mil, com o ransomware no topo, a vinte e sete mil, e registra faixas para a incerteza.
+
+> **Caso sintético.** As estimativas são sintéticas.
+
+### Erros e limites
+
+As estimativas dos gestores são aproximadas. As médias escondem desfechos graves.
+
+### Exercícios
+
+- **EX040 — Maior cenário.** Que cenário tem a maior perda anual esperada? *Rubrica:* 3 = ransomware, a 27 mil;; 2 = ransomware;; 1 = prontuários;; 0 = nenhuma.
+- **EX041 — Perda total.** Qual é a perda anual esperada total? *Rubrica:* 3 = 55 mil;; 2 = 55.000;; 1 = nada;; 0 = nenhuma.
+- **EX042 — Frequente, mas pequeno.** Que cenário acontece com mais frequência, mas custa menos por ano? *Rubrica:* 3 = prontuários enviados errado, a 8 mil;; 2 = prontuários;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Governança, riscos e compliance de segurança: laboratório guiado
+
+### Objetivos de aprendizagem
+
+Você vai (1) conduzir uma oficina guiada de avaliação de riscos; (2) registrar os resultados num registro; (3) acordar os donos dos tratamentos.
+
+### 15.1 Oficina
+
+Priya conduz uma oficina guiada com o gerente de operações, dois gerentes de clínica, o líder de TI e o encarregado de proteção de dados. Eles revisam os quatro cenários, as estimativas de perda esperada e os critérios. Cada participante dá sua opinião sobre probabilidade e impacto antes da discussão, para evitar que quem fala primeiro ancore todos os outros. As diferenças são discutidas e o grupo acorda as notas, registrando nas anotações qualquer discordância forte. Colher as opiniões antes da discussão importa aqui, porque o líder de TI e os gerentes de clínica podem ver a probabilidade do ransomware de modos muito diferentes.
+
+### 15.2 Registro
+
+Priya registra os resultados no registro de riscos da Riverton: cenário, dono, controles atuais, notas, faixa de perda esperada e tratamento proposto. Para o ransomware, o tratamento inclui concluir a segmentação de rede e testar os backups offline. Para os prontuários enviados errado, inclui mensagens seguras e orientação à equipe. Ela aprende que uma entrada do registro deve ser completa o bastante para que alguém que faltou à oficina entenda o risco e o que será feito. A entrada do ransomware, por exemplo, deve citar a segmentação e o teste dos backups offline, para que o leitor saiba exatamente o que muda.
+
+### 15.3 Donos e prazos
+
+Cada tratamento recebe um dono e uma data-alvo acordados na oficina. O líder de TI é dono da segmentação, prevista para quatro meses; os gerentes das clínicas são donos da adoção das mensagens seguras, prevista para dois meses. Priya agenda uma revisão de acompanhamento. Ela aprende que tratamentos sem dono e sem prazo raramente acontecem, e que acordá-los na própria reunião, em vez de atribuí-los depois, aumenta o comprometimento. O Sr. Lind sugere verificar primeiro, no acompanhamento, a meta de dois meses das mensagens seguras, já que ela vence antes da segmentação.
+
+### Exemplo resolvido
+
+Priya conduz uma oficina com opiniões iniciais independentes, registra quatro riscos e acorda donos e prazos para os tratamentos.
+
+> **Caso sintético.** A oficina é sintética.
+
+### Erros e limites
+
+As oficinas refletem quem comparece. Os prazos escorregam.
+
+### Exercícios
+
+- **EX043 — Defesa contra a ancoragem.** Como Priya evitou a ancoragem na oficina? *Rubrica:* 3 = cada participante deu sua opinião antes da discussão;; 2 = opiniões independentes;; 1 = nada;; 0 = nenhuma.
+- **EX044 — Tratamento do ransomware.** Que tratamentos foram propostos para o ransomware? *Rubrica:* 3 = segmentação de rede e teste dos backups offline;; 2 = dois;; 1 = nada;; 0 = nenhuma.
+- **EX045 — Comprometimento.** Por que acordar donos e prazos na própria reunião? *Rubrica:* 3 = aumenta o comprometimento;; 2 = comprometimento;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Governança, riscos e compliance de segurança: métodos II
+
+### Objetivos de aprendizagem
+
+Você vai (1) escolher opções de tratamento de riscos; (2) estimar o risco residual após o tratamento; (3) documentar as decisões de aceitação de riscos.
+
+### 16.1 Opções de tratamento
+
+Priya aprende quatro opções de tratamento: evitar a atividade, reduzir o risco com controles, compartilhá-lo por meio de seguro ou contratos, ou aceitá-lo. Para o skimming no site de agendamento, a Riverton poderia evitar o risco passando o pagamento com cartão para uma página hospedada pelo seu provedor de pagamentos, tirando por completo os dados de cartão do próprio site. Para o ransomware, ela escolhe reduzir o risco com segmentação e backups e compartilhar parte dele por meio de seguro cibernético. Cada escolha depende do custo, da eficácia e do apetite acordado com a direção.
+
+### 16.2 Risco residual
+
+Depois de escolher os tratamentos, Priya estima o risco residual. Com segmentação e backups testados, o custo esperado do cenário de ransomware cai, porque a propagação fica limitada e a recuperação é mais rápida. Passar para uma página de pagamento hospedada reduz drasticamente o risco de skimming, já que os dados de cartão deixam de passar pelo site da Riverton. Ela registra as estimativas residuais ao lado das originais, para que os gestores vejam o que cada tratamento consegue e se o risco restante está dentro do apetite. A estimativa do skimming, por exemplo, deve cair bem abaixo dos onze mil originais quando os dados de cartão saírem do site da Riverton.
+
+### 16.3 Aceitação
+
+Algum risco permanece. O diretor-geral aceita formalmente o risco residual dos notebooks perdidos, porque a criptografia torna improvável a exposição dos dados e os custos de reposição são modestos. Priya registra a aceitação com a data, os motivos, as condições e uma data de revisão. A ISO/IEC 27001:2022 espera que os donos dos riscos aprovem os planos de tratamento e aceitem os riscos residuais. Ela aprende que a aceitação formal torna as decisões responsabilizáveis e impede que os riscos sejam ignorados em silêncio. O Sr. Lind pergunta o que mudaria a decisão, e Priya registra a condição de que notebooks sem criptografia encontrados depois a reabririam.
+
+### Exemplo resolvido
+
+Priya aplica quatro opções de tratamento, estima o risco residual após a segmentação e a página de pagamento hospedada e registra a aceitação formal dos notebooks.
+
+> **Caso sintético.** Os tratamentos e as estimativas são sintéticos; a ISO/IEC 27001:2022 é real.
+
+### Erros e limites
+
+As estimativas residuais são incertas. As condições do seguro limitam a cobertura.
+
+### Exercícios
+
+- **EX046 — Exemplo de evitar.** Como a Riverton pode evitar o risco de skimming? *Rubrica:* 3 = passar o pagamento com cartão para uma página hospedada;; 2 = página hospedada;; 1 = nada;; 0 = nenhuma.
+- **EX047 — Finalidade do residual.** Por que registrar o residual ao lado das estimativas originais? *Rubrica:* 3 = para mostrar o que os tratamentos conseguem diante do apetite;; 2 = comparação;; 1 = nada;; 0 = nenhuma.
+- **EX048 — Risco aceito.** Que risco residual o diretor-geral aceitou? *Rubrica:* 3 = notebooks perdidos;; 2 = notebooks;; 1 = ransomware;; 0 = nenhuma.
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Governança, riscos e compliance de segurança: ferramentas
+
+### Objetivos de aprendizagem
+
+Você vai (1) usar scripts para processar os resultados dos testes de controles; (2) resumir os resultados por unidade; (3) identificar padrões entre as unidades.
+
+### 17.1 Resultados de testes como dados
+
+A Riverton começa a testar três controles em quatro clínicas-piloto: backups, bloqueio de tela e revisões de acesso. Os resultados são registrados num arquivo CSV compartilhado, com a clínica, o controle e aprovado ou reprovado. Priya escreve um script com o módulo csv da biblioteca padrão do Python para ler o arquivo e resumir os resultados. Ela aprende que formatos de dados simples e consistentes facilitam as ferramentas, e que um CSV com colunas claras sustenta análises úteis sem software caro. Doze linhas de clínica, controle e resultado bastam para mostrar que clínica precisa de ajuda primeiro.
+
+### 17.2 Resumo por clínica
+
+O laboratório lê doze resultados. A South passa nos três controles. A North e a West passam em dois de três. A East passa em apenas um de três. As falhas são a revisão de acesso na North, o bloqueio de tela e a revisão de acesso na East e o backup na West. Priya imprime o resumo para o gerente de operações e envia a cada gerente de clínica as próprias falhas, com uma nota sobre o que cada controle exige. A East, que falha em dois de três, recebe atenção primeiro, mas a seção seguinte mostra que as falhas de revisão de acesso têm uma causa comum.
+
+### Laboratório — Taxas de aprovação por clínica a partir de um arquivo CSV
+
+```python
+"""Parse control test results and compute pass rates per clinic (synthetic CSV)."""
+import csv, io
+data = """clinic,control,result
+North,backup,pass
+North,screenlock,pass
+North,access,fail
+East,backup,pass
+East,screenlock,fail
+East,access,fail
+South,backup,pass
+South,screenlock,pass
+South,access,pass
+West,backup,fail
+West,screenlock,pass
+West,access,pass
+"""
+rows = list(csv.DictReader(io.StringIO(data))); by = {}
+for r in rows: by.setdefault(r["clinic"], []).append(r["result"] == "pass")
+for c, v in by.items(): print(f"{c}: {sum(v)}/{len(v)} passed")
+fails = [f"{r['clinic']}/{r['control']}" for r in rows if r["result"] == "fail"]
+print("failures:", ", ".join(fails))
+```
+
+Execute com `python3 lab_tests.py`. Saída verificada:
+
+```text
+North: 2/3 passed
+East: 1/3 passed
+South: 3/3 passed
+West: 2/3 passed
+failures: North/access, East/screenlock, East/access, West/backup
+```
+
+### 17.3 Padrões
+
+Olhando para todas as clínicas, Priya vê que a revisão de acesso falhou em duas das quatro, mais do que qualquer outro controle. Ela pergunta por quê e descobre que os gerentes das clínicas não receberam as listas de contas a tempo. É um problema de processo, e não local, então ela recomenda corrigir a distribuição central das listas, em vez de culpar clínicas individuais. Aprende que as ferramentas valem mais quando ajudam a achar padrões que apontam para as causas-raiz. Corrigir uma vez a distribuição das listas deve melhorar os resultados da revisão de acesso em todas as clínicas, e não só na North e na East.
+
+### Exemplo resolvido
+
+Priya resume doze resultados de testes, constata que a East é a mais fraca e a South a mais forte e atribui as falhas repetidas de revisão de acesso à distribuição atrasada das listas.
+
+> **Caso sintético.** Os resultados dos testes são sintéticos.
+
+### Erros e limites
+
+Quatro clínicas são um piloto pequeno. Aprovado ou reprovado perde detalhes.
+
+### Exercícios
+
+- **EX049 — Clínica mais forte.** Que clínica passou nos três controles? *Rubrica:* 3 = South;; 2 = South;; 1 = East;; 0 = nenhuma.
+- **EX050 — Lista de falhas.** Liste as quatro falhas. *Rubrica:* 3 = North acesso, East bloqueio de tela, East acesso, West backup;; 2 = quatro;; 1 = nada;; 0 = nenhuma.
+- **EX051 — Causa do padrão.** Por que a revisão de acesso falhou em duas clínicas? *Rubrica:* 3 = os gerentes receberam as listas de contas atrasadas;; 2 = processo;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Governança, riscos e compliance de segurança: controles
+
+### Objetivos de aprendizagem
+
+Você vai (1) documentar os controles com donos e frequências; (2) mapear os controles para as obrigações; (3) preparar uma declaração de aplicabilidade simples.
+
+### 18.1 Documentar os controles
+
+Priya documenta os controles-chave da Riverton num registro de controles: nome, objetivo, dono, frequência, como opera e a evidência produzida. Por exemplo, o teste mensal de backup tem como dono o líder de TI, restaura cinco arquivos de amostra do arquivo de imagens e produz um registro de teste datado. Ela aprende que uma documentação clara permite que qualquer pessoa teste um controle e que os donos saibam exatamente o que se espera deles, o que reduz as divergências nas auditorias. Cinco arquivos de amostra do arquivo de imagens dão um teste concreto e repetível, que qualquer técnico consegue fazer.
+
+### 18.2 Mapear para as obrigações
+
+Priya mapeia cada controle para as obrigações que ele apoia. A criptografia apoia a lei de proteção de dados. A segmentação das maquininhas de cartão apoia o PCI DSS v4.0. As revisões de acesso apoiam tanto a proteção de dados quanto os compromissos contratuais com o provedor do sistema do consultório. O mapeamento mostra quais obrigações dependem de quais controles, para que o impacto de um controle que falhou possa ser avaliado em termos de compliance. Ela aprende que um controle muitas vezes apoia várias obrigações, o que aumenta sua importância. As revisões de acesso, que apoiam a lei e o contrato com o provedor, ficam por isso entre os controles mais importantes da Riverton.
+
+### 18.3 Declaração de aplicabilidade
+
+A Riverton estuda obter a certificação ISO/IEC 27001:2022 em dois anos. Priya prepara um rascunho de declaração de aplicabilidade (SoA) que lista os controles de referência da ISO/IEC 27002:2022 e se cada um se aplica, com os motivos. Os controles de desenvolvimento seguro de software são marcados como não aplicáveis, porque a Riverton não desenvolve software, embora os controles de fornecedores cubram seus provedores. Ela aprende que preparar a declaração cedo esclarece o escopo e evidencia as lacunas muito antes de uma auditoria. Marcar os controles de fornecedores como aplicáveis deixa claro como a Riverton cobre o provedor do sistema do consultório.
+
+### Exemplo resolvido
+
+Priya monta um registro de controles, mapeia os controles para as obrigações e redige uma declaração de aplicabilidade com exclusões justificadas.
+
+> **Caso sintético.** Os controles são sintéticos; a ISO/IEC 27001:2022, a 27002:2022 e o PCI DSS v4.0 são reais.
+
+### Erros e limites
+
+Os registros envelhecem. Os mapeamentos podem exagerar a cobertura.
+
+### Exercícios
+
+- **EX052 — Controle de backup.** Como opera o teste mensal de backup? *Rubrica:* 3 = o líder de TI restaura cinco arquivos de amostra e registra o resultado;; 2 = teste de restauração;; 1 = nada;; 0 = nenhuma.
+- **EX053 — Várias obrigações.** Por que um controle que apoia várias obrigações importa mais? *Rubrica:* 3 = sua falha afeta várias obrigações;; 2 = importância;; 1 = nada;; 0 = nenhuma.
+- **EX054 — Não aplicável.** Por que os controles de desenvolvimento seguro não se aplicam? *Rubrica:* 3 = a Riverton não desenvolve software;; 2 = sem desenvolvimento;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Governança, riscos e compliance de segurança: monitoramento
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir indicadores-chave de risco; (2) acompanhar os indicadores no tempo contra limiares; (3) responder às violações de limiares.
+
+### 19.1 Escolher indicadores
+
+Priya ajuda a escolher indicadores-chave de risco (KRIs) que avisem cedo quando o risco sobe. Um deles é o número de vulnerabilidades críticas sem patch nos computadores da Riverton no fim do mês, com limiar de dez. Outros incluem revisões de acesso atrasadas e itens de evidência vencidos. Ela aprende que bons indicadores são mensuráveis a partir dos sistemas existentes, ligados a riscos específicos e revisados com regularidade, para que valores em alta provoquem ação antes que os incidentes ocorram. Um limiar de dez para as vulnerabilidades críticas, por exemplo, dá a quem revisa todo mês um ponto claro a partir do qual agir.
+
+### 19.2 A tendência
+
+O laboratório mostra seis meses do indicador de vulnerabilidades: seis em abril, oito em maio, doze em junho, catorze em julho, nove em agosto e sete em setembro. Junho e julho violam o limiar, com o pico de catorze em julho. Priya investiga e descobre que uma atualização do fornecedor do software de imagens atrasou, impedindo os patches do sistema operacional nos computadores da recepção que compartilham software com os aparelhos de imagem. A causa estava num fornecedor, então o indicador apontou para uma questão contratual, e não para a aplicação de patches pela equipe de TI.
+
+### Laboratório — Tendência do indicador de vulnerabilidades contra um limiar
+
+```python
+"""KRI trend: unpatched critical vulnerabilities per month vs threshold 10 (synthetic)."""
+months = ["Apr", "May", "Jun", "Jul", "Aug", "Sep"]; vals = [6, 8, 12, 14, 9, 7]
+for m, v in zip(months, vals): print(f"{m}: {v}{'  BREACH' if v > 10 else ''}")
+print(f"breaches {sum(v > 10 for v in vals)}; peak {max(vals)} in {months[vals.index(max(vals))]}")
+```
+
+Execute com `python3 lab_trend.py`. Saída verificada:
+
+```text
+Apr: 6
+May: 8
+Jun: 12  BREACH
+Jul: 14  BREACH
+Aug: 9
+Sep: 7
+breaches 2; peak 14 in Jul
+```
+
+### 19.3 Responder
+
+Quando o limiar foi violado, o líder de TI deveria ter escalado, mas ninguém acompanhava o indicador todo mês. Priya recomenda designar um dono para revisar os indicadores mensalmente e uma regra pela qual duas violações seguidas vão para o gerente de operações. Também sugere pedir no contrato que o fornecedor de imagens informe os prazos de atualização. Ela aprende que os indicadores só ajudam se alguém os acompanha e tem ações acordadas para quando os limiares são ultrapassados. Com a revisão mensal, a violação de junho, com doze, teria sido escalada antes do pico de catorze em julho.
+
+### Exemplo resolvido
+
+Priya acompanha um indicador de vulnerabilidades com duas violações e pico de catorze em julho, atribui-as a um atraso do fornecedor e define uma regra de escalonamento.
+
+> **Caso sintético.** Os valores do indicador são sintéticos.
+
+### Erros e limites
+
+Os limiares são decisões de julgamento. Os indicadores podem ser manipulados.
+
+### Exercícios
+
+- **EX055 — Limiar.** Que limiar se aplica às vulnerabilidades críticas sem patch? *Rubrica:* 3 = dez;; 2 = 10;; 1 = nada;; 0 = nenhuma.
+- **EX056 — Meses de violação.** Que meses violaram o limiar? *Rubrica:* 3 = junho e julho;; 2 = dois;; 1 = nada;; 0 = nenhuma.
+- **EX057 — Regra de escalonamento.** Que regra de escalonamento Priya recomendou? *Rubrica:* 3 = duas violações seguidas vão para o gerente de operações;; 2 = regra;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Governança, riscos e compliance de segurança: solução de problemas
+
+### Objetivos de aprendizagem
+
+Você vai (1) investigar por que um controle não está funcionando; (2) separar problemas de desenho, de operação e de evidência; (3) corrigir a coisa certa.
+
+### 20.1 Um controle que falha
+
+O bloqueio de tela falha nos testes em várias clínicas, apesar da política e das configurações centrais. Priya investiga. Verifica a configuração do gerenciamento de dispositivos, visita duas clínicas e conversa com as recepcionistas. Ela aprende a separar três tipos de problema: de desenho, quando o próprio controle é inadequado; de operação, quando ele é adequado mas não é executado; e de evidência, quando ele funciona mas falta a prova. Cada um pede uma correção diferente, então o diagnóstico vem antes da ação. Visitar duas clínicas, em vez de só ler relatórios, é o que lhe permite distinguir esses três tipos de problema.
+
+### 20.2 Diagnóstico
+
+Priya descobre que a configuração central estava correta, mas as recepcionistas tinham encontrado um jeito de manter as telas acesas usando um reprodutor de mídia nos horários de pico, porque desbloquear repetidamente atrasava o check-in dos pacientes. O desenho não cabia no trabalho. Em outra clínica, o bloqueio funcionava, mas o teste registrou falha porque o testador verificou um computador reserva não gerenciado. Esse era um problema de evidência. Ela aprende que um mesmo sintoma pode esconder causas diferentes em lugares diferentes. O truque do reprodutor de mídia é um problema de desenho; o computador reserva não gerenciado, um problema de evidência.
+
+### 20.3 Corrigir
+
+Para o problema de desenho, Priya propõe o desbloqueio por crachá, que leva um segundo. Para o problema de evidência, atualiza as instruções de teste para verificar apenas os computadores gerenciados da recepção e registrar o reserva como um ativo separado. Ela evita recomendar medidas disciplinares contra as recepcionistas, já que o contorno revelou um problema de usabilidade. Aprende que solucionar problemas em controles de governança se parece com solucionar problemas de tecnologia: testar hipóteses, reunir evidências e corrigir a causa real. Registrar o computador reserva como ativo separado também o traz para o inventário, onde pode ser gerenciado ou aposentado.
+
+### Exemplo resolvido
+
+Priya separa problemas de desenho, operação e evidência, encontra um contorno de usabilidade e um erro de teste e corrige cada um da forma adequada.
+
+> **Caso sintético.** A investigação é sintética.
+
+### Erros e limites
+
+Os contornos podem esconder uso malicioso. Os sistemas de crachá precisam de suporte.
+
+### Exercícios
+
+- **EX058 — Tipos de problema.** Que três tipos de problema de controle Priya separou? *Rubrica:* 3 = desenho, operação e evidência;; 2 = três;; 1 = nada;; 0 = nenhuma.
+- **EX059 — Causa do contorno.** Por que as recepcionistas mantinham as telas acesas? *Rubrica:* 3 = desbloquear repetidamente atrasava o check-in dos pacientes;; 2 = usabilidade;; 1 = preguiça;; 0 = nenhuma.
+- **EX060 — Erro de evidência.** Que problema de evidência Priya encontrou? *Rubrica:* 3 = o testador verificou um computador reserva não gerenciado;; 2 = escopo do teste;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-21"></a>
+
+## Capítulo 21 — Governança, riscos e compliance de segurança: integração de serviços
+
+### Objetivos de aprendizagem
+
+Você vai (1) integrar a GRC ao gerenciamento de serviços de TI; (2) ligar mudanças e incidentes aos riscos; (3) usar os chamados como evidência.
+
+### 21.1 Integração
+
+A equipe de TI da Riverton usa um sistema de chamados para solicitações, incidentes e mudanças. Priya propõe integrar a ele as tarefas de governança: os testes de controles viram chamados agendados, os tratamentos de risco viram itens de trabalho acompanhados e as exceções viram chamados com data de expiração. Ela aprende que integrar ao gerenciamento de serviços já existente reduz o esforço duplicado e garante que o trabalho de governança fique visível para quem o executa, em vez de viver numa planilha à parte. Os chamados de exceção com data de expiração, por exemplo, tornam o registro de desvios do capítulo 8 algo que a equipe de TI vê todo dia.
+
+### 21.2 Mudanças e incidentes
+
+Priya liga as mudanças e os incidentes aos riscos. Uma mudança que altera as redes das clínicas precisa referenciar o risco de segmentação de rede e ser conferida contra o desenho padrão. Um incidente envolvendo um e-mail enviado ao destinatário errado atualiza a probabilidade desse risco. Ela aprende que essa ligação transforma a atividade diária de TI em evidência sobre o risco e a eficácia dos controles, ajudando a governança a se manter atual entre as revisões formais. Ligar o incidente do e-mail enviado errado ao seu risco, por exemplo, dá à próxima revisão do registro evidências reais sobre a probabilidade.
+
+### 21.3 Chamados como evidência
+
+Os auditores podem amostrar chamados para verificar os controles. Um chamado agendado de teste de backup inclui a data, as etapas, o resultado e o registro de teste anexado. Priya define campos obrigatórios para que os chamados contenham informação suficiente para servir de evidência. Ela aprende que a evidência embutida no trabalho normal é mais confiável e menos trabalhosa do que a evidência montada pouco antes de uma auditoria, o que muitas vezes revela lacunas que não podem ser corrigidas retroativamente. Campos obrigatórios como o registro de teste anexado tornam um chamado utilizável por um auditor sem pedir ao líder de TI que o explique.
+
+### Exemplo resolvido
+
+Priya integra os testes de controles, os tratamentos e as exceções ao sistema de chamados e define os campos de evidência.
+
+> **Caso sintético.** A configuração dos chamados é sintética.
+
+### Erros e limites
+
+Os campos dos chamados são pulados. As ligações exigem disciplina.
+
+### Exercícios
+
+- **EX061 — Exceções como chamados.** Como as exceções são tratadas no sistema de chamados? *Rubrica:* 3 = como chamados com data de expiração;; 2 = expiração;; 1 = nada;; 0 = nenhuma.
+- **EX062 — Ligação com incidentes.** Como um incidente de e-mail enviado errado afeta o registro? *Rubrica:* 3 = atualiza a probabilidade desse risco;; 2 = atualização;; 1 = nada;; 0 = nenhuma.
+- **EX063 — Momento da evidência.** Por que a evidência embutida no trabalho normal é melhor? *Rubrica:* 3 = mais confiável e menos trabalhosa que a montada antes da auditoria;; 2 = embutida;; 1 = nada;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX036 (as de EX037–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). Priya Natarajan, o Sr. Oskar Lind, o Halden Institute of Technology, o Riverton Dental Group e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX063 (as de EX064–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). Priya Natarajan, o Sr. Oskar Lind, o Halden Institute of Technology, o Riverton Dental Group e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Porque os dentistas os compraram diretamente dos fornecedores, por fora da TI.
 
@@ -567,6 +968,60 @@ Respostas-modelo para EX001–EX036 (as de EX037–EX090 estão na edição em i
 **EX035.** Dois laboratórios.
 
 **EX036.** Coletava histórico médico de que não precisava.
+
+**EX037.** Uma causa, um evento e consequências.
+
+**EX038.** Os controles preventivos.
+
+**EX039.** Porque o esforço de análise deve ir para os cenários que mais importam.
+
+**EX040.** Ransomware numa clínica, a 27 mil.
+
+**EX041.** 55 mil.
+
+**EX042.** Prontuários enviados ao destinatário errado, a 8 mil por ano.
+
+**EX043.** Cada participante deu sua opinião antes da discussão.
+
+**EX044.** Concluir a segmentação de rede e testar os backups offline.
+
+**EX045.** Porque acordá-los na própria reunião aumenta o comprometimento.
+
+**EX046.** Passando o pagamento com cartão para uma página hospedada pelo seu provedor de pagamentos.
+
+**EX047.** Para que os gestores vejam o que cada tratamento consegue e se o risco restante está dentro do apetite.
+
+**EX048.** O risco residual dos notebooks perdidos.
+
+**EX049.** South.
+
+**EX050.** Revisão de acesso na North, bloqueio de tela na East, revisão de acesso na East e backup na West.
+
+**EX051.** Porque os gerentes das clínicas não receberam as listas de contas a tempo.
+
+**EX052.** O líder de TI restaura cinco arquivos de amostra do arquivo de imagens e registra um resultado de teste datado.
+
+**EX053.** Porque sua falha afeta o cumprimento de várias obrigações ao mesmo tempo.
+
+**EX054.** Porque a Riverton não desenvolve software, embora os controles de fornecedores cubram seus provedores.
+
+**EX055.** Dez.
+
+**EX056.** Junho (12) e julho (14).
+
+**EX057.** Duas violações seguidas são escaladas para o gerente de operações.
+
+**EX058.** Problemas de desenho, de operação e de evidência.
+
+**EX059.** Porque desbloquear repetidamente atrasava o check-in dos pacientes.
+
+**EX060.** O testador verificou um computador reserva não gerenciado, registrando uma falsa falha.
+
+**EX061.** Como chamados com data de expiração.
+
+**EX062.** Atualiza a probabilidade do risco de e-mail enviado ao destinatário errado.
+
+**EX063.** Porque é mais confiável e menos trabalhosa do que a evidência montada pouco antes de uma auditoria.
 
 <a id="references"></a>
 ## Referências
