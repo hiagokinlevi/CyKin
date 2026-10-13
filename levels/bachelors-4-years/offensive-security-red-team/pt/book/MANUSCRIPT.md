@@ -1,7 +1,7 @@
 # Segurança Ofensiva Autorizada e Red Team: Um Livro para o Bacharelado
 
 - Idioma: português do Brasil (`pt`); bacharelado, quatro anos; aproximadamente 3.200 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–8 de 40 já estão escritos em português, com os exercícios EX001–EX024 e suas resoluções com rubricas de 0 a 3; os capítulos 9–40 (EX025–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–16 de 40 já estão escritos em português, com os exercícios EX001–EX048 e suas resoluções com rubricas de 0 a 3 e 3 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 17–40 (EX049–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de segurança e de computação em geral.
 - Relação com os livros vizinhos: o [livro de engenharia](../../../../engineering-5-years/offensive-security-red-team/en/book/MANUSCRIPT.md) enfatiza a construção de plataformas de avaliação; o [livro de tecnólogo](../../../../technologist-3-years/offensive-security-red-team/en/book/MANUSCRIPT.md) enfatiza a implementação. **Este livro une teoria, casos, laboratórios e um projeto final.**
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -28,9 +28,9 @@ NIST [SP 800-115](https://doi.org/10.6028/NIST.SP.800-115); [PTES](https://pente
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) |
 
-Capítulos 9–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-09), até a chegada dos próximos lotes.
+Capítulos 17–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-17), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -638,11 +638,768 @@ O código da plataforma valida, versiona e se recusa a iniciar engajamentos inse
 
 [← Capítulo 07 (rascunho)](#ch-07) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 09 (rascunho) →](#ch-09)
 
+<a id="ch-09"></a>
+
+## Capítulo 9 — Dados e bancos de dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar esquemas mínimos para achados; (2) proteger dados de clientes em bancos de evidências; (3) reter e apagar no prazo.
+
+### 9.1 Esquema mínimo
+
+Armazene o que os retestes precisam, não tabelas inteiras de clientes. Um registro de achado no TRB precisa apenas do suficiente para reproduzir e verificar a fraqueza: o identificador do ativo afetado, a requisição ou a configuração que a demonstrou, um carimbo de tempo, o testador, o id do engajamento e um ponteiro para o arquivo de evidência. Quando Sam provou que um endpoint de download de extratos devolvia o PDF de outro cliente, o registro guardou os dois ids de conta sintéticos envolvidos e um hash da resposta, não o extrato em si. Um reteste no trimestre seguinte repete a mesma requisição e compara o resultado. Cada coluna extra copiada de uma tabela de clientes vira um dado que a equipe de testes agora precisa proteger, reter e, um dia, apagar.
+
+### 9.2 Controle de acesso
+
+Os bancos de evidências usam acesso baseado em papéis; o papel de estagiário de Sam tem leitura/escrita apenas nos esquemas do engajamento. Os papéis são concedidos por engajamento, não por pessoa, de modo que a permissão desaparece quando o engajamento é encerrado, e não quando alguém se lembra de revogá-la. O FindingsDesk tem três: testador (escreve achados e evidências de um engajamento), revisor (lê os engajamentos que aprova) e custodiante (roda as rotinas de retenção e restauração, nunca edita achados). Separar o custodiante do testador significa que quem apaga as evidências no prazo não é a pessoa cujo trabalho elas documentam. Quando um testador passa para um novo engajamento, seu papel antigo expira e o revisor mantém acesso de leitura até que o relatório seja aceito.
+
+### 9.3 Retenção
+
+Exclusões dirigidas pelo contrato; "guardar para sempre" não é uma política. A declaração de trabalho fixa um período de retenção para as evidências brutas, comumente noventa dias após o relatório final, e outro mais longo para o relatório e o status da remediação. O FindingsDesk armazena essa data na linha do engajamento no dia em que o contrato é assinado, e uma rotina noturna apaga os blobs de evidência cuja data já passou, gravando um recibo de exclusão com contagens e hashes. A retenção também protege o testador: evidência guardada além da data combinada são dados de clientes mantidos sem motivo, e um auditor vai perguntar por quê. Se um cliente pede uma retenção legal, ela é um campo datado com dono, não uma promessa informal.
+
+### 9.4 Backups
+
+Cifrados, com acesso registrado, com restaurações testadas — os backups estão no escopo da revisão de abuso. Um backup é uma segunda cópia de toda captura de tela, todo log de requisições e toda string com cara de credencial que a equipe já capturou; por isso, ele atrai as mesmas ameaças que o banco de dados vivo e costuma ser vigiado com menos cuidado. Os backups de evidências do TRB são cifrados com uma chave mantida pelo papel de custodiante, armazenados numa conta separada, e toda leitura é registrada. A retenção também se aplica aos backups: uma rotina de exclusão que limpa o armazenamento vivo, mas deixa intactos snapshots de noventa dias, não apagou nada. A revisão trimestral de Sam compara a data do snapshot mais antigo com o menor período de retenção de qualquer engajamento ativo.
+
+### 9.5 Higiene de consultas
+
+Nada de SELECT * para notebooks; exporte CSVs minimizados. Os analistas geralmente querem uma contagem, uma tendência ou um único exemplo, e a consulta deve devolver exatamente isso. Puxar tabelas inteiras para um notebook leva a evidência para fora dos controles que a protegem: sem log de acesso, sem rotina de retenção e com um disco que pode viajar. Por isso, o FindingsDesk expõe consultas salvas, como achados abertos por severidade ou dias até a correção por unidade de negócio, que devolvem agregados e colunas redigidas. Quando alguém precisa de uma linha bruta, abre-a dentro do visualizador de evidências, onde a leitura é registrada. Sam reescreveu uma consulta popular de painel que selecionava todas as colunas e reduziu a exportação de quarenta campos para seis.
+
+### 9.6 Integridade
+
+Chaves estrangeiras dos achados para os blobs de evidência. Um achado que aponta para um arquivo ausente ou alterado não pode ser defendido quando o cliente o contesta. Cada blob de evidência no FindingsDesk é armazenado com um hash SHA-256 calculado no upload, e a linha do achado referencia o blob por id com uma restrição de chave estrangeira, de modo que o banco de dados se recusa a apagar evidências que um achado vivo ainda cita. Quando um relatório sai, a exportação lista cada achado com os hashes de suas evidências. Se o TRB depois perguntar se uma captura de tela foi editada, Sam recalcula o hash e compara. Uma divergência é, ela mesma, um incidente a investigar, não um motivo para reenviar o arquivo em silêncio.
+
+### 9.7 Revisão de acessos contra os registros de RH
+
+Os papéis do banco de evidências são revisados trimestralmente contra as listas de RH. A consulta de Sam procura papéis ativos no cofre sem funcionários ativos. A primeira execução encontrou dois terceirizados; o acesso foi removido na mesma tarde. A junção é simples: papéis sem registro ativo correspondente na exportação do RH estão órfãos. Os casos interessantes são os quase-acertos. Um testador em licença parental está inativo no RH, mas deve manter uma conta dormente, e um terceirizado renovado sob uma nova ordem de compra pode aparecer com um id diferente. Por isso, a consulta de Sam produz uma lista de revisão, em vez de revogar o acesso automaticamente, e o líder de segurança assina cada decisão. A execução do segundo trimestre encontrou zero órfãos, que é o resultado que o controle existe para produzir.
+
+### 9.8 Marcas d'água nas exportações
+
+As exportações CSV embutem o id do engajamento e o nome de quem exportou num comentário de cabeçalho. Arquivos vazados podem ser rastreados. Sam verifica a existência da marca d'água numa checagem trimestral por amostragem. Uma marca d'água não impede um vazamento; ela encurta a investigação que vem depois de um. Quando um arquivo aparece num drive compartilhado, o cabeçalho nomeia o engajamento e a pessoa que o exportou, para que o custodiante possa verificar se aquela exportação foi autorizada e qual data de retenção se aplica. Comentários de cabeçalho são fáceis de remover; por isso, o log de exportações do FindingsDesk registra os mesmos campos junto com um hash do arquivo. Comparar o hash de um arquivo perdido com esse log identifica sua origem mesmo quando alguém apagou a linha de comentário.
+
+### 9.9 Jogo de restauração de backup
+
+A cada trimestre, Sam restaura um backup de evidências num host isolado e abre um arquivo. Backups não testados são presumidos quebrados. O exercício tem uma condição de aprovação escrita com antecedência: restaurar em até duas horas, abrir um arquivo de evidência escolhido ao acaso, recalcular seu hash e compará-lo com o registro do achado. O host isolado não tem rota de rede para a produção e é apagado depois, porque um backup restaurado está cheio de evidências sensíveis. O tempo importa tanto quanto o sucesso. Se o TRB contestar um achado durante a revisão de um relatório, a equipe precisa apresentar a evidência original naquela semana, não depois de um dia procurando a chave de decifração. Cada jogo termina com uma nota curta que registra a duração, os problemas e as correções.
+
+### 9.10 Recusar uma exportação em massa
+
+Um analista pede "todas as evidências do ano" para uma tese. Sam recusa a exportação em massa e oferece um extrato só de estatísticas, com contagens por severidade. A tese segue em frente. A minimização vale também para pedidos amigáveis. A recusa funciona porque Sam perguntou a que pergunta a tese tentava responder. O analista queria mostrar por quanto tempo os achados web de alta severidade ficavam abertos, o que exige datas e severidades, não capturas de tela nem ids de conta. Uma consulta agrupada por trimestre e severidade respondeu a isso, e o resultado não continha nenhum dado de cliente. O propósito vem primeiro: um pedido formulado como "todas as evidências" geralmente esconde uma necessidade mais estreita, e nomear essa necessidade transforma um conflito de privacidade numa tarefa de relatório.
+
+### 9.11 Restauração sem manifesto
+
+Durante o game day de restauração, o backup abriu, mas o manifesto de hashes estava ausente. Sam reprovou o jogo e restabeleceu a rotina do manifesto antes do engajamento seguinte. Backups sem manifestos são boatos. O arquivo abriu; por isso, um revisor menos cuidadoso teria aprovado o jogo. Sem o manifesto, porém, ninguém conseguiria provar que o arquivo restaurado correspondia ao que foi capturado durante os testes, e essa prova é a razão de ser da evidência. A causa foi banal: uma migração de armazenamento tinha descartado a rotina agendada que grava os manifestos ao lado de cada snapshot. Sam acrescentou uma verificação que faz o próprio backup falhar quando não há manifesto, de modo que a lacuna agora aparece na noite em que ocorre, em vez de no próximo jogo trimestral.
+
+### 9.12 Um endereço de contato em toda exportação
+
+Os cabeçalhos de marca d'água incluem um mailto de contato para achados e perdidos de exportações extraviadas. Alguém o usou uma vez; Sam lhe pagou um café. O endereço dá a quem encontra um arquivo, de boa-fé, uma forma de relatar uma exportação extraviada em vez de adivinhar quem é o dono. Ele vai para uma caixa compartilhada de custodiantes, não para uma pessoa, de modo que continua funcionando depois de trocas de equipe. Os relatos são tratados como um pequeno incidente. O custodiante confirma a origem do arquivo pelo log de exportações, pede a quem o encontrou que apague sua cópia ou a devolva e registra se a data de retenção já havia passado. Agradecer publicamente a quem relatou aumenta a chance de que o próximo arquivo extraviado também seja relatado.
+
+### 9.13 Um pen drive devolvido
+
+O mailto de achados e perdidos certa vez trouxe de volta um pen drive etiquetado com um id de engajamento. O processo funciona. O pen drive também mostrou onde o processo havia falhado antes: alguém tinha copiado evidências para mídia removível apesar das regras de exportação. O custodiante não simplesmente apagou o pen drive. Ele conferiu o conteúdo contra o log de exportações, encontrou uma cópia não registrada de capturas de tela de um engajamento encerrado meses antes e a rastreou até um testador que queria trabalhar offline num trem. A resposta foi uma conversa curta, a exclusão com recibo e uma nova opção no FindingsDesk para espaços de trabalho offline cifrados que expiram na data de retenção.
+
+### Exemplo resolvido (TRB sintético)
+
+A rotina de exportação de Sam redige os números de conta para os quatro últimos dígitos antes que os analistas baixem o CSV.
+
+> **Caso sintético — Riverstone Transit Bank (TRB).** O banco, Sam Ito, TrackScope/FindingsDesk/PulseMap e todos os números são inventados para fins didáticos.
+
+### Erros e limites
+
+Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pagamento reais. Os laboratórios usam apenas endereços de faixas de documentação e dados sintéticos; código de exploit nunca é fornecido.
+
+### Exercícios
+
+- **EX025 — Minimalismo.** Por que não armazenar linhas completas de clientes com cada achado? *Rubrica:* 3 = privacidade/minimização/ROE; 2 = parcial; 1 = precisamos delas; 0 = nada.
+- **EX026 — Retenção.** O que dispara a exclusão das evidências de um engajamento? *Rubrica:* 3 = cronograma do contrato / data de retenção; 2 = parcial; 1 = nunca; 0 = nada.
+- **EX027 — Papel.** O que um papel de estagiário não deve acessar por padrão? *Rubrica:* 3 = engajamentos não relacionados / banco de clientes de produção; 2 = parcial; 1 = tudo; 0 = nada.
+
+### Síntese
+
+Os bancos de dados guardam o mínimo de dados pessoais necessário, com retenção e papéis impostos.
+
+### Continue estudando — capítulo 09 de 40
+
+[← Capítulo 08 (rascunho)](#ch-08) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 10 (rascunho) →](#ch-10)
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Ética e prática autorizada
+
+### Objetivos de aprendizagem
+
+Você vai (1) listar o essencial das ROE; (2) verificar os alvos offline; (3) lidar com a pressão para exceder o escopo.
+
+### 10.1 O essencial das ROE
+
+Escopo, exclusões, métodos, janela, contatos de emergência, tratamento de dados, público do relatório — o NIST SP 800-115 e o PTES põem, ambos, a autorização em primeiro lugar. As regras de engajamento transformam uma permissão geral em instruções que um testador pode conferir antes de cada ação. No TRB, elas listam as redes e os nomes de host no escopo, nomeiam o gateway SWIFT e o razão contábil de produção como excluídos, permitem testes web autenticados, mas proíbem negação de serviço e engenharia social, e fixam os testes nas noites de dias úteis, entre 20:00 e 02:00. Elas também nomeiam quem atende o telefone se algo quebrar, como os dados capturados são armazenados e quem recebe o relatório. Uma regra que não está escrita não existe quando é necessária às 23:40.
+
+### 10.2 Verificação offline
+
+O lab_scope classifica os alvos propostos antes de qualquer pacote.
+
+```python
+"""Lab 10: check a synthetic TRB target list against written scope and exclusions (no traffic sent)."""
+import ipaddress
+scope = [ipaddress.ip_network("198.51.100.0/26")]
+excluded = {ipaddress.ip_address("198.51.100.20")}  # SWIFT gateway, owner excluded
+for t in ["198.51.100.5", "198.51.100.20", "198.51.100.70", "203.0.113.9"]:
+    ip = ipaddress.ip_address(t)
+    v = "EXCLUDED" if ip in excluded else "in scope" if any(ip in n for n in scope) else "OUT OF SCOPE"
+    print(f"{t:15} {v}")
+```
+
+Execute com `python3 lab_scope.py`. Saída verificada:
+
+```text
+198.51.100.5    in scope
+198.51.100.20   EXCLUDED
+198.51.100.70   OUT OF SCOPE
+203.0.113.9     OUT OF SCOPE
+```
+
+Rodar o classificador antes de qualquer tráfego transforma o escopo de algo de que o testador se lembra em algo que o testador pode mostrar. A lista de alvos propostos, a versão do arquivo de escopo e a saída são salvas juntas na pasta do engajamento. Se uma disputa posterior perguntar por que um host foi testado, a resposta é a saída salva, não uma lembrança. A verificação é estrita de propósito: um endereço fora de todas as faixas listadas é recusado, mesmo quando parece fazer parte do mesmo serviço, até que o arquivo de escopo seja alterado e assinado.
+
+### 10.3 Pressão
+
+"Só acrescente a caixa do SWIFT" é recusado até que a exclusão escrita mude — o que não acontecerá para testes comuns. A pressão raramente chega como uma ordem para quebrar regras. Ela vem como um atalho de aparência razoável, de alguém mais graduado, tarde numa janela, quando o host extra faria o relatório parecer mais completo. A resposta de Sam segue um roteiro: agradecer, explicar que o gateway está excluído nas regras assinadas e oferecer levar uma mudança de escopo ao dono dele para uma janela futura. A exclusão existe porque o dono do gateway não aceitou o risco operacional, e ninguém numa chamada de teste pode aceitá-lo por ele. Recusar com educação e por escrito protege tanto o testador quanto a pessoa que pediu.
+
+### 10.4 Divulgação responsável
+
+Bugs de fornecedores encontrados em software de terceiros seguem os canais do fornecedor apenas com aprovação do CISO. Uma falha num produto comercial que o TRB usa pertence em parte ao TRB e em parte a todos os outros clientes desse produto. Sam a registra no FindingsDesk como um achado do TRB com um controle compensatório e depois passa o detalhe técnico ao CISO, que decide se contata o fornecedor e sob qual prazo de divulgação. Contatar o fornecedor diretamente, ou publicar algo a respeito, poderia expor o TRB como um cliente sem correção antes que exista uma. O relato ao fornecedor traz detalhe suficiente para reproduzir o bug com segurança e nada sobre o ambiente mais amplo do TRB.
+
+### 10.5 Conflitos
+
+Sam não testa sistemas de empresas da família no horário nem com as ferramentas do TRB. Um conflito de interesses não precisa de má intenção para prejudicar um engajamento. Quem testa a empresa de um parente com o scanner do banco usa recursos do TRB fora da autoridade do TRB, e qualquer achado que produza fica exposto à acusação de ter sido distorcido por um motivo pessoal. O mesmo raciocínio vale dentro do banco: um testador cujo amigo é dono da aplicação em revisão deve declarar isso antes da definição do escopo. Declarar um conflito cedo custa um e-mail e, talvez, uma redesignação. Declará-lo depois que o relatório saiu pode custar a credibilidade de todos os achados nele.
+
+### 10.6 Ensino de uso dual
+
+Detalhes de exploit para produtos de pagamento reais estão fora do escopo do currículo. As habilidades deste livro podem ser mal usadas; por isso, o livro traça uma linha no que ensina em detalhe. Ele explica classes de fraquezas, como testadores autorizados as confirmam com segurança e como relatá-las, usando sistemas sintéticos. Ele não dá cadeias de exploit funcionais para terminais de cartão, switches de pagamento ou plataformas bancárias reais, porque esse material ajuda mais um atacante do que um aluno. Um estudante que queira ir além o faz num laboratório sancionado, sob supervisão. O teste de qualquer exemplo didático é se um defensor aprende mais com ele do que um atacante ganha.
+
+### 10.7 Nenhum código de exploit no sistema de achados
+
+Os exemplos da política de uso dual incluem recusar colar PoCs de exploit no FindingsDesk mesmo quando um fornecedor pede "para reprodução". A reprodução no TRB usa evidências de configuração e contas autorizadas, não trechos transformados em arma. O FindingsDesk é lido por desenvolvedores, auditores e gestores, e suas exportações chegam aos fornecedores. Uma prova de conceito funcional armazenada ali se espalharia para todos esses leitores. Em vez disso, os achados de Sam mostram as condições: a configuração errada, a requisição que uma conta de teste autorizada enviou e a resposta que provou a fraqueza. Um desenvolvedor pode confirmar o problema num ambiente de teste a partir dessa descrição. Quando um fornecedor insiste em mais, o CISO decide o que compartilhar e por qual canal seguro.
+
+### 10.8 Registro de brindes e conflitos
+
+Sam registra quaisquer brindes de fornecedores ou contas em outros bancos que possam enviesar decisões de escopo. A transparência é mais barata que brigas por impedimento no meio de um engajamento. O registro é uma tabela curta e datada: o que foi recebido ou mantido, de quem e quais engajamentos isso pode tocar. Coisas pequenas contam porque mostram um padrão. Um ingresso de conferência dado por um fornecedor de scanner importa se Sam depois recomendar o produto desse fornecedor num relatório. O líder de segurança revisa o registro antes de designar os testadores, o que resolve os impedimentos na fase de planejamento, quando trocar um testador é fácil. Uma entrada não é uma acusação; um brinde não registrado descoberto depois é tratado como uma.
+
+### 10.9 Simulação de mesa sobre as regras de engajamento
+
+Uma simulação de mesa anual percorre um cenário de contato de emergência ausente. A equipe de Sam pratica adiar em vez de improvisar. Uma simulação de mesa custa uma hora e nenhum pacote. O facilitador lê uma situação em voz alta: um teste está para começar e o contato de emergência nomeado não atende. Cada participante diz o que faria e qual regra lhe diz isso. O resultado útil são as lacunas que ela expõe. Num ano, a equipe descobriu que as regras nomeavam um contato que tinha mudado de função três meses antes. Atualizar esse nome antes da janela seguinte foi o resultado mais valioso da sessão.
+
+### 10.10 Adiar quando o contato está inalcançável
+
+Simulação de mesa: contato de emergência inalcançável. A equipe de Sam adia a janela por escrito em até cinco minutos. Uma aprovação verbal improvisada de um gestor qualquer é pontuada como condição de reprovação na simulação. Adiar é sucesso. O instinto de seguir em frente vem do custo de reagendar, mas continuar sem um contato alcançável significa que, se um serviço se degradar, ninguém com autoridade poderá dizer aos testadores que parem. Um gestor que por acaso está online pode ter boa intenção, mas não está nomeado nas regras e não pode aceitar o risco. O adiamento escrito registra o horário, as tentativas de alcançar o contato e a próxima janela proposta, de modo que o atraso fica documentado, e não atribuído como culpa.
+
+### 10.11 Impedimento diante do fornecedor de um parente
+
+O registro de conflitos de Sam certa vez listava um irmão que trabalhava num fornecedor fintech. Ele se declarou impedido num teste que envolvia a biblioteca desse fornecedor. O impedimento é mais silencioso que o escândalo. A biblioteca era uma parte pequena do engajamento, o que tornava tentador ficar e apenas pular aquele componente. O líder de segurança preferiu uma separação limpa. Outro testador assumiu todos os achados que tocavam a biblioteca, e o nome de Sam ficou fora desses registros. Se o teste tivesse encontrado uma falha grave, o fornecedor não poderia alegar que um parente a havia exagerado ou suavizado. A entrada no registro, escrita meses antes, fez da decisão uma tarefa de dois minutos, e não uma discussão.
+
+### 10.12 Modelos de adiamento
+
+Os modelos de adiamento incluem os aliases do SOC e do CISO já preenchidos. Sam envia adiamentos em menos de três minutos durante os exercícios. Um modelo remove decisões de um momento estressante. Ele já lista o id do engajamento, os destinatários que precisam saber (o SOC, para que não saia à caça de testadores que já não estão testando, e o gabinete do CISO) e campos para o motivo, as tentativas feitas e uma nova janela proposta. O testador preenche fatos, não redação. Aliases preenchidos importam porque nomes individuais ficam desatualizados, enquanto os endereços de função são mantidos pelas equipes que são donas deles.
+
+### 10.13 Cronometrar o exercício de adiamento
+
+O exercício de adiamento de três minutos é cronometrado com um relógio visível. Passar de três minutos reprova no exercício. O limite não é arbitrário. O SOC do TRB escala varreduras inexplicadas depois de cinco minutos; assim, um adiamento enviado em até três chega aos analistas antes que eles abram um incidente por uma atividade que já parou. Um relógio visível também mostra para onde vai o tempo. Nos primeiros exercícios, a maior parte dele ia em encontrar o modelo, o que levou a um link fixado no canal do engajamento. Os exercícios são pontuados por a mensagem ter chegado, ter ido para as funções certas e estar correta, não só pela velocidade.
+
+### Exemplo resolvido (TRB sintético)
+
+O lab_scope marca 198.51.100.20 como EXCLUDED e 198.51.100.70 como OUT OF SCOPE; Sam remove os dois do plano.
+
+> **Caso sintético — Riverstone Transit Bank (TRB).** O banco, Sam Ito, TrackScope/FindingsDesk/PulseMap e todos os números são inventados para fins didáticos.
+
+### Erros e limites
+
+Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pagamento reais. Os laboratórios usam apenas endereços de faixas de documentação e dados sintéticos; código de exploit nunca é fornecido.
+
+### Exercícios
+
+- **EX028 — Linha excluída.** O que o laboratório imprime para 198.51.100.20? *Rubrica:* 3 = EXCLUDED; 2 = fora do escopo; 1 = dentro do escopo; 0 = nada.
+- **EX029 — Resposta à pressão.** Como Sam responde a "acrescente o SWIFT só desta vez"? *Rubrica:* 3 = recusa até uma mudança escrita nas ROE; o SWIFT continua excluído; 2 = recusa; 1 = concorda; 0 = nada.
+- **EX030 — Lista das ROE.** Nomeie cinco itens essenciais das ROE. *Rubrica:* 3 = cinco entre escopo, exclusões, métodos, janela, contatos, dados, público; 2 = três; 1 = um; 0 = nada.
+
+### Síntese
+
+A ética é operacionalizada como listas de verificação, recusas e matemática de escopo offline.
+
+### Continue estudando — capítulo 10 de 40
+
+[← Capítulo 09 (rascunho)](#ch-09) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 11 (rascunho) →](#ch-11)
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Sistemas operacionais
+
+### Objetivos de aprendizagem
+
+Você vai (1) comparar superfícies administrativas; (2) exigir jump hosts; (3) tratar imagens como parte do escopo quando acordado.
+
+### 11.1 Superfícies
+
+Níveis de correção, administradores locais e serviços remotos diferem entre Windows e Linux. Os achados nomeiam o sistema operacional e o controle que falhou. Num servidor Windows, as superfícies habituais são atualizações cumulativas ausentes, membros do grupo local Administrators e serviços remotos como RDP, SMB e WinRM. No Linux, são pacotes desatualizados, contas com direitos de sudo e daemons escutando, como SSH ou uma porta de banco de dados exposta. Um achado que só diz que o servidor é inseguro não dá ao dono nada para fazer. Um achado que diz que um host Linux de staging aceita logins SSH por senha a partir da VLAN de usuários, ao contrário da baseline de endurecimento, nomeia o sistema operacional, o controle que falhou e como é a correção.
+
+### 11.2 Jump hosts
+
+Os caminhos administrativos passam pelo jump host; RDP da VLAN de e-mail para servidores é um achado. Um jump host concentra o acesso administrativo num único lugar que pode ser endurecido, monitorado e protegido com autenticação multifator. Se os administradores também conseguem alcançar os servidores diretamente a partir da rede em que leem e-mail, o comprometimento de suas estações por phishing vira uma rota para os servidores que contorna todos esses controles. Sam testa o caminho a partir de um host sintético da VLAN de usuários com uma conta autorizada. Se uma sessão RDP com um servidor de staging abre sem passar pelo jump host, o achado registra a rede de origem, o destino e a regra de firewall que deveria tê-la bloqueado.
+
+### 11.3 Imagens
+
+Golden images com agentes antigos reintroduzem risco quando há reconstrução. Uma golden image é o modelo a partir do qual novos hosts são construídos; portanto, o que ela contiver é copiado para todo host construído com ela. Se a imagem traz um agente de endpoint duas versões atrás, ou uma conta local criada para uma sessão de depuração, cada reconstrução traz essa fraqueza de volta, muitas vezes depois de o host original ter sido corrigido à mão. A reconstrução deveria remover a deriva, mas uma imagem desatualizada a acrescenta. É por isso que Sam trata uma fraqueza que reaparece depois de uma reconstrução primeiro como um problema de imagem e confere a data de build e o conteúdo da imagem antes de escrever um achado de host.
+
+### 11.4 Logs
+
+Os logs do sistema operacional sustentam recomendações de detecção ligadas ao ATT&CK. Um teste pode mostrar mais do que se um ataque funciona. Ele também pode mostrar se os defensores o teriam visto. Depois de uma ação autorizada, como criar uma tarefa agendada com uma conta de teste, Sam pergunta ao SOC se o evento do Windows de criação de tarefa chegou ao SIEM e se alguma regra disparou. Mapear a ação para sua técnica do ATT&CK dá às duas equipes um nome comum para ela. A recomendação passa então a ser uma melhoria de detecção, por exemplo encaminhar o evento de criação de tarefa dos servidores de staging e alertar quando um não administrador cria uma tarefa, em vez de um pedido vago por mais logs.
+
+### 11.5 Privilégios
+
+A administração do hipervisor é uma camada de escopo separada. Quem administra o hipervisor controla toda máquina virtual nele: pode tirar snapshots, anexar discos e abrir consoles sem que o sistema operacional convidado registre grande coisa. A permissão para testar os servidores convidados, portanto, não cobre a camada de virtualização, que geralmente tem outro dono e outro risco. No TRB, a equipe de virtualização precisa assinar sua própria entrada de escopo antes que alguém teste o console de gerenciamento. Se Sam encontra credenciais do hipervisor enquanto testa um convidado, ele registra isso como achado e para ali, porque usá-las levaria o teste a uma camada que ninguém autorizou.
+
+### 11.6 Baselines de endurecimento
+
+Desvios precisam de tickets, não de folclore. Uma baseline é a lista escrita das configurações que todo host de determinado tipo deve ter, como protocolos legados desativados, uma política mínima de senhas e log de auditoria ligado. Sistemas reais se desviam por motivos reais, por exemplo uma aplicação antiga que precisa de um protocolo legado. O desvio só é aceitável se estiver registrado com um dono, um motivo e uma data de expiração. Sem esse registro, um testador não consegue distinguir uma exceção aprovada de negligência, e o próximo administrador herda uma configuração que ninguém sabe explicar. Sam confere cada desvio que encontra contra o registro de exceções antes de decidir se escreve um achado.
+
+### 11.7 Fixar versões no pipeline de imagens
+
+Os tickets do pipeline de imagens precisam nomear as versões dos agentes embutidos. Sam rejeita "latest" como string de versão. Builds reproduzíveis de golden images são tratados como lançamentos de aplicação. A tag latest descreve um momento, não uma versão. Uma imagem construída na segunda-feira com o agente mais recente e reconstruída na sexta pode conter código diferente, e nenhum dos tickets mostra qual. Números de versão exatos permitem a um testador comparar um host em execução com a imagem da qual ele diz vir, e permitem ao dono do pipeline voltar a um estado conhecido. Tratar imagens como lançamentos também significa que cada uma tem um changelog, um revisor e uma data de aposentadoria.
+
+### 11.8 Censo de administradores locais
+
+Uma consulta trimestral lista os administradores locais em staging. Nomes inesperados viram tickets. Sam faz a correlação com as listas de desligados. Os direitos de administrador local se acumulam em silêncio. Alguém é adicionado para consertar um driver de impressora e nunca é removido, ou uma conta de serviço recebe direitos de administrador porque isso foi mais rápido do que descobrir de que ela precisava. O censo compara o grupo local Administrators de cada host com a lista esperada para a função desse host. Nomes ausentes da lista esperada são conferidos primeiro contra a lista de desligados, porque uma conta de administrador de alguém que saiu é o caso mais urgente. Cada censo é salvo, para que o seguinte mostre se a contagem está caindo.
+
+### 11.9 Deriva de agentes
+
+Hosts cuja versão do agente difere do catálogo de imagens por mais de uma versão menor abrem tickets automaticamente. O agente de endpoint é a forma como os defensores enxergam um host; por isso, um agente desatualizado pode deixar de ver técnicas que versões mais novas detectam, ou pode falhar em silêncio. A tolerância de uma versão menor permite implantações escalonadas, nas quais alguns hosts atualizam uma semana antes de outros, sem abrir tickets por um atraso normal. Qualquer coisa mais atrasada geralmente significa que o host parou de receber atualizações, muitas vezes porque foi movido para um segmento de rede que o servidor de atualizações não alcança. O ticket automático nomeia o host, os dois números de versão e a data em que o host se comunicou pela última vez.
+
+### 11.10 Uma reconstrução que reintroduziu o RDP
+
+Um host de staging reconstruído volta com uma postura antiga de RDP. O catálogo de imagens dizia que isso não deveria acontecer. Sam registra tanto um achado de host quanto um achado de pipeline de imagens. Dois donos, dois tickets, uma classe de causa raiz. O dono do host pode corrigir seu servidor no mesmo dia, desativando o RDP a partir da VLAN de usuários. Isso não faz nada pelo próximo servidor construído pelo mesmo pipeline. O ticket do dono da imagem pergunta por que o catálogo e o build discordaram. Neste caso, uma etapa de configuração tinha sido movida para um estágio opcional que a reconstrução pulou. Ligar os dois tickets permite ao revisor fechar o achado de host só depois que o achado de imagem tiver uma correção implantada.
+
+### 11.11 Um administrador temporário esquecido
+
+O censo de administradores locais encontrou um administrador "temp" dormente criado durante uma indisponibilidade. Ticket, remoção, verificação. Temporários dormentes são permanentes até serem caçados. A conta tinha sido criada às 02:00, durante uma indisponibilidade de armazenamento, para que um terceirizado pudesse reiniciar serviços, e o registro do incidente dizia que ela seria removida na manhã seguinte. Não foi. Sua senha nunca tinha sido trocada e ela não fazia login havia sete meses, o que a tornava ao mesmo tempo inútil e perigosa. Depois de removê-la, Sam verificou a remoção no host e acrescentou ao modelo de indisponibilidade um campo para contas de emergência, cada uma com um horário de expiração que a revisão de encerramento precisa conferir.
+
+### 11.12 Copiar os donos de imagens nos achados
+
+Os achados de imagem sempre põem em cópia o dono do pipeline, não só o dono do host. Os donos de hosts muitas vezes não enxergam o pipeline que construiu seus servidores, e os donos de pipelines raramente olham tickets de hosts individuais. Uma fraqueza herdada de uma imagem cai entre os dois. O dono do host corrige sua máquina e fecha o ticket, e o pipeline continua produzindo a mesma fraqueza. Pôr o dono do pipeline em cópia coloca o achado diante da pessoa que pode impedir que ele se repita. O FindingsDesk faz isso automaticamente quando a causa raiz de um achado é definida como imagem, de modo que o roteamento não depende de o testador se lembrar.
+
+### 11.13 Ponderar os achados de imagem pela recorrência
+
+Os achados de pipeline usam uma rubrica de severidade separada, ponderada pela recorrência. Uma imagem ruim pode cunhar cem hosts ruins. Num único host, uma configuração fraca pode ser classificada como média porque poucas pessoas conseguem alcançá-lo. A mesma configuração numa imagem que constrói todos os servidores web de staging e de produção é um risco diferente, porque seu alcance cresce a cada build e ela volta depois de cada correção local. A rubrica de imagens, portanto, pergunta quantos hosts são construídos a partir da imagem, com que frequência são reconstruídos e se algum deles está voltado para a internet. Um achado de host médio pode se tornar um achado de pipeline alto sem nenhuma mudança na fraqueza técnica.
+
+### 11.14 Publicar as duas escalas de severidade
+
+A rubrica ponderada pela recorrência para imagens é publicada ao lado da severidade de hosts. Bichos diferentes, escalas diferentes. Publicar as duas escalas evita uma discussão previsível. Um dono de pipeline que vê uma classificação alta para uma configuração que a equipe de hosts classificou como média vai suspeitar de inconsistência, a menos que o motivo esteja escrito. A página publicada mostra as duas rubricas lado a lado, com um exemplo resolvido de uma fraqueza classificada em cada uma. Os revisores conferem que todo achado de imagem declara qual escala usou. Ter uma escala separada também permite ao TRB acompanhar a dívida de pipeline por conta própria, o que fundamentou o pedido de financiamento para testes automatizados de imagens.
+
+### Exemplo resolvido (TRB sintético)
+
+Sam registra o RDP de staging a partir da VLAN de e-mail, contornando o jump host, como um achado com o hash da captura de tela.
+
+> **Caso sintético — Riverstone Transit Bank (TRB).** O banco, Sam Ito, TrackScope/FindingsDesk/PulseMap e todos os números são inventados para fins didáticos.
+
+### Erros e limites
+
+Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pagamento reais. Os laboratórios usam apenas endereços de faixas de documentação e dados sintéticos; código de exploit nunca é fornecido.
+
+### Exercícios
+
+- **EX031 — Contorno do jump host.** Por que o RDP da VLAN de e-mail para servidores é um achado? *Rubrica:* 3 = contorna o caminho controlado/registrado do jump host; 2 = parcial; 1 = tudo bem; 0 = nada.
+- **EX032 — Risco das imagens.** Como imagens desatualizadas criam fraquezas? *Rubrica:* 3 = reimplantam agentes/configurações antigos; 2 = parcial; 1 = sem risco; 0 = nada.
+- **EX033 — Hipervisor.** A administração do hipervisor está implícita no escopo web? *Rubrica:* 3 = não; camada separada; 2 = não; 1 = sim; 0 = nada.
+
+### Síntese
+
+Os achados de sistema operacional nomeiam a camada; a administração passa por jump hosts.
+
+### Continue estudando — capítulo 11 de 40
+
+[← Capítulo 10 (rascunho)](#ch-10) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 12 (rascunho) →](#ch-12)
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Probabilidade e estatística
+
+### Objetivos de aprendizagem
+
+Você vai (1) calcular um intervalo de Wilson; (2) explicar taxas-base; (3) evitar afirmações exageradas a partir de um n pequeno.
+
+### 12.1 Taxas
+
+A taxa de detecção k/n precisa de incerteza. Sete de dez não é o mesmo que setenta de cem. As duas dão setenta por cento, mas sustentam afirmações muito diferentes. Com dez tentativas, uma única falha ou detecção a mais move a taxa em dez pontos; assim, a taxa verdadeira poderia plausivelmente estar em qualquer lugar entre cerca de quarenta e quase noventa por cento. Com cem tentativas, a faixa plausível se estreita para aproximadamente sessenta a setenta e oito. Quando o SOC relata que sua nova regra pegou sete das dez técnicas que Sam rodou numa sessão de purple team, o resumo honesto é que a regra provavelmente funciona mais vezes do que não, e que uma afirmação mais forte precisa de mais tentativas.
+
+### 12.2 Intervalo de Wilson
+
+O lab_wilson imprime intervalos de 95% para contagens sintéticas de detecção de purple team.
+
+```python
+"""Lab 12: Wilson 95% interval for a synthetic detection rate in a purple-team exercise."""
+import math
+def wilson(k, n, z=1.96):
+    p = k / n; d = 1 + z*z/n
+    c = (p + z*z/(2*n)) / d; h = z*math.sqrt(p*(1-p)/n + z*z/(4*n*n)) / d
+    return c - h, c + h
+for k, n in [(7, 10), (70, 100)]:
+    lo, hi = wilson(k, n)
+    print(f"detected {k}/{n} rate={k/n:.2f} 95% CI=({lo:.2f}, {hi:.2f})")
+```
+
+Execute com `python3 lab_wilson.py`. Saída verificada:
+
+```text
+detected 7/10 rate=0.70 95% CI=(0.40, 0.89)
+detected 70/100 rate=0.70 95% CI=(0.60, 0.78)
+```
+
+O intervalo de Wilson é preferido à fórmula de livro-texto de p mais ou menos 1,96 erros-padrão porque essa fórmula se comporta mal com amostras pequenas e com taxas perto de zero ou de um. Ela pode produzir intervalos abaixo de zero ou acima de cem por cento e afirma certeza demais quando poucas tentativas foram feitas. A versão de Wilson puxa ligeiramente o centro em direção a um meio e mantém os limites dentro da faixa possível. Exercícios de purple team são exatamente o cenário de amostra pequena e taxa alta em que isso importa. Comparar as duas linhas impressas mostra o ponto prático: os mesmos setenta por cento carregam uma faixa mais de duas vezes mais larga com dez tentativas.
+
+### 12.3 Taxas-base
+
+Problemas verdadeiros raros, afogados em scanners ruidosos, desperdiçam o tempo de quem corrige. Suponha que um scanner aponte uma fraqueza corretamente em noventa por cento dos hosts vulneráveis e erroneamente em cinco por cento dos corrigidos, e que apenas dois por cento dos mil hosts de staging do TRB sejam de fato vulneráveis. Ele vai encontrar cerca de dezoito dos vinte casos reais e levantar cerca de quarenta e nove alarmes falsos; assim, aproximadamente sete em cada dez alertas estão errados. Desenvolvedores que perseguem esses alarmes falsos aprendem a ignorar o scanner. A taxa-base, a parcela de hosts que realmente têm o problema, decide quão útil é um resultado positivo, e é por isso que Sam confirma à mão a saída do scanner antes de transformá-la em achados.
+
+### 12.4 Classificar defesas
+
+Prefira intervalos que não se sobrepõem ao afirmar que A vence B. Se um controle deteve catorze de vinte cliques simulados de phishing e outro deteve onze de vinte, o primeiro parece melhor, setenta contra cinquenta e cinco por cento. Seus intervalos de Wilson vão de cerca de quarenta e oito a oitenta e cinco e de cerca de trinta e quatro a setenta e quatro, que se sobrepõem amplamente; portanto, os dados não conseguem separar os dois. A sobreposição não prova que os controles são iguais. Ela mostra que o experimento era pequeno demais para dizer. A não sobreposição é uma regra grosseira e conservadora: um teste formal para a diferença entre duas proporções é melhor, mas a verificação de sobreposição barra a afirmação exagerada mais comum antes que ela chegue a um slide.
+
+### 12.5 Relato
+
+Os gestores ouvem contagens e intervalos em linguagem simples. Uma frase como "a detecção foi 0,7, com IC de Wilson de 95% de 0,40 a 0,89" está correta e é quase inútil para um leitor que precisa decidir alguma coisa. Sam a reescreve assim: o SOC detectou sete das dez técnicas que tentamos. Com tão poucas tentativas, a taxa real poderia ser tão baixa quanto quatro em dez ou tão alta quanto nove em dez; por isso, recomendamos outra rodada antes de mudar o orçamento. As contagens vêm primeiro porque as pessoas conseguem visualizá-las, a faixa vem a seguir em palavras, e a frase termina com o que a incerteza significa para a decisão.
+
+### 12.6 Limites
+
+As premissas de independência falham quando os testes compartilham falhas do ambiente. Os cálculos de intervalo presumem que cada tentativa é um sorteio separado, de modo que um resultado não influencia outro. Exercícios reais quebram essa premissa. Se um encaminhador de logs ficou fora do ar por uma hora, toda técnica que Sam rodou naquela hora passou sem detecção pelo mesmo motivo, e dez falhas equivalem, na verdade, a uma única falha contada dez vezes. O intervalo então parece mais estreito do que a evidência justifica. Sam registra o horário e o host-alvo de cada tentativa, verifica se as falhas se agrupam e relata uma falha agrupada como um único achado de infraestrutura, e não como uma taxa de detecção baixa.
+
+### 12.7 Retirar um slide de classificação
+
+Quando os intervalos se sobrepõem, Sam proíbe classificar defesas como vencedoras. Um slide certa vez afirmava que o MFA vencia o treinamento contra phishing com base em intervalos de Wilson sobrepostos; ele retirou o slide e pediu mais tentativas em vez de uma fonte maior. O autor do slide não estava errado em achar que o MFA provavelmente ajuda mais; o conhecimento prévio sugere que sim. O problema era que o slide apresentava os dados do exercício como prova, e os dados não aguentavam esse peso. Sam sugeriu uma redação que mantinha separados o conhecimento prévio e a evidência: a experiência do setor favorece o MFA, e este exercício foi pequeno demais para confirmar ou contradizer isso. Ele também propôs o número de tentativas necessário para uma resposta mais clara no trimestre seguinte.
+
+### 12.8 Todo intervalo em palavras
+
+Sam exige que todo intervalo de uma apresentação apareça uma vez em palavras: "entre cerca de X e Y". Gráficos sozinhos não bastam para o material do conselho. Barras de erro num gráfico são fáceis de ignorar e difíceis de ler quando os slides são impressos em tons de cinza ou percorridos rapidamente num celular. Uma frase sobrevive às duas situações. A regra também pega erros, porque escrever que a taxa ficou entre cerca de quarenta e noventa por cento faz o revisor notar quão larga ela é, coisa que uma barra elegante com um bigode fino não faz. Os membros do conselho que leem as palavras fazem perguntas melhores com consistência, geralmente sobre como estreitar a faixa.
+
+### 12.9 Planejar o número de tentativas
+
+Uma pequena ferramenta sugere n para uma largura-alvo do IC. Sam a usa antes de prometer taxas de detecção a executivos. O planejador inverte o intervalo: dê a ele a taxa que você espera e a largura de faixa que pode aceitar, e ele devolve aproximadamente quantas tentativas você precisa. Para uma taxa perto de um meio e uma faixa de dez pontos para cada lado, a resposta é perto de noventa e seis tentativas. Rodá-lo antes de um exercício muda a conversa. A promessa de medir a detecção com precisão de dez pontos vira ou um compromisso com cerca de cem tentativas, ou uma decisão honesta de relatar uma faixa mais larga a partir das vinte tentativas que a janela permite.
+
+### 12.10 O financeiro pede um único número
+
+O financeiro pede uma única porcentagem de detecção para o relatório anual. Em vez disso, Sam dá duas frases com intervalos. O jurídico prefere a versão dele, porque ela não pode ser lida como uma garantia. A linguagem da incerteza protege o banco. Um único número impresso num relatório anual se torna uma declaração pública sobre as defesas do banco. Se o TRB publicasse que detecta setenta por cento dos ataques, um regulador ou um litigante, depois de uma violação, poderia tratar isso como uma declaração que o banco não cumpriu. As frases de Sam descrevem o que foi medido, em qual exercício e com que incerteza, o que é preciso e muito mais difícil de ler errado. O financeiro ganha um número para citar, e o banco não promete mais do que sua evidência mostra.
+
+### 12.11 Encolher a afirmação
+
+O planejador de tamanho de amostra disse a Sam que ele precisava de n≈96 para um intervalo apertado. Ele encolheu a afirmação em vez de inventar dados. Planejadores existem para encolher promessas. A janela do exercício permitia cerca de trinta tentativas. Sam poderia ter rodado as mesmas técnicas três vezes cada para chegar a noventa e seis, mas execuções repetidas contra os mesmos hosts não são independentes; portanto, o intervalo mais estreito teria sido falso. Em vez disso, o relatório afirmou o que trinta tentativas independentes sustentavam: a detecção provavelmente estava acima de um meio, e comparações mais finas exigiriam um exercício maior. O principal valor do planejador foi tornar esse limite visível antes que alguém tivesse prometido mais.
+
+### 12.12 Um apêndice que explica a recusa
+
+O material do conselho que insiste num único número recebe o apêndice de Sam com a justificativa da recusa. O jurídico endossou o apêndice. O apêndice tem uma página. Ele mostra as contagens, o intervalo e dois parágrafos curtos. O primeiro explica por que uma única porcentagem exageraria o que o exercício mediu. O segundo diz o que o banco pode afirmar com segurança. Escrevê-lo uma vez poupa discutir o mesmo ponto a cada trimestre, e anexá-lo sempre que alguém pede um único número leva a discussão da opinião de Sam para uma posição acordada do banco. O endosso do jurídico importa porque o risco que o apêndice trata é tanto jurídico quanto estatístico.
+
+### 12.13 Registrar o endosso do jurídico
+
+O apêndice de recusa tem anexado o hash do e-mail de endosso do jurídico. Sam adora a integridade chata. O hash permite a qualquer pessoa confirmar depois que o apêndice num material do conselho é a versão que o jurídico aprovou, não uma cópia editada. O e-mail de endosso é armazenado no arquivo de governança, e seu valor SHA-256 é impresso no rodapé do apêndice. Se a redação muda, o hash deixa de bater e a mudança precisa de um novo endosso. Isso usa o mesmo hábito de integridade do manuseio de evidências: um documento cuja autoridade importa deve poder ser conferido sem confiar em quem o encaminhou.
+
+### Exemplo resolvido (TRB sintético)
+
+Sam mostra 7/10, IC (0,40; 0,89), contra 70/100, IC (0,60; 0,78), para explicar por que o TRB financia mais tentativas antes de declarar uma vitória de detecção.
+
+> **Caso sintético — Riverstone Transit Bank (TRB).** O banco, Sam Ito, TrackScope/FindingsDesk/PulseMap e todos os números são inventados para fins didáticos.
+
+### Erros e limites
+
+Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pagamento reais. Os laboratórios usam apenas endereços de faixas de documentação e dados sintéticos; código de exploit nunca é fornecido.
+
+### Exercícios
+
+- **EX034 — Leitura do intervalo.** Que IC o laboratório imprime para 7/10? *Rubrica:* 3 = (0.40, 0.89); 2 = aproximado; 1 = errado; 0 = nada.
+- **EX035 — Por que mais largo.** Por que o intervalo de 7/10 é mais largo que o de 70/100 com a mesma taxa? *Rubrica:* 3 = amostra menor / mais incerteza; 2 = parcial; 1 = bug; 0 = nada.
+- **EX036 — Frase para o gestor.** Escreva uma frase simples que Sam poderia dizer sobre 7/10. *Rubrica:* 3 = contagem + incerteza + não definitivo; 2 = parcial; 1 = "estamos 70% seguros"; 0 = nada.
+
+### Síntese
+
+Amostras pequenas precisam de intervalos; confiança não é uma porcentagem de segurança.
+
+### Continue estudando — capítulo 12 de 40
+
+[← Capítulo 11 (rascunho)](#ch-11) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 13 (rascunho) →](#ch-13)
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Identidade e acesso
+
+### Objetivos de aprendizagem
+
+Você vai (1) separar AuthN e AuthZ; (2) aplicar o menor privilégio às contas de teste; (3) mapear contas compartilhadas para a T1078.
+
+### 13.1 AuthN/AuthZ
+
+Provar identidade versus permitir ações. O IDOR é uma falha de AuthZ depois da AuthN. A autenticação responde quem está fazendo a requisição, por meio de uma senha, passkey ou token. A autorização responde se essa pessoa pode fazer esta coisa específica com este objeto específico. Uma referência direta insegura a objeto acontece quando uma aplicação verifica a primeira e pula a segunda. Um cliente faz login corretamente, depois troca um número de conta na URL de um extrato e recebe o extrato de outra pessoa. No TRB, Sam testa a autorização fazendo login como um cliente sintético e pedindo objetos que pertencem a um segundo cliente sintético; assim, um sucesso prova a falha sem tocar nos dados de nenhuma pessoa real.
+
+### 13.2 Contas de teste
+
+Nominais, temporárias, guardadas no cofre, com menor privilégio. Cada propriedade evita uma falha específica. Uma conta nominal, como rt-sam-cust01, liga toda ação nos logs a um único testador, o que uma conta compartilhada não consegue fazer. Uma conta temporária expira quando a janela fecha; assim, uma credencial esquecida se torna inútil em vez de virar uma porta dos fundos. Guardar as credenciais no cofre as mantém fora de mensagens de chat e de arquivos de anotações. Menor privilégio significa que a conta tem apenas os direitos de que os testes planejados precisam. Testar uma falha voltada ao cliente com uma conta de administrador não provaria nada sobre o que um cliente pode fazer e acrescentaria risco se a sessão fosse sequestrada.
+
+### 13.3 Administradores compartilhados
+
+Perda de responsabilização; ATT&CK T1078 Valid Accounts. Quando cinco administradores compartilham uma conta, o log mostra que o admin fez uma mudança, mas não qual pessoa a fez. Isso atrapalha as investigações e deixa os erros sem dono. Credenciais compartilhadas também viajam. Elas são escritas em scripts, documentos de integração e arquivos de configuração, de modo que sobrevivem às pessoas que as conheciam. O ATT&CK lista o abuso de credenciais legítimas como Valid Accounts porque um atacante usando uma senha real de administrador parece administração normal. O achado de Sam para uma conta de administrador compartilhada recomenda contas nominais que possam elevar direitos e registra onde a senha compartilhada foi encontrada armazenada.
+
+### 13.4 MFA
+
+Verificar pela revisão de configuração, não fazendo phishing com funcionários. A pergunta é se a autenticação multifator está imposta em toda rota que importa, e a configuração do provedor de identidade responde a isso diretamente: quais aplicações a exigem, quais grupos estão isentos e se protocolos legados que a contornam ainda estão habilitados. Enviar e-mails de phishing a funcionários reais para descobrir envolveria pessoas que não consentiram em ser testadas neste engajamento e mediria o comportamento delas, e não o controle. Sam exporta as políticas de acesso condicional e confirma uma isenção com uma conta de teste autorizada. O achado nomeia a lacuna com precisão, por exemplo que um endpoint IMAP aceita senhas sem um segundo fator.
+
+### 13.5 Contas de serviço
+
+Donos e datas de rotação obrigatórios. As contas de serviço permitem que aplicações falem com bancos de dados e APIs sem uma pessoa presente, o que também significa que ninguém percebe quando são mal usadas. Uma conta sem dono nomeado não pode ser rotacionada com segurança, porque ninguém sabe quais sistemas vão quebrar quando a senha mudar; por isso, ela geralmente nunca muda. A revisão de Sam lista toda conta de serviço com seu dono, a data da última rotação e os direitos que ela detém e, em seguida, sinaliza as que não têm dono, as rotacionadas há mais de um ano e as que têm direitos de logon interativo de que não deveriam precisar. A correção mais comum é tornar a conta não interativa.
+
+### 13.6 Desligados
+
+Acesso que persiste depois do desligamento no RH é um achado clássico. A lacuna geralmente vem de um processo com várias passagens de bastão. O RH registra a data de saída, a TI desativa a conta do diretório e ninguém remove as contas locais, os logins de SaaS criados fora do single sign-on ou o certificado de VPN. Sam testa isso pegando um registro sintético de desligado e verificando cada sistema a que a função tinha acesso. Encontrar um único login sobrevivente basta para um achado. A recomendação trata do processo, por exemplo dirigir o desprovisionamento a partir do evento do RH e listar todo sistema que fica fora do single sign-on, não só a conta que por acaso foi encontrada.
+
+### 13.7 Expirar as contas de teste automaticamente
+
+A expiração das contas de teste é imposta por uma rotina que desativa as contas no fim da janela e aciona Sam se a desativação falhar. Os lembretes manuais falharam duas vezes no passado; a rotina agora é um controle, não uma conveniência. O acionamento em caso de falha é a parte importante. Uma rotina que falha em silêncio é pior que nenhuma rotina, porque todos acreditam que as contas estão desativadas. A desativação pode falhar quando o serviço de identidade está em manutenção ou quando uma conta foi renomeada, e cada falha deixa uma credencial funcionando por aí. O acionamento vai para o testador e para o líder de segurança juntos. Nenhum dos dois pode encerrar o engajamento até que ambos confirmem que a conta está desativada.
+
+### 13.8 Contas break-glass
+
+Os administradores break-glass são monitorados e raros. A revisão de Sam confere que a conta break-glass não foi usada como conta do dia a dia durante a janela. Uma conta break-glass existe para o dia em que o sistema de identidade normal falha. Ela contorna o single sign-on e geralmente a autenticação multifator, o que a torna poderosa e perigosa. Suas credenciais ficam lacradas, e qualquer uso deve produzir um alerta e uma justificativa escrita. O teste é simples: contar seus logins no último trimestre e compará-los com as emergências registradas. Se os logins superam as emergências, alguém está usando a conta por conveniência. O achado então recomenda corrigir o problema de acesso normal que levou as pessoas a ela.
+
+### 13.9 Confirmar que o cofre nega acesso sem MFA
+
+O acesso ao cofre de credenciais exige MFA. Sam testou a negação sem MFA e registrou a negação como demonstração de um controle positivo. Os controles merecem evidência quando funcionam, não só quando falham. O teste usou uma conta de teste com a senha correta e sem segundo fator e registrou a recusa do cofre junto com sua entrada de log. Registrar essa recusa como um controle positivo significa que a próxima auditoria pode se apoiar em evidência datada, em vez de numa captura de tela da configuração. Isso também define uma referência. Se um teste posterior com a mesma conta tiver sucesso, algo mudou, e o registro anterior mostra exatamente quando se sabia que o controle funcionava pela última vez.
+
+### 13.10 Uma senha rotacionada encontrada numa impressora
+
+Uma senha de administrador compartilhada no sistema de empréstimos é rotacionada, mas a mesma senha é encontrada depois na configuração de uma impressora. A lista de verificação de desligados e segredos de Sam agora inclui "procurar artefatos de reutilização de senha" depois de qualquer achado de administrador compartilhado. A rotação corrigiu um sistema e deixou o segredo antigo funcionando onde quer que ele tivesse sido reutilizado. Anos antes, alguém tinha configurado na impressora a digitalização para pasta com as credenciais do administrador de empréstimos, e a interface web da impressora mostrava a senha a qualquer pessoa na rede. Uma senha compartilhada geralmente tem uma história; por isso, a busca cobre scripts, tarefas agendadas, configurações de dispositivos e documentação, não só o sistema em que ela foi encontrada primeiro.
+
+### 13.11 Testar o alerta de break-glass
+
+O uso de break-glass durante uma janela aciona automaticamente o canal do CISO. Sam testou o acionamento com uma conta break-glass de staging e recebeu um telefonema severo, mas correto. O telefonema foi a evidência de que o alerta funciona, porque mostrou que uma pessoa respondeu, e não apenas que uma mensagem foi enviada. Antes do teste, Sam combinou o horário com o líder de segurança e o registrou no log do engajamento, para que a ligação pudesse ser resolvida rapidamente. Quem atendeu ainda seguiu o procedimento completo e perguntou quem estava usando a conta, por que e sob qual autoridade. Esse é o comportamento certo, já que um atacante também poderia alegar estar fazendo um teste.
+
+### 13.12 Auditar a automação de desligados
+
+Os tickets de desligados se abrem automaticamente a partir dos eventos do RH em até uma hora; Sam audita a automação toda semana. A automação desloca o risco em vez de removê-lo. Se o elo entre o sistema de RH e a ferramenta de tickets quebrar, os desligados param de gerar tickets em silêncio e ninguém vê um ticket ausente. A auditoria semanal compara os desligamentos da semana no RH com os tickets abertos e confere que cada ticket foi fechado com todos os sistemas listados confirmados. Numa semana, as contagens diferiram em três. Uma mudança de esquema na exportação do RH tinha renomeado o campo da data de saída, e a integração pulou esses registros sem relatar erro.
+
+### 13.13 Procurar segredos nas configurações de dispositivos
+
+As configurações de impressoras agora estão no caminho da busca de segredos, depois do incidente de reutilização. Lugares estranhos escondem senhas. Impressoras, armazenamento em rede, controladores de porta e sistemas de salas de reunião frequentemente se autenticam em servidores, e suas páginas de configuração podem guardar essas credenciais de forma legível. Poucas equipes pensam neles como lugares onde vivem segredos; por isso, raramente são rotacionados ou revisados. A busca ampliada usa exportações de configuração coletadas pelos donos dos dispositivos com permissão, e não logins em cada dispositivo durante o teste. As credenciais encontradas são relatadas aos donos e rotacionadas. O testador não as usa, porque usar uma credencial encontrada num dispositivo testaria um sistema fora dos métodos acordados.
+
+### 13.14 Manter a busca de segredos dentro do escopo
+
+As ampliações do caminho da busca de segredos são registradas; a expansão de escopo na busca continua sendo escopo. Cada novo local acrescentado à busca, como exportações de impressoras, um espaço da wiki ou um compartilhamento de arquivos, é registrado com a data, o aprovador e o motivo. Uma busca por senhas lê dados que podem conter informações pessoais e segredos de outras equipes; por isso, precisa da mesma autorização que qualquer outro método de teste. O registro também explica os resultados. Um salto repentino nos segredos encontrados num trimestre só tem significado se os leitores souberem se o banco piorou ou se a busca simplesmente olhou em mais lugares.
+
+### Exemplo resolvido (TRB sintético)
+
+O administrador compartilhado no sistema de empréstimos vira F1, com pontuação 6 no lab_rank.
+
+> **Caso sintético — Riverstone Transit Bank (TRB).** O banco, Sam Ito, TrackScope/FindingsDesk/PulseMap e todos os números são inventados para fins didáticos.
+
+### Erros e limites
+
+Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pagamento reais. Os laboratórios usam apenas endereços de faixas de documentação e dados sintéticos; código de exploit nunca é fornecido.
+
+### Exercícios
+
+- **EX037 — T1078.** Que técnica corresponde a senhas válidas de administrador compartilhadas? *Rubrica:* 3 = T1078 Valid Accounts; 2 = o nome; 1 = errado; 0 = nada.
+- **EX038 — Método para o MFA.** Como verificar o MFA sem phishing? *Rubrica:* 3 = revisão de configuração/política sob as ROE; 2 = parcial; 1 = phishing; 0 = nada.
+- **EX039 — Características da conta de teste.** Liste três características de uma boa conta de teste. *Rubrica:* 3 = nominal, menor privilégio, temporária/no cofre; 2 = duas; 1 = uma; 0 = nada.
+
+### Síntese
+
+Os achados de identidade são precisos quanto a AuthN vs AuthZ e nunca exigem fazer phishing com colegas.
+
+### Continue estudando — capítulo 13 de 40
+
+[← Capítulo 12 (rascunho)](#ch-12) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 14 (rascunho) →](#ch-14)
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Fundamentos de privacidade
+
+### Objetivos de aprendizagem
+
+Você vai (1) minimizar os dados de clientes nas evidências; (2) redigir; (3) respeitar a retenção.
+
+### 14.1 Minimização
+
+A prova vale mais que extrações em massa de tabelas de clientes. Um testador precisa mostrar que uma fraqueza existe, não coletar o que ela expõe. Se uma API devolve os saldos de outros clientes, uma resposta contendo o saldo de uma conta sintética prova a falha tão bem quanto dez mil reais, e não cria nenhuma nova cópia de dados reais de clientes. Cada registro extra capturado precisa ser armazenado, protegido, relatado e apagado, e pode ele mesmo se tornar uma violação a ser notificada. Sam para um teste assim que tem a primeira resposta que prova o problema. Ele registra quantos registros o endpoint poderia ter devolvido, em vez de obtê-los para provar isso.
+
+### 14.2 Redação
+
+Mascare os números de conta; mantenha os dígitos que provam o problema, se necessário. A redação deve remover a identidade enquanto preserva a prova. Uma captura de tela mostrando que a sessão do cliente A exibiu o extrato do cliente B só precisa dos quatro últimos dígitos de cada número de conta para mostrar que os dois diferem. Os números completos acrescentam risco e nenhuma evidência. Nomes, endereços e saldos são cobertos com caixas sólidas. O desfoque às vezes pode ser revertido, e o recorte pode deixar texto nos metadados da imagem. Sam redige numa cópia, mantém o original não redigido no cofre sob sua data de retenção e calcula o hash dos dois, para que um revisor possa confirmar que a imagem redigida veio da evidência original.
+
+### 14.3 Limitação de finalidade
+
+As evidências do engajamento não são uma fonte de análise de marketing. Os dados dos clientes chegaram à equipe de testes por um único motivo, que era verificar a segurança do banco sob um contrato assinado. Usar as mesmas capturas de tela para estudar como os clientes usam o aplicativo, ou para ilustrar uma apresentação de vendas, é uma nova finalidade que os clientes nunca esperaram e que o contrato nunca cobriu. As leis de privacidade de muitas jurisdições tratam essa mudança de finalidade como algo que precisa de sua própria base legal. A regra prática no TRB é simples. As evidências respondem a perguntas sobre o engajamento de onde vieram, e qualquer outra pergunta precisa de dados separados, coletados para essa finalidade.
+
+### 14.4 Acesso
+
+Necessidade de saber nos cofres de evidências. As evidências de um engajamento são lidas por seus testadores, seu revisor e o custodiante, e por mais ninguém por padrão. Um desenvolvedor que corrige um achado vê a descrição do achado e a prova redigida, não a captura bruta. Um gestor vê o status e a severidade. Pedidos de acesso fora desses papéis vão ao líder do engajamento com um motivo e uma data de término. A necessidade de saber também limita os danos. Se a conta de um testador for comprometida, o atacante alcança as evidências de um engajamento, não toda captura de tela que a equipe fez em cinco anos.
+
+### 14.5 Transferências internacionais
+
+Regiões de nuvem podem envolver regras; o jurídico orienta. As evidências armazenadas num serviço de nuvem ficam numa região específica, e backups ou acessos de suporte podem alcançar outras. Se as evidências contêm dados pessoais de clientes de um país e o armazenamento ou a equipe de suporte do fornecedor estão em outro, podem se aplicar regras de transferência de dados, além dos compromissos do próprio banco com seu regulador. Não se espera que os testadores interpretem essas regras por conta própria. Espera-se que percebam quando as evidências estão prestes a cruzar uma fronteira, por exemplo ao enviá-las a uma ferramenta nova ou compartilhá-las com um fornecedor no exterior, e que consultem o jurídico antes de fazê-lo.
+
+### 14.6 Risco de violação
+
+Os cofres de evidências são alvos de alto valor; proteja-os. O cofre de uma equipe de testes guarda as fraquezas do banco, a prova de como alcançá-las e amostras dos dados por trás delas, o que, junto, forma um roteiro para o atacante. Por isso, o cofre recebe controles pelo menos tão fortes quanto os dos sistemas que ele descreve: autenticação multifator, acesso registrado, criptografia em repouso, retenção curta e seu próprio lugar no plano de incidentes. Se o cofre fosse comprometido, o banco teria de tratar todo achado não corrigido nele como potencialmente conhecido por um atacante. É por isso que o TRB prioriza a correção das fraquezas registradas num cofre exposto, qualquer que seja sua severidade original.
+
+### 14.7 Exercícios de reidentificação
+
+Os exercícios de reidentificação juntam uma captura de tela redigida a organogramas públicos. Se um colega consegue nomear a pessoa, a redação é reprovada no portão. Sam agora prefere personas sintéticas na maioria das capturas de tela didáticas. O exercício testa o que um leitor consegue deduzir, não só o que foi coberto. A captura de tela de uma página administrativa interna pode esconder um nome, mas deixar um cargo, um código de agência e um carimbo de tempo, e, junto com um organograma público, isso identifica uma pessoa. Os colegas têm dez minutos e apenas fontes públicas. Uma identificação bem-sucedida não conta como erro de quem redigiu. Ela mostra que a regra de redação deixou passar um tipo de campo, e a regra é atualizada.
+
+### 14.8 Uma biblioteca de evidências sintéticas
+
+Uma biblioteca de capturas de tela sintéticas cobre os achados comuns, para que os alunos não precisem manusear pixels de clientes reais. Sam contribui com uma nova imagem sintética a cada período letivo. Cada entrada recria um achado típico numa maquete das interfaces do TRB, como uma página de extrato mostrando o cliente errado, uma mensagem de erro vazando um stack trace ou um painel administrativo alcançável sem login, usando dados inventados do começo ao fim. Treinamentos, modelos de relatório e palestras em conferências usam a biblioteca em vez das pastas de engajamento. Construir uma entrada leva algumas horas e remove para sempre a tentação de redigir uma captura de tela real para um slide.
+
+### 14.9 Etiquetas de finalidade nas evidências
+
+Os arquivos de evidência recebem uma etiqueta de finalidade; o uso secundário exige uma nova etiqueta e aprovação. O marketing não pode "só pegar emprestadas" as capturas de tela do engajamento. A etiqueta é definida no upload. Na maioria dos casos, ela é "evidência do engajamento" e, para alguns arquivos, "evidência do engajamento mais uso aprovado em treinamento". O FindingsDesk confere a etiqueta sempre que um arquivo é copiado para outro espaço de trabalho ou anexado a qualquer coisa que não seja um achado, e bloqueia a ação se as finalidades não coincidirem. Acrescentar uma finalidade exige a aprovação do líder do engajamento e uma verificação de privacidade. A etiqueta transforma uma frase de política numa verificação que roda toda vez que um arquivo se move.
+
+### 14.10 Os alunos escolhem o exemplo sintético
+
+O item SS-17 da biblioteca de capturas sintéticas mostra uma cliente falsa, "Ada Example", com a conta ••••4242. Os alunos o preferem a redigir telas reais. Sam mede essa preferência e financia mais arte sintética. A preferência é prática, além de ética. Redigir corretamente uma captura de tela real toma vinte minutos do aluno e uma verificação do revisor, enquanto a sintética está pronta para uso e não traz risco se acabar no lugar errado. Sam acompanha com que frequência cada item da biblioteca é usado. Os itens mais usados mostram sobre quais achados os alunos mais escrevem, e esses são os próximos a ganhar versões sintéticas.
+
+### 14.11 Uma cópia bloqueada para uma pasta de design
+
+As etiquetas de finalidade impediram que um trainee bem-intencionado colocasse capturas de tela do engajamento numa pasta de redesenho de UX. A recusa pareceu mesquinha e protegeu cem clientes. A ideia do trainee era razoável à primeira vista. As capturas de tela mostravam telas reais e confusas que a equipe de design queria melhorar. Também mostravam nomes reais de clientes e saldos parciais, e a pasta de design era compartilhada com uma agência externa. A correção levou uma tarde. O trainee descreveu cada tela confusa em palavras, e a equipe de design a reconstruiu com dados sintéticos. A agência obteve o que precisava e nenhum dado de cliente saiu do banco.
+
+### 14.12 Manter as personas sintéticas obviamente falsas
+
+A sintética Ada Example tem um guia de estilo para que os artistas a mantenham obviamente falsa. Uma persona sintética real demais causa os problemas que deveria evitar. Os leitores podem presumir que é uma cliente real redigida, ou os detalhes podem coincidir por acaso com uma pessoa real. O guia de estilo fixa os sinais reveladores: nomes de uma lista inventada acordada, números de conta terminados em dígitos de teste bem conhecidos, endereços em ruas que não existem na região do TRB e datas num ano de teste reservado. Quem vê esses marcadores reconhece o material didático num relance.
+
+### 14.13 Acordos com ilustradores
+
+Os artistas assinam um CLA segundo o qual Ada Example não pode se parecer com clientes reais. O jurídico insistiu; Sam concordou com prazer. Os ilustradores às vezes baseiam rostos e caligrafias em pessoas que conhecem ou em fotografias de banco de imagens de pessoas reais. No material de treinamento de um banco, uma persona parecida com um cliente real poderia sugerir que a conta desse cliente esteve envolvida num achado de segurança. O acordo de contribuição faz o artista confirmar que toda semelhança é inventada e dá ao TRB os direitos de reutilizar e alterar a arte. Essa segunda parte importa tanto quanto a primeira, porque os exemplos sintéticos precisam ser atualizados quando as interfaces reais mudam.
+
+### 14.14 Visitas à mesa para analistas novos
+
+Os coaches de privacidade do TRB incluem uma visita de cinco minutos à mesa quando um analista novo abre o cofre de evidências pela primeira vez. Sam roteiriza a visita: mostrar as datas de retenção, mostrar a lista de acesso, mostrar um exemplo de falha de redação, pedir ao analista que repita a regra da minimização com as próprias palavras. As visitas à mesa pegam a bravata melhor que os módulos do LMS. Os analistas assinam um pequeno cartão que fica no saguão do cofre.
+
+Uma regra aprendida num documento é facilmente esquecida. Uma regra mostrada à mesa, na tela do próprio analista, com a data de retenção do seu próprio engajamento, tende a ficar. O exemplo de falha de redação é escolhido para ser desconfortável: uma captura de tela que parecia limpa até que um colega nomeou a pessoa nela. Pedir ao analista que reformule a regra mostra se ele a entendeu ou apenas concordou com a cabeça.
+
+### Exemplo resolvido (TRB sintético)
+
+Sam redige tudo, exceto os quatro últimos dígitos, antes de anexar uma captura de tela ao F4.
+
+> **Caso sintético — Riverstone Transit Bank (TRB).** O banco, Sam Ito, TrackScope/FindingsDesk/PulseMap e todos os números são inventados para fins didáticos.
+
+### Erros e limites
+
+Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pagamento reais. Os laboratórios usam apenas endereços de faixas de documentação e dados sintéticos; código de exploit nunca é fornecido.
+
+### Exercícios
+
+- **EX040 — Minimização.** Por que não exportar a tabela completa de clientes para um achado? *Rubrica:* 3 = privacidade/finalidade/ROE; 2 = parcial; 1 = precisamos dela; 0 = nada.
+- **EX041 — Redação.** O que Sam redige no exemplo da captura de tela? *Rubrica:* 3 = números de conta, exceto os quatro últimos dígitos / identificadores pessoais; 2 = parcial; 1 = nada; 0 = nada.
+- **EX042 — Cofre.** Por que proteger fortemente os cofres de evidências? *Rubrica:* 3 = concentram dados sensíveis de prova; 2 = parcial; 1 = não precisa; 0 = nada.
+
+### Síntese
+
+Privacidade é minimização, redação, limites de finalidade e higiene do cofre.
+
+### Continue estudando — capítulo 14 de 40
+
+[← Capítulo 13 (rascunho)](#ch-13) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 15 (rascunho) →](#ch-15)
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Evidência e medição
+
+### Objetivos de aprendizagem
+
+Você vai (1) calcular hashes de evidências; (2) escolher métricas que não sejam de vaidade; (3) manter a cadeia de custódia.
+
+### 15.1 Hashes
+
+Detectar edições acidentais antes do registro. Um hash criptográfico como o SHA-256 transforma um arquivo numa impressão digital curta que muda completamente se até um único byte mudar. Sam calcula o hash de cada arquivo de evidência quando o captura e de novo quando o anexa a um achado. Se os valores diferem, algo tocou o arquivo nesse meio-tempo, talvez um editor de imagens que o salvou de novo, uma ferramenta de sincronização que converteu as quebras de linha ou uma redação descuidada sobre o original. Pegar isso antes de o relatório sair é fácil. Explicar isso depois que um cliente contesta o achado é muito mais difícil, porque um arquivo alterado parece igual a um adulterado.
+
+### 15.2 Métricas
+
+Ativos tocados, cartões executados, donos designados — não contagens brutas de achados. Uma contagem de achados mede sobretudo o quanto os testadores procuraram e como dividiram os problemas em registros separados. Um aumento de quarenta para sessenta poderia significar que o banco piorou, que o escopo cresceu ou que uma fraqueza foi registrada por host em vez de uma única vez. Medidas mais úteis descrevem o trabalho e seu efeito: quantos ativos do escopo foram de fato testados, quantos métodos de teste planejados foram concluídos, quantos achados têm um dono nomeado e uma data-limite e quanto tempo as correções levam. O PulseMap relata essas medidas, para que um gestor possa saber se um trimestre calmo significa segurança ou pouco teste.
+
+### 15.3 Custódia
+
+Quem/quando/onde para cada artefato. Um registro de cadeia de custódia lista todo ponto em que a evidência mudou de mãos ou de lugar: capturada por Sam num notebook de testes às 21:14, enviada ao FindingsDesk às 21:20, lida pelo revisor na manhã seguinte, exportada em forma redigida para o relatório. Cada entrada tem uma pessoa, um horário e um lugar. Se um achado for contestado meses depois, o registro mostra que a evidência apresentada é a evidência capturada e quem poderia tê-la alterado. Lacunas são registradas como lacunas. Uma nota honesta de que um arquivo ficou num notebook por dois dias é melhor que um registro que esconde isso.
+
+### 15.4 Integridade vs verdade
+
+Hash coincidente ≠ sistema vivo ainda vulnerável. Um hash coincidente prova apenas que o arquivo de evidência não mudou desde que foi capturado. Ele não diz nada sobre se a fraqueza ainda existe, se a evidência foi corretamente entendida ou se o teste era válido. Uma captura de tela pode estar perfeitamente preservada e ainda assim mostrar uma leitura errada. Um servidor vulnerável em março pode ter sido corrigido em abril. É por isso que o TRB separa a integridade da evidência, verificada com hashes, do status do achado, verificado por um reteste. As afirmações do relatório são datadas no momento do teste, por exemplo que o endpoint devolveu dados de outro cliente em 4 de março, e não que ele faz isso agora.
+
+### 15.5 Amostragem
+
+Amostre tickets fechados em busca de evidência de verificação. Conferir todo ticket fechado raramente é viável, e conferir só os que alguém sinaliza deixa passar falhas silenciosas. Uma amostra aleatória evita os dois problemas. Como a amostra é escolhida ao acaso, as equipes não conseguem prever quais tickets serão conferidos; por isso, todo ticket precisa de evidência de que a correção funciona, como um resultado de reteste, um diff de configuração ou uma varredura. Se a amostra revelar evidência ausente, a parcela ausente na amostra estima a parcela ausente no total, e os métodos de intervalo usados para taxas de detecção também se aplicam a essa proporção.
+
+### 15.6 PulseMap
+
+As visões de cobertura precisam mostrar denominadores. Um bloco verde que diz noventa por cento de cobertura esconde a pergunta que importa: noventa por cento de quê. Se o PulseMap conta apenas os hosts do inventário de ativos, e o inventário não tem uma conta de nuvem criada no trimestre passado, a cobertura real é menor do que o bloco sugere. Por isso, cada visão de cobertura mostra a contagem por trás da porcentagem, como quarenta e cinco de cinquenta aplicações web registradas, e nomeia a fonte do total. Os leitores podem então ver quando o próprio denominador parece pequeno demais, o que muitas vezes é o achado mais importante do painel.
+
+### 15.7 Amostragem aleatória de tickets fechados
+
+A amostragem de tickets fechados é de cinco tickets por mês, escolhidos por um gerador de números aleatórios. A ausência de evidência de verificação reabre o ticket automaticamente. Sam publica a contagem de reaberturas para que a manipulação da métrica fique visível. O sorteio é registrado com sua semente, para que qualquer pessoa possa confirmar que os cinco tickets não foram escolhidos a dedo. A reabertura automática mantém a consequência impessoal. Não é Sam acusando uma equipe; é a regra se aplicando sozinha. Publicar a contagem de reaberturas também torna a melhoria visível. Quando as reaberturas de uma unidade de negócio caíram de três por mês para zero, a contagem em queda mostrou que suas correções agora estavam sendo verificadas, e não apenas fechadas.
+
+### 15.8 Um dicionário para os termos das métricas
+
+Um dicionário compartilhado define "tocado", "validado" e "fechado". Sam recusa blocos do PulseMap que usam palavras não definidas. A mesma palavra pode significar coisas diferentes para equipes diferentes. Para um desenvolvedor, fechado pode significar que o código foi mesclado; para as operações, que foi implantado; e, para os testadores, que um reteste passou. Um bloco que conta achados fechados não tem sentido até que a palavra seja fixada. Cada entrada do dicionário dá uma definição, o campo de dados ao qual ela corresponde, um exemplo e um contraexemplo. Quando um bloco novo é proposto, seus rótulos são conferidos contra o dicionário antes da publicação.
+
+### 15.9 O que conta como tocado
+
+"Tocado" significa um cartão de método concluído com evidência, não um ping. A briga de Sam no dicionário por essa palavra valeu uma semana. Pela definição frouxa, um host respondia a uma varredura de rede e por isso contava como coberto. Pela estrita, um método de teste planejado era concluído contra ele e deixava evidência. A diferença foi grande. A cobertura medida por varreduras ficava perto de cem por cento, enquanto a cobertura medida por métodos concluídos ficava em cerca de sessenta. A definição estrita era menos lisonjeira e muito mais útil, porque mostrava quais ativos nunca tinham sido realmente testados.
+
+### 15.10 Um bloco verde com dois pontos de dados
+
+O subtítulo "n=2" ao lado de um visto verde num bloco do PulseMap ensina mais que uma aula sobre tamanho de amostra. Sam deixa de propósito um bloco verde de n pequeno no ambiente de treinamento para provocar perguntas. O bloco mostra que os dois tickets amostrados tinham evidência de verificação, o que dá cem por cento com quase nenhuma informação. Os alunos que o veem geralmente começam dizendo que o controle está funcionando, e então alguém nota o n. A discussão que se segue cobre o que duas observações conseguem sustentar, quão largo é o intervalo e que desenho de bloco evitaria a leitura errada. Essa última pergunta levou à regra de que blocos com amostras muito pequenas não podem ficar verdes.
+
+### 15.11 Aprovar as definições
+
+A briga do dicionário terminou quando o CISO assinou as definições. Sam emoldura o PDF assinado na wiki da equipe. Palavras são controles. A assinatura encerrou a discussão ao fazer das definições uma política do banco, e não uma preferência da equipe de testes. As equipes que discordavam ainda podiam propor mudanças, mas por uma revisão com número de versão, não usando em silêncio o seu próprio significado num painel. Cada bloco do PulseMap agora cita a versão do dicionário que usa. Quando uma definição muda, os números antigos e novos não são plotados na mesma linha sem um marcador, para que um salto causado pela redefinição não seja confundido com uma mudança real.
+
+### 15.12 Definições no papel
+
+As definições de métricas assinadas ficam penduradas ao lado da máquina de café da equipe — o papel ainda funciona. Uma página impressa na parede é vista por pessoas que nunca abririam a wiki, incluindo visitantes de outras equipes que vêm perguntar o que um número significa. Seu uso principal é nas conversas rápidas. Quando alguém diz que um achado está fechado, um colega pode apontar para a definição e perguntar se o reteste passou. A página traz seu número de versão e sua data, de modo que uma impressão desatualizada é fácil de notar e substituir quando a versão assinada muda.
+
+### 15.13 Um estado amarelo para termos não definidos
+
+Blocos com palavras não definidas mostram um estado amarelo, "defina-me", em vez de verde. O amarelo é mais difícil de ignorar. Um bloco que usa um termo ausente do dicionário ainda mostra seu número, mas não pode ficar verde, porque ninguém sabe dizer o que o verde significaria. O estado amarelo nomeia a palavra não definida e leva ao formulário para propor uma definição. Isso evita duas opções piores. Esconder o bloco perde informação, e mostrá-lo verde dá uma falsa tranquilidade. Na prática, a maioria dos blocos amarelos é corrigida em uma semana, geralmente mapeando o rótulo para um termo existente.
+
+### 15.14 Plantão de medição
+
+O plantão de medição acontece às quintas-feiras. Qualquer pessoa pode trazer um bloco que pareça enganoso. A correção mais comum de Sam é acrescentar n ao subtítulo ou trocar o verde por amarelo. Ele acompanha quantos blocos mudam de cor a cada mês, como uma métrica de qualidade das métricas. O plantão dá às pessoas uma forma de baixo risco de questionar um número sem acusar quem construiu o bloco. Muitas queixas acabam sendo sobre rótulos, e não sobre dados. Um bloco que diz "incidentes" pode, na verdade, estar contando alertas, e a correção é um título melhor. Acompanhar as mudanças de cor mostra se o painel está ficando mais honesto com o tempo. Um mês sem mudanças significa ou que os blocos estão bons, ou que as pessoas pararam de vir.
+
+### Exemplo resolvido (TRB sintético)
+
+Sam recusa uma captura de tela com hash divergente e a captura de novo.
+
+> **Caso sintético — Riverstone Transit Bank (TRB).** O banco, Sam Ito, TrackScope/FindingsDesk/PulseMap e todos os números são inventados para fins didáticos.
+
+### Erros e limites
+
+Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pagamento reais. Os laboratórios usam apenas endereços de faixas de documentação e dados sintéticos; código de exploit nunca é fornecido.
+
+### Exercícios
+
+- **EX043 — Vaidade.** Por que rejeitar a contagem bruta de achados como KPI? *Rubrica:* 3 = recompensa o ruído; 2 = parcial; 1 = o melhor KPI; 0 = nada.
+- **EX044 — Significado do hash.** O que um hash coincidente prova? *Rubrica:* 3 = inalterado desde o cálculo do hash; 2 = parcial; 1 = sistema seguro; 0 = nada.
+- **EX045 — Campos de custódia.** Nomeie quatro campos de custódia. *Rubrica:* 3 = quem, o quê, quando, onde; 2 = três; 1 = um; 0 = nada.
+
+### Síntese
+
+A evidência recebe hash e atribuição; as métricas trazem denominadores.
+
+### Continue estudando — capítulo 15 de 40
+
+[← Capítulo 14 (rascunho)](#ch-14) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 16 (rascunho) →](#ch-16)
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Arquitetura de segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) desenhar as zonas do TRB; (2) impor matrizes de fluxo; (3) falhar fechado.
+
+### 16.1 Zonas
+
+Internet, DMZ, corporativa, vizinha dos pagamentos (restrita), avaliação. Uma zona agrupa sistemas que compartilham um nível de confiança e as mesmas regras sobre o que pode alcançá-los. A zona de internet do TRB não é confiável. A DMZ abriga o front-end público do banco, que precisa falar tanto com a internet quanto com o núcleo. A zona corporativa abriga os notebooks dos funcionários e o e-mail. A zona vizinha dos pagamentos é restrita porque faz fronteira com o gateway SWIFT e com o razão, e a zona de avaliação abriga a plataforma de testes. Os testadores leem um achado pelas zonas que ele atravessa. Um caminho da zona corporativa direto para a zona vizinha dos pagamentos é grave mesmo quando o sistema na outra ponta é apenas moderadamente sensível.
+
+### 16.2 Fluxos
+
+A matriz aprovada é a referência; o lab_flows sinaliza web→ledger-db.
+
+```python
+"""Lab 22: flag synthetic TRB data flows missing from the approved flow register."""
+approved = {("branch-pc","core-api"), ("web","core-api"), ("core-api","ledger-db"), ("jump","ledger-db")}
+seen = [("branch-pc","core-api"), ("web","core-api"), ("core-api","ledger-db"), ("web","ledger-db"), ("jump","ledger-db")]
+for s, d in seen:
+    print(f"{s:10} -> {d:10} {'approved' if (s,d) in approved else 'UNAPPROVED'}")
+```
+
+Execute com `python3 lab_flows.py`. Saída verificada:
+
+```text
+branch-pc  -> core-api   approved
+web        -> core-api   approved
+core-api   -> ledger-db  approved
+web        -> ledger-db  UNAPPROVED
+jump       -> ledger-db  approved
+```
+
+O registro é a declaração de intenção do banco, e o tráfego observado é a evidência do que de fato acontece. O laboratório compara os dois e relata os fluxos vistos, mas nunca aprovados. Um caminho direto da camada web para o banco de dados do razão contorna a API central, onde ficam a autorização e as verificações de entrada; assim, qualquer coisa que comprometa o servidor web poderia alcançar o razão sem essas verificações. O achado registra quando o fluxo foi observado, sua origem e seu destino e o fato de que nenhuma entrada do registro nem ticket de mudança o cobre.
+
+### 16.3 Falhar fechado
+
+Proxies e o TrackScope negam quando a política está ausente. Um controle que falha fechado bloqueia tráfego ou ações quando não consegue decidir, por exemplo porque seu arquivo de política está ausente, seu banco de dados está inalcançável ou uma regra está malformada. Um controle que falha aberto deixa tudo passar nesses casos, o que é conveniente durante uma indisponibilidade e desastroso se um atacante conseguir provocar a falha. Sam testa esse comportamento com segurança em staging. Ele renomeia o arquivo de política do TrackScope e confirma que a plataforma se recusa a iniciar um teste, em vez de rodar sem verificações de escopo. O teste do proxy funciona da mesma forma: com seu conjunto de regras indisponível, as requisições de saída precisam ser recusadas.
+
+### 16.4 Conduítes
+
+Regras de firewall com dono. Um conduíte é o caminho aprovado entre duas zonas, formado pelas regras de firewall, portas e protocolos que deixam uma zona falar com outra. Todo conduíte precisa de um dono, a pessoa que consegue explicar por que o caminho existe, aprovar mudanças e decidir se ele ainda é necessário. Regras sem dono se acumulam: uma porta aberta para uma migração anos atrás permanece porque ninguém sabe se removê-la vai quebrar algo. Quando Sam encontra tráfego usando um conduíte, a primeira pergunta não é se a regra o permite, mas quem é o dono da regra, porque só essa pessoa pode dizer se o tráfego é intencional.
+
+### 16.5 Terceiros
+
+Os processadores precisam de sua própria autorização. O TRB usa empresas externas para códigos únicos por SMS, processamento de cartões e hospedagem em nuvem. Os sistemas delas aparecem nos diagramas de arquitetura do TRB, mas o TRB não é dono deles e não pode autorizar ninguém a testá-los. Testar o serviço de um fornecedor geralmente exige a permissão escrita do fornecedor, sob seus próprios termos, e alguns provedores de nuvem publicam regras sobre o que os clientes podem testar em seu próprio tenant. Sam pode testar como os sistemas do TRB usam um serviço de terceiro, por exemplo se o banco valida as respostas do fornecedor, deixando em paz a infraestrutura do fornecedor, a menos que ele tenha dado seu aval.
+
+### 16.6 Diagramas
+
+Datados e com dono. Um diagrama de arquitetura é uma afirmação sobre como os sistemas estão conectados num momento específico, e um diagrama sem data convida testadores e auditores a confiar numa imagem que pode ter anos. Todo diagrama do TRB traz uma data, um dono e a versão do registro de fluxos que reflete. Antes de um engajamento, Sam confere que a data do diagrama é posterior à última mudança importante nos sistemas do escopo. Se não for, a primeira tarefa é confirmar o layout atual com o dono. Testar contra um diagrama desatualizado pode significar deixar passar caminhos novos ou, pior, sondar endereços que agora pertencem a algo fora do escopo.
+
+### 16.7 Detectar mudanças de regras durante um engajamento
+
+Os trechos da matriz recebem hash e são armazenados ao lado das ROE. Se a rede mudar no meio do engajamento, Sam compara as regras vivas com o hash e pausa se divergirem sem um ticket de mudança. O hash fixa o ambiente para o qual a autorização foi escrita. Se as regras mudam durante a janela, o teste pode agora alcançar lugares que o escopo presumia inalcançáveis, ou os resultados podem refletir uma configuração temporária em vez da normal. Pausar dá ao dono do conduíte tempo para confirmar que a mudança foi intencional. Se foi, o escopo é reconferido contra as novas regras. Se não foi, uma mudança inesperada é, ela mesma, algo que o banco precisa saber.
+
+### 16.8 Contatar os donos dos conduítes
+
+Cada conduíte lista um plantonista. Durante os testes, Sam manda mensagem ao plantonista do conduíte, e não a uma caixa geral de TI, quando as regras se comportam mal. Uma caixa geral é lida por quem estiver livre, talvez horas depois, e essa pessoa pode não conhecer o conduíte nem ter autoridade para mudá-lo. Durante uma janela de testes, os dois atrasos importam. Se uma regra de firewall bloqueia inesperadamente o teste, ou permite inesperadamente algo que não deveria, a pessoa dona desse conduíte pode decidir depressa se pausa, corrige a regra ou continua. O contato do plantão está listado no registro de fluxos ao lado do conduíte, para que os testadores não tenham de descobrir para quem ligar enquanto algo está dando errado.
+
+### 16.9 Marcar os fluxos que precisam de autorização de terceiros
+
+As matrizes de fluxo incluem uma coluna "precisa de autorização de terceiro?". Linhas com "sim" não podem ser testadas apenas sob as ROE do TRB. A coluna torna visível uma fronteira jurídica no lugar onde os testadores planejam seu trabalho. Um fluxo da API central do TRB para o endpoint do fornecedor de SMS é marcado com "sim". Sam pode observar o que o TRB envia e recebe, mas não pode sondar o endpoint do fornecedor em busca de fraquezas. A coluna é preenchida por quem registra o fluxo, e não pelos testadores, de modo que a decisão é tomada por pessoas que conhecem os contratos. Quando uma linha com "sim" importa para um engajamento, o plano inclui pedir a permissão do fornecedor ou registrar a lacuna no relatório.
+
+### 16.10 Uma regra temporária sem expiração
+
+Quando o lab_flows mostra web→ledger-db, a equipe de redes alega que a regra é temporária. Sam pede o ticket de mudança e a data de desativação. Nenhum dos dois existe. Temporário sem expiração vira o achado de processo gêmeo do F3. O achado técnico é o caminho aberto. O achado de processo é que uma regra pôde ser acrescentada como temporária sem nenhum mecanismo para removê-la. Corrigir só o primeiro fecharia esta regra e deixaria a próxima regra temporária com a mesma chance de persistir. O achado de processo recomenda que o fluxo de mudanças de firewall exija uma data de expiração para regras temporárias e alerte o dono uma semana antes dela.
+
+### 16.11 Encaminhar um testador curioso ao programa do fornecedor
+
+A coluna de terceiros com "sim" barrou uma varredura curiosa do fornecedor de SMS. Em vez disso, Sam enviou o link do bug bounty do fornecedor. Fronteiras ainda podem ser úteis. A curiosidade do colega era razoável, já que o endpoint do fornecedor parecia antigo e provavelmente tinha problemas. Varrê-lo a partir da rede do TRB sob as regras do TRB teria sido um teste não autorizado de outra empresa. O bug bounty do fornecedor define o que os pesquisadores podem testar, como e com que proteção jurídica. Segui-lo, com equipamento pessoal e em tempo pessoal, onde o programa permite, manteve o interesse legítimo e deixou o TRB de fora.
+
+### 16.12 Tornar visíveis as datas de expiração
+
+Os convites de calendário para as datas de desativação incluem o alias do CISO como participante opcional, para dar visibilidade. O convite é criado quando uma regra temporária é aprovada e cai na sua data de expiração. O dono é o participante obrigatório. O gabinete do CISO é opcional, o que significa que não se espera que aja, mas pode ver a lista completa de regras temporárias simplesmente abrindo o calendário. No dia, o dono remove a regra ou a prorroga com uma nova aprovação e uma nova data. Um convite sobre o qual ninguém age fica no calendário compartilhado como um evento passado sem ticket de mudança, o que torna a falha fácil de encontrar.
+
+### 16.13 Ligar achados técnicos e de processo
+
+Os achados de processo gêmeos se ligam ao F3 por um campo de id relacionado. Os conselhos veem juntas a dívida técnica e a de processo. Sem a ligação, os dois achados viajam separados. O técnico é corrigido rapidamente e some dos relatórios, enquanto o de processo espera num backlog de governança sem conexão visível com nenhuma exposição real. O campo de id relacionado os mantém juntos, de modo que um relatório ao conselho mostra que existiu um caminho aberto grave e por que ele pôde existir. Os revisores não fecham o achado técnico como resolvido na raiz enquanto seu gêmeo de processo ainda está aberto.
+
+### 16.14 Plantão de arquitetura
+
+O plantão de arquitetura usa um projetor e uma caneta vermelha. Conduítes sem dono são circulados até que um dono apareça no registro. Sam se recusa a agendar testes por conduítes sem dono, mesmo que a regra de firewall exista. A titularidade faz parte da autorização. Um conduíte circulado permanece no diagrama projetado de semana em semana, o que põe uma pressão pública e gentil sobre a equipe dona daquela regra de firewall. Recusar testar por conduítes sem dono não é obstrução. Sem um dono, não há ninguém que possa aceitar o risco do teste, pausá-lo ou explicar resultados inesperados; portanto, falta a precondição para o teste autorizado.
+
+### Exemplo resolvido (TRB sintético)
+
+O lab_flows imprime web -> ledger-db UNAPPROVED; Sam abre o F3.
+
+> **Caso sintético — Riverstone Transit Bank (TRB).** O banco, Sam Ito, TrackScope/FindingsDesk/PulseMap e todos os números são inventados para fins didáticos.
+
+### Erros e limites
+
+Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pagamento reais. Os laboratórios usam apenas endereços de faixas de documentação e dados sintéticos; código de exploit nunca é fornecido.
+
+### Exercícios
+
+- **EX046 — Par não aprovado.** Qual fluxo está UNAPPROVED no laboratório? *Rubrica:* 3 = web→ledger-db; 2 = parcial; 1 = branch-pc→core-api; 0 = nada.
+- **EX047 — Falhar fechado.** Com a política ausente, o TrackScope deve… *Rubrica:* 3 = negar os testes; 2 = parcial; 1 = permitir; 0 = nada.
+- **EX048 — Terceiro.** As ROE do TRB sozinhas podem autorizar o teste de um processador de cartões? *Rubrica:* 3 = não; é preciso a autorização do processador; 2 = não; 1 = sim; 0 = nada.
+
+### Síntese
+
+Arquitetura é zonas, fluxos com dono e padrões que falham fechados.
+
+### Continue estudando — capítulo 16 de 40
+
+[← Capítulo 15 (rascunho)](#ch-15) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 17 (rascunho) →](#ch-17)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX024 (as de EX025–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). O Riverstone Transit Bank, Sam Ito e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX048 (as de EX049–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). O Riverstone Transit Bank, Sam Ito e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** O conjunto dentro do escopo é o conjunto de endereços da VLAN menos o conjunto unitário que contém o gateway SWIFT.
 
@@ -691,6 +1448,54 @@ Respostas-modelo para EX001–EX024 (as de EX025–EX120 estão na edição em i
 **EX023.** Para pegar erros de esquema e de escopo antes que qualquer ticket seja escrito.
 
 **EX024.** Dois analistas sobrescrevendo silenciosamente as atualizações de ticket um do outro.
+
+**EX025.** Privacidade e minimização prevista nas ROE — os achados precisam de prova, não de dados pessoais em massa.
+
+**EX026.** O cronograma de retenção do contrato do engajamento.
+
+**EX027.** Evidências de outros engajamentos e bancos de dados de clientes de produção.
+
+**EX028.** `198.51.100.20 EXCLUDED`
+
+**EX029.** Recusar; o SWIFT continua excluído, salvo uma mudança escrita nas ROE — que testes comuns não vão conceder.
+
+**EX030.** Escopo, exclusões, métodos, janela, contatos de emergência (também tratamento de dados e público).
+
+**EX031.** Ele contorna o caminho controlado e registrado do jump host.
+
+**EX032.** Elas reimplantam agentes desatualizados ou configurações fracas em hosts novos.
+
+**EX033.** Não; o acesso ao hipervisor precisa de escopo explícito.
+
+**EX034.** `95% CI=(0.40, 0.89)`
+
+**EX035.** Um n menor significa mais incerteza e, portanto, um intervalo de confiança mais largo.
+
+**EX036.** "Detectamos sete de dez eventos de teste; a taxa verdadeira poderia razoavelmente estar em qualquer ponto entre cerca de 40% e 90%, então devemos fazer mais tentativas."
+
+**EX037.** T1078 Valid Accounts.
+
+**EX038.** Revisar a configuração e a política sob as ROE.
+
+**EX039.** Nominal, com o menor privilégio para o método, com prazo definido e guardada no cofre.
+
+**EX040.** Isso excede a finalidade e a minimização prevista nas ROE; a prova precisa de amostras, não de dados em massa.
+
+**EX041.** Números de conta (deixando os quatro últimos dígitos, se necessário) e outros identificadores pessoais.
+
+**EX042.** Eles concentram dados sensíveis de prova, atraentes para atacantes e para pessoas de dentro.
+
+**EX043.** Ela recompensa o ruído e pune a validação cuidadosa.
+
+**EX044.** O arquivo não mudou desde que o digest foi registrado.
+
+**EX045.** Quem coletou, descrição, carimbo de tempo e local de armazenamento (também o hash).
+
+**EX046.** `web -> ledger-db UNAPPROVED`
+
+**EX047.** Negar os testes até que a política seja carregada.
+
+**EX048.** Não; o processador precisa autorizar os seus próprios sistemas.
 
 <a id="references"></a>
 ## Referências
