@@ -344,7 +344,7 @@ A classroom ranking is not a full professional report. Real engagements need the
 
 - **EX039 — Authorization one-liner.** Write the authorization sentence Maya puts at the top of the page. *Rubric:* 3 = who authorized, what scope, what methods, what window; 2 = three; 1 = one; 0 = none.
 - **EX040 — Why F2 is last.** Why does the banner finding rank below password reuse? *Rubric:* 3 = lower likelihood×impact; less harm than credential issues; 2 = partial; 1 = banners always first; 0 = none.
-- **EX041 — Lab reorder.** If F4's impact rises to 3, what new order does the lab print? *Rubric:* 3 = F1, F3 and F4 all score 6 and are sorted by id, then F2; 2 = partial; 1 = same; 0 = none.
+- **EX041 — Lab reorder.** If F4's impact rises to 3, what new order does the lab print? *Rubric:* 3 = F4 rises from 4 to 6 (2 × 3), so F1, F3 and F4 all score 6 and are sorted by id, then F2; 2 = partial; 1 = same; 0 = none.
 - **EX042 — Blog request again.** Under time pressure the classmate repeats the blog ask. Maya's answer? *Rubric:* 3 = still refuse; no written authorization; 2 = refuse; 1 = quick scan; 0 = agree.
 - **EX043 — Clinic server note.** Why remove the medical clinic server from the draft? *Rubric:* 3 = out of college scope / authorization; possible separate legal duties; 2 = partial; 1 = keep it; 0 = none.
 - **EX044 — Decision request.** What decision does Maya ask of the IT director? *Rubric:* 3 = approve named grading accounts and portal password-reuse control within 30 days; 2 = partial; 1 = "fix security"; 0 = none.
@@ -449,7 +449,7 @@ Model answers for EX001–EX050. Riverside Civic College, Maya Chen and all figu
 
 **EX040.** Its score is 2 against 6 for credential issues; a version banner alone rarely enables the same harm as reused or shared privileged passwords.
 
-**EX041.** F1 score=6, F3 score=6, F4 score=6, F2 score=2 — with equal scores the lab sorts by finding id, so F1, F3, F4, then F2.
+**EX041.** With F4's impact changed from 2 to 3 (the lab as printed gives F4 score=4), the output becomes F1 score=6, F3 score=6, F4 score=6, F2 score=2 — with equal scores the lab sorts by finding id, so F1, F3, F4, then F2.
 
 **EX042.** Still refuse; pressure does not create permission, and college tools must not touch personal systems.
 
