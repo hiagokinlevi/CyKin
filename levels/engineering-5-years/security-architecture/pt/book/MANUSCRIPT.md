@@ -1828,7 +1828,7 @@ Você vai (1) projetar as operações de segurança para a nova arquitetura; (2)
 
 ### 37.1 Operações desde o projeto
 
-Uma arquitetura só é tão boa quanto sua operação. Sofia trabalha com o centro de operações da Corvia para planejar como o novo back-office será operado com segurança: quem monitora quais alertas, quem pode mudar configurações, como os incidentes são escalados e como os acessos são revisados. Ela usa o NIST CSF 2.0, cujas funções são govern, identify, protect, detect, respond e recover, para verificar se cada função tem responsáveis e procedimentos para o novo sistema. Planejar as operações durante o projeto evita construir sistemas que ninguém consegue monitorar ou manter adequadamente depois que a equipe do projeto sai.
+Uma arquitetura só é tão boa quanto sua operação. Sofia trabalha com o centro de operações da Corvia para planejar como o novo back-office será operado com segurança: quem monitora quais alertas, quem pode mudar configurações, como os incidentes são escalados e como os acessos são revisados. Ela usa o NIST CSF 2.0, cujas funções são governar, identificar, proteger, detectar, responder e recuperar (govern, identify, protect, detect, respond, recover), para verificar se cada função tem responsáveis e procedimentos para o novo sistema. Planejar as operações durante o projeto evita construir sistemas que ninguém consegue monitorar ou manter adequadamente depois que a equipe do projeto sai.
 
 ### 37.2 Detecção a partir das ameaças
 
@@ -1850,7 +1850,7 @@ Os limiares de detecção precisam de ajuste depois do lançamento. Os processos
 
 ### Exercícios
 
-- **EX109 — Funções do CSF.** Liste as seis funções do CSF 2.0. *Rubrica:* 3 = govern, identify, protect, detect, respond, recover;; 2 = cinco;; 1 = três;; 0 = nenhuma.
+- **EX109 — Funções do CSF.** Liste as seis funções do CSF 2.0. *Rubrica:* 3 = governar, identificar, proteger, detectar, responder, recuperar (govern, identify, protect, detect, respond, recover);; 2 = cinco;; 1 = três;; 0 = nenhuma.
 
 - **EX110 — Detecção de exportação por insider.** Como a exportação de dados de viagem por um insider é detectada? *Rubrica:* 3 = alerta sobre volume de exportação incomum ou exportações fora do horário;; 2 = volume ou horário;; 1 = nenhuma;; 0 = nenhuma.
 
@@ -2720,7 +2720,7 @@ Respostas-modelo para EX001–EX150. Sofia Mbeki, Daniel Ferreira, a Kestrel Pol
 
 **EX108.** Um token ou direito revogado pode continuar funcionando até a decisão em cache expirar, por até um minuto.
 
-**EX109.** Govern, identify, protect, detect, respond e recover.
+**EX109.** Governar, identificar, proteger, detectar, responder e recuperar (Govern, Identify, Protect, Detect, Respond, Recover).
 
 **EX110.** Alertando quando as exportações excedem o volume normal ou ocorrem fora do horário de trabalho.
 

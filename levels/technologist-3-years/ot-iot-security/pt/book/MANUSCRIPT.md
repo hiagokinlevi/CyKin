@@ -1533,7 +1533,7 @@ Uma lista de verificação completa não prova qualidade; o percurso conjunto pr
 
 ### Exercícios
 
-- **EX076 — Depois de acrescentar só os contatos.** Se só `"contacts": "sheet v1"` for acrescentado, o que o laboratório imprime? *Rubrica:* 3 = present 6/7, falta restore test date, BLOCKED; 2 = uma linha certa; 1 = ready; 0 = nada.
+- **EX076 — Depois de acrescentar só os contatos.** Se só `"contacts": "sheet v1"` for acrescentado, o que o laboratório imprime? *Rubrica:* 3 = `present 6/7`, falta `restore test date` (data do teste de restauração), `BLOCKED`; 2 = uma linha certa; 1 = ready; 0 = nada.
 - **EX077 — Por que os contatos bloqueiam a passagem.** Explique numa frase. *Rubrica:* 3 = num incidente ninguém sabe para quem ligar; falha no momento crítico; 2 = parcial; 1 = vago; 0 = nada.
 - **EX078 — Desenhando uma tarefa para o percurso.** Escolha uma tarefa que o operador deve executar durante o percurso e justifique. *Rubrica:* 3 = tarefa específica, frequente ou crítica (aprovar a sessão do prestador/verificar um alerta); 2 = só a tarefa; 1 = ler o documento; 0 = nada.
 

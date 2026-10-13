@@ -332,7 +332,7 @@ Tomás lista onde os fatos criptográficos podem ser observados. As configuraç�
 
 ### 7.2 Expiração a partir do inventário
 
-Certificados expirados causam a maioria das indisponibilidades que Priya já viu. Ela pede que Tomás calcule os dias restantes de cada certificado do inventário e os ordene por urgência. Ele escreve um script curto que lê um CSV sintético, compara cada data notAfter com uma data de revisão fixa e rotula cada linha como renew now, plan ou fine. Usar uma data de revisão fixa no laboratório mantém a saída reproduzível; em produção, o script usaria a data atual. O laboratório abaixo mostra o resultado para cinco certificados sintéticos, incluindo um que já expirou.
+Certificados expirados causam a maioria das indisponibilidades que Priya já viu. Ela pede que Tomás calcule os dias restantes de cada certificado do inventário e os ordene por urgência. Ele escreve um script curto que lê um CSV sintético, compara cada data notAfter com uma data de revisão fixa e rotula cada linha como `renew now` (renovar já), `plan` (planejar) ou `fine` (em dia). Usar uma data de revisão fixa no laboratório mantém a saída reproduzível; em produção, o script usaria a data atual. O laboratório abaixo mostra o resultado para cinco certificados sintéticos, incluindo um que já expirou.
 
 ### Laboratório — Relatório de expiração de certificados
 

@@ -3965,7 +3965,7 @@ Cada resolução mostra uma resposta defensável. Os resultados numéricos foram
 
 ### Capítulo 38
 
-**EX075.** Com o T3b aprovado para R3, o T8 aprovado para R4 e o T6 aprovado para R8: untested ['R9'], tested but not passing [], verified 8/9 (88.9%). R9 permanece não verificado até que um teste do alarme de dosagem independente (por exemplo, parar a dosagem na bancada e cronometrar o alarme no registrador separado contra 15 min) seja escrito e aprovado. A verificação está completa para os outros oito requisitos; a validação de N1 ainda precisa das atividades com as partes interessadas do EX076.
+**EX075.** Com o T3b aprovado para R3, o T8 aprovado para R4 e o T6 aprovado para R8: `untested ['R9'], tested but not passing [], verified 8/9 (88.9%)`. R9 permanece não verificado até que um teste do alarme de dosagem independente (por exemplo, parar a dosagem na bancada e cronometrar o alarme no registrador separado contra 15 min) seja escrito e aprovado. A verificação está completa para os outros oito requisitos; a validação de N1 ainda precisa das atividades com as partes interessadas do EX076.
 
 **EX076.** (1) Exercício noturno: a equipe de operações passa a PS3 e a PS4 para o manual local com o efetivo noturno real; observar o tempo e os erros; sucesso: operação manual em até 1 h e pressão de abastecimento mantida. (2) Isolamento planejado da PS4 em período de baixa demanda, com o gerente de instalações do hospital monitorando o armazenamento e a pressão no local; sucesso: abastecimento mantido pelo reservatório, com o armazenamento nunca abaixo do nível que dá 4 h de reserva. Partes interessadas: gerente de operações, instalações do hospital, engenharia do TMRP.
 
