@@ -277,7 +277,7 @@ Aiko lists the rules the system must keep: the total of all balances equals toke
 
 ### 6.3 Who can change what
 
-Aiko records roles: borrowers can transfer their own tokens; the deposit service can request locks and releases; the staff multisig can issue tokens and approve releases above a threshold; an administrator role behind a 48-hour timelock can change roles; and two staff can pause. The OWASP Smart Contract Top 10 lists access control failures among the most common weaknesses. Knowing exactly who can change what tells a technician which ledger events need the closest watching, especially role changes and pauses.
+Aiko records roles: borrowers can transfer their own tokens; the deposit service can request locks and releases; the staff multisig can issue tokens and approve releases above a threshold; an administrator role behind a 48-hour timelock can change roles; and two staff can pause. The OWASP Smart Contract Top 10 lists access control failures among the most common weaknesses. Knowing exactly who can change what tells a technician which ledger events need the closest watching, especially role changes and pauses. A written role table also gives reviewers something concrete to compare against the deployed configuration.
 
 ### Worked example
 
@@ -833,7 +833,7 @@ hour 12: 41 transfers above limit
 
 ### 17.2 Reading the result
 
-The baseline mean is 13.5 transfers per hour with a standard deviation of 1.58, giving a limit of 18.2. Hours 9, 10, 11, 13 and 14 are within normal range, but hour 12 shows 41 transfers, far above the limit. Aiko does not assume misuse. She checks the deposit service logs and finds that at noon a community repair event returned 27 tools at once, each releasing a deposit. The spike is real but legitimate. She records the alert, the explanation and the evidence in the monitoring log.
+The baseline mean is 13.5 transfers per hour with a standard deviation of 1.58, giving a limit of 18.2. Hours 9, 10, 11, 13 and 14 are within normal range, but hour 12 shows 41 transfers, far above the limit. Aiko does not assume misuse. She checks the deposit service logs and finds that at noon a community repair event returned 27 tools at once, each releasing a deposit. The spike is real but legitimate. She records the alert, the explanation and the evidence in the monitoring log. Writing the explanation down lets the next technician recognise a similar event quickly instead of escalating it from scratch.
 
 ### 17.3 Improving the alert
 
