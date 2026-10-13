@@ -604,13 +604,13 @@ A revisão interna do MAAL sobre o rascunho de Ana levantou três problemas maio
 
 ### 6.7 Erros e limites
 
-Cada um dos erros listados abaixo desperdiça a revisão. Listas de erros de digitação e elogios não dão aos autores nada sobre o que agir. Experimentos que não mudariam a decisão custam meses. Cartas defensivas deixam o problema no lugar e fazem perder a confiança do revisor. Limitações escondidas em apêndices enganam os leitores do resumo, e é por isso que Ana trouxe as suas para a frente. Retrabalhar a análise para chegar à significância é uma forma de má conduta, seja qual for a descrição que se dê a isso.
+Cada um destes erros desperdiça a revisão:
 
-- Revisões que só listam erros de digitação ou só elogiam.
-- Pedidos de experimentos que não mudariam a decisão.
-- Cartas de resposta defensivas que não mudam nada.
-- Deixar as limitações apenas nos apêndices.
-- Revisar a análise para fazer um efeito fraco parecer significativo.
+- Revisões que só listam erros de digitação ou só elogiam, o que não dá aos autores nada sobre o que agir.
+- Pedidos de experimentos que não mudariam a decisão, que custam meses.
+- Cartas de resposta defensivas que não mudam nada; elas deixam o problema no lugar e fazem perder a confiança do revisor.
+- Deixar as limitações apenas nos apêndices, o que engana os leitores do resumo; é por isso que Ana trouxe as suas para a frente.
+- Revisar a análise para fazer um efeito fraco parecer significativo; retrabalhar a análise para chegar à significância é uma forma de má conduta, seja qual for a descrição que se dê a isso.
 
 ### Exercícios
 
@@ -704,13 +704,15 @@ baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
 
 ### 7.7 Erros e limites
 
-Cada um dos erros listados abaixo enfraquece o arquivo ou o argumento. Métricas inconsistentes tornam os capítulos impossíveis de comparar. Uma limitação sem ação deixa o leitor sem saber se ela foi tratada. Arquivos que dependem da máquina do autor ou de uma API sem versão fixa falham para os outros, como mostrou o problema do tokenizador de Ana. Publicações que violam licenças ou a privacidade podem forçar a retirada. A reprodutibilidade só fica demonstrada quando outra pessoa reexecuta o trabalho. Uma execução por um colega de laboratório numa máquina nova, como a de 7.5, é a verificação mais barata contra vários desses erros ao mesmo tempo.
+Cada um destes erros enfraquece o arquivo ou o argumento:
 
-- Teses cujos capítulos usam métricas ou modelos de ameaça inconsistentes.
-- Limitações listadas sem a ação tomada.
-- Arquivos que exigem o diretório pessoal do autor ou uma API sem versão fixa.
-- Publicar pesos ou dados em violação de licenças ou da privacidade.
-- Alegar reprodutibilidade sem uma execução por terceiros.
+- Teses cujos capítulos usam métricas ou modelos de ameaça inconsistentes, o que torna os capítulos impossíveis de comparar.
+- Limitações listadas sem a ação tomada, o que deixa o leitor sem saber se foram tratadas.
+- Arquivos que exigem o diretório pessoal do autor ou uma API sem versão fixa; eles falham para os outros, como mostrou o problema do tokenizador de Ana.
+- Publicar pesos ou dados em violação de licenças ou da privacidade, o que pode forçar a retirada.
+- Alegar reprodutibilidade sem uma execução por terceiros; a reprodutibilidade só fica demonstrada quando outra pessoa reexecuta o trabalho.
+
+Uma execução por um colega de laboratório numa máquina nova, como a de 7.5, é a verificação mais barata contra vários desses erros ao mesmo tempo.
 
 ### Exercícios
 
@@ -764,13 +766,13 @@ A defesa simulada de Ana durou 45 minutos. Um membro da banca perguntou: "O seu 
 
 ### 8.7 Erros e limites
 
-Cada um dos erros listados abaixo enfraquece a defesa ou a publicação. Uma apresentação dedicada quase toda ao contexto não deixa tempo para examinar as evidências. O risco residual no fim pode ser pulado quando o tempo acaba, e é por isso que Ana mostrou o dela junto com os resultados. Uma submissão antecipada sobre um produto em produção pode violar um acordo de divulgação. Um impacto exagerado sobre normas é fácil de refutar. Os trabalhos futuros devem ser perguntas, como as de Ana sobre ataques por encadeamento de ferramentas e limites de impacto.
+Cada um destes erros enfraquece a defesa ou a publicação:
 
-- Gastar a maior parte da apresentação com o contexto.
-- Esconder o risco residual no fim.
-- Submeter uma constatação sobre um produto em produção antes de a divulgação ser combinada.
-- Exagerar o impacto em normas ou na regulação.
-- Deixar os trabalhos futuros como "mais experimentos", sem perguntas.
+- Gastar a maior parte da apresentação com o contexto, o que não deixa tempo para examinar as evidências.
+- Esconder o risco residual no fim, onde pode ser pulado quando o tempo acaba; é por isso que Ana mostrou o dela junto com os resultados.
+- Submeter uma constatação sobre um produto em produção antes de a divulgação ser combinada, o que pode violar um acordo de divulgação.
+- Exagerar o impacto em normas ou na regulação, o que é fácil de refutar.
+- Deixar os trabalhos futuros como "mais experimentos", sem perguntas; os trabalhos futuros devem ser perguntas, como as de Ana sobre ataques por encadeamento de ferramentas e limites de impacto.
 
 ### Exercícios
 
