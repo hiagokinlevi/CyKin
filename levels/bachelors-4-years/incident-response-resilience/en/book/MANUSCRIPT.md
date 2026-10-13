@@ -473,6 +473,8 @@ An **asset** is anything of value to the organization: data, a service, a device
 
 "Suspicious sign-in" is not a risk statement. "A possibly stolen credential for an account that can modify the medication schedule of a clinic" is closer: it names an asset, a threat and an impact path. Priority in triage follows from impact and likelihood given current evidence, not from the alert's name.
 
+The pharm-admin account illustrates the point: the alert text is identical to the one on test-kiosk-3, yet the medication schedule it can change makes the potential harm far greater. Write the objective that would be damaged, such as patient safety or service availability, beside the asset; a reader who disagrees with your priority can then argue with a stated objective instead of with your instinct.
+
 ### 5.3 Authorized action
 
 A responder acts on behalf of an organization within a defined **scope**: which systems, which data, which actions. Authorization comes from policy and from named people (system owners, incident lead, legal or privacy officers). Investigating outside scope — reading an employee's personal mailbox without approval, scanning a third party's network, "hacking back" — can be unlawful and can destroy the legitimacy of the whole response. When in doubt, the correct action is to stop and escalate, recording the question and the answer.
@@ -489,12 +491,18 @@ Analysis: likelihood of misuse given the alert is similar for both — the same 
 
 Pick three systems you use and, for each, write one sentence of the form "If [threat] exploits [vulnerability] in [asset], then [impact on objective]; current controls are [...]".
 
+For each sentence, add one detective control you would expect to notice the threat, and state whether you know it exists or are assuming it. Then rank the three by impact and write one line explaining the order. Swap with a classmate: if they rank differently, find which assumption you disagree about. Keep the systems generic, such as a student email account, and do not test any control on a real service; the exercise is about stating risk, not probing for it.
+
 ### 5.6 Common errors and limits
 
 - Prioritizing by alert name or tool severity rather than by asset impact.
 - Confusing vulnerability (weakness) with threat (actor or event).
 - Treating residual risk as zero after a control is deployed.
 - Assuming authority because you have technical access. Technical capability is not permission.
+
+- Writing risk statements without an objective, so nobody can tell why the asset matters.
+- Copying the priority of an earlier alert with the same name, as if test-kiosk-3 and pharm-admin carried equal stakes.
+- Leaving assumptions unstated, which prevents a reviewer from seeing what would raise or lower the priority.
 
 ### Exercises — chapter 5
 
@@ -534,13 +542,19 @@ A **relation** on sets pairs elements: "user *u* is a member of group *g*", "gro
 
 The standard way to compute reachability is **breadth-first search** (BFS): start at the compromised vertex, visit its neighbours, then their neighbours, keeping a set of visited vertices so no vertex is processed twice. BFS also returns the shortest path to each vertex, which is useful for explaining *why* something is reachable.
 
+In Lab 06 the parent dictionary records how each vertex was first reached, and the `path` function walks it backwards. That is why the output can explain that db-billing is reachable through nurse-12-admin, grp-helpdesk, srv-jump-01 and svc-backup, a route an analyst could check edge by edge. Depth-first search would find the same reachable set but not necessarily the shortest explanation.
+
 ### 6.3 Invariants
 
 An **invariant** is a property that must hold in every state of a process. For revocation: "after step *k*, no vertex in the compromised set has a path to any production database except through an edge that is currently disabled". Stating the invariant tells you what to check after each change and catches the classic failure — removing the obvious edge while an indirect path remains.
 
+Write the invariant before the first change, not after. In the nurse-12 case it is checked after each step, and Lab 06 shows it failing after step 1 and holding only after step 2.
+
 ### 6.4 State transitions
 
 Containment is a sequence of state changes: disable account, rotate credential, remove group membership. Model each as a transition from graph *G*ᵢ to *G*ᵢ₊₁. Order matters: rotating a service-account secret before removing the attacker's ability to read the new secret is wasted work. A small state diagram (states and allowed transitions) also clarifies which steps are reversible.
+
+In Lab 06 the graph after step 1 still allows a route to db-billing; only the state after step 2 contains the account. Recording each state with a timestamp gives the incident log a precise account of when containment actually held, which matters if later activity must be judged as before or after it.
 
 ### 6.5 Worked example and lab (synthetic): access graph
 
@@ -609,6 +623,10 @@ Interpretation: the obvious containment step (removing ward-staff membership) le
 - Assuming the graph is complete; unknown edges (cached credentials, shared passwords) are the dangerous ones.
 - Cutting edges that break critical services without checking dependants (Chapter 24).
 
+- Treating a successful BFS run as proof of safety, when the result covers only the edges that were exported.
+- Removing an edge in the model without confirming the change in the real directory, so the graph and the system disagree.
+- Recording the final state but not the order of steps, which hides when containment actually held.
+
 ### Exercises — chapter 6
 
 Attempt each exercise before opening the [worked results](#worked-results). Every case, organization, person, address and number in an exercise is synthetic unless a cited public source is named.
@@ -643,21 +661,31 @@ You will be able to (1) place an observation at the correct network layer; (2) r
 
 The layered model separates concerns: link (local delivery), network (IP addressing and routing), transport (TCP, UDP — ports and reliability), and application (DNS, HTTP, TLS-protected protocols). An observation belongs to a layer and proves things only at that layer. A TCP connection from host A to address X on port 443 shows that A exchanged packets with X; it does not show which website, which user, or what data.
 
+Layering also tells you which team holds the evidence: link and network data often sit with infrastructure staff, application logs with the system owner. Ask the right owner for the right layer.
+
 ### 7.2 DNS
 
 The Domain Name System (RFC 1034/1035) maps names to records. A **query log** shows that a resolver was asked for a name; it does not show that a connection followed. Answers can be cached at several levels, so a host may connect to an address without a fresh query. Time-to-live (TTL) values explain such gaps. Many names can point to one address (shared hosting, content-delivery networks), so an address alone rarely identifies a site.
+
+In the portal example, the DNS log at 02:14:05 shows that the portal asked for cdn-sync.example. The flow one second later is consistent with a connection to the answer, but only the flow record shows that traffic actually moved.
 
 ### 7.3 Transport
 
 TCP connections begin with a handshake (SYN, SYN-ACK, ACK). A SYN without a reply means an attempt, not a connection. Ports are conventions: 443 usually carries TLS, but any service can listen anywhere. UDP has no handshake; a single datagram is not a conversation.
 
+In the portal example the flow shows outbound and inbound bytes over several minutes, which implies a completed handshake and a working conversation. A flow showing only a few small packets outbound and none back would describe an attempt, not a transfer, and would support a much weaker claim. Check the packet counts in both directions before using the word "connection" in a report.
+
 ### 7.4 TLS
 
 TLS (version 1.3 is specified in RFC 8446) encrypts application data. Observers can still see the endpoints, timing, sizes and, in many deployments, the **Server Name Indication** (SNI) — the hostname the client requested — unless Encrypted Client Hello is used. Certificates identify a server name to the client; a certificate seen in a trace shows which name the server claimed, which is useful but not proof of what content was exchanged.
 
+In the portal example, the SNI in the sampled capture matches the name the DNS log recorded, so two sources agree on the requested hostname, though they do not show what was sent.
+
 ### 7.5 Flow records versus packet capture
 
 **Flow records** (for example NetFlow/IPFIX) summarize conversations: endpoints, ports, start, duration, byte and packet counts. They are cheap to keep for long periods but contain no payload. **Packet capture** (pcap) contains packets, possibly payloads, and is expensive and privacy-sensitive. Flows answer "did A talk to X, when and how much?"; pcap can answer "what was said?" if it is unencrypted. Both are subject to sampling and sensor placement: a sensor sees only the traffic that passes it.
+
+In the portal case the flow gives the 18.4 MB figure.  The flow tells you that volume and its timing; only payload, which this capture does not hold beyond a short encrypted sample, could tell you what the bytes contained, and that is why the content question stays open.
 
 ### 7.6 Worked example (synthetic): did the portal talk to the suspicious host?
 
@@ -675,12 +703,18 @@ What is supported: a TCP session existed from the portal to that address for abo
 
 On your own computer, use your operating system's DNS cache or a command like `nslookup` against a public name to observe a query and its TTL. Record what the output proves and does not prove. Do not capture traffic on networks you do not own or administer.
 
+Run the same lookup twice a minute apart and note whether the TTL decreased, which shows a cached answer. Write two sentences: one stating what the output shows, and one listing what it cannot show, such as whether any connection followed. Compare results with a classmate using a different resolver; differing answers for the same name are normal for content-delivery networks and are a useful reminder that an address alone rarely names a site.
+
 ### 7.8 Common errors and limits
 
 - Treating a DNS query as proof of a connection, or an address as proof of a site.
 - Treating port 443 as proof of HTTPS, or encryption as proof of legitimacy.
 - Reading byte counts as data content.
 - Forgetting sensor placement and sampling: absence in a flow log may mean "not seen", not "did not happen".
+
+- Reading an absence of SNI as proof of malice; many clients and protocols omit it legitimately.
+- Comparing timestamps from DNS and flow sensors without checking that their clocks agree.
+- Reporting a sampled capture as if it covered the whole session; sixty seconds is a fragment, not the conversation.
 
 ### Exercises — chapter 7
 
@@ -716,21 +750,31 @@ You will be able to (1) use lists, dictionaries and sets to group records; (2) p
 
 A **list** keeps order; a **dictionary** maps keys to values; a **set** holds unique items. For alerts, a dictionary keyed by a deduplication key groups duplicates; a set of entity names answers "which hosts appear?". Choose the structure that makes the question easy.
 
+In Lab 08 the `groups` dictionary maps each deduplication key to a list of line numbers, so a group keeps every member. A set would answer "which hosts appear" but would lose how often and when, so choose it only when counts do not matter. Mixing the two carelessly is a common source of quietly wrong totals.
+
 ### 8.2 Parsing and exceptions
 
 `json.loads` turns text into Python objects or raises `json.JSONDecodeError`. Malformed input is normal in incident work — truncated exports, mixed encodings. Catch the specific exception, record the line number and the raw text, and continue. Never use a bare `except:` that hides programming errors.
+
+Lab 08 shows the pattern: line 6 lacks a closing brace, `json.loads` raises, and the loop records the line number with the error message before moving on. The final output therefore reports five parsed records and one malformed, rather than five records and silence. A rising count of malformed lines is itself a signal worth watching.
 
 ### 8.3 Normalization with provenance
 
 **Normalization** converts different representations to one: host names to lower case, timestamps to UTC ISO 8601. Each normalized value should be traceable to its raw source. A simple design keeps three things per record: the raw text, the parsed/normalized fields, and a list of notes describing every transformation (for example "timestamp had no offset; assumed UTC per source documentation"). That list is the record's **provenance**.
 
+In Lab 08 line 4 has no offset, so the program assumes UTC and writes that assumption into the record's notes. If the sensor actually logged local time at UTC−3, the event shifts three hours.
+
 ### 8.4 Deduplication
 
 Two alerts are duplicates only under a stated rule: same rule ID, same entity, same event time within a tolerance. Deduplicate into groups, keeping all raw members, rather than deleting. Counting groups and members separately lets a reviewer check the rule.
 
+Lab 08 shows why the rule must be stated: lines 1 to 3 describe one event within two seconds, yet the fixed five-second buckets split them into two groups. Because members are kept rather than deleted, the error is visible in the output and can be corrected. A deleted duplicate cannot be recovered to test a better rule later.
+
 ### 8.5 Modularity and testing
 
 Split code into `parse_line`, `normalize`, `dedup_key` and `report`. Each can be tested with small inputs. Modularity also helps review: a colleague can check the timestamp logic without reading the reporting code.
+
+In Lab 08 the timestamp logic lives in `parse_ts`, so a reviewer can test it with a single string such as an offset of minus three hours without building a full alert. Keep each function small enough that its tests fit on a screen; when a function needs many tests to cover its branches, it is usually doing two jobs.  Name functions after what they return, not how they work.
 
 ### 8.6 Worked example and lab (synthetic): alert bundle
 
@@ -813,6 +857,10 @@ Interpretation: lines 1–3 describe the same event within two seconds (09:00:04
 - Assuming naive timestamps are local time or UTC without documentation.
 - Catching all exceptions and losing the error message.
 
+- Normalizing host names without recording the change, so a reviewer cannot tell that WS-014 and ws-014 were merged.
+- Treating the five-second tolerance as fact rather than a choice that must be justified for the sensor.
+- Testing parsing on clean lines only, so the first truncated export breaks the pipeline during an incident.  Each of these errors is cheap to prevent early and expensive to discover after a report has gone out.
+
 ### Exercises — chapter 8
 
 Attempt each exercise before opening the [worked results](#worked-results). Every case, organization, person, address and number in an exercise is synthetic unless a cited public source is named.
@@ -847,17 +895,25 @@ You will be able to (1) read a relational schema and identify keys; (2) explain 
 
 A **schema** defines tables, columns and types. A **primary key** uniquely identifies a row; a **foreign key** refers to a row in another table. In incident data, keys are often inconsistent: one system calls a case `HC-0101`, another `101`, a third uses an internal number. Before joining, write down how identifiers map, and whether the mapping is one-to-one.
 
+Lab 09 shows the cost of skipping that step: events reference cases as HC-0101, 101 and 10, and only half match by exact key. Writing the mapping first would have exposed that 10 fits two cases before any total was computed.
+
 ### 9.2 Transactions
 
 A **transaction** groups changes so that they all apply or none does (atomicity) and leaves the database consistent. Databases record committed changes in a write-ahead or transaction log. For responders this matters twice: the log can show *what changed when*, and a restore must land at a transaction boundary, not in the middle of a business operation (for example, an appointment created without its patient link).
+
+A business operation that spans two transactions can still leave an inconsistent state if it fails between them, so ask how the application groups its writes, not only how the database works.
 
 ### 9.3 Backups and integrity
 
 A **backup** is a copy at a point in time; a **point-in-time recovery** combines a base backup with replayed logs. Integrity checks before restoring include: row counts per table compared with expectations, referential checks (every foreign key resolves), checksums where the platform supports them, and business checks (no appointments in the past created after the incident started). A backup taken after an attacker's change faithfully preserves that change.
 
+Run integrity checks on a copy of the backup, not the production database, so a failed check costs nothing. Record each check's result with the backup's timestamp; if the restored system later shows problems, that record shows what was verified and what was assumed.
+
 ### 9.4 Query bias
 
 A query embodies decisions. `WHERE status = 'closed'` excludes open cases; an inner join drops rows with no match, silently; `GROUP BY` on a free-text field splits "Phishing" and "phishing". When a number comes from a query, the query is part of the method and must be reported.
+
+In Lab 09 the inner join reports four events, and a reader would not know that four more existed unless the query and the total were shown together. Report the population, the filter and the count excluded by each step, so a reviewer can see what the number leaves out.
 
 ### 9.5 Worked example and lab (synthetic): joining cases and events
 
@@ -916,6 +972,10 @@ What to do with the result: keep the exact-key join as the conservative view, pr
 - Fuzzy matching without labelling matches as proposed.
 - Restoring a backup without checking whether it already contains the attacker's changes.
 - Forgetting that a database's own logs may have limited retention; check before relying on them.
+
+- Matching identifiers by suffix and folding the results into totals without human confirmation.
+- Counting cases with no matching events as cases with no events; HC-0103 may have events under another identifier.
+- Running exploratory queries on the production database during an incident instead of on a copy.
 
 ### Exercises — chapter 9
 
