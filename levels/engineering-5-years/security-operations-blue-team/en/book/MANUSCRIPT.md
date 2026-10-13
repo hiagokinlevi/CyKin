@@ -2863,7 +2863,7 @@ Amara publishes the monthly cost per source so owners see what their logs cost. 
 
 ### Worked example
 
-Amara's plan keeps portal, Windows and DNS events hot for 30 days and moves firewall events to the lake after 7 days with hourly summaries kept hot. Hot storage falls to about 10 TB. Before applying, she checks that no detection uses raw firewall events older than 7 days.
+At this volume the earlier tiering, 90 days in the SIEM with firewall and DNS moving to the lake after 14 days, no longer fits, so Amara tightens it: her plan keeps portal, Windows and DNS events hot for 30 days and moves firewall events to the lake after 7 days with hourly summaries kept hot. Hot storage falls to about 10 TB. Before applying, she checks that no detection uses raw firewall events older than 7 days.
 
 > **Synthetic case.** Rates and sizes come from the lab script.
 
