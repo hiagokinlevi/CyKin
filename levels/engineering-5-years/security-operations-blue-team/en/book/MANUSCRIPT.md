@@ -49,13 +49,29 @@ You will (1) model an alert queue with rates of change; (2) read a derivative as
 
 Security operations handle flows: alerts arrive, analysts clear them, and the backlog is what is left. Calculus is the language of change. If A(t) is the arrival rate and C(t) the clearing rate, the backlog B(t) changes as dB/dt = A(t) − C(t). When arrivals exceed capacity, the backlog rises; when capacity exceeds arrivals, it falls.
 
+Section one point one develops calculus with a Lindqvist Freight note Amara can demo offline.
+
+Under section one point one, Paolo Ricci expects calculus claims to carry owners and dates.
+
 ### 1.2 The course case
 
 **Amara Osei**, an engineering student at the fictional **Kingsbridge Engineering University**, joins the security operations centre of the fictional **Lindqvist Freight** on placement. Her mentor is detection engineer **Paolo Ricci**. On her first day the customer portal suffers a burst of failed logins, and the alert queue grows faster than the two analysts on shift can clear it.
 
+Section one point two develops calculus with a Lindqvist Freight note Amara can demo offline.
+
+Under section one point two, Paolo Ricci expects calculus claims to carry owners and dates.
+
 ### 1.3 From continuous to discrete
 
 Real data comes in hourly counts, not smooth curves. The derivative becomes a difference: backlog change per hour equals arrivals that hour minus alerts handled. The integral — total backlog — becomes a running sum.
+
+Section one point three develops calculus with a Lindqvist Freight note Amara can demo offline.
+
+Under section one point three, Paolo Ricci expects calculus claims to carry owners and dates.
+
+Section one point three treats calculus as testable only when evidence and ticket IDs are recorded.
+
+For section one point three, Lindqvist Freight will not accept calculus work without a written trail.
 
 ### Lab — queue as a rate
 
@@ -92,9 +108,23 @@ peak backlog 65 | backlog at 16:00 20
 
 With a capacity of 60 alerts per hour, the backlog stays at zero until 10:00, then grows at +10, +30 and +25 per hour, peaking at 65 alerts by 13:00. It only begins to fall at 14:00 and is still 20 at 16:00. The peak follows the area between the arrival curve and the capacity line, not the single worst hour.
 
+Section one point four develops calculus with a Lindqvist Freight note Amara can demo offline.
+
+Under section one point four, Paolo Ricci expects calculus claims to carry owners and dates.
+
+Section one point four treats calculus as testable only when evidence and ticket IDs are recorded.
+
 ### 1.5 Engineering meaning
 
 Adding one analyst at 10:00 would raise capacity above the peak arrival rate and keep the backlog near zero. Rates, not daily totals, tell you when help is needed.
+
+Section one point five develops calculus with a Lindqvist Freight note Amara can demo offline.
+
+Under section one point five, Paolo Ricci expects calculus claims to carry owners and dates.
+
+Section one point five treats calculus as testable only when evidence and ticket IDs are recorded.
+
+For section one point five, Lindqvist Freight will not accept calculus work without a written trail.
 
 ### Worked example
 
@@ -132,25 +162,65 @@ You will (1) use sets and relations to describe users, hosts and alerts; (2) app
 
 A detection often asks set questions. Which users failed to log in from network N? Which of them later succeeded? If F is the set of usernames with failures and S the set with successes from the same network, F ∩ S are accounts that may have been guessed correctly.
 
+Section two point one develops discrete mathematics with a Lindqvist Freight note Amara can demo offline.
+
+Under section two point one, Paolo Ricci expects discrete claims to carry owners and dates.
+
+Section two point one treats discrete mathematics as testable only when evidence and ticket IDs are recorded.
+
 ### 2.2 Logic
 
 Rule conditions are logical formulas. "Process is PowerShell AND parent is an Office application" is a conjunction; adding OR widens a rule; adding NOT narrows it. Writing conditions in logic makes their scope explicit and testable, which is how the Sigma format expresses detection logic.
+
+Section two point two develops discrete mathematics with a Lindqvist Freight note Amara can demo offline.
+
+Under section two point two, Paolo Ricci expects discrete claims to carry owners and dates.
+
+Section two point two treats discrete mathematics as testable only when evidence and ticket IDs are recorded.
 
 ### 2.3 Relations and graphs
 
 A logon from user u to host h is a pair (u, h). Together the pairs form a bipartite graph. An account that suddenly connects to many new hosts shows as a node whose degree jumps.
 
+Section two point three develops discrete mathematics with a Lindqvist Freight note Amara can demo offline.
+
+Under section two point three, Paolo Ricci expects discrete claims to carry owners and dates.
+
+Section two point three treats discrete mathematics as testable only when evidence and ticket IDs are recorded.
+
 ### 2.4 Counting
 
 Correlation rules combine events. With 7 event types, a rule over any 3 types in order has 7 × 6 × 5 = 210 possibilities. Counting shows why exhaustive correlation explodes and why rules must be chosen from threat knowledge, such as MITRE ATT&CK techniques.
+
+Section two point four develops discrete mathematics with a Lindqvist Freight note Amara can demo offline.
+
+Under section two point four, Paolo Ricci expects discrete claims to carry owners and dates.
+
+Section two point four treats discrete mathematics as testable only when evidence and ticket IDs are recorded.
 
 ### 2.5 Case use
 
 During the portal burst, Amara lists F (usernames with failures from 203.0.113.0/24) and S (usernames with success from the same network). One name, u5, is in both: a candidate compromised customer account.
 
+Section two point five develops discrete mathematics with a Lindqvist Freight note Amara can demo offline.
+
+Under section two point five, Paolo Ricci expects discrete claims to carry owners and dates.
+
+Section two point five treats discrete mathematics as testable only when evidence and ticket IDs are recorded.
+
+For section two point five, Lindqvist Freight will not accept discrete work without a written trail.
+
 ### 2.6 Precision of language
 
 Discrete maths forces exact language: "many" becomes "more than 5 distinct usernames in 10 minutes". That precision makes rules reviewable.
+
+Section two point six develops discrete mathematics with a Lindqvist Freight note Amara can demo offline.
+
+Under section two point six, Paolo Ricci expects discrete claims to carry owners and dates.
+
+Section two point six treats discrete mathematics as testable only when evidence and ticket IDs are recorded.
+
+For section two point six, Lindqvist Freight will not accept discrete work without a written trail.
 
 ### Worked example
 
@@ -188,25 +258,67 @@ You will (1) relate physical limits to sensor and storage design; (2) reason abo
 
 Physics describes measurements as signal plus noise. Telemetry is similar: real attack activity is the signal, normal activity is the noise. A sensor that samples too rarely misses short signals, just as a slow oscilloscope misses fast pulses.
 
+Section three point one develops physics for computing with a Lindqvist Freight note Amara can demo offline.
+
+Under section three point one, Paolo Ricci expects physics claims to carry owners and dates.
+
+Section three point one treats physics for computing as testable only when evidence and ticket IDs are recorded.
+
 ### 3.2 Sampling
 
 If a network sensor exports flow summaries every 5 minutes, a 20-second burst appears smeared into one record. Faster sampling resolves bursts but multiplies data volume. Engineering chooses a rate that resolves the signals of interest at acceptable cost.
+
+Section three point two develops physics for computing with a Lindqvist Freight note Amara can demo offline.
+
+Under section three point two, Paolo Ricci expects physics claims to carry owners and dates.
+
+Section three point two treats physics for computing as testable only when evidence and ticket IDs are recorded.
 
 ### 3.3 Energy and heat
 
 A SIEM cluster draws electrical power and turns it into heat. Doubling ingestion may need more servers, more cooling and more rack space. Physical capacity limits how much telemetry a SOC can keep.
 
+Section three point three develops physics for computing with a Lindqvist Freight note Amara can demo offline.
+
+Under section three point three, Paolo Ricci expects physics claims to carry owners and dates.
+
+Section three point three treats physics for computing as testable only when evidence and ticket IDs are recorded.
+
 ### 3.4 Physical failures
 
 Disks wear out, power supplies fail, fibres get cut. Monitoring infrastructure needs redundancy; a single failed collector can silence a whole site's logs.
+
+Section three point four develops physics for computing with a Lindqvist Freight note Amara can demo offline.
+
+Under section three point four, Paolo Ricci expects physics claims to carry owners and dates.
+
+Section three point four treats physics for computing as testable only when evidence and ticket IDs are recorded.
+
+For section three point four, Lindqvist Freight will not accept physics work without a written trail.
 
 ### 3.5 Time and clocks
 
 Clocks drift because oscillators are physical devices. NTP keeps them close, but drift of seconds can reorder events across hosts. NIST SP 800-92 stresses time synchronisation in log management.
 
+Section three point five develops physics for computing with a Lindqvist Freight note Amara can demo offline.
+
+Under section three point five, Paolo Ricci expects physics claims to carry owners and dates.
+
+Section three point five treats physics for computing as testable only when evidence and ticket IDs are recorded.
+
+For section three point five, Lindqvist Freight will not accept physics work without a written trail.
+
 ### 3.6 Case link
 
 The Lindqvist portal logs come from three web servers. One server's clock is 4 seconds fast, so failures logged there appear slightly later than they happened.
+
+Section three point six develops physics for computing with a Lindqvist Freight note Amara can demo offline.
+
+Under section three point six, Paolo Ricci expects physics claims to carry owners and dates.
+
+Section three point six treats physics for computing as testable only when evidence and ticket IDs are recorded.
+
+For section three point six, Lindqvist Freight will not accept physics work without a written trail.
 
 ### Electromagnetic and physical security
 
@@ -248,25 +360,71 @@ You will (1) write small programs that read and summarise log records; (2) use v
 
 A program is a procedure a computer follows exactly. In a SOC, small programs count, filter and summarise records faster and more consistently than people. Because they are exact, mistakes in them are repeated exactly too, so they must be tested.
 
+Section four point one develops programming with a Lindqvist Freight note Amara can demo offline.
+
+Under section four point one, Paolo Ricci expects programming claims to carry owners and dates.
+
+Section four point one treats programming as testable only when evidence and ticket IDs are recorded.
+
 ### 4.2 Core constructs
 
 Variables hold values such as a count. Loops visit every record. Conditions choose what to count. Functions package a step, such as "extract the /24 network from an address", so it can be reused and tested alone.
+
+Section four point two develops programming with a Lindqvist Freight note Amara can demo offline.
+
+Under section four point two, Paolo Ricci expects programming claims to carry owners and dates.
+
+Section four point two treats programming as testable only when evidence and ticket IDs are recorded.
 
 ### 4.3 Reading records
 
 Logs arrive as lines of text or structured records. A program splits each line into fields, converts types (text to numbers or times) and handles malformed lines without crashing, recording how many were skipped.
 
+Section four point three develops programming with a Lindqvist Freight note Amara can demo offline.
+
+Under section four point three, Paolo Ricci expects programming claims to carry owners and dates.
+
+Section four point three treats programming as testable only when evidence and ticket IDs are recorded.
+
+For section four point three, Lindqvist Freight will not accept programming work without a written trail.
+
 ### 4.4 Testing on known input
 
 Before running on real logs, Amara feeds her function five hand-made lines whose correct answer she already knows. If the output differs, the code is wrong, not the data.
+
+Section four point four develops programming with a Lindqvist Freight note Amara can demo offline.
+
+Under section four point four, Paolo Ricci expects programming claims to carry owners and dates.
+
+Section four point four treats programming as testable only when evidence and ticket IDs are recorded.
+
+For section four point four, Lindqvist Freight will not accept programming work without a written trail.
 
 ### 4.5 Readability
 
 Short functions, clear names and comments on intent help Paolo review her code. Code that only its author understands is a risk in operations.
 
+Section four point five develops programming with a Lindqvist Freight note Amara can demo offline.
+
+Under section four point five, Paolo Ricci expects programming claims to carry owners and dates.
+
+Section four point five treats programming as testable only when evidence and ticket IDs are recorded.
+
+For section four point five, Lindqvist Freight will not accept programming work without a written trail.
+
 ### 4.6 Standard library first
 
 Python's standard library reads CSV, JSON and dates. Using it avoids installing unreviewed packages on SOC machines.
+
+Section four point six develops programming with a Lindqvist Freight note Amara can demo offline.
+
+Under section four point six, Paolo Ricci expects programming claims to carry owners and dates.
+
+Section four point six treats programming as testable only when evidence and ticket IDs are recorded.
+
+For section four point six, Lindqvist Freight will not accept programming work without a written trail.
+
+Section four point six fails closed if programming evidence is missing rather than guessing.
 
 ### Version control
 
@@ -308,25 +466,71 @@ You will (1) write clear technical notes, tickets and design documents; (2) adap
 
 Analysts need exact fields and times; managers need impact and decisions; customers need what happened and what to do. One incident produces several documents, each written for its reader.
 
+Section five point one develops engineering communication with a Lindqvist Freight note Amara can demo offline.
+
+Under section five point one, Paolo Ricci expects engineering claims to carry owners and dates.
+
+Section five point one treats engineering communication as testable only when evidence and ticket IDs are recorded.
+
+For section five point one, Lindqvist Freight will not accept engineering work without a written trail.
+
 ### 5.2 Tickets
 
 A good SOC ticket states what was observed, when (with time zone), on which assets, what was done, and what is still unknown. Knerler, Parker and Zimmerman (2022) emphasise clear communication as a SOC strategy in its own right.
+
+Section five point two develops engineering communication with a Lindqvist Freight note Amara can demo offline.
+
+Under section five point two, Paolo Ricci expects engineering claims to carry owners and dates.
+
+Section five point two treats engineering communication as testable only when evidence and ticket IDs are recorded.
 
 ### 5.3 Design documents
 
 Engineering changes, such as a new detection, need a short design document: problem, proposal, alternatives, risks, test plan and rollback.
 
+Section five point three develops engineering communication with a Lindqvist Freight note Amara can demo offline.
+
+Under section five point three, Paolo Ricci expects engineering claims to carry owners and dates.
+
+Section five point three treats engineering communication as testable only when evidence and ticket IDs are recorded.
+
+For section five point three, Lindqvist Freight will not accept engineering work without a written trail.
+
 ### 5.4 Honest charts
 
 Charts must start axes at zero for counts, label units and time zones, and avoid smoothing away spikes that matter.
+
+Section five point four develops engineering communication with a Lindqvist Freight note Amara can demo offline.
+
+Under section five point four, Paolo Ricci expects engineering claims to carry owners and dates.
+
+Section five point four treats engineering communication as testable only when evidence and ticket IDs are recorded.
+
+For section five point four, Lindqvist Freight will not accept engineering work without a written trail.
 
 ### 5.5 Words for uncertainty
 
 "Confirmed", "likely" and "possible" should be used consistently. Amara's team defines them in a style guide so readers know how sure the writer is.
 
+Section five point five develops engineering communication with a Lindqvist Freight note Amara can demo offline.
+
+Under section five point five, Paolo Ricci expects engineering claims to carry owners and dates.
+
+Section five point five treats engineering communication as testable only when evidence and ticket IDs are recorded.
+
+For section five point five, Lindqvist Freight will not accept engineering work without a written trail.
+
 ### 5.6 Case
 
 After the portal burst, Amara writes three items: the analyst ticket, a manager summary and a draft customer notice for account u5's owner, reviewed by Paolo and the communications team.
+
+Section five point six develops engineering communication with a Lindqvist Freight note Amara can demo offline.
+
+Under section five point six, Paolo Ricci expects engineering claims to carry owners and dates.
+
+Section five point six treats engineering communication as testable only when evidence and ticket IDs are recorded.
+
+For section five point six, Lindqvist Freight will not accept engineering work without a written trail.
 
 ### Review before sending
 
@@ -368,25 +572,73 @@ You will (1) use integrals to total quantities over time; (2) apply exponential 
 
 Storage needed for logs is the integral of ingestion rate over the retention period. If a SIEM ingests r(t) gigabytes per day, storage after T days is the area under r(t) from 0 to T.
 
+Section six point one develops calculus ii with a Lindqvist Freight note Amara can demo offline.
+
+Under section six point one, Paolo Ricci expects calculus claims to carry owners and dates.
+
+Section six point one treats calculus ii as testable only when evidence and ticket IDs are recorded.
+
 ### 6.2 Exponential growth
 
 If log volume grows 3% per month, volume after n months is V₀·1.03ⁿ. After two years it is about double. Capacity plans that assume flat volume fail.
+
+Section six point two develops calculus ii with a Lindqvist Freight note Amara can demo offline.
+
+Under section six point two, Paolo Ricci expects calculus claims to carry owners and dates.
+
+Section six point two treats calculus ii as testable only when evidence and ticket IDs are recorded.
+
+For section six point two, Lindqvist Freight will not accept calculus work without a written trail.
 
 ### 6.3 Decay
 
 Value of old logs decays: most investigations use recent data. A simple model treats the chance of needing a day's logs as decaying exponentially with age, informing tiered storage — hot, warm, cold.
 
+Section six point three develops calculus ii with a Lindqvist Freight note Amara can demo offline.
+
+Under section six point three, Paolo Ricci expects calculus claims to carry owners and dates.
+
+Section six point three treats calculus ii as testable only when evidence and ticket IDs are recorded.
+
+For section six point three, Lindqvist Freight will not accept calculus work without a written trail.
+
 ### 6.4 Approximations
 
 For small growth rates, (1 + g)ⁿ ≈ 1 + ng for short periods, a quick check on spreadsheets.
+
+Section six point four develops calculus ii with a Lindqvist Freight note Amara can demo offline.
+
+Under section six point four, Paolo Ricci expects calculus claims to carry owners and dates.
+
+Section six point four treats calculus ii as testable only when evidence and ticket IDs are recorded.
+
+For section six point four, Lindqvist Freight will not accept calculus work without a written trail.
+
+Section six point four fails closed if calculus evidence is missing rather than guessing.
 
 ### 6.5 Case
 
 Lindqvist's SIEM ingests 120 GB per day and keeps 90 days hot. Paolo asks Amara whether the current 12 TB hot tier will last a year if volume grows 3% monthly.
 
+Section six point five develops calculus ii with a Lindqvist Freight note Amara can demo offline.
+
+Under section six point five, Paolo Ricci expects calculus claims to carry owners and dates.
+
+Section six point five treats calculus ii as testable only when evidence and ticket IDs are recorded.
+
+For section six point five, Lindqvist Freight will not accept calculus work without a written trail.
+
 ### 6.6 Retention rules
 
 Retention is also set by policy and law; NIST SP 800-92 recommends defining retention per log type. Maths informs cost; policy decides minimums.
+
+Section six point six develops calculus ii with a Lindqvist Freight note Amara can demo offline.
+
+Under section six point six, Paolo Ricci expects calculus claims to carry owners and dates.
+
+Section six point six treats calculus ii as testable only when evidence and ticket IDs are recorded.
+
+For section six point six, Lindqvist Freight will not accept calculus work without a written trail.
 
 ### Rates of change in cost
 
@@ -428,9 +680,23 @@ You will (1) apply Bayes' rule to alert precision; (2) distinguish false-positiv
 
 Two questions are easy to confuse. "If an attack happens, how likely is an alert?" is the true-positive rate. "If an alert fires, how likely is an attack?" is precision. Bayes' rule connects them through the base rate.
 
+Section seven point one develops probability and statistics with a Lindqvist Freight note Amara can demo offline.
+
+Under section seven point one, Paolo Ricci expects probability claims to carry owners and dates.
+
+Section seven point one treats probability and statistics as testable only when evidence and ticket IDs are recorded.
+
 ### 7.2 Base rates
 
 Axelsson (2000) showed that when attacks are rare among events, even a good detector produces mostly false alarms. Precision falls as prevalence falls.
+
+Section seven point two develops probability and statistics with a Lindqvist Freight note Amara can demo offline.
+
+Under section seven point two, Paolo Ricci expects probability claims to carry owners and dates.
+
+Section seven point two treats probability and statistics as testable only when evidence and ticket IDs are recorded.
+
+For section seven point two, Lindqvist Freight will not accept probability work without a written trail.
 
 ### Lab — Bayes for one rule
 
@@ -455,13 +721,37 @@ per 100,000 bursts: true alerts=180 false alerts=998
 
 With 0.2% of logon bursts being credential stuffing, a 90% true-positive rate and a 1% false-positive rate, precision is 0.153: about one alert in seven is real. Per 100,000 bursts, 180 true and 998 false alerts are expected.
 
+Section seven point three develops probability and statistics with a Lindqvist Freight note Amara can demo offline.
+
+Under section seven point three, Paolo Ricci expects probability claims to carry owners and dates.
+
+Section seven point three treats probability and statistics as testable only when evidence and ticket IDs are recorded.
+
+For section seven point three, Lindqvist Freight will not accept probability work without a written trail.
+
 ### 7.4 Summaries
 
 Triage times are skewed: most are quick, a few take hours. Medians and 90th percentiles describe them better than means.
 
+Section seven point four develops probability and statistics with a Lindqvist Freight note Amara can demo offline.
+
+Under section seven point four, Paolo Ricci expects probability claims to carry owners and dates.
+
+Section seven point four treats probability and statistics as testable only when evidence and ticket IDs are recorded.
+
+For section seven point four, Lindqvist Freight will not accept probability work without a written trail.
+
 ### 7.5 Using statistics
 
 Amara uses these numbers to argue that the burst rule needs a second condition (a success in the burst) to raise precision before paging analysts at night.
+
+Section seven point five develops probability and statistics with a Lindqvist Freight note Amara can demo offline.
+
+Under section seven point five, Paolo Ricci expects probability claims to carry owners and dates.
+
+Section seven point five treats probability and statistics as testable only when evidence and ticket IDs are recorded.
+
+For section seven point five, Lindqvist Freight will not accept probability work without a written trail.
 
 ### Intervals for rates
 
@@ -503,29 +793,81 @@ You will (1) explain how CPU, memory, storage and I/O shape telemetry; (2) relat
 
 A computer runs instructions on a CPU, keeps working data in memory, stores files on disks and talks to the world through input/output devices. Each component can be observed: CPU use, memory regions, file writes and network packets.
 
+Section eight point one develops computer architecture with a Lindqvist Freight note Amara can demo offline.
+
+Under section eight point one, Paolo Ricci expects computer claims to carry owners and dates.
+
+Section eight point one treats computer architecture as testable only when evidence and ticket IDs are recorded.
+
 ### 8.2 Privilege levels
 
 Processors separate privileged kernel code from user programs. Endpoint detection agents often run partly in the kernel to see process creation and file activity reliably, which is powerful but means agent bugs can crash machines.
+
+Section eight point two develops computer architecture with a Lindqvist Freight note Amara can demo offline.
+
+Under section eight point two, Paolo Ricci expects computer claims to carry owners and dates.
+
+Section eight point two treats computer architecture as testable only when evidence and ticket IDs are recorded.
 
 ### 8.3 Processes and threads
 
 A process is a running program with its own memory; threads are paths of execution inside it. Endpoint telemetry records process creation, parent process and command line, which detections use heavily.
 
+Section eight point three develops computer architecture with a Lindqvist Freight note Amara can demo offline.
+
+Under section eight point three, Paolo Ricci expects computer claims to carry owners and dates.
+
+Section eight point three treats computer architecture as testable only when evidence and ticket IDs are recorded.
+
+For section eight point three, Lindqvist Freight will not accept computer work without a written trail.
+
 ### 8.4 Caches and performance
 
 Sensors consume CPU cycles and memory. An agent that inspects every file write may slow a busy server. Engineers balance visibility against performance, testing on representative machines.
+
+Section eight point four develops computer architecture with a Lindqvist Freight note Amara can demo offline.
+
+Under section eight point four, Paolo Ricci expects computer claims to carry owners and dates.
+
+Section eight point four treats computer architecture as testable only when evidence and ticket IDs are recorded.
+
+For section eight point four, Lindqvist Freight will not accept computer work without a written trail.
 
 ### 8.5 Storage paths
 
 Logs pass from memory buffers to disk to network. A crash can lose buffered events. Knowing the path explains gaps after reboots.
 
+Section eight point five develops computer architecture with a Lindqvist Freight note Amara can demo offline.
+
+Under section eight point five, Paolo Ricci expects computer claims to carry owners and dates.
+
+Section eight point five treats computer architecture as testable only when evidence and ticket IDs are recorded.
+
+For section eight point five, Lindqvist Freight will not accept computer work without a written trail.
+
 ### 8.6 Firmware
 
 Below the operating system lies firmware. Changes there are rarely visible to normal telemetry, so integrity checks and vendor updates matter.
 
+Section eight point six develops computer architecture with a Lindqvist Freight note Amara can demo offline.
+
+Under section eight point six, Paolo Ricci expects computer claims to carry owners and dates.
+
+Section eight point six treats computer architecture as testable only when evidence and ticket IDs are recorded.
+
+For section eight point six, Lindqvist Freight will not accept computer work without a written trail.
+
 ### 8.7 Case
 
 Lindqvist's portal servers run an endpoint agent. During the burst, CPU on one server reaches 95%, mostly from the web service, not the agent; Amara checks before blaming the sensor.
+
+Section eight point seven develops computer architecture with a Lindqvist Freight note Amara can demo offline.
+
+Under section eight point seven, Paolo Ricci expects computer claims to carry owners and dates.
+
+Section eight point seven treats computer architecture as testable only when evidence and ticket IDs are recorded.
+
+For section eight point seven, Lindqvist Freight will not accept computer work without a written trail.
 
 ### Worked example
 
@@ -563,29 +905,85 @@ You will (1) structure larger programs into modules; (2) use data structures for
 
 As Amara's tools grow, she separates parsing, logic and output into modules. Each can be tested and replaced without touching the others.
 
+Section nine point one develops programming ii with a Lindqvist Freight note Amara can demo offline.
+
+Under section nine point one, Paolo Ricci expects programming claims to carry owners and dates.
+
+Section nine point one treats programming ii as testable only when evidence and ticket IDs are recorded.
+
+For section nine point one, Lindqvist Freight will not accept programming work without a written trail.
+
 ### 9.2 Data structures
 
 Dictionaries give fast lookups — for example, mapping a username to its failure count. Sets answer membership questions quickly. Choosing the right structure turns minutes into seconds on large logs.
+
+Section nine point two develops programming ii with a Lindqvist Freight note Amara can demo offline.
+
+Under section nine point two, Paolo Ricci expects programming claims to carry owners and dates.
+
+Section nine point two treats programming ii as testable only when evidence and ticket IDs are recorded.
+
+For section nine point two, Lindqvist Freight will not accept programming work without a written trail.
 
 ### 9.3 Errors
 
 Programs meet missing fields, odd encodings and huge lines. Deliberate handling — catching specific errors, counting them and continuing — keeps analyses complete and honest.
 
+Section nine point three develops programming ii with a Lindqvist Freight note Amara can demo offline.
+
+Under section nine point three, Paolo Ricci expects programming claims to carry owners and dates.
+
+Section nine point three treats programming ii as testable only when evidence and ticket IDs are recorded.
+
+For section nine point three, Lindqvist Freight will not accept programming work without a written trail.
+
 ### 9.4 Unit tests
 
 Python's unittest module lets Amara write tests such as "five failures for distinct users in one network should trigger; four should not". Tests run automatically before each change is merged.
+
+Section nine point four develops programming ii with a Lindqvist Freight note Amara can demo offline.
+
+Under section nine point four, Paolo Ricci expects programming claims to carry owners and dates.
+
+Section nine point four treats programming ii as testable only when evidence and ticket IDs are recorded.
+
+For section nine point four, Lindqvist Freight will not accept programming work without a written trail.
 
 ### 9.5 Edge cases
 
 Boundary values (exactly the threshold), empty input and duplicate events are where detection code usually breaks. Tests target them first.
 
+Section nine point five develops programming ii with a Lindqvist Freight note Amara can demo offline.
+
+Under section nine point five, Paolo Ricci expects programming claims to carry owners and dates.
+
+Section nine point five treats programming ii as testable only when evidence and ticket IDs are recorded.
+
+For section nine point five, Lindqvist Freight will not accept programming work without a written trail.
+
 ### 9.6 Performance
 
 For a day of portal logs (2 million lines), reading line by line uses little memory; loading all into a list may exhaust it.
 
+Section nine point six develops programming ii with a Lindqvist Freight note Amara can demo offline.
+
+Under section nine point six, Paolo Ricci expects programming claims to carry owners and dates.
+
+Section nine point six treats programming ii as testable only when evidence and ticket IDs are recorded.
+
+For section nine point six, Lindqvist Freight will not accept programming work without a written trail.
+
 ### 9.7 Reviews
 
 Paolo reviews code for correctness and clarity; a second pair of eyes catches logic slips that tests missed.
+
+Section nine point seven develops programming ii with a Lindqvist Freight note Amara can demo offline.
+
+Under section nine point seven, Paolo Ricci expects programming claims to carry owners and dates.
+
+Section nine point seven treats programming ii as testable only when evidence and ticket IDs are recorded.
+
+For section nine point seven, Lindqvist Freight will not accept programming work without a written trail.
 
 ### Logging inside tools
 
@@ -627,29 +1025,83 @@ You will (1) apply engineering ethics to security operations; (2) balance monito
 
 Engineers owe duties to the public, employers and colleagues. In a SOC, monitoring protects people but also observes them. Ethical practice means collecting what the purpose requires and no more.
 
+Section ten point one develops engineering ethics and safety with a Lindqvist Freight note Amara can demo offline.
+
+Under section ten point one, Paolo Ricci expects engineering claims to carry owners and dates.
+
+Section ten point one treats engineering ethics and safety as testable only when evidence and ticket IDs are recorded.
+
 ### 10.2 Privacy and monitoring
 
 Staff and customers have privacy interests. Lindqvist's monitoring policy tells staff what is monitored and why; SOC access to content (such as email bodies) needs case approval.
+
+Section ten point two develops engineering ethics and safety with a Lindqvist Freight note Amara can demo offline.
+
+Under section ten point two, Paolo Ricci expects engineering claims to carry owners and dates.
+
+Section ten point two treats engineering ethics and safety as testable only when evidence and ticket IDs are recorded.
+
+For section ten point two, Lindqvist Freight will not accept engineering work without a written trail.
 
 ### 10.3 Safety of actions
 
 Response actions can harm operations: blocking a network might stop delivery trucks' route updates. Engineers consider side effects and use approved playbooks.
 
+Section ten point three develops engineering ethics and safety with a Lindqvist Freight note Amara can demo offline.
+
+Under section ten point three, Paolo Ricci expects engineering claims to carry owners and dates.
+
+Section ten point three treats engineering ethics and safety as testable only when evidence and ticket IDs are recorded.
+
+For section ten point three, Lindqvist Freight will not accept engineering work without a written trail.
+
 ### 10.4 Honesty
 
 Reports must not hide failures, such as a missed detection, even when embarrassing. Hiding them prevents learning.
+
+Section ten point four develops engineering ethics and safety with a Lindqvist Freight note Amara can demo offline.
+
+Under section ten point four, Paolo Ricci expects engineering claims to carry owners and dates.
+
+Section ten point four treats engineering ethics and safety as testable only when evidence and ticket IDs are recorded.
+
+For section ten point four, Lindqvist Freight will not accept engineering work without a written trail.
 
 ### 10.5 Conflicts
 
 When a manager asks for monitoring of one employee without an investigation request, Amara declines and refers to policy and HR process.
 
+Section ten point five develops engineering ethics and safety with a Lindqvist Freight note Amara can demo offline.
+
+Under section ten point five, Paolo Ricci expects engineering claims to carry owners and dates.
+
+Section ten point five treats engineering ethics and safety as testable only when evidence and ticket IDs are recorded.
+
+For section ten point five, Lindqvist Freight will not accept engineering work without a written trail.
+
 ### 10.6 Raising concerns
 
 If a practice seems unsafe or unlawful, engineers raise it through defined channels, documenting facts.
 
+Section ten point six develops engineering ethics and safety with a Lindqvist Freight note Amara can demo offline.
+
+Under section ten point six, Paolo Ricci expects engineering claims to carry owners and dates.
+
+Section ten point six treats engineering ethics and safety as testable only when evidence and ticket IDs are recorded.
+
+For section ten point six, Lindqvist Freight will not accept engineering work without a written trail.
+
 ### 10.7 Professional codes
 
 Engineering and computing bodies publish codes stressing public good, competence and honesty; Amara reads her university's code during induction.
+
+Section ten point seven develops engineering ethics and safety with a Lindqvist Freight note Amara can demo offline.
+
+Under section ten point seven, Paolo Ricci expects engineering claims to carry owners and dates.
+
+Section ten point seven treats engineering ethics and safety as testable only when evidence and ticket IDs are recorded.
+
+For section ten point seven, Lindqvist Freight will not accept engineering work without a written trail.
 
 ### Consent and transparency
 
@@ -691,9 +1143,21 @@ You will (1) explain addressing, ports and common protocols; (2) read network te
 
 Networks move data in layers: physical links, IP addressing and routing, TCP or UDP transport, and applications such as HTTPS. Telemetry exists at each layer: link statistics, flow records, and application logs.
 
+Section eleven point one develops networks and protocols with a Lindqvist Freight note Amara can demo offline.
+
+Under section eleven point one, Paolo Ricci expects networks claims to carry owners and dates.
+
+Section eleven point one treats networks and protocols as testable only when evidence and ticket IDs are recorded.
+
 ### 11.2 Addresses and networks
 
 IPv4 addresses are grouped into networks by prefix. A /24 network shares its first three octets. Attack traffic from one hosting provider often spans many addresses in a few networks, so aggregating by network reveals bursts that per-address counts hide.
+
+Section eleven point two develops networks and protocols with a Lindqvist Freight note Amara can demo offline.
+
+Under section eleven point two, Paolo Ricci expects networks claims to carry owners and dates.
+
+Section eleven point two treats networks and protocols as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — failures by network
 
@@ -724,17 +1188,49 @@ Run with `python3 lab_failed.py`. Verified output:
 
 The 203.0.113.0/24 network produced 6 failures across 7 distinct usernames — many accounts, few attempts each, the pattern of credential stuffing. 198.51.100.0/24 shows 2 failures and a success for one user: a customer mistyping a password.
 
+Section eleven point three develops networks and protocols with a Lindqvist Freight note Amara can demo offline.
+
+Under section eleven point three, Paolo Ricci expects networks claims to carry owners and dates.
+
+Section eleven point three treats networks and protocols as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point three, Lindqvist Freight will not accept networks work without a written trail.
+
 ### 11.4 HTTPS visibility
 
 Encrypted web traffic hides content from network sensors; the web server's own logs show paths, status codes and usernames. Choosing where to observe is an engineering decision.
+
+Section eleven point four develops networks and protocols with a Lindqvist Freight note Amara can demo offline.
+
+Under section eleven point four, Paolo Ricci expects networks claims to carry owners and dates.
+
+Section eleven point four treats networks and protocols as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point four, Lindqvist Freight will not accept networks work without a written trail.
 
 ### 11.5 Attribution limits
 
 An address identifies a connection point, not a person. Shared proxies, cloud ranges and address reuse make blocking and attribution imprecise.
 
+Section eleven point five develops networks and protocols with a Lindqvist Freight note Amara can demo offline.
+
+Under section eleven point five, Paolo Ricci expects networks claims to carry owners and dates.
+
+Section eleven point five treats networks and protocols as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point five, Lindqvist Freight will not accept networks work without a written trail.
+
 ### 11.6 Protocol knowledge
 
 Knowing that login uses POST to /login and returns 401 on failure lets Amara write accurate parsing.
+
+Section eleven point six develops networks and protocols with a Lindqvist Freight note Amara can demo offline.
+
+Under section eleven point six, Paolo Ricci expects networks claims to carry owners and dates.
+
+Section eleven point six treats networks and protocols as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point six, Lindqvist Freight will not accept networks work without a written trail.
 
 ### DNS and time
 
@@ -776,29 +1272,81 @@ You will (1) explain how operating systems manage processes, files, users and lo
 
 The operating system schedules processes, manages memory, controls access to files and devices, and authenticates users. Every one of these functions can produce security events if auditing is enabled.
 
+Section twelve point one develops operating systems with a Lindqvist Freight note Amara can demo offline.
+
+Under section twelve point one, Paolo Ricci expects operating claims to carry owners and dates.
+
+Section twelve point one treats operating systems as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point one, Lindqvist Freight will not accept operating work without a written trail.
+
 ### 12.2 Windows events
 
 Windows records logons, process creation, service installation and policy changes in its event logs when audit policy enables them. Process creation with command line, for example, must be switched on deliberately; without it, many endpoint detections have nothing to match.
+
+Section twelve point two develops operating systems with a Lindqvist Freight note Amara can demo offline.
+
+Under section twelve point two, Paolo Ricci expects operating claims to carry owners and dates.
+
+Section twelve point two treats operating systems as testable only when evidence and ticket IDs are recorded.
 
 ### 12.3 Linux logs
 
 Linux systems record authentication in system logs, and the audit subsystem can record file access and program execution according to rules. Like Windows, coverage depends on configuration.
 
+Section twelve point three develops operating systems with a Lindqvist Freight note Amara can demo offline.
+
+Under section twelve point three, Paolo Ricci expects operating claims to carry owners and dates.
+
+Section twelve point three treats operating systems as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point three, Lindqvist Freight will not accept operating work without a written trail.
+
 ### 12.4 Users and privilege
 
 Operating systems separate normal users from administrators. Events that change privilege — adding a user to an administrators group, for instance — are high-value signals for detection.
+
+Section twelve point four develops operating systems with a Lindqvist Freight note Amara can demo offline.
+
+Under section twelve point four, Paolo Ricci expects operating claims to carry owners and dates.
+
+Section twelve point four treats operating systems as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point four, Lindqvist Freight will not accept operating work without a written trail.
 
 ### 12.5 Services and scheduled tasks
 
 Programs can be set to start automatically. New services and scheduled tasks are common persistence mechanisms described in MITRE ATT&CK, so their creation is worth logging.
 
+Section twelve point five develops operating systems with a Lindqvist Freight note Amara can demo offline.
+
+Under section twelve point five, Paolo Ricci expects operating claims to carry owners and dates.
+
+Section twelve point five treats operating systems as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point five, Lindqvist Freight will not accept operating work without a written trail.
+
 ### 12.6 Configuration as coverage
 
 Detection coverage is only as good as audit configuration. Amara builds a table listing each detection rule and the OS setting it depends on, then checks that the settings are deployed by policy on every server class.
 
+Section twelve point six develops operating systems with a Lindqvist Freight note Amara can demo offline.
+
+Under section twelve point six, Paolo Ricci expects operating claims to carry owners and dates.
+
+Section twelve point six treats operating systems as testable only when evidence and ticket IDs are recorded.
+
 ### 12.7 Log size and rotation
 
 Event logs have maximum sizes; when full, old events are overwritten. Forwarding logs to the SIEM promptly prevents loss.
+
+Section twelve point seven develops operating systems with a Lindqvist Freight note Amara can demo offline.
+
+Under section twelve point seven, Paolo Ricci expects operating claims to carry owners and dates.
+
+Section twelve point seven treats operating systems as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point seven, Lindqvist Freight will not accept operating work without a written trail.
 
 ### Worked example
 
@@ -836,29 +1384,89 @@ You will (1) model security data in tables and documents; (2) write queries that
 
 A SIEM is a data system: it ingests records, stores them, indexes fields and answers queries. Good data design makes detections faster and more accurate.
 
+Section thirteen point one develops data systems with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirteen point one, Paolo Ricci expects data claims to carry owners and dates.
+
+Section thirteen point one treats data systems as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point one, Lindqvist Freight will not accept data work without a written trail.
+
 ### 13.2 Schemas
 
 If one source calls the user field "user", another "username" and a third "acct", every query must remember all three. Normalising fields to a common schema at ingestion — one name for user, source address, host, action and outcome — simplifies rules and reduces mistakes.
+
+Section thirteen point two develops data systems with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirteen point two, Paolo Ricci expects data claims to carry owners and dates.
+
+Section thirteen point two treats data systems as testable only when evidence and ticket IDs are recorded.
 
 ### 13.3 Joins
 
 Many questions join data: "which hosts did the account that logged in from 203.0.113.14 touch next?" joins web logs with internal authentication logs on username and time.
 
+Section thirteen point three develops data systems with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirteen point three, Paolo Ricci expects data claims to carry owners and dates.
+
+Section thirteen point three treats data systems as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point three, Lindqvist Freight will not accept data work without a written trail.
+
 ### 13.4 Aggregation
 
 Counting, grouping and windowing (for example, per 10 minutes) are the core of threshold detections.
+
+Section thirteen point four develops data systems with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirteen point four, Paolo Ricci expects data claims to carry owners and dates.
+
+Section thirteen point four treats data systems as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point four, Lindqvist Freight will not accept data work without a written trail.
+
+Section thirteen point four fails closed if data evidence is missing rather than guessing.
 
 ### 13.5 Indexes and cost
 
 Indexed fields are fast to search; unindexed full-text searches are slow and expensive. Engineers index fields that detections and analysts use most, such as user, host and source address.
 
+Section thirteen point five develops data systems with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirteen point five, Paolo Ricci expects data claims to carry owners and dates.
+
+Section thirteen point five treats data systems as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point five, Lindqvist Freight will not accept data work without a written trail.
+
 ### 13.6 Data quality
 
 Missing values, wrong types and duplicates distort results. Quality checks at ingestion catch them early.
 
+Section thirteen point six develops data systems with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirteen point six, Paolo Ricci expects data claims to carry owners and dates.
+
+Section thirteen point six treats data systems as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point six, Lindqvist Freight will not accept data work without a written trail.
+
+Section thirteen point six fails closed if data evidence is missing rather than guessing.
+
 ### 13.7 Retention per table
 
 Different tables may need different retention: authentication logs kept longer than verbose debug logs.
+
+Section thirteen point seven develops data systems with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirteen point seven, Paolo Ricci expects data claims to carry owners and dates.
+
+Section thirteen point seven treats data systems as testable only when evidence and ticket IDs are recorded.
+
+For section thirteen point seven, Lindqvist Freight will not accept data work without a written trail.
+
+Section thirteen point seven fails closed if data evidence is missing rather than guessing.
 
 ### Time windows
 
@@ -900,29 +1508,87 @@ You will (1) apply requirements, design, testing and release practices to detect
 
 Detection rules are software. Writing them as text files in a standard format such as Sigma, storing them in version control and reviewing changes brings software engineering discipline to the SOC.
 
+Section fourteen point one develops software engineering with a Lindqvist Freight note Amara can demo offline.
+
+Under section fourteen point one, Paolo Ricci expects software claims to carry owners and dates.
+
+Section fourteen point one treats software engineering as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point one, Lindqvist Freight will not accept software work without a written trail.
+
 ### 14.2 Requirements
 
 Each rule starts with a requirement: what behaviour, on which assets, with what acceptable false-positive rate and response. Requirements trace to threats, often expressed as ATT&CK techniques.
+
+Section fourteen point two develops software engineering with a Lindqvist Freight note Amara can demo offline.
+
+Under section fourteen point two, Paolo Ricci expects software claims to carry owners and dates.
+
+Section fourteen point two treats software engineering as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point two, Lindqvist Freight will not accept software work without a written trail.
 
 ### 14.3 Testing
 
 Rules are tested against recorded benign data (to measure false positives) and against safe test events (to confirm they fire). Tests run automatically when a change is proposed.
 
+Section fourteen point three develops software engineering with a Lindqvist Freight note Amara can demo offline.
+
+Under section fourteen point three, Paolo Ricci expects software claims to carry owners and dates.
+
+Section fourteen point three treats software engineering as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point three, Lindqvist Freight will not accept software work without a written trail.
+
 ### 14.4 Review
 
 A second engineer reviews logic, performance and documentation. Review catches overly broad conditions before they flood analysts.
+
+Section fourteen point four develops software engineering with a Lindqvist Freight note Amara can demo offline.
+
+Under section fourteen point four, Paolo Ricci expects software claims to carry owners and dates.
+
+Section fourteen point four treats software engineering as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point four, Lindqvist Freight will not accept software work without a written trail.
+
+Section fourteen point four fails closed if software evidence is missing rather than guessing.
 
 ### 14.5 Release and rollback
 
 New rules deploy first in a "monitor only" mode that records matches without alerting. After a week of acceptable results, they move to alerting. If problems appear, the previous version is restored from version control.
 
+Section fourteen point five develops software engineering with a Lindqvist Freight note Amara can demo offline.
+
+Under section fourteen point five, Paolo Ricci expects software claims to carry owners and dates.
+
+Section fourteen point five treats software engineering as testable only when evidence and ticket IDs are recorded.
+
 ### 14.6 Technical debt
 
 Old, untested rules accumulate. Paolo schedules a quarterly review to retire rules that no longer match any asset or threat.
 
+Section fourteen point six develops software engineering with a Lindqvist Freight note Amara can demo offline.
+
+Under section fourteen point six, Paolo Ricci expects software claims to carry owners and dates.
+
+Section fourteen point six treats software engineering as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point six, Lindqvist Freight will not accept software work without a written trail.
+
 ### 14.7 Documentation
 
 Each rule carries a description, author, references, known benign triggers and response guidance.
+
+Section fourteen point seven develops software engineering with a Lindqvist Freight note Amara can demo offline.
+
+Under section fourteen point seven, Paolo Ricci expects software claims to carry owners and dates.
+
+Section fourteen point seven treats software engineering as testable only when evidence and ticket IDs are recorded.
+
+For section fourteen point seven, Lindqvist Freight will not accept software work without a written trail.
+
+Section fourteen point seven fails closed if software evidence is missing rather than guessing.
 
 ### Ownership
 
@@ -964,29 +1630,83 @@ You will (1) explain confidentiality, integrity and availability; (2) relate thr
 
 Confidentiality keeps information from unauthorised people; integrity keeps it accurate and unaltered; availability keeps systems usable. The portal incident touched all three: customer data could be seen, addresses altered, and the login service slowed.
 
+Section fifteen point one develops security fundamentals with a Lindqvist Freight note Amara can demo offline.
+
+Under section fifteen point one, Paolo Ricci expects security claims to carry owners and dates.
+
+Section fifteen point one treats security fundamentals as testable only when evidence and ticket IDs are recorded.
+
 ### 15.2 Threats, vulnerabilities, controls
 
 A threat is a possible cause of harm; a vulnerability is a weakness it can exploit; a control reduces risk. Reused customer passwords are the vulnerability credential stuffing exploits; rate limiting and multi-factor authentication are controls.
+
+Section fifteen point two develops security fundamentals with a Lindqvist Freight note Amara can demo offline.
+
+Under section fifteen point two, Paolo Ricci expects security claims to carry owners and dates.
+
+Section fifteen point two treats security fundamentals as testable only when evidence and ticket IDs are recorded.
 
 ### 15.3 CSF 2.0 functions
 
 The NIST Cybersecurity Framework 2.0 organises outcomes into Govern, Identify, Protect, Detect, Respond and Recover. A SOC mainly delivers Detect and Respond, but depends on Identify (asset knowledge) and feeds Govern with risk information.
 
+Section fifteen point three develops security fundamentals with a Lindqvist Freight note Amara can demo offline.
+
+Under section fifteen point three, Paolo Ricci expects security claims to carry owners and dates.
+
+Section fifteen point three treats security fundamentals as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point three, Lindqvist Freight will not accept security work without a written trail.
+
 ### 15.4 Prevention and detection
 
 No prevention is perfect. Detection finds what prevention missed, and response limits harm. A balanced programme invests in all three.
+
+Section fifteen point four develops security fundamentals with a Lindqvist Freight note Amara can demo offline.
+
+Under section fifteen point four, Paolo Ricci expects security claims to carry owners and dates.
+
+Section fifteen point four treats security fundamentals as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point four, Lindqvist Freight will not accept security work without a written trail.
 
 ### 15.5 Defence in depth
 
 Several layers — rate limits, bot detection, MFA, monitoring of account changes — mean one failure does not lead to full compromise.
 
+Section fifteen point five develops security fundamentals with a Lindqvist Freight note Amara can demo offline.
+
+Under section fifteen point five, Paolo Ricci expects security claims to carry owners and dates.
+
+Section fifteen point five treats security fundamentals as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point five, Lindqvist Freight will not accept security work without a written trail.
+
 ### 15.6 Least privilege
 
 Accounts get only the rights they need, limiting damage when one is misused.
 
+Section fifteen point six develops security fundamentals with a Lindqvist Freight note Amara can demo offline.
+
+Under section fifteen point six, Paolo Ricci expects security claims to carry owners and dates.
+
+Section fifteen point six treats security fundamentals as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point six, Lindqvist Freight will not accept security work without a written trail.
+
+Section fifteen point six fails closed if security evidence is missing rather than guessing.
+
 ### 15.7 Case mapping
 
 Amara maps the portal incident: the vulnerability (password reuse by customers), the missing control (no MFA option for customers), the detection (her burst rule) and the response (account lock, notice).
+
+Section fifteen point seven develops security fundamentals with a Lindqvist Freight note Amara can demo offline.
+
+Under section fifteen point seven, Paolo Ricci expects security claims to carry owners and dates.
+
+Section fifteen point seven treats security fundamentals as testable only when evidence and ticket IDs are recorded.
+
+For section fifteen point seven, Lindqvist Freight will not accept security work without a written trail.
 
 ### Risk as the organiser
 
@@ -1028,29 +1748,85 @@ You will (1) view the SOC as a system of people, process and technology; (2) def
 
 A SOC combines people (analysts, engineers), processes (triage, escalation) and technology (sensors, SIEM, case management). Zimmerman (2014) argued that many SOCs over-invest in tools and under-invest in people and process; systems thinking keeps them in balance.
 
+Section sixteen point one develops systems engineering with a Lindqvist Freight note Amara can demo offline.
+
+Under section sixteen point one, Paolo Ricci expects systems claims to carry owners and dates.
+
+Section sixteen point one treats systems engineering as testable only when evidence and ticket IDs are recorded.
+
 ### 16.2 Interfaces
 
 Each component exchanges something: sensors send events to the SIEM, the SIEM sends alerts to the case system, analysts send escalations to incident responders. Each interface needs a defined format, timing and owner.
+
+Section sixteen point two develops systems engineering with a Lindqvist Freight note Amara can demo offline.
+
+Under section sixteen point two, Paolo Ricci expects systems claims to carry owners and dates.
+
+Section sixteen point two treats systems engineering as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point two, Lindqvist Freight will not accept systems work without a written trail.
 
 ### 16.3 Requirements flow
 
 Top-level needs ("detect account takeover within 15 minutes") break down into component requirements: portal logs delivered within 2 minutes, rule latency under 5 minutes, analyst acknowledgement within 8 minutes.
 
+Section sixteen point three develops systems engineering with a Lindqvist Freight note Amara can demo offline.
+
+Under section sixteen point three, Paolo Ricci expects systems claims to carry owners and dates.
+
+Section sixteen point three treats systems engineering as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point three, Lindqvist Freight will not accept systems work without a written trail.
+
 ### 16.4 Trade-offs
 
 More data improves visibility but costs storage and analyst attention. Systems engineers state criteria (detection time, cost, analyst load) and compare options against them.
+
+Section sixteen point four develops systems engineering with a Lindqvist Freight note Amara can demo offline.
+
+Under section sixteen point four, Paolo Ricci expects systems claims to carry owners and dates.
+
+Section sixteen point four treats systems engineering as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point four, Lindqvist Freight will not accept systems work without a written trail.
 
 ### 16.5 Lifecycle
 
 Components are planned, built, operated, maintained and retired. Retiring an old sensor needs a replacement first, or coverage silently disappears.
 
+Section sixteen point five develops systems engineering with a Lindqvist Freight note Amara can demo offline.
+
+Under section sixteen point five, Paolo Ricci expects systems claims to carry owners and dates.
+
+Section sixteen point five treats systems engineering as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point five, Lindqvist Freight will not accept systems work without a written trail.
+
 ### 16.6 Verification
 
 Each requirement has a test: a timed synthetic event checks that the 15-minute target is met end to end.
 
+Section sixteen point six develops systems engineering with a Lindqvist Freight note Amara can demo offline.
+
+Under section sixteen point six, Paolo Ricci expects systems claims to carry owners and dates.
+
+Section sixteen point six treats systems engineering as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point six, Lindqvist Freight will not accept systems work without a written trail.
+
 ### 16.7 Case
 
 Amara draws Lindqvist's SOC as a block diagram and labels each interface with format, latency and owner.
+
+Section sixteen point seven develops systems engineering with a Lindqvist Freight note Amara can demo offline.
+
+Under section sixteen point seven, Paolo Ricci expects systems claims to carry owners and dates.
+
+Section sixteen point seven treats systems engineering as testable only when evidence and ticket IDs are recorded.
+
+For section sixteen point seven, Lindqvist Freight will not accept systems work without a written trail.
+
+Section sixteen point seven fails closed if systems evidence is missing rather than guessing.
 
 ### Failure modes of the system
 
@@ -1092,29 +1868,77 @@ You will (1) explain feedback loops in security operations; (2) model tuning as 
 
 A feedback loop measures an output and adjusts an input to reach a target. A thermostat measures temperature and switches heating. In a SOC, analysts measure alert quality and adjust rules.
 
+Section seventeen point one develops control and feedback basics with a Lindqvist Freight note Amara can demo offline.
+
+Under section seventeen point one, Paolo Ricci expects control claims to carry owners and dates.
+
+Section seventeen point one treats control and feedback basics as testable only when evidence and ticket IDs are recorded.
+
 ### 17.2 Tuning as control
 
 Suppose the target is fewer than 20 false alerts per day from a rule. If the measured count is higher, the threshold rises; if real attacks are missed, it falls. This is a control loop with the engineer as controller.
+
+Section seventeen point two develops control and feedback basics with a Lindqvist Freight note Amara can demo offline.
+
+Under section seventeen point two, Paolo Ricci expects control claims to carry owners and dates.
+
+Section seventeen point two treats control and feedback basics as testable only when evidence and ticket IDs are recorded.
 
 ### 17.3 Oscillation
 
 If adjustments are too large or too fast, the system overshoots: the threshold jumps up, misses an attack, jumps down, floods analysts. Small, measured steps with time to observe effects avoid oscillation.
 
+Section seventeen point three develops control and feedback basics with a Lindqvist Freight note Amara can demo offline.
+
+Under section seventeen point three, Paolo Ricci expects control claims to carry owners and dates.
+
+Section seventeen point three treats control and feedback basics as testable only when evidence and ticket IDs are recorded.
+
 ### 17.4 Delay
 
 Feedback in SOCs is slow: the effect of a change on missed attacks may not be known for weeks. Long delays make aggressive tuning dangerous.
+
+Section seventeen point four develops control and feedback basics with a Lindqvist Freight note Amara can demo offline.
+
+Under section seventeen point four, Paolo Ricci expects control claims to carry owners and dates.
+
+Section seventeen point four treats control and feedback basics as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point four, Lindqvist Freight will not accept control work without a written trail.
 
 ### 17.5 Positive feedback
 
 Some loops amplify: an overloaded queue makes analysts close alerts faster with less care, which hides misses, which leads to more silent compromise. Recognising such loops lets managers break them.
 
+Section seventeen point five develops control and feedback basics with a Lindqvist Freight note Amara can demo offline.
+
+Under section seventeen point five, Paolo Ricci expects control claims to carry owners and dates.
+
+Section seventeen point five treats control and feedback basics as testable only when evidence and ticket IDs are recorded.
+
 ### 17.6 Measurement
 
 Feedback is only as good as its measurement. Labelled samples of closed alerts and periodic safe test events provide signals about misses.
 
+Section seventeen point six develops control and feedback basics with a Lindqvist Freight note Amara can demo offline.
+
+Under section seventeen point six, Paolo Ricci expects control claims to carry owners and dates.
+
+Section seventeen point six treats control and feedback basics as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point six, Lindqvist Freight will not accept control work without a written trail.
+
 ### 17.7 Case
 
 Amara's portal rule threshold starts at 5 failures per 10 minutes; Paolo asks her to plan its tuning loop.
+
+Section seventeen point seven develops control and feedback basics with a Lindqvist Freight note Amara can demo offline.
+
+Under section seventeen point seven, Paolo Ricci expects control claims to carry owners and dates.
+
+Section seventeen point seven treats control and feedback basics as testable only when evidence and ticket IDs are recorded.
+
+For section seventeen point seven, Lindqvist Freight will not accept control work without a written trail.
 
 ### Worked example
 
@@ -1152,29 +1976,79 @@ You will (1) describe security architecture as structured placement of controls;
 
 Security architecture decides where controls sit and how components trust each other. It is the structure that makes individual controls work together rather than a pile of products.
 
+Section eighteen point one develops security architecture with a Lindqvist Freight note Amara can demo offline.
+
+Under section eighteen point one, Paolo Ricci expects security claims to carry owners and dates.
+
+Section eighteen point one treats security architecture as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point one, Lindqvist Freight will not accept security work without a written trail.
+
 ### 18.2 Zones and boundaries
 
 Lindqvist separates the internet-facing portal, internal business systems, the depot networks that run handheld scanners, and the SOC's own systems. Each boundary has rules about what may cross it. Boundaries are where monitoring is most informative, because legitimate traffic across them is limited and known.
+
+Section eighteen point two develops security architecture with a Lindqvist Freight note Amara can demo offline.
+
+Under section eighteen point two, Paolo Ricci expects security claims to carry owners and dates.
+
+Section eighteen point two treats security architecture as testable only when evidence and ticket IDs are recorded.
 
 ### 18.3 Sensor placement
 
 Sensors belong where they see relevant activity with little noise: at the web tier for the portal, at domain controllers for authentication, at the boundary between business and depot networks. Placing one large sensor at the internet edge sees much traffic but little context.
 
+Section eighteen point three develops security architecture with a Lindqvist Freight note Amara can demo offline.
+
+Under section eighteen point three, Paolo Ricci expects security claims to carry owners and dates.
+
+Section eighteen point three treats security architecture as testable only when evidence and ticket IDs are recorded.
+
 ### 18.4 Protecting the SOC
 
 The SIEM and case system are valuable targets: they show what defenders can see. They sit in their own zone with separate administrator accounts and multi-factor authentication.
+
+Section eighteen point four develops security architecture with a Lindqvist Freight note Amara can demo offline.
+
+Under section eighteen point four, Paolo Ricci expects security claims to carry owners and dates.
+
+Section eighteen point four treats security architecture as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point four, Lindqvist Freight will not accept security work without a written trail.
 
 ### 18.5 Mapping to threats
 
 Architects check each important ATT&CK technique against the architecture: which control prevents it, which sensor would see it, and which team would respond. Gaps become backlog items. D3FEND helps name the defensive technique each control provides.
 
+Section eighteen point five develops security architecture with a Lindqvist Freight note Amara can demo offline.
+
+Under section eighteen point five, Paolo Ricci expects security claims to carry owners and dates.
+
+Section eighteen point five treats security architecture as testable only when evidence and ticket IDs are recorded.
+
 ### 18.6 Simplicity
 
 Complex architectures hide gaps. Fewer, well-understood boundaries are easier to monitor.
 
+Section eighteen point six develops security architecture with a Lindqvist Freight note Amara can demo offline.
+
+Under section eighteen point six, Paolo Ricci expects security claims to carry owners and dates.
+
+Section eighteen point six treats security architecture as testable only when evidence and ticket IDs are recorded.
+
+For section eighteen point six, Lindqvist Freight will not accept security work without a written trail.
+
+Section eighteen point six fails closed if security evidence is missing rather than guessing.
+
 ### 18.7 Case
 
 Amara reviews where the portal's logs are produced and finds that the load balancer, which sees the true client addresses, was not forwarding its logs; the web servers saw only the balancer's address for some requests.
+
+Section eighteen point seven develops security architecture with a Lindqvist Freight note Amara can demo offline.
+
+Under section eighteen point seven, Paolo Ricci expects security claims to carry owners and dates.
+
+Section eighteen point seven treats security architecture as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -1212,29 +2086,81 @@ You will (1) explain authentication, authorisation and multi-factor methods; (2)
 
 Many attacks today use valid credentials rather than technical exploits. Authentication logs — successes, failures, MFA challenges, token issuance — are therefore among a SOC's most valuable data.
 
+Section nineteen point one develops identity and cryptography with a Lindqvist Freight note Amara can demo offline.
+
+Under section nineteen point one, Paolo Ricci expects identity claims to carry owners and dates.
+
+Section nineteen point one treats identity and cryptography as testable only when evidence and ticket IDs are recorded.
+
+For section nineteen point one, Lindqvist Freight will not accept identity work without a written trail.
+
 ### 19.2 Authentication and authorisation
 
 Authentication proves who a user is; authorisation decides what they may do. The portal authenticates customers by password; Lindqvist staff use single sign-on with MFA. Authorisation logs show access to sensitive functions, such as changing a delivery address.
+
+Section nineteen point two develops identity and cryptography with a Lindqvist Freight note Amara can demo offline.
+
+Under section nineteen point two, Paolo Ricci expects identity claims to carry owners and dates.
+
+Section nineteen point two treats identity and cryptography as testable only when evidence and ticket IDs are recorded.
 
 ### 19.3 MFA signals
 
 MFA reduces credential-stuffing success. Its logs add signals: repeated MFA prompts denied by the user may indicate someone holding the password; a sudden change of MFA device warrants checking.
 
+Section nineteen point three develops identity and cryptography with a Lindqvist Freight note Amara can demo offline.
+
+Under section nineteen point three, Paolo Ricci expects identity claims to carry owners and dates.
+
+Section nineteen point three treats identity and cryptography as testable only when evidence and ticket IDs are recorded.
+
+For section nineteen point three, Lindqvist Freight will not accept identity work without a written trail.
+
 ### 19.4 Hashing
 
 A cryptographic hash gives a fixed-length fingerprint of data. SOCs use hashes to identify files and verify that exported evidence is unchanged. Passwords should be stored using slow, salted password-hashing functions so stolen databases resist cracking.
+
+Section nineteen point four develops identity and cryptography with a Lindqvist Freight note Amara can demo offline.
+
+Under section nineteen point four, Paolo Ricci expects identity claims to carry owners and dates.
+
+Section nineteen point four treats identity and cryptography as testable only when evidence and ticket IDs are recorded.
 
 ### 19.5 Encryption and signatures
 
 Encryption protects confidentiality in transit (TLS) and at rest. Digital signatures prove origin and integrity: signed software, signed log batches. Signed load-test tools, as in chapter 14, let rules make reliable exceptions.
 
+Section nineteen point five develops identity and cryptography with a Lindqvist Freight note Amara can demo offline.
+
+Under section nineteen point five, Paolo Ricci expects identity claims to carry owners and dates.
+
+Section nineteen point five treats identity and cryptography as testable only when evidence and ticket IDs are recorded.
+
+For section nineteen point five, Lindqvist Freight will not accept identity work without a written trail.
+
 ### 19.6 Identity attacks seen defensively
 
 Credential stuffing, password spraying and token theft all leave traces in identity logs. The defender's job is to collect those logs and know normal patterns, not to reproduce the attacks.
 
+Section nineteen point six develops identity and cryptography with a Lindqvist Freight note Amara can demo offline.
+
+Under section nineteen point six, Paolo Ricci expects identity claims to carry owners and dates.
+
+Section nineteen point six treats identity and cryptography as testable only when evidence and ticket IDs are recorded.
+
+For section nineteen point six, Lindqvist Freight will not accept identity work without a written trail.
+
 ### 19.7 Case
 
 After the incident, Lindqvist offers customers optional MFA and alerts on address changes immediately after a login from a new network.
+
+Section nineteen point seven develops identity and cryptography with a Lindqvist Freight note Amara can demo offline.
+
+Under section nineteen point seven, Paolo Ricci expects identity claims to carry owners and dates.
+
+Section nineteen point seven treats identity and cryptography as testable only when evidence and ticket IDs are recorded.
+
+For section nineteen point seven, Lindqvist Freight will not accept identity work without a written trail.
 
 ### Worked example
 
@@ -1272,29 +2198,79 @@ You will (1) describe the SOC's mission and services in engineering terms; (2) r
 
 Knerler, Parker and Zimmerman (2022) open with "know what you are protecting and why". Lindqvist protects customer data, delivery operations and payment flows. Engineering choices follow from that mission, not from tool features.
 
+Section twenty point one develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty point one, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty point one treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
 ### 20.2 SOC services
 
 Lindqvist's SOC provides monitoring and triage, incident response coordination, detection engineering, vulnerability intake and threat intelligence consumption. Each service has customers inside the company and measurable outputs.
+
+Section twenty point two develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty point two, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty point two treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty point two, Lindqvist Freight will not accept security work without a written trail.
 
 ### 20.3 Constraints
 
 Budget, staff numbers, regulation and legacy systems constrain design. The depot scanners run old software that cannot host agents, so network monitoring must cover them.
 
+Section twenty point three develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty point three, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty point three treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty point three, Lindqvist Freight will not accept security work without a written trail.
+
 ### 20.4 Stakeholders
 
 The CISO sets priorities; IT operations own systems; legal and privacy staff set limits; business units feel the impact of response actions. SOC engineers must work with all of them.
+
+Section twenty point four develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty point four, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty point four treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
 
 ### 20.5 Engineering problems ahead
 
 The course follows four problems at Lindqvist: detecting account takeover on the portal; monitoring depot networks without agents; keeping the SIEM within capacity; and proving the SOC works through verification.
 
+Section twenty point five develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty point five, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty point five treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
 ### 20.6 Maturity
 
 The SOC-CMM (van Os, 2016) assesses business, people, process, technology and services. Lindqvist's self-assessment shows strong technology but weak process documentation, guiding priorities.
 
+Section twenty point six develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty point six, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty point six treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty point six, Lindqvist Freight will not accept security work without a written trail.
+
 ### 20.7 Measures of success
 
 Success is not "no incidents" but faster detection, better decisions and less harm.
+
+Section twenty point seven develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty point seven, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty point seven treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty point seven, Lindqvist Freight will not accept security work without a written trail.
 
 ### Funding the SOC
 
@@ -1336,29 +2312,81 @@ You will (1) elicit SOC requirements from stakeholders and threats; (2) write me
 
 Requirements come from the mission, threats, regulations, incidents and analysts' pain. The portal incident produced the requirement "detect likely account takeover on the customer portal within 15 minutes".
 
+Section twenty-one point one develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-one point one, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-one point one treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-one point one, Lindqvist Freight will not accept security work without a written trail.
+
 ### 21.2 Functional requirements
 
 These say what the system does: ingest load-balancer logs; correlate failures and successes per network; raise an alert with the customer ID, source network and subsequent actions.
+
+Section twenty-one point two develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-one point two, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-one point two treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-one point two, Lindqvist Freight will not accept security work without a written trail.
 
 ### 21.3 Non-functional requirements
 
 These say how well: latency under 5 minutes from event to alert; availability of 99.5% for the pipeline; no more than 10 false alerts per day to the night shift; data retained 90 days hot.
 
+Section twenty-one point three develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-one point three, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-one point three treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
 ### 21.4 Measurable wording
 
 "Fast" and "accurate" cannot be tested. Each requirement states a number, a condition and a measurement method.
+
+Section twenty-one point four develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-one point four, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-one point four treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-one point four, Lindqvist Freight will not accept security work without a written trail.
 
 ### 21.5 Traceability
 
 A table links each requirement to its source (threat, regulation, incident), the design element that meets it and the test that verifies it. ATT&CK technique IDs give a common reference for threat sources.
 
+Section twenty-one point five develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-one point five, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-one point five treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
 ### 21.6 Prioritisation
 
 With limited staff, Amara and Paolo rank requirements as must, should or could, guided by risk and cost.
 
+Section twenty-one point six develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-one point six, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-one point six treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-one point six, Lindqvist Freight will not accept security work without a written trail.
+
 ### 21.7 Change control
 
 Requirements change; each change is recorded with reason and approval, and affected tests are updated.
+
+Section twenty-one point seven develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-one point seven, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-one point seven treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-one point seven, Lindqvist Freight will not accept security work without a written trail.
 
 ### Acceptance criteria
 
@@ -1400,29 +2428,81 @@ You will (1) model the SOC pipeline as stages and data stores; (2) define the ev
 
 Lindqvist's pipeline has stages: collect (agents, syslog, cloud APIs), transport, parse and normalise, enrich (asset and identity data), store, detect, alert, and case management. Each stage can fail, delay or distort data.
 
+Section twenty-two point one develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-two point one, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-two point one treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
 ### 22.2 Event model
 
 Every normalised event carries time (UTC), source, host, user, action, outcome, and raw record reference. A shared model lets one rule work across sources.
+
+Section twenty-two point two develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-two point two, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-two point two treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point two, Lindqvist Freight will not accept security work without a written trail.
 
 ### 22.3 Entity model
 
 Entities persist across events: a customer, an employee, a host, a network. Entity tables hold attributes such as criticality, owner and normal locations, used for enrichment.
 
+Section twenty-two point three develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-two point three, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-two point three treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point three, Lindqvist Freight will not accept security work without a written trail.
+
 ### 22.4 Relationships
 
 Customers own accounts; employees use hosts; hosts sit in zones. Modelling relationships lets analysts ask "which zone is this host in?" automatically.
+
+Section twenty-two point four develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-two point four, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-two point four treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point four, Lindqvist Freight will not accept security work without a written trail.
 
 ### 22.5 Gaps from models
 
 Walking through the model stage by stage, Amara checks each source: is it collected, parsed, enriched and covered by detections? Depot networks are collected but not enriched, because the asset inventory lacks depot devices.
 
+Section twenty-two point five develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-two point five, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-two point five treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
 ### 22.6 Model ownership
 
 The data model is owned by the detection engineering team; changes are versioned like rules.
 
+Section twenty-two point six develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-two point six, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-two point six treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point six, Lindqvist Freight will not accept security work without a written trail.
+
 ### 22.7 Models and people
 
 Models also include who acts at each stage: which team fixes parsing errors, who maintains enrichment tables.
+
+Section twenty-two point seven develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-two point seven, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-two point seven treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-two point seven, Lindqvist Freight will not accept security work without a written trail.
 
 ### Enrichment freshness
 
@@ -1464,29 +2544,79 @@ You will (1) analyse threats relevant to the organisation using ATT&CK; (2) anal
 
 Lindqvist's threat analysis asks which adversaries target logistics firms and which techniques they use. Public reporting and ATT&CK groups show credential abuse, phishing of staff, ransomware and fraud through customer accounts.
 
+Section twenty-three point one develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-three point one, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-three point one treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
 ### 23.2 Technique coverage
 
 For each relevant technique, the team records data sources needed, detections present and confidence. Coverage maps show strengths (credential abuse on the portal) and gaps (lateral movement in depot networks).
+
+Section twenty-three point two develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-three point two, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-three point two treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
 
 ### 23.3 Failure analysis
 
 The monitoring system itself fails: sources go silent, parsers break after upgrades, enrichment tables go stale, rules are disabled and forgotten. A failure mode and effects table lists each failure, its effect on detection, how it would be noticed and its likelihood.
 
+Section twenty-three point three develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-three point three, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-three point three treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
 ### 23.4 Silent failures
 
 The worst failures are silent: a source stops sending and nothing alerts. These get detection of their own, covered in chapter 47.
+
+Section twenty-three point four develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-three point four, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-three point four treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-three point four, Lindqvist Freight will not accept security work without a written trail.
 
 ### 23.5 Combining views
 
 Priority is highest where an important technique depends on a fragile component — for example, account-takeover detection depending on a single load-balancer log feed.
 
+Section twenty-three point five develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-three point five, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-three point five treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-three point five, Lindqvist Freight will not accept security work without a written trail.
+
 ### 23.6 Review
 
 Analyses are reviewed by analysts, IT operations and the CISO's office, then revisited after incidents or major changes.
 
+Section twenty-three point six develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-three point six, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-three point six treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-three point six, Lindqvist Freight will not accept security work without a written trail.
+
 ### 23.7 Avoiding bias
 
 Teams overweight recent incidents. Using ATT&CK as a checklist helps consider techniques that have not yet hit Lindqvist.
+
+Section twenty-three point seven develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-three point seven, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-three point seven treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-three point seven, Lindqvist Freight will not accept security work without a written trail.
 
 ### Insider and fraud threats
 
@@ -1528,9 +2658,25 @@ You will (1) design threshold and correlation detections; (2) evaluate rules aga
 
 A threshold rule fires when a count in a window crosses a limit: at least 5 distinct users failing from one /24 in 10 minutes.
 
+Section twenty-four point one develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-four point one, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-four point one treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point one, Lindqvist Freight will not accept security work without a written trail.
+
 ### 24.2 Correlation rules
 
 A correlation rule requires several conditions, possibly from different sources: failures followed by a success, or a success followed by an address change.
+
+Section twenty-four point two develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-four point two, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-four point two treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point two, Lindqvist Freight will not accept security work without a written trail.
 
 ### Lab — comparing rule variants
 
@@ -1562,17 +2708,45 @@ threshold=5 no success clause: TP=3 FP=2 FN=0
 
 With the success clause and threshold 5, the rule catches 2 of 3 attack windows with no false alerts; at threshold 6 it catches only 1. Without the success clause, threshold 5 catches all 3 attack windows but adds 2 false alerts — the 11:00 load test and a 15:00 window.
 
+Section twenty-four point three develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-four point three, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-four point three treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
 ### 24.4 Purpose decides
 
 The no-success variant detects attempts; the success variant detects likely compromise. Lindqvist uses both: attempts go to a daytime queue for rate-limit tuning; likely compromise pages the night shift.
+
+Section twenty-four point four develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-four point four, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-four point four treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
 
 ### 24.5 Labels
 
 Evaluation needs labelled windows. Labels come from investigated incidents, authorised tests and analyst review of samples.
 
+Section twenty-four point five develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-four point five, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-four point five treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point five, Lindqvist Freight will not accept security work without a written trail.
+
 ### 24.6 Small samples
 
 Eight windows illustrate the method only; real evaluation uses weeks of data.
+
+Section twenty-four point six develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-four point six, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-four point six treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-four point six, Lindqvist Freight will not accept security work without a written trail.
 
 ### Rule naming and severity
 
@@ -1614,29 +2788,91 @@ You will (1) work in a team on an open-ended SOC design problem; (2) generate an
 
 Teams design monitoring for Lindqvist's depot networks, where handheld scanners and old workstations cannot run agents. The design must detect unusual connections from depots into business systems.
 
+Section twenty-five point one develops design studio with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-five point one, Paolo Ricci expects design claims to carry owners and dates.
+
+Section twenty-five point one treats design studio as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point one, Lindqvist Freight will not accept design work without a written trail.
+
 ### 25.2 Generating alternatives
 
 Amara's team lists three options: network flow monitoring at the depot-to-business boundary; a network detection sensor with protocol analysis; and tightening firewall rules with logging of denied connections.
+
+Section twenty-five point two develops design studio with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-five point two, Paolo Ricci expects design claims to carry owners and dates.
+
+Section twenty-five point two treats design studio as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point two, Lindqvist Freight will not accept design work without a written trail.
 
 ### 25.3 Criteria
 
 They compare options on visibility, cost, operational load, privacy and failure modes, using a weighted table.
 
+Section twenty-five point three develops design studio with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-five point three, Paolo Ricci expects design claims to carry owners and dates.
+
+Section twenty-five point three treats design studio as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point three, Lindqvist Freight will not accept design work without a written trail.
+
+Section twenty-five point three fails closed if design evidence is missing rather than guessing.
+
 ### 25.4 Studio critique
 
 Each team presents for ten minutes; peers and staff challenge assumptions. The studio values clear reasoning over polished slides.
+
+Section twenty-five point four develops design studio with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-five point four, Paolo Ricci expects design claims to carry owners and dates.
+
+Section twenty-five point four treats design studio as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point four, Lindqvist Freight will not accept design work without a written trail.
 
 ### 25.5 Iteration
 
 After critique, teams revise. Amara's team learns that the boundary firewall already logs allowed and denied flows; combining firewall logs with a small number of allow rules is cheaper than a new sensor.
 
+Section twenty-five point five develops design studio with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-five point five, Paolo Ricci expects design claims to carry owners and dates.
+
+Section twenty-five point five treats design studio as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point five, Lindqvist Freight will not accept design work without a written trail.
+
 ### 25.6 Documentation
 
 The final design includes a diagram, data flows, requirements met, risks and a test plan.
 
+Section twenty-five point six develops design studio with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-five point six, Paolo Ricci expects design claims to carry owners and dates.
+
+Section twenty-five point six treats design studio as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point six, Lindqvist Freight will not accept design work without a written trail.
+
+Section twenty-five point six fails closed if design evidence is missing rather than guessing.
+
 ### 25.7 Teamwork
 
 Roles rotate: presenter, scribe, critic. Everyone explains every part.
+
+Section twenty-five point seven develops design studio with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-five point seven, Paolo Ricci expects design claims to carry owners and dates.
+
+Section twenty-five point seven treats design studio as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-five point seven, Lindqvist Freight will not accept design work without a written trail.
+
+Section twenty-five point seven fails closed if design evidence is missing rather than guessing.
 
 ### Privacy in the design
 
@@ -1678,29 +2914,79 @@ You will (1) compare SOC architecture models such as centralised, distributed an
 
 Zimmerman (2014) and Knerler, Parker and Zimmerman (2022) describe SOC structures from small centralised teams to tiered, distributed and federated models. Lindqvist, with one head office and forty depots, runs a small central SOC with depot IT staff as local contacts.
 
+Section twenty-six point one develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-six point one, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-six point one treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
 ### 26.2 Data platform options
 
 A traditional SIEM indexes events for fast search and built-in rules. A data-lake approach stores cheaply and queries flexibly but needs more engineering. Many SOCs combine them: hot SIEM for recent, high-value data and a lake for long-term, bulk data.
+
+Section twenty-six point two develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-six point two, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-six point two treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
 
 ### 26.3 Managed services
 
 A managed detection provider can watch at night and bring wider threat knowledge, but knows less about local context and needs clear escalation agreements. Lindqvist considers using one for night coverage.
 
+Section twenty-six point three develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-six point three, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-six point three treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
 ### 26.4 Build versus buy
 
 Building gives control and fit; buying gives speed and support. Engineers estimate total cost over several years, including staff time, not just licence price.
+
+Section twenty-six point four develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-six point four, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-six point four treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-six point four, Lindqvist Freight will not accept security work without a written trail.
 
 ### 26.5 Decision records
 
 Each major choice is written as an architecture decision record: context, options, decision, consequences. Future engineers can see why things are as they are.
 
+Section twenty-six point five develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-six point five, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-six point five treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-six point five, Lindqvist Freight will not accept security work without a written trail.
+
 ### 26.6 Reversibility
 
 Prefer choices that can be undone. Keeping raw logs in an open format makes changing platforms later possible.
 
+Section twenty-six point six develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-six point six, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-six point six treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-six point six, Lindqvist Freight will not accept security work without a written trail.
+
 ### 26.7 Case
 
 With storage growing (chapter 6), Lindqvist must decide whether to expand the SIEM or add a lake for firewall and DNS logs.
+
+Section twenty-six point seven develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-six point seven, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-six point seven treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-six point seven, Lindqvist Freight will not accept security work without a written trail.
 
 ### Worked example
 
@@ -1738,29 +3024,79 @@ You will (1) design detective and responsive controls with defined triggers and 
 
 A detective control finds activity; a responsive control acts on it. For portal takeover, detection is the possible-takeover rule; response is locking the account, invalidating sessions and contacting the customer.
 
+Section twenty-seven point one develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-seven point one, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-seven point one treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
 ### 27.2 Playbooks
 
 A playbook lists the steps an analyst follows for an alert type: verify, scope, contain, notify, record. It names the data to check and the decision points. NIST SP 800-61r3 places such response activities within the broader risk-management cycle.
+
+Section twenty-seven point two develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-seven point two, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-seven point two treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
 
 ### 27.3 Automated actions
 
 Some steps can be automated: invalidating a session is low-risk and fast. Others, such as blocking a network range, can harm legitimate users and need a human decision.
 
+Section twenty-seven point three develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-seven point three, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-seven point three treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
 ### 27.4 Safeguards
 
 Automation needs limits: maximum actions per hour, exclusions for critical accounts, and automatic alerts if limits are reached. A runaway automation can lock out thousands of customers.
+
+Section twenty-seven point four develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-seven point four, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-seven point four treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-seven point four, Lindqvist Freight will not accept security work without a written trail.
 
 ### 27.5 D3FEND mapping
 
 D3FEND names defensive techniques such as authentication event thresholding and account locking. Mapping controls to it clarifies what each control actually does and helps find gaps.
 
+Section twenty-seven point five develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-seven point five, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-seven point five treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-seven point five, Lindqvist Freight will not accept security work without a written trail.
+
 ### 27.6 Testing controls
 
 Each control is tested with safe synthetic events, and response playbooks are rehearsed in exercises.
 
+Section twenty-seven point six develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-seven point six, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-seven point six treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-seven point six, Lindqvist Freight will not accept security work without a written trail.
+
 ### 27.7 Case
 
 Amara designs the possible-takeover playbook with Paolo and the customer service manager.
+
+Section twenty-seven point seven develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-seven point seven, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-seven point seven treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-seven point seven, Lindqvist Freight will not accept security work without a written trail.
 
 ### Customer experience
 
@@ -1802,29 +3138,85 @@ You will (1) implement a detection and its pipeline changes; (2) use staged envi
 
 Implementation turns R-07 and the playbook into working parts: load-balancer log forwarding, parser updates, the rule, the alert routing and the automation.
 
+Section twenty-eight point one develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-eight point one, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-eight point one treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point one, Lindqvist Freight will not accept security work without a written trail.
+
 ### 28.2 Environments
 
 Changes go first to a test SIEM with replayed synthetic data, then to production in monitor-only mode, then to alerting. Each stage has entry and exit criteria.
+
+Section twenty-eight point two develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-eight point two, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-eight point two treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point two, Lindqvist Freight will not accept security work without a written trail.
 
 ### 28.3 Configuration as code
 
 Parser configurations, rules and routing are stored in version control and deployed by a pipeline, not edited by hand in consoles. This makes changes reviewable and reversible.
 
+Section twenty-eight point three develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-eight point three, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-eight point three treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point three, Lindqvist Freight will not accept security work without a written trail.
+
 ### 28.4 Parser updates
 
 The load-balancer logs use a new format. Amara writes a parser, tests it on 1,000 sample lines, and checks that every field maps to the event model.
+
+Section twenty-eight point four develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-eight point four, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-eight point four treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point four, Lindqvist Freight will not accept security work without a written trail.
 
 ### 28.5 Change management
 
 Production changes follow Lindqvist's change process: a ticket, a review, a window and a rollback plan.
 
+Section twenty-eight point five develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-eight point five, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-eight point five treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point five, Lindqvist Freight will not accept security work without a written trail.
+
 ### 28.6 Evidence
 
 Implementation records include commits, test results, change tickets and screenshots of monitor-only results. Auditors and future engineers use them.
 
+Section twenty-eight point six develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-eight point six, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-eight point six treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point six, Lindqvist Freight will not accept security work without a written trail.
+
 ### 28.7 Pairing
 
 Amara pairs with an analyst during routing configuration so alerts land where analysts expect them.
+
+Section twenty-eight point seven develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-eight point seven, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-eight point seven treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-eight point seven, Lindqvist Freight will not accept security work without a written trail.
 
 ### Rollback rehearsal
 
@@ -1866,9 +3258,23 @@ You will (1) define SOC metrics linked to goals; (2) compute robust summaries of
 
 Knerler, Parker and Zimmerman (2022) treat measurement as a strategy: "measure performance to improve performance". Metrics show whether changes help and where effort should go.
 
+Section twenty-nine point one develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-nine point one, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-nine point one treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point one, Lindqvist Freight will not accept security work without a written trail.
+
 ### 29.2 Choosing metrics
 
 Good SOC metrics tie to goals: time from detection to acknowledgement, share of incidents detected internally rather than reported by customers, coverage of priority techniques, and false-alert rates per rule.
+
+Section twenty-nine point two develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-nine point two, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-nine point two treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — response-time summaries
 
@@ -1890,17 +3296,45 @@ n=15 mean=10.2 median=7 p90=16.4
 
 Fifteen acknowledgement times give a mean of 10.2 minutes but a median of 7 and a 90th percentile of 16.4. One 41-minute case pulls the mean up. The median describes the typical case, the 90th percentile the slow tail that matters for the 15-minute requirement.
 
+Section twenty-nine point three develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-nine point three, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-nine point three treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
 ### 29.4 Distorting metrics
 
 Kokulu et al. (2019) found metric mismatches common in SOCs. Rewarding fast closure can produce careless closure. Pair speed metrics with quality checks, such as reviewed samples of closed alerts.
+
+Section twenty-nine point four develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-nine point four, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-nine point four treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
 
 ### 29.5 Context
 
 A metric without context misleads: acknowledgement time rose last month because night staffing fell, not because analysts slowed. Reports include such explanations.
 
+Section twenty-nine point five develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-nine point five, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-nine point five treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point five, Lindqvist Freight will not accept security work without a written trail.
+
 ### 29.6 Data quality
 
 Metrics depend on case-system timestamps; analysts who acknowledge late in the tool but act early make data wrong. Training and tooling fix this.
+
+Section twenty-nine point six develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section twenty-nine point six, Paolo Ricci expects security claims to carry owners and dates.
+
+Section twenty-nine point six treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section twenty-nine point six, Lindqvist Freight will not accept security work without a written trail.
 
 ### Coverage metrics
 
@@ -1942,9 +3376,21 @@ You will (1) verify detection logic with automated unit tests; (2) verify pipeli
 
 Verification asks "did we build it right?" — does the rule behave as specified? Validation asks "did we build the right thing?" — does it help detect real threats in operation? This laboratory focuses on verification.
 
+Section thirty point one develops verification laboratory with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty point one, Paolo Ricci expects verification claims to carry owners and dates.
+
+Section thirty point one treats verification laboratory as testable only when evidence and ticket IDs are recorded.
+
 ### 30.2 The laboratory
 
 The laboratory is a test SIEM isolated from production, with replayed synthetic logs. No real customer data and no attack tools are used; test events are crafted log records that look like the behaviour the rule targets.
+
+Section thirty point two develops verification laboratory with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty point two, Paolo Ricci expects verification claims to carry owners and dates.
+
+Section thirty point two treats verification laboratory as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — unit tests for the burst rule
 
@@ -1973,17 +3419,49 @@ tests run 4 failures 0
 
 Four tests run and none fail: the rule fires at exactly 6 distinct failing users with a success, stays quiet at 5, stays quiet without a success even at 9 users, and stays quiet with no activity. These encode the boundary and the success clause decided in chapters 9 and 24.
 
+Section thirty point three develops verification laboratory with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty point three, Paolo Ricci expects verification claims to carry owners and dates.
+
+Section thirty point three treats verification laboratory as testable only when evidence and ticket IDs are recorded.
+
 ### 30.4 Pipeline tests
 
 Unit tests check logic; pipeline tests check that a synthetic record entering the collector produces an alert in the case system with correct fields. Amara injects three records and checks each field in the resulting alert.
+
+Section thirty point four develops verification laboratory with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty point four, Paolo Ricci expects verification claims to carry owners and dates.
+
+Section thirty point four treats verification laboratory as testable only when evidence and ticket IDs are recorded.
 
 ### 30.5 Evidence
 
 The laboratory record lists the test, version, input, expected and actual results, date and tester.
 
+Section thirty point five develops verification laboratory with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty point five, Paolo Ricci expects verification claims to carry owners and dates.
+
+Section thirty point five treats verification laboratory as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point five, Lindqvist Freight will not accept verification work without a written trail.
+
+Section thirty point five fails closed if verification evidence is missing rather than guessing.
+
 ### 30.6 Repeatability
 
 Tests run automatically on each rule change, so verification is continuous, not a one-off.
+
+Section thirty point six develops verification laboratory with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty point six, Paolo Ricci expects verification claims to carry owners and dates.
+
+Section thirty point six treats verification laboratory as testable only when evidence and ticket IDs are recorded.
+
+For section thirty point six, Lindqvist Freight will not accept verification work without a written trail.
+
+Section thirty point six fails closed if verification evidence is missing rather than guessing.
 
 ### Test data hygiene
 
@@ -2025,29 +3503,79 @@ You will (1) implement depot network monitoring from the studio design; (2) inte
 
 The depot design from chapter 25 now becomes real: restrict depot-to-business traffic to five services, log denials, and alert on repeated attempts to new destinations.
 
+Section thirty-one point one develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-one point one, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-one point one treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-one point one, Lindqvist Freight will not accept security work without a written trail.
+
 ### 31.2 Asset enrichment
 
 Detection needs to know which addresses are depots. Amara works with IT to add depot subnets and device types to the asset inventory, then to the enrichment tables.
+
+Section thirty-one point two develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-one point two, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-one point two treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
 
 ### 31.3 Phased rollout
 
 Forty depots cannot change at once. Three pilot depots go first; issues found there are fixed before the rest follow in groups of ten.
 
+Section thirty-one point three develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-one point three, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-one point three treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-one point three, Lindqvist Freight will not accept security work without a written trail.
+
 ### 31.4 Pilot findings
 
 In the pilot, a label printer at one depot needs to reach a print server not on the allowed list. The firewall denies it, printing stops and the depot calls IT. The team adds the print service, documents why, and checks other depots for the same printers before the next group.
+
+Section thirty-one point four develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-one point four, Paolo Ricci expects security claims to carry owners and dates.
 
 ### 31.5 Coordination
 
 Depot managers get a notice before changes, a contact number and a rollback promise.
 
+Section thirty-one point five develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-one point five, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-one point five treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-one point five, Lindqvist Freight will not accept security work without a written trail.
+
 ### 31.6 Monitoring the rollout
 
 A dashboard shows denials per depot per hour; a spike after a change signals a missed legitimate service.
 
+Section thirty-one point six develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-one point six, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-one point six treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-one point six, Lindqvist Freight will not accept security work without a written trail.
+
 ### 31.7 Closure
 
 After all depots, the team reviews denial rates and alert volume against the design estimates.
+
+Section thirty-one point seven develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-one point seven, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-one point seven treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-one point seven, Lindqvist Freight will not accept security work without a written trail.
 
 ### Documenting exceptions
 
@@ -2089,29 +3617,81 @@ You will (1) define reliability targets for the monitoring pipeline; (2) identif
 
 The pipeline has a target of 99.5% availability and 99.9% completeness of priority sources. Completeness — the share of expected events that arrive — matters as much as uptime, because a running pipeline with missing data still blinds the SOC.
 
+Section thirty-two point one develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-two point one, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-two point one treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
 ### 32.2 Single points of failure
 
 Lindqvist's pipeline has one collector per site and one load-balancer log feed. If either fails, a whole source disappears.
+
+Section thirty-two point two develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-two point two, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-two point two treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-two point two, Lindqvist Freight will not accept security work without a written trail.
 
 ### 32.3 Redundancy
 
 Two collectors per site in active-passive mode, and a second feed path for load-balancer logs, remove the main single points. Redundancy costs money, so it goes first where detection value is highest.
 
+Section thirty-two point three develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-two point three, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-two point three treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
 ### 32.4 Graceful degradation
 
 When the SIEM is overloaded, the pipeline should drop low-value debug logs first, not authentication logs. Priority queues implement this.
+
+Section thirty-two point four develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-two point four, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-two point four treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-two point four, Lindqvist Freight will not accept security work without a written trail.
 
 ### 32.5 Measuring completeness
 
 Comparing events counted at sources with events stored in the SIEM shows loss. A daily reconciliation report lists sources below 99.9%.
 
+Section thirty-two point five develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-two point five, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-two point five treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-two point five, Lindqvist Freight will not accept security work without a written trail.
+
 ### 32.6 Error budgets
 
 If availability falls below target, new features pause and reliability work takes priority until the budget recovers.
 
+Section thirty-two point six develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-two point six, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-two point six treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-two point six, Lindqvist Freight will not accept security work without a written trail.
+
 ### 32.7 Case
 
 In week one of reconciliation, the portal web servers show 99.95% completeness; the depot firewall shows 97.8% because of a UDP syslog path that drops packets under load.
+
+Section thirty-two point seven develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-two point seven, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-two point seven treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-two point seven, Lindqvist Freight will not accept security work without a written trail.
 
 ### Monitoring the monitors
 
@@ -2153,29 +3733,79 @@ You will (1) assess safety risks of SOC actions on operations; (2) design respon
 
 Response actions can harm the business. Isolating a depot workstation might stop dispatch for a shift. Playbooks state which assets are safety- or business-critical and require approval before isolating them.
 
+Section thirty-three point one develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-three point one, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-three point one treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
 ### 33.2 Critical services
 
 Lindqvist lists services that must continue: dispatch, driver routing, customer tracking and payments. For each, the SOC agrees acceptable actions and contacts in advance.
+
+Section thirty-three point two develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-three point two, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-three point two treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-three point two, Lindqvist Freight will not accept security work without a written trail.
 
 ### 33.3 SOC resilience
 
 The SOC itself can fail: the SIEM may go down, the case system may be unavailable, or the SOC office may be inaccessible. NIST CSF 2.0's Recover function and SP 800-61r3 call for planning and practising recovery.
 
+Section thirty-three point three develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-three point three, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-three point three treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
 ### 33.4 Fallbacks
 
 If the SIEM fails, analysts can query critical sources directly using read-only accounts and runbooks. If the case system fails, a shared offline template records actions until it returns.
+
+Section thirty-three point four develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-three point four, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-three point four treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
 
 ### 33.5 Exercises
 
 Twice a year the SOC rehearses: "SIEM unavailable for four hours during a portal attack". Rehearsals reveal missing access, outdated runbooks and unclear roles.
 
+Section thirty-three point five develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-three point five, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-three point five treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-three point five, Lindqvist Freight will not accept security work without a written trail.
+
 ### 33.6 Recovery
 
 After a failure, the SOC checks for gaps in data, replays buffered logs and reviews whether detections missed anything during the outage.
 
+Section thirty-three point six develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-three point six, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-three point six treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-three point six, Lindqvist Freight will not accept security work without a written trail.
+
 ### 33.7 Case
 
 In the first exercise, analysts discover the read-only accounts for direct log access had expired.
+
+Section thirty-three point seven develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-three point seven, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-three point seven treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-three point seven, Lindqvist Freight will not accept security work without a written trail.
 
 ### Communication during failure
 
@@ -2217,29 +3847,79 @@ You will (1) integrate the SOC with IT service management, identity and customer
 
 A detection is only useful if its result reaches the people and systems that act. The possible-takeover alert must reach the case system, the customer service queue and the identity platform that holds accounts.
 
+Section thirty-four point one develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-four point one, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-four point one treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
 ### 34.2 IT service management
 
 Alerts that need IT action, such as fixing a log feed, become tickets in the IT service system with agreed priority mapping: SOC "high" means IT "P2", with a four-hour response.
+
+Section thirty-four point two develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-four point two, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-four point two treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
 
 ### 34.3 Identity platform
 
 The automation calls the customer identity platform's interface to place holds and invalidate sessions. The interface uses a dedicated service account with only those permissions, and every call is logged.
 
+Section thirty-four point three develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-four point three, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-four point three treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
 ### 34.4 Customer service
 
 Customer service sees a simplified view: "account on security hold, reason: suspicious login, contact customer by registered phone". They do not see raw logs.
+
+Section thirty-four point four develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-four point four, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-four point four treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-four point four, Lindqvist Freight will not accept security work without a written trail.
 
 ### 34.5 Interface contracts
 
 Each integration has a contract: data fields, formats, rate limits, error codes and owner. Contracts prevent silent breakage when one side changes.
 
+Section thirty-four point five develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-four point five, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-four point five treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-four point five, Lindqvist Freight will not accept security work without a written trail.
+
 ### 34.6 Failure handling
 
 If the identity platform does not respond, the automation retries twice, then raises a high-priority alert for manual action. It never assumes success.
 
+Section thirty-four point six develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-four point six, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-four point six treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-four point six, Lindqvist Freight will not accept security work without a written trail.
+
 ### 34.7 Testing
 
 Integration tests run monthly with a synthetic test customer account reserved for this purpose.
+
+Section thirty-four point seven develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-four point seven, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-four point seven treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-four point seven, Lindqvist Freight will not accept security work without a written trail.
 
 ### Ownership of integrations
 
@@ -2281,29 +3961,83 @@ You will (1) design a solution to a cross-cutting SOC problem in a team; (2) bal
 
 Night shift has two analysts. Studio II asks teams to reduce night alert load by 40% without increasing missed priority incidents.
 
+Section thirty-five point one develops design studio ii with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-five point one, Paolo Ricci expects design claims to carry owners and dates.
+
+Section thirty-five point one treats design studio ii as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-five point one, Lindqvist Freight will not accept design work without a written trail.
+
 ### 35.2 Options explored
 
 Amara's team considers: moving low-severity rules to a morning queue; a managed provider for overflow; automation of enrichment so each alert takes less time; and stricter rule promotion criteria.
+
+Section thirty-five point two develops design studio ii with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-five point two, Paolo Ricci expects design claims to carry owners and dates.
+
+Section thirty-five point two treats design studio ii as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-five point two, Lindqvist Freight will not accept design work without a written trail.
 
 ### 35.3 Analysis
 
 Using a month of alert data, they find 55% of night alerts come from five rules, three of which have never led to an incident. Moving those three to morning review cuts night load by 31%. Automated enrichment saves about two minutes per remaining alert.
 
+Section thirty-five point three develops design studio ii with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-five point three, Paolo Ricci expects design claims to carry owners and dates.
+
+Section thirty-five point three treats design studio ii as testable only when evidence and ticket IDs are recorded.
+
 ### 35.4 Human factors
 
 Analysts in the studio session warn that moving alerts to morning creates a morning backlog. The team schedules a 30-minute morning review slot and limits the queue.
+
+Section thirty-five point four develops design studio ii with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-five point four, Paolo Ricci expects design claims to carry owners and dates.
+
+Section thirty-five point four treats design studio ii as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-five point four, Lindqvist Freight will not accept design work without a written trail.
 
 ### 35.5 The design
 
 Move three rules to morning review; automate enrichment for the top ten alert types; set promotion criteria for new night-paging rules (precision above 0.3 in monitor-only mode); review after one month.
 
+Section thirty-five point five develops design studio ii with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-five point five, Paolo Ricci expects design claims to carry owners and dates.
+
+Section thirty-five point five treats design studio ii as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-five point five, Lindqvist Freight will not accept design work without a written trail.
+
 ### 35.6 Critique of others
 
 Amara's team questions another team's proposal to page only on "critical" assets: the asset inventory marks only 40% of systems, so many unclassified assets would never page.
 
+Section thirty-five point six develops design studio ii with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-five point six, Paolo Ricci expects design claims to carry owners and dates.
+
+Section thirty-five point six treats design studio ii as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-five point six, Lindqvist Freight will not accept design work without a written trail.
+
 ### 35.7 Readiness
 
 The design includes owners, a timeline and a rollback: rules can be restored to night paging in minutes.
+
+Section thirty-five point seven develops design studio ii with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-five point seven, Paolo Ricci expects design claims to carry owners and dates.
+
+Section thirty-five point seven treats design studio ii as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-five point seven, Lindqvist Freight will not accept design work without a written trail.
 
 ### Worked example
 
@@ -2341,6 +4075,14 @@ You will (1) size SIEM ingestion and storage from source rates; (2) plan for pea
 
 Ingestion is measured in events per second (EPS). Summing sources gives the average; peaks during incidents or business hours can be several times higher.
 
+Section thirty-six point one develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-six point one, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-six point one treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-six point one, Lindqvist Freight will not accept security work without a written trail.
+
 ### Lab — sizing the pipeline
 
 ```python
@@ -2365,21 +4107,57 @@ raw GB/day=285.1  90-day hot TB=25.7
 
 Four sources give 6,000 EPS on average and 15,000 at a 2.5× peak. At 550 bytes per event, raw volume is 285.1 GB per day, and 90 days hot would need 25.7 TB — far above the 12 TB tier, confirming the need for the tiering decided in chapter 26.
 
+Section thirty-six point two develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-six point two, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-six point two treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
 ### 36.3 Peaks
 
 Pipelines must handle peaks without dropping priority data. Buffers absorb short spikes; sustained peaks need capacity or graceful degradation.
+
+Section thirty-six point three develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-six point three, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-six point three treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-six point three, Lindqvist Freight will not accept security work without a written trail.
 
 ### 36.4 Reducing volume
 
 Options: filter events with no detection or investigation value, summarise high-volume sources (for example, firewall flows into hourly aggregates), and tier storage. Each reduction is checked against detection and investigation needs before applying.
 
+Section thirty-six point four develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-six point four, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-six point four treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
 ### 36.5 Query performance
 
 Rules that scan large time ranges or unindexed fields slow everything. Engineers measure rule run times and rewrite the slowest.
 
+Section thirty-six point five develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-six point five, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-six point five treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-six point five, Lindqvist Freight will not accept security work without a written trail.
+
 ### 36.6 Scale tests
 
 Before peak season, the team replays a day of synthetic logs at 3× speed in the test SIEM to check that rules keep up.
+
+Section thirty-six point six develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-six point six, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-six point six treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-six point six, Lindqvist Freight will not accept security work without a written trail.
 
 ### Cost visibility
 
@@ -2421,29 +4199,81 @@ You will (1) run day-to-day SOC operations: shifts, handovers and queues; (2) ap
 
 Lindqvist's SOC runs day and night shifts. Handovers use a template: open cases, alerts awaiting action, system health issues and expected events (such as planned maintenance). Chapter 29's slowest case happened at handover; overlapping shifts by 15 minutes now gives time to talk.
 
+Section thirty-seven point one develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-seven point one, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-seven point one treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
 ### 37.2 Triage
 
 Analysts follow a triage sequence: confirm the alert is valid, gather context from enrichment, decide benign, suspicious or malicious, and either close with reason or escalate. Sundaramurthy et al. (2014) observed that much of this knowledge is tacit; written triage notes per rule make it shareable.
+
+Section thirty-seven point two develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-seven point two, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-seven point two treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
 
 ### 37.3 Escalation
 
 Escalation paths name who to call for each alert type, with times. Analysts never hesitate to escalate; false escalations are reviewed without blame.
 
+Section thirty-seven point three develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-seven point three, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-seven point three treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-seven point three, Lindqvist Freight will not accept security work without a written trail.
+
 ### 37.4 Workload
 
 Alert fatigue lowers accuracy (Alahmadi et al., 2022). Queue limits, rotation between alert types and protected time for investigation reduce fatigue.
+
+Section thirty-seven point four develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-seven point four, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-seven point four treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-seven point four, Lindqvist Freight will not accept security work without a written trail.
 
 ### 37.5 Wellbeing
 
 Night work and incidents are stressful. Managers watch for burnout signs and share incident load.
 
+Section thirty-seven point five develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-seven point five, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-seven point five treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-seven point five, Lindqvist Freight will not accept security work without a written trail.
+
 ### 37.6 Daily feedback
 
 Each morning, the team spends ten minutes on yesterday's noisy rules and confusing alerts; engineers take actions.
 
+Section thirty-seven point six develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-seven point six, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-seven point six treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-seven point six, Lindqvist Freight will not accept security work without a written trail.
+
 ### 37.7 Engineering in operations
 
 Amara spends one day a week in the queue, so she sees the effect of her rules on analysts first-hand.
+
+Section thirty-seven point seven develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-seven point seven, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-seven point seven treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-seven point seven, Lindqvist Freight will not accept security work without a written trail.
 
 ### Closing well
 
@@ -2485,29 +4315,81 @@ You will (1) validate that detections work against realistic behaviour; (2) plan
 
 Validation asks whether the SOC detects what matters in real conditions. Verification (chapter 30) proved rules match their specifications; validation tests whether the specifications and the whole system catch realistic behaviour.
 
+Section thirty-eight point one develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-eight point one, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-eight point one treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
 ### 38.2 Purple-team validation
 
 In a purple-team exercise, an authorised team performs agreed, safe simulations of techniques while defenders watch. Scope, timing and stop conditions are approved by the CISO. The SOC sees which simulations produced alerts, which produced only logs and which left nothing.
+
+Section thirty-eight point two develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-eight point two, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-eight point two treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
 
 ### 38.3 Technique selection
 
 Lindqvist chooses twelve priority ATT&CK techniques from its threat analysis, including valid account use, new services and remote logons into depot networks.
 
+Section thirty-eight point three develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-eight point three, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-eight point three treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-eight point three, Lindqvist Freight will not accept security work without a written trail.
+
 ### 38.4 Outcomes
 
 For each simulation the result is: alerted, logged but no alert, or not logged. Each category leads to a different fix: tuning, new detection or new data source.
+
+Section thirty-eight point four develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-eight point four, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-eight point four treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
 
 ### 38.5 Real incidents
 
 Validation also uses real incidents: did the SOC detect them, or did customers report them first? The portal takeover was detected internally — a validation point for R-07.
 
+Section thirty-eight point five develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-eight point five, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-eight point five treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-eight point five, Lindqvist Freight will not accept security work without a written trail.
+
 ### 38.6 Avoiding gaming
 
 Defenders do not get the simulation script in advance; otherwise detections are tuned to the test rather than the behaviour.
 
+Section thirty-eight point six develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-eight point six, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-eight point six treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-eight point six, Lindqvist Freight will not accept security work without a written trail.
+
 ### 38.7 Repeat
 
 Validation repeats quarterly; results feed the coverage metric from chapter 29.
+
+Section thirty-eight point seven develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-eight point seven, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-eight point seven treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-eight point seven, Lindqvist Freight will not accept security work without a written trail.
+
+Section thirty-eight point seven fails closed if security evidence is missing rather than guessing.
 
 ### Safety of exercises
 
@@ -2549,29 +4431,81 @@ You will (1) design detections and pipelines that remain maintainable; (2) manag
 
 Every rule, parser and integration costs time to maintain. A SOC with 400 rules nobody understands is weaker than one with 150 well-kept rules.
 
+Section thirty-nine point one develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-nine point one, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-nine point one treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-nine point one, Lindqvist Freight will not accept security work without a written trail.
+
 ### 39.2 Rule lifecycle
 
 Rules move through proposed, testing, monitor-only, active, under review and retired. Each state has entry criteria. Rules that never fire or never lead to action are reviewed for retirement.
+
+Section thirty-nine point two develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-nine point two, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-nine point two treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
 
 ### 39.3 Readable rules
 
 Clear names, comments explaining intent, and references to the requirement and ATT&CK technique let others maintain rules when the author leaves.
 
+Section thirty-nine point three develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-nine point three, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-nine point three treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-nine point three, Lindqvist Freight will not accept security work without a written trail.
+
 ### 39.4 Shared components
 
 Common logic, such as "is this address in a depot subnet?", lives in one shared lookup rather than copied into twenty rules, so a change happens in one place.
+
+Section thirty-nine point four develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-nine point four, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-nine point four treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
 
 ### 39.5 Toil
 
 Toil is repetitive manual work that scales with load: restarting a stuck collector by hand, copying alert fields into tickets. Engineers automate toil to free analysts.
 
+Section thirty-nine point five develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-nine point five, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-nine point five treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-nine point five, Lindqvist Freight will not accept security work without a written trail.
+
 ### 39.6 Documentation
 
 Runbooks, architecture records and rule notes are kept beside the code and reviewed with changes.
 
+Section thirty-nine point six develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-nine point six, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-nine point six treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-nine point six, Lindqvist Freight will not accept security work without a written trail.
+
 ### 39.7 Knowledge transfer
 
 Before Amara's placement ends, she runs a handover session and pairs Paolo's next junior with her on two rules.
+
+Section thirty-nine point seven develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section thirty-nine point seven, Paolo Ricci expects security claims to carry owners and dates.
+
+Section thirty-nine point seven treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section thirty-nine point seven, Lindqvist Freight will not accept security work without a written trail.
 
 ### Dependency tracking
 
@@ -2613,9 +4547,25 @@ You will (1) verify an end-to-end requirement under varied conditions; (2) analy
 
 Laboratory II verifies requirement R-07 — possible-takeover alert acknowledged within 15 minutes — not just in quiet conditions but during busy periods, at night and at shift handover.
 
+Section forty point one develops verification laboratory ii with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty point one, Paolo Ricci expects verification claims to carry owners and dates.
+
+Section forty point one treats verification laboratory ii as testable only when evidence and ticket IDs are recorded.
+
+For section forty point one, Lindqvist Freight will not accept verification work without a written trail.
+
 ### 40.2 Method
 
 Five timed synthetic injections run in production under a test customer account, with analysts aware a test may happen but not when. Times are captured at ingestion, detection and acknowledgement.
+
+Section forty point two develops verification laboratory ii with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty point two, Paolo Ricci expects verification claims to carry owners and dates.
+
+Section forty point two treats verification laboratory ii as testable only when evidence and ticket IDs are recorded.
+
+For section forty point two, Lindqvist Freight will not accept verification work without a written trail.
 
 ### Lab — timing five runs
 
@@ -2647,17 +4597,51 @@ R5 handover  ingest= 110s detect= 220s ack= 680s total= 16.8 min FAIL
 
 Three runs pass (11.5, 10.2 and 13.7 minutes). The busy-period run fails at 19.7 minutes: ingestion slowed to 240 seconds and acknowledgement took 660 seconds. The handover run fails at 16.8 minutes, almost entirely from slow acknowledgement.
 
+Section forty point three develops verification laboratory ii with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty point three, Paolo Ricci expects verification claims to carry owners and dates.
+
+Section forty point three treats verification laboratory ii as testable only when evidence and ticket IDs are recorded.
+
+For section forty point three, Lindqvist Freight will not accept verification work without a written trail.
+
 ### 40.4 Stage analysis
 
 Detection time stays near 200–280 seconds in all runs. The failures come from ingestion under load and from analyst acknowledgement under load or handover.
+
+Section forty point four develops verification laboratory ii with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty point four, Paolo Ricci expects verification claims to carry owners and dates.
+
+Section forty point four treats verification laboratory ii as testable only when evidence and ticket IDs are recorded.
+
+For section forty point four, Lindqvist Freight will not accept verification work without a written trail.
 
 ### 40.5 Fixes
 
 Ingestion: raise the priority of portal logs in the pipeline queue. Acknowledgement: page the possible-takeover alert to a dedicated device rather than the shared queue, and keep the 15-minute handover overlap.
 
+Section forty point five develops verification laboratory ii with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty point five, Paolo Ricci expects verification claims to carry owners and dates.
+
+Section forty point five treats verification laboratory ii as testable only when evidence and ticket IDs are recorded.
+
+For section forty point five, Lindqvist Freight will not accept verification work without a written trail.
+
 ### 40.6 Re-verification
 
 After fixes, two further busy and handover runs pass at 12.9 and 13.4 minutes.
+
+Section forty point six develops verification laboratory ii with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty point six, Paolo Ricci expects verification claims to carry owners and dates.
+
+Section forty point six treats verification laboratory ii as testable only when evidence and ticket IDs are recorded.
+
+For section forty point six, Lindqvist Freight will not accept verification work without a written trail.
+
+Section forty point six fails closed if verification evidence is missing rather than guessing.
 
 ### Test hygiene in production
 
@@ -2699,29 +4683,83 @@ You will (1) optimise SOC performance across detection quality, speed and cost; 
 
 The SOC balances detection quality, time to respond, analyst load and cost. Improving one can harm another: cheaper storage slows investigations; more rules raise load.
 
+Section forty-one point one develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-one point one, Paolo Ricci expects security claims to carry owners and dates.
+
+Section forty-one point one treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section forty-one point one, Lindqvist Freight will not accept security work without a written trail.
+
 ### 41.2 Finding bottlenecks
 
 Laboratory II showed acknowledgement, not detection, limited response time. Optimising rule speed further would have changed nothing. Optimisation starts at the bottleneck.
+
+Section forty-one point two develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-one point two, Paolo Ricci expects security claims to carry owners and dates.
+
+Section forty-one point two treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section forty-one point two, Lindqvist Freight will not accept security work without a written trail.
 
 ### 41.3 Data-driven targets
 
 Amara ranks candidate improvements by expected effect on the 90th-percentile response time and analyst minutes per day, using measured data from earlier chapters.
 
+Section forty-one point three develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-one point three, Paolo Ricci expects security claims to carry owners and dates.
+
+Section forty-one point three treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section forty-one point three, Lindqvist Freight will not accept security work without a written trail.
+
 ### 41.4 Local versus global
 
 Moving rules to a morning queue optimised night load but could slow response to those alerts. The team tracks the moved rules' outcomes to make sure the global effect is positive.
+
+Section forty-one point four develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-one point four, Paolo Ricci expects security claims to carry owners and dates.
+
+Section forty-one point four treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
 
 ### 41.5 Automation priorities
 
 Automated enrichment saved two minutes per alert; automating customer phone lookup saves another minute for takeover alerts. Small savings on frequent tasks add up.
 
+Section forty-one point five develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-one point five, Paolo Ricci expects security claims to carry owners and dates.
+
+Section forty-one point five treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section forty-one point five, Lindqvist Freight will not accept security work without a written trail.
+
 ### 41.6 Post-deployment review
 
 Each optimisation is reviewed after a month: did the metric move, and did anything else get worse?
 
+Section forty-one point six develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-one point six, Paolo Ricci expects security claims to carry owners and dates.
+
+Section forty-one point six treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section forty-one point six, Lindqvist Freight will not accept security work without a written trail.
+
 ### 41.7 Diminishing returns
 
 After the main bottlenecks are fixed, further gains cost more; at some point, effort is better spent on validation gaps.
+
+Section forty-one point seven develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-one point seven, Paolo Ricci expects security claims to carry owners and dates.
+
+Section forty-one point seven treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section forty-one point seven, Lindqvist Freight will not accept security work without a written trail.
 
 ### Cost optimisation
 
@@ -2763,29 +4801,79 @@ You will (1) frame an engineering research question from SOC data; (2) review re
 
 Engineers often need evidence their organisation lacks. Applied research answers a local question with a careful method, borrowing ideas from published studies.
 
+Section forty-two point one develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-two point one, Paolo Ricci expects security claims to carry owners and dates.
+
+Section forty-two point one treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section forty-two point one, Lindqvist Freight will not accept security work without a written trail.
+
 ### 42.2 The question
 
 Amara asks: "Does adding device continuity (same device as usual) to takeover alerts reduce false escalations without missing real takeovers?" It comes from her queue day in chapter 37.
+
+Section forty-two point two develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-two point two, Paolo Ricci expects security claims to carry owners and dates.
+
+Section forty-two point two treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
 
 ### 42.3 Literature
 
 Alahmadi et al. (2022) argue alarms should be contextual; Hassan et al. (2019) show context from provenance can rank alerts. Sommer and Paxson (2010) caution that patterns learned in one environment may not transfer.
 
+Section forty-two point three develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-two point three, Paolo Ricci expects security claims to carry owners and dates.
+
+Section forty-two point three treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
 ### 42.4 Method
 
 Amara labels three months of takeover alerts (82 in total) as real or benign using case outcomes, then checks how device continuity would have changed the decision. She pre-states her measure: escalations avoided and real takeovers that would have been de-prioritised.
+
+Section forty-two point four develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-two point four, Paolo Ricci expects security claims to carry owners and dates.
+
+Section forty-two point four treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
 
 ### 42.5 Ethics
 
 The study uses existing case records; customer identifiers are removed before analysis, and the privacy officer approves the use.
 
+Section forty-two point five develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-two point five, Paolo Ricci expects security claims to carry owners and dates.
+
+Section forty-two point five treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section forty-two point five, Lindqvist Freight will not accept security work without a written trail.
+
 ### 42.6 Results
 
 Device continuity would have de-prioritised 29 of 70 benign alerts and 1 of 12 real takeovers. The missed case involved a customer whose phone had been stolen.
 
+Section forty-two point six develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-two point six, Paolo Ricci expects security claims to carry owners and dates.
+
+Section forty-two point six treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section forty-two point six, Lindqvist Freight will not accept security work without a written trail.
+
 ### 42.7 Decision
 
 The team adds device continuity as information on the alert, not as an automatic de-prioritiser, and logs analyst decisions for review.
+
+Section forty-two point seven develops security operations and blue team with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-two point seven, Paolo Ricci expects security claims to carry owners and dates.
+
+Section forty-two point seven treats security operations and blue team as testable only when evidence and ticket IDs are recorded.
+
+For section forty-two point seven, Lindqvist Freight will not accept security work without a written trail.
 
 ### Sharing results
 
@@ -2827,29 +4915,87 @@ You will (1) work in a professional SOC setting under supervision; (2) apply pro
 
 Amara's final-year practice period is a full-time term in Lindqvist's SOC, supervised by Paolo with learning goals agreed with her university tutor.
 
+Section forty-three point one develops industry or public-service practice with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-three point one, Paolo Ricci expects industry claims to carry owners and dates.
+
+Section forty-three point one treats industry or public-service practice as testable only when evidence and ticket IDs are recorded.
+
+For section forty-three point one, Lindqvist Freight will not accept industry work without a written trail.
+
 ### 43.2 Conduct
 
 She signs confidentiality terms, follows access rules and never takes data off company systems. Coursework uses only synthetic or approved anonymised material.
+
+Section forty-three point two develops industry or public-service practice with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-three point two, Paolo Ricci expects industry claims to carry owners and dates.
+
+Section forty-three point two treats industry or public-service practice as testable only when evidence and ticket IDs are recorded.
+
+For section forty-three point two, Lindqvist Freight will not accept industry work without a written trail.
 
 ### 43.3 Contributions
 
 Her goals: deliver the depot logging project, maintain three rules, spend one day per week in the queue and write two runbooks.
 
+Section forty-three point three develops industry or public-service practice with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-three point three, Paolo Ricci expects industry claims to carry owners and dates.
+
+Section forty-three point three treats industry or public-service practice as testable only when evidence and ticket IDs are recorded.
+
+For section forty-three point three, Lindqvist Freight will not accept industry work without a written trail.
+
 ### 43.4 Supervision
 
 Weekly meetings review progress, problems and learning. Paolo signs off production changes.
+
+Section forty-three point four develops industry or public-service practice with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-three point four, Paolo Ricci expects industry claims to carry owners and dates.
+
+Section forty-three point four treats industry or public-service practice as testable only when evidence and ticket IDs are recorded.
+
+For section forty-three point four, Lindqvist Freight will not accept industry work without a written trail.
+
+Section forty-three point four fails closed if industry evidence is missing rather than guessing.
 
 ### 43.5 Professional relationships
 
 Working with IT operations, customer service and depot managers teaches negotiation: depot managers care about dispatch, not detections, so she frames requests in their terms.
 
+Section forty-three point five develops industry or public-service practice with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-three point five, Paolo Ricci expects industry claims to carry owners and dates.
+
+Section forty-three point five treats industry or public-service practice as testable only when evidence and ticket IDs are recorded.
+
+For section forty-three point five, Lindqvist Freight will not accept industry work without a written trail.
+
 ### 43.6 Reflection
 
 A weekly journal records what happened, what she learned and what she would change. The tutor reviews it.
 
+Section forty-three point six develops industry or public-service practice with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-three point six, Paolo Ricci expects industry claims to carry owners and dates.
+
+Section forty-three point six treats industry or public-service practice as testable only when evidence and ticket IDs are recorded.
+
+For section forty-three point six, Lindqvist Freight will not accept industry work without a written trail.
+
 ### 43.7 Public-service angle
 
 Lindqvist shares anonymised indicators of credential stuffing with a sector information-sharing group, a practice Knerler, Parker and Zimmerman (2022) encourage. Amara prepares one submission under supervision.
+
+Section forty-three point seven develops industry or public-service practice with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-three point seven, Paolo Ricci expects industry claims to carry owners and dates.
+
+Section forty-three point seven treats industry or public-service practice as testable only when evidence and ticket IDs are recorded.
+
+For section forty-three point seven, Lindqvist Freight will not accept industry work without a written trail.
 
 ### Learning agreement
 
@@ -2891,29 +5037,87 @@ You will (1) define a capstone project with scope, requirements and plan; (2) ju
 
 Amara's capstone closes the depot gap found in validation: "Detect remote logons from depot networks to domain controllers within 15 minutes, with no more than 5 false alerts per week."
 
+Section forty-four point one develops engineering capstone with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-four point one, Paolo Ricci expects engineering claims to carry owners and dates.
+
+Section forty-four point one treats engineering capstone as testable only when evidence and ticket IDs are recorded.
+
+For section forty-four point one, Lindqvist Freight will not accept engineering work without a written trail.
+
 ### 44.2 Evidence for the need
 
 Two simulated techniques left no trace in depot networks (chapter 38); the threat analysis ranks depot-to-domain-controller movement high (chapter 23).
+
+Section forty-four point two develops engineering capstone with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-four point two, Paolo Ricci expects engineering claims to carry owners and dates.
+
+Section forty-four point two treats engineering capstone as testable only when evidence and ticket IDs are recorded.
+
+For section forty-four point two, Lindqvist Freight will not accept engineering work without a written trail.
 
 ### 44.3 Scope
 
 In: allowed-connection logging at the depot boundary for domain-controller ports; enrichment; one detection; playbook. Out: agents on depot devices; changes to depot applications.
 
+Section forty-four point three develops engineering capstone with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-four point three, Paolo Ricci expects engineering claims to carry owners and dates.
+
+Section forty-four point three treats engineering capstone as testable only when evidence and ticket IDs are recorded.
+
+For section forty-four point three, Lindqvist Freight will not accept engineering work without a written trail.
+
 ### 44.4 Requirements
 
 Functional: log allowed depot-to-DC connections; alert on interactive logons from depot devices not on the approved list. Non-functional: 15-minute latency; completeness 99.9%; ≤5 false alerts per week.
+
+Section forty-four point four develops engineering capstone with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-four point four, Paolo Ricci expects engineering claims to carry owners and dates.
+
+Section forty-four point four treats engineering capstone as testable only when evidence and ticket IDs are recorded.
+
+For section forty-four point four, Lindqvist Freight will not accept engineering work without a written trail.
 
 ### 44.5 Plan
 
 Weeks 1–3 design and review; 4–6 build in test; 7–8 pilot at three depots; 9–10 rollout; 11–12 verification, validation and report.
 
+Section forty-four point five develops engineering capstone with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-four point five, Paolo Ricci expects engineering claims to carry owners and dates.
+
+Section forty-four point five treats engineering capstone as testable only when evidence and ticket IDs are recorded.
+
+For section forty-four point five, Lindqvist Freight will not accept engineering work without a written trail.
+
+Section forty-four point five fails closed if engineering evidence is missing rather than guessing.
+
 ### 44.6 Verification and validation plan
 
 Unit tests for logic, pipeline tests, timed synthetic logons, and a purple-team re-test of the two missed techniques.
 
+Section forty-four point six develops engineering capstone with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-four point six, Paolo Ricci expects engineering claims to carry owners and dates.
+
+Section forty-four point six treats engineering capstone as testable only when evidence and ticket IDs are recorded.
+
+For section forty-four point six, Lindqvist Freight will not accept engineering work without a written trail.
+
 ### 44.7 Risks
 
 Log volume could exceed estimates; depot changes could disrupt dispatch. Mitigations: volume estimate from a one-day capture; pilots and change windows.
+
+Section forty-four point seven develops engineering capstone with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-four point seven, Paolo Ricci expects engineering claims to carry owners and dates.
+
+Section forty-four point seven treats engineering capstone as testable only when evidence and ticket IDs are recorded.
+
+For section forty-four point seven, Lindqvist Freight will not accept engineering work without a written trail.
 
 ### Stakeholder map
 
@@ -2955,29 +5159,83 @@ You will (1) prepare a design for independent review; (2) respond to review find
 
 Designers miss their own assumptions. An engineer from another team, unconnected to the project, reviews Amara's capstone design.
 
+Section forty-five point one develops independent design review with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-five point one, Paolo Ricci expects independent claims to carry owners and dates.
+
+Section forty-five point one treats independent design review as testable only when evidence and ticket IDs are recorded.
+
+For section forty-five point one, Lindqvist Freight will not accept independent work without a written trail.
+
 ### 45.2 Review package
 
 Diagram, data flows, requirements, rule logic, test plan, risk register and rollout plan, sent a week ahead.
+
+Section forty-five point two develops independent design review with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-five point two, Paolo Ricci expects independent claims to carry owners and dates.
+
+Section forty-five point two treats independent design review as testable only when evidence and ticket IDs are recorded.
+
+For section forty-five point two, Lindqvist Freight will not accept independent work without a written trail.
 
 ### 45.3 Findings
 
 The reviewer raises: (1) the approved-device list is maintained by hand and will drift; (2) the rule ignores logons over a protocol the depots also use; (3) the playbook lacks a step to check for the same account on other depots; (4) the volume estimate came from a quiet day.
 
+Section forty-five point three develops independent design review with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-five point three, Paolo Ricci expects independent claims to carry owners and dates.
+
+Section forty-five point three treats independent design review as testable only when evidence and ticket IDs are recorded.
+
 ### 45.4 Severity
 
 Findings are classed as blocking, major or minor. Finding 2 is blocking: a coverage gap. Findings 1 and 4 are major; finding 3 is minor.
+
+Section forty-five point four develops independent design review with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-five point four, Paolo Ricci expects independent claims to carry owners and dates.
+
+Section forty-five point four treats independent design review as testable only when evidence and ticket IDs are recorded.
+
+For section forty-five point four, Lindqvist Freight will not accept independent work without a written trail.
 
 ### 45.5 Responses
 
 Amara extends the rule to the second protocol; links the approved list to the asset inventory with a weekly reconciliation; re-estimates volume from a busy-day capture; adds the playbook step.
 
+Section forty-five point five develops independent design review with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-five point five, Paolo Ricci expects independent claims to carry owners and dates.
+
+Section forty-five point five treats independent design review as testable only when evidence and ticket IDs are recorded.
+
+For section forty-five point five, Lindqvist Freight will not accept independent work without a written trail.
+
 ### 45.6 Record
 
 A review log lists each finding, severity, response and status. The reviewer confirms closure of the blocking finding before build.
 
+Section forty-five point six develops independent design review with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-five point six, Paolo Ricci expects independent claims to carry owners and dates.
+
+Section forty-five point six treats independent design review as testable only when evidence and ticket IDs are recorded.
+
+For section forty-five point six, Lindqvist Freight will not accept independent work without a written trail.
+
 ### 45.7 Culture
 
 Reviews are about the design, not the designer; Amara thanks the reviewer and asks to review someone else's design next term.
+
+Section forty-five point seven develops independent design review with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-five point seven, Paolo Ricci expects independent claims to carry owners and dates.
+
+Section forty-five point seven treats independent design review as testable only when evidence and ticket IDs are recorded.
+
+For section forty-five point seven, Lindqvist Freight will not accept independent work without a written trail.
 
 ### Preparing as a designer
 
@@ -3023,29 +5281,87 @@ You will (1) build and roll out the capstone system; (2) verify it against requi
 
 The build follows the reviewed design: firewall logging changes, parser, enrichment link to the asset inventory, rule covering two protocols, and the playbook.
 
+Section forty-six point one develops engineering capstone ii with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-six point one, Paolo Ricci expects engineering claims to carry owners and dates.
+
+Section forty-six point one treats engineering capstone ii as testable only when evidence and ticket IDs are recorded.
+
+For section forty-six point one, Lindqvist Freight will not accept engineering work without a written trail.
+
 ### 46.2 Pilot
 
 Three depots pilot for two weeks. One false alert per week arises from a depot IT technician using a non-approved laptop; the technician's device is registered properly.
+
+Section forty-six point two develops engineering capstone ii with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-six point two, Paolo Ricci expects engineering claims to carry owners and dates.
+
+Section forty-six point two treats engineering capstone ii as testable only when evidence and ticket IDs are recorded.
+
+For section forty-six point two, Lindqvist Freight will not accept engineering work without a written trail.
 
 ### 46.3 Rollout
 
 Remaining depots follow in groups, with CPU monitored on each firewall; all stay below 2%.
 
+Section forty-six point three develops engineering capstone ii with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-six point three, Paolo Ricci expects engineering claims to carry owners and dates.
+
+Section forty-six point three treats engineering capstone ii as testable only when evidence and ticket IDs are recorded.
+
+For section forty-six point three, Lindqvist Freight will not accept engineering work without a written trail.
+
+Section forty-six point three fails closed if engineering evidence is missing rather than guessing.
+
 ### 46.4 Verification
 
 Unit and pipeline tests pass. Timed synthetic logons measure 9.8 to 13.1 minutes end to end. Completeness reconciliation shows 99.94%.
+
+Section forty-six point four develops engineering capstone ii with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-six point four, Paolo Ricci expects engineering claims to carry owners and dates.
+
+Section forty-six point four treats engineering capstone ii as testable only when evidence and ticket IDs are recorded.
+
+For section forty-six point four, Lindqvist Freight will not accept engineering work without a written trail.
 
 ### 46.5 Validation
 
 The purple team re-runs the two techniques that previously left no trace; both now alert, and analysts follow the playbook correctly.
 
+Section forty-six point five develops engineering capstone ii with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-six point five, Paolo Ricci expects engineering claims to carry owners and dates.
+
+Section forty-six point five treats engineering capstone ii as testable only when evidence and ticket IDs are recorded.
+
+For section forty-six point five, Lindqvist Freight will not accept engineering work without a written trail.
+
 ### 46.6 Remaining gaps
 
 Logons using the domain controllers' web management interface are not covered; they are logged as a follow-up item.
 
+Section forty-six point six develops engineering capstone ii with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-six point six, Paolo Ricci expects engineering claims to carry owners and dates.
+
+Section forty-six point six treats engineering capstone ii as testable only when evidence and ticket IDs are recorded.
+
+For section forty-six point six, Lindqvist Freight will not accept engineering work without a written trail.
+
 ### 46.7 Report
 
 The capstone report presents requirements with pass or fail, evidence, and gaps, with all data synthetic or anonymised.
+
+Section forty-six point seven develops engineering capstone ii with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-six point seven, Paolo Ricci expects engineering claims to carry owners and dates.
+
+Section forty-six point seven treats engineering capstone ii as testable only when evidence and ticket IDs are recorded.
+
+For section forty-six point seven, Lindqvist Freight will not accept engineering work without a written trail.
 
 ### Handover to operations
 
@@ -3091,9 +5407,23 @@ You will (1) plan a controlled failure trial of the monitoring pipeline; (2) det
 
 The trial checks whether the SOC notices when its own data stops, and how well it recovers. Silent failures were ranked high in chapter 23.
 
+Section forty-seven point one develops failure and recovery trial with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-seven point one, Paolo Ricci expects failure claims to carry owners and dates.
+
+Section forty-seven point one treats failure and recovery trial as testable only when evidence and ticket IDs are recorded.
+
+For section forty-seven point one, Lindqvist Freight will not accept failure work without a written trail.
+
 ### 47.2 Plan
 
 With change approval, the team stops log forwarding from one portal web server for an hour during a quiet period, without telling analysts the exact time. A rollback is ready.
+
+Section forty-seven point two develops failure and recovery trial with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-seven point two, Paolo Ricci expects failure claims to carry owners and dates.
+
+Section forty-seven point two treats failure and recovery trial as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — detecting silent sources
 
@@ -3122,17 +5452,45 @@ portal-web-3  gap= 59 min expected<=  5 SILENT
 
 At 10:00, portal-web-3 has been silent for 59 minutes against an expected gap of at most 5, so it is flagged SILENT. The edge firewall's 80-minute gap is normal for its 120-minute cadence. Expected cadence per source avoids false alarms from naturally quiet sources.
 
+Section forty-seven point three develops failure and recovery trial with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-seven point three, Paolo Ricci expects failure claims to carry owners and dates.
+
+Section forty-seven point three treats failure and recovery trial as testable only when evidence and ticket IDs are recorded.
+
 ### 47.4 Detection in the trial
 
 The silence check runs every 10 minutes and pages on-call. In the trial, it paged 17 minutes after forwarding stopped, because the threshold was three times the expected gap plus the check interval.
+
+Section forty-seven point four develops failure and recovery trial with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-seven point four, Paolo Ricci expects failure claims to carry owners and dates.
+
+Section forty-seven point four treats failure and recovery trial as testable only when evidence and ticket IDs are recorded.
 
 ### 47.5 Recovery
 
 After forwarding restarts, buffered events arrive; reconciliation shows 99.2% of the hour's events recovered, with the rest lost when the local buffer filled.
 
+Section forty-seven point five develops failure and recovery trial with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-seven point five, Paolo Ricci expects failure claims to carry owners and dates.
+
+Section forty-seven point five treats failure and recovery trial as testable only when evidence and ticket IDs are recorded.
+
+For section forty-seven point five, Lindqvist Freight will not accept failure work without a written trail.
+
 ### 47.6 Improvements
 
 Lower the silence threshold for portal servers to two times the gap; enlarge the local buffer to cover two hours.
+
+Section forty-seven point six develops failure and recovery trial with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-seven point six, Paolo Ricci expects failure claims to carry owners and dates.
+
+Section forty-seven point six treats failure and recovery trial as testable only when evidence and ticket IDs are recorded.
+
+For section forty-seven point six, Lindqvist Freight will not accept failure work without a written trail.
 
 ### Who knows about the trial
 
@@ -3174,29 +5532,89 @@ You will (1) assemble an evidence dossier proving the capstone meets its require
 
 The dossier lets someone who was not there check every claim. Assessors use it to grade; Lindqvist keeps it for auditors and future engineers.
 
+Section forty-eight point one develops evidence dossier with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-eight point one, Paolo Ricci expects evidence claims to carry owners and dates.
+
+Section forty-eight point one treats evidence dossier as testable only when evidence and ticket IDs are recorded.
+
+For section forty-eight point one, Lindqvist Freight will not accept evidence work without a written trail.
+
 ### 48.2 Structure
 
 Requirements table with status; design documents and review log; implementation records (commits, change tickets); verification results (unit, pipeline, timed tests); validation results (purple-team re-test); reliability results (completeness, failure trial); operational data (false alerts per week); remaining gaps.
+
+Section forty-eight point two develops evidence dossier with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-eight point two, Paolo Ricci expects evidence claims to carry owners and dates.
+
+Section forty-eight point two treats evidence dossier as testable only when evidence and ticket IDs are recorded.
 
 ### 48.3 Claim–evidence links
 
 Each claim in the report points to a dossier item by ID: "Latency met (E-14: timed test results, 5 runs)". Unsupported claims are removed.
 
+Section forty-eight point three develops evidence dossier with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-eight point three, Paolo Ricci expects evidence claims to carry owners and dates.
+
+Section forty-eight point three treats evidence dossier as testable only when evidence and ticket IDs are recorded.
+
+For section forty-eight point three, Lindqvist Freight will not accept evidence work without a written trail.
+
 ### 48.4 Sensitive content
 
 Host names, depot addresses and rule details that would help evasion are replaced with placeholders in the assessor copy; the full version stays inside Lindqvist with access control.
+
+Section forty-eight point four develops evidence dossier with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-eight point four, Paolo Ricci expects evidence claims to carry owners and dates.
+
+Section forty-eight point four treats evidence dossier as testable only when evidence and ticket IDs are recorded.
+
+For section forty-eight point four, Lindqvist Freight will not accept evidence work without a written trail.
 
 ### 48.5 Integrity
 
 Exported files are listed with hashes so later readers can confirm they are unchanged.
 
+Section forty-eight point five develops evidence dossier with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-eight point five, Paolo Ricci expects evidence claims to carry owners and dates.
+
+Section forty-eight point five treats evidence dossier as testable only when evidence and ticket IDs are recorded.
+
+For section forty-eight point five, Lindqvist Freight will not accept evidence work without a written trail.
+
+Section forty-eight point five fails closed if evidence evidence is missing rather than guessing.
+
 ### 48.6 Completeness check
 
 Paolo checks that each requirement has at least one verification and, where relevant, one validation item.
 
+Section forty-eight point six develops evidence dossier with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-eight point six, Paolo Ricci expects evidence claims to carry owners and dates.
+
+Section forty-eight point six treats evidence dossier as testable only when evidence and ticket IDs are recorded.
+
+For section forty-eight point six, Lindqvist Freight will not accept evidence work without a written trail.
+
+Section forty-eight point six fails closed if evidence evidence is missing rather than guessing.
+
 ### 48.7 Format
 
 Plain formats — PDF for documents, CSV for data, text for scripts — keep the dossier readable for years.
+
+Section forty-eight point seven develops evidence dossier with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-eight point seven, Paolo Ricci expects evidence claims to carry owners and dates.
+
+Section forty-eight point seven treats evidence dossier as testable only when evidence and ticket IDs are recorded.
+
+For section forty-eight point seven, Lindqvist Freight will not accept evidence work without a written trail.
+
+Section forty-eight point seven fails closed if evidence evidence is missing rather than guessing.
 
 ### Reading order
 
@@ -3238,29 +5656,91 @@ You will (1) write an engineering thesis that presents problem, design, implemen
 
 Introduction and problem; background and literature; requirements; design and alternatives; implementation; verification and validation; operation and reliability; discussion; limitations; conclusions; references; appendices.
 
+Section forty-nine point one develops engineering thesis with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-nine point one, Paolo Ricci expects engineering claims to carry owners and dates.
+
+Section forty-nine point one treats engineering thesis as testable only when evidence and ticket IDs are recorded.
+
+For section forty-nine point one, Lindqvist Freight will not accept engineering work without a written trail.
+
 ### 49.2 The argument
 
 Amara's thesis argues that a small SOC can close a network-monitoring gap in agentless depots using existing firewalls, measured requirements and staged validation, at low cost and without disrupting operations.
+
+Section forty-nine point two develops engineering thesis with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-nine point two, Paolo Ricci expects engineering claims to carry owners and dates.
+
+Section forty-nine point two treats engineering thesis as testable only when evidence and ticket IDs are recorded.
+
+For section forty-nine point two, Lindqvist Freight will not accept engineering work without a written trail.
 
 ### 49.3 Literature
 
 Knerler, Parker and Zimmerman (2022) for SOC strategy; NIST SP 800-92 for log management; ATT&CK for technique coverage; Alahmadi et al. (2022) for alarm quality; Sundaramurthy et al. (2014) for analyst practice.
 
+Section forty-nine point three develops engineering thesis with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-nine point three, Paolo Ricci expects engineering claims to carry owners and dates.
+
+Section forty-nine point three treats engineering thesis as testable only when evidence and ticket IDs are recorded.
+
+For section forty-nine point three, Lindqvist Freight will not accept engineering work without a written trail.
+
 ### 49.4 Trade-offs
 
 Logging only connection starts at two depots saved CPU but lost duration data; device continuity was shown as context rather than filter; volume was controlled by tiering.
+
+Section forty-nine point four develops engineering thesis with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-nine point four, Paolo Ricci expects engineering claims to carry owners and dates.
+
+Section forty-nine point four treats engineering thesis as testable only when evidence and ticket IDs are recorded.
+
+For section forty-nine point four, Lindqvist Freight will not accept engineering work without a written trail.
 
 ### 49.5 Limitations
 
 One organisation; synthetic and anonymised data; short operation period; simulations chosen by people who knew the design.
 
+Section forty-nine point five develops engineering thesis with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-nine point five, Paolo Ricci expects engineering claims to carry owners and dates.
+
+Section forty-nine point five treats engineering thesis as testable only when evidence and ticket IDs are recorded.
+
+For section forty-nine point five, Lindqvist Freight will not accept engineering work without a written trail.
+
+Section forty-nine point five fails closed if engineering evidence is missing rather than guessing.
+
 ### 49.6 Style
 
 Plain language, defined terms, figures with units, numbered requirements matched to evidence IDs.
 
+Section forty-nine point six develops engineering thesis with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-nine point six, Paolo Ricci expects engineering claims to carry owners and dates.
+
+Section forty-nine point six treats engineering thesis as testable only when evidence and ticket IDs are recorded.
+
+For section forty-nine point six, Lindqvist Freight will not accept engineering work without a written trail.
+
+Section forty-nine point six fails closed if engineering evidence is missing rather than guessing.
+
 ### 49.7 Practitioner value
 
 A short appendix gives a reusable checklist for other SOCs with agentless sites.
+
+Section forty-nine point seven develops engineering thesis with a Lindqvist Freight note Amara can demo offline.
+
+Under section forty-nine point seven, Paolo Ricci expects engineering claims to carry owners and dates.
+
+Section forty-nine point seven treats engineering thesis as testable only when evidence and ticket IDs are recorded.
+
+For section forty-nine point seven, Lindqvist Freight will not accept engineering work without a written trail.
+
+Section forty-nine point seven fails closed if engineering evidence is missing rather than guessing.
 
 ### Writing schedule
 
@@ -3306,29 +5786,89 @@ You will (1) present and defend the engineering work; (2) answer technical and p
 
 A 30-minute presentation and 45 minutes of questions from an academic examiner and an industry examiner.
 
+Section fifty point one develops final defense with a Lindqvist Freight note Amara can demo offline.
+
+Under section fifty point one, Paolo Ricci expects final claims to carry owners and dates.
+
+Section fifty point one treats final defense as testable only when evidence and ticket IDs are recorded.
+
+For section fifty point one, Lindqvist Freight will not accept final work without a written trail.
+
+Section fifty point one fails closed if final evidence is missing rather than guessing.
+
 ### 50.2 Presentation
 
 Problem and evidence of need; requirements; design and review; results against requirements; failures and fixes; remaining gaps; lessons.
+
+Section fifty point two develops final defense with a Lindqvist Freight note Amara can demo offline.
+
+Under section fifty point two, Paolo Ricci expects final claims to carry owners and dates.
+
+Section fifty point two treats final defense as testable only when evidence and ticket IDs are recorded.
+
+For section fifty point two, Lindqvist Freight will not accept final work without a written trail.
 
 ### 50.3 Expected questions
 
 "Why not deploy agents?" "How do you know five false alerts per week is acceptable?" "What happens when the person maintaining the approved-device list leaves?" "What would you do differently?"
 
+Section fifty point three develops final defense with a Lindqvist Freight note Amara can demo offline.
+
+Under section fifty point three, Paolo Ricci expects final claims to carry owners and dates.
+
+Section fifty point three treats final defense as testable only when evidence and ticket IDs are recorded.
+
+For section fifty point three, Lindqvist Freight will not accept final work without a written trail.
+
 ### 50.4 Answering
 
 Answer directly, show evidence, admit limits. On false alerts: the night shift agreed the threshold based on measured triage time; it is reviewed quarterly.
+
+Section fifty point four develops final defense with a Lindqvist Freight note Amara can demo offline.
+
+Under section fifty point four, Paolo Ricci expects final claims to carry owners and dates.
+
+Section fifty point four treats final defense as testable only when evidence and ticket IDs are recorded.
+
+For section fifty point four, Lindqvist Freight will not accept final work without a written trail.
 
 ### 50.5 Professional questions
 
 The industry examiner asks how Amara handled a disagreement with depot managers; she describes rescheduling around dispatch and what she learned.
 
+Section fifty point five develops final defense with a Lindqvist Freight note Amara can demo offline.
+
+Under section fifty point five, Paolo Ricci expects final claims to carry owners and dates.
+
+Section fifty point five treats final defense as testable only when evidence and ticket IDs are recorded.
+
+For section fifty point five, Lindqvist Freight will not accept final work without a written trail.
+
 ### 50.6 Reflection
 
 From calculus of queues in chapter 1 to the capstone, the course built a path: model, measure, design, verify, validate, operate.
 
+Section fifty point six develops final defense with a Lindqvist Freight note Amara can demo offline.
+
+Under section fifty point six, Paolo Ricci expects final claims to carry owners and dates.
+
+Section fifty point six treats final defense as testable only when evidence and ticket IDs are recorded.
+
+For section fifty point six, Lindqvist Freight will not accept final work without a written trail.
+
 ### 50.7 Next steps
 
 Amara plans to join Lindqvist as a junior detection engineer and to study for further qualifications.
+
+Section fifty point seven develops final defense with a Lindqvist Freight note Amara can demo offline.
+
+Under section fifty point seven, Paolo Ricci expects final claims to carry owners and dates.
+
+Section fifty point seven treats final defense as testable only when evidence and ticket IDs are recorded.
+
+For section fifty point seven, Lindqvist Freight will not accept final work without a written trail.
+
+Section fifty point seven fails closed if final evidence is missing rather than guessing.
 
 ### Preparing
 
