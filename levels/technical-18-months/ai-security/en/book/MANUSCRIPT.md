@@ -855,7 +855,7 @@ tpr=0.80 fpr=0.001 prevalence=0.010 precision=0.890 alerts_per_10k=90
 tpr=0.80 fpr=0.001 prevalence=0.001 precision=0.445 alerts_per_10k=18
 ```
 
-The lab's rows show how quickly precision changes. With 95% detection and 5% false positives, precision is 0.679 when one prompt in ten is malicious, 0.161 at one in a hundred and 0.019 at one in a thousand, producing 509 alerts per 10,000 messages. Cutting false positives to 0.1% lifts precision at 0.1% prevalence to 0.445 with only 18 alerts per 10,000. For HelpBot, where most of 20,000 daily messages are ordinary support questions, the false-positive rate decides whether a detector is usable.
+The lab's rows show how quickly precision changes. With 95% detection and 5% false positives, precision is 0.679 when one prompt in ten is malicious, 0.161 at one in a hundred and 0.019 at one in a thousand, producing 509 alerts per 10,000 messages. A detector with 80% detection and 0.1% false positives reaches precision 0.445 at 0.1% prevalence with only 18 alerts per 10,000. For HelpBot, where most of 20,000 daily messages are ordinary support questions, the false-positive rate decides whether a detector is usable.
 
 ### 9.5 Worked example (synthetic Kestrel case)
 
