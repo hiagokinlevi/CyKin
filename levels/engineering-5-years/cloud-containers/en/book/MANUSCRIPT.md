@@ -918,7 +918,7 @@ node-agent    extra capabilities: NET_ADMIN, SYS_ADMIN
 
 meter-ingest has two extra capabilities, CHOWN and SETUID, beyond the NET_BIND_SERVICE it needs. report-api has none extra. node-agent has NET_ADMIN and SYS_ADMIN beyond the SYS_PTRACE it needs. SYS_ADMIN is the most serious because it grants broad control close to full root.
 
-CHOWN and SETUID on meter-ingest are probably leftovers from a base image or an old setup step; removing them should be tested but is unlikely to break anything. node-agent's case needs more care, since it monitors the node and genuinely needs some power, but SYS_ADMIN is far more than tracing requires. Elena raises it as the top finding with a suggested reduced set.
+CHOWN and SETUID on meter-ingest probably serve a start-up step that sets file ownership; removing them means moving that work into the image build, which needs testing. node-agent's case needs more care, since it monitors the node and genuinely needs some power, but SYS_ADMIN is far more than tracing requires. Elena raises it as the top finding with a suggested reduced set.
 
 ### 12.4 Running as non-root
 
@@ -1004,7 +1004,7 @@ An attacker who gains control of the production account might try to delete back
 
 Logs must not contain readings linked to addresses; Elena adds a check for meter IDs in application logs.
 
-Developers often log request details while debugging and forget to remove them. A log line containing a meter ID and an address would recreate the link the data model was designed to prevent. Elena's check searches log samples for patterns matching meter IDs and raises an issue for the owning team. Teams fix findings at the source by changing log statements, not by filtering logs afterwards, which could fail silently.
+Developers often log request details while debugging and forget to remove them. A log line containing a meter ID and an address would recreate the link the data model was designed to prevent. Elena's check searches log samples for patterns matching meter IDs and raises an issue for the owning team. Fixes go into the application's own logger, so identifiers are redacted before any line is written, rather than into downstream filters that could fail silently.
 
 ### Restore tests
 
@@ -1694,7 +1694,7 @@ Listing every component, including less obvious ones like the backup account and
 
 Each component has an identity: Kubernetes service accounts mapped to cloud roles, pipeline federated identity, human roles. The model lists what each identity can do, which reveals over-broad roles.
 
-Writing down what each identity can do often reveals surprises. The billing export job's role allows writing to every bucket in the account, though it only needs one. A pipeline role has rights to delete clusters that no pipeline task uses. Each over-broad permission is a risk if that identity is compromised, so the model drives a clean-up list.
+Writing down what each identity can do often reveals surprises. The billing export job can write to the readings it only needs to read. A pipeline role has rights to delete clusters that no pipeline task uses. Each over-broad permission is a risk if that identity is compromised, so the model drives a clean-up list.
 
 ### 22.3 Data model
 
