@@ -47,17 +47,25 @@ You will (1) distinguish deduction, induction and abduction in intelligence work
 
 Deduction moves from rules to certain conclusions: if every TLP:RED report goes only to named recipients and Amara is not named, she may not read it. Induction generalises from cases: five sector reports began with phishing, so phishing is a common entry route. Abduction proposes the best explanation for an observation: a burst of failed logins at night may be password guessing. Intelligence analysis relies heavily on abduction, which is why its conclusions must be stated with uncertainty.
 
+Amara labels each conclusion with the inference that produced it.
+
 ### 1.2 Fallacies in reports
 
 Post hoc reasoning: an outage followed a phishing email, so the email caused it. Base-rate neglect: a detector with a 99% hit rate sounds decisive until you remember how rare real attacks are. Survivorship: studying only incidents that were detected tells you little about those that were not. Naming the fallacy in a peer's draft is a useful review skill.
+
+In Amara's first review of an HSSC draft, she marks one sentence that blames a ransomware outbreak on a supplier because the supplier's update came the day before. The draft offers no other link. She suggests rewording it as a hypothesis and listing what evidence would confirm or rule it out, which turns a fallacy into a useful question for the next analyst.
 
 ### 1.3 Proportions and ratios
 
 "Phishing appeared in 3 of 5 reports" is a proportion, 60%. Reporting "60%" alone hides that the sample is five. Always give the numerator and the denominator, especially when the denominator is small.
 
+Amara writes "3 of 5 reports" in her notes and adds the period they cover. When a later quarter brings twenty reports, the proportion can be compared fairly, and readers can see that the first figure rested on very few cases. A percentage from five items can swing by twenty points with one more report, so presenting it alone suggests far more precision than the evidence has.
+
 ### 1.4 Assumptions
 
 Every conclusion rests on assumptions. Writing them down — the reports are representative; the timestamps are accurate — lets readers judge how far to trust the result.
+
+Amara keeps a short list of assumptions at the end of each note she writes for HCHT's security team. When one turns out to be wrong, such as a feed whose timestamps use a different time zone, she can see at once which conclusions depended on it and revise only those. Unstated assumptions are the hardest errors to find, because nobody knows to check them.
 
 ### Estimating before computing
 
@@ -99,21 +107,31 @@ You will (1) describe the components of a hospital's computing estate relevant t
 
 HCHT runs staff workstations, clinical applications, a patient portal, email, a directory service, cloud mailboxes, laboratory systems and networked medical devices. Each has owners, update routes and logs. CTI is only useful if it reaches the place where it can be checked or enforced.
 
+Amara's first task is to list, for each part of the estate, who owns it, how it is updated and what it logs. The list shows where intelligence can be used quickly, such as email filtering, and where it cannot, such as laboratory systems run by a supplier under contract.
+
 ### 2.2 Logs as sensors
 
 Email gateways log senders and attachments; web proxies log URLs; DNS resolvers log lookups; endpoints log processes; the directory logs logons. When HSSC shares a malicious domain, Amara can search DNS and proxy logs for past contacts — a retrospective hunt.
+
+A retrospective hunt answers a simple question: did anything at HCHT contact this domain before we knew it was malicious? Amara checks that log retention covers the period the HSSC report describes, since a hunt cannot find contacts older than the oldest log. Where retention is short, she notes the gap rather than reporting a clean result.
 
 ### 2.3 Enforcement points
 
 Email filters, DNS blocking, proxy categories and endpoint rules can act on indicators. Each has a different blast radius. Blocking a domain at DNS affects every device that uses the resolver, including clinical systems.
 
+A wrong block at DNS could stop a clinical application from reaching a supplier's service and delay patient care. Amara therefore records, for each enforcement point, who can change it, how quickly a block can be reversed and which systems it affects. Indicators with low confidence go to monitoring first, where they raise alerts without stopping traffic, until the evidence supports a block.
+
 ### 2.4 Medical devices
 
 Infusion pumps and imaging systems often run old operating systems and cannot be patched quickly. They may not tolerate scanning or agent software. CTI about threats to such devices goes to the clinical engineering team, who decide on network isolation rather than host changes.
 
+Amara learns that patient safety comes first: a security change that stops a pump working is worse than the threat it was meant to address. Intelligence about these devices is phrased for clinical engineers, naming the device model and the exposure, and they decide what change is safe for patients.
+
 ### 2.5 Asset inventory
 
 An accurate inventory lets analysts answer "do we run the affected product?" within minutes when an advisory arrives. Without it, every advisory triggers a guessing exercise.
+
+HCHT's inventory lists software products and versions for workstations and servers, but medical devices are recorded by model only, so Amara notes that advisories about device software need extra checking with clinical engineering. Keeping the inventory current is an operations task; Amara's role is to report where gaps slowed an answer, so that the owners can fix them.
 
 ### Cloud and supplier systems
 
@@ -155,21 +173,31 @@ You will (1) write Python functions that clean and classify indicators; (2) use 
 
 Analysts receive indicators in emails, PDFs and spreadsheets. Small scripts extract, clean and compare them faster and more accurately than copying by hand. Programming here is a reading and checking tool, not a collection tool.
 
+Amara writes her first script to read indicators from a spreadsheet shared by HSSC, remove duplicates and compare them with a list exported from the email gateway. Done by hand, the comparison took an hour and missed two matches; the script takes seconds and gives the same answer each time it runs.
+
 ### 3.2 Types for intelligence
 
 A string holds one indicator. A list keeps order, such as events in time. A set removes duplicates and supports intersection — which indicators appear in both our logs and the feed? A dictionary maps an indicator to its metadata: source, TLP, first seen.
+
+Choosing the right type makes the question easy to answer. Amara's script stores feed indicators in a set, so the overlap with HCHT's logs is a single intersection, and keeps metadata in a dictionary, so each match comes with its source and TLP label. Without the label, she could not tell which matches may be shared with other teams.
 
 ### 3.3 Classifying values
 
 A simple function decides whether a string looks like an IPv4 address, a domain or a hash. The standard library's `ipaddress` module validates addresses; length and character checks distinguish SHA-256 hashes (64 hexadecimal characters) from other strings.
 
+Amara tests the function with examples of each type and with tricky cases, such as a domain that contains digits or a hash with uppercase letters. A misclassified value could send a domain to an address blocklist, where it would do nothing, while the analyst believed it was blocked.
+
 ### 3.4 Explicit failure
 
 If a value fits no type, return "unknown" and keep it for review. Guessing creates false indicators that may later block legitimate services.
 
+Amara's script writes unknown values to a separate file with the line they came from, so she can check them by hand. Many turn out to be defanged indicators, such as domains with brackets around the dots, which the script now handles explicitly. Explicit failure turned a silent error into a list of improvements and kept false indicators out of the blocklists.
+
 ### 3.5 No hidden collection
 
 Scripts in this course read local files only. Code that fetches web pages, queries external services or logs into platforms is outside this chapter and requires terms, permission and supervision.
+
+Amara asks two questions of her own work: where does each input come from, and was she allowed to use it? Her scripts take files that HSSC or HCHT systems have already provided, which keeps her inside the permissions of her internship. Any collection step is a separate decision for her supervisor, with its own approval and record.
 
 ### Readable code
 
@@ -211,21 +239,31 @@ You will (1) structure an argument with claim, evidence and reasoning; (2) cite 
 
 A paragraph makes one claim, presents evidence and explains why the evidence supports the claim. "Phishing is the most common entry route in HSSC reports (claim); it appears in 3 of 5 reports from 2026 (evidence); the other routes appear at most twice (reasoning)." Readers can then challenge the evidence rather than guess your meaning.
 
+Amara uses this pattern in every paragraph of her reports. Her supervisor can then check the evidence quickly, and a reader who disagrees knows exactly which part to question. When a claim has no evidence yet, she labels it as a hypothesis and says what would test it.
+
 ### 4.2 Citation
 
 Cite specifications for definitions (STIX 2.1 for object types), papers for models (Hutchins et al. for the kill chain), and data sources for numbers. Paraphrase and cite; quote only when exact wording matters. Never cite a TLP-restricted report in public coursework.
+
+Amara keeps a reference list for each piece of coursework and checks that every TLP marking allows the use she makes of a source. For an essay on phishing in health care she cites public reports only, and describes HSSC trends in general terms without naming any restricted report, so the essay can be shared with her class.
 
 ### 4.3 Hedging
 
 "Proves" is rarely justified. "Suggests", "is consistent with" and calibrated words such as "likely" signal uncertainty honestly. Over-hedging — "might possibly perhaps" — is as unhelpful as overclaiming.
 
+Amara learns to choose one calibrated word per judgment and to say what it rests on, such as "likely, based on two independent reports". A reader can act on that, or ask for more evidence, which is the point of hedging honestly. She avoids stacking qualifiers, which hides the judgment rather than expressing its uncertainty.
+
 ### 4.4 Academic versus intelligence style
 
 Academic writing often builds to a conclusion. Intelligence writing states the bottom line first. ICD 203 asks analytic products to be clear and logical; both styles share that aim but differ in order. Amara learns both.
 
+In practice, Amara writes coursework essays in academic style and her HCHT notes with the bottom line in the first sentence, followed by the evidence. Busy readers in the security team may read only that first line, so it must be accurate on its own. Her supervisor checks that the evidence below actually supports it.
+
 ### 4.5 Revision
 
 Read drafts aloud, cut words that do not change meaning, and ask a peer to restate your main claim.
+
+Amara reads her first HCHT note aloud and finds two sentences that say the same thing. A peer restates her main claim as "block these domains" when she meant "monitor these domains", so she rewrites the opening line to make the action clear. Revision is where most of the clarity in a report comes from, and she plans time for it rather than treating it as optional.
 
 ### Writing for non-specialists
 
@@ -267,21 +305,31 @@ You will (1) define threat, vulnerability, risk and control; (2) describe the CT
 
 A threat is a potential cause of harm — an actor or event. A vulnerability is a weakness. Risk combines likelihood and impact. A control reduces risk. CTI informs the threat part of that equation so that controls go where they matter.
 
+For HCHT, the threat is a criminal group sending phishing to clinical staff, the vulnerability is an unpatched remote access service and the risk is high because an outage would affect patient care. Intelligence about the group's methods helps decide which controls to strengthen first.
+
 ### 5.2 The CTI life cycle
 
 Direction (what do decision-makers need?), collection, processing, analysis, dissemination and feedback. In practice, direction is often missing; analysts then collect everything and help no one. Priority intelligence requirements fix that.
+
+Amara helps draft HCHT's first requirements with her supervisor: which threats could disrupt clinical services, which suppliers are targeted, and which techniques are seen in health-sector attacks. Each requirement names who needs the answer and how often. Collection then focuses on sources that answer them, and feedback shows whether the answers were useful, so the cycle improves over time.
 
 ### 5.3 Three levels
 
 Strategic: trends and intent for executives — for example, criminal groups targeting hospitals for extortion. Operational: campaigns and timing for incident leads — a phishing wave against health trusts this month. Tactical: indicators and techniques for analysts — sender domains and T1566 Phishing.
 
+Each level reaches a different audience and needs a different style. Amara practises writing the same HSSC report three ways: a short paragraph for the board, a page for incident leads and a list of indicators with techniques for analysts. Mixing levels, such as giving the board indicator lists, wastes the reader's time and hides what they need to decide.
+
 ### 5.4 Why healthcare
 
 Hospitals hold sensitive data, run around the clock and cannot tolerate downtime, which increases pressure to pay extortion. Legacy systems and many suppliers widen exposure. Strategic intelligence helps boards understand this context without sensationalism.
 
+Amara's briefing for HCHT's board uses sector reports to describe the threat accurately and links each point to a decision the board can take, such as funding faster recovery for clinical systems. She avoids alarming language and uses figures only when their source and sample are clear.
+
 ### 5.5 Intelligence versus information
 
 A feed of domains is information. An assessment that a campaign targets laboratory systems and that HCHT should block specific domains and brief laboratory staff is intelligence — analysed and tied to a decision.
+
+Amara checks every product she writes against this test: what decision does it support, and who makes it? A list she cannot connect to a decision is kept as information and stored for later searches, not sent as intelligence. This keeps the security team's inbox for material that asks something of them, and it helps HSSC see which of its shared items were actually used.
 
 ### Who consumes intelligence at HCHT
 
@@ -323,25 +371,37 @@ You will (1) use sets and relations to model indicators and actors; (2) represen
 
 Each feed is a set of indicators. Union combines feeds; intersection shows agreement; difference shows what only one source holds. A relation pairs elements: (domain, resolves-to, address). STIX 2.1 relationship objects express exactly this — a source object, a relationship type and a target object.
 
+Amara uses set operations to compare two HSSC feeds and finds that they overlap in only a third of their indicators. Agreement between independent sources raises confidence; indicators found in only one feed are not wrong, but they need more checking before a block.
+
 ### 6.2 Graphs
 
 Treat indicators, malware families and campaigns as nodes and relationships as edges. Graphs make pivots visible: two phishing domains that resolved to the same address become linked through that address node. The Diamond Model's four vertices — adversary, capability, infrastructure, victim — are themselves a small graph for each event.
+
+Amara builds a small graph from one HSSC report and checks each edge against its source before drawing conclusions. Each edge carries the source that reported it and the date, so a link that rests on an old or weak report can be identified and, if needed, removed without rebuilding the whole graph.
 
 ### 6.3 Paths and components
 
 A path connects two nodes through edges. A connected component is a group where every node reaches every other. Analysts sometimes treat a component as "one campaign". That is a hypothesis, not a fact.
 
+Amara writes "these indicators form one connected group, which may be one campaign" rather than "this is one campaign". She then looks for evidence that would separate them, such as different delivery techniques or timing. A component built through a shared hosting address, for example, may join unrelated actors, so the hypothesis needs testing before anyone acts on it.
+
 ### 6.4 Shared infrastructure trap
 
 Shared hosting, content delivery networks and cloud addresses connect unrelated customers. One address serving thousands of domains links them all in a naive graph. Before trusting a link, ask how many other things share that node; high-degree nodes are often noise.
+
+Amara checks the number of domains on each address with the hosting provider's public information or a passive DNS record, and drops edges through nodes that serve many unrelated sites. She records each removed edge and the reason, so a reviewer can see the choice.
 
 ### 6.5 Directed versus undirected
 
 "Domain resolves to address" has a direction; "appeared in the same report" does not. Keep direction where it carries meaning, or you will reason backwards.
 
+Amara stores each relationship with its type and direction, following the STIX relationship objects. Reversing an edge, for example reading "address resolves to domain", could lead to the false conclusion that every domain on a shared address belongs to the same actor. Undirected links like co-occurrence in a report are kept separate and treated as weaker evidence, since they show only that two things were mentioned together.
+
 ### 6.6 Degree as a warning sign
 
 The degree of a node is the number of its edges. A sudden hub in a small intelligence graph is worth inspecting: it might be a genuine command server, or a public resolver, a webmail provider or a mistaken parsing artefact.
+
+Amara adds a degree check to her graph script that lists any node above a chosen threshold for manual review. The threshold is set from the graph's normal shape, and each flagged node is checked against public information before it is kept. A public resolver or a webmail provider is removed with a note; a genuine server is kept and highlighted.
 
 ### Worked example
 
