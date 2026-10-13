@@ -48,51 +48,21 @@ You will (1) turn a workplace observation into a research question; (2) search a
 
 Noah notices that some findings are fixed quickly and others linger. A researchable form asks whether a reporting choice — tagging each finding with MITRE ATT&CK technique IDs — changes remediation completion within 30 days on CBM's synthetic training segments.
 
-Section one point one develops research question and literature method with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section one point one, the mentor expects research claims to carry owners and dates.
-
-Section one point one treats from placement to question as testable only when evidence and ticket IDs are recorded.
-
 ### 1.2 Literature method
 
 Search PTES, NIST SP 800-115, ATT&CK documentation, OWASP WSTG, TIBER-EU and CBEST materials, plus academic critiques of security scoring (Albrecht and Jensen, arXiv:2010.06377). For each source, capture: claim, method, measure, limits, relevance to reporting.
-
-Section one point two develops research question and literature method with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section one point two, the mentor expects research claims to carry owners and dates.
-
-Section one point two treats from placement to question as testable only when evidence and ticket IDs are recorded.
 
 ### 1.3 Related-work map
 
 Cluster sources into: engagement methodology; threat-led frameworks; web testing cases; reporting and scoring critiques; blue-team remediation studies. Your gap should sit at an intersection — for Noah, reporting format × remediation uptake.
 
-Section one point three develops research question and literature method with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section one point three, the mentor expects research claims to carry owners and dates.
-
-Section one point three treats from placement to question as testable only when evidence and ticket IDs are recorded.
-
 ### 1.4 Choosing a measure
 
 Remediation completion within 30 days is observable in CBM's ticket system for synthetic findings. Avoid measures you cannot see (attacker 'skill') or that invent a single security score.
 
-Section one point four develops research question and literature method with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section one point four, the mentor expects research claims to carry owners and dates.
-
-Section one point four treats from placement to question as testable only when evidence and ticket IDs are recorded.
-
 ### 1.5 Asset context
 
 Before studying reports, know what is being assessed. Rank synthetic assets by exposure, data sensitivity and blast radius so the dissertation's scenarios are realistic.
-
-Section one point five develops research question and literature method with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section one point five, the mentor expects research claims to carry owners and dates.
-
-Section one point five treats from placement to question as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Rank synthetic assets for authorized engagement scoping."""
@@ -129,21 +99,7 @@ Keep a research log that separates quotations, paraphrases and your own claims. 
 
 Noah's question: On CBM synthetic segments, do ATT&CK-tagged findings have a higher 30-day remediation rate than narrative-only findings? The inventory lab ranks public-web-portal highest (score 9), matching where CBM schedules training assessments first.
 
-Section one point six develops research question and literature method with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section one point six, the mentor expects research claims to carry owners and dates.
-
-Section one point six treats from placement to question as testable only when evidence and ticket IDs are recorded.
-
 ### 1.7 Errors and limits
-Section one point seven develops research question and literature method with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section one point seven, the mentor expects research claims to carry owners and dates.
-
-Section one point seven treats from placement to question as testable only when evidence and ticket IDs are recorded.
-
-For section one point seven, Cedar Bridge Mutual (CBM) will not accept research work without a written trail.
-
 
 - Questions that only praise a tool.
 - Literature notes that copy abstracts.
@@ -179,59 +135,21 @@ You will (1) present and critique methodology papers and frameworks; (2) use ATT
 
 Each week one student presents a framework or paper: claim, evidence, what a master's study could reuse. Peers file written feedback: major issue, minor issue, question.
 
-Section two point one develops authorized offensive security and red with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section two point one, the mentor expects authorized claims to carry owners and dates.
-
-Section two point one treats seminar practice att ck as testable only when evidence and ticket IDs are recorded.
-
 ### 2.2 ATT&CK vocabulary
 
 Label planned and observed techniques. Coverage is communication, not proof of safety.
-
-Section two point two develops authorized offensive security and red with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section two point two, the mentor expects authorized claims to carry owners and dates.
-
-Section two point two treats seminar practice att ck as testable only when evidence and ticket IDs are recorded.
-
-For section two point two, Cedar Bridge Mutual (CBM) will not accept authorized work without a written trail.
 
 ### 2.3 Findings without payloads
 
 Practice writing findings as title, affected asset, evidence reference, impact, likelihood, recommendation — never as exploit recipes.
 
-Section two point three develops authorized offensive security and red with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section two point three, the mentor expects authorized claims to carry owners and dates.
-
-Section two point three treats seminar practice att ck as testable only when evidence and ticket IDs are recorded.
-
-For section two point three, Cedar Bridge Mutual (CBM) will not accept authorized work without a written trail.
-
 ### 2.4 Threat-led vs checklist
 
 TIBER-EU and CBEST emphasise intelligence-led scenarios for critical financial services. PTES and WSTG support structured technical coverage. A dissertation should say which logic it uses.
 
-Section two point four develops authorized offensive security and red with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section two point four, the mentor expects authorized claims to carry owners and dates.
-
-Section two point four treats seminar practice att ck as testable only when evidence and ticket IDs are recorded.
-
-For section two point four, Cedar Bridge Mutual (CBM) will not accept authorized work without a written trail.
-
 ### 2.5 Feedback craft
 
 Major issues change conclusions; minor issues polish. Cite evidence when you disagree.
-
-Section two point five develops authorized offensive security and red with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section two point five, the mentor expects authorized claims to carry owners and dates.
-
-Section two point five treats seminar practice att ck as testable only when evidence and ticket IDs are recorded.
-
-For section two point five, Cedar Bridge Mutual (CBM) will not accept authorized work without a written trail.
 
 ```python
 """ATT&CK-style coverage matrix over synthetic authorized techniques (names only)."""
@@ -313,21 +231,7 @@ Each framework embeds an assumption you should test before citing it in a disser
 
 Noah presents ATT&CK tagging as a reporting intervention. Peers note that tagging quality may vary. The coverage lab shows 71% of a planned set observed; the findings lab ranks SYN-001 critical without describing an exploit path.
 
-Section two point six develops authorized offensive security and red with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section two point six, the mentor expects authorized claims to carry owners and dates.
-
-Section two point six treats seminar practice att ck as testable only when evidence and ticket IDs are recorded.
-
 ### 2.7 Errors and limits
-Section two point seven develops authorized offensive security and red with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section two point seven, the mentor expects authorized claims to carry owners and dates.
-
-Section two point seven treats seminar practice att ck as testable only when evidence and ticket IDs are recorded.
-
-For section two point seven, Cedar Bridge Mutual (CBM) will not accept authorized work without a written trail.
-
 
 - Seminars that demo attacks.
 - Feedback that only praises.
@@ -363,18 +267,12 @@ You will (1) choose a study design that compares reporting formats fairly; (2) d
 
 A between-findings design randomly assigns each synthetic finding to ATT&CK-tagged or narrative-only report text, holding severity and asset class fixed. That yields many units and supports stratification.
 
-Section three point one develops study design ethics and reproducibility with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section three point one, the mentor expects study claims to carry owners and dates.
-
 A between-engagement design alternates report formats by week. It is simpler operationally but confounds format with time and team load. Prefer between-findings when the ticket system can store a format flag.
 
 
 ### 3.2 Ethics and authorization
 
 All assessments that produce study findings run under written authorization on synthetic segments only. Operators and remediators consent to research use of ticket metadata. No real customer data enters the dissertation.
-
-Section three point two develops study design ethics and reproducibility with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
 
 Dual-use rule: findings describe impact and evidence references, never exploit steps. If a training assessment unexpectedly touches a production host, stop conditions fire and research pauses with the assessment.
 
@@ -383,33 +281,15 @@ Dual-use rule: findings describe impact and evidence references, never exploit s
 
 Publish the randomisation script, both report templates, the operational definition of remediated, and a synthetic ticket export schema. Pin the ATT&CK version used for tags. A peer should regenerate your tables from the synthetic export.
 
-Section three point three develops study design ethics and reproducibility with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section three point three, the mentor expects study claims to carry owners and dates.
-
-Section three point three treats design options ethics and as testable only when evidence and ticket IDs are recorded.
-
 
 ### 3.4 Sample size sketch
 
 If narrative completion is about 40% in 30 days, detecting a rise to 60% needs on the order of 100 findings per arm for a rough comparison. Treat this as a planning sketch; refine after the pilot's variance estimate.
 
-Section three point four develops study design ethics and reproducibility with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section three point four, the mentor expects study claims to carry owners and dates.
-
-Section three point four treats design options ethics and as testable only when evidence and ticket IDs are recorded.
-
 
 ### 3.5 Stop conditions for source assessments
 
 Out-of-scope host, appearance of real personal data, or availability impact on shared services — stop, escalate, and pause research data collection until cleared. Research never pressures assessors to continue unsafely.
-
-Section three point five develops study design ethics and reproducibility with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section three point five, the mentor expects study claims to carry owners and dates.
-
-Section three point five treats design options ethics and as testable only when evidence and ticket IDs are recorded.
 
 
 ```python
@@ -460,21 +340,7 @@ Ticket exports for research should drop names where possible, keep role IDs, and
 
 Noah chooses between-findings randomisation on CBM synthetic VLAN 40. Authorization and remediator consent are filed. The ROE lab pattern — deny unsafe actions, require approval for sensitive labs, enforce hours — is mirrored in assessment runbooks so study data only accrues from well-governed work.
 
-Section three point six develops study design ethics and reproducibility with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section three point six, the mentor expects study claims to carry owners and dates.
-
-Section three point six treats design options ethics and as testable only when evidence and ticket IDs are recorded.
-
 ### 3.7 Errors and limits
-Section three point seven develops study design ethics and reproducibility with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section three point seven, the mentor expects study claims to carry owners and dates.
-
-Section three point seven treats design options ethics and as testable only when evidence and ticket IDs are recorded.
-
-For section three point seven, Cedar Bridge Mutual (CBM) will not accept study work without a written trail.
-
 
 - Randomising after seeing outcomes.
 - Using live customer segments.
@@ -509,55 +375,25 @@ You will (1) list alternative explanations for a remediation-rate difference; (2
 
 If tagged findings remediate faster, rivals include: tags make tickets clearer; tags correlate with higher severity by construction; remediators treat research tickets differently (Hawthorne); ATT&CK tags were applied only when the writer was more careful overall.
 
-Section four point one develops authorized offensive security and red with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section four point one, the mentor expects authorized claims to carry owners and dates.
-
-Section four point one treats rival explanations designing discriminators as testable only when evidence and ticket IDs are recorded.
-
 
 ### 4.2 Designing discriminators
 
 Balance severity and asset class across arms with stratified randomisation. Blind remediators to the research hypothesis. Audit a sample of tags for correctness against ATT&CK definitions. Measure time-to-first-response as well as 30-day completion.
-
-Section four point two develops authorized offensive security and red with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section four point two, the mentor expects authorized claims to carry owners and dates.
-
-Section four point two treats rival explanations designing discriminators as testable only when evidence and ticket IDs are recorded.
 
 
 ### 4.3 Base rates in queues
 
 Security queues are full of low-prevalence true issues. A noisy urgent flag creates mostly false urgency. The same arithmetic that governs detection precision at low prevalence governs ticket escalation policies.
 
-Section four point three develops authorized offensive security and red with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section four point three, the mentor expects authorized claims to carry owners and dates.
-
-Section four point three treats rival explanations designing discriminators as testable only when evidence and ticket IDs are recorded.
-
 
 ### 4.4 Empty scores
 
 Albrecht and Jensen (arXiv:2010.06377) argue that OSSTMM's rav is not a valid operational security quantity. Your dissertation should not invent a new single score; compare concrete remediation outcomes under stated conditions.
 
-Section four point four develops authorized offensive security and red with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section four point four, the mentor expects authorized claims to carry owners and dates.
-
-Section four point four treats rival explanations designing discriminators as testable only when evidence and ticket IDs are recorded.
-
 
 ### 4.5 Claims you will refuse
 
 You will not claim that faster remediation means fewer breaches or that ATT&CK coverage equals safety. Say what ticket data can support — and stop there.
-
-Section four point five develops authorized offensive security and red with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section four point five, the mentor expects authorized claims to carry owners and dates.
-
-Section four point five treats rival explanations designing discriminators as testable only when evidence and ticket IDs are recorded.
 
 
 ```python
@@ -594,21 +430,7 @@ Before the main study, write a pre-mortem: "The study failed because…" listing
 
 Noah pre-specifies rivals: severity imbalance, tag quality, Hawthorne effects. The base-rate lab shows that at 1% prevalence and 5% false positives, precision is about 0.161 — a warning against promiscuous urgency labels. He will report tag-audit agreement alongside the primary result.
 
-Section four point six develops authorized offensive security and red with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section four point six, the mentor expects authorized claims to carry owners and dates.
-
-Section four point six treats rival explanations designing discriminators as testable only when evidence and ticket IDs are recorded.
-
 ### 4.7 Errors and limits
-Section four point seven develops authorized offensive security and red with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section four point seven, the mentor expects authorized claims to carry owners and dates.
-
-Section four point seven treats rival explanations designing discriminators as testable only when evidence and ticket IDs are recorded.
-
-For section four point seven, Cedar Bridge Mutual (CBM) will not accept authorized work without a written trail.
-
 
 - Claiming breach reduction.
 - Ignoring tag quality.
@@ -730,23 +552,7 @@ A 14-day early signal can inform logistics but must not rewrite the primary 30-d
 
 Pilot early signal: tagged 10/20 early responses versus narrative 6/20. Tag audit: 2/20 tags wrong — Noah adds a second-person tag check. Scope lab rules remain in the assessment runbook: deny-listed hosts and out-of-scope ports never enter study data.
 
-Section five point six develops proposal and pilot with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section five point six, the mentor expects proposal claims to carry owners and dates.
-
-Section five point six treats proposal contents templates pilot as testable only when evidence and ticket IDs are recorded.
-
 ### 5.7 Errors and limits
-Section five point seven develops proposal and pilot with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section five point seven, the mentor expects proposal claims to carry owners and dates.
-
-Section five point seven treats proposal contents templates pilot as testable only when evidence and ticket IDs are recorded.
-
-For section five point seven, Cedar Bridge Mutual (CBM) will not accept proposal work without a written trail.
-
-Section five point seven fails closed if proposal evidence is missing rather than guessing.
-
 
 - Pilots on production.
 - Changing templates mid-main-study.
@@ -781,21 +587,9 @@ You will (1) collect ticket data without breaking blinding; (2) analyse primary 
 
 Export tickets weekly with format flag, severity, asset class, timestamps, and closed-reason. Do not tell remediators which arm is "expected to win". Assessors who write findings should not grade remediation.
 
-Section six point one develops data collection and analysis with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section six point one, the mentor expects data claims to carry owners and dates.
-
-Section six point one treats collection primary analysis secondary as testable only when evidence and ticket IDs are recorded.
-
 ### 6.2 Primary analysis
 
 Compare 30-day remediation proportions with intervals. Prefer a risk difference or risk ratio with a confidence interval. Stratify or adjust for severity if randomisation used strata.
-
-Section six point two develops data collection and analysis with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section six point two, the mentor expects data claims to carry owners and dates.
-
-Section six point two treats collection primary analysis secondary as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Lab S: reporting attack-success rates honestly: Wilson intervals,
@@ -840,37 +634,13 @@ baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
 
 Time-to-first-response; tag-audit agreement; completion by asset class. Label secondary analyses clearly. Do not promote a secondary result to "the finding" if the primary is null.
 
-Section six point three develops data collection and analysis with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section six point three, the mentor expects data claims to carry owners and dates.
-
-Section six point three treats collection primary analysis secondary as testable only when evidence and ticket IDs are recorded.
-
-For section six point three, Cedar Bridge Mutual (CBM) will not accept data work without a written trail.
-
 ### 6.4 Missingness and exclusions
 
 Pre-register rules: tickets reopened within 30 days count as not lastingly remediated; tickets on decommissioned synthetic assets are excluded and listed. Report exclusion counts.
 
-Section six point four develops data collection and analysis with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section six point four, the mentor expects data claims to carry owners and dates.
-
-Section six point four treats collection primary analysis secondary as testable only when evidence and ticket IDs are recorded.
-
-For section six point four, Cedar Bridge Mutual (CBM) will not accept data work without a written trail.
-
 ### 6.5 Timeline discipline
 
 Keep an operations timeline of assessments, exports and incidents (even synthetic training incidents) so analysis can be reconstructed.
-
-Section six point five develops data collection and analysis with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section six point five, the mentor expects data claims to carry owners and dates.
-
-Section six point five treats collection primary analysis secondary as testable only when evidence and ticket IDs are recorded.
-
-For section six point five, Cedar Bridge Mutual (CBM) will not accept data work without a written trail.
 
 ```python
 """Rebuild a synthetic engagement timeline from event records."""
@@ -919,21 +689,7 @@ The VLAN 40 rebuild week is the chapter's lesson in exclusions. An exclusion is 
 
 Main collection: 110 tagged and 108 narrative findings. Remediated in 30 days: 62% vs 44% (difference about 18 points; interval excludes 0). Tag-audit agreement 96% after second-person review. Exploratory: largest lift on medium-severity web findings. One week excluded when VLAN 40 was rebuilt — pre-registered infra exclusion.
 
-Section six point six develops data collection and analysis with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section six point six, the mentor expects data claims to carry owners and dates.
-
-Section six point six treats collection primary analysis secondary as testable only when evidence and ticket IDs are recorded.
-
 ### 6.7 Errors and limits
-Section six point seven develops data collection and analysis with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section six point seven, the mentor expects data claims to carry owners and dates.
-
-Section six point seven treats collection primary analysis secondary as testable only when evidence and ticket IDs are recorded.
-
-For section six point seven, Cedar Bridge Mutual (CBM) will not accept data work without a written trail.
-
 
 - Peeking weekly and stopping early.
 - Silent exclusions.
@@ -967,12 +723,6 @@ You will (1) structure the dissertation around the research cycle; (2) write fin
 ### 7.1 Structure
 
 Use: introduction; background (NIST SP 800-115, PTES, ATT&CK, WSTG, TIBER-EU/CBEST); related work; methods; results; discussion; ethics; limitations; conclusion; appendices (templates, pre-registration, synthetic schema). Readers should find the question, measure and answer within five minutes of opening the PDF.
-
-Section seven point one develops dissertation writing and limitations with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section seven point one, the mentor expects dissertation claims to carry owners and dates.
-
-Section seven point one treats structure writing findings limitations as testable only when evidence and ticket IDs are recorded.
 
 ### 7.2 Writing findings
 
@@ -1017,12 +767,6 @@ SYN-005 priority=critical score=17 impact=3 exploitability=2 exposure=1 :: servi
 
 State: synthetic segments; one organisation; volunteer remediators; imperfect ATT&CK tags; 30 days may miss slow fixes; no claim about breach rates. Limitations are part of the contribution because they stop unsafe generalisation into live enterprise programmes such as CBEST or TIBER-EU without further study.
 
-Section seven point three develops dissertation writing and limitations with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section seven point three, the mentor expects dissertation claims to carry owners and dates.
-
-Section seven point three treats structure writing findings limitations as testable only when evidence and ticket IDs are recorded.
-
 ### 7.4 Reproducibility appendix
 
 Include scripts, templates, ATT&CK version pin, synthetic export and an analysis notebook that rebuilds the primary table. Hash the release so examiners can detect accidental edits.
@@ -1064,10 +808,6 @@ scope.csv        OK
 
 Two pages: how to add ATT&CK fields to tickets; how to audit tags; which metric to watch (30-day completion by severity); what not to claim (breach reduction, matrix coverage as safety). Ask one CBM engineer to follow the brief cold and note where they stall.
 
-Section seven point five develops dissertation writing and limitations with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section seven point five, the mentor expects dissertation claims to carry owners and dates.
-
 ### 7.6 Worked example (synthetic CBM case)
 
 Noah's limitations page leads with synthetic scope. His appendix regenerates Table 1 from `tickets_synth.csv`. The findings lab style — priority without an exploit path — matches his templates. Hash verification catches a mistaken edit to the appendix sample before submission.
@@ -1075,14 +815,6 @@ Noah's limitations page leads with synthetic scope. His appendix regenerates Tab
 The mistaken edit matters because the appendix exists so examiners can rebuild Table 1: an undetected change could have left their rebuilt numbers out of line with the 62% and 44% in the results chapter, and the mismatch would have cast doubt on the whole analysis rather than on one file.
 
 ### 7.7 Errors and limits
-Section seven point seven develops dissertation writing and limitations with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section seven point seven, the mentor expects dissertation claims to carry owners and dates.
-
-Section seven point seven treats structure writing findings limitations as testable only when evidence and ticket IDs are recorded.
-
-For section seven point seven, Cedar Bridge Mutual (CBM) will not accept dissertation work without a written trail.
-
 
 - Methods chapters that omit ethics.
 - Results without limitations.
@@ -1182,17 +914,7 @@ Closing cleanly is part of the evidence that the work was governed. Noah returns
 
 At defence, Noah is asked whether ATT&CK tagging merely marks findings that were already well written. He points to stratified randomisation and the tag audit, and accepts that residual confounding is a limitation. He refuses a request for exploit detail and demos the empty "exploit steps" field in the template. CBM adopts tagged templates for training assessments pending a live pilot under separate authorization.
 
-Section eight point six develops independent review and defense with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
 ### 8.7 Errors and limits
-Section eight point seven develops independent review and defense with a Cedar Bridge Mutual (CBM) note Noah Kim can demo offline.
-
-Under section eight point seven, the mentor expects independent claims to carry owners and dates.
-
-Section eight point seven treats independent review defence posture as testable only when evidence and ticket IDs are recorded.
-
-For section eight point seven, Cedar Bridge Mutual (CBM) will not accept independent work without a written trail.
-
 
 - Defences that overclaim live enterprise impact.
 - Sharing real vulnerability details in the public appendix.

@@ -49,53 +49,21 @@ Lucas Moreau is a master's student at the fictional Ashcombe University, supervi
 
 Lucas turns the argument into a question he can answer with Larkspur's change records: "Are configuration changes made through the console more likely to expose storage publicly than changes made through reviewed IaC, and what explains any difference?" The question compares two explanations rather than assuming one.
 
-Section one point two develops research question and literature method with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section one point two, Dr Mei Tanaka expects research claims to carry owners and dates.
-
 ### 1.3 Search method
 
 He searches two digital libraries and the NIST and CSA publication lists with recorded search strings, dates and result counts. Titles and abstracts are screened against written inclusion criteria: empirical or standards sources on cloud configuration error, IaC security or access control.
-
-Section one point three develops research question and literature method with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section one point three, Dr Mei Tanaka expects research claims to carry owners and dates.
-
-Section one point three treats the opening case from as testable only when evidence and ticket IDs are recorded.
 
 ### 1.4 Key terms
 
 "Exposure" means a storage resource readable without authentication. "Change origin" is console, IaC pipeline or provider API script. "Reviewed" means a second person approved the change.
 
-Section one point four develops research question and literature method with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section one point four, Dr Mei Tanaka expects research claims to carry owners and dates.
-
-Section one point four treats the opening case from as testable only when evidence and ticket IDs are recorded.
-
-For section one point four, Ashcombe University will not accept research work without a written trail.
-
 ### 1.5 Recording
 
 The search log, screening decisions and reasons for exclusion are kept so another student could repeat the search and reach the same set.
 
-Section one point five develops research question and literature method with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section one point five, Dr Mei Tanaka expects research claims to carry owners and dates.
-
-Section one point five treats the opening case from as testable only when evidence and ticket IDs are recorded.
-
-For section one point five, Ashcombe University will not accept research work without a written trail.
-
 ### 1.6 Early sources
 
 Mell and Grance (2011) define the service models; the shared responsibility pages of AWS, Microsoft and Google place storage access settings on the customer's side; Rahman et al. (2019) found security smells in IaC scripts, which supports the platform team's concern.
-
-Section one point six develops research question and literature method with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section one point six, Dr Mei Tanaka expects research claims to carry owners and dates.
-
-Section one point six treats the opening case from as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -137,21 +105,9 @@ You will (1) discuss access control, least privilege and configuration in depth;
 
 Sandhu et al. (1996) formalised role-based access control, where permissions attach to roles rather than individuals. Cloud platforms implement roles and policies at large scale. NIST SP 800-210 gives guidance specific to cloud systems, including managing access across service models.
 
-Section two point one develops cloud and container security advanced with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section two point one, Dr Mei Tanaka expects cloud claims to carry owners and dates.
-
-Section two point one treats access control models least as testable only when evidence and ticket IDs are recorded.
-
 ### 2.2 Least privilege in practice
 
 A role that holds permissions it never uses widens what an error or stolen credential can do. Cloud providers offer access history that shows which permissions were used, which allows evidence-based trimming.
-
-Section two point two develops cloud and container security advanced with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section two point two, Dr Mei Tanaka expects cloud claims to carry owners and dates.
-
-Section two point two treats access control models least as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — Lab — permission use
 
@@ -183,29 +139,13 @@ unused share 4/11 = 36%
 
 Over 90 synthetic days, ci-deployer used 3 of 5 granted permissions (unused: logs.read, storage.read), analytics-job used 2 of 4 (unused: db.admin, storage.write) and support-ro used both of its 2. In total 4 of 11 granted permissions, 36%, went unused. The analytics job's unused storage.write matters for Lucas's question: a job that can write storage settings could also change them.
 
-Section two point three develops cloud and container security advanced with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section two point three, Dr Mei Tanaka expects cloud claims to carry owners and dates.
-
 ### 2.4 Zero trust
 
 NIST SP 800-207 argues that access should be decided per request using identity and context, not network location. For storage, that means private by default, with access granted to named identities.
 
-Section two point four develops cloud and container security advanced with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section two point four, Dr Mei Tanaka expects cloud claims to carry owners and dates.
-
-Section two point four treats access control models least as testable only when evidence and ticket IDs are recorded.
-
 ### 2.5 Seminar argument
 
 Lucas argues that exposure is partly an identity problem: if few identities can change bucket access settings, fewer paths to exposure exist, regardless of console or IaC.
-
-Section two point five develops cloud and container security advanced with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section two point five, Dr Mei Tanaka expects cloud claims to carry owners and dates.
-
-Section two point five treats access control models least as testable only when evidence and ticket IDs are recorded.
 
 ### Access history quality
 
@@ -251,65 +191,25 @@ You will (1) design an observational study of change records; (2) address confou
 
 The study uses one year of Larkspur's change records for storage resources. Each change has an origin (console or IaC), a time, a resource and whether it produced public exposure. An observational design is appropriate because Larkspur cannot randomly assign how teams make changes.
 
-Section three point one develops study design ethics and reproducibility with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section three point one, Dr Mei Tanaka expects study claims to carry owners and dates.
-
-Section three point one treats design confounding ethics reproducibility as testable only when evidence and ticket IDs are recorded.
-
 ### 3.2 Confounding
 
 Console changes may happen more often under time pressure, in data-science teams or at night. Lucas records team, hour and resource type so he can check whether the difference holds within these groups.
-
-Section three point two develops study design ethics and reproducibility with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section three point two, Dr Mei Tanaka expects study claims to carry owners and dates.
-
-Section three point two treats design confounding ethics reproducibility as testable only when evidence and ticket IDs are recorded.
 
 ### 3.3 Ethics
 
 Change records name engineers. The ethics application commits to pseudonymising engineer identities before analysis, reporting only by team and origin, and never using the study to assess individuals. Larkspur's data protection officer signs the data agreement.
 
-Section three point three develops study design ethics and reproducibility with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section three point three, Dr Mei Tanaka expects study claims to carry owners and dates.
-
-Section three point three treats design confounding ethics reproducibility as testable only when evidence and ticket IDs are recorded.
-
 ### 3.4 Reproducibility
 
 Analysis scripts are written before the full data arrive, tested on synthetic records with the same structure and kept under version control. The synthetic generator is released with the thesis.
-
-Section three point four develops study design ethics and reproducibility with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section three point four, Dr Mei Tanaka expects study claims to carry owners and dates.
-
-Section three point four treats design confounding ethics reproducibility as testable only when evidence and ticket IDs are recorded.
 
 ### 3.5 Pre-registration
 
 Lucas writes his hypotheses, primary comparison and planned subgroup checks in a dated document shared with Dr Tanaka before receiving the data.
 
-Section three point five develops study design ethics and reproducibility with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section three point five, Dr Mei Tanaka expects study claims to carry owners and dates.
-
-Section three point five treats design confounding ethics reproducibility as testable only when evidence and ticket IDs are recorded.
-
-For section three point five, Ashcombe University will not accept study work without a written trail.
-
 ### 3.6 Measures of association
 
 The primary result is the proportion of changes causing exposure by origin, the risk ratio, and a chi-square test; subgroup results follow.
-
-Section three point six develops study design ethics and reproducibility with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section three point six, Dr Mei Tanaka expects study claims to carry owners and dates.
-
-Section three point six treats design confounding ethics reproducibility as testable only when evidence and ticket IDs are recorded.
-
-For section three point six, Ashcombe University will not accept study work without a written trail.
 
 ### Data management plan
 
@@ -354,67 +254,25 @@ You will (1) state each explanation as a testable mechanism; (2) derive predicti
 
 Manual console changes skip review and templates, so mistakes such as ticking "public" are more likely and stay unnoticed. Prediction: higher exposure rate for console changes, persisting within teams and hours.
 
-Section four point one develops cloud and container security competing with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section four point one, Dr Mei Tanaka expects cloud claims to carry owners and dates.
-
-Section four point one treats explanation console error explanation as testable only when evidence and ticket IDs are recorded.
-
 ### 4.2 Explanation B: weak IaC defaults
 
 Templates copied between projects carry permissive settings, and review focuses on application logic, not storage policy. Prediction: IaC exposures cluster in resources created from a small number of templates; fixing templates would cut many exposures at once.
-
-Section four point two develops cloud and container security competing with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section four point two, Dr Mei Tanaka expects cloud claims to carry owners and dates.
-
-Section four point two treats explanation console error explanation as testable only when evidence and ticket IDs are recorded.
 
 ### 4.3 Explanation C: identity breadth
 
 Exposure depends on how many identities can change access settings, whatever the origin. Prediction: exposures concentrate where many identities hold storage administration rights.
 
-Section four point three develops cloud and container security competing with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section four point three, Dr Mei Tanaka expects cloud claims to carry owners and dates.
-
-Section four point three treats explanation console error explanation as testable only when evidence and ticket IDs are recorded.
-
-For section four point three, Ashcombe University will not accept cloud work without a written trail.
-
 ### 4.4 Distinguishing evidence
 
 A and B can both be true. The study measures rates by origin, clustering by template and the number of identities with storage admin rights per account.
-
-Section four point four develops cloud and container security competing with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section four point four, Dr Mei Tanaka expects cloud claims to carry owners and dates.
-
-Section four point four treats explanation console error explanation as testable only when evidence and ticket IDs are recorded.
 
 ### 4.5 Avoiding unfalsifiable claims
 
 "Human error" alone explains everything and predicts nothing; each explanation must say what pattern would contradict it.
 
-Section four point five develops cloud and container security competing with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section four point five, Dr Mei Tanaka expects cloud claims to carry owners and dates.
-
-Section four point five treats explanation console error explanation as testable only when evidence and ticket IDs are recorded.
-
-For section four point five, Ashcombe University will not accept cloud work without a written trail.
-
 ### 4.6 Literature link
 
 Rahman et al. (2019) supports B's mechanism; provider guidance on blocking public access at account level addresses all three.
-
-Section four point six develops cloud and container security competing with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section four point six, Dr Mei Tanaka expects cloud claims to carry owners and dates.
-
-Section four point six treats explanation console error explanation as testable only when evidence and ticket IDs are recorded.
-
-For section four point six, Ashcombe University will not accept cloud work without a written trail.
 
 ### Writing the table
 
@@ -459,25 +317,9 @@ You will (1) write the research proposal; (2) pilot the data extraction on a sma
 
 Twelve pages: background, question, explanations and predictions, design, data, ethics, analysis, risks and timeline. Each prediction maps to an analysis.
 
-Section five point one develops proposal and pilot with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section five point one, Dr Mei Tanaka expects proposal claims to carry owners and dates.
-
-Section five point one treats the proposal pilot extraction as testable only when evidence and ticket IDs are recorded.
-
-For section five point one, Ashcombe University will not accept proposal work without a written trail.
-
 ### 5.2 Pilot extraction
 
 Lucas extracts one month of synthetic-format records from a test account and classifies current bucket settings to check that the classification works.
-
-Section five point two develops proposal and pilot with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section five point two, Dr Mei Tanaka expects proposal claims to carry owners and dates.
-
-Section five point two treats the proposal pilot extraction as testable only when evidence and ticket IDs are recorded.
-
-For section five point two, Ashcombe University will not accept proposal work without a written trail.
 
 ### Lab — Lab — bucket classification
 
@@ -510,29 +352,13 @@ public buckets: 3 of 6
 
 Of six synthetic buckets, three are public: marketing-assets (console; also no access logs), tmp-export-0412 (console; also unencrypted and no access logs) and partner-drop (IaC; public by design for a partner). orders-archive and receipts are ok; ml-features lacks access logs. The pilot shows that "public" needs a field for intended public access: partner-drop's exposure was approved.
 
-Section five point three develops proposal and pilot with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section five point three, Dr Mei Tanaka expects proposal claims to carry owners and dates.
-
 ### 5.4 Revising measures
 
 Exposure is now "unintended public access", with intended public resources recorded in an approved register. This change is made before the main data are seen and is noted in the pre-registration log.
 
-Section five point four develops proposal and pilot with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section five point four, Dr Mei Tanaka expects proposal claims to carry owners and dates.
-
-Section five point four treats the proposal pilot extraction as testable only when evidence and ticket IDs are recorded.
-
 ### 5.5 CIS and CCM
 
 The baseline checks align with CIS Benchmark recommendations for storage and with CSA CCM v4 control domains for data security, which helps relate findings to frameworks Larkspur already uses.
-
-Section five point five develops proposal and pilot with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section five point five, Dr Mei Tanaka expects proposal claims to carry owners and dates.
-
-Section five point five treats the proposal pilot extraction as testable only when evidence and ticket IDs are recorded.
 
 ### Proposal feedback
 
@@ -577,14 +403,6 @@ You will (1) collect the full dataset under the agreed rules; (2) run the pre-re
 
 Larkspur exports one year of storage change records, pseudonymised, with origin, team group, hour, resource and template identifier. Lucas checks counts against Larkspur's monthly totals before analysis.
 
-Section six point one develops data collection and analysis with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section six point one, Dr Mei Tanaka expects data claims to carry owners and dates.
-
-Section six point one treats collection primary result subgroups as testable only when evidence and ticket IDs are recorded.
-
-For section six point one, Ashcombe University will not accept data work without a written trail.
-
 ### Lab — Lab — exposure by origin
 
 ```python
@@ -613,47 +431,17 @@ chi-square 23.1 (df 1), p 1.5e-06; risk ratio console/iac 4.5
 
 In the synthetic dataset, 12 of 1,200 IaC changes (1.0%) and 27 of 600 console changes (4.5%) caused unintended public exposure. The chi-square statistic is 23.1 with one degree of freedom, p about 1.5 × 10⁻⁶, and the risk ratio is 4.5: console changes were four and a half times as likely to expose storage.
 
-Section six point two develops data collection and analysis with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section six point two, Dr Mei Tanaka expects data claims to carry owners and dates.
-
-Section six point two treats collection primary result subgroups as testable only when evidence and ticket IDs are recorded.
-
 ### 6.3 Subgroups for A
 
 The difference holds within daytime and night-time changes and within the three largest team groups, which supports explanation A beyond timing or team effects.
-
-Section six point three develops data collection and analysis with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section six point three, Dr Mei Tanaka expects data claims to carry owners and dates.
-
-Section six point three treats collection primary result subgroups as testable only when evidence and ticket IDs are recorded.
-
-For section six point three, Ashcombe University will not accept data work without a written trail.
 
 ### 6.4 Clustering for B
 
 Nine of the twelve IaC exposures come from two templates, supporting explanation B: weak defaults spread. Fixing those templates would address most IaC exposures.
 
-Section six point four develops data collection and analysis with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section six point four, Dr Mei Tanaka expects data claims to carry owners and dates.
-
-Section six point four treats collection primary result subgroups as testable only when evidence and ticket IDs are recorded.
-
-For section six point four, Ashcombe University will not accept data work without a written trail.
-
 ### 6.5 Identity for C
 
 Accounts where more than ten identities hold storage administration rights have higher exposure rates for both origins, supporting C as a contributing factor.
-
-Section six point five develops data collection and analysis with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section six point five, Dr Mei Tanaka expects data claims to carry owners and dates.
-
-Section six point five treats collection primary result subgroups as testable only when evidence and ticket IDs are recorded.
-
-For section six point five, Ashcombe University will not accept data work without a written trail.
 
 ### Checking the data
 
@@ -698,69 +486,25 @@ You will (1) write the dissertation clearly; (2) present limitations honestly; (
 
 Introduction and question; literature review with the search method; design and ethics; results by explanation; discussion; limitations; recommendations; appendices with search log, analysis scripts and the synthetic generator.
 
-Section seven point one develops dissertation writing and limitations with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section seven point one, Dr Mei Tanaka expects dissertation claims to carry owners and dates.
-
-Section seven point one treats structure limitations findings versus as testable only when evidence and ticket IDs are recorded.
-
 ### 7.2 Limitations
 
 One organisation and one year; origin labels depend on logging accuracy; intended public resources depend on a register that may be incomplete; the study measures exposure, not whether data were accessed.
-
-Section seven point two develops dissertation writing and limitations with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section seven point two, Dr Mei Tanaka expects dissertation claims to carry owners and dates.
-
-Section seven point two treats structure limitations findings versus as testable only when evidence and ticket IDs are recorded.
 
 ### 7.3 Findings versus recommendations
 
 Findings say what the data show; recommendations say what Larkspur might do, labelled as Lucas's judgement. Mixing them would overstate the evidence.
 
-Section seven point three develops dissertation writing and limitations with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section seven point three, Dr Mei Tanaka expects dissertation claims to carry owners and dates.
-
-Section seven point three treats structure limitations findings versus as testable only when evidence and ticket IDs are recorded.
-
-For section seven point three, Ashcombe University will not accept dissertation work without a written trail.
-
 ### 7.4 Recommendations
 
 Block public access at account level by default with approved exceptions, as provider guidance suggests; fix the two templates and add policy checks to IaC review; reduce storage administrators; route urgent data requests through a pre-approved, private export process.
-
-Section seven point four develops dissertation writing and limitations with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section seven point four, Dr Mei Tanaka expects dissertation claims to carry owners and dates.
-
-Section seven point four treats structure limitations findings versus as testable only when evidence and ticket IDs are recorded.
 
 ### 7.5 Figures
 
 One figure per explanation shows its prediction against the data, using the same scale.
 
-Section seven point five develops dissertation writing and limitations with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section seven point five, Dr Mei Tanaka expects dissertation claims to carry owners and dates.
-
-Section seven point five treats structure limitations findings versus as testable only when evidence and ticket IDs are recorded.
-
-For section seven point five, Ashcombe University will not accept dissertation work without a written trail.
-
 ### 7.6 Writing clearly
 
 Short paragraphs, defined terms and one claim per paragraph.
-
-Section seven point six develops dissertation writing and limitations with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section seven point six, Dr Mei Tanaka expects dissertation claims to carry owners and dates.
-
-Section seven point six treats structure limitations findings versus as testable only when evidence and ticket IDs are recorded.
-
-For section seven point six, Ashcombe University will not accept dissertation work without a written trail.
-
-Section seven point six fails closed if dissertation evidence is missing rather than guessing.
 
 ### Appendices
 
@@ -809,69 +553,25 @@ You will (1) prepare for independent examination; (2) respond to examiner questi
 
 An external examiner reads the dissertation and the archive. Lucas prepares by rerunning all scripts from the archive on a clean machine.
 
-Section eight point one develops independent review and defense with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section eight point one, Dr Mei Tanaka expects independent claims to carry owners and dates.
-
-Section eight point one treats examination questions expected the as testable only when evidence and ticket IDs are recorded.
-
-For section eight point one, Ashcombe University will not accept independent work without a written trail.
-
 ### 8.2 Questions expected
 
 Could origin labels be wrong? He shows the logging checks and mobile-app rule. Is chi-square appropriate? Expected counts exceed five in all cells. Do findings generalise? Mechanisms may, rates may not.
-
-Section eight point two develops independent review and defense with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section eight point two, Dr Mei Tanaka expects independent claims to carry owners and dates.
-
-Section eight point two treats examination questions expected the as testable only when evidence and ticket IDs are recorded.
 
 ### 8.3 The defence
 
 In a 45-minute viva, the examiner asks why Lucas did not use multilevel models for team effects. Lucas explains the pre-registered approach and shows the subgroup checks, agreeing that multilevel models would be a good extension.
 
-Section eight point three develops independent review and defense with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section eight point three, Dr Mei Tanaka expects independent claims to carry owners and dates.
-
-Section eight point three treats examination questions expected the as testable only when evidence and ticket IDs are recorded.
-
 ### 8.4 Revisions
 
 Minor corrections: clarify the register definition, add the power estimate to the results chapter.
-
-Section eight point four develops independent review and defense with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section eight point four, Dr Mei Tanaka expects independent claims to carry owners and dates.
-
-Section eight point four treats examination questions expected the as testable only when evidence and ticket IDs are recorded.
-
-For section eight point four, Ashcombe University will not accept independent work without a written trail.
 
 ### 8.5 Sharing results
 
 Larkspur receives a summary with the recommendations; a short paper is submitted with synthetic data and scripts; no engineer or team names are published.
 
-Section eight point five develops independent review and defense with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section eight point five, Dr Mei Tanaka expects independent claims to carry owners and dates.
-
-Section eight point five treats examination questions expected the as testable only when evidence and ticket IDs are recorded.
-
-For section eight point five, Ashcombe University will not accept independent work without a written trail.
-
 ### 8.6 Follow-through
 
 Larkspur enables account-level public access blocking and fixes the two templates within a quarter.
-
-Section eight point six develops independent review and defense with a Ashcombe University note Lucas Moreau can demo offline.
-
-Under section eight point six, Dr Mei Tanaka expects independent claims to carry owners and dates.
-
-Section eight point six treats examination questions expected the as testable only when evidence and ticket IDs are recorded.
-
-For section eight point six, Ashcombe University will not accept independent work without a written trail.
 
 ### Lessons for practice
 

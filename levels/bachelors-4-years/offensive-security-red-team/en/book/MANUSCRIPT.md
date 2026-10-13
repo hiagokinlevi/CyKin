@@ -46,7 +46,7 @@ A written authorization is a set of systems. Membership is binary for each targe
 
 ### 1.2 Logic of authorization
 
-Permission is necessary for testing; it is not sufficient for every method. \"In scope\" and \"method allowed\" must both be true. Confusing the two leads to unauthorized techniques on authorized hosts. At TRB, a host can sit inside the signed /26 while the ROE still forbids password spraying or denial-of-service checks against it. Sam therefore keeps two lists in TrackScope, one of hosts and one of permitted methods, and a test runs only when the pair appears in both. A request to spray credentials against an in-scope web host fails on the second list, and the rejection message names the clause that forbids it.
+Permission is necessary for testing; it is not sufficient for every method. "In scope" and "method allowed" must both be true. Confusing the two leads to unauthorized techniques on authorized hosts. At TRB, a host can sit inside the signed /26 while the ROE still forbids password spraying or denial-of-service checks against it. Sam therefore keeps two lists in TrackScope, one of hosts and one of permitted methods, and a test runs only when the pair appears in both. A request to spray credentials against an in-scope web host fails on the second list, and the rejection message names the clause that forbids it.
 
 ### 1.3 Counting coverage
 
@@ -54,7 +54,7 @@ If 40 hosts are in scope and 28 were touched by method cards, coverage is 28/40.
 
 ### 1.4 Invalid leaps
 
-\"The scanner found nothing, so we are safe\" confuses absence of evidence with evidence of absence. Wilson intervals in Chapter 12 make small-sample humility numerical. A clean scan over 28 of 40 hosts says nothing about the twelve that were never touched, and little about techniques the scanner cannot see. Sam rewrites such claims as bounded statements: 'no findings of the checked types on the 28 hosts tested in this window'. The bounded version is less comforting, but it is the only one the evidence supports, and it tells the reader exactly where the next test should look.
+"The scanner found nothing, so we are safe" confuses absence of evidence with evidence of absence. Wilson intervals in Chapter 12 make small-sample humility numerical. A clean scan over 28 of 40 hosts says nothing about the twelve that were never touched, and little about techniques the scanner cannot see. Sam rewrites such claims as bounded statements: 'no findings of the checked types on the 28 hosts tested in this window'. The bounded version is less comforting, but it is the only one the evidence supports, and it tells the reader exactly where the next test should look.
 
 ### 1.5 Practice
 
@@ -89,8 +89,8 @@ This book grants no authority to test real banks or payment systems. Labs use do
 ### Exercises
 
 - **EX001 — Set difference.** Express TRB's web VLAN scope with SWIFT excluded as a set operation. *Rubric:* 3 = VLAN set minus {SWIFT}; 2 = partial; 1 = union; 0 = none.
-- **EX002 — Necessary vs sufficient.** Why is \"host in scope\" not enough to run password spraying? *Rubric:* 3 = method must also be allowed; spraying may be forbidden; 2 = partial; 1 = it is enough; 0 = none.
-- **EX003 — Coverage fraction.** 28 of 40 hosts touched — write the coverage and one misuse of \"70%\". *Rubric:* 3 = 28/40=0.7; misuse e.g. implying safety; 2 = fraction only; 1 = wrong; 0 = none.
+- **EX002 — Necessary vs sufficient.** Why is "host in scope" not enough to run password spraying? *Rubric:* 3 = method must also be allowed; spraying may be forbidden; 2 = partial; 1 = it is enough; 0 = none.
+- **EX003 — Coverage fraction.** 28 of 40 hosts touched — write the coverage and one misuse of "70%". *Rubric:* 3 = 28/40=0.7; misuse e.g. implying safety; 2 = fraction only; 1 = wrong; 0 = none.
 
 ### Synthesis
 
@@ -258,11 +258,11 @@ You will (1) write findings without blame; (2) separate facts from claims; (3) c
 
 ### 4.1 Blame-free findings
 
-\"Shared admin account on loan system\" beats \"lazy admins\". Boards fund fixes; insults create enemies. A finding that names a weakness, its location and its consequence gives the owner something to fix. A finding that names a group of people gives them something to defend. Sam writes the shared admin account finding with the system, the account, what the logs can and cannot attribute, and a recommended change, and leaves character judgements out entirely, because the same report will be read by the people who must do the work.
+"Shared admin account on loan system" beats "lazy admins". Boards fund fixes; insults create enemies. A finding that names a weakness, its location and its consequence gives the owner something to fix. A finding that names a group of people gives them something to defend. Sam writes the shared admin account finding with the system, the account, what the logs can and cannot attribute, and a recommended change, and leaves character judgements out entirely, because the same report will be read by the people who must do the work.
 
 ### 4.2 Fact vs claim
 
-Fact: web tier opened a TCP session to ledger-db. Claim: \"attackers can move money\" needs more evidence or is labelled speculative. The connection itself is observed and logged; the claim about moving money depends on what ledger-db would accept from that session, which the test did not explore. Sam writes the fact in the finding and either labels the larger claim as speculative or lists the evidence that would be needed to support it. Readers can then weigh each sentence by its evidence rather than by its tone.
+Fact: web tier opened a TCP session to ledger-db. Claim: "attackers can move money" needs more evidence or is labelled speculative. The connection itself is observed and logged; the claim about moving money depends on what ledger-db would accept from that session, which the test did not explore. Sam writes the fact in the finding and either labels the larger claim as speculative or lists the evidence that would be needed to support it. Readers can then weigh each sentence by its evidence rather than by its tone.
 
 ### 4.3 Citations
 
@@ -302,7 +302,7 @@ Tone trophies are silly stickers on printed findings that developers praised as 
 
 ### Worked example (synthetic TRB)
 
-Sam rewrites \"the web team is incompetent\" to \"web tier reaches ledger-db on an unapproved flow; control: enforce approved matrix\".
+Sam rewrites "the web team is incompetent" to "web tier reaches ledger-db on an unapproved flow; control: enforce approved matrix".
 
 > **Synthetic case — Riverstone Transit Bank (TRB).** The bank, Sam Ito, TrackScope/FindingsDesk/PulseMap and all figures are invented for teaching.
 
@@ -312,8 +312,8 @@ This book grants no authority to test real banks or payment systems. Labs use do
 
 ### Exercises
 
-- **EX010 — Rewrite.** Turn \"stupid password reuse\" into professional finding language. *Rubric:* 3 = system condition + impact + no insult; 2 = partial; 1 = keeps insult; 0 = none.
-- **EX011 — Speculative claim.** How should Sam label \"attackers already stole funds\"? *Rubric:* 3 = speculative/unconfirmed; separate from facts; 2 = partial; 1 = as fact; 0 = none.
+- **EX010 — Rewrite.** Turn "stupid password reuse" into professional finding language. *Rubric:* 3 = system condition + impact + no insult; 2 = partial; 1 = keeps insult; 0 = none.
+- **EX011 — Speculative claim.** How should Sam label "attackers already stole funds"? *Rubric:* 3 = speculative/unconfirmed; separate from facts; 2 = partial; 1 = as fact; 0 = none.
 - **EX012 — Citation rule.** What must Sam never invent when citing? *Rubric:* 3 = DOIs / fake references; 2 = partial; 1 = nothing; 0 = none.
 
 ### Synthesis
@@ -378,7 +378,7 @@ Meetup alternative talks use only documentation-range demos. Sam's slide deck is
 
 ### Worked example (synthetic TRB)
 
-A classmate asks Sam to \"try the bank's login from home\". Sam refuses and points to the course boundary.
+A classmate asks Sam to "try the bank's login from home". Sam refuses and points to the course boundary.
 
 > **Synthetic case — Riverstone Transit Bank (TRB).** The bank, Sam Ito, TrackScope/FindingsDesk/PulseMap and all figures are invented for teaching.
 
@@ -494,7 +494,7 @@ Protects confidentiality and integrity in transit; does not fix broken authoriza
 
 ### 7.3 Dangerous experiments
 
-Sending malformed packets to the ledger VLAN to \"see what happens\" is out of bounds. The ledger hosts are fragile, change-controlled and outside ordinary scope, so an unplanned reaction such as a crash or a stuck transaction could affect real payments. Even where the ROE allows some network testing, malformed-packet experiments need a named method card, a maintenance window and the owner's explicit approval. Without those, the right action is to record the question and raise it with the ledger owner.
+Sending malformed packets to the ledger VLAN to "see what happens" is out of bounds. The ledger hosts are fragile, change-controlled and outside ordinary scope, so an unplanned reaction such as a crash or a stuck transaction could affect real payments. Even where the ROE allows some network testing, malformed-packet experiments need a named method card, a maintenance window and the owner's explicit approval. Without those, the right action is to record the question and raise it with the ledger owner.
 
 ### 7.4 Documentation ranges
 
@@ -648,171 +648,53 @@ You will (1) design minimal schemas for findings; (2) protect customer data in e
 
 Store what retests need, not entire customer tables.
 
-Section nine point one keeps the evidence vault minimal: hashes and ticket IDs, not customer balances.
-
-Under section nine point one, retention clocks start at engagement end and deletion is logged.
-
-Section nine point one watermarks exports so a leaked CSV still names its exporter.
-
-For section nine point one, a restore without a hash manifest fails the quarterly drill.
-
-Section nine point one reviews vault roles against HR lists and removes orphan contractor access.
-
 ### 9.2 Access control
 
 Evidence databases use role-based access; Sam's intern role is read/write on engagement schemas only.
 
-Section nine point two keeps the evidence vault minimal: hashes and ticket IDs, not customer balances.
-
-Under section nine point two, retention clocks start at engagement end and deletion is logged.
-
-Section nine point two watermarks exports so a leaked CSV still names its exporter.
-
-For section nine point two, a restore without a hash manifest fails the quarterly drill.
-
-Section nine point two reviews vault roles against HR lists and removes orphan contractor access.
-
 ### 9.3 Retention
 
-Agreement-driven deletion jobs; \"keep forever\" is not a policy.
-
-Section nine point three keeps the evidence vault minimal: hashes and ticket IDs, not customer balances.
-
-Under section nine point three, retention clocks start at engagement end and deletion is logged.
-
-Section nine point three watermarks exports so a leaked CSV still names its exporter.
-
-For section nine point three, a restore without a hash manifest fails the quarterly drill.
-
-Section nine point three reviews vault roles against HR lists and removes orphan contractor access.
+Agreement-driven deletion jobs; "keep forever" is not a policy.
 
 ### 9.4 Backups
 
 Encrypted, access-logged, tested restores — backups are in scope for abuse review.
 
-Section nine point four keeps the evidence vault minimal: hashes and ticket IDs, not customer balances.
-
-Under section nine point four, retention clocks start at engagement end and deletion is logged.
-
-Section nine point four watermarks exports so a leaked CSV still names its exporter.
-
-For section nine point four, a restore without a hash manifest fails the quarterly drill.
-
-Section nine point four reviews vault roles against HR lists and removes orphan contractor access.
-
 ### 9.5 Query hygiene
 
 No SELECT * into laptops; export minimised CSVs.
-
-Section nine point five keeps the evidence vault minimal: hashes and ticket IDs, not customer balances.
-
-Under section nine point five, retention clocks start at engagement end and deletion is logged.
-
-Section nine point five watermarks exports so a leaked CSV still names its exporter.
-
-For section nine point five, a restore without a hash manifest fails the quarterly drill.
-
-Section nine point five reviews vault roles against HR lists and removes orphan contractor access.
 
 ### 9.6 Integrity
 
 Foreign keys from findings to evidence blobs.
 
-Section nine point six keeps the evidence vault minimal: hashes and ticket IDs, not customer balances.
-
-Under section nine point six, retention clocks start at engagement end and deletion is logged.
-
-Section nine point six watermarks exports so a leaked CSV still names its exporter.
-
-For section nine point six, a restore without a hash manifest fails the quarterly drill.
-
-Section nine point six reviews vault roles against HR lists and removes orphan contractor access.
-
 ### 9.7 9.7 Applied note
 
 Evidence DB roles are reviewed quarterly against HR lists. Sam's query checks for active vault roles without active employees. The first run found two contractors; access was removed the same afternoon.
-
-Section nine point seven keeps the evidence vault minimal: hashes and ticket IDs, not customer balances.
-
-Under section nine point seven, retention clocks start at engagement end and deletion is logged.
-
-Section nine point seven watermarks exports so a leaked CSV still names its exporter.
-
-For section nine point seven, a restore without a hash manifest fails the quarterly drill.
 
 ### 9.8 9.8 Export watermarks
 
 CSV exports embed engagement id and exporter name in a header comment. Leaked files can be traced. Sam verifies the watermark exists in a quarterly spot check.
 
-Section nine point eight keeps the evidence vault minimal: hashes and ticket IDs, not customer balances.
-
-Under section nine point eight, retention clocks start at engagement end and deletion is logged.
-
-Section nine point eight watermarks exports so a leaked CSV still names its exporter.
-
-For section nine point eight, a restore without a hash manifest fails the quarterly drill.
-
 ### 9.9 9.9 Backup restore game
 
 Quarterly, Sam restores an evidence backup to an isolated host and opens one file. Untested backups are assumed broken.
-
-Section nine point nine keeps the evidence vault minimal: hashes and ticket IDs, not customer balances.
-
-Under section nine point nine, retention clocks start at engagement end and deletion is logged.
-
-Section nine point nine watermarks exports so a leaked CSV still names its exporter.
-
-For section nine point nine, a restore without a hash manifest fails the quarterly drill.
-
-Section nine point nine reviews vault roles against HR lists and removes orphan contractor access.
 
 ### 9.10 9.11 Scene
 
 An analyst requests "all evidence for the year" for a thesis. Sam refuses bulk export and offers a statistics-only extract with counts by severity. The thesis still proceeds. Minimisation applies to friendly requests too.
 
-Section nine point one zero keeps the evidence vault minimal: hashes and ticket IDs, not customer balances.
-
-Under section nine point one zero, retention clocks start at engagement end and deletion is logged.
-
-Section nine point one zero watermarks exports so a leaked CSV still names its exporter.
-
 ### 9.11 9.12 Extension
 
 During restore game day the backup opened, but the hash manifest was missing. Sam failed the game and restored the manifest job before the next engagement. Backups without manifests are rumours.
-
-Section nine point one one keeps the evidence vault minimal: hashes and ticket IDs, not customer balances.
-
-Under section nine point one one, retention clocks start at engagement end and deletion is logged.
-
-Section nine point one one watermarks exports so a leaked CSV still names its exporter.
-
-For section nine point one one, a restore without a hash manifest fails the quarterly drill.
 
 ### 9.12 9.16 Pad
 
 Watermark headers include a contact mailto for lost-and-found of stray exports. Someone used it once; Sam bought them coffee.
 
-Section nine point one two keeps the evidence vault minimal: hashes and ticket IDs, not customer balances.
-
-Under section nine point one two, retention clocks start at engagement end and deletion is logged.
-
-Section nine point one two watermarks exports so a leaked CSV still names its exporter.
-
-For section nine point one two, a restore without a hash manifest fails the quarterly drill.
-
 ### 9.13 9.20 Extra
 
 Lost-and-found mailto once returned a USB drive labelled with an engagement id. Process works.
-
-Section nine point one three keeps the evidence vault minimal: hashes and ticket IDs, not customer balances.
-
-Under section nine point one three, retention clocks start at engagement end and deletion is logged.
-
-Section nine point one three watermarks exports so a leaked CSV still names its exporter.
-
-For section nine point one three, a restore without a hash manifest fails the quarterly drill.
-
-Section nine point one three reviews vault roles against HR lists and removes orphan contractor access.
 
 ### Worked example (synthetic TRB)
 
@@ -850,29 +732,9 @@ You will (1) list ROE essentials; (2) check targets offline; (3) handle pressure
 
 Scope, exclusions, methods, window, emergency contacts, data handling, report audience — NIST SP 800-115 and PTES both put authorization first.
 
-Section ten point one answers verbal pressure with a written postponement, never a quiet yes.
-
-Under section ten point one, dual-use restraint means configuration evidence, not exploit snippets.
-
-Section ten point one logs conflicts such as family ties to vendors before the window opens.
-
-For section ten point one, improvised verbal approval from a random manager fails the tabletop.
-
-Section ten point one keeps postponement templates with SOC and CISO aliases ready under three minutes.
-
 ### 10.2 Offline check
 
 lab_scope classifies proposed targets before any packet.
-
-Section ten point two answers verbal pressure with a written postponement, never a quiet yes.
-
-Under section ten point two, dual-use restraint means configuration evidence, not exploit snippets.
-
-Section ten point two logs conflicts such as family ties to vendors before the window opens.
-
-For section ten point two, improvised verbal approval from a random manager fails the tabletop.
-
-Section ten point two keeps postponement templates with SOC and CISO aliases ready under three minutes.
 
 ```python
 """Lab 10: check a synthetic TRB target list against written scope and exclusions (no traffic sent)."""
@@ -896,151 +758,47 @@ Run with `python3 lab_scope.py`. Verified output:
 
 ### 10.3 Pressure
 
-\"Just add the SWIFT box\" is refused until written exclusion changes — which they will not for ordinary tests.
-
-Section ten point three answers verbal pressure with a written postponement, never a quiet yes.
-
-Under section ten point three, dual-use restraint means configuration evidence, not exploit snippets.
-
-Section ten point three logs conflicts such as family ties to vendors before the window opens.
-
-For section ten point three, improvised verbal approval from a random manager fails the tabletop.
-
-Section ten point three keeps postponement templates with SOC and CISO aliases ready under three minutes.
+"Just add the SWIFT box" is refused until written exclusion changes — which they will not for ordinary tests.
 
 ### 10.4 Responsible disclosure
 
 Vendor bugs found in third-party software follow vendor paths only with CISO approval.
 
-Section ten point four answers verbal pressure with a written postponement, never a quiet yes.
-
-Under section ten point four, dual-use restraint means configuration evidence, not exploit snippets.
-
-Section ten point four logs conflicts such as family ties to vendors before the window opens.
-
-For section ten point four, improvised verbal approval from a random manager fails the tabletop.
-
-Section ten point four keeps postponement templates with SOC and CISO aliases ready under three minutes.
-
 ### 10.5 Conflicts
 
 Sam does not test systems owned by family businesses on TRB time or tools.
-
-Section ten point five answers verbal pressure with a written postponement, never a quiet yes.
-
-Under section ten point five, dual-use restraint means configuration evidence, not exploit snippets.
-
-Section ten point five logs conflicts such as family ties to vendors before the window opens.
-
-For section ten point five, improvised verbal approval from a random manager fails the tabletop.
-
-Section ten point five keeps postponement templates with SOC and CISO aliases ready under three minutes.
 
 ### 10.6 Dual-use teaching
 
 Exploit details for real payment products are out of curriculum scope.
 
-Section ten point six answers verbal pressure with a written postponement, never a quiet yes.
-
-Under section ten point six, dual-use restraint means configuration evidence, not exploit snippets.
-
-Section ten point six logs conflicts such as family ties to vendors before the window opens.
-
-For section ten point six, improvised verbal approval from a random manager fails the tabletop.
-
-Section ten point six keeps postponement templates with SOC and CISO aliases ready under three minutes.
-
 ### 10.7 10.7 Applied note
 
 Dual-use policy examples include refusing to paste exploit PoCs into FindingsDesk even when a vendor asks "for repro". Reproduction at TRB uses configuration evidence and authorized accounts, not weaponised snippets.
-
-Section ten point seven answers verbal pressure with a written postponement, never a quiet yes.
-
-Under section ten point seven, dual-use restraint means configuration evidence, not exploit snippets.
-
-Section ten point seven logs conflicts such as family ties to vendors before the window opens.
-
-For section ten point seven, improvised verbal approval from a random manager fails the tabletop.
 
 ### 10.8 10.8 Gift and conflict log
 
 Sam logs any vendor gifts or outside bank accounts that could bias scope decisions. Transparency is cheaper than recusal fights mid-engagement.
 
-Section ten point eight answers verbal pressure with a written postponement, never a quiet yes.
-
-Under section ten point eight, dual-use restraint means configuration evidence, not exploit snippets.
-
-Section ten point eight logs conflicts such as family ties to vendors before the window opens.
-
-For section ten point eight, improvised verbal approval from a random manager fails the tabletop.
-
-Section ten point eight keeps postponement templates with SOC and CISO aliases ready under three minutes.
-
 ### 10.9 10.9 Tabletop ROE
 
 Annual tabletop walks a missing emergency-contact scenario. Sam's team practices postponing rather than improvising.
-
-Section ten point nine answers verbal pressure with a written postponement, never a quiet yes.
-
-Under section ten point nine, dual-use restraint means configuration evidence, not exploit snippets.
-
-Section ten point nine logs conflicts such as family ties to vendors before the window opens.
-
-For section ten point nine, improvised verbal approval from a random manager fails the tabletop.
-
-Section ten point nine keeps postponement templates with SOC and CISO aliases ready under three minutes.
 
 ### 10.10 10.11 Scene
 
 Tabletop: emergency contact unreachable. Sam's team postpones the window in writing within five minutes. Improvised verbal approval from a random manager is scored as a fail condition in the tabletop. Postponement is success.
 
-Section ten point one zero answers verbal pressure with a written postponement, never a quiet yes.
-
-Under section ten point one zero, dual-use restraint means configuration evidence, not exploit snippets.
-
-Section ten point one zero logs conflicts such as family ties to vendors before the window opens.
-
-For section ten point one zero, improvised verbal approval from a random manager fails the tabletop.
-
 ### 10.11 10.12 Extension
 
 Sam's conflict log once listed a sibling working at a fintech vendor. He recused from a test involving that vendor's library. Recusal is quieter than scandal.
-
-Section ten point one one answers verbal pressure with a written postponement, never a quiet yes.
-
-Under section ten point one one, dual-use restraint means configuration evidence, not exploit snippets.
-
-Section ten point one one logs conflicts such as family ties to vendors before the window opens.
-
-For section ten point one one, improvised verbal approval from a random manager fails the tabletop.
 
 ### 10.12 10.16 Pad
 
 Postponement templates include SOC and CISO aliases pre-filled. Sam sends postponements in under three minutes during drills.
 
-Section ten point one two answers verbal pressure with a written postponement, never a quiet yes.
-
-Under section ten point one two, dual-use restraint means configuration evidence, not exploit snippets.
-
-Section ten point one two logs conflicts such as family ties to vendors before the window opens.
-
-For section ten point one two, improvised verbal approval from a random manager fails the tabletop.
-
-Section ten point one two keeps postponement templates with SOC and CISO aliases ready under three minutes.
-
 ### 10.13 10.20 Extra
 
 Three-minute postponement drill is timed with a visible clock. Over three minutes fails the drill.
-
-Section ten point one three answers verbal pressure with a written postponement, never a quiet yes.
-
-Under section ten point one three, dual-use restraint means configuration evidence, not exploit snippets.
-
-Section ten point one three logs conflicts such as family ties to vendors before the window opens.
-
-For section ten point one three, improvised verbal approval from a random manager fails the tabletop.
-
-Section ten point one three keeps postponement templates with SOC and CISO aliases ready under three minutes.
 
 ### Worked example (synthetic TRB)
 
@@ -1055,7 +813,7 @@ This book grants no authority to test real banks or payment systems. Labs use do
 ### Exercises
 
 - **EX028 — Excluded line.** What does the lab print for 198.51.100.20? *Rubric:* 3 = EXCLUDED; 2 = out of scope; 1 = in scope; 0 = none.
-- **EX029 — Pressure answer.** How does Sam answer \"add SWIFT just this once\"? *Rubric:* 3 = refuse until written ROE change; SWIFT stays excluded; 2 = refuse; 1 = agree; 0 = none.
+- **EX029 — Pressure answer.** How does Sam answer "add SWIFT just this once"? *Rubric:* 3 = refuse until written ROE change; SWIFT stays excluded; 2 = refuse; 1 = agree; 0 = none.
 - **EX030 — ROE list.** Name five ROE essentials. *Rubric:* 3 = five of scope, exclusions, methods, window, contacts, data, audience; 2 = three; 1 = one; 0 = none.
 
 ### Synthesis
@@ -1078,187 +836,57 @@ You will (1) compare admin surfaces; (2) require jump hosts; (3) treat images as
 
 Patch levels, local admins and remote services differ across Windows and Linux. Findings name OS and failed control.
 
-Section eleven point one rejects image builds that say latest instead of named agent versions.
-
-Under section eleven point one, unexpected local admins on staging become tickets the same week.
-
-Section eleven point one files both host and pipeline findings when a rebuild brings old RDP posture.
-
-For section eleven point one, dormant temp admins are removed and verified, not left for later.
-
-Section eleven point one treats golden-image drift as a recurrence-weighted severity of its own.
-
 ### 11.2 Jump hosts
 
 Admin paths go through jump; email-VLAN RDP to servers is a finding.
-
-Section eleven point two rejects image builds that say latest instead of named agent versions.
-
-Under section eleven point two, unexpected local admins on staging become tickets the same week.
-
-Section eleven point two files both host and pipeline findings when a rebuild brings old RDP posture.
-
-For section eleven point two, dormant temp admins are removed and verified, not left for later.
-
-Section eleven point two treats golden-image drift as a recurrence-weighted severity of its own.
 
 ### 11.3 Images
 
 Golden images with old agents reintroduce risk when rebuilt.
 
-Section eleven point three rejects image builds that say latest instead of named agent versions.
-
-Under section eleven point three, unexpected local admins on staging become tickets the same week.
-
-Section eleven point three files both host and pipeline findings when a rebuild brings old RDP posture.
-
-For section eleven point three, dormant temp admins are removed and verified, not left for later.
-
-Section eleven point three treats golden-image drift as a recurrence-weighted severity of its own.
-
 ### 11.4 Logging
 
 OS logs support detection recommendations tied to ATT&CK.
-
-Section eleven point four rejects image builds that say latest instead of named agent versions.
-
-Under section eleven point four, unexpected local admins on staging become tickets the same week.
-
-Section eleven point four files both host and pipeline findings when a rebuild brings old RDP posture.
-
-For section eleven point four, dormant temp admins are removed and verified, not left for later.
-
-Section eleven point four treats golden-image drift as a recurrence-weighted severity of its own.
 
 ### 11.5 Privileges
 
 Hypervisor admin is a separate scope layer.
 
-Section eleven point five rejects image builds that say latest instead of named agent versions.
-
-Under section eleven point five, unexpected local admins on staging become tickets the same week.
-
-Section eleven point five files both host and pipeline findings when a rebuild brings old RDP posture.
-
-For section eleven point five, dormant temp admins are removed and verified, not left for later.
-
-Section eleven point five treats golden-image drift as a recurrence-weighted severity of its own.
-
 ### 11.6 Hardening baselines
 
 Deviations need tickets, not folklore.
-
-Section eleven point six rejects image builds that say latest instead of named agent versions.
-
-Under section eleven point six, unexpected local admins on staging become tickets the same week.
-
-Section eleven point six files both host and pipeline findings when a rebuild brings old RDP posture.
-
-For section eleven point six, dormant temp admins are removed and verified, not left for later.
-
-Section eleven point six treats golden-image drift as a recurrence-weighted severity of its own.
 
 ### 11.7 11.7 Applied note
 
 Image pipeline tickets must name the agent versions baked in. Sam rejects "latest" as a version string. Reproducible builds of golden images are treated like application releases.
 
-Section eleven point seven rejects image builds that say latest instead of named agent versions.
-
-Under section eleven point seven, unexpected local admins on staging become tickets the same week.
-
-Section eleven point seven files both host and pipeline findings when a rebuild brings old RDP posture.
-
-For section eleven point seven, dormant temp admins are removed and verified, not left for later.
-
 ### 11.8 11.8 Local admin census
 
 A quarterly query lists local admins on staging. Unexpected names become tickets. Sam correlates with leaver lists.
-
-Section eleven point eight rejects image builds that say latest instead of named agent versions.
-
-Under section eleven point eight, unexpected local admins on staging become tickets the same week.
-
-Section eleven point eight files both host and pipeline findings when a rebuild brings old RDP posture.
-
-For section eleven point eight, dormant temp admins are removed and verified, not left for later.
-
-Section eleven point eight treats golden-image drift as a recurrence-weighted severity of its own.
 
 ### 11.9 11.9 Agent drift
 
 Hosts whose agent version differs from the image catalogue by more than one minor version open tickets automatically.
 
-Section eleven point nine rejects image builds that say latest instead of named agent versions.
-
-Under section eleven point nine, unexpected local admins on staging become tickets the same week.
-
-Section eleven point nine files both host and pipeline findings when a rebuild brings old RDP posture.
-
-For section eleven point nine, dormant temp admins are removed and verified, not left for later.
-
-Section eleven point nine treats golden-image drift as a recurrence-weighted severity of its own.
-
 ### 11.10 11.11 Scene
 
 A rebuilt staging host comes back with an old RDP posture. The image catalogue said it should not. Sam files both a host finding and an image-pipeline finding. Two owners, two tickets, one root cause class.
-
-Section eleven point one zero rejects image builds that say latest instead of named agent versions.
-
-Under section eleven point one zero, unexpected local admins on staging become tickets the same week.
-
-Section eleven point one zero files both host and pipeline findings when a rebuild brings old RDP posture.
 
 ### 11.11 11.12 Extension
 
 Local admin census found a dormant "temp" admin created during an outage. Ticket, remove, verify. Dormant temps are permanent until hunted.
 
-Section eleven point one one rejects image builds that say latest instead of named agent versions.
-
-Under section eleven point one one, unexpected local admins on staging become tickets the same week.
-
-Section eleven point one one files both host and pipeline findings when a rebuild brings old RDP posture.
-
-For section eleven point one one, dormant temp admins are removed and verified, not left for later.
-
 ### 11.12 11.14 Note 11
 
 Image findings always CC the pipeline owner, not only the host owner.
-
-Section eleven point one two rejects image builds that say latest instead of named agent versions.
-
-Under section eleven point one two, unexpected local admins on staging become tickets the same week.
-
-Section eleven point one two files both host and pipeline findings when a rebuild brings old RDP posture.
-
-For section eleven point one two, dormant temp admins are removed and verified, not left for later.
-
-Section eleven point one two treats golden-image drift as a recurrence-weighted severity of its own.
 
 ### 11.13 11.16 Pad
 
 Pipeline findings use a separate severity rubric weighted toward recurrence. One bad image can mint a hundred bad hosts.
 
-Section eleven point one three rejects image builds that say latest instead of named agent versions.
-
-Under section eleven point one three, unexpected local admins on staging become tickets the same week.
-
-Section eleven point one three files both host and pipeline findings when a rebuild brings old RDP posture.
-
-For section eleven point one three, dormant temp admins are removed and verified, not left for later.
-
 ### 11.14 11.20 Extra
 
 Recurrence-weighted rubric for images is published beside host severity. Different beasts, different scales.
-
-Section eleven point one four rejects image builds that say latest instead of named agent versions.
-
-Under section eleven point one four, unexpected local admins on staging become tickets the same week.
-
-Section eleven point one four files both host and pipeline findings when a rebuild brings old RDP posture.
-
-For section eleven point one four, dormant temp admins are removed and verified, not left for later.
-
-Section eleven point one four treats golden-image drift as a recurrence-weighted severity of its own.
 
 ### Worked example (synthetic TRB)
 
@@ -1296,27 +924,9 @@ You will (1) compute a Wilson interval; (2) explain base rates; (3) avoid overcl
 
 Detection rate k/n needs uncertainty. Seven of ten is not the same as seventy of one hundred.
 
-Section twelve point one reports rates with Wilson intervals, never as bare percentages to the board.
-
-Under section twelve point one, overlapping intervals forbid ranking one defence as the winner.
-
-Section twelve point one cuts the claim when the sample planner says the interval would stay wide.
-
-For section twelve point one, legal prefers interval language because it cannot be read as a warranty.
-
 ### 12.2 Wilson interval
 
 lab_wilson prints 95% intervals for synthetic purple-team detection counts.
-
-Section twelve point two reports rates with Wilson intervals, never as bare percentages to the board.
-
-Under section twelve point two, overlapping intervals forbid ranking one defence as the winner.
-
-Section twelve point two cuts the claim when the sample planner says the interval would stay wide.
-
-For section twelve point two, legal prefers interval language because it cannot be read as a warranty.
-
-Section twelve point two writes every interval once in words: between about X and Y.
 
 ```python
 """Lab 12: Wilson 95% interval for a synthetic detection rate in a purple-team exercise."""
@@ -1341,139 +951,45 @@ detected 70/100 rate=0.70 95% CI=(0.60, 0.78)
 
 Rare true issues drowned in noisy scanners waste fixer time.
 
-Section twelve point three reports rates with Wilson intervals, never as bare percentages to the board.
-
-Under section twelve point three, overlapping intervals forbid ranking one defence as the winner.
-
-Section twelve point three cuts the claim when the sample planner says the interval would stay wide.
-
-For section twelve point three, legal prefers interval language because it cannot be read as a warranty.
-
-Section twelve point three writes every interval once in words: between about X and Y.
-
 ### 12.4 Ranking defences
 
 Prefer intervals that do not overlap when claiming A beats B.
-
-Section twelve point four reports rates with Wilson intervals, never as bare percentages to the board.
-
-Under section twelve point four, overlapping intervals forbid ranking one defence as the winner.
-
-Section twelve point four cuts the claim when the sample planner says the interval would stay wide.
-
-For section twelve point four, legal prefers interval language because it cannot be read as a warranty.
-
-Section twelve point four writes every interval once in words: between about X and Y.
 
 ### 12.5 Reporting
 
 Managers hear counts and intervals in plain language.
 
-Section twelve point five reports rates with Wilson intervals, never as bare percentages to the board.
-
-Under section twelve point five, overlapping intervals forbid ranking one defence as the winner.
-
-Section twelve point five cuts the claim when the sample planner says the interval would stay wide.
-
-For section twelve point five, legal prefers interval language because it cannot be read as a warranty.
-
-Section twelve point five writes every interval once in words: between about X and Y.
-
 ### 12.6 Limits
 
 Independence assumptions fail when tests share environment faults.
-
-Section twelve point six reports rates with Wilson intervals, never as bare percentages to the board.
-
-Under section twelve point six, overlapping intervals forbid ranking one defence as the winner.
-
-Section twelve point six cuts the claim when the sample planner says the interval would stay wide.
-
-For section twelve point six, legal prefers interval language because it cannot be read as a warranty.
-
-Section twelve point six writes every interval once in words: between about X and Y.
 
 ### 12.7 12.7 Applied note
 
 When intervals overlap, Sam forbids ranking defences as winners. A slide once claimed MFA beat phishing training on overlapping Wilson intervals; he pulled the slide and asked for more trials instead of a louder font.
 
-Section twelve point seven reports rates with Wilson intervals, never as bare percentages to the board.
-
-Under section twelve point seven, overlapping intervals forbid ranking one defence as the winner.
-
-Section twelve point seven cuts the claim when the sample planner says the interval would stay wide.
-
 ### 12.8 12.8 Plain-language CI
 
 Sam requires every interval in a deck to appear once in words: "between about X and Y". Charts alone are not enough for board packs.
-
-Section twelve point eight reports rates with Wilson intervals, never as bare percentages to the board.
-
-Under section twelve point eight, overlapping intervals forbid ranking one defence as the winner.
-
-Section twelve point eight cuts the claim when the sample planner says the interval would stay wide.
-
-For section twelve point eight, legal prefers interval language because it cannot be read as a warranty.
 
 ### 12.9 12.9 Sample size planner
 
 A small tool suggests n for a target CI width. Sam uses it before promising detection rates to executives.
 
-Section twelve point nine reports rates with Wilson intervals, never as bare percentages to the board.
-
-Under section twelve point nine, overlapping intervals forbid ranking one defence as the winner.
-
-Section twelve point nine cuts the claim when the sample planner says the interval would stay wide.
-
-For section twelve point nine, legal prefers interval language because it cannot be read as a warranty.
-
 ### 12.10 12.11 Scene
 
 Finance asks for a single detection percentage for the annual report. Sam gives two sentences with intervals instead. Legal prefers his version because it cannot be read as a warranty. Uncertainty language protects the bank.
-
-Section twelve point one zero reports rates with Wilson intervals, never as bare percentages to the board.
-
-Under section twelve point one zero, overlapping intervals forbid ranking one defence as the winner.
-
-Section twelve point one zero cuts the claim when the sample planner says the interval would stay wide.
 
 ### 12.11 12.12 Extension
 
 Sample size planner told Sam he needed n≈96 for a tight interval. He cut the claim instead of inventing data. Planners exist to shrink promises.
 
-Section twelve point one one reports rates with Wilson intervals, never as bare percentages to the board.
-
-Under section twelve point one one, overlapping intervals forbid ranking one defence as the winner.
-
-Section twelve point one one cuts the claim when the sample planner says the interval would stay wide.
-
-For section twelve point one one, legal prefers interval language because it cannot be read as a warranty.
-
 ### 12.12 12.16 Pad
 
 Board packs that insist on a single number get Sam's appendix with the refusal rationale. Legal endorsed the appendix.
 
-Section twelve point one two reports rates with Wilson intervals, never as bare percentages to the board.
-
-Under section twelve point one two, overlapping intervals forbid ranking one defence as the winner.
-
-Section twelve point one two cuts the claim when the sample planner says the interval would stay wide.
-
-For section twelve point one two, legal prefers interval language because it cannot be read as a warranty.
-
 ### 12.13 12.20 Extra
 
 Refusal appendix has legal's endorsement email hash attached. Sam loves boring integrity.
-
-Section twelve point one three reports rates with Wilson intervals, never as bare percentages to the board.
-
-Under section twelve point one three, overlapping intervals forbid ranking one defence as the winner.
-
-Section twelve point one three cuts the claim when the sample planner says the interval would stay wide.
-
-For section twelve point one three, legal prefers interval language because it cannot be read as a warranty.
-
-Section twelve point one three writes every interval once in words: between about X and Y.
 
 ### Worked example (synthetic TRB)
 
@@ -1489,7 +1005,7 @@ This book grants no authority to test real banks or payment systems. Labs use do
 
 - **EX034 — Interval read.** What CI does the lab print for 7/10? *Rubric:* 3 = (0.40, 0.89); 2 = approximate; 1 = wrong; 0 = none.
 - **EX035 — Why wider.** Why is the 7/10 interval wider than 70/100 at the same rate? *Rubric:* 3 = smaller sample / more uncertainty; 2 = partial; 1 = bug; 0 = none.
-- **EX036 — Manager sentence.** Write one plain sentence Sam could say about 7/10. *Rubric:* 3 = count + uncertainty + not definitive; 2 = partial; 1 = \"we are 70% safe\"; 0 = none.
+- **EX036 — Manager sentence.** Write one plain sentence Sam could say about 7/10. *Rubric:* 3 = count + uncertainty + not definitive; 2 = partial; 1 = "we are 70% safe"; 0 = none.
 
 ### Synthesis
 
@@ -1511,179 +1027,57 @@ You will (1) separate AuthN and AuthZ; (2) least-privilege test accounts; (3) ma
 
 Proving identity versus allowing actions. IDOR is AuthZ failure after AuthN.
 
-Section thirteen point one develops identity with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirteen point one, shared passwords stay explicit in the ticket before the window opens.
-
-Section thirteen point one treats access reviews as testable only when owners and dates are recorded.
-
-For section thirteen point one, leavers cannot be widened by a verbal aside from a manager.
-
-Section thirteen point one fails closed if shared passwords evidence is missing rather than guessing.
-
 ### 13.2 Test accounts
 
 Named, timed, vaulted, least privilege.
-
-Section thirteen point two develops identity with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirteen point two, shared passwords stay explicit in the ticket before the window opens.
-
-Section thirteen point two treats access reviews as testable only when owners and dates are recorded.
-
-For section thirteen point two, leavers cannot be widened by a verbal aside from a manager.
-
-Section thirteen point two fails closed if shared passwords evidence is missing rather than guessing.
 
 ### 13.3 Shared admins
 
 Accountability loss; ATT&CK T1078 Valid Accounts.
 
-Section thirteen point three develops identity with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirteen point three, shared passwords stay explicit in the ticket before the window opens.
-
-Section thirteen point three treats access reviews as testable only when owners and dates are recorded.
-
-For section thirteen point three, leavers cannot be widened by a verbal aside from a manager.
-
-Section thirteen point three fails closed if shared passwords evidence is missing rather than guessing.
-
 ### 13.4 MFA
 
 Verify by config review, not phishing staff.
-
-Section thirteen point four develops identity with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirteen point four, shared passwords stay explicit in the ticket before the window opens.
-
-Section thirteen point four treats access reviews as testable only when owners and dates are recorded.
-
-For section thirteen point four, leavers cannot be widened by a verbal aside from a manager.
-
-Section thirteen point four fails closed if shared passwords evidence is missing rather than guessing.
 
 ### 13.5 Service accounts
 
 Owners and rotation dates required.
 
-Section thirteen point five develops identity with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirteen point five, shared passwords stay explicit in the ticket before the window opens.
-
-Section thirteen point five treats access reviews as testable only when owners and dates are recorded.
-
-For section thirteen point five, leavers cannot be widened by a verbal aside from a manager.
-
-Section thirteen point five fails closed if shared passwords evidence is missing rather than guessing.
-
 ### 13.6 Leavers
 
 Access lingering after HR termination is a classic finding.
-
-Section thirteen point six develops identity with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirteen point six, shared passwords stay explicit in the ticket before the window opens.
-
-Section thirteen point six treats access reviews as testable only when owners and dates are recorded.
-
-For section thirteen point six, leavers cannot be widened by a verbal aside from a manager.
-
-Section thirteen point six fails closed if shared passwords evidence is missing rather than guessing.
 
 ### 13.7 13.7 Applied note
 
 Test account expiry is enforced by a job that disables accounts at window end and pages Sam if disable fails. Manual reminders failed twice historically; the job is now a control, not a convenience.
 
-Section thirteen point seven develops identity with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirteen point seven, shared passwords stay explicit in the ticket before the window opens.
-
-Section thirteen point seven treats access reviews as testable only when owners and dates are recorded.
-
 ### 13.8 13.8 Break-glass accounts
 
 Break-glass admins are monitored and rare. Sam's review checks that break-glass was not used as daily driver during the window.
-
-Section thirteen point eight develops identity with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirteen point eight, shared passwords stay explicit in the ticket before the window opens.
-
-Section thirteen point eight treats access reviews as testable only when owners and dates are recorded.
-
-For section thirteen point eight, leavers cannot be widened by a verbal aside from a manager.
 
 ### 13.9 13.9 Vault MFA
 
 Vault access for credentials requires MFA. Sam tested denial without MFA and filed the deny as a positive control demo.
 
-Section thirteen point nine develops identity with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirteen point nine, shared passwords stay explicit in the ticket before the window opens.
-
-Section thirteen point nine treats access reviews as testable only when owners and dates are recorded.
-
-For section thirteen point nine, leavers cannot be widened by a verbal aside from a manager.
-
 ### 13.10 13.11 Scene
 
 A shared admin password on the loan system is rotated, but the same password is later found in a printer config. Sam's leaver-and-secrets checklist now includes "search for password reuse artefacts" after any shared-admin finding.
-
-Section thirteen point one zero develops identity with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirteen point one zero, shared passwords stay explicit in the ticket before the window opens.
-
-Section thirteen point one zero treats access reviews as testable only when owners and dates are recorded.
 
 ### 13.11 13.12 Extension
 
 Break-glass use during a window pages the CISO channel automatically. Sam tested the page with a staging break-glass and got a stern but correct phone call.
 
-Section thirteen point one one develops identity with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirteen point one one, shared passwords stay explicit in the ticket before the window opens.
-
-Section thirteen point one one treats access reviews as testable only when owners and dates are recorded.
-
-For section thirteen point one one, leavers cannot be widened by a verbal aside from a manager.
-
 ### 13.12 13.14 Note 11
 
 Leaver tickets auto-open from HR events within an hour; Sam audits the automation weekly.
-
-Section thirteen point one two develops identity with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirteen point one two, shared passwords stay explicit in the ticket before the window opens.
-
-Section thirteen point one two treats access reviews as testable only when owners and dates are recorded.
-
-For section thirteen point one two, leavers cannot be widened by a verbal aside from a manager.
 
 ### 13.13 13.16 Pad
 
 Printer configs are now in the secret-search path after the reuse incident. Strange places hide passwords.
 
-Section thirteen point one three develops identity with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirteen point one three, shared passwords stay explicit in the ticket before the window opens.
-
-Section thirteen point one three treats access reviews as testable only when owners and dates are recorded.
-
-For section thirteen point one three, leavers cannot be widened by a verbal aside from a manager.
-
 ### 13.14 13.20 Extra
 
 Secret-search path expansions are logged; scope creep in search is still scope.
-
-Section thirteen point one four develops identity with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirteen point one four, shared passwords stay explicit in the ticket before the window opens.
-
-Section thirteen point one four treats access reviews as testable only when owners and dates are recorded.
-
-For section thirteen point one four, leavers cannot be widened by a verbal aside from a manager.
-
-Section thirteen point one four fails closed if shared passwords evidence is missing rather than guessing.
 
 ### Worked example (synthetic TRB)
 
@@ -1721,183 +1115,57 @@ You will (1) minimise customer data in evidence; (2) redact; (3) respect retenti
 
 Proof beats bulk extracts of customer tables.
 
-Section fourteen point one develops privacy with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section fourteen point one, minimisation stay explicit in the ticket before the window opens.
-
-Section fourteen point one treats exports as testable only when owners and dates are recorded.
-
-For section fourteen point one, consent cannot be widened by a verbal aside from a manager.
-
-Section fourteen point one fails closed if minimisation evidence is missing rather than guessing.
-
 ### 14.2 Redaction
 
 Mask account numbers; keep digits that prove the issue if needed.
-
-Section fourteen point two develops privacy with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section fourteen point two, minimisation stay explicit in the ticket before the window opens.
-
-Section fourteen point two treats exports as testable only when owners and dates are recorded.
-
-For section fourteen point two, consent cannot be widened by a verbal aside from a manager.
-
-Section fourteen point two fails closed if minimisation evidence is missing rather than guessing.
 
 ### 14.3 Purpose limitation
 
 Engagement evidence is not a marketing analytics source.
 
-Section fourteen point three develops privacy with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section fourteen point three, minimisation stay explicit in the ticket before the window opens.
-
-Section fourteen point three treats exports as testable only when owners and dates are recorded.
-
-For section fourteen point three, consent cannot be widened by a verbal aside from a manager.
-
-Section fourteen point three fails closed if minimisation evidence is missing rather than guessing.
-
 ### 14.4 Access
 
 Need-to-know on evidence vaults.
-
-Section fourteen point four develops privacy with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section fourteen point four, minimisation stay explicit in the ticket before the window opens.
-
-Section fourteen point four treats exports as testable only when owners and dates are recorded.
-
-For section fourteen point four, consent cannot be widened by a verbal aside from a manager.
-
-Section fourteen point four fails closed if minimisation evidence is missing rather than guessing.
-
-Under section fourteen point four, peers skim the privacy note in two minutes before write mode.
 
 ### 14.5 Cross-border
 
 Cloud regions may implicate rules; legal advises.
 
-Section fourteen point five develops privacy with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section fourteen point five, minimisation stay explicit in the ticket before the window opens.
-
-Section fourteen point five treats exports as testable only when owners and dates are recorded.
-
-For section fourteen point five, consent cannot be widened by a verbal aside from a manager.
-
-Section fourteen point five fails closed if minimisation evidence is missing rather than guessing.
-
 ### 14.6 Breach risk
 
 Evidence vaults are high-value targets; protect them.
-
-Section fourteen point six develops privacy with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section fourteen point six, minimisation stay explicit in the ticket before the window opens.
-
-Section fourteen point six treats exports as testable only when owners and dates are recorded.
-
-For section fourteen point six, consent cannot be widened by a verbal aside from a manager.
-
-Section fourteen point six fails closed if minimisation evidence is missing rather than guessing.
 
 ### 14.7 14.7 Applied note
 
 Re-identification drills pair a redacted screenshot with public org charts. If a peer can name the person, redaction fails the gate. Sam now prefers synthetic personas in most teaching screenshots.
 
-Section fourteen point seven develops privacy with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section fourteen point seven, minimisation stay explicit in the ticket before the window opens.
-
-Section fourteen point seven treats exports as testable only when owners and dates are recorded.
-
-For section fourteen point seven, consent cannot be widened by a verbal aside from a manager.
-
 ### 14.8 14.8 Synthetic evidence library
 
 A library of synthetic screenshots covers common findings so learners need not handle real customer pixels. Sam contributes one new synthetic each term.
-
-Section fourteen point eight develops privacy with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section fourteen point eight, minimisation stay explicit in the ticket before the window opens.
-
-Section fourteen point eight treats exports as testable only when owners and dates are recorded.
-
-For section fourteen point eight, consent cannot be widened by a verbal aside from a manager.
 
 ### 14.9 14.9 Purpose tags
 
 Evidence files tagged with purpose; secondary use requires a new tag and approval. Marketing cannot "just borrow" engagement screenshots.
 
-Section fourteen point nine develops privacy with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section fourteen point nine, minimisation stay explicit in the ticket before the window opens.
-
-Section fourteen point nine treats exports as testable only when owners and dates are recorded.
-
-For section fourteen point nine, consent cannot be widened by a verbal aside from a manager.
-
-Section fourteen point nine fails closed if minimisation evidence is missing rather than guessing.
-
 ### 14.10 14.11 Scene
 
 Synthetic screenshot library item SS-17 shows a fake customer "Ada Example" with account ••••4242. Learners prefer it to redacting real screens. Sam measures that preference and funds more synthetic art.
-
-Section fourteen point one zero develops privacy with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section fourteen point one zero, minimisation stay explicit in the ticket before the window opens.
-
-Section fourteen point one zero treats exports as testable only when owners and dates are recorded.
-
-For section fourteen point one zero, consent cannot be widened by a verbal aside from a manager.
 
 ### 14.11 14.12 Extension
 
 Purpose tags blocked a well-meaning trainee from dropping engagement screenshots into a UX redesign folder. The refusal felt petty and protected a hundred customers.
 
-Section fourteen point one one develops privacy with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section fourteen point one one, minimisation stay explicit in the ticket before the window opens.
-
-Section fourteen point one one treats exports as testable only when owners and dates are recorded.
-
-For section fourteen point one one, consent cannot be widened by a verbal aside from a manager.
-
 ### 14.12 14.14 Note 11
 
 Synthetic Ada Example has a style guide so artists keep her obviously fake.
-
-Section fourteen point one two develops privacy with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section fourteen point one two, minimisation stay explicit in the ticket before the window opens.
-
-Section fourteen point one two treats exports as testable only when owners and dates are recorded.
-
-For section fourteen point one two, consent cannot be widened by a verbal aside from a manager.
-
-Section fourteen point one two fails closed if minimisation evidence is missing rather than guessing.
 
 ### 14.13 14.16 Pad
 
 Artists sign a CLA that Ada Example may not resemble real customers. Legal insisted; Sam agreed happily.
 
-Section fourteen point one three develops privacy with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section fourteen point one three, minimisation stay explicit in the ticket before the window opens.
-
-Section fourteen point one three treats exports as testable only when owners and dates are recorded.
-
-For section fourteen point one three, consent cannot be widened by a verbal aside from a manager.
-
 ### 14.14 14.18 Final
 
 Privacy coaches at TRB include a five-minute desk visit when a new analyst first opens the evidence vault. Sam scripts the visit: show retention dates, show access list, show one redaction fail example, ask the analyst to repeat the minimisation rule in their own words. Desk visits catch bravado better than LMS modules. Analysts sign a tiny card that stays in the vault foyer.
-
-Section fourteen point one four develops privacy with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section fourteen point one four, minimisation stay explicit in the ticket before the window opens.
 
 ### Worked example (synthetic TRB)
 
@@ -1935,187 +1203,57 @@ You will (1) hash evidence; (2) choose non-vanity metrics; (3) keep custody.
 
 Detect accidental edits before filing.
 
-Section fifteen point one develops evidence with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section fifteen point one, hashes stay explicit in the ticket before the window opens.
-
-Section fifteen point one treats restores as testable only when owners and dates are recorded.
-
-For section fifteen point one, manifests cannot be widened by a verbal aside from a manager.
-
-Section fifteen point one fails closed if hashes evidence is missing rather than guessing.
-
-Under section fifteen point one, peers skim the evidence note in two minutes before write mode.
-
 ### 15.2 Metrics
 
 Assets touched, cards run, owners assigned — not raw finding counts.
-
-Section fifteen point two develops evidence with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section fifteen point two, hashes stay explicit in the ticket before the window opens.
-
-Section fifteen point two treats restores as testable only when owners and dates are recorded.
-
-For section fifteen point two, manifests cannot be widened by a verbal aside from a manager.
-
-Section fifteen point two fails closed if hashes evidence is missing rather than guessing.
 
 ### 15.3 Custody
 
 Who/when/where for each artifact.
 
-Section fifteen point three develops evidence with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section fifteen point three, hashes stay explicit in the ticket before the window opens.
-
-Section fifteen point three treats restores as testable only when owners and dates are recorded.
-
-For section fifteen point three, manifests cannot be widened by a verbal aside from a manager.
-
-Section fifteen point three fails closed if hashes evidence is missing rather than guessing.
-
 ### 15.4 Integrity vs truth
 
 Matching hash ≠ live system still vulnerable.
-
-Section fifteen point four develops evidence with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section fifteen point four, hashes stay explicit in the ticket before the window opens.
-
-Section fifteen point four treats restores as testable only when owners and dates are recorded.
-
-For section fifteen point four, manifests cannot be widened by a verbal aside from a manager.
-
-Section fifteen point four fails closed if hashes evidence is missing rather than guessing.
 
 ### 15.5 Sampling
 
 Sample closed tickets for verification evidence.
 
-Section fifteen point five develops evidence with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section fifteen point five, hashes stay explicit in the ticket before the window opens.
-
-Section fifteen point five treats restores as testable only when owners and dates are recorded.
-
-For section fifteen point five, manifests cannot be widened by a verbal aside from a manager.
-
-Section fifteen point five fails closed if hashes evidence is missing rather than guessing.
-
 ### 15.6 PulseMap
 
 Coverage views must show denominators.
-
-Section fifteen point six develops evidence with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section fifteen point six, hashes stay explicit in the ticket before the window opens.
-
-Section fifteen point six treats restores as testable only when owners and dates are recorded.
-
-For section fifteen point six, manifests cannot be widened by a verbal aside from a manager.
-
-Section fifteen point six fails closed if hashes evidence is missing rather than guessing.
-
-Under section fifteen point six, peers skim the evidence note in two minutes before write mode.
 
 ### 15.7 15.7 Applied note
 
 Closed-ticket sampling is five tickets per month, chosen by RNG. Missing verification evidence reopens the ticket automatically. Sam publishes the reopen count so gaming the metric is visible.
 
-Section fifteen point seven develops evidence with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section fifteen point seven, hashes stay explicit in the ticket before the window opens.
-
-Section fifteen point seven treats restores as testable only when owners and dates are recorded.
-
-For section fifteen point seven, manifests cannot be widened by a verbal aside from a manager.
-
 ### 15.8 15.8 Metric dictionary
 
 A shared dictionary defines "touched", "validated" and "closed". Sam refuses PulseMap tiles that use undefined words.
-
-Section fifteen point eight develops evidence with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section fifteen point eight, hashes stay explicit in the ticket before the window opens.
-
-Section fifteen point eight treats restores as testable only when owners and dates are recorded.
-
-For section fifteen point eight, manifests cannot be widened by a verbal aside from a manager.
-
-Section fifteen point eight fails closed if hashes evidence is missing rather than guessing.
 
 ### 15.9 15.9 Touched definition
 
 "Touched" means a method card finished with evidence, not a ping. Sam's dictionary fight on that word was worth a week.
 
-Section fifteen point nine develops evidence with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section fifteen point nine, hashes stay explicit in the ticket before the window opens.
-
-Section fifteen point nine treats restores as testable only when owners and dates are recorded.
-
-For section fifteen point nine, manifests cannot be widened by a verbal aside from a manager.
-
 ### 15.10 15.11 Scene
 
 PulseMap's tile subtitle "n=2" next to a green check teaches more than a lecture on sample size. Sam deliberately leaves a small-n green tile in the training environment to provoke questions.
-
-Section fifteen point one zero develops evidence with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section fifteen point one zero, hashes stay explicit in the ticket before the window opens.
-
-Section fifteen point one zero treats restores as testable only when owners and dates are recorded.
-
-For section fifteen point one zero, manifests cannot be widened by a verbal aside from a manager.
 
 ### 15.11 15.12 Extension
 
 Dictionary fight ended when CISO signed the definitions. Sam frames the signed PDF in the team wiki. Words are controls.
 
-Section fifteen point one one develops evidence with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section fifteen point one one, hashes stay explicit in the ticket before the window opens.
-
-Section fifteen point one one treats restores as testable only when owners and dates are recorded.
-
-For section fifteen point one one, manifests cannot be widened by a verbal aside from a manager.
-
 ### 15.12 15.14 Note 11
 
 Signed metric definitions hang next to the team coffee machine — paper still works.
-
-Section fifteen point one two develops evidence with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section fifteen point one two, hashes stay explicit in the ticket before the window opens.
-
-Section fifteen point one two treats restores as testable only when owners and dates are recorded.
-
-For section fifteen point one two, manifests cannot be widened by a verbal aside from a manager.
-
-Section fifteen point one two fails closed if hashes evidence is missing rather than guessing.
 
 ### 15.13 15.16 Pad
 
 Undefined-word tiles show a yellow "define me" state instead of green. Yellow is harder to ignore.
 
-Section fifteen point one three develops evidence with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section fifteen point one three, hashes stay explicit in the ticket before the window opens.
-
-Section fifteen point one three treats restores as testable only when owners and dates are recorded.
-
-For section fifteen point one three, manifests cannot be widened by a verbal aside from a manager.
-
 ### 15.14 15.18 Final
 
 Measurement office hours run Thursdays. Anyone may bring a tile that feels misleading. Sam's most common fix is adding n to the subtitle or changing green to yellow. He tracks how many tiles change colour each month as a quality metric of the metrics.
-
-Section fifteen point one four develops evidence with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section fifteen point one four, hashes stay explicit in the ticket before the window opens.
-
-Section fifteen point one four treats restores as testable only when owners and dates are recorded.
 
 ### Worked example (synthetic TRB)
 
@@ -2153,29 +1291,9 @@ You will (1) draw TRB zones; (2) enforce flow matrices; (3) fail closed.
 
 Internet, DMZ, corporate, payments-adjacent (restricted), assessment.
 
-Section sixteen point one develops architecture with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section sixteen point one, zones stay explicit in the ticket before the window opens.
-
-Section sixteen point one treats fail-closed as testable only when owners and dates are recorded.
-
-For section sixteen point one, conduits cannot be widened by a verbal aside from a manager.
-
-Section sixteen point one fails closed if zones evidence is missing rather than guessing.
-
 ### 16.2 Flows
 
 Approved matrix is authoritative; lab_flows flags web→ledger-db.
-
-Section sixteen point two develops architecture with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section sixteen point two, zones stay explicit in the ticket before the window opens.
-
-Section sixteen point two treats fail-closed as testable only when owners and dates are recorded.
-
-For section sixteen point two, conduits cannot be widened by a verbal aside from a manager.
-
-Section sixteen point two fails closed if zones evidence is missing rather than guessing.
 
 ```python
 """Lab 22: flag synthetic TRB data flows missing from the approved flow register."""
@@ -2199,161 +1317,49 @@ jump       -> ledger-db  approved
 
 Proxies and TrackScope deny when policy missing.
 
-Section sixteen point three develops architecture with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section sixteen point three, zones stay explicit in the ticket before the window opens.
-
-Section sixteen point three treats fail-closed as testable only when owners and dates are recorded.
-
-For section sixteen point three, conduits cannot be widened by a verbal aside from a manager.
-
-Section sixteen point three fails closed if zones evidence is missing rather than guessing.
-
 ### 16.4 Conduits
 
 Owned firewall rules.
-
-Section sixteen point four develops architecture with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section sixteen point four, zones stay explicit in the ticket before the window opens.
-
-Section sixteen point four treats fail-closed as testable only when owners and dates are recorded.
-
-For section sixteen point four, conduits cannot be widened by a verbal aside from a manager.
-
-Section sixteen point four fails closed if zones evidence is missing rather than guessing.
-
-Under section sixteen point four, peers skim the architecture note in two minutes before write mode.
 
 ### 16.5 Third parties
 
 Processors need their own authorization.
 
-Section sixteen point five develops architecture with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section sixteen point five, zones stay explicit in the ticket before the window opens.
-
-Section sixteen point five treats fail-closed as testable only when owners and dates are recorded.
-
-For section sixteen point five, conduits cannot be widened by a verbal aside from a manager.
-
-Section sixteen point five fails closed if zones evidence is missing rather than guessing.
-
-Under section sixteen point five, peers skim the architecture note in two minutes before write mode.
-
 ### 16.6 Diagrams
 
 Dated and owned.
-
-Section sixteen point six develops architecture with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section sixteen point six, zones stay explicit in the ticket before the window opens.
-
-Section sixteen point six treats fail-closed as testable only when owners and dates are recorded.
-
-For section sixteen point six, conduits cannot be widened by a verbal aside from a manager.
-
-Section sixteen point six fails closed if zones evidence is missing rather than guessing.
-
-Under section sixteen point six, peers skim the architecture note in two minutes before write mode.
 
 ### 16.7 16.7 Applied note
 
 Matrix excerpts are hashed and stored beside the ROE. If network changes mid-engagement, Sam diffs the live rules against the hash and pauses if they diverge without a change ticket.
 
-Section sixteen point seven develops architecture with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section sixteen point seven, zones stay explicit in the ticket before the window opens.
-
-Section sixteen point seven treats fail-closed as testable only when owners and dates are recorded.
-
-For section sixteen point seven, conduits cannot be widened by a verbal aside from a manager.
-
 ### 16.8 16.8 Conduit owners on-call
 
 Each conduit lists an on-call. During tests Sam messages the conduit on-call, not a general IT inbox, when rules misbehave.
-
-Section sixteen point eight develops architecture with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section sixteen point eight, zones stay explicit in the ticket before the window opens.
-
-Section sixteen point eight treats fail-closed as testable only when owners and dates are recorded.
-
-For section sixteen point eight, conduits cannot be widened by a verbal aside from a manager.
 
 ### 16.9 16.9 Third-party column
 
 Flow matrices include a column "third-party auth needed?". Yes rows cannot be tested under TRB ROE alone.
 
-Section sixteen point nine develops architecture with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section sixteen point nine, zones stay explicit in the ticket before the window opens.
-
-Section sixteen point nine treats fail-closed as testable only when owners and dates are recorded.
-
-For section sixteen point nine, conduits cannot be widened by a verbal aside from a manager.
-
-Section sixteen point nine fails closed if zones evidence is missing rather than guessing.
-
 ### 16.10 16.11 Scene
 
 When lab_flows shows web→ledger-db, network claims the rule is temporary. Sam asks for the change ticket and kill-date. Neither exists. Temporary without expiry becomes F3's twin process finding.
-
-Section sixteen point one zero develops architecture with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section sixteen point one zero, zones stay explicit in the ticket before the window opens.
-
-Section sixteen point one zero treats fail-closed as testable only when owners and dates are recorded.
-
-For section sixteen point one zero, conduits cannot be widened by a verbal aside from a manager.
 
 ### 16.11 16.12 Extension
 
 Third-party column "yes" blocked a curious scan of the SMS vendor. Sam sent the vendor's bug bounty link instead. Boundaries can still be helpful.
 
-Section sixteen point one one develops architecture with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section sixteen point one one, zones stay explicit in the ticket before the window opens.
-
-Section sixteen point one one treats fail-closed as testable only when owners and dates are recorded.
-
-For section sixteen point one one, conduits cannot be widened by a verbal aside from a manager.
-
 ### 16.12 16.14 Note 11
 
 Kill-date calendar invites include the CISO alias as optional attendee for visibility.
-
-Section sixteen point one two develops architecture with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section sixteen point one two, zones stay explicit in the ticket before the window opens.
-
-Section sixteen point one two treats fail-closed as testable only when owners and dates are recorded.
-
-For section sixteen point one two, conduits cannot be widened by a verbal aside from a manager.
-
-Section sixteen point one two fails closed if zones evidence is missing rather than guessing.
 
 ### 16.13 16.16 Pad
 
 Twin process findings link to F3 with a related-id field. Boards see technical and process debt together.
 
-Section sixteen point one three develops architecture with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section sixteen point one three, zones stay explicit in the ticket before the window opens.
-
-Section sixteen point one three treats fail-closed as testable only when owners and dates are recorded.
-
-For section sixteen point one three, conduits cannot be widened by a verbal aside from a manager.
-
 ### 16.14 16.18 Final
 
 Architecture office hours use a projector and a red pen. Unowned conduits get circled until an owner appears in the register. Sam refuses to schedule tests through unowned conduits even if the firewall rule exists. Ownership is part of authorization.
-
-Section sixteen point one four develops architecture with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section sixteen point one four, zones stay explicit in the ticket before the window opens.
-
-Section sixteen point one four treats fail-closed as testable only when owners and dates are recorded.
 
 ### Worked example (synthetic TRB)
 
@@ -2391,167 +1397,53 @@ You will (1) state what TLS does; (2) protect evidence at rest; (3) avoid invent
 
 Confidentiality and integrity of sessions — not app AuthZ.
 
-Section seventeen point one develops cryptography with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section seventeen point one, certificates stay explicit in the ticket before the window opens.
-
-Section seventeen point one treats keys as testable only when owners and dates are recorded.
-
-For section seventeen point one, expiry cannot be widened by a verbal aside from a manager.
-
-Section seventeen point one fails closed if certificates evidence is missing rather than guessing.
-
 ### 17.2 At rest
 
 Evidence vault encryption and key access logs.
-
-Section seventeen point two develops cryptography with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section seventeen point two, certificates stay explicit in the ticket before the window opens.
-
-Section seventeen point two treats keys as testable only when owners and dates are recorded.
-
-For section seventeen point two, expiry cannot be widened by a verbal aside from a manager.
-
-Section seventeen point two fails closed if certificates evidence is missing rather than guessing.
 
 ### 17.3 Hashes
 
 SHA-256 for evidence integrity, not for password storage design lectures here.
 
-Section seventeen point three develops cryptography with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section seventeen point three, certificates stay explicit in the ticket before the window opens.
-
-Section seventeen point three treats keys as testable only when owners and dates are recorded.
-
-For section seventeen point three, expiry cannot be widened by a verbal aside from a manager.
-
-Section seventeen point three fails closed if certificates evidence is missing rather than guessing.
-
 ### 17.4 Anti-patterns
 
 Homegrown crypto for TrackScope tokens is forbidden.
-
-Section seventeen point four develops cryptography with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section seventeen point four, certificates stay explicit in the ticket before the window opens.
-
-Section seventeen point four treats keys as testable only when owners and dates are recorded.
-
-For section seventeen point four, expiry cannot be widened by a verbal aside from a manager.
-
-Section seventeen point four fails closed if certificates evidence is missing rather than guessing.
 
 ### 17.5 Key custody
 
 Platform keys in HSM or vault with dual control where required.
 
-Section seventeen point five develops cryptography with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section seventeen point five, certificates stay explicit in the ticket before the window opens.
-
-Section seventeen point five treats keys as testable only when owners and dates are recorded.
-
-For section seventeen point five, expiry cannot be widened by a verbal aside from a manager.
-
-Section seventeen point five fails closed if certificates evidence is missing rather than guessing.
-
 ### 17.6 Limits
 
 Crypto does not stop authorized malicious admins with valid keys.
-
-Section seventeen point six develops cryptography with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section seventeen point six, certificates stay explicit in the ticket before the window opens.
-
-Section seventeen point six treats keys as testable only when owners and dates are recorded.
-
-For section seventeen point six, expiry cannot be widened by a verbal aside from a manager.
-
-Section seventeen point six fails closed if certificates evidence is missing rather than guessing.
 
 ### 17.7 17.7 Applied note
 
 HSM export ceremonies for platform keys require two people and a reason code. Sam's intern role cannot export. He tested the denial by attempting an export in staging and filing the deny log as evidence that the control works.
 
-Section seventeen point seven develops cryptography with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section seventeen point seven, certificates stay explicit in the ticket before the window opens.
-
-Section seventeen point seven treats keys as testable only when owners and dates are recorded.
-
 ### 17.8 17.8 Token lifetime
 
 Platform tokens expire within the window plus one hour. Sam tests that expired tokens cannot file findings. Lingering tokens are findings against the platform.
-
-Section seventeen point eight develops cryptography with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section seventeen point eight, certificates stay explicit in the ticket before the window opens.
-
-Section seventeen point eight treats keys as testable only when owners and dates are recorded.
-
-For section seventeen point eight, expiry cannot be widened by a verbal aside from a manager.
 
 ### 17.9 17.9 Key ceremony notes
 
 Ceremony notes list attendees and key ids, never secret material. Sam files notes in the vault with the same retention as evidence.
 
-Section seventeen point nine develops cryptography with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section seventeen point nine, certificates stay explicit in the ticket before the window opens.
-
-Section seventeen point nine treats keys as testable only when owners and dates are recorded.
-
-For section seventeen point nine, expiry cannot be widened by a verbal aside from a manager.
-
 ### 17.10 17.11 Scene
 
 Sam attempts to commit a "temporary" base64 blob that looks like a key. CI fails. He is glad. The failure message links to the key ceremony doc. Guardrails should teach, not only block.
-
-Section seventeen point one zero develops cryptography with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section seventeen point one zero, certificates stay explicit in the ticket before the window opens.
-
-Section seventeen point one zero treats keys as testable only when owners and dates are recorded.
 
 ### 17.11 17.12 Extension
 
 Token lifetime plus one hour once bit an analyst writing late. Better a re-auth than a token in a stolen laptop weeks later.
 
-Section seventeen point one one develops cryptography with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section seventeen point one one, certificates stay explicit in the ticket before the window opens.
-
-Section seventeen point one one treats keys as testable only when owners and dates are recorded.
-
-For section seventeen point one one, expiry cannot be widened by a verbal aside from a manager.
-
 ### 17.12 17.16 Pad
 
 Ceremony deny logs are retained as positive evidence for examiners who ask whether intern roles are enforced.
 
-Section seventeen point one two develops cryptography with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section seventeen point one two, certificates stay explicit in the ticket before the window opens.
-
-Section seventeen point one two treats keys as testable only when owners and dates are recorded.
-
-For section seventeen point one two, expiry cannot be widened by a verbal aside from a manager.
-
 ### 17.13 17.20 Extra
 
 Positive deny evidence packets are reused in onboarding week one.
-
-Section seventeen point one three develops cryptography with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section seventeen point one three, certificates stay explicit in the ticket before the window opens.
-
-Section seventeen point one three treats keys as testable only when owners and dates are recorded.
-
-For section seventeen point one three, expiry cannot be widened by a verbal aside from a manager.
-
-Section seventeen point one three fails closed if certificates evidence is missing rather than guessing.
 
 ### Worked example (synthetic TRB)
 
@@ -2587,193 +1479,59 @@ You will (1) pose answerable questions; (2) design small purple-team trials; (3)
 
 ### 18.1 Questions
 
-\"Does control X raise detection of T1566 in staging?\" beats \"is security good?\".
-
-Section eighteen point one develops research with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section eighteen point one, questions stay explicit in the ticket before the window opens.
-
-Section eighteen point one treats measures as testable only when owners and dates are recorded.
-
-For section eighteen point one, ethics cannot be widened by a verbal aside from a manager.
-
-Section eighteen point one fails closed if questions evidence is missing rather than guessing.
+"Does control X raise detection of T1566 in staging?" beats "is security good?".
 
 ### 18.2 Design
 
 Fixed test set, recorded environment, sample size plan.
 
-Section eighteen point two develops research with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section eighteen point two, questions stay explicit in the ticket before the window opens.
-
-Section eighteen point two treats measures as testable only when owners and dates are recorded.
-
-For section eighteen point two, ethics cannot be widened by a verbal aside from a manager.
-
-Section eighteen point two fails closed if questions evidence is missing rather than guessing.
-
 ### 18.3 Pre-registration
 
 Write metric and threshold before seeing results.
-
-Section eighteen point three develops research with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section eighteen point three, questions stay explicit in the ticket before the window opens.
-
-Section eighteen point three treats measures as testable only when owners and dates are recorded.
-
-For section eighteen point three, ethics cannot be widened by a verbal aside from a manager.
-
-Section eighteen point three fails closed if questions evidence is missing rather than guessing.
 
 ### 18.4 Ethics
 
 Customer data off-limits; synthetic phishing to staff needs HR/CISO approval.
 
-Section eighteen point four develops research with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section eighteen point four, questions stay explicit in the ticket before the window opens.
-
-Section eighteen point four treats measures as testable only when owners and dates are recorded.
-
-For section eighteen point four, ethics cannot be widened by a verbal aside from a manager.
-
-Section eighteen point four fails closed if questions evidence is missing rather than guessing.
-
 ### 18.5 Negative results
 
 Publish internally; they prevent repeated failed ideas.
-
-Section eighteen point five develops research with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section eighteen point five, questions stay explicit in the ticket before the window opens.
-
-Section eighteen point five treats measures as testable only when owners and dates are recorded.
-
-For section eighteen point five, ethics cannot be widened by a verbal aside from a manager.
-
-Section eighteen point five fails closed if questions evidence is missing rather than guessing.
 
 ### 18.6 Limits
 
 Staging ≠ production; state threats to validity.
 
-Section eighteen point six develops research with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section eighteen point six, questions stay explicit in the ticket before the window opens.
-
-Section eighteen point six treats measures as testable only when owners and dates are recorded.
-
-For section eighteen point six, ethics cannot be widened by a verbal aside from a manager.
-
-Section eighteen point six fails closed if questions evidence is missing rather than guessing.
-
 ### 18.7 18.7 Applied note
 
 Negative results get the same template as positive ones. Sam's "MFA prompt fatigue did not improve T1566 detection in n=40" note stopped a second identical trial the following quarter.
-
-Section eighteen point seven develops research with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section eighteen point seven, questions stay explicit in the ticket before the window opens.
-
-Section eighteen point seven treats measures as testable only when owners and dates are recorded.
-
-For section eighteen point seven, ethics cannot be widened by a verbal aside from a manager.
 
 ### 18.8 18.8 Trial registration board
 
 A public (internal) board shows pre-registered trials and their status. Duplicate trials are rejected at a glance.
 
-Section eighteen point eight develops research with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section eighteen point eight, questions stay explicit in the ticket before the window opens.
-
-Section eighteen point eight treats measures as testable only when owners and dates are recorded.
-
-For section eighteen point eight, ethics cannot be widened by a verbal aside from a manager.
-
-Section eighteen point eight fails closed if questions evidence is missing rather than guessing.
-
 ### 18.9 18.9 Power analysis humility
 
 Sam avoids claiming significance without a plan. Most purple trials at TRB are descriptive with intervals, not pseudo-clinical trials.
-
-Section eighteen point nine develops research with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section eighteen point nine, questions stay explicit in the ticket before the window opens.
-
-Section eighteen point nine treats measures as testable only when owners and dates are recorded.
-
-For section eighteen point nine, ethics cannot be widened by a verbal aside from a manager.
-
-Section eighteen point nine fails closed if questions evidence is missing rather than guessing.
 
 ### 18.10 18.11 Scene
 
 A pre-registered trial on awareness mail fails its threshold. Sam still writes it up. The next quarter's budget meeting cites the negative result to avoid buying the same content pack again.
 
-Section eighteen point one zero develops research with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section eighteen point one zero, questions stay explicit in the ticket before the window opens.
-
-Section eighteen point one zero treats measures as testable only when owners and dates are recorded.
-
-For section eighteen point one zero, ethics cannot be widened by a verbal aside from a manager.
-
 ### 18.11 18.12 Extension
 
 Registration board rejected a duplicate trial title within a minute. The author joined the existing trial as a helper instead of wasting a cohort.
-
-Section eighteen point one one develops research with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section eighteen point one one, questions stay explicit in the ticket before the window opens.
-
-Section eighteen point one one treats measures as testable only when owners and dates are recorded.
-
-For section eighteen point one one, ethics cannot be widened by a verbal aside from a manager.
 
 ### 18.12 18.14 Note 11
 
 Negative results get a champagne cork icon in the board — celebration of learning, not failure.
 
-Section eighteen point one two develops research with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section eighteen point one two, questions stay explicit in the ticket before the window opens.
-
-Section eighteen point one two treats measures as testable only when owners and dates are recorded.
-
-For section eighteen point one two, ethics cannot be widened by a verbal aside from a manager.
-
-Section eighteen point one two fails closed if questions evidence is missing rather than guessing.
-
 ### 18.13 18.16 Pad
 
 Champagne cork icons are optional; the write-up is not. Sam rejects icons without prose.
 
-Section eighteen point one three develops research with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section eighteen point one three, questions stay explicit in the ticket before the window opens.
-
-Section eighteen point one three treats measures as testable only when owners and dates are recorded.
-
-For section eighteen point one three, ethics cannot be widened by a verbal aside from a manager.
-
-Section eighteen point one three fails closed if questions evidence is missing rather than guessing.
-
 ### 18.14 18.20 Extra
 
 Icons without prose are stripped by the board's markdown linter.
-
-Section eighteen point one four develops research with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section eighteen point one four, questions stay explicit in the ticket before the window opens.
-
-Section eighteen point one four treats measures as testable only when owners and dates are recorded.
-
-For section eighteen point one four, ethics cannot be widened by a verbal aside from a manager.
-
-Section eighteen point one four fails closed if questions evidence is missing rather than guessing.
 
 ### Worked example (synthetic TRB)
 
@@ -2787,7 +1545,7 @@ This book grants no authority to test real banks or payment systems. Labs use do
 
 ### Exercises
 
-- **EX052 — Bad question.** Why is \"is security good?\" a poor research question? *Rubric:* 3 = not measurable/specific; 2 = partial; 1 = fine; 0 = none.
+- **EX052 — Bad question.** Why is "is security good?" a poor research question? *Rubric:* 3 = not measurable/specific; 2 = partial; 1 = fine; 0 = none.
 - **EX053 — Pre-register.** What should be written before results? *Rubric:* 3 = metric and threshold (and design); 2 = partial; 1 = nothing; 0 = none.
 - **EX054 — Staff phishing.** What approvals before simulated phishing? *Rubric:* 3 = CISO/HR (and ROE); 2 = one; 1 = none; 0 = none.
 
@@ -2811,191 +1569,61 @@ You will (1) compare assessment types in SP 800-115; (2) map PTES stages; (3) si
 
 Reviews, vulnerability assessments, red teaming — different depth and permission models.
 
-Section nineteen point one develops scope theory with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section nineteen point one, membership stay explicit in the ticket before the window opens.
-
-Section nineteen point one treats method cards as testable only when owners and dates are recorded.
-
-For section nineteen point one, coverage cannot be widened by a verbal aside from a manager.
-
-Section nineteen point one fails closed if membership evidence is missing rather than guessing.
-
 ### 19.2 PTES
 
 Pre-engagement through reporting as shared stage names.
-
-Section nineteen point two develops scope theory with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section nineteen point two, membership stay explicit in the ticket before the window opens.
-
-Section nineteen point two treats method cards as testable only when owners and dates are recorded.
-
-For section nineteen point two, coverage cannot be widened by a verbal aside from a manager.
-
-Section nineteen point two fails closed if membership evidence is missing rather than guessing.
 
 ### 19.3 Threat-led
 
 TIBER-EU and CBEST use intelligence to shape scenarios for financial entities; TRB studies them even when running lighter tests.
 
-Section nineteen point three develops scope theory with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section nineteen point three, membership stay explicit in the ticket before the window opens.
-
-Section nineteen point three treats method cards as testable only when owners and dates are recorded.
-
-For section nineteen point three, coverage cannot be widened by a verbal aside from a manager.
-
 ### 19.4 Theory of change
 
 Testing informs risk decisions; it does not create security by itself.
-
-Section nineteen point four develops scope theory with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section nineteen point four, membership stay explicit in the ticket before the window opens.
-
-Section nineteen point four treats method cards as testable only when owners and dates are recorded.
-
-For section nineteen point four, coverage cannot be widened by a verbal aside from a manager.
-
-Section nineteen point four fails closed if membership evidence is missing rather than guessing.
 
 ### 19.5 Assurance limits
 
 A clean test is time-bounded assurance, not a warranty.
 
-Section nineteen point five develops scope theory with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section nineteen point five, membership stay explicit in the ticket before the window opens.
-
-Section nineteen point five treats method cards as testable only when owners and dates are recorded.
-
-For section nineteen point five, coverage cannot be widened by a verbal aside from a manager.
-
-Section nineteen point five fails closed if membership evidence is missing rather than guessing.
-
 ### 19.6 Platform role
 
 TrackScope encodes theory as executable deny rules.
-
-Section nineteen point six develops scope theory with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section nineteen point six, membership stay explicit in the ticket before the window opens.
-
-Section nineteen point six treats method cards as testable only when owners and dates are recorded.
-
-For section nineteen point six, coverage cannot be widened by a verbal aside from a manager.
-
-Section nineteen point six fails closed if membership evidence is missing rather than guessing.
 
 ### 19.7 19.7 Applied note
 
 The assessment catalogue includes what each type cannot claim. Annual web tests cannot claim threat-led coverage; threat-led exercises cannot claim quarterly regression coverage. Sam quotes the cannot-claim line in kickoffs.
 
-Section nineteen point seven develops scope theory with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section nineteen point seven, membership stay explicit in the ticket before the window opens.
-
-Section nineteen point seven treats method cards as testable only when owners and dates are recorded.
-
-For section nineteen point seven, coverage cannot be widened by a verbal aside from a manager.
-
 ### 19.8 19.8 Assurance statement library
 
 Approved sentences for reports include "time-bounded assurance" and forbid "guaranteed secure". Sam's linter flags forbidden phrases.
-
-Section nineteen point eight develops scope theory with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section nineteen point eight, membership stay explicit in the ticket before the window opens.
-
-Section nineteen point eight treats method cards as testable only when owners and dates are recorded.
-
-For section nineteen point eight, coverage cannot be widened by a verbal aside from a manager.
-
-Section nineteen point eight fails closed if membership evidence is missing rather than guessing.
 
 ### 19.9 19.9 Insurance questionnaire map
 
 Questionnaire answers cite the catalogue. Sam stops colleagues from answering "we pentest everything" when SWIFT is excluded.
 
-Section nineteen point nine develops scope theory with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section nineteen point nine, membership stay explicit in the ticket before the window opens.
-
-Section nineteen point nine treats method cards as testable only when owners and dates are recorded.
-
-For section nineteen point nine, coverage cannot be widened by a verbal aside from a manager.
-
-Section nineteen point nine fails closed if membership evidence is missing rather than guessing.
-
 ### 19.10 19.11 Scene
 
 An insurer questionnaire says "Do you conduct red teaming?". Sam answers with the catalogue: quarterly web tests yes; full threat-led last done 20XX; SWIFT excluded from ordinary tests. Checkbox honesty beats swagger.
-
-Section nineteen point one zero develops scope theory with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section nineteen point one zero, membership stay explicit in the ticket before the window opens.
-
-Section nineteen point one zero treats method cards as testable only when owners and dates are recorded.
 
 ### 19.11 19.12 Extension
 
 Assurance linter failed a report for "fully secure after remediation". Sam's replacement: "residual risk accepted for F3 until 1 December with compensating jump-only admin".
 
-Section nineteen point one one develops scope theory with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section nineteen point one one, membership stay explicit in the ticket before the window opens.
-
-Section nineteen point one one treats method cards as testable only when owners and dates are recorded.
-
-For section nineteen point one one, coverage cannot be widened by a verbal aside from a manager.
-
 ### 19.12 19.14 Note 11
 
 Catalogue cannot-claim lines are read aloud at kickoff; mumbling is corrected.
-
-Section nineteen point one two develops scope theory with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section nineteen point one two, membership stay explicit in the ticket before the window opens.
-
-Section nineteen point one two treats method cards as testable only when owners and dates are recorded.
-
-For section nineteen point one two, coverage cannot be widened by a verbal aside from a manager.
-
-Section nineteen point one two fails closed if membership evidence is missing rather than guessing.
 
 ### 19.13 19.16 Pad
 
 Kickoff mumbling earns a restart of the cannot-claim read. Clarity over comfort.
 
-Section nineteen point one three develops scope theory with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section nineteen point one three, membership stay explicit in the ticket before the window opens.
-
-Section nineteen point one three treats method cards as testable only when owners and dates are recorded.
-
-For section nineteen point one three, coverage cannot be widened by a verbal aside from a manager.
-
-Section nineteen point one three fails closed if membership evidence is missing rather than guessing.
-
 ### 19.14 19.20 Extra
 
 Cannot-claim read restarts are logged as a fun metric of mumbling.
 
-Section nineteen point one four develops scope theory with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section nineteen point one four, membership stay explicit in the ticket before the window opens.
-
-Section nineteen point one four treats method cards as testable only when owners and dates are recorded.
-
-For section nineteen point one four, coverage cannot be widened by a verbal aside from a manager.
-
-Section nineteen point one four fails closed if membership evidence is missing rather than guessing.
-
 ### Worked example (synthetic TRB)
 
-Sam's lecture note: \"CBEST-style scenarios need intel + ROE + detection goals; our quarterly web test is narrower and still valuable.\"
+Sam's lecture note: "CBEST-style scenarios need intel + ROE + detection goals; our quarterly web test is narrower and still valuable."
 
 > **Synthetic case — Riverstone Transit Bank (TRB).** The bank, Sam Ito, TrackScope/FindingsDesk/PulseMap and all figures are invented for teaching.
 
@@ -3029,185 +1657,57 @@ You will (1) analyse synthetic TRB cases; (2) separate fact/guess; (3) escalate 
 
 ROE excerpt, logs, findings draft, staff report of password reuse.
 
-Section twenty point one develops foundational cases with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty point one, patterns stay explicit in the ticket before the window opens.
-
-Section twenty point one treats lessons as testable only when owners and dates are recorded.
-
-For section twenty point one, priors cannot be widened by a verbal aside from a manager.
-
-Section twenty point one fails closed if patterns evidence is missing rather than guessing.
-
 ### 20.2 Labels
 
 Fact / Guess / Action lines.
-
-Section twenty point two develops foundational cases with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty point two, patterns stay explicit in the ticket before the window opens.
-
-Section twenty point two treats lessons as testable only when owners and dates are recorded.
-
-For section twenty point two, priors cannot be widened by a verbal aside from a manager.
-
-Section twenty point two fails closed if patterns evidence is missing rather than guessing.
-
-Under section twenty point two, peers skim the foundational cases note in two minutes before write mode.
 
 ### 20.3 Escalation
 
 Possible payment integrity impact → same-day CISO.
 
-Section twenty point three develops foundational cases with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty point three, patterns stay explicit in the ticket before the window opens.
-
-Section twenty point three treats lessons as testable only when owners and dates are recorded.
-
-For section twenty point three, priors cannot be widened by a verbal aside from a manager.
-
-Section twenty point three fails closed if patterns evidence is missing rather than guessing.
-
 ### 20.4 Out of scope
 
 Personal email content stays untouched.
-
-Section twenty point four develops foundational cases with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty point four, patterns stay explicit in the ticket before the window opens.
-
-Section twenty point four treats lessons as testable only when owners and dates are recorded.
-
-For section twenty point four, priors cannot be widened by a verbal aside from a manager.
-
-Section twenty point four fails closed if patterns evidence is missing rather than guessing.
 
 ### 20.5 ATT&CK
 
 Tag techniques for SOC hunting.
 
-Section twenty point five develops foundational cases with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty point five, patterns stay explicit in the ticket before the window opens.
-
-Section twenty point five treats lessons as testable only when owners and dates are recorded.
-
-For section twenty point five, priors cannot be widened by a verbal aside from a manager.
-
-Section twenty point five fails closed if patterns evidence is missing rather than guessing.
-
 ### 20.6 Blameless
 
 Focus on systems and process.
-
-Section twenty point six develops foundational cases with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty point six, patterns stay explicit in the ticket before the window opens.
-
-Section twenty point six treats lessons as testable only when owners and dates are recorded.
-
-For section twenty point six, priors cannot be widened by a verbal aside from a manager.
-
-Section twenty point six fails closed if patterns evidence is missing rather than guessing.
 
 ### 20.7 20.7 Applied note
 
 Facilitators ban timeline adjectives like "suddenly" unless a timestamp exists. Sam's case notes now lead with UTC times from logs, then narrative. Guess lines may not carry timestamps pretending to be facts.
 
-Section twenty point seven develops foundational cases with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty point seven, patterns stay explicit in the ticket before the window opens.
-
-Section twenty point seven treats lessons as testable only when owners and dates are recorded.
-
-For section twenty point seven, priors cannot be widened by a verbal aside from a manager.
-
 ### 20.8 20.8 Case clock
 
 Every case packet states the timezone of log lines on page one. Sam lost an hour once to silent UTC; the cover line prevents it.
-
-Section twenty point eight develops foundational cases with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty point eight, patterns stay explicit in the ticket before the window opens.
-
-Section twenty point eight treats lessons as testable only when owners and dates are recorded.
-
-For section twenty point eight, priors cannot be widened by a verbal aside from a manager.
 
 ### 20.9 20.9 Guess budget
 
 Each case may carry at most three Guess lines. Excess guesses become homework to gather facts.
 
-Section twenty point nine develops foundational cases with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty point nine, patterns stay explicit in the ticket before the window opens.
-
-Section twenty point nine treats lessons as testable only when owners and dates are recorded.
-
-For section twenty point nine, priors cannot be widened by a verbal aside from a manager.
-
-Section twenty point nine fails closed if patterns evidence is missing rather than guessing.
-
 ### 20.10 20.11 Scene
 
 Case night: a Guess line about "APT29" is removed for lack of evidence. The room groans and then writes better Fact lines about VPN logs. Attribution theatre is addictive; the bell helps.
-
-Section twenty point one zero develops foundational cases with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty point one zero, patterns stay explicit in the ticket before the window opens.
-
-Section twenty point one zero treats lessons as testable only when owners and dates are recorded.
 
 ### 20.11 20.12 Extension
 
 Guess budget forced a team to replace an APT guess with two VPN log facts. The case got less cinematic and more true.
 
-Section twenty point one one develops foundational cases with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty point one one, patterns stay explicit in the ticket before the window opens.
-
-Section twenty point one one treats lessons as testable only when owners and dates are recorded.
-
-For section twenty point one one, priors cannot be widened by a verbal aside from a manager.
-
 ### 20.12 20.14 Note 11
 
 Timestamp cover lines use ISO-8601 with offset; "morning" is banned.
-
-Section twenty point one two develops foundational cases with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty point one two, patterns stay explicit in the ticket before the window opens.
-
-Section twenty point one two treats lessons as testable only when owners and dates are recorded.
-
-For section twenty point one two, priors cannot be widened by a verbal aside from a manager.
-
-Section twenty point one two fails closed if patterns evidence is missing rather than guessing.
 
 ### 20.13 20.16 Pad
 
 ISO-8601 cover lines are validated by a regex in the case packet CI.
 
-Section twenty point one three develops foundational cases with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty point one three, patterns stay explicit in the ticket before the window opens.
-
-Section twenty point one three treats lessons as testable only when owners and dates are recorded.
-
-For section twenty point one three, priors cannot be widened by a verbal aside from a manager.
-
-Section twenty point one three fails closed if patterns evidence is missing rather than guessing.
-
 ### 20.14 20.18 Final
 
 Fact-line workshops ban adjectives for twenty minutes. Only nouns, verbs, numbers and timestamps. The constraint feels artificial and produces the cleanest case packets of the term. Sam keeps a trophy packet from last year as the standard.
-
-Section twenty point one four develops foundational cases with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty point one four, patterns stay explicit in the ticket before the window opens.
-
-Section twenty point one four treats lessons as testable only when owners and dates are recorded.
 
 ### Worked example (synthetic TRB)
 
@@ -3221,7 +1721,7 @@ This book grants no authority to test real banks or payment systems. Labs use do
 
 ### Exercises
 
-- **EX058 — Fact vs guess.** Label: \"staff reported reuse\" vs \"nation-state has the hash\". *Rubric:* 3 = fact vs guess; 2 = partial; 1 = both facts; 0 = none.
+- **EX058 — Fact vs guess.** Label: "staff reported reuse" vs "nation-state has the hash". *Rubric:* 3 = fact vs guess; 2 = partial; 1 = both facts; 0 = none.
 - **EX059 — Personal mail.** Why not read the staffer's personal email? *Rubric:* 3 = out of scope/privacy; 2 = partial; 1 = should; 0 = none.
 - **EX060 — Escalate trigger.** What triggers same-day CISO escalation here? *Rubric:* 3 = credential reuse risking bank access/payments; 2 = partial; 1 = nothing; 0 = none.
 
@@ -3245,185 +1745,57 @@ You will (1) model online banking; (2) list entry points; (3) record assumptions
 
 Actors, entry points, stores, trust zones, external processors.
 
-Section twenty-one point one develops system models with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-one point one, layers stay explicit in the ticket before the window opens.
-
-Section twenty-one point one treats fragility as testable only when owners and dates are recorded.
-
-For section twenty-one point one, inventory cannot be widened by a verbal aside from a manager.
-
-Section twenty-one point one fails closed if layers evidence is missing rather than guessing.
-
 ### 21.2 Entry points
 
 Web, mobile API, staff VPN, batch peers.
 
-Section twenty-one point two develops system models with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-one point two, layers stay explicit in the ticket before the window opens.
-
-Section twenty-one point two treats fragility as testable only when owners and dates are recorded.
-
-For section twenty-one point two, inventory cannot be widened by a verbal aside from a manager.
-
-Section twenty-one point two fails closed if layers evidence is missing rather than guessing.
-
 ### 21.3 Assumptions
 
-\"Staging mirrors prod AuthZ\" must be validated.
-
-Section twenty-one point three develops system models with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-one point three, layers stay explicit in the ticket before the window opens.
-
-Section twenty-one point three treats fragility as testable only when owners and dates are recorded.
-
-For section twenty-one point three, inventory cannot be widened by a verbal aside from a manager.
-
-Section twenty-one point three fails closed if layers evidence is missing rather than guessing.
+"Staging mirrors prod AuthZ" must be validated.
 
 ### 21.4 Data flows
 
 Customer PII paths drive minimisation.
 
-Section twenty-one point four develops system models with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-one point four, layers stay explicit in the ticket before the window opens.
-
-Section twenty-one point four treats fragility as testable only when owners and dates are recorded.
-
-For section twenty-one point four, inventory cannot be widened by a verbal aside from a manager.
-
-Section twenty-one point four fails closed if layers evidence is missing rather than guessing.
-
 ### 21.5 Exclusions
 
 SWIFT gateway omitted when out of scope.
-
-Section twenty-one point five develops system models with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-one point five, layers stay explicit in the ticket before the window opens.
-
-Section twenty-one point five treats fragility as testable only when owners and dates are recorded.
-
-For section twenty-one point five, inventory cannot be widened by a verbal aside from a manager.
-
-Section twenty-one point five fails closed if layers evidence is missing rather than guessing.
 
 ### 21.6 Living models
 
 Update on new payment callback routes.
 
-Section twenty-one point six develops system models with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-one point six, layers stay explicit in the ticket before the window opens.
-
-Section twenty-one point six treats fragility as testable only when owners and dates are recorded.
-
-For section twenty-one point six, inventory cannot be widened by a verbal aside from a manager.
-
-Section twenty-one point six fails closed if layers evidence is missing rather than guessing.
-
 ### 21.7 21.7 Applied note
 
 Owner workshops use physical tokens for assumptions. A token left in Open at the end blocks kickoff. The tactile rule sounds childish and works better than a spreadsheet column nobody updates.
-
-Section twenty-one point seven develops system models with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-one point seven, layers stay explicit in the ticket before the window opens.
-
-Section twenty-one point seven treats fragility as testable only when owners and dates are recorded.
-
-For section twenty-one point seven, inventory cannot be widened by a verbal aside from a manager.
 
 ### 21.8 21.8 Callback inventory
 
 New payment callbacks must appear on the model within one week of change tickets. Sam's weekly diff of change tickets versus model edges catches stragglers.
 
-Section twenty-one point eight develops system models with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-one point eight, layers stay explicit in the ticket before the window opens.
-
-Section twenty-one point eight treats fragility as testable only when owners and dates are recorded.
-
-For section twenty-one point eight, inventory cannot be widened by a verbal aside from a manager.
-
 ### 21.9 21.9 External processor box
 
 Processors appear as black boxes with data types crossing the boundary, not as pretend internal hosts.
-
-Section twenty-one point nine develops system models with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-one point nine, layers stay explicit in the ticket before the window opens.
-
-Section twenty-one point nine treats fragility as testable only when owners and dates are recorded.
-
-For section twenty-one point nine, inventory cannot be widened by a verbal aside from a manager.
-
-Section twenty-one point nine fails closed if layers evidence is missing rather than guessing.
 
 ### 21.10 21.11 Scene
 
 A new mobile deep link appears in a change ticket. Within three days Sam's model gains an entry point and an assumption sticky: "AuthZ same as web?". The sticky is still Open at kickoff and becomes a residual risk sentence.
 
-Section twenty-one point one zero develops system models with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-one point one zero, layers stay explicit in the ticket before the window opens.
-
-Section twenty-one point one zero treats fragility as testable only when owners and dates are recorded.
-
 ### 21.11 21.12 Extension
 
 Callback inventory diff found a silent route from marketing site to core-api. It became a conduit review, not a marketing surprise in production.
-
-Section twenty-one point one one develops system models with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-one point one one, layers stay explicit in the ticket before the window opens.
-
-Section twenty-one point one one treats fragility as testable only when owners and dates are recorded.
-
-For section twenty-one point one one, inventory cannot be widened by a verbal aside from a manager.
 
 ### 21.12 21.14 Note 11
 
 Open assumption stickies are photographed into the ROE packet before kickoff.
 
-Section twenty-one point one two develops system models with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-one point one two, layers stay explicit in the ticket before the window opens.
-
-Section twenty-one point one two treats fragility as testable only when owners and dates are recorded.
-
-For section twenty-one point one two, inventory cannot be widened by a verbal aside from a manager.
-
-Section twenty-one point one two fails closed if layers evidence is missing rather than guessing.
-
 ### 21.13 21.16 Pad
 
 Residual risk sentences from Open stickies are pasted into the executive summary draft automatically.
 
-Section twenty-one point one three develops system models with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-one point one three, layers stay explicit in the ticket before the window opens.
-
-Section twenty-one point one three treats fragility as testable only when owners and dates are recorded.
-
-For section twenty-one point one three, inventory cannot be widened by a verbal aside from a manager.
-
-Section twenty-one point one three fails closed if layers evidence is missing rather than guessing.
-
 ### 21.14 21.18 Final
 
 Model office hours end with a photograph of the whiteboard and an OCR pass into the assumption log. Sticky notes that OCR cannot read are rewritten. Illegible assumptions are denied assumptions.
-
-Section twenty-one point one four develops system models with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-one point one four, layers stay explicit in the ticket before the window opens.
-
-Section twenty-one point one four treats fragility as testable only when owners and dates are recorded.
-
-For section twenty-one point one four, inventory cannot be widened by a verbal aside from a manager.
 
 ### Worked example (synthetic TRB)
 
@@ -3461,187 +1833,57 @@ You will (1) map dependencies; (2) flag unapproved flows; (3) assign owners.
 
 Core API, ledger DB, fraud service, SMS, card processor.
 
-Section twenty-two point one develops dependencies with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-two point one, flows stay explicit in the ticket before the window opens.
-
-Section twenty-two point one treats matrices as testable only when owners and dates are recorded.
-
-For section twenty-two point one, suppliers cannot be widened by a verbal aside from a manager.
-
-Section twenty-two point one fails closed if flows evidence is missing rather than guessing.
-
 ### 22.2 Flow lab
 
 lab_flows marks web→ledger-db UNAPPROVED.
-
-Section twenty-two point two develops dependencies with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-two point two, flows stay explicit in the ticket before the window opens.
-
-Section twenty-two point two treats matrices as testable only when owners and dates are recorded.
-
-For section twenty-two point two, suppliers cannot be widened by a verbal aside from a manager.
-
-Section twenty-two point two fails closed if flows evidence is missing rather than guessing.
 
 ### 22.3 Ownership
 
 Each flow has a control owner.
 
-Section twenty-two point three develops dependencies with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-two point three, flows stay explicit in the ticket before the window opens.
-
-Section twenty-two point three treats matrices as testable only when owners and dates are recorded.
-
-For section twenty-two point three, suppliers cannot be widened by a verbal aside from a manager.
-
-Section twenty-two point three fails closed if flows evidence is missing rather than guessing.
-
 ### 22.4 Third parties
 
 Separate authorization.
-
-Section twenty-two point four develops dependencies with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-two point four, flows stay explicit in the ticket before the window opens.
-
-Section twenty-two point four treats matrices as testable only when owners and dates are recorded.
-
-For section twenty-two point four, suppliers cannot be widened by a verbal aside from a manager.
-
-Section twenty-two point four fails closed if flows evidence is missing rather than guessing.
-
-Under section twenty-two point four, peers skim the dependencies note in two minutes before write mode.
 
 ### 22.5 Breaks
 
 Vendor outages are stops, not hammering opportunities.
 
-Section twenty-two point five develops dependencies with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-two point five, flows stay explicit in the ticket before the window opens.
-
-Section twenty-two point five treats matrices as testable only when owners and dates are recorded.
-
-For section twenty-two point five, suppliers cannot be widened by a verbal aside from a manager.
-
-Section twenty-two point five fails closed if flows evidence is missing rather than guessing.
-
 ### 22.6 Secrets
 
 API keys in repos are TRB findings.
-
-Section twenty-two point six develops dependencies with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-two point six, flows stay explicit in the ticket before the window opens.
-
-Section twenty-two point six treats matrices as testable only when owners and dates are recorded.
-
-For section twenty-two point six, suppliers cannot be widened by a verbal aside from a manager.
-
-Section twenty-two point six fails closed if flows evidence is missing rather than guessing.
 
 ### 22.7 22.7 Applied note
 
 Kill-dates on temporary flows page both the owner and Sam three days prior. If nobody responds, TrackScope marks the flow expired and denies tests that relied on it until renewed in writing.
 
-Section twenty-two point seven develops dependencies with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-two point seven, flows stay explicit in the ticket before the window opens.
-
-Section twenty-two point seven treats matrices as testable only when owners and dates are recorded.
-
-For section twenty-two point seven, suppliers cannot be widened by a verbal aside from a manager.
-
 ### 22.8 22.8 Secret scanning cadence
 
 Repo secret scans run on TRB-owned code listed in ROE. Sam opens findings for keys with no owner in the asset model.
-
-Section twenty-two point eight develops dependencies with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-two point eight, flows stay explicit in the ticket before the window opens.
-
-Section twenty-two point eight treats matrices as testable only when owners and dates are recorded.
-
-For section twenty-two point eight, suppliers cannot be widened by a verbal aside from a manager.
 
 ### 22.9 22.9 Expiry page text
 
 Pages for kill-dates include the original business reason. Renewals without reasons are denied.
 
-Section twenty-two point nine develops dependencies with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-two point nine, flows stay explicit in the ticket before the window opens.
-
-Section twenty-two point nine treats matrices as testable only when owners and dates are recorded.
-
-For section twenty-two point nine, suppliers cannot be widened by a verbal aside from a manager.
-
-Section twenty-two point nine fails closed if flows evidence is missing rather than guessing.
-
 ### 22.10 22.11 Scene
 
 Kill-date pages fire; the owner is on leave. Backup owner renews with a reason. Sam notes the backup-owner field as mandatory going forward — single-owner expiry pages are fragile.
-
-Section twenty-two point one zero develops dependencies with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-two point one zero, flows stay explicit in the ticket before the window opens.
-
-Section twenty-two point one zero treats matrices as testable only when owners and dates are recorded.
-
-For section twenty-two point one zero, suppliers cannot be widened by a verbal aside from a manager.
 
 ### 22.11 22.12 Extension
 
 Expiry without reason was denied; the owner wrote "PCI segmentation project delay". Now the risk is visible, not eternal.
 
-Section twenty-two point one one develops dependencies with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-two point one one, flows stay explicit in the ticket before the window opens.
-
-Section twenty-two point one one treats matrices as testable only when owners and dates are recorded.
-
-For section twenty-two point one one, suppliers cannot be widened by a verbal aside from a manager.
-
 ### 22.12 22.14 Note 11
 
 Backup owners must acknowledge in the ticket UI; silence is not acceptance.
-
-Section twenty-two point one two develops dependencies with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-two point one two, flows stay explicit in the ticket before the window opens.
-
-Section twenty-two point one two treats matrices as testable only when owners and dates are recorded.
-
-For section twenty-two point one two, suppliers cannot be widened by a verbal aside from a manager.
-
-Section twenty-two point one two fails closed if flows evidence is missing rather than guessing.
 
 ### 22.13 22.16 Pad
 
 Mandatory backup-owner fields block ticket closeout. Sam loves blocking closeout.
 
-Section twenty-two point one three develops dependencies with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-two point one three, flows stay explicit in the ticket before the window opens.
-
-Section twenty-two point one three treats matrices as testable only when owners and dates are recorded.
-
-For section twenty-two point one three, suppliers cannot be widened by a verbal aside from a manager.
-
-Section twenty-two point one three fails closed if flows evidence is missing rather than guessing.
-
 ### 22.14 22.18 Final
 
 Flow expiry postmortems ask whether the original business reason still exists. If the project finished, the flow dies. If the project continues, a new kill-date is mandatory. Eternal temporary rules are renamed findings in the postmortem notes.
-
-Section twenty-two point one four develops dependencies with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-two point one four, flows stay explicit in the ticket before the window opens.
-
-Section twenty-two point one four treats matrices as testable only when owners and dates are recorded.
 
 ### Worked example (synthetic TRB)
 
@@ -3679,189 +1921,57 @@ You will (1) build method cards; (2) bind methods to ROE; (3) set rate limits.
 
 Purpose, ROE clause, tool/settings, stops, evidence.
 
-Section twenty-three point one develops methods with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-three point one, planning stay explicit in the ticket before the window opens.
-
-Section twenty-three point one treats windows as testable only when owners and dates are recorded.
-
-For section twenty-three point one, contacts cannot be widened by a verbal aside from a manager.
-
-Section twenty-three point one fails closed if planning evidence is missing rather than guessing.
-
 ### 23.2 WSTG
 
 Select auth, session, access control themes for online banking staging.
-
-Section twenty-three point two develops methods with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-three point two, planning stay explicit in the ticket before the window opens.
-
-Section twenty-three point two treats windows as testable only when owners and dates are recorded.
-
-For section twenty-three point two, contacts cannot be widened by a verbal aside from a manager.
-
-Section twenty-three point two fails closed if planning evidence is missing rather than guessing.
 
 ### 23.3 Rates
 
 Caps protect availability.
 
-Section twenty-three point three develops methods with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-three point three, planning stay explicit in the ticket before the window opens.
-
-Section twenty-three point three treats windows as testable only when owners and dates are recorded.
-
-For section twenty-three point three, contacts cannot be widened by a verbal aside from a manager.
-
-Section twenty-three point three fails closed if planning evidence is missing rather than guessing.
-
-Under section twenty-three point three, peers skim the methods note in two minutes before write mode.
-
 ### 23.4 Forbidden
 
 Spraying and DoS remain forbidden.
-
-Section twenty-three point four develops methods with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-three point four, planning stay explicit in the ticket before the window opens.
-
-Section twenty-three point four treats windows as testable only when owners and dates are recorded.
-
-For section twenty-three point four, contacts cannot be widened by a verbal aside from a manager.
-
-Section twenty-three point four fails closed if planning evidence is missing rather than guessing.
-
-Under section twenty-three point four, peers skim the methods note in two minutes before write mode.
 
 ### 23.5 Quiet vs noisy
 
 Prefer quiet methods when detection is also under test.
 
-Section twenty-three point five develops methods with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-three point five, planning stay explicit in the ticket before the window opens.
-
-Section twenty-three point five treats windows as testable only when owners and dates are recorded.
-
-For section twenty-three point five, contacts cannot be widened by a verbal aside from a manager.
-
-Section twenty-three point five fails closed if planning evidence is missing rather than guessing.
-
 ### 23.6 Freeze
 
 Method set freezes after kickoff unless ROE amends.
-
-Section twenty-three point six develops methods with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-three point six, planning stay explicit in the ticket before the window opens.
-
-Section twenty-three point six treats windows as testable only when owners and dates are recorded.
-
-For section twenty-three point six, contacts cannot be widened by a verbal aside from a manager.
-
-Section twenty-three point six fails closed if planning evidence is missing rather than guessing.
 
 ### 23.7 23.7 Applied note
 
 Quiet methods are preferred during purple windows so SOC signal is interpretable. Sam schedules noisy inventory scrapes on separate days. Mixing them produced a useless alert blizzard once; the calendar now prevents it.
 
-Section twenty-three point seven develops methods with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-three point seven, planning stay explicit in the ticket before the window opens.
-
-Section twenty-three point seven treats windows as testable only when owners and dates are recorded.
-
-For section twenty-three point seven, contacts cannot be widened by a verbal aside from a manager.
-
 ### 23.8 23.8 Card library ownership
 
 Each method card has an owner engineer. Unowned cards cannot be scheduled. Sam claims ownership before proposing a card in kickoff.
-
-Section twenty-three point eight develops methods with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-three point eight, planning stay explicit in the ticket before the window opens.
-
-Section twenty-three point eight treats windows as testable only when owners and dates are recorded.
-
-For section twenty-three point eight, contacts cannot be widened by a verbal aside from a manager.
 
 ### 23.9 23.9 Noise budget sheet
 
 SOC signs a noise budget per window. Exceeding it is a stop condition Sam respects immediately.
 
-Section twenty-three point nine develops methods with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-three point nine, planning stay explicit in the ticket before the window opens.
-
-Section twenty-three point nine treats windows as testable only when owners and dates are recorded.
-
-For section twenty-three point nine, contacts cannot be widened by a verbal aside from a manager.
-
-Section twenty-three point nine fails closed if planning evidence is missing rather than guessing.
-
 ### 23.10 23.11 Scene
 
 SOC noise budget is 30 alerts per hour. Sam's method card would generate about 80. He splits the card across two days. The SOC lead buys him coffee; the window stays green.
-
-Section twenty-three point one zero develops methods with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-three point one zero, planning stay explicit in the ticket before the window opens.
-
-Section twenty-three point one zero treats windows as testable only when owners and dates are recorded.
-
-For section twenty-three point one zero, contacts cannot be widened by a verbal aside from a manager.
 
 ### 23.11 23.12 Extension
 
 Noise budget sheet is signed like a mini-ROE. Sam treats SOC signatures with the same respect as CISO signatures.
 
-Section twenty-three point one one develops methods with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-three point one one, planning stay explicit in the ticket before the window opens.
-
-Section twenty-three point one one treats windows as testable only when owners and dates are recorded.
-
-For section twenty-three point one one, contacts cannot be widened by a verbal aside from a manager.
-
 ### 23.12 23.14 Note 11
 
 Noise budget overruns trigger an automatic method-card pause flag in TrackScope.
-
-Section twenty-three point one two develops methods with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-three point one two, planning stay explicit in the ticket before the window opens.
-
-Section twenty-three point one two treats windows as testable only when owners and dates are recorded.
-
-For section twenty-three point one two, contacts cannot be widened by a verbal aside from a manager.
-
-Section twenty-three point one two fails closed if planning evidence is missing rather than guessing.
 
 ### 23.13 23.16 Pad
 
 Pause flags clear only with SOC countersign. Sam cannot clear his own noise overrun.
 
-Section twenty-three point one three develops methods with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-three point one three, planning stay explicit in the ticket before the window opens.
-
-Section twenty-three point one three treats windows as testable only when owners and dates are recorded.
-
-For section twenty-three point one three, contacts cannot be widened by a verbal aside from a manager.
-
-Section twenty-three point one three fails closed if planning evidence is missing rather than guessing.
-
 ### 23.14 23.18 Final
 
 Method card librarianship is a rotating duty. Each month a different engineer audits five cards for ROE clause drift. Sam's audit found a card citing a retired ROE section; it was suspended in an hour.
-
-Section twenty-three point one four develops methods with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-three point one four, planning stay explicit in the ticket before the window opens.
-
-Section twenty-three point one four treats windows as testable only when owners and dates are recorded.
 
 ### Worked example (synthetic TRB)
 
@@ -3899,27 +2009,9 @@ You will (1) match controls to findings; (2) rank findings; (3) propose compensa
 
 Shared admin → named accounts+vault; unapproved flow → firewall+app deny; weak MFA enrolment → enrolment fix.
 
-Section twenty-four point one develops controls with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-four point one, detection stay explicit in the ticket before the window opens.
-
-Section twenty-four point one treats ATT&CK names as testable only when owners and dates are recorded.
-
-For section twenty-four point one, logging cannot be widened by a verbal aside from a manager.
-
-Section twenty-four point one fails closed if detection evidence is missing rather than guessing.
-
 ### 24.2 Ranking lab
 
 lab_rank orders F1,F3,F4 at score 6 before F2 at 3.
-
-Section twenty-four point two develops controls with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-four point two, detection stay explicit in the ticket before the window opens.
-
-Section twenty-four point two treats ATT&CK names as testable only when owners and dates are recorded.
-
-For section twenty-four point two, logging cannot be widened by a verbal aside from a manager.
 
 ```python
 """Lab 24: rank synthetic TRB findings by likelihood x impact, ties by id."""
@@ -3942,153 +2034,49 @@ F2 3 medium Verbose error pages
 
 Jump-only admin while passwords uniqued.
 
-Section twenty-four point three develops controls with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-four point three, detection stay explicit in the ticket before the window opens.
-
-Section twenty-four point three treats ATT&CK names as testable only when owners and dates are recorded.
-
-For section twenty-four point three, logging cannot be widened by a verbal aside from a manager.
-
-Section twenty-four point three fails closed if detection evidence is missing rather than guessing.
-
 ### 24.4 Ownership
 
 Every control has a named owner and date.
-
-Section twenty-four point four develops controls with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-four point four, detection stay explicit in the ticket before the window opens.
-
-Section twenty-four point four treats ATT&CK names as testable only when owners and dates are recorded.
-
-For section twenty-four point four, logging cannot be widened by a verbal aside from a manager.
-
-Section twenty-four point four fails closed if detection evidence is missing rather than guessing.
 
 ### 24.5 Verify later
 
 Chapter 30 retests.
 
-Section twenty-four point five develops controls with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-four point five, detection stay explicit in the ticket before the window opens.
-
-Section twenty-four point five treats ATT&CK names as testable only when owners and dates are recorded.
-
-For section twenty-four point five, logging cannot be widened by a verbal aside from a manager.
-
-Section twenty-four point five fails closed if detection evidence is missing rather than guessing.
-
-Under section twenty-four point five, peers skim the controls note in two minutes before write mode.
-
 ### 24.6 Overclaim
 
-Do not call a control \"prevents all APT\" .
-
-Section twenty-four point six develops controls with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-four point six, detection stay explicit in the ticket before the window opens.
-
-Section twenty-four point six treats ATT&CK names as testable only when owners and dates are recorded.
-
-For section twenty-four point six, logging cannot be widened by a verbal aside from a manager.
-
-Section twenty-four point six fails closed if detection evidence is missing rather than guessing.
+Do not call a control "prevents all APT" .
 
 ### 24.7 24.7 Applied note
 
 Ranking meetings freeze scores before discussion of personalities. Sam collects scores silently, then reveals. Lobbying to demote a finding because a team is "busy" happens after scores, where it is visible as risk acceptance.
 
-Section twenty-four point seven develops controls with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-four point seven, detection stay explicit in the ticket before the window opens.
-
-Section twenty-four point seven treats ATT&CK names as testable only when owners and dates are recorded.
-
 ### 24.8 24.8 Acceptance language
 
 Risk acceptance uses a form with amount, expiry and CISO signature. Verbal "we'll live with it" does not close F3.
-
-Section twenty-four point eight develops controls with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-four point eight, detection stay explicit in the ticket before the window opens.
-
-Section twenty-four point eight treats ATT&CK names as testable only when owners and dates are recorded.
-
-For section twenty-four point eight, logging cannot be widened by a verbal aside from a manager.
 
 ### 24.9 24.9 Rank reveal
 
 Scores display only after all raters submit. Sam's facilitation script blocks early reveals.
 
-Section twenty-four point nine develops controls with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-four point nine, detection stay explicit in the ticket before the window opens.
-
-Section twenty-four point nine treats ATT&CK names as testable only when owners and dates are recorded.
-
-For section twenty-four point nine, logging cannot be widened by a verbal aside from a manager.
-
-Section twenty-four point nine fails closed if detection evidence is missing rather than guessing.
-
 ### 24.10 24.11 Scene
 
 Rank reveal shows F2 last. The web team still wants F2 fixed first because it is easy. Sam records easy-but-low as a separate "hygiene" track so it does not displace F3's funding.
-
-Section twenty-four point one zero develops controls with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-four point one zero, detection stay explicit in the ticket before the window opens.
-
-Section twenty-four point one zero treats ATT&CK names as testable only when owners and dates are recorded.
 
 ### 24.11 24.12 Extension
 
 Hygiene track fixed F2 in three days without stealing the F3 budget meeting. Parallel tracks keep easy work from starving hard work.
 
-Section twenty-four point one one develops controls with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-four point one one, detection stay explicit in the ticket before the window opens.
-
-Section twenty-four point one one treats ATT&CK names as testable only when owners and dates are recorded.
-
-For section twenty-four point one one, logging cannot be widened by a verbal aside from a manager.
-
 ### 24.12 24.14 Note 11
 
 Hygiene track WIP limits keep it from becoming a dumping ground for ignored risk.
-
-Section twenty-four point one two develops controls with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-four point one two, detection stay explicit in the ticket before the window opens.
-
-Section twenty-four point one two treats ATT&CK names as testable only when owners and dates are recorded.
-
-For section twenty-four point one two, logging cannot be widened by a verbal aside from a manager.
 
 ### 24.13 24.16 Pad
 
 Hygiene WIP limit is three. Fourth easy fix waits. Focus is a control.
 
-Section twenty-four point one three develops controls with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-four point one three, detection stay explicit in the ticket before the window opens.
-
-Section twenty-four point one three treats ATT&CK names as testable only when owners and dates are recorded.
-
-For section twenty-four point one three, logging cannot be widened by a verbal aside from a manager.
-
-Section twenty-four point one three fails closed if detection evidence is missing rather than guessing.
-
 ### 24.14 24.18 Final
 
 Funding boards receive ranked lists with a one-page plain-language cover. Sam practices the cover aloud until he can deliver it in ninety seconds. Boards remember the cover longer than the appendix.
-
-Section twenty-four point one four develops controls with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-four point one four, detection stay explicit in the ticket before the window opens.
-
-Section twenty-four point one four treats ATT&CK names as testable only when owners and dates are recorded.
 
 ### Worked example (synthetic TRB)
 
@@ -4126,183 +2114,57 @@ You will (1) run scope, Wilson and flow labs under supervision; (2) peer-check; 
 
 Outputs of lab_scope, lab_wilson, lab_flows with initials.
 
-Section twenty-five point one develops laboratory with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-five point one, offline runs stay explicit in the ticket before the window opens.
-
-Section twenty-five point one treats expected output as testable only when owners and dates are recorded.
-
-For section twenty-five point one, fixtures cannot be widened by a verbal aside from a manager.
-
-Section twenty-five point one fails closed if offline runs evidence is missing rather than guessing.
-
 ### 25.2 Peer check
 
 Compare scope classifications.
-
-Section twenty-five point two develops laboratory with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-five point two, offline runs stay explicit in the ticket before the window opens.
-
-Section twenty-five point two treats expected output as testable only when owners and dates are recorded.
-
-For section twenty-five point two, fixtures cannot be widened by a verbal aside from a manager.
-
-Section twenty-five point two fails closed if offline runs evidence is missing rather than guessing.
 
 ### 25.3 Planted fault
 
 Refuse mismatched hash evidence.
 
-Section twenty-five point three develops laboratory with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-five point three, offline runs stay explicit in the ticket before the window opens.
-
-Section twenty-five point three treats expected output as testable only when owners and dates are recorded.
-
-For section twenty-five point three, fixtures cannot be widened by a verbal aside from a manager.
-
-Section twenty-five point three fails closed if offline runs evidence is missing rather than guessing.
-
 ### 25.4 Time box
 
 Two hours hard stop.
-
-Section twenty-five point four develops laboratory with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-five point four, offline runs stay explicit in the ticket before the window opens.
-
-Section twenty-five point four treats expected output as testable only when owners and dates are recorded.
-
-For section twenty-five point four, fixtures cannot be widened by a verbal aside from a manager.
-
-Section twenty-five point four fails closed if offline runs evidence is missing rather than guessing.
 
 ### 25.5 No production
 
 Live TRB scanning fails the lab.
 
-Section twenty-five point five develops laboratory with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-five point five, offline runs stay explicit in the ticket before the window opens.
-
-Section twenty-five point five treats expected output as testable only when owners and dates are recorded.
-
-For section twenty-five point five, fixtures cannot be widened by a verbal aside from a manager.
-
-Section twenty-five point five fails closed if offline runs evidence is missing rather than guessing.
-
 ### 25.6 Sign-off
 
 Supervisor signs on discipline, not novelty.
-
-Section twenty-five point six develops laboratory with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-five point six, offline runs stay explicit in the ticket before the window opens.
-
-Section twenty-five point six treats expected output as testable only when owners and dates are recorded.
-
-For section twenty-five point six, fixtures cannot be widened by a verbal aside from a manager.
-
-Section twenty-five point six fails closed if offline runs evidence is missing rather than guessing.
 
 ### 25.7 25.7 Applied note
 
 Lab I planted faults include a scope file with SWIFT removed from exclusions. Learners who do not notice fail. Sam failed that variant once as a student and now writes exclusions first every time.
 
-Section twenty-five point seven develops laboratory with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-five point seven, offline runs stay explicit in the ticket before the window opens.
-
-Section twenty-five point seven treats expected output as testable only when owners and dates are recorded.
-
 ### 25.8 25.8 Notebook hashes
 
 Lab notebooks include hashes of the lab scripts used. Version skew is a common excuse Sam removes by pinning hashes.
-
-Section twenty-five point eight develops laboratory with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-five point eight, offline runs stay explicit in the ticket before the window opens.
-
-Section twenty-five point eight treats expected output as testable only when owners and dates are recorded.
-
-For section twenty-five point eight, fixtures cannot be widened by a verbal aside from a manager.
 
 ### 25.9 25.9 Peer SWIFT trap
 
 The planted scope variant is rotated so word cannot spread between sittings. Sam keeps three variants.
 
-Section twenty-five point nine develops laboratory with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-five point nine, offline runs stay explicit in the ticket before the window opens.
-
-Section twenty-five point nine treats expected output as testable only when owners and dates are recorded.
-
-For section twenty-five point nine, fixtures cannot be widened by a verbal aside from a manager.
-
-Section twenty-five point nine fails closed if offline runs evidence is missing rather than guessing.
-
 ### 25.10 25.11 Scene
 
 Lab I variant B hides an exclusion by renaming SWIFT to "pay-gw-01". Learners who only string-search "SWIFT" fail. Sam teaches exclusion by asset id, not by marketing name.
-
-Section twenty-five point one zero develops laboratory with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-five point one zero, offline runs stay explicit in the ticket before the window opens.
-
-Section twenty-five point one zero treats expected output as testable only when owners and dates are recorded.
-
-For section twenty-five point one zero, fixtures cannot be widened by a verbal aside from a manager.
 
 ### 25.11 25.12 Extension
 
 Variant C uses an exclusion listed only in an appendix table. Learners who skip appendices fail. Sam loves appendix discipline.
 
-Section twenty-five point one one develops laboratory with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-five point one one, offline runs stay explicit in the ticket before the window opens.
-
-Section twenty-five point one one treats expected output as testable only when owners and dates are recorded.
-
-For section twenty-five point one one, fixtures cannot be widened by a verbal aside from a manager.
-
 ### 25.12 25.14 Note 11
 
 Asset-id exclusions are printed on the lab desk laminated card.
-
-Section twenty-five point one two develops laboratory with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-five point one two, offline runs stay explicit in the ticket before the window opens.
-
-Section twenty-five point one two treats expected output as testable only when owners and dates are recorded.
-
-For section twenty-five point one two, fixtures cannot be widened by a verbal aside from a manager.
-
-Section twenty-five point one two fails closed if offline runs evidence is missing rather than guessing.
 
 ### 25.13 25.16 Pad
 
 Laminated cards are versioned; old cards are hole-punched as void.
 
-Section twenty-five point one three develops laboratory with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-five point one three, offline runs stay explicit in the ticket before the window opens.
-
-Section twenty-five point one three treats expected output as testable only when owners and dates are recorded.
-
-For section twenty-five point one three, fixtures cannot be widened by a verbal aside from a manager.
-
-Section twenty-five point one three fails closed if offline runs evidence is missing rather than guessing.
-
 ### 25.14 25.18 Final
 
 Laboratory I briefings show a failed notebook from a prior year (with permission) where hashing was skipped. Seeing a real fail is more persuasive than a rubric bullet. Sam thanks the alumnus who allowed the anonymised share.
-
-Section twenty-five point one four develops laboratory with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-five point one four, offline runs stay explicit in the ticket before the window opens.
-
-Section twenty-five point one four treats expected output as testable only when owners and dates are recorded.
 
 ### Worked example (synthetic TRB)
 
@@ -4340,185 +2202,57 @@ You will (1) chain findings ethically; (2) stop at minimum proof; (3) document c
 
 Only inside ROE; stop at impact proof.
 
-Section twenty-six point one develops methods II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-six point one, retests stay explicit in the ticket before the window opens.
-
-Section twenty-six point one treats templates as testable only when owners and dates are recorded.
-
-For section twenty-six point one, ranking cannot be widened by a verbal aside from a manager.
-
-Section twenty-six point one fails closed if retests evidence is missing rather than guessing.
-
 ### 26.2 Minimum proof
 
-No extra pivoting \"for fun\".
-
-Section twenty-six point two develops methods II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-six point two, retests stay explicit in the ticket before the window opens.
-
-Section twenty-six point two treats templates as testable only when owners and dates are recorded.
-
-For section twenty-six point two, ranking cannot be widened by a verbal aside from a manager.
-
-Section twenty-six point two fails closed if retests evidence is missing rather than guessing.
+No extra pivoting "for fun".
 
 ### 26.3 Documentation
 
 Chain diagram in appendix with times.
 
-Section twenty-six point three develops methods II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-six point three, retests stay explicit in the ticket before the window opens.
-
-Section twenty-six point three treats templates as testable only when owners and dates are recorded.
-
-For section twenty-six point three, ranking cannot be widened by a verbal aside from a manager.
-
-Section twenty-six point three fails closed if retests evidence is missing rather than guessing.
-
 ### 26.4 Detection goals
 
 Note whether SOC saw stages — purple synergy.
-
-Section twenty-six point four develops methods II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-six point four, retests stay explicit in the ticket before the window opens.
-
-Section twenty-six point four treats templates as testable only when owners and dates are recorded.
-
-For section twenty-six point four, ranking cannot be widened by a verbal aside from a manager.
-
-Section twenty-six point four fails closed if retests evidence is missing rather than guessing.
 
 ### 26.5 Payment adjacency
 
 Extra approvals before anything payment-near.
 
-Section twenty-six point five develops methods II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-six point five, retests stay explicit in the ticket before the window opens.
-
-Section twenty-six point five treats templates as testable only when owners and dates are recorded.
-
-For section twenty-six point five, ranking cannot be widened by a verbal aside from a manager.
-
-Section twenty-six point five fails closed if retests evidence is missing rather than guessing.
-
 ### 26.6 No exploit kit
 
 Course still provides no exploit development.
-
-Section twenty-six point six develops methods II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-six point six, retests stay explicit in the ticket before the window opens.
-
-Section twenty-six point six treats templates as testable only when owners and dates are recorded.
-
-For section twenty-six point six, ranking cannot be widened by a verbal aside from a manager.
-
-Section twenty-six point six fails closed if retests evidence is missing rather than guessing.
 
 ### 26.7 26.7 Applied note
 
 Chain diagrams use the same asset ids as FindingsDesk. Freehand hostnames caused a broken link in an appendix once; ids made the appendix mechanically checkable.
 
-Section twenty-six point seven develops methods II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-six point seven, retests stay explicit in the ticket before the window opens.
-
-Section twenty-six point seven treats templates as testable only when owners and dates are recorded.
-
-For section twenty-six point seven, ranking cannot be widened by a verbal aside from a manager.
-
 ### 26.8 26.8 Impact catalogue
 
 Allowed impact proofs for chains are catalogued (cross-user read, config change). "Domain admin" is not an allowed classroom impact at TRB.
-
-Section twenty-six point eight develops methods II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-six point eight, retests stay explicit in the ticket before the window opens.
-
-Section twenty-six point eight treats templates as testable only when owners and dates are recorded.
-
-For section twenty-six point eight, ranking cannot be widened by a verbal aside from a manager.
 
 ### 26.9 26.9 Stop-on-impact banner
 
 Method cards show a banner "stop when impact proven". Sam measures average steps after impact; fewer is better.
 
-Section twenty-six point nine develops methods II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-six point nine, retests stay explicit in the ticket before the window opens.
-
-Section twenty-six point nine treats templates as testable only when owners and dates are recorded.
-
-For section twenty-six point nine, ranking cannot be widened by a verbal aside from a manager.
-
-Section twenty-six point nine fails closed if retests evidence is missing rather than guessing.
-
 ### 26.10 26.11 Scene
 
 After impact proof on cross-user read, Sam's next action is stop, not pivot to admin. His chain appendix's last box is green "STOP — impact shown". Juniors copy the box into their cards.
-
-Section twenty-six point one zero develops methods II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-six point one zero, retests stay explicit in the ticket before the window opens.
-
-Section twenty-six point one zero treats templates as testable only when owners and dates are recorded.
 
 ### 26.11 26.12 Extension
 
 Impact catalogue forbids ransomware simulation on bank networks in coursework. Someone always asks; the catalogue answers before Sam must.
 
-Section twenty-six point one one develops methods II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-six point one one, retests stay explicit in the ticket before the window opens.
-
-Section twenty-six point one one treats templates as testable only when owners and dates are recorded.
-
-For section twenty-six point one one, ranking cannot be widened by a verbal aside from a manager.
-
 ### 26.12 26.14 Note 11
 
 STOP boxes are green on purpose — restraint is success, not failure.
-
-Section twenty-six point one two develops methods II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-six point one two, retests stay explicit in the ticket before the window opens.
-
-Section twenty-six point one two treats templates as testable only when owners and dates are recorded.
-
-For section twenty-six point one two, ranking cannot be widened by a verbal aside from a manager.
-
-Section twenty-six point one two fails closed if retests evidence is missing rather than guessing.
 
 ### 26.13 26.16 Pad
 
 Green STOP boxes are stickers juniors put on printed cards. Culture is tactile.
 
-Section twenty-six point one three develops methods II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-six point one three, retests stay explicit in the ticket before the window opens.
-
-Section twenty-six point one three treats templates as testable only when owners and dates are recorded.
-
-For section twenty-six point one three, ranking cannot be widened by a verbal aside from a manager.
-
-Section twenty-six point one three fails closed if retests evidence is missing rather than guessing.
-
 ### 26.14 26.18 Final
 
 Chain ethics posters hang in the jump room: "Impact then stop". Visitors sometimes laugh; operators do not. Sam watches new contractors read the poster before their first chain.
-
-Section twenty-six point one four develops methods II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-six point one four, retests stay explicit in the ticket before the window opens.
-
-Section twenty-six point one four treats templates as testable only when owners and dates are recorded.
-
-For section twenty-six point one four, ranking cannot be widened by a verbal aside from a manager.
 
 ### Worked example (synthetic TRB)
 
@@ -4556,31 +2290,9 @@ You will (1) plan retests; (2) read coverage labs; (3) close only with evidence.
 
 Same methods, agreed window.
 
-Section twenty-seven point one develops verification with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-seven point one, dry-runs stay explicit in the ticket before the window opens.
-
-Section twenty-seven point one treats imports as testable only when owners and dates are recorded.
-
-For section twenty-seven point one, approvers cannot be widened by a verbal aside from a manager.
-
-Section twenty-seven point one fails closed if dry-runs evidence is missing rather than guessing.
-
-Under section twenty-seven point one, peers skim the verification note in two minutes before write mode.
-
 ### 27.2 Coverage lab
 
 lab_coverage flags T1190 GAP.
-
-Section twenty-seven point two develops verification with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-seven point two, dry-runs stay explicit in the ticket before the window opens.
-
-Section twenty-seven point two treats imports as testable only when owners and dates are recorded.
-
-For section twenty-seven point two, approvers cannot be widened by a verbal aside from a manager.
-
-Section twenty-seven point two fails closed if dry-runs evidence is missing rather than guessing.
 
 ```python
 """Lab 27: summarise synthetic purple-team results per ATT&CK technique."""
@@ -4603,161 +2315,49 @@ T1566 detected 1/2 ok
 
 FIXED with evidence or accepted risk signed.
 
-Section twenty-seven point three develops verification with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-seven point three, dry-runs stay explicit in the ticket before the window opens.
-
-Section twenty-seven point three treats imports as testable only when owners and dates are recorded.
-
-For section twenty-seven point three, approvers cannot be widened by a verbal aside from a manager.
-
-Section twenty-seven point three fails closed if dry-runs evidence is missing rather than guessing.
-
 ### 27.4 Partial
 
 STILL OPEN keeps ticket alive.
-
-Section twenty-seven point four develops verification with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-seven point four, dry-runs stay explicit in the ticket before the window opens.
-
-Section twenty-seven point four treats imports as testable only when owners and dates are recorded.
-
-For section twenty-seven point four, approvers cannot be widened by a verbal aside from a manager.
-
-Section twenty-seven point four fails closed if dry-runs evidence is missing rather than guessing.
-
-Under section twenty-seven point four, peers skim the verification note in two minutes before write mode.
 
 ### 27.5 Scope freeze
 
 No new hunt on retest day.
 
-Section twenty-seven point five develops verification with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-seven point five, dry-runs stay explicit in the ticket before the window opens.
-
-Section twenty-seven point five treats imports as testable only when owners and dates are recorded.
-
-For section twenty-seven point five, approvers cannot be widened by a verbal aside from a manager.
-
-Section twenty-seven point five fails closed if dry-runs evidence is missing rather than guessing.
-
 ### 27.6 Communicate
 
 Same-day owner note.
-
-Section twenty-seven point six develops verification with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-seven point six, dry-runs stay explicit in the ticket before the window opens.
-
-Section twenty-seven point six treats imports as testable only when owners and dates are recorded.
-
-For section twenty-seven point six, approvers cannot be widened by a verbal aside from a manager.
-
-Section twenty-seven point six fails closed if dry-runs evidence is missing rather than guessing.
-
-Under section twenty-seven point six, peers skim the verification note in two minutes before write mode.
 
 ### 27.7 27.7 Applied note
 
 GAP stories offered to SOC include log source, technique and a sample detection idea — not a demand to "buy a tool". Sam's T1190 note pointed at WAF and origin logs already licensed.
 
-Section twenty-seven point seven develops verification with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-seven point seven, dry-runs stay explicit in the ticket before the window opens.
-
-Section twenty-seven point seven treats imports as testable only when owners and dates are recorded.
-
-For section twenty-seven point seven, approvers cannot be widened by a verbal aside from a manager.
-
 ### 27.8 27.8 Retest calendar
 
 Retest windows are booked when findings file, not after owners panic. Sam's template suggests a date 14 days out.
-
-Section twenty-seven point eight develops verification with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-seven point eight, dry-runs stay explicit in the ticket before the window opens.
-
-Section twenty-seven point eight treats imports as testable only when owners and dates are recorded.
-
-For section twenty-seven point eight, approvers cannot be widened by a verbal aside from a manager.
-
-Section twenty-seven point eight fails closed if dry-runs evidence is missing rather than guessing.
 
 ### 27.9 27.9 GAP to backlog
 
 GAP rows create detection backlog items with technique ids. PulseMap links to those items.
 
-Section twenty-seven point nine develops verification with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-seven point nine, dry-runs stay explicit in the ticket before the window opens.
-
-Section twenty-seven point nine treats imports as testable only when owners and dates are recorded.
-
-For section twenty-seven point nine, approvers cannot be widened by a verbal aside from a manager.
-
-Section twenty-seven point nine fails closed if dry-runs evidence is missing rather than guessing.
-
 ### 27.10 27.11 Scene
 
 T1190 GAP with n=2 becomes a detection spike story: "instrument WAF bypass logs". Two weeks later SOC has a rule in staging. Small n still can drive engineering if framed as a gap, not a doom claim.
-
-Section twenty-seven point one zero develops verification with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-seven point one zero, dry-runs stay explicit in the ticket before the window opens.
-
-Section twenty-seven point one zero treats imports as testable only when owners and dates are recorded.
 
 ### 27.11 27.12 Extension
 
 Retest calendar invites include the method card hash so owners prepare the same build. Version skew is the enemy of honest FIXED.
 
-Section twenty-seven point one one develops verification with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-seven point one one, dry-runs stay explicit in the ticket before the window opens.
-
-Section twenty-seven point one one treats imports as testable only when owners and dates are recorded.
-
-For section twenty-seven point one one, approvers cannot be widened by a verbal aside from a manager.
-
 ### 27.12 27.14 Note 11
 
 Detection backlog items link both ways to PulseMap GAP rows.
-
-Section twenty-seven point one two develops verification with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-seven point one two, dry-runs stay explicit in the ticket before the window opens.
-
-Section twenty-seven point one two treats imports as testable only when owners and dates are recorded.
-
-For section twenty-seven point one two, approvers cannot be widened by a verbal aside from a manager.
-
-Section twenty-seven point one two fails closed if dry-runs evidence is missing rather than guessing.
 
 ### 27.13 27.16 Pad
 
 Method card hashes in invites are SHA-256 prefixes of eight hex chars — enough to spot skew.
 
-Section twenty-seven point one three develops verification with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-seven point one three, dry-runs stay explicit in the ticket before the window opens.
-
-Section twenty-seven point one three treats imports as testable only when owners and dates are recorded.
-
-For section twenty-seven point one three, approvers cannot be widened by a verbal aside from a manager.
-
 ### 27.14 27.18 Final
 
 Detection backlog grooming includes PulseMap once a sprint. GAP rows without backlog ids are defects in the grooming, not in the SOC. Sam files those defects against the platform process.
-
-Section twenty-seven point one four develops verification with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-seven point one four, dry-runs stay explicit in the ticket before the window opens.
-
-Section twenty-seven point one four treats imports as testable only when owners and dates are recorded.
-
-For section twenty-seven point one four, approvers cannot be widened by a verbal aside from a manager.
 
 ### Worked example (synthetic TRB)
 
@@ -4793,191 +2393,59 @@ You will (1) classify tool/process/people causes; (2) run blameless reviews; (3)
 
 ### 28.1 Causes
 
-Tool misconfig, process gaps, unclear ROE, skill gaps — rarely \"bad people\".
-
-Section twenty-eight point one develops failure with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-eight point one, stop trees stay explicit in the ticket before the window opens.
-
-Section twenty-eight point one treats outages as testable only when owners and dates are recorded.
-
-For section twenty-eight point one, near-misses cannot be widened by a verbal aside from a manager.
-
-Section twenty-eight point one fails closed if stop trees evidence is missing rather than guessing.
+Tool misconfig, process gaps, unclear ROE, skill gaps — rarely "bad people".
 
 ### 28.2 Timeline
 
 Facts first.
 
-Section twenty-eight point two develops failure with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-eight point two, stop trees stay explicit in the ticket before the window opens.
-
-Section twenty-eight point two treats outages as testable only when owners and dates are recorded.
-
-For section twenty-eight point two, near-misses cannot be widened by a verbal aside from a manager.
-
-Section twenty-eight point two fails closed if stop trees evidence is missing rather than guessing.
-
-Under section twenty-eight point two, peers skim the failure note in two minutes before write mode.
-
 ### 28.3 Blameless
 
 Seek systemic fixes.
-
-Section twenty-eight point three develops failure with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-eight point three, stop trees stay explicit in the ticket before the window opens.
-
-Section twenty-eight point three treats outages as testable only when owners and dates are recorded.
-
-For section twenty-eight point three, near-misses cannot be widened by a verbal aside from a manager.
-
-Section twenty-eight point three fails closed if stop trees evidence is missing rather than guessing.
-
-Under section twenty-eight point three, peers skim the failure note in two minutes before write mode.
 
 ### 28.4 Drift vs attack
 
 Decide with evidence.
 
-Section twenty-eight point four develops failure with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-eight point four, stop trees stay explicit in the ticket before the window opens.
-
-Section twenty-eight point four treats outages as testable only when owners and dates are recorded.
-
-For section twenty-eight point four, near-misses cannot be widened by a verbal aside from a manager.
-
-Section twenty-eight point four fails closed if stop trees evidence is missing rather than guessing.
-
-Under section twenty-eight point four, peers skim the failure note in two minutes before write mode.
-
 ### 28.5 Actions
 
 Owner + date per cause.
-
-Section twenty-eight point five develops failure with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-eight point five, stop trees stay explicit in the ticket before the window opens.
-
-Section twenty-eight point five treats outages as testable only when owners and dates are recorded.
-
-For section twenty-eight point five, near-misses cannot be widened by a verbal aside from a manager.
-
-Section twenty-eight point five fails closed if stop trees evidence is missing rather than guessing.
 
 ### 28.6 Platform
 
 TrackScope bugs get engineering tickets too.
 
-Section twenty-eight point six develops failure with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-eight point six, stop trees stay explicit in the ticket before the window opens.
-
-Section twenty-eight point six treats outages as testable only when owners and dates are recorded.
-
-For section twenty-eight point six, near-misses cannot be widened by a verbal aside from a manager.
-
-Section twenty-eight point six fails closed if stop trees evidence is missing rather than guessing.
-
 ### 28.7 28.7 Applied note
 
 Failure reviews invite the platform on-call even when the mistake looks human. Often the UI invited the error. Sam's TrackScope copy change after one review cut a class of scope mis-clicks.
-
-Section twenty-eight point seven develops failure with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-eight point seven, stop trees stay explicit in the ticket before the window opens.
-
-Section twenty-eight point seven treats outages as testable only when owners and dates are recorded.
-
-For section twenty-eight point seven, near-misses cannot be widened by a verbal aside from a manager.
 
 ### 28.8 28.8 UI affordances
 
 If three analysts make the same TrackScope mistake, UX changes before more training. Sam files UX tickets with screenshots of the confusing control.
 
-Section twenty-eight point eight develops failure with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-eight point eight, stop trees stay explicit in the ticket before the window opens.
-
-Section twenty-eight point eight treats outages as testable only when owners and dates are recorded.
-
-For section twenty-eight point eight, near-misses cannot be widened by a verbal aside from a manager.
-
 ### 28.9 28.9 Five whys cap
 
 Reviews stop at five whys or first actionable systemic fix. Endless why theatre is cut.
-
-Section twenty-eight point nine develops failure with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-eight point nine, stop trees stay explicit in the ticket before the window opens.
-
-Section twenty-eight point nine treats outages as testable only when owners and dates are recorded.
-
-For section twenty-eight point nine, near-misses cannot be widened by a verbal aside from a manager.
-
-Section twenty-eight point nine fails closed if stop trees evidence is missing rather than guessing.
 
 ### 28.10 28.11 Scene
 
 Five whys on the stale inventory stop at "CMDB API had no schema version field". Action: add schema version and a TrackScope checksum. Training the intern who imported the stale file is not the primary action.
 
-Section twenty-eight point one zero develops failure with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-eight point one zero, stop trees stay explicit in the ticket before the window opens.
-
-Section twenty-eight point one zero treats outages as testable only when owners and dates are recorded.
-
 ### 28.11 28.12 Extension
 
 UX ticket from failure review changed a dropdown default from "allow" to "deny". Mis-clicks dropped the following month. Defaults are destiny.
-
-Section twenty-eight point one one develops failure with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-eight point one one, stop trees stay explicit in the ticket before the window opens.
-
-Section twenty-eight point one one treats outages as testable only when owners and dates are recorded.
-
-For section twenty-eight point one one, near-misses cannot be widened by a verbal aside from a manager.
 
 ### 28.12 28.14 Note 11
 
 UX tickets require a before/after screenshot of the control that confused people.
 
-Section twenty-eight point one two develops failure with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-eight point one two, stop trees stay explicit in the ticket before the window opens.
-
-Section twenty-eight point one two treats outages as testable only when owners and dates are recorded.
-
-For section twenty-eight point one two, near-misses cannot be widened by a verbal aside from a manager.
-
-Section twenty-eight point one two fails closed if stop trees evidence is missing rather than guessing.
-
 ### 28.13 28.16 Pad
 
 Before/after UX screenshots live in the same vault path as engagement evidence with a ux- prefix.
 
-Section twenty-eight point one three develops failure with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-eight point one three, stop trees stay explicit in the ticket before the window opens.
-
-Section twenty-eight point one three treats outages as testable only when owners and dates are recorded.
-
-For section twenty-eight point one three, near-misses cannot be widened by a verbal aside from a manager.
-
 ### 28.14 28.18 Final
 
 Failure review templates force a "platform or process change?" checkbox. If neither is checked, the review is incomplete. Training-only outcomes need explicit justification.
-
-Section twenty-eight point one four develops failure with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-eight point one four, stop trees stay explicit in the ticket before the window opens.
-
-Section twenty-eight point one four treats outages as testable only when owners and dates are recorded.
-
-For section twenty-eight point one four, near-misses cannot be widened by a verbal aside from a manager.
 
 ### Worked example (synthetic TRB)
 
@@ -5015,217 +2483,65 @@ You will (1) run day-of workflow; (2) coordinate SOC; (3) hand over between shif
 
 Confirm ROE, contacts, window.
 
-Section twenty-nine point one develops operations with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-nine point one, handoffs stay explicit in the ticket before the window opens.
-
-Section twenty-nine point one treats paging as testable only when owners and dates are recorded.
-
-For section twenty-nine point one, expiries cannot be widened by a verbal aside from a manager.
-
-Section twenty-nine point one fails closed if handoffs evidence is missing rather than guessing.
-
-Under section twenty-nine point one, peers skim the operations note in two minutes before write mode.
-
 ### 29.2 Logging
 
 Contemporaneous activity log.
-
-Section twenty-nine point two develops operations with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-nine point two, handoffs stay explicit in the ticket before the window opens.
-
-Section twenty-nine point two treats paging as testable only when owners and dates are recorded.
-
-For section twenty-nine point two, expiries cannot be widened by a verbal aside from a manager.
-
-Section twenty-nine point two fails closed if handoffs evidence is missing rather than guessing.
-
-Under section twenty-nine point two, peers skim the operations note in two minutes before write mode.
 
 ### 29.3 SOC
 
 Start/stop messages; expect alert noise coordination.
 
-Section twenty-nine point three develops operations with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-nine point three, handoffs stay explicit in the ticket before the window opens.
-
-Section twenty-nine point three treats paging as testable only when owners and dates are recorded.
-
-For section twenty-nine point three, expiries cannot be widened by a verbal aside from a manager.
-
-Section twenty-nine point three fails closed if handoffs evidence is missing rather than guessing.
-
 ### 29.4 Handover
 
 Log + vault beats verbal notes.
-
-Section twenty-nine point four develops operations with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-nine point four, handoffs stay explicit in the ticket before the window opens.
-
-Section twenty-nine point four treats paging as testable only when owners and dates are recorded.
-
-For section twenty-nine point four, expiries cannot be widened by a verbal aside from a manager.
-
-Section twenty-nine point four fails closed if handoffs evidence is missing rather than guessing.
-
-Under section twenty-nine point four, peers skim the operations note in two minutes before write mode.
 
 ### 29.5 End
 
 Hard stop at window end.
 
-Section twenty-nine point five develops operations with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-nine point five, handoffs stay explicit in the ticket before the window opens.
-
-Section twenty-nine point five treats paging as testable only when owners and dates are recorded.
-
-For section twenty-nine point five, expiries cannot be widened by a verbal aside from a manager.
-
-Section twenty-nine point five fails closed if handoffs evidence is missing rather than guessing.
-
-Under section twenty-nine point five, peers skim the operations note in two minutes before write mode.
-
 ### 29.6 On-call hygiene
 
 Sleep and spare credentials matter on multi-day tests.
-
-Section twenty-nine point six develops operations with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-nine point six, handoffs stay explicit in the ticket before the window opens.
-
-Section twenty-nine point six treats paging as testable only when owners and dates are recorded.
-
-For section twenty-nine point six, expiries cannot be widened by a verbal aside from a manager.
-
-Section twenty-nine point six fails closed if handoffs evidence is missing rather than guessing.
 
 ### 29.7 29.7 Applied note
 
 Hard-stop drills include pulling the network cable on the jump host at T-minus zero. Sam's muscle memory is to stop typing before arguing for five more minutes. Arguments happen in the next ROE, not in overtime.
 
-Section twenty-nine point seven develops operations with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-nine point seven, handoffs stay explicit in the ticket before the window opens.
-
-Section twenty-nine point seven treats paging as testable only when owners and dates are recorded.
-
 ### 29.8 29.8 Channel etiquette
 
 Engagement chat forbids joke screenshots of customer data. Sam moderates with a pinned rule and one warning.
-
-Section twenty-nine point eight develops operations with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-nine point eight, handoffs stay explicit in the ticket before the window opens.
-
-Section twenty-nine point eight treats paging as testable only when owners and dates are recorded.
-
-For section twenty-nine point eight, expiries cannot be widened by a verbal aside from a manager.
-
-Section twenty-nine point eight fails closed if handoffs evidence is missing rather than guessing.
 
 ### 29.9 29.9 Hours counter
 
 A bot announces hours worked in-window. Crossing the max posts a stop reminder.
 
-Section twenty-nine point nine develops operations with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-nine point nine, handoffs stay explicit in the ticket before the window opens.
-
-Section twenty-nine point nine treats paging as testable only when owners and dates are recorded.
-
-For section twenty-nine point nine, expiries cannot be widened by a verbal aside from a manager.
-
-Section twenty-nine point nine fails closed if handoffs evidence is missing rather than guessing.
-
 ### 29.10 29.11 Scene
 
 At 16:55 Sam's unfinished card is written as "next window". At 17:00 the cable-pull drill begins. He has already hit save. The drill is boring when preparation is good.
-
-Section twenty-nine point one zero develops operations with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-nine point one zero, handoffs stay explicit in the ticket before the window opens.
-
-Section twenty-nine point one zero treats paging as testable only when owners and dates are recorded.
-
-For section twenty-nine point one zero, expiries cannot be widened by a verbal aside from a manager.
 
 ### 29.11 29.12 Extension
 
 Hours counter at 9.5 hours posts "wind down". At 10 it posts "hard stop approaching". Sam winds down. Machismo is out of policy.
 
-Section twenty-nine point one one develops operations with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-nine point one one, handoffs stay explicit in the ticket before the window opens.
-
-Section twenty-nine point one one treats paging as testable only when owners and dates are recorded.
-
-For section twenty-nine point one one, expiries cannot be widened by a verbal aside from a manager.
-
 ### 29.12 29.14 Note 11
 
 Wind-down posts include a link to the unfinished-card template.
-
-Section twenty-nine point one two develops operations with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-nine point one two, handoffs stay explicit in the ticket before the window opens.
-
-Section twenty-nine point one two treats paging as testable only when owners and dates are recorded.
-
-For section twenty-nine point one two, expiries cannot be widened by a verbal aside from a manager.
-
-Section twenty-nine point one two fails closed if handoffs evidence is missing rather than guessing.
 
 ### 29.13 29.16 Pad
 
 Unfinished-card template includes ROE id so next window inherits authorization context.
 
-Section twenty-nine point one three develops operations with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-nine point one three, handoffs stay explicit in the ticket before the window opens.
-
-Section twenty-nine point one three treats paging as testable only when owners and dates are recorded.
-
-For section twenty-nine point one three, expiries cannot be widened by a verbal aside from a manager.
-
-Section twenty-nine point one three fails closed if handoffs evidence is missing rather than guessing.
-
 ### 29.14 29.18 Final
 
 Shift handovers use a five-line paste template. Sam rejects freeform novels. The next operator should be productive in three minutes, not thirty.
-
-Section twenty-nine point one four develops operations with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-nine point one four, handoffs stay explicit in the ticket before the window opens.
-
-Section twenty-nine point one four treats paging as testable only when owners and dates are recorded.
-
-For section twenty-nine point one four, expiries cannot be widened by a verbal aside from a manager.
 
 ### 29.15 29.19 Boost
 
 Hard-stop culture includes thanking people who stop early with unfinished work. Sam's retrospective shout-outs name the unfinished cards that respected the clock. Overtime heroes are coached, not praised. The difference shows up in fewer emergency change tickets after test weeks and in SOC analysts who still trust the engagement calendar.
 
-Section twenty-nine point one five develops operations with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-nine point one five, handoffs stay explicit in the ticket before the window opens.
-
 ### 29.16 29.20 Extra
 
 Shout-outs for early stops appear in the monthly ops newsletter.
-
-Section twenty-nine point one six develops operations with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section twenty-nine point one six, handoffs stay explicit in the ticket before the window opens.
-
-Section twenty-nine point one six treats paging as testable only when owners and dates are recorded.
-
-For section twenty-nine point one six, expiries cannot be widened by a verbal aside from a manager.
-
-Section twenty-nine point one six fails closed if handoffs evidence is missing rather than guessing.
 
 ### Worked example (synthetic TRB)
 
@@ -5263,29 +2579,9 @@ You will (1) run ranking and retest labs; (2) pass a stop drill; (3) file a mini
 
 lab_rank + lab_retest + one-page report.
 
-Section thirty point one develops laboratory II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty point one, tabletops stay explicit in the ticket before the window opens.
-
-Section thirty point one treats drills as testable only when owners and dates are recorded.
-
-For section thirty point one, clocks cannot be widened by a verbal aside from a manager.
-
-Section thirty point one fails closed if tabletops evidence is missing rather than guessing.
-
 ### 30.2 Stop drill
 
 Compliant message within two minutes.
-
-Section thirty point two develops laboratory II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty point two, tabletops stay explicit in the ticket before the window opens.
-
-Section thirty point two treats drills as testable only when owners and dates are recorded.
-
-For section thirty point two, clocks cannot be widened by a verbal aside from a manager.
-
-Section thirty point two fails closed if tabletops evidence is missing rather than guessing.
 
 ```python
 """Lab 30: compare synthetic before/after statuses for a TRB retest."""
@@ -5307,179 +2603,53 @@ fixed 2 of 3
 
 Leave STILL OPEN open.
 
-Section thirty point three develops laboratory II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty point three, tabletops stay explicit in the ticket before the window opens.
-
-Section thirty point three treats drills as testable only when owners and dates are recorded.
-
-For section thirty point three, clocks cannot be widened by a verbal aside from a manager.
-
-Section thirty point three fails closed if tabletops evidence is missing rather than guessing.
-
-Under section thirty point three, peers skim the laboratory II note in two minutes before write mode.
-
 ### 30.4 Peer pressure
 
 Refuse mismatched evidence.
-
-Section thirty point four develops laboratory II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty point four, tabletops stay explicit in the ticket before the window opens.
-
-Section thirty point four treats drills as testable only when owners and dates are recorded.
-
-For section thirty point four, clocks cannot be widened by a verbal aside from a manager.
-
-Section thirty point four fails closed if tabletops evidence is missing rather than guessing.
-
-Under section thirty point four, peers skim the laboratory II note in two minutes before write mode.
 
 ### 30.5 Time box
 
 Two hours.
 
-Section thirty point five develops laboratory II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty point five, tabletops stay explicit in the ticket before the window opens.
-
-Section thirty point five treats drills as testable only when owners and dates are recorded.
-
-For section thirty point five, clocks cannot be widened by a verbal aside from a manager.
-
-Section thirty point five fails closed if tabletops evidence is missing rather than guessing.
-
-Under section thirty point five, peers skim the laboratory II note in two minutes before write mode.
-
 ### 30.6 Pass bar
 
 Stop + honesty + coherent report.
-
-Section thirty point six develops laboratory II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty point six, tabletops stay explicit in the ticket before the window opens.
-
-Section thirty point six treats drills as testable only when owners and dates are recorded.
-
-For section thirty point six, clocks cannot be widened by a verbal aside from a manager.
-
-Section thirty point six fails closed if tabletops evidence is missing rather than guessing.
-
-Under section thirty point six, peers skim the laboratory II note in two minutes before write mode.
 
 ### 30.7 30.7 Applied note
 
 Lab II peer pressure scripts include "the hash is only off by one character". Sam's refused answer is always re-capture. Close-enough hashes are how evidence loses court and regulator trust.
 
-Section thirty point seven develops laboratory II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty point seven, tabletops stay explicit in the ticket before the window opens.
-
-Section thirty point seven treats drills as testable only when owners and dates are recorded.
-
-For section thirty point seven, clocks cannot be widened by a verbal aside from a manager.
-
 ### 30.8 30.8 Report skeleton
 
 Lab II reports use a skeleton with REQUIRED markers. Missing STILL OPEN explanation fails the automated check Sam wrote.
-
-Section thirty point eight develops laboratory II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty point eight, tabletops stay explicit in the ticket before the window opens.
-
-Section thirty point eight treats drills as testable only when owners and dates are recorded.
-
-For section thirty point eight, clocks cannot be widened by a verbal aside from a manager.
 
 ### 30.9 30.9 Skeleton CI
 
 PRs of Lab II reports fail CI if REQUIRED sections are empty. Sam likes mechanical honesty.
 
-Section thirty point nine develops laboratory II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty point nine, tabletops stay explicit in the ticket before the window opens.
-
-Section thirty point nine treats drills as testable only when owners and dates are recorded.
-
-For section thirty point nine, clocks cannot be widened by a verbal aside from a manager.
-
-Section thirty point nine fails closed if tabletops evidence is missing rather than guessing.
-
 ### 30.10 30.11 Scene
 
 Lab II CI rejects a report that marks F3 closed with comment "owner said so". Sam's error message quotes the course rule. Mechanical enforcement beats sermonising.
-
-Section thirty point one zero develops laboratory II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty point one zero, tabletops stay explicit in the ticket before the window opens.
-
-Section thirty point one zero treats drills as testable only when owners and dates are recorded.
-
-For section thirty point one zero, clocks cannot be widened by a verbal aside from a manager.
 
 ### 30.11 30.12 Extension
 
 Skeleton CI looks for the string STILL OPEN when lab_retest would show open items. Students cannot hide openness by omission.
 
-Section thirty point one one develops laboratory II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty point one one, tabletops stay explicit in the ticket before the window opens.
-
-Section thirty point one one treats drills as testable only when owners and dates are recorded.
-
-For section thirty point one one, clocks cannot be widened by a verbal aside from a manager.
-
 ### 30.12 30.14 Note 11
 
 CI message quotes the rule number from the course handbook.
-
-Section thirty point one two develops laboratory II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty point one two, tabletops stay explicit in the ticket before the window opens.
-
-Section thirty point one two treats drills as testable only when owners and dates are recorded.
-
-For section thirty point one two, clocks cannot be widened by a verbal aside from a manager.
-
-Section thirty point one two fails closed if tabletops evidence is missing rather than guessing.
 
 ### 30.13 30.16 Pad
 
 Handbook rule numbers in CI make appeals easy: cite the rule, do not argue with the bot.
 
-Section thirty point one three develops laboratory II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty point one three, tabletops stay explicit in the ticket before the window opens.
-
-Section thirty point one three treats drills as testable only when owners and dates are recorded.
-
-For section thirty point one three, clocks cannot be widened by a verbal aside from a manager.
-
 ### 30.14 30.18 Final
 
 Laboratory II debriefs vote on the best refusal of the day. The winner explains their wording. Celebrating refusal makes the next one easier.
 
-Section thirty point one four develops laboratory II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty point one four, tabletops stay explicit in the ticket before the window opens.
-
-Section thirty point one four treats drills as testable only when owners and dates are recorded.
-
-For section thirty point one four, clocks cannot be widened by a verbal aside from a manager.
-
 ### 30.15 30.20 Extra
 
 Best-refusal vote winners get to update the refusal example card.
-
-Section thirty point one five develops laboratory II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty point one five, tabletops stay explicit in the ticket before the window opens.
-
-Section thirty point one five treats drills as testable only when owners and dates are recorded.
-
-For section thirty point one five, clocks cannot be widened by a verbal aside from a manager.
-
-Section thirty point one five fails closed if tabletops evidence is missing rather than guessing.
 
 ### Worked example (synthetic TRB)
 
@@ -5517,185 +2687,57 @@ You will (1) analyse multi-finding cases; (2) prioritise under board pressure; (
 
 Ranked findings, unfinished retest, board asking to bury F3 before earnings.
 
-Section thirty-one point one develops advanced cases with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-one point one, payment paths stay explicit in the ticket before the window opens.
-
-Section thirty-one point one treats cut-sets as testable only when owners and dates are recorded.
-
-For section thirty-one point one, gateways cannot be widened by a verbal aside from a manager.
-
-Section thirty-one point one fails closed if payment paths evidence is missing rather than guessing.
-
 ### 31.2 Ethics
 
 Findings stay; management responses allowed beside them.
-
-Section thirty-one point two develops advanced cases with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-one point two, payment paths stay explicit in the ticket before the window opens.
-
-Section thirty-one point two treats cut-sets as testable only when owners and dates are recorded.
-
-For section thirty-one point two, gateways cannot be widened by a verbal aside from a manager.
-
-Section thirty-one point two fails closed if payment paths evidence is missing rather than guessing.
 
 ### 31.3 Prioritisation
 
 Payment-adjacent and unapproved ledger flows first.
 
-Section thirty-one point three develops advanced cases with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-one point three, payment paths stay explicit in the ticket before the window opens.
-
-Section thirty-one point three treats cut-sets as testable only when owners and dates are recorded.
-
-For section thirty-one point three, gateways cannot be widened by a verbal aside from a manager.
-
-Section thirty-one point three fails closed if payment paths evidence is missing rather than guessing.
-
 ### 31.4 Communication
 
 Prepare exec and engineer versions.
-
-Section thirty-one point four develops advanced cases with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-one point four, payment paths stay explicit in the ticket before the window opens.
-
-Section thirty-one point four treats cut-sets as testable only when owners and dates are recorded.
-
-For section thirty-one point four, gateways cannot be widened by a verbal aside from a manager.
-
-Section thirty-one point four fails closed if payment paths evidence is missing rather than guessing.
 
 ### 31.5 Legal
 
 Involve legal if disclosure duties may apply — Sam escalates, does not decide alone.
 
-Section thirty-one point five develops advanced cases with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-one point five, payment paths stay explicit in the ticket before the window opens.
-
-Section thirty-one point five treats cut-sets as testable only when owners and dates are recorded.
-
-For section thirty-one point five, gateways cannot be widened by a verbal aside from a manager.
-
-Section thirty-one point five fails closed if payment paths evidence is missing rather than guessing.
-
 ### 31.6 Record
 
 Keep the bury request in the engagement file.
-
-Section thirty-one point six develops advanced cases with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-one point six, payment paths stay explicit in the ticket before the window opens.
-
-Section thirty-one point six treats cut-sets as testable only when owners and dates are recorded.
-
-For section thirty-one point six, gateways cannot be widened by a verbal aside from a manager.
-
-Section thirty-one point six fails closed if payment paths evidence is missing rather than guessing.
 
 ### 31.7 31.7 Applied note
 
 Pressure emails are forwarded to the CISO alias with a short factual header. Sam does not debate earnings calendars with product managers alone. The alias reply becomes the record.
 
-Section thirty-one point seven develops advanced cases with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-one point seven, payment paths stay explicit in the ticket before the window opens.
-
-Section thirty-one point seven treats cut-sets as testable only when owners and dates are recorded.
-
-For section thirty-one point seven, gateways cannot be widened by a verbal aside from a manager.
-
 ### 31.8 31.8 Escalation SLA
 
 Pressure-to-bury emails get a same-day acknowledgment from the CISO alias even if the full reply waits. Silence looks like assent.
-
-Section thirty-one point eight develops advanced cases with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-one point eight, payment paths stay explicit in the ticket before the window opens.
-
-Section thirty-one point eight treats cut-sets as testable only when owners and dates are recorded.
-
-For section thirty-one point eight, gateways cannot be widened by a verbal aside from a manager.
 
 ### 31.9 31.9 Optics vs integrity
 
 Training slides include a past anonymised bury request and the CISO reply supporting the tester. Culture is taught with artefacts.
 
-Section thirty-one point nine develops advanced cases with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-one point nine, payment paths stay explicit in the ticket before the window opens.
-
-Section thirty-one point nine treats cut-sets as testable only when owners and dates are recorded.
-
-For section thirty-one point nine, gateways cannot be widened by a verbal aside from a manager.
-
 ### 31.10 31.11 Scene
 
 The bury-request email and CISO reply are printed (redacted) in ethics class. Students see that refusal is supported. Culture is evidence, not slogans.
-
-Section thirty-one point one zero develops advanced cases with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-one point one zero, payment paths stay explicit in the ticket before the window opens.
-
-Section thirty-one point one zero treats cut-sets as testable only when owners and dates are recorded.
-
-For section thirty-one point one zero, gateways cannot be widened by a verbal aside from a manager.
 
 ### 31.11 31.12 Extension
 
 Ethics class votes on whether they would have refused; then they read the CISO reply. Most change their vote. Artefacts teach.
 
-Section thirty-one point one one develops advanced cases with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-one point one one, payment paths stay explicit in the ticket before the window opens.
-
-Section thirty-one point one one treats cut-sets as testable only when owners and dates are recorded.
-
-For section thirty-one point one one, gateways cannot be widened by a verbal aside from a manager.
-
 ### 31.12 31.14 Note 11
 
 Redacted pressure artefacts live in the ethics folder with access logs.
-
-Section thirty-one point one two develops advanced cases with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-one point one two, payment paths stay explicit in the ticket before the window opens.
-
-Section thirty-one point one two treats cut-sets as testable only when owners and dates are recorded.
-
-For section thirty-one point one two, gateways cannot be widened by a verbal aside from a manager.
-
-Section thirty-one point one two fails closed if payment paths evidence is missing rather than guessing.
 
 ### 31.13 31.16 Pad
 
 Ethics folder access logs are reviewed termly for unexpected readers.
 
-Section thirty-one point one three develops advanced cases with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-one point one three, payment paths stay explicit in the ticket before the window opens.
-
-Section thirty-one point one three treats cut-sets as testable only when owners and dates are recorded.
-
-For section thirty-one point one three, gateways cannot be widened by a verbal aside from a manager.
-
-Section thirty-one point one three fails closed if payment paths evidence is missing rather than guessing.
-
 ### 31.14 31.18 Final
 
 CISO alias response time is measured. Sam's ethics slides include the median response time to pressure emails. Slow silence is tracked as a risk to culture.
-
-Section thirty-one point one four develops advanced cases with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-one point one four, payment paths stay explicit in the ticket before the window opens.
-
-Section thirty-one point one four treats cut-sets as testable only when owners and dates are recorded.
-
-For section thirty-one point one four, gateways cannot be widened by a verbal aside from a manager.
 
 ### Worked example (synthetic TRB)
 
@@ -5709,7 +2751,7 @@ This book grants no authority to test real banks or payment systems. Labs use do
 
 ### Exercises
 
-- **EX091 — Bury request.** Correct response to \"drop F3 until earnings\"? *Rubric:* 3 = refuse; offer management response; escalate; 2 = refuse; 1 = drop; 0 = none.
+- **EX091 — Bury request.** Correct response to "drop F3 until earnings"? *Rubric:* 3 = refuse; offer management response; escalate; 2 = refuse; 1 = drop; 0 = none.
 - **EX092 — First priority.** Which class of finding outranks verbose errors before earnings? *Rubric:* 3 = payment-adjacent / ledger flow issues; 2 = partial; 1 = banners; 0 = none.
 - **EX093 — Record.** Why record the bury request? *Rubric:* 3 = ethics/audit trail; 2 = partial; 1 = no need; 0 = none.
 
@@ -5733,189 +2775,57 @@ You will (1) work with legal, HR, SOC and developers; (2) translate findings; (3
 
 Contracts, disclosure, privacy — Sam brings facts, not legal conclusions.
 
-Section thirty-two point one develops interfaces with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-two point one, monitoring stay explicit in the ticket before the window opens.
-
-Section thirty-two point one treats IR playbooks as testable only when owners and dates are recorded.
-
-For section thirty-two point one, architecture cannot be widened by a verbal aside from a manager.
-
-Section thirty-two point one fails closed if monitoring evidence is missing rather than guessing.
-
 ### 32.2 HR
 
 Staff-affecting simulations need HR paths.
-
-Section thirty-two point two develops interfaces with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-two point two, monitoring stay explicit in the ticket before the window opens.
-
-Section thirty-two point two treats IR playbooks as testable only when owners and dates are recorded.
-
-For section thirty-two point two, architecture cannot be widened by a verbal aside from a manager.
-
-Section thirty-two point two fails closed if monitoring evidence is missing rather than guessing.
 
 ### 32.3 SOC
 
 Detection engineering consumes ATT&CK tags and timelines.
 
-Section thirty-two point three develops interfaces with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-two point three, monitoring stay explicit in the ticket before the window opens.
-
-Section thirty-two point three treats IR playbooks as testable only when owners and dates are recorded.
-
-For section thirty-two point three, architecture cannot be widened by a verbal aside from a manager.
-
-Section thirty-two point three fails closed if monitoring evidence is missing rather than guessing.
-
 ### 32.4 Developers
 
 Want reproduction and safe fix patterns.
-
-Section thirty-two point four develops interfaces with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-two point four, monitoring stay explicit in the ticket before the window opens.
-
-Section thirty-two point four treats IR playbooks as testable only when owners and dates are recorded.
-
-For section thirty-two point four, architecture cannot be widened by a verbal aside from a manager.
-
-Section thirty-two point four fails closed if monitoring evidence is missing rather than guessing.
 
 ### 32.5 Executives
 
 Want decisions and dates.
 
-Section thirty-two point five develops interfaces with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-two point five, monitoring stay explicit in the ticket before the window opens.
-
-Section thirty-two point five treats IR playbooks as testable only when owners and dates are recorded.
-
-For section thirty-two point five, architecture cannot be widened by a verbal aside from a manager.
-
-Section thirty-two point five fails closed if monitoring evidence is missing rather than guessing.
-
-Under section thirty-two point five, peers skim the interfaces note in two minutes before write mode.
-
 ### 32.6 Friction
 
 Procurement and change windows are real; plan for them.
-
-Section thirty-two point six develops interfaces with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-two point six, monitoring stay explicit in the ticket before the window opens.
-
-Section thirty-two point six treats IR playbooks as testable only when owners and dates are recorded.
-
-For section thirty-two point six, architecture cannot be widened by a verbal aside from a manager.
-
-Section thirty-two point six fails closed if monitoring evidence is missing rather than guessing.
 
 ### 32.7 32.7 Applied note
 
 Translation packets are generated from FindingsDesk fields so exec and engineer texts cannot disagree on CVSS-like scores or asset ids. Sam once found a drift of severity words between emails; templates removed it.
 
-Section thirty-two point seven develops interfaces with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-two point seven, monitoring stay explicit in the ticket before the window opens.
-
-Section thirty-two point seven treats IR playbooks as testable only when owners and dates are recorded.
-
-For section thirty-two point seven, architecture cannot be widened by a verbal aside from a manager.
-
 ### 32.8 32.8 Glossary bridge
 
 A mini glossary maps "conduit", "control", and "finding" for legal readers. Sam attaches it when legal joins late.
-
-Section thirty-two point eight develops interfaces with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-two point eight, monitoring stay explicit in the ticket before the window opens.
-
-Section thirty-two point eight treats IR playbooks as testable only when owners and dates are recorded.
-
-For section thirty-two point eight, architecture cannot be widened by a verbal aside from a manager.
-
-Section thirty-two point eight fails closed if monitoring evidence is missing rather than guessing.
 
 ### 32.9 32.9 RACI snippet
 
 Each major finding carries a tiny RACI: who fixes, who verifies, who accepts. Sam fills it in FindingsDesk fields.
 
-Section thirty-two point nine develops interfaces with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-two point nine, monitoring stay explicit in the ticket before the window opens.
-
-Section thirty-two point nine treats IR playbooks as testable only when owners and dates are recorded.
-
-For section thirty-two point nine, architecture cannot be widened by a verbal aside from a manager.
-
 ### 32.10 32.11 Scene
 
 RACI fields auto-suggest owners from the asset register. Sam still confirms with a human. Autosuggest without confirmation once mailed a finding to a former employee.
-
-Section thirty-two point one zero develops interfaces with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-two point one zero, monitoring stay explicit in the ticket before the window opens.
-
-Section thirty-two point one zero treats IR playbooks as testable only when owners and dates are recorded.
-
-For section thirty-two point one zero, architecture cannot be widened by a verbal aside from a manager.
 
 ### 32.11 32.12 Extension
 
 RACI autosuggest once chose a deactivated user; confirmation call caught it. Sam keeps the call even when busy.
 
-Section thirty-two point one one develops interfaces with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-two point one one, monitoring stay explicit in the ticket before the window opens.
-
-Section thirty-two point one one treats IR playbooks as testable only when owners and dates are recorded.
-
-For section thirty-two point one one, architecture cannot be widened by a verbal aside from a manager.
-
 ### 32.12 32.14 Note 11
 
 Confirmation calls are logged as "owner confirmed 15:04" in the ticket.
-
-Section thirty-two point one two develops interfaces with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-two point one two, monitoring stay explicit in the ticket before the window opens.
-
-Section thirty-two point one two treats IR playbooks as testable only when owners and dates are recorded.
-
-For section thirty-two point one two, architecture cannot be widened by a verbal aside from a manager.
-
-Section thirty-two point one two fails closed if monitoring evidence is missing rather than guessing.
 
 ### 32.13 32.16 Pad
 
 Owner confirmed timestamps must be during business hours unless on-call is noted.
 
-Section thirty-two point one three develops interfaces with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-two point one three, monitoring stay explicit in the ticket before the window opens.
-
-Section thirty-two point one three treats IR playbooks as testable only when owners and dates are recorded.
-
-For section thirty-two point one three, architecture cannot be widened by a verbal aside from a manager.
-
-Section thirty-two point one three fails closed if monitoring evidence is missing rather than guessing.
-
 ### 32.14 32.18 Final
 
 Interdisciplinary office hours invite legal monthly. Sam brings one finding and asks how they would phrase disclosure duties. The mutual translation compounds.
-
-Section thirty-two point one four develops interfaces with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-two point one four, monitoring stay explicit in the ticket before the window opens.
-
-Section thirty-two point one four treats IR playbooks as testable only when owners and dates are recorded.
-
-For section thirty-two point one four, architecture cannot be widened by a verbal aside from a manager.
 
 ### Worked example (synthetic TRB)
 
@@ -5953,191 +2863,61 @@ You will (1) analyse purple-team results; (2) respect threats to validity; (3) r
 
 Use intervals; avoid p-hacking by switching metrics post hoc.
 
-Section thirty-three point one develops research II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-three point one, validity threats stay explicit in the ticket before the window opens.
-
-Section thirty-three point one treats blinding as testable only when owners and dates are recorded.
-
-For section thirty-three point one, sensitivity cannot be widened by a verbal aside from a manager.
-
-Section thirty-three point one fails closed if validity threats evidence is missing rather than guessing.
-
 ### 33.2 Validity
 
 Staging, alert fatigue, shared accounts threaten generalisation.
-
-Section thirty-three point two develops research II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-three point two, validity threats stay explicit in the ticket before the window opens.
-
-Section thirty-three point two treats blinding as testable only when owners and dates are recorded.
-
-For section thirty-three point two, sensitivity cannot be widened by a verbal aside from a manager.
-
-Section thirty-three point two fails closed if validity threats evidence is missing rather than guessing.
 
 ### 33.3 Adaptive evaluation
 
 Adversaries adapt; static test sets age.
 
-Section thirty-three point three develops research II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-three point three, validity threats stay explicit in the ticket before the window opens.
-
-Section thirty-three point three treats blinding as testable only when owners and dates are recorded.
-
-For section thirty-three point three, sensitivity cannot be widened by a verbal aside from a manager.
-
-Section thirty-three point three fails closed if validity threats evidence is missing rather than guessing.
-
 ### 33.4 Disclosure of limits
 
 Every study lists limits in the abstract.
-
-Section thirty-three point four develops research II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-three point four, validity threats stay explicit in the ticket before the window opens.
-
-Section thirty-three point four treats blinding as testable only when owners and dates are recorded.
-
-For section thirty-three point four, sensitivity cannot be widened by a verbal aside from a manager.
-
-Section thirty-three point four fails closed if validity threats evidence is missing rather than guessing.
 
 ### 33.5 Data sharing
 
 Synthetic datasets preferred for sharing.
 
-Section thirty-three point five develops research II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-three point five, validity threats stay explicit in the ticket before the window opens.
-
-Section thirty-three point five treats blinding as testable only when owners and dates are recorded.
-
-For section thirty-three point five, sensitivity cannot be widened by a verbal aside from a manager.
-
-Section thirty-three point five fails closed if validity threats evidence is missing rather than guessing.
-
 ### 33.6 Ethics revisit
 
 Re-check approvals if methods expand mid-study.
-
-Section thirty-three point six develops research II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-three point six, validity threats stay explicit in the ticket before the window opens.
-
-Section thirty-three point six treats blinding as testable only when owners and dates are recorded.
-
-For section thirty-three point six, sensitivity cannot be widened by a verbal aside from a manager.
-
-Section thirty-three point six fails closed if validity threats evidence is missing rather than guessing.
 
 ### 33.7 33.7 Applied note
 
 Validity sections list at least three threats every time: environment, sample size, and adversary adaptation. Sam's template will not compile the report PDF if the list has fewer than three.
 
-Section thirty-three point seven develops research II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-three point seven, validity threats stay explicit in the ticket before the window opens.
-
-Section thirty-three point seven treats blinding as testable only when owners and dates are recorded.
-
-For section thirty-three point seven, sensitivity cannot be widened by a verbal aside from a manager.
-
 ### 33.8 33.8 Adaptation log
 
 When attackers or systems change, Sam logs which static tests are stale. The log feeds the next trial's design.
-
-Section thirty-three point eight develops research II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-three point eight, validity threats stay explicit in the ticket before the window opens.
-
-Section thirty-three point eight treats blinding as testable only when owners and dates are recorded.
-
-For section thirty-three point eight, sensitivity cannot be widened by a verbal aside from a manager.
 
 ### 33.9 33.9 Stale-test date
 
 Tests carry a review-by date. Past-due tests cannot support assurance claims until refreshed.
 
-Section thirty-three point nine develops research II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-three point nine, validity threats stay explicit in the ticket before the window opens.
-
-Section thirty-three point nine treats blinding as testable only when owners and dates are recorded.
-
-For section thirty-three point nine, sensitivity cannot be widened by a verbal aside from a manager.
-
-Section thirty-three point nine fails closed if validity threats evidence is missing rather than guessing.
-
 ### 33.10 33.11 Scene
 
 Stale-test dates turn orange at thirty days and red at ninety. Red tests cannot be cited in assurance statements until re-run. Sam likes traffic lights more than paragraphs of policy.
-
-Section thirty-three point one zero develops research II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-three point one zero, validity threats stay explicit in the ticket before the window opens.
-
-Section thirty-three point one zero treats blinding as testable only when owners and dates are recorded.
-
-For section thirty-three point one zero, sensitivity cannot be widened by a verbal aside from a manager.
 
 ### 33.11 33.12 Extension
 
 Orange tests get scheduled; red tests block citations. Sam's assurance checklist literally asks "any red tests cited?" with a no-box required.
 
-Section thirty-three point one one develops research II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-three point one one, validity threats stay explicit in the ticket before the window opens.
-
-Section thirty-three point one one treats blinding as testable only when owners and dates are recorded.
-
-For section thirty-three point one one, sensitivity cannot be widened by a verbal aside from a manager.
-
 ### 33.12 33.14 Note 11
 
 Traffic-light API is queried by the report build; red citations fail the build.
-
-Section thirty-three point one two develops research II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-three point one two, validity threats stay explicit in the ticket before the window opens.
-
-Section thirty-three point one two treats blinding as testable only when owners and dates are recorded.
-
-For section thirty-three point one two, sensitivity cannot be widened by a verbal aside from a manager.
-
-Section thirty-three point one two fails closed if validity threats evidence is missing rather than guessing.
 
 ### 33.13 33.16 Pad
 
 Report builds call the traffic-light API; offline builds fail closed.
 
-Section thirty-three point one three develops research II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-three point one three, validity threats stay explicit in the ticket before the window opens.
-
-Section thirty-three point one three treats blinding as testable only when owners and dates are recorded.
-
-For section thirty-three point one three, sensitivity cannot be widened by a verbal aside from a manager.
-
-Section thirty-three point one three fails closed if validity threats evidence is missing rather than guessing.
-
 ### 33.14 33.18 Final
 
 Research office hours ban the word "prove" unless a pre-registered threshold is cited. Sam rings a small bell. The room self-corrects by week three.
 
-Section thirty-three point one four develops research II with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-three point one four, validity threats stay explicit in the ticket before the window opens.
-
-Section thirty-three point one four treats blinding as testable only when owners and dates are recorded.
-
-For section thirty-three point one four, sensitivity cannot be widened by a verbal aside from a manager.
-
 ### Worked example (synthetic TRB)
 
-Sam reports T1190 GAP with n=2 and refuses to claim \"zero detection forever\".
+Sam reports T1190 GAP with n=2 and refuses to claim "zero detection forever".
 
 > **Synthetic case — Riverstone Transit Bank (TRB).** The bank, Sam Ito, TrackScope/FindingsDesk/PulseMap and all figures are invented for teaching.
 
@@ -6171,211 +2951,65 @@ You will (1) compare two assessment approaches; (2) use TRB criteria; (3) recomm
 
 Quarterly WSTG-style web test vs annual threat-led scenario exercise.
 
-Section thirty-four point one develops comparative work with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-four point one, fair criteria stay explicit in the ticket before the window opens.
-
-Section thirty-four point one treats providers as testable only when owners and dates are recorded.
-
-For section thirty-four point one, ownership cannot be widened by a verbal aside from a manager.
-
-Section thirty-four point one fails closed if fair criteria evidence is missing rather than guessing.
-
 ### 34.2 Criteria
 
 Cost, coverage, detection learning, operational risk, examiner expectations.
-
-Section thirty-four point two develops comparative work with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-four point two, fair criteria stay explicit in the ticket before the window opens.
-
-Section thirty-four point two treats providers as testable only when owners and dates are recorded.
-
-For section thirty-four point two, ownership cannot be widened by a verbal aside from a manager.
-
-Section thirty-four point two fails closed if fair criteria evidence is missing rather than guessing.
 
 ### 34.3 Evidence
 
 Use synthetic past results and Wilson intervals.
 
-Section thirty-four point three develops comparative work with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-four point three, fair criteria stay explicit in the ticket before the window opens.
-
-Section thirty-four point three treats providers as testable only when owners and dates are recorded.
-
-For section thirty-four point three, ownership cannot be widened by a verbal aside from a manager.
-
-Section thirty-four point three fails closed if fair criteria evidence is missing rather than guessing.
-
 ### 34.4 Recommendation
 
 Mix: keep quarterly web tests; fund threat-led every other year.
-
-Section thirty-four point four develops comparative work with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-four point four, fair criteria stay explicit in the ticket before the window opens.
-
-Section thirty-four point four treats providers as testable only when owners and dates are recorded.
-
-For section thirty-four point four, ownership cannot be widened by a verbal aside from a manager.
-
-Section thirty-four point four fails closed if fair criteria evidence is missing rather than guessing.
 
 ### 34.5 Non-goals
 
 Not recommending zero testing.
 
-Section thirty-four point five develops comparative work with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-four point five, fair criteria stay explicit in the ticket before the window opens.
-
-Section thirty-four point five treats providers as testable only when owners and dates are recorded.
-
-For section thirty-four point five, ownership cannot be widened by a verbal aside from a manager.
-
-Section thirty-four point five fails closed if fair criteria evidence is missing rather than guessing.
-
 ### 34.6 Presentation
 
 Ten slides, decisions last.
-
-Section thirty-four point six develops comparative work with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-four point six, fair criteria stay explicit in the ticket before the window opens.
-
-Section thirty-four point six treats providers as testable only when owners and dates are recorded.
-
-For section thirty-four point six, ownership cannot be widened by a verbal aside from a manager.
-
-Section thirty-four point six fails closed if fair criteria evidence is missing rather than guessing.
 
 ### 34.7 34.7 Applied note
 
 Comparison tables include a "capacity to execute" row. Threat-led every year scored high on learning and low on capacity; every other year won. Ignoring capacity produces shelfware programmes.
 
-Section thirty-four point seven develops comparative work with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-four point seven, fair criteria stay explicit in the ticket before the window opens.
-
-Section thirty-four point seven treats providers as testable only when owners and dates are recorded.
-
-For section thirty-four point seven, ownership cannot be widened by a verbal aside from a manager.
-
 ### 34.8 34.8 Cost honesty
 
 Comparison tables include staff hours, not only vendor invoices. Internal quarterly tests are not free.
-
-Section thirty-four point eight develops comparative work with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-four point eight, fair criteria stay explicit in the ticket before the window opens.
-
-Section thirty-four point eight treats providers as testable only when owners and dates are recorded.
-
-For section thirty-four point eight, ownership cannot be widened by a verbal aside from a manager.
-
-Section thirty-four point eight fails closed if fair criteria evidence is missing rather than guessing.
 
 ### 34.9 34.9 Capacity row data
 
 Capacity estimates come from last year's hours, not optimism. Sam cites the hours file.
 
-Section thirty-four point nine develops comparative work with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-four point nine, fair criteria stay explicit in the ticket before the window opens.
-
-Section thirty-four point nine treats providers as testable only when owners and dates are recorded.
-
-For section thirty-four point nine, ownership cannot be widened by a verbal aside from a manager.
-
-Section thirty-four point nine fails closed if fair criteria evidence is missing rather than guessing.
-
 ### 34.10 34.11 Scene
 
 Capacity row: last year threat-led consumed 1,200 hours. Quarterly web tests consumed 400. The mix recommendation falls out of the arithmetic more than out of fashion.
-
-Section thirty-four point one zero develops comparative work with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-four point one zero, fair criteria stay explicit in the ticket before the window opens.
-
-Section thirty-four point one zero treats providers as testable only when owners and dates are recorded.
-
-For section thirty-four point one zero, ownership cannot be widened by a verbal aside from a manager.
 
 ### 34.11 34.12 Extension
 
 Hours file is exported from time tracking, not remembered. Sam's first handmade estimate was 40% low. Humility is a spreadsheet.
 
-Section thirty-four point one one develops comparative work with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-four point one one, fair criteria stay explicit in the ticket before the window opens.
-
-Section thirty-four point one one treats providers as testable only when owners and dates are recorded.
-
-For section thirty-four point one one, ownership cannot be widened by a verbal aside from a manager.
-
 ### 34.12 34.14 Note 11
 
 Hours export is attached to the comparative project appendix as evidence.
-
-Section thirty-four point one two develops comparative work with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-four point one two, fair criteria stay explicit in the ticket before the window opens.
-
-Section thirty-four point one two treats providers as testable only when owners and dates are recorded.
-
-For section thirty-four point one two, ownership cannot be widened by a verbal aside from a manager.
-
-Section thirty-four point one two fails closed if fair criteria evidence is missing rather than guessing.
 
 ### 34.13 34.16 Pad
 
 Comparative appendices refuse handmade hour estimates without a time-tracking export hash.
 
-Section thirty-four point one three develops comparative work with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-four point one three, fair criteria stay explicit in the ticket before the window opens.
-
-Section thirty-four point one three treats providers as testable only when owners and dates are recorded.
-
-For section thirty-four point one three, ownership cannot be widened by a verbal aside from a manager.
-
-Section thirty-four point one three fails closed if fair criteria evidence is missing rather than guessing.
-
 ### 34.14 34.18 Final
 
 Comparative project defences ask "what would you cut first if budget halves?". Sam prepares that answer before the nice answer. Capacity thinking is the point.
-
-Section thirty-four point one four develops comparative work with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-four point one four, fair criteria stay explicit in the ticket before the window opens.
-
-Section thirty-four point one four treats providers as testable only when owners and dates are recorded.
-
-For section thirty-four point one four, ownership cannot be widened by a verbal aside from a manager.
 
 ### 34.15 34.19 Boost
 
 When presenting the mix recommendation, Sam brings a one-page calendar for two years showing quarterly web tests and a shaded threat-led quarter. Visual capacity beats abstract ratios. Executives approve calendars more readily than adjectives like "robust programme". He leaves copies of the calendar in the board portal the same day.
 
-Section thirty-four point one five develops comparative work with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-four point one five, fair criteria stay explicit in the ticket before the window opens.
-
 ### 34.16 34.20 Extra
 
 Two-year calendar PDF is the artefact boards forward to finance.
-
-Section thirty-four point one six develops comparative work with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-four point one six, fair criteria stay explicit in the ticket before the window opens.
-
-Section thirty-four point one six treats providers as testable only when owners and dates are recorded.
-
-For section thirty-four point one six, ownership cannot be widened by a verbal aside from a manager.
-
-Section thirty-four point one six fails closed if fair criteria evidence is missing rather than guessing.
 
 ### Worked example (synthetic TRB)
 
@@ -6413,189 +3047,57 @@ You will (1) write a scoped capstone proposal; (2) list non-goals; (3) define su
 
 Build a scope-diff tool for TrackScope with tests and a short evaluation on synthetic inventories.
 
-Section thirty-five point one develops capstone proposal with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-five point one, success criteria stay explicit in the ticket before the window opens.
-
-Section thirty-five point one treats timelines as testable only when owners and dates are recorded.
-
-For section thirty-five point one, risks cannot be widened by a verbal aside from a manager.
-
-Section thirty-five point one fails closed if success criteria evidence is missing rather than guessing.
-
 ### 35.2 Non-goals
 
 No integration with every ticket system; no exploit modules.
-
-Section thirty-five point two develops capstone proposal with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-five point two, success criteria stay explicit in the ticket before the window opens.
-
-Section thirty-five point two treats timelines as testable only when owners and dates are recorded.
-
-For section thirty-five point two, risks cannot be widened by a verbal aside from a manager.
-
-Section thirty-five point two fails closed if success criteria evidence is missing rather than guessing.
 
 ### 35.3 Metrics
 
 Precision/recall on planted inventory drifts; fail-closed on corrupt files.
 
-Section thirty-five point three develops capstone proposal with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-five point three, success criteria stay explicit in the ticket before the window opens.
-
-Section thirty-five point three treats timelines as testable only when owners and dates are recorded.
-
-For section thirty-five point three, risks cannot be widened by a verbal aside from a manager.
-
-Section thirty-five point three fails closed if success criteria evidence is missing rather than guessing.
-
 ### 35.4 Risks
 
 Time, data access, reviewer availability.
-
-Section thirty-five point four develops capstone proposal with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-five point four, success criteria stay explicit in the ticket before the window opens.
-
-Section thirty-five point four treats timelines as testable only when owners and dates are recorded.
-
-For section thirty-five point four, risks cannot be widened by a verbal aside from a manager.
-
-Section thirty-five point four fails closed if success criteria evidence is missing rather than guessing.
 
 ### 35.5 Advisor
 
 Checkpoints every two weeks.
 
-Section thirty-five point five develops capstone proposal with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-five point five, success criteria stay explicit in the ticket before the window opens.
-
-Section thirty-five point five treats timelines as testable only when owners and dates are recorded.
-
-For section thirty-five point five, risks cannot be widened by a verbal aside from a manager.
-
-Section thirty-five point five fails closed if success criteria evidence is missing rather than guessing.
-
 ### 35.6 Ethics
 
 Synthetic inventories only.
-
-Section thirty-five point six develops capstone proposal with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-five point six, success criteria stay explicit in the ticket before the window opens.
-
-Section thirty-five point six treats timelines as testable only when owners and dates are recorded.
-
-For section thirty-five point six, risks cannot be widened by a verbal aside from a manager.
-
-Section thirty-five point six fails closed if success criteria evidence is missing rather than guessing.
 
 ### 35.7 35.7 Applied note
 
 Non-goals are printed on the proposal cover in bold. Sam's advisor grades whether a mid-project feature creep violated a printed non-goal. Bold text makes the violation embarrassing enough to stop.
 
-Section thirty-five point seven develops capstone proposal with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-five point seven, success criteria stay explicit in the ticket before the window opens.
-
-Section thirty-five point seven treats timelines as testable only when owners and dates are recorded.
-
-For section thirty-five point seven, risks cannot be widened by a verbal aside from a manager.
-
 ### 35.8 35.8 Checkpoint demos
 
 Every two weeks Sam demos fail-closed, not new UI chrome. Advisors grade control of scope creep.
-
-Section thirty-five point eight develops capstone proposal with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-five point eight, success criteria stay explicit in the ticket before the window opens.
-
-Section thirty-five point eight treats timelines as testable only when owners and dates are recorded.
-
-For section thirty-five point eight, risks cannot be widened by a verbal aside from a manager.
-
-Section thirty-five point eight fails closed if success criteria evidence is missing rather than guessing.
 
 ### 35.9 35.9 Cover non-goals
 
 Printers in the lab reprint non-goals posters for Sam's desk during build week.
 
-Section thirty-five point nine develops capstone proposal with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-five point nine, success criteria stay explicit in the ticket before the window opens.
-
-Section thirty-five point nine treats timelines as testable only when owners and dates are recorded.
-
-For section thirty-five point nine, risks cannot be widened by a verbal aside from a manager.
-
-Section thirty-five point nine fails closed if success criteria evidence is missing rather than guessing.
-
 ### 35.10 35.11 Scene
 
 Mid-build, a friend suggests adding LLM summarisation of findings. Sam points at the bold non-goals. The feature waits for a new proposal. Bold text earns its ink.
-
-Section thirty-five point one zero develops capstone proposal with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-five point one zero, success criteria stay explicit in the ticket before the window opens.
-
-Section thirty-five point one zero treats timelines as testable only when owners and dates are recorded.
-
-For section thirty-five point one zero, risks cannot be widened by a verbal aside from a manager.
 
 ### 35.11 35.12 Extension
 
 Non-goals poster includes "no LLM feature in v1". Visitors laugh; Sam points at the signed proposal. Laughter is fine; creep is not.
 
-Section thirty-five point one one develops capstone proposal with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-five point one one, success criteria stay explicit in the ticket before the window opens.
-
-Section thirty-five point one one treats timelines as testable only when owners and dates are recorded.
-
-For section thirty-five point one one, risks cannot be widened by a verbal aside from a manager.
-
 ### 35.12 35.14 Note 11
 
 Non-goals poster is photographed into the capstone repo README.
-
-Section thirty-five point one two develops capstone proposal with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-five point one two, success criteria stay explicit in the ticket before the window opens.
-
-Section thirty-five point one two treats timelines as testable only when owners and dates are recorded.
-
-For section thirty-five point one two, risks cannot be widened by a verbal aside from a manager.
-
-Section thirty-five point one two fails closed if success criteria evidence is missing rather than guessing.
 
 ### 35.13 35.16 Pad
 
 README photograph of non-goals must be dated within the build week.
 
-Section thirty-five point one three develops capstone proposal with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-five point one three, success criteria stay explicit in the ticket before the window opens.
-
-Section thirty-five point one three treats timelines as testable only when owners and dates are recorded.
-
-For section thirty-five point one three, risks cannot be widened by a verbal aside from a manager.
-
-Section thirty-five point one three fails closed if success criteria evidence is missing rather than guessing.
-
 ### 35.14 35.18 Final
 
 Proposal checkpoints include a non-goals quiz: advisor names a tempting feature; Sam must say no and point to the cover. Failing the quiz delays code merge.
-
-Section thirty-five point one four develops capstone proposal with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-five point one four, success criteria stay explicit in the ticket before the window opens.
-
-Section thirty-five point one four treats timelines as testable only when owners and dates are recorded.
-
-For section thirty-five point one four, risks cannot be widened by a verbal aside from a manager.
 
 ### Worked example (synthetic TRB)
 
@@ -6610,7 +3112,7 @@ This book grants no authority to test real banks or payment systems. Labs use do
 ### Exercises
 
 - **EX103 — Non-goal.** Name one required non-goal. *Rubric:* 3 = no exploit modules or no live scanning / no all-ticket integrations; 2 = partial; 1 = none; 0 = none.
-- **EX104 — Metric.** Give one success metric for scope-diff. *Rubric:* 3 = precision/recall on planted drifts or fail-closed on corrupt files; 2 = vague; 1 = \"works\"; 0 = none.
+- **EX104 — Metric.** Give one success metric for scope-diff. *Rubric:* 3 = precision/recall on planted drifts or fail-closed on corrupt files; 2 = vague; 1 = "works"; 0 = none.
 - **EX105 — Ethics line.** What data may the capstone use? *Rubric:* 3 = synthetic inventories only; 2 = partial; 1 = production customer DB; 0 = none.
 
 ### Synthesis
@@ -6633,183 +3135,57 @@ You will (1) complete a placement-style reflection; (2) sanitise reports; (3) tr
 
 Shadow TRB assessment operations (synthetic in this course).
 
-Section thirty-six point one develops field practice with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-six point one, boundaries stay explicit in the ticket before the window opens.
-
-Section thirty-six point one treats handover as testable only when owners and dates are recorded.
-
-For section thirty-six point one, capacity cannot be widened by a verbal aside from a manager.
-
-Section thirty-six point one fails closed if boundaries evidence is missing rather than guessing.
-
 ### 36.2 Sanitise
 
 No customer identifiers in academic write-ups.
-
-Section thirty-six point two develops field practice with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-six point two, boundaries stay explicit in the ticket before the window opens.
-
-Section thirty-six point two treats handover as testable only when owners and dates are recorded.
-
-For section thirty-six point two, capacity cannot be widened by a verbal aside from a manager.
-
-Section thirty-six point two fails closed if boundaries evidence is missing rather than guessing.
 
 ### 36.3 Translation
 
 Wilson intervals become board-usable sentences.
 
-Section thirty-six point three develops field practice with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-six point three, boundaries stay explicit in the ticket before the window opens.
-
-Section thirty-six point three treats handover as testable only when owners and dates are recorded.
-
-For section thirty-six point three, capacity cannot be widened by a verbal aside from a manager.
-
-Section thirty-six point three fails closed if boundaries evidence is missing rather than guessing.
-
 ### 36.4 Conflicts
 
 Gift policies and vendor dinners — follow TRB rules.
-
-Section thirty-six point four develops field practice with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-six point four, boundaries stay explicit in the ticket before the window opens.
-
-Section thirty-six point four treats handover as testable only when owners and dates are recorded.
-
-For section thirty-six point four, capacity cannot be widened by a verbal aside from a manager.
-
-Section thirty-six point four fails closed if boundaries evidence is missing rather than guessing.
 
 ### 36.5 Journal
 
 Weekly: learned, broken assumption, question.
 
-Section thirty-six point five develops field practice with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-six point five, boundaries stay explicit in the ticket before the window opens.
-
-Section thirty-six point five treats handover as testable only when owners and dates are recorded.
-
-For section thirty-six point five, capacity cannot be widened by a verbal aside from a manager.
-
-Section thirty-six point five fails closed if boundaries evidence is missing rather than guessing.
-
 ### 36.6 Useful output
 
 Leave a runbook improvement behind.
-
-Section thirty-six point six develops field practice with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-six point six, boundaries stay explicit in the ticket before the window opens.
-
-Section thirty-six point six treats handover as testable only when owners and dates are recorded.
-
-For section thirty-six point six, capacity cannot be widened by a verbal aside from a manager.
-
-Section thirty-six point six fails closed if boundaries evidence is missing rather than guessing.
 
 ### 36.7 36.7 Applied note
 
 Leave-behind testing uses a timer: the host technician gets fifteen minutes alone. Sam may answer clarifying questions but not touch the keyboard. Keyboard touches mean the leave-behind failed.
 
-Section thirty-six point seven develops field practice with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-six point seven, boundaries stay explicit in the ticket before the window opens.
-
-Section thirty-six point seven treats handover as testable only when owners and dates are recorded.
-
-For section thirty-six point seven, capacity cannot be widened by a verbal aside from a manager.
-
 ### 36.8 36.8 Sanitisation checklist
 
 Before academic upload, Sam runs a checklist: names, account numbers, IPs, hostnames. A peer initials it.
-
-Section thirty-six point eight develops field practice with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-six point eight, boundaries stay explicit in the ticket before the window opens.
-
-Section thirty-six point eight treats handover as testable only when owners and dates are recorded.
-
-For section thirty-six point eight, capacity cannot be widened by a verbal aside from a manager.
-
-Section thirty-six point eight fails closed if boundaries evidence is missing rather than guessing.
 
 ### 36.9 36.9 Peer initial box
 
 Sanitisation forms without peer initials are rejected by the academic upload script.
 
-Section thirty-six point nine develops field practice with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-six point nine, boundaries stay explicit in the ticket before the window opens.
-
-Section thirty-six point nine treats handover as testable only when owners and dates are recorded.
-
-For section thirty-six point nine, capacity cannot be widened by a verbal aside from a manager.
-
-Section thirty-six point nine fails closed if boundaries evidence is missing rather than guessing.
-
 ### 36.10 36.11 Scene
 
 Peer initials on sanitisation once caught a hostname containing a customer surname. Sam buys the peer lunch. Checklists with teeth make kindness easy.
-
-Section thirty-six point one zero develops field practice with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-six point one zero, boundaries stay explicit in the ticket before the window opens.
-
-Section thirty-six point one zero treats handover as testable only when owners and dates are recorded.
-
-For section thirty-six point one zero, capacity cannot be widened by a verbal aside from a manager.
 
 ### 36.11 36.12 Extension
 
 Sanitisation peer once was Sam's sternest critic. He chooses stern peers on purpose. Kind peers miss surnames in hostnames.
 
-Section thirty-six point one one develops field practice with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-six point one one, boundaries stay explicit in the ticket before the window opens.
-
-Section thirty-six point one one treats handover as testable only when owners and dates are recorded.
-
-For section thirty-six point one one, capacity cannot be widened by a verbal aside from a manager.
-
 ### 36.12 36.14 Note 11
 
 Sanitisation peer initials are a required PDF form field; blank fails upload. Sam chooses peers who previously caught his mistakes, not friends who skim. The upload script rejects forms under 10 KB as likely blank. Process pedantry protects citizens whose names must never enter academic mirrors. That sentence is the chapter's privacy oath.
-
-Section thirty-six point one two develops field practice with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-six point one two, boundaries stay explicit in the ticket before the window opens.
 
 ### 36.13 36.16 Pad
 
 Blank-form size gate once caught a peer who uploaded a photo of a blank table. Pedantry wins.
 
-Section thirty-six point one three develops field practice with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-six point one three, boundaries stay explicit in the ticket before the window opens.
-
-Section thirty-six point one three treats handover as testable only when owners and dates are recorded.
-
-For section thirty-six point one three, capacity cannot be widened by a verbal aside from a manager.
-
 ### 36.14 36.20 Extra
 
 Privacy oath sentence is signed on the vault foyer card.
-
-Section thirty-six point one four develops field practice with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-six point one four, boundaries stay explicit in the ticket before the window opens.
-
-Section thirty-six point one four treats handover as testable only when owners and dates are recorded.
-
-For section thirty-six point one four, capacity cannot be widened by a verbal aside from a manager.
-
-Section thirty-six point one four fails closed if boundaries evidence is missing rather than guessing.
 
 ### Worked example (synthetic TRB)
 
@@ -6847,213 +3223,65 @@ You will (1) critique a peer dossier; (2) give actionable feedback; (3) receive 
 
 20 minutes present, 20 critique, 10 actions.
 
-Section thirty-seven point one develops seminar with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-seven point one, evidence grades stay explicit in the ticket before the window opens.
-
-Section thirty-seven point one treats peer review as testable only when owners and dates are recorded.
-
-For section thirty-seven point one, claims cannot be widened by a verbal aside from a manager.
-
-Section thirty-seven point one fails closed if evidence grades evidence is missing rather than guessing.
-
 ### 37.2 Checklist
 
 Scope clarity, evidence hashes, severity rationale, privacy, overclaim.
-
-Section thirty-seven point two develops seminar with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-seven point two, evidence grades stay explicit in the ticket before the window opens.
-
-Section thirty-seven point two treats peer review as testable only when owners and dates are recorded.
-
-For section thirty-seven point two, claims cannot be widened by a verbal aside from a manager.
-
-Section thirty-seven point two fails closed if evidence grades evidence is missing rather than guessing.
 
 ### 37.3 Feedback
 
 Specific line references; suggest fixes.
 
-Section thirty-seven point three develops seminar with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-seven point three, evidence grades stay explicit in the ticket before the window opens.
-
-Section thirty-seven point three treats peer review as testable only when owners and dates are recorded.
-
-For section thirty-seven point three, claims cannot be widened by a verbal aside from a manager.
-
-Section thirty-seven point three fails closed if evidence grades evidence is missing rather than guessing.
-
 ### 37.4 Receiving
 
 Write actions; avoid debating every point live.
-
-Section thirty-seven point four develops seminar with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-seven point four, evidence grades stay explicit in the ticket before the window opens.
-
-Section thirty-seven point four treats peer review as testable only when owners and dates are recorded.
-
-For section thirty-seven point four, claims cannot be widened by a verbal aside from a manager.
-
-Section thirty-seven point four fails closed if evidence grades evidence is missing rather than guessing.
 
 ### 37.5 Compare
 
 Optionally compare to a published methodology checklist (PTES/WSTG), not to Instagram lore.
 
-Section thirty-seven point five develops seminar with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-seven point five, evidence grades stay explicit in the ticket before the window opens.
-
-Section thirty-seven point five treats peer review as testable only when owners and dates are recorded.
-
-For section thirty-seven point five, claims cannot be widened by a verbal aside from a manager.
-
-Section thirty-seven point five fails closed if evidence grades evidence is missing rather than guessing.
-
 ### 37.6 Record
 
 Seminar note filed with capstone.
-
-Section thirty-seven point six develops seminar with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-seven point six, evidence grades stay explicit in the ticket before the window opens.
-
-Section thirty-seven point six treats peer review as testable only when owners and dates are recorded.
-
-For section thirty-seven point six, claims cannot be widened by a verbal aside from a manager.
-
-Section thirty-seven point six fails closed if evidence grades evidence is missing rather than guessing.
 
 ### 37.7 37.7 Applied note
 
 Seminar declined feedback requires a written reason the presenter accepts. "I disagree" without reason keeps the comment open. Sam's dossier once had six open comments; none remained after he wrote reasons or fixes.
 
-Section thirty-seven point seven develops seminar with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-seven point seven, evidence grades stay explicit in the ticket before the window opens.
-
-Section thirty-seven point seven treats peer review as testable only when owners and dates are recorded.
-
-For section thirty-seven point seven, claims cannot be widened by a verbal aside from a manager.
-
 ### 37.8 37.8 Action expiry
 
 Seminar actions older than fourteen days without state change page Sam. Stale actions are declined or done.
-
-Section thirty-seven point eight develops seminar with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-seven point eight, evidence grades stay explicit in the ticket before the window opens.
-
-Section thirty-seven point eight treats peer review as testable only when owners and dates are recorded.
-
-For section thirty-seven point eight, claims cannot be widened by a verbal aside from a manager.
-
-Section thirty-seven point eight fails closed if evidence grades evidence is missing rather than guessing.
 
 ### 37.9 37.9 State machine
 
 Comment states are open, fixed, declined, risk-accepted. Sam's tracker forbids other strings.
 
-Section thirty-seven point nine develops seminar with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-seven point nine, evidence grades stay explicit in the ticket before the window opens.
-
-Section thirty-seven point nine treats peer review as testable only when owners and dates are recorded.
-
-For section thirty-seven point nine, claims cannot be widened by a verbal aside from a manager.
-
-Section thirty-seven point nine fails closed if evidence grades evidence is missing rather than guessing.
-
 ### 37.10 37.11 Scene
 
 Open seminar comments page Sam at day 10. He declines one with reason "out of scope for thesis" and fixes two. Day 14 board is clear. The pager teaches closure.
-
-Section thirty-seven point one zero develops seminar with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-seven point one zero, evidence grades stay explicit in the ticket before the window opens.
-
-Section thirty-seven point one zero treats peer review as testable only when owners and dates are recorded.
-
-For section thirty-seven point one zero, claims cannot be widened by a verbal aside from a manager.
 
 ### 37.11 37.12 Extension
 
 State machine API rejects "kinda done". Sam is grateful for pedantic software when tired.
 
-Section thirty-seven point one one develops seminar with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-seven point one one, evidence grades stay explicit in the ticket before the window opens.
-
-Section thirty-seven point one one treats peer review as testable only when owners and dates are recorded.
-
-For section thirty-seven point one one, claims cannot be widened by a verbal aside from a manager.
-
 ### 37.12 37.14 Note 11
 
 Pager messages include deep links to the comment thread.
-
-Section thirty-seven point one two develops seminar with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-seven point one two, evidence grades stay explicit in the ticket before the window opens.
-
-Section thirty-seven point one two treats peer review as testable only when owners and dates are recorded.
-
-For section thirty-seven point one two, claims cannot be widened by a verbal aside from a manager.
-
-Section thirty-seven point one two fails closed if evidence grades evidence is missing rather than guessing.
 
 ### 37.13 37.16 Pad
 
 Deep links open the exact comment; Sam forbids "see thread" without links.
 
-Section thirty-seven point one three develops seminar with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-seven point one three, evidence grades stay explicit in the ticket before the window opens.
-
-Section thirty-seven point one three treats peer review as testable only when owners and dates are recorded.
-
-For section thirty-seven point one three, claims cannot be widened by a verbal aside from a manager.
-
-Section thirty-seven point one three fails closed if evidence grades evidence is missing rather than guessing.
-
 ### 37.14 37.18 Final
 
 Comment hygiene week every term closes stale threads. Sam enjoys the clean board more than new features. Closure is a deliverable.
-
-Section thirty-seven point one four develops seminar with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-seven point one four, evidence grades stay explicit in the ticket before the window opens.
-
-Section thirty-seven point one four treats peer review as testable only when owners and dates are recorded.
-
-For section thirty-seven point one four, claims cannot be widened by a verbal aside from a manager.
 
 ### 37.15 37.19 Boost
 
 Sam's seminar tracker exports a weekly CSV of open comments by presenter. Public (team-visible) open counts create gentle pressure without shame. Presenters with zero opens get a thank-you note. The social protocol closes more threads than any angry reminder ever did in prior terms.
 
-Section thirty-seven point one five develops seminar with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-seven point one five, evidence grades stay explicit in the ticket before the window opens.
-
-Section thirty-seven point one five treats peer review as testable only when owners and dates are recorded.
-
 ### 37.16 37.20 Extra
 
 Thank-you notes for zero opens are templated but personally sent.
-
-Section thirty-seven point one six develops seminar with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-seven point one six, evidence grades stay explicit in the ticket before the window opens.
-
-Section thirty-seven point one six treats peer review as testable only when owners and dates are recorded.
-
-For section thirty-seven point one six, claims cannot be widened by a verbal aside from a manager.
-
-Section thirty-seven point one six fails closed if evidence grades evidence is missing rather than guessing.
 
 ### Worked example (synthetic TRB)
 
@@ -7068,7 +3296,7 @@ This book grants no authority to test real banks or payment systems. Labs use do
 ### Exercises
 
 - **EX109 — Checklist item.** Name four seminar checklist items. *Rubric:* 3 = four from chapter; 2 = three; 1 = one; 0 = none.
-- **EX110 — Feedback quality.** What makes feedback actionable? *Rubric:* 3 = specific lines + suggested fix; 2 = partial; 1 = \"bad vibes\"; 0 = none.
+- **EX110 — Feedback quality.** What makes feedback actionable? *Rubric:* 3 = specific lines + suggested fix; 2 = partial; 1 = "bad vibes"; 0 = none.
 - **EX111 — Denominator.** Why add denominators on coverage slides? *Rubric:* 3 = avoid misleading percentages; 2 = partial; 1 = decoration; 0 = none.
 
 ### Synthesis
@@ -7091,221 +3319,65 @@ You will (1) build the scope-diff tool; (2) test fail-closed paths; (3) document
 
 Diff two synthetic inventories; flag only-in-docs / only-on-network / type conflicts.
 
-Section thirty-eight point one develops implementation with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-eight point one, diaries stay explicit in the ticket before the window opens.
-
-Section thirty-eight point one treats clarifications as testable only when owners and dates are recorded.
-
-For section thirty-eight point one, completion cannot be widened by a verbal aside from a manager.
-
-Section thirty-eight point one fails closed if diaries evidence is missing rather than guessing.
-
 ### 38.2 Fail closed
 
 Corrupt YAML → deny with reason.
-
-Section thirty-eight point two develops implementation with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-eight point two, diaries stay explicit in the ticket before the window opens.
-
-Section thirty-eight point two treats clarifications as testable only when owners and dates are recorded.
-
-For section thirty-eight point two, completion cannot be widened by a verbal aside from a manager.
-
-Section thirty-eight point two fails closed if diaries evidence is missing rather than guessing.
-
-Under section thirty-eight point two, peers skim the implementation note in two minutes before write mode.
 
 ### 38.3 Tests
 
 Golden fixtures; no network.
 
-Section thirty-eight point three develops implementation with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-eight point three, diaries stay explicit in the ticket before the window opens.
-
-Section thirty-eight point three treats clarifications as testable only when owners and dates are recorded.
-
-For section thirty-eight point three, completion cannot be widened by a verbal aside from a manager.
-
-Section thirty-eight point three fails closed if diaries evidence is missing rather than guessing.
-
-Under section thirty-eight point three, peers skim the implementation note in two minutes before write mode.
-
 ### 38.4 Docs
 
 Operator README with examples.
-
-Section thirty-eight point four develops implementation with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-eight point four, diaries stay explicit in the ticket before the window opens.
-
-Section thirty-eight point four treats clarifications as testable only when owners and dates are recorded.
-
-For section thirty-eight point four, completion cannot be widened by a verbal aside from a manager.
-
-Section thirty-eight point four fails closed if diaries evidence is missing rather than guessing.
-
-Under section thirty-eight point four, peers skim the implementation note in two minutes before write mode.
 
 ### 38.5 Freeze
 
 Feature freeze before evaluation week.
 
-Section thirty-eight point five develops implementation with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-eight point five, diaries stay explicit in the ticket before the window opens.
-
-Section thirty-eight point five treats clarifications as testable only when owners and dates are recorded.
-
-For section thirty-eight point five, completion cannot be widened by a verbal aside from a manager.
-
-Section thirty-eight point five fails closed if diaries evidence is missing rather than guessing.
-
-Under section thirty-eight point five, peers skim the implementation note in two minutes before write mode.
-
 ### 38.6 Handover
 
 Shadow an operator running it alone.
-
-Section thirty-eight point six develops implementation with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-eight point six, diaries stay explicit in the ticket before the window opens.
-
-Section thirty-eight point six treats clarifications as testable only when owners and dates are recorded.
-
-For section thirty-eight point six, completion cannot be widened by a verbal aside from a manager.
-
-Section thirty-eight point six fails closed if diaries evidence is missing rather than guessing.
 
 ### 38.7 38.7 Applied note
 
 Golden fixtures include a deliberately corrupt scope and a near-match inventory designed to trick fuzzy matching. Sam's tool must not "helpfully" merge near-matches without an explicit flag.
 
-Section thirty-eight point seven develops implementation with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-eight point seven, diaries stay explicit in the ticket before the window opens.
-
-Section thirty-eight point seven treats clarifications as testable only when owners and dates are recorded.
-
-For section thirty-eight point seven, completion cannot be widened by a verbal aside from a manager.
-
 ### 38.8 38.8 Fuzzy match flag
 
 Near-match inventory names require --ack-fuzzy to merge. Default is to list them separately as conflicts.
-
-Section thirty-eight point eight develops implementation with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-eight point eight, diaries stay explicit in the ticket before the window opens.
-
-Section thirty-eight point eight treats clarifications as testable only when owners and dates are recorded.
-
-For section thirty-eight point eight, completion cannot be widened by a verbal aside from a manager.
-
-Section thirty-eight point eight fails closed if diaries evidence is missing rather than guessing.
 
 ### 38.9 38.9 Corrupt fixture names
 
 Fixtures named corrupt-*.yaml must deny. A CI property test generates random corruption.
 
-Section thirty-eight point nine develops implementation with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-eight point nine, diaries stay explicit in the ticket before the window opens.
-
-Section thirty-eight point nine treats clarifications as testable only when owners and dates are recorded.
-
-For section thirty-eight point nine, completion cannot be widened by a verbal aside from a manager.
-
-Section thirty-eight point nine fails closed if diaries evidence is missing rather than guessing.
-
 ### 38.10 38.11 Scene
 
 Random corruption property test flips bits in YAML until deny triggers. Sam watches it find a parser path that returned empty allow. Property tests are rude and helpful.
-
-Section thirty-eight point one zero develops implementation with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-eight point one zero, diaries stay explicit in the ticket before the window opens.
-
-Section thirty-eight point one zero treats clarifications as testable only when owners and dates are recorded.
-
-For section thirty-eight point one zero, completion cannot be widened by a verbal aside from a manager.
 
 ### 38.11 38.12 Extension
 
 Corrupt fixtures include truncated files and wrong encodings. Deny must trigger on all. Sam's property test grows a new mutation each term.
 
-Section thirty-eight point one one develops implementation with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-eight point one one, diaries stay explicit in the ticket before the window opens.
-
-Section thirty-eight point one one treats clarifications as testable only when owners and dates are recorded.
-
-For section thirty-eight point one one, completion cannot be widened by a verbal aside from a manager.
-
 ### 38.12 38.14 Note 11
 
 Each new mutation in the property test gets a name and a one-line intent.
-
-Section thirty-eight point one two develops implementation with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-eight point one two, diaries stay explicit in the ticket before the window opens.
-
-Section thirty-eight point one two treats clarifications as testable only when owners and dates are recorded.
-
-For section thirty-eight point one two, completion cannot be widened by a verbal aside from a manager.
-
-Section thirty-eight point one two fails closed if diaries evidence is missing rather than guessing.
 
 ### 38.13 38.16 Pad
 
 Mutation names look like "trunc-mid-yaml" so failures read clearly in CI.
 
-Section thirty-eight point one three develops implementation with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-eight point one three, diaries stay explicit in the ticket before the window opens.
-
-Section thirty-eight point one three treats clarifications as testable only when owners and dates are recorded.
-
-For section thirty-eight point one three, completion cannot be widened by a verbal aside from a manager.
-
-Section thirty-eight point one three fails closed if diaries evidence is missing rather than guessing.
-
 ### 38.14 38.18 Final
 
 Operator day uses a fresh account with no Sam aliases in shell history. If the operator needs history, docs failed. Clean accounts are honest tests.
-
-Section thirty-eight point one four develops implementation with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-eight point one four, diaries stay explicit in the ticket before the window opens.
-
-Section thirty-eight point one four treats clarifications as testable only when owners and dates are recorded.
-
-For section thirty-eight point one four, completion cannot be widened by a verbal aside from a manager.
 
 ### 38.15 38.19 Boost
 
 Fuzzy-match acknowledgements require typing the phrase "I accept merge risk" exactly. Copy-paste from a wiki is fine; clicking through is not. Sam wants a moment of friction before inventories collapse distinct hosts into one. That friction has prevented at least one production host from inheriting a staging-only note.
 
-Section thirty-eight point one five develops implementation with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-eight point one five, diaries stay explicit in the ticket before the window opens.
-
-Section thirty-eight point one five treats clarifications as testable only when owners and dates are recorded.
-
 ### 38.16 38.20 Extra
 
 Typed acknowledgement phrase is recorded in the audit log with username.
-
-Section thirty-eight point one six develops implementation with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-eight point one six, diaries stay explicit in the ticket before the window opens.
-
-Section thirty-eight point one six treats clarifications as testable only when owners and dates are recorded.
-
-For section thirty-eight point one six, completion cannot be widened by a verbal aside from a manager.
-
-Section thirty-eight point one six fails closed if diaries evidence is missing rather than guessing.
 
 ### Worked example (synthetic TRB)
 
@@ -7343,217 +3415,65 @@ You will (1) evaluate against pre-registered metrics; (2) run independent tests;
 
 Precision/recall on planted drifts; fail-closed cases.
 
-Section thirty-nine point one develops evaluation with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-nine point one, outcomes stay explicit in the ticket before the window opens.
-
-Section thirty-nine point one treats interpretation as testable only when owners and dates are recorded.
-
-For section thirty-nine point one, limits cannot be widened by a verbal aside from a manager.
-
-Section thirty-nine point one fails closed if outcomes evidence is missing rather than guessing.
-
 ### 39.2 Independent
 
 Another student runs the evaluation script.
-
-Section thirty-nine point two develops evaluation with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-nine point two, outcomes stay explicit in the ticket before the window opens.
-
-Section thirty-nine point two treats interpretation as testable only when owners and dates are recorded.
-
-For section thirty-nine point two, limits cannot be widened by a verbal aside from a manager.
-
-Section thirty-nine point two fails closed if outcomes evidence is missing rather than guessing.
 
 ### 39.3 Side effects
 
 Usability timing; false alarm burden.
 
-Section thirty-nine point three develops evaluation with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-nine point three, outcomes stay explicit in the ticket before the window opens.
-
-Section thirty-nine point three treats interpretation as testable only when owners and dates are recorded.
-
-For section thirty-nine point three, limits cannot be widened by a verbal aside from a manager.
-
-Section thirty-nine point three fails closed if outcomes evidence is missing rather than guessing.
-
-Under section thirty-nine point three, peers skim the evaluation note in two minutes before write mode.
-
 ### 39.4 Residual risk
 
 Tool helps inventory hygiene; does not replace ROE discipline.
-
-Section thirty-nine point four develops evaluation with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-nine point four, outcomes stay explicit in the ticket before the window opens.
-
-Section thirty-nine point four treats interpretation as testable only when owners and dates are recorded.
-
-For section thirty-nine point four, limits cannot be widened by a verbal aside from a manager.
-
-Section thirty-nine point four fails closed if outcomes evidence is missing rather than guessing.
 
 ### 39.5 Report
 
 Results vs pre-registration; no post hoc metric swaps.
 
-Section thirty-nine point five develops evaluation with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-nine point five, outcomes stay explicit in the ticket before the window opens.
-
-Section thirty-nine point five treats interpretation as testable only when owners and dates are recorded.
-
-For section thirty-nine point five, limits cannot be widened by a verbal aside from a manager.
-
-Section thirty-nine point five fails closed if outcomes evidence is missing rather than guessing.
-
 ### 39.6 Recommend
 
 Adopt in staging first.
-
-Section thirty-nine point six develops evaluation with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-nine point six, outcomes stay explicit in the ticket before the window opens.
-
-Section thirty-nine point six treats interpretation as testable only when owners and dates are recorded.
-
-For section thirty-nine point six, limits cannot be widened by a verbal aside from a manager.
-
-Section thirty-nine point six fails closed if outcomes evidence is missing rather than guessing.
-
-Under section thirty-nine point six, peers skim the evaluation note in two minutes before write mode.
 
 ### 39.7 39.7 Applied note
 
 Independent evaluators sign a one-line statement that Sam did not edit their run logs. The statement sits in the appendix. Trustworthy evaluation is a social protocol as much as a script.
 
-Section thirty-nine point seven develops evaluation with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-nine point seven, outcomes stay explicit in the ticket before the window opens.
-
-Section thirty-nine point seven treats interpretation as testable only when owners and dates are recorded.
-
-For section thirty-nine point seven, limits cannot be widened by a verbal aside from a manager.
-
 ### 39.8 39.8 Staging adoption plan
 
 Evaluation reports include a thirty-day staging plan with owners. Tools without adoption plans are hobbies.
-
-Section thirty-nine point eight develops evaluation with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-nine point eight, outcomes stay explicit in the ticket before the window opens.
-
-Section thirty-nine point eight treats interpretation as testable only when owners and dates are recorded.
-
-For section thirty-nine point eight, limits cannot be widened by a verbal aside from a manager.
-
-Section thirty-nine point eight fails closed if outcomes evidence is missing rather than guessing.
 
 ### 39.9 39.9 Adoption owners
 
 Staging adoption names a service owner and a platform owner. One name is insufficient.
 
-Section thirty-nine point nine develops evaluation with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-nine point nine, outcomes stay explicit in the ticket before the window opens.
-
-Section thirty-nine point nine treats interpretation as testable only when owners and dates are recorded.
-
-For section thirty-nine point nine, limits cannot be widened by a verbal aside from a manager.
-
-Section thirty-nine point nine fails closed if outcomes evidence is missing rather than guessing.
-
 ### 39.10 39.11 Scene
 
 Adoption plan names Mira for service ownership and Sam for platform support. Thirty-day checklist includes two operator solo runs. Without Mira's name the plan would be fiction.
-
-Section thirty-nine point one zero develops evaluation with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-nine point one zero, outcomes stay explicit in the ticket before the window opens.
-
-Section thirty-nine point one zero treats interpretation as testable only when owners and dates are recorded.
-
-For section thirty-nine point one zero, limits cannot be widened by a verbal aside from a manager.
 
 ### 39.11 39.12 Extension
 
 Solo run two failed because DNS differed in the operator's profile. README gained a DNS preamble. Solo runs find doc bugs tools miss.
 
-Section thirty-nine point one one develops evaluation with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-nine point one one, outcomes stay explicit in the ticket before the window opens.
-
-Section thirty-nine point one one treats interpretation as testable only when owners and dates are recorded.
-
-For section thirty-nine point one one, limits cannot be widened by a verbal aside from a manager.
-
 ### 39.12 39.14 Note 11
 
 Thirty-day checklist items are tickets, not bullets in an email.
-
-Section thirty-nine point one two develops evaluation with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-nine point one two, outcomes stay explicit in the ticket before the window opens.
-
-Section thirty-nine point one two treats interpretation as testable only when owners and dates are recorded.
-
-For section thirty-nine point one two, limits cannot be widened by a verbal aside from a manager.
-
-Section thirty-nine point one two fails closed if outcomes evidence is missing rather than guessing.
 
 ### 39.13 39.16 Pad
 
 Tickets for checklist items auto-close only when solo-run evidence is attached.
 
-Section thirty-nine point one three develops evaluation with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-nine point one three, outcomes stay explicit in the ticket before the window opens.
-
-Section thirty-nine point one three treats interpretation as testable only when owners and dates are recorded.
-
-For section thirty-nine point one three, limits cannot be widened by a verbal aside from a manager.
-
-Section thirty-nine point one three fails closed if outcomes evidence is missing rather than guessing.
-
 ### 39.14 39.18 Final
 
 Adoption retros at day 30 ask operators what they ignored in the README. Ignored sections are deleted or rewritten, not defended.
-
-Section thirty-nine point one four develops evaluation with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-nine point one four, outcomes stay explicit in the ticket before the window opens.
-
-Section thirty-nine point one four treats interpretation as testable only when owners and dates are recorded.
-
-For section thirty-nine point one four, limits cannot be widened by a verbal aside from a manager.
 
 ### 39.15 39.19 Boost
 
 Day-ten adoption check asks operators to break the tool on purpose and file the brokenness. Sam would rather hear early pain than polite silence. Two intentional break reports in the first cohort improved deny messages more than a month of speculative polish would have.
 
-Section thirty-nine point one five develops evaluation with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-nine point one five, outcomes stay explicit in the ticket before the window opens.
-
-Section thirty-nine point one five treats interpretation as testable only when owners and dates are recorded.
-
 ### 39.16 39.20 Extra
 
 Intentional break reports have their own ticket type: BREAK-ADOPT.
-
-Section thirty-nine point one six develops evaluation with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section thirty-nine point one six, outcomes stay explicit in the ticket before the window opens.
-
-Section thirty-nine point one six treats interpretation as testable only when owners and dates are recorded.
-
-For section thirty-nine point one six, limits cannot be widened by a verbal aside from a manager.
-
-Section thirty-nine point one six fails closed if outcomes evidence is missing rather than guessing.
 
 ### Worked example (synthetic TRB)
 
@@ -7591,197 +3511,61 @@ You will (1) structure the thesis; (2) defend limits; (3) state next steps.
 
 Claim, background, method, results, limits, ethics, next steps.
 
-Section forty point one develops thesis with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section forty point one, defence stay explicit in the ticket before the window opens.
-
-Section forty point one treats closeout as testable only when owners and dates are recorded.
-
-For section forty point one, appendices cannot be widened by a verbal aside from a manager.
-
-Section forty point one fails closed if defence evidence is missing rather than guessing.
-
 ### 40.2 Positioning
 
 Inventory hygiene tooling for authorized testing programmes — not a red-team exploit framework.
-
-Section forty point two develops thesis with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section forty point two, defence stay explicit in the ticket before the window opens.
-
-Section forty point two treats closeout as testable only when owners and dates are recorded.
-
-For section forty point two, appendices cannot be widened by a verbal aside from a manager.
-
-Section forty point two fails closed if defence evidence is missing rather than guessing.
 
 ### 40.3 Presentation
 
 12 minutes + questions; time discipline.
 
-Section forty point three develops thesis with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section forty point three, defence stay explicit in the ticket before the window opens.
-
-Section forty point three treats closeout as testable only when owners and dates are recorded.
-
-For section forty point three, appendices cannot be widened by a verbal aside from a manager.
-
-Section forty point three fails closed if defence evidence is missing rather than guessing.
-
-Under section forty point three, peers skim the thesis note in two minutes before write mode.
-
 ### 40.4 Likely questions
 
 Fail-closed demos; ethics; why no live scan; threats to validity.
-
-Section forty point four develops thesis with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section forty point four, defence stay explicit in the ticket before the window opens.
-
-Section forty point four treats closeout as testable only when owners and dates are recorded.
-
-For section forty point four, appendices cannot be widened by a verbal aside from a manager.
-
-Section forty point four fails closed if defence evidence is missing rather than guessing.
 
 ### 40.5 Next steps
 
 Integrate FindingsDesk tickets; study threat-led detection metrics.
 
-Section forty point five develops thesis with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section forty point five, defence stay explicit in the ticket before the window opens.
-
-Section forty point five treats closeout as testable only when owners and dates are recorded.
-
-For section forty point five, appendices cannot be widened by a verbal aside from a manager.
-
-Section forty point five fails closed if defence evidence is missing rather than guessing.
-
 ### 40.6 Reproducibility
 
 Appendix with synthetic data and scripts.
-
-Section forty point six develops thesis with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section forty point six, defence stay explicit in the ticket before the window opens.
-
-Section forty point six treats closeout as testable only when owners and dates are recorded.
-
-For section forty point six, appendices cannot be widened by a verbal aside from a manager.
-
-Section forty point six fails closed if defence evidence is missing rather than guessing.
 
 ### 40.7 40.7 Applied note
 
 Hostile-examiner rehearsal includes a request for a live demo against a public bank website. Sam's refusal cites law and curriculum boundaries. Peers grade the refusal's clarity under stress.
 
-Section forty point seven develops thesis with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section forty point seven, defence stay explicit in the ticket before the window opens.
-
-Section forty point seven treats closeout as testable only when owners and dates are recorded.
-
-For section forty point seven, appendices cannot be widened by a verbal aside from a manager.
-
 ### 40.8 40.8 Question bank
 
 Sam publishes his likely-questions list after the defence so next year's cohort rehearses better. The bank includes the public-website demo refusal.
-
-Section forty point eight develops thesis with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section forty point eight, defence stay explicit in the ticket before the window opens.
-
-Section forty point eight treats closeout as testable only when owners and dates are recorded.
-
-For section forty point eight, appendices cannot be widened by a verbal aside from a manager.
 
 ### 40.9 40.9 Refusal recording
 
 Rehearsal refusals are audio-recorded for self-review then deleted within 24 hours. Sam checks his voice for hesitation.
 
-Section forty point nine develops thesis with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section forty point nine, defence stay explicit in the ticket before the window opens.
-
-Section forty point nine treats closeout as testable only when owners and dates are recorded.
-
-For section forty point nine, appendices cannot be widened by a verbal aside from a manager.
-
-Section forty point nine fails closed if defence evidence is missing rather than guessing.
-
 ### 40.10 40.11 Scene
 
 In rehearsal the hostile examiner opens a laptop to a public bank login. Sam closes the lid gently, cites the boundary, and continues with the fail-closed demo. Peers score the gentleness and the firmness separately.
-
-Section forty point one zero develops thesis with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section forty point one zero, defence stay explicit in the ticket before the window opens.
-
-Section forty point one zero treats closeout as testable only when owners and dates are recorded.
 
 ### 40.11 40.12 Extension
 
 Gentleness score matters: slamming the laptop would scare the room into the wrong lesson. Firm and calm is the skill under examination.
 
-Section forty point one one develops thesis with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section forty point one one, defence stay explicit in the ticket before the window opens.
-
-Section forty point one one treats closeout as testable only when owners and dates are recorded.
-
-For section forty point one one, appendices cannot be widened by a verbal aside from a manager.
-
 ### 40.12 40.14 Note 11
 
 Peers score calm and firm on a 0–3 rubric; Sam targets 3/3 on both.
-
-Section forty point one two develops thesis with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section forty point one two, defence stay explicit in the ticket before the window opens.
-
-Section forty point one two treats closeout as testable only when owners and dates are recorded.
-
-For section forty point one two, appendices cannot be widened by a verbal aside from a manager.
-
-Section forty point one two fails closed if defence evidence is missing rather than guessing.
 
 ### 40.13 40.16 Pad
 
 Calm/firm rubric anchors include sample video clips of good refusals (internal only).
 
-Section forty point one three develops thesis with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section forty point one three, defence stay explicit in the ticket before the window opens.
-
-Section forty point one three treats closeout as testable only when owners and dates are recorded.
-
-For section forty point one three, appendices cannot be widened by a verbal aside from a manager.
-
-Section forty point one three fails closed if defence evidence is missing rather than guessing.
-
 ### 40.14 40.19 Boost
 
 After the defence, Sam publishes a one-page "what I would still refuse" list next to the thesis PDF. The list includes live public-bank demos, exploit kits and unverified scanner dumps as evidence. Future students see that the boundary survives graduation. Advisors cite the list when new students ask for shortcuts.
 
-Section forty point one four develops thesis with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section forty point one four, defence stay explicit in the ticket before the window opens.
-
 ### 40.15 40.20 Extra
 
 What-I-refuse list is linked from STUDY_PATH near course 111.
-
-Section forty point one five develops thesis with a TRB note Sam can demonstrate on synthetic scope.
-
-Under section forty point one five, defence stay explicit in the ticket before the window opens.
-
-Section forty point one five treats closeout as testable only when owners and dates are recorded.
-
-For section forty point one five, appendices cannot be widened by a verbal aside from a manager.
-
-Section forty point one five fails closed if defence evidence is missing rather than guessing.
 
 ### Worked example (synthetic TRB)
 
@@ -7817,7 +3601,7 @@ Model answers for EX001–EX120. Riverstone Transit Bank, Sam Ito and all figure
 
 **EX002.** Scope covers hosts; methods need separate permission. Password spraying is often forbidden even on in-scope hosts.
 
-**EX003.** Coverage is 28/40 (70% of hosts touched). Misuse: treating 70% as \"70% secure\".
+**EX003.** Coverage is 28/40 (70% of hosts touched). Misuse: treating 70% as "70% secure".
 
 **EX004.** The ledger hosts and SWIFT-adjacent gateways.
 
@@ -7831,7 +3615,7 @@ Model answers for EX001–EX120. Riverstone Transit Bank, Sam Ito and all figure
 
 **EX009.** Mistakes that widen scope or leak secrets.
 
-**EX010.** \"Multiple systems accept the same privileged password, so compromise of one grants broad access; individual accountability is unavailable.\"
+**EX010.** "Multiple systems accept the same privileged password, so compromise of one grants broad access; individual accountability is unavailable."
 
 **EX011.** Label it speculative or omit it until evidence exists; keep it out of the facts list.
 
@@ -7883,7 +3667,7 @@ Model answers for EX001–EX120. Riverstone Transit Bank, Sam Ito and all figure
 
 **EX035.** Smaller n means more uncertainty, so a wider confidence interval.
 
-**EX036.** \"We detected seven of ten test events; the true rate could reasonably be anywhere from about 40% to 90%, so we should run more trials.\"
+**EX036.** "We detected seven of ten test events; the true rate could reasonably be anywhere from about 40% to 90%, so we should run more trials."
 
 **EX037.** T1078 Valid Accounts.
 

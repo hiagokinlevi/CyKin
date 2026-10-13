@@ -44,39 +44,21 @@ You will (1) define operational technology, IoT and cyber-physical systems; (2) 
 
 Operational technology (OT) is hardware and software that monitors or controls physical equipment and processes; NIST SP 800-82r3 is the main U.S. guide to securing it. The Internet of Things (IoT) is networked devices that sense or act on the world, often small and cloud-connected. A cyber-physical system (CPS) is any system where computing and physical processes are tightly linked. A modern energy site is all three at once.
 
-Section one point one develops what ot iot and cyber-physical with a the organisation note Jonah Park can demo offline.
-
 ### 1.2 A solar and battery site
 
 Rows of solar panels feed inverters that turn direct current into grid alternating current. A battery energy storage system (BESS) stores energy, managed by a battery management system that watches cell temperatures and voltages. A site controller decides when to charge and discharge, following a schedule and instructions from the grid operator. Weather stations, cameras and the fire detection panel complete the picture. Many devices also report to vendor clouds.
-
-Section one point two develops what ot iot and cyber-physical with a the organisation note Jonah Park can demo offline.
 
 ### 1.3 Priorities
 
 In office IT, protecting confidential data often comes first. On an energy site the first priorities are safety — batteries can overheat and catch fire — and keeping the process stable and available. Integrity of commands matters enormously: a false "discharge now" can damage equipment or disturb the grid. Confidentiality still matters, but rarely first.
 
-Section one point three develops what ot iot and cyber-physical with a the organisation note Jonah Park can demo offline.
-
-Under section one point three, the mentor expects what claims to carry owners and dates.
-
 ### 1.4 Why it is a real concern
 
 Industrial and IoT devices were often designed for closed networks and trusted users. Today they are reachable through remote access, clouds and shared networks. CISA publishes advisories for industrial products every week, and IoT botnets such as Mirai, studied by Antonakakis and colleagues, showed how many devices can be taken over through default passwords.
 
-Section one point four develops what ot iot and cyber-physical with a the organisation note Jonah Park can demo offline.
-
-Under section one point four, the mentor expects what claims to carry owners and dates.
-
 ### 1.5 The guidance map
 
 IEC 62443 is the international series for industrial automation security; NIST IR 8259 and ETSI EN 303 645 set baselines for IoT products; MITRE ATT&CK for ICS catalogues adversary techniques; CISA advisories report real weaknesses and incidents.
-
-Section one point five develops what ot iot and cyber-physical with a the organisation note Jonah Park can demo offline.
-
-Under section one point five, the mentor expects what claims to carry owners and dates.
-
-Section one point five treats three overlapping terms solar as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic Elmstead)
 
@@ -124,12 +106,6 @@ You will (1) explain why an inventory comes first; (2) review a device list for 
 
 You cannot protect what you do not know exists. NIST SP 800-82r3 places asset inventory at the foundation. For each device record name, function, location, owner, firmware version, network address and whether it connects to a cloud.
 
-Section two point one develops assets networks and exposure with a the organisation note Jonah Park can demo offline.
-
-Under section two point one, the mentor expects assets claims to carry owners and dates.
-
-Section two point one treats inventory first reading the as testable only when evidence and ticket IDs are recorded.
-
 ```python
 """Lab 2: review a synthetic Elmstead inverter list for default passwords, old firmware and cloud links."""
 inv = [("INV-01", "5.1", False, True), ("INV-02", "5.1", True, True),
@@ -157,35 +133,17 @@ needs action: 2
 
 INV-02 still uses its default password: anyone who has read the manual could log in. INV-03 runs firmware 4.7 while 5.1 is current, so it may miss security fixes. INV-04 has no cloud link and no issues. Two of four inverters need action. Fixing them is done by the owner and vendor at planned times, not by trainees experimenting.
 
-Section two point two develops assets networks and exposure with a the organisation note Jonah Park can demo offline.
-
-Under section two point two, the mentor expects assets claims to carry owners and dates.
-
 ### 2.3 Separating the network
 
 IEC 62443 describes zones — groups of devices with similar needs — joined by conduits, controlled connections. At Elmstead the control zone holds SC-1, inverters and the battery management system; cameras sit in their own zone; the office network is separate again; a DMZ holds the server that shares data outward. Firewalls between zones allow only the connections that are needed.
-
-Section two point three develops assets networks and exposure with a the organisation note Jonah Park can demo offline.
-
-Under section two point three, the mentor expects assets claims to carry owners and dates.
 
 ### 2.4 Exposure and remote access
 
 Devices reachable directly from the internet are a common weakness; MITRE ATT&CK for ICS calls this T0883 Internet Accessible Device. Remote access for vendors should go through one gateway with multi-factor authentication, enabled only when needed — recommendations echoed in CISA advisory AA21-042A after a 2021 water treatment facility compromise.
 
-Section two point four develops assets networks and exposure with a the organisation note Jonah Park can demo offline.
-
-Under section two point four, the mentor expects assets claims to carry owners and dates.
-
 ### 2.5 Cloud portals
 
 Vendor clouds are convenient for monitoring, but a portal that can also send commands is effectively remote access. Ask whether it can control equipment, who has accounts, and whether multi-factor authentication is on.
-
-Section two point five develops assets networks and exposure with a the organisation note Jonah Park can demo offline.
-
-Under section two point five, the mentor expects assets claims to carry owners and dates.
-
-Section two point five treats inventory first reading the as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic Elmstead)
 
@@ -233,10 +191,6 @@ You will (1) describe normal behaviour at Elmstead; (2) spot a command that does
 
 The site controller follows a daily schedule: discharge in the morning peak, charge at midday when solar output is high, discharge again in the evening. Commands come from SC-1. Logins happen during planned work. Writing this down is what lets anyone recognise abnormal.
 
-Section three point one develops recognising and reporting problems with a the organisation note Jonah Park can demo offline.
-
-Under section three point one, the mentor expects recognising claims to carry owners and dates.
-
 ```python
 """Lab 3: compare synthetic battery charge commands with the agreed daily schedule."""
 schedule = {"06": "discharge", "12": "charge", "18": "discharge"}
@@ -260,51 +214,21 @@ Run with `python3 lab_soc.py`. Verified output:
 
 Three commands match the schedule and come from SC-1. At 14:00 a discharge command arrived from the vendor's remote portal: wrong time and wrong source. It may be a vendor test, a mistake or misuse of stolen credentials; you cannot tell from this line alone, and you do not need to. You report it.
 
-Section three point two develops recognising and reporting problems with a the organisation note Jonah Park can demo offline.
-
-Under section three point two, the mentor expects recognising claims to carry owners and dates.
-
 ### 3.3 Naming what you saw
 
 MITRE ATT&CK for ICS gives shared names: T0836 Modify Parameter for changed settings, T0886 Remote Services for misuse of remote access routes, T0831 Manipulation of Control for unauthorised commands to the process. Use them to describe observations, not to accuse.
-
-Section three point three develops recognising and reporting problems with a the organisation note Jonah Park can demo offline.
-
-Under section three point three, the mentor expects recognising claims to carry owners and dates.
-
-Section three point three treats normal first reading the as testable only when evidence and ticket IDs are recorded.
 
 ### 3.4 Other warning signs
 
 Battery temperatures rising without load; inverter settings changed with no ticket; new devices on the network; screens disagreeing with local meters; accounts logging in at odd hours; alarms silenced.
 
-Section three point four develops recognising and reporting problems with a the organisation note Jonah Park can demo offline.
-
-Under section three point four, the mentor expects recognising claims to carry owners and dates.
-
-Section three point four treats normal first reading the as testable only when evidence and ticket IDs are recorded.
-
 ### 3.5 Reporting
 
 Tell the site engineer or the person on call immediately. State what, where, when, the current state and what you have done. Keep evidence: screenshots, log lines, times. Do not change settings, reboot devices or contact the vendor yourself unless asked.
 
-Section three point five develops recognising and reporting problems with a the organisation note Jonah Park can demo offline.
-
-Under section three point five, the mentor expects recognising claims to carry owners and dates.
-
-Section three point five treats normal first reading the as testable only when evidence and ticket IDs are recorded.
-
 ### 3.6 Safety comes first
 
 If a battery is overheating, follow the site's fire and safety procedure first; security questions wait.
-
-Section three point six develops recognising and reporting problems with a the organisation note Jonah Park can demo offline.
-
-Under section three point six, the mentor expects recognising claims to carry owners and dates.
-
-Section three point six treats normal first reading the as testable only when evidence and ticket IDs are recorded.
-
-For section three point six, the organisation will not accept recognising work without a written trail.
 
 ### Worked example (synthetic Elmstead)
 
@@ -351,47 +275,21 @@ You will (1) practise the everyday habits that protect an OT site; (2) outline t
 
 Use only site-issued USB drives, scanned before use. Never plug unknown devices into site equipment. Lock screens. Keep passwords out of sight and out of chat. Report lost badges and laptops quickly. Do not install software on site computers. These habits block the commonest ways malware and intruders get in.
 
-Section four point one develops safe habits response basics and with a the organisation note Jonah Park can demo offline.
-
-Under section four point one, the mentor expects safe claims to carry owners and dates.
-
 ### 4.2 Responding to an incident
 
 NIST SP 800-82r3 stresses planning response with operations. At Elmstead the steps are: make people and equipment safe using site procedures; call the on-call engineer; record what you see; preserve evidence; let the engineer and incident lead decide containment, such as disconnecting the vendor portal or putting the battery into a safe idle state; restore from verified backups; learn and improve.
-
-Section four point two develops safe habits response basics and with a the organisation note Jonah Park can demo offline.
-
-Under section four point two, the mentor expects safe claims to carry owners and dates.
 
 ### 4.3 Updates and devices
 
 Vendors release firmware fixes; the owner applies them at planned times after checking compatibility. For new devices, ask suppliers questions drawn from ETSI EN 303 645 and NIST IR 8259: unique passwords, a vulnerability disclosure policy, an update period, encrypted communication.
 
-Section four point three develops safe habits response basics and with a the organisation note Jonah Park can demo offline.
-
-Under section four point three, the mentor expects safe claims to carry owners and dates.
-
-Section four point three treats everyday habits responding to as testable only when evidence and ticket IDs are recorded.
-
 ### 4.4 Limits
 
 Never test, scan or log into systems you are not authorised to use. Never bypass safety systems such as fire detection or battery protection. Never share exploit code or attack instructions. Learning happens on simulators and lab equipment.
 
-Section four point four develops safe habits response basics and with a the organisation note Jonah Park can demo offline.
-
-Under section four point four, the mentor expects safe claims to carry owners and dates.
-
-Section four point four treats everyday habits responding to as testable only when evidence and ticket IDs are recorded.
-
 ### 4.5 Where next
 
 The next course in this curriculum covers critical infrastructure and sector security. Longer courses in this area go deeper into networks, protocols, monitoring and design. Keep a record of exercises completed.
-
-Section four point five develops safe habits response basics and with a the organisation note Jonah Park can demo offline.
-
-Under section four point five, the mentor expects safe claims to carry owners and dates.
-
-Section four point five treats everyday habits responding to as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic Elmstead)
 

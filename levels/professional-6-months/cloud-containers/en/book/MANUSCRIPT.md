@@ -50,41 +50,17 @@ Hannah Kowalski has run servers for the fictional Elmstead Council for twelve ye
 
 Hannah's experience still applies: least privilege, patching, logging and change control. What changes is that infrastructure is configured through APIs, identities are numerous and often belong to automation, and the provider runs part of the stack. NIST SP 800-145 describes the on-demand, self-service nature of cloud, which makes it easy to grant access quickly and hard to notice when it is too much.
 
-Section one point two develops security foundations for practitioners with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section one point two, Dev Patel expects security claims to carry owners and dates.
-
 ### 1.3 Security goals for permits
 
 Residents' names, addresses and vehicle registrations must stay confidential; permit records must be accurate so enforcement officers act on correct data; and the service must stay available because residents need permits to park legally.
-
-Section one point three develops security foundations for practitioners with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section one point three, Dev Patel expects security claims to carry owners and dates.
-
-Section one point three treats the starting point what as testable only when evidence and ticket IDs are recorded.
 
 ### 1.4 Shared responsibility
 
 The provider secures the hardware, the managed control plane and its own services. The council configures identities, network rules, workloads and data protection, as each major provider's shared responsibility page explains. The audit findings fall entirely on the council's side.
 
-Section one point four develops security foundations for practitioners with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section one point four, Dev Patel expects security claims to carry owners and dates.
-
-Section one point four treats the starting point what as testable only when evidence and ticket IDs are recorded.
-
 ### 1.5 Working as a professional
 
 Hannah's course expects her to apply methods at work, with evidence, under her organisation's authority, and to stay within agreed scope.
-
-Section one point five develops security foundations for practitioners with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section one point five, Dev Patel expects security claims to carry owners and dates.
-
-Section one point five treats the starting point what as testable only when evidence and ticket IDs are recorded.
-
-For section one point five, Elmstead Council will not accept security work without a written trail.
 
 ### Worked example
 
@@ -124,53 +100,21 @@ You will (1) describe the permit service and its components; (2) identify stakeh
 
 The permit service has a public web front end (permits-web), a background worker that issues permits (permits-worker), a reporting job used by the parking team, a managed database and a storage bucket for uploaded documents such as proof of address. A deployment bot builds and deploys images.
 
-Section two point one develops cloud and container security service with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section two point one, Dev Patel expects cloud claims to carry owners and dates.
-
 ### 2.2 Stakeholders
 
 Residents want a working, private service. The parking team wants accurate reports. The digital team builds the application. Internal audit wants findings closed with evidence. The data protection officer cares about uploaded documents. Dev cares about stability.
-
-Section two point two develops cloud and container security service with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section two point two, Dev Patel expects cloud claims to carry owners and dates.
-
-Section two point two treats the service stakeholders concerns as testable only when evidence and ticket IDs are recorded.
 
 ### 2.3 Concerns
 
 Developers worry that removing permissions will break deployments. Audit wants dates. The parking team fears losing reports during changes.
 
-Section two point three develops cloud and container security service with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section two point three, Dev Patel expects cloud claims to carry owners and dates.
-
-Section two point three treats the service stakeholders concerns as testable only when evidence and ticket IDs are recorded.
-
-For section two point three, Elmstead Council will not accept cloud work without a written trail.
-
 ### 2.4 Agreeing priorities
 
 Hannah holds a short meeting where each stakeholder states their main concern. They agree: protect resident data first, keep the service available, close audit findings within three months.
 
-Section two point four develops cloud and container security service with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section two point four, Dev Patel expects cloud claims to carry owners and dates.
-
-Section two point four treats the service stakeholders concerns as testable only when evidence and ticket IDs are recorded.
-
 ### 2.5 Communication plan
 
 A fortnightly update goes to all stakeholders, in plain language, showing progress and planned changes.
-
-Section two point five develops cloud and container security service with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section two point five, Dev Patel expects cloud claims to carry owners and dates.
-
-Section two point five treats the service stakeholders concerns as testable only when evidence and ticket IDs are recorded.
-
-For section two point five, Elmstead Council will not accept cloud work without a written trail.
 
 ### Mapping data
 
@@ -216,71 +160,25 @@ You will (1) work within written authority; (2) handle evidence with care; (3) r
 
 Dev and the council's information security officer sign a brief giving Hannah read access to identity and registry settings, read access to cluster configuration, and the right to propose changes through the normal change process.
 
-Section three point one develops authorized practice and evidence handling with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section three point one, Dev Patel expects authorized claims to carry owners and dates.
-
-Section three point one treats authority limits evidence integrity as testable only when evidence and ticket IDs are recorded.
-
 ### 3.2 Limits
 
 Hannah does not access resident data, does not test the service for weaknesses, and does not change production without approval.
-
-Section three point two develops authorized practice and evidence handling with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section three point two, Dev Patel expects authorized claims to carry owners and dates.
-
-Section three point two treats authority limits evidence integrity as testable only when evidence and ticket IDs are recorded.
-
-For section three point two, Elmstead Council will not accept authorized work without a written trail.
 
 ### 3.3 Evidence
 
 She exports role definitions, 90 days of permission usage from the provider's access logs, and image scan results. Each export is saved with time, source and her name.
 
-Section three point three develops authorized practice and evidence handling with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section three point three, Dev Patel expects authorized claims to carry owners and dates.
-
-Section three point three treats authority limits evidence integrity as testable only when evidence and ticket IDs are recorded.
-
-For section three point three, Elmstead Council will not accept authorized work without a written trail.
-
 ### 3.4 Integrity
 
 Exports are stored in a restricted folder with read-only copies; a short register lists each item.
-
-Section three point four develops authorized practice and evidence handling with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section three point four, Dev Patel expects authorized claims to carry owners and dates.
-
-Section three point four treats authority limits evidence integrity as testable only when evidence and ticket IDs are recorded.
-
-For section three point four, Elmstead Council will not accept authorized work without a written trail.
 
 ### 3.5 Privacy
 
 Access logs contain staff names and resident-facing service activity but not resident records. Hannah removes staff names from shared summaries.
 
-Section three point five develops authorized practice and evidence handling with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section three point five, Dev Patel expects authorized claims to carry owners and dates.
-
-Section three point five treats authority limits evidence integrity as testable only when evidence and ticket IDs are recorded.
-
-For section three point five, Elmstead Council will not accept authorized work without a written trail.
-
 ### 3.6 Professional duty
 
 If she sees something outside scope that worries her, she reports it to Dev rather than investigating alone.
-
-Section three point six develops authorized practice and evidence handling with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section three point six, Dev Patel expects authorized claims to carry owners and dates.
-
-Section three point six treats authority limits evidence integrity as testable only when evidence and ticket IDs are recorded.
-
-For section three point six, Elmstead Council will not accept authorized work without a written trail.
 
 ### Why written authority matters
 
@@ -328,59 +226,21 @@ You will (1) apply least privilege analysis; (2) use vulnerability prioritisatio
 
 Compare what each identity is allowed to do with what it has done over a representative period. Unused permissions are candidates for removal, after checking with owners for rare tasks.
 
-Section four point one develops cloud and container security core with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section four point one, Dev Patel expects cloud claims to carry owners and dates.
-
-Section four point one treats least privilege analysis role as testable only when evidence and ticket IDs are recorded.
-
 ### 4.2 Role design
 
 Role-based access control, described by Sandhu et al. (1996), groups permissions into roles. Hannah aims for one role per workload with only needed permissions.
-
-Section four point two develops cloud and container security core with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section four point two, Dev Patel expects cloud claims to carry owners and dates.
-
-Section four point two treats least privilege analysis role as testable only when evidence and ticket IDs are recorded.
-
-For section four point two, Elmstead Council will not accept cloud work without a written trail.
 
 ### 4.3 Vulnerability prioritisation
 
 Severity scores describe potential impact; the EPSS model of Jacobs et al. (2021) estimates the likelihood of exploitation activity; exposure describes whether the workload faces the internet. Combining them gives a fair order.
 
-Section four point three develops cloud and container security core with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section four point three, Dev Patel expects cloud claims to carry owners and dates.
-
-Section four point three treats least privilege analysis role as testable only when evidence and ticket IDs are recorded.
-
 ### 4.4 Workload controls
 
 Kubernetes Pod Security Standards define Baseline and Restricted profiles; enforcing Restricted makes containers run as non-root and with fewer privileges, reducing the impact of a vulnerability.
 
-Section four point four develops cloud and container security core with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section four point four, Dev Patel expects cloud claims to carry owners and dates.
-
-Section four point four treats least privilege analysis role as testable only when evidence and ticket IDs are recorded.
-
-For section four point four, Elmstead Council will not accept cloud work without a written trail.
-
 ### 4.5 Container guidance
 
 NIST SP 800-190 recommends trusted images, regular rebuilding and limiting container privileges.
-
-Section four point five develops cloud and container security core with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section four point five, Dev Patel expects cloud claims to carry owners and dates.
-
-Section four point five treats least privilege analysis role as testable only when evidence and ticket IDs are recorded.
-
-For section four point five, Elmstead Council will not accept cloud work without a written trail.
-
-Section four point five fails closed if cloud evidence is missing rather than guessing.
 
 ### Choosing the period
 
@@ -434,14 +294,6 @@ You will (1) interpret permission usage data; (2) identify unused permissions; (
 
 Hannah prepares a synthetic summary of three roles: permits-app (used by web and worker), reporting and deploy-bot, with permissions granted and used over 90 days.
 
-Section five point one develops cloud and container security tools with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section five point one, Dev Patel expects cloud claims to carry owners and dates.
-
-Section five point one treats the data reading the as testable only when evidence and ticket IDs are recorded.
-
-For section five point one, Elmstead Council will not accept cloud work without a written trail.
-
 ### Lab — Lab — role usage
 
 ```python
@@ -470,31 +322,13 @@ overall unused 6/13 (46%)
 
 Six of thirteen permissions (46%) were unused. Permits-app never used storage.admin or storage.write; reporting never used iam.admin or storage.read; deploy-bot never used iam.admin or registry.delete.
 
-Section five point two develops cloud and container security tools with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section five point two, Dev Patel expects cloud claims to carry owners and dates.
-
-Section five point two treats the data reading the as testable only when evidence and ticket IDs are recorded.
-
 ### 5.3 Interpreting
 
 The two iam.admin grants are the most dangerous: they allow changing permissions, which could let a compromised workload give itself more access. Storage.admin could change bucket policies.
 
-Section five point three develops cloud and container security tools with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section five point three, Dev Patel expects cloud claims to carry owners and dates.
-
-Section five point three treats the data reading the as testable only when evidence and ticket IDs are recorded.
-
 ### 5.4 Checking with owners
 
 The digital team confirms storage.write is needed only for a yearly archive job; it is moved to a separate, rarely used role. Registry.delete is used manually by Dev for clean-ups and can be removed from the bot.
-
-Section five point four develops cloud and container security tools with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section five point four, Dev Patel expects cloud claims to carry owners and dates.
-
-Section five point four treats the data reading the as testable only when evidence and ticket IDs are recorded.
 
 ### Removal plan
 
@@ -548,14 +382,6 @@ You will (1) prioritise image vulnerabilities; (2) build a repeatable workflow; 
 
 The scanner reports six synthetic findings across three images. Hannah orders them with the method from chapter 4.
 
-Section six point one develops cloud and container security operational with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section six point one, Dev Patel expects cloud claims to carry owners and dates.
-
-Section six point one treats the findings reading the as testable only when evidence and ticket IDs are recorded.
-
-For section six point one, Elmstead Council will not accept cloud work without a written trail.
-
 ### Lab — Lab — vulnerability triage
 
 ```python
@@ -587,47 +413,17 @@ tier 3  reporting       CVE-F  severity  4.0  likelihood 0.001  internal
 
 Tier 1: CVE-A in permits-web, severity 9.8, likelihood 0.62, internet-facing. Tier 2: CVE-D in reporting (7.5, 0.40) and CVE-C in permits-worker (9.1 but likelihood 0.03), both internal. Tier 3: three low-likelihood findings.
 
-Section six point two develops cloud and container security operational with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section six point two, Dev Patel expects cloud claims to carry owners and dates.
-
-Section six point two treats the findings reading the as testable only when evidence and ticket IDs are recorded.
-
-For section six point two, Elmstead Council will not accept cloud work without a written trail.
-
 ### 6.3 Workflow
 
 Tier 1 is fixed within a week, tier 2 within a month, tier 3 in the next routine rebuild. Each fix is a rebuild from an updated base image through the pipeline, then deployment through the change process.
-
-Section six point three develops cloud and container security operational with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section six point three, Dev Patel expects cloud claims to carry owners and dates.
-
-Section six point three treats the findings reading the as testable only when evidence and ticket IDs are recorded.
 
 ### 6.4 Repetition
 
 The scanner runs weekly; new findings are tiered automatically and appear in the team's queue.
 
-Section six point four develops cloud and container security operational with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section six point four, Dev Patel expects cloud claims to carry owners and dates.
-
-Section six point four treats the findings reading the as testable only when evidence and ticket IDs are recorded.
-
-For section six point four, Elmstead Council will not accept cloud work without a written trail.
-
 ### 6.5 Exceptions
 
 If a fix is impossible in time, an exception records the reason and compensating controls.
-
-Section six point five develops cloud and container security operational with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section six point five, Dev Patel expects cloud claims to carry owners and dates.
-
-Section six point five treats the findings reading the as testable only when evidence and ticket IDs are recorded.
-
-For section six point five, Elmstead Council will not accept cloud work without a written trail.
 
 ### Why exposure matters
 
@@ -685,21 +481,9 @@ You will (1) apply role and workload changes; (2) verify each remediation with f
 
 Hannah's plan has six items: remove storage.admin from permits-app, remove iam.admin from reporting, remove iam.admin and registry.delete from deploy-bot, rebuild permits-web, rebuild reporting, and enforce Restricted in the permits namespace.
 
-Section seven point one develops cloud and container security controls with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section seven point one, Dev Patel expects cloud claims to carry owners and dates.
-
-Section seven point one treats changes verification reading the as testable only when evidence and ticket IDs are recorded.
-
 ### 7.2 Verification
 
 Each item is confirmed with fresh evidence: a new role export, a new scan, and the namespace label plus a test deployment of a synthetic non-compliant pod in staging that should be rejected.
-
-Section seven point two develops cloud and container security controls with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section seven point two, Dev Patel expects cloud claims to carry owners and dates.
-
-Section seven point two treats changes verification reading the as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — Lab — remediation confirmation
 
@@ -725,33 +509,13 @@ confirmed 5/6
 
 Five of six items are confirmed. The reporting rebuild is open because the reporting job uses an old library that does not work with the new base image.
 
-Section seven point three develops cloud and container security controls with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section seven point three, Dev Patel expects cloud claims to carry owners and dates.
-
-Section seven point three treats changes verification reading the as testable only when evidence and ticket IDs are recorded.
-
 ### 7.4 Handling the open item
 
 The digital team needs two weeks to update the library. Hannah records an exception with compensating controls: reporting runs internally with no internet access and its role is now read-only.
 
-Section seven point four develops cloud and container security controls with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section seven point four, Dev Patel expects cloud claims to carry owners and dates.
-
-Section seven point four treats changes verification reading the as testable only when evidence and ticket IDs are recorded.
-
 ### 7.5 Reporting
 
 Audit receives the status with evidence for each closed item and the exception for the open one.
-
-Section seven point five develops cloud and container security controls with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section seven point five, Dev Patel expects cloud claims to carry owners and dates.
-
-Section seven point five treats changes verification reading the as testable only when evidence and ticket IDs are recorded.
-
-For section seven point five, Elmstead Council will not accept cloud work without a written trail.
 
 ### Test pod
 
@@ -807,63 +571,21 @@ You will (1) analyse how the audit findings arose; (2) identify process causes; 
 
 Permissions were added during early testing and urgent fixes, with no review afterwards. Nobody owned role hygiene.
 
-Section eight point one develops cloud and container security supervised with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section eight point one, Dev Patel expects cloud claims to carry owners and dates.
-
-Section eight point one treats how roles grew how as testable only when evidence and ticket IDs are recorded.
-
-For section eight point one, Elmstead Council will not accept cloud work without a written trail.
-
 ### 8.2 How vulnerabilities piled up
 
 The scanner existed, but results went to an inbox nobody watched, and there was no rule for what to fix first.
-
-Section eight point two develops cloud and container security supervised with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section eight point two, Dev Patel expects cloud claims to carry owners and dates.
-
-Section eight point two treats how roles grew how as testable only when evidence and ticket IDs are recorded.
-
-For section eight point two, Elmstead Council will not accept cloud work without a written trail.
 
 ### 8.3 Process causes
 
 Missing ownership, missing review cadence and missing prioritisation method.
 
-Section eight point three develops cloud and container security supervised with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section eight point three, Dev Patel expects cloud claims to carry owners and dates.
-
-Section eight point three treats how roles grew how as testable only when evidence and ticket IDs are recorded.
-
-For section eight point three, Elmstead Council will not accept cloud work without a written trail.
-
-Section eight point three fails closed if cloud evidence is missing rather than guessing.
-
 ### 8.4 Recommendations
 
 Quarterly role reviews owned by the platform team; weekly scan triage owned by the digital team; temporary permissions that expire; findings tracked in the normal work queue.
 
-Section eight point four develops cloud and container security supervised with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section eight point four, Dev Patel expects cloud claims to carry owners and dates.
-
-Section eight point four treats how roles grew how as testable only when evidence and ticket IDs are recorded.
-
-For section eight point four, Elmstead Council will not accept cloud work without a written trail.
-
 ### 8.5 Supervision
 
 Dev reviews the analysis and challenges one point: whether expiry for temporary permissions is practical. They agree to pilot it.
-
-Section eight point five develops cloud and container security supervised with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section eight point five, Dev Patel expects cloud claims to carry owners and dates.
-
-Section eight point five treats how roles grew how as testable only when evidence and ticket IDs are recorded.
-
-For section eight point five, Elmstead Council will not accept cloud work without a written trail.
 
 ### Comparing with guidance
 
@@ -925,61 +647,21 @@ You will (1) report findings clearly to different audiences; (2) handle sensitiv
 
 Councillors want risk and cost in plain words; audit wants evidence; developers want technical detail.
 
-Section nine point one develops communication ethics and reporting with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section nine point one, Dev Patel expects communication claims to carry owners and dates.
-
-Section nine point one treats audiences one message three as testable only when evidence and ticket IDs are recorded.
-
-For section nine point one, Elmstead Council will not accept communication work without a written trail.
-
 ### 9.2 One message, three forms
 
 Hannah writes a one-paragraph summary for councillors, an evidence table for audit and a technical note for developers.
-
-Section nine point two develops communication ethics and reporting with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section nine point two, Dev Patel expects communication claims to carry owners and dates.
-
-Section nine point two treats audiences one message three as testable only when evidence and ticket IDs are recorded.
-
-For section nine point two, Elmstead Council will not accept communication work without a written trail.
 
 ### 9.3 Ethics
 
 Findings describe systems and processes, not individuals. The contractor's leftover role is reported without naming the contractor.
 
-Section nine point three develops communication ethics and reporting with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section nine point three, Dev Patel expects communication claims to carry owners and dates.
-
-Section nine point three treats audiences one message three as testable only when evidence and ticket IDs are recorded.
-
-For section nine point three, Elmstead Council will not accept communication work without a written trail.
-
 ### 9.4 Honesty
 
 Hannah reports the open reporting rebuild and the limits of 90 days of data rather than presenting a perfect picture.
 
-Section nine point four develops communication ethics and reporting with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section nine point four, Dev Patel expects communication claims to carry owners and dates.
-
-Section nine point four treats audiences one message three as testable only when evidence and ticket IDs are recorded.
-
-For section nine point four, Elmstead Council will not accept communication work without a written trail.
-
 ### 9.5 Sensitive details
 
 Detailed vulnerability information is shared only with those who need it until fixed.
-
-Section nine point five develops communication ethics and reporting with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section nine point five, Dev Patel expects communication claims to carry owners and dates.
-
-Section nine point five treats audiences one message three as testable only when evidence and ticket IDs are recorded.
-
-For section nine point five, Elmstead Council will not accept communication work without a written trail.
 
 ### Writing the summary
 
@@ -1041,61 +723,21 @@ You will (1) check the quality of security work; (2) troubleshoot problems after
 
 Hannah asks a colleague to repeat her role analysis on one role from raw exports. Their results match.
 
-Section ten point one develops cloud and container security quality with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section ten point one, Dev Patel expects cloud claims to carry owners and dates.
-
-Section ten point one treats quality checks breakage root as testable only when evidence and ticket IDs are recorded.
-
-For section ten point one, Elmstead Council will not accept cloud work without a written trail.
-
 ### 10.2 Breakage
 
 After removing storage.admin, the worker fails to set an object's metadata. The error shows it needs a narrower metadata permission, which is added.
-
-Section ten point two develops cloud and container security quality with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section ten point two, Dev Patel expects cloud claims to carry owners and dates.
-
-Section ten point two treats quality checks breakage root as testable only when evidence and ticket IDs are recorded.
-
-For section ten point two, Elmstead Council will not accept cloud work without a written trail.
 
 ### 10.3 Root cause
 
 The usage log had recorded the action under a different name; Hannah updates her method to map action names carefully.
 
-Section ten point three develops cloud and container security quality with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section ten point three, Dev Patel expects cloud claims to carry owners and dates.
-
-Section ten point three treats quality checks breakage root as testable only when evidence and ticket IDs are recorded.
-
-For section ten point three, Elmstead Council will not accept cloud work without a written trail.
-
 ### 10.4 Workflow improvements
 
 Scan triage now takes 15 minutes weekly; role reviews take an hour quarterly.
 
-Section ten point four develops cloud and container security quality with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section ten point four, Dev Patel expects cloud claims to carry owners and dates.
-
-Section ten point four treats quality checks breakage root as testable only when evidence and ticket IDs are recorded.
-
-For section ten point four, Elmstead Council will not accept cloud work without a written trail.
-
 ### 10.5 Measures
 
 Unused permissions fell from 6 of 13 to 0 in the core roles; tier 1 findings were fixed in three days.
-
-Section ten point five develops cloud and container security quality with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section ten point five, Dev Patel expects cloud claims to carry owners and dates.
-
-Section ten point five treats quality checks breakage root as testable only when evidence and ticket IDs are recorded.
-
-For section ten point five, Elmstead Council will not accept cloud work without a written trail.
 
 ### Independent review value
 
@@ -1157,65 +799,21 @@ You will (1) rehearse the full workflow on synthetic data; (2) time each step; (
 
 Dev gives Hannah a synthetic new service with two roles and four image findings. She runs the full workflow: usage analysis, triage, plan, staging changes, verification, report.
 
-Section eleven point one develops supervised laboratory with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section eleven point one, Dev Patel expects supervised claims to carry owners and dates.
-
-Section eleven point one treats rehearsal timing weak points as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point one, Elmstead Council will not accept supervised work without a written trail.
-
 ### 11.2 Timing
 
 The rehearsal takes three hours: one for analysis, one for staging changes, one for verification and report.
-
-Section eleven point two develops supervised laboratory with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section eleven point two, Dev Patel expects supervised claims to carry owners and dates.
-
-Section eleven point two treats rehearsal timing weak points as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point two, Elmstead Council will not accept supervised work without a written trail.
 
 ### 11.3 Weak points
 
 Verification of workload controls took longest because staging lacked a test pod template. Hannah adds one.
 
-Section eleven point three develops supervised laboratory with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section eleven point three, Dev Patel expects supervised claims to carry owners and dates.
-
-Section eleven point three treats rehearsal timing weak points as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point three, Elmstead Council will not accept supervised work without a written trail.
-
 ### 11.4 Re-run
 
 A second rehearsal on another synthetic service takes two hours.
 
-Section eleven point four develops supervised laboratory with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section eleven point four, Dev Patel expects supervised claims to carry owners and dates.
-
-Section eleven point four treats rehearsal timing weak points as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point four, Elmstead Council will not accept supervised work without a written trail.
-
-Section eleven point four fails closed if supervised evidence is missing rather than guessing.
-
 ### 11.5 Safety
 
 The rehearsal used synthetic services in a separate staging account.
-
-Section eleven point five develops supervised laboratory with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section eleven point five, Dev Patel expects supervised claims to carry owners and dates.
-
-Section eleven point five treats rehearsal timing weak points as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point five, Elmstead Council will not accept supervised work without a written trail.
-
-Section eleven point five fails closed if supervised evidence is missing rather than guessing.
 
 ### What the rehearsal tests
 
@@ -1281,65 +879,21 @@ You will (1) assemble a portfolio of evidence; (2) reflect on growth; (3) plan c
 
 Hannah's portfolio includes her authority brief, method note, role analysis, triage, verification evidence, the exception, reports and rehearsal records.
 
-Section twelve point one develops practice portfolio and final review with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section twelve point one, Dev Patel expects practice claims to carry owners and dates.
-
-Section twelve point one treats portfolio assessment reflection next as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point one, Elmstead Council will not accept practice work without a written trail.
-
 ### 12.2 Assessment
 
 Kingsbridge assessors check that each item shows applied competence with evidence.
-
-Section twelve point two develops practice portfolio and final review with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section twelve point two, Dev Patel expects practice claims to carry owners and dates.
-
-Section twelve point two treats portfolio assessment reflection next as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point two, Elmstead Council will not accept practice work without a written trail.
-
-Section twelve point two fails closed if practice evidence is missing rather than guessing.
 
 ### 12.3 Reflection
 
 Hannah notes her strength in careful verification and her growth in stakeholder communication.
 
-Section twelve point three develops practice portfolio and final review with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section twelve point three, Dev Patel expects practice claims to carry owners and dates.
-
-Section twelve point three treats portfolio assessment reflection next as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point three, Elmstead Council will not accept practice work without a written trail.
-
 ### 12.4 Next steps
 
 She plans to extend role reviews to the council's other cloud services.
 
-Section twelve point four develops practice portfolio and final review with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section twelve point four, Dev Patel expects practice claims to carry owners and dates.
-
-Section twelve point four treats portfolio assessment reflection next as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point four, Elmstead Council will not accept practice work without a written trail.
-
 ### 12.5 Closing the audit
 
 The reporting rebuild closes after two weeks; audit closes both findings.
-
-Section twelve point five develops practice portfolio and final review with a Elmstead Council note Hannah Kowalski can demo offline.
-
-Under section twelve point five, Dev Patel expects practice claims to carry owners and dates.
-
-Section twelve point five treats portfolio assessment reflection next as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point five, Elmstead Council will not accept practice work without a written trail.
-
-Section twelve point five fails closed if practice evidence is missing rather than guessing.
 
 ### Assessor feedback
 

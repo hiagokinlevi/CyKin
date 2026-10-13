@@ -1679,10 +1679,6 @@ The Spillover Study had one primary outcome (arrivals), three sites and one seco
 
 Every number in the text should come from the analysis output, not from memory or an earlier draft. Three practices help: generate results tables directly from scripts; keep a machine-readable results file from the final run; and check the text against it before submission. Lab 7 below automates a first pass.
 
-Section seven point four develops dissertation writing and limitations with a Calder County note the researcher can demo offline.
-
-Under section seven point four, the supervisor expects dissertation claims to carry owners and dates.
-
 ### 7.5 Reporting guidelines as checklists
 
 Reporting guidelines list what a reader needs to assess a study; using them as a writing checklist prevents omissions. Relevant ones for this field:

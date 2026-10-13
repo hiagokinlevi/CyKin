@@ -49,21 +49,9 @@ Yusuf Adeyemi is a doctoral candidate at the fictional Calder University, superv
 
 Endpoint data are messy: devices are offline, tickets are labelled inconsistently and outcomes can be chosen after seeing results. Yusuf pre-registers his hypotheses, primary outcomes (95th-percentile days to patch and failure rate) and analysis plan with his supervisor before collecting main-study data.
 
-Section one point two develops advanced research integrity and methods with a Calder University note Yusuf Adeyemi can demo offline.
-
-Under section one point two, Prof. Ingrid Solberg expects advanced claims to carry owners and dates.
-
-Section one point two treats the research problem why as testable only when evidence and ticket IDs are recorded.
-
 ### 1.3 Coding failure tickets
 
 Failure reasons in help-desk tickets are free text. Yusuf writes a codebook with four labels: reboot problems, disk space, application breakage and network. Two coders label 80 synthetic tickets independently.
-
-Section one point three develops advanced research integrity and methods with a Calder University note Yusuf Adeyemi can demo offline.
-
-Under section one point three, Prof. Ingrid Solberg expects advanced claims to carry owners and dates.
-
-Section one point three treats the research problem why as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — Lab — coder agreement
 
@@ -88,21 +76,9 @@ tickets 80, observed agreement 0.875, chance 0.296, kappa 0.822
 
 Observed agreement is 0.875, chance agreement 0.296 and Cohen's kappa 0.822. By the bands of Landis and Koch (1977), this is almost perfect agreement. Disagreements cluster between reboot and application labels, so the codebook gains a rule: if the application fails only until a reboot, label it reboot.
 
-Section one point four develops advanced research integrity and methods with a Calder University note Yusuf Adeyemi can demo offline.
-
-Under section one point four, Prof. Ingrid Solberg expects advanced claims to carry owners and dates.
-
-Section one point four treats the research problem why as testable only when evidence and ticket IDs are recorded.
-
 ### 1.5 Data ethics
 
 Ticket text can name staff and occasionally patients. The trust's information governance lead approves a process where tickets are redacted before leaving the trust, and Yusuf works only with redacted, synthetic-structure extracts.
-
-Section one point five develops advanced research integrity and methods with a Calder University note Yusuf Adeyemi can demo offline.
-
-Under section one point five, Prof. Ingrid Solberg expects advanced claims to carry owners and dates.
-
-Section one point five treats the research problem why as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -144,45 +120,21 @@ You will (1) survey research on patching, configuration and endpoint behaviour; 
 
 Li and Paxson (2017) studied thousands of security patches across open-source projects, finding that security fixes are often smaller than other fixes and that vulnerabilities can stay in code for years. Nappa et al. (2015) measured patch deployment on client machines and showed that shared code across applications leaves some copies unpatched long after a fix is released. Both show that release is not deployment.
 
-Section two point one develops systems endpoints and hardware security with a Calder University note Yusuf Adeyemi can demo offline.
-
 ### 2.2 Operators' view
 
 Dietrich et al. (2018) surveyed system operators about security misconfigurations, finding that many incidents come from configuration errors under time pressure and weak processes. Patch deployment is an operator process with the same pressures.
-
-Section two point two develops systems endpoints and hardware security with a Calder University note Yusuf Adeyemi can demo offline.
-
-Under section two point two, Prof. Ingrid Solberg expects systems claims to carry owners and dates.
-
-Section two point two treats patch research operators' view as testable only when evidence and ticket IDs are recorded.
 
 ### 2.3 Hardware frontier
 
 Kocher et al. (2019) showed that speculative execution in processors can leak data across security boundaries; Kim et al. (2014) showed that repeatedly accessing DRAM rows can flip bits in neighbouring rows. Fixes for such flaws arrive as firmware, microcode and operating system updates, which increases the volume and risk of endpoint patching. NIST SP 800-193 sets out firmware resiliency principles: protect, detect and recover.
 
-Section two point three develops systems endpoints and hardware security with a Calder University note Yusuf Adeyemi can demo offline.
-
 ### 2.4 The gap
 
 The literature measures patch release and population-level deployment, but few studies compare deployment strategies inside one organisation with outcome data on both speed and breakage. Yusuf's study fits this gap.
 
-Section two point four develops systems endpoints and hardware security with a Calder University note Yusuf Adeyemi can demo offline.
-
-Under section two point four, Prof. Ingrid Solberg expects systems claims to carry owners and dates.
-
-Section two point four treats patch research operators' view as testable only when evidence and ticket IDs are recorded.
-
 ### 2.5 Scope boundary
 
 The study observes deployment outcomes; it does not test or reproduce any vulnerability.
-
-Section two point five develops systems endpoints and hardware security with a Calder University note Yusuf Adeyemi can demo offline.
-
-Under section two point five, Prof. Ingrid Solberg expects systems claims to carry owners and dates.
-
-Section two point five treats patch research operators' view as testable only when evidence and ticket IDs are recorded.
-
-For section two point five, Calder University will not accept systems work without a written trail.
 
 ### Worked example
 
@@ -224,55 +176,21 @@ You will (1) specify hypotheses, design and outcomes; (2) justify a quasi-experi
 
 H1: ring-based deployment reduces the 95th-percentile days to patch. H2: ring-based deployment reduces the update failure rate. Both are directional and pre-registered.
 
-Section three point one develops original contribution proposal with a Calder University note Yusuf Adeyemi can demo offline.
-
-Under section three point one, Prof. Ingrid Solberg expects original claims to carry owners and dates.
-
-Section three point one treats hypotheses design rings threats as testable only when evidence and ticket IDs are recorded.
-
-For section three point one, Calder University will not accept original work without a written trail.
-
 ### 3.2 Design
 
 Harrowgate has two comparable hospital sites. With the trust's agreement, one site adopts rings for six months while the other continues flat deployment. Random assignment of individual endpoints is impossible because wards share devices and staff, so the design is a site-level quasi-experiment.
-
-Section three point two develops original contribution proposal with a Calder University note Yusuf Adeyemi can demo offline.
-
-Under section three point two, Prof. Ingrid Solberg expects original claims to carry owners and dates.
-
-Section three point two treats hypotheses design rings threats as testable only when evidence and ticket IDs are recorded.
 
 ### 3.3 Rings
 
 Ring 0 is 40 IT devices, patched first; ring 1 is 160 devices in pilot wards; ring 2 is the remaining 800. Each ring waits for the previous ring's failure signals before proceeding, following the staged approach discussed in SP 800-40r4.
 
-Section three point three develops original contribution proposal with a Calder University note Yusuf Adeyemi can demo offline.
-
-Under section three point three, Prof. Ingrid Solberg expects original claims to carry owners and dates.
-
-Section three point three treats hypotheses design rings threats as testable only when evidence and ticket IDs are recorded.
-
 ### 3.4 Threats to validity
 
 Sites may differ in device age or staff habits. Yusuf collects baseline data from both sites for three months before the change, so differences can be measured. Seasonal workload affects both sites equally.
 
-Section three point four develops original contribution proposal with a Calder University note Yusuf Adeyemi can demo offline.
-
-Under section three point four, Prof. Ingrid Solberg expects original claims to carry owners and dates.
-
-Section three point four treats hypotheses design rings threats as testable only when evidence and ticket IDs are recorded.
-
 ### 3.5 Contribution
 
 The thesis contributes measured effects of a common but untested practice, a codebook for failure tickets and an open, synthetic-structure dataset with analysis code.
-
-Section three point five develops original contribution proposal with a Calder University note Yusuf Adeyemi can demo offline.
-
-Under section three point five, Prof. Ingrid Solberg expects original claims to carry owners and dates.
-
-Section three point five treats hypotheses design rings threats as testable only when evidence and ticket IDs are recorded.
-
-For section three point five, Calder University will not accept original work without a written trail.
 
 ### Power and sample
 
@@ -321,23 +239,9 @@ You will (1) replicate the trust's baseline measures; (2) run a ring pilot; (3) 
 
 Before the pilot, Yusuf recomputes the trust's own patch-compliance report from raw deployment logs. His figures match the trust's to within one percentage point, confirming that he understands how the logs record installation and reboot.
 
-Section four point one develops baseline replication and pilot with a Calder University note Yusuf Adeyemi can demo offline.
-
-Under section four point one, Prof. Ingrid Solberg expects baseline claims to carry owners and dates.
-
-Section four point one treats replicating the baseline pilot as testable only when evidence and ticket IDs are recorded.
-
 ### 4.2 Pilot
 
 One month at the intervention site tests the ring mechanics and the data pipeline.
-
-Section four point two develops baseline replication and pilot with a Calder University note Yusuf Adeyemi can demo offline.
-
-Under section four point two, Prof. Ingrid Solberg expects baseline claims to carry owners and dates.
-
-Section four point two treats replicating the baseline pilot as testable only when evidence and ticket IDs are recorded.
-
-For section four point two, Calder University will not accept baseline work without a written trail.
 
 ### Lab — Lab — pilot ring timings
 
@@ -363,33 +267,13 @@ ring2 (rest, 800): median 11.0 days, max 16
 
 Ring 0 reaches median 2 days (max 3), ring 1 median 6 (max 8) and ring 2 median 11 (max 16). The waits between rings work as designed, and the pipeline captures each endpoint's install and reboot times.
 
-Section four point three develops baseline replication and pilot with a Calder University note Yusuf Adeyemi can demo offline.
-
-Under section four point three, Prof. Ingrid Solberg expects baseline claims to carry owners and dates.
-
-Section four point three treats replicating the baseline pilot as testable only when evidence and ticket IDs are recorded.
-
 ### 4.4 Pipeline fixes
 
 The pilot reveals that 3% of endpoints report no reboot time because they were shut down rather than restarted; Yusuf adds a rule treating the next boot as the reboot.
 
-Section four point four develops baseline replication and pilot with a Calder University note Yusuf Adeyemi can demo offline.
-
-Under section four point four, Prof. Ingrid Solberg expects baseline claims to carry owners and dates.
-
-Section four point four treats replicating the baseline pilot as testable only when evidence and ticket IDs are recorded.
-
 ### 4.5 Configuration management
 
 The ring definitions are stored as configuration items following SP 800-128, so changes during the study are recorded.
-
-Section four point five develops baseline replication and pilot with a Calder University note Yusuf Adeyemi can demo offline.
-
-Under section four point five, Prof. Ingrid Solberg expects baseline claims to carry owners and dates.
-
-Section four point five treats replicating the baseline pilot as testable only when evidence and ticket IDs are recorded.
-
-For section four point five, Calder University will not accept baseline work without a written trail.
 
 ### Clock and identity checks
 
@@ -440,14 +324,6 @@ You will (1) analyse the main study; (2) estimate effects with uncertainty; (3) 
 
 Six months produce data on 1,000 endpoints at each site. The analysis follows the pre-registered plan.
 
-Section five point one develops main study and independent validation with a Calder University note Yusuf Adeyemi can demo offline.
-
-Under section five point one, Prof. Ingrid Solberg expects main claims to carry owners and dates.
-
-Section five point one treats main data reading the as testable only when evidence and ticket IDs are recorded.
-
-For section five point one, Calder University will not accept main work without a written trail.
-
 ### Lab — Lab — ring versus flat
 
 ```python
@@ -486,43 +362,17 @@ failure-rate difference 0.017, 95% CI [0.005, 0.029]
 
 At the ring site, the 95th percentile is 14.1 days and the failure rate 0.011; at the flat site, 20.7 days and 0.028. The failure-rate difference is 0.017 with a bootstrap 95% confidence interval from 0.005 to 0.029, which excludes zero. Both hypotheses are supported in this synthetic data.
 
-Section five point two develops main study and independent validation with a Calder University note Yusuf Adeyemi can demo offline.
-
-Under section five point two, Prof. Ingrid Solberg expects main claims to carry owners and dates.
-
-Section five point two treats main data reading the as testable only when evidence and ticket IDs are recorded.
-
 ### 5.3 Baseline adjustment
 
 Baseline months showed the flat site was already about two days slower at the 95th percentile. Yusuf reports both the raw difference and the difference after subtracting baseline, which is smaller but still in favour of rings.
-
-Section five point three develops main study and independent validation with a Calder University note Yusuf Adeyemi can demo offline.
-
-Under section five point three, Prof. Ingrid Solberg expects main claims to carry owners and dates.
-
-Section five point three treats main data reading the as testable only when evidence and ticket IDs are recorded.
 
 ### 5.4 Independent validation
 
 A second analyst at Calder, given only the pre-registered plan and the data, reproduces the figures independently.
 
-Section five point four develops main study and independent validation with a Calder University note Yusuf Adeyemi can demo offline.
-
-Under section five point four, Prof. Ingrid Solberg expects main claims to carry owners and dates.
-
-Section five point four treats main data reading the as testable only when evidence and ticket IDs are recorded.
-
-For section five point four, Calder University will not accept main work without a written trail.
-
 ### 5.5 Meaning
 
 Fewer failures matter because a failed update on a clinical endpoint can stop work on a ward; faster coverage reduces the window in which known vulnerabilities are exposed.
-
-Section five point five develops main study and independent validation with a Calder University note Yusuf Adeyemi can demo offline.
-
-Under section five point five, Prof. Ingrid Solberg expects main claims to carry owners and dates.
-
-Section five point five treats main data reading the as testable only when evidence and ticket IDs are recorded.
 
 ### Secondary outcomes
 
@@ -575,61 +425,21 @@ You will (1) respond to peer review; (2) revise claims; (3) strengthen limitatio
 
 A workshop reviewer argues that the ring site's IT team knew it was being studied and may have worked harder, a Hawthorne effect.
 
-Section six point one develops peer critique and revision with a Calder University note Yusuf Adeyemi can demo offline.
-
-Under section six point one, Prof. Ingrid Solberg expects peer claims to carry owners and dates.
-
-Section six point one treats the critique response second as testable only when evidence and ticket IDs are recorded.
-
-For section six point one, Calder University will not accept peer work without a written trail.
-
 ### 6.2 Response
 
 Yusuf checks help-desk staffing and overtime records: they did not differ between sites. He adds this check to the thesis and softens the claim to "consistent with" rather than "caused by".
-
-Section six point two develops peer critique and revision with a Calder University note Yusuf Adeyemi can demo offline.
-
-Under section six point two, Prof. Ingrid Solberg expects peer claims to carry owners and dates.
-
-Section six point two treats the critique response second as testable only when evidence and ticket IDs are recorded.
 
 ### 6.3 Second critique
 
 Another reviewer asks whether failures were defined consistently. Yusuf re-codes a random 20% of main-study tickets with a new coder; kappa remains above the pre-registered threshold.
 
-Section six point three develops peer critique and revision with a Calder University note Yusuf Adeyemi can demo offline.
-
-Under section six point three, Prof. Ingrid Solberg expects peer claims to carry owners and dates.
-
-Section six point three treats the critique response second as testable only when evidence and ticket IDs are recorded.
-
-For section six point three, Calder University will not accept peer work without a written trail.
-
 ### 6.4 Revision
 
 The paper adds a limitations section on two sites, one sector and synthetic-structure data release.
 
-Section six point four develops peer critique and revision with a Calder University note Yusuf Adeyemi can demo offline.
-
-Under section six point four, Prof. Ingrid Solberg expects peer claims to carry owners and dates.
-
-Section six point four treats the critique response second as testable only when evidence and ticket IDs are recorded.
-
-For section six point four, Calder University will not accept peer work without a written trail.
-
 ### 6.5 Tone
 
 Responses thank reviewers and address each point with evidence.
-
-Section six point five develops peer critique and revision with a Calder University note Yusuf Adeyemi can demo offline.
-
-Under section six point five, Prof. Ingrid Solberg expects peer claims to carry owners and dates.
-
-Section six point five treats the critique response second as testable only when evidence and ticket IDs are recorded.
-
-For section six point five, Calder University will not accept peer work without a written trail.
-
-Section six point five fails closed if peer evidence is missing rather than guessing.
 
 ### Further review
 
@@ -684,23 +494,9 @@ You will (1) synthesise findings across chapters; (2) build a verifiable archive
 
 The thesis argues that staged deployment, a practice many organisations use without evidence, was associated with faster coverage and fewer failures at one trust, with a clear method others can repeat.
 
-Section seven point one develops thesis synthesis and reproducibility archive with a Calder University note Yusuf Adeyemi can demo offline.
-
-Under section seven point one, Prof. Ingrid Solberg expects thesis claims to carry owners and dates.
-
-Section seven point one treats synthesis archive contents reading as testable only when evidence and ticket IDs are recorded.
-
 ### 7.2 Archive contents
 
 The archive holds synthetic-structure data, analysis code, the codebook, the pre-registration and a readme.
-
-Section seven point two develops thesis synthesis and reproducibility archive with a Calder University note Yusuf Adeyemi can demo offline.
-
-Under section seven point two, Prof. Ingrid Solberg expects thesis claims to carry owners and dates.
-
-Section seven point two treats synthesis archive contents reading as testable only when evidence and ticket IDs are recorded.
-
-For section seven point two, Calder University will not accept thesis work without a written trail.
 
 ### Lab — Lab — archive manifest
 
@@ -728,39 +524,13 @@ files 4, total 101 bytes
 
 Four files totalling 101 bytes in this small synthetic example each have a SHA-256 digest. Anyone can recompute the digests to confirm files are unchanged.
 
-Section seven point three develops thesis synthesis and reproducibility archive with a Calder University note Yusuf Adeyemi can demo offline.
-
-Under section seven point three, Prof. Ingrid Solberg expects thesis claims to carry owners and dates.
-
-Section seven point three treats synthesis archive contents reading as testable only when evidence and ticket IDs are recorded.
-
-For section seven point three, Calder University will not accept thesis work without a written trail.
-
 ### 7.4 Data handling
 
 Real ticket text never enters the archive; only the synthetic-structure dataset with the same distributions is published, approved by the trust.
 
-Section seven point four develops thesis synthesis and reproducibility archive with a Calder University note Yusuf Adeyemi can demo offline.
-
-Under section seven point four, Prof. Ingrid Solberg expects thesis claims to carry owners and dates.
-
-Section seven point four treats synthesis archive contents reading as testable only when evidence and ticket IDs are recorded.
-
-For section seven point four, Calder University will not accept thesis work without a written trail.
-
 ### 7.5 Licensing
 
 Code and synthetic data are released under an open licence.
-
-Section seven point five develops thesis synthesis and reproducibility archive with a Calder University note Yusuf Adeyemi can demo offline.
-
-Under section seven point five, Prof. Ingrid Solberg expects thesis claims to carry owners and dates.
-
-Section seven point five treats synthesis archive contents reading as testable only when evidence and ticket IDs are recorded.
-
-For section seven point five, Calder University will not accept thesis work without a written trail.
-
-Section seven point five fails closed if thesis evidence is missing rather than guessing.
 
 ### Chapter links
 
@@ -817,75 +587,25 @@ You will (1) defend the thesis; (2) answer methodological questions; (3) plan pu
 
 Yusuf presents the problem, design, results, critiques and limits in forty minutes.
 
-Section eight point one develops defense and publication plan with a Calder University note Yusuf Adeyemi can demo offline.
-
-Under section eight point one, Prof. Ingrid Solberg expects defense claims to carry owners and dates.
-
-Section eight point one treats defense questions firmware result as testable only when evidence and ticket IDs are recorded.
-
-For section eight point one, Calder University will not accept defense work without a written trail.
-
 ### 8.2 Questions
 
 Examiners ask about generalisation, firmware updates and cost. He answers with evidence and admits where the study cannot answer.
-
-Section eight point two develops defense and publication plan with a Calder University note Yusuf Adeyemi can demo offline.
-
-Under section eight point two, Prof. Ingrid Solberg expects defense claims to carry owners and dates.
-
-Section eight point two treats defense questions firmware result as testable only when evidence and ticket IDs are recorded.
-
-For section eight point two, Calder University will not accept defense work without a written trail.
 
 ### 8.3 Firmware result
 
 Firmware updates had a higher failure rate in both arms, supporting SP 800-193's emphasis on recovery mechanisms.
 
-Section eight point three develops defense and publication plan with a Calder University note Yusuf Adeyemi can demo offline.
-
-Under section eight point three, Prof. Ingrid Solberg expects defense claims to carry owners and dates.
-
-Section eight point three treats defense questions firmware result as testable only when evidence and ticket IDs are recorded.
-
-For section eight point three, Calder University will not accept defense work without a written trail.
-
 ### 8.4 Publication plan
 
 One journal paper on the main effect, one practitioner report for health IT teams, and the open archive.
-
-Section eight point four develops defense and publication plan with a Calder University note Yusuf Adeyemi can demo offline.
-
-Under section eight point four, Prof. Ingrid Solberg expects defense claims to carry owners and dates.
-
-Section eight point four treats defense questions firmware result as testable only when evidence and ticket IDs are recorded.
-
-For section eight point four, Calder University will not accept defense work without a written trail.
 
 ### 8.5 Practice impact
 
 Harrowgate keeps ring deployment and adds firmware-specific recovery checks.
 
-Section eight point five develops defense and publication plan with a Calder University note Yusuf Adeyemi can demo offline.
-
-Under section eight point five, Prof. Ingrid Solberg expects defense claims to carry owners and dates.
-
-Section eight point five treats defense questions firmware result as testable only when evidence and ticket IDs are recorded.
-
-For section eight point five, Calder University will not accept defense work without a written trail.
-
-Section eight point five fails closed if defense evidence is missing rather than guessing.
-
 ### 8.6 Ethics reflection
 
 He reflects on balancing research with clinical service: no clinical system was changed solely for research.
-
-Section eight point six develops defense and publication plan with a Calder University note Yusuf Adeyemi can demo offline.
-
-Under section eight point six, Prof. Ingrid Solberg expects defense claims to carry owners and dates.
-
-Section eight point six treats defense questions firmware result as testable only when evidence and ticket IDs are recorded.
-
-For section eight point six, Calder University will not accept defense work without a written trail.
 
 ### Answering the cost question
 

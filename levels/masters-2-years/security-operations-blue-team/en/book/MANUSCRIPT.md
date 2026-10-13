@@ -46,59 +46,25 @@ You will (1) turn a practical SOC problem into a researchable question; (2) run 
 
 **Tariq Haddad**, a master's student at the fictional **Ashworth Institute of Technology**, works part-time in the corporate SOC of the fictional **Pelham Water Utility**. Analysts complain of "too many alerts". That is a problem, not a question. With supervisor **Dr. Ingrid Solberg**, Tariq narrows it: "Does adding reviewed allow-lists to the ten noisiest detection rules reduce weekly alert volume without suppressing true attacks, compared with untuned rules over the same weeks?"
 
-Section one point one develops research question and literature method with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
 ### 1.2 Parts of a good question
 
 The question names an intervention (allow-lists), a population (ten rules, one SOC), a comparison (untuned rules), outcomes (volume and suppressed attacks) and a time frame. Each part can be measured.
-
-Section one point two develops research question and literature method with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section one point two, Dr. Ingrid Solberg expects research claims to carry owners and dates.
-
-Section one point two treats from problem to question as testable only when evidence and ticket IDs are recorded.
 
 ### 1.3 Searching the literature
 
 Tariq searches digital libraries (ACM, IEEE, USENIX) and grey literature (NIST, MITRE) with recorded terms: "alert fatigue", "false positive" AND "security operations", "detection tuning", "SOC" AND "qualitative". He records dates, databases and hit counts.
 
-Section one point three develops research question and literature method with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section one point three, Dr. Ingrid Solberg expects research claims to carry owners and dates.
-
-Section one point three treats from problem to question as testable only when evidence and ticket IDs are recorded.
-
 ### 1.4 Appraising sources
 
 Peer-reviewed empirical studies, such as Alahmadi, Axon and Martinovic (2022) on benign triggers, carry more weight than vendor blogs. Frameworks — NIST SP 800-92 on log management, the SigmaHQ rule format — define practice but are not evidence of effect. Tariq tags each source by type.
-
-Section one point four develops research question and literature method with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section one point four, Dr. Ingrid Solberg expects research claims to carry owners and dates.
-
-Section one point four treats from problem to question as testable only when evidence and ticket IDs are recorded.
 
 ### 1.5 What the literature says
 
 Analysts report most alarms are benign triggers (Alahmadi et al., 2022); low base rates make false alarms dominate (Axelsson, 2000); mismatched incentives distort SOC metrics (Kokulu et al., 2019). Little published work measures tuning effects with a comparison group.
 
-Section one point five develops research question and literature method with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section one point five, Dr. Ingrid Solberg expects research claims to carry owners and dates.
-
-Section one point five treats from problem to question as testable only when evidence and ticket IDs are recorded.
-
 ### 1.6 The search log
 
 The log lets a reader rerun the search and see why sources were included or excluded.
-
-Section one point six develops research question and literature method with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section one point six, Dr. Ingrid Solberg expects research claims to carry owners and dates.
-
-Section one point six treats from problem to question as testable only when evidence and ticket IDs are recorded.
-
-For section one point six, Ashworth Institute of Technology will not accept research work without a written trail.
 
 ### Worked example
 
@@ -140,59 +106,25 @@ You will (1) discuss SOC models and functions critically; (2) relate detection e
 
 Knerler, Parker and Zimmerman (2022) describe SOC functions from monitoring and analysis to incident response, threat intelligence and expanded services such as hunting. Their first strategy, "know what you are protecting and why", anchors tuning decisions: a rule matters according to the assets it guards.
 
-Section two point one develops security operations and blue team with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section two point one, Dr. Ingrid Solberg expects security claims to carry owners and dates.
-
 ### 2.2 Detection engineering
 
 Detections are written, tested, deployed and maintained like software. MITRE ATT&CK (Strom et al., 2018) gives a shared vocabulary of adversary behaviour so coverage can be mapped; Sigma gives a portable rule format. D3FEND (Kaloroumakis and Smith, 2021) maps defensive techniques, helping teams see which countermeasure a detection belongs to.
-
-Section two point two develops security operations and blue team with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section two point two, Dr. Ingrid Solberg expects security claims to carry owners and dates.
 
 ### 2.3 Continuous monitoring
 
 NIST SP 800-137 frames monitoring as an ongoing programme tied to risk, with defined frequencies and metrics, not a set of tools.
 
-Section two point three develops security operations and blue team with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section two point three, Dr. Ingrid Solberg expects security claims to carry owners and dates.
-
-Section two point three treats what soc does detection as testable only when evidence and ticket IDs are recorded.
-
-For section two point three, Ashworth Institute of Technology will not accept security work without a written trail.
-
 ### 2.4 Metrics and side effects
 
 Counting closed alerts rewards speed over depth; mean time to resolve can push analysts to close uncertain cases. Kokulu et al. (2019) found such metric mismatches a frequent issue. Tariq's seminar argues that tuning studies must measure suppressed attacks alongside volume, or they reward silence.
-
-Section two point four develops security operations and blue team with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section two point four, Dr. Ingrid Solberg expects security claims to carry owners and dates.
 
 ### 2.5 Maturity models
 
 The SOC-CMM (van Os, 2016) assesses business, people, process, technology and services domains. It helps place tuning within process maturity rather than treating it as a one-off clean-up.
 
-Section two point five develops security operations and blue team with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section two point five, Dr. Ingrid Solberg expects security claims to carry owners and dates.
-
-Section two point five treats what soc does detection as testable only when evidence and ticket IDs are recorded.
-
 ### 2.6 Seminar format
 
 Each student presents a claim, evidence, counter-evidence and a question for discussion.
-
-Section two point six develops security operations and blue team with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section two point six, Dr. Ingrid Solberg expects security claims to carry owners and dates.
-
-Section two point six treats what soc does detection as testable only when evidence and ticket IDs are recorded.
-
-For section two point six, Ashworth Institute of Technology will not accept security work without a written trail.
 
 ### Worked example
 
@@ -234,63 +166,25 @@ You will (1) choose a design suited to an operational intervention; (2) plan eth
 
 Random assignment of rules to tuning is possible but the SOC wants its noisiest rules fixed first. Tariq uses a controlled before-after design: ten tuned rules and ten comparable untuned rules, four weeks before and four after. Comparing changes in both groups removes effects common to all rules.
 
-Section three point one develops study design ethics and reproducibility with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section three point one, Dr. Ingrid Solberg expects study claims to carry owners and dates.
-
 ### 3.2 Ground truth for attacks
 
 Real attacks are rare and unknown in advance. With the CISO's approval, the utility's authorised purple-team exercises inject benign simulated behaviour matching rule logic during the study, logged with exact times. A "suppressed attack" is an injected event that matched a rule but was removed by an allow-list.
-
-Section three point two develops study design ethics and reproducibility with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section three point two, Dr. Ingrid Solberg expects study claims to carry owners and dates.
 
 ### 3.3 Ethics
 
 Alerts contain user names. Tariq's data is pseudonymised before leaving the SOC; only the SOC sees real names. Ethics approval covers analyst interviews. The purple-team scope is signed by the CISO and excludes operational technology networks entirely.
 
-Section three point three develops study design ethics and reproducibility with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section three point three, Dr. Ingrid Solberg expects study claims to carry owners and dates.
-
-Section three point three treats design choice ground truth as testable only when evidence and ticket IDs are recorded.
-
 ### 3.4 Reproducibility
 
 Allow-list entries are version-controlled with reasons; analysis scripts and counts are archived; the rule set is stored in Sigma format with tuning diffs.
-
-Section three point four develops study design ethics and reproducibility with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section three point four, Dr. Ingrid Solberg expects study claims to carry owners and dates.
-
-Section three point four treats design choice ground truth as testable only when evidence and ticket IDs are recorded.
-
-For section three point four, Ashworth Institute of Technology will not accept study work without a written trail.
 
 ### 3.5 Threats to validity
 
 Seasonal change, log-source outages, other tuning by colleagues, and analysts' awareness of the study. Each has a planned check.
 
-Section three point five develops study design ethics and reproducibility with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section three point five, Dr. Ingrid Solberg expects study claims to carry owners and dates.
-
-Section three point five treats design choice ground truth as testable only when evidence and ticket IDs are recorded.
-
-For section three point five, Ashworth Institute of Technology will not accept study work without a written trail.
-
 ### 3.6 Registration
 
 The design, outcomes and checks are registered with the supervisor before week 1.
-
-Section three point six develops study design ethics and reproducibility with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section three point six, Dr. Ingrid Solberg expects study claims to carry owners and dates.
-
-Section three point six treats design choice ground truth as testable only when evidence and ticket IDs are recorded.
-
-For section three point six, Ashworth Institute of Technology will not accept study work without a written trail.
 
 ### Stopping rule
 
@@ -335,21 +229,9 @@ You will (1) list competing explanations for an observed change; (2) use a compa
 
 After allow-lists were added in week 5, alerts from the ten tuned rules fell sharply. Tempting conclusion: tuning worked. But other things happened in weeks 5–8: a public holiday, a SIEM upgrade and a firewall log source migration.
 
-Section four point one develops security operations and blue team with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section four point one, Dr. Ingrid Solberg expects security claims to carry owners and dates.
-
-Section four point one treats the observation comparison group as testable only when evidence and ticket IDs are recorded.
-
 ### 4.2 Comparison group
 
 If the drop were due to the holiday or the SIEM upgrade, untuned rules should fall too. Difference-in-differences subtracts the control group's change from the tuned group's change.
-
-Section four point two develops security operations and blue team with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section four point two, Dr. Ingrid Solberg expects security claims to carry owners and dates.
-
-Section four point two treats the observation comparison group as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — difference-in-differences
 
@@ -378,41 +260,17 @@ difference-in-differences = -136.5 alerts/week
 
 Tuned rules fell from 406.8 to 233.0 alerts per week (−173.8). Control rules also fell, from 301.2 to 264.0 (−37.2), showing a shared effect. The net estimate attributable to tuning is −136.5 alerts per week.
 
-Section four point three develops security operations and blue team with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section four point three, Dr. Ingrid Solberg expects security claims to carry owners and dates.
-
-Section four point three treats the observation comparison group as testable only when evidence and ticket IDs are recorded.
-
 ### 4.4 Testing specific alternatives
 
 **Log-source outage:** ingestion counts per source show no gaps in weeks 5–8. **Firewall migration:** none of the tuned rules use firewall logs. **Colleague tuning:** the change log shows no other edits to the twenty rules. **Holiday:** affects both groups; absorbed by the comparison.
-
-Section four point four develops security operations and blue team with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section four point four, Dr. Ingrid Solberg expects security claims to carry owners and dates.
-
-Section four point four treats the observation comparison group as testable only when evidence and ticket IDs are recorded.
 
 ### 4.5 Parallel trends
 
 Difference-in-differences assumes both groups would have moved alike without tuning. In weeks 1–4 their trends are similar (both roughly flat), which supports but does not prove the assumption.
 
-Section four point five develops security operations and blue team with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section four point five, Dr. Ingrid Solberg expects security claims to carry owners and dates.
-
-Section four point five treats the observation comparison group as testable only when evidence and ticket IDs are recorded.
-
 ### 4.6 Remaining uncertainty
 
 Eight weeks is short; the estimate's interval is wide because weekly counts vary. Tariq reports the point estimate with a bootstrap interval in the dissertation.
-
-Section four point six develops security operations and blue team with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section four point six, Dr. Ingrid Solberg expects security claims to carry owners and dates.
-
-Section four point six treats the observation comparison group as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -453,21 +311,9 @@ You will (1) write a dissertation proposal; (2) plan a labelling sample efficien
 
 Sections: background and gap; question and hypotheses; design; data and ethics; analysis; validity threats; timeline; risks. Dr. Solberg asks for one page per section at most.
 
-Section five point one develops proposal and pilot with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section five point one, Dr. Ingrid Solberg expects proposal claims to carry owners and dates.
-
-Section five point one treats the proposal why label as testable only when evidence and ticket IDs are recorded.
-
-For section five point one, Ashworth Institute of Technology will not accept proposal work without a written trail.
-
 ### 5.2 Why label a sample
 
 Volume alone cannot show whether suppressed alerts were benign. Tariq will manually label a sample of alerts as benign trigger, false positive or true positive, to estimate how much of the reduction removed only benign noise. Labelling all 4,000 alerts is impossible; a stratified sample by severity gives precise estimates where it matters.
-
-Section five point two develops proposal and pilot with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section five point two, Dr. Ingrid Solberg expects proposal claims to carry owners and dates.
 
 ### Lab — stratified sample
 
@@ -500,45 +346,17 @@ total sampled 200
 
 With a budget of 200, proportional allocation would give the high-severity stratum only 6 alerts, too few to estimate anything. A minimum of 20 is set, giving high 20, medium 45, low 135. A fixed seed (7) makes the draw reproducible; estimates for the whole population are reweighted by stratum size.
 
-Section five point three develops proposal and pilot with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section five point three, Dr. Ingrid Solberg expects proposal claims to carry owners and dates.
-
-Section five point three treats the proposal why label as testable only when evidence and ticket IDs are recorded.
-
 ### 5.4 The pilot
 
 Tariq and a SOC colleague label 30 alerts independently. They disagree on 6, mostly "benign trigger" versus "false positive". The definitions are sharpened: a benign trigger is the intended behaviour occurring legitimately; a false positive is the rule matching behaviour it was not meant to catch.
-
-Section five point four develops proposal and pilot with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section five point four, Dr. Ingrid Solberg expects proposal claims to carry owners and dates.
-
-Section five point four treats the proposal why label as testable only when evidence and ticket IDs are recorded.
 
 ### 5.5 Logistics found
 
 Exporting alerts with pseudonymised fields took two hours by hand; Tariq scripts it. The SOC's ticket system truncates notes; he uses the SIEM export instead.
 
-Section five point five develops proposal and pilot with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section five point five, Dr. Ingrid Solberg expects proposal claims to carry owners and dates.
-
-Section five point five treats the proposal why label as testable only when evidence and ticket IDs are recorded.
-
-For section five point five, Ashworth Institute of Technology will not accept proposal work without a written trail.
-
 ### 5.6 Proposal approval
 
 Solberg and the SOC lead **Marcus Bell** sign the proposal; the CISO signs the purple-team annex.
-
-Section five point six develops proposal and pilot with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section five point six, Dr. Ingrid Solberg expects proposal claims to carry owners and dates.
-
-Section five point six treats the proposal why label as testable only when evidence and ticket IDs are recorded.
-
-For section five point six, Ashworth Institute of Technology will not accept proposal work without a written trail.
 
 ### Worked example
 
@@ -579,31 +397,13 @@ You will (1) collect operational data under the approved protocol; (2) evaluate 
 
 Weekly exports from the SIEM give alert counts per rule, pseudonymised at source. The labelling sample is drawn with the registered seed. Purple-team events are logged by the exercise lead with exact times.
 
-Section six point one develops data collection and analysis with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section six point one, Dr. Ingrid Solberg expects data claims to carry owners and dates.
-
-Section six point one treats collection labelling results checking as testable only when evidence and ticket IDs are recorded.
-
 ### 6.2 Labelling results
 
 Of the reweighted sample of alerts removed by allow-lists, an estimated 93% were benign triggers, 6% false positives and 1% unresolved. This supports the claim that tuning removed mostly legitimate activity.
 
-Section six point two develops data collection and analysis with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section six point two, Dr. Ingrid Solberg expects data claims to carry owners and dates.
-
-Section six point two treats collection labelling results checking as testable only when evidence and ticket IDs are recorded.
-
 ### 6.3 Checking allow-lists against ground truth
 
 Allow-list entries suppress alerts for specific rule, host and account combinations. The concern is that an attacker using an allow-listed account on an allow-listed host would be hidden.
-
-Section six point three develops data collection and analysis with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section six point three, Dr. Ingrid Solberg expects data claims to carry owners and dates.
-
-Section six point three treats collection labelling results checking as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — allow-list replay
 
@@ -640,29 +440,13 @@ SUPPRESSED ATTACK: ('new-service', 'PATCH-SRV2', 'svc_patch')
 
 Of 8 sample alerts, 6 are suppressed and 2 kept. One kept alert is an attack (FIN-PC07). One suppressed alert is an attack: a new service on PATCH-SRV2 by svc_patch — the purple team's simulated misuse of the patching account. The allow-list "new-service on PATCH-SRV2 by svc_patch" hides exactly this.
 
-Section six point four develops data collection and analysis with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section six point four, Dr. Ingrid Solberg expects data claims to carry owners and dates.
-
 ### 6.5 Handling the finding
 
 Per the registered stopping rule, the entry is reviewed within a day. Marcus Bell narrows it: new services by svc_patch on PATCH-SRV2 are allowed only when the service name matches the patch tool's signed naming pattern and occurs in the maintenance window. A re-replay shows the injected event now alerts.
 
-Section six point five develops data collection and analysis with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section six point five, Dr. Ingrid Solberg expects data claims to carry owners and dates.
-
 ### 6.6 Overall results
 
 Net reduction 136.5 alerts/week (chapter 4); 93% of removed alerts benign; 1 of 8 injected events suppressed before narrowing, 0 after.
-
-Section six point six develops data collection and analysis with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section six point six, Dr. Ingrid Solberg expects data claims to carry owners and dates.
-
-Section six point six treats collection labelling results checking as testable only when evidence and ticket IDs are recorded.
-
-For section six point six, Ashworth Institute of Technology will not accept data work without a written trail.
 
 ### Worked example
 
@@ -703,73 +487,29 @@ You will (1) structure a master's dissertation; (2) write results without overcl
 
 Abstract; introduction; literature review; method; results; discussion; limitations; recommendations; conclusion; references; appendices (protocol, scripts, allow-list change log).
 
-Section seven point one develops dissertation writing and limitations with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section seven point one, Dr. Ingrid Solberg expects dissertation claims to carry owners and dates.
-
-Section seven point one treats structure writing results the as testable only when evidence and ticket IDs are recorded.
-
-For section seven point one, Ashworth Institute of Technology will not accept dissertation work without a written trail.
-
 ### 7.2 Writing results
 
 Results report what was measured with uncertainty: "Net reduction of 136.5 alerts per week (bootstrap 95% interval 98–171)." Interpretation belongs in the discussion. Tariq avoids words such as "proves" and "eliminates".
-
-Section seven point two develops dissertation writing and limitations with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section seven point two, Dr. Ingrid Solberg expects dissertation claims to carry owners and dates.
-
-Section seven point two treats structure writing results the as testable only when evidence and ticket IDs are recorded.
 
 ### 7.3 The discussion
 
 Tuning removed mostly benign triggers, consistent with Alahmadi et al. (2022). The suppressed injected event shows allow-lists move risk rather than removing it: they trade analyst time against blind spots. Narrow, conditional entries reduce the trade-off.
 
-Section seven point three develops dissertation writing and limitations with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section seven point three, Dr. Ingrid Solberg expects dissertation claims to carry owners and dates.
-
-Section seven point three treats structure writing results the as testable only when evidence and ticket IDs are recorded.
-
 ### 7.4 Limitations
 
 One SOC; eight weeks; twenty rules; eight injected events; labelling by two people from the same team; parallel-trends assumption untestable after week 5; purple-team behaviours chosen by people who knew the rules. Each limitation states its likely direction of bias where possible — for example, injected events designed with knowledge of rule logic probably make suppression look rarer than it would be against unknown attackers.
-
-Section seven point four develops dissertation writing and limitations with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
 
 ### 7.5 Recommendations
 
 Review allow-list entries with the same rigour as rules; add conditions (time window, signed names) rather than broad host-account pairs; replay entries against purple-team events quarterly; track suppressed-attack tests as a metric beside volume.
 
-Section seven point five develops dissertation writing and limitations with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section seven point five, Dr. Ingrid Solberg expects dissertation claims to carry owners and dates.
-
-Section seven point five treats structure writing results the as testable only when evidence and ticket IDs are recorded.
-
 ### 7.6 Proportion
 
 Recommendations are framed for SOCs similar to Pelham's, not "all SOCs".
 
-Section seven point six develops dissertation writing and limitations with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section seven point six, Dr. Ingrid Solberg expects dissertation claims to carry owners and dates.
-
-Section seven point six treats structure writing results the as testable only when evidence and ticket IDs are recorded.
-
-For section seven point six, Ashworth Institute of Technology will not accept dissertation work without a written trail.
-
 ### 7.7 Writing process
 
 Tariq writes the method first, results second, discussion last, and sends each chapter to Solberg as it is finished.
-
-Section seven point seven develops dissertation writing and limitations with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section seven point seven, Dr. Ingrid Solberg expects dissertation claims to carry owners and dates.
-
-Section seven point seven treats structure writing results the as testable only when evidence and ticket IDs are recorded.
-
-For section seven point seven, Ashworth Institute of Technology will not accept dissertation work without a written trail.
 
 ### Worked example
 
@@ -810,71 +550,29 @@ You will (1) arrange independent review before submission; (2) prepare an oral d
 
 Before submission, a SOC analyst from another organisation reviews the method and recommendations, and a fellow student reruns the analysis scripts from the archive. The analyst's main comment: "Your allow-list review process assumes a mature change process; smaller SOCs may not have one." Tariq adds a paragraph scaling the recommendations.
 
-Section eight point one develops independent review and defense with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section eight point one, Dr. Ingrid Solberg expects independent claims to carry owners and dates.
-
 ### 8.2 The defense format
 
 A 20-minute presentation and 40 minutes of questions from two examiners.
-
-Section eight point two develops independent review and defense with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section eight point two, Dr. Ingrid Solberg expects independent claims to carry owners and dates.
-
-Section eight point two treats independent review the defense as testable only when evidence and ticket IDs are recorded.
-
-For section eight point two, Ashworth Institute of Technology will not accept independent work without a written trail.
 
 ### 8.3 Likely questions
 
 "Why not randomise?" "How do you know the holiday affected both groups equally?" "Is one suppressed event in eight a lot or a little?" "Would you deploy these allow-lists at another utility?"
 
-Section eight point three develops independent review and defense with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section eight point three, Dr. Ingrid Solberg expects independent claims to carry owners and dates.
-
-Section eight point three treats independent review the defense as testable only when evidence and ticket IDs are recorded.
-
 ### 8.4 Answering well
 
 Tariq answers directly, gives the evidence, then the limit. On "one in eight": "In this exercise it was 12.5% of injected behaviours, but the events were few and chosen; the important finding is that a broad entry could hide a realistic misuse, and narrowing it fixed that case."
-
-Section eight point four develops independent review and defense with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section eight point four, Dr. Ingrid Solberg expects independent claims to carry owners and dates.
 
 ### 8.5 Returning results
 
 Pelham receives a summary report, the narrowed allow-list policy and the replay script. Tariq briefs analysts before managers, so the people who did the work hear results first.
 
-Section eight point five develops independent review and defense with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section eight point five, Dr. Ingrid Solberg expects independent claims to carry owners and dates.
-
-Section eight point five treats independent review the defense as testable only when evidence and ticket IDs are recorded.
-
 ### 8.6 Sharing safely
 
 The public dissertation omits host names, account names and rule logic details that would help an attacker evade Pelham's detections; these remain in a restricted appendix for the examiners.
 
-Section eight point six develops independent review and defense with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section eight point six, Dr. Ingrid Solberg expects independent claims to carry owners and dates.
-
-Section eight point six treats independent review the defense as testable only when evidence and ticket IDs are recorded.
-
 ### 8.7 Afterwards
 
 Examiner corrections are tracked and completed; the archive is tagged with the final version.
-
-Section eight point seven develops independent review and defense with a Ashworth Institute of Technology note Tariq Haddad can demo offline.
-
-Under section eight point seven, Dr. Ingrid Solberg expects independent claims to carry owners and dates.
-
-Section eight point seven treats independent review the defense as testable only when evidence and ticket IDs are recorded.
-
-For section eight point seven, Ashworth Institute of Technology will not accept independent work without a written trail.
 
 ### Worked example
 

@@ -72,12 +72,6 @@ for n in (1024, 2048, 3072):
 
 Expected output:
 
-Section one point four develops mathematical reasoning with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section one point four, the HCU board expects mathematical claims to carry owners and dates.
-
-Section one point four treats why security students need as testable only when evidence and ticket IDs are recorded.
-
 ```text
 Symmetric key search: classical 2^k trials vs Grover ~2^(k/2) sequential iterations
   k=128: classical 2^128, Grover ~2^64
@@ -92,12 +86,6 @@ Factoring an n-bit RSA modulus: classical GNFS (heuristic) vs Shor gate count ~n
 Read the output as a table of growth rates, not as predicted run times: the numbers ignore constants, error correction and hardware speed, which Chapter 19 treats as explicit assumptions.
 
 ### 1.5 Common errors and limits
-Section one point five develops mathematical reasoning with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section one point five, the HCU board expects mathematical claims to carry owners and dates.
-
-Section one point five treats why security students need as testable only when evidence and ticket IDs are recorded.
-
 
 - Treating "secure if problem X is hard" as an unconditional proof.
 - Comparing operation counts across machines as if a quantum gate and a classical instruction cost the same.
@@ -140,27 +128,11 @@ Today's devices are noisy. Running Shor against RSA-2048 needs *error-corrected 
 
 Map HCU's mobile banking login. The phone's secure enclave holds a device key (hardware); the phone OS provides a keystore (operating system); the app's TLS library negotiates key exchange with the server (library); the server's load balancer terminates TLS using a certificate from HCU's CA (infrastructure); the core banking application checks a signed session token (application). Five layers, at least four quantum-relevant algorithms, three different owners.
 
-Section two point three develops computing systems with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 2.4 Practical activity
 
 Choose a device you own. List its layers and, for each, one cryptographic function you believe it performs. Mark each belief as *observed* (you saw configuration or documentation) or *assumed*. Keep the list; Chapter 22 turns such lists into an inventory.
 
-Section two point four develops computing systems with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section two point four, the HCU board expects computing claims to carry owners and dates.
-
-Section two point four treats layers and where cryptography as testable only when evidence and ticket IDs are recorded.
-
 ### 2.5 Common errors and limits
-Section two point five develops computing systems with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section two point five, the HCU board expects computing claims to carry owners and dates.
-
-Section two point five treats layers and where cryptography as testable only when evidence and ticket IDs are recorded.
-
-For section two point five, Harbourline Credit Union will not accept computing work without a written trail.
-
 
 - Assuming "quantum computer" means a faster laptop.
 - Forgetting firmware and hardware when listing cryptography.
@@ -201,17 +173,9 @@ Cryptographic functions operate on bytes, not text. In Python, `"abc"` is text (
 
 `secrets.token_bytes(32)` returns 32 bytes from the operating system's cryptographically secure generator; the `random` module is *not* suitable for keys because its output is predictable from its seed. `hashlib.sha256(data).hexdigest()` computes a SHA-256 digest; `hashlib.sha3_256` and `hashlib.shake_128` compute members of the SHA-3 family used inside ML-KEM and ML-DSA. To compare secret values use `hmac.compare_digest`, which takes time independent of where the inputs differ.
 
-Section three point three develops programming with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 3.4 Worked example
 
 An HCU intern writes a function to fingerprint certificates:
-
-Section three point four develops programming with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section three point four, the HCU board expects programming claims to carry owners and dates.
-
-Section three point four treats programs as precise statements as testable only when evidence and ticket IDs are recorded.
 
 ```python
 import hashlib
@@ -227,21 +191,7 @@ The assertion uses the published digest of the empty string as a known answer. I
 
 Write `is_valid_length(alg, data)` that returns `True` only if `data` has the length expected for that algorithm, using a dictionary such as `{"ML-KEM-768-ek": 1184}` (the encapsulation-key size in FIPS 203). Test one correct and two incorrect inputs.
 
-Section three point five develops programming with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section three point five, the HCU board expects programming claims to carry owners and dates.
-
-Section three point five treats programs as precise statements as testable only when evidence and ticket IDs are recorded.
-
 ### 3.6 Common errors and limits
-Section three point six develops programming with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section three point six, the HCU board expects programming claims to carry owners and dates.
-
-Section three point six treats programs as precise statements as testable only when evidence and ticket IDs are recorded.
-
-For section three point six, Harbourline Credit Union will not accept programming work without a written trail.
-
 
 - Using `random` for keys or nonces.
 - Mixing text and bytes, or printing secrets in logs while debugging.
@@ -280,8 +230,6 @@ Cryptographic writing depends on standards whose status changes. Cite the docume
 
 Nobody knows when a cryptographically relevant quantum computer will exist. Good writing turns that uncertainty into explicit assumptions: "If such a machine exists within 15 years, records with a 30-year confidentiality requirement are already exposed to harvest-now-decrypt-later collection." Avoid both false precision ("in 2031") and dismissal ("decades away, ignore it"). Use ranges, state who made an estimate and when, and show how your recommendation changes across the range.
 
-Section four point three develops academic writing with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 4.4 Worked example
 
 A draft sentence reads: "Quantum computers will break our encryption by 2030, so NIST requires us to switch to Kyber immediately." Rewritten: "Public estimates of when a quantum computer could break RSA-2048 vary widely and none is authoritative. NIST published ML-KEM, derived from CRYSTALS-Kyber, as FIPS 203 in 2024, and its draft IR 8547 proposes deprecating quantum-vulnerable algorithms after 2030 and disallowing them after 2035. Because our mortgage archive must stay confidential for 30 years, we recommend starting key-exchange migration for archive transfers this year." Each claim is now sourced, dated and qualified.
@@ -290,21 +238,7 @@ A draft sentence reads: "Quantum computers will break our encryption by 2030, so
 
 Take a one-page news article about quantum computing. Mark every factual claim, find its primary source if one exists, and rewrite the article's main conclusion in three sentences that respect the evidence.
 
-Section four point five develops academic writing with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section four point five, the HCU board expects academic claims to carry owners and dates.
-
-Section four point five treats claim evidence reasoning citing as testable only when evidence and ticket IDs are recorded.
-
 ### 4.6 Common errors and limits
-Section four point six develops academic writing with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section four point six, the HCU board expects academic claims to carry owners and dates.
-
-Section four point six treats claim evidence reasoning citing as testable only when evidence and ticket IDs are recorded.
-
-For section four point six, Harbourline Credit Union will not accept academic work without a written trail.
-
 
 - Citing a vendor blog for a standard's content.
 - Presenting a draft's proposed dates as mandatory.
@@ -335,8 +269,6 @@ You will (1) define confidentiality, integrity, availability and authenticity; (
 
 *Confidentiality* means only authorized parties can read information; *integrity* means unauthorized changes are detected or prevented; *availability* means authorized users can use the service when needed; *authenticity* means we can tell who produced a message. Cryptography mainly serves confidentiality (encryption, key exchange), integrity and authenticity (message authentication codes and signatures). Availability is easy to forget in cryptographic changes: a migration that makes handshakes fail is an availability incident even if it improves confidentiality.
 
-Section five point one develops security literacy with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 5.2 Assets, threats, vulnerabilities, controls
 
 An *asset* is something of value — member data, the ability to approve payments. A *threat* is a potential cause of harm, usually an actor with a capability and motive. A *vulnerability* is a weakness the threat can exploit. A *control* reduces likelihood or impact. Risk is the combination of likelihood and impact for a scenario linking these elements. In quantum security the vulnerability is often not a bug but a mathematical property of an algorithm that becomes exploitable once a new capability exists.
@@ -349,29 +281,11 @@ An *asset* is something of value — member data, the ability to approve payment
 
 HCU risk statement, draft: "Risk of quantum attack: high." Improved: "Asset: mortgage archive transfers between branches and the data centre (confidentiality required 30 years). Threat: a well-resourced adversary recording WAN traffic. Vulnerability: VPN key exchange uses ECDH only. Impact if realized: disclosure of member financial histories. Likelihood: collection plausible now; decryption depends on an uncertain future capability. Control options: hybrid post-quantum key exchange, reduced data in transit." The improved statement supports a decision; the draft does not.
 
-Section five point four develops security literacy with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 5.5 Practical activity
 
 Write risk statements in the improved format for two HCU assets: card authorization messages and the mobile app's code-signing key. Note how their time horizons differ.
 
-Section five point five develops security literacy with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section five point five, the HCU board expects security claims to carry owners and dates.
-
-Section five point five treats core properties assets threats as testable only when evidence and ticket IDs are recorded.
-
-For section five point five, Harbourline Credit Union will not accept security work without a written trail.
-
 ### 5.6 Common errors and limits
-Section five point six develops security literacy with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section five point six, the HCU board expects security claims to carry owners and dates.
-
-Section five point six treats core properties assets threats as testable only when evidence and ticket IDs are recorded.
-
-For section five point six, Harbourline Credit Union will not accept security work without a written trail.
-
 
 - Treating every cryptographic use as equally urgent.
 - Ignoring availability when changing algorithms.
@@ -429,14 +343,6 @@ print("a*a  =", mul(a, a))
 
 Expected output:
 
-Section six point three develops discrete structures with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section six point three, the HCU board expects discrete claims to carry owners and dates.
-
-Section six point three treats modular arithmetic and groups as testable only when evidence and ticket IDs are recorded.
-
-For section six point three, Harbourline Credit Union will not accept discrete work without a written trail.
-
 ```text
 a*x  = [14, 1, 2, 0]  (coefficients shift; x^3 * x = x^4 = -1 -> 17-3 = 14)
 a*a  = [6, 4, 12, 6]
@@ -448,17 +354,7 @@ Check by hand: (1 + 2*x* + 3*x*³)·*x* = *x* + 2*x*² + 3*x*⁴ = −3 + *x* + 
 
 An HCU developer asks why their post-quantum library "multiplies polynomials" when RSA "exponentiates numbers". RSA works in the multiplicative group modulo *N*, where a hidden period exists and Shor can find it. ML-KEM works with noisy linear algebra over polynomial rings, where no such period structure is known to help. The arithmetic looks different because the hard problem is different.
 
-Section six point four develops discrete structures with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section six point four, the HCU board expects discrete claims to carry owners and dates.
-
 ### 6.5 Common errors and limits
-Section six point five develops discrete structures with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section six point five, the HCU board expects discrete claims to carry owners and dates.
-
-Section six point five treats modular arithmetic and groups as testable only when evidence and ticket IDs are recorded.
-
 
 - Forgetting the sign flip when reducing *x*^*n* to −1.
 - Believing the ring structure alone provides security; without noise the equations are easy to solve.
@@ -489,8 +385,6 @@ You will (1) describe the TCP/IP layers and where TLS, IPsec and SSH operate; (2
 
 Data crosses networks in layers: link, internet (IP), transport (TCP, UDP, QUIC) and application. Secure channels insert cryptography at different points. TLS protects application streams such as HTTPS; IPsec with IKEv2 protects IP packets between sites, as in HCU's branch VPNs; SSH protects administrator sessions. Each has two cryptographic jobs: *key establishment*, which agrees a fresh session secret, and *authentication*, which proves who the peer is, usually with certificates and signatures.
 
-Section seven point one develops networks and protocols with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 7.2 The TLS 1.3 handshake
 
 In TLS 1.3 ([RFC 8446](https://www.rfc-editor.org/rfc/rfc8446.html)) the client sends a ClientHello listing supported groups and a key share; the server answers with a ServerHello holding its key share, then encrypted messages carrying its certificate chain and a CertificateVerify signature. Key establishment and authentication are separate: a hybrid group such as X25519MLKEM768, specified for TLS in [RFC 10024](https://www.rfc-editor.org/rfc/rfc10024.html), replaces only the key-exchange part. Its client key share is 1,216 bytes and its server share 1,120 bytes, against 32 bytes for X25519 alone. The certificate chain is unchanged until post-quantum certificates are deployed.
@@ -498,10 +392,6 @@ In TLS 1.3 ([RFC 8446](https://www.rfc-editor.org/rfc/rfc8446.html)) the client 
 ### 7.3 Size and middleboxes
 
 Bigger messages matter. A ClientHello above about 1,500 bytes may span two TCP segments; some old firewalls and inspection devices mishandle such messages or unknown group identifiers. Post-quantum signatures are larger still: an ML-DSA-44 signature is 2,420 bytes ([FIPS 204](https://doi.org/10.6028/NIST.FIPS.204)), versus about 72 for ECDSA P-256. Chapter 30 measures what this does to certificate chains.
-
-Section seven point three develops networks and protocols with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section seven point three, the HCU board expects networks claims to carry owners and dates.
 
 ### 7.4 Worked example
 
@@ -511,21 +401,7 @@ HCU's network team sees a rise in failed connections after enabling a hybrid gro
 
 Using a lab browser and your own test server, or published handshake traces, identify the supported-groups list in a ClientHello and the selected group in the ServerHello. Record which messages are encrypted in TLS 1.3. Do not capture other people's traffic.
 
-Section seven point five develops networks and protocols with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section seven point five, the HCU board expects networks claims to carry owners and dates.
-
-Section seven point five treats layers and secure channels as testable only when evidence and ticket IDs are recorded.
-
 ### 7.6 Common errors and limits
-Section seven point six develops networks and protocols with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section seven point six, the HCU board expects networks claims to carry owners and dates.
-
-Section seven point six treats layers and secure channels as testable only when evidence and ticket IDs are recorded.
-
-For section seven point six, Harbourline Credit Union will not accept networks work without a written trail.
-
 
 - Believing hybrid key exchange also makes authentication post-quantum.
 - Blaming the algorithm for failures caused by middleboxes.
@@ -560,39 +436,19 @@ As programs grow, structure keeps them correct. Group related functions in modul
 
 A positive test checks that valid input works; a *negative test* checks that invalid input is rejected. Cryptographic code needs both. A decoder for ML-KEM encapsulation keys must accept exactly 800, 1,184 or 1,568 bytes for the three parameter sets in FIPS 203 and reject anything else, and FIPS 203 also specifies input checks on the key's coefficients. Libraries that skipped such checks have historically accepted malformed inputs that leaked information or crashed services. Write the negative tests before you write the decoder.
 
-Section eight point two develops programming ii with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 8.3 Handling secrets in code
 
 Keep secrets out of logs, exception messages and version control. Prefer passing key *handles* (references held by an HSM or OS keystore) instead of raw key bytes. Compare secrets with constant-time functions. Never write your own production implementation of a post-quantum algorithm; use a vetted library, and treat even small wrapper code with suspicion, because side channels and parsing bugs live in the glue as often as in the core.
-
-Section eight point three develops programming ii with a Harbourline Credit Union note the HCU intern can demo offline.
 
 ### 8.4 Worked example
 
 An HCU analyst receives `inventory.csv` with columns `host, protocol, group`. A careless script counts rows where `group == "x25519"` and reports "most hosts classical". A careful version normalises case, rejects rows with empty groups as *unknown* rather than *classical*, and prints three numbers: classical, hybrid and unknown. The careful script reveals that 18 % of synthetic rows are unknown — a fact the first script hid.
 
-Section eight point four develops programming ii with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 8.5 Practical activity
 
 Write a function that reads lines `host,group`, validates that `group` belongs to an allowed set, and returns counts of hybrid, classical and unknown. Include one negative test with an unknown group string.
 
-Section eight point five develops programming ii with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section eight point five, the HCU board expects programming claims to carry owners and dates.
-
-Section eight point five treats structure and data negative as testable only when evidence and ticket IDs are recorded.
-
 ### 8.6 Common errors and limits
-Section eight point six develops programming ii with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section eight point six, the HCU board expects programming claims to carry owners and dates.
-
-Section eight point six treats structure and data negative as testable only when evidence and ticket IDs are recorded.
-
-For section eight point six, Harbourline Credit Union will not accept programming work without a written trail.
-
 
 - Treating missing data as a negative finding.
 - Catching all exceptions and continuing silently.
@@ -623,8 +479,6 @@ You will (1) model data with entities, attributes and relationships; (2) write s
 
 A relational database stores tables of rows. An *entity* (member, account, document) becomes a table; *attributes* become columns; *relationships* become keys linking tables. SQL queries select, filter and join: `SELECT host FROM services WHERE kex_group = 'ECDHE-P256'` returns hosts using a particular group. Sound models make analysis possible: if a migration team stores each cryptographic observation with its source and date, it can later ask which observations are stale.
 
-Section nine point one develops data and databases with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 9.2 Data lifetimes
 
 Every data class has a *retention period* (how long it is kept) and a *confidentiality lifetime* (how long disclosure would cause harm). These differ: card authorisation messages are kept seven years for disputes but are mostly harmless after the card expires; mortgage documents are kept and remain sensitive for 30 years. Michele Mosca (2018) framed the quantum consequence: if *x* is the time data must stay secure, *y* the time to migrate and *z* the time until a capable quantum computer, then *x* + *y* > *z* means data is already at risk. Databases are where *x* is recorded, so a data model with lifetime attributes is the first quantitative tool of migration planning.
@@ -633,35 +487,15 @@ Every data class has a *retention period* (how long it is kept) and a *confident
 
 Databases encrypt data at rest with symmetric algorithms such as AES-256, whose keys are wrapped by key-encryption keys. The symmetric layer is not the quantum problem. The problem is how keys travel: if database keys are backed up to another site over a channel using RSA key transport or ECDH, recorded backups may expose them later. Inventory therefore follows keys, not just data.
 
-Section nine point three develops data and databases with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 9.4 Worked example
 
 HCU models `data_class(name, retention_years, confidentiality_years, transfer_channel)`. A query finds classes with `confidentiality_years >= 15 AND transfer_channel = 'vpn-ecdh'`: mortgage documents and member identity records. Those two classes become the first candidates for hybrid key exchange, before the high-volume but short-lived card traffic.
-
-Section nine point four develops data and databases with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section nine point four, the HCU board expects data claims to carry owners and dates.
 
 ### 9.5 Practical activity
 
 Create a five-row table of synthetic HCU data classes with retention, confidentiality lifetime and channel. Write the query above and justify the order of migration it suggests.
 
-Section nine point five develops data and databases with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section nine point five, the HCU board expects data claims to carry owners and dates.
-
-Section nine point five treats modelling data data lifetimes as testable only when evidence and ticket IDs are recorded.
-
 ### 9.6 Common errors and limits
-Section nine point six develops data and databases with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section nine point six, the HCU board expects data claims to carry owners and dates.
-
-Section nine point six treats modelling data data lifetimes as testable only when evidence and ticket IDs are recorded.
-
-For section nine point six, Harbourline Credit Union will not accept data work without a written trail.
-
 
 - Confusing retention with confidentiality lifetime.
 - Assuming encryption at rest solves in-transit exposure.
@@ -696,39 +530,19 @@ The same action — scanning a server for its supported TLS groups, capturing a 
 
 Cryptographic assessments can look harmless, but they touch sensitive things: certificates reveal internal hostnames, handshake captures may contain metadata, and downgrade tests can break production sessions. A good scope says, for example: "Passive observation of TLS handshakes on the HCU test gateway mirror port, 1–14 May; no payload retention; no active downgrade testing outside the isolated lab; results shared with the HCU security office only." Active experiments that modify negotiation or inject faults belong in isolated testbeds.
 
-Section ten point two develops ethics and authorized practice with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 10.3 Dual use and disclosure
 
 Knowing how to find quantum-vulnerable systems also tells an adversary where to look. Publish aggregate findings rather than lists of named vulnerable hosts. If you find a weakness in a vendor product — for example, a library that accepts malformed ML-KEM keys — report it privately to the vendor, agree a timeline, and publish only after a fix or the agreed deadline. Label all synthetic data clearly so that teaching examples are never mistaken for real findings about real organizations.
-
-Section ten point three develops ethics and authorized practice with a Harbourline Credit Union note the HCU intern can demo offline.
 
 ### 10.4 Worked example
 
 An HCU student intern notices that a partner bank's public website still offers only classical key exchange and proposes to "scan all partner banks" for a class project. The ethical response: the observation of one public handshake made by a normal browser visit is ordinary, but systematic scanning of partners is outside HCU's authority. The intern instead studies published aggregate measurements and asks HCU's vendor-management team to include post-quantum readiness questions in partner questionnaires.
 
-Section ten point four develops ethics and authorized practice with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 10.5 Practical activity
 
 Draft a one-page authorization request for a passive TLS inventory of a synthetic HCU test network. Include systems, dates, techniques, data handling, stop conditions and contacts.
 
-Section ten point five develops ethics and authorized practice with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section ten point five, the HCU board expects ethics claims to carry owners and dates.
-
-Section ten point five treats authorization is the boundary as testable only when evidence and ticket IDs are recorded.
-
 ### 10.6 Common errors and limits
-Section ten point six develops ethics and authorized practice with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section ten point six, the HCU board expects ethics claims to carry owners and dates.
-
-Section ten point six treats authorization is the boundary as testable only when evidence and ticket IDs are recorded.
-
-For section ten point six, Harbourline Credit Union will not accept ethics work without a written trail.
-
 
 - Treating internet reachability as permission.
 - Retaining packet payloads "just in case".
@@ -759,8 +573,6 @@ You will (1) describe processes, memory isolation, file permissions and system s
 
 An operating system isolates processes in separate address spaces, enforces file permissions and grants privileges to users and services. Keys stored in a world-readable file defeat all of this; keys held by a privileged service, or by hardware such as a TPM, are reachable only through defined interfaces. Least privilege — giving each component only the access it needs — applies to cryptographic material as much as to files.
 
-Section eleven point one develops operating systems with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 11.2 Cryptographic providers
 
 Applications rarely implement cryptography themselves. They call a *provider*: OpenSSL providers on Linux, the CNG framework on Windows, platform keystores on mobile systems. The provider and its version decide which algorithms an application can use, so a post-quantum migration often begins as an OS or library upgrade. System-wide crypto policies on some Linux distributions set allowed algorithms in one place; this is valuable for agility, because one policy change can enable a hybrid group across many services, and dangerous if changed without testing.
@@ -769,33 +581,15 @@ Applications rarely implement cryptography themselves. They call a *provider*: O
 
 Operating systems trust signed updates and, through secure boot, signed boot components. These signatures typically use RSA or ECDSA today. Because forge-later attacks target long-lived trust anchors, vendors are planning post-quantum or hash-based signatures for firmware and boot chains; [SP 800-208](https://doi.org/10.6028/NIST.SP.800-208) approves the stateful hash-based schemes LMS and XMSS, which suit firmware signing where the signer can manage state carefully. Devices whose boot ROM can verify only RSA cannot be upgraded by software alone.
 
-Section eleven point three develops operating systems with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 11.4 Worked example
 
 HCU's branch servers run a Linux distribution whose current OpenSSL version supports the hybrid X25519MLKEM768 group in TLS. The team discovers that the core banking middleware ships its own older, statically linked TLS library and ignores the OS provider. Upgrading the OS changes nothing for that middleware; the vendor must ship a new build. The OS-level view revealed a hidden dependency that a server-by-server checklist would have missed.
-
-Section eleven point four develops operating systems with a Harbourline Credit Union note the HCU intern can demo offline.
 
 ### 11.5 Practical activity
 
 On a lab virtual machine you control, list the installed cryptographic libraries and their versions, and find where the system crypto policy (if any) is configured. Record which applications link their own copies.
 
-Section eleven point five develops operating systems with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section eleven point five, the HCU board expects operating claims to carry owners and dates.
-
-Section eleven point five treats isolation and privilege cryptographic as testable only when evidence and ticket IDs are recorded.
-
 ### 11.6 Common errors and limits
-Section eleven point six develops operating systems with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section eleven point six, the HCU board expects operating claims to carry owners and dates.
-
-Section eleven point six treats isolation and privilege cryptographic as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point six, Harbourline Credit Union will not accept operating work without a written trail.
-
 
 - Assuming an OS upgrade migrates every application.
 - Editing a system-wide crypto policy directly on production.
@@ -840,14 +634,6 @@ for p_exp in (-20, -40, -139):
 
 Expected output:
 
-Section twelve point two develops probability and statistics with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twelve point two, the HCU board expects probability claims to carry owners and dates.
-
-Section twelve point two treats rare events at scale as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point two, Harbourline Credit Union will not accept probability work without a written trail.
-
 ```text
 p = 2^  -20, 1e+09 operations -> expected failures 9.537e+02
 p = 2^  -20, 1e+15 operations -> expected failures 9.537e+08
@@ -863,31 +649,15 @@ Notice how each 20-bit change in the exponent shifts the expected count by a fac
 
 Operational data gives counts, not probabilities. If 3 of 5,000 test connections fail, the point estimate is 0.06 %, but the true rate could be higher. A 95 % confidence interval — for example the Wilson interval used in Chapter 29 — expresses that uncertainty. With small samples, the upper bound is what matters for a go/no-go decision: "we are fairly confident the failure rate is below *u*" is the defensible statement.
 
-Section twelve point three develops probability and statistics with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 12.4 Base rates
 
 Probability also protects against misleading alarms. If a detector flags handshakes that "look like downgrade attempts" with 99 % sensitivity and 1 % false positives, but real downgrade attempts occur in one handshake per million, then almost every alert is false. Always ask for the base rate before interpreting an alert count.
-
-Section twelve point four develops probability and statistics with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twelve point four, the HCU board expects probability claims to carry owners and dates.
 
 ### 12.5 Worked example
 
 HCU's mobile app performs 2 × 10^8 key establishments per year. If a hypothetical scheme failed with probability 2^−40, expected failures would be 2 × 10^8 × 9.1 × 10^−13 ≈ 1.8 × 10^−4 per year — negligible. If an implementation bug raised the rate to 1 in 10^5, the expected count would be 2,000 per year, visible in support tickets. Measured failure rates therefore test the implementation, not the mathematics.
 
-Section twelve point five develops probability and statistics with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twelve point five, the HCU board expects probability claims to carry owners and dates.
-
 ### 12.6 Common errors and limits
-Section twelve point six develops probability and statistics with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twelve point six, the HCU board expects probability claims to carry owners and dates.
-
-Section twelve point six treats rare events at scale as testable only when evidence and ticket IDs are recorded.
-
 
 - Reading a point estimate from a small sample as the true rate.
 - Ignoring base rates when interpreting alerts.
@@ -918,10 +688,6 @@ You will (1) distinguish identification, authentication and authorization; (2) e
 
 *Identification* claims an identity; *authentication* proves it; *authorization* decides what the authenticated party may do. Passwords, one-time codes and passkeys authenticate users; certificates and signatures authenticate machines and software. Authorization is usually symmetric bookkeeping — access-control lists and roles — and is not directly threatened by quantum computers. Authentication based on public-key signatures is.
 
-Section thirteen point one develops identity and access with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirteen point one, the HCU board expects identity claims to carry owners and dates.
-
 ### 13.2 PKI in brief
 
 A certificate is a signed statement by a certificate authority (CA): "this public key belongs to this name, valid until this date". Verifiers trust a small set of root CAs and follow chains to them. If an adversary can compute a CA's private key from its public key — as Shor's algorithm would allow for RSA and ECDSA — they can issue certificates for any name. Because root keys are long-lived and widely embedded, PKI is the archetypal forge-later target. Post-quantum signature standards provide replacements: ML-DSA in [FIPS 204](https://doi.org/10.6028/NIST.FIPS.204) for general use and SLH-DSA in [FIPS 205](https://doi.org/10.6028/NIST.FIPS.205) as a conservative hash-based option.
@@ -930,33 +696,15 @@ A certificate is a signed statement by a certificate authority (CA): "this publi
 
 Passkeys and FIDO authenticators use public-key signatures (often ECDSA) inside a secure element. Single sign-on tokens are signed with RSA or ECDSA. Code-signing certificates protect software updates. Each flow has a different migration path: tokens with short lifetimes can switch quickly once libraries support ML-DSA; hardware authenticators need new devices; root CAs need long planning because relying parties must first trust the new roots.
 
-Section thirteen point three develops identity and access with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 13.4 Worked example
 
 HCU lists authentication uses: member passkeys (ECDSA in phone hardware), staff SSO tokens (RSA-2048, 10-minute lifetime), internal CA (RSA-4096 root, 20-year validity), mobile app code signing (ECDSA, platform-controlled). The forge-later risk is greatest for the long-lived root and for code signing, where a forged signature would let an adversary distribute malicious software. Short-lived SSO tokens are lower priority: forging one requires a quantum computer at the moment of attack, and the key can rotate quickly once one exists.
-
-Section thirteen point four develops identity and access with a Harbourline Credit Union note the HCU intern can demo offline.
 
 ### 13.5 Practical activity
 
 Draw HCU's certificate hierarchy: root, two intermediates, server and client leaves. Annotate each with algorithm, validity and who must trust it. Mark which changes require relying parties to update trust stores.
 
-Section thirteen point five develops identity and access with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirteen point five, the HCU board expects identity claims to carry owners and dates.
-
-Section thirteen point five treats three steps pki in as testable only when evidence and ticket IDs are recorded.
-
 ### 13.6 Common errors and limits
-Section thirteen point six develops identity and access with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirteen point six, the HCU board expects identity claims to carry owners and dates.
-
-Section thirteen point six treats three steps pki in as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point six, Harbourline Credit Union will not accept identity work without a written trail.
-
 
 - Treating authorization lists as quantum-vulnerable.
 - Planning to migrate leaf certificates before relying parties trust a post-quantum root.
@@ -987,10 +735,6 @@ You will (1) state core privacy principles such as purpose limitation and minimi
 
 Privacy law and practice share common principles: collect personal data for a stated purpose, collect no more than needed (*minimization*), keep it no longer than needed (*storage limitation*), protect it appropriately, and be transparent. These principles are about people, not systems; a privacy harm is a harm to a member whose data is exposed, even if the organization suffers no loss.
 
-Section fourteen point one develops privacy foundations with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section fourteen point one, the HCU board expects privacy claims to carry owners and dates.
-
 ### 14.2 Lifetime of harm
 
 Some personal data stops mattering quickly; other data stays sensitive for a lifetime — health conditions, financial distress, identity documents. Harvest-now-decrypt-later turns long-lived sensitivity into present risk: traffic recorded today can reveal tomorrow what a member disclosed in confidence decades earlier. For privacy, the relevant *x* in Mosca's inequality is the lifetime of the harm to the person, which can exceed the organization's retention period. Deleting a record from HCU's database does not delete a copy an adversary recorded in transit.
@@ -998,10 +742,6 @@ Some personal data stops mattering quickly; other data stays sensitive for a lif
 ### 14.3 Minimization as a quantum control
 
 The cheapest protection for data is not to send it. Reducing what crosses networks — tokenising account numbers, keeping sensitive fields at the data centre and sending only derived results — lowers HNDL exposure regardless of algorithm. Minimization also applies to migration measurement itself: an inventory needs algorithm names and host identifiers, not message contents.
-
-Section fourteen point three develops privacy foundations with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section fourteen point three, the HCU board expects privacy claims to carry owners and dates.
 
 ### 14.4 Worked example
 
@@ -1011,23 +751,7 @@ HCU's loan application flow sends full applicant profiles from branches to head 
 
 For three synthetic HCU data flows, list the personal data fields, the purpose, and which fields could be removed, tokenised or aggregated before transmission.
 
-Section fourteen point five develops privacy foundations with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section fourteen point five, the HCU board expects privacy claims to carry owners and dates.
-
-Section fourteen point five treats principles lifetime of harm as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point five, Harbourline Credit Union will not accept privacy work without a written trail.
-
 ### 14.6 Common errors and limits
-Section fourteen point six develops privacy foundations with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section fourteen point six, the HCU board expects privacy claims to carry owners and dates.
-
-Section fourteen point six treats principles lifetime of harm as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point six, Harbourline Credit Union will not accept privacy work without a written trail.
-
 
 - Equating retention period with lifetime of harm.
 - Collecting full packet captures for an inventory.
@@ -1058,47 +782,23 @@ You will (1) define validity, reliability and coverage for security measurements
 
 A measurement is *valid* if it measures what it claims, *reliable* if it gives the same result when repeated, and has known *coverage* if we know what share of the population it observes. "Percentage of TLS connections using hybrid key exchange" is valid if counted from ServerHello messages, reliable if the sensor is stable, and its coverage is the share of traffic passing the sensor. Without coverage, a 90 % figure may describe only the easy tenth of the estate.
 
-Section fifteen point one develops evidence and measurement with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 15.2 Readiness indicators
 
 Useful indicators for a quantum migration include: share of assets with a known cryptographic inventory; share of long-lived data flows protected by hybrid key exchange; share of certificates issued by CAs that can issue post-quantum certificates; number of vendors with a published PQC roadmap; and mean time to change an algorithm by configuration. Each indicator should have an owner, a source and a refresh frequency.
-
-Section fifteen point two develops evidence and measurement with a Harbourline Credit Union note the HCU intern can demo offline.
 
 ### 15.3 Provenance
 
 Record for every observation: what was observed, by which method (passive network, configuration, code scan, vendor statement), when, and by whom. Methods differ in confidence: an observed handshake is stronger evidence than a vendor's datasheet. In TLS 1.3 a passive sensor sees the selected group but not the server certificate, which is encrypted, so certificate algorithms must come from endpoint or configuration evidence. Mixing methods without labels makes dashboards look more certain than they are.
 
-Section fifteen point three develops evidence and measurement with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 15.4 Worked example
 
 HCU's first dashboard reports "92 % of connections hybrid". On inspection, the only sensor sits in front of the new web gateway, which already uses X25519MLKEM768; branch VPNs and the ATM network are invisible to it. The corrected dashboard shows "web traffic: 92 % hybrid (sensor coverage 100 % of web gateway); VPN: 0 % (configuration evidence, 40/40 branches); ATM: unknown (no sensor)". The headline number fell, and the decision quality rose.
-
-Section fifteen point four develops evidence and measurement with a Harbourline Credit Union note the HCU intern can demo offline.
 
 ### 15.5 Practical activity
 
 Design three readiness indicators for HCU. For each, give definition, source, coverage, owner and refresh rate, and name one way it could mislead.
 
-Section fifteen point five develops evidence and measurement with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section fifteen point five, the HCU board expects evidence claims to carry owners and dates.
-
-Section fifteen point five treats what makes measurement useful as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point five, Harbourline Credit Union will not accept evidence work without a written trail.
-
 ### 15.6 Common errors and limits
-Section fifteen point six develops evidence and measurement with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section fifteen point six, the HCU board expects evidence claims to carry owners and dates.
-
-Section fifteen point six treats what makes measurement useful as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point six, Harbourline Credit Union will not accept evidence work without a written trail.
-
 
 - Reporting a percentage without its denominator and coverage.
 - Treating vendor claims as observations.
@@ -1129,49 +829,23 @@ You will (1) describe trust boundaries, zones and defence in depth; (2) draw a d
 
 A *trust boundary* separates components with different levels of trust — the internet and HCU's web tier, the web tier and the core banking zone, a branch and the data centre. Data crossing a boundary needs protection appropriate to its sensitivity: encryption, authentication, validation. *Defence in depth* layers independent controls so that one failure does not expose everything.
 
-Section sixteen point one develops security architecture with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section sixteen point one, the HCU board expects security claims to carry owners and dates.
-
 ### 16.2 Data-flow diagrams
 
 A data-flow diagram shows external entities, processes, data stores and the flows between them, with trust boundaries drawn as dashed lines. Annotating each flow with protocol, key-exchange algorithm, authentication algorithm and data lifetime turns the diagram into a quantum-exposure map: any flow crossing an untrusted boundary with long-lived data and classical key exchange is a harvest-now-decrypt-later candidate.
-
-Section sixteen point two develops security architecture with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section sixteen point two, the HCU board expects security claims to carry owners and dates.
 
 ### 16.3 Crypto-agility
 
 *Crypto-agility* is the ability to change cryptographic algorithms with bounded effort and risk. Architecturally it means centralised policy, algorithm identifiers that travel with data, libraries that support multiple algorithms, and interfaces that tolerate larger keys and signatures. NIST's [CSWP 39](https://doi.org/10.6028/NIST.CSWP.39-upd1) discusses crypto-agility considerations. An architecture without agility treats the PQC migration as a one-off rebuild; an agile one treats it as the first of several planned changes.
 
-Section sixteen point three develops security architecture with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 16.4 Boundaries in time
 
 Some boundaries are crossed not in space but in time. A mortgage signed today will be verified by a court or buyer years later; an archive encrypted today will be decrypted during a future audit. Architecture should show long-term services — timestamping, archive re-encryption, evidence renewal — as components whose own cryptography must be migrated.
-
-Section sixteen point four develops security architecture with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section sixteen point four, the HCU board expects security claims to carry owners and dates.
 
 ### 16.5 Worked example
 
 HCU's diagram shows the mobile app → web gateway (internet boundary, TLS hybrid), web gateway → core banking (internal, TLS classical), core banking → archive (internal, AES-256 at rest, keys wrapped with RSA-OAEP), branch → data centre (WAN boundary, IPsec ECDH). Annotation reveals two priorities: the branch WAN for HNDL and the RSA-wrapped archive keys, which are exposed if the wrapped keys are ever copied off-site.
 
-Section sixteen point five develops security architecture with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section sixteen point five, the HCU board expects security claims to carry owners and dates.
-
 ### 16.6 Common errors and limits
-Section sixteen point six develops security architecture with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section sixteen point six, the HCU board expects security claims to carry owners and dates.
-
-Section sixteen point six treats boundaries and zones data-flow as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point six, Harbourline Credit Union will not accept security work without a written trail.
-
 
 - Drawing diagrams without algorithms and lifetimes.
 - Considering only network boundaries, not time boundaries.
@@ -1205,8 +879,6 @@ You will (1) distinguish symmetric encryption, hash functions, MACs, key exchang
 ### 17.2 The NIST standards
 
 In August 2024 NIST published three post-quantum standards: [FIPS 203](https://doi.org/10.6028/NIST.FIPS.203) ML-KEM, a lattice-based KEM with parameter sets ML-KEM-512, -768 and -1024; [FIPS 204](https://doi.org/10.6028/NIST.FIPS.204) ML-DSA, a lattice-based signature; and [FIPS 205](https://doi.org/10.6028/NIST.FIPS.205) SLH-DSA, a stateless hash-based signature. Earlier, [SP 800-208](https://doi.org/10.6028/NIST.SP.800-208) approved the stateful hash-based signatures LMS and XMSS. NIST defines security *categories* 1–5 by comparison with breaking AES-128, SHA-256, AES-192, SHA-384 and AES-256; ML-KEM-768 targets category 3.
-
-Section seventeen point two develops cryptography concepts with a Harbourline Credit Union note the HCU intern can demo offline.
 
 ### 17.3 Practical activity — Lab L
 
@@ -1249,19 +921,7 @@ Security rests only on the hash function, which is why hash-based signatures are
 
 HCU's architect asks which primitive fits each need: archive encryption (AES-256, keep), key transport to the archive (KEM: ML-KEM-768 in a hybrid), statement signing (ML-DSA-65 once supported, or hybrid with ECDSA during transition), firmware signing for ATMs (LMS via SP 800-208 or SLH-DSA, because signing volume is low and conservatism is valued).
 
-Section seventeen point four develops cryptography concepts with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section seventeen point four, the HCU board expects cryptography claims to carry owners and dates.
-
 ### 17.5 Common errors and limits
-Section seventeen point five develops cryptography concepts with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section seventeen point five, the HCU board expects cryptography claims to carry owners and dates.
-
-Section seventeen point five treats the toolbox the nist as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point five, Harbourline Credit Union will not accept cryptography work without a written trail.
-
 
 - Calling ML-KEM "encryption"; it is a KEM producing a shared secret.
 - Reusing one-time or stateful signature keys.
@@ -1292,47 +952,23 @@ You will (1) formulate a researchable question; (2) choose between literature re
 
 A good research question is specific, answerable with available evidence and relevant to a decision. "Is PQC good?" is not researchable. "What share of HCU's branch-to-data-centre flows carry data with a confidentiality lifetime above 15 years?" is. Questions in this field often take the forms *how much* (measurement), *what happens if* (experiment), *how did it go* (case study) or *what is known* (literature review).
 
-Section eighteen point one develops research methods with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 18.2 Methods
 
 A *literature review* summarises primary sources systematically, recording search terms and inclusion rules. A *measurement study* counts properties of a population, such as TLS groups offered by a set of servers. An *experiment* changes one factor and observes the effect, such as handshake latency with and without a hybrid group in a lab. A *case study* examines one migration in depth. Each method answers different questions; combining them strengthens conclusions.
-
-Section eighteen point two develops research methods with a Harbourline Credit Union note the HCU intern can demo offline.
 
 ### 18.3 Populations, samples and validity
 
 State the population (all HCU web services), the sampling frame (services in the asset register) and the sample (those reachable from the test network). *Internal validity* asks whether the observed effect is caused by the factor studied; *external validity* asks whether results generalise. A latency experiment on a fast lab network may not predict results on rural branch links; that is an external-validity limit, not a failure, as long as it is stated.
 
-Section eighteen point three develops research methods with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 18.4 Worked example
 
 Question: "Does enabling X25519MLKEM768 on HCU's test gateway increase median handshake time for branch clients?" Method: lab experiment with emulated branch latency of 40 ms and 1 % loss; 1,000 handshakes per condition, alternating order to control drift. Result (synthetic): median increases by 0.9 ms; the 99th percentile increases by 3 ms because some ClientHellos need a second segment. Validity note: emulated loss does not reproduce the behaviour of the branch's real inspection proxy.
-
-Section eighteen point four develops research methods with a Harbourline Credit Union note the HCU intern can demo offline.
 
 ### 18.5 Practical activity
 
 Write a one-page study protocol for measuring how many HCU internal services support TLS 1.3, including population, frame, sample, method, data handling and validity threats.
 
-Section eighteen point five develops research methods with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section eighteen point five, the HCU board expects research claims to carry owners and dates.
-
-Section eighteen point five treats questions methods populations samples as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point five, Harbourline Credit Union will not accept research work without a written trail.
-
 ### 18.6 Common errors and limits
-Section eighteen point six develops research methods with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section eighteen point six, the HCU board expects research claims to carry owners and dates.
-
-Section eighteen point six treats questions methods populations samples as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point six, Harbourline Credit Union will not accept research work without a written trail.
-
 
 - Questions too broad to answer.
 - Unstated sampling frames that hide selection bias.
@@ -1363,19 +999,13 @@ You will (1) define the scope of quantum and post-quantum security; (2) state Mo
 
 The field covers four questions. What can quantum computers do to cryptography? (Shor breaks RSA, Diffie–Hellman and elliptic curves; Grover weakens symmetric search quadratically.) What replaces vulnerable algorithms? (Post-quantum cryptography: classical algorithms believed to resist quantum attack.) How do organizations migrate? (Inventory, prioritisation, hybrid deployment, agility.) And what role, if any, for quantum communication technologies such as quantum key distribution (QKD)? This book concentrates on the first three, because PQC runs on today's computers and networks.
 
-Section nineteen point one develops quantum and post-quantum security scope with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 19.2 PQC versus QKD
 
 PQC algorithms such as ML-KEM are software and hardware implementations of mathematical schemes; they work over any network. QKD uses quantum states of light to establish keys and needs dedicated links and trusted nodes, and it still needs classical authentication. The [NSA](https://www.nsa.gov/Cybersecurity/Quantum-Key-Distribution-QKD-and-Quantum-Cryptography-QC/) has stated that it does not support QKD for national security systems and recommends quantum-resistant algorithms instead. For an organization like HCU, PQC is the practical path.
 
-Section nineteen point two develops quantum and post-quantum security scope with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 19.3 Mosca's inequality
 
 Mosca (2018) gave the field its planning rule. Let *x* be how long data must stay secure, *y* how long migration takes and *z* how long until a cryptographically relevant quantum computer (CRQC) exists. If *x* + *y* > *z*, you are already late for that data. Because *z* is unknown, sweep it: decisions that are correct across a plausible range of *z* are robust.
-
-Section nineteen point three develops quantum and post-quantum security scope with a Harbourline Credit Union note the HCU intern can demo offline.
 
 ### 19.4 Practical activity — Lab M
 
@@ -1390,12 +1020,6 @@ for z in (10, 15, 20):  # years until a cryptographically relevant quantum compu
 
 Expected output:
 
-Section nineteen point four develops quantum and post-quantum security scope with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section nineteen point four, the HCU board expects quantum claims to carry owners and dates.
-
-Section nineteen point four treats scope pqc versus qkd as testable only when evidence and ticket IDs are recorded.
-
 ```text
 z=10: at risk now -> mortgage archive, member records
 z=15: at risk now -> mortgage archive
@@ -1408,23 +1032,11 @@ Card authorisation messages are short-lived, so they drop out; the mortgage arch
 
 FIPS 203, 204 and 205 are final (August 2024). [SP 800-227](https://doi.org/10.6028/NIST.SP.800-227) gives recommendations for using KEMs. NIST's draft [IR 8547](https://doi.org/10.6028/NIST.IR.8547.ipd) proposes deprecating 112-bit-security quantum-vulnerable algorithms after 2030 and disallowing quantum-vulnerable public-key algorithms after 2035; as a draft, it signals direction rather than binding dates. FN-DSA (FIPS 206) and a standard based on HQC were in development on 12 October 2026. [RFC 9794](https://www.rfc-editor.org/rfc/rfc9794.html) defines terminology for post-quantum/traditional (PQ/T) hybrid schemes.
 
-Section nineteen point five develops quantum and post-quantum security scope with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 19.6 Worked example
 
 HCU's board asks for a one-slide answer. "Quantum computers capable of breaking our public-key cryptography do not exist today and their date is uncertain. Our mortgage archive must stay confidential for 30 years, so recorded transfers are at risk under any plausible timeline; we will protect those flows first with hybrid post-quantum key exchange, following NIST's 2024 standards. Signatures and devices follow a planned schedule aligned with NIST's draft transition guidance."
 
-Section nineteen point six develops quantum and post-quantum security scope with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 19.7 Common errors and limits
-Section nineteen point seven develops quantum and post-quantum security scope with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section nineteen point seven, the HCU board expects quantum claims to carry owners and dates.
-
-Section nineteen point seven treats scope pqc versus qkd as testable only when evidence and ticket IDs are recorded.
-
-For section nineteen point seven, Harbourline Credit Union will not accept quantum work without a written trail.
-
 
 - Quoting a single CRQC date as fact.
 - Presenting QKD as a drop-in replacement for PQC.
@@ -1455,55 +1067,27 @@ You will (1) summarise public cases that shaped post-quantum practice; (2) expla
 
 Shor's 1994 algorithm (journal version 1997) showed that factoring and discrete logarithms are efficiently solvable on a quantum computer. For decades, the question was resources. Gidney and Ekerå (2021) estimated 20 million noisy qubits running for eight hours to factor RSA-2048; Gidney (2025) lowered this to under a million noisy qubits in under a week, under stated assumptions about error rates and connectivity. The lesson: resource estimates fall as algorithms and error correction improve, so plans must not depend on today's estimate staying fixed.
 
-Section twenty point one develops quantum and post-quantum security foundational with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 20.2 Broken candidates
 
 The NIST process eliminated candidates publicly. Rainbow, a multivariate signature, was broken by Beullens (2022) with a key-recovery attack running "over a weekend on a laptop". SIKE, an isogeny-based KEM, was broken by Castryck and Decru (2022) with a classical attack. Both had survived years of analysis. The lesson: new schemes carry the risk of classical breaks, which is a main argument for hybrid deployment — combining a post-quantum and a traditional algorithm so that an attacker must break both.
-
-Section twenty point two develops quantum and post-quantum security foundational with a Harbourline Credit Union note the HCU intern can demo offline.
 
 ### 20.3 Implementation flaws
 
 KyberSlash (Bernstein et al., 2024) showed that several implementations of Kyber leaked secret information through timing of division operations, even though the mathematics was sound. The lesson: a correct standard is not a correct implementation; use vetted libraries and keep them updated.
 
-Section twenty point three develops quantum and post-quantum security foundational with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty point three, the HCU board expects quantum claims to carry owners and dates.
-
-Section twenty point three treats shor and resource estimates as testable only when evidence and ticket IDs are recorded.
-
 ### 20.4 Early deployment
 
 Google's Chrome team announced hybrid post-quantum key exchange in 2023 ([Chromium Blog](https://blog.chromium.org/2023/08/protecting-chrome-traffic-with-hybrid.html)), and some servers and middleboxes failed on the larger ClientHello. The lesson: deployment exposes ecosystem bugs that no specification review finds; staged rollout and monitoring are essential.
-
-Section twenty point four develops quantum and post-quantum security foundational with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty point four, the HCU board expects quantum claims to carry owners and dates.
 
 ### 20.5 Worked example
 
 HCU's vendor proposes enabling pure ML-KEM on branch VPNs immediately. Applying the cases: SIKE shows that a new scheme can fail suddenly, so a hybrid with ECDH is the prudent transition design; KyberSlash shows that the vendor's implementation version matters, so HCU asks which library and version the appliance uses; the Chrome experience shows that one branch with a legacy device might break, so HCU starts with three pilot branches.
 
-Section twenty point five develops quantum and post-quantum security foundational with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 20.6 Practical activity
 
 Write a half-page lesson card for one of the four cases: what happened, primary source, what it changed in practice, and one question it raises for HCU.
 
-Section twenty point six develops quantum and post-quantum security foundational with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty point six, the HCU board expects quantum claims to carry owners and dates.
-
-Section twenty point six treats shor and resource estimates as testable only when evidence and ticket IDs are recorded.
-
 ### 20.7 Common errors and limits
-Section twenty point seven develops quantum and post-quantum security foundational with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty point seven, the HCU board expects quantum claims to carry owners and dates.
-
-Section twenty point seven treats shor and resource estimates as testable only when evidence and ticket IDs are recorded.
-
 
 - Concluding from SIKE that all PQC is fragile; ML-KEM rests on a different, well-studied problem family.
 - Treating resource estimates as predictions of dates.
@@ -1534,15 +1118,9 @@ You will (1) build a system model listing components, interfaces and cryptograph
 
 A system model for quantum security lists, for each component, its cryptographic functions (key establishment, authentication, data protection, code integrity), the algorithms used, the parameters, the library or hardware implementing them, the owner and the *change mechanism* — configuration, software update, vendor release or hardware replacement. The model extends the data-flow diagram of Chapter 16 with the facts needed to estimate effort.
 
-Section twenty-one point one develops quantum and post-quantum security system with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 21.2 Exposure classes
 
 Classify each function: *HNDL-exposed* (classical key establishment protecting data whose confidentiality outlasts plausible *z*); *forge-later-exposed* (classical signatures whose trust must last beyond *z*, or that cannot be quickly replaced); *Grover-adequate* (symmetric and hash functions with sufficient sizes); and *unknown*. The unknown class is not a rounding error; it often contains the hardest items, such as embedded devices.
-
-Section twenty-one point two develops quantum and post-quantum security system with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty-one point two, the HCU board expects quantum claims to carry owners and dates.
 
 ### 21.3 Comparing alternatives
 
@@ -1552,29 +1130,11 @@ With the model, alternatives become comparable. For HCU's branch VPN: (a) upgrad
 
 HCU models its card terminal estate: 3,000 terminals, ECDH key exchange to the payment switch, RSA-signed firmware, vendor-controlled updates, hardware boot ROM verifying RSA only. Exposure: key exchange is HNDL-exposed only for the short-lived card data (low priority); firmware signing is forge-later-exposed and the boot ROM cannot change, so the realistic path is replacement at end of life with a procurement requirement for post-quantum firmware signing.
 
-Section twenty-one point four develops quantum and post-quantum security system with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 21.5 Practical activity
 
 Model three HCU components (web gateway, internal CA, ATM) in a table with function, algorithm, implementation, owner, change mechanism and exposure class.
 
-Section twenty-one point five develops quantum and post-quantum security system with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty-one point five, the HCU board expects quantum claims to carry owners and dates.
-
-Section twenty-one point five treats what the model contains as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-one point five, Harbourline Credit Union will not accept quantum work without a written trail.
-
 ### 21.6 Common errors and limits
-Section twenty-one point six develops quantum and post-quantum security system with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty-one point six, the HCU board expects quantum claims to carry owners and dates.
-
-Section twenty-one point six treats what the model contains as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-one point six, Harbourline Credit Union will not accept quantum work without a written trail.
-
 
 - Omitting change mechanisms, which hides the true effort.
 - Treating unknown items as low risk.
@@ -1605,8 +1165,6 @@ You will (1) explain what a cryptographic bill of materials (CBOM) is; (2) combi
 
 No single method finds all cryptography. *Passive network observation* sees negotiated algorithms on the wire; *configuration review* reads what services are set to offer; *code and binary scanning* finds library calls and embedded constants; *vendor statements* describe closed products; *certificate stores* reveal signature algorithms and validity. A CBOM records, for each asset and function, the algorithm, parameters, implementation and evidence source, analogous to a software bill of materials for components.
 
-Section twenty-two point one develops quantum and post-quantum security data with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 22.2 Practical activity — Lab I
 
 ```python
@@ -1627,12 +1185,6 @@ print("hybrid key exchange present on:", [r[0] for r in records if "MLKEM" in r[
 
 Expected output:
 
-Section twenty-two point two develops quantum and post-quantum security data with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty-two point two, the HCU board expects quantum claims to carry owners and dates.
-
-Section twenty-two point two treats inventory sources practical activity as testable only when evidence and ticket IDs are recorded.
-
 ```text
 assets 6, unknown 1 (17%)
 quantum-vulnerable uses 5: web-gateway/signature, atm-controller/key-exchange, atm-controller/signature, core-banking/key-exchange, branch-vpn/key-exchange
@@ -1645,23 +1197,11 @@ Six synthetic assets yield five quantum-vulnerable uses and one asset (17 %) who
 
 Cryptography is inherited. An application uses a framework that uses a TLS library that uses the OS provider; a SaaS vendor terminates TLS on a CDN that HCU does not control; a partner's API dictates which algorithms HCU's client must support. Draw dependency chains for high-priority flows and identify the *controlling party* for each link — the one that must act for the algorithm to change. A migration is complete for a flow only when every link has moved.
 
-Section twenty-two point three develops quantum and post-quantum security data with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 22.4 Worked example
 
 HCU's mobile banking flow depends on: the phone OS TLS stack (platform vendor), the app's networking library (HCU developers), a CDN terminating TLS (CDN provider), the web gateway (HCU network team) and the core banking API (core vendor). Hybrid key exchange from phone to CDN depends on platform and CDN support; from CDN to gateway on CDN and HCU; from gateway to core on HCU and the core vendor. Three controlling parties, three different timelines.
 
-Section twenty-two point four develops quantum and post-quantum security data with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 22.5 Common errors and limits
-Section twenty-two point five develops quantum and post-quantum security data with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty-two point five, the HCU board expects quantum claims to carry owners and dates.
-
-Section twenty-two point five treats inventory sources practical activity as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-two point five, Harbourline Credit Union will not accept quantum work without a written trail.
-
 
 - Relying on one evidence source.
 - Recording algorithms without evidence source and date.
@@ -1717,8 +1257,6 @@ print(f"toy LWE: {ok}/2000 bits decrypted correctly (noise stays below q/4)")
 
 Expected output:
 
-Section twenty-three point two develops quantum and post-quantum security methods with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ```text
 toy LWE: 2000/2000 bits decrypted correctly (noise stays below q/4)
 ```
@@ -1733,17 +1271,7 @@ ML-KEM ([FIPS 203](https://doi.org/10.6028/NIST.FIPS.203)) uses Module-LWE with 
 
 HCU chooses ML-KEM-768 for hybrid key exchange because category 3 offers a margin above AES-128-equivalent security, it is the parameter set used by the widely deployed X25519MLKEM768 TLS group, and its 1,184-byte key fits typical handshakes. ML-KEM-1024 is reserved for any partner whose rules demand category 5.
 
-Section twenty-three point four develops quantum and post-quantum security methods with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty-three point four, the HCU board expects quantum claims to carry owners and dates.
-
 ### 23.5 Common errors and limits
-Section twenty-three point five develops quantum and post-quantum security methods with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty-three point five, the HCU board expects quantum claims to carry owners and dates.
-
-Section twenty-three point five treats learning with errors practical as testable only when evidence and ticket IDs are recorded.
-
 
 - Thinking the toy lab's parameters are secure.
 - Forgetting that ML-KEM is a KEM, not a general encryption function.
@@ -1774,10 +1302,6 @@ You will (1) list the main control families for quantum risk; (2) explain hybrid
 
 Controls for quantum risk fall into five families. *Algorithm controls* deploy post-quantum or hybrid algorithms. *Data controls* minimise, shorten or re-encrypt data so that less is exposed. *Key-management controls* add symmetric pre-shared keys or shorten key lifetimes. *Architecture controls* centralise cryptographic policy for agility. *Governance controls* include inventory ownership, procurement clauses and transition timelines.
 
-Section twenty-four point one develops quantum and post-quantum security controls with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty-four point one, the HCU board expects quantum claims to carry owners and dates.
-
 ### 24.2 Hybrid key establishment
 
 A PQ/T hybrid scheme, in the terminology of [RFC 9794](https://www.rfc-editor.org/rfc/rfc9794.html), combines a post-quantum and a traditional component so that the result is secure if either component is. In TLS, X25519MLKEM768 ([RFC 10024](https://www.rfc-editor.org/rfc/rfc10024.html)) concatenates an ML-KEM-768 shared secret with an X25519 shared secret and feeds both into the key schedule. Hybrids hedge two risks at once: a future quantum computer (breaking X25519) and an unexpected classical break or implementation flaw in the new scheme. [SP 800-227](https://doi.org/10.6028/NIST.SP.800-227) discusses combining KEMs and approved key-combination methods.
@@ -1786,45 +1310,19 @@ A PQ/T hybrid scheme, in the terminology of [RFC 9794](https://www.rfc-editor.or
 
 For HNDL exposure, deploy hybrid key establishment on flows carrying long-lived data and minimise what those flows carry. For forge-later exposure, plan post-quantum signatures, starting with long-lived trust anchors and code signing, and procure devices that support them; where signatures must remain verifiable for decades, also plan archive timestamp renewal. For unknown items, the control is investigation: a vendor inquiry or lab test.
 
-Section twenty-four point three develops quantum and post-quantum security controls with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 24.4 Residual risk
 
 No control removes all risk. After hybrid key exchange on the branch VPN, residual risks include classical authentication (forge-later, lower urgency), unknown devices behind branches and the chance that a configuration silently falls back to classical-only. State residual risk explicitly with an owner and review date; a migration report that claims "quantum-safe" without residual risk is not credible.
-
-Section twenty-four point four develops quantum and post-quantum security controls with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty-four point four, the HCU board expects quantum claims to carry owners and dates.
 
 ### 24.5 Worked example
 
 HCU's control plan for the mortgage archive: (1) hybrid IKEv2 for branch transfers; (2) stop sending scanned documents nightly, sending them once on completion; (3) re-wrap archive keys with ML-KEM-based key transport inside the HSM when the HSM supports it; (4) residual risk: RSA-signed archive timestamps, owner Records Management, review annually.
 
-Section twenty-four point five develops quantum and post-quantum security controls with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty-four point five, the HCU board expects quantum claims to carry owners and dates.
-
 ### 24.6 Practical activity
 
 Produce a control table for three HCU exposures with control family, specific control, expected effect, owner and residual risk.
 
-Section twenty-four point six develops quantum and post-quantum security controls with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty-four point six, the HCU board expects quantum claims to carry owners and dates.
-
-Section twenty-four point six treats control families hybrid key as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point six, Harbourline Credit Union will not accept quantum work without a written trail.
-
 ### 24.7 Common errors and limits
-Section twenty-four point seven develops quantum and post-quantum security controls with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty-four point seven, the HCU board expects quantum claims to carry owners and dates.
-
-Section twenty-four point seven treats control families hybrid key as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point seven, Harbourline Credit Union will not accept quantum work without a written trail.
-
 
 - Claiming hybrid key exchange makes authentication post-quantum.
 - Ignoring data controls, which are often the cheapest.
@@ -1855,10 +1353,6 @@ You will (1) run known-answer tests (KATs) and negative tests; (2) explain why v
 
 Standards define algorithms; implementations can still be wrong. Known-answer tests run an implementation on fixed inputs and compare with published outputs; negative tests feed malformed inputs and expect rejection. NIST's Cryptographic Algorithm Validation Program applies such tests to implementations of FIPS 203, 204 and 205. Students cannot validate a production library, but they can learn the habit with primitives from the standard library.
 
-Section twenty-five point one develops laboratory with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty-five point one, the HCU board expects laboratory claims to carry owners and dates.
-
 ### 25.2 Practical activity — Lab V
 
 ```python
@@ -1884,12 +1378,6 @@ for param, n in [("ML-KEM-768", 1184), ("ML-KEM-768", 1183), ("ML-KEM-512", 1184
 
 Expected output:
 
-Section twenty-five point two develops laboratory with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty-five point two, the HCU board expects laboratory claims to carry owners and dates.
-
-Section twenty-five point two treats why test implementations practical as testable only when evidence and ticket IDs are recorded.
-
 ```text
 KAT sha3_256      PASS
 KAT shake_128/32  PASS
@@ -1904,35 +1392,15 @@ The hash KATs pass because Python's SHA-3 matches published values; the length c
 
 A lab record states the question, environment (OS, Python and library versions), inputs, exact commands, outputs and interpretation. Store it with the code so that anyone can rerun it. If a library update changes a result, the record shows what changed.
 
-Section twenty-five point three develops laboratory with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty-five point three, the HCU board expects laboratory claims to carry owners and dates.
-
-Section twenty-five point three treats why test implementations practical as testable only when evidence and ticket IDs are recorded.
-
 ### 25.4 Interpreting results
 
 A passing KAT shows that the implementation matches the reference on those inputs; it does not show constant-time behaviour, correct key handling or safe integration. A failing test may reveal a bug in the implementation, the test vector or the harness. Include a *negative control* — a deliberately wrong implementation that the test must catch — to confirm the harness can fail.
-
-Section twenty-five point four develops laboratory with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty-five point four, the HCU board expects laboratory claims to carry owners and dates.
 
 ### 25.5 Worked example
 
 An HCU developer integrates a new PQC library. Their lab record: library version, test vectors from the vendor's published KAT files, a harness that compares outputs, and a negative control that flips one byte of an expected output to check the harness reports failure. All KATs pass; the negative control fails as expected. The record notes that side-channel behaviour was not tested and is covered by the library's own evaluation.
 
-Section twenty-five point five develops laboratory with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 25.6 Common errors and limits
-Section twenty-five point six develops laboratory with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty-five point six, the HCU board expects laboratory claims to carry owners and dates.
-
-Section twenty-five point six treats why test implementations practical as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point six, Harbourline Credit Union will not accept laboratory work without a written trail.
-
 
 - Treating KAT success as proof of security.
 - Harnesses that cannot fail.
@@ -1963,8 +1431,6 @@ You will (1) explain how hybrid secrets are combined with a key-derivation funct
 
 A hybrid KEM produces two shared secrets. A *combiner* feeds both, plus context such as the handshake transcript, into a key-derivation function (KDF) so that the output is unpredictable if either secret is. Concatenation followed by HKDF-Extract, as in the TLS hybrid design, is one standard approach; [SP 800-56C Rev. 2](https://doi.org/10.6028/NIST.SP.800-56Cr2) and SP 800-227 describe approved key-derivation and combination methods.
 
-Section twenty-six point one develops quantum and post-quantum security methods with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 26.2 Practical activity — Lab C
 
 ```python
@@ -1983,12 +1449,6 @@ print("context changed       ", combine(pq, trad, b"other-transcript"))
 
 Expected output:
 
-Section twenty-six point two develops quantum and post-quantum security methods with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty-six point two, the HCU board expects quantum claims to carry owners and dates.
-
-Section twenty-six point two treats combining secrets practical activity as testable only when evidence and ticket IDs are recorded.
-
 ```text
 baseline               d48e982e8c06ca60
 PQ secret changed      d4c36ea2d90b2e9c
@@ -2006,27 +1466,11 @@ ML-DSA ([FIPS 204](https://doi.org/10.6028/NIST.FIPS.204)) is a lattice-based si
 
 Compare signatures on: assumption (lattice versus hash), sizes, signing and verification speed, statefulness, and ecosystem support. For TLS certificates, ML-DSA's speed and moderate size fit best. For firmware signed rarely and verified on boot, SLH-DSA's conservatism or LMS's small signatures may be preferred. For documents needing decades of trust, conservatism weighs heavily.
 
-Section twenty-six point four develops quantum and post-quantum security methods with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty-six point four, the HCU board expects quantum claims to carry owners and dates.
-
 ### 26.5 Worked example
 
 HCU compares options for signing member statements, produced 500,000 times per month: ML-DSA-65 (3,309-byte signatures, fast signing) versus SLH-DSA-SHA2-128s (7,856-byte signatures, slow signing). The volume and PDF size favour ML-DSA-65; HCU records the residual assumption risk and plans to keep algorithm identifiers in each document so that a future change is possible.
 
-Section twenty-six point five develops quantum and post-quantum security methods with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty-six point five, the HCU board expects quantum claims to carry owners and dates.
-
 ### 26.6 Common errors and limits
-Section twenty-six point six develops quantum and post-quantum security methods with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty-six point six, the HCU board expects quantum claims to carry owners and dates.
-
-Section twenty-six point six treats combining secrets practical activity as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-six point six, Harbourline Credit Union will not accept quantum work without a written trail.
-
 
 - Combining secrets by XOR without context binding.
 - Choosing SLH-DSA for high-volume TLS without measuring cost.
@@ -2057,61 +1501,27 @@ You will (1) define verification objectives for a migration; (2) test that hybri
 
 Verification asks whether the system does what the design says. For a migration, objectives include: the hybrid group is offered and selected for in-scope clients; classical fallback occurs only where permitted; certificates validate in all supported clients; performance stays within budget; and logs record the negotiated algorithms.
 
-Section twenty-seven point one develops quantum and post-quantum security verification with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty-seven point one, the HCU board expects quantum claims to carry owners and dates.
-
 ### 27.2 Checking negotiation
 
 Configuration says what a server *offers*; the handshake shows what is *selected*. Verify selection from the client side (test client output showing the group) and the server side (logs of negotiated groups). In TLS 1.3, the selected group appears in the cleartext ServerHello, so an authorized passive sensor can confirm it. For IKEv2, appliance logs or lab captures show the key-exchange methods negotiated under RFC 9370.
-
-Section twenty-seven point two develops quantum and post-quantum security verification with a Harbourline Credit Union note the HCU intern can demo offline.
 
 ### 27.3 Downgrade and fallback
 
 TLS 1.3 protects negotiation integrity through the transcript-bound handshake, so an active attacker cannot simply strip the hybrid group without detection. But fallback can still happen legitimately: a client that does not support the group, or a server configured with classical groups preferred. Lab tests should include clients with and without hybrid support and confirm that each gets the expected outcome. Active downgrade experiments belong only in an isolated testbed.
 
-Section twenty-seven point three develops quantum and post-quantum security verification with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 27.4 Evidence
 
 Record test cases, client versions, server configuration hashes, outputs and dates. A verification report lists each objective with pass, fail or not tested, plus the evidence location.
-
-Section twenty-seven point four develops quantum and post-quantum security verification with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty-seven point four, the HCU board expects quantum claims to carry owners and dates.
-
-Section twenty-seven point four treats verification objectives checking negotiation as testable only when evidence and ticket IDs are recorded.
 
 ### 27.5 Worked example
 
 HCU's lab verifies the pilot web gateway: a hybrid-capable client selects X25519MLKEM768 (pass); a legacy client selects X25519 (expected fallback, pass); the gateway's preference order was accidentally set with X25519 first, so even hybrid-capable clients chose X25519 on one test build (fail, fixed by reordering). Without the client-side check, the configuration would have looked correct.
 
-Section twenty-seven point five develops quantum and post-quantum security verification with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty-seven point five, the HCU board expects quantum claims to carry owners and dates.
-
 ### 27.6 Practical activity
 
 Write a verification checklist of six objectives for a hybrid-enabled HCU gateway, with method and expected evidence for each.
 
-Section twenty-seven point six develops quantum and post-quantum security verification with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty-seven point six, the HCU board expects quantum claims to carry owners and dates.
-
-Section twenty-seven point six treats verification objectives checking negotiation as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point six, Harbourline Credit Union will not accept quantum work without a written trail.
-
 ### 27.7 Common errors and limits
-Section twenty-seven point seven develops quantum and post-quantum security verification with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty-seven point seven, the HCU board expects quantum claims to carry owners and dates.
-
-Section twenty-seven point seven treats verification objectives checking negotiation as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point seven, Harbourline Credit Union will not accept quantum work without a written trail.
-
 
 - Verifying configuration instead of negotiation.
 - Testing only modern clients.
@@ -2142,17 +1552,9 @@ You will (1) apply failure-mode and effects analysis (FMEA) to a migration; (2) 
 
 FMEA lists, for each component, ways it can fail, the effect, the cause, how it would be detected and a risk priority. Migration failure modes include: handshake failure due to message size; silent fallback to classical; certificate validation failure in old clients; performance degradation on constrained devices; key-management mismatch between HSMs; and an algorithm becoming untrusted after cryptanalysis.
 
-Section twenty-eight point one develops quantum and post-quantum security failure with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty-eight point one, the HCU board expects quantum claims to carry owners and dates.
-
 ### 28.2 Algorithm-break response
 
 Rainbow and SIKE show that a scheme can fall suddenly. A response plan says who decides, how quickly configuration can remove the algorithm, which systems need a release and which need hardware, and what fallback is acceptable. Hybrids make this survivable: if ML-KEM were unexpectedly weakened, hybrid flows would still rest on X25519 while a replacement is deployed.
-
-Section twenty-eight point two develops quantum and post-quantum security failure with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty-eight point two, the HCU board expects quantum claims to carry owners and dates.
 
 ### 28.3 Practical activity — Lab A
 
@@ -2179,10 +1581,6 @@ print("old tag after retirement:", check(k, m, a1, t1))
 
 Expected output:
 
-Section twenty-eight point three develops quantum and post-quantum security failure with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty-eight point three, the HCU board expects quantum claims to carry owners and dates.
-
 ```text
 old tag still verifies during transition: True
 new tag verifies: True | algorithms: hmac-sha256 -> hmac-sha3-256
@@ -2195,29 +1593,11 @@ Migration is a policy change, not a code change. The algorithm identifier travel
 
 Each stage needs a rollback procedure and an exit criterion. Rollback restores the previous configuration quickly if failures exceed budget. Exit criteria say when a transitional state ends, such as "classical-only negotiation below 0.5 % for 90 days", so that fallback does not become permanent.
 
-Section twenty-eight point four develops quantum and post-quantum security failure with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty-eight point four, the HCU board expects quantum claims to carry owners and dates.
-
-Section twenty-eight point four treats fmea for cryptographic change as testable only when evidence and ticket IDs are recorded.
-
 ### 28.5 Worked example
 
 HCU's FMEA ranks "silent fallback to classical on branch VPN" highest: severe for HNDL, likely due to misconfiguration, hard to detect without monitoring. Control: alert when any branch negotiates without the post-quantum method, weekly report of fallback share. "Large ClientHello dropped by legacy proxy" ranks second: visible quickly, so the control is staged rollout and a rollback runbook.
 
-Section twenty-eight point five develops quantum and post-quantum security failure with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty-eight point five, the HCU board expects quantum claims to carry owners and dates.
-
 ### 28.6 Common errors and limits
-Section twenty-eight point six develops quantum and post-quantum security failure with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty-eight point six, the HCU board expects quantum claims to carry owners and dates.
-
-Section twenty-eight point six treats fmea for cryptographic change as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point six, Harbourline Credit Union will not accept quantum work without a written trail.
-
 
 - Considering only availability failures, not silent security failures.
 - No plan for an algorithm break.
@@ -2248,12 +1628,6 @@ You will (1) plan a staged rollout with canaries; (2) use confidence bounds for 
 
 Operations introduce change gradually: enable a hybrid group for 1 % of traffic, then 10 %, then everyone, checking at each stage that failure rates stay within an agreed budget. Each stage has a duration long enough to see weekly patterns and a named decision-maker.
 
-Section twenty-nine point one develops quantum and post-quantum security operations with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty-nine point one, the HCU board expects quantum claims to carry owners and dates.
-
-Section twenty-nine point one treats staged rollout practical activity as testable only when evidence and ticket IDs are recorded.
-
 ### 29.2 Practical activity — Lab K
 
 ```python
@@ -2270,10 +1644,6 @@ for stage, k, n in [("1% canary", 3, 5000), ("10% canary", 28, 50000), ("10% can
 
 Expected output:
 
-Section twenty-nine point two develops quantum and post-quantum security operations with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty-nine point two, the HCU board expects quantum claims to carry owners and dates.
-
 ```text
 1% canary                3/5000  upper95=0.00176  HOLD
 10% canary               28/50000  upper95=0.00081  PROMOTE
@@ -2286,35 +1656,15 @@ The decision uses the upper confidence bound, not the point estimate. The first 
 
 Production monitoring should report negotiated key-exchange groups by service and site, fallback shares, handshake failures by error type, and certificate validation errors. Alerts fire when fallback exceeds thresholds. Measurement lag matters: if partner data arrives monthly, promotion decisions for partner flows cannot be weekly.
 
-Section twenty-nine point three develops quantum and post-quantum security operations with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty-nine point three, the HCU board expects quantum claims to carry owners and dates.
-
 ### 29.4 Communication
 
 Publish a short note at each stage: what changed, measured failure bound, known exceptions and next decision date. Help-desk staff who know that a hybrid rollout reached a site will route related tickets quickly.
-
-Section twenty-nine point four develops quantum and post-quantum security operations with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty-nine point four, the HCU board expects quantum claims to carry owners and dates.
-
-Section twenty-nine point four treats staged rollout practical activity as testable only when evidence and ticket IDs are recorded.
 
 ### 29.5 Worked example
 
 HCU rolls out hybrid key exchange on its web gateway. Stage 1 (1 %, one week) holds because the confidence bound is wide; stage 1 extended to two weeks promotes. Stage 2 at 10 % reveals elevated failures from one branch with a legacy inspection proxy; that branch is excluded, the proxy vendor is engaged and the rest proceeds. Monitoring shows 0.3 % fallback after full rollout, all from old clients.
 
-Section twenty-nine point five develops quantum and post-quantum security operations with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 29.6 Common errors and limits
-Section twenty-nine point six develops quantum and post-quantum security operations with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section twenty-nine point six, the HCU board expects quantum claims to carry owners and dates.
-
-Section twenty-nine point six treats staged rollout practical activity as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point six, Harbourline Credit Union will not accept quantum work without a written trail.
-
 
 - Promoting on point estimates from small samples.
 - Monitoring only failures, not fallback.
@@ -2348,12 +1698,6 @@ You will (1) estimate handshake bytes for post-quantum certificate chains; (2) c
 
 Hybrid key exchange adds about 2.3 kB per TLS handshake. Post-quantum authentication adds more: each certificate contains a public key and a signature, and the handshake includes a CertificateVerify signature and often signed certificate timestamps (SCTs). With ML-DSA every one of these grows.
 
-Section thirty point one develops laboratory ii with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty point one, the HCU board expects laboratory claims to carry owners and dates.
-
-Section thirty point one treats why bytes matter for as testable only when evidence and ticket IDs are recorded.
-
 ### 30.2 Practical activity — Lab B
 
 ```python
@@ -2371,12 +1715,6 @@ for a in algs:
 
 Expected output:
 
-Section thirty point two develops laboratory ii with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty point two, the HCU board expects laboratory claims to carry owners and dates.
-
-Section thirty point two treats why bytes matter for as testable only when evidence and ticket IDs are recorded.
-
 ```text
 ECDSA P-256          ~  1290 bytes of certificates and signatures
 RSA-2048             ~  2620 bytes of certificates and signatures
@@ -2391,37 +1729,15 @@ The model assumes a two-certificate chain, ~400 bytes of other fields per certif
 
 TCP's initial congestion window commonly allows about ten segments (~14 kB) before waiting for acknowledgement. A server flight exceeding it costs an extra round trip — small on a data-centre link, noticeable on a 150-ms mobile or satellite path. Certificate compression ([RFC 8879](https://www.rfc-editor.org/rfc/rfc8879.html)) helps little with high-entropy keys and signatures. Engineering responses include shorter chains, fewer SCTs and careful choice of parameter sets.
 
-Section thirty point three develops laboratory ii with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 30.4 Reporting
 
 Report results with assumptions: chain depth, field sizes, number of SCTs, initial window. State that the model estimates bytes, not latency, and that latency needs measurement.
-
-Section thirty point four develops laboratory ii with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty point four, the HCU board expects laboratory claims to carry owners and dates.
-
-Section thirty point four treats why bytes matter for as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point four, Harbourline Credit Union will not accept laboratory work without a written trail.
 
 ### 30.5 Worked example
 
 HCU's mobile app talks to the gateway over cellular links with 80-ms round trips. Lab B suggests ~15.5 kB of authentication with ML-DSA-44, slightly above a typical initial window. HCU's plan: keep ECDSA certificates while monitoring ecosystem support, test ML-DSA-44 chains in the lab with one SCT, and measure latency on emulated cellular links before any change.
 
-Section thirty point five develops laboratory ii with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty point five, the HCU board expects laboratory claims to carry owners and dates.
-
 ### 30.6 Common errors and limits
-Section thirty point six develops laboratory ii with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty point six, the HCU board expects laboratory claims to carry owners and dates.
-
-Section thirty point six treats why bytes matter for as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point six, Harbourline Credit Union will not accept laboratory work without a written trail.
-
 
 - Equating bytes with latency.
 - Ignoring SCTs and intermediate certificates.
@@ -2429,8 +1745,6 @@ For section thirty point six, Harbourline Credit Union will not accept laborator
 ### 30.7 Trimming the chain
 
 When bytes matter, engineers have several levers before choosing a different algorithm: remove unnecessary intermediates, reduce the number of embedded SCTs where policy permits, avoid sending a root certificate the client already trusts, and prefer ML-DSA-44 over larger parameter sets where category 2 meets policy. Each lever has a cost in policy or compatibility, so record which were used and why. Re-run Lab B with the trimmed configuration and keep both results in the lab record.
-
-Section thirty point seven develops laboratory ii with a Harbourline Credit Union note the HCU intern can demo offline.
 
 ### Exercises
 
@@ -2457,59 +1771,27 @@ You will (1) analyse migrations with constrained devices, long-term signatures a
 
 Card terminals, ATMs and building controllers have limited memory, slow processors and long lifetimes. ML-KEM is fast enough for most, but key and signature sizes may exceed buffers, and boot ROMs that verify only RSA cannot change. The realistic plan combines firmware upgrades where possible, gateways that terminate post-quantum protocols in front of devices that cannot, and procurement requirements so that replacements are ready.
 
-Section thirty-one point one develops quantum and post-quantum security advanced with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 31.2 Stateful signatures in practice
 
 LMS and XMSS ([SP 800-208](https://doi.org/10.6028/NIST.SP.800-208)) require that each one-time key is used once. State must survive crashes, backups and HSM failover without rollback. SP 800-208 requires these schemes to be generated and used within hardware cryptographic modules and forbids exporting private keys, which reflects the danger of state duplication. Organisations using them plan the total number of signatures in advance and monitor remaining capacity.
-
-Section thirty-one point two develops quantum and post-quantum security advanced with a Harbourline Credit Union note the HCU intern can demo offline.
 
 ### 31.3 Long-term signatures and archives
 
 A mortgage signed with ECDSA today must still be verifiable in 30 years. If a quantum computer can later forge ECDSA, a forger could backdate documents. Archive systems address this with timestamps and evidence records renewed with stronger algorithms before the old ones weaken; the renewal proves the document existed while its original signature was still trustworthy. Encrypted archives need similar care: re-encrypting with new keys does not help if old ciphertexts or wrapped keys were already copied.
 
-Section thirty-one point three develops quantum and post-quantum security advanced with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 31.4 Partners and suppliers
 
 Payment networks, shared service providers and regulators set requirements HCU cannot change alone. Migration plans list partner dependencies, ask for roadmaps, and include contract clauses for algorithm support and inventory disclosure.
-
-Section thirty-one point four develops quantum and post-quantum security advanced with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-one point four, the HCU board expects quantum claims to carry owners and dates.
-
-Section thirty-one point four treats constrained devices stateful signatures as testable only when evidence and ticket IDs are recorded.
 
 ### 31.5 Worked example
 
 HCU's ATM vendor offers a firmware update supporting ML-KEM for the ATM-to-switch link but not post-quantum firmware signing, because the boot ROM verifies only RSA. Decision: deploy the key-exchange update to protect PIN-related traffic (short-lived but sensitive), accept forge-later residual risk for firmware until replacement in five years, and require LMS or ML-DSA boot verification in the replacement tender.
 
-Section thirty-one point five develops quantum and post-quantum security advanced with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-one point five, the HCU board expects quantum claims to carry owners and dates.
-
 ### 31.6 Practical activity
 
 Write a one-page plan for HCU's 30-year mortgage archive covering signatures, timestamps, encryption and key wrapping.
 
-Section thirty-one point six develops quantum and post-quantum security advanced with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-one point six, the HCU board expects quantum claims to carry owners and dates.
-
-Section thirty-one point six treats constrained devices stateful signatures as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-one point six, Harbourline Credit Union will not accept quantum work without a written trail.
-
 ### 31.7 Common errors and limits
-Section thirty-one point seven develops quantum and post-quantum security advanced with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-one point seven, the HCU board expects quantum claims to carry owners and dates.
-
-Section thirty-one point seven treats constrained devices stateful signatures as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-one point seven, Harbourline Credit Union will not accept quantum work without a written trail.
-
 
 - Using stateful signatures in software without protected state.
 - Assuming re-encryption fixes past exposure.
@@ -2540,27 +1822,13 @@ You will (1) connect PQC migration to law, finance, procurement and communicatio
 
 Regulators increasingly expect financial institutions to manage cryptographic risk. Contracts define confidentiality periods that become *x* in Mosca's inequality. Evidence rules for signed documents shape archive design. A lawyer and a cryptographer looking at the same mortgage archive see two sides of one requirement.
 
-Section thirty-two point one develops quantum and post-quantum security interdisciplinary with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-two point one, the HCU board expects quantum claims to carry owners and dates.
-
 ### 32.2 Finance and procurement
 
 Migration cost drivers include inventory effort, software upgrades, hardware replacement, testing, staff training and partner coordination. Aligning hardware replacement with natural refresh cycles lowers cost; procurement clauses requiring algorithm agility, post-quantum support and cryptographic inventories reduce future cost. Finance teams need ranges and assumptions, not single figures.
 
-Section thirty-two point two develops quantum and post-quantum security interdisciplinary with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-two point two, the HCU board expects quantum claims to carry owners and dates.
-
 ### 32.3 Communication and governance
 
 Boards need one-page decisions: exposure, options, recommendation, cost range, residual risk. Staff need to know what changes for them. Members need reassurance without alarm. Avoid fear-based messaging; describe what is being protected and why the timing is prudent.
-
-Section thirty-two point three develops quantum and post-quantum security interdisciplinary with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-two point three, the HCU board expects quantum claims to carry owners and dates.
-
-Section thirty-two point three treats law and regulation finance as testable only when evidence and ticket IDs are recorded.
 
 ### 32.4 Worked example
 
@@ -2570,23 +1838,7 @@ HCU's security lead presents to the board: "Our 30-year mortgage archive is expo
 
 Prepare a stakeholder map for HCU's migration: legal, finance, procurement, IT operations, vendors, partners, members and regulators, with what each needs and provides.
 
-Section thirty-two point five develops quantum and post-quantum security interdisciplinary with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-two point five, the HCU board expects quantum claims to carry owners and dates.
-
-Section thirty-two point five treats law and regulation finance as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-two point five, Harbourline Credit Union will not accept quantum work without a written trail.
-
 ### 32.6 Common errors and limits
-Section thirty-two point six develops quantum and post-quantum security interdisciplinary with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-two point six, the HCU board expects quantum claims to carry owners and dates.
-
-Section thirty-two point six treats law and regulation finance as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-two point six, Harbourline Credit Union will not accept quantum work without a written trail.
-
 
 - Presenting technical detail without a decision.
 - Single-figure cost estimates.
@@ -2594,10 +1846,6 @@ For section thirty-two point six, Harbourline Credit Union will not accept quant
 ### 32.7 Regulators and auditors
 
 Auditors will ask for evidence, not intentions: the inventory with its coverage, the prioritisation method, the approved plan and progress against it. Organizing the migration programme so that these artefacts exist as by-products of normal work — the CBOM regenerated each quarter, decision records for each choice — makes audits cheaper and more honest than preparing special documents before each review.
-
-Section thirty-two point seven develops quantum and post-quantum security interdisciplinary with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-two point seven, the HCU board expects quantum claims to carry owners and dates.
 
 ### Exercises
 
@@ -2624,63 +1872,27 @@ You will (1) design comparative studies with controlled variables; (2) handle me
 
 Comparative questions — "which of two hybrid configurations performs better on branch links?" — need controlled variables: same hardware, same network emulation, same client versions, randomised order. Record everything that could differ. Prefer paired designs, where each condition runs on the same set of clients, so that client variation cancels out.
 
-Section thirty-three point one develops research methods ii with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-three point one, the HCU board expects research claims to carry owners and dates.
-
 ### 33.2 Uncertainty and replication
 
 Report medians and high percentiles with confidence intervals; repeat runs on different days; publish scripts and configurations. A result that disappears on replication was noise. For rare events such as handshake failures, plan sample sizes in advance so that confidence bounds are narrow enough to support the decision.
-
-Section thirty-three point two develops research methods ii with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-three point two, the HCU board expects research claims to carry owners and dates.
 
 ### 33.3 Qualitative evidence
 
 Many migration questions are organisational: why did a team delay? what do vendors say about roadmaps? Semi-structured interviews, coded for recurring themes, answer such questions. Protect interviewees with consent, anonymisation and secure storage. Combine qualitative findings with measurements: interviews may explain why fallback persists at certain branches.
 
-Section thirty-three point three develops research methods ii with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-three point three, the HCU board expects research claims to carry owners and dates.
-
 ### 33.4 Methods sections
 
 A methods section states question, design, setting, participants or systems, procedure, measures, analysis and limitations. The test is replication: could another student rerun your study from the text and obtain comparable results?
-
-Section thirty-three point four develops research methods ii with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-three point four, the HCU board expects research claims to carry owners and dates.
-
-Section thirty-three point four treats comparative design uncertainty and as testable only when evidence and ticket IDs are recorded.
 
 ### 33.5 Worked example
 
 An HCU study compares ML-KEM-768 hybrid against classical X25519 handshakes on emulated branch links (40 ms RTT, 1 % loss). Paired design: 20 client VMs, each runs 500 handshakes per condition in random order, repeated on three days. Result (synthetic): median +0.8 ms (95 % CI 0.6–1.0), p99 +3.1 ms (CI 2.2–4.3). Interviews with five branch IT staff explain that two branches route through an old proxy, which the emulation did not include — a stated limitation and next study.
 
-Section thirty-three point five develops research methods ii with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 33.6 Practical activity
 
 Write a methods section for a study of certificate-chain size effects on HCU's mobile app, including sample size reasoning.
 
-Section thirty-three point six develops research methods ii with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-three point six, the HCU board expects research claims to carry owners and dates.
-
-Section thirty-three point six treats comparative design uncertainty and as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-three point six, Harbourline Credit Union will not accept research work without a written trail.
-
 ### 33.7 Common errors and limits
-Section thirty-three point seven develops research methods ii with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-three point seven, the HCU board expects research claims to carry owners and dates.
-
-Section thirty-three point seven treats comparative design uncertainty and as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-three point seven, Harbourline Credit Union will not accept research work without a written trail.
-
 
 - Unpaired comparisons with uncontrolled clients.
 - Reporting only means for skewed latency.
@@ -2711,59 +1923,23 @@ You will (1) compare two or more migration approaches on explicit criteria; (2) 
 
 Comparisons need criteria agreed in advance: protection against HNDL, protection against forge-later, operational risk, cost, time to deploy, agility for future change and dependency on third parties. Weights express priorities; publish them so readers can disagree with the weights rather than with hidden judgments.
 
-Section thirty-four point one develops comparative project with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-four point one, the HCU board expects comparative claims to carry owners and dates.
-
-Section thirty-four point one treats criteria and weights scoring as testable only when evidence and ticket IDs are recorded.
-
 ### 34.2 Scoring and sensitivity
 
 Score each alternative per criterion on a simple scale with evidence. Multiply by weights and sum. Then vary weights and key assumptions (CRQC timeline, vendor delivery dates) to see whether the ranking changes. A recommendation that holds across reasonable weightings is robust; one that flips with small changes should be presented as a close call.
-
-Section thirty-four point two develops comparative project with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-four point two, the HCU board expects comparative claims to carry owners and dates.
 
 ### 34.3 The project
 
 Students compare, for HCU's branch WAN, three options: (A) hybrid IKEv2 via appliance firmware, (B) RFC 8784 post-quantum pre-shared keys as an interim layer, and (C) a new SD-WAN product with native hybrid support. Evidence comes from the system model (Chapter 21), lab measurements (Chapters 25 and 30) and vendor statements labelled as such.
 
-Section thirty-four point three develops comparative project with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-four point three, the HCU board expects comparative claims to carry owners and dates.
-
 ### 34.4 Worked example
 
 Synthetic scores (1–5) with weights HNDL 0.35, operational risk 0.2, cost 0.15, time 0.15, agility 0.15: A = 4,4,4,3,4 → 3.85; B = 3,3,5,5,2 → 3.45; C = 5,2,1,2,5 → 3.35. Sensitivity: if time weight rises to 0.3 (taking 0.15 from HNDL), B narrowly overtakes A (A 3.70 vs B 3.75). The recommendation becomes "A as target; B as interim at branches where firmware is delayed".
-
-Section thirty-four point four develops comparative project with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-four point four, the HCU board expects comparative claims to carry owners and dates.
-
-Section thirty-four point four treats criteria and weights scoring as testable only when evidence and ticket IDs are recorded.
 
 ### 34.5 Practical activity
 
 Complete the comparison with your own scores and evidence; run at least two sensitivity variations; write a one-page recommendation.
 
-Section thirty-four point five develops comparative project with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-four point five, the HCU board expects comparative claims to carry owners and dates.
-
-Section thirty-four point five treats criteria and weights scoring as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-four point five, Harbourline Credit Union will not accept comparative work without a written trail.
-
 ### 34.6 Common errors and limits
-Section thirty-four point six develops comparative project with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-four point six, the HCU board expects comparative claims to carry owners and dates.
-
-Section thirty-four point six treats criteria and weights scoring as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-four point six, Harbourline Credit Union will not accept comparative work without a written trail.
-
 
 - Choosing criteria after scoring.
 - Treating vendor claims as measured evidence.
@@ -2771,8 +1947,6 @@ For section thirty-four point six, Harbourline Credit Union will not accept comp
 ### 34.7 Presenting the comparison
 
 Show the scoring table, the weights and the sensitivity results on one page, followed by the evidence behind each score. Readers should be able to change one weight in their head and see whether the conclusion survives. Where a score rests on a vendor statement rather than measurement, mark it, because those scores are the first to revisit when the vendor delivers or slips.
-
-Section thirty-four point seven develops comparative project with a Harbourline Credit Union note the HCU intern can demo offline.
 
 ### Exercises
 
@@ -2799,55 +1973,23 @@ You will (1) choose a capstone problem in quantum and post-quantum security; (2)
 
 A good capstone addresses a real decision, can be completed in one academic year, and uses evidence the student can lawfully obtain. Suitable topics: an inventory and prioritisation method for a synthetic organization; a lab comparison of hybrid configurations; an archive-protection design; a crypto-agility refactoring of a small open-source tool; or a study of vendor PQC roadmaps from public documents.
 
-Section thirty-five point one develops capstone proposal with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-five point one, the HCU board expects capstone claims to carry owners and dates.
-
 ### 35.2 Proposal structure
 
 State the problem and why it matters; the aims and research questions; scope (in and out); method; data and authorization; deliverables (report, code, lab records); timeline with milestones; risks and mitigations; and success criteria. Success criteria should be observable, for example "a reproducible lab showing negotiated groups for five client types".
-
-Section thirty-five point two develops capstone proposal with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-five point two, the HCU board expects capstone claims to carry owners and dates.
 
 ### 35.3 Authorization and ethics
 
 Any work on real systems needs written authorization from the owner. Prefer synthetic or lab environments. Plan data minimisation and retention. If interviews are included, plan consent and anonymisation. If you might find vulnerabilities in products, plan coordinated disclosure.
 
-Section thirty-five point three develops capstone proposal with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-five point three, the HCU board expects capstone claims to carry owners and dates.
-
-Section thirty-five point three treats choosing problem proposal structure as testable only when evidence and ticket IDs are recorded.
-
 ### 35.4 Worked example
 
 Proposal (synthetic): "Prioritising HCU's quantum migration with a lifetime-weighted CBOM." Aims: build a CBOM for a synthetic 60-asset HCU model; rank flows using Mosca's inequality swept over *z*; validate ranking with three practitioner interviews. Scope: key establishment and signatures; excludes QKD. Data: synthetic model, public standards, consented interviews. Deliverables: Python tool, report, lab record. Success: ranking stable across *z* from 10 to 25 years for the top five flows, or a documented explanation where it is not.
-
-Section thirty-five point four develops capstone proposal with a Harbourline Credit Union note the HCU intern can demo offline.
 
 ### 35.5 Practical activity
 
 Draft your proposal using the structure above, then exchange with a peer for review against the success-criteria test.
 
-Section thirty-five point five develops capstone proposal with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-five point five, the HCU board expects capstone claims to carry owners and dates.
-
-Section thirty-five point five treats choosing problem proposal structure as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-five point five, Harbourline Credit Union will not accept capstone work without a written trail.
-
 ### 35.6 Common errors and limits
-Section thirty-five point six develops capstone proposal with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-five point six, the HCU board expects capstone claims to carry owners and dates.
-
-Section thirty-five point six treats choosing problem proposal structure as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-five point six, Harbourline Credit Union will not accept capstone work without a written trail.
-
 
 - Scope too large for one year.
 - Unobservable success criteria.
@@ -2855,10 +1997,6 @@ For section thirty-five point six, Harbourline Credit Union will not accept caps
 ### 35.7 Supervisor agreement
 
 Before starting, agree the proposal with your supervisor in writing, including what counts as success and what happens if a key dependency fails — for example, if a library needed for the lab is not released. A one-paragraph fallback plan prevents a late scramble and makes it clear that a well-documented negative result is an acceptable outcome.
-
-Section thirty-five point seven develops capstone proposal with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-five point seven, the HCU board expects capstone claims to carry owners and dates.
 
 ### Exercises
 
@@ -2885,65 +2023,27 @@ You will (1) apply course skills in a supervised placement or community project;
 
 Placements might involve supporting an organisation's cryptographic inventory, writing internal guidance on PQC, testing a library upgrade in a lab, or helping a community organisation (a library, charity or small business) understand which of its services rely on vendors that must migrate. The learning comes from doing real work under real constraints.
 
-Section thirty-six point one develops field or community practice with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-six point one, the HCU board expects field claims to carry owners and dates.
-
 ### 36.2 Working within processes
 
 Organisations have change control, security policies and supervisors. Follow them. Obtain written scope from your supervisor. Never run tools on production systems without approval; never take data home. If you notice something serious — for example, an exposed private key — report it through the organisation's process immediately.
-
-Section thirty-six point two develops field or community practice with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-six point two, the HCU board expects field claims to carry owners and dates.
 
 ### 36.3 Communication
 
 Non-specialists need plain language. Instead of "migrate KEX to ML-KEM-768 hybrid", say "update how our systems agree secret keys so that recorded traffic stays protected even if powerful quantum computers are built". Check understanding by asking what the listener will do next.
 
-Section thirty-six point three develops field or community practice with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-six point three, the HCU board expects field claims to carry owners and dates.
-
-Section thirty-six point three treats forms of practice working as testable only when evidence and ticket IDs are recorded.
-
 ### 36.4 Reflection
 
 Keep a practice log: what you did, what evidence you produced, what surprised you, what you would do differently. Link entries to course concepts. Reflection turns experience into transferable skill.
-
-Section thirty-six point four develops field or community practice with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-six point four, the HCU board expects field claims to carry owners and dates.
-
-Section thirty-six point four treats forms of practice working as testable only when evidence and ticket IDs are recorded.
 
 ### 36.5 Worked example
 
 A student volunteers with a small (synthetic) community credit cooperative that uses a hosted banking platform. With the manager's written approval, the student reviews the vendor's public security documents and contract, finds no PQC roadmap, and drafts three questions for the next vendor meeting: which algorithms protect data in transit, when hybrid key exchange will be supported, and whether the vendor maintains a cryptographic inventory. The student also writes a one-page plain-language explainer for the board.
 
-Section thirty-six point five develops field or community practice with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 36.6 Practical activity
 
 Write a scope agreement and the first three entries of a practice log for your placement or a simulated one.
 
-Section thirty-six point six develops field or community practice with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-six point six, the HCU board expects field claims to carry owners and dates.
-
-Section thirty-six point six treats forms of practice working as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-six point six, Harbourline Credit Union will not accept field work without a written trail.
-
 ### 36.7 Common errors and limits
-Section thirty-six point seven develops field or community practice with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-six point seven, the HCU board expects field claims to carry owners and dates.
-
-Section thirty-six point seven treats forms of practice working as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-six point seven, Harbourline Credit Union will not accept field work without a written trail.
-
 
 - Acting outside agreed scope to be helpful.
 - Using jargon with non-specialists.
@@ -2974,69 +2074,27 @@ You will (1) critically appraise sources on quantum computing and PQC; (2) disti
 
 *Standards* (FIPS, SP, RFC) are authoritative for what algorithms are and how to use them, with status noted. *Peer-reviewed papers* carry expert scrutiny but can still be wrong. *Preprints* such as arXiv or IACR ePrint papers are early and unreviewed, though many are later published; Gidney (2025) was a preprint when cited here. *Vendor material* has commercial interests. *Journalism* simplifies and often misreports. Weight evidence accordingly and say which type you rely on.
 
-Section thirty-seven point one develops evidence review seminar with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 37.2 Appraising timeline claims
 
 Ask: who made the estimate, on what assumptions (error rates, qubit counts, algorithms), when, and what range they give? Distinguish resource estimates ("how many qubits would it take") from forecasts ("when will they exist"). Expert surveys provide distributions, not dates.
-
-Section thirty-seven point two develops evidence review seminar with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-seven point two, the HCU board expects evidence claims to carry owners and dates.
-
-Section thirty-seven point two treats source types appraising timeline as testable only when evidence and ticket IDs are recorded.
 
 ### 37.3 Appraising performance claims
 
 Ask: what hardware, which implementation, which parameter set, what was measured (operations per second, handshake latency, bytes), and with what variability? Benchmarks of optimised assembly do not predict constrained-device behaviour.
 
-Section thirty-seven point three develops evidence review seminar with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-seven point three, the HCU board expects evidence claims to carry owners and dates.
-
-Section thirty-seven point three treats source types appraising timeline as testable only when evidence and ticket IDs are recorded.
-
 ### 37.4 Structured critique
 
 Critique follows a structure: summarise the claim fairly; assess evidence; identify assumptions; note what would change the conclusion; suggest improvements. Critique the work, not the person.
-
-Section thirty-seven point four develops evidence review seminar with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-seven point four, the HCU board expects evidence claims to carry owners and dates.
-
-Section thirty-seven point four treats source types appraising timeline as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-seven point four, Harbourline Credit Union will not accept evidence work without a written trail.
 
 ### 37.5 Worked example
 
 A vendor whitepaper states "our QKD system makes your network quantum-proof". Appraisal: vendor source; "quantum-proof" is not a defined property; QKD still needs authentication, which the paper does not address; NSA guidance does not support QKD for national security systems; the claim lacks scope. Conclusion: not adequate evidence for HCU's decision.
 
-Section thirty-seven point five develops evidence review seminar with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-seven point five, the HCU board expects evidence claims to carry owners and dates.
-
 ### 37.6 Practical activity
 
 In groups, appraise one preprint, one standard and one news article on PQC using the frameworks above; present a two-minute critique each.
 
-Section thirty-seven point six develops evidence review seminar with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-seven point six, the HCU board expects evidence claims to carry owners and dates.
-
-Section thirty-seven point six treats source types appraising timeline as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-seven point six, Harbourline Credit Union will not accept evidence work without a written trail.
-
 ### 37.7 Common errors and limits
-Section thirty-seven point seven develops evidence review seminar with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-seven point seven, the HCU board expects evidence claims to carry owners and dates.
-
-Section thirty-seven point seven treats source types appraising timeline as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-seven point seven, Harbourline Credit Union will not accept evidence work without a written trail.
-
 
 - Treating preprints as settled.
 - Rejecting vendor material outright rather than weighting it.
@@ -3067,69 +2125,27 @@ You will (1) execute your capstone plan with milestones; (2) maintain reproducib
 
 Work in milestones: environment ready; first data or model; first analysis; full analysis; draft report. At each milestone, compare progress with the plan and record deviations. Small, frequent progress beats large late pushes.
 
-Section thirty-eight point one develops capstone implementation with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-eight point one, the HCU board expects capstone claims to carry owners and dates.
-
-Section thirty-eight point one treats executing the plan reproducibility as testable only when evidence and ticket IDs are recorded.
-
 ### 38.2 Reproducibility
 
 Use version control for code, configuration and text. Record environment versions. Write scripts that regenerate every figure and table from raw inputs. Keep synthetic data generators with fixed seeds so results can be reproduced exactly, as the labs in this book do.
-
-Section thirty-eight point two develops capstone implementation with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-eight point two, the HCU board expects capstone claims to carry owners and dates.
-
-Section thirty-eight point two treats executing the plan reproducibility as testable only when evidence and ticket IDs are recorded.
 
 ### 38.3 Scope changes
 
 Discoveries change plans. If a vendor's documentation shows that a planned lab is impossible, record the change, its reason and its effect on aims, and agree it with your supervisor. Silent scope changes make evaluation unfair and conclusions unclear.
 
-Section thirty-eight point three develops capstone implementation with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-eight point three, the HCU board expects capstone claims to carry owners and dates.
-
-Section thirty-eight point three treats executing the plan reproducibility as testable only when evidence and ticket IDs are recorded.
-
 ### 38.4 Decision records
 
 Keep short decision records: context, options, decision, consequences. "We chose ML-KEM-768 rather than -1024 for the lab because the synthetic HCU policy requires category 3 and the TLS group uses -768." Decision records make the final report easier to write and defend.
-
-Section thirty-eight point four develops capstone implementation with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-eight point four, the HCU board expects capstone claims to carry owners and dates.
-
-Section thirty-eight point four treats executing the plan reproducibility as testable only when evidence and ticket IDs are recorded.
 
 ### 38.5 Worked example
 
 The capstone from Chapter 35 builds a 60-asset synthetic HCU CBOM generator with a fixed seed, a ranking script sweeping *z* from 10 to 25 years and a report generator. At milestone 3 the student finds that the top-five ranking changes at *z* = 12 because member records enter. Decision record: report the change as a finding and add a sensitivity figure rather than adjusting assumptions to make the ranking stable.
 
-Section thirty-eight point five develops capstone implementation with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 38.6 Practical activity
 
 Set up your repository with code, data generator, lab record template and decision-record folder; complete your first milestone review.
 
-Section thirty-eight point six develops capstone implementation with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-eight point six, the HCU board expects capstone claims to carry owners and dates.
-
-Section thirty-eight point six treats executing the plan reproducibility as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-eight point six, Harbourline Credit Union will not accept capstone work without a written trail.
-
 ### 38.7 Common errors and limits
-Section thirty-eight point seven develops capstone implementation with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-eight point seven, the HCU board expects capstone claims to carry owners and dates.
-
-Section thirty-eight point seven treats executing the plan reproducibility as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-eight point seven, Harbourline Credit Union will not accept capstone work without a written trail.
-
 
 - Unversioned work.
 - Figures made by hand that cannot be regenerated.
@@ -3137,10 +2153,6 @@ For section thirty-eight point seven, Harbourline Credit Union will not accept c
 ### 38.7 Working with supervisors
 
 Share milestone reviews with your supervisor briefly and regularly: what was done, what was learned, what is blocked and what decision you need. Supervisors can only help with problems they know about, and a short written update creates a record that later shows how the work evolved.
-
-Section thirty-eight point seven develops capstone implementation with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-eight point seven, the HCU board expects capstone claims to carry owners and dates.
 
 ### Exercises
 
@@ -3167,71 +2179,27 @@ You will (1) evaluate your capstone against its success criteria; (2) analyse li
 
 Return to the success criteria in your proposal and assess each: met, partly met or not met, with evidence. If criteria changed, explain why. Evaluation is honest when it reports partial success clearly.
 
-Section thirty-nine point one develops capstone evaluation with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-nine point one, the HCU board expects capstone claims to carry owners and dates.
-
-Section thirty-nine point one treats against the criteria limitations as testable only when evidence and ticket IDs are recorded.
-
 ### 39.2 Limitations
 
 Name limitations by type: data (synthetic, small sample), method (emulated networks), scope (only key exchange), and time (standards status as of a date). For each, state the likely effect on conclusions. Limitations are not apologies; they are the boundary of what your evidence supports.
-
-Section thirty-nine point two develops capstone evaluation with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-nine point two, the HCU board expects capstone claims to carry owners and dates.
-
-Section thirty-nine point two treats against the criteria limitations as testable only when evidence and ticket IDs are recorded.
 
 ### 39.3 Independent review
 
 Ask a peer or supervisor to rerun part of your work and challenge your conclusions. Record their comments and your responses. Reviewers often find unstated assumptions — for example, that all branches use the same appliance.
 
-Section thirty-nine point three develops capstone evaluation with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-nine point three, the HCU board expects capstone claims to carry owners and dates.
-
-Section thirty-nine point three treats against the criteria limitations as testable only when evidence and ticket IDs are recorded.
-
 ### 39.4 Residual uncertainty
 
 Close with what remains uncertain: quantum timelines, future standards (FN-DSA, HQC), vendor delivery. Explain how a reader should update your conclusions if these change.
-
-Section thirty-nine point four develops capstone evaluation with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-nine point four, the HCU board expects capstone claims to carry owners and dates.
-
-Section thirty-nine point four treats against the criteria limitations as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-nine point four, Harbourline Credit Union will not accept capstone work without a written trail.
 
 ### 39.5 Worked example
 
 Evaluation of the CBOM capstone: criterion 1 (reproducible tool) met — a peer reran it and obtained identical output; criterion 2 (stable ranking for *z* 10–25) partly met — stable for *z* ≥ 13, changes below; interviews (3) support relevance but are too few to generalise. Limitation: synthetic data may understate unknown assets, which in real inventories are often 20–40 % (an assumption to verify). Reviewer comment: the model ignores partner-controlled segments; response: added as future work with a sketch.
 
-Section thirty-nine point five develops capstone evaluation with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 39.6 Practical activity
 
 Write your evaluation section and ask a peer to rerun one result.
 
-Section thirty-nine point six develops capstone evaluation with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-nine point six, the HCU board expects capstone claims to carry owners and dates.
-
-Section thirty-nine point six treats against the criteria limitations as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-nine point six, Harbourline Credit Union will not accept capstone work without a written trail.
-
 ### 39.7 Common errors and limits
-Section thirty-nine point seven develops capstone evaluation with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-nine point seven, the HCU board expects capstone claims to carry owners and dates.
-
-Section thirty-nine point seven treats against the criteria limitations as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-nine point seven, Harbourline Credit Union will not accept capstone work without a written trail.
-
 
 - Declaring success without evidence per criterion.
 - Hiding limitations.
@@ -3239,10 +2207,6 @@ For section thirty-nine point seven, Harbourline Credit Union will not accept ca
 ### 39.8 Learning from the evaluation
 
 End the evaluation with lessons for the next project: which method choices worked, which assumptions were weakest, and what you would measure first if you started again. These lessons are useful to the organization and to future students, and they show examiners that you understand the work's place in a continuing programme rather than treating it as finished.
-
-Section thirty-nine point eight develops capstone evaluation with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section thirty-nine point eight, the HCU board expects capstone claims to carry owners and dates.
 
 ### Exercises
 
@@ -3269,69 +2233,27 @@ You will (1) structure a bachelor's thesis; (2) present findings to technical an
 
 A thesis contains: abstract; introduction with problem and questions; background with sourced concepts and standards status; method; results; discussion including limitations; conclusion; references; appendices with code and lab records. Each chapter should be traceable to evidence. Label all synthetic data clearly in text and captions.
 
-Section forty point one develops thesis and presentation with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section forty point one, the HCU board expects thesis claims to carry owners and dates.
-
-Section forty point one treats thesis structure presentation defence as testable only when evidence and ticket IDs are recorded.
-
 ### 40.2 Presentation
 
 Prepare two versions: a technical talk with method and results, and a short decision-oriented summary for non-specialists. Open with the question and the answer; then show evidence; end with what the audience should do. Use one idea per slide and readable figures.
-
-Section forty point two develops thesis and presentation with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section forty point two, the HCU board expects thesis claims to carry owners and dates.
-
-Section forty point two treats thesis structure presentation defence as testable only when evidence and ticket IDs are recorded.
 
 ### 40.3 Defence
 
 Expect questions on assumptions ("why *z* from 10 to 25?"), method ("why paired design?"), standards ("is IR 8547 final?") and ethics ("how did you obtain data?"). Answer directly, admit uncertainty, and point to evidence. If you do not know, say so and explain how you would find out.
 
-Section forty point three develops thesis and presentation with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section forty point three, the HCU board expects thesis claims to carry owners and dates.
-
-Section forty point three treats thesis structure presentation defence as testable only when evidence and ticket IDs are recorded.
-
 ### 40.4 Handover
 
 Leave a README explaining how to run the code, regenerate results and extend the work, plus a list of open questions. Quantum readiness depends on continuity; your work is most valuable when someone else can build on it.
-
-Section forty point four develops thesis and presentation with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section forty point four, the HCU board expects thesis claims to carry owners and dates.
-
-Section forty point four treats thesis structure presentation defence as testable only when evidence and ticket IDs are recorded.
 
 ### 40.5 Worked example
 
 The CBOM capstone presentation opens: "Which of HCU's cryptographic flows should migrate first? Under every quantum timeline from 13 to 25 years, the same five flows lead, headed by mortgage archive transfers." The non-specialist version ends: "Protect the branch connections carrying mortgage files within a year; plan certificate changes next." In the defence, an examiner asks why category 3 was assumed; the student cites the synthetic policy and FIPS 203's category mapping, and explains the effect of choosing category 5.
 
-Section forty point five develops thesis and presentation with a Harbourline Credit Union note the HCU intern can demo offline.
-
 ### 40.6 Practical activity
 
 Deliver a ten-minute presentation and a two-minute summary; answer three prepared questions from a peer acting as examiner.
 
-Section forty point six develops thesis and presentation with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section forty point six, the HCU board expects thesis claims to carry owners and dates.
-
-Section forty point six treats thesis structure presentation defence as testable only when evidence and ticket IDs are recorded.
-
-For section forty point six, Harbourline Credit Union will not accept thesis work without a written trail.
-
 ### 40.7 Common errors and limits
-Section forty point seven develops thesis and presentation with a Harbourline Credit Union note the HCU intern can demo offline.
-
-Under section forty point seven, the HCU board expects thesis claims to carry owners and dates.
-
-Section forty point seven treats thesis structure presentation defence as testable only when evidence and ticket IDs are recorded.
-
-For section forty point seven, Harbourline Credit Union will not accept thesis work without a written trail.
-
 
 - Results without the question.
 - Defensiveness under questioning.

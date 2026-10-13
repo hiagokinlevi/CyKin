@@ -57,19 +57,9 @@ Assessment traffic consumes resources. A service that answers fifty requests a m
 
 Many systems run on hardware owned by someone else: a hosting provider, a managed-service partner, a cloud platform. The client may own the virtual machine but not the hypervisor or the storage fabric beneath it. Authorization from the client therefore covers only what the client controls. Provider terms, which sometimes require notice and sometimes forbid certain test types, must be read before planning.
 
-Section one point three develops computing systems with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section one point three, Northpoint Assurance expects computing claims to carry owners and dates.
-
 ### 1.4 The asset record
 
 A useful record holds: identifier, business function, owner, location (physical or logical), operating system and version, criticality, known fragility, and the authorization status for testing. Every later chapter leans on these fields: scope checks read the address, risk ratings read criticality, reports read the owner.
-
-Section one point four develops computing systems with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section one point four, Northpoint Assurance expects computing claims to carry owners and dates.
-
-Section one point four treats layers an assessor must as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -107,35 +97,17 @@ You will (1) read address ranges in CIDR notation; (2) separate in-scope, exclud
 
 An IPv4 network such as 192.0.2.0/25 covers 128 addresses from .0 to .127. The prefix length tells you how many leading bits are fixed. Scope documents almost always list prefixes rather than single hosts, so a technologist must be able to test membership quickly and without mental arithmetic errors. Ownership is separate from membership: a prefix announced by a cloud provider may contain addresses that belong to thousands of customers.
 
-Section two point one develops networks and internet services with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
 ### 2.2 Exclusions inside ranges
 
 Real scopes often carve holes. TRT's fare-payment segment, 192.0.2.64/27, sits inside the larger in-scope block because of how the network was historically numbered. A checker must evaluate exclusions first; otherwise the broader inclusion wins and a forbidden system is touched.
-
-Section two point two develops networks and internet services with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section two point two, Northpoint Assurance expects networks claims to carry owners and dates.
-
-Section two point two treats addresses prefixes and ownership as testable only when evidence and ticket IDs are recorded.
 
 ### 2.3 Names versus numbers
 
 DNS records change. A hostname approved on Monday may resolve to a different address on Thursday after a migration, perhaps to a shared content-delivery address. Good practice is to approve both the name and the address, resolve again before each session, and stop if they diverge.
 
-Section two point three develops networks and internet services with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section two point three, Northpoint Assurance expects networks claims to carry owners and dates.
-
-Section two point three treats addresses prefixes and ownership as testable only when evidence and ticket IDs are recorded.
-
 ### 2.4 Typical exposed services
 
 A transit operator usually publishes a passenger website, a timetable or real-time API, a staff remote-access gateway, mail, and sometimes a vendor support portal. ATT&CK catalogues the adversary use of remote-access gateways as T1133 External Remote Services, which is why such gateways are commonly prioritised in scope discussions.
-
-Section two point four develops networks and internet services with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section two point four, Northpoint Assurance expects networks claims to carry owners and dates.
 
 ### Lab A — scope checker
 
@@ -204,49 +176,21 @@ You will (1) write small, readable Python functions that make one decision each;
 
 Assessment work produces lists: hosts, accounts, findings, evidence items, retest dates. Scripts that check, sort and summarise those lists remove copying errors and make decisions repeatable. They are not attack tools. In this book every script reads invented data held in the file itself and prints a verdict.
 
-Section three point one develops programming foundations with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section three point one, Northpoint Assurance expects programming claims to carry owners and dates.
-
-Section three point one treats why technologists program one as testable only when evidence and ticket IDs are recorded.
-
 ### 3.2 One function, one decision
 
 A function such as `verdict(addr)` in Chapter 2 answers one question and returns a small set of labels. That design makes it testable: feed it an address you already know the answer for and compare. When a function both decides and prints and writes files, a bug in one part hides in the others.
-
-Section three point two develops programming foundations with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section three point two, Northpoint Assurance expects programming claims to carry owners and dates.
 
 ### 3.3 Standard library first
 
 The Python standard library includes `ipaddress`, `datetime`, `hashlib`, `json`, `csv` and `collections`. These cover scope arithmetic, time windows, evidence hashing, structured records and counting. Avoiding third-party packages means no dependency review, no supply-chain surprise, and identical behaviour on the reviewer's machine.
 
-Section three point three develops programming foundations with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section three point three, Northpoint Assurance expects programming claims to carry owners and dates.
-
-Section three point three treats why technologists program one as testable only when evidence and ticket IDs are recorded.
-
 ### 3.4 Failing closed
 
 If a scope file is missing or a date cannot be parsed, the safe default is "do not proceed". A checker that returns "allowed" when it hits an exception is worse than none, because it creates false confidence. Write the deny path first, then add the allow conditions.
 
-Section three point four develops programming foundations with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section three point four, Northpoint Assurance expects programming claims to carry owners and dates.
-
-Section three point four treats why technologists program one as testable only when evidence and ticket IDs are recorded.
-
 ### 3.5 Tests as evidence
 
 A short table of inputs and expected outputs, run before each engagement, is evidence that the tooling behaves. Keep it with the engagement records so a reviewer can rerun it.
-
-Section three point five develops programming foundations with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section three point five, Northpoint Assurance expects programming claims to carry owners and dates.
-
-Section three point five treats why technologists program one as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -284,39 +228,17 @@ You will (1) design a minimal record for a finding; (2) validate records for mis
 
 A finding is a claim: on this asset, this weakness exists, shown by this evidence, with this severity. The minimal fields are therefore an identifier, the asset, an ATT&CK technique ID or other weakness reference, a severity from an agreed list, and a pointer to evidence. Remediation owner, due date and status come later in the life cycle.
 
-Section four point one develops data models with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section four point one, Northpoint Assurance expects data claims to carry owners and dates.
-
 ### 4.2 Controlled vocabularies
 
 If one tester writes "urgent", another "P1" and a third "very bad", nobody can count criticals. A fixed set — low, medium, high, critical — lets dashboards add and compare. ATT&CK IDs such as T1078 do the same job for adversary behaviour: "valid accounts" phrased five ways is still one technique.
-
-Section four point two develops data models with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section four point two, Northpoint Assurance expects data claims to carry owners and dates.
 
 ### 4.3 Identifiers over prose
 
 Evidence is linked by an ID such as E-001, not by "see the screenshot from Tuesday". IDs survive renaming, translation and copying into a ticket system. Each ID must be unique within the engagement.
 
-Section four point three develops data models with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section four point three, Northpoint Assurance expects data claims to carry owners and dates.
-
-Section four point three treats what finding record needs as testable only when evidence and ticket IDs are recorded.
-
 ### 4.4 Validation as a gate
 
 Records are validated before they enter the report. A validator that lists every problem, rather than stopping at the first, saves round trips with the tester.
-
-Section four point four develops data models with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section four point four, Northpoint Assurance expects data claims to carry owners and dates.
-
-Section four point four treats what finding record needs as testable only when evidence and ticket IDs are recorded.
-
-For section four point four, Tidewater Regional Transit will not accept data work without a written trail.
 
 ### Lab B — record validator
 
@@ -385,31 +307,13 @@ A vulnerability assessment enumerates known weaknesses broadly and usually stops
 
 Confidentiality: only the right people read timetable drafts and staff records. Integrity: nobody alters next week's driver roster without trace. Availability: passengers receive real-time arrivals when they need them. Every finding should say which of these it threatens, because that steers who cares and how fast.
 
-Section five point two develops security literacy with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section five point two, Northpoint Assurance expects security claims to carry owners and dates.
-
-Section five point two treats three kinds of assessment as testable only when evidence and ticket IDs are recorded.
-
 ### 5.3 Existence versus effectiveness
 
 A policy that requires multi-factor authentication exists on paper. Effectiveness is shown only when an assessor observes that accounts actually cannot sign in without the second factor. Assessments measure effectiveness; audits often stop at existence. Both matter, but a report must say which one it measured.
 
-Section five point three develops security literacy with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section five point three, Northpoint Assurance expects security claims to carry owners and dates.
-
-Section five point three treats three kinds of assessment as testable only when evidence and ticket IDs are recorded.
-
 ### 5.4 Authorization is the line
 
 The same activity — checking whether an account is protected — is a service when written permission exists and an offence in many jurisdictions when it does not. Skill does not change that. Chapter 10 covers the documents that create permission.
-
-Section five point four develops security literacy with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section five point four, Northpoint Assurance expects security claims to carry owners and dates.
-
-Section five point four treats three kinds of assessment as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -447,29 +351,17 @@ You will (1) name the OS artefacts an assessor typically asks for; (2) explain h
 
 An OS holds accounts, process lists, listening services, package inventories, logs and configuration files. For authorized assessment these are evidence sources when the agreement allows access. A technologist who understands where each source lives can ask for exports rather than for interactive sessions, which reduces operational risk and still produces checkable artefacts.
 
-Section six point one develops operating systems and virtualization with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section six point one, Northpoint Assurance expects operating claims to carry owners and dates.
-
 ### 6.2 Patch and configuration state
 
 A supported OS with current patches is different from an unsupported release that no longer receives security updates. Configuration also matters: a service that listens on every interface, a password stored in a cleartext file, a firewalled host with an unused management port left open. These are configuration facts, not exploit recipes, and they appear in findings as evidence of control gaps.
-
-Section six point two develops operating systems and virtualization with a Tidewater Regional Transit note Priya Natarajan can demo offline.
 
 ### 6.3 Virtualization and shared fate
 
 Guests share a hypervisor, storage and sometimes a network fabric. Isolation is a property of the platform's design and of how carefully it is configured. A finding that one guest can reach another guest's management interface is a platform concern, not only a guest-OS concern. Provider terms usually forbid testing the hypervisor from inside a guest; that boundary must be written into every cloud or hosting engagement.
 
-Section six point three develops operating systems and virtualization with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
 ### 6.4 Snapshots for remediation
 
 When a fix is applied, a snapshot of the known-good state lets operators roll back if the change breaks something. Snapshots also freeze a moment for later review, but they can contain secrets. Store them under the same access rules as other evidence and delete them when the agreement says so.
-
-Section six point four develops operating systems and virtualization with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section six point four, Northpoint Assurance expects operating claims to carry owners and dates.
 
 ### Worked example
 
@@ -507,35 +399,17 @@ You will (1) describe authentication, authorization and accounting as separate d
 
 Authentication answers "who is this?" Authorization answers "what may they do?" Accounting answers "what did they do?" A system that authenticates strongly but authorizes everyone as administrator has only solved the first question. Findings should say which decision failed.
 
-Section seven point one develops identity and access foundations with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section seven point one, Northpoint Assurance expects identity claims to carry owners and dates.
-
-Section seven point one treats three decisions shared and as testable only when evidence and ticket IDs are recorded.
-
 ### 7.2 Shared and leftover accounts
 
 Shared passwords for "the ops account" destroy accountability: nobody knows who used it. Leftover accounts of contractors and former staff are a classic source of unexpected access. ATT&CK catalogues the adversary use of legitimate credentials as T1078 Valid Accounts, and the creation of new accounts as T1136 Create Account. Mapping a finding to these IDs lets defenders search the same patterns in their own logs.
-
-Section seven point two develops identity and access foundations with a Tidewater Regional Transit note Priya Natarajan can demo offline.
 
 ### 7.3 Multi-factor and recovery paths
 
 A second factor raises the cost of stolen passwords. Recovery paths — SMS reset, help-desk override, backup codes — must be protected at the same level, or they become the weak door. MFA request generation (ATT&CK T1621) is an adversary technique against push-based factors; that is a design concern for purple-team exercises, not a cue to disable MFA.
 
-Section seven point three develops identity and access foundations with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section seven point three, Northpoint Assurance expects identity claims to carry owners and dates.
-
 ### 7.4 Least privilege as a checklist
 
 For each role on the staff portal: list the actions it needs, remove the rest, and record who can grant exceptions. The checklist is evidence that authorization was designed rather than inherited.
-
-Section seven point four develops identity and access foundations with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section seven point four, Northpoint Assurance expects identity claims to carry owners and dates.
-
-Section seven point four treats three decisions shared and as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -573,37 +447,17 @@ You will (1) draw a trust-boundary diagram for a small service; (2) explain defe
 
 A trust boundary is a place where assumptions change: from internet to DMZ, from DMZ to internal network, from application to database, from staff device to VPN. Crossing a boundary should require a control — authentication, encryption, a gateway, a filter. Diagrams that omit boundaries hide the places where findings matter most.
 
-Section eight point one develops security architecture basics with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section eight point one, Northpoint Assurance expects security claims to carry owners and dates.
-
 ### 8.2 Defence in depth as layers with purposes
 
 Depth means independent layers that fail differently. A VPN, an application login and a database permission are three layers. If they all depend on the same password store, they are one layer wearing three hats. An assessor looks for shared single points of failure as carefully as for missing layers.
-
-Section eight point two develops security architecture basics with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section eight point two, Northpoint Assurance expects security claims to carry owners and dates.
 
 ### 8.3 Where evidence lives
 
 Network evidence lives in gateway logs and packet captures when authorized. Identity evidence lives in authentication logs. Application evidence lives in access logs and configuration exports. Knowing where to ask saves interactive access that nobody needs.
 
-Section eight point three develops security architecture basics with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section eight point three, Northpoint Assurance expects security claims to carry owners and dates.
-
-Section eight point three treats trust boundaries defence in as testable only when evidence and ticket IDs are recorded.
-
 ### 8.4 Architecture and scope
 
 Scope should follow architecture. If the fare-payment segment sits behind a different gateway with different owners, it is a different trust domain and usually a different engagement. Mixing domains in one report confuses remediation.
-
-Section eight point four develops security architecture basics with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section eight point four, Northpoint Assurance expects security claims to carry owners and dates.
-
-Section eight point four treats trust boundaries defence in as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -641,31 +495,13 @@ You will (1) write a chain-of-custody note for a digital artefact; (2) compute a
 
 A finding without evidence is an opinion. Evidence can be a configuration export, a redacted screenshot, a log excerpt or a hash of a file. Capture only what proves the point; more data means more retention risk and more redaction work.
 
-Section nine point one develops evidence and measurement with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section nine point one, Northpoint Assurance expects evidence claims to carry owners and dates.
-
-Section nine point one treats evidence is claim's support as testable only when evidence and ticket IDs are recorded.
-
 ### 9.2 Chain of custody
 
 For each item record who collected it, when, from where, and every hand-off. NIST SP 800-86 describes integrating forensic techniques into incident response; the same discipline of labelling and integrity checking applies to assessment evidence even when the legal stakes are lower.
 
-Section nine point two develops evidence and measurement with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section nine point two, Northpoint Assurance expects evidence claims to carry owners and dates.
-
-Section nine point two treats evidence is claim's support as testable only when evidence and ticket IDs are recorded.
-
 ### 9.3 Hashing as a tamper check
 
 A SHA-256 digest of an artefact, stored separately from the artefact, lets a later reader detect silent edits. If the digest no longer matches, the file changed — intentionally or not — and the claim that relied on it must be revisited.
-
-Section nine point three develops evidence and measurement with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section nine point three, Northpoint Assurance expects evidence claims to carry owners and dates.
-
-Section nine point three treats evidence is claim's support as testable only when evidence and ticket IDs are recorded.
 
 ### Lab C — evidence manifest
 
@@ -697,12 +533,6 @@ E-002_wiki_page_export.txt MISMATCH
 ### 9.4 Measurement needs units
 
 "We scanned a lot" is not a measure. "Seven ATT&CK techniques exercised between 22:00 and 05:00; three alerted, two logged, two missed" is a measure. Chapter 19 builds a coverage matrix; this chapter only insists that numbers have units and windows.
-
-Section nine point four develops evidence and measurement with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section nine point four, Northpoint Assurance expects evidence claims to carry owners and dates.
-
-Section nine point four treats evidence is claim's support as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -740,35 +570,17 @@ You will (1) place vulnerability assessment, penetration testing and red teaming
 
 Authorized practice moves through governance and scoping, rules of engagement, execution within those rules, evidence handling, risk rating, reporting, remediation and validation. Tool names change; the life cycle does not. NIST SP 800-115 and PTES both organise work this way, even though their section titles differ.
 
-Section ten point one develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section ten point one, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section ten point one treats life cycle not tool as testable only when evidence and ticket IDs are recorded.
-
 ### 10.2 Permission is written
 
 Permission comes from a signed agreement that names the parties, the systems, the methods, the window, the exclusions, the data-handling rules, the emergency contact and the report audience. Verbal "go ahead" is not enough. Chapter 11 turns that agreement into checkable scope and ROE objects.
-
-Section ten point two develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section ten point two, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section ten point two treats life cycle not tool as testable only when evidence and ticket IDs are recorded.
 
 ### 10.3 Red, blue and purple
 
 The red team (or testing provider) exercises adversary behaviours under authorization. The blue team (SOC and defenders) detects and responds. Purple teaming is structured collaboration: red announces or reveals techniques in a controlled way so blue can improve detection, with learning as the goal rather than a pure "gotcha". TIBER-EU and CBEST add a threat-intelligence-led layer used in financial-sector assurance; technologists should recognise those names even when their organisation is not a bank.
 
-Section ten point three develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
 ### 10.4 What this book will not do
 
 It will not provide exploit code, payloads or step-by-step attack procedures. It will not authorize anyone to test a real system. It teaches governance, evidence, measurement and remediation validation on synthetic data so that when a learner later joins a real team, the discipline is already in place.
-
-Section ten point four develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section ten point four, Northpoint Assurance expects authorized claims to carry owners and dates.
 
 ### Worked example
 
@@ -806,29 +618,13 @@ You will (1) turn a signed agreement into a machine-checkable scope and ROE; (2)
 
 An agreement written in paragraphs becomes useful when it is also a list: in-scope prefixes and names, excluded systems, allowed activities, start and end times, forbidden activities, and an emergency contact. Checkers in Chapters 2 and this chapter operate on those lists. Ambiguous prose such as "and related systems" is a defect, not a feature.
 
-Section eleven point one develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section eleven point one, Northpoint Assurance expects authorized claims to carry owners and dates.
-
 ### 11.2 Context changes the method
 
 A high-criticality, fragile asset may be examined by configuration review only. A low-criticality staging clone may accept more active checks. The asset record from Chapter 1 supplies that context; ignoring it produces either reckless testing or wasted caution.
 
-Section eleven point two develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section eleven point two, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section eleven point two treats from prose to objects as testable only when evidence and ticket IDs are recorded.
-
 ### 11.3 Stop lists and windows
 
 A stop list names activities that are never allowed even inside the window — for TRT, fare-system interaction and social engineering of drivers. A window names when allowed activities may run. Both are hard gates.
-
-Section eleven point three develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section eleven point three, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section eleven point three treats from prose to objects as testable only when evidence and ticket IDs are recorded.
 
 ### Lab D — ROE activity checker
 
@@ -867,12 +663,6 @@ Run with `python3 lab_roe.py`. Verified output:
 
 Someone with stop authority must be reachable throughout the window. If that person cannot be reached, the session does not start. TIBER-EU-style exercises formalise this as a white-team control function; smaller engagements still need the same idea.
 
-Section eleven point four develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section eleven point four, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section eleven point four treats from prose to objects as testable only when evidence and ticket IDs are recorded.
-
 ### Worked example
 
 Northpoint's draft plan includes a VPN review at 06:10 and a "fare-system interaction" at 23:00. The lab prints STOP for both — one outside the window, one forbidden. Priya cancels those lines before kickoff and keeps the two allowed activities.
@@ -909,39 +699,17 @@ You will (1) draw a data-flow diagram for one TRT service; (2) mark where assess
 
 A data-flow diagram shows what moves: a passenger request to the timetable API, a staff login to the portal, a log line to the SIEM, a backup to storage. Boxes alone do not reveal where copies of sensitive data land. Assessments that touch those paths can create new copies; the agreement must say what happens to them.
 
-Section twelve point one develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twelve point one, Northpoint Assurance expects authorized claims to carry owners and dates.
-
 ### 12.2 Personal and operational data
 
 Even a transit operator holds personal data — staff identifiers, sometimes passenger account details on adjacent systems. Operational data such as driver rosters and maintenance schedules can also be sensitive. Capture the minimum that proves a finding; mask the rest before filing.
-
-Section twelve point two develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twelve point two, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section twelve point two treats flows not boxes personal as testable only when evidence and ticket IDs are recorded.
 
 ### 12.3 Cross-border and vendor paths
 
 If logs are shipped to a vendor SIEM in another country, evidence may leave the jurisdiction the agreement assumed. Note the path before the engagement; do not discover it in the report draft.
 
-Section twelve point three develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twelve point three, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section twelve point three treats flows not boxes personal as testable only when evidence and ticket IDs are recorded.
-
 ### 12.4 Retention clocks
 
 Start a retention clock when evidence is collected. When the agreement's period ends, delete or return the data and record that you did. Indefinite "just in case" stores are a liability.
-
-Section twelve point four develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twelve point four, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section twelve point four treats flows not boxes personal as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -979,31 +747,13 @@ You will (1) rate findings with a transparent likelihood × impact matrix; (2) s
 
 A 1–5 likelihood and 1–5 impact scale, multiplied, gives a score that anyone can recompute. Bands such as critical ≥ 20, high ≥ 12, medium ≥ 6, low ≥ 0 turn scores into language managers recognise. Document the scale in the report so readers are not guessing.
 
-Section thirteen point one develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section thirteen point one, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section thirteen point one treats transparent rating scenarios connect as testable only when evidence and ticket IDs are recorded.
-
 ### 13.2 Scenarios connect the dots
 
 "Shared admin account on the staff portal" is a weakness. The scenario adds: an adversary using T1078 Valid Accounts could alter public timetables (integrity) and lock out operators (availability). Scenarios make impact scores defensible.
 
-Section thirteen point two develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section thirteen point two, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section thirteen point two treats transparent rating scenarios connect as testable only when evidence and ticket IDs are recorded.
-
 ### 13.3 Severity versus urgency
 
 A critical finding on a decommissioned staging host may be low urgency. A medium finding on a system under active attack may be high urgency. Tickets carry both fields; collapsing them into one number loses information.
-
-Section thirteen point three develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section thirteen point three, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section thirteen point three treats transparent rating scenarios connect as testable only when evidence and ticket IDs are recorded.
 
 ### Lab E — finding scorer
 
@@ -1036,17 +786,9 @@ F-04 L3 x I1 =  3 low      verbose error page on timetable API
 
 NIST SP 800-30 Rev. 1 describes risk as a function of threat, vulnerability and impact (among other framings). The classroom matrix is a simplification for ordering work, not a full enterprise risk assessment.
 
-Section thirteen point four develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section thirteen point four, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section thirteen point four treats transparent rating scenarios connect as testable only when evidence and ticket IDs are recorded.
-
 ### 13.5 Communicating scores upward
 
 When Priya presents the ordered list, she spends more time on the top two scenarios than on the low finding. Boards can absorb a handful of well-narrated risks; they cannot absorb a spreadsheet dump. She keeps the full table in an appendix for auditors and puts three sentences in the executive summary: what matters, why, and what decision she needs this week.
-
-Section thirteen point five develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
 
 ### Worked example
 
@@ -1084,39 +826,17 @@ You will (1) map engagement phases to NIST SP 800-115 and PTES; (2) choose revie
 
 NIST SP 800-115 groups techniques into review, target identification and analysis, and target vulnerability validation, wrapped by planning and post-testing activities. PTES names pre-engagement, intelligence gathering, threat modelling, vulnerability analysis, exploitation, post-exploitation and reporting. A technologist does not need to memorise every subsection; they need to place each planned activity in a phase and know which document the client prefers.
 
-Section fourteen point one develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section fourteen point one, Northpoint Assurance expects authorized claims to carry owners and dates.
-
 ### 14.2 Review before validation
 
 Configuration review, document review and log review often answer the question with less operational risk than active validation. Use validation when the decision truly needs confirmation that a weakness is reachable under the agreed limits — and only then.
-
-Section fourteen point two develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section fourteen point two, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section fourteen point two treats two maps of the as testable only when evidence and ticket IDs are recorded.
 
 ### 14.3 Method statements
 
 A method statement is a short, non-procedural description: "External service inventory of in-scope prefixes using approved scanners at agreed rates; authentication configuration review of the staff portal; no denial-of-service, no fare-system interaction, no social engineering." It belongs in the ROE.
 
-Section fourteen point three develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section fourteen point three, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section fourteen point three treats two maps of the as testable only when evidence and ticket IDs are recorded.
-
 ### 14.4 ATT&CK at ID level
 
 Refer to behaviours as T1595 Active Scanning, T1046 Network Service Discovery, T1078 Valid Accounts. Do not expand them into how-to steps. Defenders can open the ATT&CK pages; attackers do not need this book.
-
-Section fourteen point four develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section fourteen point four, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section fourteen point four treats two maps of the as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -1154,21 +874,9 @@ You will (1) run a three-gate pipeline that admits an action only when target, t
 
 Every planned action has a target address, a timestamp and an activity name. The target must sit in the in-scope prefix, the timestamp inside the window, and the activity on the approved list. Fail any gate and the action does not proceed.
 
-Section fifteen point one develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section fifteen point one, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section fifteen point one treats three gates the operator as testable only when evidence and ticket IDs are recorded.
-
 ### 15.2 The operator log
 
 Only actions that pass all three gates are written to the operator log. The log is evidence that the team stayed inside the agreement. A log full of improvisation is a finding against the testing team itself.
-
-Section fifteen point two develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section fifteen point two, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section fifteen point two treats three gates the operator as testable only when evidence and ticket IDs are recorded.
 
 ### Lab F — guided pipeline
 
@@ -1213,21 +921,9 @@ operator log entries: ['A1', 'A4']
 
 A2 is held because "password spraying" is not an approved activity. A3 is held because the target is outside the /25. Those HOLDs protect TRT and Northpoint. Celebrating a HOLD in the debrief teaches juniors that restraint is professional.
 
-Section fifteen point three develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section fifteen point three, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section fifteen point three treats three gates the operator as testable only when evidence and ticket IDs are recorded.
-
 ### 15.4 Reviewer use
 
 A reviewer should be able to replay the gates against the log. If an entry appears that would not pass, the engagement has a process failure regardless of whether anything "interesting" was found.
-
-Section fifteen point four develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section fifteen point four, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section fifteen point four treats three gates the operator as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -1265,39 +961,17 @@ You will (1) contrast web-application testing literacy (OWASP WSTG) with network
 
 The OWASP Web Security Testing Guide organises checks for web applications: configuration, identity, input handling, business logic and more. A technologist uses it as a coverage checklist for the staff portal and timetable API, not as a licence to run every check. Each selected check still needs a ROE line.
 
-Section sixteen point one develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section sixteen point one, Northpoint Assurance expects authorized claims to carry owners and dates.
-
 ### 16.2 Threat-led assurance
 
 TIBER-EU and CBEST describe intelligence-led exercises used especially in financial-market infrastructure. They add a threat-intelligence phase, a white-team control function and a learning-focused replay. TRT is not a bank, but borrowing the white-team and learning-review ideas improves any red-team exercise.
-
-Section sixteen point two develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section sixteen point two, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section sixteen point two treats owasp wstg as catalogue as testable only when evidence and ticket IDs are recorded.
 
 ### 16.3 Mixing methods without mixing scopes
 
 A single engagement can include a WSTG-informed portal review and a limited network inventory, provided both sit inside the same agreement and exclusions. Mixing in an unstated "quick look" at fare-payment systems violates the agreement even if the method is gentle.
 
-Section sixteen point three develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section sixteen point three, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section sixteen point three treats owasp wstg as catalogue as testable only when evidence and ticket IDs are recorded.
-
 ### 16.4 Exclusion language that works
 
 "Fare-payment systems, including hosts in 192.0.2.64/27 and any hostname under fare.trt.example, are excluded from all activities." Beats "sensitive systems are out of scope", which nobody can check.
-
-Section sixteen point four develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section sixteen point four, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section sixteen point four treats owasp wstg as catalogue as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -1335,41 +1009,17 @@ You will (1) inventory assessment tools with owner, purpose and data handled; (2
 
 Anything that touches client systems or client data is part of the engagement's attack surface — including the tester's own laptop and scanners. An inventory lists each tool, who maintains it, what data it stores, and whether it may leave the approved environment.
 
-Section seventeen point one develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section seventeen point one, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section seventeen point one treats tools are in scope as testable only when evidence and ticket IDs are recorded.
-
 ### 17.2 Change control mid-flight
 
 Upgrading a scanner halfway through a window can change its behaviour and invalidate comparisons. Note the version at kickoff; defer upgrades unless the white team agrees that a security fix in the tool itself requires it.
-
-Section seventeen point two develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section seventeen point two, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section seventeen point two treats tools are in scope as testable only when evidence and ticket IDs are recorded.
 
 ### 17.3 Supply chain of tools
 
 Assessment software comes from vendors and open-source projects. Prefer signed releases, verify checksums when provided, and avoid random scripts from the internet. ATT&CK T1195 Supply Chain Compromise is usually discussed as an adversary technique against the client; it applies to the testing team too.
 
-Section seventeen point three develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section seventeen point three, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section seventeen point three treats tools are in scope as testable only when evidence and ticket IDs are recorded.
-
 ### 17.4 Classroom constraint
 
 Every lab in this book uses only the Python 3 standard library and synthetic data. That is intentional: learners practise decision logic without depending on commercial scanners or building attack tooling.
-
-Section seventeen point four develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section seventeen point four, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section seventeen point four treats tools are in scope as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -1407,35 +1057,17 @@ You will (1) map common assessment findings to control families in NIST SP 800-5
 
 A finding is a gap; a control is how the organisation closes it. NIST SP 800-53 Rev. 5 provides control families (access control, audit and accountability, identification and authentication, and many others). NIST CSF 2.0 organises outcomes into Govern, Identify, Protect, Detect, Respond and Recover. Reports that recommend "be careful" help nobody; reports that recommend "enforce MFA on all VPN paths (IA-family control); owner: identity team; check: quarterly account review" create work.
 
-Section eighteen point one develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
 ### 18.2 Compensating controls
 
 If MFA cannot yet cover a legacy path, a compensating control might be a jump host with session recording and a shorter session timeout. Document the compensation and the plan to remove it. Assessors should test whether the compensation actually works, not merely whether it is written down.
-
-Section eighteen point two develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section eighteen point two, Northpoint Assurance expects authorized claims to carry owners and dates.
 
 ### 18.3 Detect and respond are controls too
 
 Purple-team work often finds that Prevent failed but Detect also failed. Recommendations then land in the Detect and Respond functions: a new alert, a runbook step, a playbook link. D3FEND offers defensive technique vocabulary that can sit beside ATT&CK IDs in a mature programme.
 
-Section eighteen point three develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section eighteen point three, Northpoint Assurance expects authorized claims to carry owners and dates.
-
 ### 18.4 Forbidden assurance phrases
 
 "Fully secure", "guaranteed", "hack-proof" and "100% coverage" are false and forbidden in TRT reports. Time-bounded, scope-bounded statements are the professional alternative.
-
-Section eighteen point four develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section eighteen point four, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section eighteen point four treats controls as answers to as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point four, Tidewater Regional Transit will not accept authorized work without a written trail.
 
 ### Worked example
 
@@ -1473,21 +1105,9 @@ You will (1) build an ATT&CK coverage matrix from a purple-team log; (2) interpr
 
 A coverage matrix does not claim the organisation detects "everything". It shows, for the techniques exercised in a named window, whether the SOC alerted, merely logged, or missed. That conversation drives investment.
 
-Section nineteen point one develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section nineteen point one, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section nineteen point one treats coverage as conversation alerted as testable only when evidence and ticket IDs are recorded.
-
 ### 19.2 Alerted, logged, missed
 
 Alerted means a person or playbook was notified in time to act. Logged means the telemetry existed but nobody was woken. Missed means the behaviour left no usable telemetry. Logged is not success if the exercise assumed a responding analyst.
-
-Section nineteen point two develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section nineteen point two, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section nineteen point two treats coverage as conversation alerted as testable only when evidence and ticket IDs are recorded.
 
 ### Lab G — coverage matrix
 
@@ -1527,29 +1147,13 @@ missed   2/7 = 28.6%
 
 Each missed technique becomes a backlog item: which log source, which alert logic, which owner, which test to prove it later. Tie the item to the ATT&CK ID so future exercises can retest the same cell.
 
-Section nineteen point three develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section nineteen point three, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section nineteen point three treats coverage as conversation alerted as testable only when evidence and ticket IDs are recorded.
-
 ### 19.4 Navigator and D3FEND
 
 ATT&CK Navigator visualises coverage layers. D3FEND names defensive techniques that can counter a given offensive technique. Together they help a technologist talk to both red and blue without inventing a private vocabulary.
 
-Section nineteen point four develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section nineteen point four, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section nineteen point four treats coverage as conversation alerted as testable only when evidence and ticket IDs are recorded.
-
 ### 19.5 Retesting the same cells
 
 A coverage matrix earns its keep only if the next exercise reopens the same cells. Priya tags DET-19 and DET-20 with T1021 and T1087 so the following purple cycle can print a before/after row. Without that discipline the organisation rediscovers the same misses and calls it a new insight.
-
-Section nineteen point five develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section nineteen point five, Northpoint Assurance expects authorized claims to carry owners and dates.
 
 ### Worked example
 
@@ -1587,39 +1191,17 @@ You will (1) build a fault tree for a failed assessment session; (2) separate to
 
 DNS drift, an expired tester certificate, a SIEM collector down, a white-team phone on silent, a scope sheet with a typo — these stop work more often than exotic problems. A fault tree starts with "session cannot proceed" and branches into authorization, connectivity, tooling and safety.
 
-Section twenty point one develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty point one, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section twenty point one treats sessions fail for boring as testable only when evidence and ticket IDs are recorded.
-
 ### 20.2 Three fault classes
 
 Scope faults: the target is no longer approved. Tooling faults: the checker or scanner misbehaves. Environment faults: the client's system is unstable or an incident is already in progress. Mis-classifying an environment fault as a tooling fault leads to "trying again" when the right move is to stop.
-
-Section twenty point two develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty point two, Northpoint Assurance expects authorized claims to carry owners and dates.
 
 ### 20.3 Go / no-go
 
 After any unexpected event — a crash, a complaint, a SIEM outage — the team writes a short go/no-go note: what happened, which fault class, who was informed, decision, signature/time. No-go is a professional outcome.
 
-Section twenty point three develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty point three, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section twenty point three treats sessions fail for boring as testable only when evidence and ticket IDs are recorded.
-
 ### 20.4 Parallel incident
 
 If TRT's SOC is already handling a real incident, assessment activity that adds noise is usually suspended. NIST SP 800-61 Rev. 3 discusses incident response coordination; assessment teams must know how to stand down.
-
-Section twenty point four develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty point four, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section twenty point four treats sessions fail for boring as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -1657,39 +1239,17 @@ You will (1) place the assessment service among identity, logging, ticketing and
 
 An authorized assessment capability is a service with inputs (requests, agreements), processes (scoped execution) and outputs (findings, reports, retest results). It depends on identity (who may approve), logging (where evidence of activity goes), ticketing (where findings live) and change management (when fixes roll out). Drawing those dependencies prevents the assessment team from inventing parallel tools that nobody else watches.
 
-Section twenty-one point one develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-one point one, Northpoint Assurance expects authorized claims to carry owners and dates.
-
 ### 21.2 Interfaces and SLAs
 
 Each interface needs an owner and a response expectation: white-team acknowledgement within fifteen minutes of a stop call; remediation ticket acknowledgement within two business days; evidence repository access revoked within one day of engagement close. SLAs without owners are decorations.
-
-Section twenty-one point two develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-one point two, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section twenty-one point two treats assessment as service interfaces as testable only when evidence and ticket IDs are recorded.
 
 ### 21.3 One risk tracker
 
 Findings that live only in a PDF never meet their owners. Export them into the organisation's risk or vulnerability tracker with the same severity vocabulary Chapter 4 required. Keep the PDF as the narrative; keep the tracker as the work queue.
 
-Section twenty-one point three develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-one point three, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section twenty-one point three treats assessment as service interfaces as testable only when evidence and ticket IDs are recorded.
-
 ### 21.4 Shadow IT
 
 Personal drives, unmanaged chat channels and private boards for "just this engagement" become the place evidence goes to die — or to leak. Use the approved services even when they feel slower.
-
-Section twenty-one point four develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-one point four, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section twenty-one point four treats assessment as service interfaces as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -1727,12 +1287,6 @@ You will (1) automate report tables and status counts from structured findings; 
 
 Building a Markdown table from a finding list, counting open versus fixed, sorting by severity — these are ideal for scripts. They reduce copy errors and produce identical artefacts for the reviewer.
 
-Section twenty-two point one develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-two point one, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section twenty-two point one treats automate the boring inspectable as testable only when evidence and ticket IDs are recorded.
-
 ### Lab H — report builder
 
 ```python
@@ -1769,41 +1323,17 @@ open=2 fixed=1 accepted=1
 
 Authorization decisions, white-team calls, severity disputes and go/no-go notes stay human. Automating "approve scope" is how organisations accidentally authorize the wrong prefix.
 
-Section twenty-two point two develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-two point two, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section twenty-two point two treats automate the boring inspectable as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-two point two, Tidewater Regional Transit will not accept authorized work without a written trail.
-
 ### 22.3 Dry-run and rate limits
 
 Any automation that could send traffic needs a dry-run mode that prints what it would do, and a rate limit agreed in the ROE. Classroom labs never send traffic; production tools must still show the same discipline.
-
-Section twenty-two point three develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-two point three, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section twenty-two point three treats automate the boring inspectable as testable only when evidence and ticket IDs are recorded.
 
 ### 22.4 Version with the engagement
 
 Store the exact script version (commit hash or file hash) in the engagement record so a reviewer can regenerate the table later. Unversioned "final_final_v3.py" files are not evidence.
 
-Section twenty-two point four develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-two point four, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section twenty-two point four treats automate the boring inspectable as testable only when evidence and ticket IDs are recorded.
-
 ### 22.5 What not to scrape
 
 Automation that pulls production passwords, session cookies or personal data into a report builder is a data-handling incident waiting to happen. The builder in this chapter reads only the fields a human already filed as findings. If a field is missing, the script should fail loudly rather than invent a default severity.
-
-Section twenty-two point five develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-two point five, Northpoint Assurance expects authorized claims to carry owners and dates.
 
 ### Worked example
 
@@ -1841,49 +1371,21 @@ You will (1) define evaluation criteria before an engagement ends; (2) score pro
 
 Evaluation answers: did we stay in scope, did we meet the decision the CISO needed, did defenders learn, did remediation start? Write those criteria in the ROE or kickoff notes so future-you cannot invent softer ones after a messy week.
 
-Section twenty-three point one develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-three point one, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section twenty-three point one treats criteria before close process as testable only when evidence and ticket IDs are recorded.
-
 ### 23.2 Process quality ≠ trophy count
 
 An engagement that finds nothing but demonstrates solid gates, clean evidence and a useful purple replay can be a success. An engagement that finds dozens of issues by ignoring exclusions is a failure with a long appendix. Score discipline explicitly.
-
-Section twenty-three point two develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-three point two, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section twenty-three point two treats criteria before close process as testable only when evidence and ticket IDs are recorded.
 
 ### 23.3 Lessons learned
 
 Within two weeks, red, blue and white teams meet. Each miss from the coverage matrix becomes a ticket. Each process fault becomes a procedure change. Capture what to stop, start and continue.
 
-Section twenty-three point three develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-three point three, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section twenty-three point three treats criteria before close process as testable only when evidence and ticket IDs are recorded.
-
 ### 23.4 Vanity metrics
 
 "Hosts scanned", "packets sent" and "criticals found" without context encourage the wrong behaviour. Prefer "techniques exercised", "percent alerted", "findings accepted into tracker within SLA" and "retests closed".
 
-Section twenty-three point four develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-three point four, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section twenty-three point four treats criteria before close process as testable only when evidence and ticket IDs are recorded.
-
 ### 23.5 Sharing results without shame
 
 Publish the evaluation sheet to the people who lived the exercise. Hiding a low process score from the SOC while celebrating a high finding count teaches the wrong lesson. TRT's rule is that the same sheet the CISO signs is the sheet the team reads in the retrospective.
-
-Section twenty-three point five develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-three point five, Northpoint Assurance expects authorized claims to carry owners and dates.
 
 ### Worked example
 
@@ -1921,53 +1423,21 @@ You will (1) pose a research question about assessment practice that can be answ
 
 Examples: Does a three-gate pipeline reduce out-of-scope attempts in student exercises? Which ATT&CK techniques does TRT's SOC alert on after one purple cycle? How long do remediation tickets of each severity stay open? Each question names a population, a measure and a limit.
 
-Section twenty-four point one develops applied research methods with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-four point one, Northpoint Assurance expects applied claims to carry owners and dates.
-
-Section twenty-four point one treats questions worth asking methods as testable only when evidence and ticket IDs are recorded.
-
 ### 24.2 Methods that fit technologists
 
 Measurement studies on ticket and coverage data; before/after comparisons when a control changes; structured interviews with SOC analysts about alert quality. Laboratory exploit research is out of scope for this course.
-
-Section twenty-four point two develops applied research methods with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-four point two, Northpoint Assurance expects applied claims to carry owners and dates.
-
-Section twenty-four point two treats questions worth asking methods as testable only when evidence and ticket IDs are recorded.
 
 ### 24.3 Ethics first
 
 No covert testing of real users, no collection of personal data beyond the agreement, no publication of client identifiers. Label synthetic data. Obtain approval before interviewing staff.
 
-Section twenty-four point three develops applied research methods with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-four point three, Northpoint Assurance expects applied claims to carry owners and dates.
-
-Section twenty-four point three treats questions worth asking methods as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point three, Tidewater Regional Transit will not accept applied work without a written trail.
-
 ### 24.4 Abstract checklist
 
 A passable abstract states the question, the method, the sample size n, the limits and the ethics posture. Missing n is a common failure mode in student papers.
 
-Section twenty-four point four develops applied research methods with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-four point four, Northpoint Assurance expects applied claims to carry owners and dates.
-
-Section twenty-four point four treats questions worth asking methods as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point four, Tidewater Regional Transit will not accept applied work without a written trail.
-
 ### 24.5 Reproducibility for technologists
 
 A classmate should be able to rerun the counts from the synthetic logs and obtain the same fractions. Priya stores the input files beside the abstract and notes the Python version. Reproducibility here is not about exotic environments; it is about not waving at numbers that nobody else can rebuild.
-
-Section twenty-four point five develops applied research methods with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-four point five, Northpoint Assurance expects applied claims to carry owners and dates.
 
 ### Worked example
 
@@ -2005,53 +1475,21 @@ You will (1) form a small team with named roles (lead, evidence, liaison); (2) r
 
 Lead keeps the ROE and timeline. Evidence owner runs manifests and custody. Liaison speaks to the (synthetic) white team and SOC. Rotating roles across studios builds breadth; leaving everything to the strongest writer builds a single point of failure.
 
-Section twenty-five point one develops team project studio with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-five point one, Northpoint Assurance expects team claims to carry owners and dates.
-
-Section twenty-five point one treats roles beat heroics planning as testable only when evidence and ticket IDs are recorded.
-
 ### 25.2 Planning checklist
 
 Agreement fields complete; scope lists loadable by the checker; kit inventory pinned; evaluation criteria written; communication channel tested. No checklist, no lab time. The instructor may fail a studio that cannot produce the checklist at the door.
-
-Section twenty-five point two develops team project studio with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-five point two, Northpoint Assurance expects team claims to carry owners and dates.
-
-Section twenty-five point two treats roles beat heroics planning as testable only when evidence and ticket IDs are recorded.
 
 ### 25.3 Mid-studio review
 
 Halfway through, the team presents: gates passed so far, HOLDs encountered, evidence count, risks to delivery. Instructors score process, not drama.
 
-Section twenty-five point three develops team project studio with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-five point three, Northpoint Assurance expects team claims to carry owners and dates.
-
-Section twenty-five point three treats roles beat heroics planning as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point three, Tidewater Regional Transit will not accept team work without a written trail.
-
 ### 25.4 Conflict on scope
 
 When members disagree whether a hostname is in scope, the rule is: stop, re-read the agreement, ask the liaison to confirm with white team. The loudest voice does not win.
 
-Section twenty-five point four develops team project studio with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-five point four, Northpoint Assurance expects team claims to carry owners and dates.
-
-Section twenty-five point four treats roles beat heroics planning as testable only when evidence and ticket IDs are recorded.
-
 ### 25.5 Quiet channels
 
 Studio chatter that contains evidence hashes, account names or ROE details stays on the approved channel, not on personal messaging apps. Sam as liaison is the only person who pages the white team. Parallel side chats create conflicting instructions and lost custody.
-
-Section twenty-five point five develops team project studio with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-five point five, Northpoint Assurance expects team claims to carry owners and dates.
-
-Section twenty-five point five treats roles beat heroics planning as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -2089,51 +1527,21 @@ You will (1) write a handoff package that operations can act on without the test
 
 Owners need: each finding with severity, scenario, evidence pointer, recommended control, and a suggested due date. They do not need a travelogue of every tool the testers ran. Cut narrative that does not change a decision.
 
-Section twenty-six point one develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-six point one, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section twenty-six point one treats what operations need residual as testable only when evidence and ticket IDs are recorded.
-
 ### 26.2 Residual risk and unknowns
 
 Every engagement ends with things not tested — excluded segments, techniques not exercised, windows that were shortened. List them. Boards hate surprises more than they hate incomplete work that is honestly bounded.
-
-Section twenty-six point two develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-six point two, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section twenty-six point two treats what operations need residual as testable only when evidence and ticket IDs are recorded.
 
 ### 26.3 Access transfer
 
 Tester accounts, VPN profiles and vault grants end on the handoff date. Operations receives read access to the evidence package under its own roles. Shared mailboxes used "just for the test" are closed.
 
-Section twenty-six point three develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-six point three, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section twenty-six point three treats what operations need residual as testable only when evidence and ticket IDs are recorded.
-
 ### 26.4 Retest on the calendar
 
 A remediation due date without a retest slot is a wish. Book the validation window (Chapter 27) before the testing team disperses. A handoff without a booked retest is marked incomplete on the evaluation sheet.
 
-Section twenty-six point four develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-six point four, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section twenty-six point four treats what operations need residual as testable only when evidence and ticket IDs are recorded.
-
 ### 26.5 Warm introductions
 
 A handoff meeting where Priya introduces each finding owner by name beats an email dump. Ten minutes of face-to-face (or video) clarification prevents a week of misrouted tickets. She records attendance so the evaluation sheet can show that operations actually received the work.
-
-Section twenty-six point five develops authorized offensive security and red with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-six point five, Northpoint Assurance expects authorized claims to carry owners and dates.
-
-Section twenty-six point five treats what operations need residual as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -2171,12 +1579,6 @@ You will (1) decide VALIDATED, REOPENED or NOT RETESTED from retest observations
 
 Remediation validation asks whether the agreed fix removed the problem under the same scope and method constraints. It is not a brand-new engagement, and it is not a rubber stamp.
 
-Section twenty-seven point one develops deployment and validation with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-seven point one, Northpoint Assurance expects deployment claims to carry owners and dates.
-
-Section twenty-seven point one treats validation is test of as testable only when evidence and ticket IDs are recorded.
-
 ### Lab I — retest status
 
 ```python
@@ -2208,43 +1610,17 @@ F-09 NOT RETESTED - no fix declared plaintext password on wiki
 
 VALIDATED: fix claimed and the check passed. REOPENED: fix claimed but the check failed. NOT RETESTED: no fix declared, so no check yet. Closing a ticket without one of the first two (or an explicit risk acceptance) is a process defect.
 
-Section twenty-seven point two develops deployment and validation with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-seven point two, Northpoint Assurance expects deployment claims to carry owners and dates.
-
-Section twenty-seven point two treats validation is test of as testable only when evidence and ticket IDs are recorded.
-
 ### 27.3 Same custody
 
 Retest evidence — a new configuration export, a new log excerpt — gets hashed and filed like the original. "Looks fine on my screen" is not evidence.
-
-Section twenty-seven point three develops deployment and validation with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-seven point three, Northpoint Assurance expects deployment claims to carry owners and dates.
-
-Section twenty-seven point three treats validation is test of as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point three, Tidewater Regional Transit will not accept deployment work without a written trail.
 
 ### 27.4 Risk acceptance
 
 Sometimes an owner accepts a residual risk with a named approver and a review date. That is a legitimate close path; silence is not.
 
-Section twenty-seven point four develops deployment and validation with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-seven point four, Northpoint Assurance expects deployment claims to carry owners and dates.
-
-Section twenty-seven point four treats validation is test of as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point four, Tidewater Regional Transit will not accept deployment work without a written trail.
-
 ### 27.5 Partial fixes
 
 Sometimes an owner fixes two of three accounts and asks to close the ticket. Priya's rule is to validate what was claimed, reopen or split the finding for what remains, and never let a partial fix erase the whole issue. The tracker should show residual work, not a green checkbox that hides it.
-
-Section twenty-seven point five develops deployment and validation with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-seven point five, Northpoint Assurance expects deployment claims to carry owners and dates.
 
 ### Worked example
 
@@ -2282,51 +1658,21 @@ You will (1) prepare a field kit checklist for an on-site or remote supervised s
 
 Written ROE and emergency contacts (offline copy); pinned tool versions; scope checker and ROE checker; evidence vault credentials that work; a tested out-of-band phone path to the white team; a notepad for custody lines when systems are down. Fancy dashboards are optional; the checklist is not.
 
-Section twenty-eight point one develops field practice with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-eight point one, Northpoint Assurance expects field claims to carry owners and dates.
-
-Section twenty-eight point one treats field kit conduct unexpected as testable only when evidence and ticket IDs are recorded.
-
 ### 28.2 Conduct
 
 Assessment staff are guests in operations' house. Explain what you are about to do in plain language, keep to the window, and never surprise a change manager with traffic during a freeze. Purple-team success depends on trust built in these small moments.
-
-Section twenty-eight point two develops field practice with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-eight point two, Northpoint Assurance expects field claims to carry owners and dates.
-
-Section twenty-eight point two treats field kit conduct unexpected as testable only when evidence and ticket IDs are recorded.
 
 ### 28.3 Unexpected events
 
 A breaker trip, a passenger-information outage, a medical emergency on site — none of these appear in the ROE, and all of them mean stop noisy work and yield to operations. Resume only on white-team instruction.
 
-Section twenty-eight point three develops field practice with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-eight point three, Northpoint Assurance expects field claims to carry owners and dates.
-
-Section twenty-eight point three treats field kit conduct unexpected as testable only when evidence and ticket IDs are recorded.
-
 ### 28.4 Debrief with facts
 
 "The SOC was asleep" is folklore. "T1021 produced no alert for 40 minutes; ticket DET-19 opened" is a fact. Field notes should support the second style.
 
-Section twenty-eight point four develops field practice with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-eight point four, Northpoint Assurance expects field claims to carry owners and dates.
-
-Section twenty-eight point four treats field kit conduct unexpected as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point four, Tidewater Regional Transit will not accept field work without a written trail.
-
 ### 28.5 Remote field practice
 
 When the session is remote rather than on-site, the kit still applies: out-of-band phone, offline ROE, tested screen-sharing that does not expose unrelated desktop files. Priya closes every other window before joining the white-team call. Accidental disclosure of another client's screen is a field failure even if no packet was sent.
-
-Section twenty-eight point five develops field practice with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-eight point five, Northpoint Assurance expects field claims to carry owners and dates.
 
 ### Worked example
 
@@ -2364,53 +1710,21 @@ You will (1) assemble an end-to-end authorized assessment package for a syntheti
 
 1. Request and decision statement. 2. Scope lists (prefixes, names, exclusions). 3. ROE (window, allowed activities, stop list, white-team contact). 4. Method statement mapped to SP 800-115/PTES/WSTG as used. 5. Kit inventory with versions. 6. Evidence plan (what, where, retention). 7. Rating scale and bands. 8. Report template with executive table hook. 9. Retest plan. 10. Evaluation criteria.
 
-Section twenty-nine point one develops capstone build with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-nine point one, Northpoint Assurance expects capstone claims to carry owners and dates.
-
 ### 29.2 Operate what you built
 
 A peer loads your scope into `lab_scope.py` patterns, your ROE into `lab_roe.py` patterns, and your findings into `lab_score.py` and `lab_report.py`. If they cannot, the build is incomplete.
-
-Section twenty-nine point two develops capstone build with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-nine point two, Northpoint Assurance expects capstone claims to carry owners and dates.
-
-Section twenty-nine point two treats the build artefacts operate as testable only when evidence and ticket IDs are recorded.
 
 ### 29.3 No exploit content
 
 The package contains zero attack procedures. Anyone asking for them during the capstone is redirected to the educational boundary in Chapter 10.
 
-Section twenty-nine point three develops capstone build with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-nine point three, Northpoint Assurance expects capstone claims to carry owners and dates.
-
-Section twenty-nine point three treats the build artefacts operate as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point three, Tidewater Regional Transit will not accept capstone work without a written trail.
-
 ### 29.4 Peer review rubric
 
 Peers score: completeness of the ten artefacts, checkability, clarity of residual-risk language, and safety (no dual-use detail). Finding volume is irrelevant.
 
-Section twenty-nine point four develops capstone build with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-nine point four, Northpoint Assurance expects capstone claims to carry owners and dates.
-
-Section twenty-nine point four treats the build artefacts operate as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point four, Tidewater Regional Transit will not accept capstone work without a written trail.
-
 ### 29.5 Time box
 
 The capstone build is scored on completeness and operability inside a fixed studio window, not on endless polish. Priya freezes scope lists forty-eight hours before peer review so checkers stop moving. Last-minute aesthetic edits that break a CSV column fail the peer test.
-
-Section twenty-nine point five develops capstone build with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section twenty-nine point five, Northpoint Assurance expects capstone claims to carry owners and dates.
-
-Section twenty-nine point five treats the build artefacts operate as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -2448,51 +1762,21 @@ You will (1) present the capstone package to a review panel; (2) defend scope, m
 
 Ten minutes: decision and scope. Ten minutes: method and gates. Ten minutes: evidence, rating and report. Ten minutes: purple-team learning and retest. Ten minutes: questions. The panel holds the ROE and the checker outputs while you speak.
 
-Section thirty point one develops capstone assessment with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section thirty point one, Northpoint Assurance expects capstone claims to carry owners and dates.
-
-Section thirty point one treats panel agenda defence with as testable only when evidence and ticket IDs are recorded.
-
 ### 30.2 Defence with citations
 
 When asked why exclusions come first, cite Chapter 2 and the ROE practice. When asked why you borrow a white team, cite TIBER-EU/CBEST ideas. When asked how you rated F-09, show the matrix. Opinions without artefacts score poorly.
-
-Section thirty point two develops capstone assessment with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section thirty point two, Northpoint Assurance expects capstone claims to carry owners and dates.
-
-Section thirty point two treats panel agenda defence with as testable only when evidence and ticket IDs are recorded.
 
 ### 30.3 The refusal question
 
 Panels ask what you would refuse. Strong answers: testing without a reachable white team; fare-payment contact; mid-window scope expansion by chat; providing exploit steps; keeping evidence on a personal laptop. Weak answers: "nothing, we are flexible."
 
-Section thirty point three develops capstone assessment with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section thirty point three, Northpoint Assurance expects capstone claims to carry owners and dates.
-
-Section thirty point three treats panel agenda defence with as testable only when evidence and ticket IDs are recorded.
-
 ### 30.4 After the panel
 
 Pass means the package meets the Chapter 29 rubric and the oral defence showed judgement. It does not mean the manuscript has passed A4 or independent review. The next course in the study path is course 089, AI and machine-learning security for technologists.
 
-Section thirty point four develops capstone assessment with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section thirty point four, Northpoint Assurance expects capstone claims to carry owners and dates.
-
-Section thirty point four treats panel agenda defence with as testable only when evidence and ticket IDs are recorded.
-
 ### 30.5 Portfolio entry
 
 After the panel, Priya files a short portfolio note: which artefacts she led, which refusal she practised, which detection tickets she opened. The note cites ENG-712 and labels everything synthetic. Future employers reading a portfolio should see judgement, not a claim that she "hacked a transit agency."
-
-Section thirty point five develops capstone assessment with a Tidewater Regional Transit note Priya Natarajan can demo offline.
-
-Under section thirty point five, Northpoint Assurance expects capstone claims to carry owners and dates.
-
-Section thirty point five treats panel agenda defence with as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 

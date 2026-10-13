@@ -118,8 +118,6 @@ Two consequences matter for security work. First, a slow link (a congested cellu
 
 Modern control centres run their SCADA servers, historians and directory on virtualization hosts, often shared between services. A shared hypervisor, directory, time source or storage array is a point where a fault in one sector becomes a fault in several. Lab 15 in Chapter 15 traces these dependencies with code; here, simply learn to mark every shared component on the diagram with the services that depend on it.
 
-Section one point four develops computing and service architecture with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
 ### 1.5 Worked example: the Kestrel Vale operations centre (synthetic)
 
 You are a technical officer at the **Kestrel Vale Regional Operations Centre (KVROC)**, which runs supervisory systems for **Kestrel Water** (12 stations, KW-01 to KW-12), monitoring of building-management systems for **Kestrel General Hospital**, and the telecontrol front end for one substation (**SS-3**) of **Kestrel Grid**. Station RTUs sit in 10.10.0.0/16 (KW-*n* is 10.10.*n*.2); the control centre is 10.20.0.0/24 (SCADA server `scada-01` 10.20.0.10, engineering workstation `eng-ws-15` 10.20.0.15, historian `hist-02` 10.20.0.21); corporate desks are 10.30.0.0/16; the management network is 10.90.0.0/24 (jump host `jump-01` 10.90.0.20). All names and addresses are fictional.
@@ -168,15 +166,7 @@ The result says the requirement is already failed (11.33 s), mostly because of c
 
 Using the KVROC description, draw the control, monitoring and management paths in three colours. Mark every component that appears on more than one path, and every shared platform component. Keep the drawing: Chapters 6, 10 and 15 refine it.
 
-Section one point six develops computing and service architecture with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
-Under section one point six, the mentor expects computing claims to carry owners and dates.
-
-Section one point six treats the layers of supervisory as testable only when evidence and ticket IDs are recorded.
-
 ### 1.7 Common errors and limits
-Section one point seven develops computing and service architecture with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
 
 - Drawing only the network and forgetting the management path, which is where privilege lives.
 - Treating the historian as "just IT"; it is often the bridge between control and corporate networks.
@@ -312,13 +302,7 @@ Reading the output line by line: the SCADA reads are normal; the engineering wor
 
 Decode the three frames below by hand, then add them to Lab 2 and confirm: `000900000006010100000010`, `000a0000000601050003 0000` (remove the space), `000b00000006020300640001`. Write down the function, address and quantity or value of each, and whether the unit identifier is what you expect for KW-04.
 
-Section two point five develops networks and protocols with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
-Under section two point five, the mentor expects networks claims to carry owners and dates.
-
 ### 2.6 Common errors and limits
-Section two point six develops networks and protocols with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
 
 - Treating port 502 traffic as Modbus without checking the protocol identifier and length.
 - Reading register numbers as meanings without the device's register map.
@@ -456,13 +440,7 @@ A safe hardening order: (1) confirm a working key-based login for J. Tan and R. 
 
 On a virtual machine you own, run `sshd -T | sort` and compare the output with the file. Add a duplicate keyword lower in the file, reload, and confirm that the first value wins. Record the exact OpenSSH version, because behaviour of `Include` and `Match` blocks varies by version.
 
-Section three point five develops operating systems and identities with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
-Under section three point five, the mentor expects operating claims to carry owners and dates.
-
 ### 3.6 Common errors and limits
-Section three point six develops operating systems and identities with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
 
 - Reading the file instead of the effective configuration.
 - Fixing SSH settings from the only open session and locking everyone out; always test a second session first.
@@ -529,8 +507,6 @@ Check in an order where each step can assume the previous ones passed:
 ### 4.3 Record coordinates
 
 Every finding should say where it came from — file, line, and field — so that someone else can verify it. `csv.reader.line_num` counts physical lines read so far, including the header, so the first data row is line 2. Quoted fields containing newlines make physical lines differ from records; `line_num` reports the line where the record ended, which is still a usable coordinate.
-
-Section four point three develops scripting and data formats with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
 
 ### 4.4 Worked example: validating a station export (synthetic)
 
@@ -602,15 +578,7 @@ The JSON summary on the last line is deliberately machine-readable, so that a mo
 
 Add a station-identity check to Lab 4: only KW-01 to KW-12 are valid. Then add a row `KW-13,LEVEL_M,2.0,m,2026-10-12T05:58:00Z` and confirm it is rejected with its line number. Finally, make the timestamp parser accept an explicit `+00:00` offset as well as `Z` without accepting naive timestamps.
 
-Section four point five develops scripting and data formats with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
-Under section four point five, the mentor expects scripting claims to carry owners and dates.
-
 ### 4.6 Common errors and limits
-Section four point six develops scripting and data formats with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
-Under section four point six, the mentor expects scripting claims to carry owners and dates.
-
 
 - Splitting CSV on commas.
 - Coercing ambiguous values instead of rejecting them.
@@ -674,8 +642,6 @@ A technical scope answers, in writing, before work starts:
 
 Many questions can be answered without sending a packet: configuration exports, firewall logs, switch MAC tables, a passive capture from a mirror (SPAN) port, the historian's own records. Prefer these. When an active test is genuinely needed — for example to verify a deny rule in Chapter 11 — make it the smallest test that answers the question, from a named source, at an agreed time.
 
-Section five point two develops security scope and evidence with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
 ### 5.3 What makes technical evidence usable
 
 A screenshot of a terminal proves little. Usable evidence records:
@@ -692,8 +658,6 @@ NIST's guide to integrating forensic techniques into incident response discusses
 ### 5.4 Four labels
 
 Every note you write in this course uses four labels. **Observed**: what a tool or person recorded, with source and time. **Inferred**: what you conclude, and why. **Done**: what you changed, under which change record. **Open**: what remains unknown, and who owns it. Mixing them — "the RTU was compromised" when you observed only a configuration session — is how wrong conclusions spread.
-
-Section five point four develops security scope and evidence with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
 
 ### 5.5 Worked example: scoping the KW-04 check (synthetic)
 
@@ -715,17 +679,7 @@ The working note after the test reads: *Observed* — connect from 10.30.99.9 to
 
 Write a scope for a passive capture on the control-centre switch's SPAN port for 24 hours. Include storage limits and who may read the capture, since it will contain process values and possibly credentials sent in clear text.
 
-Section five point six develops security scope and evidence with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
-Under section five point six, the mentor expects security claims to carry owners and dates.
-
-Section five point six treats scope is safety control as testable only when evidence and ticket IDs are recorded.
-
 ### 5.7 Common errors and limits
-Section five point seven develops security scope and evidence with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
-Under section five point seven, the mentor expects security claims to carry owners and dates.
-
 
 - Starting work on a verbal "go ahead".
 - Scanning a subnet to "see what's there" in a control network.
@@ -785,8 +739,6 @@ The common shape of a supervisory system — field, control, supervisory, operat
 
 For each **asset**: name, address, function, zone, owner, software and firmware versions, protocols spoken, management method and the physical consequence of loss or misuse. For each **conduit**: source zone, destination zone, protocol and port, direction of initiation, purpose, owner, enforcement point (which firewall rule) and monitoring point (which sensor sees it). For each **trust boundary**: what crosses it and what checks happen there.
 
-Section six point two develops critical infrastructure and sector security with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
 ### 6.3 Sector differences that matter at the keyboard
 
 - **Water**: widely dispersed stations on cellular or radio links; Modbus or DNP3 telemetry; long equipment lives; small operators with limited staff. Consequences include loss of pressure, overflow and incorrect chemical dosing. CISA's advisory on attacks against internet-exposed Unitronics PLCs in water systems is a reminder that exposure plus default credentials is enough ([CISA AA23-335A](https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-335a)).
@@ -812,15 +764,7 @@ Declared conduits include: C1 Z2 scada-01 → Z1 tcp/502 read polls; C2 Z2 eng-w
 
 Extend the model with two conduits for Z3 (fep-01 to the outstation and the vendor's remote support path) and one for Z4. For each, record purpose, protocol, initiator, owner, enforcement point and monitoring point. Mark which conduits a single compromised Z5 host could abuse.
 
-Section six point five develops critical infrastructure and sector security with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
-Under section six point five, the mentor expects critical claims to carry owners and dates.
-
 ### 6.6 Common errors and limits
-Section six point six develops critical infrastructure and sector security with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
-Under section six point six, the mentor expects critical claims to carry owners and dates.
-
 
 - Zones drawn by IP subnet rather than by consequence and trust.
 - Conduits without owners or purposes, which nobody can later remove.
@@ -940,13 +884,7 @@ Before correction, the RTU line (23:15:31Z) appeared *before* the HMI setpoint c
 
 Measure the offset of a machine you own against a public or local NTP server (for example `chronyc tracking` or `ntpq -p` on Linux, `w32tm /stripchart` on Windows), record it with the time of measurement, and repeat after 24 hours to see drift.
 
-Section seven point five develops critical infrastructure and sector security with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
-Under section seven point five, the mentor expects critical claims to carry owners and dates.
-
 ### 7.6 Common errors and limits
-Section seven point six develops critical infrastructure and sector security with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
 
 - Sorting by the text of mixed-offset timestamps.
 - Correcting clocks in the wrong direction; write the formula down every time.
@@ -1020,10 +958,6 @@ These rules are crude but transparent: when one fires, everyone can see why. Sta
 
 A value of 9.80 m on a 12 m tank passes every range check. If the previous minute read 2.96 m and the next 2.97 m, the 9.80 is impossible as a measurement. Conversely, a constant value is always "in range". Range checks protect against the absurd; **rate** and **variation** checks protect against the plausible-looking false.
 
-Section eight point three develops critical infrastructure and sector security with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
-Under section eight point three, the mentor expects critical claims to carry owners and dates.
-
 ### 8.4 Worked example: four tags, twenty minutes (synthetic)
 
 **Lab 8** (save as `lab08.py`, run with `python3 lab08.py`):
@@ -1076,13 +1010,7 @@ Set thresholds from evidence, not guesses: look at a week of healthy data per ta
 
 Add a **drift** check to Lab 8: compare each tag's mean over the first five minutes with its mean over the last five minutes and flag a change larger than a tag-specific limit. Discuss why KW-01's steady rise should *not* be flagged, and what extra information (pump state, inflow) would make drift detection meaningful.
 
-Section eight point six develops critical infrastructure and sector security with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
 ### 8.7 Common errors and limits
-Section eight point seven develops critical infrastructure and sector security with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
-Under section eight point seven, the mentor expects critical claims to carry owners and dates.
-
 
 - Treating every bad value as an attack — or none.
 - Range checks only.
@@ -1149,8 +1077,6 @@ The CRC is **CRC-16/DNP**: polynomial 0x3D65, initial value 0, input and output 
 
 A CRC routine that is subtly wrong still produces numbers. Before using it, run a **known-answer test**: compute the CRC of `123456789` and compare with 0xEA82. Then a **negative test**: change one bit of a valid frame and confirm the check fails. Lab 9 does both — the `assert` line is the known-answer test — and record the Python version, because the result of any tool is evidence only if the tool is identified.
 
-Section nine point three develops critical infrastructure and sector security with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
 ### 9.4 Error detection is not authentication
 
 A CRC is computed from public parameters; anyone who can send a frame can compute a valid CRC. It detects accidental corruption, not forgery. Lab 9 shows this directly: a frame from an unknown source address (77) has a **valid** CRC. Telling genuine from forged needs either cryptographic authentication (DNP3 Secure Authentication, or a protected tunnel) or context — known source addresses, known paths, expected timing. Compare Chapter 15 of the technologist book, which uses HMAC (RFC 2104) for authenticity ([RFC 2104](https://www.rfc-editor.org/rfc/rfc2104)).
@@ -1214,15 +1140,7 @@ Three frames are valid and expected. One has CRC `ffff` where `1506` was expecte
 
 Extend Lab 9 to verify the CRC of each 16-byte user-data block that follows the header. Construct a frame with 17 bytes of user data (one full block and one 1-byte block), compute both block CRCs, and corrupt one byte in the second block to show the check catches it.
 
-Section nine point six develops critical infrastructure and sector security with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
-Under section nine point six, the mentor expects critical claims to carry owners and dates.
-
 ### 9.7 Common errors and limits
-Section nine point seven develops critical infrastructure and sector security with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
-Under section nine point seven, the mentor expects critical claims to carry owners and dates.
-
 
 - Trusting a home-made checker without a known-answer test.
 - Getting byte order wrong: DNP3 addresses and CRC are little-endian; Modbus fields are big-endian.
@@ -1355,19 +1273,11 @@ A sound change: delete R4 (after confirming with the owner what still uses it �
 
 Every configuration change in a control environment needs: the exact before and after; the reason (finding or requirement); the expected effect, written as tests; a rollback plan; the window agreed with operations; and who verifies. NIST's guide to security-focused configuration management describes baselines and change control ([SP 800-128](https://csrc.nist.gov/pubs/sp/800/128/upd1/final)). The firewall export before and after is evidence; hash it (Chapter 5).
 
-Section ten point five develops critical infrastructure and sector security with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
 ### 10.6 Practical activity
 
 Rewrite the fw-01 policy from the conduit list in Chapter 6: one rule per declared conduit, each with ticket and owner in its comment, then the default deny. Run Lab 10 on your version until all five tests pass and no rule is shadowed or redundant. Add two tests of your own for conduit C3.
 
-Section ten point six develops critical infrastructure and sector security with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
-Under section ten point six, the mentor expects critical claims to carry owners and dates.
-
 ### 10.7 Common errors and limits
-Section ten point seven develops critical infrastructure and sector security with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
 
 - Reviewing a new rule without reading the rules above it.
 - Deleting a broad rule without checking its current users in the logs.
@@ -1416,8 +1326,6 @@ Chapter 10 changed configuration. A change is not finished when it is applied; i
 
 "The historian is hardened" cannot be tested. "SSH on hist-02 listens only on 10.90.0.21" can. Write each requirement so that a named test, run by someone else, could fail it. Split compound requirements: "only the SCADA server and engineering workstation reach station tcp/502" needs a positive test (SCADA still polls) **and** a negative test (another control-centre host is refused).
 
-Section eleven point one develops critical infrastructure and sector security with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
 ### 11.2 Positive and negative tests
 
 **Negative tests** show a control blocks what it should; **positive tests** show it does not block what operations need. A firewall change that passes all its negative tests but stops historian collection has failed. In control environments the positive tests matter as much as the negative ones: availability is usually the first priority. NIST's testing guide discusses planning and executing technical tests ([SP 800-115](https://csrc.nist.gov/pubs/sp/800/115/final)); continuous monitoring guidance stresses that control effectiveness must be re-shown over time, not assumed ([SP 800-137](https://csrc.nist.gov/pubs/sp/800/137/final)).
@@ -1425,8 +1333,6 @@ Section eleven point one develops critical infrastructure and sector security wi
 ### 11.3 Evidence rules
 
 A test counts only if it has: an identifier, the requirement it verifies, the method, the time, the person, the result and an evidence file (Chapter 5). A "config review only" with no recorded output is a useful activity but not a test result. A requirement with no counted test is **untested** — not verified, and not failed. Reporting untested as verified is the single most common way verification misleads.
-
-Section eleven point three develops critical infrastructure and sector security with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
 
 ### 11.4 Worked example: verifying CHG-2207 (synthetic)
 
@@ -1486,8 +1392,6 @@ verified 3/6; the change is not complete until every requirement is verified
 Three requirements verified, two failed, one untested. REQ-3 failed because R4 was left in place: the ticket said "fix the RDP rule", and the engineer corrected R5 rather than the rule that shadowed it — a common pattern when a change is written as a line edit instead of as a requirement. REQ-4 failed its negative test (10.20.0.12 can still read stations, via R6) while its positive test passed — exactly why both kinds are needed. REQ-6 has no test at all; nobody checked that denies reach the collector, so the detections of Chapter 17 would be blind to denied attempts. T8 was ignored because it has no evidence file. The change goes back to "in progress" with three open items, each with an owner.
 
 ### 11.5 Safe verification in control networks
-Section eleven point five develops critical infrastructure and sector security with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
 
 - Prefer reading results the system already records (firewall logs, historian counts) over generating traffic.
 - When generating traffic, use a marked test source (for example 10.30.99.9), the smallest possible action (a TCP connect with no payload), and an agreed window with operations informed.
@@ -1498,13 +1402,7 @@ Section eleven point five develops critical infrastructure and sector security w
 
 Write a test for REQ-6 that does not touch a station: a connect attempt from the marked test desk to a control-centre port that should be denied, then a query on the collector for the matching deny line within 60 s. Add it to Lab 11 as T9 with an evidence file name and re-run.
 
-Section eleven point six develops critical infrastructure and sector security with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
-Under section eleven point six, the mentor expects critical claims to carry owners and dates.
-
 ### 11.7 Common errors and limits
-Section eleven point seven develops critical infrastructure and sector security with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
 
 - Only negative tests; the change breaks operations unnoticed.
 - Counting a test without evidence.
@@ -1566,8 +1464,6 @@ A normal response to function 6 echoes the request. A normal response to functio
 ### 12.3 Logging inside the device
 
 The responder logs every read, every accepted write with its old and new value, and every exception. On real equipment these are exactly the records you wished you had in Chapter 7. A burst of exception 02 responses from one source is a strong sign of someone mapping the register space; a run of exception 03 is someone testing limits.
-
-Section twelve point three develops contained laboratory with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
 
 ### 12.4 Worked example: the bench responder (synthetic)
 
@@ -1652,23 +1548,11 @@ Read the hex responses. The first is a normal read: `03 06` (function 3, six byt
 
 Real devices differ: some ignore unit identifiers, some accept writes to any register, some crash on malformed requests, and few log anything. The responder handles one request at a time, has no concurrency, timeouts or partial reads. Its value is in making policy and exceptions visible, not in predicting a particular vendor's behaviour. Never use results from a lab to decide how a live device will respond to a test.
 
-Section twelve point six develops contained laboratory with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
 ### 12.7 Practical activity
 
 Add function 16 (write multiple registers) to the responder with the same policy: every register in the range must be writable and every value in limits, or the whole write is refused. Test four cases: all allowed; one address not writable; one value out of range; byte count inconsistent with quantity.
 
-Section twelve point seven develops contained laboratory with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
-Under section twelve point seven, the mentor expects contained claims to carry owners and dates.
-
 ### 12.8 Common errors and limits
-Section twelve point eight develops contained laboratory with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
-Under section twelve point eight, the mentor expects contained claims to carry owners and dates.
-
-Section twelve point eight treats what contained means the as testable only when evidence and ticket IDs are recorded.
-
 
 - Using a real network socket "just for testing" and leaving it bound to all interfaces.
 - Accepting partial multi-register writes.
@@ -1786,23 +1670,11 @@ Chapter 10 left an open item: fw-01 denies corporate-desk traffic to stations, y
 
 Write as you go, in UTC, with the four labels: *observed*, *inferred*, *done*, *open*. A good log lets a colleague taking over at shift change continue without asking you anything, and lets an investigator later reconstruct what was changed and when. Chapter 16 gives a template; Chapter 18 seals it as project evidence.
 
-Section thirteen point five develops critical infrastructure and sector security with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
-Under section thirteen point five, the mentor expects critical claims to carry owners and dates.
-
 ### 13.6 Practical activity
 
 Add hypothesis H6 "RTU firmware crashed into a degraded mode" to Lab 13 with predictions you think it makes, and observe whether the existing observations refute it. If they do not, name the single additional read-only observation that would.
 
-Section thirteen point six develops critical infrastructure and sector security with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
-Under section thirteen point six, the mentor expects critical claims to carry owners and dates.
-
-Section thirteen point six treats the method from fault as testable only when evidence and ticket IDs are recorded.
-
 ### 13.7 Common errors and limits
-Section thirteen point seven develops critical infrastructure and sector security with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
 
 - Rebooting first, which destroys volatile evidence and often hides the cause.
 - Testing hypotheses one at a time and stopping at the first that "fits".
@@ -1919,23 +1791,11 @@ manifest digest fdea74f1d09e359c
 
 The automation account can read or change every host it manages, so: keep its credentials in a vault and rotate them; restrict where it may connect from; require review of changes to its desired state; alert on runs outside the schedule. The CISA advisory on long-term access to critical infrastructure describes actors using legitimate administration tools and valid accounts ([CISA AA24-038A](https://www.cisa.gov/news-events/cybersecurity-advisories/aa24-038a)); an over-privileged automation account is exactly such a tool.
 
-Section fourteen point five develops critical infrastructure and sector security with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
 ### 14.6 Practical activity
 
 Extend Lab 14 so that, for an unapproved change, it writes a preservation record — file name, old digest, new digest, size and modification time — into the temporary directory before printing the finding, and prints the preservation record's own SHA-256.
 
-Section fourteen point six develops critical infrastructure and sector security with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
-Under section fourteen point six, the mentor expects critical claims to carry owners and dates.
-
-Section fourteen point six treats why hashes four outcomes as testable only when evidence and ticket IDs are recorded.
-
 ### 14.7 Common errors and limits
-Section fourteen point seven develops critical infrastructure and sector security with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
-Under section fourteen point seven, the mentor expects critical claims to carry owners and dates.
-
 
 - Automatic revert of all drift.
 - Manifests stored on the host they protect.
@@ -1983,8 +1843,6 @@ Chapter 13 found a path to KW-04 that bypassed the firewall through a carrier ne
 ### 15.1 Interdependency
 
 Critical infrastructures depend on each other physically (power for pumps), through information (telemetry over a carrier network), geographically (shared ducts and sites) and logically (shared staff, software and administration). This classification comes from Rinaldi, Peerenboom and Kelly's widely cited paper ([Rinaldi et al., 2001](https://doi.org/10.1109/37.969131)). For a technician the most frequent surprises are *logical*: a directory, a hypervisor cluster, a time source or a monitoring collector shared by systems whose owners each think it is theirs.
-
-Section fifteen point one develops critical infrastructure and sector security with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
 
 ### 15.2 Dependencies as a graph
 
@@ -2058,13 +1916,7 @@ CISA's National Critical Functions work frames these dependencies at national sc
 
 Add a `power-ups-a` node that `esx-02` and `esx-03` both need, and a `cell-carrier` node that `cell-router-kw` and `telco-mpls` both need. Re-run Lab 15 and record which components are now shared by all three services. Then propose one technical change for each.
 
-Section fifteen point five develops critical infrastructure and sector security with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
-Under section fifteen point five, the mentor expects critical claims to carry owners and dates.
-
 ### 15.6 Common errors and limits
-Section fifteen point six develops critical infrastructure and sector security with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
 
 - Listing direct dependencies only.
 - Treating the directory and time service as "infrastructure" with no service owner.
@@ -2147,8 +1999,6 @@ The CISA performance goals list controls on removable media and on device config
 
 Documents must not contain passwords, private keys, API tokens or one-time codes. Write "credential from vault entry `kw-rtu-eng`" instead of the credential. Network diagrams, register maps and firewall exports of critical infrastructure are sensitive: store them with access control, share them on a need-to-know basis, and remove them from tickets that go to suppliers. This book prints a few fake values only because they are fake.
 
-Section sixteen point four develops technical documentation and safety with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
 ### 16.5 Worked example: a work instruction (synthetic)
 
 **WI-KW-07 — Export KW-04 RTU configuration for drift baseline.** *Preconditions*: change record CHG-2219 approved; Kestrel Water control room informed; engineering laptop ENG-L3 scanned today (record in the media log). *Steps*: (1) at 10:00 local, call the control room; record the operator's name. (2) On ENG-L3, open the vendor tool in read-only mode; expected: status bar shows "Online — read only". (3) Export the configuration to `KW04-20261013.cfg`; expected: file size between 40 and 60 kB. (4) Run `sha256sum KW04-20261013.cfg`; record the digest in CHG-2219. (5) Disconnect; inform the control room. *Stop conditions*: any alarm at KW-04; tool requests to switch to "online edit"; operator request. *Rollback*: none needed (read-only), but if any write is suspected, inform operations immediately and open an incident. *Evidence*: file, digest, call times.
@@ -2157,17 +2007,7 @@ Section sixteen point four develops technical documentation and safety with a Ke
 
 Write a work instruction for the KW-04 router change from EX052, including preservation, the change, positive and negative tests, rollback and stop conditions. Ask someone else to read it and list every step where they would have to guess.
 
-Section sixteen point six develops technical documentation and safety with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
-Under section sixteen point six, the mentor expects technical claims to carry owners and dates.
-
-Section sixteen point six treats the documents technician owns as testable only when evidence and ticket IDs are recorded.
-
 ### 16.7 Common errors and limits
-Section sixteen point seven develops technical documentation and safety with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
-Under section sixteen point seven, the mentor expects technical claims to carry owners and dates.
-
 
 - Steps without expected results.
 - Documents that contain credentials or are shared too widely.
@@ -2227,13 +2067,9 @@ These are deliberately simple and explainable (Chapter 8). MITRE ATT&CK for ICS 
 
 One unauthorized host may generate dozens of alerts in a minute. Grouping alerts with the same rule and source into an **episode** — extended while new alerts arrive within a window of the previous one — gives an analyst one item with a count and a time span. The window is a trade-off: too short and one activity becomes many episodes; too long and two separate activities merge. Record the chosen window and why.
 
-Section seventeen point two develops contained laboratory ii with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
 ### 17.3 The pipeline monitors itself
 
 A detector that silently drops records it cannot parse is blind exactly where an attacker sends malformed traffic. The pipeline must account for every input: *records = parsed + dropped*, checked by an assertion, with dropped records listed and counted. The NIST continuous monitoring guidance makes the same point at programme level: monitoring must itself be monitored ([SP 800-137](https://csrc.nist.gov/pubs/sp/800/137/final)).
-
-Section seventeen point three develops contained laboratory ii with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
 
 ### 17.4 Worked example: the 07:03 activity (synthetic)
 
@@ -2301,8 +2137,6 @@ Interpretation: a host never seen before, 10.20.0.31, queried device identificat
 The value 0xFFFF (65,535) to a setpoint register whose policy range is 100–400 is the kind of write Lab 12's responder would refuse with exception 03 — if the device had such a policy. Most do not, so the network-side detection and the firewall (Chapter 10) are what stand between this host and the process. In the KVROC story this is the moment to preserve, inform Kestrel Water and open an incident (Chapter 13).
 
 ### 17.5 Assessment rubric
-Section seventeen point five develops contained laboratory ii with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
 
 | Criterion | 3 | 1 |
 |---|---|---|
@@ -2317,15 +2151,7 @@ Section seventeen point five develops contained laboratory ii with a Kestrel Val
 
 Change the pipeline so that a dropped (malformed) record from an unknown source raises NEW-TALKER, and add a rule that alerts on any write whose value is outside the register's policy range, using the Lab 12 policy table. Record the new output and how the episodes change.
 
-Section seventeen point six develops contained laboratory ii with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
-Under section seventeen point six, the mentor expects contained claims to carry owners and dates.
-
 ### 17.7 Common errors and limits
-Section seventeen point seven develops contained laboratory ii with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
-Under section seventeen point seven, the mentor expects contained claims to carry owners and dates.
-
 
 - Rules copied from a catalogue without a model statement behind them.
 - Episodes so long that separate activity disappears.
@@ -2374,8 +2200,6 @@ This chapter closes the course. It uses everything before it on one realistic ta
 
 A good supervised project is narrow, valuable and checkable. Examples drawn from this book: harden the corporate-to-control-centre conduit and verify it (Chapters 10–11); close the station-router bypass across all stations (Chapter 13); deploy drift detection on the control-centre servers (Chapter 14); build and test the detection pipeline against a replayed, sanitized capture (Chapter 17). Every project needs a **supervisor** (here L. Ferreira) and an **authorizer** who owns the affected systems (here A. Mensah for Kestrel Water).
 
-Section eighteen point one develops supervised technical project with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
 ### 18.2 Phases
 
 1. **Scope** (Chapter 5): purpose, systems, actions, window, people, stops, evidence handling — signed.
@@ -2385,8 +2209,6 @@ Section eighteen point one develops supervised technical project with a Kestrel 
 5. **Troubleshooting log** throughout, with the four labels (Chapter 13).
 6. **Handover**: as-built record, work instructions, open items with owners (Chapter 16).
 7. **Evidence package**: everything above, sealed.
-
-Section eighteen point two develops supervised technical project with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
 
 ### 18.3 Sealing evidence
 
@@ -2462,15 +2284,7 @@ Four artefacts verify; `04-tests.csv` does not. Someone added a T10 line after s
 
 After the course, keep three habits: verify before you report, preserve before you change, and correct clocks before you order events. Keep labs contained, and never test real infrastructure without written authorization from its owner. Revisit standards and guidance when they change; every source in this book is dated October 2026.
 
-Section eighteen point six develops supervised technical project with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
-Under section eighteen point six, the mentor expects supervised claims to carry owners and dates.
-
 ### 18.7 Common errors and limits
-Section eighteen point seven develops supervised technical project with a Kestrel Vale Regional Operations Centre (KVROC) note Kestrel Vale Regional Operations Centre (KVROC) can demo offline.
-
-Under section eighteen point seven, the mentor expects supervised claims to carry owners and dates.
-
 
 - Projects too broad to verify.
 - Seals stored inside the package.

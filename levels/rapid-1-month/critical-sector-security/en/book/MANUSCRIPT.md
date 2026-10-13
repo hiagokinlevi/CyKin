@@ -136,11 +136,7 @@ Notice what Sam did *not* do: investigate, test the link, restart the PC, or tou
 
 Pick an essential service you use (your water supplier, local hospital, bus company or bank). In no more than one page, write: the function it delivers to people; who would be harmed first if it stopped for a day; one risk sentence with cause, event and consequence; and one thing you are assuming. Keep it general — use public information only and do not probe the service in any way.
 
-Section one point seven develops critical infrastructure and sector security with a the organisation note Sam Reyes can demo offline.
-
 ### 1.8 Common errors and limits
-Section one point eight develops critical infrastructure and sector security with a the organisation note Sam Reyes can demo offline.
-
 
 - Thinking security is only about passwords and data. In essential services, start with safety and continuity.
 - Writing risks as single words ("hackers", "virus") instead of sentences someone can act on.
@@ -280,13 +276,7 @@ Sam labels the report TLP:AMBER+STRICT when emailing it to Novak — it stays in
 
 Write your own "boundary card": five things you may do and five things you may not do with the systems at your workplace or school, written in your own words. Then write a report, using the five questions of 2.4, about a suspicious email you have received personally (remove personal details). Do not click anything in it to gather more facts.
 
-Section two point eight develops scope permission and safe practice with a the organisation note Sam Reyes can demo offline.
-
-Under section two point eight, the mentor expects scope claims to carry owners and dates.
-
 ### 2.9 Common errors and limits
-Section two point nine develops scope permission and safe practice with a the organisation note Sam Reyes can demo offline.
-
 
 - Confusing access with permission.
 - "Investigating" a suspicious email or device before reporting it, and so destroying evidence or spreading harm.
@@ -429,11 +419,7 @@ Sam marks three questions, not conclusions: Is LinkNet a single point of failure
 
 Choose a public essential service near you (or the Larkfield Water plant described above). Using only public information and common sense, draw a simple dependency sketch: the service in the middle, upstream dependencies on the left, downstream dependants on the right. Circle anything shared, star any possible single point of failure, and write one question you would ask the owner. Do not contact or probe the service.
 
-Section three point seven develops critical infrastructure and sector security with a the organisation note Sam Reyes can demo offline.
-
 ### 3.8 Common errors and limits
-Section three point eight develops critical infrastructure and sector security with a the organisation note Sam Reyes can demo offline.
-
 
 - Thinking only of computers and forgetting people, suppliers and buildings.
 - Treating OT like office IT ("just restart it").

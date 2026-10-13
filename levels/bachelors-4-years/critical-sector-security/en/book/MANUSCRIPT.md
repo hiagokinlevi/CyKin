@@ -118,12 +118,6 @@ For A, EAL = 0.30 × 4 h × £2,000/h + 0.02 × 48 h × £2,000/h = £2,400 + £
 
 The lab reproduces the comparison. Change one probability at a time by a factor of two and see whether the ranking changes.
 
-Section one point five develops mathematical reasoning with a Calder County note the analyst can demo offline.
-
-Under section one point five, County Resilience Partnership expects mathematical claims to carry owners and dates.
-
-Section one point five treats why security needs numbers as testable only when evidence and ticket IDs are recorded.
-
 ```python
 # Lab 1 - expected loss versus worst credible case for two options (synthetic Calder data, offline)
 options = {
@@ -150,10 +144,6 @@ B: backup generator test programme: expected annual loss avoided = 9,600; worst 
 The lab assumes each option removes its scenarios completely. Real controls reduce probability or duration partially; Exercise EX002 asks you to model that.
 
 ### 1.6 Common errors and limits
-Section one point six develops mathematical reasoning with a Calder County note the analyst can demo offline.
-
-Under section one point six, County Resilience Partnership expects mathematical claims to carry owners and dates.
-
 
 - Multiplying quantities with incompatible units (per-year by per-hour without converting).
 - Presenting an estimated probability as if it were measured.
@@ -207,13 +197,7 @@ Security is decided long before an attack. At **procurement**, a buyer can requi
 
 Choose one device you use daily (a phone, a home router, a laptop). Without opening it or changing anything, find from the vendor's public pages: its firmware or OS version, whether it is still supported, and how updates are delivered. Write a five-line life-cycle note: procurement, installation, operation, end of support, disposal. Do the same for one *imagined* device in a critical service — a CVH infusion pump — and list what you would need to ask its vendor.
 
-Section two point five develops computing systems with a Calder County note the analyst can demo offline.
-
 ### 2.6 Common errors and limits
-Section two point six develops computing systems with a Calder County note the analyst can demo offline.
-
-Under section two point six, County Resilience Partnership expects computing claims to carry owners and dates.
-
 
 - Assuming "it still works" means "it is still safe": unsupported devices accumulate unfixed vulnerabilities.
 - Treating OT like IT: rebooting a controller during operation, or scanning it aggressively, can disrupt the physical process.
@@ -304,15 +288,7 @@ Interpretation: four clinical devices are unsupported, which is a replacement-pl
 
 Extend Lab 2: (1) add a row with an empty `os_end_of_support` and observe the error; (2) change the program so such rows are reported as "unknown — needs owner" rather than crashing or being skipped; (3) write one `assert` that checks the count of unsupported devices for the original eight rows is 5.
 
-Section three point four develops programming with a Calder County note the analyst can demo offline.
-
-Under section three point four, County Resilience Partnership expects programming claims to carry owners and dates.
-
 ### 3.5 Common errors and limits
-Section three point five develops programming with a Calder County note the analyst can demo offline.
-
-Under section three point five, County Resilience Partnership expects programming claims to carry owners and dates.
-
 
 - Comparing numbers stored as text (`"2025" < "2026"` happens to work; `"9" < "10"` does not).
 - Silently skipping malformed rows.
@@ -369,17 +345,7 @@ Problems: an unsupported universal claim ("everyone knows"); a real incident use
 
 Take a one-page news article about any infrastructure incident. Write a 250-word brief for a hospital director: three-sentence summary, what is known (with the article and any primary source it cites), what is uncertain, and one question CVH should ask itself. Mark each sentence R (reporting), I (inference) or C (recommendation).
 
-Section four point five develops academic writing with a Calder County note the analyst can demo offline.
-
-Under section four point five, County Resilience Partnership expects academic claims to carry owners and dates.
-
 ### 4.6 Common errors and limits
-Section four point six develops academic writing with a Calder County note the analyst can demo offline.
-
-Under section four point six, County Resilience Partnership expects academic claims to carry owners and dates.
-
-Section four point six treats writing is part of as testable only when evidence and ticket IDs are recorded.
-
 
 - Burying the conclusion on page four.
 - Citing a secondary summary as if it were the primary source.
@@ -435,17 +401,7 @@ Extract: *asset* — the gateway and everything reachable through it; *vulnerabi
 
 Pick one recent advisory from [CISA's ICS advisories](https://www.cisa.gov/news-events/ics-advisories). Without testing anything, extract asset, vulnerability, affected versions, exploitation status, vendor fix and recommended mitigations. Then write two sentences on how the priority would change for an operator whose device is (a) internet-facing and (b) on an isolated network.
 
-Section five point five develops security literacy with a Calder County note the analyst can demo offline.
-
-Under section five point five, County Resilience Partnership expects security claims to carry owners and dates.
-
 ### 5.6 Common errors and limits
-Section five point six develops security literacy with a Calder County note the analyst can demo offline.
-
-Under section five point six, County Resilience Partnership expects security claims to carry owners and dates.
-
-Section five point six treats the vocabulary the cia as testable only when evidence and ticket IDs are recorded.
-
 
 - Using "threat", "vulnerability" and "risk" interchangeably.
 - Assuming confidentiality always comes first.
@@ -538,19 +494,7 @@ Read the result carefully. The graph says *can be affected*, not *will fail*: it
 
 Add an edge you think is missing (for example, the hospital's water depends on the water-treatment works, which depends on the substation) and an alternative path (a second telecom exchange). Recompute reach. Write three sentences on what the change does and does not show.
 
-Section six point five develops discrete structures with a Calder County note the analyst can demo offline.
-
-Under section six point five, County Resilience Partnership expects discrete claims to carry owners and dates.
-
-Section six point five treats sets and relations logic as testable only when evidence and ticket IDs are recorded.
-
 ### 6.6 Common errors and limits
-Section six point six develops discrete structures with a Calder County note the analyst can demo offline.
-
-Under section six point six, County Resilience Partnership expects discrete claims to carry owners and dates.
-
-Section six point six treats sets and relations logic as testable only when evidence and ticket IDs are recorded.
-
 
 - Confusing edge direction ("depends on" versus "supplies"); write the convention at the top of every diagram.
 - Treating reachability as certainty of failure.
@@ -637,19 +581,7 @@ Three violations, three different meanings. A remote-desktop connection (port 33
 
 On a computer you own, list your own active connections (for example with `netstat` or `ss`) and classify five as client or server, local or remote, and expected or unexpected. Do not scan any other system.
 
-Section seven point five develops networks and protocols with a Calder County note the analyst can demo offline.
-
-Under section seven point five, County Resilience Partnership expects networks claims to carry owners and dates.
-
-Section seven point five treats layers addresses and ports as testable only when evidence and ticket IDs are recorded.
-
 ### 7.6 Common errors and limits
-Section seven point six develops networks and protocols with a Calder County note the analyst can demo offline.
-
-Under section seven point six, County Resilience Partnership expects networks claims to carry owners and dates.
-
-Section seven point six treats layers addresses and ports as testable only when evidence and ticket IDs are recorded.
-
 
 - Writing allowlists by port alone, ignoring source and destination zones.
 - Assuming "internal" means "trusted".
@@ -698,13 +630,9 @@ When validation fails, the program must do something defined: reject the command
 
 A **unit test** checks one function against known cases. Good test sets include **typical** values, **boundaries** (exactly 0.5 and 4.5), **just outside** boundaries (0.49, 4.51), **malformed** inputs (empty string, "abc", "1e309", "nan"), and **state-dependent** cases (a valid value that changes too fast). Python's built-in `unittest` module or plain `assert` statements are sufficient at this level. A test that has never failed has never been shown to work: run each new test once against a deliberately broken version.
 
-Section eight point four develops programming ii with a Calder County note the analyst can demo offline.
-
 ### 8.5 Worked example: CW setpoint validator (synthetic)
 
 **This case is synthetic.** Calder Water's operator interface sends tank-level setpoints as text. Version 1 of the validator:
-
-Section eight point five develops programming ii with a Calder County note the analyst can demo offline.
 
 ```python
 def accept_v1(text, current):
@@ -732,17 +660,7 @@ Version 2 states what is acceptable rather than what is not. Tests: `("3.2", 3.0
 
 Implement both versions and the seven tests above. Run the tests against v1 and record which fail; then against v2. Add two tests of your own that you think v2 might still get wrong (hint: whitespace, very long strings, a comma decimal separator) and decide whether the behaviour is acceptable.
 
-Section eight point six develops programming ii with a Calder County note the analyst can demo offline.
-
-Under section eight point six, County Resilience Partnership expects programming claims to carry owners and dates.
-
 ### 8.7 Common errors and limits
-Section eight point seven develops programming ii with a Calder County note the analyst can demo offline.
-
-Under section eight point seven, County Resilience Partnership expects programming claims to carry owners and dates.
-
-Section eight point seven treats input is security boundary as testable only when evidence and ticket IDs are recorded.
-
 
 - Range checks that pass NaN.
 - Catching every exception and continuing.
@@ -787,8 +705,6 @@ Security questions combine facts held in different places: which assets exist, w
 ### 9.3 Injection
 
 If a program builds SQL by pasting user input into a string — `"... WHERE id = '" + user_input + "'"` — an input such as `x' OR '1'='1` changes the query's meaning. This is **SQL injection**, persistently among the most dangerous software weaknesses ([CWE Top 25](https://cwe.mitre.org/top25/)). The fix is structural: **parameterised queries** (`db.execute("... WHERE id = ?", (user_input,))`) send data separately from code, so input can never become SQL.
-
-Section nine point three develops data and databases with a Calder County note the analyst can demo offline.
 
 ### 9.4 Worked example and Lab 5: CPN advisory matching (synthetic)
 
@@ -835,17 +751,7 @@ Two assets need action, the gateway first (this is the Chapter 5 advisory). HMI-
 
 (1) Change the join to a `LEFT JOIN` and list assets with no advisory record — is "no advisory" the same as "no vulnerability"? (2) Write a parameterised query that returns one asset by ID; then show, with a deliberately unsafe string-built query on your in-memory database only, how `' OR '1'='1` returns every row.
 
-Section nine point five develops data and databases with a Calder County note the analyst can demo offline.
-
-Under section nine point five, County Resilience Partnership expects data claims to carry owners and dates.
-
 ### 9.6 Common errors and limits
-Section nine point six develops data and databases with a Calder County note the analyst can demo offline.
-
-Under section nine point six, County Resilience Partnership expects data claims to carry owners and dates.
-
-Section nine point six treats why relational data sql as testable only when evidence and ticket IDs are recorded.
-
 
 - Comparing versions, dates or numbers stored as text.
 - Inner joins that silently drop unmatched rows.
@@ -902,17 +808,7 @@ The ACM Code of Ethics asks computing professionals to contribute to society and
 
 Write a one-page RoE for Laboratory I (Chapter 25), which runs only the book's offline labs on your own computer. Even for a trivial scope, fill every heading: authoriser, scope, exclusions, window, methods, stop conditions, data handling and reporting.
 
-Section ten point six develops ethics and authorized practice with a Calder County note the analyst can demo offline.
-
-Under section ten point six, County Resilience Partnership expects ethics claims to carry owners and dates.
-
-Section ten point six treats authorisation is the line as testable only when evidence and ticket IDs are recorded.
-
 ### 10.7 Common errors and limits
-Section ten point seven develops ethics and authorized practice with a Calder County note the analyst can demo offline.
-
-Under section ten point seven, County Resilience Partnership expects ethics claims to carry owners and dates.
-
 
 - "It was publicly reachable, so it was allowed."
 - Verbal authorisation, or authorisation from someone who does not own the system.
@@ -970,17 +866,7 @@ On office IT, patching is routine. On an operator workstation or controller, a p
 
 On your own computer, list running processes and the account each runs as; find one service you do not use and find out how it could be disabled (do not disable anything you are unsure about). Write a five-item hardening checklist for a CEDC call-handling workstation, each item with how it would be verified.
 
-Section eleven point six develops operating systems with a Calder County note the analyst can demo offline.
-
-Under section eleven point six, County Resilience Partnership expects operating claims to carry owners and dates.
-
 ### 11.7 Common errors and limits
-Section eleven point seven develops operating systems with a Calder County note the analyst can demo offline.
-
-Under section eleven point seven, County Resilience Partnership expects operating claims to carry owners and dates.
-
-Section eleven point seven treats what the operating system as testable only when evidence and ticket IDs are recorded.
-
 
 - Running everything as administrator "to avoid permission problems".
 - Hardening once and never verifying drift.
@@ -1027,19 +913,9 @@ A detector with a 95% **true-positive rate** and 1% **false-positive rate** soun
 
 If $n$ identical units are each available with probability $1-p$, independently, the number available follows a **binomial** distribution: $P(k \text{ available}) = \binom{n}{k}(1-p)^k p^{n-k}$. A pumping station that needs at least 10 of its 12 pumps can compute how often it meets demand.
 
-Section twelve point three develops probability and statistics with a Calder County note the analyst can demo offline.
-
-Under section twelve point three, County Resilience Partnership expects probability claims to carry owners and dates.
-
-Section twelve point three treats rules you will use as testable only when evidence and ticket IDs are recorded.
-
 ### 12.4 Describing data
 
 Times to detect and recover from incidents are **skewed**: most are short, a few are very long. The **mean** is pulled up by the long tail; the **median** (middle value) is not; **percentiles** (the 90th percentile, p90) describe the tail. Report median and p90 together, with the sample size (Chapter 29, Lab 12).
-
-Section twelve point four develops probability and statistics with a Calder County note the analyst can demo offline.
-
-Under section twelve point four, County Resilience Partnership expects probability claims to carry owners and dates.
 
 ### 12.5 Worked example and Lab 6 (synthetic)
 
@@ -1074,12 +950,6 @@ P(at least 10 of 12 available) = 0.889
 Fewer than 1 alert in 11 is real; analysts face about 200 false alerts a day. A "rare" daily backup failure is more likely than not over a year — which is why restore drills, not backup logs, are the evidence that matters. And a station needing 10 of 12 pumps falls short about 11% of the time under these assumptions: if pump outages share a cause (one maintenance crew, one power feed), it will be worse.
 
 ### 12.6 Common errors and limits
-Section twelve point six develops probability and statistics with a Calder County note the analyst can demo offline.
-
-Under section twelve point six, County Resilience Partnership expects probability claims to carry owners and dates.
-
-Section twelve point six treats rules you will use as testable only when evidence and ticket IDs are recorded.
-
 
 - Ignoring the base rate (the "95% accurate" fallacy).
 - Multiplying probabilities of events that share a cause.
@@ -1124,13 +994,9 @@ Passwords are guessed, reused and phished. One-time codes sent by text or typed 
 
 In **role-based access control** (RBAC), permissions attach to roles ("scada-operator", "payments-approve") and people receive roles. Roles make reviews tractable: one checks fifty roles, not fifty thousand individual permissions. **Separation of duties** forbids certain combinations: the person who creates a payment must not approve it; the engineer who changes control logic should not also control the firewall that logs the change. Expressed with sets (Chapter 6), a **toxic combination** $T$ is violated when $T \subseteq \text{roles}(u)$.
 
-Section thirteen point three develops identity and access with a Calder County note the analyst can demo offline.
-
 ### 13.4 The account life cycle and reviews
 
 Accounts are created when people join (**joiner**), changed when they move (**mover**) and removed when they leave (**leaver**). Failures accumulate at every step: movers keep old roles ("privilege creep"), leavers' accounts linger, vendors' accounts are created for a project and never removed, and shared operator accounts make actions untraceable. An **access review** compares accounts with an authoritative source (the HR system, the vendor contract register) and with usage.
-
-Section thirteen point four develops identity and access with a Calder County note the analyst can demo offline.
 
 ### 13.5 Worked example and Lab 7 (synthetic)
 
@@ -1174,12 +1040,6 @@ vendorx  no HR owner, dormant 304 d
 Actions: disable *ben* now (leaver); remove one of *chloe*'s payment roles; remove *dev*'s dormant privileged roles and ask whether he needs either; *ops1* is a shared control-room login — common in 24/7 operations where a fast handover matters — so replace it with individual logins and quick user switching, or at least record who is on shift; *vendorx* should be disabled and re-enabled per support session under a named sponsor. Note what the script cannot see: whether *ana*'s role still matches her job.
 
 ### 13.6 Common errors and limits
-Section thirteen point six develops identity and access with a Calder County note the analyst can demo offline.
-
-Under section thirteen point six, County Resilience Partnership expects identity claims to carry owners and dates.
-
-Section thirteen point six treats three questions factors and as testable only when evidence and ticket IDs are recorded.
-
 
 - Equating "authenticated" with "authorised".
 - Reviews that confirm accounts exist rather than whether they are needed.
@@ -1216,8 +1076,6 @@ After this chapter you can (1) explain the difference between security and priva
 
 Security protects systems and information from unauthorised access, change and loss. **Privacy** concerns whether the processing of information about people — even authorised processing — is appropriate, proportionate and fair. A perfectly secure hospital database can still violate privacy if it is used for a purpose patients were never told about. The [NIST Privacy Framework](https://www.nist.gov/privacy-framework) treats privacy risk as arising from data processing itself, overlapping with but distinct from cybersecurity risk.
 
-Section fourteen point one develops privacy foundations with a Calder County note the analyst can demo offline.
-
 ### 14.2 Principles
 
 The EU General Data Protection Regulation sets out principles that are widely mirrored elsewhere: lawfulness, fairness and transparency; purpose limitation; data minimisation; accuracy; storage limitation; integrity and confidentiality; and accountability ([Regulation (EU) 2016/679, Article 5](https://eur-lex.europa.eu/eli/reg/2016/679/oj)). Health data is a **special category** requiring additional conditions. You do not need to become a lawyer, but you must recognise when a design question is also a data-protection question and involve the organisation's data-protection officer — and you must never present this book's summary as legal advice for a specific case.
@@ -1230,8 +1088,6 @@ Critical services hold obvious personal data (patient records, bank accounts, em
 
 Security monitoring collects data about people by design. Privacy-protective practice: collect what the detection purpose needs, not everything available; restrict access to raw logs; set retention periods; pseudonymise where analysis does not need names; document the purpose and lawful basis; and, in an incident, share indicators (addresses, file hashes) rather than personal data where possible. During a breach involving personal data, notification duties may apply on short timescales, so incident plans include the data-protection officer from the start.
 
-Section fourteen point four develops privacy foundations with a Calder County note the analyst can demo offline.
-
 ### 14.5 Worked example: CT ticketing analytics (synthetic)
 
 **This case is synthetic.** Calder Transit's security team wants to detect cloned transit cards by looking for the same card used at two stations too far apart in too short a time. The proposed design copies every card tap (card ID, station, time) for two years into the security analytics platform. A privacy review asks: is two years needed? (Clone detection needs minutes to days; retain full detail for 30 days, then aggregate.) Is the card ID needed in clear? (A keyed pseudonym suffices for matching; only confirmed cases are re-identified, by the fraud team.) Who can query it? (Two named analysts, logged.) Is passenger travel history being created as a side effect? (Yes — which is why the design limits retention and access.) The revised design meets the detection purpose with a fraction of the privacy risk.
@@ -1240,19 +1096,7 @@ Section fourteen point four develops privacy foundations with a Calder County no
 
 Choose one service you use (a transit card, a smart meter, a hospital app). From its public privacy notice, list the personal data collected, the stated purposes and retention. Identify one data item whose purpose is unclear and draft a question you could send the provider.
 
-Section fourteen point six develops privacy foundations with a Calder County note the analyst can demo offline.
-
-Under section fourteen point six, County Resilience Partnership expects privacy claims to carry owners and dates.
-
-Section fourteen point six treats security is not privacy as testable only when evidence and ticket IDs are recorded.
-
 ### 14.7 Common errors and limits
-Section fourteen point seven develops privacy foundations with a Calder County note the analyst can demo offline.
-
-Under section fourteen point seven, County Resilience Partnership expects privacy claims to carry owners and dates.
-
-Section fourteen point seven treats security is not privacy as testable only when evidence and ticket IDs are recorded.
-
 
 - "We are secure, therefore we are compliant."
 - Collecting everything "in case it is useful".
@@ -1298,8 +1142,6 @@ A **measurement** is a value obtained by a defined procedure (restore time in mi
 
 Most security evidence is uncertain: small samples (Chapter 12), estimates (Chapter 1), proxies. **Sensitivity analysis** asks how much the decision changes when an uncertain input changes. If a recommendation holds across the plausible range, the evidence is adequate for that decision even if imprecise. If it flips, either gather better evidence on that input or make the decision robust (choose the option that is acceptable across the range). This is a practical antidote to both false precision and paralysis.
 
-Section fifteen point three develops evidence and measurement with a Calder County note the analyst can demo offline.
-
 ### 15.4 Worked example: is CEDC's dispatch restorable? (synthetic)
 
 **This case is synthetic.** CEDC's board asks: "Can we restore computer-aided dispatch within four hours after ransomware?" Available evidence:
@@ -1317,19 +1159,7 @@ Assessment: no evidence demonstrates the *claim* — a restore of the whole disp
 
 Take one claim about a service you use ("my phone backs up my photos"). List the evidence you have, classify each item by type, source, recency and independence, and design one test that would demonstrate the claim. Do not run anything on systems you do not own.
 
-Section fifteen point five develops evidence and measurement with a Calder County note the analyst can demo offline.
-
-Under section fifteen point five, County Resilience Partnership expects evidence claims to carry owners and dates.
-
-Section fifteen point five treats what counts as evidence as testable only when evidence and ticket IDs are recorded.
-
 ### 15.6 Common errors and limits
-Section fifteen point six develops evidence and measurement with a Calder County note the analyst can demo offline.
-
-Under section fifteen point six, County Resilience Partnership expects evidence claims to carry owners and dates.
-
-Section fifteen point six treats what counts as evidence as testable only when evidence and ticket IDs are recorded.
-
 
 - Treating backup success as restore evidence.
 - Metrics that count activity instead of outcomes.
@@ -1379,8 +1209,6 @@ Critical-service operators commonly separate: the **enterprise** zone (email, of
 
 Vendors and engineers need remote access; uncontrolled remote access is one of the most common paths into OT. A defensible pattern: access terminates on a **jump host** in the DMZ, never directly in the control zone; **phishing-resistant multi-factor** authentication; **per-session approval** by the operator on shift for vendors; **time-limited** accounts; **session recording**; and an **off switch** the control room can use. Each element answers a specific failure.
 
-Section sixteen point four develops security architecture with a Calder County note the analyst can demo offline.
-
 ### 16.5 Worked example: CPN's remote access (synthetic)
 
 **This case is synthetic.** CPN's current design: the internet-facing VPN-G gateway (Chapter 5) places users directly on the control network; three vendors have permanent accounts; passwords only. Redesign: VPN-G upgraded and moved to terminate on a DMZ jump host; vendor accounts disabled by default and enabled per ticket by the control-room supervisor for up to four hours; phishing-resistant MFA for staff; sessions recorded on a server the vendors cannot reach; a physical switch in the control room that disables the remote-access conduit. Residual risk, stated: an approved vendor session is still trusted during its window; recording supports detection and accountability but does not prevent misuse in real time.
@@ -1389,19 +1217,7 @@ Section sixteen point four develops security architecture with a Calder County n
 
 Draw the Calder Water architecture from Chapter 7 with its zones and the three allowed conduits. Annotate each conduit with the principle it serves and the control enforcing it. Mark the one component whose compromise would hurt most and explain why.
 
-Section sixteen point six develops security architecture with a Calder County note the analyst can demo offline.
-
-Under section sixteen point six, County Resilience Partnership expects security claims to carry owners and dates.
-
-Section sixteen point six treats principles that last layered as testable only when evidence and ticket IDs are recorded.
-
 ### 16.7 Common errors and limits
-Section sixteen point seven develops security architecture with a Calder County note the analyst can demo offline.
-
-Under section sixteen point seven, County Resilience Partnership expects security claims to carry owners and dates.
-
-Section sixteen point seven treats principles that last layered as testable only when evidence and ticket IDs are recorded.
-
 
 - Architecture diagrams that show intended, not actual, connections.
 - "Dual-homed" machines that bridge zones and bypass the conduit.
@@ -1441,8 +1257,6 @@ A **cryptographic hash function** such as SHA-256 maps any input to a fixed-size
 ### 17.2 What control systems need
 
 For a breaker command, secrecy is rarely the point; **authenticity** (it came from the control centre), **integrity** (it was not altered) and **freshness** (it is not an old command replayed) are. A MAC provides the first two. Freshness needs a **sequence number** or timestamp inside the authenticated message, and a receiver that rejects anything not newer than the last accepted value. Without freshness, an attacker who recorded yesterday's valid "OPEN" can replay it today.
-
-Section seventeen point two develops cryptography concepts with a Calder County note the analyst can demo offline.
 
 ### 17.3 Keys are the hard part
 
@@ -1492,12 +1306,6 @@ first differing entry: 1
 The altered breaker name fails verification; the replayed sequence number is rejected; the edited log no longer matches the anchored head, and comparison shows the first altered entry. Truncating the tag to 64 bits keeps the printout short; real systems use the full tag or a standard truncation. The hash chain detects editing **only** if the anchor is out of the editor's reach — someone who controls both the log and the anchor can rebuild the whole chain.
 
 ### 17.5 Common errors and limits
-Section seventeen point five develops cryptography concepts with a Calder County note the analyst can demo offline.
-
-Under section seventeen point five, County Resilience Partnership expects cryptography claims to carry owners and dates.
-
-Section seventeen point five treats the tools and their as testable only when evidence and ticket IDs are recorded.
-
 
 - Using a plain hash where a MAC or signature is needed.
 - Authenticating messages without freshness.
@@ -1539,8 +1347,6 @@ After this chapter you can (1) turn a topic into a researchable question; (2) ch
 
 **Descriptive** studies say what is (an inventory survey; a count of advisories by sector). **Comparative** studies contrast groups or options using the same criteria. **Experimental** studies change one thing deliberately and measure the effect, ideally against a control (the detector threshold experiment of Chapter 27). **Case studies** examine one or a few cases in depth, using several sources; they explain how and why, but generalise cautiously. Choose the design that the question needs, not the one that seems most scientific.
 
-Section eighteen point two develops research methods with a Calder County note the analyst can demo offline.
-
 ### 18.3 Literature, systematically
 
 Searching for sources is itself a method and should be recorded: databases and sites searched, search terms, date, inclusion and exclusion criteria, numbers found and kept. Distinguish **primary** sources (an agency advisory, a regulator's report, a peer-reviewed study) from **secondary** (a news article or blog summarising them). Prefer primary, cite what you read (Chapter 4), and record why you excluded what you excluded so that someone else could repeat the screening. A simple spreadsheet — source, type, date, relevance, key finding, limits — is enough.
@@ -1557,19 +1363,7 @@ Four classic threats. **Construct validity**: does the measure capture the conce
 
 Write three research questions on one topic of your choice in critical-sector security: one descriptive, one comparative and one case-study question. For each, name the population, variables, time frame and the type of evidence you would need.
 
-Section eighteen point six develops research methods with a Calder County note the analyst can demo offline.
-
-Under section eighteen point six, County Resilience Partnership expects research claims to carry owners and dates.
-
-Section eighteen point six treats from topic to question as testable only when evidence and ticket IDs are recorded.
-
 ### 18.7 Common errors and limits
-Section eighteen point seven develops research methods with a Calder County note the analyst can demo offline.
-
-Under section eighteen point seven, County Resilience Partnership expects research claims to carry owners and dates.
-
-Section eighteen point seven treats from topic to question as testable only when evidence and ticket IDs are recorded.
-
 
 - Questions too broad to answer or too narrow to matter.
 - Unrecorded literature searches that cannot be repeated.
@@ -1617,10 +1411,6 @@ The **functions view** is often more useful than the sector view. Calder Valley 
 
 Five features recur across sectors: **physical consequences** (harm to people and environment, not only data); **long-lived technology** (Chapter 2); **interdependency** (Chapter 22); **regulation and public accountability**; and **mixed ownership** — most infrastructure is privately operated but publicly relied upon, so incentives to invest in rare-event protection are weak. These features explain why "apply the enterprise IT playbook" fails and why sector-specific knowledge matters.
 
-Section nineteen point three develops critical infrastructure and sector security with a Calder County note the analyst can demo offline.
-
-Under section nineteen point three, County Resilience Partnership expects critical claims to carry owners and dates.
-
 ### 19.4 Worked example: profiling CEDC (synthetic)
 
 **This case is synthetic.** A sector profile of the County Emergency Dispatch Centre: *function* — receive emergency calls and dispatch ambulances, fire and police; *harm from loss* — delayed response within minutes; *dependencies* — telecom (calls and CAD data), power (UPS and generator), CAD vendor cloud services, staff; *regulatory context* — public-service duties and, depending on jurisdiction, cybersecurity obligations for essential entities (to be verified with counsel); *lenses* — risk: ransomware on CAD is the top scenario; resilience: the paper-and-radio fallback must sustain dispatch for hours; systems: a 2 a.m. switchover to paper is a human-factors problem as much as a technical one. The profile does not yet say what to do; it says what questions matter.
@@ -1629,17 +1419,7 @@ Under section nineteen point three, County Resilience Partnership expects critic
 
 Choose one real sector in your country. From official sources, find: who designates it as critical, which law or framework sets its cybersecurity obligations, which agency supervises it and which public guidance applies. Record each source with its date. Do not assume the EU, US or UK model applies elsewhere.
 
-Section nineteen point five develops critical infrastructure and sector security with a Calder County note the analyst can demo offline.
-
-Under section nineteen point five, County Resilience Partnership expects critical claims to carry owners and dates.
-
 ### 19.6 Common errors and limits
-Section nineteen point six develops critical infrastructure and sector security with a Calder County note the analyst can demo offline.
-
-Under section nineteen point six, County Resilience Partnership expects critical claims to carry owners and dates.
-
-Section nineteen point six treats what critical means three as testable only when evidence and ticket IDs are recorded.
-
 
 - Equating "critical infrastructure" with "OT".
 - Reading a sector list as a list of independent sectors.
@@ -1676,10 +1456,6 @@ After this chapter you can (1) summarise six public cases that shaped the field 
 
 For each case, record: **date and sector**; **what happened to the service** (scope, duration, people affected); **initial access and spread** only as the source describes; **response**; **source type** (government advisory, audit report, peer-reviewed analysis, company statement, journalism); and **what remains uncertain**. Early reports are often wrong; later reports often correct them. A good analyst cites both.
 
-Section twenty point one develops critical infrastructure and sector security with a Calder County note the analyst can demo offline.
-
-Under section twenty point one, County Resilience Partnership expects critical claims to carry owners and dates.
-
 ### 20.2 Six cases
 
 **Ukraine power distribution, December 2015.** CISA's alert describes coordinated attacks on three regional distribution companies that caused outages affecting approximately 225,000 customers, with remote operation of breakers, destruction of some systems and disruption of call centres; power was restored by switching to manual operation ([CISA IR-ALERT-H-16-056-01](https://www.cisa.gov/news-events/ics-alerts/ir-alert-h-16-056-01); see also the [E-ISAC/SANS analysis](https://nsarchive.gwu.edu/document/15331-sans-and-electricity-information-sharing-and)). *Lesson:* manual fallback and staff who can operate without automation were decisive.
@@ -1695,10 +1471,6 @@ Under section twenty point one, County Resilience Partnership expects critical c
 **CrowdStrike update, July 2024.** A faulty security-software update crashed Windows machines worldwide; Microsoft estimated about 8.5 million devices were affected, disrupting airlines, hospitals and banks ([Microsoft, 2024](https://blogs.microsoft.com/blog/2024/07/20/helping-our-customers-through-the-crowdstrike-outage/)). *Lesson:* no adversary is needed; a shared software dependency is a single point of failure across sectors.
 
 ### 20.3 Comparing the cases
-Section twenty point three develops critical infrastructure and sector security with a Calder County note the analyst can demo offline.
-
-Under section twenty point three, County Resilience Partnership expects critical claims to carry owners and dates.
-
 
 | Case | Cause | Sector effect | Transferable lesson |
 |---|---|---|---|
@@ -1714,12 +1486,6 @@ Under section twenty point three, County Resilience Partnership expects critical
 **The application is synthetic; the cases are cited above.** For Calder Valley Hospital the transferable lessons are: (1) rehearse operation without IT (paper processes, as Ukraine's operators did without automation); (2) inventory and isolate unsupported devices (WannaCry); (3) confirm that a BMS compromise cannot stop theatre ventilation's local safety controls (TRITON's lesson about independent layers); (4) govern remote access to the BMS (Oldsmar); (5) map which clinical processes depend on business IT such as patient administration (Colonial); and (6) plan for mass failure of a shared endpoint product (CrowdStrike).
 
 ### 20.5 Common errors and limits
-Section twenty point five develops critical infrastructure and sector security with a Calder County note the analyst can demo offline.
-
-Under section twenty point five, County Resilience Partnership expects critical claims to carry owners and dates.
-
-Section twenty point five treats reading case six cases as testable only when evidence and ticket IDs are recorded.
-
 
 - Repeating vivid details that no primary source supports.
 - Citing the first account and ignoring the correction.
@@ -1774,19 +1540,7 @@ Operators care about services, not levels. Model a service as a chain of functio
 
 Draw the control loop and layered model for one Calder service other than water or power (rail signalling or hospital theatre ventilation). Label each component with its level, which of view/control/protection it supports, and one degraded mode.
 
-Section twenty-one point five develops critical infrastructure and sector security with a Calder County note the analyst can demo offline.
-
-Under section twenty-one point five, County Resilience Partnership expects critical claims to carry owners and dates.
-
-Section twenty-one point five treats the control loop layered as testable only when evidence and ticket IDs are recorded.
-
 ### 21.6 Common errors and limits
-Section twenty-one point six develops critical infrastructure and sector security with a Calder County note the analyst can demo offline.
-
-Under section twenty-one point six, County Resilience Partnership expects critical claims to carry owners and dates.
-
-Section twenty-one point six treats the control loop layered as testable only when evidence and ticket IDs are recorded.
-
 
 - Treating the layered model as a description of real traffic.
 - Ignoring safety systems or assuming they are always independent.
@@ -1862,17 +1616,7 @@ Interpretation: the shortest autonomies set the early story — pumps stop at on
 
 Every number above is an operator's claim. Generator autonomy depends on fuel actually in the tank, starting reliability (Chapter 12, EX024) and load. Battery autonomy degrades with age. Record the evidence behind each autonomy — a test, a design figure, an estimate — and run the model with pessimistic values. A dependency model is only as good as its least-checked number.
 
-Section twenty-two point four develops critical infrastructure and sector security with a Calder County note the analyst can demo offline.
-
-Under section twenty-two point four, County Resilience Partnership expects critical claims to carry owners and dates.
-
 ### 22.5 Common errors and limits
-Section twenty-two point five develops critical infrastructure and sector security with a Calder County note the analyst can demo offline.
-
-Under section twenty-two point five, County Resilience Partnership expects critical claims to carry owners and dates.
-
-Section twenty-two point five treats inventory is evidence not as testable only when evidence and ticket IDs are recorded.
-
 
 - Treating one inventory source as complete.
 - Recording dependencies without time.
@@ -1926,19 +1670,7 @@ For critical services, likelihood is often the least knowable input: adversaries
 
 Take Calder Transit's light-rail signalling. Write one unacceptable consequence, three paths to it (at least one non-malicious), and one engineering mitigation that removes or bounds the consequence. Then rate the same scenario on a 5×5 matrix and compare what each approach told you.
 
-Section twenty-three point five develops critical infrastructure and sector security with a Calder County note the analyst can demo offline.
-
-Under section twenty-three point five, County Resilience Partnership expects critical claims to carry owners and dates.
-
-Section twenty-three point five treats structured risk assessment the as testable only when evidence and ticket IDs are recorded.
-
 ### 23.6 Common errors and limits
-Section twenty-three point six develops critical infrastructure and sector security with a Calder County note the analyst can demo offline.
-
-Under section twenty-three point six, County Resilience Partnership expects critical claims to carry owners and dates.
-
-Section twenty-three point six treats structured risk assessment the as testable only when evidence and ticket IDs are recorded.
-
 
 - Multiplying ordinal labels as if they were measurements.
 - Rating likelihood for novel adversary actions with false confidence.
@@ -1988,8 +1720,6 @@ A control is only valuable against something. Build a **mapping** from scenarios
 
 Some controls standard in IT are risky or impossible in OT: endpoint agents that consume controller resources, automatic patching, active scanning, account lockout on an operator HMI during an emergency (locking out the operator may be more dangerous than the attacker). Alternatives include passive network monitoring, application allowlisting on stable workstations, read-only data diodes for one-way flows, physical key switches for programming modes, and procedural controls tied to the operator's shift log.
 
-Section twenty-four point four develops critical infrastructure and sector security with a Calder County note the analyst can demo offline.
-
 ### 24.5 Worked example: CVH BMS control map (synthetic)
 
 **This case is synthetic.**
@@ -2003,12 +1733,6 @@ Section twenty-four point four develops critical infrastructure and sector secur
 The map turns a vague "BMS is a risk" into two specific actions: an engineering interlock and a tested configuration restore.
 
 ### 24.6 Common errors and limits
-Section twenty-four point six develops critical infrastructure and sector security with a Calder County note the analyst can demo offline.
-
-Under section twenty-four point six, County Resilience Partnership expects critical claims to carry owners and dates.
-
-Section twenty-four point six treats frameworks as organisers types as testable only when evidence and ticket IDs are recorded.
-
 
 - Treating framework completion as risk reduction.
 - Counting controls instead of mapping them to scenarios.
@@ -2045,13 +1769,9 @@ After this laboratory you can (1) combine inventory, network-flow, vulnerability
 
 This laboratory is a contained assessment of the **synthetic** Calder operators using only the book's offline labs. Its rules of engagement (Chapter 10, practical activity) apply: your own computer, no network access to real systems, no real data. The skill being assessed is not running code — that is the easy part — but **assembling evidence into a defensible judgement** and documenting it so that another student could reproduce it.
 
-Section twenty-five point one develops laboratory with a Calder County note the analyst can demo offline.
-
 ### 25.2 The task
 
 You are an intern for the County Resilience Partnership. Produce a 1,500-word **assessment note** answering: "Across the evidence available, what are the three highest-priority security improvements for Calder's operators, and how confident are we?" Use:
-
-Section twenty-five point two develops laboratory with a Calder County note the analyst can demo offline.
 
 1. **Lab 2** (CVH inventory): unsupported and misplaced devices.
 2. **Lab 4** (CW flows): violations of the conduit policy.
@@ -2061,8 +1781,6 @@ Section twenty-five point two develops laboratory with a Calder County note the 
 ### 25.3 Method and reproducibility
 
 Record for each lab: the file name and a SHA-256 hash of the script you ran (`python3 -c "import hashlib,sys;print(hashlib.sha256(open(sys.argv[1],'rb').read()).hexdigest())" lab05.py`), the Python version, the exact output and any change you made. Reproducibility is evidence: a reader who reruns your script and gets the same output can trust your findings section without trusting you ([Sandve et al., 2013](https://doi.org/10.1371/journal.pcbi.1003285)).
-
-Section twenty-five point three develops laboratory with a Calder County note the analyst can demo offline.
 
 ### 25.4 Structure of the note
 
@@ -2074,17 +1792,11 @@ Section twenty-five point three develops laboratory with a Calder County note th
 6. **Limits** — sample size, synthetic data, unverified claims.
 7. **Appendix** — hashes, versions, outputs.
 
-Section twenty-five point four develops laboratory with a Calder County note the analyst can demo offline.
-
 ### 25.5 Worked example: one priority, fully argued (synthetic)
 
 **Priority 1 — upgrade and re-architect CPN remote access (confidence: high).** *Finding:* VPN-01 (internet-exposed) runs a version older than the fix for an exploited, critical flaw (Lab 5). *Finding:* the original design places remote users directly on the control network (Chapter 16). *Analysis:* this is the shortest path from the internet to feeder control; the consequence is loss of control of distribution, the most severe outcome in the CPN service model (Chapter 21). *Recommendation:* emergency upgrade to 9.3 (corrective/technical; owner: CPN infrastructure lead, this week), then terminate remote access on a DMZ jump host with per-session vendor approval (preventive/technical and procedural; owner: CPN OT security, next quarter). *Confidence:* high, because the finding comes directly from version data and the advisory, and the consequence follows from the architecture. *Limit:* the lab cannot show whether the flaw has already been exploited; a compromise assessment of VPN-01 is recommended.
 
 ### 25.6 Assessment rubric
-Section twenty-five point six develops laboratory with a Calder County note the analyst can demo offline.
-
-Under section twenty-five point six, County Resilience Partnership expects laboratory claims to carry owners and dates.
-
 
 | Criterion | 3 (strong) | 2 | 1 | 0 |
 |---|---|---|---|---|
@@ -2095,14 +1807,6 @@ Under section twenty-five point six, County Resilience Partnership expects labor
 | Reproducibility | Hashes, versions, outputs | Outputs only | Partial | None |
 
 ### 25.7 Common errors and limits
-Section twenty-five point seven develops laboratory with a Calder County note the analyst can demo offline.
-
-Under section twenty-five point seven, County Resilience Partnership expects laboratory claims to carry owners and dates.
-
-Section twenty-five point seven treats purpose and rules the as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point seven, Calder County will not accept laboratory work without a written trail.
-
 
 - Listing every finding instead of prioritising.
 - Recommendations that do not follow from any finding.
@@ -2148,10 +1852,6 @@ Leveson's **STAMP** model treats accidents as the result of inadequate control r
 A **tabletop exercise** walks a team through a scenario in discussion, step by step, with injects ("it is now 03:40; the CAD screens show a ransom note"). It tests plans, roles and communication without touching live systems. Good tabletops have objectives (e.g. "test the decision to switch to paper dispatch"), a realistic synthetic scenario, a facilitator, observers recording decisions and timings, and a **hot debrief** followed by an improvement plan. They are evidence of preparedness only to the extent that findings are acted on.
 
 ### 26.4 Choosing methods
-Section twenty-six point four develops critical infrastructure and sector security with a Calder County note the analyst can demo offline.
-
-Under section twenty-six point four, County Resilience Partnership expects critical claims to carry owners and dates.
-
 
 | Method | Best for | Weakness |
 |---|---|---|
@@ -2166,12 +1866,6 @@ Under section twenty-six point four, County Resilience Partnership expects criti
 **This case is synthetic.** Loss: delayed emergency response. Hazard: an ambulance is not dispatched to a life-threatening call within target time. Control structure: call handler → CAD → dispatcher → ambulance crew (via radio and mobile data terminals); feedback from vehicle location system to CAD. Control action: "assign nearest available ambulance". UCAs: *not provided* — CAD queue frozen after a failed update; *provided when unsafe* — CAD assigns a unit shown "available" because location feedback is stale or spoofed; *too late* — manual fallback adopted only after 20 minutes because nobody owns the decision; *stopped too soon* — a dispatcher cancels an assignment after a duplicate-call merge error. Each UCA leads to requirements: a CAD freeze alarm, staleness indicators on vehicle locations, a named fallback decision owner with a 5-minute trigger, and confirmation before cancelling a high-priority assignment. Note that two UCAs involve no attacker at all.
 
 ### 26.6 Common errors and limits
-Section twenty-six point six develops critical infrastructure and sector security with a Calder County note the analyst can demo offline.
-
-Under section twenty-six point six, County Resilience Partnership expects critical claims to carry owners and dates.
-
-Section twenty-six point six treats threat modelling with data as testable only when evidence and ticket IDs are recorded.
-
 
 - Threat models without trust boundaries.
 - STPA reduced to a list of component failures.
@@ -2212,8 +1906,6 @@ After this chapter you can (1) distinguish verification ("built right") from val
 
 **Configuration review** compares settings with a baseline. **Functional tests** exercise the control with expected and forbidden inputs (Chapter 8's boundary tests). **Flow tests** confirm that disallowed paths are blocked (Chapter 7, under authorisation). **Restore drills** verify recovery controls end to end (Chapter 15). **Detection tests** replay labelled synthetic or benign-but-suspicious activity to see whether monitoring alerts. In OT, testing on the live process is restricted; use test benches, offline replicas or planned windows agreed with operations.
 
-Section twenty-seven point two develops critical infrastructure and sector security with a Calder County note the analyst can demo offline.
-
 ### 27.3 Evaluating detectors
 
 A detector produces scores; a threshold turns them into alerts. Compare alerts with ground truth labels: **true positives** (TP), **false positives** (FP), **false negatives** (FN). **Precision** = TP/(TP+FP): of the alerts, how many were real? **Recall** = TP/(TP+FN): of the real events, how many were caught? Raising the threshold usually increases precision and decreases recall. With rare malicious events (Chapter 12's base rate), precision can be poor even with excellent per-event error rates. Choose a threshold by asking what each miss and each false alarm costs the service — and remember that labelled evaluation data seldom matches live conditions ([Arp et al., 2022](https://www.usenix.org/conference/usenixsecurity22/presentation/arp)).
@@ -2250,12 +1942,6 @@ threshold 0.7: TP=18 FP=  2 FN= 7 precision=0.90 recall=0.72
 At 0.5 the team catches 23 of 25 but wades through 215 false alerts; at 0.7 nearly every alert is real but 7 attacks are missed. Neither is "correct". A defensible choice might use 0.7 for paging the on-call analyst and 0.5 for a daily review queue — two thresholds for two costs. The report states the conditions: synthetic scores, one seed, 25 positives (so recall estimates are coarse — Chapter 37), and unknown similarity to live traffic.
 
 ### 27.5 Common errors and limits
-Section twenty-seven point five develops critical infrastructure and sector security with a Calder County note the analyst can demo offline.
-
-Under section twenty-seven point five, County Resilience Partnership expects critical claims to carry owners and dates.
-
-Section twenty-seven point five treats verification and validation kinds as testable only when evidence and ticket IDs are recorded.
-
 
 - Tests that cannot fail.
 - Reporting accuracy on imbalanced data (99.5% "accuracy" by never alerting here).
@@ -2297,10 +1983,6 @@ A **fault tree** starts from an undesired **top event** and decomposes it into c
 
 **Failure modes and effects analysis** works bottom-up: for each component, list ways it can fail (fails to start, fails open, gives false reading), the effect on the system, how it would be detected, and existing controls; then rank. FMEA finds single-component problems well and interactions poorly, which is why it pairs with STPA (Chapter 26) and fault trees.
 
-Section twenty-eight point two develops critical infrastructure and sector security with a Calder County note the analyst can demo offline.
-
-Under section twenty-eight point two, County Resilience Partnership expects critical claims to carry owners and dates.
-
 ### 28.3 Worked example and Lab 11 (synthetic)
 
 **This case is synthetic.** Top event at CVH: "hospital loses mains-quality power to critical loads". Physically, this needs a grid outage AND failure of the backup (generator fails to start OR fuel contaminated OR automatic transfer switch fails). Separately, the hospital's BMS can command the essential-supply panel; a compromise of the BMS could shed critical loads regardless of the grid.
@@ -2334,15 +2016,7 @@ Under these synthetic numbers the physical design is good: two independent failu
 
 When failures happen, a **blameless review** asks how the system allowed a reasonable person's action to cause harm, not who to punish. Reason's model of organisational accidents describes defences as layers with holes that occasionally align ([Reason, 2000](https://doi.org/10.1136/bmj.320.7237.768)). Ask: what did people know at the time; what made their action seem right; which defences were absent or bypassed; what will we change in the system? Blame suppresses reporting, and unreported near-misses are lost evidence.
 
-Section twenty-eight point four develops critical infrastructure and sector security with a Calder County note the analyst can demo offline.
-
 ### 28.5 Common errors and limits
-Section twenty-eight point five develops critical infrastructure and sector security with a Calder County note the analyst can demo offline.
-
-Under section twenty-eight point five, County Resilience Partnership expects critical claims to carry owners and dates.
-
-Section twenty-eight point five treats fault trees fmea worked as testable only when evidence and ticket IDs are recorded.
-
 
 - Multiplying probabilities of events with common causes (Chapter 12).
 - Treating adversary actions as random failures.
@@ -2387,8 +2061,6 @@ NIST's incident-response recommendations, revised in 2025, place response within
 
 Common measures are **time to detect** (TTD: first malicious or faulty activity to detection) and **time to recover** (TTR: detection to restored service). Their distributions are skewed (Chapter 12): most incidents are handled quickly; a few take days. Report **median**, **90th percentile** and **sample size**, and inspect the outliers individually — the long tail is where lessons live. Beware of incentives: a TTD target can encourage logging the "detection" time generously.
 
-Section twenty-nine point three develops critical infrastructure and sector security with a Calder County note the analyst can demo offline.
-
 ### 29.4 Worked example and Lab 12 (synthetic)
 
 **This case is synthetic.** CRP members pooled 15 sanitised incident records from the last two years.
@@ -2418,15 +2090,7 @@ The mean time to detect (27.2 h) describes no real incident: half were detected 
 
 *CPN playbook, step 3 — suspected compromise of an engineering workstation:* (1) Security analyst informs the control-room supervisor; supervisor confirms no switching operation depends on the workstation now. (2) Supervisor authorises isolation; analyst isolates the workstation's network port, leaving it powered (to preserve memory). (3) Engineer checks controller configurations the workstation could have changed, comparing with the last known-good backup. (4) Analyst records times, decisions and authorisers in the incident log. Each step names who decides and why the order matters.
 
-Section twenty-nine point five develops critical infrastructure and sector security with a Calder County note the analyst can demo offline.
-
 ### 29.6 Common errors and limits
-Section twenty-nine point six develops critical infrastructure and sector security with a Calder County note the analyst can demo offline.
-
-Under section twenty-nine point six, County Resilience Partnership expects critical claims to carry owners and dates.
-
-Section twenty-nine point six treats what security operations do as testable only when evidence and ticket IDs are recorded.
-
 
 - Security teams acting on OT without operations' authorisation.
 - Pulling power or wiping systems before evidence is preserved.
@@ -2463,21 +2127,13 @@ After this laboratory you can (1) run a contained, two-part exercise — a facil
 
 **This scenario is synthetic.** At 02:10 on a winter night, Calder Water's control room reports that pump station PS2's level setpoint changed from 4.1 m to 2.0 m at 01:52. Nobody admits to the change. At 02:30, CPN reports a fault on Substation North that will take 6 hours to repair. The CEDC duty manager asks whether hospital water supply is at risk. Teams of four play CW operations, CW security, CPN control and CVH estates; a facilitator delivers injects.
 
-Section thirty point one develops laboratory ii with a Calder County note the analyst can demo offline.
-
 ### 30.2 Part A — tabletop (90 minutes)
 
 Objectives: (1) decide within 20 minutes whether to move PS2 to local control; (2) produce a consolidated cross-operator status for CEDC by 03:00; (3) decide what evidence to preserve. Injects: 02:40 — CW security finds a vendor remote session was active 01:45–01:58; 02:55 — CVH estates reports 72 h generator fuel but asks about water; 03:20 — a local journalist calls CW. Observers record decision times, who decided and on what evidence.
 
-Section thirty point two develops laboratory ii with a Calder County note the analyst can demo offline.
-
-Under section thirty point two, County Resilience Partnership expects laboratory claims to carry owners and dates.
-
 ### 30.3 Part B — evidence analysis (offline)
 
 Using Lab 8's hash-chain function, teams receive three files: the operator log, the anchored head from the separate anchor server, and the vendor-session record. They recompute the chain, find which entry (if any) was altered, and align it with the session times. Using Lab 9's autonomy model (Chapter 22) with the 6-hour outage, they state which services are lost and when, and whether hospital water depends on PS2. Every result must be reproducible: script hash, Python version, output.
-
-Section thirty point three develops laboratory ii with a Calder County note the analyst can demo offline.
 
 ### 30.4 Worked example: the timeline and its limits (synthetic)
 
@@ -2495,19 +2151,7 @@ Interpretation: the setpoint change coincides with the vendor session, and the l
 
 Structure: objectives and whether met (with times); what went well; what did not; root causes (systemic, blameless — Chapter 28); improvement actions with owners and dates; evidence appendix. Distinguish **exercise artefacts** (things that happened only because it was an exercise) from real findings.
 
-Section thirty point five develops laboratory ii with a Calder County note the analyst can demo offline.
-
-Under section thirty point five, County Resilience Partnership expects laboratory claims to carry owners and dates.
-
-Section thirty point five treats scenario synthetic part tabletop as testable only when evidence and ticket IDs are recorded.
-
 ### 30.6 Assessment rubric
-Section thirty point six develops laboratory ii with a Calder County note the analyst can demo offline.
-
-Under section thirty point six, County Resilience Partnership expects laboratory claims to carry owners and dates.
-
-Section thirty point six treats scenario synthetic part tabletop as testable only when evidence and ticket IDs are recorded.
-
 
 | Criterion | 3 | 2 | 1 | 0 |
 |---|---|---|---|---|
@@ -2557,8 +2201,6 @@ Advanced case analysis asks not "what happened?" but "which assumption failed, a
 Every operator runs software and hardware built by others, often through long chains of components. Public measures include **software bills of materials** listing components ([CISA SBOM](https://www.cisa.gov/sbom)), frameworks for build integrity such as SLSA ([SLSA](https://slsa.dev/)), secure development practices for suppliers ([NIST SSDF, SP 800-218](https://csrc.nist.gov/pubs/sp/800/218/final)) and "secure by design" expectations on manufacturers ([CISA Secure by Design](https://www.cisa.gov/securebydesign)). At bachelor's level, the operator's levers are mainly contractual and architectural: require SBOMs and vulnerability disclosure, test updates before deployment, stage rollouts, keep the ability to roll back, and avoid letting one supplier's failure stop several critical functions at once.
 
 ### 31.3 A comparison frame
-Section thirty-one point three develops critical infrastructure and sector security with a Calder County note the analyst can demo offline.
-
 
 | Dimension | Stuxnet (as analysed) | TRITON/HatMan | 2024 update outage |
 |---|---|---|---|
@@ -2573,12 +2215,6 @@ Section thirty-one point three develops critical infrastructure and sector secur
 **This case is synthetic.** The CRP surveys its members: CVH, CEDC and Calder Mutual all use the same endpoint-security product, configured for automatic updates; CEDC and CT use the same CAD/scheduling cloud region; CW and CPN use the same OT integrator with remote access to both. Single events that could hit several sectors at once: a faulty endpoint update (hospital, dispatch, bank simultaneously); a cloud-region outage (dispatch and transit); a compromise of the integrator (water and power). Recommendations: stagger endpoint updates (a small canary group first, critical dispatch consoles last); confirm CEDC's paper-and-radio fallback does not need the cloud; require per-session approval and separate credentials for the integrator at each operator, and include it in the joint exercise. The point is not that these suppliers are bad; it is that the county's risk is shared and must be analysed jointly.
 
 ### 31.5 Common errors and limits
-Section thirty-one point five develops critical infrastructure and sector security with a Calder County note the analyst can demo offline.
-
-Under section thirty-one point five, County Resilience Partnership expects critical claims to carry owners and dates.
-
-Section thirty-one point five treats beyond the headline supply as testable only when evidence and ticket IDs are recorded.
-
 
 - Drawing lessons from vivid but unsourced details.
 - Treating targeted state operations as the typical threat for every operator.
@@ -2627,8 +2263,6 @@ Safety engineers have long practice in analysing hazards, independent protection
 
 Different audiences need different translations of the same finding. **Clinicians** need to know the effect on patient care and what to do differently. **Engineers** need the technical mechanism and constraints. **Finance** needs costs, avoided losses and options. **Lawyers** need facts, dates and obligations triggered. **The public** needs honest, timely information on the service and on what they should do — without details that help attackers. Agreed spokespeople and pre-approved message templates are part of incident preparation (Chapter 30's journalist inject).
 
-Section thirty-two point four develops critical infrastructure and sector security with a Calder County note the analyst can demo offline.
-
 ### 32.5 Worked example: one finding, four audiences (synthetic)
 
 **This case is synthetic.** Finding: CVH's theatre ventilation can be changed from the BMS, which is reachable from the corporate network with password-only authentication.
@@ -2639,14 +2273,6 @@ Section thirty-two point four develops critical infrastructure and sector securi
 - *Data protection and legal:* "No personal data involved; no reporting obligation triggered by the finding itself; we will reassess if exploitation is detected."
 
 ### 32.6 Common errors and limits
-Section thirty-two point six develops critical infrastructure and sector security with a Calder County note the analyst can demo offline.
-
-Under section thirty-two point six, County Resilience Partnership expects critical claims to carry owners and dates.
-
-Section thirty-two point six treats law and regulation economics as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-two point six, Calder County will not accept critical work without a written trail.
-
 
 - Giving legal opinions without counsel.
 - Proposing controls without a funding argument.
@@ -2695,21 +2321,11 @@ A reproducible analysis keeps raw data unchanged, does all transformations in sc
 
 Quantitative evidence says **how much**; qualitative evidence says **how and why**. A mixed-methods design might count, across 30 public incident reports, how many mention a fallback to manual operation (quantitative), then interview four operators about what makes manual fallback work (qualitative). The combination is stronger than either, provided each part is done properly and the integration — how one informs the other — is explicit.
 
-Section thirty-three point four develops research methods ii with a Calder County note the analyst can demo offline.
-
-Under section thirty-three point four, County Resilience Partnership expects research claims to carry owners and dates.
-
 ### 33.5 Worked example: coding incident reports (synthetic data)
 
 **The data are synthetic.** Two students code 20 incident-report excerpts for the presence of the code "unclear decision owner". They agree on 16 of 20 ($p_o = 0.80$). Student A applied the code to 8 excerpts; student B to 6. Chance agreement: both "yes" $= (8/20)(6/20) = 0.12$; both "no" $= (12/20)(14/20) = 0.42$; $p_e = 0.54$. Kappa $= (0.80 - 0.54)/(1 - 0.54) = 0.26/0.46 \approx 0.57$ — moderate agreement. The students review the four disagreements, find that one coded "decision delayed" as "owner unclear" even when the owner was named, and tighten the definition: "applies only when the report states or shows that participants did not know who held the decision".
 
 ### 33.6 Common errors and limits
-Section thirty-three point six develops research methods ii with a Calder County note the analyst can demo offline.
-
-Under section thirty-three point six, County Resilience Partnership expects research claims to carry owners and dates.
-
-Section thirty-three point six treats qualitative methods coding and as testable only when evidence and ticket IDs are recorded.
-
 
 - Interviewing practitioners without ethics approval or consent.
 - Publishing identifiable details of real operators' weaknesses.
@@ -2747,8 +2363,6 @@ After this project you can (1) compare three or more options against explicit cr
 
 Decisions about critical services involve several criteria that do not share a unit: consequence reduction, operational burden, cost, time to implement, strength of evidence that the option works. **Multi-criteria decision analysis** scores each option on each criterion, weights the criteria, and combines them — most simply as a weighted sum. Its value lies less in the final number than in making the criteria, scores and weights visible so that people can argue about them productively.
 
-Section thirty-four point one develops comparative project with a Calder County note the analyst can demo offline.
-
 ### 34.2 Doing it honestly
 
 Define each criterion so that higher is better (invert costs and burdens). Score on an anchored scale ("5 = removes the worst credible consequence; 1 = no measurable effect"). Record the evidence behind each score (Chapter 15). Set weights *before* scoring, ideally with stakeholders, to avoid tuning weights to a favourite. Then run **sensitivity analysis**: vary the weights and see whether the winner changes. If it changes only under implausible weights, the decision is robust; if small changes flip it, report that the decision depends on a value judgement and name it.
@@ -2756,10 +2370,6 @@ Define each criterion so that higher is better (invert costs and burdens). Score
 ### 34.3 When a score is not enough
 
 Some considerations are **constraints**, not criteria: a legal obligation, a safety requirement, a minimum service level. An option that violates a constraint is excluded, whatever its score. Others are **vetoes** by people with authority (a clinical director's refusal of an option that disrupts theatres). Handle these explicitly before scoring.
-
-Section thirty-four point three develops comparative project with a Calder County note the analyst can demo offline.
-
-Under section thirty-four point three, County Resilience Partnership expects comparative claims to carry owners and dates.
 
 ### 34.4 Worked example and Lab 13 (synthetic)
 
@@ -2805,17 +2415,7 @@ Backups with restore drills win under the agreed weights and remain ahead until 
 
 A 2,500-word comparative report on a question of your choice within the Calder case or a documented public topic (for example, three approaches to remote access, three backup strategies, three monitoring options): constraints, criteria with anchored scales, evidence per score, weights set in advance, sensitivity analysis, recommendation with reversal conditions, and limits.
 
-Section thirty-four point five develops comparative project with a Calder County note the analyst can demo offline.
-
-Under section thirty-four point five, County Resilience Partnership expects comparative claims to carry owners and dates.
-
 ### 34.6 Common errors and limits
-Section thirty-four point six develops comparative project with a Calder County note the analyst can demo offline.
-
-Under section thirty-four point six, County Resilience Partnership expects comparative claims to carry owners and dates.
-
-Section thirty-four point six treats multi-criteria comparison doing it as testable only when evidence and ticket IDs are recorded.
-
 
 - Scoring first and choosing weights afterwards.
 - Unanchored scores ("4 because it feels good").
@@ -2874,12 +2474,6 @@ Test each candidate against five questions. **Comparative?** Are there real alte
 **This proposal is synthetic.** *Question:* "For a mid-sized hospital, which of three approaches to managing unsupported clinical devices — accelerated replacement, network isolation with monitoring, or vendor-managed secure gateways — best reduces exposure within a fixed annual budget, judged on consequence reduction, clinical disruption, cost and evidence strength?" *Context:* CVH (synthetic host) has unsupported imaging and laboratory devices (Lab 2). *Sources:* public guidance on medical-device and OT security, the NAO WannaCry report, sector performance goals. *Method:* a synthetic inventory of 120 devices built from published categories; a lab model of exposure under each option; two interviews with clinical engineers (ethics approval requested). *Ethics:* no real device data; interviews anonymised; host review of outputs. *Risks:* interviews refused → rely on documents and state the gap. *Success criteria:* comparison with sensitivity analysis and reversal conditions; recommendation defended at presentation. *Timeline:* proposal approved week 4; evidence collection weeks 5–14; analysis weeks 15–20; draft thesis week 24; presentation week 28.
 
 ### 35.5 Common errors and limits
-Section thirty-five point five develops capstone proposal with a Calder County note the analyst can demo offline.
-
-Under section thirty-five point five, County Resilience Partnership expects capstone claims to carry owners and dates.
-
-Section thirty-five point five treats what bachelor's capstone is as testable only when evidence and ticket IDs are recorded.
-
 
 - Topics that are descriptive only, with no comparison.
 - Evidence plans that assume access you do not yet have.
@@ -2924,33 +2518,19 @@ Before starting, agree in writing with the host and your university: **superviso
 
 Most of your value as a student comes from **fresh eyes and time**: documenting what experienced staff no longer notice, tidying an inventory, drafting a procedure, comparing current practice with public guidance. Do not judge before understanding — a "bad practice" may be a workaround for a real constraint (the shared control-room login of Chapter 13). Ask why. Record your observations factually, separate them from interpretation, and check them with the person concerned.
 
-Section thirty-six point three develops field or community practice with a Calder County note the analyst can demo offline.
-
 ### 36.4 Community practice
 
 Small organisations that support communities — a food bank, a rural clinic, a volunteer ambulance service — often depend on critical services and have little security capacity. A structured, low-risk contribution: an asset list, account and backup review against a simple published baseline, a one-page incident contact sheet, and a short staff session. The same authorisation and confidentiality rules apply; your duty of care is higher, not lower, when the organisation cannot judge your advice.
 
-Section thirty-six point four develops field or community practice with a Calder County note the analyst can demo offline.
-
 ### 36.5 Reflective log
 
 Keep a weekly log with four headings: **what I did**, **what I observed**, **what surprised me and why**, **what I would do differently**. Reflection turns experience into learning and provides evidence for assessment. Keep the log sanitised from the start: no system names, addresses, credentials or personal data — write "the remote-access gateway" not its hostname.
-
-Section thirty-six point five develops field or community practice with a Calder County note the analyst can demo offline.
-
-Under section thirty-six point five, County Resilience Partnership expects field claims to carry owners and dates.
 
 ### 36.6 Worked example: a week's log entry (synthetic)
 
 **This entry is synthetic.** *Did:* shadowed CW's control room for two night shifts; helped reconcile the telemetry inventory with the site list. *Observed:* 7 of 42 outstations in the inventory had no recorded firmware version; operators phone the station technician when a reading looks wrong rather than raising a ticket. *Surprised:* the operators' informal checks catch sensor faults faster than the alarm system — but leave no record. *Differently:* I assumed the missing tickets were carelessness; the supervisor explained the ticketing tool is slow at night. Proposal for host: a two-field paper "sensor query" sheet transcribed each morning, so the knowledge becomes evidence. Approved by site supervisor for inclusion in coursework in sanitised form.
 
 ### 36.7 Common errors and limits
-Section thirty-six point seven develops field or community practice with a Calder County note the analyst can demo offline.
-
-Under section thirty-six point seven, County Resilience Partnership expects field claims to carry owners and dates.
-
-Section thirty-six point seven treats why practice matters the as testable only when evidence and ticket IDs are recorded.
-
 
 - Starting without a written agreement.
 - Taking photographs, files or notes that the host has not approved.
@@ -3029,15 +2609,7 @@ Both methods say the same thing in substance: 17 of 20 is consistent with a true
 
 Seminar groups exchange capstone evidence chapters. A useful review states what the work claims, what is convincing, the two or three most important problems (each with a suggested fix), and minor points. Review the work, not the person; be specific ("the restore-time claim rests on one drill in a test environment; can you add the drill's conditions and an interval?"). Authors respond point by point: accepted and changed, or declined with reasons.
 
-Section thirty-seven point four develops evidence review seminar with a Calder County note the analyst can demo offline.
-
 ### 37.5 Common errors and limits
-Section thirty-seven point five develops evidence review seminar with a Calder County note the analyst can demo offline.
-
-Under section thirty-seven point five, County Resilience Partnership expects evidence claims to carry owners and dates.
-
-Section thirty-seven point five treats review checklist small samples as testable only when evidence and ticket IDs are recorded.
-
 
 - Reporting a proportion without its sample size or interval.
 - Treating vendor benchmarks as independent evidence.
@@ -3074,8 +2646,6 @@ After this chapter you can (1) execute a capstone plan while controlling scope a
 
 Implementation turns the proposal (Chapter 35) into evidence. Keep three living documents. A **project log** (date, what you did, what you decided and why). An **evidence register** (item, source, date, type, how obtained, where stored, which criterion it supports — Chapter 15). A **change record** for any departure from the proposal, with your supervisor's agreement. Scope creep is the commonest capstone failure: new questions are interesting, but each must either replace something or wait for "future work".
 
-Section thirty-eight point one develops capstone implementation with a Calder County note the analyst can demo offline.
-
 ### 38.2 Building the supporting model
 
 Most bachelor capstones need a small artefact: an exposure model, a dependency simulation, a detector comparison, a coded dataset. Build it with the habits of the labs: standard tools, fixed seeds, scripts not manual steps, outputs saved with the script hash, and **tests** that check the model on cases with known answers before you trust it on new ones (Chapter 8). Document what the model leaves out. A model that reproduces a hand-calculated simple case and states its assumptions is worth more than an elaborate one nobody can check.
@@ -3084,27 +2654,15 @@ Most bachelor capstones need a small artefact: an exposure model, a dependency s
 
 Interviews follow the approved protocol and consent (Chapter 33). Host documents are handled under the placement agreement (Chapter 36). Anything about a real operator's vulnerabilities is held securely and appears in the thesis only in sanitised, host-approved form. If access is withdrawn, use the fallback in your proposal and record the change; do not quietly substitute guesses for data.
 
-Section thirty-eight point three develops capstone implementation with a Calder County note the analyst can demo offline.
-
-Under section thirty-eight point three, County Resilience Partnership expects capstone claims to carry owners and dates.
-
 ### 38.4 Surprising and negative results
 
 Results that contradict your expectation are evidence too. If restore drills in your lab model show that the option you expected to win cannot meet the objective, report it and investigate why — perhaps a dependency you had not modelled. Do not adjust parameters until the result "looks right"; if you change a parameter, record why and show both results. Honest negative findings are among the most useful outputs a capstone can produce for a host.
-
-Section thirty-eight point four develops capstone implementation with a Calder County note the analyst can demo offline.
 
 ### 38.5 Worked example: an implementation checkpoint (synthetic)
 
 **This checkpoint is synthetic.** Week 14 of the unsupported-devices capstone (Chapter 35). *Done:* synthetic inventory of 120 devices built from published categories (script `make_inventory.py`, seed 38, hash recorded); exposure model for three options with tests reproducing a hand-worked 5-device case; one interview completed, one declined. *Changed:* the second interview is replaced by a document review of two public guidance sources (change record approved by supervisor; validity note: practitioner perspective now rests on one interview). *Surprise:* the vendor-gateway option reduced exposure least for imaging devices, because those devices also accept connections from the image archive, which the gateway does not mediate. Instead of treating this as an error, the student models archive-side controls as a variant and records the finding. *Next:* sensitivity analysis on weights; evidence grading; draft results chapter.
 
 ### 38.6 Common errors and limits
-Section thirty-eight point six develops capstone implementation with a Calder County note the analyst can demo offline.
-
-Under section thirty-eight point six, County Resilience Partnership expects capstone claims to carry owners and dates.
-
-Section thirty-eight point six treats working to plan building as testable only when evidence and ticket IDs are recorded.
-
 
 - Losing the link between results and the evidence behind them.
 - Manual analysis steps that cannot be repeated.
@@ -3141,31 +2699,17 @@ After this chapter you can (1) evaluate your capstone's results against the succ
 
 Evaluation begins with the proposal's success criteria (Chapter 35). Were they met, partly met or not met? Report each honestly with evidence. Then evaluate the **comparison** itself: are the scores supported by the evidence register; would another person, using your anchored scales, give similar scores (ask one); did any constraint exclude an option?
 
-Section thirty-nine point one develops capstone evaluation with a Calder County note the analyst can demo offline.
-
-Under section thirty-nine point one, County Resilience Partnership expects capstone claims to carry owners and dates.
-
 ### 39.2 Sensitivity and robustness
 
 Re-run your comparison under plausible variations: different weights (Lab 13), pessimistic and optimistic evidence (Chapter 22's halved autonomy), alternative model assumptions (Chapter 38's archive variant). A **robust** recommendation holds across most variations; a **fragile** one depends on a specific assumption, which you must name. Present the result as a short table: variation, winner, comment.
-
-Section thirty-nine point two develops capstone evaluation with a Calder County note the analyst can demo offline.
-
-Under section thirty-nine point two, County Resilience Partnership expects capstone claims to carry owners and dates.
 
 ### 39.3 Limitations with direction
 
 "The sample was small" is a weak limitation. A useful limitation says **what**, **why it matters** and **in which direction** it probably biases the result. For example: "The exposure model assumes every unsupported device is equally exploitable; in practice internet-adjacent devices are more exposed, so the model probably *understates* the benefit of isolation for imaging devices." Directional limitations let readers adjust your conclusions rather than discard them.
 
-Section thirty-nine point three develops capstone evaluation with a Calder County note the analyst can demo offline.
-
 ### 39.4 Independent review
 
 Before the thesis is final, ask someone outside your project — a peer from the seminar (Chapter 37), your host supervisor, an academic not involved — to review the evaluation chapter. Record their points and your responses. Independence is the weakest link in most evidence (Chapter 15); the capstone is where you practise strengthening it.
-
-Section thirty-nine point four develops capstone evaluation with a Calder County note the analyst can demo offline.
-
-Under section thirty-nine point four, County Resilience Partnership expects capstone claims to carry owners and dates.
 
 ### 39.5 Worked example: evaluation table (synthetic)
 
@@ -3189,14 +2733,6 @@ Under section thirty-nine point four, County Resilience Partnership expects caps
 Limitations (directional): synthetic inventory (direction unknown — stated as such); one practitioner interview (probably *understates* clinical disruption of isolation, so isolation's score may be optimistic); exposure model ignores attacker targeting (probably *understates* the value of removing the most exposed devices first). Reviewer's main point: "isolation's advantage depends on monitoring being staffed; show what happens if alerts are not reviewed." Response: the pessimistic variation addresses this and is now in the main table.
 
 ### 39.6 Common errors and limits
-Section thirty-nine point six develops capstone evaluation with a Calder County note the analyst can demo offline.
-
-Under section thirty-nine point six, County Resilience Partnership expects capstone claims to carry owners and dates.
-
-Section thirty-nine point six treats against the criteria you as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-nine point six, Calder County will not accept capstone work without a written trail.
-
 
 - Moving the goalposts: evaluating against criteria invented after results.
 - Sensitivity analysis on irrelevant parameters only.
@@ -3248,17 +2784,9 @@ Write the method chapter first (you know it best), results second, introduction 
 
 A strong conclusion answers the question asked — not a broader one — and says how strongly. Compare: "Network isolation is the best way to secure medical devices" (overclaims) versus "For a mid-sized hospital with the synthetic inventory studied, isolation with monitored conduits reduced exposure most per pound, provided alerts are reviewed daily; the recommendation reverses if cost dominates the decision (weight above 0.45) or if monitoring is unstaffed." The second is narrower and far more useful.
 
-Section forty point two develops thesis and presentation with a Calder County note the analyst can demo offline.
-
 ### 40.3 The presentation
 
 Twenty minutes for a mixed panel: problem and question (3 min), method (4), results (6), recommendation and limits (4), what you would do next (3). One idea per slide; show the comparison table and the sensitivity result; put details in backup slides. Rehearse aloud with a timer and with a non-specialist.
-
-Section forty point three develops thesis and presentation with a Calder County note the analyst can demo offline.
-
-Under section forty point three, County Resilience Partnership expects thesis claims to carry owners and dates.
-
-Section forty point three treats thesis structure the conclusion as testable only when evidence and ticket IDs are recorded.
 
 ### 40.4 Answering questions
 
@@ -3269,12 +2797,6 @@ Questions fall into families: *scope* ("why not include X?"), *method* ("why the
 **This exchange is synthetic.** *Panel:* "Your recommendation depends on monitoring being staffed. Hospitals are short of staff. Isn't your conclusion unrealistic?" *Candidate:* "That is the main fragility in my result. In the pessimistic variation, where alerts are not reviewed, accelerated replacement wins (Table 6.3). So my recommendation is conditional: isolation with monitoring where the hospital can commit to daily review — for example through a shared service across the partnership — and accelerated replacement of the most exposed imaging devices where it cannot. I could not test staffing levels directly; a follow-up study would measure alert review times across several hospitals."
 
 ### 40.6 Common errors and limits
-Section forty point six develops thesis and presentation with a Calder County note the analyst can demo offline.
-
-Under section forty point six, County Resilience Partnership expects thesis claims to carry owners and dates.
-
-Section forty point six treats thesis structure the conclusion as testable only when evidence and ticket IDs are recorded.
-
 
 - Results and discussion mixed together.
 - Conclusions broader than the evidence.

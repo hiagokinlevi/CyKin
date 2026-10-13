@@ -124,8 +124,6 @@ Suppose a fault in the telemetry network stops the pumps feeding Hollin Hill at 
 
 Run the lab with the Python 3 standard library. It finds the exact time by bisection, compares forward-Euler time-stepping at three step sizes, and prints the average-rate estimate.
 
-Section one point five develops calculus with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ```python
 # Lab 1 - how long does Hollin Hill reservoir last after the pumps stop? (synthetic, offline)
 import math
@@ -244,14 +242,6 @@ print("states allowing run:", sum(r[4] for r in rows), "of", len(rows))
 
 Expected output:
 
-Section two point five develops discrete mathematics with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section two point five, TMRP lead expects discrete claims to carry owners and dates.
-
-Section two point five treats logic is the language as testable only when evidence and ticket IDs are recorded.
-
-For section two point five, Lowmarsh Regional Water Authority will not accept discrete work without a written trail.
-
 ```text
 grid_f1   -> ['fenwick_wtw', 'hollin_res', 'hospital_supply', 'lte', 'ps3', 'ps3_feed', 'ps4', 'rtu3', 'rtu4']
 lte       -> ['hollin_res', 'hospital_supply', 'ps3', 'ps4', 'rtu3', 'rtu4']
@@ -263,8 +253,6 @@ states allowing run: 3 of 16
 Only 3 of 16 input states allow the pump to run: those with $H = S = 0$ and at least one of $P, M$.
 
 ### 2.6 Common errors and limits
-Section two point six develops discrete mathematics with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 
 - Drawing arrows in mixed directions ("feeds" versus "depends on") in one graph.
 - Treating two paths as redundant without checking shared nodes further down.
@@ -310,13 +298,9 @@ Signals travel through copper at a significant fraction of the speed of light, t
 
 Electronic components fail faster when hot. A widely used engineering rule of thumb, derived from the Arrhenius relation, is that many failure mechanisms roughly double in rate for each 10 °C rise; treat it as a heuristic to be replaced by the manufacturer's data. A sealed roadside cabinet in summer sun can be far hotter than the air. Design implications: derate, ventilate or cool, and monitor cabinet temperature — a sudden rise can also indicate a door left open.
 
-Section three point three develops physics for computing with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 3.4 Physics and security
 
 Physical effects leak information and allow faults. Power consumption and electromagnetic emanations can reveal cryptographic keys (side channels); voltage or clock glitches can make a processor skip instructions; DRAM rows disturbed by repeated access can flip bits in neighbours, as [Kim et al. (2014)](https://doi.org/10.1109/ISCA.2014.6853210) demonstrated. In infrastructure, physical access to field cabinets is often easier than network access, so these attacks are not exotic. Tamper switches, sealed enclosures and keys held off-device are the physical controls.
-
-Section three point four develops physics for computing with a Lowmarsh Regional Water Authority note the engineer can demo offline.
 
 ### 3.5 Worked example: PS4 cabinet hold-up (synthetic)
 
@@ -326,19 +310,7 @@ LRWA's TMRP requirement R5 says field telemetry must survive a 24-hour grid outa
 
 Without code: build a spreadsheet or a ten-line script that computes battery hold-up from load (W), nominal capacity (Wh), usable fraction, efficiency and end-of-life capacity factor. Reproduce §3.5, then add a 15 W cabinet heater that runs whenever the outdoor temperature is below 0 °C and recompute.
 
-Section three point six develops physics for computing with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section three point six, TMRP lead expects physics claims to carry owners and dates.
-
-Section three point six treats electricity for the systems as testable only when evidence and ticket IDs are recorded.
-
 ### 3.7 Common errors and limits
-Section three point seven develops physics for computing with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section three point seven, TMRP lead expects physics claims to carry owners and dates.
-
-Section three point seven treats electricity for the systems as testable only when evidence and ticket IDs are recorded.
-
 
 - Sizing for nameplate battery capacity rather than end-of-life, cold, usable capacity.
 - Forgetting that the communications path (cellular base stations, fibre repeaters) has its own power dependency outside your control.
@@ -389,8 +361,6 @@ A parser that reads data from a field device, a network or a file is the boundar
 
 LRWA's RTU at PS3 returns two registers: reservoir level in centimetres and outlet pressure in kPa. Lab 3 builds the request frame, then parses five responses: a good one, a single-bit flip, a Modbus exception, a value outside the physical range of the tank (65535 cm — an uninitialised register) and a truncated frame. Each bad case is rejected with a reason that an operator or log analyst can act on.
 
-Section four point four develops programming with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 4.5 Practical activity: Lab 3
 
 ```python
@@ -424,12 +394,6 @@ for k, v in tests.items(): print(f"{k:9} {parse(v)}")
 
 Expected output:
 
-Section four point five develops programming with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section four point five, TMRP lead expects programming claims to carry owners and dates.
-
-Section four point five treats programs as precise descriptions as testable only when evidence and ticket IDs are recorded.
-
 ```text
 request: 01 03 00 00 00 0a c5 cd
 good      ok [3150, 212]
@@ -442,10 +406,6 @@ truncated reject: crc
 The truncated frame is rejected by the CRC check because its last two bytes are not a CRC; a parser that checked shape first would give a clearer reason. Both orders are safe; the important property is that nothing is accepted on partial evidence.
 
 ### 4.6 Common errors and limits
-Section four point six develops programming with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section four point six, TMRP lead expects programming claims to carry owners and dates.
-
 
 - Byte-order mistakes (Modbus registers are big-endian; the CRC is transmitted low byte first).
 - Indexing before checking length; trusting a length field inside the message.
@@ -491,8 +451,6 @@ A requirement is a statement the system must satisfy, written so that a test, an
 
 Report numbers with units, the method that produced them and their uncertainty or assumptions: "hold-up 14.6 h (integrated demand model, start 06:00, 85% initial level; 17.3 h if mean demand is assumed)". Prefer tables for exact values, line charts for time series, and never a chart without labelled axes and units. Avoid false precision: a battery hold-up computed from estimated loads is "about 19 h", not "18.83 h". Make figures readable in greyscale and by people with colour-vision deficiency.
 
-Section five point three develops engineering communication with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 5.4 Communicating risk to different readers
 
 Operators need what to do and when; managers need consequence, cost and options; regulators need evidence of compliance and of reasoning. The same finding — "remote setpoints are accepted without authentication" — becomes, for an operator, "until patched, confirm any unexpected setpoint change by phone with the control room"; for a manager, "a forged command could start or stop pumps; fix cost 120 k, three months"; for a regulator, a mapped control gap with a dated plan. None of these versions may contradict another.
@@ -500,8 +458,6 @@ Operators need what to do and when; managers need consequence, cost and options;
 ### 5.5 Sensitive information
 
 Infrastructure documents often contain network addresses, device models, vulnerabilities and capacity limits. Mark documents by sensitivity, share on a need-to-know basis, and strip detail from versions intended for wide audiences. Public reports and student work should describe systems at the level of the [NIST Guide to OT Security (SP 800-82 Rev. 3)](https://csrc.nist.gov/pubs/sp/800/82/r3/final) — architectural patterns — not the specific weaknesses of a named operator.
-
-Section five point five develops engineering communication with a Lowmarsh Regional Water Authority note the engineer can demo offline.
 
 ### 5.6 Worked example: a TMRP decision record (synthetic)
 
@@ -511,19 +467,7 @@ Section five point five develops engineering communication with a Lowmarsh Regio
 
 Rewrite three vague requirements from a synthetic brief ("the system shall be resilient", "alarms shall be timely", "logs shall be protected") into verifiable form, each with a verification method.
 
-Section five point seven develops engineering communication with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section five point seven, TMRP lead expects engineering claims to carry owners and dates.
-
-Section five point seven treats writing for decisions requirements as testable only when evidence and ticket IDs are recorded.
-
 ### 5.8 Common errors and limits
-Section five point eight develops engineering communication with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section five point eight, TMRP lead expects engineering claims to carry owners and dates.
-
-Section five point eight treats writing for decisions requirements as testable only when evidence and ticket IDs are recorded.
-
 
 - Burying the recommendation; writing a chronology instead of an argument.
 - Requirements containing "and/or", "as appropriate", "user-friendly", "secure".
@@ -581,17 +525,7 @@ LRWA's Hollin Hill outlet residual is maintained at 0.8 mg/L; the synthetic oper
 
 Modify Lab 1 to include constant inflow 120 m³/h from a single surviving pump and first-order leakage $0.01V$ m³/h. Integrate with Euler at three step sizes, and find the equilibrium level analytically by setting $dV/dt = 0$ with demand replaced by its mean.
 
-Section six point six develops calculus ii with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section six point six, TMRP lead expects calculus claims to carry owners and dates.
-
-Section six point six treats stocks with feedback become as testable only when evidence and ticket IDs are recorded.
-
 ### 6.7 Common errors and limits
-Section six point seven develops calculus ii with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section six point seven, TMRP lead expects calculus claims to carry owners and dates.
-
 
 - Using exponential decay where the process is not first-order.
 - Reporting a numerical solution without a step-size check.
@@ -640,10 +574,6 @@ If one communications path is available with probability $a$ and paths fail inde
 
 If events arrive independently at average rate $\lambda$ per year, the number in a year is Poisson: $P(N=k) = e^{-\lambda}\lambda^k/k!$. With $\lambda = 0.5$ long grid outages per year, $P(N \ge 1) \approx 0.39$. Poisson assumes a constant rate and independence; storms, campaigns of attacks and ageing violate both, so treat it as a first approximation.
 
-Section seven point four develops probability and statistics with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section seven point four, TMRP lead expects probability claims to carry owners and dates.
-
 ### 7.5 Describing data honestly
 
 Report a central value with spread (median and interquartile range for skewed data such as outage durations), the sample size, and how the data were collected. A confidence interval describes sampling uncertainty under a model; it says nothing about bias in what was recorded. Small samples of rare events are especially treacherous: zero failures in 3 years of operation does not mean zero risk. The "rule of three" gives an approximate 95% upper bound of $3/n$ on a rate when 0 events are observed in $n$ trials or time units.
@@ -674,16 +604,6 @@ print(f"P(>=2) = {1 - math.exp(-lam) * (1 + lam):.4f}")
 
 Expected output:
 
-Section seven point seven develops probability and statistics with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section seven point seven, TMRP lead expects probability claims to carry owners and dates.
-
-Section seven point seven treats probability as model of as testable only when evidence and ticket IDs are recorded.
-
-For section seven point seven, Lowmarsh Regional Water Authority will not accept probability work without a written trail.
-
-Section seven point seven fails closed if probability evidence is missing rather than guessing.
-
 ```text
 P(attack | alarm) = 0.087
 expected alarms per day (hourly windows) = 0.263
@@ -696,12 +616,6 @@ P(>=2) = 0.0902
 ```
 
 ### 7.8 Common errors and limits
-Section seven point eight develops probability and statistics with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section seven point eight, TMRP lead expects probability claims to carry owners and dates.
-
-Section seven point eight treats probability as model of as testable only when evidence and ticket IDs are recorded.
-
 
 - Reporting detector accuracy without the base rate and predictive value.
 - Multiplying availabilities as if independent when paths share causes.
@@ -763,17 +677,7 @@ TMRP compares two candidate RTUs. *RTU-A:* mature, deterministic, no secure boot
 
 For a microcontroller or PLC family of your choice, read the vendor's public security manual (or a datasheet) and complete a table: privilege separation, memory protection, secure boot, signed updates, key storage, authenticated programming. Mark each "yes / no / configurable / unknown" with a source citation. Use public documents only.
 
-Section eight point six develops computer architecture with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section eight point six, TMRP lead expects computer claims to carry owners and dates.
-
 ### 8.7 Common errors and limits
-Section eight point seven develops computer architecture with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section eight point seven, TMRP lead expects computer claims to carry owners and dates.
-
-Section eight point seven treats the machine model plcs as testable only when evidence and ticket IDs are recorded.
-
 
 - Equating "fast" with "deterministic".
 - Assuming secure boot prevents exploitation of signed firmware.
@@ -815,13 +719,9 @@ After this chapter you can (1) structure a program into modules with clear inter
 
 Equipment and protocols have modes: a pump is *stopped*, *starting*, *running*, *stopping* or *tripped*; a session is *unauthenticated*, *authenticated* or *closed*. A finite state machine lists states, the events that cause transitions, guards on transitions and actions. Write it as a table and implement it from the table, rejecting any event not listed for the current state. Unlisted transitions are where both bugs and attacks live: a "stop" command arriving while *starting*, or a "write setpoint" arriving before authentication.
 
-Section nine point two develops programming ii with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 9.3 Testing
 
 A unit test checks one behaviour of one unit. Good test suites include: typical cases; **boundaries** (minimum, maximum, just inside, just outside); invalid input; and **regression** tests reproducing past bugs. Coverage measures which statements or branches the tests executed; it tells you what was *not* tested, not that the tested code is correct. Python's `unittest` module, in the standard library, is enough for this book.
-
-Section nine point three develops programming ii with a Lowmarsh Regional Water Authority note the engineer can demo offline.
 
 ### 9.4 Errors, time and concurrency
 
@@ -835,19 +735,7 @@ LRWA's pump controller accepts `start`, `stop`, `trip` and `reset`. The table: *
 
 Implement the table in §9.5 in about 40 lines of Python with a dictionary keyed by `(state, event)`. Write `unittest` cases for all listed transitions and a loop that asserts every unlisted `(state, event)` pair raises an error. Count the unlisted pairs.
 
-Section nine point six develops programming ii with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section nine point six, TMRP lead expects programming claims to carry owners and dates.
-
-Section nine point six treats modules interfaces and invariants as testable only when evidence and ticket IDs are recorded.
-
 ### 9.7 Common errors and limits
-Section nine point seven develops programming ii with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section nine point seven, TMRP lead expects programming claims to carry owners and dates.
-
-Section nine point seven treats modules interfaces and invariants as testable only when evidence and ticket IDs are recorded.
-
 
 - Implementing state logic with scattered flags instead of an explicit table.
 - Default branches that accept unknown events.
@@ -897,8 +785,6 @@ Testing a system you do not own or have written permission to test can be a crim
 
 A practical ethical decision procedure: (1) state the decision and who is affected; (2) identify duties and the facts that bear on them; (3) list options, including escalation and refusal; (4) assess consequences for the most vulnerable stakeholders; (5) choose, document the reasoning and the dissent, and set a review point. Engineers rarely face clean dilemmas; more often the problem is pressure to sign off on something not yet shown to work. "Not verified" is an honest and sufficient answer.
 
-Section ten point four develops engineering ethics and safety with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 10.5 Worked example: the deadline sign-off (synthetic)
 
 TMRP's commissioning deadline is Friday. Test T3 (setpoint bounds) has failed: the PS4 controller accepts a setpoint outside the safe range when sent as a NaN value. The vendor proposes commissioning with a note to fix in the next release. As the verification engineer, you apply the procedure: affected people include hospital patients if PS4 behaves unpredictably; your duty is to public safety and honest reporting; options are (a) sign, (b) refuse, (c) commission with a compensating control — remote setpoint writes disabled at the gateway, local-only operation for PS4 — and a dated fix. You recommend (c), record T3 as failed, not waived, and require re-test before remote writes are enabled. The decision is documented and signed by the operations manager, who owns the operational risk.
@@ -907,21 +793,7 @@ TMRP's commissioning deadline is Friday. Test T3 (setpoint bounds) has failed: t
 
 Write a one-page authorisation template for a test of a synthetic system: scope, methods excluded, time window, stop conditions, contacts, data handling and sign-off.
 
-Section ten point six develops engineering ethics and safety with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section ten point six, TMRP lead expects engineering claims to carry owners and dates.
-
-Section ten point six treats duties of an engineer as testable only when evidence and ticket IDs are recorded.
-
-For section ten point six, Lowmarsh Regional Water Authority will not accept engineering work without a written trail.
-
 ### 10.7 Common errors and limits
-Section ten point seven develops engineering ethics and safety with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section ten point seven, TMRP lead expects engineering claims to carry owners and dates.
-
-Section ten point seven treats duties of an engineer as testable only when evidence and ticket IDs are recorded.
-
 
 - Treating ethics as a compliance checklist rather than reasoning about harm.
 - "Verbal permission" for testing.
@@ -967,15 +839,9 @@ Classic industrial protocols were designed for closed serial networks. **Modbus/
 
 Telemetry is usually polled: the SCADA master asks each RTU in turn. End-to-end latency from a physical event to an operator's screen is the sum of sensor update, RTU scan, link round-trip, master polling wait, processing and display refresh. **Jitter** is variation in latency. Write a budget, measure each element, and compare the total with the requirement; Chapter 36 adds queueing.
 
-Section eleven point three develops networks and protocols with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section eleven point three, TMRP lead expects networks claims to carry owners and dates.
-
 ### 11.4 Zones, conduits and allowlists
 
 Segmentation divides a network into **zones** with similar security requirements and controls the **conduits** between them. This vocabulary comes from the [ISA/IEC 62443 series](https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards). A conduit policy is an **allowlist**: specific source zone, destination zone, protocol and port, everything else denied. Verification is not reading the firewall configuration; it is checking observed flows against intended policy, because configurations drift and undocumented paths (a vendor's remote-access modem, a dual-homed laptop) bypass firewalls.
-
-Section eleven point four develops networks and protocols with a Lowmarsh Regional Water Authority note the engineer can demo offline.
 
 ### 11.5 Worked example: LRWA flow review (synthetic)
 
@@ -1003,16 +869,6 @@ print("end-to-end latency budget ms:", sum(budget.values()), "vs requirement 150
 
 Expected output:
 
-Section eleven point six develops networks and protocols with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section eleven point six, TMRP lead expects networks claims to carry owners and dates.
-
-Section eleven point six treats layers and what they as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point six, Lowmarsh Regional Water Authority will not accept networks work without a written trail.
-
-Section eleven point six fails closed if networks evidence is missing rather than guessing.
-
 ```text
   10.1.0.5    control -> 10.2.0.31  field      tcp/502   allowed
  10.4.0.77 enterprise -> 10.2.0.31  field      tcp/502   VIOLATION
@@ -1025,12 +881,6 @@ end-to-end latency budget ms: 1000 vs requirement 1500
 ```
 
 ### 11.7 Common errors and limits
-Section eleven point seven develops networks and protocols with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section eleven point seven, TMRP lead expects networks claims to carry owners and dates.
-
-Section eleven point seven treats layers and what they as testable only when evidence and ticket IDs are recorded.
-
 
 - Equating encryption at one layer with end-to-end protection.
 - Assuming an industrial protocol's optional security is enabled.
@@ -1068,12 +918,6 @@ After this chapter you can (1) explain processes, threads, scheduling, memory ma
 
 An OS multiplexes hardware among programs and provides abstractions: **processes** (isolated address spaces), **threads** (concurrent execution within a process), **virtual memory**, **files** and **devices**. The kernel runs privileged; applications request services through system calls. The scheduler decides which thread runs; its policy determines latency.
 
-Section twelve point one develops operating systems with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section twelve point one, TMRP lead expects operating claims to carry owners and dates.
-
-Section twelve point one treats what an operating system as testable only when evidence and ticket IDs are recorded.
-
 ### 12.2 Real-time operating systems
 
 A **real-time** OS guarantees bounded response: tasks with deadlines are scheduled so that, if the analysis says they fit, they meet their deadlines. Fixed-priority scheduling with rate-monotonic priority assignment is a classic approach; Liu and Layland's analysis gives a sufficient utilisation bound for periodic tasks under that policy. General-purpose OSes (Windows, desktop Linux) optimise throughput and fairness; their worst-case latency is not bounded without special configuration. Rule: protection functions run on real-time controllers; supervisory functions (HMI, historian) can run on general-purpose systems.
@@ -1099,19 +943,7 @@ LRWA's two SCADA servers run a general-purpose OS. The TMRP baseline: dedicated 
 
 On a Linux virtual machine you own, list listening services (`ss -tulpn`), local accounts with login shells, and enabled services. Write a hardening note: which services you would disable on a single-purpose historian host and why. Do not run this against any system you do not own.
 
-Section twelve point six develops operating systems with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section twelve point six, TMRP lead expects operating claims to carry owners and dates.
-
-Section twelve point six treats what an operating system as testable only when evidence and ticket IDs are recorded.
-
 ### 12.7 Common errors and limits
-Section twelve point seven develops operating systems with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section twelve point seven, TMRP lead expects operating claims to carry owners and dates.
-
-Section twelve point seven treats what an operating system as testable only when evidence and ticket IDs are recorded.
-
 
 - Running protection logic on a general-purpose OS.
 - Shared accounts that destroy accountability.
@@ -1149,13 +981,9 @@ After this chapter you can (1) design relational and time-series data models for
 
 [Codd (1970)](https://doi.org/10.1145/362384.362685) introduced the relational model: data as relations (tables) with keys, manipulated by set operations. Asset registers, work orders and user accounts fit it well. Process data — thousands of tags sampled every second — usually goes to a **historian**, a time-series store optimised for append and range queries, often with compression that discards changes smaller than a deadband. Know what your historian discards: forensic analysis may need values it never stored.
 
-Section thirteen point one develops data systems with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 13.2 Transactions, consistency and replication
 
 A **transaction** groups operations so that they all happen or none do (atomicity), leaving data valid (consistency), unaffected by concurrent transactions (isolation) and surviving crashes (durability). Replication copies data for availability; when replicas can disagree, systems choose between consistency and availability during a network partition. For operations: an operator's acknowledged alarm must not reappear as unacknowledged after failover; a setpoint change must not be applied twice.
-
-Section thirteen point two develops data systems with a Lowmarsh Regional Water Authority note the engineer can demo offline.
 
 ### 13.3 Integrity: what each mechanism detects
 
@@ -1168,8 +996,6 @@ Section thirteen point two develops data systems with a Lowmarsh Regional Water 
 ### 13.4 Getting data out without letting attacks in
 
 Enterprise teams want control data for reporting and analytics. The safe pattern is to push data outward — from the control zone to a DMZ historian replica — and let enterprise users query the replica, never the control historian. Where the consequence of control-zone compromise is severe, unidirectional gateways (data diodes) enforce outward-only flow physically. Lab 5's violation — an enterprise script polling an RTU directly — is the anti-pattern.
-
-Section thirteen point four develops data systems with a Lowmarsh Regional Water Authority note the engineer can demo offline.
 
 ### 13.5 Worked example: protecting the incident timeline (synthetic)
 
@@ -1197,16 +1023,6 @@ print("truncated head matches stored index 4:", chain(recs[:5])[-1] == anchor[4]
 
 Expected output:
 
-Section thirteen point six develops data systems with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section thirteen point six, TMRP lead expects data claims to carry owners and dates.
-
-Section thirteen point six treats models for operational data as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point six, Lowmarsh Regional Water Authority will not accept data work without a written trail.
-
-Section thirteen point six fails closed if data evidence is missing rather than guessing.
-
 ```text
 head: a8407870e41914c1
 first mismatch at index: 3 mismatches: 3
@@ -1214,12 +1030,6 @@ truncated head matches stored index 4: True
 ```
 
 ### 13.7 Common errors and limits
-Section thirteen point seven develops data systems with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section thirteen point seven, TMRP lead expects data claims to carry owners and dates.
-
-Section thirteen point seven treats models for operational data as testable only when evidence and ticket IDs are recorded.
-
 
 - Treating historian data as complete when compression or deadbands discard detail.
 - Hash chains without an independently stored anchor.
@@ -1257,10 +1067,6 @@ After this chapter you can (1) apply a secure software development lifecycle to 
 
 [Brooks (1987)](https://doi.org/10.1109/MC.1987.1663532) argued that software's essential difficulties — complexity, conformity, changeability, invisibility — admit no single breakthrough. Process does not remove them; it makes errors visible early, when fixing them is cheap, and leaves evidence that the work was done. For critical infrastructure the evidence is part of the product: regulators, insurers and asset owners will ask for it.
 
-Section fourteen point one develops software engineering with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section fourteen point one, TMRP lead expects software claims to carry owners and dates.
-
 ### 14.2 A secure development lifecycle
 
 The [NIST Secure Software Development Framework (SP 800-218)](https://csrc.nist.gov/pubs/sp/800/218/final) groups practices into preparing the organisation, protecting the software, producing well-secured software and responding to vulnerabilities. Concretely: security requirements and threat models with every feature; secure coding standards; peer review; automated static analysis and tests in continuous integration; protected build systems; vulnerability intake and disclosure; and patches with clear advisories. [CISA's Secure by Design](https://www.cisa.gov/securebydesign) principles add that manufacturers should take ownership of customer security outcomes — secure defaults, no default passwords, memory-safe languages where feasible.
@@ -1268,8 +1074,6 @@ The [NIST Secure Software Development Framework (SP 800-218)](https://csrc.nist.
 ### 14.3 Reviews and inspections
 
 [Fagan (1976)](https://doi.org/10.1147/sj.153.0182) described formal design and code inspections with defined roles and checklists, reporting that they found defects earlier and more cheaply than testing. Modern code review is lighter but keeps the principles: a second competent person reads every change, with a checklist that includes input validation, authentication, error handling and logging. Complexity metrics such as McCabe's cyclomatic complexity ([McCabe, 1976](https://doi.org/10.1109/TSE.1976.233837)) flag functions that are hard to test.
-
-Section fourteen point three develops software engineering with a Lowmarsh Regional Water Authority note the engineer can demo offline.
 
 ### 14.4 Dependencies and the supply chain
 
@@ -1279,10 +1083,6 @@ Most software is assembled from third-party components. A **software bill of mat
 
 OT software may be maintained for twenty years. Plan for: signed updates; rollback; staged deployment (test bench, one site, fleet); compatibility windows; end-of-support dates published in advance; and an update process that works when a site is reachable only intermittently. An update mechanism is itself an attack surface and must be authenticated.
 
-Section fourteen point five develops software engineering with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section fourteen point five, TMRP lead expects software claims to carry owners and dates.
-
 ### 14.6 Worked example: the telemetry gateway project (synthetic)
 
 TMRP must build a small gateway that adds HMAC authentication for legacy RTUs at PS1 and PS2. The plan: requirements R1, R2 and R7 traced to tests; a threat model reviewed by a second engineer; Python standard library only, avoiding third-party dependencies; static analysis and unit tests in CI; builds on a dedicated runner with signed artifacts and an SBOM (trivially short here); deployment to a bench, then PS2, then PS1; and a rollback image retained. Each step leaves a record in the evidence dossier (Chapter 48).
@@ -1291,21 +1091,7 @@ TMRP must build a small gateway that adds HMAC authentication for legacy RTUs at
 
 Write a one-page SSDF-mapped plan for a small tool you have written: for each of the four practice groups, list two concrete practices and the evidence each produces.
 
-Section fourteen point seven develops software engineering with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section fourteen point seven, TMRP lead expects software claims to carry owners and dates.
-
-Section fourteen point seven treats why process matters secure as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point seven, Lowmarsh Regional Water Authority will not accept software work without a written trail.
-
 ### 14.8 Common errors and limits
-Section fourteen point eight develops software engineering with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section fourteen point eight, TMRP lead expects software claims to carry owners and dates.
-
-Section fourteen point eight treats why process matters secure as testable only when evidence and ticket IDs are recorded.
-
 
 - Process documents without the practices they describe.
 - Code review without a checklist or without authority to block.
@@ -1351,8 +1137,6 @@ A **threat** is a potential cause of harm (an actor with capability and intent, 
 
 Controls are preventive, detective, corrective or compensating, and technical, procedural or physical. Design principles from [Saltzer and Schroeder (1975)](https://doi.org/10.1109/PROC.1975.9939): economy of mechanism, fail-safe defaults, complete mediation, open design, separation of privilege, least privilege, least common mechanism and psychological acceptability. Add **defence in depth** (layers whose failures are independent) and **assume breach** (design so that a compromise of one layer is detected and contained).
 
-Section fifteen point three develops security fundamentals with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 15.4 Frameworks
 
 Frameworks give structure and a common vocabulary. The [NIST Cybersecurity Framework 2.0](https://www.nist.gov/cyberframework) organises outcomes as Govern, Identify, Protect, Detect, Respond and Recover. The [NIST SP 800-53 Rev. 5](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final) catalogue lists controls; [ISA/IEC 62443](https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards) specifies requirements for industrial automation systems and components, with security levels; the UK's [NCSC Cyber Assessment Framework](https://www.ncsc.gov.uk/collection/caf) is outcome-based for essential services. A framework is a checklist of outcomes, not evidence that a design achieves them.
@@ -1372,21 +1156,7 @@ Each row names a consequence in service terms first. The table is a hypothesis t
 
 Map each proposed control in §15.5 to one CSF 2.0 function and one SP 800-53 control family, citing the documents.
 
-Section fifteen point six develops security fundamentals with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section fifteen point six, TMRP lead expects security claims to carry owners and dates.
-
-Section fifteen point six treats the properties threat vulnerability as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point six, Lowmarsh Regional Water Authority will not accept security work without a written trail.
-
 ### 15.7 Common errors and limits
-Section fifteen point seven develops security fundamentals with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section fifteen point seven, TMRP lead expects security claims to carry owners and dates.
-
-Section fifteen point seven treats the properties threat vulnerability as testable only when evidence and ticket IDs are recorded.
-
 
 - Copying enterprise priorities into OT.
 - Risk registers that list vulnerabilities without consequences.
@@ -1432,15 +1202,9 @@ Stakeholder needs are what people need the system to achieve, in their language:
 
 Most system failures happen at interfaces — between subsystems, organisations or people. An **interface control document** specifies data, timing, protocols, power, physical connections and responsibilities on each side. **Configuration management** identifies each item (hardware, firmware versions, settings, documents), controls changes through review and keeps records so that the as-built system is known. In security, an unknown configuration is an unknown attack surface.
 
-Section sixteen point three develops systems engineering with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section sixteen point three, TMRP lead expects systems claims to carry owners and dates.
-
 ### 16.4 Security as a systems engineering discipline
 
 [NIST SP 800-160 Vol. 1 Rev. 1](https://csrc.nist.gov/pubs/sp/800/160/v1/r1/final) frames systems security engineering as security activities embedded in the systems engineering technical processes: stakeholder protection needs, security requirements, architectural design for security, verification of security claims, and secure operation and disposal. Its companion, [SP 800-160 Vol. 2 Rev. 1](https://doi.org/10.6028/NIST.SP.800-160v2r1), addresses cyber resiliency: anticipating, withstanding, recovering from and adapting to adverse conditions including attack.
-
-Section sixteen point four develops systems engineering with a Lowmarsh Regional Water Authority note the engineer can demo offline.
 
 ### 16.5 Worked example: TMRP as a system (synthetic)
 
@@ -1450,21 +1214,7 @@ TMRP's top-level needs: N1 keep the hospital supplied (≤ 4 h interruption in c
 
 Draw a traceability matrix N1–N4 × R1–R9 and mark each requirement's parent(s). Identify any need with weak coverage.
 
-Section sixteen point six develops systems engineering with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section sixteen point six, TMRP lead expects systems claims to carry owners and dates.
-
-Section sixteen point six treats the lifecycle and the as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point six, Lowmarsh Regional Water Authority will not accept systems work without a written trail.
-
 ### 16.7 Common errors and limits
-Section sixteen point seven develops systems engineering with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section sixteen point seven, TMRP lead expects systems claims to carry owners and dates.
-
-Section sixteen point seven treats the lifecycle and the as testable only when evidence and ticket IDs are recorded.
-
 
 - Requirements written after design to justify it.
 - Interfaces owned by nobody.
@@ -1502,10 +1252,6 @@ After this chapter you can (1) describe open- and closed-loop control, setpoints
 
 A **closed-loop** controller measures a process variable, compares it with a setpoint and adjusts an actuator to reduce the error. Feedback makes systems robust to disturbances and model errors — and makes them trust their sensors completely. [Åström and Murray's *Feedback Systems*](https://fbswiki.org/wiki/index.php/Main_Page), freely available online, is the reference text for this chapter.
 
-Section seventeen point one develops control and feedback basics with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section seventeen point one, TMRP lead expects control claims to carry owners and dates.
-
 ### 17.2 PI control
 
 A proportional controller sets actuator output $u = K_p e$; it leaves a steady-state error when a constant disturbance must be balanced. Adding an integral term, $u = K_p e + K_i\int e\,dt$, removes steady-state error because the integral keeps growing until the error is zero. Actuators saturate — a pump cannot deliver more than its maximum flow — and while saturated, the integral keeps growing (**wind-up**), causing overshoot when the actuator comes out of saturation. Anti-wind-up stops integration while saturated.
@@ -1513,8 +1259,6 @@ A proportional controller sets actuator output $u = K_p e$; it leaves a steady-s
 ### 17.3 False data and the trusting controller
 
 If an attacker adds a bias $b$ to the level measurement, the controller regulates the *measured* level to the setpoint, so the *true* level settles at setpoint minus $b$. The controller is functioning perfectly; the process is not. This is the core of process-aware attacks: Stuxnet, as analysed by [Langner (2011)](https://doi.org/10.1109/MSP.2011.67), manipulated centrifuge speeds while replaying normal-looking values to operators. Defences cannot rely on the same sensor stream the attacker controls.
-
-Section seventeen point three develops control and feedback basics with a Lowmarsh Regional Water Authority note the engineer can demo offline.
 
 ### 17.4 Residual-based detection
 
@@ -1557,16 +1301,6 @@ print("ramp 0.05 m/h    ", run(lambda t: 0.05 * (t - 10) if t >= 10 else 0.0))
 
 Expected output:
 
-Section seventeen point six develops control and feedback basics with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section seventeen point six, TMRP lead expects control claims to carry owners and dates.
-
-Section seventeen point six treats feedback pi control false as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point six, Lowmarsh Regional Water Authority will not accept control work without a written trail.
-
-Section seventeen point six fails closed if control evidence is missing rather than guessing.
-
 ```text
 columns: true final level m, true min level m, step-detector alarm h, cumulative-detector alarm h
 no attack         (3.0, 3.0, None, None)
@@ -1576,10 +1310,6 @@ ramp 0.05 m/h     (1.1, 1.1, None, 10.6)
 ```
 
 ### 17.7 Common errors and limits
-Section seventeen point seven develops control and feedback basics with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section seventeen point seven, TMRP lead expects control claims to carry owners and dates.
-
 
 - Equating "the controller worked" with "the process is safe".
 - Detection that uses the same data path as the control loop.
@@ -1617,15 +1347,9 @@ After this chapter you can (1) describe reference architectures for operational 
 
 OT architectures are commonly described in levels: physical process (level 0), sensors and actuators with basic control (1), supervisory control (2), site operations (3), a demilitarised zone, and enterprise (4–5). The model, which descends from the Purdue reference architecture and appears in the [NIST OT guide](https://csrc.nist.gov/pubs/sp/800/82/r3/final), is a tool for placing assets and conduits, not a law. Modern systems blur levels: cloud-connected sensors, vendor remote services and field devices with direct cellular links.
 
-Section eighteen point one develops security architecture with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 18.2 The DMZ and data brokering
 
 The OT DMZ sits between control and enterprise networks. No direct traffic crosses it: enterprise systems talk to DMZ services (historian replica, patch server, remote-access gateway), which talk to control systems. A useful test: if any enterprise host is compromised, can it send a packet that reaches a controller? If yes, the DMZ is decorative.
-
-Section eighteen point two develops security architecture with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section eighteen point two, TMRP lead expects security claims to carry owners and dates.
 
 ### 18.3 Zero trust in OT
 
@@ -1639,8 +1363,6 @@ Vendor and staff remote access is a leading entry path into OT. Architect it as:
 
 Network security monitoring in OT is usually passive: copies of traffic from switch mirror ports or taps feed sensors that understand industrial protocols and baseline normal behaviour. Logs from servers, firewalls and gateways go to a collector in the DMZ or a dedicated security zone. Monitoring must not create new paths into control: sensors receive copies only, and management interfaces sit on a separate network.
 
-Section eighteen point five develops security architecture with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 18.6 Worked example: TMRP target architecture (synthetic)
 
 LRWA's target: enterprise — firewall — DMZ (historian replica, remote-access gateway with MFA, patch staging, log collector) — firewall — control zone (SCADA pair, engineering jump host) — field conduit over private LTE with application-layer authentication (gateways for legacy RTUs) — RTUs and local control panels with manual mode. Passive monitoring taps sit at the control zone switch and the LTE head-end. The architecture is evaluated against consequences: forged commands require compromising either a field gateway key or the SCADA servers; enterprise compromise yields historian replica data but no packet path to field devices; loss of LTE leaves sites in local automatic or manual mode with 24 h telemetry batteries.
@@ -1649,21 +1371,7 @@ LRWA's target: enterprise — firewall — DMZ (historian replica, remote-access
 
 Draw the target architecture in text or a simple diagram and annotate each conduit with the allowlist entries from Lab 5. Then apply the DMZ test of §18.2.
 
-Section eighteen point seven develops security architecture with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section eighteen point seven, TMRP lead expects security claims to carry owners and dates.
-
-Section eighteen point seven treats layered ot architectures the as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point seven, Lowmarsh Regional Water Authority will not accept security work without a written trail.
-
 ### 18.8 Common errors and limits
-Section eighteen point eight develops security architecture with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section eighteen point eight, TMRP lead expects security claims to carry owners and dates.
-
-Section eighteen point eight treats layered ot architectures the as testable only when evidence and ticket IDs are recorded.
-
 
 - DMZs with "temporary" direct rules.
 - Zero trust claimed for systems that cannot authenticate.
@@ -1719,8 +1427,6 @@ Keys are where cryptography meets operations. Decide: who generates keys and whe
 
 People need named accounts, strong authentication (phishing-resistant multi-factor where possible — see [NIST SP 800-63B](https://csrc.nist.gov/pubs/sp/800/63/b/upd2/final)), roles mapped to tasks, and prompt removal on departure. Devices need identities too — certificates or provisioned keys — so that a gateway knows which RTU it is talking to. Shared or default credentials are the most common identity failure in OT.
 
-Section nineteen point four develops identity and cryptography with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 19.5 Worked example: TMRP message format (synthetic)
 
 ADR-007 chose HMAC with counters. The frame in Lab 8 carries an 8-byte counter, 2-byte station ID, 2-byte level and a 16-byte truncated HMAC-SHA256: 28 bytes, of which 22 are overhead relative to a 6-byte unauthenticated payload. Per-station keys are generated in the gateway's secure element at enrolment and stored in the RTU's key store; the SCADA side holds them in a hardware security module. Keys rotate annually and immediately on suspected compromise; the counter is persisted in non-volatile memory at each increment of 1,000 with a forward skip on restart, so replay of old messages remains impossible.
@@ -1750,14 +1456,6 @@ print("frame bytes:", len(m1), "overhead vs 6-byte payload:", len(m1) - 6)
 
 Expected output:
 
-Section nineteen point six develops identity and cryptography with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section nineteen point six, TMRP lead expects identity claims to carry owners and dates.
-
-Section nineteen point six treats primitives authenticating telemetry key as testable only when evidence and ticket IDs are recorded.
-
-For section nineteen point six, Lowmarsh Regional Water Authority will not accept identity work without a written trail.
-
 ```text
 m1         ok st=3 ctr=1 level=312cm
 m2         ok st=3 ctr=2 level=309cm
@@ -1769,12 +1467,6 @@ frame bytes: 28 overhead vs 6-byte payload: 22
 The key in the lab is a published demonstration value; real keys must never appear in source code.
 
 ### 19.7 Common errors and limits
-Section nineteen point seven develops identity and cryptography with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section nineteen point seven, TMRP lead expects identity claims to carry owners and dates.
-
-Section nineteen point seven treats primitives authenticating telemetry key as testable only when evidence and ticket IDs are recorded.
-
 
 - Hashes or CRCs used as if they were MACs.
 - Non-constant-time tag comparison.
@@ -1844,19 +1536,7 @@ LRWA is a water utility with a hospital among its critical customers. Its conseq
 
 Choose one sector other than water. From public sources only, build its row of §20.2 in more detail: three consequence units, three typical technologies, two key regulations with version and date, and one documented incident with its source.
 
-Section twenty point six develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section twenty point six, TMRP lead expects critical claims to carry owners and dates.
-
-Section twenty point six treats what makes infrastructure critical as testable only when evidence and ticket IDs are recorded.
-
 ### 20.7 Common errors and limits
-Section twenty point seven develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section twenty point seven, TMRP lead expects critical claims to carry owners and dates.
-
-Section twenty point seven treats what makes infrastructure critical as testable only when evidence and ticket IDs are recorded.
-
 
 - Treating "critical infrastructure" as a technology category rather than a consequence category.
 - Regulations quoted without version or date.
@@ -1906,10 +1586,6 @@ IEC 62443-3-3 and 62443-4-2 express system and component requirements against **
 
 Requirements conflict: fast operator access versus strong authentication; frequent patching versus availability; detailed logging versus storage at remote sites; vendor support versus network isolation. Do not resolve conflicts silently in design. Record each, its options, and the decision with its owner — usually the person who owns the operational risk.
 
-Section twenty-one point four develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section twenty-one point four, TMRP lead expects critical claims to carry owners and dates.
-
 ### 21.5 Worked example: TMRP requirement set v1.0 (synthetic)
 
 | ID | Requirement | Source | Verification |
@@ -1930,21 +1606,7 @@ Conflict recorded: R4's local manual mode creates a path that bypasses R1's auth
 
 Choose one degraded state not yet covered (e.g., loss of the chlorine supplier for 7 days) and write a requirement, its source, and verification method.
 
-Section twenty-one point six develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section twenty-one point six, TMRP lead expects critical claims to carry owners and dates.
-
-Section twenty-one point six treats sources of requirements requirements as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-one point six, Lowmarsh Regional Water Authority will not accept critical work without a written trail.
-
 ### 21.7 Common errors and limits
-Section twenty-one point seven develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section twenty-one point seven, TMRP lead expects critical claims to carry owners and dates.
-
-Section twenty-one point seven treats sources of requirements requirements as testable only when evidence and ticket IDs are recorded.
-
 
 - Requirements for protection only, none for degradation and recovery.
 - Security levels assigned without a documented risk assessment.
@@ -1982,8 +1644,6 @@ After this chapter you can (1) build an asset inventory and a system model that 
 
 You cannot protect what you do not know. An OT asset inventory records, for each device: identity, location, function, zone, network addresses, hardware and firmware versions, communication relationships, owner, criticality and support status. Build it from several sources and reconcile: design documents, passive network monitoring, configuration exports and site walk-downs. Each source misses things — documents drift, passive monitoring misses quiet devices, walk-downs miss virtual ones.
 
-Section twenty-two point one develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 22.2 Three views of a system
 
 - **Functional view:** what the system does — functions such as "maintain reservoir level", "disinfect", "provide operator visibility" — and which functions depend on which (Lab 2's graph).
@@ -1996,13 +1656,9 @@ Keep the views linked: every function maps to the assets that implement it; ever
 
 Up/down graphs are useful (Chapter 2) but insufficient. A pumping station may be in *remote automatic*, *local automatic*, *local manual*, *degraded* (one pump of two) or *out of service*; the reservoir may be *normal*, *low* or *below floor*. A **state model** for each critical function, with transitions caused by faults, attacks and operator actions, lets you ask: from normal operation, what sequence of events reaches an unacceptable state, and which control interrupts it?
 
-Section twenty-two point three develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 22.4 The model as sensitive information
 
 An accurate system model is a map for an adversary. Store it with access control, version it, and publish only abstractions. Treat exports to vendors and consultants under agreements. Keep a **model change log** linked to configuration management (Chapter 16) so that the model stays current; a model that is a year out of date is a liability presented as an asset.
-
-Section twenty-two point four develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
 
 ### 22.5 Worked example: Hollin Hill functional model (synthetic)
 
@@ -2012,19 +1668,7 @@ Function F1 "supply St Brenna's" is satisfied if either path A (PS4 direct) or p
 
 Extend Lab 2 so that each node has an AND or OR dependency type, and implement an availability function that evaluates whether `hospital_supply` works given a set of failed nodes. Test with the failures `{grid_f1}`, `{ps4}` and `{ps4, grid_f1}`.
 
-Section twenty-two point six develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section twenty-two point six, TMRP lead expects critical claims to carry owners and dates.
-
-Section twenty-two point six treats inventory first three views as testable only when evidence and ticket IDs are recorded.
-
 ### 22.7 Common errors and limits
-Section twenty-two point seven develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section twenty-two point seven, TMRP lead expects critical claims to carry owners and dates.
-
-Section twenty-two point seven treats inventory first three views as testable only when evidence and ticket IDs are recorded.
-
 
 - Inventory from one source only.
 - Diagrams without trust boundaries or data direction.
@@ -2109,16 +1753,6 @@ print(f"rare-event approx {rare:.3e}  exact {exact:.3e}")
 
 Expected output:
 
-Section twenty-three point six develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section twenty-three point six, TMRP lead expects critical claims to carry owners and dates.
-
-Section twenty-three point six treats threat modelling fault trees as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-three point six, Lowmarsh Regional Water Authority will not accept critical work without a written trail.
-
-Section twenty-three point six fails closed if critical evidence is missing rather than guessing.
-
 ```text
 ['G1', 'PS4', 'TANK'] 6.00e-05
 ['PS3', 'PS4', 'TANK'] 1.20e-05
@@ -2130,12 +1764,6 @@ rare-event approx 9.360e-05  exact 9.101e-05
 ```
 
 ### 23.7 Common errors and limits
-Section twenty-three point seven develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section twenty-three point seven, TMRP lead expects critical claims to carry owners and dates.
-
-Section twenty-three point seven treats threat modelling fault trees as testable only when evidence and ticket IDs are recorded.
-
 
 - Fault trees with dependent basic events treated as independent (common power, common software).
 - Probabilities for deliberate attacks presented as frequencies.
@@ -2186,21 +1814,13 @@ Engineering projects use several; a common mistake is using one method to answer
 
 A reproducible assessment documents: scope and assumptions; system model version; threat sources and their assumed capabilities; scenarios (threat event → vulnerability → consequence); existing controls; likelihood and consequence scales with definitions; ratings with rationale; and recommended controls. Scales must be defined in the organisation's terms (people-hours without water, not "high"). Ratings without rationale are opinions; with rationale, they can be challenged and improved.
 
-Section twenty-four point two develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 24.3 Simulation with verification and validation
 
 **Verification** asks whether the model is implemented correctly (does the code do what the model says?); **validation** asks whether the model represents reality well enough for its purpose. [Sargent (2013)](https://doi.org/10.1057/jos.2012.20) describes techniques: comparison with analytic results (Lab 1's Euler versus exact), extreme-condition tests, comparison with historical data, face validity with operators, and sensitivity analysis. State the model's intended use; a model valid for hold-up estimation may be invalid for transient pressure analysis.
 
-Section twenty-four point three develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 24.4 Exercises with people
 
 Tabletop exercises walk a team through a scenario to test plans, roles and decisions; functional exercises perform some actions for real. Design them with objectives, injects, observers and an after-action report that records gaps without blame. They show whether people know what to do and where plans are ambiguous; they do not measure equipment performance.
-
-Section twenty-four point four develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section twenty-four point four, TMRP lead expects critical claims to carry owners and dates.
 
 ### 24.5 Worked example: choosing methods for TMRP (synthetic)
 
@@ -2210,19 +1830,7 @@ TMRP has four open questions: (1) which scenarios deserve funding — risk asses
 
 Run a 45-minute tabletop with two classmates on the scenario "SCADA servers encrypted at 02:00", using the TMRP requirement set. Record decisions, times and gaps in an after-action report.
 
-Section twenty-four point six develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section twenty-four point six, TMRP lead expects critical claims to carry owners and dates.
-
-Section twenty-four point six treats matching method to question as testable only when evidence and ticket IDs are recorded.
-
 ### 24.7 Common errors and limits
-Section twenty-four point seven develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section twenty-four point seven, TMRP lead expects critical claims to carry owners and dates.
-
-Section twenty-four point seven treats matching method to question as testable only when evidence and ticket IDs are recorded.
-
 
 - One method stretched to answer all questions.
 - Undefined likelihood and consequence scales.
@@ -2260,21 +1868,13 @@ After this chapter you can (1) run a structured design studio from brief to revi
 
 A design studio is an iterative, critiqued design exercise. Teams receive a brief, produce concepts, present them to reviewers who challenge assumptions, and revise. Its value is the critique: designs improve fastest when someone competent tries to break them early. In this course, each studio produces a **concept dossier**: problem statement, requirements excerpt, alternatives, evaluation, selected concept, risk register, verification plan and open questions.
 
-Section twenty-five point one develops design studio with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 25.2 The brief
 
 **Studio I brief (synthetic):** LRWA must secure remote operation of PS1–PS6 and the Fenwick works. Constraints: budget 250 k (Lab 16); PS1 and PS2 have legacy RTU-A units that cannot be replaced for three years; private LTE is the only economical link; one control room, staffed 24/7 with one operator at night; the hospital needs ≤ 4 h interruption. Deliver: two to four concepts, evaluation, selection and verification plan.
 
-Section twenty-five point two develops design studio with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 25.3 Generating alternatives
 
 Generate concepts that differ in principle, not detail: (A) carrier-encrypted LTE with central firewalling only; (B) IPsec tunnels from new RTUs, gateways for legacy; (C) application-layer authentication with gateways and strong local autonomy; (D) no remote control at all — monitoring only, with operators dispatched for every change. Including an extreme (D) clarifies what remote control is worth.
-
-Section twenty-five point three develops design studio with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section twenty-five point three, TMRP lead expects design claims to carry owners and dates.
 
 ### 25.4 Weighted evaluation
 
@@ -2295,31 +1895,11 @@ D scores close to C because it is very secure, but its operability score reflect
 
 Present: the problem in one sentence, constraints, alternatives, evaluation, selection, risks, and what you have not verified. Reviewers will attack assumptions; record each finding, respond (accept, reject with reason, defer with owner) and revise. A defensive team learns nothing; a team that accepts every comment has no design.
 
-Section twenty-five point five develops design studio with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section twenty-five point five, TMRP lead expects design claims to carry owners and dates.
-
 ### 25.6 Practical activity
 
 Produce the concept dossier for the Studio I brief in no more than eight pages and hold a 20-minute review with two peers acting as panel.
 
-Section twenty-five point six develops design studio with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section twenty-five point six, TMRP lead expects design claims to carry owners and dates.
-
-Section twenty-five point six treats what studio is the as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point six, Lowmarsh Regional Water Authority will not accept design work without a written trail.
-
 ### 25.7 Common errors and limits
-Section twenty-five point seven develops design studio with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section twenty-five point seven, TMRP lead expects design claims to carry owners and dates.
-
-Section twenty-five point seven treats what studio is the as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point seven, Lowmarsh Regional Water Authority will not accept design work without a written trail.
-
 
 - Alternatives that are variations of one idea.
 - Weights chosen after scoring.
@@ -2357,8 +1937,6 @@ After this chapter you can (1) compare architectural patterns for critical syste
 
 Centralised control (one SCADA directing simple field devices) gives operators a single view and makes coordination easy, but concentrates both failure and attack. Distributed control (capable field controllers that run locally and accept supervisory targets) degrades gracefully when the centre or network is lost, at the cost of more devices to secure and configure. Most resilient designs are hierarchical: local control maintains safe operation autonomously; the centre optimises and coordinates.
 
-Section twenty-six point one develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 26.2 Redundancy patterns
 
 - **Hot standby:** a second unit running and ready to take over automatically (SCADA server pairs).
@@ -2372,13 +1950,9 @@ Each pattern must be judged against common causes (Chapter 7): two identical ser
 
 Diversity — different technologies, vendors, paths or teams — reduces common causes. It costs more and increases the skills needed, and can add attack surface. Use it where a common cause would be unacceptable: a second communication path via a different carrier and different power; a hard-wired safety trip independent of software; a manual gauge an operator can read when all electronics are suspect.
 
-Section twenty-six point three develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 26.4 Unidirectional flows and local autonomy
 
 Unidirectional gateways enforce outward-only data flow physically; they remove a whole class of inbound attacks on the protected side but also remove remote control through that path. Local autonomy — the ability of a site to run safely without the centre — is a resilience pattern that also limits attack consequence: a compromised centre can disrupt optimisation but should not be able to drive a site outside safe limits if those limits are enforced locally (R3).
-
-Section twenty-six point four develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
 
 ### 26.5 Worked example: three TMRP architectures compared (synthetic)
 
@@ -2397,21 +1971,7 @@ The table makes the residual risk of C2 explicit: a compromised SCADA centre can
 
 Write an ADR selecting between C2 and C3 for PS4 specifically (the hospital feed), considering that PS4's setpoints change rarely.
 
-Section twenty-six point six develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section twenty-six point six, TMRP lead expects critical claims to carry owners and dates.
-
-Section twenty-six point six treats centralised and distributed control as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-six point six, Lowmarsh Regional Water Authority will not accept critical work without a written trail.
-
 ### 26.7 Common errors and limits
-Section twenty-six point seven develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section twenty-six point seven, TMRP lead expects critical claims to carry owners and dates.
-
-Section twenty-six point seven treats centralised and distributed control as testable only when evidence and ticket IDs are recorded.
-
 
 - Redundancy without diversity, claimed as resilience against attack.
 - Diversity everywhere, overwhelming maintenance capability.
@@ -2449,29 +2009,17 @@ After this chapter you can (1) design controls that address specific scenarios w
 
 Each scenario from Chapter 23 gets controls at three points: **prevent** the threat event, **detect** it if prevention fails, and **limit and recover** from consequences. Example — forged stop commands to PS3 and PS4: prevent with authenticated commands (R1); detect with alarms on command anomalies and unexpected state changes; limit with local automatic restart logic and the hospital tank; recover with local manual procedures (R4).
 
-Section twenty-seven point one develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 27.2 Engineered limits first
 
 For the worst consequences, the most robust controls do not depend on software at all: pressure relief valves, mechanical stops, hard-wired interlocks, chemical dosing pumps physically sized so they cannot overdose at maximum stroke. Cyber-informed engineering (see [INL CCE](https://inl.gov/national-security/cce/)) emphasises such controls because they hold even if every digital system is compromised. They cannot cover everything — a mechanical relief valve cannot stop a pump from being switched off — but they bound the worst cases.
-
-Section twenty-seven point two develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
 
 ### 27.3 Independent layers
 
 Defence in depth works only if layers fail independently. List each layer's dependencies: if authentication, monitoring and logging all depend on the SCADA servers, one compromise defeats all three. Place at least one detection layer outside the systems it watches (passive network monitoring, an independent analyser), and keep recovery materials (offline backups, procedures, spare keys) outside the reach of the threat being recovered from.
 
-Section twenty-seven point three develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 27.4 Specifying controls
 
 A control specification states: the scenario(s) it addresses; its function; performance (detection within X, rejection rate, restoration time); dependencies; failure mode (fail-safe or fail-operational, and what that means here); owner; and verification method. Without performance and verification, a control is an intention.
-
-Section twenty-seven point four develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section twenty-seven point four, TMRP lead expects critical claims to carry owners and dates.
-
-Section twenty-seven point four treats from scenario to control as testable only when evidence and ticket IDs are recorded.
 
 ### 27.5 Worked example: setpoint bounds (synthetic)
 
@@ -2481,21 +2029,7 @@ Scenario: forged or erroneous setpoint drives the chlorine dosing pump to overdo
 
 Write full specifications for two controls of the forged-stop scenario in §27.1, including performance, dependencies, failure mode and verification.
 
-Section twenty-seven point six develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section twenty-seven point six, TMRP lead expects critical claims to carry owners and dates.
-
-Section twenty-seven point six treats from scenario to control as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point six, Lowmarsh Regional Water Authority will not accept critical work without a written trail.
-
 ### 27.7 Common errors and limits
-Section twenty-seven point seven develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section twenty-seven point seven, TMRP lead expects critical claims to carry owners and dates.
-
-Section twenty-seven point seven treats from scenario to control as testable only when evidence and ticket IDs are recorded.
-
 
 - Controls without performance criteria.
 - Bounds enforced in the HMI rather than the controller.
@@ -2533,11 +2067,7 @@ After this chapter you can (1) implement a security control as working code with
 
 Start from the control specification (Chapter 27): every "shall" becomes at least one test before or alongside the code. Keep the implementation small and dependency-free where possible — the gateway in this book uses only the Python standard library. Structure it as Chapter 9 recommends: a parser (Chapter 4), a verifier (Chapter 19), a state store (replay counters), and an output interface, each tested separately.
 
-Section twenty-eight point one develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 28.2 Secure coding for control paths
-Section twenty-eight point two develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 
 - Validate input before use: length, MAC, counter, shape, physical range (Labs 3 and 8).
 - Compare secrets in constant time (`hmac.compare_digest`).
@@ -2550,19 +2080,9 @@ Section twenty-eight point two develops critical infrastructure and sector secur
 
 A test bench reproduces the control's environment offline: simulated RTUs that send valid, malformed, forged, replayed and delayed messages; a simulated SCADA that receives the gateway's output; and a clock you can control. Lab 15 (Chapter 40) is a compact version. Benches let you test failure modes that would be unsafe or impossible to provoke on a live system.
 
-Section twenty-eight point three develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section twenty-eight point three, TMRP lead expects critical claims to carry owners and dates.
-
 ### 28.4 Evidence
 
 Record for each implementation: the requirement and specification versions implemented; the source revision; test results with tool versions; known limitations; and reviewer sign-off. This becomes part of the evidence dossier (Chapter 48).
-
-Section twenty-eight point four develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section twenty-eight point four, TMRP lead expects critical claims to carry owners and dates.
-
-Section twenty-eight point four treats from specification to code as testable only when evidence and ticket IDs are recorded.
 
 ### 28.5 Worked example: setpoint validator v1 (synthetic)
 
@@ -2572,19 +2092,7 @@ The TMRP team implements R3 from the §27.5 specification. Version 1 checks `new
 
 Implement a minimal gateway that combines Lab 3's parser output with Lab 8's sealing, so that a validated Modbus reading becomes an authenticated frame. Write tests for each rejection path.
 
-Section twenty-eight point six develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section twenty-eight point six, TMRP lead expects critical claims to carry owners and dates.
-
-Section twenty-eight point six treats from specification to code as testable only when evidence and ticket IDs are recorded.
-
 ### 28.7 Common errors and limits
-Section twenty-eight point seven develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section twenty-eight point seven, TMRP lead expects critical claims to carry owners and dates.
-
-Section twenty-eight point seven treats from specification to code as testable only when evidence and ticket IDs are recorded.
-
 
 - Code written before the specification is clear.
 - Default-accept behaviour on exceptions.
@@ -2622,8 +2130,6 @@ After this chapter you can (1) define security and resilience metrics that suppo
 
 A metric is useful if it changes a decision. Three families: **control performance** (does the control do what was specified: rejection rates, detection times); **exposure** (how much attack surface or vulnerability exists: unauthenticated conduits, unpatched reachable vulnerabilities, shared accounts); and **service resilience** (how service degrades and recovers). Use the goal–question–metric approach: state the goal, the question that would show progress, and only then the metric.
 
-Section twenty-nine point one develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 29.2 Detection metrics
 
 From a labelled test set: true positives (TP), false positives (FP), false negatives (FN), true negatives (TN). **Precision** = TP/(TP+FP): of alarms, how many were real. **Recall** = TP/(TP+FN): of real events, how many were found. **F1** is their harmonic mean. Report both precision and recall with the base rate of the test set; precision in a test set with 50% attacks says little about operations with 0.1% (Chapter 7). **Time to detect** is a distribution; report median and worst cases, not only the mean. [Arp et al. (2022)](https://www.usenix.org/conference/usenixsecurity22/presentation/arp) list common pitfalls in evaluating machine-learning security systems, including unrealistic base rates and data snooping; [Kim et al. (2022)](https://ojs.aaai.org/index.php/AAAI/article/view/20680) show how point-adjusted evaluation can inflate time-series anomaly detection scores.
@@ -2632,17 +2138,9 @@ From a labelled test set: true positives (TP), false positives (FP), false negat
 
 Plot service performance $Q(t)$ — for LRWA, the fraction of demand met — through a disruption. [Bruneau et al. (2003)](https://doi.org/10.1193/1.1623497) proposed measuring resilience loss as the area between full performance and $Q(t)$ from disruption to recovery. The curve shows robustness (how far performance falls), rapidity (how fast it recovers) and the total loss. Engineering requirements map onto it: R4 keeps the drop shallow; R6 shortens the recovery.
 
-Section twenty-nine point three develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 29.4 Metrics that mislead
 
 Counting blocked attacks rewards noisy firewalls; counting patches applied ignores which ones mattered; mean time to detect hides the one event detected after three weeks. When a metric becomes a target, people optimise the metric. Prefer metrics tied to consequences and verified by test.
-
-Section twenty-nine point four develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section twenty-nine point four, TMRP lead expects critical claims to carry owners and dates.
-
-Section twenty-nine point four treats what to measure detection as testable only when evidence and ticket IDs are recorded.
 
 ### 29.5 Worked example: anomaly detector acceptance test (synthetic)
 
@@ -2665,28 +2163,12 @@ print("time to detect (min):", ttd, "mean", round(sum(ttd)/len(ttd), 1), "median
 
 Expected output:
 
-Section twenty-nine point six develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section twenty-nine point six, TMRP lead expects critical claims to carry owners and dates.
-
-Section twenty-nine point six treats what to measure detection as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point six, Lowmarsh Regional Water Authority will not accept critical work without a written trail.
-
-Section twenty-nine point six fails closed if critical evidence is missing rather than guessing.
-
 ```text
 TP=5 FP=3 FN=2 TN=4 precision=0.625 recall=0.714 F1=0.667
 time to detect (min): [2, 4, 7, 11, 30] mean 10.8 median 7
 ```
 
 ### 29.7 Common errors and limits
-Section twenty-nine point seven develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section twenty-nine point seven, TMRP lead expects critical claims to carry owners and dates.
-
-Section twenty-nine point seven treats what to measure detection as testable only when evidence and ticket IDs are recorded.
-
 
 - Metrics nobody uses for a decision.
 - Precision reported from balanced test sets as if operational.
@@ -2724,10 +2206,6 @@ After this chapter you can (1) plan and run a verification campaign for security
 
 Verification answers: does the implementation meet its specification? A campaign plan lists, for each requirement, the test cases, environment, inputs, procedure, expected result, pass criterion and who runs it. Tests are written before execution and are not changed to make results pass. Results include environment details (software versions, seeds, configuration) so the test can be repeated.
 
-Section thirty point one develops verification laboratory with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section thirty point one, TMRP lead expects verification claims to carry owners and dates.
-
 ### 30.2 Kinds of test
 
 - **Example tests** check typical behaviour.
@@ -2742,25 +2220,13 @@ Example tests show the presence of correct behaviour in chosen cases; property-b
 
 Seed every random generator and print the seed; record tool and library versions; keep the test inputs; store results with the source revision. A failed test that cannot be reproduced cannot be fixed or re-verified.
 
-Section thirty point three develops verification laboratory with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section thirty point three, TMRP lead expects verification claims to carry owners and dates.
-
-Section thirty point three treats verification as campaign kinds as testable only when evidence and ticket IDs are recorded.
-
 ### 30.4 Failed tests
 
 A failed test is information. Record it as failed with evidence; analyse root cause; fix; re-run the failed test and the regression suite; record the re-test. Never re-label a failure as "not applicable" because the deadline is close (Chapter 10). If a failure is accepted temporarily, it needs a compensating control, an owner and a date.
 
-Section thirty point four develops verification laboratory with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section thirty point four, TMRP lead expects verification claims to carry owners and dates.
-
 ### 30.5 Worked example: T3 setpoint bounds (synthetic)
 
 Test T3 verifies R3. Example tests on v1 (in range, above, below, large step) pass. The property-based test generates 2,000 cases with seed 30, one in ten drawn from special values (NaN, ±∞, exact boundaries). v1 accepts 31 unsafe values — all NaN. v2 accepts none. T3 is recorded as **failed on v1**, root cause "negative comparisons are false for NaN", fixed in v2, re-tested and **passed on v2**, with the seed and Python version recorded.
-
-Section thirty point five develops verification laboratory with a Lowmarsh Regional Water Authority note the engineer can demo offline.
 
 ### 30.6 Practical activity: Lab 11
 
@@ -2795,16 +2261,6 @@ print("v2 unsafe acceptances:", len(f2))
 
 Expected output:
 
-Section thirty point six develops verification laboratory with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section thirty point six, TMRP lead expects verification claims to carry owners and dates.
-
-Section thirty point six treats verification as campaign kinds as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point six, Lowmarsh Regional Water Authority will not accept verification work without a written trail.
-
-Section thirty point six fails closed if verification evidence is missing rather than guessing.
-
 ```text
 example tests v1: [True, False, False, False]
 v1 unsafe acceptances: 31 first: [nan]
@@ -2812,14 +2268,6 @@ v2 unsafe acceptances: 0
 ```
 
 ### 30.7 Common errors and limits
-Section thirty point seven develops verification laboratory with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section thirty point seven, TMRP lead expects verification claims to carry owners and dates.
-
-Section thirty point seven treats verification as campaign kinds as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point seven, Lowmarsh Regional Water Authority will not accept verification work without a written trail.
-
 
 - Tests written after seeing results.
 - Example tests only.
@@ -2857,25 +2305,17 @@ After this chapter you can (1) deploy controls into operational environments thr
 
 Field deployment follows stages, each with entry and exit criteria: bench (all tests pass); pilot site with low consequence; one high-consequence site with extra monitoring and a rollback plan; fleet. Each stage has a **rollback** — the ability to return to the previous known-good state quickly — tested before it is needed. Schedule changes outside peak demand and with operators informed; in water, avoid changes during high-demand periods or when storage is low.
 
-Section thirty-one point one develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 31.2 Production key and secret management
 
 On the bench, keys are files; in production they are lifecycles. Generate keys in hardware security modules or device secure elements; enrol devices with an auditable ceremony (two people, logged); store the inventory of which key belongs to which device and its rotation date; rotate; and revoke promptly when a device is lost or decommissioned. Secrets for service accounts go into a vault with access logging, not into scripts. A key inventory is itself sensitive.
-
-Section thirty-one point two develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
 
 ### 31.3 Legacy integration
 
 Legacy devices that cannot authenticate are wrapped: a gateway placed physically adjacent (same cabinet) adds authentication on the network side and speaks the legacy protocol on a short, physically protected link. The gateway becomes part of the device's security boundary, so it needs its own hardening, monitoring and update path. Compensating controls cover what the gateway cannot: cabinet tamper alarms, local logging, and restrictions on which function codes pass through.
 
-Section thirty-one point three develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 31.4 Commissioning and handover
 
 Commissioning verifies the installed system in its real environment: site acceptance tests repeat key bench tests on site (authentication rejects forged frames; replay rejected; failover to local automatic works; alarms reach the control room within 60 s). Handover gives operators procedures, training, contacts and the known limitations. Until operators can run and recover the system, the control is not in service.
-
-Section thirty-one point four develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
 
 ### 31.5 Worked example: PS2 pilot (synthetic)
 
@@ -2885,19 +2325,7 @@ TMRP's pilot site is PS2 — legacy RTU-A, low consequence. Entry criteria: T1, 
 
 Write the stage plan for TMRP fleet rollout with entry/exit criteria and rollback for each stage, and a two-page operator handover note for the gateway.
 
-Section thirty-one point six develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section thirty-one point six, TMRP lead expects critical claims to carry owners and dates.
-
-Section thirty-one point six treats staged deployment production key as testable only when evidence and ticket IDs are recorded.
-
 ### 31.7 Common errors and limits
-Section thirty-one point seven develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section thirty-one point seven, TMRP lead expects critical claims to carry owners and dates.
-
-Section thirty-one point seven treats staged deployment production key as testable only when evidence and ticket IDs are recorded.
-
 
 - "Big bang" deployment without pilot or rollback.
 - Rollback plans never tested.
@@ -2935,13 +2363,9 @@ After this chapter you can (1) use reliability measures — failure rate, MTBF, 
 
 For a component with constant failure rate $\lambda$ (failures per hour), mean time between failures is $1/\lambda$. With mean time to repair $1/\mu$, steady-state availability is $A = \mu/(\lambda+\mu) = \text{MTBF}/(\text{MTBF}+\text{MTTR})$. Constant failure rates suit the useful-life period of electronics; early-life and wear-out failures need other distributions (Weibull). Components in **series** (all needed) have rates that add: $\lambda_s = \sum\lambda_i$. Components in **parallel** (any one suffices) fail only together.
 
-Section thirty-two point one develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 32.2 Repairable redundancy
 
 Simple formulas for parallel systems assume independent units each repaired independently. Real sites often have one repair crew, so when both units are down one waits. A continuous-time Markov chain models this: states 0, 1, 2 units failed; transitions at rate $2\lambda$ from 0 to 1, $\lambda$ from 1 to 2, and $\mu$ back down from 1 and from 2 with one crew. Solving the balance equations gives steady-state probabilities; unavailability is the probability of state 2.
-
-Section thirty-two point two develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
 
 ### 32.3 Induced failures
 
@@ -2970,16 +2394,6 @@ print(f"series MTBF pump+starter+RTU: {mtbf_series:.0f} h")
 
 Expected output:
 
-Section thirty-two point five develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section thirty-two point five, TMRP lead expects critical claims to carry owners and dates.
-
-Section thirty-two point five treats measures repairable redundancy induced as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-two point five, Lowmarsh Regional Water Authority will not accept critical work without a written trail.
-
-Section thirty-two point five fails closed if critical evidence is missing rather than guessing.
-
 ```text
 single pump availability 0.988142  downtime h/yr 103.9
 1oo2 availability 0.99971883  P(both down) 2.81e-04  downtime min/yr 147.78
@@ -2988,12 +2402,6 @@ series MTBF pump+starter+RTU: 1250 h
 ```
 
 ### 32.6 Common errors and limits
-Section thirty-two point six develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section thirty-two point six, TMRP lead expects critical claims to carry owners and dates.
-
-Section thirty-two point six treats measures repairable redundancy induced as testable only when evidence and ticket IDs are recorded.
-
 
 - Independent-repair formulas with one crew.
 - Constant failure rates for ageing equipment.
@@ -3039,8 +2447,6 @@ A safety instrumented system (SIS) takes a process to a safe state when a hazard
 
 [NIST SP 800-160 Vol. 2 Rev. 1](https://doi.org/10.6028/NIST.SP.800-160v2r1) frames cyber resiliency around the goals to anticipate, withstand, recover and adapt, with techniques such as diversity, segmentation, redundancy, non-persistence and adaptive response. [Haimes (2009)](https://doi.org/10.1111/j.1539-6924.2009.01216.x) argues that resilience must be defined relative to specific threats and system states. Engineering resilience means: design degraded modes (Chapter 22), keep capacity and buffers (storage, batteries, spares), make recovery fast and practised (Chapter 47), and learn after events.
 
-Section thirty-three point three develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 33.4 Worked example: STPA on Hollin Hill level control (synthetic)
 
 Loss L1: hospital without water; L2: reservoir overflow and flooding. Hazards: H1 level below floor while demand continues; H2 level above overflow. Control structure: SCADA operator → PI controller (PS3 pump speed) → pump → reservoir; feedback via level transmitter. UCAs: UCA1 "controller reduces inflow when level is low" (provided when unsafe → H1); UCA2 "operator does not intervene when level falls" (not provided → H1); UCA3 "controller increases inflow when level is high" (→ H2). Scenario for UCA1: the controller's process model believes the level is high because the level feedback is falsified (Lab 7). Scenario for UCA2: operator's display shows the same falsified level. Constraints: independent level measurement with alarm (EX034); hard-wired high-level pump trip for H2; low-level alarm to operator from the independent measurement. STPA arrived at the same control as the residual detector, but from the hazard rather than from the attack.
@@ -3049,19 +2455,7 @@ Loss L1: hospital without water; L2: reservoir overflow and flooding. Hazards: H
 
 Extend §33.4 with the dosing loop: losses, hazards, control structure, at least four UCAs (one of each type) and one loss scenario each, one of them adversarial.
 
-Section thirty-three point five develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section thirty-three point five, TMRP lead expects critical claims to carry owners and dates.
-
-Section thirty-three point five treats stpa safety instrumented systems as testable only when evidence and ticket IDs are recorded.
-
 ### 33.6 Common errors and limits
-Section thirty-three point six develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section thirty-three point six, TMRP lead expects critical claims to carry owners and dates.
-
-Section thirty-three point six treats stpa safety instrumented systems as testable only when evidence and ticket IDs are recorded.
-
 
 - Hazard analysis that ignores adversaries, or security analysis that ignores hazards.
 - SIS "independence" with shared engineering workstation or network.
@@ -3098,29 +2492,17 @@ After this chapter you can (1) plan system integration incrementally with interf
 
 Integrate in small increments with interface tests at each step: gateway with RTU; gateway with SCADA; SCADA with historian replica; monitoring sensors with the log collector. Each step uses the interface control document (Chapter 16) as its test specification. When an integration test fails, the interface specification tells you which side is wrong — or reveals that the specification was ambiguous.
 
-Section thirty-four point one develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section thirty-four point one, TMRP lead expects critical claims to carry owners and dates.
-
 ### 34.2 Emergent behaviour
 
 Combining correct components can produce incorrect systems. Examples: an authentication gateway that buffers messages during link loss and then releases a burst on reconnection, flooding the SCADA poller; failover of the SCADA pair that resets replay counters; an anomaly detector that flags every gateway retransmission as an attack. Integration testing must include whole-system scenarios — link loss and recovery, failover, maintenance mode — not only interface conformance.
-
-Section thirty-four point two develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
 
 ### 34.3 Operations integration
 
 A control is not integrated until operations can use it: alarms with clear meaning, priority and response procedures; dashboards that show security state alongside process state; playbooks linking security alarms to operational decisions (switch to local manual? call the duty manager?); and training. Alarm management practice — rationalising alarms so each requires an operator action — matters because floods of meaningless alarms hide real ones.
 
-Section thirty-four point three develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 34.4 Organisational interfaces
 
 Infrastructure security depends on organisations you do not control: the LTE carrier, RTU vendor, integrator, electricity distributor, neighbouring utilities for mutual aid. Make interfaces explicit in contracts and agreements: notification duties for incidents and vulnerabilities, access conditions, support response times, and joint exercises. An incident at the carrier is your incident too.
-
-Section thirty-four point four develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section thirty-four point four, TMRP lead expects critical claims to carry owners and dates.
 
 ### 34.5 Worked example: the reconnection burst (synthetic)
 
@@ -3130,21 +2512,7 @@ During integration testing, the team disconnects the LTE head-end for 30 minutes
 
 Design an integration test that combines SCADA failover with replay protection, stating the expected behaviour, the observations and the pass criterion.
 
-Section thirty-four point six develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section thirty-four point six, TMRP lead expects critical claims to carry owners and dates.
-
-Section thirty-four point six treats incremental integration emergent behaviour as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-four point six, Lowmarsh Regional Water Authority will not accept critical work without a written trail.
-
 ### 34.7 Common errors and limits
-Section thirty-four point seven develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section thirty-four point seven, TMRP lead expects critical claims to carry owners and dates.
-
-Section thirty-four point seven treats incremental integration emergent behaviour as testable only when evidence and ticket IDs are recorded.
-
 
 - Integration "big bang" at the end.
 - Interface tests only, no whole-system scenarios.
@@ -3182,10 +2550,6 @@ After this chapter you can (1) carry a design from concept to detailed design wi
 
 Studio I selected a concept. Studio II details it: specific components, configurations, interfaces, procedures and verification. Every number from earlier chapters returns: hold-up times (Chapters 1, 6), battery sizing (Chapter 3), base rates (Chapter 7), latency (Chapter 11), fault tree (Chapter 23), detection metrics (Chapter 29), availability (Chapter 32), queueing (Chapter 36 preview). A detailed design is coherent when these numbers are consistent with each other and with the requirements.
 
-Section thirty-five point one develops design studio ii with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section thirty-five point one, TMRP lead expects design claims to carry owners and dates.
-
 ### 35.2 Assurance arguments
 
 An **assurance case** is a structured argument that a system meets a claim, supported by evidence. It has a top claim ("TMRP keeps the hospital supplied under credible scenarios including remote command forgery"), sub-claims (each requirement met; residual risks acceptable), arguments (why the sub-claims support the claim), and evidence (test results, analyses, reviews). Toulmin's model of argument — claim, data, warrant, backing, qualifier, rebuttal ([Toulmin, 1958/2003](https://doi.org/10.1017/CBO9780511840005)) — is a useful lens: what evidence supports the claim, why it is relevant, and what would defeat it. Explicit **defeaters** ("unless the SCADA centre is compromised") keep the argument honest.
@@ -3193,10 +2557,6 @@ An **assurance case** is a structured argument that a system meets a claim, supp
 ### 35.3 Studio II brief (synthetic)
 
 Produce the detailed design for TMRP phase 1 (PS2, PS3, PS4 and Hollin Hill): component list with security features; zone and conduit allowlists; key management procedure; local manual and failover procedures; alarm rationalisation for new security alarms; verification plan; and an assurance case for the top claim with at least four sub-claims and identified defeaters.
-
-Section thirty-five point three develops design studio ii with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section thirty-five point three, TMRP lead expects design claims to carry owners and dates.
 
 ### 35.4 Worked example: one branch of the assurance case (synthetic)
 
@@ -3206,21 +2566,7 @@ Under section thirty-five point three, TMRP lead expects design claims to carry 
 
 Write the full assurance case for the Studio II brief and present it to a panel that is instructed to find defeaters.
 
-Section thirty-five point five develops design studio ii with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section thirty-five point five, TMRP lead expects design claims to carry owners and dates.
-
-Section thirty-five point five treats from concept to detailed as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-five point five, Lowmarsh Regional Water Authority will not accept design work without a written trail.
-
 ### 35.6 Common errors and limits
-Section thirty-five point six develops design studio ii with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section thirty-five point six, TMRP lead expects design claims to carry owners and dates.
-
-Section thirty-five point six treats from concept to detailed as testable only when evidence and ticket IDs are recorded.
-
 
 - Inconsistent numbers across analyses.
 - Assurance cases with claims and no evidence, or evidence with no argument.
@@ -3261,25 +2607,13 @@ Messages wait in queues at gateways, servers and links. [Little's law](https://d
 
 Every control costs something: bytes (Lab 8's 22-byte overhead), CPU (MAC computation, TLS handshakes), latency (policy decisions, inspection), and operator time (re-authentication, approvals). Measure them on the bench. The costs are usually small relative to network round-trips, but they matter on constrained links (low-bandwidth radio), on constrained devices (small microcontrollers), and at scale.
 
-Section thirty-six point two develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section thirty-six point two, TMRP lead expects critical claims to carry owners and dates.
-
 ### 36.3 Peak, degraded and attack load
 
 Size for the worst credible load: storm-time alarm floods, reconnection bursts after outages (Chapter 34), failover catch-up, and deliberate floods. An attacker who can send traffic to a gateway can push utilisation toward 1 and delay legitimate alarms; defences include rate limits per source, priority queues for alarms, early rejection of unauthenticated traffic (verify the cheap check first), and capacity margins.
 
-Section thirty-six point three develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section thirty-six point three, TMRP lead expects critical claims to carry owners and dates.
-
 ### 36.4 Scale
 
 At fleet scale, manual processes fail. Key enrolment, rotation and revocation must be automated with audit; monitoring must aggregate and prioritise; updates must be staged and observable; inventory must be continuously reconciled. A procedure that takes 30 minutes per device takes three weeks of staff time for a thousand devices.
-
-Section thirty-six point four develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section thirty-six point four, TMRP lead expects critical claims to carry owners and dates.
 
 ### 36.5 Worked example: gateway sizing (synthetic)
 
@@ -3300,16 +2634,6 @@ print(f"sequential polling cycle: {cycle/1000:.2f} s; with 6 parallel channels: 
 
 Expected output:
 
-Section thirty-six point six develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section thirty-six point six, TMRP lead expects critical claims to carry owners and dates.
-
-Section thirty-six point six treats queues everywhere the cost as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-six point six, Lowmarsh Regional Water Authority will not accept critical work without a written trail.
-
-Section thirty-six point six fails closed if critical evidence is missing rather than guessing.
-
 ```text
 lambda=20.0 rho=0.40 W=  33.3 ms L=  0.7 msgs
 lambda=40.0 rho=0.80 W= 100.0 ms L=  4.0 msgs
@@ -3319,10 +2643,6 @@ sequential polling cycle: 7.81 s; with 6 parallel channels: 1.30 s
 ```
 
 ### 36.7 Common errors and limits
-Section thirty-six point seven develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section thirty-six point seven, TMRP lead expects critical claims to carry owners and dates.
-
 
 - Sizing for average load.
 - Ignoring that delay explodes near full utilisation.
@@ -3364,19 +2684,13 @@ OT security monitoring watches network traffic, logs and process data for signs 
 
 A playbook is a short, tested procedure for a specific situation: trigger, immediate safety actions, information to collect, decisions and who makes them, communications, and return to normal. Write for a tired operator at 03:00: numbered steps, clear decision points, phone numbers, no jargon. Test each playbook in exercises and update it after every use. Incident handling guidance such as [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) provides general structure; OT playbooks add process safety steps.
 
-Section thirty-seven point two develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 37.3 Change, access and vulnerability management
 
 Daily operations keep the system in its designed state: change management (no configuration change without approval and record); access management (joiners, movers, leavers; vendor sessions approved per use); vulnerability management (track advisories such as [CISA ICS advisories](https://www.cisa.gov/news-events/ics-advisories), assess applicability, plan remediation, Chapter 12). Drift — undocumented changes accumulating — is the commonest way a well-designed system becomes insecure.
 
-Section thirty-seven point three develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 37.4 Learning without blame
 
 Incidents and near misses are evidence about the system. [Reason (2000)](https://doi.org/10.1136/bmj.320.7237.768) contrasted the person approach (blaming individuals) with the system approach (defences, barriers and latent conditions), arguing the latter is more effective. After-action reviews ask what happened, why it made sense to the people involved at the time, which defences worked or failed, and what will change. Blame suppresses reporting, and unreported near misses are lost lessons.
-
-Section thirty-seven point four develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
 
 ### 37.5 Worked example: playbook "unexpected setpoint change" (synthetic)
 
@@ -3386,19 +2700,7 @@ Section thirty-seven point four develops critical infrastructure and sector secu
 
 Run the playbook in a tabletop with a scripted inject sequence (first a single setpoint change, then MAC failures at a second station, then a phone call from the hospital about low pressure). Record decision times and ambiguities and revise the playbook.
 
-Section thirty-seven point six develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section thirty-seven point six, TMRP lead expects critical claims to carry owners and dates.
-
-Section thirty-seven point six treats security operations in ot as testable only when evidence and ticket IDs are recorded.
-
 ### 37.7 Common errors and limits
-Section thirty-seven point seven develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section thirty-seven point seven, TMRP lead expects critical claims to carry owners and dates.
-
-Section thirty-seven point seven treats security operations in ot as testable only when evidence and ticket IDs are recorded.
-
 
 - Security alarms routed to a team that is not staffed when they fire.
 - Playbooks written for experts, never tested.
@@ -3435,35 +2737,17 @@ After this chapter you can (1) distinguish validation (right system for the need
 
 A system can pass every test against its specification and still fail its users if the specification was wrong or incomplete. Validation asks whether the system meets stakeholder needs in its intended environment: can operators actually run local manual mode at night? Does the hospital actually get water within its buffer when PS4 is lost? Validation evidence comes from realistic use: operational trials, demonstrations with stakeholders, exercises and early operating data.
 
-Section thirty-eight point one develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 38.2 Traceability as an evidence map
 
 Trace needs to requirements to tests to results. Then ask three questions: which requirements have no test (untested claims)? Which tests failed or were not run (unsupported claims)? Which needs depend only on requirements that are not yet verified (unvalidated needs)? Lab 14 computes these for the TMRP dossier.
-
-Section thirty-eight point two develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section thirty-eight point two, TMRP lead expects critical claims to carry owners and dates.
 
 ### 38.3 Stakeholder validation
 
 Involve the people the system serves. Operators validate procedures and displays; maintenance staff validate repairability and spares; the hospital validates that the supply arrangements meet its needs; regulators validate compliance reasoning. Record their findings as you would review findings, with responses.
 
-Section thirty-eight point three develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section thirty-eight point three, TMRP lead expects critical claims to carry owners and dates.
-
-Section thirty-eight point three treats verification is not validation as testable only when evidence and ticket IDs are recorded.
-
 ### 38.4 Reporting partial results
 
 Report validation status per need: validated, partially validated (with what remains), not validated. Do not round up. "N1 partially validated: PS4 loss trial met the 4 h buffer; combined PS4 and grid F1 loss not yet trialled."
-
-Section thirty-eight point four develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section thirty-eight point four, TMRP lead expects critical claims to carry owners and dates.
-
-Section thirty-eight point four treats verification is not validation as testable only when evidence and ticket IDs are recorded.
 
 ### 38.5 Worked example: TMRP evidence map (synthetic)
 
@@ -3487,16 +2771,6 @@ print(f"verified {len(verified)}/{len(ids)} = {100*len(verified)/len(ids):.1f}%"
 
 Expected output:
 
-Section thirty-eight point six develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section thirty-eight point six, TMRP lead expects critical claims to carry owners and dates.
-
-Section thirty-eight point six treats verification is not validation as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-eight point six, Lowmarsh Regional Water Authority will not accept critical work without a written trail.
-
-Section thirty-eight point six fails closed if critical evidence is missing rather than guessing.
-
 ```text
 untested: ['R4']
 tested but not passing: ['R3', 'R8']
@@ -3504,14 +2778,6 @@ verified 5/8 = 62.5%
 ```
 
 ### 38.7 Common errors and limits
-Section thirty-eight point seven develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section thirty-eight point seven, TMRP lead expects critical claims to carry owners and dates.
-
-Section thirty-eight point seven treats verification is not validation as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-eight point seven, Lowmarsh Regional Water Authority will not accept critical work without a written trail.
-
 
 - Calling a passed test suite "validation".
 - Stakeholders consulted only at the start.
@@ -3548,17 +2814,9 @@ After this chapter you can (1) design for maintainability over long lifecycles �
 
 Infrastructure assets last decades; software and threats change in months. Maintainability means the system can be kept secure and functional for its whole life: components replaceable without redesign; updates possible without long outages; documentation current; skills available. Design choices that harm maintainability include proprietary protocols with a single supplier, undocumented custom code, and hardware with no update path.
 
-Section thirty-nine point one develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section thirty-nine point one, TMRP lead expects critical claims to carry owners and dates.
-
 ### 39.2 Technical debt and obsolescence
 
 Technical debt is the future cost of shortcuts taken now: a hard-coded configuration, a skipped test, a gateway built "temporarily" for legacy RTUs. Record debt items with owner, cost to fix and risk of leaving them. Obsolescence management tracks end-of-sale and end-of-support dates for every component and plans replacement before support ends, holding spares where replacement is slow.
-
-Section thirty-nine point two develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section thirty-nine point two, TMRP lead expects critical claims to carry owners and dates.
 
 ### 39.3 Cryptographic agility
 
@@ -3568,10 +2826,6 @@ Algorithms weaken and standards change. Cryptographic agility is the ability to 
 
 Retired devices contain keys, configurations and network details. Decommissioning steps: revoke keys and certificates; remove accounts; wipe or destroy storage according to policy; update inventory, models and allowlists; and remove firewall rules that served the device. Stale rules for decommissioned devices are a classic path for attackers who place a new device at an old address.
 
-Section thirty-nine point four develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section thirty-nine point four, TMRP lead expects critical claims to carry owners and dates.
-
 ### 39.5 Worked example: TMRP maintainability review (synthetic)
 
 The review finds: (1) the PS1/PS2 gateways are technical debt with a three-year horizon — recorded with replacement plan; (2) the message format in Lab 8 lacks an algorithm identifier — changed to include a one-byte suite ID (version 1 = HMAC-SHA256-128) before fleet roll-out, costing one byte per message; (3) RTU-B firmware signing uses a classical signature scheme — vendor asked for a post-quantum migration roadmap as a contract condition; (4) no spare LTE modems are held and the model reaches end of sale next year — buy spares now, plan replacement; (5) decommissioning procedure missing — written and linked to change management.
@@ -3580,21 +2834,7 @@ The review finds: (1) the PS1/PS2 gateways are technical debt with a three-year 
 
 Build an obsolescence register for TMRP components (RTUs, gateways, modems, SCADA servers, OS, HSM) with assumed dates, support status, spares held and replacement plan.
 
-Section thirty-nine point six develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section thirty-nine point six, TMRP lead expects critical claims to carry owners and dates.
-
-Section thirty-nine point six treats long lifecycles technical debt as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-nine point six, Lowmarsh Regional Water Authority will not accept critical work without a written trail.
-
 ### 39.7 Common errors and limits
-Section thirty-nine point seven develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section thirty-nine point seven, TMRP lead expects critical claims to carry owners and dates.
-
-Section thirty-nine point seven treats long lifecycles technical debt as testable only when evidence and ticket IDs are recorded.
-
 
 - Designs that require the original supplier forever.
 - Technical debt that is not recorded.
@@ -3631,23 +2871,13 @@ After this chapter you can (1) design and run a seeded fault-injection campaign 
 
 Fault injection deliberately introduces faults — corrupted, dropped, delayed, replayed or reordered messages; process restarts; clock steps; resource exhaustion — to observe how a system behaves. It tests error handling that ordinary tests rarely reach. A campaign specifies the fault model (which faults, at what rates), the system under test, the oracle (what correct behaviour is for each fault) and the measurements.
 
-Section forty point one develops verification laboratory ii with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty point one, TMRP lead expects verification claims to carry owners and dates.
-
 ### 40.2 Oracles and classification
 
 For each injected fault, define the expected outcome: corrupted → rejected as corrupt; replayed → rejected as replay; delayed beyond the freshness window → rejected as stale; dropped → detected as a gap (or not, if the design does not detect gaps). Classify observed outcomes against expected ones. A fault that produces "ok" when it should have been rejected is a **silent failure** — the most important class to find.
 
-Section forty point two develops verification laboratory ii with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 40.3 Seeds, rates and coverage
 
 Seed the fault generator, record the seed, and report counts per fault class. Choose rates that produce enough events of each class to be meaningful; a campaign of 500 messages with 5% per fault class gives roughly 25 events each — enough to find systematic failures, not enough to estimate rare ones precisely. Extend the campaign for classes of special concern.
-
-Section forty point three develops verification laboratory ii with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty point three, TMRP lead expects verification claims to carry owners and dates.
 
 ### 40.4 Worked example: telemetry receiver campaign (synthetic)
 
@@ -3683,16 +2913,6 @@ for k in sorted(tally): print(k, tally[k])
 
 Expected output:
 
-Section forty point five develops verification laboratory ii with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty point five, TMRP lead expects verification claims to carry owners and dates.
-
-Section forty point five treats fault injection oracles and as testable only when evidence and ticket IDs are recorded.
-
-For section forty point five, Lowmarsh Regional Water Authority will not accept verification work without a written trail.
-
-Section forty point five fails closed if verification evidence is missing rather than guessing.
-
 ```text
 ('corrupt', 'corrupt') 14
 ('delay', 'stale') 22
@@ -3702,12 +2922,6 @@ Section forty point five fails closed if verification evidence is missing rather
 ```
 
 ### 40.6 Common errors and limits
-Section forty point six develops verification laboratory ii with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty point six, TMRP lead expects verification claims to carry owners and dates.
-
-Section forty point six treats fault injection oracles and as testable only when evidence and ticket IDs are recorded.
-
 
 - Fault models limited to what the designer expected.
 - No oracle, so outcomes cannot be judged.
@@ -3745,29 +2959,17 @@ After this chapter you can (1) formulate security investment as an optimisation 
 
 Choose a set of controls $S$ to maximise benefit $\sum_{c\in S} b_c$ subject to cost $\sum_{c\in S} k_c \le B$. This is the 0/1 knapsack problem. Benefits might be expected annual loss reduction, reduction in people-hours without water, or reduction in top-event probability. Real problems add constraints (dependencies between controls, staffing limits, phases) and interactions (two controls addressing the same scenario do not add benefits).
 
-Section forty-one point one develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 41.2 Exact and heuristic solutions
 
 With a handful of candidates, enumerate all subsets ($2^n$). Dynamic programming solves knapsack problems exactly in time proportional to $n \times B$ for integer costs. The **greedy** heuristic — pick by benefit/cost ratio until the budget is spent — is fast and intuitive but can leave budget unused or miss better combinations. For larger problems, integer programming solvers are standard.
-
-Section forty-one point two develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-one point two, TMRP lead expects critical claims to carry owners and dates.
 
 ### 41.3 Multiple objectives and uncertainty
 
 Security investments trade off cost, risk reduction, operability and other goods. A solution is **Pareto-optimal** if no other solution is better in one objective without being worse in another; present the Pareto set rather than a single weighted answer. Benefits are uncertain estimates; test whether the optimal set changes when benefits vary within plausible ranges. Robust choices — those that are good across scenarios — are often preferable to choices optimal only under point estimates.
 
-Section forty-one point three develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 41.4 Interactions
 
 Benefits are rarely additive. Authenticated telemetry and network monitoring both reduce forged-command risk; once authentication is in place, monitoring's additional benefit for that scenario is smaller. Model interactions by computing benefit from the scenario model (e.g., the fault tree) for each candidate set rather than adding per-control numbers.
-
-Section forty-one point four develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-one point four, TMRP lead expects critical claims to carry owners and dates.
 
 ### 41.5 Worked example: TMRP phase 1 portfolio (synthetic)
 
@@ -3793,28 +2995,12 @@ print("greedy :", sorted(g), "cost", spent, "benefit", sum(C[c][1] for c in g))
 
 Expected output:
 
-Section forty-one point six develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-one point six, TMRP lead expects critical claims to carry owners and dates.
-
-Section forty-one point six treats formulating the problem exact as testable only when evidence and ticket IDs are recorded.
-
-For section forty-one point six, Lowmarsh Regional Water Authority will not accept critical work without a written trail.
-
-Section forty-one point six fails closed if critical evidence is missing rather than guessing.
-
 ```text
 optimal: ['auth_telemetry', 'local_manual_mode', 'offline_backups', 'spare_rtus'] cost 250 benefit 530
 greedy : ['auth_telemetry', 'eng_ws_hardening', 'local_manual_mode', 'offline_backups'] cost 215 benefit 480
 ```
 
 ### 41.7 Common errors and limits
-Section forty-one point seven develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-one point seven, TMRP lead expects critical claims to carry owners and dates.
-
-Section forty-one point seven treats formulating the problem exact as testable only when evidence and ticket IDs are recorded.
-
 
 - Adding benefits of interacting controls.
 - Presenting a single optimum without sensitivity.
@@ -3856,8 +3042,6 @@ This course's applied research answers a design question for a specific system, 
 
 State the question and the decision it informs; define the measurement (Chapter 29); choose a design — comparison of alternatives on a testbed, a parameter sweep in simulation, or measurement of an existing system; fix the analysis before running; control for confounders (same load, same hardware, same seeds); repeat runs to measure variability; and record everything to allow reproduction ([Sandve et al., 2013](https://doi.org/10.1371/journal.pcbi.1003285)).
 
-Section forty-two point two develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 42.3 Public datasets and testbeds
 
 Public industrial-security datasets and testbeds allow experiments without touching real infrastructure. The Secure Water Treatment (SWaT) testbed dataset described by [Goh et al. (2017)](https://doi.org/10.1007/978-3-319-71368-7_8) and the BATADAL competition on water distribution networks reported by [Taormina et al. (2018)](https://doi.org/10.1061/(ASCE)WR.1943-5452.0000969) are widely used. Know their limits: testbeds are smaller and cleaner than real plants, attack sets are chosen by researchers, and benchmark performance does not transfer automatically. Read evaluation pitfalls before claiming results ([Arp et al., 2022](https://www.usenix.org/conference/usenixsecurity22/presentation/arp); [Sommer and Paxson, 2010](https://doi.org/10.1109/SP.2010.25)).
@@ -3865,12 +3049,6 @@ Public industrial-security datasets and testbeds allow experiments without touch
 ### 42.4 Ethics and authorisation
 
 Applied research on real systems requires the owner's written authorisation and, where people or personal data are involved, ethics review (Chapter 10). Results that reveal weaknesses in specific systems go to the owner, not to a conference.
-
-Section forty-two point four develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-two point four, TMRP lead expects critical claims to carry owners and dates.
-
-Section forty-two point four treats engineering research versus academic as testable only when evidence and ticket IDs are recorded.
 
 ### 42.5 Worked example: is the cumulative detector worth deploying? (synthetic)
 
@@ -3880,21 +3058,7 @@ Question: should TMRP deploy the cumulative mass-balance detector of Chapter 17 
 
 Implement a reduced version of §42.5 using Lab 7: three thresholds × three noise levels × 20 seeds; report false alarms and ramp detection times in a table with variability.
 
-Section forty-two point six develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-two point six, TMRP lead expects critical claims to carry owners and dates.
-
-Section forty-two point six treats engineering research versus academic as testable only when evidence and ticket IDs are recorded.
-
-For section forty-two point six, Lowmarsh Regional Water Authority will not accept critical work without a written trail.
-
 ### 42.7 Common errors and limits
-Section forty-two point seven develops critical infrastructure and sector security with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-two point seven, TMRP lead expects critical claims to carry owners and dates.
-
-Section forty-two point seven treats engineering research versus academic as testable only when evidence and ticket IDs are recorded.
-
 
 - Studies without a decision they inform.
 - Analysis chosen after seeing results.
@@ -3932,35 +3096,17 @@ After this chapter you can (1) plan and complete a supervised practice placement
 
 Practice exposes the constraints that textbooks smooth over: procurement cycles, staffing, legacy equipment, regulatory deadlines, union agreements, budgets, and the gap between procedure and practice. Engineers who have seen a control room at night design differently from those who have not.
 
-Section forty-three point one develops industry or public-service practice with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-three point one, TMRP lead expects industry claims to carry owners and dates.
-
-Section forty-three point one treats purpose of practice placement as testable only when evidence and ticket IDs are recorded.
-
 ### 43.2 Placement agreement
 
 Before starting, agree in writing: host supervisor and academic supervisor; scope of work; systems you may access and how; confidentiality and data handling; safety induction; what you may publish in your report; and how incidental findings are handled. You work under the host's authority and policies; your course gives you no authority to test or access anything.
-
-Section forty-three point two develops industry or public-service practice with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-three point two, TMRP lead expects industry claims to carry owners and dates.
 
 ### 43.3 Reflective practice log
 
 Keep a weekly log with four entries: **observation** (what you saw, without judgement), **connection** (which chapter's method it relates to), **difference** (where practice diverged from the method, and why it made sense locally), and **question** (what you would investigate). Reflection turns experience into transferable judgement. Do not record sensitive details in the log; record patterns.
 
-Section forty-three point three develops industry or public-service practice with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-three point three, TMRP lead expects industry claims to carry owners and dates.
-
 ### 43.4 Common placement work
 
 Typical tasks for an engineering student: updating an asset inventory and reconciling it with network data (Chapter 22); drafting or reviewing a playbook (Chapter 37); supporting a risk assessment (Chapter 24); preparing a test procedure for a commissioning (Chapter 31); assessing advisories against the inventory (Chapter 12). Each produces a deliverable for the host and a sanitised learning artefact for the course.
-
-Section forty-three point four develops industry or public-service practice with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-three point four, TMRP lead expects industry claims to carry owners and dates.
 
 ### 43.5 Worked example: a sanitised placement report (synthetic)
 
@@ -3970,21 +3116,7 @@ A student placed with a (synthetic) regional electricity distributor writes a re
 
 Draft a placement agreement for a hypothetical four-month placement at a water utility, covering all items in §43.2.
 
-Section forty-three point six develops industry or public-service practice with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-three point six, TMRP lead expects industry claims to carry owners and dates.
-
-Section forty-three point six treats purpose of practice placement as testable only when evidence and ticket IDs are recorded.
-
-For section forty-three point six, Lowmarsh Regional Water Authority will not accept industry work without a written trail.
-
 ### 43.7 Common errors and limits
-Section forty-three point seven develops industry or public-service practice with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-three point seven, TMRP lead expects industry claims to carry owners and dates.
-
-Section forty-three point seven treats purpose of practice placement as testable only when evidence and ticket IDs are recorded.
-
 
 - Starting without a written scope and data-handling agreement.
 - Treating placement access as permission to explore.
@@ -4021,63 +3153,27 @@ After this chapter you can (1) define a capstone project with a sponsor, scope, 
 
 A capstone is a substantial engineering project in which the student designs, builds and verifies a system that meets real or realistic requirements under constraints. In this course the capstone must: address a critical-infrastructure security or resilience need; include a working artefact (software, configuration, testbed or prototype); include analysis (threat/failure, performance, reliability); and be verified against stated requirements. The capstone continues the TMRP case unless your supervisor approves another synthetic or authorised case.
 
-Section forty-four point one develops engineering capstone with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 44.2 Scoping
 
 A good capstone scope is narrow enough to finish and deep enough to require real engineering. Examples: an authenticated telemetry gateway with fault-injection verification; a residual-based detector with a validated simulation study; a recovery-orchestration tool with a measured restoration trial; a segmentation-verification tool with a policy model. Write a one-page scope: need, stakeholders, deliverables, out-of-scope items, constraints, and acceptance criteria.
-
-Section forty-four point two develops engineering capstone with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-four point two, TMRP lead expects engineering claims to carry owners and dates.
 
 ### 44.3 Planning
 
 Plan with a work breakdown, schedule with milestones (preliminary design review, critical design review, verification complete, thesis draft, defense), risk register (technical, schedule, access, skills), and verification plan tracing requirements to tests. Keep a weekly log and update the risk register monthly.
 
-Section forty-four point three develops engineering capstone with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-four point three, TMRP lead expects engineering claims to carry owners and dates.
-
-Section forty-four point three treats what capstone is scoping as testable only when evidence and ticket IDs are recorded.
-
 ### 44.4 Environment
 
 Set up version control, an issue tracker, a reproducible build (pinned dependencies or standard library only), automated tests, and a results directory where every result is stored with the commit, seeds and environment that produced it.
-
-Section forty-four point four develops engineering capstone with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-four point four, TMRP lead expects engineering claims to carry owners and dates.
-
-Section forty-four point four treats what capstone is scoping as testable only when evidence and ticket IDs are recorded.
 
 ### 44.5 Worked example: capstone scope (synthetic)
 
 *Title:* Restart-safe authenticated telemetry for legacy RTUs. *Need:* N2/N3 of TMRP. *Deliverables:* gateway software (Python standard library), bench harness, fault-injection campaign, key-rotation procedure, thesis. *Out of scope:* real RTU hardware; carrier network. *Constraints:* 12 weeks; synthetic data. *Acceptance:* R1, R2 (including restarts), R7 verified on the bench; zero silent failures in a seeded campaign of 10,000 messages across seven fault classes; key rotation without loss of telemetry demonstrated.
 
-Section forty-four point five develops engineering capstone with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 44.6 Practical activity
 
 Write your capstone scope and plan, and hold a preliminary design review with your supervisor and one peer.
 
-Section forty-four point six develops engineering capstone with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-four point six, TMRP lead expects engineering claims to carry owners and dates.
-
-Section forty-four point six treats what capstone is scoping as testable only when evidence and ticket IDs are recorded.
-
-For section forty-four point six, Lowmarsh Regional Water Authority will not accept engineering work without a written trail.
-
 ### 44.7 Common errors and limits
-Section forty-four point seven develops engineering capstone with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-four point seven, TMRP lead expects engineering claims to carry owners and dates.
-
-Section forty-four point seven treats what capstone is scoping as testable only when evidence and ticket IDs are recorded.
-
-For section forty-four point seven, Lowmarsh Regional Water Authority will not accept engineering work without a written trail.
-
 
 - Scopes too broad ("secure the utility").
 - No acceptance criteria.
@@ -4114,37 +3210,17 @@ After this chapter you can (1) conduct an independent technical review of anothe
 
 An independent reviewer has not worked on the design and does not report to its authors. Independence catches errors that authors cannot see — shared assumptions, blind spots, wishful verification. The purpose is to improve the design and the decision about it, not to score points.
 
-Section forty-five point one develops independent design review with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-five point one, TMRP lead expects independent claims to carry owners and dates.
-
-Section forty-five point one treats independence and purpose review as testable only when evidence and ticket IDs are recorded.
-
 ### 45.2 Review criteria
 
 Review against: requirements (complete, verifiable, traced); architecture (consequence-driven, failure and attack behaviour analysed); controls (specified with performance, independent layers); analyses (assumptions stated, numbers consistent); verification (plan covers requirements, failures handled honestly); operations (procedures, training, recovery); maintainability; and the assurance case (claims supported, defeaters stated).
-
-Section forty-five point two develops independent design review with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-five point two, TMRP lead expects independent claims to carry owners and dates.
-
-Section forty-five point two treats independence and purpose review as testable only when evidence and ticket IDs are recorded.
 
 ### 45.3 Writing findings
 
 A finding states: what was observed (with a reference to the document or evidence), why it matters (consequence), the criterion it fails, and a recommendation. Severity: **critical** (claim cannot be supported, or safety risk), **major** (significant gap needing change before approval), **minor** (improvement), **observation** (no change required). Avoid vague findings ("security seems weak") and design-by-reviewer (prescribing your favourite solution when several would do).
 
-Section forty-five point three develops independent design review with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 45.4 Responding to review
 
 Authors respond to each finding: accept (with change), reject (with reasoning and evidence), or defer (with owner and date). The reviewer checks responses and closes or escalates findings. Disagreements that cannot be resolved go to the decision owner with both positions recorded.
-
-Section forty-five point four develops independent design review with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-five point four, TMRP lead expects independent claims to carry owners and dates.
-
-Section forty-five point four treats independence and purpose review as testable only when evidence and ticket IDs are recorded.
 
 ### 45.5 Worked example: findings on the TMRP dossier (synthetic)
 
@@ -4158,23 +3234,7 @@ Section forty-five point four treats independence and purpose review as testable
 
 Exchange capstone dossiers with another student, review against §45.2 criteria, and write at least six findings with severities.
 
-Section forty-five point six develops independent design review with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-five point six, TMRP lead expects independent claims to carry owners and dates.
-
-Section forty-five point six treats independence and purpose review as testable only when evidence and ticket IDs are recorded.
-
-For section forty-five point six, Lowmarsh Regional Water Authority will not accept independent work without a written trail.
-
 ### 45.7 Common errors and limits
-Section forty-five point seven develops independent design review with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-five point seven, TMRP lead expects independent claims to carry owners and dates.
-
-Section forty-five point seven treats independence and purpose review as testable only when evidence and ticket IDs are recorded.
-
-For section forty-five point seven, Lowmarsh Regional Water Authority will not accept independent work without a written trail.
-
 
 - Reviews by people who helped design.
 - Vague or unevidenced findings.
@@ -4211,31 +3271,13 @@ After this chapter you can (1) complete implementation of the capstone artefact;
 
 Freeze scope: new features now threaten verification. Close the review findings that require design changes first. Keep the main branch always passing its tests; tag the version that enters final verification.
 
-Section forty-six point one develops engineering capstone ii with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-six point one, TMRP lead expects engineering claims to carry owners and dates.
-
-Section forty-six point one treats finishing the build executing as testable only when evidence and ticket IDs are recorded.
-
 ### 46.2 Executing verification
 
 Run the full verification plan against the tagged version: unit, integration, property-based and fault-injection tests (Chapters 30 and 40). Record each result with version, seed and environment. For any failure: record, analyse, fix, re-run, record again. Do not overwrite earlier results; history is evidence.
 
-Section forty-six point two develops engineering capstone ii with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-six point two, TMRP lead expects engineering claims to carry owners and dates.
-
-Section forty-six point two treats finishing the build executing as testable only when evidence and ticket IDs are recorded.
-
 ### 46.3 Critical design review
 
 At the critical design review the panel checks: requirements met with evidence; review findings closed or dispositioned; residual risks stated and owned; operations and maintenance prepared; and readiness for the trial. Bring the traceability matrix, verification results, finding log and assurance case.
-
-Section forty-six point three develops engineering capstone ii with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-six point three, TMRP lead expects engineering claims to carry owners and dates.
-
-Section forty-six point three treats finishing the build executing as testable only when evidence and ticket IDs are recorded.
 
 ### 46.4 Worked example: capstone verification summary (synthetic)
 
@@ -4252,23 +3294,7 @@ The restart failure was found by the extended fault model of EX080 — a direct 
 
 Run your full verification plan and produce the summary table with links to raw results.
 
-Section forty-six point five develops engineering capstone ii with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-six point five, TMRP lead expects engineering claims to carry owners and dates.
-
-Section forty-six point five treats finishing the build executing as testable only when evidence and ticket IDs are recorded.
-
-For section forty-six point five, Lowmarsh Regional Water Authority will not accept engineering work without a written trail.
-
 ### 46.6 Common errors and limits
-Section forty-six point six develops engineering capstone ii with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-six point six, TMRP lead expects engineering claims to carry owners and dates.
-
-Section forty-six point six treats finishing the build executing as testable only when evidence and ticket IDs are recorded.
-
-For section forty-six point six, Lowmarsh Regional Water Authority will not accept engineering work without a written trail.
-
 
 - Adding features during verification.
 - Overwriting failed results with later passes.
@@ -4304,27 +3330,13 @@ After this chapter you can (1) design a controlled failure and recovery trial wi
 
 Recovery capability that has not been exercised is a hope. Backups that have not been restored may be incomplete; procedures that have not been followed may be wrong; times that have not been measured are guesses. [NIST SP 800-34 Rev. 1](https://csrc.nist.gov/pubs/sp/800/34/r1/upd1/final) covers contingency planning, including testing, training and exercises.
 
-Section forty-seven point one develops failure and recovery trial with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-seven point one, TMRP lead expects failure claims to carry owners and dates.
-
 ### 47.2 Designing the trial
 
 Define the scenario (e.g., SCADA servers declared compromised at 02:00), the objectives (restore remote operation from offline backups; maintain supply in local mode throughout), the safety boundaries (trial on the test environment or a planned window with local operation staffed; abort criteria), the observers and the measurements (time of each task, deviations from procedure, decisions).
 
-Section forty-seven point two develops failure and recovery trial with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-seven point two, TMRP lead expects failure claims to carry owners and dates.
-
 ### 47.3 Critical path
 
 Recovery tasks have durations and dependencies. The **critical path** is the longest chain of dependent tasks; it sets the minimum recovery time. Tasks off the critical path have **slack**. Shortening recovery means shortening critical-path tasks or breaking dependencies — not speeding up tasks with slack.
-
-Section forty-seven point three develops failure and recovery trial with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-seven point three, TMRP lead expects failure claims to carry owners and dates.
-
-Section forty-seven point three treats why trial recovery designing as testable only when evidence and ticket IDs are recorded.
 
 ### 47.4 Worked example: TMRP recovery trial (synthetic)
 
@@ -4353,28 +3365,12 @@ print("slack of rekey_rtus:", finish("restore_config") - finish("rekey_rtus"), "
 
 Expected output:
 
-Section forty-seven point five develops failure and recovery trial with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-seven point five, TMRP lead expects failure claims to carry owners and dates.
-
-Section forty-seven point five treats why trial recovery designing as testable only when evidence and ticket IDs are recorded.
-
-For section forty-seven point five, Lowmarsh Regional Water Authority will not accept failure work without a written trail.
-
-Section forty-seven point five fails closed if failure evidence is missing rather than guessing.
-
 ```text
 restore remote control at 12 h; critical path: isolate -> forensic_image -> rebuild_scada -> restore_config -> verify_setpoints -> resume_remote
 slack of rekey_rtus: 6 h; target 8 h met: False
 ```
 
 ### 47.6 Common errors and limits
-Section forty-seven point six develops failure and recovery trial with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-seven point six, TMRP lead expects failure claims to carry owners and dates.
-
-Section forty-seven point six treats why trial recovery designing as testable only when evidence and ticket IDs are recorded.
-
 
 - Recovery tested only on paper.
 - Trials without abort criteria or safety staffing.
@@ -4412,35 +3408,17 @@ After this chapter you can (1) assemble an engineering evidence dossier that sup
 
 The evidence dossier is the collection of artefacts that supports the assurance case: requirements and traceability; design documents and decision records; analyses (threat models, fault trees, performance, reliability); implementation records (source revision, SBOM, build provenance); verification and validation results; review findings and responses; trial reports; operational documents; and the residual-risk register with owners. Organise it by claim, not by date: a reviewer should be able to start from a claim and find its evidence in two clicks.
 
-Section forty-eight point one develops evidence dossier with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 48.2 Provenance
 
 Every piece of evidence states what it is, who produced it, when, from which version of the system and with which tools. Numbers in the thesis must trace to a result file (compare the master's provenance check in its Chapter 7). Use content hashes for result files and record them in an index, as Chapter 13's hash chain does for logs.
-
-Section forty-eight point two develops evidence dossier with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-eight point two, TMRP lead expects evidence claims to carry owners and dates.
 
 ### 48.3 Sensitivity
 
 Dossiers about infrastructure contain sensitive details. Keep a full restricted version for authorised reviewers and a redacted version for wider audiences, and record what was redacted and why. For coursework with synthetic cases, sensitivity is lower — but practise the discipline.
 
-Section forty-eight point three develops evidence dossier with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-eight point three, TMRP lead expects evidence claims to carry owners and dates.
-
-Section forty-eight point three treats what the dossier is as testable only when evidence and ticket IDs are recorded.
-
 ### 48.4 Consistency check
 
 Before submission: every claim has evidence; every number in the thesis matches its source; statuses agree across documents (no "passed" in one and "failed" in another — finding F1 in Chapter 45); residual risks have owners; and all review findings are closed or dispositioned.
-
-Section forty-eight point four develops evidence dossier with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-eight point four, TMRP lead expects evidence claims to carry owners and dates.
-
-Section forty-eight point four treats what the dossier is as testable only when evidence and ticket IDs are recorded.
 
 ### 48.5 Worked example: dossier index excerpt (synthetic)
 
@@ -4457,23 +3435,7 @@ Section forty-eight point four treats what the dossier is as testable only when 
 
 Build your dossier index with real content hashes of your result files (`hashlib.sha256`) and run the §48.4 consistency check.
 
-Section forty-eight point six develops evidence dossier with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-eight point six, TMRP lead expects evidence claims to carry owners and dates.
-
-Section forty-eight point six treats what the dossier is as testable only when evidence and ticket IDs are recorded.
-
-For section forty-eight point six, Lowmarsh Regional Water Authority will not accept evidence work without a written trail.
-
 ### 48.7 Common errors and limits
-Section forty-eight point seven develops evidence dossier with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-eight point seven, TMRP lead expects evidence claims to carry owners and dates.
-
-Section forty-eight point seven treats what the dossier is as testable only when evidence and ticket IDs are recorded.
-
-For section forty-eight point seven, Lowmarsh Regional Water Authority will not accept evidence work without a written trail.
-
 
 - Dossiers organised by date or author instead of claim.
 - Numbers in the thesis with no source file.
@@ -4510,8 +3472,6 @@ After this chapter you can (1) structure an engineering thesis around a design p
 
 An engineering thesis argues that a designed system meets a need under constraints, supported by verification and validation evidence. It is not a research dissertation (the [master's book](../../../../masters-2-years/critical-sector-security/en/book/MANUSCRIPT.md) covers that) and need not claim an original contribution to knowledge (the [doctoral book](../../../../doctorate-2-years/critical-sector-security/en/book/MANUSCRIPT.md)). Its originality, if any, lies in the design and the quality of its evidence.
 
-Section forty-nine point one develops engineering thesis with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 49.2 Structure
 
 1. **Introduction:** need, stakeholders, consequence, scope.
@@ -4525,25 +3485,13 @@ Section forty-nine point one develops engineering thesis with a Lowmarsh Regiona
 9. **Conclusion:** what was achieved and what remains.
 Appendices: traceability matrix, dossier index, lab code.
 
-Section forty-nine point two develops engineering thesis with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
 ### 49.3 Results and limitations
 
 Report requirement status honestly: met, met after fix, not met, not verified. For each limitation, say which claims it affects and in which direction: "the bench uses perfect clocks; real clock drift would increase stale-message rejections, so the false-stale rate reported is a lower bound". A limitation without a direction is decoration.
 
-Section forty-nine point three develops engineering thesis with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-nine point three, TMRP lead expects engineering claims to carry owners and dates.
-
 ### 49.4 Writing well
 
 Lead each chapter with its main point. Use figures with labelled axes and units; tables for exact values. Keep numbers traceable to the dossier. Write in plain technical English, define terms at first use, and use a glossary.
-
-Section forty-nine point four develops engineering thesis with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-nine point four, TMRP lead expects engineering claims to carry owners and dates.
-
-Section forty-nine point four treats the engineering thesis structure as testable only when evidence and ticket IDs are recorded.
 
 ### 49.5 Worked example: discussion paragraph (synthetic)
 
@@ -4553,23 +3501,7 @@ Section forty-nine point four treats the engineering thesis structure as testabl
 
 Write the discussion chapter of your thesis, with a requirement-status table and directional limitations.
 
-Section forty-nine point six develops engineering thesis with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-nine point six, TMRP lead expects engineering claims to carry owners and dates.
-
-Section forty-nine point six treats the engineering thesis structure as testable only when evidence and ticket IDs are recorded.
-
-For section forty-nine point six, Lowmarsh Regional Water Authority will not accept engineering work without a written trail.
-
 ### 49.7 Common errors and limits
-Section forty-nine point seven develops engineering thesis with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section forty-nine point seven, TMRP lead expects engineering claims to carry owners and dates.
-
-Section forty-nine point seven treats the engineering thesis structure as testable only when evidence and ticket IDs are recorded.
-
-For section forty-nine point seven, Lowmarsh Regional Water Authority will not accept engineering work without a written trail.
-
 
 - Theses organised as diaries.
 - Requirement status rounded up.
@@ -4606,21 +3538,9 @@ After this chapter you can (1) prepare a technical defense presentation of a cap
 
 Examiners check that the candidate understands the need and constraints; made defensible design decisions; verified claims competently; knows the limits of the evidence; and can reason about changes ("what if the requirement were 2 h?"). They read the thesis closely and probe inconsistencies.
 
-Section fifty point one develops final defense with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section fifty point one, TMRP lead expects final claims to carry owners and dates.
-
-Section fifty point one treats what examiners test the as testable only when evidence and ticket IDs are recorded.
-
 ### 50.2 The presentation
 
 Twenty minutes: need and consequence (2 min); requirements (2); alternatives and selection (3); architecture and key controls (4); verification and validation results with failures and fixes (5); requirement status and residual risks (2); limitations and next steps (2). One message per slide. Show the requirement-status table; examiners respect "not met" stated plainly.
-
-Section fifty point two develops final defense with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section fifty point two, TMRP lead expects final claims to carry owners and dates.
-
-Section fifty point two treats what examiners test the as testable only when evidence and ticket IDs are recorded.
 
 ### 50.3 Question families
 
@@ -4637,21 +3557,9 @@ Prepare two answers per family with references to the dossier.
 
 When you do not know: say so, say how you would find out, and — if you can — reason toward an answer aloud, labelled as reasoning. Do not invent numbers. When an examiner finds an error: acknowledge, assess its impact on the claims, and propose a correction.
 
-Section fifty point four develops final defense with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section fifty point four, TMRP lead expects final claims to carry owners and dates.
-
-Section fifty point four treats what examiners test the as testable only when evidence and ticket IDs are recorded.
-
 ### 50.5 After the defense
 
 Corrections are listed in a table: examiner request, change made, location. Hand over the artefact and dossier to the sponsor with known limitations and maintenance needs. For real projects, route any security findings through the owner's processes.
-
-Section fifty point five develops final defense with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section fifty point five, TMRP lead expects final claims to carry owners and dates.
-
-Section fifty point five treats what examiners test the as testable only when evidence and ticket IDs are recorded.
 
 ### 50.6 Worked example: answering a hard question (synthetic)
 
@@ -4661,23 +3569,7 @@ Section fifty point five treats what examiners test the as testable only when ev
 
 Hold a mock defense with two peers acting as examiners using the question families; record questions you could not answer and prepare answers.
 
-Section fifty point seven develops final defense with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section fifty point seven, TMRP lead expects final claims to carry owners and dates.
-
-Section fifty point seven treats what examiners test the as testable only when evidence and ticket IDs are recorded.
-
-For section fifty point seven, Lowmarsh Regional Water Authority will not accept final work without a written trail.
-
 ### 50.8 Common errors and limits
-Section fifty point eight develops final defense with a Lowmarsh Regional Water Authority note the engineer can demo offline.
-
-Under section fifty point eight, TMRP lead expects final claims to carry owners and dates.
-
-Section fifty point eight treats what examiners test the as testable only when evidence and ticket IDs are recorded.
-
-For section fifty point eight, Lowmarsh Regional Water Authority will not accept final work without a written trail.
-
 
 - Presentations that hide failures.
 - Defensive answers to error findings.

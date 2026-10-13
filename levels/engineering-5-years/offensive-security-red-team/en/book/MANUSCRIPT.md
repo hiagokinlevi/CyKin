@@ -55,12 +55,6 @@ The total for that ramp is ∫₀⁶ (6t − t²) dt = [3t² − t³/3]₀⁶ = 
 
 Real traffic is bursty, not smooth; a continuous model gives an average-case picture, and the ROE limit must be enforced by a mechanism, not by the calculation. Units cause most mistakes: keep seconds and minutes separate.
 
-Section one point four develops calculus with a Riverstone Transit note Sam can demo offline.
-
-Under section one point four, the ROE owner expects calculus claims to carry owners and dates.
-
-Section one point four treats calculus as testable only when evidence and ticket IDs are recorded.
-
 ### Exercises
 
 - **EX001 — Breach window.** For r(t) = 8t − t² req/s (t in minutes, 0–8) and a ceiling of 7 req/s, find the peak and the interval during which the ceiling is breached. Rubric: 3 = peak 16 at t=4 and breach between t=1 and t=7 (6 minutes); 2 = one slip; 1 = peak only; 0 = none.
@@ -86,8 +80,6 @@ You will (1) express scope as sets and predicates; (2) prove a simple property o
 ### 2.1 Scope is a set
 
 Written scope lists what may be tested: in-scope networks I, in-scope ports P and a deny-list D. The set of permitted targets is T = {(h, p) : h ∈ I, h ∉ D, p ∈ P}. Writing scope this way exposes ambiguities a prose ROE hides. "The 10.20.0.0/16 network except the gateway" is the set difference I \ D with D = {10.20.0.1}. "Web services" is not a set until someone lists the ports.
-
-Section two point one develops discrete mathematics with a Riverstone Transit note Sam can demo offline.
 
 ### 2.2 Predicates and proofs
 
@@ -151,12 +143,6 @@ A /16 holds 2¹⁶ = 65,536 addresses; a /24 holds 256. With four permitted port
 
 Sets describe intent, not reality: DHCP can move a host into or out of a range during the test, so the predicate must be re-evaluated per action. Overlapping CIDRs double-count if you add sizes naively; use inclusion–exclusion.
 
-Section two point four develops discrete mathematics with a Riverstone Transit note Sam can demo offline.
-
-Under section two point four, the ROE owner expects discrete claims to carry owners and dates.
-
-Section two point four treats discrete mathematics as testable only when evidence and ticket IDs are recorded.
-
 ### Exercises
 
 - **EX004 — Set notation.** Write the permitted-target set for networks 192.168.50.0/24, ports {22, 443} and deny-list {192.168.50.1, 192.168.50.254}. Rubric: 3 = correct set expression and |T| = 508; 2 = expression without count; 1 = partial; 0 = none.
@@ -183,15 +169,9 @@ You will (1) relate signal propagation, bandwidth and latency to what a test can
 
 Signals in fibre travel at about two-thirds of the speed of light, roughly 200,000 km/s, so 1,000 km of fibre adds about 5 ms each way. When TrackScope reports a 40 ms round trip to a depot server 300 km away, about 3 ms is propagation and the rest is queuing, switching and processing. Engineers use this floor to sanity-check timing evidence: a round trip *below* the propagation floor means the measurement or the location assumption is wrong.
 
-Section three point one develops physics for computing with a Riverstone Transit note Sam can demo offline.
-
 ### 3.2 Bandwidth and serialisation
 
 Serialisation time is size divided by link rate. A 1,500-byte frame on a 10 Mb/s depot uplink takes 1,500 × 8 / 10⁷ = 1.2 ms to put on the wire. If an authorized scan sends 2,000 small probes per second at 100 bytes each, it consumes 1.6 Mb/s, 16% of that uplink, which is why low-bandwidth OT and branch links get tighter ROE limits than data-centre networks.
-
-Section three point two develops physics for computing with a Riverstone Transit note Sam can demo offline.
-
-Under section three point two, the ROE owner expects physics claims to carry owners and dates.
 
 ### 3.3 Heat, power and physical media
 
@@ -202,14 +182,6 @@ Computation dissipates power as heat. A stress test that keeps an embedded fare 
 ### 3.4 Errors and limits
 
 Back-of-envelope physics gives orders of magnitude; real links have overheads (headers, retransmissions) that add 5–20%. Do not infer geographic location from latency alone; routing paths are rarely straight lines.
-
-Section three point four develops physics for computing with a Riverstone Transit note Sam can demo offline.
-
-Under section three point four, the ROE owner expects physics claims to carry owners and dates.
-
-Section three point four treats physics for computing as testable only when evidence and ticket IDs are recorded.
-
-For section three point four, Riverstone Transit will not accept physics work without a written trail.
 
 ### Exercises
 
@@ -237,15 +209,9 @@ You will (1) write small, testable functions for assessment bookkeeping; (2) cho
 
 Assessment tooling is mostly bookkeeping: is this target allowed, which finding is a duplicate, how old is this ticket. Each question should be a pure function with explicit inputs and a return value, such as `allowed(host, port, scope) -> (bool, reason)`. Returning the *reason* as well as the decision makes logs useful: "DENY outside-cidr" tells the reviewer which rule fired. Avoid global state; a function that reads a hidden global scope file cannot be tested against a synthetic scope.
 
-Section four point one develops programming with a Riverstone Transit note Sam can demo offline.
-
 ### 4.2 Data structures that resist errors
 
 Store ports as a `set` of integers, not a comma-separated string: membership is exact and "443" cannot match "4430". Store CIDRs as parsed network objects (the standard `ipaddress` module) rather than strings, because string prefix matching thinks 10.2.0.5 is inside "10.20". Store findings as dictionaries with a fixed schema and validate required keys on creation.
-
-Section four point two develops programming with a Riverstone Transit note Sam can demo offline.
-
-Under section four point two, the ROE owner expects programming claims to carry owners and dates.
 
 ### 4.3 Test first
 
@@ -266,14 +232,6 @@ print("scope tests passed")
 ### 4.4 Errors and limits
 
 Tests prove behaviour on the cases you wrote, not on all inputs. Keep test data synthetic; never paste a client's real host list into a public repository.
-
-Section four point four develops programming with a Riverstone Transit note Sam can demo offline.
-
-Under section four point four, the ROE owner expects programming claims to carry owners and dates.
-
-Section four point four treats programming as testable only when evidence and ticket IDs are recorded.
-
-For section four point four, Riverstone Transit will not accept programming work without a written trail.
 
 ### Exercises
 
@@ -301,15 +259,9 @@ You will (1) write a finding that a non-specialist can act on without exploit de
 
 A red-team report is read by an engineer who must fix something and a manager who must fund it. Neither needs a recipe. A finding needs: a title stating the weakness and asset; the affected scope; the evidence (what was observed, with time and ticket reference); the impact in business terms; the recommended fix; and how the fix will be verified. NIST SP 800-115 treats reporting as part of the assessment, not an afterthought.
 
-Section five point one develops engineering communication with a Riverstone Transit note Sam can demo offline.
-
 ### 5.2 Write the claim at the right strength
 
 "We compromised the domain" is a headline. "Within the authorized window, a service account in the lab directory had domain-administrator rights; we confirmed the group membership read-only and did not use it" is a finding. The second states what was done, what was not done and on which scope, and the reader can verify it.
-
-Section five point two develops engineering communication with a Riverstone Transit note Sam can demo offline.
-
-Under section five point two, the ROE owner expects engineering claims to carry owners and dates.
 
 ### 5.3 Report structure
 
@@ -354,14 +306,6 @@ SYN-005 priority=critical score=17 impact=3 exploitability=2 exposure=1 :: servi
 
 Avoid adjectives that cannot be checked ("trivial", "catastrophic"). Do not include working payloads, credentials or step-by-step instructions in reports; reference the evidence store instead.
 
-Section five point four develops engineering communication with a Riverstone Transit note Sam can demo offline.
-
-Under section five point four, the ROE owner expects engineering claims to carry owners and dates.
-
-Section five point four treats engineering communication as testable only when evidence and ticket IDs are recorded.
-
-For section five point four, Riverstone Transit will not accept engineering work without a written trail.
-
 ### Exercises
 
 - **EX013 — Rewrite.** Rewrite "The VPN is wide open lol" as a finding title and one-sentence evidence line. Rubric: 3 = asset, weakness, observation time/ref, no exploit detail; 2 = one element missing; 1 = still vague; 0 = unchanged.
@@ -387,10 +331,6 @@ You will (1) use series and accumulation to reason about repeated probes; (2) ap
 ### 6.1 Geometric series and retries
 
 If each attempt to upload evidence succeeds with probability p = 0.8 independently, the chance of succeeding within k tries is 1 − (1 − p)^k. That is a finite geometric series. With k = 3, 1 − 0.2³ = 0.992. Retries raise the success rate, but they also multiply traffic: expected attempts until success is 1/p = 1.25, so a 1,000-upload batch expects 1,250 requests. The ROE must count the retries, not only the logical uploads.
-
-Section six point one develops calculus ii with a Riverstone Transit note Sam can demo offline.
-
-Under section six point one, the ROE owner expects calculus claims to carry owners and dates.
 
 ```python
 """Reliability of a synthetic evidence-upload step with retries (deterministic)."""
@@ -421,27 +361,15 @@ max_tries=5 success=1000/1000 theory=0.9997
 
 Let B(t) be open findings. Findings arrive at rate a and are closed at rate c when staffed. Then B′(t) ≈ a − c. If a = 4/day and c = 6/day, the backlog falls by about 2 per day; starting from 30, it reaches zero in 15 days. If arrivals jump to 8/day (a campaign week) while staffing stays at 6, the backlog grows. The model is crude — it ignores priority — but it makes the staffing decision quantitative.
 
-Section six point two develops calculus ii with a Riverstone Transit note Sam can demo offline.
-
 ### 6.3 When continuous is enough
 
 ROE debates often need an order of magnitude, not a closed form. "Will a 5 req/s scan for 30 minutes produce about 9,000 requests?" Yes: 5 × 1,800 = 9,000. Reserve exact calculus for schedules with peaks (§1) and for models the client will audit.
-
-Section six point three develops calculus ii with a Riverstone Transit note Sam can demo offline.
 
 > **Synthetic case — Riverstone Transit.** FindingsDesk showed a backlog of 28 medium findings with two remediations per day. Sam's B′ model predicted 14 days to clear if no new arrivals; the manager funded a third engineer for that fortnight.
 
 ### 6.4 Errors and limits
 
 Independence of retries fails when the failure is systematic (a broken endpoint). Backlog models ignore priority and SLA; use them as a conversation starter, not as a forecast the board will quote.
-
-Section six point four develops calculus ii with a Riverstone Transit note Sam can demo offline.
-
-Under section six point four, the ROE owner expects calculus claims to carry owners and dates.
-
-Section six point four treats calculus ii as testable only when evidence and ticket IDs are recorded.
-
-For section six point four, Riverstone Transit will not accept calculus work without a written trail.
 
 
 ### 6.3b Choosing a retry cap from the series
@@ -473,10 +401,6 @@ You will (1) report a rate with an interval, not a bare percentage; (2) apply Ba
 ### 7.1 Rates and Wilson intervals
 
 Three successes in twenty trials is 15%. A Wilson 95% interval for that is about 5%–36%. You can say the rate is probably not zero and probably below 40%; you cannot say it is better than a defence that scored 20/100 (20%). Larger n shrinks the interval: 300/2,000 is still 15% but about 13.5%–16.6%. Albrecht and Jensen warn against empty single scores; an interval is the cheapest honesty.
-
-Section seven point one develops probability and statistics with a Riverstone Transit note Sam can demo offline.
-
-Under section seven point one, the ROE owner expects probability claims to carry owners and dates.
 
 ```python
 """Lab S: reporting attack-success rates honestly: Wilson intervals,
@@ -521,12 +445,6 @@ baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
 
 A detector with 95% true-positive rate and 5% false-positive rate looks excellent until the base rate of the bad class is 0.1%. Then almost every alert is a false positive (precision ≈ 1.9%). Bayes' rule: precision = TPR·π / (TPR·π + FPR·(1−π)). PulseMap must show precision at the client's base rate, not only TPR.
 
-Section seven point two develops probability and statistics with a Riverstone Transit note Sam can demo offline.
-
-Under section seven point two, the ROE owner expects probability claims to carry owners and dates.
-
-Section seven point two treats probability and statistics as testable only when evidence and ticket IDs are recorded.
-
 ```python
 """Lab B: base rates and alarm precision (Bayes' rule).
 A detector for malicious prompts with given true- and false-positive rates
@@ -563,12 +481,6 @@ Two defences with overlapping intervals are not ranked. Prefer a paired design o
 
 Independence of trials fails when prompts share a template. Intervals assume a fixed process; changing the model mid-test voids them. Never invent a p-value for a table you did not test.
 
-Section seven point four develops probability and statistics with a Riverstone Transit note Sam can demo offline.
-
-Under section seven point four, the ROE owner expects probability claims to carry owners and dates.
-
-Section seven point four treats probability and statistics as testable only when evidence and ticket IDs are recorded.
-
 
 ### 7.3b Reporting uncertainty to non-statisticians
 
@@ -600,17 +512,9 @@ You will (1) map privilege levels to what an authorized test may observe; (2) ex
 
 User mode sees process memory and system calls it is allowed; kernel mode sees devices and page tables; a hypervisor sees guests. An authorized engagement that stays in user mode cannot claim "we ruled out a kernel rootkit". State the privilege level of each observation in the evidence package. TrackScope should record the account and role used for every action.
 
-Section eight point one develops computer architecture with a Riverstone Transit note Sam can demo offline.
-
-Under section eight point one, the ROE owner expects computer claims to carry owners and dates.
-
 ### 8.2 Side channels are physical
 
 Cache and timing side channels measure microarchitectural state. They are research techniques, noisy, and often out of scope for commercial assessments. If they are in scope, the ROE must name the platforms, forbid production traffic, and require a stop condition if latency to users rises. Do not treat a student lab on a laptop as evidence about a server.
-
-Section eight point two develops computer architecture with a Riverstone Transit note Sam can demo offline.
-
-Under section eight point two, the ROE owner expects computer claims to carry owners and dates.
 
 ### 8.3 Evidence without root
 
@@ -621,14 +525,6 @@ Most durable evidence for an authorized assessment is logs, configuration reads 
 ### 8.4 Errors and limits
 
 Architecture diagrams in marketing decks omit shared caches and management planes. Verify the actual platform before promising a privilege level in the ROE.
-
-Section eight point four develops computer architecture with a Riverstone Transit note Sam can demo offline.
-
-Under section eight point four, the ROE owner expects computer claims to carry owners and dates.
-
-Section eight point four treats computer architecture as testable only when evidence and ticket IDs are recorded.
-
-For section eight point four, Riverstone Transit will not accept computer work without a written trail.
 
 ### 8.3b Privilege in tickets
 
@@ -660,21 +556,9 @@ You will (1) design a finding schema that forbids exploit recipes; (2) implement
 
 FindingsDesk stores title, asset, weakness class, evidence reference, impact, status and timestamps. It must not store a working exploit, a live credential or a step-by-step attack. Schema validation rejects fields named `payload`, `password` or `shell`. Evidence lives in a sealed store referenced by hash (Chapter 48).
 
-Section nine point one develops programming ii with a Riverstone Transit note Sam can demo offline.
-
-Under section nine point one, the ROE owner expects programming claims to carry owners and dates.
-
-Section nine point one treats programming ii as testable only when evidence and ticket IDs are recorded.
-
 ### 9.2 Idempotent updates
 
 Closing a finding twice must leave it closed; attaching the same evidence hash twice must leave one attachment. Idempotency lets retries (Chapter 6) be safe. Use a stable finding id and treat create-or-update as a single operation keyed by that id.
-
-Section nine point two develops programming ii with a Riverstone Transit note Sam can demo offline.
-
-Under section nine point two, the ROE owner expects programming claims to carry owners and dates.
-
-Section nine point two treats programming ii as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Deduplicate synthetic findings by a stable fingerprint (asset, weakness class, location)."""
@@ -716,14 +600,6 @@ Beyond example tests, state a property: "for every host in the deny-list and eve
 
 Schemas drift; version them. Property tests are only as good as the generator; include known edge cases by hand.
 
-Section nine point four develops programming ii with a Riverstone Transit note Sam can demo offline.
-
-Under section nine point four, the ROE owner expects programming claims to carry owners and dates.
-
-Section nine point four treats programming ii as testable only when evidence and ticket IDs are recorded.
-
-For section nine point four, Riverstone Transit will not accept programming work without a written trail.
-
 ### 9.2b Migration without downtime
 
 When the finding schema gains a required field, deploy a two-phase change: first accept and persist the field as optional while backfilling; then flip the validator to required. Engagements mid-window must not break because a mobile client is one version behind. Publish the schema version in API responses so clients can refuse to write when incompatible.
@@ -758,23 +634,13 @@ You will (1) refuse dual-use and out-of-scope requests; (2) apply stop condition
 
 A manager saying "go ahead" in chat is not written authorization. NIST SP 800-115 and PTES expect a signed scope, methods, dates, limits, contacts and stop conditions. Without that document, the engineer stops. Enthusiasm from a single stakeholder who does not own the asset is a common path to unauthorized testing.
 
-Section ten point one develops engineering ethics and safety with a Riverstone Transit note Sam can demo offline.
-
-Under section ten point one, the ROE owner expects engineering claims to carry owners and dates.
-
 ### 10.2 Dual use and teaching
 
 This book teaches scoping, measurement and reporting. It does not teach exploit development, weaponised payloads or bypass recipes. When a peer asks for "just the PoC", the answer is the finding description and the evidence reference, not a working attack. Publishing student work that contains live techniques against real products is a disclosure decision with vendors and law, not a homework upload.
 
-Section ten point two develops engineering ethics and safety with a Riverstone Transit note Sam can demo offline.
-
-Under section ten point two, the ROE owner expects engineering claims to carry owners and dates.
-
 ### 10.3 Stop conditions
 
 Stop conditions are pre-agreed triggers: probing a deny-listed host, latency above a threshold, a safety alarm, or a request from the client contact. When a trigger fires, stop first, then notify. TrackScope should enforce hard denies in software so "I forgot" is not a failure mode.
-
-Section ten point three develops engineering ethics and safety with a Riverstone Transit note Sam can demo offline.
 
 ```python
 """Evaluate proposed actions against synthetic rules of engagement."""
@@ -822,14 +688,6 @@ action=service-enum         when=11:00 conc=20 approved=False -> DENY concurrenc
 
 Ethics is not a chapter you finish; it is a constraint on every later chapter. Legal text here is orientation, not advice — consult counsel for real engagements.
 
-Section ten point four develops engineering ethics and safety with a Riverstone Transit note Sam can demo offline.
-
-Under section ten point four, the ROE owner expects engineering claims to carry owners and dates.
-
-Section ten point four treats engineering ethics and safety as testable only when evidence and ticket IDs are recorded.
-
-For section ten point four, Riverstone Transit will not accept engineering work without a written trail.
-
 ### 10.3b Dual control for dangerous verbs
 
 Actions that change authorization — publishing a new ScopeVersion, disabling a stop condition, exporting a sealed dossier — require two authenticated people or a time-delayed single control with a cancel window. Engineering convenience is not an argument against dual control when the blast radius is the client's estate.
@@ -860,27 +718,13 @@ You will (1) describe what an authorized observer can learn from each OSI layer 
 
 Link-layer captures need access to a segment; network-layer routing data need a vantage; application-layer evidence often needs credentials. An assessment that only has application credentials should not claim link-layer visibility. State the vantage in the method section.
 
-Section eleven point one develops networks and protocols with a Riverstone Transit note Sam can demo offline.
-
-Under section eleven point one, the ROE owner expects networks claims to carry owners and dates.
-
-Section eleven point one treats networks and protocols as testable only when evidence and ticket IDs are recorded.
-
 ### 11.2 Ports are not services
 
 Port 443 often means TLS and HTTPS, but it can carry other protocols. Scope that says "web ports" must list numbers and, if needed, expected application protocols. A finding that "HTTPS was open" is incomplete without the certificate subject, auth method and whether the service was the expected one.
 
-Section eleven point two develops networks and protocols with a Riverstone Transit note Sam can demo offline.
-
-Under section eleven point two, the ROE owner expects networks claims to carry owners and dates.
-
-Section eleven point two treats networks and protocols as testable only when evidence and ticket IDs are recorded.
-
 ### 11.3 Denies are data
 
 A closed port, a refused TCP handshake or a WAF block is evidence that a control worked for that probe. Report it as coverage of a planned check, not as a failure to "get in". PulseMap's covered/planned-not-seen distinction (Chapter 29) depends on this.
-
-Section eleven point three develops networks and protocols with a Riverstone Transit note Sam can demo offline.
 
 ```python
 """Rank synthetic assets for authorized engagement scoping."""
@@ -914,14 +758,6 @@ lab-jump-host            4        1    1     2
 ### 11.4 Errors and limits
 
 Scanners fingerprint banners; banners lie. Confirm with an application-level check before writing a finding. Do not scan the public Internet from the course environment.
-
-Section eleven point four develops networks and protocols with a Riverstone Transit note Sam can demo offline.
-
-Under section eleven point four, the ROE owner expects networks claims to carry owners and dates.
-
-Section eleven point four treats networks and protocols as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point four, Riverstone Transit will not accept networks work without a written trail.
 
 ### 11.3b Protocol families in scope
 
@@ -958,41 +794,19 @@ You will (1) separate configuration review from runtime abuse; (2) collect OS ev
 
 Password policy, patch level, listening services and local admin group membership answer most OS questions in an authorized assessment. Reading those under an admin account granted for the engagement is different from exploiting a service to obtain that account. Prefer the former; PTES-style discovery stays inside the agreed methods.
 
-Section twelve point one develops operating systems with a Riverstone Transit note Sam can demo offline.
-
-Under section twelve point one, the ROE owner expects operating claims to carry owners and dates.
-
-Section twelve point one treats operating systems as testable only when evidence and ticket IDs are recorded.
-
 ### 12.2 Least privilege for the tester
 
 Issue a named assessment account with a time-boxed role. Log every elevation. At the end of the engagement, disable the account and rotate any shared secrets it touched. FindingsDesk should store the account id used for each finding so revocation can be checked.
 
-Section twelve point two develops operating systems with a Riverstone Transit note Sam can demo offline.
-
-Under section twelve point two, the ROE owner expects operating claims to carry owners and dates.
-
-Section twelve point two treats operating systems as testable only when evidence and ticket IDs are recorded.
-
 ### 12.3 Local vs domain
 
 A local administrator on one host is not domain administrator. Findings must name the identity store (local SAM, LDAP, cloud IdP). Conflating them inflates severity and misdirects remediation.
-
-Section twelve point three develops operating systems with a Riverstone Transit note Sam can demo offline.
 
 > **Synthetic case — Riverstone Transit.** SYN-005 was a lab service account with domain-admin rights — a directory finding, not a "Windows is broken" finding. Remediating meant removing the group membership and rotating the password, then verifying with a read of the group.
 
 ### 12.4 Errors and limits
 
 OS vendors change defaults; cite the version you observed. Do not disable security tools to "make the test work"; if a tool blocks you, that is a result under the ROE.
-
-Section twelve point four develops operating systems with a Riverstone Transit note Sam can demo offline.
-
-Under section twelve point four, the ROE owner expects operating claims to carry owners and dates.
-
-Section twelve point four treats operating systems as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point four, Riverstone Transit will not accept operating work without a written trail.
 
 ### 12.3b Image and offline analysis
 
@@ -1029,41 +843,19 @@ You will (1) scope database assessment without extracting personal data; (2) tes
 
 Authorized database work uses synthetic rows or masked copies. Exporting production personal data into a student laptop is a privacy incident, not a finding. The ROE must state: no SELECT of columns tagged personal, no full-table dumps, row limits and a destroy-by date for any temporary extract.
 
-Section thirteen point one develops data systems with a Riverstone Transit note Sam can demo offline.
-
-Under section thirteen point one, the ROE owner expects data claims to carry owners and dates.
-
-Section thirteen point one treats data systems as testable only when evidence and ticket IDs are recorded.
-
 ### 13.2 Authorization, not injection recipes
 
 The engineering question is usually "can role R read table T?" Test that with the granted role. Teaching SQL injection payloads is out of this book's safety boundary; if injection is in scope for a professional engagement, it is under a separate method line and disclosure plan, not a homework exercise.
 
-Section thirteen point two develops data systems with a Riverstone Transit note Sam can demo offline.
-
-Under section thirteen point two, the ROE owner expects data claims to carry owners and dates.
-
 ### 13.3 Synthetic data
 
 Generate deterministic synthetic customers with faker-like rules or fixed seeds so labs reproduce. Never copy a production backup into the course repository.
-
-Section thirteen point three develops data systems with a Riverstone Transit note Sam can demo offline.
-
-Under section thirteen point three, the ROE owner expects data claims to carry owners and dates.
 
 > **Synthetic case — Riverstone Transit.** Sam needed fare-product rows for a report test. Ops provided a synthetic snapshot with product ids and prices only — no passenger names — and a 48-hour destroy tag.
 
 ### 13.4 Errors and limits
 
 Masking that leaves unique rare values can still identify people. Prefer synthetic generation over imperfect masking when teaching.
-
-Section thirteen point four develops data systems with a Riverstone Transit note Sam can demo offline.
-
-Under section thirteen point four, the ROE owner expects data claims to carry owners and dates.
-
-Section thirteen point four treats data systems as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point four, Riverstone Transit will not accept data work without a written trail.
 
 ### 13.3b Row-level and column-level controls
 
@@ -1099,45 +891,19 @@ You will (1) put assessment tools under version control with review; (2) gate sc
 
 TrackScope and FindingsDesk are software. They need repositories, code review, tagged releases and changelogs. A ROE that cites "TrackScope" without a version is incomplete; cite `TrackScope v0.9.2` or the git SHA used.
 
-Section fourteen point one develops software engineering with a Riverstone Transit note Sam can demo offline.
-
-Under section fourteen point one, the ROE owner expects software claims to carry owners and dates.
-
-Section fourteen point one treats software engineering as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point one, Riverstone Transit will not accept software work without a written trail.
-
 ### 14.2 Gate widening
 
 Merges that add a CIDR, open a port or remove a deny-list entry require a second reviewer and a linked authorization ticket. Merges that only tighten scope can be lighter. Encode this in CODEOWNERS or a required check that diffs the scope files.
 
-Section fourteen point two develops software engineering with a Riverstone Transit note Sam can demo offline.
-
-Under section fourteen point two, the ROE owner expects software claims to carry owners and dates.
-
-Section fourteen point two treats software engineering as testable only when evidence and ticket IDs are recorded.
-
 ### 14.3 CI fixtures
 
 Continuous integration runs the labs and unit tests on synthetic data. Never point CI at a client network. Seed data lives in the repo; secrets for real engagements live in a vault and never in CI logs.
-
-Section fourteen point three develops software engineering with a Riverstone Transit note Sam can demo offline.
-
-Under section fourteen point three, the ROE owner expects software claims to carry owners and dates.
 
 > **Synthetic case — Riverstone Transit.** A PR added 10.30.0.0/16 to scope "for next month". CI's scope-diff check blocked merge until ticket AUTH-442 was linked and a second owner approved.
 
 ### 14.4 Errors and limits
 
 Version tags can drift from what operators actually run; record the running version in the engagement log at start.
-
-Section fourteen point four develops software engineering with a Riverstone Transit note Sam can demo offline.
-
-Under section fourteen point four, the ROE owner expects software claims to carry owners and dates.
-
-Section fourteen point four treats software engineering as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point four, Riverstone Transit will not accept software work without a written trail.
 
 ### 14.3b Release trains vs hotfixes
 
@@ -1177,43 +943,19 @@ You will (1) map CIA and authentication/authorization to assessment questions; (
 
 Confidentiality: who can read this? Integrity: who can change this? Availability: what stops this working? Each finding should say which property is affected and for which asset. "Security issue" without that map is not actionable.
 
-Section fifteen point one develops security fundamentals with a Riverstone Transit note Sam can demo offline.
-
-Under section fifteen point one, the ROE owner expects security claims to carry owners and dates.
-
-Section fifteen point one treats security fundamentals as testable only when evidence and ticket IDs are recorded.
-
 ### 15.2 Vulnerability, exposure, risk
 
 A default password is a vulnerability. On a staging host reachable from the corporate network it is an exposure. Risk adds likelihood and impact for the organization — which needs their context, not a universal CVSS-only story. FindingsDesk stores impact and exposure fields separately; risk acceptance stays with the client.
 
-Section fifteen point two develops security fundamentals with a Riverstone Transit note Sam can demo offline.
-
-Under section fifteen point two, the ROE owner expects security claims to carry owners and dates.
-
-Section fifteen point two treats security fundamentals as testable only when evidence and ticket IDs are recorded.
-
 ### 15.3 Empty scores
 
 Albrecht and Jensen (arXiv:2010.06377) criticize methodology scores that do not predict outcomes. Prefer concrete measures: out-of-scope probe count, time-to-fix, precision at the client's base rate. If you show a score, show the model and the inputs.
-
-Section fifteen point three develops security fundamentals with a Riverstone Transit note Sam can demo offline.
-
-Under section fifteen point three, the ROE owner expects security claims to carry owners and dates.
 
 > **Synthetic case — Riverstone Transit.** Sam stopped putting a single "risk = 42" on slides. The deck now shows two critical findings, three SLA breaches and 71% technique coverage of the planned set.
 
 ### 15.4 Errors and limits
 
 Fundamentals are shared vocabulary; they are not a complete threat model. Continue into Chapter 23 for structured failure analysis.
-
-Section fifteen point four develops security fundamentals with a Riverstone Transit note Sam can demo offline.
-
-Under section fifteen point four, the ROE owner expects security claims to carry owners and dates.
-
-Section fifteen point four treats security fundamentals as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point four, Riverstone Transit will not accept security work without a written trail.
 
 ### 15.3b Mapping to tickets
 
@@ -1249,45 +991,19 @@ You will (1) write requirements that are testable; (2) trace a requirement to an
 
 "The system should be secure" is not a requirement. "TrackScope rejects any target outside the signed CIDR/port set and records the reason code" is. Each requirement needs an id, a shall-statement, a verification method (test, inspection, analysis) and an owner.
 
-Section sixteen point one develops systems engineering with a Riverstone Transit note Sam can demo offline.
-
-Under section sixteen point one, the ROE owner expects systems claims to carry owners and dates.
-
-Section sixteen point one treats systems engineering as testable only when evidence and ticket IDs are recorded.
-
 ### 16.2 Traceability
 
 A simple matrix: requirement → design element → test case → engagement evidence. When a finding shows a scope bypass, you know which requirement and test failed. Without the matrix, post-mortems become blame.
 
-Section sixteen point two develops systems engineering with a Riverstone Transit note Sam can demo offline.
-
-Under section sixteen point two, the ROE owner expects systems claims to carry owners and dates.
-
-Section sixteen point two treats systems engineering as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point two, Riverstone Transit will not accept systems work without a written trail.
-
 ### 16.3 Interfaces
 
 TrackScope emits allow/deny events; FindingsDesk consumes finding drafts; PulseMap consumes technique tags. Agree JSON schemas and version them. An interface change is a release, not a silent edit.
-
-Section sixteen point three develops systems engineering with a Riverstone Transit note Sam can demo offline.
-
-Under section sixteen point three, the ROE owner expects systems claims to carry owners and dates.
 
 > **Synthetic case — Riverstone Transit.** Requirement R-17 "deny reasons are immutable after insert" traced to the FindingsDesk append-only event table and test T-17 that tries an UPDATE and expects failure.
 
 ### 16.4 Errors and limits
 
 Traceability matrices rot if not updated in the same PR as the code. Keep them next to the code.
-
-Section sixteen point four develops systems engineering with a Riverstone Transit note Sam can demo offline.
-
-Under section sixteen point four, the ROE owner expects systems claims to carry owners and dates.
-
-Section sixteen point four treats systems engineering as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point four, Riverstone Transit will not accept systems work without a written trail.
 
 ### 16.3b Interface SLAs
 
@@ -1327,43 +1043,19 @@ You will (1) model a control loop around assessment tooling; (2) choose sensors 
 
 Sensor: out-of-scope probe count per hour. Controller: compare to threshold 0. Actuator: TrackScope hard-deny and page the lead. Plant: the engagement. Without the sensor, you only discover scope breaks in the final report.
 
-Section seventeen point one develops control and feedback basics with a Riverstone Transit note Sam can demo offline.
-
-Under section seventeen point one, the ROE owner expects control claims to carry owners and dates.
-
-Section seventeen point one treats control and feedback basics as testable only when evidence and ticket IDs are recorded.
-
 ### 17.2 Stability
 
 If every medium finding pages the whole company, people silence the pager (alert fatigue). Severity-based routing and rate limits on notifications are the damping. The baserate lab (Chapter 7) is the same idea for detectors.
 
-Section seventeen point two develops control and feedback basics with a Riverstone Transit note Sam can demo offline.
-
-Under section seventeen point two, the ROE owner expects control claims to carry owners and dates.
-
-Section seventeen point two treats control and feedback basics as testable only when evidence and ticket IDs are recorded.
-
 ### 17.3 Manual vs automatic
 
 Hard denies of deny-listed hosts can be automatic. Changing the ROE mid-engagement must stay manual and signed. Put automation on the inner loop; keep humans on the outer loop.
-
-Section seventeen point three develops control and feedback basics with a Riverstone Transit note Sam can demo offline.
-
-Under section seventeen point three, the ROE owner expects control claims to carry owners and dates.
 
 > **Synthetic case — Riverstone Transit.** After the 11:10 deny-list touch, Sam added a sensor: any deny-list hit pages the lead within one minute. False pages in a week: zero.
 
 ### 17.4 Errors and limits
 
 Feedback assumes the sensor is honest. A broken logger looks like a quiet system. Heartbeat the sensors.
-
-Section seventeen point four develops control and feedback basics with a Riverstone Transit note Sam can demo offline.
-
-Under section seventeen point four, the ROE owner expects control claims to carry owners and dates.
-
-Section seventeen point four treats control and feedback basics as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point four, Riverstone Transit will not accept control work without a written trail.
 
 ### 17.2b Choosing the sampling interval
 
@@ -1403,45 +1095,19 @@ You will (1) place assessment tools in a zone model; (2) define trust boundaries
 
 Assessment laptops, TrackScope, FindingsDesk and the client's assets sit in different trust zones. Traffic from the assessment zone to client assets is only what the ROE allows; traffic back carries evidence into a store the client can audit. Do not put the evidence store on the same VLAN as the targets "for convenience".
 
-Section eighteen point one develops security architecture with a Riverstone Transit note Sam can demo offline.
-
-Under section eighteen point one, the ROE owner expects security claims to carry owners and dates.
-
 ### 18.2 Trust boundaries
 
 Crossing a boundary needs authentication, authorization and logging. A student exporting findings to a personal drive crosses a boundary without a control — forbid it in the ROE and in tool policy.
 
-Section eighteen point two develops security architecture with a Riverstone Transit note Sam can demo offline.
-
-Under section eighteen point two, the ROE owner expects security claims to carry owners and dates.
-
-Section eighteen point two treats security architecture as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point two, Riverstone Transit will not accept security work without a written trail.
-
 ### 18.3 Isolated ranges
 
 When methods are noisy or the client is fragile, use a synthetic range that mirrors configuration. Results then support claims about the mirrored config, not about production runtime. Say so in the report.
-
-Section eighteen point three develops security architecture with a Riverstone Transit note Sam can demo offline.
-
-Under section eighteen point three, the ROE owner expects security claims to carry owners and dates.
 
 > **Synthetic case — Riverstone Transit.** PulseMap and FindingsDesk run in the security-tools VPC; scanners egress through a controlled proxy that enforces the CIDR allow-list.
 
 ### 18.4 Errors and limits
 
 Diagrams age. Re-validate zones at engagement start.
-
-Section eighteen point four develops security architecture with a Riverstone Transit note Sam can demo offline.
-
-Under section eighteen point four, the ROE owner expects security claims to carry owners and dates.
-
-Section eighteen point four treats security architecture as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point four, Riverstone Transit will not accept security work without a written trail.
-
-Section eighteen point four fails closed if security evidence is missing rather than guessing.
 
 ### 18.3b Egress control
 
@@ -1481,23 +1147,9 @@ You will (1) assess auth configuration without attacking crypto; (2) use hashing
 
 Ask: which IdP, which factors, which roles, which token lifetimes? Read configuration and logs under authorization. Breaking TLS or cracking password hashes is outside this book's labs and usually outside student scope.
 
-Section nineteen point one develops identity and cryptography with a Riverstone Transit note Sam can demo offline.
-
-Under section nineteen point one, the ROE owner expects identity claims to carry owners and dates.
-
-Section nineteen point one treats identity and cryptography as testable only when evidence and ticket IDs are recorded.
-
 ### 19.2 Evidence hashing
 
 Hash evidence files (SHA-256) and store the digests in the ticket. Re-hash later to detect tampering. The lab shows a mismatch when a file changed.
-
-Section nineteen point two develops identity and cryptography with a Riverstone Transit note Sam can demo offline.
-
-Under section nineteen point two, the ROE owner expects identity claims to carry owners and dates.
-
-Section nineteen point two treats identity and cryptography as testable only when evidence and ticket IDs are recorded.
-
-For section nineteen point two, Riverstone Transit will not accept identity work without a written trail.
 
 ```python
 """Verify integrity of a synthetic evidence package."""
@@ -1534,25 +1186,11 @@ scope.csv        OK
 
 Assessment credentials live in a vault; tools fetch short-lived tokens. No secrets in git, screenshots or chat. Rotate at engagement end.
 
-Section nineteen point three develops identity and cryptography with a Riverstone Transit note Sam can demo offline.
-
-Under section nineteen point three, the ROE owner expects identity claims to carry owners and dates.
-
 > **Synthetic case — Riverstone Transit.** The hash lab showed findings.json mismatched — someone had edited a severity field after sealing. Sam restored from the sealed store and opened a process finding about uncontrolled edits.
 
 ### 19.4 Errors and limits
 
 Hashes detect change, not malice versus accident. Pair them with access logs.
-
-Section nineteen point four develops identity and cryptography with a Riverstone Transit note Sam can demo offline.
-
-Under section nineteen point four, the ROE owner expects identity claims to carry owners and dates.
-
-Section nineteen point four treats identity and cryptography as testable only when evidence and ticket IDs are recorded.
-
-For section nineteen point four, Riverstone Transit will not accept identity work without a written trail.
-
-Section nineteen point four fails closed if identity evidence is missing rather than guessing.
 
 ### 19.2b What a hash does not prove
 
@@ -1592,41 +1230,19 @@ You will (1) place red-team engineering among PTES, NIST SP 800-115 and ATT&CK; 
 
 NIST SP 800-115 frames testing and assessment. PTES sequences pre-engagement through reporting. ATT&CK names techniques for planning and coverage — not as a score of residual risk. TIBER-EU and CBEST add threat-led oversight for certain financial contexts. Engineers build the platforms that make those frameworks operable: scope checkers, finding systems, coverage reporters, evidence stores.
 
-Section twenty point one develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty point one, the ROE owner expects authorized claims to carry owners and dates.
-
 ### 20.2 What we build
 
 Riverstone's TrackScope, FindingsDesk and PulseMap are the running example of that platform layer. Graduates should leave able to design, verify and operate such systems under authorization — not to invent exploits.
 
-Section twenty point two develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty point two, the ROE owner expects authorized claims to carry owners and dates.
-
-Section twenty point two treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
 ### 20.3 Safety boundary
 
 No exploit payloads, no unauthorized targets, no live personal data, labs on synthetic local data only. Dual-use requests are refused (Chapter 10). This boundary is a requirement on every design review in Chapters 21–50.
-
-Section twenty point three develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty point three, the ROE owner expects authorized claims to carry owners and dates.
 
 > **Synthetic case — Riverstone Transit.** Leadership asked for "a red team that hacks everything". Sam reframed the charter: "an authorized assessment platform that enforces ROE and measures remediation."
 
 ### 20.4 Errors and limits
 
 Frameworks evolve; re-check URLs and versions before citing in a thesis. This chapter orients; it does not replace reading the primary sources.
-
-Section twenty point four develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty point four, the ROE owner expects authorized claims to carry owners and dates.
-
-Section twenty point four treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section twenty point four, Riverstone Transit will not accept authorized work without a written trail.
 
 ### 20.3b Neighbouring courses
 
@@ -1667,41 +1283,19 @@ You will (1) elicit requirements from ROE and operators; (2) separate functional
 
 Operators want fewer false blocks; counsel wants an audit trail; the client wants clear findings. Elicitation interviews produce shall-statements tagged by source. Conflicts (speed vs approval gates) are recorded, not papered over.
 
-Section twenty-one point one develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty-one point one, the ROE owner expects authorized claims to carry owners and dates.
-
-Section twenty-one point one treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
 ### 21.2 Three families
 
 Functional: "TrackScope evaluates allowed(host,port) before every action." Safety: "TrackScope fails closed if the policy file does not load." Measurement: "PulseMap reports planned-vs-observed technique counts with denominators." Safety requirements win ties.
 
-Section twenty-one point two develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty-one point two, the ROE owner expects authorized claims to carry owners and dates.
-
-Section twenty-one point two treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
 ### 21.3 Acceptance criteria
 
 Each requirement has a Given/When/Then on synthetic data. Example: Given deny-list {10.20.0.1}, When probe 10.20.0.1:443, Then DENY deny-list and an event is stored. Criteria that need a real client network are rejected at review.
-
-Section twenty-one point three develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
 
 > **Synthetic case — Riverstone Transit.** Safety requirement S-3 "fail closed on missing policy" failed its acceptance test when a typo path returned ALLOW. The fix shipped before any engagement use.
 
 ### 21.4 Errors and limits
 
 Stakeholders invent requirements mid-engagement; park them in a backlog with an authorization ticket, do not hot-patch production TrackScope during a live test window.
-
-Section twenty-one point four develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty-one point four, the ROE owner expects authorized claims to carry owners and dates.
-
-Section twenty-one point four treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-one point four, Riverstone Transit will not accept authorized work without a written trail.
 
 ### 21.3b Requirement ids in code
 
@@ -1741,45 +1335,19 @@ You will (1) draw an entity model for engagements, scopes and findings; (2) choo
 
 Engagement 1—* ScopeVersion; Engagement 1—* Finding; Finding *—* EvidenceObject (by hash); TechniqueTag *—* Finding. Cardinality mistakes (many scopes active without a version pointer) cause auditors to ask "which ROE was live?"
 
-Section twenty-two point one develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty-two point one, the ROE owner expects authorized claims to carry owners and dates.
-
-Section twenty-two point one treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
 ### 22.2 Keys
 
 Finding ids are ULID/UUID. Evidence is content-addressed by SHA-256. ScopeVersion has (engagement_id, version_int). Never key findings by title — titles change.
 
-Section twenty-two point two develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty-two point two, the ROE owner expects authorized claims to carry owners and dates.
-
-Section twenty-two point two treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-two point two, Riverstone Transit will not accept authorized work without a written trail.
-
 ### 22.3 Forbidden attributes
 
 No attribute for payload, password or shell command. EvidenceObject stores bytes in a sealed bucket; the model stores only hash, media type and retention class.
-
-Section twenty-two point three develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty-two point three, the ROE owner expects authorized claims to carry owners and dates.
 
 > **Synthetic case — Riverstone Transit.** An early schema had `notes` as free text; people pasted passwords. Sam replaced it with structured fields plus an evidence hash, and a linter rejects password-like strings in titles.
 
 ### 22.4 Errors and limits
 
 Models that try to encode all of ATT&CK as mandatory fields force junk tags. Keep technique tags optional and reviewed.
-
-Section twenty-two point four develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty-two point four, the ROE owner expects authorized claims to carry owners and dates.
-
-Section twenty-two point four treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-two point four, Riverstone Transit will not accept authorized work without a written trail.
 
 ### 22.2b Time and actors
 
@@ -1819,43 +1387,19 @@ You will (1) enumerate failures of the assessment platform itself; (2) use a lig
 
 TrackScope failing open, FindingsDesk losing deny events, PulseMap counting coverage without a denominator — these are threats to *safety and honesty*, not only to confidentiality of the tool.
 
-Section twenty-three point one develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty-three point one, the ROE owner expects authorized claims to carry owners and dates.
-
-Section twenty-three point one treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
 ### 23.2 STRIDE on the platform
 
 Spoofing: fake assessment account. Tampering: edit finding severity after seal. Repudiation: no actor on deny events. Information disclosure: evidence bucket world-readable. Denial of service: scanner floods client. Elevation: operator role can widen scope alone. Each row gets a mitigation requirement.
 
-Section twenty-three point two develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty-three point two, the ROE owner expects authorized claims to carry owners and dates.
-
-Section twenty-three point two treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
 ### 23.3 Engagement threats stay in scope docs
 
 Threats *to the client* belong in the engagement's threat-led scenario (if any), not as features of TrackScope. Do not build "automated exploitation" to satisfy a STRIDE row.
-
-Section twenty-three point three develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty-three point three, the ROE owner expects authorized claims to carry owners and dates.
 
 > **Synthetic case — Riverstone Transit.** STRIDE row "fail open" became safety requirement S-3 (Chapter 21). Row "solo scope widen" became the dual-approval gate (Chapter 14).
 
 ### 23.4 Errors and limits
 
 STRIDE is a prompt, not a proof. Revisit after architecture changes.
-
-Section twenty-three point four develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty-three point four, the ROE owner expects authorized claims to carry owners and dates.
-
-Section twenty-three point four treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-three point four, Riverstone Transit will not accept authorized work without a written trail.
 
 ### 23.2b Abuse cases vs misuse cases
 
@@ -1900,33 +1444,13 @@ You will (1) sequence pre-engagement → discovery → validation → reporting 
 
 Pre-engagement produces the signed ROE. Discovery enumerates in-scope assets by agreed methods. Validation confirms configuration issues with least privilege. Reporting delivers findings and evidence hashes. Skipping pre-engagement is how unauthorized testing happens.
 
-Section twenty-four point one develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty-four point one, the ROE owner expects authorized claims to carry owners and dates.
-
-Section twenty-four point one treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
 ### 24.2 Method cards
 
 Each method card: name, purpose, required privilege, noisy?, stop conditions, expected artefacts. "Authenticated configuration review" is a card; "weaponised exploit" is not in this programme's deck.
 
-Section twenty-four point two develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty-four point two, the ROE owner expects authorized claims to carry owners and dates.
-
-Section twenty-four point two treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point two, Riverstone Transit will not accept authorized work without a written trail.
-
 ### 24.3 Done means artefacts
 
 A method is done when its artefacts exist: inventory CSV, config excerpts, finding drafts, coverage update — not when someone "feels finished".
-
-Section twenty-four point three develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty-four point three, the ROE owner expects authorized claims to carry owners and dates.
-
-Section twenty-four point three treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Rebuild a synthetic engagement timeline from event records."""
@@ -1973,14 +1497,6 @@ events=8 phases=7
 
 Copying someone else's method list without matching authorization is cargo-cult PTES.
 
-Section twenty-four point four develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty-four point four, the ROE owner expects authorized claims to carry owners and dates.
-
-Section twenty-four point four treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point four, Riverstone Transit will not accept authorized work without a written trail.
-
 ### 24.2b Quiet vs noisy methods
 
 Quiet methods (authenticated reads, config export) fit daytime windows on shared systems. Noisy methods (broad service enumeration) need tighter rate limits and often off-peak hours. The method card's "noisy?" field drives the schedule; leaving it blank is how morning dispatch windows get congested.
@@ -2024,53 +1540,19 @@ You will (1) sketch TrackScope's allow/deny pipeline; (2) justify trade-offs in 
 
 Design the pipeline: input action → load ScopeVersion → evaluate predicate → emit event → return decision. Competitors: embed policy in code vs data file; sync vs async events.
 
-Section twenty-five point one develops design studio with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty-five point one, the ROE owner expects design claims to carry owners and dates.
-
-Section twenty-five point one treats design studio as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point one, Riverstone Transit will not accept design work without a written trail.
-
 ### 25.2 Trade-offs
 
 Policy-as-data lets ROE updates ship without redeploying binaries but needs signature verification. Async events scale but can reorder; for deny-list hits, prefer sync alert.
 
-Section twenty-five point two develops design studio with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty-five point two, the ROE owner expects design claims to carry owners and dates.
-
-Section twenty-five point two treats design studio as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point two, Riverstone Transit will not accept design work without a written trail.
-
 ### 25.3 Decision record
 
 One page: context, options, decision, consequences, date, owners. Store next to the code.
-
-Section twenty-five point three develops design studio with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty-five point three, the ROE owner expects design claims to carry owners and dates.
-
-Section twenty-five point three treats design studio as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point three, Riverstone Transit will not accept design work without a written trail.
 
 > **Synthetic case — Riverstone Transit.** Studio chose policy-as-signed-JSON, sync path for denies, async bulk for allows. ADR-004 captures it.
 
 ### 25.4 Errors and limits
 
 Studios that skip safety requirements produce pretty diagrams that fail open.
-
-Section twenty-five point four develops design studio with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty-five point four, the ROE owner expects design claims to carry owners and dates.
-
-Section twenty-five point four treats design studio as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point four, Riverstone Transit will not accept design work without a written trail.
-
-Section twenty-five point four fails closed if design evidence is missing rather than guessing.
 
 ### 25.2b Sketch quality bar
 
@@ -2114,47 +1596,19 @@ You will (1) compare monolith vs service split for assessment tools; (2) evaluat
 
 A: monolith on a hardened jump host. B: TrackScope / FindingsDesk / PulseMap as separate services. C: SaaS scanner with client data leaving the premises. Each serves different constraints.
 
-Section twenty-six point one develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty-six point one, the ROE owner expects authorized claims to carry owners and dates.
-
-Section twenty-six point one treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
 ### 26.2 Criteria
 
 Authorization clarity, data residency, fail-closed behaviour, operability by two engineers, cost. Weight safety and residency above novelty.
 
-Section twenty-six point two develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty-six point two, the ROE owner expects authorized claims to carry owners and dates.
-
-Section twenty-six point two treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-six point two, Riverstone Transit will not accept authorized work without a written trail.
-
 ### 26.3 Decision
 
 Riverstone rejected C because fare and staff identity logs must not leave the region. Chose B for independent scaling of reporting, with A as the disaster-fallback (export policy files and run local).
-
-Section twenty-six point three develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty-six point three, the ROE owner expects authorized claims to carry owners and dates.
 
 > **Synthetic case — Riverstone Transit.** A vendor demo of C looked slick; counsel blocked it on residency. ADR-011 records the rejection so the question is not reopened monthly.
 
 ### 26.4 Errors and limits
 
 Alternatives analysis that ignores the ROE's data clauses is theatre.
-
-Section twenty-six point four develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty-six point four, the ROE owner expects authorized claims to carry owners and dates.
-
-Section twenty-six point four treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-six point four, Riverstone Transit will not accept authorized work without a written trail.
-
-Section twenty-six point four fails closed if authorized evidence is missing rather than guessing.
 
 ### 26.2b Switching costs
 
@@ -2198,31 +1652,13 @@ You will (1) design preventive, detective and corrective controls for the platfo
 
 Preventive: scope predicate before action. Detective: alert on deny-list hit. Corrective: auto-disable assessment account at window end. Each maps to a requirement id.
 
-Section twenty-seven point one develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty-seven point one, the ROE owner expects authorized claims to carry owners and dates.
-
-Section twenty-seven point one treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point one, Riverstone Transit will not accept authorized work without a written trail.
-
 ### 27.2 Operator skill
 
 Controls must be operable by engineers who follow runbooks — not only by exploit specialists. A control that needs a custom shellcode to verify is the wrong control for this programme.
 
-Section twenty-seven point two develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty-seven point two, the ROE owner expects authorized claims to carry owners and dates.
-
-Section twenty-seven point two treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
 ### 27.3 Compensation
 
 If preventive control is weak (legacy system cannot enforce port scope), add detective monitoring and a tighter human approval. Document the compensation in the ROE.
-
-Section twenty-seven point three develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty-seven point three, the ROE owner expects authorized claims to carry owners and dates.
 
 ```python
 """Evaluate proposed actions against synthetic rules of engagement."""
@@ -2270,16 +1706,6 @@ action=service-enum         when=11:00 conc=20 approved=False -> DENY concurrenc
 
 Stacks of compensating controls without an owner become ignored alerts.
 
-Section twenty-seven point four develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty-seven point four, the ROE owner expects authorized claims to carry owners and dates.
-
-Section twenty-seven point four treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point four, Riverstone Transit will not accept authorized work without a written trail.
-
-Section twenty-seven point four fails closed if authorized evidence is missing rather than guessing.
-
 ### 27.2b Control ownership
 
 Every control has an owner who receives its alerts and a review date. Orphan detective controls become noise; orphan preventive controls become folklore nobody dares to change. Put owner and review date in the same repo as the control code.
@@ -2322,23 +1748,9 @@ You will (1) implement allowed() with explicit reason codes; (2) add tests for e
 
 Pure function: inputs host, port, ScopeVersion → (allow: bool, reason: str). No network I/O inside the predicate; I/O belongs to the caller. That keeps tests fast and free of client contact.
 
-Section twenty-eight point one develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty-eight point one, the ROE owner expects authorized claims to carry owners and dates.
-
-Section twenty-eight point one treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
 ### 28.2 Clause tests
 
 One test file per clause: cidr, deny-list, port, hours, concurrency, approval flag. Synthetic fixtures only. Mutation: break a clause and watch the test fail.
-
-Section twenty-eight point two develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty-eight point two, the ROE owner expects authorized claims to carry owners and dates.
-
-Section twenty-eight point two treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point two, Riverstone Transit will not accept authorized work without a written trail.
 
 ```python
 """Check proposed engagement targets against a written scope (synthetic)."""
@@ -2392,27 +1804,11 @@ target=192.168.1.10:80 decision=DENY reasons=outside-cidr
 
 Log decision, reason, policy version, actor. Do not log tokens or passwords. Redact query parameters that might contain secrets.
 
-Section twenty-eight point three develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty-eight point three, the ROE owner expects authorized claims to carry owners and dates.
-
-Section twenty-eight point three treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
 > **Synthetic case — Riverstone Transit.** Implementation I shipped reason codes that the timeline UI shows — operators finally saw *why* a probe stopped.
 
 ### 28.4 Errors and limits
 
 Stringly-typed reasons drift; use an enum shared with PulseMap.
-
-Section twenty-eight point four develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty-eight point four, the ROE owner expects authorized claims to carry owners and dates.
-
-Section twenty-eight point four treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point four, Riverstone Transit will not accept authorized work without a written trail.
-
-Section twenty-eight point four fails closed if authorized evidence is missing rather than guessing.
 
 ### 28.2b Reason-code catalogue
 
@@ -2456,12 +1852,6 @@ You will (1) define coverage with a denominator; (2) separate activity metrics f
 
 ATT&CK coverage is observed ∩ planned / |planned|, not observed / |all ATT&CK|. Without a plan, "coverage" is vanity. PulseMap requires a planned set per engagement.
 
-Section twenty-nine point one develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty-nine point one, the ROE owner expects authorized claims to carry owners and dates.
-
-Section twenty-nine point one treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
 ```python
 """ATT&CK-style coverage matrix over synthetic authorized techniques (names only)."""
 # Synthetic engagement log: technique_id -> observed (True/False)
@@ -2501,39 +1891,15 @@ coverage=5/7 (71%)
 
 Activity: tools launched, packets sent. Outcome: verified remediations, SLA breaches closed, out-of-scope probes. Steer on outcomes; use activity only for capacity planning.
 
-Section twenty-nine point two develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty-nine point two, the ROE owner expects authorized claims to carry owners and dates.
-
-Section twenty-nine point two treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point two, Riverstone Transit will not accept authorized work without a written trail.
-
 ### 29.3 One-sided error
 
 Prefer metrics that, if wrong, under-claim success (e.g. count a fix only after re-test). Over-claiming security is the failure mode Albrecht and Jensen attack.
-
-Section twenty-nine point three develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty-nine point three, the ROE owner expects authorized claims to carry owners and dates.
-
-Section twenty-nine point three treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
 
 > **Synthetic case — Riverstone Transit.** Coverage 5/7 (71%) with two planned-not-seen — the report said "incomplete planned coverage", not "71% safe".
 
 ### 29.4 Errors and limits
 
 Denominators stolen from another engagement invalidate the metric.
-
-Section twenty-nine point four develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section twenty-nine point four, the ROE owner expects authorized claims to carry owners and dates.
-
-Section twenty-nine point four treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point four, Riverstone Transit will not accept authorized work without a written trail.
-
-Section twenty-nine point four fails closed if authorized evidence is missing rather than guessing.
 
 ### 29.2b Sampling without lying
 
@@ -2577,25 +1943,9 @@ You will (1) run a verification plan against TrackScope; (2) record pass/fail wi
 
 Tests: allow in-scope; deny deny-list; deny bad port; fail-closed missing policy; hours gate; concurrency gate. Each row: id, setup, action, expected, evidence path.
 
-Section thirty point one develops verification laboratory with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty point one, the ROE owner expects verification claims to carry owners and dates.
-
-Section thirty point one treats verification laboratory as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point one, Riverstone Transit will not accept verification work without a written trail.
-
 ### 30.2 Execution
 
 Use synthetic hosts only. Capture stdout and config hashes. Any safety failure (fail-open) stops the lab and opens a blocker ticket — no "continue to gather data".
-
-Section thirty point two develops verification laboratory with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty point two, the ROE owner expects verification claims to carry owners and dates.
-
-Section thirty point two treats verification laboratory as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point two, Riverstone Transit will not accept verification work without a written trail.
 
 ```python
 """Evaluate proposed actions against synthetic rules of engagement."""
@@ -2641,29 +1991,11 @@ action=service-enum         when=11:00 conc=20 approved=False -> DENY concurrenc
 
 A one-page lab report: environment version, table of results, open blockers, sign-off. Attach hashes.
 
-Section thirty point three develops verification laboratory with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty point three, the ROE owner expects verification claims to carry owners and dates.
-
-Section thirty point three treats verification laboratory as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point three, Riverstone Transit will not accept verification work without a written trail.
-
 > **Synthetic case — Riverstone Transit.** Lab I failed the missing-policy row once; release halted until S-3 was fixed (Chapter 21).
 
 ### 30.4 Errors and limits
 
 Labs on shared clients collide; book the synthetic range.
-
-Section thirty point four develops verification laboratory with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty point four, the ROE owner expects verification claims to carry owners and dates.
-
-Section thirty point four treats verification laboratory as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point four, Riverstone Transit will not accept verification work without a written trail.
-
-Section thirty point four fails closed if verification evidence is missing rather than guessing.
 
 ### 30.2b Golden fixtures
 
@@ -2712,14 +2044,6 @@ You will (1) add idempotent finding upserts; (2) enforce schema validation on wr
 
 PUT /findings/{id} with full body; same id twice yields one row. Dedup fingerprints (Chapter 9) propose ids, humans confirm.
 
-Section thirty-one point one develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty-one point one, the ROE owner expects authorized claims to carry owners and dates.
-
-Section thirty-one point one treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-one point one, Riverstone Transit will not accept authorized work without a written trail.
-
 ```python
 """Deduplicate synthetic findings by a stable fingerprint (asset, weakness class, location)."""
 import hashlib
@@ -2754,39 +2078,15 @@ c4bfba3b72 web-01  missing-header      /login    occurrences=2
 
 Reject unknown fields and forbidden names; coerce severity through an enum. Validation errors return machine-readable codes for the UI.
 
-Section thirty-one point two develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty-one point two, the ROE owner expects authorized claims to carry owners and dates.
-
-Section thirty-one point two treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-one point two, Riverstone Transit will not accept authorized work without a written trail.
-
 ### 31.3 API versioning
 
 Prefix /v1/; additive changes only within v1. Breaking changes require /v2/ and a migration note for PulseMap.
-
-Section thirty-one point three develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty-one point three, the ROE owner expects authorized claims to carry owners and dates.
-
-Section thirty-one point three treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
 
 > **Synthetic case — Riverstone Transit.** A mobile client sent `risk_score`; validator rejected it — empty scores stay out (Chapter 15).
 
 ### 31.4 Errors and limits
 
 Idempotency keys must not be derived from wall-clock alone.
-
-Section thirty-one point four develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty-one point four, the ROE owner expects authorized claims to carry owners and dates.
-
-Section thirty-one point four treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-one point four, Riverstone Transit will not accept authorized work without a written trail.
-
-Section thirty-one point four fails closed if authorized evidence is missing rather than guessing.
 
 ### 31.2b Partial updates
 
@@ -2839,25 +2139,9 @@ You will (1) set availability targets for assessment tools; (2) use retries with
 
 TrackScope deny path: high availability during engagement windows. PulseMap dashboards: best-effort. State the target; do not imply five-nines without a budget.
 
-Section thirty-two point one develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty-two point one, the ROE owner expects authorized claims to carry owners and dates.
-
-Section thirty-two point one treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-two point one, Riverstone Transit will not accept authorized work without a written trail.
-
 ### 32.2 Retries
 
 Retries help flaky uploads (Chapter 6) but need a deadline and jitter. Cap total attempts so the ROE rate limit still holds.
-
-Section thirty-two point two develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty-two point two, the ROE owner expects authorized claims to carry owners and dates.
-
-Section thirty-two point two treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-two point two, Riverstone Transit will not accept authorized work without a written trail.
 
 ```python
 """Reliability of a synthetic evidence-upload step with retries (deterministic)."""
@@ -2888,25 +2172,11 @@ max_tries=5 success=1000/1000 theory=0.9997
 
 If FindingsDesk is down, continue deny/allow locally and queue finding drafts on disk — never fail open on scope checks.
 
-Section thirty-two point three develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty-two point three, the ROE owner expects authorized claims to carry owners and dates.
-
-Section thirty-two point three treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
 > **Synthetic case — Riverstone Transit.** During a FindingsDesk outage, Sam's laptop queue held 14 drafts; TrackScope keeps denying out-of-scope.
 
 ### 32.4 Errors and limits
 
 Retries against a rate-limited API can look like abuse; coordinate budgets with the ROE.
-
-Section thirty-two point four develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty-two point four, the ROE owner expects authorized claims to carry owners and dates.
-
-Section thirty-two point four treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-two point four, Riverstone Transit will not accept authorized work without a written trail.
 
 ### 32.2b Back-pressure
 
@@ -2955,49 +2225,19 @@ You will (1) write stop conditions as executable checks; (2) plan rollback of to
 
 Stop conditions are code: deny-list, latency canary, client kill-switch file. Humans also call stop; software must not disagree with a human stop.
 
-Section thirty-three point one develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty-three point one, the ROE owner expects authorized claims to carry owners and dates.
-
-Section thirty-three point one treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-three point one, Riverstone Transit will not accept authorized work without a written trail.
-
 ### 33.2 Rollback
 
 Pin releases; keep previous TrackScope binary signed. If a new build mis-evaluates scope, roll back within minutes, not "after the sprint".
 
-Section thirty-three point two develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty-three point two, the ROE owner expects authorized claims to carry owners and dates.
-
-Section thirty-three point two treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-three point two, Riverstone Transit will not accept authorized work without a written trail.
-
 ### 33.3 Tabletop
 
 Walk the 11:10 timeline: who is called, what is said, what is logged, when resume is allowed. Update the runbook where the tabletop stuck.
-
-Section thirty-three point three develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty-three point three, the ROE owner expects authorized claims to carry owners and dates.
-
-Section thirty-three point three treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
 
 > **Synthetic case — Riverstone Transit.** Tabletop found the kill-switch file path undocumented; runbook v1.4 fixed it before the next window.
 
 ### 33.4 Errors and limits
 
 Resilience theatre is a binder nobody opens. Drill once per term.
-
-Section thirty-three point four develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty-three point four, the ROE owner expects authorized claims to carry owners and dates.
-
-Section thirty-three point four treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-three point four, Riverstone Transit will not accept authorized work without a written trail.
 
 ### 33.2b Communication templates
 
@@ -3046,49 +2286,19 @@ You will (1) integrate TrackScope events into FindingsDesk; (2) define idempoten
 
 Deny/allow events: schema version, ids, timestamps (UTC), targets, reasons. Consumers ignore unknown fields; producers stay additive.
 
-Section thirty-four point one develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty-four point one, the ROE owner expects authorized claims to carry owners and dates.
-
-Section thirty-four point one treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-four point one, Riverstone Transit will not accept authorized work without a written trail.
-
 ### 34.2 Idempotent consumers
 
 FindingsDesk keys processed events by event_id. Replaying the log must not create duplicate findings.
 
-Section thirty-four point two develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty-four point two, the ROE owner expects authorized claims to carry owners and dates.
-
-Section thirty-four point two treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-four point two, Riverstone Transit will not accept authorized work without a written trail.
-
 ### 34.3 Contract tests
 
 Fixture JSON for each reason code; consumer tests assert resulting ticket fields. Run in CI on synthetic fixtures.
-
-Section thirty-four point three develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty-four point three, the ROE owner expects authorized claims to carry owners and dates.
-
-Section thirty-four point three treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
 
 > **Synthetic case — Riverstone Transit.** A replay storm duplicated three tickets until event_id idempotency landed.
 
 ### 34.4 Errors and limits
 
 Clock skew between hosts muddies timelines; prefer event time + receive time.
-
-Section thirty-four point four develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty-four point four, the ROE owner expects authorized claims to carry owners and dates.
-
-Section thirty-four point four treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-four point four, Riverstone Transit will not accept authorized work without a written trail.
 
 ### 34.2b Poison events
 
@@ -3145,51 +2355,19 @@ You will (1) redesign PulseMap's coverage UI against under-claim principles; (2)
 
 Stakeholders want a big green percentage. Design a UI that shows planned/observed/not-seen and refuses a single "security score".
 
-Section thirty-five point one develops design studio ii with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty-five point one, the ROE owner expects design claims to carry owners and dates.
-
-Section thirty-five point one treats design studio ii as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-five point one, Riverstone Transit will not accept design work without a written trail.
-
 ### 35.2 Copy
 
 "71% of planned techniques observed — not a residual-risk score." Link to Albrecht & Jensen in the help text. Button: export denominator.
 
-Section thirty-five point two develops design studio ii with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty-five point two, the ROE owner expects design claims to carry owners and dates.
-
-Section thirty-five point two treats design studio ii as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-five point two, Riverstone Transit will not accept design work without a written trail.
-
 ### 35.3 Review
 
 Reviewers try to force a red/yellow/green risk badge; studio must hold the line with measurement chapter rules.
-
-Section thirty-five point three develops design studio ii with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty-five point three, the ROE owner expects design claims to carry owners and dates.
-
-Section thirty-five point three treats design studio ii as testable only when evidence and ticket IDs are recorded.
 
 > **Synthetic case — Riverstone Transit.** Studio II killed the badge; the dashboard now lists the two planned-not-seen techniques by id.
 
 ### 35.4 Errors and limits
 
 Dark patterns ("just for executives") reintroduce empty scores — reject in CODEOWNERS for UI.
-
-Section thirty-five point four develops design studio ii with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty-five point four, the ROE owner expects design claims to carry owners and dates.
-
-Section thirty-five point four treats design studio ii as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-five point four, Riverstone Transit will not accept design work without a written trail.
-
-Section thirty-five point four fails closed if design evidence is missing rather than guessing.
 
 ### 35.2b Accessibility of honesty
 
@@ -3238,14 +2416,6 @@ You will (1) size scanners under ROE rate limits; (2) apply token buckets; (3) m
 
 Throughput goals that ignore the ROE are bugs. Size worker pools so the token bucket is the bottleneck, not a surprise 429 storm.
 
-Section thirty-six point one develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty-six point one, the ROE owner expects authorized claims to carry owners and dates.
-
-Section thirty-six point one treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-six point one, Riverstone Transit will not accept authorized work without a written trail.
-
 ```python
 """Lab R: token-bucket limits against unbounded consumption (synthetic).
 Simulates 60 seconds of requests from a normal client and a flooding client
@@ -3277,37 +2447,15 @@ limit=1/s burst= 5 normal_served= 62/90 flood_served=  64/3000
 
 Capacity = burst; refill = sustained rate. Lab shows flood clients get clipped while normal clients proceed.
 
-Section thirty-six point two develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty-six point two, the ROE owner expects authorized claims to carry owners and dates.
-
-Section thirty-six point two treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-six point two, Riverstone Transit will not accept authorized work without a written trail.
-
 ### 36.3 Canaries
 
 A synthetic canary request every minute tracks latency/error rate; stop conditions fire on threshold (Chapter 33).
-
-Section thirty-six point three develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty-six point three, the ROE owner expects authorized claims to carry owners and dates.
-
-Section thirty-six point three treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
 
 > **Synthetic case — Riverstone Transit.** Bucket 5/s burst 20 kept the fare API under 5% of capacity during the window.
 
 ### 36.4 Errors and limits
 
 Distributed scanners need a coordinated global bucket or they N× the limit.
-
-Section thirty-six point four develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty-six point four, the ROE owner expects authorized claims to carry owners and dates.
-
-Section thirty-six point four treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-six point four, Riverstone Transit will not accept authorized work without a written trail.
 
 ### 36.2b Fairness among methods
 
@@ -3360,35 +2508,13 @@ You will (1) write an engagement runbook; (2) hand over between shifts; (3) mana
 
 Contacts, ROE pointer, tool versions, stop conditions, escalation tree, evidence paths. Keep it short enough to use under stress.
 
-Section thirty-seven point one develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty-seven point one, the ROE owner expects authorized claims to carry owners and dates.
-
-Section thirty-seven point one treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-seven point one, Riverstone Transit will not accept authorized work without a written trail.
-
 ### 37.2 Handover
 
 Shift log: open findings, last event ids, pending approvals, kill-switch state. Verbal handover plus the log.
 
-Section thirty-seven point two develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty-seven point two, the ROE owner expects authorized claims to carry owners and dates.
-
-Section thirty-seven point two treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-seven point two, Riverstone Transit will not accept authorized work without a written trail.
-
 ### 37.3 Close-out
 
 Disable accounts, rotate secrets, seal evidence, export metrics, schedule retrospective. A checklist beats memory.
-
-Section thirty-seven point three develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty-seven point three, the ROE owner expects authorized claims to carry owners and dates.
-
-Section thirty-seven point three treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Age synthetic findings against remediation SLAs by priority."""
@@ -3427,14 +2553,6 @@ open=5 sla_breaches=3
 ### 37.4 Errors and limits
 
 Runbooks in wikis nobody can access from the jump host fail; keep an offline copy.
-
-Section thirty-seven point four develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty-seven point four, the ROE owner expects authorized claims to carry owners and dates.
-
-Section thirty-seven point four treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-seven point four, Riverstone Transit will not accept authorized work without a written trail.
 
 ### 37.2b On-call hygiene
 
@@ -3491,51 +2609,19 @@ You will (1) validate fixes with re-tests; (2) avoid validation that reintroduce
 
 Same vantage, least privilege, same evidence standard. For default password: confirm login fails; do not spray variants.
 
-Section thirty-eight point one develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty-eight point one, the ROE owner expects authorized claims to carry owners and dates.
-
-Section thirty-eight point one treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-eight point one, Riverstone Transit will not accept authorized work without a written trail.
-
 ### 38.2 Negative results
 
 "Still open" is a valid validation outcome. PulseMap and FindingsDesk must accept it without forcing close.
 
-Section thirty-eight point two develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty-eight point two, the ROE owner expects authorized claims to carry owners and dates.
-
-Section thirty-eight point two treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-eight point two, Riverstone Transit will not accept authorized work without a written trail.
-
 ### 38.3 No new methods
 
 Validation uses the method that found the issue, or a weaker read-only check — not a chance to try new attacks.
-
-Section thirty-eight point three develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty-eight point three, the ROE owner expects authorized claims to carry owners and dates.
-
-Section thirty-eight point three treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
 
 > **Synthetic case — Riverstone Transit.** Re-test of SYN-001: default login returned 401; ticket closed with evidence hash. SYN-005 still had group membership — left open.
 
 ### 38.4 Errors and limits
 
 Different environment (staging vs prod) means you validated staging.
-
-Section thirty-eight point four develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty-eight point four, the ROE owner expects authorized claims to carry owners and dates.
-
-Section thirty-eight point four treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-eight point four, Riverstone Transit will not accept authorized work without a written trail.
-
-Section thirty-eight point four fails closed if authorized evidence is missing rather than guessing.
 
 ### 38.2b Sampling re-tests
 
@@ -3588,51 +2674,19 @@ You will (1) budget for policy and dependency updates; (2) keep adapters thin; (
 
 ATT&CK techniques, IdP APIs and ROE templates change. Budget calendar time for updates; pin versions and watch advisories.
 
-Section thirty-nine point one develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty-nine point one, the ROE owner expects authorized claims to carry owners and dates.
-
-Section thirty-nine point one treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-nine point one, Riverstone Transit will not accept authorized work without a written trail.
-
 ### 39.2 Thin adapters
 
 Isolate third-party SDKs behind interfaces so upgrades do not rewrite FindingsDesk core.
 
-Section thirty-nine point two develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty-nine point two, the ROE owner expects authorized claims to carry owners and dates.
-
-Section thirty-nine point two treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-nine point two, Riverstone Transit will not accept authorized work without a written trail.
-
 ### 39.3 Ownership
 
 Every service has a named owning squad and a backup. CODEOWNERS enforces review.
-
-Section thirty-nine point three develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty-nine point three, the ROE owner expects authorized claims to carry owners and dates.
-
-Section thirty-nine point three treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
 
 > **Synthetic case — Riverstone Transit.** PulseMap's ATT&CK mapper is an adapter; upgrading the technique list is a data PR, not a rewrite.
 
 ### 39.4 Errors and limits
 
 Orphan tools rot into fail-open museums.
-
-Section thirty-nine point four develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section thirty-nine point four, the ROE owner expects authorized claims to carry owners and dates.
-
-Section thirty-nine point four treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-nine point four, Riverstone Transit will not accept authorized work without a written trail.
-
-Section thirty-nine point four fails closed if authorized evidence is missing rather than guessing.
 
 ### 39.2b Dependency risk
 
@@ -3697,25 +2751,9 @@ You will (1) verify end-to-end flow from action to ticket to coverage; (2) injec
 
 Synthetic action → TrackScope decision → event → FindingsDesk ticket → PulseMap coverage update. Record hashes at each hop.
 
-Section forty point one develops verification laboratory ii with a Riverstone Transit note Sam can demo offline.
-
-Under section forty point one, the ROE owner expects verification claims to carry owners and dates.
-
-Section forty point one treats verification laboratory ii as testable only when evidence and ticket IDs are recorded.
-
-For section forty point one, Riverstone Transit will not accept verification work without a written trail.
-
 ### 40.2 Faults
 
 Kill FindingsDesk mid-flow; confirm TrackScope still denies and drafts queue. Corrupt an evidence file; confirm hash mismatch alert.
-
-Section forty point two develops verification laboratory ii with a Riverstone Transit note Sam can demo offline.
-
-Under section forty point two, the ROE owner expects verification claims to carry owners and dates.
-
-Section forty point two treats verification laboratory ii as testable only when evidence and ticket IDs are recorded.
-
-For section forty point two, Riverstone Transit will not accept verification work without a written trail.
 
 ```python
 """Verify integrity of a synthetic evidence package."""
@@ -3752,27 +2790,11 @@ scope.csv        OK
 
 Release candidate checklist signed by implementer and reviewer; safety rows must be green.
 
-Section forty point three develops verification laboratory ii with a Riverstone Transit note Sam can demo offline.
-
-Under section forty point three, the ROE owner expects verification claims to carry owners and dates.
-
-Section forty point three treats verification laboratory ii as testable only when evidence and ticket IDs are recorded.
-
 > **Synthetic case — Riverstone Transit.** Lab II found coverage updated before ticket create on retry — fixed ordering with outbox.
 
 ### 40.4 Errors and limits
 
 E2E without fault injection only proves the happy path.
-
-Section forty point four develops verification laboratory ii with a Riverstone Transit note Sam can demo offline.
-
-Under section forty point four, the ROE owner expects verification claims to carry owners and dates.
-
-Section forty point four treats verification laboratory ii as testable only when evidence and ticket IDs are recorded.
-
-For section forty point four, Riverstone Transit will not accept verification work without a written trail.
-
-Section forty point four fails closed if verification evidence is missing rather than guessing.
 
 ### 40.2b Observability in the lab
 
@@ -3833,35 +2855,13 @@ You will (1) profile assessment pipelines ethically; (2) optimize under ROE cons
 
 Measure where time goes: DNS, TLS handshake, predicate eval, ticket write. Optimize the dominant term. Synthetic load only.
 
-Section forty-one point one develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section forty-one point one, the ROE owner expects authorized claims to carry owners and dates.
-
-Section forty-one point one treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section forty-one point one, Riverstone Transit will not accept authorized work without a written trail.
-
 ### 41.2 Constraint-preserving
 
 Caching ScopeVersion is fine if invalidation on publish is correct. Caching allow decisions across hosts is not — hosts differ.
 
-Section forty-one point two develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section forty-one point two, the ROE owner expects authorized claims to carry owners and dates.
-
-Section forty-one point two treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section forty-one point two, Riverstone Transit will not accept authorized work without a written trail.
-
 ### 41.3 Safety veto
 
 Any optimization that skips deny-list checks, shortens audit fields or fails open is rejected regardless of speedup.
-
-Section forty-one point three develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section forty-one point three, the ROE owner expects authorized claims to carry owners and dates.
-
-Section forty-one point three treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Rank synthetic assets for authorized engagement scoping."""
@@ -3895,16 +2895,6 @@ lab-jump-host            4        1    1     2
 ### 41.4 Errors and limits
 
 Benchmarks on laptops do not predict depot links (Chapter 3).
-
-Section forty-one point four develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section forty-one point four, the ROE owner expects authorized claims to carry owners and dates.
-
-Section forty-one point four treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section forty-one point four, Riverstone Transit will not accept authorized work without a written trail.
-
-Section forty-one point four fails closed if authorized evidence is missing rather than guessing.
 
 ### 41.2b Load shedding
 
@@ -3961,49 +2951,19 @@ You will (1) frame a research question about assessment platforms; (2) choose me
 
 "Does dual-approval reduce scope-widen incidents?" "Does showing denominators change stakeholder interpretation of coverage?" Not "new bypass against product X".
 
-Section forty-two point one develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section forty-two point one, the ROE owner expects authorized claims to carry owners and dates.
-
-Section forty-two point one treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section forty-two point one, Riverstone Transit will not accept authorized work without a written trail.
-
 ### 42.2 Design
 
 Pre-register measures; use synthetic or consented operational data; report intervals. Replication beats novelty theatre.
 
-Section forty-two point two develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section forty-two point two, the ROE owner expects authorized claims to carry owners and dates.
-
-Section forty-two point two treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section forty-two point two, Riverstone Transit will not accept authorized work without a written trail.
-
 ### 42.3 Disclosure
 
 If research accidentally finds a live issue, follow responsible disclosure — not a class blog.
-
-Section forty-two point three develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section forty-two point three, the ROE owner expects authorized claims to carry owners and dates.
-
-Section forty-two point three treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
 
 > **Synthetic case — Riverstone Transit.** Sam's applied study compared ticket reopen rates before/after requiring re-test evidence; pre-registered, synthetic+anonymized.
 
 ### 42.4 Errors and limits
 
 Course projects are not IRB-proofed human-subjects work; avoid collecting personal data.
-
-Section forty-two point four develops authorized offensive security and red with a Riverstone Transit note Sam can demo offline.
-
-Under section forty-two point four, the ROE owner expects authorized claims to carry owners and dates.
-
-Section forty-two point four treats authorized offensive security and red as testable only when evidence and ticket IDs are recorded.
-
-For section forty-two point four, Riverstone Transit will not accept authorized work without a written trail.
 
 ### 42.2b Pre-registration
 
@@ -4060,49 +3020,19 @@ You will (1) adapt platform engineering to a host organization's constraints; (2
 
 In industry or public service, ROE templates, residency and procurement differ. Your job is still fail-closed tooling and honest measurement — not clever unauthorized tests.
 
-Section forty-three point one develops industry or public-service practice with a Riverstone Transit note Sam can demo offline.
-
-Under section forty-three point one, the ROE owner expects industry claims to carry owners and dates.
-
-Section forty-three point one treats industry or public-service practice as testable only when evidence and ticket IDs are recorded.
-
-For section forty-three point one, Riverstone Transit will not accept industry work without a written trail.
-
 ### 43.2 Sanitized reporting
 
 Course deliverables use synthetic names and aggregates. Real client identifiers stay inside the host's systems.
 
-Section forty-three point two develops industry or public-service practice with a Riverstone Transit note Sam can demo offline.
-
-Under section forty-three point two, the ROE owner expects industry claims to carry owners and dates.
-
-Section forty-three point two treats industry or public-service practice as testable only when evidence and ticket IDs are recorded.
-
-For section forty-three point two, Riverstone Transit will not accept industry work without a written trail.
-
 ### 43.3 Translation
 
 Counsel hears authorization and retention; ops hears change windows and canaries; engineering hears schemas and tests. Same facts, three dialects.
-
-Section forty-three point three develops industry or public-service practice with a Riverstone Transit note Sam can demo offline.
-
-Under section forty-three point three, the ROE owner expects industry claims to carry owners and dates.
-
-Section forty-three point three treats industry or public-service practice as testable only when evidence and ticket IDs are recorded.
 
 > **Synthetic case — Riverstone Transit.** Sam's placement memo used only Riverstone synthetic figures; real partner names were omitted.
 
 ### 43.4 Errors and limits
 
 "I can't tell you what I did" is not a practice report — use synthetic reconstruction agreed with the host.
-
-Section forty-three point four develops industry or public-service practice with a Riverstone Transit note Sam can demo offline.
-
-Under section forty-three point four, the ROE owner expects industry claims to carry owners and dates.
-
-Section forty-three point four treats industry or public-service practice as testable only when evidence and ticket IDs are recorded.
-
-For section forty-three point four, Riverstone Transit will not accept industry work without a written trail.
 
 ### 43.2b Procurement friction
 
@@ -4159,53 +3089,19 @@ You will (1) propose a capstone that ships a measurable platform improvement; (2
 
 Problem, users, requirements (safety first), architecture sketch, milestones, verification lab plan, ethics paragraph. Capstones that need exploit work are rejected.
 
-Section forty-four point one develops engineering capstone with a Riverstone Transit note Sam can demo offline.
-
-Under section forty-four point one, the ROE owner expects engineering claims to carry owners and dates.
-
-Section forty-four point one treats engineering capstone as testable only when evidence and ticket IDs are recorded.
-
-For section forty-four point one, Riverstone Transit will not accept engineering work without a written trail.
-
 ### 44.2 Non-goals
 
 Explicitly list what you will not build (exploit modules, live client scanning, ML risk oracles).
 
-Section forty-four point two develops engineering capstone with a Riverstone Transit note Sam can demo offline.
-
-Under section forty-four point two, the ROE owner expects engineering claims to carry owners and dates.
-
-Section forty-four point two treats engineering capstone as testable only when evidence and ticket IDs are recorded.
-
-For section forty-four point two, Riverstone Transit will not accept engineering work without a written trail.
-
-Section forty-four point two fails closed if engineering evidence is missing rather than guessing.
-
 ### 44.3 Milestone 1
 
 Something demoable on synthetic data in week 3: e.g. kill-switch honored in ≤30s with a test.
-
-Section forty-four point three develops engineering capstone with a Riverstone Transit note Sam can demo offline.
-
-Under section forty-four point three, the ROE owner expects engineering claims to carry owners and dates.
-
-Section forty-four point three treats engineering capstone as testable only when evidence and ticket IDs are recorded.
 
 > **Synthetic case — Riverstone Transit.** Capstone I proposals that mentioned "auto-pwn" were returned; "signed policy distribution with fail-closed" advanced.
 
 ### 44.4 Errors and limits
 
 Capstone scope creep is the main killer — freeze non-goals.
-
-Section forty-four point four develops engineering capstone with a Riverstone Transit note Sam can demo offline.
-
-Under section forty-four point four, the ROE owner expects engineering claims to carry owners and dates.
-
-Section forty-four point four treats engineering capstone as testable only when evidence and ticket IDs are recorded.
-
-For section forty-four point four, Riverstone Transit will not accept engineering work without a written trail.
-
-Section forty-four point four fails closed if engineering evidence is missing rather than guessing.
 
 ### 44.2b Risk register for the capstone
 
@@ -4266,53 +3162,19 @@ You will (1) run a review that can reject; (2) use a checklist tied to safety re
 
 Reviewers may block merge for fail-open paths, missing tests, or empty scores in UI. "LGTM" without running the checklist is invalid.
 
-Section forty-five point one develops independent design review with a Riverstone Transit note Sam can demo offline.
-
-Under section forty-five point one, the ROE owner expects independent claims to carry owners and dates.
-
-Section forty-five point one treats independent design review as testable only when evidence and ticket IDs are recorded.
-
-For section forty-five point one, Riverstone Transit will not accept independent work without a written trail.
-
 ### 45.2 Checklist
 
 Fail-closed; policy authn; schema forbids payloads; coverage has denominator; secrets redaction; rollback path documented.
 
-Section forty-five point two develops independent design review with a Riverstone Transit note Sam can demo offline.
-
-Under section forty-five point two, the ROE owner expects independent claims to carry owners and dates.
-
-Section forty-five point two treats independent design review as testable only when evidence and ticket IDs are recorded.
-
-For section forty-five point two, Riverstone Transit will not accept independent work without a written trail.
-
-Section forty-five point two fails closed if independent evidence is missing rather than guessing.
-
 ### 45.3 Dissent
 
 If one reviewer disagrees, record the dissent in the ADR even if overruled — future incidents need that trail.
-
-Section forty-five point three develops independent design review with a Riverstone Transit note Sam can demo offline.
-
-Under section forty-five point three, the ROE owner expects independent claims to carry owners and dates.
-
-Section forty-five point three treats independent design review as testable only when evidence and ticket IDs are recorded.
 
 > **Synthetic case — Riverstone Transit.** A coverage badge PR was blocked twice under this checklist; the third revision shipped the honest UI (Chapter 35).
 
 ### 45.4 Errors and limits
 
 Reviews after merge are archaeology, not control.
-
-Section forty-five point four develops independent design review with a Riverstone Transit note Sam can demo offline.
-
-Under section forty-five point four, the ROE owner expects independent claims to carry owners and dates.
-
-Section forty-five point four treats independent design review as testable only when evidence and ticket IDs are recorded.
-
-For section forty-five point four, Riverstone Transit will not accept independent work without a written trail.
-
-Section forty-five point four fails closed if independent evidence is missing rather than guessing.
 
 ### 45.2b Reviewer preparation
 
@@ -4377,37 +3239,13 @@ You will (1) finish implementation against the frozen proposal; (2) run Verifica
 
 Feature freeze date is real: after it, only safety fixes. New ideas go to a sequel proposal.
 
-Section forty-six point one develops engineering capstone ii with a Riverstone Transit note Sam can demo offline.
-
-Under section forty-six point one, the ROE owner expects engineering claims to carry owners and dates.
-
-Section forty-six point one treats engineering capstone ii as testable only when evidence and ticket IDs are recorded.
-
-For section forty-six point one, Riverstone Transit will not accept engineering work without a written trail.
-
 ### 46.2 Verify
 
 Capstone must pass Lab II (Chapter 40) on synthetic fixtures with signed checklist.
 
-Section forty-six point two develops engineering capstone ii with a Riverstone Transit note Sam can demo offline.
-
-Under section forty-six point two, the ROE owner expects engineering claims to carry owners and dates.
-
-Section forty-six point two treats engineering capstone ii as testable only when evidence and ticket IDs are recorded.
-
-For section forty-six point two, Riverstone Transit will not accept engineering work without a written trail.
-
-Section forty-six point two fails closed if engineering evidence is missing rather than guessing.
-
 ### 46.3 Docs
 
 Runbook section, ADR, operator tutorial with screenshots of synthetic UI — no client data.
-
-Section forty-six point three develops engineering capstone ii with a Riverstone Transit note Sam can demo offline.
-
-Under section forty-six point three, the ROE owner expects engineering claims to carry owners and dates.
-
-Section forty-six point three treats engineering capstone ii as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Rebuild a synthetic engagement timeline from event records."""
@@ -4453,16 +3291,6 @@ events=8 phases=7
 ### 46.4 Errors and limits
 
 Demo magic on a laptop with hand-waved fail-closed does not pass.
-
-Section forty-six point four develops engineering capstone ii with a Riverstone Transit note Sam can demo offline.
-
-Under section forty-six point four, the ROE owner expects engineering claims to carry owners and dates.
-
-Section forty-six point four treats engineering capstone ii as testable only when evidence and ticket IDs are recorded.
-
-For section forty-six point four, Riverstone Transit will not accept engineering work without a written trail.
-
-Section forty-six point four fails closed if engineering evidence is missing rather than guessing.
 
 ### 46.2b Operator shadowing
 
@@ -4527,35 +3355,13 @@ You will (1) run a scripted failure trial; (2) measure recovery time; (3) file c
 
 Inject: policy file deleted; FindingsDesk killed; clock skew; duplicate event replay. Observe denies, queues, alerts.
 
-Section forty-seven point one develops failure and recovery trial with a Riverstone Transit note Sam can demo offline.
-
-Under section forty-seven point one, the ROE owner expects failure claims to carry owners and dates.
-
-Section forty-seven point one treats failure and recovery trial as testable only when evidence and ticket IDs are recorded.
-
-For section forty-seven point one, Riverstone Transit will not accept failure work without a written trail.
-
 ### 47.2 Measures
 
 Time to deny-all after policy loss; time to alert; time to restore; findings lost (should be 0 with queue).
 
-Section forty-seven point two develops failure and recovery trial with a Riverstone Transit note Sam can demo offline.
-
-Under section forty-seven point two, the ROE owner expects failure claims to carry owners and dates.
-
-Section forty-seven point two treats failure and recovery trial as testable only when evidence and ticket IDs are recorded.
-
-For section forty-seven point two, Riverstone Transit will not accept failure work without a written trail.
-
 ### 47.3 Corrective actions
 
 Each miss becomes a ticket with owner and due date — not only a lesson-learned slide.
-
-Section forty-seven point three develops failure and recovery trial with a Riverstone Transit note Sam can demo offline.
-
-Under section forty-seven point three, the ROE owner expects failure claims to carry owners and dates.
-
-Section forty-seven point three treats failure and recovery trial as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Verify integrity of a synthetic evidence package."""
@@ -4593,16 +3399,6 @@ scope.csv        OK
 ### 47.4 Errors and limits
 
 Trials on production engagements are forbidden; use synthetic ranges.
-
-Section forty-seven point four develops failure and recovery trial with a Riverstone Transit note Sam can demo offline.
-
-Under section forty-seven point four, the ROE owner expects failure claims to carry owners and dates.
-
-Section forty-seven point four treats failure and recovery trial as testable only when evidence and ticket IDs are recorded.
-
-For section forty-seven point four, Riverstone Transit will not accept failure work without a written trail.
-
-Section forty-seven point four fails closed if failure evidence is missing rather than guessing.
 
 ### 47.2b Blameless correction
 
@@ -4667,14 +3463,6 @@ You will (1) assemble a dossier a third party can re-hash; (2) structure retenti
 
 ROE PDF, ScopeVersion JSON, finding exports, evidence objects, hash manifest, tool versions, lab reports. Reader can verify without trusting your laptop.
 
-Section forty-eight point one develops evidence dossier with a Riverstone Transit note Sam can demo offline.
-
-Under section forty-eight point one, the ROE owner expects evidence claims to carry owners and dates.
-
-Section forty-eight point one treats evidence dossier as testable only when evidence and ticket IDs are recorded.
-
-For section forty-eight point one, Riverstone Transit will not accept evidence work without a written trail.
-
 ```python
 """Verify integrity of a synthetic evidence package."""
 import hashlib, json
@@ -4710,41 +3498,15 @@ scope.csv        OK
 
 Classes: engagement working (90 days), sealed evidence (agreed years), aggregate metrics (longer). Deletion jobs are tested.
 
-Section forty-eight point two develops evidence dossier with a Riverstone Transit note Sam can demo offline.
-
-Under section forty-eight point two, the ROE owner expects evidence claims to carry owners and dates.
-
-Section forty-eight point two treats evidence dossier as testable only when evidence and ticket IDs are recorded.
-
-For section forty-eight point two, Riverstone Transit will not accept evidence work without a written trail.
-
-Section forty-eight point two fails closed if evidence evidence is missing rather than guessing.
-
 ### 48.3 Exclusions
 
 No payloads, no live credentials, no personal data. If it cannot be shared with counsel safely, it does not belong.
-
-Section forty-eight point three develops evidence dossier with a Riverstone Transit note Sam can demo offline.
-
-Under section forty-eight point three, the ROE owner expects evidence claims to carry owners and dates.
-
-Section forty-eight point three treats evidence dossier as testable only when evidence and ticket IDs are recorded.
 
 > **Synthetic case — Riverstone Transit.** Dossier v3 re-hashed clean after the findings.json incident; process note included.
 
 ### 48.4 Errors and limits
 
 Dossiers in personal cloud accounts fail residency and retention.
-
-Section forty-eight point four develops evidence dossier with a Riverstone Transit note Sam can demo offline.
-
-Under section forty-eight point four, the ROE owner expects evidence claims to carry owners and dates.
-
-Section forty-eight point four treats evidence dossier as testable only when evidence and ticket IDs are recorded.
-
-For section forty-eight point four, Riverstone Transit will not accept evidence work without a written trail.
-
-Section forty-eight point four fails closed if evidence evidence is missing rather than guessing.
 
 ### 48.2b Third-party readability
 
@@ -4805,53 +3567,19 @@ You will (1) structure a thesis around a platform claim; (2) defend measures and
 
 One sentence: what you built/measured and for whom. Example: "Signed policy distribution with fail-closed semantics reduces unauthorized allows in synthetic trials."
 
-Section forty-nine point one develops engineering thesis with a Riverstone Transit note Sam can demo offline.
-
-Under section forty-nine point one, the ROE owner expects engineering claims to carry owners and dates.
-
-Section forty-nine point one treats engineering thesis as testable only when evidence and ticket IDs are recorded.
-
-For section forty-nine point one, Riverstone Transit will not accept engineering work without a written trail.
-
 ### 49.2 Body
 
 Related work (SP 800-115, PTES, ATT&CK, Albrecht & Jensen), design, verification, results with intervals, limitations, ethics.
 
-Section forty-nine point two develops engineering thesis with a Riverstone Transit note Sam can demo offline.
-
-Under section forty-nine point two, the ROE owner expects engineering claims to carry owners and dates.
-
-Section forty-nine point two treats engineering thesis as testable only when evidence and ticket IDs are recorded.
-
-For section forty-nine point two, Riverstone Transit will not accept engineering work without a written trail.
-
-Section forty-nine point two fails closed if engineering evidence is missing rather than guessing.
-
 ### 49.3 Citations
 
 Use the verified URLs/DOIs from the source policy; do not invent papers. Frameworks change — note access dates.
-
-Section forty-nine point three develops engineering thesis with a Riverstone Transit note Sam can demo offline.
-
-Under section forty-nine point three, the ROE owner expects engineering claims to carry owners and dates.
-
-Section forty-nine point three treats engineering thesis as testable only when evidence and ticket IDs are recorded.
 
 > **Synthetic case — Riverstone Transit.** Thesis draft used only synthetic trial data and cited CBEST 2024 Implementation Guide correctly.
 
 ### 49.4 Errors and limits
 
 A thesis that evaluates exploitation skill is out of programme scope.
-
-Section forty-nine point four develops engineering thesis with a Riverstone Transit note Sam can demo offline.
-
-Under section forty-nine point four, the ROE owner expects engineering claims to carry owners and dates.
-
-Section forty-nine point four treats engineering thesis as testable only when evidence and ticket IDs are recorded.
-
-For section forty-nine point four, Riverstone Transit will not accept engineering work without a written trail.
-
-Section forty-nine point four fails closed if engineering evidence is missing rather than guessing.
 
 ### 49.2b Threats to validity
 
@@ -4920,35 +3648,13 @@ You will (1) present the claim and evidence in 20 minutes; (2) answer safety and
 
 Claim; demo on synthetic data; verification results; one failure trial lesson; limits; questions. No live hacking demo.
 
-Section fifty point one develops final defense with a Riverstone Transit note Sam can demo offline.
-
-Under section fifty point one, the ROE owner expects final claims to carry owners and dates.
-
-Section fifty point one treats final defense as testable only when evidence and ticket IDs are recorded.
-
-For section fifty point one, Riverstone Transit will not accept final work without a written trail.
-
 ### 50.2 Likely questions
 
 Fail-closed proof? Denominator choice? Dual-use boundary? What broken in Lab II? Practice answering with pointers to artefacts.
 
-Section fifty point two develops final defense with a Riverstone Transit note Sam can demo offline.
-
-Under section fifty point two, the ROE owner expects final claims to carry owners and dates.
-
-Section fifty point two treats final defense as testable only when evidence and ticket IDs are recorded.
-
-For section fifty point two, Riverstone Transit will not accept final work without a written trail.
-
 ### 50.3 Reflection
 
 End with one design mistake and the fix — examiners trust engineers who saw their own failures.
-
-Section fifty point three develops final defense with a Riverstone Transit note Sam can demo offline.
-
-Under section fifty point three, the ROE owner expects final claims to carry owners and dates.
-
-Section fifty point three treats final defense as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Lab S: reporting attack-success rates honestly: Wilson intervals,
@@ -4994,16 +3700,6 @@ baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
 ### 50.4 Errors and limits
 
 Defense is not a sales pitch for a scanner vendor.
-
-Section fifty point four develops final defense with a Riverstone Transit note Sam can demo offline.
-
-Under section fifty point four, the ROE owner expects final claims to carry owners and dates.
-
-Section fifty point four treats final defense as testable only when evidence and ticket IDs are recorded.
-
-For section fifty point four, Riverstone Transit will not accept final work without a written trail.
-
-Section fifty point four fails closed if final evidence is missing rather than guessing.
 
 ### 50.2b After the defense
 

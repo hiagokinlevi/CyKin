@@ -149,13 +149,7 @@ The third item, raised casually, is the most consequential. Coordinators learn t
 
 Pick an essential service you know (your own employer, or a public one described in a news report). Write, in no more than one page: the function it delivers to people; three things it depends on; and one well-formed risk statement with cause, event and consequence. Mark which parts you know and which you assume.
 
-Section one point seven develops security foundations for practitioners with a the organisation note Kestrel Vale can demo offline.
-
-Under section one point seven, the mentor expects security claims to carry owners and dates.
-
 ### 1.8 Common errors and limits
-Section one point eight develops security foundations for practitioners with a the organisation note Kestrel Vale can demo offline.
-
 
 - Treating "security" as the IT department's property. In an essential service, operations owns the consequence.
 - Writing risks as nouns ("ransomware", "insider") instead of statements someone can own.
@@ -261,17 +255,7 @@ The coordinator then marks "6 hours" as **assumed**, because she has not seen th
 
 Draw a dependency map for one essential service with at least five upstream, three downstream and one shared dependency. For each, name a contact and whether you have verified the information or assumed it.
 
-Section two point six develops critical infrastructure and sector security with a the organisation note Kestrel Vale can demo offline.
-
-Under section two point six, the mentor expects critical claims to carry owners and dates.
-
-Section two point six treats service is chain upstream as testable only when evidence and ticket IDs are recorded.
-
 ### 2.7 Common errors and limits
-Section two point seven develops critical infrastructure and sector security with a the organisation note Kestrel Vale can demo offline.
-
-Under section two point seven, the mentor expects critical claims to carry owners and dates.
-
 
 - Mapping systems instead of functions — a list of servers is not a dependency map.
 - Forgetting people as dependencies (a single expert, a single on-call manager).
@@ -394,17 +378,7 @@ On the day, M. Ilic asks to "quickly run a discovery tool to check versions". J.
 
 Take any routine supplier visit at an organization you know and write its authorization in the table format of 3.2. Mark which elements you could not fill in; those are the gaps in that organization's practice.
 
-Section three point seven develops authorized practice and evidence handling with a the organisation note Kestrel Vale can demo offline.
-
-Under section three point seven, the mentor expects authorized claims to carry owners and dates.
-
-Section three point seven treats why authorization is coordination as testable only when evidence and ticket IDs are recorded.
-
 ### 3.8 Common errors and limits
-Section three point eight develops authorized practice and evidence handling with a the organisation note Kestrel Vale can demo offline.
-
-Under section three point eight, the mentor expects authorized claims to carry owners and dates.
-
 
 - "Verbal OK" from someone without authority over the service.
 - Scope written as "the OT network" with no exclusions.
@@ -482,8 +456,6 @@ The usual product, likelihood × consequence, is convenient but has two known pr
 
 A risk without an owner is a worry, not a managed risk. Register hygiene means each entry has: an owner with authority over the affected service; a treatment decision; a due date for the treatment; a last-review date; and a link to the evidence of progress. A coordinator checks hygiene regularly, because register decay is silent: nobody notices that a "high" risk was last reviewed eight months ago until something happens.
 
-Section four point three develops critical infrastructure and sector security with a the organisation note Kestrel Vale can demo offline.
-
 ### 4.4 Accepting risk
 
 Acceptance is a legitimate treatment — no organization can fix everything at once. A proper acceptance records who accepted the risk (at a level of authority matching its consequence), what compensating measures apply, under what conditions the acceptance lapses, and when it expires. NIS2 requires the management bodies of essential and important entities to approve cybersecurity risk-management measures and oversee their implementation ([Directive (EU) 2022/2555, Article 20](https://eur-lex.europa.eu/eli/dir/2022/2555/oj)). Whatever your jurisdiction, risks with level-5 consequences should be accepted by the executive or board, never quietly by the coordinator.
@@ -557,17 +529,7 @@ Note what the lab does not do. It does not tell you whether "likelihood 4" for R
 
 Change the ranking key in Lab 4 to sort by score alone and show the result to a colleague. Ask which order they would defend at a board meeting after a pressure failure at the hospital. Then write your organization's ranking rule in two sentences.
 
-Section four point six develops critical infrastructure and sector security with a the organisation note Kestrel Vale can demo offline.
-
-Under section four point six, the mentor expects critical claims to carry owners and dates.
-
-Section four point six treats the risk-assessment cycle scales as testable only when evidence and ticket IDs are recorded.
-
 ### 4.7 Common errors and limits
-Section four point seven develops critical infrastructure and sector security with a the organisation note Kestrel Vale can demo offline.
-
-Under section four point seven, the mentor expects critical claims to carry owners and dates.
-
 
 - Scales without anchors, so "4" means different things to different people.
 - Arithmetic on ordinal scores presented as precision ("risk 13.6").
@@ -675,19 +637,7 @@ She reports to the executive: "*A self-assessment of corporate IT and the treatm
 
 Take any public dashboard or annual-report statement about cybersecurity (for example "100% of staff trained"). Apply the five questions and rewrite it as a decision-ready statement, noting what you would need to know.
 
-Section five point six develops critical infrastructure and sector security with a the organisation note Kestrel Vale can demo offline.
-
-Under section five point six, the mentor expects critical claims to carry owners and dates.
-
-Section five point six treats the framework landscape reading as testable only when evidence and ticket IDs are recorded.
-
 ### 5.7 Common errors and limits
-Section five point seven develops critical infrastructure and sector security with a the organisation note Kestrel Vale can demo offline.
-
-Under section five point seven, the mentor expects critical claims to carry owners and dates.
-
-Section five point seven treats the framework landscape reading as testable only when evidence and ticket IDs are recorded.
-
 
 - Running several frameworks in parallel without mapping.
 - Reporting percentages without scope and method.
@@ -772,10 +722,6 @@ The coordinator's interest is that security-relevant changes (new remote access,
 
 An escalation path answers, for each severity: who is called, by whom, how, within what time, and what happens if they do not answer. Write it as a table with deputies, test it (Chapter 11), and put it where night-shift operators can find it without a computer — a printed card in the control room — because the incident might have taken the computers.
 
-Section six point four develops critical infrastructure and sector security with a the organisation note Kestrel Vale can demo offline.
-
-Under section six point four, the mentor expects critical claims to carry owners and dates.
-
 ### 6.5 Worked example: checking the incident RACI (synthetic)
 
 The coordinator drafts Kestrel Water's incident RACI and runs **Lab 6**, which applies the rules of 6.2.
@@ -839,17 +785,7 @@ The load line shows the operations manager carrying four R/A entries — during 
 
 Write a RACI for "onboard a new supplier with remote access" using at least five roles, then check it against the four rules by hand or by editing Lab 6.
 
-Section six point six develops critical infrastructure and sector security with a the organisation note Kestrel Vale can demo offline.
-
-Under section six point six, the mentor expects critical claims to carry owners and dates.
-
-Section six point six treats roles raci change governance as testable only when evidence and ticket IDs are recorded.
-
 ### 6.7 Common errors and limits
-Section six point seven develops critical infrastructure and sector security with a the organisation note Kestrel Vale can demo offline.
-
-Under section six point seven, the mentor expects critical claims to carry owners and dates.
-
 
 - Committees as accountable ("the security board").
 - RACIs written for normal days only, not incidents.
@@ -929,13 +865,9 @@ Higher levels cost more. A proportionate programme aims for **tested** on contro
 
 The coordinator usually designs the verification plan and runs second-line checks. Tests on operational systems must be authorized like any other work (Chapter 3), and in control environments a "test" is often a review of configuration and logs rather than an active attempt.
 
-Section seven point three develops critical infrastructure and sector security with a the organisation note Kestrel Vale can demo offline.
-
 ### 7.4 Exceptions
 
 Sometimes a control cannot be applied: an old station controller cannot support a second factor; a medical device cannot be patched without losing its certification. An **exception** is a recorded, owned decision to operate without the control, which is a form of risk acceptance (Chapter 4). It needs: the control and system concerned; the reason; compensating measures; the accepting authority; an expiry date; and a plan to remove the exception. An exception register is reviewed with the risk register.
-
-Section seven point four develops critical infrastructure and sector security with a the organisation note Kestrel Vale can demo offline.
 
 ### 7.5 Worked example: verifying three controls (synthetic)
 
@@ -953,19 +885,7 @@ The verification plan that follows: fix C1 within 30 days (owner A. Mensah); sch
 
 Write control cards (objective, owner, operation, evidence, failure signal) for two controls at an organization you know, and assign each a current assurance level with justification.
 
-Section seven point six develops critical infrastructure and sector security with a the organisation note Kestrel Vale can demo offline.
-
-Under section seven point six, the mentor expects critical claims to carry owners and dates.
-
-Section seven point six treats what control is for as testable only when evidence and ticket IDs are recorded.
-
-For section seven point six, the organisation will not accept critical work without a written trail.
-
 ### 7.7 Common errors and limits
-Section seven point seven develops critical infrastructure and sector security with a the organisation note Kestrel Vale can demo offline.
-
-Under section seven point seven, the mentor expects critical claims to carry owners and dates.
-
 
 - Equating "the job succeeded" with "the control works" (backups, patches).
 - Verification only at the stated or documented level for critical controls.
@@ -1101,15 +1021,7 @@ From the case, the coordinator drafts standard clauses for new supplier contract
 
 Present the case to your supervisor (here, E. Varga) in five parts: what was reviewed and under what authority; findings with evidence; decisions already taken and by whom; decisions requested from the supervisor (budget for MFA on ScadaCo's side, approval of contract clauses); and open questions with owners and dates.
 
-Section eight point six develops critical infrastructure and sector security with a the organisation note Kestrel Vale can demo offline.
-
-Under section eight point six, the mentor expects critical claims to carry owners and dates.
-
 ### 8.7 Common errors and limits
-Section eight point seven develops critical infrastructure and sector security with a the organisation note Kestrel Vale can demo offline.
-
-Under section eight point seven, the mentor expects critical claims to carry owners and dates.
-
 
 - Treating unusual activity as proof of compromise — or ignoring it as "probably the project".
 - Removing access needed for safety-critical support without a fallback.
@@ -1165,8 +1077,6 @@ Two details decide whether you meet a clock: **what starts it** (detection, awar
 ### 9.2 Critical customers
 
 Hospitals, care homes, dialysis patients, other utilities and emergency services may need to act before the public does. Their needs are practical: what is affected, what they should do, for how long, when the next update comes, and whom to call. Agreements with them (Chapter 2) often promise a call within a short period. Keep their contacts tested and keep the message free of technical detail.
-
-Section nine point two develops communication ethics and reporting with a the organisation note Kestrel Vale can demo offline.
 
 ### 9.3 Public communication
 
@@ -1236,25 +1146,11 @@ The coordinator records these facts in the decision log without blame, notifies 
 
 A short incident report for executives covers: what happened (facts, labelled confidence); impact on service and people; what has been done and decided; duties met and missed; risks now; decisions needed. Programme reports (monthly or quarterly) use the decision-driving metrics of Chapter 5 and the top consequence-ranked risks of Chapter 4.
 
-Section nine point six develops communication ethics and reporting with a the organisation note Kestrel Vale can demo offline.
-
-Under section nine point six, the mentor expects communication claims to carry owners and dates.
-
 ### 9.7 Practical activity
 
 Draft a notification register for an organization you know with at least five duties. For each, write what starts the clock and who records it. Mark any duty whose source you have not verified.
 
-Section nine point seven develops communication ethics and reporting with a the organisation note Kestrel Vale can demo offline.
-
-Under section nine point seven, the mentor expects communication claims to carry owners and dates.
-
-Section nine point seven treats who must be told as testable only when evidence and ticket IDs are recorded.
-
 ### 9.8 Common errors and limits
-Section nine point eight develops communication ethics and reporting with a the organisation note Kestrel Vale can demo offline.
-
-Under section nine point eight, the mentor expects communication claims to carry owners and dates.
-
 
 - Notification duties discovered during the incident.
 - No internal deadline for approvals, so the external deadline is missed.
@@ -1390,27 +1286,11 @@ The coordinator's troubleshooting table:
 
 Lessons do not improve anything until they become actions with owners, dates and verification — and are closed. Track them in one place, review them at the risk committee, and verify each closure with evidence (the next exercise, a test, a document). A useful programme metric is the percentage of exercise actions closed and verified within their due date.
 
-Section ten point five develops critical infrastructure and sector security with a the organisation note Kestrel Vale can demo offline.
-
-Under section ten point five, the mentor expects critical claims to carry owners and dates.
-
 ### 10.6 Practical activity
 
 Take a recent failure in any team you know (a missed deadline, a duplicated task). Fill the troubleshooting table without naming individuals and propose a fix with a verification method.
 
-Section ten point six develops critical infrastructure and sector security with a the organisation note Kestrel Vale can demo offline.
-
-Under section ten point six, the mentor expects critical claims to carry owners and dates.
-
-Section ten point six treats how programmes fail troubleshooting as testable only when evidence and ticket IDs are recorded.
-
 ### 10.7 Common errors and limits
-Section ten point seven develops critical infrastructure and sector security with a the organisation note Kestrel Vale can demo offline.
-
-Under section ten point seven, the mentor expects critical claims to carry owners and dates.
-
-Section ten point seven treats how programmes fail troubleshooting as testable only when evidence and ticket IDs are recorded.
-
 
 - Reporting exercise success as speed alone.
 - Concluding "human error" and stopping.
@@ -1479,17 +1359,9 @@ A design document has seven parts:
 
 Open with ground rules: this tests plans, not people; there are no trick questions; decide as you would in reality; say when you would need information you do not have. Keep the clock honest and resist rescuing players — if the team has no way to reach the hospital, the gap is the finding. Record decisions, not opinions about performance.
 
-Section eleven point three develops supervised laboratory with a the organisation note Kestrel Vale can demo offline.
-
-Under section eleven point three, the mentor expects supervised claims to carry owners and dates.
-
 ### 11.4 Evaluation and improvement
 
 Immediately after: a **hot wash** — each participant says what worked and what did not. Within two weeks: an **after-action report** (AAR) that rates each objective with evidence from the decision log, and an **improvement plan** that turns findings into owned, dated, verifiable actions (Chapter 10). The AAR is shared at the appropriate TLP level; it names gaps in plans and tools, not individuals.
-
-Section eleven point four develops supervised laboratory with a the organisation note Kestrel Vale can demo offline.
-
-Under section eleven point four, the mentor expects supervised claims to carry owners and dates.
 
 ### 11.5 Worked example: exercise "DRY CREEK" (synthetic)
 
@@ -1513,8 +1385,6 @@ Under section eleven point four, the mentor expects supervised claims to carry o
 **Evaluation (from the evaluator's log, analysed with the Lab 10 method).** O1 met (9 minutes, rationale recorded). O2 partially met — decision at 52 minutes because nobody knew who else relied on HydroLogic's access. O3 not met — the hospital call was never assigned. O4 met. O5 partially met — statement issued late, no owner until the chief executive arrived. These findings fed directly into the corrective actions of Chapter 10.
 
 ### 11.6 Exercise-design rubric
-Section eleven point six develops supervised laboratory with a the organisation note Kestrel Vale can demo offline.
-
 
 | Criterion | 3 (excellent) | 1 (weak) |
 |---|---|---|
@@ -1529,15 +1399,7 @@ Section eleven point six develops supervised laboratory with a the organisation 
 
 Design a 90-minute tabletop for an essential service of your choice using the seven parts of 11.2, with at least four objectives and six injects. Ask your supervisor or a peer to score it against the rubric before you run it.
 
-Section eleven point seven develops supervised laboratory with a the organisation note Kestrel Vale can demo offline.
-
-Under section eleven point seven, the mentor expects supervised claims to carry owners and dates.
-
-Section eleven point seven treats types of exercise design as testable only when evidence and ticket IDs are recorded.
-
 ### 11.8 Common errors and limits
-Section eleven point eight develops supervised laboratory with a the organisation note Kestrel Vale can demo offline.
-
 
 - Too many objectives; nothing is evaluated properly.
 - Scenarios so severe that every plan fails and nothing specific is learned.
@@ -1655,19 +1517,7 @@ Where the answer is "not yet", the chapter number tells you where to return.
 
 Assemble your portfolio from your exercise answers. Ask a peer to review it against the final rubric (EX060) and to try to verify three claims from your evidence alone.
 
-Section twelve point six develops practice portfolio and final review with a the organisation note Kestrel Vale can demo offline.
-
-Under section twelve point six, the mentor expects practice claims to carry owners and dates.
-
-Section twelve point six treats the portfolio the board as testable only when evidence and ticket IDs are recorded.
-
 ### 12.7 Common errors and limits
-Section twelve point seven develops practice portfolio and final review with a the organisation note Kestrel Vale can demo offline.
-
-Under section twelve point seven, the mentor expects practice claims to carry owners and dates.
-
-Section twelve point seven treats the portfolio the board as testable only when evidence and ticket IDs are recorded.
-
 
 - Portfolios of certificates instead of work products.
 - Board briefings without requests.

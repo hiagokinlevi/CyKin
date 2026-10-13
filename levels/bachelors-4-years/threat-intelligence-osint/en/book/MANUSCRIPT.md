@@ -47,39 +47,17 @@ You will (1) distinguish deduction, induction and abduction in intelligence work
 
 Deduction moves from rules to certain conclusions: if every TLP:RED report goes only to named recipients and Amara is not named, she may not read it. Induction generalises from cases: five sector reports began with phishing, so phishing is a common entry route. Abduction proposes the best explanation for an observation: a burst of failed logins at night may be password guessing. Intelligence analysis relies heavily on abduction, which is why its conclusions must be stated with uncertainty.
 
-Section one point one develops mathematical reasoning with a HCHT note Amara Diallo can demo offline.
-
 ### 1.2 Fallacies in reports
 
 Post hoc reasoning: an outage followed a phishing email, so the email caused it. Base-rate neglect: a detector with a 99% hit rate sounds decisive until you remember how rare real attacks are. Survivorship: studying only incidents that were detected tells you little about those that were not. Naming the fallacy in a peer's draft is a useful review skill.
-
-Section one point two develops mathematical reasoning with a HCHT note Amara Diallo can demo offline.
-
-Under section one point two, the HSSC circle expects mathematical claims to carry owners and dates.
 
 ### 1.3 Proportions and ratios
 
 "Phishing appeared in 3 of 5 reports" is a proportion, 60%. Reporting "60%" alone hides that the sample is five. Always give the numerator and the denominator, especially when the denominator is small.
 
-Section one point three develops mathematical reasoning with a HCHT note Amara Diallo can demo offline.
-
-Under section one point three, the HSSC circle expects mathematical claims to carry owners and dates.
-
-Section one point three treats three kinds of inference as testable only when evidence and ticket IDs are recorded.
-
-For section one point three, HCHT will not accept mathematical work without a written trail.
-
 ### 1.4 Assumptions
 
 Every conclusion rests on assumptions. Writing them down — the reports are representative; the timestamps are accurate — lets readers judge how far to trust the result.
-
-Section one point four develops mathematical reasoning with a HCHT note Amara Diallo can demo offline.
-
-Under section one point four, the HSSC circle expects mathematical claims to carry owners and dates.
-
-Section one point four treats three kinds of inference as testable only when evidence and ticket IDs are recorded.
-
-For section one point four, HCHT will not accept mathematical work without a written trail.
 
 ### Estimating before computing
 
@@ -121,53 +99,21 @@ You will (1) describe the components of a hospital's computing estate relevant t
 
 HCHT runs staff workstations, clinical applications, a patient portal, email, a directory service, cloud mailboxes, laboratory systems and networked medical devices. Each has owners, update routes and logs. CTI is only useful if it reaches the place where it can be checked or enforced.
 
-Section two point one develops computing systems with a HCHT note Amara Diallo can demo offline.
-
-Under section two point one, the HSSC circle expects computing claims to carry owners and dates.
-
-Section two point one treats the estate logs as as testable only when evidence and ticket IDs are recorded.
-
 ### 2.2 Logs as sensors
 
 Email gateways log senders and attachments; web proxies log URLs; DNS resolvers log lookups; endpoints log processes; the directory logs logons. When HSSC shares a malicious domain, Amara can search DNS and proxy logs for past contacts — a retrospective hunt.
-
-Section two point two develops computing systems with a HCHT note Amara Diallo can demo offline.
-
-Under section two point two, the HSSC circle expects computing claims to carry owners and dates.
-
-Section two point two treats the estate logs as as testable only when evidence and ticket IDs are recorded.
 
 ### 2.3 Enforcement points
 
 Email filters, DNS blocking, proxy categories and endpoint rules can act on indicators. Each has a different blast radius. Blocking a domain at DNS affects every device that uses the resolver, including clinical systems.
 
-Section two point three develops computing systems with a HCHT note Amara Diallo can demo offline.
-
-Under section two point three, the HSSC circle expects computing claims to carry owners and dates.
-
-Section two point three treats the estate logs as as testable only when evidence and ticket IDs are recorded.
-
 ### 2.4 Medical devices
 
 Infusion pumps and imaging systems often run old operating systems and cannot be patched quickly. They may not tolerate scanning or agent software. CTI about threats to such devices goes to the clinical engineering team, who decide on network isolation rather than host changes.
 
-Section two point four develops computing systems with a HCHT note Amara Diallo can demo offline.
-
-Under section two point four, the HSSC circle expects computing claims to carry owners and dates.
-
-Section two point four treats the estate logs as as testable only when evidence and ticket IDs are recorded.
-
 ### 2.5 Asset inventory
 
 An accurate inventory lets analysts answer "do we run the affected product?" within minutes when an advisory arrives. Without it, every advisory triggers a guessing exercise.
-
-Section two point five develops computing systems with a HCHT note Amara Diallo can demo offline.
-
-Under section two point five, the HSSC circle expects computing claims to carry owners and dates.
-
-Section two point five treats the estate logs as as testable only when evidence and ticket IDs are recorded.
-
-For section two point five, HCHT will not accept computing work without a written trail.
 
 ### Cloud and supplier systems
 
@@ -209,55 +155,21 @@ You will (1) write Python functions that clean and classify indicators; (2) use 
 
 Analysts receive indicators in emails, PDFs and spreadsheets. Small scripts extract, clean and compare them faster and more accurately than copying by hand. Programming here is a reading and checking tool, not a collection tool.
 
-Section three point one develops programming with a HCHT note Amara Diallo can demo offline.
-
-Under section three point one, the HSSC circle expects programming claims to carry owners and dates.
-
-Section three point one treats why analysts program types as testable only when evidence and ticket IDs are recorded.
-
 ### 3.2 Types for intelligence
 
 A string holds one indicator. A list keeps order, such as events in time. A set removes duplicates and supports intersection — which indicators appear in both our logs and the feed? A dictionary maps an indicator to its metadata: source, TLP, first seen.
-
-Section three point two develops programming with a HCHT note Amara Diallo can demo offline.
-
-Under section three point two, the HSSC circle expects programming claims to carry owners and dates.
-
-Section three point two treats why analysts program types as testable only when evidence and ticket IDs are recorded.
 
 ### 3.3 Classifying values
 
 A simple function decides whether a string looks like an IPv4 address, a domain or a hash. The standard library's `ipaddress` module validates addresses; length and character checks distinguish SHA-256 hashes (64 hexadecimal characters) from other strings.
 
-Section three point three develops programming with a HCHT note Amara Diallo can demo offline.
-
-Under section three point three, the HSSC circle expects programming claims to carry owners and dates.
-
-Section three point three treats why analysts program types as testable only when evidence and ticket IDs are recorded.
-
 ### 3.4 Explicit failure
 
 If a value fits no type, return "unknown" and keep it for review. Guessing creates false indicators that may later block legitimate services.
 
-Section three point four develops programming with a HCHT note Amara Diallo can demo offline.
-
-Under section three point four, the HSSC circle expects programming claims to carry owners and dates.
-
-Section three point four treats why analysts program types as testable only when evidence and ticket IDs are recorded.
-
-For section three point four, HCHT will not accept programming work without a written trail.
-
 ### 3.5 No hidden collection
 
 Scripts in this course read local files only. Code that fetches web pages, queries external services or logs into platforms is outside this chapter and requires terms, permission and supervision.
-
-Section three point five develops programming with a HCHT note Amara Diallo can demo offline.
-
-Under section three point five, the HSSC circle expects programming claims to carry owners and dates.
-
-Section three point five treats why analysts program types as testable only when evidence and ticket IDs are recorded.
-
-For section three point five, HCHT will not accept programming work without a written trail.
 
 ### Readable code
 
@@ -299,53 +211,21 @@ You will (1) structure an argument with claim, evidence and reasoning; (2) cite 
 
 A paragraph makes one claim, presents evidence and explains why the evidence supports the claim. "Phishing is the most common entry route in HSSC reports (claim); it appears in 3 of 5 reports from 2026 (evidence); the other routes appear at most twice (reasoning)." Readers can then challenge the evidence rather than guess your meaning.
 
-Section four point one develops academic writing with a HCHT note Amara Diallo can demo offline.
-
-Under section four point one, the HSSC circle expects academic claims to carry owners and dates.
-
 ### 4.2 Citation
 
 Cite specifications for definitions (STIX 2.1 for object types), papers for models (Hutchins et al. for the kill chain), and data sources for numbers. Paraphrase and cite; quote only when exact wording matters. Never cite a TLP-restricted report in public coursework.
-
-Section four point two develops academic writing with a HCHT note Amara Diallo can demo offline.
-
-Under section four point two, the HSSC circle expects academic claims to carry owners and dates.
-
-Section four point two treats claim evidence reasoning citation as testable only when evidence and ticket IDs are recorded.
 
 ### 4.3 Hedging
 
 "Proves" is rarely justified. "Suggests", "is consistent with" and calibrated words such as "likely" signal uncertainty honestly. Over-hedging — "might possibly perhaps" — is as unhelpful as overclaiming.
 
-Section four point three develops academic writing with a HCHT note Amara Diallo can demo offline.
-
-Under section four point three, the HSSC circle expects academic claims to carry owners and dates.
-
-Section four point three treats claim evidence reasoning citation as testable only when evidence and ticket IDs are recorded.
-
-For section four point three, HCHT will not accept academic work without a written trail.
-
 ### 4.4 Academic versus intelligence style
 
 Academic writing often builds to a conclusion. Intelligence writing states the bottom line first. ICD 203 asks analytic products to be clear and logical; both styles share that aim but differ in order. Amara learns both.
 
-Section four point four develops academic writing with a HCHT note Amara Diallo can demo offline.
-
-Under section four point four, the HSSC circle expects academic claims to carry owners and dates.
-
-Section four point four treats claim evidence reasoning citation as testable only when evidence and ticket IDs are recorded.
-
 ### 4.5 Revision
 
 Read drafts aloud, cut words that do not change meaning, and ask a peer to restate your main claim.
-
-Section four point five develops academic writing with a HCHT note Amara Diallo can demo offline.
-
-Under section four point five, the HSSC circle expects academic claims to carry owners and dates.
-
-Section four point five treats claim evidence reasoning citation as testable only when evidence and ticket IDs are recorded.
-
-For section four point five, HCHT will not accept academic work without a written trail.
 
 ### Writing for non-specialists
 
@@ -387,53 +267,21 @@ You will (1) define threat, vulnerability, risk and control; (2) describe the CT
 
 A threat is a potential cause of harm — an actor or event. A vulnerability is a weakness. Risk combines likelihood and impact. A control reduces risk. CTI informs the threat part of that equation so that controls go where they matter.
 
-Section five point one develops security literacy with a HCHT note Amara Diallo can demo offline.
-
-Under section five point one, the HSSC circle expects security claims to carry owners and dates.
-
-Section five point one treats core terms the cti as testable only when evidence and ticket IDs are recorded.
-
 ### 5.2 The CTI life cycle
 
 Direction (what do decision-makers need?), collection, processing, analysis, dissemination and feedback. In practice, direction is often missing; analysts then collect everything and help no one. Priority intelligence requirements fix that.
-
-Section five point two develops security literacy with a HCHT note Amara Diallo can demo offline.
-
-Under section five point two, the HSSC circle expects security claims to carry owners and dates.
-
-Section five point two treats core terms the cti as testable only when evidence and ticket IDs are recorded.
-
-For section five point two, HCHT will not accept security work without a written trail.
 
 ### 5.3 Three levels
 
 Strategic: trends and intent for executives — for example, criminal groups targeting hospitals for extortion. Operational: campaigns and timing for incident leads — a phishing wave against health trusts this month. Tactical: indicators and techniques for analysts — sender domains and T1566 Phishing.
 
-Section five point three develops security literacy with a HCHT note Amara Diallo can demo offline.
-
-Under section five point three, the HSSC circle expects security claims to carry owners and dates.
-
-Section five point three treats core terms the cti as testable only when evidence and ticket IDs are recorded.
-
 ### 5.4 Why healthcare
 
 Hospitals hold sensitive data, run around the clock and cannot tolerate downtime, which increases pressure to pay extortion. Legacy systems and many suppliers widen exposure. Strategic intelligence helps boards understand this context without sensationalism.
 
-Section five point four develops security literacy with a HCHT note Amara Diallo can demo offline.
-
-Under section five point four, the HSSC circle expects security claims to carry owners and dates.
-
-Section five point four treats core terms the cti as testable only when evidence and ticket IDs are recorded.
-
 ### 5.5 Intelligence versus information
 
 A feed of domains is information. An assessment that a campaign targets laboratory systems and that HCHT should block specific domains and brief laboratory staff is intelligence — analysed and tied to a decision.
-
-Section five point five develops security literacy with a HCHT note Amara Diallo can demo offline.
-
-Under section five point five, the HSSC circle expects security claims to carry owners and dates.
-
-Section five point five treats core terms the cti as testable only when evidence and ticket IDs are recorded.
 
 ### Who consumes intelligence at HCHT
 
@@ -475,63 +323,25 @@ You will (1) use sets and relations to model indicators and actors; (2) represen
 
 Each feed is a set of indicators. Union combines feeds; intersection shows agreement; difference shows what only one source holds. A relation pairs elements: (domain, resolves-to, address). STIX 2.1 relationship objects express exactly this — a source object, a relationship type and a target object.
 
-Section six point one develops discrete structures with a HCHT note Amara Diallo can demo offline.
-
-Under section six point one, the HSSC circle expects discrete claims to carry owners and dates.
-
-Section six point one treats sets and relations graphs as testable only when evidence and ticket IDs are recorded.
-
 ### 6.2 Graphs
 
 Treat indicators, malware families and campaigns as nodes and relationships as edges. Graphs make pivots visible: two phishing domains that resolved to the same address become linked through that address node. The Diamond Model's four vertices — adversary, capability, infrastructure, victim — are themselves a small graph for each event.
-
-Section six point two develops discrete structures with a HCHT note Amara Diallo can demo offline.
-
-Under section six point two, the HSSC circle expects discrete claims to carry owners and dates.
-
-Section six point two treats sets and relations graphs as testable only when evidence and ticket IDs are recorded.
 
 ### 6.3 Paths and components
 
 A path connects two nodes through edges. A connected component is a group where every node reaches every other. Analysts sometimes treat a component as "one campaign". That is a hypothesis, not a fact.
 
-Section six point three develops discrete structures with a HCHT note Amara Diallo can demo offline.
-
-Under section six point three, the HSSC circle expects discrete claims to carry owners and dates.
-
-Section six point three treats sets and relations graphs as testable only when evidence and ticket IDs are recorded.
-
 ### 6.4 Shared infrastructure trap
 
 Shared hosting, content delivery networks and cloud addresses connect unrelated customers. One address serving thousands of domains links them all in a naive graph. Before trusting a link, ask how many other things share that node; high-degree nodes are often noise.
-
-Section six point four develops discrete structures with a HCHT note Amara Diallo can demo offline.
-
-Under section six point four, the HSSC circle expects discrete claims to carry owners and dates.
-
-Section six point four treats sets and relations graphs as testable only when evidence and ticket IDs are recorded.
 
 ### 6.5 Directed versus undirected
 
 "Domain resolves to address" has a direction; "appeared in the same report" does not. Keep direction where it carries meaning, or you will reason backwards.
 
-Section six point five develops discrete structures with a HCHT note Amara Diallo can demo offline.
-
-Under section six point five, the HSSC circle expects discrete claims to carry owners and dates.
-
-Section six point five treats sets and relations graphs as testable only when evidence and ticket IDs are recorded.
-
-For section six point five, HCHT will not accept discrete work without a written trail.
-
 ### 6.6 Degree as a warning sign
 
 The degree of a node is the number of its edges. A sudden hub in a small intelligence graph is worth inspecting: it might be a genuine command server, or a public resolver, a webmail provider or a mistaken parsing artefact.
-
-Section six point six develops discrete structures with a HCHT note Amara Diallo can demo offline.
-
-Under section six point six, the HSSC circle expects discrete claims to carry owners and dates.
-
-Section six point six treats sets and relations graphs as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -569,61 +379,25 @@ You will (1) explain DNS, HTTP(S) and SMTP at the level CTI needs; (2) read emai
 
 The Domain Name System maps names to addresses. Resolver logs record which device asked for which name and when. Because almost every connection starts with a lookup, DNS is the most widely useful source for checking domain indicators.
 
-Section seven point one develops networks and protocols with a HCHT note Amara Diallo can demo offline.
-
-Under section seven point one, the HSSC circle expects networks claims to carry owners and dates.
-
-Section seven point one treats dns http and https as testable only when evidence and ticket IDs are recorded.
-
 ### 7.2 HTTP and HTTPS
 
 Web traffic carries most user activity and much malicious command traffic. ATT&CK's Application Layer Protocol technique (T1071) describes adversaries blending into normal web, mail or DNS traffic. With HTTPS, a proxy may see only the server name, not the full path, unless traffic is inspected — a decision that has privacy and legal implications in a hospital.
-
-Section seven point two develops networks and protocols with a HCHT note Amara Diallo can demo offline.
-
-Under section seven point two, the HSSC circle expects networks claims to carry owners and dates.
 
 ### 7.3 SMTP and headers
 
 Email headers record the path a message took: Received lines, the envelope sender and authentication results (SPF, DKIM, DMARC). A display name saying "HCHT Payroll" means nothing if authentication fails and the sending domain is a lookalike.
 
-Section seven point three develops networks and protocols with a HCHT note Amara Diallo can demo offline.
-
-Under section seven point three, the HSSC circle expects networks claims to carry owners and dates.
-
-Section seven point three treats dns http and https as testable only when evidence and ticket IDs are recorded.
-
 ### 7.4 Ports and services
 
 Unusual ports or protocols can hint at tunnelling, but many legitimate medical systems use unusual ports too. Context from asset owners beats rules of thumb.
-
-Section seven point four develops networks and protocols with a HCHT note Amara Diallo can demo offline.
-
-Under section seven point four, the HSSC circle expects networks claims to carry owners and dates.
-
-Section seven point four treats dns http and https as testable only when evidence and ticket IDs are recorded.
-
-For section seven point four, HCHT will not accept networks work without a written trail.
 
 ### 7.5 Time and addresses
 
 Network logs record times in different zones and addresses that may be translated by firewalls. Normalise times to UTC and note address translation before correlating with shared indicators.
 
-Section seven point five develops networks and protocols with a HCHT note Amara Diallo can demo offline.
-
-Under section seven point five, the HSSC circle expects networks claims to carry owners and dates.
-
-Section seven point five treats dns http and https as testable only when evidence and ticket IDs are recorded.
-
-For section seven point five, HCHT will not accept networks work without a written trail.
-
 ### 7.6 Authentication results in practice
 
 SPF checks whether the sending server may send for the envelope domain; DKIM checks a signature over the message; DMARC ties them to the visible From domain and states the owner's policy. A message can pass SPF for a lookalike domain the attacker controls, so passing checks alone proves only who sent it, not that the sender is benign.
-
-Section seven point six develops networks and protocols with a HCHT note Amara Diallo can demo offline.
-
-Under section seven point six, the HSSC circle expects networks claims to carry owners and dates.
 
 ### Worked example
 
@@ -661,12 +435,6 @@ You will (1) parse a CSV indicator feed with the standard library; (2) validate 
 
 HSSC distributes a daily CSV with columns for type, value, first-seen date and TLP. Spreadsheets mangle such files — turning long numbers into scientific notation or stripping leading zeros — so Amara processes them with Python's `csv` module instead.
 
-Section eight point one develops programming ii with a HCHT note Amara Diallo can demo offline.
-
-Under section eight point one, the HSSC circle expects programming claims to carry owners and dates.
-
-Section eight point one treats feeds as files reading as testable only when evidence and ticket IDs are recorded.
-
 ### Lab — validating a feed
 
 ```python
@@ -703,55 +471,21 @@ accepted 3 rejected 2
 
 Three rows pass; two fail. One has an empty domain value; another claims to be a SHA-256 hash but has the wrong length. Each rejection is printed with its date and reason, so Amara can send precise feedback to HSSC rather than "your feed is broken".
 
-Section eight point two develops programming ii with a HCHT note Amara Diallo can demo offline.
-
-Under section eight point two, the HSSC circle expects programming claims to carry owners and dates.
-
-Section eight point two treats feeds as files reading as testable only when evidence and ticket IDs are recorded.
-
 ### 8.3 Validation rules
 
 Rules check presence (no empty value), shape (hash length, valid address), allowed vocabulary (TLP labels from FIRST TLP 2.0: CLEAR, GREEN, AMBER, AMBER+STRICT, RED) and date format. Rules should be few, explicit and tested.
-
-Section eight point three develops programming ii with a HCHT note Amara Diallo can demo offline.
-
-Under section eight point three, the HSSC circle expects programming claims to carry owners and dates.
-
-Section eight point three treats feeds as files reading as testable only when evidence and ticket IDs are recorded.
 
 ### 8.4 Never silently drop
 
 A script that skips bad rows without saying so makes counts untrustworthy. Always report accepted and rejected totals.
 
-Section eight point four develops programming ii with a HCHT note Amara Diallo can demo offline.
-
-Under section eight point four, the HSSC circle expects programming claims to carry owners and dates.
-
-Section eight point four treats feeds as files reading as testable only when evidence and ticket IDs are recorded.
-
-For section eight point four, HCHT will not accept programming work without a written trail.
-
 ### 8.5 Idempotence
 
 Running the import twice should not create duplicates. Use the value plus type as a key and update metadata rather than adding new rows.
 
-Section eight point five develops programming ii with a HCHT note Amara Diallo can demo offline.
-
-Under section eight point five, the HSSC circle expects programming claims to carry owners and dates.
-
-Section eight point five treats feeds as files reading as testable only when evidence and ticket IDs are recorded.
-
-For section eight point five, HCHT will not accept programming work without a written trail.
-
 ### 8.6 Encoding and delimiters
 
 Feeds arrive with different encodings and separators. Open files with an explicit encoding, sniff or declare the delimiter, and strip invisible characters such as byte-order marks from the first header. Many baffling "missing column" errors are just a hidden character in the first field name.
-
-Section eight point six develops programming ii with a HCHT note Amara Diallo can demo offline.
-
-Under section eight point six, the HSSC circle expects programming claims to carry owners and dates.
-
-Section eight point six treats feeds as files reading as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -789,23 +523,9 @@ You will (1) design a small indicator table; (2) query it with SQL through Pytho
 
 A spreadsheet works until two analysts edit it at once. A small SQLite database gives one source of truth, queries instead of manual filtering, and a record of what was known when.
 
-Section nine point one develops data and databases with a HCHT note Amara Diallo can demo offline.
-
-Under section nine point one, the HSSC circle expects data claims to carry owners and dates.
-
-Section nine point one treats why database table design as testable only when evidence and ticket IDs are recorded.
-
 ### 9.2 Table design
 
 Columns: value, type, source, TLP label, first_seen, last_seen and status. Storing TLP with each row means queries can filter what may be shared before anything leaves HCHT.
-
-Section nine point two develops data and databases with a HCHT note Amara Diallo can demo offline.
-
-Under section nine point two, the HSSC circle expects data claims to carry owners and dates.
-
-Section nine point two treats why database table design as testable only when evidence and ticket IDs are recorded.
-
-For section nine point two, HCHT will not accept data work without a written trail.
 
 ### Lab — querying the store
 
@@ -838,43 +558,17 @@ stale: 2
 
 The query returns two domains with their TLP labels: files.example at TLP:CLEAR and portal-login.example at TLP:GREEN. A second query counts two indicators whose last_seen date is older than the review threshold — candidates for expiry.
 
-Section nine point three develops data and databases with a HCHT note Amara Diallo can demo offline.
-
-Under section nine point three, the HSSC circle expects data claims to carry owners and dates.
-
-Section nine point three treats why database table design as testable only when evidence and ticket IDs are recorded.
-
 ### 9.4 Indicator ageing
 
 Addresses change hands; domains are re-registered. An indicator from last year may now belong to an innocent party. Ageing rules — review after 90 days for addresses, longer for hashes — keep blocklists accurate. Bianco's Pyramid of Pain explains why: low-level indicators are cheap for adversaries to change.
-
-Section nine point four develops data and databases with a HCHT note Amara Diallo can demo offline.
-
-Under section nine point four, the HSSC circle expects data claims to carry owners and dates.
-
-Section nine point four treats why database table design as testable only when evidence and ticket IDs are recorded.
 
 ### 9.5 Parameterised queries
 
 Always pass values as parameters, never by string concatenation. This prevents malformed values from corrupting queries.
 
-Section nine point five develops data and databases with a HCHT note Amara Diallo can demo offline.
-
-Under section nine point five, the HSSC circle expects data claims to carry owners and dates.
-
-Section nine point five treats why database table design as testable only when evidence and ticket IDs are recorded.
-
-For section nine point five, HCHT will not accept data work without a written trail.
-
 ### 9.6 Keeping history
 
 When an indicator is retired, set its status to "expired" rather than deleting the row. A later investigation may ask whether HCHT was blocking that address on a particular day, and only a history of status changes with dates can answer the question honestly.
-
-Section nine point six develops data and databases with a HCHT note Amara Diallo can demo offline.
-
-Under section nine point six, the HSSC circle expects data claims to carry owners and dates.
-
-Section nine point six treats why database table design as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -912,59 +606,25 @@ You will (1) state the legal and ethical limits of OSINT collection; (2) respect
 
 Information visible online is not automatically free to collect, combine and keep. Data-protection law such as the EU GDPR applies to personal data however it was obtained: collection needs a lawful basis, a specific purpose and minimisation. Combining scattered public facts about a person can create a profile that harms them.
 
-Section ten point one develops ethics and authorized practice with a HCHT note Amara Diallo can demo offline.
-
-Under section ten point one, the HSSC circle expects ethics claims to carry owners and dates.
-
 ### 10.2 Terms of service
 
 Platforms set rules about automated access, account use and data reuse. Fake personas, scraping against terms and logging in to closed groups expose the analyst and employer to legal and reputational risk. HCHT's policy forbids them without legal sign-off.
-
-Section ten point two develops ethics and authorized practice with a HCHT note Amara Diallo can demo offline.
-
-Under section ten point two, the HSSC circle expects ethics claims to carry owners and dates.
-
-Section ten point two treats public is not unlimited as testable only when evidence and ticket IDs are recorded.
 
 ### 10.3 Authorisation
 
 Analysts act within a written mandate: which questions, which sources, which methods. Interacting with adversary infrastructure — visiting live phishing pages from a work laptop, registering for criminal forums — is outside an intern's authority and can alert adversaries or break the law.
 
-Section ten point three develops ethics and authorized practice with a HCHT note Amara Diallo can demo offline.
-
-Under section ten point three, the HSSC circle expects ethics claims to carry owners and dates.
-
-Section ten point three treats public is not unlimited as testable only when evidence and ticket IDs are recorded.
-
 ### 10.4 Proportionality
 
 Ask whether the intelligence need justifies the intrusion. Identifying a phishing domain's hosting provider for a takedown is proportionate; researching the private life of a suspected individual is not CTI's job and belongs, if anywhere, with law enforcement.
-
-Section ten point four develops ethics and authorized practice with a HCHT note Amara Diallo can demo offline.
-
-Under section ten point four, the HSSC circle expects ethics claims to carry owners and dates.
-
-Section ten point four treats public is not unlimited as testable only when evidence and ticket IDs are recorded.
 
 ### 10.5 Stop and ask
 
 When a task feels uncomfortable, pause and ask the supervisor. Record the question and answer.
 
-Section ten point five develops ethics and authorized practice with a HCHT note Amara Diallo can demo offline.
-
-Under section ten point five, the HSSC circle expects ethics claims to carry owners and dates.
-
-Section ten point five treats public is not unlimited as testable only when evidence and ticket IDs are recorded.
-
-For section ten point five, HCHT will not accept ethics work without a written trail.
-
 ### 10.6 Ethics codes and peers
 
 Professional codes — for example those of security certification bodies — ask members to act honourably and protect society. Peers help too: describing a planned collection to a colleague often exposes problems the analyst had not noticed. HCHT runs a short weekly "method check" where interns present any new source before use.
-
-Section ten point six develops ethics and authorized practice with a HCHT note Amara Diallo can demo offline.
-
-Under section ten point six, the HSSC circle expects ethics claims to carry owners and dates.
 
 ### Worked example
 
@@ -1002,65 +662,25 @@ You will (1) relate operating-system concepts to ATT&CK techniques; (2) identify
 
 An operating system runs processes, each started by a parent. Attackers often use built-in interpreters — PowerShell, command shells, scripting hosts — which ATT&CK groups under Command and Scripting Interpreter (T1059). Because administrators use the same tools, detection depends on context: which parent, which user, which time.
 
-Section eleven point one develops operating systems with a HCHT note Amara Diallo can demo offline.
-
-Under section eleven point one, the HSSC circle expects operating claims to carry owners and dates.
-
-Section eleven point one treats processes and command interpreters as testable only when evidence and ticket IDs are recorded.
-
 ### 11.2 Privilege
 
 Accounts carry privileges. Attackers prefer valid accounts (T1078) because using real credentials looks like normal work. Least privilege limits what a stolen account can do.
-
-Section eleven point two develops operating systems with a HCHT note Amara Diallo can demo offline.
-
-Under section eleven point two, the HSSC circle expects operating claims to carry owners and dates.
-
-Section eleven point two treats processes and command interpreters as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point two, HCHT will not accept operating work without a written trail.
 
 ### 11.3 Endpoint telemetry
 
 Process creation events with command lines, logon events and service installations are the endpoint logs most relevant to CTI. If a report says a group ran a specific scheduled task name, Amara can search for that name in HCHT's endpoint data.
 
-Section eleven point three develops operating systems with a HCHT note Amara Diallo can demo offline.
-
-Under section eleven point three, the HSSC circle expects operating claims to carry owners and dates.
-
-Section eleven point three treats processes and command interpreters as testable only when evidence and ticket IDs are recorded.
-
 ### 11.4 Reading a technique page
 
 Each ATT&CK technique page has a description, procedure examples drawn from public reporting, mitigations and detection notes. Procedure examples show that someone observed this; they do not show how common it is.
-
-Section eleven point four develops operating systems with a HCHT note Amara Diallo can demo offline.
-
-Under section eleven point four, the HSSC circle expects operating claims to carry owners and dates.
-
-Section eleven point four treats processes and command interpreters as testable only when evidence and ticket IDs are recorded.
 
 ### 11.5 Remote services
 
 Remote Services (T1021) covers attackers moving between systems using legitimate remote access. In a hospital, remote desktop is used by suppliers, so baselines of who connects where are essential.
 
-Section eleven point five develops operating systems with a HCHT note Amara Diallo can demo offline.
-
-Under section eleven point five, the HSSC circle expects operating claims to carry owners and dates.
-
-Section eleven point five treats processes and command interpreters as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point five, HCHT will not accept operating work without a written trail.
-
 ### 11.6 Patching and support status
 
 Unsupported operating systems no longer receive fixes, so intelligence about vulnerabilities affecting them has no patch remedy. The inventory should record support status, and advisories touching unsupported systems trigger compensating controls — segmentation, restricted access, extra monitoring — agreed with the system owner.
-
-Section eleven point six develops operating systems with a HCHT note Amara Diallo can demo offline.
-
-Under section eleven point six, the HSSC circle expects operating claims to carry owners and dates.
-
-Section eleven point six treats processes and command interpreters as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -1098,12 +718,6 @@ You will (1) express analytic confidence with calibrated words; (2) check wordin
 
 Sherman Kent showed that readers interpret "probable" anywhere from roughly 20% to 90%. ICD 203 requires analytic products to express likelihood consistently. Teams adopt a scale — for example "very likely" for 80–95% — and stick to it.
 
-Section twelve point one develops probability and statistics with a HCHT note Amara Diallo can demo offline.
-
-Under section twelve point one, the HSSC circle expects probability claims to carry owners and dates.
-
-Section twelve point one treats words of estimative probability as testable only when evidence and ticket IDs are recorded.
-
 ### Lab — checking estimative words
 
 ```python
@@ -1133,55 +747,21 @@ C4 'probable' not on team scale -> rewrite
 
 Claim C1 says "likely" at 70% — consistent. C2 says "very likely" but assigns 60%, outside the team's 80–95% band, so the wording overstates confidence. C3 "unlikely" at 30% is consistent. C4 uses "probable", which is not on the team scale and must be rewritten.
 
-Section twelve point two develops probability and statistics with a HCHT note Amara Diallo can demo offline.
-
-Under section twelve point two, the HSSC circle expects probability claims to carry owners and dates.
-
-Section twelve point two treats words of estimative probability as testable only when evidence and ticket IDs are recorded.
-
 ### 12.3 Base rates
 
 If one email in ten thousand is malicious, a filter flagging 1% of email produces mostly false alarms even if it catches every phish. Always ask about the base rate before judging a detection.
-
-Section twelve point three develops probability and statistics with a HCHT note Amara Diallo can demo offline.
-
-Under section twelve point three, the HSSC circle expects probability claims to carry owners and dates.
-
-Section twelve point three treats words of estimative probability as testable only when evidence and ticket IDs are recorded.
 
 ### 12.4 False precision
 
 "There is a 73.4% chance this group is responsible" implies measurement that does not exist. Use bands.
 
-Section twelve point four develops probability and statistics with a HCHT note Amara Diallo can demo offline.
-
-Under section twelve point four, the HSSC circle expects probability claims to carry owners and dates.
-
-Section twelve point four treats words of estimative probability as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point four, HCHT will not accept probability work without a written trail.
-
 ### 12.5 Likelihood versus confidence
 
 Likelihood describes how probable an event is; confidence describes the quality of the evidence and reasoning behind the judgment. ICD 203 asks analysts to express and explain both.
 
-Section twelve point five develops probability and statistics with a HCHT note Amara Diallo can demo offline.
-
-Under section twelve point five, the HSSC circle expects probability claims to carry owners and dates.
-
-Section twelve point five treats words of estimative probability as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point five, HCHT will not accept probability work without a written trail.
-
 ### 12.6 Small samples
 
 With five reports, one more or one fewer mention swings a percentage by twenty points. When samples are small, report counts, avoid ranking close values and say that the pattern could change with more data. Statistics cannot rescue a sample that simply contains too little information.
-
-Section twelve point six develops probability and statistics with a HCHT note Amara Diallo can demo offline.
-
-Under section twelve point six, the HSSC circle expects probability claims to carry owners and dates.
-
-Section twelve point six treats words of estimative probability as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -1219,65 +799,25 @@ You will (1) explain why credentials are a prime target; (2) connect identity in
 
 Cloud email and remote access mean a valid password can reach clinical systems from anywhere. Valid Accounts (T1078) and Phishing (T1566) often combine: phish the credential, then log in. CTI about credential phishing therefore leads to identity controls, not only email filters.
 
-Section thirteen point one develops identity and access with a HCHT note Amara Diallo can demo offline.
-
-Under section thirteen point one, the HSSC circle expects identity claims to carry owners and dates.
-
-Section thirteen point one treats identity as the perimeter as testable only when evidence and ticket IDs are recorded.
-
 ### 13.2 Multi-factor authentication
 
 MFA blocks most password-only attacks. Adversaries respond by repeatedly prompting users until one approves, or by stealing session tokens after login. Intelligence that such methods are active in the sector justifies number-matching prompts and conditional access.
-
-Section thirteen point two develops identity and access with a HCHT note Amara Diallo can demo offline.
-
-Under section thirteen point two, the HSSC circle expects identity claims to carry owners and dates.
-
-Section thirteen point two treats identity as the perimeter as testable only when evidence and ticket IDs are recorded.
 
 ### 13.3 Credential exposure reports
 
 Sometimes a partner reports HCHT email addresses and passwords found in a public dump. Handle them as personal data: restrict access, never paste passwords into tickets, force resets via the identity team and inform the data protection officer.
 
-Section thirteen point three develops identity and access with a HCHT note Amara Diallo can demo offline.
-
-Under section thirteen point three, the HSSC circle expects identity claims to carry owners and dates.
-
-Section thirteen point three treats identity as the perimeter as testable only when evidence and ticket IDs are recorded.
-
 ### 13.4 Service and supplier accounts
 
 Shared supplier accounts are hard to attribute and often exempt from MFA. Intelligence about supplier compromise in the sector should trigger a review of these accounts first.
-
-Section thirteen point four develops identity and access with a HCHT note Amara Diallo can demo offline.
-
-Under section thirteen point four, the HSSC circle expects identity claims to carry owners and dates.
-
-Section thirteen point four treats identity as the perimeter as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point four, HCHT will not accept identity work without a written trail.
 
 ### 13.5 Measuring control effect
 
 After acting on intelligence, check whether the risky pattern declined: fewer successful logons from new countries, fewer approved repeated prompts.
 
-Section thirteen point five develops identity and access with a HCHT note Amara Diallo can demo offline.
-
-Under section thirteen point five, the HSSC circle expects identity claims to carry owners and dates.
-
-Section thirteen point five treats identity as the perimeter as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point five, HCHT will not accept identity work without a written trail.
-
 ### 13.6 Least privilege and reviews
 
 Regular access reviews remove accounts of leavers and rights that are no longer needed. Intelligence that attackers in the sector are reusing dormant accounts turns a routine review into a priority: dormant privileged accounts are disabled first, with owners confirming any that must stay.
-
-Section thirteen point six develops identity and access with a HCHT note Amara Diallo can demo offline.
-
-Under section thirteen point six, the HSSC circle expects identity claims to carry owners and dates.
-
-Section thirteen point six treats identity as the perimeter as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -1315,23 +855,9 @@ You will (1) identify personal data in intelligence products; (2) redact it befo
 
 Phishing samples contain recipients' names and addresses; incident notes mention staff; logs hold device owners. Under data-protection law these are personal data, and in a hospital some may relate to patients, which carries stricter duties.
 
-Section fourteen point one develops privacy foundations with a HCHT note Amara Diallo can demo offline.
-
-Under section fourteen point one, the HSSC circle expects privacy claims to carry owners and dates.
-
-Section fourteen point one treats personal data in cti as testable only when evidence and ticket IDs are recorded.
-
 ### 14.2 Redaction before sharing
 
 Before sending a sample to HSSC, remove staff emails, phone numbers and any patient identifiers. Replace them with labels so the analytic meaning survives: "[staff-email] received the message".
-
-Section fourteen point two develops privacy foundations with a HCHT note Amara Diallo can demo offline.
-
-Under section fourteen point two, the HSSC circle expects privacy claims to carry owners and dates.
-
-Section fourteen point two treats personal data in cti as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point two, HCHT will not accept privacy work without a written trail.
 
 ### Lab — redacting a sample
 
@@ -1359,43 +885,17 @@ adversary address kept: True
 
 The staff email and phone number are replaced by placeholders. The adversary's sending address is kept, because it is the indicator other members need. The script reports "adversary address kept: True", confirming it did not over-redact.
 
-Section fourteen point three develops privacy foundations with a HCHT note Amara Diallo can demo offline.
-
-Under section fourteen point three, the HSSC circle expects privacy claims to carry owners and dates.
-
-Section fourteen point three treats personal data in cti as testable only when evidence and ticket IDs are recorded.
-
 ### 14.4 Minimisation and retention
 
 Collect only what the question needs and keep it only as long as needed. A retention period for raw phishing samples — say 90 days — limits exposure if HCHT's own systems are breached.
-
-Section fourteen point four develops privacy foundations with a HCHT note Amara Diallo can demo offline.
-
-Under section fourteen point four, the HSSC circle expects privacy claims to carry owners and dates.
-
-Section fourteen point four treats personal data in cti as testable only when evidence and ticket IDs are recorded.
 
 ### 14.5 Patient data
 
 Never share patient data through intelligence channels. If an incident involves patient records, the data protection officer leads, and notifications follow law, not CTI habits.
 
-Section fourteen point five develops privacy foundations with a HCHT note Amara Diallo can demo offline.
-
-Under section fourteen point five, the HSSC circle expects privacy claims to carry owners and dates.
-
-Section fourteen point five treats personal data in cti as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point five, HCHT will not accept privacy work without a written trail.
-
 ### 14.6 Pseudonymisation versus anonymisation
 
 Replacing a name with a stable label is pseudonymisation: the data can still be linked back by whoever holds the key, so it remains personal data under GDPR. True anonymisation removes any reasonable means of re-identification. Most CTI sharing achieves only the former, so access controls still matter.
-
-Section fourteen point six develops privacy foundations with a HCHT note Amara Diallo can demo offline.
-
-Under section fourteen point six, the HSSC circle expects privacy claims to carry owners and dates.
-
-Section fourteen point six treats personal data in cti as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -1433,63 +933,25 @@ You will (1) distinguish observation, inference and assessment; (2) record prove
 
 An observation: "the proxy logged a connection to portal-login.example at 09:41". An inference: "the user probably clicked the phishing link". An assessment: "HCHT was likely targeted by the sector campaign". Each layer needs its own support, and reports should label which is which.
 
-Section fifteen point one develops evidence and measurement with a HCHT note Amara Diallo can demo offline.
-
-Under section fifteen point one, the HSSC circle expects evidence claims to carry owners and dates.
-
-Section fifteen point one treats three layers provenance measuring as testable only when evidence and ticket IDs are recorded.
-
 ### 15.2 Provenance
 
 For every item record who reported it, when, through which channel, under which TLP, and what it is based on. Without provenance, an indicator copied between feeds appears to have many sources when it has one — circular reporting.
-
-Section fifteen point two develops evidence and measurement with a HCHT note Amara Diallo can demo offline.
-
-Under section fifteen point two, the HSSC circle expects evidence claims to carry owners and dates.
-
-Section fifteen point two treats three layers provenance measuring as testable only when evidence and ticket IDs are recorded.
 
 ### 15.3 Measuring intelligence
 
 Counting indicators ingested measures activity. Outcome measures ask: did intelligence lead to a block that stopped something, a hunt that found something, or a decision that changed? Fewer, better indicators can produce more value.
 
-Section fifteen point three develops evidence and measurement with a HCHT note Amara Diallo can demo offline.
-
-Under section fifteen point three, the HSSC circle expects evidence claims to carry owners and dates.
-
-Section fifteen point three treats three layers provenance measuring as testable only when evidence and ticket IDs are recorded.
-
 ### 15.4 Feedback
 
 Consumers should tell producers what helped. HSSC's monthly feedback form asks members which items led to action. Amara fills it in honestly, including "no action needed".
-
-Section fifteen point four develops evidence and measurement with a HCHT note Amara Diallo can demo offline.
-
-Under section fifteen point four, the HSSC circle expects evidence claims to carry owners and dates.
-
-Section fifteen point four treats three layers provenance measuring as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point four, HCHT will not accept evidence work without a written trail.
 
 ### 15.5 Timeliness
 
 An indicator delivered after the campaign ended has little value. Record the time between first sighting and HCHT action.
 
-Section fifteen point five develops evidence and measurement with a HCHT note Amara Diallo can demo offline.
-
-Under section fifteen point five, the HSSC circle expects evidence claims to carry owners and dates.
-
-Section fifteen point five treats three layers provenance measuring as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point five, HCHT will not accept evidence work without a written trail.
-
 ### 15.6 Precision and recall for blocks
 
 Precision asks what share of blocked items were truly malicious; recall asks what share of malicious items were blocked. A feed with high recall but poor precision floods the service desk with complaints; one with high precision but low recall misses campaigns. Track both rather than a single "hits" count.
-
-Section fifteen point six develops evidence and measurement with a HCHT note Amara Diallo can demo offline.
-
-Under section fifteen point six, the HSSC circle expects evidence claims to carry owners and dates.
 
 ### Worked example
 
@@ -1527,67 +989,25 @@ You will (1) describe defence in depth in a hospital network; (2) place CTI inpu
 
 Email filtering, web proxy, DNS filtering, endpoint protection, identity controls, segmentation and backups form layers. No single layer stops every attack; intelligence helps tune each.
 
-Section sixteen point one develops security architecture with a HCHT note Amara Diallo can demo offline.
-
-Under section sixteen point one, the HSSC circle expects security claims to carry owners and dates.
-
-Section sixteen point one treats layers cti at each as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point one, HCHT will not accept security work without a written trail.
-
 ### 16.2 CTI at each layer
 
 Sender domains feed email filters; malicious domains feed DNS and proxy; hashes feed endpoint tools; technique intelligence informs detection rules and hardening; ransomware intelligence (Data Encrypted for Impact, T1486) informs backup isolation.
-
-Section sixteen point two develops security architecture with a HCHT note Amara Diallo can demo offline.
-
-Under section sixteen point two, the HSSC circle expects security claims to carry owners and dates.
-
-Section sixteen point two treats layers cti at each as testable only when evidence and ticket IDs are recorded.
 
 ### 16.3 Segmentation
 
 Clinical devices sit in separate network zones with tightly limited paths. Intelligence about lateral movement through remote services strengthens the case for blocking unnecessary paths between office and clinical zones.
 
-Section sixteen point three develops security architecture with a HCHT note Amara Diallo can demo offline.
-
-Under section sixteen point three, the HSSC circle expects security claims to carry owners and dates.
-
-Section sixteen point three treats layers cti at each as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point three, HCHT will not accept security work without a written trail.
-
 ### 16.4 Choosing enforcement
 
 Block where the indicator is reliable and the blast radius is acceptable. A hash of a known malicious file is safe to block on endpoints. A shared cloud address is not safe to block at the firewall.
-
-Section sixteen point four develops security architecture with a HCHT note Amara Diallo can demo offline.
-
-Under section sixteen point four, the HSSC circle expects security claims to carry owners and dates.
-
-Section sixteen point four treats layers cti at each as testable only when evidence and ticket IDs are recorded.
 
 ### 16.5 Architecture reviews
 
 When HCHT designs a new system, the CTI team summarises relevant techniques seen in the sector so architects can design against them from the start.
 
-Section sixteen point five develops security architecture with a HCHT note Amara Diallo can demo offline.
-
-Under section sixteen point five, the HSSC circle expects security claims to carry owners and dates.
-
-Section sixteen point five treats layers cti at each as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point five, HCHT will not accept security work without a written trail.
-
 ### 16.6 Backups as a CTI consumer
 
 Sector intelligence that ransomware groups seek and delete backups before encrypting (T1490 Inhibit System Recovery is a related ATT&CK technique) tells the infrastructure team what to protect: offline or immutable copies, separate credentials for backup administration and regular restore tests that prove recovery works.
-
-Section sixteen point six develops security architecture with a HCHT note Amara Diallo can demo offline.
-
-Under section sixteen point six, the HSSC circle expects security claims to carry owners and dates.
-
-Section sixteen point six treats layers cti at each as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -1625,65 +1045,25 @@ You will (1) explain hashing, encryption and signatures at concept level; (2) un
 
 A cryptographic hash such as SHA-256 maps a file to a fixed-length fingerprint. Identical files give identical hashes; changing one byte changes the hash completely. That makes hashes precise indicators — and fragile ones, because adversaries can alter files trivially. Bianco's Pyramid of Pain places hashes at the bottom: easy for defenders, trivial for attackers to change.
 
-Section seventeen point one develops cryptography concepts with a HCHT note Amara Diallo can demo offline.
-
-Under section seventeen point one, the HSSC circle expects cryptography claims to carry owners and dates.
-
 ### 17.2 Encryption
 
 Encryption protects confidentiality. Ransomware abuses it (T1486). TLS protects web traffic, including adversaries' command traffic. Encryption therefore shapes what defenders can see.
-
-Section seventeen point two develops cryptography concepts with a HCHT note Amara Diallo can demo offline.
-
-Under section seventeen point two, the HSSC circle expects cryptography claims to carry owners and dates.
-
-Section seventeen point two treats hashes encryption signatures and as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point two, HCHT will not accept cryptography work without a written trail.
 
 ### 17.3 Signatures and certificates
 
 Digital signatures show who signed data and that it was not altered. Certificates bind a domain name to a key. Free, automated certificates mean phishing sites routinely show a padlock; the padlock proves encryption, not legitimacy.
 
-Section seventeen point three develops cryptography concepts with a HCHT note Amara Diallo can demo offline.
-
-Under section seventeen point three, the HSSC circle expects cryptography claims to carry owners and dates.
-
-Section seventeen point three treats hashes encryption signatures and as testable only when evidence and ticket IDs are recorded.
-
 ### 17.4 Certificate transparency
 
 Publicly trusted certificates are recorded in public logs. Searching them for names resembling HCHT's domains can reveal lookalike sites early — an ethical, passive OSINT method.
-
-Section seventeen point four develops cryptography concepts with a HCHT note Amara Diallo can demo offline.
-
-Under section seventeen point four, the HSSC circle expects cryptography claims to carry owners and dates.
-
-Section seventeen point four treats hashes encryption signatures and as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point four, HCHT will not accept cryptography work without a written trail.
 
 ### 17.5 Protecting intelligence
 
 HSSC distributes TLP:AMBER material through an encrypted portal. Downloading it to personal devices or forwarding by ordinary email breaks the sharing agreement.
 
-Section seventeen point five develops cryptography concepts with a HCHT note Amara Diallo can demo offline.
-
-Under section seventeen point five, the HSSC circle expects cryptography claims to carry owners and dates.
-
-Section seventeen point five treats hashes encryption signatures and as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point five, HCHT will not accept cryptography work without a written trail.
-
 ### 17.6 Fuzzy and partial matching
 
 Because one changed byte defeats an exact hash, some tools compute similarity hashes that score how alike two files are. They help group variants but produce scores, not proof; a high similarity between two benign installers is common. Treat them as leads for human review.
-
-Section seventeen point six develops cryptography concepts with a HCHT note Amara Diallo can demo offline.
-
-Under section seventeen point six, the HSSC circle expects cryptography claims to carry owners and dates.
-
-Section seventeen point six treats hashes encryption signatures and as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -1721,69 +1101,25 @@ You will (1) frame a researchable question; (2) choose qualitative or quantitati
 
 "Is CTI useful?" is too broad. "Which HSSC report types led members to take a defensive action in 2026?" names a population, a period and an outcome. Good questions can be answered with available, lawful data.
 
-Section eighteen point one develops research methods with a HCHT note Amara Diallo can demo offline.
-
-Under section eighteen point one, the HSSC circle expects research claims to carry owners and dates.
-
-Section eighteen point one treats research questions methods coding as testable only when evidence and ticket IDs are recorded.
-
 ### 18.2 Methods
 
 Quantitative methods count — how many reports mention phishing. Qualitative methods interpret — how analysts describe confidence. Many CTI studies combine both: code reports, count codes, then interview analysts.
-
-Section eighteen point two develops research methods with a HCHT note Amara Diallo can demo offline.
-
-Under section eighteen point two, the HSSC circle expects research claims to carry owners and dates.
-
-Section eighteen point two treats research questions methods coding as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point two, HCHT will not accept research work without a written trail.
 
 ### 18.3 Coding scheme
 
 Define categories in advance with examples: "entry route: phishing (T1566), exploited public application (T1190), valid account (T1078), unknown". Two coders label the same reports and compare; disagreements refine the definitions.
 
-Section eighteen point three develops research methods with a HCHT note Amara Diallo can demo offline.
-
-Under section eighteen point three, the HSSC circle expects research claims to carry owners and dates.
-
-Section eighteen point three treats research questions methods coding as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point three, HCHT will not accept research work without a written trail.
-
 ### 18.4 Sampling
 
 Public reports are a biased sample — vendors publish what is interesting or marketable. State the bias rather than pretending the sample represents all incidents.
-
-Section eighteen point four develops research methods with a HCHT note Amara Diallo can demo offline.
-
-Under section eighteen point four, the HSSC circle expects research claims to carry owners and dates.
-
-Section eighteen point four treats research questions methods coding as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point four, HCHT will not accept research work without a written trail.
 
 ### 18.5 Ethics
 
 Interviews with analysts need informed consent and, in a university, ethics review. Do not ask participants to reveal TLP-restricted content.
 
-Section eighteen point five develops research methods with a HCHT note Amara Diallo can demo offline.
-
-Under section eighteen point five, the HSSC circle expects research claims to carry owners and dates.
-
-Section eighteen point five treats research questions methods coding as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point five, HCHT will not accept research work without a written trail.
-
 ### 18.6 Literature search
 
 Before collecting data, search for prior work: peer-reviewed papers, standards and reputable practitioner reports. Record search terms and databases so the review can be repeated, and note when a source is a vendor blog rather than reviewed research.
-
-Section eighteen point six develops research methods with a HCHT note Amara Diallo can demo offline.
-
-Under section eighteen point six, the HSSC circle expects research claims to carry owners and dates.
-
-Section eighteen point six treats research questions methods coding as testable only when evidence and ticket IDs are recorded.
 
 ### Reliability between coders
 
@@ -1825,63 +1161,25 @@ You will (1) define CTI and OSINT; (2) explain the role of models such as the ki
 
 Cyber threat intelligence is analysed knowledge about adversaries' intent, capability and activity that supports defensive decisions. OSINT is intelligence derived from publicly available sources, collected lawfully. NIST SP 800-150 frames threat information sharing as a way for organisations to improve defences collectively.
 
-Section nineteen point one develops threat intelligence and osint scope with a HCHT note Amara Diallo can demo offline.
-
-Under section nineteen point one, the HSSC circle expects threat claims to carry owners and dates.
-
-Section nineteen point one treats definitions models sharing standards as testable only when evidence and ticket IDs are recorded.
-
 ### 19.2 Models
 
 Hutchins, Cloppert and Amin's intrusion kill chain (2011) breaks intrusions into phases from reconnaissance to actions on objectives, showing defenders can act at any phase. The Diamond Model (Caltagirone et al., 2013) describes each event by adversary, capability, infrastructure and victim. MITRE ATT&CK catalogues techniques observed in real intrusions.
-
-Section nineteen point two develops threat intelligence and osint scope with a HCHT note Amara Diallo can demo offline.
-
-Under section nineteen point two, the HSSC circle expects threat claims to carry owners and dates.
 
 ### 19.3 Sharing standards
 
 STIX 2.1 defines a JSON vocabulary for indicators, threat actors, attack patterns and relationships. TAXII 2.1 defines how to exchange STIX over HTTPS. FIRST TLP 2.0 labels tell recipients how widely they may share.
 
-Section nineteen point three develops threat intelligence and osint scope with a HCHT note Amara Diallo can demo offline.
-
-Under section nineteen point three, the HSSC circle expects threat claims to carry owners and dates.
-
-Section nineteen point three treats definitions models sharing standards as testable only when evidence and ticket IDs are recorded.
-
 ### 19.4 CTI and risk
 
 CTI changes the likelihood estimates in risk assessments and informs which controls to prioritise. Without a link to risk decisions, CTI becomes a news service.
-
-Section nineteen point four develops threat intelligence and osint scope with a HCHT note Amara Diallo can demo offline.
-
-Under section nineteen point four, the HSSC circle expects threat claims to carry owners and dates.
-
-Section nineteen point four treats definitions models sharing standards as testable only when evidence and ticket IDs are recorded.
-
-For section nineteen point four, HCHT will not accept threat work without a written trail.
 
 ### 19.5 Theory and practice
 
 Models are lenses, not laws. Each simplifies; analysts choose the one that answers the question at hand.
 
-Section nineteen point five develops threat intelligence and osint scope with a HCHT note Amara Diallo can demo offline.
-
-Under section nineteen point five, the HSSC circle expects threat claims to carry owners and dates.
-
-Section nineteen point five treats definitions models sharing standards as testable only when evidence and ticket IDs are recorded.
-
-For section nineteen point five, HCHT will not accept threat work without a written trail.
-
 ### 19.6 Choosing a model
 
 Use the kill chain when asking where to interrupt an intrusion, the Diamond Model when asking how events connect through shared infrastructure or capability, and ATT&CK when asking which behaviours to detect. Mixing them is fine if the report says which lens produced each conclusion.
-
-Section nineteen point six develops threat intelligence and osint scope with a HCHT note Amara Diallo can demo offline.
-
-Under section nineteen point six, the HSSC circle expects threat claims to carry owners and dates.
-
-Section nineteen point six treats definitions models sharing standards as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -1919,65 +1217,25 @@ You will (1) analyse published cases that shaped CTI practice; (2) extract lesso
 
 Hutchins et al. described defenders tracking a persistent adversary across repeated intrusions, using indicators from earlier phases to block later attempts. The lesson: intelligence from one intrusion protects against the next, and defenders gain when they analyse failed attempts too.
 
-Section twenty point one develops threat intelligence and osint foundational with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty point one, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty point one treats the kill chain paper as testable only when evidence and ticket IDs are recorded.
-
 ### 20.2 Group reporting
 
 Public reporting on long-running groups, catalogued in ATT&CK group entries such as G0016 (APT29), showed that adversaries reuse techniques more stably than infrastructure. The lesson: behavioural detection outlasts indicator lists.
-
-Section twenty point two develops threat intelligence and osint foundational with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty point two, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty point two treats the kill chain paper as testable only when evidence and ticket IDs are recorded.
 
 ### 20.3 Ransomware against health
 
 Many public advisories describe ransomware disrupting hospitals. Common lessons: phishing or exposed services as entry, valid-account abuse, encryption for impact (T1486), and the decisive role of tested, isolated backups.
 
-Section twenty point three develops threat intelligence and osint foundational with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty point three, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty point three treats the kill chain paper as testable only when evidence and ticket IDs are recorded.
-
 ### 20.4 Supply chain
 
 Compromises of trusted software updates (Supply Chain Compromise, T1195) showed that trusted channels can deliver malicious code. The lesson for HCHT: supplier intelligence and update monitoring matter.
-
-Section twenty point four develops threat intelligence and osint foundational with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty point four, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty point four treats the kill chain paper as testable only when evidence and ticket IDs are recorded.
-
-For section twenty point four, HCHT will not accept threat work without a written trail.
 
 ### 20.5 Reading cases ethically
 
 Case studies teach patterns; reproducing malware or step-by-step procedures is unnecessary and inappropriate in coursework.
 
-Section twenty point five develops threat intelligence and osint foundational with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty point five, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty point five treats the kill chain paper as testable only when evidence and ticket IDs are recorded.
-
-For section twenty point five, HCHT will not accept threat work without a written trail.
-
 ### 20.6 Comparing cases
 
 A comparison table helps: for each case list entry technique, persistence approach, impact and the defensive lesson. Patterns across rows — credentials appear again and again — are more useful than any single dramatic story, and the table keeps attention on defence rather than on adversary mystique.
-
-Section twenty point six develops threat intelligence and osint foundational with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty point six, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty point six treats the kill chain paper as testable only when evidence and ticket IDs are recorded.
 
 ### From case to local question
 
@@ -2019,63 +1277,25 @@ You will (1) model the HCHT intelligence system as inputs, processes and outputs
 
 Inputs: HSSC reports, public advisories, vendor feeds, internal incidents. Processes: triage, validation, enrichment, analysis, storage. Outputs: blocks, hunts, briefings, shared reports. Feedback: consumers report what helped. Drawing this flow shows where work piles up.
 
-Section twenty-one point one develops threat intelligence and osint system with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-one point one, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-one point one treats intelligence as system bottlenecks as testable only when evidence and ticket IDs are recorded.
-
 ### 21.2 Bottlenecks
 
 At HCHT, analysis is done by one supervisor and one intern. If triage passes every item to analysis, the queue grows faster than it shrinks. A triage rule — only items matching HCHT assets or the sector proceed — keeps the system stable.
-
-Section twenty-one point two develops threat intelligence and osint system with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-one point two, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-one point two treats intelligence as system bottlenecks as testable only when evidence and ticket IDs are recorded.
 
 ### 21.3 Feedback loops
 
 Positive loop: useful briefings bring more questions, which sharpen direction. Negative loop: too many false-positive blocks make the network team ignore CTI requests. Healthy systems monitor both.
 
-Section twenty-one point three develops threat intelligence and osint system with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-one point three, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-one point three treats intelligence as system bottlenecks as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-one point three, HCHT will not accept threat work without a written trail.
-
 ### 21.4 STIX as a data model
 
 STIX 2.1 represents intelligence as objects: indicator, malware, threat-actor, attack-pattern, campaign, identity, report, and relationship objects linking them. Each object has an identifier, timestamps and optional marking definitions such as TLP. Mapping HCHT's database columns to STIX makes later sharing easier.
-
-Section twenty-one point four develops threat intelligence and osint system with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-one point four, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-one point four treats intelligence as system bottlenecks as testable only when evidence and ticket IDs are recorded.
 
 ### 21.5 Boundaries
 
 The model's boundary excludes clinical decisions; CTI informs them through owners, not directly.
 
-Section twenty-one point five develops threat intelligence and osint system with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-one point five, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-one point five treats intelligence as system bottlenecks as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-one point five, HCHT will not accept threat work without a written trail.
-
 ### 21.6 Capacity arithmetic
 
 If forty items arrive per week and each takes thirty minutes to analyse, twenty analyst-hours are needed. Two people with other duties may provide eight. Without triage the backlog grows by about twenty-four items weekly; writing this arithmetic down makes the case for stricter filters or more staff in plain terms.
-
-Section twenty-one point six develops threat intelligence and osint system with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-one point six, the HSSC circle expects threat claims to carry owners and dates.
 
 ### Service levels
 
@@ -2117,67 +1337,25 @@ You will (1) catalogue HCHT's intelligence sources and their dependencies; (2) a
 
 For each source record: provider, content type, format, delivery method, licence or terms, TLP, cost and owner. HSSC (STIX over TAXII 2.1, membership agreement), a national advisory service (public web pages), a commercial feed (contract), and internal incident records.
 
-Section twenty-two point one develops threat intelligence and osint data with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-two point one, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-two point one treats source catalogue dependencies terms as testable only when evidence and ticket IDs are recorded.
-
 ### 22.2 Dependencies
 
 The commercial feed depends on a contract renewal; HSSC depends on volunteer staff; the import scripts depend on one analyst's knowledge. Each is a dependency that can fail.
-
-Section twenty-two point two develops threat intelligence and osint data with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-two point two, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-two point two treats source catalogue dependencies terms as testable only when evidence and ticket IDs are recorded.
 
 ### 22.3 Terms and licences
 
 Commercial feeds often forbid redistribution. Before sharing an indicator learned from a paid feed with HSSC, Amara checks the licence. Public advisories may permit reuse with attribution.
 
-Section twenty-two point three develops threat intelligence and osint data with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-two point three, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-two point three treats source catalogue dependencies terms as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-two point three, HCHT will not accept threat work without a written trail.
-
 ### 22.4 Single points of failure
 
 If the only person who understands the import script leaves, the pipeline stops. Documentation, a second trained person and simple code reduce that risk.
-
-Section twenty-two point four develops threat intelligence and osint data with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-two point four, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-two point four treats source catalogue dependencies terms as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-two point four, HCHT will not accept threat work without a written trail.
 
 ### 22.5 Coverage gaps
 
 Sources cover some threats better than others. National advisories may underweight medical-device threats; vendor feeds may focus on commodity malware. A coverage table shows gaps.
 
-Section twenty-two point five develops threat intelligence and osint data with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-two point five, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-two point five treats source catalogue dependencies terms as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-two point five, HCHT will not accept threat work without a written trail.
-
 ### 22.6 Source evaluation over time
 
 Sources change: a once-excellent feed may degrade after an acquisition, or a volunteer group may stop publishing. A quarterly check — volume, timeliness, proportion of items leading to action — catches decline before analysts notice that a source has quietly become noise.
-
-Section twenty-two point six develops threat intelligence and osint data with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-two point six, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-two point six treats source catalogue dependencies terms as testable only when evidence and ticket IDs are recorded.
 
 ### Internal sources
 
@@ -2219,14 +1397,6 @@ You will (1) code reports to ATT&CK techniques; (2) compute technique frequency;
 
 Read each report and tag techniques with ATT&CK identifiers, citing the sentence that supports each tag. Avoid tagging from headlines; tag only what the text describes.
 
-Section twenty-three point one develops threat intelligence and osint methods with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-three point one, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-three point one treats coding reports reading the as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-three point one, HCHT will not accept threat work without a written trail.
-
 ### Lab — technique frequency
 
 ```python
@@ -2257,53 +1427,21 @@ T1021 in 1/5 reports
 
 Across five synthetic HSSC reports, Phishing (T1566) and Data Encrypted for Impact (T1486) appear in three each. User Execution (T1204), Command and Scripting Interpreter (T1059) and Valid Accounts (T1078) appear in two. Exploit Public-Facing Application (T1190) and Remote Services (T1021) appear once.
 
-Section twenty-three point two develops threat intelligence and osint methods with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-three point two, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-three point two treats coding reports reading the as testable only when evidence and ticket IDs are recorded.
-
 ### 23.3 Caution
 
 Five reports is tiny. Frequency reflects what reporters noticed and wrote down, not what happened. A technique appearing once may matter more if HCHT is exposed to it — an unpatched internet-facing system makes T1190 relevant despite its low count.
-
-Section twenty-three point three develops threat intelligence and osint methods with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-three point three, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-three point three treats coding reports reading the as testable only when evidence and ticket IDs are recorded.
 
 ### 23.4 From frequency to priority
 
 Priority combines frequency, HCHT exposure and control gaps. Phishing is frequent, and HCHT already has training and filtering; remote services appear once, but supplier remote access is poorly monitored. The final priority list might rank remote-service monitoring above more phishing training.
 
-Section twenty-three point four develops threat intelligence and osint methods with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-three point four, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-three point four treats coding reports reading the as testable only when evidence and ticket IDs are recorded.
-
 ### 23.5 Recording
 
 Keep the coding sheet with report identifiers and supporting sentences so others can verify.
 
-Section twenty-three point five develops threat intelligence and osint methods with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-three point five, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-three point five treats coding reports reading the as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-three point five, HCHT will not accept threat work without a written trail.
-
 ### 23.6 Coding granularity
 
 ATT&CK has techniques and sub-techniques. Coding at sub-technique level gives detail but splits small samples into tiny counts; coding at technique level is coarser but more stable. Choose one level for a given study and state it, or counts become incomparable.
-
-Section twenty-three point six develops threat intelligence and osint methods with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-three point six, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-three point six treats coding reports reading the as testable only when evidence and ticket IDs are recorded.
 
 ### Comparing with internal incidents
 
@@ -2345,65 +1483,25 @@ You will (1) map techniques to mitigations using ATT&CK; (2) write an intelligen
 
 Each ATT&CK technique page lists mitigations — for phishing, user training, filtering and restricting web content; for valid accounts, multi-factor authentication and privileged account management. These are starting points, not prescriptions.
 
-Section twenty-four point one develops threat intelligence and osint controls with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-four point one, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-four point one treats from technique to mitigation as testable only when evidence and ticket IDs are recorded.
-
 ### 24.2 The control request
 
 A good request states: the intelligence (with source and TLP), the technique, the proposed control, the expected benefit, side effects, owner and a deadline. It does not demand; it informs the owner's decision.
-
-Section twenty-four point two develops threat intelligence and osint controls with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-four point two, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-four point two treats from technique to mitigation as testable only when evidence and ticket IDs are recorded.
 
 ### 24.3 Side effects
 
 Blocking macros in documents stops one delivery route but may break a laboratory spreadsheet used daily. Ask owners about impact before proposing.
 
-Section twenty-four point three develops threat intelligence and osint controls with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-four point three, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-four point three treats from technique to mitigation as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point three, HCHT will not accept threat work without a written trail.
-
 ### 24.4 Verification
 
 After a control is applied, test it safely: send a harmless test document through the filter, or confirm a blocked domain fails to resolve. Record the test.
-
-Section twenty-four point four develops threat intelligence and osint controls with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-four point four, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-four point four treats from technique to mitigation as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point four, HCHT will not accept threat work without a written trail.
 
 ### 24.5 Decay
 
 Controls decay: exceptions are added, rules disabled during outages and never re-enabled. Recheck quarterly.
 
-Section twenty-four point five develops threat intelligence and osint controls with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-four point five, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-four point five treats from technique to mitigation as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point five, HCHT will not accept threat work without a written trail.
-
 ### 24.6 Detection as a control
 
 Not every risk can be prevented. Where prevention would break clinical work, a detection rule plus a rehearsed response may be the right control. The request then names who receives alerts, how fast they must act and what they will do, so the detection does not become an unread dashboard.
-
-Section twenty-four point six develops threat intelligence and osint controls with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-four point six, the HSSC circle expects threat claims to carry owners and dates.
 
 ### Prioritising requests
 
@@ -2445,73 +1543,29 @@ You will (1) run an end-to-end mini pipeline on synthetic data; (2) combine vali
 
 This laboratory combines earlier labs into one exercise. Students receive a synthetic HSSC CSV feed, validate it (chapter 8), load accepted rows into SQLite (chapter 9), redact a synthetic phishing sample (chapter 14) and produce a one-page shareable summary filtered to TLP:CLEAR and TLP:GREEN.
 
-Section twenty-five point one develops threat intelligence and osint laboratory with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-five point one, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-five point one treats lab design environment rules as testable only when evidence and ticket IDs are recorded.
-
 ### 25.2 Environment rules
 
 Work only in the course virtual machine with no internet route. Use standard-library Python. Do not paste real HCHT data or real indicators from work into the lab. If a lab file seems to contain real personal data, stop and tell the instructor.
-
-Section twenty-five point two develops threat intelligence and osint laboratory with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-five point two, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-five point two treats lab design environment rules as testable only when evidence and ticket IDs are recorded.
 
 ### 25.3 Steps
 
 First, run validation and note rejections with reasons. Second, load accepted rows and query by type and label. Third, redact the sample and confirm the adversary address survives. Fourth, write the summary: what was received, what was rejected, what may be shared and with whom.
 
-Section twenty-five point three develops threat intelligence and osint laboratory with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-five point three, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-five point three treats lab design environment rules as testable only when evidence and ticket IDs are recorded.
-
 ### 25.4 The lab report
 
 A lab report has aim, method, results, problems and reflections. Results include exact counts and script outputs; problems include anything that surprised you. Reflection asks what would change with real data.
-
-Section twenty-five point four develops threat intelligence and osint laboratory with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-five point four, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-five point four treats lab design environment rules as testable only when evidence and ticket IDs are recorded.
 
 ### 25.5 Assessment
 
 Marks reward correct outputs, clear reasoning, honest problems and correct handling labels. Pretty formatting earns nothing extra.
 
-Section twenty-five point five develops threat intelligence and osint laboratory with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-five point five, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-five point five treats lab design environment rules as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point five, HCHT will not accept threat work without a written trail.
-
 ### 25.6 Reproducibility
 
 A classmate should be able to repeat your work from the report alone. Record script versions, input file names, the order of steps and any manual edits. If you corrected a value by hand, say so; hidden manual fixes make results impossible to reproduce.
 
-Section twenty-five point six develops threat intelligence and osint laboratory with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-five point six, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-five point six treats lab design environment rules as testable only when evidence and ticket IDs are recorded.
-
 ### 25.7 Pairing
 
 Students work in pairs: one runs the scripts, the other checks outputs against expectations and records discrepancies. Roles swap halfway. Pairing catches mistakes early and practises the review habit that real teams rely on.
-
-Section twenty-five point seven develops threat intelligence and osint laboratory with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-five point seven, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-five point seven treats lab design environment rules as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -2549,12 +1603,6 @@ You will (1) grade sources and information with the Admiralty system; (2) decide
 
 The Admiralty (NATO) system grades source reliability from A (completely reliable) to F (cannot be judged) and information credibility from 1 (confirmed) to 6 (cannot be judged). A reliable source can pass on doubtful information; an unknown source can report something confirmed by other evidence.
 
-Section twenty-six point one develops threat intelligence and osint methods with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-six point one, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-six point one treats two letters two questions as testable only when evidence and ticket IDs are recorded.
-
 ### Lab — grading and use
 
 ```python
@@ -2586,51 +1634,21 @@ I-5 F6 cannot judge - seek corroboration
 
 I-1 is B2 — usually reliable, probably true — use for action. I-2 is E3 — unreliable source, possibly true — hold. I-3 is A5 — completely reliable source but improbable information — hold until checked; even good sources make mistakes. I-4 is C3 — fairly reliable, possibly true — use with a caveat. I-5 is F6 — cannot be judged on either axis.
 
-Section twenty-six point two develops threat intelligence and osint methods with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-six point two, the HSSC circle expects threat claims to carry owners and dates.
-
 ### 26.3 Decision rules
 
 The lab encodes simple rules: act on combinations of A–B with 1–2; caveat C with 3; hold anything with E or 5; F6 needs more information. Teams agree their rules in advance so grading drives consistent decisions.
-
-Section twenty-six point three develops threat intelligence and osint methods with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-six point three, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-six point three treats two letters two questions as testable only when evidence and ticket IDs are recorded.
 
 ### 26.4 Reasons
 
 Write why: "B — HSSC has been accurate in 18 of 20 past items" is reviewable; "B — seems fine" is not.
 
-Section twenty-six point four develops threat intelligence and osint methods with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-six point four, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-six point four treats two letters two questions as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-six point four, HCHT will not accept threat work without a written trail.
-
 ### 26.5 Re-grading
 
 Grades change as evidence arrives. Keep history so later reviewers know what was believed when.
 
-Section twenty-six point five develops threat intelligence and osint methods with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-six point five, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-six point five treats two letters two questions as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-six point five, HCHT will not accept threat work without a written trail.
-
 ### 26.6 Grading OSINT
 
 Open sources range from official advisories to anonymous posts. A national agency advisory might rate B; an anonymous social-media claim, E or F until corroborated. Grade the specific author or channel, not "the internet", and remember that a reliable outlet can still repeat someone else's unverified claim.
-
-Section twenty-six point six develops threat intelligence and osint methods with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-six point six, the HSSC circle expects threat claims to carry owners and dates.
 
 ### Worked example
 
@@ -2668,65 +1686,25 @@ You will (1) verify indicators passively before action; (2) corroborate claims w
 
 Check indicators without touching adversary systems: public DNS records, certificate-transparency logs, registration data where available, and reputable public reputation services. Visiting a live phishing page from a work device is not passive and is not allowed.
 
-Section twenty-seven point one develops threat intelligence and osint verification with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-seven point one, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-seven point one treats passive verification independence environmental as testable only when evidence and ticket IDs are recorded.
-
 ### 27.2 Independence
 
 Two reports are independent only if they rest on different observations. Ask each source what its claim is based on. Citations to the same vendor blog do not corroborate each other.
-
-Section twenty-seven point two develops threat intelligence and osint verification with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-seven point two, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-seven point two treats passive verification independence environmental as testable only when evidence and ticket IDs are recorded.
 
 ### 27.3 Environmental match
 
 An advisory about a product HCHT does not run is lower priority, however severe. Check the inventory, versions and exposure.
 
-Section twenty-seven point three develops threat intelligence and osint verification with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-seven point three, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-seven point three treats passive verification independence environmental as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point three, HCHT will not accept threat work without a written trail.
-
 ### 27.4 Internal corroboration
 
 The best verification is often internal: did HCHT's mail gateway receive messages from the reported sender? Did any device contact the domain? Internal sightings both verify and measure relevance.
-
-Section twenty-seven point four develops threat intelligence and osint verification with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-seven point four, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-seven point four treats passive verification independence environmental as testable only when evidence and ticket IDs are recorded.
 
 ### 27.5 Recording
 
 A verification record lists each check, its result, the time and the analyst. Others can repeat or challenge it.
 
-Section twenty-seven point five develops threat intelligence and osint verification with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-seven point five, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-seven point five treats passive verification independence environmental as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point five, HCHT will not accept threat work without a written trail.
-
 ### 27.6 Verifying claims, not only indicators
 
 Narrative claims need checking too: "the group always demands payment within 48 hours" may come from one case. Trace the claim to its original source, see what evidence it cited and whether later reporting confirmed it. Unverified claims stay in the report only with a clear caveat.
-
-Section twenty-seven point six develops threat intelligence and osint verification with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-seven point six, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-seven point six treats passive verification independence environmental as testable only when evidence and ticket IDs are recorded.
 
 ### Time-boxing verification
 
@@ -2768,67 +1746,25 @@ You will (1) analyse intelligence failures without blame; (2) distinguish collec
 
 Collection failure: the signal never arrived. Analysis failure: it arrived but was misjudged. Dissemination failure: the judgment was right but reached the wrong person or too late. Action failure: the right person received it but did not act. Each needs a different fix.
 
-Section twenty-eight point one develops threat intelligence and osint failure with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-eight point one, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-eight point one treats kinds of failure cognitive as testable only when evidence and ticket IDs are recorded.
-
 ### 28.2 Cognitive biases
 
 Heuer's Psychology of Intelligence Analysis describes how analysts see what they expect, anchor on first impressions and favour evidence that confirms their view. Structured techniques such as analysis of competing hypotheses push analysts to test alternatives.
-
-Section twenty-eight point two develops threat intelligence and osint failure with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-eight point two, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-eight point two treats kinds of failure cognitive as testable only when evidence and ticket IDs are recorded.
 
 ### 28.3 Blameless review
 
 Reviews ask what happened and why, not who to punish. People who fear blame hide mistakes, and the organisation stops learning.
 
-Section twenty-eight point three develops threat intelligence and osint failure with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-eight point three, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-eight point three treats kinds of failure cognitive as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point three, HCHT will not accept threat work without a written trail.
-
 ### 28.4 Timeline first
 
 Build a timeline of when information arrived, who saw it and what they did. Failures often sit in gaps between teams.
-
-Section twenty-eight point four develops threat intelligence and osint failure with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-eight point four, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-eight point four treats kinds of failure cognitive as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point four, HCHT will not accept threat work without a written trail.
 
 ### 28.5 Lessons that change things
 
 "Be more careful" is not a lesson. "Add an owner field to every advisory and confirm receipt within one day" is.
 
-Section twenty-eight point five develops threat intelligence and osint failure with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-eight point five, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-eight point five treats kinds of failure cognitive as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point five, HCHT will not accept threat work without a written trail.
-
 ### 28.6 Near misses
 
 A near miss — a phishing email noticed by chance before anyone clicked — is free learning. Reviewing near misses with the same structure as incidents reveals weak points before they cause harm, and staff find these reviews less threatening because nothing went wrong.
-
-Section twenty-eight point six develops threat intelligence and osint failure with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-eight point six, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-eight point six treats kinds of failure cognitive as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -2866,63 +1802,25 @@ You will (1) run a weekly CTI cycle; (2) prioritise with intelligence requiremen
 
 Monday: review requirements and open items. Daily: triage incoming items, verify urgent ones, push indicators. Thursday: draft the weekly brief. Friday: send feedback to HSSC and close items. A rhythm keeps a small team predictable.
 
-Section twenty-nine point one develops threat intelligence and osint operations with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-nine point one, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-nine point one treats weekly rhythm requirements tlp as testable only when evidence and ticket IDs are recorded.
-
 ### 29.2 Requirements
 
 HCHT's priority intelligence requirements include: campaigns targeting UK and EU health providers; vulnerabilities in products in the inventory; credential exposure of HCHT accounts; threats to medical devices. Items outside them get a light touch.
-
-Section twenty-nine point two develops threat intelligence and osint operations with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-nine point two, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-nine point two treats weekly rhythm requirements tlp as testable only when evidence and ticket IDs are recorded.
 
 ### 29.3 TLP in practice
 
 TLP:CLEAR may be shared publicly. TLP:GREEN within the community but not publicly. TLP:AMBER within the recipient organisation and its clients on a need-to-know basis; AMBER+STRICT within the organisation only. TLP:RED to named recipients only. When HCHT re-shares, it keeps the original label or stricter.
 
-Section twenty-nine point three develops threat intelligence and osint operations with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-nine point three, the HSSC circle expects threat claims to carry owners and dates.
-
 ### 29.4 Work log
 
 Record each item: arrival, source, TLP, grade, decision, actions, closure. The log supports handover, audit and failure review.
-
-Section twenty-nine point four develops threat intelligence and osint operations with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-nine point four, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-nine point four treats weekly rhythm requirements tlp as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point four, HCHT will not accept threat work without a written trail.
 
 ### 29.5 Handover
 
 When Amara is away, the log tells her supervisor what is pending.
 
-Section twenty-nine point five develops threat intelligence and osint operations with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-nine point five, the HSSC circle expects threat claims to carry owners and dates.
-
-Section twenty-nine point five treats weekly rhythm requirements tlp as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point five, HCHT will not accept threat work without a written trail.
-
-Section twenty-nine point five fails closed if threat evidence is missing rather than guessing.
-
 ### 29.6 Urgent path
 
 Some items cannot wait for the weekly rhythm: a campaign actively hitting HCHT mailboxes, or a vulnerability under exploitation in an internet-facing product HCHT runs. The urgent path skips the brief: phone the owner, open a priority ticket, record decisions in the log, and summarise in the next weekly brief.
-
-Section twenty-nine point six develops threat intelligence and osint operations with a HCHT note Amara Diallo can demo offline.
-
-Under section twenty-nine point six, the HSSC circle expects threat claims to carry owners and dates.
 
 ### Worked example
 
@@ -2960,75 +1858,29 @@ You will (1) produce a STIX 2.1-style bundle by hand from a synthetic incident; 
 
 From a synthetic incident description — a phishing email, a credential page, a later suspicious login — students write a JSON bundle containing an indicator, an attack-pattern for T1566, an attack-pattern for T1078, a relationship linking them, and a report object. Each object gets an identifier, created and modified timestamps and a TLP marking reference.
 
-Section thirty point one develops threat intelligence and osint laboratory with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty point one, the HSSC circle expects threat claims to carry owners and dates.
-
 ### 30.2 Why by hand
 
 Writing objects by hand teaches what each field means before tools hide it. Students use Python's `json` module only to check that the file parses.
-
-Section thirty point two develops threat intelligence and osint laboratory with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty point two, the HSSC circle expects threat claims to carry owners and dates.
-
-Section thirty point two treats the task why by as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point two, HCHT will not accept threat work without a written trail.
 
 ### 30.3 Patterns
 
 STIX indicators carry a pattern in STIX pattern language, for example matching a domain name value. Students copy the form from the specification rather than inventing syntax, and cite the section.
 
-Section thirty point three develops threat intelligence and osint laboratory with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty point three, the HSSC circle expects threat claims to carry owners and dates.
-
-Section thirty point three treats the task why by as testable only when evidence and ticket IDs are recorded.
-
 ### 30.4 Peer review
 
 Pairs swap bundles and check: does every relationship point to objects that exist? Are timestamps in UTC? Is the TLP marking present on each object? Is any personal data present?
-
-Section thirty point four develops threat intelligence and osint laboratory with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty point four, the HSSC circle expects threat claims to carry owners and dates.
-
-Section thirty point four treats the task why by as testable only when evidence and ticket IDs are recorded.
 
 ### 30.5 Memo
 
 A half-page memo explains modelling choices: why a relationship type was chosen, what was left out and why.
 
-Section thirty point five develops threat intelligence and osint laboratory with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty point five, the HSSC circle expects threat claims to carry owners and dates.
-
-Section thirty point five treats the task why by as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point five, HCHT will not accept threat work without a written trail.
-
 ### 30.6 Identifiers and versions
 
 STIX identifiers combine the object type and a UUID. When an object changes, its identifier stays the same and the modified timestamp moves forward. Students who create a new identifier for every edit break references from other objects, a mistake peer reviewers learn to spot quickly.
 
-Section thirty point six develops threat intelligence and osint laboratory with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty point six, the HSSC circle expects threat claims to carry owners and dates.
-
-Section thirty point six treats the task why by as testable only when evidence and ticket IDs are recorded.
-
 ### 30.7 Assessment
 
 Marks reward a valid, minimal bundle with correct references and labels, a thoughtful memo and constructive review comments on a peer's work.
-
-Section thirty point seven develops threat intelligence and osint laboratory with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty point seven, the HSSC circle expects threat claims to carry owners and dates.
-
-Section thirty point seven treats the task why by as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point seven, HCHT will not accept threat work without a written trail.
 
 ### Worked example
 
@@ -3066,12 +1918,6 @@ You will (1) reconstruct an intrusion timeline across kill-chain phases; (2) dis
 
 Hutchins et al. defined phases: reconnaissance, weaponization, delivery, exploitation, installation, command and control, and actions on objectives. Placing timestamped events into phases shows the intrusion's tempo and where defenders could have acted.
 
-Section thirty-one point one develops threat intelligence and osint advanced with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-one point one, the HSSC circle expects threat claims to carry owners and dates.
-
-Section thirty-one point one treats from events to phases as testable only when evidence and ticket IDs are recorded.
-
 ### Lab — ordering phases
 
 ```python
@@ -3104,53 +1950,21 @@ span: 2026-09-02 18:00 -> 2026-09-03 10:02
 
 The script orders five synthetic events: weaponization at 2026-09-02 18:00, delivery at 09:30 the next day, exploitation at 09:41, installation at 09:45 and command and control at 10:02. The span is 2026-09-02 18:00 to 2026-09-03 10:02.
 
-Section thirty-one point two develops threat intelligence and osint advanced with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-one point two, the HSSC circle expects threat claims to carry owners and dates.
-
-Section thirty-one point two treats from events to phases as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-one point two, HCHT will not accept threat work without a written trail.
-
 ### 31.3 A labelling caution
 
 The "weaponization" event is actually the registration of a lookalike domain. ATT&CK classifies that as resource development — Acquire Infrastructure (T1583) — which happens before the intrusion. The kill chain's weaponization phase strictly means pairing an exploit with a deliverable payload. Analysts should say which framework's terms they use; here the event is better called preparation.
-
-Section thirty-one point three develops threat intelligence and osint advanced with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-one point three, the HSSC circle expects threat claims to carry owners and dates.
 
 ### 31.4 Tempo
 
 From delivery to command and control took 32 minutes. That window tells HCHT that alerting on the first phases must reach a human within minutes, not the next day.
 
-Section thirty-one point four develops threat intelligence and osint advanced with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-one point four, the HSSC circle expects threat claims to carry owners and dates.
-
-Section thirty-one point four treats from events to phases as testable only when evidence and ticket IDs are recorded.
-
 ### 31.5 Opportunities
 
 Domain monitoring could flag registration; email filtering could block delivery; endpoint controls could stop installation; DNS monitoring could catch command traffic.
 
-Section thirty-one point five develops threat intelligence and osint advanced with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-one point five, the HSSC circle expects threat claims to carry owners and dates.
-
-Section thirty-one point five treats from events to phases as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-one point five, HCHT will not accept threat work without a written trail.
-
 ### 31.6 Presenting timelines
 
 A good timeline figure uses one time zone, labels each event with its evidence source, and marks gaps where nothing is known. Readers then see not only what happened but where the record is thin, which guides the next questions.
-
-Section thirty-one point six develops threat intelligence and osint advanced with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-one point six, the HSSC circle expects threat claims to carry owners and dates.
-
-Section thirty-one point six treats from events to phases as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -3188,67 +2002,25 @@ You will (1) work with legal, privacy, clinical and communications colleagues; (
 
 Lawyers advise on data protection, contracts with intelligence providers and obligations to report incidents. They need facts and uncertainty stated clearly, not jargon.
 
-Section thirty-two point one develops threat intelligence and osint interdisciplinary with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-two point one, the HSSC circle expects threat claims to carry owners and dates.
-
-Section thirty-two point one treats legal privacy clinical leadership as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-two point one, HCHT will not accept threat work without a written trail.
-
 ### 32.2 Privacy
 
 The data protection officer decides on personal-data processing, retention and breach notification. CTI involving personal data — credential dumps, phishing samples — goes through them.
-
-Section thirty-two point two develops threat intelligence and osint interdisciplinary with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-two point two, the HSSC circle expects threat claims to carry owners and dates.
-
-Section thirty-two point two treats legal privacy clinical leadership as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-two point two, HCHT will not accept threat work without a written trail.
 
 ### 32.3 Clinical leadership
 
 Clinicians decide on patient-safety trade-offs. If intelligence suggests isolating a laboratory system, the clinical lead weighs that against delayed test results. CTI provides the threat picture; clinicians decide.
 
-Section thirty-two point three develops threat intelligence and osint interdisciplinary with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-two point three, the HSSC circle expects threat claims to carry owners and dates.
-
-Section thirty-two point three treats legal privacy clinical leadership as testable only when evidence and ticket IDs are recorded.
-
 ### 32.4 Communications
 
 If an incident becomes public, communications staff need accurate, approved facts. CTI analysts should never speak to media or post publicly about incidents.
-
-Section thirty-two point four develops threat intelligence and osint interdisciplinary with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-two point four, the HSSC circle expects threat claims to carry owners and dates.
-
-Section thirty-two point four treats legal privacy clinical leadership as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-two point four, HCHT will not accept threat work without a written trail.
 
 ### 32.5 Procurement
 
 Supplier risk assessments benefit from intelligence about supplier compromises. Procurement needs short, sourced summaries they can include in contracts and reviews.
 
-Section thirty-two point five develops threat intelligence and osint interdisciplinary with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-two point five, the HSSC circle expects threat claims to carry owners and dates.
-
-Section thirty-two point five treats legal privacy clinical leadership as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-two point five, HCHT will not accept threat work without a written trail.
-
 ### 32.6 Shared vocabulary
 
 Words carry different meanings across professions. "Incident" for clinicians may mean patient harm; for security, any policy breach. "Confidential" has a legal meaning for lawyers that differs from a TLP label. Agree a small glossary for joint work and define terms on first use in every cross-team note.
-
-Section thirty-two point six develops threat intelligence and osint interdisciplinary with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-two point six, the HSSC circle expects threat claims to carry owners and dates.
 
 ### Human resources and insiders
 
@@ -3290,67 +2062,25 @@ You will (1) analyse coded data with simple statistics; (2) measure inter-coder 
 
 After coding reports, build a table of technique counts by period or sector. Present counts and denominators. A simple bar chart works if axes are labelled and the sample size is visible.
 
-Section thirty-three point one develops research methods ii with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-three point one, the HSSC circle expects research claims to carry owners and dates.
-
-Section thirty-three point one treats from codes to tables as testable only when evidence and ticket IDs are recorded.
-
 ### 33.2 Agreement
 
 Percentage agreement between two coders is easy but inflated by chance. Cohen's kappa corrects for agreement expected by chance. Values near 0 mean chance-level agreement; values above roughly 0.6 are often treated as substantial, though thresholds are conventions.
-
-Section thirty-three point two develops research methods ii with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-three point two, the HSSC circle expects research claims to carry owners and dates.
-
-Section thirty-three point two treats from codes to tables as testable only when evidence and ticket IDs are recorded.
 
 ### 33.3 Uncertainty
 
 With small samples, report ranges or say "too few to compare". Do not run significance tests on a handful of reports and present them as findings.
 
-Section thirty-three point three develops research methods ii with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-three point three, the HSSC circle expects research claims to carry owners and dates.
-
-Section thirty-three point three treats from codes to tables as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-three point three, HCHT will not accept research work without a written trail.
-
 ### 33.4 Methods section
 
 Describe sources, inclusion criteria, dates, coding scheme, coders, agreement and limitations. A reader should be able to repeat the study with the same public sources.
-
-Section thirty-three point four develops research methods ii with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-three point four, the HSSC circle expects research claims to carry owners and dates.
-
-Section thirty-three point four treats from codes to tables as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-three point four, HCHT will not accept research work without a written trail.
 
 ### 33.5 Open materials
 
 Share coding sheets and scripts where licences allow, removing restricted content. Public sources can be listed; TLP-restricted ones cannot.
 
-Section thirty-three point five develops research methods ii with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-three point five, the HSSC circle expects research claims to carry owners and dates.
-
-Section thirty-three point five treats from codes to tables as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-three point five, HCHT will not accept research work without a written trail.
-
 ### 33.6 Negative results
 
 A study that finds no difference between periods is still informative if the method was sound. Report it plainly; hiding unexciting results distorts the literature and wastes the next student's effort repeating the same work.
-
-Section thirty-three point six develops research methods ii with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-three point six, the HSSC circle expects research claims to carry owners and dates.
-
-Section thirty-three point six treats from codes to tables as testable only when evidence and ticket IDs are recorded.
 
 ### Choosing charts
 
@@ -3392,69 +2122,25 @@ You will (1) compare two intelligence-sharing arrangements; (2) build fair compa
 
 Students compare two arrangements: a sector sharing community like HSSC and a commercial intelligence feed. Criteria include relevance to health, timeliness, format (STIX/TAXII support), handling rules, cost, licence terms and feedback mechanisms.
 
-Section thirty-four point one develops comparative project with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-four point one, the HSSC circle expects comparative claims to carry owners and dates.
-
-Section thirty-four point one treats the project fair criteria as testable only when evidence and ticket IDs are recorded.
-
 ### 34.2 Fair criteria
 
 Define criteria before looking at evidence, so you do not pick criteria that favour a preferred answer. Weight them by HCHT's requirements, and publish the weights.
-
-Section thirty-four point two develops comparative project with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-four point two, the HSSC circle expects comparative claims to carry owners and dates.
-
-Section thirty-four point two treats the project fair criteria as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-four point two, HCHT will not accept comparative work without a written trail.
 
 ### 34.3 Evidence
 
 Use documentation, public descriptions, membership agreements available to HCHT and interviews with consenting staff. Do not request trial accounts under false pretences or share HCHT data to test a vendor.
 
-Section thirty-four point three develops comparative project with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-four point three, the HSSC circle expects comparative claims to carry owners and dates.
-
-Section thirty-four point three treats the project fair criteria as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-four point three, HCHT will not accept comparative work without a written trail.
-
 ### 34.4 Scoring
 
 Score each criterion 0–3 with written evidence. Sensitivity check: does the recommendation change if one weight changes? If yes, say so.
-
-Section thirty-four point four develops comparative project with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-four point four, the HSSC circle expects comparative claims to carry owners and dates.
-
-Section thirty-four point four treats the project fair criteria as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-four point four, HCHT will not accept comparative work without a written trail.
 
 ### 34.5 Recommendation
 
 Recommend with trade-offs: "Keep HSSC as primary for health relevance; add the commercial feed only for vulnerability exploitation data if budget allows."
 
-Section thirty-four point five develops comparative project with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-four point five, the HSSC circle expects comparative claims to carry owners and dates.
-
-Section thirty-four point five treats the project fair criteria as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-four point five, HCHT will not accept comparative work without a written trail.
-
 ### 34.6 Comparing like with like
 
 The community shares analysed reports; the feed delivers bulk indicators. Comparing raw volume favours the feed unfairly. Normalise where you can — for example, items that matched HCHT's inventory per month — so the comparison reflects usefulness, not size.
-
-Section thirty-four point six develops comparative project with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-four point six, the HSSC circle expects comparative claims to carry owners and dates.
-
-Section thirty-four point six treats the project fair criteria as testable only when evidence and ticket IDs are recorded.
 
 ### Stakeholder input
 
@@ -3496,79 +2182,29 @@ You will (1) write a capstone proposal for a CTI project; (2) define scope, deli
 
 Good capstones solve a real, bounded problem with lawful data. Amara proposes "A lookalike-domain early-warning process for HCHT using certificate-transparency data", which is passive, useful and achievable in one semester.
 
-Section thirty-five point one develops capstone proposal with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-five point one, the HSSC circle expects capstone claims to carry owners and dates.
-
-Section thirty-five point one treats choosing topic structure scope as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-five point one, HCHT will not accept capstone work without a written trail.
-
 ### 35.2 Structure
 
 Background (the problem and why it matters), aim and questions, method, data and ethics, deliverables, timeline, risks and evaluation plan. Two to three pages is enough.
-
-Section thirty-five point two develops capstone proposal with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-five point two, the HSSC circle expects capstone claims to carry owners and dates.
-
-Section thirty-five point two treats choosing topic structure scope as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-five point two, HCHT will not accept capstone work without a written trail.
 
 ### 35.3 Scope
 
 State what is in and out. In: generating candidate lookalike names, matching them against public certificate logs, triage rules, a weekly report. Out: contacting domain registrars, takedowns, active scanning of found sites.
 
-Section thirty-five point three develops capstone proposal with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-five point three, the HSSC circle expects capstone claims to carry owners and dates.
-
-Section thirty-five point three treats choosing topic structure scope as testable only when evidence and ticket IDs are recorded.
-
 ### 35.4 Success measures
 
 Measurable: number of HCHT-relevant lookalikes found in a pilot month; share confirmed malicious or suspicious by the supervisor; analyst time per week. Set targets modestly.
-
-Section thirty-five point four develops capstone proposal with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-five point four, the HSSC circle expects capstone claims to carry owners and dates.
-
-Section thirty-five point four treats choosing topic structure scope as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-five point four, HCHT will not accept capstone work without a written trail.
 
 ### 35.5 Data and ethics
 
 Certificate-transparency data is public, but results may include domains registered by individuals for innocent reasons. Store only domain names and certificate dates; do not research registrants personally. Obtain supervisor and university approval.
 
-Section thirty-five point five develops capstone proposal with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-five point five, the HSSC circle expects capstone claims to carry owners and dates.
-
-Section thirty-five point five treats choosing topic structure scope as testable only when evidence and ticket IDs are recorded.
-
 ### 35.6 Risks
 
 Data volume may exceed laptop capacity; many false positives may overwhelm triage; the supervisor may be unavailable during incidents. Each risk gets a mitigation.
 
-Section thirty-five point six develops capstone proposal with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-five point six, the HSSC circle expects capstone claims to carry owners and dates.
-
-Section thirty-five point six treats choosing topic structure scope as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-five point six, HCHT will not accept capstone work without a written trail.
-
 ### 35.7 Supervision agreement
 
 Agree meeting frequency, how feedback will be given and what happens if HCHT priorities change mid-project. A one-paragraph agreement signed by student, academic tutor and workplace supervisor prevents later misunderstanding about ownership of results and what may be published.
-
-Section thirty-five point seven develops capstone proposal with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-five point seven, the HSSC circle expects capstone claims to carry owners and dates.
-
-Section thirty-five point seven treats choosing topic structure scope as testable only when evidence and ticket IDs are recorded.
 
 ### Timeline planning
 
@@ -3610,67 +2246,25 @@ You will (1) contribute to a sharing community responsibly; (2) prepare an item 
 
 During field practice Amara spends four weeks with HSSC's coordination desk, under its membership agreement and a confidentiality undertaking. She sees how items arrive, are checked and are distributed.
 
-Section thirty-six point one develops field or community practice with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-six point one, the HSSC circle expects field claims to carry owners and dates.
-
-Section thirty-six point one treats placement preparing contribution community as testable only when evidence and ticket IDs are recorded.
-
 ### 36.2 Preparing a contribution
 
 A good contribution is relevant to members, verified, redacted, labelled with TLP and clear about confidence. It includes what was observed, when, and what members can do. NIST SP 800-150 notes that organisations should establish sharing rules and protect sensitive information before contributing.
-
-Section thirty-six point two develops field or community practice with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-six point two, the HSSC circle expects field claims to carry owners and dates.
-
-Section thirty-six point two treats placement preparing contribution community as testable only when evidence and ticket IDs are recorded.
 
 ### 36.3 Community norms
 
 Respect labels absolutely; credit sources; correct errors publicly within the community; do not use member information for commercial advantage. Trust is the community's only currency.
 
-Section thirty-six point three develops field or community practice with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-six point three, the HSSC circle expects field claims to carry owners and dates.
-
-Section thirty-six point three treats placement preparing contribution community as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-six point three, HCHT will not accept field work without a written trail.
-
 ### 36.4 Feedback
 
 When a member reports that an indicator caused false positives, the desk updates the item and thanks them. Feedback is how the community learns.
-
-Section thirty-six point four develops field or community practice with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-six point four, the HSSC circle expects field claims to carry owners and dates.
-
-Section thirty-six point four treats placement preparing contribution community as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-six point four, HCHT will not accept field work without a written trail.
 
 ### 36.5 Reflection
 
 Amara keeps a reflective journal: what surprised her, what she would do differently, what professional standards she saw tested.
 
-Section thirty-six point five develops field or community practice with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-six point five, the HSSC circle expects field claims to carry owners and dates.
-
-Section thirty-six point five treats placement preparing contribution community as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-six point five, HCHT will not accept field work without a written trail.
-
 ### 36.6 Community practice beyond work
 
 Some students volunteer with public-interest projects, such as helping small charities understand phishing. Such work needs the same discipline: clear scope agreed in writing, no access to systems without permission, and no collection of personal data beyond what the charity asks to protect.
-
-Section thirty-six point six develops field or community practice with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-six point six, the HSSC circle expects field claims to carry owners and dates.
-
-Section thirty-six point six treats placement preparing contribution community as testable only when evidence and ticket IDs are recorded.
 
 ### Mentoring
 
@@ -3712,67 +2306,25 @@ You will (1) critique a published intelligence report; (2) separate evidence fro
 
 Each student brings a public vendor or government CTI report and leads a 20-minute critique. The class asks: what is claimed, what evidence supports it, how confident should we be, and what is missing?
 
-Section thirty-seven point one develops evidence review seminar with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-seven point one, the HSSC circle expects evidence claims to carry owners and dates.
-
-Section thirty-seven point one treats the seminar icd standards as testable only when evidence and ticket IDs are recorded.
-
 ### 37.2 ICD 203 standards
 
 ICD 203 lists analytic tradecraft standards, including describing source quality, expressing uncertainty, distinguishing intelligence from assumptions and judgments, considering alternatives, and being relevant and logically argued. They make a useful checklist for any report.
-
-Section thirty-seven point two develops evidence review seminar with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-seven point two, the HSSC circle expects evidence claims to carry owners and dates.
-
-Section thirty-seven point two treats the seminar icd standards as testable only when evidence and ticket IDs are recorded.
 
 ### 37.3 Evidence versus assertion
 
 A report saying "the actor is state-sponsored" without citing evidence is asserting. One that lists infrastructure overlap, tooling and timing — and states confidence — is arguing.
 
-Section thirty-seven point three develops evidence review seminar with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-seven point three, the HSSC circle expects evidence claims to carry owners and dates.
-
-Section thirty-seven point three treats the seminar icd standards as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-seven point three, HCHT will not accept evidence work without a written trail.
-
 ### 37.4 Alternatives
 
 Did the report consider other explanations? A false-flag possibility, a shared tool sold to many criminals, or coincidence?
-
-Section thirty-seven point four develops evidence review seminar with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-seven point four, the HSSC circle expects evidence claims to carry owners and dates.
-
-Section thirty-seven point four treats the seminar icd standards as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-seven point four, HCHT will not accept evidence work without a written trail.
 
 ### 37.5 Constructive critique
 
 Start with what the report does well; then name specific gaps; propose improvements. Critique the work, not the authors.
 
-Section thirty-seven point five develops evidence review seminar with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-seven point five, the HSSC circle expects evidence claims to carry owners and dates.
-
-Section thirty-seven point five treats the seminar icd standards as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-seven point five, HCHT will not accept evidence work without a written trail.
-
 ### 37.6 Commercial context
 
 Vendor reports also market products. That does not make them wrong, but it shapes what is emphasised — threats their product detects, dramatic names, large numbers. Note the publisher's interest alongside the evidence quality, and look for independent corroboration of headline figures.
-
-Section thirty-seven point six develops evidence review seminar with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-seven point six, the HSSC circle expects evidence claims to carry owners and dates.
-
-Section thirty-seven point six treats the seminar icd standards as testable only when evidence and ticket IDs are recorded.
 
 ### Leading the discussion
 
@@ -3814,61 +2366,25 @@ You will (1) implement the capstone process in small, testable steps; (2) keep a
 
 Amara builds her lookalike process in stages: a generator that produces candidate names from HCHT's domains using simple rules (character swaps, added words like "portal" or "login", different top-level domains); a matcher that compares candidates with a downloaded, public certificate-transparency extract; a triage sheet. Each stage is tested on synthetic inputs before use.
 
-Section thirty-eight point one develops capstone implementation with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-eight point one, the HSSC circle expects capstone claims to carry owners and dates.
-
 ### 38.2 Decision log
 
 Each design choice is dated with reasons: "Dropped homoglyph rule for Cyrillic letters — produced 4,000 candidates, mostly noise; revisit later." The log becomes part of the final report.
-
-Section thirty-eight point two develops capstone implementation with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-eight point two, the HSSC circle expects capstone claims to carry owners and dates.
-
-Section thirty-eight point two treats small steps decision log as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-eight point two, HCHT will not accept capstone work without a written trail.
 
 ### 38.3 Scope changes
 
 Midway, the supervisor asks to include HSSC member domains. Amara records the request, estimates extra effort, and agrees with her tutor to include only three members as a pilot, keeping the original deliverables intact.
 
-Section thirty-eight point three develops capstone implementation with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-eight point three, the HSSC circle expects capstone claims to carry owners and dates.
-
-Section thirty-eight point three treats small steps decision log as testable only when evidence and ticket IDs are recorded.
-
 ### 38.4 Data protection
 
 Downloaded extracts are stored on the HCHT analysis server, not a personal laptop. Results go to the supervisor only. Domains matching individuals' names are excluded from reports unless clearly impersonating HCHT.
-
-Section thirty-eight point four develops capstone implementation with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-eight point four, the HSSC circle expects capstone claims to carry owners and dates.
-
-Section thirty-eight point four treats small steps decision log as testable only when evidence and ticket IDs are recorded.
 
 ### 38.5 Weekly checks
 
 Every week Amara runs the matcher, triages new matches and records precision: how many flagged domains the supervisor judged suspicious.
 
-Section thirty-eight point five develops capstone implementation with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-eight point five, the HSSC circle expects capstone claims to carry owners and dates.
-
-Section thirty-eight point five treats small steps decision log as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-eight point five, HCHT will not accept capstone work without a written trail.
-
 ### 38.6 Testing with synthetic inputs
 
 Before using real extracts, Amara writes a synthetic list containing known lookalikes, unrelated names and edge cases such as uppercase letters and trailing dots. The matcher must flag exactly the planted lookalikes. When a change to the rules is made, the same test is rerun so regressions show up immediately.
-
-Section thirty-eight point six develops capstone implementation with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-eight point six, the HSSC circle expects capstone claims to carry owners and dates.
 
 ### Worked example
 
@@ -3906,81 +2422,29 @@ You will (1) evaluate the capstone against its success measures; (2) compute pre
 
 Evaluation returns to the proposal's measures. Amara planned to report precision, analyst time and number of relevant lookalikes in a pilot month.
 
-Section thirty-nine point one develops capstone evaluation with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-nine point one, the HSSC circle expects capstone claims to carry owners and dates.
-
-Section thirty-nine point one treats against the proposal results as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-nine point one, HCHT will not accept capstone work without a written trail.
-
 ### 39.2 Results
 
 Over four weeks, the matcher flagged 25 domains; the supervisor judged 6 suspicious, giving precision of 24%. Analyst time averaged 50 minutes per week. One suspicious domain led to a takedown request.
-
-Section thirty-nine point two develops capstone evaluation with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-nine point two, the HSSC circle expects capstone claims to carry owners and dates.
-
-Section thirty-nine point two treats against the proposal results as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-nine point two, HCHT will not accept capstone work without a written trail.
 
 ### 39.3 Recall
 
 Recall — the share of all real lookalikes found — cannot be measured directly because the total is unknown. Amara estimates partial recall by checking whether three lookalikes reported independently by HSSC during the month were caught: two were, one used a pattern her rules lacked.
 
-Section thirty-nine point three develops capstone evaluation with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-nine point three, the HSSC circle expects capstone claims to carry owners and dates.
-
-Section thirty-nine point three treats against the proposal results as testable only when evidence and ticket IDs are recorded.
-
 ### 39.4 User feedback
 
 The supervisor values the weekly sheet but asks for fewer obvious false positives, such as domains belonging to unrelated organisations with similar initials.
-
-Section thirty-nine point four develops capstone evaluation with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-nine point four, the HSSC circle expects capstone claims to carry owners and dates.
-
-Section thirty-nine point four treats against the proposal results as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-nine point four, HCHT will not accept capstone work without a written trail.
 
 ### 39.5 Limitations
 
 Only certificate-issuing domains are visible; domains without certificates are missed. Rules are English-centric. One month is short.
 
-Section thirty-nine point five develops capstone evaluation with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-nine point five, the HSSC circle expects capstone claims to carry owners and dates.
-
-Section thirty-nine point five treats against the proposal results as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-nine point five, HCHT will not accept capstone work without a written trail.
-
 ### 39.6 Future work
 
 Add rules for the missed pattern, filter domains with long legitimate histories, and test for three more months.
 
-Section thirty-nine point six develops capstone evaluation with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-nine point six, the HSSC circle expects capstone claims to carry owners and dates.
-
-Section thirty-nine point six treats against the proposal results as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-nine point six, HCHT will not accept capstone work without a written trail.
-
 ### 39.7 Cost and benefit
 
 Fifty minutes a week is modest compared with the effort of responding to a successful credential-phishing campaign. The evaluation states the cost plainly and avoids claiming savings it cannot measure; the benefit is presented as earlier warning of six suspicious domains, one of which was taken down.
-
-Section thirty-nine point seven develops capstone evaluation with a HCHT note Amara Diallo can demo offline.
-
-Under section thirty-nine point seven, the HSSC circle expects capstone claims to carry owners and dates.
-
-Section thirty-nine point seven treats against the proposal results as testable only when evidence and ticket IDs are recorded.
 
 ### Comparing with the baseline
 
@@ -4022,69 +2486,25 @@ You will (1) structure a bachelor's thesis in CTI; (2) present findings to techn
 
 Abstract, introduction, background (models: kill chain, Diamond, ATT&CK; standards: STIX/TAXII 2.1, TLP 2.0, SP 800-150), method, implementation, evaluation, discussion, ethics and limitations, conclusion, references and appendices (decision log, coding sheets).
 
-Section forty point one develops thesis and presentation with a HCHT note Amara Diallo can demo offline.
-
-Under section forty point one, the HSSC circle expects thesis claims to carry owners and dates.
-
-Section forty point one treats thesis structure public versus as testable only when evidence and ticket IDs are recorded.
-
-For section forty point one, HCHT will not accept thesis work without a written trail.
-
 ### 40.2 Public versus restricted
 
 Theses are often published by the university. Any TLP:AMBER or RED material from HSSC must be excluded or replaced by synthetic examples. HCHT domains and names may need anonymising with the trust's agreement. Ask HCHT to review the final draft for sensitive content.
-
-Section forty point two develops thesis and presentation with a HCHT note Amara Diallo can demo offline.
-
-Under section forty point two, the HSSC circle expects thesis claims to carry owners and dates.
-
-Section forty point two treats thesis structure public versus as testable only when evidence and ticket IDs are recorded.
 
 ### 40.3 The presentation
 
 Ten minutes: problem, approach, key result, limits, what HCHT should do next. One chart showing precision over weeks says more than five tables.
 
-Section forty point three develops thesis and presentation with a HCHT note Amara Diallo can demo offline.
-
-Under section forty point three, the HSSC circle expects thesis claims to carry owners and dates.
-
-Section forty point three treats thesis structure public versus as testable only when evidence and ticket IDs are recorded.
-
-For section forty point three, HCHT will not accept thesis work without a written trail.
-
 ### 40.4 Two audiences
 
 Examiners want method and rigour. HCHT managers want "should we keep doing this?" Prepare a one-page summary for managers with a clear recommendation and its cost.
-
-Section forty point four develops thesis and presentation with a HCHT note Amara Diallo can demo offline.
-
-Under section forty point four, the HSSC circle expects thesis claims to carry owners and dates.
-
-Section forty point four treats thesis structure public versus as testable only when evidence and ticket IDs are recorded.
-
-For section forty point four, HCHT will not accept thesis work without a written trail.
 
 ### 40.5 Answering questions
 
 Answer with evidence and admit what you did not measure. "I don't know, but here is how I would find out" is a strong answer.
 
-Section forty point five develops thesis and presentation with a HCHT note Amara Diallo can demo offline.
-
-Under section forty point five, the HSSC circle expects thesis claims to carry owners and dates.
-
-Section forty point five treats thesis structure public versus as testable only when evidence and ticket IDs are recorded.
-
-For section forty point five, HCHT will not accept thesis work without a written trail.
-
 ### 40.6 After the thesis
 
 Hand the process over properly: documentation, scripts in HCHT's repository, a named owner and a short training session. A capstone that stops when the student leaves delivers little lasting value; a handed-over process keeps protecting the organisation.
-
-Section forty point six develops thesis and presentation with a HCHT note Amara Diallo can demo offline.
-
-Under section forty point six, the HSSC circle expects thesis claims to carry owners and dates.
-
-Section forty point six treats thesis structure public versus as testable only when evidence and ticket IDs are recorded.
 
 ### Citing standards correctly
 

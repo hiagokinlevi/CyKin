@@ -51,10 +51,6 @@ A traditional X25519 key share is 32 bytes. ML-KEM-768's encapsulation key is 1,
 
 Feasible: Larkspur's proxy and browser telemetry already log handshake outcomes (synthetic). Interesting: every organization enabling hybrid groups faces the question. Novel: public reports are mostly vendor or browser-wide; few studies attribute failures within one organization with competing explanations tested. Ethical: logs can be minimized to metadata (Chapter 3). Relevant: the answer decides between rolling back quantum protection and repairing infrastructure.
 
-Section one point three develops research question and literature method with a the organisation note Larkspur University can demo offline.
-
-Under section one point three, the mentor expects research claims to carry owners and dates.
-
 ### 1.4 A documented search
 
 Search three source families separately. **Standards**: RFC Editor and IETF datatracker for TLS hybrid key exchange, ML-KEM in TLS, and ClientHello size. **Academic**: IACR ePrint, ACM/IEEE/USENIX digital libraries, terms "post-quantum TLS performance", "hybrid key exchange deployment", "middlebox ossification". **Practitioner**: browser and CDN engineering blogs, which hold most deployment evidence but are written by interested parties. Record date, database, string and hit counts for each search so that a reader can rerun it — this is the master's-level equivalent of a lab notebook.
@@ -70,15 +66,7 @@ Search three source families separately. **Standards**: RFC Editor and IETF data
 
 The table reveals the gap: mechanisms and anecdotes exist, attribution within an organization does not.
 
-Section one point five develops research question and literature method with a the organisation note Larkspur University can demo offline.
-
 ### 1.6 Common errors and limits
-Section one point six develops research question and literature method with a the organisation note Larkspur University can demo offline.
-
-Under section one point six, the mentor expects research claims to carry owners and dates.
-
-Section one point six treats from complaint to question as testable only when evidence and ticket IDs are recorded.
-
 
 - Letting the complaint's implied cause become the hypothesis without rivals.
 - Searching only academic databases in a field where deployment evidence lives in engineering blogs.
@@ -137,15 +125,7 @@ A PQ/T hybrid ([RFC 9794](https://www.rfc-editor.org/rfc/rfc9794.html)) runs a p
 
 The seminar paper (synthetic study "P-7") reports that "hybrid key exchange increases handshake failure by 240%". Critique: the base rate is not stated (240% of what?); the comparison is across two different weeks with a browser update in between; failures are counted per attempt, but retries inflate attempts; and there is no stratification by path. The defensible version would report absolute rates with intervals, a concurrent control and path-level results — which is the Fragment Study's design.
 
-Section two point five develops quantum and post-quantum security advanced with a the organisation note Larkspur University can demo offline.
-
 ### 2.6 Common errors and limits
-Section two point six develops quantum and post-quantum security advanced with a the organisation note Larkspur University can demo offline.
-
-Under section two point six, the mentor expects quantum claims to carry owners and dates.
-
-Section two point six treats harvest now decrypt later as testable only when evidence and ticket IDs are recorded.
-
 
 - Saying hybrid key exchange "makes TLS quantum-safe": certificates and stored data are separate.
 - Treating relative increases without base rates as evidence.
@@ -185,10 +165,6 @@ An **observational before/after** study compares failure rates before and after 
 
 Unit of analysis: a *connection attempt series* — the first attempt plus automatic retries within 10 seconds to the same host — so that retries do not inflate denominators. Exposure: whether the ClientHello offered X25519MLKEM768. Outcome: series ends without a completed handshake. Stratifiers: egress path (direct or legacy proxy), browser version, destination category. Write these definitions before seeing outcome data.
 
-Section three point two develops study design ethics and reproducibility with a the organisation note Larkspur University can demo offline.
-
-Under section three point two, the mentor expects study claims to carry owners and dates.
-
 ### 3.3 Ethics and minimization
 
 Handshake logs contain client IP addresses and destination names, which can reveal health conditions (a hospital wing) or private behaviour. Minimize at collection: replace client addresses with a keyed hash rotated monthly; keep destination names only as category labels plus a salted hash; retain no payload; store raw logs only on university systems; obtain approval from the university's ethics or data-protection office; and consult the network team about what users were told. Interviews with help-desk staff (I01–I06) need informed consent and must avoid naming users.
@@ -196,10 +172,6 @@ Handshake logs contain client IP addresses and destination names, which can reve
 ### 3.4 Rates and intervals
 
 Failure rates are small proportions, where the textbook normal interval misbehaves. The Wilson score interval behaves well near zero and is easy to compute with the standard library.
-
-Section three point four develops study design ethics and reproducibility with a the organisation note Larkspur University can demo offline.
-
-Under section three point four, the mentor expects study claims to carry owners and dates.
 
 ```python
 # Lab 3 (synthetic): Wilson 95% intervals for handshake failure rates before/after enabling hybrid.
@@ -253,12 +225,6 @@ server share for X25519MLKEM768: 1120 bytes
 The rest-of-ClientHello size (520 bytes) is an illustrative assumption; real sizes vary with extensions, server name length and padding, which is why the testbed measures them directly.
 
 ### 3.6 Common errors and limits
-Section three point six develops study design ethics and reproducibility with a the organisation note Larkspur University can demo offline.
-
-Under section three point six, the mentor expects study claims to carry owners and dates.
-
-Section three point six treats designs defining the variables as testable only when evidence and ticket IDs are recorded.
-
 
 - Counting retries as independent attempts.
 - Collecting full destination names "just in case".
@@ -298,8 +264,6 @@ You will (1) list rival explanations for an observed effect; (2) predict what ea
 4. **Seasonality** — term started; more users, more unusual destinations.
 5. **Reporting artefact** — a help-desk campaign encouraged reporting, raising tickets but not failures.
 
-Section four point one develops quantum and post-quantum security competing with a the organisation note Larkspur University can demo offline.
-
 ### 4.2 Predictions
 
 Each rival predicts a different fingerprint. Size predicts failures concentrated on the path containing the inspecting proxy and among destinations reached through it, appearing only when the hello crosses a segment boundary — the testbed can vary padding to cross or not cross it. The update predicts a rise on *both* paths. Unknown codepoint predicts failure even when the hybrid share is small enough to fit one segment (testable by offering the codepoint with padding removed, in the testbed only). Seasonality predicts a rise in the control group too. Reporting artefact predicts tickets rising without logged failures rising. Writing these predictions before analysis prevents post-hoc storytelling.
@@ -320,8 +284,6 @@ for path in ("direct", "legacy proxy"):
 
 Expected output:
 
-Section four point three develops quantum and post-quantum security competing with a the organisation note Larkspur University can demo offline.
-
 ```text
 direct        before  4.0/10k  after  4.5/10k  difference  +0.5
 legacy proxy  before  5.0/10k  after 26.0/10k  difference +21.0
@@ -333,19 +295,11 @@ The aggregate rise is almost entirely on the legacy-proxy path; the direct path 
 
 Stratified and aggregate comparisons can disagree. If the hybrid group were enabled first for users who mostly use the direct path, the aggregate failure rate could fall after enabling it even though, within the proxy path, it rose. This is Simpson's paradox; the defence is to report path-stratified rates alongside the aggregate and to explain any reversal rather than choosing the convenient level.
 
-Section four point four develops quantum and post-quantum security competing with a the organisation note Larkspur University can demo offline.
-
 ### 4.5 Worked example: interview evidence
 
 Help-desk interviews (I01–I06, synthetic) report that complaints came "mostly from the hospital wing" and that clearing the cache "sometimes fixed it". The first is consistent with the proxy path. The second points to a further rival: some clients retried with a smaller hello after a failure (browsers can fall back), so failures were intermittent. Qualitative evidence suggested a mechanism the logs could then test — the series-level unit of analysis from Chapter 3 shows whether retries succeeded without the hybrid share.
 
 ### 4.6 Common errors and limits
-Section four point six develops quantum and post-quantum security competing with a the organisation note Larkspur University can demo offline.
-
-Under section four point six, the mentor expects quantum claims to carry owners and dates.
-
-Section four point six treats rivals for the failure as testable only when evidence and ticket IDs are recorded.
-
 
 - Testing only the favoured explanation.
 - Treating consistency with one rival as proof when another predicts the same pattern.
@@ -397,15 +351,7 @@ A two-week pilot on 2,000 synthetic series per cohort plus a testbed copy of the
 
 The revision memo states the problem (series split by address), its effect (denominators inflated by about 4% on the proxy path), the amendment (hostname-based series with a 10-second window), and a re-check (50 new cases, 50/50 match). It also records a decision *not* to change: the coders asked to add a label for "certificate pinning", but there were only two such cases, so they remain under "cert" with a note. Pilots should produce small, documented changes, not a new study.
 
-Section five point four develops proposal and pilot with a the organisation note Larkspur University can demo offline.
-
 ### 5.5 Common errors and limits
-Section five point five develops proposal and pilot with a the organisation note Larkspur University can demo offline.
-
-Under section five point five, the mentor expects proposal claims to carry owners and dates.
-
-Section five point five treats proposal structure hypotheses pilot as testable only when evidence and ticket IDs are recorded.
-
 
 - Hypotheses without a threshold, so that any rise "supports" them.
 - Running size or codepoint experiments on the production proxy.
@@ -441,17 +387,9 @@ You will (1) collect data according to a frozen protocol; (2) code failure logs 
 
 Eight weeks of LK-HS-1 data are collected under the amended protocol: four weeks before and four weeks after the staggered rollout, with half of managed browsers (randomized by device identifier) receiving the hybrid policy first. Freeze the analysis script and record its hash before unblinding the cohort labels.
 
-Section six point one develops data collection and analysis with a the organisation note Larkspur University can demo offline.
-
-Under section six point one, the mentor expects data claims to carry owners and dates.
-
 ### 6.2 Coding failures
 
 Each failed series has a log excerpt. Two coders (C1, C2) assign one of four labels — *size* (proxy reset after first segment), *cert* (certificate validation), *timeout*, *other* — using a written codebook, independently.
-
-Section six point two develops data collection and analysis with a the organisation note Larkspur University can demo offline.
-
-Under section six point two, the mentor expects data claims to carry owners and dates.
 
 ```python
 # Lab 6 (synthetic): agreement between two coders labelling 60 failure logs, then the share of
@@ -477,31 +415,15 @@ A κ of 0.88 indicates strong agreement beyond chance; disagreements (mostly *si
 
 With a concurrent control cohort, the effect is the change in the treated cohort minus the change in the control cohort, estimated separately by path. Synthetic results: proxy path +20.4 per 10,000 (95% CI 15.1–25.8); direct path +0.6 (−1.0 to 2.2). H1 is supported. The control cohort's own small rise (+0.9) captures seasonality, rival 4, which the before/after design alone would have attributed to the hybrid group.
 
-Section six point three develops data collection and analysis with a the organisation note Larkspur University can demo offline.
-
-Under section six point three, the mentor expects data claims to carry owners and dates.
-
 ### 6.4 Testbed results
 
 In the isolated testbed copy of the proxy, 200 handshakes per condition: one-segment hello without codepoint 0/200 failures; one-segment hello *with* the hybrid codepoint 0/200; two-segment hello without the codepoint (padding only) 187/200; two-segment hello with codepoint 189/200. Failures track segmentation, not the codepoint: H2 supported, rival 3 rejected for this proxy model. After applying the vendor's firmware update in the testbed, two-segment failures fall to 0/200, which anticipates H3.
-
-Section six point four develops data collection and analysis with a the organisation note Larkspur University can demo offline.
 
 ### 6.5 Validation on Fenwick College
 
 Fenwick (synthetic) has a different proxy vendor. Applying the frozen analysis: proxy-path excess +1.2 per 10,000 (−0.8 to 3.2) — no meaningful effect. The mechanism is product-specific; the dissertation must say "the legacy proxy model at Larkspur", not "inspecting proxies". A null result at the second site is a finding about scope, not a failure of the study.
 
-Section six point five develops data collection and analysis with a the organisation note Larkspur University can demo offline.
-
-Under section six point five, the mentor expects data claims to carry owners and dates.
-
 ### 6.6 Common errors and limits
-Section six point six develops data collection and analysis with a the organisation note Larkspur University can demo offline.
-
-Under section six point six, the mentor expects data claims to carry owners and dates.
-
-Section six point six treats collection coding failures difference-in-differences as testable only when evidence and ticket IDs are recorded.
-
 
 - Unblinding cohort labels before freezing the script.
 - Treating κ as a pass/fail without examining which categories disagree.
@@ -537,21 +459,11 @@ You will (1) structure a dissertation so that each chapter answers a question; (
 
 Introduction (question, why it matters, contribution); background (quantum threat, ML-KEM, hybrids, middlebox ossification); method (design, data, minimization, analysis plan with amendments); results (rates, DiD, coding, testbed, validation); discussion (mechanism, scope, recommendations); limitations; conclusion. Each chapter should open with the question it answers and close with what the next chapter needs.
 
-Section seven point one develops dissertation writing and limitations with a the organisation note Larkspur University can demo offline.
-
-Under section seven point one, the mentor expects dissertation claims to carry owners and dates.
-
 ### 7.2 Writing results
 
 Separate three layers in every results paragraph. *Estimate*: "proxy-path failures rose by 20.4 per 10,000 series relative to control." *Uncertainty*: "95% CI 15.1–25.8; coding κ = 0.88." *Interpretation*: "consistent with the size mechanism, which the testbed isolates." Never put interpretation in the estimate sentence. Report the null result at Fenwick in the results chapter, not in a footnote.
 
-Section seven point two develops dissertation writing and limitations with a the organisation note Larkspur University can demo offline.
-
-Under section seven point two, the mentor expects dissertation claims to carry owners and dates.
-
 ### 7.3 Limitations with direction
-Section seven point three develops dissertation writing and limitations with a the organisation note Larkspur University can demo offline.
-
 
 - *Only managed browsers were observed* → unmanaged devices on the guest network are excluded; the effect for them is unknown.
 - *Testbed proxy is the same model but a lab instance* → configuration differences could make the production effect larger or smaller.
@@ -562,23 +474,11 @@ Section seven point three develops dissertation writing and limitations with a t
 
 Proportionate recommendation: update the legacy proxy's firmware (validated in testbed) and monitor proxy-path failures; do not roll back the hybrid group for the direct path, where no effect was found; ask the proxy vendor to confirm the fix in release notes. Disproportionate recommendation, to avoid: "inspecting proxies are incompatible with post-quantum cryptography".
 
-Section seven point four develops dissertation writing and limitations with a the organisation note Larkspur University can demo offline.
-
-Under section seven point four, the mentor expects dissertation claims to carry owners and dates.
-
 ### 7.5 Worked example: abstract
 
 "Enabling the post-quantum/traditional hybrid TLS group X25519MLKEM768 at a synthetic university increased failed handshakes on a legacy inspecting-proxy path by 20.4 per 10,000 connection series (95% CI 15.1–25.8) relative to a concurrent control, with no meaningful change on the direct path. Testbed experiments showed failures occurred only when the ClientHello spanned two TCP segments, independent of the new codepoint, and stopped after a firmware update. A second site with a different proxy showed no effect. Repairing the specific device preserves quantum protection; rollback is unnecessary."
 
 ### 7.6 Common errors and limits
-Section seven point six develops dissertation writing and limitations with a the organisation note Larkspur University can demo offline.
-
-Under section seven point six, the mentor expects dissertation claims to carry owners and dates.
-
-Section seven point six treats structure writing results limitations as testable only when evidence and ticket IDs are recorded.
-
-For section seven point six, the organisation will not accept dissertation work without a written trail.
-
 
 - Interpretation mixed into estimates.
 - Limitations listed without direction.
@@ -613,10 +513,6 @@ You will (1) prepare a reproducibility package an independent reviewer can run; 
 
 Include the minimized dataset (or a synthetic surrogate if the university cannot release it), the frozen scripts with hashes, the codebook and coding sheets, the testbed configuration (without vendor-confidential firmware), and a README explaining how to regenerate every table. Ask a peer to run it cold and log every point where they got stuck.
 
-Section eight point one develops independent review and defense with a the organisation note Larkspur University can demo offline.
-
-Under section eight point one, the mentor expects independent claims to carry owners and dates.
-
 ### 8.2 Examiner questions
 
 - *Why should randomization by device identifier be trusted?* Show balance tables for path use and browser version.
@@ -628,25 +524,11 @@ Under section eight point one, the mentor expects independent claims to carry ow
 
 The proxy defect was found in an isolated testbed. Before publication, report it to the vendor with reproduction details (padding sizes, segment boundaries, firmware version), give a reasonable window, and inform Larkspur's network team. Publish the class of defect — mishandling of multi-segment ClientHello — rather than steps for evading the proxy's inspection.
 
-Section eight point three develops independent review and defense with a the organisation note Larkspur University can demo offline.
-
-Under section eight point three, the mentor expects independent claims to carry owners and dates.
-
 ### 8.4 Operator briefing
 
 For Larkspur's network operations (synthetic): "Turning on quantum-resistant key exchange made some connections through the old inspection proxy fail, because the first message became too large for one packet and the proxy mishandled it. A firmware update fixes this in our lab. Keep the protection on; update the proxy; watch the failure dashboard for the hospital wing."
 
-Section eight point four develops independent review and defense with a the organisation note Larkspur University can demo offline.
-
-Under section eight point four, the mentor expects independent claims to carry owners and dates.
-
 ### 8.5 Common errors and limits
-Section eight point five develops independent review and defense with a the organisation note Larkspur University can demo offline.
-
-Under section eight point five, the mentor expects independent claims to carry owners and dates.
-
-Section eight point five treats reproducibility package examiner questions as testable only when evidence and ticket IDs are recorded.
-
 
 - Packages that cannot run without the author.
 - Answering "is it PQC's fault?" with yes or no instead of the mechanism.

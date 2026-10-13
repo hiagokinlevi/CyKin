@@ -54,55 +54,21 @@ Elena Petrova is a fifth-year engineering student at the fictional Brackenridge 
 
 Engineers describe systems by how quantities change. If the number of running pods P changes over time t, dP/dt is the rate of scaling. When meterhub's ingest rate rises in the evening, the derivative of request volume tells the autoscaler how quickly capacity must grow.
 
-Section one point two develops calculus with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section one point two, Rosa Delgado expects calculus claims to carry owners and dates.
-
-Section one point two treats the opening case rates as testable only when evidence and ticket IDs are recorded.
-
 ### 1.3 Accumulation
 
 The integral of a rate gives a total. The integral of exposure over time, for example the number of reachable sensitive services multiplied by hours, gives a measure of accumulated risk. Elena uses this idea later to compare designs: a short, wide exposure can matter as much as a long, narrow one.
-
-Section one point three develops calculus with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section one point three, Rosa Delgado expects calculus claims to carry owners and dates.
 
 ### 1.4 Growth of configuration
 
 Each new microservice adds configuration. If services grow linearly but permissions per service grow too, total permissions grow faster than linearly, which explains why manual review stops scaling.
 
-Section one point four develops calculus with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section one point four, Rosa Delgado expects calculus claims to carry owners and dates.
-
-Section one point four treats the opening case rates as testable only when evidence and ticket IDs are recorded.
-
-For section one point four, Solent Energy Co-op will not accept calculus work without a written trail.
-
 ### 1.5 Approximation
 
 Small steps approximate continuous change: sampling metrics every 30 seconds approximates the true curve, and the sampling interval limits how fast a change can be seen.
 
-Section one point five develops calculus with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section one point five, Rosa Delgado expects calculus claims to carry owners and dates.
-
-Section one point five treats the opening case rates as testable only when evidence and ticket IDs are recorded.
-
-For section one point five, Solent Energy Co-op will not accept calculus work without a written trail.
-
 ### 1.6 Why maths first
 
 Later chapters use rates for autoscaling, statistics for alert latency and logic for policy evaluation. The foundations make those designs analysable rather than guessed.
-
-Section one point six develops calculus with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section one point six, Rosa Delgado expects calculus claims to carry owners and dates.
-
-Section one point six treats the opening case rates as testable only when evidence and ticket IDs are recorded.
-
-For section one point six, Solent Energy Co-op will not accept calculus work without a written trail.
 
 ### Worked example
 
@@ -140,19 +106,9 @@ You will (1) express access policies as logic and sets; (2) evaluate requests wi
 
 An access policy is a set of rules, each matching a principal, an action and a resource. A request is allowed if some allow rule matches and no deny rule matches; otherwise it is denied by default. This is a logical formula: allowed = (exists allow match) and not (exists deny match).
 
-Section two point one develops discrete mathematics with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section two point one, Rosa Delgado expects discrete claims to carry owners and dates.
-
 ### 2.2 Sets and wildcards
 
 Wildcards describe sets: storage:Get* is the set of all get actions; readings/* is all objects under readings. Reasoning about overlaps between sets explains surprising results, such as a broad allow being overridden by a narrow deny.
-
-Section two point two develops discrete mathematics with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section two point two, Rosa Delgado expects discrete claims to carry owners and dates.
-
-Section two point two treats policies as logic sets as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — Lab — policy evaluation
 
@@ -192,31 +148,13 @@ billing-job   storage:GetObject     readings/2026/10.csv   DENY (default)
 
 meter-reader may get readings/2026/10.csv and put readings/raw/a.csv (ALLOW). meter-reader's delete of readings/raw/a.csv is DENY (explicit) because the deny on storage:Delete* for readings/* matches, overriding the broader allow. ops-admin's delete of readings/old.csv is also DENY (explicit): the deny rule applies to everyone. billing-job has no matching allow, so it is DENY (default).
 
-Section two point three develops discrete mathematics with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section two point three, Rosa Delgado expects discrete claims to carry owners and dates.
-
 ### 2.4 Why this structure
 
 Default deny means forgotten cases fail safe. Explicit deny lets a security team set guardrails that application teams cannot override with broad allows. NIST SP 800-210 discusses such policy combination in cloud access control.
 
-Section two point four develops discrete mathematics with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section two point four, Rosa Delgado expects discrete claims to carry owners and dates.
-
-Section two point four treats policies as logic sets as testable only when evidence and ticket IDs are recorded.
-
 ### 2.5 Proving properties
 
 With the formula, Elena can argue properties such as "no principal can delete readings" by showing the deny rule covers every delete action on readings, regardless of allows.
-
-Section two point five develops discrete mathematics with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section two point five, Rosa Delgado expects discrete claims to carry owners and dates.
-
-Section two point five treats policies as logic sets as testable only when evidence and ticket IDs are recorded.
-
-For section two point five, Solent Energy Co-op will not accept discrete work without a written trail.
 
 ### Worked example
 
@@ -254,65 +192,25 @@ You will (1) relate physical limits to cloud systems; (2) reason about latency, 
 
 Signals in fibre travel at roughly two-thirds the speed of light, about 200 km per millisecond. A round trip between regions 1,000 km apart costs at least 10 ms before any processing. meterhub keeps its database in the same region as ingest for this reason.
 
-Section three point one develops physics for computing with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section three point one, Rosa Delgado expects physics claims to carry owners and dates.
-
-Section three point one treats distance and latency zones as testable only when evidence and ticket IDs are recorded.
-
 ### 3.2 Zones and regions
 
 Providers group data centres into availability zones (separate power and cooling) within regions. Spreading workloads across zones protects against a single facility failure; regions protect against wider events.
-
-Section three point two develops physics for computing with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section three point two, Rosa Delgado expects physics claims to carry owners and dates.
-
-Section three point two treats distance and latency zones as testable only when evidence and ticket IDs are recorded.
-
-For section three point two, Solent Energy Co-op will not accept physics work without a written trail.
 
 ### 3.3 Energy and heat
 
 Computing turns electrical energy into heat. Data-centre capacity is limited by power and cooling, which is why providers price resources and why idle over-provisioned clusters waste money and energy.
 
-Section three point three develops physics for computing with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section three point three, Rosa Delgado expects physics claims to carry owners and dates.
-
-Section three point three treats distance and latency zones as testable only when evidence and ticket IDs are recorded.
-
 ### 3.4 Hardware failure
 
 Disks, memory and power supplies fail at measurable rates. At scale, failures are routine, so cloud systems are designed to replace failed parts automatically. Verma et al. (2015) describe how Google's Borg handled machine failures as normal events.
-
-Section three point four develops physics for computing with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section three point four, Rosa Delgado expects physics claims to carry owners and dates.
-
-Section three point four treats distance and latency zones as testable only when evidence and ticket IDs are recorded.
 
 ### 3.5 Location and data protection
 
 Meter readings are personal data about household behaviour. Where data are physically stored affects which laws apply; Solent keeps readings in one jurisdiction, recorded in its data register.
 
-Section three point five develops physics for computing with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section three point five, Rosa Delgado expects physics claims to carry owners and dates.
-
-Section three point five treats distance and latency zones as testable only when evidence and ticket IDs are recorded.
-
-For section three point five, Solent Energy Co-op will not accept physics work without a written trail.
-
 ### 3.6 Shared hardware
 
 Workloads from different customers may share physical machines. Ristenpart et al. (2009) showed that co-residence could leak information, which drove providers to strengthen isolation; customers handle the rest through their own configuration choices.
-
-Section three point six develops physics for computing with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section three point six, Rosa Delgado expects physics claims to carry owners and dates.
-
-Section three point six treats distance and latency zones as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -350,73 +248,25 @@ You will (1) write small, safe Python programs that read configuration data; (2)
 
 Cloud and container configuration is data: YAML, JSON and key-value settings. Engineers who can read and check that data with programs can review hundreds of resources reliably.
 
-Section four point one develops programming with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section four point one, Rosa Delgado expects programming claims to carry owners and dates.
-
-Section four point one treats why programming core structures as testable only when evidence and ticket IDs are recorded.
-
-For section four point one, Solent Energy Co-op will not accept programming work without a written trail.
-
 ### 4.2 Core structures
 
 Dictionaries map names to settings, lists hold resources, sets hold permissions. Elena represents each pod's security settings as a dictionary, which makes comparisons simple.
-
-Section four point two develops programming with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section four point two, Rosa Delgado expects programming claims to carry owners and dates.
-
-Section four point two treats why programming core structures as testable only when evidence and ticket IDs are recorded.
-
-For section four point two, Solent Energy Co-op will not accept programming work without a written trail.
 
 ### 4.3 Functions and tests
 
 A function such as check_pod(spec) returns a list of issues. Small tests with synthetic specs confirm it flags privileged pods and passes compliant ones.
 
-Section four point three develops programming with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section four point three, Rosa Delgado expects programming claims to carry owners and dates.
-
-Section four point three treats why programming core structures as testable only when evidence and ticket IDs are recorded.
-
-For section four point three, Solent Energy Co-op will not accept programming work without a written trail.
-
 ### 4.4 Reading files safely
 
 Programs only read configuration exports; they never call cloud APIs to change anything. Inputs are treated as untrusted: missing fields are reported, not assumed.
-
-Section four point four develops programming with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section four point four, Rosa Delgado expects programming claims to carry owners and dates.
-
-Section four point four treats why programming core structures as testable only when evidence and ticket IDs are recorded.
-
-For section four point four, Solent Energy Co-op will not accept programming work without a written trail.
 
 ### 4.5 Stdlib only
 
 Labs use only Python's standard library (json, csv, hashlib, statistics, re), so they run anywhere without installing packages, and their behaviour is easy to review.
 
-Section four point five develops programming with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section four point five, Rosa Delgado expects programming claims to carry owners and dates.
-
-Section four point five treats why programming core structures as testable only when evidence and ticket IDs are recorded.
-
-For section four point five, Solent Energy Co-op will not accept programming work without a written trail.
-
 ### 4.6 Clear output
 
 Output names the resource, the issue and the reason, so non-programmers can act on it.
-
-Section four point six develops programming with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section four point six, Rosa Delgado expects programming claims to carry owners and dates.
-
-Section four point six treats why programming core structures as testable only when evidence and ticket IDs are recorded.
-
-For section four point six, Solent Energy Co-op will not accept programming work without a written trail.
 
 ### Reading exports
 
@@ -458,71 +308,25 @@ You will (1) write clear technical documents for different audiences; (2) struct
 
 Rosa's platform team needs exact configuration changes; Solent's managers need risk and cost; the regulator needs evidence of controls. Elena writes one design note with a short summary for managers and detailed sections for engineers.
 
-Section five point one develops engineering communication with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section five point one, Rosa Delgado expects engineering claims to carry owners and dates.
-
-Section five point one treats audiences structure diagrams incident as testable only when evidence and ticket IDs are recorded.
-
 ### 5.2 Structure
 
 Context, problem, options, decision, consequences, open questions. This structure, common in architecture decision records, makes reasoning visible.
-
-Section five point two develops engineering communication with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section five point two, Rosa Delgado expects engineering claims to carry owners and dates.
-
-Section five point two treats audiences structure diagrams incident as testable only when evidence and ticket IDs are recorded.
-
-For section five point two, Solent Energy Co-op will not accept engineering work without a written trail.
 
 ### 5.3 Diagrams
 
 A diagram of meterhub shows ingest, API, database and metrics pods, with arrows for allowed traffic. Trust boundaries are drawn as dashed lines. One diagram per question avoids clutter.
 
-Section five point three develops engineering communication with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section five point three, Rosa Delgado expects engineering claims to carry owners and dates.
-
-Section five point three treats audiences structure diagrams incident as testable only when evidence and ticket IDs are recorded.
-
-For section five point three, Solent Energy Co-op will not accept engineering work without a written trail.
-
 ### 5.4 Incident summaries
 
 The key-leak summary states timeline, impact, cause, fixes and lessons, without blame and without guessing.
-
-Section five point four develops engineering communication with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section five point four, Rosa Delgado expects engineering claims to carry owners and dates.
-
-Section five point four treats audiences structure diagrams incident as testable only when evidence and ticket IDs are recorded.
-
-For section five point four, Solent Energy Co-op will not accept engineering work without a written trail.
 
 ### 5.5 Trade-offs
 
 Every option has costs. Elena writes "default-deny network policies will block undocumented traffic; we expect some breakage during rollout" rather than hiding it.
 
-Section five point five develops engineering communication with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section five point five, Rosa Delgado expects engineering claims to carry owners and dates.
-
-Section five point five treats audiences structure diagrams incident as testable only when evidence and ticket IDs are recorded.
-
-For section five point five, Solent Energy Co-op will not accept engineering work without a written trail.
-
 ### 5.6 Review
 
 Documents are reviewed by an engineer and a non-engineer to check both clarity and accuracy.
-
-Section five point six develops engineering communication with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section five point six, Rosa Delgado expects engineering claims to carry owners and dates.
-
-Section five point six treats audiences structure diagrams incident as testable only when evidence and ticket IDs are recorded.
-
-For section five point six, Solent Energy Co-op will not accept engineering work without a written trail.
 
 ### Writing incident summaries
 
@@ -568,67 +372,25 @@ You will (1) model growth and decay in cloud systems with exponential functions;
 
 If meterhub's number of meters grows 3% a month, the count after n months is N0 × 1.03^n. In two years it roughly doubles. Planning capacity on linear assumptions would leave the platform short.
 
-Section six point one develops calculus ii with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section six point one, Rosa Delgado expects calculus claims to carry owners and dates.
-
-Section six point one treats exponential growth decay queues as testable only when evidence and ticket IDs are recorded.
-
 ### 6.2 Decay
 
 Old log data loses value over time and storage costs accumulate; retention policies model value decaying while cost grows linearly. The crossing point suggests how long to keep detailed logs.
-
-Section six point two develops calculus ii with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section six point two, Rosa Delgado expects calculus claims to carry owners and dates.
-
-Section six point two treats exponential growth decay queues as testable only when evidence and ticket IDs are recorded.
 
 ### 6.3 Queues
 
 If readings arrive faster than they are processed, the backlog grows at the difference of the rates. Integrating the difference over an evening peak gives the backlog size, which sets queue capacity.
 
-Section six point three develops calculus ii with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section six point three, Rosa Delgado expects calculus claims to carry owners and dates.
-
-Section six point three treats exponential growth decay queues as testable only when evidence and ticket IDs are recorded.
-
 ### 6.4 Series approximations
 
 For small rates, (1 + r)^n ≈ 1 + nr, a quick estimate. Engineers use such approximations to check whether a detailed model's answer is plausible.
-
-Section six point four develops calculus ii with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section six point four, Rosa Delgado expects calculus claims to carry owners and dates.
-
-Section six point four treats exponential growth decay queues as testable only when evidence and ticket IDs are recorded.
-
-For section six point four, Solent Energy Co-op will not accept calculus work without a written trail.
 
 ### 6.5 Sensitivity
 
 Derivatives of a model with respect to its inputs show which assumptions matter most. For backlog, the processing rate matters more than the arrival rate near saturation.
 
-Section six point five develops calculus ii with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section six point five, Rosa Delgado expects calculus claims to carry owners and dates.
-
-Section six point five treats exponential growth decay queues as testable only when evidence and ticket IDs are recorded.
-
-For section six point five, Solent Energy Co-op will not accept calculus work without a written trail.
-
 ### 6.6 Security link
 
 Security events also accumulate: unreviewed alerts, unrotated keys. Modelling backlogs shows when manual processes will fall behind.
-
-Section six point six develops calculus ii with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section six point six, Rosa Delgado expects calculus claims to carry owners and dates.
-
-Section six point six treats exponential growth decay queues as testable only when evidence and ticket IDs are recorded.
-
-For section six point six, Solent Energy Co-op will not accept calculus work without a written trail.
 
 ### Checking with data
 
@@ -670,12 +432,6 @@ You will (1) summarise operational measurements with appropriate statistics; (2)
 
 Many cloud measurements, such as response times and alert delays, are skewed: most are small, a few are very large. The mean is pulled by large values; the median describes the typical case; high percentiles describe the worst common cases.
 
-Section seven point one develops probability and statistics with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section seven point one, Rosa Delgado expects probability claims to carry owners and dates.
-
-Section seven point one treats distributions lab result objectives as testable only when evidence and ticket IDs are recorded.
-
 ### Lab — Lab — alert latency
 
 ```python
@@ -696,43 +452,17 @@ n 20, mean 13.2, median 6.5, p95 40.9, max 95
 
 Twenty synthetic alert latencies have mean 13.2 minutes, median 6.5, 95th percentile 40.9 and maximum 95. The mean is twice the median because of a few long delays; the p95 shows that about one alert in twenty takes over 40 minutes, which matters for incidents such as a leaked key.
 
-Section seven point two develops probability and statistics with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section seven point two, Rosa Delgado expects probability claims to carry owners and dates.
-
-Section seven point two treats distributions lab result objectives as testable only when evidence and ticket IDs are recorded.
-
 ### 7.3 Objectives
 
 Solent sets an objective that 95% of critical alerts reach the on-call engineer within 15 minutes. The current p95 of 40.9 minutes misses it, and the long tail becomes an engineering problem to solve.
-
-Section seven point three develops probability and statistics with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section seven point three, Rosa Delgado expects probability claims to carry owners and dates.
-
-Section seven point three treats distributions lab result objectives as testable only when evidence and ticket IDs are recorded.
 
 ### 7.4 Sampling
 
 Twenty values are a small sample; percentiles from small samples are uncertain. Elena collects a month of data before drawing conclusions.
 
-Section seven point four develops probability and statistics with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section seven point four, Rosa Delgado expects probability claims to carry owners and dates.
-
-Section seven point four treats distributions lab result objectives as testable only when evidence and ticket IDs are recorded.
-
-For section seven point four, Solent Energy Co-op will not accept probability work without a written trail.
-
 ### 7.5 Probability of events
 
 If a control fails independently with probability 0.01 per day, the chance of at least one failure in a year is 1 − 0.99^365, about 97%. Rare daily events become near certain over time.
-
-Section seven point five develops probability and statistics with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section seven point five, Rosa Delgado expects probability claims to carry owners and dates.
-
-Section seven point five treats distributions lab result objectives as testable only when evidence and ticket IDs are recorded.
 
 ### Choosing the objective
 
@@ -774,71 +504,25 @@ You will (1) describe CPUs, memory and storage as they appear in virtual machine
 
 Virtual machines run on physical CPUs with hardware virtualisation support, which lets a hypervisor isolate guests. Containers share the host kernel and are isolated by kernel features instead.
 
-Section eight point one develops computer architecture with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section eight point one, Rosa Delgado expects computer claims to carry owners and dates.
-
-Section eight point one treats processors and memory memory as testable only when evidence and ticket IDs are recorded.
-
-For section eight point one, Solent Energy Co-op will not accept computer work without a written trail.
-
 ### 8.2 Memory and isolation
 
 Each process has its own virtual address space. Hardware memory management enforces separation; flaws in this area, such as speculative execution issues, are why providers patch hosts and why sensitive workloads may use dedicated hosts.
-
-Section eight point two develops computer architecture with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section eight point two, Rosa Delgado expects computer claims to carry owners and dates.
-
-Section eight point two treats processors and memory memory as testable only when evidence and ticket IDs are recorded.
 
 ### 8.3 Storage hierarchy
 
 Caches, memory, local disks and network storage differ in speed by orders of magnitude. meterhub keeps recent readings in memory and older ones on network storage.
 
-Section eight point three develops computer architecture with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section eight point three, Rosa Delgado expects computer claims to carry owners and dates.
-
-Section eight point three treats processors and memory memory as testable only when evidence and ticket IDs are recorded.
-
-For section eight point three, Solent Energy Co-op will not accept computer work without a written trail.
-
 ### 8.4 Resource limits
 
 Kubernetes requests and limits map to kernel controls (cgroups) on CPU time and memory. Without limits, one pod can starve others on the node, an availability risk.
-
-Section eight point four develops computer architecture with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section eight point four, Rosa Delgado expects computer claims to carry owners and dates.
-
-Section eight point four treats processors and memory memory as testable only when evidence and ticket IDs are recorded.
-
-For section eight point four, Solent Energy Co-op will not accept computer work without a written trail.
 
 ### 8.5 Architecture and responsibility
 
 The provider secures physical hardware and hypervisors; the customer chooses instance types, node images and pod settings.
 
-Section eight point five develops computer architecture with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section eight point five, Rosa Delgado expects computer claims to carry owners and dates.
-
-Section eight point five treats processors and memory memory as testable only when evidence and ticket IDs are recorded.
-
-For section eight point five, Solent Energy Co-op will not accept computer work without a written trail.
-
 ### 8.6 Measuring
 
 Node metrics show CPU, memory and I/O pressure, which help size limits correctly.
-
-Section eight point six develops computer architecture with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section eight point six, Rosa Delgado expects computer claims to carry owners and dates.
-
-Section eight point six treats processors and memory memory as testable only when evidence and ticket IDs are recorded.
-
-For section eight point six, Solent Energy Co-op will not accept computer work without a written trail.
 
 ### Node images
 
@@ -884,73 +568,25 @@ You will (1) structure larger programs into modules; (2) parse YAML-like and JSO
 
 Elena organises her configuration checker into modules: loading, checks, reporting. Each check is a function with one responsibility, so new checks can be added without changing others.
 
-Section nine point one develops programming ii with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section nine point one, Rosa Delgado expects programming claims to carry owners and dates.
-
-Section nine point one treats modules parsing error handling as testable only when evidence and ticket IDs are recorded.
-
-For section nine point one, Solent Energy Co-op will not accept programming work without a written trail.
-
 ### 9.2 Parsing
 
 Kubernetes manifests are YAML; Python's standard library has no YAML parser, so labs use JSON exports, which Kubernetes tools can produce. Parsing errors are reported with the file and line.
-
-Section nine point two develops programming ii with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section nine point two, Rosa Delgado expects programming claims to carry owners and dates.
-
-Section nine point two treats modules parsing error handling as testable only when evidence and ticket IDs are recorded.
 
 ### 9.3 Error handling
 
 Missing fields default to the least safe interpretation for reporting: a missing runAsNonRoot is reported as "not set", because Kubernetes would not enforce it.
 
-Section nine point three develops programming ii with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section nine point three, Rosa Delgado expects programming claims to carry owners and dates.
-
-Section nine point three treats modules parsing error handling as testable only when evidence and ticket IDs are recorded.
-
-For section nine point three, Solent Energy Co-op will not accept programming work without a written trail.
-
 ### 9.4 Testing
 
 Each check has tests with compliant and non-compliant synthetic manifests. Tests run on every change in the course repository.
-
-Section nine point four develops programming ii with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section nine point four, Rosa Delgado expects programming claims to carry owners and dates.
-
-Section nine point four treats modules parsing error handling as testable only when evidence and ticket IDs are recorded.
-
-For section nine point four, Solent Energy Co-op will not accept programming work without a written trail.
 
 ### 9.5 Code review
 
 A reviewer checks correctness, clarity and that the program only reads data.
 
-Section nine point five develops programming ii with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section nine point five, Rosa Delgado expects programming claims to carry owners and dates.
-
-Section nine point five treats modules parsing error handling as testable only when evidence and ticket IDs are recorded.
-
-For section nine point five, Solent Energy Co-op will not accept programming work without a written trail.
-
-Section nine point five fails closed if programming evidence is missing rather than guessing.
-
 ### 9.6 Performance
 
 The checker processes 3,000 manifests in under two seconds, fast enough to run in a build pipeline.
-
-Section nine point six develops programming ii with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section nine point six, Rosa Delgado expects programming claims to carry owners and dates.
-
-Section nine point six treats modules parsing error handling as testable only when evidence and ticket IDs are recorded.
-
-For section nine point six, Solent Energy Co-op will not accept programming work without a written trail.
 
 ### Packaging the checker
 
@@ -996,73 +632,25 @@ You will (1) apply engineering ethics to cloud work; (2) consider safety and pri
 
 Engineers owe duties to the public, clients and the profession. For meterhub, the public includes 80,000 households whose readings reveal when they are home.
 
-Section ten point one develops engineering ethics and safety with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section ten point one, Rosa Delgado expects engineering claims to carry owners and dates.
-
-Section ten point one treats duties privacy authorisation safety as testable only when evidence and ticket IDs are recorded.
-
-For section ten point one, Solent Energy Co-op will not accept engineering work without a written trail.
-
 ### 10.2 Privacy
 
 Meter readings at fine intervals can reveal occupancy and habits. Elena's project uses synthetic readings; real data stays in production under Solent's controls.
-
-Section ten point two develops engineering ethics and safety with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section ten point two, Rosa Delgado expects engineering claims to carry owners and dates.
-
-Section ten point two treats duties privacy authorisation safety as testable only when evidence and ticket IDs are recorded.
-
-For section ten point two, Solent Energy Co-op will not accept engineering work without a written trail.
 
 ### 10.3 Authorisation
 
 Elena's access is limited to read-only exports and a test cluster. She does not test production systems without written approval from Rosa.
 
-Section ten point three develops engineering ethics and safety with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section ten point three, Rosa Delgado expects engineering claims to carry owners and dates.
-
-Section ten point three treats duties privacy authorisation safety as testable only when evidence and ticket IDs are recorded.
-
-For section ten point three, Solent Energy Co-op will not accept engineering work without a written trail.
-
 ### 10.4 Safety
 
 Changes to network policies could stop ingestion, which affects billing and grid planning. Safety means staged rollout, monitoring and rollback plans.
-
-Section ten point four develops engineering ethics and safety with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section ten point four, Rosa Delgado expects engineering claims to carry owners and dates.
-
-Section ten point four treats duties privacy authorisation safety as testable only when evidence and ticket IDs are recorded.
-
-For section ten point four, Solent Energy Co-op will not accept engineering work without a written trail.
 
 ### 10.5 Raising concerns
 
 If Elena found that readings were exposed, she would report to Rosa and Solent's data protection lead immediately rather than investigate alone.
 
-Section ten point five develops engineering ethics and safety with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section ten point five, Rosa Delgado expects engineering claims to carry owners and dates.
-
-Section ten point five treats duties privacy authorisation safety as testable only when evidence and ticket IDs are recorded.
-
-For section ten point five, Solent Energy Co-op will not accept engineering work without a written trail.
-
 ### 10.6 Honesty
 
 Reports state uncertainty and do not overstate the effect of controls.
-
-Section ten point six develops engineering ethics and safety with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section ten point six, Rosa Delgado expects engineering claims to carry owners and dates.
-
-Section ten point six treats duties privacy authorisation safety as testable only when evidence and ticket IDs are recorded.
-
-For section ten point six, Solent Energy Co-op will not accept engineering work without a written trail.
 
 ### Professional codes
 
@@ -1108,75 +696,29 @@ You will (1) explain cloud virtual networks, subnets and security groups; (2) de
 
 A cloud virtual network is a private address space divided into subnets. Route tables decide where traffic goes, and security groups or firewall rules decide which connections are allowed. Solent's meterhub cluster runs in private subnets; only a load balancer sits in a public subnet.
 
-Section eleven point one develops networks and protocols with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section eleven point one, Rosa Delgado expects networks claims to carry owners and dates.
-
-Section eleven point one treats virtual networks kubernetes networking as testable only when evidence and ticket IDs are recorded.
-
 ### 11.2 Kubernetes networking
 
 Every pod gets its own IP address and, by default, can reach every other pod in the cluster. Services give stable names and addresses in front of groups of pods. This flat model is convenient, but it is why meterhub's missing network policies let any pod reach the database.
-
-Section eleven point two develops networks and protocols with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section eleven point two, Rosa Delgado expects networks claims to carry owners and dates.
 
 ### 11.3 Control points
 
 Traffic can be controlled at the cloud level (security groups between nodes and external services), at the cluster level (network policies between pods, enforced by the network plugin) and at the application level (authentication between services). Each catches different mistakes.
 
-Section eleven point three develops networks and protocols with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section eleven point three, Rosa Delgado expects networks claims to carry owners and dates.
-
-Section eleven point three treats virtual networks kubernetes networking as testable only when evidence and ticket IDs are recorded.
-
 ### 11.4 Encryption in transit
 
 External traffic uses TLS at the load balancer. Internal service-to-service traffic is also encrypted in Solent's design so that a compromised node cannot read readings in transit.
-
-Section eleven point four develops networks and protocols with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section eleven point four, Rosa Delgado expects networks claims to carry owners and dates.
-
-Section eleven point four treats virtual networks kubernetes networking as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point four, Solent Energy Co-op will not accept networks work without a written trail.
 
 ### 11.5 DNS
 
 Cluster DNS resolves service names; egress to external DNS is limited so pods cannot reach arbitrary internet hosts.
 
-Section eleven point five develops networks and protocols with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section eleven point five, Rosa Delgado expects networks claims to carry owners and dates.
-
-Section eleven point five treats virtual networks kubernetes networking as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point five, Solent Energy Co-op will not accept networks work without a written trail.
-
 ### 11.6 Egress
 
 By default pods can usually reach the internet. Limiting egress reduces what a compromised or misconfigured workload can send out, which would also have limited the use of a leaked key from inside the cluster.
 
-Section eleven point six develops networks and protocols with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section eleven point six, Rosa Delgado expects networks claims to carry owners and dates.
-
-Section eleven point six treats virtual networks kubernetes networking as testable only when evidence and ticket IDs are recorded.
-
 ### 11.7 Mapping traffic
 
 Before writing rules, engineers need to know which traffic is legitimate. Elena uses flow logs from the test cluster to list observed connections.
-
-Section eleven point seven develops networks and protocols with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section eleven point seven, Rosa Delgado expects networks claims to carry owners and dates.
-
-Section eleven point seven treats virtual networks kubernetes networking as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point seven, Solent Energy Co-op will not accept networks work without a written trail.
 
 ### Worked example
 
@@ -1214,23 +756,9 @@ You will (1) explain how containers use Linux kernel features; (2) describe capa
 
 Containers are processes isolated by Linux namespaces: each sees its own process list, network interfaces, mount points and hostname. Isolation comes from the shared kernel, so kernel settings matter.
 
-Section twelve point one develops operating systems with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twelve point one, Rosa Delgado expects operating claims to carry owners and dates.
-
-Section twelve point one treats namespaces capabilities lab result as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point one, Solent Energy Co-op will not accept operating work without a written trail.
-
 ### 12.2 Capabilities
 
 Linux splits root privileges into capabilities such as NET_BIND_SERVICE (bind low ports), CHOWN (change file owners) and SYS_ADMIN (a very broad set of administrative powers). A container should drop all and add only what it needs; NIST SP 800-190 recommends limiting container privileges.
-
-Section twelve point two develops operating systems with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twelve point two, Rosa Delgado expects operating claims to carry owners and dates.
-
-Section twelve point two treats namespaces capabilities lab result as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — Lab — container capabilities
 
@@ -1256,47 +784,17 @@ node-agent    extra capabilities: NET_ADMIN, SYS_ADMIN
 
 meter-ingest has two extra capabilities, CHOWN and SETUID, beyond the NET_BIND_SERVICE it needs. report-api has none extra. node-agent has NET_ADMIN and SYS_ADMIN beyond the SYS_PTRACE it needs. SYS_ADMIN is the most serious because it grants broad control close to full root.
 
-Section twelve point three develops operating systems with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twelve point three, Rosa Delgado expects operating claims to carry owners and dates.
-
-Section twelve point three treats namespaces capabilities lab result as testable only when evidence and ticket IDs are recorded.
-
 ### 12.4 Running as non-root
 
 Containers should run as a non-root user with a read-only root filesystem where possible. The Restricted profile of the Pod Security Standards requires runAsNonRoot and disallows privilege escalation.
-
-Section twelve point four develops operating systems with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twelve point four, Rosa Delgado expects operating claims to carry owners and dates.
-
-Section twelve point four treats namespaces capabilities lab result as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point four, Solent Energy Co-op will not accept operating work without a written trail.
 
 ### 12.5 Seccomp
 
 Seccomp profiles limit which system calls a container may make. The runtime default profile blocks many rarely needed calls and is required by the Restricted profile.
 
-Section twelve point five develops operating systems with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twelve point five, Rosa Delgado expects operating claims to carry owners and dates.
-
-Section twelve point five treats namespaces capabilities lab result as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point five, Solent Energy Co-op will not accept operating work without a written trail.
-
 ### 12.6 Checking in practice
 
 Capability sets come from pod specifications; Elena's checker compares them with a documented "needed" list per workload.
-
-Section twelve point six develops operating systems with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twelve point six, Rosa Delgado expects operating claims to carry owners and dates.
-
-Section twelve point six treats namespaces capabilities lab result as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point six, Solent Energy Co-op will not accept operating work without a written trail.
 
 ### Worked example
 
@@ -1334,69 +832,25 @@ You will (1) design storage for meter readings with security in mind; (2) apply 
 
 meterhub stores readings (meter ID, timestamp, value) in a time-series database and customer details (name, address) in a separate customer system. Linking requires a lookup the API controls, reducing what a database leak reveals.
 
-Section thirteen point one develops data systems with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirteen point one, Rosa Delgado expects data claims to carry owners and dates.
-
-Section thirteen point one treats data model encryption at as testable only when evidence and ticket IDs are recorded.
-
 ### 13.2 Encryption at rest
 
 Cloud storage and databases encrypt data at rest by default with provider-managed keys. Solent uses customer-managed keys for readings so it can control and audit key use, as CSA CCM v4's cryptography domain describes.
-
-Section thirteen point two develops data systems with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirteen point two, Rosa Delgado expects data claims to carry owners and dates.
-
-Section thirteen point two treats data model encryption at as testable only when evidence and ticket IDs are recorded.
 
 ### 13.3 Access control
 
 Only the ingest service writes readings; the API reads them; analysts get aggregated views without meter IDs. Database credentials are short-lived and issued per service.
 
-Section thirteen point three develops data systems with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirteen point three, Rosa Delgado expects data claims to carry owners and dates.
-
-Section thirteen point three treats data model encryption at as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point three, Solent Energy Co-op will not accept data work without a written trail.
-
 ### 13.4 Retention
 
 Fine-grained readings are kept 13 months for billing disputes, then aggregated to daily values. Retention is enforced by lifecycle rules, not manual deletion.
-
-Section thirteen point four develops data systems with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirteen point four, Rosa Delgado expects data claims to carry owners and dates.
-
-Section thirteen point four treats data model encryption at as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point four, Solent Energy Co-op will not accept data work without a written trail.
 
 ### 13.5 Backups
 
 Daily snapshots are copied to a separate account so that a compromised production account cannot delete them. Restores are tested quarterly.
 
-Section thirteen point five develops data systems with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirteen point five, Rosa Delgado expects data claims to carry owners and dates.
-
-Section thirteen point five treats data model encryption at as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point five, Solent Energy Co-op will not accept data work without a written trail.
-
 ### 13.6 Data in logs
 
 Logs must not contain readings linked to addresses; Elena adds a check for meter IDs in application logs.
-
-Section thirteen point six develops data systems with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirteen point six, Rosa Delgado expects data claims to carry owners and dates.
-
-Section thirteen point six treats data model encryption at as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point six, Solent Energy Co-op will not accept data work without a written trail.
 
 ### Restore tests
 
@@ -1438,83 +892,29 @@ You will (1) apply software engineering practices to infrastructure and platform
 
 Solent defines its cloud networks, clusters and storage in code templates, and Kubernetes workloads in manifests, all in version control. Every change is a reviewed pull request, giving history and accountability.
 
-Section fourteen point one develops software engineering with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section fourteen point one, Rosa Delgado expects software claims to carry owners and dates.
-
-Section fourteen point one treats infrastructure as code security as testable only when evidence and ticket IDs are recorded.
-
 ### 14.2 Security smells
 
 Rahman et al. (2019) identified recurring security smells in infrastructure-as-code: hard-coded secrets, admin by default, empty passwords, unrestricted IP addresses, use of HTTP and weak cryptography. Elena adds checks for several of these to the pipeline.
-
-Section fourteen point two develops software engineering with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section fourteen point two, Rosa Delgado expects software claims to carry owners and dates.
-
-Section fourteen point two treats infrastructure as code security as testable only when evidence and ticket IDs are recorded.
 
 ### 14.3 Pipelines
 
 A pipeline validates templates, runs policy checks, builds and scans images, and deploys to test before production. Failures stop the change.
 
-Section fourteen point three develops software engineering with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section fourteen point three, Rosa Delgado expects software claims to carry owners and dates.
-
-Section fourteen point three treats infrastructure as code security as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point three, Solent Energy Co-op will not accept software work without a written trail.
-
 ### 14.4 Small changes
 
 Small, frequent changes are easier to review and roll back than large ones.
-
-Section fourteen point four develops software engineering with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section fourteen point four, Rosa Delgado expects software claims to carry owners and dates.
-
-Section fourteen point four treats infrastructure as code security as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point four, Solent Energy Co-op will not accept software work without a written trail.
 
 ### 14.5 Environments
 
 Test, staging and production are separate accounts with separate credentials; promotion uses the same artifacts.
 
-Section fourteen point five develops software engineering with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section fourteen point five, Rosa Delgado expects software claims to carry owners and dates.
-
-Section fourteen point five treats infrastructure as code security as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point five, Solent Energy Co-op will not accept software work without a written trail.
-
 ### 14.6 Peer review
 
 Reviewers check intent, security settings and blast radius: what else could this change affect?
 
-Section fourteen point six develops software engineering with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section fourteen point six, Rosa Delgado expects software claims to carry owners and dates.
-
-Section fourteen point six treats infrastructure as code security as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point six, Solent Energy Co-op will not accept software work without a written trail.
-
 ### 14.7 Documentation
 
 README files in each repository explain how to deploy and roll back.
-
-Section fourteen point seven develops software engineering with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section fourteen point seven, Rosa Delgado expects software claims to carry owners and dates.
-
-Section fourteen point seven treats infrastructure as code security as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point seven, Solent Energy Co-op will not accept software work without a written trail.
-
-Section fourteen point seven fails closed if software evidence is missing rather than guessing.
 
 ### Console changes
 
@@ -1564,69 +964,25 @@ You will (1) apply confidentiality, integrity and availability to meterhub; (2) 
 
 Confidentiality: readings and customer details stay private. Integrity: readings are not altered, since bills and grid planning depend on them. Availability: ingest keeps up so data are not lost.
 
-Section fifteen point one develops security fundamentals with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section fifteen point one, Rosa Delgado expects security claims to carry owners and dates.
-
-Section fifteen point one treats cia for meterhub assets as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point one, Solent Energy Co-op will not accept security work without a written trail.
-
 ### 15.2 Assets
 
 Readings, customer data, cloud credentials, container images, cluster configuration and the deployment pipeline. The leaked key showed that credentials and images are assets as important as data.
-
-Section fifteen point two develops security fundamentals with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section fifteen point two, Rosa Delgado expects security claims to carry owners and dates.
-
-Section fifteen point two treats cia for meterhub assets as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point two, Solent Energy Co-op will not accept security work without a written trail.
 
 ### 15.3 Threats
 
 Credential leaks, misconfigured access, vulnerable images, compromised dependencies, insider misuse and outages. Each threat maps to controls.
 
-Section fifteen point three develops security fundamentals with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section fifteen point three, Rosa Delgado expects security claims to carry owners and dates.
-
-Section fifteen point three treats cia for meterhub assets as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point three, Solent Energy Co-op will not accept security work without a written trail.
-
 ### 15.4 Defence in depth
 
 The key leak could have been prevented (no secrets in images), detected (secret scanning before push), limited (key with narrow permissions, egress limits) and recovered from (fast revocation). Several layers each reduce risk.
-
-Section fifteen point four develops security fundamentals with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section fifteen point four, Rosa Delgado expects security claims to carry owners and dates.
-
-Section fifteen point four treats cia for meterhub assets as testable only when evidence and ticket IDs are recorded.
 
 ### 15.5 Shared responsibility
 
 The AWS, Azure and Google Cloud shared responsibility documents agree that customers secure identities, data, configurations and workloads; providers secure the physical infrastructure and managed service internals. Managed Kubernetes moves the control plane to the provider but leaves workloads to the customer.
 
-Section fifteen point five develops security fundamentals with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section fifteen point five, Rosa Delgado expects security claims to carry owners and dates.
-
-Section fifteen point five treats cia for meterhub assets as testable only when evidence and ticket IDs are recorded.
-
 ### 15.6 Zero trust
 
 NIST SP 800-207 recommends authenticating and authorising every request; network location alone is not trusted. This principle drives meterhub's service authentication and network policies.
-
-Section fifteen point six develops security fundamentals with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section fifteen point six, Rosa Delgado expects security claims to carry owners and dates.
-
-Section fifteen point six treats cia for meterhub assets as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point six, Solent Energy Co-op will not accept security work without a written trail.
 
 ### Workload identity
 
@@ -1668,65 +1024,25 @@ You will (1) treat meterhub as a system of interacting parts; (2) define require
 
 meterhub is not just a cluster: it includes meters, the network operator, the ingest service, storage, billing, analysts, the cloud provider and the people who operate it. Security properties emerge from how these parts interact, not from any single control.
 
-Section sixteen point one develops systems engineering with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section sixteen point one, Rosa Delgado expects systems claims to carry owners and dates.
-
-Section sixteen point one treats systems view life cycle as testable only when evidence and ticket IDs are recorded.
-
 ### 16.2 Life cycle
 
 Systems engineering follows concept, requirements, design, implementation, verification, operation and retirement. Security must appear at each stage; retirement matters too, since old clusters and buckets left running were a source of exposure in many organisations.
-
-Section sixteen point two develops systems engineering with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section sixteen point two, Rosa Delgado expects systems claims to carry owners and dates.
-
-Section sixteen point two treats systems view life cycle as testable only when evidence and ticket IDs are recorded.
 
 ### 16.3 Interfaces
 
 Each interface is specified: what data crosses it, in what format, authenticated how and with what limits. The interface between ingest and storage, for example, carries readings over TLS with a workload identity and a maximum batch size.
 
-Section sixteen point three develops systems engineering with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section sixteen point three, Rosa Delgado expects systems claims to carry owners and dates.
-
-Section sixteen point three treats systems view life cycle as testable only when evidence and ticket IDs are recorded.
-
 ### 16.4 Traceability
 
 Every security requirement has an identifier, a source (standard, regulation or risk), a design element that meets it and a verification method. A traceability matrix shows gaps: requirements with no test, tests with no requirement.
-
-Section sixteen point four develops systems engineering with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section sixteen point four, Rosa Delgado expects systems claims to carry owners and dates.
-
-Section sixteen point four treats systems view life cycle as testable only when evidence and ticket IDs are recorded.
 
 ### 16.5 Trade-offs
 
 Stronger isolation (separate clusters per service) costs more and adds operational work; Solent chooses separate namespaces with strict policies and a separate cluster only for the payment-related service.
 
-Section sixteen point five develops systems engineering with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section sixteen point five, Rosa Delgado expects systems claims to carry owners and dates.
-
-Section sixteen point five treats systems view life cycle as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point five, Solent Energy Co-op will not accept systems work without a written trail.
-
 ### 16.6 Configuration management
 
 The system's configuration baseline is the set of reviewed templates and manifests in version control; changes go through change control.
-
-Section sixteen point six develops systems engineering with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section sixteen point six, Rosa Delgado expects systems claims to carry owners and dates.
-
-Section sixteen point six treats systems view life cycle as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point six, Solent Energy Co-op will not accept systems work without a written trail.
 
 ### Worked example
 
@@ -1764,23 +1080,9 @@ You will (1) describe feedback loops in cloud systems; (2) analyse an autoscalin
 
 A controller measures an output, compares it with a target and adjusts an input. Kubernetes is built from such loops: controllers continually reconcile the actual state toward the declared desired state, as Burns et al. (2016) describe.
 
-Section seventeen point one develops control and feedback basics with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section seventeen point one, Rosa Delgado expects control claims to carry owners and dates.
-
-Section seventeen point one treats feedback loops autoscaling rule as testable only when evidence and ticket IDs are recorded.
-
 ### 17.2 Autoscaling rule
 
 The horizontal pod autoscaler sets desired replicas = ceil(current replicas × current metric ÷ target metric), within minimum and maximum bounds.
-
-Section seventeen point two develops control and feedback basics with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section seventeen point two, Rosa Delgado expects control claims to carry owners and dates.
-
-Section seventeen point two treats feedback loops autoscaling rule as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point two, Solent Energy Co-op will not accept control work without a written trail.
 
 ### Lab — Lab — autoscaling loop
 
@@ -1810,43 +1112,17 @@ util  40% at 10 replicas -> desired 7
 
 With a 60% CPU target and bounds of 2 to 10: at 50% on 2 replicas it stays at 2; at 90% it scales to 3; at 150% on 3 to 8; at 200% on 8 it would want 27 but is capped at 10; at 120% on 10 it stays at the cap of 10; at 40% on 10 it scales down to 7. The cap protects cost and downstream systems but means sustained overload is possible.
 
-Section seventeen point three develops control and feedback basics with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section seventeen point three, Rosa Delgado expects control claims to carry owners and dates.
-
 ### 17.4 Stability
 
 Loops that react too fast oscillate; real autoscalers add stabilisation windows so scale-down waits. Measurement delay makes oscillation more likely.
-
-Section seventeen point four develops control and feedback basics with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section seventeen point four, Rosa Delgado expects control claims to carry owners and dates.
-
-Section seventeen point four treats feedback loops autoscaling rule as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point four, Solent Energy Co-op will not accept control work without a written trail.
 
 ### 17.5 Security and feedback
 
 Reconciliation also restores security settings: if someone edits a live object by hand, a GitOps controller changes it back to the declared state. Security alerts and responses form a loop too; slow detection is like measurement delay.
 
-Section seventeen point five develops control and feedback basics with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section seventeen point five, Rosa Delgado expects control claims to carry owners and dates.
-
-Section seventeen point five treats feedback loops autoscaling rule as testable only when evidence and ticket IDs are recorded.
-
 ### 17.6 Limits as safety
 
 Maximum replicas also limit the cost of a flood of fake traffic, a simple availability safeguard.
-
-Section seventeen point six develops control and feedback basics with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section seventeen point six, Rosa Delgado expects control claims to carry owners and dates.
-
-Section seventeen point six treats feedback loops autoscaling rule as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point six, Solent Energy Co-op will not accept control work without a written trail.
 
 ### Tuning
 
@@ -1888,67 +1164,25 @@ You will (1) design a layered security architecture for meterhub; (2) place trus
 
 Account level: separate accounts for production, test and backups; organisation policies that block public storage and restrict regions. Cluster level: private control plane endpoint, workload identity, Pod Security admission at Restricted, default-deny network policies. Workload level: signed images, non-root, minimal capabilities. Data level: customer-managed keys, separation of readings and customer details.
 
-Section eighteen point one develops security architecture with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section eighteen point one, Rosa Delgado expects security claims to carry owners and dates.
-
 ### 18.2 Trust boundaries
 
 Internet to load balancer; load balancer to ingest; ingest to storage; cluster to cloud APIs; pipeline to cluster; production to backup account. Each boundary has authentication and a policy check.
-
-Section eighteen point two develops security architecture with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section eighteen point two, Rosa Delgado expects security claims to carry owners and dates.
-
-Section eighteen point two treats layers trust boundaries isolation as testable only when evidence and ticket IDs are recorded.
 
 ### 18.3 Isolation choices
 
 Namespaces with strict policies for most services; a separate cluster for the payment service; separate accounts for backups. NIST SP 800-190 discusses grouping containers by sensitivity on hosts.
 
-Section eighteen point three develops security architecture with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section eighteen point three, Rosa Delgado expects security claims to carry owners and dates.
-
-Section eighteen point three treats layers trust boundaries isolation as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point three, Solent Energy Co-op will not accept security work without a written trail.
-
 ### 18.4 Zero trust alignment
 
 Every service call is authenticated with workload identity, following NIST SP 800-207, and authorised by policy.
-
-Section eighteen point four develops security architecture with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section eighteen point four, Rosa Delgado expects security claims to carry owners and dates.
-
-Section eighteen point four treats layers trust boundaries isolation as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point four, Solent Energy Co-op will not accept security work without a written trail.
 
 ### 18.5 Architecture decision records
 
 Each choice is recorded with context, options and consequences, so future engineers know why the payment service is separate.
 
-Section eighteen point five develops security architecture with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section eighteen point five, Rosa Delgado expects security claims to carry owners and dates.
-
-Section eighteen point five treats layers trust boundaries isolation as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point five, Solent Energy Co-op will not accept security work without a written trail.
-
 ### 18.6 Guardrails versus gates
 
 Guardrails (organisation policies) prevent classes of mistakes everywhere; gates (pipeline checks) stop specific changes. Both are used.
-
-Section eighteen point six develops security architecture with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section eighteen point six, Rosa Delgado expects security claims to carry owners and dates.
-
-Section eighteen point six treats layers trust boundaries isolation as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point six, Solent Energy Co-op will not accept security work without a written trail.
 
 ### Reviewing the architecture
 
@@ -1990,23 +1224,9 @@ You will (1) manage cloud and workload identities; (2) apply cryptography for da
 
 Humans sign in through the organisation's identity provider with multi-factor authentication; workloads use workload identity; pipelines use federated identity from the build system. Long-lived access keys are avoided.
 
-Section nineteen point one develops identity and cryptography with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section nineteen point one, Rosa Delgado expects identity claims to carry owners and dates.
-
-Section nineteen point one treats identities secrets in images as testable only when evidence and ticket IDs are recorded.
-
-For section nineteen point one, Solent Energy Co-op will not accept identity work without a written trail.
-
 ### 19.2 Secrets in images
 
 Image layers are archives; anything copied in remains even if deleted in a later layer. The opening case's key sat in layer 3 of the image. Shu, Gu and Enck (2017) found widespread vulnerabilities in public container images, a reminder that what is pushed publicly is visible to anyone.
-
-Section nineteen point two develops identity and cryptography with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section nineteen point two, Rosa Delgado expects identity claims to carry owners and dates.
-
-Section nineteen point two treats identities secrets in images as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — Lab — secrets in image layers
 
@@ -2038,45 +1258,17 @@ layer4/app/settings.py   EXAMPLE_TOKEN     entropy 0.00 placeholder
 
 The scan finds CLOUD_ACCESS_KEY in layer3/app/config.env with character entropy 4.50, above the 3.5 threshold: LIKELY SECRET. EXAMPLE_TOKEN in layer4/app/settings.py is twenty repeated characters with entropy 0.00: a placeholder. Entropy helps separate real-looking keys from obvious placeholders, but a reviewer confirms each finding.
 
-Section nineteen point three develops identity and cryptography with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section nineteen point three, Rosa Delgado expects identity claims to carry owners and dates.
-
 ### 19.4 Cryptography for integrity
 
 Images are signed after build and verified at admission, so only images built by Solent's pipeline can run. Keys for signing are held in a managed key service.
-
-Section nineteen point four develops identity and cryptography with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section nineteen point four, Rosa Delgado expects identity claims to carry owners and dates.
-
-Section nineteen point four treats identities secrets in images as testable only when evidence and ticket IDs are recorded.
-
-For section nineteen point four, Solent Energy Co-op will not accept identity work without a written trail.
 
 ### 19.5 Secrets management
 
 Runtime secrets come from a secret manager or Kubernetes Secrets with encryption at rest, never from images; the Kubernetes good-practice guidance for Secrets recommends least-privilege access to them.
 
-Section nineteen point five develops identity and cryptography with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section nineteen point five, Rosa Delgado expects identity claims to carry owners and dates.
-
-Section nineteen point five treats identities secrets in images as testable only when evidence and ticket IDs are recorded.
-
-For section nineteen point five, Solent Energy Co-op will not accept identity work without a written trail.
-
 ### 19.6 Rotation
 
 Remaining long-lived secrets are rotated on a schedule and immediately after exposure.
-
-Section nineteen point six develops identity and cryptography with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section nineteen point six, Rosa Delgado expects identity claims to carry owners and dates.
-
-Section nineteen point six treats identities secrets in images as testable only when evidence and ticket IDs are recorded.
-
-For section nineteen point six, Solent Energy Co-op will not accept identity work without a written trail.
 
 ### Human access
 
@@ -2118,67 +1310,25 @@ You will (1) frame cloud and container security as an engineering discipline; (2
 
 Cloud and container security engineering designs, builds and verifies controls for systems built on shared infrastructure, declarative configuration and fast change. Mell and Grance (2011) define the cloud's essential characteristics; each creates security work, such as self-service creating many configuration changes.
 
-Section twenty point one develops cloud and container security engineering with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty point one, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty point one treats the discipline stakeholders standards as testable only when evidence and ticket IDs are recorded.
-
 ### 20.2 Stakeholders
 
 Solent's platform team, service developers, the data protection officer, the energy regulator, customers and the cloud provider. Each has constraints: uptime for billing, privacy law, audit requirements.
-
-Section twenty point two develops cloud and container security engineering with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty point two, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty point two treats the discipline stakeholders standards as testable only when evidence and ticket IDs are recorded.
 
 ### 20.3 Standards
 
 NIST SP 800-190 for containers; SP 800-210 for cloud access control; SP 800-207 for zero trust; CSA CCM v4 for a control catalogue mapped to many frameworks; CIS Benchmarks for Kubernetes and cloud account settings; Kubernetes Pod Security Standards for workloads.
 
-Section twenty point three develops cloud and container security engineering with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty point three, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty point three treats the discipline stakeholders standards as testable only when evidence and ticket IDs are recorded.
-
 ### 20.4 Constraints
 
 The platform team has four engineers; changes must not disrupt ingestion; budgets limit new tools; the regulator expects evidence.
-
-Section twenty point four develops cloud and container security engineering with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty point four, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty point four treats the discipline stakeholders standards as testable only when evidence and ticket IDs are recorded.
-
-For section twenty point four, Solent Energy Co-op will not accept cloud work without a written trail.
 
 ### 20.5 Project goals
 
 No long-lived credentials in workloads; default-deny networking in all production namespaces; Restricted pod security everywhere except documented exceptions; signed images only; measurable detection within objectives.
 
-Section twenty point five develops cloud and container security engineering with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty point five, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty point five treats the discipline stakeholders standards as testable only when evidence and ticket IDs are recorded.
-
-For section twenty point five, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 20.6 Success measures
 
 Each goal has a measure, such as percentage of namespaces with default-deny, tracked monthly.
-
-Section twenty point six develops cloud and container security engineering with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty point six, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty point six treats the discipline stakeholders standards as testable only when evidence and ticket IDs are recorded.
-
-For section twenty point six, Solent Energy Co-op will not accept cloud work without a written trail.
 
 ### Mapping to CCM
 
@@ -2220,77 +1370,29 @@ You will (1) write testable security requirements for meterhub; (2) derive them 
 
 A requirement says what the system must do in a way that can be tested: "Pods in production namespaces must not run as root" is testable; "the cluster must be secure" is not. Each requirement names its scope, condition and expected behaviour.
 
-Section twenty-one point one develops cloud and container security requirements with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-one point one, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-one point one treats good requirements sources examples as testable only when evidence and ticket IDs are recorded.
-
 ### 21.2 Sources
 
 Risks from the key-leak review, the Kubernetes Pod Security Standards, CIS Benchmark recommendations for managed Kubernetes, CSA CCM v4 controls and the energy regulator's data rules. Each requirement cites its source so its purpose is clear.
-
-Section twenty-one point two develops cloud and container security requirements with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-one point two, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-one point two treats good requirements sources examples as testable only when evidence and ticket IDs are recorded.
 
 ### 21.3 Examples
 
 R1: workloads obtain cloud credentials only through workload identity with lifetimes under one hour. R2: every production namespace has a default-deny ingress and egress network policy. R3: production namespaces enforce the Restricted Pod Security profile. R4: only images signed by the pipeline are admitted. R5: storage holding readings cannot be made public. R6: high-risk configuration changes raise an alert within 15 minutes.
 
-Section twenty-one point three develops cloud and container security requirements with a Solent Energy Co-op note Elena Petrova can demo offline.
-
 ### 21.4 Prioritising
 
 Requirements are ranked by risk reduced and effort. R1 and R5 directly address the opening case; R2 addresses the missing network policies.
-
-Section twenty-one point four develops cloud and container security requirements with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-one point four, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-one point four treats good requirements sources examples as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-one point four, Solent Energy Co-op will not accept cloud work without a written trail.
 
 ### 21.5 Exceptions
 
 Some workloads, such as the node agent, need privileges. Requirements allow documented, time-limited exceptions approved by the platform lead.
 
-Section twenty-one point five develops cloud and container security requirements with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-one point five, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-one point five treats good requirements sources examples as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-one point five, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 21.6 Verification link
 
 Each requirement has a verification: an admission test, a configuration query, or an alert test with synthetic events.
 
-Section twenty-one point six develops cloud and container security requirements with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-one point six, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-one point six treats good requirements sources examples as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-one point six, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 21.7 Change control
 
 Requirements change only through review, with the reason recorded.
-
-Section twenty-one point seven develops cloud and container security requirements with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-one point seven, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-one point seven treats good requirements sources examples as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-one point seven, Solent Energy Co-op will not accept cloud work without a written trail.
-
-Section twenty-one point seven fails closed if cloud evidence is missing rather than guessing.
 
 ### Ownership
 
@@ -2332,67 +1434,25 @@ You will (1) model meterhub's components, identities and data flows; (2) classif
 
 Components: load balancer, ingest service, message queue, time-series database, API, billing export job, analytics workspace, metrics stack, pipeline, image registry, secret manager, backup account.
 
-Section twenty-two point one develops cloud and container security system with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-two point one, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-two point one treats component model identity model as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-two point one, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 22.2 Identity model
 
 Each component has an identity: Kubernetes service accounts mapped to cloud roles, pipeline federated identity, human roles. The model lists what each identity can do, which reveals over-broad roles.
-
-Section twenty-two point two develops cloud and container security system with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-two point two, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-two point two treats component model identity model as testable only when evidence and ticket IDs are recorded.
 
 ### 22.3 Data model
 
 Data classes: readings (personal, high), customer details (personal, high), aggregated statistics (internal), logs (may contain personal data), images (internal, may contain secrets). Each class has storage, retention and access rules.
 
-Section twenty-two point three develops cloud and container security system with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-two point three, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-two point three treats component model identity model as testable only when evidence and ticket IDs are recorded.
-
 ### 22.4 Data flows
 
 Meters to load balancer to ingest to queue to database; database to API to customer portal; database to billing export to billing system; database to analytics as aggregates.
-
-Section twenty-two point four develops cloud and container security system with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-two point four, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-two point four treats component model identity model as testable only when evidence and ticket IDs are recorded.
 
 ### 22.5 Trust boundaries
 
 Marked where data crosses between identities, networks or accounts. Shostack-style questions are asked at each: what can go wrong here?
 
-Section twenty-two point five develops cloud and container security system with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-two point five, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-two point five treats component model identity model as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-two point five, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 22.6 Using the model
 
 For each flow, Elena checks: is it authenticated, authorised, encrypted, logged? Missing marks become work items.
-
-Section twenty-two point six develops cloud and container security system with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-two point six, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-two point six treats component model identity model as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-two point six, Solent Energy Co-op will not accept cloud work without a written trail.
 
 ### Generating the model
 
@@ -2434,69 +1494,25 @@ You will (1) analyse threats and failures for meterhub systematically; (2) use S
 
 Using the STRIDE categories Shostack (2014) teaches: spoofing (a fake meter or service), tampering (altered readings or images), repudiation (unlogged admin changes), information disclosure (public buckets, leaked keys), denial of service (ingest floods), elevation of privilege (privileged pods reaching the node).
 
-Section twenty-three point one develops cloud and container security threat with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-three point one, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-three point one treats threat categories failure analysis as testable only when evidence and ticket IDs are recorded.
-
 ### 23.2 Failure analysis
 
 Not all problems are attacks. Failures include expired certificates stopping ingest, a policy change blocking legitimate traffic, a node pool upgrade evicting pods and a misconfigured lifecycle rule deleting data early.
-
-Section twenty-three point two develops cloud and container security threat with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-three point two, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-three point two treats threat categories failure analysis as testable only when evidence and ticket IDs are recorded.
 
 ### 23.3 Scenarios
 
 Each scenario names a cause, a path and an impact: "A developer pushes an image with an embedded key to a public registry; the key allows reading three buckets; readings could be exposed." Scenarios stay at outcome level, without procedures.
 
-Section twenty-three point three develops cloud and container security threat with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-three point three, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-three point three treats threat categories failure analysis as testable only when evidence and ticket IDs are recorded.
-
 ### 23.4 Ranking
 
 Likelihood and impact are rated with evidence such as past incidents and exposure.
-
-Section twenty-three point four develops cloud and container security threat with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-three point four, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-three point four treats threat categories failure analysis as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-three point four, Solent Energy Co-op will not accept cloud work without a written trail.
 
 ### 23.5 Linking controls
 
 Each scenario lists preventive, detective and recovery controls and their requirement IDs.
 
-Section twenty-three point five develops cloud and container security threat with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-three point five, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-three point five treats threat categories failure analysis as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-three point five, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 23.6 Review
 
 The analysis is repeated when the architecture changes.
-
-Section twenty-three point six develops cloud and container security threat with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-three point six, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-three point six treats threat categories failure analysis as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-three point six, Solent Energy Co-op will not accept cloud work without a written trail.
-
-Section twenty-three point six fails closed if cloud evidence is missing rather than guessing.
 
 ### Using the ranking
 
@@ -2542,10 +1558,6 @@ You will (1) design default-deny network policies; (2) compute reachability befo
 
 Start from the documented and observed flows (chapter 11), apply a default-deny policy to the namespace, then add allow rules for each legitimate flow. The Kubernetes network policy documentation explains that once a pod is selected by a policy, traffic not allowed by some policy is denied.
 
-Section twenty-four point one develops cloud and container security methods with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-four point one, Rosa Delgado expects cloud claims to carry owners and dates.
-
 ### Lab — Lab — network reachability
 
 ```python
@@ -2571,57 +1583,21 @@ web->db reachable: False
 
 With no policies, all 12 directed pod pairs among web, api, db and metrics are reachable. With default deny plus four allows, only 4 of 12 are: api->db, metrics->api, metrics->db and web->api. web->db is no longer reachable, so a flaw in the web pod could not reach the database directly.
 
-Section twenty-four point two develops cloud and container security methods with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-four point two, Rosa Delgado expects cloud claims to carry owners and dates.
-
 ### 24.3 Egress too
 
 Default deny should cover egress as well as ingress; DNS egress must be allowed explicitly or name resolution fails.
-
-Section twenty-four point three develops cloud and container security methods with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-four point three, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-four point three treats the method lab result as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point three, Solent Energy Co-op will not accept cloud work without a written trail.
 
 ### 24.4 Testing safely
 
 Policies are applied first in the test cluster, with connection tests for every allowed and a sample of denied pairs. Some network plugins offer audit modes; otherwise staged rollout by namespace is used.
 
-Section twenty-four point four develops cloud and container security methods with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-four point four, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-four point four treats the method lab result as testable only when evidence and ticket IDs are recorded.
-
 ### 24.5 Labels
 
 Policies select pods by labels; inconsistent labels cause surprises, so label standards are enforced in the pipeline.
 
-Section twenty-four point five develops cloud and container security methods with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-four point five, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-four point five treats the method lab result as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point five, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 24.6 Monitoring
 
 Denied connection logs show legitimate traffic that was missed.
-
-Section twenty-four point six develops cloud and container security methods with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-four point six, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-four point six treats the method lab result as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point six, Solent Energy Co-op will not accept cloud work without a written trail.
-
-Section twenty-four point six fails closed if cloud evidence is missing rather than guessing.
 
 ### Rollout order
 
@@ -2663,71 +1639,25 @@ You will (1) design an end-to-end secure deployment path for meterhub in a team;
 
 Teams design how code becomes a running meterhub workload: build, scan, sign, store, admit, deploy and observe, meeting requirements R1 to R6.
 
-Section twenty-five point one develops design studio with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-five point one, Rosa Delgado expects design claims to carry owners and dates.
-
-Section twenty-five point one treats the brief alternatives comparison as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point one, Solent Energy Co-op will not accept design work without a written trail.
-
 ### 25.2 Alternatives
 
 Team A proposes push-based deployment from the pipeline with a production deployer identity. Team B proposes pull-based GitOps, where a controller in the cluster pulls approved manifests. Elena's team compares them on credentials exposed, auditability and recovery.
-
-Section twenty-five point two develops design studio with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-five point two, Rosa Delgado expects design claims to carry owners and dates.
-
-Section twenty-five point two treats the brief alternatives comparison as testable only when evidence and ticket IDs are recorded.
 
 ### 25.3 Comparison
 
 Pull-based deployment means the pipeline never holds cluster credentials, and the cluster's state is always reconciled to the repository. Push-based is simpler to adopt. Both can verify signatures at admission.
 
-Section twenty-five point three develops design studio with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-five point three, Rosa Delgado expects design claims to carry owners and dates.
-
-Section twenty-five point three treats the brief alternatives comparison as testable only when evidence and ticket IDs are recorded.
-
 ### 25.4 Review package
 
 Diagram, requirement trace, threat scenarios addressed, open risks and a test plan.
-
-Section twenty-five point four develops design studio with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-five point four, Rosa Delgado expects design claims to carry owners and dates.
-
-Section twenty-five point four treats the brief alternatives comparison as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point four, Solent Energy Co-op will not accept design work without a written trail.
-
-Section twenty-five point four fails closed if design evidence is missing rather than guessing.
 
 ### 25.5 Critique
 
 Studio critics ask how emergency fixes work if the repository is unavailable, and who can change the GitOps controller itself.
 
-Section twenty-five point five develops design studio with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-five point five, Rosa Delgado expects design claims to carry owners and dates.
-
-Section twenty-five point five treats the brief alternatives comparison as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point five, Solent Energy Co-op will not accept design work without a written trail.
-
 ### 25.6 Revision
 
 The design adds a documented break-glass path with alerts, and restricts controller changes to a separate reviewed repository.
-
-Section twenty-five point six develops design studio with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-five point six, Rosa Delgado expects design claims to carry owners and dates.
-
-Section twenty-five point six treats the brief alternatives comparison as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point six, Solent Energy Co-op will not accept design work without a written trail.
 
 ### Studio process
 
@@ -2773,67 +1703,25 @@ You will (1) compare isolation and tenancy architectures for meterhub; (2) evalu
 
 Option 1: one shared cluster with namespaces per service and strict policies. Option 2: one cluster per environment and sensitivity tier. Option 3: one cluster per service. Each gives a different balance of isolation, cost and operational effort.
 
-Section twenty-six point one develops cloud and container security architecture with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-six point one, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-six point one treats the options criteria evaluation as testable only when evidence and ticket IDs are recorded.
-
 ### 26.2 Criteria
 
 Blast radius if a workload is compromised; cost of control planes and nodes; operational effort for upgrades; consistency of policy; regulator expectations for separation of payment data.
-
-Section twenty-six point two develops cloud and container security architecture with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-six point two, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-six point two treats the options criteria evaluation as testable only when evidence and ticket IDs are recorded.
 
 ### 26.3 Evaluation
 
 Option 1 is cheapest but relies on Kubernetes isolation between namespaces; NIST SP 800-190 suggests grouping containers by sensitivity. Option 3 isolates best but multiplies upgrade work by the number of services. Option 2 balances them: a high-sensitivity cluster for readings and payments, a standard cluster for other services.
 
-Section twenty-six point three develops cloud and container security architecture with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-six point three, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-six point three treats the options criteria evaluation as testable only when evidence and ticket IDs are recorded.
-
 ### 26.4 Hybrid with nodes
 
 Within a cluster, dedicated node pools for sensitive or privileged workloads add separation at the host level.
-
-Section twenty-six point four develops cloud and container security architecture with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-six point four, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-six point four treats the options criteria evaluation as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-six point four, Solent Energy Co-op will not accept cloud work without a written trail.
 
 ### 26.5 Decision
 
 Option 2 with dedicated node pools, recorded in an architecture decision record with criteria scores.
 
-Section twenty-six point five develops cloud and container security architecture with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-six point five, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-six point five treats the options criteria evaluation as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-six point five, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 26.6 Revisit triggers
 
 The decision is revisited if the number of services doubles, the regulator changes rules or a namespace isolation weakness is published.
-
-Section twenty-six point six develops cloud and container security architecture with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-six point six, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-six point six treats the options criteria evaluation as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-six point six, Solent Energy Co-op will not accept cloud work without a written trail.
 
 ### Scoring the options
 
@@ -2879,69 +1767,25 @@ You will (1) design admission, identity and storage controls in detail; (2) spec
 
 Pod Security admission enforces the Restricted profile on production namespaces; a policy engine adds checks for image signatures, resource limits and allowed registries. Policies are code, reviewed and tested.
 
-Section twenty-seven point one develops cloud and container security control with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-seven point one, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-seven point one treats admission control failure mode as testable only when evidence and ticket IDs are recorded.
-
 ### 27.2 Failure mode
 
 If the policy engine is unavailable, should deployments fail closed (blocked) or open (allowed)? Solent chooses fail closed for production with a monitored, highly available engine, and fail open with alerts for test clusters.
-
-Section twenty-seven point two develops cloud and container security control with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-seven point two, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-seven point two treats admission control failure mode as testable only when evidence and ticket IDs are recorded.
 
 ### 27.3 Identity controls
 
 Workload identity bindings map each service account to one cloud role with minimal permissions. Organisation policy disallows creating long-lived keys for service accounts.
 
-Section twenty-seven point three develops cloud and container security control with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-seven point three, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-seven point three treats admission control failure mode as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point three, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 27.4 Storage controls
 
 Account-level settings block public access to storage; bucket policies require encrypted connections; customer-managed keys protect readings.
-
-Section twenty-seven point four develops cloud and container security control with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-seven point four, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-seven point four treats admission control failure mode as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point four, Solent Energy Co-op will not accept cloud work without a written trail.
 
 ### 27.5 Exceptions
 
 Exceptions are labels on namespaces or workloads that reference a ticket and expiry date; the policy engine checks expiry.
 
-Section twenty-seven point five develops cloud and container security control with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-seven point five, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-seven point five treats admission control failure mode as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point five, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 27.6 Observability
 
 Every denial is logged with the rule and reason and counted on a dashboard; repeated denials for the same team prompt help, not punishment.
-
-Section twenty-seven point six develops cloud and container security control with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-seven point six, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-seven point six treats admission control failure mode as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point six, Solent Energy Co-op will not accept cloud work without a written trail.
 
 ### Policy testing
 
@@ -2983,69 +1827,25 @@ You will (1) implement workload identity and storage guardrails; (2) migrate ser
 
 Migrate services one at a time from long-lived keys to workload identity: create the role binding, deploy the service using it, confirm it works, then disable and delete the old key.
 
-Section twenty-eight point one develops cloud and container security implementation with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-eight point one, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-eight point one treats plan inventory unused keys as testable only when evidence and ticket IDs are recorded.
-
 ### 28.2 Inventory
 
 A query lists all service account keys in Solent's cloud accounts: 23 keys, of which 9 had not been used in 90 days.
-
-Section twenty-eight point two develops cloud and container security implementation with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-eight point two, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-eight point two treats plan inventory unused keys as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point two, Solent Energy Co-op will not accept cloud work without a written trail.
 
 ### 28.3 Unused keys
 
 Unused keys are disabled first, not deleted, for two weeks. If nothing breaks, they are deleted.
 
-Section twenty-eight point three develops cloud and container security implementation with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-eight point three, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-eight point three treats plan inventory unused keys as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point three, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 28.4 Active keys
 
 Active keys are migrated service by service, with each service owner present.
-
-Section twenty-eight point four develops cloud and container security implementation with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-eight point four, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-eight point four treats plan inventory unused keys as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point four, Solent Energy Co-op will not accept cloud work without a written trail.
 
 ### 28.5 Storage guardrail
 
 Account-level public access blocking is enabled on test accounts first, then production. A query beforehand lists buckets with public access and their documented reasons: none in production after chapter 13's fixes.
 
-Section twenty-eight point five develops cloud and container security implementation with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-eight point five, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-eight point five treats plan inventory unused keys as testable only when evidence and ticket IDs are recorded.
-
 ### 28.6 Verification
 
 After each migration, a check confirms the service has no keys and that its role has only the expected permissions.
-
-Section twenty-eight point six develops cloud and container security implementation with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-eight point six, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-eight point six treats plan inventory unused keys as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point six, Solent Energy Co-op will not accept cloud work without a written trail.
 
 ### Communicating the migration
 
@@ -3091,12 +1891,6 @@ You will (1) define control coverage measures; (2) compute coverage per namespac
 
 For each production namespace, Elena records whether four controls are in place: default-deny network policy, Restricted pod security, image signature enforcement and resource limits on all pods.
 
-Section twenty-nine point one develops cloud and container security measurement with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-nine point one, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-nine point one treats coverage measures lab result as testable only when evidence and ticket IDs are recorded.
-
 ### Lab — Lab — control coverage
 
 ```python
@@ -3124,45 +1918,17 @@ overall coverage 10/16 = 62%
 
 meterhub has 4 of 4 controls. billing has 3 of 4 (missing image-signature). reports has 2 of 4 (missing netpol-default-deny and image-signature). legacy-import has 1 of 4 (missing netpol-default-deny, pod-security-restricted and image-signature). Overall coverage is 10 of 16 controls, 62%.
 
-Section twenty-nine point two develops cloud and container security measurement with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-nine point two, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-nine point two treats coverage measures lab result as testable only when evidence and ticket IDs are recorded.
-
 ### 29.3 Interpreting
 
 Coverage says a control is configured, not that it is effective; an allow-all policy would count as a policy. Elena's checker therefore requires a default-deny policy specifically, and verification tests (later chapters) check behaviour.
-
-Section twenty-nine point three develops cloud and container security measurement with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-nine point three, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-nine point three treats coverage measures lab result as testable only when evidence and ticket IDs are recorded.
 
 ### 29.4 Weighting
 
 Namespaces differ in sensitivity; a missing control in billing matters more than in reports. The dashboard shows both raw and sensitivity-weighted coverage.
 
-Section twenty-nine point four develops cloud and container security measurement with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-nine point four, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-nine point four treats coverage measures lab result as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point four, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 29.5 Trends
 
 Monthly coverage is plotted; a drop signals new namespaces without controls or removed controls.
-
-Section twenty-nine point five develops cloud and container security measurement with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section twenty-nine point five, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section twenty-nine point five treats coverage measures lab result as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point five, Solent Energy Co-op will not accept cloud work without a written trail.
 
 ### Sensitivity weighting
 
@@ -3208,73 +1974,25 @@ You will (1) verify controls with safe, synthetic tests; (2) check admission, ne
 
 A test cluster mirrors production policies. Tests use synthetic workloads designed to violate one rule each, so a correct control rejects them. No production systems are touched.
 
-Section thirty point one develops verification laboratory with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty point one, Rosa Delgado expects verification claims to carry owners and dates.
-
-Section thirty point one treats lab setup admission tests as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point one, Solent Energy Co-op will not accept verification work without a written trail.
-
 ### 30.2 Admission tests
 
 A synthetic pod requesting privileged mode must be rejected; one without runAsNonRoot must be rejected; an unsigned image must be rejected; a compliant pod must be admitted.
-
-Section thirty point two develops verification laboratory with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty point two, Rosa Delgado expects verification claims to carry owners and dates.
-
-Section thirty point two treats lab setup admission tests as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point two, Solent Energy Co-op will not accept verification work without a written trail.
 
 ### 30.3 Network tests
 
 From a test pod labelled web, a connection to db must fail and a connection to api must succeed, matching the chapter 24 design.
 
-Section thirty point three develops verification laboratory with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty point three, Rosa Delgado expects verification claims to carry owners and dates.
-
-Section thirty point three treats lab setup admission tests as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point three, Solent Energy Co-op will not accept verification work without a written trail.
-
 ### 30.4 Identity tests
 
 A test service with workload identity can read its allowed bucket and is refused writing to another; no keys exist for the service account.
-
-Section thirty point four develops verification laboratory with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty point four, Rosa Delgado expects verification claims to carry owners and dates.
-
-Section thirty point four treats lab setup admission tests as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point four, Solent Energy Co-op will not accept verification work without a written trail.
 
 ### 30.5 Recording
 
 Each test records requirement, input, expected and actual result, time and cluster version.
 
-Section thirty point five develops verification laboratory with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty point five, Rosa Delgado expects verification claims to carry owners and dates.
-
-Section thirty point five treats lab setup admission tests as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point five, Solent Energy Co-op will not accept verification work without a written trail.
-
 ### 30.6 Failures
 
 A failed test is a defect with an owner, not a test to rewrite.
-
-Section thirty point six develops verification laboratory with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty point six, Rosa Delgado expects verification claims to carry owners and dates.
-
-Section thirty point six treats lab setup admission tests as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point six, Solent Energy Co-op will not accept verification work without a written trail.
 
 ### Parity checks
 
@@ -3320,79 +2038,29 @@ You will (1) implement image signing, admission verification and default-deny ne
 
 The standard pipeline signs every image after build and scanning, and records the image digest. Admission verifies the signature and that the image comes from Solent's registry. Images are referenced by digest, not mutable tags, so what was verified is what runs.
 
-Section thirty-one point one develops cloud and container security implementation with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-one point one, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-one point one treats image signing rollout sequence as testable only when evidence and ticket IDs are recorded.
-
 ### 31.2 Rollout sequence
 
 Signature verification starts in audit mode, logging unsigned images without blocking, for two weeks. The log shows which teams still use old pipelines. Enforcement follows namespace by namespace once each is clean.
-
-Section thirty-one point two develops cloud and container security implementation with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-one point two, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-one point two treats image signing rollout sequence as testable only when evidence and ticket IDs are recorded.
 
 ### 31.3 Network policies
 
 Default-deny policies roll out in the order from chapter 24, with denied-connection logs watched for a day after each namespace.
 
-Section thirty-one point three develops cloud and container security implementation with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-one point three, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-one point three treats image signing rollout sequence as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-one point three, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 31.4 Exceptions
 
 The node agent keeps its exception on a dedicated node pool; the two services writing to their root filesystem complete their changes and their exception expires on time.
-
-Section thirty-one point four develops cloud and container security implementation with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-one point four, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-one point four treats image signing rollout sequence as testable only when evidence and ticket IDs are recorded.
 
 ### 31.5 Communication
 
 A shared calendar shows each namespace's enforcement date. Teams can ask for a delay with a reason, approved by the platform lead.
 
-Section thirty-one point five develops cloud and container security implementation with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-one point five, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-one point five treats image signing rollout sequence as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-one point five, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 31.6 Confirming
 
 After each step, verification tests from chapter 30 run again in production using synthetic test workloads in a dedicated test namespace.
 
-Section thirty-one point six develops cloud and container security implementation with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-one point six, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-one point six treats image signing rollout sequence as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-one point six, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 31.7 Cleanup
 
 Old pipeline jobs that cannot sign images are archived so they cannot be used by mistake.
-
-Section thirty-one point seven develops cloud and container security implementation with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-one point seven, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-one point seven treats image signing rollout sequence as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-one point seven, Solent Energy Co-op will not accept cloud work without a written trail.
 
 ### Signing keys
 
@@ -3434,81 +2102,29 @@ You will (1) ensure security controls do not reduce reliability; (2) design high
 
 Admission controllers, policy engines, secret managers and identity services are now on the critical path for deployments and running services. If they fail, so does meterhub.
 
-Section thirty-two point one develops cloud and container security reliability with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-two point one, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-two point one treats controls as dependencies high as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-two point one, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 32.2 High availability
 
 The policy engine runs three replicas across zones with a disruption budget so upgrades never remove more than one. The secret manager is a managed cloud service with regional redundancy.
-
-Section thirty-two point two develops cloud and container security reliability with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-two point two, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-two point two treats controls as dependencies high as testable only when evidence and ticket IDs are recorded.
 
 ### 32.3 Expiry
 
 Certificates and signing keys expire. Elena lists every certificate and key with expiry dates and adds alerts at 30 and 7 days. An expired webhook certificate would block all deployments.
 
-Section thirty-two point three develops cloud and container security reliability with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-two point three, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-two point three treats controls as dependencies high as testable only when evidence and ticket IDs are recorded.
-
 ### 32.4 Timeouts
 
 Admission webhooks have short timeouts so a slow engine causes a clear failure rather than hanging deployments.
-
-Section thirty-two point four develops cloud and container security reliability with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-two point four, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-two point four treats controls as dependencies high as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-two point four, Solent Energy Co-op will not accept cloud work without a written trail.
 
 ### 32.5 Measuring
 
 Incidents caused by security controls are tracked separately; the goal is fewer than one per quarter after rollout.
 
-Section thirty-two point five develops cloud and container security reliability with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-two point five, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-two point five treats controls as dependencies high as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-two point five, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 32.6 Error budgets
 
 Solent's site reliability practice gives each service an error budget; control-induced outages count against it, which gives the platform team a reason to make controls reliable.
 
-Section thirty-two point six develops cloud and container security reliability with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-two point six, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-two point six treats controls as dependencies high as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-two point six, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 32.7 Game days
 
 Planned exercises simulate control failures in staging to practise recovery.
-
-Section thirty-two point seven develops cloud and container security reliability with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-two point seven, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-two point seven treats controls as dependencies high as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-two point seven, Solent Energy Co-op will not accept cloud work without a written trail.
 
 ### Disruption budgets
 
@@ -3550,85 +2166,29 @@ You will (1) design meterhub to keep essential functions during incidents; (2) s
 
 For an energy co-op, essential functions are ingesting readings (data must not be lost), billing accuracy and tamper alerts. Customer portal features are less critical.
 
-Section thirty-three point one develops cloud and container security safety with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-three point one, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-three point one treats essential functions graceful degradation as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-three point one, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 33.2 Graceful degradation
 
 If the API is attacked or overloaded, ingest continues on separate infrastructure. Queues buffer readings if the database is unavailable.
-
-Section thirty-three point two develops cloud and container security safety with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-three point two, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-three point two treats essential functions graceful degradation as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-three point two, Solent Energy Co-op will not accept cloud work without a written trail.
 
 ### 33.3 Recovery from compromise
 
 If a cluster is suspected compromised, the plan is to rebuild from code in a clean account rather than clean it in place: declarative configuration and signed images make rebuilds repeatable.
 
-Section thirty-three point three develops cloud and container security safety with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-three point three, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-three point three treats essential functions graceful degradation as testable only when evidence and ticket IDs are recorded.
-
 ### 33.4 Backups and immutability
 
 Backups in a separate account with deletion protection allow recovery even if production credentials are misused.
-
-Section thirty-three point four develops cloud and container security safety with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-three point four, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-three point four treats essential functions graceful degradation as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-three point four, Solent Energy Co-op will not accept cloud work without a written trail.
 
 ### 33.5 Isolation of blast radius
 
 Separate clusters and accounts (chapter 26) limit how far a compromise spreads.
 
-Section thirty-three point five develops cloud and container security safety with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-three point five, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-three point five treats essential functions graceful degradation as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-three point five, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 33.6 Exercises
 
 Resilience exercises rebuild the standard cluster from code in a fresh account and measure the time to restore ingest.
 
-Section thirty-three point six develops cloud and container security safety with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-three point six, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-three point six treats essential functions graceful degradation as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-three point six, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 33.7 Communication
 
 Incident plans include messages to customers and the regulator.
-
-Section thirty-three point seven develops cloud and container security safety with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-three point seven, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-three point seven treats essential functions graceful degradation as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-three point seven, Solent Energy Co-op will not accept cloud work without a written trail.
-
-Section thirty-three point seven fails closed if cloud evidence is missing rather than guessing.
 
 ### Tamper alerts
 
@@ -3674,83 +2234,29 @@ You will (1) integrate cloud controls with logging, incident response, change ma
 
 Cloud audit logs, Kubernetes audit logs, admission decisions and network denials flow to Solent's central log platform, kept for a year in a separate account.
 
-Section thirty-four point one develops cloud and container security integration with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-four point one, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-four point one treats logging alerting incident response as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-four point one, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 34.2 Alerting
 
 High-risk events (public access settings changed, new keys created, policy engine disabled, privileged pod admitted under exception) raise alerts routed to the on-call engineer, meeting the 15-minute objective from chapter 7.
-
-Section thirty-four point two develops cloud and container security integration with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-four point two, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-four point two treats logging alerting incident response as testable only when evidence and ticket IDs are recorded.
 
 ### 34.3 Incident response
 
 Runbooks describe first steps for each alert type, including revoking credentials and isolating namespaces.
 
-Section thirty-four point three develops cloud and container security integration with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-four point three, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-four point three treats logging alerting incident response as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-four point three, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 34.4 Change management
 
 Policy changes follow the normal change process with security review; emergency changes are reviewed afterwards.
-
-Section thirty-four point four develops cloud and container security integration with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-four point four, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-four point four treats logging alerting incident response as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-four point four, Solent Energy Co-op will not accept cloud work without a written trail.
 
 ### 34.5 Governance
 
 Monthly coverage and incidents feed Solent's risk committee; CSA CCM v4 mapping supports the regulator's annual review.
 
-Section thirty-four point five develops cloud and container security integration with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-four point five, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-four point five treats logging alerting incident response as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-four point five, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 34.6 People
 
 Developers get training on the new controls and a help channel; the platform team runs office hours.
 
-Section thirty-four point six develops cloud and container security integration with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-four point six, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-four point six treats logging alerting incident response as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-four point six, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 34.7 Integration testing
 
 Synthetic events are injected monthly to check each alert reaches the on-call engineer.
-
-Section thirty-four point seven develops cloud and container security integration with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-four point seven, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-four point seven treats logging alerting incident response as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-four point seven, Solent Energy Co-op will not accept cloud work without a written trail.
 
 ### Training developers
 
@@ -3796,73 +2302,25 @@ You will (1) design monitoring and response for configuration drift and policy e
 
 Design how Solent detects and responds to differences between declared and running configuration, and manages exceptions through their life.
 
-Section thirty-five point one develops design studio ii with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-five point one, Rosa Delgado expects design claims to carry owners and dates.
-
-Section thirty-five point one treats the brief alternatives trade-offs as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-five point one, Solent Energy Co-op will not accept design work without a written trail.
-
 ### 35.2 Alternatives
 
 Team A proposes relying on GitOps reconciliation to revert drift silently. Team B proposes reconciliation plus alerts for security-relevant drift. Elena's team proposes B plus a weekly drift report covering resources outside GitOps, such as cloud accounts.
-
-Section thirty-five point two develops design studio ii with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-five point two, Rosa Delgado expects design claims to carry owners and dates.
-
-Section thirty-five point two treats the brief alternatives trade-offs as testable only when evidence and ticket IDs are recorded.
 
 ### 35.3 Trade-offs
 
 Silent reversion hides useful signals: someone made a manual change, perhaps during an incident. Alerts on every drift create noise. Elena's team limits alerts to security-relevant fields.
 
-Section thirty-five point three develops design studio ii with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-five point three, Rosa Delgado expects design claims to carry owners and dates.
-
-Section thirty-five point three treats the brief alternatives trade-offs as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-five point three, Solent Energy Co-op will not accept design work without a written trail.
-
 ### 35.4 Exceptions life cycle
 
 Request, review, approval, labelled implementation, expiry reminder, renewal or removal, all logged.
-
-Section thirty-five point four develops design studio ii with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-five point four, Rosa Delgado expects design claims to carry owners and dates.
-
-Section thirty-five point four treats the brief alternatives trade-offs as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-five point four, Solent Energy Co-op will not accept design work without a written trail.
 
 ### 35.5 Package
 
 Diagrams, alert list with severities, exception workflow and test plan.
 
-Section thirty-five point five develops design studio ii with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-five point five, Rosa Delgado expects design claims to carry owners and dates.
-
-Section thirty-five point five treats the brief alternatives trade-offs as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-five point five, Solent Energy Co-op will not accept design work without a written trail.
-
-Section thirty-five point five fails closed if design evidence is missing rather than guessing.
-
 ### 35.6 Critique
 
 Critics ask what happens to drift in resources the GitOps controller does not manage; Elena's weekly report addresses this.
-
-Section thirty-five point six develops design studio ii with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-five point six, Rosa Delgado expects design claims to carry owners and dates.
-
-Section thirty-five point six treats the brief alternatives trade-offs as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-five point six, Solent Energy Co-op will not accept design work without a written trail.
 
 ### Assessment
 
@@ -3908,14 +2366,6 @@ You will (1) measure the performance cost of security controls; (2) analyse late
 
 Developers worry that admission checks and signature verification slow deployments. Measurement replaces worry with data and shows where optimisation is needed.
 
-Section thirty-six point one develops cloud and container security performance with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-six point one, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-six point one treats why measure lab result as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-six point one, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### Lab — Lab — admission overhead
 
 ```python
@@ -3937,57 +2387,21 @@ median 265.0 -> 284.5 ms; p95 505.5 -> 541.8 ms
 
 Across 20 synthetic deployments, median admission latency rises from 265.0 ms without the policy checks to 284.5 ms with them, about 20 ms. The 95th percentile rises from 505.5 to 541.8 ms, about 36 ms. Deployments take minutes overall, so the overhead is negligible; the tail grows more than the median because signature lookups occasionally miss the cache.
 
-Section thirty-six point two develops cloud and container security performance with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-six point two, Rosa Delgado expects cloud claims to carry owners and dates.
-
 ### 36.3 Scaling
 
 As meters grow (chapter 6), ingest pods and deployments increase. Policy checks are per admission, not per request, so they scale with deployment frequency, not traffic.
-
-Section thirty-six point three develops cloud and container security performance with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-six point three, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-six point three treats why measure lab result as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-six point three, Solent Energy Co-op will not accept cloud work without a written trail.
 
 ### 36.4 Network policy cost
 
 Network policy enforcement happens in the node's data path; Elena measures ingest throughput with and without policies and sees under 2% difference.
 
-Section thirty-six point four develops cloud and container security performance with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-six point four, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-six point four treats why measure lab result as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-six point four, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 36.5 Optimisation
 
 Caching signature verification results by digest cuts repeated lookups; the policy engine's replicas scale with admission load.
 
-Section thirty-six point five develops cloud and container security performance with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-six point five, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-six point five treats why measure lab result as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-six point five, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 36.6 Never trading away protection
 
 Optimisations must not skip checks; caching by digest is safe because the digest identifies exact content.
-
-Section thirty-six point six develops cloud and container security performance with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-six point six, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-six point six treats why measure lab result as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-six point six, Solent Energy Co-op will not accept cloud work without a written trail.
 
 ### Measurement method
 
@@ -4029,81 +2443,29 @@ You will (1) run the secured platform day to day; (2) handle alerts, exceptions 
 
 The on-call engineer reviews overnight alerts, the exception expiry list and the drift report. Most days take under 30 minutes.
 
-Section thirty-seven point one develops cloud and container security operations with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-seven point one, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-seven point one treats daily operations upgrades exception as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-seven point one, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 37.2 Upgrades
 
 Kubernetes minor versions are upgraded within the provider's support window. Each upgrade is tested in staging with the verification suite, since admission behaviour can change between versions.
-
-Section thirty-seven point two develops cloud and container security operations with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-seven point two, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-seven point two treats daily operations upgrades exception as testable only when evidence and ticket IDs are recorded.
 
 ### 37.3 Exception handling
 
 Weekly, the platform lead reviews new requests and upcoming expiries. Exceptions near expiry trigger a message to owners.
 
-Section thirty-seven point three develops cloud and container security operations with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-seven point three, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-seven point three treats daily operations upgrades exception as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-seven point three, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 37.4 Runbooks
 
 Each alert has a runbook with first steps, escalation and communication. Runbooks are tested in game days and updated after incidents.
-
-Section thirty-seven point four develops cloud and container security operations with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-seven point four, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-seven point four treats daily operations upgrades exception as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-seven point four, Solent Energy Co-op will not accept cloud work without a written trail.
 
 ### 37.5 Operational load
 
 Elena tracks time spent on security operations: in the first quarter after rollout, about 6 engineer-hours a week, falling to 3 as tooling improves.
 
-Section thirty-seven point five develops cloud and container security operations with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-seven point five, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-seven point five treats daily operations upgrades exception as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-seven point five, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 37.6 Incident example
 
 A developer accidentally creates a public test bucket in a sandbox account. The account-level block prevents public access; an alert still fires for the attempted change, and a short note reminds the developer of the sandbox rules.
 
-Section thirty-seven point six develops cloud and container security operations with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-seven point six, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-seven point six treats daily operations upgrades exception as testable only when evidence and ticket IDs are recorded.
-
 ### 37.7 Continuous improvement
 
 Each month the team picks one source of repetitive work and automates or removes it.
-
-Section thirty-seven point seven develops cloud and container security operations with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-seven point seven, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-seven point seven treats daily operations upgrades exception as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-seven point seven, Solent Energy Co-op will not accept cloud work without a written trail.
 
 ### Handover between shifts
 
@@ -4149,69 +2511,25 @@ You will (1) validate that the engineered system meets stakeholder needs, not ju
 
 Verification asks "did we build it right?" (requirements met). Validation asks "did we build the right thing?" (stakeholders' needs met). A system could pass every test yet frustrate developers so much that they bypass it.
 
-Section thirty-eight point one develops cloud and container security validation with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-eight point one, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-eight point one treats verification versus validation goals as testable only when evidence and ticket IDs are recorded.
-
 ### 38.2 Goals review
 
 Elena compares results with chapter 20's goals: no long-lived workload keys (achieved), default-deny in all production namespaces (achieved), Restricted profile with documented exceptions (achieved, one exception), signed images only (achieved), detection within objectives (achieved after alert fixes).
-
-Section thirty-eight point two develops cloud and container security validation with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-eight point two, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-eight point two treats verification versus validation goals as testable only when evidence and ticket IDs are recorded.
 
 ### 38.3 Developer validation
 
 A survey of 30 developers asks about deployment friction and clarity of rejections. 70% find rejection messages clear; complaints focus on exception request time.
 
-Section thirty-eight point three develops cloud and container security validation with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-eight point three, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-eight point three treats verification versus validation goals as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-eight point three, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 38.4 Auditor validation
 
 An internal auditor reviews evidence against CSA CCM v4 mappings and finds evidence sufficient for identity and infrastructure domains, asking for more on key rotation records.
-
-Section thirty-eight point four develops cloud and container security validation with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-eight point four, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-eight point four treats verification versus validation goals as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-eight point four, Solent Energy Co-op will not accept cloud work without a written trail.
 
 ### 38.5 Incident validation
 
 Six months without a credential or exposure incident is encouraging but short; Elena reports it with that caveat.
 
-Section thirty-eight point five develops cloud and container security validation with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-eight point five, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-eight point five treats verification versus validation goals as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-eight point five, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 38.6 Adjustments
 
 Exception requests get a 2-day service level; key rotation records are generated automatically.
-
-Section thirty-eight point six develops cloud and container security validation with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-eight point six, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-eight point six treats verification versus validation goals as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-eight point six, Solent Energy Co-op will not accept cloud work without a written trail.
 
 ### Acting on validation
 
@@ -4253,83 +2571,29 @@ You will (1) keep the security platform maintainable; (2) reduce custom code; (3
 
 Built-in Pod Security admission is used instead of custom rules where possible; custom policies cover only what the standard does not. Less custom code means less to maintain.
 
-Section thirty-nine point one develops cloud and container security maintainability with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-nine point one, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-nine point one treats prefer standard features policy as testable only when evidence and ticket IDs are recorded.
-
 ### 39.2 Policy as code quality
 
 Policies follow a style guide, have tests and comments explaining intent. Dead rules are removed.
-
-Section thirty-nine point two develops cloud and container security maintainability with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-nine point two, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-nine point two treats prefer standard features policy as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-nine point two, Solent Energy Co-op will not accept cloud work without a written trail.
 
 ### 39.3 Documentation
 
 Decision records, runbooks and "why" notes live with the code. A new engineer can understand the platform in a week.
 
-Section thirty-nine point three develops cloud and container security maintainability with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-nine point three, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-nine point three treats prefer standard features policy as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-nine point three, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 39.4 Dependencies
 
 The policy engine, GitOps controller and signing tools have upgrade schedules and owners, like any dependency.
-
-Section thirty-nine point four develops cloud and container security maintainability with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-nine point four, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-nine point four treats prefer standard features policy as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-nine point four, Solent Energy Co-op will not accept cloud work without a written trail.
 
 ### 39.5 Staff changes
 
 Two engineers know each component; knowledge is shared through pairing and rotation.
 
-Section thirty-nine point five develops cloud and container security maintainability with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-nine point five, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-nine point five treats prefer standard features policy as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-nine point five, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 39.6 Technology change
 
 If Solent changes cloud provider or Kubernetes distribution, controls defined in standard terms (Pod Security Standards, network policies) move more easily than provider-specific ones.
 
-Section thirty-nine point six develops cloud and container security maintainability with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-nine point six, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-nine point six treats prefer standard features policy as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-nine point six, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 39.7 Technical debt
 
 A list of known shortcuts with dates for removal is reviewed quarterly.
-
-Section thirty-nine point seven develops cloud and container security maintainability with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section thirty-nine point seven, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section thirty-nine point seven treats prefer standard features policy as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-nine point seven, Solent Energy Co-op will not accept cloud work without a written trail.
 
 ### Retiring controls
 
@@ -4375,12 +2639,6 @@ You will (1) verify declared versus live configuration across the estate; (2) de
 
 Drift is any difference between the declared configuration in version control and what is live. It may be harmless (an autoscaler changed replicas) or serious (a network policy deleted).
 
-Section forty point one develops verification laboratory ii with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty point one, Rosa Delgado expects verification claims to carry owners and dates.
-
-Section forty point one treats drift lab result classification as testable only when evidence and ticket IDs are recorded.
-
 ### Lab — Lab — configuration drift
 
 ```python
@@ -4408,47 +2666,17 @@ DRIFT billing/netpol         desired default-deny  live None
 
 Three of six synthetic settings have drifted. meterhub/image runs digest bb22 instead of the declared aa11. billing/replicas is 4 instead of 2. billing/netpol is missing instead of default-deny. The missing network policy is serious and urgent; the image digest needs investigation (an unapproved image?); the replica count is likely the autoscaler and should be excluded from declared state.
 
-Section forty point two develops verification laboratory ii with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty point two, Rosa Delgado expects verification claims to carry owners and dates.
-
 ### 40.3 Classification
 
 Security-relevant drift (policies, images, identities, privileges) alerts immediately; operational drift is reported weekly.
-
-Section forty point three develops verification laboratory ii with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty point three, Rosa Delgado expects verification claims to carry owners and dates.
-
-Section forty point three treats drift lab result classification as testable only when evidence and ticket IDs are recorded.
-
-For section forty point three, Solent Energy Co-op will not accept verification work without a written trail.
 
 ### 40.4 Response
 
 Serious drift is reverted by reconciliation and investigated: who changed it, why, and was anything exposed in the meantime?
 
-Section forty point four develops verification laboratory ii with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty point four, Rosa Delgado expects verification claims to carry owners and dates.
-
-Section forty point four treats drift lab result classification as testable only when evidence and ticket IDs are recorded.
-
-For section forty point four, Solent Energy Co-op will not accept verification work without a written trail.
-
 ### 40.5 Evidence
 
 Each drift event is recorded with timestamps, cause and resolution.
-
-Section forty point five develops verification laboratory ii with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty point five, Rosa Delgado expects verification claims to carry owners and dates.
-
-Section forty point five treats drift lab result classification as testable only when evidence and ticket IDs are recorded.
-
-For section forty point five, Solent Energy Co-op will not accept verification work without a written trail.
-
-Section forty point five fails closed if verification evidence is missing rather than guessing.
 
 ### Weekly drift report
 
@@ -4498,79 +2726,29 @@ You will (1) optimise the secured platform for cost, effort and risk together; (
 
 Elena reviews where time and money go: duplicate scanners checking the same images, alerts that never lead to action, idle node pools reserved for exceptions that ended.
 
-Section forty-one point one develops cloud and container security system with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-one point one, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section forty-one point one treats finding waste redundant controls as testable only when evidence and ticket IDs are recorded.
-
 ### 41.2 Redundant controls
 
 Two image scanners ran in the pipeline with overlapping results. Comparing six months of findings shows one found everything the other did plus more; the weaker one is retired, saving pipeline time.
-
-Section forty-one point two develops cloud and container security system with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-one point two, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section forty-one point two treats finding waste redundant controls as testable only when evidence and ticket IDs are recorded.
 
 ### 41.3 Noisy alerts
 
 Alerts are ranked by how often they led to action. Three alert rules with no action in six months are reviewed: two are tuned, one removed with the reason recorded.
 
-Section forty-one point three develops cloud and container security system with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-one point three, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section forty-one point three treats finding waste redundant controls as testable only when evidence and ticket IDs are recorded.
-
 ### 41.4 Cost
 
 The dedicated node pool for privileged workloads now hosts only the node agent; it is right-sized to the smallest suitable machines.
-
-Section forty-one point four develops cloud and container security system with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-one point four, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section forty-one point four treats finding waste redundant controls as testable only when evidence and ticket IDs are recorded.
-
-For section forty-one point four, Solent Energy Co-op will not accept cloud work without a written trail.
 
 ### 41.5 Risk value
 
 Each improvement candidate is scored on risk reduced per engineer-day. Top items: automate key rotation records, add egress limits to two namespaces, shorten exception approval time.
 
-Section forty-one point five develops cloud and container security system with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-one point five, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section forty-one point five treats finding waste redundant controls as testable only when evidence and ticket IDs are recorded.
-
-For section forty-one point five, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 41.6 Guarding against over-optimisation
 
 Removing a control requires evidence it is redundant, not just inconvenient.
 
-Section forty-one point six develops cloud and container security system with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-one point six, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section forty-one point six treats finding waste redundant controls as testable only when evidence and ticket IDs are recorded.
-
-For section forty-one point six, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 41.7 Results
 
 Optimisation saves about 15% of platform security spending and four engineer-hours a week.
-
-Section forty-one point seven develops cloud and container security system with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-one point seven, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section forty-one point seven treats finding waste redundant controls as testable only when evidence and ticket IDs are recorded.
-
-For section forty-one point seven, Solent Energy Co-op will not accept cloud work without a written trail.
 
 ### Sharing savings
 
@@ -4620,69 +2798,25 @@ You will (1) run a small applied study on the platform; (2) frame a question; (3
 
 Elena asks: "Since admission enforcement began, has the time from a risky workload configuration being proposed to being fixed fallen?" Before enforcement, risky settings were found by weekly scans after deployment.
 
-Section forty-two point one develops cloud and container security applied with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-two point one, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section forty-two point one treats the question data analysis as testable only when evidence and ticket IDs are recorded.
-
 ### 42.2 Data
 
 Pipeline and admission logs give the time a risky configuration first appeared in a pull request or admission request, and when a compliant version replaced it. Six months before and after are compared.
-
-Section forty-two point two develops cloud and container security applied with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-two point two, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section forty-two point two treats the question data analysis as testable only when evidence and ticket IDs are recorded.
 
 ### 42.3 Analysis
 
 Median time to fix falls from 9 days (found after deployment) to 4 hours (rejected at admission, fixed before deployment). Most fixes now happen before anything runs.
 
-Section forty-two point three develops cloud and container security applied with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-two point three, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section forty-two point three treats the question data analysis as testable only when evidence and ticket IDs are recorded.
-
-For section forty-two point three, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 42.4 Limits
 
 The before period relied on weekly scans, so measured times include detection delay; teams also improved through training; one organisation.
-
-Section forty-two point four develops cloud and container security applied with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-two point four, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section forty-two point four treats the question data analysis as testable only when evidence and ticket IDs are recorded.
-
-For section forty-two point four, Solent Energy Co-op will not accept cloud work without a written trail.
 
 ### 42.5 Ethics
 
 Data are aggregated by namespace; no individual developer is identified.
 
-Section forty-two point five develops cloud and container security applied with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-two point five, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section forty-two point five treats the question data analysis as testable only when evidence and ticket IDs are recorded.
-
-For section forty-two point five, Solent Energy Co-op will not accept cloud work without a written trail.
-
 ### 42.6 Reporting
 
 A four-page report with method, results, limits and recommendations is shared internally and summarised for the regulator.
-
-Section forty-two point six develops cloud and container security applied with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-two point six, Rosa Delgado expects cloud claims to carry owners and dates.
-
-Section forty-two point six treats the question data analysis as testable only when evidence and ticket IDs are recorded.
-
-For section forty-two point six, Solent Energy Co-op will not accept cloud work without a written trail.
 
 ### Data quality
 
@@ -4724,73 +2858,25 @@ You will (1) work within a real-style operations team; (2) apply course methods 
 
 Elena spends eight weeks embedded in Solent's platform team, joining on-call shadowing, change reviews and planning.
 
-Section forty-three point one develops industry or public-service practice with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-three point one, Rosa Delgado expects industry claims to carry owners and dates.
-
-Section forty-three point one treats placement change reviews shadowing as testable only when evidence and ticket IDs are recorded.
-
-For section forty-three point one, Solent Energy Co-op will not accept industry work without a written trail.
-
 ### 43.2 Change reviews
 
 She reviews 40 infrastructure pull requests, commenting on security-relevant settings. Twelve comments lead to changes; she learns to phrase comments as questions with references.
-
-Section forty-three point two develops industry or public-service practice with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-three point two, Rosa Delgado expects industry claims to carry owners and dates.
-
-Section forty-three point two treats placement change reviews shadowing as testable only when evidence and ticket IDs are recorded.
-
-For section forty-three point two, Solent Energy Co-op will not accept industry work without a written trail.
 
 ### 43.3 Shadowing on-call
 
 Elena observes alert handling and drafts runbook improvements, approved by the team.
 
-Section forty-three point three develops industry or public-service practice with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-three point three, Rosa Delgado expects industry claims to carry owners and dates.
-
-Section forty-three point three treats placement change reviews shadowing as testable only when evidence and ticket IDs are recorded.
-
-For section forty-three point three, Solent Energy Co-op will not accept industry work without a written trail.
-
 ### 43.4 Working with developers
 
 A developer team asks for help moving a service to Restricted pod security. Elena pairs with them; the service is compliant in two days.
-
-Section forty-three point four develops industry or public-service practice with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-three point four, Rosa Delgado expects industry claims to carry owners and dates.
-
-Section forty-three point four treats placement change reviews shadowing as testable only when evidence and ticket IDs are recorded.
-
-For section forty-three point four, Solent Energy Co-op will not accept industry work without a written trail.
 
 ### 43.5 Professional lessons
 
 Security engineers succeed by making the secure path easy: templates, clear messages, help when stuck.
 
-Section forty-three point five develops industry or public-service practice with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-three point five, Rosa Delgado expects industry claims to carry owners and dates.
-
-Section forty-three point five treats placement change reviews shadowing as testable only when evidence and ticket IDs are recorded.
-
-For section forty-three point five, Solent Energy Co-op will not accept industry work without a written trail.
-
 ### 43.6 Supervision
 
 Rosa reviews Elena's work weekly; all production changes are made by team members.
-
-Section forty-three point six develops industry or public-service practice with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-three point six, Rosa Delgado expects industry claims to carry owners and dates.
-
-Section forty-three point six treats placement change reviews shadowing as testable only when evidence and ticket IDs are recorded.
-
-For section forty-three point six, Solent Energy Co-op will not accept industry work without a written trail.
 
 ### Reflection log
 
@@ -4836,85 +2922,29 @@ You will (1) define the capstone project scope; (2) plan design, implementation 
 
 Elena's capstone is an automated "secure namespace" service: a request creates a namespace with default-deny network policies, Restricted pod security, workload identity binding, resource quotas and monitoring, all from reviewed templates.
 
-Section forty-four point one develops engineering capstone with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-four point one, Rosa Delgado expects engineering claims to carry owners and dates.
-
-Section forty-four point one treats capstone choice why scope as testable only when evidence and ticket IDs are recorded.
-
 ### 44.2 Why
 
 The applied study showed new services generate most rejections. A secure-by-default namespace removes that friction and closes gaps like the opening case's missing policies.
-
-Section forty-four point two develops engineering capstone with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-four point two, Rosa Delgado expects engineering claims to carry owners and dates.
-
-Section forty-four point two treats capstone choice why scope as testable only when evidence and ticket IDs are recorded.
-
-For section forty-four point two, Solent Energy Co-op will not accept engineering work without a written trail.
 
 ### 44.3 Scope
 
 Templates, a small request workflow, verification tests and documentation. Out of scope: changes to existing namespaces.
 
-Section forty-four point three develops engineering capstone with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-four point three, Rosa Delgado expects engineering claims to carry owners and dates.
-
-Section forty-four point three treats capstone choice why scope as testable only when evidence and ticket IDs are recorded.
-
-For section forty-four point three, Solent Energy Co-op will not accept engineering work without a written trail.
-
 ### 44.4 Success criteria
 
 New namespaces pass all chapter 30 verification tests at creation; creation takes under 10 minutes; developers rate the process at least 4 of 5.
-
-Section forty-four point four develops engineering capstone with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-four point four, Rosa Delgado expects engineering claims to carry owners and dates.
-
-Section forty-four point four treats capstone choice why scope as testable only when evidence and ticket IDs are recorded.
-
-For section forty-four point four, Solent Energy Co-op will not accept engineering work without a written trail.
 
 ### 44.5 Risks
 
 Templates could become too rigid; the workflow could become a bottleneck; template errors would spread to every new namespace.
 
-Section forty-four point five develops engineering capstone with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-four point five, Rosa Delgado expects engineering claims to carry owners and dates.
-
-Section forty-four point five treats capstone choice why scope as testable only when evidence and ticket IDs are recorded.
-
-For section forty-four point five, Solent Energy Co-op will not accept engineering work without a written trail.
-
 ### 44.6 Mitigations
 
 Template tests in the pipeline; staged release; a documented way to request variations.
 
-Section forty-four point six develops engineering capstone with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-four point six, Rosa Delgado expects engineering claims to carry owners and dates.
-
-Section forty-four point six treats capstone choice why scope as testable only when evidence and ticket IDs are recorded.
-
-For section forty-four point six, Solent Energy Co-op will not accept engineering work without a written trail.
-
 ### 44.7 Plan
 
 Eight weeks: design (2), implementation (3), verification (2), documentation and handover (1).
-
-Section forty-four point seven develops engineering capstone with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-four point seven, Rosa Delgado expects engineering claims to carry owners and dates.
-
-Section forty-four point seven treats capstone choice why scope as testable only when evidence and ticket IDs are recorded.
-
-For section forty-four point seven, Solent Energy Co-op will not accept engineering work without a written trail.
-
-Section forty-four point seven fails closed if engineering evidence is missing rather than guessing.
 
 ### Stakeholder check
 
@@ -4960,73 +2990,25 @@ You will (1) submit the capstone design for independent review; (2) respond to f
 
 A platform engineer from another team and a security architect from a partner university review the design package.
 
-Section forty-five point one develops independent design review with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-five point one, Rosa Delgado expects independent claims to carry owners and dates.
-
-Section forty-five point one treats reviewers findings responses disagreement as testable only when evidence and ticket IDs are recorded.
-
-For section forty-five point one, Solent Energy Co-op will not accept independent work without a written trail.
-
 ### 45.2 Findings
 
 The reviewers raise four points: quotas may be too small for data jobs; the workflow's own permissions are broad (it can create any namespace); monitoring setup assumes one log destination; templates lack versioning for rollback.
-
-Section forty-five point two develops independent design review with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-five point two, Rosa Delgado expects independent claims to carry owners and dates.
-
-Section forty-five point two treats reviewers findings responses disagreement as testable only when evidence and ticket IDs are recorded.
 
 ### 45.3 Responses
 
 Quotas become size options; the workflow's identity is limited to creating namespaces with an approved label prefix and applying templates; log destination is a parameter; templates are versioned and namespaces record which version created them.
 
-Section forty-five point three develops independent design review with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-five point three, Rosa Delgado expects independent claims to carry owners and dates.
-
-Section forty-five point three treats reviewers findings responses disagreement as testable only when evidence and ticket IDs are recorded.
-
 ### 45.4 Disagreement
 
 One reviewer suggests separate clusters per team. Elena explains the chapter 26 decision and criteria; the reviewer accepts, noting it as a future option.
-
-Section forty-five point four develops independent design review with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-five point four, Rosa Delgado expects independent claims to carry owners and dates.
-
-Section forty-five point four treats reviewers findings responses disagreement as testable only when evidence and ticket IDs are recorded.
-
-For section forty-five point four, Solent Energy Co-op will not accept independent work without a written trail.
 
 ### 45.5 Record
 
 A review log captures each finding, response and change.
 
-Section forty-five point five develops independent design review with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-five point five, Rosa Delgado expects independent claims to carry owners and dates.
-
-Section forty-five point five treats reviewers findings responses disagreement as testable only when evidence and ticket IDs are recorded.
-
-For section forty-five point five, Solent Energy Co-op will not accept independent work without a written trail.
-
-Section forty-five point five fails closed if independent evidence is missing rather than guessing.
-
 ### 45.6 Learning
 
 Independent review catches issues the designer cannot see.
-
-Section forty-five point six develops independent design review with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-five point six, Rosa Delgado expects independent claims to carry owners and dates.
-
-Section forty-five point six treats reviewers findings responses disagreement as testable only when evidence and ticket IDs are recorded.
-
-For section forty-five point six, Solent Energy Co-op will not accept independent work without a written trail.
-
-Section forty-five point six fails closed if independent evidence is missing rather than guessing.
 
 ### Second round
 
@@ -5072,81 +3054,29 @@ You will (1) implement and verify the secure namespace service; (2) run it in st
 
 Templates are written as versioned manifests; the request workflow is a reviewed pull request to a namespaces repository, processed by the GitOps controller with a narrowly scoped identity. A canary namespace verifies each template version.
 
-Section forty-six point one develops engineering capstone ii with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-six point one, Rosa Delgado expects engineering claims to carry owners and dates.
-
-Section forty-six point one treats implementation verification staging trial as testable only when evidence and ticket IDs are recorded.
-
 ### 46.2 Verification
 
 Each new namespace automatically runs the chapter 30 tests: privileged pod rejected, unsigned image rejected, web-to-db connection blocked, workload identity limited, quotas applied, alerts flowing. Results are attached to the request.
-
-Section forty-six point two develops engineering capstone ii with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-six point two, Rosa Delgado expects engineering claims to carry owners and dates.
-
-Section forty-six point two treats implementation verification staging trial as testable only when evidence and ticket IDs are recorded.
 
 ### 46.3 Staging trial
 
 Twelve namespaces are created in staging over two weeks; all pass verification. One template error, a missing DNS egress rule, is caught by the canary before any real namespace uses it.
 
-Section forty-six point three develops engineering capstone ii with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-six point three, Rosa Delgado expects engineering claims to carry owners and dates.
-
-Section forty-six point three treats implementation verification staging trial as testable only when evidence and ticket IDs are recorded.
-
 ### 46.4 Production
 
 Eight new production namespaces are created in the following month, all passing at creation. Median creation time is 6 minutes.
-
-Section forty-six point four develops engineering capstone ii with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-six point four, Rosa Delgado expects engineering claims to carry owners and dates.
-
-Section forty-six point four treats implementation verification staging trial as testable only when evidence and ticket IDs are recorded.
-
-For section forty-six point four, Solent Energy Co-op will not accept engineering work without a written trail.
 
 ### 46.5 Developer feedback
 
 Developers rate the process 4.4 of 5; the main request is clearer documentation on quota options.
 
-Section forty-six point five develops engineering capstone ii with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-six point five, Rosa Delgado expects engineering claims to carry owners and dates.
-
-Section forty-six point five treats implementation verification staging trial as testable only when evidence and ticket IDs are recorded.
-
-For section forty-six point five, Solent Energy Co-op will not accept engineering work without a written trail.
-
 ### 46.6 Handover
 
 The platform team takes ownership with runbooks, template tests and a maintenance schedule.
 
-Section forty-six point six develops engineering capstone ii with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-six point six, Rosa Delgado expects engineering claims to carry owners and dates.
-
-Section forty-six point six treats implementation verification staging trial as testable only when evidence and ticket IDs are recorded.
-
-For section forty-six point six, Solent Energy Co-op will not accept engineering work without a written trail.
-
 ### 46.7 Criteria check
 
 All three success criteria are met.
-
-Section forty-six point seven develops engineering capstone ii with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-six point seven, Rosa Delgado expects engineering claims to carry owners and dates.
-
-Section forty-six point seven treats implementation verification staging trial as testable only when evidence and ticket IDs are recorded.
-
-For section forty-six point seven, Solent Energy Co-op will not accept engineering work without a written trail.
-
-Section forty-six point seven fails closed if engineering evidence is missing rather than guessing.
 
 ### Documentation
 
@@ -5192,71 +3122,25 @@ You will (1) plan and run a controlled failure and recovery trial; (2) test cont
 
 With approval from Solent's operations director, Elena and the platform team run a staged trial in a production-like environment: simulate a leaked workload credential, a deleted network policy and an unavailable policy engine, then measure detection and recovery.
 
-Section forty-seven point one develops failure and recovery trial with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-seven point one, Rosa Delgado expects failure claims to carry owners and dates.
-
-Section forty-seven point one treats trial plan safety leaked as testable only when evidence and ticket IDs are recorded.
-
 ### 47.2 Safety
 
 The trial uses a dedicated environment with synthetic meter data. Abort criteria and a rollback plan are agreed; observers are named.
-
-Section forty-seven point two develops failure and recovery trial with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-seven point two, Rosa Delgado expects failure claims to carry owners and dates.
-
-Section forty-seven point two treats trial plan safety leaked as testable only when evidence and ticket IDs are recorded.
-
-For section forty-seven point two, Solent Energy Co-op will not accept failure work without a written trail.
 
 ### 47.3 Leaked credential scenario
 
 A synthetic credential event is injected. Detection takes 4 minutes; the credential is revoked in 9 minutes. Because workload identity tokens expire within an hour, the scenario also confirms that no long-lived key exists to revoke.
 
-Section forty-seven point three develops failure and recovery trial with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-seven point three, Rosa Delgado expects failure claims to carry owners and dates.
-
-Section forty-seven point three treats trial plan safety leaked as testable only when evidence and ticket IDs are recorded.
-
 ### 47.4 Deleted policy scenario
 
 A network policy is deleted. GitOps restores it in 3 minutes; a drift alert fires in 2.
-
-Section forty-seven point four develops failure and recovery trial with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-seven point four, Rosa Delgado expects failure claims to carry owners and dates.
-
-Section forty-seven point four treats trial plan safety leaked as testable only when evidence and ticket IDs are recorded.
-
-For section forty-seven point four, Solent Energy Co-op will not accept failure work without a written trail.
 
 ### 47.5 Engine failure scenario
 
 All policy engine replicas are stopped. Deployments fail closed; an alert fires in 1 minute; recovery takes 6 minutes following the runbook.
 
-Section forty-seven point five develops failure and recovery trial with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-seven point five, Rosa Delgado expects failure claims to carry owners and dates.
-
-Section forty-seven point five treats trial plan safety leaked as testable only when evidence and ticket IDs are recorded.
-
-For section forty-seven point five, Solent Energy Co-op will not accept failure work without a written trail.
-
 ### 47.6 Results
 
 All objectives met; two runbook steps clarified.
-
-Section forty-seven point six develops failure and recovery trial with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-seven point six, Rosa Delgado expects failure claims to carry owners and dates.
-
-Section forty-seven point six treats trial plan safety leaked as testable only when evidence and ticket IDs are recorded.
-
-For section forty-seven point six, Solent Energy Co-op will not accept failure work without a written trail.
-
-Section forty-seven point six fails closed if failure evidence is missing rather than guessing.
 
 ### Debrief
 
@@ -5302,75 +3186,25 @@ You will (1) compile an evidence dossier for the engineering work; (2) trace req
 
 The dossier follows the requirement trace: for each of R1 to R6 and the capstone criteria, the design element, verification evidence, operational evidence and remaining risk.
 
-Section forty-eight point one develops evidence dossier with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-eight point one, Rosa Delgado expects evidence claims to carry owners and dates.
-
-Section forty-eight point one treats structure evidence types integrity as testable only when evidence and ticket IDs are recorded.
-
-For section forty-eight point one, Solent Energy Co-op will not accept evidence work without a written trail.
-
 ### 48.2 Evidence types
 
 Test results with dates and policy versions, configuration queries, measurement reports (coverage, latency, applied study), trial results, review logs, survey results and decision records.
-
-Section forty-eight point two develops evidence dossier with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-eight point two, Rosa Delgado expects evidence claims to carry owners and dates.
-
-Section forty-eight point two treats structure evidence types integrity as testable only when evidence and ticket IDs are recorded.
-
-For section forty-eight point two, Solent Energy Co-op will not accept evidence work without a written trail.
 
 ### 48.3 Integrity
 
 Evidence files are stored in a repository with a manifest of SHA-256 hashes so assessors can confirm nothing changed after submission.
 
-Section forty-eight point three develops evidence dossier with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-eight point three, Rosa Delgado expects evidence claims to carry owners and dates.
-
-Section forty-eight point three treats structure evidence types integrity as testable only when evidence and ticket IDs are recorded.
-
-For section forty-eight point three, Solent Energy Co-op will not accept evidence work without a written trail.
-
 ### 48.4 Mapping
 
 A table maps evidence to CSA CCM v4 domains and to the Pod Security Standards and CIS Benchmark sections used.
-
-Section forty-eight point four develops evidence dossier with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-eight point four, Rosa Delgado expects evidence claims to carry owners and dates.
-
-Section forty-eight point four treats structure evidence types integrity as testable only when evidence and ticket IDs are recorded.
-
-For section forty-eight point four, Solent Energy Co-op will not accept evidence work without a written trail.
 
 ### 48.5 Limitations
 
 One organisation; synthetic data in trials; short post-rollout period; some controls depend on provider features that could change.
 
-Section forty-eight point five develops evidence dossier with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-eight point five, Rosa Delgado expects evidence claims to carry owners and dates.
-
-Section forty-eight point five treats structure evidence types integrity as testable only when evidence and ticket IDs are recorded.
-
-For section forty-eight point five, Solent Energy Co-op will not accept evidence work without a written trail.
-
 ### 48.6 Readability
 
 A two-page summary leads, with links into detail.
-
-Section forty-eight point six develops evidence dossier with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-eight point six, Rosa Delgado expects evidence claims to carry owners and dates.
-
-Section forty-eight point six treats structure evidence types integrity as testable only when evidence and ticket IDs are recorded.
-
-For section forty-eight point six, Solent Energy Co-op will not accept evidence work without a written trail.
-
-Section forty-eight point six fails closed if evidence evidence is missing rather than guessing.
 
 ### Failures included
 
@@ -5416,73 +3250,25 @@ You will (1) write the engineering thesis; (2) present problem, design, implemen
 
 Configuration and credential weaknesses in a containerised energy-data platform, shown by the leaked key and missing network policies.
 
-Section forty-nine point one develops engineering thesis with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-nine point one, Rosa Delgado expects engineering claims to carry owners and dates.
-
-Section forty-nine point one treats problem approach evaluation contributions as testable only when evidence and ticket IDs are recorded.
-
-For section forty-nine point one, Solent Energy Co-op will not accept engineering work without a written trail.
-
 ### 49.2 Approach
 
 Requirements from risks and standards; layered architecture; implemented controls (workload identity, default-deny networking, Restricted pod security, signed images, guardrails, drift detection); secure namespace service.
-
-Section forty-nine point two develops engineering thesis with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-nine point two, Rosa Delgado expects engineering claims to carry owners and dates.
-
-Section forty-nine point two treats problem approach evaluation contributions as testable only when evidence and ticket IDs are recorded.
-
-For section forty-nine point two, Solent Energy Co-op will not accept engineering work without a written trail.
 
 ### 49.3 Evaluation
 
 Coverage rose from 62% to 100% of production namespaces; long-lived workload keys from 23 to 0; time to fix risky configurations fell from 9 days to 4 hours; admission overhead about 20 ms median; trial objectives met.
 
-Section forty-nine point three develops engineering thesis with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-nine point three, Rosa Delgado expects engineering claims to carry owners and dates.
-
-Section forty-nine point three treats problem approach evaluation contributions as testable only when evidence and ticket IDs are recorded.
-
 ### 49.4 Contributions
 
 An engineering method combining standards, traceability and verification for small platform teams; the secure namespace service; measurement scripts reusable by others.
-
-Section forty-nine point four develops engineering thesis with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-nine point four, Rosa Delgado expects engineering claims to carry owners and dates.
-
-Section forty-nine point four treats problem approach evaluation contributions as testable only when evidence and ticket IDs are recorded.
-
-For section forty-nine point four, Solent Energy Co-op will not accept engineering work without a written trail.
 
 ### 49.5 Limits
 
 Single organisation, short observation, synthetic trial data, dependence on provider features.
 
-Section forty-nine point five develops engineering thesis with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-nine point five, Rosa Delgado expects engineering claims to carry owners and dates.
-
-Section forty-nine point five treats problem approach evaluation contributions as testable only when evidence and ticket IDs are recorded.
-
-For section forty-nine point five, Solent Energy Co-op will not accept engineering work without a written trail.
-
-Section forty-nine point five fails closed if engineering evidence is missing rather than guessing.
-
 ### 49.6 Future work
 
 Extend the namespace service to cloud accounts; measure developer productivity effects; study multi-organisation adoption.
-
-Section forty-nine point six develops engineering thesis with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section forty-nine point six, Rosa Delgado expects engineering claims to carry owners and dates.
-
-Section forty-nine point six treats problem approach evaluation contributions as testable only when evidence and ticket IDs are recorded.
-
-For section forty-nine point six, Solent Energy Co-op will not accept engineering work without a written trail.
 
 ### Writing process
 
@@ -5532,75 +3318,25 @@ You will (1) defend the engineering thesis before a panel; (2) answer technical 
 
 Dr Wagner, Rosa Delgado and an external examiner from industry.
 
-Section fifty point one develops final defense with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section fifty point one, Rosa Delgado expects final claims to carry owners and dates.
-
-Section fifty point one treats the panel technical questions as testable only when evidence and ticket IDs are recorded.
-
-For section fifty point one, Solent Energy Co-op will not accept final work without a written trail.
-
-Section fifty point one fails closed if final evidence is missing rather than guessing.
-
 ### 50.2 Technical questions
 
 Why fail closed? Because production safety outweighs deployment convenience, backed by a reliable engine. Why namespaces rather than clusters per service? The scored decision record. How do controls handle a provider outage? Rebuild and degradation plans.
-
-Section fifty point two develops final defense with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section fifty point two, Rosa Delgado expects final claims to carry owners and dates.
-
-Section fifty point two treats the panel technical questions as testable only when evidence and ticket IDs are recorded.
 
 ### 50.3 Professional questions
 
 How did you handle developer resistance? Through exceptions with expiry, clear messages and making the secure path easy. What would you do differently? Involve developers earlier in requirements.
 
-Section fifty point three develops final defense with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section fifty point three, Rosa Delgado expects final claims to carry owners and dates.
-
-Section fifty point three treats the panel technical questions as testable only when evidence and ticket IDs are recorded.
-
-For section fifty point three, Solent Energy Co-op will not accept final work without a written trail.
-
 ### 50.4 Reflection
 
 Elena writes that the most valuable skill was turning standards into testable requirements and then into evidence.
-
-Section fifty point four develops final defense with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section fifty point four, Rosa Delgado expects final claims to carry owners and dates.
-
-Section fifty point four treats the panel technical questions as testable only when evidence and ticket IDs are recorded.
-
-For section fifty point four, Solent Energy Co-op will not accept final work without a written trail.
 
 ### 50.5 Outcome
 
 The thesis passes; Solent offers Elena a platform security engineer role.
 
-Section fifty point five develops final defense with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section fifty point five, Rosa Delgado expects final claims to carry owners and dates.
-
-Section fifty point five treats the panel technical questions as testable only when evidence and ticket IDs are recorded.
-
-For section fifty point five, Solent Energy Co-op will not accept final work without a written trail.
-
-Section fifty point five fails closed if final evidence is missing rather than guessing.
-
 ### 50.6 Next steps
 
 Lead the extension of secure defaults to cloud accounts, mentor next year's student.
-
-Section fifty point six develops final defense with a Solent Energy Co-op note Elena Petrova can demo offline.
-
-Under section fifty point six, Rosa Delgado expects final claims to carry owners and dates.
-
-Section fifty point six treats the panel technical questions as testable only when evidence and ticket IDs are recorded.
-
-For section fifty point six, Solent Energy Co-op will not accept final work without a written trail.
 
 ### Mentoring
 

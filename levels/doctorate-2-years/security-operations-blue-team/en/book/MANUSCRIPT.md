@@ -50,49 +50,21 @@ SOC research shapes how organisations spend scarce analyst time. A study that ov
 
 **Detection quality** asks whether a rule fires on the activity it targets and stays quiet otherwise (precision, recall). **Triage quality** asks whether an analyst, given an alert, reaches the right disposition (accuracy, time, agreement). **Operational outcome** asks whether incidents are contained sooner or with less harm. A study can improve one while harming another; claims must name which construct was measured.
 
-Section one point two develops advanced research integrity and methods with a Calder University note Nadia Ferreira can demo offline.
-
-Under section one point two, Prof. Elias Grant expects advanced claims to carry owners and dates.
-
 ### 1.3 Data for research
 
 Real SOC data contains personal data, business secrets and evidence of live incidents. It is rarely shareable and may not be consented for research. Synthetic alert sets with known ground truth allow exact scoring and open publication. Where operational data is needed, it is used under a data-sharing agreement, minimised and pseudonymised, with ethics approval.
-
-Section one point three develops advanced research integrity and methods with a Calder University note Nadia Ferreira can demo offline.
-
-Under section one point three, Prof. Elias Grant expects advanced claims to carry owners and dates.
 
 ### 1.4 Pre-registration
 
 Before the main study the candidate registers hypotheses, primary and secondary measures, sample size reasoning, analysis plan and exclusion rules. Later changes are allowed but logged with reasons, so readers can tell planned from exploratory results.
 
-Section one point four develops advanced research integrity and methods with a Calder University note Nadia Ferreira can demo offline.
-
-Under section one point four, Prof. Elias Grant expects advanced claims to carry owners and dates.
-
-Section one point four treats why integrity matters in as testable only when evidence and ticket IDs are recorded.
-
 ### 1.5 Interests and tools
 
 Vendors may fund SOC studies or supply tools. Funding, relationships and tool versions are declared. A study that tests a product must not let the vendor approve conclusions.
 
-Section one point five develops advanced research integrity and methods with a Calder University note Nadia Ferreira can demo offline.
-
-Under section one point five, Prof. Elias Grant expects advanced claims to carry owners and dates.
-
-Section one point five treats why integrity matters in as testable only when evidence and ticket IDs are recorded.
-
 ### 1.6 Ethics with analysts as participants
 
 When analysts are participants, their performance data could affect careers. Consent is voluntary, managers do not see individual scores, and participants may withdraw.
-
-Section one point six develops advanced research integrity and methods with a Calder University note Nadia Ferreira can demo offline.
-
-Under section one point six, Prof. Elias Grant expects advanced claims to carry owners and dates.
-
-Section one point six treats why integrity matters in as testable only when evidence and ticket IDs are recorded.
-
-For section one point six, Calder University will not accept advanced work without a written trail.
 
 ### Worked example
 
@@ -134,12 +106,6 @@ You will (1) map open problems in security operations research; (2) explain the 
 
 Axelsson (2000) showed that because genuine intrusions are rare among the events a detector sees, even a small false-positive rate produces mostly false alarms. Precision depends on prevalence as well as on the detector.
 
-Section two point one develops security operations and blue team with a Calder University note Nadia Ferreira can demo offline.
-
-Under section two point one, Prof. Elias Grant expects security claims to carry owners and dates.
-
-Section two point one treats the base-rate problem reading as testable only when evidence and ticket IDs are recorded.
-
 ### Lab — precision under different base rates
 
 ```python
@@ -168,49 +134,21 @@ prevalence=1e-04 TPR=0.95 FPR=1e-03 -> precision=0.087
 
 With 95% true-positive rate and 1% false-positive rate, precision is 0.490 at a prevalence of one in a hundred, 0.087 at one in a thousand and 0.009 at one in ten thousand. Cutting the false-positive rate to 0.1% lifts the one-in-a-thousand case only to 0.487. Rare-event detection needs very low false-positive rates or a second stage, such as analyst triage, to be useful.
 
-Section two point two develops security operations and blue team with a Calder University note Nadia Ferreira can demo offline.
-
-Under section two point two, Prof. Elias Grant expects security claims to carry owners and dates.
-
 ### 2.3 Alert fatigue
 
 Alahmadi, Axon and Martinovic (2022) interviewed SOC practitioners and found that many alarms called "false positives" are benign triggers: the rule matched real behaviour that was legitimate in context. They propose that alarms be Reliable, Explainable, Analytical, Contextual and Transferable. Hassan et al. (2019) used provenance graphs to rank alerts and reduce fatigue.
-
-Section two point three develops security operations and blue team with a Calder University note Nadia Ferreira can demo offline.
-
-Under section two point three, Prof. Elias Grant expects security claims to carry owners and dates.
 
 ### 2.4 Machine learning caution
 
 Sommer and Paxson (2010) argued that anomaly detection suits closed worlds poorly: attacks are rare, benign variety is huge, and errors are costly to explain. Their critique still frames how frontier work must be evaluated.
 
-Section two point four develops security operations and blue team with a Calder University note Nadia Ferreira can demo offline.
-
-Under section two point four, Prof. Elias Grant expects security claims to carry owners and dates.
-
-Section two point four treats the base-rate problem reading as testable only when evidence and ticket IDs are recorded.
-
 ### 2.5 Human and organisational factors
 
 Sundaramurthy et al. (2014) embedded researchers in SOCs and found tacit knowledge and tooling friction central. Kokulu et al. (2019) stressed mismatches between management metrics and analyst reality.
 
-Section two point five develops security operations and blue team with a Calder University note Nadia Ferreira can demo offline.
-
-Under section two point five, Prof. Elias Grant expects security claims to carry owners and dates.
-
-Section two point five treats the base-rate problem reading as testable only when evidence and ticket IDs are recorded.
-
-For section two point five, Calder University will not accept security work without a written trail.
-
 ### 2.6 Nadia's position
 
 Nadia's thesis sits between detection and triage: it tests whether adding context to alerts, as the "Contextual" property suggests, improves analysts' decisions on benign triggers without hiding true attacks.
-
-Section two point six develops security operations and blue team with a Calder University note Nadia Ferreira can demo offline.
-
-Under section two point six, Prof. Elias Grant expects security claims to carry owners and dates.
-
-Section two point six treats the base-rate problem reading as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -252,21 +190,9 @@ You will (1) state an original contribution precisely; (2) separate the contribu
 
 An original contribution adds knowledge others can use and test: a validated method, a measured effect, a reusable dataset. Nadia proposes three items: a labelled synthetic alert corpus with benign triggers; a controlled experiment on context enrichment; and an analysis of where enrichment fails.
 
-Section three point one develops original contribution proposal with a Calder University note Nadia Ferreira can demo offline.
-
-Under section three point one, Prof. Elias Grant expects original claims to carry owners and dates.
-
-Section three point one treats what counts as original as testable only when evidence and ticket IDs are recorded.
-
 ### 3.2 Supporting work
 
 Detection rules must be good enough that triage, not detection, is the bottleneck in the experiment. Nadia evaluates candidate rules on labelled synthetic events before building alert cards. Rules are written in the Sigma format from SigmaHQ so others can read them in a vendor-neutral way.
-
-Section three point two develops original contribution proposal with a Calder University note Nadia Ferreira can demo offline.
-
-Under section three point two, Prof. Elias Grant expects original claims to carry owners and dates.
-
-Section three point two treats what counts as original as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — replaying detection conditions
 
@@ -303,39 +229,17 @@ v2 office-parent  TP=4 FP=0 FN=0 precision=1.00 recall=1.00
 
 Condition v1 (encoded PowerShell command line) catches 3 of 4 attacks but also fires on 3 benign events — the software-deployment agent and an administrator — giving precision 0.50. Condition v2 (script host whose parent is an Office application) catches all 4 attacks with no false alarms in this small set. The benign triggers of v1 are exactly the kind of alerts context should help analysts dismiss, so Nadia keeps v1's alerts in the corpus as triage material.
 
-Section three point three develops original contribution proposal with a Calder University note Nadia Ferreira can demo offline.
-
 ### 3.4 Novelty
 
 Her review shows prior work measured analysts' perceptions (Alahmadi et al., 2022) and automated ranking (Hassan et al., 2019), but few controlled experiments on context in alert cards with known ground truth.
-
-Section three point four develops original contribution proposal with a Calder University note Nadia Ferreira can demo offline.
-
-Under section three point four, Prof. Elias Grant expects original claims to carry owners and dates.
-
-Section three point four treats what counts as original as testable only when evidence and ticket IDs are recorded.
 
 ### 3.5 Feasibility
 
 Eight analysts from the fictional **Northgate Shared SOC**, which serves several municipalities, agree to participate in work time with manager **Ruth Okonkwo**'s approval; the corpus is synthetic; the study fits in two semesters.
 
-Section three point five develops original contribution proposal with a Calder University note Nadia Ferreira can demo offline.
-
-Under section three point five, Prof. Elias Grant expects original claims to carry owners and dates.
-
-Section three point five treats what counts as original as testable only when evidence and ticket IDs are recorded.
-
 ### 3.6 Risks
 
 Recruitment may fall short; analysts may recognise synthetic patterns. Mitigations: a reserve pool from a second SOC; realism review by two senior analysts.
-
-Section three point six develops original contribution proposal with a Calder University note Nadia Ferreira can demo offline.
-
-Under section three point six, Prof. Elias Grant expects original claims to carry owners and dates.
-
-Section three point six treats what counts as original as testable only when evidence and ticket IDs are recorded.
-
-For section three point six, Calder University will not accept original work without a written trail.
 
 ### Worked example
 
@@ -376,21 +280,9 @@ You will (1) replicate a baseline before testing an intervention; (2) measure in
 
 Before claiming enrichment helps, Nadia must show her setup reproduces known behaviour: analysts in the baseline condition should show accuracy and benign-trigger confusion similar to what practitioners report. If the baseline is odd, the comparison is meaningless.
 
-Section four point one develops baseline replication and pilot with a Calder University note Nadia Ferreira can demo offline.
-
-Under section four point one, Prof. Elias Grant expects baseline claims to carry owners and dates.
-
-Section four point one treats why replicate baseline ground-truth as testable only when evidence and ticket IDs are recorded.
-
 ### 4.2 Ground-truth labels
 
 The corpus labels are written by Nadia when she generates alerts, but "malicious" versus "benign" can be debatable for borderline cases. Two senior analysts independently label 20 sample alerts to test whether labels are clear.
-
-Section four point two develops baseline replication and pilot with a Calder University note Nadia Ferreira can demo offline.
-
-Under section four point two, Prof. Elias Grant expects baseline claims to carry owners and dates.
-
-Section four point two treats why replicate baseline ground-truth as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — agreement on labels
 
@@ -417,45 +309,17 @@ n=20 observed agreement=0.90 chance=0.625 kappa=0.73
 
 The two analysts agree on 18 of 20 alerts (0.90). Chance agreement, given how often each says "malicious", is 0.625, so Cohen's kappa is 0.73 — "substantial" on the Landis and Koch (1977) scale. The two disagreements are discussed; one label is corrected and one alert is rewritten to remove ambiguity.
 
-Section four point three develops baseline replication and pilot with a Calder University note Nadia Ferreira can demo offline.
-
-Under section four point three, Prof. Elias Grant expects baseline claims to carry owners and dates.
-
-Section four point three treats why replicate baseline ground-truth as testable only when evidence and ticket IDs are recorded.
-
 ### 4.4 The pilot
 
 Two volunteer analysts not in the main study triage 40 alerts in each condition. The pilot checks timing, instructions, the alert-card layout and logging.
-
-Section four point four develops baseline replication and pilot with a Calder University note Nadia Ferreira can demo offline.
-
-Under section four point four, Prof. Elias Grant expects baseline claims to carry owners and dates.
-
-Section four point four treats why replicate baseline ground-truth as testable only when evidence and ticket IDs are recorded.
-
-For section four point four, Calder University will not accept baseline work without a written trail.
 
 ### 4.5 What the pilot found
 
 Analysts did not notice the asset criticality field because it sat at the bottom of the card; logging missed disposition changes; 40 alerts took 70 minutes, causing fatigue. Nadia moves context fields near the top, fixes logging, and splits sessions into two of 40 alerts.
 
-Section four point five develops baseline replication and pilot with a Calder University note Nadia Ferreira can demo offline.
-
-Under section four point five, Prof. Elias Grant expects baseline claims to carry owners and dates.
-
-Section four point five treats why replicate baseline ground-truth as testable only when evidence and ticket IDs are recorded.
-
 ### 4.6 Pilot data
 
 Pilot results are not used to estimate effects; they test procedure. This is stated in the registration.
-
-Section four point six develops baseline replication and pilot with a Calder University note Nadia Ferreira can demo offline.
-
-Under section four point six, Prof. Elias Grant expects baseline claims to carry owners and dates.
-
-Section four point six treats why replicate baseline ground-truth as testable only when evidence and ticket IDs are recorded.
-
-For section four point six, Calder University will not accept baseline work without a written trail.
 
 ### Worked example
 
@@ -496,23 +360,9 @@ You will (1) run a controlled crossover study; (2) estimate effects with interva
 
 Eight analysts each triage 160 alerts: 80 baseline cards and 80 enriched cards, in counterbalanced order, with alert sets swapped between halves. Each analyst sees each alert once. Enriched cards add asset criticality, user role, and the count of similar alerts closed as benign in the last 30 days.
 
-Section five point one develops main study and independent validation with a Calder University note Nadia Ferreira can demo offline.
-
-Under section five point one, Prof. Elias Grant expects main claims to carry owners and dates.
-
-Section five point one treats design primary measure reading as testable only when evidence and ticket IDs are recorded.
-
 ### 5.2 Primary measure
 
 Accuracy: the share of dispositions matching ground truth. Pooled across analysts, each condition has 160 alert decisions in the primary sample used for the registered interval.
-
-Section five point two develops main study and independent validation with a Calder University note Nadia Ferreira can demo offline.
-
-Under section five point two, Prof. Elias Grant expects main claims to carry owners and dates.
-
-Section five point two treats design primary measure reading as testable only when evidence and ticket IDs are recorded.
-
-For section five point two, Calder University will not accept main work without a written trail.
 
 ### Lab — intervals for accuracy
 
@@ -541,45 +391,17 @@ enriched  139/160 = 0.869  95% CI [0.808, 0.913]
 
 Baseline accuracy is 118/160 = 0.738 (95% CI 0.664–0.800); enriched is 139/160 = 0.869 (0.808–0.913). The intervals barely overlap, and the difference of 13 points is consistent with the hypothesis. Because the same analysts did both conditions, the registered paired analysis is the main test; the Wilson intervals describe each condition.
 
-Section five point three develops main study and independent validation with a Calder University note Nadia Ferreira can demo offline.
-
-Under section five point three, Prof. Elias Grant expects main claims to carry owners and dates.
-
-Section five point three treats design primary measure reading as testable only when evidence and ticket IDs are recorded.
-
 ### 5.4 Harms
 
 Of the 21 additional correct decisions, most were benign triggers correctly closed. But two true attacks were wrongly closed in the enriched condition, both carrying the note "similar alerts closed as benign: 14". History context can lull analysts. This is reported prominently.
-
-Section five point four develops main study and independent validation with a Calder University note Nadia Ferreira can demo offline.
-
-Under section five point four, Prof. Elias Grant expects main claims to carry owners and dates.
-
-Section five point four treats design primary measure reading as testable only when evidence and ticket IDs are recorded.
 
 ### 5.5 Independent validation
 
 A statistician at another university reruns the analysis from Nadia's raw logs and scripts without seeing her results. Her figures match to three decimals.
 
-Section five point five develops main study and independent validation with a Calder University note Nadia Ferreira can demo offline.
-
-Under section five point five, Prof. Elias Grant expects main claims to carry owners and dates.
-
-Section five point five treats design primary measure reading as testable only when evidence and ticket IDs are recorded.
-
-For section five point five, Calder University will not accept main work without a written trail.
-
 ### 5.6 Time
 
 Median time-to-disposition fell from 96 to 81 seconds; the time difference is secondary and labelled as such.
-
-Section five point six develops main study and independent validation with a Calder University note Nadia Ferreira can demo offline.
-
-Under section five point six, Prof. Elias Grant expects main claims to carry owners and dates.
-
-Section five point six treats design primary measure reading as testable only when evidence and ticket IDs are recorded.
-
-For section five point six, Calder University will not accept main work without a written trail.
 
 ### Deviations from the plan
 
@@ -624,33 +446,13 @@ You will (1) seek and receive structured critique; (2) classify critiques by sev
 
 Nadia's committee, an external examiner in training, Northgate's senior analysts and a workshop paper's anonymous reviewers all read the draft. Each sees different weaknesses.
 
-Section six point one develops peer critique and revision with a Calder University note Nadia Ferreira can demo offline.
-
-Under section six point one, Prof. Elias Grant expects peer claims to carry owners and dates.
-
-Section six point one treats sources of critique the as testable only when evidence and ticket IDs are recorded.
-
-For section six point one, Calder University will not accept peer work without a written trail.
-
 ### 6.2 The main critiques
 
 Reviewer 1: "The corpus is synthetic; benign triggers in real SOCs are messier." Reviewer 2: "The benign-history field may be doing all the work; you cannot separate the three fields." Reviewer 3: "Two missed attacks are a safety issue, not a footnote." A senior analyst: "Your alert cards lack the raw command line that we always look at first."
 
-Section six point two develops peer critique and revision with a Calder University note Nadia Ferreira can demo offline.
-
-Under section six point two, Prof. Elias Grant expects peer claims to carry owners and dates.
-
 ### 6.3 Classifying severity
 
 Nadia sorts critiques into: threatens validity (Reviewer 2), changes conclusions (Reviewer 3), limits scope (Reviewer 1), improves realism (analyst). Validity threats are answered first.
-
-Section six point three develops peer critique and revision with a Calder University note Nadia Ferreira can demo offline.
-
-Under section six point three, Prof. Elias Grant expects peer claims to carry owners and dates.
-
-Section six point three treats sources of critique the as testable only when evidence and ticket IDs are recorded.
-
-For section six point three, Calder University will not accept peer work without a written trail.
 
 ### 6.4 Responses
 
@@ -660,25 +462,9 @@ To Reviewer 2 she runs a pre-planned secondary analysis using a small follow-up 
 
 Each critique is quoted, followed by the change made (with page numbers) or a reasoned disagreement.
 
-Section six point five develops peer critique and revision with a Calder University note Nadia Ferreira can demo offline.
-
-Under section six point five, Prof. Elias Grant expects peer claims to carry owners and dates.
-
-Section six point five treats sources of critique the as testable only when evidence and ticket IDs are recorded.
-
-For section six point five, Calder University will not accept peer work without a written trail.
-
 ### 6.6 Avoiding defensive revision
 
 Grant reminds her that rebuttal without change rarely persuades; where a reviewer is wrong, show evidence.
-
-Section six point six develops peer critique and revision with a Calder University note Nadia Ferreira can demo offline.
-
-Under section six point six, Prof. Elias Grant expects peer claims to carry owners and dates.
-
-Section six point six treats sources of critique the as testable only when evidence and ticket IDs are recorded.
-
-For section six point six, Calder University will not accept peer work without a written trail.
 
 ### Worked example
 
@@ -719,75 +505,29 @@ You will (1) synthesise findings into a coherent thesis argument; (2) build a re
 
 The thesis argues: (1) benign triggers dominate analyst workload, consistent with Alahmadi et al. (2022); (2) context on alert cards improves triage accuracy; (3) benign-history context carries a specific risk of dismissing true attacks; (4) alert design should pair context with counter-evidence prompts.
 
-Section seven point one develops thesis synthesis and reproducibility archive with a Calder University note Nadia Ferreira can demo offline.
-
-Under section seven point one, Prof. Elias Grant expects thesis claims to carry owners and dates.
-
-Section seven point one treats the argument confirmatory versus as testable only when evidence and ticket IDs are recorded.
-
 ### 7.2 Confirmatory versus exploratory
 
 Chapter results are tagged: the accuracy effect is confirmatory (registered); the field attribution and time effect are exploratory. Tables mark each.
-
-Section seven point two develops thesis synthesis and reproducibility archive with a Calder University note Nadia Ferreira can demo offline.
-
-Under section seven point two, Prof. Elias Grant expects thesis claims to carry owners and dates.
-
-Section seven point two treats the argument confirmatory versus as testable only when evidence and ticket IDs are recorded.
-
-For section seven point two, Calder University will not accept thesis work without a written trail.
 
 ### 7.3 The archive
 
 The archive contains: the alert generator and seed; the 320-alert corpus with labels; Sigma-format rules used; anonymised analyst logs; analysis scripts with pinned versions; the pre-registration and change log; and a README explaining how to rerun every table.
 
-Section seven point three develops thesis synthesis and reproducibility archive with a Calder University note Nadia Ferreira can demo offline.
-
-Under section seven point three, Prof. Elias Grant expects thesis claims to carry owners and dates.
-
-Section seven point three treats the argument confirmatory versus as testable only when evidence and ticket IDs are recorded.
-
 ### 7.4 Testing the archive
 
 A fellow student downloads the archive on a clean machine and regenerates all tables. Two figures differ in the fourth decimal because of a rounding call; Nadia fixes the script and notes it.
-
-Section seven point four develops thesis synthesis and reproducibility archive with a Calder University note Nadia Ferreira can demo offline.
-
-Under section seven point four, Prof. Elias Grant expects thesis claims to carry owners and dates.
-
-Section seven point four treats the argument confirmatory versus as testable only when evidence and ticket IDs are recorded.
 
 ### 7.5 Licensing and privacy
 
 Corpus and code are released under an open licence. Analyst logs are anonymised: analyst IDs are random, timestamps shifted, free-text notes removed after review for identifying content.
 
-Section seven point five develops thesis synthesis and reproducibility archive with a Calder University note Nadia Ferreira can demo offline.
-
-Under section seven point five, Prof. Elias Grant expects thesis claims to carry owners and dates.
-
-Section seven point five treats the argument confirmatory versus as testable only when evidence and ticket IDs are recorded.
-
 ### 7.6 Implications
 
 For SOCs: test enrichment fields one at a time and monitor missed-attack rates; history fields need guard rails. For research: field-level experiments and realism studies on corpora. The SOC-CMM (van Os, 2016) offers a way for SOCs to place such changes within capability maturity.
 
-Section seven point six develops thesis synthesis and reproducibility archive with a Calder University note Nadia Ferreira can demo offline.
-
-Under section seven point six, Prof. Elias Grant expects thesis claims to carry owners and dates.
-
-Section seven point six treats the argument confirmatory versus as testable only when evidence and ticket IDs are recorded.
-
 ### 7.7 Mapping to frameworks
 
 Findings are mapped to NIST CSF 2.0's Detect function (adverse event analysis) so practitioners can locate them.
-
-Section seven point seven develops thesis synthesis and reproducibility archive with a Calder University note Nadia Ferreira can demo offline.
-
-Under section seven point seven, Prof. Elias Grant expects thesis claims to carry owners and dates.
-
-Section seven point seven treats the argument confirmatory versus as testable only when evidence and ticket IDs are recorded.
-
-For section seven point seven, Calder University will not accept thesis work without a written trail.
 
 ### Worked example
 
@@ -828,77 +568,29 @@ You will (1) prepare for a doctoral defense; (2) anticipate hard questions; (3) 
 
 The defense tests whether the candidate can explain, justify and limit the work. Nadia prepares a 40-minute talk: problem, design, results, harm, limits, contributions.
 
-Section eight point one develops defense and publication plan with a Calder University note Nadia Ferreira can demo offline.
-
-Under section eight point one, Prof. Elias Grant expects defense claims to carry owners and dates.
-
-Section eight point one treats the defense hard questions as testable only when evidence and ticket IDs are recorded.
-
-For section eight point one, Calder University will not accept defense work without a written trail.
-
 ### 8.2 Hard questions
 
 Mock examiners ask: "Why should a SOC trust a synthetic corpus?" "Is a 13-point gain worth the two missed attacks?" "Would results hold for analysts with two months' experience?" "What would falsify your claim?" Nadia answers with evidence and admits where she does not know.
-
-Section eight point two develops defense and publication plan with a Calder University note Nadia Ferreira can demo offline.
-
-Under section eight point two, Prof. Elias Grant expects defense claims to carry owners and dates.
-
-Section eight point two treats the defense hard questions as testable only when evidence and ticket IDs are recorded.
 
 ### 8.3 The trade-off question
 
 On the missed attacks, Nadia avoids a simple yes. She explains that the value depends on the SOC's base rates and costs (Axelsson, 2000): if benign triggers consume most analyst time, the gain frees capacity for deeper investigation, but only if guard rails reduce the history-driven misses. She proposes measuring both in an operational pilot.
 
-Section eight point three develops defense and publication plan with a Calder University note Nadia Ferreira can demo offline.
-
-Under section eight point three, Prof. Elias Grant expects defense claims to carry owners and dates.
-
 ### 8.4 Publication plan
 
 Paper 1 (experiment and harm) to a security venue; paper 2 (corpus and generator) to a dataset track; a practitioner article for SOC managers. The corpus and code are released with the first paper.
-
-Section eight point four develops defense and publication plan with a Calder University note Nadia Ferreira can demo offline.
-
-Under section eight point four, Prof. Elias Grant expects defense claims to carry owners and dates.
-
-Section eight point four treats the defense hard questions as testable only when evidence and ticket IDs are recorded.
 
 ### 8.5 Practitioner engagement
 
 Nadia presents results to Northgate's analysts first, as promised in consent forms, and offers a design note on alert cards. She avoids marketing language.
 
-Section eight point five develops defense and publication plan with a Calder University note Nadia Ferreira can demo offline.
-
-Under section eight point five, Prof. Elias Grant expects defense claims to carry owners and dates.
-
-Section eight point five treats the defense hard questions as testable only when evidence and ticket IDs are recorded.
-
-For section eight point five, Calder University will not accept defense work without a written trail.
-
 ### 8.6 After the defense
 
 Corrections required by examiners are tracked and completed before final submission; the archive is updated with a version tag.
 
-Section eight point six develops defense and publication plan with a Calder University note Nadia Ferreira can demo offline.
-
-Under section eight point six, Prof. Elias Grant expects defense claims to carry owners and dates.
-
-Section eight point six treats the defense hard questions as testable only when evidence and ticket IDs are recorded.
-
-For section eight point six, Calder University will not accept defense work without a written trail.
-
 ### 8.7 Strategy alignment
 
 Her design note references Strategy 8 of Knerler, Parker and Zimmerman (2022), "Leverage tools to support analyst workflow", to connect the research with SOC planning language.
-
-Section eight point seven develops defense and publication plan with a Calder University note Nadia Ferreira can demo offline.
-
-Under section eight point seven, Prof. Elias Grant expects defense claims to carry owners and dates.
-
-Section eight point seven treats the defense hard questions as testable only when evidence and ticket IDs are recorded.
-
-For section eight point seven, Calder University will not accept defense work without a written trail.
 
 ### Worked example
 
