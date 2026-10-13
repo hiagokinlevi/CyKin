@@ -1,7 +1,7 @@
 # Segurança Quântica e Pós-Quântica: Engenharia de Sistemas Resistentes à Computação Quântica
 
 - Idioma: português do Brasil (`pt`); curso de engenharia, cinco anos; aproximadamente 4.000 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–10 de 50 já estão escritos em português, com os exercícios EX001–EX020 e suas resoluções; os capítulos 11–50 (EX021–EX100) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 50 já estão escritos em português, com os exercícios EX001–EX040 e suas resoluções; os capítulos 21–50 (EX041–EX100) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: futuros projetistas de sistemas de segurança que vão projetar, construir e validar sistemas que continuem seguros quando existirem grandes computadores quânticos. Conhecimento de entrada: cálculo, computação, redes e engenharia de sistemas no nível de conclusão do ensino médio ou do primeiro ano.
 - Relação com os livros vizinhos: os livros de [mestrado](../../../../masters-2-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) e de [doutorado](../../../../doctorate-2-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) desta área estudam empiricamente a implantação da PQC. **Este livro trata da engenharia da migração**: a matemática por trás dos esquemas de reticulados, de hash e de códigos, o inventário, os requisitos, a arquitetura híbrida PQ/T, a agilidade criptográfica, a implementação, a verificação, as operações e um projeto final.
 - Autoria: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -33,8 +33,18 @@ As fontes primárias foram verificadas em 12 de outubro de 2026: NIST FIPS 203/2
 8. [Arquitetura de computadores](#ch-08)
 9. [Programação II](#ch-09)
 10. [Ética e segurança operacional em engenharia](#ch-10)
+11. [Redes e protocolos](#ch-11)
+12. [Sistemas operacionais](#ch-12)
+13. [Sistemas de dados](#ch-13)
+14. [Engenharia de software](#ch-14)
+15. [Fundamentos de segurança](#ch-15)
+16. [Engenharia de sistemas](#ch-16)
+17. [Fundamentos de controle e realimentação](#ch-17)
+18. [Arquitetura de segurança](#ch-18)
+19. [Identidade e criptografia](#ch-19)
+20. [Segurança quântica e pós-quântica: contexto de engenharia](#ch-20)
 
-Capítulos 11–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-11), até a chegada dos próximos lotes.
+Capítulos 21–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -732,7 +742,681 @@ A engenharia ética de PQC protege dados de vida longa em nome de pessoas que n�
 <!-- cyberabc:chapter-navigation:start ch-10 -->
 ### Continue estudando — capítulo 10 de 50
 
-[← Capítulo 09](#ch-09) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 11 (inglês) →](../../en/book/MANUSCRIPT.md#ch-11)
+[← Capítulo 09](#ch-09) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Redes e protocolos
+
+### Objetivos de aprendizagem
+
+Você vai (1) acompanhar um handshake do TLS 1.3 e identificar onde acontecem a troca de chaves e a autenticação; (2) explicar como o tamanho dos pacotes, a MTU e a fragmentação interagem com mensagens pós-quânticas maiores; (3) descrever o IKEv2, o SSH e o DNSSEC do ponto de vista da migração; e (4) reconhecer a ossificação dos middleboxes. O capítulo prepara a integração (Capítulo 34) e o desempenho (Capítulo 36).
+
+### 11.1 TLS 1.3
+
+No TLS 1.3 ([RFC 8446](https://www.rfc-editor.org/rfc/rfc8446.html)), o cliente envia um ClientHello com compartilhamentos de chave para um ou mais grupos; o servidor responde com o seu compartilhamento, e ambos derivam as chaves do segredo compartilhado. Em seguida, o servidor envia, cifrados, a sua cadeia de certificados e uma assinatura CertificateVerify. A troca de chaves protege a confidencialidade contra a gravação; os certificados e as assinaturas fornecem a autenticação no momento da conexão. Grupos híbridos como o X25519MLKEM768 ([RFC 10024](https://www.rfc-editor.org/rfc/rfc10024.html)) mudam apenas a parte do compartilhamento de chave: o compartilhamento do cliente cresce de 32 para 1.216 bytes, o do servidor para 1.120 bytes.
+
+### 11.2 O tamanho e a rede
+
+Um caminho Ethernet normalmente transporta pacotes IP de 1.500 bytes, cerca de 1.460 bytes de carga útil TCP. Um ClientHello com compartilhamento híbrido muitas vezes passa disso e precisa de dois segmentos TCP. O TCP lida com isso de forma transparente, mas alguns middleboxes e servidores inspecionam apenas o primeiro pacote. O Google relatou incompatibilidades desse tipo quando o Chrome passou a oferecer o Kyber híbrido ([Chromium Blog 2023](https://blog.chromium.org/2023/08/protecting-chrome-traffic-with-hybrid.html)). Sobre UDP (QUIC, DTLS, IKEv2), mensagens maiores levantam problemas de fragmentação e de limite de amplificação que os projetistas de protocolos tratam explicitamente.
+
+Os testes, portanto, cobrem o caminho inteiro, incluindo proxies e balanceadores de carga.
+
+### 11.3 Outros protocolos
+
+As VPNs IKEv2 acrescentam troca de chaves pós-quântica por meio de trocas adicionais (o [RFC 9370](https://www.rfc-editor.org/rfc/rfc9370.html) define múltiplas trocas de chaves no IKEv2). As implementações de SSH já implantaram métodos híbridos de troca de chaves que combinam um KEM de reticulados com o X25519. O DNSSEC é sobretudo um problema de assinaturas: as assinaturas pós-quânticas são muito maiores do que as assinaturas ECDSA atuais, o que sobrecarrega as respostas UDP.
+
+Cada protocolo precisa do seu próprio plano. A VPN site a site da BPA pode acrescentar uma troca ML-KEM pelo RFC 9370 assim que os dois gateways a suportarem; a administração por SSH pode passar a um método híbrido com uma mudança de configuração em servidores e clientes; o DNSSEC precisa esperar por normas que encaixem assinaturas grandes nas respostas DNS, então permanece no inventário como uma dependência acompanhada.
+
+### 11.4 Ossificação
+
+Quando os middleboxes supõem que os campos de um protocolo nunca mudam, valores novos quebram as conexões. O TLS 1.3 introduziu o GREASE ([RFC 8701](https://www.rfc-editor.org/rfc/rfc8701.html)) — valores reservados aleatórios — para manter as implementações tolerantes. A migração pós-quântica é um teste de ossificação: o protocolo a permite, mas os equipamentos implantados talvez não.
+
+O plano de testes da BPA envia ClientHellos híbridos por todos os dispositivos de inspeção no caminho até os portais dos parceiros antes de ativá-los. Um dispositivo que reinicia a conexão é registrado com a sua versão de firmware, e o fornecedor é chamado a corrigi-lo. Isso transforma a ossificação de uma interrupção surpresa numa lista de itens conhecidos, com responsáveis e datas.
+
+### 11.5 Exemplo resolvido
+
+A equipe do terminal da BPA relata que o portal de uma companhia de navegação falha através do proxy de inspeção antigo depois da ativação de um grupo híbrido. Os traces de pacotes mostram o proxy reiniciando as conexões cujo ClientHello ocupa dois segmentos. Opções: atualizar o firmware do proxy, desviar a inspeção para aquele destino ou desativar temporariamente o grupo híbrido apenas naquele caminho enquanto o fornecedor o corrige — mantendo-o em todos os outros.
+
+A exceção direcionada é a escolha certa, porque a falha do proxy afeta apenas um caminho, enquanto o risco de coleta vale para todo o tráfego. A exceção é registrada com data de expiração e responsável, para que não se torne permanente. Depois de instalado o firmware do fornecedor, o teste do laboratório é refeito antes de o grupo híbrido ser reativado naquele caminho.
+
+### 11.6 Erros comuns e limites
+
+- Supor que a troca de chaves híbrida também migra os certificados.
+- Esquecer os limites de tamanho dos protocolos UDP.
+- Reverter a PQC globalmente por causa de uma falha local de middlebox.
+
+A troca de chaves híbrida protege o tráfego gravado, mas deixa a autenticação em certificados RSA ou ECDSA, que precisam da sua própria migração. Protocolos UDP como o QUIC e o IKEv2 precisam tratar o tamanho explicitamente, porque não têm a segmentação do TCP. Uma reversão global por causa de um proxy joga fora a proteção de todos os outros caminhos, como mostrou o caso do portal da companhia de navegação; uma exceção com prazo para aquele único caminho mantém todo o resto protegido.
+
+### Exercícios
+
+- **EX021 — Contagem de segmentos.** Um ClientHello tem 540 bytes sem compartilhamentos de chave. Quantos segmentos de 1.460 bytes ele ocupa com um compartilhamento só X25519 (32 B) e com o X25519MLKEM768 (1.216 B), contando ~4 B de sobrecarga por compartilhamento? Rubrica: 3 = 1 e 2 segmentos, com a aritmética.
+- **EX022 — Mapa de protocolos.** Para TLS, IKEv2, SSH e DNSSEC, diga se a migração é principalmente de troca de chaves, de assinaturas ou de ambas. Rubrica: 3 = correto, com razões de uma linha.
+
+### Síntese
+
+A troca de chaves híbrida muda o tamanho das mensagens, que redes e middleboxes podem tratar mal; cada protocolo tem a sua própria forma de migração, e o obstáculo muitas vezes é a ossificação, não a criptografia.
+
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Continue estudando — capítulo 11 de 50
+
+[← Capítulo 10](#ch-10) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Sistemas operacionais
+
+### Objetivos de aprendizagem
+
+Você vai (1) localizar bibliotecas e configurações criptográficas num sistema operacional; (2) explicar as políticas criptográficas de todo o sistema; (3) entender a inicialização segura e a assinatura de atualizações; e (4) gerenciar a entropia e o armazenamento de chaves. O capítulo parte dos Capítulos 8–9 e prepara o inventário (Capítulo 22) e a manutenibilidade (Capítulo 39).
+
+### 12.1 Onde a criptografia mora
+
+Num servidor Linux, o TLS normalmente vem de uma biblioteca compartilhada (OpenSSL, GnuTLS, NSS, BoringSSL em algumas aplicações), o SSH do OpenSSH, as VPNs do IPsec do kernel mais um daemon IKE em espaço de usuário. As aplicações também podem embutir as próprias bibliotecas — programas Java, Go e Rust muitas vezes o fazem. Um inventário que verifica só a biblioteca do sistema deixa escapar a criptografia ligada estaticamente ou embutida.
+
+Encontrar código embutido exige examinar binários e pacotes de aplicação, não apenas o gerenciador de pacotes. Num binário Go, as informações de build listam os módulos criptográficos compilados; em Java, os provedores de segurança configurados mostram qual biblioteca trata o TLS. Essas verificações pertencem ao script de inventário, para que todos os hosts sejam avaliados da mesma forma.
+
+### 12.2 Políticas de todo o sistema
+
+Algumas distribuições oferecem políticas criptográficas de todo o sistema, que definem os algoritmos padrão para todas as bibliotecas que as respeitam. As políticas são uma alavanca poderosa de agilidade: mudar um perfil pode ativar grupos híbridos ou desativar algoritmos fracos em muitos serviços. O seu limite é a cobertura — aplicações com bibliotecas embutidas as ignoram.
+
+A BPA usa a política para ativar o grupo híbrido, numa única mudança, em todos os serviços que usam a biblioteca do sistema, e depois verifica o handshake de cada serviço para confirmar o efeito. Os serviços que não mostram o grupo híbrido após a mudança são exatamente os que têm bibliotecas embutidas, então a implantação da política funciona também como teste da cobertura do inventário.
+
+### 12.3 Inicialização segura e atualizações
+
+O firmware verifica a assinatura do bootloader, que verifica a do kernel, e assim por diante. Essas assinaturas precisam continuar verificáveis durante toda a vida do dispositivo, que pode passar de uma década. Isso faz das cadeias de inicialização candidatas precoces às assinaturas baseadas em hash (LMS, XMSS, conforme a [SP 800-208](https://doi.org/10.6028/NIST.SP.800-208)), que o CNSA 2.0 também prioriza para a assinatura de software e firmware.
+
+Um dispositivo entregue em 2026 com vida útil de quinze anos ainda estará verificando atualizações em 2041, então a chave de inicialização escolhida agora precisa continuar segura por todo esse período. Trocar a raiz de confiança depois pode exigir acesso físico ou ser impossível, e é por isso que as cadeias de inicialização recebem a primeira prioridade, e não a última.
+
+### 12.4 Entropia e armazenamento de chaves
+
+As chaves precisam de boa aleatoriedade vinda do sistema operacional (`getrandom`), sobretudo no início da inicialização e em máquinas virtuais. As chaves privadas pertencem a armazenamento protegido — HSMs, TPMs ou repositórios de chaves do sistema operacional —, nunca a arquivos legíveis por todos.
+
+Máquinas virtuais clonadas de uma mesma imagem podem começar com estado aleatório idêntico, de modo que chaves geradas na primeira inicialização podem se repetir entre hosts. Esperar que o `getrandom` indique que o pool está pronto e gerar as chaves depois de concluída a inicialização evita isso. Nos servidores do terminal da BPA, as chaves privadas TLS ficam no repositório de chaves apoiado pelo TPM e são auditadas mensalmente quanto a desvios nas permissões de arquivo.
+
+### 12.5 Exemplo resolvido
+
+O inventário de um servidor do terminal da BPA encontra o OpenSSL 3.x como biblioteca do sistema, uma aplicação Java com provedor próprio, um binário Go ligado estaticamente e um daemon IPsec. Ativar o TLS híbrido pela política do sistema afeta apenas o primeiro; os outros dois precisam de mudanças nas aplicações. O plano de migração registra um item de trabalho por provedor criptográfico, não por servidor.
+
+A contagem por provedor dá quatro itens de trabalho para este servidor, com responsáveis diferentes: a equipe de plataforma para o OpenSSL e o IPsec, a equipe da aplicação para o Java e os desenvolvedores do serviço Go, que precisam recompilar com um conjunto de ferramentas mais novo. Um plano contado por servidor teria marcado este host como concluído depois da mudança de política, enquanto dois dos seus quatro provedores continuavam intocados.
+
+### 12.6 Erros comuns e limites
+
+- Supor que uma mudança de política migra o host inteiro.
+- Ignorar as assinaturas da cadeia de inicialização porque "não são de rede".
+- Guardar chaves em diretórios de configuração.
+
+O exemplo resolvido mostrou uma mudança de política alcançando apenas um de quatro provedores num único host. As assinaturas da cadeia de inicialização importam porque precisam continuar válidas por toda a vida do dispositivo e são difíceis de substituir, então vêm primeiro nas migrações de assinatura. Chaves guardadas em diretórios de configuração são copiadas para backups e imagens, onde podem sobreviver aos sistemas que deveriam proteger.
+
+### Exercícios
+
+- **EX023 — Inventário de provedores.** Liste quatro lugares onde a criptografia pode morar num servidor e como você detectaria cada um. Rubrica: 3 = inclui bibliotecas embutidas/estáticas.
+- **EX024 — Cadeia de inicialização.** Explique por que a assinatura de firmware é uma prioridade precoce da PQC. Rubrica: 3 = vida útil do dispositivo e restrição de apenas verificar.
+
+### Síntese
+
+A criptografia mora em muitos provedores num mesmo host; as políticas do sistema ajudam, mas não cobrem o código embutido; as cadeias de inicialização de vida longa precisam de migração precoce; as chaves precisam de armazenamento protegido e boa entropia.
+
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Continue estudando — capítulo 12 de 50
+
+[← Capítulo 11](#ch-11) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 13 →](#ch-13)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Sistemas de dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) classificar os dados pelo tempo de vida da confidencialidade; (2) distinguir a cifragem em repouso, em trânsito e em backups; (3) entender a cifragem em envelope e o encapsulamento de chaves (key wrapping); e (4) identificar onde algoritmos vulneráveis à computação quântica protegem dados armazenados. O capítulo prepara os modelos de sistema e de dados (Capítulo 22).
+
+### 13.1 Tempo de vida da confidencialidade
+
+O insumo principal do risco quântico é por quanto tempo os dados precisam permanecer secretos. Os manifestos de contêineres da BPA importam por semanas; as declarações aduaneiras, por 25 anos; os registros de funcionários, por décadas. Classifique os dados primeiro pelo tempo de vida; a ordem da migração decorre disso.
+
+O tempo de vida é definido pelo negócio e pela lei, não pela TI. Para as declarações aduaneiras, os 25 anos vêm das regras de retenção e de sensibilidade comercial, então o dono dos dados aprova o número. Os manifestos, que perdem valor depois que o navio parte, podem ficar na criptografia atual até a renovação normal, liberando esforço para as classes de vida longa. Registrar a origem de cada tempo de vida facilita responder a contestações posteriores.
+
+### 13.2 Em repouso, em trânsito, em backups
+
+Os dados em massa em repouso costumam ser cifrados com algoritmos simétricos (AES-GCM), que não são seriamente ameaçados por computadores quânticos com chaves de 256 bits. O perigo está em **como as chaves simétricas são protegidas**: se uma chave de dados é encapsulada com RSA ou transmitida por um canal protegido por ECDH que um adversário gravou, os dados herdam essa vulnerabilidade. Backups e arquivos copiados para terceiros ampliam a exposição.
+
+Rastrear cada chave de dados desde a criação até todos os lugares em que é encapsulada ou enviada é a forma de encontrar essas dependências ocultas.
+
+### 13.3 Cifragem em envelope
+
+Os serviços de gestão de chaves em nuvem cifram os dados com uma chave de dados e encapsulam essa chave com uma chave mestra. Se a chave mestra é simétrica e fica dentro do serviço, o risco quântico é baixo; se as chaves são trocadas entre partes usando RSA-OAEP ou ECDH (como em muitos formatos de cifragem de documentos), o encapsulamento é o ponto fraco. KEMs pós-quânticos podem substituir esses encapsulamentos — a norma CMS agora tem um [mecanismo baseado em KEM](https://www.rfc-editor.org/rfc/rfc9629.html) (RFC 9629).
+
+A migração substitui apenas o encapsulamento, então os dados armazenados não precisam ser cifrados de novo.
+
+### 13.4 Banco de dados e enlaces de replicação
+
+A replicação de bancos de dados entre locais muitas vezes roda sobre TLS. Os fluxos de replicação gravados de um banco aduaneiro de 25 anos são um alvo privilegiado de coleta, o que faz dos enlaces de replicação candidatos precoces ao TLS híbrido.
+
+O volume de replicação é grande e constante, o que o torna atraente para um adversário capaz de grampear uma única rota de fibra. Ao contrário do tráfego de navegadores, as duas pontas pertencem à BPA, então o TLS híbrido pode ser ativado assim que as bibliotecas dos dois servidores de banco de dados o suportarem, sem coordenação com parceiros. A mudança é testada verificando o grupo negociado na sessão de replicação e depois acompanhando o atraso da replicação por uma semana, para confirmar que o handshake maior não tem efeito operacional.
+
+### 13.5 Exemplo resolvido
+
+O arquivo aduaneiro da BPA: AES-256-GCM em repouso (aceitável), chaves de dados encapsuladas por um KMS local com chave mestra AES (aceitável), replicação noturna para um local de recuperação de desastres por TLS 1.2 com ECDHE (vulnerável à coleta) e exportações para a agência aduaneira nacional como arquivos cifrados com RSA (vulneráveis). Prioridades: o enlace de replicação e o formato de exportação.
+
+As duas prioridades diferem quanto a quem precisa agir. O enlace de replicação é interno, então a BPA pode passá-lo para TLS híbrido numa única janela de manutenção. O formato de exportação exige que a agência aduaneira aceite um novo formato de arquivo, por exemplo CMS com ML-KEM conforme o RFC 9629, o que significa um plano de testes conjunto e uma data combinada. Começar essa conversa agora importa mais do que qualquer mudança interna.
+
+### 13.6 Erros comuns e limites
+
+- Substituir o AES "por causa da computação quântica" e deixar os encapsulamentos de chave com RSA.
+- Ignorar os caminhos de backup e de exportação.
+- Não classificar o tempo de vida dos dados antes de priorizar.
+
+O AES-256 já resiste a Grover na prática, então substituí-lo gasta dinheiro onde não há lacuna, enquanto as chaves encapsuladas com RSA deixam a lacuna real aberta. A própria análise do arquivo da BPA encontrou os seus dois caminhos vulneráveis na replicação e nas exportações, não no armazenamento. Classificar primeiro o tempo de vida dos dados evita migrar manifestos de um mês antes dos registros aduaneiros de 25 anos e dá aos donos dos dados um número que eles podem defender na auditoria.
+
+### Exercícios
+
+- **EX025 — Classificar.** Classifique seis conjuntos de dados da BPA pelo tempo de vida da confidencialidade e justifique. Rubrica: 3 = tempos de vida plausíveis e ligados à prioridade.
+- **EX026 — Encontrar o encapsulamento fraco.** Num fluxo de cifragem de documentos que usa AES-256 e RSA-OAEP, identifique a etapa vulnerável à computação quântica e um substituto baseado em normas. Rubrica: 3 = o encapsulamento RSA; um KEM (por exemplo, ML-KEM via KEMRecipientInfo do CMS).
+
+### Síntese
+
+O risco quântico para os dados armazenados vem pela troca e pelo encapsulamento de chaves, não pelo AES; classifique os dados pelo tempo de vida e depois corrija os enlaces de replicação, as exportações e os encapsulamentos.
+
+<!-- cyberabc:chapter-navigation:start ch-13 -->
+### Continue estudando — capítulo 13 de 50
+
+[← Capítulo 12](#ch-12) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 14 →](#ch-14)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Engenharia de software
+
+### Objetivos de aprendizagem
+
+Você vai (1) gerenciar requisitos, projeto, implementação e testes num projeto de migração; (2) usar controle de versão e revisão de código para mudanças criptográficas; (3) montar uma lista de materiais de software (SBOM) e uma lista de materiais criptográficos (CBOM); e (4) planejar versões escalonadas. O capítulo parte dos Capítulos 4 e 9 e prepara a implementação (Capítulo 28).
+
+### 14.1 Ciclo de vida
+
+Uma migração é um projeto de software: requisitos (quais funções precisam se tornar resistentes à computação quântica, e até quando), projeto (híbrido ou PQC pura, quais bibliotecas), implementação, testes, versão escalonada e manutenção. As mudanças criptográficas têm alto impacto e baixa visibilidade: se estiverem erradas, falham em silêncio ou de forma catastrófica.
+
+A falha silenciosa é a mais perigosa das duas: um serviço que volta discretamente à troca de chaves clássica parece saudável enquanto a gravação continua a expor o seu tráfego. Por isso, os requisitos da BPA declaram resultados mensuráveis, como o grupo negociado registrado por sessão, para que os testes possam mostrar que a mudança realmente fez efeito.
+
+### 14.2 Revisão
+
+Toda mudança criptográfica passa pela revisão de alguém com conhecimento de criptografia, além de testes de interoperabilidade. As listas de verificação perguntam: os identificadores de algoritmo vêm da política? Os comprimentos são validados? As comparações são em tempo constante? A versão da biblioteca está fixada e tem suporte?
+
+A BPA mantém um pequeno grupo de revisores que concluíram o treinamento em criptografia, e toda mudança que toca as interfaces `Signer` ou KEM exige um deles. A lista de verificação fica guardada com o código, e cada item corresponde, quando possível, a um teste automatizado, por exemplo, um teste que falha quando um comprimento de chave é aceito sem validação. Os revisores então dedicam o seu tempo às questões de projeto que os testes não conseguem responder.
+
+### 14.3 SBOM e CBOM
+
+Um SBOM lista componentes e versões. Um CBOM estende isso aos ativos criptográficos: algoritmos, conjuntos de parâmetros, comprimentos de chave, protocolos, certificados e onde as chaves ficam. Formatos como o CycloneDX suportam campos de CBOM. Um CBOM é a base para responder "onde usamos RSA?" em minutos, e não em meses.
+
+A BPA gera o CBOM no pipeline de build, então cada versão leva um inventário atualizado. Uma consulta por RSA em todos os CBOMs, filtrada para chaves com tempo de vida acima de dez anos, produziu os primeiros itens de trabalho da migração de assinaturas.
+
+### 14.4 Versões escalonadas
+
+Use feature flags para as escolhas de algoritmo, implantações canário com taxas de falha medidas (Capítulo 37) e planos de reversão. Mantenha disponíveis os algoritmos antigos e os novos durante a transição.
+
+Uma flag permite à equipe desligar o grupo híbrido para um caminho em minutos, como no caso do portal da companhia de navegação, sem reimplantar código. O tamanho do passo do canário começa pequeno, como 1% do tráfego, e só cresce depois que o limite de falhas dado pela regra de três cai abaixo do orçamento combinado. Os dados de cada passo são guardados, para que um incidente posterior possa ser comparado com a linha de base da implantação.
+
+### 14.5 Exemplo resolvido
+
+A equipe do portal da BPA acrescenta o TLS híbrido atrás de uma flag, executa testes de interoperabilidade contra os 50 principais clientes dos parceiros, implanta em 1% do tráfego, monitora as falhas e promove em passos. O CBOM é atualizado automaticamente a partir dos metadados do build, para que o inventário fique em dia.
+
+Escolher os 50 principais clientes dos parceiros cobre a maior parte do tráfego do portal, de modo que uma falha ali apareceria depressa no canário. Cada passo de promoção exige um número mínimo de conexões sem falha, que a equipe calcula antes da implantação. A atualização automática do CBOM permitiu que o escritório de segurança relatasse a mudança ao conselho na mesma semana em que ela atingiu todo o tráfego.
+
+### 14.6 Erros comuns e limites
+
+- Mudanças criptográficas incorporadas sem revisão especializada.
+- CBOMs montados à mão uma vez e nunca atualizados.
+- Versões "big bang" sem flags.
+
+Incorporações sem revisão já levaram código Kyber da época dos rascunhos para a produção em outras organizações; a regra da BPA de que mudanças nas interfaces exigem um revisor treinado impede isso. CBOMs feitos à mão ficam desatualizados em um ciclo de versão, então o build os gera. Versões "big bang" eliminam a chance de detectar as falhas de middlebox que os canários encontram com 1% do tráfego e tornam a reversão uma escolha de tudo ou nada.
+
+### Nota de engenharia
+
+Trate o CBOM como um artefato vivo, de propriedade de uma equipe nomeada, gerado a partir dos pipelines de build, da gestão de configuração e da telemetria, e não de planilhas. Cada versão deve comparar o seu CBOM com o anterior: uma nova dependência de RSA introduzida por uma atualização de biblioteca é uma regressão a detectar na revisão, exatamente como um teste que falha. As equipes que ligam essa comparação à integração contínua descobrem acréscimos vulneráveis à computação quântica em dias, e não na próxima auditoria anual, e ainda ganham uma lista precisa para questionários de fornecedores e reguladores.
+
+### Exercícios
+
+- **EX027 — Lista de revisão.** Escreva uma lista de verificação de dez itens para revisar uma mudança de PQC. Rubrica: 3 = cobre identificadores, validação, tempo constante, versões, testes, reversão.
+- **EX028 — Campos do CBOM.** Liste os campos mínimos de uma entrada de CBOM para um endpoint TLS. Rubrica: 3 = algoritmo, conjunto de parâmetros, protocolo, localização da chave, responsável, detalhes do certificado.
+
+### Síntese
+
+Trate a migração como engenharia de software: mudanças revisadas, flags, canários, reversão e um CBOM mantido automaticamente.
+
+<!-- cyberabc:chapter-navigation:start ch-14 -->
+### Continue estudando — capítulo 14 de 50
+
+[← Capítulo 13](#ch-13) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 15 →](#ch-15)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Fundamentos de segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar confidencialidade, integridade e disponibilidade à migração criptográfica; (2) explicar os níveis de segurança e as cinco categorias de PQC do NIST; (3) distinguir modelos de ataque — gravação passiva, intermediário ativo (man-in-the-middle) e falsificação; e (4) entender a defesa em profundidade. O capítulo prepara a arquitetura de segurança (Capítulo 18).
+
+### 15.1 A tríade CID na migração
+
+A confidencialidade é ameaçada pelas trocas de chaves gravadas; a integridade e a autenticidade, pela futura falsificação de assinaturas em documentos e firmware de vida longa; a disponibilidade, pela própria migração — mensagens grandes demais, clientes incompatíveis, certificados expirados. Um plano que melhora a confidencialidade, mas provoca interrupções, falhou na disponibilidade.
+
+O plano da BPA lista, portanto, para cada mudança, qual propriedade ela melhora e qual põe em risco. O TLS híbrido no portal melhora a confidencialidade e arrisca a disponibilidade por causa de handshakes maiores; o ML-DSA nos conhecimentos de embarque melhora a integridade de longo prazo e arrisca a disponibilidade para parceiros cujo software ainda não consegue verificá-lo. Cada risco recebe uma mitigação, como um canário ou um período de assinatura dupla.
+
+### 15.2 Categorias de segurança
+
+O NIST definiu cinco categorias de segurança pós-quântica por comparação com o custo de quebrar primitivas simétricas: a categoria 1 é pelo menos tão difícil quanto a busca de chave no AES-128, a categoria 3 quanto no AES-192, a categoria 5 quanto no AES-256; as categorias 2 e 4 se comparam com colisões do SHA-256 e do SHA-384. O ML-KEM-512/768/1024 visa as categorias 1/3/5 ([FIPS 203](https://doi.org/10.6028/NIST.FIPS.203)). O CNSA 2.0 exige os conjuntos de categoria 5 (ML-KEM-1024, ML-DSA-87) para sistemas de segurança nacional.
+
+A BPA não opera sistemas de segurança nacional, então a categoria 3 é o seu padrão, com a categoria 5 apenas onde os tempos de vida dos dados são os mais longos. Os bytes extras dos conjuntos maiores só são pagos onde compram alguma coisa.
+
+### 15.3 Modelos de ataque
+
+**Gravação passiva agora, decifração depois** ameaça a confidencialidade de tudo o que é protegido hoje por uma troca de chaves vulnerável. **Ataques ativos com um computador quântico** — personificar um servidor falsificando assinaturas — exigem que o CRQC exista no momento do ataque, então a migração das assinaturas é menos urgente para a autenticação de vida curta, mas urgente para as raízes de confiança de vida longa. **A falsificação de assinaturas arquivadas** ameaça documentos cujas assinaturas precisam continuar significativas por anos.
+
+Associar cada sistema da BPA a esses modelos define as prioridades: a replicação aduaneira cai no primeiro, a autenticação TLS dos parceiros no segundo e os conhecimentos de embarque no terceiro.
+
+### 15.4 Defesa em profundidade
+
+A troca de chaves híbrida é defesa em profundidade entre pressupostos: o atacante precisa quebrar tanto o componente tradicional quanto o pós-quântico ([RFC 9794](https://www.rfc-editor.org/rfc/rfc9794.html)). A agilidade é defesa em profundidade ao longo do tempo: se um algoritmo enfraquecer, substitua-o depressa.
+
+As duas formas trabalham juntas. A troca de chaves híbrida protege a BPA se for encontrada uma falha no ML-KEM, porque o X25519 continua resistindo a atacantes clássicos. A agilidade protege a BPA se os dois enfraquecerem com o tempo, já que o arquivo de política pode trocar de algoritmo sem mudanças de código. Nenhuma das duas ajuda se as chaves forem guardadas sem cuidado, então os controles de armazenamento continuam sendo uma camada à parte.
+
+### 15.5 Exemplo resolvido
+
+Os conhecimentos de embarque da BPA são assinados com ECDSA e precisam ser verificáveis por 12 anos. Um CRQC dentro de 12 anos permitiria falsificar um conhecimento com data no passado, a menos que o documento leve uma assinatura pós-quântica ou uma cadeia de carimbos de tempo confiável que também tenha sido migrada. Prioridade: alta — integridade de documentos jurídicos por longos períodos.
+
+Um carimbo de tempo confiável prova que o documento existia antes de uma certa data, então nem uma falsificação posterior pode ser antedatada para antes do carimbo. A escolha da BPA é recarimbar os conhecimentos arquivados com uma autoridade de carimbo de tempo pós-quântica e assinar os novos conhecimentos com ML-DSA-65, cujas assinaturas de 3.309 bytes cabem facilmente nos arquivos dos documentos.
+
+### 15.6 Erros comuns e limites
+
+- Tratar a PQC como uma questão só de confidencialidade.
+- Escolher a categoria 5 em toda parte sem considerar tamanho e desempenho.
+- Esquecer a disponibilidade.
+
+Tratar a PQC apenas como um problema de confidencialidade deixa os conhecimentos de embarque e o firmware abertos a falsificações futuras. A categoria 5 em toda parte acrescenta bytes e processamento, por exemplo a chave de 1.568 bytes do ML-KEM-1024 contra os 1.184 do 768, sem uma necessidade correspondente para a maior parte dos dados da BPA. Falhas de disponibilidade, como um middlebox que rejeita handshakes grandes, podem desfazer a credibilidade de todo o programa. Um plano que nomeia de antemão os seus riscos de disponibilidade e as mitigações mantém o apoio das equipes de operação quando acontece o primeiro incidente.
+
+### Exercícios
+
+- **EX029 — Escolha de categoria.** Recomende uma categoria para o portal da BPA e para um enlace com um parceiro de segurança nacional; justifique. Rubrica: 3 = categoria 3 (ou 1) para o portal, com raciocínio; categoria 5, conforme o CNSA 2.0, para o parceiro.
+- **EX030 — Modelos de ataque.** Para o tráfego de VPN, as assinaturas de firmware e os conhecimentos de embarque, diga qual modelo de ataque domina. Rubrica: 3 = gravação; falsificação de raízes de vida longa; falsificação de assinaturas arquivadas.
+
+### Síntese
+
+A migração toca confidencialidade, integridade e disponibilidade; as categorias ligam a força da PQC a referências simétricas; a urgência difere conforme o modelo de ataque; os híbridos e a agilidade dão profundidade.
+
+<!-- cyberabc:chapter-navigation:start ch-15 -->
+### Continue estudando — capítulo 15 de 50
+
+[← Capítulo 14](#ch-14) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 16 →](#ch-16)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Engenharia de sistemas
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar um ciclo de vida de sistemas a uma migração de vários anos; (2) gerenciar interfaces e dependências entre organizações; (3) usar estudos de compromisso (trade studies); e (4) planejar a verificação e a validação desde o início. O capítulo parte do Capítulo 14 e prepara os requisitos (Capítulo 21).
+
+### 16.1 Visão de ciclo de vida
+
+Uma migração de todo o porto abrange concepção (por quê e o quê), requisitos, arquitetura, implementação, integração, verificação, validação, operação e desativação. Normas de ciclo de vida como a ISO/IEC/IEEE 15288 descrevem esses processos. A migração criptográfica difere da maioria das mudanças de sistema porque toca todas as interfaces ao mesmo tempo e porque parceiros de fora da organização precisam mudar no mesmo passo.
+
+Para a BPA, a desativação é uma fase real: as chaves e os certificados RSA precisam ser retirados e os algoritmos antigos desativados assim que todos os parceiros tiverem migrado; caso contrário, os caminhos de rebaixamento ficam abertos indefinidamente. Planejar a desativação desde o início, com uma data-alvo por interface, impede que o programa termine com os algoritmos antigos e novos ativados permanentemente.
+
+### 16.2 Interfaces e dependências
+
+A BPA depende das companhias de navegação (pares de VPN), da agência aduaneira (formatos de exportação), dos fornecedores (equipamentos, HSMs, firmware dos guindastes) e dos fabricantes de navegadores (clientes TLS). Um documento de controle de interfaces lista, por interface, os algoritmos atuais, o alvo, quem precisa mudar e até quando. As dependências explicam os cronogramas melhor do que as estimativas de esforço.
+
+Para a exportação aduaneira, o documento de controle registra RSA-OAEP hoje, CMS com ML-KEM-768 como alvo, a agência aduaneira como a parte que precisa mudar primeiro e uma data combinada numa carta conjunta. Uma dependência como essa define o cronograma, independentemente de quão depressa os desenvolvedores da própria BPA terminem a sua parte.
+
+### 16.3 Estudos de compromisso
+
+Um estudo de compromisso compara opções segundo critérios ponderados. Para a VPN da BPA: (a) IKEv2 híbrido com ML-KEM agora, (b) esperar pelo suporte nativo do fornecedor, (c) acrescentar uma camada de chave pré-compartilhada como mitigação provisória. Critérios: ganho de segurança, risco de disponibilidade, custo, prontidão dos parceiros, conformidade com as normas. Os pesos vêm dos requisitos, não de preferências.
+
+Fixar os pesos antes da pontuação impede que uma equipe os ajuste para favorecer a opção que já prefere. A equipe da BPA publica os pesos na revisão de requisitos, pontua cada opção de forma independente e depois verifica se uma mudança moderada em algum peso mudaria a vencedora. Se mudar, o resultado é registrado como apertado, e a decisão cita explicitamente o fator decisivo.
+
+### 16.4 Planejamento de V&V
+
+A verificação pergunta "construímos certo?" (requisitos atendidos); a validação pergunta "construímos a coisa certa?" (necessidades das partes interessadas atendidas). Planeje as duas antes da implementação: por exemplo, verificar que a VPN negocia ML-KEM-768 ou mais forte em todos os túneis e validar que as operações das companhias de navegação continuam sem atraso.
+
+A verificação, aqui, é uma consulta de logs: o algoritmo negociado de cada túnel é registrado, e qualquer túnel sem ML-KEM-768 ou mais forte reprova na verificação. A validação precisa da equipe de operações das companhias de navegação, que confirma que os tempos de troca de documentos e de estabelecimento das conexões não mudaram depois da virada. Escrever as duas verificações antes da implementação garante que o registro necessário para a verificação seja construído desde o início.
+
+### 16.5 Exemplo resolvido
+
+O estudo de compromisso dá à opção (a) a maior nota em segurança e normas, à (b) a maior em disponibilidade e à (c) o papel de solução provisória barata. Decisão: (c) imediatamente para os dois parceiros de maior valor, (a) num piloto com um parceiro, (b) para os demais quando os fornecedores entregarem — documentado com datas de revisão.
+
+Cada opção tem uma data de revisão para que a decisão não congele: o piloto é revisto após três meses para decidir se (a) pode se estender a mais parceiros, e as chaves pré-compartilhadas provisórias são rotacionadas e verificadas ao mesmo tempo. Anotar essas datas transforma um meio-termo num plano que avança.
+
+### 16.6 Erros comuns e limites
+
+- Planejar a migração como um projeto interno quando os parceiros também precisam mudar.
+- Estudos de compromisso com pesos escolhidos depois da pontuação.
+- V&V inventada depois da implantação.
+
+Os parceiros são donos de metade de cada interface externa, então um plano só com tarefas internas vai travar na primeira VPN ou no primeiro formato de exportação. Pesos escolhidos depois da pontuação fazem do estudo de compromisso um argumento a favor de uma decisão já tomada. A V&V inventada depois da implantação costuma não ter os logs necessários para verificar qualquer coisa, como mostrou a verificação do algoritmo dos túneis.
+
+### Nota de engenharia
+
+A engenharia de sistemas também pergunta quando parar. Uma migração tem um critério de saída por interface — por exemplo, "negociação só clássica abaixo de 0,5% dos túneis por 90 dias e confirmação do parceiro recebida" —, após o qual o caminho antigo é removido, em vez de ficar como alternativa permanente. Sem critérios de saída, as configurações de transição se tornam permanentes, e a organização carrega tanto o risco antigo quanto a nova complexidade. Registre os critérios de saída no documento de controle de interfaces, para que as revisões de progresso possam encerrar os pacotes de trabalho de forma objetiva.
+
+### Exercícios
+
+- **EX031 — Lista de interfaces.** Esboce cinco linhas do documento de controle de interfaces da BPA. Rubrica: 3 = atual, alvo, responsável e data para cada uma.
+- **EX032 — Estudo de compromisso.** Pontue as três opções de VPN com pesos explícitos. Rubrica: 3 = pesos justificados antes da pontuação; sensibilidade registrada.
+
+### Síntese
+
+A migração é um problema de sistemas dominado por interfaces e parceiros; estudos de compromisso com pesos prévios e um planejamento precoce de V&V mantêm as decisões defensáveis.
+
+<!-- cyberabc:chapter-navigation:start ch-16 -->
+### Continue estudando — capítulo 16 de 50
+
+[← Capítulo 15](#ch-15) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 17 →](#ch-17)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Fundamentos de controle e realimentação
+
+### Objetivos de aprendizagem
+
+Você vai (1) modelar um programa de migração como um laço de realimentação; (2) escolher indicadores antecedentes e consequentes; (3) reconhecer a instabilidade causada por correção excessiva; e (4) aplicar ideias de controle aos portões de implantação. O capítulo prepara as operações (Capítulo 37) e a otimização (Capítulo 41).
+
+### 17.1 Programas como laços
+
+Um laço de realimentação mede a saída, compara-a com um valor de referência e ajusta a entrada. Na migração, a "saída" é a parcela protegida do tráfego e dos ativos; o valor de referência é a trajetória-alvo; a entrada é o esforço de engenharia e o ritmo de implantação. Sem medição não há controle — só esperança.
+
+O valor de referência da BPA é uma trajetória, por exemplo 50% das trocas de chaves externas híbridas no fim do primeiro ano e 90% no fim do segundo. A comparação mensal entre a parcela medida e a planejada orienta a alocação de esforço do mês seguinte.
+
+### 17.2 Indicadores
+
+Indicadores **consequentes** mostram resultados: porcentagem de trocas de chaves negociadas com grupos híbridos, parcela de certificados com assinaturas pós-quânticas, parcela de ativos desconhecidos. Indicadores **antecedentes** preveem resultados: fornecedores com roteiros de PQC assumidos, cobertura do CBOM, prontidão do ambiente de testes. Um painel precisa de ambos.
+
+Os indicadores consequentes confirmam o progresso, mas chegam tarde demais para mudar o rumo; os antecedentes avisam cedo. Se a cobertura do CBOM estacionar em 71%, o número da parcela protegida vai parecer bom enquanto os ativos desconhecidos continuam sem medição. Associar cada indicador consequente ao antecedente que o move permite aos gestores agir antes de o resultado aparecer. Cada indicador tem uma definição e uma fonte de dados registradas, para que duas equipes não possam relatá-lo de formas diferentes.
+
+### 17.3 Estabilidade
+
+A correção excessiva causa oscilação: ativar grupos híbridos em toda parte depois de uma boa semana, reverter em toda parte depois de um dia ruim. A teoria de controle sugere amortecimento — passos menores, esperas para a medição e histerese (limiares diferentes para promover e para reverter).
+
+Na prática, a BPA promove um passo de implantação somente após uma semana de dados limpos e reverte somente se o limite de falhas exceder o dobro do orçamento. A distância entre esses limiares é a histerese: um único dia ruim dentro da faixa provoca uma investigação, não uma reversão. As falhas também são delimitadas, então um problema num caminho é tratado apenas naquele caminho.
+
+### 17.4 Portões de implantação como controladores
+
+Um portão de canário é um controlador simples: aumente a exposição quando o limite superior de confiança da taxa de falhas estiver abaixo do orçamento, mantenha caso contrário e reverta só quando um limiar mais alto for ultrapassado. O Capítulo 37 implementa um.
+
+Os limiares vêm do orçamento de falhas. Com um orçamento de 10^-5 e a regra de três, um passo precisa de cerca de 300.000 conexões limpas antes da promoção. Um limiar de reversão mais alto que o de promoção impede que o portão alterne para lá e para cá quando a taxa medida oscila perto do orçamento. Registrar cada decisão com os seus dados permite aos revisores conferir que o controlador se comportou como projetado.
+
+### 17.5 Exemplo resolvido
+
+O painel da BPA mostra negociação híbrida em 62% do tráfego do portal (consequente) e cobertura do CBOM em 71% dos ativos (antecedente). Os ativos desconhecidos somam 18%. A ação de controle: aumentar o esforço de inventário sobre os ativos desconhecidos em vez de empurrar mais o tráfego do portal, porque o risco maior está onde nada é medido.
+
+Os 18% de ativos desconhecidos podem conter sistemas com dados de 25 anos que nenhuma implantação alcança, então encontrá-los reduz mais risco do que levar o tráfego do portal de 62% para 80%. O plano do mês seguinte designa dois engenheiros para o inventário e fixa a meta de reduzir à metade a parcela desconhecida.
+
+### 17.6 Erros comuns e limites
+
+- Painéis só com indicadores consequentes.
+- Reverter globalmente por causa de falhas locais (correção excessiva).
+- Medir os algoritmos configurados em vez dos negociados.
+
+Um painel só com porcentagens de negociação não consegue avisar que o inventário estacionou. As reversões globais descartam o progresso feito em todos os caminhos saudáveis. Medir os algoritmos configurados conta servidores onde o híbrido está ativado, mas nunca é negociado, por exemplo porque os clientes não o oferecem; a BPA lê o grupo negociado nos logs de sessão, que é o único número que reflete a proteção real do tráfego, e o compara todo mês com a parcela configurada.
+
+### Nota de engenharia
+
+O atraso de medição importa neste laço. A telemetria passiva pode ficar um dia atrás das mudanças de configuração; as mudanças do lado dos parceiros podem atrasar semanas. Um controlador que reage mais depressa do que os seus sensores oscila, então o ritmo de implantação precisa ser mais lento do que a medição relevante mais lenta. Na prática, a BPA define decisões semanais de promoção para os serviços internos e revisões mensais para as interfaces com parceiros, e registra o atraso de medição ao lado de cada indicador, para que ninguém confunda o retrato de ontem com o estado de hoje.
+
+### Exercícios
+
+- **EX033 — Indicadores.** Proponha três indicadores antecedentes e três consequentes para a BPA. Rubrica: 3 = mensuráveis, com responsável nomeado.
+- **EX034 — Histerese.** Projete limiares de promover/manter/reverter para a implantação de um grupo híbrido. Rubrica: 3 = limiares distintos, com justificativa.
+
+### Síntese
+
+Uma migração é um processo controlado: meça os resultados negociados, combine indicadores antecedentes e consequentes, amorteça as correções e use portões com histerese.
+
+<!-- cyberabc:chapter-navigation:start ch-17 -->
+### Continue estudando — capítulo 17 de 50
+
+[← Capítulo 16](#ch-16) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 18 →](#ch-18)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Arquitetura de segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) identificar fronteiras de confiança e onde a criptografia as impõe; (2) projetar uma arquitetura criptográfica com zonas e serviços; (3) centralizar a gestão de chaves; e (4) documentar a agilidade criptográfica como propriedade da arquitetura. O capítulo parte dos Capítulos 15–17 e prepara o núcleo de PQC.
+
+### 18.1 Fronteiras de confiança
+
+Desenhe cada fronteira em que os dados passam de um domínio de confiança para outro: da internet para o portal, da BPA para uma companhia de navegação, da rede do terminal para a rede dos guindastes, da BPA para a agência aduaneira. Em cada fronteira, liste as funções criptográficas: estabelecimento de chaves, autenticação, integridade, confidencialidade em repouso. Essa lista é o esqueleto da arquitetura.
+
+Na fronteira da rede dos guindastes, por exemplo, a lista contém a verificação de assinaturas de firmware e a VPN para o serviço de manutenção do fornecedor. Anotá-la revelou que o enlace do fornecedor usava uma chave pré-compartilhada e autenticação RSA, que o inventário original não havia encontrado porque o enlace era gerenciado pelo fornecedor. A lista de cada fronteira se torna um conjunto de linhas no documento de controle de interfaces.
+
+### 18.2 Serviços criptográficos
+
+Centralize onde for possível: uma camada de terminação TLS, uma PKI com uma AC apoiada em HSM, um serviço de gestão de chaves, um serviço de assinatura para firmware e documentos. A centralização transforma a migração de um serviço na migração para muitos consumidores. A criptografia descentralizada — cada aplicação com a sua biblioteca e as suas chaves — multiplica o trabalho.
+
+O proxy de borda da BPA termina o TLS de todos os seus serviços públicos, então ativar o grupo híbrido ali protegeu cada um deles com uma única mudança. Já os serviços internos que embutem cada um a sua biblioteca exigem um projeto separado por serviço. A direção da arquitetura é, portanto, encaminhar os serviços novos pelos componentes compartilhados e registrar qualquer exceção com o motivo e uma data de expiração.
+
+### 18.3 A agilidade criptográfica como arquitetura
+
+O white paper do NIST sobre agilidade criptográfica ([CSWP 39](https://doi.org/10.6028/NIST.CSWP.39-upd1)) descreve a agilidade como a capacidade de substituir algoritmos em protocolos, aplicações, software, hardware e infraestrutura preservando a segurança e as operações. Em termos de arquitetura, isso significa: escolhas de algoritmo na política, não no código; protocolos que negociam algoritmos com segurança; ciclos de vida de certificados e chaves curtos o bastante para a rotação; e um inventário que mostra onde tudo está.
+
+Cada elemento pode ser testado: uma mudança de política deve trocar os algoritmos num ambiente de testes sem mudança de código; o tempo de vida dos certificados deve ser curto o bastante para substituí-los todos dentro de uma janela planejada.
+
+### 18.4 Onde aplicar os híbridos
+
+Decida onde os híbridos se aplicam: primeiro a troca de chaves em todas as fronteiras externas de TLS e VPN; depois as assinaturas das raízes de vida longa e do firmware; o tráfego interno entre serviços conforme o tempo de vida dos dados. Registre a decisão e a sua data de revisão.
+
+A ordem segue a desigualdade de Mosca: a troca de chaves externa primeiro, porque o tráfego gravado está exposto agora; depois as assinaturas de vida longa, porque as raízes e o firmware precisam durar mais que a chegada de um CRQC; e o tráfego interno por último, se carregar dados de vida curta. Um serviço que transporta registros aduaneiros sobe na lista mesmo sendo interno. A data de revisão obriga a um novo olhar à medida que as bibliotecas e os parceiros ficam prontos.
+
+### 18.5 Exemplo resolvido
+
+A arquitetura-alvo da BPA: TLS híbrido no proxy de borda e nas VPNs com parceiros; um novo HSM com suporte a PQC para a AC; firmware dos guindastes assinado com LMS por um serviço central de assinatura com gestão de estado; ML-DSA com carimbo de tempo para os conhecimentos de embarque; seleção de algoritmos guiada por política nos serviços internos.
+
+Cada elemento corresponde a uma decisão anterior: o TLS híbrido vem da implantação no portal, o HSM do plano da AC, o LMS da restrição de 32 KB do controlador do guindaste e o ML-DSA com carimbo de tempo da análise dos conhecimentos de embarque. Escrever a arquitetura assim mostra aos revisores de onde veio cada escolha e qual decisão anterior revisitar se uma restrição mudar.
+
+### 18.6 Erros comuns e limites
+
+- Diagramas de arquitetura sem nenhuma função criptográfica marcada.
+- Cada equipe escolhendo algoritmos de forma independente.
+- Agilidade alegada, mas com chaves de 20 anos de vida.
+
+Sem as funções criptográficas nos diagramas, a VPN do fornecedor e o formato de exportação ficam invisíveis até um incidente. Escolhas independentes produzem várias bibliotecas e conjuntos de parâmetros pós-quânticos, que precisam ser mantidos um a um. Um tempo de vida de chave de 20 anos significa que a agilidade só existe no papel, porque a rotação levaria mais tempo do que o horizonte da ameaça permite. A BPA limita o tempo de vida das novas chaves para que todas possam ser substituídas em até dois anos.
+
+### Nota de engenharia
+
+As fronteiras de confiança também existem no tempo. Um documento assinado hoje atravessa uma fronteira rumo ao futuro quando um tribunal ou um parceiro o verifica anos depois, então a arquitetura deve mostrar os serviços de validação de longo prazo — carimbo de tempo, reassinatura de arquivos, registros de evidência — como componentes com a sua própria criptografia a migrar. Desenhá-los explicitamente evita o descuido comum em que todos os caminhos online são migrados enquanto as evidências arquivadas continuam protegidas por algoritmos que um adversário futuro poderia falsificar.
+
+### Exercícios
+
+- **EX035 — Tabela de fronteiras.** Crie uma tabela de fronteiras para quatro fronteiras da BPA, com funções e algoritmos atuais. Rubrica: 3 = completa e precisa.
+- **EX036 — Centralizar.** Argumente a favor ou contra centralizar a terminação TLS para fins de migração. Rubrica: 3 = benefício de agilidade e risco de ponto único de falha ponderados.
+
+### Síntese
+
+A arquitetura associa as fronteiras de confiança às funções criptográficas, centraliza os serviços para tornar a migração tratável e codifica a agilidade na política, nos protocolos, nos ciclos de vida e no inventário.
+
+<!-- cyberabc:chapter-navigation:start ch-18 -->
+### Continue estudando — capítulo 18 de 50
+
+[← Capítulo 17](#ch-17) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 19 →](#ch-19)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Identidade e criptografia
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar assinaturas digitais, certificados e hierarquias de PKI; (2) entender as assinaturas baseadas em hash de uso único e de muitos usos; (3) comparar ML-DSA, SLH-DSA, LMS/XMSS e o futuro FN-DSA; e (4) planejar a migração da PKI, incluindo raízes e assinaturas de vida longa. O capítulo fecha a etapa de fundamentos.
+
+### 19.1 Assinaturas e PKI
+
+Uma assinatura liga uma mensagem a uma chave; um certificado liga uma chave a uma identidade e é assinado por uma autoridade certificadora (AC); uma cadeia leva a uma raiz em que as partes confiantes confiam. As raízes muitas vezes vivem mais de 20 anos, então uma chave raiz que um futuro CRQC pudesse falsificar compromete todos os certificados abaixo dela.
+
+Os certificados finais duram cerca de um ano e são substituídos rotineiramente, então o seu algoritmo pode mudar na próxima renovação. A raiz é diferente: as partes confiantes precisam receber uma nova raiz e confiar nela antes que qualquer certificado emitido por ela seja aceito, o que leva anos para parceiros e dispositivos. É por isso que a BPA cria primeiro a sua raiz pós-quântica.
+
+### 19.2 Assinaturas baseadas em hash a partir dos princípios
+
+Uma assinatura de uso único de Lamport publica os hashes de dois segredos aleatórios por bit do resumo da mensagem e revela um segredo por bit ao assinar. A segurança precisa apenas de um hash de mão única. Usar uma chave duas vezes revela os dois segredos em muitas posições, reduzindo bruscamente o trabalho do falsificador; mais alguns usos tornam a falsificação prática. As árvores de Merkle combinam muitas chaves de uso único sob uma só chave pública; o LMS e o XMSS ([RFC 8554](https://www.rfc-editor.org/rfc/rfc8554.html), [RFC 8391](https://www.rfc-editor.org/rfc/rfc8391.html), [SP 800-208](https://doi.org/10.6028/NIST.SP.800-208)) fazem isso com estado; o SLH-DSA ([FIPS 205](https://doi.org/10.6028/NIST.FIPS.205)) evita o estado usando uma hiperárvore com assinaturas de poucos usos nas folhas, ao custo de assinaturas maiores.
+
+### 19.3 Atividade prática — Laboratório L
+
+```python
+# Lab L (ch 19): Lamport one-time signatures from SHA-256 - the idea under SLH-DSA, LMS and XMSS.
+import hashlib, secrets
+H = lambda b: hashlib.sha256(b).digest()
+def keygen(bits=256):
+    sk = [(secrets.token_bytes(32), secrets.token_bytes(32)) for _ in range(bits)]
+    pk = [(H(a), H(b)) for a, b in sk]
+    return sk, pk
+def bits_of(msg):
+    d = int.from_bytes(H(msg), "big"); return [(d >> (255 - i)) & 1 for i in range(256)]
+def sign(sk, msg): return [sk[i][b] for i, b in enumerate(bits_of(msg))]
+def verify(pk, msg, sig): return all(H(s) == pk[i][b] for i, (s, b) in enumerate(zip(sig, bits_of(msg))))
+sk, pk = keygen()
+s1 = sign(sk, b"firmware v1.0")
+print("valid signature verifies:", verify(pk, b"firmware v1.0", s1))
+print("tampered message rejected:", not verify(pk, b"firmware v1.1", s1))
+s2 = sign(sk, b"firmware v1.1")          # KEY REUSE: never do this
+revealed = sum(1 for i in range(256) if bits_of(b"firmware v1.0")[i] != bits_of(b"firmware v1.1")[i])
+print(f"after one reuse, both secrets revealed at {revealed}/256 positions -> forging needs ~2^{256 - revealed} hashes, not 2^256")
+print("signature size:", 256 * 32, "bytes; public key:", 2 * 256 * 32, "bytes")
+```
+
+Saída esperada:
+
+```text
+valid signature verifies: True
+tampered message rejected: True
+after one reuse, both secrets revealed at 118/256 positions -> forging needs ~2^138 hashes, not 2^256
+signature size: 8192 bytes; public key: 16384 bytes
+```
+
+A saída mostra tanto a força do esquema quanto a sua fragilidade. Uma assinatura válida é verificada e uma mensagem alterada falha, usando apenas o SHA-256. Depois de uma reutilização, os dois resumos diferem em 118 posições, onde os dois segredos agora são públicos; um falsificador precisa de uma mensagem cujo resumo coincida nas 138 posições restantes, cerca de 2^138 hashes. Cada nova reutilização reduz à metade, em média, as posições desconhecidas, então, depois de três assinaturas, restam cerca de 64, ao alcance de grandes computações. Os tamanhos, 8 KB por assinatura, explicam por que os esquemas práticos comprimem as chaves de Lamport com cadeias de Winternitz e árvores de Merkle.
+
+### 19.4 As opções padronizadas
+
+| Esquema | Base | Chave pública / assinatura (bytes) | Notas |
+|---|---|---|---|
+| ML-DSA-44/65/87 ([FIPS 204](https://doi.org/10.6028/NIST.FIPS.204)) | Reticulados modulares | 1.312/2.420 · 1.952/3.309 · 2.592/4.627 | Uso geral |
+| SLH-DSA (FIPS 205) | Hashes, sem estado | 32–64 / 7.856–49.856 | Conservador, grande |
+| LMS, XMSS (SP 800-208) | Hashes, com estado | Pequena / ~1–3 kB típico | O estado nunca pode se repetir; firmware |
+| FN-DSA (Falcon) | Reticulados NTRU | ~900 / ~666 no nível 1 | Norma (FIPS 206) em desenvolvimento |
+
+Para a BPA, a tabela aponta o ML-DSA para a assinatura geral, o LMS para o firmware onde o estado pode ser gerenciado e o SLH-DSA onde o tamanho da assinatura importa menos do que pressupostos conservadores. O FN-DSA fica anotado para uso futuro, quando a FIPS 206 for final, já que as suas assinaturas pequenas se adequam a enlaces restritos. A escolha para cada uso é registrada com os números de tamanho da tabela, para que revisores posteriores possam conferi-los.
+
+### 19.5 Exemplo resolvido
+
+O plano de PKI da BPA: uma nova raiz ML-DSA-87 (ou uma raiz composta tradicional+PQC, conforme o suporte das partes confiantes) criada agora e distribuída; intermediárias migradas no próximo ciclo de certificados; LMS para a assinatura de firmware, com estado protegido por HSM; SLH-DSA considerado para uma raiz offline raramente usada, por causa do seu pressuposto conservador.
+
+Distribuir a nova raiz leva tempo, então ela é criada antes que as intermediárias precisem dela; uma raiz criada no primeiro ano pode estar nos repositórios de confiança dos parceiros quando os certificados finais migrarem. A raiz offline assina raramente, então as assinaturas grandes do SLH-DSA pouco importam, enquanto a sua dependência exclusiva de hashes dá garantia caso os esquemas de reticulados sejam enfraquecidos.
+
+### 19.6 Erros comuns e limites
+
+- Reutilizar chaves de uso único ou com estado (o retrocesso do estado após a restauração de um backup é uma falha clássica).
+- Migrar os certificados finais e deixar uma raiz de vida longa vulnerável.
+- Citar o FN-DSA como norma final.
+
+Restaurar um servidor de assinatura a partir de um backup pode reiniciar o contador do LMS, de modo que a mesma chave de uso único assina duas mensagens, exatamente a reutilização que o Laboratório L mostra; o HSM da BPA guarda o estado e se recusa a retroceder. Um certificado final pós-quântico sob uma raiz RSA continua falhando se a raiz puder ser falsificada. O FN-DSA deve ser planejado, não implantado, até que a sua norma seja final.
+
+### Exercícios
+
+- **EX037 — Reutilização no Lamport.** Explique, a partir do Laboratório L, por que assinar duas mensagens com uma chave permite a falsificação. Rubrica: 3 = argumento dos segredos revelados correto.
+- **EX038 — Seleção de esquema.** Escolha um esquema de assinatura para (a) certificados de servidores TLS, (b) firmware dos guindastes, (c) uma raiz offline usada duas vezes por ano. Rubrica: 3 = ML-DSA; LMS/XMSS ou ML-DSA, com razões; SLH-DSA ou ML-DSA, com razões.
+
+### Síntese
+
+As assinaturas e a PKI carregam confiança de vida longa; os esquemas baseados em hash são conservadores e ou têm estado ou são grandes; o ML-DSA é a escolha de uso geral; as raízes precisam migrar primeiro.
+
+<!-- cyberabc:chapter-navigation:start ch-19 -->
+### Continue estudando — capítulo 19 de 50
+
+[← Capítulo 18](#ch-18) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 20 →](#ch-20)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Segurança quântica e pós-quântica: contexto de engenharia
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar com precisão a ameaça quântica à criptografia implantada; (2) aplicar a desigualdade de Mosca para priorizar sistemas; (3) resumir o panorama de normas e políticas, com a sua situação; e (4) enquadrar a migração da BPA como um programa de engenharia. Este capítulo abre o núcleo de PQC e se apoia em todos os fundamentos.
+
+### 20.1 O que quebra e o que não quebra
+
+O algoritmo de Shor quebra RSA, Diffie–Hellman em corpo finito, DSA, ECDSA, EdDSA, ECDH e X25519 — todos os algoritmos de chave pública amplamente implantados. O algoritmo de Grover enfraquece apenas modestamente as cifras simétricas e os hashes; o AES-256 e o SHA-384/SHA-512 continuam sendo escolhas conservadoras. Assim, a migração trata da criptografia de *chave pública*: estabelecimento de chaves e assinaturas digitais.
+
+Isso divide o inventário da BPA em duas listas. Todo uso de RSA, ECDSA, ECDH e X25519 precisa de substituição ou de um híbrido. Os usos de AES-256 e SHA-384 não precisam de mudança, e o AES-128 pode passar ao AES-256 durante a renovação rotineira. Manter as listas separadas impede que o programa passe o primeiro ano em mudanças simétricas que reduzem pouco risco.
+
+### 20.2 Priorizar com Mosca
+
+Para cada sistema, estime *x* (por quanto tempo os seus dados ou assinaturas precisam permanecer seguros), *y* (quanto tempo a migração levará) e trate *z* (o tempo até um CRQC) como uma faixa. Se *x* + *y* > *z* para um *z* plausível, o sistema já está atrasado ([Mosca 2018](https://doi.org/10.1109/MSP.2018.3761723)). Os dados aduaneiros da BPA (*x* = 25) estão atrasados em qualquer faixa plausível; o fluxo de rastreamento de contêineres (*x* ≈ 0,1) pode seguir o ciclo tecnológico normal.
+
+Para os dados aduaneiros, x = 25 e a migração pode levar y = 5 anos, então qualquer CRQC que chegue antes de trinta anos a partir de agora expõe parte dos registros de hoje.
+
+### 20.3 Normas e políticas, com a situação
+
+O NIST publicou o ML-KEM ([FIPS 203](https://doi.org/10.6028/NIST.FIPS.203)), o ML-DSA ([FIPS 204](https://doi.org/10.6028/NIST.FIPS.204)) e o SLH-DSA ([FIPS 205](https://doi.org/10.6028/NIST.FIPS.205)) em agosto de 2024; as assinaturas baseadas em hash com estado estão na [SP 800-208](https://doi.org/10.6028/NIST.SP.800-208); a orientação de uso de KEMs é a [SP 800-227](https://doi.org/10.6028/NIST.SP.800-227) (setembro de 2025). O HQC foi selecionado em março de 2025 como KEM de reserva ([IR 8545](https://doi.org/10.6028/NIST.IR.8545)); o FN-DSA está sendo padronizado. O rascunho do [NIST IR 8547](https://doi.org/10.6028/NIST.IR.8547.ipd) propõe descontinuar os algoritmos vulneráveis à computação quântica de 112 bits após 2030 e proibi-los após 2035. A IETF padronizou os grupos híbridos do TLS ([RFC 10024](https://www.rfc-editor.org/rfc/rfc10024.html)) e a terminologia dos híbridos ([RFC 9794](https://www.rfc-editor.org/rfc/rfc9794.html)). As situações mudam — verifique novamente.
+
+### 20.4 A migração como programa
+
+O [projeto Migration to Post-Quantum Cryptography](https://www.nccoe.nist.gov/crypto-agility-considerations-migrating-post-quantum-cryptographic-algorithms) do NCCoE mantém duas frentes de trabalho com colaboradores da indústria — a descoberta criptográfica (ferramentas de inventário que apoiam a priorização baseada em risco) e os testes de interoperabilidade dos algoritmos padronizados em protocolos comuns. Pacotes de trabalho de engenharia para a BPA: inventário (CBOM), requisitos, arquitetura, relação com fornecedores, pilotos, implantação, verificação e agilidade.
+
+Os pacotes de trabalho correm em parte em paralelo: o inventário e a relação com fornecedores começam imediatamente, porque ditam o ritmo de todo o resto. Os pilotos começam assim que uma biblioteca e um parceiro estejam prontos, enquanto a verificação é planejada desde o início.
+
+### 20.5 Exemplo resolvido
+
+A lista inicial de prioridades da BPA: (1) replicação e exportações aduaneiras — confidencialidade, *x* = 25; (2) VPNs com parceiros — o tráfego gravado inclui condições comerciais, *x* = 10; (3) raiz da PKI e assinatura de firmware — confiança de vida longa; (4) portal público — TLS híbrido disponível a baixo custo; (5) telemetria interna de vida curta — depois.
+
+A ordem segue x: primeiro os dados aduaneiros de 25 anos, depois as condições comerciais de 10 anos nas VPNs. A raiz da PKI fica em terceiro, apesar de dados menos sensíveis, porque precisa ser distribuída muito antes do uso. O portal fica em quarto apenas porque o TLS híbrido ali é barato e rápido. A telemetria de vida curta espera pelas atualizações normais das bibliotecas.
+
+### 20.6 Erros comuns e limites
+
+- Migrar primeiro a criptografia simétrica.
+- Tratar datas de políticas como previsões quânticas.
+- Usar nomes de candidatos ("Kyber") para as normas finais ("ML-KEM").
+
+A migração que começa pelo simétrico gasta esforço onde Grover tem pouco efeito, enquanto a troca de chaves vulnerável a Shor continua vazando tráfego gravado. Datas de políticas, como os prazos do CNSA 2.0, refletem planejamento, não previsões de um CRQC, e não devem ser lidas como previsões. Os nomes de rascunho causam erros de interoperabilidade, porque o Kyber de rascunho e o ML-KEM final diferem, então os inventários registram os nomes finais e a norma a que cada um se refere, como a FIPS 203 para o ML-KEM.
+
+### Exercícios
+
+- **EX039 — Tabela de Mosca.** Monte uma tabela de Mosca (*x*, *y*, veredito ao longo de *z* = 10–30) para cinco sistemas da BPA. Rubrica: 3 = valores justificados, vereditos coerentes.
+- **EX040 — Resumo da situação.** Escreva um resumo de 150 palavras da situação das normas de PQC, com citações. Rubrica: 3 = situações e datas corretas.
+
+### Síntese
+
+Os computadores quânticos ameaçam a criptografia de chave pública; a desigualdade de Mosca ordena o trabalho; existem normas para KEMs e assinaturas, e outras estão a caminho; a migração é um programa de vários anos.
+
+<!-- cyberabc:chapter-navigation:start ch-20 -->
+### Continue estudando — capítulo 20 de 50
+
+[← Capítulo 19](#ch-19) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 21 (inglês) →](../../en/book/MANUSCRIPT.md#ch-21)
 
 Os próximos capítulos ainda estão apenas na edição em inglês.
 <!-- cyberabc:chapter-navigation:end -->
@@ -741,7 +1425,7 @@ Os próximos capítulos ainda estão apenas na edição em inglês.
 
 ## Resoluções
 
-Respostas-modelo; qualquer resposta que atenda à rubrica recebe a mesma pontuação. Os números sobre a BPA são sintéticos. Esta edição parcial traz as resoluções de EX001–EX020; as de EX021–EX100 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
+Respostas-modelo; qualquer resposta que atenda à rubrica recebe a mesma pontuação. Os números sobre a BPA são sintéticos. Esta edição parcial traz as resoluções de EX001–EX040; as de EX041–EX100 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
 
 **EX001.** log₂(10^30) = 30 × 3,32 ≈ 99,7 → cerca de 100 bits. log₂(2^100 × 10^6) = 100 + 19,9 ≈ 120 bits.
 
@@ -782,6 +1466,46 @@ Respostas-modelo; qualquer resposta que atenda à rubrica recebe a mesma pontua�
 **EX019.** Declarantes aduaneiros (segredos comerciais; representados indiretamente pela agência aduaneira), funcionários (dados de RH; representados pela comissão de trabalhadores/RH), parceiros de navegação (condições comerciais; representados pelos contratos). Lacuna: os titulares dos dados raramente estão na sala quando os orçamentos são definidos.
 
 **EX020.** A carta agradece ao fornecedor, explica que a BPA usa apenas algoritmos padronizados após revisão pública (FIPS 203/204/205, SP 800-208), cita as quebras do Rainbow e do SIKE como motivos pelos quais projetos não verificados não podem ser aceitos e convida a uma proposta de um produto baseado em normas.
+
+**EX021.** 540 + 32 + 4 = 576 B → um segmento; 540 + 1.216 + 4 = 1.760 B → dois segmentos.
+
+**EX022.** TLS: ambos (a troca de chaves primeiro). IKEv2: principalmente troca de chaves (a autenticação depois). SSH: ambos (a troca de chaves implantada primeiro). DNSSEC: assinaturas.
+
+**EX023.** Biblioteca do sistema (consultas ao gerenciador de pacotes), bibliotecas embutidas/ligadas estaticamente (varredura de binários), configuração de provedores em tempo de execução (análise de configuração), chaves guardadas em HSM/TPM (inventário PKCS#11/de dispositivos).
+
+**EX024.** Os dispositivos vivem 10–20 anos e verificam o firmware offline; um esquema de assinatura falsificável dentro desse tempo de vida permite a um atacante instalar firmware malicioso; os bootloaders são difíceis de atualizar, então a âncora de confiança precisa ser escolhida cedo.
+
+**EX025.** Fluxo de status dos contêineres (dias), logs operacionais do terminal (1 ano), conhecimentos de embarque (12 anos de integridade), declarações aduaneiras (25 anos de confidencialidade), registros de RH (décadas), imagens das câmeras de segurança (semanas a meses). Os tempos de vida mais longos primeiro.
+
+**EX026.** O encapsulamento de chave RSA-OAEP; substitua por um destinatário KEM (ML-KEM via KEMRecipientInfo do CMS, RFC 9629), opcionalmente ao lado do RSA durante a transição.
+
+**EX027.** Algoritmo vindo da política; conjunto de parâmetros aprovado; comprimentos validados; comparações em tempo constante; biblioteca fixada e na versão da norma final; KATs passando; testes de interoperabilidade; fallback registrado; plano de reversão; CBOM atualizado.
+
+**EX028.** Id do ativo, endpoint, protocolo/versão, grupos de troca de chaves oferecidos e negociados, algoritmo de assinatura, emissor/validade/algoritmo da chave do certificado, biblioteca e versão, local de armazenamento da chave, responsável, fonte da evidência, última observação.
+
+**EX029.** Portal: categoria 3 (ML-KEM-768 no X25519MLKEM768), equilibrando margem e tamanho; parceiro de segurança nacional: categoria 5 (ML-KEM-1024, ML-DSA-87), como exige o CNSA 2.0.
+
+**EX030.** Tráfego de VPN: colete agora, decifre depois; assinaturas de firmware: falsificação futura contra raízes de vida longa; conhecimentos de embarque: falsificação de assinaturas arquivadas.
+
+**EX031.** Por exemplo, "VPN da companhia de navegação — IKEv2 ECDH P-384 → IKEv2 + ML-KEM-768 (RFC 9370) — responsáveis: rede da BPA + parceiro — meta: 3º trimestre do ano que vem"; linhas semelhantes para a exportação aduaneira, o TLS de borda, a assinatura de firmware e o HSM.
+
+**EX032.** Pesos definidos primeiro (segurança 0,35, disponibilidade 0,25, normas 0,15, prontidão dos parceiros 0,15, custo 0,10); notas por opção; a verificação de sensibilidade mostra se a vencedora muda quando o peso da disponibilidade sobe.
+
+**EX033.** Antecedentes: cobertura do CBOM, compromissos de PQC dos fornecedores, prontidão do ambiente de testes. Consequentes: parcela híbrida negociada, parcela de documentos com assinatura dupla, tendência da parcela de ativos desconhecidos. Cada um com um responsável.
+
+**EX034.** Promover quando o limite superior ≤ linha de base + orçamento; manter quando estiver entre o orçamento e 2× o orçamento; reverter apenas o caminho afetado quando o limite inferior exceder 2× o orçamento — limiares diferentes evitam a oscilação.
+
+**EX035.** Internet→portal: troca de chaves TLS X25519, certificado RSA; BPA→companhia de navegação: IKEv2 ECDH, certificado ECDSA; terminal→guindastes: assinaturas RSA de firmware; BPA→aduana: cifragem de arquivos RSA-OAEP.
+
+**EX036.** A favor: um só lugar para ativar os híbridos e monitorar a negociação, agilidade rápida. Contra: ponto único de falha e concentração de chaves; mitigue com redundância e chaves apoiadas em HSM.
+
+**EX037.** Cada assinatura revela um de dois segredos por bit do resumo; duas mensagens cujos resumos diferem na posição *i* revelam ali os dois segredos; com os dois segredos conhecidos em muitas posições, um atacante pode montar assinaturas para outros resumos que usem apenas valores revelados.
+
+**EX038.** (a) ML-DSA (uso geral, suporte do ecossistema); (b) LMS/XMSS se o HSM de assinatura gerenciar o estado (verificador pequeno), ou ML-DSA caso contrário; (c) SLH-DSA para o máximo de conservadorismo, dada a baixa frequência de assinatura, ou ML-DSA-87 se o tamanho importar.
+
+**EX039.** Aduana (x=25, y=5 como em 20.2 → atrasada para todo z < 30); VPN dos parceiros (x=10, y=1,5 → atrasada se z ≤ 11,5); firmware (x=15, y=3 → atrasado se z ≤ 18); portal (x=1, y=0,5 → não atrasado); telemetria (x≈0,1 → não atrasada).
+
+**EX040.** Precisa informar FIPS 203/204/205 finais (agosto de 2024), SP 800-208, SP 800-227 final (setembro de 2025), HQC selecionado (IR 8545, março de 2025) com a norma pendente, FN-DSA pendente, IR 8547 em rascunho.
 
 <a id="references"></a>
 
