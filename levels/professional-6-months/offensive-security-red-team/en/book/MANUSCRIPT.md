@@ -354,7 +354,7 @@ Even without a full red-team scenario, name the likely actors (stolen member pas
 
 For online banking, a stolen member password and phishing of staff are the actors Leo names. That focus pushes checks toward session handling, password policy and VPN MFA, rather than obscure protocol quirks that no likely actor would use against HCU.
 
-Insider misuse and attacks on the AS/400 are left out of this light model because ENG-440 cannot test them. That focus pushes checks toward session handling, password policy and VPN MFA, and helps the report explain why a check was in scope when examiners ask.
+Insider misuse and attacks on the AS/400 are left out of this light model because ENG-440 cannot test them. Naming those exclusions in the model lets the report explain why a check was or was not in scope when examiners ask.
 
 ### 4.6 Intelligence gathering limits
 
@@ -868,9 +868,9 @@ Examiners reading the method notes should see a web and VPN configuration review
 
 ### 9.6 Positive observations
 
-Reports should also note what worked: MFA on VPN, rapid SOC response to the start message, clean staging isolation. Positive observations show balance and tell leaders which investments are paying off.
+Reports should also note what worked: MFA on staff VPN logins, rapid SOC response to the start message, clean staging isolation. Positive observations show balance and tell leaders which investments are paying off.
 
-Leo notes MFA on the VPN, the SOC's rapid response to the ENG-440 start message, and clean staging isolation. Leaders who only see failures cannot tell which investments to keep.
+Leo limits the VPN observation to ordinary staff logins, because the shared admin password finding shows that the admin path did not yet require a second factor. Leaders who only see failures cannot tell which investments to keep.
 
 Each positive observation carries evidence, such as the time the SOC took to acknowledge the start message. Keeping staging isolated is an investment the CISO can defend at budget time because the report shows it held.
 
@@ -1104,7 +1104,7 @@ During the supervised lab, one learner drives and one checks the ROE on every st
 
 Halting the driver for an unmapped method or a missing exclusion is a success for the pair. Leo learns both roles so he can be either the careful driver or the ROE checker on a real engagement.
 
-Juniors pair with a senior on any case that involves member data exposure or HR-adjacent reports. Solo work under that stress invents process; the senior's name is on the ENG-CLASS-11 case file before the window opens.
+The pair records each halt in the operator log with the step, the ROE line it failed and who called it, so the instructor scores catches from the record rather than from memory. Swapping halfway means neither learner spends the whole lab only typing commands or only reading the ROE.
 
 ### 11.7 Lab evidence pack
 
