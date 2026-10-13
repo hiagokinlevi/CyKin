@@ -89,6 +89,8 @@ The Menlo Report's principles ([Dittrich and Kenneally 2012](https://www.dhs.gov
 
 Classify every artefact before it exists. **Tier 0** (public): code, synthetic data, aggregate counts. **Tier 1** (restricted): de-identified handshake metadata with hostnames replaced by stable pseudonyms. **Tier 2** (confidential): raw packet captures, configuration files, certificate inventories that reveal internal architecture. **Tier 3** (never collected): private keys, session keys, application payload, patient data. A protocol that cannot say which tier an artefact belongs to is not ready for review.
 
+Section one point five develops advanced research integrity and methods with a the organisation note Ciphertrail Study can demo offline.
+
 ### 1.6 Metrics that resist gaming
 
 "Percentage of systems migrated" is the metric most likely to mislead. It can be raised by redefining "system", by counting configured rather than negotiated algorithms, or by excluding devices the scanner cannot reach. Prefer metrics with a denominator someone else can audit: **recall** of quantum-vulnerable uses against an adjudicated ground truth; **precision** of reported findings; **negotiated-hybrid share** weighted by data sensitivity; **unknown share** — the fraction of assets whose cryptography could not be determined, reported separately rather than silently treated as safe; and **time-to-replace** for a chosen algorithm, which measures agility rather than a one-time migration.
@@ -135,6 +137,8 @@ lab results, z in [15,40]      0.000
 Read the output as a statement about the *model*, not about the world. The genomic archive is exposed under every assumption because its confidentiality lifetime alone exceeds any plausible *z*; migration speed cannot save data that has already been harvested. Lab results flip from 0.23 to 0.63 when migration slows, and to 0 under a more optimistic *z* range — which is exactly why a thesis must publish the sensitivity, not a single probability.
 
 ### 1.9 Common errors and limits
+Section one point nine develops advanced research integrity and methods with a the organisation note Ciphertrail Study can demo offline.
+
 
 - Treating a resource estimate as a date. Estimates bound cost under assumptions; they do not schedule engineering.
 - Counting configuration as negotiation. A server that offers a hybrid group protects nothing if no client selects it.
@@ -222,6 +226,12 @@ print("families with no independently validated study:", ", ".join(gaps))
 
 Expected output:
 
+Section two point six develops quantum and post-quantum security research with a the organisation note Ciphertrail Study can demo offline.
+
+Under section two point six, the mentor expects quantum claims to carry owners and dates.
+
+Section two point six treats why the frontier is as testable only when evidence and ticket IDs are recorded.
+
 ```text
 family                   none  same-vendor  independent
 agility                     1            0            0
@@ -236,6 +246,8 @@ Extend the coding scheme with a fourth column for "ground truth independent of t
 ### 2.7 A falsifiable gap
 
 A gap is not "nobody has studied PQC inventories". It is a specific, testable absence: *no published inventory method reports recall of quantum-vulnerable key-establishment and signature uses against blind adjudication on a corpus independent of its development corpus, with unknown share reported.* The statement is falsifiable — one counter-example in the literature would close it — and it names the measurements a contribution must make.
+
+Section two point seven develops quantum and post-quantum security research with a the organisation note Ciphertrail Study can demo offline.
 
 ### 2.8 Common errors and limits
 
@@ -308,6 +320,8 @@ Each hypothesis has a stated condition under which it is rejected. H3 is include
 
 The baseline is static-only analysis configured by a competent engineer with the same access, not a deliberately weak scanner. A second baseline is passive-only. Rival explanations for an observed gain include: passive findings duplicating static findings under different names (inflating counts), the adjudicators being influenced by which tool found an item (inflating precision), and the corpus over-representing appliances (inflating aggregate gain). The design answers each: canonical identifiers per use, blinded adjudication, and per-class reporting.
 
+Section three point five develops original contribution proposal with a the organisation note Ciphertrail Study can demo offline.
+
 ### 3.6 Worked example and Lab 3
 
 The proposal includes a model study to check whether H1 and H3 are even plausible before any data are collected. Detection probabilities are arbitrary teaching values chosen to embody the mechanism.
@@ -350,6 +364,10 @@ ALL                1000    0.59   0.79
 The model shows the predicted pattern: a large gain on vendor appliances, almost none on data at rest, and an aggregate gain (0.20) that depends heavily on the class mix. That last point is a design warning — an organization with fewer appliances would show a smaller aggregate gain for the same method, so the thesis must report per-class results and the mix.
 
 ### 3.7 Common errors and limits
+Section three point seven develops original contribution proposal with a the organisation note Ciphertrail Study can demo offline.
+
+Under section three point seven, the mentor expects original claims to carry owners and dates.
+
 
 - Proposing a method without a mechanism, so that any result can be rationalized.
 - Hypotheses that cannot fail, such as "dual-source recall is at least as high as static" (true by construction for a union).
@@ -385,6 +403,8 @@ After this chapter you can (1) distinguish repeatability, reproducibility and re
 ### 4.1 Terms
 
 Following the ACM's [artifact review and badging](https://www.acm.org/publications/policies/artifact-review-and-badging-current) vocabulary: **repeatability** — the same team obtains the same result with the same setup; **reproducibility** — a different team obtains it with the original artefacts; **replicability** — a different team obtains it with independently developed artefacts. A doctoral baseline should at least be reproduced, and the reproduction log should record every deviation, including versions of scanners, parsers and the TLS group registry used to classify codepoints.
+
+Section four point one develops baseline replication and pilot with a the organisation note Ciphertrail Study can demo offline.
 
 ### 4.2 Diagnosing a failed reproduction: InvBench-22
 
@@ -422,6 +442,10 @@ print(f"canonical uses found:   {len(uses & truth_vulnerable)}  -> recall {len(u
 
 Expected output:
 
+Section four point four develops baseline replication and pilot with a the organisation note Ciphertrail Study can demo offline.
+
+Under section four point four, the mentor expects baseline claims to carry owners and dates.
+
 ```text
 classifier unit tests: 4/4 pass
 raw classical findings: 5  -> naive 'recall' 5/3 = 1.67
@@ -434,11 +458,17 @@ A "recall" above 1 is the clearest possible signal of a unit error, but subtler 
 
 The fusion rule has parameters: how long a passive observation remains valid, how hostnames are matched to code repositories, and the confidence threshold for attributing a negotiated group to an asset. Tune them on a **development split** (in the Ciphertrail Study, HRHN hospital 1), freeze them, and evaluate on the held-out hospitals 2 and 3. Record every tuning run, including those that were abandoned; a garden of forking paths that is hidden is indistinguishable from p-hacking.
 
+Section four point five develops baseline replication and pilot with a the organisation note Ciphertrail Study can demo offline.
+
 ### 4.6 A bounded pilot
 
 The pilot runs for two weeks on one HRHN segment with 140 services. Pre-stated go/no-go criteria: classifier unit tests all pass; pseudonymization verified on a sample of 200 records by a second person; no operational incident attributable to the study; adjudicator agreement (Cohen's κ) at least 0.70 on a 60-item calibration set; and the protocol takes no more than four engineer-hours per 100 services. The synthetic pilot meets four criteria but records κ = 0.62, because adjudicators disagreed on whether a configured-but-never-negotiated RSA key-exchange cipher suite is a "use". The decision is *go with amendment*: the codebook now defines a use as any algorithm reachable by a peer in negotiation, with a separate flag for "configured, not observed".
 
 ### 4.7 Common errors and limits
+Section four point seven develops baseline replication and pilot with a the organisation note Ciphertrail Study can demo offline.
+
+Under section four point seven, the mentor expects baseline claims to carry owners and dates.
+
 
 - Counting findings rather than uses; always state the unit.
 - Building ground truth from the tool under test.
@@ -483,9 +513,13 @@ Both methods are applied to the *same* adjudicated items, so the quantity of int
 
 The Marrow Logistics corpus was never examined during development. The fusion rules, thresholds and codebook are frozen and hashed (SHA-256 of the configuration file recorded in the thesis log) before Marrow data are opened. Marrow differs deliberately: fewer vendor appliances, more embedded handheld scanners in warehouses, and an SSH-heavy operations team. The mechanism of Chapter 3 therefore predicts a smaller aggregate gain — a successful prediction of *reduced* benefit is evidence for the mechanism, not against the method.
 
+Section five point three develops main study and independent validation with a the organisation note Ciphertrail Study can demo offline.
+
 ### 5.4 Blinded adjudication
 
 Engineers E01–E10 (synthetic) receive each candidate use with tool provenance removed and randomized order, plus owner documentation. Two engineers adjudicate every item; a third resolves disagreements. On the main study, synthetic agreement is κ = 0.78 after the codebook amendment from the pilot. Items no engineer can determine are coded *unknown*: 9% of HRHN assets and 14% of Marrow assets, reported alongside recall rather than dropped.
+
+Section five point four develops main study and independent validation with a the organisation note Ciphertrail Study can demo offline.
 
 ### 5.5 Practical activity — Lab 5: paired bootstrap
 
@@ -514,6 +548,10 @@ for name, seed, mix in [("HRHN hospitals 2-3", 11, {"code": 300, "appliance": 18
 
 Expected output:
 
+Section five point five develops main study and independent validation with a the organisation note Ciphertrail Study can demo offline.
+
+Under section five point five, the mentor expects main claims to carry owners and dates.
+
 ```text
 HRHN hospitals 2-3       recall gain = 0.207  95% CI [0.176, 0.236]
 Marrow (frozen rules)    recall gain = 0.097  95% CI [0.079, 0.116]
@@ -526,6 +564,12 @@ Under these synthetic assumptions, H1 (gain ≥ 0.10 on HRHN) is supported, and 
 "On the held-out HRHN corpus (synthetic; 700 adjudicated quantum-vulnerable uses), dual-source inventory increased recall by 0.21 (95% bootstrap CI 0.18–0.24) over a competently configured static baseline; precision was 0.93. The gain was concentrated in vendor appliances (0.66) and absent for data at rest (0.00), as predicted (H3). With rules frozen, the gain on an independent corpus was 0.10 (0.08–0.12). Nine and fourteen per cent of assets, respectively, could not be adjudicated and are excluded from the recall denominators; under a worst-case assumption that all unknown assets hold undiscovered vulnerable uses, recall falls by up to 0.12. These results describe two synthetic organizations and a model of detection; they are not estimates for real enterprises." Note what the paragraph refuses to say: it does not claim either organization is "quantum-safe" or that dual-source inventory is sufficient.
 
 ### 5.7 Common errors and limits
+Section five point seven develops main study and independent validation with a the organisation note Ciphertrail Study can demo offline.
+
+Under section five point seven, the mentor expects main claims to carry owners and dates.
+
+Section five point seven treats paired design three uncertainties as testable only when evidence and ticket IDs are recorded.
+
 
 - Comparing unpaired recall estimates and reporting overlapping intervals as "no difference".
 - Reporting only sampling uncertainty.
@@ -570,9 +614,13 @@ Before external review, assign a colleague to argue that each claim is false. A 
 
 Every method has a place it cannot see. For dual-source inventory the boundary includes: TLS 1.3 certificate signatures unless endpoints cooperate; firmware-update signatures verified offline inside devices; data at rest encrypted by third-party services; and protocols carried inside VPN tunnels the sensor cannot open. State the boundary as a diagram and a list in the thesis. Examiners respect a candidate who shows where the method stops more than one who implies it covers everything.
 
+Section six point three develops peer critique and revision with a the organisation note Ciphertrail Study can demo offline.
+
 ### 6.4 Narrowing a claim
 
 Original claim: "Dual-source inventory substantially improves discovery of quantum-vulnerable cryptography." Narrowed claim after critique: "Where passive sensors observe the relevant segments, dual-source inventory increased recall of quantum-vulnerable key-establishment and TLS-1.2-visible signature uses by 0.10–0.21 in two synthetic organizations, concentrated in vendor appliances; it did not improve discovery of data-at-rest or offline firmware-signature uses." The narrowed claim is smaller and much harder to refute — exactly the trade a thesis should make.
+
+Section six point four develops peer critique and revision with a the organisation note Ciphertrail Study can demo offline.
 
 ### 6.5 Dual-use review
 
@@ -583,6 +631,12 @@ An inventory method is a map of where an organization is weakest. Published inve
 The synthetic response letter opens with a table mapping each objection to a change: O1 → new scope condition and an off-sensor analysis (Section 5.4 of the paper); O2 → new robustness check, κ reported; O3 → added sensitivity-weighted recall, and the abstract now says "uses" rather than "risk". It thanks reviewers without flattery, concedes what was right, and explains disagreements with evidence. Where the authors disagree — a reviewer asked for active scanning of medical devices to "complete" the ground truth — the letter explains the harm argument from Chapter 1 and offers a testbed experiment instead.
 
 ### 6.7 Common errors and limits
+Section six point seven develops peer critique and revision with a the organisation note Ciphertrail Study can demo offline.
+
+Under section six point seven, the mentor expects peer claims to carry owners and dates.
+
+Section six point seven treats objections as tests red-team as testable only when evidence and ticket IDs are recorded.
+
 
 - Rebutting objections rhetorically instead of testing them.
 - Narrowing a claim in the discussion but not in the title and abstract.
@@ -623,9 +677,15 @@ Use Toulmin's structure for each major claim: **data** (Lab 5 paired differences
 
 A conventional order works: introduction and gap; background on quantum threat, standards and hybrid deployment; method and observer model; replication; main study; validation; critique and limits; conclusions. Put the narrowed claim in the first paragraph of the abstract. Put the architectural boundary in the method chapter, not hidden in limitations. Keep a single source of truth for every number — a results file generated by code — so that the abstract, tables and text cannot disagree.
 
+Section seven point two develops thesis synthesis and reproducibility archive with a the organisation note Ciphertrail Study can demo offline.
+
 ### 7.3 A tiered archive
 
 Release tier 0 and tier 1 artefacts publicly; keep tier 2 with the data owner under an access agreement; never hold tier 3. The archive's manifest records each file's tier and SHA-256 hash, and the release process is **fail-closed**: any tier-2 file or hash mismatch blocks the release. Include the frozen configuration hash from Chapter 5 so that examiners can confirm validation used the frozen rules.
+
+Section seven point three develops thesis synthesis and reproducibility archive with a the organisation note Ciphertrail Study can demo offline.
+
+Under section seven point three, the mentor expects thesis claims to carry owners and dates.
 
 ### 7.4 Practical activity — Lab 7: a fail-closed manifest
 
@@ -656,6 +716,16 @@ print(json.dumps(manifest["fusion_rules.json"])[:60] + "...")
 
 Expected output (the hash prefix is deterministic):
 
+Section seven point four develops thesis synthesis and reproducibility archive with a the organisation note Ciphertrail Study can demo offline.
+
+Under section seven point four, the mentor expects thesis claims to carry owners and dates.
+
+Section seven point four treats the argument map structure as testable only when evidence and ticket IDs are recorded.
+
+For section seven point four, the organisation will not accept thesis work without a written trail.
+
+Section seven point four fails closed if thesis evidence is missing rather than guessing.
+
 ```text
 ('BLOCKED', ['raw_capture.pcap: tier 2 not releasable'])
 ('RELEASED', [])
@@ -666,6 +736,8 @@ Expected output (the hash prefix is deterministic):
 
 For each corpus, write a card covering: provenance (synthetic generator and seed, or owner and authorization), collection period, instruments and versions, pseudonymization method, known gaps (segments without sensors), label definitions (the amended codebook), agreement statistics, intended uses and prohibited uses (for example, no re-identification and no use as a target list). Synthetic corpora also need cards, because readers otherwise mistake generated distributions for field data.
 
+Section seven point five develops thesis synthesis and reproducibility archive with a the organisation note Ciphertrail Study can demo offline.
+
 ### 7.6 Directional limits
 
 A limit without a direction is a ritual. State which way it pushes the estimate. *Unknown assets excluded from denominators* → recall overestimated (bounded by the worst-case analysis). *Sensors placed where appliances concentrate* → aggregate gain overestimated for organizations with sparser sensors. *Adjudicators with owner documentation* → ground truth may miss undocumented uses → both methods' recall overestimated, gain direction uncertain. *Synthetic organizations* → external validity unknown in both directions. A limits table with a "direction" column is one of the most valuable pages in the thesis.
@@ -674,7 +746,15 @@ A limit without a direction is a ritual. State which way it pushes the estimate.
 
 The defensible practical implication is narrow: migration programmes that rely on static analysis alone are likely to under-find quantum-vulnerable uses in closed vendor appliances, and should combine sources where they can observe traffic and should report unknown shares. It does not follow that any organization is ready, that hybrid negotiation is downgrade-resistant, or that inventory replaces crypto-agility planning as described in [NIST CSWP 39](https://doi.org/10.6028/NIST.CSWP.39-upd1).
 
+Section seven point seven develops thesis synthesis and reproducibility archive with a the organisation note Ciphertrail Study can demo offline.
+
 ### 7.8 Common errors and limits
+Section seven point eight develops thesis synthesis and reproducibility archive with a the organisation note Ciphertrail Study can demo offline.
+
+Under section seven point eight, the mentor expects thesis claims to carry owners and dates.
+
+Section seven point eight treats the argument map structure as testable only when evidence and ticket IDs are recorded.
+
 
 - Numbers typed by hand into the text that drift from the results file.
 - Archives that silently include restricted captures.
@@ -710,6 +790,8 @@ After this chapter you can (1) audit every claim in a thesis against its evidenc
 
 List every sentence in the abstract, introduction and conclusion that asserts something. For each, record the rung (Chapter 1), the supporting table or figure, the uncertainty and the scope qualifier. Any claim without a supporting artefact is cut or rewritten. In the synthetic Ciphertrail audit, two sentences fail: one says "organizations" where the evidence covers two synthetic organizations, and one says "signatures" where passive evidence covers only TLS-1.2-visible certificate chains. Both are corrected before submission.
 
+Section eight point one develops defense and publication plan with a the organisation note Ciphertrail Study can demo offline.
+
 ### 8.2 Examiner questions
 
 Prepare answers, with slide or page references, to the questions examiners in this field reliably ask. *Why should I believe your ground truth?* (blinding, κ, unknowns). *What happens with an organization that has no vendor appliances?* (mechanism predicts little gain; Marrow evidence). *Does your result depend on the CRQC date?* (no — inventory recall is independent of z; the prioritization implications are not, and are presented as a sweep). *What if ML-KEM is broken?* (inventory remains useful; hybrid deployment and agility are the architectural answer; cite the Rainbow and SIKE breaks as precedent for surprise). *What did you get wrong?* (the pilot's κ, the original construct of "use"). Rehearse with a hostile mock examiner and record which answers needed a page reference you did not have.
@@ -730,7 +812,17 @@ A one-page brief for HRHN's executive board (synthetic) states: what was measure
 
 Archive the final versions, update the dataset card with any errata, and schedule a re-verification of cited standards' status — FN-DSA and HQC will by then likely have final standards, and NIST IR 8547 may have been revised. A thesis about a transition should end with a statement of what would change its conclusions.
 
+Section eight point six develops defense and publication plan with a the organisation note Ciphertrail Study can demo offline.
+
+Under section eight point six, the mentor expects defense claims to carry owners and dates.
+
 ### 8.7 Common errors and limits
+Section eight point seven develops defense and publication plan with a the organisation note Ciphertrail Study can demo offline.
+
+Under section eight point seven, the mentor expects defense claims to carry owners and dates.
+
+Section eight point seven treats the claim audit examiner as testable only when evidence and ticket IDs are recorded.
+
 
 - Claims in the abstract broader than any table supports.
 - Preparing answers to friendly questions only.
