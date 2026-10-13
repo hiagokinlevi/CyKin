@@ -104,7 +104,13 @@ k=25 attack_auc=0.520 best_advantage=0.060
 
 ### 1.7 Erros e limites
 
-Cinco erros se repetem: perguntas amplas demais para serem respondidas numa dissertação; buscas que param na primeira página de um buscador; tratar um blog de fornecedor como evidência; citar artigos que você não leu, ou fabricar identificadores; e relatar apenas médias para ataques de privacidade. Cada erro enfraquece a dissertação desde o início. Uma pergunta ampla não pode ser respondida no prazo. Uma busca que para cedo perde trabalhos como os três estudos de deduplicação que Leo encontrou. Um blog de fornecedor é uma alegação a verificar. Identificadores não citados ou inventados abalam a confiança em todas as outras citações. As médias escondem os poucos indivíduos que um ataque identifica com confiança, que é justamente o dano que Leo estuda.
+Cinco erros se repetem, e cada um enfraquece a dissertação desde o início:
+
+- Perguntas amplas demais para serem respondidas numa dissertação; uma pergunta ampla não pode ser respondida no prazo.
+- Buscas que param na primeira página de um buscador; uma busca que para cedo perde trabalhos como os três estudos de deduplicação que Leo encontrou.
+- Tratar um blog de fornecedor como evidência; um blog de fornecedor é uma alegação a verificar.
+- Citar artigos que você não leu, ou fabricar identificadores; identificadores não citados ou inventados abalam a confiança em todas as outras citações.
+- Relatar apenas médias para ataques de privacidade; as médias escondem os poucos indivíduos que um ataque identifica com confiança, que é justamente o dano que Leo estuda.
 
 ### Exercícios
 
@@ -238,7 +244,12 @@ Leo apresentou Shokri et al. As suas três perguntas críticas: (1) a abordagem 
 
 ### 2.9 Erros e limites
 
-Quatro erros se repetem: descrever ataques sem o seu modelo de ameaça; supor que resultados do domínio de imagens se transferem diretamente para texto; tratar o arredondamento ou a saída só com rótulos como defesa completa contra a extração; e ignorar que o próprio pertencimento pode ser sensível. Cada erro leva a um resumo enganoso. Um ataque sem o seu modelo de ameaça não pode ser comparado com uma defesa. Resultados em imagens podem não se transferir, pois pequenas edições de texto podem mudar o sentido. O arredondamento dificultou a extração no laboratório, mas não a impediu. Na Harbourline, o simples fato de uma pessoa ter aberto um sinistro pode ser sensível, de modo que a inferência de pertencimento é um dano real. Confira as suas notas do seminário quanto aos quatro.
+Quatro erros se repetem, e cada um leva a um resumo enganoso; confira as suas notas do seminário quanto aos quatro:
+
+- Descrever ataques sem o seu modelo de ameaça; um ataque sem o seu modelo de ameaça não pode ser comparado com uma defesa.
+- Supor que resultados do domínio de imagens se transferem diretamente para texto; podem não se transferir, pois pequenas edições de texto podem mudar o sentido.
+- Tratar o arredondamento ou a saída só com rótulos como defesa completa contra a extração; o arredondamento dificultou a extração no laboratório, mas não a impediu.
+- Ignorar que o próprio pertencimento pode ser sensível; na Harbourline, o simples fato de uma pessoa ter aberto um sinistro pode ser sensível, de modo que a inferência de pertencimento é um dano real.
 
 ### Exercícios
 
@@ -927,6 +938,8 @@ Respostas-modelo; qualquer resposta que atenda à rubrica recebe a mesma pontua�
 **EX049.** A privacidade diferencial limita formalmente a influência de cada registro, a um custo de utilidade mensurável. A deduplicação é uma heurística barata que mira registros repetidos; as duas são complementares.
 
 **EX050.** "Remover as notas de sinistro duplicadas antes do ajuste fino reduziu aproximadamente à metade uma medida de vazamento de pertencimento no nosso estudo sintético, quase sem custo de acurácia. Isso valeu para um único tipo de modelo e dados sintéticos. Sugerimos um piloto numa cópia governada de dados reais antes de adotar a prática."
+
+<a id="references"></a>
 
 ## Referências
 
