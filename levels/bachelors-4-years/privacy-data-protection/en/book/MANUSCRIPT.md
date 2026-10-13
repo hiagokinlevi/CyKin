@@ -44,7 +44,7 @@ You will (1) use logic to state privacy rules precisely; (2) spot hidden assumpt
 
 ### 1.1 A course built around schools
 
-Elena Rossi begins a four-year bachelor's course at the fictional Fairhaven College, tutored by Dr. Kwame Asante. Her placement partner is the fictional Brindle Valley Schools Trust, which runs twelve primary schools with about 6,000 pupils. Schools hold names, addresses, health notes, special educational needs records and photographs of children. Dr. Asante explains that privacy and data protection will be Elena's main subject and that every foundation course will be read through the trust's work, starting with mathematical reasoning. Elena records this point in her course notebook so that later chapters can build on it.
+Elena Rossi begins a four-year bachelor's course at the fictional Fairhaven College, tutored by Dr. Kwame Asante. Her placement partner is the fictional Brindle Valley Schools Trust, which runs twelve primary schools with about 6,000 pupils. Schools hold names, addresses, health notes, special educational needs records and photographs of children. Dr. Asante explains that privacy and data protection will be Elena's main subject and that every foundation course will be read through the trust's work, starting with mathematical reasoning. Her first task is counting pupils per school.
 
 ### 1.2 Rules as logic
 
@@ -92,19 +92,19 @@ You will (1) map where pupil data live in school systems; (2) distinguish local,
 
 ### 2.1 Where data live
 
-Elena maps the trust's systems. The management information system holds pupil records; a cloud office suite holds documents and email; classroom apps hold learning data; a payment system holds lunch accounts; and shared drives hold photographs. Some data sit on servers in schools, some in the cloud and some with vendors. She draws a simple diagram and finds that nobody in the trust has a complete view. Her map becomes the first version of the inventory that Article 30 of the GDPR requires. Dr. Asante asks her to explain the idea aloud to a classmate before moving on.
+Elena maps the trust's systems. The management information system holds pupil records; a cloud office suite holds documents and email; classroom apps hold learning data; a payment system holds lunch accounts; and shared drives hold photographs. Some data sit on servers in schools, some in the cloud and some with vendors. She draws a simple diagram and finds that nobody in the trust has a complete view. Her map becomes the first version of the inventory that Article 30 of the GDPR requires.
 
 ### 2.2 Local and cloud
 
-Local servers give the trust direct control but need maintenance, which small schools struggle to provide. Cloud services are maintained by providers but move data to another organisation, which becomes a processor under the GDPR. Elena lists responsibilities for each model. She notes that cloud is not automatically less private: a well-configured cloud service may be safer than an unpatched school server. The decision should follow the risks and the contracts in place, not a general preference for one model. She notes the assumption behind it so that a reviewer can challenge it later.
+Local servers give the trust direct control but need maintenance, which small schools struggle to provide. Cloud services are maintained by providers but move data to another organisation, which becomes a processor under the GDPR. Elena lists responsibilities for each model. She notes that cloud is not automatically less private: a well-configured cloud service may be safer than an unpatched school server. The decision should follow the risks and the contracts in place, not a general preference for one model. Contracts decide much.
 
 ### 2.3 Devices
 
-Pupils use shared tablets and teachers use laptops. Elena checks what data remain on devices: cached documents, saved passwords and photographs. A lost teacher laptop without encryption could expose many children's records. She recommends full-disk encryption on staff laptops and automatic sign-out on shared tablets. She learns that devices are part of the computing system and often its weakest point, because they leave the school and are used by many people with different levels of care. The same reasoning will return when Brindle Valley's data protection officer reviews the work.
+Pupils use shared tablets and teachers use laptops. Elena checks what data remain on devices: cached documents, saved passwords and photographs. A lost teacher laptop without encryption could expose many children's records. She recommends full-disk encryption on staff laptops and automatic sign-out on shared tablets. She learns that devices are part of the computing system and often its weakest point, because they leave the school and are used by many people with different levels of care. Pupil laptops go home each night, often shared with siblings.
 
 ### 2.4 Duties follow design
 
-Elena concludes that system design shapes data protection duties. If data are spread across many vendors, the trust needs many contracts and must handle rights requests across all of them. If they are centralised, one system holds everything and must be well protected. Dr. Asante points out that Article 25 of the GDPR asks controllers to consider data protection when choosing the means of processing, which includes choosing and configuring systems, not only writing policies after the systems are installed. She adds a short note to the shared course wiki for other students.
+Elena concludes that system design shapes data protection duties. If data are spread across many vendors, the trust needs many contracts and must handle rights requests across all of them. If they are centralised, one system holds everything and must be well protected. Dr. Asante points out that Article 25 of the GDPR asks controllers to consider data protection when choosing the means of processing, which includes choosing and configuring systems, not only writing policies after the systems are installed. This is Article 25 in practice.
 
 ### Worked example
 
@@ -140,19 +140,19 @@ You will (1) write small programs that process pupil data safely; (2) avoid expo
 
 ### 3.1 Synthetic first
 
-Elena's first programs calculate attendance percentages. Dr. Asante insists that all practice uses synthetic pupils generated by a script, never real exports from the trust. Elena writes a generator that produces names, classes and attendance marks with realistic patterns. She learns that synthetic data let her make mistakes safely, share code with classmates and publish examples. The rule protects children and also teaches a habit that professional developers should keep, because real data in practice environments are a frequent source of leaks. This makes the privacy consequence visible to people outside the specialist team.
+Elena's first programs calculate attendance percentages. Dr. Asante insists that all practice uses synthetic pupils generated by a script, never real exports from the trust. Elena writes a generator that produces names, classes and attendance marks with realistic patterns. She learns that synthetic data let her make mistakes safely, share code with classmates and publish examples. The rule protects children and also teaches a habit that professional developers should keep, because real data in practice environments are a frequent source of leaks.
 
 ### 3.2 Outputs and exposure
 
-Her attendance program prints a list of pupils below ninety per cent attendance. Elena realises that if the list were printed and left on a staffroom table, it would reveal sensitive information about families. She changes the program to print counts by class for general use and produce the named list only for the attendance officer, saved to a protected folder. Deciding who sees which output is a programming decision as well as a policy one, and the code can enforce it. Elena keeps a dated copy of her working so that the result can be traced.
+Her attendance program prints a list of pupils below ninety per cent attendance. Elena realises that if the list were printed and left on a staffroom table, it would reveal sensitive information about families. She changes the program to print counts by class for general use and produce the named list only for the attendance officer, saved to a protected folder. Deciding who sees which output is a programming decision as well as a policy one, and the code can enforce it.
 
 ### 3.3 Input checks
 
-The program reads a spreadsheet. Elena adds checks that reject unexpected columns, such as a health notes column accidentally included in an export. If the column appears, the program stops and explains why. This prevents the program from processing data it does not need. She explains that input checks implement data minimisation at the point where data enter a program, and that failing loudly is better than silently processing sensitive data that should never have been there. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+The program reads a spreadsheet. Elena adds checks that reject unexpected columns, such as a health notes column accidentally included in an export. If the column appears, the program stops and explains why. This prevents the program from processing data it does not need. She explains that input checks implement data minimisation at the point where data enter a program, and that failing loudly is better than silently processing sensitive data that should never have been there. Her script rejects unexpected columns.
 
 ### 3.4 Comments that explain why
 
-Elena writes comments that explain privacy decisions, such as why the named list is saved only to a protected folder. A classmate who reviews her code understands the reason and does not change it. Dr. Asante points out that comments explaining why are more valuable than comments explaining what, because the code already shows what it does. Privacy reasoning is easily lost when code changes hands, and short explanations keep it attached to the code that enforces it. She checks the idea against a second example before relying on it.
+Elena writes comments that explain privacy decisions, such as why the named list is saved only to a protected folder. A classmate who reviews her code understands the reason and does not change it. Dr. Asante points out that comments explaining why are more valuable than comments explaining what, because the code already shows what it does. Privacy reasoning is easily lost when code changes hands, and short explanations keep it attached to the code that enforces it. Her comments name the purpose.
 
 ### Worked example
 
@@ -188,19 +188,19 @@ You will (1) write an argued essay on a privacy question; (2) cite legal and aca
 
 ### 4.1 The essay question
 
-Elena's first essay asks: should schools publish photographs of pupils on public websites? She must take a position and support it. She researches the GDPR provisions on lawful basis and consent, including Article 8 on children's consent for online services, and reads academic work on children's privacy. She decides to argue that schools may publish photographs only with clear, specific consent from parents and, as children grow older, from the children themselves, and only where the purpose is meaningful. The point seems small, but it changes how owners act on the result.
+Elena's first essay asks: should schools publish photographs of pupils on public websites? She must take a position and support it. She researches the GDPR provisions on lawful basis and consent, including Article 8 on children's consent for online services, and reads academic work on children's privacy. She decides to argue that schools may publish photographs only with clear, specific consent from parents and, as children grow older, from the children themselves, and only where the purpose is meaningful. Her thesis states this in one sentence.
 
 ### 4.2 Citing properly
 
-Dr. Asante teaches citation. Laws are cited by article and number, such as Regulation (EU) 2016/679, Article 6. Academic works are cited with author, year and title, and a reference list gives full details. Elena checks every citation against the original source rather than copying from secondary summaries. She finds that one blog misquotes the GDPR, saying that consent is always required for photographs. Citing the original text lets her avoid repeating the error and strengthens her argument. Brindle Valley's data protection officer later asks for a copy of this analysis.
+Dr. Asante teaches citation. Laws are cited by article and number, such as Regulation (EU) 2016/679, Article 6. Academic works are cited with author, year and title, and a reference list gives full details. Elena checks every citation against the original source rather than copying from secondary summaries. She finds that one blog misquotes the GDPR, saying that consent is always required for photographs. Citing the original text lets her avoid repeating the error and strengthens her argument. The source was a school blog.
 
 ### 4.3 Description and argument
 
-Elena's first draft describes the law at length but argues little. Dr. Asante marks paragraphs that only describe. She revises so that each paragraph makes a claim, gives evidence and explains how the evidence supports the claim. For example, she argues that consent for photographs is meaningful only if refusal has no consequences, because the EDPB consent guidelines say consent must be freely given. The revised essay is shorter but more persuasive. She marks the open questions in red so that they are not forgotten.
+Elena's first draft describes the law at length but argues little. Dr. Asante marks paragraphs that only describe. She revises so that each paragraph makes a claim, gives evidence and explains how the evidence supports the claim. For example, she argues that consent for photographs is meaningful only if refusal has no consequences, because the EDPB consent guidelines say consent must be freely given. The revised essay is shorter but more persuasive. Her first draft listed rules; the second explains why each one protects pupils.
 
 ### 4.4 Counter-arguments
 
-A strong essay addresses objections. Elena considers the argument that photographs celebrate achievements and build community. She accepts the value but argues that internal newsletters and password-protected pages can achieve the same purpose with less exposure. She also considers that older pupils may want their achievements shown. She concludes that children's own views should carry growing weight with age. Addressing counter-arguments, she learns, shows the reader that the position survives scrutiny rather than ignoring it. Writing the reasoning down also helps her spot a weak step in her argument.
+A strong essay addresses objections. Elena considers the argument that photographs celebrate achievements and build community. She accepts the value but argues that internal newsletters and password-protected pages can achieve the same purpose with less exposure. She also considers that older pupils may want their achievements shown. She concludes that children's own views should carry growing weight with age. Addressing counter-arguments, she learns, shows the reader that the position survives scrutiny rather than ignoring it. One counter-argument concerns school traditions. Her reply cites the law.
 
 ### Worked example
 
@@ -236,19 +236,19 @@ You will (1) recognise common threats to school data; (2) explain basic protecti
 
 ### 5.1 Threats to schools
 
-Elena studies threats that schools face: phishing emails pretending to be from parents or suppliers, ransomware that encrypts records, lost devices and misdirected emails. She reads that schools are attractive targets because they hold valuable data and often have limited security staff. She lists the trust's most likely incidents and finds that misdirected emails, such as sending one family's report to another, are the most frequent, even though ransomware gets more attention in the news. Elena discusses the trade-off with a classmate who works in finance.
+Elena studies threats that schools face: phishing emails pretending to be from parents or suppliers, ransomware that encrypts records, lost devices and misdirected emails. She reads that schools are attractive targets because they hold valuable data and often have limited security staff. She lists the trust's most likely incidents and finds that misdirected emails, such as sending one family's report to another, are the most frequent, even though ransomware gets more attention in the news. Her incident log review supports this ranking clearly.
 
 ### 5.2 Explaining protections
 
-Elena prepares a short session for teachers. She explains strong passwords with a password manager, multi-factor authentication for email, checking recipients before sending and locking screens. She uses examples from schools rather than banks. She avoids blaming staff for mistakes, explaining that systems should make the safe choice easy, for instance by warning when an email is sent to an external address. Teachers respond better to practical advice than to warnings about hackers. The class compares answers and finds that most differences come from unstated assumptions.
+Elena prepares a short session for teachers. She explains strong passwords with a password manager, multi-factor authentication for email, checking recipients before sending and locking screens. She uses examples from schools rather than banks. She avoids blaming staff for mistakes, explaining that systems should make the safe choice easy, for instance by warning when an email is sent to an external address. Teachers respond better to practical advice than to warnings about hackers. One example: confirm attachments before sending externally. Teachers adopt them quickly.
 
 ### 5.3 Incidents are data protection events
 
-Elena learns that a security incident involving personal data may be a personal data breach under the GDPR. Sending a pupil's report to the wrong parent is a breach, even if accidental. The trust must assess the risk and, unless the breach is unlikely to result in a risk to individuals, notify the supervisory authority within 72 hours under Article 33. She notes that many staff think breaches are only about hackers, so training must cover everyday mistakes. Elena records this point in her course notebook so that later chapters can build on it.
+Elena learns that a security incident involving personal data may be a personal data breach under the GDPR. Sending a pupil's report to the wrong parent is a breach, even if accidental. The trust must assess the risk and, unless the breach is unlikely to result in a risk to individuals, notify the supervisory authority within 72 hours under Article 33. She notes that many staff think breaches are only about hackers, so training must cover everyday mistakes. A wrong email can be a breach.
 
 ### 5.4 Culture
 
-Elena reflects on security culture. Staff who fear punishment hide mistakes, which delays response. She recommends a reporting process that thanks staff for reporting quickly and focuses on fixing problems. Dr. Asante agrees, noting that fast reporting is essential when the 72-hour clock applies. Elena writes a one-page guide titled What to do if you send something to the wrong person, which tells staff to report immediately to the data protection lead and not to try to fix it alone. Dr. Asante asks her to explain the idea aloud to a classmate before moving on.
+Elena reflects on security culture. Staff who fear punishment hide mistakes, which delays response. She recommends a reporting process that thanks staff for reporting quickly and focuses on fixing problems. Dr. Asante agrees, noting that fast reporting is essential when the 72-hour clock applies. Elena writes a one-page guide titled What to do if you send something to the wrong person, which tells staff to report immediately to the data protection lead and not to try to fix it alone. Speed matters most.
 
 ### Worked example
 
@@ -284,19 +284,19 @@ You will (1) use sets and relations to model data sharing; (2) count combination
 
 ### 6.1 Sets of data
 
-Elena models the trust's data as sets: all personal data, special category data such as health and religion, and data about children with special educational needs. She notes that some data belong to several sets. A list of pupils with dietary requirements may reveal religion or health. Set thinking helps her see that data which look ordinary can fall into sensitive categories, which GDPR Article 9 protects with stricter conditions. She uses Venn diagrams in her report to the trust. She notes the assumption behind it so that a reviewer can challenge it later.
+Elena models the trust's data as sets: all personal data, special category data such as health and religion, and data about children with special educational needs. She notes that some data belong to several sets. A list of pupils with dietary requirements may reveal religion or health. Set thinking helps her see that data which look ordinary can fall into sensitive categories, which GDPR Article 9 protects with stricter conditions. She uses Venn diagrams in her report to the trust. Health data are one example.
 
 ### 6.2 Counting identities
 
-Elena counts how many pupils share combinations of attributes in a small school: year group, sex and first language. In a school of two hundred, some combinations contain one child. Publishing a table of results by these attributes could identify that child. She connects this to Sweeney's (2002) work on how combinations of ordinary attributes identify individuals. The counting exercise shows her why statistics about small schools need special care before publication. The same reasoning will return when Brindle Valley's data protection officer reviews the work.
+Elena counts how many pupils share combinations of attributes in a small school: year group, sex and first language. In a school of two hundred, some combinations contain one child. Publishing a table of results by these attributes could identify that child. She connects this to Sweeney's (2002) work on how combinations of ordinary attributes identify individuals. The counting exercise shows her why statistics about small schools need special care before publication. In a school with one pupil of a given age and ethnicity, the counts identify that child.
 
 ### 6.3 Relations
 
-A relation pairs elements from two sets. Elena models which staff roles can access which data categories as a relation. Teachers access learning records; office staff access contact details; the special needs coordinator accesses support plans. She checks the relation against the principle of least privilege and finds that office staff can also access support plans, which they do not need. The model makes the problem visible in a way that a list of permissions in a software menu did not. She adds a short note to the shared course wiki for other students.
+A relation pairs elements from two sets. Elena models which staff roles can access which data categories as a relation. Teachers access learning records; office staff access contact details; the special needs coordinator accesses support plans. She checks the relation against the principle of least privilege and finds that office staff can also access support plans, which they do not need. The model makes the problem visible in a way that a list of permissions in a software menu did not. Removing it narrows access.
 
 ### 6.4 Graphs of flows
 
-Elena draws the trust's data flows as a directed graph: from parents to schools, from schools to apps, from apps to vendors' subprocessors. She finds paths that leave the trust through several steps, such as a reading app passing data to an analytics provider. A path, she notes, is only as protected as its weakest link. The graph prepares her for later chapters, where she will check each edge for a lawful basis and a contract. This makes the privacy consequence visible to people outside the specialist team.
+Elena draws the trust's data flows as a directed graph: from parents to schools, from schools to apps, from apps to vendors' subprocessors. She finds paths that leave the trust through several steps, such as a reading app passing data to an analytics provider. A path, she notes, is only as protected as its weakest link. The graph prepares her for later chapters, where she will check each edge for a lawful basis and a contract. Each edge is a flow.
 
 ### Worked example
 
@@ -332,19 +332,19 @@ You will (1) identify what school network traffic reveals; (2) understand filter
 
 ### 7.1 School networks
 
-Elena studies the trust's network. Pupils' devices connect through school Wi-Fi, which passes through a web filter. The filter logs every website a device visits. Encryption protects content but the filter sees domain names. Elena realises that the logs reveal sensitive information, such as searches for health or family problems, and that they relate to identifiable children when devices are assigned to pupils. Network design therefore creates a significant body of personal data that many staff do not even know exists. Elena keeps a dated copy of her working so that the result can be traced.
+Elena studies the trust's network. Pupils' devices connect through school Wi-Fi, which passes through a web filter. The filter logs every website a device visits. Encryption protects content but the filter sees domain names. Elena realises that the logs reveal sensitive information, such as searches for health or family problems, and that they relate to identifiable children when devices are assigned to pupils. Network design therefore creates a significant body of personal data that many staff do not even know exists. Logs are personal data.
 
 ### 7.2 Filtering and monitoring
 
-Schools often have safeguarding duties to protect children from harmful content. Elena learns that filtering and monitoring can support those duties but must be proportionate. She reviews the filter settings and finds logs kept for three years and accessible to all IT staff. She recommends shorter retention, access limited to designated safeguarding staff and clear information to pupils and parents about what is monitored. She notes that transparency is part of fairness, even when monitoring is justified. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Schools often have safeguarding duties to protect children from harmful content. Elena learns that filtering and monitoring can support those duties but must be proportionate. She reviews the filter settings and finds logs kept for three years and accessible to all IT staff. She recommends shorter retention, access limited to designated safeguarding staff and clear information to pupils and parents about what is monitored. She notes that transparency is part of fairness, even when monitoring is justified. Pupils see a notice at login.
 
 ### 7.3 Encryption in transit
 
-Elena checks that the management information system and apps use encrypted connections. One legacy app used by a school sends pupil names without encryption on the local network. She raises it with the IT team, who replace it. She explains to teachers that encrypted connections prevent others on the same network from reading data, which matters in schools where many devices share networks. She checks the idea against a second example before relying on it. The point seems small, but it changes how owners act on the result.
+Elena checks that the management information system and apps use encrypted connections. One legacy app used by a school sends pupil names without encryption on the local network. She raises it with the IT team, who replace it. She explains to teachers that encrypted connections prevent others on the same network from reading data, which matters in schools where many devices share networks. She checks the management information system and the parent portal and finds both encrypted, but a legacy printing service sends class lists in plain text across the network, which IT replaces during the next holiday.
 
 ### 7.4 Balancing duties
 
-Elena discusses with Dr. Asante how to balance safeguarding and privacy. Both aim to protect children. Over-monitoring may discourage pupils from seeking help online about sensitive issues, while under-monitoring may miss serious risks. She writes that the trust should state the purpose of monitoring clearly, limit it to that purpose and review it regularly. The discussion shows her that privacy is not opposed to safety but must be weighed with it carefully and openly. Brindle Valley's data protection officer later asks for a copy of this analysis.
+Elena discusses with Dr. Asante how to balance safeguarding and privacy. Both aim to protect children. Over-monitoring may discourage pupils from seeking help online about sensitive issues, while under-monitoring may miss serious risks. She writes that the trust should state the purpose of monitoring clearly, limit it to that purpose and review it regularly. The discussion shows her that privacy is not opposed to safety but must be weighed with it carefully and openly. Monitoring logs are kept for one term.
 
 ### Worked example
 
@@ -380,19 +380,19 @@ You will (1) implement access checks; (2) pseudonymise data for analysis; (3) te
 
 ### 8.1 Access checks
 
-Elena writes a small application for viewing pupil information. Before showing any record, it checks the user's role and the purpose. A teacher can see learning records for pupils in their classes; the special needs coordinator can see support plans. Requests without a valid role are refused and logged. She learns that writing checks into the code ensures the rules are applied consistently, rather than relying on staff remembering which data they should look at. She marks the open questions in red so that they are not forgotten.
+Elena writes a small application for viewing pupil information. Before showing any record, it checks the user's role and the purpose. A teacher can see learning records for pupils in their classes; the special needs coordinator can see support plans. Requests without a valid role are refused and logged. She learns that writing checks into the code ensures the rules are applied consistently, rather than relying on staff remembering which data they should look at. Each request checks the class list.
 
 ### 8.2 Pseudonymised analysis
 
-The trust wants to analyse reading progress across schools. Elena writes code that replaces pupil identifiers with pseudonyms using a keyed hash before data reach the analyst. The key is held by the data protection lead. She explains that the analyst can study progress without knowing which child is which, but that the data remain personal data under the GDPR because the key could re-identify pupils. Pseudonymisation reduces risk but does not remove legal duties. Writing the reasoning down also helps her spot a weak step in her argument.
+The trust wants to analyse reading progress across schools. Elena writes code that replaces pupil identifiers with pseudonyms using a keyed hash before data reach the analyst. The key is held by the data protection lead. She explains that the analyst can study progress without knowing which child is which, but that the data remain personal data under the GDPR because the key could re-identify pupils. Pseudonymisation reduces risk but does not remove legal duties. The key is stored separately from the data.
 
 ### 8.3 Testing
 
-Elena writes tests that check privacy behaviour: a teacher cannot see a pupil from another class, the analysis export contains no names, and logs record each access. One test fails because a teacher who left a class still has access. She adds a rule to remove access when class assignments change. Testing privacy properties automatically finds problems that manual review would miss and keeps working as the code changes. Elena discusses the trade-off with a classmate who works in finance. The class compares answers and finds that most differences come from unstated assumptions.
+Elena writes tests that check privacy behaviour: a teacher cannot see a pupil from another class, the analysis export contains no names, and logs record each access. One test fails because a teacher who left a class still has access. She adds a rule to remove access when class assignments change. Testing privacy properties automatically finds problems that manual review would miss and keeps working as the code changes. A failing test blocks the change from being deployed. Tests run on every change, using synthetic classes only.
 
 ### 8.4 Code review
 
-Elena's code is reviewed by a classmate who asks why the export includes date of birth. Elena realises it is not needed for reading progress and removes it. Dr. Asante points out that reviewers should ask what data are needed as well as whether the code works. Code review becomes a minimisation check as well as a quality check, and small removals like this add up across many programs. Elena records this point in her course notebook so that later chapters can build on it.
+Elena's code is reviewed by a classmate who asks why the export includes date of birth. Elena realises it is not needed for reading progress and removes it. Dr. Asante points out that reviewers should ask what data are needed as well as whether the code works. Code review becomes a minimisation check as well as a quality check, and small removals like this add up across many programs. In one review she removes a date-of-birth field from an export. Reviewers ask why each field exists.
 
 ### Worked example
 
@@ -428,19 +428,19 @@ You will (1) query a database to find sharing risks; (2) relate contracts to dat
 
 ### 9.1 A sharing database
 
-Elena builds a small SQLite database of classroom apps and the pupil data each receives, based on a synthetic version of the trust's records. Each app has a vendor, a region and a flag showing whether a data processing agreement is signed. Article 28 of the GDPR requires a contract with processors. The database lets her ask questions that a spreadsheet makes hard, such as which apps receive data without an agreement and how many pupils they affect. Dr. Asante asks her to explain the idea aloud to a classmate before moving on.
+Elena builds a small SQLite database of classroom apps and the pupil data each receives, based on a synthetic version of the trust's records. Each app has a vendor, a region and a flag showing whether a data processing agreement is signed. Article 28 of the GDPR requires a contract with processors. The database lets her ask questions that a spreadsheet makes hard, such as which apps receive data without an agreement and how many pupils they affect. It uses only stdlib sqlite3.
 
 ### 9.2 The query
 
-The lab joins apps with shared fields and filters apps without agreements. Three apps appear. ClassChat, based in the EEA, receives names and email addresses for 3,100 pupils. ReadAlong, based in the US, receives names, reading levels and a special educational needs flag for up to 1,800 pupils. QuizBlitz, in the US, receives names for 900 pupils. In total there are 5,800 pupil-app shares without an agreement, counting a pupil once per app. She notes the assumption behind it so that a reviewer can challenge it later. The same reasoning will return when Brindle Valley's data protection officer reviews the work.
+The lab joins apps with shared fields and filters apps without agreements. Three apps appear. ClassChat, based in the EEA, receives names and email addresses for 3,100 pupils. ReadAlong, based in the US, receives names, reading levels and a special educational needs flag for up to 1,800 pupils. QuizBlitz, in the US, receives names for 900 pupils. In total there are 5,800 pupil-app shares without an agreement, counting a pupil once per app. The query joins the apps table with the agreements table and counts pupils per app.
 
 ### 9.3 Reading the result
 
-Elena notes that ReadAlong is the most serious case. It receives a special educational needs flag, which may be health data, sends data outside the EEA and has no agreement. ClassChat affects the most pupils but holds less sensitive data. She ranks the apps by sensitivity, transfer and scale rather than scale alone. She explains that a database query gives facts, but judgement is needed to decide which facts matter most for children. She adds a short note to the shared course wiki for other students.
+Elena notes that ReadAlong is the most serious case. It receives a special educational needs flag, which may be health data, sends data outside the EEA and has no agreement. ClassChat affects the most pupils but holds less sensitive data. She ranks the apps by sensitivity, transfer and scale rather than scale alone. She explains that a database query gives facts, but judgement is needed to decide which facts matter most for children. QuizBlitz ranks first despite smaller numbers. Its data leave Europe.
 
 ### 9.4 Recommendations
 
-Elena recommends suspending ReadAlong until an agreement and a transfer mechanism are in place and the special needs flag is removed; obtaining an agreement for ClassChat; and reviewing whether QuizBlitz is needed at all. She also recommends that the trust keep the database updated as apps change, turning it into a living register. Dr. Asante notes that a register queried regularly is more useful than a one-off audit spreadsheet. This makes the privacy consequence visible to people outside the specialist team. Elena keeps a dated copy of her working so that the result can be traced.
+Elena recommends suspending ReadAlong until an agreement and a transfer mechanism are in place and the special needs flag is removed; obtaining an agreement for ClassChat; and reviewing whether QuizBlitz is needed at all. She also recommends that the trust keep the database updated as apps change, turning it into a living register. Dr. Asante notes that a register queried regularly is more useful than a one-off audit spreadsheet. Each new app is added before teachers start using it. Teachers can query it themselves.
 
 ### Lab — Classroom apps receiving pupil data without an agreement
 
@@ -506,19 +506,19 @@ You will (1) apply ethical principles to work with children's data; (2) define t
 
 ### 10.1 Children's interests
 
-Elena studies ethics for work with children's data. Children may be less aware of risks and less able to exercise rights. Recital 38 of the GDPR says children merit specific protection, and Article 14 of the LGPD requires processing of children's data to be in their best interest. She writes that her work at the trust should always ask what is best for the children, not only what is lawful or convenient for adults. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Elena studies ethics for work with children's data. Children may be less aware of risks and less able to exercise rights. Recital 38 of the GDPR says children merit specific protection, and Article 14 of the LGPD requires processing of children's data to be in their best interest. She writes that her work at the trust should always ask what is best for the children, not only what is lawful or convenient for adults. This becomes her working test for every decision. Lawful is not enough.
 
 ### 10.2 Authorised practice
 
-During her placement Elena has access to synthetic data and to real system configurations, but not to real pupil records. Dr. Asante explains that authorised practice means doing only what her placement agreement allows. When a teacher offers to show her a real spreadsheet to help her understand a problem, she politely declines and asks for a synthetic example instead. She records the offer and her response in her placement log. She checks the idea against a second example before relying on it. The point seems small, but it changes how owners act on the result.
+During her placement Elena has access to synthetic data and to real system configurations, but not to real pupil records. Dr. Asante explains that authorised practice means doing only what her placement agreement allows. When a teacher offers to show her a real spreadsheet to help her understand a problem, she politely declines and asks for a synthetic example instead. She records the offer and her response in her placement log. The supervisor approves her response and supplies the synthetic data.
 
 ### 10.3 Requests outside authority
 
-A head teacher asks Elena to check whether a parent's complaint about a data breach is justified by looking at email logs. Elena explains that investigating a complaint requires authority from the data protection lead and access she does not have. She refers the request to the lead. She learns that good intentions do not create authority, and that stepping outside her role could harm the people she wants to help and undermine trust in the investigation. Brindle Valley's data protection officer later asks for a copy of this analysis.
+A head teacher asks Elena to check whether a parent's complaint about a data breach is justified by looking at email logs. Elena explains that investigating a complaint requires authority from the data protection lead and access she does not have. She refers the request to the lead. She learns that good intentions do not create authority, and that stepping outside her role could harm the people she wants to help and undermine trust in the investigation. She refers the request onwards.
 
 ### 10.4 Professional values
 
-Elena reflects on values: respect for children and families, honesty about risks, and humility about her own limits. She writes a short personal code for her placement. Dr. Asante encourages her to revisit it each year. He explains that professional codes in computing and data protection share these values, and that the habit of reflecting on them prepares students for difficult decisions that rules alone cannot resolve. She marks the open questions in red so that they are not forgotten. Writing the reasoning down also helps her spot a weak step in her argument.
+Elena reflects on values: respect for children and families, honesty about risks, and humility about her own limits. She writes a short personal code for her placement. Dr. Asante encourages her to revisit it each year. He explains that professional codes in computing and data protection share these values, and that the habit of reflecting on them prepares students for difficult decisions that rules alone cannot resolve. Her reflective log records one dilemma each week, with what she decided and why.
 
 ### Worked example
 
@@ -554,19 +554,19 @@ You will (1) configure accounts and permissions for school devices; (2) manage l
 
 ### 11.1 Accounts on shared devices
 
-Elena studies how operating systems manage accounts. On shared classroom computers, pupils log in with individual accounts so that work and browsing are separated. She finds that one school uses a single shared account for all pupils, which means files and browser histories are visible to everyone. She recommends individual accounts with automatic clean-up of temporary files at logout. She explains to the school's technician that operating system settings are the first line of privacy on shared devices, before any application is opened. Elena records this point in her course notebook so that later chapters can build on it.
+Elena studies how operating systems manage accounts. On shared classroom computers, pupils log in with individual accounts so that work and browsing are separated. She finds that one school uses a single shared account for all pupils, which means files and browser histories are visible to everyone. She recommends individual accounts with automatic clean-up of temporary files at logout. She explains to the school's technician that operating system settings are the first line of privacy on shared devices, before any application is opened.
 
 ### 11.2 Permissions and shares
 
-Teachers save documents to network shares. Elena checks permissions and finds a folder of safeguarding notes readable by all staff. She works with the technician to restrict it to safeguarding leads. She also turns on auditing for the folder so that access can be reviewed. The episode shows that sensitive information often sits in ordinary file shares rather than in protected systems, and that permissions drift over years as staff change roles without anyone reviewing who can still open which folders. Dr. Asante asks her to explain the idea aloud to a classmate before moving on.
+Teachers save documents to network shares. Elena checks permissions and finds a folder of safeguarding notes readable by all staff. She works with the technician to restrict it to safeguarding leads. She also turns on auditing for the folder so that access can be reviewed. The episode shows that sensitive information often sits in ordinary file shares rather than in protected systems, and that permissions drift over years as staff change roles without anyone reviewing who can still open which folders. Reviews fix this.
 
 ### 11.3 Logs
 
-Operating systems log logins and file access. Elena explains that logs help investigate incidents but also contain personal data about staff and pupils. She recommends keeping logs long enough for investigations, such as six months, restricting access to IT security staff and telling staff in the acceptable use policy that activity is logged. Transparency, she notes, is required by GDPR Articles 13 and 14 for staff as well as for pupils, and staff are entitled to know what is recorded about them. She notes the assumption behind it so that a reviewer can challenge it later.
+Operating systems log logins and file access. Elena explains that logs help investigate incidents but also contain personal data about staff and pupils. She recommends keeping logs long enough for investigations, such as six months, restricting access to IT security staff and telling staff in the acceptable use policy that activity is logged. Transparency, she notes, is required by GDPR Articles 13 and 14 for staff as well as for pupils, and staff are entitled to know what is recorded about them. Staff can request them.
 
 ### 11.4 Disposal
 
-Old laptops and tablets are sold or recycled. Elena finds that devices are wiped by deleting user accounts, which may leave data recoverable. She recommends using built-in secure erase functions or full-disk encryption with key destruction, and keeping a disposal record for each device. She learns that disposal is part of the data life cycle and that many breaches in the sector have involved devices sold without proper wiping, which is an avoidable and embarrassing way to lose children's data. The same reasoning will return when Brindle Valley's data protection officer reviews the work.
+Old laptops and tablets are sold or recycled. Elena finds that devices are wiped by deleting user accounts, which may leave data recoverable. She recommends using built-in secure erase functions or full-disk encryption with key destruction, and keeping a disposal record for each device. She learns that disposal is part of the data life cycle and that many breaches in the sector have involved devices sold without proper wiping, which is an avoidable and embarrassing way to lose children's data. Certificates prove wiping.
 
 ### Worked example
 
@@ -602,19 +602,19 @@ You will (1) estimate a proportion from a survey with uncertainty; (2) compare g
 
 ### 12.1 The parent survey
 
-The trust surveys parents about privacy awareness. One question asks whether parents know which apps receive their child's data. Elena analyses the synthetic results. Across twelve schools, 131 of 520 respondents say yes, 25%. She computes a Wilson 95% interval, which behaves well for proportions near zero or one and for small samples, and finds 22% to 29%. She reports the interval because a single percentage hides how uncertain the estimate is, especially for individual schools. She adds a short note to the shared course wiki for other students. This makes the privacy consequence visible to people outside the specialist team.
+The trust surveys parents about privacy awareness. One question asks whether parents know which apps receive their child's data. Elena analyses the synthetic results. Across twelve schools, 131 of 520 respondents say yes, 25%. She computes a Wilson 95% interval, which behaves well for proportions near zero or one and for small samples, and finds 22% to 29%. She reports the interval because a single percentage hides how uncertain the estimate is, especially for individual schools. The Wilson interval works well for proportions near zero or with small samples.
 
 ### 12.2 Comparing schools
 
-Elena compares two schools. At Ashby Primary 9 of 40 parents say yes, 22%, with an interval from 12% to 38%. At Kelso Primary 22 of 48 say yes, 46%, with an interval from 33% to 60%. The intervals barely overlap, suggesting a real difference. She investigates and finds that Kelso sends parents a yearly letter listing apps. She cautions that the survey cannot prove the letter caused the difference, but the pattern supports trying the letter elsewhere. Elena keeps a dated copy of her working so that the result can be traced. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Elena compares two schools. At Ashby Primary 9 of 40 parents say yes, 22%, with an interval from 12% to 38%. At Kelso Primary 22 of 48 say yes, 46%, with an interval from 33% to 60%. The intervals barely overlap, suggesting a real difference. She investigates and finds that Kelso sends parents a yearly letter listing apps. She cautions that the survey cannot prove the letter caused the difference, but the pattern supports trying the letter elsewhere. Other differences between schools could also explain the gap. Only an experiment could show causation.
 
 ### 12.3 Response bias
 
-Not all parents respond. Elena notes that parents interested in privacy may be more likely to answer, which could make awareness look higher than it is. She reports the response rate for each school and recommends caution in interpreting low-response schools. She explains that statistics about people depend on who is counted, and that a careful analyst always asks who is missing from the data before drawing conclusions about everyone. She checks the idea against a second example before relying on it. The point seems small, but it changes how owners act on the result.
+Not all parents respond. Elena notes that parents interested in privacy may be more likely to answer, which could make awareness look higher than it is. She reports the response rate for each school and recommends caution in interpreting low-response schools. She explains that statistics about people depend on who is counted, and that a careful analyst always asks who is missing from the data before drawing conclusions about everyone. Parents who answer surveys may differ from those who do not.
 
 ### 12.4 Protecting respondents
 
-The survey includes a free-text comment field. Some comments mention children's names and conditions. Elena removes identifying details before sharing comments with the trust's leadership and reports school-level figures only where at least twenty parents responded. She explains that a survey about privacy must itself protect privacy, and that small groups and free text are the most common ways survey reports accidentally identify people. Brindle Valley's data protection officer later asks for a copy of this analysis. She marks the open questions in red so that they are not forgotten.
+The survey includes a free-text comment field. Some comments mention children's names and conditions. Elena removes identifying details before sharing comments with the trust's leadership and reports school-level figures only where at least twenty parents responded. She explains that a survey about privacy must itself protect privacy, and that small groups and free text are the most common ways survey reports accidentally identify people. She suppresses results for groups smaller than ten and removes free-text answers that mention children's names or classes.
 
 ### Lab — Parent awareness with Wilson intervals
 
@@ -671,19 +671,19 @@ You will (1) design role-based access for school systems; (2) manage joiners, mo
 
 ### 13.1 Roles
 
-Elena designs roles for the trust's management information system: class teacher, head of year, special needs coordinator, office administrator, safeguarding lead and head teacher. Each role has defined access. She documents the purpose of each permission. For example, office administrators need contact details to send letters but not assessment results. Role design turns the principle of least privilege into something staff and auditors can understand and check. Writing the reasoning down also helps her spot a weak step in her argument. Elena discusses the trade-off with a classmate who works in finance.
+Elena designs roles for the trust's management information system: class teacher, head of year, special needs coordinator, office administrator, safeguarding lead and head teacher. Each role has defined access. She documents the purpose of each permission. For example, office administrators need contact details to send letters but not assessment results. Role design turns the principle of least privilege into something staff and auditors can understand and check. The office role, for example, can update contact details but cannot see reading levels.
 
 ### 13.2 Joiners, movers and leavers
 
-Staff change roles often. Elena finds that a former special needs coordinator, now a class teacher, still has access to all support plans. Another teacher who left the trust six months ago still has an active account. She proposes a process linked to the human resources system: when someone joins, moves or leaves, their access changes automatically, with a manager confirming the new role. She notes that stale access is one of the most common access control failures in organisations of every size. The class compares answers and finds that most differences come from unstated assumptions.
+Staff change roles often. Elena finds that a former special needs coordinator, now a class teacher, still has access to all support plans. Another teacher who left the trust six months ago still has an active account. She proposes a process linked to the human resources system: when someone joins, moves or leaves, their access changes automatically, with a manager confirming the new role. She notes that stale access is one of the most common access control failures in organisations of every size.
 
 ### 13.3 Access reviews
 
-Elena sets up termly access reviews. Each head teacher receives a list of staff and their roles and confirms or corrects them. In the first review, eleven of 340 accounts need changes. She records the results and repeats the review the next term, when only three changes are needed. Regular reviews, she explains, catch errors that automated processes miss and provide evidence of accountability under Article 5(2) of the GDPR. Elena records this point in her course notebook so that later chapters can build on it.
+Elena sets up termly access reviews. Each head teacher receives a list of staff and their roles and confirms or corrects them. In the first review, eleven of 340 accounts need changes. She records the results and repeats the review the next term, when only three changes are needed. Regular reviews, she explains, catch errors that automated processes miss and provide evidence of accountability under Article 5(2) of the GDPR. Each head teacher confirms their school's list every term. Corrections are logged with dates and reasons.
 
 ### 13.4 Authentication
 
-Elena recommends multi-factor authentication for staff accessing pupil records from outside school. She also recommends that pupils use simple but individual logins appropriate to their age. Very young pupils may use picture passwords on classroom devices, while older pupils use passwords. She explains that authentication must suit the people using it, and that security that young children cannot manage will be bypassed by well-meaning teachers sharing logins. Dr. Asante asks her to explain the idea aloud to a classmate before moving on. She notes the assumption behind it so that a reviewer can challenge it later.
+Elena recommends multi-factor authentication for staff accessing pupil records from outside school. She also recommends that pupils use simple but individual logins appropriate to their age. Very young pupils may use picture passwords on classroom devices, while older pupils use passwords. She explains that authentication must suit the people using it, and that security that young children cannot manage will be bypassed by well-meaning teachers sharing logins. Younger pupils use picture passwords on shared tablets, and teachers no longer need to share their own logins.
 
 ### Worked example
 
@@ -719,19 +719,19 @@ You will (1) explain theories of privacy; (2) apply data protection principles; 
 
 ### 14.1 Theories
 
-Elena studies privacy theory. Warren and Brandeis (1890) argued for a right to be let alone. Solove (2006) describes privacy as a family of problems, such as surveillance, aggregation and disclosure. Nissenbaum's contextual integrity holds that information flows should respect the norms of their context. Elena applies contextual integrity to schools: information shared by parents with a teacher about a family situation should not flow to other parents or to app vendors, even if technically possible. The same reasoning will return when Brindle Valley's data protection officer reviews the work.
+Elena studies privacy theory. Warren and Brandeis (1890) argued for a right to be let alone. Solove (2006) describes privacy as a family of problems, such as surveillance, aggregation and disclosure. Nissenbaum's contextual integrity holds that information flows should respect the norms of their context. Elena applies contextual integrity to schools: information shared by parents with a teacher about a family situation should not flow to other parents or to app vendors, even if technically possible. Nissenbaum calls this contextual integrity. Norms travel with information.
 
 ### 14.2 Principles
 
-She studies the GDPR principles in Article 5 and finds equivalents in LGPD Article 6, which lists principles such as purpose, adequacy, necessity, transparency, security and prevention. She maps each principle to a school example: purpose limitation means attendance data collected for safeguarding should not be used to rank teachers; minimisation means a lunch app does not need reading levels. The examples make abstract principles concrete for staff training. She adds a short note to the shared course wiki for other students. This makes the privacy consequence visible to people outside the specialist team.
+She studies the GDPR principles in Article 5 and finds equivalents in LGPD Article 6, which lists principles such as purpose, adequacy, necessity, transparency, security and prevention. She maps each principle to a school example: purpose limitation means attendance data collected for safeguarding should not be used to rank teachers; minimisation means a lunch app does not need reading levels. The examples make abstract principles concrete for staff training. Purpose limitation prevents attendance data being used for staff performance. Each example comes from trust practice.
 
 ### 14.3 Lawful bases
 
-Elena learns that processing needs a lawful basis under GDPR Article 6. Schools often rely on legal obligation for records required by education law, public task for teaching, and consent for optional activities such as photographs in newsletters. She explains that consent is not always the right basis: if a school needs data to teach, asking for consent suggests that parents could refuse without consequence, which may not be true. Choosing the correct basis makes processing more honest. Elena keeps a dated copy of her working so that the result can be traced.
+Elena learns that processing needs a lawful basis under GDPR Article 6. Schools often rely on legal obligation for records required by education law, public task for teaching, and consent for optional activities such as photographs in newsletters. She explains that consent is not always the right basis: if a school needs data to teach, asking for consent suggests that parents could refuse without consequence, which may not be true. Choosing the correct basis makes processing more honest. Public task fits most pupil data.
 
 ### 14.4 Special categories
 
-Health data, religious beliefs and ethnic origin are special categories under Article 9. Schools process them for medical care, dietary needs and equality monitoring. Each needs a condition under Article 9 as well as a basis under Article 6. Elena builds a table of the trust's special category processing with both bases. She finds that equality monitoring data are kept with names when aggregated analysis would suffice, and recommends separating them. Her lecturer reminds the class that clear reasoning matters more than a polished answer. She checks the idea against a second example before relying on it.
+Health data, religious beliefs and ethnic origin are special categories under Article 9. Schools process them for medical care, dietary needs and equality monitoring. Each needs a condition under Article 9 as well as a basis under Article 6. Elena builds a table of the trust's special category processing with both bases. She finds that equality monitoring data are kept with names when aggregated analysis would suffice, and recommends separating them. Separation reduces exposure without reducing the usefulness of the equality reports. The lead agrees.
 
 ### Worked example
 
@@ -767,19 +767,19 @@ You will (1) measure performance on rights requests; (2) identify causes of dela
 
 ### 15.1 Access requests from parents
 
-Parents can request access to their child's data, and children can make requests themselves when mature enough. Elena collects synthetic data on twenty requests from the past year. The median response time is 26 days and the mean 26.8. Six of the twenty, 30%, took longer than thirty days, the approximate one-month limit in GDPR Article 12(3). The longest took 61 days. The figures give the trust its first factual picture of how it handles requests. The point seems small, but it changes how owners act on the result.
+Parents can request access to their child's data, and children can make requests themselves when mature enough. Elena collects synthetic data on twenty requests from the past year. The median response time is 26 days and the mean 26.8. Six of the twenty, 30%, took longer than thirty days, the approximate one-month limit in GDPR Article 12(3). The longest took 61 days. The figures give the trust its first factual picture of how it handles requests. Several took over a month. Most were answered on time, but delays clustered around holidays.
 
 ### 15.2 Causes
 
-Elena looks at the late requests. All four requests received just before school holidays were late, because staff were away. She also finds that requests went to individual schools rather than a central point, so handling varied. She explains that the GDPR deadline continues during holidays, although Article 12(3) allows extension by two months for complex or numerous requests if the requester is told within the first month. Holidays alone do not justify an extension. Brindle Valley's data protection officer later asks for a copy of this analysis.
+Elena looks at the late requests. All four requests received just before school holidays were late, because staff were away. She also finds that requests went to individual schools rather than a central point, so handling varied. She explains that the GDPR deadline continues during holidays, although Article 12(3) allows extension by two months for complex or numerous requests if the requester is told within the first month. Holidays alone do not justify an extension. Most delays came from school holidays. Planning can fix this.
 
 ### 15.3 Targets and process
 
-Elena proposes a central request inbox managed by the data protection lead, a holiday cover rota and a target of answering all requests within twenty-five days to leave a margin. She also proposes a template letter for extensions where genuinely needed. EDPB Guidelines 01/2022 on the right of access help her design the identity check and the content of responses. She presents the plan to the trust's leadership with the measured baseline. She marks the open questions in red so that they are not forgotten.
+Elena proposes a central request inbox managed by the data protection lead, a holiday cover rota and a target of answering all requests within twenty-five days to leave a margin. She also proposes a template letter for extensions where genuinely needed. EDPB Guidelines 01/2022 on the right of access help her design the identity check and the content of responses. She presents the plan to the trust's leadership with the measured baseline. The plan sets a twenty-day internal target. Each request is logged centrally from day one.
 
 ### 15.4 Monitoring
 
-Elena sets up a simple monthly report: requests received, open requests, median time and late requests. She explains that measuring regularly turns a one-off review into a feedback loop. Dr. Asante points out that small numbers make percentages jumpy, so she reports counts alongside percentages. Six months later, after the new process starts, no requests are late. She reports the improvement with the caution that the sample is small. Writing the reasoning down also helps her spot a weak step in her argument. Elena discusses the trade-off with a classmate who works in finance.
+Elena sets up a simple monthly report: requests received, open requests, median time and late requests. She explains that measuring regularly turns a one-off review into a feedback loop. Dr. Asante points out that small numbers make percentages jumpy, so she reports counts alongside percentages. Six months later, after the new process starts, no requests are late. She reports the improvement with the caution that the sample is small. With so few requests, one late case changes the percentage sharply. Counts are shown too.
 
 ### Lab — Response times for parents' access requests
 
@@ -835,19 +835,19 @@ You will (1) design a secure architecture for a multi-school trust; (2) separate
 
 ### 16.1 Trust architecture
 
-Elena designs an architecture for the trust. A central management information system serves all twelve schools. Each school's staff see only their pupils. Safeguarding records sit in a separate, more restricted system. Classroom apps connect through single sign-on, which lets the trust control access centrally and remove it quickly. She draws the design with zones and explains why sensitive records are separated from everyday systems used by many staff. The class compares answers and finds that most differences come from unstated assumptions. Elena records this point in her course notebook so that later chapters can build on it.
+Elena designs an architecture for the trust. A central management information system serves all twelve schools. Each school's staff see only their pupils. Safeguarding records sit in a separate, more restricted system. Classroom apps connect through single sign-on, which lets the trust control access centrally and remove it quickly. She draws the design with zones and explains why sensitive records are separated from everyday systems used by many staff. Sensitive safeguarding records sit in their own zone with separate access. Zones are documented.
 
 ### 16.2 Separation
 
-Separation limits damage. If a teacher's account is compromised, the attacker can reach learning records but not safeguarding notes. Elena also separates pupil data from staff data, since different roles need each. She explains that the GDPR requires security appropriate to the risk under Article 32, and that separation is a cost-effective measure for a trust with limited security staff, because it reduces how much any single failure can expose. Dr. Asante asks her to explain the idea aloud to a classmate before moving on.
+Separation limits damage. If a teacher's account is compromised, the attacker can reach learning records but not safeguarding notes. Elena also separates pupil data from staff data, since different roles need each. She explains that the GDPR requires security appropriate to the risk under Article 32, and that separation is a cost-effective measure for a trust with limited security staff, because it reduces how much any single failure can expose. A compromised classroom laptop cannot reach safeguarding records directly. Rules are simple and testable.
 
 ### 16.3 Backup and recovery
 
-Schools have suffered ransomware attacks. Elena designs backups that are encrypted, stored separately and tested. She sets recovery objectives: the management system restored within one day, safeguarding records within four hours, since safeguarding staff may need them urgently. She plans a restore test each term. She notes that backups also hold personal data and must follow retention rules, so old backups expire. She notes the assumption behind it so that a reviewer can challenge it later. The same reasoning will return when Brindle Valley's data protection officer reviews the work.
+Schools have suffered ransomware attacks. Elena designs backups that are encrypted, stored separately and tested. She sets recovery objectives: the management system restored within one day, safeguarding records within four hours, since safeguarding staff may need them urgently. She plans a restore test each term. She notes that backups also hold personal data and must follow retention rules, so old backups expire. In the first restore test, a term's attendance records are recovered in under an hour, and the restored copy is deleted afterwards so that no duplicate remains.
 
 ### 16.4 Vendor architecture
 
-Many functions are provided by vendors. Elena includes vendors in the architecture diagram with their data flows and contracts. She notes that single sign-on lets the trust disable access to all apps quickly when a pupil leaves. She also sets a rule that new apps must connect through single sign-on and pass vetting. Architecture, she explains, includes rules about how new components join, not only the current components. She adds a short note to the shared course wiki for other students. This makes the privacy consequence visible to people outside the specialist team.
+Many functions are provided by vendors. Elena includes vendors in the architecture diagram with their data flows and contracts. She notes that single sign-on lets the trust disable access to all apps quickly when a pupil leaves. She also sets a rule that new apps must connect through single sign-on and pass vetting. Architecture, she explains, includes rules about how new components join, not only the current components. New apps must use the trust's single sign-on. Each app joins only after vetting and appears on the architecture diagram.
 
 ### Worked example
 
@@ -883,19 +883,19 @@ You will (1) explain encryption at rest and in transit; (2) understand hashing a
 
 ### 17.1 Encryption
 
-Elena learns the difference between encryption in transit, which protects data moving across networks, and encryption at rest, which protects stored data. Both protect children's records from different threats. She checks that the trust's systems use both and finds that exported reports saved to USB drives are not encrypted. She recommends encrypted USB drives or, better, stopping exports to removable media and using secure sharing instead. Elena keeps a dated copy of her working so that the result can be traced. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Elena learns the difference between encryption in transit, which protects data moving across networks, and encryption at rest, which protects stored data. Both protect children's records from different threats. She checks that the trust's systems use both and finds that exported reports saved to USB drives are not encrypted. She recommends encrypted USB drives or, better, stopping exports to removable media and using secure sharing instead. Her audit finds that these drives are mostly used for moving reports home to mark.
 
 ### 17.2 Hashing and pseudonyms
 
-Hashing turns data into a fixed-length value that cannot easily be reversed. Elena explains that hashing a pupil identifier alone is weak, because the set of identifiers is small and an attacker can hash them all. A keyed hash with a secret key is stronger. She uses keyed hashes for the reading analysis in Chapter 8. She stresses that pseudonymisation reduces risk but the data remain personal under GDPR Article 4(5). She checks the idea against a second example before relying on it. The point seems small, but it changes how owners act on the result.
+Hashing turns data into a fixed-length value that cannot easily be reversed. Elena explains that hashing a pupil identifier alone is weak, because the set of identifiers is small and an attacker can hash them all. A keyed hash with a secret key is stronger. She uses keyed hashes for the reading analysis in Chapter 8. She stresses that pseudonymisation reduces risk but the data remain personal under GDPR Article 4(5). Keys stay with the data protection lead. The key is rotated yearly by the lead.
 
 ### 17.3 Keys
 
-Encryption depends on keys. Elena asks who holds the keys for the trust's backups. The answer is a single IT technician. If he leaves or loses the key, backups become unusable. She recommends storing keys in a managed key service with two authorised custodians and documented recovery. She explains that key management is often the hardest part of cryptography in practice, and that small organisations need simple, well-documented arrangements. Brindle Valley's data protection officer later asks for a copy of this analysis. She marks the open questions in red so that they are not forgotten.
+Encryption depends on keys. Elena asks who holds the keys for the trust's backups. The answer is a single IT technician. If he leaves or loses the key, backups become unusable. She recommends storing keys in a managed key service with two authorised custodians and documented recovery. She explains that key management is often the hardest part of cryptography in practice, and that small organisations need simple, well-documented arrangements. The trust keeps a two-page key register. It names holders and locations for each key.
 
 ### 17.4 Limits
 
-Elena notes that encryption does not protect against authorised users misusing data or against data being collected unnecessarily. A teacher with legitimate access can still share a report inappropriately. Encryption is one measure among many. She writes in her notes that cryptography protects confidentiality against outsiders, while access control, training and minimisation address insiders and over-collection. Writing the reasoning down also helps her spot a weak step in her argument. Elena discusses the trade-off with a classmate who works in finance. The class compares answers and finds that most differences come from unstated assumptions.
+Elena notes that encryption does not protect against authorised users misusing data or against data being collected unnecessarily. A teacher with legitimate access can still share a report inappropriately. Encryption is one measure among many. She writes in her notes that cryptography protects confidentiality against outsiders, while access control, training and minimisation address insiders and over-collection. A teacher with legitimate access can still misuse decrypted reports, so encryption alone would not have prevented the misdirected email she studied earlier in the course.
 
 ### Worked example
 
@@ -931,19 +931,19 @@ You will (1) frame a research question about privacy practice; (2) choose method
 
 ### 18.1 Question
 
-Elena's research methods course asks her to plan a small study. She asks: why do teachers adopt classroom apps without checking their data practices? The question matters because unchecked apps create most of the trust's sharing risks found in Chapter 9. She frames it as an exploratory question, suitable for interviews, rather than a hypothesis to test, because little is known about teachers' reasoning in this setting. Elena records this point in her course notebook so that later chapters can build on it. Dr. Asante asks her to explain the idea aloud to a classmate before moving on.
+Elena's research methods course asks her to plan a small study. She asks: why do teachers adopt classroom apps without checking their data practices? The question matters because unchecked apps create most of the trust's sharing risks found in Chapter 9. She frames it as an exploratory question, suitable for interviews, rather than a hypothesis to test, because little is known about teachers' reasoning in this setting. Her question asks why teachers adopt apps without vetting. She expects varied reasons and wants to hear them in teachers' own words.
 
 ### 18.2 Methods
 
-Elena plans semi-structured interviews with ten teachers across four schools. She writes an interview guide with open questions about how they find apps, what they check and what they would need to check more. She plans to analyse transcripts thematically, coding recurring reasons. She also plans to compare interview themes with the app register, to see whether stated practices match actual sharing. She notes the assumption behind it so that a reviewer can challenge it later. The same reasoning will return when Brindle Valley's data protection officer reviews the work.
+Elena plans semi-structured interviews with ten teachers across four schools. She writes an interview guide with open questions about how they find apps, what they check and what they would need to check more. She plans to analyse transcripts thematically, coding recurring reasons. She also plans to compare interview themes with the app register, to see whether stated practices match actual sharing. Interviews last about thirty minutes and use the same core questions for every teacher. Answers are compared with the app register.
 
 ### 18.3 Ethics
 
-Elena's study involves adults, not children, but discussions may mention pupils. She plans to tell participants not to name children, to delete any names that appear in transcripts and to store recordings securely and delete them after transcription. She obtains ethics approval from Fairhaven and permission from the trust. Participants give informed consent and may withdraw. She notes that research about privacy must model good privacy practice. She adds a short note to the shared course wiki for other students. This makes the privacy consequence visible to people outside the specialist team.
+Elena's study involves adults, not children, but discussions may mention pupils. She plans to tell participants not to name children, to delete any names that appear in transcripts and to store recordings securely and delete them after transcription. She obtains ethics approval from Fairhaven and permission from the trust. Participants give informed consent and may withdraw. She notes that research about privacy must model good privacy practice. Recordings are deleted after transcription. Teachers are asked not to name pupils, and any names mentioned are removed from transcripts.
 
 ### 18.4 Limits
 
-Elena notes limits: ten teachers cannot represent all teachers; participants may present themselves favourably; and her placement role may influence what they say. She plans to state these limits in her report and to ask a colleague who is not part of the placement to conduct two interviews as a check. Dr. Asante reminds her that acknowledging limits is part of good research, not a weakness. Elena keeps a dated copy of her working so that the result can be traced. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Elena notes limits: ten teachers cannot represent all teachers; participants may present themselves favourably; and her placement role may influence what they say. She plans to state these limits in her report and to ask a colleague who is not part of the placement to conduct two interviews as a check. Dr. Asante reminds her that acknowledging limits is part of good research, not a weakness. Her placement role might make teachers less candid. A colleague conducts two interviews to check for this effect.
 
 ### Worked example
 
@@ -979,19 +979,19 @@ You will (1) define the scope of data protection law; (2) relate theory to legal
 
 ### 19.1 Scope of the law
 
-Elena studies the scope of the GDPR. It applies to processing of personal data by automated means or in filing systems, with exceptions such as purely household activities. Personal data means any information relating to an identified or identifiable natural person. The LGPD has a similar definition. Elena notes that pupil data clearly fall within scope, as do photographs and voice recordings in which children can be recognised. She checks the idea against a second example before relying on it. The point seems small, but it changes how owners act on the result.
+Elena studies the scope of the GDPR. It applies to processing of personal data by automated means or in filing systems, with exceptions such as purely household activities. Personal data means any information relating to an identified or identifiable natural person. The LGPD has a similar definition. Elena notes that pupil data clearly fall within scope, as do photographs and voice recordings in which children can be recognised. Article 4(1) defines personal data broadly. It covers any information relating to an identifiable person, including indirect identifiers.
 
 ### 19.2 Identifiability
 
-Recital 26 explains that identifiability depends on the means reasonably likely to be used. Elena applies this to a published table of exam results for a small school. If a table shows that one pupil with free school meals achieved a certain grade, readers may identify the child. The data are therefore personal even though no name appears. She links this to the counting exercise in Chapter 6 and to Sweeney's research. Brindle Valley's data protection officer later asks for a copy of this analysis. She marks the open questions in red so that they are not forgotten.
+Recital 26 explains that identifiability depends on the means reasonably likely to be used. Elena applies this to a published table of exam results for a small school. If a table shows that one pupil with free school meals achieved a certain grade, readers may identify the child. The data are therefore personal even though no name appears. She links this to the counting exercise in Chapter 6 and to Sweeney's research. Recital 26 sets the test. It asks what means are reasonably likely to be used to identify someone.
 
 ### 19.3 Theory and law
 
-Elena compares legal concepts with privacy theory. The law's purpose limitation resembles contextual integrity's concern with flows matching contexts. Solove's harms, such as exclusion and secondary use, correspond to rights of access and purpose limitation. She notes that theory often explains why a legal rule exists, which helps staff understand and follow it rather than seeing it as arbitrary. Writing the reasoning down also helps her spot a weak step in her argument. Elena discusses the trade-off with a classmate who works in finance.
+Elena compares legal concepts with privacy theory. The law's purpose limitation resembles contextual integrity's concern with flows matching contexts. Solove's harms, such as exclusion and secondary use, correspond to rights of access and purpose limitation. She notes that theory often explains why a legal rule exists, which helps staff understand and follow it rather than seeing it as arbitrary. Contextual integrity, for instance, explains why data shared with a teacher should not reach app advertisers, which matches the purpose limitation rule.
 
 ### 19.4 Beyond the law
 
-Some practices may be lawful but still harmful. A school might lawfully share class photographs with parents, but a photograph showing a child in a distressing moment could cause harm. Elena writes that the trust should consider children's dignity and feelings, not only legal permissions. Dr. Asante agrees and notes that ethics continues where law is silent, especially for children who cannot easily speak for themselves. The class compares answers and finds that most differences come from unstated assumptions. Elena records this point in her course notebook so that later chapters can build on it.
+Some practices may be lawful but still harmful. A school might lawfully share class photographs with parents, but a photograph showing a child in a distressing moment could cause harm. Elena writes that the trust should consider children's dignity and feelings, not only legal permissions. Dr. Asante agrees and notes that ethics continues where law is silent, especially for children who cannot easily speak for themselves. She adds an ethics question to vetting. Is this fair to the child? She asks it every time.
 
 ### Worked example
 
@@ -1027,19 +1027,19 @@ You will (1) learn from published privacy research cases; (2) identify the lesso
 
 ### 20.1 Re-identification
 
-Elena studies Sweeney's (2002) demonstration that a few attributes such as postcode, birth date and sex could re-identify people in supposedly anonymous health records. The lesson is that removing names does not make data anonymous. For the trust, this means that releasing pupil-level data to researchers without names but with birth date and school could still identify children, and must be treated as personal data with proper safeguards. Dr. Asante asks her to explain the idea aloud to a classmate before moving on. She notes the assumption behind it so that a reviewer can challenge it later.
+Elena studies Sweeney's (2002) demonstration that a few attributes such as postcode, birth date and sex could re-identify people in supposedly anonymous health records. The lesson is that removing names does not make data anonymous. For the trust, this means that releasing pupil-level data to researchers without names but with birth date and school could still identify children, and must be treated as personal data with proper safeguards. Sweeney showed how few attributes identify people. Birth date and school can be enough for small schools.
 
 ### 20.2 Sparse data
 
-Narayanan and Shmatikov (2008) showed that a dataset of film ratings could be linked to public reviews using a few known ratings. The lesson is that detailed behavioural data are highly identifying. Elena applies it to learning apps, which record detailed activity such as answers and timing. Such data could reveal individual children even without names, which strengthens her concern about apps sharing activity logs with third parties. The same reasoning will return when Brindle Valley's data protection officer reviews the work. She adds a short note to the shared course wiki for other students.
+Narayanan and Shmatikov (2008) showed that a dataset of film ratings could be linked to public reviews using a few known ratings. The lesson is that detailed behavioural data are highly identifying. Elena applies it to learning apps, which record detailed activity such as answers and timing. Such data could reveal individual children even without names, which strengthens her concern about apps sharing activity logs with third parties. App logs record each click and its time. A few timestamps can single out one child.
 
 ### 20.3 Behaviour and choices
 
-Acquisti, Brandimarte and Loewenstein (2015) review evidence that people's privacy choices are uncertain, context-dependent and malleable. The lesson for the trust is that parents' consent depends heavily on how choices are presented. Elena recommends neutral consent forms that do not pre-tick options or use pressure, consistent with the EDPB consent guidelines. She notes that research on behaviour helps design fairer choices. This makes the privacy consequence visible to people outside the specialist team. Elena keeps a dated copy of her working so that the result can be traced.
+Acquisti, Brandimarte and Loewenstein (2015) review evidence that people's privacy choices are uncertain, context-dependent and malleable. The lesson for the trust is that parents' consent depends heavily on how choices are presented. Elena recommends neutral consent forms that do not pre-tick options or use pressure, consistent with the EDPB consent guidelines. She notes that research on behaviour helps design fairer choices. Acquisti and colleagues show that people's privacy choices are easily shaped by design and context, so the trust's forms present choices neutrally.
 
 ### 20.4 Applying lessons
 
-Elena writes a short guide for the trust: never treat nameless data as anonymous without analysis; treat learning activity data as identifying; and design consent choices neutrally. Each lesson is linked to a published case. Dr. Asante notes that grounding guidance in evidence makes it more persuasive to busy head teachers than general warnings, because the evidence shows that the risks are real rather than theoretical. Her lecturer reminds the class that clear reasoning matters more than a polished answer. She checks the idea against a second example before relying on it.
+Elena writes a short guide for the trust: never treat nameless data as anonymous without analysis; treat learning activity data as identifying; and design consent choices neutrally. Each lesson is linked to a published case. Dr. Asante notes that grounding guidance in evidence makes it more persuasive to busy head teachers than general warnings, because the evidence shows that the risks are real rather than theoretical. Her slides cite each study. Each slide pairs one study with one school example, so head teachers can see why the research matters locally.
 
 ### Worked example
 
@@ -1075,19 +1075,19 @@ You will (1) model the trust's processing as a system; (2) build a record of pro
 
 ### 21.1 Processing as a system
 
-In the third year Elena models the trust's processing as a system of activities, each with a purpose, data categories, people affected, recipients and retention. Admissions, attendance, teaching, special educational needs support, safeguarding, catering and communications are separate activities. Modelling activities rather than systems helps her see that one system may serve several purposes, and that one purpose may use several systems. Purpose, she learns, is the organising concept that the law uses, so her model follows it. Elena records this point in her course notebook so that later chapters can build on it.
+In the third year Elena models the trust's processing as a system of activities, each with a purpose, data categories, people affected, recipients and retention. Admissions, attendance, teaching, special educational needs support, safeguarding, catering and communications are separate activities. Modelling activities rather than systems helps her see that one system may serve several purposes, and that one purpose may use several systems. Purpose, she learns, is the organising concept that the law uses, so her model follows it. Admissions is one purpose.
 
 ### 21.2 Record of processing
 
-Article 30 of the GDPR requires a record of processing activities. Elena builds one with a row per activity. For catering, the purpose is providing meals; data include names, dietary needs and free meal eligibility; recipients include the catering contractor; retention is the school year plus one. Building the record reveals gaps, such as no defined retention for communications. She presents the record to the data protection lead as a living document that should be updated whenever processing changes. Dr. Asante asks her to explain the idea aloud to a classmate before moving on.
+Article 30 of the GDPR requires a record of processing activities. Elena builds one with a row per activity. For catering, the purpose is providing meals; data include names, dietary needs and free meal eligibility; recipients include the catering contractor; retention is the school year plus one. Building the record reveals gaps, such as no defined retention for communications. She presents the record to the data protection lead as a living document that should be updated whenever processing changes. It lists each purpose.
 
 ### 21.3 Roles
 
-Elena identifies roles using EDPB Guidelines 07/2020. The trust is controller for its schools' processing. The catering contractor and most app vendors are processors acting on the trust's instructions. A local authority receiving census data is a separate controller with its own legal duties. She notes that roles matter because they determine who answers rights requests, who notifies breaches and what contracts are needed, and that the role depends on what an organisation actually does rather than on what a contract calls it. She notes the assumption behind it so that a reviewer can challenge it later.
+Elena identifies roles using EDPB Guidelines 07/2020. The trust is controller for its schools' processing. The catering contractor and most app vendors are processors acting on the trust's instructions. A local authority receiving census data is a separate controller with its own legal duties. She notes that roles matter because they determine who answers rights requests, who notifies breaches and what contracts are needed, and that the role depends on what an organisation actually does rather than on what a contract calls it.
 
 ### 21.4 Model checks
 
-Elena checks the model against reality by asking staff to walk through a typical day. A teacher describes sending photographs to a parent messaging app not in the model. The app becomes a new row in the record, with a vetting review. She explains that models are useful only when checked against practice, and that conversations with staff reveal processing that no system diagram shows because it happens through informal tools chosen for convenience. The same reasoning will return when Brindle Valley's data protection officer reviews the work.
+Elena checks the model against reality by asking staff to walk through a typical day. A teacher describes sending photographs to a parent messaging app not in the model. The app becomes a new row in the record, with a vetting review. She explains that models are useful only when checked against practice, and that conversations with staff reveal processing that no system diagram shows because it happens through informal tools chosen for convenience. She finds one class using a messaging app.
 
 ### Worked example
 
@@ -1123,19 +1123,19 @@ You will (1) vet classroom apps against criteria; (2) score dependencies consist
 
 ### 22.1 Why vet apps
 
-The trust depends on many classroom apps chosen by teachers. Each app is a dependency that receives pupil data. Elena develops a vetting scheme with five criteria worth two points each: a signed data processing agreement; data kept in the EEA or protected by transfer safeguards; no advertising or profiling of children; deletion on request; and collection of minimal fields. Apps scoring eight or more of ten are approved. The scheme gives teachers clear expectations and the trust a consistent decision rule. She adds a short note to the shared course wiki for other students.
+The trust depends on many classroom apps chosen by teachers. Each app is a dependency that receives pupil data. Elena develops a vetting scheme with five criteria worth two points each: a signed data processing agreement; data kept in the EEA or protected by transfer safeguards; no advertising or profiling of children; deletion on request; and collection of minimal fields. Apps scoring eight or more of ten are approved. The scheme gives teachers clear expectations and the trust a consistent decision rule.
 
 ### 22.2 Scoring
 
-The lab scores five apps. MathsQuest meets every criterion and scores 10. Timetabler scores 8, missing only minimal fields, and is approved with a request to reduce fields. ClassChat scores 6, lacking an agreement and deletion on request. ReadAlong scores 4, lacking an agreement, transfer safeguards and minimal fields. QuizBlitz scores 4, lacking an agreement, transfer safeguards and a ban on advertising. Three apps are rejected until vendors address the gaps. This makes the privacy consequence visible to people outside the specialist team. Elena keeps a dated copy of her working so that the result can be traced.
+The lab scores five apps. MathsQuest meets every criterion and scores 10. Timetabler scores 8, missing only minimal fields, and is approved with a request to reduce fields. ClassChat scores 6, lacking an agreement and deletion on request. ReadAlong scores 4, lacking an agreement, transfer safeguards and minimal fields. QuizBlitz scores 4, lacking an agreement, transfer safeguards and a ban on advertising. Three apps are rejected until vendors address the gaps. Each criterion carries points. The scores cover agreements, transfers, data collected, advertising and deletion support for each app.
 
 ### 22.3 Children's profiling
 
-Elena pays special attention to advertising and profiling. Recital 38 of the GDPR notes that children merit specific protection, in particular regarding marketing and profiling. QuizBlitz shows adverts to pupils and builds interest profiles. Even if a contract were signed, she recommends against it, because profiling children for advertising conflicts with the trust's duty of care. She explains that some criteria are not just points but red lines, and she adds a rule that advertising to pupils is an automatic rejection. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Elena pays special attention to advertising and profiling. Recital 38 of the GDPR notes that children merit specific protection, in particular regarding marketing and profiling. QuizBlitz shows adverts to pupils and builds interest profiles. Even if a contract were signed, she recommends against it, because profiling children for advertising conflicts with the trust's duty of care. She explains that some criteria are not just points but red lines, and she adds a rule that advertising to pupils is an automatic rejection. No exceptions apply.
 
 ### 22.4 Living with decisions
 
-Rejecting apps upsets some teachers who rely on them. Elena works with them to find approved alternatives with similar features and asks vendors of rejected apps to fix gaps. Two weeks later ClassChat signs an agreement and adds deletion, raising its score to 10. Dr. Asante notes that vetting works best as a conversation with teachers and vendors rather than a gate that only says no, because the aim is safer teaching, not fewer tools. She checks the idea against a second example before relying on it.
+Rejecting apps upsets some teachers who rely on them. Elena works with them to find approved alternatives with similar features and asks vendors of rejected apps to fix gaps. Two weeks later ClassChat signs an agreement and adds deletion, raising its score to 10. Dr. Asante notes that vetting works best as a conversation with teachers and vendors rather than a gate that only says no, because the aim is safer teaching, not fewer tools. Two rejected apps later return compliant. Teachers welcome that.
 
 ### Lab — Vetting classroom apps against five criteria
 
@@ -1193,19 +1193,19 @@ You will (1) apply small-cell suppression to published tables; (2) use complemen
 
 ### 23.1 Publishing results
 
-Schools publish exam results by group, such as pupils eligible for free school meals. Elena knows from Chapter 19 that small cells can identify children. She applies a common rule: suppress any cell with fewer than five pupils. If a school has three free-meal pupils, publishing their results would reveal much about each. Suppression hides that cell. The rule is simple, but she learns that applying it alone is not enough when totals are also published. The point seems small, but it changes how owners act on the result.
+Schools publish exam results by group, such as pupils eligible for free school meals. Elena knows from Chapter 19 that small cells can identify children. She applies a common rule: suppress any cell with fewer than five pupils. If a school has three free-meal pupils, publishing their results would reveal much about each. Suppression hides that cell. The rule is simple, but she learns that applying it alone is not enough when totals are also published. Totals let readers subtract. Differencing attacks are a real risk.
 
 ### 23.2 Complementary suppression
 
-If a school's total and the other-group count are published, a reader can subtract to recover the suppressed cell. Elena therefore also suppresses a complementary cell in the same school. The lab applies both rules to eight cells across four schools. Ashby has three free-meal pupils and Moor has two; both are suppressed, with their complements. Four of eight cells are suppressed: two primary and two complementary. Kelso and Penn are published in full because their smallest cells contain twelve and seven pupils. Brindle Valley's data protection officer later asks for a copy of this analysis.
+If a school's total and the other-group count are published, a reader can subtract to recover the suppressed cell. Elena therefore also suppresses a complementary cell in the same school. The lab applies both rules to eight cells across four schools. Ashby has three free-meal pupils and Moor has two; both are suppressed, with their complements. Four of eight cells are suppressed: two primary and two complementary. Kelso and Penn are published in full because their smallest cells contain twelve and seven pupils.
 
 ### 23.3 Information loss
 
-Suppression hides useful information. Readers of the table cannot compare free-meal outcomes at Ashby and Moor. Elena discusses alternatives: combining small schools into a group, reporting over three years, or publishing rounded figures. NIST SP 800-188 describes such approaches for government statistics. She recommends combining Ashby and Moor for this table, which keeps useful comparisons while protecting individuals, and she shows the trust how the table would look. She marks the open questions in red so that they are not forgotten. Writing the reasoning down also helps her spot a weak step in her argument.
+Suppression hides useful information. Readers of the table cannot compare free-meal outcomes at Ashby and Moor. Elena discusses alternatives: combining small schools into a group, reporting over three years, or publishing rounded figures. NIST SP 800-188 describes such approaches for government statistics. She recommends combining Ashby and Moor for this table, which keeps useful comparisons while protecting individuals, and she shows the trust how the table would look. Combining two small schools loses some detail but keeps trust-wide trends visible. Governors accept the table.
 
 ### 23.4 Judgement
 
-Elena notes that thresholds such as five are conventions, not guarantees. A cell of six pupils may still reveal something if readers know who they are. For sensitive groups, such as pupils with special educational needs, she recommends a higher threshold. She explains that disclosure control combines rules with judgement about who might read the table and what they already know, which connects to the identifiability test in Recital 26. Elena discusses the trade-off with a classmate who works in finance. The class compares answers and finds that most differences come from unstated assumptions.
+Elena notes that thresholds such as five are conventions, not guarantees. A cell of six pupils may still reveal something if readers know who they are. For sensitive groups, such as pupils with special educational needs, she recommends a higher threshold. She explains that disclosure control combines rules with judgement about who might read the table and what they already know, which connects to the identifiability test in Recital 26. Local readers know many families. Small villages make identification easy. Context decides suppression.
 
 ### Lab — Suppressing small cells in a results table
 
@@ -1270,19 +1270,19 @@ You will (1) design organisational and technical controls for a school trust; (2
 
 ### 24.1 Control set
 
-Elena designs a control set for the trust. Organisational controls include the app vetting scheme, staff training, a records retention schedule and the central request inbox. Technical controls include role-based access, single sign-on, encryption, backups and small-cell suppression. She links each control to the risks it reduces and the principles it supports. The link makes it possible to explain to governors why each control exists and what would happen if it were removed. Elena records this point in her course notebook so that later chapters can build on it.
+Elena designs a control set for the trust. Organisational controls include the app vetting scheme, staff training, a records retention schedule and the central request inbox. Technical controls include role-based access, single sign-on, encryption, backups and small-cell suppression. She links each control to the risks it reduces and the principles it supports. The link makes it possible to explain to governors why each control exists and what would happen if it were removed. Each control lists its risk. The list fits on two pages.
 
 ### 24.2 Retention schedule
 
-Elena drafts a retention schedule. Pupil records follow education law requirements; safeguarding records are kept according to statutory guidance; photographs for newsletters are kept for the current year; app data are deleted when a pupil leaves. She explains that retention schedules implement storage limitation and reduce what could be exposed in a breach. She notes that some periods are set by law and must be confirmed with the trust's legal adviser. Dr. Asante asks her to explain the idea aloud to a classmate before moving on.
+Elena drafts a retention schedule. Pupil records follow education law requirements; safeguarding records are kept according to statutory guidance; photographs for newsletters are kept for the current year; app data are deleted when a pupil leaves. She explains that retention schedules implement storage limitation and reduce what could be exposed in a breach. She notes that some periods are set by law and must be confirmed with the trust's legal adviser. The schedule covers every record type. Legal advice confirms them.
 
 ### 24.3 Training
 
-Training is a control. Elena designs short sessions for different roles: teachers learn about app vetting and misdirected email; office staff learn about identity checks for requests; safeguarding leads learn about secure records. Each session uses school examples and ends with a short quiz. She measures completion and quiz scores. She notes that training changes behaviour only when combined with systems that support the right choices. She notes the assumption behind it so that a reviewer can challenge it later. The same reasoning will return when Brindle Valley's data protection officer reviews the work.
+Training is a control. Elena designs short sessions for different roles: teachers learn about app vetting and misdirected email; office staff learn about identity checks for requests; safeguarding leads learn about secure records. Each session uses school examples and ends with a short quiz. She measures completion and quiz scores. She notes that training changes behaviour only when combined with systems that support the right choices. Quiz scores rose, but incident counts tell a more useful story about behaviour. Incidents matter most.
 
 ### 24.4 Owners
 
-Each control needs an owner. The data protection lead owns the record of processing and request inbox; the IT manager owns access, encryption and backups; head teachers own training completion in their schools. Elena writes a one-page description for each control. Dr. Asante points out that controls without owners decay quietly, and that ownership is the difference between a policy document and a working control. She adds a short note to the shared course wiki for other students. This makes the privacy consequence visible to people outside the specialist team.
+Each control needs an owner. The data protection lead owns the record of processing and request inbox; the IT manager owns access, encryption and backups; head teachers own training completion in their schools. Elena writes a one-page description for each control. Dr. Asante points out that controls without owners decay quietly, and that ownership is the difference between a policy document and a working control. Each owner has a named deputy and a review date in the operations calendar. Reviews are termly.
 
 ### Worked example
 
@@ -1318,19 +1318,19 @@ You will (1) test controls in a safe laboratory; (2) simulate common incidents; 
 
 ### 25.1 Lab setup
 
-In Laboratory I Elena builds a test environment with synthetic pupils, a copy of the access configuration and test accounts for each role. No real data are used. She plans tests for access control, retention and misdirected email warnings. Dr. Asante insists on writing expected results before running tests. Elena learns that a laboratory is a place to discover failures safely, so that they can be fixed before they affect real children. Elena keeps a dated copy of her working so that the result can be traced.
+In Laboratory I Elena builds a test environment with synthetic pupils, a copy of the access configuration and test accounts for each role. No real data are used. She plans tests for access control, retention and misdirected email warnings. Dr. Asante insists on writing expected results before running tests. Elena learns that a laboratory is a place to discover failures safely, so that they can be fixed before they affect real children. All test accounts are synthetic. The lab mirrors the real configuration.
 
 ### 25.2 Access tests
 
-Elena logs in as each role and attempts to view records. Teachers cannot see pupils from other classes; office staff cannot see support plans after her earlier fix. But a head of year can see safeguarding notes, which the role design did not intend. She traces the problem to an old permission group and removes it. She records the test, the failure and the fix with dates. Her lecturer reminds the class that clear reasoning matters more than a polished answer. She checks the idea against a second example before relying on it.
+Elena logs in as each role and attempts to view records. Teachers cannot see pupils from other classes; office staff cannot see support plans after her earlier fix. But a head of year can see safeguarding notes, which the role design did not intend. She traces the problem to an old permission group and removes it. She records the test, the failure and the fix with dates. One test showed a teaching assistant seeing support plans. It came from an old group.
 
 ### 25.3 Incident simulation
 
-Elena simulates a misdirected email by sending a synthetic report to an external test address. The email system warns about an external recipient, as designed. She then simulates a lost tablet and checks that remote wipe works and that the tablet held no cached pupil data. Both succeed. She also simulates a parent's access request through the central inbox and checks that it is logged and assigned within one day. The point seems small, but it changes how owners act on the result. Brindle Valley's data protection officer later asks for a copy of this analysis.
+Elena simulates a misdirected email by sending a synthetic report to an external test address. The email system warns about an external recipient, as designed. She then simulates a lost tablet and checks that remote wipe works and that the tablet held no cached pupil data. Both succeed. She also simulates a parent's access request through the central inbox and checks that it is logged and assigned within one day. She times each step of the response. Both steps finish on time.
 
 ### 25.4 Evidence
 
-Elena compiles results into a laboratory report: tests, expected results, actual results, failures and fixes. She notes that the report is evidence for accountability and should be kept with the trust's data protection records. She also notes what she did not test, such as vendor deletion. Dr. Asante reminds her that a test report is as valuable for what it shows is untested as for what it shows works. She marks the open questions in red so that they are not forgotten. Writing the reasoning down also helps her spot a weak step in her argument.
+Elena compiles results into a laboratory report: tests, expected results, actual results, failures and fixes. She notes that the report is evidence for accountability and should be kept with the trust's data protection records. She also notes what she did not test, such as vendor deletion. Dr. Asante reminds her that a test report is as valuable for what it shows is untested as for what it shows works. Untested areas are listed explicitly in the report. Vendor deletion is tested later.
 
 ### Worked example
 
@@ -1366,19 +1366,19 @@ You will (1) match uses of data against consent records; (2) handle missing or r
 
 ### 26.1 Photo consent
 
-The trust asks parents for consent before using photographs in newsletters. Elena builds a check that matches pupils tagged in planned photographs against the consent register. A pupil is cleared only if consent is recorded as given; refusal or missing records mean the photograph must be held. Consent is one of the clearest cases where the law requires a record, because Article 7(1) of the GDPR requires the controller to be able to demonstrate that consent was given. Elena discusses the trade-off with a classmate who works in finance.
+The trust asks parents for consent before using photographs in newsletters. Elena builds a check that matches pupils tagged in planned photographs against the consent register. A pupil is cleared only if consent is recorded as given; refusal or missing records mean the photograph must be held. Consent is one of the clearest cases where the law requires a record, because Article 7(1) of the GDPR requires the controller to be able to demonstrate that consent was given. Records are kept centrally.
 
 ### 26.2 Matching
 
-The lab checks three planned photographs. The science fair photograph is cleared. The sports day photograph includes P02, whose parents refused. The choir photograph includes P05, whose parents refused, and P08, who has no record at all. Two of three photographs need action. Elena explains that a missing record is treated like a refusal, because consent cannot be assumed. The newsletter editor crops or replaces the two photographs. The class compares answers and finds that most differences come from unstated assumptions. Elena records this point in her course notebook so that later chapters can build on it.
+The lab checks three planned photographs. The science fair photograph is cleared. The sports day photograph includes P02, whose parents refused. The choir photograph includes P05, whose parents refused, and P08, who has no record at all. Two of three photographs need action. Elena explains that a missing record is treated like a refusal, because consent cannot be assumed. The newsletter editor crops or replaces the two photographs. Her lab matched photographs against consent records for every pupil shown. Two photographs lacked records.
 
 ### 26.3 Withdrawal
 
-Consent can be withdrawn at any time, as Article 7(3) states, and withdrawal must be as easy as giving consent. Elena designs a form on the parent portal for withdrawal and a process to remove photographs from future publications. Past printed newsletters cannot be recalled, which she explains honestly to parents in the consent form. She notes that being clear about what withdrawal can and cannot do is part of informed consent. Dr. Asante asks her to explain the idea aloud to a classmate before moving on.
+Consent can be withdrawn at any time, as Article 7(3) states, and withdrawal must be as easy as giving consent. Elena designs a form on the parent portal for withdrawal and a process to remove photographs from future publications. Past printed newsletters cannot be recalled, which she explains honestly to parents in the consent form. She notes that being clear about what withdrawal can and cannot do is part of informed consent. Printed newsletters cannot be recalled. Online copies are removed within days.
 
 ### 26.4 Children's voice
 
-Older pupils may have their own views. Elena recommends asking pupils aged around twelve and above whether they are happy for photographs to be used, alongside parental consent, and respecting their objection. She notes that GDPR Article 8 concerns consent for online services and sets age thresholds, but that the broader principle of respecting children's views as they mature applies more widely. Dr. Asante agrees that listening to children improves both fairness and trust. She notes the assumption behind it so that a reviewer can challenge it later.
+Older pupils may have their own views. Elena recommends asking pupils aged around twelve and above whether they are happy for photographs to be used, alongside parental consent, and respecting their objection. She notes that GDPR Article 8 concerns consent for online services and sets age thresholds, but that the broader principle of respecting children's views as they mature applies more widely. Dr. Asante agrees that listening to children improves both fairness and trust. Older pupils now sign alongside parents. Their views are recorded.
 
 ### Lab — Matching photographs against consent records
 
@@ -1435,19 +1435,19 @@ You will (1) verify controls against requirements; (2) sample records for compli
 
 ### 27.1 Verification plan
 
-Elena plans verification of the trust's controls. For each control she defines a requirement and a test. Access control: staff can see only what their role allows, tested by sampling accounts. Retention: records past their period are deleted, tested by querying the system. App vetting: no unapproved app receives data, tested by comparing the app register with network traffic. She follows a principle that every important control should be tested with evidence, not assumed. The same reasoning will return when Brindle Valley's data protection officer reviews the work.
+Elena plans verification of the trust's controls. For each control she defines a requirement and a test. Access control: staff can see only what their role allows, tested by sampling accounts. Retention: records past their period are deleted, tested by querying the system. App vetting: no unapproved app receives data, tested by comparing the app register with network traffic. She follows a principle that every important control should be tested with evidence, not assumed. Each control gets one test. Tests follow the risk ranking.
 
 ### 27.2 Sampling
 
-Elena samples twenty staff accounts across schools and compares each account's permissions with its role. Eighteen match; two have extra permissions left from previous roles. She reports the error rate and fixes the accounts. She explains that a sample does not prove all accounts are correct, but it gives an estimate and shows whether the joiners-movers-leavers process works. She recommends repeating the sample each term. She adds a short note to the shared course wiki for other students. This makes the privacy consequence visible to people outside the specialist team.
+Elena samples twenty staff accounts across schools and compares each account's permissions with its role. Eighteen match; two have extra permissions left from previous roles. She reports the error rate and fixes the accounts. She explains that a sample does not prove all accounts are correct, but it gives an estimate and shows whether the joiners-movers-leavers process works. She recommends repeating the sample each term. The twenty sampled accounts come from every school, and each is checked against current staff lists.
 
 ### 27.3 Network comparison
 
-Elena works with the IT manager to list domains that school devices contact and compares them with approved apps. Two unapproved apps appear: a free quiz site and a drawing app. Both receive pupil names through login. She contacts the teachers involved, who were unaware of the process, and helps them find approved alternatives. She notes that technical verification finds practices that policies and surveys miss. Elena keeps a dated copy of her working so that the result can be traced. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Elena works with the IT manager to list domains that school devices contact and compares them with approved apps. Two unapproved apps appear: a free quiz site and a drawing app. Both receive pupil names through login. She contacts the teachers involved, who were unaware of the process, and helps them find approved alternatives. She notes that technical verification finds practices that policies and surveys miss. Traffic showed several apps never vetted. Two unapproved apps were found this way, both used by a single class for homework quizzes.
 
 ### 27.4 Honest reporting
 
-Elena writes a verification report showing passes and failures. Governors ask whether the trust is compliant. She explains that the trust has improved and has evidence for many controls, but that failures remain and verification must continue. She avoids claiming full compliance, which no evidence could support. Dr. Asante notes that honest reporting builds trust with governors and regulators better than optimistic claims that later prove wrong. She checks the idea against a second example before relying on it. The point seems small, but it changes how owners act on the result.
+Elena writes a verification report showing passes and failures. Governors ask whether the trust is compliant. She explains that the trust has improved and has evidence for many controls, but that failures remain and verification must continue. She avoids claiming full compliance, which no evidence could support. Dr. Asante notes that honest reporting builds trust with governors and regulators better than optimistic claims that later prove wrong. Her report states clearly which controls failed testing and what will be done about each one.
 
 ### Worked example
 
@@ -1483,19 +1483,19 @@ You will (1) analyse a privacy incident to find root causes; (2) distinguish ind
 
 ### 28.1 The incident
 
-A synthetic incident: a teacher emails a spreadsheet of pupils' reading levels and special needs flags to all parents in a class instead of a single colleague. Elena leads the failure analysis. She gathers facts: the email client auto-completed the parent group, the spreadsheet contained more columns than needed, and there was no warning for external recipients with attachments. The breach is reported to the data protection lead within an hour. Brindle Valley's data protection officer later asks for a copy of this analysis.
+A synthetic incident: a teacher emails a spreadsheet of pupils' reading levels and special needs flags to all parents in a class instead of a single colleague. Elena leads the failure analysis. She gathers facts: the email client auto-completed the parent group, the spreadsheet contained more columns than needed, and there was no warning for external recipients with attachments. The breach is reported to the data protection lead within an hour. A teacher emailed a spreadsheet to all parents. Every family in the class received it.
 
 ### 28.2 Root causes
 
-Elena asks why repeatedly. Why did the email go to parents? Auto-complete suggested the parent group. Why did the spreadsheet contain special needs flags? It was exported from the system with default columns. Why was there no warning? The warning covered external domains, but parents' addresses were in a school-managed group. She identifies three system causes, not just the teacher's error, and explains that blaming the teacher would leave the causes in place. She marks the open questions in red so that they are not forgotten.
+Elena asks why repeatedly. Why did the email go to parents? Auto-complete suggested the parent group. Why did the spreadsheet contain special needs flags? It was exported from the system with default columns. Why was there no warning? The warning covered external domains, but parents' addresses were in a school-managed group. She identifies three system causes, not just the teacher's error, and explains that blaming the teacher would leave the causes in place. The export included unneeded columns. Email groups were unmanaged.
 
 ### 28.3 Response
 
-The trust assesses the risk. The spreadsheet included special needs information, which may be health data, so the risk to pupils is likely, and the trust notifies the supervisory authority within 72 hours under Article 33. It contacts parents to ask them to delete the email and informs affected families. EDPB Guidelines 9/2022 help assess the severity. Elena records the timeline and decisions. Writing the reasoning down also helps her spot a weak step in her argument. Elena discusses the trade-off with a classmate who works in finance.
+The trust assesses the risk. The spreadsheet included special needs information, which may be health data, so the risk to pupils is likely, and the trust notifies the supervisory authority within 72 hours under Article 33. It contacts parents to ask them to delete the email and informs affected families. EDPB Guidelines 9/2022 help assess the severity. Elena records the timeline and decisions. Within the first day, the trust asks each recipient to confirm deletion, and the data protection lead decides whether the authority must be notified under Article 33.
 
 ### 28.4 Lasting fixes
 
-Elena recommends three fixes: disable auto-complete for parent groups, change export defaults to minimal columns, and extend warnings to any message with attachments sent to large groups. She also recommends sharing reports through a secure system rather than email. After the fixes, she runs a laboratory test to confirm them. Dr. Asante notes that good failure analysis produces fixes that make the same mistake hard to repeat for anyone. The class compares answers and finds that most differences come from unstated assumptions. Elena records this point in her course notebook so that later chapters can build on it.
+Elena recommends three fixes: disable auto-complete for parent groups, change export defaults to minimal columns, and extend warnings to any message with attachments sent to large groups. She also recommends sharing reports through a secure system rather than email. After the fixes, she runs a laboratory test to confirm them. Dr. Asante notes that good failure analysis produces fixes that make the same mistake hard to repeat for anyone. External attachments now trigger a warning before sending. Exports now default to minimal columns.
 
 ### Worked example
 
@@ -1531,19 +1531,19 @@ You will (1) run day-to-day data protection operations; (2) handle rights reques
 
 ### 29.1 Operations calendar
 
-Elena helps the data protection lead create an operations calendar. Weekly: review the request inbox and incident log. Monthly: report metrics and review new apps. Termly: access reviews, training checks and restore tests. Yearly: update the record of processing and retention schedule. The calendar turns many separate tasks into a predictable routine, which is important in schools where staff time is limited and priorities change quickly. Dr. Asante asks her to explain the idea aloud to a classmate before moving on. She notes the assumption behind it so that a reviewer can challenge it later.
+Elena helps the data protection lead create an operations calendar. Weekly: review the request inbox and incident log. Monthly: report metrics and review new apps. Termly: access reviews, training checks and restore tests. Yearly: update the record of processing and retention schedule. The calendar turns many separate tasks into a predictable routine, which is important in schools where staff time is limited and priorities change quickly. Each month lists due tasks and owners, such as access reviews in September and retention deletion in July.
 
 ### 29.2 Requests and incidents
 
-With the central inbox, requests are logged and assigned on arrival. Elena handles a request from a parent who wants all data about their child, including emails mentioning the child. She works with the data protection lead to search email systems and redact information about other pupils. She learns that access requests often involve judgement about third-party information, and that EDPB Guidelines 01/2022 discuss how to balance rights of others. The same reasoning will return when Brindle Valley's data protection officer reviews the work. She adds a short note to the shared course wiki for other students.
+With the central inbox, requests are logged and assigned on arrival. Elena handles a request from a parent who wants all data about their child, including emails mentioning the child. She works with the data protection lead to search email systems and redact information about other pupils. She learns that access requests often involve judgement about third-party information, and that EDPB Guidelines 01/2022 discuss how to balance rights of others. Redaction protects other pupils. Other pupils' details are removed before any record is released.
 
 ### 29.3 Metrics
 
-Elena reports monthly metrics to leadership: requests received and on time, incidents and time to report, apps vetted and rejected, access review completion and training completion. She presents trends with brief explanations. Leadership asks for fewer numbers and more meaning, so she adds a short paragraph on what changed and what needs attention. She learns that metrics are useful only when someone acts on them. This makes the privacy consequence visible to people outside the specialist team. Elena keeps a dated copy of her working so that the result can be traced.
+Elena reports monthly metrics to leadership: requests received and on time, incidents and time to report, apps vetted and rejected, access review completion and training completion. She presents trends with brief explanations. Leadership asks for fewer numbers and more meaning, so she adds a short paragraph on what changed and what needs attention. She learns that metrics are useful only when someone acts on them. Her monthly page shows five figures with a comment on each. Five figures fit on one page.
 
 ### 29.4 Sustaining
 
-Elena notes that operations depend on the data protection lead, a single person. If the lead is ill, tasks stop. She recommends a deputy and documented procedures. She also recommends that each school name a privacy champion who handles local questions and escalates issues. Dr. Asante points out that resilience applies to people as well as systems, and that small organisations are especially vulnerable to losing key individuals. Her lecturer reminds the class that clear reasoning matters more than a polished answer. She checks the idea against a second example before relying on it.
+Elena notes that operations depend on the data protection lead, a single person. If the lead is ill, tasks stop. She recommends a deputy and documented procedures. She also recommends that each school name a privacy champion who handles local questions and escalates issues. Dr. Asante points out that resilience applies to people as well as systems, and that small organisations are especially vulnerable to losing key individuals. Each role now has a written procedure and a trained deputy. Cover is now planned.
 
 ### Worked example
 
@@ -1579,19 +1579,19 @@ You will (1) test end-to-end processes; (2) test vendor deletion; (3) improve pr
 
 ### 30.1 End-to-end test
 
-In Laboratory II Elena tests the full life of a synthetic pupil: admission, class assignment, app accounts, photographs with consent, an access request and leaving the trust. She checks that each step creates, uses and deletes data as designed. When the pupil leaves, the management system marks them as left, single sign-on removes app access, and the retention schedule sets deletion dates. The test confirms that the main systems work together. The point seems small, but it changes how owners act on the result.
+In Laboratory II Elena tests the full life of a synthetic pupil: admission, class assignment, app accounts, photographs with consent, an access request and leaving the trust. She checks that each step creates, uses and deletes data as designed. When the pupil leaves, the management system marks them as left, single sign-on removes app access, and the retention schedule sets deletion dates. The test confirms that the main systems work together. A synthetic pupil leaves the trust. Each system is checked for the pupil's record.
 
 ### 30.2 Vendor deletion
 
-The untested area from Laboratory I was vendor deletion. Elena asks three approved app vendors to delete the synthetic pupil's data and confirm. Two confirm within a week with deletion records. One replies that data are retained for a year for analytics. That contradicts the trust's agreement, which requires deletion on request. Elena escalates to the data protection lead, who contacts the vendor to enforce the contract. Brindle Valley's data protection officer later asks for a copy of this analysis. She marks the open questions in red so that they are not forgotten.
+The untested area from Laboratory I was vendor deletion. Elena asks three approved app vendors to delete the synthetic pupil's data and confirm. Two confirm within a week with deletion records. One replies that data are retained for a year for analytics. That contradicts the trust's agreement, which requires deletion on request. Elena escalates to the data protection lead, who contacts the vendor to enforce the contract. The vendor kept the record. The app's support page claimed records are kept for three years after leaving.
 
 ### 30.3 Process improvements
 
-Elena recommends adding vendor deletion confirmation to the leaver process, with a reminder if no confirmation arrives in two weeks. She also recommends including deletion testing in yearly vendor reviews. She notes that contracts are only as strong as the trust's ability to check them, and that a simple test with a synthetic pupil revealed a real gap that paperwork had hidden. Writing the reasoning down also helps her spot a weak step in her argument. Elena discusses the trade-off with a classmate who works in finance.
+Elena recommends adding vendor deletion confirmation to the leaver process, with a reminder if no confirmation arrives in two weeks. She also recommends including deletion testing in yearly vendor reviews. She notes that contracts are only as strong as the trust's ability to check them, and that a simple test with a synthetic pupil revealed a real gap that paperwork had hidden. Vendor deletion is now confirmed in writing, and the synthetic pupil test is repeated each summer. The contract now has a deletion clause.
 
 ### 30.4 Reflection
 
-Elena reflects on the two laboratories. The first tested controls in isolation; the second tested processes across systems and vendors. The second found more serious gaps, because failures often occur at boundaries. Dr. Asante notes that end-to-end testing with synthetic subjects is one of the most effective tools in data protection practice, and that it should become a routine part of the trust's operations rather than a one-off exercise. The class compares answers and finds that most differences come from unstated assumptions. Elena records this point in her course notebook so that later chapters can build on it.
+Elena reflects on the two laboratories. The first tested controls in isolation; the second tested processes across systems and vendors. The second found more serious gaps, because failures often occur at boundaries. Dr. Asante notes that end-to-end testing with synthetic subjects is one of the most effective tools in data protection practice, and that it should become a routine part of the trust's operations rather than a one-off exercise. The test took one afternoon. It found what audits missed for years.
 
 ### Worked example
 
@@ -1627,19 +1627,19 @@ You will (1) analyse difficult cases involving children's data; (2) weigh compet
 
 ### 31.1 Separated parents
 
-A father who does not live with his child asks for the child's school records. The mother objects. Elena studies the case with the data protection lead. Parental rights to educational information may come from education law, while access to personal data comes from data protection law. A court order may restrict one parent's access. She learns that such cases need careful checks of legal status and that the child's safety must be considered, especially where there are safeguarding concerns about one parent. Elena records this point in her course notebook so that later chapters can build on it.
+A father who does not live with his child asks for the child's school records. The mother objects. Elena studies the case with the data protection lead. Parental rights to educational information may come from education law, while access to personal data comes from data protection law. A court order may restrict one parent's access. She learns that such cases need careful checks of legal status and that the child's safety must be considered, especially where there are safeguarding concerns about one parent.
 
 ### 31.2 Pupil's own request
 
-A fourteen-year-old pupil asks to see what the school holds about her, without telling her parents. Elena learns that children can exercise their own rights when they understand them, and that the school should usually respond to the child directly. EDPB Guidelines 01/2022 address requests by and on behalf of children. The case shows that children are rights-holders in their own name, not only through their parents. Dr. Asante asks her to explain the idea aloud to a classmate before moving on. She notes the assumption behind it so that a reviewer can challenge it later.
+A fourteen-year-old pupil asks to see what the school holds about her, without telling her parents. Elena learns that children can exercise their own rights when they understand them, and that the school should usually respond to the child directly. EDPB Guidelines 01/2022 address requests by and on behalf of children. The case shows that children are rights-holders in their own name, not only through their parents. A fourteen-year-old can usually exercise the right of access herself, depending on maturity. Her parents are informed.
 
 ### 31.3 Police request
 
-Police ask a school for a pupil's attendance records in an investigation. Elena learns that disclosure to authorities may be lawful under specific provisions but must be checked: the request should be in writing, state the purpose and the legal basis, and be limited to what is necessary. The data protection lead decides, documents the decision and discloses only the attendance dates requested. She notes that urgency does not remove the need for a record of what was shared and why. The same reasoning will return when Brindle Valley's data protection officer reviews the work.
+Police ask a school for a pupil's attendance records in an investigation. Elena learns that disclosure to authorities may be lawful under specific provisions but must be checked: the request should be in writing, state the purpose and the legal basis, and be limited to what is necessary. The data protection lead decides, documents the decision and discloses only the attendance dates requested. She notes that urgency does not remove the need for a record of what was shared and why. A record is kept.
 
 ### 31.4 Documenting contested decisions
 
-In each case Elena helps write a decision record: facts, legal basis, rights considered, decision and reviewer. She explains that contested decisions may be challenged later by a parent, a regulator or a court, and that a clear record shows the trust acted carefully. Dr. Asante notes that good records protect children and staff alike, because they show that decisions were made thoughtfully rather than under pressure. She adds a short note to the shared course wiki for other students. This makes the privacy consequence visible to people outside the specialist team.
+In each case Elena helps write a decision record: facts, legal basis, rights considered, decision and reviewer. She explains that contested decisions may be challenged later by a parent, a regulator or a court, and that a clear record shows the trust acted carefully. Dr. Asante notes that good records protect children and staff alike, because they show that decisions were made thoughtfully rather than under pressure. Each record names the decision, the reasons and who agreed it. Records are kept for review.
 
 ### Worked example
 
@@ -1675,19 +1675,19 @@ You will (1) work with education, safeguarding and legal professionals; (2) tran
 
 ### 32.1 Working with educators
 
-Teachers want tools that help children learn. Elena learns to frame privacy as part of good teaching: an app that profiles children for advertising undermines the trust between school and family. She works with a curriculum lead to include privacy questions in the process for choosing resources. Translating privacy into educational language, she finds, gains more support than presenting it as a legal requirement imposed from outside. Elena keeps a dated copy of her working so that the result can be traced. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Teachers want tools that help children learn. Elena learns to frame privacy as part of good teaching: an app that profiles children for advertising undermines the trust between school and family. She works with a curriculum lead to include privacy questions in the process for choosing resources. Translating privacy into educational language, she finds, gains more support than presenting it as a legal requirement imposed from outside. Teachers respond to classroom examples such as a reading app. They want examples, not rules.
 
 ### 32.2 Working with safeguarding
 
-Safeguarding leads must share information to protect children, sometimes quickly. Elena learns that data protection law does not prevent sharing to protect a child at risk, and that fear of breaking privacy rules should never delay necessary safeguarding. She helps write guidance stating that safeguarding information may be shared when needed to protect a child, recorded afterwards, and limited to what is necessary. The guidance reduces hesitation without abandoning care. She checks the idea against a second example before relying on it. The point seems small, but it changes how owners act on the result.
+Safeguarding leads must share information to protect children, sometimes quickly. Elena learns that data protection law does not prevent sharing to protect a child at risk, and that fear of breaking privacy rules should never delay necessary safeguarding. She helps write guidance stating that safeguarding information may be shared when needed to protect a child, recorded afterwards, and limited to what is necessary. The guidance reduces hesitation without abandoning care. Staff now share concerns faster. Clear guidance on lawful sharing gives staff confidence to act.
 
 ### 32.3 Working with lawyers
 
-The trust's legal adviser interprets law; Elena explains systems. In a discussion about retention, the adviser explains statutory periods and Elena explains which systems can enforce them automatically. Together they produce a retention schedule that is both lawful and implementable. She learns that lawyers and technologists each have half of the answer, and that projects go wrong when either side assumes the other has handled their part. Brindle Valley's data protection officer later asks for a copy of this analysis. She marks the open questions in red so that they are not forgotten.
+The trust's legal adviser interprets law; Elena explains systems. In a discussion about retention, the adviser explains statutory periods and Elena explains which systems can enforce them automatically. Together they produce a retention schedule that is both lawful and implementable. She learns that lawyers and technologists each have half of the answer, and that projects go wrong when either side assumes the other has handled their part. The lawyer drafts terms while Elena checks the technical facts behind them. Both review drafts.
 
 ### 32.4 Resolving conflicts
 
-Conflicts arise. The curriculum lead wants learning analytics that track every click; Elena prefers coarse data. They agree on weekly summaries per pupil, kept for the school year, which give teachers what they need without detailed tracking. Dr. Asante notes that interdisciplinary work succeeds when each side states its real goal rather than its preferred solution, because goals can often be met in more than one way. Writing the reasoning down also helps her spot a weak step in her argument. Elena discusses the trade-off with a classmate who works in finance.
+Conflicts arise. The curriculum lead wants learning analytics that track every click; Elena prefers coarse data. They agree on weekly summaries per pupil, kept for the school year, which give teachers what they need without detailed tracking. Dr. Asante notes that interdisciplinary work succeeds when each side states its real goal rather than its preferred solution, because goals can often be met in more than one way. Stating goals first turned a stalemate about a homework app into a shared solution.
 
 ### Worked example
 
@@ -1723,19 +1723,19 @@ You will (1) analyse qualitative interview data; (2) combine qualitative and qua
 
 ### 33.1 Analysing interviews
 
-Elena conducts the ten teacher interviews planned in Chapter 18. She transcribes them, removes any names and codes recurring reasons for adopting apps without checks. Four themes emerge: time pressure, trust in popularity, lack of knowledge about the vetting process and belief that free apps are harmless. She counts how many teachers mention each theme and keeps illustrative quotations without identifying details. The class compares answers and finds that most differences come from unstated assumptions. Elena records this point in her course notebook so that later chapters can build on it.
+Elena conducts the ten teacher interviews planned in Chapter 18. She transcribes them, removes any names and codes recurring reasons for adopting apps without checks. Four themes emerge: time pressure, trust in popularity, lack of knowledge about the vetting process and belief that free apps are harmless. She counts how many teachers mention each theme and keeps illustrative quotations without identifying details. Time pressure is mentioned most often, usually when a teacher starts a new topic at short notice. Coding is checked twice.
 
 ### 33.2 Combining evidence
 
-Elena compares themes with the app register. Teachers who mentioned not knowing the process taught in schools with the most unapproved apps. The combination of qualitative and quantitative evidence strengthens her interpretation: lack of awareness, not resistance, drives most unchecked adoption. She notes that mixed methods allow each source to check the other and give a fuller picture than either alone. Dr. Asante asks her to explain the idea aloud to a classmate before moving on. She notes the assumption behind it so that a reviewer can challenge it later.
+Elena compares themes with the app register. Teachers who mentioned not knowing the process taught in schools with the most unapproved apps. The combination of qualitative and quantitative evidence strengthens her interpretation: lack of awareness, not resistance, drives most unchecked adoption. She notes that mixed methods allow each source to check the other and give a fuller picture than either alone. Interview themes match the register's gaps. The register shows many unvetted apps in exactly the subjects where teachers described the heaviest time pressure, so the two sources agree.
 
 ### 33.3 Recommendations
 
-Based on findings, Elena recommends a two-minute guide to vetting in staff induction, an approved app catalogue on the intranet and a fast-track review for requested apps within five school days. She links each recommendation to a theme. She also recommends explaining why free apps may cost children their data, addressing the fourth theme directly with examples from the vetting scores. The same reasoning will return when Brindle Valley's data protection officer reviews the work. She adds a short note to the shared course wiki for other students.
+Based on findings, Elena recommends a two-minute guide to vetting in staff induction, an approved app catalogue on the intranet and a fast-track review for requested apps within five school days. She links each recommendation to a theme. She also recommends explaining why free apps may cost children their data, addressing the fourth theme directly with examples from the vetting scores. Faster vetting comes first, with a target of five days for simple apps. Clear contact details for the vetting team follow.
 
 ### 33.4 Limits
 
-Elena reports limits: ten teachers, possible desire to please, and her placement role. Two interviews conducted by a colleague produced similar themes, which offers some reassurance. She avoids claiming the findings apply to all schools. Dr. Asante praises the clear link from evidence to recommendations and the honest limits, noting that small studies are useful when they inform specific decisions. This makes the privacy consequence visible to people outside the specialist team. Elena keeps a dated copy of her working so that the result can be traced.
+Elena reports limits: ten teachers, possible desire to please, and her placement role. Two interviews conducted by a colleague produced similar themes, which offers some reassurance. She avoids claiming the findings apply to all schools. Dr. Asante praises the clear link from evidence to recommendations and the honest limits, noting that small studies are useful when they inform specific decisions. Ten interviews from one trust cannot represent all teachers, but they explain this trust's patterns well enough to guide its next steps.
 
 ### Worked example
 
@@ -1771,19 +1771,19 @@ You will (1) compare privacy practice across two organisations; (2) use consiste
 
 ### 34.1 The comparison
 
-Elena compares Brindle Valley with the fictional Harrow Lane Academy, a single large secondary school. She uses consistent criteria: record of processing, app vetting, rights handling, retention and training. She gathers evidence through documents and interviews with each organisation's data protection lead. The comparison aims to learn what works, not to rank schools publicly, which both organisations agree to before participating. Her lecturer reminds the class that clear reasoning matters more than a polished answer. She checks the idea against a second example before relying on it.
+Elena compares Brindle Valley with the fictional Harrow Lane Academy, a single large secondary school. She uses consistent criteria: record of processing, app vetting, rights handling, retention and training. She gathers evidence through documents and interviews with each organisation's data protection lead. The comparison aims to learn what works, not to rank schools publicly, which both organisations agree to before participating. Both organisations share policies and evidence openly with each other. The partner is a similar-sized trust in another region, chosen because its data protection lead volunteered.
 
 ### 34.2 Findings
 
-Harrow Lane has a stronger retention process, with automatic deletion in its management system, while Brindle Valley has stronger app vetting after Elena's work. Harrow Lane answers rights requests faster because one office handles them, but its training is limited to an annual video. Each organisation has something to learn from the other. Elena presents the findings as a table with evidence for each rating. The point seems small, but it changes how owners act on the result. Brindle Valley's data protection officer later asks for a copy of this analysis.
+Harrow Lane has a stronger retention process, with automatic deletion in its management system, while Brindle Valley has stronger app vetting after Elena's work. Harrow Lane answers rights requests faster because one office handles them, but its training is limited to an annual video. Each organisation has something to learn from the other. Elena presents the findings as a table with evidence for each rating. The partner automates retention, while Brindle Valley trains staff more often. Each rating cites evidence. Both learn something.
 
 ### 34.3 Context
 
-Elena notes that context explains differences. A single secondary school has older pupils, more staff in one place and a dedicated administrator. A trust of primary schools has younger pupils and staff spread across sites. Practices must suit context. She avoids recommending that one organisation simply copy the other, instead identifying principles behind good practices, such as automation of retention, that can be adapted. She marks the open questions in red so that they are not forgotten. Writing the reasoning down also helps her spot a weak step in her argument.
+Elena notes that context explains differences. A single secondary school has older pupils, more staff in one place and a dedicated administrator. A trust of primary schools has younger pupils and staff spread across sites. Practices must suit context. She avoids recommending that one organisation simply copy the other, instead identifying principles behind good practices, such as automation of retention, that can be adapted. Sizes and budgets differ greatly. The partner trust has a full-time lead, while Brindle Valley shares one between many schools.
 
 ### 34.4 Sharing
 
-Both organisations receive the report and agree to share practices. Harrow Lane adopts Brindle Valley's vetting criteria; Brindle Valley explores automated retention. Elena reflects that comparison works best with consent and collaboration, and that respecting context avoids unfair judgements. Dr. Asante notes that sector learning is valuable because small organisations rarely have time to develop every practice themselves. Elena discusses the trade-off with a classmate who works in finance. The class compares answers and finds that most differences come from unstated assumptions. Elena records this point in her course notebook so that later chapters can build on it.
+Both organisations receive the report and agree to share practices. Harrow Lane adopts Brindle Valley's vetting criteria; Brindle Valley explores automated retention. Elena reflects that comparison works best with consent and collaboration, and that respecting context avoids unfair judgements. Dr. Asante notes that sector learning is valuable because small organisations rarely have time to develop every practice themselves. The findings are shared anonymously at a regional meeting of school data protection leads, where other trusts recognise the same patterns and ask for the comparison template.
 
 ### Worked example
 
@@ -1819,19 +1819,19 @@ You will (1) propose a capstone that improves practice; (2) define success crite
 
 ### 35.1 Proposal
 
-Elena proposes a capstone: a privacy-aware parent communication system for the trust, replacing email for sensitive reports. Reports would be shared through a secure portal with authentication, so that misdirected emails like the incident in Chapter 28 become impossible for those documents. She defines the scope: reports and letters about individual pupils, not general newsletters. She explains the problem with evidence from the incident log and the failure analysis. Dr. Asante asks her to explain the idea aloud to a classmate before moving on. She notes the assumption behind it so that a reviewer can challenge it later.
+Elena proposes a capstone: a privacy-aware parent communication system for the trust, replacing email for sensitive reports. Reports would be shared through a secure portal with authentication, so that misdirected emails like the incident in Chapter 28 become impossible for those documents. She defines the scope: reports and letters about individual pupils, not general newsletters. She explains the problem with evidence from the incident log and the failure analysis. A secure parent portal would replace emailed reports. Parents would log in to read reports, and staff would upload them once rather than emailing each family separately with attachments.
 
 ### 35.2 Criteria
 
-Success criteria: no sensitive reports sent by email after rollout; at least 85% of parents able to access the portal within a term; requests from parents without internet access handled through alternatives; and staff time not increased. She defines how each will be measured. She notes that the third criterion protects fairness, because some families have limited digital access and must not be excluded from information about their children. The same reasoning will return when Brindle Valley's data protection officer reviews the work. She adds a short note to the shared course wiki for other students.
+Success criteria: no sensitive reports sent by email after rollout; at least 85% of parents able to access the portal within a term; requests from parents without internet access handled through alternatives; and staff time not increased. She defines how each will be measured. She notes that the third criterion protects fairness, because some families have limited digital access and must not be excluded from information about their children. Four criteria are set before building. Each is measurable. Activation, errors, staff time and access equity are measured.
 
 ### 35.3 Risks
 
-Elena lists risks: parents unable to log in, a portal breach exposing many reports, staff reverting to email under time pressure, and vendor dependence. Controls include support for parents, strong security and monitoring, making the portal faster than email for staff, and contract terms. She plans a DPIA because the portal processes children's data at scale, following WP248 criteria. This makes the privacy consequence visible to people outside the specialist team. Elena keeps a dated copy of her working so that the result can be traced.
+Elena lists risks: parents unable to log in, a portal breach exposing many reports, staff reverting to email under time pressure, and vendor dependence. Controls include support for parents, strong security and monitoring, making the portal faster than email for staff, and contract terms. She plans a DPIA because the portal processes children's data at scale, following WP248 criteria. The DPIA records children's data at scale. Risks include wrong parent links, weak passwords, vendor access and exclusion of families without devices.
 
 ### 35.4 Ethics and approval
 
-The capstone involves real processes but Elena tests with synthetic data until the trust's data protection lead approves the DPIA. Parents are informed before rollout. Dr. Asante approves the proposal with the condition that Elena measures outcomes honestly, including if the portal fails some criteria. She notes the condition in her plan, recognising that a capstone is an experiment as well as a project. Her lecturer reminds the class that clear reasoning matters more than a polished answer. She checks the idea against a second example before relying on it.
+The capstone involves real processes but Elena tests with synthetic data until the trust's data protection lead approves the DPIA. Parents are informed before rollout. Dr. Asante approves the proposal with the condition that Elena measures outcomes honestly, including if the portal fails some criteria. She notes the condition in her plan, recognising that a capstone is an experiment as well as a project. The trust approves on condition of honest reporting. Governors review the plan before any real family data are used.
 
 ### Worked example
 
@@ -1867,19 +1867,19 @@ You will (1) support a community organisation's data protection; (2) adapt advic
 
 ### 36.1 Community placement
 
-Elena spends a term volunteering with a fictional parents' association that runs holiday clubs. It keeps children's names, ages, allergies and emergency contacts in a shared spreadsheet. Volunteers change often. Elena helps the association understand its duties as a controller, even as a small volunteer group, and adapts advice to its limited time and money. The point seems small, but it changes how owners act on the result. Brindle Valley's data protection officer later asks for a copy of this analysis. She marks the open questions in red so that they are not forgotten.
+Elena spends a term volunteering with a fictional parents' association that runs holiday clubs. It keeps children's names, ages, allergies and emergency contacts in a shared spreadsheet. Volunteers change often. Elena helps the association understand its duties as a controller, even as a small volunteer group, and adapts advice to its limited time and money. The association runs a weekend football club for local children, with volunteer coaches and a parent committee. Its records were kept on coaches' phones. Phones get lost.
 
 ### 36.2 Practical steps
 
-Elena recommends a few steps: a short form with only needed fields, a password-protected shared folder instead of email attachments, a list of who can access the spreadsheet, deletion of children's details at the end of each holiday unless parents ask otherwise, and a one-page privacy notice. She avoids recommending expensive tools. The association adopts the steps in a single meeting. Writing the reasoning down also helps her spot a weak step in her argument. Elena discusses the trade-off with a classmate who works in finance.
+Elena recommends a few steps: a short form with only needed fields, a password-protected shared folder instead of email attachments, a list of who can access the spreadsheet, deletion of children's details at the end of each holiday unless parents ask otherwise, and a one-page privacy notice. She avoids recommending expensive tools. The association adopts the steps in a single meeting. Cost is nearly zero. The steps include a shared password-protected spreadsheet instead of phones, deletion of old lists and consent for photographs.
 
 ### 36.3 Allergies and safety
 
-Allergy information is health data, but it is essential for children's safety. Elena explains that the association needs it and that keeping it accurate and available to volunteers on duty is part of data protection, not opposed to it. She helps design a printed allergy card kept securely during sessions and shredded afterwards. The example shows that protecting data includes making sure the right people can use it when needed. The class compares answers and finds that most differences come from unstated assumptions. Elena records this point in her course notebook so that later chapters can build on it.
+Allergy information is health data, but it is essential for children's safety. Elena explains that the association needs it and that keeping it accurate and available to volunteers on duty is part of data protection, not opposed to it. She helps design a printed allergy card kept securely during sessions and shredded afterwards. The example shows that protecting data includes making sure the right people can use it when needed. Coaches can see allergies quickly. Safety needs access. Coaches carry the card.
 
 ### 36.4 Reflection
 
-Elena reflects that small organisations need simple, proportionate advice. Complex frameworks would overwhelm volunteers. She learns to prioritise the few steps that reduce most risk. Dr. Asante notes that service to community groups builds understanding of how data protection works for people without specialists, and that proportionality is a principle of the law as well as of good advice. Dr. Asante asks her to explain the idea aloud to a classmate before moving on. She notes the assumption behind it so that a reviewer can challenge it later.
+Elena reflects that small organisations need simple, proportionate advice. Complex frameworks would overwhelm volunteers. She learns to prioritise the few steps that reduce most risk. Dr. Asante notes that service to community groups builds understanding of how data protection works for people without specialists, and that proportionality is a principle of the law as well as of good advice. Small groups need simple, proportionate advice that volunteers can follow without legal training. The committee thanked her warmly. Proportionate advice gets adopted.
 
 ### Worked example
 
@@ -1915,19 +1915,19 @@ You will (1) review evidence for privacy interventions; (2) judge strength of ev
 
 ### 37.1 The question
 
-In the evidence review seminar Elena asks: what evidence supports privacy training for staff in reducing incidents? She searches for studies and finds that many evaluate knowledge after training, fewer measure behaviour and very few measure incidents. She categorises studies by outcome measured. She learns that the outcome that matters most, fewer incidents, is the hardest to measure and the least studied. The same reasoning will return when Brindle Valley's data protection officer reviews the work. She adds a short note to the shared course wiki for other students.
+In the evidence review seminar Elena asks: what evidence supports privacy training for staff in reducing incidents? She searches for studies and finds that many evaluate knowledge after training, fewer measure behaviour and very few measure incidents. She categorises studies by outcome measured. She learns that the outcome that matters most, fewer incidents, is the hardest to measure and the least studied. Most studies measure knowledge only. Few studies measured incidents directly, and those that did often lacked comparison groups. Measurement is hard.
 
 ### 37.2 Strength of evidence
 
-Elena judges studies by design, sample size and outcome. A randomised study with incident outcomes would be strong; a survey of satisfaction with training is weak. Most of what she finds is in between. She applies the judgement to her trust's data: training completion rose while misdirected emails fell after technical changes, so training alone cannot be credited. She writes that the evidence supports training as part of a set of measures, not alone. This makes the privacy consequence visible to people outside the specialist team.
+Elena judges studies by design, sample size and outcome. A randomised study with incident outcomes would be strong; a survey of satisfaction with training is weak. Most of what she finds is in between. She applies the judgement to her trust's data: training completion rose while misdirected emails fell after technical changes, so training alone cannot be credited. She writes that the evidence supports training as part of a set of measures, not alone. Evidence remains weak. Confounders abound. Context matters greatly.
 
 ### 37.3 Balanced presentation
 
-Elena presents her review to the seminar, giving the strongest evidence first and stating uncertainties clearly. A classmate argues that training is legally expected under accountability regardless of evidence. Elena agrees that it may be expected but says evidence should shape how training is designed. The discussion shows the difference between justifying an activity and designing it well. Elena keeps a dated copy of her working so that the result can be traced. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Elena presents her review to the seminar, giving the strongest evidence first and stating uncertainties clearly. A classmate argues that training is legally expected under accountability regardless of evidence. Elena agrees that it may be expected but says evidence should shape how training is designed. The discussion shows the difference between justifying an activity and designing it well. She presents what the studies show, what they cannot show and what the trust should therefore measure itself. Training remains worthwhile. Design matters most.
 
 ### 37.4 Using the review
 
-Elena recommends that the trust measure incidents before and after future training changes and combine training with technical measures. She also suggests sharing anonymised results with other trusts to build evidence. Dr. Asante notes that practitioners can contribute evidence by measuring carefully, and that the field needs more such contributions to move beyond assumptions. She checks the idea against a second example before relying on it. The point seems small, but it changes how owners act on the result. Brindle Valley's data protection officer later asks for a copy of this analysis.
+Elena recommends that the trust measure incidents before and after future training changes and combine training with technical measures. She also suggests sharing anonymised results with other trusts to build evidence. Dr. Asante notes that practitioners can contribute evidence by measuring carefully, and that the field needs more such contributions to move beyond assumptions. She recommends that the trust records incidents before and after each training change, so that in two years it has evidence of its own rather than borrowed assumptions.
 
 ### Worked example
 
@@ -1963,19 +1963,19 @@ You will (1) implement the parent portal with privacy controls; (2) roll out in 
 
 ### 38.1 Building
 
-Elena works with the trust's IT manager and a vendor to configure the parent portal. Parents authenticate with an account linked to their child; reports are uploaded by staff and visible only to linked parents. Access is logged. Documents expire after the school year. She configures the system with synthetic families first and tests each role. The DPIA is approved before any real data are used. She marks the open questions in red so that they are not forgotten. Writing the reasoning down also helps her spot a weak step in her argument.
+Elena works with the trust's IT manager and a vendor to configure the parent portal. Parents authenticate with an account linked to their child; reports are uploaded by staff and visible only to linked parents. Access is logged. Documents expire after the school year. She configures the system with synthetic families first and tests each role. The DPIA is approved before any real data are used. Each role is tested first. Staff accounts use single sign-on. Roles mirror school staff structures.
 
 ### 38.2 Linking parents
 
-Linking parents to children is the hardest part. Errors could show one family's report to another. Elena designs a process: the school office verifies identity and sends a one-time code by post to the address on record. Separated parents are linked according to the legal information held by the school. She tests the process with synthetic cases including complex family situations, which reveal two edge cases she fixes. Elena discusses the trade-off with a classmate who works in finance. The class compares answers and finds that most differences come from unstated assumptions.
+Linking parents to children is the hardest part. Errors could show one family's report to another. Elena designs a process: the school office verifies identity and sends a one-time code by post to the address on record. Separated parents are linked according to the legal information held by the school. She tests the process with synthetic cases including complex family situations, which reveal two edge cases she fixes. Each link is checked against school records. Separated parents are handled carefully. Errors are rare.
 
 ### 38.3 Staged rollout
 
-Elena rolls out to two schools first. In the first month 78% of parents activate accounts. Staff report that uploading is faster than emailing. Three parents without internet receive printed copies. One linking error is caught before any report is shared because the parent notices an unfamiliar child name and reports it. Elena traces the error to a typing mistake and adds a confirmation step for office staff. Elena records this point in her course notebook so that later chapters can build on it. Dr. Asante asks her to explain the idea aloud to a classmate before moving on.
+Elena rolls out to two schools first. In the first month 78% of parents activate accounts. Staff report that uploading is faster than emailing. Three parents without internet receive printed copies. One linking error is caught before any report is shared because the parent notices an unfamiliar child name and reports it. Elena traces the error to a typing mistake and adds a confirmation step for office staff. One school starts first. Feedback shapes the next school. One error is caught early.
 
 ### 38.4 Expanding
 
-After fixes, the portal rolls out to all twelve schools. Elena monitors activation, support requests and any emails of reports still being sent. She finds a few staff still emailing reports and contacts them to understand why: they did not know how to upload large files. She arranges help. She learns that implementation is mostly about people and processes, with technology as the easier part. She notes the assumption behind it so that a reviewer can challenge it later. The same reasoning will return when Brindle Valley's data protection officer reviews the work.
+After fixes, the portal rolls out to all twelve schools. Elena monitors activation, support requests and any emails of reports still being sent. She finds a few staff still emailing reports and contacts them to understand why: they did not know how to upload large files. She arranges help. She learns that implementation is mostly about people and processes, with technology as the easier part. Staff guides help the most. Help desks run at drop-off times. Staff ask good questions.
 
 ### Worked example
 
@@ -2011,19 +2011,19 @@ You will (1) evaluate the capstone against criteria; (2) report unmet criteria h
 
 ### 39.1 Results
 
-Elena evaluates the portal after one term. Sensitive reports by email fall from about forty a month to three. Parent activation reaches 83%, below the 85% target. Families without internet receive printed reports. Staff time spent on sending reports decreases slightly. Three of four criteria are met. Elena reports the activation shortfall clearly rather than rounding it up. She adds a short note to the shared course wiki for other students. This makes the privacy consequence visible to people outside the specialist team. Elena keeps a dated copy of her working so that the result can be traced.
+Elena evaluates the portal after one term. Sensitive reports by email fall from about forty a month to three. Parent activation reaches 83%, below the 85% target. Families without internet receive printed reports. Staff time spent on sending reports decreases slightly. Three of four criteria are met. Elena reports the activation shortfall clearly rather than rounding it up. Parent activation reached only part of its target, while misdirected report emails dropped to zero in the participating schools during the evaluation term. Activation stays low.
 
 ### 39.2 Understanding the shortfall
 
-Elena investigates low activation. Most non-activated accounts belong to families who did not receive the posted code or speak languages other than English. She recommends translated instructions and an option to collect codes at school. She notes that the shortfall is an equity issue, not only a technical one, because families who cannot access the portal lose timely information about their children. Her lecturer reminds the class that clear reasoning matters more than a polished answer. She checks the idea against a second example before relying on it.
+Elena investigates low activation. Most non-activated accounts belong to families who did not receive the posted code or speak languages other than English. She recommends translated instructions and an option to collect codes at school. She notes that the shortfall is an equity issue, not only a technical one, because families who cannot access the portal lose timely information about their children. Families without home internet or with language barriers activated least, and the trust offers help in school offices. Support helps.
 
 ### 39.3 Remaining emails
 
-Three reports a month are still emailed. Elena finds they relate to external professionals, such as therapists, who are not on the portal. She recommends a secure sharing method for professionals. She notes that the original scope did not include them and that the evaluation identified a new need. Good evaluation, she learns, finds what the project did not anticipate. The point seems small, but it changes how owners act on the result. Brindle Valley's data protection officer later asks for a copy of this analysis.
+Three reports a month are still emailed. Elena finds they relate to external professionals, such as therapists, who are not on the portal. She recommends a secure sharing method for professionals. She notes that the original scope did not include them and that the evaluation identified a new need. Good evaluation, she learns, finds what the project did not anticipate. Some messages still go by email. Messages from clubs and trips still use email because the portal was scoped for reports only.
 
 ### 39.4 Next steps
 
-Elena recommends translated materials, school collection of codes, a professional sharing route and continued monitoring. She presents the evaluation to the trust's leadership, who approve the steps. Dr. Asante praises the honest reporting of the unmet criterion and its equity dimension, noting that evaluations which hide shortfalls deny organisations the chance to improve. She marks the open questions in red so that they are not forgotten. Writing the reasoning down also helps her spot a weak step in her argument. Elena discusses the trade-off with a classmate who works in finance.
+Elena recommends translated materials, school collection of codes, a professional sharing route and continued monitoring. She presents the evaluation to the trust's leadership, who approve the steps. Dr. Asante praises the honest reporting of the unmet criterion and its equity dimension, noting that evaluations which hide shortfalls deny organisations the chance to improve. The trust funds assisted activation sessions in each school and will measure activation again after one term, using the same criteria as the original evaluation. Results go to governors.
 
 ### Worked example
 
@@ -2059,19 +2059,19 @@ You will (1) write a bachelor's thesis on applied data protection; (2) present f
 
 ### 40.1 Thesis
 
-Elena writes her thesis on improving data protection in a primary school trust. It covers the app register, vetting, consent checking, disclosure control, failure analysis, the parent portal and its evaluation. Each chapter presents evidence and limits. She argues that most risks in the trust came from ordinary processes, such as email and apps, and that practical controls combined with honest measurement reduced them. The class compares answers and finds that most differences come from unstated assumptions. Elena records this point in her course notebook so that later chapters can build on it.
+Elena writes her thesis on improving data protection in a primary school trust. It covers the app register, vetting, consent checking, disclosure control, failure analysis, the parent portal and its evaluation. Each chapter presents evidence and limits. She argues that most risks in the trust came from ordinary processes, such as email and apps, and that practical controls combined with honest measurement reduced them. Her thesis follows one trust. It uses evidence from each placement chapter. Measurement anchors every claim made.
 
 ### 40.2 Presentation
 
-Elena presents to a panel of tutors and the trust's data protection lead. She uses figures from her labs: apps without agreements, vetting scores, suppressed cells, photographs held and portal results. Questions focus on sustainability: who will maintain the register and portal? She answers with the owners and calendar established in operations. The panel asks about children's voices, and she describes asking older pupils about photographs. Dr. Asante asks her to explain the idea aloud to a classmate before moving on. She notes the assumption behind it so that a reviewer can challenge it later.
+Elena presents to a panel of tutors and the trust's data protection lead. She uses figures from her labs: apps without agreements, vetting scores, suppressed cells, photographs held and portal results. Questions focus on sustainability: who will maintain the register and portal? She answers with the owners and calendar established in operations. The panel asks about children's voices, and she describes asking older pupils about photographs. Her slides use evidence tables. Each claim cites a lab result. Governors attend the session.
 
 ### 40.3 Assessment
 
-The panel commends the thesis for linking evidence to action and for honesty about shortfalls. They suggest that future work could involve pupils more directly in designing privacy information. Elena agrees and notes it as a recommendation. Dr. Asante notes that the thesis shows a full cycle from problem to evaluated improvement. The same reasoning will return when Brindle Valley's data protection officer reviews the work. She adds a short note to the shared course wiki for other students. This makes the privacy consequence visible to people outside the specialist team.
+The panel commends the thesis for linking evidence to action and for honesty about shortfalls. They suggest that future work could involve pupils more directly in designing privacy information. Elena agrees and notes it as a recommendation. Dr. Asante notes that the thesis shows a full cycle from problem to evaluated improvement. The panel suggests involving pupils earlier in design decisions, such as asking them how the portal should present their own reports and photographs. She accepts this. The panel passes her thesis.
 
 ### 40.4 Reflection
 
-Elena reflects on four years. She learned that privacy protects real people, here children who cannot easily protect themselves. She learned that law, technology and people must work together. She learned to measure and report honestly. She plans to work in data protection for schools and to keep studying children's rights. The trust offers her a part-time role as a privacy officer, which she accepts. Elena keeps a dated copy of her working so that the result can be traced. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Elena reflects on four years. She learned that privacy protects real people, here children who cannot easily protect themselves. She learned that law, technology and people must work together. She learned to measure and report honestly. She plans to work in data protection for schools and to keep studying children's rights. The trust offers her a part-time role as a privacy officer, which she accepts. She remains grateful to Dr. Asante. She thanks the teachers. She starts the role in September.
 
 ### Worked example
 

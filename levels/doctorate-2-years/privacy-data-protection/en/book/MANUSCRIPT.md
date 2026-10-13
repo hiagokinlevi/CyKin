@@ -257,7 +257,7 @@ Before trusting her own code, Ines replicates a textbook property described by D
 
 ### 4.2 The pilot release
 
-The pilot uses 100 synthetic origin-destination counts between zero and 400 journeys a day. For each epsilon in the grid 0.1, 0.5, 1.0 and 2.0, the lab adds Laplace noise twenty times to every count. The mean absolute error is 9.91 at epsilon 0.1, 1.98 at 0.5, 0.98 at 1.0 and 0.51 at 2.0, matching one over epsilon closely. The replication passes. Ines notes that these absolute errors look tiny next to counts of several hundred journeys, which is exactly why the next step examines small cells separately rather than trusting an average. Ines records this point in her course notebook so that later chapters can build on it.
+The pilot uses 100 synthetic origin-destination counts between zero and 400 journeys a day. For each epsilon in the grid 0.1, 0.5, 1.0 and 2.0, the lab adds Laplace noise twenty times to every count. The mean absolute error is 9.91 at epsilon 0.1, 1.98 at 0.5, 0.98 at 1.0 and 0.51 at 2.0, matching one over epsilon closely. The replication passes. Ines notes that these absolute errors look tiny next to counts of several hundred journeys, which is exactly why the next step examines small cells separately rather than trusting an average. Small cells get separate checks.
 
 ### 4.3 Small cells
 
