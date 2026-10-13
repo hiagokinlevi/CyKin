@@ -64,10 +64,10 @@ Toda afirmación factual sobre una ley, un estándar, un protocolo, un incidente
 11. [Infraestructura crítica y seguridad sectorial: activos y contexto](#ch-11): inventario, titularidad, dependencias y estado del soporte.
 12. [Infraestructura crítica y seguridad sectorial: flujos de datos](#ch-12): registros de flujos, clasificación, conservación y verificación.
 13. [Infraestructura crítica y seguridad sectorial: escenarios de riesgo](#ch-13): redactar escenarios y ordenarlos por su consecuencia.
-14. [Infraestructura crítica y seguridad sectorial: métodos I](../../en/book/MANUSCRIPT.md#ch-14): líneas base, bastionado y control de cambios como métodos diarios.
-15. [Infraestructura crítica y seguridad sectorial: laboratorio guiado](../../en/book/MANUSCRIPT.md#ch-15): construir el retransmisor autenticado con protección frente a la reproducción.
-16. [Infraestructura crítica y seguridad sectorial: métodos II](../../en/book/MANUSCRIPT.md#ch-16): gestión de vulnerabilidades y parches, copias de seguridad y recuperación.
-17. [Infraestructura crítica y seguridad sectorial: herramientas](../../en/book/MANUSCRIPT.md#ch-17): registro, hora, normalización y construcción de una herramienta en la que se pueda confiar.
+14. [Infraestructura crítica y seguridad sectorial: métodos I](#ch-14): líneas base, bastionado y control de cambios como métodos diarios.
+15. [Infraestructura crítica y seguridad sectorial: laboratorio guiado](#ch-15): construir el retransmisor autenticado con protección frente a la reproducción.
+16. [Infraestructura crítica y seguridad sectorial: métodos II](#ch-16): gestión de vulnerabilidades y parches, copias de seguridad y recuperación.
+17. [Infraestructura crítica y seguridad sectorial: herramientas](#ch-17): registro, hora, normalización y construcción de una herramienta en la que se pueda confiar.
 18. [Infraestructura crítica y seguridad sectorial: controles](../../en/book/MANUSCRIPT.md#ch-18): elegir, implantar y documentar controles con evidencia.
 19. [Infraestructura crítica y seguridad sectorial: monitorización](../../en/book/MANUSCRIPT.md#ch-19): reglas de detección, la ausencia como señal y la calidad de las alertas.
 20. [Infraestructura crítica y seguridad sectorial: resolución de problemas](../../en/book/MANUSCRIPT.md#ch-20): un método para fallos que pueden ser ataques o no.
@@ -1550,7 +1550,435 @@ Redacte los riesgos como escenarios concretos (causa, camino, activo, consecuenc
 <!-- cyberabc:chapter-navigation:start ch-13 -->
 ### Siga estudiando — capítulo 13 de 30
 
-[← Capítulo 12](#ch-12) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 14 →](../../en/book/MANUSCRIPT.md#ch-14)
+[← Capítulo 12](#ch-12) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 14 →](#ch-14)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Infraestructura crítica y seguridad sectorial: métodos I
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted debería ser capaz de:
+
+- redactar una **línea base de configuración** para una clase de equipo y mantenerla bajo control de versiones;
+- aplicar un **control de cambios** proporcionado: cambios estándar, normales y de emergencia;
+- planificar un cambio en un entorno operativo con comprobaciones previas, una ventana, una reversión y un paso de verificación;
+- vincular cada cambio con evidencia de que se hizo tal como se aprobó.
+
+Los capítulos 1 a 13 describieron sistemas, datos y riesgos. Este capítulo y el capítulo 16 tratan de *métodos*: las rutinas que un tecnólogo ejecuta cada semana. Métodos I cubre las líneas base y los cambios, porque casi todos los demás controles dependen de saber cómo debería ser un sistema y de controlar cómo cambia.
+
+### 14.1 Líneas base de configuración
+
+Una **línea base** es la configuración aprobada para una clase de sistema: paquetes instalados y sus versiones, servicios habilitados y sus direcciones de escucha, cuentas y grupos, permisos de archivos, ajustes de registro y de hora, y parámetros de seguridad. La guía del NIST sobre la gestión de la configuración orientada a la seguridad describe cómo establecer líneas base, controlar sus cambios y vigilar las desviaciones ([NIST SP 800-128](https://csrc.nist.gov/pubs/sp/800/128/upd1/final)). Escriba la línea base como un archivo bajo control de versiones, no como un documento en la carpeta de alguien: el capítulo 22 la usa para detectar la deriva automáticamente.
+
+### 14.2 Un control de cambios que la gente use
+
+El control de cambios existe para impedir que cambios sin revisar causen interrupciones o debiliten la seguridad. Los procesos demasiado pesados se eluden; así aparecen los servicios de depuración a la escucha y los scripts auxiliares sin explicación (capítulo 6). Un esquema proporcionado tiene tres tipos de cambio:
+
+- **Cambios estándar**: preaprobados, de bajo riesgo y repetibles (añadir una estación a la lista de permitidos a partir de una solicitud aprobada). Siguen un procedimiento escrito y se registran.
+- **Cambios normales**: se revisan y aprueban antes de implantarse, con un plan y una reversión.
+- **Cambios de emergencia**: se hacen con rapidez para restablecer el servicio o contener un incidente, los aprueba una autoridad de guardia designada y se revisan después.
+
+En TO, la aprobación de cualquier cambio que pueda afectar al proceso físico incluye al responsable de operaciones, no solo a TI.
+
+### 14.3 Planificar un cambio en un entorno operativo
+
+Un plan de cambio para LANTERN indica: qué cambiará y por qué; los sistemas y clientes afectados; las comprobaciones previas (copias de seguridad hechas, reversión preparada, operaciones informadas); la **ventana** (acordada con operaciones: no durante el pico de demanda de la mañana ni durante la ejecución programada de un informe); la implantación paso a paso; la **verificación** (cómo sabrá que funcionó: comprobaciones concretas, no «probar el servicio»); los criterios y pasos de **reversión**; y a quién llamar. El capítulo 27 amplía esto a los despliegues con canarios.
+
+Mover el servicio SSH a la escucha de RLY-02 es un caso típico: la reversión no debe depender de SSH.
+
+### 14.4 Evidencia del cambio
+
+Después de un cambio, tres cosas deberían coincidir: el registro del cambio (lo que se aprobó), la línea base bajo control de versiones (lo que ahora debería ser cierto) y el propio sistema (lo que es cierto, verificado con la comprobación de integridad del capítulo 6 y la comprobación de deriva del capítulo 22). Cuando no coinciden, o el cambio no se hizo tal como se aprobó o el registro es erróneo. Ambas cosas son hallazgos. Después de CHG-118, las tres coincidían para `allow.list` y no coincidían para el servicio de depuración a la escucha.
+
+Para el servicio de depuración no existía ningún registro de cambio, así que la propia discrepancia era el hallazgo, y condujo a la investigación del capítulo 6.
+
+### 14.5 Ejemplo resuelto: añadir PS-11 (sintético)
+
+Operaciones de Agua pone en servicio una estación nueva, PS-11. Añadirla a LANTERN es un cambio estándar con un procedimiento escrito: (1) recibir la solicitud de puesta en servicio con el ID de la estación, su dirección y su responsable; (2) confirmar que el conducto ya cubre la subred de la estación; (3) añadir `PS-11` a la lista de permitidos bajo control de versiones, con la revisión de un segundo tecnólogo; (4) desplegar la lista de permitidos en los retransmisores; (5) verificar: los primeros mensajes de PS-11 aparecen como `accept` en el registro del retransmisor; la comprobación de integridad muestra que `allow.list` cambió con CHG-118 y nada más; (6) actualizar el inventario y el registro de flujos de datos. En el laboratorio del capítulo 6, esta fue la única diferencia *aprobada*. Las otras tres diferencias no tenían registro de cambio, y así fue como el método las reveló.
+
+### 14.6 Actividad práctica: redacte un plan de cambio normal
+
+Redacte un plan de cambio completo para: «Mover el servicio SSH a la escucha de RLY-02 de todas las interfaces solo a la interfaz de gestión». Incluya todos los elementos del capítulo 14 («Planificar un cambio en un entorno operativo»). Preste atención al riesgo de quedarse fuera: ¿cómo llegará al equipo si el cambio falla? Para el cambio de RLY-02, un plan seguro mantiene una segunda vía de entrada: el acceso de consola a través del hipervisor, o una sesión abierta en la interfaz de gestión, probada antes de mover el servicio. La verificación es concreta: SSH responde en la dirección de gestión, no responde en la dirección orientada a las estaciones, y la comprobación de deriva muestra que solo cambió la línea prevista. Elija la ventana con operaciones de Agua, evitando el pico de demanda de la mañana y las ejecuciones semanales del informe los días 6 y 7.
+
+### 14.7 Errores frecuentes y límites
+
+- Líneas base guardadas como documentos que nadie compara con los sistemas.
+- Procesos de cambio tan pesados que la gente los elude.
+- Ventanas de cambio elegidas por comodidad de TI y no de operaciones.
+- «Verificar que el servicio funciona» como paso de verificación.
+- Planes de reversión que nunca se probaron.
+- Cambios de emergencia que nunca se revisan después y acaban siendo permanentes.
+
+El control de cambios controla los cambios *autorizados*. No detecta los cambios no autorizados; esa es la tarea de las comprobaciones de integridad y de deriva.
+
+La fusión de NTP del capítulo 25 es el cuarto error en la práctica: su criterio de aceptación decía solo «actualizar los servidores NTP».
+
+### Ejercicios — capítulo 14
+
+**EX040 — Clasifique cambios.** *Objetivo:* aplicar un control de cambios proporcionado. *Entradas:* (a) añadir una estación a la lista de permitidos; (b) actualizar el software del retransmisor a una nueva versión menor; (c) deshabilitar a las 02:00 una cuenta de proveedor comprometida; (d) cambiar la conservación del historiador de 730 a 365 días; (e) rotar la clave HMAC del retransmisor. *Restricciones:* estándar, normal o de emergencia para cada uno, con un motivo. *Pasos:* clasifique e indique quién aprueba. *Evidencia esperada:* tabla. *Rúbrica:* 3 = (a) estándar, (b) normal, (c) de emergencia con aprobación de guardia y revisión, (d) normal con aprobación del responsable de los datos porque afecta a los registros y a las obligaciones, (e) normal (o estándar una vez que exista un procedimiento probado) coordinado con las estaciones; aprobadores razonables; 2 = uno mal clasificado; 1 = todos normales; 0 = nada.
+
+**EX041 — Pasos de verificación.** *Objetivo:* redactar una verificación concreta. *Entradas:* el cambio «el retransmisor reenvía a HIST-01 sobre TLS 1.3 en lugar de TLS 1.2». *Restricciones:* al menos cuatro comprobaciones; cada una observable. *Pasos:* enumere las comprobaciones y la evidencia que produce cada una. *Evidencia esperada:* lista. *Rúbrica:* 3 = por ejemplo, el registro de conexiones muestra TLS 1.3 negociado, el historiador recibe lecturas de todas las estaciones con la latencia normal, no aumentan los errores ni los rechazos del retransmisor, la validación de certificados sigue aplicándose y la comprobación de integridad muestra que solo cambió el archivo aprobado; 2 = tres; 1 = «probarlo»; 0 = nada.
+
+**EX042 — Revise un cambio de emergencia.** *Objetivo:* cerrar el ciclo del cambio de emergencia. *Entradas:* durante una interrupción a las 03:00, un ingeniero abrió tcp/22 desde la zona corporativa directamente a todos los retransmisores «temporalmente». *Restricciones:* revisión posterior al cambio en un día laborable. *Pasos:* (1) enumere las preguntas que plantea la revisión; (2) decida qué ocurre con la regla; (3) indique qué cambio de proceso evita que se repita. *Evidencia esperada:* nota de revisión. *Rúbrica:* 3 = pregunta por qué falló la ruta del servidor de salto, quién aprobó y a qué se accedió durante la ventana (registros), elimina o restringe la regla con un registro de cambio y corrige la resiliencia del servidor de salto o el diseño del acceso de emergencia; 2 = regla eliminada pero sin causa raíz; 1 = regla mantenida; 0 = nada.
+
+### Síntesis del capítulo
+
+Escriba las configuraciones aprobadas como líneas base bajo control de versiones. Aplique el control de cambios de forma proporcionada (estándar, normal y de emergencia), con operaciones aprobando los cambios que puedan afectar al proceso físico. Planifique los cambios con comprobaciones previas, una ventana acordada, una verificación concreta y una reversión probada. Después de cada cambio, el registro, la línea base y el sistema deberían coincidir; cuando no coinciden, tiene usted un hallazgo.
+
+<!-- cyberabc:chapter-navigation:start ch-14 -->
+### Siga estudiando — capítulo 14 de 30
+
+[← Capítulo 13](#ch-13) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 15 →](#ch-15)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Infraestructura crítica y seguridad sectorial: laboratorio guiado
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted debería ser capaz de:
+
+- explicar qué demuestra un **código de autenticación de mensajes** (MAC) y qué no demuestra;
+- implementar el sellado y la verificación con HMAC-SHA-256 mediante una comparación en tiempo constante;
+- añadir **frescura** (ventana temporal) y **orden** (números de secuencia) para frustrar la reproducción;
+- probar la construcción con mensajes deliberadamente erróneos y registrar los resultados como evidencia.
+
+Esta es la primera construcción guiada del componente central de LANTERN. El validador del capítulo 3 comprueba que los mensajes estén bien formados y sean plausibles; no puede saber si un mensaje procede realmente de una estación. Aquí se añade la autenticación. El diseño es deliberadamente sencillo para que cada línea pueda entenderse; un diseño de producción añadiría la gestión de claves y la seguridad del transporte (véase «Lo que esta construcción no hace», más abajo).
+
+### 15.1 Integridad y autenticidad
+
+Un **hash** como SHA-256 detecta los cambios accidentales, pero cualquiera puede calcularlo, de modo que un atacante que modifica un mensaje también puede recalcular su hash. Un **MAC** se calcula con una clave secreta; solo quienes poseen la clave pueden producir un MAC válido. HMAC, definido en el [RFC 2104](https://www.rfc-editor.org/rfc/rfc2104), construye un MAC a partir de una función hash. Si un mensaje lleva un HMAC válido con la clave de una estación, el receptor sabe que lo produjo un poseedor de la clave y que no se modificó en tránsito.
+
+Un MAC **no** proporciona confidencialidad (el mensaje sigue siendo legible), no demuestra que el *sensor* de la estación sea correcto y no impide que un atacante reenvíe un mensaje capturado anteriormente: una **reproducción**.
+
+### 15.2 Forma canónica
+
+Un MAC se calcula sobre bytes. Si el emisor y el receptor serializan el mismo mensaje de forma distinta (otro orden de claves, otros espacios), la verificación falla. Los mensajes de LANTERN se serializan como JSON con las claves ordenadas y sin espacios, y el MAC se calcula exactamente sobre esos bytes. Defina siempre la forma canónica de manera explícita. Un retransmisor que vuelve a serializar el JSON analizado antes de comprobar el MAC puede aceptar bytes que la estación nunca firmó.
+
+El Lab 15 serializa con las claves ordenadas y sin espacios en ambos lados, de modo que la pasarela de la estación y el retransmisor calculan el MAC sobre bytes idénticos; una actualización del firmware de la pasarela que cambiara los espacios se manifestaría de inmediato como una ráfaga de fallos de MAC de esa estación.
+
+### 15.3 Comparación en tiempo constante
+
+Comparar el MAC recibido con el esperado mediante una comparación de cadenas ordinaria puede revelar, a través del tiempo de respuesta, cuántos caracteres iniciales coincidieron. La función `hmac.compare_digest` de Python compara en un tiempo que no depende de dónde difieren las entradas ([documentación de hmac de Python](https://docs.python.org/3/library/hmac.html)). Úsela en todas las comparaciones de MAC. Tanto el Lab 15 como el Lab 29 usan `hmac.compare_digest`, nunca `==`, y el retransmisor que rechazó 40 de 40 pruebas de fallo de MAC en el capítulo 23 debe hacer lo mismo.
+
+Una comparación ordinaria permitiría a un atacante situado en la red de las estaciones averiguar, carácter a carácter, un MAC válido para una lectura de cloro falsificada.
+
+### 15.4 Frescura y orden
+
+Dos comprobaciones baratas frustran la reproducción. Una **ventana temporal** rechaza los mensajes cuya marca de tiempo se aleja del reloj del receptor más de un número fijado de segundos (aquí, 120 s); depende de que ambos relojes sean correctos (capítulo 17). Un **número de secuencia** por estación, que aumenta con cada mensaje, permite al receptor rechazar cualquier mensaje cuyo número no sea mayor que el último aceptado. Ambos valores van dentro del cuerpo protegido por el MAC, así que un atacante no puede cambiarlos sin invalidar el MAC.
+
+El error de reloj de 422 segundos de PS-09 muestra el coste: sus mensajes legítimos no superarían la ventana de 120 s.
+
+### 15.5 Construcción guiada
+
+El laboratorio siguiente implementa `seal` (el lado de la estación) y `Relay.receive` (el lado del retransmisor) y ejecuta siete pruebas: dos mensajes correctos, una reproducción, un valor manipulado, un mensaje sellado con la clave equivocada, un mensaje caducado y un mensaje truncado. **Lab 15** (guárdelo como `lab15.py` y ejecútelo con `python3 lab15.py`):
+
+```python
+# Lab 15 - guided build: an authenticated telemetry relay message with replay protection (offline, stdlib only)
+# Synthetic key and messages. A real deployment keeps the key in a protected store, never in source code.
+import hmac, hashlib, json
+KEY = bytes.fromhex("6c616e7465726e2d6c61622d6b65792d6e6f742d7265616c2d30303031")  # "lantern-lab-key-not-real-0001"
+WINDOW = 120  # seconds
+def seal(station, tag, value, ts, seq, key=KEY):
+    body = json.dumps({"st": station, "tag": tag, "v": value, "ts": ts, "seq": seq}, sort_keys=True, separators=(",", ":"))
+    mac = hmac.new(key, body.encode(), hashlib.sha256).hexdigest()
+    return body + "." + mac
+class Relay:
+    def __init__(self, key): self.key, self.last = key, {}
+    def receive(self, wire, now):
+        try:
+            body, mac = wire.rsplit(".", 1)
+        except ValueError:
+            return "reject: malformed"
+        good = hmac.new(self.key, body.encode(), hashlib.sha256).hexdigest()
+        if not hmac.compare_digest(good, mac):
+            return "reject: bad MAC"
+        m = json.loads(body)
+        if abs(now - m["ts"]) > WINDOW:
+            return "reject: outside time window"
+        if m["seq"] <= self.last.get(m["st"], -1):
+            return "reject: replay"
+        self.last[m["st"]] = m["seq"]
+        return f"accept {m['st']} {m['tag']}={m['v']}"
+r = Relay(KEY)
+now = 1_790_000_000
+a = seal("PS-04", "LEVEL_M", 3.42, now - 5, 1)
+b = seal("PS-04", "LEVEL_M", 3.44, now - 1, 2)
+tampered = a.replace('"v":3.42', '"v":9.42')
+forged = seal("PS-04", "LEVEL_M", 1.00, now, 3, key=b"guessed-key")
+old = seal("PS-07", "CL2_MGL", 0.6, now - 900, 1)
+tests = [("first", a), ("second", b), ("replay of first", a), ("tampered value", tampered),
+         ("wrong key", forged), ("stale", old), ("truncated", a[:20])]
+for name, wire in tests:
+    print(f"{name:<16} {r.receive(wire, now)}")
+print("MAC length (hex chars):", len(a.rsplit('.', 1)[1]))
+```
+
+Salida esperada (Python 3.13.5):
+
+```text
+first            accept PS-04 LEVEL_M=3.42
+second           accept PS-04 LEVEL_M=3.44
+replay of first  reject: replay
+tampered value   reject: bad MAC
+wrong key        reject: bad MAC
+stale            reject: outside time window
+truncated        reject: malformed
+MAC length (hex chars): 64
+```
+
+Trabájelo en este orden: (1) lea `seal` e identifique la forma canónica; (2) lea `receive` y enumere las comprobaciones en orden; (3) prediga el resultado de cada prueba; (4) ejecútelo; (5) para cada rechazo, nombre la comprobación que lo detectó. Después cambie el orden de las comprobaciones para que la comprobación de reproducción *y su actualización de estado* se ejecuten antes que la comprobación del MAC, y piense en lo que podría hacer ahora un atacante: enviar mensajes sin autenticar con números de secuencia altos y bloquear una estación. El orden importa: primero autentique y después confíe en el contenido.
+
+### 15.6 Lo que esta construcción no hace
+
+La clave del laboratorio aparece en el código fuente porque es falsa; en producción, la clave reside en un almacén protegido, legible solo por la cuenta de servicio del retransmisor, y cada estación tiene su propia clave para que una clave robada no permita a un atacante suplantar a todas las estaciones. Las claves necesitan procedimientos de generación, distribución, rotación y revocación (capítulo 18). Aquí el transporte no está cifrado; en producción, el tramo entre el retransmisor y el historiador usa TLS 1.3 ([RFC 8446](https://www.rfc-editor.org/rfc/rfc8446)), y que el tramo de las estaciones pueda usar TLS depende de lo que admitan los dispositivos de campo. Muchos dispositivos de campo antiguos no pueden calcular HMAC en absoluto; en ese caso, el MAC lo aplica una pequeña pasarela en la estación, y el enlace entre la pasarela y el dispositivo debe protegerse físicamente.
+
+### 15.7 Errores frecuentes y límites
+
+- Usar un hash simple y llamarlo autenticación.
+- Calcular el MAC sobre un objeto vuelto a serializar en lugar de sobre los bytes recibidos.
+- Comparar los MAC con `==`.
+- Actualizar el estado de reproducción antes de la autenticación, o antes de que se hayan superado todas las demás comprobaciones.
+- Una sola clave compartida por todas las estaciones.
+- Claves en el código fuente, en repositorios de configuración o en incidencias.
+- Suponer que un MAC válido significa una lectura correcta.
+
+Cada uno tiene una consecuencia en LANTERN. Un hash simple permite a cualquiera que alcance el retransmisor calcular un resumen de aspecto válido. Una sola clave para todas las estaciones significa que una clave extraída de la pasarela de PS-07, donde el archivo de la clave estaba en una tarjeta extraíble, falsifica mensajes de las catorce estaciones. Y un MAC válido en una lectura de cloro de 9,80 mg/L solo demuestra que la envió PS-07, no que el analizador sea correcto.
+
+### Ejercicios — capítulo 15
+
+**EX043 — Orden de las comprobaciones.** *Objetivo:* ver por qué la autenticación va primero. *Entradas:* el Lab 15. *Restricciones:* modifique una copia. *Pasos:* (1) mueva la comprobación de reproducción antes de la comprobación del MAC, dejando la actualización de estado donde está; (2) construya un mensaje sin autenticar para PS-04 con `seq` 1000000 y un MAC erróneo; (3) envíelo y después un mensaje legítimo con `seq` 3; (4) informe de lo que ocurre y de por qué el orden original es más seguro. *Evidencia esperada:* código, salida y explicación. *Rúbrica:* 3 = muestra que, con el estado actualizado antes de la autenticación, un atacante puede bloquear los mensajes futuros de una estación (o, si la actualización de estado sigue después de la comprobación del MAC, muestra que no hay bloqueo y explica por qué la posición de la actualización es la verdadera salvaguarda); la explicación enlaza con «autenticar y después confiar»; 2 = observación sin explicación; 1 = no ejecutado; 0 = nada.
+
+**EX044 — Claves por estación.** *Objetivo:* ampliar el diseño. *Entradas:* el Lab 15. *Restricciones:* solo la biblioteca estándar. *Pasos:* (1) dé a cada estación su propia clave en un diccionario; (2) busque la clave por el ID de estación, pero tenga en cuenta que el ID de estación está dentro del cuerpo; (3) explique cómo puede leer con seguridad el ID de estación antes de verificar el MAC y qué no debe hacer con él antes de la verificación. *Evidencia esperada:* código y explicación. *Rúbrica:* 3 = analiza el cuerpo solo para seleccionar una clave, verifica el MAC con esa clave antes de usar cualquier otro campo o de actualizar el estado y rechaza las estaciones desconocidas; explica que el ID sin verificar es solo un selector de clave; 2 = funciona, explicación escasa; 1 = usa una sola clave; 0 = nada.
+
+**EX045 — Tamaño de la ventana.** *Objetivo:* elegir la ventana de frescura. *Entradas:* los relojes de las estaciones se mantienen dentro de ±2 s mediante NTP desde el retransmisor; el operador de telecomunicaciones retrasa a veces los mensajes hasta 40 s; tras una caída del operador, las estaciones suben una acumulación de 24 horas. *Restricciones:* un único diseño que resuelva los tres casos. *Pasos:* (1) elija una ventana para los mensajes en vivo; (2) explique cómo deben tratarse las subidas de la acumulación sin abrir una brecha de reproducción. *Evidencia esperada:* media página. *Rúbrica:* 3 = ventana en vivo de unos 60–120 s razonada; acumulación aceptada por una vía separada y explícita (por ejemplo, un modo de acumulación marcado que siga exigiendo un MAC válido y números de secuencia estrictamente crecientes, con una antigüedad acotada y una alerta cuando se use); 2 = ventana correcta, acumulación insegura o vaga; 1 = ventana muy grande para todo; 0 = nada.
+
+### Síntesis del capítulo
+
+Autentique los mensajes con HMAC sobre una forma canónica definida, compare los MAC en tiempo constante y frustre la reproducción con una ventana temporal y números de secuencia por estación incluidos en el cuerpo autenticado. Primero autentique; después confíe en el contenido y regístrelo. Un MAC demuestra el origen y la integridad, no la confidencialidad ni la corrección del sensor. Las claves necesitan su propio ciclo de vida, y cada estación debería tener la suya.
+
+<!-- cyberabc:chapter-navigation:start ch-15 -->
+### Siga estudiando — capítulo 15 de 30
+
+[← Capítulo 14](#ch-14) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 16 →](#ch-16)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Infraestructura crítica y seguridad sectorial: métodos II
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted debería ser capaz de:
+
+- aplicar una rutina de gestión de vulnerabilidades: recepción, aplicabilidad, priorización, tratamiento y verificación;
+- priorizar las correcciones a partir de la evidencia de explotación, la exposición y la consecuencia para el activo, y no solo de la puntuación de gravedad;
+- planificar la aplicación de parches cuando el dispositivo no puede parchearse con rapidez, mediante controles compensatorios con fecha de fin;
+- diseñar, ejecutar y registrar copias de seguridad y **pruebas de restauración** que demuestren la recuperación dentro de un tiempo objetivo.
+
+Métodos I (capítulo 14) controlaba los cambios. Métodos II cubre las dos rutinas que con más frecuencia deciden lo malo que llega a ser un mal día: ocuparse de las vulnerabilidades antes de que se exploten y recuperarse cuando, aun así, algo se pierde.
+
+### 16.1 Recepción de vulnerabilidades y aplicabilidad
+
+Los avisos llegan de fabricantes, agencias nacionales y listas de correo de seguridad. La primera pregunta es la **aplicabilidad**: ¿usamos el producto y la versión afectados, en una configuración en la que el fallo importa? Esto depende de que el inventario (capítulo 11) sea exacto en las versiones. Registre la decisión («aplicable», «no aplicable (motivo)», «desconocido (acción para averiguarlo)») para cada aviso que afecte a un producto del inventario. «Desconocido» es habitual en TO y debe tener un responsable. Para el aviso del Arlen 300, el inventario contenía ambas versiones: PS04-PLC con la 4.2 y PS07-PLC con la 3.9.
+
+### 16.2 Priorización
+
+Una puntuación de gravedad describe el fallo en general; su prioridad depende de su situación. Tres preguntas la afinan. **¿Se está explotando?** El catálogo de vulnerabilidades explotadas conocidas de la CISA enumera los fallos con evidencia de explotación activa ([CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog)); esas entradas pasan al frente. **¿Está expuesto?** Un fallo alcanzable desde internet o desde la zona corporativa es más urgente que uno alcanzable solo desde dentro de un conducto bien controlado. **¿Cuál es la consecuencia?** Un fallo en un activo de criticidad 1 de la zona de estaciones importa más que uno en un quiosco de las cocheras. Las guías de gestión de parches lo tratan como una planificación basada en el riesgo, con planes de mantenimiento definidos para los distintos grupos de activos ([NIST SP 800-40 Rev. 4](https://csrc.nist.gov/pubs/sp/800/40/r4/final)).
+
+### 16.3 Tratamiento cuando no se puede parchear con rapidez
+
+Los controladores de las estaciones pueden necesitar firmware certificado por el fabricante, una visita a la instalación, una ventana de interrupción y una nueva prueba del proceso. El tratamiento tiene entonces dos partes: **controles compensatorios ya** (restringir más el conducto, deshabilitar la función vulnerable si no se usa, añadir monitorización de los intentos de explotación, intensificar la revisión de la configuración del dispositivo) y **un plan con fecha** para la corrección. Registre ambas cosas, y también al responsable del riesgo residual (capítulo 13). Recuerde el capítulo 9: estos elementos abiertos durante mucho tiempo deben aparecer en sus medidas de parcheo.
+
+PS04-PLC y PS07-PLC son el caso de Fallowmere: deshabilitar la interfaz web que no se usa, cerrar la ruta corporativa→PS-04, alertar sobre el puerto web y, después, el firmware 4.3 en las próximas visitas a las instalaciones.
+
+### 16.4 Verificación
+
+Una corrección está completa cuando se verifica en el dispositivo: la versión se confirma (desde el dispositivo o su exportación de ingeniería, no desde la incidencia), el servicio funciona (las comprobaciones del capítulo 27) y los controles compensatorios que ya no hacen falta se eliminan con control de cambios; de lo contrario, las reglas temporales se acumulan. Para PS07-PLC, la versión se leyó del dispositivo en la visita a la instalación: 3.9, tal como estaba registrada, así que la corrección sigue abierta. Cuando se instale la 4.3, la evidencia será la exportación del ingeniero que muestre la 4.3, y la alerta sobre el puerto web del PLC se mantendrá o se eliminará con su propio registro de cambio.
+
+### 16.5 Copias de seguridad y pruebas de restauración
+
+Una copia de seguridad que no se ha restaurado es una esperanza. La guía del NIST sobre planificación de contingencias cubre la planificación y la prueba de las copias de seguridad y de la recuperación ([NIST SP 800-34 Rev. 1](https://csrc.nist.gov/pubs/sp/800/34/r1/upd1/final)), y la guía del NIST sobre la recuperación tras ciberincidentes insiste en preparar y ejercitar la recuperación de antemano ([NIST SP 800-184](https://csrc.nist.gov/pubs/sp/800/184/final)). Para LANTERN:
+
+- **Qué** se copia: la configuración del retransmisor y la lista de permitidos (ya bajo control de versiones), las claves (en la copia de seguridad propia de su almacén protegido), la base de datos del historiador, los programas y configuraciones de los controladores (a cargo de los ingenieros de Agua) y la documentación necesaria para reconstruir.
+- **Dónde**: al menos una copia fuera de línea o inmutable, para que un *ransomware* o un error de un administrador no puedan borrar todas las copias.
+- **Objetivos**: un **objetivo de tiempo de recuperación** (RTO: con qué rapidez debe volver el servicio) y un **objetivo de punto de recuperación** (RPO: cuánta pérdida de datos es tolerable). Para HIST-01 en Fallowmere: RTO de 4 horas y RPO de 24 horas.
+- **Pruebas de restauración**: programadas, cronometradas y registradas, con el resultado comparado con los objetivos; el capítulo 9 muestra cómo informar de ellas con honestidad.
+
+### 16.6 Ejemplo resuelto: un aviso para el Arlen 300 (sintético)
+
+Un aviso informa de un fallo en la interfaz web de gestión del PLC Arlen 300, con firmware anterior a la 4.3, que ya figura como explotado en otros lugares (sintético). Aplicabilidad: PS04-PLC ejecuta la 4.2 y PS07-PLC la 3.9; ambos son aplicables. Exposición: la interfaz web solo debería ser alcanzable desde la ruta de salto de ingeniería; pero la revisión de flujos del capítulo 2 encontró una estación de trabajo corporativa comunicándose directamente con PS-04. Prioridad: alta en las tres preguntas. Tratamiento: hoy, confirmar con el ingeniero de Agua si se usa la interfaz web y, si no, deshabilitarla; cerrar la ruta corporativa→PS-04 (ya notificada); añadir una alerta ante cualquier conexión al puerto web de los PLC. Corrección: firmware 4.3 en las próximas visitas a las instalaciones, con las pruebas del proceso de Agua. Verificación: versión leída de la exportación de ingeniería; alerta y conducto probados.
+
+### 16.7 Actividad práctica: registro de vulnerabilidad
+
+Redacte el registro completo del aviso del capítulo 16 («Ejemplo resuelto: un aviso para el Arlen 300»): aplicabilidad por activo, prioridad con los motivos de cada una de las tres preguntas, controles compensatorios con evidencia, plan de corrección con fechas y responsables, pasos de verificación y responsable del riesgo residual. La prioridad de PS04-PLC descansa en tres respuestas: aplicable (la 4.2 es anterior a la 4.3), explotado en otros lugares y expuesto, porque la revisión de flujos vio una estación de trabajo corporativa comunicándose con PS-04. PS07-PLC es aplicable y explotado, pero no se ha visto ninguna ruta no declarada, así que su motivo de exposición es más débil. Designe a operaciones de Agua como responsable del riesgo residual hasta que la 4.3 esté verificada en ambos.
+
+### 16.8 Errores frecuentes y límites
+
+- Priorizar solo por la puntuación de gravedad.
+- Marcar «no aplicable» sin comprobar las versiones.
+- Dejar «desconocido» sin responsable.
+- Controles compensatorios sin fecha de fin, que acaban siendo permanentes.
+- Cerrar la incidencia cuando el parche está programado, no cuando está verificado.
+- Copias de seguridad guardadas donde la misma cuenta de administrador puede borrar todas las copias.
+- Medir el éxito de las copias por la finalización de los trabajos en lugar de por las pruebas de restauración.
+
+Ambos PLC muestran el riesgo del quinto error: la incidencia se cerraría en «firmware 4.3 programado», mientras la 3.9 sigue funcionando en PS-07.
+
+La 4.2 de PS04-PLC habría quedado marcada como no aplicable por cualquiera que leyera solo la puntuación del aviso.
+
+### Ejercicios — capítulo 16
+
+**EX046 — Priorice tres avisos.** *Objetivo:* aplicar explotación, exposición y consecuencia. *Entradas:* (a) fallo de gravedad crítica en el navegador del quiosco de las cocheras, sin explotación conocida, quiosco en la red de las cocheras con acceso a internet; (b) fallo de gravedad media en el servidor SSH del retransmisor, incluido en el KEV, con SSH alcanzable solo desde el servidor de salto; (c) fallo de gravedad alta en la base de datos de HIST-01, sin explotación conocida, alcanzable desde la zona corporativa. *Restricciones:* ordene y justifique con una frase cada uno. *Pasos:* ordene y después dé una fecha objetivo para cada uno. *Evidencia esperada:* tabla. *Rúbrica:* 3 = (b) primero por la explotación activa y la criticidad, pese a la puntuación media y la exposición restringida; después, un orden defendible de (c) y (a) con motivos (consecuencia del historiador frente a exposición a internet del quiosco); fechas proporcionadas; 2 = orden defendible, motivos escasos; 1 = solo por gravedad; 0 = nada.
+
+**EX047 — Plan de controles compensatorios.** *Objetivo:* tratar una vulnerabilidad que no puede parchearse con rapidez. *Entradas:* el capítulo 16 («Ejemplo resuelto: un aviso para el Arlen 300»); el firmware 4.3 solo puede instalarse en PS-07 dentro de 10 semanas. *Restricciones:* al menos tres controles, cada uno con evidencia y fecha de fin. *Pasos:* redacte el plan. *Evidencia esperada:* tabla. *Rúbrica:* 3 = deshabilitar la interfaz web si no se usa (evidencia: exportación de ingeniería), restricción del conducto verificada mediante la revisión de flujos, alerta ante conexiones al puerto web probada, comparación de la configuración intensificada; todo termina cuando la 4.3 esté verificada; 2 = sin fechas de fin; 1 = «monitorizar»; 0 = nada.
+
+**EX048 — Diseño de una prueba de restauración.** *Objetivo:* diseñar una prueba de restauración que demuestre el RTO. *Entradas:* HIST-01, RTO de 4 h, RPO de 24 h. *Restricciones:* no debe perturbar la producción; debe ser repetible. *Pasos:* (1) describa el entorno de prueba; (2) los pasos y los puntos de cronometraje; (3) los criterios de superación; (4) lo que se registra. *Evidencia esperada:* una página. *Rúbrica:* 3 = destino de restauración aislado, parte de la copia fuera de línea o inmutable, cronometra desde «decisión de restaurar» hasta «los operadores pueden consultar los datos», comprueba la antigüedad de los datos frente al RPO, registra tiempos, carencias y lecciones, y se programa con regularidad; 2 = falta el cronometraje o la comprobación del RPO; 1 = «comprobar que el trabajo de copia terminó bien»; 0 = nada.
+
+### Síntesis del capítulo
+
+Gestione las vulnerabilidades como una rutina: decida la aplicabilidad a partir del inventario, priorice por explotación, exposición y consecuencia, aplique controles compensatorios con fechas de fin cuando el parcheo sea lento y verifique las correcciones en el dispositivo. Copie lo que necesita para reconstruir, conserve una copia que no puedan borrar las mismas personas que gestionan la producción, fije el RTO y el RPO, y demuéstrelos con pruebas de restauración cronometradas.
+
+<!-- cyberabc:chapter-navigation:start ch-16 -->
+### Siga estudiando — capítulo 16 de 30
+
+[← Capítulo 15](#ch-15) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 17 →](#ch-17)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Infraestructura crítica y seguridad sectorial: herramientas
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted debería ser capaz de:
+
+- configurar los sistemas para que produzcan registros que respondan a preguntas operativas y de seguridad;
+- mantener los relojes sincronizados y registrar la hora en un formato único y sin ambigüedad;
+- **normalizar** los registros de distintas fuentes en una estructura común;
+- escribir y probar una herramienta pequeña para poder confiar en su salida, y saber cuándo usar en su lugar una ya existente.
+
+La monitorización (capítulo 19), la resolución de problemas (capítulo 20) y la evaluación (capítulo 23) dependen de los registros. La mayoría de los fallos de registro no se deben a productos que faltan, sino a aspectos básicos que faltan: una fuente que nunca reenvió, una marca de tiempo sin zona horaria, un analizador que descarta en silencio las líneas que no entiende.
+
+### 17.1 Qué registrar
+
+Registre lo que necesitará para responder a las preguntas que le harán: quién inició sesión, desde dónde y con qué resultado; qué configuración cambió; qué aceptó, rechazó y puso en cuarentena el retransmisor, con recuentos; qué flujos cruzaron los límites de zona; cuándo se iniciaron, se detuvieron o fallaron los servicios. La guía del NIST sobre la gestión de registros cubre la planificación, la generación, la transmisión, el almacenamiento y el análisis de los registros ([NIST SP 800-92](https://csrc.nist.gov/pubs/sp/800/92/final)). Reenvíe los registros fuera del equipo con prontitud (no puede confiarse en que un equipo comprometido o averiado conserve sus propios registros) y vigile que el reenvío continúe.
+
+### 17.2 La hora
+
+Ordenar los eventos entre sistemas exige una hora acordada. Sincronice cada equipo con una fuente de hora de confianza mediante NTP ([RFC 5905](https://www.rfc-editor.org/rfc/rfc5905)); en LANTERN, los retransmisores toman la hora de dos servidores internos y la sirven a las estaciones. Registre las marcas de tiempo en un formato con desfase explícito, como los definidos en el [RFC 3339](https://www.rfc-editor.org/rfc/rfc3339), y conviértalas a UTC para el análisis. Vigile el propio desfase del reloj: un equipo cuya fuente de hora ha fallado deriva de forma lenta y silenciosa.
+
+### 17.3 Registros estructurados y syslog
+
+El protocolo syslog, [RFC 5424](https://www.rfc-editor.org/rfc/rfc5424), define un mensaje con prioridad (instalación y gravedad), versión, marca de tiempo, nombre de equipo, nombre de aplicación, ID de proceso, ID de mensaje, **datos estructurados** (parámetros clave–valor entre corchetes) y un mensaje de texto libre. Los datos estructurados son lo que hace que los registros puedan buscarse: `src="192.0.2.44" user="root"` puede contarse y filtrarse; la misma información enterrada en prosa debe adivinarse con patrones. Los dispositivos antiguos suelen enviar el formato BSD anterior, sin año ni zona horaria; registre esas fuentes como de menor calidad y conviértalas con cuidado.
+
+### 17.4 Normalización
+
+Un **normalizador** convierte el formato de cada fuente en un registro común: hora UTC, equipo, aplicación, gravedad y campos con nombre como `src`, `user`, `dst`, `dport` o `action`. Así, las reglas posteriores (capítulo 19) se escriben una sola vez. Un normalizador debe **contar lo que no puede analizar** e informar de ello: los descartes silenciosos son la forma en que un sistema de monitorización se queda ciego ante la única fuente que cambió de formato. La línea en formato BSD del retransmisor en la noche resuelta muestra por qué: sin un recuento de líneas no analizadas, simplemente habría desaparecido.
+
+La línea del quiosco sin ninguna marca de tiempo es el otro caso: el normalizador debe marcarla, no ponerle la hora de llegada.
+
+### 17.5 Herramientas en las que se puede confiar
+
+Los implementadores escriben herramientas pequeñas constantemente. La confianza en la salida de una herramienta procede de: una declaración clara de lo que trata y lo que no; pruebas con casos erróneos y límite (capítulo 3); recuentos de entradas, salidas y rechazos que cuadren; una salida determinista para la misma entrada; y el control de versiones. Escriba su propia herramienta cuando la tarea sea pequeña y concreta; use una herramienta consolidada y mantenida cuando la tarea sea general (un recopilador syslog completo, una biblioteca TLS, una base de datos). No escriba nunca su propia criptografía: use la de la biblioteca estándar.
+
+### 17.6 Ejemplo resuelto: los registros de una noche (sintético)
+
+El Lab 17 analiza siete líneas del retransmisor, el cortafuegos, el historiador y el quiosco de las cocheras. Seis se analizan y una no: una línea en formato BSD de la propia aplicación del retransmisor, que revela que un componente de LANTERN nunca se configuró con el formato acordado. Una línea no tiene ninguna marca de tiempo (la del quiosco). La línea del historiador lleva `+01:00`; convertida a UTC son las 22:02:11, *antes* de los eventos de SSH, no después, como sugiere su hora local. Ordenada en UTC, la noche se lee así: error de cuota de disco del historiador a las 22:02, un inicio de sesión legítimo de un administrador a las 22:14, dos inicios de sesión fallidos como root desde una dirección externa a las 22:15 y un flujo Modbus de la red corporativa a PS-04 a las 22:16 desde la misma estación de trabajo usada para el inicio de sesión del administrador.
+
+### 17.7 Actividad práctica: normalizador
+
+**Lab 17** (guárdelo como `lab17.py` y ejecútelo con `python3 lab17.py`):
+
+```python
+# Lab 17 - normalizing RFC 5424-style syslog lines into JSON records (offline, standard library only)
+# Synthetic log lines from the relay, historian and firewall. Simplified parser for teaching, not a full RFC 5424 implementation.
+import json, re
+from datetime import datetime, timezone
+LINE = re.compile(r"<(?P<pri>\d{1,3})>1 (?P<ts>\S+) (?P<host>\S+) (?P<app>\S+) (?P<proc>\S+) (?P<msgid>\S+) (?P<sd>-|\[.*?\]) ?(?P<msg>.*)")
+SEV = ["emerg", "alert", "crit", "err", "warning", "notice", "info", "debug"]
+lines = [
+ '<86>1 2026-10-11T22:14:03.120Z rly-01 sshd 812 AUTH [meta src="10.40.3.7" user="b.lind"] Accepted publickey',
+ '<84>1 2026-10-11T22:15:40.004Z rly-01 sshd 813 AUTH [meta src="192.0.2.44" user="root"] Failed password',
+ '<84>1 2026-10-11T22:15:41.917Z rly-01 sshd 813 AUTH [meta src="192.0.2.44" user="root"] Failed password',
+ '<134>1 2026-10-11T22:16:00.000Z fw-hub filter - FLOW [flow src="10.40.3.7" dst="10.20.0.11" dport="502" act="allow"]',
+ '<131>1 2026-10-11T23:02:11+01:00 hist-01 histsvc 4410 DBERR - write failed: disk quota',
+ 'Oct 11 22:17:00 rly-01 relay: legacy BSD-format line',
+ '<13>1 - kiosk-depot app - - - no timestamp supplied',
+]
+SDPARAM = re.compile(r'(\w+)="((?:[^"\\]|\\.)*)"')
+out, bad = [], 0
+for raw in lines:
+    m = LINE.fullmatch(raw)
+    if not m:
+        bad += 1; print("UNPARSED:", raw[:40]); continue
+    pri = int(m["pri"])
+    rec = {"ts": None if m["ts"] == "-" else m["ts"], "host": m["host"], "app": m["app"],
+           "facility": pri // 8, "severity": SEV[pri % 8], "msgid": m["msgid"], "msg": m["msg"]}
+    rec.update(dict(SDPARAM.findall(m["sd"])))
+    if rec["ts"]:  # normalize every timestamp to UTC so sources can be ordered together
+        rec["ts_utc"] = datetime.fromisoformat(rec["ts"]).astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z"
+    out.append(rec)
+for r in sorted(out, key=lambda r: r.get("ts_utc") or ""):
+    print(r.get("ts_utc"), r["host"], r["severity"], r.get("src", "-"), r["msg"] or r["msgid"])
+print(json.dumps(out[1], sort_keys=True))
+print(f"parsed {len(out)}, unparsed {bad}, missing timestamp {sum(r['ts'] is None for r in out)}")
+```
+
+Salida esperada (Python 3.13.5):
+
+```text
+UNPARSED: Oct 11 22:17:00 rly-01 relay: legacy BSD
+None kiosk-depot notice - no timestamp supplied
+2026-10-11T22:02:11.000Z hist-01 err - write failed: disk quota
+2026-10-11T22:14:03.120Z rly-01 info 10.40.3.7 Accepted publickey
+2026-10-11T22:15:40.004Z rly-01 warning 192.0.2.44 Failed password
+2026-10-11T22:15:41.917Z rly-01 warning 192.0.2.44 Failed password
+2026-10-11T22:16:00.000Z fw-hub info 10.40.3.7 FLOW
+{"app": "sshd", "facility": 10, "host": "rly-01", "msg": "Failed password", "msgid": "AUTH", "severity": "warning", "src": "192.0.2.44", "ts": "2026-10-11T22:15:40.004Z", "ts_utc": "2026-10-11T22:15:40.004Z", "user": "root"}
+parsed 6, unparsed 1, missing timestamp 1
+```
+
+Compruebe dos cosas en la salida. Primero, el recuento de líneas no analizadas es 1, la línea en formato BSD de la aplicación del retransmisor, que es un fallo de configuración en un componente de LANTERN, no ruido. Segundo, la línea `+01:00` del historiador, convertida a UTC, queda a las 22:02:11, antes del inicio de sesión del administrador de las 22:14 y de los inicios de sesión fallidos como root de las 22:15, y no después. Ordenado así, el flujo Modbus de la red corporativa a PS-04 de las 22:16 sigue a un inicio de sesión de administrador desde la misma estación de trabajo, que es la secuencia que la regla B marcará más adelante.
+
+### 17.8 Errores frecuentes y límites
+
+- Registrarlo todo en el nivel de depuración, lo que llena los discos (capítulo 1) y oculta los eventos que importan.
+- Registros guardados solo en el equipo que los produjo.
+- Marcas de tiempo sin zona horaria; mezclar la hora local y UTC en un mismo análisis.
+- Analizadores que descartan las líneas no analizables sin contarlas.
+- Suponer que el reenvío de registros sigue funcionando porque funcionaba el mes pasado.
+- Construir una herramienta casera donde existe una mantenida, o criptografía casera en cualquier caso.
+
+El analizador del laboratorio es una simplificación didáctica del RFC 5424: no trata todas las secuencias de escape ni varios elementos de datos estructurados. Informa de lo que no puede analizar, que es la propiedad que más importa.
+
+### Ejercicios — capítulo 17
+
+**EX049 — Corrija el formato del retransmisor.** *Objetivo:* tratar una fuente que no se ajusta al formato. *Entradas:* la línea no analizada del Lab 17. *Restricciones:* dos opciones. *Pasos:* (1) describa la corrección en el origen (cambio de configuración en el retransmisor); (2) describa la adición de un segundo analizador para el formato BSD; (3) indique cuál haría primero y por qué, y qué no puede recuperar el analizador BSD. *Evidencia esperada:* media página. *Rúbrica:* 3 = corregir primero en el origen (es nuestro propio componente, bajo control de cambios) y el analizador BSD como alternativa para dispositivos de terceros; las líneas BSD carecen de año y de zona, así que el analizador debe suponerlos y marcar los registros como de menor calidad; 2 = una opción; 1 = «ignorarla»; 0 = nada.
+
+**EX050 — Orden de los eventos.** *Objetivo:* ver el efecto de las zonas horarias. *Entradas:* la salida del Lab 17. *Restricciones:* ninguna. *Pasos:* (1) enumere los eventos en el orden de sus marcas de tiempo *escritas*, sin tener en cuenta los desfases; (2) enumérelos en orden UTC; (3) explique cómo un investigador que usara el primer orden malinterpretaría el evento del historiador. *Evidencia esperada:* dos listas y una explicación. *Rúbrica:* 3 = el evento del historiador aparece el último en el orden escrito (23:02) pero el primero en UTC (22:02); el investigador podría vincular erróneamente el error de cuota de disco con los inicios de sesión fallidos; 2 = listas correctas, explicación escasa; 1 = una lista; 0 = nada.
+
+**EX051 — Cuente lo que descarta.** *Objetivo:* añadir una autocomprobación a la herramienta. *Entradas:* el Lab 17. *Restricciones:* solo la biblioteca estándar. *Pasos:* (1) añada una comprobación de que el número de líneas de entrada es igual a las analizadas más las no analizadas y termine con un error en caso contrario; (2) añada un recuento por equipo de las líneas no analizadas; (3) explique por qué un sistema de monitorización debería alertar cuando aumenta el recuento de líneas no analizadas de un equipo. *Evidencia esperada:* código, salida y explicación. *Rúbrica:* 3 = invariante aplicada, recuentos por equipo impresos (rly-01: 1), explicación de que un cambio de formato en una fuente deja ciegas las reglas en silencio; 2 = parcial; 1 = no ejecutado; 0 = nada.
+
+### Síntesis del capítulo
+
+Registre lo que necesitará para responder, reenvíelo fuera del equipo y compruebe que el reenvío continúa. Sincronice los relojes, registre la hora con desfases explícitos y analice en UTC. Normalice las fuentes en una estructura única, cuente todo lo que no pueda analizar y construya herramientas pequeñas con pruebas e invariantes para que pueda confiarse en su salida; use herramientas consolidadas para los trabajos generales y no invente nunca criptografía.
+
+<!-- cyberabc:chapter-navigation:start ch-17 -->
+### Siga estudiando — capítulo 17 de 30
+
+[← Capítulo 16](#ch-16) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 18 →](../../en/book/MANUSCRIPT.md#ch-18)
 
 Continúe con la siguiente lección escrita.
 <!-- cyberabc:chapter-navigation:end -->
@@ -1664,6 +2092,38 @@ Cada resultado resuelto muestra una respuesta defendible y explica lo que premia
 **EX038 — Producto frente a consecuencia.** «R3, el llenado del disco del retransmisor, ocurre con más frecuencia, así que puntúa más cuando multiplicamos lo probable que es por lo grave que es. Pero si ocurre R3, perdemos algunas lecturas durante unas horas y podemos recuperarlas. R2 y R4 podrían dañar a personas: una dosis de cloro errónea o un límite de fármaco erróneo en una bomba de infusión. Multiplicar trata «frecuente y recuperable» igual que «raro y dañino», y no es así como queremos repartir el esfuerzo. Por eso abordamos primero R2 y R4. R3 sigue necesitando una acción, y es barata: corregir este mes el fallo de conservación y configurar una alarma de capacidad más temprana».
 
 **EX039 — Del escenario al trabajo.** Prevención/reducción: (1) acceso de Kell limitado en el tiempo con MFA resistente al phishing; responsable: FSTS Security; evidencia: registros de habilitación y caducidad; (2) registro de las sesiones remotas del proveedor; FSTS Security; evidencia: revisión de una muestra de sesiones; (3) límites de los puntos de consigna de dosificación diseñados en el PLC de PS-07; Ingeniería de Agua; evidencia: registro de la prueba de ingeniería releído en la instalación. Detección: (4) alerta de LANTERN cuando el cloro sale de la banda aprobada o cambia más rápido que un ritmo fijado; monitorización de FSTS; evidencia: lectura de prueba inyectada; (5) comparación de los valores de los puntos de consigna del PLC con una línea base aprobada en cada exportación de ingeniería; Ingeniería de Agua; evidencia: comparación fechada.
+
+### Capítulo 14: EX040–EX042
+
+**EX040 — Clasifique cambios.** (a) Estándar: sigue el procedimiento de PS-11; aprobado por procedimiento y registrado. (b) Normal: plan revisado, canario y reversión (capítulo 27); aprobador: el responsable del servicio, con Agua informada. (c) De emergencia: aprobado por la autoridad de seguridad de guardia; revisado el siguiente día laborable. (d) Normal: afecta a los registros y posiblemente a las obligaciones; aprobador: el responsable de los datos de Agua, con el responsable del servicio de FSTS. (e) Normal (pasa a estándar cuando exista un manual de operación probado): coordinado con Agua porque las estaciones quedan en silencio si las claves no coinciden.
+
+**EX041 — Pasos de verificación.** (1) El registro de conexiones del retransmisor muestra TLS 1.3 negociado con HIST-01; (2) el historiador recibe lecturas de todas las estaciones con la latencia normal de 60 s durante una hora; (3) los recuentos de errores y rechazos del retransmisor no cambian respecto a la hora anterior; (4) la validación de certificados sigue aplicándose: una conexión de prueba a un equipo con un certificado no confiable falla; (5) la comprobación de integridad muestra que solo cambió el archivo de configuración de TLS, con el número de cambio.
+
+**EX042 — Revise un cambio de emergencia.** Preguntas: ¿por qué falló la ruta del servidor de salto? ¿Quién aprobó la regla y bajo qué autoridad de emergencia? ¿Qué sistemas se alcanzaron a través de ella durante la ventana, y quién lo hizo (registros)? ¿Sigue vigente la regla? Decisión: eliminar la regla con un registro de cambio; si sigue haciendo falta, restringirla a una única dirección de administrador durante un tiempo fijo. Cambio de proceso: hacer resiliente el servidor de salto (un segundo servidor de salto o una vía de acceso de emergencia probada, con registro y alertas) y añadir las «reglas temporales», con su caducidad, al informe diario de salud.
+
+### Capítulo 15: EX043–EX045
+
+**EX043 — Orden de las comprobaciones.** Si solo se mueve la *comprobación* de reproducción antes de la comprobación del MAC (con la actualización de estado aún después del MAC), el mensaje del atacante con seq 1000000 supera la comprobación de reproducción, falla en el MAC y se rechaza sin actualizar el estado; después se acepta el seq 3 legítimo. Si la actualización de estado se mueve con ella, el mensaje del atacante fija la última secuencia de PS-04 en 1000000 antes de fallar en la autenticación, y el seq 3 legítimo se rechaza como reproducción: el atacante ha bloqueado la estación con mensajes sin autenticar. La regla segura: autenticar primero y actualizar el estado solo después de que se superen todas las comprobaciones.
+
+**EX044 — Claves por estación.** Analice el cuerpo (`json.loads`) solo para leer `st`, busque `KEYS.get(st)` y rechace si no existe; verifique el MAC con esa clave; solo después de la verificación lea cualquier otro campo o toque el estado. El ID de estación sin verificar es un mero selector de clave: si un atacante miente sobre él, la comprobación del MAC falla porque no posee la clave de esa estación. No registre como hechos los campos sin verificar, no actualice el estado con ellos y no los use para ninguna decisión que no sea la selección de la clave.
+
+**EX045 — Tamaño de la ventana.** Ventana en vivo: unos 60–120 s, que cubren el error de reloj de ±2 s y el retraso de 40 s del operador con margen; 120 s, como en el laboratorio, es razonable. Acumulación: las estaciones marcan las subidas de la acumulación (un indicador dentro del cuerpo autenticado); el retransmisor las acepta por una vía separada que sigue exigiendo un MAC válido y números de secuencia estrictamente crecientes, acepta marcas de tiempo de hasta 24 h de antigüedad solo en este modo, emite una alerta informativa cada vez que se usa el modo de acumulación y termina ese modo cuando los mensajes de la estación alcanzan el tiempo real. Una única ventana de 24 horas para todos los mensajes facilitaría mucho la captura y la reproducción.
+
+### Capítulo 16: EX046–EX048
+
+**EX046 — Priorice tres avisos.** Primero (b), el fallo de SSH del retransmisor: explotado activamente (KEV) en un equipo de criticidad 1; la exposición restringida reduce la urgencia, pero no la elimina (el propio servidor de salto es un objetivo); objetivo: en pocos días. Segundo (c), la base de datos del historiador: gravedad alta y alcanzable desde toda la zona corporativa, en un equipo de criticidad 2 cuya pérdida afecta a los informes y a las investigaciones; objetivo: entre dos y cuatro semanas, antes si aparece explotación. Tercero (a), el navegador del quiosco: gravedad crítica y expuesto a internet, pero de consecuencia baja y rápido de reconstruir; objetivo: dentro del ciclo mensual normal, o retirar el acceso a internet. Una alternativa defendible intercambia (a) y (c) si el quiosco comparte red con sistemas de las cocheras de mayor consecuencia.
+
+**EX047 — Plan de controles compensatorios.** (1) Deshabilitar la interfaz web del PLC si Agua confirma que no se usa; evidencia: exportación de ingeniería que la muestra desactivada; termina cuando se verifique la 4.3. (2) Restricción del conducto: solo la ruta de salto de ingeniería puede alcanzar el puerto web; evidencia: regla del cortafuegos y revisión de flujos que no muestra otros orígenes; termina con la 4.3. (3) Alerta ante cualquier conexión al puerto web del PLC; evidencia: probada con una conexión de prueba marcada en el PLC de repuesto; termina con la 4.3. (4) Comparación semanal de la configuración de PS-07; evidencia: comparaciones fechadas; termina con la 4.3. Responsable del riesgo residual: el jefe de ingeniería de Agua hasta la verificación.
+
+**EX048 — Diseño de una prueba de restauración.** Entorno: un equipo de restauración aislado en una red de pruebas, sin conexión con la producción. Pasos: (T0) se registra la decisión de restaurar; se recupera la copia inmutable más reciente; se restaura la base de datos; se inicia el servicio del historiador; (T1) la cuenta de prueba de los operadores puede consultar los datos más recientes. Criterios de superación: T1 − T0 ≤ 4 h; los datos restaurados más recientes no son más de 24 h anteriores al momento de la copia (RPO); las sumas de comprobación o los recuentos de filas coinciden con el manifiesto de la copia. Registro: tiempos, antigüedad de los datos, problemas, desviaciones respecto al manual de operación y quién la realizó. Programación: prueba completa trimestral; prueba parcial mensual. Un mensaje de trabajo terminado no es una prueba de restauración.
+
+### Capítulo 17: EX049–EX051
+
+**EX049 — Corrija el formato del retransmisor.** Corregir primero en el origen: el retransmisor es un componente propio de FSTS, así que se configura su biblioteca de registro para que emita RFC 5424 con datos estructurados, mediante un cambio normal, verificado porque el recuento de líneas no analizadas del normalizador baja a cero. Añadir un analizador del formato BSD como alternativa para los dispositivos de terceros que no pueden cambiarse. Una línea BSD no tiene año ni zona horaria ("Oct 11 22:17:00"), así que el analizador debe suponer ambos (por ejemplo, el año del recopilador y la zona configurada en el dispositivo) y marcar el registro como de hora de menor calidad; tampoco tiene datos estructurados, así que los campos deben extraerse mediante patrones.
+
+**EX050 — Orden de los eventos.** Orden escrito (sin tener en cuenta los desfases): 22:14:03 inicio de sesión en rly-01; 22:15:40 fallido; 22:15:41 fallido; 22:16:00 FLOW; 23:02:11 error de cuota de disco del historiador (la línea del quiosco no tiene hora). Orden UTC: 22:02:11 historiador; 22:14:03; 22:15:40; 22:15:41; 22:16:00. Un investigador que usara el orden escrito vería el error del historiador 46 minutos *después* de los inicios de sesión fallidos como root y podría vincularlo con ellos como consecuencia de un ataque; en UTC ocurrió *antes*, así que no pudieron causarlo.
+
+**EX051 — Cuente lo que descarta.** Añada `assert len(out) + bad == len(lines), "input/output mismatch"` (o termine con un error) después del bucle; mantenga `unparsed_by_host` tomando como equipo el cuarto elemento separado por espacios de las líneas no analizadas, cuando exista (para la línea BSD, `rly-01`). La salida añade `unparsed by host: {'rly-01': 1}`. Un recuento creciente de líneas no analizadas de un equipo significa que esa fuente cambió de formato o se averió; todas las reglas que dependen de ella quedan ciegas en silencio, así que el sistema de monitorización debería alertar sobre ello (capítulo 19).
 
 <a id="glossary"></a>
 
