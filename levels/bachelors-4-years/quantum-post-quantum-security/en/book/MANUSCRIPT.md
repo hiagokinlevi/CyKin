@@ -784,6 +784,8 @@ You will (1) distinguish identification, authentication and authorization; (2) e
 
 *Identification* claims an identity; *authentication* proves it; *authorization* decides what the authenticated party may do. Passwords, one-time codes and passkeys authenticate users; certificates and signatures authenticate machines and software. Authorization is usually symmetric bookkeeping — access-control lists and roles — and is not directly threatened by quantum computers. Authentication based on public-key signatures is.
 
+Keeping the three steps apart helps a migration team focus. HCU's role tables and access lists need no change for quantum reasons. Every place where a signature or a public-key login proves identity does, and those places are spread across phones, servers, the certificate authority and software releases. Listing them by step makes the scope of the work clearer.
+
 ### 13.2 PKI in brief
 
 A certificate is a signed statement by a certificate authority (CA): "this public key belongs to this name, valid until this date". Verifiers trust a small set of root CAs and follow chains to them. If an adversary can compute a CA's private key from its public key — as Shor's algorithm would allow for RSA and ECDSA — they can issue certificates for any name. Because root keys are long-lived and widely embedded, PKI is the archetypal forge-later target. Post-quantum signature standards provide replacements: ML-DSA in [FIPS 204](https://doi.org/10.6028/NIST.FIPS.204) for general use and SLH-DSA in [FIPS 205](https://doi.org/10.6028/NIST.FIPS.205) as a conservative hash-based option.
@@ -792,19 +794,27 @@ A certificate is a signed statement by a certificate authority (CA): "this publi
 
 Passkeys and FIDO authenticators use public-key signatures (often ECDSA) inside a secure element. Single sign-on tokens are signed with RSA or ECDSA. Code-signing certificates protect software updates. Each flow has a different migration path: tokens with short lifetimes can switch quickly once libraries support ML-DSA; hardware authenticators need new devices; root CAs need long planning because relying parties must first trust the new roots.
 
+HCU groups its flows by which of these paths they need. Short-lived tokens come first, the CA last.
+
 ### 13.4 Worked example
 
 HCU lists authentication uses: member passkeys (ECDSA in phone hardware), staff SSO tokens (RSA-2048, 10-minute lifetime), internal CA (RSA-4096 root, 20-year validity), mobile app code signing (ECDSA, platform-controlled). The forge-later risk is greatest for the long-lived root and for code signing, where a forged signature would let an adversary distribute malicious software. Short-lived SSO tokens are lower priority: forging one requires a quantum computer at the moment of attack, and the key can rotate quickly once one exists.
 
+The list also shows who controls each change. HCU can change its own tokens and CA; it depends on phone makers and app platforms for passkeys and code signing.
+
 ### 13.5 Practical activity
 
 Draw HCU's certificate hierarchy: root, two intermediates, server and client leaves. Annotate each with algorithm, validity and who must trust it. Mark which changes require relying parties to update trust stores.
+
+Relying parties include member phones, branch servers, ATMs and partner banks, each with a different way of updating trust. Some can take a new root in a routine update; others, such as ATMs, may need a vendor visit. Mark those carefully, because they set the pace of the whole certificate migration. Compare your diagram with a classmate's and check that both of you placed the same validity periods on the same certificates.
 
 ### 13.6 Common errors and limits
 
 - Treating authorization lists as quantum-vulnerable.
 - Planning to migrate leaf certificates before relying parties trust a post-quantum root.
 - Forgetting hardware authenticators that cannot be updated.
+
+Access lists and role tables use no public-key mathematics, so quantum computers do not threaten them. Issuing post-quantum leaf certificates before relying parties trust a matching root causes connections to fail. Hardware authenticators with fixed algorithms can only be replaced, which takes budget and years. A plan that ignores them will look complete on paper and stall in practice, when the devices turn out to be in members' pockets.
 
 ### Exercises
 
@@ -831,6 +841,8 @@ You will (1) state core privacy principles such as purpose limitation and minimi
 
 Privacy law and practice share common principles: collect personal data for a stated purpose, collect no more than needed (*minimization*), keep it no longer than needed (*storage limitation*), protect it appropriately, and be transparent. These principles are about people, not systems; a privacy harm is a harm to a member whose data is exposed, even if the organization suffers no loss.
 
+For a quantum migration these principles shape two things: which data most needs protection, and how the migration work itself handles personal information found along the way.
+
 ### 14.2 Lifetime of harm
 
 Some personal data stops mattering quickly; other data stays sensitive for a lifetime — health conditions, financial distress, identity documents. Harvest-now-decrypt-later turns long-lived sensitivity into present risk: traffic recorded today can reveal tomorrow what a member disclosed in confidence decades earlier. For privacy, the relevant *x* in Mosca's inequality is the lifetime of the harm to the person, which can exceed the organization's retention period. Deleting a record from HCU's database does not delete a copy an adversary recorded in transit.
@@ -838,6 +850,8 @@ Some personal data stops mattering quickly; other data stays sensitive for a lif
 ### 14.3 Minimization as a quantum control
 
 The cheapest protection for data is not to send it. Reducing what crosses networks — tokenising account numbers, keeping sensitive fields at the data centre and sending only derived results — lowers HNDL exposure regardless of algorithm. Minimization also applies to migration measurement itself: an inventory needs algorithm names and host identifiers, not message contents.
+
+HCU's first review of branch traffic found member names travelling with transactions that needed only an account token. Replacing the names with tokens reduced the exposure at once, before any algorithm changed.
 
 ### 14.4 Worked example
 
@@ -847,11 +861,15 @@ HCU's loan application flow sends full applicant profiles from branches to head 
 
 For three synthetic HCU data flows, list the personal data fields, the purpose, and which fields could be removed, tokenised or aggregated before transmission.
 
+Typical candidates are full names sent where an identifier would do, dates of birth sent for checks that only need an age band, and account numbers sent where a token works. For each field you remove, say who would notice and whether any process breaks. Then estimate how much the change reduces the long-lived data crossing the network, which is the exposure harvest now, decrypt later depends on.
+
 ### 14.6 Common errors and limits
 
 - Equating retention period with lifetime of harm.
 - Collecting full packet captures for an inventory.
 - Treating PQC as a substitute for minimization rather than a complement.
+
+The harm from disclosure can last far longer than the record is kept: a deleted mortgage file that was recorded in transit can still be decrypted later. Full captures collect personal data the inventory never needed and create a new store to protect. Post-quantum algorithms protect what is sent; minimization reduces what is sent at all. The two work together, and neither replaces the other.
 
 ### Exercises
 
@@ -878,27 +896,39 @@ You will (1) define validity, reliability and coverage for security measurements
 
 A measurement is *valid* if it measures what it claims, *reliable* if it gives the same result when repeated, and has known *coverage* if we know what share of the population it observes. "Percentage of TLS connections using hybrid key exchange" is valid if counted from ServerHello messages, reliable if the sensor is stable, and its coverage is the share of traffic passing the sensor. Without coverage, a 90 % figure may describe only the easy tenth of the estate.
 
+Coverage is the property most often missing from security dashboards.
+
 ### 15.2 Readiness indicators
 
 Useful indicators for a quantum migration include: share of assets with a known cryptographic inventory; share of long-lived data flows protected by hybrid key exchange; share of certificates issued by CAs that can issue post-quantum certificates; number of vendors with a published PQC roadmap; and mean time to change an algorithm by configuration. Each indicator should have an owner, a source and a refresh frequency.
+
+HCU began with three of these and added the others once owners were agreed. Each has a source.
 
 ### 15.3 Provenance
 
 Record for every observation: what was observed, by which method (passive network, configuration, code scan, vendor statement), when, and by whom. Methods differ in confidence: an observed handshake is stronger evidence than a vendor's datasheet. In TLS 1.3 a passive sensor sees the selected group but not the server certificate, which is encrypted, so certificate algorithms must come from endpoint or configuration evidence. Mixing methods without labels makes dashboards look more certain than they are.
 
+HCU's inventory has a column for method and one for date, and dashboards show both.
+
 ### 15.4 Worked example
 
 HCU's first dashboard reports "92 % of connections hybrid". On inspection, the only sensor sits in front of the new web gateway, which already uses X25519MLKEM768; branch VPNs and the ATM network are invisible to it. The corrected dashboard shows "web traffic: 92 % hybrid (sensor coverage 100 % of web gateway); VPN: 0 % (configuration evidence, 40/40 branches); ATM: unknown (no sensor)". The headline number fell, and the decision quality rose.
 
+The correction did not change any system, only what the dashboard claimed. Managers could now see where work remained and where the team simply lacked sight. The ATM row led to a request to the ATM vendor for configuration evidence, since adding a network sensor there was not possible.
+
 ### 15.5 Practical activity
 
 Design three readiness indicators for HCU. For each, give definition, source, coverage, owner and refresh rate, and name one way it could mislead.
+
+A good definition says exactly what is counted and what is not. Coverage should state which part of the estate the source can see. An owner is a person or role who will notice when the figure looks wrong. The way an indicator could mislead is often its most useful line: for example, a count of vendors with roadmaps says nothing about whether the roadmaps are realistic or have dates.
 
 ### 15.6 Common errors and limits
 
 - Reporting a percentage without its denominator and coverage.
 - Treating vendor claims as observations.
 - Counting connections when the decision concerns assets or data classes.
+
+A percentage without its base can hide a tiny sample or a biased one. Vendor statements are useful but untested; label them as claims until someone observes the behaviour. Counting connections favours busy systems, while migration decisions usually concern which assets or data classes are protected. A single busy web service can make the figure look good while a quiet but sensitive archive link stays classical. Choose the unit that matches the decision.
 
 ### Exercises
 
@@ -925,9 +955,13 @@ You will (1) describe trust boundaries, zones and defence in depth; (2) draw a d
 
 A *trust boundary* separates components with different levels of trust — the internet and HCU's web tier, the web tier and the core banking zone, a branch and the data centre. Data crossing a boundary needs protection appropriate to its sensitivity: encryption, authentication, validation. *Defence in depth* layers independent controls so that one failure does not expose everything.
 
+For quantum migration, the boundaries that matter most are those where long-lived data leaves a protected zone over a network someone else could record.
+
 ### 16.2 Data-flow diagrams
 
 A data-flow diagram shows external entities, processes, data stores and the flows between them, with trust boundaries drawn as dashed lines. Annotating each flow with protocol, key-exchange algorithm, authentication algorithm and data lifetime turns the diagram into a quantum-exposure map: any flow crossing an untrusted boundary with long-lived data and classical key exchange is a harvest-now-decrypt-later candidate.
+
+HCU's first diagram took a week to annotate, mostly because nobody knew which algorithm several flows used. Those gaps were as useful as the answers: each became a question for an owner or vendor. Drawing the diagram before choosing any new algorithm meant the plan started from what the systems actually do.
 
 ### 16.3 Crypto-agility
 
@@ -937,15 +971,21 @@ A data-flow diagram shows external entities, processes, data stores and the flow
 
 Some boundaries are crossed not in space but in time. A mortgage signed today will be verified by a court or buyer years later; an archive encrypted today will be decrypted during a future audit. Architecture should show long-term services — timestamping, archive re-encryption, evidence renewal — as components whose own cryptography must be migrated.
 
+HCU's mortgage archive is the clearest case: its encryption and its signatures must still work, and stay secure, decades after the documents were created. Each needs an owner.
+
 ### 16.5 Worked example
 
 HCU's diagram shows the mobile app → web gateway (internet boundary, TLS hybrid), web gateway → core banking (internal, TLS classical), core banking → archive (internal, AES-256 at rest, keys wrapped with RSA-OAEP), branch → data centre (WAN boundary, IPsec ECDH). Annotation reveals two priorities: the branch WAN for HNDL and the RSA-wrapped archive keys, which are exposed if the wrapped keys are ever copied off-site.
+
+The internal TLS link between the gateway and core banking is classical but lies within the data centre, which lowers its priority. The diagram made these trade-offs visible in one page, and the HCU security office used it to agree the first year's migration plan.
 
 ### 16.6 Common errors and limits
 
 - Drawing diagrams without algorithms and lifetimes.
 - Considering only network boundaries, not time boundaries.
 - Hard-coding algorithm choices in application code.
+
+A diagram without algorithms and lifetimes cannot show quantum exposure, however neat it looks. Time boundaries are easy to miss because they do not appear on network maps; archives, timestamps and signed records cross them silently. Algorithm choices hard-coded in application code turn every future change into a software project, which is the opposite of crypto-agility. Record each choice in configuration or policy instead, so that it can be found and changed later.
 
 ### Exercises
 
@@ -975,6 +1015,8 @@ You will (1) distinguish symmetric encryption, hash functions, MACs, key exchang
 ### 17.2 The NIST standards
 
 In August 2024 NIST published three post-quantum standards: [FIPS 203](https://doi.org/10.6028/NIST.FIPS.203) ML-KEM, a lattice-based KEM with parameter sets ML-KEM-512, -768 and -1024; [FIPS 204](https://doi.org/10.6028/NIST.FIPS.204) ML-DSA, a lattice-based signature; and [FIPS 205](https://doi.org/10.6028/NIST.FIPS.205) SLH-DSA, a stateless hash-based signature. Earlier, [SP 800-208](https://doi.org/10.6028/NIST.SP.800-208) approved the stateful hash-based signatures LMS and XMSS. NIST defines security *categories* 1–5 by comparison with breaking AES-128, SHA-256, AES-192, SHA-384 and AES-256; ML-KEM-768 targets category 3.
+
+For HCU, category three parameter sets are the common starting point, since they offer a comfortable margin at moderate size.
 
 ### 17.3 Practical activity — Lab L
 
@@ -1017,11 +1059,15 @@ Security rests only on the hash function, which is why hash-based signatures are
 
 HCU's architect asks which primitive fits each need: archive encryption (AES-256, keep), key transport to the archive (KEM: ML-KEM-768 in a hybrid), statement signing (ML-DSA-65 once supported, or hybrid with ECDSA during transition), firmware signing for ATMs (LMS via SP 800-208 or SLH-DSA, because signing volume is low and conservatism is valued).
 
+Each choice follows from the need rather than from the newest algorithm. Symmetric encryption stays because Grover's search leaves AES-256 strong. Key transport needs a KEM. Signatures need to be verifiable for as long as the signed statement matters. Firmware signing favours hash-based schemes because their security rests on hash functions alone, and the low signing volume makes managing state practical.
+
 ### 17.5 Common errors and limits
 
 - Calling ML-KEM "encryption"; it is a KEM producing a shared secret.
 - Reusing one-time or stateful signature keys.
 - Treating the toy Lamport lab as usable code.
+
+A KEM gives both sides a shared secret; the data itself is then encrypted with a symmetric algorithm. Stateful signature keys must never sign twice with the same one-time key, which means the signer must track state reliably, including across backups and failures. The lab's Lamport scheme exists to show the idea of hash-based signatures; it is insecure in practice and must never be used outside the classroom.
 
 ### Exercises
 
@@ -1048,27 +1094,39 @@ You will (1) formulate a researchable question; (2) choose between literature re
 
 A good research question is specific, answerable with available evidence and relevant to a decision. "Is PQC good?" is not researchable. "What share of HCU's branch-to-data-centre flows carry data with a confidentiality lifetime above 15 years?" is. Questions in this field often take the forms *how much* (measurement), *what happens if* (experiment), *how did it go* (case study) or *what is known* (literature review).
 
+HCU's security office asks the student team for questions of the second kind, because each answer changes a migration priority or a budget line.
+
 ### 18.2 Methods
 
 A *literature review* summarises primary sources systematically, recording search terms and inclusion rules. A *measurement study* counts properties of a population, such as TLS groups offered by a set of servers. An *experiment* changes one factor and observes the effect, such as handshake latency with and without a hybrid group in a lab. A *case study* examines one migration in depth. Each method answers different questions; combining them strengthens conclusions.
+
+HCU's own studies combine a measurement of its estate with lab experiments on the slowest branch links.
 
 ### 18.3 Populations, samples and validity
 
 State the population (all HCU web services), the sampling frame (services in the asset register) and the sample (those reachable from the test network). *Internal validity* asks whether the observed effect is caused by the factor studied; *external validity* asks whether results generalise. A latency experiment on a fast lab network may not predict results on rural branch links; that is an external-validity limit, not a failure, as long as it is stated.
 
+HCU's asset register itself may be incomplete, which is a frame problem to state.
+
 ### 18.4 Worked example
 
 Question: "Does enabling X25519MLKEM768 on HCU's test gateway increase median handshake time for branch clients?" Method: lab experiment with emulated branch latency of 40 ms and 1 % loss; 1,000 handshakes per condition, alternating order to control drift. Result (synthetic): median increases by 0.9 ms; the 99th percentile increases by 3 ms because some ClientHellos need a second segment. Validity note: emulated loss does not reproduce the behaviour of the branch's real inspection proxy.
 
+The report states both the median and the tail, and the limit of the emulation. HCU's network team then tested at one branch with the real proxy before wider rollout, which is where the external-validity gap would show.
+
 ### 18.5 Practical activity
 
 Write a one-page study protocol for measuring how many HCU internal services support TLS 1.3, including population, frame, sample, method, data handling and validity threats.
+
+A protocol written before collecting data stops later choices from being shaped by the results. Say how you will count a service that does not respond, how you will treat services outside the register and how long the data will be kept. Validity threats might include services only reachable from some networks or a test network that differs from production. Have a classmate read the protocol and try to find a choice you left unstated.
 
 ### 18.6 Common errors and limits
 
 - Questions too broad to answer.
 - Unstated sampling frames that hide selection bias.
 - Generalising lab latency to production networks.
+
+A broad question produces vague answers that no one can act on. An unstated frame hides which systems were never in the sample, and the missing ones are often the oldest and most fragile. Lab networks are cleaner than production, so latency and failure results should be presented as lower bounds until confirmed in the field. Write each limit next to the result it affects, not in a separate place readers may skip.
 
 ### Exercises
 
