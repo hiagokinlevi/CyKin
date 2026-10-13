@@ -12,10 +12,10 @@ Edición en español neutro, escrita a partir de la edición de referencia en in
 |---|---|---|---:|---:|---:|---|---|
 | 1 | [01](book/PLAN.md#ch-01) | Fundamentos de seguridad para profesionales | 30 | 30 | 5 | [Borrador](book/MANUSCRIPT.md#ch-01) | [02 · Borrador](book/MANUSCRIPT.md#ch-02) |
 | 1 | [02](book/PLAN.md#ch-02) | Contexto del servicio y de las partes interesadas | 30 | 30 | 5 | [Borrador](book/MANUSCRIPT.md#ch-02) | [03 · Borrador](book/MANUSCRIPT.md#ch-03) |
-| 2 | [03](book/PLAN.md#ch-03) | Práctica autorizada y tratamiento de la evidencia | 30 | 30 | 5 | [Borrador](book/MANUSCRIPT.md#ch-03) | [04 · Plan](book/PLAN.md#ch-04) |
-| 2 | [04](book/PLAN.md#ch-04) | Métodos fundamentales | 30 | 30 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-04)) | [05 · Plan](book/PLAN.md#ch-05) |
-| 3 | [05](book/PLAN.md#ch-05) | Herramientas e interpretación | 30 | 30 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-05)) | [06 · Plan](book/PLAN.md#ch-06) |
-| 3 | [06](book/PLAN.md#ch-06) | Flujo de trabajo operativo | 30 | 30 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-06)) | [07 · Plan](book/PLAN.md#ch-07) |
+| 2 | [03](book/PLAN.md#ch-03) | Práctica autorizada y tratamiento de la evidencia | 30 | 30 | 5 | [Borrador](book/MANUSCRIPT.md#ch-03) | [04 · Borrador](book/MANUSCRIPT.md#ch-04) |
+| 2 | [04](book/PLAN.md#ch-04) | Métodos fundamentales | 30 | 30 | 5 | [Borrador](book/MANUSCRIPT.md#ch-04) | [05 · Borrador](book/MANUSCRIPT.md#ch-05) |
+| 3 | [05](book/PLAN.md#ch-05) | Herramientas e interpretación | 30 | 30 | 5 | [Borrador](book/MANUSCRIPT.md#ch-05) | [06 · Borrador](book/MANUSCRIPT.md#ch-06) |
+| 3 | [06](book/PLAN.md#ch-06) | Flujo de trabajo operativo | 30 | 30 | 5 | [Borrador](book/MANUSCRIPT.md#ch-06) | [07 · Plan](book/PLAN.md#ch-07) |
 | 4 | [07](book/PLAN.md#ch-07) | Controles y verificación | 30 | 30 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-07)) | [08 · Plan](book/PLAN.md#ch-08) |
 | 4 | [08](book/PLAN.md#ch-08) | Análisis supervisado de un caso | 30 | 30 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-08)) | [09 · Plan](book/PLAN.md#ch-09) |
 | 5 | [09](book/PLAN.md#ch-09) | Comunicación, ética e informes | 30 | 30 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-09)) | [10 · Plan](book/PLAN.md#ch-10) |
