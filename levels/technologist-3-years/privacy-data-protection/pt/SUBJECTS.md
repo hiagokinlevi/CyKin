@@ -19,12 +19,12 @@ Edição em português do Brasil, escrita a partir da edição de referência em
 | 2 | [07](book/PLAN.md#ch-07) | Fundamentos de identidade e acesso | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-07) | [08 · Rascunho](book/MANUSCRIPT.md#ch-08) |
 | 2 | [08](book/PLAN.md#ch-08) | Fundamentos de arquitetura de segurança | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-08) | [09 · Rascunho](book/MANUSCRIPT.md#ch-09) |
 | 2 | [09](book/PLAN.md#ch-09) | Evidências e medição | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-09) | [10 · Rascunho](book/MANUSCRIPT.md#ch-10) |
-| 2 | [10](book/PLAN.md#ch-10) | Privacidade e proteção de dados: orientação | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-10) | [11 · Plano](book/PLAN.md#ch-11) |
-| 3 | [11](book/PLAN.md#ch-11) | Privacidade e proteção de dados: ativos e contexto | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-11)) | [12 · Plano](book/PLAN.md#ch-12) |
-| 3 | [12](book/PLAN.md#ch-12) | Privacidade e proteção de dados: fluxos de dados | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-12)) | [13 · Plano](book/PLAN.md#ch-13) |
-| 3 | [13](book/PLAN.md#ch-13) | Privacidade e proteção de dados: cenários de risco | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-13)) | [14 · Plano](book/PLAN.md#ch-14) |
-| 3 | [14](book/PLAN.md#ch-14) | Privacidade e proteção de dados: métodos I | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-14)) | [15 · Plano](book/PLAN.md#ch-15) |
-| 3 | [15](book/PLAN.md#ch-15) | Privacidade e proteção de dados: laboratório guiado | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-15)) | [16 · Plano](book/PLAN.md#ch-16) |
+| 2 | [10](book/PLAN.md#ch-10) | Privacidade e proteção de dados: orientação | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-10) | [11 · Rascunho](book/MANUSCRIPT.md#ch-11) |
+| 3 | [11](book/PLAN.md#ch-11) | Privacidade e proteção de dados: ativos e contexto | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-11) | [12 · Rascunho](book/MANUSCRIPT.md#ch-12) |
+| 3 | [12](book/PLAN.md#ch-12) | Privacidade e proteção de dados: fluxos de dados | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-12) | [13 · Rascunho](book/MANUSCRIPT.md#ch-13) |
+| 3 | [13](book/PLAN.md#ch-13) | Privacidade e proteção de dados: cenários de risco | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-13) | [14 · Rascunho](book/MANUSCRIPT.md#ch-14) |
+| 3 | [14](book/PLAN.md#ch-14) | Privacidade e proteção de dados: métodos I | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-14) | [15 · Rascunho](book/MANUSCRIPT.md#ch-15) |
+| 3 | [15](book/PLAN.md#ch-15) | Privacidade e proteção de dados: laboratório guiado | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-15) | [16 · Plano](book/PLAN.md#ch-16) |
 | 4 | [16](book/PLAN.md#ch-16) | Privacidade e proteção de dados: métodos II | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-16)) | [17 · Plano](book/PLAN.md#ch-17) |
 | 4 | [17](book/PLAN.md#ch-17) | Privacidade e proteção de dados: ferramentas | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-17)) | [18 · Plano](book/PLAN.md#ch-18) |
 | 4 | [18](book/PLAN.md#ch-18) | Privacidade e proteção de dados: controles | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-18)) | [19 · Plano](book/PLAN.md#ch-19) |
