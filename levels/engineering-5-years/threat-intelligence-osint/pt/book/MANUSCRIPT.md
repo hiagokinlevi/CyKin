@@ -1,7 +1,7 @@
 # Inteligência de ameaças e OSINT: um livro de engenharia
 
 - Idioma: português do Brasil (`pt`); curso de engenharia, cinco anos. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–30 de 50 já estão escritos em português, com os exercícios EX001–EX090 e suas resoluções com rubricas de 0 a 3 e 6 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 31–50 (EX091–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–33 de 50 já estão escritos em português, com os exercícios EX001–EX099 e suas resoluções com rubricas de 0 a 3 e 7 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 34–50 (EX100–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que vão projetar, construir, verificar e operar plataformas de inteligência de ameaças e fluxos de OSINT como sistemas confiáveis.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limite ético: nenhuma coleta sobre pessoas privadas reais, nenhuma evasão de termos de uso, nenhuma desanonimização e nenhuma interação com infraestrutura de adversários. Toda organização, pessoa, indicador e número é **sintético**, salvo quando uma frase cita uma fonte pública; os endereços usam as faixas da RFC 5737 e os domínios usam `.example`.
@@ -28,9 +28,9 @@ MITRE [ATT&CK](https://attack.mitre.org/); OASIS [STIX 2.1](https://docs.oasis-o
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) |
 
-Capítulos 31–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-31), até a chegada dos próximos lotes.
+Capítulos 34–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-34), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1850,11 +1850,204 @@ Verifique contra os requisitos escritos com procedimentos rastreáveis, registre
 
 [← Capítulo 29 (rascunho)](#ch-29) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 31 (rascunho) →](#ch-31)
 
+<a id="ch-31"></a>
+
+## Capítulo 31 — Inteligência de ameaças e OSINT: implementação II
+
+### Objetivos de aprendizagem
+
+Você vai (1) implementar o enriquecimento com cache e respeito aos termos dos provedores; (2) implementar a ingestão de avistamentos a partir da telemetria interna; (3) calcular a confiança com decaimento na leitura; (4) publicar de volta aos parceiros os objetos aprovados por analistas.
+
+### 31.1 Enriquecimento
+
+O enriquecimento acrescenta contexto: o dono interno do ativo de um endereço, o histórico de DNS passivo de um domínio, ligações a técnicas do ATT&CK para uma família de malware. Provedores externos de enriquecimento têm termos sobre volume de consultas, retenção e redistribuição. O enriquecedor do Lantern registra qual provedor forneceu cada campo, para que as regras de redistribuição possam ser aplicadas na exportação. O enriquecimento interno costuma ser o mais útil. Saber que um endereço contatado pertence ao notebook de um engenheiro de subestação muda na hora a prioridade de um avistamento. O enriquecedor de Kofi consulta primeiro as fontes internas.
+
+### 31.2 Avistamentos
+
+Quando o resolvedor DNS ou o proxy da BEN vê um indicador, o Lantern registra um objeto sighting do STIX 2.1 que referencia o indicador, com os horários da primeira e da última observação e uma contagem. Os avistamentos aumentam a confiança e dão aos parceiros um retorno valioso quando compartilhados conforme o acordo. O gravador de avistamentos de Kofi agrupa ocorrências repetidas dentro de uma hora em um só objeto com contagem, para que um indicador muito ativo não produza milhares de registros. O objeto registra qual sensor da BEN o viu, usando um identificador interno em vez de um nome de host. Isso mantém a topologia da rede interna fora de tudo o que possa ser compartilhado depois.
+
+### 31.3 Confiança na leitura
+
+Em vez de reescrever todos os registros toda noite, o Lantern armazena c₀ e o horário do último avistamento e calcula a confiança com decaimento quando consultado. Isso evita atualizações em massa e mantém a mudança de modelo em uma única função. Calcular na leitura também significa que mudar uma meia-vida vale imediatamente para todos os indicadores, sem migração. O custo é um pouco de processamento na hora da consulta, que Kofi mediu como desprezível perto da própria busca. As exportações e o envio aos firewalls chamam a mesma função, então todo consumidor vê a mesma pontuação para o mesmo indicador no mesmo momento. Um teste compara os resultados da função com os valores impressos pelo laboratório de decaimento.
+
+### 31.4 Publicação
+
+Os analistas aprovam objetos para compartilhamento com uma marcação TLP. O publicador remove os campos de enriquecimento cujo provedor proíbe a redistribuição, assina o pacote e o acrescenta à coleção TAXII da comunidade. A etapa de aprovação é onde um analista confere se o objeto diz o que deveria e se seu rótulo está certo. O publicador então aplica as regras mecânicas sem exceções. Os testes de Kofi incluem um objeto com um campo de DNS passivo licenciado e falham se esse campo aparecer no pacote assinado. Os analistas veem na interface quais campos serão removidos antes de aprovar.
+
+### 31.5 Dados pessoais na telemetria
+
+Os avistamentos vêm de sistemas que sabem de qual funcionário era a máquina que fez uma requisição. O Lantern armazena o identificador do ativo, não a pessoa, e compartilha para fora apenas contagens agregadas. Um analista que investiga um avistamento ainda pode chegar à pessoa pelo registro de ativos da BEN, mas essa consulta acontece nas ferramentas do próprio SOC, sob suas regras de acesso, e não no Lantern. Kofi fez essa escolha de projeto depois que o encarregado de privacidade observou que os dados do Lantern são compartilhados mais amplamente que os arquivos de casos do SOC. Os relatórios para fora trazem contagens por tipo de ativo, como estações de trabalho ou servidores, e nunca uma lista de máquinas.
+
+### Nota de prática — implantação gradual
+
+Novas etapas entram em produção atrás de uma chave de funcionalidade, primeiro para uma fração do tráfego. Kofi compara as métricas entre os caminhos com e sem a chave durante uma semana antes da implantação completa.
+
+### Exemplo resolvido
+
+Um parceiro pede os avistamentos de seus indicadores. O Lantern exporta objetos sighting com contagens e intervalos de tempo, mas sem nomes de host internos nem nomes de usuário, marcados como TLP:AMBER conforme o acordo com o parceiro. O parceiro informa que dois de seus indicadores não tiveram avistamentos em toda a comunidade e os aposenta.
+
+> **Caso sintético.** A troca é inventada.
+
+### Erros e limites
+
+Redistribuir enriquecimento licenciado pode violar contratos. Avistamentos podem revelar a exposição de um membro; compartilhe apenas conforme acordado.
+
+### Exercícios
+
+- **EX091 — Campo do provedor.** Por que registrar o provedor de cada campo de enriquecimento? *Rubrica:* 3 = aplicar os termos de redistribuição/retenção na exportação; 2 = auditoria; 1 = sem motivo; 0 = nenhuma.
+- **EX092 — Conteúdo do avistamento.** O que o Lantern compartilha nos objetos sighting, e o que remove? *Rubrica:* 3 = contagens/intervalos de tempo/referência ao indicador; remove nomes de host/usuários; 2 = uma das metades; 1 = tudo; 0 = nenhuma.
+- **EX093 — Cálculo na leitura.** Dê uma vantagem de calcular a confiança com decaimento na leitura. *Rubrica:* 3 = sem reescritas noturnas em massa/função única do modelo; 2 = eficiência, de forma vaga; 1 = tentativa mínima; 0 = nenhuma.
+
+### Síntese
+
+Enriqueça dentro dos termos dos provedores, registre avistamentos sem pessoas, calcule o decaimento na leitura e publique apenas o que pode ser compartilhado.
+
+### Continue estudando — capítulo 31 de 50
+
+[← Capítulo 30 (rascunho)](#ch-30) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 32 (rascunho) →](#ch-32)
+
+<a id="ch-32"></a>
+
+## Capítulo 32 — Inteligência de ameaças e OSINT: confiabilidade
+
+### Objetivos de aprendizagem
+
+Você vai (1) calcular a disponibilidade de pipelines em série; (2) quantificar o efeito da redundância; (3) definir objetivos de nível de serviço com orçamentos de erro; (4) decidir onde o investimento em confiabilidade compensa.
+
+### 32.1 Disponibilidade em série
+
+Uma requisição que precisa passar por todas as etapas só tem sucesso se todas estiverem no ar, então as disponibilidades se multiplicam. Quatro etapas que parecem boas uma a uma podem resultar em algo medíocre. Uma etapa que fica no ar a maior parte do tempo ainda falha de vez em quando, e o pipeline falha sempre que qualquer etapa falha. O laboratório põe números nesse efeito com quatro valores plausíveis. Kofi usa o cálculo cedo no projeto para ver qual etapa limita o todo, antes de gastar dinheiro em etapas que já são confiáveis.
+
+### Laboratório 7 — disponibilidade
+
+```python
+"""Lab 7 (ch 32): availability of a synthetic CTI pipeline - serial stages and a redundant pair."""
+stages = {"taxii-poll": 0.995, "parser": 0.999, "enrich": 0.98, "store": 0.999}
+serial = 1.0
+for a in stages.values():
+    serial *= a
+print(f"serial availability={serial:.4f} (~{(1-serial)*8760:.0f} h/yr down)")
+enrich_pair = 1 - (1 - stages["enrich"]) ** 2
+improved = serial / stages["enrich"] * enrich_pair
+print(f"with redundant enrich: {improved:.4f} (~{(1-improved)*8760:.0f} h/yr down)")
+```
+
+Execute com `python3 lab_avail.py`. Saída verificada:
+
+```text
+serial availability=0.9732 (~235 h/yr down)
+with redundant enrich: 0.9926 (~65 h/yr down)
+```
+
+### 32.2 Lendo o laboratório
+
+O pipeline em série chega a 0,9732, cerca de 235 horas de indisponibilidade por ano — dominadas pelo enriquecimento, com 0,98. Duplicar o enriquecimento (duas instâncias independentes, qualquer uma pode atender) eleva o pipeline a 0,9926, cerca de 65 horas por ano. Investir na etapa mais fraca dá o maior ganho. Kofi apresentou o resultado em horas, e não em razões, porque os gestores achavam mais fácil julgar duzentas horas por ano do que quatro casas decimais. O mesmo raciocínio orienta os gastos seguintes: antes de comprar um armazenamento mais confiável, que já está perto da perfeição, a equipe pergunta qual etapa ainda responde pela maior parte das horas perdidas.
+
+### 32.3 Hipótese de independência
+
+A fórmula da redundância supõe que as falhas são independentes. Dois trabalhadores de enriquecimento no mesmo host, ou chamando o mesmo provedor externo, falham juntos. Redundância real exige hosts diversos e, quando possível, provedores alternativos. Kofi conferiu o primeiro projeto de redundância e descobriu que as duas instâncias de enriquecimento chamavam o mesmo provedor externo. Se esse provedor caísse, as duas falhariam juntas e a melhoria do laboratório desapareceria. O projeto revisado acrescenta um modo de contingência que marca os indicadores como não enriquecidos em vez de esperar, o que tira a dependência comum do caminho crítico. Ele declara a hipótese de independência ao lado de cada número de disponibilidade que relata.
+
+### 32.4 SLOs e orçamentos de erro
+
+Um SLO como "99,5% das consultas têm sucesso a cada mês" define um orçamento de erro de 0,5%. Quando o orçamento se esgota, o trabalho em funcionalidades pausa e o trabalho de confiabilidade ganha prioridade. A equipe de Kofi acompanha o orçamento toda semana no mesmo painel das outras métricas. Quando uma interrupção de um parceiro consumiu a maior parte do orçamento de um mês, a equipe passou a sprint seguinte acrescentando novas tentativas e alertas em vez da funcionalidade de relatórios planejada. A regra foi acordada de antemão com o líder de CTI, então a pausa não precisou de uma nova discussão a cada vez.
+
+### 32.5 Degradação controlada
+
+Se o enriquecimento falha, o Lantern ainda deve armazenar e casar os indicadores, marcando-os como "não enriquecidos", em vez de parar a ingestão. Num SOC, serviço degradado é melhor que nenhum serviço. O modo de contingência de Kofi foi testado parando o serviço de enriquecimento durante uma reprodução de tráfego sintético. A ingestão continuou, a correspondência continuou e os indicadores levaram a marcação de não enriquecidos. Quando o enriquecimento voltou, uma tarefa em segundo plano preencheu o contexto ausente. Os analistas relataram que a marcação era útil, porque lhes dizia para buscar o contexto à mão nos casos urgentes durante a interrupção.
+
+### Medindo o que os usuários sentem
+
+O tempo no ar de cada processo não é o que os analistas experimentam. Kofi acrescenta uma sonda sintética que injeta um indicador de teste a cada quinze minutos e confere se ele chega à política de DNS. A taxa de sucesso da sonda é a disponibilidade que os usuários de fato sentem, e ela pega falhas entre componentes que as verificações de saúde por processo deixam passar.
+
+### Exemplo resolvido
+
+Kofi propõe uma segunda instância de enriquecimento em outro host e um modo de contingência que pula o enriquecimento externo quando o provedor está fora. A disponibilidade mensal medida sobe de 97,4% para 99,2% no trimestre seguinte; são números medidos, por isso diferem um pouco dos 0,9732 e 0,9926 previstos pelo Laboratório 7.
+
+> **Caso sintético.** Os números são ilustrativos.
+
+### Erros e limites
+
+Números de disponibilidade escondem falhas parciais, como respostas lentas. Meça também SLOs de latência.
+
+### Exercícios
+
+- **EX094 — Resultado em série.** Cite a disponibilidade em série do laboratório e a indisponibilidade anual aproximada. *Rubrica:* 3 = 0,9732, ~235 h; 2 = um; 1 = errado; 0 = nenhuma.
+- **EX095 — Dependência oculta.** Por que dois trabalhadores de enriquecimento podem não ser independentes? *Rubrica:* 3 = host/provedor/rede compartilhados → falha de modo comum; 2 = vago; 1 = sempre independentes; 0 = nenhuma.
+- **EX096 — Modo degradado.** O que o Lantern deve fazer quando o enriquecimento externo está indisponível? *Rubrica:* 3 = continuar a ingestão/correspondência; marcar como não enriquecido; tentar de novo depois; 2 = continuar; 1 = parar o pipeline; 0 = nenhuma.
+
+### Síntese
+
+Multiplique as disponibilidades em série, corrija a etapa mais fraca com redundância de fato independente, administre os orçamentos de erro e degrade de forma controlada.
+
+### Continue estudando — capítulo 32 de 50
+
+[← Capítulo 31 (rascunho)](#ch-31) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 33 (rascunho) →](#ch-33)
+
+<a id="ch-33"></a>
+
+## Capítulo 33 — Inteligência de ameaças e OSINT: segurança operacional e resiliência
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar como as saídas de CTI poderiam prejudicar a tecnologia operacional; (2) projetar intertravamentos de segurança para ações automatizadas; (3) planejar a resiliência contra a perda de feeds ou parceiros; (4) ensaiar um retorno seguro à configuração anterior.
+
+### 33.1 Como a inteligência pode ferir a operação
+
+Um bloqueio amplo demais em um firewall de OT poderia separar um mestre SCADA de suas unidades terminais remotas, eliminando a visibilidade da rede elétrica. Uma marcação "maliciosa" equivocada no servidor de atualizações de um fornecedor poderia bloquear um patch relevante para a segurança operacional. Em infraestrutura crítica, falsos positivos têm consequências físicas. As revisões de projeto de Kofi perguntam, para cada ação automatizada, que efeito físico uma decisão errada poderia ter. Na TI corporativa a resposta costuma ser um site bloqueado e um chamado. Na OT pode ser uma sala de controle perdendo de vista parte da rede durante uma tempestade, justamente quando os operadores mais precisam dela. Essa diferença justifica regras diferentes para os dois ambientes.
+
+### 33.2 Intertravamentos
+
+O Lantern aplica intertravamentos: nenhuma ação automática em segmentos de OT; uma lista de endereços operacionais protegidos que nenhum bloqueio pode incluir; um tamanho máximo de mudança por envio; e aprovação por duas pessoas para qualquer regra de OT. Eles espelham a ideia da engenharia de segurança de que uma única falha não deve causar dano. Kofi testa cada intertravamento com um envio sintético feito para dispará-lo: uma lista com um endereço protegido, uma lista muito maior que o limite, uma aprovação por uma só pessoa. Cada teste precisa ser recusado e registrado.
+
+### 33.3 Resiliência à perda de fontes
+
+Se um parceiro importante parar de compartilhar, a detecção deve degradar de forma controlada. Fontes diversas, analíticas sobre a telemetria interna e detecções comportamentais mapeadas no ATT&CK reduzem a dependência de qualquer feed isolado. Kofi testou isso reproduzindo um mês de tráfego sintético sem o maior parceiro. As detecções caíram, mas as regras comportamentais ainda pegaram a maioria das intrusões simuladas que os indicadores haviam pegado, embora muitas vezes mais tarde. O resultado mostrou à BEN quão exposta ela ficaria se esse parceiro parasse de compartilhar e apoiou o investimento em analíticas internas.
+
+### 33.4 Retorno à configuração anterior
+
+Cada envio registra o conjunto de regras anterior. Um retorno testado, com um único comando, o restaura em minutos. Exercícios de retorno são feitos a cada trimestre no ambiente de teste. O exercício de Kofi mede quanto tempo o retorno leva e confere se as regras restauradas correspondem exatamente à cópia armazenada. O primeiro exercício levou vinte minutos porque o comando precisava de uma credencial que ninguém tinha à mão; agora o roteiro indica onde ela fica guardada. Um retorno que nunca é praticado tende a falhar na primeira vez em que é realmente necessário.
+
+### 33.5 Coordenação com a operação
+
+Os engenheiros de OT são donos das decisões operacionais. O Lantern fornece recomendações e evidências; ele não passa por cima da operação. Na prática, isso significa que as saídas do Lantern para a OT são recomendações com evidências anexadas. Um engenheiro de OT pode recusar um bloqueio porque ele interromperia uma janela de manutenção planejada, e essa decisão prevalece. Kofi registra o motivo, para que os analistas vejam por que o bloqueio não aconteceu. Se a ameaça crescer, os analistas a levantam de novo com novas evidências, em vez de contornar a equipe de operação. As duas equipes revisam juntas, todo mês, as recomendações recusadas.
+
+### Nota de prática — casos de segurança
+
+Um argumento de segurança curto declara o perigo, os intertravamentos que o previnem e a evidência de que cada intertravamento funciona. Os revisores podem então contestar um elo específico em vez do projeto inteiro.
+
+### Depois de uma anulação
+
+Sempre que um engenheiro anula um intertravamento, o dia útil seguinte inclui uma revisão curta do porquê, de se o intertravamento estava errado e de se a regra deve mudar.
+
+### Exemplo resolvido
+
+Um parceiro marca como malicioso o endereço do servidor de atualizações do fornecedor de relés da BEN depois de um comprometimento em outro lugar. O intertravamento de endereços protegidos bloqueia o envio automático; os engenheiros de OT revisam, confirmam que o servidor do fornecedor está limpo para a região da BEN e registram a decisão.
+
+> **Caso sintético.** O fornecedor e a marcação são inventados.
+
+### Erros e limites
+
+Intertravamentos podem ser contornados sob pressão; audite cada anulação. A análise de segurança operacional precisa envolver engenheiros de OT.
+
+### Exercícios
+
+- **EX097 — Dano físico.** Dê uma forma pela qual um bloqueio no estilo de TI poderia causar dano operacional em uma rede elétrica. *Rubrica:* 3 = mecanismo específico (cortar a visibilidade do SCADA, bloquear patch de segurança); 2 = vago; 1 = tentativa mínima; 0 = nenhuma.
+- **EX098 — Lista de intertravamentos.** Cite três intertravamentos que o Lantern aplica às ações de OT. *Rubrica:* 3 = três entre nenhuma ação automática em OT/lista de endereços protegidos/tamanho máximo de mudança/aprovação por duas pessoas; 2 = dois; 1 = um; 0 = nenhuma.
+- **EX099 — Perda de fonte.** Como a detecção comportamental mapeada no ATT&CK ajuda quando um feed desaparece? *Rubrica:* 3 = detecta técnicas independentemente dos indicadores do feed; 2 = parcial; 1 = não ajuda; 0 = nenhuma.
+
+### Síntese
+
+Trate falsos positivos como riscos físicos, intertrave as ações automatizadas, diversifique as fontes e ensaie o retorno à configuração anterior.
+
+### Continue estudando — capítulo 33 de 50
+
+[← Capítulo 32 (rascunho)](#ch-32) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 34 (rascunho) →](#ch-34)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX090 (as de EX091–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). A Brightwater Energy Networks, o Lantern, Kofi Mensah e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX099 (as de EX100–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). A Brightwater Energy Networks, o Lantern, Kofi Mensah e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** (13.300 − 12.700) / 1 h = 600 indicadores por hora.
 
@@ -2035,6 +2228,24 @@ Respostas-modelo para EX001–EX090 (as de EX091–EX150 estão na edição em i
 **EX089.** O tratamento dos rótulos precisa ser exato e especificado — normalizado por uma regra documentada ou rejeitado; aceitar em silêncio uma variante mostra que a barreira não se comporta como exigido.
 
 **EX090.** Como "bloqueado — não executado", listado à parte com o dado de teste ausente e uma data agendada; não é uma aprovação.
+
+**EX091.** Para que a exportação possa remover os campos cujo provedor proíbe a redistribuição e para que os limites de retenção sejam respeitados por fonte.
+
+**EX092.** Compartilha a referência ao indicador, as contagens de avistamentos e os horários da primeira e da última observação; remove nomes de host internos e nomes de usuário.
+
+**EX093.** Evita reescrever todos os registros toda noite e mantém o modelo de decaimento em uma única função, de modo que mudar o modelo muda todos os resultados de uma vez.
+
+**EX094.** Disponibilidade em série de 0,9732, cerca de 235 horas de indisponibilidade por ano.
+
+**EX095.** Se os dois rodam no mesmo host, dependem do mesmo provedor externo ou compartilham um caminho de rede, uma única falha derruba os dois — uma falha de modo comum.
+
+**EX096.** Continuar ingerindo e casando, marcar os indicadores afetados como "não enriquecidos" e enriquecê-los quando o provedor voltar.
+
+**EX097.** Bloquear o tráfego entre um mestre SCADA e as unidades terminais remotas eliminaria a visibilidade e o controle das subestações.
+
+**EX098.** Nenhuma ação automática em OT; uma lista de endereços protegidos que os bloqueios não podem incluir; um tamanho máximo de mudança por envio; aprovação por duas pessoas (quaisquer três).
+
+**EX099.** As detecções comportamentais procuram técnicas como T1059 ou T1071 na própria telemetria da BEN, então continuam funcionando sem os indicadores do feed perdido.
 
 <a id="references"></a>
 ## Referências
