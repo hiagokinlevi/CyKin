@@ -1,7 +1,7 @@
 # Arquitetura e Engenharia de Segurança: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 122, curso de engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–22 de 50 já estão escritos em português, com os exercícios EX001–EX066 e suas resoluções com rubricas de 0 a 3 e 6 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 23–50 (EX067–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–28 de 50 já estão escritos em português, com os exercícios EX001–EX084 e suas resoluções com rubricas de 0 a 3 e 7 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 29–50 (EX085–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que vão projetar, verificar e operar sistemas seguros.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios calculam crescimento, fecho transitivo, probabilidades, disponibilidade, árvores de falhas, limites de taxa, diferenças entre regras, métricas e digests sobre dados sintéticos, e usam sqlite3 em memória para mostrar a injeção e sua correção; nada toca um sistema real. Projetos de produção usam produtos e padrões consagrados; nunca crie sua própria criptografia. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ Saltzer e Schroeder (1975), [doi:10.1109/PROC.1975.9939](https://doi.org/10.1109
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) |
 
-Capítulos 23–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-23), até a chegada dos próximos lotes.
+Capítulos 29–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-29), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1019,11 +1019,263 @@ Os modelos abstraem detalhes onde falhas podem se esconder. Os fluxos observados
 
 - **EX066 — Resposta à deriva.** O que significa quando os fluxos observados incluem um que não está no modelo? *Rubrica:* 3 = ou o modelo ou o sistema está errado; investigar os dois;; 2 = investigar;; 1 = ignorar;; 0 = nenhuma.
 
+<a id="ch-23"></a>
+
+## Capítulo 23 — Arquitetura e engenharia de segurança: análise de ameaças e falhas
+
+### Objetivos de aprendizagem
+
+Você vai (1) modelar as ameaças do back-office com STRIDE; (2) construir uma árvore de falhas para uma falha crítica; (3) combinar as visões de ameaças e de falhas em riscos priorizados.
+
+### 23.1 STRIDE sobre o modelo
+
+Usando o modelo de fluxo de dados do capítulo 22, Sofia e dois engenheiros passam cada elemento pelo STRIDE: spoofing, tampering, repudiation, information disclosure, denial of service e elevation of privilege, seguindo Shostack (2014). Descobrem que a interface de ingestão aceita registros de qualquer dispositivo que apresente um certificado da autoridade interna, inclusive validadores desativados; que as decisões de reembolso não são registradas com a identidade do aprovador, o que permite o repúdio; e que uma rajada de registros malformados poderia esgotar a fila de construção das viagens. Cada ameaça recebe um responsável, uma mitigação proposta e uma ligação com o requisito que afeta.
+
+### 23.2 Árvore de falhas para a perda de receita
+
+A modelagem de ameaças pergunta o que os atacantes podem fazer; a análise de falhas pergunta como o sistema pode falhar, qualquer que seja a causa. Sofia constrói uma árvore de falhas para o evento de topo em que a receita tarifária de um dia não pode ser conciliada. Ele ocorre se registros de validação forem perdidos ou se o cálculo da tarifa estiver errado. Os registros são perdidos se o buffer do validador transbordar e, ao mesmo tempo, o enlace de upload ficar fora do ar por tempo suficiente. Ela atribui probabilidades sintéticas e calcula a probabilidade do evento de topo com portas AND e OR, supondo independência. O laboratório abaixo mostra o cálculo e qual ramo domina.
+
+### Laboratório — Árvore de falhas para a receita não conciliada
+
+```python
+# Fault tree for "day's revenue cannot be reconciled" with synthetic daily probabilities (independence assumed).
+p_buffer_overflow = 0.02
+p_link_down_long = 0.05
+p_records_lost = p_buffer_overflow * p_link_down_long          # AND gate
+p_tariff_change_day = 0.10
+p_calc_error_given_change = 0.08
+p_calc_error = p_tariff_change_day * p_calc_error_given_change  # AND gate
+p_top = 1 - (1 - p_records_lost) * (1 - p_calc_error)            # OR gate
+print(f"records lost      {p_records_lost:.4f}")
+print(f"calculation error {p_calc_error:.4f}")
+print(f"top event         {p_top:.4f}  (~{p_top*365:.1f} days/year)")
+```
+
+Execute com `python3 lab_fta.py`. Saída verificada:
+
+```text
+records lost      0.0010
+calculation error 0.0080
+top event         0.0090  (~3.3 days/year)
+```
+
+### 23.3 Combinar as visões
+
+A árvore de falhas mostra que os erros de cálculo depois de mudanças de tarifa dominam o risco, mais do que os registros perdidos. O modelo de ameaças mostra que uma tabela de tarifas maliciosa enviada por uma conta de fornecedor comprometida poderia causar exatamente essa falha. Combinando as duas visões, Sofia classifica as tabelas de tarifas assinadas e verificadas como a principal mitigação, porque ela trata tanto as causas acidentais quanto as maliciosas da falha mais provável. Ela observa que as premissas de independência nas árvores de falhas podem subestimar o risco quando uma única causa, como uma queda de energia, dispara vários ramos ao mesmo tempo.
+
+### Exemplo resolvido
+
+Sofia conduz uma sessão STRIDE que encontra três ameaças, constrói uma árvore de falhas para a receita não conciliada e prioriza as tabelas de tarifas assinadas, porque as duas análises apontam para erros de tarifa.
+
+> **Caso sintético.** As ameaças, as probabilidades e a árvore de falhas são sintéticas; Shostack (2014) é real.
+
+### Erros e limites
+
+As probabilidades das árvores de falhas muitas vezes são palpites; sua ordenação é mais útil do que os valores absolutos. O STRIDE pode deixar passar ameaças fora do modelo.
+
+### Exercícios
+
+- **EX067 — Validadores desativados.** Que ameaça de spoofing a sessão STRIDE encontrou? *Rubrica:* 3 = validadores desativados com certificados internos ainda podiam enviar registros;; 2 = dispositivos desativados;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX068 — Ramo dominante.** Que ramo dominou a árvore de falhas no laboratório? *Rubrica:* 3 = erro de cálculo da tarifa depois de mudança de tarifa;; 2 = cálculo;; 1 = registros perdidos;; 0 = nenhuma.
+
+- **EX069 — Ressalva da independência.** Por que as premissas de independência podem subestimar o risco? *Rubrica:* 3 = uma causa comum, como uma queda de energia, pode disparar vários ramos juntos;; 2 = causa comum;; 1 = superestimam;; 0 = nenhuma.
+
+<a id="ch-24"></a>
+
+## Capítulo 24 — Arquitetura e engenharia de segurança: métodos I
+
+### Objetivos de aprendizagem
+
+Você vai (1) comparar métodos de risco qualitativos e quantitativos; (2) conduzir uma avaliação de risco segundo o SP 800-30 Rev. 1; (3) documentar as decisões de risco com responsáveis.
+
+### 24.1 Qualitativo e quantitativo
+
+O risco pode ser classificado qualitativamente, com escalas como baixo, médio e alto, ou quantitativamente, com frequências e perdas estimadas. Os métodos qualitativos são rápidos e ajudam a discussão, mas escondem grandes diferenças dentro de uma mesma categoria. Os métodos quantitativos obrigam a explicitar as premissas, mas podem criar uma falsa precisão quando os dados de entrada são palpites. Sofia usa os dois: uma passada qualitativa para ordenar muitos riscos e, depois, estimativas quantitativas com faixas para os poucos do topo, em que as decisões envolvem dinheiro de verdade. Ela registra as premissas por trás de cada número para que os leitores possam contestá-las, em vez de aceitar um valor pelo que aparenta.
+
+### 24.2 Conduzir uma avaliação
+
+O NIST SP 800-30 Rev. 1 descreve preparar a avaliação, conduzi-la identificando fontes de ameaça, eventos, vulnerabilidades, probabilidade e impacto, comunicar os resultados e manter a avaliação. Sofia segue essas etapas para o back-office. Ela define o escopo e as premissas, identifica as fontes de ameaça a partir da sessão STRIDE e da declaração de contexto, classifica a probabilidade e o impacto em escalas acordadas e registra cada risco. O valor do método está na consistência: outro avaliador que use as mesmas escalas e informações deve chegar a classificações parecidas, o que torna os resultados comparáveis ao longo do tempo e entre sistemas.
+
+### 24.3 Decisões de risco e responsáveis
+
+Cada risco precisa de uma decisão: mitigar, transferir, evitar ou aceitar. Sofia prepara um registro de riscos em que cada entrada tem um responsável com autoridade para decidir. A diretora financeira aceita um risco residual de até uma hora de uso de cartão roubado, documentado no capítulo 5. O chefe de operações é o responsável pelo risco de uso indevido de certificados de validadores e aprova um projeto de revogação. Daniel ressalta que os engenheiros recomendam, mas os responsáveis do negócio decidem, e que os riscos aceitos precisam ser revistos regularmente, porque uma aceitação feita num contexto pode estar errada depois que o contexto muda.
+
+### Exemplo resolvido
+
+Sofia ordena qualitativamente vinte riscos do back-office, estima faixas para os três do topo, segue as etapas do SP 800-30 Rev. 1 e atribui responsáveis e decisões num registro.
+
+> **Caso sintético.** Os riscos, as classificações e os responsáveis são sintéticos; o SP 800-30 Rev. 1 é real.
+
+### Erros e limites
+
+As escalas de risco significam coisas diferentes para pessoas diferentes, a menos que sejam ancoradas com exemplos. As faixas quantitativas continuam incertas.
+
+### Exercícios
+
+- **EX070 — Fraqueza qualitativa.** Qual é uma fraqueza das escalas de risco qualitativas? *Rubrica:* 3 = escondem grandes diferenças dentro de uma mesma categoria;; 2 = esconde diferenças;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX071 — Etapas do SP 800-30.** Cite as quatro etapas principais do SP 800-30 Rev. 1. *Rubrica:* 3 = preparar, conduzir, comunicar, manter;; 2 = três;; 1 = uma;; 0 = nenhuma.
+
+- **EX072 — Quem decide.** Quem decide se um risco é aceito? *Rubrica:* 3 = o responsável do negócio com autoridade, não o engenheiro;; 2 = responsável;; 1 = engenheiro;; 0 = nenhuma.
+
+<a id="ch-25"></a>
+
+## Capítulo 25 — Ateliê de projeto I
+
+### Objetivos de aprendizagem
+
+Você vai (1) desenvolver um projeto de arquitetura num formato de ateliê; (2) apresentar e defender escolhas de projeto; (3) incorporar críticas nas revisões.
+
+### 25.1 O briefing do ateliê
+
+No Ateliê de Projeto I, a equipe de quatro pessoas de Sofia recebe um briefing: projetar a arquitetura segura do novo sistema de gestão de recarga das garagens da Corvia, que programa a recarga dos ônibus elétricos e se conecta ao portal do fornecedor de energia. Eles têm quatro semanas. Começam pelo contexto, pelas partes interessadas e pelas necessidades de proteção, e depois desenham um modelo de componentes e os fluxos de dados. O formato de ateliê espelha a prática profissional: os projetos são desenvolvidos de forma iterativa, revisados por colegas e praticantes e revisados de novo. Daniel faz o papel de cliente, respondendo a perguntas sobre as restrições e recusando-se a tomar decisões de projeto por eles.
+
+### 25.2 Apresentar as escolhas
+
+Na revisão intermediária, a equipe apresenta três opções: controle da recarga na nuvem, com comandos remotos para as garagens; controle em cada garagem, com a nuvem apenas para relatórios; e um modelo híbrido. Eles defendem o controle local na garagem porque os ônibus precisam recarregar mesmo quando o enlace de internet falha, com programações assinadas vindas da nuvem e regras locais de contingência. Um revisor questiona como eles vão impedir que um controlador de garagem comprometido danifique os carregadores. Eles ainda não têm resposta e dizem isso com honestidade, registrando a pergunta como uma questão em aberto, em vez de inventar uma resposta sob pressão.
+
+### 25.3 Revisar a partir da crítica
+
+Na semana seguinte, a equipe pesquisa a questão em aberto na documentação do fornecedor dos carregadores e com os engenheiros de segurança física. Acrescentam limites de hardware nos carregadores que o controlador não consegue sobrepor, separam a rede do controlador dos sistemas corporativos e exigem aprovação de duas pessoas para mudanças nas regras de contingência. Na revisão final, mostram como cada mudança responde à crítica e que risco permanece. Sofia aprende que um ateliê de projeto recompensa a incerteza honesta seguida de pesquisa, e que a crítica é mais útil quando registrada e respondida explicitamente na versão seguinte.
+
+### Exemplo resolvido
+
+A equipe de Sofia compara três opções de controle da recarga, escolhe o controle local na garagem com programações assinadas, registra uma questão em aberto sobre controladores comprometidos e a responde com limites de hardware e segmentação.
+
+> **Caso sintético.** O sistema de recarga, o fornecedor e as revisões são sintéticos.
+
+### Erros e limites
+
+Os projetos de ateliê não têm o detalhamento de produção; restrições reais podem mudar as escolhas. Os limites de hardware dependem da qualidade da implementação do fornecedor.
+
+### Exercícios
+
+- **EX073 — Motivo do controle local.** Por que a equipe escolheu o controle de recarga local na garagem? *Rubrica:* 3 = os ônibus precisam recarregar mesmo quando os enlaces de internet falham;; 2 = resiliência;; 1 = custo;; 0 = nenhuma.
+
+- **EX074 — Questionamento sem resposta.** Como a equipe lidou com o questionamento que não sabia responder? *Rubrica:* 3 = disse isso com honestidade e o registrou como questão em aberto;; 2 = questão em aberto;; 1 = inventou uma resposta;; 0 = nenhuma.
+
+- **EX075 — Mitigações finais.** Cite duas mitigações acrescentadas depois da crítica. *Rubrica:* 3 = limites de hardware não sobreponíveis nos carregadores, separação de rede, aprovação de duas pessoas para as regras de contingência (duas);; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-26"></a>
+
+## Capítulo 26 — Arquitetura e engenharia de segurança: alternativas de arquitetura
+
+### Objetivos de aprendizagem
+
+Você vai (1) gerar alternativas de arquitetura para o back-office; (2) avaliá-las contra critérios ponderados; (3) documentar por que a opção escolhida venceu.
+
+### 26.1 Gerar alternativas
+
+Para o back-office de bilhetagem, Sofia gera três alternativas. A alternativa A mantém um único cluster on-premises com segmentação melhorada. A alternativa B leva o processamento para um provedor de nuvem com serviços gerenciados de chaves. A alternativa C divide o sistema: a ingestão das validações e o cálculo das tarifas ficam on-premises, enquanto os relatórios e as análises vão para a nuvem apenas com dados pseudonimizados. Daniel insiste em pelo menos três opções, porque comparar só duas muitas vezes esconde um caminho intermediário melhor, e uma opção de mudança mínima fornece uma base contra a qual o valor da mudança pode ser julgado.
+
+### 26.2 Avaliação ponderada
+
+Sofia e as partes interessadas acordam os critérios e os pesos: segurança dos dados pessoais, resiliência durante indisponibilidades, custo em cinco anos, risco de migração e compatibilidade com os validadores legados. Cada alternativa é pontuada por três pessoas de forma independente, e as pontuações são discutidas onde divergem. A alternativa C tem a maior pontuação geral, principalmente porque mantém os dados pessoais on-premises e ao mesmo tempo ganha a escalabilidade da nuvem para as análises. Sofia registra o quanto o resultado é sensível: se o peso do custo dobrar, A vence. A sensibilidade mostra às partes interessadas quais premissas orientam a decisão, convidando ao debate sobre elas, e não sobre o número final.
+
+### 26.3 Documentar a escolha
+
+Sofia escreve um registro de decisão de arquitetura para a alternativa C, listando as opções, os critérios, os pesos, as pontuações, os resultados da sensibilidade e as consequências, inclusive novos riscos, como o processo de pseudonimização se tornar um ponto único de falha para a privacidade. O registro também declara as condições em que a decisão deve ser revista, como uma mudança nos preços da nuvem ou nas orientações regulatórias. Daniel explica que decisões documentadas assim podem ser auditadas e revistas com calma, enquanto decisões não documentadas são reabertas repetidamente sempre que chega um novo gestor com outra preferência.
+
+### Exemplo resolvido
+
+Sofia gera três alternativas para o back-office, pontua-as em cinco critérios ponderados com análise de sensibilidade e registra a alternativa C com seus novos riscos e condições de revisão.
+
+> **Caso sintético.** As alternativas, os pesos e as pontuações são sintéticos.
+
+### Erros e limites
+
+A pontuação ponderada pode esconder divergências por trás das médias. Dados pseudonimizados podem ser reidentificáveis quando combinados com outros dados.
+
+### Exercícios
+
+- **EX076 — Três opções.** Por que Daniel insiste em pelo menos três alternativas? *Rubrica:* 3 = duas opções escondem caminhos intermediários; uma opção mínima dá uma base;; 2 = caminho intermediário;; 1 = sem motivo;; 0 = nenhuma.
+
+- **EX077 — Resultado da sensibilidade.** O que acontece com a decisão se o peso do custo dobrar? *Rubrica:* 3 = a alternativa A vence no lugar da C;; 2 = A vence;; 1 = C continua;; 0 = nenhuma.
+
+- **EX078 — Novo risco.** Que novo risco a alternativa C introduz? *Rubrica:* 3 = o processo de pseudonimização vira um ponto único de falha para a privacidade;; 2 = pseudonimização;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-27"></a>
+
+## Capítulo 27 — Arquitetura e engenharia de segurança: projeto de controles
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar controles que atendam a requisitos específicos; (2) combinar em camadas controles preventivos, detectivos e corretivos; (3) especificar os controles com precisão suficiente para implementá-los e testá-los.
+
+### 27.1 Projetar a partir dos requisitos
+
+Sofia projeta controles para o requisito de que as tabelas de tarifas sejam autênticas antes do uso. O controle preventivo é uma assinatura digital: as tabelas de tarifas são assinadas no escritório de tarifas com uma chave guardada num HSM, e todo consumidor verifica a assinatura com uma chave pública fixada (pinned) antes de carregá-las. O controle detectivo registra cada carga com a versão e o hash da tabela e gera um alerta se aparecer uma versão que o escritório de tarifas não publicou. O controle corretivo permite que as operações voltem à última tabela verificada em minutos. Cada controle se liga ao requisito e ao caso de abuso que atende.
+
+### 27.2 Defesa em profundidade com propósito
+
+Combinar controles em camadas só é útil se as camadas falharem de forma independente. Sofia verifica seu projeto das tabelas de tarifas: se a chave de assinatura fosse roubada, as assinaturas seriam verificadas, então o controle detectivo compara as versões carregadas com uma lista de publicações independente mantida pelo financeiro. Se o código de verificação tivesse um bug, o controle detectivo ainda perceberia versões inesperadas. Se os dois falhassem, o rollback limitaria o dano. Ela observa que dois controles que dependem da mesma chave ou do mesmo banco de dados não oferecem profundidade real. Defesa em profundidade significa perguntar, para cada camada, o que acontece se a anterior falhar.
+
+### 27.3 Especificações precisas
+
+A especificação de um controle precisa dizer o suficiente para que ele seja implementado e testado. Sofia escreve: o algoritmo de assinatura é o Ed25519, conforme especificado na RFC 8032; a chave pública é fixada na configuração e só é rotacionada por meio da gestão de mudanças; uma falha na verificação interrompe a carga e gera um alerta de alta prioridade; os logs incluem o identificador da tabela, a versão, o hash e o componente que fez a verificação. Ela anexa casos de teste: uma tabela corretamente assinada é carregada; uma tabela modificada é rejeitada; uma tabela assinada com uma chave desconhecida é rejeitada. Especificações precisas impedem que cada implementador faça premissas diferentes que deixam lacunas entre os componentes.
+
+### Exemplo resolvido
+
+Sofia projeta tabelas de tarifas assinadas com uma chave guardada em HSM, verificações independentes de versão e rollback, testa a independência das camadas e escreve uma especificação com três casos de teste.
+
+> **Caso sintético.** O projeto das tarifas é sintético; a RFC 8032 é real.
+
+### Erros e limites
+
+Chaves fixadas complicam a rotação de emergência. Os controles detectivos dependem de alguém responder aos alertas.
+
+### Exercícios
+
+- **EX079 — Três tipos de controle.** Cite os controles preventivo, detectivo e corretivo das tabelas de tarifas. *Rubrica:* 3 = verificação de assinatura; registro de versões e alertas; rollback;; 2 = três;; 1 = um;; 0 = nenhuma.
+
+- **EX080 — Verificação de independência.** Por que comparar as versões carregadas com a lista independente do financeiro? *Rubrica:* 3 = ainda detecta o uso indevido se a chave de assinatura for roubada;; 2 = independente;; 1 = redundante;; 0 = nenhuma.
+
+- **EX081 — Teste da especificação.** Dê um caso de teste da especificação. *Rubrica:* 3 = tabela corretamente assinada carrega, tabela modificada é rejeitada ou chave desconhecida é rejeitada;; 2 = um;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-28"></a>
+
+## Capítulo 28 — Arquitetura e engenharia de segurança: implementação I
+
+### Objetivos de aprendizagem
+
+Você vai (1) traduzir a arquitetura em tarefas de implementação; (2) aplicar configuração segura e tratamento de segredos; (3) manter a implementação alinhada à arquitetura.
+
+### 28.1 Da arquitetura às tarefas
+
+A equipe de Sofia começa a implementar o componente de ingestão do back-office. Ela divide a arquitetura em tarefas: autenticação de dispositivos baseada em certificados, validação do esquema dos registros, detecção de replay com um repositório dos identificadores de registros recentes, verificação dos registros assinados e logging estruturado. Cada tarefa referencia o requisito e a especificação de controle que implementa e inclui testes de aceitação. Isso evita a deriva comum em que os desenvolvedores implementam o que é fácil e os controles mais difíceis da arquitetura são adiados em silêncio. As referências das tarefas também permitem que os revisores verifiquem a cobertura: todo requisito deve corresponder a pelo menos uma tarefa concluída.
+
+### 28.2 Configuração e segredos
+
+O serviço de ingestão precisa de uma chave privada para seu certificado de servidor TLS e de credenciais para seu banco de dados. Sofia garante que nenhum dos dois seja armazenado no código-fonte ou em imagens de contêiner. Os segredos vêm de um repositório gerenciado de segredos em tempo de execução, legível apenas pela identidade do serviço, e são rotacionados num calendário. A configuração fica sob controle de versão e é revisada, com as configurações relevantes para a segurança, como as versões de TLS e os emissores de certificado permitidos, verificadas automaticamente contra a especificação. Ela encontra uma credencial de teste commitada num branch antigo, remove-a do histórico e providencia sua rotação, registrando o incidente.
+
+### 28.3 Manter o alinhamento
+
+Durante a implementação, a equipe descobre que a detecção de replay precisa de mais memória do que o esperado no pico de carga. Um desenvolvedor propõe pulá-la durante os picos. Sofia leva isso como uma mudança de arquitetura, e não como uma decisão de codificação, porque enfraquece um requisito. Em vez disso, a equipe usa um repositório com limite de tempo, indexado pelo identificador do registro e pelo validador, que cabe nos limites de memória. Ela atualiza o registro de arquitetura e a especificação. Daniel ressalta que a implementação sempre ensina alguma coisa; a disciplina está em levar esse aprendizado de volta à arquitetura, em vez de deixar o sistema construído divergir em silêncio.
+
+### Exemplo resolvido
+
+Sofia relaciona os requisitos da ingestão a cinco tarefas de implementação, leva os segredos para um repositório gerenciado, trata uma credencial de teste commitada e encaminha uma mudança na detecção de replay pela revisão de arquitetura.
+
+> **Caso sintético.** O componente de ingestão e o incidente são sintéticos.
+
+### Erros e limites
+
+Os repositórios de segredos se tornam dependências críticas que precisam de alta disponibilidade. Remover segredos do histórico não desfaz a exposição; a rotação continua necessária.
+
+### Exercícios
+
+- **EX082 — Referências das tarefas.** Por que cada tarefa referencia um requisito? *Rubrica:* 3 = evita adiar os controles difíceis e permite que os revisores verifiquem a cobertura;; 2 = cobertura;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX083 — Credencial commitada.** Que passos se seguiram à descoberta de uma credencial de teste commitada? *Rubrica:* 3 = removida do histórico e rotacionada, com o incidente registrado;; 2 = as duas;; 1 = só removida;; 0 = nenhuma.
+
+- **EX084 — Encaminhamento da mudança de replay.** Por que pular a detecção de replay foi tratado como uma mudança de arquitetura? *Rubrica:* 3 = enfraquece um requisito, então precisa de revisão de arquitetura;; 2 = requisito;; 1 = escolha de codificação;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX066 (as de EX067–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Sofia Mbeki, Daniel Ferreira, a Kestrel Polytechnic University, a Corvia Regional Transit e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX084 (as de EX085–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Sofia Mbeki, Daniel Ferreira, a Kestrel Polytechnic University, a Corvia Regional Transit e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Que o aumento de cada mês é proporcional ao volume atual, de modo que o crescimento absoluto continua se acelerando.
 
@@ -1156,6 +1408,42 @@ Respostas-modelo para EX001–EX066 (as de EX067–EX150 estão na edição em i
 **EX065.** Criptografia e autenticação do fluxo.
 
 **EX066.** Ou o modelo está desatualizado ou o sistema tem um fluxo inesperado; as duas possibilidades precisam ser investigadas.
+
+**EX067.** Validadores desativados que ainda tinham certificados internos podiam enviar registros, porque os certificados não haviam sido revogados.
+
+**EX068.** Os erros de cálculo da tarifa depois de mudanças de tarifa: 0.0080 por dia contra 0.0010 dos registros perdidos, com o evento de topo em 0.0090 (cerca de 3,3 dias por ano).
+
+**EX069.** Porque uma causa comum, como uma queda de energia, pode fazer vários ramos falharem juntos.
+
+**EX070.** Agrupam riscos muito diferentes sob rótulos como alto.
+
+**EX071.** Preparar a avaliação, conduzi-la, comunicar os resultados e mantê-la.
+
+**EX072.** Um responsável do negócio com autoridade; os engenheiros recomendam.
+
+**EX073.** Porque os ônibus ainda precisam recarregar quando a conexão de internet da garagem falha.
+
+**EX074.** Admitiram que ainda não tinham resposta e a registraram como uma questão em aberto.
+
+**EX075.** Limites de hardware nos carregadores que o controlador não consegue sobrepor e a separação da rede do controlador em relação aos sistemas corporativos.
+
+**EX076.** Porque comparar só duas pode esconder uma opção intermediária melhor, e uma opção mínima fornece uma base.
+
+**EX077.** A alternativa A, a opção on-premises, venceria.
+
+**EX078.** O processo de pseudonimização se torna um ponto único de falha para a privacidade dos passageiros.
+
+**EX079.** A verificação da assinatura antes da carga, o registro e o alerta sobre versões não publicadas e o rollback para a última tabela verificada.
+
+**EX080.** Porque, se a chave de assinatura fosse roubada, as assinaturas ainda seriam verificadas, mas a lista independente revelaria versões não publicadas.
+
+**EX081.** Uma tabela de tarifas modificada depois de assinada deve ser rejeitada.
+
+**EX082.** Para que os controles difíceis não sejam abandonados em silêncio e os revisores possam verificar que todo requisito foi implementado.
+
+**EX083.** Ela foi removida do histórico do repositório, rotacionada e registrada como incidente.
+
+**EX084.** Porque enfraqueceria um requisito de segurança, que só uma decisão de arquitetura pode mudar.
 
 <a id="references"></a>
 ## Referências
