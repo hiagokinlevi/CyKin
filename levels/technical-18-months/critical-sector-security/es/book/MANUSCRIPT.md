@@ -57,9 +57,9 @@ Toda afirmación factual sobre un protocolo, una norma, un incidente público o 
 7. [Infraestructura crítica y seguridad sectorial: datos y telemetría](#ch-07): syslog, relojes y cronologías en UTC.
 8. [Infraestructura crítica y seguridad sectorial: modos de fallo](#ch-08): lagunas, valores congelados, picos y reglas explicables.
 9. [Infraestructura crítica y seguridad sectorial: herramientas y métodos](#ch-09): elección del método, validación de herramientas y el CRC de DNP3.
-10. [Infraestructura crítica y seguridad sectorial: configuración de controles](../../en/book/MANUSCRIPT.md#ch-10): políticas de primera coincidencia, sombreado y acceso de proveedores.
-11. [Infraestructura crítica y seguridad sectorial: verificación](../../en/book/MANUSCRIPT.md#ch-11): pruebas positivas y negativas trazables.
-12. [Laboratorio contenido I](../../en/book/MANUSCRIPT.md#ch-12): un respondedor Modbus con una política de escritura y respuestas de excepción.
+10. [Infraestructura crítica y seguridad sectorial: configuración de controles](#ch-10): políticas de primera coincidencia, sombreado y acceso de proveedores.
+11. [Infraestructura crítica y seguridad sectorial: verificación](#ch-11): pruebas positivas y negativas trazables.
+12. [Laboratorio contenido I](#ch-12): un respondedor Modbus con una política de escritura y respuestas de excepción.
 13. [Infraestructura crítica y seguridad sectorial: diagnóstico de averías](../../en/book/MANUSCRIPT.md#ch-13): hipótesis, predicciones, descarte y escalado.
 14. [Infraestructura crítica y seguridad sectorial: automatización](../../en/book/MANUSCRIPT.md#ch-14): detección de derivas basada en hashes y automatización segura.
 15. [Infraestructura crítica y seguridad sectorial: integración y dependencias](../../en/book/MANUSCRIPT.md#ch-15): grafos de dependencias y puntos de integración en las fronteras.
@@ -1183,7 +1183,429 @@ Elija el método menos intrusivo que responda a la pregunta y valide toda herram
 <!-- cyberabc:chapter-navigation:start ch-09 -->
 ### Siga estudiando — capítulo 09 de 18
 
-[← Capítulo 08](#ch-08) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 10 →](../../en/book/MANUSCRIPT.md#ch-10)
+[← Capítulo 08](#ch-08) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 10 →](#ch-10)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Infraestructura crítica y seguridad sectorial: configuración de controles
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo debería ser capaz de:
+
+- traducir los conductos declarados (capítulo 6) en una política de cortafuegos de primera coincidencia con denegación por defecto;
+- evaluar un conjunto de reglas frente a flujos de prueba mediante código, y detectar las reglas **sombreadas** y **redundantes**;
+- reconocer los patrones de configuración que amplían el acceso en silencio: reglas amplias «temporales», «duplicados» que se solapan, permisos para cualquier puerto;
+- configurar el acceso de proveedores y el acceso remoto como limitados en el tiempo, registrados y encaminados a través de la zona de gestión;
+- planificar un cambio de configuración de forma que pueda verificarse (capítulo 11) y revertirse.
+
+Los capítulos 6–9 describieron y observaron el sistema. Este capítulo lo cambia, empezando por el control que limita más directamente quién puede alcanzar un protocolo sin autenticación: el cortafuegos del conducto.
+
+### 10.1 Los conjuntos de reglas como programas
+
+La mayoría de los cortafuegos de red evalúan las reglas **de arriba abajo y aplican la primera coincidencia**. La guía de cortafuegos del NIST describe el diseño de políticas, la denegación por defecto y la gestión de los conjuntos de reglas ([SP 800-41 Rev. 1](https://csrc.nist.gov/pubs/sp/800/41/r1/final)). Pensar en un conjunto de reglas como en un pequeño programa aclara tres defectos:
+
+- **Regla sombreada**: una regla posterior cuyo tráfico coincide por completo con una regla anterior de acción contraria. Nunca llega a aplicarse, aunque su comentario diga que sí.
+- **Regla redundante**: una regla posterior que coincide por completo con una regla anterior de la misma acción. Inofensiva hoy; confusa mañana, cuando alguien borre la anterior.
+- **«Duplicado» que amplía**: una regla que parece una copia de otra pero tiene un origen, un destino o un puerto más amplios. No es redundante; es un permiso nuevo.
+
+El orden importa, así que todo cambio debe revisarse en su contexto, no como una línea aislada.
+
+### 10.2 Patrones que erosionan una política
+
+- **Reglas temporales** que sobreviven a su finalidad («permitir la red corporativa hacia el centro de control para la migración»).
+- Permisos para **cualquier puerto** (`tcp any`) donde hacía falta uno solo.
+- **Orígenes de subred** donde hacía falta un único equipo.
+- **Reglas sin responsable, incidencia ni caducidad**.
+- **Acceso de gestión desde zonas de usuarios** en lugar de a través del servidor de salto.
+
+Las mitigaciones principales de CISA para la tecnología operacional insisten en eliminar la exposición a internet, cambiar las contraseñas por defecto, proteger el acceso remoto y segmentar la TI de la TO ([CISA primary mitigations for OT](https://www.cisa.gov/resources-tools/resources/primary-mitigations-reduce-cyber-threats-operational-technology)).
+
+### 10.3 Acceso remoto y de proveedores
+
+Configure el acceso de proveedores para que solo exista cuando haga falta: la cuenta o la ruta está desactivada por defecto; se activa para un trabajo con incidencia y una ventana fija; se autentica con autenticación multifactor en el servidor de salto; la sesión queda registrada; y se dispara una alerta ante cualquier uso fuera de una ventana activada. El aviso de CISA sobre actores patrocinados por el Estado chino describe actores que mantienen un acceso prolongado a entornos de infraestructuras críticas, también mediante cuentas válidas y acceso remoto ([CISA AA24-038A](https://www.cisa.gov/news-events/cybersecurity-advisories/aa24-038a)); por eso el acceso permanente es un hallazgo aunque hoy nadie lo esté usando indebidamente.
+
+### 10.4 Ejemplo resuelto: fw-01 (sintético)
+
+La política de `fw-01` entre las zonas del KVROC tiene siete reglas. El Lab 10 la comprueba en busca de sombreados y frente a cinco flujos de prueba, cada uno con el resultado que espera la lista de conductos. **Lab 10** (guárdelo como `lab10.py` y ejecútelo con `python3 lab10.py`):
+
+```python
+# Lab 10 - evaluate a first-match firewall policy and find shadowed rules (offline, stdlib)
+# Synthetic conduit policy for fw-01 between Kestrel Vale zones; addresses are RFC 1918.
+from ipaddress import ip_address, ip_network
+rules = [  # id, action, source, destination, protocol, port (None = any)
+    ("R1", "allow", "10.20.0.10/32", "10.10.0.0/16", "tcp", 502),    # SCADA server polls stations
+    ("R2", "allow", "10.20.0.15/32", "10.10.0.0/16", "tcp", 502),    # engineering workstation
+    ("R3", "allow", "10.90.0.20/32", "10.20.0.0/24", "tcp", 22),     # jump host to control centre
+    ("R4", "allow", "10.30.0.0/16",  "10.20.0.0/24", "tcp", None),   # "temporary" corporate access
+    ("R5", "deny",  "10.30.3.0/24",  "10.20.0.0/24", "tcp", 3389),   # intended: block RDP from desks
+    ("R6", "allow", "10.20.0.0/24",  "10.10.4.0/24", "tcp", 502),    # duplicate of R1 for KW-04
+    ("R7", "deny",  "0.0.0.0/0",     "0.0.0.0/0",    "any", None),   # default deny
+]
+def matches(rule, src, dst, proto, port):
+    _, _, s, d, p, pt = rule
+    return (ip_address(src) in ip_network(s) and ip_address(dst) in ip_network(d)
+            and p in ("any", proto) and pt in (None, port))
+def covers(a, b):   # does earlier rule a match everything rule b matches?
+    return (ip_network(b[2]).subnet_of(ip_network(a[2])) and ip_network(b[3]).subnet_of(ip_network(a[3]))
+            and a[4] in ("any", b[4]) and a[5] in (None, b[5]))
+for i, r in enumerate(rules):
+    for earlier in rules[:i]:
+        if covers(earlier, r):
+            kind = "redundant" if earlier[1] == r[1] else "SHADOWED (never takes effect)"
+            print(f"{r[0]} {kind}: fully covered by {earlier[0]}"); break
+tests = [("10.20.0.10", "10.10.4.2", "tcp", 502, "allow"), ("10.30.3.7", "10.20.0.5", "tcp", 3389, "deny"),
+         ("10.30.3.7", "10.10.4.2", "tcp", 502, "deny"), ("10.30.8.2", "10.20.0.5", "tcp", 445, "deny"),
+         ("10.20.0.12", "10.10.4.2", "tcp", 502, "deny")]
+for src, dst, proto, port, expect in tests:
+    hit = next(r for r in rules if matches(r, src, dst, proto, port))
+    status = "PASS" if hit[1] == expect else "FAIL"
+    print(f"{status} {src}->{dst} {proto}/{port}: {hit[1]} by {hit[0]} (expected {expect})")
+```
+
+Salida esperada (Python 3.13.5):
+
+```text
+R5 SHADOWED (never takes effect): fully covered by R4
+PASS 10.20.0.10->10.10.4.2 tcp/502: allow by R1 (expected allow)
+FAIL 10.30.3.7->10.20.0.5 tcp/3389: allow by R4 (expected deny)
+PASS 10.30.3.7->10.10.4.2 tcp/502: deny by R7 (expected deny)
+FAIL 10.30.8.2->10.20.0.5 tcp/445: allow by R4 (expected deny)
+FAIL 10.20.0.12->10.10.4.2 tcp/502: allow by R6 (expected deny)
+```
+
+Tres hallazgos:
+
+1. **R4 sombrea a R5.** El comentario dice que el RDP desde los puestos corporativos está bloqueado, pero R4 ya permitía todo el TCP desde 10.30.0.0/16, de modo que R5 nunca se aplica: el «bloqueo» nunca ha funcionado.
+2. **R4 es el verdadero problema.** Una regla «temporal» permite todos los puertos TCP desde toda la zona corporativa hacia el centro de control. Sus pruebas fallan (se permiten RDP y SMB). Fíjese en lo que las pruebas *no* muestran: R7 deniega el puerto 502 de las estaciones a los puestos corporativos, así que fw-01 no explica las escrituras desde el puesto corporativo capturadas en KW-04 en el capítulo 2. Esa ruta tiene que existir en otro lugar; regístrela como abierta (el capítulo 13 la encuentra).
+3. **R6 no es un duplicado de R1.** Permite a toda la subred del centro de control escribir en KW-04, incluido 10.20.0.12, que no tiene nada que hacer allí.
+
+Un cambio sólido: borrar R4 (tras confirmar con el responsable qué sigue usándola; los registros del cortafuegos lo mostrarán); subir el bloqueo de RDP por encima de cualquier permiso si sigue haciendo falta, o confiar en la denegación por defecto; sustituir R6 por nada (R1 y R2 ya cubren las rutas necesarias). Vuelva a ejecutar el evaluador con el nuevo conjunto de reglas antes del cambio, y las pruebas en servicio después (capítulo 11).
+
+### 10.5 Planificación de cambios
+
+Todo cambio de configuración en un entorno de control necesita: el antes y el después exactos; el motivo (hallazgo o requisito); el efecto esperado, escrito como pruebas; un plan de reversión; la ventana acordada con operaciones; y quién verifica. La guía del NIST sobre gestión de la configuración orientada a la seguridad describe las líneas base y el control de cambios ([SP 800-128](https://csrc.nist.gov/pubs/sp/800/128/upd1/final)). La exportación del cortafuegos antes y después es evidencia; calcule su hash (capítulo 5).
+
+Exporte el conjunto de reglas y calcule su hash antes y después del cambio, y guarde ambos resúmenes en el registro de cambio. Escriba el efecto esperado como las mismas pruebas que ejecuta el Lab 10, de modo que la verificación sea una nueva ejecución y no una invención nueva. Acuerde la ventana con operaciones y nombre a quién confirmará que el sondeo del SCADA sigue cumpliendo el requisito de frescura después del cambio.
+
+### 10.6 Actividad práctica
+
+Reescriba la política de fw-01 a partir de la lista de conductos del capítulo 6: una regla por conducto declarado, cada una con incidencia y responsable en su comentario, y después la denegación por defecto. Ejecute el Lab 10 sobre su versión hasta que las cinco pruebas se superen y ninguna regla quede sombreada ni sea redundante. Añada dos pruebas propias para el conducto C3. Ponga cada permiso por encima de la denegación por defecto, con la incidencia y el responsable en el comentario. Elimine R4 y R6 en lugar de intentar remendarlas. Añada dos pruebas para el conducto C3: servidor de salto hacia el centro de control por tcp/22, permitido, y un puesto corporativo hacia el mismo puerto, denegado. Vuelva a ejecutar hasta que todas las pruebas se superen y ninguna regla quede sombreada ni sea redundante.
+
+### 10.7 Errores comunes y límites
+
+- Revisar una regla nueva sin leer las reglas que tiene encima y que quizá ya permiten o deniegan el mismo tráfico.
+- Borrar una regla amplia sin comprobar en los registros quién la usa actualmente.
+- Tratar «parece un duplicado» como «se puede conservar sin riesgo».
+- Configurar el acceso de proveedores como permanentemente activado «para emergencias».
+- El Lab 10 modela una política sin estado de primera coincidencia con contención exacta; los cortafuegos reales añaden estado, objetos, NAT y zonas, y sus propias herramientas de análisis.
+
+- Restringir R4 para corregir los fallos de tcp/3389 y tcp/445 sin comprobar primero en los registros qué equipos corporativos dependen hoy de ella.
+- Activar una cuenta de proveedor para un trabajo con incidencia y olvidar desactivarla cuando se cierra la ventana fija.
+
+### Ejercicios — capítulo 10
+
+**EX037 — Explique el sombreado.** *Objetivo:* razonar sobre el orden. *Entradas:* el Lab 10. *Pasos:* (1) suba R5 por encima de R4 y prediga los resultados de las pruebas; (2) ejecute y compare. *Evidencia esperada:* predicción y salida. *Rúbrica:* 3 = no se notifica ningún sombreado; la prueba 2 (RDP) se supera (denegación por R5); la prueba 4 (SMB) sigue fallando (permiso por R4); la prueba 5 sigue fallando (R6); 2 = casi todo; 1 = conjeturas; 0 = nada.
+
+**EX038 — Corrija la política.** *Objetivo:* producir un conjunto de reglas correcto. *Entradas:* el Lab 10. *Pasos:* elimine R4 y R6 (conserve R5 o elimínela justificándolo); ejecute. *Evidencia esperada:* nueva lista de reglas y salida con cinco líneas PASS. *Rúbrica:* 3 = cinco líneas PASS; justificación sobre R5 (redundante con la denegación por defecto una vez eliminada R4, así que eliminarla o conservarla para un registro explícito); señala que antes hay que comprobar en los registros quién usa R4; 2 = se superan sin justificación; 1 = parcial; 0 = nada.
+
+**EX039 — Configuración del acceso de proveedores.** *Objetivo:* configurar un acceso limitado en el tiempo. *Entradas:* el proveedor de los relés de SS-3 necesita acceso remoto unas dos veces al año. *Pasos:* especifique el estado de la cuenta, los pasos de activación, la ruta, la autenticación, el registro, las alertas y la caducidad. *Evidencia esperada:* una especificación de configuración. *Rúbrica:* 3 = desactivada por defecto; activada por la guardia del KVROC conforme a una incidencia aprobada por Kestrel Grid; ruta a través de jump-01 con MFA y grabación de la sesión; nunca directamente a la red de los relés; alerta ante un uso fuera de ventana; caducidad automática; revisión al día siguiente; 2 = falta un elemento; 1 = «VPN para el proveedor»; 0 = nada.
+
+**EX040 — Detecte las ampliaciones.** *Objetivo:* ampliar el evaluador. *Entradas:* la función `covers` del Lab 10. *Pasos:* añada una comprobación que notifique cuándo una regla posterior con la misma acción se solapa *parcialmente* con una anterior y es más amplia en origen o destino. *Evidencia esperada:* código y salida. *Rúbrica:* 3 = notifica que R6 amplía R1 (el origen /24 contiene el /32 de R1; el destino /24 está dentro del /16; mismo puerto), explica por qué merece revisión; 2 = lo detecta sin explicación; 1 = intentado; 0 = nada.
+
+### Síntesis del capítulo
+
+Un conjunto de reglas de cortafuegos es un programa de primera coincidencia, y sus defectos son defectos de programa: reglas sombreadas que nunca actúan, reglas redundantes que confunden y reglas de apariencia similar que amplían el acceso. Configure los conductos con una regla por finalidad declarada y denegación por defecto, mantenga desactivado el acceso de proveedores hasta que haga falta y planifique cada cambio con sus pruebas y su reversión. Después, verifique, que es el siguiente capítulo.
+
+<!-- cyberabc:chapter-navigation:start ch-10 -->
+### Siga estudiando — capítulo 10 de 18
+
+[← Capítulo 09](#ch-09) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 11 →](#ch-11)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Infraestructura crítica y seguridad sectorial: verificación
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo debería ser capaz de:
+
+- redactar los requisitos como enunciados comprobables y vincular cada uno con al menos una prueba (**trazabilidad**);
+- diseñar pruebas **positivas** (la función necesaria sigue funcionando) y **negativas** (la acción prohibida falla) para cada cambio de un control;
+- negarse a contar una prueba sin evidencia, e informar de los requisitos como verificados, fallidos o sin probar;
+- verificar sin dañar el proceso: pruebas pequeñas y delimitadas en ventanas acordadas.
+
+El capítulo 10 cambió la configuración. Un cambio no termina cuando se aplica; termina cuando se demuestra que sus requisitos se cumplen. Este capítulo hace sistemática esa demostración.
+
+### 11.1 Requisitos que se pueden probar
+
+«El historiador está bastionado» no puede probarse. «SSH en hist-02 escucha solo en 10.90.0.21» sí. Redacte cada requisito de modo que una prueba nombrada, ejecutada por otra persona, pudiera hacerlo fallar. Divida los requisitos compuestos: «solo el servidor SCADA y la estación de ingeniería alcanzan tcp/502 en las estaciones» necesita una prueba positiva (el SCADA sigue sondeando) **y** una negativa (otro equipo del centro de control es rechazado). El REQ-1 del Lab 11 supera esta comprobación: que SSH escuche solo en 10.90.0.21 es algo que las pruebas T1 y T2 podrían haber hecho fallar. El REQ-4 muestra la división en la práctica: T5 y T6 cubren sus mitades negativa y positiva, y el requisito falla si falla cualquiera de ellas. Ponga los identificadores de los requisitos en el registro de cambio antes de empezar el trabajo.
+
+### 11.2 Pruebas positivas y negativas
+
+Las **pruebas negativas** muestran que un control bloquea lo que debe; las **pruebas positivas** muestran que no bloquea lo que operaciones necesita. Un cambio de cortafuegos que supera todas sus pruebas negativas pero detiene la recogida del historiador ha fallado. En los entornos de control, las pruebas positivas importan tanto como las negativas: la disponibilidad suele ser la primera prioridad. La guía de pruebas del NIST trata la planificación y la ejecución de pruebas técnicas ([SP 800-115](https://csrc.nist.gov/pubs/sp/800/115/final)); las orientaciones sobre supervisión continua insisten en que la eficacia de los controles debe demostrarse de nuevo con el tiempo, no suponerse ([SP 800-137](https://csrc.nist.gov/pubs/sp/800/137/final)).
+
+### 11.3 Reglas de evidencia
+
+Una prueba solo cuenta si tiene: un identificador, el requisito que verifica, el método, la hora, la persona, el resultado y un archivo de evidencia (capítulo 5). Una «solo revisión de la configuración» sin salida registrada es una actividad útil, pero no un resultado de prueba. Un requisito sin ninguna prueba contada está **sin probar**: ni verificado ni fallido. Informar de lo no probado como verificado es la forma más común en que la verificación induce a error. El Lab 11 aplica la regla a T8, una revisión de la configuración del REQ-2 sin archivo de evidencia, que el script ignora. El REQ-6 del Lab 11 sigue sin probar hasta que alguien produzca una línea de denegación desde el colector; informar de él como verificado porque la regla existe ocultaría la laguna. Guarde los archivos de evidencia junto a los identificadores de las pruebas en el registro de verificación.
+
+### 11.4 Ejemplo resuelto: verificación de CHG-2207 (sintético)
+
+CHG-2207 bastionó SSH en hist-02 y debía cerrar el acceso corporativo al centro de control en fw-01. El registro de verificación:
+
+**Lab 11** (guárdelo como `lab11.py` y ejecútelo con `python3 lab11.py`):
+
+```python
+# Lab 11 - requirement-to-test traceability after a hardening change (offline, stdlib)
+# Synthetic verification record for change CHG-2207 on HIST-02 and fw-01, 2026-10-12.
+requirements = {
+ "REQ-1": "SSH listens only on management address 10.90.0.21",
+ "REQ-2": "Root cannot log in over SSH",
+ "REQ-3": "Corporate desks cannot reach control-centre RDP",
+ "REQ-4": "Only SCADA server and engineering workstation reach station tcp/502",
+ "REQ-5": "Historian still receives KW-01..KW-12 readings after change",
+ "REQ-6": "Firewall denies are logged to the collector",
+}
+tests = [  # test id, requirement, method, positive/negative, result, evidence
+ ("T1", "REQ-1", "listening-socket listing on host", "neg", "pass", "ss-output-0612.txt"),
+ ("T2", "REQ-1", "connect to 10.20.0.21:22 from jump host", "neg", "pass", "conn-0614.txt"),
+ ("T3", "REQ-2", "root login attempt from jump host", "neg", "pass", "auth-0615.log"),
+ ("T4", "REQ-3", "RDP connect from 10.30.3.7", "neg", "fail", "conn-0618.txt"),
+ ("T5", "REQ-4", "Modbus read from 10.20.0.12", "neg", "fail", "conn-0620.txt"),
+ ("T6", "REQ-4", "Modbus read from SCADA 10.20.0.10", "pos", "pass", "poll-0621.txt"),
+ ("T7", "REQ-5", "count stations reporting 06:30-06:40Z", "pos", "pass", "hist-count.csv"),
+ ("T8", "REQ-2", "config review only", "neg", "pass", ""),
+]
+status = {}
+for tid, req, method, kind, res, ev in tests:
+    if not ev: print(f"{tid} {req} ignored: no evidence file recorded ({method})"); continue
+    status.setdefault(req, []).append((tid, kind, res))
+for req, text in requirements.items():
+    rs = status.get(req, [])
+    if not rs: verdict = "UNTESTED"
+    elif any(r == "fail" for _, _, r in rs): verdict = "FAILED"
+    else: verdict = "verified"
+    kinds = "+".join(sorted({k for _, k, _ in rs})) or "-"
+    print(f"{req} {verdict:<9} tests={','.join(t for t, _, _ in rs) or '-':<6} kinds={kinds:<7} {text}")
+v = sum(1 for r in requirements if status.get(r) and all(x[2] == "pass" for x in status[r]))
+print(f"verified {v}/{len(requirements)}; the change is not complete until every requirement is verified")
+```
+
+Salida esperada (Python 3.13.5):
+
+```text
+T8 REQ-2 ignored: no evidence file recorded (config review only)
+REQ-1 verified  tests=T1,T2  kinds=neg     SSH listens only on management address 10.90.0.21
+REQ-2 verified  tests=T3     kinds=neg     Root cannot log in over SSH
+REQ-3 FAILED    tests=T4     kinds=neg     Corporate desks cannot reach control-centre RDP
+REQ-4 FAILED    tests=T5,T6  kinds=neg+pos Only SCADA server and engineering workstation reach station tcp/502
+REQ-5 verified  tests=T7     kinds=pos     Historian still receives KW-01..KW-12 readings after change
+REQ-6 UNTESTED  tests=-      kinds=-       Firewall denies are logged to the collector
+verified 3/6; the change is not complete until every requirement is verified
+```
+
+Tres requisitos verificados, dos fallidos, uno sin probar. El REQ-3 falló porque R4 se dejó en su sitio: la incidencia decía «corregir la regla de RDP», y el ingeniero corrigió R5 en lugar de la regla que la sombreaba, un patrón habitual cuando un cambio se redacta como la edición de una línea en lugar de como un requisito. El REQ-4 falló su prueba negativa (10.20.0.12 todavía puede leer las estaciones, a través de R6) mientras superaba la positiva: exactamente por eso hacen falta ambos tipos. El REQ-6 no tiene ninguna prueba; nadie comprobó que las denegaciones llegan al colector, de modo que las detecciones del capítulo 17 estarían ciegas ante los intentos denegados. T8 se ignoró porque no tiene archivo de evidencia. El cambio vuelve a «en curso» con tres elementos abiertos, cada uno con un responsable.
+
+### 11.5 Verificación segura en redes de control
+
+- Prefiera leer resultados que el sistema ya registra (registros del cortafuegos, recuentos del historiador) antes que generar tráfico.
+- Cuando genere tráfico, use un origen de prueba señalado (por ejemplo, 10.30.99.9), la acción más pequeña posible (una conexión TCP sin carga útil) y una ventana acordada con operaciones informada.
+- No verifique nunca un bloqueo de escritura intentando escribir en un controlador en servicio; verifíquelo con una prueba de conexión y el registro del cortafuegos, o frente a un dispositivo de repuesto en un laboratorio (capítulo 12).
+- Deténgase ante el primer comportamiento inesperado.
+
+Prefiera los recuentos del historiador y los registros del cortafuegos antes que generar tráfico. Operaciones debe saber antes de la primera conexión que 10.30.99.9 es el origen de prueba, para que su tráfico no se confunda con un intruso. No verifique nunca un bloqueo de escritura escribiendo en un controlador en servicio.
+
+### 11.6 Actividad práctica
+
+Escriba una prueba para el REQ-6 que no toque ninguna estación: un intento de conexión desde el puesto de pruebas señalado a un puerto del centro de control que debería denegarse y, después, una consulta en el colector de la línea de denegación correspondiente en un plazo de 60 s. Añádala al Lab 11 como T9 con un nombre de archivo de evidencia y vuelva a ejecutar. Use el puesto de pruebas señalado y consulte después en el colector la denegación correspondiente en un plazo de sesenta segundos. Añada la prueba como T9 con un nombre de archivo de evidencia y vuelva a ejecutar el Lab 11 para que el REQ-6 pase de sin probar a verificado o fallido. Guarde el texto de la consulta al colector en el archivo de evidencia para que la prueba pueda repetirse.
+
+### 11.7 Errores comunes y límites
+
+- Ejecutar solo pruebas negativas y no advertir que se detuvo la recogida del historiador.
+- Contar una prueba sin evidencia.
+- Informar de «5 de 6 pruebas superadas» en lugar del estado de cada requisito.
+- Verificar una vez y suponerlo para siempre; vuelva a verificar después de los cambios relacionados.
+- El Lab 11 trata cualquier prueba fallida como un requisito fallido; un requisito también puede estar verificado *en parte* si una prueba solo cubre parte de su alcance; dígalo con palabras.
+
+- Dejar el REQ-6 sin probar porque producir una línea de denegación en el colector parecía más difícil que leer la regla del cortafuegos.
+
+### Ejercicios — capítulo 11
+
+**EX041 — Hágalo comprobable.** *Objetivo:* reescribir requisitos. *Entradas:* «El acceso remoto es seguro», «La hora está sincronizada», «Los registros se conservan». *Pasos:* reescriba cada uno como uno o más requisitos comprobables para el KVROC. *Evidencia esperada:* requisitos reescritos con una idea de prueba para cada uno. *Rúbrica:* 3 = enunciados específicos como «el acceso del proveedor a SS-3 solo es posible a través de jump-01 con MFA durante una ventana activada», «todos los equipos de Z2 a menos de 1 s de ntp-ops», «los eventos de permiso y denegación de fw-01 llegan al colector en 60 s y se conservan 12 meses»; cada uno con una prueba; 2 = uno vago; 1 = repetidos tal cual; 0 = nada.
+
+**EX042 — Añada la prueba que falta.** *Objetivo:* cerrar un requisito sin probar. *Entradas:* el Lab 11 y la actividad de 11.6. *Pasos:* añada T9 para el REQ-6 con resultado superado y archivo de evidencia `collector-0630.txt`; ejecute. *Evidencia esperada:* salida. *Rúbrica:* 3 = REQ-6 verificado mediante T9, total «verified 4/6»; explica que REQ-3 y REQ-4 siguen impidiendo cerrar el cambio; 2 = solo la salida; 1 = intentado; 0 = nada.
+
+**EX043 — Pruebas positivas para un cambio de cortafuegos.** *Objetivo:* proteger la disponibilidad. *Entradas:* la corrección de fw-01 de EX038. *Pasos:* enumere las pruebas positivas necesarias antes de cerrar el cambio. *Evidencia esperada:* lista con método y evidencia. *Rúbrica:* 3 = el SCADA sondea las doce estaciones (recuento del historiador), la estación de ingeniería puede conectarse a una estación en una ventana aprobada, el SSH de jump-01 a Z2 funciona, la exportación diaria de hist-02 sigue llegando; cada una con su fuente de evidencia; 2 = algunas; 1 = ninguna positiva; 0 = nada.
+
+**EX044 — Sin probar no es verificado.** *Objetivo:* informar con honestidad. *Entradas:* el resumen de un directivo: «CHG-2207: 7 de 8 pruebas superadas, terminado». *Pasos:* redacte el estado corregido en un párrafo. *Evidencia esperada:* párrafo. *Rúbrica:* 3 = indica el estado por requisito (3 verificados, 2 fallidos, 1 sin probar), nombra los elementos abiertos y sus responsables, dice que el cambio no está terminado; 2 = correcto pero sin responsables; 1 = retoque menor; 0 = nada.
+
+### Síntesis del capítulo
+
+La verificación convierte un cambio de configuración en un resultado demostrado. Redacte requisitos que puedan fallar, pruebe cada uno con pruebas positivas y negativas, cuente solo las pruebas con evidencia e informe de cada requisito como verificado, fallido o sin probar. En las redes de control, verifique con las acciones delimitadas más pequeñas, y nunca experimentando con el proceso en servicio.
+
+<!-- cyberabc:chapter-navigation:start ch-11 -->
+### Siga estudiando — capítulo 11 de 18
+
+[← Capítulo 10](#ch-10) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 12 →](#ch-12)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Laboratorio contenido I
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo debería ser capaz de:
+
+- construir un laboratorio **contenido** en el que se pueda estudiar el comportamiento de un protocolo sin ninguna red ni dispositivo real;
+- implementar un respondedor Modbus/TCP mínimo con una **política de escritura**: qué registros pueden escribirse y dentro de qué rango de valores;
+- generar y leer **respuestas de excepción** de Modbus (función ilegal, dirección de datos ilegal, valor de datos ilegal);
+- evaluar un laboratorio con una rúbrica: contención, reproducibilidad, evidencia y honestidad sobre lo que el laboratorio no modela.
+
+Los capítulos 1–11 analizaron el tráfico y la configuración. Este capítulo construye algo que se puede romper sin peligro. Es el primero de dos laboratorios evaluados; el capítulo 17 es el segundo.
+
+### 12.1 Qué significa «contenido»
+
+Un laboratorio contenido no puede afectar a nada fuera de sí mismo. En este libro eso se garantiza técnicamente, no con buenas intenciones: el Lab 12 usa `socket.socketpair()`, que crea dos sockets conectados **dentro de un mismo proceso** ([Python socket](https://docs.python.org/3/library/socket.html)). Nada escucha en un puerto, nada se encamina, y el programa no puede alcanzar un controlador real ni siquiera por error. Los laboratorios mayores usan redes virtuales aisladas sin ruta hacia fuera, o hardware de repuesto en un banco con su cable de red sin conectar a ningún otro sitio. Anote la propiedad de contención de cada laboratorio que construya y cómo la comprobó.
+
+### 12.2 La tarea del respondedor
+
+Un controlador real decide si ejecuta una escritura según su propia lógica, que en los dispositivos Modbus clásicos a menudo significa «siempre». Algunos dispositivos y pasarelas de protocolo permiten proteger contra escritura por rangos de registros; muchos no. El respondedor del laboratorio hace explícita la política:
+
+- las **lecturas** de registros de retención (función 3) se permiten dentro de la tabla, con una cantidad de 1–125 (el límite del protocolo para una lectura);
+- las **escrituras** de un registro (función 6) solo se permiten en el registro 7, el punto de consigna de la bomba, y solo para valores de 100–400;
+- todo lo demás devuelve una **excepción**: el código de función con su bit alto activado (código + 0x80) y un código de excepción (01 función ilegal, 02 dirección de datos ilegal, 03 valor de datos ilegal), tal como los define la especificación Modbus Application Protocol ([Modbus specifications](https://www.modbus.org/modbus-specifications)).
+
+Una respuesta normal a la función 6 repite la petición. Una respuesta normal a la función 3 lleva un recuento de bytes y los valores de los registros.
+
+### 12.3 El registro dentro del dispositivo
+
+El respondedor registra cada lectura, cada escritura aceptada con su valor anterior y el nuevo, y cada excepción. En los equipos reales, estos son exactamente los registros que habría deseado tener en el capítulo 7. Una ráfaga de respuestas de excepción 02 desde un mismo origen es una señal clara de que alguien está cartografiando el espacio de registros; una racha de excepciones 03 es alguien que prueba los límites. En los equipos reales esos registros suelen faltar, y por eso el laboratorio los hace visibles. Una ráfaga de excepciones de dirección ilegal desde un mismo origen es señal de cartografiado; una racha de excepciones de valor ilegal es alguien que prueba los límites. Guarde el registro del laboratorio junto con las respuestas en hexadecimal para que un revisor pueda emparejar cada excepción con una petición.
+
+### 12.4 Ejemplo resuelto: el respondedor de banco (sintético)
+
+**Lab 12** (guárdelo como `lab12.py` y ejecútelo con `python3 lab12.py`):
+
+```python
+# Lab 12 - contained Modbus/TCP responder with a write policy (offline, standard library only)
+# Uses socket.socketpair(): both ends live inside this process; nothing touches a real network.
+import socket, struct
+regs = [0] * 10; regs[0], regs[1], regs[7] = 342, 61, 250      # level cm, chlorine x100, pump setpoint
+WRITABLE = {7: (100, 400)}                                      # register: allowed value range
+log = []
+def respond(req: bytes) -> bytes:
+    tid, pid, length, unit, fc = struct.unpack(">HHHBB", req[:8])
+    def exc(code):
+        log.append(f"tid={tid} fc={fc} exception {code}")
+        return struct.pack(">HHHBBB", tid, 0, 3, unit, fc | 0x80, code)
+    if pid != 0 or length != len(req) - 6: return exc(3)
+    if fc == 3:
+        addr, qty = struct.unpack(">HH", req[8:12])
+        if not 1 <= qty <= 125 or addr + qty > len(regs): return exc(2)
+        data = struct.pack(f">{qty}H", *regs[addr:addr + qty])
+        log.append(f"tid={tid} read {addr}..{addr + qty - 1}")
+        return struct.pack(">HHHBBB", tid, 0, 3 + len(data), unit, 3, len(data)) + data
+    if fc == 6:
+        addr, val = struct.unpack(">HH", req[8:12])
+        if addr not in WRITABLE: return exc(2)
+        lo, hi = WRITABLE[addr]
+        if not lo <= val <= hi: return exc(3)
+        old, regs[addr] = regs[addr], val
+        log.append(f"tid={tid} WRITE reg {addr} {old}->{val}")
+        return req[:12]                                         # echo is the normal fc 6 reply
+    return exc(1)
+client, server = socket.socketpair()
+def call(tid, fc, a, b):
+    client.sendall(struct.pack(">HHHBBHH", tid, 0, 6, 1, fc, a, b))
+    server.sendall(respond(server.recv(260)))
+    r = client.recv(260)
+    return r.hex()
+print("read 0..2     ", call(1, 3, 0, 3))
+print("write 7=300   ", call(2, 6, 7, 300))
+print("write 7=900   ", call(3, 6, 7, 900))
+print("write 0=0     ", call(4, 6, 0, 0))
+print("fc 8 diag     ", call(5, 8, 0, 0))
+print("read 8..12    ", call(6, 3, 8, 5))
+client.close(); server.close()
+print("registers", regs[:3], "setpoint", regs[7])
+for entry in log: print("log:", entry)
+```
+
+Salida esperada (Python 3.13.5):
+
+```text
+read 0..2      0001000000090103060156003d0000
+write 7=300    00020000000601060007012c
+write 7=900    000300000003018603
+write 0=0      000400000003018602
+fc 8 diag      000500000003018801
+read 8..12     000600000003018302
+registers [342, 61, 0] setpoint 300
+log: tid=1 read 0..2
+log: tid=2 WRITE reg 7 250->300
+log: tid=3 fc=6 exception 3
+log: tid=4 fc=6 exception 2
+log: tid=5 fc=8 exception 1
+log: tid=6 fc=3 exception 2
+```
+
+Lea las respuestas en hexadecimal. La primera es una lectura normal: `03 06` (función 3, seis bytes) seguida de 0x0156 = 342, 0x003D = 61 y 0. La escritura de 300 en el registro 7 se repite y el registro anota 250 → 300. Escribir 900 devuelve `86 03`: función 6 + 0x80, excepción 3, valor ilegal. Escribir el registro 0 devuelve `86 02`, dirección ilegal: el registro 0 es una medición y no se puede escribir. La función 8 (diagnóstico) devuelve `88 01`, función ilegal. Una lectura de cinco registros a partir del 8 se sale de la tabla de 10 registros y devuelve `83 02`. Los registros del final muestran que solo surtió efecto la escritura aprobada.
+
+### 12.5 Rúbrica de evaluación de un laboratorio contenido
+
+| Criterio | 3 (excelente) | 1 (débil) |
+|---|---|---|
+| Contención | Es técnicamente imposible alcanzar un dispositivo real; la propiedad se declara y se comprueba | Depende de «no lo apuntaré a nada» |
+| Reproducibilidad | Entradas fijas; salida exacta registrada con la versión de Python | La salida varía o no se registra |
+| Declaración de fidelidad | Enumera lo que el laboratorio modela y lo que no | Afirma representar dispositivos reales |
+| Evidencia | Registros y salidas guardados, con hash, vinculados a los ejercicios | Solo capturas de pantalla |
+| Seguridad de las ampliaciones | Cambios revisados para que no puedan eliminar la contención | Añade código de red real sin revisión |
+
+### 12.6 Lo que el laboratorio no modela
+
+Los dispositivos reales difieren: algunos ignoran los identificadores de unidad, algunos aceptan escrituras en cualquier registro, algunos se bloquean con peticiones mal formadas, y pocos registran algo. El respondedor atiende una petición cada vez y no tiene concurrencia, tiempos de espera ni lecturas parciales. Su valor está en hacer visibles la política y las excepciones, no en predecir el comportamiento de un fabricante concreto. No use nunca los resultados de un laboratorio para decidir cómo responderá un dispositivo en servicio a una prueba.
+
+Si el respondedor devuelve la excepción 2 para una lectura de los registros 8 a 12, eso no dice nada sobre lo que haría una RTU real de KW-04. Los dispositivos reales difieren en el tratamiento del identificador de unidad, la protección contra escritura y el registro, y muchos se bloquean con peticiones mal formadas. Indique esas lagunas en la evaluación y limite la verificación en servicio a los métodos delimitados y autorizados del capítulo 11.
+
+### 12.7 Actividad práctica
+
+Añada al respondedor la función 16 (escribir varios registros) con la misma política: todos los registros del rango deben poder escribirse y todos los valores deben estar dentro de sus límites, o se rechaza la escritura completa. Pruebe cuatro casos: todo permitido; una dirección que no se puede escribir; un valor fuera de rango; un recuento de bytes incoherente con la cantidad. Rechace la escritura completa si algún registro no se puede escribir o algún valor está fuera de sus límites. Pruebe todo permitido, una dirección que no se puede escribir, un valor fuera de rango y un recuento de bytes que no coincide con la cantidad. Anote las cuatro respuestas en hexadecimal y, junto a ellas, las líneas del registro.
+
+### 12.8 Errores comunes y límites
+
+- Usar un socket de red real «solo para probar» y dejarlo enlazado a todas las interfaces.
+- Aceptar una escritura parcial de varios registros que cambia algunos registros antes de rechazar otros.
+- Olvidar que la respuesta a la función 6 es una repetición de la petición, y analizarla mal.
+- Añadir la función 16 en la actividad 12.7 sin reutilizar la política de escritura individual, de modo que el límite de 100–400 del registro 7 se aplica en una vía de escritura y no en la otra.
+- Probar solo la escritura permitida y nunca las rechazadas; el registro de las respuestas de excepción es la evidencia de que la política funciona.
+- Tratar el comportamiento de las excepciones del laboratorio como el de un fabricante. Declare la contención como una propiedad técnica en todo informe de laboratorio.
+
+### Ejercicios — capítulo 12
+
+**EX045 — Lea las respuestas.** *Objetivo:* decodificar respuestas normales y de excepción. *Entradas:* la salida del Lab 12. *Pasos:* para cada una de las seis respuestas, dé el identificador de transacción, la función (con o sin el bit de excepción) y su significado. *Evidencia esperada:* seis filas. *Rúbrica:* 3 = las seis correctas, incluidas 0x86 = excepción a la 6, 0x88 = excepción a la 8, 0x83 = excepción a la 3; 2 = una errónea; 1 = solo las respuestas normales; 0 = nada.
+
+**EX046 — Implemente la función 16.** *Objetivo:* ampliar el respondedor con seguridad. *Entradas:* la actividad 12.7. *Pasos:* impleméntela y ejecute los cuatro casos. *Evidencia esperada:* código y salidas. *Rúbrica:* 3 = comportamiento de todo o nada; excepción 02 para una dirección que no se puede escribir, 03 para un valor fuera de rango, 03 (o un tratamiento de petición mal formada justificado) para un recuento de bytes incoherente; la respuesta normal repite solo la dirección y la cantidad; líneas de registro para cada caso; 2 = funciona con un código erróneo; 1 = acepta escrituras parciales; 0 = nada.
+
+**EX047 — Detecte intentos de cartografiado.** *Objetivo:* usar los registros del lado del dispositivo. *Entradas:* el registro del respondedor. *Pasos:* escriba una regla que alerte del comportamiento de cartografiado o de prueba de límites y pruébela añadiendo cinco lecturas de direcciones fuera de rango desde una misma secuencia de transacciones. *Evidencia esperada:* regla y salida. *Rúbrica:* 3 = por ejemplo, «≥3 respuestas de excepción 02 en 60 s desde un mismo origen»; demuestra que se dispara con la prueba y no con las seis peticiones originales (que solo contienen dos respuestas de excepción 02; contar juntas la 02 y la 03 ya llegaría a tres y la dispararía); 2 = se dispara en ambos casos; 1 = solo la regla; 0 = nada.
+
+**EX048 — Evalúe un laboratorio.** *Objetivo:* aplicar la rúbrica. *Entradas:* el laboratorio de un colega que ejecuta un servidor Modbus en `0.0.0.0:502` en un portátil que «solo se usa en la oficina». *Pasos:* puntúelo en contención y fidelidad y proponga una corrección. *Evidencia esperada:* puntuaciones y corrección. *Rúbrica:* 3 = contención 1 (alcanzable desde cualquier red a la que se una el portátil, y el portátil puede llevarse a las estaciones); corrección con socketpair o con enlace solo a la interfaz de bucle invertido más cortafuegos del equipo, o una red de máquinas virtuales aislada; se exige una declaración de fidelidad; 2 = corrección sin razonamiento; 1 = lo acepta; 0 = nada.
+
+### Síntesis del capítulo
+
+Un laboratorio contenido es aquel en el que la seguridad es una propiedad técnica. El Lab 12 construye un respondedor Modbus que aplica una política de escritura y devuelve las excepciones adecuadas, haciendo visible lo que ocultan la mayoría de los dispositivos reales: qué peticiones se rechazaron y por qué. Evalúe todo laboratorio en cuanto a contención, reproducibilidad, evidencia y una declaración franca de lo que no modela.
+
+<!-- cyberabc:chapter-navigation:start ch-12 -->
+### Siga estudiando — capítulo 12 de 18
+
+[← Capítulo 11](#ch-11) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 13 →](../../en/book/MANUSCRIPT.md#ch-13)
 
 Continúe con la siguiente lección escrita.
 <!-- cyberabc:chapter-navigation:end -->
@@ -1283,6 +1705,36 @@ Cada resultado resuelto muestra una respuesta defendible y lo que premia la rúb
 **EX035 — Experimento mental de falsificación.** El CRC solo muestra que los bytes no se corrompieron accidentalmente. La dirección de origen DNP3 1 es un campo que escribe el emisor; cualquier equipo puede atribuírsela. La autenticidad requiere protección criptográfica (DNP3 Secure Authentication, o un túnel cuyos extremos estén autenticados, por ejemplo TLS que termine en fep-01 y en la estación remota o su pasarela), más la aplicación en la red de que solo la ruta de fep-01 alcanza la estación remota. El origen de red inesperado es en sí mismo el hallazgo.
 
 **EX036 — Selección del método.** (a) Pasivo: decodificar una captura en fep-01 o sus registros a lo largo del mes y enumerar las direcciones de origen. (b) Exportación de la configuración del cortafuegos de fep-01 y sus registros; una única prueba de conexión delimitada solo si la exportación es ambigua. (c) Registro de activos; si no, la herramienta del fabricante en modo de solo lectura durante una sesión aprobada y organizada con el ingeniero de protecciones o de telecontrol de Kestrel Grid; nunca sondeando la estación remota.
+
+### Capítulo 10: EX037–EX040
+
+**EX037 — Explique el sombreado.** Con R5 por encima de R4: no se notifica ninguna regla sombreada; pruebas: 1 PASS, 2 PASS (denegación por R5), 3 PASS, 4 FAIL (SMB permitido por R4), 5 FAIL (R6). El cambio de orden cumplió la promesa del comentario sobre RDP, pero no resolvió la regla amplia.
+
+**EX038 — Corrija la política.** Elimine R4 y R6. Las cinco pruebas dan PASS (RDP y SMB se deniegan ahora por R7; 10.20.0.12 se deniega por R7). R5 es ahora redundante con la denegación por defecto; consérvela solo si se quiere una categoría de registro aparte para los intentos de RDP (y entonces debe situarse por encima de cualquier permiso); en caso contrario, elimínela. Antes de eliminar R4, revise 30 días de registros de fw-01 para enumerar lo que usaba R4 y dar a cada uso legítimo su propio conducto.
+
+**EX039 — Configuración del acceso de proveedores.** `vendor-ss3` desactivada por defecto. Kestrel Grid abre una incidencia; la guardia del KVROC activa la cuenta durante una ventana fija (por ejemplo, 4 h) en la herramienta de acceso; el proveedor se conecta a jump-01 con MFA; la sesión se graba; jump-01 solo permite la dirección de gestión de la pasarela del proveedor y el puerto de ingeniería concreto de SS-3, nunca toda la red de la subestación; se dispara una alerta ante cualquier inicio de sesión fuera de una ventana activada; la cuenta se desactiva automáticamente; el siguiente día laborable se revisa el registro de la sesión frente a la incidencia.
+
+**EX040 — Detecte las ampliaciones.** Añada: `def overlaps(a, b): return ip_network(a[2]).overlaps(ip_network(b[2])) and ip_network(a[3]).overlaps(ip_network(b[3])) and (a[4] in ("any", b[4]) or b[4] == "any") and (a[5] is None or b[5] is None or a[5] == b[5])` y, para una regla posterior con la misma acción que se solapa pero no está cubierta, notifíquela cuando su origen o su destino no sea una subred del de la anterior. La salida verificada añade `R6 broadens R1: same action, wider source 10.20.0.0/24`, lo mismo para R2, y `R7 broadens R5`; esta última es la denegación por defecto prevista y debe excluirse (por ejemplo, omitiendo las reglas cuyo origen y destino son ambos `0.0.0.0/0`). La revisión es necesaria porque, en una lectura rápida, la regla parece un duplicado, pero concede a toda la subred del centro de control acceso de escritura a KW-04.
+
+### Capítulo 11: EX041–EX044
+
+**EX041 — Hágalo comprobable.** «El acceso remoto es seguro» → «El acceso del proveedor a SS-3 solo es posible a través de jump-01 con MFA durante una ventana activada» (prueba: un intento fuera de la ventana se rechaza y genera una alerta). «La hora está sincronizada» → «Todos los equipos de Z2 y Z5 están a menos de 1 s de ntp-ops» (prueba: informe de desfases). «Los registros se conservan» → «Los eventos de permiso y denegación de fw-01 llegan al colector en 60 s y se conservan 12 meses» (prueba: intento de conexión señalado y consulta posterior en el colector; comprobación de la conservación del registro más antiguo).
+
+**EX042 — Añada la prueba que falta.** Con T9 para el REQ-6, la salida muestra el REQ-6 verificado mediante T9 y «verified 4/6». REQ-3 y REQ-4 siguen fallando, así que CHG-2207 no está terminado.
+
+**EX043 — Pruebas positivas para un cambio de cortafuegos.** El SCADA sondea las doce estaciones (el recuento del historiador para una ventana de 10 minutos es igual a 12 estaciones); conexión de eng-ws-15 a la estación de la incidencia dentro de una ventana; SSH de jump-01 a hist-02 y a scada-01; la exportación diaria de hist-02 llega al servidor de informes; las sesiones de la HMI con scada-01 no se ven afectadas. Evidencia: salida de la consulta al historiador, registros de conexión, entradas del colector.
+
+**EX044 — Sin probar no es verificado.** «CHG-2207 no está terminado. De seis requisitos, tres están verificados con evidencia (REQ-1, REQ-2, REQ-5), dos fallaron (REQ-3: el RDP corporativo sigue permitido porque R4 continúa; REQ-4: 10.20.0.12 puede alcanzar el Modbus de las estaciones por R6) y uno está sin probar (REQ-6, registro de denegaciones). T8 fue una revisión de la configuración sin salida registrada y no se cuenta. Responsables: eliminación de R4 y R6, R. Kaur, con un nuevo cambio; prueba del REQ-6, J. Tan. Nueva verificación tras la corrección».
+
+### Capítulo 12: EX045–EX048
+
+**EX045 — Lea las respuestas.** tid 1: función 3, normal, 6 bytes: 342, 61, 0. tid 2: función 6, repetición normal; se escribió 300 en el registro 7. tid 3: 0x86 = excepción a la función 6, código 03 valor de datos ilegal (900 fuera de 100–400). tid 4: 0x86, código 02 dirección de datos ilegal (el registro 0 no se puede escribir). tid 5: 0x88 = excepción a la función 8, código 01 función ilegal. tid 6: 0x83 = excepción a la función 3, código 02 (el rango 8–12 excede la tabla).
+
+**EX046 — Implemente la función 16.** Analice `addr, qty, bc = struct.unpack(">HHB", req[8:13])`; si `bc != 2 * qty or len(req) != 13 + bc`, devuelva la excepción 03; decodifique los valores; si alguna dirección de `addr..addr+qty-1` no está en WRITABLE, devuelva 02; si algún valor está fuera de su rango, devuelva 03; en caso contrario, escriba todos y devuelva `struct.pack(">HHHBBHH", tid, 0, 6, unit, 16, addr, qty)`. Registre cada resultado. Ninguna escritura parcial.
+
+**EX047 — Detecte intentos de cartografiado.** Regla: tres o más respuestas de excepción 02 a un mismo origen en 60 s. Las seis peticiones originales producen dos respuestas de excepción 02 (tid 4 y tid 6), así que no se dispara; añadir cinco lecturas fuera de rango produce siete y se dispara. Contar juntas la 02 y la 03 ya llegaría a tres en la ejecución original (tids 3, 4, 6) y se dispararía con errores corrientes; mantener aparte la regla de prueba de límites (excepción 03) da alertas más claras.
+
+**EX048 — Evalúe un laboratorio.** Contención 1: un servidor en `0.0.0.0:502` es alcanzable desde cualquier red a la que se una el portátil, incluida la red de una estación si el portátil se usa allí. Fidelidad: sin declaración, puntuación 1. Corrección: `socketpair()` o enlace a 127.0.0.1 con una regla del cortafuegos del equipo, o una red de máquinas virtuales aislada sin ruta hacia fuera; añadir una declaración de fidelidad; registrar las salidas con la versión de Python.
 
 <a id="glossary"></a>
 
