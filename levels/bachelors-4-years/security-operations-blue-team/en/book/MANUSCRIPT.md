@@ -48,13 +48,19 @@ You will (1) use ratios, rates and percentages correctly in security reporting; 
 
 Security teams report numbers constantly: how many phishing emails were reported, how many people clicked, how many accounts were compromised. Decisions about training, filtering and staffing follow from these numbers, so they must be computed and explained correctly.
 
+In the library-fines campaign, Dr. Kim had to decide whether to spend her small training budget on students or staff. A raw count of reports pointed one way and a rate pointed the other, so the choice depended on Lucas computing the right figure and explaining it in a sentence she could repeat to the university's leadership.
+
 ### 1.2 The course case
 
 **Lucas Moreau** studies for a bachelor's degree at the fictional **Riverton University** and works part-time in its student-staffed campus security operations centre, supervised by the university's information security manager **Dr. Hana Kim**. In week three of term, a phishing email titled "Library fines overdue" reaches thousands of students and staff.
 
+The campaign runs through the whole book. Early chapters use it to practise counting, programming and writing; later ones follow the same incident through detection, containment and review. Every person, account and figure in it is synthetic, so students can examine it freely without touching anyone's real mail or sign-in records.
+
 ### 1.3 Counts versus rates
 
 Students reported 54 emails and staff 41. Raw counts suggest students were more alert, but there are 18,000 students and only 3,200 staff. Rates per 1,000 people make groups of different sizes comparable.
+
+Here that gives 54 ÷ 18,000 × 1,000 for students and 41 ÷ 3,200 × 1,000 for staff. Lucas also checks that both groups received the email at all, since a rate based on the whole population would mislead if the campaign had reached only some faculties. The denominator should be the people who could have reported, which here was everyone, since the email went to the whole university.
 
 ### Lab — rates per group
 
@@ -76,15 +82,21 @@ staff    report rate=12.8 per 1,000  click rate=1.9 per 1,000  clicks per report
 
 ### 1.4 Reading the result
 
-Staff reported at 12.8 per 1,000, more than four times the student rate of 3.0. Click rates were similar (1.5 and 1.9 per 1,000), but for every staff report there were only 0.15 clicks, against 0.50 for students. Students clicked about as often but reported much less.
+Staff reported at 12.8 per 1,000, more than four times the student rate of 3.0. Click rates were similar (1.9 per 1,000 for staff and 1.5 for students), but for every staff report there were only 0.15 clicks, against 0.50 for students. Students clicked about as often but reported much less.
+
+Those ratios come from 27 student clicks against 54 student reports, and 6 staff clicks against 41 staff reports. Together the 33 clickers match the set of clicking accounts analysed in later chapters. Lucas's conclusion for Dr. Kim was that training should encourage students to report, since they already click no more often than staff.
 
 ### 1.5 Misleading numbers
 
 Percentages of tiny groups, missing denominators and changing definitions mislead. Always state what was counted, out of how many, over what period.
 
+A department of eight people where two clicked has a 25% click rate, which sounds alarming next to the campus figure but rests on two people. Lucas reports such cases as counts with the group size beside them. If the definition of a "report" changes, for example to include phone calls, he marks the change so trends are not misread.
+
 ### 1.6 Showing your working
 
 Lucas writes the formula beside each figure — reports ÷ users × 1,000 — so Dr. Kim can check it in seconds.
+
+Writing the formula also exposes mistakes. In his first draft Lucas divided staff reports by the student population, which produced an implausibly small rate; seeing the formula beside the figure, Dr. Kim spotted it at once. A number with its working can be checked and corrected, while a bare number has to be trusted. Lucas now keeps the formula in the report itself, not only in his notes.
 
 ### Worked example
 
@@ -122,29 +134,43 @@ You will (1) describe the hardware and software layers of a computing system; (2
 
 A computing system has hardware, firmware, an operating system, applications and the people using them. Security events can arise at each layer, and SOC analysts need to know which layer produced a record to interpret it.
 
+In the phishing case, the fake sign-in page lived on an attacker's server, the stolen password was used at the identity provider, and the mailbox rules were created in the mail service's application layer. Each layer kept different records, so Lucas had to know which one would hold evidence of each step before he could look for it.
+
 ### 2.2 Clients and servers
 
 When a student opens webmail, a browser on their laptop (client) talks to a mail service (server) run by a cloud provider. Sign-in is handled by the university's identity provider, which checks the password and, if enabled, a second factor.
+
+This matters for the case because the attacker never touched a victim's laptop. Once the password was stolen, the attacker's own browser became the client, and the identity provider and mail service saw an ordinary sign-in from a different address. The evidence therefore sits on the servers' side, in sign-in and mailbox logs.
 
 ### 2.3 Services as chains
 
 One action passes through many systems: laptop, campus Wi-Fi, internet, identity provider, mail service. Each keeps its own logs with its own clock and format.
 
+For the phishing campaign this means a single click can leave traces in the browser, a campus DNS resolver, the identity provider and the mail service, each timestamped by its own clock. Lucas learns early that matching events across these records requires converting them to one time zone and allowing for small clock differences between systems run by different teams.
+
 ### 2.4 Where events come from
 
 The identity provider records sign-ins; the mail service records sent messages and rule changes; Wi-Fi controllers record device connections; laptops record local events if managed.
+
+Each source answers a different question. Sign-in logs show who authenticated, from where and whether a second factor was used. Mail logs show rules created and messages sent, which reveal what an attacker did with an account. Wi-Fi logs would show whether a device was on campus, which matters when judging whether a sign-in is unusual.
 
 ### 2.5 Managed and unmanaged devices
 
 Staff laptops are university-managed and send logs to the SOC. Student laptops are personal and do not; the SOC sees students only through university services.
 
+In the case, this meant the SOC could not check whether a student's laptop had been infected after clicking; it could only examine the student's university account. For staff, the managed laptop's logs could confirm or rule out anything happening on the device itself. The difference shapes what each investigation can conclude, and Lucas states it in his notes.
+
 ### 2.6 Mapping a service
 
 Lucas maps webmail from end to end, listing each component, its owner and its logs.
 
+His map lists the student's browser and laptop as unmanaged with no logs, campus Wi-Fi as owned by the network team with controller logs, the identity provider owned by the identity team with sign-in logs, and the mail service owned by the cloud provider with message and rule logs. Gaps are marked in red. The map fits on one page and is updated when a service changes.
+
 ### 2.7 Why maps help
 
 When the phishing campaign begins, the map tells analysts which logs to check for each question.
+
+For example, when asked whether a suspicious sign-in came from campus, Lucas's map pointed him straight to the Wi-Fi controller logs, and also showed that those logs were not forwarded to the SOC. That gap explained why the question could not be answered quickly, and it became one of the improvements recorded after the incident, with the network team as owner and a target date.
 
 ### Clocks across systems
 
@@ -186,29 +212,43 @@ You will (1) write short programs that read and count records; (2) use loops, co
 
 Analysts often ask questions no dashboard answers: "How many students received the phishing email per faculty?" A short program answers it reliably and can be rerun.
 
+The recipient export for the library-fines email listed every delivery attempt, so counting rows would have overstated the number of people reached. Lucas's program de-duplicated by recipient and found 6,980 unique accounts. The same script ran again unchanged when a second export arrived the next day, which a manual count in a spreadsheet would not easily allow.
+
 ### 3.2 Basic constructs
 
 Variables hold values; loops visit each record; conditions test fields; dictionaries map keys such as faculty names to counts. These four ideas solve most counting tasks.
+
+Lucas's per-faculty counter uses all four: a dictionary called faculty_counts starts empty, a loop reads each recipient row, a condition checks whether the faculty field is present, and the matching count is increased by one. The whole program is under twenty lines, short enough for Dr. Kim to read before trusting its output.
 
 ### 3.3 Reading files
 
 Exports arrive as CSV files. Python's csv module reads them into dictionaries keyed by column name, avoiding fragile string splitting.
 
+The mail service's export quoted some faculty names because they contained commas, such as "Arts, Humanities". Splitting each line on commas would have broken those names into two fields and shifted every column after them. The csv module handles the quoting, so Lucas's counts were correct without any special code for awkward names. He also reads the file with an explicit encoding, since some names contain accented letters.
+
 ### 3.4 Testing
 
 Before running on the real export, Lucas writes a five-line test file where he knows the answer: two students in Law, three in Engineering. If the program prints anything else, the program is wrong.
+
+His first run on the test file printed three for Law, because the program counted the header row as a student. Fixing that took one line. Had he run the untested program on the real export, the error would have been hidden among thousands of rows and might never have been noticed.
 
 ### 3.5 Readability
 
 Clear variable names (faculty_counts, not fc) and a comment stating intent help Dr. Kim and other students review his code.
 
+When a fellow student analyst picked up the script during a later shift, the names and a one-line comment saying "count unique recipients per faculty" were enough for them to use and adapt it without asking Lucas. Code that only its author can understand becomes useless as soon as that person is off duty or graduates at the end of the year.
+
 ### 3.6 Handling errors
 
 Some rows lack a faculty field. Lucas counts them under "unknown" instead of crashing, and prints how many there were.
 
+In the phishing export, 112 rows had no faculty, mostly shared mailboxes and recent staff hires. Reporting that number told Dr. Kim how much of the data the faculty breakdown did not cover. A program that silently skipped those rows would have produced totals that did not add up to 6,980, without explaining why. Unknowns are a finding, not a nuisance, and they shrink as records improve.
+
 ### 3.7 Keeping code
 
 Scripts are stored in the SOC's shared repository with a short description.
+
+The description states what the script does, what input it expects and its known limits, such as treating shared mailboxes as unknown. Storing it in the shared repository means the next campaign can reuse it, and any change is recorded with the author and date. Scripts kept only on a student's laptop are lost when the student graduates, and nobody can check how an old figure was produced.
 
 ### Rerunning analyses
 
@@ -250,29 +290,43 @@ You will (1) write clear academic and technical prose; (2) structure arguments w
 
 University assignments and SOC reports share a need: a reader must follow the argument and check the evidence. Academic writing makes claims explicit and supports each with sources or data.
 
+When Lucas wrote his first incident summary, Dr. Kim needed to forward it to the university's data protection officer, who had not seen the logs. Every claim, such as "two accounts were compromised", had to point to the evidence behind it, so the officer could judge it without asking Lucas to explain each step in person.
+
 ### 4.2 Structure
 
 A paragraph opens with its claim, gives evidence, explains how the evidence supports the claim and notes limits. Reports and essays follow the same pattern at larger scale.
+
+A paragraph from Lucas's summary followed this shape: claim, two accounts were compromised; evidence, both clicked the link and signed in from an unusual country shortly afterwards; reasoning, the combination is a strong indicator; limit, other accounts may have been compromised without an unusual-country sign-in. The limit tells readers what is still uncertain.
 
 ### 4.3 Citing
 
 Every borrowed idea or figure is cited. Lucas cites NIST SP 800-61r3 for incident response phases and Alahmadi, Axon and Martinovic (2022) for analysts' views of alarms, using the referencing style his course requires.
 
+Citing the incident response guide lets readers check that the phases Lucas describes match the source rather than his memory of it. When he summarised findings about alarm fatigue, the citation showed the claim came from a study of analysts, not from his own opinion, which made Dr. Kim more willing to use it in a budget request.
+
 ### 4.4 Paraphrase and quotation
 
 Paraphrasing restates ideas in new words and still needs a citation; quotation uses exact words in quotation marks. Copying without either is plagiarism.
+
+Lucas uses quotation sparingly, mostly for precise definitions where exact wording matters, such as a phase name in the response guide. For most material he paraphrases, which shows he understood the idea, and adds the citation. When unsure whether a sentence is too close to the original, he rewrites it after closing the source, then compares the two.
 
 ### 4.5 Hedging
 
 Claims should match evidence. "The phishing campaign compromised two accounts" is supported; "the campaign was run by a criminal group" is not, unless evidence shows it.
 
+Lucas's draft said the sender was "clearly a criminal group"; the logs showed only the sending infrastructure and the fake page. Dr. Kim asked him to replace it with what was known: the campaign used a newly registered domain and a page copying Riverton's sign-in screen. Claims about who was behind it were left to those with evidence.
+
 ### 4.6 Revision
 
 First drafts are for thinking; later drafts for readers. Lucas reads his work aloud to find unclear sentences.
 
+His first draft of the incident summary was a timeline in the order he had discovered things. The revised version led with the outcome, two compromised accounts contained, and followed with the evidence, which suited readers who needed the result first. Reading aloud caught a sentence that used "they" for both the attacker and the victims, which confused the order of events.
+
 ### 4.7 Feedback
 
 Dr. Kim comments on drafts; Lucas keeps a list of recurring issues to avoid them next time.
+
+After three assignments, Lucas's list included missing denominators, vague claims about attackers and unexplained abbreviations such as IdP. He checked each new draft against the list before submitting it. By the end of term, Dr. Kim's comments had shifted from these basics to questions about evidence and reasoning, which was the point of keeping the list. The list itself became shorter each month.
 
 ### Writing for SOC readers
 
@@ -314,29 +368,43 @@ You will (1) explain common threats to universities; (2) describe phishing and a
 
 Universities hold personal data, research and payment systems, and have open networks and many users. Common incidents include phishing, account compromise, ransomware and misuse of research computing.
 
+Riverton's case shows why: thousands of students change every year, staff share accounts across departments, and many people use the same email address for teaching, research and administration. A single compromised account can reach many others because messages from a university address look legitimate to colleagues and students alike. Open networks for visitors add further exposure.
+
 ### 5.2 Phishing
 
 Phishing emails imitate trusted senders to trick people into revealing passwords or opening harmful files. The "Library fines overdue" email linked to a fake sign-in page styled like Riverton's.
+
+The email's subject played on a common worry, and the fake page used Riverton's logo and colours. The domain resembled the library's real address but was registered only days before the campaign. Students who entered their password were redirected to the real library site, so many did not realise anything had happened.
 
 ### 5.3 Account compromise
 
 With a stolen password, an attacker signs in as the victim, reads mail, creates rules to hide replies or forward mail, and sends more phishing to contacts. Compromised accounts spread campaigns because messages come from a trusted sender.
 
+In the case, the attacker used s2047 to create a rule moving replies to a hidden folder and then sent the library-fines email to the account's contacts. Recipients saw a message from a classmate's real address, which made them more likely to click. This is how one stolen password can extend a campaign.
+
 ### 5.4 What a SOC does
 
 A SOC monitors logs and alerts, investigates suspicious activity, coordinates response and helps improve defences. Riverton's SOC is small: two staff and six student analysts.
+
+With so few people, Riverton's SOC relies on clear priorities. During the campaign, one staff member coordinated with the identity team while student analysts handled reports and searched logs. Monitoring continued for other alerts throughout, because a large phishing campaign can hide a quieter attack happening at the same time, and student analysts are trained to escalate anything unrelated.
 
 ### 5.5 Helpful behaviours
 
 Reporting suspicious emails, using multi-factor authentication and not reusing passwords make defenders' work easier. Reports often arrive before technical detection.
 
+In the library-fines campaign, the first report arrived from a staff member several minutes before any filter flagged the message. Accounts with multi-factor authentication were much harder to misuse even after a password was entered on the fake page, because the attacker also needed the second factor. Unique passwords kept the stolen ones from opening other services, such as library and payment accounts.
+
 ### 5.6 Reporting culture
 
 People report more when they are thanked, not blamed. The SOC replies to every report.
 
+During the campaign, one student who had clicked and entered her password reported it herself. The SOC reset her password, signed out her sessions, checked for new mail rules and thanked her. Treating her as a helpful reporter rather than a careless user encourages others to come forward quickly, which is when response is easiest. The reply also told her what to watch for afterwards, such as unexpected sign-in prompts.
+
 ### 5.7 Case
 
 Within an hour of the campaign, 95 reports reach the SOC's phishing mailbox — the first signal of the incident.
+
+Lucas sorts the first reports by arrival time and finds that they all quote the same subject and sender, which confirms a single campaign rather than several unrelated ones. The earliest report gives the time the campaign started, which later becomes the starting point for searching sign-in logs for suspicious activity. He also notes that the campaign's subject line is reusable in a mail search, which shows how many mailboxes received it and lets the mail team remove the message from those that have not yet opened it.
 
 ### Multi-factor authentication
 
@@ -378,29 +446,43 @@ You will (1) use sets, relations and graphs to describe accounts and messages; (
 
 Let R be the accounts that received the phishing email, C those that clicked the link, and S those that later signed in from an unusual country. C ∩ S identifies accounts that both clicked and showed suspicious sign-ins — the strongest candidates for compromise.
 
+Writing the sets out makes the steps clear. R holds the 6,980 recipients, C the 33 who clicked, and S the accounts with unusual-country sign-ins in the following days. An account in S but not C might be compromised by another route, or might be genuine travel, so it is reviewed separately.
+
 ### 6.2 Logic for detections
 
 A detection condition is a logical formula: "sign-in from a new country AND mailbox rule created within 60 minutes". Writing it in logic makes it precise enough to test and review.
+
+Written precisely, the rule can be checked against cases. For s2047, a sign-in from a new country was followed within minutes by a rule hiding replies, so the rule fires. A student who travels home and signs in from there, but creates no rule, does not trigger it. Each part of the condition removes a source of false alarms.
 
 ### 6.3 Relations
 
 "Account a sent mail to account b" is a relation. Together these relations form a directed graph of who emails whom.
 
+The relation is built from the mail service's message log: each row gives a sender and a recipient. Lucas stores it as a dictionary mapping each sender to the set of recipients they have mailed in the previous month. Comparing that history with mail sent after a suspected compromise shows which recipients are new, and therefore suspicious enough to review.
+
 ### 6.4 Graphs and spread
 
 When s2047 was compromised, the attacker sent phishing to its contacts. In the graph, the campaign spreads along edges from compromised nodes. Finding nodes with many new outgoing edges finds spreading accounts.
+
+For s2047, the account had mailed about twenty people in the previous month, but sent the library-fines email to more than two hundred in under an hour after compromise. That jump in new outgoing edges stood out clearly against normal student behaviour, and the same check later helped confirm whether s3310 had been used to spread the campaign further.
 
 ### 6.5 Counting
 
 With 6,980 recipients and 33 clickers, the number of possible clicker pairs is 33 × 32 ÷ 2 = 528. Counting helps estimate the effort of manual checks before starting them.
 
+In practice, the SOC does not need to compare clicker pairs at all; the count shows why it should not try. Instead, it checks each clicker against sign-in logs, which takes 33 lookups. Choosing a method whose effort grows with the number of accounts, not the number of pairs, keeps the work manageable for a small team of two staff and six students.
+
 ### 6.6 Precision of definitions
 
 Discrete thinking turns "many emails" into "more than 50 recipients outside the user's usual contacts in one hour".
 
+With a precise definition, two analysts reviewing the same mailbox reach the same answer, and a program can apply it to every account. A vague one leaves each analyst to decide what "many" means, so results vary between shifts. Lucas tests his definition against s2047, which it flags, and a busy lecturer, which it does not. Both tests are kept with the rule.
+
 ### 6.7 Case use
 
 Lucas computes C ∩ S from exported lists and finds two accounts: s2047 and s3310.
+
+Both accounts were then examined in detail. s2047 had two successful unusual-country sign-ins and s3310 had one. Starting from the intersection meant Lucas reviewed two accounts first rather than all 33 clickers, though the remaining clickers were still checked afterwards, since a compromise might not show an unusual-country sign-in, for example if the attacker used a server in the same country. For each of the other 31, Lucas checked sign-ins, new mail rules and sent mail, and recorded the result in the case notes.
 
 ### Paths
 
