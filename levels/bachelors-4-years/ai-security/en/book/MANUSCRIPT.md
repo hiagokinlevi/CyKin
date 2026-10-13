@@ -713,7 +713,7 @@ Rina's authorisation for LCH work names the systems (isolated copies of Ask Lume
 
 If you find a vulnerability, report it privately to the owner, give reasonable time to fix, and publish only details that help defenders. Do not access more data than needed to demonstrate the problem.
 
-In Rina's case, the phone-number issue was demonstrated with a single synthetic example rather than by checking many real numbers. Her report described the behaviour, the conditions and a suggested fix, and she kept it confidential until LCH confirmed the fix. Publishing details before the fix would have helped attackers more than defenders.
+In Rina's case, the phone-number issue was demonstrated with a single synthetic example rather than by checking many real numbers. Her report described the behaviour, the conditions and a suggested fix, and she kept it confidential until LCH confirmed the fix.
 
 ### 10.4 Fairness and safety
 

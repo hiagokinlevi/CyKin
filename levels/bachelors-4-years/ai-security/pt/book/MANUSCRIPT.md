@@ -585,7 +585,7 @@ Testar sistemas sem permissão pode ser ilegal e pode prejudicar usuários reais
 
 ### 10.3 Divulgação coordenada
 
-Se você encontrar uma vulnerabilidade, relate-a em privado ao dono, dê um prazo razoável para a correção e publique apenas detalhes que ajudem os defensores. Não acesse mais dados do que o necessário para demonstrar o problema. No caso de Rina, o problema do número de telefone foi demonstrado com um único exemplo sintético, e não verificando muitos números reais. O relatório dela descreveu o comportamento, as condições e uma correção sugerida, e ela o manteve confidencial até que a LCH confirmasse a correção. Publicar detalhes antes da correção teria ajudado mais os atacantes do que os defensores.
+Se você encontrar uma vulnerabilidade, relate-a em privado ao dono, dê um prazo razoável para a correção e publique apenas detalhes que ajudem os defensores. Não acesse mais dados do que o necessário para demonstrar o problema. No caso de Rina, o problema do número de telefone foi demonstrado com um único exemplo sintético, e não verificando muitos números reais. O relatório dela descreveu o comportamento, as condições e uma correção sugerida, e ela o manteve confidencial até que a LCH confirmasse a correção.
 
 ### 10.4 Equidade e safety
 
