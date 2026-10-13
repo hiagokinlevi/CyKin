@@ -1,7 +1,7 @@
 # Privacidade e Proteção de Dados: Curso de Bacharelado
 
 - Idioma: português do Brasil (`pt`); curso 096, curso de bacharelado (4 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–25 de 40 já estão escritos em português, com os exercícios EX001–EX075 e suas resoluções com rubricas de 0 a 3 e 5 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 26–40 (EX076–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–30 de 40 já estão escritos em português, com os exercícios EX001–EX090 e suas resoluções com rubricas de 0 a 3 e 6 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 31–40 (EX091–EX120) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de bacharelado que aprendem a proteger os dados de crianças e famílias em uma rede de escolas.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios consultam um registro de aplicativos em SQLite, calculam intervalos de Wilson para uma pesquisa com as famílias, resumem os tempos de resposta a pedidos de acesso, pontuam aplicativos de sala de aula, suprimem células pequenas e cruzam fotografias com registros de consentimento, sempre sobre dados sintéticos. A análise jurídica é didática e não constitui aconselhamento jurídico; a LGPD e os atos da ANPD são citados pelo texto oficial e parafraseados. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -30,9 +30,9 @@ Regulamento (UE) 2016/679 (GDPR), incluindo o considerando 38 e os artigos 7, 8,
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) |
 
-Capítulos 26–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-26), até a chegada dos próximos lotes.
+Capítulos 31–40: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-31), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1158,11 +1158,232 @@ As configurações do laboratório podem se afastar das de produção; compare-a
 - **EX074 — Teste do tablet perdido.** O que a simulação do tablet perdido verificou? *Rubrica:* 3 = que o apagamento remoto funciona e que não há dados de alunos em cache no dispositivo;; 2 = um;; 1 = nada;; 0 = nenhuma.
 - **EX075 — Áreas não testadas.** Por que registrar o que não foi testado? *Rubrica:* 3 = mostra onde falta garantia, como na exclusão pelos fornecedores;; 2 = menciona lacunas;; 1 = desnecessário;; 0 = nenhuma.
 
+<a id="ch-26"></a>
+
+## Capítulo 26 — Privacidade e proteção de dados: métodos II
+
+### Objetivos de aprendizagem
+
+Você vai (1) cruzar os usos dos dados com os registros de consentimento; (2) lidar com consentimentos ausentes ou recusados; (3) desenhar processos de consentimento para crianças.
+
+### 26.1 Consentimento para fotos
+
+A rede pede o consentimento dos pais antes de usar fotografias nos boletins. Elena constrói uma verificação que cruza os alunos marcados nas fotografias planejadas com o registro de consentimentos. Um aluno só é liberado se o consentimento estiver registrado como dado; a recusa ou a ausência de registro significam que a fotografia precisa ser retida. O consentimento é um dos casos mais claros em que a lei exige um registro, porque o artigo 7(1) do GDPR exige que o controlador consiga demonstrar que o consentimento foi dado; na LGPD, o ônus da prova cabe ao controlador (art. 8º, § 2º). Os registros ficam centralizados.
+
+### 26.2 Cruzamento
+
+O laboratório verifica três fotografias planejadas. A fotografia da feira de ciências é liberada. A do dia esportivo inclui P02, cujos pais recusaram. A do coral inclui P05, cujos pais recusaram, e P08, que não tem registro algum. Duas das três fotografias exigem ação. Elena explica que a ausência de registro é tratada como recusa, porque o consentimento não pode ser presumido. A editora do boletim recorta ou substitui as duas fotografias. O laboratório cruzou as fotografias com os registros de consentimento de todos os alunos que aparecem nelas, e duas fotografias tinham problemas.
+
+### 26.3 Revogação
+
+O consentimento pode ser revogado a qualquer momento, como diz o artigo 7(3), e a revogação precisa ser tão fácil quanto a concessão; a LGPD garante a revogação no art. 8º, § 5º. Elena desenha um formulário de revogação no portal das famílias e um processo para retirar as fotografias das publicações futuras. Os boletins impressos já distribuídos não podem ser recolhidos, o que ela explica com honestidade aos pais no próprio formulário de consentimento. Ela observa que ser claro sobre o que a revogação pode e não pode fazer faz parte do consentimento informado. As cópias online são removidas em poucos dias.
+
+### 26.4 A voz das crianças
+
+Os alunos mais velhos podem ter suas próprias opiniões. Elena recomenda perguntar aos alunos a partir de cerca de doze anos se concordam com o uso das fotografias, além do consentimento dos pais, e respeitar a objeção deles. Ela observa que o artigo 8 do GDPR trata do consentimento para serviços online e fixa limites de idade, mas que o princípio mais amplo de respeitar as opiniões das crianças à medida que amadurecem vale de forma mais geral. O Dr. Asante concorda que ouvir as crianças melhora tanto a justiça quanto a confiança. Os alunos mais velhos passam a assinar junto com os pais, e suas opiniões são registradas.
+
+### Laboratório — Cruzamento de fotografias com os registros de consentimento
+
+```python
+# Match pupils tagged in planned newsletter photos against the photo-consent register.
+consent = {"P01": True, "P02": False, "P03": True, "P04": True, "P05": False, "P06": True, "P07": True, "P08": None}
+photos = {"sports day": ["P01", "P02", "P03"], "science fair": ["P04", "P06", "P07"], "choir": ["P05", "P08", "P01"]}
+for ev, kids in photos.items():
+    bad = [k for k in kids if consent.get(k) is not True]
+    print(f"{ev:12s} {'OK' if not bad else 'HOLD: ' + ', '.join(f'{k} ({consent[k]})' for k in bad)}")
+print("photos needing action:", sum(1 for ks in photos.values() if any(consent.get(k) is not True for k in ks)), "of", len(photos))
+```
+
+Execute com `python3 lab_photo.py`. Saída verificada:
+
+```text
+sports day   HOLD: P02 (False)
+science fair OK
+choir        HOLD: P05 (False), P08 (None)
+photos needing action: 2 of 3
+```
+
+### Exemplo resolvido
+
+A verificação de Elena libera a fotografia da feira de ciências e retém as outras duas (P02 com recusa; P05 com recusa e P08 sem registro), desenha uma revogação fácil e acrescenta a opinião dos próprios alunos mais velhos.
+
+> **Caso sintético.** Os alunos e os registros são sintéticos; os artigos 7 e 8 do GDPR e o art. 8º da LGPD são reais.
+
+### Erros e limites
+
+As marcações precisam ser exatas; alunos não marcados nas fotografias escapam da verificação.
+
+### Exercícios
+
+- **EX076 — Registro ausente.** Como é tratado um aluno sem registro de consentimento? *Rubrica:* 3 = como sem consentimento; a fotografia é retida;; 2 = como recusa;; 1 = como consentimento;; 0 = nenhuma.
+- **EX077 — Fotos retidas.** Quais fotografias exigem ação? *Rubrica:* 3 = a do dia esportivo (P02) e a do coral (P05, P08);; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+- **EX078 — Honestidade sobre a revogação.** O que os pais precisam saber sobre a revogação? *Rubrica:* 3 = ela interrompe o uso futuro, mas não recolhe as cópias impressas;; 2 = menciona limites;; 1 = tudo é removido;; 0 = nenhuma.
+
+<a id="ch-27"></a>
+
+## Capítulo 27 — Privacidade e proteção de dados: verificação
+
+### Objetivos de aprendizagem
+
+Você vai (1) verificar os controles diante dos requisitos; (2) amostrar registros para conferir a conformidade; (3) relatar a verificação com honestidade.
+
+### 27.1 Plano de verificação
+
+Elena planeja a verificação dos controles da rede. Para cada controle, define um requisito e um teste. Controle de acesso: os funcionários só veem o que sua função permite, testado por amostragem de contas. Retenção: os registros que passaram do prazo são excluídos, testado por consultas ao sistema. Triagem de aplicativos: nenhum aplicativo não aprovado recebe dados, testado pela comparação do registro de aplicativos com o tráfego de rede. Ela segue o princípio de que todo controle importante deve ser testado com evidências, e não presumido. Cada controle recebe um teste, e os testes seguem a ordenação dos riscos.
+
+### 27.2 Amostragem
+
+Elena sorteia vinte contas de funcionários de várias escolas e compara as permissões de cada conta com sua função. Dezoito conferem; duas têm permissões extras que sobraram de funções anteriores. Ela relata a taxa de erro e corrige as contas. Explica que uma amostra não prova que todas as contas estão corretas, mas dá uma estimativa e mostra se o processo de entradas, mudanças e saídas funciona. Recomenda repetir a amostragem a cada período letivo. As vinte contas sorteadas vêm de todas as escolas, e cada uma é conferida com a lista atual de funcionários.
+
+### 27.3 Comparação com a rede
+
+Elena trabalha com o gerente de TI para listar os domínios que os dispositivos das escolas acessam e os compara com os aplicativos aprovados. Aparecem dois aplicativos não aprovados: um site gratuito de questionários e um aplicativo de desenho. Os dois recebem nomes de alunos pelo login. Ela procura os professores envolvidos, que não conheciam o processo, e os ajuda a encontrar alternativas aprovadas. Observa que a verificação técnica encontra práticas que as políticas e as pesquisas deixam passar. Os dois aplicativos não aprovados eram usados por uma única turma para questionários de lição de casa.
+
+### 27.4 Relato honesto
+
+Elena escreve um relatório de verificação que mostra os acertos e as falhas. O conselho pergunta se a rede está em conformidade. Ela explica que a rede melhorou e tem evidências para muitos controles, mas que ainda há falhas e que a verificação precisa continuar. Evita afirmar conformidade total, algo que nenhuma evidência poderia sustentar. O Dr. Asante observa que o relato honesto constrói confiança com o conselho e com os reguladores melhor do que afirmações otimistas que mais tarde se mostram falsas. Seu relatório diz com clareza quais controles falharam e o que será feito em cada caso.
+
+### Exemplo resolvido
+
+Elena verifica os controles com testes, encontra duas de vinte contas amostradas com permissões excessivas, descobre dois aplicativos não aprovados pela comparação com a rede e relata os resultados sem afirmar conformidade total.
+
+> **Caso sintético.** As amostras e os achados são sintéticos.
+
+### Erros e limites
+
+A comparação com a rede deixa passar os aplicativos usados em dispositivos de casa.
+
+### Exercícios
+
+- **EX079 — Resultado da amostra.** O que a amostra de contas encontrou? *Rubrica:* 3 = duas de vinte contas com permissões extras;; 2 = só o número;; 1 = nada;; 0 = nenhuma.
+- **EX080 — Aplicativos não aprovados.** Como os aplicativos não aprovados foram encontrados? *Rubrica:* 3 = comparando os domínios acessados com a lista de aprovados;; 2 = menciona a rede;; 1 = pesquisa;; 0 = nenhuma.
+- **EX081 — Afirmação de conformidade.** Por que Elena evita afirmar conformidade total? *Rubrica:* 3 = as evidências não a sustentam e ainda há falhas;; 2 = menciona evidências;; 1 = afirma;; 0 = nenhuma.
+
+<a id="ch-28"></a>
+
+## Capítulo 28 — Privacidade e proteção de dados: análise de falhas
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar um incidente de privacidade para encontrar as causas-raiz; (2) distinguir o erro individual da falha do sistema; (3) recomendar correções duradouras.
+
+### 28.1 O incidente
+
+Um incidente sintético: uma professora envia por e-mail uma planilha com os níveis de leitura e as marcações de necessidades especiais dos alunos para todos os pais de uma turma, em vez de para um único colega. Elena conduz a análise de falhas. Ela reúne os fatos: o cliente de e-mail completou automaticamente o grupo dos pais, a planilha tinha mais colunas que o necessário e não havia aviso para destinatários externos com anexos. A violação é comunicada ao responsável pela proteção de dados em até uma hora. Todas as famílias da turma receberam a planilha.
+
+### 28.2 Causas-raiz
+
+Elena pergunta por quê, repetidamente. Por que o e-mail foi para os pais? O preenchimento automático sugeriu o grupo dos pais. Por que a planilha tinha as marcações de necessidades especiais? Ela foi exportada do sistema com as colunas padrão. Por que não houve aviso? O aviso cobria domínios externos, mas os endereços dos pais estavam num grupo gerido pela escola. Ela identifica três causas de sistema, e não só o erro da professora, e explica que culpar a professora deixaria as causas no lugar. A exportação incluía colunas desnecessárias, e os grupos de e-mail não tinham gestão.
+
+### 28.3 Resposta
+
+A rede avalia o risco. A planilha incluía informações sobre necessidades especiais, que podem ser dados de saúde, então o risco para os alunos é provável, e a rede notifica a autoridade de controle em até 72 horas, pelo artigo 33 do GDPR; no Brasil, a comunicação à ANPD seguiria o art. 48 da LGPD e o prazo de três dias úteis da Resolução CD/ANPD nº 15/2024. A rede pede aos pais que apaguem o e-mail e informa as famílias afetadas. As Diretrizes 9/2022 do EDPB ajudam a avaliar a gravidade. Elena registra a linha do tempo e as decisões. No primeiro dia, a rede pede a cada destinatário que confirme a exclusão.
+
+### 28.4 Correções duradouras
+
+Elena recomenda três correções: desativar o preenchimento automático para os grupos de pais, mudar o padrão das exportações para colunas mínimas e estender os avisos a qualquer mensagem com anexos enviada a grupos grandes. Também recomenda compartilhar relatórios por um sistema seguro, e não por e-mail. Depois das correções, ela faz um teste de laboratório para confirmá-las. O Dr. Asante observa que uma boa análise de falhas produz correções que tornam o mesmo erro difícil de repetir para qualquer pessoa. Os anexos externos agora disparam um aviso antes do envio, e as exportações usam colunas mínimas por padrão.
+
+### Exemplo resolvido
+
+Elena analisa uma planilha enviada aos destinatários errados, encontra três causas de sistema, apoia a notificação em até 72 horas e recomenda desativar o preenchimento automático, exportações mínimas por padrão, avisos mais amplos e compartilhamento seguro.
+
+> **Caso sintético.** O incidente é sintético; o artigo 33 do GDPR, as Diretrizes 9/2022 do EDPB, o art. 48 da LGPD e a Resolução CD/ANPD nº 15/2024 são reais.
+
+### Erros e limites
+
+A análise de causa-raiz pode parar cedo demais; continue perguntando por quê até aparecer uma causa de sistema.
+
+### Exercícios
+
+- **EX082 — Causas de sistema.** Cite as três causas de sistema do incidente. *Rubrica:* 3 = preenchimento automático do grupo dos pais, colunas padrão na exportação, avisos limitados a domínios externos;; 2 = duas;; 1 = culpa a professora;; 0 = nenhuma.
+- **EX083 — Motivo da notificação.** Por que a rede notificou a autoridade de controle? *Rubrica:* 3 = os dados de necessidades especiais tornaram provável o risco aos alunos;; 2 = menciona sensibilidade;; 1 = desnecessário;; 0 = nenhuma.
+- **EX084 — Correção duradoura.** Dê uma correção duradoura recomendada por Elena. *Rubrica:* 3 = por exemplo, colunas mínimas por padrão na exportação;; 2 = um exemplo;; 1 = só retreinar;; 0 = nenhuma.
+
+<a id="ch-29"></a>
+
+## Capítulo 29 — Privacidade e proteção de dados: operações
+
+### Objetivos de aprendizagem
+
+Você vai (1) conduzir as operações de proteção de dados no dia a dia; (2) atender pedidos de direitos e incidentes; (3) prestar contas à direção.
+
+### 29.1 Calendário de operações
+
+Elena ajuda o responsável pela proteção de dados a criar um calendário de operações. Semanalmente: revisar a caixa de pedidos e o registro de incidentes. Mensalmente: relatar as métricas e revisar os novos aplicativos. A cada período letivo: revisões de acesso, conferência do treinamento e testes de restauração. Anualmente: atualizar o registro das atividades e a tabela de temporalidade. O calendário transforma muitas tarefas separadas em uma rotina previsível, o que importa nas escolas, onde o tempo da equipe é curto e as prioridades mudam depressa. Cada mês lista as tarefas e os responsáveis.
+
+### 29.2 Pedidos e incidentes
+
+Com a caixa central, os pedidos são registrados e atribuídos assim que chegam. Elena atende o pedido de um pai que quer todos os dados sobre o filho, incluindo os e-mails que mencionam a criança. Ela trabalha com o responsável pela proteção de dados para pesquisar os sistemas de e-mail e ocultar as informações sobre outros alunos. Aprende que os pedidos de acesso muitas vezes envolvem julgamento sobre informações de terceiros, e que as Diretrizes 01/2022 do EDPB discutem como equilibrar os direitos dos outros. Os dados de outros alunos são retirados antes de qualquer registro ser entregue.
+
+### 29.3 Métricas
+
+Elena relata métricas mensais à direção: pedidos recebidos e atendidos no prazo, incidentes e tempo até a comunicação, aplicativos avaliados e rejeitados, conclusão das revisões de acesso e participação no treinamento. Ela apresenta as tendências com explicações breves. A direção pede menos números e mais significado, então ela acrescenta um parágrafo curto sobre o que mudou e o que exige atenção. Aprende que as métricas só são úteis quando alguém age a partir delas. Sua página mensal mostra cinco números, cada um com um comentário, e cabe numa única folha.
+
+### 29.4 Sustentação
+
+Elena observa que as operações dependem do responsável pela proteção de dados, uma única pessoa. Se ele adoecer, as tarefas param. Ela recomenda um substituto e procedimentos documentados. Também recomenda que cada escola nomeie um ponto focal de privacidade, que responda às dúvidas locais e escale os problemas. O Dr. Asante observa que a resiliência vale para as pessoas tanto quanto para os sistemas, e que as organizações pequenas são especialmente vulneráveis à perda de pessoas-chave. Cada função agora tem um procedimento escrito e um substituto treinado, e a cobertura passa a ser planejada.
+
+### Exemplo resolvido
+
+Elena cria um calendário de operações, atende um pedido de acesso que exige ocultar dados de outros alunos, relata métricas mensais com comentários e recomenda um substituto e pontos focais de privacidade nas escolas.
+
+> **Caso sintético.** As operações são sintéticas; as Diretrizes 01/2022 do EDPB são reais.
+
+### Erros e limites
+
+Os pontos focais precisam de tempo e treinamento; nomeá-los não basta.
+
+### Exercícios
+
+- **EX085 — Finalidade do calendário.** O que o calendário de operações proporciona? *Rubrica:* 3 = transforma tarefas separadas em uma rotina previsível;; 2 = menciona rotina;; 1 = nada;; 0 = nenhuma.
+- **EX086 — Ocultação.** Por que ocultar partes dos e-mails num pedido de acesso? *Rubrica:* 3 = contêm informações sobre outros alunos;; 2 = menciona terceiros;; 1 = entregar tudo;; 0 = nenhuma.
+- **EX087 — Ponto único.** Que ponto único de falha Elena identifica? *Rubrica:* 3 = o responsável pela proteção de dados como única pessoa a conduzir as operações;; 2 = menciona o responsável;; 1 = nenhum;; 0 = nenhuma.
+
+<a id="ch-30"></a>
+
+## Capítulo 30 — Laboratório II
+
+### Objetivos de aprendizagem
+
+Você vai (1) testar processos de ponta a ponta; (2) testar a exclusão pelos fornecedores; (3) melhorar os processos a partir dos resultados dos testes.
+
+### 30.1 Teste de ponta a ponta
+
+No Laboratório II, Elena testa a vida inteira de um aluno sintético: matrícula, atribuição de turma, contas nos aplicativos, fotografias com consentimento, um pedido de acesso e a saída da rede. Ela verifica se cada etapa cria, usa e exclui os dados como projetado. Quando o aluno sai, o sistema de gestão o marca como desligado, o login único remove o acesso aos aplicativos e a tabela de temporalidade define as datas de exclusão. O teste confirma que os principais sistemas funcionam juntos. Cada sistema é conferido para ver o que restou do registro do aluno.
+
+### 30.2 Exclusão pelos fornecedores
+
+A área não testada no Laboratório I era a exclusão pelos fornecedores. Elena pede a três fornecedores de aplicativos aprovados que excluam os dados do aluno sintético e confirmem. Dois confirmam em uma semana, com registros da exclusão. Um responde que os dados são mantidos por um ano para análise de uso. Isso contraria o contrato da rede, que exige a exclusão mediante pedido. Elena escala o caso ao responsável pela proteção de dados, que procura o fornecedor para fazer valer o contrato. A página de suporte do aplicativo ainda prometia prazos de guarda diferentes, o que reforça a necessidade de testar.
+
+### 30.3 Melhorias de processo
+
+Elena recomenda incluir a confirmação de exclusão pelos fornecedores no processo de saída dos alunos, com um lembrete se nenhuma confirmação chegar em duas semanas. Também recomenda incluir testes de exclusão nas revisões anuais dos fornecedores. Ela observa que os contratos são tão fortes quanto a capacidade da rede de conferi-los, e que um teste simples com um aluno sintético revelou uma lacuna real que a papelada escondia. A exclusão pelos fornecedores passa a ser confirmada por escrito, o teste com o aluno sintético se repete a cada verão e o contrato ganha uma cláusula de exclusão.
+
+### 30.4 Reflexão
+
+Elena reflete sobre os dois laboratórios. O primeiro testou os controles isoladamente; o segundo testou processos que atravessam sistemas e fornecedores. O segundo encontrou lacunas mais graves, porque as falhas costumam ocorrer nas fronteiras. O Dr. Asante observa que os testes de ponta a ponta com titulares sintéticos estão entre as ferramentas mais eficazes da prática de proteção de dados, e que deveriam virar parte rotineira das operações da rede, e não um exercício pontual. O teste levou uma tarde e encontrou o que as auditorias deixaram passar durante anos.
+
+### Exemplo resolvido
+
+Elena testa de ponta a ponta o ciclo de vida de um aluno sintético, encontra um fornecedor que mantém dados por um ano contra o contrato e acrescenta confirmações de exclusão ao processo de saída.
+
+> **Caso sintético.** O aluno e os fornecedores são sintéticos.
+
+### Erros e limites
+
+Os fornecedores podem confirmar a exclusão sem verificá-la; peça evidências sempre que possível.
+
+### Exercícios
+
+- **EX088 — Lacuna do fornecedor.** O que o teste de exclusão pelos fornecedores revelou? *Rubrica:* 3 = um fornecedor mantinha dados por um ano, contra o contrato;; 2 = menciona retenção;; 1 = nada;; 0 = nenhuma.
+- **EX089 — Processo de saída.** O que Elena acrescentou ao processo de saída? *Rubrica:* 3 = confirmação de exclusão pelos fornecedores, com lembrete em duas semanas;; 2 = menciona confirmação;; 1 = nada;; 0 = nenhuma.
+- **EX090 — Fronteiras.** Por que o segundo laboratório encontrou lacunas mais graves? *Rubrica:* 3 = as falhas costumam ocorrer nas fronteiras entre sistemas e fornecedores;; 2 = menciona fronteiras;; 1 = sorte;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX075 (as de EX076–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Elena Rossi, o Dr. Kwame Asante, o Fairhaven College, a Brindle Valley Schools Trust e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX090 (as de EX091–EX120 estão na edição em inglês até a tradução dos capítulos correspondentes). Elena Rossi, o Dr. Kwame Asante, o Fairhaven College, a Brindle Valley Schools Trust e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** O compartilhamento só é permitido quando há necessidade e existe uma base legal, que não precisa ser o consentimento dos pais.
 
@@ -1313,6 +1534,36 @@ Respostas-modelo para EX001–EX075 (as de EX076–EX120 estão na edição em i
 **EX074.** Que o apagamento remoto funciona e que o tablet não guardava dados de alunos.
 
 **EX075.** Identifica lacunas de garantia, como a exclusão pelos fornecedores.
+
+**EX076.** Como sem consentimento, então a fotografia é retida.
+
+**EX077.** A do dia esportivo, por causa de P02, e a do coral, por causa de P05 e P08.
+
+**EX078.** A revogação interrompe o uso futuro, mas os boletins impressos já distribuídos não podem ser recolhidos.
+
+**EX079.** Duas das vinte contas amostradas tinham permissões remanescentes.
+
+**EX080.** Comparando os domínios acessados pelos dispositivos das escolas com os aplicativos aprovados.
+
+**EX081.** Porque as evidências mostram falhas remanescentes e não conseguem provar a conformidade total.
+
+**EX082.** O preenchimento automático sugeriu o grupo dos pais, as exportações incluíam colunas desnecessárias e os avisos não cobriam os grupos de pais geridos.
+
+**EX083.** Porque as informações de necessidades especiais divulgadas tornaram provável o risco aos alunos.
+
+**EX084.** Fazer com que as exportações contenham apenas colunas mínimas por padrão.
+
+**EX085.** Organiza as tarefas recorrentes em um cronograma previsível.
+
+**EX086.** Para proteger os direitos dos outros alunos mencionados nos e-mails.
+
+**EX087.** A dependência de um único responsável pela proteção de dados, sem substituto.
+
+**EX088.** Um fornecedor mantinha os dados para análise de uso por um ano, violando o contrato.
+
+**EX089.** A exigência de confirmação de exclusão pelos fornecedores, com um lembrete depois de duas semanas.
+
+**EX090.** Porque os problemas tendem a aparecer onde sistemas e organizações se encontram.
 
 <a id="references"></a>
 ## Referências
