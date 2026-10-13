@@ -1,7 +1,7 @@
 # Segurança da Informação: Curso de Pós-Graduação
 
 - Idioma: português do Brasil (`pt`); curso 140, curso de pós-graduação (2 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–6 de 12 já estão escritos em português, com os exercícios EX001–EX030 e suas resoluções com rubricas de 0 a 3 e 1 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 7–12 (EX031–EX060) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–12 de 12 têm texto didático escrito à mão; os exercícios EX001–EX060 têm resoluções correspondentes com rubricas de 0 a 3; os dois laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: profissionais de TI experientes que constroem um programa de segurança da informação baseado em riscos para uma organização de saúde com várias unidades.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios medem a conformidade com as correções críticas por clínica sobre dados sintéticos de dispositivos e sinalizam domínios de remetente parecidos por distância de edição num log sintético de e-mail. As normas são citadas pela edição e parafraseadas. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,7 @@ ISO/IEC 27000:2026; ISO/IEC 27001:2022 (no Brasil, ABNT NBR ISO/IEC 27001:2022);
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) |
-
-Capítulos 7–12: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-07), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -341,11 +339,318 @@ Copiar os acessos dos colegas espalha direitos em excesso pelas clínicas.
 
 - **EX030 — Gateway dos fornecedores.** Como os fornecedores se conectam? *Rubrica:* 3 = gateway gerenciado com MFA e sessões gravadas;; 2 = correto;; 1 = nada;; 0 = nenhuma.
 
+<a id="ch-07"></a>
+
+## Capítulo 7 — Phishing e segurança do e-mail
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar os padrões de phishing nos dados de e-mail; (2) detectar domínios de remetente parecidos; (3) combinar controles técnicos e humanos contra o phishing.
+
+### 7.1 O problema
+
+As clínicas do Moorfield recebem e-mails de phishing com frequência, alguns fingindo vir da sede ou de fornecedores e pedindo pagamentos ou dados de login. No ano passado, uma gerente de clínica digitou sua senha numa página de login falsa, e a conta enviou phishing a pacientes antes de ser bloqueada. Elena quer entender os padrões. O Dr. Qureshi sugere começar pelos domínios dos remetentes, porque muitos ataques usam domínios quase idênticos aos genuínos, o que uma equipe ocupada raramente percebe. Ela pede ao provedor de e-mail uma exportação de três meses de logs.
+
+### 7.2 O laboratório dos domínios parecidos
+
+O laboratório lê um log sintético de 5.823 mensagens recebidas de 68 domínios de remetente distintos. Ele compara cada domínio com o domínio do próprio Moorfield usando a distância de edição, o número de mudanças de um único caractere necessárias para transformar um no outro. Quatro domínios estão a até duas mudanças, como o algarismo um no lugar da letra l ou um hífen inserido, e 23 mensagens vieram deles. Elena observa que os quatro passariam numa olhada rápida. Ela mostra os quatro domínios ao comitê de segurança lado a lado com o genuíno, e nenhum dos membros identifica todas as diferenças sem ajuda.
+
+### Laboratório — Sinalizando domínios de remetente parecidos por distância de edição num log sintético de e-mail
+
+```python
+"""Flag lookalike sender domains by edit distance in a synthetic mail log (stdlib only)."""
+import random
+random.seed(30)
+OWN = "moorfielddental.example"
+def dist(a, b):
+    prev = list(range(len(b) + 1))
+    for i, ca in enumerate(a, 1):
+        cur = [i]
+        for j, cb in enumerate(b, 1):
+            cur.append(min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (ca != cb)))
+        prev = cur
+    return prev[-1]
+fakes = ["moorfie1ddental.example", "moorfielddentai.example", "moorfield-dental.example", "moorfielddental.examp1e"]
+normal = [f"supplier{i}.example" for i in range(60)] + ["labwork.example", "dentalsupply.example", "bank.example"]
+log = [random.choice(normal) for _ in range(5000)] + [OWN] * 800 + [random.choice(fakes) for _ in range(23)]
+flag = {d for d in set(log) if d != OWN and dist(d, OWN) <= 2}
+n_flag = sum(d in flag for d in log)
+print(f"messages {len(log)}; distinct sender domains {len(set(log))}")
+print(f"lookalike domains (distance <= 2): {sorted(flag)}; messages from them {n_flag}")
+```
+
+Execute com `python3 lab_lookalike.py`. Saída verificada:
+
+```text
+messages 5823; distinct sender domains 68
+lookalike domains (distance <= 2): ['moorfie1ddental.example', 'moorfield-dental.example', 'moorfielddentai.example', 'moorfielddental.examp1e']; messages from them 23
+```
+
+### 7.3 Controles técnicos
+
+Elena pede ao provedor de e-mail que coloque em quarentena as mensagens de domínios a até duas edições do domínio do Moorfield e dos domínios dos principais fornecedores, e que marque todas as mensagens externas com uma faixa visível. Ela publica registros de autenticação de e-mail para o domínio do Moorfield, para que os sistemas destinatários possam rejeitar as mensagens que alegam falsamente vir dele. Ela também ativa a autenticação multifator em todas as caixas postais, para que uma senha roubada sozinha não abra mais uma conta. Depois de um mês, a quarentena pega várias novas mensagens de domínios parecidos, e o provedor de e-mail confirma que as mensagens que usam falsamente o próprio domínio do Moorfield agora são rejeitadas.
+
+### 7.4 Controles humanos
+
+Os controles técnicos deixam passar alguns ataques. Elena introduz uma regra simples para as mudanças de pagamento e de dados bancários: sempre confirmar ligando para um número conhecido, nunca para um informado no e-mail. Ela acrescenta um botão de comunicação e agradece a cada pessoa que comunica. Breves exemplos mensais mostram domínios parecidos reais, com as diferenças destacadas. O Dr. Qureshi observa que as pessoas e a tecnologia juntas dão uma proteção melhor do que qualquer uma delas sozinha. Os gerentes das clínicas dizem que os exemplos mensais são úteis porque a equipe os discute nas reuniões. Em três meses, as comunicações de e-mails suspeitos dobram, e a equipe central encontra duas campanhas mais cedo do que antes.
+
+### Exemplo resolvido
+
+Elena analisa 5.823 mensagens sintéticas, encontra quatro domínios parecidos que enviaram 23 mensagens, coloca em quarentena os quase idênticos, acrescenta a autenticação de e-mail e a MFA e define uma regra de retorno de ligação.
+
+> **Caso sintético.** Os dados de e-mail são sintéticos; as saídas vêm de lab_lookalike.py.
+
+### Erros e limites
+
+Os domínios parecidos passam numa olhada rápida, então depender de que a equipe os perceba fracassa.
+
+### Exercícios
+
+- **EX031 — Número de mensagens.** Quantas mensagens o log contém? *Rubrica:* 3 = 5.823;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX032 — Número de domínios parecidos.** Quantos domínios parecidos são sinalizados? *Rubrica:* 3 = quatro;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX033 — Mensagens dos domínios parecidos.** Quantas mensagens vieram de domínios parecidos? *Rubrica:* 3 = 23;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX034 — Distância de edição.** O que a distância de edição conta? *Rubrica:* 3 = as mudanças de um único caractere entre as cadeias;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX035 — Regra de pagamento.** Qual é a regra para as mudanças de pagamento? *Rubrica:* 3 = confirmar ligando para um número conhecido;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Backup, ransomware e recuperação
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar backups resistentes ao ransomware; (2) testar a recuperação em relação aos objetivos; (3) planejar a continuidade das clínicas.
+
+### 8.1 Projeto dos backups
+
+O Moorfield faz backup noturno do sistema de prontuários para um servidor na sede, alcançável pela mesma rede. Elena reconhece que um ransomware poderia cifrar os dois. Ela acrescenta cópias imutáveis mantidas por um prestador de backup durante trinta dias, que não podem ser apagadas nem pelos administradores do Moorfield. Ela também separa as credenciais de administração dos backups das contas de administrador do dia a dia. O Dr. Qureshi observa que os grupos de ransomware muitas vezes miram primeiro os backups, então os backups precisam ser projetados contra ataques deliberados, e não apenas contra acidentes. O conselho aprova o custo anual do prestador.
+
+### 8.2 Objetivos de recuperação
+
+Elena acorda os objetivos com o líder clínico e com o diretor de operações, de forma coerente com o apetite do conselho. O sistema de prontuários precisa voltar em até quatro horas e perder no máximo uma hora de dados. Os sistemas de imagem precisam voltar em até um dia; enquanto isso, as clínicas podem continuar com anotações em papel. O e-mail pode esperar um dia. Ela aprende que os objetivos precisam ser acordados com quem arca com as consequências, porque as equipes técnicas sozinhas tendem a subestimar ou superestimar a urgência. Os objetivos são registrados no plano de recuperação e assinados pelos dois gerentes.
+
+### 8.3 Testando
+
+Elena testa uma restauração completa do sistema de prontuários num ambiente isolado. A restauração dá certo, mas leva seis horas, deixando de cumprir o objetivo de quatro horas, principalmente porque o banco de dados é copiado lentamente a partir do prestador. Ela providencia uma opção de recuperação mais rápida: um snapshot recente mantido localmente em armazenamento imutável. Um segundo teste se completa em três horas. Ela aprende que somente os testes cronometrados revelam se os objetivos podem ser alcançados. Ela registra passo a passo as linhas do tempo dos dois testes e acrescenta o procedimento do snapshot local ao runbook de recuperação, para que qualquer membro da equipe central possa segui-lo.
+
+### 8.4 Continuidade das clínicas
+
+Elena trabalha com os gerentes das clínicas em planos de continuidade para as interrupções dos sistemas: listas de consultas impressas todas as noites, anotações clínicas em papel lançadas depois no sistema e os contatos de emergência dos pacientes com consulta marcada. Uma clínica testa o plano durante uma atualização planejada do sistema e identifica que faltavam os formulários de consentimento em papel. Os formulários são acrescentados. O Dr. Qureshi observa que o planejamento da continuidade mantém o atendimento aos pacientes enquanto a recuperação técnica acontece. Cada clínica guarda uma pequena caixa de continuidade com os formulários impressos, a lista de consultas mais recente e os números de contato, e os gerentes das clínicas conferem seu conteúdo todo mês.
+
+### Exemplo resolvido
+
+Elena acrescenta backups imutáveis de trinta dias e credenciais separadas, acorda os objetivos de recuperação, melhora uma restauração de seis horas para três e testa as alternativas em papel nas clínicas.
+
+> **Caso sintético.** Os testes são sintéticos.
+
+### Erros e limites
+
+Os backups alcançáveis com as credenciais de administrador do dia a dia podem ser destruídos por um ransomware.
+
+### Exercícios
+
+- **EX036 — Período imutável.** Por quanto tempo as cópias imutáveis são mantidas? *Rubrica:* 3 = trinta dias;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX037 — Objetivos dos prontuários.** Quais são os objetivos do sistema de prontuários? *Rubrica:* 3 = quatro horas, uma hora de dados;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX038 — Primeiro teste.** Quanto tempo levou a primeira restauração? *Rubrica:* 3 = seis horas;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX039 — Segundo teste.** Quanto tempo levou o segundo teste? *Rubrica:* 3 = três horas;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX040 — Formulários faltantes.** O que faltava no teste de continuidade? *Rubrica:* 3 = os formulários de consentimento em papel;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+<a id="ch-09"></a>
+
+## Capítulo 9 — Resposta a incidentes e notificação
+
+### Objetivos de aprendizagem
+
+Você vai (1) construir um processo de resposta a incidentes para uma organização com várias unidades; (2) cumprir as obrigações de notificação; (3) aprender com os incidentes.
+
+### 9.1 Processo
+
+Elena escreve o processo de incidentes do Moorfield. Qualquer funcionário pode comunicar por um único número de telefone ou endereço de e-mail. A equipe central avalia a gravidade usando uma breve tabela. Os incidentes graves acionam um líder do incidente, um contato de comunicação e a notificação ao diretor de operações. O processo abrange a contenção, a investigação, a recuperação e o encerramento. Ela o alinha às funções Responder e Recuperar do NIST Cybersecurity Framework 2.0. O Dr. Qureshi aconselha manter o processo curto o bastante para ser usado sob pressão. O processo cabe em duas páginas, com uma tabela de gravidade.
+
+### 9.2 Notificação
+
+As violações de dados de saúde podem exigir a notificação aos reguladores e aos pacientes dentro de prazos rígidos, segundo a legislação de proteção de dados, que varia conforme o país. Elena trabalha com o encarregado de proteção de dados do Moorfield para definir quem decide se a notificação é necessária e como as evidências são reunidas rapidamente. O seguro cibernético também exige aviso imediato. Ela acrescenta uma lista de verificação para que essas obrigações sejam consideradas cedo, em vez de descobertas depois que os prazos já passaram. O encarregado de proteção de dados aprova a lista, e Elena a imprime no verso do processo de incidentes, para que os dois estejam sempre juntos. O número de notificação da seguradora é acrescentado à primeira página.
+
+### 9.3 Exercício
+
+Elena conduz um exercício: uma recepcionista de clínica comunica que pacientes estão recebendo mensagens de texto pedindo pagamento numa conta desconhecida, aparentemente enviadas pelo Moorfield. Os participantes rastreiam a causa até uma conta comprometida no fornecedor de mensagens de texto. Eles descobrem que o contrato do Moorfield não exige que o fornecedor notifique os incidentes prontamente. Elena acrescenta isso à revisão de fornecedores. O Dr. Qureshi observa que os exercícios muitas vezes revelam lacunas de fornecedores, porque os fornecedores raramente são incluídos no planejamento. O diretor de operações contata o fornecedor na semana seguinte para acordar novos termos.
+
+### 9.4 Aprendizado
+
+Depois de cada incidente real, Elena faz uma breve revisão sem culpa: o que aconteceu, por que os controles não o impediram, o que funcionou e o que vai mudar. Ela acompanha as ações até a conclusão. Ao longo de um ano, as revisões levam a melhorias na filtragem de e-mail, nos contratos com fornecedores e na expiração das contas dos substitutos. Ela aprende que os incidentes são lições caras, e que registrá-los e agir a partir deles é como uma organização extrai valor do custo. Ela mantém um registro das revisões e das ações, e o comitê de segurança confere o progresso das ações em aberto em cada reunião mensal.
+
+### Exemplo resolvido
+
+Elena escreve um processo de incidentes curto para várias unidades, alinhado às funções Responder e Recuperar do CSF 2.0, acrescenta uma lista de verificação de notificação, conduz um exercício envolvendo um fornecedor e faz revisões sem culpa.
+
+> **Caso sintético.** Os incidentes são sintéticos; as regras de notificação variam conforme o país.
+
+### Erros e limites
+
+Descobrir tarde os prazos de notificação pode transformar um incidente numa infração regulatória.
+
+### Exercícios
+
+- **EX041 — Canal de comunicação.** Como os funcionários comunicam incidentes? *Rubrica:* 3 = um único número de telefone ou endereço de e-mail;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX042 — Alinhamento ao CSF.** Que funções do CSF 2.0 orientam o processo? *Rubrica:* 3 = Responder e Recuperar;; 2 = correto;; 1 = outras;; 0 = nenhuma.
+
+- **EX043 — Parceiro na notificação.** Quem ajuda a decidir sobre a notificação? *Rubrica:* 3 = o encarregado de proteção de dados;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+- **EX044 — Lacuna do exercício.** Que lacuna o exercício revelou? *Rubrica:* 3 = o fornecedor não era obrigado a notificar prontamente;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX045 — Resultado das revisões.** Cite uma melhoria resultante das revisões. *Rubrica:* 3 = a expiração das contas dos substitutos;; 2 = uma;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Métricas, relatórios e o conselho
+
+### Objetivos de aprendizagem
+
+Você vai (1) escolher medidas ligadas aos riscos; (2) relatar a um conselho não especialista; (3) usar as medidas para orientar as decisões.
+
+### 10.1 Medidas
+
+Elena seleciona seis medidas ligadas aos principais riscos: a conformidade com as correções críticas por clínica, a adesão à autenticação multifator, as mensagens de domínios parecidos colocadas em quarentena, os resultados dos testes cronometrados de recuperação, as contas de ex-funcionários encontradas nas revisões e os incidentes por tipo. Cada uma tem uma definição, uma fonte, um dono e uma meta. Ela evita contagens que apenas parecem impressionantes, como as conexões bloqueadas. O Dr. Qureshi observa que cada medida deve responder a uma pergunta que o conselho faria. Ela escreve cada definição no manual de medidas, e a equipe central testa se os números podem ser produzidos todo mês a partir dos sistemas existentes, sem esforço manual.
+
+### 10.2 Linhas de base
+
+Elena usa o trabalho do curso como linhas de base: a conformidade com as correções de 90,6 por cento, com três clínicas muito abaixo; quatro domínios parecidos na amostra sintética de e-mail; uma primeira restauração de seis horas; e várias contas de ex-funcionários na primeira revisão. Ela mostra a melhora desde então: a conformidade das clínicas com as correções acima de noventa por cento, a quarentena em funcionamento e uma restauração de três horas. As linhas de base tornam o progresso visível para o conselho. Ela mostra a linha de base e o valor mais recente de cada medida numa tabela simples, para que o conselho veja onde houve progresso e onde ainda há trabalho, incluindo as exceções de imagem ainda em aberto.
+
+### 10.3 Relatório ao conselho
+
+Elena projeta um relatório trimestral de duas páginas. A primeira página mostra as seis medidas com setas de tendência e uma frase sobre cada uma. A segunda página lista os principais riscos, as mudanças desde o último trimestre e as decisões necessárias. O conselho faz menos perguntas técnicas e mais perguntas sobre prioridades e recursos. Um sócio pergunta por que os computadores de imagem continuam como exceções, o que leva à decisão de pressionar o fornecedor em conjunto com outros grupos odontológicos. O conselho decide contatar dois outros grupos odontológicos que usam o mesmo software de imagem e enviar ao fornecedor um pedido conjunto de uma versão atualizada e suportada.
+
+### 10.4 Orientando as decisões
+
+As medidas importam quando mudam as decisões. Elena mostra como a medida de correções por clínica levou ao apoio às três clínicas e como o teste de restauração levou ao snapshot local. Ela propõe interromper uma medida que nunca muda as decisões. O Dr. Qureshi observa que os sistemas de medição devem ser podados, e não apenas ampliados, para que a atenção permaneça no que importa. O comitê concorda em deixar de relatar ao conselho o número de mensagens em quarentena, mantendo-o como medida interna da equipe central, porque ele subia e descia com a atividade dos atacantes, e não com algo que o Moorfield controlasse.
+
+### Exemplo resolvido
+
+Elena liga seis medidas aos riscos, usa os resultados do curso como linhas de base, escreve um relatório de duas páginas ao conselho e mostra como as medidas mudaram as decisões.
+
+> **Caso sintético.** As medidas são sintéticas.
+
+### Erros e limites
+
+As medidas que nunca mudam as decisões desperdiçam atenção.
+
+### Exercícios
+
+- **EX046 — Número de medidas.** Quantas medidas Elena seleciona? *Rubrica:* 3 = seis;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX047 — Contagem evitada.** Que contagem Elena evita? *Rubrica:* 3 = as conexões bloqueadas;; 2 = correto;; 1 = outra;; 0 = nenhuma.
+
+- **EX048 — Extensão do relatório.** Qual é a extensão do relatório ao conselho? *Rubrica:* 3 = duas páginas;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX049 — Decisão sobre a imagem.** Que decisão decorre da pergunta sobre a imagem? *Rubrica:* 3 = pressionar o fornecedor em conjunto com outros grupos;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX050 — Poda.** O que Elena propõe para as medidas sem uso? *Rubrica:* 3 = interrompê-las;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Projeto final
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir um projeto final de melhoria; (2) entregá-lo com evidências; (3) avaliar os resultados em relação às metas.
+
+### 11.1 Escolhendo o projeto
+
+O projeto final de Elena trata do risco que o conselho classificou como o mais alto: o ransomware. Seu projeto combina três melhorias já iniciadas: o apoio às correções nas clínicas, os backups imutáveis com recuperação mais rápida e a autenticação multifator para todas as contas. A meta é que o Moorfield possa mostrar, com evidências, que um ataque de ransomware seria mais difícil de iniciar, mais lento para se espalhar e mais rápido de recuperar. O Dr. Qureshi aprova o projeto e pede critérios de sucesso claros. Ela escreve um termo de abertura do projeto de uma página, com o escopo, o cronograma e os critérios, aprovado pelo diretor de operações.
+
+### 11.2 Critérios de sucesso
+
+Elena define os critérios: conformidade com as correções críticas de pelo menos noventa e cinco por cento no geral e de noventa por cento em cada clínica; autenticação multifator para todas as contas, com as exceções documentadas; backups imutáveis para todos os sistemas críticos; e uma recuperação cronometrada do sistema de prontuários em até quatro horas. Cada critério tem uma medida e uma fonte de evidência. Ela aprende que critérios claros tornam a avaliação do projeto final simples e honesta. Ela lista os critérios numa tabela com a medida, a fonte dos dados e a data em que cada um será conferido. O diretor de operações e o líder clínico assinam a tabela.
+
+### 11.3 Entrega
+
+Ao longo de quatro meses, Elena entrega as melhorias. A conformidade com as correções sobe acima de noventa e cinco por cento no geral, embora uma clínica permaneça em noventa e dois por cento por causa de uma exceção de imagem. A adesão à autenticação multifator alcança todas as contas da equipe, com duas exceções de contas de serviço documentadas. Os backups imutáveis abrangem todos os sistemas críticos. Uma recuperação cronometrada final se completa em três horas e dez minutos. Ela registra evidências de cada um. Ela mantém um registro do projeto com a data em que cada marco foi alcançado e a evidência guardada para ele. O registro, com links para as evidências, forma um apêndice do seu relatório do projeto final.
+
+### 11.4 Avaliação
+
+Elena avalia com honestidade. Três critérios são cumpridos; o critério de correções por clínica deixa de ser cumprido por pouco numa clínica, com um motivo e um plano claros. Ela observa que o projeto mostra uma melhora na preparação, mas não pode provar que o Moorfield resistiria a um ataque real. Ela recomenda um teste independente da resposta a incidentes dentro do próximo ano. O Dr. Qureshi elogia a avaliação honesta como a parte mais importante. Ela apresenta a avaliação numa tabela que mostra cada critério, o resultado e se ele foi cumprido, com o motivo do critério não cumprido indicado ao lado.
+
+### Exemplo resolvido
+
+Elena define um projeto final sobre ransomware com quatro critérios, entrega as correções, a MFA, os backups imutáveis e uma recuperação de três horas e dez minutos e avalia um critério como não cumprido por pouco.
+
+> **Caso sintético.** Os resultados são sintéticos.
+
+### Erros e limites
+
+Afirmar que um projeto prova a resiliência contra ataques reais exagera as evidências.
+
+### Exercícios
+
+- **EX051 — Risco do projeto final.** De que risco o projeto final trata? *Rubrica:* 3 = ransomware;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+- **EX052 — Critério por clínica.** Qual é o critério de correções por clínica? *Rubrica:* 3 = pelo menos noventa por cento em cada clínica;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX053 — Critério não cumprido.** Que critério deixa de ser cumprido por pouco? *Rubrica:* 3 = a conformidade com as correções por clínica;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+- **EX054 — Recuperação final.** Quanto tempo levou a recuperação final? *Rubrica:* 3 = três horas e dez minutos;; 2 = correto;; 1 = errado;; 0 = nenhuma.
+
+- **EX055 — Próximo passo.** O que Elena recomenda em seguida? *Rubrica:* 3 = um teste independente da resposta a incidentes;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Apresentação do projeto final e próximos passos
+
+### Objetivos de aprendizagem
+
+Você vai (1) apresentar um projeto final a examinadores e a um conselho; (2) responder a questionamentos; (3) planejar a melhoria contínua.
+
+### 12.1 Apresentação
+
+Elena apresenta seu projeto final ao Dr. Qureshi, a um examinador externo e ao conselho do Moorfield. Ela aborda o risco, os critérios, a entrega, as evidências e a avaliação em vinte minutos, com slides de apoio mostrando os dados. Ela usa a linguagem do conselho: clínicas capazes de atender os pacientes e prontuários dos pacientes protegidos. O Dr. Qureshi a havia aconselhado a começar pelo resultado para o negócio e a guardar os detalhes técnicos para as perguntas. Ela ensaia duas vezes com colegas do curso, que pedem que ela encurte a introdução e adiante um gráfico. Ela também prepara um folheto de uma página resumindo os critérios e os resultados para os membros do conselho.
+
+### 12.2 Questionamentos
+
+O examinador externo pergunta se a conformidade com as correções mede a exposição com precisão quando os computadores de imagem são excluídos por exceção. Elena explica os controles de isolamento e mostra os registros de exceção, aceitando que a exposição permanece. Um sócio pergunta sobre o custo; ela mostra que a maioria das melhorias usou licenças e tempo da equipe já existentes, com o prestador de backup como o principal custo novo. As duas respostas são claras e baseadas em evidências. O examinador também pergunta como ela saberia se as melhorias se deteriorassem com o tempo, e ela aponta as medidas trimestrais e o teste anual de recuperação.
+
+### 12.3 Resultado
+
+Elena é aprovada no projeto final com distinção. O conselho adota suas medidas como relatório trimestral permanente e aprova um teste independente da resposta a incidentes. Elena reflete que o curso lhe deu estruturas para organizar o que ela já sabia e a confiança para apresentar a segurança como uma questão de negócio. Ela observa que suas relações com os gerentes das clínicas melhoraram quando eles viram os problemas sendo resolvidos, em vez de atribuídos a culpados. Os gerentes das clínicas enviam uma breve mensagem agradecendo à equipe central pelo apoio nas correções. O Dr. Qureshi pede a permissão dela para usar o projeto final como exemplo para futuros alunos.
+
+### 12.4 Próximos passos
+
+Elena planeja os próximos passos: o teste independente, uma revisão da avaliação de riscos em um ano e a preparação para uma possível certificação ISO/IEC 27001, que grandes seguradoras começaram a solicitar. Ela também planeja orientar um membro júnior da equipe pelos mesmos métodos. O próximo curso nesta área, governança de dados, examina como são tomadas as decisões sobre a propriedade, a qualidade e o uso dos dados, o que complementa o programa de segurança que ela construiu. O conselho pede que ela apresente um plano de prontidão para a certificação dentro de seis meses.
+
+### Exemplo resolvido
+
+Elena apresenta seu projeto final em termos de negócio, responde aos questionamentos sobre as exceções de imagem e o custo, é aprovada com distinção e planeja a prontidão para a certificação.
+
+> **Caso sintético.** A apresentação é sintética.
+
+### Erros e limites
+
+Começar pelos detalhes técnicos faz perder a atenção de um conselho.
+
+### Exercícios
+
+- **EX056 — Linguagem do conselho.** Que linguagem Elena usa com o conselho? *Rubrica:* 3 = clínicas capazes de atender os pacientes;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX057 — Principal custo novo.** Qual foi o principal custo novo? *Rubrica:* 3 = o prestador de backup;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+- **EX058 — Resultado do projeto final.** Que resultado Elena alcança? *Rubrica:* 3 = distinção;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+
+- **EX059 — Adoção pelo conselho.** O que o conselho adota? *Rubrica:* 3 = as medidas de Elena como relatório trimestral;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
+- **EX060 — Motivação da certificação.** Por que considerar a certificação ISO/IEC 27001? *Rubrica:* 3 = as seguradoras começaram a solicitá-la;; 2 = correto;; 1 = nada;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX030 (as de EX031–EX060 estão na edição em inglês até a tradução dos capítulos correspondentes). Elena Petrova, o Dr. Hamid Qureshi, a Thornbury Business School, o Moorfield Dental Group e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX060. Elena Petrova, o Dr. Hamid Qureshi, a Thornbury Business School, o Moorfield Dental Group e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Vinte e duas clínicas.
 
@@ -406,6 +711,66 @@ Respostas-modelo para EX001–EX030 (as de EX031–EX060 estão na edição em i
 **EX029.** Chaves de segurança físicas.
 
 **EX030.** Por um gateway gerenciado, com autenticação multifator e sessões gravadas.
+
+**EX031.** 5.823 mensagens.
+
+**EX032.** Quatro domínios.
+
+**EX033.** 23 mensagens.
+
+**EX034.** As mudanças de um único caractere necessárias para transformar um domínio em outro.
+
+**EX035.** Sempre confirmar ligando para um número conhecido.
+
+**EX036.** Trinta dias.
+
+**EX037.** Voltar em até quatro horas e perder no máximo uma hora de dados.
+
+**EX038.** Seis horas.
+
+**EX039.** Três horas.
+
+**EX040.** Os formulários de consentimento em papel.
+
+**EX041.** Por um único número de telefone ou endereço de e-mail.
+
+**EX042.** Responder e Recuperar.
+
+**EX043.** O encarregado de proteção de dados.
+
+**EX044.** O contrato do fornecedor não exigia a notificação imediata de incidentes.
+
+**EX045.** A expiração das contas dos substitutos.
+
+**EX046.** Seis medidas.
+
+**EX047.** As conexões bloqueadas.
+
+**EX048.** Duas páginas.
+
+**EX049.** Pressionar o fornecedor em conjunto com outros grupos odontológicos.
+
+**EX050.** Interromper as medidas que nunca mudam as decisões.
+
+**EX051.** Ransomware, o risco mais bem classificado pelo conselho.
+
+**EX052.** Pelo menos noventa por cento em cada clínica.
+
+**EX053.** O critério de conformidade com as correções por clínica.
+
+**EX054.** Três horas e dez minutos.
+
+**EX055.** Um teste independente da resposta a incidentes.
+
+**EX056.** Clínicas capazes de atender os pacientes e prontuários dos pacientes protegidos.
+
+**EX057.** O prestador de backup.
+
+**EX058.** A aprovação com distinção.
+
+**EX059.** Suas medidas como relatório trimestral permanente.
+
+**EX060.** Grandes seguradoras começaram a solicitá-la.
 
 <a id="references"></a>
 ## Referências
