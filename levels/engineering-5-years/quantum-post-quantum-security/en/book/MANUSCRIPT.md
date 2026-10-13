@@ -3466,7 +3466,7 @@ Model answers; any answer meeting the rubric scores equally. Numbers about BPA a
 
 **EX038.** (a) ML-DSA (general purpose, ecosystem support); (b) LMS/XMSS if the signing HSM manages state (small verifier) or ML-DSA otherwise; (c) SLH-DSA for maximum conservatism given low signing frequency, or ML-DSA-87 if size matters.
 
-**EX039.** Customs (x=25, y=2 → late for all z ≤ 27); partner VPN (x=10, y=1.5 → late if z ≤ 11.5); firmware (x=15, y=3 → late if z ≤ 18); portal (x=1, y=0.5 → not late); telemetry (x≈0.1 → not late).
+**EX039.** Customs (x=25, y=5 as in 20.2 → late for all z < 30); partner VPN (x=10, y=1.5 → late if z ≤ 11.5); firmware (x=15, y=3 → late if z ≤ 18); portal (x=1, y=0.5 → not late); telemetry (x≈0.1 → not late).
 
 **EX040.** Must state FIPS 203/204/205 final (August 2024), SP 800-208, SP 800-227 final (September 2025), HQC selected (IR 8545, March 2025) with standard pending, FN-DSA pending, IR 8547 draft.
 
