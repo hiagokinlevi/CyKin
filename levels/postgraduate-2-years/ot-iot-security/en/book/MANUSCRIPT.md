@@ -44,6 +44,8 @@ You will (1) frame an OT security decision with options, criteria, uncertainty a
 
 At postgraduate level the deliverable is rarely a vulnerability list; it is a decision someone with budget and accountability must take. At the synthetic Bayside Water Reclamation Plant (BWRP), OT security lead Daniel Osei must decide how vendors reach the chemical-dosing controller PLC-D. A decision frame names the owner (the plant director), the options, the criteria, what is uncertain and the date by which the decision must be taken.
 
+Section one point one develops advanced security decision-making with a Daniel Osei note Daniel Osei can demo offline.
+
 ### 1.2 Expected loss is necessary but not sufficient
 
 Expected annual loss — probability times loss, summed over scenarios — lets options with different costs be compared on one scale. But public utilities are not risk-neutral: a rare event that contaminates discharge to a bay, triggers regulatory action and erodes public trust may be unacceptable at any probability above a threshold. Leaders therefore report expected loss alongside the worst credible case and any regulatory or safety constraint that is binding regardless of arithmetic.
@@ -73,9 +75,15 @@ C no remote access   cost= 90,000 expected_loss=   14,000 total=  104,000 worst_
 
 Option B has the lowest total (59,500) because its control cost buys a large reduction in incident probability. Option C eliminates more risk but costs more than it saves under these estimates. All three share the same worst case because the catastrophic scenario remains possible through other paths; no remote-access choice removes it. That observation sends the leader to look at independent safeguards, not more remote-access spending.
 
+Section one point three develops advanced security decision-making with a Daniel Osei note Daniel Osei can demo offline.
+
 ### 1.4 Value of information
 
 If the probability estimates are contested — and for targeted attacks they always are — ask whether the decision would change if they moved within their plausible range. If B wins across that range, decide now. If the ranking flips, a short study (vendor log review, a tabletop) may be worth more than an immediate purchase.
+
+Section one point four develops advanced security decision-making with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section one point four, Daniel Osei expects advanced claims to carry owners and dates.
 
 ### Worked example (synthetic BWRP)
 
@@ -115,17 +123,37 @@ You will (1) benchmark an organisation's OT security programme against NIST SP 8
 
 NIST SP 800-82r3 organises an OT security programme around governance, risk management, architecture, and the security capabilities applied to OT systems, and it maps OT considerations onto the NIST Cybersecurity Framework functions. IEC 62443-2-1 specifies requirements for an asset owner's security programme. Neither is a checklist to be ticked; both describe capabilities a mature programme demonstrates.
 
+Section two point one develops ot iot and cyber-physical security with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section two point one, Daniel Osei expects ot claims to carry owners and dates.
+
 ### 2.2 Documented versus performed
 
 A policy saying "remote access is reviewed monthly" is documented practice. A log showing the last three monthly reviews, with findings closed, is performed practice. Postgraduate assessors look for the second. At BWRP Daniel samples evidence for each claimed practice rather than accepting interview answers.
+
+Section two point two develops ot iot and cyber-physical security with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section two point two, Daniel Osei expects ot claims to carry owners and dates.
+
+Section two point two treats what current guidance expects as testable only when evidence and ticket IDs are recorded.
 
 ### 2.3 Building the gap list
 
 For each capability: what the guidance expects, what BWRP documents, what evidence shows is performed, the gap, the consequence of the gap and a proposed owner. Remote lift stations connected over cellular RTUs are a common blind spot: they appear in the asset register as "pumping stations" but not as network endpoints.
 
+Section two point three develops ot iot and cyber-physical security with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section two point three, Daniel Osei expects ot claims to carry owners and dates.
+
 ### 2.4 Prioritising
 
 Prioritise gaps that sit on paths to consequence (dosing, discharge quality) and those that are cheap to close. A missing inventory of cellular RTUs blocks several other capabilities — monitoring, patching, incident scoping — so it ranks high even though it is "only documentation".
+
+Section two point four develops ot iot and cyber-physical security with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section two point four, Daniel Osei expects ot claims to carry owners and dates.
+
+Section two point four treats what current guidance expects as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic BWRP)
 
@@ -165,17 +193,33 @@ You will (1) appraise the quality of OT security evidence sources; (2) reconcile
 
 Passive network captures show who talked to whom but miss serial links and encrypted payload meaning. Controller event logs, where they exist, show program changes but often roll over after a few hundred entries. Process data in the historian shows physical effect but not cause. HMI audit trails show operator actions but not engineering-tool sessions. Specialist evidence work combines them because each misses something.
 
+Section three point one develops ot iot and cyber-physical security with a Daniel Osei note Daniel Osei can demo offline.
+
 ### 3.2 Conflicts are information
 
 If the historian shows a dosing setpoint change at 14:02 but neither the HMI audit trail nor the network capture shows a write, the possibilities are a missing capture, a clock offset, a local change at the panel, or logic that changes the setpoint internally. Each hypothesis predicts something checkable: panel key-switch logs, a PLC program comparison, the capture's packet-loss counters.
+
+Section three point two develops ot iot and cyber-physical security with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section three point two, Daniel Osei expects ot claims to carry owners and dates.
 
 ### 3.3 Appraising external claims
 
 CISA ICS advisories describe affected products, versions, CVSS scores and mitigations coordinated with vendors; they are strong evidence about a vulnerability's existence, weaker about whether it is exploitable in your configuration. Vendor statements about "not affected" deserve a request for the reasoning. Peer-reviewed measurement studies, such as the Mirai analysis by Antonakakis et al. (USENIX Security 2017), carry method sections you can evaluate.
 
+Section three point three develops ot iot and cyber-physical security with a Daniel Osei note Daniel Osei can demo offline.
+
 ### 3.4 Confidence statements
 
 State confidence explicitly: high (multiple independent sources agree), moderate (one strong source, no contradiction), low (inference from indirect data). Leaders act differently on each.
+
+Section three point four develops ot iot and cyber-physical security with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section three point four, Daniel Osei expects ot claims to carry owners and dates.
+
+Section three point four treats sources and their blind as testable only when evidence and ticket IDs are recorded.
+
+For section three point four, Daniel Osei will not accept ot work without a written trail.
 
 ### Worked example (synthetic BWRP)
 
@@ -215,6 +259,10 @@ You will (1) model loss distributions rather than single numbers; (2) read mean,
 
 Annual OT outage loss is mostly zero and occasionally large. A Monte Carlo simulation draws whether an incident happens and how long it lasts, many thousands of times, producing a distribution whose tail is what boards and insurers care about.
 
+Section four point one develops advanced risk and ethics with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section four point one, Daniel Osei expects advanced claims to carry owners and dates.
+
 ```python
 """Lab 04: Monte Carlo of annual outage loss for BWRP with and without a control (seeded, synthetic)."""
 import random, statistics
@@ -238,13 +286,25 @@ with segmentation  mean=  18,590 p95=  129,339 p99=  493,624 P(loss>0)=0.059
 
 Segmentation cuts the mean loss from about 68,600 to 18,600 and the probability of any loss from 15.1 % to 5.9 %. The 99th percentile drops less sharply (814,000 to 494,000) because when an incident does happen it can still last two days. If the board's tolerance is "no more than a 1 % chance of losing over 600,000 a year", only the segmented design meets it under these assumptions.
 
+Section four point two develops advanced risk and ethics with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section four point two, Daniel Osei expects advanced claims to carry owners and dates.
+
 ### 4.3 Who bears the risk
 
 Residual risk at a reclamation plant is not borne only by the utility. Residents near outfalls and the bay ecosystem bear discharge-quality risk; ratepayers bear cost risk. Ethically, a leader should identify these parties, ask whether the regulator or elected body has accepted the risk on their behalf, and avoid accepting on others' behalf what the organisation has no mandate to accept.
 
+Section four point three develops advanced risk and ethics with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section four point three, Daniel Osei expects advanced claims to carry owners and dates.
+
 ### 4.4 Transparency versus exposure
 
 Publishing a detailed security assessment builds public trust but may give attackers a map. A defensible practice is layered disclosure: publish the governance, the risk-acceptance decisions and progress metrics; share technical detail with regulators and sector information-sharing bodies under confidentiality; disclose incidents according to legal duty and promptly to affected people.
+
+Section four point four develops advanced risk and ethics with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section four point four, Daniel Osei expects advanced claims to carry owners and dates.
 
 ### Worked example (synthetic BWRP)
 
@@ -284,17 +344,33 @@ You will (1) generate genuinely different design alternatives for securing remot
 
 BWRP's 23 lift stations pump wastewater to the plant. Each has an RTU with a cellular modem reporting levels and pump status to SCADA and accepting start/stop commands. Some modems have public IP addresses, which places them in the exposure category ATT&CK for ICS names T0883 *Internet Accessible Device*.
 
+Section five point one develops ot iot and cyber-physical security with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section five point one, Daniel Osei expects ot claims to carry owners and dates.
+
 ### 5.2 Three alternatives
 
 Alternative 1 — private APN: the carrier provides a private access point name so modems have no public addresses; traffic reaches BWRP through a carrier-managed tunnel. Alternative 2 — RTU-side VPN: each RTU (or a small router beside it) builds an IPsec tunnel to a BWRP concentrator in the DMZ. Alternative 3 — monitoring-only uplink with local control: remote commands are removed; RTUs run local level control and report only, and operators dispatch crews for exceptions.
+
+Section five point two develops ot iot and cyber-physical security with a Daniel Osei note Daniel Osei can demo offline.
 
 ### 5.3 Evaluating them
 
 Alternative 1 is quick and cheap but trusts the carrier's isolation. Alternative 2 gives BWRP its own cryptographic boundary but adds 23 devices to patch and certificates to manage. Alternative 3 shrinks the attack surface most — no remote commands means no remote manipulation of pumps — but lengthens response to some faults, which operations must accept. In 62443 terms, each alternative defines a different conduit between the lift-station zones and the SCADA zone, with different security capabilities.
 
+Section five point three develops ot iot and cyber-physical security with a Daniel Osei note Daniel Osei can demo offline.
+
 ### 5.4 Recording rejections
 
 A design record lists rejected alternatives and the reason. Future reviewers otherwise re-propose them without knowing the history.
+
+Section five point four develops ot iot and cyber-physical security with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section five point four, Daniel Osei expects ot claims to carry owners and dates.
+
+Section five point four treats the problem three alternatives as testable only when evidence and ticket IDs are recorded.
+
+For section five point four, Daniel Osei will not accept ot work without a written trail.
 
 ### Worked example (synthetic BWRP)
 
@@ -334,6 +410,10 @@ You will (1) design a controlled comparison of two alerting rule sets on the sam
 
 Comparing rule set A (current) with rule set B (proposed) on different weeks of data confounds the rules with the weeks. A controlled evaluation replays the same labelled windows through both. Labels come from a test plan: 40 windows contain injected attack behaviour in the replay, 160 are normal operation.
 
+Section six point one develops ot iot and cyber-physical security with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section six point one, Daniel Osei expects ot claims to carry owners and dates.
+
 ```python
 """Lab 06: controlled evaluation of two alerting rule sets on the same synthetic replay, with bootstrap CI."""
 import random
@@ -369,13 +449,25 @@ recall difference B-A 95% bootstrap CI: [0.000, 0.388]
 
 B's recall is 0.85 against A's 0.65, and its false-alert rate is lower (3.7 % vs 6.9 %). The bootstrap interval for the recall difference runs from 0.000 to 0.388: the lower end touches zero. With only 40 attack windows, we cannot rule out that B is no better at recall than A, even though the point estimate favours it strongly. Paired methods (each window evaluated by both rule sets) would give a tighter interval; the bootstrap above resamples windows, preserving pairing.
 
+Section six point two develops ot iot and cyber-physical security with a Daniel Osei note Daniel Osei can demo offline.
+
 ### 6.3 Making the call
 
 Leaders rarely need statistical certainty to act; they need to know the risk of each choice. B is cheaper in false alerts and probably better at recall. The downside of switching — if B were truly no better — is small. Daniel recommends switching, while expanding the attack-window set to 120 before the next review.
 
+Section six point three develops ot iot and cyber-physical security with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section six point three, Daniel Osei expects ot claims to carry owners and dates.
+
 ### 6.4 Threats to validity
 
 Injected attacks reflect the test author's imagination; real adversaries may differ. Replay omits operator reaction. Rule set B was designed after seeing some of these attack types, which favours it.
+
+Section six point four develops ot iot and cyber-physical security with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section six point four, Daniel Osei expects ot claims to carry owners and dates.
+
+Section six point four treats same data two treatments as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic BWRP)
 
@@ -415,17 +507,35 @@ You will (1) design OT security roles and responsibilities across IT, operations
 
 In many utilities IT owns the network up to a firewall, operations owns the process, engineering owns the controllers and nobody owns the space where they meet. NIST SP 800-82r3 recommends a cross-functional team for OT security, with clearly assigned authority. Integration means writing down who decides, not only who advises.
 
+Section seven point one develops ot iot and cyber-physical security with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section seven point one, Daniel Osei expects ot claims to carry owners and dates.
+
 ### 7.2 A RACI for three processes
 
 For remote-access approval: the shift supervisor is Responsible for enabling sessions; the OT security lead is Accountable for the policy; the vendor manager is Consulted; IT security is Informed of each session. For PLC logic change: control engineer Responsible, engineering manager Accountable, operations Consulted, OT security Informed and alerted. For OT incident declaration: shift supervisor Responsible for raising, plant director Accountable, OT security and IT Consulted, regulator Informed when thresholds are met.
+
+Section seven point two develops ot iot and cyber-physical security with a Daniel Osei note Daniel Osei can demo offline.
 
 ### 7.3 Change management
 
 Every change to an OT system passes a change board that already exists for safety and reliability. Adding three security questions to its form — does this change add a conduit, change an account, or alter firmware? — integrates security without a parallel bureaucracy.
 
+Section seven point three develops ot iot and cyber-physical security with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section seven point three, Daniel Osei expects ot claims to carry owners and dates.
+
+Section seven point three treats the ownership problem raci as testable only when evidence and ticket IDs are recorded.
+
 ### 7.4 Metrics
 
 Measure what you want more of. "Number of vulnerabilities" rewards not looking. Better: percentage of OT assets in the inventory with known firmware versions; median days to apply high-risk OT patches within available windows; percentage of vendor sessions with recordings reviewed. Each metric names a denominator.
+
+Section seven point four develops ot iot and cyber-physical security with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section seven point four, Daniel Osei expects ot claims to carry owners and dates.
+
+Section seven point four treats the ownership problem raci as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic BWRP)
 
@@ -469,13 +579,27 @@ Suppose evidence suggests an intruder on BWRP's SCADA server during a storm, whe
 
 An unexplained local change at a dosing panel (Chapter 3's example) might be a technician's well-meant adjustment or sabotage. Treat it as a process deviation first, collect evidence without accusation, involve human resources and legal counsel before interviews, and remember that blame cultures make staff hide mistakes, which is worse for security.
 
+Section eight point two develops ot iot and cyber-physical security with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section eight point two, Daniel Osei expects ot claims to carry owners and dates.
+
 ### 8.3 Supplier compromise
 
 If a SCADA vendor announces that its update server distributed tampered software, every utility using it must determine exposure. Leaders need an inventory of installed versions and a record of where updates came from. Sector information sharing helps; so does an existing relationship with the vendor's security team.
 
+Section eight point three develops ot iot and cyber-physical security with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section eight point three, Daniel Osei expects ot claims to carry owners and dates.
+
 ### 8.4 Communicating under uncertainty
 
 Tell regulators what you know, what you do not, what you are doing and when you will update. Avoid both reassurance you cannot support and speculation about attribution.
+
+Section eight point four develops ot iot and cyber-physical security with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section eight point four, Daniel Osei expects ot claims to carry owners and dates.
+
+Section eight point four treats when containment endangers the as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example (synthetic BWRP)
 
@@ -515,6 +639,10 @@ You will (1) structure an assurance argument from a top claim down to evidence; 
 
 An assurance case states a top claim ("BWRP's OT risk is acceptable"), decomposes it into sub-claims, and supports each leaf with evidence: test reports, configuration reviews, drill records. Goal Structuring Notation is a common graphical form. The value is that every gap becomes visible as a claim with nothing beneath it.
 
+Section nine point one develops ot iot and cyber-physical security with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section nine point one, Daniel Osei expects ot claims to carry owners and dates.
+
 ```python
 """Lab 09: check a synthetic assurance argument: every claim needs evidence or fully supported sub-claims."""
 arg = {
@@ -548,17 +676,41 @@ G4 recovery tested                 supported
 
 G6 "writes monitored" has no evidence and no sub-claims, so it is unsupported. G3 depends on G6 and therefore fails, and the top claim G1 fails with it. G2 and G4 are supported. The check is strict on purpose: a top claim cannot be partly true for a board.
 
+Section nine point two develops ot iot and cyber-physical security with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section nine point two, Daniel Osei expects ot claims to carry owners and dates.
+
 ### 9.3 Assurance is not compliance
 
 Compliance shows that required controls exist. Assurance argues that risk is acceptable given the system's actual threats and consequences. A plant can be compliant with a checklist and still have an unsupported claim on its most important loop — dosing integrity here.
+
+Section nine point three develops ot iot and cyber-physical security with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section nine point three, Daniel Osei expects ot claims to carry owners and dates.
+
+Section nine point three treats claims arguments evidence reading as testable only when evidence and ticket IDs are recorded.
 
 ### 9.4 Evidence freshness
 
 Evidence ages. A restore drill from 2025-11 supports G4 today; in two years it will not. Mature assurance cases attach a validity period to each item and fail claims whose evidence has expired.
 
+Section nine point four develops ot iot and cyber-physical security with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section nine point four, Daniel Osei expects ot claims to carry owners and dates.
+
+Section nine point four treats claims arguments evidence reading as testable only when evidence and ticket IDs are recorded.
+
 ### 9.5 Reporting to a board
 
 Report: top claim status (not yet supported), which sub-claim blocks it, what evidence is planned and when. Avoid red-amber-green colours without the underlying claims; colour hides reasoning.
+
+Section nine point five develops ot iot and cyber-physical security with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section nine point five, Daniel Osei expects ot claims to carry owners and dates.
+
+Section nine point five treats claims arguments evidence reading as testable only when evidence and ticket IDs are recorded.
+
+For section nine point five, Daniel Osei will not accept ot work without a written trail.
 
 ### Worked example (synthetic BWRP)
 
@@ -598,21 +750,51 @@ You will (1) critique a peer-reviewed OT security paper's threat model, method a
 
 Read primary research that addresses a live decision. For BWRP's detection programme two papers frame the field: Giraldo et al. (2018, *ACM Computing Surveys*, doi:10.1145/3203245), a survey of physics-based attack detection in cyber-physical systems, and Urbina et al. (2016, ACM CCS, doi:10.1145/2976749.2978388), which argues for evaluating detectors by the impact an undetected attacker can achieve.
 
+Section ten point one develops research reading and critique with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section ten point one, Daniel Osei expects research claims to carry owners and dates.
+
 ### 10.2 Critiquing the threat model
 
 Ask what the attacker can observe, change and know. Urbina et al. consider an attacker who knows the detector and stays below its threshold — a strong but realistic assumption for well-resourced actors. A paper that tests only naïve attacks overstates detector value.
+
+Section ten point two develops research reading and critique with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section ten point two, Daniel Osei expects research claims to carry owners and dates.
+
+Section ten point two treats choosing papers critiquing the as testable only when evidence and ticket IDs are recorded.
 
 ### 10.3 Critiquing method and evaluation
 
 Check the testbed or dataset (simulated, laboratory or operational), the metrics, the baselines compared, and whether thresholds were tuned on evaluation data. Surveys like Giraldo et al. are especially useful for spotting field-wide habits — for example inconsistent metrics that make papers hard to compare.
 
+Section ten point three develops research reading and critique with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section ten point three, Daniel Osei expects research claims to carry owners and dates.
+
+Section ten point three treats choosing papers critiquing the as testable only when evidence and ticket IDs are recorded.
+
 ### 10.4 Transfer to practice
 
 Even a sound paper may not transfer. Physics-based detection needs a model of the process; BWRP's biological treatment is slow and nonlinear, unlike the faster loops in many testbeds. Transfer requires asking: does our process have the dynamics, sensors and data quality the method assumes?
 
+Section ten point four develops research reading and critique with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section ten point four, Daniel Osei expects research claims to carry owners and dates.
+
+Section ten point four treats choosing papers critiquing the as testable only when evidence and ticket IDs are recorded.
+
 ### 10.5 Writing the critique
 
 Structure: question and claim; threat model; method; evidence; transfer to BWRP; what we would test first. Keep it to two pages for practitioners.
+
+Section ten point five develops research reading and critique with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section ten point five, Daniel Osei expects research claims to carry owners and dates.
+
+Section ten point five treats choosing papers critiquing the as testable only when evidence and ticket IDs are recorded.
+
+For section ten point five, Daniel Osei will not accept research work without a written trail.
 
 ### Worked example (synthetic BWRP)
 
@@ -652,21 +834,49 @@ You will (1) scope an applied OT security project inside a real organisational c
 
 A postgraduate applied project should change something in an organisation, with the owner's written agreement, and be finishable in one term. At BWRP, Daniel's project is "passive write monitoring for the dosing network": it closes the unsupported claim G6 from Chapter 9, uses the evaluation method from Chapter 6 and the impact measure from Chapter 10.
 
+Section eleven point one develops applied project with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section eleven point one, Daniel Osei expects applied claims to carry owners and dates.
+
 ### 11.2 Stakeholders and constraints
 
 Operations must approve the monitoring tap (passive, on a mirror port, installed in a maintenance window). Engineering provides the register map. IT provides log storage. The regulator need not approve but will see the results in the next assurance report. The constraint list includes: no active traffic on the dosing network, no change to PLC-D, and data retention of 90 days.
+
+Section eleven point two develops applied project with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section eleven point two, Daniel Osei expects applied claims to carry owners and dates.
 
 ### 11.3 Milestones and risks
 
 Weeks 1–2: agreement, tap installed and capture validated. Weeks 3–6: baseline and rules. Weeks 7–9: controlled evaluation with an independently authored attack replay. Weeks 10–12: dossier and handover. Risks: mirror-port packet loss (mitigation: monitor loss counters), operator alert fatigue (mitigation: alerts to OT security first for 4 weeks), staff turnover (mitigation: written runbook).
 
+Section eleven point three develops applied project with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section eleven point three, Daniel Osei expects applied claims to carry owners and dates.
+
+Section eleven point three treats choosing the project stakeholders as testable only when evidence and ticket IDs are recorded.
+
 ### 11.4 Success measures
 
 Defined in advance: capture loss below 0.1 % over a week; recall at least 0.8 on the independent replay with false-alert rate below 2 % of normal windows; maximum undetected dosing deviation reported; runbook accepted by operations.
 
+Section eleven point four develops applied project with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section eleven point four, Daniel Osei expects applied claims to carry owners and dates.
+
+Section eleven point four treats choosing the project stakeholders as testable only when evidence and ticket IDs are recorded.
+
 ### 11.5 The dossier
 
 The evidence dossier contains the agreement, configuration, test reports, evaluation results with intervals, open issues and handover. It becomes evidence E5 in the assurance case.
+
+Section eleven point five develops applied project with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section eleven point five, Daniel Osei expects applied claims to carry owners and dates.
+
+Section eleven point five treats choosing the project stakeholders as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point five, Daniel Osei will not accept applied work without a written trail.
 
 ### Worked example (synthetic BWRP)
 
@@ -706,17 +916,33 @@ You will (1) review the course's decisions as a portfolio; (2) transfer methods 
 
 Across the course, BWRP took a set of decisions: brokered vendor access (Ch. 1), gap priorities (Ch. 2), segmentation justified by tail risk (Ch. 4), tiered lift-station protection (Ch. 5), rule set B (Ch. 6), RACI and metrics (Ch. 7), storm-night response (Ch. 8), the assurance case (Ch. 9) and the monitoring project (Ch. 11). Reviewing them together shows whether they are consistent: for example, dosing integrity appears in Chapters 3, 9, 10 and 11 — a sign it is the plant's central concern.
 
+Section twelve point one develops final review and transfer with a Daniel Osei note Daniel Osei can demo offline.
+
 ### 12.2 Transfer to another sector
 
 Methods transfer; parameters do not. Moving to a district heating operator or a food factory, the decision frame, loss distributions, controlled evaluation and assurance structure all apply. What changes: the consequence model (heat loss or product contamination instead of discharge quality), the regulators, the dominant protocols and the safety standards in force.
+
+Section twelve point two develops final review and transfer with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section twelve point two, Daniel Osei expects final claims to carry owners and dates.
 
 ### 12.3 Transfer brief
 
 A successor needs: the open decisions and their revisit triggers, the assurance case with expired or missing evidence highlighted, the metrics and their baselines, relationships (vendors, regulator contacts, sector information-sharing groups) and known weak spots. Two pages, with links to the full records.
 
+Section twelve point three develops final review and transfer with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section twelve point three, Daniel Osei expects final claims to carry owners and dates.
+
+Section twelve point three treats the portfolio view transfer as testable only when evidence and ticket IDs are recorded.
+
 ### 12.4 Continuing development
 
 The field moves: NIST SP 800-82 was revised in 2023; IEC 62443 parts are periodically updated; MITRE ATT&CK for ICS adds techniques; CISA publishes advisories weekly. Plan: follow advisories for your vendors, re-read a standard's change summary when a new edition appears, and present one case study a year to peers.
+
+Section twelve point four develops final review and transfer with a Daniel Osei note Daniel Osei can demo offline.
+
+Under section twelve point four, Daniel Osei expects final claims to carry owners and dates.
 
 ### Worked example (synthetic BWRP)
 
