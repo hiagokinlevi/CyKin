@@ -659,10 +659,10 @@ Os resultados principais de Leo (sintéticos, cinco sementes, 20.000 registros):
 
 Quatro erros se repetem, e cada um enviesa os resultados ou esconde custos; confira a sua análise quanto aos quatro:
 
-- Executar todas as sementes de uma condição antes de outra; isso deixa problemas dependentes do tempo coincidirem com essa condição.
-- Analisar antes das verificações de qualidade; isso transforma defeitos, como uma semente ausente, em achados.
+- Executar todas as sementes de uma condição antes de outra; isso deixa problemas dependentes do tempo, como um nó ficando mais lento, coincidirem com essa condição.
+- Analisar antes das verificações de qualidade; isso transforma defeitos, como a execução ausente da semente 4 que as verificações de Leo encontraram, em achados.
 - Misturar resultados exploratórios e confirmatórios; isso exagera a certeza.
-- Relatar ganhos de segurança sem os custos; isso esconde compromissos, como a queda no macro-F1 que Leo relatou.
+- Relatar ganhos de segurança sem os custos; isso esconde compromissos, como a queda do macro-F1 de 0,912 para 0,905 que Leo relatou.
 
 ### Exercícios
 
@@ -749,7 +749,7 @@ output_rounding=0    queries=6 max_weight_error=0.534 label_agreement=0.882
 
 Quatro erros se repetem, e cada um torna as alegações menos confiáveis; confira o seu rascunho quanto aos quatro:
 
-- Resultados e discussão misturados; isso borra o que foi medido.
+- Resultados e discussão misturados; isso confunde o que foi medido com a forma como é interpretado.
 - Limitações genéricas ("são necessários mais dados"); não dizem nada aos examinadores sobre este estudo.
 - Detalhes operacionais de ataque contra sistemas identificados pelo nome; ajudam atacantes sem ajudar os leitores.
 - Recomendações enunciadas como achados; uma recomendação enunciada como achado alega mais do que os dados mostram, e é por isso que Leo moveu e atenuou a sua recomendação às seguradoras.
@@ -843,7 +843,7 @@ Quatro erros se repetem, e cada um enfraquece a etapa final; confira a sua entre
 
 - Entregar sem que ninguém tenha reproduzido um resultado; sem uma reprodução, problemas como os registros longos descartados no trabalho de Leo chegam aos examinadores.
 - Responder às perguntas na defensiva, sem evidência; isso faz perder a confiança dos examinadores.
-- Resumos para profissionais que omitem as condições; um resumo assim transforma um resultado sob um único ataque numa regra geral.
+- Resumos para profissionais que omitem as condições; um resumo assim transforma um resultado sob um único ataque, com notas sintéticas e uma única arquitetura, numa regra geral.
 - Ignorar as referências de página das correções exigidas; correções sem referências de página são difíceis de conferir e atrasam a aprovação.
 
 ### Exercícios

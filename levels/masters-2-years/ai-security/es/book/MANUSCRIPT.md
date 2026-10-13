@@ -657,10 +657,10 @@ Resultados principales de Leo (sintéticos, cinco semillas, 20.000 registros): l
 
 Cuatro errores se repiten, y cada uno sesga los resultados u oculta costes; revise su análisis en busca de los cuatro:
 
-- Ejecutar todas las semillas de una condición antes que las de otra; esto permite que los problemas dependientes del tiempo coincidan con esa condición.
-- Analizar antes de las comprobaciones de calidad; esto convierte los errores, como una semilla ausente, en hallazgos.
+- Ejecutar todas las semillas de una condición antes que las de otra; esto permite que los problemas dependientes del tiempo, como un nodo que se ralentiza, coincidan con esa condición.
+- Analizar antes de las comprobaciones de calidad; esto convierte los errores, como la ejecución ausente de la semilla 4 que encontraron las comprobaciones de Leo, en hallazgos.
 - Mezclar resultados exploratorios y confirmatorios; esto exagera la certeza.
-- Informar de las mejoras de seguridad sin sus costes; esto oculta compromisos, como la caída del F1 macro de la que Leo informó.
+- Informar de las mejoras de seguridad sin sus costes; esto oculta compromisos, como la caída del F1 macro de 0,912 a 0,905 de la que Leo informó.
 
 ### Ejercicios — capítulo 6
 
@@ -747,7 +747,7 @@ output_rounding=0    queries=6 max_weight_error=0.534 label_agreement=0.882
 
 Cuatro errores se repiten, y cada uno hace que las afirmaciones resulten menos fiables; revise su borrador en busca de los cuatro:
 
-- Resultados y discusión mezclados; esto difumina lo que se midió.
+- Resultados y discusión mezclados; esto confunde lo que se midió con cómo se interpreta.
 - Limitaciones genéricas («se necesitan más datos»); no dicen nada a los examinadores sobre este estudio.
 - Detalles operativos de ataques contra sistemas identificados por su nombre; ayudan a los atacantes sin ayudar a los lectores.
 - Recomendaciones enunciadas como hallazgos; una recomendación enunciada como hallazgo afirma más de lo que muestran los datos, y por eso Leo trasladó y suavizó su recomendación a las aseguradoras.
@@ -841,7 +841,7 @@ Cuatro errores se repiten, y cada uno debilita la etapa final; revise su entrega
 
 - Entregar sin que nadie haya reproducido un resultado; sin una reproducción, problemas como los registros largos descartados en el trabajo de Leo llegan a los examinadores.
 - Responder a las preguntas a la defensiva y sin evidencia; esto hace perder la confianza de los examinadores.
-- Resúmenes para profesionales que omiten las condiciones; un resumen así convierte un resultado bajo un único ataque en una regla general.
+- Resúmenes para profesionales que omiten las condiciones; un resumen así convierte un resultado bajo un único ataque, con notas sintéticas y una sola arquitectura, en una regla general.
 - Ignorar las referencias de página de las correcciones exigidas; las correcciones sin referencias de página son difíciles de comprobar y retrasan la concesión del título.
 
 ### Ejercicios — capítulo 8
