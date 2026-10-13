@@ -28,7 +28,7 @@ NIST [SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final); [serie I
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](../../en/book/MANUSCRIPT.md#ch-07) · [8](../../en/book/MANUSCRIPT.md#ch-08) · [9](../../en/book/MANUSCRIPT.md#ch-09) · [10](../../en/book/MANUSCRIPT.md#ch-10) · [11](../../en/book/MANUSCRIPT.md#ch-11) · [12](../../en/book/MANUSCRIPT.md#ch-12) · [13](../../en/book/MANUSCRIPT.md#ch-13) · [14](../../en/book/MANUSCRIPT.md#ch-14) · [15](../../en/book/MANUSCRIPT.md#ch-15) · [16](../../en/book/MANUSCRIPT.md#ch-16) · [17](../../en/book/MANUSCRIPT.md#ch-17) · [18](../../en/book/MANUSCRIPT.md#ch-18) · [19](../../en/book/MANUSCRIPT.md#ch-19) · [20](../../en/book/MANUSCRIPT.md#ch-20) · [21](../../en/book/MANUSCRIPT.md#ch-21) · [22](../../en/book/MANUSCRIPT.md#ch-22) · [23](../../en/book/MANUSCRIPT.md#ch-23) · [24](../../en/book/MANUSCRIPT.md#ch-24) · [25](../../en/book/MANUSCRIPT.md#ch-25) · [26](../../en/book/MANUSCRIPT.md#ch-26) · [27](../../en/book/MANUSCRIPT.md#ch-27) · [28](../../en/book/MANUSCRIPT.md#ch-28) · [29](../../en/book/MANUSCRIPT.md#ch-29) · [30](../../en/book/MANUSCRIPT.md#ch-30) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](../../en/book/MANUSCRIPT.md#ch-10) · [11](../../en/book/MANUSCRIPT.md#ch-11) · [12](../../en/book/MANUSCRIPT.md#ch-12) · [13](../../en/book/MANUSCRIPT.md#ch-13) · [14](../../en/book/MANUSCRIPT.md#ch-14) · [15](../../en/book/MANUSCRIPT.md#ch-15) · [16](../../en/book/MANUSCRIPT.md#ch-16) · [17](../../en/book/MANUSCRIPT.md#ch-17) · [18](../../en/book/MANUSCRIPT.md#ch-18) · [19](../../en/book/MANUSCRIPT.md#ch-19) · [20](../../en/book/MANUSCRIPT.md#ch-20) · [21](../../en/book/MANUSCRIPT.md#ch-21) · [22](../../en/book/MANUSCRIPT.md#ch-22) · [23](../../en/book/MANUSCRIPT.md#ch-23) · [24](../../en/book/MANUSCRIPT.md#ch-24) · [25](../../en/book/MANUSCRIPT.md#ch-25) · [26](../../en/book/MANUSCRIPT.md#ch-26) · [27](../../en/book/MANUSCRIPT.md#ch-27) · [28](../../en/book/MANUSCRIPT.md#ch-28) · [29](../../en/book/MANUSCRIPT.md#ch-29) · [30](../../en/book/MANUSCRIPT.md#ch-30) |
 
 [Resultados resueltos](#worked-results) · [Referencias](#references)
 
@@ -320,7 +320,167 @@ La seguridad de los sistemas operativos y la virtualización en TO consiste sobr
 
 ### Siga estudiando — capítulo 06 de 30
 
-[← Capítulo 05 (borrador)](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 (borrador) →](../../en/book/MANUSCRIPT.md#ch-07)
+[← Capítulo 05 (borrador)](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 (borrador) →](#ch-07)
+
+<a id="ch-07"></a>
+
+## Capítulo 7 — Fundamentos de identidad y acceso
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) sustituir las cuentas compartidas por cuentas nominativas y roles; (2) diseñar el acceso de empresas contratistas con límites de tiempo; (3) aplicar la autenticación multifactor donde encaje en TO; y (4) revisar el acceso con regularidad.
+
+### 7.1 Contraseñas compartidas
+
+En muchos emplazamientos, una única contraseña de la HMI la comparten todos los turnos y la conocen antiguos empleados. No puede decirle a un investigador quién cambió el punto de consigna de un congelador, y no puede revocarse para una sola persona. Las cuentas nominativas recuperan tanto la atribución como la revocación. IEC 62443-3-3 hace de la identificación única de los usuarios humanos un requisito del sistema dentro de su primer requisito fundamental. La revisión de accesos de Priya en NCS encontró exactamente esto: una cuenta compartida «shift» entre 11 cuentas de la HMI, además de dos cuentas de antiguos empleados.
+
+Una cuenta compartida también debilita el registro de evidencia: una alarma reconocida como «shift» no puede vincularse a una persona.
+
+### 7.2 Roles
+
+NCS necesita tres roles en la HMI: observador (el vigilante de seguridad nocturno que comprueba las temperaturas), operador (reconocer alarmas, ajustar puntos de consigna dentro de los límites) e ingeniero (cambiar límites y configuraciones de alarmas). El portátil de la empresa contratista que programa PLC-R1 es, a su vez, un privilegio aparte, controlado por la posesión del portátil y por la contraseña de su proyecto. El rol de observador importa más de lo que parece. El vigilante de seguridad nocturno de NCS comprueba las temperaturas de los congeladores en HMI-C durante sus rondas; con un inicio de sesión de operador compartido, el vigilante también podría haber reconocido alarmas o cambiado un punto de consigna. Una cuenta de observador lo impide por diseño. El portátil de programación de la empresa contratista queda fuera de estos roles porque es el archivo de proyecto de PLC-R1, y no HMI-C, lo que controla qué puede descargarse en el controlador.
+
+### 7.3 Empresas contratistas
+
+La empresa de refrigeración necesita acceso unas pocas veces al mes. Dé a la empresa contratista cuentas nominativas deshabilitadas por defecto, habilitadas para un ticket y una franja horaria, y revisadas después. Retire la herramienta de acceso remoto siempre activa identificada en el capítulo 5. En NCS, las dos cuentas de la empresa contratista estaban siempre habilitadas. Priya las configuró como deshabilitadas por defecto; el responsable de instalaciones habilita una para un ticket y una franja horaria, y la sesión pasa por el servidor de salto, que la graba. Tras la visita, la cuenta vuelve a deshabilitarse y el registro de la sesión se archiva con el ticket. El paquete para visitas de la empresa contratista del capítulo 25 convierte estos pasos en un formulario de una página que se completa en cuatro minutos.
+
+### 7.4 Autenticación multifactor
+
+Use MFA para el acceso remoto y para las herramientas de ingeniería. En la HMI de la sala de control, una solicitud de MFA lenta durante una alarma puede ser perjudicial; la seguridad física de la sala y tiempos cortos de bloqueo de pantalla pueden ser un mejor equilibrio. Documente la elección. La elección de Priya en NCS: MFA en el servidor de salto para las sesiones de la empresa contratista y en las herramientas de ingeniería, pero no en la propia HMI-C. La sala de control está cerrada con llave, HMI-C se bloquea tras un breve período de inactividad y los operadores inician sesión con cuentas nominativas. Una solicitud de MFA que retrasara a un operador al reconocer una alarma de temperatura alta en Freezer-2 crearía un riesgo peor que el que elimina, y ese razonamiento está escrito en la política de acceso.
+
+### 7.5 Revisiones
+
+Cada trimestre, enumere las cuentas habilitadas y compárelas con la lista de personal y de empresas contratistas. Deshabilite las cuentas de quienes se marchan el mismo día en que recursos humanos se lo notifique. En NCS, esta revisión encontró 11 cuentas de la HMI: 6 de personal actual, 2 de antiguos empleados, 1 cuenta compartida «shift» y 2 cuentas de la empresa contratista que estaban siempre habilitadas. Las dos cuentas de antiguos empleados se deshabilitaron el mismo día; la cuenta compartida se sustituyó por cuentas nominativas de operador en un mes; las cuentas de la empresa contratista pasaron a estar deshabilitadas por defecto. La revisión del trimestre siguiente debe partir de esa lista y confirmar que ninguno de los cuatro problemas ha vuelto, por ejemplo una nueva cuenta de la empresa contratista creada durante una visita de emergencia y nunca deshabilitada.
+
+### Ejemplo resuelto (NCS sintética)
+
+La revisión de accesos de Priya encuentra 11 cuentas de la HMI: 6 de personal actual, 2 de antiguos empleados, 1 cuenta compartida «shift» y 2 cuentas de la empresa contratista siempre habilitadas. Acciones: deshabilitar hoy las 2 cuentas de antiguos empleados; sustituir «shift» por cuentas nominativas de operador en un mes; configurar las cuentas de la empresa contratista como deshabilitadas por defecto, con habilitación por ticket.
+
+> **Caso sintético — Northgate Cold Storage.** Los recuentos son inventados.
+
+### Errores y límites
+
+El bloqueo de cuentas en las pantallas de la sala de control puede impedir actuar a un operador durante una emergencia; prefiera alertas y retardos. Algunos PLC heredados no tienen ninguna cuenta de usuario; protéjalos mediante controles de red.
+
+### Ejercicios — capítulo 7
+
+- **EX019 — Elegir un rol.** El vigilante nocturno debe comprobar las temperaturas de los congeladores en HMI-C. ¿Qué rol y por qué? *Rúbrica:* 3 = observador, mínimo privilegio, sin cambios de punto de consigna; 2 = solo el rol; 1 = operador; 0 = ingeniero.
+- **EX020 — Diseño del acceso de la empresa contratista.** Escriba tres reglas para las cuentas de la HMI de la empresa contratista. *Rúbrica:* 3 = nominativas, deshabilitadas por defecto, habilitadas por ticket/franja con revisión; 2 = dos; 1 = una; 0 = nada.
+- **EX021 — Dónde encaja la MFA.** Nombre una ruta de acceso de NCS que debe tener MFA y otra en la que documentaría una alternativa. *Rúbrica:* 3 = acceso remoto/ruta de ingeniería; HMI de la sala de control con control físico; 2 = una; 1 = MFA en todas partes sin reflexión; 0 = nada.
+
+### Síntesis del capítulo
+
+Las cuentas nominativas, los roles ajustados, el acceso de las empresas contratistas limitado en el tiempo y las revisiones periódicas dan a la identidad en TO tanto rendición de cuentas como seguridad funcional.
+
+### Siga estudiando — capítulo 07 de 30
+
+[← Capítulo 06 (borrador)](#ch-06) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 08 (borrador) →](#ch-08)
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Fundamentos de arquitectura de seguridad
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) dividir una instalación pequeña en zonas; (2) definir conductos entre zonas con el tráfico permitido; (3) situar una DMZ para los servicios compartidos; y (4) explicar la defensa en profundidad con capas concretas.
+
+### 8.1 Zonas para NCS
+
+IEC 62443-3-2 introduce las zonas (grupos de activos con requisitos de seguridad comunes) y los conductos (las rutas de comunicación entre ellas). NCS necesita al menos cuatro zonas: oficina, control de refrigeración (PLC-R1, PLC-R2, HMI-C), registro y cámaras (registradores, GW-LOG, CAM-DOCK), y una pequeña DMZ que contiene la réplica del historiador y el servidor de salto para el acceso remoto. El diagrama de zonas de Priya mostraba la regla 9 cruzando directamente de oficina a control; como ningún conducto de la lista lo permitía, el propio documento de arquitectura dio el motivo para eliminarla.
+
+El diagrama también hizo concreto el propósito de la DMZ: es donde los usuarios de la oficina leen datos sin entrar en la zona de control.
+
+### 8.2 Conductos
+
+Cada conducto enumera lo que puede atravesarlo. Oficina → DMZ: HTTPS hacia los informes de la réplica del historiador. DMZ → control: nada iniciado desde la DMZ, salvo la sesión del servidor de salto hacia HMI-C cuando está habilitada. Control → DMZ: replicación del historiador. Zona de registro → internet: solo GW-LOG hacia la nube del proveedor por el 443. Todo lo demás se deniega. La tabla de conductos de Priya tiene cinco columnas: zona de origen, zona de destino, protocolo, iniciador y propósito. La columna del iniciador es la que más importa: la replicación de control a DMZ la inicia el lado de control, así que la DMZ nunca necesita una regla que le permita abrir sesiones hacia dentro.
+
+### 8.3 Por qué una DMZ
+
+Sin una DMZ, los usuarios de la oficina que necesitan informes de temperatura se conectan directamente a la zona de control. Con ella, llegan a una copia, y la zona de control no acepta ninguna sesión desde la oficina. Ese único cambio elimina la ruta que usa la mayor parte del ransomware corriente para llegar a las HMI. En NCS, los informes que quieren los usuarios son certificados de temperatura y horas de funcionamiento de los compresores. La macro de energía de OFFICE-7 leía las horas de funcionamiento directamente de PLC-R2 a través de la regla 9; la corrección de Priya hizo que leyera los mismos valores de la réplica del historiador en la DMZ, y solo entonces se bloqueó el paso de oficina a control.
+
+### 8.4 Defensa en profundidad
+
+Capas en NCS: cortafuegos entre zonas; cuentas nominativas; lista de permitidos en HMI-C; supervisión pasiva de la zona de control; copias de seguridad sin conexión; y, fuera del control del equipo de seguridad, la detección de amoníaco y la ventilación de emergencia independientes. Cada capa supone que la anterior puede fallar. La evaluación de Priya en el capítulo 23 muestra esa suposición en acción: cinco de seis controles se superaron, pero la regla de la zona de cámaras permitía que CAM-DOCK llegara a HIST por un puerto web. Las demás capas (cuentas nominativas, lista de permitidos en HMI-C y supervisión pasiva) seguían en su sitio mientras se restringía la regla.
+
+### Ejemplo resuelto (NCS sintética)
+
+Priya dibuja el diagrama de zonas y enumera los conductos en una tabla con zona de origen, zona de destino, protocolo, iniciador y propósito. Al compararla con el cortafuegos actual, encuentra la regla de la puesta en marcha del capítulo 2 cruzando directamente de oficina a control. El documento de arquitectura da el motivo para eliminarla: no es un conducto de la lista.
+
+> **Caso sintético — Northgate Cold Storage.** Las zonas son un diseño didáctico.
+
+### Errores y límites
+
+Las zonas sobre el papel no significan nada hasta que se imponen en los conmutadores y los cortafuegos. Las cámaras a menudo se olvidan; son dispositivos de red con sus propias vulnerabilidades y también deben pertenecer a una zona.
+
+### Ejercicios — capítulo 8
+
+- **EX022 — Situar CAM-DOCK.** ¿A qué zona de NCS deben incorporarse las cámaras del muelle y por qué no a la zona de control? *Rúbrica:* 3 = zona de registro/cámaras (o una zona propia); sin relación con el control y con vulnerabilidades frecuentes; 2 = solo la zona; 1 = zona de control; 0 = nada.
+- **EX023 — Una fila de la tabla de conductos.** Escriba la fila de la replicación del historiador. *Rúbrica:* 3 = control → DMZ, protocolo/puerto, iniciador el lado de control, propósito; 2 = tres campos; 1 = vago; 0 = nada.
+- **EX024 — Capas que suponen el fallo.** Nombre dos capas de NCS y diga qué fallo cubre cada una. *Rúbrica:* 3 = dos capas con el fallo concreto que cubren; 2 = solo las capas; 1 = una; 0 = nada.
+
+### Síntesis del capítulo
+
+Las zonas, los conductos y una DMZ convierten «segmentar la red» en un diseño comprobable, y la defensa en profundidad hace que el fallo de cada capa sea superable.
+
+### Siga estudiando — capítulo 08 de 30
+
+[← Capítulo 07 (borrador)](#ch-07) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 09 (borrador) →](#ch-09)
+
+<a id="ch-09"></a>
+
+## Capítulo 9 — Evidencia y medición
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) reunir evidencia con marcas de tiempo, fuentes y hashes; (2) separar lo que vio de lo que concluyó; (3) contar con denominadores; y (4) presentar una medición con su incertidumbre.
+
+### 9.1 Registrar la evidencia
+
+Para cada observación, registre: qué se observó, dónde, cuándo (con la fuente del reloj), quién y cómo. Para los archivos exportados, añada un hash SHA-256, calculado con `hashlib.sha256(open(path, "rb").read()).hexdigest()`, para que cualquiera pueda confirmar que el archivo no ha cambiado. La entrada E-014 de Priya es el modelo: marca de tiempo 2026-03-03 10:22 con el reloj del portátil sincronizado por NTP, su nombre, la configuración del cortafuegos exportada desde la interfaz web de FW-1 como fw1-0303.txt y un hash SHA-256 registrado junto al archivo.
+
+El hash, que empieza por 9c1e…, permite a cualquiera confirmar más adelante que el archivo no ha cambiado desde esa entrada.
+
+### 9.2 Observación y conclusión
+
+«La regla 9 permite cualquier origen hacia TCP 502 en 10.20.0.0/24 (exportación del cortafuegos del 3 de marzo, hash registrado)» es una observación. «Un ransomware de la oficina podría llegar a los PLC» es una conclusión. Ambas pertenecen a un informe, etiquetadas. Los lectores confían en los informes que hacen visible la línea entre ellas. La entrada E-014 de Priya mantiene las dos en líneas separadas: la observación de que la regla 9 permite cualquier origen hacia TCP 502 en 10.20.0.0/24 y, en su propia línea, la conclusión de que los equipos de la oficina pueden llegar a los puertos Modbus de los PLC. Un lector que no esté de acuerdo con la conclusión puede seguir confiando en la observación y contrastarla con la exportación con hash.
+
+### 9.3 Denominadores
+
+«Cinco registradores tienen certificados caducados» significa poco sin «de 40». «Dos de 11 cuentas pertenecen a antiguos empleados» es más claro que «existen algunas cuentas de personas que se marcharon». Los porcentajes sin recuentos ocultan las muestras pequeñas. En NCS, los denominadores proceden de las propias tablas de Priya: 2 cuentas de antiguos empleados de 11 cuentas de la HMI, 1 certificado de registrador caducado de los 4 que comprueba el laboratorio del capítulo 22, 2 flujos no aprobados de 5 conversaciones vistas. Cada recuento dice al lector tanto el tamaño del problema como el tamaño de lo que se comprobó. Un informe que dijera «algunas cuentas pertenecen a personas que se marcharon» invitaría al lector a adivinar si eran 2 o 20.
+
+### 9.4 Incertidumbre
+
+Si comprobó 10 de 40 registradores y encontró 2 con contraseñas por defecto, la tasa de toda la flota es incierta. Diga: «2 de 10 muestreados; los 30 restantes todavía no se han comprobado». Evite extrapolar «el 20 % de la flota» salvo que la muestra fuera aleatoria y usted indique la incertidumbre. En NCS, la respuesta del proveedor de que cada registrador tiene una contraseña única impresa en su etiqueta es una afirmación sobre los 40; una muestra de 10 comprobada en el banco la pone a prueba. Si los 10 coinciden con la afirmación, escriba «10 de 10 muestreados la cumplían; 30 sin comprobar», no «la flota cumple 5.1».
+
+### Ejemplo resuelto (NCS sintética)
+
+Entrada del registro de evidencia de Priya: «E-014, 2026-03-03 10:22 (reloj del portátil sincronizado por NTP), Priya Nair, configuración del cortafuegos exportada desde la interfaz web de FW-1, archivo fw1-0303.txt, SHA-256 que empieza por 9c1e…, observación: la regla 9 permite any → 10.20.0.0/24 TCP 502; conclusión (en línea aparte): los equipos de la oficina pueden llegar a los puertos Modbus de los PLC».
+
+> **Caso sintético — Northgate Cold Storage.** Los identificadores de evidencia y los hashes son inventados.
+
+### 9.5 Cadena de custodia en un emplazamiento pequeño
+
+Los emplazamientos pequeños rara vez tienen armarios para evidencias. Un mínimo práctico en NCS es una carpeta cifrada por investigación, una copia de solo lectura de cada exportación original y un registro de custodia que enumere cada transferencia: quién entregó qué a quién, cuándo y por qué. Si el caso llega más tarde a una aseguradora o a la policía, ese registro es lo que demuestra que la evidencia no se alteró entre el cortafuegos y el informe. Guarde el registro con la evidencia, no en el correo electrónico de alguien.
+
+La exportación E-014 de Priya es la primera entrada de un registro así.
+
+### Errores y límites
+
+Los relojes de los dispositivos derivan; anote de qué reloj procede cada marca de tiempo. Un hash demuestra que un archivo no ha cambiado desde que se calculó, no que su contenido fuera verdadero.
+
+### Ejercicios — capítulo 9
+
+- **EX025 — ¿Observación o conclusión?** Etiquete: (a) «HMI-C tenía un servicio de escritorio compartido en ejecución a las 14:05»; (b) «la empresa contratista lo estaba usando». *Rúbrica:* 3 = observación, conclusión; 2 = con razonamiento débil; 1 = al revés; 0 = nada.
+- **EX026 — Reescribir con un denominador.** Reescriba «varios registradores necesitan certificados nuevos». *Rúbrica:* 3 = recuento sobre el total, con fecha; 2 = solo el recuento; 1 = solo el porcentaje; 0 = nada.
+- **EX027 — Informar de una muestra parcial.** Escriba la frase que informa de 2 registradores con contraseña por defecto entre 10 comprobados. *Rúbrica:* 3 = 2 de 10 muestreados, 30 sin comprobar, sin extrapolar; 2 = parcial; 1 = «el 20 % de la flota»; 0 = nada.
+
+### Síntesis del capítulo
+
+La evidencia se vuelve fiable cuando tiene marca de tiempo y hash, se cuenta frente a un denominador y se mantiene separada de la interpretación.
+
+### Siga estudiando — capítulo 09 de 30
+
+[← Capítulo 08 (borrador)](#ch-08) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 10 (borrador) →](../../en/book/MANUSCRIPT.md#ch-10)
 
 <a id="worked-results"></a>
 
@@ -363,6 +523,24 @@ Respuestas modelo para EX001–EX090. Northgate Cold Storage, Priya Nair y todas
 **EX017.** Cualquier persona o malware de la VLAN de la oficina que obtenga las credenciales de la consola puede detener, borrar o cifrar de una sola vez todas las VM del servidor anfitrión, incluida HIST.
 
 **EX018.** Restaurar la copia de seguridad en una VM conectada a una red de pruebas aislada sin ruta hacia producción, arrancarla, comprobar que el servicio del historiador funciona y que están los datos recientes, y después registrar la fecha, la duración y el resultado.
+
+**EX019.** Observador: el vigilante solo necesita leer temperaturas y alarmas, así que el mínimo privilegio excluye reconocer alarmas o cambiar puntos de consigna.
+
+**EX020.** (1) Cada ingeniero de la empresa contratista tiene una cuenta nominativa; no hay un inicio de sesión compartido de la empresa contratista. (2) Las cuentas están deshabilitadas por defecto. (3) Una cuenta solo se habilita para un ticket aprobado y una franja horaria fija, y la sesión se revisa después.
+
+**EX021.** MFA obligatoria: la sesión remota de la empresa contratista hacia la red de TO (y el inicio de sesión del proyecto en el portátil de ingeniería). Alternativa documentada: la consola HMI-C de la sala de control, protegida por una sala cerrada con llave y un tiempo corto de bloqueo de pantalla en lugar de una solicitud de MFA durante las alarmas.
+
+**EX022.** La zona de registro y cámaras (o una zona dedicada a las cámaras): las cámaras no tienen ninguna función en el control de la refrigeración y a menudo ejecutan firmware vulnerable, así que situarlas en la zona de control daría a un dispositivo débil una ruta directa hacia PLC-R1/R2.
+
+**EX023.** Zona de origen: control de refrigeración (HIST). Destino: DMZ (réplica del historiador). Protocolo: el servicio de replicación del historiador en su puerto TCP fijo. Iniciador: el lado de control. Propósito: proporcionar informes a la oficina sin que la oficina acceda a la zona de control.
+
+**EX024.** La lista de permitidos en HMI-C cubre el fallo del cortafuegos para detener un malware que llega por USB; las copias de seguridad sin conexión cubren el fallo de todas las capas preventivas cuando un ransomware cifra HIST.
+
+**EX025.** (a) Observación: un estado registrado en un momento dado. (b) Conclusión: es una inferencia; requiere registros de sesión o la confirmación de la empresa contratista.
+
+**EX026.** «El 12 de octubre, 2 de los 4 certificados de registradores de temperatura comprobados estaban caducados o vencían en menos de 30 días; los otros 36 registradores todavía no se han comprobado», usando el recuento real de la comprobación de certificados.
+
+**EX027.** «De 10 registradores comprobados el 4 de marzo, 2 seguían aceptando la contraseña por defecto del proveedor; los otros 30 registradores todavía no se han comprobado».
 
 <a id="references"></a>
 
