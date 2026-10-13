@@ -595,7 +595,7 @@ Code in the kernel can see and intercept activity that user programs cannot, inc
 
 A process is a running program with its own memory; threads are paths of execution inside it. Endpoint telemetry records process creation, parent process and command line, which detections use heavily.
 
-Parent–child relationships tell a story: a web server process starting a command shell is unusual and worth attention, while a user's desktop starting a browser is not. Command lines show what a process was asked to do. Detections that combine parent, child and arguments are far more precise than ones that look at a process name alone.
+Parent–child relationships tell a story: a web server process starting a command shell is unusual and worth attention, while a user's desktop starting a browser is not. Detections that combine parent, child and command-line arguments are far more precise than ones that look at a process name alone.
 
 ### 8.4 Caches and performance
 
@@ -1620,7 +1620,7 @@ For example, 'fast' becomes '95% of alerts created within 5 minutes of the trigg
 
 A table links each requirement to its source (threat, regulation, incident), the design element that meets it and the test that verifies it. ATT&CK technique IDs give a common reference for threat sources.
 
-The table works in both directions. Reading forward from a threat shows whether anything addresses it; reading backward from a test shows why it exists. When a regulation changes, the table shows which requirements and tests are affected. Using technique IDs means the security team and outside reports can refer to the same threat without ambiguity.
+The table works in both directions. Reading forward from a threat shows whether anything addresses it; reading backward from a test shows why it exists. Using technique IDs means the security team and outside reports can refer to the same threat without ambiguity.
 
 ### 21.6 Prioritisation
 
