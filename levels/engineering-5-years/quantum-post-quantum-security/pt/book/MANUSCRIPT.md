@@ -1,7 +1,7 @@
 # Segurança Quântica e Pós-Quântica: Engenharia de Sistemas Resistentes à Computação Quântica
 
 - Idioma: português do Brasil (`pt`); curso de engenharia, cinco anos; aproximadamente 4.000 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–40 de 50 já estão escritos em português, com os exercícios EX001–EX080 e suas resoluções; os capítulos 41–50 (EX081–EX100) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–50 de 50 têm texto didático escrito; os exercícios EX001–EX100 (dois por capítulo) têm as resoluções correspondentes; os laboratórios offline usam a biblioteca padrão do Python 3, com saídas verificadas. A revisão independente e a verificação de 300 páginas A4 continuam em aberto. Cobertura de capítulos em rascunho não é um livro concluído.
 - Público: futuros projetistas de sistemas de segurança que vão projetar, construir e validar sistemas que continuem seguros quando existirem grandes computadores quânticos. Conhecimento de entrada: cálculo, computação, redes e engenharia de sistemas no nível de conclusão do ensino médio ou do primeiro ano.
 - Relação com os livros vizinhos: os livros de [mestrado](../../../../masters-2-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) e de [doutorado](../../../../doctorate-2-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) desta área estudam empiricamente a implantação da PQC. **Este livro trata da engenharia da migração**: a matemática por trás dos esquemas de reticulados, de hash e de códigos, o inventário, os requisitos, a arquitetura híbrida PQ/T, a agilidade criptográfica, a implementação, a verificação, as operações e um projeto final.
 - Autoria: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -63,8 +63,16 @@ As fontes primárias foram verificadas em 12 de outubro de 2026: NIST FIPS 203/2
 38. [Segurança quântica e pós-quântica: validação](#ch-38)
 39. [Segurança quântica e pós-quântica: manutenibilidade](#ch-39)
 40. [Laboratório de verificação II](#ch-40)
-
-Capítulos 41–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-41), até a chegada dos próximos lotes.
+41. [Segurança quântica e pós-quântica: otimização de sistemas](#ch-41)
+42. [Segurança quântica e pós-quântica: pesquisa aplicada](#ch-42)
+43. [Prática na indústria ou no serviço público](#ch-43)
+44. [Projeto final de engenharia I](#ch-44)
+45. [Revisão independente de projeto](#ch-45)
+46. [Projeto final de engenharia II](#ch-46)
+47. [Ensaio de falha e recuperação](#ch-47)
+48. [Dossiê de evidências](#ch-48)
+49. [Trabalho de conclusão de engenharia](#ch-49)
+50. [Defesa final](#ch-50)
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -2931,16 +2939,696 @@ A verificação de segundo estágio confere as proteções a partir do ponto de 
 <!-- cyberabc:chapter-navigation:start ch-40 -->
 ### Continue estudando — capítulo 40 de 50
 
-[← Capítulo 39](#ch-39) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 41 (inglês) →](../../en/book/MANUSCRIPT.md#ch-41)
+[← Capítulo 39](#ch-39) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 41 →](#ch-41)
 
-Os próximos capítulos ainda estão apenas na edição em inglês.
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-41"></a>
+
+## Capítulo 41 — Segurança quântica e pós-quântica: otimização do sistema
+
+### Objetivos de aprendizagem
+
+Você vai (1) otimizar as escolhas de parâmetros e algoritmos ao longo de um sistema; (2) reduzir o custo adicional dos handshakes com retomada e cache; (3) equilibrar as categorias de segurança com o custo; e (4) priorizar o trabalho de migração restante para a máxima redução de risco. O capítulo parte dos Capítulos 6, 36 e 39.
+
+### 41.1 Escolhas de parâmetros
+
+O ML-KEM-768 (categoria 3) é o padrão comum para o TLS híbrido; o ML-KEM-1024, onde a política exige a categoria 5 (CNSA 2.0). O ML-DSA-44 versus o -65 troca tamanho por margem. Escolha por contexto, com justificativa documentada, e não "o máximo em todo lugar".
+
+Para a BPA, o ML-KEM-768 cabe no orçamento de 1.300 bytes e dá a categoria 3, o que convém aos seus dados. O ML-DSA-65 é usado nos conhecimentos de embarque, onde alguns kilobytes a mais por documento são irrelevantes, enquanto o ML-DSA-44 convém ao bootloader do guindaste, com a sua memória apertada. Cada escolha e o seu motivo são registrados no registro de decisões.
+
+### 41.2 Redução do custo adicional
+
+A retomada de sessão evita handshakes completos repetidos; a reutilização de conexões amortiza o custo dos certificados; a compressão de certificados ([RFC 8879](https://www.rfc-editor.org/rfc/rfc8879.html)) ajuda as cadeias clássicas, mas comprime mal as chaves e assinaturas pós-quânticas, de aparência aleatória; retirar os certificados intermediários onde os clientes os mantêm em cache reduz bytes.
+
+A compressão funciona nos certificados clássicos porque eles contêm estruturas repetidas; as chaves e assinaturas ML-DSA são quase aleatórias, então há pouco a remover. Para os navios da BPA, a retomada é a medida mais eficaz, porque cada navio se reconecta muitas vezes por dia e só precisa da cadeia completa na primeira conexão.
+
+### 41.3 Priorização pela redução de risco
+
+Com orçamento limitado, ordene o trabalho restante pela exposição reduzida por unidade de esforço: fluxos com dados de vida longa × volume ÷ esforço. Uma ordenação gulosa costuma bastar e é transparente.
+
+Por exemplo, um fluxo com dados aduaneiros de 25 anos, em alto volume, que precisa de uma única mudança de configuração pontua muito acima de um fluxo de baixo volume que exige a substituição de um equipamento. Publicar as pontuações permite que as partes interessadas vejam por que o seu sistema não é o primeiro. Refazer a ordenação após cada item concluído mantém a lista atual à medida que as estimativas de esforço mudam e surgem novos fluxos.
+
+### 41.4 Exemplo resolvido
+
+Os itens restantes da BPA: enlaces com navios (alto custo de latência das cadeias grandes; tempo de vida dos dados moderado), VPN legada (tempo de vida longo, custo de substituição do equipamento), telemetria interna (tempo de vida curto). Otimização: os enlaces com navios recebem apenas a troca de chaves híbrida (barata), com certificados clássicos e retomada ajustada; a VPN legada recebe a mistura de PSK agora e a substituição do equipamento no próximo ciclo orçamentário; a telemetria espera.
+
+A decisão sobre os navios decorre das medições de latência: a troca de chaves híbrida acrescenta pouco, enquanto uma cadeia pós-quântica acrescenta uma ida e volta de 600 milissegundos. Dividir a mudança dá proteção contra a coleta agora, sem esse custo.
+
+### 41.5 Erros comuns e limites
+
+- Categoria 5 em todo lugar sem necessidade.
+- Esperar que a compressão encolha as assinaturas PQC.
+- Priorizar pela facilidade em vez da exposição.
+
+A categoria 5 em todo lugar acrescenta bytes e computação para dados que não precisam dela, como a chave maior de 1.568 bytes do ML-KEM-1024 diante do orçamento de 1.300 bytes. A compressão ajuda as cadeias clássicas, mas não consegue encolher muito o material pós-quântico de aparência aleatória. Escolher o trabalho pela facilidade em vez da exposição deixa os fluxos aduaneiros de 25 anos esperando enquanto itens mais simples e de pouco valor são concluídos. A ordenação da BPA usa a exposição dividida pelo esforço para cada item e publica a lista, para que cada escolha possa ser questionada.
+
+### Nota de engenharia
+
+As decisões de otimização devem ser revisitadas quando as entradas mudam. Uma nova versão de navegador que suporte certificados pós-quânticos, uma atualização de firmware que corrija um middlebox ou uma data de política revista podem reordenar o trabalho restante. Mantenha a ordenação como uma pequena tabela sob controle de versão, com as hipóteses escritas ao lado de cada pontuação, e recalcule-a a cada revisão trimestral, em vez de tratar a primeira ordenação como um plano permanente.
+
+### 41.6 Otimização que não pode enfraquecer a segurança
+
+Reduzir o tamanho do handshake retirando certificados intermediários ou mantendo chaves em cache por mais tempo pode economizar milissegundos, mas cada mudança desse tipo é revisada diante do horizonte de confidencialidade da BPA. Uma otimização que encurta a latência, mas reintroduz um caminho somente clássico para os dados aduaneiros de 25 anos, é rejeitada, por maior que seja o ganho.
+
+Cada proposta de otimização declara, portanto, quais fluxos afeta e os tempos de vida dos seus dados. Os revisores verificam se a mudança poderia remover a parcela pós-quântica de algum desses fluxos, por exemplo ao habilitar um caminho de fallback. As propostas que só mexem em certificados de sessões de vida curta, como o ajuste da retomada para os navios, costumam passar rapidamente.
+
+### Exercícios
+
+- **EX081 — Ordenar.** Ordene cinco itens restantes da BPA por exposição ÷ esforço, com números declarados. Rubrica: 3 = método transparente e sensibilidade indicada.
+- **EX082 — Retomada.** Explique como a retomada muda o custo das cadeias PQC grandes para clientes recorrentes. Rubrica: 3 = correto, com a ressalva sobre as configurações de retomada e de sigilo futuro (forward secrecy).
+
+### Síntese
+
+A otimização do sistema escolhe os parâmetros por contexto, reduz o custo adicional repetido e ordena o trabalho restante pela exposição reduzida por unidade de esforço.
+
+<!-- cyberabc:chapter-navigation:start ch-41 -->
+### Continue estudando — capítulo 41 de 50
+
+[← Capítulo 40](#ch-40) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 42 →](#ch-42)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-42"></a>
+
+## Capítulo 42 — Segurança quântica e pós-quântica: pesquisa aplicada
+
+### Objetivos de aprendizagem
+
+Você vai (1) formular uma pergunta de pesquisa aplicada a partir do trabalho de engenharia; (2) projetar um pequeno estudo com resultados mensuráveis; (3) ler e avaliar criticamente a pesquisa em PQC; e (4) devolver os resultados à comunidade de forma responsável. O capítulo parte dos Capítulos 29, 36 e 38.
+
+### 42.1 Perguntas vindas da prática
+
+A engenharia levanta perguntas dignas de pesquisa: com que frequência os middleboxes tratam mal ClientHellos grandes num determinado setor? Qual é o tempo de substituição real para diferentes arquiteturas? Quão precisas são as ferramentas de inventário diante de uma verdade de referência adjudicada? Os livros de [mestrado](../../../../masters-2-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) e de [doutorado](../../../../doctorate-2-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) desta área desenvolvem esses estudos em profundidade.
+
+Perguntas como essas vêm de dados operacionais que a maioria das organizações já tem, como os logs de falhas de handshake e os registros de mudanças, então um estudo muitas vezes pode começar sem uma nova coleta de dados.
+
+### 42.2 Pequenos estudos
+
+Defina a pergunta, a população, as medições, a comparação e a análise antes de coletar os dados; use dados sintéticos ou autorizados; relate intervalos e limites. Uma monografia de engenharia (Capítulo 49) pode incluir um estudo assim.
+
+Fixar a análise de antemão evita escolher, depois de ver os dados, a comparação que dá o resultado mais interessante. Um estudo na BPA poderia perguntar se os handshakes híbridos falham mais num modelo de proxy do que em outro, tendo como população um mês de tráfego sintético reproduzido e relatando o resultado como uma diferença nas taxas de falha, com o seu intervalo de confiança. Os limites escritos declaram o que a reprodução não consegue representar, como a diversidade real dos clientes.
+
+### 42.3 Ler pesquisa
+
+Verifique o que os números de um artigo medem (configurado ou negociado? laboratório ou campo?), se as linhas de base são justas, se o código e os dados estão disponíveis e quão antigos são os resultados — a área anda rápido, e resultados sobre algoritmos em rascunho podem não se aplicar às normas finais.
+
+Um artigo que relata a adoção do híbrido com base nas configurações pode superestimar a proteção real, como a própria experiência da BPA com os números configurados e negociados mostrou. Resultados medidos no Kyber em rascunho podem diferir, em desempenho ou interoperabilidade, do ML-KEM final. Verificar se o código e os dados estão publicados diz ao leitor se o resultado pode ser reproduzido ou precisa ser aceito por confiança. Os engenheiros da BPA anotam esses pontos ao citar um artigo num registro de decisão.
+
+### 42.4 Devolver à comunidade
+
+Relate os bugs de interoperabilidade aos implementadores, publique resultados agregados anonimizados, contribua com vetores de teste e participe das discussões de normalização. Coordene a divulgação de vulnerabilidades.
+
+O relato da BPA sobre o problema do codepoint obsoleto aos mantenedores da biblioteca do parceiro ajudou outros usuários dessa biblioteca, e não só a BPA. As contribuições de vetores de teste melhoram todas as implementações que os executam. Antes de publicar números agregados, a equipe verifica que nenhum parceiro ou sistema possa ser identificado a partir deles. A participação nas discussões de normalização permite que os operadores levantem problemas práticos, como os limites de tamanho dos handshakes, enquanto os projetos ainda podem mudar.
+
+### 42.5 Exemplo resolvido
+
+Os engenheiros da BPA perguntam se a sua telemetria passiva subconta a negociação híbrida por causa das extensões cifradas do TLS 1.3. Um pequeno estudo compara as determinações dos logs do servidor e das capturas da rede em 1.000 sessões sintéticas no laboratório e encontra concordância quanto ao grupo de troca de chaves (visível em claro no ServerHello), mas não quanto aos algoritmos dos certificados (cifrados) — um resultado aplicado que muda o projeto da medição.
+
+O resultado explica por que o painel pode relatar a troca de chaves híbrida a partir de dados passivos, mas precisa usar a configuração para os algoritmos dos certificados, um limite declarado mais adiante nas orientações da monografia.
+
+### 42.6 Erros comuns e limites
+
+- Estudos projetados depois da coleta dos dados.
+- Aplicar resultados de algoritmos em rascunho às normas finais.
+- Publicar dados organizacionais identificáveis.
+
+Um estudo projetado depois de ver os dados tende a encontrar o que a equipe esperava encontrar, e é por isso que a pergunta e a análise são fixadas primeiro. Os resultados sobre algoritmos em rascunho podem enganar quando aplicados às normas finais, já que detalhes mudaram. Publicar dados identificáveis pode expor parceiros ou fraquezas; a BPA agrega e verifica cada número antes da divulgação, e um segundo engenheiro confirma que nenhum parceiro pode ser reconhecido nas tabelas publicadas.
+
+### Nota de engenharia
+
+Os estudos aplicados precisam respeitar as mesmas regras de autorização e minimização que as operações. Use dados sintéticos ou dados de sistemas que você está autorizado a estudar, minimize os identificadores na coleta, obtenha a aprovação do dono dos dados antes de publicar agregados e encaminhe qualquer fraqueza de produto pela divulgação coordenada. Essas restrições raramente enfraquecem um estudo de engenharia; geralmente elas afiam a sua pergunta para aquilo que a organização realmente precisa saber.
+
+### Exercícios
+
+- **EX083 — Pergunta.** Escreva uma pergunta de pesquisa aplicada a partir do seu próprio contexto de engenharia, com um plano de medição. Rubrica: 3 = mensurável e delimitada.
+- **EX084 — Verificação de artigo.** Aplique a lista de verificação de 42.3 a um artigo sobre desempenho de PQC à sua escolha. Rubrica: 3 = cada verificação respondida com evidências.
+
+### Síntese
+
+A pesquisa aplicada nasce de perguntas de engenharia, usa pequenos estudos planejados de antemão, lê a literatura criticamente e devolve resultados de forma responsável.
+
+<!-- cyberabc:chapter-navigation:start ch-42 -->
+### Continue estudando — capítulo 42 de 50
+
+[← Capítulo 41](#ch-41) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 43 →](#ch-43)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-43"></a>
+
+## Capítulo 43 — Prática na indústria ou no serviço público
+
+### Objetivos de aprendizagem
+
+Você vai (1) trabalhar, sob supervisão, numa equipe de migração com formato real; (2) aplicar práticas profissionais — controle de mudanças, documentação, comunicação com as partes interessadas; (3) refletir sobre as lacunas entre teoria e prática; e (4) produzir um relatório de estágio sem divulgar informações confidenciais. O capítulo inicia a etapa de prática e de projeto final.
+
+### 43.1 O estágio
+
+Um estágio numa equipe de segurança, num fornecedor, num órgão público ou numa organização de normalização expõe as realidades da migração: ciclos de compras, sistemas legados, política entre parceiros, congelamentos de mudanças. Neste livro, o estágio é simulado na BPA; num programa real, aplicam-se as regras de confidencialidade da instituição anfitriã.
+
+O estágio ensina o que a sala de aula não consegue: um congelamento de mudanças pode atrasar em um mês uma migração pronta, e a resposta de um fornecedor pode levar oito semanas. Os estudantes aprendem a planejar em torno desses atrasos, em vez de tratá-los como exceções.
+
+### 43.2 Prática profissional
+
+Siga o controle de mudanças: toda mudança criptográfica tem um chamado, uma avaliação de risco, evidências de teste, aprovação e um plano de reversão. Documente as decisões com a justificativa. Comunique o progresso na linguagem da instituição anfitriã — risco e impacto no serviço, e não nomes de algoritmos.
+
+Na prática, um chamado para ativar o grupo híbrido na API dos parceiros nomeia o serviço, a mudança, as evidências de teste do laboratório, o plano de canário e o comando de reversão. Relatar o progresso como "a replicação aduaneira agora está protegida contra a gravação" significa mais para os gestores do que "X25519MLKEM768 ativado". O estagiário escreve as duas versões para cada mudança.
+
+### 43.3 Teoria versus prática
+
+Surpresas comuns: o inventário é mais difícil do que a escolha dos algoritmos; as alegações de "pronto para PQC" dos fornecedores vão de roteiros a funcionalidades já entregues; os parceiros ditam o ritmo; os problemas mais difíceis são organizacionais. Registre-as como notas reflexivas.
+
+As notas de estágio da BPA mostram esse padrão: as decisões sobre algoritmos levaram dias, enquanto encontrar todos os usos do RSA levou meses. As alegações dos fornecedores precisaram ser conferidas com as versões efetivamente entregues. As notas reflexivas registram cada surpresa e o que o estudante planejaria de outra forma da próxima vez, que é o principal resultado de aprendizagem do estágio. Os estudantes comparam as suas notas com o plano que escreveram no início para ver onde as suas expectativas estavam erradas.
+
+### 43.4 Confidencialidade
+
+O relatório de estágio descreve métodos e lições sem identificar sistemas, vulnerabilidades ou parceiros. Use exemplos sintéticos onde for necessário e obtenha a aprovação da instituição anfitriã antes da entrega.
+
+Um relatório de estágio pode descrever o método do painel e a lição sobre os grupos "primeiro oferecido" sem nomear a biblioteca nem os sistemas da instituição anfitriã. Onde é preciso um exemplo concreto, o estudante usa o caso sintético da BPA. A aprovação da instituição anfitriã é uma etapa do processo de entrega, com data própria, para que o relatório não seja atrasado no último momento por um pedido inesperado de mudanças.
+
+### 43.5 Exemplo resolvido
+
+Um estagiário na BPA (sintético) constrói o painel de telemetria passiva. Lições registradas: uma biblioteca TLS registrava apenas o grupo "primeiro oferecido", e não o negociado — o painel esteve errado até ser corrigido; as declarações dos fornecedores dos equipamentos levaram oito semanas para serem obtidas; o comitê de mudanças exigiu um ensaio de reversão antes de aprovar o TLS híbrido na API dos parceiros.
+
+O erro de registro é uma constatação típica de estágio: o painel parecia plausível até o estudante compará-lo com as capturas da rede, o método depois formalizado na verificação do ponto de observação do atacante. A exigência do ensaio de reversão mostra que os comitês de mudanças se preocupam tanto com a recuperação quanto com a própria mudança.
+
+### 43.6 Erros comuns e limites
+
+- Contornar o controle de mudanças "porque é só configuração".
+- Relatórios que divulgam vulnerabilidades da instituição anfitriã.
+- Tratar os roteiros dos fornecedores como capacidade entregue.
+
+As mudanças de configuração podem quebrar a produção tanto quanto as mudanças de código, como mostrou o reset do proxy, então elas seguem o controle de mudanças. Relatórios que divulgam vulnerabilidades da instituição anfitriã podem prejudicá-la e violar o acordo de estágio. Os roteiros dos fornecedores descrevem intenções; só as funcionalidades entregues e testadas contam num plano de migração, e o estagiário registra no CBOM qual é qual, com a data da verificação.
+
+### Nota de engenharia
+
+Os estágios também ensinam como as decisões são realmente tomadas. Observe quem aprova as mudanças criptográficas, que evidências pedem, quais riscos aceitam e quais escalam. Registre essas observações sem nomes. Os estudantes que entendem o caminho das decisões escrevem projetos melhores no Projeto Final I, porque antecipam as perguntas do comitê de mudanças, do setor de compras e dos gestores de parceiros, em vez de descobri-las no fim.
+
+### Exercícios
+
+- **EX085 — Chamado de mudança.** Escreva um chamado de mudança para ativar o TLS híbrido num serviço interno. Rubrica: 3 = risco, testes, aprovação, reversão.
+- **EX086 — Reflexão.** Escreva uma reflexão de 300 palavras sobre uma lacuna entre teoria e prática. Rubrica: 3 = específica, analítica, confidencial.
+
+### Síntese
+
+A prática ensina que a migração é tanto organizacional quanto técnica; o controle de mudanças, a documentação e a confidencialidade são obrigações profissionais.
+
+<!-- cyberabc:chapter-navigation:start ch-43 -->
+### Continue estudando — capítulo 43 de 50
+
+[← Capítulo 42](#ch-42) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 44 →](#ch-44)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-44"></a>
+
+## Capítulo 44 — Projeto final de engenharia I
+
+### Objetivos de aprendizagem
+
+Você vai (1) delimitar o escopo de um projeto final de migração; (2) produzir os requisitos, a arquitetura e o plano; (3) construir um primeiro incremento; e (4) apresentar o progresso com evidências. O capítulo integra os Capítulos 20–43.
+
+### 44.1 Enunciado do projeto final
+
+Migre o ecossistema da BPA voltado aos parceiros — TLS de borda, VPNs com parceiros, assinaturas dos conhecimentos de embarque e exportações para a aduana — para o estabelecimento de chaves resistente à computação quântica e um caminho definido para as assinaturas, com agilidade criptográfica e medição, num programa de 18 meses. O Projeto Final I cobre do escopo até um primeiro incremento; o Projeto Final II (Capítulo 46) conclui e valida.
+
+A janela de 18 meses é deliberadamente mais curta que uma migração completa, então os estudantes precisam escolher um primeiro incremento significativo e mostrar como o restante decorre dele. Os sistemas voltados aos parceiros são escolhidos porque combinam os dados de vida mais longa com as dependências que ditam o ritmo.
+
+### 44.2 Entregáveis do Projeto Final I
+
+1. Declaração de escopo e mapa das partes interessadas.
+2. Requisitos com rastreabilidade (Capítulo 21).
+3. Modelo de ativos e fluxos e linha de base do CBOM (Capítulos 22, 29).
+4. Análise de ameaças e FMEA (Capítulo 23).
+5. Arquitetura com alternativas e decisões (Capítulos 25–27).
+6. Primeiro incremento: TLS híbrido na API dos parceiros num ambiente de teste, com medição.
+7. Plano para o Projeto Final II, com os riscos.
+
+Os entregáveis seguem a ordem dos capítulos anteriores do livro, então cada um se apoia num método já praticado. O primeiro incremento é o que mais importa, porque transforma planos em evidências: um ambiente de teste de TLS híbrido com medição mostra que a equipe consegue entregar, e os seus resultados alimentam o projeto do canário para a produção. O plano para o Projeto Final II lista explicitamente dependências como a compra do HSM.
+
+### 44.3 Avaliação
+
+Os avaliadores procuram a rastreabilidade dos requisitos ao projeto e aos testes, desconhecidos honestos no CBOM, um incremento funcionando com evidências e um plano cujas dependências estejam visíveis.
+
+Os avaliadores rastreiam pelo menos um requisito de ponta a ponta, da fonte, passando pela decisão de projeto, até o resultado do teste, e verificam que a parcela de desconhecidos do CBOM está relatada, e não escondida. Um plano cujo caminho crítico está visível recebe mais crédito do que um com mais funcionalidades, mas sem dependências mostradas. As entregas que declaram os limites com clareza são mais bem avaliadas do que as que alegam mais do que as suas evidências sustentam.
+
+### 44.4 Exemplo resolvido
+
+Uma entrega-modelo do Projeto Final I identifica 37 fluxos de vida longa expostos, escolhe a troca de chaves híbrida em todo o perímetro externo, adia a migração dos certificados públicos com justificativa, demonstra o incremento da API dos parceiros com 0 falhas em 20.000 conexões de laboratório (limite superior de 95% de 1,5 × 10^-4) e lista a compra do HSM como o caminho crítico.
+
+O limite superior vem da regra de três: três dividido por 20.000 conexões dá uma vez e meia em dez mil, o que fica dentro do orçamento de disponibilidade do REQ-AV-01. Nomear a compra do HSM como o caminho crítico mostra que a equipe entendeu o grafo de dependências do capítulo de integração, em que o HSM condicionava cinco pacotes de trabalho. O adiamento dos certificados públicos é aceito porque a justificativa cita o suporte dos navegadores e o argumento do ataque ativo.
+
+### 44.5 Erros comuns e limites
+
+- Escopo amplo demais para entregar um incremento.
+- Nenhuma medição de linha de base.
+- Planos sem dependências.
+
+Um escopo que cobre o porto inteiro não consegue entregar um incremento funcionando no tempo disponível, então a entrega vira um plano sem evidências. Sem uma medição de linha de base, o Projeto Final II não consegue mostrar melhora, como deixa claro a linha de base acordada no início. Os planos sem dependências deixam escapar itens de prazo longo, como os HSMs, que então atrasam vários pacotes de trabalho de uma vez. Os avaliadores verificam os três pontos na primeira semana, para que as equipes ainda possam corrigi-los.
+
+### Nota de engenharia
+
+Mantenha um registro de decisões desde o primeiro dia do projeto final. Cada entrada registra a data, a decisão, as alternativas consideradas, as evidências e quem concordou. O registro alimenta o capítulo de arquitetura da monografia, responde rapidamente às perguntas de "por quê" dos revisores e protege a equipe quando uma descoberta posterior faz uma decisão anterior parecer errada — ele mostra o que se sabia na época. Os examinadores avaliam consistentemente melhor os projetos finais com registros de decisões claros do que os que têm projetos polidos, mas sem explicação.
+
+### 44.6 Acordar a linha de base do projeto final
+
+O Projeto Final I começa registrando o estado inicial da BPA: quais enlaces usam troca de chaves híbrida, quais certificados se encadeiam a raízes clássicas e quais entradas do inventário ainda não foram verificadas. O progresso no Projeto Final II é medido contra essa linha de base, para que as alegações posteriores de melhora possam ser conferidas pelo avaliador.
+
+A linha de base é assinada pelo avaliador e guardada no dossiê antes de qualquer mudança. Ela usa os mesmos métodos de medição que o Projeto Final II vai usar, como a telemetria passiva para os grupos negociados, para que as diferenças reflitam mudanças reais, e não um método novo. As entradas desconhecidas são contadas explicitamente, já que reduzi-las é um dos objetivos do projeto final.
+
+### Exercícios
+
+- **EX087 — Escopo.** Escreva a declaração de escopo do projeto final, com o que está dentro e fora do escopo. Rubrica: 3 = incremento entregável, exclusões explícitas.
+- **EX088 — Evidências do incremento.** Defina o pacote de evidências do primeiro incremento. Rubrica: 3 = configuração, testes, medições, rastreabilidade.
+
+### Síntese
+
+O Projeto Final I prova que o estudante consegue delimitar, modelar, projetar e entregar um primeiro incremento medido de uma migração com formato real.
+
+<!-- cyberabc:chapter-navigation:start ch-44 -->
+### Continue estudando — capítulo 44 de 50
+
+[← Capítulo 43](#ch-43) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 45 →](#ch-45)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-45"></a>
+
+## Capítulo 45 — Revisão independente de projeto
+
+### Objetivos de aprendizagem
+
+Você vai (1) conduzir e receber uma revisão independente de projeto; (2) usar uma lista de verificação estruturada para projetos de PQC; (3) classificar as constatações por severidade; e (4) responder com mudanças ou com uma aceitação justificada. O capítulo examina o Projeto Final I antes do Projeto Final II.
+
+### 45.1 Método de revisão
+
+Revisores independentes da equipe de projeto leem os requisitos, a arquitetura, a análise de ameaças e as evidências e depois entrevistam a equipe. As constatações são escritas, classificadas (crítica, maior, menor, observação) e respondidas.
+
+Independência significa que os revisores não participaram do projeto e não se reportam ao seu líder. As entrevistas testam se a equipe entende os próprios documentos; um projeto que só um membro consegue explicar já é um risco em si. Cada constatação recebe uma resposta escrita: uma mudança ou uma aceitação fundamentada do risco, com um responsável. As constatações e as respostas, juntas, fazem parte do dossiê de evidências.
+
+### 45.2 Lista de verificação da revisão de PQC
+
+- Todos os usos de chave pública estão inventariados, com os desconhecidos relatados?
+- Os algoritmos e os conjuntos de parâmetros vêm das normas atuais (FIPS 203/204/205, SP 800-208), e as implementações da era dos rascunhos estão excluídas?
+- Os combinadores híbridos são padronizados e vinculados ao contexto?
+- A negociação é autenticada, e o fallback é registrado e datado?
+- As chaves de assinatura com estado estão protegidas contra a reutilização?
+- As âncoras de confiança de vida longa têm diversidade de algoritmos?
+- A agilidade é demonstrada (tempo de substituição), e não apenas alegada?
+- Os riscos de disponibilidade (tamanho, middleboxes, dispositivos) são testados?
+- Os riscos residuais são declarados com honestidade?
+
+Cada pergunta corresponde a um capítulo anterior, então uma constatação pode apontar o método que foi pulado.
+
+### 45.3 Severidade
+
+Crítica: uma falha de projeto que derrota o objetivo de segurança (por exemplo, um combinador XOR sem vínculo, chaves com estado em software com backups). Maior: lacuna significativa (sem monitoramento do fallback). Menor: documentação ou clareza. Observações: sugestões.
+
+A severidade orienta o que precisa ser corrigido antes de prosseguir: as constatações críticas bloqueiam o estágio seguinte, as maiores precisam de um plano com datas, as menores são corrigidas no curso normal. Definições claras mantêm os revisores coerentes, de modo que dois revisores que avaliam o mesmo problema cheguem ao mesmo nível. Uma constatação classificada como crítica precisa explicar como ela derrota o objetivo, o que impede que o rótulo seja usado apenas para dar ênfase.
+
+### 45.4 Exemplo resolvido
+
+Revisão do Projeto Final I modelo: uma constatação maior — as exportações para a aduana usariam apenas ML-KEM, sem componente tradicional e sem evidências de interoperabilidade da agência; resposta: acrescentar um destinatário RSA-OAEP paralelo durante a transição e agendar o teste da agência. Uma menor — fonte de evidência do CBOM ausente em 40 registros; corrigida.
+
+A constatação das exportações é maior, e não crítica, porque o ML-KEM sozinho não é inseguro, mas confiar nele sem um componente tradicional e sem os testes da agência arrisca tanto uma surpresa criptoanalítica quanto uma exportação ilegível. A resposta restaura a abordagem híbrida usada nos outros lugares e acrescenta um teste datado.
+
+### 45.5 Erros comuns e limites
+
+- Revisões feitas pela própria equipe de projeto.
+- Constatações sem severidade ou sem resposta.
+- Respostas defensivas em vez de mudanças ou de aceitação fundamentada.
+
+Uma equipe de projeto que revisa a si mesma compartilha os próprios pontos cegos, por isso revisores independentes são exigidos. Constatações sem severidade não podem ser priorizadas, e constatações sem resposta tendem a ser esquecidas. As respostas defensivas desperdiçam a revisão: ou se muda o projeto, ou se aceita o risco com motivos declarados e um responsável, como mostrou a constatação das exportações, com o seu teste datado da agência e o responsável nomeado.
+
+### Nota de engenharia
+
+Os revisores também devem confrontar o que a equipe de projeto mediu com o que ela alegou. Amostre três métricas do painel da equipe e recalcule-as a partir das evidências brutas; as divergências revelam desvios de definição ou bugs no pipeline. Uma revisão que só lê documentos pode deixar escapar que a métrica "negociada" é, na verdade, calculada a partir dos grupos oferecidos — exatamente o tipo de erro que faz um programa parecer mais adiantado do que está.
+
+### Exercícios
+
+- **EX089 — Revisão.** Revise o projeto de um colega (ou o modelo) com a lista de verificação e escreva três constatações com severidade. Rubrica: 3 = específicas, acionáveis, corretamente classificadas.
+- **EX090 — Resposta.** Escreva uma resposta a uma constatação maior aceitando o risco, com justificativa. Rubrica: 3 = responsável pelo risco, justificativa, data de revisão.
+
+### Síntese
+
+Uma revisão independente com uma lista de verificação específica de PQC e uma classificação de severidade detecta as falhas de projeto antes que se tornem implantações.
+
+<!-- cyberabc:chapter-navigation:start ch-45 -->
+### Continue estudando — capítulo 45 de 50
+
+[← Capítulo 44](#ch-44) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 46 →](#ch-46)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-46"></a>
+
+## Capítulo 46 — Projeto final de engenharia II
+
+### Objetivos de aprendizagem
+
+Você vai (1) concluir a implementação do projeto final em todos os domínios; (2) executar a verificação e a validação; (3) demonstrar a agilidade; e (4) preparar as evidências para o dossiê. O capítulo segue a revisão do Capítulo 45.
+
+### 46.1 Escopo do Projeto Final II
+
+Concluir a troca de chaves híbrida na borda e nas VPNs com parceiros (ou PSK provisória onde os equipamentos não têm suporte), os conhecimentos de embarque com assinatura dupla e carimbos de tempo, as exportações para a aduana com destinatário duplo, a cobertura do CBOM ≥ 95% com os desconhecidos relatados e uma demonstração de agilidade.
+
+Cada item continua um trabalho iniciado no Projeto Final I e é medido contra a sua linha de base. A meta de 95% de cobertura do CBOM coincide com o REQ-INV-01, então o projeto final testa o mesmo requisito que a produção. A demonstração de agilidade está incluída porque é o único item que mostra que o sistema pode mudar de novo depois que o projeto final termina.
+
+### 46.2 Verificação e validação
+
+Execute as suítes de testes dos Laboratórios de Verificação I e II contra o sistema concluído; colete a aceitação dos parceiros; produza a declaração de risco residual. Trate cada constatação da revisão com evidências.
+
+As suítes dos dois laboratórios de verificação são executadas sem alterações, para que os resultados possam ser comparados com as execuções anteriores. A aceitação dos parceiros é coletada por parceiro, com datas. A declaração de risco residual lista o que continua clássico e quando vai mudar. Cada constatação da revisão do Projeto Final I precisa de evidências da sua resolução; uma constatação aberta impede a conclusão, a menos que o risco seja aceito explicitamente pelo dono do programa.
+
+### 46.3 Demonstração de agilidade
+
+Demonstre a substituição de um algoritmo por política dentro do tempo-alvo — por exemplo, trocando o grupo híbrido preferido da borda de X25519MLKEM768 para SecP256r1MLKEM768 num cenário de conformidade e depois voltando, medindo o tempo de substituição e confirmando que a telemetria acompanha.
+
+Trocar e depois voltar prova que a mudança é reversível e que a telemetria a acompanha nas duas direções. O cronômetro começa no pedido de mudança de política e para quando a telemetria mostra o novo grupo negociado por todos os clientes que o suportam. Qualquer etapa manual necessária pelo caminho é registrada, porque cada uma é um ponto onde uma mudança real de emergência poderia travar.
+
+### 46.4 Exemplo resolvido
+
+Resultados-modelo: parcela híbrida na borda de 71%; VPNs — 9 de 14 parceiros com a troca de chaves adicional ML-KEM, 5 com mistura de PSK; conhecimentos de embarque com assinatura dupla desde o mês 14; exportações com destinatário duplo, aceitação da agência pendente; cobertura do CBOM de 96%, desconhecidos 4%; demonstração de agilidade: da mudança de política à negociação completa em 3 dias.
+
+Os números são coerentes com os estágios anteriores: a parcela híbrida na borda subiu de 64% para 71%, a cobertura do CBOM de 94% para 96%, e a divisão das VPNs corresponde à opção de PSK provisória da tabela de decisão para os equipamentos mais antigos. A aceitação da agência continua pendente e é relatada como tal.
+
+### 46.5 Erros comuns e limites
+
+- Declarar a conclusão com constatações da revisão não resolvidas.
+- Agilidade demonstrada apenas numa bancada de testes.
+- Risco residual omitido.
+
+Declarar a conclusão com constatações da revisão em aberto esconde problemas conhecidos das pessoas que vão operar o sistema. Uma demonstração de agilidade apenas numa bancada de testes não prova que o pipeline de produção consegue trocar de algoritmo, então ela é executada no ambiente réplica com a configuração de produção. Omitir o risco residual deixa as operações sem saber o que ainda precisa de atenção após a passagem. A passagem para as operações, mais adiante no projeto final, depende de os três pontos estarem corretos.
+
+### Nota de engenharia
+
+O Projeto Final II também é o momento de ensaiar a passagem. Escreva o runbook de operações, o procedimento de manutenção do CBOM e o procedimento de agilidade como se outra equipe fosse operar o sistema amanhã e depois peça a um colega que não trabalhou no projeto que execute uma tarefa de rotina — renovar a expiração de um fallback, acrescentar um parceiro, trocar o grupo preferido — usando apenas os documentos. Cada pergunta que ele fizer marca uma lacuna a fechar antes de o dossiê ser montado.
+
+### 46.6 Passar o projeto final às operações
+
+O pacote do Projeto Final II vai para a equipe de operações da BPA com as mudanças de configuração, as evidências de teste, as etapas de reversão e uma lista do que continua clássico e por quê. Um engenheiro de operações refaz a demonstração de agilidade sem o estudante presente; só quando essa repetição dá certo o projeto final conta como transferível, e não como um resultado de uma só pessoa, e qualquer etapa que tenha precisado da ajuda do estudante é reescrita.
+
+A repetição também testa as hipóteses do runbook, como direitos de acesso que o estudante tinha, mas que a equipe de operações não tem.
+
+### Exercícios
+
+- **EX091 — Plano da demonstração de agilidade.** Escreva o plano da demonstração de agilidade, com critérios de sucesso. Rubrica: 3 = eventos de início e fim, evidências da telemetria, reversão.
+- **EX092 — Fechamento das constatações.** Produza uma tabela de fechamento das constatações da revisão do Capítulo 45. Rubrica: 3 = cada constatação com evidências de fechamento ou risco aceito.
+
+### Síntese
+
+O Projeto Final II conclui a migração incremento a incremento, a verifica e valida, demonstra a agilidade e fecha as constatações da revisão com evidências.
+
+<!-- cyberabc:chapter-navigation:start ch-46 -->
+### Continue estudando — capítulo 46 de 50
+
+[← Capítulo 45](#ch-45) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 47 →](#ch-47)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-47"></a>
+
+## Capítulo 47 — Ensaio de falha e recuperação
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar e conduzir um ensaio de falha controlado; (2) recuperar-se de falhas criptográficas dentro dos objetivos; (3) medir o tempo de recuperação; e (4) melhorar os planos a partir dos resultados. O capítulo testa a resiliência projetada no Capítulo 33.
+
+### 47.1 Cenários do ensaio
+
+Num ambiente réplica isolado: (a) vulnerabilidade numa biblioteca PQC que exige correção emergencial e troca de chaves; (b) HSM de assinatura LMS restaurado a partir de um backup — confirmar a recusa em assinar até que o estado seja reconciliado; (c) quebra de algoritmo simulada: desativar o ML-DSA na política e mudar a assinatura dos conhecimentos de embarque para a alternativa; (d) atualização de um middlebox que descarta ClientHellos grandes num local.
+
+Os quatro cenários cobrem capacidades diferentes: a correção e a troca de chaves testam as operações; a restauração do HSM testa os controles de estado; a quebra de algoritmo testa a agilidade; a mudança no middlebox testa a resposta específica por caminho.
+
+### 47.2 Objetivos
+
+Defina os objetivos de tempo de recuperação: por exemplo, corrigir e trocar as chaves da borda em até 72 horas; trocar o algoritmo de assinatura em até 14 dias; exceção específica de caminho para o middlebox em até 2 horas. Meça os tempos reais.
+
+Os objetivos vêm dos requisitos e do risco: 72 horas para a troca de chaves da borda refletem a exposição de um serviço público, enquanto 14 dias para a troca da assinatura refletem a necessidade de os verificadores dos parceiros se atualizarem. Defini-los antes do ensaio dá sentido aos resultados; os objetivos escolhidos depois tendem a coincidir com o que quer que tenha acontecido e não ensinam nada sobre a prontidão.
+
+### 47.3 Conduzir o ensaio
+
+Instrua os participantes; injete as falhas; observe sem ajudar; registre os tempos, as decisões e os problemas; pare se a segurança física ou a produção estiver em risco (não deveria estar — apenas réplica).
+
+Os observadores não ajudam porque o objetivo é ver o que os runbooks e a equipe conseguem fazer sozinhos. Registrar as decisões, e não só os tempos, mostra onde as pessoas hesitaram ou improvisaram, o que muitas vezes revela uma etapa ausente no runbook. A regra de parada é declarada de antemão, mesmo sendo o ambiente uma réplica, para que os participantes saibam que ela existe e pratiquem o seu uso.
+
+### 47.4 Exemplo resolvido
+
+Resultados de um ensaio-modelo: (a) 41 horas; (b) o HSM recusou, mas o runbook não tinha as etapas de reconciliação — acrescentadas; (c) 19 dias, excedendo o objetivo porque os verificadores dos parceiros precisaram de atualizações — endpoints de teste para os parceiros acrescentados ao plano; (d) 35 minutos.
+
+Três dos quatro cenários cumpriram os objetivos: 41 horas contra 72, 35 minutos contra 2 horas e o HSM recusando corretamente a assinatura. A troca da assinatura levou 19 dias contra 14 porque os verificadores dos parceiros tiveram de ser atualizados, uma dependência que a agilidade dentro da BPA não consegue remover. Acrescentar endpoints de teste para os parceiros encurta esse caminho no próximo exercício.
+
+### 47.5 Erros comuns e limites
+
+- Ensaios em produção.
+- Objetivos definidos depois do ensaio.
+- Nenhuma ação de acompanhamento.
+
+Os ensaios em produção arriscam causar justamente os incidentes que pretendem ensaiar. Os objetivos definidos depois não conseguem mostrar se o desempenho foi bom o bastante. Sem ações de acompanhamento, o ensaio produz um relatório e nenhuma melhora; na BPA, cada lacuna, como as etapas de reconciliação ausentes, virou uma ação acompanhada e testada de novo. Um ensaio só conta como concluído quando cada ação tem um responsável, uma data e um novo teste planejado.
+
+### Nota de engenharia
+
+Os ensaios devem variar quem está de plantão. Uma recuperação que só funciona quando o projetista do sistema está presente não é uma capacidade de recuperação; conduza pelo menos um cenário só com a equipe de plantão e os projetistas observando em silêncio. Meça não apenas o tempo decorrido, mas também a qualidade das decisões: se a equipe consultou o CBOM, seguiu o runbook e se comunicou com os parceiros nos momentos certos. Essas observações geram as melhorias mais valiosas.
+
+### 47.6 Acompanhar as constatações do ensaio
+
+Cada lacuna encontrada no ensaio vira uma ação acompanhada: as etapas de reconciliação ausentes no runbook, os endpoints de teste para os parceiros e a implantação nos parceiros, mais lenta que o planejado, de 19 dias. O ensaio é repetido para os cenários que não cumpriram o objetivo, e os resultados da repetição são acrescentados ao dossiê de evidências ao lado dos originais, para que os leitores vejam tanto a falha quanto a correção.
+
+Manter os dois resultados também mostra aos avaliadores que a equipe corrigiu o que falhou. A repetição usa o mesmo cenário e o mesmo objetivo que o original, para que a melhora seja medida em pé de igualdade. Se a repetição ainda não cumprir o objetivo, a lacuna é relatada na declaração de risco residual, e não escondida.
+
+### Exercícios
+
+- **EX093 — Projeto do cenário.** Projete o cenário (c) em detalhe, com as injeções e os observadores. Rubrica: 3 = realista, mensurável, isolado.
+- **EX094 — Relatório pós-ação.** Escreva o relatório pós-ação do cenário (c). Rubrica: 3 = causa raiz, ações, responsáveis, datas.
+
+### Síntese
+
+Os ensaios de falha medem a capacidade real de recuperação contra os objetivos e transformam surpresas em melhorias do plano.
+
+<!-- cyberabc:chapter-navigation:start ch-47 -->
+### Continue estudando — capítulo 47 de 50
+
+[← Capítulo 46](#ch-46) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 48 →](#ch-48)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-48"></a>
+
+## Capítulo 48 — Dossiê de evidências
+
+### Objetivos de aprendizagem
+
+Você vai (1) montar um dossiê de evidências do sistema migrado; (2) ligar as evidências aos requisitos e às alegações; (3) proteger as evidências sensíveis; e (4) tornar o dossiê revisável por auditores e sucessores. O capítulo prepara a monografia e a defesa.
+
+### 48.1 Conteúdo
+
+Requisitos e matriz de rastreabilidade; arquitetura e registros de decisão; instantâneos do CBOM, com o método; análises de ameaças e FMEA; relatórios de teste (KATs, interoperabilidade, rebaixamento, estado); dados de medição (grupos negociados, falhas, latência); registros de validação e de aceitação; relatórios dos ensaios de falha; declaração de risco residual; resultados da demonstração de agilidade.
+
+Cada tipo de item responde a uma pergunta diferente do revisor: a matriz mostra o que foi exigido, os relatórios de teste mostram o que foi verificado, os dados de medição mostram o que aconteceu em operação e a declaração de risco residual mostra o que resta. Um revisor deve poder partir de qualquer alegação do resumo e chegar à sua evidência pelo índice.
+
+### 48.2 Ligar as alegações às evidências
+
+Toda alegação nos resumos tem um identificador de evidência. "Conexões de borda que negociam grupos híbridos: 71% (EV-MEAS-14, janela de 30 dias, telemetria passiva)". As alegações sem ligação são removidas.
+
+O identificador diz ao leitor onde está a evidência, a janela diz quando ela foi medida e a fonte diz como. Remover as alegações sem ligação pode encurtar um resumo, mas cada frase restante pode ser verificada. A amostra de dez alegações do auditor, no exemplo do dossiê, mostra como isso funciona na prática, com cada alegação rastreada em minutos.
+
+### 48.3 Proteger as evidências
+
+As evidências podem revelar fraquezas. Classifique as partes do dossiê; compartilhe as partes sensíveis (detalhes de vulnerabilidades, mapas de rede) apenas com revisores autorizados; publique apenas resumos sanitizados.
+
+Um mapa de rede que mostra quais fluxos ainda usam troca de chaves clássica é útil a um atacante que planeja gravar tráfego, por isso ele é classificado. Os resumos sanitizados substituem os nomes dos sistemas por categorias e dão totais em vez de listas. O acesso às partes classificadas é registrado, e o índice do dossiê mostra quais partes existem sem expor o seu conteúdo. A BPA revisa as classificações quando o dossiê é atualizado, já que uma lacuna fechada pode não precisar mais de proteção.
+
+### 48.4 Revisabilidade
+
+Use uma estrutura, um índice e um controle de versão consistentes. Um sucessor deve encontrar em minutos onde ficam as chaves ML-DSA e como substituí-las.
+
+O dossiê da BPA segue a mesma ordem dos capítulos de verificação deste livro, com um índice que liga cada identificador de evidência ao seu arquivo. O controle de versão mostra quando cada item mudou e quem o mudou. A primeira tarefa de um engenheiro novo é responder a três perguntas a partir do dossiê, como onde ficam as chaves ML-DSA, o que testa se a estrutura funciona.
+
+### 48.5 Exemplo resolvido
+
+O índice do dossiê da BPA lista 126 itens de evidência. Um auditor amostra dez alegações e rastreia cada uma até a evidência em menos de uma hora; uma alegação — "todo o firmware tem assinatura dupla" — se revela válida apenas para os dispositivos com o novo bootloader; a alegação é corrigida para "todas as imagens têm assinatura dupla; 40% dos dispositivos verificam as duas".
+
+A alegação corrigida é mais útil do que a original: ela diz às operações que 60% dos dispositivos ainda verificam apenas uma assinatura, o que é um risco residual real. Amostrar dez alegações em menos de uma hora também mostra que o dossiê é revisável, a propriedade que a parte anterior pedia.
+
+### 48.6 Erros comuns e limites
+
+- Alegações sem identificadores de evidência.
+- Dossiês com detalhes sensíveis amplamente compartilhados.
+- Evidências espalhadas por pastas pessoais.
+
+As alegações sem identificadores não podem ser verificadas e convidam ao exagero, como mostrou a alegação do firmware. Compartilhar amplamente as partes sensíveis entrega aos atacantes um mapa das fraquezas restantes. As evidências em pastas pessoais desaparecem quando as pessoas saem, e a próxima migração começa sem elas. A BPA mantém todas as evidências no repositório versionado, com controles de acesso, e o índice é verificado quanto a links quebrados e itens ausentes antes de cada auditoria.
+
+### Nota de engenharia
+
+Os dossiês também precisam de um responsável pela manutenção. As evidências envelhecem: as medições ficam desatualizadas, o status das normas muda, os parceiros se atualizam. Atribua um responsável, uma frequência de revisão e uma data de expiração a cada item de evidência, para que o dossiê continue sendo uma descrição verdadeira do sistema, e não um instantâneo da semana em que foi entregue. Os auditores confiam nos dossiês que mostram o próprio histórico de atualizações.
+
+### 48.7 Manter o dossiê atualizado
+
+O dossiê da BPA é versionado: cada atualização declara o que mudou, por que e quem aprovou. Quando uma norma é revista ou um fornecedor lança uma nova opção pós-quântica, as alegações afetadas são verificadas de novo e as suas evidências, renovadas, e os itens desatualizados são marcados em vez de removidos em silêncio.
+
+Um item desatualizado continua visível, com a sua data e o motivo da caducidade, para que um revisor consiga distinguir um sucesso antigo de um atual. Quando a FIPS 206 para o FN-DSA for final, por exemplo, a alegação de que o FN-DSA está excluído enquanto aguarda a normalização é revista, e o registro de decisões registra se a BPA passa a adotá-lo nos enlaces restritos.
+
+### Exercícios
+
+- **EX095 — Índice.** Esboce a estrutura do índice do dossiê. Rubrica: 3 = categorias, identificadores, classificação.
+- **EX096 — Auditoria de alegações.** Audite cinco alegações dos resultados do Capítulo 46 diante das necessidades de evidência. Rubrica: 3 = cada uma ligada ou corrigida.
+
+### Síntese
+
+Um dossiê de evidências liga cada alegação a evidências protegidas e indexadas, nas quais auditores e sucessores conseguem navegar.
+
+<!-- cyberabc:chapter-navigation:start ch-48 -->
+### Continue estudando — capítulo 48 de 50
+
+[← Capítulo 47](#ch-47) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 49 →](#ch-49)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-49"></a>
+
+## Capítulo 49 — Monografia de engenharia
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever uma monografia de engenharia que documente o projeto, a implementação e a validação; (2) apresentar os resultados com incerteza e limites; (3) generalizar as lições de forma responsável; e (4) cumprir os padrões de integridade acadêmica. O capítulo sintetiza o projeto final.
+
+### 49.1 Estrutura
+
+Introdução (problema, partes interessadas, contribuição); fundamentação (ameaça quântica, normas, híbridos, agilidade); requisitos; projeto e alternativas; implementação; verificação e validação; operações e ensaio de falha; discussão (lições, generalização, limites); conclusão e trabalhos futuros. Opcionalmente, inclua um estudo aplicado (Capítulo 42).
+
+A estrutura espelha o ciclo de vida da engenharia, para que os leitores encontrem cada parte onde a esperam. Os examinadores muitas vezes leem primeiro a discussão dos limites, então ela precisa declarar o que o trabalho não mostrou, como a migração dos certificados no portal público. O estudo opcional se encaixa naturalmente onde orienta uma escolha de projeto ou de medição, como a comparação da telemetria que mudou o painel da BPA.
+
+### 49.2 Resultados e limites
+
+Relate os resultados medidos com janelas e intervalos; declare os riscos residuais; descreva os limites com a sua direção (por exemplo, "a telemetria passiva não consegue ver os algoritmos dos certificados no TLS 1.3, então o status da migração dos certificados vem apenas da configuração").
+
+Declarar a direção de um limite diz aos leitores para que lado vai o erro: o status dos certificados obtido da configuração pode superestimar a migração, porque um certificado configurado pode não ser servido a todos os clientes. Os intervalos mostram quanto os números medidos poderiam variar. Uma monografia que relata os dois é mais fácil de confiar do que uma só com valores pontuais.
+
+### 49.3 Generalização
+
+Lições que se generalizam: o inventário primeiro; a troca de chaves híbrida cedo; a autenticação conforme a vida útil das âncoras de confiança; a agilidade medida; os parceiros ditam o ritmo. Lições que podem não se generalizar: taxas de falha específicas, comportamentos de fornecedores, a estrutura de dependências da BPA.
+
+Separar as duas listas ajuda os leitores de outras organizações a decidir o que aproveitar. Um hospital ou uma concessionária de serviços públicos pode aplicar diretamente o planejamento que começa pelo inventário e a agilidade medida, mas as suas taxas de falha e os seus problemas com fornecedores serão diferentes dos da BPA. A monografia diz quais lições dependem do contexto e o que precisaria ser verificado em outro lugar.
+
+### 49.4 Integridade
+
+Cite as normas e a pesquisa com precisão; distinga o seu trabalho do trabalho da equipe; rotule os dados sintéticos; não divulgue informações confidenciais da instituição anfitriã.
+
+Rotular os dados sintéticos protege os leitores de tratar os números da BPA como medições de um porto real. Distinguir o trabalho individual do trabalho da equipe importa num programa em que muitas pessoas contribuíram. Citar com precisão significa citar os números da norma, como a chave ML-KEM-768 de 1.184 bytes, e não o arredondamento de uma fonte secundária. As informações confidenciais da instituição anfitriã, como nomes de parceiros ou fraquezas não corrigidas, ficam fora da monografia, mesmo quando tornariam um exemplo mais vívido.
+
+### 49.5 Exemplo resolvido
+
+Um resumo-modelo de monografia: "Esta monografia projeta e valida uma migração resistente à computação quântica para o ecossistema de parceiros de uma autoridade portuária sintética. A troca de chaves híbrida X25519MLKEM768 chegou a 71% das conexões de borda sem exceder o orçamento de falhas; as VPNs com parceiros usaram trocas adicionais ML-KEM ou mistura provisória de chaves pré-compartilhadas; os conhecimentos de embarque receberam assinatura dupla com ML-DSA-65 e ECDSA, com renovação dos carimbos de tempo; um projeto orientado por política trocou o grupo híbrido preferido em três dias. Os certificados do portal público continuam clássicos; os riscos residuais e as lições generalizáveis são discutidos."
+
+O resumo declara um resultado por área.
+
+### 49.6 Erros comuns e limites
+
+- Generalizar em excesso a partir de uma organização.
+- Omitir os riscos residuais.
+- Dados sintéticos sem rótulo.
+
+A experiência de um porto não consegue estabelecer taxas de falha para todas as organizações, então as alegações precisam se limitar ao caso. Omitir os riscos residuais, como os certificados clássicos do portal, superestima o resultado. Dados sintéticos sem rótulo podem ser confundidos com medições de campo e citados em outros lugares como fatos. Cada um desses pontos é verificado pelo orientador antes da entrega, usando como referências a declaração de risco residual e os rótulos dos dados no dossiê de evidências.
+
+### Nota de engenharia
+
+Escreva a monografia de modo que um profissional de outra organização consiga reutilizá-la. Inclua como apêndices os modelos de requisitos, o esquema do CBOM, o formato da lista de permissões da política e os planos de teste, com exemplos sintéticos. Os artefatos reutilizáveis multiplicam o valor do trabalho e muitas vezes são o que os examinadores e os empregadores lembram. Mantenha fora os detalhes confidenciais e rotule cada número que vem do caso sintético da BPA.
+
+### Exercícios
+
+- **EX097 — Resumo.** Escreva o resumo da sua monografia (200 palavras). Rubrica: 3 = problema, método, resultados com números, limites.
+- **EX098 — Tabela de generalização.** Separe dez lições em "provavelmente gerais" e "específicas do contexto". Rubrica: 3 = classificação justificada.
+
+### Síntese
+
+A monografia registra um projeto validado, com resultados e limites honestos, e separa as lições gerais das locais.
+
+<!-- cyberabc:chapter-navigation:start ch-49 -->
+### Continue estudando — capítulo 49 de 50
+
+[← Capítulo 48](#ch-48) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 50 →](#ch-50)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-50"></a>
+
+## Capítulo 50 — Defesa final
+
+### Objetivos de aprendizagem
+
+Você vai (1) apresentar e defender a monografia de engenharia; (2) responder a perguntas técnicas, éticas e de gestão; (3) demonstrar o sistema ou as suas evidências; e (4) definir um plano futuro para a próxima mudança criptográfica do sistema. O capítulo conclui o curso.
+
+### 50.1 Apresentação
+
+Vinte minutos: problema e o que está em jogo; requisitos; arquitetura e decisões-chave; resultados com evidências; falhas e recuperação; risco residual; o que você faria de outro modo. Use diagramas com alternativas em texto.
+
+Vinte minutos é pouco, então cada parte recebe cerca de três minutos, com o maior cuidado dado aos resultados e ao risco residual. A pergunta final, o que você faria de outro modo, mostra reflexão e muitas vezes provoca a pergunta de acompanhamento mais útil da banca. As alternativas em texto para os diagramas ajudam os membros da banca que usam leitores de tela e obrigam o apresentador a dizer em palavras o ponto de cada diagrama.
+
+### 50.2 Perguntas prováveis
+
+- Por que híbrido em vez de PQC pura? (Proteção contra surpresas criptoanalíticas; citar Rainbow/SIKE; custo aceito.)
+- Por que os certificados do portal ainda são clássicos? (Os ataques quânticos ativos precisam de um CRQC no momento da conexão; suporte do ecossistema e tamanho; plano e gatilho para a mudança.)
+- Como você sabe que o fallback não é um caminho de rebaixamento? (Autenticação da transcrição; fallback registrado e datado; teste de rebaixamento no laboratório.)
+- O que acontece se o ML-KEM for quebrado? (O X25519 ainda protege contra atacantes clássicos; caminho de agilidade para uma alternativa como o HQC, quando for padronizado; tempo de substituição medido.)
+- O que você faria com o dobro do orçamento? (Priorizar por exposição ÷ esforço.)
+
+### 50.3 Demonstração
+
+Mostre o painel, uma mudança de algoritmo orientada por política no ambiente réplica e o rastreamento de uma alegação no dossiê.
+
+Cada parte da demonstração sustenta uma alegação diferente: o painel mostra a medição em operação, a mudança de política mostra a agilidade e o rastreamento no dossiê mostra que os resultados se apoiam em evidências. Executá-la no ambiente réplica evita qualquer risco para os serviços da BPA. O apresentador ensaia cada etapa com um cronômetro e tem capturas de tela prontas caso o ambiente falhe durante a defesa.
+
+### 50.4 Plano futuro
+
+A agilidade é o legado: agende a reverificação das normas (FN-DSA, HQC, IR 8547 revisado), exercícios de mesa anuais de quebra de algoritmo, a automação da atualização do CBOM e revisões com os parceiros.
+
+Cada item tem um responsável e uma data, para que o plano sobreviva ao fim do programa. Reverificar as normas detecta mudanças como uma norma final do FN-DSA ou a publicação do HQC, que acrescentariam opções para a BPA. Os exercícios de mesa anuais mantêm atualizado o número do tempo de substituição, enquanto as revisões com os parceiros acompanham os caminhos clássicos restantes rumo às suas datas de desativação e sinalizam qualquer atraso.
+
+### 50.5 Erros comuns e limites
+
+- Alegar que a organização é "segura contra a computação quântica".
+- Nenhuma resposta para o comprometimento de um algoritmo.
+- Demonstrações que dependem dos sistemas de produção.
+
+Alegar ser "seguro contra a computação quântica" convida a banca a listar os certificados clássicos e os ativos desconhecidos que restam. Sem uma resposta para o comprometimento de um algoritmo, o trabalho de agilidade não tem propósito visível. Uma demonstração que precisa dos sistemas de produção arrisca uma interrupção durante a defesa e não pode ser repetida depois pelos revisores; o ambiente réplica evita os dois problemas. Os candidatos que preparam respostas honestas sobre esses pontos costumam achar mais fáceis as perguntas da banca.
+
+### Nota de engenharia
+
+Depois da defesa, entregue o sistema aos seus donos com uma carta curta que declare o que foi alcançado, o que resta, as datas das próximas expirações e revisões e como contatar as pessoas que conhecem o projeto. A prontidão quântica depende mais da continuidade do que de qualquer engenheiro individual, então o ato final do curso é garantir que a capacidade sobreviva ao fim do projeto e que a próxima mudança de algoritmo encontre uma equipe preparada.
+
+### Exercícios
+
+- **EX099 — Respostas da defesa.** Escreva respostas às cinco perguntas de 50.2 para o seu próprio projeto final. Rubrica: 3 = baseadas em evidências, delimitadas.
+- **EX100 — Plano futuro.** Escreva o plano futuro de dois anos para a criptografia da BPA após o projeto final. Rubrica: 3 = reverificação, exercícios de mesa, inventário, marcos com os parceiros.
+
+### Síntese
+
+A defesa mostra uma migração validada, medida e ágil, responde a perguntas difíceis com evidências e deixa um plano para a próxima mudança — porque a prontidão quântica é uma capacidade, não uma linha de chegada.
+
+<!-- cyberabc:chapter-navigation:start ch-50 -->
+### Continue estudando — capítulo 50 de 50
+
+[← Capítulo 49](#ch-49) · [Índice de capítulos do curso](../SUBJECTS.md) · [Resoluções →](#worked-results)
+
+Siga para a próxima lição escrita.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo; qualquer resposta que atenda à rubrica recebe a mesma pontuação. Os números sobre a BPA são sintéticos. Esta edição parcial traz as resoluções de EX001–EX080; as de EX081–EX100 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
+Respostas-modelo; qualquer resposta que atenda à rubrica recebe a mesma pontuação. Os números sobre a BPA são sintéticos.
 
 **EX001.** log₂(10^30) = 30 × 3,32 ≈ 99,7 → cerca de 100 bits. log₂(2^100 × 10^6) = 100 + 19,9 ≈ 120 bits.
 
@@ -3101,6 +3789,46 @@ Respostas-modelo; qualquer resposta que atenda à rubrica recebe a mesma pontua�
 **EX079.** Laboratório isolado com proxy MITM; remover os grupos híbridos; esperar falha do handshake ou nova tentativa registrada e permitida pela política; reprovar se ocorrer uma conexão silenciosa somente clássica onde a política a proíbe.
 
 **EX080.** Restaurar o backup do HSM → assinatura recusada até a reconciliação; 100 pedidos simultâneos → todos os índices únicos; esgotar a árvore de teste → recusa limpa e alerta.
+
+**EX081.** Por exemplo, VPN legada (exposição 9, esforço 3 → 3,0), exportações para a aduana (8, 2 → 4,0), enlaces com navios (4, 2 → 2,0), replicação do banco de dados interno (6, 1 → 6,0), telemetria (1, 1 → 1,0): ordem replicação, exportações, VPN, navios, telemetria.
+
+**EX082.** A retomada dispensa a transmissão dos certificados para clientes recorrentes, removendo a maior parte dos bytes da cadeia PQ; mantenha a retomada com troca de chaves (EC)DHE/híbrida para preservar o sigilo futuro.
+
+**EX083.** Por exemplo, "Nos nossos 300 serviços, que parcela dos clientes com capacidade híbrida recorre a grupos clássicos, e por quê?", com janela de telemetria e categorias.
+
+**EX084.** Responde a cada verificação: grandeza medida, linha de base, disponibilidade do código/dados, data e versões dos algoritmos.
+
+**EX085.** Chamado: serviço, mudança (ativar X25519MLKEM768), risco (middlebox), testes (matriz de interoperabilidade), aprovação, reversão (reverter a política), monitoramento.
+
+**EX086.** Uma reflexão analítica de 300 palavras sobre, por exemplo, a lacuna entre o marketing de "pronto para PQC" e as funcionalidades entregues.
+
+**EX087.** Dentro do escopo: incremento de TLS híbrido na API dos parceiros, linha de base do CBOM, requisitos, arquitetura; fora: certificados públicos, telemetria interna, renovação de dispositivos.
+
+**EX088.** Arquivos de configuração, resultados de interoperabilidade, medição de laboratório com 20.000 conexões e o seu limite, links de rastreabilidade, teste de reversão.
+
+**EX089.** Constatações como "fallback sem data (maior)", "fonte de evidência do CBOM ausente (menor)", "bootloader de chave única (crítica para dispositivos de vida longa)".
+
+**EX090.** Aceitar os certificados clássicos do portal: responsável pelo risco, o CISO; justificativa (nenhum ataque quântico ativo é possível hoje; ecossistema); revisão anual ou mediante gatilho.
+
+**EX091.** Trocar o grupo preferido por política, medir até 99% de negociação, confirmar a telemetria e a reversão; sucesso se em até 7 dias, sem violar o orçamento de falhas.
+
+**EX092.** Tabela das constatações com evidências de fechamento (exportações com destinatário duplo, fontes do CBOM acrescentadas) ou riscos aceitos, com responsáveis.
+
+**EX093.** Injeção: "ataque prático contra o ML-DSA-65 publicado"; os observadores cronometram a consulta ao CBOM, a decisão, a mudança de política e os avisos aos parceiros; apenas réplica isolada.
+
+**EX094.** Causa raiz da troca em 19 dias: os verificadores dos parceiros; ações: endpoints de teste para os parceiros, algoritmo alternativo previamente acordado, responsáveis e datas.
+
+**EX095.** Seções: requisitos, projeto, inventário, testes, medições, validação, ensaios, risco; IDs EV-REQ-nn etc.; classificação por item.
+
+**EX096.** "71% híbrido" → EV-MEAS; "9 de 14 parceiros" → EV-VAL; "agilidade em 3 dias" → EV-AGIL; "todo o firmware tem assinatura dupla" → corrigida para imagens vs. dispositivos; "CBOM 96%" → EV-INV.
+
+**EX097.** Um resumo de 200 palavras com problema, método, resultados numéricos e limites, por exemplo como em 49.5.
+
+**EX098.** Gerais: o inventário primeiro, híbridos cedo, diversidade das âncoras de confiança, agilidade medida, ritmo ditado pelos parceiros. Específicas: taxas de falha, prazos dos fornecedores, grafo de dependências da BPA, números de latência, escolhas de PSK.
+
+**EX099.** Respostas baseadas em evidências às perguntas de 50.2, citando o dossiê.
+
+**EX100.** Ano 1: reverificar o status do FN-DSA/HQC/IR 8547, automação do CBOM, exercício de mesa; ano 2: decisão sobre os certificados do portal, substituições restantes das VPNs, marcos com os parceiros, segundo exercício de mesa.
 
 <a id="references"></a>
 

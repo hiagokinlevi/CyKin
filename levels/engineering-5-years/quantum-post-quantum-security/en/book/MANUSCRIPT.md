@@ -3296,7 +3296,7 @@ Labelling synthetic data protects readers from treating BPA's figures as measure
 
 ### 49.5 Worked example
 
-A model thesis abstract: "This thesis designs and validates a quantum-resistant migration for a synthetic port authority's partner ecosystem. Hybrid X25519MLKEM768 key exchange reached 71% of edge connections without exceeding the failure budget; partner VPNs used ML-KEM additional exchanges or interim pre-shared-key mixing; bills of lading were dual-signed with ML-DSA-65 and ECDSA with timestamp renewal; a policy-driven design replaced a KEM in three days. Certificates on the public portal remain classical; residual risks and generalizable lessons are discussed."
+A model thesis abstract: "This thesis designs and validates a quantum-resistant migration for a synthetic port authority's partner ecosystem. Hybrid X25519MLKEM768 key exchange reached 71% of edge connections without exceeding the failure budget; partner VPNs used ML-KEM additional exchanges or interim pre-shared-key mixing; bills of lading were dual-signed with ML-DSA-65 and ECDSA with timestamp renewal; a policy-driven design switched the preferred hybrid group in three days. Certificates on the public portal remain classical; residual risks and generalizable lessons are discussed."
 
 The abstract states one result per area.
 
