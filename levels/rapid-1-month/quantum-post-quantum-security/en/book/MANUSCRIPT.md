@@ -52,9 +52,13 @@ Ordinary computers use bits that are 0 or 1. Quantum computers use *qubits*, whi
 
 If a large, reliable quantum computer were built, it could work out the secret keys behind RSA and elliptic-curve cryptography. That would let an attacker read traffic protected by those methods and forge signatures. Symmetric encryption such as AES-256 and fingerprints (hashes) such as SHA-256 would remain strong. So the problem is specific: the "agree a secret" and "sign" parts of today's systems need replacing; the bulk encryption does not.
 
+For Bluebird Bakery Online this means the card payments, the online shop's connections and the staff portal logins could all be affected one day, because they rely on agreeing keys and on signatures. The files themselves, once encrypted with AES, would stay safe. That is why the bakery's later actions focus on providers' key-agreement and signature plans rather than on its stored files.
+
 ### 1.4 Two kinds of risk with different timing
 
 *Harvest now, decrypt later*: someone records scrambled traffic today, stores it, and unlocks it years later once a quantum computer exists. This only matters for information that must stay private for many years — medical details, contracts, identity documents, payroll. *Forge later*: once a quantum computer exists, someone could fake digital seals — for example, a fake software update. This matters most for things that must be trusted for a long time.
+
+At the bakery, payroll files and customer accounts are the information most exposed to the first risk, because they must stay private for many years. The second risk matters for things like software updates on the tills or the oven controller, which rely on signatures to prove they are genuine. Order confirmations are useful only for months, so neither risk matters much for them.
 
 ### 1.5 The new standards
 
@@ -91,9 +95,13 @@ With a guess of ten years, customer accounts and payroll files would be at risk;
 
 Priya asks: "Should I buy a 'quantum-proof' security box I saw advertised?" Answer: "No. There is no such thing as 'quantum-proof', and the protection that matters for us comes from the software our providers run. The new standards are already appearing in browsers and web services. Our job is to keep devices updated, use reputable providers and ask the ones holding customer and payroll data about their post-quantum plans."
 
+Notice what the answer avoids: it does not promise the bakery is safe, and it does not suggest spending money now. It names the two kinds of data that matter most and the people who control them. A good first decision for a small organization is usually about asking the right questions of providers, not about buying equipment.
+
 ### 1.9 Practice activities
 
 1. Write a three-sentence explanation of quantum risk for a friend who is not technical. 2. Find one news article about quantum computers and underline any claim that sounds exaggerated. 3. Re-run Lab M in your head with *z* = 8: which items would be at risk?
+
+For the first activity, test your explanation on the friend and note any word they did not understand. For the second, compare the article's claims with what you learned here: does it say all encryption breaks, or give one firm date? For the third, check each item by adding its two numbers and comparing the total with 8.
 
 ### 1.10 Common mistakes
 
@@ -101,6 +109,8 @@ Priya asks: "Should I buy a 'quantum-proof' security box I saw advertised?" Answ
 - Quoting a single date for when quantum computers will arrive.
 - Buying products marketed as "quantum-proof".
 - Treating draft dates as final rules.
+
+Each mistake has a short correction. Say which methods are at risk: key agreement and signatures, not bulk encryption. Give ranges for timing, and say they are guesses. Ask what a product actually does instead of trusting a label. And when you mention the 2030 and 2035 dates, say they come from a draft.
 
 ### Exercises
 
@@ -146,25 +156,37 @@ A scope answers five questions: *What* systems may I look at? *How* may I look (
 
 To understand quantum readiness, you need facts such as which provider runs a service, which security settings or versions it uses, and how long data must be kept. You do not need customers' names, card numbers, passwords or message contents. Writing down less is safer: if your notes are lost, nothing sensitive leaks.
 
+At the bakery, a useful note might read: online shop, run by the web-shop provider, customer accounts kept about ten years. It would not include any customer's name or address. If you need an example to explain something, make one up rather than copying real data.
+
 ### 2.4 Responsible handling
 
 If you come across something sensitive or worrying — a password written on a sticky note, a shared folder open to everyone, an alert from a provider — do not explore further. Tell the owner (Priya) straight away and suggest contacting the provider. Never try to "test" whether a found password works. If you think you have found a weakness in a company's product, tell the company privately; do not post about it publicly.
+
+Write down what you saw, where and when, without copying the sensitive item itself. A note such as sticky note with a password on the office monitor, 9 October, reported to Priya is enough. The owner and the provider decide what happens next; your job is to tell them quickly and to stop there.
 
 ### 2.5 Unsafe experiments
 
 Some online guides show how to force a connection to use older, weaker settings ("downgrade") or how to capture other people's network traffic. These are only appropriate in isolated labs run by trained professionals with permission. In this course, labs run entirely on your own computer with made-up data.
 
+If you see such a guide, you can still learn from reading it, but do not follow its steps on any network you use, including the bakery's Wi-Fi. If a classmate or friend suggests trying one, explain that it could break other people's connections and that permission from the network owner is needed first.
+
 ### 2.6 Reporting clearly
 
 A good note says: what you looked at, when, how, what you found, why it matters and what you suggest. Example: "8 October, bakery account page of the email provider (read only): the provider's help page says connections use modern TLS and lists post-quantum key exchange as 'rolling out'. Matters because staff emails include payroll attachments. Suggest: ask the provider for a date."
+
+Short notes are easier to act on than long ones. Write each note on the day you make the observation, and keep the date and source with it. If you later learn something that changes the note, add a dated correction rather than editing the original, so that Priya can see what was known when.
 
 ### 2.7 Worked example
 
 A classmate says: "Let's scan the shopping centre's Wi-Fi to see whose devices are quantum-vulnerable." The safe answer: "We don't have permission and it could expose other people's data. Instead, let's look at our own phones' settings and read the Wi-Fi provider's public documentation."
 
+The answer refuses politely and offers a safe alternative that still teaches something. It also explains why: other people's data and the lack of permission. If the classmate insists, the right move is to stop and talk to a teacher or the venue's owner rather than argue.
+
 ### 2.8 Practice activities
 
 1. Write a scope for reviewing your own home router's settings. 2. List three pieces of information you would *not* write down during a review. 3. Rewrite a vague note ("email is fine I think") into a clear one.
+
+For the first activity, use the five scope questions from earlier in this chapter. For the second, think of things that would cause harm if your notes were lost. For the third, add what, when, how and the source to the vague note, and remove the words I think.
 
 ### 2.9 Common mistakes
 
@@ -172,6 +194,8 @@ A classmate says: "Let's scan the shopping centre's Wi-Fi to see whose devices a
 - Writing down passwords or customer details.
 - Investigating further after finding something sensitive.
 - Posting about weaknesses publicly before the owner can fix them.
+
+Each mistake has a simple correction. Public means anyone may visit, not that anyone may test. Notes should hold facts about settings and providers, never secrets. Finding something sensitive is the signal to stop and tell the owner. And weaknesses are reported privately so the owner can fix them first.
 
 ### Exercises
 
@@ -209,21 +233,31 @@ You will (1) list the services a small organization depends on; (2) note what da
 
 Start with what the business uses every day: the online shop, card payments, email, the staff portal, supplier file transfers, office Wi-Fi, the shop tills and any connected equipment such as an oven controller. Write each down with a one-line description.
 
+Include things that are easy to forget because they just work: the office router, the card readers at the tills, and the cloud drive where Priya keeps receipts. For each service write who provides it and what it is for. A list made in ten minutes with Priya is a good start; it can be corrected later.
+
 ### 3.2 Data and lifetimes
 
 For each service, note the kind of data it handles and how long that data must stay private. At BBO: customer accounts (names, addresses, order history; kept about ten years for tax and loyalty records); payroll files (twelve years); supplier contracts (seven years); order confirmations (useful for months). Long lifetimes mean harvest-now-decrypt-later matters more.
+
+Ask Priya or her accountant how long each kind of record must be kept, rather than guessing. Write the lifetime in years next to each service, as Lab M uses them. These numbers drive the priorities later in this chapter, so a wrong lifetime can push an important service down the list.
 
 ### 3.3 Who controls security
 
 Small organizations rarely run their own servers. The web-shop provider controls the shop's connections; the payment company controls card security; the email provider controls email; the router maker controls Wi-Fi equipment updates. BBO controls choices like which providers to use, keeping devices updated, and asking questions. Writing down the controller tells you whom to ask.
 
+For each service on the list, add one line: who controls its security, and how to contact them. At the bakery most entries name a provider, which means the main action is asking them questions. Where Priya does control something, such as updating the office router, note that too.
+
 ### 3.4 Recording facts with their source
 
 Each fact should say where it came from: "Provider help page, 8 October", "Router settings page, version 2.1", "Asked Priya". Facts from documentation are less certain than facts you observed directly, such as your browser showing the connection details.
 
+At the bakery, the online shop's hybrid key exchange was seen in your own browser's connection details, which is stronger evidence than a help page. The email provider's statement that post-quantum key exchange is rolling out is a claim from documentation and should be checked again later. Write the date beside each source, because pages change.
+
 ### 3.5 Unknowns are questions
 
 If you do not know something — which security settings the oven controller uses — write "unknown" and turn it into a question for the right person. Unknown is not the same as safe.
+
+Write each question to the person who can answer it: the oven-controller maker for its connections, the payroll provider for its post-quantum plans. Note when you sent the question and when you expect an answer. When an answer arrives, replace the unknown with the fact and its source.
 
 ### 3.6 Practical activity — Lab J
 
@@ -253,19 +287,27 @@ office    hybrid=1 classical=0 unknown=0
 shop      hybrid=1 classical=1 unknown=0
 ```
 
-The bakery's oven controller has no recorded information, so it shows as unknown. The till at the shop uses an older classical method. The web servers at the shop and office already use hybrid protection, probably because their provider updated them.
+The bakery's oven controller has no recorded information, so it shows as unknown. The till at the shop and the web server at the bakery use older classical methods. The web servers at the shop and office already use hybrid protection, probably because their provider updated them.
+
+Lab J groups made-up connection records by site and counts each kind. A record with no group is counted as unknown, not as safe. Run it and check that your output matches; then change one entry to see how the counts move.
 
 ### 3.7 Choosing priorities
 
 Combine lifetimes and control. First: services holding long-lived data that BBO can influence — ask the payroll and email providers about their post-quantum plans and keep accounts updated. Next: services with unknowns — ask the oven-controller maker. Last: short-lived data such as order confirmations.
 
+Write the priorities as a short numbered list with an owner for each item, usually Priya, and a date to check back. Payroll and email come first because their data lasts longest and the bakery can ask their providers directly. The list should fit on one page.
+
 ### 3.8 Worked example
 
 BBO's list (synthetic): online shop (provider; customer accounts 10 years; provider documentation says hybrid key exchange enabled); payroll service (provider; 12 years; unknown — ask); email (provider; payroll attachments; "rolling out" — ask for date); supplier file transfer (provider; contracts 7 years; classical — ask); oven controller (manufacturer; no personal data; unknown — ask about updates). Priorities: payroll and email questions first.
 
+The list mixes facts and unknowns, and each unknown ends with ask, which turns it into a task. It also records where each fact came from, such as provider documentation for the online shop. Priya can read it in two minutes and see what to do first.
+
 ### 3.9 Practice activities
 
 1. List the services your household or a club you belong to depends on. 2. For each, write the data held, lifetime and controller. 3. Turn two unknowns into questions.
+
+Use the same columns as the bakery list: service, data held, lifetime, who controls it. For the unknowns, write a question addressed to a named person or company. Keep the result private if it includes information about other people.  Ask someone in the household or club to check your lifetimes, since they may know rules you do not.
 
 ### 3.10 Common mistakes
 
@@ -273,6 +315,8 @@ BBO's list (synthetic): online shop (provider; customer accounts 10 years; provi
 - Treating unknown as safe.
 - Writing facts without sources.
 - Assuming the provider has it handled without asking.
+
+Each mistake has a simple remedy. Walk round the premises to find equipment such as tills and controllers. Write unknown and add a question. Put a source and date beside every fact. And ask providers directly; a short email is cheap and the answer is useful.  Review the list with the owner once a year, or when a provider changes.
 
 ### Exercises
 
@@ -282,7 +326,7 @@ BBO's list (synthetic): online shop (provider; customer accounts 10 years; provi
 - **EX030 — Source.** Rewrite "email is quantum-safe" with a source and date. Rubric: 3 = sourced, dated, accurate wording.
 - **EX031 — Unknown.** Turn "oven controller: unknown" into a question for the manufacturer. Rubric: 3 = clear, answerable question.
 - **EX032 — Lab J counts.** From Lab J, how many endpoints are hybrid, classical and unknown in total? Rubric: 3 = 2, 2, 1.
-- **EX033 — Lab J reading.** Which site needs follow-up first and why? Rubric: 3 = bakery: classical till and unknown controller.
+- **EX033 — Lab J reading.** Which site needs follow-up first and why? Rubric: 3 = bakery: classical web server and unknown controller.
 - **EX034 — Priority.** Why ask the payroll provider first? Rubric: 3 = longest lifetime, provider-controlled.
 - **EX035 — Observed vs documented.** Which is stronger evidence: your browser's connection details or a help page? Rubric: 3 = observed, with reason.
 - **EX036 — Low priority.** Why are order confirmations low priority? Rubric: 3 = short lifetime.
@@ -337,13 +381,19 @@ till-dashboard    CLASSICAL ONLY
 
 The online shop offers and prefers hybrid. The staff portal offers hybrid but prefers the older method, so most connections will still use the older one — like having a new lock fitted but still using the old one by habit. The supplier file transfer and till dashboard use only older methods.
 
+The lab looks only at the order of groups in each made-up configuration. It does not connect to anything, so it is safe to run on your own computer. Try moving X25519MLKEM768 to the front of the staff portal's list and run it again to see the verdict change.
+
 ### 4.2 Offered versus used
 
 A setting that *offers* the new method is not the same as connections that *use* it. What matters is what happens when a connection is made. Technical staff check this with connection logs or tools; as a learner, you can see it for your own browser.
 
+At the bakery the staff portal is the clear example: it offers the hybrid method but lists the older one first, so most connections will use the older method. Your note to Priya should say offered but not preferred, not protected.
+
 ### 4.3 Checking your own browser (with permission)
 
 On your own computer, using a website you normally visit, you can look at the connection details. In some browsers the security panel or developer tools show the "key exchange" used, and you may see X25519MLKEM768 for sites that use hybrid protection. This is ordinary use of your own browser — you are not probing the site. Do not use scanning tools against websites.
+
+Record what you saw with the date, the site and where in the browser you found it, and keep the note in the shared folder. A screenshot of your own connection details is fine. If the panel shows an older key exchange, simply note it; do not try other tools to find out more.
 
 ### 4.4 Writing a readiness note
 
@@ -355,21 +405,31 @@ A readiness note for an owner should be short and calm: what you looked at, what
 
 Good questions are specific and answerable: "Do your connections use post-quantum or hybrid key exchange (for example X25519MLKEM768)? If not, when? Which of our data do you keep, and for how long? How will you tell us about changes?"
 
+Send the questions by email so that the answer is written down, and save the reply with the date. If a provider does not reply, ask again after a few weeks. Keep the questions short so that a support team can answer them without escalating.
+
 ### 4.6 Applied synthesis
 
 Putting the month together: you can now explain what quantum computers threaten and what they do not (Chapter 1), work safely with permission (Chapter 2), map a small organization's services, data and controllers (Chapter 3), read a simple audit and write an owner's note (this chapter). That is a complete, useful first task.
+
+The month's work produces three things the bakery can keep: a service list with lifetimes and controllers, a readiness note, and a set of provider questions. Together they let Priya act without needing to understand the mathematics.
 
 ### 4.7 Next steps
 
 If you want to go further: the professional course teaches the full migration workflow; the technical course teaches hands-on configuration and verification. Keep up with news from reliable sources such as NIST, and be sceptical of headlines.
 
+Before moving on, check that you can explain to someone else what harvest now, decrypt later means and why AES-256 stays strong. Revisit any exercises you scored below 3. Keep the readiness note as an example for later courses.  Note the date you finished.
+
 ### 4.8 Worked example
 
 Priya reads the note and asks: "So do we need to spend money?" Answer: "Not now. Our main actions are emails to providers and keeping things updated. If the payroll provider has no plan, we can consider switching at the next contract renewal."
 
+The answer keeps the decision small and specific: send emails, keep updating, and revisit at contract renewal. If a provider's answer later shows a real problem, the next readiness note will say so, and spending can be discussed then.
+
 ### 4.9 Practice activities
 
 1. Rewrite the readiness note for your household or club. 2. Draft one provider email from the questions above. 3. Explain "offered versus used" to a friend using an everyday analogy.
+
+For the first activity, use the same four parts as the bakery note: what you reviewed, findings, what it means and suggested actions. For the second, pick one question from the provider list and address it to a real service you use. For the third, test your analogy on a friend.  Share your work only with people you trust.
 
 ### 4.10 Common mistakes
 
@@ -377,6 +437,8 @@ Priya reads the note and asks: "So do we need to spend money?" Answer: "Not now.
 - Scanning websites instead of looking at your own browser.
 - Alarmist notes that ask for spending without need.
 - Forgetting to set a review date.
+
+Each mistake has a simple correction. Write offered but not preferred when that is what a configuration shows. Use your own browser, never scanning tools. Keep the tone calm and spending suggestions small. Put a review date on every note.  Ask the owner whether the note was clear, and improve the next one using their answer.
 
 ### Exercises
 
@@ -472,7 +534,7 @@ Model answers; any answer meeting the rubric scores equally. Bluebird Bakery Onl
 
 **EX032.** Hybrid 2, classical 2, unknown 1.
 
-**EX033.** The bakery site: it has a classical till and an unknown oven controller.
+**EX033.** The bakery site: its web server uses only a classical method and its oven controller is unknown.
 
 **EX034.** Payroll data has the longest lifetime (12 years) and is controlled by the provider, so asking is the main action.
 
