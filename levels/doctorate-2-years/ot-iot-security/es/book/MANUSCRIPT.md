@@ -55,8 +55,8 @@ El vocabulario metodológico genérico (verificación frente a validación, núm
 
 1. [Integridad y métodos avanzados de investigación](#ch-01)
 2. [Seguridad de TO, IoT y sistemas ciberfísicos: frontera de la investigación](#ch-02)
-3. [Propuesta de contribución original](../../en/book/MANUSCRIPT.md#ch-03)
-4. [Replicación de la línea de base y piloto](../../en/book/MANUSCRIPT.md#ch-04)
+3. [Propuesta de contribución original](#ch-03)
+4. [Replicación de la línea de base y piloto](#ch-04)
 5. [Estudio principal y validación independiente](../../en/book/MANUSCRIPT.md#ch-05)
 6. [Crítica de pares y revisión](../../en/book/MANUSCRIPT.md#ch-06)
 7. [Síntesis de la tesis y archivo de reproducibilidad](../../en/book/MANUSCRIPT.md#ch-07)
@@ -273,7 +273,213 @@ La frontera se extiende entre comunidades; léala con sinónimos, trate las norm
 
 ### Siga estudiando — capítulo 02 de 08
 
-[← Capítulo 01 (borrador)](#ch-01) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 03 (borrador) →](../../en/book/MANUSCRIPT.md#ch-03)
+[← Capítulo 01 (borrador)](#ch-01) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 03 (borrador) →](#ch-03)
+
+<a id="ch-03"></a>
+
+## Capítulo 3 — Propuesta de contribución original
+
+### Resultados de aprendizaje y conexión
+
+Después de este capítulo usted podrá (1) elegir el tipo de contribución que hace su tesis, (2) expresar un mecanismo de detección como un invariante físico, (3) definir un modelo de atacante explícito, (4) enunciar hipótesis con umbrales y explicaciones rivales y (5) declarar de antemano las condiciones en las que su contribución falla. Convierte la laguna del capítulo 2 en un estudio que el capítulo 4 puede pilotar.
+
+### 3.1 Tipos de contribución
+
+Una tesis de seguridad de TO puede aportar un **mecanismo** (un nuevo detector o protección), una **medición** (una forma de cuantificar el impacto o la exposición), un **hallazgo empírico** (cómo se comportan realmente los operadores o las plantas) o un **principio validado** (una regla de diseño que se mantiene en distintos contextos). El Setpoint Study aporta una comparación respaldada por mediciones: no inventa la prueba CUSUM (Page, 1954) ni la detección basada en residuos (revisada por Giraldo et al.); comprueba cuándo un invariante entre sensores ayuda frente a un objetivo adversario específico y documentado —la manipulación de la vista— y cuantifica dónde deja de ayudar. Un posicionamiento honesto de este tipo es una fortaleza en una defensa, no una debilidad.
+
+### 3.2 El mecanismo como invariante físico
+
+El tanque de la planta A obedece un balance de masa discreto: nivel siguiente = nivel + caudal de entrada − caudal de salida, con un caudal de salida ≈ 0,02 × nivel a través de un orificio fijo en el modelo sintético (equilibrio de 50 unidades cuando el caudal de entrada es 1,0). Un transmisor de nivel y un caudalímetro miden magnitudes distintas producidas por la misma física. Si un atacante repite lecturas antiguas de nivel mientras fuerza la bomba, la estimación de nivel predicha a partir del caudalímetro diverge del nivel informado. El **residuo** r = nivel informado − nivel predicho debería estar cerca de cero en operación normal y alejarse bajo ese ataque. Un **CUSUM** acumula la magnitud del residuo por encima de una holgura k y alarma cuando la suma supera un umbral h; está diseñado para captar desplazamientos pequeños y persistentes que una banda fija no detecta.
+
+El invariante lleva una suposición incorporada: el caudalímetro es honesto. Si el atacante controla ambos sensores (o el PLC que los informa), el invariante puede satisfacerse con una mentira coherente. Enunciar esta suposición es el comienzo del modelo de atacante.
+
+### 3.3 Modelo de atacante
+
+Escriba el modelo como capacidades, conocimiento y objetivo:
+
+| Elemento | Suposición del Setpoint Study |
+|---|---|
+| Capacidades | Acceso de escritura al comando de la bomba y a la lectura de nivel en el enlace SCADA (coherente con *Modify Parameter* y *Spoof Reporting Message* de ATT&CK for ICS); **clase A**: solo el sensor de nivel; **clase B**: sensores de nivel y de caudal. |
+| Conocimiento | Conoce los límites de alarma de la banda; la clase B también conoce el detector. |
+| Objetivo | Elevar el nivel real manteniendo normales los valores mostrados (manipulación de la vista). |
+| Fuera de alcance | Compromiso de la válvula mecánica de flotador; manipulación física. |
+
+### 3.4 Hipótesis y umbrales
+
+- **H1 (detección):** frente a la repetición de clase A, el CUSUM de residuos detecta ≥95 % de los episodios con un retardo medio ≤ 60 pasos, mientras que la alarma de banda detecta ≤ 10 %.
+- **H2 (falsas alarmas):** en 100 ejecuciones nominales, el CUSUM de residuos no produce más ejecuciones con falsa alarma que la alarma de banda.
+- **H3 (impacto):** el sobrellenado real máximo en el momento de la detección es menor con CUSUM que con la alarma de banda.
+- **H4 (condición de fallo):** frente a la clase B, la detección del CUSUM cae a ≤ 10 %, la frontera prevista de la contribución.
+
+Los umbrales se justifican, no son decorativos: 60 pasos corresponden, en la base de tiempo sintética, al tiempo que tarda el sobrellenado en alcanzar la mitad del margen hasta el disparo por nivel muy alto. H4 es una hipótesis que usted *quiere* poder confirmar: un método cuyos límites se han medido es más útil que uno cuyos límites se desconocen.
+
+### 3.5 Líneas de base y rivales
+
+Las líneas de base son (a) la **alarma de banda** que la planta ya tiene, (b) un **detector de red** que señala cualquier escritura en el registro de nivel —trivialmente eficaz si las escrituras son raras, inútil si el atacante repite en el sensor— y (c) un **oráculo** con acceso al nivel real, que da el mejor retardo posible. Las explicaciones rivales de cualquier ventaja del CUSUM incluyen el ajuste del umbral con datos de prueba, un simulador demasiado limpio y magnitudes de ataque elegidas a la medida del método. Cada rival recibe una prueba en el capítulo 4 o 5.
+
+### 3.6 Ejemplo resuelto y laboratorio 3
+
+El laboratorio 3 implementa el modelo y ambos detectores en 100 ejecuciones con semilla por condición.
+
+```python
+# Lab 3 - Setpoint Study (synthetic): fixed-band alarm vs. physics-residual CUSUM on one tank.
+# Python 3 standard library only. Attack: pump forced to over-fill while the level sensor replays
+# nominal values ("replay"); variant "replay+flow" also spoofs the inflow meter.
+import random
+
+def run(seed, attack, detector, steps=600, onset=300):
+    rng = random.Random(seed)
+    true_level, s, first_alarm, max_dev = 50.0, 0.0, None, 0.0
+    est = 50.0
+    for t in range(steps):
+        inflow = 1.0 + rng.gauss(0, 0.05)
+        if attack and t >= onset:
+            inflow += 0.05                      # forced pump: hidden extra inflow
+        true_level += inflow - 0.02 * true_level
+        level_meas = true_level + rng.gauss(0, 0.3)
+        flow_meas = inflow + rng.gauss(0, 0.02)
+        if attack and t >= onset:
+            level_meas = 50.0 + rng.gauss(0, 0.3)   # replayed nominal level
+            if attack == "replay+flow":
+                flow_meas = 1.0 + rng.gauss(0, 0.02)
+        est = est + flow_meas - 0.02 * est      # mass-balance prediction from flow meter
+        if detector == "band":
+            hit = abs(level_meas - 50.0) > 1.5
+        else:
+            s = max(0.0, s + abs(level_meas - est) - 0.6)
+            hit = s > 6.0
+        if hit and first_alarm is None:
+            first_alarm = t
+        if t >= onset:
+            max_dev = max(max_dev, true_level - 50.0)
+    return first_alarm, max_dev
+
+for det in ("band", "cusum"):
+    fa = sum(run(k, None, det)[0] is not None for k in range(100))
+    for atk in ("replay", "replay+flow"):
+        res = [run(k, atk, det) for k in range(100)]
+        hits = [a - 300 for a, _ in res if a is not None and a >= 300]
+        delay = f"{sum(hits)/len(hits):.1f}" if hits else "n/a"
+        print(f"{det:5s} {atk:11s} false_alarm_runs={fa}/100 detected={len(hits)}/100 "
+              f"mean_delay={delay} worst_true_overfill={max(d for _, d in res):.2f}")
+```
+
+Salida esperada:
+
+```text
+band  replay      false_alarm_runs=9/100 detected=0/100 mean_delay=n/a worst_true_overfill=3.36
+band  replay+flow false_alarm_runs=9/100 detected=0/100 mean_delay=n/a worst_true_overfill=3.26
+cusum replay      false_alarm_runs=0/100 detected=100/100 mean_delay=31.8 worst_true_overfill=3.36
+cusum replay+flow false_alarm_runs=0/100 detected=0/100 mean_delay=n/a worst_true_overfill=3.26
+```
+
+Lectura de la salida frente a las hipótesis: H1 queda respaldada en el modelo (100/100, retardo 31,8 frente a 0/100); H2 queda respaldada (0 frente a 9 ejecuciones con falsa alarma: la banda estrecha de ±1,5 se dispara con el ruido); H4 se confirma (la clase B evade por completo). El «peor sobrellenado real» es el máximo sobre *toda* la ventana de ataque, así que H3 requiere una medición aparte del sobrellenado en el momento de la alarma, un ejercicio más abajo. Todas las cifras son propiedades de un modelo sintético, no de ninguna planta.
+
+### 3.7 Errores comunes y límites
+
+Afirmar que un mecanismo es novedoso cuando solo lo es su aplicación; omitir la suposición del sensor honesto; elegir las magnitudes de ataque después de ver el comportamiento del detector; no tener ninguna condición en la que la hipótesis falle. Cada uno de estos errores tiene un síntoma visible en una propuesta: una frase de contribución que afirma inventar el CUSUM, un modelo de atacante sin clase B, una ganancia de ataque cambiada después de ejecutar el laboratorio 3 o una lista de hipótesis sin H4. Lea la propuesta buscando esos síntomas antes de enviarla al comité y corríjalos mientras el estudio todavía es barato de cambiar.
+
+### Ejercicios — capítulo 3
+
+- **EX015 — Posicione la contribución del Setpoint Study.** Clasifique el tipo de contribución del Setpoint Study y escriba una declaración de posicionamiento de dos frases que cite el trabajo previo. *Rúbrica:* 3 = comparación respaldada por mediciones + cita Page 1954 y Giraldo et al. 2018; 2 = tipo sin citas; 1 = afirma inventar el CUSUM; 0 = nada.
+- **EX016 — Nivel de equilibrio con caudal de entrada adicional.** Derive el nivel de equilibrio del tanque del laboratorio 3 cuando el caudal de entrada es 1,05 y explique qué significa para el objetivo del atacante. *Rúbrica:* 3 = L*=52,5 y el atacante necesita un forzamiento mayor/salida bloqueada; 2 = solo 52,5; 1 = equilibrio erróneo; 0 = nada.
+- **EX017 — Atacante de clase C frente a los detectores.** Amplíe la tabla del modelo de atacante con un atacante de clase C que controla la propia lógica del PLC; prediga el resultado para cada detector. *Rúbrica:* 3 = la clase C evade la banda/CUSUM dentro del PLC; un CUSUM externo independiente sigue detectando; 2 = evasión sin el caso externo; 1 = vago; 0 = nada.
+- **EX018 — Sobrellenado en el momento de la alarma para H3.** Modifique el laboratorio 3 para registrar el sobrellenado real *en el momento de la alarma* y pruebe H3. *Rúbrica:* 3 = sobrellenado≈1,22 de media/1,60 máximo en la alarma del CUSUM; la banda nunca se dispara; H3 respaldada en esa configuración; 2 = cifras sin H3; 1 = solo cualitativo; 0 = nada.
+- **EX019 — Justifique un umbral de retardo para H1.** Justifique un umbral de retardo distinto para H1 usando un nivel de disparo por nivel muy alto declarado y la tasa de sobrellenado. *Rúbrica:* 3 = disparo/margen/tasa → umbral ≈60 pasos con razonamiento; 2 = umbral sin derivación; 1 = número arbitrario; 0 = nada.
+- **EX020 — Tres rivales para una ventaja del CUSUM.** Enumere tres explicaciones rivales de una ventaja del CUSUM y la prueba que descartaría cada una. *Rúbrica:* 3 = tres rivales (ajuste, simulación limpia, elección de ganancia) cada uno con una prueba que lo descarta; 2 = rivales sin pruebas; 1 = un rival; 0 = nada.
+
+### Síntesis del capítulo
+
+Una propuesta sólida se posiciona con honestidad, expresa el mecanismo como un invariante físico, hace explícita la suposición del sensor honesto mediante un modelo de atacante y declara de antemano sus hipótesis, incluida la que marca dónde falla la contribución.
+
+### Siga estudiando — capítulo 03 de 08
+
+[← Capítulo 02 (borrador)](#ch-02) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 04 (borrador) →](#ch-04)
+
+<a id="ch-04"></a>
+
+## Capítulo 4 — Replicación de la línea de base y piloto
+
+### Resultados de aprendizaje y conexión
+
+Después de este capítulo usted podrá (1) distinguir reproducción, replicación y reimplementación, (2) diagnosticar por qué no puede reproducirse un resultado publicado de detección en TO, (3) verificar un simulador de procesos antes de confiar en él, (4) diseñar un piloto acotado en una instalación aislada y (5) tomar una decisión de continuar o no continuar declarada de antemano. Toma las hipótesis del capítulo 3 y prepara el estudio principal del capítulo 5.
+
+### 4.1 Términos
+
+La política de distintivos de artefactos de la ACM distingue la **repetibilidad** (mismo equipo, misma configuración), la **reproducibilidad** (otro equipo, mismos artefactos) y la **replicabilidad** (otro equipo, artefactos propios). En TO difieren mucho porque las plantas, los controladores y los conjuntos de datos rara vez pueden compartirse. Fije su vocabulario antes de afirmar cualquiera de ellas. En el Setpoint Study, volver a ejecutar el laboratorio 3 con el mismo código y las mismas semillas es repetibilidad. Un colega que ejecuta el código archivado es reproducibilidad. El trabajo sobre TankBench-21 es una reimplementación a partir de la descripción del artículo, más cercana a la replicación. Decirlo con precisión evita que un revisor lea una nueva puntuación como una confirmación independiente del resultado original.
+
+### 4.2 Diagnóstico de una reproducción fallida: TankBench-21
+
+El banco de pruebas sintético TankBench-21 informa un F1 de 0,96 para una alarma de banda más tasa de cambio. La reimplementación del candidato obtiene 0,31. Un diagnóstico disciplinado enumera hipótesis y prueba cada una: (a) **convención de puntuación**: el artículo usó ajuste por puntos (el laboratorio 1 muestra que esto solo puede explicar una diferencia de este tamaño); (b) **filtración del umbral**: los umbrales se eligieron con la partición de prueba; (c) **alineación de etiquetas**: las etiquetas de ataque empiezan cuando se lanzó el script de ataque, no cuando el proceso se desvió por primera vez; (d) **muestreo**: el artículo submuestreó a 10 s, lo que suaviza el ruido. Volver a puntuar con ajuste por puntos da 0,94, dentro de una tolerancia declarada de antemano de ±0,05, así que la reproducción «tiene éxito», pero tiene éxito en reproducir una métrica inflada. La tesis registra ambas cifras y adopta la exhaustividad por eventos más el retardo.
+
+### 4.3 Verificación del simulador
+
+La verificación pregunta si el modelo está bien construido; la validación pregunta si es el modelo correcto (vocabulario estándar de modelado). Las pruebas de verificación del tanque del laboratorio 3 incluyen: equilibrio en 50,0 con el caudal de entrada nominal (comprobación analítica); conservación de la masa durante 1.000 pasos sin ruido; media del residuo cercana a cero sin ataque; y semillas que producen trazas idénticas en dos máquinas. Un detector evaluado en un simulador no verificado se evalúa en un sistema desconocido. Escriba cada prueba de verificación como código que falle de forma ruidosa y ejecute el conjunto antes de cada lote de experimentos. Si la comprobación del equilibrio falla tras un cambio en el término de caudal de salida, ningún resultado de detector de esa versión es utilizable hasta que la prueba pase. Conserve la salida de las pruebas con los registros de las ejecuciones para que un examinador pueda ver que la verificación precedió a los resultados que respalda.
+
+### 4.4 Ajuste sin filtración: laboratorio 6
+
+El CUSUM tiene dos parámetros, la holgura k y el umbral h. Ajústelos con semillas separadas de las semillas de evaluación y examine la robustez frente al error del modelo. El laboratorio 6 barre k y añade un sesgo constante de calibración del sensor de nivel de 0,4 unidades, un desajuste realista entre el modelo y el instrumento.
+
+```python
+# Lab 6 (synthetic): CUSUM drift k vs. false alarms and detection delay - the tuning trade-off reviewers ask about.
+import random
+def first_alarm(seed, attack, k, h=6.0, steps=600, onset=300, bias=0.0):
+    rng = random.Random(seed); true, est, s = 50.0, 50.0, 0.0
+    for t in range(steps):
+        inflow = 1.0 + rng.gauss(0, 0.05) + (0.05 if attack and t >= onset else 0.0)
+        true += inflow - 0.02*true
+        lvl = true + rng.gauss(0, 0.3) + bias
+        if attack and t >= onset: lvl = 50.0 + rng.gauss(0, 0.3) + bias
+        est += inflow + rng.gauss(0, 0.02) - 0.02*est
+        s = max(0.0, s + abs(lvl - est) - k)
+        if s > h: return t
+    return None
+for bias in (0.0, 0.4):
+    for k in (0.4, 0.6, 0.8, 1.0):
+        fa = sum(first_alarm(i, False, k, bias=bias) is not None for i in range(100))
+        d = [a-300 for a in (first_alarm(i, True, k, bias=bias) for i in range(100)) if a is not None and a >= 300]
+        print(f"bias={bias} k={k} false_alarm_runs={fa}/100 detected={len(d)}/100 mean_delay={sum(d)/len(d) if d else float('nan'):.1f}")
+```
+
+Salida esperada:
+
+```text
+bias=0.0 k=0.4 false_alarm_runs=0/100 detected=100/100 mean_delay=25.6
+bias=0.0 k=0.6 false_alarm_runs=0/100 detected=100/100 mean_delay=30.9
+bias=0.0 k=0.8 false_alarm_runs=0/100 detected=100/100 mean_delay=38.0
+bias=0.0 k=1.0 false_alarm_runs=0/100 detected=100/100 mean_delay=46.1
+bias=0.4 k=0.4 false_alarm_runs=97/100 detected=19/100 mean_delay=35.4
+bias=0.4 k=0.6 false_alarm_runs=4/100 detected=99/100 mean_delay=46.1
+bias=0.4 k=0.8 false_alarm_runs=0/100 detected=100/100 mean_delay=55.6
+bias=0.4 k=1.0 false_alarm_runs=0/100 detected=100/100 mean_delay=66.5
+```
+
+Con un modelo perfecto, la k más pequeña parece la mejor. Un pequeño sesgo de calibración vuelve inútil k = 0,4: 97 ejecuciones alarman antes de que empiece el ataque y solo 19 alarmas caen después del inicio. La elección defendible es k = 0,8, que cambia unos 7 pasos de retardo (frente a k = 0,6 sin sesgo) por robustez. Este es el tipo de resultado que los revisores esperan ver *antes* del estudio principal.
+
+### 4.5 Un piloto acotado en el banco de pruebas T2
+
+El piloto responde solo preguntas de viabilidad: ¿puede la instalación ejecutar el escenario de repetición de forma segura?, ¿puede el historiador registrar a 1 Hz? y ¿detiene la válvula de flotador el desbordamiento? Los datos del piloto no se usan para pruebas de hipótesis. Los criterios de continuar o no continuar se escriben de antemano: continuar si tres ejecuciones consecutivas se completan sin que nunca se alcance la válvula de flotador, con una pérdida de registros inferior al 1 % y sin ningún reinicio no planificado del controlador; en caso contrario, revisar. El plan del piloto también registra quién puede detener una ejecución y cómo (una parada de emergencia física que corta la alimentación de la bomba, independiente del PLC).
+
+### 4.6 Errores comunes y límites
+
+Llamar replicación a una nueva puntuación; confiar en un simulador porque «parece correcto»; ajustar con semillas de evaluación; usar datos del piloto para probar hipótesis; carecer de una parada de emergencia independiente. Cada error permite que un resultado parezca mejor de lo que es. Una nueva puntuación con ajuste por puntos solo confirma que se usó la convención original. Una traza de aspecto plausible no es una prueba de verificación superada. Las semillas compartidas entre el ajuste y la evaluación filtran información. Las ejecuciones piloto responden a la viabilidad, no a las hipótesis. Y sin una parada física que corte la alimentación de la bomba de forma independiente del PLC, el piloto no está acotado.
+
+### Ejercicios — capítulo 4
+
+- **EX021 — Términos de repetibilidad de la ACM.** Clasifique tres actividades (volver a ejecutar su propio laboratorio 3, un colega que ejecuta su archivo, un colega que construye su propio modelo de tanque) según los términos de la ACM. *Rúbrica:* 3 = repetibilidad / reproducibilidad / replicabilidad asignadas correctamente; 2 = dos correctas; 1 = una; 0 = nada.
+- **EX022 — Registro de reproducción de TankBench-21.** Escriba una entrada del registro de reproducción de TankBench-21 con las cuatro hipótesis, pruebas y resultados. *Rúbrica:* 3 = cuatro hipótesis con pruebas/resultados, incluido ajuste por puntos→0,94; 2 = hipótesis sin resultados; 1 = parcial; 0 = nada.
+- **EX023 — Prueba de verificación de la conservación de la masa.** Escriba y ejecute una prueba de verificación de la conservación de la masa en el modelo sin ruido del laboratorio 3. *Rúbrica:* 3 = equilibrio sin ruido≈50 y comprobación de la identidad entrada−salida; 2 = solo el equilibrio; 1 = vago; 0 = nada.
+- **EX024 — Elija k con sesgo de calibración.** Usando el laboratorio 6, elija k para una planta en la que se espera un sesgo de calibración de hasta 0,4 y justifíquelo con dos cifras. *Rúbrica:* 3 = k=0,8 con 0/100 FA frente a k=0,6 con 4/100 FA y el compromiso de retardo; 2 = elección de k sin ambas cifras; 1 = solo k; 0 = nada.
+- **EX025 — Criterios de continuar o no continuar del piloto en T2.** Escriba criterios de continuar o no continuar para un piloto en T2 que incluyan un criterio de seguridad y uno de calidad de datos. *Rúbrica:* 3 = seguridad (válvula de flotador), datos (<1 % de pérdida), reinicio, prueba previa de la parada de emergencia; 2 = falta uno; 1 = continuar vago; 0 = nada.
+- **EX026 — Por qué el 0,94 reproducido no indica calidad.** Explique por qué el 0,94 reproducido no es evidencia de que el detector de TankBench-21 sea bueno. *Rúbrica:* 3 = puntuación con ajuste por puntos ≠ rendimiento en retardo/FA/turno + posible ajuste con el conjunto de prueba; 2 = una razón; 1 = «demasiado alto»; 0 = nada.
+
+### Síntesis del capítulo
+
+Reproduzca las líneas de base con una tolerancia declarada de antemano y diagnostique las diferencias de forma sistemática; verifique el simulador; ajuste con semillas separadas y someta el resultado a pruebas de estrés frente al error del modelo; y pilote solo para la viabilidad, con una autoridad de parada física independiente.
+
+### Siga estudiando — capítulo 04 de 08
+
+[← Capítulo 03 (borrador)](#ch-03) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 05 (borrador) →](../../en/book/MANUSCRIPT.md#ch-05)
 
 <a id="worked-results"></a>
 
@@ -300,6 +506,24 @@ Cada respuesta muestra una respuesta defendible; las rúbricas de cada ejercicio
 **EX012.** *Spoof Reporting Message* y *Modify Parameter*. La matriz documenta que los adversarios han usado o podrían usar una técnica, con base en informes públicos; no cuenta las ocurrencias en todas las plantas, así que no ofrece ninguna tasa de base.
 **EX013.** El recuento de adversarios conscientes pasa a 3 (S2, S5, S7). El enunciado de la laguna debe eliminar "ningún estudio tiene un adversario que conozca el detector" y mantener la laguna de combinación (consciente + umbrales congelados + impacto + dos contextos), que ningún estudio individual cumple todavía: S5 informa el impacto solo de forma parcial.
 **EX014.** Débil: "DNP3-SA se usa poco". Fuerte: "Ninguna medición informa la proporción de estaciones remotas DNP3 de una muestra pública definida que negocian Secure Authentication, ni la latencia que añade en enlaces serie; predecimos una adopción inferior al 10 % y una latencia superior al presupuesto de sondeo en enlaces de 9,6 kbit/s, y la predicción quedaría refutada por una adopción superior al 30 %".
+
+### Capítulo 3
+
+**EX015.** Tipo de contribución: comparación respaldada por mediciones con límites caracterizados. «No proponemos un detector nuevo; a partir del CUSUM (Page, 1954) y de la detección basada en residuos (Giraldo et al., 2018), medimos cuándo un invariante de balance de masa entre sensores detecta la manipulación de la vista y la capacidad del atacante con la que falla».
+**EX016.** Equilibrio L* = caudal de entrada/0,02 = 1,05/0,02 = 52,5 unidades. Un caudal de entrada adicional persistente de 0,05 eleva el nivel solo 2,5 unidades en régimen estacionario; el atacante necesita un forzamiento mayor (o una salida bloqueada) para llegar a un disparo, lo que afecta a qué ganancias son realistas en el capítulo 6.
+**EX017.** La clase C modifica la lógica del PLC, así que puede falsificar ambos valores informados de forma coherente y suprimir las alarmas calculadas en el PLC. Alarma de banda: evadida. CUSUM en el PLC: evadido. CUSUM calculado fuera del PLC sobre sensores cableados de forma independiente: sigue detectando. Conclusión: la ubicación del detector importa tanto como el algoritmo.
+**EX018.** Registrar `true_level − 50` en la primera alarma da, para el CUSUM y una ganancia de 0,05, un sobrellenado medio de 1,22 unidades y un máximo de 1,60 en el momento de la alarma; la alarma de banda nunca se dispara después del inicio, así que su sobrellenado crece hasta el máximo de la ventana, 3,36. H3 queda respaldada en el modelo.
+**EX019.** Suponga que el disparo por nivel muy alto está en 56 (margen 6) y que el ataque eleva el nivel inicialmente hasta ≈0,05 unidades/paso. La mitad del margen (3 unidades) se alcanzaría en unos 60–80 pasos una vez considerada la aproximación exponencial; un umbral de 60 pasos es conservador. Un nivel de disparo distinto justifica un umbral distinto con la misma aritmética.
+**EX020.** (1) Ajuste del umbral con datos de prueba → ajustar con semillas separadas (laboratorio 6) y congelar. (2) Simulador demasiado limpio → añadir sesgo de calibración y validar en T2. (3) Magnitud de ataque elegida a la medida del método → barrer las ganancias (EX034) e informar la curva completa.
+
+### Capítulo 4
+
+**EX021.** Volver a ejecutar su propio laboratorio 3: repetibilidad. Un colega que ejecuta su archivo: reproducibilidad. Un colega que construye su propio modelo de tanque: replicabilidad.
+**EX022.** Hipótesis: convención de puntuación, filtración del umbral, alineación de etiquetas, muestreo. Pruebas: volver a puntuar con ajuste por puntos (→0,94, dentro de ±0,05: explica la diferencia); reajustar con la partición de entrenamiento (sin cambios adicionales); desplazar las etiquetas a la primera desviación del proceso (cambio pequeño); submuestrear (cambio pequeño). Resultado: la reproducción de la cifra informada solo tiene éxito con ajuste por puntos; se adoptan métricas por eventos.
+**EX023.** Ejecute el modelo sin ruido `true += 1.0 - 0.02*true` durante 1.000 pasos desde 50,0; el resultado es 50,000000, lo que confirma el equilibrio; una prueba más estricta calcula el caudal de entrada acumulado menos el de salida y comprueba que es igual al nivel final menos el inicial dentro de la tolerancia de coma flotante.
+**EX024.** k = 0,8: con un sesgo de 0,4 tiene 0/100 ejecuciones con falsa alarma y 100/100 detecciones (retardo 55,6), mientras que k = 0,6 tiene 4/100 ejecuciones con falsa alarma. Se acepta el coste de 7–10 pasos de retardo a cambio de cero falsas alarmas.
+**EX025.** Continuar si: tres ejecuciones consecutivas se completan sin que se alcance la válvula de flotador (seguridad); pérdida de registros del historiador <1 % a 1 Hz (datos); ningún reinicio no planificado del PLC (estabilidad); parada de emergencia probada antes de cada sesión. En caso contrario, no continuar y revisar.
+**EX026.** Porque 0,94 reproduce una puntuación con ajuste por puntos que acredita segmentos enteros por una sola alarma; no dice nada sobre el retardo ni sobre las falsas alarmas por turno, y los umbrales pueden haberse ajustado con datos de prueba.
 
 <a id="glossary"></a>
 
