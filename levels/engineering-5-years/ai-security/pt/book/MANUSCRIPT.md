@@ -1,7 +1,7 @@
 # Segurança de IA e Aprendizado de Máquina: Livro do Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso de engenharia, cinco anos; aproximadamente 4.000 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–10 de 50 já estão escritos em português, com os exercícios EX001–EX030 e suas resoluções com rubricas de 0 a 3; os capítulos 11–50 (EX031–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–15 de 50 já estão escritos em português, com os exercícios EX001–EX045 e suas resoluções com rubricas de 0 a 3; os capítulos 16–50 (EX046–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: futuros projetistas de sistemas de segurança que vão especificar, construir, verificar e operar sistemas com IA que resistam a ataques e falhem de forma segura.
 - Relação com os livros vizinhos: o [livro de bacharelado](../../../../bachelors-4-years/ai-security/en/book/MANUSCRIPT.md) é mais amplo e menos voltado ao projeto; o [livro de pós-graduação](../../../../postgraduate-2-years/ai-security/en/book/MANUSCRIPT.md) pressupõe experiência profissional. **Este livro ensina a segurança de IA como uma disciplina de engenharia**: fundamentos de matemática e computação, requisitos, arquitetura, controles, medição, confiabilidade, safety, operações e um projeto final com dossiê de evidências e defesa.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -25,9 +25,9 @@ As fontes foram verificadas em 12 de outubro de 2026: NIST [AI 100-1](https://do
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) |
 
-Capítulos 11–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-11), até a chegada dos próximos lotes.
+Capítulos 16–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-16), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -579,11 +579,268 @@ A ética na engenharia de IA é concreta: limites honestos, safety e security ge
 
 [← Capítulo 09 (rascunho)](#ch-09) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 11 (rascunho) →](#ch-11)
 
+<a id="ch-11"></a>
+
+## Capítulo 11 — Redes e protocolos
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar o caminho de rede de uma requisição a um serviço de modelo (DNS, TCP, TLS, HTTP); (2) identificar ameaças de rede a serviços de IA (interceptação, negação de serviço, abuso de APIs); (3) projetar a segmentação de rede para treinamento, serviço e back-ends de ferramentas; e (4) interpretar limites de taxa e cotas de API como controles de segurança.
+
+### 11.1 O caminho da requisição
+
+Um cliente resolve o nome do serviço com DNS, abre uma conexão TCP, negocia o TLS (que autentica o servidor e cifra o tráfego) e envia uma requisição HTTP — tipicamente um JSON contendo um prompt ou atributos. O servidor devolve uma resposta, talvez transmitida token a token. Cada camada tem seus próprios modos de falha: falsificação de DNS, má configuração de TLS, HTTP request smuggling, corpos de requisição grandes demais. Engenheiros revisam cada camada separadamente. Os registros DNS são protegidos e monitorados, as configurações de TLS são conferidas contra as orientações atuais e a camada HTTP impõe tamanho máximo do corpo e tempo máximo da requisição antes que o modelo veja qualquer coisa. Uma requisição rejeitada na borda quase não custa nada; a mesma requisição chegando ao modelo pode custar segundos de tempo de acelerador.
+
+### 11.2 Ameaças específicas de APIs de IA
+
+Além dos ataques de rede clássicos, APIs de IA enfrentam *extração de modelo* por consultas sistemáticas (Tramèr et al., arXiv:1609.02943), *inferência de pertencimento* (membership inference) por meio das saídas de confiança e *consumo ilimitado* (OWASP LLM10): prompts e saídas longos que esgotam a computação ou o orçamento. Como cada requisição é cara, limites comuns de requisições por segundo não bastam; as cotas devem levar em conta tokens e computação. O laboratório mostra um token bucket que atende plenamente um cliente normal enquanto limita um cliente que inunda o serviço. Um limite estrito demais (1/s, rajada 5) começa a recusar tráfego legítimo — limites são um compromisso a ajustar com dados reais de uso.
+
+```python
+"""Lab R: token-bucket limits against unbounded consumption (synthetic).
+Simulates 60 seconds of requests from a normal client and a flooding client
+against a model endpoint with a per-client token bucket."""
+import random
+rng = random.Random(4)
+def simulate(rate_per_s, burst, reqs):
+    tokens, last, ok = burst, 0.0, 0
+    for t in reqs:
+        tokens = min(burst, tokens + (t - last) * rate_per_s); last = t
+        if tokens >= 1: tokens -= 1; ok += 1
+    return ok
+normal = sorted(rng.uniform(0, 60) for _ in range(90))
+flood = sorted(rng.uniform(0, 60) for _ in range(3000))
+for rate, burst in ((5, 20), (2, 10), (1, 5)):
+    print(f"limit={rate}/s burst={burst:2d} normal_served={simulate(rate, burst, normal):3d}/90 "
+          f"flood_served={simulate(rate, burst, flood):4d}/3000")
+```
+
+Saída esperada:
+
+```text
+limit=5/s burst=20 normal_served= 90/90 flood_served= 319/3000
+limit=2/s burst=10 normal_served= 90/90 flood_served= 129/3000
+limit=1/s burst= 5 normal_served= 62/90 flood_served=  64/3000
+```
+
+### 11.3 Segmentação
+
+Coloque clusters de treinamento, registros de modelos, endpoints de serviço e back-ends de ferramentas em zonas de rede separadas. O serviço não deve alcançar os repositórios de dados de treinamento; o back-end de ferramentas de um agente de LLM (por exemplo, um sistema de ordens de serviço) deve aceitar chamadas apenas do serviço de políticas, não diretamente do host do modelo. A filtragem de egresso impede que um componente comprometido ou manipulado envie dados a destinos arbitrários — uma mitigação direta para a exfiltração por chamadas de ferramenta injetadas. As zonas são impostas por regras de firewall e conferidas por testes: a partir do host do modelo, uma conexão ao sistema de ordens de serviço ou a um endereço externo deve falhar. Registrar esses testes faz com que a segmentação continue verificada depois de mudanças na rede, em vez de apenas suposta.
+
+### 11.4 Exemplo resolvido (caso sintético da NRS)
+
+O host do modelo do Wrench podia acessar a internet para buscar boletins de fornecedores e também podia chamar diretamente a API de ordens de serviço. Sam passou a busca de boletins para um serviço de ingestão separado, que guarda cópias sanitizadas, removeu o egresso para a internet do host do modelo e fez a API de ordens de serviço aceitar requisições apenas do serviço de políticas, com TLS mútuo. As mudanças cortaram no nível da rede os dois caminhos de não confiável para privilegiado. Mesmo que um boletim manipule o modelo, o host do modelo não consegue enviar dados para fora nem alcançar o sistema de ordens de serviço sem passar pelo serviço de políticas. Sam verifica cada mudança tentando as conexões bloqueadas a partir do host do modelo e registrando as recusas como evidência.
+
+### 11.5 Erros e limites
+
+Três erros são comuns: limites de taxa sobre requisições, mas não sobre tokens ou computação; redes planas em que o host do modelo alcança tudo; e egresso irrestrito a partir de componentes que processam texto não confiável. Contar só requisições deixa um cliente enviar alguns prompts enormes que custam tanto quanto milhares de prompts pequenos. Redes planas significam que um único componente manipulado pode alcançar todos os sistemas. O egresso irrestrito dá às instruções injetadas um caminho para enviar dados para fora. A terceira configuração do laboratório acrescenta mais uma lição: limites ajustados sem dados de uso podem recusar um terço das requisições legítimas, então as cotas precisam de medição, além de raciocínio de segurança.
+
+### Exercícios
+
+- **EX031 — Leitura do laboratório.** Com 2/s e rajada 10, quantas requisições normais e de inundação são atendidas, e por que 1/s prejudica os usuários normais? Rubrica: 3 = 90/90 e 129/3000; as rajadas normais excedem o bucket menor; 2 = só os números; 1 = vago; 0 = errado.
+- **EX032 — Segmentação.** Descreva (em palavras) quatro zonas para o Wrench e os fluxos permitidos. Rubrica: 3 = ingestão, modelo, política, ferramentas, com fluxos direcionais e nenhum caminho direto modelo→ferramentas; 2 = lacuna menor; 1 = vago; 0 = nenhuma.
+- **EX033 — Egresso.** Explique como a filtragem de egresso limita o impacto da injeção de prompt. Rubrica: 3 = um componente manipulado não consegue enviar dados a endpoints do atacante; 2 = parcial; 1 = vago; 0 = errado.
+
+### Síntese
+
+Serviços de IA são serviços de rede com requisições caras. TLS, segmentação, controle de egresso e cotas sensíveis à computação reduzem a interceptação, o abuso e o impacto de componentes manipulados.
+
+### Continue estudando — capítulo 11 de 50
+
+[← Capítulo 10 (rascunho)](#ch-10) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 12 (rascunho) →](#ch-12)
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Sistemas operacionais
+
+### Objetivos de aprendizagem
+
+Você vai (1) explicar processos, usuários, permissões e isolamento; (2) colocar em sandbox os componentes que executam ações geradas pelo modelo; (3) configurar o menor privilégio para processos que servem modelos; e (4) coletar logs do sistema operacional úteis para investigar incidentes de IA.
+
+### 12.1 Processos e privilégios
+
+O sistema operacional executa programas como processos com uma identidade (usuário, grupos) e impõe permissões sobre arquivos, dispositivos e sockets de rede. Um servidor de modelo deve rodar como um usuário dedicado sem privilégios, com acesso somente de leitura a seus pesos e sem acesso de escrita aos diretórios de código. Com essas configurações, um bug ou uma instrução injetada que tome o processo do servidor consegue ler os pesos que ele já serve, mas não consegue substituí-los, mudar o código do servidor nem ler arquivos de outros usuários. Rodar como root remove todas essas barreiras de uma vez, e é por isso que os revisores conferem primeiro a identidade do processo.
+
+### 12.2 Mecanismos de isolamento
+
+Contêineres (namespaces e control groups no Linux), máquinas virtuais e filtros de chamadas de sistema (seccomp) isolam processos. Quando um agente de IA pode executar código — uma ferramenta de "interpretador de código" —, esse código precisa rodar numa sandbox sem rede, com sistema de arquivos temporário, limites de CPU e de memória e um limite de tempo. Trate toda string de código produzida por um modelo como não confiável, porque a injeção de prompt pode controlá-la. Contêineres compartilham o kernel do host, então uma falha no kernel pode permitir que o código escape; máquinas virtuais acrescentam uma fronteira mais forte, a um custo maior. Para código gerado pelo modelo, que pode ser qualquer coisa, Sam prefere uma máquina virtual dedicada ou uma sandbox endurecida com filtragem de chamadas de sistema, e descarta o ambiente depois de cada execução.
+
+### 12.3 Limites de recursos
+
+Control groups limitam a CPU, a memória e a fatia de GPU; sem eles, uma requisição grande demais pode deixar as outras sem recursos. Essa é a parte, no nível do sistema operacional, da defesa contra o consumo ilimitado. Os limites precisam ser definidos a partir de medições. Sam traça o perfil das requisições normais para descobrir suas necessidades de memória e de tempo e depois define limites com alguma folga. Uma requisição que atinge um limite é interrompida e registrada, então um padrão de requisições grandes demais fica visível. Os limites também protegem o host: um worker de inferência que fica sem memória, sem limite, pode derrubar consigo outros serviços da mesma máquina, transformando uma requisição ruim numa indisponibilidade mais ampla.
+
+### 12.4 Segredos e permissões de arquivos
+
+Servidores de modelo frequentemente precisam de credenciais — para um banco de dados vetorial, uma API de ferramenta ou um registro. Guarde-as no gerenciador de segredos da plataforma ou em arquivos legíveis apenas pelo usuário do serviço, nunca em prompts, despejos de variáveis de ambiente ou imagens compartilhadas entre equipes. Um modelo pode ser induzido a revelar qualquer coisa que esteja em sua janela de contexto; o OWASP LLM 2025 lista o *vazamento do prompt de sistema* (LLM07) em parte porque desenvolvedores colocam segredos ali. Mantenha as credenciais fora do alcance do modelo e dê a cada ferramenta sua própria credencial de escopo restrito.
+
+### 12.5 Logs
+
+Os logs do sistema (autenticação, inícios de processos, auditoria de acesso a arquivos) complementam os logs da aplicação. Em incidentes de IA, correlacione o ID da requisição do modelo com os eventos do sistema operacional: uma chamada de ferramenta fez um processo iniciar ou um arquivo mudar? Um identificador de requisição compartilhado é o elo. O serviço do modelo o grava com cada prompt e cada chamada de ferramenta, os serviços de ferramentas o incluem em seus próprios logs e a sandbox o registra com cada processo que inicia. Numa investigação, uma única busca mostra então a cadeia completa, do boletim que trazia uma instrução até o processo que tentou executá-la. Os relógios precisam estar sincronizados, ou os eventos de hosts diferentes não poderão ser ordenados.
+
+### 12.6 Exemplo resolvido (caso sintético da NRS)
+
+O Wrench ganhou uma ferramenta "calculate" que executa pequenos trechos de Python para cálculos de torque e desgaste. Sam a executou num contêiner sem rede, com raiz somente de leitura, limite de memória de 64 MB, limite de CPU de 2 segundos e um perfil seccomp. Um boletim de teste sintético contendo uma instrução para "calcular" algo que abria um socket de rede falhou de forma segura e foi registrado. Várias camadas estavam no caminho: não havia rede à qual se conectar, o perfil seccomp pode recusar de imediato chamadas de socket e o log registrou o identificador da requisição, de modo que o boletim de origem pudesse ser rastreado. Sam mantém o boletim como teste de regressão, para que mudanças futuras na sandbox sejam conferidas contra ele.
+
+### 12.7 Erros e limites
+
+Três erros são comuns: servidores de modelo rodando como root; ferramentas de código com acesso à rede; e nenhum limite de recursos nos workers de inferência. Servidores de modelo como root transformam qualquer bug do servidor em controle total do host. Ferramentas de código com acesso à rede deixam instruções injetadas enviar dados para qualquer lugar. Workers de inferência sem limites deixam uma única requisição esgotar as demais. Cada erro é fácil de encontrar com uma verificação simples: o usuário do processo, uma tentativa de conexão de dentro da sandbox e uma requisição deliberadamente grande demais em homologação, por isso Sam executa as três antes de cada liberação.
+
+### Exercícios
+
+- **EX034 — Especificação da sandbox.** Escreva seis restrições para uma ferramenta de execução de código. Rubrica: 3 = seis entre sem rede, sistema de arquivos somente de leitura, diretório temporário, limites de CPU/memória/tempo, filtro de chamadas de sistema, usuário sem privilégios; 2 = quatro; 1 = duas; 0 = nenhuma.
+- **EX035 — Menor privilégio.** Liste três permissões que o processo do servidor de modelo não deve ter. Rubrica: 3 = escrita no código/pesos, root, acesso a dados de treinamento/segredos, rede irrestrita; 2 = duas; 1 = uma; 0 = nenhuma.
+- **EX036 — Correlação.** Por que correlacionar os IDs de requisição do modelo com os logs do sistema operacional? Rubrica: 3 = vincular decisões do modelo a efeitos colaterais para a investigação; 2 = parcial; 1 = vago; 0 = errado.
+
+### Síntese
+
+O isolamento do sistema operacional transforma "o modelo pode ser manipulado" em "um modelo manipulado pouco pode fazer". Menor privilégio, sandboxes, limites de recursos e logs correlacionados são as ferramentas.
+
+### Continue estudando — capítulo 12 de 50
+
+[← Capítulo 11 (rascunho)](#ch-11) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 13 (rascunho) →](#ch-13)
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Sistemas de dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) modelar conjuntos de dados com esquemas, linhagem e versões; (2) proteger os dados de treinamento e de recuperação contra adulteração e vazamento; (3) projetar repositórios de geração aumentada por recuperação (RAG) com controle de acesso; e (4) aplicar princípios de proteção de dados aos dados de IA.
+
+### 13.1 Esquemas, linhagem e versões
+
+Todo conjunto de dados deve ter um esquema, um registro de onde veio cada item (linhagem ou proveniência) e um identificador de versão. Ferramentas de versionamento de dados ou simples hashes de conteúdo permitem dizer exatamente quais dados treinaram qual modelo — essencial ao investigar um envenenamento. Quando um modelo começa a se comportar de forma estranha, a primeira pergunta de uma investigação é com o que ele aprendeu. Sem versões, a equipe só pode adivinhar se um lote suspeito de rótulos foi incluído. Com elas, consegue listar cada item acrescentado desde o último modelo bom, descobrir quem forneceu cada um e retreinar com uma versão limpa para confirmar a causa.
+
+### 13.2 Integridade dos dados de treinamento
+
+O envenenamento exige acesso de escrita a parte dos dados de treinamento. Carlini et al. (arXiv:2302.10149) mostraram que conjuntos de dados em escala web distribuídos como listas de URLs podem ser envenenados com a compra de domínios expirados; hashes de integridade do conteúdo no momento da coleta derrotam esse ataque específico. Restrinja quem pode acrescentar ou rerrotular dados, registre as mudanças e revise amostras de fontes novas. Hashes protegem o que foi coletado, não se aquilo era honesto desde o início. Um terceirizado de rotulagem com acesso legítimo ainda pode introduzir rótulos ruins, então revise amostras por fonte e observe mudanças nas estatísticas dos rótulos depois de cada entrega.
+
+### 13.3 Repositórios de recuperação
+
+Sistemas RAG guardam trechos de documentos e embeddings num banco de dados vetorial. O OWASP LLM 2025 lista *fraquezas de vetores e embeddings* (LLM08): a falta de controle de acesso permite que um usuário recupere documentos que não deveria ver; documentos envenenados podem injetar instruções. Imponha permissões por documento no momento da recuperação, usando a identidade do *usuário final*, e rotule a proveniência e o nível de confiança de cada trecho. Conferir com a identidade do usuário importa porque o próprio serviço de recuperação costuma ter acesso a tudo. Se ele buscar com sua própria autoridade, o modelo recebe documentos que o usuário jamais poderia abrir, e uma pergunta bem escolhida os trará à tona numa resposta. Rótulos de proveniência permitem que o prompt e a camada de políticas tratem com a devida cautela textos de terceirizados ou de fontes externas.
+
+### 13.4 Proteção de dados
+
+Minimize os dados pessoais no treinamento e na recuperação; defina limites de retenção; considere a privacidade diferencial para treinamentos sensíveis (Abadi et al., arXiv:1607.00133). A inferência de pertencimento (Shokri et al., arXiv:1610.05820) mostra que modelos podem revelar se um registro foi usado. A minimização é a proteção mais barata: dados nunca coletados não podem vazar por um modelo. Limites de retenção removem os dados quando sua finalidade termina, o que também reduz o que um vazamento poderia expor. A privacidade diferencial acrescenta ruído calibrado durante o treinamento para que nenhum registro isolado mude muito o modelo, com algum custo em acurácia. A inferência de pertencimento torna o risco concreto, já que até saídas agregadas podem revelar que o registro de uma pessoa específica foi usado.
+
+### 13.5 Exemplo resolvido (caso sintético da NRS)
+
+O repositório vetorial do Wrench guardava manuais, notas dos técnicos e relatórios de incidentes de segurança do RH num único índice. Qualquer técnico conseguia recuperar relatórios do RH por meio de perguntas engenhosas. Sam dividiu os índices por sensibilidade, acrescentou listas de controle de acesso por documento, conferidas contra o usuário solicitante no momento da consulta, e acrescentou um campo de proveniência (interno/terceirizado/externo) que o template do prompt usa para marcar textos não confiáveis. Dividir os índices sozinho não teria bastado, já que um técnico que consulta o índice certo ainda precisa de uma verificação por documento. O campo de proveniência também apoia investigações: uma resposta que citou um texto de terceirizado pode ser rastreada até o documento de origem.
+
+### 13.6 Erros e limites
+
+Três erros são comuns: um único índice de recuperação para todos os níveis de sensibilidade; conferir permissões com a identidade do serviço em vez da do usuário; e nenhum registro de quais dados treinaram qual modelo. Um índice único impõe um só modelo de permissões a documentos de sensibilidades muito diferentes, então ou o acesso fica amplo demais, ou o sistema se torna inutilizável. Conferir com a identidade do serviço entrega a cada usuário os direitos do serviço. A falta de registros de treinamento transforma as investigações de envenenamento em adivinhação. A revisão de projeto de Sam faz três perguntas correspondentes: quantos índices e por quê, a identidade de quem é conferida na recuperação e onde fica registrada a versão dos dados de treinamento de cada modelo.
+
+### Exercícios
+
+- **EX037 — Linhagem.** Que três fatos a linhagem deve registrar para um item de treinamento? Rubrica: 3 = fonte, momento da coleta/versão, transformações (e quem o acrescentou); 2 = dois; 1 = um; 0 = nenhuma.
+- **EX038 — Acesso no RAG.** Por que a recuperação precisa usar a identidade do usuário final? Rubrica: 3 = do contrário, o modelo recupera documentos que o usuário não tem permissão para ver (confused deputy); 2 = parcial; 1 = vago; 0 = errado.
+- **EX039 — Domínios expirados.** Como os hashes de conteúdo derrotam o ataque de envenenamento por domínios expirados? Rubrica: 3 = um conteúdo baixado que mudou depois da coleta falha no hash e é rejeitado; 2 = parcial; 1 = vago; 0 = errado.
+
+### Síntese
+
+Os dados são a superfície de ataque que treina e informa os modelos. Linhagem, controle de escrita, permissões de recuperação por usuário e minimização de dados os protegem.
+
+### Continue estudando — capítulo 13 de 50
+
+[← Capítulo 12 (rascunho)](#ch-12) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 14 (rascunho) →](#ch-14)
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Engenharia de software
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar um ciclo de vida de desenvolvimento seguro a software com IA; (2) gerenciar requisitos, versões e mudanças de modelos e prompts, além do código; (3) conduzir revisão de código e integração contínua com portões de segurança e de avaliação; e (4) planejar liberações e reversões de componentes de IA.
+
+### 14.1 Um ciclo de vida para software de IA
+
+Um ciclo de vida de desenvolvimento seguro acrescenta atividades de segurança a cada fase: requisitos (casos de abuso), projeto (modelagem de ameaças), implementação (codificação segura, controle de dependências), verificação (testes, avaliações, red teaming) e liberação (aprovação, monitoramento). Na IA, os artefatos se multiplicam: código, pesos do modelo, dados de treinamento, prompts, índices de recuperação e conjuntos de avaliação. Cada um precisa ser versionado e revisado; um prompt de sistema alterado pode mudar o comportamento de segurança tanto quanto uma mudança de código. Os casos de abuso são escritos junto com os requisitos normais, por exemplo 'um boletim de fornecedor tenta fazer o Wrench criar uma ordem de serviço'.
+
+### 14.2 Gerência de configuração de modelos e prompts
+
+Guarde os prompts no controle de versão, não num console web. Dê a cada modelo uma entrada no registro com seu hash, a versão dos dados de treinamento, os resultados de avaliação e o estado de aprovação. Implante por referência a uma versão do registro, para que a produção sempre possa ser rastreada e revertida. Um prompt editado num console web não tem revisão, nem histórico, nem vínculo com a avaliação que o aprovou. No controle de versão, toda mudança tem um autor e um diff, e o portão de CI roda sobre ela como sobre qualquer mudança de código. A entrada do registro vincula um modelo implantado aos dados e testes por trás dele, então um auditor pode perguntar o que está rodando e obter uma resposta exata.
+
+### 14.3 Revisão e integração contínua
+
+A revisão de código pega erros de projeto e de lógica; em componentes de IA, revise também as mudanças de prompt e de dados. A integração contínua deve executar testes unitários, verificações de dependências e um *portão de avaliação de segurança*: um conjunto fixo de testes de injeção, jailbreak e uso indevido, com limiares que bloqueiam a liberação se forem excedidos. O portão precisa usar testes reservados, não os exemplos contra os quais os desenvolvedores fizeram ajustes. Os testes reservados ficam com um responsável separado e são renovados com novos padrões de ataque, para que o portão meça generalização e não memória.
+
+### 14.4 Liberação e reversão
+
+Libere de forma gradual (implantação canário para uma pequena fatia do tráfego), observe as métricas e mantenha a versão anterior pronta. Para modelos, reverter significa trocar a referência no registro — algo fácil só se você tiver planejado para isso. Um canário expõe uma nova versão a uma pequena fatia do tráfego real enquanto a versão antiga atende o resto. As métricas observadas incluem sinais de segurança, como propostas de ferramenta rejeitadas e alertas de detectores, e não só latência e erros. A reversão precisa ser praticada: a equipe de Sam volta todo mês, em homologação, à versão anterior do registro para confirmar que isso ainda funciona, já que uma reversão nunca testada pode falhar no dia em que for necessária.
+
+### 14.5 Exemplo resolvido (caso sintético da NRS)
+
+Um desenvolvedor mudou o prompt de sistema do Wrench para deixar as respostas mais simpáticas. O portão de segurança da CI executou 300 casos reservados de injeção e encontrou as propostas de chamadas de ferramenta não autorizadas subindo de 1.0% para 4.3% (a camada de políticas ainda as bloqueava, mas o limiar do portão para propostas era de 2%). A liberação foi bloqueada; a equipe descobriu que uma frase nova, "sempre tente concluir o objetivo do usuário", incentivava seguir instruções presentes no texto recuperado. Eles a reescreveram e a taxa voltou a 1.1%. A camada de políticas garantiu que nenhum dano chegasse à produção, mas o portão pegou um enfraquecimento numa camada anterior antes da liberação.
+
+### 14.6 Erros e limites
+
+Três erros são comuns: prompts editados diretamente na produção; testes de segurança que os desenvolvedores já viram e contra os quais fizeram ajustes; e nenhum caminho de reversão para modelos. Edições de prompt na produção contornam a revisão e não deixam registro de por que o comportamento mudou. Testes contra os quais os desenvolvedores fizeram ajustes mostram que o sistema consegue passar nesses testes, não que resiste a ataques novos. Modelos sem caminho de reversão obrigam as equipes a corrigir os problemas para a frente, sob pressão. Cada lacuna tem um remédio direto: prompts no controle de versão, um portão reservado com responsável separado e uma volta praticada à última versão aprovada do registro.
+
+### Exercícios
+
+- **EX040 — Artefatos.** Liste seis artefatos de uma aplicação de LLM que precisam de controle de versão. Rubrica: 3 = código, pesos/ID do modelo, prompts, índice/dados de recuperação, conjuntos de avaliação, configurações/políticas; 2 = quatro; 1 = dois; 0 = nenhuma.
+- **EX041 — Portão de segurança.** Projete um portão de CI para o Wrench (testes, métrica, limiar, ação). Rubrica: 3 = conjunto reservado, métrica de taxa com limiar, bloqueia a liberação; 2 = falta um; 1 = vago; 0 = nenhuma.
+- **EX042 — Mudança de prompt.** Por que uma mudança de simpatia afetou a segurança? Rubrica: 3 = a redação do prompt muda as prioridades de seguir instruções, inclusive em direção a textos injetados; 2 = parcial; 1 = vago; 0 = errado.
+
+### Síntese
+
+A engenharia de software de IA trata modelos, prompts e dados como artefatos versionados e revisados, controlados por avaliações de segurança reservadas e liberados com um caminho de reversão.
+
+### Continue estudando — capítulo 14 de 50
+
+[← Capítulo 13 (rascunho)](#ch-13) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 15 (rascunho) →](#ch-15)
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Fundamentos de segurança
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar confidencialidade, integridade e disponibilidade (CIA) a ativos de IA; (2) descrever com precisão ameaça, vulnerabilidade, risco e controle; (3) usar defesa em profundidade e menor privilégio; e (4) mapear ataques específicos de IA na taxonomia NIST AI 100-2 E2025.
+
+### 15.1 CIA para a IA
+
+Confidencialidade: dados de treinamento, prompts, pesos do modelo e saídas. Integridade: dados, pesos, conteúdo de recuperação, decisões do modelo e ações de ferramentas. Disponibilidade: capacidade de inferência e processos de negócio dependentes. O NIST AI 100-2 E2025 organiza os ataques adversariais contra IA preditiva pelo objetivo do atacante — quebra de disponibilidade, violação de integridade, comprometimento de privacidade — e acrescenta a habilitação de uso indevido para a IA generativa. Listar os ativos dessa forma expõe itens que revisões de segurança comuns deixam passar. Prompts podem conter lógica de negócio ou segredos. Pesos podem valer a pena ser roubados. Ações de ferramentas, como uma ordem de serviço criada em nome do Wrench, têm requisitos de integridade porque mudam o mundo físico. A disponibilidade se estende para além do modelo, ao trabalho que depende dele, como a inspeção da via.
+
+### 15.2 Ameaça, vulnerabilidade, risco, controle
+
+Uma *ameaça* é uma causa potencial de dano (um agente ou um evento). Uma *vulnerabilidade* é uma fraqueza que ela pode explorar. O *risco* combina probabilidade e impacto. Um *controle* reduz a probabilidade ou o impacto. Para o Wrench: ameaça — um fornecedor malicioso; vulnerabilidade — o modelo segue instruções contidas nos boletins; impacto — ordens de serviço falsas; controle — confirmação humana das ordens de serviço. Escrever o risco como uma cadeia mostra onde um controle atua. A confirmação humana não impede o modelo de seguir instruções; ela limita o impacto, porque uma ordem de serviço falsa precisa da aprovação de uma pessoa antes de ter efeito. Um segundo controle, como rótulos de proveniência, poderia reduzir a probabilidade.
+
+### 15.3 Defesa em profundidade
+
+Nenhum controle isolado é perfeito, especialmente para modelos cujo comportamento é estatístico. Empilhe controles: rotulagem da proveniência das entradas, instruções no nível do modelo, validação das saídas, aplicação de políticas fora do modelo, ferramentas com menor privilégio, monitoramento e supervisão humana. Cada camada pega algumas falhas das outras. As camadas precisam ser independentes para agregar valor. Se a validação das saídas e a aplicação de políticas dependerem ambas do julgamento do próprio modelo, uma única manipulação bem-sucedida derrota as duas. O projeto do Wrench mantém a política em código, fora do modelo, e exige uma confirmação humana que o modelo não consegue fornecer, então cada camada falha por motivos diferentes. Sam confere isso perguntando, para cada camada, do que um atacante precisaria para contorná-la.
+
+### 15.4 O conhecimento e as capacidades do atacante
+
+A taxonomia também classifica os atacantes por conhecimento (caixa-branca, caixa-cinza, caixa-preta) e por capacidades (controle dos dados de treinamento, do modelo, das consultas, do código-fonte). Declarar isso transforma medos vagos em modelos de ameaças testáveis. Para o TrackEye, um atacante realista é de caixa-preta com acesso físico: qualquer pessoa que caminhe pela linha pode colocar marcações, mas não consegue ler o modelo. Um terceirizado de rotulagem tem capacidade sobre os dados de treinamento. Cada perfil vira uma campanha de testes com seus próprios métodos, e os resultados são relatados por perfil, já que um modelo robusto contra um pode ser fraco contra outro.
+
+### 15.5 Exemplo resolvido (caso sintético da NRS)
+
+Sam montou uma tabela CIA para o TrackEye. Confidencialidade: baixa (imagens de trilhos não são secretas), mas os pesos do modelo têm valor comercial. Integridade: crítica — um defeito não detectado é um risco de safety; o envenenamento por meio do terceirizado de rotulagem e as marcações físicas eram as principais ameaças. Disponibilidade: moderada — se o TrackEye cair, a inspeção manual continua, a um custo maior. A tabela direcionou o esforço para os controles de integridade. A integridade é classificada como crítica porque seu impacto é de safety, não financeiro. A disponibilidade é apenas moderada porque existe um recurso manual, embora ataques que forcem esse recurso com frequência elevariam os custos.
+
+### 15.6 Erros e limites
+
+Três erros são comuns: tratar a "segurança de IA" como se fosse apenas injeção de prompt; projetos com um único controle; e declarações de risco sem impacto. A injeção de prompt importa, mas tratá-la como o campo inteiro ignora o envenenamento, o roubo de modelos, os vazamentos de privacidade e o abuso de recursos. Projetos com um único controle falham por completo quando esse controle é contornado. Declarações de risco que nomeiam uma ameaça sem seu impacto não podem ser priorizadas, porque uma fraqueza que vaza imagens de trilhos e outra que esconde um trilho rachado parecem igualmente urgentes. O registro de riscos de Sam exige, por isso, probabilidade e impacto em toda entrada.
+
+### Exercícios
+
+- **EX043 — Tabela CIA.** Preencha uma tabela CIA para o Pulse (modelo de anomalias de rolamentos). Rubrica: 3 = classificações sensatas, com justificativas, para os três; 2 = dois; 1 = um; 0 = nenhuma.
+- **EX044 — Termos.** Para o Wrench, declare uma ameaça, uma vulnerabilidade, um impacto e um controle relativos à extração do modelo. Rubrica: 3 = os quatro coerentes; 2 = três; 1 = vago; 0 = nenhuma.
+- **EX045 — Taxonomia.** Classifique "um concorrente consulta a API do TrackEye para treinar uma cópia" por objetivo e capacidade. Rubrica: 3 = privacidade/confidencialidade (extração de modelo) com acesso por consultas, caixa-preta; 2 = um; 1 = vago; 0 = errado.
+
+### Síntese
+
+Os fundamentos de segurança se aplicam diretamente à IA: CIA para novos ativos, linguagem de risco precisa, controles em camadas e capacidades explícitas do atacante.
+
+### Continue estudando — capítulo 15 de 50
+
+[← Capítulo 14 (rascunho)](#ch-14) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 16 (rascunho) →](#ch-16)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX030 (as de EX031–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Sam Ito, a Northgate Rail Systems e todos os seus números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX045 (as de EX046–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Sam Ito, a Northgate Rail Systems e todos os seus números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** σ(z) = (1 + e⁻ᶻ)⁻¹, então σ′(z) = e⁻ᶻ/(1 + e⁻ᶻ)² = σ(z)·(1 − σ(z)), porque 1 − σ(z) = e⁻ᶻ/(1 + e⁻ᶻ). Em z = 0, σ = 0.5, então σ′ = 0.25.
 
@@ -644,6 +901,36 @@ Respostas-modelo para EX001–EX030 (as de EX031–EX150 estão na edição em i
 **EX029.** Parar os testes; registrar evidência mínima sem reter dados de terceiros; relatar em particular ao contato de segurança do fornecedor; combinar um prazo de correção e de divulgação; publicar só depois da correção, sem dados pessoais.
 
 **EX030.** Sistema de gestão de riscos; governança de dados; documentação técnica; manutenção de registros/logs; transparência para quem implanta; supervisão humana; exatidão, robustez e cibersegurança.
+
+**EX031.** 90/90 normais e 129/3000 de inundação. Com 1/s e rajada 5, as rajadas naturais do cliente normal excedem o bucket, então só 62 de 90 são atendidas — o limite é estrito demais.
+
+**EX032.** Zona de ingestão (busca e sanitiza os boletins; pode acessar a internet) → zona do modelo (sem internet; lê o repositório sanitizado) → zona de políticas (recebe do modelo as ações propostas; confere papel e confirmação) → zona de ferramentas (a API de ordens de serviço aceita apenas o serviço de políticas, via TLS mútuo). Nenhum caminho direto modelo→ferramentas.
+
+**EX033.** Mesmo que um texto injetado faça um componente tentar enviar dados para fora, as regras de egresso bloqueiam conexões a destinos que não estão numa lista de permissões, então a exfiltração falha.
+
+**EX034.** Sem rede; sistema de arquivos raiz somente de leitura; diretório temporário gravável; limites de CPU, memória e tempo de relógio; filtro de chamadas de sistema; usuário sem privilégios (sem capabilities).
+
+**EX035.** Direitos de root ou administrativos; acesso de escrita ao código ou aos pesos; acesso a dados de treinamento, segredos ou credenciais de que ele não precisa; egresso de rede irrestrito.
+
+**EX036.** Isso vincula uma decisão do modelo (e o prompt que a causou) a efeitos colaterais concretos, como inícios de processos ou mudanças em arquivos, que é como os investigadores estabelecem o que uma instrução injetada de fato fez.
+
+**EX037.** Fonte (quem/onde), momento da coleta e versão do conjunto de dados, e as transformações aplicadas (mais quem o acrescentou ou rerrotulou).
+
+**EX038.** Se a recuperação usar a identidade ampla do serviço, o modelo pode buscar documentos que o usuário não tem permissão para ver e revelá-los — um problema de confused deputy.
+
+**EX039.** Se o conteúdo por trás de uma URL mudar depois da coleta (por exemplo, um domínio registrado de novo servindo veneno), seu hash deixa de corresponder ao valor registrado e o item é rejeitado.
+
+**EX040.** Código da aplicação; identificador do modelo e hash dos pesos; prompts de sistema e de ferramentas; índice de recuperação e versões dos dados de origem; conjuntos de avaliação; arquivos de configuração e de políticas.
+
+**EX041.** Executar 300 casos reservados de injeção (nunca usados para ajuste) em cada candidato; métrica: taxa de propostas e de execuções de chamadas de ferramenta não autorizadas; limiar: propostas ≤ 2%, execuções 0; ação: bloquear a liberação e notificar o responsável se for excedido.
+
+**EX042.** O comportamento do modelo depende do prompt inteiro; uma frase que incentivava concluir o objetivo elevou a prioridade de qualquer instrução no contexto, inclusive textos injetados nos boletins.
+
+**EX043.** Confidencialidade: moderada (dados dos sensores e pesos revelam as operações). Integridade: crítica (falsos negativos deixam passar rolamentos superaquecidos; falsos positivos desperdiçam manutenção). Disponibilidade: moderada a alta (a perda do monitoramento obriga a verificações manuais).
+
+**EX044.** Ameaça: um concorrente; vulnerabilidade: saídas de API ilimitadas e detalhadas; impacto: perda de propriedade intelectual e acesso de caixa-branca para ataques posteriores; controle: autenticação, cotas por cliente, minimização das saídas, monitoramento de abuso.
+
+**EX045.** Objetivo: comprometimento de privacidade/confidencialidade (extração de modelo). Capacidade: acesso por consultas, conhecimento de caixa-preta.
 
 <a id="references"></a>
 ## Referências
