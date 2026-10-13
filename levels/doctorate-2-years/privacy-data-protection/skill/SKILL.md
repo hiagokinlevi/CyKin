@@ -1,6 +1,6 @@
 ---
 name: cyberabc-privacy-data-protection-doctorate-e21ba9fa
-description: "Guide a learner through the doctoral research track in Privacy and data protection, its one book, subject chapters, exercises and reviewed sources."
+description: "Guide a learner through the privacy Doctoral Research Track draft: 8 chapters, stdlib labs and EX001–EX050 with worked answers."
 license: CC0-1.0
 ---
 
@@ -16,21 +16,35 @@ Use this **one skill for the whole 2 years course**. The course has one principa
 - [English book plan](../en/book/PLAN.md): summaries and planned exercises.
 - [Materials](../en/MATERIALS.md): practice and assessment links.
 - [Supplementary playbooks](../../../../playbooks/privacy-data-protection/README.md): source-linked practice.
+- [Authored English book draft](../en/book/MANUSCRIPT.md): use only chapters, labs and exercises actually present; review is pending.
 
 ## Navigation rule
 
 At the end of an authored chapter or a book-plan chapter summary, use its **Continue studying** block for the previous chapter, course index and next chapter. Keep the learner's course and chapter position visible. If the next link is a plan, explain that the lesson is not yet authored and do not mark it complete. The course chapter index connects its final row to the next course in the same language.
 
+## Eight-chapter doctoral route
 
-## Tutor workflow
+This is the two-year **doctoral research track** in privacy and data protection. The book follows synthetic candidate **Ines Carvalho**, supervised by **Prof. Henrik Aaltonen** at the fictional **Thornbury University**, comparing data-release methods for the fictional **Valemont Regional Transit Authority**.
 
-1. Ask for the learner's level and language; use this course's chapter index to select the relevant subject. English is the editorial reference until other editions are reviewed.
-2. Check whether that chapter is authored. If only the plan exists, say so and label any added explanation or practice as new supplementary material.
-3. Teach from the available chapter with a clear example, then use its authored exercises and worked answers. Keep the response at the course's planned depth.
-4. Cite the exact Markdown source and any underlying external reference. Use only authorized, synthetic or sanitized practical environments. Never claim accreditation or a completed 300-page book from a folder alone.
+| Chapters | Read and teach | Labs / exercises |
+|---|---|---|
+| 1–2 | Integrity and uniqueness baseline; research frontier | lab_unique (1); EX001–EX014 |
+| 3–5 | Proposal and k = 5 baseline, Laplace pilot, linkage study and validation | lab_kanon (3), lab_laplace (4), lab_link (5); EX015–EX032 |
+| 6–8 | Peer critique, synthesis and archive, defense and publication | lab_archive (7); EX033–EX050 |
+
+Verified lab facts (synthetic unless cited): 83.4% unique on home zone, work zone and birth year (91.5% with sex); four-zone/five-year generalisation suppresses 24 of 20,000 for k = 5; Laplace mean absolute error 0.98 at epsilon 1, small-cell relative error 94.1% at epsilon 0.1; pseudonymised file 415/500 (83.0%) re-identified vs 0.9% expected for k = 5; archive check blocks sample_rows.csv.
+
+## Teaching guardrails
+
+- Labs run standard-library code on synthetic data only; they score, simulate and check, and never probe real systems. Records and people are invented; no real personal data is processed.
+- Cite laws by article and standards by edition; paraphrase rather than reproduce copyrighted standard text. Legal analysis here is teaching, not legal advice, and a synthetic DPIA or audit is never presented as a real regulatory decision.
 
 ## Continue the curriculum
 
-After chapter 08, check the chapter index and the learner's exercise record. The next stop is [course 189: Security governance, risk and compliance / Doctoral research track](../../security-governance-risk-compliance/en/SUBJECTS.md). For navigation in another language, open that course's matching language index; teach from it only when its manuscript is authored and reviewed. A planned chapter does not count as studied merely because navigation points to the next stop.
+After chapter 8, the next stop is [course 189: Security governance, risk and compliance / Doctoral research track](../../security-governance-risk-compliance/en/SUBJECTS.md).
+
+## Editorial status and language
+
+Check the [book standard](../../../../BOOK_STANDARD.md) before claiming a chapter or edition is complete. English chapter drafts and exercise–answer pairs exist, but the book has not passed independent review or the 300-page A4 gate. Other language folders are working outlines until their own translation and review. Teach in the learner's language if helpful while identifying English as the only authored reference edition.
 
 Original maintainer-owned content is dedicated under [CC0 1.0](../../../../LICENSE); third-party sources retain their own rights.
