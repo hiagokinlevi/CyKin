@@ -295,7 +295,7 @@ No Millbrook, o dossiê de entrega do empreiteiro do BMS é o ponto de partida, 
 
 ### 4.6 Coluna de consequência
 
-Escreva em palavras simples a consequência clínica de cada dispositivo, combinada com os líderes da manutenção e clínicos, para que as prioridades fiquem claras para quem não é especialista.
+Escreva em palavras simples a consequência clínica de cada dispositivo, combinada com os líderes da manutenção e clínicos, para que as prioridades fiquem claras para quem não é especialista; como observa a seção 4.1, é o campo que diz quão urgente é um achado.
 
 Por exemplo: AHU-OT1, o centro cirúrgico 1 perde o controle de pressão; MGAS-PANEL, a equipe não é avisada de uma falha no suprimento de oxigênio; LIFT-CTRL, transferências de pacientes entre andares atrasadas. A coluna orienta depois a ordem do trabalho no relatório de risco, então a sua redação deve ser clara para gestores que nunca viram os equipamentos. Revise a redação anualmente.
 

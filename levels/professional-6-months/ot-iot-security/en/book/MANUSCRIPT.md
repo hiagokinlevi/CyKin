@@ -283,7 +283,7 @@ At Millbrook the handover file from the BMS contractor is the starting point, bu
 
 ### 4.6 Consequence column
 
-Write the clinical consequence in plain words for each device, agreed with estates and clinical leads, so priorities are clear to non-specialists.
+Write the clinical consequence in plain words for each device, agreed with estates and clinical leads, so priorities are clear to non-specialists; as 4.1 notes, it is the field that tells you how urgent a finding is.
 
 For example: AHU-OT1, theatre 1 loses pressure control; MGAS-PANEL, staff not warned of an oxygen supply fault; LIFT-CTRL, delayed patient transfers between floors. The column later drives the order of work in the risk report, so its wording should be clear to managers who have never seen the plant. Review the wording yearly.
 
