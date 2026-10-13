@@ -1243,7 +1243,7 @@ Amara explains this in staff awareness material: the padlock means the connectio
 
 Publicly trusted certificates are recorded in public logs. Searching them for names resembling HCHT's domains can reveal lookalike sites early — an ethical, passive OSINT method.
 
-Amara runs a weekly search for names close to HCHT's domains and its hospitals' names. New matches are checked by viewing public records only; live sites are not visited from HCHT laptops. Confirmed lookalikes are reported to the email team for blocking and, where appropriate, to the registrar for takedown, with the evidence recorded. Results are kept in the team's records.
+Amara tries occasional manual searches for names close to HCHT's domains and its hospitals' names; turning them into a regular process later becomes her capstone. New matches are checked by viewing public records only; live sites are not visited from HCHT laptops. Confirmed lookalikes are reported to the email team for blocking and, where appropriate, to the registrar for takedown, with the evidence recorded. Results are kept in the team's records.
 
 ### 17.5 Protecting intelligence
 
@@ -2270,6 +2270,8 @@ You will (1) reconstruct an intrusion timeline across kill-chain phases; (2) dis
 
 Hutchins et al. defined phases: reconnaissance, weaponization, delivery, exploitation, installation, command and control, and actions on objectives. Placing timestamped events into phases shows the intrusion's tempo and where defenders could have acted.
 
+Amara uses the phases as columns in a simple table, with each event placed in one phase and its evidence source noted beside it. Phases with no events are left visible rather than removed, since an empty phase may mean the attacker skipped it or that HCHT has no logs that would show it.
+
 ### Lab — ordering phases
 
 ```python
@@ -2302,21 +2304,31 @@ span: 2026-09-02 18:00 -> 2026-09-03 10:02
 
 The script orders five synthetic events: weaponization at 2026-09-02 18:00, delivery at 09:30 the next day, exploitation at 09:41, installation at 09:45 and command and control at 10:02. The span is 2026-09-02 18:00 to 2026-09-03 10:02.
 
+Amara checks each timestamp against its source log and confirms that all five are in UTC before ordering them. Ordering is simple, but a single event in local time would have placed command and control before exploitation, which makes no sense and would mislead anyone reading the timeline. She also records which log provided each event.
+
 ### 31.3 A labelling caution
 
 The "weaponization" event is actually the registration of a lookalike domain. ATT&CK classifies that as resource development — Acquire Infrastructure (T1583) — which happens before the intrusion. The kill chain's weaponization phase strictly means pairing an exploit with a deliverable payload. Analysts should say which framework's terms they use; here the event is better called preparation.
+
+Amara adds a note to the table explaining the choice of terms. Using the precise term keeps the timeline accurate for readers who know either framework, and it avoids implying that the attacker had built a payload by that point.
 
 ### 31.4 Tempo
 
 From delivery to command and control took 32 minutes. That window tells HCHT that alerting on the first phases must reach a human within minutes, not the next day.
 
+Amara checks how long HCHT's current alerts take to reach a person and finds that some email alerts are reviewed only the next morning. The tempo of this intrusion shows that delay would let an attacker reach command and control long before anyone looked. The team moves high-priority email and endpoint alerts to the on-call phone during working hours and reviews the rule after a month.
+
 ### 31.5 Opportunities
 
 Domain monitoring could flag registration; email filtering could block delivery; endpoint controls could stop installation; DNS monitoring could catch command traffic.
 
+Amara compares each opportunity with HCHT's existing controls and finds that only email filtering is in place for this type of attack. Domain monitoring is the subject of her capstone; DNS monitoring needs a decision from the network team. She ranks the opportunities by cost and by how early they act, since stopping an intrusion at delivery is far cheaper than responding after installation. The ranking goes to the security lead.
+
 ### 31.6 Presenting timelines
 
 A good timeline figure uses one time zone, labels each event with its evidence source, and marks gaps where nothing is known. Readers then see not only what happened but where the record is thin, which guides the next questions.
+
+Amara's figure for the synthetic incident marks the gap before delivery. Nothing is recorded between the domain registration and the phishing email, about fifteen hours, so the figure shows that period as unknown rather than quiet. Each event label names its log source, and the caption states the time zone. Readers asked whether HCHT could have seen earlier activity, which is the question the gap is meant to raise.
 
 ### Worked example
 
@@ -2354,25 +2366,37 @@ You will (1) work with legal, privacy, clinical and communications colleagues; (
 
 Lawyers advise on data protection, contracts with intelligence providers and obligations to report incidents. They need facts and uncertainty stated clearly, not jargon.
 
+Amara learns to write for lawyers by stating what is known, what is assumed and what is unknown, each in plain sentences. When a credential dump was reported, her note to the legal team listed the number of accounts, the source's reliability grade and the date, so they could decide on reporting duties without needing to understand the technical detail. The lawyers asked two clarifying questions and decided quickly.
+
 ### 32.2 Privacy
 
 The data protection officer decides on personal-data processing, retention and breach notification. CTI involving personal data — credential dumps, phishing samples — goes through them.
+
+Amara involves the officer early rather than after the work is done. When she proposed storing redacted phishing samples for research, the officer agreed a purpose, a retention period and access limits before any were kept. The officer also reviews the redaction script's tests, which gives both teams confidence that personal data is not shared through HSSC.
 
 ### 32.3 Clinical leadership
 
 Clinicians decide on patient-safety trade-offs. If intelligence suggests isolating a laboratory system, the clinical lead weighs that against delayed test results. CTI provides the threat picture; clinicians decide.
 
+Amara's role in such decisions is to describe the threat clearly, with its likelihood and confidence, and to list the options with their security effect. She does not recommend overriding clinical judgment. In one case, the clinical lead chose to keep a laboratory system online with extra monitoring rather than isolate it, and the CTI team arranged the monitoring that afternoon.
+
 ### 32.4 Communications
 
 If an incident becomes public, communications staff need accurate, approved facts. CTI analysts should never speak to media or post publicly about incidents.
+
+Amara supplies facts to the communications team only through her supervisor and the incident lead, who approve what is released. She avoids speculation in anything that might be passed on, such as guesses about who was responsible. If a journalist contacts her directly, she refers them to the communications team without comment, as HCHT's policy requires. Accuracy protects HCHT's reputation.
 
 ### 32.5 Procurement
 
 Supplier risk assessments benefit from intelligence about supplier compromises. Procurement needs short, sourced summaries they can include in contracts and reviews.
 
+Amara writes these summaries in a page or less, citing public sources and avoiding restricted material unless its TLP label allows it. Each summary states what happened at the supplier, whether HCHT uses the affected product and what questions procurement could ask. Procurement uses the questions in contract renewals, and two suppliers have since added incident notification clauses. The summaries are filed with each supplier record.
+
 ### 32.6 Shared vocabulary
 
 Words carry different meanings across professions. "Incident" for clinicians may mean patient harm; for security, any policy breach. "Confidential" has a legal meaning for lawyers that differs from a TLP label. Agree a small glossary for joint work and define terms on first use in every cross-team note.
+
+Amara keeps a joint glossary with the legal and clinical teams. It has about twenty terms, each with the meaning used by each team where they differ. Amara links it from every cross-team note, and when a misunderstanding happens she adds the term that caused it. The glossary has already prevented one confusion over the word incident.
 
 ### Human resources and insiders
 
@@ -2414,25 +2438,37 @@ You will (1) analyse coded data with simple statistics; (2) measure inter-coder 
 
 After coding reports, build a table of technique counts by period or sector. Present counts and denominators. A simple bar chart works if axes are labelled and the sample size is visible.
 
+Amara adds the denominator to every bar label and keeps the axes starting at zero, so small differences are not exaggerated. Her table for one quarter shows phishing in most reports, but with only a few reports per month the monthly bars jump around. She shows the quarter as a whole instead and explains why.
+
 ### 33.2 Agreement
 
 Percentage agreement between two coders is easy but inflated by chance. Cohen's kappa corrects for agreement expected by chance. Values near 0 mean chance-level agreement; values above roughly 0.6 are often treated as substantial, though thresholds are conventions.
+
+Amara reports both figures for her coding. Her two coders agree on most reports, but the kappa is lower than the raw agreement suggests, because most reports contain phishing and agreeing on it is easy. Reporting both shows readers how much of the agreement reflects the coding scheme and how much reflects the sample. Codes with low agreement are discussed and their definitions rewritten.
 
 ### 33.3 Uncertainty
 
 With small samples, report ranges or say "too few to compare". Do not run significance tests on a handful of reports and present them as findings.
 
+Amara's quarterly comparison has fewer than ten reports per period, so she reports counts side by side and states that the difference could easily arise by chance. She suggests pooling several quarters before drawing conclusions about trends. This honest framing is more useful to HSSC than a test result that would look precise but rest on almost no data.
+
 ### 33.4 Methods section
 
 Describe sources, inclusion criteria, dates, coding scheme, coders, agreement and limitations. A reader should be able to repeat the study with the same public sources.
+
+Amara writes her method paragraph alongside the analysis rather than at the end, so details are recorded while fresh. It names the HSSC and public sources, the date range, the coding scheme with its version, the two coders and the kappa value. Limitations come last and are specific, such as the reliance on reports that members chose to share.
 
 ### 33.5 Open materials
 
 Share coding sheets and scripts where licences allow, removing restricted content. Public sources can be listed; TLP-restricted ones cannot.
 
+Amara publishes her coding sheet for public reports and her scripts, with restricted entries removed. For HSSC reports, she lists only the number used and the period, so readers know the material existed without seeing it. HSSC's coordinator checks the release before it goes out. Other students have since reused her scripts on their own samples. Licences are checked before release.
+
 ### 33.6 Negative results
 
 A study that finds no difference between periods is still informative if the method was sound. Report it plainly; hiding unexciting results distorts the literature and wastes the next student's effort repeating the same work.
+
+Amara's own comparison of two quarters found no clear change in phishing frequency. She reports the result in full, with the method and counts, and notes that the sample was too small to detect a modest change. The finding is still useful: it tells HSSC that a single quarter's rise in phishing reports should not be read as a trend, and it gives the next student a baseline to compare against.
 
 ### Choosing charts
 
@@ -2474,25 +2510,37 @@ You will (1) compare two intelligence-sharing arrangements; (2) build fair compa
 
 Students compare two arrangements: a sector sharing community like HSSC and a commercial intelligence feed. Criteria include relevance to health, timeliness, format (STIX/TAXII support), handling rules, cost, licence terms and feedback mechanisms.
 
+The comparison uses HCHT's own needs as the frame, since a feed that suits a bank may not suit a health trust. Students describe each arrangement in the same structure before scoring, so the reader understands both before seeing any numbers. Amara's group agrees the criteria with the lead first.
+
 ### 34.2 Fair criteria
 
 Define criteria before looking at evidence, so you do not pick criteria that favour a preferred answer. Weight them by HCHT's requirements, and publish the weights.
+
+Amara's group sets weights with the security lead, giving the most weight to health relevance and handling rules. The weights are published in the report with a sentence explaining each. A reviewer who disagrees can change a weight and see whether the recommendation changes, which makes the debate about priorities rather than about hidden scoring choices.
 
 ### 34.3 Evidence
 
 Use documentation, public descriptions, membership agreements available to HCHT and interviews with consenting staff. Do not request trial accounts under false pretences or share HCHT data to test a vendor.
 
+Amara's group uses the commercial vendor's public documentation and HCHT's existing contract terms, and interviews two HCHT analysts who have used both sources. They do not ask the vendor for a trial, since that could create obligations HCHT has not approved. Evidence is recorded in a table with its source for each criterion, so gaps are visible.
+
 ### 34.4 Scoring
 
 Score each criterion 0–3 with written evidence. Sensitivity check: does the recommendation change if one weight changes? If yes, say so.
+
+Amara's group scores each criterion with one sentence of evidence and runs the sensitivity check by doubling the weight on cost. The recommendation holds, which the report states. A criterion with no evidence is scored as unknown rather than guessed, and the report notes how it could be checked. The scoring table is attached to the report in full, with every evidence sentence, so readers can check any score.
 
 ### 34.5 Recommendation
 
 Recommend with trade-offs: "Keep HSSC as primary for health relevance; add the commercial feed only for vulnerability exploitation data if budget allows."
 
+The recommendation states what would change it, such as a drop in HSSC's timeliness or a cheaper feed. Amara's group presents it to the security lead with the full scoring table attached. The lead asks for the vulnerability data to be trialled through a free public source first, and the report is updated to record that decision. The lead reads it within a week.
+
 ### 34.6 Comparing like with like
 
 The community shares analysed reports; the feed delivers bulk indicators. Comparing raw volume favours the feed unfairly. Normalise where you can — for example, items that matched HCHT's inventory per month — so the comparison reflects usefulness, not size.
+
+Amara's group uses this normalised measure. For the commercial feed, she counts indicators that matched HCHT's products or logs in a month; for HSSC, she counts reports that led to an action. Both are small numbers, but they are comparable, and the feed's apparent advantage disappears. The report explains the measure and its limits.
 
 ### Stakeholder input
 
@@ -2534,29 +2582,43 @@ You will (1) write a capstone proposal for a CTI project; (2) define scope, deli
 
 Good capstones solve a real, bounded problem with lawful data. Amara proposes "A lookalike-domain early-warning process for HCHT using certificate-transparency data", which is passive, useful and achievable in one semester.
 
+Amara chooses the topic because her internship showed lookalike domains appearing in phishing aimed at HCHT, and because certificate logs are public and can be searched without touching any suspicious site. The topic also fits an existing gap in HCHT's controls, so the results could be used. Her supervisor agrees it is suitable.
+
 ### 35.2 Structure
 
 Background (the problem and why it matters), aim and questions, method, data and ethics, deliverables, timeline, risks and evaluation plan. Two to three pages is enough.
+
+Amara drafts each part in a page or less and keeps the risks and evaluation plan specific to her project. Her supervisor reads the first draft and asks her to narrow the aim from "detect lookalike domains" to "produce a weekly list of likely lookalikes for analyst review". The narrower aim can be achieved and evaluated within the semester.
 
 ### 35.3 Scope
 
 State what is in and out. In: generating candidate lookalike names, matching them against public certificate logs, triage rules, a weekly report. Out: contacting domain registrars, takedowns, active scanning of found sites.
 
+Takedowns are left out because they involve legal judgment and contact with third parties, which belong to HCHT's security lead. Active scanning is out because it would touch infrastructure that may belong to attackers or innocent parties. Writing these limits into the proposal protects Amara and helps reviewers see that the project is achievable and lawful.
+
 ### 35.4 Success measures
 
 Measurable: number of HCHT-relevant lookalikes found in a pilot month; share confirmed malicious or suspicious by the supervisor; analyst time per week. Set targets modestly.
+
+Amara chooses modest targets because the pilot month may contain few real lookalikes. If none are found, the analyst time measure still shows whether the process is practical, and the proposal says how such a result will be interpreted. Each measure has a definition and a data source, so the evaluation can be done without arguing about what counted.
 
 ### 35.5 Data and ethics
 
 Certificate-transparency data is public, but results may include domains registered by individuals for innocent reasons. Store only domain names and certificate dates; do not research registrants personally. Obtain supervisor and university approval.
 
+The proposal explains how found domains will be handled: they are passed to the supervisor for a decision, not investigated further by Amara. Results are stored on HCHT systems and deleted at the end of the project, except those the supervisor keeps for operational use. The university ethics committee confirms the project needs only light review because it uses public data about domains, not people.
+
 ### 35.6 Risks
 
 Data volume may exceed laptop capacity; many false positives may overwhelm triage; the supervisor may be unavailable during incidents. Each risk gets a mitigation.
 
+Amara plans to filter certificate data by name before downloading full records, which reduces volume. Triage rules will be tuned on the first week's results. If the supervisor is busy with an incident, the weekly report waits and the project timeline allows two missed weeks. Each mitigation has a trigger, so she knows when to act.
+
 ### 35.7 Supervision agreement
 
 Agree meeting frequency, how feedback will be given and what happens if HCHT priorities change mid-project. A one-paragraph agreement signed by student, academic tutor and workplace supervisor prevents later misunderstanding about ownership of results and what may be published.
+
+Amara's agreement says that HCHT owns the operational results, the university may publish the method and anonymised findings, and Amara may use the work in her thesis. It names monthly meetings with the workplace supervisor and fortnightly ones with the tutor. If HCHT's priorities change, the three agree a revised scope within two weeks and record it.
 
 ### Timeline planning
 
