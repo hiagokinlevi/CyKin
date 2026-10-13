@@ -227,12 +227,12 @@ Ana mapped 31 papers on prompt-injection defences into a table with columns: thr
 
 ### 2.7 Errors and limits
 
-Each of the confusions listed below leads to the wrong study. A jailbreak defence does not address data that smuggles instructions, which is Ana's problem. A framework category records that a risk exists, not how often it occurs. A certified bound says nothing about injected text or perturbations outside its norm. Loose reading of AI Act dates leads to wrong statements about which obligations apply now. Check your related-work chapter for each.
+Each of these confusions leads to the wrong study; check your related-work chapter for each:
 
-- Equating jailbreak (policy evasion) with prompt injection (instruction smuggling through data).
-- Citing a framework category as if it were an empirical finding.
-- Treating certified robustness bounds as covering threats outside their norm ball.
-- Reading the EU AI Act's application dates loosely; obligations phase in between 2025 and 2027.
+- Equating jailbreak (policy evasion) with prompt injection (instruction smuggling through data); a jailbreak defence does not address data that smuggles instructions, which is Ana's problem.
+- Citing a framework category as if it were an empirical finding; a category records that a risk exists, not how often it occurs.
+- Treating certified robustness bounds as covering threats outside their norm ball; a certified bound says nothing about injected text or perturbations outside its norm.
+- Reading the EU AI Act's application dates loosely; obligations phase in between 2025 and 2027, and a loose reading leads to wrong statements about which obligations apply now.
 
 ### Exercises
 
@@ -331,13 +331,13 @@ defence=separate  exfil_calls= 0/20 any_injected_call= 0/20 benign_calls=0/20
 
 ### 3.7 Errors and limits
 
-Each of the errors listed below lets the committee reject the proposal or, worse, approve a study that cannot answer its question. Without decision rules, any result can be called success. Metrics chosen after results invite bias. A weak baseline makes any defence look good, which is why Ana included allowlisting. Ethics text that lists no artefacts cannot be checked. Lab I is a rule engine, so its clean result says nothing about how a real model behaves.
+Each of these errors lets the committee reject the proposal or, worse, approve a study that cannot answer its question:
 
-- Hypotheses without effect sizes or decision rules.
-- Metrics chosen after seeing results.
-- A "baseline" that no competent practitioner would deploy.
-- Ethics sections that do not list artefacts.
-- Overgeneralising from a toy (like the lab) to real LLM behaviour.
+- Hypotheses without effect sizes or decision rules, so that any result can be called success.
+- Metrics chosen after seeing results, which invites bias.
+- A "baseline" that no competent practitioner would deploy; a weak baseline makes any defence look good, which is why Ana included allowlisting.
+- Ethics sections that do not list artefacts, which cannot be checked.
+- Overgeneralising from a toy (like the lab) to real LLM behaviour; Lab I is a rule engine, so its clean result says nothing about how a real model behaves.
 
 ### Exercises
 
