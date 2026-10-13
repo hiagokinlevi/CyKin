@@ -3,7 +3,7 @@
 - Language: English (`en`); master's course, two years; approximately 1,200 hours of planned study.
 - Editorial state: **draft**. Chapters 1–8 of 8 have authored teaching text, exercises EX001–EX050 and matching worked results. Independent review and the 300-page A4 verification remain open.
 - Audience: beginning researchers with strong domain foundations and research-method literacy who will formulate a question, evaluate prior work and produce reproducible findings in OT, IoT and cyber-physical security.
-- Relationship to neighbouring courses: the [master's critical-infrastructure course](../../../critical-sector-security/README.md) studies sectors and cascades; the [doctoral OT course](../../../doctorate-2-years/ot-iot-security/README.md) deepens research integrity and thesis practice. **This book** trains you to design and complete a master's dissertation on the control-system layer: PLCs, industrial protocols, physics-based detection, safety–security co-engineering and Purdue/ISA-62443 architecture.
+- Relationship to neighbouring courses: the [master's critical-infrastructure course](../../../critical-sector-security/README.md) studies sectors and cascades; the [doctoral OT course](../../../../doctorate-2-years/ot-iot-security/README.md) deepens research integrity and thesis practice. **This book** trains you to design and complete a master's dissertation on the control-system layer: PLCs, industrial protocols, physics-based detection, safety–security co-engineering and Purdue/ISA-62443 architecture.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text under [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Educational boundary: not an accredited degree. No authority to access real plants. All organizations, datasets, testbeds and numbers in worked examples are **synthetic** unless a sentence cites a public source.
 
@@ -608,7 +608,7 @@ Audit, prepare, disclose carefully, translate with confidence labels. The master
 
 ### Continue studying — chapter 08 of 08
 
-[← Chapter 07 (draft)](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Worked results ↓](#worked-results) · [Doctoral OT course →](../../../doctorate-2-years/ot-iot-security/en/SUBJECTS.md)
+[← Chapter 07 (draft)](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Worked results ↓](#worked-results) · [Doctoral OT course →](../../../../doctorate-2-years/ot-iot-security/en/SUBJECTS.md)
 
 <a id="worked-results"></a>
 
