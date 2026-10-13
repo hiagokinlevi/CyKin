@@ -69,6 +69,10 @@ Uma manhã pode não ser típica. As observações devem respeitar a privacidade
 - **EX002 — Post-its.** Como Lucas interpreta as senhas em post-its? *Rubrica:* 3 = um atalho diante de senhas demais e pouco tempo;; 2 = atalho;; 1 = descuido;; 0 = nenhuma.
 - **EX003 — Demanda concorrente.** Com o que as tarefas de segurança competem na recepção? *Rubrica:* 3 = o atendimento aos pacientes;; 2 = pacientes;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Entender os sistemas e a carga de trabalho vem antes de projetar qualquer controle de segurança.
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Redes e serviços de internet
@@ -104,6 +108,10 @@ As etiquetas perdem efeito se usadas em excesso. Os favoritos precisam de manute
 - **EX004 — Limite dos domínios parecidos.** Por que domínios parecidos passam nas verificações de autenticação? *Rubrica:* 3 = são domínios legítimos de propriedade dos atacantes;; 2 = domínio próprio;; 1 = nada;; 0 = nenhuma.
 - **EX005 — Benefício dos favoritos.** Por que os favoritos ajudam? *Rubrica:* 3 = os funcionários nunca seguem links de e-mail para fazer login;; 2 = evitar links;; 1 = nada;; 0 = nenhuma.
 - **EX006 — Fator de adoção.** Que pistas têm mais chance de ser adotadas? *Rubrica:* 3 = as que economizam tempo;; 2 = tempo;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Os serviços de internet criam brechas para o engano, e sinais simples ajudam a equipe.
 
 <a id="ch-03"></a>
 
@@ -161,6 +169,10 @@ As categorias dependem de quem revisa. Scripts precisam de manutenção.
 - **EX008 — Categoria principal.** Que categoria foi a mais comum no laboratório? *Rubrica:* 3 = fake invoice (fatura falsa), com 9;; 2 = faturas;; 1 = nada;; 0 = nenhuma.
 - **EX009 — Remoção do assunto.** Por que remover os assuntos dos e-mails da exportação? *Rubrica:* 3 = podem conter nomes de pacientes;; 2 = privacidade;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Scripts simples e testados economizam tempo quando são construídos para tratar os dados com segurança.
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Modelos de dados
@@ -197,6 +209,10 @@ Códigos aleatórios ainda podem ser ligados por meio de outros dados. As catego
 - **EX011 — Valores fixos.** Por que usar valores permitidos fixos? *Rubrica:* 3 = para evitar que variações de grafia dividam as contagens;; 2 = consistência;; 1 = nada;; 0 = nenhuma.
 - **EX012 — Código de quem reporta.** Por que usar um código aleatório de quem reporta? *Rubrica:* 3 = contar quem reporta repetidamente sem identificar;; 2 = anonimato;; 1 = nomes;; 0 = nenhuma.
 
+### Síntese
+
+Um modelo de dados claro, com valores fixos e o mínimo de dados pessoais, sustenta análises úteis.
+
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Letramento em segurança
@@ -232,6 +248,10 @@ Os tipos de ataque mudam. A conscientização se desgasta.
 - **EX013 — Princípios da ligação do fornecedor.** Que princípios de influência a falsa ligação do fornecedor usa? *Rubrica:* 3 = autoridade e urgência;; 2 = dois;; 1 = afinidade;; 0 = nenhuma.
 - **EX014 — Hábitos explorados.** Que hábitos dos funcionários os atacantes exploram? *Rubrica:* 3 = ser prestativo e rápido;; 2 = prestatividade;; 1 = nada;; 0 = nenhuma.
 - **EX015 — Conscientização e algo mais.** O que deve acompanhar a conscientização? *Rubrica:* 3 = procedimentos práticos, como ligar de volta;; 2 = procedimentos;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+O letramento em segurança explica as técnicas e por que elas funcionam, e combina conscientização com procedimentos.
 
 <a id="ch-06"></a>
 
@@ -284,6 +304,10 @@ Leitores de crachá custam dinheiro. Atualizações noturnas exigem computadores
 - **EX017 — Uso de máquinas virtuais.** Por que testar em máquinas virtuais? *Rubrica:* 3 = podem ser restauradas sem arriscar os sistemas dos pacientes;; 2 = seguro;; 1 = nada;; 0 = nenhuma.
 - **EX018 — Redução de avisos.** Quantos avisos diurnos por semana o laboratório mostrou antes e depois? *Rubrica:* 3 = 23 e 3;; 2 = menos;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+As configurações do sistema operacional podem tornar as ações seguras rápidas e reduzir os alertas que interrompem.
+
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Fundamentos de identidade e acesso
@@ -320,6 +344,10 @@ Mudanças de função exigem atualizações. Chaves podem ser perdidas.
 - **EX020 — Escolha da chave.** Por que recomendar chaves para as recepcionistas? *Rubrica:* 3 = dividem mesas e podem não ter celular do trabalho;; 2 = sem celular;; 1 = nada;; 0 = nenhuma.
 - **EX021 — Etapa de saída.** Quando a conta de quem sai é desativada? *Rubrica:* 3 = no mesmo dia em que o RH avisa a TI;; 2 = mesmo dia;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Menor privilégio, segundos fatores utilizáveis e gestão rotineira de contas protegem os dados dos pacientes.
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Fundamentos de arquitetura de segurança
@@ -355,6 +383,10 @@ Camadas não testadas dão falsa confiança. Diagramas simplificam.
 - **EX022 — Achado nos backups.** Que problema Lucas encontrou nos backups? *Rubrica:* 3 = nunca tinham sido testados;; 2 = não testados;; 1 = nada;; 0 = nenhuma.
 - **EX023 — Camada do reporte.** Que camada o reporte dos funcionários fornece? *Rubrica:* 3 = detecção;; 2 = detecção;; 1 = prevenção;; 0 = nenhuma.
 - **EX024 — Contenção de pagamentos.** O que contém uma falsa mudança de pagamento? *Rubrica:* 3 = um bloqueio com verificação por retorno de ligação;; 2 = retorno de ligação;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+A arquitetura em camadas inclui as pessoas e contém os erros individuais.
 
 <a id="ch-09"></a>
 
@@ -408,6 +440,10 @@ E-mails não reportados ficam de fora. As amostras mensais são pequenas.
 - **EX026 — Medianas no laboratório.** Que medianas o laboratório calculou? *Rubrica:* 3 = 11 minutos até o reporte e 190 minutos até o veredito;; 2 = veredito lento;; 1 = nada;; 0 = nenhuma.
 - **EX027 — Correção do veredito.** Que correção o veredito lento sugere? *Rubrica:* 3 = notificações de novos reportes;; 2 = alertas;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Boas medidas focam a velocidade do reporte e do veredito e são apresentadas de forma justa.
+
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Fatores humanos e política cibernética: orientação
@@ -443,6 +479,10 @@ Mudanças de política precisam de aprovação. A linguagem simples pode perder 
 - **EX028 — Conflito de política.** Que duas regras de política conflitam? *Rubrica:* 3 = trocas mensais e proibição de anotar;; 2 = conflito;; 1 = nada;; 0 = nenhuma.
 - **EX029 — Lacuna do reporte.** O que falta na política de reporte? *Rubrica:* 3 = como reportar;; 2 = método;; 1 = nada;; 0 = nenhuma.
 - **EX030 — Declaração ausente.** Que declaração de acolhimento está ausente? *Rubrica:* 3 = que reportar erros é bem-vindo;; 2 = não atribuição de culpa;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+A política molda o comportamento, e políticas que ignoram as pessoas criam o comportamento que proíbem.
 
 <a id="ch-11"></a>
 
@@ -482,6 +522,10 @@ As ordenações mudam conforme os serviços mudam. Os perfis generalizam.
 
 - **EX033 — Decisão de pagamento.** Que decisão única determina o risco de pagamento? *Rubrica:* 3 = aceitar a alteração de um dado bancário;; 2 = dado bancário;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Os ativos incluem a confiança, e os contextos de decisão revelam onde os controles são mais necessários.
+
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Fatores humanos e política cibernética: fluxos de dados
@@ -519,6 +563,10 @@ A integração de sistemas pode ser cara. Os especialistas precisam estar cadast
 - **EX035 — Correção do encaminhamento.** O que substitui o atalho do e-mail pessoal? *Rubrica:* 3 = um modelo seguro de encaminhamento com um clique;; 2 = modelo;; 1 = nada;; 0 = nenhuma.
 
 - **EX036 — Argumento persuasivo.** O que mais convenceu a gerente da clínica? *Rubrica:* 3 = as estimativas de economia de tempo;; 2 = tempo;; 1 = segurança;; 0 = nenhuma.
+
+### Síntese
+
+Fluxos mais seguros tornam a rota segura a rota mais rápida.
 
 <a id="ch-13"></a>
 
@@ -573,6 +621,10 @@ As notas são subjetivas. Os cenários podem não prever métodos novos.
 - **EX038 — Cenário principal.** Que cenário ficou em primeiro no laboratório? *Rubrica:* 3 = a alteração falsa de fornecedor, com nota 9;; 2 = fornecedor;; 1 = nada;; 0 = nenhuma.
 
 - **EX039 — Regra de acesso remoto.** Que regra combate a ligação do falso fornecedor? *Rubrica:* 3 = retorno de ligação num número conhecido mais aprovação de um gestor;; 2 = retorno de ligação;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Os cenários tornam os riscos concretos e conectam cada um aos controles que o tratam.
 
 <a id="ch-14"></a>
 
@@ -630,6 +682,10 @@ As respostas do questionário são autodeclaradas. Seis entrevistas são poucas.
 
 - **EX042 — Relato da clínica.** Por que a clínica parou de reportar? *Rubrica:* 3 = nunca teve retorno;; 2 = falta de retorno;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Questionários curtos e entrevistas, juntos, revelam barreiras e apontam ações claras.
+
 <a id="ch-15"></a>
 
 ## Capítulo 15 — Fatores humanos e política cibernética: laboratório guiado
@@ -681,6 +737,10 @@ Condições calmas de laboratório. Amostra pequena.
 - **EX044 — Tempos do laboratório.** Que tempos médios o laboratório mostrou? *Rubrica:* 3 = 45 segundos encaminhando e 7 segundos com o botão;; 2 = 38 economizados;; 1 = nada;; 0 = nenhuma.
 
 - **EX045 — Falta de confirmação.** Que problema a falta de confirmação causou? *Rubrica:* 3 = os voluntários não tinham certeza se o reporte foi enviado;; 2 = incerteza;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Um teste de usabilidade guiado mostra grandes ganhos e correções específicas.
 
 <a id="ch-16"></a>
 
@@ -735,6 +795,10 @@ Grupos não aleatórios. Períodos curtos.
 
 - **EX048 — Causa do atraso.** Por que algumas clínicas atrasaram? *Rubrica:* 3 = computadores mais antigos;; 2 = hardware;; 1 = acaso;; 0 = nenhuma.
 
+### Síntese
+
+Comparações naturais fortalecem as avaliações de antes e depois a baixo custo.
+
 <a id="ch-17"></a>
 
 ## Capítulo 17 — Fatores humanos e política cibernética: ferramentas
@@ -787,6 +851,10 @@ Vereditos automáticos podem errar. Limites de retenção perdem o histórico.
 
 - **EX051 — Carga de revisão no laboratório.** Quantos dos 60 reportes precisaram de revisão humana no laboratório? *Rubrica:* 3 = 9;; 2 = 15%;; 1 = 60;; 0 = nenhuma.
 
+### Síntese
+
+As ferramentas devem ser escolhidas pela facilidade, configuradas para a privacidade e automatizadas para acelerar o retorno.
+
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Fatores humanos e política cibernética: controles
@@ -824,6 +892,10 @@ Os cartões podem sumir. Quem liga pode ficar agressivo.
 - **EX053 — Linha de apoio.** Que linha foi acrescentada aos cartões? *Rubrica:* 3 = os funcionários terão apoio por tomar tempo para verificar;; 2 = apoio;; 1 = nada;; 0 = nenhuma.
 
 - **EX054 — Ética da encenação.** Por que usar encenação em vez de testes secretos? *Rubrica:* 3 = dá confiança sem engano nem dano à confiança;; 2 = ética;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Os procedimentos de verificação eliminam julgamentos difíceis e são mais bem testados abertamente.
 
 <a id="ch-19"></a>
 
@@ -884,6 +956,10 @@ Os limiares podem ser arbitrários. As tendências precisam de períodos mais lo
 
 - **EX057 — Padrão dos lembretes.** Que padrão se seguiu às mensagens de reforço? *Rubrica:* 3 = os reportes subiram e depois se estabilizaram;; 2 = alta;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+O monitoramento com limiares transforma medidas em ação oportuna.
+
 <a id="ch-20"></a>
 
 ## Capítulo 20 — Fatores humanos e política cibernética: solução de problemas
@@ -922,6 +998,10 @@ As visitas tomam tempo. As verificações podem deixar passar outros add-ins.
 
 - **EX060 — Verificação pós-atualização.** O que o prestador faz agora depois das atualizações? *Rubrica:* 3 = verifica se o botão existe em todos os computadores;; 2 = verificação;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+A resolução de problemas separa as causas técnicas das humanas e corrige as raízes, e não os sintomas.
+
 <a id="ch-21"></a>
 
 ## Capítulo 21 — Fatores humanos e política cibernética: integração de serviços
@@ -959,6 +1039,10 @@ Os fornecedores podem ignorar as cartas. As planilhas se desatualizam.
 - **EX062 — Carta aos fornecedores.** O que a carta aos fornecedores explica? *Rubrica:* 3 = a Brightwell sempre retorna a ligação em números conhecidos;; 2 = retorno de ligação;; 1 = nada;; 0 = nenhuma.
 
 - **EX063 — Manutenibilidade.** Quem precisa conseguir manter as integrações? *Rubrica:* 3 = a gerente da clínica e o prestador de TI;; 2 = equipe pequena;; 1 = uma equipe de segurança;; 0 = nenhuma.
+
+### Síntese
+
+A integração liga reporte, resposta, finanças e fornecedores de formas que uma equipe pequena consegue sustentar.
 
 <a id="ch-22"></a>
 
@@ -1017,6 +1101,10 @@ Os scripts quebram quando os sistemas mudam. Os logs precisam ser lidos.
 
 - **EX066 — Regra de nova tentativa.** Que regra foi acrescentada depois da execução perdida? *Rubrica:* 3 = tentar de novo no dia seguinte;; 2 = nova tentativa;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+A automação ajuda quando cuida do trabalho rotineiro, mantém pessoas onde o julgamento importa e é ela própria monitorada.
+
 <a id="ch-23"></a>
 
 ## Capítulo 23 — Fatores humanos e política cibernética: avaliação
@@ -1072,6 +1160,10 @@ Efeitos de novidade. As amostras do questionário variam ao longo do tempo.
 
 - **EX069 — Condição das simulações.** Em que condições as simulações poderiam ser usadas? *Rubrica:* 3 = anunciadas, com regras combinadas com os funcionários;; 2 = combinadas;; 1 = secretas;; 0 = nenhuma.
 
+### Síntese
+
+A avaliação combina medidas e vozes e leva a próximos passos honestos.
+
 <a id="ch-24"></a>
 
 ## Capítulo 24 — Métodos de pesquisa aplicada
@@ -1124,6 +1216,10 @@ Efeitos residuais. Poucas clínicas.
 
 - **EX072 — Totais do laboratório.** Que totais o laboratório comparou? *Rubrica:* 3 = 58 reportes com lembrete falado contra 39 com e-mail;; 2 = o falado, maior;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Pequenos estudos no local de trabalho podem responder a perguntas práticas com desenhos simples e éticos.
+
 <a id="ch-25"></a>
 
 ## Capítulo 25 — Ateliê de projeto em equipe
@@ -1162,6 +1258,10 @@ Testes pequenos com usuários. Os participantes podem se esforçar mais do que o
 
 - **EX075 — Pedido dos participantes.** O que os participantes pediram? *Rubrica:* 3 = letras maiores e um telefone;; 2 = legibilidade;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Um desenho em equipe testado com usuários reais produz orientações simples e utilizáveis.
+
 <a id="ch-26"></a>
 
 ## Capítulo 26 — Fatores humanos e política cibernética: passagem operacional
@@ -1199,6 +1299,10 @@ Os runbooks se desatualizam. Os sucessores têm outras atribuições.
 - **EX077 — Teste dos runbooks.** Como Lucas testou os runbooks? *Rubrica:* 3 = a gerente da clínica os seguiu sem ajuda;; 2 = simulação guiada;; 1 = nada;; 0 = nenhuma.
 
 - **EX078 — Razões ensinadas.** Por que ensinar as razões, além das etapas? *Rubrica:* 3 = para que os sucessores se adaptem quando as coisas mudam;; 2 = adaptação;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Os repasses precisam de donos, runbooks testados e sucessores que entendam o porquê.
 
 <a id="ch-27"></a>
 
@@ -1254,6 +1358,10 @@ Dois meses é pouco. A cultura muda devagar.
 
 - **EX081 — Causa herdada.** Por que os funcionários das clínicas novas tinham receio? *Rubrica:* 3 = o antigo dono punia quem clicava;; 2 = culpa;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+A validação verifica os resultados em novos contextos e pode revelar lacunas culturais que as ferramentas não conseguem corrigir.
+
 <a id="ch-28"></a>
 
 ## Capítulo 28 — Prática de campo
@@ -1291,6 +1399,10 @@ A supervisão varia. A reflexão exige honestidade.
 - **EX083 — Efeito posterior.** O que a recepcionista fez depois? *Rubrica:* 3 = reportou outra mensagem em poucos minutos;; 2 = reportou;; 1 = nada;; 0 = nenhuma.
 
 - **EX084 — Lição de linguagem.** O que Lucas decidiu mudar? *Rubrica:* 3 = usar uma linguagem mais simples;; 2 = linguagem simples;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+A prática supervisionada mostra como o respeito e a linguagem simples constroem o reporte.
 
 <a id="ch-29"></a>
 
@@ -1348,6 +1460,10 @@ As ferramentas precisam de manutenção. A nova verificação exige tempo.
 
 - **EX087 — Sinalizações do laboratório.** Quantos dos 40 fornecedores precisavam de nova verificação no laboratório? *Rubrica:* 3 = 7;; 2 = 7;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+A construção de um projeto final resolve um problema real, é testada com usuários e documentada para outras pessoas.
+
 <a id="ch-30"></a>
 
 ## Capítulo 30 — Avaliação do projeto final
@@ -1385,6 +1501,10 @@ Seis semanas é pouco. Os avaliadores podem favorecer apresentações polidas.
 - **EX089 — Tempo do retorno.** Como mudou a mediana do tempo do retorno de ligação? *Rubrica:* 3 = de cerca de seis para cerca de três minutos;; 2 = caiu pela metade;; 1 = nada;; 0 = nenhuma.
 
 - **EX090 — Contingência.** Qual é a contingência se a ferramenta cair? *Rubrica:* 3 = a lista impressa no escritório financeiro;; 2 = lista impressa;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+A avaliação do projeto final verifica efeitos reais e mostra como as ferramentas precisam se ajustar às pessoas para dar certo.
 
 <a id="worked-results"></a>
 

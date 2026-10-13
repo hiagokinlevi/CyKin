@@ -75,6 +75,10 @@ As funções podem derivar para a fiscalização. As metas precisam ser revisita
 
 - **EX005 — Portfólio.** O que o portfólio de Grace vai conter? *Rubrica:* 3 = procedimentos, análises e reflexões;; 2 = portfólio;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Os profissionais traduzem as ideias de segurança em termos humanos e capacitam, em vez de policiar.
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Fatores humanos e política cibernética: contexto de serviços e partes interessadas
@@ -117,6 +121,10 @@ As entrevistas refletem poucas vozes. As preocupações mudam.
 
 - **EX010 — Tabela de preocupações.** Por que registrar as preocupações das partes interessadas? *Rubrica:* 3 = para desenhar mudanças que as respondam;; 2 = insumo para o design;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+O contexto dos serviços e das partes interessadas mostra onde as pessoas decidem e o que as preocupa.
+
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Prática autorizada e manuseio de evidências
@@ -158,6 +166,10 @@ Os mandatos precisam de atualização. O manuseio de evidências precisa do apoi
 - **EX014 — Regra dos resumos.** O que fica de fora dos resumos para os gestores? *Rubrica:* 3 = quem reportou o quê;; 2 = identidade de quem reporta;; 1 = nada;; 0 = nenhuma.
 
 - **EX015 — Razão da privacidade.** Por que a privacidade incentiva o reporte? *Rubrica:* 3 = os funcionários não temem ser julgados;; 2 = confiança;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+A prática autorizada estabelece limites, trata as evidências com segurança e protege a privacidade.
 
 <a id="ch-04"></a>
 
@@ -219,6 +231,10 @@ Viés de autodeclaração. Oito conversas são poucas.
 
 - **EX020 — Divulgação dos resultados.** Quando Grace compartilhou os principais resultados com os funcionários? *Rubrica:* 3 = em duas semanas;; 2 = duas semanas;; 1 = nunca;; 0 = nenhuma.
 
+### Síntese
+
+Questionários simples e conversas estruturadas produzem prioridades fundamentadas na experiência da equipe.
+
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Fatores humanos e política cibernética: ferramentas e interpretação
@@ -276,6 +292,10 @@ Números pequenos variam. Os scripts precisam ser conferidos depois de mudanças
 
 - **EX025 — Pergunta melhor.** Que pergunta Grace ofereceu no lugar de qual equipe é a pior? *Rubrica:* 3 = onde as pessoas precisam de mais apoio;; 2 = apoio;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Ferramentas simples fornecem medidas úteis quando interpretadas com cuidado e de forma justa.
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Fatores humanos e política cibernética: fluxo operacional
@@ -318,6 +338,10 @@ A revisão duas vezes ao dia pode ser lenta durante campanhas. As reservas preci
 
 - **EX030 — Teste da reserva.** Como Grace testou o arranjo de reserva? *Rubrica:* 3 = tirando uma folga planejada e revisando depois;; 2 = ausência planejada;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Um fluxo de trabalho claro, com metas, donos e planos para os picos, mantém o reporte confiável.
+
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Fatores humanos e política cibernética: controles e verificação
@@ -359,6 +383,10 @@ Os roteiros podem soar frios. Os registros dos prestadores podem estar desatuali
 - **EX034 — Encenação.** Como o roteiro telefônico foi testado? *Rubrica:* 3 = encenação anunciada com um colega fazendo o papel de quem liga;; 2 = encenação;; 1 = teste secreto;; 0 = nenhuma.
 
 - **EX035 — Mudança no roteiro.** Por que o roteiro foi ajustado? *Rubrica:* 3 = soava ríspido para os parentes;; 2 = tom;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Os controles eliminam julgamentos difíceis, e a verificação com retorno os aprimora.
 
 <a id="ch-08"></a>
 
@@ -419,6 +447,10 @@ Os conjuntos de quase-incidentes são pequenos. Histórias de sucesso podem ince
 
 - **EX040 — Forma de divulgação.** Como o caso será compartilhado? *Rubrica:* 3 = de forma anônima, como história de sucesso;; 2 = sucesso;; 1 = com culpa;; 0 = nenhuma.
 
+### Síntese
+
+A análise sem culpados mostra as defesas em camadas funcionando e transforma quase-incidentes em aprendizado.
+
 <a id="ch-09"></a>
 
 ## Capítulo 9 — Comunicação, ética e relatórios
@@ -460,6 +492,10 @@ As mensagens mensais podem virar rotina. A atenção do conselho varia.
 - **EX044 — Temas de isca proibidos.** Que temas de isca são proibidos se houver simulações depois? *Rubrica:* 3 = salário, moradia ou saúde;; 2 = angústia;; 1 = nada;; 0 = nenhuma.
 
 - **EX045 — Conteúdo dos relatórios.** O que os relatórios de Grace incluem? *Rubrica:* 3 = resultados, controles verificados, quase-incidentes e ônus;; 2 = resultados;; 1 = atividades;; 0 = nenhuma.
+
+### Síntese
+
+Uma comunicação sem medo, decisões cuidadosas sobre simulações e um reporte honesto sustentam a confiança.
 
 <a id="ch-10"></a>
 
@@ -521,6 +557,10 @@ As amostras podem deixar passar problemas. Os logs precisam de revisão.
 
 - **EX050 — Correção do fornecedor.** O que o fornecedor acrescentou? *Rubrica:* 3 = um checklist padrão pós-atualização;; 2 = checklist;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Verificações de qualidade e um registro de melhorias transformam correções em melhorias duradouras do serviço.
+
 <a id="ch-11"></a>
 
 ## Capítulo 11 — Laboratório supervisionado
@@ -577,6 +617,10 @@ Amostra pequena. Os voluntários conheciam a tarefa.
 
 - **EX055 — Acompanhamento.** Que acompanhamento Grace planejou? *Rubrica:* 3 = verificar o reporte repetido depois de três meses;; 2 = acompanhamento;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Testes pequenos e justos sustentam melhorias baratas quando acompanhados de dados reais.
+
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Portfólio de prática e revisão final
@@ -618,6 +662,10 @@ Os portfólios podem ser seletivos. Seis meses é pouco.
 - **EX059 — Mentoria.** De quem Grace será mentora? *Rubrica:* 3 = de um colega que atua como sua reserva;; 2 = reserva;; 1 = nada;; 0 = nenhuma.
 
 - **EX060 — Lição da experiência.** Por que a experiência de Grace se mostrou útil? *Rubrica:* 3 = a segurança centrada nas pessoas depende de confiança e comunicação;; 2 = habilidades com pessoas;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Um portfólio mostra raciocínio e resultados, e o desenvolvimento contínuo sustenta a prática.
 
 <a id="worked-results"></a>
 

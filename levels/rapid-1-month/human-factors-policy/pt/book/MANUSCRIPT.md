@@ -99,6 +99,10 @@ As decisões precisam de continuidade. As equipes pequenas mudam com frequência
 
 - **EX013 — Terceira decisão.** Qual é a terceira decisão de Ruth? *Rubrica:* 3 = substituir o login compartilhado por contas individuais;; 2 = contas;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+A segurança em organizações pequenas começa pelas pessoas, por procedimentos simples e por uma cultura de reporte acolhedora.
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Escopo, permissão e prática segura
@@ -164,6 +168,10 @@ O escopo pode precisar de atualização. Os voluntários podem não ler os guias
 - **EX025 — Por que os hábitos importam mais.** Por que os hábitos seguros importam ainda mais nas organizações beneficentes? *Rubrica:* 3 = os voluntários podem ir embora se sentirem desconfiança;; 2 = voluntários;; 1 = nada;; 0 = nenhuma.
 
 - **EX026 — Resumo afixado.** Onde Ruth guarda seu resumo da prática segura? *Rubrica:* 3 = preso acima da sua mesa;; 2 = mesa;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Escopo claro, permissão e hábitos éticos tornam o trabalho de segurança confiável.
 
 <a id="ch-03"></a>
 
@@ -247,6 +255,10 @@ Os mapas se desatualizam. Os segundos aprovadores precisam de treinamento.
 
 - **EX038 — Lacuna de acesso à escala.** Que lacuna Ruth encontrou no acesso à escala? *Rubrica:* 3 = alguns funcionários que precisam dele não o têm;; 2 = acesso faltando;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Mapear sistemas, dados e pessoas revela pontos únicos de falha que correções simples podem eliminar.
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Fatores humanos e política cibernética: laboratório guiado e síntese aplicada
@@ -325,6 +337,10 @@ Teste pequeno. Os planos atrasam sem revisão.
 - **EX049 — Visão sobre testes enganosos.** Qual é a visão de Ruth sobre os testes enganosos? *Rubrica:* 3 = desnecessários e podem prejudicar a confiança;; 2 = desnecessários;; 1 = nada;; 0 = nenhuma.
 
 - **EX050 — Momento da revisão.** Quando Ruth deve revisar o plano? *Rubrica:* 3 = depois de três meses;; 2 = três meses;; 1 = nunca;; 0 = nenhuma.
+
+### Síntese
+
+Um teste seguro, um plano curto e medidas simples e gentis dão a uma pequena organização beneficente um começo sólido.
 
 <a id="worked-results"></a>
 
