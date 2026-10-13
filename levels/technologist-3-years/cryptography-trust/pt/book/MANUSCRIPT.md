@@ -1,7 +1,7 @@
 # Criptografia e Serviços de Confiança: Curso de Tecnólogo
 
 - Idioma: português do Brasil (`pt`); curso 077, curso de tecnólogo (3 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–23 de 30 já estão escritos em português, com os exercícios EX001–EX069 e suas resoluções com rubricas de 0 a 3 e 6 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 24–30 (EX070–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–30 de 30 têm texto didático escrito à mão; os exercícios EX001–EX090 têm resoluções correspondentes com rubricas de 0 a 3; os seis laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: implementadores e administradores de tecnologia.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios analisam logs, planejam renovações, verificam HMACs e chamam o scrypt do hashlib contra um vetor publicado; não implementam nenhuma cifra. Sistemas de produção usam bibliotecas avaliadas, clientes ACME, HSMs e produtos de fornecedores; nunca crie sua própria criptografia. Pessoas, organizações e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -30,9 +30,7 @@ Leia na ordem. Os capítulos acompanham uma estudante de tecnólogo pelos fundam
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) |
-
-Capítulos 24–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-24), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1182,11 +1180,305 @@ Comparações de antes e depois podem enganar quando outros fatores mudaram. Con
 
 A avaliação compara os resultados com as metas, anota os fatores de confusão e relata as lacunas com honestidade.
 
+<a id="ch-24"></a>
+
+## Capítulo 24 — Métodos de pesquisa aplicada
+
+### Objetivos de aprendizagem
+
+Você vai (1) enquadrar uma pequena questão de pesquisa aplicada; (2) coletar dados de forma ética a partir de sistemas que você está autorizado a usar; (3) tirar conclusões cautelosas.
+
+### 24.1 Enquadrar uma questão
+
+O curso de Rosa exige um pequeno estudo aplicado. Ela pergunta: quanto tempo os certificados da prefeitura levam para ser renovados depois dos alertas, e que fatores preveem os atrasos? A questão pode ser respondida com dados a que ela tem acesso, é útil para a prefeitura e é estreita o bastante para um semestre. Sua tutora, a Dr Imogen Hale, a ajuda a reescrever objetivos vagos, como "estudar a ICP", numa questão com variáveis mensuráveis: tempo do alerta até a renovação, tipo de certificado, equipe dona e se a renovação é automatizada. Ela também escreve que resultado a surpreenderia, o que a ajuda a perceber se está apenas procurando confirmação. A Dr Hale pede que ela liste os dados que não consegue obter, para que os limites sejam conhecidos desde o início.
+
+### 24.2 Coleta ética de dados
+
+Rosa obtém de Owen uma permissão por escrito para usar os dados dos chamados e do monitoramento. Ela remove os nomes dos funcionários, substituindo-os por rótulos de equipe, e armazena os dados apenas nos sistemas da prefeitura. Ela não coleta nenhum dado de cidadãos, já que não são necessários. Sua tutora confere o plano em relação às orientações de ética em pesquisa da politécnica. Rosa aprende que até os dados operacionais sobre colegas merecem cuidado, porque os resultados poderiam constranger pessoas se publicados sem cuidado. Ela combina com Owen que a prefeitura pode revisar o relatório antes da entrega, para pegar qualquer coisa que possa identificar pessoas ou revelar configurações sensíveis. Os dados brutos são apagados no fim do semestre, como o plano prometia.
+
+### 24.3 Conclusões cautelosas
+
+Em 41 renovações, as automatizadas foram concluídas em até um dia depois dos alertas, enquanto as manuais levaram uma mediana de seis dias. Rosa conclui que a automação está associada a uma renovação mais rápida, mas adverte que as equipes com automação também podem ter mais recursos, de modo que o estudo mostra uma associação, e não uma prova de causa. Ela relata quantos casos foram excluídos por falta de dados, e por quê. Sua tutora elogia a contenção e sugere um estudo de acompanhamento comparando as equipes antes e depois da automação. Ela também publica seu script de análise com dados de amostra sintéticos, para que outros possam repetir o método.
+
+### Exemplo resolvido
+
+Rosa estuda 41 renovações, descobre que as automatizadas terminam em até um dia contra uma mediana manual de seis dias e relata uma associação, e não uma causa.
+
+> **Caso sintético.** O estudo e os números são inventados.
+
+### Erros e limites
+
+Amostras pequenas dão resultados instáveis. Dados observacionais não conseguem provar causa sem um desenho cuidadoso.
+
+### Exercícios
+
+- **EX070 — Questão de pesquisa.** Qual era a questão de pesquisa de Rosa? *Rubrica:* 3 = quanto tempo as renovações levam depois dos alertas e que fatores preveem os atrasos;; 2 = questão;; 1 = só o tema;; 0 = nenhuma.
+
+- **EX071 — Passo ético.** Cite dois passos éticos que Rosa deu. *Rubrica:* 3 = dois entre permissão por escrito, nomes substituídos, dados mantidos nos sistemas da prefeitura, nenhum dado de cidadãos, conferência ética;; 2 = um;; 1 = nada;; 0 = nenhuma.
+
+- **EX072 — Limite da conclusão.** Por que Rosa não pode afirmar que a automação causa a renovação mais rápida? *Rubrica:* 3 = as equipes automatizadas também podem ter mais recursos; apenas associação;; 2 = fator de confusão;; 1 = pode afirmar;; 0 = nenhuma.
+
+### Síntese
+
+A pesquisa aplicada precisa de uma questão estreita, de um tratamento ético dos dados e de conclusões limitadas pelo desenho.
+
+<a id="ch-25"></a>
+
+## Capítulo 25 — Ateliê de projeto em equipe
+
+### Objetivos de aprendizagem
+
+Você vai (1) planejar um projeto em equipe sobre serviços de confiança; (2) dividir os papéis e acompanhar o trabalho; (3) revisar o trabalho uns dos outros quanto à segurança.
+
+### 25.1 O projeto
+
+A equipe de ateliê de Rosa, com quatro pessoas, recebe a tarefa de construir um painel interno que mostre a saúde dos certificados da prefeitura, usando os dados do inventário e do monitoramento. A equipe combina o escopo: visualizações somente leitura da expiração, da situação das renovações e dos achados de TLS; nenhuma capacidade de alterar sistemas. Restringir o escopo reduz o risco, já que um painel capaz de disparar ações precisaria de controles muito mais fortes. Eles escrevem um termo de abertura do projeto de uma página, com metas, escopo, papéis e um cronograma de quatro iterações de duas semanas. O termo também lista o que está fora do escopo, para que os pedidos de novos recursos possam ser recusados com educação apontando para ele.
+
+### 25.2 Papéis e acompanhamento
+
+Os papéis se revezam: uma pessoa lidera a integração dos dados, uma a interface, uma os testes e uma a documentação e a revisão de segurança. Eles acompanham as tarefas num quadro compartilhado e fazem conversas curtas semanais. Quando uma colega fica para trás por causa das provas, a equipe redistribui as tarefas abertamente, em vez de deixar o trabalho atrasar em silêncio. Rosa descobre que registrar as decisões por escrito, como quais fontes de dados são confiáveis, evita debates repetidos depois. Cada iteração termina com uma demonstração curta para Owen, cujos comentários moldam o plano seguinte. Quando surgem divergências, a equipe registra as opções e a razão da escolha num registro de decisões, que depois ajuda os novos membros a entender por que o painel funciona como funciona.
+
+### 25.3 Revisão de segurança
+
+Cada mudança é revisada por outro membro da equipe com uma lista de verificação: autenticação exigida, fontes de dados lidas com privilégio mínimo, nenhum segredo no código, dependências fixadas e uma saída que não vaze nomes de hosts internos publicamente. Os revisores encontram um token de API embutido num commit antigo; a equipe rotaciona o token e reescreve o histórico no repositório privado e depois acrescenta um scanner de segredos. Eles aprendem que rotacionar o segredo exposto importa mais do que escondê-lo. O scanner agora roda a cada push, e a equipe acrescenta ao termo de abertura uma breve nota sobre como tratar qualquer vazamento futuro.
+
+### Exemplo resolvido
+
+A equipe de Rosa constrói um painel de certificados somente leitura em quatro iterações e, depois de encontrar um token embutido, o rotaciona e acrescenta a varredura de segredos.
+
+> **Caso sintético.** A equipe e o projeto são inventados.
+
+### Erros e limites
+
+Remover um segredo vazado do histórico não o torna seguro; rotacione-o. O revezamento de papéis exige notas de passagem.
+
+### Exercícios
+
+- **EX073 — Escolha do escopo.** Por que o painel foi mantido somente leitura? *Rubrica:* 3 = ações exigiriam controles muito mais fortes; reduz o risco;; 2 = risco;; 1 = mais fácil;; 0 = nenhuma.
+
+- **EX074 — Achado do token.** O que a equipe fez depois de encontrar um token embutido? *Rubrica:* 3 = rotacionou-o, limpou o histórico, acrescentou um scanner de segredos;; 2 = rotacionar;; 1 = só apagou;; 0 = nenhuma.
+
+- **EX075 — Lição.** O que mais importa depois que um segredo vaza? *Rubrica:* 3 = rotacionar o segredo;; 2 = rotacionar;; 1 = esconder;; 0 = nenhuma.
+
+### Síntese
+
+Os projetos em equipe dão certo com um escopo limitado, um acompanhamento aberto e revisões de segurança entre pares que agem sobre os achados.
+
+<a id="ch-26"></a>
+
+## Capítulo 26 — Criptografia e serviços de confiança: passagem operacional
+
+### Objetivos de aprendizagem
+
+Você vai (1) preparar um serviço para a passagem às operações; (2) escrever runbooks e registros de propriedade; (3) conduzir um ensaio da passagem.
+
+### 26.1 O que significa a passagem
+
+Quando o projeto de estágio de Rosa, a renovação automatizada e o planejador, fica pronto, ele precisa passar para a equipe de operações da prefeitura, que vai operá-lo depois que ela sair. A passagem significa que as operações conseguem executar, monitorar, diagnosticar e alterar o serviço sem ela. Owen lembra que muitos sistemas da prefeitura ficaram frágeis porque quem os construiu saiu sem passar adiante o conhecimento, deixando scripts sem documentação em que ninguém ousava mexer. Rosa lista tudo o que faz por hábito, o que revela tarefas que nunca tinha escrito, como conferir semanalmente o espaço em disco do planejador. Ela também lista com honestidade os problemas em aberto, para que as operações não herdem surpresas escondidas. O plano de passagem define uma data a partir da qual ela responde às perguntas apenas melhorando a documentação.
+
+### 26.2 Runbooks e propriedade
+
+Rosa escreve runbooks para as tarefas rotineiras e as falhas: ler o plano diário, tratar um escalonamento, renovar manualmente quando o ACME falha, restaurar o planejador depois de uma reconstrução do servidor e rotacionar a chave da conta ACME. Cada runbook lista os pré-requisitos, os passos, a verificação e a reversão. Ela atualiza o inventário para nomear a equipe de operações como dona e registra onde as credenciais ficam no repositório de segredos, sem incluir as próprias credenciais. Os runbooks ficam na wiki de operações, ao lado do inventário, com uma data de revisão e um mantenedor nomeado, para que não fiquem desatualizados discretamente depois que Rosa sair da prefeitura.
+
+### 26.3 Ensaio
+
+Rosa conduz um ensaio: um colega de operações, sem nenhuma ajuda dela, trata uma falha de renovação simulada usando apenas o runbook. O colega trava porque o runbook pressupõe que se saiba onde os logs são armazenados. Rosa acrescenta o passo que faltava e repete o ensaio com outro colega, que consegue. A passagem é aprovada pelo líder de operações. Rosa aprende que os runbooks só estão comprovados quando outra pessoa os usa. Depois da aprovação, Rosa agenda uma conversa de acompanhamento um mês depois para coletar perguntas, que se tornam novas melhorias nos runbooks. O líder de operações acrescenta o ensaio ao calendário anual de exercícios da equipe.
+
+### Exemplo resolvido
+
+Rosa passa a automação das renovações com runbooks, registros de propriedade e um ensaio que expõe um passo ausente sobre a localização dos logs.
+
+> **Caso sintético.** A passagem é inventada.
+
+### Erros e limites
+
+Runbooks escritos por especialistas costumam pular passos que eles acham óbvios. As credenciais precisam ser transferidas pelo repositório de segredos, e não por documentos.
+
+### Exercícios
+
+- **EX076 — Significado da passagem.** O que significa a passagem neste capítulo? *Rubrica:* 3 = as operações conseguem executar, monitorar, diagnosticar e alterar sem quem construiu;; 2 = completa;; 1 = parcial;; 0 = nenhuma.
+
+- **EX077 — Achado do ensaio.** O que o primeiro ensaio revelou? *Rubrica:* 3 = o runbook pressupunha saber onde ficam os logs;; 2 = lacuna;; 1 = nada;; 0 = nenhuma.
+
+- **EX078 — Credenciais.** Como as credenciais são passadas? *Rubrica:* 3 = pelo repositório de segredos, com a localização registrada, nunca em documentos;; 2 = repositório;; 1 = documentos;; 0 = nenhuma.
+
+### Síntese
+
+Uma passagem está completa quando outras pessoas, usando apenas os runbooks e os registros, conseguem operar o serviço.
+
+<a id="ch-27"></a>
+
+## Capítulo 27 — Implantação e validação
+
+### Objetivos de aprendizagem
+
+Você vai (1) planejar a implantação segura de mudanças na configuração de TLS; (2) validar as mudanças em relação aos requisitos; (3) reverter quando a validação falha.
+
+### 27.1 Planejar a implantação
+
+A prefeitura planeja remover o TLS 1.0 e o 1.1 de todos os endpoints públicos e ativar o TLS 1.3 onde ele falta, seguindo a NIST SP 800-52 Rev. 2. Rosa planeja uma implantação escalonada: primeiro o ambiente de teste, depois um endpoint de pouco tráfego, depois o restante em lotes. Cada etapa tem um passo de validação e um gatilho de reversão. Ela também avisa os parceiros cujos sistemas antigos poderiam quebrar, incluindo os terminais de estacionamento identificados antes por meio do monitoramento. Cada lote é programado fora dos horários de pico das licenças, e a central de atendimento recebe uma nota curta explicando o que os cidadãos poderiam relatar. Ela escreve de antemão os comandos de reversão no plano, testados no laboratório.
+
+### 27.2 Validação
+
+Para cada endpoint, Rosa valida conectando-se com clientes que oferecem apenas as versões antigas, para confirmar a rejeição, e com clientes modernos, para confirmar que o TLS 1.2 e o 1.3 funcionam. Ela confere a cadeia de certificados e se a taxa de falhas do monitoramento fica perto da linha de base por um dia. A validação é escrita como uma lista de verificação com os resultados esperados, para que os resultados sejam comparados, e não interpretados livremente. Ela guarda as saídas como evidência para o registro de mudança. Qualquer resultado inesperado interrompe o lote até ser explicado, mesmo que os usuários não tenham reclamado. Os resultados são anexados ao chamado de mudança para os auditores.
+
+### 27.3 Reversão
+
+No terceiro lote, a taxa de falhas de um endpoint sobe acima de dois por cento em uma hora. Os logs mostram um quiosque de pagamento mais antigo usando TLS 1.0. Rosa reverte esse endpoint como planejado, avisa o fornecedor do quiosque e define um prazo para sua atualização, com o risco aceito temporariamente pelo dono do serviço. Os outros endpoints continuam alterados. Ela registra que a reversão funcionou em dez minutos, o que já é por si uma evidência de que o plano era sólido. O prazo do fornecedor do quiosque é acompanhado no registro de riscos, com lembretes automáticos para o dono do serviço.
+
+### Exemplo resolvido
+
+Rosa implanta as mudanças de TLS em etapas, valida com clientes antigos e novos e reverte um endpoint quando um quiosque com TLS 1.0 falha.
+
+> **Caso sintético.** A implantação é inventada; a SP 800-52 Rev. 2 é real.
+
+### Erros e limites
+
+Mudanças feitas de uma vez só tornam as falhas difíceis de isolar. A aceitação temporária de risco precisa de um prazo.
+
+### Exercícios
+
+- **EX079 — Etapas.** Que etapas a implantação usou? *Rubrica:* 3 = teste, endpoint de pouco tráfego, depois lotes;; 2 = três;; 1 = uma;; 0 = nenhuma.
+
+- **EX080 — Teste de validação.** Como Rosa confirmou que as versões antigas eram rejeitadas? *Rubrica:* 3 = conectando-se com clientes que oferecem apenas as versões antigas;; 2 = teste;; 1 = supôs;; 0 = nenhuma.
+
+- **EX081 — Causa da reversão.** Por que um endpoint foi revertido? *Rubrica:* 3 = taxa de falhas acima de dois por cento por causa de um quiosque de pagamento antigo com TLS 1.0;; 2 = causa;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Uma implantação escalonada, com validação escrita e reversão ensaiada, permite que as melhorias de confiança avancem com segurança.
+
+<a id="ch-28"></a>
+
+## Capítulo 28 — Prática de campo
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar as competências durante um estágio supervisionado; (2) manter um registro profissional; (3) refletir sobre o retorno recebido.
+
+### 28.1 O trabalho no estágio
+
+No último ano, Rosa faz um estágio supervisionado no Harbourview City Council. Suas tarefas incluem tratar chamados de certificados, revisar achados de TLS e apoiar a integração de um fornecedor. Owen atribui trabalhos com responsabilidade crescente, mas ela nunca detém direitos de administrador sobre o HSM ou a AC interna, que continuam com a equipe permanente. Rosa aprende que a prática profissional inclui saber quais ações pertencem ao seu papel e perguntar antes de sair dele. Ela consulta Owen antes de qualquer tarefa que toque a produção durante o horário comercial e registra a decisão dele. Seu termo de estágio lista os sistemas permitidos, e ela o relê quando tem dúvida.
+
+### 28.2 Registro profissional
+
+Rosa mantém um registro diário: tarefas, decisões, evidências e perguntas. Quando um chamado pede que ela "simplesmente desative a verificação de certificados" para uma integração quebrada, ela registra o pedido, explica por que desativar a verificação exporia a conexão à interceptação e propõe, em vez disso, instalar o intermediário correto. O registro se torna evidência para a avaliação do seu estágio e um histórico caso as decisões sejam questionadas depois. Ele não contém segredos nem dados pessoais de cidadãos. Quando está em dúvida, ela escreve a pergunta no registro e a levanta na conversa diária seguinte. Owen revisa o registro semanalmente, rubricando as entradas que envolveram mudanças em produção.
+
+### 28.3 Refletir sobre o retorno
+
+Na avaliação do meio do estágio, Owen elogia a solução de problemas de Rosa, mas observa que suas solicitações de mudança são longas demais para aprovadores ocupados. Ela as reescreve com um resumo de três linhas no topo. Sua tutora pede que ela reflita sobre um erro: certa vez, ela reiniciou um serviço durante o horário comercial sem avisar a central de atendimento. Ela escreve o que aconteceu, seu efeito e o que faz agora. A reflexão transforma a experiência em competência duradoura. Ela agora publica um aviso para a central de atendimento antes de qualquer reinicialização, e suas solicitações de mudança posteriores são aprovadas mais depressa. Sua tutora observa que a escrita reflexiva é avaliada pela honestidade e por mudanças específicas, e não pela apresentação de um estágio sem falhas.
+
+### Exemplo resolvido
+
+Rosa trabalha sob supervisão sem direitos de administrador sobre o HSM ou a AC, recusa desativar a verificação de certificados e reflete sobre o retorno a respeito das solicitações de mudança e da comunicação.
+
+> **Caso sintético.** O estágio é inventado.
+
+### Erros e limites
+
+Registros que incluem dados sensíveis se tornam passivos. Um retorno sem reflexão raramente muda a prática.
+
+### Exercícios
+
+- **EX082 — Limites do papel.** Que direitos Rosa não detinha durante o estágio? *Rubrica:* 3 = direitos de administrador do HSM e da AC interna;; 2 = ambos;; 1 = um;; 0 = nenhuma.
+
+- **EX083 — Desativar a verificação.** Como Rosa respondeu a um pedido para desativar a verificação de certificados? *Rubrica:* 3 = explicou o risco de interceptação e propôs instalar o intermediário correto;; 2 = ambos;; 1 = atendeu;; 0 = nenhuma.
+
+- **EX084 — Mudança após o retorno.** O que Rosa mudou depois do retorno de Owen? *Rubrica:* 3 = acrescentou um resumo de três linhas às solicitações de mudança;; 2 = resumo;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+A prática de campo constrói o julgamento sobre papéis, registros e comunicação, fortalecido por uma reflexão honesta.
+
+<a id="ch-29"></a>
+
+## Capítulo 29 — Construção do projeto final
+
+### Objetivos de aprendizagem
+
+Você vai (1) construir uma entrega de projeto final que integre as competências do curso; (2) aplicar verificações de qualidade e de segurança; (3) documentá-la para outras pessoas.
+
+### 29.1 Escopo do projeto final
+
+O projeto final de Rosa é um kit de saúde dos serviços de confiança para prefeituras pequenas: um modelo de inventário, o planejador de renovações, o resumidor de logs, a regra de monitoramento e os runbooks. Todas as ferramentas usam bibliotecas padrão ou clientes avaliados e chamam funções criptográficas consolidadas; nenhuma implementa criptografia. O kit é distribuído apenas com dados de amostra sintéticos. Sua tutora aprova o escopo porque ele integra inventário, automação, monitoramento e passagem, os temas centrais do curso. Ela define um congelamento de funcionalidades duas semanas antes da entrega, deixando tempo para os testes e a documentação, em vez de recursos de última hora.
+
+### 29.2 Verificações de qualidade e de segurança
+
+Rosa escreve testes para cada script, com as saídas esperadas a partir dos dados de amostra, espelhando os resultados de laboratório que tinha registrado antes. Ela roda um scanner de segredos, fixa as dependências e pede a um colega que revise o código usando a lista de verificação do ateliê da equipe. A revisão descobre que o resumidor de logs travaria diante de linhas inesperadas; ela o faz contar e relatar as linhas que não consegue analisar. Ela também confere que a documentação nunca sugere desativar a verificação como correção. Todos os testes rodam automaticamente a cada commit, e um teste que falha bloqueia o merge. Ela registra os comentários da revisão e suas respostas no repositório, para que os avaliadores vejam como o retorno moldou o kit final.
+
+### 29.3 Documentação
+
+O guia do kit explica a finalidade, a instalação, a configuração, as entradas e saídas de cada ferramenta, os limites e as referências usadas, incluindo a RFC 8555, a RFC 5280 e a NIST SP 800-57. Ele marca todos os dados de amostra como sintéticos. Uma seção chamada "O que este kit não faz" declara que ele não substitui uma autoridade certificadora, um HSM nem uma revisão profissional. Rosa acredita que declarar os limites com clareza protege os usuários de confiar no kit para mais do que ele consegue fazer. O guia inclui um início rápido com os dados de amostra, para que um leitor veja cada ferramenta funcionar em menos de quinze minutos. Ele também explica como relatar problemas e sugerir melhorias.
+
+### Exemplo resolvido
+
+Rosa constrói um kit testado e revisado com planejador, resumidor, regra de monitoramento e runbooks, documentando as referências e declarando seus limites.
+
+> **Caso sintético.** O kit é inventado; as normas citadas são reais.
+
+### Erros e limites
+
+Kits usados fora do contexto pretendido podem enganar. Testes com dados sintéticos não provam o comportamento com dados reais.
+
+### Exercícios
+
+- **EX085 — Conteúdo do projeto final.** Liste três componentes do kit de Rosa. *Rubrica:* 3 = três entre modelo de inventário, planejador de renovações, resumidor de logs, regra de monitoramento, runbooks;; 2 = dois;; 1 = um;; 0 = nenhuma.
+
+- **EX086 — Correção da revisão.** Que problema a revisão encontrou, e como foi corrigido? *Rubrica:* 3 = o resumidor travava com linhas inesperadas; agora as conta e relata;; 2 = ambos;; 1 = um;; 0 = nenhuma.
+
+- **EX087 — Seção de limites.** O que diz a seção de limites? *Rubrica:* 3 = o kit não substitui uma AC, um HSM nem uma revisão profissional;; 2 = declaração;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Um projeto final integra as competências em ferramentas testadas, revisadas e documentadas com honestidade.
+
+<a id="ch-30"></a>
+
+## Capítulo 30 — Avaliação do projeto final
+
+### Objetivos de aprendizagem
+
+Você vai (1) apresentar um projeto final aos avaliadores; (2) defender as escolhas de projeto com evidências; (3) planejar o desenvolvimento profissional contínuo.
+
+### 30.1 Apresentação
+
+Rosa apresenta seu kit a uma banca formada por sua tutora, por Owen e por um avaliador externo. Ela demonstra o planejador com dados sintéticos, mostra o alerta de monitoramento disparando na hora 4 e percorre um runbook. Ela mantém a demonstração curta e focada nos problemas que o kit resolve: indisponibilidades por expiração, falhas silenciosas e conhecimento perdido. A banca pede que ela mostre evidências de que o kit teria evitado um incidente real do passado. Para responder, ela reproduz no planejador os dados da indisponibilidade por expiração do ano anterior, e ele teria sinalizado o certificado vinte e nove dias antes de expirar.
+
+### 30.2 Defender as escolhas
+
+O avaliador externo pergunta por que ela não escreveu seu próprio código de verificação de certificados. Rosa responde que as bibliotecas e os clientes padrão implementam a verificação com cuidado e recebem correções de segurança, enquanto um código próprio provavelmente deixaria passar casos-limite da RFC 5280. Perguntada por que a regra de monitoramento espera três horas, ela explica o compromisso entre ruído e velocidade e aponta para as verificações de expiração separadas. Ela admite que o kit foi testado apenas com dados sintéticos e propõe um piloto em outra prefeitura. Ela agradece ao avaliador pela pergunta sobre os testes e acrescenta o piloto ao seu plano.
+
+### 30.3 Desenvolvimento contínuo
+
+A banca aprova o projeto final com a recomendação de publicar o kit abertamente depois de uma revisão. Rosa escreve um plano de desenvolvimento: obter uma certificação reconhecida em operações de segurança, aprender mais sobre módulos de segurança de hardware e serviços de assinatura, acompanhar as orientações de migração pós-quântica do FIPS 203 e do 204 e continuar contribuindo com as operações da prefeitura. Ela reflete que o curso a ensinou a manter os sistemas criptográficos saudáveis usando ferramentas avaliadas, evidências e comunicação clara. Ela agenda revisões trimestrais do plano com Owen, que concorda em ser seu mentor no primeiro ano num cargo permanente. O plano lista recursos e datas, e não apenas intenções.
+
+### Exemplo resolvido
+
+Rosa apresenta seu kit, defende o uso de bibliotecas avaliadas e a regra das três horas, admite os testes apenas com dados sintéticos e planeja estudos adicionais.
+
+> **Caso sintético.** A avaliação é inventada; as normas citadas são reais.
+
+### Erros e limites
+
+Demonstrações podem esconder fraquezas; os avaliadores devem pedir evidências. Planos de desenvolvimento precisam de passos concretos.
+
+### Exercícios
+
+- **EX088 — Pedido da banca.** Que evidência a banca pediu? *Rubrica:* 3 = que o kit teria evitado um incidente real do passado;; 2 = incidente;; 1 = nada;; 0 = nenhuma.
+
+- **EX089 — Código próprio.** Por que Rosa evitou escrever sua própria verificação de certificados? *Rubrica:* 3 = as bibliotecas avaliadas tratam os casos-limite da RFC 5280 e recebem correções de segurança;; 2 = razão;; 1 = nada;; 0 = nenhuma.
+
+- **EX090 — Plano de desenvolvimento.** Cite dois itens do plano de desenvolvimento de Rosa. *Rubrica:* 3 = dois entre certificação em operações de segurança, estudo de HSM e assinatura, orientações pós-quânticas, trabalho contínuo na prefeitura;; 2 = um;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+A avaliação do projeto final testa se quem aprende consegue explicar, defender e delimitar seu trabalho com evidências.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX069 (as de EX070–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). Rosa Delgado, Owen Pryce, a Dr Imogen Hale, a Pinecrest Polytechnic, o Harbourview City Council e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX090. Rosa Delgado, Owen Pryce, a Dr Imogen Hale, a Pinecrest Polytechnic, o Harbourview City Council e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** No departamento de TI da prefeitura, concentrando-se em construir e operar serviços integrados de forma confiável e segura.
 
@@ -1325,6 +1617,48 @@ Respostas-modelo para EX001–EX069 (as de EX070–EX090 estão na edição em i
 **EX068.** Caíram de nove horas no semestre anterior para zero.
 
 **EX069.** Um período mais calmo de mudanças poderia explicar parte da redução das indisponibilidades.
+
+**EX070.** Quanto tempo as renovações de certificados da prefeitura levam depois dos alertas e que fatores preveem os atrasos.
+
+**EX071.** Ela obteve uma permissão por escrito e substituiu os nomes dos funcionários por rótulos de equipe.
+
+**EX072.** Porque as equipes que automatizam também podem ter recursos diferentes, então os dados mostram associação, e não causa.
+
+**EX073.** Porque um painel capaz de alterar sistemas precisaria de controles muito mais fortes, então o somente leitura reduziu o risco.
+
+**EX074.** Eles rotacionaram o token, limparam o histórico do repositório e acrescentaram um scanner de segredos.
+
+**EX075.** Rotacionar o segredo exposto, já que cópias podem já existir.
+
+**EX076.** As operações conseguem executar, monitorar, diagnosticar e alterar o serviço sem Rosa.
+
+**EX077.** O runbook pressupunha que o leitor sabia onde os logs eram armazenados.
+
+**EX078.** Pelo repositório de segredos, com apenas sua localização registrada na documentação.
+
+**EX079.** O ambiente de teste, depois um endpoint de pouco tráfego e depois lotes com o restante.
+
+**EX080.** Conectando-se com clientes que ofereciam apenas versões antigas do protocolo e confirmando a rejeição.
+
+**EX081.** Sua taxa de falhas subiu acima de dois por cento porque um quiosque de pagamento antigo ainda usava TLS 1.0.
+
+**EX082.** Direitos de administrador sobre o HSM e sobre a autoridade certificadora interna.
+
+**EX083.** Ela explicou que isso permitiria a interceptação e propôs, em vez disso, corrigir o intermediário ausente.
+
+**EX084.** Ela acrescentou um resumo de três linhas no topo das suas solicitações de mudança.
+
+**EX085.** Um modelo de inventário, o planejador de renovações e o resumidor de logs.
+
+**EX086.** O resumidor de logs travava com linhas inesperadas, então agora ele as conta e relata.
+
+**EX087.** Que o kit não substitui uma autoridade certificadora, um módulo de segurança de hardware nem uma revisão profissional.
+
+**EX088.** Evidências de que o kit teria evitado um incidente real do passado.
+
+**EX089.** Porque as bibliotecas avaliadas implementam a verificação com cuidado, tratam os casos-limite e recebem correções de segurança.
+
+**EX090.** Obter uma certificação em operações de segurança e acompanhar as orientações de migração pós-quântica.
 
 <a id="references"></a>
 ## Referências
