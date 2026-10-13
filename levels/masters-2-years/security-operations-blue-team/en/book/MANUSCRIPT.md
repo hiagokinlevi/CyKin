@@ -130,7 +130,7 @@ Treating rules like software is what makes Tariq's study possible: Pelham's rule
 
 NIST SP 800-137 frames monitoring as an ongoing programme tied to risk, with defined frequencies and metrics, not a set of tools.
 
-For Tariq, this means tuning is not a project that ends in week 8. Allow-lists change what the SOC monitors, so they belong in the monitoring programme with their own review frequency and metric. His recommendations later make this concrete: quarterly replay of allow-list entries against purple-team events, and suppressed-attack tests tracked beside volume. Defined frequency and a metric are exactly what Tariq's recommendations later add for allow-lists.
+For Tariq, this means tuning is not a project that ends in week 8. Allow-lists change what the SOC monitors, so they belong in the monitoring programme with their own review frequency and metric. His recommendations later make this concrete: quarterly replay of allow-list entries against purple-team events, and suppressed-attack tests tracked beside volume.
 
 ### 2.4 Metrics and side effects
 
@@ -148,7 +148,7 @@ For Pelham, the SOC-CMM framing places Tariq's work in the process domain: allow
 
 Each student presents a claim, evidence, counter-evidence and a question for discussion.
 
-The question is the part most students neglect. Tariq's, "What suppressed-attack rate would you accept for a 30% volume cut?", forced the seminar to argue about a trade-off rather than agree that noise is bad. Presenting counter-evidence alongside his own claim also showed the examiners later that he had engaged with the strongest objection to it. Tariq's own slide named Axelsson and Kokulu et al. as evidence and Alahmadi et al. as counter-evidence, and Dr. Solberg used the question to start the discussion.
+The question is the part most students neglect. Tariq's question, quoted in the worked example below, forced the seminar to argue about a trade-off rather than agree that noise is bad. Presenting counter-evidence alongside his own claim also showed the examiners later that he had engaged with the strongest objection to it. Tariq's own slide named Axelsson and Kokulu et al. as evidence and Alahmadi et al. as counter-evidence, and Dr. Solberg used the question to start the discussion.
 
 ### Worked example
 
@@ -306,7 +306,7 @@ The printed changes are rounded to one decimal place; computed from the unrounde
 
 **Log-source outage:** ingestion counts per source show no gaps in weeks 5–8. **Firewall migration:** none of the tuned rules use firewall logs. **Colleague tuning:** the change log shows no other edits to the twenty rules. **Holiday:** affects both groups; absorbed by the comparison.
 
-Each alternative was checked with its own evidence rather than argued away. That the tuned rules do not use firewall logs is a fact from the rule definitions; that no colleague edited them is a fact from the change log. Only the holiday needed the comparison group, because it affected both.
+Each alternative was checked with its own evidence rather than argued away: ingestion counts for the outage, the rule definitions for the firewall migration and the change log for colleague tuning. Only the holiday needed the comparison group, because it affected both.
 
 ### 4.5 Parallel trends
 
@@ -658,9 +658,9 @@ His answer on deployment elsewhere follows the same pattern: not the allow-lists
 
 ### 8.5 Returning results
 
-Pelham receives a summary report, the narrowed allow-list policy and the replay script. Tariq briefs analysts before managers, so the people who did the work hear results first.
+Pelham receives a summary report, the narrowed allow-list policy and the replay script. Tariq briefs analysts first and managers the following week, with the same summary report, so the people who did the work hear results first.
 
-The replay script lets Pelham repeat the AL-07 test on every entry each quarter without Tariq. Briefing analysts first is also practical: they maintain the allow-lists day to day and are the people who will notice whether the narrowed entries still remove routine noise. Managers are briefed the following week with the same summary report.
+The replay script lets Pelham repeat the AL-07 test on every entry each quarter without Tariq. Briefing analysts first is also practical: they maintain the allow-lists day to day and are the people who will notice whether the narrowed entries still remove routine noise.
 
 ### 8.6 Sharing safely
 
