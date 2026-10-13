@@ -40,9 +40,9 @@ Mantenga cinco etiquetas en cada nota: observación, inferencia, afirmación, de
 
 1. [Pregunta de investigación y método de revisión de la literatura](#ch-01)
 2. [Seguridad de TO, IoT y sistemas ciberfísicos: seminario avanzado](#ch-02)
-3. [Diseño del estudio, ética y reproducibilidad](../../en/book/MANUSCRIPT.md#ch-03)
-4. [Explicaciones rivales](../../en/book/MANUSCRIPT.md#ch-04)
-5. [Propuesta y piloto](../../en/book/MANUSCRIPT.md#ch-05)
+3. [Diseño del estudio, ética y reproducibilidad](#ch-03)
+4. [Explicaciones rivales](#ch-04)
+5. [Propuesta y piloto](#ch-05)
 6. [Recolección y análisis de datos](../../en/book/MANUSCRIPT.md#ch-06)
 7. [Redacción del trabajo de fin de máster y limitaciones](../../en/book/MANUSCRIPT.md#ch-07)
 8. [Revisión independiente y defensa](../../en/book/MANUSCRIPT.md#ch-08)
@@ -193,7 +193,183 @@ El seminario le da arquitectura, protocolos, familias de detección y evidencia 
 
 ### Siga estudiando — capítulo 02 de 08
 
-[← Capítulo 01 (borrador)](#ch-01) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 03 (borrador) →](../../en/book/MANUSCRIPT.md#ch-03)
+[← Capítulo 01 (borrador)](#ch-01) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 03 (borrador) →](#ch-03)
+
+<a id="ch-03"></a>
+
+## Capítulo 3 — Diseño del estudio, ética y reproducibilidad
+
+### Resultados de aprendizaje y conexión
+
+Después de este capítulo usted podrá (1) elegir un diseño que se ajuste a la pregunta, (2) simular el sesgo y la potencia del diseño antes de recolectar datos, (3) aplicar los principios del Menlo Report a la investigación industrial y (4) redactar un plan de análisis previo con niveles de datos.
+
+### 3.1 El diseño se ajusta a la pregunta
+
+Harbor Loop compara dos detectores bajo ataques controlados en un modelo y en una instalación de laboratorio: es un **experimento controlado**, no un estudio observacional. Si preguntara "¿con qué frecuencia sufren las plantas ataques de repetición?", necesitaría una encuesta con un marco muestral y un modelo de divulgación, porque las plantas que nunca informan son invisibles en los catálogos públicos. Si preguntara cómo confían los operadores en las alarmas, necesitaría entrevistas con revisión ética. Ajustar el diseño a la pregunta es el modo de fallo más común en la maestría: los estudiantes toman prestado un método que les gusta y después buscan una pregunta que encaje. Escriba primero la pregunta.
+
+Un segundo problema de ajuste es la **unidad de análisis**. La comparación de detectores opera sobre episodios de ataque. La comparación de arquitecturas opera sobre grafos de alcanzabilidad. Los estudios con operadores operan sobre personas y turnos. Mezclar unidades, contando paquetes como si fueran episodios, reproduce la confusión del ajuste por puntos. Declare la unidad antes de recolectar nada.
+
+### 3.2 Simulación previa a los datos
+
+Antes de cualquier experimento, simule. El laboratorio 3 (más abajo, reutilizado como laboratorio principal del detector) ya muestra la detección en la clase A y el fallo en la clase B. Ejecutarlo *antes* de redactar la propuesta le indica que el diseño puede distinguir las hipótesis bajo los supuestos del modelo. La simulación previa a los datos también revela si el tamaño de muestra planificado carece de sentido: si ochenta semillas de ataque producen siempre el mismo resultado binario, necesita más un análisis de sensibilidad sobre los parámetros que podrían cambiar el resultado (holgura k, coeficiente del orificio, retardo del sensor) que mil semillas idénticas.
+
+Registre la simulación como un artefacto de diseño: rangos de semillas, malla de parámetros, reglas de decisión. Cuando un supervisor pregunte "¿por qué ochenta ejecuciones?", la respuesta está en ese artefacto.
+
+### 3.3 Ética y seguridad
+
+Menlo: respeto por las personas (los operadores que entreviste), beneficencia (acote cada experimento físico con una capa de seguridad independiente, nunca con el PLC bajo prueba), justicia (las empresas de servicios pequeñas soportan los costos de los parches), respeto por la ley y el interés público. **Nunca pruebe en producción.** El peor resultado de Campus Rig R2 es agua en una bandeja de goteo; una válvula de flotador mecánica y una parada de emergencia física lo acotan. Más allá de Menlo, la investigación en TO hereda la cultura de seguridad: reuniones informativas antes de las sesiones de laboratorio, reglas de dos personas para energizar bombas y una autoridad de parada escrita que prevalece sobre el deseo del investigador de terminar una ejecución. Registre los cuasi accidentes (casi se alcanzó la válvula de flotador) con la misma seriedad que las hipótesis fallidas.
+
+### 3.4 Plan de reproducibilidad
+
+Registre las métricas (exhaustividad por eventos, retardo, ejecuciones con falsa alarma por cada 80 semillas nominales, sobrellenado en el momento de la alarma), las semillas, los umbrales y el código de análisis antes de las ejecuciones de validación. Asigne los niveles de datos T0–T3 (el capítulo 7 del libro doctoral complementario lo desarrolla; aquí, como mínimo, separe el código público de las configuraciones de la instalación). Guarde el plan registrado con una marca de tiempo que el supervisor pueda verificar, como un commit fechado en el repositorio del proyecto. Incluya los valores congelados de k y h, los rangos de semillas para el ajuste y para la evaluación, y la regla de lo que cuenta como detección. Cualquier cambio posterior va a una tabla de desviaciones con fecha y motivo, y se informa en el trabajo de fin de máster.
+
+### 3.5 Ejemplo resuelto y laboratorio 3
+
+```python
+# Lab 3: residual CUSUM vs band on synthetic tank; report event recall, delay, FA/shift, overfill@alarm.
+import random
+def run(seed,atk,det,k=0.8,h=6.0,steps=800,onset=400):
+    rng=random.Random(seed); true=est=50.0; s=0.0; alarm=None; at=None
+    for t in range(steps):
+        inflow=1.0+rng.gauss(0,0.05)+(0.05 if atk and t>=onset else 0)
+        true+=inflow-0.02*true
+        lvl=true+rng.gauss(0,0.3); fm=inflow+rng.gauss(0,0.02)
+        if atk and t>=onset: lvl=50.0+rng.gauss(0,0.3)
+        if atk=="B" and t>=onset: fm=1.0+rng.gauss(0,0.02)
+        est+=fm-0.02*est
+        hit=abs(lvl-50)>1.5 if det=="band" else False
+        if det=="cusum":
+            s=max(0.0,s+abs(lvl-est)-k); hit=s>h
+        if hit and alarm is None: alarm=t; at=true-50
+    return alarm,at
+for det in ("band","cusum"):
+    fa=sum(run(i,None,det)[0] is not None for i in range(80))
+    for atk in ("A","B"):
+        r=[run(i,atk,det) for i in range(80)]
+        hits=[(a-400,ov) for a,ov in r if a is not None and a>=400]
+        d=sum(h[0] for h in hits)/len(hits) if hits else float("nan")
+        ov=sum(h[1] for h in hits)/len(hits) if hits else float("nan")
+        print(f"{det:5s} class{atk} FA_runs={fa}/80 detected={len(hits)}/80 mean_delay={d:.1f} mean_overfill@alarm={ov:.2f}")
+
+```
+
+Salida esperada:
+
+```text
+band  classA FA_runs=11/80 detected=0/80 mean_delay=nan mean_overfill@alarm=nan
+band  classB FA_runs=11/80 detected=0/80 mean_delay=nan mean_overfill@alarm=nan
+cusum classA FA_runs=0/80 detected=80/80 mean_delay=37.7 mean_overfill@alarm=1.38
+cusum classB FA_runs=0/80 detected=0/80 mean_delay=nan mean_overfill@alarm=nan
+```
+
+El laboratorio ejecuta ochenta semillas para cada detector y clase de ataque y cuenta las ejecuciones con falsa alarma en las mismas ochenta semillas sin ataque. La alarma de banda nunca se dispara en ninguno de los dos ataques, porque la repetición mantiene el nivel informado cerca de 50, y aun así genera falsas alarmas en 11 de 80 ejecuciones nominales. El CUSUM detecta todos los episodios de la clase A y ninguno de la clase B, cuando también se suplanta el caudalímetro. Esa única tabla ya contiene el resultado principal y su frontera. Léala antes de empezar cualquier trabajo en la instalación.
+
+### 3.6 Errores comunes y límites
+
+Elegir el diseño después de ver los datos; llamar "pasivo" a un sondeo activo; usar el PLC como única cota de seguridad. Cada error tiene una salvaguarda concreta. Registre el diseño y sus reglas de decisión antes de recolectar datos. Describa como activa cualquier medición que envíe solicitudes a un dispositivo, aunque solo lea. En Rig R2 la válvula de flotador y la parada de emergencia física son la cota de seguridad; nunca se confía en que el PLC bajo prueba detenga un desbordamiento del que puede ser la causa.
+
+### Ejercicios — capítulo 3
+
+- **EX015 — Asignar preguntas a tipos de diseño.** Asigne tres preguntas (comparación de detectores; tasa de adopción de DNP3-SA; confianza de los operadores en las alarmas) a tipos de diseño. *Rúbrica:* 3 = experimento/encuesta/entrevista asignados correctamente; 2 = dos correctos; 1 = uno; 0 = nada.
+- **EX016 — Números del laboratorio 3 frente a H1 y H4.** Ejecute el laboratorio 3; informe los números frente a H1 (CUSUM en clase A con exhaustividad ≥95 %, banda ≤10 %) y H4 (clase B ≤10 %). *Rúbrica:* 3 = H1 80/80 frente a 0/80, H4 0/80, se señalan las FA de la banda; 2 = H1/H4 sin FA; 1 = cualitativo; 0 = nada.
+- **EX017 — Acotar el forzado de la bomba en Rig R2.** Escriba el peor resultado creíble, la capa independiente y la autoridad de parada para un experimento de forzado de la bomba en Rig R2. *Rúbrica:* 3 = desbordamiento hacia la bandeja de goteo, válvula de flotador + bandeja, parada de emergencia del responsable designado; 2 = falta la independencia; 1 = solo el PLC; 0 = sin acotar.
+- **EX018 — Menlo ante la publicación de la evasión de clase B.** Aplique los cuatro principios del Menlo Report a la publicación de un método de evasión de clase B. *Rúbrica:* 3 = principios de Menlo → publicar la clase + la defensa, retener los pasos específicos del producto hasta la divulgación coordinada (CVD); 2 = principios sin decisión; 1 = publicarlo todo; 0 = nada.
+- **EX019 — Plan de análisis previo con semillas congeladas.** Redacte un plan de análisis previo de una página con métricas y semillas congeladas. *Rúbrica:* 3 = métricas, semillas 0–79/1000–1079, k=0.8 h=6, sin cambios tras la carga en R2; 2 = faltan las semillas o la congelación; 1 = plan vago; 0 = nada.
+- **EX020 — Niveles desde el simulador hasta las citas de operadores.** Asigne T0–T3 a: código del simulador, trazas sintéticas, diagrama de cableado de R2, citas anonimizadas de operadores. *Rúbrica:* 3 = código T0, trazas T1, cableado T2, citas T2/T1 con nota sobre la anonimización; 2 = tres correctos; 1 = dos; 0 = nada.
+
+### Síntesis del capítulo
+
+Diseño antes que datos, simulación antes del compromiso, cota para cada experimento físico y plan de análisis congelado.
+
+### Siga estudiando — capítulo 03 de 08
+
+[← Capítulo 02 (borrador)](#ch-02) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 04 (borrador) →](#ch-04)
+
+<a id="ch-04"></a>
+
+## Capítulo 4 — Seguridad de TO, IoT y sistemas ciberfísicos: explicaciones rivales
+
+### Resultados de aprendizaje y conexión
+
+Después de este capítulo usted podrá (1) enumerar explicaciones rivales para un resultado de detección, (2) diseñar observaciones que discriminen entre ellas y (3) revisar las afirmaciones cuando una rival sobrevive.
+
+### 4.1 Rivales para una ventaja del CUSUM
+
+(1) Umbrales ajustados con los datos de prueba. (2) Simulador demasiado limpio (sin sesgo de calibración). (3) Magnitud del ataque elegida para favorecer al CUSUM. (4) Alarma de banda configurada de forma inusualmente estrecha o amplia. (5) Evaluación con F1 con ajuste por puntos. Cada rival tiene una prueba: ajuste con semillas separadas, barridos de sesgo, barridos de ganancia, informar la tasa de falsas alarmas de la banda, informar métricas por eventos. Escriba las rivales antes de ver los resultados. Después de los resultados es demasiado fácil inventar solo las rivales que ya ha vencido. Entregue la lista a un colega que no haya visto el laboratorio 3 y pregúntele qué añadiría. Los ingenieros de control suelen añadir rivales sobre la estructura del modelo; los investigadores de seguridad suelen añadir rivales de adversario adaptativo. Ambas pertenecen a la lista, aunque el calendario de una maestría solo permita probarlas en parte.
+
+### 4.2 Rival arquitectónica
+
+Una rival más profunda: "el CUSUM solo funciona porque el caudalímetro es independiente; si ambos sensores comparten un PLC, el método falla". No es un factor de confusión que eliminar: es una **condición de frontera** que medir (clase B). Las rivales que sobreviven pasan a formar parte de la afirmación. Muchos artículos de TO entierran este tipo de resultado en un párrafo de limitaciones; los examinadores de maestría lo piden cada vez más en el resumen. Trate una frontera confirmada como un hallazgo: los defensores aprenden que las rutas de medición independientes son supuestos que sostienen el resultado.
+
+La misma lógica se aplica en otros casos. Un diseño de segmentación que falla cuando las estaciones de ingeniería conservan rutas de escritura permanentes ha descubierto una frontera. Un filtro de protocolo que falla cuando el tráfico se tuneliza dentro de otro protocolo ha descubierto una frontera. Mídalas y colóquelas donde los lectores miran primero.
+
+### 4.3 Ejemplo resuelto
+
+Tras el laboratorio 3, las rivales (1) y (5) quedan atendidas por el diseño; la rival (2) necesita barridos de sesgo y del orificio al estilo del laboratorio 6; la rival (3) necesita un barrido de ganancia; la rival (4) se atiende informando las 11/80 ejecuciones con falsa alarma de la banda. La rival arquitectónica queda confirmada por clase B = 0/80. Escriba esta correspondencia como una tabla en el trabajo de fin de máster: rival, prueba, estado, evidencia. Las rivales probadas solo en parte, como el barrido de ganancia si falta tiempo, permanecen en la tabla marcadas como abiertas en lugar de desaparecer. La rival arquitectónica pasa del capítulo de limitaciones a los resultados, porque la clase B es un resultado medido, no una preocupación sin probar.
+
+### 4.4 Errores comunes y límites
+
+Enumerar rivales sin pruebas; tratar una frontera confirmada como un fracaso que ocultar. Una rival sin prueba es una preocupación, no parte del análisis. Cada una necesita una observación que saldría distinta si fuera cierta. Cuando una rival sobrevive, como la rival arquitectónica en la clase B, infórmela como un hallazgo con sus números. Ocultarla dejaría a los lectores creyendo que el método de residuos protege lazos en los que un solo dispositivo controla ambas mediciones. El resultado de la clase B es el ejemplo más claro de este estudio.
+
+### Ejercicios — capítulo 4
+
+- **EX021 — Cinco rivales para la segmentación por zonas.** Escriba cinco rivales para "la segmentación por zonas reduce los ataques" y una prueba para cada una. *Rúbrica:* 3 = cinco rivales, cada una con una prueba; 2 = tres rivales con pruebas; 1 = rivales sin pruebas; 0 = nada.
+- **EX022 — Barrido de ganancia para el impacto al estilo de Urbina.** Diseñe un barrido de ganancia que respaldaría o refutaría la rival (3); prediga el patrón si se cumple la acotación del impacto al estilo de Urbina. *Rúbrica:* 3 = diseño del barrido de ganancia + predicción del patrón al estilo de Urbina; 2 = barrido sin predicción; 1 = vago; 0 = nada.
+- **EX023 — Por qué el fallo de la clase B refuerza la tesis.** Explique por qué el fallo de la clase B refuerza, en lugar de debilitar, una tesis cuidadosa. *Rúbrica:* 3 = el fallo de la clase B como límite caracterizado que afina las afirmaciones; 2 = "el fracaso es honestidad" sin vínculo con el límite; 1 = oculta el fallo; 0 = nada.
+- **EX024 — Rivales sin probar bajo F1 con ajuste por puntos.** En un estudio que solo informa el F1 con ajuste por puntos, ¿qué rivales quedan sin probar? *Rúbrica:* 3 = enumera las rivales sin probar (retardo, FA, impacto, adversario consciente, etc.); 2 = dos rivales; 1 = una; 0 = nada.
+- **EX025 — Diagrama causal hasta el sobrellenado en el momento de la alarma.** Escriba un diagrama causal (como una lista de viñetas de nodos y flechas) desde la capacidad del atacante hasta el sobrellenado en el momento de la alarma. *Rúbrica:* 3 = nodos/flechas desde capacidad→suplantación→residuo/banda→alarma→sobrellenado; 2 = nodos sin flechas; 1 = parcial; 0 = nada.
+- **EX026 — Control negativo para el CUSUM sobre el residuo.** Proponga un control negativo: un ataque que *no* debería disparar el CUSUM sobre el residuo si la justificación es correcta. *Rúbrica:* 3 = ataque de control negativo que no debería disparar el residuo si se sostiene la justificación; 2 = control sin vínculo con la justificación; 1 = vago; 0 = nada.
+
+### Síntesis del capítulo
+
+Las rivales con pruebas convierten una comparación en una contribución; las fronteras confirmadas pertenecen al resumen.
+
+### Siga estudiando — capítulo 04 de 08
+
+[← Capítulo 03 (borrador)](#ch-03) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 05 (borrador) →](#ch-05)
+
+<a id="ch-05"></a>
+
+## Capítulo 5 — Propuesta y piloto
+
+### Resultados de aprendizaje y conexión
+
+Después de este capítulo usted podrá (1) redactar una propuesta con hipótesis y condiciones de abandono, (2) definir criterios de continuar o no continuar para un piloto en la instalación y (3) mantener los datos del piloto fuera de las pruebas de hipótesis.
+
+### 5.1 Esqueleto de la propuesta
+
+Pregunta; laguna; hipótesis H1–H4 (incluido el fracaso); clases A/B del modelo de atacante; sistemas (simulador, Rig R2); métricas; plan de análisis; ética y seguridad; calendario; condiciones de abandono (la instalación no puede hacerse segura; el simulador no supera la verificación). Los supervisores leen las propuestas buscando **decidibilidad**: ¿puede un lector saber qué evidencia respaldaría H1 y cuál la refutaría? "El CUSUM es mejor" no es decidible; "exhaustividad por eventos ≥95 % con un retardo medio ≤60 pasos y ejecuciones con falsa alarma ≤ las de la alarma de banda" sí lo es. Ponga la hipótesis de fracaso H4 en la misma tabla que H1–H3 para que no pueda abandonarse en silencio más tarde.
+
+Indique también lo que **no** hará: ningún sistema de producción, ningún desarrollo de exploits específicos de un producto, ninguna afirmación sobre sectores fuera de los lazos de almacenamiento de agua. Las exclusiones del alcance son tan importantes como las inclusiones.
+
+### 5.2 Propósito del piloto
+
+Solo viabilidad: ¿puede R2 ejecutar la repetición de forma segura? ¿Registra el historiador a 1 Hz? ¿Funciona la válvula de flotador? Criterios de continuación declarados de antemano: tres ejecuciones consecutivas sin disparo de la válvula de flotador, pérdida de registros <1 %, parada de emergencia probada. Los datos del piloto no prueban H1–H4. Un piloto que "parece prometedor" tienta a mirar los resultados antes de tiempo. Resista escribiendo la hoja de continuar o no continuar antes de la primera ejecución del piloto y guardando las trazas del piloto en un directorio que el código de análisis se niega a leer. Si el piloto falla, ha aprendido que la instalación necesita trabajo, que es justamente el objetivo, no que el detector sea malo. Documente quién tiene la autoridad de parada y pruebe la parada de emergencia en cada sesión antes de ejecutar los scripts de ataque.
+
+### 5.3 Errores comunes y límites
+
+Usar las ejecuciones del piloto para ajustar umbrales que después "validan" esas mismas ejecuciones; no tener condición de abandono. Guarde las trazas del piloto en un directorio separado que el código de análisis se niega a leer, y deje constancia en la propuesta de que los umbrales se congelan solo a partir de las semillas de ajuste del simulador. Redacte las condiciones de abandono en términos medibles: por ejemplo, la instalación se abandona si no puede demostrarse que la válvula de flotador se dispara antes de que se llene la bandeja de goteo. Sin tales condiciones, un estudio que fracasa simplemente va a la deriva. Revise esas condiciones con el supervisor antes de la primera ejecución del piloto.
+
+### 5.4 Lista de comprobación de la propuesta antes de la revisión del supervisor
+
+Antes de enviar la propuesta, confirme: (1) H1–H4 tienen números y H4 es una condición de fracaso que está dispuesto a confirmar; (2) el modelo de atacante distingue la clase A de la clase B; (3) las métricas incluyen la exhaustividad por eventos, el retardo, las ejecuciones con falsa alarma y el sobrellenado en el momento de la alarma, no solo el F1 con ajuste por puntos; (4) las cotas de seguridad nombran una capa independiente y una autoridad de parada; (5) existen condiciones de abandono; (6) el piloto no puede filtrarse a la validación porque las rutas están separadas. Un supervisor que le devuelve la propuesta con "aclare el alcance" le hace un regalo; un supervisor que acepta una propuesta vaga le prepara un año doloroso.
+
+### Ejercicios — capítulo 5
+
+- **EX027 — H1–H4 con umbrales basados en el margen hasta el disparo.** Redacte H1–H4 con umbrales numéricos justificados por un margen hasta el disparo declarado. *Rúbrica:* 3 = H1–H4 numéricas con justificación por el margen hasta el disparo; 2 = hipótesis sin justificación; 1 = solo H1; 0 = nada.
+- **EX028 — Continuar o no continuar con reglas de seguridad y de datos.** Redacte criterios de continuar o no continuar que incluyan una regla de seguridad y una de calidad de los datos. *Rúbrica:* 3 = criterios de seguridad + calidad de los datos (válvula de flotador, pérdida de registros); 2 = un solo tipo de regla; 1 = continuación vaga; 0 = nada.
+- **EX029 — Tres condiciones de abandono.** Enumere tres condiciones de abandono y qué pasaría a estudiar si se abandonara. *Rúbrica:* 3 = tres condiciones de abandono + estudio alternativo; 2 = condiciones sin alternativa; 1 = una; 0 = nada.
+- **EX030 — Tabla del modelo de atacante para Harbor Loop.** Redacte la tabla del modelo de atacante (capacidades, conocimiento, objetivo, fuera del alcance). *Rúbrica:* 3 = tabla de capacidades/conocimiento/objetivo/fuera del alcance para Harbor Loop; 2 = falta una columna; 1 = solo prosa; 0 = nada.
+- **EX031 — Por qué los pilotos quedan fuera de la validación.** Explique por qué las trazas del piloto no deben entrar en el conjunto de validación. *Rúbrica:* 3 = la fuga del piloto a la validación invalida la congelación; 2 = "contaminación" sin vínculo con la congelación; 1 = vago; 0 = nada.
+- **EX032 — Evaluación de riesgos de las entrevistas a operadores.** Redacte una evaluación de riesgos de un párrafo para entrevistar a los operadores Q01–Q08. *Rúbrica:* 3 = riesgos para Q01–Q08 con mitigaciones (consentimiento, anonimización, interrupción); 2 = riesgos sin mitigaciones; 1 = un riesgo; 0 = nada.
+
+### Síntesis del capítulo
+
+Una propuesta que declara cómo puede fracasar y un piloto que solo pregunta si el estudio puede ejecutarse de forma segura protegen el trabajo de fin de máster de modos de fallo silenciosos.
+
+### Siga estudiando — capítulo 05 de 08
+
+[← Capítulo 04 (borrador)](#ch-04) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 06 (borrador) →](../../en/book/MANUSCRIPT.md#ch-06)
 
 <a id="worked-results"></a>
 
@@ -216,6 +392,30 @@ El seminario le da arquitectura, protocolos, familias de detección y evidencia 
 **EX012.** Spoof Reporting Message; Modify Parameter. La matriz documenta técnicas, no tasas.
 **EX013.** Débil: "La detección basada en la física necesita más estudio". Fuerte: el párrafo de la laguna de §2.5.
 **EX014.** Arp: métricas inapropiadas, evaluación solo en laboratorio, fuga entre entrenamiento y prueba. Específico de TO: ignorar el impacto físico en el momento de la detección.
+
+### Capítulo 3
+**EX015.** Comparación de detectores → experimento controlado. Adopción → encuesta con marco muestral. Confianza de los operadores → entrevista/encuesta con revisión ética.
+**EX016.** H1 respaldada (80/80 frente a 0/80). H4 respaldada (0/80). Se señalan las FA de la banda, 11/80.
+**EX017.** Desbordamiento hacia la bandeja de goteo; válvula de flotador mecánica + bandeja; responsable de laboratorio designado con parada de emergencia.
+**EX018.** La beneficencia favorece publicar la clase de capacidad + la defensa arquitectónica; retener los pasos específicos del producto hasta la CVD si existe un fallo del producto.
+**EX019.** Métricas, semillas 0–79 de evaluación / 1000–1079 de ajuste, k=0.8 h=6, sin cambios de umbral tras la carga en R2.
+**EX020.** Código T0; trazas T1; cableado T2; citas T2 (identificables) o T1 si están totalmente anonimizadas.
+
+### Capítulo 4
+**EX021.** Mala configuración y no segmentación; monitorización en otro lugar; preferencias del atacante; sesgo de notificación; ventana de estudio corta, cada una con una prueba de discriminación.
+**EX022.** Barra las ganancias; si los ataques lentos evaden la detección pero el sobrellenado sigue siendo pequeño, se cumple la acotación al estilo de Urbina.
+**EX023.** Define el dominio de la contribución (rutas de medición independientes), lo cual es accionable para los defensores.
+**EX024.** Fuga del ajuste, retardo, impacto, falsas alarmas por turno, conciencia del adversario.
+**EX025.** Capacidad del atacante → honestidad del sensor → residuo → CUSUM → momento de la alarma → sobrellenado; la alarma de banda es una ruta paralela desde el nivel.
+**EX026.** Un ataque que cambia un sensor ajeno al balance de masa (por ejemplo, un sensor de temperatura) no debería elevar sistemáticamente el residuo entre nivel y caudal.
+
+### Capítulo 5
+**EX027.** H1: exhaustividad ≥95 %, retardo ≤60; H2: FA del CUSUM ≤ FA de la banda; H3: sobrellenado en el momento de la alarma menor para el CUSUM; H4: exhaustividad en la clase B ≤10 %. Umbrales vinculados a la mitad del margen hasta el disparo.
+**EX028.** Seguridad: nunca se alcanza la válvula de flotador en 3 ejecuciones. Datos: pérdida de registros <1 %.
+**EX029.** No puede acotarse R2; el historiador no puede registrar a 1 Hz; denegación ética de las entrevistas → pasar a un trabajo de fin de máster solo de simulación con un alcance explícito.
+**EX030.** Clase A: suplantación del nivel + escritura en la bomba; clase B: + suplantación del caudal; conocimiento de la banda; objetivo: manipulación de la vista; fuera del alcance: válvula de flotador, manipulación física.
+**EX031.** El piloto se usa para la viabilidad; usarlo para la validación cuenta dos veces los mismos datos e infla el rendimiento.
+**EX032.** Riesgo: los operadores revelan prácticas inseguras; mitigar con notas confidenciales, informes agregados y derecho a retirarse.
 
 <a id="glossary"></a>
 
