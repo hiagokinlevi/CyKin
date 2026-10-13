@@ -18,15 +18,15 @@ Edição em português do Brasil, escrita a partir da edição de referência em
 | 1 | [06](book/PLAN.md#ch-06) | Fatores humanos e política cibernética: modelo do sistema | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-06) | [07 · Rascunho](book/MANUSCRIPT.md#ch-07) |
 | 2 | [07](book/PLAN.md#ch-07) | Fatores humanos e política cibernética: dados e telemetria | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-07) | [08 · Rascunho](book/MANUSCRIPT.md#ch-08) |
 | 2 | [08](book/PLAN.md#ch-08) | Fatores humanos e política cibernética: modos de falha | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-08) | [09 · Rascunho](book/MANUSCRIPT.md#ch-09) |
-| 2 | [09](book/PLAN.md#ch-09) | Fatores humanos e política cibernética: ferramentas e métodos | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-09) | [10 · Plano](book/PLAN.md#ch-10) |
-| 2 | [10](book/PLAN.md#ch-10) | Fatores humanos e política cibernética: configuração de controles | 67 | 30 | 4 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-10)) | [11 · Plano](book/PLAN.md#ch-11) |
-| 2 | [11](book/PLAN.md#ch-11) | Fatores humanos e política cibernética: verificação | 67 | 30 | 4 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-11)) | [12 · Plano](book/PLAN.md#ch-12) |
-| 2 | [12](book/PLAN.md#ch-12) | Laboratório isolado I | 67 | 30 | 4 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-12)) | [13 · Plano](book/PLAN.md#ch-13) |
-| 3 | [13](book/PLAN.md#ch-13) | Fatores humanos e política cibernética: solução de problemas | 66 | 30 | 4 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-13)) | [14 · Plano](book/PLAN.md#ch-14) |
-| 3 | [14](book/PLAN.md#ch-14) | Fatores humanos e política cibernética: automação | 66 | 30 | 4 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-14)) | [15 · Plano](book/PLAN.md#ch-15) |
-| 3 | [15](book/PLAN.md#ch-15) | Fatores humanos e política cibernética: integração e dependências | 66 | 30 | 4 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-15)) | [16 · Plano](book/PLAN.md#ch-16) |
-| 3 | [16](book/PLAN.md#ch-16) | Documentação técnica e segurança | 66 | 30 | 4 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-16)) | [17 · Plano](book/PLAN.md#ch-17) |
-| 3 | [17](book/PLAN.md#ch-17) | Laboratório isolado II | 66 | 30 | 4 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-17)) | [18 · Plano](book/PLAN.md#ch-18) |
-| 3 | [18](book/PLAN.md#ch-18) | Projeto técnico supervisionado | 66 | 30 | 4 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-18)) | [Curso 053 →](../../security-architecture/pt/SUBJECTS.md) |
+| 2 | [09](book/PLAN.md#ch-09) | Fatores humanos e política cibernética: ferramentas e métodos | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-09) | [10 · Rascunho](book/MANUSCRIPT.md#ch-10) |
+| 2 | [10](book/PLAN.md#ch-10) | Fatores humanos e política cibernética: configuração de controles | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-10) | [11 · Rascunho](book/MANUSCRIPT.md#ch-11) |
+| 2 | [11](book/PLAN.md#ch-11) | Fatores humanos e política cibernética: verificação | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-11) | [12 · Rascunho](book/MANUSCRIPT.md#ch-12) |
+| 2 | [12](book/PLAN.md#ch-12) | Laboratório isolado I | 67 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-12) | [13 · Rascunho](book/MANUSCRIPT.md#ch-13) |
+| 3 | [13](book/PLAN.md#ch-13) | Fatores humanos e política cibernética: solução de problemas | 66 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-13) | [14 · Rascunho](book/MANUSCRIPT.md#ch-14) |
+| 3 | [14](book/PLAN.md#ch-14) | Fatores humanos e política cibernética: automação | 66 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-14) | [15 · Rascunho](book/MANUSCRIPT.md#ch-15) |
+| 3 | [15](book/PLAN.md#ch-15) | Fatores humanos e política cibernética: integração e dependências | 66 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-15) | [16 · Rascunho](book/MANUSCRIPT.md#ch-16) |
+| 3 | [16](book/PLAN.md#ch-16) | Documentação técnica e segurança | 66 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-16) | [17 · Rascunho](book/MANUSCRIPT.md#ch-17) |
+| 3 | [17](book/PLAN.md#ch-17) | Laboratório isolado II | 66 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-17) | [18 · Rascunho](book/MANUSCRIPT.md#ch-18) |
+| 3 | [18](book/PLAN.md#ch-18) | Projeto técnico supervisionado | 66 | 30 | 4 | [Rascunho](book/MANUSCRIPT.md#ch-18) | [Curso 053 →](../../security-architecture/pt/SUBJECTS.md) |
 
 Um próximo passo planejado é um destino de navegação, não uma lição escrita. As colunas de páginas e exercícios são metas editoriais. O livro só estará completo quando seu conteúdo e a renderização em A4 atenderem ao critério de publicação.
