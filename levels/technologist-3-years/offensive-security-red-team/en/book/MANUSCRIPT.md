@@ -660,9 +660,7 @@ Red (Northpoint) exercises behaviours; blue (TRT SOC) detects; purple replays mi
 
 It will not provide exploit code, payloads or step-by-step attack procedures. It will not authorize anyone to test a real system. It teaches governance, evidence, measurement and remediation validation on synthetic data so that when a learner later joins a real team, the discipline is already in place.
 
-No exploit code, no live authorization, no fare "just this once". Chapter 10's boundary is what Priya quotes when a panel asks for T1552.001 steps — she points at ATT&CK and stops.
-
-Panel requests for exploit steps get ATT&CK URLs and a closed laptop. Chapter 10's refusal is practised, not theoretical.
+No exploit code, no live authorization, no fare "just this once". Chapter 10's boundary is what Priya quotes when a panel asks for T1552.001 steps — she points at ATT&CK and stops. The refusal is practised in panel drills, not left as theory.
 
 ### Worked example
 
@@ -698,7 +696,7 @@ You will (1) turn a signed agreement into a machine-checkable scope and ROE; (2)
 
 ### 11.1 From prose to objects
 
-An agreement written in paragraphs becomes useful when it is also a list: in-scope prefixes and names, excluded systems, allowed activities, start and end times, forbidden activities, and an emergency contact. Checkers in Chapters 2 and this chapter operate on those lists. Ambiguous prose such as "and related systems" is a defect, not a feature.
+An agreement written in paragraphs becomes useful when it is also a list: in-scope prefixes and names, excluded systems, allowed activities, start and end times, forbidden activities, and an emergency contact. Checkers in Chapter 2 and in this chapter operate on those lists. Ambiguous prose such as "and related systems" is a defect, not a feature.
 
 Prose agreements become loadable lists for lab_scope and lab_roe checkers. If a field cannot be parsed, ENG-712 does not start. Priya maintains both the narrative ROE and the machine lists.
 
@@ -751,9 +749,7 @@ Run with `python3 lab_roe.py`. Verified output:
 
 Someone with stop authority must be reachable throughout the window. If that person cannot be reached, the session does not start. TIBER-EU-style exercises formalise this as a white-team control function; smaller engagements still need the same idea.
 
-White-team silence means no start. TIBER-style control functions are borrowed as an idea even though TRT is not a bank. Sam as liaison pages white team; side chats do not.
-
-Sam pages white team; nobody else. Unreachable white team means the vans stay parked and the VPN stays dark.
+White-team silence means no start: if the on-call contact does not answer, the tools stay idle and the VPN review waits. TIBER-style control functions are borrowed as an idea even though TRT is not a bank. During ENG-712 only the named liaison pages the white team; side chats do not.
 
 ### Worked example
 
@@ -896,9 +892,7 @@ Priya puts the citation to SP 800-30 under the matrix figure, labelling the 1 to
 
 ### 13.5 Communicating scores upward
 
-When Priya presents the ordered list, she spends more time on the top two scenarios than on the low finding. Boards can absorb a handful of well-narrated risks; they cannot absorb a spreadsheet dump. She keeps the full table in an appendix for auditors and puts three sentences in the executive summary: what matters, why, and what decision she needs this week.
-
-Top scenarios get the airtime; low verbose-error findings get a line. Boards absorb two narratives better than twenty equal bullets. F-09 and F-01 lead ENG-712's oral summary.
+When Priya presents the ordered list, she spends more time on the top two scenarios than on the low finding. Boards can absorb a handful of well-narrated risks; they cannot absorb a spreadsheet dump. She keeps the full table in an appendix for auditors and puts three sentences in the executive summary: what matters, why, and what decision she needs this week. In ENG-712's oral summary F-09 and F-01 lead, while the low verbose-error finding gets a single line.
 
 ### Worked example
 
@@ -992,9 +986,7 @@ You will (1) run a three-gate pipeline that admits an action only when target, t
 
 Every planned action has a target address, a timestamp and an activity name. The target must sit in the in-scope prefix, the timestamp inside the window, and the activity on the approved list. Fail any gate and the action does not proceed.
 
-Target in prefix, time in window, activity approved — three gates. lab activity output shows A2 HOLD activity and A3 HOLD target. Fail any gate and the action never hits the operator log.
-
-A2 and A3 HOLD lines in the lab are screenshotted into training notes. Gates are the product; improvisation is the defect.
+In the Lab F output A2 is held on the activity gate and A3 on the target gate, so neither reaches the operator log. Priya screenshots both HOLD lines into the training notes, because for ENG-712 the gates are the product and improvisation is the defect.
 
 ### 15.2 The operator log
 
@@ -1005,7 +997,7 @@ In the lab only A1 and A4 pass all three gates, so they are the only entries in 
 ### Lab F — guided pipeline
 
 ```python
-"""Lab I (ch 15): guided pipeline - an action is logged only if target, time and activity all pass."""
+"""Lab F (ch 15): guided pipeline - an action is logged only if target, time and activity all pass."""
 import ipaddress
 from datetime import datetime
 scope = ipaddress.ip_network("192.0.2.0/25")

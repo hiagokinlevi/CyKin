@@ -1,7 +1,7 @@
 # Segurança Ofensiva Autorizada e Red Team: Um Livro para o Tecnólogo
 
 - Idioma: português do Brasil (`pt`); curso de tecnólogo, três anos; aproximadamente 2.400 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–9 de 30 já estão escritos em português, com os exercícios EX001–EX027 e suas resoluções com rubricas de 0 a 3 e 3 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 10–30 (EX028–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–15 de 30 já estão escritos em português, com os exercícios EX001–EX045 e suas resoluções com rubricas de 0 a 3 e 6 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 16–30 (EX046–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: implementadores e administradores de tecnologia que vão construir, operar e medir a capacidade de avaliação autorizada de uma organização, trabalhando ao lado de seus defensores.
 - Relação com os livros vizinhos: o [livro técnico](../../../../technical-18-months/offensive-security-red-team/en/book/MANUSCRIPT.md) enfatiza a disciplina no uso de ferramentas e a verificação; o [livro de bacharelado](../../../../bachelors-4-years/offensive-security-red-team/pt/book/MANUSCRIPT.md) acrescenta teoria mais ampla. **Este livro trata da integração de serviços, controles, operações e medição em torno de testes autorizados.**
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -31,9 +31,9 @@ NIST [SP 800-115](https://doi.org/10.6028/NIST.SP.800-115); [PTES](https://pente
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) |
 
-Capítulos 10–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-10), até a chegada dos próximos lotes.
+Capítulos 16–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-16), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -564,11 +564,404 @@ Minimize, rotule, calcule o hash, meça com unidades e nunca estacione evidênci
 
 [← Capítulo 08 (rascunho)](#ch-08) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 10 (rascunho) →](#ch-10)
 
+<a id="ch-10"></a>
+
+## Capítulo 10 — Segurança ofensiva autorizada e red team: orientação
+
+### Objetivos de aprendizagem
+
+Você vai (1) situar a avaliação de vulnerabilidades, o teste de intrusão e o red team num único ciclo de vida; (2) nomear os documentos que criam a permissão; (3) explicar os papéis das equipes red, blue e purple; (4) enunciar com suas palavras o limite educacional deste livro.
+
+### 10.1 Um ciclo de vida, não uma lista de ferramentas
+
+A prática autorizada passa por governança e definição de escopo, regras de engajamento, execução dentro dessas regras, tratamento de evidências, classificação de risco, relatório, correção e validação. Os nomes das ferramentas mudam; o ciclo de vida, não. O NIST SP 800-115 e o PTES organizam o trabalho dessa forma, ainda que os títulos de suas partes sejam diferentes. Priya ensina o caminho que vai da governança, passando por escopo, ROE, execução, evidência, classificação e relatório, até o reteste. Nos treinamentos, os alunos que pularam direto para os scanners produziram um STOP por interação com o sistema de tarifas. A Northpoint é avaliada pela fidelidade com que seguiu o ciclo de vida antes que alguém olhe para a esperteza de seus achados.
+
+### 10.2 A permissão é escrita
+
+A permissão vem de um acordo assinado que nomeia as partes, os sistemas, os métodos, a janela, as exclusões, as regras de tratamento de dados, o contato de emergência e o público do relatório. Um "pode ir" verbal não basta. O Capítulo 11 transforma esse acordo em objetos de escopo e de ROE verificáveis. O pacote assinado do ENG-712 nomeia as partes, os sistemas, os métodos, a janela, as exclusões, o prazo de retenção, o contato de emergência e o telefone da equipe branca. Um contato de emergência vazio cancela o início de sábado, exatamente como ensinam os laboratórios de ROE. A retenção e o telefone da equipe branca são conferidos na mesma passada, porque cada um deles é necessário antes de qualquer atividade começar.
+
+### 10.3 Red, blue e purple
+
+A equipe red (ou a prestadora de testes) exercita comportamentos adversários sob autorização. A equipe blue (o SOC e os defensores) detecta e responde. O purple teaming é colaboração estruturada: a equipe red anuncia ou revela técnicas de forma controlada para que a blue melhore a detecção, com o aprendizado como objetivo, e não uma simples "pegadinha". O TIBER-EU e o CBEST acrescentam uma camada guiada por inteligência de ameaças, usada na garantia do setor financeiro; os tecnólogos devem reconhecer esses nomes mesmo quando sua organização não é um banco.
+
+A red (Northpoint) exercita comportamentos; a blue (SOC da TRT) detecta; a purple leva o que passou despercebido para as regras DET-19 e DET-20. Priya recusa engajamentos que não prevejam uma equipe branca alcançável. O aprendizado é uma entrega, não um extra opcional.
+
+### 10.4 O que este livro não fará
+
+Ele não fornecerá código de exploit, payloads nem procedimentos de ataque passo a passo. Não autorizará ninguém a testar um sistema real. Ensina governança, evidência, medição e validação de correções sobre dados sintéticos, para que, quando o aluno entrar mais tarde numa equipe real, a disciplina já esteja instalada. Nada de código de exploit, nada de autorização ao vivo, nada de tarifas "só desta vez". O limite do Capítulo 10 é o que Priya cita quando uma banca pede os passos de T1552.001 — ela aponta para o ATT&CK e para por aí. A recusa é praticada em simulações de banca, e não deixada como teoria.
+
+### Exemplo resolvido
+
+O CISO da TRT pergunta se eles "precisam de um red team". Priya pergunta que decisão o resultado vai apoiar. O CISO quer saber se o SOC perceberia um intruso realista. Essa é uma pergunta de red team com capacidade purple, não de varredura de vulnerabilidades. Priya propõe um exercício com escopo definido, com autoridade de parada da equipe branca, ROE escritas e uma revisão de aprendizado — e lembra que o pagamento de tarifas continua excluído.
+
+> **Caso sintético.** A conversa com o CISO foi inventada para a orientação.
+
+### Erros e limites
+
+Comprar um produto de "red team" que na verdade é uma varredura desperdiça dinheiro e cria falsa garantia. Nomes de frameworks num slide não equivalem a seguir suas fases.
+
+### Exercícios
+
+- **EX028 — Decisão primeiro.** Reescreva a necessidade do CISO como um objetivo de avaliação de uma frase. *Rubrica:* 3 = objetivo sobre a detecção, pelo SOC, de um intruso realista num exercício com escopo definido; 2 = objetivo vago; 1 = "rodar ferramentas"; 0 = nada.
+- **EX029 — Lista de documentos.** Nomeie cinco campos que um acordo assinado precisa conter antes de os testes começarem. *Rubrica:* 3 = cinco entre escopo/exclusões/métodos/janela/contato de emergência/tratamento de dados/público do relatório/partes; 2 = três; 1 = um; 0 = nada.
+- **EX030 — Objetivo purple.** Numa frase, o que torna um exercício "purple" em vez de uma disputa puramente competitiva entre red e blue? *Rubrica:* 3 = colaboração estruturada voltada a melhorar a detecção/resposta, e não apenas a marcar uma invasão; 2 = menciona colaboração; 1 = mais ferramentas; 0 = nada.
+
+### Síntese
+
+Comece pela decisão, escreva a permissão, conheça os papéis e mantenha este currículo do lado defensivo da linha.
+
+### Continue estudando — capítulo 10 de 30
+
+[← Capítulo 09 (rascunho)](#ch-09) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 11 (rascunho) →](#ch-11)
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Segurança ofensiva autorizada e red team: ativos e contexto
+
+### Objetivos de aprendizagem
+
+Você vai (1) transformar um acordo assinado em escopo e ROE verificáveis por máquina; (2) rejeitar atividades planejadas que caiam fora da janela ou na lista de parada; (3) explicar por que o contexto do ativo (responsável, criticidade, fragilidade) muda a escolha do método; (4) manter alcançável um contato da equipe branca.
+
+### 11.1 Do texto aos objetos
+
+Um acordo escrito em parágrafos se torna útil quando também é uma lista: prefixos e nomes em escopo, sistemas excluídos, atividades permitidas, horários de início e fim, atividades proibidas e um contato de emergência. Os verificadores do Capítulo 2 e deste capítulo operam sobre essas listas. Um texto ambíguo como "e sistemas relacionados" é um defeito, não um recurso. Os acordos em texto viram listas carregáveis pelos verificadores lab_scope e lab_roe. Se um campo não puder ser interpretado, o ENG-712 não começa. Priya mantém tanto as ROE narrativas quanto as listas para máquina.
+
+### 11.2 O contexto muda o método
+
+Um ativo de alta criticidade e frágil pode ser examinado apenas por revisão de configuração. Um clone de homologação de baixa criticidade pode aceitar verificações mais ativas. O registro de ativo do Capítulo 1 fornece esse contexto; ignorá-lo produz ou testes imprudentes ou cautela desperdiçada. Na TRT, o portal de produção, frágil, fica na revisão de configuração, enquanto um clone de homologação rotulado pode receber varreduras de inventário. Quem faz essa escolha é o campo de criticidade do registro de ativo, e não a preferência de um testador no dia. Registrar a escolha nas ROE permite que um revisor veja depois por que os dois sistemas foram tratados de forma diferente.
+
+### 11.3 Listas de parada e janelas
+
+Uma lista de parada nomeia atividades que nunca são permitidas, nem dentro da janela — no caso da TRT, interação com o sistema de tarifas e engenharia social contra motoristas. Uma janela nomeia quando as atividades permitidas podem rodar. As duas são controles rígidos. Na saída do laboratório, uma revisão da VPN às 06:10 devolve STOP porque a janela termina às 05:00. No estúdio, os exercícios de lista de parada usam um nome de host de tarifas falso que precisa produzir HOLD ou STOP, e não tráfego curioso. Os dois controles são verificados antes de cada ação, então um método permitido no horário errado continua sendo recusado.
+
+### Laboratório D — verificador de atividades das ROE
+
+```python
+"""Lab D (ch 11): check synthetic planned activities against the rules-of-engagement window and stop list."""
+from datetime import datetime
+WINDOW = (datetime(2026, 11, 3, 22, 0), datetime(2026, 11, 4, 5, 0))
+FORBIDDEN = {"denial-of-service", "social engineering of drivers", "fare-system interaction"}
+plan = [
+    ("2026-11-03 22:30", "external service inventory"),
+    ("2026-11-04 04:45", "portal authentication review"),
+    ("2026-11-04 06:10", "VPN configuration review"),
+    ("2026-11-03 23:00", "fare-system interaction"),
+]
+for when, act in plan:
+    t = datetime.strptime(when, "%Y-%m-%d %H:%M")
+    if act in FORBIDDEN:
+        status = "STOP: forbidden activity"
+    elif not (WINDOW[0] <= t <= WINDOW[1]):
+        status = "STOP: outside window"
+    else:
+        status = "allowed"
+    print(f"{when}  {act:32} {status}")
+```
+
+Execute com `python3 lab_roe.py`. Saída verificada:
+
+```text
+2026-11-03 22:30  external service inventory       allowed
+2026-11-04 04:45  portal authentication review     allowed
+2026-11-04 06:10  VPN configuration review         STOP: outside window
+2026-11-03 23:00  fare-system interaction          STOP: forbidden activity
+```
+
+### 11.4 Equipe branca
+
+Alguém com autoridade de parada precisa estar alcançável durante toda a janela. Se essa pessoa não puder ser alcançada, a sessão não começa. Exercícios no estilo TIBER-EU formalizam isso como uma função de controle da equipe branca; engajamentos menores continuam precisando da mesma ideia. Silêncio da equipe branca significa não começar: se o contato de plantão não atende, as ferramentas ficam paradas e a revisão da VPN espera. As funções de controle no estilo TIBER são tomadas emprestadas como ideia, mesmo a TRT não sendo um banco. Durante o ENG-712, apenas o elo de ligação nomeado aciona a equipe branca; conversas paralelas, não.
+
+### Exemplo resolvido
+
+O plano preliminar da Northpoint inclui uma revisão da VPN às 06:10 e uma "interação com o sistema de tarifas" às 23:00. O laboratório imprime STOP para as duas — uma fora da janela, outra proibida. Priya cancela essas linhas antes da abertura e mantém as duas atividades permitidas.
+
+> **Caso sintético.** As linhas do plano e a janela de 22:00–05:00 são objetos fictícios das ROE da TRT.
+
+### Erros e limites
+
+Um verificador não consegue inventar exclusões ausentes. Se o acordo silencia, pergunte; não presuma.
+
+### Exercícios
+
+- **EX031 — Duas paradas.** Cite as duas linhas STOP do laboratório e o motivo de cada uma. *Rubrica:* 3 = revisão da VPN fora da janela; interação com o sistema de tarifas proibida; 2 = uma correta; 1 = as duas permitidas; 0 = nada.
+- **EX032 — Contexto frágil.** A API de horários está marcada como frágil. Qual mudança de método deve entrar nas ROE? *Rubrica:* 3 = limitar a taxa/restringir ou passar para revisão de configuração; escrito nas ROE; 2 = cautela vaga; 1 = ignorar; 0 = nada.
+- **EX033 — Equipe branca inalcançável.** Na manhã da janela, o contato de plantão da equipe branca não atende. O que acontece? *Rubrica:* 3 = não começar; escalar para o CISO/substituto nomeado; recomeçar só quando o contato for confirmado; 2 = adiar; 1 = começar mesmo assim; 0 = nada.
+
+### Síntese
+
+Escopo e ROE são listas que se podem verificar; o contexto escolhe o método; sem equipe branca alcançável, não há início.
+
+### Continue estudando — capítulo 11 de 30
+
+[← Capítulo 10 (rascunho)](#ch-10) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 12 (rascunho) →](#ch-12)
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Segurança ofensiva autorizada e red team: fluxos de dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) desenhar um diagrama de fluxo de dados para um serviço da TRT; (2) marcar onde podem aparecer evidências da avaliação e dados pessoais; (3) aplicar regras de minimização e de ocultação de dados; (4) escolher armazenamento e retenção compatíveis com o acordo.
+
+### 12.1 Fluxos, não caixas
+
+Um diagrama de fluxo de dados mostra o que se move: um pedido de passageiro à API de horários, um login de funcionário no portal, uma linha de log para o SIEM, um backup para o armazenamento. Caixas, sozinhas, não revelam onde as cópias de dados sensíveis vão parar. Avaliações que tocam esses caminhos podem criar novas cópias; o acordo precisa dizer o que acontece com elas. Para o ENG-712, Priya desenha os fluxos passageiro→API e funcionário→portal→SIEM antes de o engajamento começar. Qualquer achado que dependa de evidência de log passa então a citar o fluxo de onde ela veio, e cada fluxo é verificado quanto a dados pessoais antes de o desenho das evidências ser aprovado. Um diagrama de caixas sem setas esconderia justamente os deveres de retenção que se aplicam quando uma linha de log é copiada para o cofre de evidências.
+
+### 12.2 Dados pessoais e operacionais
+
+Mesmo uma operadora de transporte guarda dados pessoais — identificadores de funcionários e, às vezes, dados de contas de passageiros em sistemas vizinhos. Dados operacionais como escalas de motoristas e cronogramas de manutenção também podem ser sensíveis. Capture o mínimo que prova um achado; mascare o resto antes de arquivar. No ENG-712, as capturas de tela de login mantêm o domínio do e-mail dos funcionários como prova, mas têm a parte local mascarada antes de entrar no cofre. Os extratos de escala são tratados como sensíveis, mesmo não sendo dados pessoais clássicos, porque revelam quem trabalha onde e quando. Os dois tipos de evidência correm no mesmo relógio de retenção de 90 dias que os banners de serviço.
+
+### 12.3 Caminhos transfronteiriços e de fornecedores
+
+Se os logs forem enviados a um SIEM de fornecedor em outro país, a evidência pode sair da jurisdição que o acordo pressupunha. Registre o caminho antes do engajamento; não o descubra no rascunho do relatório. Priya nomeia no acordo qualquer caminho transfronteiriço de SIEM antes do envio do primeiro log, tratando-o como um host que precisa de escopo. Se o fornecedor anunciar no meio da janela que mudou de região, o envio de logs é pausado e se faz uma reunião de decisão. Ela não inventa consentimento para uma transferência que o acordo assinado nunca previu.
+
+### 12.4 Relógios de retenção
+
+Inicie um relógio de retenção quando a evidência for coletada. Quando terminar o prazo do acordo, apague ou devolva os dados e registre que o fez. Depósitos indefinidos "por via das dúvidas" são um passivo. O ENG-712 corre num relógio de 90 dias que termina com apagamento ou devolução e um registro escrito de destruição que nomeia quem apagou a evidência e quando. O registro tem seu hash incluído no pacote de passagem, ao lado da mudança de controle de acesso no cofre. Guardar cópias para treinamento exigiria um novo acordo; sem ele, a lista de verificação da passagem falha.
+
+### Exemplo resolvido
+
+Priya mapeia o login do portal dos funcionários: navegador → proxy reverso → aplicação do portal → diretório; e um fluxo paralelo aplicação do portal → log da aplicação → SIEM. Uma captura de tela de um login com falha mostra o e-mail de um funcionário. Ela mascara a parte local antes de arquivar, mantém o domínio para provar que era uma conta de funcionário e guarda o arquivo no ENG-712 com uma nota de retenção de 90 dias tirada do acordo.
+
+> **Caso sintético.** O fluxo de login e a captura de tela mascarada são inventados.
+
+### Erros e limites
+
+Uma ocultação que deixa o segredo recuperável (um recorte que ainda mostra a senha nos metadados EXIF, por exemplo) não é ocultação. Este capítulo não trata em detalhe de regimes jurídicos; siga sua assessoria jurídica e o acordo.
+
+### Exercícios
+
+- **EX034 — Cópia extra.** Nomeie um lugar, além do servidor de aplicação, onde um pedido à API de horários pode ser copiado, e por que isso importa para um avaliador. *Rubrica:* 3 = por exemplo, logs do proxy reverso / SIEM / CDN / WAF — cada um é um possível local de evidência e de retenção; 2 = nomeia o lugar; 1 = em lugar nenhum; 0 = nada.
+- **EX035 — Escolha da máscara.** Uma captura de tela mostra o e-mail de funcionário `alex.rivera@trt.example`. O que Priya mantém e o que mascara? *Rubrica:* 3 = mascarar a parte local; manter o domínio ou um marcador de papel para provar o contexto de funcionário; 2 = mascarar tudo; 1 = manter o endereço completo; 0 = nada.
+- **EX036 — Fim da retenção.** O acordo do ENG-712 fala em 90 dias. Que duas ações encerram o relógio? *Rubrica:* 3 = apagar ou devolver a evidência + registrar a destruição/devolução; 2 = uma ação; 1 = guardar para sempre; 0 = nada.
+
+### Síntese
+
+Siga as cópias, minimize e mascare, e encerre o relógio de retenção por escrito.
+
+### Continue estudando — capítulo 12 de 30
+
+[← Capítulo 11 (rascunho)](#ch-11) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 13 (rascunho) →](#ch-13)
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Segurança ofensiva autorizada e red team: cenários de risco
+
+### Objetivos de aprendizagem
+
+Você vai (1) classificar achados com uma matriz transparente de probabilidade × impacto; (2) ordenar uma lista de achados para definir a ordem de correção; (3) escrever um cenário de risco curto que ligue ativo, técnica e consequência; (4) separar a severidade de uma fraqueza da urgência de um chamado.
+
+### 13.1 Classificação transparente
+
+Uma escala de probabilidade de 1 a 5 e uma de impacto de 1 a 5, multiplicadas, dão uma pontuação que qualquer pessoa pode recalcular. Faixas como critical ≥ 20, high ≥ 12, medium ≥ 6, low ≥ 0 transformam pontuações numa linguagem que os gestores reconhecem. Documente a escala no relatório para que os leitores não fiquem adivinhando. O F-09 mostra a aritmética: probabilidade 4 vezes impacto 5 dá 20, que cai na faixa crítica. Priya imprime esse cálculo no apêndice do relatório para que um diretor possa recalculá-lo em segundos. Uma pontuação que não pode ser recalculada convida à discussão sobre o julgamento do testador, em vez da discussão sobre o risco, e a revisão a rejeita.
+
+### 13.2 Cenários ligam os pontos
+
+"Conta de administrador compartilhada no portal dos funcionários" é uma fraqueza. O cenário acrescenta: um adversário usando T1078 Valid Accounts poderia alterar os horários públicos (integridade) e bloquear os operadores (disponibilidade). Os cenários tornam as pontuações de impacto defensáveis. No ENG-712, essa frase fica sob o F-01, ligando a conta de administrador compartilhada ao T1078 e à integridade dos horários públicos. Essa ligação explica por que o CISO deve se preocupar antes da mudança de serviço do fim de semana, e não depois dela. Achados altos sem frase de cenário são reescritos antes que o gerador de relatórios produza a tabela executiva.
+
+### 13.3 Severidade versus urgência
+
+Um achado crítico num host de homologação desativado pode ter baixa urgência. Um achado médio num sistema sob ataque ativo pode ter alta urgência. Os chamados levam os dois campos; reduzi-los a um único número perde informação. Priya conduz com os responsáveis uma triagem semanal que ordena os chamados primeiro pela urgência. Um achado médio num sistema que está sendo ativamente abusado pode, assim, passar à frente de um crítico num host de homologação prestes a ser desligado. Os responsáveis veem os dois valores no chamado, então a ordem é explicada, e não misteriosa.
+
+### Laboratório E — pontuador de achados
+
+```python
+"""Lab E (ch 13): rate synthetic findings with a 1-5 likelihood x impact matrix and sort them."""
+BANDS = [(20, "critical"), (12, "high"), (6, "medium"), (0, "low")]
+findings = [
+    ("F-01", "shared admin account on staff portal", 4, 4),
+    ("F-04", "verbose error page on timetable API", 3, 1),
+    ("F-07", "unreviewed VPN accounts of ex-contractors", 3, 5),
+    ("F-09", "wiki page with plaintext service password", 4, 5),
+]
+def band(s):
+    return next(name for floor, name in BANDS if s >= floor)
+for fid, title, lik, imp in sorted(findings, key=lambda f: -(f[2] * f[3])):
+    s = lik * imp
+    print(f"{fid} L{lik} x I{imp} = {s:2d} {band(s):8} {title}")
+```
+
+Execute com `python3 lab_score.py`. Saída verificada:
+
+```text
+F-09 L4 x I5 = 20 critical wiki page with plaintext service password
+F-01 L4 x I4 = 16 high     shared admin account on staff portal
+F-07 L3 x I5 = 15 high     unreviewed VPN accounts of ex-contractors
+F-04 L3 x I1 =  3 low      verbose error page on timetable API
+```
+
+### 13.4 A linguagem do NIST
+
+O NIST SP 800-30 Rev. 1 descreve o risco como função de ameaça, vulnerabilidade e impacto (entre outros enquadramentos). A matriz de sala de aula é uma simplificação para ordenar o trabalho, não uma avaliação de risco corporativa completa. Priya coloca a citação do SP 800-30 sob a figura da matriz, rotulando a escala de 1 a 5 como uma simplificação didática de suas ideias. Os examinadores podem então ver de onde vem a abordagem e o que ela deixa de fora, como a análise das fontes de ameaça. Ninguém que leia o relatório deve pensar que a TRT inventou sua própria teoria de risco.
+
+### 13.5 Comunicar as pontuações para cima
+
+Quando Priya apresenta a lista ordenada, ela dedica mais tempo aos dois cenários do topo do que ao achado baixo. Conselhos conseguem absorver um punhado de riscos bem narrados; não conseguem absorver o despejo de uma planilha. Ela mantém a tabela completa num apêndice para os auditores e põe três frases no sumário executivo: o que importa, por quê e que decisão ela precisa nesta semana. No resumo oral do ENG-712, o F-09 e o F-01 vêm primeiro, enquanto o achado baixo de página de erro detalhada ganha uma única linha.
+
+### Exemplo resolvido
+
+Quatro achados da TRT entram no pontuador. A senha em texto claro na wiki (T1552.001 Credentials In Files) encabeça a lista com 20, crítica. A página de erro detalhada da API de horários pontua 3, baixa. Priya apresenta a lista ordenada ao comitê de correção, com cenários de uma frase anexados.
+
+> **Caso sintético.** Os quatro achados e suas pontuações são inventados.
+
+### Erros e limites
+
+Não invente números de probabilidade sem motivo. O CVSS (veja o FIRST CVSS v4.0) pontua vulnerabilidades; o risco organizacional também precisa de um contexto que a matriz deve declarar.
+
+### Exercícios
+
+- **EX037 — Topo da lista.** Qual achado o laboratório classifica em primeiro lugar e qual é sua faixa? *Rubrica:* 3 = F-09, crítica (pontuação 20); 2 = só o F-09; 1 = achado errado; 0 = nada.
+- **EX038 — Frase de cenário.** Escreva um cenário de risco de uma frase para o F-07 (contas de VPN de ex-terceirizados). *Rubrica:* 3 = ativo + caminho de técnica/agente + consequência para a CIA; 2 = dois dos três; 1 = repete o título; 0 = nada.
+- **EX039 — Separar a urgência.** O F-04 tem severidade baixa numa API de produção que está sendo sondada a partir da internet neste momento. Que urgência você atribui e por quê? *Rubrica:* 3 = urgência elevada apesar da severidade baixa, por causa da sondagem ativa; 2 = eleva sem motivo; 1 = ignora a sondagem; 0 = nada.
+
+### Síntese
+
+Pontue com transparência, narre o cenário e mantenha severidade e urgência como mostradores separados.
+
+### Continue estudando — capítulo 13 de 30
+
+[← Capítulo 12 (rascunho)](#ch-12) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 14 (rascunho) →](#ch-14)
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Segurança ofensiva autorizada e red team: métodos I
+
+### Objetivos de aprendizagem
+
+Você vai (1) mapear as fases do engajamento para o NIST SP 800-115 e o PTES; (2) escolher entre técnicas de revisão e de validação com base no risco; (3) escrever uma declaração de método que as ROE possam citar; (4) manter as descrições de técnicas no nível de ID do ATT&CK, sem detalhe operacional.
+
+### 14.1 Dois mapas da mesma jornada
+
+O NIST SP 800-115 agrupa as técnicas em revisão, identificação e análise de alvos e validação de vulnerabilidades dos alvos, envolvidas por atividades de planejamento e de pós-teste. O PTES nomeia pré-engajamento, coleta de inteligência, modelagem de ameaças, análise de vulnerabilidades, exploração, pós-exploração e relatório. Um tecnólogo não precisa decorar cada subseção; precisa situar cada atividade planejada numa fase e saber qual documento o cliente prefere. O SP 800-115 e o PTES nomeiam etapas; Priya mapeia as atividades do ENG-712 nos dois, para que a Northpoint e os auditores compartilhem o vocabulário. Os extras guiados por ameaças ficam por cima da disciplina de escopo, e não no lugar dela.
+
+### 14.2 Revisão antes da validação
+
+A revisão de configuração, a revisão de documentos e a revisão de logs muitas vezes respondem à pergunta com menos risco operacional do que a validação ativa. Use a validação quando a decisão realmente precisar da confirmação de que uma fraqueza é alcançável dentro dos limites combinados — e só então. No portal dos funcionários, revisar a configuração de autenticação respondeu à pergunta sobre o MFA com muito menos risco do que qualquer experimento com senhas. A validação ativa fica reservada para os casos em que a decisão do CISO depende da prova de que uma fraqueza pode de fato ser alcançada dentro das ROE. Um pedido de validação desse tipo precisa de uma declaração de decisão de uma linha antes que qualquer verificação ativa rode.
+
+### 14.3 Declarações de método
+
+Uma declaração de método é uma descrição curta e não procedimental: "Inventário de serviços externos dos prefixos em escopo usando scanners aprovados, nas taxas combinadas; revisão da configuração de autenticação do portal dos funcionários; sem negação de serviço, sem interação com o sistema de tarifas, sem engenharia social." Ela pertence às ROE. A declaração do ENG-712 permanece nesse nível: inventário nas taxas combinadas, revisão da autenticação do portal e as três exclusões. Instruções de exploração passo a passo não pertencem nem a este livro nem às entregas do engajamento. Na rubrica de revisão por pares, qualquer detalhe de uso dual numa declaração de método reprova o critério de segurança, por mais completo que seja o restante do pacote.
+
+### 14.4 ATT&CK no nível de ID
+
+Refira-se aos comportamentos como T1595 Active Scanning, T1046 Network Service Discovery, T1078 Valid Accounts. Não os expanda em passos práticos. Os defensores podem abrir as páginas do ATT&CK; os atacantes não precisam deste livro. Toda entrega aponta para as páginas de técnicas do ATT&CK em vez de colar o texto de procedimentos. Expandir esses identificadores em receitas quebraria o limite educacional definido no Capítulo 10. Um defensor que precise de mais detalhe pode seguir o link, e o relatório continua útil para o SOC sem virar um manual para atacantes.
+
+### Exemplo resolvido
+
+Priya redige a declaração de método para a janela de novembro da TRT. O planejamento e as ROE citam os controles de planejamento do SP 800-115. A execução lista o inventário (identificação) e a revisão de autenticação (validação da eficácia de um controle). O relatório e a validação das correções fecham o ciclo. A declaração nunca descreve como contornar a autenticação.
+
+> **Caso sintético.** A declaração de método de novembro foi inventada para a TRT.
+
+### Erros e limites
+
+Copiar uma lista de métodos da ficha técnica de um fornecedor sem compará-la com o escopo produz atividade não autorizada. "Exploração", no PTES, é o nome de uma fase, não uma licença para ataques sem controle.
+
+### Exercícios
+
+- **EX040 — Situar na fase.** Situe "revisão da configuração de autenticação do portal dos funcionários" numa família de técnicas do SP 800-115 e numa fase do PTES. *Rubrica:* 3 = revisão ou validação (SP) + análise de vulnerabilidades ou fase equivalente do PTES, com justificativa breve; 2 = uma correta; 1 = errada; 0 = nada.
+- **EX041 — Frase de método.** Escreva uma declaração de método de uma frase para o inventário dos prefixos em escopo da TRT que inclua um limite rígido. *Rubrica:* 3 = inventário + apenas o que está em escopo + limite de taxa/janela/exclusão; 2 = só o inventário; 1 = varredura ilimitada; 0 = nada.
+- **EX042 — Só o ID.** Por que o livro cita o T1046 pelo ID em vez de descrever os passos da varredura? *Rubrica:* 3 = mapeamento defensivo sem ensinar procedimentos de ataque; 2 = concisão; 1 = porque os passos são secretos; 0 = nada.
+
+### Síntese
+
+Nomeie a fase, prefira a revisão quando ela responde, escreva o método como limites mais intenção e pare no ID da técnica.
+
+### Continue estudando — capítulo 14 de 30
+
+[← Capítulo 13 (rascunho)](#ch-13) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 15 (rascunho) →](#ch-15)
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Segurança ofensiva autorizada e red team: laboratório guiado
+
+### Objetivos de aprendizagem
+
+Você vai (1) executar um pipeline de três controles que admite uma ação apenas quando alvo, horário e atividade passam; (2) manter um registro do operador com as ações admitidas; (3) explicar por que um HOLD é um sucesso, e não uma falha; (4) entregar o registro a um revisor como evidência de disciplina.
+
+### 15.1 Três controles
+
+Toda ação planejada tem um endereço de alvo, um carimbo de tempo e um nome de atividade. O alvo precisa estar no prefixo em escopo, o horário dentro da janela e a atividade na lista aprovada. Se qualquer controle falhar, a ação não prossegue. Na saída do Laboratório F, A2 é retida no controle de atividade e A3 no controle de alvo, então nenhuma das duas chega ao registro do operador. Priya registra as duas linhas HOLD em capturas de tela nas notas de treinamento, porque no ENG-712 os controles são o produto e a improvisação é o defeito.
+
+### 15.2 O registro do operador
+
+Apenas as ações que passam pelos três controles são escritas no registro do operador. O registro é a evidência de que a equipe ficou dentro do acordo. Um registro cheio de improvisação é um achado contra a própria equipe de testes. No laboratório, apenas A1 e A4 passam pelos três controles, então são as únicas entradas do registro do operador. Priya revisa o registro antes da sessão com o CISO e o compara com o histórico do chat. Qualquer ação que apareça no chat, mas não no registro, é uma ação nas sombras e vira um achado de processo contra a Northpoint.
+
+### Laboratório F — pipeline guiado
+
+```python
+"""Lab F (ch 15): guided pipeline - an action is logged only if target, time and activity all pass."""
+import ipaddress
+from datetime import datetime
+scope = ipaddress.ip_network("192.0.2.0/25")
+window = (datetime(2026, 11, 3, 22, 0), datetime(2026, 11, 4, 5, 0))
+approved = {"service inventory", "authentication review", "configuration review"}
+actions = [
+    ("A1", "192.0.2.12", "2026-11-03 22:15", "service inventory"),
+    ("A2", "192.0.2.12", "2026-11-03 22:40", "password spraying"),
+    ("A3", "192.0.2.140", "2026-11-03 23:05", "configuration review"),
+    ("A4", "192.0.2.30", "2026-11-04 01:20", "authentication review"),
+]
+log = []
+for aid, ip, when, act in actions:
+    checks = {
+        "target": ipaddress.ip_address(ip) in scope,
+        "time": window[0] <= datetime.strptime(when, "%Y-%m-%d %H:%M") <= window[1],
+        "activity": act in approved,
+    }
+    failed = [k for k, ok in checks.items() if not ok]
+    print(aid, "PROCEED" if not failed else "HOLD (" + ",".join(failed) + ")")
+    if not failed:
+        log.append(aid)
+print("operator log entries:", log)
+```
+
+Execute com `python3 lab_pipeline.py`. Saída verificada:
+
+```text
+A1 PROCEED
+A2 HOLD (activity)
+A3 HOLD (target)
+A4 PROCEED
+operator log entries: ['A1', 'A4']
+```
+
+### 15.3 HOLD é um recurso
+
+A2 é retida porque "password spraying" não é uma atividade aprovada. A3 é retida porque o alvo está fora do /25. Esses HOLDs protegem a TRT e a Northpoint. Celebrar um HOLD na reunião de encerramento ensina aos juniores que a contenção é profissional. As reuniões de encerramento dão aos HOLDs e aos STOPs de pagamento de tarifas o mesmo reconhecimento que aos achados. As notas do estúdio concedem pontos por HOLDs documentados que impediram trabalho fora de escopo ou fora da janela. Juniores que escondem um HOLD para parecer produtivos são reprovados na nota do estúdio, porque escondê-lo apaga a evidência de que os controles funcionaram.
+
+### 15.4 Uso pelo revisor
+
+Um revisor deve conseguir repetir os controles sobre o registro. Se aparecer uma entrada que não passaria, o engajamento tem uma falha de processo, independentemente de algo "interessante" ter sido encontrado. A revisão por pares dos pacotes de treinamento do ENG-712 inclui executar de novo as verificações dos controles sobre cada entrada do registro. Se uma entrada teria sido retida, o engajamento registra uma falha de processo mesmo quando o achado relacionado parece impressionante. O processo é avaliado ao lado dos achados, então um resultado forte não consegue esconder um registro que os controles teriam rejeitado.
+
+### Exemplo resolvido
+
+Quatro ações candidatas entram no pipeline. A1 e A4 prosseguem; A2 e A3 ficam retidas. O registro do operador contém apenas `['A1', 'A4']`. Priya anexa essa saída aos registros do engajamento antes do fim do turno da noite.
+
+> **Caso sintético.** As quatro ações e os resultados do pipeline foram inventados para o laboratório guiado.
+
+### Erros e limites
+
+O pipeline não substitui o julgamento humano sobre fragilidade ou incidentes em andamento; ele apenas aplica os três controles rígidos. Preocupações mais sutis continuam precisando de uma pessoa.
+
+### Exercícios
+
+- **EX043 — Motivos da retenção.** Por que A2 e A3 ficam retidas, segundo o laboratório? *Rubrica:* 3 = A2, atividade não aprovada; A3, alvo fora de escopo; 2 = uma correta; 1 = as duas prosseguem; 0 = nada.
+- **EX044 — Conteúdo do registro.** O que o registro do operador contém depois da execução e por que essa lista é evidência? *Rubrica:* 3 = ['A1','A4']; prova que só ações aprovadas pelos controles foram executadas; 2 = nomeia a lista; 1 = inclui as retidas; 0 = nada.
+- **EX045 — Preocupação sutil.** A API de horários é frágil, mas o alvo e a atividade de A4 são permitidos. Que passo extra uma pessoa deve dar? *Rubrica:* 3 = aplicar a limitação de taxa/nota de fragilidade das ROE ou mudar de método; confirmar com a equipe branca em caso de dúvida; 2 = cautela vaga; 1 = ignorar; 0 = nada.
+
+### Síntese
+
+Três controles rígidos, um registro só com o que passou e o julgamento humano ainda aplicado por cima.
+
+### Continue estudando — capítulo 15 de 30
+
+[← Capítulo 14 (rascunho)](#ch-14) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 16 (rascunho) →](#ch-16)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX027 (as de EX028–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). A Tidewater Regional Transit, Priya Natarajan, a Northpoint Assurance e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX045 (as de EX046–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). A Tidewater Regional Transit, Priya Natarajan, a Northpoint Assurance e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** O BMC é acessível por uma porta de rede própria, recebe correções pelo firmware do fabricante e não pelo sistema operacional, e pode ficar numa VLAN de gerenciamento fora do escopo escrito. Um registro separado obriga a reunião de escopo a incluí-lo ou excluí-lo explicitamente.
 
@@ -623,6 +1016,42 @@ Respostas-modelo para EX001–EX027 (as de EX028–EX090 estão na edição em i
 **EX026.** Exemplo: "2026-11-03 21:40 Priya Natarajan exportou o banner de login do portal a partir de trt-portal, no chamado ENG-712; guardado em evidence/ENG-712/E-001_portal_login_banner.txt."
 
 **EX027.** Não. A evidência fica no repositório aprovado do engajamento, sob as regras de acesso e retenção do acordo, e não em equipamento pessoal.
+
+**EX028.** Exemplo: "Determinar, num exercício autorizado e com prazo definido, sob supervisão da equipe branca, se o SOC da TRT detecta e responde a um intruso realista contra o portal dos funcionários e a VPN, excluindo os sistemas de pagamento de tarifas."
+
+**EX029.** Quaisquer cinco entre: partes, sistemas em escopo, exclusões, métodos permitidos, janela de tempo, contato de emergência, regras de tratamento de dados, público do relatório. Nomear cinco campos obrigatórios distintos recebe 3.
+
+**EX030.** O purple teaming estrutura a colaboração — muitas vezes com revelações planejadas ou revisões conjuntas — para que os defensores melhorem a detecção e a resposta; o produto principal é o aprendizado, e não um placar competitivo.
+
+**EX031.** `2026-11-04 06:10 VPN configuration review STOP: outside window` e `2026-11-03 23:00 fare-system interaction STOP: forbidden activity`.
+
+**EX032.** Escrever um limite rígido: apenas revisão de configuração, ou verificações ativas limitadas a uma taxa combinada dentro da janela, e registrar esse limite nas ROE para que os testadores não improvisem.
+
+**EX033.** Não iniciar a sessão. Escalar para o CISO ou para o substituto nomeado, confirmar uma autoridade de parada alcançável e só então reabrir a janela por escrito.
+
+**EX034.** Exemplo: logs de acesso do proxy reverso, um WAF, uma borda de CDN ou o SIEM. Qualquer um deles pode guardar uma cópia que vira evidência da avaliação e que precisa seguir as regras de retenção do acordo.
+
+**EX035.** Mascarar `alex.rivera` (a parte local) e manter `@trt.example` ou um rótulo como "conta de funcionário", para que o achado ainda prove que uma identidade de funcionário estava envolvida sem expor a pessoa.
+
+**EX036.** Apagar ou devolver todos os itens de evidência do ENG-712 quando chegar o dia 90 e escrever um registro curto de que a destruição ou a devolução aconteceu, de quem a fez e de quando.
+
+**EX037.** O F-09, com pontuação 20 na faixa crítica — a página da wiki com uma senha de serviço em texto claro.
+
+**EX038.** Exemplo: "Contas de VPN de ex-terceirizados (T1078) poderiam permitir que um ex-terceirizado alcançasse o jump host de gerenciamento e perturbasse as operações do portal dos funcionários (disponibilidade/integridade)."
+
+**EX039.** Elevar a urgência (por exemplo, tratar o chamado como devido nesta semana), mesmo com a severidade continuando baixa, porque a sondagem ativa a partir da internet aumenta a chance de a fraqueza ser encontrada antes de um ciclo rotineiro de correção.
+
+**EX040.** SP 800-115: revisão (revisão de configuração) ou, se for para confirmar a aplicação do controle, validação de vulnerabilidades do alvo. PTES: análise de vulnerabilidades (ou uma fase vizinha claramente justificada). Nomear as duas com uma justificativa curta recebe 3.
+
+**EX041.** Exemplo: "Inventariar os serviços em escuta apenas nos prefixos em escopo, na taxa de requisições combinada e dentro da janela das ROE, com os endereços de pagamento de tarifas excluídos."
+
+**EX042.** Os IDs de técnica permitem que defensores e relatórios mapeiem comportamentos de forma consistente sem fornecer procedimentos operacionais de ataque, que este livro educacional deliberadamente não traz.
+
+**EX043.** A2 fica retida porque a atividade ("password spraying") não está na lista aprovada. A3 fica retida porque 192.0.2.140 está fora do /25 em escopo.
+
+**EX044.** `['A1', 'A4']`. A lista é a evidência de que apenas as ações que passaram pelos controles de alvo, horário e atividade foram registradas como executadas.
+
+**EX045.** Respeitar a nota de fragilidade das ROE — limitar a taxa ou passar para revisão de configuração — e, se a nota não estiver clara, perguntar à equipe branca antes de prosseguir, mesmo que os controles rígidos tenham passado.
 
 <a id="references"></a>
 ## Referências
