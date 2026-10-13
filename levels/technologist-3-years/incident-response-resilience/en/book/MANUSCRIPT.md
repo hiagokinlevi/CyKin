@@ -62,11 +62,11 @@ You will be able to (1) describe a business service as a set of compute, storage
 
 ### 1.1 Why a responder starts with the system, not the attack
 
-An incident is handled on real machines. A responder who does not know where an application runs, where its data lives, who may change it and what it depends on will lose the first hours of any case asking those questions. NIST SP 800-61 Rev. 3 places incident response inside cybersecurity risk management under the CSF 2.0 functions; its preparation activities assume the organization already knows its assets and their criticality. The technologist's job is to make that assumption true.
+An incident is handled on real machines. A responder who does not know where an application runs, where its data lives, who may change it and what it depends on will lose the first hours of any case asking those questions. NIST SP 800-61 Rev. 3 places incident response inside cybersecurity risk management under the CSF 2.0 functions; its preparation activities assume the organization already knows its assets and their criticality. The technologist's job is to make that assumption true. At Fernmoor, the appointment-service map showed this in practice: nobody knew who could approve blocking the load balancer at 02:00.
 
 ### 1.2 Components of a service
 
-A **service** is what a customer experiences ("book an appointment"). It is delivered by **components**: compute (virtual machines, containers, serverless functions), storage (databases, file shares, object stores, backups), network paths (load balancers, firewalls, DNS), identity (directory, single sign-on, service accounts) and external suppliers. For each component record: name, role, environment (production, test), location, owner team, change authority, data held, logs produced, and how it is restored.
+A **service** is what a customer experiences ("book an appointment"). It is delivered by **components**: compute (virtual machines, containers, serverless functions), storage (databases, file shares, object stores, backups), network paths (load balancers, firewalls, DNS), identity (directory, single sign-on, service accounts) and external suppliers. For each component record: name, role, environment (production, test), location, owner team, change authority, data held, logs produced, and how it is restored. Fernmoor's appointment service shows why the restore column matters: the map listed nightly backups for `appt-db-1`, but nobody had timed a restore, so the team could not say how long the service would be down. The same gap in the owner column left the load balancer without anyone who could approve a block at night.
 
 ### 1.3 Failure domains and change ownership
 
@@ -82,20 +82,20 @@ Response-relevant actions, each with an owner: forward application logs to centr
 
 ### 1.5 Practice activity
 
-Pick one service you can legitimately describe (a home lab or the synthetic service above). Produce a one-page component table and mark each component's failure domain and restore method.
+Pick one service you can legitimately describe (a home lab or the synthetic service above). Produce a one-page component table and mark each component's failure domain and restore method. A good table makes the risky entries visible at a glance. In the appointment service, one automation account patches all three application hosts, so a single stolen credential reaches every host; your table should show the same kind of shared dependency if it exists. Note the restore method as tested or untested, because an untested restore is a plan, not a capability. Ask the owner of each component to check your entries before you call the table finished.
 
 ### 1.6 Common errors and limits
 
 - Mapping servers but not identities and pipelines, which are the most common shared failure domains.
 - Listing a team as owner without a reachable person or rota.
 - Treating the map as finished; it decays with every change unless tied to change management (Chapter 21).
-- Recording "backed up" without a tested restore time.
+- Recording "backed up" without a tested restore time. Each of these errors appeared in Fernmoor's first map. `svc-patch` was missing as a component, the load balancer had no named owner, and the database restore was recorded without a time. Correcting them took a few days of conversation with owners, far less than discovering them during a case at night.
 
 ### Exercises — chapter 1
 
 Attempt each exercise before opening the [worked results](#worked-results). Every case, organization, person, address and number in an exercise is synthetic unless a cited public source is named.
 
-**EX001 — Component table.** *Inputs:* §1.4. *Steps:* write a table with component, role, owner, logs, restore method for the appointment service. *Rubric:* 3 = all eight components (three app hosts, LB, primary, replica, backup store, IdP) with gaps marked; 2 = most components; 1 = hosts only; 0 = none.
+**EX001 — Component table.** *Inputs:* the appointment-service worked example in Chapter 1. *Steps:* write a table with component, role, owner, logs, restore method for the appointment service. *Rubric:* 3 = all eight components (three app hosts, LB, primary, replica, backup store, IdP) with gaps marked; 2 = most components; 1 = hosts only; 0 = none.
 
 **EX002 — Failure domains.** *Steps:* name three failure domains in the appointment service and say whether each matters for intrusion spread, containment impact or recovery. *Rubric:* 3 = three domains each correctly classified with reason; 2 = two; 1 = one or unclassified; 0 = none.
 
@@ -123,19 +123,19 @@ You will be able to (1) trace how a resident's request reaches a Fernmoor servic
 
 ### 2.1 The request path
 
-A typical request: the browser resolves `appointments.fernmoor.example` through DNS (RFC 1035), opens a TLS 1.3 connection (RFC 8446) to a content-delivery or load-balancing edge, which forwards to an application host inside a segmented network, which queries the database on another segment. Each hop can log: DNS query logs, edge access logs (client address, URL, status, bytes), firewall connection logs, application logs, database logs. Each hop is also a possible control point.
+A typical request: the browser resolves `appointments.fernmoor.example` through DNS (RFC 1035), opens a TLS 1.3 connection (RFC 8446) to a content-delivery or load-balancing edge, which forwards to an application host inside a segmented network, which queries the database on another segment. Each hop can log: DNS query logs, edge access logs (client address, URL, status, bytes), firewall connection logs, application logs, database logs. Each hop is also a possible control point. In the permit enumeration case, the edge access logs supplied the volume, sequence and source of the requests, and the firewall logs confirmed that only the edge talked to the app tier. Without both hops logged, the duty lead could not have ruled out direct access to the application hosts.
 
 ### 2.2 What network evidence can and cannot tell you
 
-Network logs show who connected to what, when and how much data moved. They usually do not show content, because TLS encrypts it; decryption at an edge is a design choice with privacy implications. Source addresses may be shared (carrier NAT, proxies, cloud egress) or spoofed for connectionless traffic. A **flow record** summarizes a connection (addresses, ports, bytes, duration). NIST SP 800-92 discusses log management, including the need to plan retention and protect integrity.
+Network logs show who connected to what, when and how much data moved. They usually do not show content, because TLS encrypts it; decryption at an edge is a design choice with privacy implications. Source addresses may be shared (carrier NAT, proxies, cloud egress) or spoofed for connectionless traffic. A **flow record** summarizes a connection (addresses, ports, bytes, duration). NIST SP 800-92 discusses log management, including the need to plan retention and protect integrity. The permit enumeration showed the limit clearly: the logs proved that 41,000 requests came from one range with sequential ids, but not who was behind them or why.
 
 ### 2.3 Time and addressing
 
-Correlating hops needs synchronized clocks; NTP (RFC 5905) keeps hosts aligned, and timestamps written in RFC 3339 form with an explicit offset remove ambiguity. Documentation in this book uses the address ranges reserved by RFC 5737 (192.0.2.0/24, 198.51.100.0/24, 203.0.113.0/24) and the `example` domain so that no real system is implied.
+Correlating hops needs synchronized clocks; NTP (RFC 5905) keeps hosts aligned, and timestamps written in RFC 3339 form with an explicit offset remove ambiguity. Documentation in this book uses the address ranges reserved by RFC 5737 (192.0.2.0/24, 198.51.100.0/24, 203.0.113.0/24) and the `example` domain so that no real system is implied. Clock problems are not theoretical. If the edge logs in local time and the application in UTC without saying so, the same request appears an hour apart in two sources, and a responder may treat it as two events. Before correlating hops, Fernmoor's analysts check each source's zone and record it with the export, so later readers know which correction was applied to which file.
 
 ### 2.4 Containment points and side effects
 
-Options include blocking an address at the edge, blocking a URL path, disabling a DNS record, isolating a host's network segment, or cutting an egress route. Each has a **blast radius**: blocking a shared egress address may block an entire mobile carrier's customers; removing a DNS record stops every user. A technologist pre-builds the common containment actions, records their side effects and their rollback, and tests them in a non-production environment.
+Options include blocking an address at the edge, blocking a URL path, disabling a DNS record, isolating a host's network segment, or cutting an egress route. Each has a **blast radius**: blocking a shared egress address may block an entire mobile carrier's customers; removing a DNS record stops every user. A technologist pre-builds the common containment actions, records their side effects and their rollback, and tests them in a non-production environment. In the permit enumeration case, the rate limit at the edge was chosen first because it was reversible in seconds and left the public lookup working. Disabling the endpoint stopped the exposure completely, but only after the service owner accepted the loss of the public permit lookup.
 
 ### 2.5 Worked example (synthetic): enumeration of permit records
 
@@ -148,7 +148,7 @@ Analysis: the network evidence shows *volume, sequence and source*; it cannot sh
 - Treating an IP address as an identity.
 - Blocking at the narrowest point you can reach rather than the point with the best side-effect profile.
 - Forgetting that edge logs often rotate in hours; export first.
-- Relying on log times without knowing the clock source.
+- Relying on log times without knowing the clock source. The permit enumeration case avoided all four. The duty lead did not treat the source range as a single attacker, chose a rate limit for its side effects rather than its reach, exported the edge logs before rotation, and relied on synchronized clocks when lining up edge and application records. Each of those choices is recorded in the case so a reviewer can check it later.
 
 ### Exercises — chapter 2
 
@@ -156,7 +156,7 @@ Attempt each exercise before opening the [worked results](#worked-results). Ever
 
 **EX004 — Hop table.** *Steps:* for the permit portal path, list each hop, the log it produces, a typical retention to verify, and one control action. *Rubric:* 3 = DNS, edge, firewall, app, DB each with log, retention-to-verify and control; 2 = four hops; 1 = two; 0 = none.
 
-**EX005 — Side effects.** *Steps:* for options (a)–(c) in §2.5, state side effect, rollback and time to apply. *Rubric:* 3 = all three with plausible side effects and rollback; 2 = two; 1 = one; 0 = none.
+**EX005 — Side effects.** *Steps:* for options (a)–(c) in the permit-enumeration worked example, state side effect, rollback and time to apply. *Rubric:* 3 = all three with plausible side effects and rollback; 2 = two; 1 = one; 0 = none.
 
 **EX006 — Limits of evidence.** *Steps:* write three sentences for the case record stating what the network logs establish and what they do not. *Rubric:* 3 = facts (volume, pattern, source range, status codes) vs unknowns (identity, intent, content beyond logged fields), no attribution; 2 = mixes one inference; 1 = attributes intent; 0 = none.
 
@@ -182,19 +182,19 @@ You will be able to (1) write small, readable Python programs that parse, filter
 
 ### 3.1 Why a responder programs
 
-Response work repeats: normalizing timestamps, extracting accounts from logs, counting events per source, building evidence manifests. Doing it by hand is slow and error-prone under pressure. A technologist writes scripts that a colleague can read, rerun and check. This book's labs use only the Python 3 standard library so they run offline on any workstation without installing packages — a deliberate choice for an evidence workstation.
+Response work repeats: normalizing timestamps, extracting accounts from logs, counting events per source, building evidence manifests. Doing it by hand is slow and error-prone under pressure. A technologist writes scripts that a colleague can read, rerun and check. This book's labs use only the Python 3 standard library so they run offline on any workstation without installing packages — a deliberate choice for an evidence workstation. The failed sign-ins script in this chapter is an example: it counts failures per account and distinct sources per account, a job that is slow and error-prone by hand on a large export.
 
 ### 3.2 Core constructs you will use
 
-Variables and types (strings, integers, lists, dictionaries); loops and comprehensions; functions with clear inputs and outputs; reading files line by line; the `csv`, `json`, `datetime`, `hashlib`, `collections` and `statistics` modules. Prefer explicit names (`signin_events`) over clever one-liners.
+Variables and types (strings, integers, lists, dictionaries); loops and comprehensions; functions with clear inputs and outputs; reading files line by line; the `csv`, `json`, `datetime`, `hashlib`, `collections` and `statistics` modules. Prefer explicit names (`signin_events`) over clever one-liners. These are enough for most response scripts. The failed sign-ins script uses only `csv` to read the export, a dictionary and set to count failures and sources per account, and sorting to make the output repeatable. A colleague reading it can check each line against the problem, which is the point of keeping scripts plain. When a script needs anything beyond the standard library, the case notes record the package and version.
 
 ### 3.3 Evidence-safe scripting
 
-Rules: open evidence files read-only and write results to a separate folder; never modify originals; make output deterministic (sort before printing); record the script version (hash or commit) and the input file hashes in the case notes; fail loudly on malformed lines rather than silently skipping them, or count and report what was skipped. NIST SP 800-86 emphasizes preserving the integrity of data during examination; a script is part of the examination method.
+Rules: open evidence files read-only and write results to a separate folder; never modify originals; make output deterministic (sort before printing); record the script version (hash or commit) and the input file hashes in the case notes; fail loudly on malformed lines rather than silently skipping them, or count and report what was skipped. NIST SP 800-86 emphasizes preserving the integrity of data during examination; a script is part of the examination method. The failed sign-ins script follows these rules: it reports skipped rows instead of hiding them.
 
 ### 3.4 Testing before trusting
 
-Before running a parser over a real export, run it over a tiny input you can verify by eye, including edge cases: an empty field, a timestamp without a zone, a duplicated line. Compare the output with what you expect. If they differ, fix the script or your expectation, then record why.
+Before running a parser over a real export, run it over a tiny input you can verify by eye, including edge cases: an empty field, a timestamp without a zone, a duplicated line. Compare the output with what you expect. If they differ, fix the script or your expectation, then record why. The failed sign-ins script was tested this way. A ten-line file with one empty `user` field produced the expected "skipped 1", which showed that the script would report malformed rows rather than hide them. Only then was it run on the real export, and both the script hash and the input hash went into the case record.
 
 ### 3.5 Worked example (synthetic): counting failed sign-ins
 
@@ -214,13 +214,13 @@ Tested first on a ten-line file containing one row with an empty `user`, the scr
 - Silently dropping malformed lines, which hides exactly the anomalies you need.
 - Mixing time zones when comparing timestamps.
 - Editing evidence in a spreadsheet that reformats dates and strips leading zeros.
-- Treating a script's output as fact without a test on known input.
+- Treating a script's output as fact without a test on known input. Fernmoor's own work shows how easy these are to make. Opening an identity export in a spreadsheet can convert timestamps to the workstation's local zone without warning, and a script that silently drops rows with an empty `user` would have hidden the malformed line the test caught. Keeping inputs read-only and printing skipped counts guards against both.
 
 ### Exercises — chapter 3
 
 Attempt each exercise before opening the [worked results](#worked-results). Every case, organization, person, address and number in an exercise is synthetic unless a cited public source is named.
 
-**EX007 — Pseudocode to Python.** *Steps:* turn the §3.5 pseudocode into a standard-library Python script. *Rubric:* 3 = uses csv, Counter/dict and set, sorts output, reports skipped rows, opens input read-only; 2 = works but no skipped count or not sorted; 1 = partial; 0 = none.
+**EX007 — Pseudocode to Python.** *Steps:* turn the pseudocode from the failed sign-ins worked example into a standard-library Python script. *Rubric:* 3 = uses csv, Counter/dict and set, sorts output, reports skipped rows, opens input read-only; 2 = works but no skipped count or not sorted; 1 = partial; 0 = none.
 
 **EX008 — Test input.** *Steps:* design a ten-line test file and the exact expected output. *Rubric:* 3 = includes a user above and at the threshold, an empty field, duplicate sources, and states expected output; 2 = missing edge cases; 1 = no expected output; 0 = none.
 
@@ -248,7 +248,7 @@ You will be able to (1) design a case record and an event record with typed, req
 
 ### 4.1 Entities and relationships
 
-An incident service handles a few core entities: **case** (one managed incident or suspected incident), **event** (a timestamped observation from a source), **artefact** (a preserved item with a hash), **action** (something done, by whom, when, with what approval), **decision** (a choice with its owner and rationale) and **asset/identity** (what was affected). Relationships: a case has many events, artefacts, actions and decisions; an event references assets and identities.
+An incident service handles a few core entities: **case** (one managed incident or suspected incident), **event** (a timestamped observation from a source), **artefact** (a preserved item with a hash), **action** (something done, by whom, when, with what approval), **decision** (a choice with its owner and rationale) and **asset/identity** (what was affected). Relationships: a case has many events, artefacts, actions and decisions; an event references assets and identities. Fernmoor's first spreadsheet had none of this structure: severity was free text and actions had no approver field, so the monthly report could not be trusted. The data model fixes that by giving each entity its own required fields.
 
 ### 4.2 Fields, types and required values
 
@@ -256,7 +256,7 @@ Each field needs a type and a rule. Times: RFC 3339 with offset, stored in UTC. 
 
 ### 4.3 Normalization
 
-Sources name things differently: `user`, `UserPrincipalName`, `actor.id`. A **mapping** translates each source's fields into your schema and records the original value. Keep the raw event too: normalization can be wrong, and evidence must remain reviewable. Data-model ideas used by security tools (for example common event schemas published by vendors and open projects) are useful references, but the essential discipline is the same: one meaning per field.
+Sources name things differently: `user`, `UserPrincipalName`, `actor.id`. A **mapping** translates each source's fields into your schema and records the original value. Keep the raw event too: normalization can be wrong, and evidence must remain reviewable. Data-model ideas used by security tools (for example common event schemas published by vendors and open projects) are useful references, but the essential discipline is the same: one meaning per field. For example, the identity provider calls the account `userId`, while the endpoint agent records a user name; the mapping translates both into the schema's `user` field and keeps each original.
 
 ### 4.4 Worked example (synthetic): severity counts that lied
 
@@ -281,7 +281,7 @@ raw           text     required  original line or JSON
 - Free-text fields for anything you will later count.
 - Display names as keys.
 - Dropping the raw record after normalization.
-- Converting times without recording the original zone or the correction applied.
+- Converting times without recording the original zone or the correction applied. Each error damages counting or review. The severity spreadsheet showed what free text does to a monthly report: exact matching on "High" reported 3 high incidents where a hand re-coding found 11. Display names change when people marry or move; stable account ids do not. Keeping the raw record and the original zone lets anyone repeat a conversion and catch a mistake.
 
 ### Exercises — chapter 4
 
@@ -289,7 +289,7 @@ Attempt each exercise before opening the [worked results](#worked-results). Ever
 
 **EX010 — Case schema.** *Steps:* define ten fields for a case record with type and required/optional. *Rubric:* 3 = includes id, title, status enum, severity enum, owner, opened/updated times UTC, affected services, links to events/actions, closure reason; 2 = seven sensible fields; 1 = unstructured; 0 = none.
 
-**EX011 — Mapping.** *Steps:* map an IdP field set (`createdDateTime`, `userId`, `ipAddress`, `status.errorCode`) into the §4.4 event schema. *Rubric:* 3 = correct mapping, outcome derived from error code, raw kept, time conversion noted; 2 = one error; 1 = partial; 0 = none.
+**EX011 — Mapping.** *Steps:* map an IdP field set (`createdDateTime`, `userId`, `ipAddress`, `status.errorCode`) into the normalized event schema from the severity-counts worked example. *Rubric:* 3 = correct mapping, outcome derived from error code, raw kept, time conversion noted; 2 = one error; 1 = partial; 0 = none.
 
 **EX012 — Recode check.** *Steps:* explain why two independent coders were used for historic severity and how to report agreement. *Rubric:* 3 = reduces individual bias, measure agreement (for example percent agreement 62/64), resolve and record disagreements; 2 = no measure; 1 = vague; 0 = none.
 
@@ -319,11 +319,11 @@ An **event** is any observable occurrence. An **alert** is an event or pattern t
 
 ### 5.2 The lifecycle in NIST SP 800-61 Rev. 3
 
-Rev. 3 (April 2025) replaces the earlier four-phase lifecycle with a mapping onto the CSF 2.0 functions: Govern, Identify and Protect support preparation; Detect, Respond and Recover cover the incident itself; improvement feeds back into all functions. For a technologist this means the response service is not a separate island: inventory (Identify), access control (Protect), monitoring (Detect) and recovery planning (Recover) are all parts of it.
+Rev. 3 (April 2025) replaces the earlier four-phase lifecycle with a mapping onto the CSF 2.0 functions: Govern, Identify and Protect support preparation; Detect, Respond and Recover cover the incident itself; improvement feeds back into all functions. For a technologist this means the response service is not a separate island: inventory (Identify), access control (Protect), monitoring (Detect) and recovery planning (Recover) are all parts of it. The impossible-travel case shows the mapping at work. Detection raised the alert, MFA from the Protect function stopped the session, and the analyst's response, a password reset and a recorded decision, sat under Respond. The password-spraying pattern found earlier came from Identify-style knowledge of which accounts and logs existed.
 
 ### 5.3 Techniques and their evidence
 
-MITRE ATT&CK catalogues adversary tactics and techniques observed in real intrusions. You do not need to memorize it; you need to connect a technique to where its traces would appear in *your* systems. For example: valid-account use appears in identity logs; persistence through new authentication methods appears in identity audit logs; data collection appears in file-server or database audit logs; exfiltration appears in edge or egress flow logs.
+MITRE ATT&CK catalogues adversary tactics and techniques observed in real intrusions. You do not need to memorize it; you need to connect a technique to where its traces would appear in *your* systems. For example: valid-account use appears in identity logs; persistence through new authentication methods appears in identity audit logs; data collection appears in file-server or database audit logs; exfiltration appears in edge or egress flow logs. For the `water-billing-2` case, this mapping told the analyst where to look: spraying appears in identity sign-in logs, and a newly registered method would appear in identity audit logs.
 
 ### 5.4 Worked example (synthetic): from alert to incident
 
@@ -331,13 +331,13 @@ MITRE ATT&CK catalogues adversary tactics and techniques observed in real intrus
 
 ### 5.5 Defence in depth, briefly
 
-No single control is reliable. The example shows layers: a detection rule raised an alert; MFA blocked the session; a human verified with the owner; a script found the broader pattern. Your service should know which layer caught each case — that information drives improvement (Chapter 19).
+No single control is reliable. The example shows layers: a detection rule raised an alert; MFA blocked the session; a human verified with the owner; a script found the broader pattern. Your service should know which layer caught each case — that information drives improvement (Chapter 19). In the `water-billing-2` case, no single layer would have been enough. Without MFA the session would have succeeded; without the human check the analyst could not have ruled out a legitimate trip; without the script the alert would have looked like one isolated event rather than part of a spraying pattern. Recording which layer acted in each case shows where the next investment matters.
 
 ### 5.6 Common errors and limits
 
 - Calling every alert an incident, which floods the case system, or calling nothing an incident until damage is proven, which delays response.
 - Using ATT&CK labels as conclusions rather than hypotheses to test.
-- Treating the lifecycle as strictly sequential; containment and investigation overlap.
+- Treating the lifecycle as strictly sequential; containment and investigation overlap. The impossible-travel case shows the balance. The analyst did not declare an incident, because no access was gained, but did open a low-severity case and reset the password, because someone else evidently knew it. That kept the case system honest while still responding to the risk. The ATT&CK label for password spraying stayed a hypothesis until the script showed the same pattern across many accounts.
 
 ### Exercises — chapter 5
 
@@ -371,15 +371,15 @@ You will be able to (1) locate the operating-system records a responder needs on
 
 ### 6.1 What the operating system records
 
-Linux: authentication logs (location varies by distribution), the systemd journal, shell histories (unreliable — users and attackers can disable them), cron and systemd unit files (persistence), package logs. Windows: Security, System and Application event logs, PowerShell operational logs when enabled, scheduled tasks and services (persistence), registry run keys. Both: running processes, network connections, loaded modules and logged-in sessions — all volatile.
+Linux: authentication logs (location varies by distribution), the systemd journal, shell histories (unreliable — users and attackers can disable them), cron and systemd unit files (persistence), package logs. Windows: Security, System and Application event logs, PowerShell operational logs when enabled, scheduled tasks and services (persistence), registry run keys. Both: running processes, network connections, loaded modules and logged-in sessions — all volatile. On `permit-app-2`, the cron entry was the persistence that mattered, and the process list and network connections had to be captured before isolation changed them.
 
 ### 6.2 Order of volatility
 
-NIST SP 800-86 advises collecting the most volatile data first when it matters: memory and running state, then network connections, then disk. A technologist decides *before* incidents which hosts justify memory capture (for example, servers handling personal data) and pre-installs or pre-approves the collection tools, so that collection is a runbook step rather than an improvisation.
+NIST SP 800-86 advises collecting the most volatile data first when it matters: memory and running state, then network connections, then disk. A technologist decides *before* incidents which hosts justify memory capture (for example, servers handling personal data) and pre-installs or pre-approves the collection tools, so that collection is a runbook step rather than an improvisation. For `permit-app-2`, this meant capturing memory to the evidence share and hashing it before moving the VM to the quarantine network. The tool was pre-approved, so the analyst followed the runbook rather than asking for permission at night.
 
 ### 6.3 Virtualization for response
 
-Hypervisors and clouds offer powerful response features. A **snapshot** preserves disk (and sometimes memory) state quickly; it lives inside the same platform, so it must be exported and hashed to become independent evidence. **Network isolation** of a virtual machine (moving it to a quarantine segment) stops lateral movement while keeping it running for collection. Beware: reverting a snapshot destroys evidence of what happened after it; deleting and rebuilding a VM before collection loses the case.
+Hypervisors and clouds offer powerful response features. A **snapshot** preserves disk (and sometimes memory) state quickly; it lives inside the same platform, so it must be exported and hashed to become independent evidence. **Network isolation** of a virtual machine (moving it to a quarantine segment) stops lateral movement while keeping it running for collection. Beware: reverting a snapshot destroys evidence of what happened after it; deleting and rebuilding a VM before collection loses the case. On `permit-app-2`, both features were used together: a snapshot with memory, exported and hashed, and isolation that left the VM running.
 
 ### 6.4 Worked example (synthetic): a suspicious process on `permit-app-2`
 
@@ -399,7 +399,7 @@ Findings later showed an outbound connection to 203.0.113.77 on port 443 and a c
 - Rebooting "to be safe", losing memory and connections.
 - Treating an internal snapshot as preserved evidence without export and hash.
 - Running investigation tools from the compromised host's own binaries, which may be altered.
-- Collecting everything from every host, overwhelming storage and analysts; scope by hypothesis.
+- Collecting everything from every host, overwhelming storage and analysts; scope by hypothesis. The `permit-app-2` runbook guards against each of these. It forbids rebooting or rebuilding until the investigation lead releases the host, requires the hypervisor snapshot to be exported to the evidence store and hashed, and uses a pre-approved collection tool rather than the host's own binaries. Its scope came from the hypothesis that the web service user was compromised.
 
 ### Exercises — chapter 6
 
@@ -433,19 +433,19 @@ You will be able to (1) explain authentication, authorization, sessions and toke
 
 ### 7.1 Authentication, authorization and sessions
 
-**Authentication** proves who is acting (password, authenticator, certificate). **Authorization** decides what they may do (roles, groups, policies). After sign-in, a **session** or **token** represents the authenticated identity; refresh tokens can extend access for days without a new password. NIST SP 800-63B describes authenticator types and their assurance; phishing-resistant authenticators (such as FIDO2 security keys) resist the credential-relay attacks that defeat one-time codes and push approvals.
+**Authentication** proves who is acting (password, authenticator, certificate). **Authorization** decides what they may do (roles, groups, policies). After sign-in, a **session** or **token** represents the authenticated identity; refresh tokens can extend access for days without a new password. NIST SP 800-63B describes authenticator types and their assurance; phishing-resistant authenticators (such as FIDO2 security keys) resist the credential-relay attacks that defeat one-time codes and push approvals. In the night-time MFA case, the attacker relied on push approval: the clerk tapped approve to stop the buzzing, and a new authenticator was registered two minutes later.
 
 ### 7.2 Types of identity
 
-Human accounts, privileged administrator accounts, service accounts (used by software), and external identities (suppliers, residents). Service accounts are frequently over-privileged, never rotated and unmonitored — Chapter 1's `svc-patch` is typical.
+Human accounts, privileged administrator accounts, service accounts (used by software), and external identities (suppliers, residents). Service accounts are frequently over-privileged, never rotated and unmonitored — Chapter 1's `svc-patch` is typical. At Fernmoor, each type has its own owner: the Identity team for staff and administrators, the service owner for each service account, and Procurement for supplier identities. A response action against a service account therefore needs the service owner's view of what will stop working. External identities such as supplier accounts appear in later chapters as the route for both the upload workflow and the Quiet Meter exercise.
 
 ### 7.3 Containing an account compromise
 
-Order matters. If you reset the password first but leave sessions and authentication methods, an attacker with a valid refresh token or a newly registered MFA device keeps access. A typical sequence: (1) preserve identity logs for the account; (2) revoke sessions and refresh tokens; (3) remove attacker-added authentication methods and application consents; (4) reset the credential; (5) check for mailbox rules, forwarding and API keys created by the account; (6) monitor for re-entry. For privileged accounts, also review what they changed.
+Order matters. If you reset the password first but leave sessions and authentication methods, an attacker with a valid refresh token or a newly registered MFA device keeps access. A typical sequence: (1) preserve identity logs for the account; (2) revoke sessions and refresh tokens; (3) remove attacker-added authentication methods and application consents; (4) reset the credential; (5) check for mailbox rules, forwarding and API keys created by the account; (6) monitor for re-entry. For privileged accounts, also review what they changed. The night-time MFA case at Fernmoor followed this order, ending with a mailbox rule search.
 
 ### 7.4 Logs to retain
 
-Sign-in logs (interactive and non-interactive), audit logs (role changes, method changes, consents), and application access logs. Default retention in many identity platforms is short; extend it or export centrally. CISA's federal playbooks list identity and credential review among standard response steps.
+Sign-in logs (interactive and non-interactive), audit logs (role changes, method changes, consents), and application access logs. Default retention in many identity platforms is short; extend it or export centrally. CISA's federal playbooks list identity and credential review among standard response steps. In the night-time MFA case, the analyst exported 30 days of sign-in and audit logs before revoking anything. That export preserved the approved push at 02:12 and the new authenticator at 02:14, which the platform's default retention might have lost within weeks. Fernmoor's evidence flows now forward these logs centrally with longer retention.
 
 ### 7.5 Worked example (synthetic): an MFA method added at night
 
@@ -456,7 +456,7 @@ Sign-in logs (interactive and non-interactive), audit logs (role changes, method
 - Password reset alone, leaving sessions and methods intact.
 - Forgetting non-interactive sign-ins and service principals.
 - Destroying the attacker's artefacts (mailbox rule) without preserving them first.
-- Blaming the user for an approval-fatigue design weakness.
+- Blaming the user for an approval-fatigue design weakness. Each error was avoided in the night-time MFA case. The analyst revoked sessions and deleted the new authenticator before resetting the password, preserved the forwarding rule as evidence before removing it, and treated the clerk's approval as a design weakness; number-matching and security keys were the response, not discipline. Service principals and non-interactive sign-ins were included in the log export.
 
 ### Exercises — chapter 7
 
@@ -494,7 +494,7 @@ A **trust boundary** is where data or control passes between zones with differen
 
 ### 8.2 Architecture for response
 
-Ask four questions of any design. *Visibility:* do logs at each boundary reach central collection? *Containment:* can one zone, host or identity be isolated without stopping unrelated services? *Recovery:* are backups separated from production administration (different credentials, immutability)? *Administration:* is privileged access through controlled paths (jump hosts, privileged access management) rather than from any workstation? NIST SP 800-160 Vol. 2 frames these as cyber-resiliency techniques such as segmentation, redundancy and non-persistence.
+Ask four questions of any design. *Visibility:* do logs at each boundary reach central collection? *Containment:* can one zone, host or identity be isolated without stopping unrelated services? *Recovery:* are backups separated from production administration (different credentials, immutability)? *Administration:* is privileged access through controlled paths (jump hosts, privileged access management) rather than from any workstation? NIST SP 800-160 Vol. 2 frames these as cyber-resiliency techniques such as segmentation, redundancy and non-persistence. Fernmoor's water-billing review used exactly these four questions, and each produced a finding with an owner.
 
 ### 8.3 Worked example (synthetic): the water-billing design review
 
@@ -511,14 +511,14 @@ Each change was entered in the service-management system (Chapter 21) with the r
 
 ### 8.4 Small changes, large effect
 
-Technologists rarely redesign a system; they make it respondable. Typical high-value changes: forward one missing log source; create a quarantine segment and test moving a VM into it; give backups their own credentials; put administration behind a jump host. Each change should have an acceptance test ("from the quarantine segment, only the evidence share is reachable").
+Technologists rarely redesign a system; they make it respondable. Typical high-value changes: forward one missing log source; create a quarantine segment and test moving a VM into it; give backups their own credentials; put administration behind a jump host. Each change should have an acceptance test ("from the quarantine segment, only the evidence share is reachable"). The water-billing review produced changes of this size: a separate billing VLAN, a dedicated backup credential with an immutable copy, and a jump host with MFA. Each was entered as an ordinary change with a response rationale, and none required rebuilding the system. Their acceptance tests become the evidence that the change worked.
 
 ### 8.5 Common errors and limits
 
 - Drawing segments that exist on paper but not in firewall rules — verify with a connectivity test.
 - Assuming cloud resources are segmented by default.
 - Security changes without a rollback or owner.
-- Ignoring supplier connections as trust boundaries.
+- Ignoring supplier connections as trust boundaries. The water-billing review met two of these directly. The billing VLAN had to be checked with a connectivity test, not just a diagram, and the nightly file transfer to the payment supplier was treated as a trust boundary whose logs had to be forwarded. Every proposed change had a named owner from the start, so none was left without someone to roll it back.
 
 ### Exercises — chapter 8
 
@@ -526,7 +526,7 @@ Attempt each exercise before opening the [worked results](#worked-results). Ever
 
 **EX022 — Boundary list.** *Steps:* list five trust boundaries in the water-billing system. *Rubric:* 3 = internet–web, web–app, app–DB, admin–servers, Fernmoor–payment supplier; 2 = four; 1 = two; 0 = none.
 
-**EX023 — Acceptance test.** *Steps:* write acceptance tests for the four proposed changes in §8.3. *Rubric:* 3 = each test observable and pass/fail; 2 = three; 1 = vague; 0 = none.
+**EX023 — Acceptance test.** *Steps:* write acceptance tests for the four proposed changes in the water-billing design review. *Rubric:* 3 = each test observable and pass/fail; 2 = three; 1 = vague; 0 = none.
 
 **EX024 — Prioritize.** *Steps:* rank the four changes and justify by response impact and effort. *Rubric:* 3 = defensible ranking with both impact and effort (backup separation commonly first); 2 = impact only; 1 = no reasons; 0 = none.
 
@@ -552,15 +552,15 @@ You will be able to (1) distinguish evidence preserved for a case from data meas
 
 ### 9.1 Two kinds of evidence
 
-**Case evidence** answers "what happened in this incident?" — logs, images, artefacts, preserved with hashes and custody (Chapter 17). **Service evidence** answers "how well does our response service work?" — times, counts, completeness of records, outcomes of exercises. The first serves investigation and possibly legal processes; the second serves management and improvement. Both need provenance.
+**Case evidence** answers "what happened in this incident?" — logs, images, artefacts, preserved with hashes and custody (Chapter 17). **Service evidence** answers "how well does our response service work?" — times, counts, completeness of records, outcomes of exercises. The first serves investigation and possibly legal processes; the second serves management and improvement. Both need provenance. For example, the hashed log exports in the `permits-clerk-4` case are case evidence, while the time from alert to triage in that case is one data point of service evidence. The two are stored differently and serve different readers.
 
 ### 9.2 Defining a measure
 
-A useful measure has: a name; a precise start and end event (for example, "time to triage = triage-start time minus alert time, both from case-system fields"); a population (which cases); handling of missing values; a reporting statistic (median and a high percentile rather than mean, because response times are skewed); a target with rationale; and an owner. Without exact definitions, two teams will report different numbers for the "same" metric.
+A useful measure has: a name; a precise start and end event (for example, "time to triage = triage-start time minus alert time, both from case-system fields"); a population (which cases); handling of missing values; a reporting statistic (median and a high percentile rather than mean, because response times are skewed); a target with rationale; and an owner. Without exact definitions, two teams will report different numbers for the "same" metric. Fernmoor's charter targets show why: acknowledging S1 within 15 minutes can be measured only if the case system records both the page time and the acknowledgment time.
 
 ### 9.3 Honest reporting
 
-Report how many cases were measured and how many were missing. Separate out-of-hours from in-hours if the service model differs. Small numbers vary a lot; seven cases do not establish a trend. Avoid incentives that improve the number but not the service — for example, clicking "triage start" before actually looking.
+Report how many cases were measured and how many were missing. Separate out-of-hours from in-hours if the service model differs. Small numbers vary a lot; seven cases do not establish a trend. Avoid incentives that improve the number but not the service — for example, clicking "triage start" before actually looking. Fernmoor's out-of-hours figures illustrate the point. A small number of night cases can push a percentile above target in one month and below it in the next, so the service report shows the count of cases beside each figure and avoids drawing a trend from a single month. Missing triage times are listed as a separate count, not dropped.
 
 ### 9.4 Lab T-09 (synthetic): triage latency
 
@@ -610,7 +610,7 @@ Interpretation: the median (14 minutes) meets a 15-minute target, but only 4 of 
 - Reporting means of skewed times.
 - Hiding missing records instead of counting them.
 - Changing a definition mid-year without restating earlier figures.
-- Using service measures to blame individuals, which corrupts the data.
+- Using service measures to blame individuals, which corrupts the data. Each of these misleads a different reader. A mean triage time can look acceptable while a few out-of-hours cases wait far too long; hidden missing records make completeness look perfect; a silent change of definition makes this year incomparable with last; and using the figures against named analysts makes them record times defensively. Fernmoor's report avoids all four by design.
 
 ### Exercises — chapter 9
 
@@ -644,7 +644,7 @@ You will be able to (1) define Fernmoor's incident response service with its cus
 
 ### 10.1 Response as a service
 
-The FIRST CSIRT Services Framework describes services a response team may offer: information security event management, incident management, vulnerability management, situational awareness and knowledge transfer. A technologist chooses which services Fernmoor will provide now, documents them in a **service catalog** entry and defines how customers request them. ISO/IEC 27035 similarly describes planning and preparing an incident management capability before incidents occur.
+The FIRST CSIRT Services Framework describes services a response team may offer: information security event management, incident management, vulnerability management, situational awareness and knowledge transfer. A technologist chooses which services Fernmoor will provide now, documents them in a **service catalog** entry and defines how customers request them. ISO/IEC 27035 similarly describes planning and preparing an incident management capability before incidents occur. Fernmoor's charter starts small: three technologists and a shared on-call rota, with service levels and pre-approved actions written down.
 
 ### 10.2 Charter elements
 
@@ -670,7 +670,7 @@ One person may hold several roles in a small team, but a case always has exactly
 - A charter that grants no authority, so every action waits for a meeting.
 - Service levels without the staffing to meet them.
 - Roles named but not trained or rostered.
-- Scope ambiguity discovered during a crisis (OT, suppliers, residents' data held by a contractor).
+- Scope ambiguity discovered during a crisis (OT, suppliers, residents' data held by a contractor). Fernmoor's charter answers each risk explicitly. The duty analyst may disable an account or isolate a workstation without waiting, service levels were set with the on-call rota in mind, and OT scope was formally excluded with a referral procedure rather than left vague. Training for each named role is scheduled in the sustainment calendar, so roles are practised before they are needed.
 
 ### Exercises — chapter 10
 
@@ -704,15 +704,15 @@ You will be able to (1) build an inventory that links technical assets to busine
 
 ### 11.1 Inventory as response data
 
-CSF 2.0 places asset management under Identify. For response, the inventory must answer within minutes: what is this host or account, which service does it support, who owns it, how critical is it, where are its logs, and how is it restored? An inventory that answers only "what hardware do we own" is not enough.
+CSF 2.0 places asset management under Identify. For response, the inventory must answer within minutes: what is this host or account, which service does it support, who owns it, how critical is it, where are its logs, and how is it restored? An inventory that answers only "what hardware do we own" is not enough. During the storage failure, the inventory's tiers and dependencies decided the restore order: `idp-proxy` first because everything depended on it, then `billing-db` as tier 1, then the tier-2 systems in parallel.
 
 ### 11.2 Sources and reconciliation
 
-Combine sources: cloud and hypervisor APIs, endpoint agent lists, identity directory, network scans of authorized ranges, the configuration management database (CMDB), and owners' attestations. Each source misses something. Reconcile by stable identifiers and flag disagreements: a host in the agent list but not the CMDB has no owner; a CMDB entry with no agent check-in may be dead or unmonitored.
+Combine sources: cloud and hypervisor APIs, endpoint agent lists, identity directory, network scans of authorized ranges, the configuration management database (CMDB), and owners' attestations. Each source misses something. Reconcile by stable identifiers and flag disagreements: a host in the agent list but not the CMDB has no owner; a CMDB entry with no agent check-in may be dead or unmonitored. Fernmoor's stale CMDB entry, which named a person who had left, was the kind of disagreement that reconciliation is meant to catch.
 
 ### 11.3 Dependencies and criticality
 
-A **business service** depends on technical services (database, identity, DNS) and suppliers. Model dependencies as edges: `appointments → appt-db-1`, `appointments → idp`, `water-billing → payment-supplier-sftp`. **Criticality** comes from the service's impact if unavailable or disclosed, set with the service owner (for example tiers 1–3 with recovery time objectives, following NIST SP 800-34 contingency-planning concepts). Shared dependencies such as identity and DNS inherit the highest criticality of anything depending on them.
+A **business service** depends on technical services (database, identity, DNS) and suppliers. Model dependencies as edges: `appointments → appt-db-1`, `appointments → idp`, `water-billing → payment-supplier-sftp`. **Criticality** comes from the service's impact if unavailable or disclosed, set with the service owner (for example tiers 1–3 with recovery time objectives, following NIST SP 800-34 contingency-planning concepts). Shared dependencies such as identity and DNS inherit the highest criticality of anything depending on them. In the storage failure, `idp-proxy` was tier 1 by inheritance because every staff application depended on it, which is why it was restored first. The wiki, rated tier 3, still held the runbooks, which showed that criticality for response can differ from criticality for the business. The team recorded that finding instead of quietly raising the wiki's tier.
 
 ### 11.4 Worked example (synthetic): which restore first?
 
@@ -730,14 +730,14 @@ Order: `idp-proxy` first (everything depends on it), then `billing-db`, then `ap
 
 ### 11.5 Keeping it current
 
-Automate discovery runs daily; create a work item for every unreconciled asset; require an inventory update as part of every change (Chapter 21); review tier assignments with owners yearly.
+Automate discovery runs daily; create a work item for every unreconciled asset; require an inventory update as part of every change (Chapter 21); review tier assignments with owners yearly. Each step closes a gap seen at Fernmoor. Daily discovery catches hosts that appear between changes; work items make unreconciled assets someone's task; tying updates to change records keeps owners current, which would have prevented the stale CMDB entry paging a former employee; and yearly review with owners keeps tiers aligned with the services the business actually depends on.
 
 ### 11.6 Common errors and limits
 
 - Inventory without owners or services.
 - Forgetting identities, certificates and suppliers as assets.
 - Criticality set by IT alone without business owners.
-- Response documentation hosted only on systems that may be down.
+- Response documentation hosted only on systems that may be down. The restore-order case touched two of these. The runbooks lived on the tier-3 wiki, which was down with the other systems, and the team managed only because an offline copy existed. Identity components such as `idp-proxy` had to be in the inventory with their dependants, or nobody would have known to restore them first. Fernmoor now keeps an offline copy of the inventory with the runbooks.
 
 ### Exercises — chapter 11
 
@@ -745,7 +745,7 @@ Attempt each exercise before opening the [worked results](#worked-results). Ever
 
 **EX031 — Reconcile.** *Steps:* given four discrepancies (agent-only host, CMDB-only host, cloud VM with no tag, scan-found host in no source), say what each likely means and the action. *Rubric:* 3 = all four plausible with actions; 2 = three; 1 = one; 0 = none.
 
-**EX032 — Dependency graph.** *Steps:* draw the dependency edges for the five systems in §11.4 plus DNS. *Rubric:* 3 = all edges including DNS for all, correct direction, inherited tier noted; 2 = missing DNS; 1 = partial; 0 = none.
+**EX032 — Dependency graph.** *Steps:* draw the dependency edges for the five systems in the restore-order worked example plus DNS. *Rubric:* 3 = all edges including DNS for all, correct direction, inherited tier noted; 2 = missing DNS; 1 = partial; 0 = none.
 
 **EX033 — Inventory query.** *Steps:* list the six inventory fields a duty analyst needs when an alert names a hostname. *Rubric:* 3 = service, owner/on-call, tier, environment, log locations, restore method; 2 = four; 1 = two; 0 = none.
 
@@ -771,19 +771,19 @@ You will be able to (1) design the collection path for identity, endpoint and cl
 
 ### 12.1 Why flows, not just logs
 
-A log that exists only on the source system is fragile: it rotates, it can be altered by an intruder, and it is unavailable if the system is down. An **evidence flow** moves records from source to a central store with known latency, retention, access control and integrity protection. NIST SP 800-92 recommends centralized log management with protected storage and planned retention.
+A log that exists only on the source system is fragile: it rotates, it can be altered by an intruder, and it is unavailable if the system is down. An **evidence flow** moves records from source to a central store with known latency, retention, access control and integrity protection. NIST SP 800-92 recommends centralized log management with protected storage and planned retention. The appointment service's local-only logs with seven-day rotation were a fragile source of exactly this kind, and forwarding them was one of the first changes.
 
 ### 12.2 Three flow families
 
-**Identity:** sign-in and audit logs via the provider's export or API to the central store; include non-interactive sign-ins and administrative actions. **Endpoint:** agent telemetry (processes, network, file events) and operating-system logs; plus on-demand collection capability for memory and files. **Cloud:** control-plane audit logs (who changed what), data-plane logs where enabled (object reads, database queries) and network flow logs. For each flow record the fields received, the delay, the cost and the retention.
+**Identity:** sign-in and audit logs via the provider's export or API to the central store; include non-interactive sign-ins and administrative actions. **Endpoint:** agent telemetry (processes, network, file events) and operating-system logs; plus on-demand collection capability for memory and files. **Cloud:** control-plane audit logs (who changed what), data-plane logs where enabled (object reads, database queries) and network flow logs. For each flow record the fields received, the delay, the cost and the retention. Fernmoor's flow matrix records exactly this, flow by flow, and adds a canary test for each.
 
 ### 12.3 Integrity and access
 
-Write central logs to storage the source administrators cannot alter (separate account or tenant, write-once or object-lock features where available). Restrict read access to the response and audit functions and log access to the logs. Hash exported evidence sets (FIPS 180-4 SHA-256) when they leave the store for a case.
+Write central logs to storage the source administrators cannot alter (separate account or tenant, write-once or object-lock features where available). Restrict read access to the response and audit functions and log access to the logs. Hash exported evidence sets (FIPS 180-4 SHA-256) when they leave the store for a case. In the missing data-read logs case, the control-plane logs survived because they were in a separate account, so the new access key for `svc-reports` could be dated. The flow matrix keeps the same separation for data-read logs, so an intruder with administrative rights in the production account cannot delete the record of what they read.
 
 ### 12.4 Verifying a flow
 
-A flow is verified when a known test event appears in the central store with correct fields and timestamp within the expected delay. Do this at onboarding and periodically ("canary" events), because flows silently break when credentials expire or formats change.
+A flow is verified when a known test event appears in the central store with correct fields and timestamp within the expected delay. Do this at onboarding and periodically ("canary" events), because flows silently break when credentials expire or formats change. Fernmoor's canaries are listed in its flow matrix: a weekly test sign-in for identity, a harmless EICAR test file for endpoint, a tag change on a test bucket for the control plane, and a read of a canary object for data reads. In the capstone, a deliberately disabled identity canary alerted within the 30-minute limit.
 
 ### 12.5 Worked example (synthetic): the missing data-read logs
 
@@ -803,7 +803,7 @@ The data-read flow was enabled for buckets holding personal data, with its stora
 - Assuming default logging captures data access.
 - Storing logs where an attacker with admin rights can delete them.
 - Never testing flows after onboarding.
-- Retention shorter than typical detection delay; intrusions are often found weeks later.
+- Retention shorter than typical detection delay; intrusions are often found weeks later. The missing data-read logs case is the first error in practice: the team assumed storage logging covered reads, and when it did not, the case closed as unable to determine. Separate-account storage protects against the second, scheduled canaries against the third, and retention of 180 to 400 days in the flow matrix against the fourth.
 
 ### Exercises — chapter 12
 
@@ -813,7 +813,7 @@ Attempt each exercise before opening the [worked results](#worked-results). Ever
 
 **EX035 — Canary design.** *Steps:* design canary tests for identity and cloud control-plane flows and an alert if they fail. *Rubric:* 3 = specific test events, schedule, expected appearance window, alert route and owner; 2 = no alert; 1 = vague; 0 = none.
 
-**EX036 — Unable to determine.** *Steps:* write the case-record paragraph for §12.5 explaining what could and could not be established. *Rubric:* 3 = facts (key creation, time, principal), gap (no object-read logs), consequence for assessment, remediation; 2 = missing consequence; 1 = speculative; 0 = none.
+**EX036 — Unable to determine.** *Steps:* write the case-record paragraph for the missing data-read logs case, explaining what could and could not be established. *Rubric:* 3 = facts (key creation, time, principal), gap (no object-read logs), consequence for assessment, remediation; 2 = missing consequence; 1 = speculative; 0 = none.
 
 ### Chapter synthesis
 
@@ -852,7 +852,7 @@ Severity can go up or down as facts arrive; record each change with its reason.
 
 ### 13.3 Triage thresholds
 
-Thresholds connect detections to actions: which alerts open a case automatically, which need an analyst decision, which are suppressed. They should be based on scenarios and data: a rule whose alerts were 95% benign over three months needs tuning, not an automatic case. Escalation thresholds name the triggers that move a case to S1 or wake the director: personal data involved, public service down beyond its recovery time objective, media inquiry, regulator contact.
+Thresholds connect detections to actions: which alerts open a case automatically, which need an analyst decision, which are suppressed. They should be based on scenarios and data: a rule whose alerts were 95% benign over three months needs tuning, not an automatic case. Escalation thresholds name the triggers that move a case to S1 or wake the director: personal data involved, public service down beyond its recovery time objective, media inquiry, regulator contact. Fernmoor's thresholds are visible in its worked example: the edge-blocked login attempts with no success stayed at S4 without a case, while the billing clerk's bulk export went straight to S2.
 
 ### 13.4 Worked example (synthetic): applying the scale
 
@@ -867,7 +867,7 @@ Thresholds connect detections to actions: which alerts open a case automatically
 - Severity based on how alarming an alert *sounds* rather than criteria.
 - Never lowering severity, which exhausts the team.
 - Thresholds copied from a vendor default without reference to local scenarios.
-- Escalation triggers that depend on a judgement nobody is authorized to make.
+- Escalation triggers that depend on a judgement nobody is authorized to make. The three alerts in the worked example show the alternative. The 3,000 blocked login attempts sounded alarming but met the criteria for S4 only; the billing clerk's export sounded routine but met the criteria for S2; the blocked macro stayed at S4 unless a child process ran. In each case the criteria, not the tone of the alert, set the level, and the person authorized to escalate was named.
 
 ### Exercises — chapter 13
 
@@ -901,19 +901,19 @@ You will be able to (1) run a structured intake that turns a report into a case;
 
 ### 14.1 Intake channels
 
-Reports reach Fernmoor through detection alerts, the service desk, staff emails to the response mailbox, residents via the contact centre, suppliers and external parties (researchers, other CSIRTs, law enforcement). Each channel needs a route into the same case system and an acknowledgment to the reporter. A public security contact (for example a `security.txt` file published per RFC 9116) helps external reporters find the right channel.
+Reports reach Fernmoor through detection alerts, the service desk, staff emails to the response mailbox, residents via the contact centre, suppliers and external parties (researchers, other CSIRTs, law enforcement). Each channel needs a route into the same case system and an acknowledgment to the reporter. A public security contact (for example a `security.txt` file published per RFC 9116) helps external reporters find the right channel. The resident's call about the fake billing email is an example: it arrived through the contact centre, was captured on the intake form and became case FCS-221 in the same system as alerts.
 
 ### 14.2 Intake questions
 
-Who reported, how to reach them, what they observed (exact words), when, which systems or accounts, what they have already done (rebooted? forwarded the email to colleagues?), and whether evidence exists (screenshots, original email with headers). Record observations separately from interpretations.
+Who reported, how to reach them, what they observed (exact words), when, which systems or accounts, what they have already done (rebooted? forwarded the email to colleagues?), and whether evidence exists (screenshots, original email with headers). Record observations separately from interpretations. The contact-centre agent in the resident's call asked exactly these questions, recording the sender address, the link domain, the payment of €84 and the two similar calls that day. Because the sender domain was written down exactly, the analyst could see at once that it was not Fernmoor's real domain. The resident's own words were kept separate from the agent's reading of them.
 
 ### 14.3 Scope statements
 
-A scope statement says what the case covers *now*: affected assets and identities, time window, question to answer. Example: "Determine whether `billing-clerk-7` was used by an unauthorized party between 1 and 9 June and what data that account accessed." Scope changes as evidence arrives; record each change, because unrecorded scope creep is how cases become endless, and unrecorded narrowing is how related activity is missed.
+A scope statement says what the case covers *now*: affected assets and identities, time window, question to answer. Example: "Determine whether `billing-clerk-7` was used by an unauthorized party between 1 and 9 June and what data that account accessed." Scope changes as evidence arrives; record each change, because unrecorded scope creep is how cases become endless, and unrecorded narrowing is how related activity is missed. In FCS-221 the scope widened when the callers' addresses were found in a billing export sent to a print supplier.
 
 ### 14.4 Ownership
 
-Every case has one owner at all times. Ownership transfers explicitly (Chapter 26) with acknowledgment. Tasks inside a case also have owners and due times. Related cases are linked rather than merged until evidence shows the same incident.
+Every case has one owner at all times. Ownership transfers explicitly (Chapter 26) with acknowledgment. Tasks inside a case also have owners and due times. Related cases are linked rather than merged until evidence shows the same incident. In FCS-221, each task had its owner: the contact centre for the header copy, Data Platform for the billing-list check and the liaison for the resident warning. The case itself had one owner, the duty analyst, until the severity rose. Linked cases keep related evidence visible without forcing a conclusion early.
 
 ### 14.5 Worked example (synthetic): a resident's call
 
@@ -926,7 +926,7 @@ When the Data Platform check showed that all three callers' addresses were in a 
 - Recording interpretations as observations ("phishing attack by criminals").
 - Vague scope ("investigate the phishing").
 - Merging cases before evidence connects them.
-- Unacknowledged reporters who stop reporting.
+- Unacknowledged reporters who stop reporting. FCS-221 avoided these errors. The intake form recorded what the resident saw, not a judgement about criminals; the scope statement named the impersonated domain, the date and the question to answer; the supplier link was recorded as a scope change with its evidence rather than by merging with another case; and the resident was told what Fernmoor would and would not do. Reporters who hear nothing back rarely report again, so acknowledgment is part of the case.
 
 ### Exercises — chapter 14
 
@@ -936,7 +936,7 @@ Attempt each exercise before opening the [worked results](#worked-results). Ever
 
 **EX041 — Scope rewrite.** *Steps:* rewrite three vague scopes into specific ones. *Rubric:* 3 = each has assets/identities, window and question; 2 = two; 1 = one; 0 = none.
 
-**EX042 — Scope change record.** *Steps:* write the record for the supplier expansion in §14.5. *Rubric:* 3 = old scope, new scope, triggering evidence, time, who approved, severity change; 2 = missing approval; 1 = vague; 0 = none.
+**EX042 — Scope change record.** *Steps:* write the record for the supplier expansion in the resident's-call worked example. *Rubric:* 3 = old scope, new scope, triggering evidence, time, who approved, severity change; 2 = missing approval; 1 = vague; 0 = none.
 
 ### Chapter synthesis
 
@@ -960,15 +960,15 @@ You will be able to (1) normalize timestamps from sources with different zones a
 
 ### 15.1 Why timelines matter
 
-A timeline orders events so that causes can be distinguished from effects. It answers "what happened first?", "how long did the actor have?" and "what was the earliest evidence we missed?". It is only as good as its clocks: a five-minute error can reverse a sign-in and a file access.
+A timeline orders events so that causes can be distinguished from effects. It answers "what happened first?", "how long did the actor have?" and "what was the earliest evidence we missed?". It is only as good as its clocks: a five-minute error can reverse a sign-in and a file access. In FCS-214, the order of the push approval, the new MFA method and the archive read mattered for deciding between the hypotheses. The timeline showed the approval at 14:02 while the clerk was in a training session, which supported the external-actor explanation.
 
 ### 15.2 Normalization rules
 
-Convert every timestamp to UTC in RFC 3339 form. For each source, record the original format, its zone (explicit, configured or assumed) and any measured clock offset. Measure offsets at collection by comparing the source's clock with an NTP-synchronized reference (RFC 5905); record the measurement. Never silently "fix" a time; keep original and corrected values.
+Convert every timestamp to UTC in RFC 3339 form. For each source, record the original format, its zone (explicit, configured or assumed) and any measured clock offset. Measure offsets at collection by comparing the source's clock with an NTP-synchronized reference (RFC 5905); record the measurement. Never silently "fix" a time; keep original and corrected values. In FCS-214, every source was normalized this way before the hypothesis table was built, so the push approval and the new MFA method could be placed in the same order with confidence.
 
 ### 15.3 Bounding
 
-A **bounded** timeline has a defined start and end and a defined set of sources. State them. Gaps inside the bound are as important as events: "VPN logs present; file server logs only from 14:00; no endpoint data for the clerk's laptop".
+A **bounded** timeline has a defined start and end and a defined set of sources. State them. Gaps inside the bound are as important as events: "VPN logs present; file server logs only from 14:00; no endpoint data for the clerk's laptop". For FCS-214, the bound began with the spraying on 9 May and ended with containment. Stating it tells reviewers what the timeline does not cover, for example events before 9 May that were not examined. Each gap is listed with its effect, so a later reader knows which questions the timeline cannot answer.
 
 ### 15.4 Lab T-15 (synthetic): permits-clerk-4
 
@@ -1012,14 +1012,14 @@ Reading the result: the IdP sign-in (14:02:10) precedes the VPN session (14:03:0
 
 ### 15.5 Timeline record format
 
-Each row: corrected UTC time, source, original timestamp, correction applied, event, actor, asset, evidence reference (file and hash), analyst note. Analyst notes are labelled as interpretation.
+Each row: corrected UTC time, source, original timestamp, correction applied, event, actor, asset, evidence reference (file and hash), analyst note. Analyst notes are labelled as interpretation. Keeping the original timestamp and the correction side by side lets anyone check a conversion later. If a measured clock offset is applied to one source, the row shows the offset, so a reviewer can tell whether two events really occurred in the order shown. The evidence reference with its hash lets a reviewer open the exact file the row came from, and the analyst note is kept out of the event field so interpretation never looks like observation.
 
 ### 15.6 Common errors and limits
 
 - Assuming a log without a zone is UTC.
 - Ignoring measured skew because it is small.
 - Mixing interpretation into event descriptions.
-- Unbounded timelines that grow until nobody can read them.
+- Unbounded timelines that grow until nobody can read them. Each error can reverse an order of events. A log assumed to be UTC that was actually local time can move an event by hours; a two-minute skew can place a file access before the sign-in that caused it; interpretation in event descriptions makes the timeline argue rather than record; and an unbounded timeline hides its gaps. FCS-214's timeline avoided them by recording zones and offsets for each source.
 
 ### Exercises — chapter 15
 
@@ -1029,7 +1029,7 @@ Attempt each exercise before opening the [worked results](#worked-results). Ever
 
 **EX044 — Gap statement.** *Steps:* write the bound and gap statement for FCS-214. *Rubric:* 3 = start/end, sources, known gaps (laptop endpoint, data after read, email), impact on conclusions; 2 = missing impact; 1 = vague; 0 = none.
 
-**EX045 — Timeline row.** *Steps:* write the full record row for the file-server event. *Rubric:* 3 = all §15.5 fields with original and corrected times and hash reference; 2 = missing original or hash; 1 = partial; 0 = none.
+**EX045 — Timeline row.** *Steps:* write the full record row for the file-server event. *Rubric:* 3 = all fields of the timeline record format with original and corrected times and hash reference; 2 = missing original or hash; 1 = partial; 0 = none.
 
 ### Chapter synthesis
 
@@ -1053,15 +1053,15 @@ You will be able to (1) frame investigation questions as testable hypotheses; (2
 
 ### 16.1 Questions and hypotheses
 
-Start from the scope question and list plausible explanations. For FCS-214: H1 the clerk read the archive for work; H2 an external actor used her credentials; H3 a malicious insider used her account. For each hypothesis, ask what evidence would be expected if it were true and what would contradict it. Chamberlin's "multiple working hypotheses" and Platt's "strong inference" are old but still the right discipline: seek evidence that discriminates, not evidence that merely fits your favourite.
+Start from the scope question and list plausible explanations. For FCS-214: H1 the clerk read the archive for work; H2 an external actor used her credentials; H3 a malicious insider used her account. For each hypothesis, ask what evidence would be expected if it were true and what would contradict it. Chamberlin's "multiple working hypotheses" and Platt's "strong inference" are old but still the right discipline: seek evidence that discriminates, not evidence that merely fits your favourite. In FCS-214 this approach worked: the training-session interview and the spraying evidence discriminated between the hypotheses.
 
 ### 16.2 Pivoting
 
-A **pivot** follows a shared key from one source to another: account id from IdP to file server; source address from IdP to edge and VPN; host name from endpoint to inventory; file hash from endpoint to threat information; access key id from cloud audit to data-read logs. Record each pivot (from, key, to, query, result) so the path can be repeated.
+A **pivot** follows a shared key from one source to another: account id from IdP to file server; source address from IdP to edge and VPN; host name from endpoint to inventory; file hash from endpoint to threat information; access key id from cloud audit to data-read logs. Record each pivot (from, key, to, query, result) so the path can be repeated. In FCS-214, four recorded pivots led from one source address to 14 sprayed accounts, a second compromised account and a hidden inbox rule. Because each pivot was written down, a reviewer could repeat it and reach the same accounts.
 
 ### 16.3 Scoping outward
 
-When a hypothesis gains support, ask what else the actor could reach: other accounts used from the same address; other hosts with the same persistence; other buckets accessed with the same key. This is where inventory dependencies (Chapter 11) guide the search.
+When a hypothesis gains support, ask what else the actor could reach: other accounts used from the same address; other hosts with the same persistence; other buckets accessed with the same key. This is where inventory dependencies (Chapter 11) guide the search. In FCS-214, scoping outward found `hr-assist-5`: the same source address had sprayed 14 accounts, and one of them had a successful sign-in without an MFA prompt because a legacy protocol was allowed. Inventory then showed which services that account could reach, so the case scope widened with a reason. The legacy protocols were scheduled for disablement as a result.
 
 ### 16.4 Worked example (synthetic): FCS-214 continued
 
@@ -1079,20 +1079,20 @@ H2 is best supported. Scope expanded to include `hr-assist-5`; legacy protocols 
 
 ### 16.5 Interviews
 
-Interviewing staff is part of investigation but involves people's rights and employment. Fernmoor's rule: interviews about a staff member's account are arranged with their manager or HR, are factual and non-accusatory, and are recorded in the case.
+Interviewing staff is part of investigation but involves people's rights and employment. Fernmoor's rule: interviews about a staff member's account are arranged with their manager or HR, are factual and non-accusatory, and are recorded in the case. In FCS-214, the clerk was interviewed with her manager present and the interview was recorded in the case. Her account of being in a training session was a factual statement that could be checked, and it supported the external-actor hypothesis without accusing anyone. HR would have been involved if the evidence had pointed to an insider.
 
 ### 16.6 Common errors and limits
 
 - Seeking only confirming evidence.
 - Unrecorded pivots that nobody can repeat.
 - Treating an address as one actor without checking shared infrastructure.
-- Concluding intent from technical evidence alone.
+- Concluding intent from technical evidence alone. FCS-214's hypothesis table guards against the first error by recording which evidence was inconsistent with each explanation, not only which fitted. Recorded pivots answer the second. The analysts checked whether 198.51.100.23 could be shared infrastructure before treating it as one actor, and the case concluded nothing about intent from the logs alone; that was left to the interview and to people with authority to judge it.
 
 ### Exercises — chapter 16
 
 Attempt each exercise before opening the [worked results](#worked-results). Every case, organization, person, address and number in an exercise is synthetic unless a cited public source is named.
 
-**EX046 — Expected evidence.** *Steps:* for H1–H3 in §16.1, list two items of evidence each would predict. *Rubric:* 3 = two discriminating predictions for each; 2 = some non-discriminating; 1 = one hypothesis only; 0 = none.
+**EX046 — Expected evidence.** *Steps:* for the FCS-214 hypotheses H1–H3, list two items of evidence each would predict. *Rubric:* 3 = two discriminating predictions for each; 2 = some non-discriminating; 1 = one hypothesis only; 0 = none.
 
 **EX047 — Pivot log.** *Steps:* write the pivot log for pivots 1–3. *Rubric:* 3 = from, key, to, query, result for each; 2 = missing queries; 1 = narrative; 0 = none.
 
@@ -1124,11 +1124,11 @@ Requirements follow from the data model and the service: structured fields with 
 
 ### 17.2 Evidence store requirements
 
-The evidence store holds preserved artefacts: log exports, images, memory captures, screenshots, emails. Requirements: storage separate from production administration; write-once or versioned storage; SHA-256 hashing on ingest (FIPS 180-4) and periodic verification; a custody record for each item (who collected, when, from where, every transfer and access); restricted and logged access; retention aligned with records and legal policy; and capacity for large images. ISO/IEC 27037 and NIST SP 800-86 describe the identification, collection, acquisition and preservation steps that this store supports.
+The evidence store holds preserved artefacts: log exports, images, memory captures, screenshots, emails. Requirements: storage separate from production administration; write-once or versioned storage; SHA-256 hashing on ingest (FIPS 180-4) and periodic verification; a custody record for each item (who collected, when, from where, every transfer and access); restricted and logged access; retention aligned with records and legal policy; and capacity for large images. ISO/IEC 27037 and NIST SP 800-86 describe the identification, collection, acquisition and preservation steps that this store supports. Fernmoor's store passed most acceptance tests but initially logged access with a 60-minute delay.
 
 ### 17.3 Custody in practice
 
-For most internal cases, a well-kept digital custody log is enough: item id, description, source, collector, time, hash, storage location, and each access with purpose. If a case may go to court or a regulator, involve counsel early; stricter procedures may apply.
+For most internal cases, a well-kept digital custody log is enough: item id, description, source, collector, time, hash, storage location, and each access with purpose. If a case may go to court or a regulator, involve counsel early; stricter procedures may apply. Fernmoor's evidence store records most of this automatically: the hash on ingest and each access appear without manual entry, leaving the analyst to add the description, source and purpose. Cases involving staff, such as FCS-214, also record that the interview was arranged with the manager. Where an item leaves the store for a case, the transfer and its new hash are logged as a new custody entry.
 
 ### 17.4 Worked example (synthetic): acceptance testing the tools
 
@@ -1150,7 +1150,7 @@ The failing criterion was accepted with a documented risk and a fix date; the go
 - Evidence on analysts' laptops or shared drives.
 - Hashes computed but never verified again.
 - Case tools whose administrators can silently edit history.
-- Choosing a tool for features rather than tested acceptance criteria.
+- Choosing a tool for features rather than tested acceptance criteria. Fernmoor's acceptance tests targeted each of these. Object lock made deletion by a response role fail, the stored hash was compared with a local hash on ingest, and editing a closed case field left a history entry. The one failing criterion, the access-log delay, was accepted with a documented risk and a fix date, which is the honest way to go live with a known gap. Periodic hash verification is on the sustainment calendar.
 
 ### Exercises — chapter 17
 
@@ -1184,15 +1184,15 @@ You will be able to (1) implement pre-built containment actions with tested side
 
 ### 18.1 Containment actions as products
 
-Each common containment action becomes a documented, tested capability: disable account and revoke sessions; isolate an endpoint through the agent; move a VM to quarantine; block an address or domain at the edge and DNS resolver; disable a public feature behind a flag; rotate a service credential. For each: trigger (who may run it), procedure or automation, expected side effects, verification step and rollback. Test each quarterly in a non-production environment and record the time taken.
+Each common containment action becomes a documented, tested capability: disable account and revoke sessions; isolate an endpoint through the agent; move a VM to quarantine; block an address or domain at the edge and DNS resolver; disable a public feature behind a flag; rotate a service credential. For each: trigger (who may run it), procedure or automation, expected side effects, verification step and rollback. Test each quarterly in a non-production environment and record the time taken. In the `permit-app-2` case, moving the VM to quarantine was one of these pre-built actions.
 
 ### 18.2 Recovery
 
-NIST SP 800-184 describes recovery planning: prioritized restoration, validated clean sources, and improvement. Recovery controls include immutable or offline backups, documented restore procedures with measured times, clean build images, and validation steps before reconnecting to production. Restore tests should restore to an isolated environment and check data integrity, not just that the job "succeeded".
+NIST SP 800-184 describes recovery planning: prioritized restoration, validated clean sources, and improvement. Recovery controls include immutable or offline backups, documented restore procedures with measured times, clean build images, and validation steps before reconnecting to production. Restore tests should restore to an isolated environment and check data integrity, not just that the job "succeeded". Fernmoor's timed restore of `appt-db-1` shows why measurement matters: the first run took far longer than planned because the restore tool was single-threaded, and point-in-time recovery was not possible at all. Neither problem would have appeared in a backup job's success report. Both were fixed and retested before the plan was relied upon.
 
 ### 18.3 Verification
 
-Containment is complete only when verified: the account cannot sign in (test), sessions are gone (check active sessions list), the host cannot reach anything but the evidence share (connectivity test), the blocked address produces denials (edge log). Recovery is complete when the service owner accepts functional tests and monitoring is in place for re-infection.
+Containment is complete only when verified: the account cannot sign in (test), sessions are gone (check active sessions list), the host cannot reach anything but the evidence share (connectivity test), the blocked address produces denials (edge log). Recovery is complete when the service owner accepts functional tests and monitoring is in place for re-infection. In the reception PC case, the action had been recorded as complete when the isolation was only queued, which shows why the connectivity check matters. Fernmoor's runbooks now include a verification step for every containment action, with the evidence of verification recorded in the case.
 
 ### 18.4 Worked example (synthetic): timed restore of `appt-db-1`
 
@@ -1213,7 +1213,7 @@ Results: recovery time 107 minutes on first run, 64 on retest, against a tier-2 
 - Containment that has never been tested and fails at 03:00.
 - "Backup succeeded" without a restore test.
 - Restoring into production before validating that the backup is clean.
-- Forgetting to verify containment; the attacker's second account still works.
+- Forgetting to verify containment; the attacker's second account still works. Fernmoor's restore test shows the second and third errors avoided: the database was restored to an isolated host, checked against row counts and checksums, and only then smoke-tested. The quarterly action tests address the first, and the verification step in each containment runbook addresses the fourth. The capstone's DNS sinkhole test, found 120 days old, shows how easily such tests slip.
 
 ### Exercises — chapter 18
 
@@ -1247,15 +1247,15 @@ You will be able to (1) connect each detection rule to a response action and an 
 
 ### 19.1 From rule to runbook
 
-Every detection that can open a case should point to a runbook: what the analyst checks first, what evidence to preserve, which containment action applies and who approves it. A rule without a runbook produces inconsistent triage; a runbook without a rule depends on luck. Fernmoor keeps a **detection register**: rule id, scenario (Chapter 13), data source (Chapter 12), runbook, owner, last tuned date and quality figures.
+Every detection that can open a case should point to a runbook: what the analyst checks first, what evidence to preserve, which containment action applies and who approves it. A rule without a runbook produces inconsistent triage; a runbook without a rule depends on luck. Fernmoor keeps a **detection register**: rule id, scenario (Chapter 13), data source (Chapter 12), runbook, owner, last tuned date and quality figures. Fernmoor's register includes rules such as R-07 for impossible travel and R-12 for a new MFA method off-hours.
 
 ### 19.2 Outcome labels
 
-When a case closes, the analyst labels the triggering alert: true positive (malicious or policy-violating activity), benign true positive (the rule worked, the activity was authorized), false positive (the rule matched something it should not), or undetermined. These labels, collected over months, show which rules earn their cost. The CSF 2.0 Detect function includes continuous monitoring and analysis of adverse events; feedback labels are how monitoring improves.
+When a case closes, the analyst labels the triggering alert: true positive (malicious or policy-violating activity), benign true positive (the rule worked, the activity was authorized), false positive (the rule matched something it should not), or undetermined. These labels, collected over months, show which rules earn their cost. The CSF 2.0 Detect function includes continuous monitoring and analysis of adverse events; feedback labels are how monitoring improves. Fernmoor's Q2 register shows why these labels matter. Rule R-19 for bulk file reads produced 120 alerts, mostly benign true positives from the nightly backup account; treating them as false positives would have led to removing a rule that does what it should. The labels instead pointed to a narrow exclusion for the backup window.
 
 ### 19.3 Coverage and misses
 
-Also record cases that *no* detection found: reports from residents, suppliers or staff. Each miss is a candidate for a new detection or a data-source gap. Mapping cases to ATT&CK techniques helps reveal which techniques you detect and which you only learn about by accident.
+Also record cases that *no* detection found: reports from residents, suppliers or staff. Each miss is a candidate for a new detection or a data-source gap. Mapping cases to ATT&CK techniques helps reveal which techniques you detect and which you only learn about by accident. In Fernmoor's Q2 register, two cases came from staff reports, a phished account and an insider spreadsheet. Both were added to the backlog as detection ideas with owners, and the register now shows them against the techniques they used. Over several quarters, these misses show where Fernmoor relies on staff alertness instead of detection.
 
 ### 19.4 Worked example (synthetic): a quarter's register
 
@@ -1275,7 +1275,7 @@ Decisions: R-07 — add known corporate VPN egress as enrichment to cut benign T
 - Treating benign true positives as false positives, which leads to removing good rules.
 - Broad exclusions ("ignore the backup account") that create blind spots attackers can use.
 - Never labelling outcomes, so no rule is ever improved.
-- Counting alerts as a productivity measure.
+- Counting alerts as a productivity measure. Fernmoor's register avoids these by design. R-19's benign alerts from the backup account were labelled correctly, the exclusion covered only the scheduled window and host, with an alert if the account read outside it, every closed case has an outcome label, and the register reports quality per rule rather than alert counts. R-12 was kept despite few alerts because all were meaningful.
 
 ### Exercises — chapter 19
 
@@ -1312,19 +1312,19 @@ You will be able to (1) detect incomplete or contradictory case records systemat
 - **Missing:** no triage time, no closure reason, no owner for a period.
 - **Contradictory:** action time before decision time; status "closed" with open tasks; severity S4 but a regulator notification recorded.
 - **Inconsistent with evidence:** case says host isolated at 10:00; endpoint logs show it communicating at 10:30.
-- **Duplicated:** two cases for the same incident with diverging facts.
+- **Duplicated:** two cases for the same incident with diverging facts. The reception PC case was a defect of the third kind: the record said isolated at 10:02 while endpoint telemetry showed DNS queries at 10:27. Fernmoor's nightly checks are written to find each of the four kinds.
 
 ### 20.2 Finding defects
 
-Run automated checks against the case database: required fields by status, ordering constraints (opened ≤ triage ≤ decision ≤ action ≤ closed), cross-field rules (S1 requires an incident lead), and reconciliation with evidence sources (claimed containment vs telemetry). Run them nightly and in the monthly report. Sample a few cases manually each month as well; automated checks only find the defects you anticipated.
+Run automated checks against the case database: required fields by status, ordering constraints (opened ≤ triage ≤ decision ≤ action ≤ closed), cross-field rules (S1 requires an incident lead), and reconciliation with evidence sources (claimed containment vs telemetry). Run them nightly and in the monthly report. Sample a few cases manually each month as well; automated checks only find the defects you anticipated. The nightly check found the reception PC defect by comparing the recorded isolation with endpoint telemetry, a defect no required-field rule could have caught.
 
 ### 20.3 Diagnosing causes
 
-Ask why each defect happened. Typical causes: a field that cannot be filled on mobile; clocks on a tool set to local time; an automation writing the action time when the job was queued, not when it ran; analysts working in chat and updating the case later from memory; unclear definitions. Fix the cause, not only the record — otherwise the defect returns.
+Ask why each defect happened. Typical causes: a field that cannot be filled on mobile; clocks on a tool set to local time; an automation writing the action time when the job was queued, not when it ran; analysts working in chat and updating the case later from memory; unclear definitions. Fix the cause, not only the record — otherwise the defect returns. The reception PC defect had the third cause: the automation wrote the time the isolation request was queued, while the agent applied it only when the laptop reconnected. The fix recorded both times and alerted if confirmation was late, so the defect cannot recur silently. Without that change, every offline device would produce the same false record.
 
 ### 20.4 Correcting records
 
-Never overwrite silently. Add a correction entry: field, old value, new value, source of the correct value, who corrected, when. The history must show both. For cases with legal or regulatory relevance, involve counsel before correcting anything material.
+Never overwrite silently. Add a correction entry: field, old value, new value, source of the correct value, who corrected, when. The history must show both. For cases with legal or regulatory relevance, involve counsel before correcting anything material. In the reception PC case, the correction entry recorded the queued time of 10:02, the applied time of 10:41 and the agent log as the source. The original value stays in history, so a reviewer can see what was believed at the time and why it changed. The 25 minutes of activity were added to the case scope at the same time.
 
 ### 20.5 Worked example (synthetic): isolation that wasn't
 
@@ -1335,7 +1335,7 @@ Never overwrite silently. Add a correction entry: field, old value, new value, s
 - Fixing records by hand without fixing the process that broke them.
 - Rewriting history to look tidy.
 - Trusting automation timestamps without knowing what event they record.
-- Checks so noisy that analysts ignore them.
+- Checks so noisy that analysts ignore them. The reception PC case shows the remedy for each. The record was corrected with a visible entry rather than rewritten, the automation was fixed so the defect would not return, and the team learned exactly which event the timestamp recorded. The nightly checks were kept specific enough that analysts treat a flag as worth investigating, rather than background noise.
 
 ### Exercises — chapter 20
 
@@ -1373,15 +1373,15 @@ You will be able to (1) connect security incidents to IT service-management proc
 
 ### 21.2 Emergency change
 
-Containment cannot wait for a weekly change board. Define a security emergency change: pre-approved standard changes for the actions in Chapter 18 (logged after the fact), and an emergency change path for others with a named approver available at any hour, a minimum record (what, why, risk, rollback) and a retrospective review at the next board. The goal is speed with accountability.
+Containment cannot wait for a weekly change board. Define a security emergency change: pre-approved standard changes for the actions in Chapter 18 (logged after the fact), and an emergency change path for others with a named approver available at any hour, a minimum record (what, why, risk, rollback) and a retrospective review at the next board. The goal is speed with accountability. During the ransomware outage, isolating `fs-01` went through this path as emergency change CHG-3301, approved by the on-call infrastructure manager at 06:31.
 
 ### 21.3 Confidentiality
 
-Security cases may involve staff misconduct, personal data or attacker monitoring of IT tickets. Use restricted record types; keep sensitive details out of broadly visible change titles ("Rotate credentials for service X" rather than "Attacker has svc-patch password").
+Security cases may involve staff misconduct, personal data or attacker monitoring of IT tickets. Use restricted record types; keep sensitive details out of broadly visible change titles ("Rotate credentials for service X" rather than "Attacker has svc-patch password"). In the ransomware outage, the service desk saw IT major incident INC-8812 with neutral wording, while the investigation details stayed in the restricted security case FCS-260. Staff could follow the outage without learning anything that would help an attacker watching the tickets. The problem record about the shared admin credential was worded with the same care.
 
 ### 21.4 On-call integration
 
-The response on-call rota should live in the same paging system as IT operations, with escalation if unacknowledged. Chapter 9's lab showed out-of-hours triage delays; Fernmoor's fix was paging S1–S2 to the response on-call through the IT paging tool with a 15-minute escalation to the deputy.
+The response on-call rota should live in the same paging system as IT operations, with escalation if unacknowledged. Chapter 9's lab showed out-of-hours triage delays; Fernmoor's fix was paging S1–S2 to the response on-call through the IT paging tool with a 15-minute escalation to the deputy. The ransomware outage tested this arrangement: the response on-call was paged by the ITSM rule and acknowledged at 06:16, six minutes after the service desk logged the call. The escalation to the deputy was not needed that night, but it is checked during each exercise. Both on-call rotas are visible to the service desk, so callers know who is responding.
 
 ### 21.5 Worked example (synthetic): linking a ransomware outage
 
@@ -1392,7 +1392,7 @@ The response on-call rota should live in the same paging system as IT operations
 - Security cases closed by IT once the service is restored, before investigation ends.
 - Emergency changes without retrospective review.
 - Sensitive details in broadly visible tickets.
-- Separate paging systems that nobody watches at night.
+- Separate paging systems that nobody watches at night. The ransomware outage avoided each. FCS-260 stayed open while IT closed the outage, CHG-3301 was reviewed at the next change board, the service desk saw only neutral wording, and paging went through the system IT operations already watched at night. The problem record about the shared credential kept the cause visible after the service was restored, so it could be fixed rather than forgotten.
 
 ### Exercises — chapter 21
 
@@ -1426,11 +1426,11 @@ You will be able to (1) choose which response tasks to automate and which to kee
 
 ### 22.1 What to automate
 
-Good candidates are frequent, well-defined and low-judgement: enriching an alert with inventory and identity data; exporting standard log sets for a case; hashing and registering artefacts; creating linked records; paging; reminding owners of overdue tasks; drafting status updates from case fields. Keep humans for judgement and irreversible or high-impact actions: severity decisions beyond rules, external notifications, disabling public services, contacting employees. CISA's playbooks and many security-orchestration tools follow the same split between automated enrichment and human-approved response.
+Good candidates are frequent, well-defined and low-judgement: enriching an alert with inventory and identity data; exporting standard log sets for a case; hashing and registering artefacts; creating linked records; paging; reminding owners of overdue tasks; drafting status updates from case fields. Keep humans for judgement and irreversible or high-impact actions: severity decisions beyond rules, external notifications, disabling public services, contacting employees. CISA's playbooks and many security-orchestration tools follow the same split between automated enrichment and human-approved response. Fernmoor's enrichment that paged a former employee shows the risk of trusting automated data, even for low-judgement tasks.
 
 ### 22.2 Design rules
 
-Each automation has an owner, a version under source control, tests with known inputs, logging of every run (inputs, outputs, errors), idempotence (running twice does no harm), safe failure (on error, stop and alert a human rather than half-complete), and least-privilege credentials stored in a secrets manager, not in the script.
+Each automation has an owner, a version under source control, tests with known inputs, logging of every run (inputs, outputs, errors), idempotence (running twice does no harm), safe failure (on error, stop and alert a human rather than half-complete), and least-privilege credentials stored in a secrets manager, not in the script. Fernmoor's enrichment failure would have been caught earlier by these rules. A test with a known stale owner would have exposed the missing validation, and logging each run would have shown three weeks of pages to the same personal number. The fix added an owner check against the directory and a fallback to the team rota.
 
 ### 22.3 Lab T-22 (synthetic): evidence manifest with verification
 
@@ -1466,18 +1466,18 @@ The manifest shows the first 16 hex characters of each hash and the byte length 
 
 ### 22.4 Notifications
 
-Internal notifications (page the on-call, inform the privacy officer at S2 with personal data, update the service desk) can be automated from case fields. Safeguards: templates reviewed by the owners; recipients from a maintained directory, not typed; rate limits; a test mode; and a human check for any message leaving Fernmoor. External notifications to residents, regulators or the press are drafted by automation at most, approved and sent by people authorized by the charter (Chapter 10).
+Internal notifications (page the on-call, inform the privacy officer at S2 with personal data, update the service desk) can be automated from case fields. Safeguards: templates reviewed by the owners; recipients from a maintained directory, not typed; rate limits; a test mode; and a human check for any message leaving Fernmoor. External notifications to residents, regulators or the press are drafted by automation at most, approved and sent by people authorized by the charter (Chapter 10). In the ransomware outage, the internal page and service desk updates were automated, while the resident notice was drafted for the director.
 
 ### 22.5 Worked example (synthetic): enrichment that misled
 
-*Fictional.* An enrichment step added the inventory owner to each alert. A stale CMDB entry named a person who had left Fernmoor; the automation paged her personal phone for three weeks. Fixes: the automation now validates owners against the active directory and falls back to the team rota; the inventory reconciliation (Chapter 11) flags owners who left.
+*Fictional.* An enrichment step added the inventory owner to each alert. A stale CMDB entry named a person who had left Fernmoor; the automation paged her personal phone for three weeks. Fixes: the automation now validates owners against the active directory and falls back to the team rota; the inventory reconciliation (Chapter 11) flags owners who left. The error lasted three weeks because nothing checked whether the person paged still worked at Fernmoor, and the pages went to a phone that nobody at Fernmoor could see. The fix follows the design rules: validation against an authoritative source, safe fallback to a rota, and a reconciliation that catches the stale entry at its source. The case was also logged as an automation defect, so the incident review covered the design and not only the CMDB record.
 
 ### 22.6 Common errors and limits
 
 - Automating a broken process, which produces wrong results faster.
 - Credentials embedded in scripts.
 - Silent partial failures.
-- Automations nobody owns after their author moves on.
+- Automations nobody owns after their author moves on. The stale-owner enrichment shows the first and fourth errors: the process of keeping owners current was already broken, and the automation multiplied its effect, while nobody noticed because the automation's author had moved to another project. Fernmoor now lists an owner for every automation in its register, stores credentials in the secrets manager, and makes partial failures stop and alert.
 
 ### Exercises — chapter 22
 
@@ -1511,7 +1511,7 @@ You will be able to (1) break response time into stages and find where delay acc
 
 ### 23.1 Stage latency
 
-Total response time hides where delay lives. Split it: detect → triage (queue and on-call), triage → decision (information gathering and authority), decision → containment (execution and change path). Each stage has different causes and fixes: paging for the first, evidence access and pre-approval for the second, automation and tested actions for the third.
+Total response time hides where delay lives. Split it: detect → triage (queue and on-call), triage → decision (information gathering and authority), decision → containment (execution and change path). Each stage has different causes and fixes: paging for the first, evidence access and pre-approval for the second, automation and tested actions for the third. Fernmoor's charter maps onto this split: paging and the on-call rota govern the first stage, the list of pre-approved actions and owner approvals governs the second, and the tested action cards govern the third. A delay in each stage therefore points to a different owner.
 
 ### 23.2 Decision quality
 
@@ -1559,14 +1559,14 @@ Interpretation: the medians look acceptable, but the maxima reveal three differe
 
 ### 23.4 From evaluation to change
 
-For each finding, propose one change, an owner and a measure to check it: build and test the firewall containment action (target: decision → contain ≤ 30 minutes for that action); make `owner` and `rollback` required fields at decision status (target: 100% completeness); review on-call escalation for S2 out of hours. Re-evaluate after a quarter with the same definitions.
+For each finding, propose one change, an owner and a measure to check it: build and test the firewall containment action (target: decision → contain ≤ 30 minutes for that action); make `owner` and `rollback` required fields at decision status (target: 100% completeness); review on-call escalation for S2 out of hours. Re-evaluate after a quarter with the same definitions. Each change is tested against the same measure that revealed the problem, so a quarter later the team can see whether the stage got faster rather than relying on impressions. If it did not, the change is reconsidered instead of left in place.
 
 ### 23.5 Common errors and limits
 
 - Judging decisions by outcomes.
 - Only reporting totals or means.
 - Treating six cases as proof.
-- Measuring individuals instead of the system; people will game the fields.
+- Measuring individuals instead of the system; people will game the fields. Fernmoor's evaluation was written with these in mind. A case that ended well despite a poor decision was still recorded as a decision finding; stage medians and percentiles replaced a single mean; conclusions from a handful of cases were labelled as tentative; and figures were reported by service stage, not by analyst. Analysts who expect blame learn to fill fields defensively.
 
 ### Exercises — chapter 23
 
@@ -1600,15 +1600,15 @@ You will be able to (1) compare two playbooks for the same scenario against expl
 
 ### 24.1 What a playbook is
 
-A **playbook** is a scenario-level guide: when it applies, roles, decision points, the runbooks it invokes, communications and closure criteria. A **runbook** is a step-level procedure for one task. CISA's federal incident response playbook is a public example of a scenario-level structure; many organizations also publish or share sector playbooks. A playbook should be short enough to use under stress and precise at decision points.
+A **playbook** is a scenario-level guide: when it applies, roles, decision points, the runbooks it invokes, communications and closure criteria. A **runbook** is a step-level procedure for one task. CISA's federal incident response playbook is a public example of a scenario-level structure; many organizations also publish or share sector playbooks. A playbook should be short enough to use under stress and precise at decision points. Fernmoor's business email compromise comparison showed the difference: the 14-page vendor template covered every email threat but named no runbooks, while the 3-page local playbook did.
 
 ### 24.2 Comparison criteria
 
-Fernmoor's criteria: (1) **trigger clarity** — can the duty analyst tell when it applies? (2) **decision points** — are decisions, owners and authority explicit? (3) **evidence preservation** before change; (4) **actionability** — does each step name a runbook or command? (5) **communications** — who is told, when, by whom? (6) **closure** — measurable conditions; (7) **fit** — does it match Fernmoor's tools and charter? Score each 0–2 with a written reason; scores are structured judgements, not measurements.
+Fernmoor's criteria: (1) **trigger clarity** — can the duty analyst tell when it applies? (2) **decision points** — are decisions, owners and authority explicit? (3) **evidence preservation** before change; (4) **actionability** — does each step name a runbook or command? (5) **communications** — who is told, when, by whom? (6) **closure** — measurable conditions; (7) **fit** — does it match Fernmoor's tools and charter? Score each 0–2 with a written reason; scores are structured judgements, not measurements. In the BEC comparison, these scores separated two quite different strengths: the vendor template scored higher on evidence preservation and communications, while the local playbook scored higher on decisions, actionability and fit. Reading the criteria one by one led to a merged playbook rather than a simple winner.
 
 ### 24.3 Testing by walkthrough
 
-Read both playbooks against the same scripted inject with two different teams (or the same team on different days, noting learning effects). Time to first containment decision, number of questions the playbook could not answer, and errors made are recorded.
+Read both playbooks against the same scripted inject with two different teams (or the same team on different days, noting learning effects). Time to first containment decision, number of questions the playbook could not answer, and errors made are recorded. In Fernmoor's BEC walkthrough, the team using the local playbook reached the first containment decision in 12 minutes against 31, but forgot to contact the bank about recalling the payment. Recording that omission was as important as the timing, because a recall is the most time-critical step in real cases. A later exercise is planned with counterbalanced teams.
 
 ### 24.4 Worked example (synthetic): business email compromise
 
@@ -1632,7 +1632,7 @@ Walkthrough: team using B reached the first containment decision in 12 minutes v
 - Picking the longer playbook because it looks thorough.
 - Testing two playbooks on the same team back-to-back without noting learning effects.
 - Treating total scores as precise; read the criterion-level gaps.
-- Playbooks that duplicate runbook detail and go stale.
+- Playbooks that duplicate runbook detail and go stale. The BEC comparison illustrates three of these. The vendor template was longer and looked thorough but scored lower overall; the totals of 7 and 11 hid that the shorter playbook missed bank contact; and the merged version took only the vendor template's evidence-preservation step and communications contacts, leaving runbook detail in the runbooks.
 
 ### Exercises — chapter 24
 
@@ -1642,7 +1642,7 @@ Attempt each exercise before opening the [worked results](#worked-results). Ever
 
 **EX071 — Closure conditions.** *Steps:* write five measurable closure conditions for the merged BEC playbook. *Rubric:* 3 = five measurable (recall outcome recorded, rules removed and verified, sessions revoked, supplier contacted via verified channel, finance procedure change logged); 2 = three; 1 = vague; 0 = none.
 
-**EX072 — Test design.** *Steps:* design a fairer comparison than §24.4's. *Rubric:* 3 = two comparable teams or counterbalanced order, same inject, measures defined in advance, observer, noted limits; 2 = partial; 1 = vague; 0 = none.
+**EX072 — Test design.** *Steps:* design a fairer comparison than the business email compromise walkthrough. *Rubric:* 3 = two comparable teams or counterbalanced order, same inject, measures defined in advance, observer, noted limits; 2 = partial; 1 = vague; 0 = none.
 
 ### Chapter synthesis
 
@@ -1666,7 +1666,7 @@ You will be able to (1) build, as a team, an end-to-end response workflow for on
 
 ### 25.1 Studio brief
 
-Each team receives a Fernmoor scenario (for example "compromised supplier account uploads a malicious file to the permits portal") and must produce: a swimlane diagram (roles across the top, steps down), the case states it passes through, decision points with owners and authority, the runbooks invoked (existing or new), evidence preserved at each step, communications, and closure conditions. Deliverables must use the Chapter 4 data model and the Chapter 10 charter; deviations must be justified.
+Each team receives a Fernmoor scenario (for example "compromised supplier account uploads a malicious file to the permits portal") and must produce: a swimlane diagram (roles across the top, steps down), the case states it passes through, decision points with owners and authority, the runbooks invoked (existing or new), evidence preserved at each step, communications, and closure conditions. Deliverables must use the Chapter 4 data model and the Chapter 10 charter; deviations must be justified. Team Heron's supplier upload workflow is an example of a studio deliverable that was critiqued and revised.
 
 ### 25.2 Critique protocol
 
@@ -1674,7 +1674,7 @@ A structured critique keeps feedback useful and humane. Fernmoor's protocol, ada
 
 ### 25.3 Evidence in critique
 
-Opinions are useful, but evidence is better. Where possible, support a critique with data from earlier chapters: "Our detection register shows supplier-account alerts are rare (Chapter 19); your workflow depends on an alert that does not exist." "Chapter 18's test showed isolating a VM takes 6 minutes; your step assumes 1."
+Opinions are useful, but evidence is better. Where possible, support a critique with data from earlier chapters: "Our detection register shows supplier-account alerts are rare (Chapter 19); your workflow depends on an alert that does not exist." "Chapter 18's test showed isolating a VM takes 6 minutes; your step assumes 1." Team Heron's critique shows the value of evidence: the inject showed that the workflow stalled when the supplier denied uploading anything, which made the missing coordination step clear without anyone arguing about style. The revision added a supplier coordination runbook based on that stall, and the team could point to the inject as the reason.
 
 ### 25.4 Worked example (synthetic): the supplier upload workflow
 
@@ -1693,7 +1693,7 @@ Revision: added steps "preserve the file and portal access logs before removal" 
 - Workflows that end at containment and forget recovery, communication and review.
 - Critique that becomes personal or vague ("feels complicated").
 - Accepting all feedback without reasoning, producing a bloated workflow.
-- No inject run, so stalls stay hidden.
+- No inject run, so stalls stay hidden. Team Heron's first workflow had two of these: it ended at closing the case without asking whether residents downloaded the file, and its stall stayed hidden until an inject was run. The team also avoided the third by declining a suggestion to block all supplier uploads permanently, recording why, and naming malware scanning before publication as the compensating control.
 
 ### Exercises — chapter 25
 
@@ -1735,7 +1735,7 @@ Set a cadence by severity (S1: every 60 minutes internally; S2: twice daily) and
 
 ### 26.3 External communication
 
-Residents, media, regulators, suppliers and law enforcement are contacted only by people the charter authorizes, with the communications office, counsel and privacy officer as required. Technologists supply accurate facts and review drafts for technical correctness. Regulatory deadlines (for example the GDPR's 72-hour notification to the supervisory authority where feasible) are tracked in the case from the recorded awareness time; the determination belongs to the privacy officer and counsel.
+Residents, media, regulators, suppliers and law enforcement are contacted only by people the charter authorizes, with the communications office, counsel and privacy officer as required. Technologists supply accurate facts and review drafts for technical correctness. Regulatory deadlines (for example the GDPR's 72-hour notification to the supervisory authority where feasible) are tracked in the case from the recorded awareness time; the determination belongs to the privacy officer and counsel. In FCS-260, the director held the decision on telling residents about the billing delay, with communications drafting the text. The awareness time recorded the previous morning started the clock that the privacy officer tracked while waiting for the egress review.
 
 ### 26.4 Worked example (synthetic): night-to-day handoff for FCS-260
 
@@ -1750,7 +1750,7 @@ Day lead read back the pending decisions and accepted ownership at 07:12; the ca
 - Handoffs by chat message without acceptance.
 - Updates that mix facts and speculation.
 - Technologists speaking to media or residents directly.
-- Missing the start of a regulatory clock because awareness time was not recorded.
+- Missing the start of a regulatory clock because awareness time was not recorded. The FCS-260 handoff avoided the first error by using a structured note and recording the day lead's acceptance at 07:12. Its assessment of the initial access route was labelled with moderate confidence, which keeps facts and speculation apart. The awareness time was recorded, so the regulatory clock was known to both leads.
 
 ### Exercises — chapter 26
 
@@ -1784,11 +1784,11 @@ You will be able to (1) implement the case workflow as a state model with transi
 
 ### 27.1 The state model
 
-Fernmoor's case states: `new → triage → investigating → containing → recovering → review → closed`, with `closed-benign` reachable from triage or investigating. Transition rules enforce the process: entering `containing` requires a recorded approval; `closed-benign` requires a triage note; `closed` requires a review record. Disallowed transitions (for example `triage → containing` without investigation, or `containing → closed` without recovery and review) are blocked or require an override with justification that is logged.
+Fernmoor's case states: `new → triage → investigating → containing → recovering → review → closed`, with `closed-benign` reachable from triage or investigating. Transition rules enforce the process: entering `containing` requires a recorded approval; `closed-benign` requires a triage note; `closed` requires a review record. Disallowed transitions (for example `triage → containing` without investigation, or `containing → closed` without recovery and review) are blocked or require an override with justification that is logged. Fernmoor's pilot showed the effect: record completeness rose, and only two overrides were needed, both justified.
 
 ### 27.2 Validating before deployment
 
-Write tests: sequences of transitions with expected acceptance or rejection. Run them against a model of the rules and then against the configured tool in a test instance. This is the same discipline as testing a parser on known input (Chapter 3).
+Write tests: sequences of transitions with expected acceptance or rejection. Run them against a model of the rules and then against the configured tool in a test instance. This is the same discipline as testing a parser on known input (Chapter 3). Fernmoor's pilot found a defect that tests had missed: a case in `recovering` could not link a new IT change, which only appeared with the real tool configuration. It was fixed before rollout, and a test for that transition was added so the defect cannot return unnoticed. The final test suite runs against every later configuration change.
 
 ### 27.3 Lab T-27 (synthetic): transition tests
 
@@ -1837,7 +1837,7 @@ Plan: train all duty analysts and leads with a one-hour walkthrough and two prac
 - Rules so strict that analysts work outside the tool.
 - Testing only the model, not the tool configuration.
 - Deploying without training or a rollback.
-- Before/after comparisons presented as proof without caveats.
+- Before/after comparisons presented as proof without caveats. Fernmoor's pilot handled these. Two overrides were enough for real exceptions, so analysts kept working in the tool; the tool configuration was tested as well as the model; training and rollback came before the rollout; and the reported completeness gain was presented with the caveat that a previous quarter and an observed team make the comparison weaker. Completeness continues to be measured monthly.
 
 ### Exercises — chapter 27
 
@@ -1871,7 +1871,7 @@ You will be able to (1) plan a field simulation (functional exercise) with writt
 
 ### 28.1 Exercise types
 
-NIST SP 800-84 distinguishes tabletop exercises (discussion), functional exercises (performing tasks in a simulated operational environment) and full-scale exercises. A **field simulation** in this course is a functional exercise: staff use the real case tool, paging, evidence store and pre-built containment actions against test systems, while injects are delivered by an exercise control team.
+NIST SP 800-84 distinguishes tabletop exercises (discussion), functional exercises (performing tasks in a simulated operational environment) and full-scale exercises. A **field simulation** in this course is a functional exercise: staff use the real case tool, paging, evidence store and pre-built containment actions against test systems, while injects are delivered by an exercise control team. Fernmoor's Quiet Meter exercise was functional: the team used the real case tool and action cards against the billing test environment, with a scenario of a compromised supplier account.
 
 ### 28.2 Authorization and safety
 
@@ -1879,7 +1879,7 @@ Before anything runs: written authorization from the system owners and the direc
 
 ### 28.3 Design
 
-Objectives tied to capabilities (for example "page S1 on-call within 15 minutes"; "preserve identity evidence before containment"; "deliver an executive update within 60 minutes"); a scenario with a master scenario event list (injects with times, deliverer and expected actions); roles (players, controllers, evaluators, observers); evaluation guides per objective; and a hot wash immediately afterwards plus a written after-action report.
+Objectives tied to capabilities (for example "page S1 on-call within 15 minutes"; "preserve identity evidence before containment"; "deliver an executive update within 60 minutes"); a scenario with a master scenario event list (injects with times, deliverer and expected actions); roles (players, controllers, evaluators, observers); evaluation guides per objective; and a hot wash immediately afterwards plus a written after-action report. Quiet Meter followed this design. Its objectives included paging the S2 on-call within 15 minutes and an executive update within 60, each with a measure. The after-action report then listed which objectives were missed, such as preserving identity evidence before containment, with owners and re-test dates.
 
 ### 28.4 Worked example (synthetic): "Quiet Meter"
 
@@ -1900,7 +1900,7 @@ Improvement plan: reorder the identity runbook with an enforced "export complete
 - Exercising without written authorization or a stop mechanism.
 - Objectives that cannot be observed.
 - Blaming individuals in the after-action report.
-- Findings without owners and re-test dates.
+- Findings without owners and re-test dates. Quiet Meter had a signed authorization from the billing system owner and the director, a time window and a named scope. Each objective could be observed from case timestamps, console logs or an evaluator check. The after-action report described causes such as an unclear runbook order on mobile rather than blaming the analyst, and each finding had an owner and a re-test in the next quarter's exercise. Exercise control could stop play at any time.
 
 ### Exercises — chapter 28
 
@@ -1942,7 +1942,7 @@ Each component needs a criterion that can be demonstrated with evidence, not a s
 
 ### 29.3 End-to-end demonstration
 
-Run one realistic synthetic case through the whole service in the test environment, from detection to post-incident review, while an assessor observes. Collect the operational evidence the service produces: case record with history, evidence manifest with verification, change records, run logs, updates and the review. The demonstration should also include one deliberate failure (for example, a canary flow disabled) to show monitoring catches it.
+Run one realistic synthetic case through the whole service in the test environment, from detection to post-incident review, while an assessor observes. Collect the operational evidence the service produces: case record with history, evidence manifest with verification, change records, run logs, updates and the review. The demonstration should also include one deliberate failure (for example, a canary flow disabled) to show monitoring catches it. Fernmoor's capstone demonstration used an invoice fraud case and disabled an identity canary deliberately; the alert arrived within the limit.
 
 ### 29.4 Worked example (synthetic): Fernmoor capstone excerpt
 
@@ -1966,13 +1966,13 @@ Operating documentation: a service handbook (one page per component, owner, how 
 - Acceptance by assertion ("flows are configured") instead of evidence.
 - Demonstrating only the happy path.
 - Documentation that only the builder understands.
-- Treating a test environment demonstration as proof of production behaviour without production tests.
+- Treating a test environment demonstration as proof of production behaviour without production tests. Fernmoor's capstone avoided these by requiring evidence for every component, from scheduled query exports for flows to case history for the handoff. The deliberate canary failure tested more than the happy path, and the service handbook gave one page per component so others could operate it. Its dossier also states that test-environment results still need production checks before they count.
 
 ### Exercises — chapter 29
 
 Attempt each exercise before opening the [worked results](#worked-results). Every case, organization, person, address and number in an exercise is synthetic unless a cited public source is named.
 
-**EX085 — Criteria.** *Steps:* write evidence-based acceptance criteria for four components not in the §29.4 table (inventory, triage thresholds, ITSM routing, exercise programme). *Rubric:* 3 = four measurable criteria with evidence artefacts; 2 = three; 1 = assertions; 0 = none.
+**EX085 — Criteria.** *Steps:* write evidence-based acceptance criteria for four components not in the Fernmoor capstone table (inventory, triage thresholds, ITSM routing, exercise programme). *Rubric:* 3 = four measurable criteria with evidence artefacts; 2 = three; 1 = assertions; 0 = none.
 
 **EX086 — Handbook page.** *Steps:* write the handbook page for the evidence store. *Rubric:* 3 = purpose, owner, how to use, controls, recurring tests, failure handling, links; 2 = missing tests; 1 = vague; 0 = none.
 
@@ -2000,15 +2000,15 @@ You will be able to (1) evaluate the capstone service against its criteria and m
 
 ### 30.1 Evaluation
 
-Combine three kinds of evidence: **acceptance results** (Chapter 29), **service measures** over a period (time to triage, stage latencies, record completeness, detection outcome labels — Chapters 9, 19, 20, 23) and **exercise findings** (Chapter 28). For each component, state: met / partly met / not met, the evidence, and confidence (how much data, how representative). Report limitations: small case counts, test-environment demonstrations, observer effects.
+Combine three kinds of evidence: **acceptance results** (Chapter 29), **service measures** over a period (time to triage, stage latencies, record completeness, detection outcome labels — Chapters 9, 19, 20, 23) and **exercise findings** (Chapter 28). For each component, state: met / partly met / not met, the evidence, and confidence (how much data, how representative). Report limitations: small case counts, test-environment demonstrations, observer effects. Fernmoor's first-year dossier applies this to five areas, from evidence flows to supplier coordination, and marks triage latency as moderate confidence because it rests on 19 out-of-hours cases.
 
 ### 30.2 Prioritization
 
-List improvement items from all sources. For each: problem with evidence, proposed change, owner, effort (S/M/L), expected effect on a named measure, and dependencies. Prioritize with a simple, explicit rule — for example, first items that protect recovery or evidence integrity, then items with large expected effect and small effort. NIST SP 800-61 Rev. 3 emphasizes that lessons learned feed improvement across all CSF functions; the dossier is that feedback made concrete.
+List improvement items from all sources. For each: problem with evidence, proposed change, owner, effort (S/M/L), expected effect on a named measure, and dependencies. Prioritize with a simple, explicit rule — for example, first items that protect recovery or evidence integrity, then items with large expected effect and small effort. NIST SP 800-61 Rev. 3 emphasizes that lessons learned feed improvement across all CSF functions; the dossier is that feedback made concrete. Fernmoor's dossier put the untested permits share restore first because it protects recovery, followed by loading supplier contacts, a second on-call and phishing-resistant authenticators.
 
 ### 30.3 Sustaining the service
 
-A response service decays without maintenance: owners move, flows break, playbooks go stale. Build a sustainment calendar (monthly measures and checks, quarterly action tests and restore tests, semi-annual exercises, annual charter review), ownership for every component, and a backlog process. Blameless post-incident reviews (as in the SRE book's postmortem culture and Dekker's just culture) keep people reporting problems.
+A response service decays without maintenance: owners move, flows break, playbooks go stale. Build a sustainment calendar (monthly measures and checks, quarterly action tests and restore tests, semi-annual exercises, annual charter review), ownership for every component, and a backlog process. Blameless post-incident reviews (as in the SRE book's postmortem culture and Dekker's just culture) keep people reporting problems. Fernmoor's dossier closes with exactly this calendar and an owner list, so the service has a schedule for the year ahead and a person for each check.
 
 ### 30.4 Worked example (synthetic): Fernmoor's first-year dossier
 
@@ -2031,7 +2031,7 @@ The dossier closes with the sustainment calendar, the owner list, open risks for
 - Reporting only successes.
 - Improvements without measures, so no one knows whether they worked.
 - No sustainment plan; the service degrades within a year.
-- Confidence claims that ignore small samples.
+- Confidence claims that ignore small samples. Fernmoor's dossier guards against each. It lists supplier coordination as not met, gives a measure for every improvement, includes the sustainment calendar, and marks the out-of-hours triage figure as moderate confidence because it rests on 19 cases. It also lists what the evaluation could not show, such as the restore time of the untested permits share. Each of these makes the dossier more useful than a list of successes.
 
 ### Exercises — chapter 30
 
