@@ -40,10 +40,10 @@ Las afirmaciones fácticas sobre leyes, normas, incidentes y estudios publicados
 2. [Sistemas informáticos](#ch-02)
 3. [Programación I](#ch-03)
 4. [Redacción académica](#ch-04)
-5. [Cultura de seguridad](../../en/book/MANUSCRIPT.md#ch-05)
-6. [Estructuras discretas](../../en/book/MANUSCRIPT.md#ch-06)
-7. [Redes y protocolos](../../en/book/MANUSCRIPT.md#ch-07)
-8. [Programación II](../../en/book/MANUSCRIPT.md#ch-08)
+5. [Cultura de seguridad](#ch-05)
+6. [Estructuras discretas](#ch-06)
+7. [Redes y protocolos](#ch-07)
+8. [Programación II](#ch-08)
 9. [Datos y bases de datos](../../en/book/MANUSCRIPT.md#ch-09)
 10. [Ética y práctica autorizada](../../en/book/MANUSCRIPT.md#ch-10)
 11. [Sistemas operativos](../../en/book/MANUSCRIPT.md#ch-11)
@@ -370,7 +370,332 @@ La buena redacción de seguridad enuncia una afirmación, muestra la evidencia, 
 <!-- cyberabc:chapter-navigation:start ch-04 -->
 ### Siga estudiando — capítulo 04 de 40
 
-[← Capítulo 03](#ch-03) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 05 →](../../en/book/MANUSCRIPT.md#ch-05)
+[← Capítulo 03](#ch-03) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 05 →](#ch-05)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-05"></a>
+
+## Capítulo 5 — Cultura de seguridad
+
+### Resultados de aprendizaje y conexión
+
+Después de este capítulo usted podrá (1) definir confidencialidad, integridad y disponibilidad y explicar por qué los servicios críticos suelen ordenarlas de forma distinta que la TI de oficina; (2) usar correctamente el vocabulario activo, amenaza, vulnerabilidad, probabilidad, impacto, riesgo y control; (3) describir en el plano conceptual las principales clases de actores de amenaza y de técnicas de ataque; y (4) leer un aviso de seguridad y extraer lo que significa para una organización concreta. Se apoya en los capítulos 1–4 y prepara el capítulo 16 (arquitectura) y el capítulo 19 (el alcance del campo).
+
+### 5.1 El vocabulario
+
+Un **activo** es algo de valor: un servicio, un sistema, datos, un edificio, el tiempo de las personas. Una **amenaza** es una causa potencial de daño: un actor (un grupo criminal, un infiltrado, un Estado) o un evento (una inundación, una actualización fallida). Una **vulnerabilidad** es una debilidad que una amenaza puede explotar: un defecto sin parchear, una contraseña compartida, una única ruta de cable. La **probabilidad** indica cuán probable es que una amenaza explote una vulnerabilidad en un período; el **impacto** es el daño si lo hace. El **riesgo** los combina, informalmente como «probabilidad × impacto», aunque el capítulo 23 muestra por qué la multiplicación a menudo induce a error. Un **control** (o salvaguarda) es una medida que reduce la probabilidad o el impacto. La guía de evaluación de riesgos del NIST expone este vocabulario y este proceso ([SP 800-30 Rev. 1](https://csrc.nist.gov/pubs/sp/800/30/r1/final)).
+
+### 5.2 La tríada CIA en los servicios críticos
+
+La **confidencialidad** significa que la información solo se revela a quienes están autorizados; la **integridad**, que la información y los sistemas no se alteran sin autorización; la **disponibilidad**, que funcionan cuando se necesitan. La TI de oficina suele poner primero la confidencialidad porque las filtraciones de datos personales tienen costos legales y reputacionales. En la TO, el orden suele invertirse: a una empresa de agua le importa ante todo que las bombas funcionen (disponibilidad) y que las órdenes y las lecturas sean auténticas (integridad); el secreto del nivel de un tanque importa mucho menos. La guía de TO del NIST señala este punto y añade la **seguridad funcional** como preocupación prioritaria ([SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final)). La atención sanitaria mezcla ambas cosas: los historiales de los pacientes exigen confidencialidad, mientras que las bombas de infusión y los ventiladores exigen integridad y disponibilidad. Un profesional de la seguridad en un sector crítico debe preguntarse, para cada activo, qué propiedad dañaría primero a las personas si fallara.
+
+### 5.3 Actores y técnicas
+
+Los actores de amenaza difieren en motivación y capacidad. Los **grupos criminales** buscan dinero, sobre todo mediante ransomware que cifra los datos y amenaza con publicarlos. Los **grupos patrocinados por Estados** pueden buscar inteligencia o la capacidad de perturbar servicios en una crisis. Los **hacktivistas** buscan atención. Los **infiltrados** pueden actuar con malicia o, con mucha más frecuencia, cometer errores. Los **accidentes** (actualizaciones fallidas, configuraciones erróneas, cables cortados) causan muchas interrupciones sin ningún adversario. Las técnicas se catalogan en bases de conocimiento públicas como MITRE ATT&CK; la versión para sistemas de control industrial enumera tácticas que van desde el acceso inicial hasta "impair process control", es decir, perjudicar el control del proceso ([MITRE ATT&CK for ICS](https://attack.mitre.org/matrices/ics/)). En el nivel de grado usted debe poder leer un catálogo así y decir qué técnicas aborda un control; no se le pide que las ejecute.
+
+### 5.4 Ejemplo resuelto: lectura de un aviso para CPN (sintético)
+
+**Este caso es sintético.** Un aviso de un fabricante (inventado) indica: «Las versiones de la pasarela de acceso remoto VPN-G anteriores a la 9.3 permiten que un atacante no autenticado ejecute código. Se ha observado su explotación. Corregido en la 9.3». Calder Power Networks utiliza VPN-G 9.1 en su sede central, accesible desde internet, y sus ingenieros la usan para llegar a la red de control. Extracción: *activo*, la pasarela y todo lo que es accesible a través de ella; *vulnerabilidad*, el defecto de la 9.1; *amenaza*, cualquier actor que escanee internet, más probable porque se ha observado explotación; *impacto*, posible acceso a la red de control y, por tanto, a la operación de los alimentadores; *opciones de control*, actualizar a la 9.3 ahora, o desactivar la pasarela hasta actualizarla y usar una alternativa supervisada. Los catálogos públicos como el Known Exploited Vulnerabilities de CISA existen precisamente para elevar la prioridad de los defectos explotados en la práctica ([CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog)). La decisión no es difícil; la cultura de seguridad consiste en reconocer que «acceso remoto a la TO», más «explotado», más «expuesto a internet» pesa más que un defecto con una puntuación mayor en un dispositivo aislado.
+
+### 5.5 Actividad práctica
+
+Elija un aviso reciente de los [avisos de ICS de CISA](https://www.cisa.gov/news-events/ics-advisories). Sin probar nada, extraiga el activo, la vulnerabilidad, las versiones afectadas, el estado de explotación, la corrección del fabricante y las mitigaciones recomendadas. Después, escriba dos frases sobre cómo cambiaría la prioridad para un operador cuyo dispositivo está (a) expuesto a internet y (b) en una red aislada. Escriba la respuesta sobre la exposición como un cambio de prioridad con una razón, no como una nueva puntuación. Expuesto a internet y explotado suele llevar un aviso a la gestión de emergencia, como ocurre con la VPN-G 9.1 de CPN; el mismo defecto en un dispositivo accesible solo desde una celda aislada puede esperar a la siguiente ventana planificada si se comprueban los controles compensatorios.
+
+### 5.6 Errores comunes y límites
+
+- Usar «amenaza», «vulnerabilidad» y «riesgo» como sinónimos.
+- Suponer que la confidencialidad siempre va primero.
+- Tratar todo incidente como un ataque; muchas interrupciones son accidentes, y la respuesta es distinta.
+- Aprender técnicas de ataque de forma operativa sin autorización (capítulo 10).
+
+EX010 muestra el primer error: llamar vulnerabilidad al corte del cable confunde la amenaza (las obras viales) con la debilidad (una única ruta de cable). El segundo hace que un controlador de dosificación de CW parezca un problema de privacidad cuando lo que protege a los clientes es la integridad. El tercero trata un cable cortado o una actualización fallida como un incidente en el que hay que buscar a un atacante, lo que retrasa la reparación. El cuarto es la razón por la que todos los laboratorios de este libro funcionan sin conexión.
+
+### Ejercicios — capítulo 5
+
+**EX009 — Ordenar las propiedades.** *Objetivo:* aplicar la tríada CIA activo por activo. *Entradas:* los historiales de pacientes del CVH; el controlador de dosificación de cloro de CW; el servicio de autorización de tarjetas de Calder Mutual; las grabaciones de llamadas del CEDC. *Pasos:* ordene C, I y A para cada uno y justifique en una frase la propiedad principal. *Evidencia esperada:* una tabla. *Rúbrica:* 3 = ordenaciones defendibles con razones basadas en el daño (dosificación: primero integridad y seguridad funcional); 2 = una débil; 1 = ordenaciones sin razones; 0 = nada.
+
+**EX010 — Vocabulario bajo presión.** *Objetivo:* usar los términos con precisión. *Entradas:* «El riesgo es que unas obras viales corten el cable, lo cual es una vulnerabilidad para el CEDC». *Pasos:* reescríbalo usando correctamente activo, amenaza, vulnerabilidad e impacto. *Evidencia esperada:* una o dos frases. *Rúbrica:* 3 = obras viales como amenaza, única ruta de cable como vulnerabilidad, disponibilidad del despacho como impacto; 2 = un término mal situado; 1 = dos mal situados; 0 = nada.
+
+### Síntesis del capítulo
+
+La cultura de seguridad es vocabulario preciso aplicado a consecuencias reales. Activos, amenazas, vulnerabilidades, probabilidad, impacto y controles son ideas distintas. En los servicios críticos, la disponibilidad, la integridad y la seguridad funcional suelen pesar más que la confidencialidad, y la prioridad correcta de un aviso depende de la exposición y de la explotación, no solo de una puntuación.
+
+<!-- cyberabc:chapter-navigation:start ch-05 -->
+### Siga estudiando — capítulo 05 de 40
+
+[← Capítulo 04](#ch-04) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 06 →](#ch-06)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-06"></a>
+
+## Capítulo 6 — Estructuras discretas
+
+### Resultados de aprendizaje y conexión
+
+Después de este capítulo usted podrá (1) usar conjuntos y operaciones de conjuntos para razonar sobre inventarios y permisos; (2) escribir condiciones lógicas y comprobarlas con tablas de verdad; (3) modelar las dependencias entre servicios como un grafo dirigido y calcular qué resulta afectado cuando falla un nodo; y (4) reconocer cuándo es factible una comprobación exhaustiva y cuándo el número de estados la hace imposible. Se apoya en la programación del capítulo 3 y prepara el capítulo 13 (acceso), el capítulo 22 (dependencias) y el capítulo 28 (análisis de fallas).
+
+### 6.1 Conjuntos y relaciones
+
+Un **conjunto** es una colección de elementos distintos. Los dispositivos de la red clínica forman un conjunto $C$; los dispositivos que han superado el fin de su soporte forman un conjunto $U$; su **intersección** $C \cap U$ es el conjunto que hay que aislar primero. La **unión** $A \cup B$ reúne los elementos que están en cualquiera de los dos; la **diferencia** $A \setminus B$ conserva los elementos que están en $A$ pero no en $B$. El control de acceso es razonamiento con conjuntos: los permisos efectivos de un usuario son la unión de los permisos de sus roles, y una regla de separación de funciones dice que ciertos pares nunca deben estar ambos en esa unión (capítulo 13). Una **relación** conecta elementos de dos conjuntos: «el usuario *u* tiene el rol *r*», «el servicio *s* depende del servicio *t*». Muchas preguntas de seguridad son preguntas sobre relaciones: quién puede llegar a qué, qué depende de qué.
+
+### 6.2 Lógica
+
+Una **proposición** es verdadera o falsa. Las proposiciones se combinan con **y** ($\wedge$), **o** ($\vee$) y **no** ($\neg$). Una regla como «un pago superior a £10.000 solo se libera si lo crea una persona y lo aprueba otra distinta, o si es una transferencia de emergencia aprobada por dos directores» es una expresión lógica; escribirla formalmente deja al descubierto sus lagunas («¿y si quien lo crea también es director?»). Una **tabla de verdad** enumera todas las combinaciones de entradas; con $n$ entradas tiene $2^n$ filas. Con 4 entradas son 16 filas, algo fácil. Con 40 entradas son unas $10^{12}$ filas, imposibles de comprobar a mano, y por eso los sistemas complejos necesitan estructura, pruebas y argumentación en lugar de enumeración exhaustiva. Las **leyes de De Morgan**, $\neg(A \wedge B) \equiv \neg A \vee \neg B$, permiten reescribir las condiciones de «no permitido» como condiciones de «permitido» y comprobar que ambas dicen lo mismo.
+
+### 6.3 Grafos
+
+Un **grafo** es un conjunto de nodos y aristas. En un **grafo dirigido**, las aristas tienen dirección; escribimos $u \to v$ para indicar que «$v$ depende de $u$». A partir de un nodo que ha fallado, una **búsqueda en anchura** visita todos los nodos alcanzables siguiendo las aristas: ese conjunto es todo lo que puede resultar afectado. El número de nodos alcanzables desde un nodo es su **alcance**; los nodos con alto alcance son candidatos a protección o respaldo adicionales. Los grafos también dejan ver los **puntos únicos de falla**: nodos cuya eliminación desconecta servicios de lo que necesitan. El artículo clásico de Rinaldi, Peerenboom y Kelly describe las infraestructuras como interdependientes exactamente en este sentido: física, cibernética, geográfica y lógicamente ([Rinaldi et al., 2001](https://doi.org/10.1109/37.969131)).
+
+### 6.4 Ejemplo resuelto y Lab 3: dependencias del condado de Calder (sintético)
+
+**Este caso es sintético.** La CRP trazó un primer mapa de dependencias: la subestación eléctrica alimenta las bombas de agua, el suministro de red del hospital, la central de telecomunicaciones y la señalización ferroviaria; la central de telecomunicaciones transporta el despacho, los pagos con tarjeta, la telemetría del agua y el archivo de imágenes en la nube del hospital.
+
+```python
+# Lab 3 - cross-sector dependency closure on a directed graph (synthetic Calder County, offline)
+from collections import deque
+# edge u -> v means "v depends on u"
+DEPENDS = {
+    "grid-substation-N": ["water-pumps", "hospital-main", "telecom-exchange", "rail-signalling"],
+    "telecom-exchange": ["dispatch-cad", "card-payments", "water-telemetry", "hospital-pacs-cloud"],
+    "water-pumps": ["hospital-water"],
+    "water-telemetry": ["water-pumps"],
+    "dispatch-cad": ["ambulance-dispatch"],
+    "hospital-main": [],
+    "card-payments": ["fuel-retail"],
+    "rail-signalling": [], "hospital-water": [], "hospital-pacs-cloud": [],
+    "ambulance-dispatch": [], "fuel-retail": [],
+}
+def affected(start):
+    seen, q = {start}, deque([start])
+    while q:
+        for v in DEPENDS.get(q.popleft(), []):
+            if v not in seen:
+                seen.add(v); q.append(v)
+    return sorted(seen - {start})
+for node in ("grid-substation-N", "telecom-exchange", "water-telemetry"):
+    a = affected(node)
+    print(f"{node}: {len(a)} affected -> {', '.join(a)}")
+fan = sorted(((len(affected(n)), n) for n in DEPENDS), reverse=True)[:3]
+print("highest reach:", fan)
+```
+
+Salida esperada:
+
+```text
+grid-substation-N: 11 affected -> ambulance-dispatch, card-payments, dispatch-cad, fuel-retail, hospital-main, hospital-pacs-cloud, hospital-water, rail-signalling, telecom-exchange, water-pumps, water-telemetry
+telecom-exchange: 8 affected -> ambulance-dispatch, card-payments, dispatch-cad, fuel-retail, hospital-pacs-cloud, hospital-water, water-pumps, water-telemetry
+water-telemetry: 2 affected -> hospital-water, water-pumps
+highest reach: [(11, 'grid-substation-N'), (8, 'telecom-exchange'), (2, 'water-telemetry')]
+```
+
+Lea el resultado con cuidado. El grafo dice *puede resultar afectado*, no *fallará*: ignora la energía de respaldo, el almacenamiento y la operación manual. Es deliberado: el primer mapa indica dónde mirar; el capítulo 22 añade el tiempo y la autonomía de respaldo. También revela una decisión de modelado: aquí las bombas de agua dependen de la telemetría solo si no pueden funcionar localmente. Cada arista es una afirmación que alguien debería poder justificar.
+
+### 6.5 Actividad práctica
+
+Añada una arista que crea que falta (por ejemplo, el agua del hospital depende de la planta de tratamiento, que depende de la subestación) y un camino alternativo (una segunda central de telecomunicaciones). Vuelva a calcular el alcance. Escriba tres frases sobre lo que el cambio muestra y lo que no muestra. Añadir «planta de tratamiento → agua del hospital» y «subestación → planta de tratamiento» aumenta aún más el alcance de la subestación, mientras que una segunda central no resta nada al recuento simple de alcanzabilidad: la búsqueda sigue marcando todos los nodos a los que puede llegar un solo camino. Esa es la limitación que EX012 le pide explicar, y es la razón para escribir de forma distinta las dependencias AND y OR.
+
+### 6.6 Errores comunes y límites
+
+- Confundir la dirección de las aristas («depende de» frente a «suministra»); escriba la convención en la parte superior de cada diagrama.
+- Tratar la alcanzabilidad como certeza de falla.
+- Construir un grafo desde la visión de una sola organización: otros operadores conocen dependencias que usted ignora.
+- Intentar enumerar espacios de estados de tamaño exponencial.
+
+En el Lab 3, la línea de convención `edge u -> v means "v depends on u"` es lo que hace legible el alcance de 11 nodos de la subestación; invertida, la misma lista afirmaría que la subestación depende de la venta minorista de combustible. Un alcance de 11 significa exposición, no falla, ya que el hospital tiene 72 horas de autonomía con sus generadores. El mapa es la primera visión de la CRP y carece de lo que saben los ingenieros de CW y de CPN. Y el argumento de la tabla de verdad escala en sentido contrario: 40 entradas binarias dan alrededor de un billón de filas.
+
+### Ejercicios — capítulo 6
+
+**EX011 — Conjuntos para la clasificación.** *Objetivo:* usar operaciones de conjuntos. *Entradas:* C = {INF-01, INF-02, IMG-01, IMG-02, ADM-02}; U = {INF-02, IMG-01, IMG-02, LAB-01, ADM-02}; K (dispositivos con un defecto con explotación conocida) = {IMG-01, ADM-02}. *Pasos:* calcule $C \cap U$, $(C \cap U) \cap K$ y $U \setminus C$; diga sobre qué conjunto actuaría primero y por qué. *Evidencia esperada:* tres conjuntos y una razón. *Rúbrica:* 3 = todo correcto y prioridad para $(C \cap U) \cap K$ = {IMG-01, ADM-02}; 2 = un error; 1 = dos errores; 0 = nada.
+
+**EX012 — Un camino alternativo.** *Objetivo:* ver cómo cambia el alcance con la redundancia. *Entradas:* el Lab 3. *Pasos:* modele que dispatch-cad también puede usar un enlace satelital independiente de la central, de modo que perder solo la central ya no detiene el despacho. Explique por qué una búsqueda simple de alcanzabilidad no puede expresarlo y proponga un cambio de modelado. *Evidencia esperada:* la explicación y la propuesta. *Rúbrica:* 3 = reconoce la dependencia OR (necesita uno cualquiera de varios proveedores) frente a la dependencia AND y propone nodos que requieren todas o alguna de sus entradas; 2 = solo reconoce el problema; 1 = edita las aristas de forma incorrecta; 0 = nada.
+
+### Síntesis del capítulo
+
+Los conjuntos describen inventarios y permisos; la lógica hace que las reglas sean exactas y comprobables; los grafos hacen visibles y calculables las dependencias. Cada modelo responde a una pregunta más estrecha de lo que parece: la alcanzabilidad muestra exposición, no falla, y la comprobación exhaustiva solo funciona mientras el espacio de estados es pequeño.
+
+<!-- cyberabc:chapter-navigation:start ch-06 -->
+### Siga estudiando — capítulo 06 de 40
+
+[← Capítulo 05](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 →](#ch-07)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-07"></a>
+
+## Capítulo 7 — Redes y protocolos
+
+### Resultados de aprendizaje y conexión
+
+Después de este capítulo usted podrá (1) explicar las capas, el direccionamiento, los puertos y la diferencia entre el cliente y el servidor de una conexión; (2) describir en qué se diferencian los supuestos de seguridad de protocolos industriales como Modbus de los de los protocolos modernos de internet; (3) expresar una política de segmentación de red como zonas, conductos y una lista de permitidos; y (4) contrastar los flujos observados con esa política e interpretar las infracciones. Se apoya en los capítulos 3 y 6 y prepara el capítulo 16 (arquitectura) y el capítulo 24 (controles).
+
+### 7.1 Capas, direcciones y puertos
+
+Las redes se construyen por capas. La capa de **enlace** mueve tramas entre dispositivos vecinos (Ethernet, Wi-Fi). La capa de **internet** mueve paquetes entre redes mediante direcciones IP. La capa de **transporte** proporciona un flujo de bytes fiable (TCP; véase [RFC 9293](https://www.rfc-editor.org/rfc/rfc9293)) o datagramas individuales (UDP), y usa **números de puerto** para identificar el servicio en un equipo. La capa de **aplicación** transporta el significado: HTTPS para la web, Modbus/TCP en el puerto 502 para el sondeo industrial, OPC UA habitualmente en el puerto 4840. En una conexión TCP, el **cliente** abre la conexión hacia el puerto de escucha del servidor; la respuesta usa la misma conexión. Quién inicia es relevante para la seguridad: un controlador de campo que de repente *abre* conexiones hacia la sala de control se comporta de forma distinta a uno que solo responde.
+
+### 7.2 Los protocolos industriales y sus supuestos
+
+Muchos protocolos industriales se diseñaron para enlaces serie cerrados entre los años setenta y noventa. Modbus, por ejemplo, define códigos de función para leer y escribir registros y bobinas, y su forma clásica no tiene autenticación: cualquier dispositivo que pueda enviar a un controlador una petición bien formada puede pedirle que escriba ([especificación de Modbus](https://www.modbus.org/file/secure/modbusprotocolspecification.pdf)). No es un error de una implementación; es el supuesto de diseño de que solo los dispositivos de confianza pueden llegar al cable. Cuando estos protocolos funcionan sobre redes IP, ese supuesto debe imponerlo la red: segmentación, listas de permitidos y supervisión. Los protocolos modernos añaden seguridad (TLS 1.3 proporciona canales autenticados y cifrados; [RFC 8446](https://www.rfc-editor.org/rfc/rfc8446)), pero actualizar miles de dispositivos de campo lleva décadas.
+
+### 7.3 Zonas, conductos y listas de permitidos
+
+Una **zona** es un grupo de activos con requisitos de seguridad similares; un **conducto** es la vía de comunicación controlada entre zonas. La serie ISA/IEC 62443 usa estos términos para los sistemas industriales ([presentación de ISA/IEC 62443](https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards)). Una empresa de servicios típica tiene una zona corporativa, una zona desmilitarizada (DMZ) en la que se intercambian datos, una zona de control (servidores SCADA, HMI de los operadores) y una zona de campo (controladores, RTU). Una política de **lista de permitidos** nombra los flujos permitidos (zona de origen, zona de destino, puerto, propósito) y deniega todo lo demás. La política es solo la mitad del control; la otra mitad es comprobar que el tráfico observado se ajusta a ella.
+
+### 7.4 Ejemplo resuelto y Lab 4: comprobación de los flujos de CW (sintético)
+
+**Este caso es sintético.** Calder Water permite tres conductos: los usuarios corporativos consultan el historiador de la DMZ por HTTPS; un recolector de la DMZ lee de la zona de control por OPC UA; el servidor SCADA sondea los controladores de campo por Modbus/TCP. Se contrasta con la política un resumen de los flujos de una hora.
+
+```python
+# Lab 4 - check observed flows against a zone-and-conduit allowlist (synthetic, offline)
+ALLOW = {  # (source zone, destination zone, destination port): purpose
+    ("corporate", "dmz", 443): "historian web view",
+    ("dmz", "control", 4840): "OPC UA read from historian replica collector",
+    ("control", "field", 502): "Modbus/TCP polling of field controllers",
+}
+ZONE = {"10.1.": "corporate", "10.5.": "dmz", "10.20.": "control", "10.30.": "field"}
+def zone(ip):
+    return next((z for p, z in ZONE.items() if ip.startswith(p)), "unknown")
+FLOWS = [  # src, dst, dport  (synthetic NetFlow-style summary)
+    ("10.1.4.22", "10.5.0.10", 443), ("10.5.0.11", "10.20.0.5", 4840),
+    ("10.20.0.5", "10.30.1.7", 502), ("10.1.4.80", "10.20.0.5", 3389),
+    ("10.20.0.9", "198.51.100.23", 443), ("10.30.1.7", "10.20.0.5", 502),
+]
+for s, d, p in FLOWS:
+    key = (zone(s), zone(d), p)
+    verdict = ALLOW.get(key)
+    print(f"{s:>13} -> {d:<14} :{p:<5} {key[0]:>9}->{key[1]:<8} {'ALLOW ' + verdict if verdict else 'VIOLATION'}")
+```
+
+Salida esperada:
+
+```text
+    10.1.4.22 -> 10.5.0.10      :443   corporate->dmz      ALLOW historian web view
+    10.5.0.11 -> 10.20.0.5      :4840        dmz->control  ALLOW OPC UA read from historian replica collector
+    10.20.0.5 -> 10.30.1.7      :502     control->field    ALLOW Modbus/TCP polling of field controllers
+    10.1.4.80 -> 10.20.0.5      :3389  corporate->control  VIOLATION
+    10.20.0.9 -> 198.51.100.23  :443     control->unknown  VIOLATION
+    10.30.1.7 -> 10.20.0.5      :502       field->control  VIOLATION
+```
+
+Tres infracciones, tres significados distintos. Una conexión de escritorio remoto (puerto 3389) desde la zona corporativa directamente a la zona de control evita la DMZ: quizá un atajo de un ingeniero, quizá un intruso. Un equipo de la zona de control que llega a una dirección de internet (198.51.100.23 es una dirección de documentación que sustituye a una real) puede ser la comprobación de actualizaciones de un fabricante o datos que salen. Un dispositivo de campo que *inicia* Modbus hacia el servidor SCADA invierte la dirección normal. Ninguna prueba un ataque; cada una necesita un responsable que la explique, y la explicación se convierte en evidencia (capítulo 15).
+
+### 7.5 Actividad práctica
+
+En un computador de su propiedad, enumere sus propias conexiones activas (por ejemplo, con `netstat` o `ss`) y clasifique cinco como cliente o servidor, local o remota, y esperada o inesperada. No escanee ningún otro sistema. Use la columna de estado de `ss` o de `netstat`: una dirección local con un puerto en escucha es un servidor; una conexión a un puerto remoto 443 es un cliente. Marque todo lo que no pueda explicar y encuentre el programa que hay detrás con las herramientas de su sistema operativo, en su propia máquina.
+
+### 7.6 Errores comunes y límites
+
+- Escribir listas de permitidos solo por puerto, ignorando las zonas de origen y destino.
+- Suponer que «interno» significa «de confianza».
+- Confundir el tráfico de respuesta con las conexiones iniciadas al leer los registros de flujos.
+- Tratar una infracción como prueba de compromiso en lugar de como una pregunta.
+
+El Lab 4 muestra por qué: una regla solo por puerto que permitiera el 502 habría dejado pasar al dispositivo de campo que inició Modbus hacia el servidor SCADA, una inversión de la dirección normal. La conexión RDP corporativa hacia el control es «interna» y aun así es una infracción. En los registros de flujos, las respuestas de los controladores de campo desde el puerto 502 hacia el servidor SCADA no son conexiones nuevas y no deben leerse como tales. Y cada una de las tres infracciones llega primero a un responsable como pregunta.
+
+### Ejercicios — capítulo 7
+
+**EX013 — Explicar las infracciones.** *Objetivo:* razonar desde los flujos hasta las hipótesis. *Entradas:* la salida del Lab 4. *Pasos:* para cada infracción, dé una explicación benigna y una maliciosa, y la evidencia que permitiría distinguirlas. *Evidencia esperada:* una tabla de tres filas. *Rúbrica:* 3 = pares plausibles y evidencia distintiva concreta (solicitudes de cambio, inicios de sesión de usuarios, titularidad del destino, configuración del dispositivo); 2 = evidencia genérica; 1 = solo explicaciones; 0 = nada.
+
+**EX014 — Flujo mínimo.** *Objetivo:* endurecer una política. *Entradas:* la tabla ALLOW. *Pasos:* proponga dos refinamientos que estrechen la política sin romper sus propósitos (por ejemplo, reglas por equipo en lugar de por zona, códigos de función de solo lectura) y diga cómo se impondría y se comprobaría cada uno. *Evidencia esperada:* dos refinamientos con su imposición y su comprobación. *Rúbrica:* 3 = ambos más estrechos, imponibles y comprobables; 2 = uno; 1 = vagos; 0 = nada.
+
+### Síntesis del capítulo
+
+Las redes llevan consigo los supuestos de sus protocolos. Los protocolos industriales clásicos confían en cualquiera que pueda alcanzarlos, por lo que los servicios críticos imponen la confianza con zonas, conductos y listas de permitidos, y después contrastan los flujos observados con la política. Una infracción es una pregunta para un responsable, no un veredicto.
+
+<!-- cyberabc:chapter-navigation:start ch-07 -->
+### Siga estudiando — capítulo 07 de 40
+
+[← Capítulo 06](#ch-06) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 08 →](#ch-08)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Programación II
+
+### Resultados de aprendizaje y conexión
+
+Después de este capítulo usted podrá (1) validar entradas no confiables con reglas explícitas y rechazar lo que no se ajuste a ellas; (2) gestionar los errores para que un programa falle de forma segura y visible; (3) escribir pruebas unitarias, incluidas pruebas de casos límite y mal formados; y (4) explicar por qué el análisis sintáctico de la entrada es una frontera de seguridad. Se apoya en los capítulos 3 y 7 y prepara el capítulo 9 (datos) y el capítulo 27 (verificación).
+
+### 8.1 La entrada es una frontera de seguridad
+
+Todo programa que lee datos del exterior (un archivo, un mensaje de red, lo que introduce un operador) hace suposiciones sobre ellos. Cuando las suposiciones son erróneas, los programas se bloquean, calculan mal o, peor aún, hacen algo que eligió un atacante. Los catálogos de debilidades del software están dominados por errores en el tratamiento de la entrada: inyección, lecturas y escrituras fuera de límites, validación incorrecta de la entrada ([CWE Top 25](https://cwe.mitre.org/top25/)). El patrón defensivo es **analizar, no adivinar**: definir con exactitud cómo es una entrada válida, convertir el texto bruto en valores tipados en un único lugar y rechazar todo lo demás con un error claro.
+
+### 8.2 Reglas de validación
+
+Para un punto de consigna enviado a una estación de bombeo, una entrada válida podría ser: un número; finito (no «NaN» ni infinito); dentro de los límites de ingeniería (0,5–4,5 m); que no cambie más de 0,5 m respecto del valor actual; procedente de una fuente autorizada. Cada regla debe ser explícita, estar probada y registrarse cuando rechaza algo. La **lista de permitidos** (aceptar solo las formas conocidas como buenas) es más sólida que la **lista de denegados** (rechazar las formas conocidas como malas), porque los atacantes encuentran formas en las que usted no pensó. En Python, `float("nan")` funciona, y tanto `nan < 0.5` como `nan > 4.5` son falsos, de modo que una comprobación de rango escrita como «rechazar si está por debajo o por encima» *acepta* NaN sin hacer ruido. La comprobación robusta es «aceptar solo si `math.isfinite(x)` y `0.5 <= x <= 4.5`».
+
+### 8.3 Errores y fallar de forma segura
+
+Cuando la validación falla, el programa debe hacer algo definido: rechazar la orden y conservar el último valor bueno, generar una alarma, registrar el motivo. No debe continuar con un valor predeterminado que resulte peligroso (un punto de consigna de cero) ni tragarse el error en silencio (`except: pass`). En contextos de control, «seguro» es una decisión del proceso (una válvula puede necesitar fallar cerrada para el cloro pero abierta para el agua de refrigeración), por lo que el programador implementa un estado de falla que ha especificado el responsable del proceso, en lugar de inventarlo.
+
+### 8.4 Pruebas
+
+Una **prueba unitaria** comprueba una función con casos conocidos. Los buenos conjuntos de pruebas incluyen valores **típicos**, **límites** (exactamente 0,5 y 4,5), valores **justo fuera** de los límites (0,49, 4,51), entradas **mal formadas** (cadena vacía, "abc", "1e309", "nan") y casos **dependientes del estado** (un valor válido que cambia demasiado rápido). El módulo `unittest` incorporado en Python o simples sentencias `assert` bastan en este nivel. Una prueba que nunca ha fallado nunca ha demostrado que funcione: ejecute cada prueba nueva una vez contra una versión estropeada a propósito.
+
+Para el validador de puntos de consigna de CW, la versión contra la que fallar es la v1: su prueba de "nan" devuelve True y su prueba de "abc" lanza una excepción, de modo que dos de las siete pruebas fallan antes de la corrección y ninguna después.
+
+### 8.5 Ejemplo resuelto: validador de puntos de consigna de CW (sintético)
+
+**Este caso es sintético.** La interfaz de operador de Calder Water envía como texto los puntos de consigna del nivel de los tanques. Versión 1 del validador:
+
+```python
+def accept_v1(text, current):
+    x = float(text)
+    if x < 0.5 or x > 4.5: return False
+    if abs(x - current) > 0.5: return False
+    return True
+```
+
+`accept_v1("nan", 3.0)` devuelve True: ambas comparaciones con NaN son falsas, y `abs(nan - 3.0) > 0.5` también es falsa. `accept_v1("abc", 3.0)` lanza una excepción que, según quién llame, puede bloquear la interfaz. Versión 2:
+
+```python
+import math
+def accept_v2(text, current):
+    try:
+        x = float(text)
+    except ValueError:
+        return False
+    return math.isfinite(x) and 0.5 <= x <= 4.5 and abs(x - current) <= 0.5
+```
+
+La versión 2 dice qué es aceptable en lugar de qué no lo es. Pruebas: `("3.2", 3.0)` → True; `("4.5", 4.2)` → True; `("4.51", 4.2)` → False; `("nan", 3.0)` → False; `("inf", 3.0)` → False; `("abc", 3.0)` → False; `("2.0", 3.0)` → False (paso demasiado grande).
+
+El bloque `try` convierte un bloqueo en un rechazo, y `math.isfinite` elimina NaN e infinito antes de cualquier comparación. Lo que la v2 todavía no hace es decir por qué rechazó: la interfaz de operador debería registrar qué regla falló.
+
+### 8.6 Actividad práctica
+
+Implemente ambas versiones y las siete pruebas anteriores. Ejecute las pruebas contra la v1 y anote cuáles fallan; después, contra la v2. Añada dos pruebas propias que crea que la v2 todavía podría resolver mal (pista: espacios en blanco, cadenas muy largas, una coma como separador decimal) y decida si el comportamiento es aceptable. Contra la v1, espere que la prueba de "nan" falle (devuelve True) y que "abc" lance una excepción en lugar de devolver False. Contra la v2 deberían pasar las siete. En sus propias pruebas, `float` de Python acepta " 3.2 " con espacios, lo que probablemente está bien; "3,2" se rechaza, lo que puede sorprender a un operador que use la coma decimal. Decida si ese rechazo debería producir un mensaje claro en lugar de una negativa silenciosa.
+
+### 8.7 Errores comunes y límites
+
+- Comprobaciones de rango que dejan pasar NaN.
+- Capturar todas las excepciones y continuar.
+- Validar solo en la interfaz de usuario y no donde se ejecuta la orden.
+- Pruebas que solo cubren valores típicos.
+- Creer que la validación hace auténtico un canal: una orden falsificada de apariencia válida sigue pasando (el capítulo 17 añade la autenticación).
+
+En CW el tercer error es el peligroso: si solo la interfaz de operador comprueba los puntos de consigna, cualquier otro cliente que pueda llegar al PLC por Modbus evita por completo la validación, como muestra el conducto de la zona de campo del Lab 4. El quinto error enlaza con el Lab 8: un punto de consigna bien formado de 2,0 m pasa la v2 tanto si lo envió un operador como si lo envió un intruso.
+
+### Ejercicios — capítulo 8
+
+**EX015 — Romper la v1.** *Objetivo:* encontrar entradas que burlen una comprobación por lista de denegados. *Entradas:* `accept_v1`. *Pasos:* encuentre tres entradas distintas para las que la v1 da un resultado inseguro o indefinido y explique cada una. *Evidencia esperada:* las entradas y las explicaciones. *Rúbrica:* 3 = NaN aceptado; texto no numérico (o una cadena vacía) que lanza una excepción no gestionada; y un tercer caso distinto, como un valor *actual* NaN, que hace que la comprobación del paso se supere para cualquier punto de consigna dentro de rango; 2 = dos; 1 = una; 0 = nada.
+
+**EX016 — Especificar el estado de falla.** *Objetivo:* conectar el código con la seguridad funcional del proceso. *Entradas:* un punto de consigna rechazado en una bomba de dosificación de cloro y en una válvula de entrada de agua bruta. *Pasos:* para cada caso, indique qué debe hacer el programa ante el rechazo, quién debe decidirlo y qué debe registrarse. *Evidencia esperada:* dos especificaciones breves. *Rúbrica:* 3 = conservar el último valor bueno más alarma, decide el responsable del proceso, campos del registro nombrados (hora, fuente, entrada bruta, regla que falló); 2 = parcial; 1 = genérico; 0 = nada.
+
+### Síntesis del capítulo
+
+El análisis de la entrada es una frontera de seguridad. Defina con precisión la entrada válida, acepte solo esa, falle hacia un estado elegido por el responsable del proceso, registre cada rechazo y pruebe los límites y los casos mal formados. La validación detecta la entrada mal formada; no demuestra que una entrada bien formada procediera de alguien autorizado.
+
+<!-- cyberabc:chapter-navigation:start ch-08 -->
+### Siga estudiando — capítulo 08 de 40
+
+[← Capítulo 07](#ch-07) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 09 →](../../en/book/MANUSCRIPT.md#ch-09)
 
 Continúe con la siguiente lección escrita.
 <!-- cyberabc:chapter-navigation:end -->
@@ -396,6 +721,22 @@ Las respuestas son resultados modelo, no las únicas aceptables. Acepte una resp
 **EX007.** Afirmación: «el sistema de pagos es seguro». Evidencia: «ninguna caída el año pasado». Garantía: «la ausencia de caídas implica la ausencia de debilidades explotables», que es falsa, porque las debilidades pueden no haberse explotado, la explotación puede no causar ninguna caída (fraude, robo de datos) o pasar inadvertida. Reescritura sostenida por la evidencia: «El sistema de pagos de Calder Mutual no tuvo ninguna caída registrada el año pasado; esto, por sí solo, no dice nada sobre su exposición a ataques, que requiere una evaluación».
 
 **EX008.** Modelo (≈ 100 palabras): «Recomendamos financiar el programa de pruebas de los generadores del hospital (opción B). Evita una pérdida esperada estimada de £9.600 al año frente a un costo de £12.000, en comparación con £4.320 frente a £18.000 de un segundo enlace para el centro de despacho, y aborda el peor caso más grave: hasta 72 horas sin energía de respaldo en el Calder Valley Hospital. Estas estimaciones suponen que las probabilidades de corte son correctas dentro de un factor de dos; la clasificación se mantiene en todo ese intervalo. Revisaríamos la elección si nueva evidencia mostrara que la única ruta de cable del enlace de despacho corre un riesgo mucho mayor, por ejemplo durante obras viales planificadas».
+
+**EX009.** Historiales de pacientes: C > I > A (la divulgación daña a los pacientes e infringe la ley; la integridad también importa para la atención). Dosificación de cloro: I/seguridad funcional > A > C (un punto de consigna erróneo envenena el agua o la desinfecta de forma insuficiente). Autorización de tarjetas: I ≈ A > C (pagos fraudulentos o no disponibles; la confidencialidad de los datos de tarjetas también está regulada: acepte una C alta si está razonada). Grabaciones de llamadas: C ≈ I > A (contenido personal sensible; integridad probatoria; la disponibilidad se necesita para la revisión, pero no en tiempo real).
+
+**EX010.** «El activo es el servicio de despacho del CEDC. Un cable cortado por obras viales es una amenaza; la única ruta de cable es una vulnerabilidad; el impacto sería la pérdida de conectividad del despacho, lo que retrasaría la respuesta a emergencias».
+
+**EX011.** $C \cap U$ = {INF-02, IMG-01, IMG-02, ADM-02}. $(C\cap U)\cap K$ = {IMG-01, ADM-02}. $U \setminus C$ = {LAB-01}. Actúe primero sobre {IMG-01, ADM-02}: sin soporte, en la red clínica y con un defecto con explotación conocida. ADM-02 es además el más barato de corregir.
+
+**EX012.** La alcanzabilidad trata cada arista como «falla si falla el proveedor» (AND sobre todos los proveedores). Con una alternativa satelital, el despacho solo falla si fallan **a la vez** la central y el enlace satelital (OR sobre los proveedores). Cambio de modelado: marque cada nodo como necesitado de **todas** sus entradas o de **una cualquiera** de ellas, y propague la falla en consecuencia (un grafo de dependencias AND/OR, como los que se usan en los árboles de fallas, capítulo 28).
+
+**EX013.** RDP corporativo→control: benigna, un atajo no documentado de un ingeniero; maliciosa, un intruso que pivota desde un PC víctima de phishing; se distinguen por las solicitudes de cambio, el usuario con sesión iniciada en 10.1.4.80, los registros de autenticación de 10.20.0.5 y si la sesión siguió a una alerta de phishing. Control→internet: benigna, la comprobación de actualizaciones del software de un fabricante; maliciosa, mando y control o exfiltración de datos; se distinguen por la titularidad del destino, el proceso que realiza la conexión, el volumen y la periodicidad. Inicio de Modbus campo→control: benigna, un dispositivo mal configurado tras un mantenimiento; maliciosa, un dispositivo de campo comprometido que sondea; se distinguen por la configuración del dispositivo frente a su línea base, los registros de mantenimiento y los códigos de función usados.
+
+**EX014.** (1) Reglas por equipo: permitir solo que el recolector 10.5.0.11 llegue solo al servidor SCADA 10.20.0.5 en el 4840, en lugar de cualquier equipo de la DMZ a cualquier equipo de control; se impone en el cortafuegos y se comprueba con los registros de flujos. (2) Restringir Modbus a los códigos de función de lectura desde el servidor SCADA, salvo para registros de escritura designados, mediante un cortafuegos que entienda los protocolos industriales; se comprueba revisando los registros de escrituras rechazadas. Otros refinamientos válidos: transferencia unidireccional para el historiador y reglas por franja horaria para el acceso de ingeniería.
+
+**EX015.** (1) `"nan"` se acepta porque toda comparación con NaN es falsa. (2) `"abc"` (o `""`) lanza `ValueError`, lo que bloquea a quien llama o lo deja en un estado indefinido. (3) Si `current` es NaN (por ejemplo, por una lectura fallida del sensor), `abs(x - current) > 0.5` es falsa para cualquier `x`, de modo que cualquier punto de consigna dentro de rango supera la comprobación del paso. `"inf"` se rechaza en la comprobación de rango, pero solo porque es mayor que 4,5, lo que es suerte, no diseño.
+
+**EX016.** Bomba de dosificación de cloro: conservar el último punto de consigna bueno, generar una alarma para el operador y no moverse hacia el máximo; el responsable del proceso (el responsable de calidad del agua) decide este comportamiento ante la falla. Válvula de entrada de agua bruta: conservar la última posición buena y generar una alarma; operaciones decide si se necesita una posición de respaldo para proteger la capacidad de tratamiento. Registro en ambos casos: marca de tiempo, fuente (usuario o estación), entrada bruta, valor analizado si lo hay, regla que falló, valor actual y acción realizada.
 
 <a id="glossary"></a>
 

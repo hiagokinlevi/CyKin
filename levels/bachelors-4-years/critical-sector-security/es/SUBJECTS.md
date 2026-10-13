@@ -13,11 +13,11 @@ Edición en español neutro, escrita a partir de la edición de referencia en in
 | 1 | [01](book/PLAN.md#ch-01) | Razonamiento matemático | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-01) | [02 · Borrador](book/MANUSCRIPT.md#ch-02) |
 | 1 | [02](book/PLAN.md#ch-02) | Sistemas informáticos | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-02) | [03 · Borrador](book/MANUSCRIPT.md#ch-03) |
 | 1 | [03](book/PLAN.md#ch-03) | Programación I | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-03) | [04 · Borrador](book/MANUSCRIPT.md#ch-04) |
-| 1 | [04](book/PLAN.md#ch-04) | Redacción académica | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-04) | [05 · Plan](book/PLAN.md#ch-05) |
-| 1 | [05](book/PLAN.md#ch-05) | Cultura de seguridad | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-05)) | [06 · Plan](book/PLAN.md#ch-06) |
-| 2 | [06](book/PLAN.md#ch-06) | Estructuras discretas | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-06)) | [07 · Plan](book/PLAN.md#ch-07) |
-| 2 | [07](book/PLAN.md#ch-07) | Redes y protocolos | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-07)) | [08 · Plan](book/PLAN.md#ch-08) |
-| 2 | [08](book/PLAN.md#ch-08) | Programación II | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-08)) | [09 · Plan](book/PLAN.md#ch-09) |
+| 1 | [04](book/PLAN.md#ch-04) | Redacción académica | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-04) | [05 · Borrador](book/MANUSCRIPT.md#ch-05) |
+| 1 | [05](book/PLAN.md#ch-05) | Cultura de seguridad | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-05) | [06 · Borrador](book/MANUSCRIPT.md#ch-06) |
+| 2 | [06](book/PLAN.md#ch-06) | Estructuras discretas | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-06) | [07 · Borrador](book/MANUSCRIPT.md#ch-07) |
+| 2 | [07](book/PLAN.md#ch-07) | Redes y protocolos | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-07) | [08 · Borrador](book/MANUSCRIPT.md#ch-08) |
+| 2 | [08](book/PLAN.md#ch-08) | Programación II | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-08) | [09 · Plan](book/PLAN.md#ch-09) |
 | 2 | [09](book/PLAN.md#ch-09) | Datos y bases de datos | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-09)) | [10 · Plan](book/PLAN.md#ch-10) |
 | 2 | [10](book/PLAN.md#ch-10) | Ética y práctica autorizada | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-10)) | [11 · Plan](book/PLAN.md#ch-11) |
 | 3 | [11](book/PLAN.md#ch-11) | Sistemas operativos | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-11)) | [12 · Plan](book/PLAN.md#ch-12) |

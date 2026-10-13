@@ -612,7 +612,7 @@ Use a coluna de estado do `ss` ou do `netstat`: um endereço local com uma porta
 - Confundir o tráfego de resposta com conexões iniciadas ao ler logs de fluxo.
 - Tratar uma violação como prova de comprometimento, e não como uma pergunta.
 
-O Laboratório 4 mostra por quê: uma regra só por porta que permitisse a 502 teria deixado passar o dispositivo de campo que iniciou Modbus para o servidor SCADA, uma inversão da direção normal. A conexão RDP corporativa para o controle é "interna" e mesmo assim é uma violação. Nos logs de fluxo, as respostas do servidor SCADA na 502 não são conexões novas e não devem ser lidas como tal. E cada uma das três violações vai primeiro para um dono como pergunta.
+O Laboratório 4 mostra por quê: uma regra só por porta que permitisse a 502 teria deixado passar o dispositivo de campo que iniciou Modbus para o servidor SCADA, uma inversão da direção normal. A conexão RDP corporativa para o controle é "interna" e mesmo assim é uma violação. Nos logs de fluxo, as respostas dos controladores de campo a partir da porta 502 para o servidor SCADA não são conexões novas e não devem ser lidas como tal. E cada uma das três violações vai primeiro para um dono como pergunta.
 
 ### Exercícios — capítulo 7
 
