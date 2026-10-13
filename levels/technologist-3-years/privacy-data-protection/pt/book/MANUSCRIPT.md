@@ -1,7 +1,7 @@
 # Privacidade e Proteção de Dados: Curso de Tecnólogo
 
 - Idioma: português do Brasil (`pt`); curso 073, curso de tecnólogo (3 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 30 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções com rubricas de 0 a 3 e 4 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 21–30 (EX061–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–25 de 30 já estão escritos em português, com os exercícios EX001–EX075 e suas resoluções com rubricas de 0 a 3 e 5 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 26–30 (EX076–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de tecnólogo que aprendem a verificar como sistemas reais tratam dados pessoais.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios inspecionam os fluxos de SDKs de um aplicativo sintético, testam a completude da exportação de um pedido de acesso, varrem arquivos sintéticos em busca de padrões de dados pessoais, conferem a retenção de imagens de CFTV e automatizam a exclusão de contas inativas, sempre sobre dados sintéticos. A análise jurídica é didática e não constitui aconselhamento jurídico; a LGPD e os atos da ANPD são citados pelo texto oficial e parafraseados. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ Regulamento (UE) 2016/679 (GDPR), artigos 5, 9, 15, 28, 30, 32, 33 e 35; Lei nº
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) |
 
-Capítulos 21–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
+Capítulos 26–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-26), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -932,11 +932,228 @@ Corrigir só o sintoma convida a recorrência.
 - **EX059 — Correção.** Que correções Aisha acrescentou? *Rubrica:* 3 = um alerta e uma reconciliação semanal;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
 - **EX060 — Princípio.** O que exige o artigo 7(3)? *Rubrica:* 3 = revogar tão facilmente quanto consentir;; 2 = correta;; 1 = nada;; 0 = nenhuma.
 
+<a id="ch-21"></a>
+
+## Capítulo 21 — Privacidade e proteção de dados: integração de serviços
+
+### Objetivos de aprendizagem
+
+Você vai (1) integrar um novo fornecedor com segurança; (2) conferir contratos e transferências; (3) limitar os dados compartilhados.
+
+### 21.1 O fornecedor
+
+A Quayside quer um novo fornecedor de reservas de aulas, que oferece uma tela de reserva melhor e uma lista de espera. Aisha revisa sua segurança, seu contrato e a localização dos dados. Envia um questionário curto sobre certificação de segurança, localização dos dados, suboperadores, retenção, notificação de incidentes e apoio aos pedidos de exclusão e de acesso. Também lê o aviso de privacidade público do fornecedor e o compara com as respostas, porque o material comercial e o contrato às vezes dizem coisas diferentes. Aqui, o aviso cita um parceiro de análise de uso que o questionário tinha omitido.
+
+### 21.2 Contrato
+
+O contrato precisa atender ao artigo 28 do GDPR. Ele deve prever o tratamento apenas sob as instruções da Quayside, a confidencialidade, a segurança, o uso de suboperadores, o apoio aos pedidos dos titulares, a exclusão ao fim do serviço e o direito de auditoria. O fornecedor guarda os dados fora da UE, então são necessárias salvaguardas de transferência, como as cláusulas contratuais-padrão; no Brasil, a transferência internacional segue os arts. 33 a 36 da LGPD. Aisha aponta esses pontos ao jurídico, que negocia o contrato final; a assinatura espera essas cláusulas, e o direito de auditoria é mantido.
+
+### 21.3 Minimização
+
+Aisha limita os dados compartilhados a nome, número de matrícula e reservas, sem dados de saúde. A integração padrão do fornecedor pede data de nascimento, gênero, endereço e zonas cardíacas para personalizar as sugestões de aulas. Aisha retira esses campos, porque as reservas funcionam sem eles, e a lista de espera funciona só com os números de matrícula. O fornecedor concorda, e a especificação da integração lista os campos exatos permitidos. Qualquer pedido para acrescentar um campo depois precisa passar pelo encarregado e atualizar o registro das operações de tratamento. Menos campos significam menos riscos a gerir.
+
+### 21.4 Testes
+
+Aisha testa a integração com alunos sintéticos, de modo que nenhum dado real fica exposto enquanto os problemas aparecem. Os testes conferem que só os campos listados saem da Quayside, que os cancelamentos e as exclusões chegam ao fornecedor e que um pedido de acesso consegue recuperar os registros do fornecedor. Um teste descobre que o fornecedor guarda as reservas canceladas indefinidamente, então o contrato ganha um limite de retenção de doze meses. Cada teste que falha vira uma cláusula. O Sr. Reilly observa que a integração é onde aparecem os fluxos de dados não planejados.
+
+### Exemplo resolvido
+
+Aisha confere o contrato e as transferências do fornecedor, limita os campos compartilhados e testa com alunos sintéticos.
+
+> **Caso sintético.** O fornecedor é sintético; o artigo 28 do GDPR e os arts. 33 a 36 da LGPD são reais.
+
+### Erros e limites
+
+Os fornecedores mudam de suboperadores; acompanhe os avisos.
+
+### Exercícios
+
+- **EX061 — Artigo do contrato.** Que artigo rege os contratos com operadores? *Rubrica:* 3 = artigo 28;; 2 = correto;; 1 = outro;; 0 = nenhuma.
+- **EX062 — Campos compartilhados.** Que dados são compartilhados? *Rubrica:* 3 = nome, número de matrícula, reservas;; 2 = a maioria;; 1 = saúde;; 0 = nenhuma.
+- **EX063 — Dados de teste.** Que dados foram usados nos testes? *Rubrica:* 3 = alunos sintéticos;; 2 = correta;; 1 = reais;; 0 = nenhuma.
+
+<a id="ch-22"></a>
+
+## Capítulo 22 — Privacidade e proteção de dados: automação
+
+### Objetivos de aprendizagem
+
+Você vai (1) automatizar a exclusão de contas inativas; (2) tratar as exceções; (3) verificar os resultados.
+
+### 22.1 A regra
+
+A Quayside exclui as contas inativas há mais de dois anos, depois de um e-mail de aviso enviado trinta dias antes. Os dois anos seguem a tabela de retenção documentada da Quayside, que equilibra os alunos que voltam depois de longas pausas com a limitação da conservação. O aviso dá ao aluno a chance de manter a conta simplesmente entrando nela. As contas com dívida em aberto ficam retidas, porque a Quayside precisa dos registros para cobrar ou quitar a dívida; essa é uma exceção documentada, com prazo de retenção próprio, e não uma decisão tomada caso a caso.
+
+### 22.2 Resultados
+
+O laboratório processa 3.000 contas: 73 e-mails de aviso neste mês, 1.116 contas a excluir e 37 retidas por dívida em aberto. O script lê uma lista sintética de 3.000 contas com a data da última atividade e a marcação de dívida, e calcula quais chegam ao ponto de aviso neste mês, quais passaram do ponto de exclusão e quais ficam retidas. Ele imprime apenas contagens, e não identidades, e grava a lista dos números de conta afetados num arquivo protegido para a equipe de operações. Nenhum nome aparece na saída do console nem nos logs.
+
+### 22.3 Exceções
+
+As contas com dívida ficam retidas, com base documentada, até a resolução. Aisha registra cada decisão. Cada conta retida é revista todo mês, e, quando a dívida é quitada ou baixada, a conta entra na exclusão na rodada seguinte. Aisha considera outras exceções possíveis, como ações judiciais, e acrescenta uma marcação de retenção manual que só o encarregado pode definir. Cada retenção registra quem a definiu, quando e por quê, e as retenções sem justificativa são removidas na revisão mensal. Na primeira rodada, todas as trinta e sete retenções têm uma referência de dívida registrada.
+
+### 22.4 Verificação
+
+Aisha examina uma amostra das contas excluídas para confirmar a remoção em todos os sistemas. Para vinte contas, ela confere o sistema de matrículas, o banco do aplicativo, a plataforma de e-mail e o fornecedor de reservas. Na primeira rodada, o fornecedor ainda guarda três contas, porque sua interface de exclusão tinha falhado; a correção acrescenta uma etapa de confirmação pelo fornecedor. A exclusão agora é verificada, e não presumida, o que apoia a responsabilização do artigo 5(2). Vinte amostras por mês bastam para detectar uma ligação quebrada com um fornecedor. O Sr. Reilly observa que a automação aplica a limitação da conservação com confiabilidade.
+
+### Laboratório — Exclusão automática de contas inativas
+
+```python
+# Automated deletion of inactive app accounts: inactive > 24 months, warn at 23 months, skip accounts with debt.
+import random
+r = random.Random(13)
+acc = [(r.randint(0, 40), r.random() < 0.03) for _ in range(3000)]  # months inactive, outstanding debt
+warn = sum(1 for m, d in acc if m == 23); dele = sum(1 for m, d in acc if m > 24 and not d); hold = sum(1 for m, d in acc if m > 24 and d)
+print(f"accounts {len(acc)}; warning emails this month {warn}; delete {dele}; held for outstanding debt {hold}")
+```
+
+Execute com `python3 lab_inactive.py`. Saída verificada:
+
+```text
+accounts 3000; warning emails this month 73; delete 1116; held for outstanding debt 37
+```
+
+### Exemplo resolvido
+
+A rotina de Aisha envia 73 avisos, exclui 1.116 contas e retém 37 com dívida, e as exclusões são verificadas por amostragem.
+
+> **Caso sintético.** As contas são sintéticas.
+
+### Erros e limites
+
+A exclusão precisa chegar, com o tempo, aos backups e aos fornecedores.
+
+### Exercícios
+
+- **EX064 — Exclusões.** Quantas contas são excluídas? *Rubrica:* 3 = 1.116;; 2 = correta;; 1 = errada;; 0 = nenhuma.
+- **EX065 — Retidas.** Por que 37 contas ficam retidas? *Rubrica:* 3 = dívida em aberto;; 2 = correta;; 1 = nada;; 0 = nenhuma.
+- **EX066 — Verificação.** Como a exclusão é verificada? *Rubrica:* 3 = por amostragem em todos os sistemas;; 2 = menciona amostragem;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-23"></a>
+
+## Capítulo 23 — Privacidade e proteção de dados: avaliação
+
+### Objetivos de aprendizagem
+
+Você vai (1) avaliar o programa de privacidade; (2) comparar os resultados com a linha de base; (3) recomendar prioridades.
+
+### 23.1 Comparação
+
+Aisha compara as métricas atuais com a linha de base: as contas esquecidas caíram de quarenta para duas, a retenção do CFTV é cumprida e a cobertura dos pedidos de acesso é completa. Ela apresenta cada métrica com a data e o método da linha de base, para que a comparação seja justa. Algumas melhorias são grandes e claras. Outras precisam de explicação, como as comunicações de incidentes, que subiram de quase nenhuma para seis por mês: mais comunicações indicam mais conscientização, e não mais incidentes. Ela evita afirmar, sem evidências, que o programa causou cada mudança, e cita a fonte de cada comparação.
+
+### 23.2 Lacunas restantes
+
+As anotações de saúde em texto livre continuam difíceis de detectar, porque o varredor não as encontra de forma confiável. O monitoramento dos fornecedores é manual e depende de alguém ler os e-mails sobre mudanças de suboperadores, o que é fácil de perder. O registro de acessos ao CFTV existe em apenas trinta unidades, porque dez gravadores antigos não têm o recurso. Aisha lista essas lacunas abertamente, para que os líderes entendam o que o programa ainda não cobre, e dá a cada uma um responsável nomeado. Nenhuma fica escondida em notas de rodapé ou anexos.
+
+### 23.3 Prioridades
+
+Aisha recomenda treinar os trainers sobre as anotações e automatizar as verificações dos fornecedores. Ensinar os trainers a guardar as anotações de saúde no campo protegido do aplicativo resolve a primeira lacuna a baixo custo, com uma tarde por região, e reduz depressa a maior exposição restante. As verificações automáticas poderiam comparar todo mês as listas de suboperadores dos fornecedores. Trocar os dez gravadores antigos exige orçamento, então ela estima o custo e a redução de risco. Ela ordena as prioridades pela redução de risco por unidade de esforço, o que ajuda os líderes a escolher.
+
+### 23.4 Relatório
+
+Aisha apresenta os resultados ao encarregado. O relatório é curto, com duas páginas no total: o que foi encontrado, o que mudou, o que falta e o que ela recomenda, com a evidência de cada afirmação. O encarregado aceita as duas primeiras prioridades e consulta o diretor financeiro sobre a troca dos gravadores. Os líderes leem o relatório inteiro. O Sr. Reilly observa que a avaliação transforma atividade em evidência, e diz a Aisha que uma avaliação equilibrada tem mais credibilidade do que uma que proclama sucesso total, porque os leitores confiam mais em quem também mostra o que não funcionou.
+
+### Exemplo resolvido
+
+Aisha mostra a melhoria em relação à linha de base, nomeia as lacunas restantes e recomenda prioridades.
+
+> **Caso sintético.** Os resultados são sintéticos.
+
+### Erros e limites
+
+As melhorias podem refletir mudanças na forma de medir.
+
+### Exercícios
+
+- **EX067 — Melhoria.** Cite uma melhoria. *Rubrica:* 3 = contas esquecidas de quarenta para duas; retenção do CFTV cumprida; cobertura completa dos pedidos de acesso;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+- **EX068 — Lacuna restante.** Cite uma lacuna restante. *Rubrica:* 3 = anotações de saúde em texto livre; monitoramento manual dos fornecedores;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+- **EX069 — Prioridade.** O que Aisha recomendou? *Rubrica:* 3 = treinamento dos trainers e verificações automáticas dos fornecedores;; 2 = uma;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-24"></a>
+
+## Capítulo 24 — Métodos de pesquisa aplicada
+
+### Objetivos de aprendizagem
+
+Você vai (1) enquadrar um pequeno estudo; (2) coletar dados de forma ética; (3) relatar os limites.
+
+### 24.1 Pergunta
+
+Aisha pergunta se os alunos entendem as configurações de compartilhamento da frequência cardíaca. Antes, os voluntários tinham se surpreendido com as telas das aulas mostrando zonas cardíacas, e ela quer saber se a página de configurações permite aos alunos controlar isso. Uma pergunta de pesquisa clara mantém o estudo pequeno e focado, a ponto de ser respondida em quatro semanas com um pequeno grupo de voluntários. Ela escreve a pergunta, o método, os participantes e a análise planejada antes de coletar os dados, para que os resultados não moldem a pergunta depois, e limita o estudo a alunos adultos.
+
+### 24.2 Método
+
+Aisha aplica um questionário curto, com consentimento e sem identificadores, e conduz cinco sessões de usabilidade. O questionário pede aos alunos que encontrem e expliquem cada configuração e registra se a explicação está correta. As sessões pedem a cinco alunos que realizem tarefas pensando em voz alta. Os participantes recebem uma folha de informações, dão consentimento e podem parar a qualquer momento. Nenhum nome é registrado, e as anotações das sessões usam números de participante que não se ligam às contas. Os arquivos brutos do questionário são excluídos depois da análise, e os termos de consentimento ficam guardados à parte.
+
+### 24.3 Resultados
+
+A maioria dos participantes do questionário encontrou a configuração de frequência cardíaca, mas menos da metade explicou corretamente que ela controlava o compartilhamento com as telas das aulas, e vários acharam que ela desligava a cinta por completo. Nas sessões, dois participantes procuraram a configuração na página de reservas de aulas. Esses resultados sugerem um problema de redação e de posição, e não alunos desinteressados pela privacidade. Menos da metade explicar a configuração corretamente é um sinal forte de que o rótulo, e não os alunos, precisa mudar, o que dá ao projeto seguinte um objetivo claro.
+
+### 24.4 Limites
+
+A amostra é pequena e autosselecionada: os participantes se ofereceram e podem se importar mais com a privacidade do que os outros alunos. O estudo aconteceu em apenas duas unidades. A amostra de usabilidade é pequena, embora amostras pequenas ainda revelem os problemas maiores. Os participantes também sabiam que estavam num estudo. Aisha relata esses limites ao lado dos resultados e recomenda um acompanhamento depois do redesenho, com as mesmas perguntas, para ver se a compreensão melhora. O Sr. Reilly observa que limites honestos tornam os resultados úteis e orientam o acompanhamento.
+
+### Exemplo resolvido
+
+Aisha estuda a compreensão das configurações com um questionário anônimo e cinco sessões e relata os limites.
+
+> **Caso sintético.** O estudo é sintético.
+
+### Erros e limites
+
+Amostras pequenas não permitem generalizar.
+
+### Exercícios
+
+- **EX070 — Pergunta.** O que o estudo perguntou? *Rubrica:* 3 = se os alunos entendem as configurações de frequência cardíaca;; 2 = correta;; 1 = nada;; 0 = nenhuma.
+- **EX071 — Ética.** Como os dados foram coletados de forma ética? *Rubrica:* 3 = com consentimento e sem identificadores;; 2 = um;; 1 = nada;; 0 = nenhuma.
+- **EX072 — Limite.** Cite um limite. *Rubrica:* 3 = amostra pequena e autosselecionada;; 2 = um;; 1 = nenhum;; 0 = nenhuma.
+
+<a id="ch-25"></a>
+
+## Capítulo 25 — Ateliê de projeto em equipe
+
+### Objetivos de aprendizagem
+
+Você vai (1) trabalhar em equipe num projeto de privacidade; (2) dividir os papéis; (3) revisar o trabalho dos colegas.
+
+### 25.1 Projeto
+
+A equipe de Aisha redesenha a página de configurações de privacidade do aplicativo. A pesquisa do capítulo anterior mostrou que os alunos entendiam mal a configuração de compartilhamento da frequência cardíaca, e o projeto transforma esse achado num redesenho. Aisha trabalha com três colegas de outras especialidades: design de interface, desenvolvimento de software e testes. A equipe combina um briefing, um cronograma de seis semanas e uma definição de sucesso baseada na compreensão: a maioria dos testadores precisa explicar a configuração corretamente, sem ajuda, medida com as mesmas perguntas do estudo anterior.
+
+### 25.2 Papéis
+
+Os papéis incluem pesquisa, design, desenvolvimento e testes. Aisha lidera a pesquisa e a revisão de privacidade, uma colega lidera o design de interface, outro constrói o protótipo e um terceiro planeja os testes. Os papéis são claros, mas não rígidos; todos participam de duas sessões com alunos. A equipe se reúne duas vezes por semana e mantém um registro compartilhado das decisões, que depois ajuda a explicar por que certas redações e disposições foram escolhidas. Quando o designer e o desenvolvedor discordam sobre onde colocar a configuração, o registro guarda a evidência dos alunos que resolveu a questão.
+
+### 25.3 Revisão
+
+Os colegas revisam o trabalho uns dos outros quanto à clareza e à exatidão, seguindo uma lista simples: a configuração é fácil de encontrar, a redação é exata, o padrão protege os alunos e o design funciona com leitores de tela? A redação de Aisha é criticada por ser longa demais, e ela a encurta. A revisão também pega um erro no protótipo: desligar o compartilhamento também parava o registro dos treinos. Esse defeito teria apagado em silêncio o histórico de treinos dos alunos, então a equipe acrescenta um teste que confere que compartilhamento e registro são configurações independentes.
+
+### 25.4 Resultado
+
+A nova página explica com clareza o compartilhamento com as telas das aulas. Ela separa esse compartilhamento da conexão da cinta e usa palavras simples: mostrar minha zona cardíaca nas telas das aulas. O compartilhamento passa a vir desligado por padrão para os novos alunos, e os atuais são consultados uma única vez, de modo que aparecer na tela exige uma escolha deliberada. Num novo teste com outros voluntários, a maioria dos participantes já explica a configuração corretamente. A equipe entrega o design à equipe do aplicativo da Quayside com as evidências da pesquisa. O Sr. Reilly observa que o trabalho em equipe traz visões variadas.
+
+### Exemplo resolvido
+
+A equipe redesenha a página de configurações com papéis claros e revisão entre colegas.
+
+> **Caso sintético.** O projeto é sintético.
+
+### Erros e limites
+
+As equipes podem deixar de lado a visão dos alunos; teste com alunos.
+
+### Exercícios
+
+- **EX073 — Projeto.** O que a equipe redesenhou? *Rubrica:* 3 = a página de configurações de privacidade;; 2 = correta;; 1 = nada;; 0 = nenhuma.
+- **EX074 — Papéis.** Cite dois papéis. *Rubrica:* 3 = pesquisa, design, desenvolvimento, testes;; 2 = dois;; 1 = um;; 0 = nenhuma.
+- **EX075 — Resultado.** O que melhorou? *Rubrica:* 3 = a explicação do compartilhamento com as telas das aulas;; 2 = correta;; 1 = nada;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX060 (as de EX061–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). Aisha Bello, o Sr. Tom Reilly, o Lindon Technical Institute, a Quayside Fitness e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX075 (as de EX076–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). Aisha Bello, o Sr. Tom Reilly, o Lindon Technical Institute, a Quayside Fitness e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Sistema de matrículas, aplicativo, vestíveis e CFTV (também a catraca e as reservas das unidades).
 
@@ -1057,6 +1274,36 @@ Respostas-modelo para EX001–EX060 (as de EX061–EX090 estão na edição em i
 **EX059.** Um alerta de falha e uma reconciliação semanal.
 
 **EX060.** Revogar o consentimento deve ser tão fácil quanto dá-lo.
+
+**EX061.** Artigo 28.
+
+**EX062.** Nome, número de matrícula e reservas.
+
+**EX063.** Alunos sintéticos.
+
+**EX064.** 1.116.
+
+**EX065.** Têm dívida em aberto.
+
+**EX066.** Por amostragem das contas excluídas em todos os sistemas.
+
+**EX067.** As contas esquecidas caíram de quarenta para duas.
+
+**EX068.** As anotações de saúde em texto livre.
+
+**EX069.** Treinar os trainers sobre as anotações.
+
+**EX070.** Se os alunos entendem as configurações de compartilhamento da frequência cardíaca.
+
+**EX071.** Com consentimento e sem identificadores.
+
+**EX072.** Amostra pequena.
+
+**EX073.** A página de configurações de privacidade.
+
+**EX074.** Pesquisa e design.
+
+**EX075.** O compartilhamento com as telas das aulas passou a ser explicado com clareza.
 
 <a id="references"></a>
 ## Referências
