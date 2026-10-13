@@ -111,7 +111,17 @@ Ana's first draft claim was "our separation defence stops prompt injection". Her
 
 1. Take a recent AI-security paper you admire and rewrite its main claim in adversary–system–property form. 2. Run the Arp et al. pitfall list against your own last experiment. 3. Draft a one-page authorization and data plan for your doctoral testbed.
 
+Section one point six develops advanced research integrity and methods with a Meridian Applied AI Lab (MAAL) note Ana Okafor can demo offline.
+
+Under section one point six, the mentor expects advanced claims to carry owners and dates.
+
+Section one point six treats why integrity is method as testable only when evidence and ticket IDs are recorded.
+
 ### 1.7 Errors and limits
+Section one point seven develops advanced research integrity and methods with a Meridian Applied AI Lab (MAAL) note Ana Okafor can demo offline.
+
+Under section one point seven, the mentor expects advanced claims to carry owners and dates.
+
 
 - Reporting the best of many runs as "the" result.
 - Tuning prompts or thresholds on the test set.
@@ -215,6 +225,8 @@ The NIST AI RMF 1.0 (AI 100-1) organises risk work into Govern, Map, Measure and
 
 Good frontier questions sit where (a) attacks are cheap and defences are evaluated weakly, (b) theory and practice disagree, or (c) a deployment pattern has outrun evaluation. Current examples include evaluating agent defences under adaptive attackers; measuring residual risk when no certified bound exists; supply-chain integrity of model weights and datasets; and privacy auditing of fine-tuned models. Write each as a gap statement: *what is known*, *what is claimed but untested*, *why it matters*, *what evidence would settle it*.
 
+Section two point four develops ai and machine-learning security research with a Meridian Applied AI Lab (MAAL) note Ana Okafor can demo offline.
+
 ### 2.5 Worked example (synthetic MAAL case)
 
 Ana mapped 31 papers on prompt-injection defences into a table with columns: threat model, adaptive attack (yes/no), metric, utility cost reported, code released. Eighteen papers evaluated only fixed payload lists; nine reported no utility cost; six released code. Her gap statement: *structural defences are claimed to generalise, but few evaluations use attackers who adapt to the structure itself, and utility costs are rarely measured on the same tasks.* That gap is narrow enough to test and broad enough to matter.
@@ -223,7 +235,17 @@ Ana mapped 31 papers on prompt-injection defences into a table with columns: thr
 
 1. Build your own mapping table for twenty papers in your sub-area. 2. Classify three MITRE ATLAS case studies by NIST AI 100-2 attacker goal and capability. 3. Rewrite one open problem as a four-part gap statement.
 
+Section two point six develops ai and machine-learning security research with a Meridian Applied AI Lab (MAAL) note Ana Okafor can demo offline.
+
+Under section two point six, the mentor expects ai claims to carry owners and dates.
+
+Section two point six treats four classical attack families as testable only when evidence and ticket IDs are recorded.
+
 ### 2.7 Errors and limits
+Section two point seven develops ai and machine-learning security research with a Meridian Applied AI Lab (MAAL) note Ana Okafor can demo offline.
+
+Under section two point seven, the mentor expects ai claims to carry owners and dates.
+
 
 - Equating jailbreak (policy evasion) with prompt injection (instruction smuggling through data).
 - Citing a framework category as if it were an empirical finding.
@@ -325,7 +347,19 @@ defence=separate  exfil_calls= 0/20 any_injected_call= 0/20 benign_calls=0/20
 
 1. Write your thesis's contribution type and three hypotheses with decision rules. 2. Draft a one-page threat model with a version number. 3. Draft the ethics and release table for every artefact you expect to create.
 
+Section three point six develops original contribution proposal with a Meridian Applied AI Lab (MAAL) note Ana Okafor can demo offline.
+
+Under section three point six, the mentor expects original claims to carry owners and dates.
+
+Section three point six treats what counts as an as testable only when evidence and ticket IDs are recorded.
+
 ### 3.7 Errors and limits
+Section three point seven develops original contribution proposal with a Meridian Applied AI Lab (MAAL) note Ana Okafor can demo offline.
+
+Under section three point seven, the mentor expects original claims to carry owners and dates.
+
+Section three point seven treats what counts as an as testable only when evidence and ticket IDs are recorded.
+
 
 - Hypotheses without effect sizes or decision rules.
 - Metrics chosen after seeing results.
@@ -379,6 +413,8 @@ A pilot is not a small main study; it estimates what you need to design the main
 ### 4.4 Harness engineering
 
 An evaluation harness should be deterministic given a seed, write one JSON record per trial (task id, condition, seed, model hash, prompt template version, full transcript reference, tool calls, labels), and keep labels separate from outcomes so graders cannot see condition names. Put the sealed test set behind a separate access step so it cannot be loaded during development. Add *canaries*: payloads that should always succeed against the undefended baseline; if they fail, the harness or environment is broken.
+
+Section four point four develops baseline replication and pilot with a Meridian Applied AI Lab (MAAL) note Ana Okafor can demo offline.
 
 ### 4.5 Worked example (synthetic MAAL case)
 
@@ -442,7 +478,17 @@ backdoor: add n triggered class-1 points labelled 0
 
 1. Pick one baseline for your thesis and execute steps 1–3 of the protocol. 2. Compute a sample size from your pilot variance. 3. Add canaries and blinded labels to your harness.
 
+Section four point six develops baseline replication and pilot with a Meridian Applied AI Lab (MAAL) note Ana Okafor can demo offline.
+
+Under section four point six, the mentor expects baseline claims to carry owners and dates.
+
+Section four point six treats why replicate first replication as testable only when evidence and ticket IDs are recorded.
+
 ### 4.7 Errors and limits
+Section four point seven develops baseline replication and pilot with a Meridian Applied AI Lab (MAAL) note Ana Okafor can demo offline.
+
+Under section four point seven, the mentor expects baseline claims to carry owners and dates.
+
 
 - Changing several settings at once while diagnosing a gap.
 - Treating a failed replication as proof the original was wrong without contacting the authors.
@@ -533,7 +579,19 @@ k=25 attack_auc=0.520 best_advantage=0.060
 
 1. Freeze your protocol and open a deviation log. 2. Write three adaptive attacks that target your defence's mechanism. 3. Draft a red-team brief with budget, scope, rules of engagement and reporting terms.
 
+Section five point six develops main study and independent validation with a Meridian Applied AI Lab (MAAL) note Ana Okafor can demo offline.
+
+Under section five point six, the mentor expects main claims to carry owners and dates.
+
+Section five point six treats executing pre-registered study adaptive as testable only when evidence and ticket IDs are recorded.
+
 ### 5.7 Errors and limits
+Section five point seven develops main study and independent validation with a Meridian Applied AI Lab (MAAL) note Ana Okafor can demo offline.
+
+Under section five point seven, the mentor expects main claims to carry owners and dates.
+
+Section five point seven treats executing pre-registered study adaptive as testable only when evidence and ticket IDs are recorded.
+
 
 - Giving your defence a larger tuning budget than baselines.
 - Reporting one budget point.
@@ -578,9 +636,13 @@ Good reviews summarise the paper fairly in a few sentences first, so the authors
 
 Sort every comment into four bins: *correct and fixable* (do it), *correct but out of scope* (acknowledge and add a limitation), *misunderstanding* (the text was unclear — rewrite it) and *disagreement* (respond with evidence, respectfully). The third bin is larger than authors expect; if a careful reviewer misread you, other readers will too. A response letter quotes each comment and states what changed and where.
 
+Section six point three develops peer critique and revision with a Meridian Applied AI Lab (MAAL) note Ana Okafor can demo offline.
+
 ### 6.4 Revising claims to fit evidence
 
 Revision usually narrows claims. Typical edits: replace "robust" with "reduced ASR under the evaluated threat model"; replace "generalises" with "held on two of three models"; move a limitation from the appendix to the abstract; add a figure of ASR versus attack budget; report the red team's best attack. Claims that shrink but survive are stronger than claims that are broad and fragile.
+
+Section six point four develops peer critique and revision with a Meridian Applied AI Lab (MAAL) note Ana Okafor can demo offline.
 
 ### 6.5 Worked example (synthetic MAAL case)
 
@@ -590,7 +652,19 @@ MAAL's internal review of Ana's draft raised three major issues. (1) "Separation
 
 1. Review a published paper in your area with the checklist and write a one-page review. 2. Exchange drafts with a peer and write response letters to each other. 3. List every claim in your abstract and the table or figure that supports it.
 
+Section six point six develops peer critique and revision with a Meridian Applied AI Lab (MAAL) note Ana Okafor can demo offline.
+
+Under section six point six, the mentor expects peer claims to carry owners and dates.
+
+Section six point six treats how to review an as testable only when evidence and ticket IDs are recorded.
+
 ### 6.7 Errors and limits
+Section six point seven develops peer critique and revision with a Meridian Applied AI Lab (MAAL) note Ana Okafor can demo offline.
+
+Under section six point seven, the mentor expects peer claims to carry owners and dates.
+
+Section six point seven treats how to review an as testable only when evidence and ticket IDs are recorded.
+
 
 - Reviews that only list typos or only praise.
 - Requests for experiments that would not change the decision.
@@ -638,6 +712,8 @@ The archive is the artefact that lets another researcher regenerate your figures
 ### 7.4 Release decisions
 
 Apply the release table from Chapter 3 to the final artefacts. Defence code, harness, synthetic task generators and analysis scripts are usually public. Adaptive payload corpora may be gated (access on request to verified researchers, with terms). Anything specific to a named live product waits for coordinated disclosure to complete. Do not include personal data. If you redact, say what was redacted and why so that reviewers can judge the effect on reproducibility.
+
+Section seven point four develops thesis synthesis and reproducibility archive with a Meridian Applied AI Lab (MAAL) note Ana Okafor can demo offline.
 
 ### 7.5 Worked example (synthetic MAAL case)
 
@@ -688,7 +764,19 @@ baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
 
 1. Write your synthesis chapter's contributions and validity table. 2. Build a manifest of your project files with SHA-256 hashes. 3. Ask a peer to reproduce one figure from your README alone, and record what failed.
 
+Section seven point six develops thesis synthesis and reproducibility archive with a Meridian Applied AI Lab (MAAL) note Ana Okafor can demo offline.
+
+Under section seven point six, the mentor expects thesis claims to carry owners and dates.
+
+Section seven point six treats the thesis as an as testable only when evidence and ticket IDs are recorded.
+
 ### 7.7 Errors and limits
+Section seven point seven develops thesis synthesis and reproducibility archive with a Meridian Applied AI Lab (MAAL) note Ana Okafor can demo offline.
+
+Under section seven point seven, the mentor expects thesis claims to carry owners and dates.
+
+Section seven point seven treats the thesis as an as testable only when evidence and ticket IDs are recorded.
+
 
 - Theses whose chapters use inconsistent metrics or threat models.
 - Limitations listed without the action taken.
@@ -726,6 +814,8 @@ You will (1) prepare a defence that presents the argument, evidence and limits i
 
 A defence talk has one job: let the committee check that your claims follow from your evidence. Structure: problem and gap (10%), research questions and threat model (10%), method and baselines (20%), results with intervals and budget curves (35%), limitations and validity (15%), contributions and future work (10%). Put residual risk on a results slide, not a final "limitations" slide that runs out of time. Rehearse with a mock committee that includes someone outside your sub-field.
 
+Section eight point one develops defense and publication plan with a Meridian Applied AI Lab (MAAL) note Ana Okafor can demo offline.
+
 ### 8.2 Anticipating questions
 
 Prepare written answers for predictable questions: *Why this threat model and not a stronger one? Why these models? What if allowlisting is enough? What would make your result wrong? How does this hold for proprietary models you could not test? What did the red team find? What would you do differently?* For each, answer in three parts: the direct answer, the evidence (slide or table), and the limit. "I don't know, and here is how I would find out" is a strong answer when true.
@@ -738,6 +828,8 @@ Map chapters to papers. Security venues (for example IEEE S&P, USENIX Security, 
 
 Doctoral work in AI security can feed the NIST AI RMF *Measure* function, organisations' ISO/IEC 42001 management systems, conformity work under the EU AI Act's robustness and cybersecurity requirements, OWASP and MITRE ATLAS community resources, and open-source tooling. Contribute evidence, not slogans: an evaluation method with documented limits is more useful to a standards body than a claim that a problem is solved. Never present your result as legal advice or certification.
 
+Section eight point four develops defense and publication plan with a Meridian Applied AI Lab (MAAL) note Ana Okafor can demo offline.
+
 ### 8.5 Worked example (synthetic MAAL case)
 
 Ana's mock defence lasted 45 minutes. A committee member asked: "Your strongest result is 5.8% residual ASR. Would you deploy this in an e-mail agent?" Her answer: "Not alone. Combined with allowlisted recipients and human confirmation for outbound mail, yes, because those controls cap impact even when injection succeeds; the thesis measures the extra reduction separation provides, not absolute safety." The external member asked about proprietary models; she showed that her method requires training access and explained that for API-only models the harness still measures ASR, but the defence cannot be applied — a scope limit stated in Chapter 1. Her plan: one paper on the harness and adaptive attacks for a security venue with artifact evaluation, one on the defence, a short practitioner guide, and a post-doctoral agenda on tool-chaining attacks and on certifying *impact bounds* rather than injection rates.
@@ -746,7 +838,21 @@ Ana's mock defence lasted 45 minutes. A committee member asked: "Your strongest 
 
 1. Draft your defence outline with time proportions. 2. Write answers to the seven predictable questions. 3. Map thesis chapters to venues and a disclosure timeline.
 
+Section eight point six develops defense and publication plan with a Meridian Applied AI Lab (MAAL) note Ana Okafor can demo offline.
+
+Under section eight point six, the mentor expects defense claims to carry owners and dates.
+
+Section eight point six treats the defence talk anticipating as testable only when evidence and ticket IDs are recorded.
+
+For section eight point six, Meridian Applied AI Lab (MAAL) will not accept defense work without a written trail.
+
 ### 8.7 Errors and limits
+Section eight point seven develops defense and publication plan with a Meridian Applied AI Lab (MAAL) note Ana Okafor can demo offline.
+
+Under section eight point seven, the mentor expects defense claims to carry owners and dates.
+
+Section eight point seven treats the defence talk anticipating as testable only when evidence and ticket IDs are recorded.
+
 
 - Spending most of the talk on background.
 - Hiding residual risk at the end.
