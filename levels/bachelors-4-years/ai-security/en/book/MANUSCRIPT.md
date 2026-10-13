@@ -1443,7 +1443,7 @@ The classification showed that each system had both privacy and integrity risks,
 - Expecting one control to fix inherent vulnerabilities.
 - Mixing up safety and security terms.
 
-Focusing on jailbreaks would have missed DocSort's poisoning risk entirely, since nobody chats with DocSort. No single control covers evasion, poisoning and injection, so LCH needs several layers. Using "safety" where "security" is meant leaves it unclear whether an attacker is assumed, which changes the tests that should be run and who is responsible for fixing the problem.
+Focusing on jailbreaks would have missed DocSort's poisoning risk entirely, since nobody chats with DocSort. No single control covers evasion, poisoning and injection, so LCH needs several layers. Using "safety" where "security" is meant leaves it unclear whether an attacker is assumed, which changes the tests that should be run and who is responsible for fixing the problem. Rina's reports keep the terms apart, so a false clinic closure caused by a partner document is filed as an attack and the patients' missed care as a safety outcome.
 
 ### Exercises
 

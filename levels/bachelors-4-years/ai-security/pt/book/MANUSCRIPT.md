@@ -1175,7 +1175,7 @@ Rina classificou os riscos da LCH: Ask Lumen — injeção indireta de prompt po
 
 ### 19.6 Erros e limites
 
-Três erros são comuns: tratar a segurança de IA apenas como jailbreaks de chatbots; esperar que um único controle corrija vulnerabilidades inerentes; e misturar os termos safety e segurança. Concentrar-se em jailbreaks teria deixado de lado por completo o risco de envenenamento do DocSort, já que ninguém conversa com o DocSort. Nenhum controle isolado cobre evasão, envenenamento e injeção, então a LCH precisa de várias camadas. Usar "safety" quando se quer dizer "segurança" deixa incerto se um atacante é suposto, o que muda os testes que devem ser feitos e quem é responsável por corrigir o problema.
+Três erros são comuns: tratar a segurança de IA apenas como jailbreaks de chatbots; esperar que um único controle corrija vulnerabilidades inerentes; e misturar os termos safety e segurança. Concentrar-se em jailbreaks teria deixado de lado por completo o risco de envenenamento do DocSort, já que ninguém conversa com o DocSort. Nenhum controle isolado cobre evasão, envenenamento e injeção, então a LCH precisa de várias camadas. Usar "safety" quando se quer dizer "segurança" deixa incerto se um atacante é suposto, o que muda os testes que devem ser feitos e quem é responsável por corrigir o problema. Os relatórios de Rina mantêm os termos separados, de modo que um falso fechamento de clínica causado por um documento de parceiro é registrado como ataque, e o atendimento perdido pelos pacientes, como resultado de safety.
 
 ### Exercícios
 
