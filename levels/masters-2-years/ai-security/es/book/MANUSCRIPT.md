@@ -27,9 +27,9 @@ Las fuentes se comprobaron el 12 de octubre de 2026: NIST [AI 100-1](https://doi
 |---|---|
 | 1 | [1 Pregunta de investigación y método de revisión de la literatura](#ch-01) |
 | 1 | [2 Seguridad de la IA y del aprendizaje automático: seminario avanzado](#ch-02) |
-| 2 | [3 Diseño del estudio, ética y reproducibilidad](../../en/book/MANUSCRIPT.md#ch-03) |
-| 2 | [4 Seguridad de la IA y del aprendizaje automático: explicaciones alternativas](../../en/book/MANUSCRIPT.md#ch-04) |
-| 3 | [5 Propuesta y piloto](../../en/book/MANUSCRIPT.md#ch-05) |
+| 2 | [3 Diseño del estudio, ética y reproducibilidad](#ch-03) |
+| 2 | [4 Seguridad de la IA y del aprendizaje automático: explicaciones alternativas](#ch-04) |
+| 3 | [5 Propuesta y piloto](#ch-05) |
 | 3 | [6 Recogida y análisis de datos](../../en/book/MANUSCRIPT.md#ch-06) |
 | 4 | [7 Redacción del trabajo de fin de máster y limitaciones](../../en/book/MANUSCRIPT.md#ch-07) |
 | 4 | [8 Revisión independiente y defensa](../../en/book/MANUSCRIPT.md#ch-08) |
@@ -267,7 +267,320 @@ El seminario aporta soltura en las clases de ataque y en la lectura crítica. Ca
 
 ### Siga estudiando — capítulo 02 de 08
 
-[← Capítulo 01 (borrador)](#ch-01) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 03 (borrador) →](../../en/book/MANUSCRIPT.md#ch-03)
+[← Capítulo 01 (borrador)](#ch-01) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 03 (borrador) →](#ch-03)
+
+<a id="ch-03"></a>
+
+## Capítulo 3 — Diseño del estudio, ética y reproducibilidad
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) elegir un diseño (experimento controlado, estudio observacional, estudio de caso) que se ajuste a la pregunta; (2) definir las variables, los controles, la aleatorización y el tamaño muestral; (3) planificar el tratamiento de los datos y la ética para datos personales o sensibles; (4) hacer el estudio reproducible desde el principio; y (5) documentar el plan para que un supervisor pueda aprobarlo.
+
+### 3.1 Elegir un diseño
+
+La mayoría de los proyectos de maestría en seguridad de la IA son **experimentos controlados**: se cambia un factor (deduplicación activada o desactivada), se mantienen fijos los demás y se miden los resultados. Los estudios **observacionales** analizan datos existentes sin intervenir (por ejemplo, los registros de intentos de inyección de instrucciones contra un asistente desplegado) y deben preocuparse por los factores de confusión. Los **estudios de caso** examinan un sistema en profundidad y son útiles cuando los experimentos son imposibles, pero sustentan una generalización más débil. Elija el diseño más sólido que pueda llevar a cabo de forma ética y dentro del plazo. La pregunta de Leo compara condiciones que él puede controlar, así que encaja un experimento controlado.
+
+### 3.2 Variables y controles
+
+En el caso de Leo, la *variable independiente* es el tratamiento del conjunto de entrenamiento (original, con duplicados exactos eliminados, con casi duplicados eliminados). Las *variables dependientes* son la TPR de la inferencia de pertenencia con una FPR del 1 %, el AUC y el F1 macro del clasificador. Las *variables controladas* incluyen la arquitectura del modelo, las épocas, la tasa de aprendizaje, las semillas aleatorias y la partición de evaluación. Aleatorice qué registros van al entrenamiento y cuáles a los conjuntos reservados, para que los miembros y los no miembros procedan de la misma distribución; de lo contrario, un ataque puede detectar un cambio de distribución en lugar de la pertenencia, un error conocido. Use varias semillas e informe de la variabilidad. Estime el tamaño muestral a partir de un piloto (capítulo 5).
+
+### 3.3 Ética y protección de datos
+
+Cuando los datos se refieren a personas, aplique los principios de protección de datos: base jurídica, limitación de la finalidad, minimización, limitación del plazo de conservación y seguridad. El RGPD se aplica en la UE; otras jurisdicciones tienen leyes similares. *Nota para el lector hispanohablante:* en España, el RGPD se complementa con la Ley Orgánica 3/2018, de Protección de Datos Personales y garantía de los derechos digitales; en América Latina rige la ley de cada país, por ejemplo la Ley 25.326 en Argentina o la Ley 1581 de 2012 en Colombia. Prefiera datos sintéticos que conserven las propiedades que necesita; si los datos reales son imprescindibles, obtenga la aprobación del comité de ética de su institución y del responsable del tratamiento, seudonimice, restrinja el acceso y fije fechas de supresión. Los ataques contra la privacidad sobre datos reales crean precisamente el daño que usted estudia; ejecútelos solo sobre copias amparadas por un acuerdo y nunca publique los registros recuperados. Si su proyecto implica a personas (anotadores, participantes en encuestas), necesita su consentimiento informado.
+
+### 3.4 Reproducible desde el diseño
+
+Prepare desde el primer día: un repositorio con control de versiones; un entorno fijado; archivos de configuración en lugar de parámetros escritos en el código; semillas fijas; una sola orden para ejecutar cada experimento; registros escritos como datos legibles por máquina; y una ficha de datos que describa la procedencia y el procesamiento (Gebru et al., arXiv:1803.09010). El programa de reproducibilidad de NeurIPS (Pineau et al., arXiv:2003.12206) ofrece una lista de comprobación que merece la pena adoptar. Incorporar la reproducibilidad desde el principio es mucho más barato que añadirla después. El diseño de Leo enumera desde el principio el repositorio, un archivo de bloqueo y una interfaz `run.py --config`, lo que simplificó sus reejecuciones posteriores.
+
+### 3.5 Ejemplo resuelto (caso sintético de Harbourline)
+
+El documento de diseño de Leo especifica un experimento controlado con tres condiciones × cinco semillas. Datos: 20.000 notas de siniestros sintéticas generadas a partir de plantillas con duplicación controlada (un 8 % de duplicados exactos y un 6 % de casi duplicados), de modo que se conoce la verdad de referencia sobre la duplicación. Los miembros y los no miembros se extraen mediante una partición aleatoria del mismo conjunto. La sección de ética recoge que no se usa ningún dato real de reclamantes, que el delegado de protección de datos de Harbourline revisó el plan y que se publicará el generador sintético. La sección de reproducibilidad enumera el repositorio, el archivo de bloqueo del entorno y una interfaz `run.py --config`.
+
+El laboratorio de estadística muestra por qué se planifican cinco semillas: los resultados por semilla varían aunque no cambie nada más que la semilla.
+
+```python
+"""Lab S: reporting attack-success rates honestly: Wilson intervals,
+seed variation and a paired bootstrap. Synthetic trial outcomes only."""
+import math, random
+def wilson(k, n, z=1.96):
+    p = k/n; d = 1 + z*z/n
+    c = (p + z*z/(2*n))/d; h = z*math.sqrt(p*(1-p)/n + z*z/(4*n*n))/d
+    return c - h, c + h
+for k, n in ((3, 20), (30, 200), (300, 2000)):
+    lo, hi = wilson(k, n); print(f"successes={k}/{n} rate={k/n:.3f} wilson95=[{lo:.3f}, {hi:.3f}]")
+# five seeds of a synthetic defence evaluation: per-seed attack success rate
+rates = []
+for seed in range(5):
+    r = random.Random(seed); rates.append(sum(r.random() < 0.12 for _ in range(200))/200)
+m = sum(rates)/5; sd = math.sqrt(sum((x-m)**2 for x in rates)/4)
+print("per-seed rates:", " ".join(f"{x:.3f}" for x in rates), f"mean={m:.3f} sd={sd:.3f}")
+# paired bootstrap: baseline vs defence on the same 300 synthetic prompts
+r = random.Random(42)
+base = [r.random() < 0.30 for _ in range(300)]
+defn = [b and r.random() < 0.6 for b in base]   # defence blocks ~40% of successes
+diffs = []
+for _ in range(2000):
+    idx = [r.randrange(300) for _ in range(300)]
+    diffs.append(sum(base[i] for i in idx)/300 - sum(defn[i] for i in idx)/300)
+diffs.sort()
+print(f"baseline_asr={sum(base)/300:.3f} defended_asr={sum(defn)/300:.3f} "
+      f"reduction_ci95=[{diffs[50]:.3f}, {diffs[1949]:.3f}]")
+```
+
+Salida esperada:
+
+```text
+successes=3/20 rate=0.150 wilson95=[0.052, 0.360]
+successes=30/200 rate=0.150 wilson95=[0.107, 0.206]
+successes=300/2000 rate=0.150 wilson95=[0.135, 0.166]
+per-seed rates: 0.110 0.130 0.135 0.105 0.145 mean=0.125 sd=0.017
+baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
+```
+
+### 3.6 Actividades de práctica
+
+1. Redacte su diseño con las variables, los controles y la aleatorización. 2. Redacte un borrador de la sección de ética y protección de datos. 3. Cree el esqueleto del repositorio con archivos de configuración y una política de semillas. Use el diseño de Leo como modelo: nombre las variables independientes, dependientes y controladas, e indique cómo se extraen los miembros y los no miembros del mismo conjunto. En el texto de ética, indique qué datos se usan, quién revisó el plan y qué se publicará. En el repositorio, incluya archivos de configuración, un archivo de bloqueo, una política de semillas y una sola orden por experimento. Pida a su supervisor que revise los tres.
+
+### 3.7 Errores y límites
+
+Cuatro errores se repiten, y cada uno socava el resultado; revise su diseño en busca de los cuatro:
+
+- Miembros y no miembros extraídos de distribuciones diferentes; esto permite que el ataque detecte el cambio de distribución en lugar de la pertenencia.
+- Una semilla por condición; una sola semilla no puede mostrar la variabilidad, que el Lab S hace visible.
+- Usar datos personales reales cuando bastarían datos sintéticos; los datos personales reales crean el daño que se estudia cuando servirían datos sintéticos, como sirven las notas sintéticas de Leo.
+- Rutas y parámetros escritos en el código que hacen imposibles las reejecuciones; hacen que las reejecuciones fallen para cualquier otra persona, incluidos los examinadores.
+
+### Ejercicios — capítulo 3
+
+- **EX015 — Elección del diseño.** Para «¿reciben los asistentes desplegados intentos de inyección, y de qué tipos?», elija un diseño y justifíquelo. Rúbrica: 3 = estudio observacional de registros autorizados con notas sobre factores de confusión/consentimiento; 2 = solo el diseño; 1 = mal ajuste; 0 = nada.
+- **EX016 — Variables.** Enumere las variables independiente y dependientes y tres variables controladas para un experimento sobre una defensa contra la evasión. Rúbrica: 3 = todas correctas; 2 = laguna menor; 1 = laguna importante; 0 = nada.
+- **EX017 — Error de distribución.** Explique por qué los miembros y los no miembros deben proceder de la misma distribución. Rúbrica: 3 = de lo contrario el ataque detecta el cambio de distribución, lo que infla los resultados; 2 = parcial; 1 = vago; 0 = incorrecto.
+- **EX018 — Protección de datos.** Nombre cuatro principios de protección de datos que se aplican a un estudio de ataques contra la privacidad. Rúbrica: 3 = cuatro correctos; 2 = tres; 1 = uno o dos; 0 = ninguno.
+- **EX019 — Lectura del laboratorio.** En el laboratorio de estadística, ¿cuál es el intervalo de las tasas por semilla y cuál es la media? Rúbrica: 3 = 0.105–0.145, media 0.125, sd 0.017; 2 = dos de tres; 1 = uno; 0 = incorrecto.
+- **EX020 — Preparación para la reproducibilidad.** Enumere cinco cosas que hay que preparar antes del primer experimento. Rúbrica: 3 = cinco entre repositorio, entorno fijado, configuraciones, semillas, orden única, registros, ficha de datos; 2 = cuatro; 1 = dos; 0 = ninguna.
+
+### Síntesis del capítulo
+
+El diseño determina lo que se puede concluir. Las variables controladas, el muestreo emparejado de miembros y no miembros, las múltiples semillas, el tratamiento ético de los datos y la reproducibilidad incorporada desde el principio son lo que permite que un proyecto breve produzca una respuesta creíble.
+
+### Siga estudiando — capítulo 03 de 08
+
+[← Capítulo 02 (borrador)](#ch-02) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 04 (borrador) →](#ch-04)
+
+<a id="ch-04"></a>
+
+## Capítulo 4 — Seguridad de la IA y del aprendizaje automático: explicaciones alternativas
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) enumerar explicaciones alternativas para un efecto de seguridad observado; (2) diseñar ablaciones y controles que las separen; (3) reconocer los factores de confusión típicos de los experimentos de seguridad de la IA (sobreajuste, fuga de datos, cambio de distribución, artefactos de evaluación, ataques débiles); (4) usar los laboratorios de envenenamiento y de evasión para razonar sobre los mecanismos; y (5) formular las conclusiones al nivel que respalda la evidencia.
+
+### 4.1 Por qué importan las explicaciones alternativas
+
+Un efecto observado («la deduplicación redujo la ventaja de la inferencia de pertenencia») puede tener varias causas. La deduplicación podría reducir específicamente la memorización de los registros repetidos; podría simplemente reducir el tamaño efectivo del conjunto de entrenamiento y, por tanto, cambiar el sobreajuste; podría cambiar el equilibrio entre clases; o el ataque podría ser más débil contra el nuevo modelo por razones ajenas a la privacidad. Un trabajo de fin de máster que nombra y pone a prueba estas alternativas es mucho más sólido que uno que informa solo del efecto. La discusión del seminario de Leo planteó la explicación del sobreajuste antes de que tuviera ningún dato.
+
+### 4.2 Un catálogo de alternativas en seguridad de la IA
+
+Seis alternativas se repiten. *Generalización frente a mecanismo específico*: la fuga de privacidad se correlaciona con la brecha entre entrenamiento y prueba, así que compare los tratamientos con brechas de generalización emparejadas, o incluya un control que cambie el tamaño de los datos sin deduplicar. *Fuga de datos*: los duplicados repartidos entre las particiones de entrenamiento y de prueba inflan la exactitud y confunden las métricas de privacidad (Kapoor y Narayanan, arXiv:2207.07048). *Cambio de distribución*: si los miembros y los no miembros difieren en su distribución, los ataques detectan el cambio y no la pertenencia. *Ataque débil o mal ajustado*: una defensa «funciona» porque el ataque no se adaptó (Athalye et al., arXiv:1802.00420); use como control un ataque más fuerte o calibrado. *Artefactos de evaluación*: elección de la métrica o umbrales ajustados sobre el conjunto de prueba. *Azar*: una sola semilla puede producir un efecto aparente.
+
+### 4.3 Ablaciones y controles
+
+Una *ablación* elimina o varía un componente para ver su contribución. El plan de Leo añade una cuarta condición: la *eliminación aleatoria* del mismo número de registros que eliminaría la deduplicación. Si la eliminación aleatoria da la misma ganancia de privacidad, la explicación es el tamaño del conjunto de datos; si la deduplicación da más, los duplicados importan. También añade un ataque de control calibrado con modelos de referencia, que se sabe que es más fuerte con una FPR baja que un simple umbral de confianza. Escriba el resultado esperado de cada condición antes de ejecutarla.
+
+### 4.4 Razonar sobre los mecanismos con los laboratorios
+
+El laboratorio de envenenamiento ofrece un contraste nítido. Invertir las etiquetas de hasta el 40 % de una clase apenas mueve un modelo de centroide más cercano (0,965 → 0,945), porque los centroides promedian muchos puntos; una puerta trasera que usa una característica disparadora separada alcanza un 98 % de éxito del ataque con 80 puntos, mientras la exactitud con datos limpios se mantiene en 0,968. El *mecanismo* (una dirección de características nueva y que, por lo demás, no se usa) explica por qué las métricas con datos limpios no lo detectan. Una explicación alternativa («el modelo simplemente es inexacto») queda descartada por la exactitud con datos limpios, que no cambia. Para Leo, la analogía es que los registros duplicados pueden dar al modelo una vía específica para memorizarlos.
+
+```python
+"""Lab P: label-flip poisoning and a backdoor trigger on a toy nearest-centroid
+classifier (synthetic data, stdlib only). Teaching model only."""
+import random
+rng = random.Random(11)
+def point(label, trigger=False):
+    cx = 1.0 if label else -1.0
+    x = [rng.gauss(cx, 0.8), rng.gauss(cx, 0.8), 0.0]
+    if trigger: x[2] = 5.0          # third feature is the 'trigger'
+    return x, label
+clean = [point(i % 2) for i in range(400)]
+test = [point(i % 2) for i in range(400)]
+def fit(data):
+    c = {}
+    for lab in (0, 1):
+        pts = [x for x, y in data if y == lab]
+        c[lab] = [sum(p[i] for p in pts)/len(pts) for i in range(3)]
+    return c
+def pred(c, x):
+    d = {k: sum((x[i]-v[i])**2 for i in range(3)) for k, v in c.items()}
+    return min(d, key=d.get)
+def accuracy(c, data): return sum(pred(c, x) == y for x, y in data)/len(data)
+print("label-flip poisoning (flip a fraction of class-1 labels to 0):")
+for frac in (0.0, 0.1, 0.2, 0.3, 0.4):
+    data = [(x, y) for x, y in clean]; ones = [i for i, (x, y) in enumerate(data) if y == 1]
+    for i in ones[:int(frac*len(ones))]: data[i] = (data[i][0], 0)
+    print(f"  flipped={frac:.1f} clean_test_accuracy={accuracy(fit(data), test):.3f}")
+print("backdoor: add n triggered class-1 points labelled 0")
+trig_test = [point(1, trigger=True) for _ in range(200)]
+for n in (0, 10, 40, 80):
+    data = clean + [(point(1, trigger=True)[0], 0) for _ in range(n)]
+    c = fit(data)
+    asr = sum(pred(c, x) == 0 for x, _ in trig_test)/len(trig_test)
+    print(f"  poison_points={n:3d} clean_accuracy={accuracy(c, test):.3f} attack_success={asr:.3f}")
+```
+
+Salida esperada:
+
+```text
+label-flip poisoning (flip a fraction of class-1 labels to 0):
+  flipped=0.0 clean_test_accuracy=0.965
+  flipped=0.1 clean_test_accuracy=0.965
+  flipped=0.2 clean_test_accuracy=0.953
+  flipped=0.3 clean_test_accuracy=0.950
+  flipped=0.4 clean_test_accuracy=0.945
+backdoor: add n triggered class-1 points labelled 0
+  poison_points=  0 clean_accuracy=0.965 attack_success=0.075
+  poison_points= 10 clean_accuracy=0.963 attack_success=0.145
+  poison_points= 40 clean_accuracy=0.963 attack_success=0.685
+  poison_points= 80 clean_accuracy=0.968 attack_success=0.980
+```
+
+### 4.5 Ejemplo resuelto (caso sintético de Harbourline)
+
+En los datos del piloto, bajo el ataque calibrado, la deduplicación redujo la TPR con una FPR del 1 % del 6,1 % al 3,4 %. La eliminación aleatoria del mismo número de registros la redujo al 5,6 %. La diferencia entre la deduplicación y la eliminación aleatoria (2,2 puntos) es la parte atribuible de forma plausible a la eliminación de duplicados; los 0,5 puntos restantes se explican por el tamaño. El ataque simple de umbral de confianza se quedó cerca de su suelo en todas las condiciones (el piloto del capítulo 5 lo describe), así que solo el ataque calibrado podía separarlas. La frase de conclusión de Leo pasó de «la deduplicación protege la privacidad» a «la mayor parte de la reducción observada en la fuga de pertenencia es atribuible a la eliminación de registros duplicados más que a un conjunto de entrenamiento más pequeño, bajo el ataque evaluado».
+
+### 4.6 Actividades de práctica
+
+1. Enumere cinco explicaciones alternativas para su resultado esperado. 2. Diseñe una ablación y un control para cada una de las dos más plausibles. 3. Reescriba su conclusión esperada al nivel de evidencia que tendrá. Para la lista, use el catálogo anterior y añada cualquier explicación específica de su sistema. Para las ablaciones, cambie una sola cosa cada vez e indique qué resultado respaldaría cada explicación. Para la conclusión, escriba la frase que podría defender si apareciera el efecto principal y compárela con la frase revisada de Leo, que nombra el ataque y lo que se descartó.
+
+### 4.7 Errores y límites
+
+Cuatro errores se repiten, y cada uno permite que sobreviva una explicación alternativa; revise su plan en busca de los cuatro:
+
+- Informar de un efecto sin poner a prueba las alternativas; un efecto sin alternativas probadas puede deberse al tamaño, al cambio de distribución o al azar.
+- Ablaciones que cambian varias cosas a la vez; una ablación así no puede atribuir el efecto.
+- Usar solo un ataque débil para evaluar una defensa de la privacidad; un ataque débil puede hacer que cualquier defensa parezca buena, y por eso Leo añadió el ataque calibrado.
+- Afirmar un mecanismo solo a partir de una correlación; una correlación, como que la fuga siga a la duplicación, no demuestra por sí sola un mecanismo sin controles como la eliminación aleatoria.
+
+### Ejercicios — capítulo 4
+
+- **EX021 — Alternativas.** Enumere cuatro explicaciones alternativas para «una barrera de protección redujo el éxito del *jailbreak*». Rúbrica: 3 = cuatro plausibles (conjunto de ataques más débil, rechazos que se disparan en exceso, cambio de distribución, artefacto de semilla/evaluador); 2 = tres; 1 = una o dos; 0 = ninguna.
+- **EX022 — Ablación.** Diseñe el control de eliminación aleatoria y explique qué significaría cada resultado. Rúbrica: 3 = el mismo número eliminado al azar; ganancia igual → tamaño, ganancia mayor → duplicados; 2 = solo el diseño; 1 = vago; 0 = nada.
+- **EX023 — Mecanismo en el laboratorio.** ¿Por qué invertir etiquetas apenas cambia el modelo de centroides mientras la puerta trasera tiene éxito? Rúbrica: 3 = los centroides promedian muchos puntos frente a un disparador que usa una dirección de características nueva no afectada por los datos limpios; 2 = parcial; 1 = vago; 0 = incorrecto.
+- **EX024 — Cifras del laboratorio.** Indique la exactitud con datos limpios y el éxito del ataque con 80 puntos envenenados. Rúbrica: 3 = 0.968 y 0.980; 2 = una; 1 = aproximadas; 0 = incorrectas.
+- **EX025 — Ataque más fuerte.** ¿Por qué incluir un ataque calibrado como control? Rúbrica: 3 = garantiza que el efecto de la defensa no sea un artefacto de un ataque débil, sobre todo con una FPR baja; 2 = parcial; 1 = vago; 0 = incorrecto.
+- **EX026 — Nivel de la conclusión.** Reescriba «la deduplicación arregla la privacidad» al nivel de evidencia de 4.5. Rúbrica: 3 = atribuye una parte, nombra el ataque y las condiciones; 2 = parcial; 1 = sigue exagerando; 0 = sin cambios.
+
+### Síntesis del capítulo
+
+Los efectos necesitan explicaciones, y las explicaciones necesitan pruebas. Las ablaciones, los controles y los ataques más fuertes separan los mecanismos de los artefactos, y las conclusiones resultantes son más acotadas, pero defendibles.
+
+### Siga estudiando — capítulo 04 de 08
+
+[← Capítulo 03 (borrador)](#ch-03) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 05 (borrador) →](#ch-05)
+
+<a id="ch-05"></a>
+
+## Capítulo 5 — Propuesta y piloto
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) redactar una propuesta de trabajo de fin de máster con la pregunta, los antecedentes, el diseño, el plan de análisis, la ética, los riesgos y el calendario; (2) realizar un piloto para comprobar la viabilidad y estimar la variabilidad; (3) calcular tamaños muestrales; (4) revisar el plan a partir de la evidencia del piloto; y (5) obtener la aprobación con un registro claro de las decisiones.
+
+### 5.1 La propuesta
+
+Una propuesta de maestría suele tener entre 3.000 y 6.000 palabras. Secciones: **pregunta y motivación** (un párrafo cada una); **antecedentes** a partir de su matriz de evidencia; **diseño** (capítulo 3), incluidas las explicaciones alternativas y las ablaciones (capítulo 4); **plan de análisis** con los resultados principales y secundarios y la estadística que usará; **ética y protección de datos**; **riesgos** (técnicos, de datos, de calendario) con sus mitigaciones; **calendario** con hitos; y **contribución esperada**, formulada con modestia. El plan de análisis es la parte más descuidada: escríbalo ahora, antes de tener datos, para que las decisiones posteriores no puedan quedar dirigidas por los resultados. La propuesta de Leo siguió este esquema.
+
+### 5.2 El piloto
+
+Un piloto ejecuta toda la cadena de procesamiento a pequeña escala. Objetivos: confirmar que el código funciona de principio a fin, medir el tiempo de ejecución, medir la variabilidad del resultado principal, comprobar que el ataque y las métricas se comportan de forma razonable (por ejemplo, que el modelo sin defensa es atacable) y descubrir sorpresas. Los resultados del piloto no son pruebas de hipótesis; no los presente como hallazgos y mantenga los datos de prueba finales fuera del piloto. El piloto de Leo encontró un efecto suelo y un defecto en el generador. Anote ambos en el registro de decisiones.
+
+### 5.3 Tamaño muestral y potencia
+
+Para tasas, la aproximación normal n ≈ z² p(1−p)/h² da los ensayos necesarios para una semiamplitud h del intervalo de confianza. Para comparaciones entre condiciones, el análisis de potencia pregunta cuántas repeticiones se necesitan para detectar una diferencia d con una probabilidad (potencia) de 0,8 y un nivel de significación de 0,05; en los diseños emparejados, importa la varianza de las *diferencias*. Con pocas semillas (lo habitual en el aprendizaje automático), informe intervalos entre semillas y entre elementos de evaluación en lugar de confiar en una única prueba de significación. El piloto de Leo mostró una variación de unos 0,8 puntos entre semillas, lo que, junto con el *bootstrap* sobre los registros, hizo suficientes cinco semillas. Use la variación que observe realmente, no una suposición.
+
+### 5.4 Revisar el plan
+
+Los pilotos suelen cambiar algo: un ataque demasiado débil para separar las condiciones, una evaluación que tarda demasiado, una métrica con efecto suelo (todas las condiciones cerca de cero). Anote cada cambio en un registro de decisiones con su motivo. Los supervisores y los examinadores valoran una propuesta que muestra que aprendió de su piloto. El registro de Leo recoge dos cambios derivados de su piloto: sustituir el ataque limitado por el suelo por uno calibrado y corregir las plantillas que producían notas casi idénticas entre clases. Cada uno tiene una fecha y un motivo. Guarde el registro junto con la propuesta para que los examinadores puedan seguir la evolución del plan.
+
+### 5.5 Ejemplo resuelto (caso sintético de Harbourline)
+
+El piloto de Leo usó 2.000 registros y dos semillas. Tardó 40 minutos por ejecución, así que el plan completo (20.000 registros, cuatro condiciones, cinco semillas) supone unas 130 horas de cómputo, algo viable en el clúster del laboratorio. El ataque simple de umbral de confianza produjo una TPR con una FPR del 1 % de entre el 1 % y el 2 % en todas las condiciones: un efecto suelo. Lo sustituyó por un ataque calibrado con modelos de referencia, que separó las condiciones. La variabilidad entre semillas fue de unos 0,8 puntos, así que cinco semillas más el *bootstrap* sobre los registros se consideraron suficientes. También descubrió que dos plantillas generaban notas casi idénticas entre clases, lo que introducía ruido en las etiquetas; corrigió el generador y anotó el cambio.
+
+El laboratorio de evasión ofrece un ejemplo de barrido en un piloto: antes de elegir un único presupuesto de perturbación para un estudio principal, barra varios para encontrar dónde el efecto es medible en lugar de quedar en el suelo o en el techo.
+
+```python
+"""Lab E: evasion of a toy linear classifier (synthetic data, stdlib only).
+Trains logistic regression on two synthetic clusters, then applies a
+fast-gradient-sign (FGSM-style) perturbation of size eps to every test point
+and reports clean vs adversarial accuracy. Teaching model only."""
+import math, random
+rng = random.Random(7)
+def point(label):
+    cx = 1.0 if label else -1.0
+    return [rng.gauss(cx, 0.7), rng.gauss(cx, 0.7)], label
+train = [point(i % 2) for i in range(400)]
+test = [point(i % 2) for i in range(200)]
+w, b = [0.0, 0.0], 0.0
+sig = lambda z: 1 / (1 + math.exp(-z))
+for epoch in range(200):
+    gw, gb = [0.0, 0.0], 0.0
+    for x, y in train:
+        p = sig(w[0]*x[0] + w[1]*x[1] + b)
+        gw[0] += (p - y)*x[0]; gw[1] += (p - y)*x[1]; gb += p - y
+    w = [w[i] - 0.1*gw[i]/len(train) for i in range(2)]; b -= 0.1*gb/len(train)
+def acc(data, eps):
+    ok = 0
+    for x, y in data:
+        # gradient of the loss w.r.t. x is (p - y) * w; FGSM steps along its sign
+        p = sig(w[0]*x[0] + w[1]*x[1] + b)
+        xa = [x[i] + eps*math.copysign(1, (p - y)*w[i]) for i in range(2)]
+        ok += (sig(w[0]*xa[0] + w[1]*xa[1] + b) >= 0.5) == bool(y)
+    return ok / len(data)
+print(f"weights w=({w[0]:.3f}, {w[1]:.3f}) b={b:.3f}")
+for eps in (0.0, 0.25, 0.5, 0.75, 1.0):
+    print(f"eps={eps:.2f} accuracy={acc(test, eps):.3f}")
+```
+
+Salida esperada:
+
+```text
+weights w=(1.795, 1.756) b=-0.080
+eps=0.00 accuracy=0.985
+eps=0.25 accuracy=0.950
+eps=0.50 accuracy=0.840
+eps=0.75 accuracy=0.660
+eps=1.00 accuracy=0.505
+```
+
+### 5.6 Actividades de práctica
+
+1. Redacte su plan de análisis con los resultados principales y secundarios. 2. Realice un piloto y rellene un registro de decisiones. 3. Calcule el tamaño muestral para su resultado principal. Para el plan de análisis, nombre el resultado principal, como la TPR con una FPR del 1 %, y los secundarios, con la estadística de cada uno. Para el piloto, ejecute toda la cadena a pequeña escala y anote cada cambio con su motivo, como hizo Leo. Para el tamaño muestral, use la fórmula anterior con la variación que observó en su piloto e indique si su presupuesto de cómputo lo permite.
+
+### 5.7 Errores y límites
+
+Cuatro errores se repiten, y cada uno debilita el estudio; revise su propuesta en busca de los cuatro:
+
+- Propuestas sin plan de análisis; sin él, las decisiones posteriores pueden quedar dirigidas por los resultados.
+- Presentar los resultados del piloto como hallazgos; no son hallazgos, porque el piloto no se diseñó ni se dimensionó para contrastar hipótesis.
+- Usar datos de prueba en el piloto; los datos de prueba usados en un piloto dejan de ser inéditos.
+- Ignorar los efectos suelo o techo; un efecto suelo, como el del ataque simple de Leo, entre el 1 % y el 2 % en todas las condiciones, oculta diferencias reales.
+
+### Ejercicios — capítulo 5
+
+- **EX027 — Secciones de la propuesta.** Enumere ocho secciones de la propuesta. Rúbrica: 3 = ocho correctas; 2 = seis; 1 = tres; 0 = ninguna.
+- **EX028 — Objetivos del piloto.** Dé cuatro objetivos de un piloto. Rúbrica: 3 = la cadena funciona, tiempos, variabilidad, coherencia de las métricas/sorpresas; 2 = tres; 1 = uno o dos; 0 = ninguno.
+- **EX029 — Tamaño muestral.** Calcule los ensayos para una tasa cercana al 5 % con una semiamplitud de 1 punto al 95 %. Rúbrica: 3 = ≈1.825 con la fórmula; 2 = desliz aritmético; 1 = solo la fórmula; 0 = nada.
+- **EX030 — Efecto suelo.** ¿Qué es un efecto suelo y cómo lo resolvió Leo? Rúbrica: 3 = todas las condiciones cerca del mínimo, de modo que las diferencias no se ven; ataque calibrado más fuerte; 2 = solo la definición; 1 = vago; 0 = incorrecto.
+- **EX031 — Barrido en el laboratorio.** A partir del laboratorio de evasión, ¿qué valores de eps evitan el suelo y el techo para comparar defensas? Rúbrica: 3 = en torno a 0,5–0,75 (0.840, 0.660), con razones; 2 = solo los valores; 1 = vago; 0 = incorrecto.
+- **EX032 — Registro de decisiones.** Escriba dos entradas del registro de decisiones a partir del piloto de Leo. Rúbrica: 3 = fecha, cambio, motivo y efecto en ambas; 2 = una; 1 = vago; 0 = nada.
+
+### Síntesis del capítulo
+
+La propuesta fija lo que hará y cómo lo analizará; el piloto muestra si puede hacerlo. Las revisiones anotadas con sus motivos convierten las sorpresas en evidencia de un proceso cuidadoso.
+
+### Siga estudiando — capítulo 05 de 08
+
+[← Capítulo 04 (borrador)](#ch-04) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 06 (borrador) →](../../en/book/MANUSCRIPT.md#ch-06)
 
 <a id="worked-results"></a>
 
@@ -302,6 +615,42 @@ Respuestas modelo; cualquier respuesta que cumpla la rúbrica obtiene la misma p
 **EX013.** LLM01 Prompt Injection (instrucciones en los correos); LLM02 Sensitive Information Disclosure (detalles de siniestros en las respuestas); LLM06 Excessive Agency (enviar respuestas sin revisión).
 
 **EX014.** Por ejemplo: ¿qué conocimiento del adversario se supone, y se evalúa la defensa frente a un atacante que la conoce? ¿Se informan los resultados con tasas de falsos positivos bajas y con intervalos entre semillas? ¿Cuál es el coste en utilidad o en latencia en las mismas tareas?
+
+**EX015.** Estudio observacional de los registros de un asistente que el investigador está autorizado a estudiar, con salvaguardas de consentimiento/privacidad; hay que discutir los factores de confusión (población de usuarios, cambios de funcionalidades). Un experimento es imposible porque no se puede controlar a los atacantes reales.
+
+**EX016.** Independiente: defensa (ninguna frente a entrenamiento adversarial). Dependientes: exactitud bajo PGD con eps fijo; exactitud con datos limpios. Controladas: arquitectura, épocas de entrenamiento, partición de datos, pasos/eps del ataque, semillas.
+
+**EX017.** Si los no miembros difieren en su distribución (por ejemplo, registros más recientes), el ataque puede distinguirlos por el cambio de distribución y no por la pertenencia, de modo que la fuga medida queda inflada.
+
+**EX018.** Licitud; limitación de la finalidad; minimización de datos; limitación del plazo de conservación; integridad y confidencialidad (seguridad); responsabilidad proactiva.
+
+**EX019.** Tasas por semilla 0.110, 0.130, 0.135, 0.105, 0.145 —un intervalo de 0.105–0.145— con media 0.125 y sd 0.017.
+
+**EX020.** Repositorio con control de versiones; entorno fijado; archivos de configuración; política de semillas; una orden por experimento; registros estructurados; ficha de datos.
+
+**EX021.** La evaluación usó instrucciones de *jailbreak* más débiles o diferentes; la barrera de protección rechaza en exceso (incluidas instrucciones benignas); la distribución de instrucciones difiere entre condiciones; artefactos del evaluador o de la semilla.
+
+**EX022.** Elimine al azar el mismo número de registros (varias extracciones). Si la ganancia de privacidad es igual a la de la deduplicación, la explica el tamaño del conjunto de datos; si la deduplicación gana más, eliminar duplicados importa.
+
+**EX023.** Los centroides promedian cientos de puntos, así que una minoría de etiquetas invertidas los desplaza poco; la puerta trasera usa una tercera característica que vale cero en los datos limpios, lo que crea una dirección nueva que los datos limpios no pueden contrarrestar.
+
+**EX024.** Exactitud con datos limpios 0.968; éxito del ataque 0.980.
+
+**EX025.** Un ataque débil puede hacer que cualquier defensa parezca eficaz; un ataque calibrado y más fuerte (sobre todo con una FPR baja) muestra si la reducción se mantiene.
+
+**EX026.** «Bajo un ataque de inferencia de pertenencia calibrado, la mayor parte de la reducción observada de la fuga fue atribuible a la eliminación de registros duplicados más que a un conjunto de entrenamiento más pequeño.»
+
+**EX027.** Pregunta/motivación; antecedentes; diseño; explicaciones alternativas/ablaciones; plan de análisis; ética y protección de datos; riesgos y mitigaciones; calendario; contribución esperada.
+
+**EX028.** Confirmar que la cadena funciona de principio a fin; medir el tiempo de ejecución; estimar la variabilidad; comprobar que las métricas y los ataques se comportan de forma razonable; descubrir sorpresas.
+
+**EX029.** n ≈ 1,96² × 0,05 × 0,95 / 0,01² ≈ 1.825.
+
+**EX030.** Todas las condiciones se sitúan cerca del mínimo de la métrica, de modo que no pueden verse las diferencias. Leo sustituyó el ataque de umbral de confianza por un ataque calibrado con modelos de referencia.
+
+**EX031.** eps 0.50 (0.840) y 0.75 (0.660): la exactitud no está cerca del techo con datos limpios (0.985) ni en el nivel del azar (0.505 con 1.00), así que pueden distinguirse las defensas.
+
+**EX032.** «Día 3 del piloto: se sustituyó el ataque de umbral por un ataque calibrado; motivo: efecto suelo (TPR del 1–2 % en todas las condiciones); efecto: condiciones separables.» «Día 4 del piloto: se corrigieron las plantillas 12 y 19 del generador; motivo: notas casi idénticas entre clases; efecto: elimina el ruido en las etiquetas.»
 
 <a id="references"></a>
 

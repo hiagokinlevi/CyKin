@@ -346,7 +346,12 @@ baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
 
 ### 3.7 Erros e limites
 
-Quatro erros se repetem: membros e não membros sorteados de distribuições diferentes; uma semente por condição; usar dados pessoais reais quando dados sintéticos bastariam; e caminhos e parâmetros embutidos no código que tornam as reexecuções impossíveis. Cada erro compromete o resultado. Membros e não membros de distribuições diferentes deixam o ataque detectar a mudança em vez do pertencimento. Uma única semente não mostra a variabilidade que o Laboratório S torna visível. Dados pessoais reais criam o dano estudado quando dados sintéticos serviriam, como servem as notas sintéticas de Leo. Caminhos embutidos fazem as reexecuções falharem para qualquer outra pessoa, inclusive os examinadores. Confira o seu desenho quanto aos quatro.
+Quatro erros se repetem, e cada um compromete o resultado; confira o seu desenho quanto aos quatro:
+
+- Membros e não membros sorteados de distribuições diferentes; isso deixa o ataque detectar a mudança em vez do pertencimento.
+- Uma semente por condição; uma única semente não mostra a variabilidade que o Laboratório S torna visível.
+- Usar dados pessoais reais quando dados sintéticos bastariam; dados pessoais reais criam o dano estudado quando dados sintéticos serviriam, como servem as notas sintéticas de Leo.
+- Caminhos e parâmetros embutidos no código que tornam as reexecuções impossíveis; eles fazem as reexecuções falharem para qualquer outra pessoa, inclusive os examinadores.
 
 ### Exercícios
 
@@ -451,7 +456,12 @@ Nos dados do piloto, sob o ataque calibrado, a deduplicação reduziu a TPR com 
 
 ### 4.7 Erros e limites
 
-Quatro erros se repetem: relatar um efeito sem testar alternativas; ablações que mudam várias coisas de uma vez; usar apenas um ataque fraco para avaliar uma defesa de privacidade; e afirmar um mecanismo só a partir de correlação. Cada erro deixa uma explicação concorrente sobreviver. Um efeito sem alternativas testadas pode ser tamanho, mudança de distribuição ou acaso. Uma ablação que muda várias coisas não consegue atribuir o efeito. Um ataque fraco pode fazer qualquer defesa parecer boa, e é por isso que Leo acrescentou o ataque calibrado. Uma correlação, como o vazamento acompanhar a duplicação, não mostra por si só um mecanismo sem controles como a remoção aleatória. Confira o seu plano quanto aos quatro.
+Quatro erros se repetem, e cada um deixa uma explicação concorrente sobreviver; confira o seu plano quanto aos quatro:
+
+- Relatar um efeito sem testar alternativas; um efeito sem alternativas testadas pode ser tamanho, mudança de distribuição ou acaso.
+- Ablações que mudam várias coisas de uma vez; uma ablação assim não consegue atribuir o efeito.
+- Usar apenas um ataque fraco para avaliar uma defesa de privacidade; um ataque fraco pode fazer qualquer defesa parecer boa, e é por isso que Leo acrescentou o ataque calibrado.
+- Afirmar um mecanismo só a partir de correlação; uma correlação, como o vazamento acompanhar a duplicação, não mostra por si só um mecanismo sem controles como a remoção aleatória.
 
 ### Exercícios
 
@@ -550,7 +560,12 @@ eps=1.00 accuracy=0.505
 
 ### 5.7 Erros e limites
 
-Quatro erros se repetem: propostas sem plano de análise; relatar resultados de piloto como achados; usar dados de teste no piloto; e ignorar efeitos piso ou teto. Cada erro enfraquece o estudo. Sem um plano de análise, escolhas posteriores podem ser guiadas pelos resultados. Resultados de piloto não são achados, porque o piloto não foi desenhado nem dimensionado para testar hipóteses. Dados de teste usados num piloto deixam de ser inéditos. Um efeito piso, como o do ataque simples de Leo, entre 1% e 2% em todas as condições, esconde diferenças reais. Confira a sua proposta quanto aos quatro.
+Quatro erros se repetem, e cada um enfraquece o estudo; confira a sua proposta quanto aos quatro:
+
+- Propostas sem plano de análise; sem ele, escolhas posteriores podem ser guiadas pelos resultados.
+- Relatar resultados de piloto como achados; não são achados, porque o piloto não foi desenhado nem dimensionado para testar hipóteses.
+- Usar dados de teste no piloto; dados de teste usados num piloto deixam de ser inéditos.
+- Ignorar efeitos piso ou teto; um efeito piso, como o do ataque simples de Leo, entre 1% e 2% em todas as condições, esconde diferenças reais.
 
 ### Exercícios
 
