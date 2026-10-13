@@ -2450,6 +2450,8 @@ You will (1) operate staged rollouts with statistical gates; (2) monitor negotia
 
 Promote a rollout stage only when the upper confidence bound of the failure rate is within the budget. Small canaries cannot demonstrate small effects — the bound is wide — so the gate holds until enough traffic has been observed.
 
+The gate compares the upper bound with the baseline plus the allowed increase, not with zero, because some handshakes fail for ordinary reasons such as clients dropping off mobile networks. Measuring the baseline for a week before the change is therefore part of the gate. Without it, a team cannot tell whether a failure rate of one in two thousand is new or has always been there.
+
 ### 37.2 Practical activity — Lab K
 
 ```python
@@ -2474,23 +2476,33 @@ Expected output:
 
 The 1% canary holds not because failures are high but because 5,000 connections cannot bound the rate tightly. The proxy site holds because its rate is genuinely higher — a local problem to fix, not a reason to roll back globally.
 
+The gate passes when the bound is at most 0.0009, the baseline of 0.0005 plus the budget of 0.0004. At 3 failures in 5,000 the point estimate is 0.0006, already within budget, but the Wilson bound of 0.00176 is not. Try 0 and 1 failures in 5,000: zero gives a bound of about 0.00077 and promotes, while a single failure gives 0.00113 and holds. At the baseline rate alone, 5,000 connections would see about 2.5 failures, so a canary this small almost always holds and the gate simply waits for more traffic.
+
 ### 37.3 Monitoring
 
 Dashboards: negotiated groups by service, fallback rate and reasons, handshake failures by path, certificate algorithms in use, stateful key capacity, library versions. Alerts on fallback spikes and on any unexpected classical-only negotiation where hybrids are required.
+
+Each dashboard item answers an operational question: is the hybrid group being negotiated, where are failures concentrated, which libraries need updates, and how many signatures remain on stateful keys. Alerts focus on changes, so the on-call engineer looks at what moved since yesterday instead of reading every panel. BPA reviews whether each alert led to useful action and removes alerts that never do.
 
 ### 37.4 Certificate and key operations
 
 Certificate lifecycle automation (for example ACME, [RFC 8555](https://www.rfc-editor.org/rfc/rfc8555.html)) makes algorithm changes routine: short-lived certificates can switch algorithms at renewal. Key ceremonies for new PQC roots are planned like any root ceremony, with witnesses and recorded procedures.
 
+With ninety-day certificates issued through ACME, BPA can move a service to a new signature algorithm within one renewal cycle once clients support it. A root ceremony takes far longer to arrange, so the post-quantum root ceremony is scheduled early, with the HSM and witnesses booked months ahead.
+
 ### 37.5 Worked example
 
 BPA's operations runbook for hybrid TLS: daily dashboard review during rollout; promote via gates; on gate hold, investigate by path; on fallback spike, check recent changes; on proxy-site failures, apply path-specific exception with expiry and open vendor ticket.
+
+Each step of the runbook maps to a lesson from the case: gates come from Lab K, investigation by path from the proxy-site result, and path-specific exceptions from the shipping-line portal fault. Writing these steps down means the night shift handles a gate hold the same way the rollout team would. The runbook is reviewed after each incident and updated when a step proved unclear.
 
 ### 37.6 Common errors and limits
 
 - Promoting on point estimates from small canaries.
 - Global rollback for local faults.
 - Manual certificate processes that make algorithm change slow.
+
+A small canary with zero failures still has a wide confidence bound, as Lab K showed for 5,000 connections, so promoting on its point estimate is guesswork. A global rollback for the proxy site's problem would remove protection from every healthy path. Manual certificate processes make each algorithm change a project, while automated renewal turns it into a routine step that happens every ninety days.
 
 ### Engineering note
 
@@ -2521,27 +2533,39 @@ You will (1) validate that the migrated system meets stakeholder needs; (2) dist
 
 Verification shows requirements are met ("edge TLS negotiates X25519MLKEM768 with 99.2% of offering clients"). Validation shows the system serves its purpose ("shipping lines, customs and staff operate normally, and long-lived data flows are protected against recording"). Both are needed; one does not imply the other.
 
+A system can pass verification and still fail validation: the edge may negotiate the hybrid group with 99.2% of offering clients while a partner's batch job quietly fails because its old client times out. Validation would catch that through the partner's own acceptance testing. Conversely, partners may be satisfied while a requirement is unmet, for example if replication still uses classical key exchange.
+
 ### 38.2 Acceptance tests
 
 Partners run acceptance tests on their workflows; operations staff confirm no new incidents; legal confirms dual-signed documents are acceptable; device teams confirm firmware updates succeed across models. Record acceptance with dates and signatories.
+
+Acceptance is recorded per stakeholder because each checks a different property: partners their workflows, legal the evidential value of signatures, device teams the update path. A dated signature from each makes later disputes simple to resolve. When a stakeholder cannot accept, the reason becomes a work item rather than being noted and forgotten.
 
 ### 38.3 Validating risk reduction
 
 Claim carefully: "Recorded edge traffic negotiated with hybrid groups is protected against future quantum decryption if either X25519 or ML-KEM-768 remains secure" is defensible. "BPA is quantum-safe" is not — certificates, some VPNs, devices and unknown assets remain. Validation reports what is protected and what is not.
 
+The defensible statement names exactly what is protected, under which assumption, and implicitly what is not. Listing the remaining classical paths with dates turns the gap into a plan instead of a hidden weakness. Boards can make decisions with such statements; a slogan like "quantum-safe" gives them nothing to act on and becomes embarrassing when an exception is discovered.
+
 ### 38.4 Independent validation
 
 An independent team (internal audit or external assessor) samples flows, checks negotiated algorithms from their own vantage point and reviews the CBOM's unknowns. Independence catches optimistic self-assessment.
 
+An independent team capturing traffic from its own vantage point may find, for example, that a service reported as hybrid actually negotiates classical groups for a particular client family. Sampling flows rather than relying on the team's dashboard is what makes the check independent. Reviewing unknowns matters because a self-assessment tends to treat them as minor. The assessor's findings go into the dossier with the team's responses.
+
 ### 38.5 Worked example
 
 BPA's validation report: 64% of edge connections hybrid (verification); partner acceptance complete for 11 of 14 lines (validation); customs exports dual-recipient (validation pending agency test); firmware dual-key bootloader on 40% of devices; unknown assets 6%. Statement of residual risk lists the remaining classical paths with dates.
+
+The report separates verification from validation on each line, so readers can see which claims rest on telemetry and which on stakeholder confirmation. The pending customs test is reported as pending, not as complete, and the 40% firmware figure states device coverage, not image signing. That precision is what lets the board trust the rest of the report.
 
 ### 38.6 Common errors and limits
 
 - Treating verification metrics as validation.
 - Overclaiming "quantum-safe".
 - Self-validation only.
+
+A high hybrid share is a verification result; it says nothing about whether partners can still work, which only validation confirms. Overclaiming "quantum-safe" ignores the classical certificates, VPNs and unknown assets the report lists. Self-validation alone tends to miss what the team did not think to check, which is why an independent sample is part of BPA's process. Each of these errors appears in early migration reports from many organizations, usually discovered by an auditor rather than the team.
 
 ### Engineering note
 
@@ -2571,6 +2595,8 @@ You will (1) design for crypto-agility so future changes are cheap; (2) implemen
 ### 39.1 Agility as maintainability
 
 The post-quantum transition will not be the last: parameter sets may change, HQC and FN-DSA will arrive, and some algorithm may weaken. [CSWP 39](https://doi.org/10.6028/NIST.CSWP.39-upd1) describes agility across protocols, applications, hardware and infrastructure. Maintainable systems make algorithm change a routine operation measured in days.
+
+BPA's target is that switching an algorithm on any service in scope takes days, not months. Lab A shows the pattern in a few lines: a registry of implementations, a policy that selects one, and an accept-list that controls what is still trusted. The time-to-replace metric tests whether that design holds in real systems, where hard-coded assumptions often hide.
 
 ### 39.2 Practical activity — Lab A
 
@@ -2605,23 +2631,33 @@ old tag after retirement: False
 
 The lab uses symmetric MACs to keep the code short; the pattern — registry, policy, accept-list, retirement — is identical for KEMs and signatures.
 
+Notice the order of steps: the new algorithm is introduced while the old one stays on the accept-list, so existing tags still verify; only then is the old algorithm removed. Reversing the order would break every stored tag at once. The algorithm identifier travels with the tag but is checked against policy, so an attacker cannot choose a weak algorithm by changing the label. Add a third, deliberately weak algorithm to the registry and confirm it is rejected because policy does not accept it.
+
 ### 39.3 Retirement
 
 Retiring an algorithm has phases: stop generating new uses; accept old uses during a transition window; reject after a date; remove code. Each phase is a policy change plus monitoring of residual use.
+
+Monitoring residual use tells BPA when it is safe to move to the next phase: if classical-only handshakes have fallen to a handful of known clients, the reject date can be set and those clients contacted. Removing the code last prevents accidental reactivation by a configuration mistake. Each phase has a date published in advance so partners can plan.
 
 ### 39.4 Documentation and inventory
 
 Keep the CBOM, interface control documents, policies and runbooks current through automation where possible (build-time CBOM generation, telemetry-fed dashboards). Stale documentation makes the next migration as hard as the first.
 
+BPA treats documentation as part of the system: a build that changes cryptographic dependencies regenerates the CBOM, and a policy change updates the interface control document through the same pipeline. When documentation must be written by hand, such as runbooks, it has an owner and a review date. The goal is that the next migration starts from an accurate picture rather than another discovery project.
+
 ### 39.5 Worked example
 
 BPA measures time-to-replace by switching the internal MAC algorithm on a test service through policy: 2 days including tests. The same exercise on a legacy service with hard-coded algorithms takes 6 weeks — a quantified case for refactoring.
+
+Two days against six weeks gives a factor of about twenty, which makes the refactoring argument concrete for the budget holder. The six weeks come mostly from finding every hard-coded call site and testing each, the same work BPA's e-document service needed for its 41 `rsa_sign()` calls. Refactoring once removes that cost from every future change.
 
 ### 39.6 Common errors and limits
 
 - Treating PQC migration as a one-time project.
 - Accepting algorithm identifiers from untrusted input without policy checks.
 - Retiring algorithms without monitoring residual use.
+
+Treating PQC migration as a one-time project leaves systems as rigid as before, ready to repeat the effort when HQC or FN-DSA arrives. Accepting algorithm identifiers from untrusted input lets an attacker pick the weakest option, which Lab A prevents with its accept-list. Retiring without monitoring risks breaking clients that still depend on the old algorithm, which BPA avoids by publishing reject dates only after residual use is near zero.
 
 ### Engineering note
 
@@ -2652,27 +2688,39 @@ You will (1) verify end-to-end protections from an attacker's vantage point in a
 
 In an isolated lab replicating BPA's edge, capture handshakes and confirm the negotiated group from the wire, not from server logs. Verify that recorded sessions with hybrid groups would require breaking both X25519 and ML-KEM — by checking that the session key derivation includes both shares (Lab C's principle).
 
+Server logs can be wrong, as the placement student found with a library that logged the first offered group rather than the negotiated one. Reading the ServerHello on the wire gives the actual group, and comparing it with the logs checks both at once.
+
 ### 40.2 Downgrade tests
 
 A lab man-in-the-middle strips hybrid groups from ClientHello. Expected: TLS 1.3's transcript signature causes failure, or the client retries without hybrid only if application logic permits — which the test should catch and the policy should forbid where possible. Run only in the lab.
+
+The expected result for a correct client is a failed handshake with no retry, since the transcript check detects the stripped group. If the client retries without the hybrid group and succeeds, the test has found an application-level downgrade path. Repeat the test for each client library in scope, because retry behaviour differs between them.
 
 ### 40.3 State-handling tests
 
 For LMS/XMSS: simulate HSM restore from backup and confirm the HSM refuses to reuse indices; simulate concurrent signing requests and confirm no duplicate index; exhaust a small test tree and confirm signing stops cleanly.
 
+The concurrent-signing test matters because a signing service under load might hand the same index to two requests if the counter update is not atomic. Exhausting a small test tree, for example one with height five and 32 signatures, lets the team check the end-of-key behaviour in minutes instead of waiting years. Each test result goes into the dossier with the HSM firmware version used, since a later firmware update could change the behaviour.
+
 ### 40.4 Verification report
 
 Report: scope, environment, tests, results, deviations, residual issues, evidence links. A good report lets a reviewer re-run tests.
 
+Deviations are the most important part: a test run under a different library version or a simplified network must say so, or a reviewer may assume the results apply to production. Evidence links connect each result to its raw capture or log. BPA's reports use the same headings every time, so reviewers know where to look and missing parts stand out at a glance. A report that cannot be rerun is treated as a draft.
+
 ### 40.5 Worked example
 
 BPA's lab finds that one internal client library retries with classical-only groups after any handshake error, including those caused by an attacker. Fix: restrict retry to specific incompatibility errors, log retries and plan removal of fallback for that client by a set date.
+
+Restricting retry to listed incompatibility errors keeps availability for genuinely old peers while denying an attacker the ability to trigger fallback with a forged error. Logging every retry gives the data needed to see when fallback can be removed. The dated removal makes the exception temporary by design, and the downgrade test is rerun after the fix to confirm it.
 
 ### 40.6 Common errors and limits
 
 - Verifying from server logs only.
 - Downgrade testing on production.
 - Not testing state restore for stateful signatures.
+
+Server logs reflect what the software believes, which may differ from the wire, so verification from logs alone can miss real downgrades. Downgrade tests on production can break partners' sessions, so they stay in the isolated lab. Not testing state restore leaves the most dangerous LMS failure, index reuse after a backup restore, unexamined until it happens for real. Each of these tests takes hours in the lab and prevents failures that would take weeks to repair in production.
 
 ### Engineering note
 
@@ -2703,23 +2751,33 @@ You will (1) optimize parameter and algorithm choices across a system; (2) reduc
 
 ML-KEM-768 (category 3) is the common default for hybrid TLS; ML-KEM-1024 where policy requires category 5 (CNSA 2.0). ML-DSA-44 versus -65 trades size against margin. Choose per context with documented rationale, not "maximum everywhere".
 
+For BPA, ML-KEM-768 fits the 1,300-byte budget and gives category 3, which suits its data. ML-DSA-65 is used for bills of lading where a few extra kilobytes per document are irrelevant, while ML-DSA-44 suits the crane bootloader with its tight memory. Each choice and its reason are recorded in the decision log.
+
 ### 41.2 Overhead reduction
 
 Session resumption avoids repeated full handshakes; connection reuse amortizes certificate cost; certificate compression ([RFC 8879](https://www.rfc-editor.org/rfc/rfc8879.html)) helps classical chains but compresses random-looking post-quantum keys and signatures poorly; trimming intermediate certificates where clients cache them reduces bytes.
+
+Compression works on classical certificates because they contain repeated structures; ML-DSA keys and signatures are close to random, so there is little to remove. For BPA's vessels, resumption is the most effective measure because each ship reconnects many times a day and needs the full chain only on the first connection.
 
 ### 41.3 Risk-reduction prioritization
 
 With limited budget, rank remaining work by exposure reduced per unit effort: flows carrying long-lived data × volume ÷ effort. A greedy ordering is usually good enough and transparent.
 
+For example, a flow carrying 25-year customs data at high volume that needs a single configuration change scores far higher than a low-volume flow that needs an appliance replacement. Publishing the scores lets stakeholders see why their system is not first. Rerunning the ranking after each completed item keeps the list current as effort estimates change and new flows appear.
+
 ### 41.4 Worked example
 
 BPA's remaining items: vessel links (high latency cost of large chains; moderate data lifetime), legacy VPN (high lifetime, appliance replacement cost), internal telemetry (low lifetime). Optimization: vessel links get hybrid key exchange only (cheap) with classical certificates and tuned resumption; legacy VPN gets PSK mixing now and appliance replacement next budget cycle; telemetry waits.
+
+The vessel decision follows from the latency measurements: hybrid key exchange adds little, while a post-quantum chain adds a 600-millisecond round trip. Splitting the change gets protection against harvest now without that cost.
 
 ### 41.5 Common errors and limits
 
 - Category 5 everywhere without need.
 - Expecting compression to shrink PQC signatures.
 - Prioritizing by ease rather than exposure.
+
+Category 5 everywhere adds bytes and computation for data that does not need it, as with ML-KEM-1024's larger 1,568-byte key against the 1,300-byte budget. Compression helps classical chains but cannot shrink random-looking post-quantum material much. Choosing work by ease rather than exposure leaves the 25-year customs flows waiting while simpler, low-value items are completed. BPA's ranking uses exposure divided by effort for every item and publishes the list so that each choice can be questioned.
 
 ### Engineering note
 
@@ -2729,6 +2787,8 @@ Optimization decisions should be revisited when inputs change. A new browser rel
 ### 41.6 Optimisation that must not weaken security
 
 Shrinking handshake size by dropping intermediate certificates or caching keys for longer can save milliseconds, but each such change is reviewed against BPA's confidentiality horizon. An optimisation that shortens latency but reintroduces a classical-only path for the 25-year customs data is rejected, however large the gain.
+
+Each optimisation proposal therefore states which flows it affects and their data lifetimes. Reviewers check whether the change could remove the post-quantum share from any of those flows, for example by enabling a fallback path. Proposals that only touch certificates on short-lived sessions, such as resumption tuning for vessels, usually pass quickly.
 
 ### Exercises
 
@@ -2755,27 +2815,39 @@ You will (1) formulate an applied research question from engineering work; (2) d
 
 Engineering raises research-worthy questions: how often do middleboxes mishandle large ClientHellos in a given sector? What is the real time-to-replace for different architectures? How accurate are inventory tools against adjudicated ground truth? The [master's](../../../../masters-2-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) and [doctoral](../../../../doctorate-2-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) books in this area develop such studies in depth.
 
+Questions like these come from operations data that most organizations already have, such as handshake failure logs and change records, so a study can often start without new data collection.
+
 ### 42.2 Small studies
 
 Define question, population, measurements, comparison and analysis before collecting data; use synthetic or authorized data; report intervals and limits. An engineering thesis (Chapter 49) can include one such study.
+
+Fixing the analysis beforehand prevents choosing the comparison that gives the most interesting result after seeing the data. A study at BPA might ask whether hybrid handshakes fail more often on one proxy model than another, with the population being one month of synthetic replay traffic and the result reported as a difference in failure rates with its confidence interval. The written limits state what the replay cannot represent, such as real client diversity.
 
 ### 42.3 Reading research
 
 Check what a paper's numbers measure (configured or negotiated? lab or field?), whether baselines are fair, whether code and data are available, and how old the results are — the field moves quickly, and results about draft algorithms may not apply to final standards.
 
+A paper reporting hybrid adoption based on configured settings may overstate real protection, as BPA's own experience with configured and negotiated figures showed. Results measured on draft Kyber may differ in performance or interoperability from final ML-KEM. Checking whether code and data are published tells a reader whether the result can be reproduced or must be taken on trust. BPA's engineers note these points when citing a paper in a decision record.
+
 ### 42.4 Contributing back
 
 Report interoperability bugs to implementers, publish anonymized aggregate findings, contribute test vectors, and participate in standards discussions. Coordinate disclosure of vulnerabilities.
 
+BPA's report of the obsolete-codepoint issue to the partner's library maintainers helped other users of that library, not just BPA. Contributions of test vectors improve every implementation that runs them. Before publishing aggregate figures, the team checks that no partner or system can be identified from them. Participation in standards discussions lets operators raise practical problems, such as handshake size limits, while designs can still change.
+
 ### 42.5 Worked example
 
 BPA's engineers ask whether their passive telemetry under-counts hybrid negotiation because of TLS 1.3 encrypted extensions. A small study compares server-log and wire-capture determinations on 1,000 synthetic sessions in the lab and finds agreement on the key-exchange group (visible in clear in ServerHello) but not on certificate algorithms (encrypted) — an applied finding that changes the measurement design.
+
+The finding explains why the dashboard can report hybrid key exchange from passive data but must use configuration for certificate algorithms, a limit stated later in the thesis guidance.
 
 ### 42.6 Common errors and limits
 
 - Studies designed after data collection.
 - Applying draft-algorithm results to final standards.
 - Publishing identifiable organizational data.
+
+A study designed after seeing data tends to find what the team hoped to find, which is why the question and analysis are fixed first. Results on draft algorithms can mislead when applied to final standards, since details changed. Publishing identifiable data can expose partners or weaknesses; BPA aggregates and checks every figure before release, and a second engineer confirms that no partner can be recognized from the published tables.
 
 ### Engineering note
 
@@ -2806,27 +2878,39 @@ You will (1) work within a real-shaped migration team under supervision; (2) app
 
 A placement in a security team, a vendor, a public agency or a standards organization exposes the realities of migration: procurement cycles, legacy systems, partner politics, change freezes. In this book the placement is simulated at BPA; in a real programme, the host's confidentiality rules apply.
 
+The placement teaches what the classroom cannot: a change freeze can delay a ready migration by a month, and a vendor's answer can take eight weeks. Students learn to plan around such delays rather than treat them as exceptions.
+
 ### 43.2 Professional practice
 
 Follow change control: every cryptographic change has a ticket, risk assessment, test evidence, approval and rollback plan. Document decisions with rationale. Communicate progress in the host's language — risk and service impact rather than algorithm names.
+
+In practice, a ticket for enabling the hybrid group on the partner API names the service, the change, the test evidence from the lab, the canary plan and the rollback command. Reporting progress as "customs replication now protected against recording" means more to managers than "X25519MLKEM768 enabled". The placement student writes both versions for each change.
 
 ### 43.3 Theory versus practice
 
 Common surprises: inventory is harder than algorithm selection; vendors' "PQC-ready" claims vary from roadmaps to shipping features; partners set the pace; the hardest problems are organizational. Record these as reflective notes.
 
+BPA's placement notes show this pattern: the algorithm decisions took days, while finding all uses of RSA took months. Vendor claims needed checking against shipping releases. Reflective notes record each surprise and what the student would plan differently next time, which is the main learning outcome of the placement. Students compare their notes with the plan they wrote at the start to see where their expectations were wrong.
+
 ### 43.4 Confidentiality
 
 The placement report describes methods and lessons without identifying systems, vulnerabilities or partners. Use synthetic examples where needed and get host approval before submission.
 
+A placement report can describe the dashboard method and the lesson about first-offered groups without naming the library or the host's systems. Where a concrete example is needed, the student uses BPA's synthetic case instead. Host approval is a step in the submission process with its own date, so the report is not delayed at the last moment by an unexpected request for changes.
+
 ### 43.5 Worked example
 
 A placement student at BPA (synthetic) builds the passive-telemetry dashboard. Lessons recorded: one TLS library logged only the "first offered" group, not the negotiated one — the dashboard was wrong until fixed; vendor declarations for appliances took eight weeks to obtain; the change board required a rollback rehearsal before approving hybrid TLS on the partner API.
+
+The logging error is a typical placement finding: the dashboard looked plausible until the student compared it with wire captures, the method later formalized in attacker's-vantage verification. The rollback rehearsal requirement shows that change boards care about recovery as much as about the change itself.
 
 ### 43.6 Common errors and limits
 
 - Bypassing change control "because it's only configuration".
 - Reports that disclose host vulnerabilities.
 - Treating vendor roadmaps as shipped capability.
+
+Configuration changes can break production as badly as code changes, as the proxy reset showed, so they follow change control. Reports that disclose host vulnerabilities can harm the host and breach the placement agreement. Vendor roadmaps describe intentions; only shipped and tested features count in a migration plan, and the placement student records which is which in the CBOM with the date checked.
 
 ### Engineering note
 
@@ -2857,6 +2941,8 @@ You will (1) scope a capstone migration project; (2) produce requirements, archi
 
 Migrate BPA's partner-facing ecosystem — edge TLS, partner VPNs, bills-of-lading signatures and customs exports — to quantum-resistant key establishment and a defined path for signatures, with crypto-agility and measurement, within an 18-month programme. Capstone I covers scoping through a first increment; Capstone II (Chapter 46) completes and validates.
 
+The 18-month window is deliberately shorter than a full migration, so students must choose a meaningful first increment and show how the rest follows. Partner-facing systems are chosen because they combine the longest-lived data with the dependencies that set the pace.
+
 ### 44.2 Deliverables for Capstone I
 
 1. Scope statement and stakeholder map.
@@ -2867,19 +2953,27 @@ Migrate BPA's partner-facing ecosystem — edge TLS, partner VPNs, bills-of-ladi
 6. First increment: hybrid TLS on the partner API in a test environment with measurement.
 7. Plan for Capstone II with risks.
 
+The deliverables follow the order of the book's earlier chapters, so each draws on a practised method. The first increment matters most because it turns plans into evidence: a hybrid TLS test environment with measurement shows that the team can deliver, and its results feed the canary design for production. The plan for Capstone II lists dependencies such as HSM procurement explicitly.
+
 ### 44.3 Assessment
 
 Assessors look for traceability from requirements to design to tests, honest unknowns in the CBOM, a working increment with evidence, and a plan whose dependencies are visible.
 
+Assessors trace at least one requirement end to end, from source through design decision to test result, and check that the CBOM's unknown share is reported, not hidden. A plan whose critical path is visible earns more credit than one with more features but no dependencies shown. Submissions that state limits clearly are rated higher than those that claim more than their evidence supports.
+
 ### 44.4 Worked example
 
 A model Capstone I submission identifies 37 exposed long-lived flows, chooses hybrid key exchange everywhere external, defers public certificate migration with rationale, demonstrates the partner-API increment with 0 failures in 20,000 lab connections (95% upper bound 1.5 × 10^-4) and lists HSM procurement as the critical path.
+
+The upper bound comes from the rule of three: three divided by 20,000 connections gives one and a half in ten thousand, which is within the availability budget in REQ-AV-01. Naming HSM procurement as the critical path shows the team understood the dependency graph from the integration chapter, where the HSM gated five work packages. Deferring public certificates is accepted because the rationale cites browser support and the active-attack argument.
 
 ### 44.5 Common errors and limits
 
 - Scope too broad to deliver an increment.
 - No baseline measurement.
 - Plans without dependencies.
+
+A scope covering the whole port cannot deliver a working increment in the time available, so the submission becomes a plan with no evidence. Without a baseline measurement, Capstone II cannot show improvement, as the baseline agreed at the start makes clear. Plans without dependencies miss long-lead items such as HSMs, which then delay several work packages at once. Assessors check for all three in the first week so teams can still correct them.
 
 ### Engineering note
 
@@ -2889,6 +2983,8 @@ Keep a decision log from the first day of the capstone. Each entry records the d
 ### 44.6 Agreeing the capstone baseline
 
 Capstone I begins by recording BPA's starting state: which links use hybrid key exchange, which certificates chain to classical roots, and which inventory entries are still unverified. Progress in Capstone II is measured against this baseline, so later claims of improvement can be checked by the assessor.
+
+The baseline is signed by the assessor and stored in the dossier before any change is made. It uses the same measurement methods that Capstone II will use, such as passive telemetry for negotiated groups, so differences reflect real change rather than a new method. Unknown entries are counted explicitly, since reducing them is one of the capstone's goals.
 
 ### Exercises
 
@@ -2915,6 +3011,8 @@ You will (1) conduct and receive an independent design review; (2) use a structu
 
 Reviewers independent of the design team read the requirements, architecture, threat analysis and evidence, then interview the team. Findings are written, classified (critical, major, minor, observation) and answered.
 
+Independence means the reviewers did not take part in the design and do not report to its leader. Interviews test whether the team understands its own documents; a design that only one member can explain is a risk in itself. Each finding receives a written response: a change, or a reasoned acceptance of the risk with an owner. Findings and responses together form part of the evidence dossier.
+
 ### 45.2 PQC review checklist
 
 - Are all public-key uses inventoried, with unknowns reported?
@@ -2927,19 +3025,27 @@ Reviewers independent of the design team read the requirements, architecture, th
 - Are availability risks (size, middleboxes, devices) tested?
 - Are residual risks stated honestly?
 
+Each question maps to an earlier chapter, so a finding can point to the method that was skipped.
+
 ### 45.3 Severity
 
 Critical: a design flaw that defeats the security goal (e.g. XOR combiner without binding, stateful keys in software with backups). Major: significant gap (no fallback monitoring). Minor: documentation or clarity. Observations: suggestions.
 
+Severity guides what must be fixed before proceeding: critical findings block the next stage, major findings need a plan with dates, minor ones are fixed in the normal course. Clear definitions keep reviewers consistent, so two reviewers rating the same issue reach the same level. A finding rated critical must explain how it defeats the goal, which keeps the label from being used for emphasis alone.
+
 ### 45.4 Worked example
 
 Review of the model Capstone I: one major finding — customs exports would use ML-KEM only, with no traditional component and no interoperability evidence from the agency; response: add parallel RSA-OAEP recipient during transition and schedule agency test. One minor — CBOM evidence source missing for 40 records; fixed.
+
+The export finding is major rather than critical because ML-KEM alone is not insecure, but relying on it without a traditional component and without agency testing risks both cryptanalytic surprise and an unreadable export. The response restores the hybrid approach used elsewhere and adds a dated test.
 
 ### 45.5 Common errors and limits
 
 - Reviews by the design team itself.
 - Findings without severity or response.
 - Defensive responses instead of changes or reasoned acceptance.
+
+A design team reviewing itself shares its own blind spots, so independent reviewers are required. Findings without severity cannot be prioritized, and findings without responses tend to be forgotten. Defensive responses waste the review: either change the design or accept the risk with stated reasons and an owner, as the export finding showed with its dated agency test and named owner.
 
 ### Engineering note
 
@@ -2970,23 +3076,33 @@ You will (1) complete the capstone implementation across domains; (2) execute ve
 
 Complete hybrid key exchange on edge and partner VPNs (or interim PSK where appliances lack support), dual-signed bills of lading with timestamps, dual-recipient customs exports, CBOM coverage ≥ 95% with unknowns reported, and an agility demonstration.
 
+Each item continues work begun in Capstone I and is measured against its baseline. The 95% CBOM coverage target matches REQ-INV-01, so the capstone tests the same requirement as production. The agility demonstration is included because it is the one item that shows the system can change again after the capstone ends.
+
 ### 46.2 Verification and validation
 
 Run Verification Laboratories I and II test suites against the completed system; collect partner acceptance; produce the residual-risk statement. Address every review finding with evidence.
+
+The suites from both verification laboratories are run unchanged, so results can be compared with the earlier runs. Partner acceptance is collected per partner with dates. The residual-risk statement lists what remains classical and when it will change. Every review finding from Capstone I needs evidence of its resolution; an open finding prevents completion unless the risk is explicitly accepted by the programme owner.
 
 ### 46.3 Agility demonstration
 
 Demonstrate replacing one algorithm through policy within the target time — for example, switching the edge's preferred hybrid group from X25519MLKEM768 to SecP256r1MLKEM768 for a compliance scenario, then back, measuring time-to-replace and confirming telemetry follows.
 
+Switching and then switching back proves that the change is reversible and that telemetry tracks it in both directions. The timer starts at the policy change request and stops when telemetry shows the new group negotiated by all clients that support it. Any manual step needed along the way is recorded, because each one is a place where a real emergency change could stall.
+
 ### 46.4 Worked example
 
 Model results: edge hybrid share 71%; VPNs — 9 of 14 partners with ML-KEM additional key exchange, 5 with PSK mixing; bills of lading dual-signed since month 14; exports dual-recipient, agency acceptance pending; CBOM coverage 96%, unknown 4%; agility demonstration: policy change to full negotiation in 3 days.
+
+The figures are consistent with earlier stages: edge hybrid share rose from 64% to 71%, CBOM coverage from 94% to 96%, and the VPN split matches the decision table's interim PSK option for older appliances. The agency acceptance remains pending and is reported as such.
 
 ### 46.5 Common errors and limits
 
 - Claiming completion with unresolved review findings.
 - Agility demonstrated only on a test bench.
 - Residual risk omitted.
+
+Claiming completion with open review findings hides known problems from the people who will operate the system. An agility demonstration only on a test bench does not prove the production pipeline can change algorithms, so it runs in the replica environment with production configuration. Omitting residual risk leaves operations unaware of what still needs attention after handover. The handover to operations later in the capstone depends on all three being right.
 
 ### Engineering note
 
@@ -2996,6 +3112,8 @@ Capstone II is also the moment to rehearse handover. Write the operations runboo
 ### 46.6 Handing the capstone to operations
 
 The Capstone II package goes to BPA's operations team with the configuration changes, the test evidence, the rollback steps and a list of what remains classical and why. An operations engineer replays the agility demonstration without the student present; only when that replay succeeds does the capstone count as transferable rather than a one-person result, and any step that needed the student's help is rewritten.
+
+The replay also tests the runbook's assumptions, such as access rights the student had but operations staff lack.
 
 ### Exercises
 
@@ -3022,23 +3140,33 @@ You will (1) design and run a controlled failure trial; (2) recover from cryptog
 
 In an isolated replica environment: (a) PQC library vulnerability requiring emergency patch and re-key; (b) LMS signing HSM restored from backup — confirm refusal to sign until state is reconciled; (c) simulated algorithm break: disable ML-DSA in policy and switch bills-of-lading signing to the alternative; (d) middlebox update that drops large ClientHellos at one site.
 
+The four scenarios cover different capabilities: patching and re-keying test operations; the HSM restore tests state controls; the algorithm break tests agility; the middlebox change tests path-specific response.
+
 ### 47.2 Objectives
 
 Define recovery time objectives: e.g. patch and re-key edge within 72 hours; switch signature algorithm within 14 days; path-specific exception for middlebox within 2 hours. Measure actual times.
+
+The objectives come from requirements and risk: 72 hours for an edge re-key reflects the exposure of a public service, while 14 days for a signature switch reflects the need for partner verifiers to update. Setting them before the trial makes the results meaningful; objectives chosen afterwards tend to match whatever happened and teach nothing about readiness.
 
 ### 47.3 Running the trial
 
 Brief participants; inject faults; observe without helping; record times, decisions and problems; stop if safety or production is at risk (it should not be — replica only).
 
+Observers do not help because the point is to see what the runbooks and team can do alone. Recording decisions as well as times shows where people hesitated or improvised, which often reveals a missing runbook step. The stop rule is stated in advance even though the environment is a replica, so participants know it exists and practise using it.
+
 ### 47.4 Worked example
 
 Model trial results: (a) 41 hours; (b) HSM refused, but the runbook lacked reconciliation steps — added; (c) 19 days, exceeding objective because partner verifiers needed updates — partner test endpoints added to the plan; (d) 35 minutes.
+
+Three of the four scenarios met their objectives: 41 hours against 72, 35 minutes against 2 hours, and the HSM correctly refusing to sign. The signature switch took 19 days against 14 because partner verifiers had to update, a dependency that agility within BPA cannot remove. Adding partner test endpoints shortens that path for the next exercise.
 
 ### 47.5 Common errors and limits
 
 - Trials on production.
 - Objectives set after the trial.
 - No follow-up actions.
+
+Trials on production risk causing the very incidents they are meant to rehearse. Objectives set afterwards cannot show whether performance was good enough. Without follow-up actions, the trial produces a report and no improvement; at BPA each gap, such as the missing reconciliation steps, became a tracked action that was retested. A trial counts as complete only when every action has an owner, a date and a planned retest.
 
 ### Engineering note
 
@@ -3048,6 +3176,8 @@ Trials should vary who is on duty. A recovery that works only when the system's 
 ### 47.6 Following up the trial findings
 
 Each gap found in the trial becomes a tracked action: the missing reconciliation steps in the runbook, the partner test endpoints and the slower-than-planned 19-day partner rollout. The trial is repeated for the scenarios that failed their objective, and the repeat results are added to the evidence dossier beside the originals, so readers can see both the failure and the correction.
+
+Keeping both results also shows assessors that the team corrected what failed. The repeat uses the same scenario and objective as the original, so the improvement is measured on equal terms. If the repeat still misses the objective, the gap is reported in the residual-risk statement rather than hidden.
 
 ### Exercises
 
@@ -3074,27 +3204,39 @@ You will (1) assemble an evidence dossier for the migrated system; (2) link evid
 
 Requirements and traceability matrix; architecture and decision records; CBOM snapshots with method; threat and FMEA analyses; test reports (KATs, interoperability, downgrade, state); measurement data (negotiated groups, failures, latency); validation and acceptance records; failure-trial reports; residual-risk statement; agility demonstration results.
 
+Each item type answers a different reviewer question: the matrix shows what was required, test reports show what was checked, measurement data shows what happened in operation, and the residual-risk statement shows what remains. A reviewer should be able to start from any claim in the summary and reach its evidence through the index.
+
 ### 48.2 Linking claims to evidence
 
 Every claim in summaries has an evidence identifier. "Edge connections negotiating hybrid groups: 71% (EV-MEAS-14, 30-day window, passive telemetry)". Unlinked claims are removed.
+
+The identifier tells the reader where the evidence is, the window tells them when it was measured, and the source tells them how. Removing unlinked claims may make a summary shorter, but every remaining sentence can be checked. The auditor's sample of ten claims in the dossier example shows how this works in practice, with each claim traced in minutes.
 
 ### 48.3 Protecting evidence
 
 Evidence can reveal weaknesses. Classify dossier parts; share sensitive parts (vulnerability details, network maps) only with authorized reviewers; publish only sanitized summaries.
 
+A network map showing which flows still use classical key exchange is useful to an attacker planning to record traffic, so it is classified. Sanitized summaries replace system names with categories and give totals rather than lists. Access to classified parts is logged, and the dossier index shows which parts exist without exposing their contents. BPA reviews classifications when the dossier is updated, since a gap that is closed may no longer need protection.
+
 ### 48.4 Reviewability
 
 Use a consistent structure, index and version control. A successor should find in minutes where ML-DSA keys live and how to replace them.
 
+BPA's dossier follows the same order as this book's verification chapters, with an index linking each evidence identifier to its file. Version control shows when each item changed and who changed it. A new engineer's first task is to answer three questions from the dossier, such as where the ML-DSA keys live, which tests whether the structure works.
+
 ### 48.5 Worked example
 
 BPA's dossier index lists 126 evidence items. An auditor samples ten claims and traces each to evidence in under an hour; one claim — "all firmware dual-signed" — is found to apply only to devices with the new bootloader; the claim is corrected to "all images dual-signed; 40% of devices verify both".
+
+The corrected claim is more useful than the original: it tells operations that 60% of devices still verify only one signature, which is a real residual risk. Sampling ten claims in under an hour also shows the dossier is reviewable, the property the previous part asked for.
 
 ### 48.6 Common errors and limits
 
 - Claims without evidence identifiers.
 - Dossiers with sensitive details shared broadly.
 - Evidence scattered across personal folders.
+
+Claims without identifiers cannot be checked and invite overstatement, as the firmware claim showed. Sharing sensitive parts broadly hands attackers a map of remaining weaknesses. Evidence in personal folders disappears when people leave, so the next migration starts without it. BPA keeps all evidence in the versioned repository with access controls, and the index is checked for broken links and missing items before each audit.
 
 ### Engineering note
 
@@ -3104,6 +3246,8 @@ Dossiers also need a maintenance owner. Evidence ages: measurements become stale
 ### 48.7 Keeping the dossier current
 
 BPA's dossier is versioned: each update states what changed, why and who approved it. When a standard is revised or a vendor ships a new post-quantum option, the affected claims are re-checked and their evidence refreshed, and stale items are marked rather than silently removed.
+
+A stale item stays visible with its date and the reason it lapsed, so a reviewer can tell an old success from a current one. When FIPS 206 for FN-DSA is final, for example, the claim that FN-DSA is excluded pending standardization is reviewed, and the decision log records whether BPA now adopts it for constrained links.
 
 ### Exercises
 
@@ -3130,27 +3274,39 @@ You will (1) write an engineering thesis that documents the design, implementati
 
 Introduction (problem, stakeholders, contribution); background (quantum threat, standards, hybrids, agility); requirements; design and alternatives; implementation; verification and validation; operations and failure trial; discussion (lessons, generalization, limits); conclusion and future work. Optionally include an applied study (Chapter 42).
 
+The structure mirrors the engineering lifecycle so readers can find each part where they expect it. Examiners often read the discussion of limits first, so it must state what the work did not show, such as certificate migration on the public portal. The optional study fits naturally where it informs a design or measurement choice, like the telemetry comparison that changed BPA's dashboard.
+
 ### 49.2 Results and limits
 
 Report measured results with windows and intervals; state residual risks; describe limits with direction (e.g. "passive telemetry cannot see certificate algorithms in TLS 1.3, so certificate migration status is from configuration only").
+
+Stating the direction of a limit tells readers which way the error goes: certificate status from configuration may overstate migration, because a configured certificate might not be served to all clients. Intervals show how much the measured figures could vary. A thesis that reports both is easier to trust than one with only point values.
 
 ### 49.3 Generalization
 
 Lessons that generalize: inventory first; hybrid key exchange early; authentication by trust-anchor lifetime; agility measured; partners set pace. Lessons that may not: specific failure rates, vendor behaviours, BPA's dependency structure.
 
+Separating the two lists helps readers in other organizations decide what to borrow. A hospital or utility can apply inventory-first planning and measured agility directly, but its failure rates and vendor problems will differ from BPA's. The thesis says which lessons depend on context and what would need checking elsewhere.
+
 ### 49.4 Integrity
 
 Cite standards and research accurately; distinguish your work from team work; label synthetic data; do not disclose host confidential information.
 
+Labelling synthetic data protects readers from treating BPA's figures as measurements of a real port. Distinguishing individual from team work matters in a programme where many people contributed. Accurate citation means quoting the standard's numbers, such as the 1,184-byte ML-KEM-768 key, rather than a secondary source's rounding. Confidential host information, such as partner names or unpatched weaknesses, stays out of the thesis even when it would make an example more vivid.
+
 ### 49.5 Worked example
 
 A model thesis abstract: "This thesis designs and validates a quantum-resistant migration for a synthetic port authority's partner ecosystem. Hybrid X25519MLKEM768 key exchange reached 71% of edge connections without exceeding the failure budget; partner VPNs used ML-KEM additional exchanges or interim pre-shared-key mixing; bills of lading were dual-signed with ML-DSA-65 and ECDSA with timestamp renewal; a policy-driven design replaced a KEM in three days. Certificates on the public portal remain classical; residual risks and generalizable lessons are discussed."
+
+The abstract states one result per area.
 
 ### 49.6 Common errors and limits
 
 - Overgeneralizing from one organization.
 - Omitting residual risks.
 - Unlabelled synthetic data.
+
+One port's experience cannot establish failure rates for all organizations, so claims must be scoped to the case. Omitting residual risks, such as the classical portal certificates, overstates the outcome. Unlabelled synthetic data may be mistaken for field measurements and quoted elsewhere as fact. Each of these is checked by the thesis supervisor before submission, using the residual-risk statement and the data labels in the evidence dossier as the references.
 
 ### Engineering note
 
@@ -3181,6 +3337,8 @@ You will (1) present and defend the engineering thesis; (2) answer technical, et
 
 Twenty minutes: problem and stakes; requirements; architecture and key decisions; results with evidence; failures and recovery; residual risk; what you would do differently. Use diagrams with text alternatives.
 
+Twenty minutes is short, so each part gets roughly three minutes, with results and residual risk given the most care. The final question, what you would do differently, shows reflection and often draws the panel's most useful follow-up. Text alternatives for diagrams help panel members using screen readers and force the presenter to state each diagram's point in words.
+
 ### 50.2 Likely questions
 
 - Why hybrid rather than pure PQC? (Hedge against cryptanalytic surprise; cite Rainbow/SIKE; cost accepted.)
@@ -3193,15 +3351,21 @@ Twenty minutes: problem and stakes; requirements; architecture and key decisions
 
 Show the dashboard, a policy-driven algorithm change in the replica environment and the dossier tracing for one claim.
 
+Each part of the demonstration supports a different claim: the dashboard shows measurement in operation, the policy change shows agility, and the dossier trace shows that results are backed by evidence. Running it in the replica environment avoids any risk to BPA's services. The presenter rehearses each step with a timer and has screenshots ready in case the environment fails during the defence.
+
 ### 50.4 Forward plan
 
 Agility is the legacy: schedule re-verification of standards (FN-DSA, HQC, revised IR 8547), annual algorithm-break tabletops, CBOM refresh automation and partner reviews.
+
+Each item has an owner and a date, so the plan survives the end of the programme. Re-verifying standards catches changes such as a final FN-DSA standard or HQC's publication, which would add options for BPA. Annual tabletops keep the time-to-replace figure current, while partner reviews track the remaining classical paths toward their sunset dates and flag any slipping.
 
 ### 50.5 Common errors and limits
 
 - Claiming the organization is "quantum-safe".
 - No answer for algorithm compromise.
 - Demonstrations that depend on production systems.
+
+Claiming "quantum-safe" invites the panel to list the classical certificates and unknown assets that remain. Without an answer for algorithm compromise, the agility work has no visible purpose. A demonstration that needs production systems risks an outage during the defence and cannot be repeated by reviewers afterwards; the replica environment avoids both problems. Candidates who prepare honest answers on these points usually find the panel's questions easier.
 
 ### Engineering note
 
