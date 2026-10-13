@@ -1561,6 +1561,8 @@ You will (1) run known-answer tests (KATs) and negative tests; (2) explain why v
 
 Standards define algorithms; implementations can still be wrong. Known-answer tests run an implementation on fixed inputs and compare with published outputs; negative tests feed malformed inputs and expect rejection. NIST's Cryptographic Algorithm Validation Program applies such tests to implementations of FIPS 203, 204 and 205. Students cannot validate a production library, but they can learn the habit with primitives from the standard library.
 
+The point of the exercise is to separate two claims that are easy to blur: that an algorithm is sound, and that a given piece of code computes it correctly. HCU's developers rely on the first from the standards process and must establish the second themselves for every library they deploy.
+
 ### 25.2 Practical activity — Lab V
 
 ```python
@@ -1596,23 +1598,33 @@ negative/positive test ML-KEM-512 len 1184: rejected (ML-KEM-512: expected 800 b
 
 The hash KATs pass because Python's SHA-3 matches published values; the length checks show one acceptance and two rejections. A real ML-KEM decoder also checks coefficient ranges as FIPS 203 requires.
 
+Both kinds of test are needed. The KATs confirm that correct inputs give the published outputs; the negative tests confirm that inputs of the wrong size are refused rather than processed. Note the third case: a key of the right length for ML-KEM-768 is still rejected when the caller claims ML-KEM-512, because the parameter set must match. Many real interoperability bugs come from exactly this kind of mismatch between a label and the bytes that accompany it.
+
 ### 25.3 Lab records
 
 A lab record states the question, environment (OS, Python and library versions), inputs, exact commands, outputs and interpretation. Store it with the code so that anyone can rerun it. If a library update changes a result, the record shows what changed.
+
+Good records also note what was not tested, so that a later reader does not assume coverage that never existed. For HCU, the lab record for each cryptographic library sits beside its configuration in version control, and the change ticket for any library upgrade links to the rerun record. An auditor can then trace a production version back to the evidence that it passed.
 
 ### 25.4 Interpreting results
 
 A passing KAT shows that the implementation matches the reference on those inputs; it does not show constant-time behaviour, correct key handling or safe integration. A failing test may reveal a bug in the implementation, the test vector or the harness. Include a *negative control* — a deliberately wrong implementation that the test must catch — to confirm the harness can fail.
 
+In Lab V the rejected key lengths act as a simple version of that control. If the control passes, the harness itself is broken and every earlier result is in doubt.
+
 ### 25.5 Worked example
 
 An HCU developer integrates a new PQC library. Their lab record: library version, test vectors from the vendor's published KAT files, a harness that compares outputs, and a negative control that flips one byte of an expected output to check the harness reports failure. All KATs pass; the negative control fails as expected. The record notes that side-channel behaviour was not tested and is covered by the library's own evaluation.
+
+The developer also records where the vectors came from and when they were downloaded, so that a later update to the vendor files can be checked against the version used.
 
 ### 25.6 Common errors and limits
 
 - Treating KAT success as proof of security.
 - Harnesses that cannot fail.
 - Unrecorded versions, making results irreproducible.
+
+- Running only positive tests, so that malformed inputs are never exercised. - Downloading test vectors from an unofficial mirror without checking their origin. - Rerunning nothing after a library upgrade because the earlier run passed. - Testing a library in isolation and assuming the integration behaves the same, when the calling code may pass the wrong parameter set or mishandle errors. Each of these leaves a gap that the lab record should make visible rather than hide.
 
 ### Exercises
 
@@ -1638,6 +1650,8 @@ You will (1) explain how hybrid secrets are combined with a key-derivation funct
 ### 26.1 Combining secrets
 
 A hybrid KEM produces two shared secrets. A *combiner* feeds both, plus context such as the handshake transcript, into a key-derivation function (KDF) so that the output is unpredictable if either secret is. Concatenation followed by HKDF-Extract, as in the TLS hybrid design, is one standard approach; [SP 800-56C Rev. 2](https://doi.org/10.6028/NIST.SP.800-56Cr2) and SP 800-227 describe approved key-derivation and combination methods.
+
+The combiner is small, but it is where the security of the hybrid is actually decided.
 
 ### 26.2 Practical activity — Lab C
 
@@ -1666,6 +1680,8 @@ context changed        af06eca8abcd45a9
 
 Changing either secret, or the context, changes the derived key completely. Binding the context prevents an attacker from reusing secrets across different handshakes.
 
+The four keys share no visible pattern, which is the property a KDF should give. The order of inputs matters too: the lab puts the post-quantum secret first, matching X25519MLKEM768, and both ends must use the same order or they derive different keys. In a real protocol the context is the handshake transcript hash, and the output is expanded into separate keys for each direction rather than truncated as here for display.
+
 ### 26.3 Post-quantum signatures
 
 ML-DSA ([FIPS 204](https://doi.org/10.6028/NIST.FIPS.204)) is a lattice-based signature using the "Fiat–Shamir with aborts" technique: the signer repeatedly samples until the candidate signature reveals nothing about the key. Parameter sets ML-DSA-44, -65 and -87 have signatures of 2,420, 3,309 and 4,627 bytes. SLH-DSA ([FIPS 205](https://doi.org/10.6028/NIST.FIPS.205)) relies only on hash functions; it has tiny public keys (32–64 bytes) but large signatures (7,856 to 49,856 bytes) and slower signing. LMS and XMSS are smaller and faster but stateful. FN-DSA, based on Falcon, promised compact signatures and was still in development.
@@ -1674,15 +1690,21 @@ ML-DSA ([FIPS 204](https://doi.org/10.6028/NIST.FIPS.204)) is a lattice-based si
 
 Compare signatures on: assumption (lattice versus hash), sizes, signing and verification speed, statefulness, and ecosystem support. For TLS certificates, ML-DSA's speed and moderate size fit best. For firmware signed rarely and verified on boot, SLH-DSA's conservatism or LMS's small signatures may be preferred. For documents needing decades of trust, conservatism weighs heavily.
 
+HCU's own choices follow this pattern: ML-DSA for its gateway certificates, with firmware signing for card terminals still under review. Each choice is written down with the reason, so it can be revisited when ecosystem support or cryptanalysis changes.
+
 ### 26.5 Worked example
 
 HCU compares options for signing member statements, produced 500,000 times per month: ML-DSA-65 (3,309-byte signatures, fast signing) versus SLH-DSA-SHA2-128s (7,856-byte signatures, slow signing). The volume and PDF size favour ML-DSA-65; HCU records the residual assumption risk and plans to keep algorithm identifiers in each document so that a future change is possible.
+
+The comparison is recorded in the decision log together with the measured signing rate on HCU's statement servers, so it can be revisited if volumes change. Signing time on the existing servers was also measured, and SLH-DSA would have needed extra hardware to keep up.
 
 ### 26.6 Common errors and limits
 
 - Combining secrets by XOR without context binding.
 - Choosing SLH-DSA for high-volume TLS without measuring cost.
 - Using stateful signatures where state cannot be protected.
+
+- Truncating the combined output below the strength needed for the session key. - Comparing signature schemes on signature size alone, ignoring the public key carried in each certificate. - Leaving the algorithm identifier out of signed documents, which makes a later migration hard. - Assuming a hybrid design is secure because each component is, without checking that the combiner binds both secrets and the context.
 
 ### Exercises
 
@@ -1709,31 +1731,45 @@ You will (1) define verification objectives for a migration; (2) test that hybri
 
 Verification asks whether the system does what the design says. For a migration, objectives include: the hybrid group is offered and selected for in-scope clients; classical fallback occurs only where permitted; certificates validate in all supported clients; performance stays within budget; and logs record the negotiated algorithms.
 
+Each objective needs a method and an expected result written down before testing starts, so that results cannot be reinterpreted afterwards. For HCU, the objectives are applied separately to the web gateway and the branch VPN, because they use different products and fail in different ways.
+
 ### 27.2 Checking negotiation
 
 Configuration says what a server *offers*; the handshake shows what is *selected*. Verify selection from the client side (test client output showing the group) and the server side (logs of negotiated groups). In TLS 1.3, the selected group appears in the cleartext ServerHello, so an authorized passive sensor can confirm it. For IKEv2, appliance logs or lab captures show the key-exchange methods negotiated under RFC 9370.
+
+Both views should agree. If the client reports the hybrid group but server logs disagree, suspect a middlebox or a log that records offers rather than selections. HCU checks both views for each site.
 
 ### 27.3 Downgrade and fallback
 
 TLS 1.3 protects negotiation integrity through the transcript-bound handshake, so an active attacker cannot simply strip the hybrid group without detection. But fallback can still happen legitimately: a client that does not support the group, or a server configured with classical groups preferred. Lab tests should include clients with and without hybrid support and confirm that each gets the expected outcome. Active downgrade experiments belong only in an isolated testbed.
 
+Each expected outcome should be written beside the client version in the test plan.
+
 ### 27.4 Evidence
 
 Record test cases, client versions, server configuration hashes, outputs and dates. A verification report lists each objective with pass, fail or not tested, plus the evidence location.
+
+Untested objectives are listed as openly as failures, because a report that omits them overstates coverage. HCU keeps the configuration hash with each result so that a later reviewer can tell whether a pass still applies after the gateway configuration changes. A report older than the current configuration is treated as stale until the tests are rerun against it.
 
 ### 27.5 Worked example
 
 HCU's lab verifies the pilot web gateway: a hybrid-capable client selects X25519MLKEM768 (pass); a legacy client selects X25519 (expected fallback, pass); the gateway's preference order was accidentally set with X25519 first, so even hybrid-capable clients chose X25519 on one test build (fail, fixed by reordering). Without the client-side check, the configuration would have looked correct.
 
+The fix was verified by rerunning both clients after the change. The lesson for HCU was to make the client-side check a standing part of every gateway change, not only of the pilot, so that a reordered preference list is caught before it reaches members.
+
 ### 27.6 Practical activity
 
 Write a verification checklist of six objectives for a hybrid-enabled HCU gateway, with method and expected evidence for each.
+
+Include at least one objective on fallback for legacy clients and one on logging of negotiated groups. For each objective, name the client or tool used, the expected result, and where the evidence will be stored. Then mark which objectives could be checked in the lab and which need production logs, since the second kind can only be confirmed after the pilot starts.
 
 ### 27.7 Common errors and limits
 
 - Verifying configuration instead of negotiation.
 - Testing only modern clients.
 - Running downgrade tests on production.
+
+- Treating a single passing handshake as proof for every site and client type. - Forgetting to recheck after a configuration change, so earlier evidence no longer matches what runs. - Reading the server's offer list as if it were the selected group. - Leaving untested objectives out of the report instead of marking them as not tested. Each of these makes a report look more complete than the evidence behind it.
 
 ### Exercises
 
@@ -1760,9 +1796,13 @@ You will (1) apply failure-mode and effects analysis (FMEA) to a migration; (2) 
 
 FMEA lists, for each component, ways it can fail, the effect, the cause, how it would be detected and a risk priority. Migration failure modes include: handshake failure due to message size; silent fallback to classical; certificate validation failure in old clients; performance degradation on constrained devices; key-management mismatch between HSMs; and an algorithm becoming untrusted after cryptanalysis.
 
+Scoring each failure mode on severity, likelihood and detectability makes the ranking explicit and open to challenge. Silent failures deserve special attention because nothing alerts on them by default.
+
 ### 28.2 Algorithm-break response
 
 Rainbow and SIKE show that a scheme can fall suddenly. A response plan says who decides, how quickly configuration can remove the algorithm, which systems need a release and which need hardware, and what fallback is acceptable. Hybrids make this survivable: if ML-KEM were unexpectedly weakened, hybrid flows would still rest on X25519 while a replacement is deployed.
+
+The plan should be rehearsed in the lab before it is needed. Without a plan, HCU would be deciding under pressure which branches and terminals to change first, and the answer would depend on who happened to be on call.
 
 ### 28.3 Practical activity — Lab A
 
@@ -1797,19 +1837,27 @@ old tag after retirement: False
 
 Migration is a policy change, not a code change. The algorithm identifier travels with the data; during transition both algorithms are accepted, and after retirement the old one is refused. Using a MAC here keeps the lab simple; the same pattern applies to signatures and KEMs.
 
+In a real system the registry would hold KEM and signature identifiers, and the policy would be loaded from configuration rather than set in code. The lab also shows why retirement is a separate step: tags created under the old algorithm stop verifying, so data that must stay valid needs re-protecting first.
+
 ### 28.4 Recovery and exit criteria
 
 Each stage needs a rollback procedure and an exit criterion. Rollback restores the previous configuration quickly if failures exceed budget. Exit criteria say when a transitional state ends, such as "classical-only negotiation below 0.5 % for 90 days", so that fallback does not become permanent.
 
+Both should be agreed before the stage begins, not after a problem appears. HCU writes the rollback steps into the change ticket and tests them in the lab, because a rollback that has never been run tends to fail at the moment it is needed. The exit criterion is reviewed at each stage decision, and any extension is recorded with a reason and a new date.
+
 ### 28.5 Worked example
 
 HCU's FMEA ranks "silent fallback to classical on branch VPN" highest: severe for HNDL, likely due to misconfiguration, hard to detect without monitoring. Control: alert when any branch negotiates without the post-quantum method, weekly report of fallback share. "Large ClientHello dropped by legacy proxy" ranks second: visible quickly, so the control is staged rollout and a rollback runbook.
+
+The FMEA is reviewed after each rollout stage, since measured results may change the rankings. Both controls are tested in the lab before the pilot begins.
 
 ### 28.6 Common errors and limits
 
 - Considering only availability failures, not silent security failures.
 - No plan for an algorithm break.
 - Transitional fallbacks with no exit criteria.
+
+- Scoring detectability too generously for failures that produce no error. - Writing rollback procedures that have never been rehearsed. - Ranking failure modes once and never revisiting them after the rollout produces real data. - Leaving key-management mismatches out of scope because they sit with a different team. Each one leaves a risk on the table that the analysis was supposed to expose.
 
 ### Exercises
 
@@ -1836,6 +1884,8 @@ You will (1) plan a staged rollout with canaries; (2) use confidence bounds for 
 
 Operations introduce change gradually: enable a hybrid group for 1 % of traffic, then 10 %, then everyone, checking at each stage that failure rates stay within an agreed budget. Each stage has a duration long enough to see weekly patterns and a named decision-maker.
 
+The budget and the stage durations are agreed before the first stage starts, so that pressure to finish does not change them midway. HCU sets its budget against the baseline failure rate measured on the gateway before any change, and it treats a site with unusual equipment as its own stage rather than averaging it into the rest.
+
 ### 29.2 Practical activity — Lab K
 
 ```python
@@ -1860,23 +1910,34 @@ Expected output:
 
 The decision uses the upper confidence bound, not the point estimate. The first canary's point estimate is low but the sample is small; the bound exceeds the budget, so the team waits for more data. The proxy-site canary shows a real problem.
 
+The second canary has a larger sample, so its bound is tight enough to promote. The third has the same sample size but more failures, and its bound is well above the budget, so the team holds and investigates the site instead of waiting for more data.
+
 ### 29.3 Monitoring
 
 Production monitoring should report negotiated key-exchange groups by service and site, fallback shares, handshake failures by error type, and certificate validation errors. Alerts fire when fallback exceeds thresholds. Measurement lag matters: if partner data arrives monthly, promotion decisions for partner flows cannot be weekly.
+
+Dashboards should separate sites, so that one problem location does not disappear in an average. HCU's monitoring reports fallback share for each branch, which is how the proxy problem in its rollout was found quickly. Fallback that grows slowly is a warning sign too.
 
 ### 29.4 Communication
 
 Publish a short note at each stage: what changed, measured failure bound, known exceptions and next decision date. Help-desk staff who know that a hybrid rollout reached a site will route related tickets quickly.
 
+Notes are short and go to the same list each time, so that staff know where to look. HCU sends them to branch managers and the help desk, and keeps them with the rollout record as part of the evidence of what changed and when. When a stage is held, the note says so plainly and gives the reason, so nobody assumes the rollout has quietly moved on.
+
 ### 29.5 Worked example
 
 HCU rolls out hybrid key exchange on its web gateway. Stage 1 (1 %, one week) holds because the confidence bound is wide; stage 1 extended to two weeks promotes. Stage 2 at 10 % reveals elevated failures from one branch with a legacy inspection proxy; that branch is excluded, the proxy vendor is engaged and the rest proceeds. Monitoring shows 0.3 % fallback after full rollout, all from old clients.
+
+The excluded branch has its own exit date, after which it is reviewed again. The note for each stage went to the help desk the same day.
 
 ### 29.6 Common errors and limits
 
 - Promoting on point estimates from small samples.
 - Monitoring only failures, not fallback.
 - Changing configuration without help-desk awareness.
+
+- Averaging all sites together, so one failing location is hidden. - Holding a stage without recording a reason or a new decision date. - Leaving an excluded site without an owner or a deadline, so it never rejoins the rollout. - Setting the failure budget after seeing the data rather than before. Each of these turns a measured, staged change into a rollout that nobody can fully explain later.
+
 ### 29.7 Rollback in practice
 
 Every stage needs a rehearsed rollback: the exact configuration to restore, who may trigger it, and how long it takes. Rehearse it in the lab before the first canary. A rollback that has never been tested is a hope, not a control. After a rollback, record what was observed, keep the evidence, and decide whether the cause was the algorithm, the implementation or the environment before trying again; most first-attempt rollbacks in hybrid deployments trace to environment issues such as old proxies.
@@ -1906,6 +1967,8 @@ You will (1) estimate handshake bytes for post-quantum certificate chains; (2) c
 
 Hybrid key exchange adds about 2.3 kB per TLS handshake. Post-quantum authentication adds more: each certificate contains a public key and a signature, and the handshake includes a CertificateVerify signature and often signed certificate timestamps (SCTs). With ML-DSA every one of these grows.
 
+Because a chain carries several of these elements, the growth multiplies rather than adds. A server might send two certificates, each with an ML-DSA key and signature, plus the CertificateVerify and two SCT signatures, so the authentication bytes can exceed the key-exchange bytes several times over. That is why HCU treats certificates as a separate migration decision from key exchange.
+
 ### 30.2 Practical activity — Lab B
 
 ```python
@@ -1933,6 +1996,8 @@ SLH-DSA-SHA2-128s    ~ 40144 bytes of certificates and signatures
 
 The model assumes a two-certificate chain, ~400 bytes of other fields per certificate and two SCTs; real chains vary. ML-DSA-44 raises authentication bytes roughly twelve-fold over ECDSA; SLH-DSA-128s more than thirty-fold.
 
+The counting is deliberately simple: each certificate carries its own public key and a signature from the issuer, and the handshake adds one CertificateVerify signature plus one signature per SCT. SLH-DSA has a tiny public key but very large signatures, so it is hit hardest by the number of signatures in the chain. Changing the depth or SCT count in the lab shows which lever matters most for each scheme.
+
 ### 30.3 Network effects
 
 TCP's initial congestion window commonly allows about ten segments (~14 kB) before waiting for acknowledgement. A server flight exceeding it costs an extra round trip — small on a data-centre link, noticeable on a 150-ms mobile or satellite path. Certificate compression ([RFC 8879](https://www.rfc-editor.org/rfc/rfc8879.html)) helps little with high-entropy keys and signatures. Engineering responses include shorter chains, fewer SCTs and careful choice of parameter sets.
@@ -1941,18 +2006,27 @@ TCP's initial congestion window commonly allows about ten segments (~14 kB) befo
 
 Report results with assumptions: chain depth, field sizes, number of SCTs, initial window. State that the model estimates bytes, not latency, and that latency needs measurement.
 
+Comparisons are valid only when every scheme is run with the same assumptions. HCU attaches the Lab B parameters to its report on certificate options, so a reviewer can change one assumption, such as the number of SCTs, and see the effect. Measured latency from the emulated links is reported separately from the byte estimate.
+
 ### 30.5 Worked example
 
 HCU's mobile app talks to the gateway over cellular links with 80-ms round trips. Lab B suggests ~15.5 kB of authentication with ML-DSA-44, slightly above a typical initial window. HCU's plan: keep ECDSA certificates while monitoring ecosystem support, test ML-DSA-44 chains in the lab with one SCT, and measure latency on emulated cellular links before any change.
+
+The decision is to be revisited when browsers and client libraries support ML-DSA certificates widely. Members on slow links would notice the delay first, so the emulated tests use the worst branch and mobile conditions HCU has recorded rather than the average.
 
 ### 30.6 Common errors and limits
 
 - Equating bytes with latency.
 - Ignoring SCTs and intermediate certificates.
 - Comparing signature schemes only by signature size, not public key plus signature.
+
+- Assuming certificate compression will make up the difference. - Testing only on fast lab networks, where an extra round trip is invisible. - Choosing a larger parameter set than policy needs, adding bytes with no benefit. - Reporting a single byte figure without the chain depth and SCT count behind it. Each makes the cost of post-quantum authentication look different from what users actually experience.
+
 ### 30.7 Trimming the chain
 
 When bytes matter, engineers have several levers before choosing a different algorithm: remove unnecessary intermediates, reduce the number of embedded SCTs where policy permits, avoid sending a root certificate the client already trusts, and prefer ML-DSA-44 over larger parameter sets where category 2 meets policy. Each lever has a cost in policy or compatibility, so record which were used and why. Re-run Lab B with the trimmed configuration and keep both results in the lab record.
+
+Note any client that fails with the trimmed chain.
 
 ### Exercises
 
