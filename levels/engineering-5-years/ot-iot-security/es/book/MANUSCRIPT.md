@@ -29,7 +29,7 @@ Los capítulos 1–19 construyen fundamentos aplicados a la TO desde la primera 
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](../../en/book/MANUSCRIPT.md#ch-07) · [8](../../en/book/MANUSCRIPT.md#ch-08) · [9](../../en/book/MANUSCRIPT.md#ch-09) · [10](../../en/book/MANUSCRIPT.md#ch-10) · [11](../../en/book/MANUSCRIPT.md#ch-11) · [12](../../en/book/MANUSCRIPT.md#ch-12) · [13](../../en/book/MANUSCRIPT.md#ch-13) · [14](../../en/book/MANUSCRIPT.md#ch-14) · [15](../../en/book/MANUSCRIPT.md#ch-15) · [16](../../en/book/MANUSCRIPT.md#ch-16) · [17](../../en/book/MANUSCRIPT.md#ch-17) · [18](../../en/book/MANUSCRIPT.md#ch-18) · [19](../../en/book/MANUSCRIPT.md#ch-19) · [20](../../en/book/MANUSCRIPT.md#ch-20) · [21](../../en/book/MANUSCRIPT.md#ch-21) · [22](../../en/book/MANUSCRIPT.md#ch-22) · [23](../../en/book/MANUSCRIPT.md#ch-23) · [24](../../en/book/MANUSCRIPT.md#ch-24) · [25](../../en/book/MANUSCRIPT.md#ch-25) · [26](../../en/book/MANUSCRIPT.md#ch-26) · [27](../../en/book/MANUSCRIPT.md#ch-27) · [28](../../en/book/MANUSCRIPT.md#ch-28) · [29](../../en/book/MANUSCRIPT.md#ch-29) · [30](../../en/book/MANUSCRIPT.md#ch-30) · [31](../../en/book/MANUSCRIPT.md#ch-31) · [32](../../en/book/MANUSCRIPT.md#ch-32) · [33](../../en/book/MANUSCRIPT.md#ch-33) · [34](../../en/book/MANUSCRIPT.md#ch-34) · [35](../../en/book/MANUSCRIPT.md#ch-35) · [36](../../en/book/MANUSCRIPT.md#ch-36) · [37](../../en/book/MANUSCRIPT.md#ch-37) · [38](../../en/book/MANUSCRIPT.md#ch-38) · [39](../../en/book/MANUSCRIPT.md#ch-39) · [40](../../en/book/MANUSCRIPT.md#ch-40) · [41](../../en/book/MANUSCRIPT.md#ch-41) · [42](../../en/book/MANUSCRIPT.md#ch-42) · [43](../../en/book/MANUSCRIPT.md#ch-43) · [44](../../en/book/MANUSCRIPT.md#ch-44) · [45](../../en/book/MANUSCRIPT.md#ch-45) · [46](../../en/book/MANUSCRIPT.md#ch-46) · [47](../../en/book/MANUSCRIPT.md#ch-47) · [48](../../en/book/MANUSCRIPT.md#ch-48) · [49](../../en/book/MANUSCRIPT.md#ch-49) · [50](../../en/book/MANUSCRIPT.md#ch-50) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](../../en/book/MANUSCRIPT.md#ch-13) · [14](../../en/book/MANUSCRIPT.md#ch-14) · [15](../../en/book/MANUSCRIPT.md#ch-15) · [16](../../en/book/MANUSCRIPT.md#ch-16) · [17](../../en/book/MANUSCRIPT.md#ch-17) · [18](../../en/book/MANUSCRIPT.md#ch-18) · [19](../../en/book/MANUSCRIPT.md#ch-19) · [20](../../en/book/MANUSCRIPT.md#ch-20) · [21](../../en/book/MANUSCRIPT.md#ch-21) · [22](../../en/book/MANUSCRIPT.md#ch-22) · [23](../../en/book/MANUSCRIPT.md#ch-23) · [24](../../en/book/MANUSCRIPT.md#ch-24) · [25](../../en/book/MANUSCRIPT.md#ch-25) · [26](../../en/book/MANUSCRIPT.md#ch-26) · [27](../../en/book/MANUSCRIPT.md#ch-27) · [28](../../en/book/MANUSCRIPT.md#ch-28) · [29](../../en/book/MANUSCRIPT.md#ch-29) · [30](../../en/book/MANUSCRIPT.md#ch-30) · [31](../../en/book/MANUSCRIPT.md#ch-31) · [32](../../en/book/MANUSCRIPT.md#ch-32) · [33](../../en/book/MANUSCRIPT.md#ch-33) · [34](../../en/book/MANUSCRIPT.md#ch-34) · [35](../../en/book/MANUSCRIPT.md#ch-35) · [36](../../en/book/MANUSCRIPT.md#ch-36) · [37](../../en/book/MANUSCRIPT.md#ch-37) · [38](../../en/book/MANUSCRIPT.md#ch-38) · [39](../../en/book/MANUSCRIPT.md#ch-39) · [40](../../en/book/MANUSCRIPT.md#ch-40) · [41](../../en/book/MANUSCRIPT.md#ch-41) · [42](../../en/book/MANUSCRIPT.md#ch-42) · [43](../../en/book/MANUSCRIPT.md#ch-43) · [44](../../en/book/MANUSCRIPT.md#ch-44) · [45](../../en/book/MANUSCRIPT.md#ch-45) · [46](../../en/book/MANUSCRIPT.md#ch-46) · [47](../../en/book/MANUSCRIPT.md#ch-47) · [48](../../en/book/MANUSCRIPT.md#ch-48) · [49](../../en/book/MANUSCRIPT.md#ch-49) · [50](../../en/book/MANUSCRIPT.md#ch-50) |
 
 [Resultados resueltos](#worked-results) · [Referencias](#references)
 
@@ -416,7 +416,390 @@ Las series y las tasas convierten «inténtelo de nuevo» y «contrate a alguien
 
 ### Siga estudiando — capítulo 06 de 50
 
-[← Capítulo 05 (borrador)](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 (borrador) →](../../en/book/MANUSCRIPT.md#ch-07)
+[← Capítulo 05 (borrador)](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 (borrador) →](#ch-07)
+
+<a id="ch-07"></a>
+
+## Capítulo 7 — Probabilidad y estadística
+
+### Resultados de aprendizaje
+
+Usted podrá (1) informar tasas de detección con intervalos; (2) comparar detectores sin exagerar las conclusiones; (3) rechazar clasificaciones que la muestra no puede sostener.
+
+### 7.1 Tasas e intervalos
+
+Sesenta ensayos sintéticos con 0 falsas alarmas y 60/60 detecciones parecen perfectos, hasta que se recuerda que un intervalo de Wilson al 95 % para 0/60 todavía admite, a largo plazo, una tasa de falsas alarmas de unos pocos puntos porcentuales. Informe el intervalo, no solo el valor puntual. Para 60/60 detecciones, el intervalo de la tasa de omisión también es estrecho, pero no es cero para siempre. Los informes de Lena para el CNHP dan juntos el conteo, el intervalo y la lista de semillas, de modo que el lector puede ver tanto el resultado como cuánto podría moverse con más ensayos.
+
+### 7.2 Comparar detectores
+
+El laboratorio de CUSUM sobre residuos muestra un detector de banda que no detecta los ataques de clase A, mientras que el CUSUM los detecta con un retardo medio de ~25 muestras, ambos con 0/60 falsas alarmas en este conjunto de semillas. Eso es evidencia de que el CUSUM supera a la banda *en estos ataques sintéticos*, no de que el CUSUM sea mejor en general. Prefiera diseños pareados sobre las mismas trazas e indique la clase de ataque.
+
+```python
+# Lab 27 - residual CUSUM vs band on batch reactor level (synthetic)
+import random
+def run(seed, atk, det, k=0.8, h=6.0):
+    rng=random.Random(seed); true=est=50.0; s=0.0; alarm=None
+    for t in range(500):
+        inflow=1.0+rng.gauss(0,0.05)+(0.08 if atk and t>=250 else 0)
+        true+=inflow-0.02*true
+        lvl=true+rng.gauss(0,0.3); fm=inflow+rng.gauss(0,0.02)
+        if atk and t>=250: lvl=50+rng.gauss(0,0.3)
+        if atk=="B" and t>=250: fm=1.0+rng.gauss(0,0.02)
+        est+=fm-0.02*est
+        hit=abs(lvl-50)>2.0 if det=="band" else False
+        if det=="cusum":
+            s=max(0.0,s+abs(lvl-est)-k); hit=s>h
+        if hit and alarm is None: alarm=t
+    return alarm
+for det in ("band","cusum"):
+    fa=sum(run(i,None,det) is not None for i in range(60))
+    for atk in ("A","B"):
+        hits=[a-250 for a in (run(i,atk,det) for i in range(60)) if a is not None and a>=250]
+        print(f"{det} class{atk} FA={fa}/60 det={len(hits)}/60 mean_delay={sum(hits)/len(hits) if hits else float('nan'):.1f}")
+```
+
+Salida esperada:
+
+```text
+band classA FA=0/60 det=0/60 mean_delay=nan
+band classB FA=0/60 det=0/60 mean_delay=nan
+cusum classA FA=0/60 det=60/60 mean_delay=24.8
+cusum classB FA=0/60 det=0/60 mean_delay=nan
+```
+
+El plan piloto de Lena conserva las mismas trazas para ambos detectores y nombra la clase de ataque probada, para que la comparación pueda repetirse más adelante con semillas nuevas.
+
+### 7.3 Tasas base en la sala de control
+
+Si los ataques ciberfísicos genuinos son raros, un detector con una tasa de falsas alarmas de apenas un 1 % dominará la atención del operador. La regla de Bayes se aplica exactamente como en el capítulo 7 de los cursos de seguridad vecinos: la precisión se desploma cuando la tasa base es diminuta. Diseñe para la tasa base de la planta, no para el conjunto equilibrado de un laboratorio.
+
+> **Caso sintético — Ashford Batch Plant.** Un proveedor afirmó «99 % de detección, 0 % de falsas alarmas» a partir de una demostración de 20 ejecuciones. Lena pidió la clase de ataque, la lista de semillas y el intervalo de falsas alarmas; no se aportó ninguno. El piloto usó en su lugar el diseño del laboratorio de CUSUM.
+
+### 7.4 Errores y límites
+
+Los ataques sintéticos no son el adversario. Los intervalos suponen ensayos independientes; las semillas correlacionadas los invalidan. Nunca invente un valor p para una tabla que no ha sometido a prueba. Los informes piloto de Lena indican que los ataques eran sintéticos, enumeran las semillas y explican cómo se generaron. Si dos semillas producen trazas casi idénticas, las cuenta como un solo ensayo, porque tratarlas como independientes haría que el intervalo pareciera más estrecho de lo que la evidencia sostiene. Toda prueba estadística que informa es una que ejecutó de verdad, y conserva sus entradas para que un revisor pueda repetirla.
+
+### Nota práctica
+
+Publique la lista de semillas y los parámetros del detector con cada afirmación de detección en los documentos del CNHP. La reproducibilidad es más barata que discutir sobre una diapositiva seis meses después, y es lo que Urbina et al. y Giraldo et al. exigen de las evaluaciones.
+
+### Ejercicios — capítulo 7
+
+- **EX019 — Intervalo.** Indique qué le permite afirmar, a ~95 %, un resultado de 0/60 falsas alarmas. Rúbrica: 3 = cota superior de ~5–6 % (regla del tres / Wilson), no «cero para siempre»; 2 = solo la cota; 1 = «cero»; 0 = nada.
+- **EX020 — Laboratorio.** Para el CUSUM en la clase A, informe las detecciones y el retardo medio. Rúbrica: 3 = 60/60 y ~24,8; 2 = un número; 1 = vago; 0 = incorrecto.
+- **EX021 — Rechazo de la clasificación.** La banda y el CUSUM muestran ambos FA=0/60 en la clase B (sin detecciones). Escriba la frase que se niega a declararlos de igual calidad. Rúbrica: 3 = menciona la falta de potencia / la necesidad de la clase A o de un n mayor; 2 = cautela vaga; 1 = los declara iguales; 0 = nada.
+
+### Síntesis del capítulo
+
+Las afirmaciones de detección necesitan intervalos, clase de ataque y honestidad sobre la tasa base, no un único porcentaje.
+
+### Siga estudiando — capítulo 07 de 50
+
+[← Capítulo 06 (borrador)](#ch-06) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 08 (borrador) →](#ch-08)
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Arquitectura de computadores
+
+### Resultados de aprendizaje
+
+Usted podrá (1) situar el PLC, el SIS y el SCADA en un mapa de privilegios y dependencias; (2) explicar por qué los sistemas de seguridad funcional necesitan hardware independiente; (3) diseñar una recogida de evidencia que no requiera escribir en el PLC.
+
+### 8.1 Privilegios en la planta
+
+Un PLC ejecuta el lazo básico de regulación. Un SIS implementa las funciones instrumentadas de seguridad y debe poder actuar cuando el PLC se equivoca o está comprometido. El SCADA y los HMI son de supervisión: fijan puntos de consigna y muestran el estado. Una arquitectura que permite al SCADA escribir en la lógica del SIS anula esa independencia, que es exactamente lo que advertía el laboratorio de alcanzabilidad. En ABP, el PLC-A ejecuta los lazos de regulación de T-1, T-2 y R-101, y el SIS-B contiene los disparos. Lena marca estas funciones en su mapa de privilegios.
+
+### 8.2 La independencia es física
+
+La independencia no es una etiqueta de VLAN. Significa controladores separados, sensores propios donde lo exija la especificación de requisitos de seguridad y conductos que no permitan a la red de regulación alterar la lógica de seguridad. Tanto NIST SP 800-82 como ISA/IEC 62443 tratan los sistemas de seguridad funcional como necesitados de una zonificación cuidadosa; las normas de seguridad de procesos (IEC 61511) van más lejos en materia de independencia. La arquitectura de seguridad de la información no debe deshacer lo que pagó la arquitectura de seguridad funcional.
+
+Lena comprueba la independencia siguiendo cables y conductos, no leyendo etiquetas en el plano de red. Los sensores de nivel propios del SIS-B en T-1 son el ejemplo más claro de esa independencia.
+
+### 8.3 Evidencia sin escribir en el PLC
+
+La evaluación autorizada de la TO prefiere los métodos de solo lectura: exportaciones de configuración, datos replicados del historiador, puertos espejo, monitores serie en modo escucha. Escribir un punto de consigna de prueba en un PLC en servicio es un cambio de proceso y necesita la misma autorización que un cambio de ingeniería. Los laboratorios del curso nunca escriben en dispositivos reales.
+
+> **Caso sintético — Ashford Batch Plant.** El SIS-B es un controlador separado con sus propios sensores para el nivel muy alto de T-1. El conjunto de reglas del CNHP prohíbe cualquier conducto desde L2/L3 hacia los puertos de ingeniería del SIS, salvo a través de un conmutador físico con llave bloqueado durante las pruebas programadas.
+
+### 8.4 Errores y límites
+
+Las afirmaciones de «air gap» (aislamiento físico) suelen ocultar USB, portátiles de proveedores y módems celulares. Inventaríe esas vías fuera de banda con el mismo cuidado que las rutas IP. El inventario de Lena para ABP enumera cada puerto USB de los HMI y de las estaciones de ingeniería, cada portátil de proveedor que se conecta para dar soporte y cada módem celular instalado para diagnóstico remoto. Cada uno recibe un responsable y un control, como el bloqueo del puerto o una salida registrada. Una planta descrita como aislada se contrasta con esta lista antes de que alguien repita la afirmación en un informe, porque un solo módem olvidado puede crear un camino que el grafo de zonas nunca muestra.
+
+### Nota práctica
+
+Dibuje el mapa de privilegios en una página: quién puede cambiar puntos de consigna, quién puede cambiar la lógica, quién puede cambiar los puntos de consigna de seguridad y a través de qué puertos físicos. Cuélguelo en la sala de ingeniería. Las discusiones sobre «solo una regla temporal» se acaban antes cuando el mapa está a la vista.
+
+### Ejercicios — capítulo 8
+
+- **EX022 — Mapa.** Nombre tres acciones que requieran privilegio de ingeniería del SIS y tres que un HMI normal pueda realizar. Rúbrica: 3 = seis bien repartidas; 2 = cuatro; 1 = vago; 0 = nada.
+- **EX023 — Independencia.** ¿Por qué la separación por VLAN no basta por sí sola para la independencia del SIS? Rúbrica: 3 = un controlador, unos sensores o una vía de gestión compartidos todavía pueden acoplarlos; 2 = una razón; 1 = vago; 0 = afirma que la VLAN basta.
+- **EX024 — Evidencia.** Proponga una vía de evidencia de solo lectura para «el HMI puede escribir el registro 40050». Rúbrica: 3 = exportación de configuración o captura de puerto espejo que muestre la capacidad de escritura / el intento, sin escritura en servicio; 2 = parcial; 1 = escritura en servicio; 0 = nada.
+
+### Síntesis del capítulo
+
+Mantenga la lógica de seguridad funcional independiente en hardware y conductos; recoja evidencia sin convertirse en un actuador.
+
+### Siga estudiando — capítulo 08 de 50
+
+[← Capítulo 07 (borrador)](#ch-07) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 09 (borrador) →](#ch-09)
+
+<a id="ch-09"></a>
+
+## Capítulo 9 — Programación II
+
+### Resultados de aprendizaje
+
+Usted podrá (1) diseñar un esquema para hallazgos de TO que prohíba las recetas de explotación; (2) implementar actualizaciones idempotentes indexadas por activo y debilidad; (3) aplicar pruebas basadas en propiedades a las reglas de zona.
+
+### 9.1 Esquema sin cargas útiles
+
+Guarde título, activo, zona, clase de debilidad, hash de la evidencia, límite de la consecuencia, capas de protección intactas y estado. Rechace los campos llamados payload, shell o exploit. La evidencia vive en un almacén sellado; el ticket guarda el hash. El esquema de Lena rechaza un registro de plano si aparece un campo prohibido, en lugar de eliminarlo en silencio, para que quien lo envió aprenda a no hacerlo. Los límites de la consecuencia y las capas de protección intactas son campos separados, lo que permite al ingeniero de seguridad funcional filtrar los hallazgos que afectan al SIS-B. El hash de la evidencia vincula cada ticket con su prueba sellada sin copiar nada de ella en el sistema de tickets.
+
+### 9.2 Inserciones o actualizaciones idempotentes
+
+Dos escáneres que informan de la misma escritura Modbus abierta en el PLC-A deben convertirse en un solo hallazgo. Huella = (activo, clase de debilidad, registro o camino). Los reintentos y las reimportaciones dejan una sola fila. Lena lo prueba importando dos veces la misma salida de un escáner e importando los informes de dos escáneres sobre el mismo problema; ambos casos deben dejar exactamente un hallazgo. La huella usa el registro o el camino, no la redacción propia del escáner, porque dos herramientas describen la misma debilidad de forma distinta. Cuando las huellas coinciden para problemas realmente distintos, una persona los separa y registra por qué.
+
+### 9.3 Pruebas basadas en propiedades para zonas
+
+Enuncie: «para todo equipo de la zona de oficina y todo registro del SIS, permit es falso». Genere equipos sintéticos y compruébelo. Las pruebas basadas en propiedades detectan el error en el que se añadió una nueva subred de oficina al inventario pero no al lado de denegación de la lista de permitidos.
+
+> **Caso sintético — Ashford Batch Plant.** Tras el hallazgo FW-12, Lena añadió una prueba basada en propiedades: ningún equipo de L4 puede tener un camino de permiso hacia L1-SIS. La integración continua la ejecuta con cada cambio en la exportación del cortafuegos.
+
+La prueba se ejecuta sobre equipos sintéticos tomados del inventario.
+
+### 9.4 Errores y límites
+
+Los esquemas derivan; póngales versión. Los generadores de propiedades que nunca emiten la nueva subred pasan por alto el error que debían detectar; incluya como entradas las diferencias del inventario. Lena alimenta la prueba basada en propiedades con la última diferencia del inventario, de modo que cada subred nueva se prueba en la siguiente ejecución. El esquema tiene un campo de versión, y los registros antiguos se migran con un script registrado en lugar de editarse a mano. Cuando se modifica una prueba, comprueba que siga fallando con el error original, ya que una propiedad que ya no puede fallar no protege nada.
+
+### Nota práctica
+
+Cuando alguien pida un equipo de excepción «solo por esta vez», exija en el esquema un objeto de excepción con duración limitada, fecha de caducidad y responsable. Las excepciones sin caducidad se convierten en conductos permanentes.
+
+### 9.1b Evolución del esquema sin tiempo de parada
+
+Cuando el esquema de hallazgos incorpora un campo obligatorio, despliegue un cambio en dos fases: primero acepte y persista el campo como opcional mientras rellena los registros existentes; después cambie el validador a obligatorio. Las operaciones a medio camino no deben romperse porque un cliente móvil vaya una versión por detrás. Publique la versión del esquema en las respuestas de la API para que los clientes puedan negarse a escribir cuando sean incompatibles. Las importaciones masivas desde escáneres deben pasar por la misma ruta de validación que las creaciones interactivas, incluidas las comprobaciones de campos prohibidos, o las cargas útiles se colarán por la puerta lateral de confianza de la importación.
+
+### Ejercicios — capítulo 9
+
+- **EX025 — Rechazo.** Escriba una regla de validación que rechace los campos con aspecto de carga útil. Rúbrica: 3 = regla + ejemplo que falla; 2 = regla; 1 = idea; 0 = nada.
+- **EX026 — Huella.** ¿Por qué se fusionan dos informes sobre el registro 40050 del PLC-A? Rúbrica: 3 = misma huella; 2 = «mismo hallazgo»; 1 = vago; 0 = incorrecto.
+- **EX027 — Propiedad.** Enuncie una propiedad tras añadir una zona DMZ. Rúbrica: 3 = p. ej., L4 alcanza L2 solo a través de L3.5; 2 = informal; 1 = incorrecta; 0 = nada.
+
+### Síntesis del capítulo
+
+Los esquemas, la idempotencia y las propiedades mantienen aburridas las herramientas de seguridad de TO, en el buen sentido.
+
+### Siga estudiando — capítulo 09 de 50
+
+[← Capítulo 08 (borrador)](#ch-08) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 10 (borrador) →](#ch-10)
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Ética y seguridad en ingeniería
+
+### Resultados de aprendizaje
+
+Usted podrá (1) rechazar el acceso no autorizado a plantas y las solicitudes de doble uso; (2) aplicar condiciones de parada que protejan la seguridad del proceso; (3) documentar el consentimiento para que una revisión pueda reconstruirlo.
+
+### 10.1 La autorización no es entusiasmo
+
+Un jefe de planta que dice «adelante» en un pasillo no es una autorización escrita. El trabajo en TO necesita un alcance firmado que nombre las unidades, los métodos, las ventanas, las condiciones de parada y un contacto de seguridad de procesos capaz de detener la planta. Sin ese documento, el ingeniero se detiene. NIST SP 800-82 e ISA/IEC 62443 presuponen una actividad autorizada y planificada, no una improvisación ingeniosa. Lena guarda una copia del alcance firmado con cada paquete de trabajo y la revisa antes de cada sesión. Si el alcance no cubre un paso previsto, se detiene y pide una modificación en lugar de interpretarlo con generosidad. El número de teléfono del contacto de seguridad de procesos figura en el propio permiso.
+
+### 10.2 Doble uso
+
+Este programa enseña zonificación, monitorización, medición e informes. No enseña desarrollo de exploits contra PLC, pilas de protocolos convertidas en armas ni formas de eludir los sistemas de seguridad funcional. Cuando un colega pide «solo la prueba de concepto contra la marca X», la respuesta es la descripción del hallazgo y el canal de divulgación del proveedor, no un ataque operativo. Las negativas de Lena son corteses y concretas, y señalan lo que puede ofrecer a cambio: un hallazgo con consecuencias acotadas, una referencia al proceso de divulgación del proveedor y un cambio de diseño que elimine la exposición. El registro de cada solicitud y de cada negativa se guarda con las notas del proyecto.
+
+### 10.3 Condiciones de parada que protegen el proceso
+
+Deténgase si: salta una alarma de proceso inesperada; la latencia o el tiempo de ciclo superan el presupuesto; un sistema de seguridad funcional indica una falla; el contacto de seguridad de procesos dice que se pare. Los bloqueos estrictos por software ayudan, pero las personas siempre tienen la última palabra. Nunca desactive una función de seguridad para «hacer que la prueba funcione».
+
+> **Caso sintético — Ashford Batch Plant.** Durante una prueba en banco del monitor serie, el tiempo de ciclo subió por encima de 50 ms. Lena se detuvo, retiró el dispositivo y repitió la prueba en una línea troncal de repuesto antes de reservar ninguna ventana en la planta.
+
+Estas condiciones están impresas en el permiso.
+
+### 10.4 Errores y límites
+
+La ética es una restricción sobre cada capítulo posterior. Los textos legales aquí son orientación, no asesoramiento. Las plantas en servicio nunca son objetivos de los laboratorios del curso. Todos los capítulos posteriores dan por supuesto este límite. El trabajo de Lena en ABP se realiza bajo un alcance firmado, con condiciones de parada nombradas y un contacto de seguridad de procesos; nada en el curso se dirige nunca contra una planta en funcionamiento. Cuando una pregunta toca el derecho, como la protección de datos o los contratos con proveedores, consulta al asesor jurídico del sitio en lugar de basarse en los apuntes del curso, y registra el consejo recibido.
+
+### Nota práctica
+
+Imprima las condiciones de parada en el permiso de trabajo colgado junto al panel. Con ruido y bajo presión de tiempo, la gente recuerda lo que puede ver. Una condición de parada enterrada en la página 12 de un PDF es una condición de parada que se pasará por alto.
+
+
+### 10.5 Ejemplo resuelto: un permiso que dice que no (ABP sintética)
+
+Un contratista pide ejecutar un escaneo Modbus activo del PLC-A durante un lote «para terminar antes el inventario». La revisión del permiso que hace Lena aplica tres pruebas: si la autorización escrita del propietario es específica para este equipo y esta técnica (no lo es); si existe una condición de parada que un operador pueda activar (no se escribió ninguna); y si hay una alternativa pasiva (una captura por puerto espejo más la exportación del proyecto de ingeniería da el mismo inventario). Rechaza el escaneo activo, registra el motivo y emite un permiso solo para captura pasiva, con el jefe de turno nombrado como la persona que puede detener el trabajo. NIST SP 800-82r3 advierte que el escaneo activo puede perturbar los dispositivos de TO, que es la razón de ingeniería que respalda la razón ética.
+
+### Ejercicios — capítulo 10
+
+- **EX028 — Negativa.** Negativa en dos frases a una solicitud de un exploit operativo contra un PLC para un trabajo evaluado. Rúbrica: 3 = se niega, ofrece una alternativa permitida, menciona la seguridad; 2 = solo se niega; 1 = vago; 0 = proporciona el exploit.
+- **EX029 — Parada.** Enumere cuatro condiciones de parada para una ventana en ABP. Rúbrica: 3 = cuatro pertinentes para el proceso; 2 = tres; 1 = una; 0 = nada.
+- **EX030 — Campos.** Seis campos que debe contener un permiso de trabajo de TO firmado. Rúbrica: 3 = unidades, métodos, ventana, límites de tasa/impacto, contactos, parada/reanudación; 2 = cuatro; 1 = dos; 0 = nada.
+
+### Síntesis del capítulo
+
+El permiso escrito, las condiciones de parada que anteponen el proceso y el hábito de negarse son ingeniería de seguridad.
+
+### Siga estudiando — capítulo 10 de 50
+
+[← Capítulo 09 (borrador)](#ch-09) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 11 (borrador) →](#ch-11)
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Redes y protocolos
+
+### Resultados de aprendizaje
+
+Usted podrá (1) describir lo que un observador autorizado puede aprender de los protocolos de TO sin atacarlos; (2) definir el alcance por códigos de función y registros; (3) tratar los rechazos del protocolo como controles que funcionan.
+
+### 11.1 Puntos de observación
+
+Los monitores serie ven Modbus RTU en el cable; los puertos SPAN ven EtherNet/IP o Modbus TCP; los registros de aplicación ven las acciones del HMI. Una evaluación que solo dispone de capturas de pantalla del HMI no debe afirmar visibilidad del bus de campo. Indique el punto de observación en la sección de método de cada hallazgo. Lena escribe el punto de observación en el campo de método de cada hallazgo, para que los lectores sepan qué podía verse y qué no. En ABP, un monitor serie en la línea troncal RS-485 hacia el PLC-A da visibilidad del bus de campo, mientras que los registros propios del HMI muestran las acciones del operador. Los hallazgos basados solo en una de estas fuentes lo dicen, porque cada una puede pasar por alto lo que la otra ve.
+
+### 11.2 Los puertos no son semántica
+
+El TCP 502 suele significar Modbus TCP, pero el alcance relevante es qué códigos de función y qué rangos de registros puede usar cada estación. Un puerto 502 abierto es una información incompleta sin el estado de la lista de permitidos y las estaciones observadas. La función de permiso del capítulo 4 es la abstracción adecuada. Los hallazgos de Lena sobre puertos abiertos siempre añaden qué estaciones se vieron usando qué códigos de función, para que el lector sepa si el puerto importa. En ABP, la lista de permitidos establece que HMI-1 solo puede escribir los registros 40001 a 40010 y que el historiador solo puede leer. Un escaneo de puertos por sí solo no mostraría nada de eso.
+
+### 11.3 Los rechazos son cobertura
+
+Un cortafuegos que bloquea el tráfico de oficina a SCADA, o un monitor que descarta la función 16 de HIST-1, es evidencia de que un control funcionó frente a esa sonda. Los tableros de cobertura deben contar las comprobaciones planificadas que fueron rechazadas como comprobaciones completadas, no como intentos fallidos de entrar.
+
+```python
+"""Lab: Modbus function-code allow-list on synthetic, already-decoded requests (no network)."""
+ALLOW = {("HMI-1", 3), ("HMI-1", 6), ("HIST-1", 3), ("HIST-1", 4)}  # (source, function code)
+WRITE_REGS = {("HMI-1", 6): range(40001, 40011)}                     # HMI may write setpoints only
+reqs = [("HMI-1", 3, 40001), ("HMI-1", 6, 40003), ("HMI-1", 6, 40050),
+        ("HIST-1", 3, 30001), ("HIST-1", 16, 40001), ("ENG-WS", 8, 0), ("HIST-1", 4, 30010)]
+for src, fc, reg in reqs:
+    if (src, fc) not in ALLOW:
+        d = "BLOCK fc-not-allowed"
+    elif (src, fc) in WRITE_REGS and reg not in WRITE_REGS[(src, fc)]:
+        d = "BLOCK register-out-of-range"
+    else:
+        d = "PASS"
+    print(f"{src:7} fc={fc:2} reg={reg:5} -> {d}")
+```
+
+Salida esperada:
+
+```text
+HMI-1   fc= 3 reg=40001 -> PASS
+HMI-1   fc= 6 reg=40003 -> PASS
+HMI-1   fc= 6 reg=40050 -> BLOCK register-out-of-range
+HIST-1  fc= 3 reg=30001 -> PASS
+HIST-1  fc=16 reg=40001 -> BLOCK fc-not-allowed
+ENG-WS  fc= 8 reg=    0 -> BLOCK fc-not-allowed
+HIST-1  fc= 4 reg=30010 -> PASS
+```
+
+> **Caso sintético — Ashford Batch Plant.** El tablero de cobertura del CNHP incluye «HIST-1 no puede escribir» como comprobación planificada. El BLOCK del laboratorio sobre la función 16 es un resultado verde para esa comprobación, no una prueba fallida en rojo.
+
+El tablero de Lena muestra cada comprobación planificada con su resultado esperado.
+
+### 11.4 Errores y límites
+
+Los banners mienten; confirme con evidencia de nivel de aplicación o de tramas decodificadas. Los entornos del curso nunca escanean plantas en servicio. Lena trata el banner de un dispositivo como un indicio y confirma el producto a partir de la exportación del proyecto de ingeniería o de tramas decodificadas antes de registrarlo en el inventario. Los banners pueden quedar desactualizados tras una actualización de firmware o ser deliberadamente genéricos. El paso de confirmación también evita un error común en el que el banner de una pasarela se confunde con el del controlador que hay detrás. En el curso, todas estas comprobaciones se hacen sobre datos capturados o sintéticos, nunca sobre la red de una planta en servicio.
+
+### Nota práctica
+
+Mantenga un inventario de protocolos de una página: línea troncal, velocidad en baudios, estaciones, códigos de función en uso, responsable de la lista de permitidos. Actualícelo cuando un proveedor añada una estación. La mayor parte del tráfico misterioso es un portátil de ingeniería no documentado.
+
+### 11.1b Familias de protocolos en el permiso de trabajo
+
+Los permisos de trabajo deben nombrar de forma explícita las familias de protocolos: Modbus TCP con los códigos de función 3/4/6 sobre los registros 40001-40010 es más claro que «puerto 502». Si los códigos de escritura están prohibidos desde las estaciones de evaluación, dígalo. Si solo se autorizan derivaciones de solo escucha, dígalo. La ambigüedad en este punto se convierte en una discusión durante la ventana, cuando alguien quiere probar una función de diagnóstico solo para ver qué pasa. Cuando el permiso nombra códigos de función, la lista de permitidos del monitor para esa ventana debe nombrar los mismos códigos, para que el permiso y la evidencia puedan compararse línea por línea.
+
+En ABP, el permiso de Lena para la verificación serie indica solo escucha en la línea troncal RS-485 hacia el PLC-A, nombra las escrituras permitidas de HMI-1 y prohíbe los códigos de función de diagnóstico desde el portátil de evaluación. Durante la ventana W-17 se rechazó por exactamente esta razón la solicitud de un proveedor de probar un diagnóstico, que se evaluó más tarde con su propio permiso.
+
+### Ejercicios — capítulo 11
+
+- **EX031 — Punto de observación.** Asocie tres tipos de evidencia con el punto de observación mínimo. Rúbrica: 3 = asociación correcta (p. ej., errores CRC de RTU con serie; FC de Modbus TCP con decodificación IP; atribución de un cambio de punto de consigna con registro del HMI o de la aplicación); 2 = dos; 1 = uno; 0 = nada.
+- **EX032 — Alcance.** Reescriba «probar Modbus en el PLC-A» como una línea acotada de una ficha de método. Rúbrica: 3 = códigos, registros, estaciones, solo lectura, ventana; 2 = parcial; 1 = solo el puerto; 0 = nada.
+- **EX033 — Laboratorio.** ¿Por qué se bloquea HMI-1 fc=6 reg=40050 mientras que 40003 pasa? Rúbrica: 3 = register-out-of-range frente a dentro de WRITE_REGS; 2 = un lado; 1 = vago; 0 = incorrecto.
+
+### Síntesis del capítulo
+
+Acote los protocolos de TO por su semántica (códigos, registros, estaciones); celebre los rechazos que coinciden con el plan.
+
+### Siga estudiando — capítulo 11 de 50
+
+[← Capítulo 10 (borrador)](#ch-10) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 12 (borrador) →](#ch-12)
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Sistemas operativos
+
+### Resultados de aprendizaje
+
+Usted podrá (1) bastionar los HMI y las estaciones de ingeniería sin romper el control; (2) recoger evidencia del sistema operativo con mínimo privilegio; (3) planificar la aplicación de parches dentro de las ventanas de mantenimiento.
+
+### 12.1 Las estaciones de trabajo forman parte del sistema de control
+
+Los HMI y las estaciones de ingeniería suelen ejecutar sistemas operativos de propósito general con décadas de software heredado. Tratarlos como simples PC es la forma en que el malware entra en L2. Las líneas base de bastionado (listas de aplicaciones permitidas, eliminación del administrador local, control de USB) deben probarse frente a la matriz de soporte del proveedor del HMI: un cambio de bastionado no soportado que deja en blanco una pantalla durante un lote es un incidente de disponibilidad. En ABP, Lena prueba cada cambio de bastionado en un HMI de banco con la misma versión del proveedor antes de que llegue a la sala de control, y registra qué elementos admite el proveedor.
+
+### 12.2 Mínimo privilegio para los ingenieros
+
+Cuentas nominales, derechos de administrador con duración limitada, elevaciones registradas. Las contraseñas compartidas de ingeniería siguen siendo comunes y siguen siendo un error: destruyen la atribución y perduran después de que los contratistas se marchan. Los hallazgos sobre contraseñas compartidas son hallazgos de configuración, no invitaciones a descifrar hashes. En ABP, la contraseña compartida de ingeniería de eng-WS-1 se sustituye por cuentas nominales, y cada elevación se registra con la persona y el motivo. Los contratistas reciben cuentas que caducan al final de su orden de trabajo. Lena informa de las contraseñas compartidas a partir de la configuración y de la lista de cuentas, nunca probándolas.
+
+### 12.3 Ventanas de parches
+
+Los parches de TO se aplican en ventanas de mantenimiento, no el martes de parches. Encaje los trabajos según su riesgo en las horas disponibles; aplace lo que no quepa en lugar de invadir la producción.
+
+```python
+"""Lab: fit patch jobs into plant maintenance windows (synthetic, greedy by risk)."""
+windows = [("W1 Sat 02-06", 4.0), ("W2 Sun 02-04", 2.0)]
+jobs = [("HMI OS update", 1.5, 8), ("historian DB patch", 2.5, 5), ("PLC-A firmware", 3.0, 9),
+        ("eng-WS AV update", 0.5, 3), ("switch firmware", 1.0, 6)]   # name, hours, risk score
+left = {w: h for w, h in windows}; plan = {w: [] for w, _ in windows}; deferred = []
+for name, h, r in sorted(jobs, key=lambda j: -j[2]):
+    for w, _ in windows:
+        if left[w] >= h:
+            left[w] -= h; plan[w].append(name); break
+    else:
+        deferred.append(name)
+for w, _ in windows:
+    print(w, plan[w], f"spare={left[w]:.1f}h")
+print("deferred:", deferred)
+```
+
+Salida esperada:
+
+```text
+W1 Sat 02-06 ['PLC-A firmware', 'switch firmware'] spare=0.0h
+W2 Sun 02-04 ['HMI OS update', 'eng-WS AV update'] spare=0.0h
+deferred: ['historian DB patch']
+```
+
+> **Caso sintético — Ashford Batch Plant.** El laboratorio de parches aplazó el parche de la base de datos del historiador porque W1 y W2 estaban llenas con trabajos de mayor riesgo en el PLC y el HMI. Lena programó una ventana dedicada para el mes siguiente en lugar de meterlo con calzador el domingo por la mañana.
+
+Cada trabajo aplazado conserva su ticket y su fecha. Los aplazamientos se revisan cada mes.
+
+### 12.4 Errores y límites
+
+No desactive el antivirus ni las listas de permitidos para contentar al proveedor sin una excepción escrita y una monitorización compensatoria. Las plantas desconectadas siguen necesitando control de soportes. Cuando el proveedor del HMI pide una excepción, Lena registra qué protección se relaja, en qué equipo, durante cuánto tiempo y qué monitorización la sustituye. La excepción tiene un responsable y una fecha de caducidad. Los equipos desconectados siguen recibiendo soportes a través de una estación de análisis y una transferencia registrada, ya que las memorias USB son la vía habitual de entrada a una red aislada.
+
+### Nota práctica
+
+Cada parche aplazado recibe un ticket con su riesgo residual y una fecha. «Aplazado sin fecha» es la forma en que sobreviven imágenes de sistema operativo de HMI con una década de antigüedad. Revise la lista de aplazados en la misma reunión que planifica la siguiente ventana.
+
+### 12.1b Imágenes y análisis fuera de línea
+
+Las imágenes de disco completo de los HMI tienen un gran impacto: dejan los sistemas fuera de servicio, pueden contener recetas propietarias e invitan a explorar fuera del alcance. Prefiera las lecturas en vivo con mínimo privilegio y las exportaciones de configuración. Si una imagen es realmente necesaria, el permiso de trabajo debe nombrar la cadena de custodia, el cifrado en reposo, quién puede montarla y una fecha límite de destrucción; y los laboratorios del curso siguen sin practicar la obtención de imágenes de equipos reales. Las plantas desconectadas siguen necesitando control de soportes; un aislamiento físico que oculta USB y módems celulares no es un aislamiento físico.
+
+Lena nunca ha necesitado una imagen completa en ABP.
+
+### Ejercicios — capítulo 12
+
+- **EX034 — Cuenta.** Especifique un patrón de mínimo privilegio para el acceso de ingeniería al PLC. Rúbrica: 3 = nominal, de duración limitada, registrado, doble control para la descarga de lógica; 2 = tres de cuatro; 1 = administrador compartido; 0 = nada.
+- **EX035 — Laboratorio.** ¿Qué trabajo se aplazó y por qué? Rúbrica: 3 = el parche de la base de datos del historiador; ventanas llenas tras los trabajos de mayor riesgo; 2 = solo el nombre; 1 = vago; 0 = incorrecto.
+- **EX036 — Excepción.** Escriba en una línea una excepción de USB para la puesta en marcha de un proveedor, con control compensatorio. Rúbrica: 3 = duración limitada, soportes analizados, equipo monitorizado; 2 = parcial; 1 = USB abierto; 0 = nada.
+
+### Síntesis del capítulo
+
+Bastione y parchee las estaciones de trabajo como si fueran controladores, porque para el malware son la puerta.
+
+### Siga estudiando — capítulo 12 de 50
+
+[← Capítulo 11 (borrador)](#ch-11) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 13 (borrador) →](../../en/book/MANUSCRIPT.md#ch-13)
 
 <a id="worked-results"></a>
 
@@ -459,6 +842,42 @@ Respuestas modelo para EX001–EX150. Ashford Batch Plant, Lena Okafor, el CNHP 
 **EX017.** B′ = 1,0 − 1,5 = −0,5/h, de modo que B(t) = 40 − 0,5t = 0 en t = 80 horas, suponiendo tasas constantes.
 
 **EX018.** 210 / 556 ≈ 0,378, aproximadamente el 38 % de la carga semanal: la peor fuente individual.
+
+**EX019.** Con 0 eventos en 60 ensayos, una cota superior aproximada al 95 % para la tasa es de unos 3/60 = 5 % (regla del tres) o una cota superior de Wilson cercana al 6 %. Puede decir que no se observaron falsas alarmas en esta muestra; no puede afirmar que la tasa sea cero en operación.
+
+**EX020.** CUSUM clase A: det=60/60, mean_delay≈24.8 muestras (después de que el ataque comience en t=250).
+
+**EX021.** «Ninguno de los dos detectores se activó con la clase B en 60 ensayos, así que esta muestra no permite clasificarlos; necesitamos una clase de ataque detectable o un diseño más grande antes de afirmar equivalencia o superioridad».
+
+**EX022.** Ingeniería del SIS: cambiar los puntos de consigna de disparo, modificar la lógica de seguridad, forzar salidas de seguridad durante una prueba. HMI: cambiar puntos de consigna de regulación dentro de los rangos permitidos, reconocer alarmas, ver tendencias. Las listas exactas pueden variar si la división es clara.
+
+**EX023.** El PLC y el SIS todavía pueden compartir sensores, alimentación, estaciones de ingeniería o una red de gestión. Un equipo de ingeniería comprometido puede reprogramar ambos aunque las VLAN de producción estén separadas. La independencia necesita controladores separados y un acceso de ingeniería controlado, no solo etiquetas de VLAN.
+
+**EX024.** Exporte las listas de permitidos del HMI/PLC y las tablas de escaneo que muestran 40050 como escribible; o capture con un puerto espejo o un monitor serie durante una reproducción en banco. No escriba 40050 en la planta en servicio para «demostrarlo».
+
+**EX025.** Al ingerir, si alguna clave coincide con (?i)payload|shell|exploit|password, rechácela con un 400. Ejemplo: `{"title":"x","payload":"..."}`.
+
+**EX026.** Ambos comparten la huella (PLC-A, unauthorized-write, 40050); la inserción o actualización conserva una fila y adjunta los dos hashes de evidencia.
+
+**EX027.** «Todo camino de L4 a L2 incluye L3.5» (o: L4 no tiene ninguna arista hacia L2/L1). La redacción exacta puede variar si es comprobable.
+
+**EX028.** «No puedo proporcionar un exploit operativo ni un procedimiento de ataque contra un PLC real: es de doble uso y queda fuera de este curso. Puedo ayudarle a redactar un hallazgo a partir de evidencia sintética o indicarle el proceso de divulgación coordinada del proveedor».
+
+**EX029.** Alarma de proceso inesperada; tiempo de ciclo o latencia por encima del presupuesto; falla o disparo del SIS; el contacto de seguridad de procesos ordena parar; sondeo de un equipo de la lista de denegados; cambio de punto de consigna sin explicación: cuatro cualesquiera con desencadenantes claros.
+
+**EX030.** Unidades/activos dentro del alcance; métodos permitidos; ventana de fecha y hora; límites de impacto y de tasa; contactos de ingeniería y de seguridad de procesos nombrados; reglas de parada y reanudación. Firmado por alguien con autoridad sobre las unidades.
+
+**EX031.** Ejemplo: el CRC o el entramado serie necesitan un monitor serie en la línea troncal; el código de función de Modbus TCP necesita captura y decodificación IP en el conducto; saber qué operador cambió un punto de consigna necesita un registro de auditoría del HMI o de la aplicación. Se aceptan otras ternas correctas.
+
+**EX032.** Decodificación de solo lectura de Modbus TCP hacia el PLC-A desde HMI-1/HIST-1; solo los códigos de función 3/4/6; registros 40001-40010; ninguna escritura desde la estación de evaluación; ventana sábado 02:00-04:00 con el contacto de seguridad de procesos de guardia.
+
+**EX033.** WRITE_REGS permite HMI-1 fc=6 solo para registros dentro de range(40001, 40011). 40003 está dentro (PASS); 40050 está fuera (BLOCK register-out-of-range).
+
+**EX034.** Cuentas nominales de ingeniería; derechos de administrador mediante la pertenencia temporal y registrada a un grupo, con duración limitada; todas las descargas de lógica registradas; una segunda persona aprueba las descargas al SIS y al PLC de producción fuera de una ventana.
+
+**EX035.** Parche de la base de datos del historiador (2,5 h, riesgo 5) aplazado: W1 se ocupó con el firmware del PLC-A y el del conmutador; W2, con el sistema operativo del HMI y el antivirus de eng-WS; no quedaban horas libres.
+
+**EX036.** USB del proveedor permitido solo en eng-WS-2, 14 de marzo de 09:00 a 12:00, soportes analizados en un quiosco independiente, sesión grabada en video; el puerto se desactiva después.
 
 <a id="references"></a>
 
