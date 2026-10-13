@@ -591,29 +591,43 @@ You will (1) build a larger configuration checker with modules and tests; (2) pa
 
 Samuel's checker has three parts: loaders for each export type, a set of check functions and a report writer. Adding a new check means adding one function and its tests.
 
+The separation paid off when Kubernetes exports arrived in a different shape from the cloud console's: only a new loader was needed, and the existing checks ran on its output unchanged. Each part can be tested on its own, so a bug in the report writer cannot hide a wrong result in a check. Samuel keeps each part in its own file, with a short description at the top saying what it expects and returns.
+
 ### 8.2 Parsing
 
 Exports from the cloud console and Kubernetes are JSON. Each loader validates required fields and reports malformed records with their position.
+
+A malformed record might be an export bug or a resource with unusual settings, and either deserves attention. Reporting its position, such as record 17 in the registry export, lets Samuel or Tom find it quickly. The loader still processes the rest of the file, so one bad record does not stop the whole weekly run, and the final report lists how many records were rejected and why.
 
 ### 8.3 Errors
 
 A check that cannot run reports "unable to check" rather than silently passing.
 
+This rule follows from the earlier lesson about missing settings. If a check cannot read a repository's anonymous-pull field, silently passing would report the repository as safe when nothing is known. "Unable to check" puts the gap in front of the team, who can then find out why the field is missing. In the first weekly run, three such results pointed to an export that had been cut short.
+
 ### 8.4 Tests
 
 Each check has tests with synthetic records: one compliant, one non-compliant, one with missing fields. Tests run automatically on every change.
+
+The missing-fields test is the one that matters most for security, since it checks that the program reports a gap rather than guessing. Running tests on every change means a quick edit cannot break a check without someone noticing. When the case-sensitivity bug was fixed, the new mixed-case test ran alongside the old ones and confirmed that nothing else had changed.
 
 ### 8.5 Reports
 
 A detailed report for the cloud team lists every finding; a summary for managers counts findings by severity and account.
 
+The two audiences need different things. The cloud team needs every finding with the resource name and the fix; managers need to know whether things are getting better and where the risk is concentrated. Producing both from the same results keeps them consistent: a manager's count of high-severity findings always matches the number of high-severity lines in the detailed report.
+
 ### 8.6 Review
 
 Tom's team reviews the code before it runs against real exports, checking that it only reads files.
 
+Confirming that the checker only reads files matters because it runs with access to sensitive exports. A checker that wrote or deleted anything could damage the very evidence it examines. Reviewers also look at what the reports contain, making sure no secret values from the exports are printed in plain text, only the fact that a secret was found. The review is recorded in the repository alongside the change.
+
 ### 8.7 Version control
 
 The checker lives in a repository with a changelog, so results can be linked to the code version.
+
+If a weekly report suddenly shows ten new findings, the changelog helps decide whether StudyHub changed or the checker did. A finding that appears the same week as a new check is probably old and only newly visible. Each report header names the code version, so this question can be answered from the report itself without asking Samuel. Old versions stay available, so a past report can be reproduced exactly.
 
 ### Running regularly
 
@@ -659,21 +673,31 @@ You will (1) classify StudyHub's data; (2) apply access, encryption and retentio
 
 Student records (personal, high), coursework uploads (personal, medium), logs (may contain personal data), test data (should be synthetic). Classification guides controls.
 
+Logs are the class most often overlooked. StudyHub's request logs once recorded full student IDs in URLs, which made ordinary application logs personal data. Classifying them correctly meant applying access controls and retention limits that had not been considered before. Samuel's data register lists each store with its class, owner and the controls that class requires. The register is reviewed each term.
+
 ### 9.2 Test data
 
 Test databases should never hold real student data. The opening case's test database held synthetic records only, which limited the impact; Samuel confirms with a check against known synthetic markers.
+
+His check looks for marker values that the synthetic data generator always includes, such as student IDs in a reserved range and names from a fixed list. Every record in the test database matched. If any record had lacked the markers, that would have suggested real data had been copied in, and the incident's impact would have been very different.
 
 ### 9.3 Access
 
 Applications use database roles with only the needed permissions; administrators use separate, audited accounts.
 
+In StudyHub, records-api's database role can read and update student records but cannot drop tables or create users. Administrators who need those powers use separate accounts whose sessions are logged. If the application's credentials leak, as nearly happened in the opening case, the damage is limited to what that narrow role allows. Each role's permissions are written down beside the service that uses it, so a reviewer can compare what the service needs with what it has and spot any permission that has crept in without a reason.
+
 ### 9.4 Encryption
 
 Managed databases and storage encrypt at rest; connections require TLS.
 
+Encryption at rest protects against lost disks or backups but not against someone who connects with valid credentials, since the database decrypts data for any authorised connection. That is why the leaked connection string mattered despite encryption. Requiring TLS stops credentials and records from being read on the network between the cluster and the database. Samuel's checker reports any storage bucket or database that allows unencrypted connections, and the first run found one internal reporting database that still accepted them. It was changed in the next maintenance window, after the reporting tool was updated to connect over TLS.
+
 ### 9.5 Retention
 
 Keeping data longer than needed increases risk. Westmere's rules: app logs 90 days, audit logs 365, exam uploads 400, test snapshots 30.
+
+The periods reflect different needs. Application logs help debug recent problems, so ninety days is enough. Audit logs support investigations that may start months later. Exam uploads must be kept through the appeals period. Test snapshots should be short-lived because they may be copied around and forgotten, as the lab below shows. Each period was agreed with the records office and the relevant data owner, and the rules are written into lifecycle settings rather than left to memory.
 
 ### Lab — Lab — retention check
 
@@ -698,6 +722,8 @@ test-db-snapshots  age  12 d, limit  30 d  ok
 ### 9.6 Lab result
 
 app-logs at 120 days exceed the 90-day limit. One test-db-snapshot at 210 days exceeds its 30-day limit; another at 12 days is fine. audit-logs (200 of 365) and exam-uploads (380 of 400) are within limits. The 210-day snapshot is a forgotten copy that should have been deleted automatically.
+
+Both over-retention findings have a cause. App logs had no lifecycle rule, as described below, and the old snapshot was made by hand outside the rules. Fixing each needs a different action: adding a rule for the logs, and a process change for manual snapshots. Simply deleting the over-age data would leave both causes in place.
 
 ### Lifecycle rules
 
@@ -743,25 +769,37 @@ You will (1) work within authorisation in cloud projects; (2) respect student pr
 
 Samuel's project agreement lists what he may access: read-only exports, a test account and documentation. He may not access production data or test production systems.
 
+The test account lets him try configuration changes without touching StudyHub's live services. Production data is excluded because his project does not need it; everything he studies can be shown with exports and synthetic records. When he wanted to check a production registry setting, Tom ran the query and shared the result, which stayed within the agreement.
+
 ### 10.2 Privacy
 
 Student records are personal data. Samuel's labs use synthetic data. If he encounters real data by mistake, he stops and reports it.
+
+Once, a Kubernetes export contained a pod's environment variables, including a test user's email address that looked real. Samuel stopped, told Tom and deleted his local copy. It turned out to be a staff test account, but the habit of stopping first and asking later protects both the students and Samuel. He recorded the event in his access diary with the time and action taken.
 
 ### 10.3 Responsible findings
 
 Findings go to Tom and Dr Jensen, not to classmates or public forums. Reports avoid details that would help misuse before fixes are made.
 
+His project report describes the open registry as fixed and explains the general lesson without listing which other repositories had been checked or how. A classmate asked about the project in a seminar; Samuel described the method and results in general terms, since unresolved findings could still have helped someone misuse them. Detailed findings stay in the cloud team's tracker.
+
 ### 10.4 Defensive purpose
 
 The project checks and improves configurations; it does not attempt to break in. Testing that could affect availability needs explicit approval.
+
+Reading configuration exports cannot break StudyHub, but some tests could, such as a scan that floods a service with requests. Samuel's project includes none of those. If he needed such a test, the agreement requires written approval from Tom, a scheduled time and a way to stop it quickly. Keeping the project to reading and checking also makes it easy to explain to anyone who asks what he did, and the access logs confirm that he read exports and changed nothing in production.
 
 ### 10.5 Conflicts of interest
 
 If a finding concerns a colleague's work, it is reported factually, without blame.
 
+The open registry had been configured by a colleague on Tom's team who had since moved to another project. Samuel's report describes the setting and its effect without naming who made it. The review focuses on why the setting was possible and unnoticed, which is the useful question for preventing a repeat. Samuel also gave the colleague a chance to read the finding before it was shared, which caught one small factual error and kept the working relationship good. Reports that blame individuals make people defensive and less willing to report their own mistakes.
+
 ### 10.6 Escalation
 
 Signs of active misuse go immediately to Westmere's security team.
+
+Signs of active misuse include unexpected sign-ins, unknown resources or unusual data transfers. Samuel's job is not to investigate them himself; the security team has authority and tools he lacks. His agreement lists the team's contact, and he reported the build-log key described below within minutes of seeing it. Speed matters more than certainty here: a false alarm costs the security team a few minutes, while a delay could let an attacker continue. Samuel's agreement says to report first and explain later, and the security team thanked him for doing exactly that.
 
 ### Writing it down
 
@@ -807,29 +845,43 @@ You will (1) explain how containers rely on Linux features; (2) describe users, 
 
 A container is a group of processes isolated by Linux namespaces and limited by control groups. It shares the node's kernel, so settings that weaken isolation affect the whole node.
 
+Because the kernel is shared, a container started with privileged settings or with the node's process namespace can see or affect other workloads on the same node. In StudyHub, several services from different teams share nodes, so one weak pod could expose others. The settings below limit what each container's processes can do.
+
 ### 11.2 Users
 
 Many images run as root by default. Running as a non-root user means that a flaw in the application gives less power inside the container and less chance to affect the node.
+
+Running as root inside a container is not the same as root on the node, but it removes barriers an attacker would otherwise face. A non-root process cannot change system files in the image or bind to low ports, and it gives fewer options if a kernel flaw allows escape. StudyHub's images now set a dedicated user in their build files.
 
 ### 11.3 Capabilities
 
 Root powers are split into capabilities. Most web services need none; dropping all and adding only what is required is the secure default recommended by NIST SP 800-190.
 
+StudyHub's web services listen on high ports and write only to mounted volumes, so they need no capabilities at all. One service that adjusts network settings for diagnostics needs a single capability, which is documented with its reason. Starting from none and adding only what is needed makes each exception visible in the pod specification.
+
 ### 11.4 File systems
 
 A read-only root file system prevents changes to the application files at run time; temporary data goes to mounted volumes.
+
+If an attacker exploits a flaw in records-api, a read-only root file system stops them from replacing the application's code or adding tools to the image. Temporary files go to a small volume that is discarded when the pod stops. Some images needed changes to write their caches to the volume, which the team tested before enforcing the setting. The volume is sized small on purpose.
 
 ### 11.5 Pod Security Standards
 
 Kubernetes defines Privileged, Baseline and Restricted profiles. Restricted requires non-root, no privilege escalation, dropped capabilities and a seccomp profile. StudyHub targets Restricted for all application namespaces.
 
+Baseline blocks the most dangerous settings, such as privileged containers, while Restricted adds the stricter defaults described above. Targeting Restricted means StudyHub's application pods follow all of them. System components such as log collectors may need Baseline or Privileged, and those namespaces are kept separate with documented exceptions. Namespace labels set which profile applies, so the enforcement level is visible in the cluster configuration and can be reviewed like any other setting.
+
 ### 11.6 Patching
 
 Base images include operating system packages that need updates; images are rebuilt regularly from patched bases.
 
+StudyHub's images are rebuilt weekly from the latest patched base, and the image scanner reports known vulnerabilities in each new build. Rebuilding regularly means patches arrive without a separate project each time. Images that have not been rebuilt for more than a month appear in Samuel's checker as findings. Rebuilding also brings application dependencies up to date, which sometimes changes behaviour, so each rebuilt image runs through the test suite in the test cluster before it is promoted to production.
+
 ### 11.7 Checking
 
 Samuel's checker reads pod specifications and reports settings that violate Restricted.
+
+The checker reads each pod's security context and reports, for example, "records-api: runs as root; root file system writable". It found the nine root pods described in the worked example below. Running the check before enforcement showed the scale of the work, so the team could plan it rather than discovering failures at admission. Each finding names the pod, its namespace and the exact field that breaks the profile, so owners know what to change. The checker runs weekly, and the list of root pods fell sprint by sprint as images were rebuilt.
 
 ### Admission enforcement
 
@@ -871,6 +923,8 @@ You will (1) summarise remediation times; (2) distinguish mean and median; (3) e
 
 Times to fix findings are skewed: most are quick, a few take months. The median describes the typical case; the mean is pulled up by long delays.
 
+In the lab's data, a few findings took more than a month, which drags the mean well above the median. Reporting only the mean would suggest that a typical finding takes nearly three weeks, when half are fixed in under two. Both numbers are true, but they answer different questions, and Samuel reports both.
+
 ### Lab — Lab — remediation statistics
 
 ```python
@@ -894,21 +948,31 @@ approx 95% interval 0.33-0.77
 
 Across 20 synthetic findings, the mean time to fix is 19.3 days and the median 12.5. Eleven of 20 (0.55) were fixed within the 14-day target. An approximate 95% interval for that proportion is 0.33 to 0.77.
 
+The two averages differ by almost a week, which is the effect of the long tail. Eleven of twenty fixed on time sounds like a coin toss, but the interval shows how little twenty findings can tell us. Samuel's report puts the count, the rate and the interval in one sentence so readers see all three together.
+
 ### 12.3 Interpreting the interval
 
 With only 20 findings, the true on-time rate could plausibly be anywhere from about a third to three quarters. Claims like "we fix 55% on time" should carry this uncertainty.
+
+Samuel's report to the cloud team says the on-time rate is "about half, with wide uncertainty", which is accurate and does not invite either alarm or complacency. When findings accumulate over the year, the interval will narrow and the rate can be compared with the target more confidently. He also notes that the interval assumes findings are independent.
 
 ### 12.4 Sample size
 
 Quadrupling the sample roughly halves the interval width. Samuel plans to report quarterly once more findings accumulate.
 
+To halve the width from about forty-four points to twenty-two, the team would need around eighty findings, which a quarter's weekly checks should provide. Waiting for more data is better than reacting to noise. Samuel notes the planned sample size in the report so readers know when firmer conclusions will be possible. Until then, he reports the count and the interval rather than a confident rate, and he explains to the team why a larger sample matters before any target is judged met or missed.
+
 ### 12.5 Comparing periods
 
 Differences between periods need intervals too; a rise from 55% to 65% on small samples may be noise.
 
+If next quarter shows 65% on time, the team will want to claim improvement. Samuel's plan is to compute intervals for both periods and check whether they overlap substantially. If they do, the report will say the change is not yet clear, and suggest looking at the long tail instead, where causes are easier to see. A change in what the checker detects can also shift the numbers, since new checks often find old, slow-to-fix problems. Samuel records checker changes beside each period so comparisons stay fair.
+
 ### 12.6 Presenting
 
 Charts show medians and percentiles, with sample sizes labelled.
+
+Samuel's chart shows each quarter's median time to fix as a point, with a bar from the twenty-fifth to the seventy-fifth percentile, and the number of findings written beneath. A chart without sample sizes would let a quarter with five findings look as reliable as one with eighty. Labels name the units, days, and the target line at fourteen days is drawn across the chart, so readers can see at once how each quarter compares. Samuel avoids three-dimensional effects and decorative colours, which make values harder to read without adding information.
 
 ### Why the median matters here
 
@@ -950,9 +1014,13 @@ You will (1) review cloud user accounts and keys; (2) enforce multi-factor authe
 
 Staff sign in through the university's identity provider with multi-factor authentication. Separate cloud console users should not exist except for documented break-glass accounts.
 
+Federation through the identity provider means that when someone leaves Westmere, disabling their university account also removes cloud access. Separate console users break that link, which is how old-contractor survived long after the contract ended. Break-glass accounts are the only exception, because they must work when the identity provider does not. Samuel's checker lists every console user and flags any that are not break-glass accounts.
+
 ### 13.2 Service identities
 
 Services should use workload identity or managed identities that issue short-lived credentials, not long-lived access keys.
+
+svc-backup's 610-day-old key shows the problem with long-lived keys: it could have been copied at any point in that time and would still work. A managed identity issues credentials that last minutes and are tied to the running workload, so there is nothing durable to steal. The opening case's connection string had the same weakness. StudyHub's pods now use workload identity, so each service receives credentials for its own role only, which expire automatically and never appear in images or configuration files.
 
 ### Lab — Lab — account review
 
@@ -982,17 +1050,25 @@ s.osei          ok
 
 c.jensen, t.becker and s.osei are ok. svc-backup has an access key 610 days old. old-contractor is a console user without MFA, with a 400-day-old key, inactive for 220 days. old-contractor should be removed; svc-backup should move to a managed identity.
 
+Each finding has a different remedy. old-contractor has no reason to exist, so it is removed after checking for dependencies. svc-backup does needed work, so it is moved to a managed identity rather than deleted. The ok results confirm that the checks do not flag every account.
+
 ### 13.4 Stale access
 
 Accounts inactive for 90 days are disabled after confirming with owners. Leavers' access is removed through the identity provider, which removes cloud access too when federation is used.
+
+Confirming with owners first matters because an inactive account may still run something, as old-contractor's hidden report showed. Disabling before deleting gives a chance to notice failures and reverse the change. Federated leavers lose access automatically, which removes the most common route to stale accounts. Disabled accounts are deleted after a further thirty days if nothing has broken, and the decision is recorded in the access review.
 
 ### 13.5 Keys
 
 Keys older than 90 days are rotated or, better, replaced by short-lived credentials.
 
+Rotation limits how long a stolen key works but still leaves a key to steal. For svc-backup, Samuel's recommendation was replacement rather than rotation, since the backup job runs inside the cloud and can use a managed identity. Keys remain only where an outside system cannot use federation, and each is listed with its owner. Samuel's checker reports any key older than ninety days, with its owner, so rotation is prompted rather than remembered. Each remaining key also has a documented reason.
+
 ### 13.6 Reviews
 
 Quarterly access reviews list who has which roles; owners confirm each.
+
+Owners confirm each role or mark it for removal. A review that only lists access without asking owners to act becomes a report nobody reads. Samuel's checker prepares the list from exports, so reviewers spend their time deciding rather than gathering data, and the decisions are recorded with dates. Roles that no owner claims are removed after notice. The first quarterly review removed several roles left from finished projects, and the review record now shows the trend in unclaimed roles from one quarter to the next, which helps the team see whether access is being kept tidy between reviews.
 
 ### Break-glass accounts
 
@@ -1038,29 +1114,43 @@ You will (1) apply privacy principles to StudyHub; (2) minimise and protect stud
 
 Collect only what is needed, use it only for stated purposes, keep it only as long as needed, keep it accurate and secure, and be transparent with students.
 
+For StudyHub, collecting only what is needed means the coursework service stores uploads and marks but not students' addresses. Stated purposes are published in the student privacy notice. Retention limits come from the rules in the data chapter. Transparency means students can see what StudyHub holds about them and why. Each principle has a matching check or process.
+
 ### 14.2 Data location
 
 Where cloud data is stored affects which laws apply. Westmere keeps student data in its home region and records this in its data register.
+
+Choosing a region is a configuration setting that can be changed by mistake, for example when a new storage bucket is created with a default region. Samuel's checker reports any resource holding student data outside the home region. In its first run, it found a log bucket in another region, which was moved. The register records why each region was chosen.
 
 ### 14.3 Minimisation in design
 
 StudyHub's analytics use aggregated data; individual records stay in the records system. Logs mask student IDs.
 
+Analytics that need counts per course do not need names or student IDs, so they receive only aggregates. Masking IDs in logs keeps logs useful for debugging while removing the most identifying field. The analytics job described below had drifted from this design, which a periodic check found. Masking replaces each ID with a token that stays consistent within a day, so engineers can follow one request through the logs without seeing who made it. Analytics jobs are listed in the data register with the fields they read.
+
 ### 14.4 Rights
 
 Students can ask for their data; systems need a way to find and export it. Knowing where data lives (chapter 9) makes this possible.
+
+A request for a student's data means searching the records system, coursework store and any logs that still contain the student's ID. Without the data register, the team might miss a store, such as the reporting bucket that once held full copies. The register lists which stores to search and who owns each. Exporting a student's data uses a script that searches each listed store.
 
 ### 14.5 Breach duties
 
 Exposure of personal data may need reporting to a regulator and students within strict time limits. Good logging lets Westmere determine what was exposed.
 
+In the opening case, audit logging was off in one account, so Westmere could not say whether the image had been pulled. If the test database had held real data, that gap would have made it impossible to tell the regulator or students what had happened. Turning logging on everywhere is a privacy control as much as a security one.
+
 ### 14.6 Privacy and security
 
 Security controls protect privacy, but privacy also asks whether data should be collected at all.
 
+Encrypting the nightly copies of full student records would have satisfied a security checklist, yet the right answer was to stop making them. Samuel's privacy review form asks first whether data is needed, then how to protect it. That order catches problems that a security-only review would leave in place. The review also asks who will use the data and whether they could manage with less. In StudyHub's case, the course reports needed only counts, so neither names nor IDs had to leave the records system at all.
+
 ### 14.7 Test data
 
 Synthetic test data avoids privacy risk in testing entirely.
+
+The opening case showed the value: the test database's synthetic records meant that, even with a leaked connection string and missing logs, no student could have been affected. Westmere's generator produces realistic names, courses and marks so tests behave as they would with real data, without any of the risk. Developers sometimes ask for a copy of production to reproduce a bug. The answer is to generate synthetic records with the same shape, or to reproduce the bug with a single consenting test account, never to copy real student data into a test environment.
 
 ### Privacy reviews
 
