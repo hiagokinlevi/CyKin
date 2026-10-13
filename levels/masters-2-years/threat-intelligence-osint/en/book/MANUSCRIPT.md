@@ -128,7 +128,7 @@ For a ports group the risk is concrete. Ship-tracking broadcasts and company fil
 
 FIRST TLP 2.0 defines CLEAR, GREEN, AMBER, AMBER+STRICT and RED. Communities like CPSG depend on members honouring labels; one breach can end sharing for years.
 
-CPSG's collection is TLP:AMBER, which is why Lucía needs the governance board's agreement and why her dissertation, written for the university library, must be TLP:CLEAR. A figure caption naming a port's city would have been such a breach, and the leak reviewer caught one before submission. Lucía's board conditions are the research version of honouring AMBER.
+CPSG's collection is TLP:AMBER, which is why Lucía needs the governance board's agreement and why her dissertation, written for the university library, must be TLP:CLEAR. A figure caption naming a port's city would have been such a breach, and the leak reviewer caught one before submission. The board's three conditions, groups of at least three, no port names and deletion of raw timings, are how Lucía's study honours AMBER while still producing a public dissertation.
 
 ### Worked example
 
@@ -194,7 +194,7 @@ Removing names at source means the member's export to Lucía contains only times
 
 Analysis scripts in the standard library, a data dictionary, synthetic sample files and a fixed random seed for any resampling. The plan is part of the proposal.
 
-For Lucía, the synthetic sample files mirror the data dictionary exactly, so an examiner without access to CPSG's AMBER data can still run every script. The fixed seed matters for the bootstrap interval around the medians; without it, a rerun would give a slightly different interval and look like an error. Her data dictionary doubles as the schema for those files.
+For Lucía, the synthetic sample files mirror the data dictionary exactly, so an examiner without access to CPSG's AMBER data can still run every script. The fixed seed matters for the bootstrap interval around the medians; without it, a rerun would give a slightly different interval and look like an error. The synthetic files use exactly the fields in her data dictionary, `t_pub`, `t_block`, `ttb_h`, `ioc_type` and `decision`, so the same scripts run on both.
 
 ### Worked example
 
@@ -236,7 +236,7 @@ You will (1) build an analysis-of-competing-hypotheses (ACH) matrix; (2) identif
 
 Analysts tend to settle on the first plausible story. Heuer's method forces several hypotheses onto the table and asks which evidence is inconsistent with each. The hypothesis with the fewest serious inconsistencies survives — provisionally.
 
-Lucía's seminar exercise on the CPSG ransomware incident uses three hypotheses: a criminal ransomware crew (H1), an insider (H2) and state-aligned espionage (H3). Listing all three before reading the evidence stops the most common story, ransomware means criminals, from closing the question too early. Each hypothesis is then scored against the same five evidence items.
+Lucía's seminar exercise on the CPSG ransomware incident uses three hypotheses: a criminal ransomware crew (H1), an insider (H2) and state-aligned espionage (H3). Listing all three before reading the evidence stops the most common story, ransomware means criminals, from closing the question too early. In the CPSG ransomware exercise, all three are scored against the same five evidence items, E1 to E5, so no hypothesis is judged on evidence chosen to suit it.
 
 ### Lab 1 — ACH matrix
 
@@ -283,13 +283,13 @@ Lucía's ransomware judgment uses that scale: "likely (55–80%)". A member read
 
 Every judgment carries indicators that would change it: evidence of data sale without ransom (would raise H3), or a confession from a disgruntled employee (would raise H2). Writing triggers prevents silent drift.
 
-Lucía's written assessment names one trigger in its last sentence: evidence of data sale without a ransom demand would lower the criminal-crew assessment. Naming the trigger in the product lets a member who later sees such evidence know at once that the judgment should be reopened. A confession would raise H2 for the opposite reason.
+Lucía's written assessment names one trigger in its last sentence: evidence of data sale without a ransom demand would lower the criminal-crew assessment. Naming the trigger in the product lets a member who later sees such evidence know at once that the judgment should be reopened. Lucía's matrix needs both kinds of trigger because E2, access from a contractor VPN account, fits every hypothesis and cannot settle the question by itself.
 
 ### 4.5 ATT&CK as evidence vocabulary
 
 Mapping evidence to ATT&CK — staging and T1486 Data Encrypted for Impact for E1 — helps other analysts check whether behaviour matches a known group's profile without overrelying on names.
 
-For the CPSG incident, T1486 describes the encryption itself, and the contractor VPN access in E2 can be mapped to valid-account use. Members comparing that profile with published group reports can see whether the behaviour fits, while the write-up avoids naming a group on the strength of one similarity. The mapping goes into the matrix as an evidence label, not a conclusion.
+For the CPSG incident, T1486 describes the encryption itself, and the contractor VPN access in E2 can be mapped to valid-account use. Members comparing that profile with published group reports can see whether the behaviour fits, while the write-up avoids naming a group on the strength of one similarity. In Lucía's matrix, the T1486 label sits beside E1 as a description of what was observed; it is not treated as evidence for any particular group.
 
 ### Worked example
 
@@ -355,7 +355,7 @@ Lucía's revision kept both units: hours for members with precise logs, and days
 
 CPSG publishes STIX 2.1 indicator objects. The pilot confirms that `created` and `valid_from` are populated, giving a trustworthy `t_pub`. Objects missing required properties are logged as data-quality findings for the community.
 
-The data-quality findings are recorded by publishing member class, not by member, following the board's aggregation rule. An indicator without `valid_from` still counts for Aim 3 if a member acted on it, but it cannot contribute a publication time to the median. She also checks that `valid_from` is never later than `created` plus a few minutes.
+The data-quality findings are recorded by publishing member class, not by member, following the board's aggregation rule. An indicator without `valid_from` still counts for Aim 3 if a member acted on it, but it cannot contribute a publication time to the median. The pilot member's two weeks of logs gave Lucía a first count of such findings before the main export arrived.
 
 ### Worked example
 
@@ -397,7 +397,7 @@ You will (1) validate incoming structured data before analysis; (2) compute and 
 
 Members export STIX 2.1 objects from CPSG's TAXII collection with their block logs. Before any statistics, Lucía checks that objects carry required properties and well-formed identifiers. Malformed objects are counted and reported to the community, not silently repaired.
 
-Lucía's demonstration batch checks three objects, and only one passes. Across the full study export, 94% of indicators were valid. Counting failures before analysis tells the reader how much of CPSG's data could contribute timings at all. The invalid objects stay in the count under Aim 3 if a member acted on them.
+Lucía's demonstration batch checks three objects, and only one passes. Across the full study export, 94% of indicators were valid. Counting failures before analysis tells the reader how much of CPSG's data could contribute timings at all. An invalid object that a member still blocked or monitored is counted under Aim 3, because the member's decision happened even though its publication time cannot be trusted.
 
 ### Lab 2 — STIX property check
 
@@ -599,7 +599,7 @@ Lucía's change log shows the pattern for a different finding, the caption that 
 
 CPSG gave data; the community should get results first. Lucía presents the brief to the governance board before public defence, under the agreed aggregation rules. NIST SP 800-150 stresses that sharing relationships rely on trust and reciprocity; research that extracts without returning erodes both.
 
-The brief also carries the data-quality note, which members can act on immediately: by fixing exports that lack `valid_from` or `spec_version`, producers make the next study, and their own consumers' automation, more reliable. The board saw the medians before the examiners did.
+The brief also carries the data-quality note, which members can act on immediately: by fixing exports that lack `valid_from` or `spec_version`, producers make the next study, and their own consumers' automation, more reliable. The 3.0- and 10.0-hour medians reached the CPSG board before the examiners saw them, which keeps the reciprocity NIST SP 800-150 describes.
 
 ### 8.5 After the defence
 
