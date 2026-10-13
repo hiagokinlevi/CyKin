@@ -1,7 +1,7 @@
 # Fatores Humanos e Política Cibernética: Curso de Tecnólogo
 
 - Idioma: português do Brasil (`pt`); curso 075, curso de tecnólogo (3 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 30 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções com rubricas de 0 a 3 e 9 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 21–30 (EX061–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–30 de 30 têm texto didático escrito à mão; os exercícios EX001–EX090 têm resoluções correspondentes com rubricas de 0 a 3; os catorze laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: estudantes de tecnólogo que constroem, configuram e operam controles de segurança centrados nas pessoas e serviços de reporte em organizações pequenas.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios totalizam reportes, contam avisos, calculam medianas, ordenam cenários, comparam tempos de tarefa e proporções por clínica, conferem logs de automação e sinalizam cadastros de fornecedores, sempre sobre dados sintéticos; nenhum funcionário, paciente, e-mail ou conta real está envolvido. Os testes de usabilidade usam caixas postais de teste com voluntários que sabem que estão testando ferramentas; os procedimentos de verificação são praticados em dramatizações anunciadas, nunca por engano secreto. Toda simulação de phishing mencionada é anunciada, acordada com os funcionários e relatada apenas de forma agregada. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,7 @@ Adams e Sasse (1999), [doi:10.1145/322796.322806](https://doi.org/10.1145/322796
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
-
-Capítulos 21–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -448,7 +446,7 @@ Mudanças de política precisam de aprovação. A linguagem simples pode perder 
 
 <a id="ch-11"></a>
 
-## Capítulo 11 — Ativos e contexto
+## Capítulo 11 — Fatores humanos e política cibernética: ativos e contexto
 
 ### Objetivos de aprendizagem
 
@@ -486,7 +484,7 @@ As ordenações mudam conforme os serviços mudam. Os perfis generalizam.
 
 <a id="ch-12"></a>
 
-## Capítulo 12 — Fluxos de dados
+## Capítulo 12 — Fatores humanos e política cibernética: fluxos de dados
 
 ### Objetivos de aprendizagem
 
@@ -524,7 +522,7 @@ A integração de sistemas pode ser cara. Os especialistas precisam estar cadast
 
 <a id="ch-13"></a>
 
-## Capítulo 13 — Cenários de risco
+## Capítulo 13 — Fatores humanos e política cibernética: cenários de risco
 
 ### Objetivos de aprendizagem
 
@@ -578,7 +576,7 @@ As notas são subjetivas. Os cenários podem não prever métodos novos.
 
 <a id="ch-14"></a>
 
-## Capítulo 14 — Métodos I
+## Capítulo 14 — Fatores humanos e política cibernética: métodos I
 
 ### Objetivos de aprendizagem
 
@@ -634,7 +632,7 @@ As respostas do questionário são autodeclaradas. Seis entrevistas são poucas.
 
 <a id="ch-15"></a>
 
-## Capítulo 15 — Laboratório guiado
+## Capítulo 15 — Fatores humanos e política cibernética: laboratório guiado
 
 ### Objetivos de aprendizagem
 
@@ -686,7 +684,7 @@ Condições calmas de laboratório. Amostra pequena.
 
 <a id="ch-16"></a>
 
-## Capítulo 16 — Métodos II
+## Capítulo 16 — Fatores humanos e política cibernética: métodos II
 
 ### Objetivos de aprendizagem
 
@@ -739,7 +737,7 @@ Grupos não aleatórios. Períodos curtos.
 
 <a id="ch-17"></a>
 
-## Capítulo 17 — Ferramentas
+## Capítulo 17 — Fatores humanos e política cibernética: ferramentas
 
 ### Objetivos de aprendizagem
 
@@ -791,7 +789,7 @@ Vereditos automáticos podem errar. Limites de retenção perdem o histórico.
 
 <a id="ch-18"></a>
 
-## Capítulo 18 — Controles
+## Capítulo 18 — Fatores humanos e política cibernética: controles
 
 ### Objetivos de aprendizagem
 
@@ -829,7 +827,7 @@ Os cartões podem sumir. Quem liga pode ficar agressivo.
 
 <a id="ch-19"></a>
 
-## Capítulo 19 — Monitoramento
+## Capítulo 19 — Fatores humanos e política cibernética: monitoramento
 
 ### Objetivos de aprendizagem
 
@@ -888,7 +886,7 @@ Os limiares podem ser arbitrários. As tendências precisam de períodos mais lo
 
 <a id="ch-20"></a>
 
-## Capítulo 20 — Solução de problemas
+## Capítulo 20 — Fatores humanos e política cibernética: solução de problemas
 
 ### Objetivos de aprendizagem
 
@@ -924,11 +922,475 @@ As visitas tomam tempo. As verificações podem deixar passar outros add-ins.
 
 - **EX060 — Verificação pós-atualização.** O que o prestador faz agora depois das atualizações? *Rubrica:* 3 = verifica se o botão existe em todos os computadores;; 2 = verificação;; 1 = nada;; 0 = nenhuma.
 
+<a id="ch-21"></a>
+
+## Capítulo 21 — Fatores humanos e política cibernética: integração de serviços
+
+### Objetivos de aprendizagem
+
+Você vai (1) integrar o reporte à resposta a incidentes numa organização pequena; (2) conectar os controles de verificação ao financeiro e à gestão de fornecedores; (3) manter a integração simples o bastante para ser sustentada.
+
+### 21.1 Reporte e resposta
+
+Lucas liga o serviço de reporte ao plano de resposta a incidentes da Brightwell. Quando a triagem confirma um e-mail malicioso que chegou a várias clínicas, o prestador de TI o remove de todas as caixas postais, bloqueia o remetente e verifica se alguém digitou dados numa página vinculada. Se alguém digitou, a conta da pessoa é redefinida e a chave de segurança dela é conferida. Os funcionários que reportaram recebem agradecimento. O plano tem duas páginas e lista telefones, para que qualquer pessoa de plantão consiga segui-lo rapidamente, mesmo fora do horário normal de trabalho.
+
+### 21.2 Financeiro e fornecedores
+
+Lucas conecta os controles de verificação ao financeiro e à gestão de fornecedores. A lista de fornecedores passa a registrar os telefones verificados e o nome de quem os verificou. Os fornecedores recebem uma carta explicando que a Brightwell sempre retornará a ligação em números conhecidos antes de conceder acesso remoto ou alterar dados de pagamento, e pedindo que informem por escrito qualquer mudança. A integração com os fornecedores reparte o ônus da verificação e torna os fornecedores legítimos parceiros na resistência à personificação, em vez de fontes de atrito. A maioria dos fornecedores responde em um mês.
+
+### 21.3 Manter a simplicidade
+
+Lucas resiste a acrescentar complexidade. A Brightwell não tem equipe de segurança, então cada integração precisa poder ser mantida pela gerente da clínica e pelo prestador de TI. Ele usa os sistemas existentes sempre que possível: o recurso de retenção do sistema contábil, o botão de reporte da plataforma de e-mail e uma planilha compartilhada com os números verificados dos fornecedores. Ele documenta cada ligação numa página. Marta lembra que um sistema simples que continua funcionando é melhor do que um elaborado que falha quando seu criador deixa o estágio. Os documentos ficam numa única pasta compartilhada.
+
+### Exemplo resolvido
+
+Lucas liga o reporte a um plano de resposta de duas páginas, registra os números verificados dos fornecedores, informa os fornecedores sobre as regras de retorno de ligação e mantém as integrações simples.
+
+> **Caso sintético.** A integração é sintética.
+
+### Erros e limites
+
+Os fornecedores podem ignorar as cartas. As planilhas se desatualizam.
+
+### Exercícios
+
+- **EX061 — Etapas da resposta.** O que acontece quando um e-mail malicioso chegou a várias clínicas? *Rubrica:* 3 = é removido, o remetente é bloqueado e os cliques são verificados;; 2 = três etapas;; 1 = nada;; 0 = nenhuma.
+
+- **EX062 — Carta aos fornecedores.** O que a carta aos fornecedores explica? *Rubrica:* 3 = a Brightwell sempre retorna a ligação em números conhecidos;; 2 = retorno de ligação;; 1 = nada;; 0 = nenhuma.
+
+- **EX063 — Manutenibilidade.** Quem precisa conseguir manter as integrações? *Rubrica:* 3 = a gerente da clínica e o prestador de TI;; 2 = equipe pequena;; 1 = uma equipe de segurança;; 0 = nenhuma.
+
+<a id="ch-22"></a>
+
+## Capítulo 22 — Fatores humanos e política cibernética: automação
+
+### Objetivos de aprendizagem
+
+Você vai (1) automatizar com segurança as tarefas rotineiras de reporte; (2) evitar uma automação que elimine o julgamento humano onde ele é necessário; (3) monitorar as etapas automatizadas em busca de erros.
+
+### 22.1 Automação segura
+
+Lucas amplia a automação. Um script produz automaticamente as medidas mensais a partir da exportação da ferramenta de triagem e as envia à gerente da clínica. Outro verifica toda semana se o botão de reporte existe em todos os computadores, seguindo a lição da solução de problemas. Um terceiro envia lembretes aos gestores quando retenções de pagamento esperam há mais de um dia. Cada script é pequeno, documentado e testado com dados sintéticos. A automação elimina o trabalho repetitivo e deixa às pessoas mais tempo para tarefas que exigem julgamento e conversa. Cada script tem um responsável nomeado.
+
+### 22.2 Preservar o julgamento
+
+Lucas cogita automatizar os vereditos de todos os reportes com um serviço comercial de pontuação. Ele decide contra a automação total: o serviço rotularia como maliciosos alguns e-mails genuínos de fornecedores, e os funcionários perderiam a confiança se ouvissem que uma fatura real era falsa. Em vez disso, os vereditos automáticos valem apenas para coincidências exatas com e-mails maliciosos conhecidos, enquanto os e-mails novos são revisados pelo prestador. Decidir onde as pessoas devem continuar no circuito é um julgamento central de fatores humanos em qualquer projeto de automação. O prestador concorda com essa abordagem.
+
+### 22.3 Monitoramento da automação
+
+Etapas automatizadas podem falhar em silêncio. Lucas acrescenta verificações: cada script grava uma linha de log quando roda, e um resumo semanal lista qualquer script que não rodou ou que produziu erros. O laboratório simula oito semanas de logs e encontra uma semana perdida, em que a verificação do botão falhou porque um computador estava desligado. Ele acrescenta uma regra para tentar de novo no dia seguinte. Monitorar a automação garante que as pessoas saibam quando precisam intervir, em vez de presumir que tudo está funcionando.
+
+### Laboratório — Verificação semanal do log da automação
+
+```python
+# Weekly automation log check over eight weeks (synthetic).
+scripts = ["measures", "button check", "hold reminders"]
+missed = {("button check", 5)}
+for w in range(1, 9):
+    bad = [s for s in scripts if (s, w) in missed]
+    if bad: print(f"week {w}: missed {bad}")
+print("weeks checked: 8; missed runs:", len(missed))
+```
+
+Execute com `python3 lab_runs.py`. Saída verificada:
+
+```text
+week 5: missed ['button check']
+weeks checked: 8; missed runs: 1
+```
+
+### Exemplo resolvido
+
+Lucas automatiza as medidas, as verificações do botão e os lembretes de retenção, limita os vereditos automáticos a coincidências exatas e monitora os scripts em busca de falhas silenciosas.
+
+> **Caso sintético.** Os scripts e os logs são sintéticos.
+
+### Erros e limites
+
+Os scripts quebram quando os sistemas mudam. Os logs precisam ser lidos.
+
+### Exercícios
+
+- **EX064 — Automação total rejeitada.** Por que rejeitar vereditos totalmente automatizados? *Rubrica:* 3 = e-mails genuínos rotulados errado prejudicariam a confiança;; 2 = confiança;; 1 = custo;; 0 = nenhuma.
+
+- **EX065 — Semana perdida no laboratório.** O que o laboratório encontrou em oito semanas de logs? *Rubrica:* 3 = uma verificação do botão perdida na semana 5;; 2 = uma;; 1 = nada;; 0 = nenhuma.
+
+- **EX066 — Regra de nova tentativa.** Que regra foi acrescentada depois da execução perdida? *Rubrica:* 3 = tentar de novo no dia seguinte;; 2 = nova tentativa;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-23"></a>
+
+## Capítulo 23 — Fatores humanos e política cibernética: avaliação
+
+### Objetivos de aprendizagem
+
+Você vai (1) avaliar o programa diante de seus objetivos depois de seis meses; (2) combinar as medidas com a visão dos funcionários; (3) recomendar os próximos passos.
+
+### 23.1 Objetivos e resultados
+
+Lucas avalia o programa depois de seis meses diante de seus objetivos: mais e-mails maliciosos reportados, reporte e vereditos mais rápidos, fraude de pagamento barrada e pouco ônus para os funcionários. A proporção de e-mails maliciosos reportados subiu de cerca de metade para perto de quatro quintos. A mediana do tempo até o veredito caiu de mais de três horas para cerca de uma hora. Duas alterações falsas de dados bancários foram retidas e recusadas. As notas de ônus ficaram estáveis. O laboratório resume os valores de antes e depois lado a lado para o relatório da gerente da clínica. Os gestores recebem o resumo primeiro.
+
+### Laboratório — Resumo da avaliação de antes e depois
+
+```python
+# Before and after evaluation summary (synthetic).
+rows = [("reported share", "48%", "81%"), ("median verdict (min)", "190", "62"), ("fake bank changes held", "0 of 0", "2 of 2"), ("burden (1-5)", "2.9", "2.9")]
+for n, b, a in rows: print(f"{n}: before {b}, after {a}")
+```
+
+Execute com `python3 lab_eval.py`. Saída verificada:
+
+```text
+reported share: before 48%, after 81%
+median verdict (min): before 190, after 62
+fake bank changes held: before 0 of 0, after 2 of 2
+burden (1-5): before 2.9, after 2.9
+```
+
+### 23.2 Visão dos funcionários
+
+Lucas repete uma versão curta do questionário e conduz duas pequenas discussões em grupo. Os funcionários dizem que reportar agora parece fácil e bem-vindo e que gostam de ter retorno. As recepcionistas dizem que o cartão de retorno de ligação as ajuda a recusar quem liga com insistência. Alguns clínicos ainda acham as chaves de segurança incômodas ao circular entre as salas. A visão dos funcionários explica os números e destaca problemas que as medidas não captam, como o das chaves, que Lucas acrescenta às recomendações para a próxima fase do programa. As anotações dos grupos não têm nomes.
+
+### 23.3 Próximos passos
+
+Lucas recomenda continuar o programa, acrescentar uma segunda chave por clínico para que possam deixar uma em cada sala e fazer um reforço curto a cada dois meses com exemplos recentes. Ele sugere que a Brightwell considere um pequeno número de simulações anunciadas no próximo ano, sob regras combinadas com os funcionários, se os gestores quiserem verificar a prontidão para novos estilos de ataque. Ele apresenta os limites com honestidade: seis meses é pouco, e algumas melhoras podem refletir uma novidade que pode se apagar. A gerente da clínica aceita todas as recomendações.
+
+### Exemplo resolvido
+
+Lucas avalia seis meses de resultados, combina-os com a visão dos funcionários e recomenda chaves extras, reforços e simulações cautelosas e anunciadas.
+
+> **Caso sintético.** Os dados são sintéticos.
+
+### Erros e limites
+
+Efeitos de novidade. As amostras do questionário variam ao longo do tempo.
+
+### Exercícios
+
+- **EX067 — Proporção reportada no laboratório.** Como mudou a proporção reportada no laboratório? *Rubrica:* 3 = de 48% para 81%;; 2 = alta;; 1 = nada;; 0 = nenhuma.
+
+- **EX068 — Queixa das chaves.** O que alguns clínicos acharam incômodo? *Rubrica:* 3 = as chaves de segurança ao circular entre as salas;; 2 = chaves;; 1 = nada;; 0 = nenhuma.
+
+- **EX069 — Condição das simulações.** Em que condições as simulações poderiam ser usadas? *Rubrica:* 3 = anunciadas, com regras combinadas com os funcionários;; 2 = combinadas;; 1 = secretas;; 0 = nenhuma.
+
+<a id="ch-24"></a>
+
+## Capítulo 24 — Métodos de pesquisa aplicada
+
+### Objetivos de aprendizagem
+
+Você vai (1) formular uma pequena pergunta de pesquisa aplicada; (2) escolher um desenho simples adequado a um local de trabalho; (3) tratar a ética e os dados com responsabilidade.
+
+### 24.1 Formulação da pergunta
+
+Lucas percebe que algumas clínicas mandam o lembrete mensal por e-mail, enquanto outras o mencionam na reunião rápida da manhã. Ele formula uma pergunta: um lembrete falado na reunião da manhã leva a mais reportes na semana seguinte do que um lembrete por e-mail? A pergunta é estreita, prática e pode ser respondida com dados existentes. Marta o incentiva a declarar de antemão que diferença importaria para os gestores, para que o resultado oriente uma decisão real sobre como enviar os lembretes. Os gestores sugerem um limiar.
+
+### 24.2 Desenho simples
+
+Lucas desenha um crossover: no primeiro mês, metade das clínicas usa lembretes falados e metade, por e-mail; no segundo mês, elas trocam. Cada clínica serve de comparação para si mesma, o que reduz o efeito das diferenças entre clínicas. Ele conta os reportes na semana seguinte a cada lembrete. O laboratório compara os totais. Ele observa que os desenhos crossover pressupõem que o primeiro lembrete não afete demais o segundo mês, o que ele verifica olhando a semana anterior a cada lembrete. Nenhum padrão de efeito residual aparece.
+
+### Laboratório — Comparação crossover dos tipos de lembrete
+
+```python
+# Crossover: reports in the week after each reminder type (synthetic, 16 clinics).
+m1 = {"spoken": 30, "email": 18}; m2 = {"spoken": 28, "email": 21}
+print("spoken total", m1["spoken"] + m2["spoken"], "email total", m1["email"] + m2["email"])
+```
+
+Execute com `python3 lab_cross.py`. Saída verificada:
+
+```text
+spoken total 58 email total 39
+```
+
+### 24.3 Ética e dados
+
+O estudo usa contagens agregadas de reportes já existentes e os lembretes normais, de modo que não recai ônus extra sobre os funcionários. Lucas informa os gestores das clínicas e os funcionários de que os estilos de lembrete estão sendo comparados e de que nenhum dado individual é usado. A gerente da clínica e Marta aprovam o plano. Os dados ficam numa pasta restrita e são apagados depois do relatório. A pesquisa aplicada no local de trabalho deve ser tão respeitosa quanto a pesquisa acadêmica, mesmo quando parece pequena, porque a confiança dos funcionários se perde com facilidade. Os gestores concordam em participar.
+
+### Exemplo resolvido
+
+Lucas formula uma pergunta sobre lembretes, conduz um crossover de dois meses entre as clínicas e trata a ética com transparência.
+
+> **Caso sintético.** Os dados são sintéticos.
+
+### Erros e limites
+
+Efeitos residuais. Poucas clínicas.
+
+### Exercícios
+
+- **EX070 — Pergunta de pesquisa.** O que Lucas perguntou? *Rubrica:* 3 = se lembretes falados na reunião da manhã levam a mais reportes do que o e-mail;; 2 = lembretes;; 1 = nada;; 0 = nenhuma.
+
+- **EX071 — Vantagem do crossover.** Por que usar um desenho crossover? *Rubrica:* 3 = cada clínica serve de comparação para si mesma;; 2 = autocomparação;; 1 = nada;; 0 = nenhuma.
+
+- **EX072 — Totais do laboratório.** Que totais o laboratório comparou? *Rubrica:* 3 = 58 reportes com lembrete falado contra 39 com e-mail;; 2 = o falado, maior;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-25"></a>
+
+## Capítulo 25 — Ateliê de projeto em equipe
+
+### Objetivos de aprendizagem
+
+Você vai (1) trabalhar em equipe para desenhar um guia de reporte para pacientes; (2) testá-lo com usuários; (3) apresentar as escolhas de design.
+
+### 25.1 O briefing
+
+No ateliê, Lucas se junta a três colegas para desenhar um guia curto que ajude os pacientes da Brightwell a reconhecer mensagens falsas que dizem vir da clínica, como pedidos de pagamento falsos ou cancelamentos de consulta com links. O briefing pede um guia que caiba num lado de um cartão e numa página do site. As equipes precisam testar o desenho com pelo menos cinco pessoas de fora da segurança e apresentar suas escolhas. Elas dividem os papéis: pesquisa, redação, design e testes. Cada integrante mantém um diário.
+
+### 25.2 Testes com usuários
+
+A equipe testa um rascunho com sete pessoas, incluindo dois pacientes mais velhos recrutados num centro comunitário, com consentimento. Os participantes veem três mensagens sintéticas e precisam dizer, com a ajuda do cartão, se cada uma delas é genuína. Cinco de sete julgam corretamente as três com o cartão, contra três de sete sem ele numa rodada anterior. Os participantes pedem letras maiores e um telefone para conferir. A equipe revisa o cartão e repete o teste, e então seis de sete julgam corretamente.
+
+### 25.3 Apresentação das escolhas
+
+A equipe apresenta aos colegas e à gerente da clínica. Explicam por que o cartão se concentra numa só regra, a de que a Brightwell nunca pedirá pagamento por link em mensagem de texto, e traz o telefone oficial para conferir. Evitam imagens que provoquem medo, seguindo as evidências de que o medo pode ter efeito contrário. A gerente da clínica pede para imprimir o cartão para as clínicas. Apresentar as escolhas de design com evidências dos testes torna o produto final mais fácil de ser aceito e usado pelos outros. Os colegas fazem perguntas sobre o processo de teste e a escolha dos participantes.
+
+### Exemplo resolvido
+
+A equipe de Lucas desenha um cartão-guia para pacientes, testa-o com sete pessoas e o revisa para uma única regra clara e um número oficial.
+
+> **Caso sintético.** O ateliê é sintético.
+
+### Erros e limites
+
+Testes pequenos com usuários. Os participantes podem se esforçar mais do que o normal.
+
+### Exercícios
+
+- **EX073 — Regra do cartão.** Que regra única o cartão declara? *Rubrica:* 3 = a Brightwell nunca pede pagamento por link em mensagem de texto;; 2 = regra;; 1 = nada;; 0 = nenhuma.
+
+- **EX074 — Melhora no teste.** Como mudaram os julgamentos corretos depois da revisão? *Rubrica:* 3 = de cinco para seis de sete;; 2 = melhoraram;; 1 = nada;; 0 = nenhuma.
+
+- **EX075 — Pedido dos participantes.** O que os participantes pediram? *Rubrica:* 3 = letras maiores e um telefone;; 2 = legibilidade;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-26"></a>
+
+## Capítulo 26 — Fatores humanos e política cibernética: passagem operacional
+
+### Objetivos de aprendizagem
+
+Você vai (1) passar o programa para a gerente da clínica e o prestador de TI; (2) escrever runbooks para as tarefas rotineiras; (3) treinar os sucessores.
+
+### 26.1 Planejamento da passagem
+
+Com o fim do estágio, Lucas planeja a passagem. Ele lista cada tarefa que vinha fazendo: verificações semanais dos scripts, medidas mensais, revisões trimestrais, atualização dos números dos fornecedores e respostas às dúvidas dos funcionários. Para cada uma, nomeia o novo responsável e um reserva. Ele estima o tempo de cada tarefa para que a gerente da clínica possa se planejar. Uma passagem clara evita o padrão comum em que as melhoras se apagam quando sai quem as introduziu, deixando os funcionários confusos sobre o que ainda vale. A gerente revisa a lista com ele.
+
+### 26.2 Runbooks
+
+Lucas escreve runbooks curtos para cada tarefa rotineira. Cada runbook lista o propósito, as etapas, as ferramentas, os resultados esperados e o que fazer se algo der errado. Ele evita jargão e inclui capturas de tela. Para as medidas mensais, o runbook explica como rodar o script, ler a saída e perceber problemas. Ele testa cada runbook pedindo à gerente da clínica que o siga sem ajuda enquanto ele observa em silêncio, e depois corrige as etapas que causaram confusão. Cada runbook fica na pasta compartilhada com um número de versão e uma data de revisão um ano à frente.
+
+### 26.3 Treinamento dos sucessores
+
+Lucas conduz duas sessões curtas de treinamento com a gerente da clínica e o prestador de TI. Ele explica não só as etapas, mas também as razões, como por que os nomes de quem reporta não são guardados e por que as simulações precisam seguir regras combinadas. Sucessores que entendem as razões conseguem se adaptar com bom senso quando as coisas mudam. Ele também lhes entrega uma lista de referências, incluindo o NIST SP 800-50r1 e as diretrizes de cultura da ENISA, para leitura adicional caso queiram desenvolver o programa. Os dois sucessores fazem perguntas úteis.
+
+### Exemplo resolvido
+
+Lucas passa as tarefas com responsáveis e reservas, escreve runbooks testados e treina os sucessores nas razões, além das etapas.
+
+> **Caso sintético.** A passagem é sintética; o SP 800-50r1 e as diretrizes da ENISA são reais.
+
+### Erros e limites
+
+Os runbooks se desatualizam. Os sucessores têm outras atribuições.
+
+### Exercícios
+
+- **EX076 — Propósito da passagem.** Que padrão uma passagem clara evita? *Rubrica:* 3 = as melhoras se apagarem quando sai quem as introduziu;; 2 = apagamento;; 1 = nada;; 0 = nenhuma.
+
+- **EX077 — Teste dos runbooks.** Como Lucas testou os runbooks? *Rubrica:* 3 = a gerente da clínica os seguiu sem ajuda;; 2 = simulação guiada;; 1 = nada;; 0 = nenhuma.
+
+- **EX078 — Razões ensinadas.** Por que ensinar as razões, além das etapas? *Rubrica:* 3 = para que os sucessores se adaptem quando as coisas mudam;; 2 = adaptação;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-27"></a>
+
+## Capítulo 27 — Implantação e validação
+
+### Objetivos de aprendizagem
+
+Você vai (1) implantar o programa em duas clínicas novas; (2) validar que ele funciona no novo ambiente; (3) adaptá-lo às diferenças locais.
+
+### 27.1 Implantação
+
+A Brightwell adquire mais duas clínicas. Lucas e o prestador de TI implantam o programa nelas usando os runbooks: botões de reporte, respostas no mesmo dia, cartões de retorno de ligação, retenções de pagamento e chaves de segurança para os funcionários com acesso a dados de pacientes. Eles conduzem uma sessão curta com os funcionários de cada clínica, explicando para que serve o reporte e que reportes na dúvida são bem-vindos. A implantação leva duas semanas por clínica. Usar os runbooks testa se eles funcionam para alguém que não é o autor, o que revela duas etapas faltando. As duas etapas são acrescentadas aos runbooks.
+
+### 27.2 Validação
+
+Lucas valida a implantação conferindo os resultados, e não só a instalação. Depois de dois meses, ele compara as proporções reportadas e os tempos até o veredito das clínicas novas com os das existentes. O laboratório mostra que o reporte nas clínicas novas é menor, mas está subindo. Ele entrevista dois funcionários, que contam que o antigo dono tinha a política de punir quem clicasse em links suspeitos, por isso tinham receio de admitir qualquer coisa. A validação revela que a lacuna restante é a cultura, não as ferramentas. Ele compartilha esse achado com cuidado.
+
+### Laboratório — Proporção reportada nas clínicas novas e existentes
+
+```python
+# Reported share in new and existing clinics (synthetic).
+print("existing clinics: 80%")
+for m, (r, t) in enumerate([(5, 11), (8, 13)], 1): print(f"new clinics month {m}: {r}/{t} = {r / t:.0%}")
+```
+
+Execute com `python3 lab_newclinics.py`. Saída verificada:
+
+```text
+existing clinics: 80%
+new clinics month 1: 5/11 = 45%
+new clinics month 2: 8/13 = 62%
+```
+
+### 27.3 Adaptação local
+
+Para tratar a lacuna cultural, a gerente da clínica visita as clínicas novas e afirma com clareza que ninguém será punido por reportar ou por erros honestos. Os responsáveis pelas clínicas contam suas próprias histórias de reporte de mensagens suspeitas. Lucas sugere um questionário curto de acompanhamento depois de três meses. Adaptar-se ao histórico local mostra que os mesmos controles podem ter efeitos diferentes conforme o que os funcionários viveram antes, e que as palavras e as ações das lideranças importam para a confiança. O questionário é agendado com os responsáveis.
+
+### Exemplo resolvido
+
+Lucas implanta o programa em duas clínicas adquiridas, valida os resultados, encontra o legado de uma cultura de culpa e apoia as lideranças no seu enfrentamento.
+
+> **Caso sintético.** Os dados são sintéticos.
+
+### Erros e limites
+
+Dois meses é pouco. A cultura muda devagar.
+
+### Exercícios
+
+- **EX079 — Etapas faltando.** O que o uso dos runbooks nas clínicas novas revelou? *Rubrica:* 3 = duas etapas faltando;; 2 = lacunas;; 1 = nada;; 0 = nenhuma.
+
+- **EX080 — Comparação no laboratório.** Como as clínicas novas se compararam no laboratório? *Rubrica:* 3 = 45% e depois 62%, contra 80% nas existentes;; 2 = menor, mas subindo;; 1 = nada;; 0 = nenhuma.
+
+- **EX081 — Causa herdada.** Por que os funcionários das clínicas novas tinham receio? *Rubrica:* 3 = o antigo dono punia quem clicava;; 2 = culpa;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-28"></a>
+
+## Capítulo 28 — Prática de campo
+
+### Objetivos de aprendizagem
+
+Você vai (1) praticar trabalho de segurança centrado nas pessoas num ambiente real, sob supervisão; (2) tratar com respeito as dúvidas reais dos funcionários; (3) refletir sobre a conduta profissional.
+
+### 28.1 Prática supervisionada
+
+Durante a prática de campo, Lucas passa três semanas trabalhando na central de atendimento de dúvidas de segurança da Brightwell, sob supervisão do prestador de TI. Ele atende ligações sobre mensagens suspeitas, ajuda funcionários a cadastrar chaves de segurança e conduz os gestores pelas retenções de pagamento. Segue os runbooks e escala qualquer coisa incomum. A prática supervisionada lhe permite aplicar o que aprendeu enquanto uma pessoa experiente confere suas decisões, que é o caminho normal para a responsabilidade profissional em funções técnicas que afetam pessoas reais. Ele registra cada ligação que atende.
+
+### 28.2 Atendimento respeitoso
+
+Uma recepcionista liga, constrangida, depois de digitar a senha numa página falsa de agendamento. Lucas agradece por ela ter reportado rápido, explica que a chave de segurança impediu o atacante de entrar e redefine a senha junto com ela. Ele não lhe passa sermão. Mais tarde, ela reporta outra mensagem suspeita em poucos minutos. Lucas vê de perto como uma resposta respeitosa incentiva reportes futuros, como a literatura previa. Ele registra o evento no log de incidentes sem o nome dela, como o programa exige. O prestador aprova sua resposta.
+
+### 28.3 Reflexão
+
+Lucas reflete sobre sua conduta. Ele percebe que às vezes usou termos técnicos que confundiram quem ligava e decide usar uma linguagem mais simples. Também percebe a tentação de resolver os problemas sozinho em vez de explicá-los, o que deixa os funcionários menos preparados para a próxima vez. Marta o incentiva a manter um diário profissional curto. A reflexão ajuda os tecnólogos a passar de seguir procedimentos a exercer julgamento, o que é essencial ao lidar com pessoas ansiosas ou sob pressão. Ele escreve uma página por semana sobre suas ligações e decisões.
+
+### Exemplo resolvido
+
+Lucas trabalha numa central de atendimento supervisionada, responde com gentileza a uma recepcionista que digitou a senha numa página falsa e reflete sobre sua linguagem e seus hábitos.
+
+> **Caso sintético.** Os eventos são sintéticos.
+
+### Erros e limites
+
+A supervisão varia. A reflexão exige honestidade.
+
+### Exercícios
+
+- **EX082 — Proteção da chave.** Por que o atacante não conseguiu entrar? *Rubrica:* 3 = a chave de segurança impediu;; 2 = chave;; 1 = redefinição da senha;; 0 = nenhuma.
+
+- **EX083 — Efeito posterior.** O que a recepcionista fez depois? *Rubrica:* 3 = reportou outra mensagem em poucos minutos;; 2 = reportou;; 1 = nada;; 0 = nenhuma.
+
+- **EX084 — Lição de linguagem.** O que Lucas decidiu mudar? *Rubrica:* 3 = usar uma linguagem mais simples;; 2 = linguagem simples;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-29"></a>
+
+## Capítulo 29 — Construção do projeto final
+
+### Objetivos de aprendizagem
+
+Você vai (1) construir uma melhoria final para o programa; (2) planejá-la e testá-la; (3) documentá-la para a passagem.
+
+### 29.1 Escolha da construção
+
+No projeto final, Lucas constrói uma ferramenta simples de verificação de fornecedores. Os gestores usam a planilha compartilhada de números verificados, mas ela ficou bagunçada e às vezes desatualizada. A ferramenta dele é um pequeno formulário web no site interno da Brightwell: os gestores buscam um fornecedor, veem o número verificado com a data em que foi conferido e registram cada retorno de ligação. A ferramenta também sinaliza os números não verificados no último ano. O objetivo é tornar o procedimento de retorno de ligação mais rápido e mais confiável.
+
+### 29.2 Construção e testes
+
+Lucas constrói a ferramenta com um banco de dados pequeno e uma interface simples, usando a abordagem de modelo de dados do capítulo 4. Ele a testa com fornecedores sintéticos, conferindo buscas, registros e sinalizações. Depois pede a três gestores que realizem tarefas com ela enquanto ele observa. Eles concluem todas as tarefas; um pede um botão para ligar direto da tela, que ele acrescenta. O laboratório verifica quantos fornecedores precisam de nova verificação com base em datas sintéticas. Os gestores também sugerem rótulos mais claros para a caixa de busca, que ele muda antes do lançamento.
+
+### Laboratório — Fornecedores com nova verificação pendente
+
+```python
+# Suppliers due for re-verification (verified more than 365 days ago), synthetic.
+from datetime import date
+today = date(2026, 10, 12)
+ages = [30, 90, 400, 120, 500, 200, 380, 60, 45, 700, 15, 300, 410, 220, 100, 365, 366, 80, 20, 10,
+        150, 160, 170, 180, 190, 250, 260, 270, 280, 290, 5, 25, 35, 55, 65, 75, 85, 95, 105, 800]
+due = [a for a in ages if a > 365]
+print(f"suppliers {len(ages)}; due for re-verification {len(due)}")
+```
+
+Execute com `python3 lab_suppliers.py`. Saída verificada:
+
+```text
+suppliers 40; due for re-verification 7
+```
+
+### 29.3 Documentação
+
+Lucas documenta a ferramenta para a gerente da clínica e o prestador de TI: propósito, modo de uso, como fazer backup e como acrescentar fornecedores. Ele inclui uma seção curta de solução de problemas e anota os limites conhecidos, como a necessidade de alguém verificar de novo os números sinalizados. Guarda o código no repositório da Brightwell, com comentários. A documentação torna o projeto final útil depois que ele sair, o que, como Marta lembra, é o verdadeiro teste do trabalho de um tecnólogo. O prestador revisa o guia e o aprova.
+
+### Exemplo resolvido
+
+Lucas constrói uma ferramenta de verificação de fornecedores, testa-a com os gestores, acrescenta um botão de ligação e a documenta para a passagem.
+
+> **Caso sintético.** A ferramenta e os dados são sintéticos.
+
+### Erros e limites
+
+As ferramentas precisam de manutenção. A nova verificação exige tempo.
+
+### Exercícios
+
+- **EX085 — Propósito da ferramenta.** Qual é o objetivo da ferramenta? *Rubrica:* 3 = tornar a verificação por retorno de ligação mais rápida e confiável;; 2 = retornos de ligação;; 1 = nada;; 0 = nenhuma.
+
+- **EX086 — Pedido de um gestor.** O que um gestor pediu? *Rubrica:* 3 = um botão para ligar direto da tela;; 2 = botão de ligação;; 1 = nada;; 0 = nenhuma.
+
+- **EX087 — Sinalizações do laboratório.** Quantos dos 40 fornecedores precisavam de nova verificação no laboratório? *Rubrica:* 3 = 7;; 2 = 7;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-30"></a>
+
+## Capítulo 30 — Avaliação do projeto final
+
+### Objetivos de aprendizagem
+
+Você vai (1) avaliar a ferramenta do projeto final; (2) apresentar os resultados aos avaliadores e aos gestores; (3) refletir sobre o papel do tecnólogo em fatores humanos.
+
+### 30.1 Avaliação da ferramenta
+
+Depois de seis semanas, Lucas avalia a ferramenta. Os gestores registraram o retorno de ligação de todas as alterações de dados bancários, contra cerca de dois terços registrados na planilha antiga. A mediana do tempo para concluir um retorno de ligação caiu de cerca de seis minutos para cerca de três, porque os números ficaram mais fáceis de encontrar. Sete números desatualizados foram verificados de novo. Os gestores avaliam a ferramenta como fácil de usar. Ele observa que seis semanas cobrem poucos ciclos de pagamento, de modo que é preciso um monitoramento mais longo antes de tirar conclusões firmes. Ele compartilha os resultados com os gestores.
+
+### 30.2 Apresentação
+
+Lucas apresenta a Marta, a um avaliador externo e à gerente da clínica. Explica o problema, o design, os testes e os resultados e mostra a documentação. O avaliador pergunta o que acontece se a ferramenta cair; Lucas mostra que o runbook recorre à lista impressa guardada no escritório financeiro. A gerente da clínica pergunta se a ferramenta poderia incluir os fornecedores com acesso remoto; Lucas concorda que poderia e sugere isso como próximo passo. Respostas fundamentadas na documentação tranquilizam os avaliadores. Os avaliadores fazem anotações.
+
+### 30.3 Reflexão sobre o papel
+
+Lucas reflete sobre o papel de um tecnólogo em fatores humanos. Ele começou achando que seu trabalho era configurar ferramentas; agora vê que as ferramentas só dão certo quando se encaixam no trabalho das pessoas, são explicadas com respeito e recebem manutenção depois do lançamento. Ele destaca o valor da prática ética, como a encenação aberta em vez de testes secretos. Marta reconhece seu crescimento e lhe dá uma nota alta. Lucas aceita uma vaga júnior no prestador de TI e continua apoiando o programa da Brightwell. Ele agradece à gerente da clínica.
+
+### Exemplo resolvido
+
+Lucas avalia sua ferramenta, apresenta com um plano de contingência e reflete sobre o papel do tecnólogo em fatores humanos.
+
+> **Caso sintético.** A avaliação é sintética.
+
+### Erros e limites
+
+Seis semanas é pouco. Os avaliadores podem favorecer apresentações polidas.
+
+### Exercícios
+
+- **EX088 — Registro dos retornos.** Como mudou o registro dos retornos de ligação? *Rubrica:* 3 = de cerca de dois terços para todas as alterações;; 2 = completo;; 1 = nada;; 0 = nenhuma.
+
+- **EX089 — Tempo do retorno.** Como mudou a mediana do tempo do retorno de ligação? *Rubrica:* 3 = de cerca de seis para cerca de três minutos;; 2 = caiu pela metade;; 1 = nada;; 0 = nenhuma.
+
+- **EX090 — Contingência.** Qual é a contingência se a ferramenta cair? *Rubrica:* 3 = a lista impressa no escritório financeiro;; 2 = lista impressa;; 1 = nada;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX060 (as de EX061–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). Lucas Ferreira, a professora Marta Kowalczyk, o Northgate Institute of Technology, o Brightwell Dental Group e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX090. Lucas Ferreira, a professora Marta Kowalczyk, o Northgate Institute of Technology, o Brightwell Dental Group e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Quatro sistemas.
 
@@ -1049,6 +1511,66 @@ Respostas-modelo para EX001–EX060 (as de EX061–EX090 estão na edição em i
 **EX059.** Uma recepcionista nova não foi informada sobre o reporte.
 
 **EX060.** Verifica se o botão existe em todos os computadores.
+
+**EX061.** É removido de todas as caixas postais, o remetente é bloqueado e os cliques são verificados.
+
+**EX062.** Que a Brightwell sempre retorna a ligação em números conhecidos.
+
+**EX063.** A gerente da clínica e o prestador de TI.
+
+**EX064.** E-mails genuínos rotulados como maliciosos prejudicariam a confiança.
+
+**EX065.** Uma verificação do botão perdida na semana 5.
+
+**EX066.** Tentar de novo no dia seguinte.
+
+**EX067.** De 48% para 81%.
+
+**EX068.** As chaves de segurança ao circular entre as salas.
+
+**EX069.** Anunciadas, com regras combinadas com os funcionários.
+
+**EX070.** Se lembretes falados na reunião da manhã levam a mais reportes do que lembretes por e-mail.
+
+**EX071.** Cada clínica serve de comparação para si mesma.
+
+**EX072.** 58 reportes com lembrete falado contra 39 com e-mail.
+
+**EX073.** Que a Brightwell nunca pede pagamento por link em mensagem de texto.
+
+**EX074.** De cinco para seis de sete.
+
+**EX075.** Letras maiores e um telefone.
+
+**EX076.** As melhoras se apagarem quando sai quem as introduziu.
+
+**EX077.** A gerente da clínica os seguiu sem ajuda.
+
+**EX078.** Para que os sucessores consigam se adaptar quando as coisas mudam.
+
+**EX079.** Duas etapas faltando.
+
+**EX080.** 45% e depois 62%, contra 80% nas clínicas existentes.
+
+**EX081.** O antigo dono punia quem clicava em links suspeitos.
+
+**EX082.** A chave de segurança impediu.
+
+**EX083.** Reportou outra mensagem em poucos minutos.
+
+**EX084.** Usar uma linguagem mais simples.
+
+**EX085.** Tornar a verificação por retorno de ligação mais rápida e mais confiável.
+
+**EX086.** Um botão para ligar direto da tela.
+
+**EX087.** 7.
+
+**EX088.** De cerca de dois terços para todas as alterações.
+
+**EX089.** De cerca de seis para cerca de três minutos.
+
+**EX090.** A lista impressa no escritório financeiro.
 
 <a id="references"></a>
 ## Referências
