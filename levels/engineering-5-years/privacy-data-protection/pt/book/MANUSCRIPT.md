@@ -1,7 +1,7 @@
 # Privacidade e Proteção de Dados: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 119, curso de engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–35 de 50 já estão escritos em português, com os exercícios EX001–EX105 e suas resoluções com rubricas de 0 a 3 e 6 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 36–50 (EX106–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–40 de 50 já estão escritos em português, com os exercícios EX001–EX120 e suas resoluções com rubricas de 0 a 3 e 7 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 41–50 (EX121–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que projetam, verificam e operam a privacidade e a proteção de dados como propriedades de um sistema real.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios executam resposta aleatorizada, consultas de retenção, verificações de fluxos de dados, pontuação de DPIA, contagens de minimização, confiabilidade da eliminação, orçamentos de privacidade, um relógio de incidente e resumos criptográficos de evidências, sempre sobre dados sintéticos. A análise jurídica é didática e não constitui aconselhamento jurídico; a LGPD e os atos da ANPD são citados pelo texto oficial e parafraseados. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ Regulamento (UE) 2016/679 (GDPR); Lei nº 13.709/2018 (LGPD); Diretrizes 4/2019,
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) |
 
-Capítulos 36–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-36), até a chegada dos próximos lotes.
+Capítulos 41–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-41), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1601,11 +1601,229 @@ As perguntas reservadas podem alertar um parente controlador se forem vistas; pr
 - **EX104 — Defesa contra coerção.** Que solução de projeto responde à coerção por parentes? *Rubrica:* 3 = perguntas reservadas quando o paciente está sozinho, mais as perguntas dos médicos;; 2 = uma parte;; 1 = nenhuma;; 0 = nenhuma.
 - **EX105 — Quem altera as configurações.** Quem pode alterar as configurações de compartilhamento? *Rubrica:* 3 = o paciente ou, se ele não tiver capacidade, um representante legal verificado;; 2 = só o paciente;; 1 = o cuidador;; 0 = nenhuma.
 
+<a id="ch-36"></a>
+
+## Capítulo 36 — Privacidade e proteção de dados: desempenho e escala
+
+### Objetivos de aprendizagem
+
+Você vai (1) planejar um orçamento de privacidade diferencial para publicações repetidas; (2) entender a acurácia em escala; (3) escolher a frequência das publicações.
+
+### 36.1 Publicação de estatísticas das clínicas
+
+A Pellmore quer publicar estatísticas de tempo de espera e de diagnósticos das clínicas para parceiros de saúde pública. Zara propõe a privacidade diferencial para as contagens publicadas. Dwork e Roth (2014) explicam que a perda de privacidade se acumula entre as publicações pela composição, então um orçamento anual precisa ser dividido entre todas elas. Ela fixa um épsilon anual ilustrativo de três para uma família de contagens e pergunta com que frequência a Pellmore pode publicar mantendo uma acurácia útil. A pergunta liga escala e desempenho à privacidade: mais publicações significam mais ruído em cada uma, e menos utilidade para quem lê.
+
+### 36.2 O laboratório do orçamento
+
+O laboratório divide o orçamento anual igualmente entre as publicações e calcula o erro de Laplace para uma contagem com sensibilidade um. As publicações mensais recebem épsilon 0,25 cada uma e um erro absoluto médio de 4,0 por contagem. As semanais recebem épsilon 0,0577 e erro de 17,3. As diárias recebem épsilon 0,0082 e erro de 121,7, o que encobriria a maioria das contagens das clínicas. Zara recomenda a publicação mensal. Ela explica aos parceiros que números diários pareceriam precisos, mas mostrariam sobretudo ruído, o que mais confundiria do que informaria as decisões de saúde pública. As publicações menos frequentes gastam o orçamento com mais sabedoria.
+
+### 36.3 Efeitos de escala
+
+Contagens maiores toleram melhor o ruído. Um total nacional de milhares quase não é afetado por um erro de quatro, enquanto a contagem de vinte de uma clínica rural muda visivelmente. Zara propõe publicar em nível regional os diagnósticos raros e em nível de clínica os comuns. Ela também explica que o orçamento vale por pessoa: se cada pessoa contribuir para muitas contagens, a sensibilidade aumenta. Ela limita a contribuição de cada paciente a uma contagem por publicação, o que mantém a sensibilidade em um e torna válidos os números de erro do laboratório. Essa regra entra no código do pipeline.
+
+### 36.4 Engenharia do pipeline
+
+Zara implementa um pipeline de publicação que acompanha o orçamento gasto, recusa publicações que ultrapassariam o orçamento anual e registra cada publicação com seu épsilon. O pós-processamento arredonda as contagens com ruído e substitui valores negativos por zero, o que não enfraquece a garantia. Ela escreve uma nota pública curta explicando o método. O Prof. Holm lembra à turma que as implementações de privacidade diferencial podem falhar por bugs sutis, como uma geração ruim de números aleatórios, então o pipeline usa uma biblioteca avaliada e revisão independente. As sementes nunca são fixadas em produção.
+
+### Laboratório — Divisão de um orçamento anual de privacidade entre as publicações
+
+```python
+# Differential privacy budget for daily clinic dashboards: per-release epsilon and Laplace error under a yearly budget.
+yearly = 3.0
+for releases in [12, 52, 365]:
+    eps = yearly / releases
+    print(f"{releases:3d} releases/year: epsilon per release {eps:.4f}; mean abs error per count {1/eps:7.1f}")
+```
+
+Execute com `python3 lab_budget.py`. Saída verificada:
+
+```text
+ 12 releases/year: epsilon per release 0.2500; mean abs error per count     4.0
+ 52 releases/year: epsilon per release 0.0577; mean abs error per count    17.3
+365 releases/year: epsilon per release 0.0082; mean abs error per count   121.7
+```
+
+### Exemplo resolvido
+
+Zara divide um épsilon anual de 3 entre as publicações: a mensal dá erro de 4,0 por contagem, a semanal 17,3 e a diária 121,7, então ela recomenda a publicação mensal, com agregação regional para os diagnósticos raros.
+
+> **Caso sintético.** O orçamento e as contagens são ilustrativos; Dwork e Roth (2014) é real.
+
+### Erros e limites
+
+A composição simples é conservadora; contabilizações avançadas dão limites mais justos, mas exigem especialização.
+
+### Exercícios
+
+- **EX106 — Erro diário.** Que erro teriam as publicações diárias? *Rubrica:* 3 = 121,7 por contagem;; 2 = mais de cem;; 1 = errado;; 0 = nenhuma.
+- **EX107 — Limite de contribuição.** Por que limitar cada paciente a uma contagem por publicação? *Rubrica:* 3 = mantém a sensibilidade em um, para que os números de erro valham;; 2 = menciona sensibilidade;; 1 = nenhum;; 0 = nenhuma.
+- **EX108 — Pós-processamento seguro.** Arredondar e limitar as contagens com ruído enfraquece a garantia? *Rubrica:* 3 = não; o pós-processamento não enfraquece a privacidade diferencial;; 2 = não, sem justificativa;; 1 = sim;; 0 = nenhuma.
+
+<a id="ch-37"></a>
+
+## Capítulo 37 — Privacidade e proteção de dados: operações
+
+### Objetivos de aprendizagem
+
+Você vai (1) conduzir as operações de privacidade no dia a dia; (2) atender pedidos de direitos em volume; (3) operar o monitoramento e a resposta.
+
+### 37.1 Uma função de operações de privacidade
+
+A esta altura, os controles de privacidade da Pellmore precisam de operação diária. Zara ajuda a montar uma pequena função de operações de privacidade na equipe do encarregado. Ela atende pedidos de direitos, revisa anomalias de acesso, monitora a retenção e a conciliação do consentimento e se coordena com a segurança nos incidentes. Zara escreve runbooks para cada tarefa, com etapas, ferramentas e caminhos de escalonamento. A função presta contas mensalmente com o conjunto de métricas do Capítulo 29. É nas operações, observa ela, que os projetos funcionam como previsto ou se deterioram em silêncio com o tempo. A equipe é dona de cada runbook.
+
+### 37.2 Direitos em volume
+
+A Pellmore agora recebe cerca de duzentos pedidos de direitos por mês. Zara automatiza a verificação de identidade pelo login na conta, a coleta dos dados pela plataforma de privacidade e o acompanhamento dos prazos, com alertas aos vinte e aos vinte e cinco dias. Os pedidos complexos, como os que envolvem vários membros de uma família, vão para um especialista. Ela mede o cumprimento no prazo e constata que 97% dos pedidos são respondidos em até trinta dias. As Diretrizes 01/2022 do EDPB sobre o direito de acesso orientam o processo, inclusive o tratamento de pedidos de terceiros que agem em nome de um paciente; no Brasil, o art. 19, II, da LGPD fixa quinze dias para a declaração completa.
+
+### 37.3 Monitoramento
+
+Os sinais de anomalia de acesso são revisados diariamente. No primeiro mês, a equipe revisa trinta alertas; vinte e seis são legítimos, como a cobertura de colegas, e quatro levam a conversas sobre a necessidade de acesso. Um dos casos é o de um médico que consultou o prontuário de um parente, tratado pela política disciplinar da Pellmore e registrado como possível violação para avaliação. Zara ajusta os limiares para reduzir os alarmes falsos sem deixar escapar casos assim. Ela aprende que o monitoramento só funciona quando as revisões são rápidas e justas com os funcionários. As revisões acontecem em poucos dias.
+
+### 37.4 Melhoria contínua
+
+A cada trimestre, a equipe de operações de privacidade revisa incidentes, métricas e reclamações e propõe melhorias. Zara conduz a primeira revisão. A equipe constata que os pedidos de direitos enviados pelo correio ainda são lentos e que um aviso confuso gera muitas perguntas. Propõe um fluxo de digitalização e a reescrita de uma seção do aviso. A ISO/IEC 27701:2025, estruturada como norma de sistema de gestão, espera esses ciclos de monitoramento, análise crítica e melhoria. Ela observa que o ciclo mantém a privacidade viva como disciplina operacional, e não como um projeto que termina. A ISO/IEC 27701 se apoia nesse ciclo.
+
+### Exemplo resolvido
+
+Zara monta as operações de privacidade com runbooks, automatiza os pedidos de direitos até 97% no prazo, revisa trinta alertas de acesso, incluindo um caso de bisbilhotice no prontuário de um parente, e conduz uma revisão trimestral de melhoria.
+
+> **Caso sintético.** Os volumes e os casos são sintéticos; as Diretrizes 01/2022 do EDPB, o art. 19 da LGPD e a ISO/IEC 27701:2025 são reais.
+
+### Erros e limites
+
+A automação pode identificar mal quem faz o pedido; mantenha um caminho manual para os casos extremos.
+
+### Exercícios
+
+- **EX109 — Taxa no prazo.** Que parcela dos pedidos de direitos foi respondida no prazo? *Rubrica:* 3 = 97%;; 2 = quase todos;; 1 = errado;; 0 = nenhuma.
+- **EX110 — Prontuário de um parente.** Como é tratado o caso de um médico que consultou o prontuário de um parente? *Rubrica:* 3 = processo disciplinar e avaliação como possível violação;; 2 = uma parte;; 1 = ignorado;; 0 = nenhuma.
+- **EX111 — Ciclo de gestão.** O que a revisão trimestral proporciona? *Rubrica:* 3 = um ciclo de monitorar, analisar e melhorar, esperado de um sistema de gestão;; 2 = menciona melhoria;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-38"></a>
+
+## Capítulo 38 — Privacidade e proteção de dados: validação
+
+### Objetivos de aprendizagem
+
+Você vai (1) distinguir verificação de validação; (2) validar funcionalidades de privacidade com pacientes; (3) validar premissas jurídicas com especialistas.
+
+### 38.1 Verificação e validação
+
+A verificação pergunta se o sistema atende aos requisitos; a validação pergunta se os requisitos atendem às necessidades reais. Os testes de Zara verificaram que a eliminação alcança todos os armazenamentos. A validação pergunta se os pacientes entendem a eliminação e recebem o que esperam. Ela entrevista doze participantes de cenários sintéticos, voluntários que usam contas de teste. Vários esperam que a eliminação apague por completo o prontuário médico, o que a legislação de saúde não permite. A validação revela uma lacuna de explicação, e não de engenharia, e leva a um texto mais claro na tela de eliminação. Os pacientes testaram a nova tela.
+
+### 38.2 Usabilidade da privacidade
+
+Zara faz testes de usabilidade do painel de privacidade. Os participantes tentam descobrir quem viu seu prontuário, mudar as configurações de compartilhamento e baixar seus dados. A maioria consegue, mas encontrar o histórico de acessos leva tempo demais. Ela o move para a primeira tela do painel. Mede o tempo das tarefas antes e depois e relata a melhoria. Controles de privacidade que as pessoas não conseguem encontrar ou usar, explica, oferecem pouca proteção real, e as obrigações de transparência do artigo 12 implicam que as pessoas precisam de fato conseguir usar o que lhes é oferecido.
+
+### 38.3 Validação jurídica
+
+Os projetos de Zara se apoiam em premissas jurídicas: que a portabilidade exclui as anotações dos médicos, que o laboratório parceiro é um controlador independente, que a guarda obrigatória dos prontuários prevalece sobre a eliminação. Ela pede à assessoria jurídica da Pellmore que valide cada premissa e registre o raciocínio. A assessoria confirma a maioria, mas refina uma: algumas anotações de sintomas feitas pelo paciente fazem parte do prontuário e precisam ser guardadas, então a eliminação deve excluí-las. Zara atualiza os requisitos de eliminação. Ela aprende que as premissas jurídicas devem ser validadas de forma explícita, e não herdadas de projetos anteriores.
+
+### 38.4 Validação diante das autoridades
+
+Zara também revisa decisões e orientações publicadas pelas autoridades de controle sobre telemedicina, para conferir se a abordagem da Pellmore é coerente com a forma como os reguladores interpretam a lei. Ela registra as orientações relevantes em um resumo curto para o encarregado. Não trata nenhuma decisão isolada como vinculante para a Pellmore, mas as usa para identificar riscos que a equipe não tinha considerado, como o tratamento das gravações de vídeo. A validação, conclui, olha para fora, para as pessoas, os advogados e os reguladores, enquanto a verificação olha para dentro, para os requisitos.
+
+### Exemplo resolvido
+
+Zara valida com os participantes o que esperam da eliminação, melhora a usabilidade do histórico de acessos, pede à assessoria que valide as premissas jurídicas (refinando a guarda das anotações de sintomas) e prepara um resumo das orientações regulatórias para o encarregado.
+
+> **Caso sintético.** Os participantes e a assessoria são sintéticos; o artigo 12 do GDPR é real.
+
+### Erros e limites
+
+Grupos pequenos de validação podem não representar todos os pacientes; recrute participantes diversos.
+
+### Exercícios
+
+- **EX112 — Verificação e validação.** Diferencie verificação de validação. *Rubrica:* 3 = a verificação confere se os requisitos são atendidos; a validação confere se os requisitos atendem às necessidades reais;; 2 = uma;; 1 = confunde;; 0 = nenhuma.
+- **EX113 — Expectativa sobre a eliminação.** O que a validação revelou sobre a eliminação? *Rubrica:* 3 = os pacientes esperavam a remoção total do prontuário, que a lei impede; faltava explicação;; 2 = menciona a expectativa;; 1 = nada;; 0 = nenhuma.
+- **EX114 — Premissa refinada.** Que premissa jurídica a assessoria refinou? *Rubrica:* 3 = algumas anotações de sintomas feitas pelo paciente fazem parte do prontuário e precisam ser guardadas;; 2 = menciona anotações;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-39"></a>
+
+## Capítulo 39 — Privacidade e proteção de dados: manutenibilidade
+
+### Objetivos de aprendizagem
+
+Você vai (1) manter os controles de privacidade sustentáveis; (2) gerir a dívida técnica com impacto na privacidade; (3) documentar para futuros engenheiros.
+
+### 39.1 Dívida de privacidade
+
+A dívida técnica se acumula quando se tomam atalhos. Zara define dívida de privacidade como os atalhos que enfraquecem a privacidade: cópias temporárias de dados, verificações desativadas, fluxos não documentados. Ela cria um registro dos itens de dívida de privacidade, com responsáveis e datas de quitação. O registro revela uma exportação temporária criada dois anos antes para responder a uma pergunta de um regulador e que nunca foi removida. Ela a apaga. Explica que a dívida de privacidade é especialmente perigosa porque, ao contrário da dívida de desempenho, seus custos só aparecem quando o dano acontece ou quando uma auditoria faz perguntas. Ela acompanha a dívida no backlog.
+
+### 39.2 Controles legíveis
+
+Os controles precisam ser compreensíveis para futuros engenheiros. Zara reescreve a configuração da política de acesso com comentários que explicam cada regra e seu motivo jurídico ou clínico. Ela acrescenta diagramas à documentação da plataforma de privacidade. Também escreve registros de decisão de arquitetura para as grandes escolhas dos últimos dois anos, para que novos engenheiros não desfaçam proteções por mal-entendido. O Prof. Holm observa que a manutenibilidade é pré-condição da responsabilização, porque uma organização que não consegue explicar os próprios controles não consegue demonstrar conformidade. Os comentários no código citam o requisito que cada controle atende.
+
+### 39.3 Atualização de dependências
+
+A plataforma de privacidade depende de bibliotecas de criptografia, de privacidade diferencial e de mensageria. Zara configura verificações automáticas de dependências e uma política para atualizá-las. Ela testa as atualizações com a suíte de testes de privacidade antes da implantação. Certa vez, uma atualização da biblioteca de mensageria mudou o comportamento das novas tentativas, o que teria afetado a confiabilidade da eliminação. A suíte de testes pegou o problema. Ela registra o episódio como evidência de que os testes protegem contra regressões introduzidas por código de terceiros, e não só pelos engenheiros da Pellmore. Uma atualização de biblioteca tinha mudado em silêncio o nível padrão de log, e o teste unitário de privacidade falhou no primeiro build.
+
+### 39.4 Passagem de bastão
+
+Com o fim do estágio de Zara se aproximando, ela prepara a passagem de bastão. Cada controle tem responsável, documentação, testes e métricas. Ela conduz apresentações guiadas com os engenheiros que vão manter a plataforma. Também lista os riscos em aberto e o registro de dívida de privacidade. O líder de engenharia da Pellmore aprova a passagem. Zara reflete que uma boa manutenibilidade é invisível quando funciona: ninguém percebe que um controle ainda funciona depois de dois anos, mas todos perceberiam depressa, e de forma dolorosa, se ele tivesse se deteriorado em silêncio. Por isso, a responsabilidade precisa ser explícita.
+
+### Exemplo resolvido
+
+Zara cria um registro de dívida de privacidade (apagando uma exportação temporária de dois anos), documenta os controles com seus motivos, pega com testes uma regressão da biblioteca de mensageria e faz a passagem de bastão com responsáveis e riscos em aberto.
+
+> **Caso sintético.** Os itens de dívida e a mudança na biblioteca são sintéticos.
+
+### Erros e limites
+
+Os registros de dívida precisam de revisão regular, ou viram listas que ninguém lê.
+
+### Exercícios
+
+- **EX115 — Dívida de privacidade.** Defina dívida de privacidade. *Rubrica:* 3 = atalhos que enfraquecem a privacidade, como cópias temporárias ou verificações desativadas;; 2 = só um exemplo;; 1 = dívida técnica em geral;; 0 = nenhuma.
+- **EX116 — Regressão da biblioteca.** O que a suíte de testes pegou depois de uma atualização de biblioteca? *Rubrica:* 3 = uma mudança nas novas tentativas que afetava a confiabilidade da eliminação;; 2 = menciona eliminação;; 1 = nada;; 0 = nenhuma.
+- **EX117 — Manutenibilidade e responsabilização.** Por que a manutenibilidade é pré-condição da responsabilização? *Rubrica:* 3 = uma organização que não consegue explicar seus controles não consegue demonstrar conformidade;; 2 = menciona explicação;; 1 = não têm relação;; 0 = nenhuma.
+
+<a id="ch-40"></a>
+
+## Capítulo 40 — Laboratório de verificação II
+
+### Objetivos de aprendizagem
+
+Você vai (1) verificar propriedades de privacidade com testes adversariais; (2) contratar testes independentes; (3) relatar os resultados da verificação à direção.
+
+### 40.1 Testes adversariais
+
+No segundo laboratório de verificação, a turma de Zara atua como adversária de uma cópia de teste da plataforma da Pellmore com dados sintéticos. Os alunos tentam vincular os dados de análise aos pacientes, obter os prontuários de outro paciente pela funcionalidade de cuidadores e inferir diagnósticos a partir das estatísticas publicadas. A vinculação falha porque os pseudônimos dos destinatários são diferentes. O ataque pelos cuidadores falha porque as configurações exigem a autenticação do paciente. O ataque às estatísticas tem sucesso parcial para uma clínica rural, cujas contagens pequenas foram publicadas antes da adoção do pipeline de privacidade diferencial. As publicações antigas nunca tinham sido revisadas.
+
+### 40.2 Correção do vazamento estatístico
+
+O vazamento da clínica rural vem de relatórios antigos que continuam em uma página pública. Zara os remove e verifica se o novo pipeline cobre todas as estatísticas publicadas. Ela também procura outras publicações legadas e encontra mais duas. A constatação mostra que novas proteções não corrigem automaticamente as saídas antigas. Ela acrescenta uma regra: quando uma nova proteção for introduzida, a equipe deve procurar as saídas produzidas pela abordagem anterior e decidir se as remove, substitui ou mantém com justificativa. Neste caso, a tabela antiga é retirada do ar.
+
+### 40.3 Testes independentes
+
+A Pellmore contrata uma empresa independente para testar a plataforma. A empresa recebe o mesmo ambiente sintético e o mesmo escopo. Ela encontra um problema que a turma deixou passar: uma ferramenta de suporte vaza endereços de e-mail de pacientes em um campo de preenchimento automático. A Pellmore o corrige. Zara observa que testadores independentes trazem outros hábitos e premissas, e por isso a avaliação independente tem valor mesmo depois de testes internos rigorosos. Ela registra a constatação e a correção na pasta de evidências, ao lado dos resultados da turma. A ferramenta de suporte passa a mostrar só endereços mascarados, e um teste de regressão é acrescentado para que o vazamento não volte em silêncio.
+
+### 40.4 Relato à direção
+
+Zara escreve um relatório de verificação para a direção da Pellmore: o que foi testado, o que passou, o que falhou e o que foi corrigido, com os riscos remanescentes. Ela evita detalhes técnicos no resumo e anexa as evidências para os especialistas. A direção pergunta se a plataforma é segura; ela responde que a plataforma passou nos testes descritos, que dois problemas foram corrigidos e que os testes continuarão todo ano. Explica que a verificação reduz a incerteza, mas não prova a ausência de todos os problemas, e a direção aceita esse enquadramento. Os testes ficam agendados anualmente.
+
+### Exemplo resolvido
+
+A turma de Zara ataca a plataforma: os ataques de vinculação e pelos cuidadores falham, um ataque às estatísticas expõe relatórios legados de uma clínica rural; uma empresa independente encontra um vazamento de e-mails no preenchimento automático; Zara relata os resultados com os riscos remanescentes.
+
+> **Caso sintético.** Os ataques rodam apenas em cópias de teste sintéticas.
+
+### Erros e limites
+
+Passar nos testes não prova a ausência de vulnerabilidades.
+
+### Exercícios
+
+- **EX118 — Sucesso parcial.** Que ataque adversarial teve sucesso parcial, e por quê? *Rubrica:* 3 = a inferência sobre as estatísticas de uma clínica rural, por meio de relatórios legados com contagens pequenas;; 2 = menciona a clínica rural;; 1 = nenhum;; 0 = nenhuma.
+- **EX119 — Regra das saídas legadas.** Que regra Zara acrescentou depois do vazamento estatístico? *Rubrica:* 3 = procurar as saídas da abordagem anterior sempre que uma nova proteção for introduzida;; 2 = menciona legado;; 1 = nenhuma;; 0 = nenhuma.
+- **EX120 — Valor da independência.** Por que contratar testes independentes depois de testes internos rigorosos? *Rubrica:* 3 = hábitos diferentes encontram problemas diferentes, como o vazamento no preenchimento automático;; 2 = menciona independência;; 1 = desnecessário;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX105 (as de EX106–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Zara Mbeki, o Prof. Anders Holm, a Corwen Polytechnic, a Pellmore Telehealth e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX120 (as de EX121–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Zara Mbeki, o Prof. Anders Holm, a Corwen Polytechnic, a Pellmore Telehealth e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Com a eliminação após um prazo fixo, a entrada iguala a saída, e os dados armazenados se estabilizam.
 
@@ -1816,6 +2034,36 @@ Respostas-modelo para EX001–EX105 (as de EX106–EX150 estão na edição em i
 **EX104.** Perguntas reservadas e discretas no login e médicos perguntando sobre o compartilhamento.
 
 **EX105.** Apenas o paciente ou um representante autorizado e verificado.
+
+**EX106.** Um erro absoluto médio de cerca de 121,7 por contagem.
+
+**EX107.** Limita a sensibilidade a um, de acordo com a calibração do ruído.
+
+**EX108.** Não; o pós-processamento de uma saída com privacidade diferencial mantém a garantia.
+
+**EX109.** 97% em até trinta dias.
+
+**EX110.** Pela política disciplinar, com registro e avaliação como possível violação de dados pessoais.
+
+**EX111.** Um ciclo de monitoramento, análise crítica e melhoria, como esperam as normas de sistema de gestão.
+
+**EX112.** Verificação: o sistema atende aos requisitos? Validação: os requisitos atendem às necessidades reais?
+
+**EX113.** Os pacientes esperavam que os prontuários fossem eliminados; a tela precisava explicar melhor os limites legais.
+
+**EX114.** As anotações de sintomas feitas pelo paciente que integram o prontuário precisam ser guardadas.
+
+**EX115.** Atalhos que enfraquecem a privacidade, como cópias temporárias, verificações desativadas ou fluxos não documentados.
+
+**EX116.** Uma mudança da biblioteca de mensageria nas novas tentativas que teria prejudicado a confiabilidade da eliminação.
+
+**EX117.** Sem controles compreensíveis, a organização não consegue demonstrar que está em conformidade.
+
+**EX118.** A inferência de diagnósticos de uma clínica rural, a partir de relatórios antigos publicados antes da privacidade diferencial.
+
+**EX119.** Quando uma proteção for introduzida, encontrar e revisar as saídas produzidas pela abordagem anterior.
+
+**EX120.** Testadores independentes trazem outras premissas e encontraram o vazamento no preenchimento automático que a turma deixou passar.
 
 <a id="references"></a>
 ## Referências
