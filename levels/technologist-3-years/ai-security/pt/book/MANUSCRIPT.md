@@ -916,7 +916,7 @@ Três erros são comuns: cenários vagos; pontuações sem justificativas; e cen
 
 ### 13.7 Revisando cenários ao longo do tempo
 
-A Brightwell revisa seus cenários de risco de IA a cada trimestre e após qualquer incidente. Um cenário cuja probabilidade mudou — por exemplo, porque o Ask Brightwell ganhou uma nova ferramenta para emitir reembolsos — é reavaliado, e seus testes vinculados são atualizados na mesma revisão. Acrescentar a ferramenta de devoluções aumentou a probabilidade do cenário de fraude de reembolso, que por isso foi reavaliado nessa revisão. A mesma revisão confere se o conjunto reservado ainda contém casos para o caminho dos reembolsos e acrescenta novos se os parâmetros da ferramenta mudaram. Os resultados vão para o dono do cenário de fraude de reembolso, que decide se a reavaliação muda o plano de lançamento.
+A Brightwell revisa seus cenários de risco de IA a cada trimestre e após qualquer incidente. Um cenário cuja probabilidade mudou — por exemplo, porque o Ask Brightwell ganhou uma nova ferramenta para emitir reembolsos — é reavaliado, e seus testes vinculados são atualizados na mesma revisão. A mesma revisão confere se o conjunto reservado ainda contém casos para o caminho dos reembolsos e acrescenta novos se os parâmetros da ferramenta mudaram. Os resultados vão para o dono do cenário de fraude de reembolso, que decide se a reavaliação muda o plano de lançamento.
 
 ### Exercícios
 
@@ -962,7 +962,7 @@ Jonas monta 120 casos de injeção para o Ask Brightwell na homologação: 40 di
 
 ### 14.6 Erros e limites
 
-Três erros são comuns: julgar o sucesso lendo as respostas; usar apenas *strings* públicas de *jailbreak*; e ajustar e relatar sobre os mesmos casos. O conjunto de Jonas evita esses erros. Ele avalia pelos registros das ferramentas, e não pelas respostas; escreve casos indiretos específicos para as avaliações e as páginas de políticas do Ask Brightwell, em vez de depender de *strings* públicas de *jailbreak*; e mantém 40 casos reservados, fora do ajuste. Um conjunto montado só com *strings* públicas mediria sobretudo se o fornecedor já as tinha visto. Ajustar sobre os casos reservados faria as taxas relatadas parecerem melhores do que são. Na primeira execução, ler as respostas a olho teria deixado passar vários dos 31 sucessos indiretos, cujas respostas pareciam prestativas.
+Três erros são comuns: julgar o sucesso lendo as respostas; usar apenas *strings* públicas de *jailbreak*; e ajustar e relatar sobre os mesmos casos. O conjunto de Jonas evita esses erros. Ele avalia pelos registros das ferramentas, e não pelas respostas; escreve casos indiretos específicos para as avaliações e as páginas de políticas do Ask Brightwell, em vez de depender de *strings* públicas de *jailbreak*; e mantém 40 casos reservados, fora do ajuste. Um conjunto montado só com *strings* públicas mediria sobretudo se o fornecedor já as tinha visto. Ajustar sobre os casos reservados faria as taxas relatadas parecerem melhores do que são.
 
 ### Exercícios
 

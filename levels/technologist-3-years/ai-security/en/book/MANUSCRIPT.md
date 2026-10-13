@@ -968,7 +968,7 @@ Jonas's six scenarios avoid these: each names an actor, an entry point and an ef
 
 ### 13.7 Reviewing scenarios over time
 
-Brightwell reviews its AI risk scenarios each quarter and after any incident. A scenario whose likelihood has changed — for example, because Ask Brightwell gained a new tool for issuing refunds — is re-rated, and its linked tests are updated in the same review. Adding the returns tool raised the likelihood of the refund-fraud scenario, so it was re-rated in that review. The same review checks that the held-out suite still contains cases for the refund path, and adds new ones if the tool's parameters changed. Results go to the refund-fraud scenario's owner, who decides whether the re-rating changes the release plan.
+Brightwell reviews its AI risk scenarios each quarter and after any incident. A scenario whose likelihood has changed — for example, because Ask Brightwell gained a new tool for issuing refunds — is re-rated, and its linked tests are updated in the same review. The same review checks that the held-out suite still contains cases for the refund path, and adds new ones if the tool's parameters changed. Results go to the refund-fraud scenario's owner, who decides whether the re-rating changes the release plan.
 
 ### Exercises
 
@@ -1018,7 +1018,7 @@ Jonas builds 120 injection cases for Ask Brightwell on staging: 40 direct, 80 in
 - Only using public jailbreak strings.
 - Tuning and reporting on the same cases.
 
-Jonas's suite avoids these. It grades from tool logs rather than replies, writes indirect cases specific to Ask Brightwell's reviews and policy pages instead of relying on public jailbreak strings, and keeps 40 cases held out from tuning. A suite built only from public strings would mostly measure whether the vendor had seen them before. Tuning on held-out cases would make reported rates look better than they are. In the first run, reading replies by eye would have missed several of the 31 indirect successes, whose replies looked helpful.
+Jonas's suite avoids these. It grades from tool logs rather than replies, writes indirect cases specific to Ask Brightwell's reviews and policy pages instead of relying on public jailbreak strings, and keeps 40 cases held out from tuning. A suite built only from public strings would mostly measure whether the vendor had seen them before. Tuning on held-out cases would make reported rates look better than they are.
 
 ### Exercises
 
