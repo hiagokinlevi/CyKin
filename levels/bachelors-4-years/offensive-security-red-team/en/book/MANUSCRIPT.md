@@ -1725,57 +1725,85 @@ You will (1) pose answerable questions; (2) design small purple-team trials; (3)
 
 "Does control X raise detection of T1566 in staging?" beats "is security good?".
 
+A research question has to name what will be measured, under which conditions and against what comparison. Asking whether security is good invites opinions that cannot be wrong and cannot guide a decision. Asking whether a new email filter raises detection of phishing technique T1566 in the staging environment, compared with the current filter, names the control, the technique, the place and the baseline. That question decides the design: a fixed set of phishing samples, a staging mailbox under each filter, and a recorded detection or miss for each sample. Vague questions produce vague work.
+
 ### 18.2 Design
 
 Fixed test set, recorded environment, sample size plan.
+
+Three choices decide whether a later reader can trust the result. The test set is written down before any trial runs, so nobody can drop the samples that make a control look bad. The environment is recorded: which filter version, which mailbox configuration, which date. Without that record, a later change can make the result unreproducible. The sample size is planned for the precision the decision needs, using the same interval methods as detection reporting. A design that skips any of these can still produce a number, but that number will not settle an argument.
 
 ### 18.3 Pre-registration
 
 Write metric and threshold before seeing results.
 
+People naturally adjust what counts as success once they have seen the data. A detection rate of sixty per cent can be called a success or a failure depending on what the team hoped for. Pre-registration writes the metric and the threshold into a dated note before the first trial runs, for example that the new filter succeeds if its Wilson interval's lower bound exceeds the current filter's observed rate. Changing the threshold afterwards is allowed, but it must be labelled as exploratory. The dated note is what stops a hopeful reinterpretation from being presented as the original plan.
+
 ### 18.4 Ethics
 
 Customer data off-limits; synthetic phishing to staff needs HR/CISO approval.
+
+Research that uses real customer messages or accounts is outside this book's methods and TRB's testing agreements. Synthetic phishing sent to real staff is also not an ordinary technical test. It involves people who may feel deceived, and it can affect trust in security messages. Any such trial therefore needs HR and CISO approval that states the purpose, the population, the messaging, the opt-out where feasible and how results will be reported without naming individuals. Technical curiosity is not an approval.
 
 ### 18.5 Negative results
 
 Publish internally; they prevent repeated failed ideas.
 
+A trial that shows a control made no measurable difference is as useful as one that shows it did, because it stops the next team from spending another quarter on the same idea. Negative results also calibrate expectations. If three awareness campaigns have each failed to move click rates in staging exercises, the next proposal for a fourth campaign faces a higher bar. Internal publication means a short write-up on the trial board with the pre-registered metric, the result and a sentence on what not to try again. Hiding negative results makes the organisation relearn the same lesson.
+
 ### 18.6 Limits
 
 Staging ≠ production; state threats to validity.
 
-### 18.7 18.7 Applied note
+Staging is quieter, cleaner and differently monitored than production. A detection rate measured there can be higher because traffic is lighter, or lower because production has extra sensors. Threats to validity are the reasons a result might not transfer: the sample was too small, the phishing kit was outdated, the filter was misconfigured, the SOC was told a trial was running. Naming them does not weaken the report. It tells a decision-maker how far to lean on the finding. A result with no stated limits is the one to distrust.
+
+### 18.7 Writing up a negative result
 
 Negative results get the same template as positive ones. Sam's "MFA prompt fatigue did not improve T1566 detection in n=40" note stopped a second identical trial the following quarter.
 
-### 18.8 18.8 Trial registration board
+The template forces the same fields: question, design, pre-registered threshold, result, limits. Using a different, apologetic format for negative results makes them look like failures of the team rather than findings about a control. The fatigue trial showed that adding more MFA prompts did not raise detection of the phishing set, which redirected the next proposal toward phishing-resistant authenticators instead. Without the write-up, the same fatigue idea would have returned with a new sponsor.
+
+### 18.8 An internal trial board
 
 A public (internal) board shows pre-registered trials and their status. Duplicate trials are rejected at a glance.
 
-### 18.9 18.9 Power analysis humility
+The board lists the question, the owner, the planned sample size and whether the trial is planned, running or written up. Anyone proposing a new trial searches it first. Duplicates are common when teams work in parallel and each believes its idea is original. Rejecting a duplicate early saves a cohort of staff or a block of staging time, and often leads the proposer to join the existing trial instead. The board is intentionally boring. Its job is to make repetition visible.
+
+### 18.9 Preferring intervals to false significance
 
 Sam avoids claiming significance without a plan. Most purple trials at TRB are descriptive with intervals, not pseudo-clinical trials.
 
-### 18.10 18.11 Scene
+A p-value computed after the fact from a small convenience sample does not mean what people think it means. It can look decisive when the true uncertainty is large. TRB's default is therefore to report counts and Wilson intervals, and to reserve formal significance claims for the rare trials that were designed for them with a sample-size plan. Descriptive reporting is not a lesser form of evidence. It is honest about what a forty-trial purple exercise can support.
+
+### 18.10 A failed awareness trial still earns a write-up
 
 A pre-registered trial on awareness mail fails its threshold. Sam still writes it up. The next quarter's budget meeting cites the negative result to avoid buying the same content pack again.
 
-### 18.11 18.12 Extension
+The content pack's vendor had promising case studies from other industries. The TRB trial, with a fixed phishing set and a pre-registered detection threshold, did not meet that threshold. Writing it up prevented both a quiet burial and a heated argument based on anecdotes. Budget meetings prefer a dated result to a feeling that the training "seemed useful". The vendor was invited to propose a different pack for a new trial rather than resell the same one.
+
+### 18.11 Joining an existing trial instead of duplicating it
 
 Registration board rejected a duplicate trial title within a minute. The author joined the existing trial as a helper instead of wasting a cohort.
 
-### 18.12 18.14 Note 11
+The duplicate had slightly different wording but the same control, the same technique and the same staging population. Running both would have split the available volunteers and left each trial underpowered. Joining as a helper meant the second author contributed samples and review time, earned co-ownership of the write-up and still answered their underlying question. The board's value is not rejection for its own sake. It is redirecting effort toward a result that can decide something.
+
+### 18.12 Celebrating negative results
 
 Negative results get a champagne cork icon in the board — celebration of learning, not failure.
 
-### 18.13 18.16 Pad
+Culture decides whether people file negative results or hide them. A small visible reward, even a silly icon, signals that the organisation wants the learning. The icon appears only when the write-up is complete, so it cannot be earned by failing to finish. Teams that publish negative results are thanked in the quarterly research summary alongside teams that publish positive ones. Over a year the board's mix of corks and ordinary ticks shows whether the culture is working.
+
+### 18.13 Icons do not replace write-ups
 
 Champagne cork icons are optional; the write-up is not. Sam rejects icons without prose.
 
-### 18.14 18.20 Extra
+An icon without a linked write-up would let a team claim credit for a negative result that nobody can learn from. The board's rule is that the icon is rendered only when the write-up fields are filled: question, design, threshold, result, limits. Rejecting a bare icon is occasional and slightly awkward, and it keeps the board useful. Celebration that does not leave a reusable record is just decoration.
+
+### 18.14 A linter for empty celebrations
 
 Icons without prose are stripped by the board's markdown linter.
+
+The linter is a short check that runs when a board entry is saved. If it finds a cork icon and empty write-up fields, it removes the icon and leaves a comment asking for the prose. Automation matters here because Sam cannot review every edit. The linter also stops well-meaning colleagues from adding icons to old entries that never had write-ups, which would invent a history the board does not have.
 
 ### Worked example (synthetic TRB)
 
@@ -1813,57 +1841,87 @@ You will (1) compare assessment types in SP 800-115; (2) map PTES stages; (3) si
 
 Reviews, vulnerability assessments, red teaming — different depth and permission models.
 
+NIST SP 800-115 distinguishes several kinds of security testing. A review examines designs, configurations or code without attacking a live system. A vulnerability assessment looks for known weaknesses with tools and light manual checks, usually with broad permission and limited stealth. Red teaming emulates an adversary with specific goals, often under tighter rules about detection and impact. Confusing the names leads to wrong expectations. A quarterly web assessment cannot answer whether a determined attacker would reach the ledger unnoticed, and a threat-led exercise cannot replace regular regression checks on the customer portal.
+
 ### 19.2 PTES
 
 Pre-engagement through reporting as shared stage names.
+
+The Penetration Testing Execution Standard names stages that most authorized tests share: pre-engagement, intelligence gathering, threat modelling, vulnerability analysis, exploitation, post-exploitation and reporting. TRB uses those names so that planners, testers and clients mean the same thing by each stage. Pre-engagement is where scope and rules are signed. Reporting is where findings are written for owners, not where new testing happens. Using shared stage names also makes gaps obvious. An engagement that jumps from intelligence gathering to reporting without analysis has skipped the work that turns observations into findings.
 
 ### 19.3 Threat-led
 
 TIBER-EU and CBEST use intelligence to shape scenarios for financial entities; TRB studies them even when running lighter tests.
 
+Threat-led exercises start from who is likely to attack this kind of institution and what they usually want, then build scenarios around that picture. TIBER-EU and CBEST are frameworks banks use for such exercises under regulatory oversight. Ordinary TRB web tests are lighter and more frequent, but the threat-led idea still shapes them. Scope meetings ask which techniques current threat reporting highlights for retail banks, and the method cards for the quarter favour those techniques. Studying the frameworks also keeps the team honest about what a light test cannot claim.
+
 ### 19.4 Theory of change
 
 Testing informs risk decisions; it does not create security by itself.
+
+A successful engagement produces evidence that a risk owner can use: a weakness exists, it is reachable under stated conditions, and fixing it would remove that path. Security improves only if someone then decides to fix it, accept it with a compensating control or change the system so the path no longer matters. Testing that produces findings nobody owns is expensive journalism. TrackScope therefore requires an owner and a due date before a finding can leave draft, and PulseMap tracks age so that informed-but-ignored risks stay visible.
 
 ### 19.5 Assurance limits
 
 A clean test is time-bounded assurance, not a warranty.
 
+A test that finds nothing serious shows that, under the methods used, against the systems in scope, during that window, the testers did not demonstrate a serious weakness. It does not show that no weakness exists, that none will appear next week when a new feature ships, or that a different adversary with different methods would fail. Reports state this limit explicitly. TRB forbids phrases that turn a clean test into a guarantee, because those phrases become liabilities when the next incident happens.
+
 ### 19.6 Platform role
 
 TrackScope encodes theory as executable deny rules.
 
-### 19.7 19.7 Applied note
+Ideas about authorization, scope and fail-closed behaviour only protect the bank when they run as code. TrackScope refuses to start a test without a signed scope file, refuses targets outside that file, refuses methods the rules mark as forbidden and stops when its policy cannot be loaded. Encoding the theory means a tired tester at midnight gets the same refusal as a careful one at noon. It also means that improvements to the theory, such as a new exclusion, become improvements to every engagement the moment the scope file is updated.
+
+### 19.7 Stating what each test type cannot claim
 
 The assessment catalogue includes what each type cannot claim. Annual web tests cannot claim threat-led coverage; threat-led exercises cannot claim quarterly regression coverage. Sam quotes the cannot-claim line in kickoffs.
 
-### 19.8 19.8 Assurance statement library
+Clients and internal sponsors naturally stretch what they bought. After a clean web test someone asks whether the bank is safe from nation-state actors. After a threat-led exercise someone asks why a simple regression bug reached production. The cannot-claim line, read aloud at kickoff and printed in the report, answers both before they become arguments. It also sets the catalogue's value. Buyers know what they are and are not purchasing.
+
+### 19.8 Approved sentences for reports
 
 Approved sentences for reports include "time-bounded assurance" and forbid "guaranteed secure". Sam's linter flags forbidden phrases.
 
-### 19.9 19.9 Insurance questionnaire map
+Writers under deadline reach for strong language. A library of approved sentences gives them strong-enough language that legal and the CISO have already accepted. Forbidden phrases are blocked in the report pipeline with a message that suggests a replacement. The linter is intentionally blunt. It is easier to argue with a suggested replacement than to notice a dangerous phrase in a long draft at midnight.
+
+### 19.9 Answering questionnaires from the catalogue
 
 Questionnaire answers cite the catalogue. Sam stops colleagues from answering "we pentest everything" when SWIFT is excluded.
 
-### 19.10 19.11 Scene
+Insurance and vendor questionnaires ask broad yes-or-no questions that do not match how testing actually works. Answering from memory produces overclaims. Answering from the catalogue produces sentences such as: quarterly authorized web assessments of internet-facing applications, threat-led exercise last completed in the stated year, payment gateway excluded from ordinary tests. Those sentences are defensible in a claim dispute. "We pentest everything" is not.
+
+### 19.10 An honest answer to an insurer
 
 An insurer questionnaire says "Do you conduct red teaming?". Sam answers with the catalogue: quarterly web tests yes; full threat-led last done 20XX; SWIFT excluded from ordinary tests. Checkbox honesty beats swagger.
 
-### 19.11 19.12 Extension
+The form wanted a yes or no. The honest answer is a short paragraph, which the insurer accepted after one clarification call. A checkbox yes would have implied a current, comprehensive red-team programme that TRB did not have that year. When an incident later involved a payment-adjacent system, the written answer showed that ordinary tests had never claimed to cover it, which mattered more than looking assertive on the form.
+
+### 19.11 Replacing a forbidden phrase
 
 Assurance linter failed a report for "fully secure after remediation". Sam's replacement: "residual risk accepted for F3 until 1 December with compensating jump-only admin".
 
-### 19.12 19.14 Note 11
+The forbidden phrase promised a state no test can prove. The replacement names the finding, the decision, the date and the compensating control. An owner can act on it, an auditor can check it and a later incident can be compared with it. Writing the specific sentence took longer than the slogan, and that is the point. Precision is the product.
+
+### 19.12 Reading cannot-claim lines aloud
 
 Catalogue cannot-claim lines are read aloud at kickoff; mumbling is corrected.
 
-### 19.13 19.16 Pad
+Reading aloud forces every person in the room to hear the limit, including sponsors who skip the written pack. Mumbling is corrected because a half-heard limit is how overclaims start. The practice feels slightly formal the first few times and then becomes normal. Kickoffs that skip it tend to produce the same clarifying arguments a week later, so the team treats the reading as part of starting the engagement, not as optional theatre.
+
+### 19.13 Restarting a mumbled reading
 
 Kickoff mumbling earns a restart of the cannot-claim read. Clarity over comfort.
 
-### 19.14 19.20 Extra
+A restart is mildly embarrassing and therefore effective. The reader slows down, the room pays attention and the limit is actually heard. Sam keeps the tone light. The goal is shared understanding, not punishment. After a few restarts early in the year, mumbled readings became rare, which is the outcome the rule exists to produce.
+
+The restart also gives late arrivals a second chance to hear the limit. Kickoffs often start while someone is still joining the call, and a mumbled first reading is the one they would have caught. Waiting for a clean reading costs less than explaining the same boundary again mid-engagement.
+
+### 19.14 Tracking mumbled kickoffs
 
 Cannot-claim read restarts are logged as a fun metric of mumbling.
+
+The log is a light-hearted count on the team wiki, not a performance score. A rising count would suggest that kickoffs are rushed or that new staff have not seen the practice. A falling count suggests the habit has stuck. Treating the metric as fun keeps it from becoming something people game by reading too quickly to avoid a restart. The useful signal is the trend across quarters, not any single kickoff.
 
 ### Worked example (synthetic TRB)
 
