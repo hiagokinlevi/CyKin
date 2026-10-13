@@ -28,15 +28,15 @@ Edição em português do Brasil, escrita a partir da edição de referência em
 | 4 | [16](book/PLAN.md#ch-16) | Arquitetura de segurança | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-16) | [17 · Rascunho](book/MANUSCRIPT.md#ch-17) |
 | 4 | [17](book/PLAN.md#ch-17) | Conceitos de criptografia | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-17) | [18 · Rascunho](book/MANUSCRIPT.md#ch-18) |
 | 4 | [18](book/PLAN.md#ch-18) | Métodos de pesquisa I | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-18) | [19 · Rascunho](book/MANUSCRIPT.md#ch-19) |
-| 4 | [19](book/PLAN.md#ch-19) | Segurança de IA e aprendizado de máquina: escopo e teoria | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-19) | [20 · Plano](book/PLAN.md#ch-20) |
-| 4 | [20](book/PLAN.md#ch-20) | Segurança de IA e aprendizado de máquina: casos fundamentais | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-20)) | [21 · Plano](book/PLAN.md#ch-21) |
-| 5 | [21](book/PLAN.md#ch-21) | Segurança de IA e aprendizado de máquina: modelos de sistema | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-21)) | [22 · Plano](book/PLAN.md#ch-22) |
-| 5 | [22](book/PLAN.md#ch-22) | Segurança de IA e aprendizado de máquina: dados e dependências | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-22)) | [23 · Plano](book/PLAN.md#ch-23) |
-| 5 | [23](book/PLAN.md#ch-23) | Segurança de IA e aprendizado de máquina: métodos I | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-23)) | [24 · Plano](book/PLAN.md#ch-24) |
-| 5 | [24](book/PLAN.md#ch-24) | Segurança de IA e aprendizado de máquina: controles | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-24)) | [25 · Plano](book/PLAN.md#ch-25) |
-| 5 | [25](book/PLAN.md#ch-25) | Laboratório I | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-25)) | [26 · Plano](book/PLAN.md#ch-26) |
-| 6 | [26](book/PLAN.md#ch-26) | Segurança de IA e aprendizado de máquina: métodos II | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-26)) | [27 · Plano](book/PLAN.md#ch-27) |
-| 6 | [27](book/PLAN.md#ch-27) | Segurança de IA e aprendizado de máquina: verificação | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-27)) | [28 · Plano](book/PLAN.md#ch-28) |
+| 4 | [19](book/PLAN.md#ch-19) | Segurança de IA e aprendizado de máquina: escopo e teoria | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-19) | [20 · Rascunho](book/MANUSCRIPT.md#ch-20) |
+| 4 | [20](book/PLAN.md#ch-20) | Segurança de IA e aprendizado de máquina: casos fundamentais | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-20) | [21 · Rascunho](book/MANUSCRIPT.md#ch-21) |
+| 5 | [21](book/PLAN.md#ch-21) | Segurança de IA e aprendizado de máquina: modelos de sistema | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-21) | [22 · Rascunho](book/MANUSCRIPT.md#ch-22) |
+| 5 | [22](book/PLAN.md#ch-22) | Segurança de IA e aprendizado de máquina: dados e dependências | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-22) | [23 · Rascunho](book/MANUSCRIPT.md#ch-23) |
+| 5 | [23](book/PLAN.md#ch-23) | Segurança de IA e aprendizado de máquina: métodos I | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-23) | [24 · Rascunho](book/MANUSCRIPT.md#ch-24) |
+| 5 | [24](book/PLAN.md#ch-24) | Segurança de IA e aprendizado de máquina: controles | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-24) | [25 · Rascunho](book/MANUSCRIPT.md#ch-25) |
+| 5 | [25](book/PLAN.md#ch-25) | Laboratório I | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-25) | [26 · Rascunho](book/MANUSCRIPT.md#ch-26) |
+| 6 | [26](book/PLAN.md#ch-26) | Segurança de IA e aprendizado de máquina: métodos II | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-26) | [27 · Rascunho](book/MANUSCRIPT.md#ch-27) |
+| 6 | [27](book/PLAN.md#ch-27) | Segurança de IA e aprendizado de máquina: verificação | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-27) | [28 · Plano](book/PLAN.md#ch-28) |
 | 6 | [28](book/PLAN.md#ch-28) | Segurança de IA e aprendizado de máquina: análise de falhas | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-28)) | [29 · Plano](book/PLAN.md#ch-29) |
 | 6 | [29](book/PLAN.md#ch-29) | Segurança de IA e aprendizado de máquina: operações | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-29)) | [30 · Plano](book/PLAN.md#ch-30) |
 | 6 | [30](book/PLAN.md#ch-30) | Laboratório II | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-30)) | [31 · Plano](book/PLAN.md#ch-31) |
