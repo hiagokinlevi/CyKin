@@ -59,8 +59,8 @@ El vocabulario metodológico genérico (verificación frente a validación, núm
 4. [Replicación de la línea de base y piloto](#ch-04)
 5. [Estudio principal y validación independiente](#ch-05)
 6. [Crítica de pares y revisión](#ch-06)
-7. [Síntesis de la tesis y archivo de reproducibilidad](../../en/book/MANUSCRIPT.md#ch-07)
-8. [Defensa y plan de publicación](../../en/book/MANUSCRIPT.md#ch-08)
+7. [Síntesis de la tesis y archivo de reproducibilidad](#ch-07)
+8. [Defensa y plan de publicación](#ch-08)
 9. [Resultados resueltos](#worked-results)
 
 <a id="ch-01"></a>
@@ -618,7 +618,174 @@ La crítica es un dato: convierta las objeciones en pruebas, deje que acoten la 
 
 ### Siga estudiando — capítulo 06 de 08
 
-[← Capítulo 05 (borrador)](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 (borrador) →](../../en/book/MANUSCRIPT.md#ch-07)
+[← Capítulo 05 (borrador)](#ch-05) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 07 (borrador) →](#ch-07)
+
+<a id="ch-07"></a>
+
+## Capítulo 7 — Síntesis de la tesis y archivo de reproducibilidad
+
+### Resultados de aprendizaje y conexión
+
+Después de este capítulo usted podrá (1) trazar el argumento de la tesis desde la evidencia hasta la afirmación, (2) elegir un formato de tesis, (3) construir un archivo por niveles, verificado con hashes, que falle de forma cerrada, (4) documentar datos y modelos sintéticos y (5) escribir limitaciones que digan en qué dirección empuja cada sesgo. Reúne los capítulos 1–6 y prepara la defensa.
+
+### 7.1 Mapa del argumento
+
+Use una estructura de Toulmin: **afirmación** (la afirmación acotada del §6.3), **datos** (resultados del laboratorio 3, del laboratorio 5 y de T2), **garantía** (el balance de masa vincula caudal y nivel; un atacante que controla solo uno no puede mantener ambos coherentes), **respaldo** (pruebas de verificación, propiedades del CUSUM de Page), **calificador** («en dos contextos sintéticos») y **refutación** (clase B, rampas lentas, instrumentos con retardo). Cada elemento remite a un capítulo y a un artefacto. Dibuje el mapa en una página y compruebe cada flecha: ¿respaldan realmente los datos citados la garantía, y enumera la refutación todos los límites del capítulo de crítica? Un elemento sin ningún artefacto detrás es una laguna que debe cerrarse antes de la defensa. Mantenga el mapa actualizado a medida que cambie la redacción, porque los examinadores suelen preguntar cómo se conecta una sola frase con la evidencia.
+
+### 7.2 Formato
+
+Una monografía se adapta a un único argumento integrado; una tesis por compendio de publicaciones se adapta a artículos independientes con un capítulo de enlace. En cualquier caso, el archivo de reproducibilidad pertenece a la tesis, no a un artículo. En el Setpoint Study, una tesis por compendio de publicaciones se corresponde de forma natural con los tres artículos previstos, y el capítulo de enlace lleva la afirmación acotada y las condiciones límite. Una monografía situaría el mismo material en un argumento continuo. Elija pronto con su comité, porque la elección cambia cuánta repetición es aceptable y cómo se acredita el trabajo en coautoría.
+
+### 7.3 Archivo por niveles
+
+Los artefactos de TO conllevan riesgos distintos entre sí. El código y el simulador sintético son T0 (públicos). Las trazas sintéticas son T1. Las configuraciones del banco de pruebas son T2 (solo para investigadores verificados). Los mapas derivados de plantas son T3 y nunca se publican. Una publicación debe **fallar de forma cerrada**: si el hash de cualquier archivo difiere del manifiesto, no se publica nada; los archivos por encima del nivel de publicación se excluyen automáticamente. El laboratorio 7 demuestra esta lógica.
+
+```python
+# Lab 7: fail-closed reproducibility manifest check (stdlib). Creates synthetic files in ./archive_demo.
+import hashlib, json, os
+os.makedirs("archive_demo", exist_ok=True)
+files = {"lab3.py": "print('model')\n", "traces_T1.csv": "t,level\n0,50.0\n", "plant_map_T3.txt": "RESTRICTED\n"}
+for n, c in files.items():
+    open(os.path.join("archive_demo", n), "w").write(c)
+manifest = [{"path": n, "tier": "T3" if n.startswith("plant_map") else "T1",
+             "sha256": hashlib.sha256(c.encode()).hexdigest()} for n, c in files.items()]
+manifest[1]["sha256"] = "0"*64          # simulate a stale hash after an edit
+def check(release_tier_max="T1"):
+    ok = True
+    for e in manifest:
+        h = hashlib.sha256(open(os.path.join("archive_demo", e["path"]), "rb").read()).hexdigest()
+        if e["tier"] > release_tier_max:
+            print("EXCLUDE (tier)", e["path"], e["tier"]); continue
+        if h != e["sha256"]:
+            print("FAIL (hash)   ", e["path"]); ok = False
+        else:
+            print("OK            ", e["path"])
+    return ok
+print("release allowed:", check())
+```
+
+Salida esperada:
+
+```text
+OK             lab3.py
+FAIL (hash)    traces_T1.csv
+EXCLUDE (tier) plant_map_T3.txt T3
+release allowed: False
+```
+
+El hash desactualizado bloquea la publicación y el archivo T3 nunca se considera. La comparación `e["tier"] > release_tier_max` funciona porque los nombres de nivel se ordenan lexicográficamente T0 < T1 < T2 < T3, una comodidad que dejaría de funcionar con un nivel llamado "T10", lo cual se anota en el README del archivo.
+
+### 7.4 Documentación de datos y modelos sintéticos
+
+Indique para cada conjunto de datos sintético si es **inventado** (parámetros elegidos para la enseñanza) o **calibrado** (ajustado a las estadísticas de un sistema real). El tanque del Setpoint Study es inventado. Registre los parámetros, las semillas, la versión del código generador y el uso previsto; advierta contra su uso para hacer afirmaciones sobre plantas reales. Escriba esta documentación como una ficha de datos breve almacenada con el código generador, e incluya el equilibrio, el coeficiente del orificio de 0,02, los niveles de ruido y las ganancias del ataque. Nombre los laboratorios que usaron cada configuración. Cualquiera que reutilice las trazas debería ver de inmediato que describen un modelo didáctico, no mediciones de Kestrel ni de ninguna otra planta.
+
+### 7.5 Limitaciones con dirección
+
+Una tabla de limitaciones útil indica la dirección de cada sesgo: caudalímetro sin ruido en la simulación (*sobrestima* la exhaustividad, confirmado por T2), modelo de un solo lazo (dirección *desconocida* para plantas de varios lazos), operadores sintéticos (*desconocida*), escala del banco de pruebas (*probablemente sobrestima* la relación señal/ruido), censura en 400 pasos (*subestima* el coste en retardo de la planta B). La dirección importa porque indica al lector cómo ajustar su confianza. Si un sesgo sobrestima la exhaustividad, la cifra del mundo real probablemente es menor; si es desconocida, el lector no debe suponer nada en ningún sentido. Mantenga la tabla junto a los resultados y no al final, y actualícela cuando una nueva evidencia, como la menor exhaustividad de T2, determine una dirección.
+
+### 7.6 Errores comunes y límites
+
+Archivos que publican todo o nada; manifiestos sin comprobar; llamar «realistas» a datos inventados; limitaciones sin dirección. Un archivo que publica todo filtra detalles de nivel de planta; uno que no publica nada no puede comprobarse. Un manifiesto que nunca se verifica da una falsa tranquilidad, y por eso el laboratorio 7 falla de forma cerrada. Los datos sintéticos deben llamarse inventados o calibrados, nunca realistas. Y cada limitación debe decir si empuja los resultados hacia arriba, hacia abajo o en una dirección desconocida. Ejecute la comprobación del manifiesto sobre la copia de publicación, nunca solo sobre el directorio de trabajo.
+
+### Ejercicios — capítulo 7
+
+- **EX039 — Mapa de Toulmin de la afirmación acotada.** Dibuje (como tabla) el mapa de Toulmin de la afirmación acotada con referencias a los capítulos. *Rúbrica:* 3 = afirmación/datos/garantía/respaldo/calificador/refutación con referencias a capítulos; 2 = falta un elemento en el mapa; 1 = solo la afirmación; 0 = nada.
+- **EX040 — Corrija la comparación de niveles del laboratorio 7.** Corrija el laboratorio 7 para que los niveles se comparen numéricamente y añada un caso de prueba T10. *Rúbrica:* 3 = comparación con int(tier[1:]) + T10 frente a T1 se excluye; 2 = corrección con int sin T10; 1 = nota sobre la ordenación de cadenas; 0 = nada.
+- **EX041 — Niveles de ocho artefactos del Setpoint Study.** Asigne niveles a ocho artefactos del Setpoint Study y justifique dos elecciones dudosas. *Rúbrica:* 3 = ocho artefactos con niveles + dos justificaciones de casos dudosos; 2 = niveles sin casos dudosos; 1 = cuatro artefactos; 0 = nada.
+- **EX042 — Ficha del conjunto de datos del simulador del laboratorio 3.** Escriba una ficha del conjunto de datos para el simulador del laboratorio 3 (propósito, parámetros, inventado/calibrado, usos prohibidos). *Rúbrica:* 3 = propósito, parámetros, condición de inventado, usos prohibidos; 2 = falta un campo; 1 = solo el propósito; 0 = nada.
+- **EX043 — Dos limitaciones con dirección más.** Añada dos filas a la tabla de limitaciones con dirección. *Rúbrica:* 3 = dos filas con dirección (*desconocida*/*sobrestima*, etc.); 2 = una fila; 1 = sin dirección; 0 = nada.
+- **EX044 — Monografía frente a compendio de publicaciones.** Argumente a favor del formato de monografía o de compendio de publicaciones para el Setpoint Study. *Rúbrica:* 3 = elige formato con la razón de la correspondencia con tres artículos o del argumento integrado; 2 = elección sin razón; 1 = vago; 0 = nada.
+
+### Síntesis del capítulo
+
+La tesis es un argumento en el que cada elemento remite a evidencia; el archivo publica solo lo que es seguro y está verificado, fallando de forma cerrada; los datos sintéticos se etiquetan como inventados o calibrados; y las limitaciones dicen en qué sentido sesgan el resultado.
+
+### Siga estudiando — capítulo 07 de 08
+
+[← Capítulo 06 (borrador)](#ch-06) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 08 (borrador) →](#ch-08)
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Defensa y plan de publicación
+
+### Resultados de aprendizaje y conexión
+
+Después de este capítulo usted podrá (1) auditar un registro de afirmaciones antes de la defensa, (2) prepararse para las familias de preguntas de los examinadores, (3) secuenciar las publicaciones, (4) canalizar las vulnerabilidades de productos mediante la divulgación coordinada y (5) traducir los hallazgos para los operadores y los organismos de normalización. Completa el proyecto iniciado en el capítulo 1.
+
+### 8.1 Auditoría del registro de afirmaciones
+
+Cada afirmación de la tesis necesita evidencia, alcance y un falsador, y debe evitar una redacción excesiva. El laboratorio 8 automatiza la primera pasada.
+
+```python
+# Lab 8: audit a thesis claim register (synthetic). Every claim needs evidence, scope and a falsifier.
+claims = [
+ {"id": "C1", "text": "Residual CUSUM detects replay on Plant A tank model", "evidence": "Lab3 100/100", "scope": "simulated tank, single-sensor replay", "falsifier": "replay+flow"},
+ {"id": "C2", "text": "Method secures water utilities", "evidence": "", "scope": "", "falsifier": ""},
+ {"id": "C3", "text": "Band alarms miss replay", "evidence": "Lab3 0/100", "scope": "band +/-1.5", "falsifier": ""},
+ {"id": "C4", "text": "Detection holds on testbed T2", "evidence": "Ch5 table 5.2", "scope": "T2, class A replay", "falsifier": "class B: flow meter also spoofed"},
+]
+overreach = ("secures", "prevents all", "guarantees", "real-world")
+for c in claims:
+    issues = [f for f in ("evidence", "scope", "falsifier") if not c[f]]
+    if any(w in c["text"].lower() for w in overreach): issues.append("overreach wording")
+    print(c["id"], "PASS" if not issues else "REVISE: " + ", ".join(issues))
+```
+
+Salida esperada:
+
+```text
+C1 PASS
+C2 REVISE: evidence, scope, falsifier, overreach wording
+C3 REVISE: falsifier
+C4 PASS
+```
+
+C2 debe eliminarse o acotarse; C3 necesita un falsador (por ejemplo, «una banda lo bastante estrecha para captar la repetición superaría el presupuesto de falsas alarmas por turno»). Una lista de palabras clave es una comprobación tosca; la auditoría humana sigue leyendo cada afirmación.
+
+La lista de palabras clave del laboratorio 8 es deliberadamente corta, así que superarla demuestra poco. Una auditoría humana debería contrastar igualmente C4 con los resultados de T2: su alcance es la repetición de clase A porque la clase B evadió la detección en T2, y la exhaustividad de 18 de 20 debe figurar junto a la afirmación, no solo en el capítulo de resultados. Repita la auditoría después de cada revisión del resumen o de la conclusión, y conserve la salida de cada ejecución en el historial del registro de afirmaciones para que los examinadores puedan ver cómo se acotaron las afirmaciones.
+
+### 8.2 Familias de preguntas de los examinadores
+
+Prepare respuestas para: **posicionamiento** («¿qué hay de nuevo más allá de Page y Giraldo?»), **validez** («¿por qué debería generalizarse un banco de pruebas?»), **adversario** («¿qué hace un atacante más fuerte?»), **seguridad física** («¿cómo acotó los experimentos en T2?»), **ética** («¿qué retuvo y por qué?») e **impacto** («¿qué debería cambiar un operador el lunes?»). La respuesta a la última es arquitectónica: disponer de una segunda medición cableada de forma independiente de las magnitudes clave del proceso y mostrar los valores predichos frente a los informados.
+
+Ensaye cada familia en voz alta con un colega que interrumpa, y mantenga una hoja con una respuesta breve y una referencia a la figura o tabla que la respalda. Cuando no sepa algo, diga qué evidencia respondería a la pregunta y qué tiene realmente. Responda a la pregunta formulada y luego deténgase.
+
+### 8.3 Secuenciación de las publicaciones
+
+Artículo 1: la contribución de metodología de evaluación (impacto en el momento de la detección y métricas por eventos, con la lección de la reproducción al estilo de TankBench-21 contada de forma genérica). Artículo 2: la comparación del Setpoint Study con las condiciones límite. Artículo 3: el hallazgo sobre la interpretabilidad para los operadores, con colaboradores de factores humanos. Publique el archivo T0/T1 con el artículo 2. Planifique cada artículo de modo que no contradiga la tesis ni los demás artículos, y registre qué afirmaciones y figuras reutiliza cada uno. Si el artículo sobre operadores se retrasa por la revisión de factores humanos, los otros dos pueden aparecer igualmente; el archivo se publica con el artículo 2 porque es el artículo cuyas cifras reproduce. Acuerde la autoría con los colaboradores antes de empezar a escribir.
+
+### 8.4 Divulgación coordinada
+
+Si la investigación revela una vulnerabilidad en un producto comercial —por ejemplo, un PLC que acepta escrituras no autenticadas en un registro que debería ser de solo lectura—, comuníquela al fabricante y, cuando corresponda, a un coordinador como el programa de divulgación coordinada de vulnerabilidades de CISA, acuerde un calendario y publique los detalles técnicos solo cuando haya mitigaciones disponibles. Una propiedad de diseño documentada en una especificación pública (la falta de autenticación de Modbus) no es una divulgación de vulnerabilidad; un fallo de implementación sí lo es.
+
+Registre el calendario de divulgación en el apéndice de la tesis con las fechas del primer contacto, del acuse de recibo del fabricante y de la publicación. Si el fabricante no responde, siga el proceso del coordinador en lugar de publicar antes de tiempo. La tesis puede describir igualmente la clase de debilidad mientras retiene los nombres de los productos y los pasos hasta que existan mitigaciones.
+
+### 8.5 Traducción para la práctica
+
+Escriba un informe de dos páginas para los operadores con niveles de confianza: «Confianza alta (modelo + banco de pruebas): las alarmas de banda por sí solas no detectan lecturas de nivel repetidas. Confianza media (dos contextos): una medición de caudal independiente más una comprobación de residuos detecta la repetición sobre un solo sensor. Sin protección: si un solo dispositivo o PLC controla ambas mediciones». Sugiera a los grupos de trabajo de normalización que se consideren rutas de medición independientes al evaluar los niveles de seguridad de las zonas, como propuesta y no como hallazgo de cumplimiento.
+
+Pruebe el informe con uno o dos operadores antes de publicarlo: ¿pueden decir qué comprobar el lunes? Si no pueden, hay que reformular los niveles de confianza o la recomendación. Mantenga el informe coherente con la afirmación acotada y no permita que un formato más corto omita el caso en que un solo dispositivo controla ambas mediciones.
+
+### 8.6 Programa posdoctoral
+
+Extender el trabajo a plantas de varios lazos, probar modelos calibrados en lugar de inventados, medir el tiempo de respuesta de los operadores con personal real de salas de control (que dé su consentimiento) y estudiar atacantes de clase C que modifican la lógica del PLC. Cada extensión prueba un límite que la tesis midió pero no pudo cruzar. Las plantas de varios lazos prueban si los residuos siguen siendo interpretables cuando los lazos interactúan. Los modelos calibrados prueban si los parámetros inventados sobrestimaron la separación. Los operadores reales prueban la interpretabilidad a escala. Los atacantes de clase C, que pueden reescribir la lógica del controlador, prueban si algún invariante sobrevive cuando el propio controlador miente; los mismos límites de seguridad y la misma revisión ética se aplican a las cuatro extensiones.
+
+### Ejercicios — capítulo 8
+
+- **EX045 — Audite tres afirmaciones del capítulo 5.** Audite tres afirmaciones de su propio párrafo de resultados del capítulo 5 con los criterios del laboratorio 8. *Rúbrica:* 3 = tres afirmaciones etiquetadas PASS/REVISE con correcciones de alcance; 2 = dos afirmaciones; 1 = una; 0 = nada.
+- **EX046 — Respuestas de defensa sobre posicionamiento y seguridad.** Escriba respuestas modelo a las preguntas de los examinadores sobre posicionamiento y seguridad física. *Rúbrica:* 3 = posicionamiento más allá de Page/Giraldo + respuesta de seguridad con los límites de T2/parada de emergencia; 2 = una familia; 1 = vago; 0 = nada.
+- **EX047 — Secuencie tres artículos por tipo de foro.** Secuencie tres artículos con foros del tipo adecuado (seguridad, control, factores humanos) y justifique el orden. *Rúbrica:* 3 = orden seguridad→control/CPS→FH con razón de dependencia; 2 = tres foros en orden erróneo; 1 = un artículo; 0 = nada.
+- **EX048 — Tres decisiones de divulgación.** Decida si cada uno de tres hallazgos es un caso de divulgación: Modbus carece de autenticación; un firmware de PLC acepta escrituras en un registro protegido; el PLC de T2 comparte cableado para ambos sensores. *Rúbrica:* 3 = Modbus=documentado; escritura en registro protegido=divulgación coordinada; cableado compartido de T2=responsable del laboratorio, no divulgación de producto; 2 = dos correctas; 1 = una; 0 = nada.
+- **EX049 — Declaraciones de confianza sin clase B.** Escriba las tres declaraciones de confianza del informe para operadores de un estudio en el que no se probó la clase B. *Rúbrica:* 3 = alta/media/desconocida con la clase B no probada explícita; 2 = falta desconocida; 1 = un nivel; 0 = nada.
+- **EX050 — Posdoctorado de dos años con dos hipótesis.** Esboce un programa posdoctoral de dos años con dos hipótesis falsables. *Rúbrica:* 3 = plan de dos años con dos H falsables, incluidas métricas/límites de FA; 2 = plan sin H falsables; 1 = solo temas; 0 = nada.
+
+### Síntesis del capítulo
+
+Audite cada afirmación, prepárese para las seis familias de preguntas, publique en un orden que genere credibilidad, divulgue los fallos de implementación mediante coordinación y traduzca los hallazgos con una confianza explícita. La contribución doctoral es un método medido *y* sus límites medidos.
+
+### Siga estudiando — capítulo 08 de 08
+
+[← Capítulo 07 (borrador)](#ch-07) · [Índice de capítulos del curso](../SUBJECTS.md) · [Resultados resueltos ↓](#worked-results) · [Siguiente curso: Infraestructura crítica y seguridad sectorial, doctorado (curso 207) →](../../../critical-sector-security/es/SUBJECTS.md)
 
 <a id="worked-results"></a>
 
@@ -681,6 +848,26 @@ Cada respuesta muestra una respuesta defendible; las rúbricas de cada ejercicio
 **EX036.** «En dos contextos sintéticos, un CUSUM de residuos que usa un caudalímetro cableado de forma independiente detectó la repetición del nivel sobre un solo sensor que una alarma de banda no detectó; no protege frente a un atacante que controla ambas mediciones».
 **EX037.** Publicar la secuencia exacta de T2 da a los atacantes una receta lista para una configuración de producto concreta, mientras que los defensores solo necesitan la clase de capacidad y la corrección arquitectónica. Decisión: publicar la clase y la defensa; compartir las secuencias exactas solo con el fabricante mediante divulgación coordinada, si hay un fallo de producto implicado.
 **EX038.** «Estamos de acuerdo en que los bancos de pruebas difieren de las plantas y hemos acotado nuestras afirmaciones a los dos contextos estudiados (§6.3). Probamos la incertidumbre estructural validando en un banco de pruebas independiente, con instrumentos distintos, umbrales congelados a partir de la simulación (§5.3), informamos la pérdida de exhaustividad resultante y enumeramos la validación a escala de planta como trabajo futuro (§8.6)».
+
+### Capítulo 7
+
+**EX039.** Afirmación: afirmación acotada (cap. 6.3). Datos: laboratorio 3, laboratorio 5, T2 (cap. 3, 5). Garantía: el balance de masa vincula caudal y nivel (cap. 3.2). Respaldo: pruebas de verificación, teoría del CUSUM (cap. 4.3). Calificador: dos contextos sintéticos (cap. 5). Refutación: clase B, rampas lentas, retardo (cap. 5–6).
+**EX040.** Almacene los niveles como enteros (`int(e["tier"][1:])`) y compare números; así, una entrada T10 con un máximo de publicación T1 se excluye en lugar de pasar erróneamente como "T10" < "T2".
+**EX041.** Código del simulador T0; trazas sintéticas T1; cuadernos de laboratorio T1; diagrama de cableado de la instalación T2 T2; programa del PLC de T2 T2; notas de la revisión de operadores T2; configuraciones reales al estilo de la planta A T3; vídeos del piloto T2. Casos dudosos: diagrama de cableado (T2 porque revela la debilidad del PLC compartido); notas de los operadores (T2 porque contienen citas identificables).
+**EX042.** Propósito: enseñanza y demostración del método. Parámetros: caudal de entrada 1,0±0,05, caudal de salida 0,02×nivel, ruido del nivel σ = 0,3, ruido del caudal σ = 0,02, ganancia del ataque 0,05 en el paso 300. Condición: inventado, no calibrado. Usos prohibidos: afirmaciones sobre plantas reales, evaluación comparativa de productos.
+**EX043.** Inicio fijo del ataque en el paso 300 (*desconocida*; puede favorecer a los detectores con calentamiento). Un único objetivo del atacante (*sobrestima* la generalidad).
+**EX044.** El compendio de publicaciones encaja: tres contribuciones separables (métricas, comparación, estudio con operadores) con un capítulo de enlace; una monografía es defendible si la institución prefiere un único argumento integrado.
+
+### Capítulo 8
+
+**EX045.** Usando el párrafo de EX032 o del §5.5: «detectó la repetición de clase A en la simulación» → PASS con alcance; «robusto frente al sesgo de calibración» → REVISE: añadir alcance (≤0,4 unidades); «funciona en plantas reales» → REVISE: redacción excesiva.
+**EX046.** Posicionamiento: «El CUSUM y los residuos están establecidos; nuestra contribución es medir el retardo y el impacto en el momento de la detección para la manipulación de la vista en dos contextos e identificar la capacidad del atacante con la que el método falla». Seguridad física: «Todos los ataques se ejecutaron en simulación o en T2 con una válvula mecánica de flotador independiente del PLC, una bandeja de goteo, una parada de emergencia física y una autoridad de parada designada; no se tocó ningún sistema de producción».
+**EX047.** 1: artículo de metodología en un foro de seguridad (establece las métricas); 2: comparación en un foro de seguridad de control/CPS (usa esas métricas); 3: estudio con operadores en un foro de factores humanos. El orden construye el vocabulario del que dependen los artículos posteriores.
+**EX048.** Modbus carece de autenticación: propiedad de diseño documentada, no una divulgación. Un PLC acepta escrituras en un registro protegido: fallo de implementación → divulgación coordinada. Cableado compartido en T2: problema de configuración del laboratorio → informar al responsable del laboratorio; no es una vulnerabilidad de producto.
+**EX049.** Alta: las alarmas de banda por sí solas no detectan lecturas de nivel repetidas. Media: una medición de caudal independiente más un residuo detecta la repetición sobre un solo sensor. Desconocida: no se probó la protección frente a un atacante que controla ambas mediciones; no la dé por supuesta.
+**EX050.** Año 1: modelo calibrado de varios lazos; H: exhaustividad de la detección por residuos ≥80 % con falsas alarmas ≤1 por turno cuando los lazos se acoplan. Año 2: estudio con operadores que dan su consentimiento; H: mostrar los valores predichos frente a los informados reduce el tiempo hasta el diagnóstico correcto en ≥20 %. Ambos con umbrales congelados y criterios de refutación.
+
+**Fin de los resultados resueltos.** Vuelva al [índice de capítulos del curso](../SUBJECTS.md).
 
 <a id="glossary"></a>
 
