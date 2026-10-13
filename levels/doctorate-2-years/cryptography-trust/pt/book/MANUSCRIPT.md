@@ -1,7 +1,7 @@
 # Criptografia e Serviços de Confiança: Trilha de Pesquisa de Doutorado
 
 - Idioma: português do Brasil (`pt`); curso 192, trilha de pesquisa de doutorado (2 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–4 de 8 já estão escritos em português, com os exercícios EX001–EX026 e suas resoluções com rubricas de 0 a 3 e 3 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 5–8 (EX027–EX050) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–8 de 8 têm texto didático escrito à mão; os exercícios EX001–EX050 têm resoluções correspondentes com rubricas de 0 a 3; os cinco laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente e a verificação de 300 páginas A4 continuam em aberto.
 - Público: doutorandos que estudam como o uso indevido de criptografia em software pode ser medido e reduzido como controle de engenharia.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: este livro estuda o *uso* de bibliotecas criptográficas avaliadas. Ele nunca ensina a projetar nem a implementar à mão primitivas para produção; os pequenos laboratórios com a biblioteca padrão apenas medem, contam e calculam hashes de dados sintéticos. Pessoas, organizações, chaves e achados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,7 @@ Katz e Lindell, *Introduction to Modern Cryptography* (3ª ed.); Boneh e Shoup, 
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) |
-
-Capítulos 5–8: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-05), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -347,11 +345,283 @@ Uma amostra histórica de um ano pode subcontar o uso indevido que os auditores 
 
 - **EX026 — Nenhum efeito de piloto.** Por que Nadia se recusa a estimar um efeito a partir do piloto? *Rubrica:* 3 = duas equipes não aleatórias em quatro semanas não conseguem estimá-lo, e um número poderia enviesar as escolhas;; 2 = pequeno demais;; 1 = esqueceu;; 0 = nenhuma.
 
+<a id="ch-05"></a>
+
+## Capítulo 5 — Estudo principal e validação independente
+
+### Objetivos de aprendizagem
+
+Você vai (1) conduzir um estudo de campo randomizado por conglomerados com confirmação cega dos desfechos; (2) analisá-lo com o teste de permutação pré-registrado; (3) relatar os resultados primários e secundários sem exagerá-los.
+
+### 5.1 Randomização e condução
+
+O líder de segurança da Meridian, e não Nadia, roda o script de randomização com uma semente registrada no plano, atribuindo seis equipes de tokenização ou webhooks e seis equipes de armazenamento ou plataforma a cada braço. O estudo dura um trimestre. As equipes com checklist preenchem o formulário para toda mudança que toca criptografia e rodam a etapa de lint na integração contínua; as equipes de revisão habitual não mudam nada. Dois auditores que nunca veem os rótulos dos braços confirmam os achados semanalmente a partir de diffs pseudonimizados. Durante o trimestre, Nadia monitora apenas métricas de procedimento, como o preenchimento dos checklists, para que não possa ser acusada de espiar os desfechos.
+
+### 5.2 Análise primária
+
+No fim do trimestre, cada equipe tem uma contagem de achados confirmados a cada dez mudanças integradas que tocam criptografia. A diferença observada entre as médias é a estatística. Sob a hipótese nula de que o braço não faz diferença, os rótulos das equipes são intercambiáveis, então o teste de permutação reembaralha muitas vezes os 24 valores das equipes em dois grupos de doze e pergunta com que frequência uma diferença pelo menos tão grande quanto a observada aparece por acaso. O laboratório reproduz a análise registrada com 20.000 embaralhamentos e a semente fixada em 2026.
+
+### Laboratório — Teste de permutação
+
+```python
+"""Permutation test: misuse per 10 merged changes, checklist+lint vs usual review (synthetic teams)."""
+import random
+CHECK = [0, 1, 0, 0, 2, 0, 1, 0, 0, 1, 0, 0]
+USUAL = [2, 1, 3, 0, 2, 1, 2, 3, 1, 0, 2, 2]
+
+def mean(x): return sum(x) / len(x)
+
+def main():
+    obs = mean(USUAL) - mean(CHECK)
+    pool = CHECK + USUAL; rng = random.Random(2026); n = 20000; hits = 0
+    for _ in range(n):
+        rng.shuffle(pool)
+        if mean(pool[12:]) - mean(pool[:12]) >= obs: hits += 1
+    print(f"checklist mean {mean(CHECK):.2f}, usual mean {mean(USUAL):.2f}, diff {obs:.2f}")
+    print(f"one-sided permutation p = {hits / n:.4f} (seed 2026, {n} shuffles)")
+    print(f"zero-misuse teams: checklist {CHECK.count(0)}/12, usual {USUAL.count(0)}/12")
+
+if __name__ == "__main__":
+    main()
+```
+
+Execute com `python3 lab_trial.py`. Saída verificada:
+
+```text
+checklist mean 0.42, usual mean 1.58, diff 1.17
+one-sided permutation p = 0.0034 (seed 2026, 20000 shuffles)
+zero-misuse teams: checklist 8/12, usual 2/12
+```
+
+### 5.3 Ler o resultado
+
+As equipes com checklist têm média de 0,42 achado confirmado a cada dez mudanças, e as de revisão habitual, 1,58, uma diferença de 1,17. Só cerca de 0,34 por cento dos embaralhamentos produzem uma diferença tão grande, um p unilateral de 0,0034, então a H1 é apoiada no limiar registrado de 0,05. O desfecho secundário aponta na mesma direção: oito de doze equipes com checklist registram zero uso indevido, contra duas de doze de controle. Nadia relata tanto o tamanho do efeito quanto o valor-p e coloca as contagens brutas das equipes num apêndice, para que os leitores possam recalcular tudo sem confiar no resumo dela.
+
+### 5.4 Validação independente
+
+O Prof. Brandt providencia que um terceiro auditor de outra universidade, sob o mesmo acordo de dados, reconfirme às cegas, sem conhecer o braço, uma amostra aleatória de 30 por cento dos achados. A concordância com os auditores originais é alta, e a reconfirmação não muda a contagem de nenhuma equipe em mais de um, o que deixa a conclusão intacta. Nadia também confere a explicação baseada só no lint, do capítulo 3: os avisos do lint explicam cerca de um terço dos achados de nonce evitados, mas a maioria dos achados de key-handling evitados veio de perguntas do checklist que a ferramenta não consegue ver, como se uma chave é emitida pelo serviço gerenciado de chaves.
+
+### 5.5 Ameaças que permanecem
+
+Nadia lista com clareza as ameaças restantes. Os revisores das equipes com checklist sabiam que estavam sendo observados, um efeito Hawthorne que pode se desfazer quando o estudo terminar. Doze conglomerados por braço tornam a estimativa imprecisa, então o efeito verdadeiro pode ser bem menor do que 1,17. Os auditores não conseguiam ver os segredos injetados no momento da implantação, então os achados de key-handling continuam subcontados nos dois braços. Por fim, o wrapper maduro da Meridian pode tornar os checklists mais fáceis de aplicar do que em empresas que chamam primitivas de baixo nível diretamente, o que limita a transferência para esses contextos.
+
+### Exemplo resolvido
+
+O teste de permutação registrado dá 0,42 contra 1,58, uma diferença de 1,17 com p = 0,0034; um terceiro auditor cego e uma conferência só com o lint deixam a conclusão intacta, com quatro ameaças declaradas.
+
+> **Caso sintético.** Todas as contagens das equipes e os auditores são inventados; o método de permutação é padrão.
+
+### Erros e limites
+
+Um valor-p pequeno não mede quão grande ou importante é um efeito, e um estudo de um trimestre não consegue mostrar durabilidade. Nunca exclua equipes depois de abrir o cegamento.
+
+### Exercícios
+
+- **EX027 — Quem randomizou.** Quem rodou a randomização, e por que não Nadia? *Rubrica:* 3 = o líder de segurança da Meridian com a semente registrada, para que a pesquisadora não influencie a alocação;; 2 = só quem;; 1 = Nadia;; 0 = nenhuma.
+
+- **EX028 — Lógica da intercambialidade.** Por que os rótulos das equipes podem ser embaralhados sob a hipótese nula? *Rubrica:* 3 = se o braço não tem efeito, os rótulos são intercambiáveis, então os embaralhamentos mostram diferenças ao acaso;; 2 = parcial;; 1 = "aleatório";; 0 = nenhuma.
+
+- **EX029 — Números principais.** Informe as duas médias, a diferença e o valor-p. *Rubrica:* 3 = 0,42, 1,58, 1,17, p = 0,0034;; 2 = três de quatro;; 1 = um;; 0 = nenhuma.
+
+- **EX030 — Comparação de zero uso indevido.** O que o desfecho secundário mostrou? *Rubrica:* 3 = 8 de 12 equipes com checklist contra 2 de 12 de controle com zero uso indevido;; 2 = direção;; 1 = contagens erradas;; 0 = nenhuma.
+
+- **EX031 — Conferência só com lint.** O que a análise só com lint encontrou? *Rubrica:* 3 = o lint explica cerca de um terço dos achados de nonce evitados; a maior parte dos ganhos em key-handling veio das perguntas do checklist;; 2 = parcial;; 1 = o lint explica tudo;; 0 = nenhuma.
+
+- **EX032 — Ameaças restantes.** Cite três ameaças restantes. *Rubrica:* 3 = três entre Hawthorne, imprecisão, segredos de implantação não vistos, transferência limitada;; 2 = duas;; 1 = uma;; 0 = nenhuma.
+
+<a id="ch-06"></a>
+
+## Capítulo 6 — Crítica por pares e revisão
+
+### Objetivos de aprendizagem
+
+Você vai (1) organizar uma crítica estruturada por pares de um estudo de campo em criptografia; (2) separar as objeções fatais das corrigíveis; (3) revisar um manuscrito com uma carta de resposta rastreável.
+
+### 6.1 Convidar uma leitura hostil
+
+Nadia distribui o rascunho do artigo a três leitores escolhidos para discordar dela: um criptógrafo aplicado, um metodologista de engenharia de software e um engenheiro da Meridian de uma equipe de controle. Ela pede a cada um a única objeção mais capaz de derrubar o artigo e uma lista de problemas menores. Ela também lhes entrega o registro, para que possam conferir se as análises relatadas correspondem ao plano. Convidar a crítica antes da submissão sai mais barato do que recebê-la dos revisores do periódico, e treina o hábito que os examinadores procuram: tratar o próprio resultado como uma afirmação a ser testada.
+
+### 6.2 A objeção do criptógrafo
+
+O criptógrafo argumenta que "uso indevido a cada dez mudanças" dá o mesmo peso a todo achado, embora um nonce do GCM repetido numa chave de alto volume seja catastrófico, enquanto um hash obsoleto num utilitário de teste é cosmético. Nadia aceita que esse é um problema real de construto, mas não fatal. Ela acrescenta uma análise de sensibilidade ponderada pela severidade, usando uma escala de três níveis definida antes da reclassificação, e relata que a direção se mantém, enquanto a diferença diminui, porque vários achados evitados eram de baixa severidade. Ela também acrescenta um parágrafo explicando por que a medida primária, não ponderada, foi registrada primeiro.
+
+### 6.3 A objeção do metodologista
+
+O metodologista observa que as equipes com checklist integraram um pouco menos de mudanças que tocam criptografia durante o trimestre, o que levanta a possibilidade de que o checklist tenha desacelerado o trabalho e de que o trabalho mais lento, e não uma revisão melhor, tenha reduzido o uso indevido. Nadia confere as contagens de merges e os lead times. As equipes com checklist integraram oito por cento menos dessas mudanças, e o tempo mediano de revisão subiu cerca de doze minutos. Ela relata os dois abertamente como custos, observa que uma taxa a cada dez mudanças já ajusta pelo volume e enquadra o trade-off para os profissionais: um custo de tempo modesto comprou uma redução considerável do uso indevido confirmado neste contexto.
+
+### 6.4 A objeção do engenheiro
+
+O engenheiro da equipe de controle aponta que duas equipes de revisão habitual são donas do serviço de armazenamento mais antigo, que traz código de cifração legado com mais riscos. A estratificação por linha de produto colocou as duas no braço de controle por acaso. Nadia trata isso como um desequilíbrio plausível. Ela roda uma análise de sensibilidade excluindo as duas equipes carregadas de legado do controle e seus pares de estrato do tratamento; a diferença cai para cerca de 0,9, mas continua positiva. Ela relata a análise como exploratória, porque não foi registrada, e recomenda que estudos futuros estratifiquem também pela idade do código, além da linha de produto.
+
+### 6.5 Escrever a carta de resposta
+
+Para cada objeção, a carta de resposta de Nadia cita o comentário, declara se ela concorda, descreve a mudança com referências de seção e linha e rotula qualquer nova análise como exploratória. Ela resiste a duas tentações: promover em silêncio um resultado de sensibilidade ao resumo e descartar uma objeção sem evidências. Onde discorda, como na sugestão de abandonar a medida não ponderada, ela explica que mudar o desfecho primário depois de abrir o cegamento violaria o registro. A carta passa a fazer parte do seu arquivo, para que os examinadores possam rastrear como o argumento evoluiu.
+
+### Exemplo resolvido
+
+Três críticos levantam a ponderação por severidade, a desaceleração dos merges e um desequilíbrio de legado; Nadia responde com uma conferência de sensibilidade por severidade, custos de tempo relatados e uma exclusão exploratória, tudo registrado numa carta de resposta.
+
+> **Caso sintético.** Os revisores e todas as contagens reclassificadas deste capítulo são inventados.
+
+### Erros e limites
+
+Análises de sensibilidade rodadas depois de abrir o cegamento são exploratórias, por mais tranquilizadoras que pareçam. Uma crítica que você não consegue responder pertence às limitações, e não a uma nota de rodapé.
+
+### Exercícios
+
+- **EX033 — Escolher os críticos.** Por que Nadia escolheu três leitores que discordariam? *Rubrica:* 3 = para trazer à tona as objeções mais danosas antes da revisão do periódico, pelos ângulos da criptografia, do método e da prática;; 2 = para receber críticas;; 1 = amigos;; 0 = nenhuma.
+
+- **EX034 — Objeção da severidade.** A que o criptógrafo se opôs, e como Nadia respondeu? *Rubrica:* 3 = peso igual para os achados; acrescentou sensibilidade ponderada por severidade predefinida, direção mantida, diferença menor;; 2 = só a objeção;; 1 = só a resposta;; 0 = nenhuma.
+
+- **EX035 — Custo do checklist.** Que custos a conferência da desaceleração revelou? *Rubrica:* 3 = 8 por cento menos merges que tocam criptografia, revisão mediana cerca de 12 minutos mais longa;; 2 = um custo;; 1 = nenhum custo;; 0 = nenhuma.
+
+- **EX036 — Desequilíbrio de legado.** O que aconteceu quando as equipes carregadas de legado foram excluídas? *Rubrica:* 3 = a diferença caiu para cerca de 0,9, mas continuou positiva; rotulada como exploratória;; 2 = só o número;; 1 = desapareceu;; 0 = nenhuma.
+
+- **EX037 — Estratificação futura.** Que mudança na estratificação Nadia recomendou? *Rubrica:* 3 = estratificar também pela idade do código, além da linha de produto;; 2 = estratificar mais;; 1 = randomizar indivíduos;; 0 = nenhuma.
+
+- **EX038 — Desfecho primário mantido.** Por que ela se recusou a abandonar a medida não ponderada? *Rubrica:* 3 = mudar o desfecho primário depois de abrir o cegamento viola o registro;; 2 = veio primeiro;; 1 = preferência;; 0 = nenhuma.
+
+<a id="ch-07"></a>
+
+## Capítulo 7 — Síntese da tese e arquivo de reprodutibilidade
+
+### Objetivos de aprendizagem
+
+Você vai (1) sintetizar os capítulos numa única tese argumentada; (2) construir um arquivo de reprodutibilidade com hashes que detecte edições silenciosas; (3) decidir o que pode e o que não pode ser divulgado num estudo de segurança.
+
+### 7.1 Um argumento, não cinco artigos
+
+A tese de Nadia precisa ser lida como um único argumento. A introdução enuncia a afirmação: numa organização de pagamentos, um checklist de uso indevido de criptografia com lint reduziu o uso indevido confirmado a cada dez mudanças que tocam criptografia ao longo de um trimestre, com um custo de tempo modesto e com o efeito concentrado em key-handling. Cada capítulo responde então a uma pergunta de que a afirmação depende: se o uso indevido pode ser codificado com confiabilidade, por que ele importa segundo os limites das próprias normas, se a linha de base justificava a intervenção, se o experimento apoia o efeito e se ele sobrevive à crítica. O material que não responde a nenhuma dessas perguntas vai para um apêndice.
+
+### 7.2 O que entra no arquivo
+
+O arquivo permite que um examinador rode de novo cada número sem contatar Nadia. Ele contém o livro de códigos com histórico de versões, o registro e o adendo, as contagens pseudonimizadas por equipe, os scripts de randomização e de análise com as sementes, os programas de laboratório deste livro, a carta de resposta e um README que explica como rodar tudo apenas com uma instalação padrão do Python. Ele exclui os diffs, os nomes de repositórios e qualquer coisa que possa identificar um sistema da Meridian, como exige o acordo de dados. O README declara abertamente essa exclusão, para que os leitores saibam quais afirmações se apoiam em dados que eles não podem ver.
+
+### 7.3 Detectar edições silenciosas
+
+Um arquivo só é útil se os leitores conseguirem saber se ele mudou desde que a tese foi examinada. Nadia registra um digest SHA-256, definido no FIPS 180-4, de cada arquivo e um único digest raiz calculado sobre os digests dos arquivos ordenados, e imprime a raiz na própria tese. O laboratório constrói um manifesto desses para três arquivos de brinquedo e mostra que mudar uma palavra no arquivo de achados muda a raiz por completo. Um manifesto de hashes prova a integridade contra edições acidentais ou não anunciadas; ele não prova quem produziu o arquivo, o que exigiria uma assinatura digital como o Ed25519 da RFC 8032.
+
+### Laboratório — Manifesto de hashes
+
+```python
+"""SHA-256 manifest for a synthetic reproducibility archive (hashlib only)."""
+import hashlib
+FILES = {"codebook.md": b"nonce-iv | key-handling | primitive-choice | other\n",
+         "findings.csv": b"id,team,arm,category\nF001,T03,check,nonce-iv\n",
+         "analysis.py": b"# permutation test, seed 2026\n"}
+
+def main():
+    for name, data in sorted(FILES.items()):
+        print(f"{hashlib.sha256(data).hexdigest()[:16]}...  {name}")
+    whole = hashlib.sha256(b"".join(hashlib.sha256(FILES[k]).digest() for k in sorted(FILES))).hexdigest()
+    print(f"manifest root {whole[:16]}...")
+    tampered = dict(FILES, **{"findings.csv": FILES["findings.csv"].replace(b"check", b"usual")})
+    root2 = hashlib.sha256(b"".join(hashlib.sha256(tampered[k]).digest() for k in sorted(tampered))).hexdigest()
+    print(f"after one-word edit root {root2[:16]}... match={root2 == whole}")
+
+if __name__ == "__main__":
+    main()
+```
+
+Execute com `python3 lab_archive.py`. Saída verificada:
+
+```text
+74b6ee0a6c357d2b...  analysis.py
+dd8ff4efed0b0971...  codebook.md
+8fb59a60f3904a37...  findings.csv
+manifest root 4ed0159418d1b231...
+after one-word edit root 1fcc81b868bef821... match=False
+```
+
+### 7.4 Ler o manifesto
+
+Cada digest de arquivo aparece truncado em dezesseis caracteres hexadecimais para facilitar a leitura, enquanto o arquivo guarda todos os sessenta e quatro. A raiz sobre os digests ordenados é 4ed0159418d1b231, e, depois de uma edição de uma palavra que troca o braço de um achado, a raiz passa a ser 1fcc81b868bef821 e a verificação de correspondência imprime False. Como o SHA-256 é projetado para ser resistente a colisões, um leitor que recalcula a raiz e encontra o valor publicado pode confiar que os arquivos são os examinados. Nadia alerta que a ordenação precisa ser documentada; outra ordem de arquivos produziria uma raiz diferente para um conteúdo idêntico.
+
+### 7.5 Decisões de divulgação
+
+Algum material não pode ser divulgado nem com pseudônimos. Nadia aplica um teste de divulgação a cada item: ele poderia ajudar alguém a encontrar ou explorar uma fraqueza num sistema da Meridian que talvez ainda exista? As contagens por equipe e o livro de códigos passam. Os achados de exemplo só passam como paráfrases inventadas. As regras de lint passam, porque detectam padrões já descritos em orientações públicas. As anotações dos auditores não passam, porque mencionam nomes de serviços internos. O líder de segurança da Meridian assina a lista final de divulgação, e o README do arquivo aponta para ela, para que os leitores entendam por que algumas evidências são descritas em vez de mostradas.
+
+### Exemplo resolvido
+
+Nadia escreve a afirmação da tese em um parágrafo, monta o arquivo com um manifesto cuja raiz é impressa na tese e registra uma lista de divulgação assinada que explica cada exclusão.
+
+> **Caso sintético.** Os três arquivos do arquivo e seus digests são dados didáticos inventados; o SHA-256 em si é real (FIPS 180-4).
+
+### Erros e limites
+
+Um digest detecta mudanças, mas não consegue dizer se o conteúdo original era honesto. Nunca publique identificadores reais de chaves, nem mesmo com hash, porque identificadores de baixa entropia podem ser adivinhados e comparados.
+
+### Exercícios
+
+- **EX039 — Afirmação da tese.** Enuncie a afirmação sintetizada da tese de Nadia. *Rubrica:* 3 = checklist+lint reduziu o uso indevido confirmado a cada dez mudanças numa empresa ao longo de um trimestre, custo de tempo modesto, sobretudo key-handling;; 2 = só o efeito;; 1 = afirmação universal;; 0 = nenhuma.
+
+- **EX040 — Exclusões do arquivo.** O que o arquivo exclui, e por quê? *Rubrica:* 3 = diffs, nomes de repositórios, tudo o que identifique sistemas da Meridian, segundo o acordo de dados;; 2 = parcial;; 1 = nada;; 0 = nenhuma.
+
+- **EX041 — Raízes do manifesto.** Informe a raiz antes e depois da edição. *Rubrica:* 3 = 4ed0159418d1b231 e depois 1fcc81b868bef821, match False;; 2 = uma raiz;; 1 = "mudou";; 0 = nenhuma.
+
+- **EX042 — Hash versus assinatura.** O que o manifesto prova e o que não prova? *Rubrica:* 3 = integridade contra edições, não autoria; uma assinatura como o Ed25519 (RFC 8032) prova a origem;; 2 = um lado;; 1 = confuso;; 0 = nenhuma.
+
+- **EX043 — Armadilha da ordenação.** Por que a ordenação precisa ser documentada? *Rubrica:* 3 = outra ordem de arquivos dá outra raiz para conteúdo idêntico;; 2 = reprodutibilidade;; 1 = estilo;; 0 = nenhuma.
+
+- **EX044 — Teste de divulgação.** Enuncie o teste de divulgação de Nadia e um item que não passa nele. *Rubrica:* 3 = poderia ajudar a encontrar ou explorar uma fraqueza que talvez ainda exista; as anotações dos auditores não passam;; 2 = só o teste;; 1 = só o item;; 0 = nenhuma.
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Defesa e plano de publicação
+
+### Objetivos de aprendizagem
+
+Você vai (1) preparar uma defesa de doutorado em torno dos pontos mais fracos da afirmação; (2) planejar os veículos de publicação e uma divulgação coordenada com a parceira; (3) definir pesquisas de continuidade, incluindo a migração pós-quântica.
+
+### 8.1 Preparar-se para as perguntas difíceis
+
+Nadia lista as dez perguntas que menos quer ouvir e prepara para cada uma uma resposta curta, baseada em evidências. Entre elas: por que doze conglomerados bastam, se o efeito Hawthorne explica o resultado, por que a ponderação por severidade não foi a primária e se o lint sozinho poderia trazer o ganho. Em cada resposta, ela aponta para uma seção, uma tabela ou um arquivo do arquivo de reprodutibilidade, e não para a própria opinião. O Prof. Brandt conduz duas defesas simuladas com colegas que não leram a tese, porque eles fazem as perguntas ingênuas que a banca real muitas vezes faz primeiro.
+
+### 8.2 Responder sem exagerar
+
+Durante a defesa, um examinador pergunta se o estudo prova que os checklists funcionam. Nadia responde que ele mostra uma redução considerável numa organização ao longo de um trimestre, com uma confiança que se apoia num teste de permutação, numa confirmação cega e num terceiro auditor, e que a durabilidade e a transferência continuam em aberto. Quando perguntam por que ela não testou a explorabilidade dos achados, ela explica que a aprovação ética proibia trabalho de exploração e que as violações confirmadas do livro de códigos são uma aproximação reconhecida, e não uma medida de invasões. Respostas precisas e delimitadas conquistam mais confiança do que generalizações confiantes.
+
+### 8.3 Escolher os veículos
+
+Nadia planeja dois artigos. O experimento vai para um veículo revisado por pares de segurança em engenharia de software, cujos revisores valorizam evidências de campo randomizadas. Um artigo mais curto para profissionais explica as perguntas do checklist, cada uma ligada a uma fonte pública, como o SP 800-38D para os limites de nonce, o SP 800-57 para o ciclo de vida das chaves e a RFC 9106 para o hash de senhas. Ela confere a política de dados abertos de cada veículo contra sua lista de divulgação e planeja publicar o manuscrito aceito num repositório aberto, para que o checklist chegue às equipes que não podem pagar pelo acesso aos periódicos.
+
+### 8.4 Divulgação coordenada com a parceira
+
+Antes da submissão, o líder de segurança da Meridian revisa os dois manuscritos contra o acordo de dados, confirmando que nenhuma fraqueza ativa é descrita e que todo achado de exemplo é uma paráfrase inventada. Eles combinam um cronograma: o arquivo se torna público na aceitação, o artigo para profissionais sai depois que a Meridian tiver implantado o checklist em todas as equipes, e qualquer problema recém-encontrado segue o processo de divulgação da Meridian antes da publicação. Registrar isso por escrito protege as duas partes e mostra aos examinadores que os resultados da pesquisa e a segurança da parceira foram planejados juntos, e não negociados um contra o outro no último minuto.
+
+### 8.5 Pesquisas de continuidade
+
+Nadia propõe dois estudos de continuidade. O primeiro repete o experimento em organizações sem um wrapper maduro, estratificado pela idade do código, para testar a transferência. O segundo estuda a migração pós-quântica: o NIST padronizou o ML-KEM no FIPS 203, o ML-DSA no FIPS 204 e o SLH-DSA no FIPS 205, e migrar para eles vai introduzir novos parâmetros, chaves maiores e handshakes híbridos, todos novas oportunidades de uso indevido. Ela sugere estender o livro de códigos com categorias de migração, como combinações híbridas não suportadas, e medir se as perguntas de checklist escritas agora evitam erros quando o trabalho real de migração começar.
+
+### Exemplo resolvido
+
+O pacote de defesa de Nadia liga dez perguntas difíceis a evidências, seu plano de publicação combina um artigo do experimento com um artigo para profissionais, e seu cronograma de divulgação com a Meridian é assinado antes da submissão.
+
+> **Caso sintético.** A banca, as decisões dos veículos e o cronograma da Meridian são inventados; o FIPS 203, o 204 e o 205 são normas reais.
+
+### Erros e limites
+
+Uma defesa não se vence com certeza; afirmações além das evidências convidam ao fracasso. Os planos de publicação nunca devem andar mais depressa do que a capacidade da parceira de corrigir o que a pesquisa revela.
+
+### Exercícios
+
+- **EX045 — Plateias simuladas.** Por que o Prof. Brandt usou colegas que não tinham lido a tese? *Rubrica:* 3 = eles fazem as perguntas ingênuas que a banca muitas vezes faz primeiro;; 2 = visão nova;; 1 = disponibilidade;; 0 = nenhuma.
+
+- **EX046 — Resposta delimitada.** Como Nadia respondeu se o estudo prova que os checklists funcionam? *Rubrica:* 3 = redução considerável numa empresa ao longo de um trimestre, evidências do teste de permutação, do cegamento e do terceiro auditor; durabilidade e transferência em aberto;; 2 = parcial;; 1 = "sim";; 0 = nenhuma.
+
+- **EX047 — Pergunta sobre explorabilidade.** Por que os achados não foram testados quanto à explorabilidade? *Rubrica:* 3 = a aprovação ética proibia trabalho de exploração; as violações do livro de códigos são uma aproximação reconhecida;; 2 = um motivo;; 1 = tempo;; 0 = nenhuma.
+
+- **EX048 — Fontes para profissionais.** Que fontes públicas apoiam os itens do checklist no artigo para profissionais? *Rubrica:* 3 = SP 800-38D para nonces, SP 800-57 para o ciclo de vida das chaves, RFC 9106 para senhas;; 2 = duas;; 1 = uma;; 0 = nenhuma.
+
+- **EX049 — Cronograma de divulgação.** Descreva a ordem de divulgação acordada. *Rubrica:* 3 = arquivo na aceitação; artigo para profissionais após a implantação completa; novos problemas primeiro pela divulgação da Meridian;; 2 = duas partes;; 1 = uma;; 0 = nenhuma.
+
+- **EX050 — Continuidade pós-quântica.** Que normas motivam o segundo estudo de continuidade, e por quê? *Rubrica:* 3 = FIPS 203, 204, 205 (ML-KEM, ML-DSA, SLH-DSA); a migração acrescenta parâmetros, chaves maiores e híbridos sujeitos a uso indevido;; 2 = só as normas;; 1 = "quântico";; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX026 (as de EX027–EX050 estão na edição em inglês até a tradução dos capítulos correspondentes). Nadia Haddad, o Prof. Oskar Brandt, a Larkspur University, a Meridian Payments Cooperative e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX050. Nadia Haddad, o Prof. Oskar Brandt, a Larkspur University, a Meridian Payments Cooperative e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Acrescentar um checklist de uso indevido de criptografia e lint automatizado à revisão reduz os achados confirmados de uso indevido a cada dez mudanças integradas, em comparação com a revisão habitual da Meridian?
 
@@ -404,6 +674,54 @@ Respostas-modelo para EX001–EX026 (as de EX027–EX050 estão na edição em i
 **EX025.** Avisos falsos positivos de nonce nos fixtures de teste, auditores adivinhando o braço pelos comentários do checklist nas descrições de merge e revisores lendo "rotação" de forma errada.
 
 **EX026.** Duas equipes voluntárias ao longo de quatro semanas não são nem aleatórias nem grandes o bastante, e um número precoce poderia direcionar as decisões posteriores.
+
+**EX027.** O líder de segurança da Meridian rodou o script com a semente registrada, mantendo a alocação fora do controle da pesquisadora.
+
+**EX028.** Se a intervenção não faz nada, qual equipe recebeu qual rótulo é arbitrário, então reembaralhar os rótulos gera a distribuição das diferenças esperadas ao acaso.
+
+**EX029.** Checklist 0,42, habitual 1,58, diferença 1,17, p unilateral = 0,0034.
+
+**EX030.** Oito de doze equipes com checklist tiveram zero uso indevido confirmado, contra duas de doze equipes de revisão habitual.
+
+**EX031.** O lint respondeu por cerca de um terço dos achados de nonce evitados, mas a maioria dos achados de key-handling evitados veio de perguntas do checklist fora do alcance da ferramenta.
+
+**EX032.** Efeitos de observação, uma incerteza ampla por haver só doze conglomerados por braço, segredos de implantação não vistos e transferência limitada para empresas sem um wrapper maduro.
+
+**EX033.** Leitores da criptografia, da metodologia e da prática eram os mais capazes de encontrar cedo os pontos mais fracos do artigo, antes que os revisores do periódico o fizessem.
+
+**EX034.** O peso igual ignora a severidade; ela acrescentou uma análise de sensibilidade ponderada por severidade, com uma escala fixada antes da reclassificação, que manteve a direção, mas reduziu a diferença.
+
+**EX035.** Oito por cento menos merges que tocam criptografia e cerca de doze minutos a mais de tempo mediano de revisão nas equipes com checklist.
+
+**EX036.** A diferença caiu para cerca de 0,9 achado a cada dez mudanças, mas continuou positiva, relatada como análise exploratória não registrada.
+
+**EX037.** Estratificar a randomização futura pela idade do código, além da linha de produto.
+
+**EX038.** A medida não ponderada era o desfecho primário registrado, e substituí-la depois de abrir o cegamento quebraria o pré-registro.
+
+**EX039.** Numa organização de pagamentos, acrescentar um checklist de uso indevido de criptografia e lint reduziu o uso indevido confirmado a cada dez mudanças que tocam criptografia ao longo de um trimestre, com um pequeno custo de tempo, sobretudo ao reduzir os erros de key-handling.
+
+**EX040.** Os diffs, os nomes de repositórios e qualquer detalhe que possa identificar um sistema da Meridian, porque o acordo de dados proíbe divulgá-los.
+
+**EX041.** Raiz 4ed0159418d1b231 antes da edição e 1fcc81b868bef821 depois, então a verificação de correspondência imprimiu False.
+
+**EX042.** O manifesto mostra que os arquivos não mudaram desde a publicação, mas não quem os criou; provar a origem exigiria uma assinatura como o Ed25519 da RFC 8032.
+
+**EX043.** A raiz é calculada sobre os digests em ordem, então outra ordenação de arquivos idênticos produz uma raiz diferente e falsos alarmes.
+
+**EX044.** O item poderia ajudar alguém a localizar ou explorar uma fraqueza que talvez ainda esteja ativa? As anotações dos auditores não passam, porque citam serviços internos.
+
+**EX045.** Leitores que não conhecem a tese levantam as perguntas simples e básicas com que as bancas reais costumam abrir.
+
+**EX046.** Ele mostra uma redução grande numa organização ao longo de um único trimestre, apoiada pelo teste de permutação, pelos auditores cegos e por uma conferência de terceiros, enquanto a durabilidade de longo prazo e a transferência continuam sem resposta.
+
+**EX047.** A aprovação ética proibia testes de exploração, e as violações confirmadas das regras do livro de códigos são uma aproximação aceita, e não uma contagem de invasões.
+
+**EX048.** O SP 800-38D para os limites de nonce, o SP 800-57 Part 1 para o ciclo de vida das chaves e a RFC 9106 para o hash de senhas.
+
+**EX049.** O arquivo é publicado na aceitação, o texto para profissionais depois da implantação completa na Meridian, e qualquer problema novo passa pelo processo de divulgação da Meridian antes da publicação.
+
+**EX050.** O FIPS 203, o 204 e o 205 padronizam o ML-KEM, o ML-DSA e o SLH-DSA; a migração traz novos parâmetros, chaves maiores e handshakes híbridos que criam novos riscos de uso indevido.
 
 <a id="references"></a>
 ## Referências
