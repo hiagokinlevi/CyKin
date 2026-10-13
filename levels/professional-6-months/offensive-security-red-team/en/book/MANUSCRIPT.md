@@ -896,7 +896,7 @@ You will (1) run a supervised lab using only synthetic data and prior labs; (2) 
 
 ### 11.1 Lab brief
 
-Using lab_roe, lab_severity and lab_ticket outputs already produced, build a three-section mini report for HCU: authorization readiness, discovery filter result, remediation hygiene.
+Using lab_roe, lab_severity and lab_ticket outputs already produced, build a three-part mini report for HCU: authorization readiness, discovery filter result, remediation hygiene.
 
 Authorization readiness uses lab_roe; discovery filter uses lab_severity; remediation hygiene uses lab_ticket. The mini report ties the three outputs to HCU decisions, not to tool praise. The supervisor should see decisions, not only green check marks from the scripts. Each part ends with one sentence on what HCU should do next. The three lab outputs are attached so numbers can be recomputed.
 
@@ -922,7 +922,7 @@ Without that signature, the lab is practice only and does not enter Leo's portfo
 
 The lab runs in one sitting with a hard stop, practising window discipline.
 
-When the clock stops, Leo stops typing and vaults what he has. Unfinished sections become notes, not silent extra minutes, so window discipline is practised under the same pressure as ENG-440. Practising the hard stop here makes the real Saturday window feel familiar. A hard stop with incomplete prose still passes if scope and evidence rules were kept. Practising under a clock is the point of the sitting.
+When the clock stops, Leo stops typing and vaults what he has. Unfinished parts become notes, not silent extra minutes, so window discipline is practised under the same pressure as ENG-440. Practising the hard stop here makes the real Saturday window feel familiar. A hard stop with incomplete prose still passes if scope and evidence rules were kept. Practising under a clock is the point of the sitting.
 
 ### 11.6 Pairing rule
 
@@ -960,7 +960,7 @@ Local policies and laws differ; follow HCU's authorization and your jurisdiction
 
 ### Exercises
 
-- **EX051 — Mini report sections.** Name the three sections of the lab brief. *Rubric:* 3 = authorization readiness, discovery filter, remediation hygiene; 2 = two; 1 = one; 0 = none.
+- **EX051 — Mini report parts.** Name the three parts of the lab brief. *Rubric:* 3 = authorization readiness, discovery filter, remediation hygiene; 2 = two; 1 = one; 0 = none.
 - **EX052 — Peer score item.** Name two peer-review scoring items. *Rubric:* 3 = two of exclusions, emergency contact, methods match; 2 = one; 1 = vague; 0 = none.
 - **EX053 — Supervisor refusal.** What missing item makes the supervisor refuse to sign? *Rubric:* 3 = missing exclusions or emergency contact or out-of-scope target present; 2 = partial; 1 = low finding count; 0 = none.
 - **EX054 — Reflection quality.** What makes a useful reflection line? *Rubric:* 3 = specific mistake, detector, next behaviour; 2 = partial; 1 = "I did fine"; 0 = none.
