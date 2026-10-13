@@ -1,7 +1,7 @@
 # Infraestrutura Crítica e Segurança Setorial: Engenharia de Sistemas Seguros e Resilientes
 
 - Idioma: português do Brasil (`pt`); curso de engenharia, cinco anos; aproximadamente 4.000 horas de estudo planejado (curso 138 de 207 na [trilha de estudo](../../../../../STUDY_PATH.md)). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–22 de 50 já estão escritos em português, com os exercícios EX001–EX044 e suas resoluções; os capítulos 23–50 (EX045–EX100) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–26 de 50 já estão escritos em português, com os exercícios EX001–EX052 e suas resoluções; os capítulos 27–50 (EX053–EX100) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: futuros projetistas de sistemas de segurança para serviços críticos — água, eletricidade, saúde, transporte, finanças e comunicações. Conhecimento de entrada: matemática e física do ensino médio; o livro constrói cálculo, probabilidade, programação, redes e engenharia de sistemas a partir do Capítulo 1.
 - Relação com os demais livros desta área: o [livro de mestrado](../../../../masters-2-years/critical-sector-security/en/book/MANUSCRIPT.md) ensina a projetar, pilotar e defender um estudo empírico com revisão ética; o [livro de doutorado](../../../../doctorate-2-years/critical-sector-security/en/book/MANUSCRIPT.md) exige uma contribuição original e validada de forma independente para o conhecimento. **Este livro de engenharia trata de construir coisas**: derivar requisitos a partir de consequências, escolher arquiteturas, implementar e verificar controles, medir confiabilidade e desempenho, ensaiar a recuperação e defender um sistema projetado com evidências. Seu capítulo de pesquisa (42) existe para resolver decisões de projeto, não para publicar.
 - Autoria e responsabilidade editorial: [hiagokinlevi](https://github.com/hiagokinlevi). O texto didático original, de propriedade do mantenedor, é dedicado sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus próprios direitos e não são relicenciadas aqui.
@@ -57,10 +57,14 @@ Toda afirmação factual sobre uma lei, uma norma, um incidente ou um estudo pub
 20. [Infraestrutura crítica e segurança setorial: contexto de engenharia](#ch-20)
 21. [Infraestrutura crítica e segurança setorial: requisitos](#ch-21)
 22. [Infraestrutura crítica e segurança setorial: modelos de sistema e de dados](#ch-22)
+23. [Infraestrutura crítica e segurança setorial: análise de ameaças e de falhas](#ch-23)
+24. [Infraestrutura crítica e segurança setorial: métodos I](#ch-24)
+25. [Ateliê de projeto I](#ch-25)
+26. [Infraestrutura crítica e segurança setorial: alternativas de arquitetura](#ch-26)
 
-Capítulos 23–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-23), até a chegada dos próximos lotes.
+Capítulos 27–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-27), até a chegada dos próximos lotes.
 
-As [resoluções](#worked-results) contêm EX001–EX044. Um [glossário](#glossary) e as [referências](#references) fecham o livro.
+As [resoluções](#worked-results) contêm EX001–EX052. Um [glossário](#glossary) e as [referências](#references) fecham o livro.
 
 
 <a id="ch-01"></a>
@@ -1724,7 +1728,322 @@ Construa o inventário a partir de várias fontes conciliadas, modele o sistema 
 <!-- cyberabc:chapter-navigation:start ch-22 -->
 ### Continue estudando — capítulo 22 de 50
 
-[← Capítulo 21](#ch-21) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 23 (inglês) →](../../en/book/MANUSCRIPT.md#ch-23)
+[← Capítulo 21](#ch-21) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 23 →](#ch-23)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-23"></a>
+
+## Capítulo 23 — Infraestrutura crítica e segurança setorial: análise de ameaças e de falhas
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) fazer a modelagem de ameaças sobre diagramas de fluxo de dados com STRIDE e ATT&CK for ICS; (2) construir árvores de falhas e calcular os conjuntos de corte mínimos e as probabilidades do evento de topo; (3) combinar a análise de falhas e a de ataques — árvores de ataque, bow-ties e cenários orientados por consequências; e (4) declarar as suposições e os limites de cada método. Ele usa os capítulos 7 e 22 e prepara os capítulos 24, 27 e 33.
+
+### 23.1 Modelagem de ameaças
+
+A modelagem de ameaças pergunta, de forma sistemática, o que pode dar errado em cada elemento e em cada fronteira de confiança de um modelo de sistema. O **STRIDE** — falsificação de identidade (spoofing), adulteração (tampering), repúdio, divulgação de informações, negação de serviço, elevação de privilégios — é um mnemônico para categorias de ameaças aplicado a cada fluxo de dados, processo e repositório. O [MITRE ATT&CK for ICS](https://attack.mitre.org/matrices/ics/) cataloga táticas e técnicas de adversários observadas contra sistemas industriais, do acesso inicial ao impacto (por exemplo, manipulação do controle ou perda de visão). Use o STRIDE para gerar ameaças candidatas elemento por elemento e o ATT&CK para conferir o realismo e a completude contra o comportamento observado.
+
+### 23.2 Árvores de falhas
+
+Uma árvore de falhas decompõe um evento de topo indesejado em combinações de eventos básicos usando portas E e OU. Um **conjunto de corte mínimo** é um menor conjunto de eventos básicos cuja ocorrência conjunta causa o evento de topo; a lista dos conjuntos de corte mínimos é a lógica de falha do sistema em sua forma mais simples. Conjuntos de corte de um único evento são pontos únicos de falha. Com probabilidades independentes dos eventos básicos, a probabilidade do evento de topo é calculada exatamente por enumeração para árvores pequenas, ou aproximadamente somando as probabilidades dos conjuntos de corte (a **aproximação de eventos raros**, um limite superior quando as probabilidades são pequenas).
+
+### 23.3 Árvores de ataque e bow-ties
+
+Uma árvore de ataque aplica a mesma estrutura E/OU ao objetivo de um adversário; as folhas são ações do atacante com atributos como custo, habilidade ou detectabilidade, em vez de probabilidades. Atribuir probabilidades a ataques deliberados é questionável — os adversários se adaptam —, então as árvores de ataque costumam ser usadas para encontrar o caminho mais barato ou menos detectável e, depois, para posicionar controles nele. Um **bow-tie** junta as causas (à esquerda), o evento central e as consequências (à direita), mostrando as barreiras preventivas antes do evento e as barreiras mitigadoras depois dele; ele se comunica bem com operadores e gestores.
+
+### 23.4 Combinando falhas e ataques
+
+Os eventos de infraestrutura misturam causas acidentais e deliberadas: um atacante pode esperar por uma tempestade, ou uma falha pode mascarar uma intrusão. Métodos orientados por consequências, como o [CCE do INL](https://inl.gov/national-security/cce/), partem da consequência inaceitável e perguntam quais combinações de falhas e ações de adversários chegam a ela. Uma abordagem prática: construa a árvore de falhas para a consequência; marque quais eventos básicos um adversário poderia causar deliberadamente; recalcule com esses eventos definidos como "ocorridos" para ver o que resta como proteção. O que restar é sua verdadeira defesa contra um adversário capaz.
+
+### 23.5 Exemplo resolvido: perda do abastecimento do hospital (sintético)
+
+Evento de topo: o St Brenna's perde o abastecimento por mais de 4 h num ano. Seguindo o modelo do Capítulo 22: o caminho A (PS4) se perde se a PS4 falhar, ou se o alimentador F2 *e* o gerador da PS4 falharem ambos; o caminho B se perde se o reservatório estiver indisponível, se a PS3 falhar ou se o alimentador F1 falhar; e o evento exige os dois caminhos perdidos *e* o tanque do hospital falhando em cobrir a lacuna (TANK). O Laboratório 9 enumera a árvore com probabilidades anuais sintéticas. Há seis conjuntos de corte mínimos, todos de ordem três ou quatro, porque TANK aparece em todos eles. O maior contribuinte é {G1, PS4, TANK}. A probabilidade exata é de 9,10 × 10⁻⁵ por ano; a aproximação de eventos raros dá 9,36 × 10⁻⁵.
+
+Agora a visão adversarial: se um atacante consegue parar remotamente a PS3 e a PS4 (sem R1), as duas passam a "ocorridas" e o evento de topo se reduz apenas a TANK — probabilidade de 0,03. A autenticação dos comandos remotos faz o sistema passar de um problema de duas de três falhas independentes para um problema de ponto único de falha. Essa comparação é o argumento mais claro a favor de R1 em todo o dossiê.
+
+### 23.6 Atividade prática: Laboratório 9
+
+```python
+# Lab 9 - fault tree: minimal cut sets and top-event probability (synthetic annual probabilities, offline)
+from itertools import product
+P = {"G1": 0.10, "G2": 0.08, "GEN": 0.05, "PS4": 0.02, "PS3": 0.02, "RES": 0.01, "TANK": 0.03}
+# Top: hospital loses supply > 4 h = (feed A lost AND feed B lost)
+# feed A (PS4 direct) lost = PS4 OR (G2 AND GEN);  feed B (reservoir) lost = RES OR PS3 OR G1
+# hospital on-site tank TANK failing (empty/contaminated) is needed too: top = A AND B AND TANK
+def top(s): A = s["PS4"] or (s["G2"] and s["GEN"]); B = s["RES"] or s["PS3"] or s["G1"]; return A and B and s["TANK"]
+names = list(P); exact = 0.0; cuts = []
+for bits in product([0, 1], repeat=len(names)):
+    s = dict(zip(names, bits)); pr = 1.0
+    for n in names: pr *= P[n] if s[n] else 1 - P[n]
+    if top(s):
+        exact += pr
+        on = frozenset(n for n in names if s[n])
+        cuts.append(on)
+mcs = sorted({c for c in cuts if not any(o < c for o in cuts)}, key=lambda c: (len(c), sorted(c)))
+for c in mcs:
+    pr = 1.0
+    for n in c: pr *= P[n]
+    print(sorted(c), f"{pr:.2e}")
+rare = sum(eval("*".join(str(P[n]) for n in c)) for c in mcs)
+print(f"rare-event approx {rare:.3e}  exact {exact:.3e}")
+```
+
+Saída esperada:
+
+```text
+['G1', 'PS4', 'TANK'] 6.00e-05
+['PS3', 'PS4', 'TANK'] 1.20e-05
+['PS4', 'RES', 'TANK'] 6.00e-06
+['G1', 'G2', 'GEN', 'TANK'] 1.20e-05
+['G2', 'GEN', 'PS3', 'TANK'] 2.40e-06
+['G2', 'GEN', 'RES', 'TANK'] 1.20e-06
+rare-event approx 9.360e-05  exact 9.101e-05
+```
+
+Os seis conjuntos de corte contêm TANK, então a reservação própria do hospital aparece em todos os caminhos até o evento de topo. O maior contribuinte isolado combina o alimentador F1, a PS4 e o tanque. Os dois valores de probabilidade diferem ligeiramente porque a aproximação de eventos raros conta duas vezes os conjuntos de corte que se sobrepõem, então dá um pequeno limite superior para o valor exato. A leitura adversarial do exemplo resolvido vem de definir a PS3 e a PS4 como falha certa e executar de novo, o que o EX045 pede que você mesmo faça.
+
+### 23.7 Erros comuns e limites
+
+- Árvores de falhas com eventos básicos dependentes tratados como independentes (energia comum, software comum).
+- Probabilidades de ataques deliberados apresentadas como frequências.
+- Modelos de ameaças sem fronteiras de confiança.
+- Listas STRIDE nunca conferidas contra o comportamento observado de adversários.
+- Tratar a aproximação de eventos raros como exata quando as probabilidades são grandes.
+
+O próprio Laboratório 9 supõe independência, então uma falha de software compartilhada nas RTUs das duas estações tornaria seus números otimistas. Suas probabilidades de falha da PS3 e da PS4 são frequências de falhas aleatórias, então não dizem nada sobre quão provável é que um atacante pare as duas estações, e é por isso que o caso adversarial é tratado por condicionamento, e não pelo acréscimo de uma probabilidade de ataque.
+
+### Exercícios — capítulo 23
+
+**EX045 — Árvore condicionada ao adversário.** *Objetivo:* quantificar o que a autenticação compra. *Entradas:* Laboratório 9. *Passos:* (1) defina a PS3 e a PS4 com probabilidade 1 (o atacante consegue pará-las remotamente) e calcule a probabilidade do evento de topo; (2) em vez disso, defina G1 e G2 como 1 (o atacante consegue cortar os dois alimentadores) e recalcule; (3) interprete ambos. *Evidência esperada:* números e uma interpretação de 150 palavras. *Rubrica:* 3 = números corretos (0,03; e, com G1=G2=1, topo = P(TANK)·P(PS4 ou GEN) — calcule), interpretação ligada aos controles (R1; independência do gerador e o tanque); 2 = um número errado; 1 = não executado; 0 = nada.
+
+**EX046 — STRIDE num fluxo.** *Objetivo:* modelar as ameaças de um fluxo de dados. *Entradas:* o fluxo gateway–SCADA (quadros do Laboratório 8 sobre o conduto LTE). *Passos:* aplique cada categoria do STRIDE, nomeie uma técnica do ATT&CK for ICS onde couber e declare o controle existente ou proposto. *Evidência esperada:* tabela de seis linhas. *Rubrica:* 3 = as seis categorias significativas e controles correspondentes (por exemplo, falsificação de identidade → MAC; negação de serviço → retorno ao automático local); 2 = uma categoria vazia; 1 = apenas a lista; 0 = nada.
+
+### Síntese do capítulo
+
+Os modelos de ameaças geram o que poderia dar errado em cada fronteira de confiança; o ATT&CK os mantém realistas. As árvores de falhas e os conjuntos de corte mínimos mostram a lógica de falha e os pontos únicos de falha; as árvores de ataque e os bow-ties mostram os caminhos dos adversários e as barreiras. Combine-os condicionando ao que um adversário consegue causar: o que restar é a defesa que realmente importa.
+
+<!-- cyberabc:chapter-navigation:start ch-23 -->
+### Continue estudando — capítulo 23 de 50
+
+[← Capítulo 22](#ch-22) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 24 →](#ch-24)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-24"></a>
+
+## Capítulo 24 — Infraestrutura crítica e segurança setorial: métodos I
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) selecionar métodos de análise adequados a uma questão de projeto — avaliação de riscos, STPA, simulação, experimento em bancada de testes, exercício de mesa; (2) conduzir uma avaliação de riscos estruturada e documentá-la de forma reprodutível; (3) planejar um estudo de simulação com verificação e validação explícitas; e (4) escolher evidências proporcionais à decisão. Ele se apoia nos capítulos 15, 21 e 23 e prepara o ateliê de projeto (Capítulo 25).
+
+### 24.1 Associar o método à questão
+
+| Questão | Método | Evidência típica |
+|---|---|---|
+| Quais cenários importam mais? | Avaliação de riscos (SP 800-30, IEC 62443-3-2) | Tabela de cenários, justificativa |
+| Quais ações de controle são inseguras? | STPA ([Leveson, 2004](https://doi.org/10.1016/S0925-7535(03)00047-X)) | Ações de controle inseguras, cenários de perda |
+| Como o processo responde? | Simulação (laboratórios 1 e 7) | Modelo, registro de V&V, execuções |
+| O controle funciona na prática? | Experimento em bancada de testes | Plano de teste, resultados, logs |
+| As pessoas conseguem executar o plano? | Exercício de mesa ou funcional | Relatório pós-ação |
+| O projeto é sólido? | Revisão independente (Capítulo 45) | Constatações da revisão e respostas |
+
+Os projetos de engenharia usam vários; um erro comum é usar um método para responder à questão de outro — por exemplo, um exercício de mesa "mostrando" que um tempo de restauração é alcançável.
+
+### 24.2 Avaliação de riscos estruturada
+
+Uma avaliação reprodutível documenta: escopo e suposições; versão do modelo de sistema; fontes de ameaça e suas capacidades supostas; cenários (evento de ameaça → vulnerabilidade → consequência); controles existentes; escalas de probabilidade e de consequência com definições; classificações com justificativa; e controles recomendados. As escalas precisam ser definidas nos termos da organização (pessoas-hora sem água, não "alto"). Classificações sem justificativa são opiniões; com justificativa, podem ser contestadas e melhoradas. As escalas do TMRP usam pessoas-hora sem água no hospital e nos demais clientes, então as classificações significam a mesma coisa para operadores e gestores.
+
+### 24.3 Simulação com verificação e validação
+
+A **verificação** pergunta se o modelo está implementado corretamente (o código faz o que o modelo diz?); a **validação** pergunta se o modelo representa a realidade bem o bastante para seu propósito. [Sargent (2013)](https://doi.org/10.1057/jos.2012.20) descreve técnicas: comparação com resultados analíticos (o Euler do Laboratório 1 versus a solução exata), testes em condições extremas, comparação com dados históricos, validade aparente junto aos operadores e análise de sensibilidade. Declare o uso pretendido do modelo; um modelo válido para estimar a autonomia pode ser inválido para a análise de transientes de pressão. No TMRP, o modelo de autonomia é validado contra uma interrupção planejada histórica antes de ser usado no cenário combinado de falta de energia da rede e perda de telemetria.
+
+### 24.4 Exercícios com pessoas
+
+Os exercícios de mesa conduzem uma equipe por um cenário para testar planos, papéis e decisões; os exercícios funcionais executam algumas ações de verdade. Projete-os com objetivos, injeções, observadores e um relatório pós-ação que registre as lacunas sem atribuir culpa. Eles mostram se as pessoas sabem o que fazer e onde os planos são ambíguos; não medem o desempenho dos equipamentos. O exercício funcional noturno do TMRP, do modo manual local na PS3 e na PS4, é o exemplo: ele usa a equipe noturna real, registra o tempo gasto para estabelecer a operação manual e relata as lacunas que encontra, mas não consegue mostrar se as bombas ou os gateways atendem aos seus próprios requisitos.
+
+### 24.5 Exemplo resolvido: escolhendo os métodos para o TMRP (sintético)
+
+O TMRP tem quatro questões em aberto: (1) quais cenários merecem financiamento — avaliação de riscos com escalas de consequência em pessoas-hora; (2) se os operadores conseguem passar a PS3/PS4 para manual local em até 1 h — um exercício funcional à noite, com a equipe real; (3) se o gateway rejeita quadros forjados e repetidos — testes T1–T2 em bancada; (4) se o reservatório dura o suficiente durante uma falta combinada de energia da rede e de telemetria — uma simulação no estilo do Laboratório 1, validada contra uma interrupção planejada histórica. O plano nomeia a evidência de cada método e seu limite, para que ninguém cite depois o exercício de mesa como prova de R6.
+
+### 24.6 Atividade prática
+
+Conduza com dois colegas um exercício de mesa de 45 minutos sobre o cenário "servidores SCADA cifrados às 02:00", usando o conjunto de requisitos do TMRP. Registre decisões, horários e lacunas num relatório pós-ação. Atribua os papéis antes de começar: o operador noturno, o gerente de plantão e um facilitador que faz as injeções. Use os requisitos do TMRP como régua, especialmente a operação manual local em até uma hora e a restauração da operação remota em até oito. Registre cada decisão com seu horário e quem a tomou. O relatório pós-ação deve listar o que o plano não cobriu, sem apontar ninguém como causa, e deve declarar que um exercício de mesa não consegue mostrar se a restauração em oito horas é alcançável.
+
+### 24.7 Erros comuns e limites
+
+- Um método esticado para responder a todas as questões.
+- Escalas de probabilidade e de consequência não definidas.
+- Simulação apresentada sem V&V ou sem uso pretendido.
+- Relatórios de exercícios que culpam indivíduos ou registram apenas os sucessos.
+- Evidência desproporcional à decisão (pouca demais para o que é crítico para a segurança, demais para o trivial).
+
+O plano de métodos do TMRP se protege contra o primeiro erro ao nomear o limite de cada método, de modo que um exercício de mesa nunca seja citado como prova de que R6 foi atendido. Suas escalas de probabilidade e de consequência são definidas em pessoas-hora, e a simulação de autonomia declara seu uso pretendido.
+
+### Exercícios — capítulo 24
+
+**EX047 — Associação de métodos.** *Objetivo:* selecionar métodos. *Entradas:* quatro questões: (a) setpoints forjados na PS4 causariam sobrepressão? (b) o detector de anomalias do fornecedor encontra inundações de escritas Modbus? (c) o gerente de plantão consegue autorizar o modo manual local à noite? (d) qual é a classificação anual de risco de oito cenários? *Passos:* escolha um método para cada uma, sua evidência e seu principal limite. *Evidência esperada:* tabela. *Rubrica:* 3 = (a) simulação/análise hidráulica mais STPA, (b) experimento em bancada, (c) exercício, (d) avaliação de riscos, com limites honestos; 2 = uma associação errada; 1 = um método para todas; 0 = nada.
+
+**EX048 — Valide um modelo.** *Objetivo:* planejar a V&V. *Entradas:* o modelo do Laboratório 1. *Passos:* proponha três verificações e três validações, incluindo uma com dados históricos, e declare o uso pretendido do modelo e um uso para o qual ele é inválido. *Evidência esperada:* lista. *Rubrica:* 3 = verificação e validação distintas, comparação histórica especificada, uso inválido identificado (por exemplo, transientes de pressão, qualidade da água); 2 = V e V misturadas; 1 = vago; 0 = nada.
+
+### Síntese do capítulo
+
+Associe cada questão a um método capaz de respondê-la e conheça o limite de cada método. Torne as avaliações de riscos reprodutíveis, com escalas definidas e justificativas; verifique e valide as simulações para um propósito declarado; use os exercícios para testar pessoas e planos, não equipamentos; e dimensione a evidência de acordo com a decisão que ela sustenta.
+
+<!-- cyberabc:chapter-navigation:start ch-24 -->
+### Continue estudando — capítulo 24 de 50
+
+[← Capítulo 23](#ch-23) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 25 →](#ch-25)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-25"></a>
+
+## Capítulo 25 — Ateliê de projeto I
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) conduzir um ateliê de projeto estruturado, do briefing ao conceito revisado; (2) gerar e comparar alternativas de conceito contra critérios ponderados; (3) apresentar um conceito, com suas suposições, riscos e plano de verificação, a uma banca de revisão crítica; e (4) responder de forma construtiva às constatações da revisão. Ele integra os capítulos 16–24 no primeiro artefato de projeto completo e prepara o Capítulo 26.
+
+### 25.1 O que é um ateliê
+
+Um ateliê de projeto é um exercício de projeto iterativo e criticado. As equipes recebem um briefing, produzem conceitos, apresentam-nos a revisores que contestam as suposições e revisam. Seu valor está na crítica: os projetos melhoram mais depressa quando alguém competente tenta quebrá-los cedo. Neste curso, cada ateliê produz um **dossiê de conceito**: enunciado do problema, trecho dos requisitos, alternativas, avaliação, conceito selecionado, registro de riscos, plano de verificação e questões em aberto. No TMRP, o dossiê do Ateliê I cobre a operação remota das seis estações de bombeamento e da estação de Fenwick.
+
+### 25.2 O briefing
+
+**Briefing do Ateliê I (sintético):** a LRWA precisa proteger a operação remota da PS1–PS6 e da estação de Fenwick. Restrições: orçamento de 250 mil (Laboratório 16); a PS1 e a PS2 têm unidades RTU-A legadas que não podem ser substituídas por três anos; a LTE privada é o único enlace econômico; uma sala de controle, com equipe 24/7 e um único operador à noite; o hospital precisa de interrupção ≤ 4 h. Entregar: de dois a quatro conceitos, avaliação, seleção e plano de verificação.
+
+A restrição da equipe noturna é a que mais molda os conceitos, porque qualquer projeto que exija que alguém dirija até uma estação para cada mudança deixa um único operador incapaz de dar conta de seis instalações.
+
+### 25.3 Gerando alternativas
+
+Gere conceitos que difiram em princípio, não em detalhe: (A) LTE cifrada pela operadora, apenas com firewall central; (B) túneis IPsec a partir das RTUs novas, gateways para as legadas; (C) autenticação na camada de aplicação com gateways e forte autonomia local; (D) nenhum controle remoto — apenas monitoramento, com operadores despachados para cada mudança. Incluir um extremo (D) esclarece quanto vale o controle remoto. Os quatro conceitos diferem quanto a onde a autenticação acontece e se o controle remoto existe. A nota muito baixa do conceito D em operabilidade, na avaliação, mostra por que vale a pena incluir um extremo.
+
+### 25.4 Avaliação ponderada
+
+Defina os critérios a partir dos requisitos e das restrições, atribua os pesos antes de pontuar, pontue cada conceito com evidências e teste se a classificação sobrevive a mudanças plausíveis dos pesos (sensibilidade). Uma soma ponderada é uma conversa estruturada, não um oráculo.
+
+| Critério (peso) | A | B | C | D |
+|---|---:|---:|---:|---:|
+| Impede comandos forjados, R1 (0,30) | 1 | 4 | 4 | 5 |
+| Serviço durante a perda da rede, R4 (0,20) | 2 | 3 | 5 | 5 |
+| Operabilidade com um operador noturno (0,20) | 5 | 4 | 4 | 1 |
+| Custo dentro de 250 mil (0,15) | 5 | 2 | 4 | 4 |
+| Compatibilidade com o legado (0,15) | 5 | 3 | 4 | 5 |
+| **Nota ponderada** | **3,20** | **3,35** | **4,20** | **4,05** |
+
+D fica perto de C porque é muito seguro, mas sua nota de operabilidade reflete que um operador noturno não consegue dirigir até seis instalações; na prática, ele não atende à necessidade do hospital. O desafio da banca à equipe é mostrar que a liderança de C sobrevive se a operabilidade tiver peso 0,10 e R1, peso 0,40 (EX049).
+
+### 25.5 Apresentar e responder à revisão
+
+Apresente: o problema em uma frase, as restrições, as alternativas, a avaliação, a seleção, os riscos e o que você não verificou. Os revisores vão atacar as suposições; registre cada constatação, responda (aceitar, rejeitar com motivo, adiar com dono) e revise. Uma equipe defensiva não aprende nada; uma equipe que aceita todo comentário não tem projeto. As constatações da banca no EX050 são típicas do TMRP: o gateway como ponto único de falha, o modo manual local contornando a autenticação e a falta dos custos de pessoal da gestão de chaves. Cada uma precisa de uma resposta registrada, com dono. A segunda pode ser respondida com evidências que já existem, porque a chave seletora, o alarme e o log local foram registrados quando o conflito entre R4 e R1 foi resolvido.
+
+### 25.6 Atividade prática
+
+Produza o dossiê de conceito para o briefing do Ateliê I em no máximo oito páginas e faça uma revisão de 20 minutos com dois colegas atuando como banca. Limite-se a oito páginas para que a banca consiga lê-lo antes da revisão. Apresente os quatro conceitos na tabela ponderada, mostre a verificação de sensibilidade e declare o que não foi verificado. Peça a cada colega que ataque uma suposição, como a estimativa de custo ou a nota de operabilidade noturna. Registre as constatações num registro de respostas com aceitar, rejeitar ou adiar e um dono, como pede o EX050, e revise o conceito antes de entregar o dossiê.
+
+### 25.7 Erros comuns e limites
+
+- Alternativas que são variações de uma única ideia.
+- Pesos escolhidos depois da pontuação.
+- Notas sem evidências.
+- Nenhuma verificação de sensibilidade.
+- Tratar a revisão como uma prova a ser superada, e não como informação.
+
+O Ateliê I se protege contra esses erros: seus quatro conceitos diferem em princípio, seus pesos foram fixados antes da pontuação, e o EX049 testa se a liderança do conceito C sobrevive a outros pesos. O desafio da banca ao conceito D, que pontua bem em segurança mas falha na operabilidade noturna, é o tipo de constatação que uma revisão deve produzir. Toda nota cita evidências.
+
+### Exercícios — capítulo 25
+
+**EX049 — Sensibilidade aos pesos.** *Objetivo:* testar a robustez de uma seleção. *Entradas:* a tabela da §25.4. *Passos:* recalcule com os pesos (R1 0,40, perda da rede 0,20, operabilidade 0,10, custo 0,15, legado 0,15) e com (R1 0,20, perda da rede 0,20, operabilidade 0,30, custo 0,15, legado 0,15). *Evidência esperada:* notas e conclusão. *Rubrica:* 3 = aritmética correta e uma conclusão honesta sobre quando D ultrapassa C e o que isso implica; 2 = um erro aritmético; 1 = um cenário; 0 = nada.
+
+**EX050 — Registro de respostas à revisão.** *Objetivo:* responder à crítica. *Entradas:* três constatações da banca: "o gateway é um ponto único de falha"; "o modo manual local contorna a autenticação"; "a estimativa de custo ignora o pessoal da gestão de chaves". *Passos:* escreva uma entrada no registro de respostas para cada uma (aceitar/rejeitar/adiar, motivo, mudança, dono). *Evidência esperada:* registro. *Rubrica:* 3 = respostas substantivas, com mudanças de projeto onde forem justificadas (por exemplo, gateways duplos ou falha para o automático local; chave seletora e alarme; acrescentar uma linha de custo operacional); 2 = uma resposta desdenhosa; 1 = aceita tudo sem mudanças; 0 = nada.
+
+### Síntese do capítulo
+
+Um ateliê transforma conhecimento num projeto sob crítica. Gere alternativas genuinamente diferentes, incluindo extremos; pondere os critérios antes de pontuar e teste a sensibilidade; apresente abertamente as suposições e as afirmações não verificadas; e trate as constatações da revisão como informação de projeto, com respostas registradas.
+
+<!-- cyberabc:chapter-navigation:start ch-25 -->
+### Continue estudando — capítulo 25 de 50
+
+[← Capítulo 24](#ch-24) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 26 →](#ch-26)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-26"></a>
+
+## Capítulo 26 — Infraestrutura crítica e segurança setorial: alternativas de arquitetura
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) comparar padrões de arquitetura para sistemas críticos — controle centralizado versus distribuído, esquemas de redundância, diversidade, fluxos unidirecionais, autonomia local; (2) analisar o comportamento de cada padrão diante de falhas e ataques; (3) quantificar os compromissos usando os modelos de disponibilidade, latência e custo dos capítulos anteriores; e (4) documentar as decisões de arquitetura com suas consequências. Ele desenvolve o conceito selecionado no Ateliê I e prepara o Capítulo 27.
+
+### 26.1 Controle centralizado e distribuído
+
+O controle centralizado (um SCADA dirigindo dispositivos de campo simples) dá aos operadores uma visão única e facilita a coordenação, mas concentra tanto as falhas quanto os ataques. O controle distribuído (controladores de campo capazes, que funcionam localmente e aceitam alvos de supervisão) degrada com elegância quando o centro ou a rede se perdem, ao custo de mais dispositivos para proteger e configurar. A maioria dos projetos resilientes é hierárquica: o controle local mantém a operação segura de forma autônoma; o centro otimiza e coordena. A escolha do TMRP, a hierárquica C2, mantém o controle automático local em todas as estações.
+
+### 26.2 Padrões de redundância
+
+- **Reserva quente (hot standby):** uma segunda unidade funcionando e pronta para assumir automaticamente (pares de servidores SCADA).
+- **Reserva fria (cold standby):** uma reserva que precisa ser ligada ou instalada (RTUs reservas na prateleira).
+- **N+1:** uma unidade a mais do que o necessário (três bombas onde duas atendem à demanda).
+- **Votação k-de-n:** usada em sistemas de segurança operacional (sensores 2-de-3) para tolerar uma entrada defeituosa ou falsificada.
+
+Cada padrão precisa ser julgado diante das causas comuns (Capítulo 7): dois servidores idênticos com software idêntico são redundantes contra falhas de hardware, não contra malware.
+
+### 26.3 Diversidade
+
+A diversidade — tecnologias, fornecedores, caminhos ou equipes diferentes — reduz as causas comuns. Ela custa mais, aumenta as habilidades necessárias e pode acrescentar superfície de ataque. Use-a onde uma causa comum seria inaceitável: um segundo caminho de comunicação por outra operadora e com outra energia; um desarme de segurança por fiação dedicada, independente do software; uma régua manual que um operador consiga ler quando toda a eletrônica está sob suspeita. Na LRWA, o argumento a favor da diversidade é mais claro no caminho da telemetria, onde uma segunda operadora com energia separada eliminaria a dependência compartilhada do alimentador F1, e em Hollin Hill, onde uma régua de nível manual dá aos operadores uma leitura em que podem confiar quando toda a eletrônica está sob suspeita.
+
+### 26.4 Fluxos unidirecionais e autonomia local
+
+Os gateways unidirecionais impõem fisicamente o fluxo de dados apenas para fora; eles eliminam toda uma classe de ataques de entrada no lado protegido, mas também eliminam o controle remoto por esse caminho. A autonomia local — a capacidade de uma instalação de funcionar com segurança sem o centro — é um padrão de resiliência que também limita a consequência dos ataques: um centro comprometido pode atrapalhar a otimização, mas não deve conseguir levar uma instalação para fora dos limites seguros se esses limites forem impostos localmente (R3). A opção C3 do TMRP leva isso ao limite para o monitoramento.
+
+### 26.5 Exemplo resolvido: três arquiteturas do TMRP comparadas (sintético)
+
+| Propriedade | C1: central + IPsec | C2: hierárquica + autenticação na camada de aplicação (escolha do Ateliê I) | C3: hierárquica + diodo para o monitoramento, controle apenas local |
+|---|---|---|---|
+| Comando remoto forjado | Exige a chave do túnel ou o comprometimento do SCADA | Exige a chave da estação ou o comprometimento do SCADA | Impossível remotamente |
+| Centro comprometido | Pode comandar qualquer instalação dentro dos limites da RTU | Pode comandar qualquer instalação dentro dos limites impostos localmente | Não consegue comandar |
+| Perda da rede | As instalações mantêm o último estado | As instalações funcionam em automático local por 72 h | As instalações funcionam em automático local |
+| Operabilidade | Alta | Alta | Baixa à noite (despacho necessário) |
+| Indisponibilidade das comunicações, duas operadoras, β = 0,05 | 0,00136 | 0,00136 | n/a para o controle |
+| Custo | Médio | Médio | Capital baixo, pessoal alto |
+
+A tabela torna explícito o risco residual de C2: um centro SCADA comprometido ainda consegue emitir comandos autenticados dentro dos limites locais. Esse risco residual é aceito com base no monitoramento, na aprovação por duas pessoas para mudanças de setpoint em lote e em limites locais que mantêm o processo seguro.
+
+### 26.6 Atividade prática
+
+Escreva um ADR escolhendo entre C2 e C3 especificamente para a PS4 (a alimentação do hospital), considerando que os setpoints da PS4 mudam raramente. Parta da tabela de comparação e do que torna a PS4 especial: ela alimenta diretamente o St Brenna's e seus setpoints mudam raramente. Pese a segurança de eliminar as escritas remotas de setpoint contra o custo de enviar um técnico para cada mudança, especialmente à noite, com um único operador de plantão. Diga o que o faria rever a decisão, como mudanças de setpoint mais frequentes. A defesa do Capítulo 50 mais tarde se refere a um ADR com exatamente essa opção de controle apenas local para a PS4.
+
+### 26.7 Erros comuns e limites
+
+- Redundância sem diversidade, alegada como resiliência contra ataques.
+- Diversidade em toda parte, sobrecarregando a capacidade de manutenção.
+- Centralização por conveniência sem limites seguros locais.
+- Ignorar o custo operacional de arquiteturas que eliminam o controle remoto.
+- Comparações de arquitetura sem números onde há números disponíveis.
+
+A tabela do TMRP evita o último erro ao colocar números onde eles existem, como a indisponibilidade das comunicações com um fator de causa comum, e ao declarar com clareza o custo de pessoal de C3. Ela também aceita abertamente o risco residual de C2, em vez de alegar que sua redundância protege contra ataques.
+
+### Exercícios — capítulo 26
+
+**EX051 — Votação contra falsificação.** *Objetivo:* analisar a votação 2-de-3. *Entradas:* três transmissores de nível em Hollin Hill; seleção pela mediana. *Passos:* explique o que um transmissor falsificado consegue e não consegue fazer; o que um atacante que controle a RTU comum que lê os três consegue fazer; e como restabelecer a independência. *Evidência esperada:* meia página. *Rubrica:* 3 = a mediana tolera uma entrada falsificada, a RTU comum derrota a votação, independência por E/S ou controlador separados; 2 = ponto da RTU comum não percebido; 1 = genérico; 0 = nada.
+
+**EX052 — Decisão de arquitetura da PS4.** *Objetivo:* escrever um registro de decisão. *Entradas:* §26.6. *Passos:* escreva o ADR com contexto, opções, decisão, consequências e condições de revisão. *Evidência esperada:* ADR. *Rubrica:* 3 = decisão justificada pela criticidade da PS4 e pelas mudanças raras de setpoint (C3 ou C2 com escritas de setpoint apenas locais, defendida), consequências incluindo o custo operacional, gatilhos de revisão; 2 = consequências fracas; 1 = sem opções; 0 = nada.
+
+### Síntese do capítulo
+
+Escolha a arquitetura pelo modo como ela falha e pelo modo como pode ser atacada. O controle hierárquico com limites seguros locais combina operabilidade com degradação elegante. A redundância protege contra falhas independentes, a diversidade contra causas comuns; os fluxos unidirecionais eliminam os caminhos de ataque de entrada junto com o controle remoto. Quantifique onde puder e documente o risco residual que você aceita.
+
+<!-- cyberabc:chapter-navigation:start ch-26 -->
+### Continue estudando — capítulo 26 de 50
+
+[← Capítulo 25](#ch-25) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 27 (inglês) →](../../en/book/MANUSCRIPT.md#ch-27)
 
 Os próximos capítulos ainda estão apenas na edição em inglês.
 <!-- cyberabc:chapter-navigation:end -->
@@ -1733,7 +2052,7 @@ Os próximos capítulos ainda estão apenas na edição em inglês.
 
 ## Resoluções e notas de avaliação
 
-Cada resolução mostra uma resposta defensável. Os resultados numéricos foram produzidos executando os laboratórios e os scripts curtos descritos, com Python 3 e as sementes indicadas; seus últimos dígitos podem diferir se você mudar a ordem dos sorteios aleatórios. Nos exercícios de projeto, a rubrica do capítulo importa mais do que coincidir com a redação abaixo. Lowmarsh Regional Water Authority, St Brenna's Hospital, o TMRP e todos os números são sintéticos. Esta edição parcial traz as resoluções de EX001–EX044; as de EX045–EX100 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
+Cada resolução mostra uma resposta defensável. Os resultados numéricos foram produzidos executando os laboratórios e os scripts curtos descritos, com Python 3 e as sementes indicadas; seus últimos dígitos podem diferir se você mudar a ordem dos sorteios aleatórios. Nos exercícios de projeto, a rubrica do capítulo importa mais do que coincidir com a redação abaixo. Lowmarsh Regional Water Authority, St Brenna's Hospital, o TMRP e todos os números são sintéticos. Esta edição parcial traz as resoluções de EX001–EX052; as de EX053–EX100 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
 
 ### Capítulo 1
 
@@ -1866,6 +2185,30 @@ Cada resolução mostra uma resposta defensável. Os resultados numéricos foram
 **EX043.** Com a PS4 precisando apenas de `grid_f2` em modo automático local (sem LTE para o abastecimento) e o abastecimento como OU: `{grid_f1}` → o abastecimento funciona (via PS4); `{ps4}` → funciona (via reservatório); `{ps4, grid_f1}` → falha. Um modelo que faça o abastecimento depender da telemetria falha indevidamente no primeiro caso.
 
 **EX044.** Estados: automático remoto, automático local, manual local, degradado (uma bomba), desarmado, fora de serviço. Caminho de ataque: comandos de parada forjados e partidas/paradas repetidas (automático remoto → desarmado pela proteção do motor de partida) → se o reset do desarme for remoto, o atacante mantém a estação desarmada → fora de serviço. Controle: o reset do desarme exige ação local; comandos autenticados; limite de taxa para os comandos de partida.
+
+### Capítulo 23
+
+**EX045.** PS3 = PS4 = 1: topo = P(TANK) = 0,03. G1 = G2 = 1: caminho B perdido; caminho A perdido se a PS4 ou o GEN falhar: 1 − 0,98 × 0,95 = 0,069; topo = 0,03 × 0,069 = 0,00207. Interpretação: a autenticação dos comandos remotos remove o caminho mais barato do adversário (o topo cai de 0,03 para 9,1 × 10⁻⁵); se um adversário consegue cortar os dois alimentadores, o gerador e o tanque do hospital se tornam as barreiras decisivas — mantenha-os e teste-os.
+
+**EX046.** Falsificação de identidade — quadros forjados (ATT&CK for ICS: Spoof Reporting Message) → MAC por estação. Adulteração — valores modificados em trânsito → MAC. Repúdio — disputas sobre comandos → logs assinados ou com MAC, com âncoras. Divulgação de informações — telemetria lida na rede da operadora → cifração da operadora mais cifração opcional da carga útil. Negação de serviço — interferência ou inundação (Denial of Service; Block Reporting Message) → retorno ao automático local, alarme de estação inativa, limites de taxa. Elevação de privilégios — comprometimento do gateway para emitir comandos → endurecimento do gateway, filtragem de códigos de função, limites locais.
+
+### Capítulo 24
+
+**EX047.** (a) Simulação hidráulica mais STPA do caminho do setpoint — limite: fidelidade do modelo para transientes. (b) Experimento em bancada com inundações rotuladas — limite: o tráfego de laboratório difere do da instalação. (c) Exercício funcional noturno — limite: uma única ocasião, efeito do observador. (d) Avaliação de riscos estruturada com escalas definidas — limite: estimativas, não medições.
+
+**EX048.** Verificação: comparar o Euler com a integral exata (Laboratório 1); testes unitários de `demand` e `drawn`; casos extremos (demanda zero → autonomia infinita; demanda constante → V/q). Validação: comparar a queda de nível prevista com dados do historiador de uma parada planejada das bombas; validade aparente da curva de demanda junto aos operadores; sensibilidade à amplitude da demanda. Uso pretendido: estimativa de autonomia para planejamento. Inválido para transientes de pressão, qualidade da água e hidráulica da rede.
+
+### Capítulo 25
+
+**EX049.** Pesos (0,40, 0,20, 0,10, 0,15, 0,15): A 2,80, B 3,35, C 4,20, D 4,45 — D ultrapassa C. Pesos (0,20, 0,20, 0,30, 0,15, 0,15): A 3,60, B 3,35, C 4,20, D 3,65. A liderança de C depende de a operabilidade ter peso real; se os decisores valorizarem a prevenção de comandos forjados muito acima da operabilidade, D vence no papel — mas D não atende à necessidade do hospital, na prática, à noite, o que sugere que a operabilidade é mais bem expressa como uma restrição do que como um peso.
+
+**EX050.** Ponto único de falha no gateway: aceitar — a falha do gateway precisa levar ao automático local, com alarme; acrescentar um gateway reserva frio por região. Contorno pelo modo manual: aceitar — chave seletora no painel, alarme no SCADA na mudança de modo, log local. Pessoal da gestão de chaves: aceitar — acrescentar 0,2 ETI de custo operacional e a manutenção do HSM ao caso de negócio; dono: gerente do TMRP.
+
+### Capítulo 26
+
+**EX051.** A mediana de três tolera um transmissor falsificado ou com defeito. Um atacante que controle a RTU que lê os três consegue falsificar os três de forma coerente, derrotando a votação. Restabeleça a independência ligando os transmissores a módulos de E/S ou controladores separados, com comunicações separadas, de modo que nenhum comprometimento isolado controle duas das três entradas.
+
+**EX052.** ADR-modelo: contexto — a PS4 é a alimentação direta do hospital, os setpoints mudam cerca de uma vez por mês; opções — C2 (remoto dentro dos limites) ou C3/variante de C2 (escritas de setpoint apenas locais, monitoramento remoto); decisão — escritas de setpoint apenas locais na PS4, partida/parada remota mantida com autenticação; consequências — visita mensal à instalação para mudanças de setpoint, procedimentos de resposta local mais rápidos, risco residual D1 na PS4 reduzido a partida/parada; rever se a frequência de mudanças de setpoint aumentar ou se o quadro de pessoal mudar.
 
 <a id="glossary"></a>
 
