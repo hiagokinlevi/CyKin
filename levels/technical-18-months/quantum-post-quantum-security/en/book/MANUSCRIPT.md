@@ -231,7 +231,7 @@ You will (1) read and write JSON and CSV in Python; (2) summarise inventory expo
 
 Inventories arrive as JSON from APIs and CSV from spreadsheets and scanners. Python's `json` and `csv` modules read both. Always check the fields you need are present and have expected types.
 
-At HHG, scanner exports come as CSV and the endpoint inventory as JSON. Check the record count and field names before trusting any summary. If a field is missing or has the wrong type, stop and report it rather than guessing.
+At HHG, scanner exports come as CSV and the endpoint inventory as JSON. Check the record count and field names before trusting any summary. If a field is missing or has the wrong type, stop and report it rather than guessing. A scanner CSV with fewer rows than the endpoint JSON lists hosts usually means a site was missed, not that hosts vanished.
 
 ### 4.2 Practical activity — Lab J
 
@@ -680,7 +680,7 @@ Without the lab test, the scanner would have produced a false report that the wh
 
 Validate one TLS client tool against three lab server settings and record the results.
 
-Set up three lab servers or three configurations on one server: hybrid preferred, hybrid offered but not preferred, and classical only. Run the tool against each, record its version and output, and say whether it correctly told the three apart. If it did not, note what it reported and whether a newer version fixes it. File these results in the tool's validation record described in 9.3.
+Set up three lab servers or three configurations on one server: hybrid preferred, hybrid offered but not preferred, and classical only. Run the tool against each, record its version and output, and say whether it correctly told the three apart. If it did not, note what it reported and whether a newer version fixes it. File these results in the tool's validation record, described earlier in this chapter, and note the date of the run.
 
 ### 9.7 Reading sizes
 
