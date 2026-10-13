@@ -33,6 +33,37 @@
   +------------------------------------------------------------------+
 ~~~
 
+<!-- cykin:onboarding:start -->
+
+<a id="comece-por-aqui"></a>
+
+## Start here
+
+**Choose your language, then one of the two routes below.** [Open the CyKin study site](https://cykin.org/) to browse [by level](https://cykin.org/levels/) or [by subject](https://cykin.org/subjects/), or use the direct GitHub indexes. Public reading requires no account. The bookshelf above measures legacy English draft-chapter coverage, not completed courses, daily lessons or translations; [read its method](WRITING_PROGRESS.md).
+
+**Route 1 — one course:** language → academic area → formation level → that edition's course guide, principal book, weekly chapters and daily lessons.
+
+**Route 2 — one level:** language → formation level → all 23 area courses at that level → each course's own book and lesson guide. This is a collection of separate courses, not one combined book or a requirement to study 23 lessons per day. Durations below apply to each course; they do not promise that all 23 courses fit into that same duration.
+
+The site reads book text from this repository's `main` branch; the links below provide a GitHub-only route through the same curriculum.
+
+| Language | Route 1: choose an area | Route 2: choose a level |
+|---|---|---|
+| English | [Area → level](onboarding/en/themes.md) | [Level → all areas](onboarding/en/levels.md) |
+| Português | [Area → level](onboarding/pt/themes.md) | [Level → all areas](onboarding/pt/levels.md) |
+| Español | [Area → level](onboarding/es/themes.md) | [Level → all areas](onboarding/es/levels.md) |
+| עברית | [Area → level](onboarding/he/themes.md) | [Level → all areas](onboarding/he/levels.md) |
+| Français | [Area → level](onboarding/fr/themes.md) | [Level → all areas](onboarding/fr/levels.md) |
+| Русский | [Area → level](onboarding/ru/themes.md) | [Level → all areas](onboarding/ru/levels.md) |
+| Deutsch | [Area → level](onboarding/de/themes.md) | [Level → all areas](onboarding/de/levels.md) |
+| 中文 | [Area → level](onboarding/zh/themes.md) | [Level → all areas](onboarding/zh/levels.md) |
+| 日本語 | [Area → level](onboarding/ja/themes.md) | [Level → all areas](onboarding/ja/levels.md) |
+
+**Your daily study loop:** open the selected edition's `SUBJECTS.md` → read the linked lesson in `MANUSCRIPT.md` → work through its example → attempt its assigned exercise → compare the explained answer in the same book → follow **previous / index / next**. Keep the course, language and lesson number in your checkpoint. A `PLAN.md` entry is an outline, not a lesson; do not silently substitute English for missing translated teaching. [Check actual availability](#publication-and-translation-snapshot) before starting.
+
+**Start with an existing daily sequence:** [Incident Response / Rapid / English — 20-lesson guide](levels/rapid-1-month/incident-response-resilience/en/SUBJECTS.md) · [Lesson 01](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md#lesson-01) · [Worked answers](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md#answers) · [One course skill](levels/rapid-1-month/incident-response-resilience/skill/SKILL.md). The guide reports four weekly chapters; this does not certify the whole volume or its other language editions.
+<!-- cykin:onboarding:end -->
+
 <!-- cykin:course-structure:start -->
 ## Courses, weekly chapters and daily lessons
 
@@ -75,34 +106,42 @@ There is no maximum chapter, lesson, word or page size. Add a lesson when the id
 The shelf percentage moves when the catalog build recounts the manuscripts. A lesson added after that build can be readable in `SUBJECTS.md` while the drawing still shows the previous percentage. Page count is measured separately and is not one of these meters. [STUDY_CALENDAR.md](STUDY_CALENDAR.md) answers a fourth question: how many Monday–Friday dates fall inside a civil duration. Four instructional weeks are 20 study days. A civil month can contain a different number of weekdays. An empty date is not a lesson.
 
 English teaching is authored and reviewed first. Each later language needs its own complete teaching and review. The [book standard](BOOK_STANDARD.md) states the writing rule. Zero of the 1,863 editions have passed the complete-book gate.
+### One book, not one book per week
+
+~~~text
+Area -> level-specific course -> selected language edition
+  -> ONE principal MANUSCRIPT.md
+       -> weekly chapters organized by curricular modules
+            -> daily lessons: teaching + worked example + exercise
+       -> final appendix: explained answers for those exercises
+  -> ONE course skill shared by the language editions
+~~~
+
+The arrows mean organization and containment, not separate files or proof of publication. For **Cybersecurity**, nine levels mean **nine principal books per language**, or **81 planned book editions across nine languages**. Its engineering course has one book per language with a baseline of 260 weekly chapters and 1,300 daily lessons; it is not 260 books. Keep answers in the same principal book. All nine levels together give 1,044 weekly chapters and 5,220 lessons per area and language. These are planning totals, not translations already delivered.
+
+### Check actual study dates as well as the baseline
+
+Under the [documented calendar convention](STUDY_CALENDAR.md), **13 October to 13 November 2026, end excluded, contains 23 Monday–Friday dates**. A 20-lesson edition therefore leaves three dated positions needing an explicit instructional allocation. Holidays and vacations are not silently removed; special calendars need stated exceptions. Additional days require genuine teaching, examples and assessed practice, not repeated exercises or empty placeholders. Source-indexed lessons, required dates and learner completion remain different measures. A calendar or README change is not a verified website deployment.
+
 <!-- cykin:course-structure:end -->
 
-<!-- cykin:onboarding:start -->
+## Publication and translation snapshot
 
-## Start here
+**Inventory consulted: 13 October 2026, source revision `e8ab046cea23c235ec08dfb1af4cfa4a031e68a0`.** The first three rows reproduce the [published chapter inventory](LANGUAGE_LESSON_PROGRESS.md); the remaining rows reproduce the dated absence-of-manuscript check in [translation progress](TRANSLATION_PROGRESS.md). This README edit did not recount every manuscript or audit every translation. The table is a snapshot, not a live counter. A course with a partial manuscript and its principal book are the same availability unit, counted once.
 
-[Open the CyKin study site](https://cykin.org/) and browse [by level](https://cykin.org/levels/) or [by subject](https://cykin.org/subjects/). Each level and subject leads to separate course pages, and each course has its own lesson guide and book. Subjects organize modules; the new production target is one distinct lesson every instructional weekday, normally grouped with four other lessons in a weekly book chapter, with a worked example and exercise. Existing manuscripts are being expanded from their older subject-chapter structure. Public reading requires no account.
+| Language | Courses / books with a manuscript, out of 207 | Availability | Reported chapters / indexed positions | Explicit daily lessons / 120,060 baseline |
+|---|---:|---:|---:|---:|
+| English — reference | 199 / 207 | 96.14% | 4,013 / 4,191 | 20 / 120,060 |
+| Português | 124 / 207 | 59.90% | 2,509 / 4,186 | 0 / 120,060 |
+| Español | 27 / 207 | 13.04% | 516 / 4,186 | 0 / 120,060 |
+| עברית | 0 / 207 | 0.00% | No manuscript reported | 0 / 120,060 |
+| Français | 0 / 207 | 0.00% | No manuscript reported | 0 / 120,060 |
+| Русский | 0 / 207 | 0.00% | No manuscript reported | 0 / 120,060 |
+| Deutsch | 0 / 207 | 0.00% | No manuscript reported | 0 / 120,060 |
+| 中文 | 0 / 207 | 0.00% | No manuscript reported | 0 / 120,060 |
+| 日本語 | 0 / 207 | 0.00% | No manuscript reported | 0 / 120,060 |
 
-**Route 1 — one course:** 1. language → 2. subject area → 3. level → the complete lesson guide for that course.
-
-**Route 2 — one level:** 1. language → 2. level → 3. all 23 subject areas at that level, with courses and lessons in study order.
-
-The site reads book text from this repository's `main` branch; the links below provide a GitHub-only route through the same curriculum.
-
-| Language | Route 1: choose an area | Route 2: choose a level |
-|---|---|---|
-| English | [Area → level](onboarding/en/themes.md) | [Level → all areas](onboarding/en/levels.md) |
-| Português | [Area → level](onboarding/pt/themes.md) | [Level → all areas](onboarding/pt/levels.md) |
-| Español | [Area → level](onboarding/es/themes.md) | [Level → all areas](onboarding/es/levels.md) |
-| עברית | [Area → level](onboarding/he/themes.md) | [Level → all areas](onboarding/he/levels.md) |
-| Français | [Area → level](onboarding/fr/themes.md) | [Level → all areas](onboarding/fr/levels.md) |
-| Русский | [Area → level](onboarding/ru/themes.md) | [Level → all areas](onboarding/ru/levels.md) |
-| Deutsch | [Area → level](onboarding/de/themes.md) | [Level → all areas](onboarding/de/levels.md) |
-| 中文 | [Area → level](onboarding/zh/themes.md) | [Level → all areas](onboarding/zh/levels.md) |
-| 日本語 | [Area → level](onboarding/ja/themes.md) | [Level → all areas](onboarding/ja/levels.md) |
-
-**How to study:** open a course's lesson index (`SUBJECTS.md`), read each available chapter in `MANUSCRIPT.md`, attempt the exercises, compare the worked answers, and follow the links at the end of each chapter. A `PLAN.md` chapter is an outline rather than a written lesson. Hebrew, French, Russian, German, Chinese and Japanese currently have indexes and plans only. The bookshelf above measures initial English chapter coverage; it does not certify finished books or translations. [See coverage by language](LANGUAGE_LESSON_PROGRESS.md).
-<!-- cykin:onboarding:end -->
+**Read these measures separately.** Manuscript availability is not a fully translated course. Chapter anchors are not a count of reviewed daily lessons. Zero daily markers in Portuguese or Spanish does not erase their existing chapters. The different chapter denominators belong to the editions' actual indexes. Twenty English daily markers correspond to 0.0167% of the planning baseline, not to a measured percentage of all knowledge written. The catalog-wide percentage of technically and linguistically verified translation remains **not measured**; neither file presence nor matching counts establishes it. See [the translation standard](BOOK_STANDARD.md#complete-translations-and-cross-language-parity) for source-to-target revision mapping and the [progress ledger](TRANSLATION_PROGRESS.md) for scope and limitations.
 
 ## How the study site works
 
@@ -125,7 +164,7 @@ This architecture keeps the Markdown books as the canonical public source while 
 
 **Public lessons in three languages:** [open the English, Portuguese and Spanish lesson coverage table](LANGUAGE_LESSON_PROGRESS.md). It links each existing book or its plan and counts authored chapters, explicit examples, exercises, navigation and diagrams separately. A public manuscript is readable now; books with pending technical, language or A4 review are identified by the [publication gate](BOOK_STANDARD.md).
 
-**Incident Response book-length checkpoints:** [Rapid](levels/rapid-1-month/incident-response-resilience/README.md): current local A4 preflight **386 pages** for SHA-256 `7c50b42f658737cce23bb1509ad5fedd3a1db9a9e2d5a7ea01435eb2db820492` · [Professional](levels/professional-6-months/incident-response-resilience/README.md): **170 pages** for SHA-256 `610c504aa6691d113231e7c7e99d22a8109071b4f55f807ab41e0de5268238ad` · [Technical](levels/technical-18-months/incident-response-resilience/README.md): A4 stale after the rename; previous render 124 pages · [Doctoral](levels/doctorate-2-years/incident-response-resilience/README.md): A4 stale after the rename; previous render 122 pages. These length checkpoints are not completion percentages; technical and editorial review still govern book approval.
+**Incident Response book-length checkpoints:** [Rapid](levels/rapid-1-month/incident-response-resilience/README.md): reported A4 preflight **386 pages** for source SHA-256 `7c50b42f658737cce23bb1509ad5fedd3a1db9a9e2d5a7ea01435eb2db820492` · [Professional](levels/professional-6-months/incident-response-resilience/README.md): **170 pages** for SHA-256 `610c504aa6691d113231e7c7e99d22a8109071b4f55f807ab41e0de5268238ad` · [Technical](levels/technical-18-months/incident-response-resilience/README.md): A4 stale after the rename; previous render 124 pages · [Doctoral](levels/doctorate-2-years/incident-response-resilience/README.md): A4 stale after the rename; previous render 122 pages. These length checkpoints are not completion percentages; technical and editorial review still govern book approval.
 
 **Incident Response teaching:** The [single public English rapid book](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md) retains the correction units and [HOLD2 review](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md#ir-rapid-ch02-hold2-binding). Its four weekly chapters contain 20 authored daily lessons. The [daily index](levels/rapid-1-month/incident-response-resilience/en/SUBJECTS.md) gives the actual reading order. A scoped teaching integration does not approve the entire volume or another language edition.
 
@@ -153,11 +192,11 @@ levels/<level>/<area>/
 ├── skill/SKILL.md          one skill for this course
 └── <language>/
     ├── README.md           edition and editorial status
-    ├── SUBJECTS.md         all subjects and chapter links
+    ├── SUBJECTS.md         modules, weekly chapters, daily lessons and links
     ├── MATERIALS.md        labs, cases, exercises and references
     └── book/
-        ├── PLAN.md          chapter summaries and learning sequence
-        └── MANUSCRIPT.md    authored draft, only when present
+        ├── PLAN.md          outlines and learning sequence; not authored lessons
+        └── MANUSCRIPT.md    actual lessons, examples, exercises and final answers
 ~~~
 
 **Current structure:** 9 levels × 23 areas = **207 courses and course skills**. With 9 language editions, **1,863 books are planned**. The original English catalog had **4,186 legacy subject-module positions**. The [structure table](#courses-weekly-chapters-and-daily-lessons) explains how an area, a course, a book, a weekly chapter and a daily lesson differ, and why the shelf can read 4.3% while one matrix cell reads 100%. The daily-lesson baseline is measured separately. These are plans, not finished books. 199 English manuscripts contain public work in progress; **zero books have passed the complete-book gate**.
@@ -173,6 +212,9 @@ Choose a level from the [course and lesson table](#courses-weekly-chapters-and-d
 ## 2. English draft progress for every course
 
 Each linked percentage opens one course page with its nine language editions, one skill, book, chapter index, materials, related project and practice playbooks. This matrix is **one course at a time**. The shelf at the top of this page is **one area across all nine levels**. Both use the legacy test of at least 300 words of authored English teaching. Rapid Cybersecurity can read 100% here while the Cybersecurity shelf reads 4.3%, because the cell covers that course's original modules and the other eight Cybersecurity courses are at 0.0%. Neither number is a daily-lesson count, a page length, a translation, or book approval. **100% here does not mean a complete book.** See the [structure table](#courses-weekly-chapters-and-daily-lessons), the [edition-specific lesson table](LANGUAGE_LESSON_PROGRESS.md), the [course writing table](COURSE_WRITING_PROGRESS.md) and the [book standard](BOOK_STANDARD.md). The five schools are descriptive groupings; the folder hierarchy begins with formation level.
+
+<details>
+<summary>Open all 207 course links and their legacy English coverage</summary>
 
 | School / area | Rapid | Professional | Technical | Technologist | Bachelor's | Engineering | Postgraduate | Master's | Doctorate |
 |---|---|---|---|---|---|---|---|---|---|
@@ -200,13 +242,29 @@ Each linked percentage opens one course page with its nine language editions, on
 | **OT, IoT and cyber-physical security** (School of Emerging and Critical Systems) | [100.0%](levels/rapid-1-month/ot-iot-security/README.md) | [100.0%](levels/professional-6-months/ot-iot-security/README.md) | [100.0%](levels/technical-18-months/ot-iot-security/README.md) | [100.0%](levels/technologist-3-years/ot-iot-security/README.md) | [100.0%](levels/bachelors-4-years/ot-iot-security/README.md) | [100.0%](levels/engineering-5-years/ot-iot-security/README.md) | [100.0%](levels/postgraduate-2-years/ot-iot-security/README.md) | [100.0%](levels/masters-2-years/ot-iot-security/README.md) | [100.0%](levels/doctorate-2-years/ot-iot-security/README.md) |
 | **Critical infrastructure and sector security** (School of Emerging and Critical Systems) | [100.0%](levels/rapid-1-month/critical-sector-security/README.md) | [100.0%](levels/professional-6-months/critical-sector-security/README.md) | [100.0%](levels/technical-18-months/critical-sector-security/README.md) | [100.0%](levels/technologist-3-years/critical-sector-security/README.md) | [100.0%](levels/bachelors-4-years/critical-sector-security/README.md) | [100.0%](levels/engineering-5-years/critical-sector-security/README.md) | [100.0%](levels/postgraduate-2-years/critical-sector-security/README.md) | [100.0%](levels/masters-2-years/critical-sector-security/README.md) | [100.0%](levels/doctorate-2-years/critical-sector-security/README.md) |
 
-[Detailed area map](mapa-areas-ciberseguranca.md) · [All course and book links](COURSE_GUIDE.md) · [English subject counts](CURRICULUM_GRID.md)
+</details>
+
+[Detailed area map](mapa-areas-ciberseguranca.md) · [All course and book links](COURSE_GUIDE.md) · [Weekly and daily baselines](CURRICULUM_GRID.md)
 
 ## First English book in progress
 
 The [rapid Incident Response English book](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md) is the first course reorganized into the weekday model: **four weekly chapters, 20 authored daily lessons**, EX001–EX050 and 50 matching worked answers in one final appendix. Its [lesson index](levels/rapid-1-month/incident-response-resilience/en/SUBJECTS.md) assigns exercises and links every lesson to the next. Modules preserve the original 1.x–4.x technical section identifiers and the R1–R24 fictional case release boundaries; the daily lesson numbers run 01–20. The diagrams, offline laboratories and source readings remain within the same public book. This is a published book for study, with whole-volume technical, source, rights, accessibility and editorial review still pending. The other Incident Response books remain in their actual published state; the [course writing table](COURSE_WRITING_PROGRESS.md) reports their legacy module coverage, not their weekday lesson completion.
 
-**A4 length check:** The current four-chapter, 20-lesson manuscript (SHA-256 `7c50b42f658737cce23bb1509ad5fedd3a1db9a9e2d5a7ea01435eb2db820492`) rendered to **386 A4 pages** on 13 October 2026 with the private Engine's Chrome renderer. This is a local page-count preflight; it does not complete the layout, technical, source, rights, accessibility or editorial review required by the [book gate](BOOK_STANDARD.md).
+**Recorded A4 length check:** The four-chapter, 20-lesson source (SHA-256 `7c50b42f658737cce23bb1509ad5fedd3a1db9a9e2d5a7ea01435eb2db820492`) rendered to **386 A4 pages** on 13 October 2026 with the private Engine's Chrome renderer. That measurement applies only to the stated source hash; it is not a new measurement of later edits. It does not complete the layout, technical, source, rights, accessibility or editorial review required by the [book gate](BOOK_STANDARD.md).
+
+### Open the first instructional week
+
+The [current English Incident Response index](levels/rapid-1-month/incident-response-resilience/en/SUBJECTS.md) assigns the following five daily lessons to weekly Chapter 1. These are links into the same book, not five new files or new translations. The labels and exercise allocations below follow that index.
+
+| Instructional day | Lesson in weekly Chapter 1 | Assigned practice |
+|---|---|---|
+| 1 | [01 — Evidence readiness and the first case question](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md#lesson-01) | EX001 |
+| 2 | [02 — Booking invariants and behavioral baselines](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md#lesson-02) | EX002, EX005, EX010 |
+| 3 | [03 — Service paths, dependencies and degraded modes](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md#lesson-03) | EX003, EX008, EX011 |
+| 4 | [04 — Authority, delegation and pre-incident rehearsal](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md#lesson-04) | EX006, EX013 |
+| 5 | [05 — Scope, case record and bounded first decision](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md#lesson-05) | EX004, EX007, EX009, EX012 |
+
+Read each lesson's worked example before attempting its practice. Then compare the [final worked answers](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md#answers), record unresolved questions, and continue to [Lesson 06 in weekly Chapter 2](levels/rapid-1-month/incident-response-resilience/en/book/MANUSCRIPT.md#lesson-06). Use the [calendar convention](STUDY_CALENDAR.md) for actual dates; instructional day 1 is not a new timestamp in the fictional incident. Completing this table's five study days does not certify the course or complete its other fifteen lessons.
 
 ## Language sequence
 
@@ -276,6 +334,6 @@ The [project categories](CATEGORIES.md) give context for the original security s
 
 Original maintainer-owned content is public and dedicated to the public domain under [CC0 1.0](LICENSE). Accurate citation of factual sources remains an editorial requirement. Linked repositories and third-party works retain their own licenses.
 
-[Level index](levels/README.md) · [Area map](AREA_MAP.md) · [Book guide](guia-geral-cursos-e-livros.md) · [Course skills](SKILLS.md) · [Playbooks](playbooks/README.md) · [AI navigation](AI_GUIDE.md) · [Writing by area](WRITING_PROGRESS.md) · [Writing by course](COURSE_WRITING_PROGRESS.md) · [Progress](STRUCTURE_REVIEW.md) · [Roadmap](ROADMAP.md) · [Sources](SOURCE_AUDIT.md) · [Rights](RIGHTS.md) · [Project categories](CATEGORIES.md)
+[Level index](levels/README.md) · [Area map](AREA_MAP.md) · [Book guide](guia-geral-cursos-e-livros.md) · [Course skills](SKILLS.md) · [Playbooks](playbooks/README.md) · [AI navigation](AI_GUIDE.md) · [Writing by area](WRITING_PROGRESS.md) · [Writing by course](COURSE_WRITING_PROGRESS.md) · [Progress](STRUCTURE_REVIEW.md) · [Roadmap](ROADMAP.md) · [Sources](SOURCE_AUDIT.md) · [Rights](RIGHTS.md) · [Project categories](CATEGORIES.md) · [Study calendar](STUDY_CALENDAR.md) · [Translation progress](TRANSLATION_PROGRESS.md)
 
 Construction scripts, tests, measurements and operational records stay in a separate private editorial workspace. All teaching Markdown, including unfinished chapter drafts, belongs in this public repository and is published directly from the maintainer's machine. Separate chapter drafts are temporary and will be consolidated into the course's single principal book.
