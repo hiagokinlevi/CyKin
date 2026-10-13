@@ -1,7 +1,7 @@
 # Arquitetura e Engenharia de Segurança: Curso de Tecnólogo
 
 - Idioma: português do Brasil (`pt`); curso 076, curso de tecnólogo (3 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–24 de 30 já estão escritos em português, com os exercícios EX001–EX072 e suas resoluções com rubricas de 0 a 3 e 6 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 25–30 (EX073–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–30 de 30 têm texto didático escrito à mão; os exercícios EX001–EX090 têm resoluções correspondentes com rubricas de 0 a 3; os seis laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente e a verificação de 300 páginas A4 continuam em aberto.
 - Público: estudantes de tecnólogo que vão construir, verificar e operar a arquitetura de segurança em organizações pequenas e médias.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios sinalizam regras de firewall, calculam indicadores de saúde, conferem manifestos, executam regras de alerta, comparam listas de desligados e comparam taxas de reporte, sempre sobre dados sintéticos; nada toca uma rede real. Projetos de produção usam produtos e normas avaliados; nunca crie sua própria criptografia. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -30,9 +30,7 @@ Saltzer e Schroeder (1975), [doi:10.1109/PROC.1975.9939](https://doi.org/10.1109
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) |
-
-Capítulos 25–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-25), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1086,11 +1084,239 @@ Desenhos antes e depois não conseguem isolar as causas. Contagens pequenas osci
 
 - **EX072 — Causa alternativa.** Que causa alternativa Tomás mencionou? *Rubrica:* 3 = o novo processo de apagamento remoto fez o relato valer a pena;; 2 = apagamento remoto;; 1 = nenhuma;; 0 = nenhuma.
 
+<a id="ch-25"></a>
+
+## Capítulo 25 — Ateliê de projeto em equipe
+
+### Objetivos de aprendizagem
+
+Você vai (1) trabalhar numa equipe de estudantes num projeto de segurança compartilhado; (2) dividir papéis e revisar o trabalho uns dos outros; (3) apresentar um resultado da equipe.
+
+### 25.1 O enunciado do ateliê
+
+De volta à instituição, Ruth conduz um ateliê. Equipes de quatro pessoas projetam a segurança de um serviço fictício de entrega de farmácia, com um site, um aplicativo móvel para os entregadores e um pequeno armazém. A equipe de Tomás inclui um desenvolvedor, um estudante de redes e uma estudante interessada em privacidade. Eles têm três semanas. O enunciado exige um diagrama de zonas, fluxos de dados, cenários de risco, controles e um plano de testes. Trabalhar em equipe espelha a prática real, em que nenhuma pessoa sozinha cobre todas as especialidades. Ruth fornece um breve perfil fictício da empresa como ponto de partida.
+
+### 25.2 Papéis e revisão
+
+A equipe designa um líder para cada entregável, mas exige que cada peça seja revisada por outra pessoa. Tomás lidera os cenários de risco e revisa o diagrama de zonas do estudante de redes, descobrindo que os celulares dos entregadores foram colocados na mesma zona que os sistemas do armazém. A estudante de privacidade revisa os cenários dele e acrescenta um sobre os dados das receitas visíveis nas telas dos entregadores. A revisão por pares pega erros e acrescenta perspectivas. A equipe mantém um log simples dos comentários de revisão e de como cada um foi resolvido. Cada revisor assina a entrada do log quando um comentário é resolvido.
+
+### 25.3 Apresentar
+
+A equipe apresenta a Ruth e a dois profissionais convidados. Eles explicam o projeto e os trade-offs, como a escolha de um login mais simples no aplicativo dos entregadores para manter as entregas rápidas, limitando ao mesmo tempo o que o aplicativo mostra. Um dos profissionais pergunta como eles lidariam com o celular roubado de um entregador; a equipe responde com seu projeto de apagamento remoto e expiração de sessão. O retorno de Ruth elogia o log de revisão, que mostra como o projeto melhorou. Os ateliês em equipe ensinam que os projetos de segurança ficam mais fortes quando construídos e questionados por várias pessoas.
+
+### Exemplo resolvido
+
+A equipe de Tomás projeta a segurança de um serviço de entrega de farmácia com líderes e revisão por pares, corrigindo um erro de zona e acrescentando um cenário de privacidade.
+
+> **Caso sintético.** O serviço de farmácia e a equipe são sintéticos.
+
+### Erros e limites
+
+As equipes podem se curvar ao membro mais barulhento. Três semanas limitam a profundidade.
+
+### Exercícios
+
+- **EX073 — Erro de zona.** O que Tomás encontrou no diagrama de zonas? *Rubrica:* 3 = celulares dos entregadores na mesma zona que os sistemas do armazém;; 2 = zona;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX074 — Acréscimo de privacidade.** Que cenário a estudante de privacidade acrescentou? *Rubrica:* 3 = dados das receitas visíveis nas telas dos entregadores;; 2 = receitas;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX075 — Valor do log de revisão.** Por que Ruth elogiou o log de revisão? *Rubrica:* 3 = mostrava como o projeto melhorou;; 2 = melhoria;; 1 = extensão;; 0 = nenhuma.
+
+<a id="ch-26"></a>
+
+## Capítulo 26 — Arquitetura e engenharia de segurança: passagem operacional
+
+### Objetivos de aprendizagem
+
+Você vai (1) preparar a equipe de operações da Brightwater para operar os novos controles; (2) escrever runbooks; (3) confirmar a prontidão antes da passagem.
+
+### 26.1 Quem opera depois
+
+O estágio de Tomás vai terminar, e a equipe de TI de duas pessoas da Brightwater precisará operar os controles que ele ajudou a introduzir. Ele lista cada controle e rotina: revisão semanal de alertas, atualizações mensais, o script de desligados, as verificações de manifestos, os backups e testes de restauração, as aprovações das sessões do fornecedor e as revisões trimestrais de acesso. Para cada um, nomeia o futuro responsável e o substituto. Sem uma passagem planejada, os controles introduzidos por um trabalhador temporário tendem a se deteriorar em poucos meses, porque ninguém mais sabe por que existem nem como operá-los.
+
+### 26.2 Runbooks
+
+Tomás escreve um runbook para cada rotina: propósito, quando executá-la, instruções passo a passo, como é a saída normal, o que fazer se falhar e para quem ligar. Ele mantém cada um com uma ou duas páginas, com capturas de tela. Ele pede a uma colega de Sam que siga sem ajuda o runbook de restauração de backup. Ela trava numa etapa em que faltava a indicação de onde fica uma senha, e Tomás corrige o runbook. Testar os runbooks com as pessoas que vão usá-los é a única forma de saber se eles funcionam.
+
+### 26.3 Verificação de prontidão
+
+Antes de sair, Tomás e Sam fazem uma verificação de prontidão. Cada responsável executa sua rotina uma vez, enquanto Tomás observa em silêncio. Todas as rotinas são concluídas, embora a aprovação do fornecedor demore mais do que o esperado porque o papel do aprovador não estava claro. Eles o esclarecem por escrito. Sam aprova a passagem. Tomás deixa seus contatos para dúvidas durante o primeiro mês. Ruth observa que uma boa passagem se mede por quão pouco a pessoa que sai é necessária depois. O registro de prontidão, com os tempos e o papel do aprovador esclarecido, é arquivado com o pacote de passagem para referência futura.
+
+### Exemplo resolvido
+
+Tomás lista os controles com responsáveis e substitutos, escreve runbooks testados e faz uma verificação silenciosa de prontidão antes da aprovação.
+
+> **Caso sintético.** As rotinas e as pessoas são sintéticas.
+
+### Erros e limites
+
+Os runbooks envelhecem conforme os sistemas mudam. Equipes de duas pessoas são frágeis durante as férias.
+
+### Exercícios
+
+- **EX076 — Por que a passagem.** Por que os controles se deterioram sem passagem? *Rubrica:* 3 = ninguém mais sabe por que existem nem como operá-los;; 2 = conhecimento;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX077 — Teste do runbook.** O que o teste do runbook de restauração revelou? *Rubrica:* 3 = uma etapa sem a indicação de onde fica a senha;; 2 = lacuna;; 1 = nada;; 0 = nenhuma.
+
+- **EX078 — Medida da passagem.** Como se mede uma boa passagem? *Rubrica:* 3 = por quão pouco a pessoa que sai é necessária depois;; 2 = independência;; 1 = extensão;; 0 = nenhuma.
+
+<a id="ch-27"></a>
+
+## Capítulo 27 — Implantação e validação
+
+### Objetivos de aprendizagem
+
+Você vai (1) implantar com segurança uma mudança de configuração nos centros de distribuição; (2) validá-la contra os requisitos; (3) fazer rollback se necessário.
+
+### 27.1 Planejar a implantação
+
+A Brightwater decide impor o login individual por crachá em todos os coletores dos quatro centros de distribuição, substituindo os PINs compartilhados das equipes, conforme projetado no capítulo 7. Tomás planeja uma implantação escalonada: primeiro um centro, depois dois, depois o último. Cada etapa tem critérios de entrada, como crachás emitidos para toda a equipe, e critérios de saída, como menos de cinco chamados de ajuda com login por turno. Ele agenda as mudanças para o início do turno mais tranquilo. A implantação escalonada limita o impacto dos erros a um local de cada vez.
+
+### 27.2 Validar
+
+Em cada centro de distribuição, Tomás confere os requisitos: todo coletor exige crachá e PIN, as leituras registram o motorista individual, os PINs compartilhados deixam de funcionar e as contas bloqueadas podem ser redefinidas pelos supervisores. Ele testa cada requisito com um crachá de teste e registra os resultados. No segundo centro, um modelo de coletor ainda aceita o antigo PIN compartilhado por causa de uma versão de firmware mais antiga. O firmware é atualizado e o teste é repetido. A validação pega lacunas que a tela de configuração, sozinha, nunca mostraria.
+
+### 27.3 Rollback
+
+Tomás prepara um plano de rollback: se mais de dez por cento dos motoristas não conseguirem fazer login no início do turno, o centro volta aos PINs compartilhados naquele dia enquanto os crachás são corrigidos. O plano nunca é usado, mas tê-lo permite que os supervisores concordem com a mudança com confiança. Depois dos quatro centros, os chamados de ajuda com login se estabilizam em dois por turno. Ele registra os resultados da implantação, o problema de firmware e as lições aprendidas. Um plano de rollback claro é sinal de uma implantação profissional, e não de dúvida sobre a mudança.
+
+### Exemplo resolvido
+
+Tomás implanta o login por crachá em três etapas, valida quatro requisitos por centro de distribuição, pega uma lacuna de firmware e prepara um plano de rollback que não chega a ser usado.
+
+> **Caso sintético.** Os centros de distribuição e os números são sintéticos.
+
+### Erros e limites
+
+Implantações escalonadas prolongam estados mistos. O rollback pode reintroduzir temporariamente controles fracos.
+
+### Exercícios
+
+- **EX079 — Critério de saída.** Qual era o critério de saída de cada etapa? *Rubrica:* 3 = menos de cinco chamados de ajuda com login por turno;; 2 = chamados de ajuda;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX080 — Lacuna de firmware.** O que a validação pegou no segundo centro? *Rubrica:* 3 = um modelo com firmware antigo ainda aceitava o PIN compartilhado;; 2 = firmware;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX081 — Gatilho do rollback.** O que dispararia o rollback? *Rubrica:* 3 = mais de dez por cento dos motoristas sem conseguir fazer login no início do turno;; 2 = dez por cento;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-28"></a>
+
+## Capítulo 28 — Prática de campo
+
+### Objetivos de aprendizagem
+
+Você vai (1) aplicar suas habilidades numa segunda organização; (2) adaptar-se a um ambiente diferente; (3) refletir sobre a prática transferível.
+
+### 28.1 Um segundo local
+
+Na prática de campo, Tomás passa duas semanas num centro esportivo comunitário fictício que mantém um site de reservas, pagamentos com cartão por meio de um provedor, cartões de acesso às portas e uma pequena rede de escritório. A gerente cuida da TI junto com todo o resto. Tomás repete seu método: inventário, fluxos de dados, pontos de exposição e ganhos rápidos. O ambiente é mais simples do que o da Brightwater, mas tem menos pessoas para operar qualquer coisa. Ele começa perguntando à gerente qual indisponibilidade doeria mais, e a resposta é o site de reservas num sábado de manhã.
+
+### 28.2 Adaptar-se
+
+Tomás descobre que a conta de administrador do site de reservas é compartilhada por quatro funcionários, que o roteador do escritório ainda usa a senha padrão e que os cartões de acesso nunca são cancelados quando os associados saem. Ele troca a senha do roteador com a gerente, cria contas individuais de administrador com login multifator e escreve uma etapa de uma linha no procedimento de cancelamento de associação para desativar os cartões. Ele deixa de lado medidas complexas, como o logging centralizado. Adaptar-se significa escolher as poucas mudanças que mais importam para a capacidade desta organização.
+
+### 28.3 Reflexão
+
+Em seu diário, Tomás registra o que se transferiu: inventários, contas individuais, processos de desligamento e a verificação da exposição. O que não se transferiu: rotinas de monitoramento e automação, que pressupõem alguém com tempo. Ele reflete que os princípios de arquitetura continuam os mesmos, mas a implementação precisa caber nas pessoas disponíveis. A gerente envia um e-mail um mês depois dizendo que a etapa de cancelamento já desativou onze cartões. Ruth comenta que esse resultado prático é uma evidência de aprendizagem melhor do que qualquer prova escrita. Ele acrescenta essas observações ao relatório de estágio, para que Ruth e Sam as leiam.
+
+### Exemplo resolvido
+
+Tomás aplica seu método num centro esportivo, corrige três problemas prioritários adequados à capacidade dele e reflete sobre o que se transfere.
+
+> **Caso sintético.** O centro esportivo é sintético.
+
+### Erros e limites
+
+Estágios curtos deixam as mudanças sem suporte. Locais pequenos podem regredir sob pressão.
+
+### Exercícios
+
+- **EX082 — Indisponibilidade mais dolorosa.** Que indisponibilidade doeria mais no centro esportivo? *Rubrica:* 3 = o site de reservas num sábado de manhã;; 2 = reservas;; 1 = cartões de acesso;; 0 = nenhuma.
+
+- **EX083 — Correção dos cartões.** Como foram tratados os cartões de acesso de quem saiu? *Rubrica:* 3 = uma etapa de desativação acrescentada ao cancelamento de associação;; 2 = procedimento;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX084 — Evidência de aprendizagem.** Que resultado a gerente relatou um mês depois? *Rubrica:* 3 = onze cartões desativados;; 2 = onze;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-29"></a>
+
+## Capítulo 29 — Construção do projeto final
+
+### Objetivos de aprendizagem
+
+Você vai (1) construir uma melhoria de segurança completa para um centro de distribuição; (2) integrar o trabalho anterior; (3) documentar a construção.
+
+### 29.1 O projeto final
+
+O projeto final de Tomás é um pacote de baseline de segurança para o quinto centro de distribuição planejado pela Brightwater, que abre no ano que vem. Ele precisa permitir que Sam configure um novo centro com segurança sem reinventar as decisões. O pacote inclui o projeto de zonas, um modelo de regras de firewall, baselines de configuração dos dispositivos, as definições de papéis, as regras de monitoramento, os runbooks e um checklist de implantação. Ele se apoia em todos os capítulos anteriores. Ruth aprova o escopo porque ele produz algo reutilizável, e não um relatório avulso, e Sam confirma que o quinto centro vai usá-lo. Ele acerta uma data de entrega dois meses antes da abertura do centro.
+
+### 29.2 Construir e testar
+
+Tomás constrói o pacote num ambiente de teste na instituição: um firewall virtual carregado com o modelo de regras, um coletor de teste registrado com a baseline e um conjunto de contas de teste usando os papéis. Ele roda os scripts anteriores contra a configuração de teste: o verificador de regras não encontra nenhuma regra de entrada aberta para qualquer origem, as regras de alerta disparam com os eventos simulados e o script de desligados funciona com as exportações de teste. Uma configuração da baseline quebra o driver da impressora de etiquetas, então ele a ajusta e registra o motivo.
+
+### 29.3 Documentar
+
+Tomás redige o pacote como um guia curto com um checklist logo no início. Cada item se liga ao motivo por trás dele, como um cenário de risco ou um princípio, para que a equipe futura possa julgar se ele ainda se aplica. Ele inclui um log de mudanças e um número de versão. Sam o revisa e pede um acréscimo: como solicitar o acesso do fornecedor para a nova esteira. Uma documentação que explica os motivos é mais fácil de manter, porque as pessoas conseguem atualizá-la com inteligência, em vez de seguir passos que não entendem.
+
+### Exemplo resolvido
+
+Tomás constrói e testa em laboratório um pacote reutilizável de baseline de segurança para centros de distribuição, corrigindo um conflito com a impressora, e o documenta com motivos e controle de versão.
+
+> **Caso sintético.** O pacote e o ambiente de teste são sintéticos.
+
+### Erros e limites
+
+Os testes em laboratório deixam passar peculiaridades de cada local. Os pacotes envelhecem sem um responsável.
+
+### Exercícios
+
+- **EX085 — Por que reutilizável.** Por que Ruth aprovou o escopo do projeto final? *Rubrica:* 3 = ele produz algo reutilizável;; 2 = reutilização;; 1 = tamanho;; 0 = nenhuma.
+
+- **EX086 — Conflito no teste.** Que problema o teste revelou? *Rubrica:* 3 = uma configuração da baseline quebrou o driver da impressora de etiquetas;; 2 = impressora;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX087 — Motivos ligados.** Por que ligar cada item do checklist a um motivo? *Rubrica:* 3 = para que a equipe futura possa julgar se ele ainda se aplica;; 2 = julgamento;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-30"></a>
+
+## Capítulo 30 — Avaliação do projeto final
+
+### Objetivos de aprendizagem
+
+Você vai (1) avaliar o projeto final segundo critérios; (2) receber e aplicar o retorno de profissionais; (3) planejar os próximos passos como tecnólogo.
+
+### 30.1 Critérios de avaliação
+
+Ruth e Sam avaliam o projeto final segundo quatro critérios acordados no início: completude, funcionamento testado, clareza para os futuros usuários e alinhamento com os riscos da Brightwater. Cada um recebe nota de zero a três. Tomás tira três em funcionamento testado e alinhamento, dois em completude, porque a configuração do acesso do fornecedor foi acrescentada tarde, e três em clareza. Ele explica cada nota com evidências, como os logs de teste e os comentários de revisão de Sam. Critérios claros permitem que a avaliação se concentre nas evidências, e não em impressões. Ruth e Sam dão as notas de forma independente antes de acertar as notas finais.
+
+### 30.2 Retorno de um profissional
+
+Um profissional convidado revisa o pacote e sugere acrescentar uma seção sobre o que fazer se o centro de distribuição abrir antes que todos os controles estejam prontos, o que acontece com frequência em projetos reais. Tomás acrescenta uma seção curta de risco provisório: quais controles são essenciais antes da abertura, como o login individual e as regras de firewall, e quais podem vir em até um mês. Ele agradece ao profissional e registra a mudança. O retorno de pessoas experientes muitas vezes aponta pressões do mundo real que o trabalho em sala de aula não antecipa. A seção cabe numa única página.
+
+### 30.3 Próximos passos
+
+Tomás reflete sobre o que agora consegue fazer: inventariar sistemas, rastrear fluxos de dados, escrever cenários, aplicar o STRIDE e árvores de ataque, escrever pequenos scripts, montar o monitoramento, implantar e validar mudanças e passar a operação adiante. A Brightwater lhe oferece uma vaga júnior de infraestrutura e segurança. Ele aceita e planeja estudar identidade e segurança em nuvem em seguida. Sua reflexão final é que o valor de um tecnólogo está em fazer os projetos funcionarem com confiabilidade no mundo real, e em dizer com honestidade aos projetistas quando eles não funcionam.
+
+### Exemplo resolvido
+
+O projeto final de Tomás recebe notas em quatro critérios, ele acrescenta uma seção de risco provisório a partir do retorno de um profissional e planeja seus próximos passos.
+
+> **Caso sintético.** As notas e as pessoas são sintéticas.
+
+### Erros e limites
+
+Avaliadores que conhecem o estudante podem dar notas generosas. Planos provisórios podem se tornar permanentes.
+
+### Exercícios
+
+- **EX088 — Nota menor.** Que critério recebeu dois, e por quê? *Rubrica:* 3 = completude, porque a configuração do acesso do fornecedor foi acrescentada tarde;; 2 = completude;; 1 = clareza;; 0 = nenhuma.
+
+- **EX089 — Seção provisória.** O que o profissional sugeriu acrescentar? *Rubrica:* 3 = o que fazer se o centro abrir antes que todos os controles estejam prontos;; 2 = risco provisório;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX090 — Valor do tecnólogo.** Onde Tomás vê o valor de um tecnólogo? *Rubrica:* 3 = fazer os projetos funcionarem com confiabilidade e relatar com honestidade quando não funcionam;; 2 = mundo real;; 1 = nenhuma;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX072 (as de EX073–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). Tomás Ferreira, Ruth Adeyemi, Sam Okafor, a Kestrel Polytechnic, a Brightwater Logistics e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX090. Tomás Ferreira, Ruth Adeyemi, Sam Okafor, a Kestrel Polytechnic, a Brightwater Logistics e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** O processador (hardware), o firmware do fabricante, um sistema operacional móvel, o aplicativo de leitura e os dados das encomendas que ele trata.
 
@@ -1235,6 +1461,42 @@ Respostas-modelo para EX001–EX072 (as de EX073–EX090 estão na edição em i
 **EX071.** 9 de 20, ou 45 por cento, antes, e 17 de 21, ou 81 por cento, depois.
 
 **EX072.** O novo processo de apagamento remoto, que fez o relato parecer valer a pena.
+
+**EX073.** Os celulares dos entregadores foram colocados na mesma zona que os sistemas do armazém.
+
+**EX074.** Os dados das receitas visíveis nas telas dos entregadores.
+
+**EX075.** Porque mostrava como os comentários de revisão melhoraram o projeto.
+
+**EX076.** Porque ninguém mais sabe por que eles existem nem como operá-los.
+
+**EX077.** Uma etapa em que faltava a indicação de onde fica a senha.
+
+**EX078.** Por quão pouco a pessoa que sai é necessária depois.
+
+**EX079.** Menos de cinco chamados de ajuda com login por turno.
+
+**EX080.** Um modelo de coletor com firmware mais antigo ainda aceitava o antigo PIN compartilhado.
+
+**EX081.** Mais de dez por cento dos motoristas sem conseguir fazer login no início do turno.
+
+**EX082.** O site de reservas num sábado de manhã.
+
+**EX083.** Uma etapa de desativação foi acrescentada ao procedimento de cancelamento de associação.
+
+**EX084.** A nova etapa havia desativado onze cartões.
+
+**EX085.** Porque produz um pacote reutilizável, e não um relatório avulso.
+
+**EX086.** Uma configuração da baseline quebrou o driver da impressora de etiquetas.
+
+**EX087.** Para que a equipe futura possa julgar se cada item ainda se aplica e atualizá-lo com bom senso.
+
+**EX088.** Completude, porque a configuração do acesso do fornecedor foi acrescentada tarde.
+
+**EX089.** Uma seção sobre a abertura antes que todos os controles estejam prontos, listando primeiro os controles essenciais.
+
+**EX090.** Em fazer os projetos funcionarem com confiabilidade e dizer com honestidade aos projetistas quando eles não funcionam.
 
 <a id="references"></a>
 ## Referências
