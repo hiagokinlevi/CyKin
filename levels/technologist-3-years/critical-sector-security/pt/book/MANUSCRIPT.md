@@ -3189,6 +3189,8 @@ Para a PS-09, a lista de evidências do plano deve incluir o firmware da RTU lid
 
 Desconectar o modem da PS-07 na hora teria sido o terceiro erro, por mais evidente que parecesse a sua falta de uso; a Água confirmou primeiro que nada dependia dele, e o engenheiro abriu a mudança.
 
+O gabinete destrancado do gateway da PS-07 marca um limite da própria visita: você pode registrar que o arquivo de chave HMAC fica em um cartão removível, mas trancar o gabinete ou mover a chave é uma mudança da Água, não sua para fazer no dia.
+
 ### Exercícios — capítulo 28
 
 **EX082 — Registre o modem.** *Objetivo:* escrever achados de campo corretamente. *Entradas:* Capítulo 28 ("Exemplo resolvido: a visita à PS-07"). *Restrições:* rótulos observado / inferido / feito / em aberto; nenhuma recomendação de agir sem controle de mudanças. *Etapas:* escreva o registro do achado e diga quais registros precisam ser atualizados. *Evidência esperada:* registro. *Rubrica:* 3 = observado (modem presente, modelo/etiqueta, conectado à porta 2 do CLP, relato do engenheiro), inferido (caminho remoto não declarado, possivelmente ativo), feito (fotografado com permissão, mudança aberta pela Água), em aberto (se está energizado e tem um SIM funcionando, quem detém a conta, data de remoção); inventário, lista de conduítes, registro de fluxos de dados e registro de riscos atualizados; 2 = rótulos misturados; 1 = narrativa; 0 = nada.
