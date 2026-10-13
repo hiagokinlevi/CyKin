@@ -1,7 +1,7 @@
 # Infraestrutura Crítica e Segurança Setorial: Engenharia de Sistemas Seguros e Resilientes
 
 - Idioma: português do Brasil (`pt`); curso de engenharia, cinco anos; aproximadamente 4.000 horas de estudo planejado (curso 138 de 207 na [trilha de estudo](../../../../../STUDY_PATH.md)). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–26 de 50 já estão escritos em português, com os exercícios EX001–EX052 e suas resoluções; os capítulos 27–50 (EX053–EX100) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–30 de 50 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções; os capítulos 31–50 (EX061–EX100) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas são idênticas às da edição em inglês. Revisão independente, nova verificação das fontes, revisão de acessibilidade, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: futuros projetistas de sistemas de segurança para serviços críticos — água, eletricidade, saúde, transporte, finanças e comunicações. Conhecimento de entrada: matemática e física do ensino médio; o livro constrói cálculo, probabilidade, programação, redes e engenharia de sistemas a partir do Capítulo 1.
 - Relação com os demais livros desta área: o [livro de mestrado](../../../../masters-2-years/critical-sector-security/en/book/MANUSCRIPT.md) ensina a projetar, pilotar e defender um estudo empírico com revisão ética; o [livro de doutorado](../../../../doctorate-2-years/critical-sector-security/en/book/MANUSCRIPT.md) exige uma contribuição original e validada de forma independente para o conhecimento. **Este livro de engenharia trata de construir coisas**: derivar requisitos a partir de consequências, escolher arquiteturas, implementar e verificar controles, medir confiabilidade e desempenho, ensaiar a recuperação e defender um sistema projetado com evidências. Seu capítulo de pesquisa (42) existe para resolver decisões de projeto, não para publicar.
 - Autoria e responsabilidade editorial: [hiagokinlevi](https://github.com/hiagokinlevi). O texto didático original, de propriedade do mantenedor, é dedicado sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus próprios direitos e não são relicenciadas aqui.
@@ -61,10 +61,14 @@ Toda afirmação factual sobre uma lei, uma norma, um incidente ou um estudo pub
 24. [Infraestrutura crítica e segurança setorial: métodos I](#ch-24)
 25. [Ateliê de projeto I](#ch-25)
 26. [Infraestrutura crítica e segurança setorial: alternativas de arquitetura](#ch-26)
+27. [Infraestrutura crítica e segurança setorial: projeto de controles](#ch-27)
+28. [Infraestrutura crítica e segurança setorial: implementação I](#ch-28)
+29. [Infraestrutura crítica e segurança setorial: medição](#ch-29)
+30. [Laboratório de verificação I](#ch-30)
 
-Capítulos 27–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-27), até a chegada dos próximos lotes.
+Capítulos 31–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-31), até a chegada dos próximos lotes.
 
-As [resoluções](#worked-results) contêm EX001–EX052. Um [glossário](#glossary) e as [referências](#references) fecham o livro.
+As [resoluções](#worked-results) contêm EX001–EX060. Um [glossário](#glossary) e as [referências](#references) fecham o livro.
 
 
 <a id="ch-01"></a>
@@ -2043,7 +2047,317 @@ Escolha a arquitetura pelo modo como ela falha e pelo modo como pode ser atacada
 <!-- cyberabc:chapter-navigation:start ch-26 -->
 ### Continue estudando — capítulo 26 de 50
 
-[← Capítulo 25](#ch-25) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 27 (inglês) →](../../en/book/MANUSCRIPT.md#ch-27)
+[← Capítulo 25](#ch-25) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 27 →](#ch-27)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-27"></a>
+
+## Capítulo 27 — Infraestrutura crítica e segurança setorial: projeto de controles
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) projetar controles que tratam de cenários específicos com desempenho definido; (2) combinar controles preventivos, detectivos e de recuperação numa defesa em profundidade cujas camadas falham de forma independente; (3) dar preferência a limites projetados, baseados na física, para as piores consequências; e (4) especificar cada controle de modo que ele possa ser verificado. Ele aplica os capítulos 15, 23 e 26 e prepara os capítulos 28 e 30.
+
+### 27.1 Do cenário ao controle
+
+Cada cenário do Capítulo 23 recebe controles em três pontos: **prevenir** o evento de ameaça, **detectá-lo** se a prevenção falhar, e **limitar e recuperar-se** das consequências. Exemplo — comandos de parada forjados para a PS3 e a PS4: prevenir com comandos autenticados (R1); detectar com alarmes para anomalias de comando e mudanças de estado inesperadas; limitar com a lógica local de religamento automático e o tanque do hospital; recuperar com os procedimentos manuais locais (R4). Cada um desses controles precisa então ser especificado e verificado, como mostra o restante do capítulo, antes que o cenário da parada forjada possa ser considerado coberto no dossiê.
+
+### 27.2 Limites projetados primeiro
+
+Para as piores consequências, os controles mais robustos não dependem de software algum: válvulas de alívio de pressão, batentes mecânicos, intertravamentos por fiação dedicada, bombas dosadoras de produtos químicos fisicamente dimensionadas para que não consigam superdosar no curso máximo. A engenharia informada pela cibersegurança (veja o [CCE do INL](https://inl.gov/national-security/cce/)) enfatiza esses controles porque eles se mantêm mesmo que todos os sistemas digitais sejam comprometidos. Eles não conseguem cobrir tudo — uma válvula de alívio mecânica não impede que uma bomba seja desligada —, mas limitam os piores casos. Para a bomba dosadora da LRWA, o limite de curso dimensionado pelos engenheiros de processo é um controle desse tipo.
+
+### 27.3 Camadas independentes
+
+A defesa em profundidade só funciona se as camadas falharem de forma independente. Liste as dependências de cada camada: se a autenticação, o monitoramento e o registro em log dependem todos dos servidores SCADA, um único comprometimento derrota os três. Coloque pelo menos uma camada de detecção fora dos sistemas que ela observa (monitoramento passivo da rede, um analisador independente) e mantenha os materiais de recuperação (backups off-line, procedimentos, chaves reservas) fora do alcance da ameaça da qual se está recuperando. O TMRP aplica isso colocando o alarme do analisador de cloro num registrador separado e mantendo os backups off-line longe dos servidores SCADA que eles restaurariam.
+
+### 27.4 Especificando os controles
+
+Uma especificação de controle declara: o(s) cenário(s) de que ele trata; sua função; o desempenho (detecção em até X, taxa de rejeição, tempo de restauração); as dependências; o modo de falha (à prova de falhas ou operacional em falha, e o que isso significa aqui); o dono; e o método de verificação. Sem desempenho e verificação, um controle é uma intenção. A especificação dos limites de setpoint no exemplo resolvido abaixo mostra todos os elementos: o cenário, os limites e o limite de passo, a regra de alarme, as dependências, a manutenção do último setpoint válido como modo de falha e o teste T3 como verificação. Seu dono é a equipe de engenharia de controle que configura o controlador de dosagem.
+
+### 27.5 Exemplo resolvido: limites de setpoint (sintético)
+
+Cenário: um setpoint forjado ou errôneo leva a bomba dosadora de cloro a superdosar. Controles: (1) **projetado** — curso da bomba dosadora limitado fisicamente, de modo que a dose máxima na vazão máxima fique abaixo de uma concentração nociva (dimensionado pelos engenheiros de processo); (2) **preventivo** — limites e limites de passo no lado do controlador (R3), implementados no controlador, não na IHM, para que um SCADA comprometido não consiga contorná-los; (3) **detectivo** — alarme do analisador de cloro independente (R9) num registrador separado; (4) **recuperação** — procedimento para isolar a linha de dosagem e lavá-la. Especificação de (2): rejeitar setpoints fora de 0,5–5,5 mg/L ou que mudem mais de 0,5 mg/L por comando, rejeitar valores não finitos, registrar em log toda rejeição, alarmar após três rejeições em 10 minutos; à prova de falhas = manter o último setpoint válido; verificado pelo teste T3, incluindo testes baseados em propriedades (Laboratório 11).
+
+### 27.6 Atividade prática
+
+Escreva especificações completas para dois controles do cenário de parada forjada da §27.1, incluindo desempenho, dependências, modo de falha e verificação. Escolha um controle preventivo, como os comandos autenticados, e um controle de recuperação, como a operação manual local na PS3 e na PS4. Para cada um, declare o desempenho que ele precisa alcançar, do que depende e o que acontece quando falha. A autenticação deve falhar fechada para os comandos; a operação manual local precisa funcionar sem o SCADA e sem a rede. Nomeie um dono pelo papel e um método de verificação, e depois verifique se os dois controles compartilham alguma dependência que permitiria a um único evento derrotar ambos.
+
+### 27.7 Erros comuns e limites
+
+- Controles sem critérios de desempenho.
+- Limites impostos na IHM, e não no controlador.
+- "Camadas" que compartilham dependências.
+- Nenhum limite projetado para a pior consequência quando um é viável.
+- Materiais de recuperação alcançáveis pelo mesmo atacante.
+
+O exemplo da dosagem evita cada um: os limites ficam no controlador, o alarme do analisador usa um registrador separado, o limite de curso é projetado, e cada elemento tem uma meta de desempenho. Os limites também mantêm o último setpoint válido quando um comando é rejeitado, de modo que o modo de falha está declarado, e cada rejeição é registrada em log para a regra de alarme.
+
+### Exercícios — capítulo 27
+
+**EX053 — Auditoria de dependências das camadas.** *Objetivo:* verificar a independência. *Entradas:* os quatro controles da §27.5 e sua implementação: limites do controlador no PLC de dosagem; analisador num registrador separado; registro em log via SCADA. *Passos:* liste as dependências de cada camada; identifique qualquer dependência compartilhada; proponha uma mudança. *Evidência esperada:* tabela e mudança. *Rubrica:* 3 = dependência compartilhada encontrada (registro e alarme das rejeições via SCADA), mudança proposta (log local mais caminho de alarme independente); 2 = sem mudança; 1 = apenas a lista; 0 = nada.
+
+**EX054 — O significado de à prova de falhas.** *Objetivo:* definir modos de falha no contexto. *Entradas:* o gateway de telemetria autenticada na PS4. *Passos:* para a falha do gateway, defina o que significa à prova de falhas para (a) os comandos, (b) a telemetria, (c) o controle local, e justifique. *Evidência esperada:* três definições. *Rubrica:* 3 = os comandos falham fechados (rejeitados), a telemetria falha de forma visível (alarme no SCADA), o controle local continua automaticamente; 2 = uma mal definida; 1 = "à prova de falhas = desligar"; 0 = nada.
+
+### Síntese do capítulo
+
+Projete controles por cenário, nos pontos de prevenção, detecção e recuperação. Coloque limites físicos projetados nas piores consequências, imponha os limites onde o atacante não consiga contorná-los, torne as camadas independentes e especifique, para cada controle, desempenho, dependências, modo de falha, dono e verificação.
+
+<!-- cyberabc:chapter-navigation:start ch-27 -->
+### Continue estudando — capítulo 27 de 50
+
+[← Capítulo 26](#ch-26) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 28 →](#ch-28)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-28"></a>
+
+## Capítulo 28 — Infraestrutura crítica e segurança setorial: implementação I
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) implementar um controle de segurança como código funcional com testes, a partir da especificação; (2) aplicar práticas de codificação segura para o tratamento de entradas, a criptografia e o tratamento de erros; (3) construir uma bancada de testes que exercite o controle off-line; e (4) registrar evidências de implementação que remetam aos requisitos. Ele implementa as especificações do Capítulo 27 e prepara o Capítulo 29.
+
+### 28.1 Da especificação ao código
+
+Parta da especificação do controle (Capítulo 27): cada "deverá" se torna pelo menos um teste antes do código ou junto com ele. Mantenha a implementação pequena e sem dependências onde for possível — o gateway deste livro usa apenas a biblioteca padrão do Python. Estruture-a como recomenda o Capítulo 9: um interpretador (Capítulo 4), um verificador (Capítulo 19), um repositório de estado (contadores contra repetição) e uma interface de saída, cada um testado separadamente. O gateway do TMRP segue essa estrutura, e é por isso que seu bug de NaN pôde ser encontrado e corrigido apenas no validador.
+
+### 28.2 Codificação segura para os caminhos de controle
+
+- Valide a entrada antes de usá-la: comprimento, MAC, contador, formato, faixa física (laboratórios 3 e 8).
+- Compare segredos em tempo constante (`hmac.compare_digest`).
+- Carregue as chaves de um armazenamento protegido, nunca do código-fonte ou de arquivos legíveis por todos.
+- Trate toda exceção no caminho de verificação como uma rejeição; nunca aceite por padrão.
+- Limite o uso de recursos: tamanho máximo de mensagem, comprimento máximo de fila, limites de taxa por origem.
+- Registre as rejeições em log com contexto suficiente para investigar, sem registrar segredos.
+
+Essas regras vêm diretamente dos laboratórios 3, 8 e 11. Cada uma tem um teste no conjunto de testes do gateway.
+
+### 28.3 A bancada de testes
+
+Uma bancada de testes reproduz off-line o ambiente do controle: RTUs simuladas que enviam mensagens válidas, malformadas, forjadas, repetidas e atrasadas; um SCADA simulado que recebe a saída do gateway; e um relógio que você controla. O Laboratório 15 (Capítulo 40) é uma versão compacta. As bancadas permitem testar modos de falha que seriam inseguros ou impossíveis de provocar num sistema em operação. A bancada do TMRP inclui RTUs simuladas da PS2 e da PS4, um receptor SCADA simulado e um relógio controlável, para que reinícios, atrasos e repetições possam ser produzidos sob demanda. O mesmo arcabouço carrega depois a campanha de injeção de falhas com sementes, e é por isso que investir nele cedo poupa tempo quando começa a verificação do projeto final.
+
+### 28.4 Evidências
+
+Registre para cada implementação: as versões do requisito e da especificação implementadas; a revisão do código-fonte; os resultados dos testes, com as versões das ferramentas; as limitações conhecidas; e a aprovação do revisor. Isso passa a fazer parte do dossiê de evidências (Capítulo 48). Para o validador de setpoint do TMRP, o registro mostra a versão da especificação, os commits da v1 e da v2, os resultados do T3 para cada uma, a limitação conhecida de que a v1 aceitava NaN e o revisor que fez a pergunta sobre o NaN. Sem esse registro, a constatação posterior do dossiê sobre a situação do T3 teria sido impossível de resolver, porque ninguém conseguiria mostrar qual versão tinha sido aprovada. Registrar as evidências enquanto o trabalho é feito custa minutos; reconstruí-las depois custa dias.
+
+### 28.5 Exemplo resolvido: validador de setpoint v1 (sintético)
+
+A equipe do TMRP implementa R3 a partir da especificação da §27.5. A versão 1 verifica `new < lo`, `new > hi` e o limite de passo, e passa nos testes de exemplo: dentro da faixa, aceito; acima e abaixo da faixa, rejeitado; passo grande demais, rejeitado. A revisão de código pergunta: e o NaN? Na aritmética IEEE 754, toda comparação ordenada com NaN é falsa, então `nan < lo` e `nan > hi` são ambas falsas e `abs(nan - old) > max_step` é falsa — a v1 aceita NaN. A versão 2 rejeita explicitamente valores não finitos e expressa a região segura de forma positiva (`lo <= new <= hi`), o que é falso para NaN. Os testes baseados em propriedades do Capítulo 30 confirmam a diferença de forma sistemática (Laboratório 11). Essa é a reprovação do teste T3 no cenário de aprovação do Capítulo 10.
+
+### 28.6 Atividade prática
+
+Implemente um gateway mínimo que combine a saída do interpretador do Laboratório 3 com a selagem do Laboratório 8, de modo que uma leitura Modbus validada se torne um quadro autenticado. Escreva testes para cada caminho de rejeição. Mantenha as duas partes separadas por interfaces claras: o interpretador devolve uma leitura validada ou um motivo de rejeição, e apenas uma leitura validada é selada. Teste cada caminho de rejeição do Laboratório 3 e confirme que nada chega à função de selagem. Depois verifique se o quadro selado passa no receptor do Laboratório 8 e se uma cópia adulterada é recusada. Guarde a chave fora do arquivo-fonte, mesmo neste exercício, para que o hábito já esteja estabelecido antes que apareçam chaves reais.
+
+### 28.7 Erros comuns e limites
+
+- Código escrito antes que a especificação esteja clara.
+- Comportamento de aceitar por padrão diante de exceções.
+- Verificações negativas (`if x > hi: reject`) que deixam passar o NaN; prefira verificações positivas da região segura.
+- Chaves no código-fonte.
+- Evidências reconstruídas depois do fato.
+
+A primeira versão do validador de setpoint mostra o terceiro erro, e o dossiê do TMRP existe para impedir o último. Sua aceitação do NaN veio das verificações negativas, e a correção foi declarar a região segura de forma positiva. As chaves no código da bancada do TMRP são carregadas de um arquivo protegido, nunca escritas no código-fonte, e toda exceção no caminho de verificação termina numa rejeição registrada em log.
+
+### Exercícios — capítulo 28
+
+**EX055 — O NaN e seus amigos.** *Objetivo:* encontrar aceitações inseguras. *Entradas:* `validate_v1` no Laboratório 11. *Passos:* avalie à mão a v1 e a v2 para `new` = NaN, +∞, −∞, 5.5 e 5.50001 com `old` = 5.2, e explique cada resultado. *Evidência esperada:* tabela. *Rubrica:* 3 = entre os valores especiais, a v1 só aceita NaN (∞ rejeitado por `> hi`, −∞ por `< lo`), 5.5 aceito pelas duas (limite inclusivo), 5.50001 rejeitado; a v2 rejeita todos os não finitos; explicações corretas; 2 = um erro; 1 = sem explicações; 0 = nada.
+
+**EX056 — Registro das rejeições em log.** *Objetivo:* projetar logs úteis. *Entradas:* o gateway. *Passos:* defina um registro de log para cada tipo de rejeição (etiqueta, repetição, inatividade, formato, faixa), com os campos, e explique um campo que você exclui deliberadamente. *Evidência esperada:* esquema. *Rubrica:* 3 = os campos permitem a investigação (fonte de tempo, estação, contador, motivo, ID do gateway, hash da mensagem), exclui material de chaves e a carga útil completa onde for sensível; 2 = falta a fonte de tempo ou a estação; 1 = texto livre; 0 = nada.
+
+### Síntese do capítulo
+
+Implemente os controles a partir de especificações, com testes para cada "deverá". Codifique o caminho de controle de forma defensiva: valide por completo, compare em tempo constante, proteja as chaves, rejeite diante de qualquer erro, limite os recursos, registre em log de forma útil. Prefira verificações positivas da região segura. Teste numa bancada capaz de produzir as falhas que você não consegue provocar em operação e registre as evidências à medida que avança.
+
+<!-- cyberabc:chapter-navigation:start ch-28 -->
+### Continue estudando — capítulo 28 de 50
+
+[← Capítulo 27](#ch-27) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 29 →](#ch-29)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-29"></a>
+
+## Capítulo 29 — Infraestrutura crítica e segurança setorial: medição
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) definir métricas de segurança e resiliência que apoiem decisões; (2) calcular métricas de detecção — precisão, revocação, F1, taxa de alarmes falsos, tempo até a detecção — a partir de testes rotulados; (3) medir a resiliência como o desempenho do serviço ao longo do tempo durante uma perturbação; e (4) evitar métricas que recompensam o comportamento errado. Ele se apoia nos capítulos 7 e 28 e prepara os capítulos 30, 38 e 40.
+
+### 29.1 O que medir
+
+Uma métrica é útil se muda uma decisão. Há três famílias: **desempenho dos controles** (o controle faz o que foi especificado: taxas de rejeição, tempos de detecção); **exposição** (quanta superfície de ataque ou vulnerabilidade existe: condutos não autenticados, vulnerabilidades alcançáveis sem patch, contas compartilhadas); e **resiliência do serviço** (como o serviço se degrada e se recupera). Use a abordagem objetivo–pergunta–métrica: declare o objetivo, a pergunta que mostraria o progresso e só então a métrica. Para o TMRP, a latência de alarme de R7 mede o desempenho dos controles, a contagem de condutos não autenticados mede a exposição e a fração da demanda atendida durante o ensaio de recuperação mede a resiliência.
+
+### 29.2 Métricas de detecção
+
+A partir de um conjunto de teste rotulado: verdadeiros positivos (VP), falsos positivos (FP), falsos negativos (FN), verdadeiros negativos (VN). **Precisão** = VP/(VP+FP): dos alarmes, quantos eram reais. **Revocação** = VP/(VP+FN): dos eventos reais, quantos foram encontrados. **F1** é a média harmônica das duas. Informe a precisão e a revocação junto com a taxa-base do conjunto de teste; a precisão num conjunto de teste com 50% de ataques diz pouco sobre uma operação com 0,1% (Capítulo 7). O **tempo até a detecção** é uma distribuição; informe a mediana e os piores casos, não apenas a média. [Arp et al. (2022)](https://www.usenix.org/conference/usenixsecurity22/presentation/arp) listam armadilhas comuns na avaliação de sistemas de segurança baseados em aprendizado de máquina, incluindo taxas-base irreais e contaminação de dados (data snooping); [Kim et al. (2022)](https://ojs.aaai.org/index.php/AAAI/article/view/20680) mostram como a avaliação com ajuste de pontos pode inflar as pontuações da detecção de anomalias em séries temporais.
+
+### 29.3 A resiliência como desempenho ao longo do tempo
+
+Trace o desempenho do serviço $Q(t)$ — para a LRWA, a fração da demanda atendida — durante uma perturbação. [Bruneau et al. (2003)](https://doi.org/10.1193/1.1623497) propuseram medir a perda de resiliência como a área entre o desempenho pleno e $Q(t)$, da perturbação até a recuperação. A curva mostra a robustez (quanto o desempenho cai), a rapidez (com que velocidade ele se recupera) e a perda total. Os requisitos de engenharia se projetam sobre ela: R4 mantém a queda rasa; R6 encurta a recuperação. O ensaio de recuperação do TMRP fornece uma curva real, já que o abastecimento ficou em modo local enquanto a operação remota era restaurada.
+
+### 29.4 Métricas que enganam
+
+Contar ataques bloqueados recompensa firewalls ruidosos; contar patches aplicados ignora quais deles importavam; o tempo médio até a detecção esconde o único evento detectado depois de três semanas. Quando uma métrica se torna uma meta, as pessoas otimizam a métrica. Prefira métricas ligadas às consequências e verificadas por teste. O teste de aceitação do detector do TMRP evita isso informando as falhas de detecção e a detecção mais lenta, e não apenas uma média. Os dois eventos de reconhecimento não detectados permanecem no relatório, porque são o resultado que muda o quanto a LRWA pode confiar no detector.
+
+### 29.5 Exemplo resolvido: teste de aceitação de um detector de anomalias (sintético)
+
+O teste de aceitação do TMRP para um detector de anomalias de rede usa 14 eventos rotulados de uma semana de teste na bancada (Laboratório 10): 7 maliciosos (inundações de escrita, códigos de função não autorizados, uma nova conexão de engenharia) e 7 benignos (manutenção, backup de firmware, um failover). Resultados: precisão 0,625, revocação 0,714, F1 0,667; tempo até a detecção dos eventos detectados de 2 a 30 minutos, mediana 7. Os dois ataques não detectados eram ambos reconhecimentos lentos e de baixo volume. A decisão de aceitação: implantar para a detecção de ataques de alto volume, não confiar nele para o reconhecimento, e registrar que a taxa-base de 50% do conjunto de teste torna a precisão operacional muito menor.
+
+### 29.6 Atividade prática: Laboratório 10
+
+```python
+# Lab 10 - detection metrics and time-to-detect from a labelled synthetic test week (offline)
+# (event_id, truly_malicious, alerted, minutes_from_start_to_alert or None)
+EV = [(1,1,1,4),(2,1,1,11),(3,1,0,None),(4,0,1,None),(5,0,0,None),(6,1,1,2),(7,0,1,None),
+      (8,0,0,None),(9,1,1,30),(10,0,0,None),(11,0,0,None),(12,1,0,None),(13,0,1,None),(14,1,1,7)]
+tp = sum(1 for e in EV if e[1] and e[2]); fp = sum(1 for e in EV if not e[1] and e[2])
+fn = sum(1 for e in EV if e[1] and not e[2]); tn = sum(1 for e in EV if not e[1] and not e[2])
+prec, rec = tp / (tp + fp), tp / (tp + fn)
+print(f"TP={tp} FP={fp} FN={fn} TN={tn} precision={prec:.3f} recall={rec:.3f} F1={2*prec*rec/(prec+rec):.3f}")
+ttd = sorted(e[3] for e in EV if e[1] and e[2])
+print("time to detect (min):", ttd, "mean", round(sum(ttd)/len(ttd), 1), "median", ttd[len(ttd)//2])
+```
+
+Saída esperada:
+
+```text
+TP=5 FP=3 FN=2 TN=4 precision=0.625 recall=0.714 F1=0.667
+time to detect (min): [2, 4, 7, 11, 30] mean 10.8 median 7
+```
+
+As contagens coincidem com o exemplo resolvido: cinco ataques detectados, três eventos benignos alarmados, dois ataques não detectados e quatro eventos benignos deixados em silêncio. Os dois ataques não detectados eram reconhecimentos lentos e de baixo volume, que o detector não enxerga. Os tempos de detecção mostram por que a mediana importa: um evento levou trinta minutos, enquanto a maioria foi encontrada em menos de dez. Como metade dos eventos de teste era maliciosa, a precisão aqui é muito maior do que a LRWA veria em operação, como mostra o EX057.
+
+### 29.7 Erros comuns e limites
+
+- Métricas que ninguém usa para uma decisão.
+- Precisão de conjuntos de teste balanceados informada como se fosse operacional.
+- Tempo médio até a detecção sem distribuição nem falhas de detecção.
+- Resiliência informada apenas como disponibilidade (uptime).
+- Métricas que se tornam metas.
+
+O teste de aceitação do TMRP informa as falhas de detecção e a detecção mais lenta, e sua precisão é declarada com a taxa-base de cinquenta por cento do conjunto de teste, para que ninguém a confunda com a precisão operacional. A resiliência é mostrada como a fração da demanda atendida ao longo do tempo, e não como disponibilidade. Cada métrica nele informa a decisão de implantação.
+
+### Exercícios — capítulo 29
+
+**EX057 — Precisão operacional.** *Objetivo:* traduzir as métricas de teste para a operação. *Entradas:* revocação de 0,714 do Laboratório 10 e taxa de FP no teste de 3/7; taxa-base operacional de 1 evento malicioso a cada 1.000 eventos. *Passos:* calcule a precisão operacional e os alarmes falsos esperados a cada 1.000 eventos; interprete. *Evidência esperada:* números e interpretação. *Rubrica:* 3 = cálculo correto (precisão ≈ 0,0017; ≈ 428 alarmes falsos a cada 1.000 eventos), interpretação de que a estimativa de FP a partir de 7 eventos benignos é incerta demais e de que o detector é inutilizável sem uma TFP muito menor; 2 = números certos; 1 = fórmula errada; 0 = nada.
+
+**EX058 — Curva de resiliência.** *Objetivo:* calcular a perda de resiliência. *Entradas:* $Q(t)$ sintético: 100% até t = 0; 60% de 0 a 4 h; recuperação linear até 100% de 4 h a 12 h. *Passos:* calcule a área de perda em %·h; recalcule se o modo manual local (R4) mantiver $Q$ em 85% de 0 a 4 h. *Evidência esperada:* dois números e uma frase. *Rubrica:* 3 = 160+160 = 320 %·h e 60+60 = 120 %·h, com interpretação clara; 2 = um erro; 1 = apenas o método; 0 = nada.
+
+### Síntese do capítulo
+
+Meça o que muda decisões: o desempenho dos controles, a exposição e a resiliência do serviço. Informe a precisão e a revocação com as taxas-base, e as distribuições do tempo até a detecção incluindo as falhas de detecção. Represente a resiliência como desempenho ao longo do tempo. Desconfie de métricas que podem ser manipuladas ou que escondem o pior caso.
+
+<!-- cyberabc:chapter-navigation:start ch-29 -->
+### Continue estudando — capítulo 29 de 50
+
+[← Capítulo 28](#ch-28) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 30 →](#ch-30)
+
+Siga para a próxima lição escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-30"></a>
+
+## Capítulo 30 — Laboratório de verificação I
+
+### Objetivos de aprendizagem e conexão
+
+Ao fim deste capítulo você será capaz de (1) planejar e executar uma campanha de verificação de controles de segurança com critérios definidos de aprovação e reprovação; (2) usar testes baseados em exemplos, de limites, negativos e baseados em propriedades; (3) registrar os resultados para que outro engenheiro possa reproduzi-los; e (4) tratar testes reprovados com honestidade, incluindo o novo teste depois das correções. Ele verifica a implementação do Capítulo 28 e prepara o Capítulo 38 (validação) e o Capítulo 40 (Laboratório de verificação II).
+
+### 30.1 A verificação como campanha
+
+A verificação responde: a implementação atende à sua especificação? Um plano de campanha lista, para cada requisito, os casos de teste, o ambiente, as entradas, o procedimento, o resultado esperado, o critério de aprovação e quem o executa. Os testes são escritos antes da execução e não são alterados para fazer os resultados passarem. Os resultados incluem detalhes do ambiente (versões de software, sementes, configuração) para que o teste possa ser repetido. O plano de campanha do TMRP lista T1 a T7 contra R1 a R8, com critérios de aprovação fixados antes da execução de qualquer teste; R9 ainda não tem teste atribuído, o que o mapa de evidências expõe depois. Cada teste nomeia seu ambiente e quem o executa.
+
+### 30.2 Tipos de teste
+
+- **Testes de exemplo** verificam o comportamento típico.
+- **Testes de limites** verificam as bordas: exatamente nos limites, logo dentro, logo fora.
+- **Testes negativos** verificam que entradas inválidas são rejeitadas: malformadas, forjadas, repetidas, fora da faixa.
+- **Testes baseados em propriedades** declaram uma propriedade que precisa valer para todas as entradas ("nenhum setpoint inseguro é jamais aceito") e a verificam em muitas entradas geradas, incluindo valores especiais. Eles encontram casos que ninguém pensou em escrever.
+- **Testes de injeção de falhas** (Capítulo 40) perturbam o ambiente: descartam, atrasam ou corrompem mensagens; reiniciam componentes.
+
+Os testes de exemplo mostram a presença do comportamento correto nos casos escolhidos; os testes baseados em propriedades e de injeção de falhas buscam de forma mais ampla a ausência de comportamento incorreto. Nenhum deles prova a correção para todas as entradas, exceto em domínios finitos pequenos (Capítulo 2).
+
+### 30.3 Reprodutibilidade
+
+Defina a semente de todo gerador aleatório e imprima-a; registre as versões das ferramentas e bibliotecas; guarde as entradas de teste; armazene os resultados com a revisão do código-fonte. Um teste reprovado que não pode ser reproduzido não pode ser corrigido nem verificado de novo. O registro do T3 do TMRP segue essa regra: ele informa a semente, o número de casos gerados e a versão do Python, para que qualquer pessoa possa executar de novo o teste baseado em propriedades e ver as mesmas trinta e uma aceitações de NaN na v1 e nenhuma na v2. Sem a semente, um revisor só poderia aceitar o resultado na confiança. O mesmo registro armazena a revisão do código-fonte de cada versão do validador.
+
+### 30.4 Testes reprovados
+
+Um teste reprovado é informação. Registre-o como reprovado, com evidências; analise a causa raiz; corrija; execute de novo o teste reprovado e o conjunto de regressão; registre o novo teste. Nunca rotule de novo uma reprovação como "não aplicável" porque o prazo está próximo (Capítulo 10). Se uma reprovação for aceita temporariamente, ela precisa de um controle compensatório, um dono e uma data. O T3 é o modelo: reprovado na v1, corrigido na v2, testado de novo e registrado. A reprovação da v1 nunca foi rotulada de novo, e o controle compensatório da PS4 tinha um dono e uma data.
+
+### 30.5 Exemplo resolvido: T3, limites de setpoint (sintético)
+
+O teste T3 verifica R3. Os testes de exemplo na v1 (dentro da faixa, acima, abaixo, passo grande) são aprovados. O teste baseado em propriedades gera 2.000 casos com a semente 30, um em cada dez sorteado entre valores especiais (NaN, ±∞, limites exatos). A v1 aceita 31 valores inseguros — todos NaN. A v2 não aceita nenhum. O T3 é registrado como **reprovado na v1**, com causa raiz "comparações negativas são falsas para NaN", corrigido na v2, testado de novo e **aprovado na v2**, com a semente e a versão do Python registradas. Os dois resultados permanecem no registro. O resultado do novo teste é depois lançado na matriz de rastreabilidade.
+
+### 30.6 Atividade prática: Laboratório 11
+
+```python
+# Lab 11 - property-based testing of a setpoint validator finds what example tests missed (offline)
+import random, math
+def validate_v1(new, old, lo=0.5, hi=5.5, max_step=0.5):
+    if new < lo: return False
+    if new > hi: return False
+    if abs(new - old) > max_step: return False
+    return True
+def validate_v2(new, old, lo=0.5, hi=5.5, max_step=0.5):
+    if not (isinstance(new, float) and math.isfinite(new)): return False
+    return lo <= new <= hi and abs(new - old) <= max_step
+examples = [(3.0, 3.2), (6.0, 5.8), (0.2, 0.6), (4.0, 3.0)]
+print("example tests v1:", [validate_v1(n, o) for n, o in examples])
+rng = random.Random(30)
+specials = [float("nan"), float("inf"), -float("inf"), 5.5, 0.5]
+def prop(f, trials=2000):
+    fails = []
+    for i in range(trials):
+        old = rng.uniform(0.5, 5.5)
+        new = rng.choice(specials) if i % 10 == 0 else rng.uniform(-1, 7)
+        ok = f(new, old)
+        safe = math.isfinite(new) and 0.5 <= new <= 5.5 and abs(new - old) <= 0.5
+        if ok and not safe: fails.append(new)
+    return fails
+f1 = prop(validate_v1); f2 = prop(validate_v2)
+print("v1 unsafe acceptances:", len(f1), "first:", f1[:1])
+print("v2 unsafe acceptances:", len(f2))
+```
+
+Saída esperada:
+
+```text
+example tests v1: [True, False, False, False]
+v1 unsafe acceptances: 31 first: [nan]
+v2 unsafe acceptances: 0
+```
+
+Os testes de exemplo dão as mesmas respostas para os dois validadores, então não conseguem distinguir a v1 da v2. É a execução baseada em propriedades que os separa: a v1 aceita trinta e um valores inseguros, todos NaN, enquanto a v2 não aceita nenhum. A semente trinta torna a execução repetível. Observe que o gerador sorteia valores especiais apenas uma vez em cada dez; sem isso, o NaN quase nunca apareceria e o bug ficaria escondido por mais casos aleatórios que fossem tentados. Registre a semente junto com o resultado.
+
+### 30.7 Erros comuns e limites
+
+- Testes escritos depois de ver os resultados.
+- Apenas testes de exemplo.
+- Testes aleatórios sem semente; resultados sem versões.
+- Reprovações rotuladas de novo em vez de corrigidas.
+- Alegar que testes baseados em propriedades provam a correção.
+
+O registro do T3 do TMRP evita cada um desses erros. Sua propriedade foi escrita antes da execução, seu gerador tem semente, a reprovação na v1 permaneceu registrada como reprovação, e o relatório alega apenas que nenhum valor inseguro foi encontrado entre os casos gerados, e não que a v2 está correta para todas as entradas. A semente e a versão ficam armazenadas com o resultado.
+
+### Exercícios — capítulo 30
+
+**EX059 — Conte as reprovações.** *Objetivo:* raciocinar sobre testes gerados. *Entradas:* Laboratório 11. *Passos:* (1) explique por que todas as 31 aceitações inseguras são NaN; (2) estime quantos casos NaN o gerador produziu (um em cada dez casos é um valor especial, escolhido uniformemente entre cinco) e compare com 31; (3) explique por que nem todo caso NaN é uma aceitação insegura na v1 — ou mostre que todo NaN é aceito. *Evidência esperada:* raciocínio e números. *Rubrica:* 3 = ≈ 200 casos especiais × 1/5 ≈ 40 NaN esperados, 31 observados, compatível com a variação aleatória, e todo NaN é aceito pela v1, então 31 é a contagem de NaN; 2 = parcial; 1 = sem números; 0 = nada.
+
+**EX060 — Plano de verificação para R2.** *Objetivo:* planejar testes para a rejeição de repetições. *Entradas:* R2 e Laboratório 8. *Passos:* escreva um plano de teste com pelo menos seis casos (incluindo o reinício de cada lado, o estouro ou o máximo do contador, a entrega fora de ordem), resultados esperados e critérios de aprovação. *Evidência esperada:* tabela. *Rubrica:* 3 = os casos cobrem o reinício e a ordenação, resultados esperados coerentes com o projeto da §19.5, critérios inequívocos; 2 = reinício ausente; 1 = apenas o caminho feliz; 0 = nada.
+
+### Síntese do capítulo
+
+A verificação é uma campanha planejada, com critérios fixados com antecedência. Combine testes de exemplo, de limites, negativos, baseados em propriedades e de injeção de falhas; torne cada execução reprodutível; e trate as reprovações como informação a ser corrigida e verificada de novo, nunca rotulada de novo.
+
+<!-- cyberabc:chapter-navigation:start ch-30 -->
+### Continue estudando — capítulo 30 de 50
+
+[← Capítulo 29](#ch-29) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 31 (inglês) →](../../en/book/MANUSCRIPT.md#ch-31)
 
 Os próximos capítulos ainda estão apenas na edição em inglês.
 <!-- cyberabc:chapter-navigation:end -->
@@ -2052,7 +2366,7 @@ Os próximos capítulos ainda estão apenas na edição em inglês.
 
 ## Resoluções e notas de avaliação
 
-Cada resolução mostra uma resposta defensável. Os resultados numéricos foram produzidos executando os laboratórios e os scripts curtos descritos, com Python 3 e as sementes indicadas; seus últimos dígitos podem diferir se você mudar a ordem dos sorteios aleatórios. Nos exercícios de projeto, a rubrica do capítulo importa mais do que coincidir com a redação abaixo. Lowmarsh Regional Water Authority, St Brenna's Hospital, o TMRP e todos os números são sintéticos. Esta edição parcial traz as resoluções de EX001–EX052; as de EX053–EX100 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
+Cada resolução mostra uma resposta defensável. Os resultados numéricos foram produzidos executando os laboratórios e os scripts curtos descritos, com Python 3 e as sementes indicadas; seus últimos dígitos podem diferir se você mudar a ordem dos sorteios aleatórios. Nos exercícios de projeto, a rubrica do capítulo importa mais do que coincidir com a redação abaixo. Lowmarsh Regional Water Authority, St Brenna's Hospital, o TMRP e todos os números são sintéticos. Esta edição parcial traz as resoluções de EX001–EX060; as de EX061–EX100 estão na [edição em inglês](../../en/book/MANUSCRIPT.md#worked-results) até a tradução dos capítulos correspondentes.
 
 ### Capítulo 1
 
@@ -2209,6 +2523,30 @@ Cada resolução mostra uma resposta defensável. Os resultados numéricos foram
 **EX051.** A mediana de três tolera um transmissor falsificado ou com defeito. Um atacante que controle a RTU que lê os três consegue falsificar os três de forma coerente, derrotando a votação. Restabeleça a independência ligando os transmissores a módulos de E/S ou controladores separados, com comunicações separadas, de modo que nenhum comprometimento isolado controle duas das três entradas.
 
 **EX052.** ADR-modelo: contexto — a PS4 é a alimentação direta do hospital, os setpoints mudam cerca de uma vez por mês; opções — C2 (remoto dentro dos limites) ou C3/variante de C2 (escritas de setpoint apenas locais, monitoramento remoto); decisão — escritas de setpoint apenas locais na PS4, partida/parada remota mantida com autenticação; consequências — visita mensal à instalação para mudanças de setpoint, procedimentos de resposta local mais rápidos, risco residual D1 na PS4 reduzido a partida/parada; rever se a frequência de mudanças de setpoint aumentar ou se o quadro de pessoal mudar.
+
+### Capítulo 27
+
+**EX053.** Limite projetado: nenhuma (mecânico). Limites do controlador: PLC de dosagem. Alarme do analisador: registrador separado e suas comunicações. Registro e alarme das rejeições: via SCADA — compartilhados com o sistema que poderia estar comprometido. Mudança: log local não volátil de rejeições no PLC e um caminho de alarme independente (do registrador do analisador até a sala de controle por uma rota separada).
+
+**EX054.** Os comandos falham fechados: se o gateway falhar, nenhum comando passa. A telemetria falha de forma visível: o SCADA gera um alarme de estação inativa em até 60 s. O controle local continua automaticamente, dentro dos limites impostos localmente. Desligar a estação transformaria a falha de um componente de segurança numa falha de abastecimento.
+
+### Capítulo 28
+
+**EX055.** Com `old` = 5.2: v1 — NaN aceito (todas as comparações falsas); +∞ rejeitado (`> hi`); −∞ rejeitado (`< lo`); 5.5 aceito (|5,5 − 5,2| = 0,3 ≤ 0,5, limite inclusivo); 5.50001 rejeitado (`> hi`). A v2 rejeita NaN e ±∞ via `isfinite`, aceita 5.5 e rejeita 5.50001.
+
+**EX056.** Campos: carimbo de tempo em UTC e fonte de tempo; ID do gateway; ID da estação; código do motivo (etiqueta, repetição, inatividade, formato, faixa); valor do contador (se interpretável); último contador aceito; SHA-256 do quadro recebido; endereço de origem. Exclua o material de chaves e a carga útil completa dos comandos onde ela poderia revelar setpoints sensíveis a quem lê os logs; o hash do quadro permite a correlação sem divulgação.
+
+### Capítulo 29
+
+**EX057.** Revocação 5/7 ≈ 0,714; TFP no teste 3/7 ≈ 0,429. A cada 1.000 eventos com um malicioso: VP esperados ≈ 0,714, FP ≈ 428. Precisão operacional ≈ 0,0017. Interpretação: a estimativa da TFP a partir de 7 eventos benignos é extremamente incerta, mas mesmo uma melhoria de uma ordem de grandeza deixa o detector inutilizável para acionar plantonistas; ele precisa de uma TFP muito menor, medida sobre muito mais dados benignos.
+
+**EX058.** Base: 40% × 4 h = 160 %·h, mais o triângulo de recuperação 0,5 × 8 × 40 = 160 → 320 %·h. Com o manual local a 85%: 15 × 4 = 60, mais 0,5 × 8 × 15 = 60 → 120 %·h. Neste caso sintético, R4 reduz a perda de resiliência em cerca de 62%.
+
+### Capítulo 30
+
+**EX059.** O NaN dá falso em qualquer comparação, então as verificações negativas da v1 nunca o rejeitam, enquanto ±∞ falham em `> hi` ou `< lo`. Cerca de 2.000/10 = 200 casos de valores especiais, um quinto deles NaN → cerca de 40 esperados; 31 observados (o gerador sorteou 31 casos NaN com a semente 30), bem dentro da variação aleatória (desvio-padrão binomial ≈ 5,7). Todo caso NaN é uma aceitação insegura pela v1, então as 31 reprovações são exatamente os casos NaN.
+
+**EX060.** Casos: (1) contadores 1, 2, 3 → todos aceitos; (2) repetir o 2 → rejeitado; (3) contador menor → rejeitado; (4) reinício do receptor e depois repetição de uma mensagem antiga → rejeitada (exige estado persistido ou rotação de chaves); (5) reinício do emissor → retoma em persistido + 1.000, aceito; contadores antigos rejeitados; (6) entrega fora de ordem (3 antes de 2) → 3 aceito, 2 rejeitado e registrado em log (comportamento documentado); (7) contador no máximo 2⁶⁴ − 1 → rotação de chaves exigida antes do estouro; testar que o emissor se recusa a dar a volta. Critérios de aprovação: resultados exatos de aceitação/rejeição e entradas de log.
 
 <a id="glossary"></a>
 
