@@ -1,7 +1,7 @@
 # Privacidade e Proteção de Dados: Curso de Pós-Graduação
 
 - Idioma: português do Brasil (`pt`); curso 142, curso de pós-graduação (2 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–6 de 12 já estão escritos em português, com os exercícios EX001–EX030 e suas resoluções com rubricas de 0 a 3 e 2 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 7–12 (EX031–EX060) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–12 de 12 têm texto didático escrito à mão; os exercícios EX001–EX060 têm resoluções correspondentes com rubricas de 0 a 3; os três laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: profissionais em pós-graduação que lideram um programa de privacidade numa empresa regulada e com operações em mais de um país.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios simulam a detecção de fraudes com diferentes níveis de detalhe da localização, analisam um teste A/B de banner de consentimento e comparam indicadores de risco de privacidade com os limites do conselho, sempre sobre dados sintéticos. A análise jurídica é didática e não constitui aconselhamento jurídico; a LGPD e os atos da ANPD são citados pelo texto oficial e parafraseados. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,7 @@ Regulamento (UE) 2016/679 (GDPR); Lei nº 13.709/2018 (LGPD); Resolução CD/ANP
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) |
-
-Capítulos 7–12: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-07), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -338,11 +336,285 @@ Duas semanas podem não captar o comportamento sazonal; repita o teste mais tard
 - **EX029 — Consentimento duradouro.** Que benefício de negócio o banner B oferece? *Rubrica:* 3 = consentimentos em menor número, mas mais duradouros;; 2 = menciona estabilidade;; 1 = nenhum;; 0 = nenhuma.
 - **EX030 — Dúvida sobre a liberdade.** Por que os consentimentos obtidos com A são questionáveis? *Rubrica:* 3 = o design empurrou os usuários, e as revogações maiores sugerem que as escolhas não refletiam preferências;; 2 = menciona indução;; 1 = são válidos;; 0 = nenhuma.
 
+<a id="ch-07"></a>
+
+## Capítulo 7 — Privacidade e proteção de dados: integração organizacional
+
+### Objetivos de aprendizagem
+
+Você vai (1) incorporar a privacidade aos processos de produto e de compras; (2) alinhar a privacidade às funções de segurança e de riscos; (3) construir uma rede de multiplicadores de privacidade.
+
+### 7.1 Processo de produto
+
+Priscila integra a privacidade ao processo de produto da Corvina. Cada mudança de produto passa por uma triagem curta de perguntas de sim ou não: ela coleta dados novos, usa dados para uma nova finalidade, envolve um novo fornecedor ou destinatário, automatiza decisões ou afeta muitos clientes? Um sim aciona uma DPIA completa. Isso fecha a lacuna encontrada no capítulo 2, em que mudanças em produtos existentes escapavam da revisão. No primeiro trimestre, a triagem aciona três DPIAs, uma delas para as mudanças no modelo antifraude, que antes teriam passado sem qualquer análise de privacidade.
+
+### 7.2 Compras
+
+Os fornecedores recebem dados pessoais. Priscila acrescenta critérios de privacidade às compras: contratos de tratamento de dados que atendam ao artigo 28 do GDPR e às exigências da LGPD, cláusulas de exclusão, listas de suboperadores e prazos de notificação de incidentes. As Diretrizes 07/2020 do EDPB a ajudam a definir quando um fornecedor é operador ou controlador. Agora, compras não pode assinar contratos que envolvam dados pessoais sem revisão de privacidade, feita em no máximo cinco dias úteis com um questionário padrão sobre segurança, suboperadores, transferências, retenção e apoio aos direitos dos titulares.
+
+### 7.3 Alinhamento
+
+Priscila se reúne mensalmente com as equipes de segurança, de riscos corporativos e de compliance. Elas compartilham dados de incidentes, alinham as classificações de risco, coordenam as revisões de fornecedores e mantêm um único registro de ações em aberto. A equipe de segurança adota a coluna de dano às pessoas em suas avaliações de incidentes. Priscila observa que as funções de privacidade, segurança e riscos costumam duplicar trabalho ou deixar lacunas entre si, e que a coordenação regular torna a proteção da organização mais coerente e menos pesada para as equipes que precisam responder às três.
+
+### 7.4 Multiplicadores
+
+Priscila constrói uma rede de multiplicadores de privacidade, um em cada departamento, treinados para responder a dúvidas básicas e identificar problemas. Eles recebem duas horas de treinamento por trimestre, se reúnem trimestralmente para trocar exemplos e têm o nome publicado na página de privacidade da intranet. Ela descobre que os multiplicadores pegam problemas cedo, como uma equipe de atendimento que compartilhava no chat interno capturas de tela com números de cartão. A Dra. Ward observa que uma equipe de privacidade pequena amplia seu alcance com multiplicadores, desde que eles recebam treinamento, tempo e reconhecimento.
+
+### Exemplo resolvido
+
+Priscila acrescenta uma triagem de mudanças que aciona três DPIAs num trimestre, incorpora a privacidade às compras, coordena-se mensalmente com segurança e riscos e constrói uma rede de multiplicadores que identifica o compartilhamento de capturas de tela.
+
+> **Caso sintético.** Os processos são sintéticos; o artigo 28 do GDPR, a LGPD e as Diretrizes 07/2020 do EDPB são reais.
+
+### Erros e limites
+
+As perguntas da triagem podem ser respondidas sem cuidado; confira as respostas por amostragem.
+
+### Exercícios
+
+- **EX031 — Gatilhos da triagem.** Cite duas perguntas da triagem que acionam uma DPIA. *Rubrica:* 3 = dados novos, nova finalidade, novo fornecedor ou muitos clientes afetados;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+- **EX032 — Critérios de compras.** Que critérios de privacidade foram acrescentados às compras? *Rubrica:* 3 = contratos conformes ao artigo 28, cláusulas de exclusão, listas de suboperadores e prazos de notificação;; 2 = dois;; 1 = nenhum;; 0 = nenhuma.
+- **EX033 — O que os multiplicadores pegaram.** O que os multiplicadores identificaram cedo? *Rubrica:* 3 = capturas de tela com números de cartão no chat interno;; 2 = menciona capturas de tela;; 1 = nada;; 0 = nenhuma.
+- **EX034 — Valor da coordenação.** Por que coordenar privacidade, segurança e riscos todo mês? *Rubrica:* 3 = evita duplicação e lacunas, tornando a proteção coerente;; 2 = menciona alinhamento;; 1 = desnecessário;; 0 = nenhuma.
+- **EX035 — DPIA antifraude.** Que mudança em produto existente acionou uma DPIA? *Rubrica:* 3 = as mudanças no modelo antifraude;; 2 = menciona fraude;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-08"></a>
+
+## Capítulo 8 — Privacidade e proteção de dados: casos difíceis
+
+### Objetivos de aprendizagem
+
+Você vai (1) lidar com obrigações em conflito, como a prevenção à lavagem de dinheiro e a eliminação; (2) responder a requisições de autoridades policiais; (3) gerir um incidente complexo.
+
+### 8.1 Prevenção à lavagem de dinheiro versus eliminação
+
+Um cliente pede que a Corvina elimine todos os seus dados. As regras de prevenção à lavagem de dinheiro (AML) obrigam a Corvina a guardar registros de transações e documentos de identificação por vários anos. Priscila explica que o artigo 17(3)(b) do GDPR permite a conservação quando o tratamento é necessário ao cumprimento de uma obrigação legal, e que a LGPD tem disposição semelhante no art. 16, I. A eliminação, portanto, só se aplica em parte: a Corvina apaga os dados de marketing e as preferências do perfil, restringe os registros conservados ao uso de compliance e informa ao cliente, com clareza, o que fica guardado, por quê e por quanto tempo.
+
+### 8.2 Requisições policiais
+
+A polícia requisita os registros de transações de um cliente sob investigação. Priscila confere se a requisição tem a forma jurídica adequada, especifica os dados e vem de um órgão autorizado, verificando o fundamento legal de cada pedido. A Corvina divulga apenas as transações do período requisitado e registra a divulgação. Ela observa que a Corvina pode não poder informar o cliente se isso prejudicar a investigação. Priscila cria um procedimento para essas requisições, garantindo consistência e protegendo tanto os clientes quanto os funcionários, que deixam de decidir sozinhos sob pressão.
+
+### 8.3 Incidente complexo
+
+Um fornecedor de software de atendimento informa que um invasor acessou tickets de suporte, alguns com números parciais de cartão e endereços. Priscila lidera a resposta. O incidente afeta clientes dos dois países. Pelo GDPR, a Corvina notifica a autoridade de controle portuguesa em até 72 horas; pela LGPD, comunica a ANPD em três dias úteis, prazo do art. 6º da Resolução CD/ANPD nº 15/2024, contado do conhecimento de que dados pessoais foram afetados. Os dois relógios são acompanhados separadamente. As Diretrizes 9/2022 do EDPB ajudam a avaliar o risco, e os clientes afetados recebem orientações sobre phishing. O registro da resposta guarda a hora de cada comunicação.
+
+### 8.4 Lições
+
+Priscila reflete que os casos difíceis costumam envolver obrigações concorrentes, várias jurisdições e informação incompleta. Procedimentos claros, raciocínio documentado e coordenação com o jurídico ajudam. A revisão do incidente produz mudanças concretas: o contrato com o fornecedor passa a exigir notificação mais rápida, os dados de cartão nos tickets passam a ser mascarados automaticamente, um modelo de carta aos clientes é preparado e um ensaio é marcado a cada seis meses. A Dra. Ward observa que os casos difíceis testam se o programa de privacidade funciona sob pressão, e que aprender com eles importa tanto quanto resolvê-los.
+
+### Exemplo resolvido
+
+Priscila equilibra a eliminação com a conservação exigida pela prevenção à lavagem de dinheiro, atende a uma requisição policial com divulgação mínima, coordena um incidente internacional num fornecedor e acrescenta o mascaramento automático dos dados de cartão nos tickets.
+
+> **Caso sintético.** Os casos são sintéticos; o artigo 17(3)(b) do GDPR, o art. 16 da LGPD, a Resolução CD/ANPD nº 15/2024 e as Diretrizes 9/2022 do EDPB são reais.
+
+### Erros e limites
+
+Os prazos de cada jurisdição mudam; confira os regulamentos vigentes.
+
+### Exercícios
+
+- **EX036 — Eliminação e AML.** O que a Corvina elimina e o que conserva no pedido de eliminação? *Rubrica:* 3 = elimina marketing e preferências; conserva os registros de AML restritos a compliance;; 2 = uma parte;; 1 = tudo;; 0 = nenhuma.
+- **EX037 — Artigo 17(3)(b).** Que dispositivo permite conservar dados por obrigação legal? *Rubrica:* 3 = o artigo 17(3)(b) do GDPR;; 2 = aproximado;; 1 = errado;; 0 = nenhuma.
+- **EX038 — Divulgação à polícia.** O que a Corvina divulgou à polícia? *Rubrica:* 3 = só as transações do período requisitado, com registro;; 2 = menciona limitação;; 1 = tudo;; 0 = nenhuma.
+- **EX039 — Incidente internacional.** Que autoridades foram notificadas no incidente do fornecedor? *Rubrica:* 3 = a autoridade de controle portuguesa pelo GDPR e a ANPD pela LGPD;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+- **EX040 — Mascaramento nos tickets.** Que correção preventiva seguiu o incidente? *Rubrica:* 3 = mascaramento automático dos dados de cartão nos tickets de suporte;; 2 = menciona mascaramento;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-09"></a>
+
+## Capítulo 9 — Privacidade e proteção de dados: liderança e garantia
+
+### Objetivos de aprendizagem
+
+Você vai (1) reportar o risco de privacidade a um conselho com indicadores; (2) definir limites de apetite; (3) oferecer garantia sobre o programa de privacidade.
+
+### 9.1 Reporte ao conselho
+
+O conselho da Corvina quer entender o risco de privacidade. Priscila propõe seis indicadores-chave de risco, cada um com fonte clara e limite aprovado pelo conselho como apetite de risco: pedidos de titulares respondidos com atraso, incidentes comunicados com atraso, operadores sem contrato, registros além do prazo de retenção, DPIAs com revisão vencida e treinamento vencido. Cada indicador tem um limite âmbar igual ao apetite e um limite vermelho em uma vez e meia o apetite. Os indicadores resumem operações complexas numa forma que o conselho consegue acompanhar trimestre a trimestre.
+
+### 9.2 O painel
+
+O laboratório compara os valores atuais com os limites. Os pedidos atrasados estão em 4,0% contra 5,0%, verde. As DPIAs vencidas são 2 contra 3, verde. O treinamento vencido está em 10,5% contra 10,0%, âmbar. Os incidentes comunicados com atraso são 1 contra 0,5, vermelho. Os operadores sem contrato estão em 6,0% contra 2,0%, vermelho. Os registros além da retenção estão em 11,0% contra 5,0%, vermelho. Três indicadores estão vermelhos, e Priscila apresenta cada um com causa, responsável, data e plano. O conselho pergunta por que a retenção está tão alta; sistemas antigos não tinham regras de exclusão, problema que o projeto do capítulo 11 vai atacar.
+
+### 9.3 Garantia
+
+O conselho pergunta se os indicadores são confiáveis. Priscila combina com a auditoria interna o teste de dois indicadores por trimestre, por amostragem dos registros de origem. A primeira auditoria descobre que o número de operadores sem contrato estava subestimado, porque alguns fornecedores faltavam no registro, e que um sistema tinha ficado de fora do cálculo da retenção, o que fazia esse indicador parecer melhor do que era. Os números corrigidos são mais altos, e ela relata a correção abertamente. Priscila observa que a garantia precisa testar tanto os controles quanto os dados usados para reportá-los.
+
+### 9.4 Liderança
+
+Priscila reflete sobre liderança. Os conselheiros reagem a riscos, tendências e planos claros, e não a detalhes técnicos. Ela aprende a contar uma história curta para cada indicador vermelho: o que está errado, por que importa para os clientes, o que vai corrigi-lo e quando. Seus documentos para o conselho nunca passam de duas páginas e sempre terminam com a decisão de que ela precisa. A Dra. Ward observa que os líderes de privacidade precisam conquistar a atenção do conselho sendo concisos e exatos, e que correções honestas aumentam, e não reduzem, a credibilidade ao longo do tempo.
+
+### Laboratório — Indicadores de risco de privacidade diante do apetite do conselho
+
+```python
+# Privacy key risk indicators against board-approved appetite thresholds (amber at threshold, red at 1.5x).
+kris = [("rights requests late (%)", 4.0, 5.0), ("breaches notified late (count/qtr)", 1, 0.5), ("processors without DPA (%)", 6.0, 2.0),
+        ("records past retention (%)", 11.0, 5.0), ("DPIAs overdue for review", 2, 3), ("staff training overdue (%)", 10.5, 10.0)]
+for name, v, t in kris:
+    st = "RED" if v >= 1.5 * t else "AMBER" if v >= t else "GREEN"
+    print(f"{name:36s} value {v:5.1f} threshold {t:4.1f} {st}")
+```
+
+Execute com `python3 lab_kri.py`. Saída verificada:
+
+```text
+rights requests late (%)             value   4.0 threshold  5.0 GREEN
+breaches notified late (count/qtr)   value   1.0 threshold  0.5 RED
+processors without DPA (%)           value   6.0 threshold  2.0 RED
+records past retention (%)           value  11.0 threshold  5.0 RED
+DPIAs overdue for review             value   2.0 threshold  3.0 GREEN
+staff training overdue (%)           value  10.5 threshold 10.0 AMBER
+```
+
+### Exemplo resolvido
+
+Priscila reporta seis indicadores: três vermelhos (comunicação tardia de incidentes, operadores sem contrato, registros além da retenção), um âmbar (treinamento) e dois verdes, organiza os testes da auditoria e corrige um número subestimado.
+
+> **Caso sintético.** Os indicadores e os limites são sintéticos.
+
+### Erros e limites
+
+Indicadores podem ser manipulados; audite os dados de origem.
+
+### Exercícios
+
+- **EX041 — Indicadores vermelhos.** Que indicadores estão vermelhos? *Rubrica:* 3 = incidentes comunicados com atraso, operadores sem contrato, registros além da retenção;; 2 = dois;; 1 = errado;; 0 = nenhuma.
+- **EX042 — Indicador âmbar.** Que indicador está âmbar e por quê? *Rubrica:* 3 = treinamento vencido: 10,5%, logo acima de 10,0%;; 2 = cita-o;; 1 = nenhum;; 0 = nenhuma.
+- **EX043 — Limite vermelho.** Como o limite vermelho é definido? *Rubrica:* 3 = 1,5 vez o limite de apetite;; 2 = menciona um múltiplo;; 1 = nada;; 0 = nenhuma.
+- **EX044 — Achado da auditoria.** O que a auditoria interna encontrou? *Rubrica:* 3 = número de operadores sem contrato subestimado por lacunas no registro;; 2 = menciona subestimação;; 1 = nada;; 0 = nenhuma.
+- **EX045 — História para o conselho.** Que quatro elementos Priscila usa para cada indicador vermelho? *Rubrica:* 3 = o que está errado, por que importa, o que corrige, quando;; 2 = três;; 1 = nenhum;; 0 = nenhuma.
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Leitura e crítica de pesquisas
+
+### Objetivos de aprendizagem
+
+Você vai (1) criticar pesquisas sobre desidentificação e consentimento; (2) julgar sua relevância para a prática; (3) escrever um resumo crítico.
+
+### 10.1 Ler pesquisas sobre desidentificação
+
+A Dra. Ward indica pesquisas centrais. Sweeney (2002) mostrou que combinações de atributos reidentificam pessoas. Narayanan e Shmatikov (2008) mostraram que registros comportamentais esparsos, como avaliações de filmes, podem ser reidentificados com pouca informação auxiliar. Priscila aplica esses achados aos dados de transações, igualmente esparsos e muito distintivos: poucas compras, com horários e lugares, podem identificar um cliente. Ela conclui que a Corvina nunca deve tratar dados no nível da transação como anônimos só porque os nomes foram retirados, o que muda a forma de compartilhar dados com parceiros.
+
+### 10.2 Ler sobre privacidade diferencial
+
+Priscila lê Dwork e Roth (2014) sobre privacidade diferencial. Entende a ideia central: os resultados devem mudar pouco, esteja ou não incluído qualquer indivíduo, porque o ruído protege as pessoas. Ela critica seu uso prático na Corvina: as estatísticas agregadas de gastos para parceiros poderiam usar privacidade diferencial, mas a detecção de fraudes exige dados individuais e não pode. Escreve que a privacidade diferencial é uma ferramenta forte para divulgações, e não uma solução geral, e que escolher os parâmetros e gastar o orçamento de privacidade com cuidado exige conhecimento especializado.
+
+### 10.3 Ler pesquisas comportamentais
+
+Priscila revisita Acquisti e colegas (2015), que reúnem evidências de que as escolhas de privacidade são incertas, dependentes do contexto e maleáveis. Ela critica a relevância: a revisão cobre muitos contextos, a maioria online, mas os aplicativos de pagamento compartilham características como os padrões e o enquadramento. Seu próprio teste A/B apoia a afirmação da revisão de que o design molda as escolhas. Ela observa que as pesquisas muitas vezes não têm o contexto específico que os profissionais enfrentam, então eles precisam testar localmente, como ela fez, em vez de supor que os resultados se transferem.
+
+### 10.4 Escrever a crítica
+
+Priscila escreve um resumo crítico para os colegas: o que cada obra afirma, suas evidências, seus limites e suas implicações para a Corvina. Seu modelo faz quatro perguntas a cada artigo — o que foi estudado, com que dados, o que se encontrou e o que mudaria numa empresa de pagamentos brasileira e portuguesa —, e as respostas cabem numa página por artigo. Ela evita exagerar os resultados. A Dra. Ward elogia o resumo por ligar a pesquisa às decisões e por distinguir o que a pesquisa mostra do que a Corvina precisa testar. Priscila compartilha o resumo com os multiplicadores de privacidade.
+
+### Exemplo resolvido
+
+Priscila aplica Sweeney e Narayanan e Shmatikov aos dados de transações, limita a privacidade diferencial às divulgações, relaciona a pesquisa comportamental ao seu teste A/B e escreve um resumo crítico para os colegas.
+
+> **Caso sintético.** As aplicações na Corvina são sintéticas; as obras citadas são reais.
+
+### Erros e limites
+
+Resumos simplificam; inclua links para os originais.
+
+### Exercícios
+
+- **EX046 — Dados de transações.** Por que os dados de transações não são anônimos depois de retirar os nomes? *Rubrica:* 3 = poucas compras com horários e lugares identificam clientes;; 2 = menciona distintividade;; 1 = são anônimos;; 0 = nenhuma.
+- **EX047 — Limites da privacidade diferencial.** Onde a Corvina não pode usar privacidade diferencial? *Rubrica:* 3 = na detecção de fraudes, que precisa de dados individuais;; 2 = menciona fraude;; 1 = em todo lugar;; 0 = nenhuma.
+- **EX048 — Teste local.** Por que os profissionais precisam testar localmente as afirmações das pesquisas? *Rubrica:* 3 = os contextos das pesquisas diferem dos seus;; 2 = menciona contexto;; 1 = confiar na pesquisa;; 0 = nenhuma.
+- **EX049 — Elementos do resumo.** O que contém cada entrada do resumo de Priscila? *Rubrica:* 3 = afirmação, evidências, limites, implicações;; 2 = três;; 1 = nenhum;; 0 = nenhuma.
+- **EX050 — Leitura compartilhada.** Quem recebe o resumo crítico? *Rubrica:* 3 = os multiplicadores de privacidade;; 2 = menciona colegas;; 1 = o conselho;; 0 = nenhuma.
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Projeto aplicado
+
+### Objetivos de aprendizagem
+
+Você vai (1) entregar um projeto de melhoria da privacidade; (2) medir seu efeito; (3) conduzir as partes interessadas durante a mudança.
+
+### 11.1 Escolher o projeto
+
+O projeto aplicado de Priscila ataca o pior indicador vermelho: os registros além do prazo de retenção, em 11,0%. Ela propõe a aplicação automática da retenção nos principais sistemas da Corvina, com exceções para os registros de prevenção à lavagem de dinheiro e as retenções judiciais. O projeto pretende levar o indicador abaixo de 5,0% em seis meses. Ela define o escopo, as partes interessadas e as medidas, e consegue o patrocínio do diretor de tecnologia. Escolhe a retenção porque o indicador afeta todos os sistemas e tem uma medida que o conselho já acompanha, o que torna o progresso fácil de relatar e difícil de contestar.
+
+### 11.2 Entrega
+
+O projeto monta uma tabela de retenção que liga categorias de dados a prazos e bases legais, marca os registros com as categorias e roda rotinas semanais de exclusão, com revisão das exceções. O jurídico confirma os prazos de prevenção à lavagem de dinheiro. A equipe testa primeiro em dados sintéticos, depois em um sistema e só então em todos. Durante a implantação, uma rotina quase exclui registros sob retenção judicial porque faltava uma marcação; a etapa de revisão detecta o problema. A equipe acrescenta uma verificação que bloqueia a exclusão de registros sem marcação, e a marcação passa a ser concluída antes de qualquer rotina.
+
+### 11.3 Efeito
+
+Depois de seis meses, os registros além da retenção caem de 11,0% para 3,8%, abaixo do limite de apetite de 5,0%, e o indicador fica verde no painel do conselho pela primeira vez. Os custos de armazenamento caem. Os pedidos dos titulares ficam mais rápidos, porque há menos registros antigos para vasculhar. Priscila relata o resultado ao conselho junto com o quase acidente e sua correção. Ela observa que a melhoria precisa ser sustentada por monitoramento contínuo e que os sistemas novos precisam entrar no processo de retenção antes do lançamento, e não depois.
+
+### 11.4 Partes interessadas
+
+Algumas equipes resistiram a excluir dados que talvez usassem um dia. Priscila ouviu suas necessidades e descobriu que a maioria podia ser atendida com estatísticas agregadas guardadas por mais tempo. Também explicou o risco de guardar dados sem necessidade, usando como exemplo o incidente do capítulo 8. O financeiro aceitou a exclusão quando lhe ofereceram resumos arquivados, e esse acordo destravou os sistemas restantes. A Dra. Ward observa que a gestão da mudança costuma ser a parte mais difícil dos projetos de privacidade, e que ouvir e oferecer alternativas funciona melhor do que apenas impor regras.
+
+### Exemplo resolvido
+
+Priscila entrega a retenção automática, detecta um quase acidente com retenção judicial, reduz os registros além da retenção de 11,0% para 3,8% e lida com a resistência oferecendo alternativas agregadas.
+
+> **Caso sintético.** O projeto e os números são sintéticos.
+
+### Erros e limites
+
+Números menores de retenção podem esconder repositórios não inventariados; continue procurando.
+
+### Exercícios
+
+- **EX051 — Resultado do projeto.** Como mudaram os registros além da retenção? *Rubrica:* 3 = de 11,0% para 3,8%;; 2 = a direção;; 1 = errado;; 0 = nenhuma.
+- **EX052 — Quase acidente.** Que quase acidente ocorreu e como foi corrigido? *Rubrica:* 3 = uma rotina quase excluiu registros sob retenção judicial; registros sem marcação agora são bloqueados;; 2 = uma parte;; 1 = nenhum;; 0 = nenhuma.
+- **EX053 — Resistência.** Como Priscila lidou com as equipes que queriam guardar dados? *Rubrica:* 3 = ofereceu estatísticas agregadas guardadas por mais tempo e explicou os riscos;; 2 = uma parte;; 1 = impôs;; 0 = nenhuma.
+- **EX054 — Benefícios colaterais.** Cite dois benefícios colaterais do projeto. *Rubrica:* 3 = custos de armazenamento menores e pedidos de titulares mais rápidos;; 2 = um;; 1 = nenhum;; 0 = nenhuma.
+- **EX055 — Sustentação.** O que sustenta a melhoria? *Rubrica:* 3 = monitoramento e inclusão dos sistemas novos antes do lançamento;; 2 = um;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Revisão final e transferência
+
+### Objetivos de aprendizagem
+
+Você vai (1) revisar um programa de mudança de dois anos; (2) transferir as lições para outros contextos; (3) planejar o desenvolvimento contínuo.
+
+### 12.1 Revisão
+
+Priscila revisa dois anos na Corvina. O programa saiu de registros desatualizados e treinamento genérico para a triagem de mudanças, os controles de compras, a rede de multiplicadores, os indicadores do conselho e a retenção automática. O teste do banner mudou a prática de design, e a decisão sobre o GPS mostrou como as evidências sustentam a necessidade. Dois indicadores continuam vermelhos: a comunicação tardia de incidentes e os operadores sem contrato. A comunicação atrasa porque os fornecedores avisam devagar, então os contratos vão impor aos fornecedores o dever de reportar em 24 horas.
+
+### 12.2 Transferência
+
+A Dra. Ward pergunta o que Priscila levaria para outra organização. Ela lista princípios, e não ferramentas: separar as restrições dos trade-offs; testar a necessidade com evidências; medir o comportamento, e não só a política; reportar com honestidade ao conselho; e integrar a privacidade aos processos existentes. Ela observa que as ferramentas e os limites seriam outros num hospital ou num órgão público, mas que esses princípios continuariam guiando boas decisões. Num hospital, a segurança clínica acrescentaria restrições, e os pacientes ocupariam o lugar dos clientes na coluna de dano.
+
+### 12.3 Limites
+
+Priscila aponta os limites de sua experiência. A Corvina é uma empresa de porte médio, com apoio do conselho; empresas menores podem não ter recursos, e as maiores podem enfrentar mais complexidade. Suas evidências vêm de testes locais, de uma empresa em dois países, com dados sintéticos nos laboratórios e uma história regulatória particular. Ela evita apresentar seu programa como modelo pronto. Observa também que as leis e as normas evoluem, como mostra a edição de 2025 da ISO/IEC 27701, e que as práticas precisam ser atualizadas. Outra cultura ou outro regulador poderia mudar o que funciona melhor.
+
+### 12.4 Desenvolvimento
+
+Priscila planeja seu desenvolvimento contínuo: conhecimento mais profundo de engenharia de privacidade, em especial a privacidade diferencial para as estatísticas destinadas a parceiros; experiência nas interações com as autoridades de proteção de dados; e a mentoria dos multiplicadores de privacidade. Ela também planeja apresentar seu teste A/B numa conferência de profissionais e publicar um estudo de caso anonimizado para os colegas da região. A Dra. Ward encerra o curso observando que os melhores líderes de privacidade combinam evidências, ética e habilidade organizacional, e que Priscila mostrou as três.
+
+### Exemplo resolvido
+
+Priscila revisa o programa, transfere cinco princípios, declara os limites de sua experiência e planeja seu desenvolvimento em engenharia de privacidade, trabalho regulatório e mentoria.
+
+> **Caso sintético.** A revisão é sintética; a ISO/IEC 27701:2025 é real.
+
+### Erros e limites
+
+A autoavaliação é enviesada; peça a opinião de colegas e auditores.
+
+### Exercícios
+
+- **EX056 — Vermelhos remanescentes.** Que indicadores continuam vermelhos depois de dois anos? *Rubrica:* 3 = comunicação tardia de incidentes e operadores sem contrato;; 2 = um;; 1 = nenhum;; 0 = nenhuma.
+- **EX057 — Princípios transferíveis.** Cite três princípios transferíveis. *Rubrica:* 3 = por exemplo, separar restrições de trade-offs; testar a necessidade; reportar com honestidade;; 2 = dois;; 1 = ferramentas;; 0 = nenhuma.
+- **EX058 — Não é um modelo pronto.** Por que Priscila evita apresentar seu programa como modelo pronto? *Rubrica:* 3 = os contextos e os recursos diferem;; 2 = menciona contexto;; 1 = é universal;; 0 = nenhuma.
+- **EX059 — Normas em evolução.** Dê um exemplo de norma em evolução que ela precisa acompanhar. *Rubrica:* 3 = a edição de 2025 da ISO/IEC 27701;; 2 = menciona ISO;; 1 = nenhum;; 0 = nenhuma.
+- **EX060 — Áreas de desenvolvimento.** Cite duas áreas de desenvolvimento que Priscila planeja. *Rubrica:* 3 = engenharia de privacidade/privacidade diferencial, interações com reguladores, mentoria;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX030 (as de EX031–EX060 estão na edição em inglês até a tradução dos capítulos correspondentes). Priscila Andrade, a Dra. Helen Ward, a Ashgrove School of Management, a Corvina Pay e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX060. Priscila Andrade, a Dra. Helen Ward, a Ashgrove School of Management, a Corvina Pay e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Uma restrição: tratar dados sem base legal não é uma opção a ponderar.
 
@@ -403,6 +675,66 @@ Respostas-modelo para EX001–EX030 (as de EX031–EX060 estão na edição em i
 **EX029.** Seus consentimentos são em menor número, mas mais estáveis ao longo do tempo.
 
 **EX030.** Porque o design induziu o aceite, e as revogações posteriores mostram que muitas escolhas não eram genuínas.
+
+**EX031.** Dados novos e novas finalidades (também novos fornecedores ou grande impacto).
+
+**EX032.** Contratos conformes, cláusulas de exclusão, listas de suboperadores e prazos de notificação de incidentes.
+
+**EX033.** Funcionários do atendimento compartilhando capturas de tela com números de cartão.
+
+**EX034.** Reduz a duplicação e as lacunas entre as funções.
+
+**EX035.** As mudanças no modelo antifraude.
+
+**EX036.** Elimina os dados e as preferências de marketing e conserva os registros de AML restritos ao uso de compliance.
+
+**EX037.** O artigo 17(3)(b) do GDPR.
+
+**EX038.** Apenas as transações do período requisitado, com registro da divulgação.
+
+**EX039.** A autoridade de controle portuguesa e a ANPD.
+
+**EX040.** O mascaramento automático dos dados de cartão nos tickets de suporte.
+
+**EX041.** Comunicação tardia de incidentes, operadores sem contrato e registros além do prazo de retenção.
+
+**EX042.** O treinamento vencido, em 10,5%, logo acima do limite de 10,0%.
+
+**EX043.** Em uma vez e meia o limite de apetite do conselho.
+
+**EX044.** Que fornecedores ausentes do registro subestimavam o número de operadores sem contrato.
+
+**EX045.** O que está errado, por que importa para os clientes, a correção e o prazo.
+
+**EX046.** Poucas transações são distintivas o bastante para identificar pessoas.
+
+**EX047.** Na detecção de fraudes, que exige decisões no nível individual.
+
+**EX048.** Porque os estudos publicados raramente correspondem ao contexto específico de cada profissional.
+
+**EX049.** A afirmação, suas evidências, seus limites e as implicações para a Corvina.
+
+**EX050.** A rede de multiplicadores de privacidade.
+
+**EX051.** De 11,0% para 3,8%, abaixo do limite de 5,0%.
+
+**EX052.** A falta de uma marcação quase causou a exclusão de registros sob retenção judicial; agora a exclusão de registros sem marcação é bloqueada.
+
+**EX053.** Atendendo às necessidades com estatísticas agregadas e explicando os riscos de guardar dados.
+
+**EX054.** Custos de armazenamento menores e atendimento mais rápido aos pedidos dos titulares.
+
+**EX055.** O monitoramento contínuo e a exigência de que os sistemas novos entrem no processo de retenção.
+
+**EX056.** A comunicação tardia de incidentes e os operadores sem contrato.
+
+**EX057.** Separar restrições de trade-offs, testar a necessidade com evidências e reportar com honestidade ao conselho.
+
+**EX058.** As organizações diferem em porte, setor e recursos.
+
+**EX059.** A edição de 2025 da ISO/IEC 27701.
+
+**EX060.** A privacidade diferencial para as estatísticas destinadas a parceiros e a experiência com autoridades de proteção de dados.
 
 <a id="references"></a>
 ## Referências
