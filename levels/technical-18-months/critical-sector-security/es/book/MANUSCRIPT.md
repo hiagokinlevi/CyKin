@@ -298,7 +298,7 @@ Leamos la salida línea por línea: las lecturas del SCADA son normales; la esta
 
 ### 2.5 Actividad práctica
 
-Decodifique a mano las tres tramas siguientes, añádalas después al Lab 2 y confirme el resultado: `000900000006010100000010`, `000a0000000601050003 0000` (quite el espacio), `000b00000006020300640001`. Anote la función, la dirección y la cantidad o el valor de cada una, y si el identificador de unidad es el que espera para KW-04. La segunda trama lleva la función 05, la escritura de una bobina, así que anote si se espera que el servidor SCADA envíe alguna vez una a KW-04. Añada después las tramas al Lab 2 y confirme que su decodificación a mano coincide con la del script. Si una trama tiene un espacio en el hexadecimal, quítelo antes de pegarla; los espacios no forman parte de la captura.
+Decodifique a mano las tres tramas siguientes, añádalas después al Lab 2 y confirme el resultado: `000900000006010100000010`, `000a0000000601050003 0000` (quite el espacio), `000b00000006020300640001`. Anote la función, la dirección y la cantidad o el valor de cada una, y si el identificador de unidad es el que espera para KW-04. La segunda trama lleva la función 05, la escritura de una bobina, así que anote si se espera que el servidor SCADA envíe alguna vez una a KW-04. Si una trama tiene un espacio en el hexadecimal, quítelo antes de pegarla; los espacios no forman parte de la captura.
 
 ### 2.6 Errores comunes y límites
 
@@ -686,15 +686,13 @@ Redacte un alcance para una captura pasiva de 24 horas en el puerto SPAN del con
 
 ### 5.7 Errores comunes y límites
 
-- Empezar a trabajar con un «adelante» verbal.
-- Escanear una subred para «ver qué hay» en una red de control.
 - Recoger evidencia sin horas UTC ni hashes.
-- Corregir primero y recoger después.
 - Tratar el alcance como papeleo: es lo que impide que una prueba se convierta en un incidente.
 
 - Partir de un visto bueno verbal y redactar el alcance después.
 - Escanear una subred de una red de control para descubrir dispositivos.
 - Corregir un hallazgo antes de recoger la evidencia que lo mostró. Un alcance redactado después del trabajo no puede proteger el proceso mientras se realiza.
+- Seguir trabajando después de la hora de fin del alcance porque la última comprobación «solo lleva un minuto», en lugar de parar y pedir una prórroga.
 
 ### Ejercicios — capítulo 5
 
@@ -1153,7 +1151,7 @@ Tres tramas son válidas y esperadas. Una tiene el CRC `ffff` donde se esperaba 
 
 ### 9.6 Actividad práctica
 
-Amplíe el Lab 9 para verificar el CRC de cada bloque de datos de usuario de 16 bytes que sigue a la cabecera. Construya una trama con 17 bytes de datos de usuario (un bloque completo y un bloque de 1 byte), calcule los CRC de ambos bloques y corrompa un byte del segundo bloque para mostrar que la comprobación lo detecta. Construya la trama con un bloque completo de dieciséis bytes y un bloque de un byte, cada uno con su propio CRC. Corrompa un byte del segundo bloque y confirme que solo falla la comprobación de ese bloque. Guarde los pasos de construcción en las notas del laboratorio para que un revisor pueda reconstruir la misma trama.
+Amplíe el Lab 9 para verificar el CRC de cada bloque de datos de usuario de 16 bytes que sigue a la cabecera. Construya una trama con 17 bytes de datos de usuario (un bloque completo y un bloque de 1 byte), calcule los CRC de ambos bloques y corrompa un byte del segundo bloque para mostrar que la comprobación lo detecta. Corrompa un byte del segundo bloque y confirme que solo falla la comprobación de ese bloque. Guarde los pasos de construcción en las notas del laboratorio para que un revisor pueda reconstruir la misma trama, y anote qué byte corrompió y el CRC esperado y el calculado de ese bloque.
 
 ### 9.7 Errores comunes y límites
 
@@ -1419,7 +1417,7 @@ Tres requisitos verificados, dos fallidos, uno sin probar. El REQ-3 falló porqu
 - No verifique nunca un bloqueo de escritura intentando escribir en un controlador en servicio; verifíquelo con una prueba de conexión y el registro del cortafuegos, o frente a un dispositivo de repuesto en un laboratorio (capítulo 12).
 - Deténgase ante el primer comportamiento inesperado.
 
-Prefiera los recuentos del historiador y los registros del cortafuegos antes que generar tráfico. Operaciones debe saber antes de la primera conexión que 10.30.99.9 es el origen de prueba, para que su tráfico no se confunda con un intruso. No verifique nunca un bloqueo de escritura escribiendo en un controlador en servicio.
+Operaciones debe saber antes de la primera conexión que 10.30.99.9 es el origen de prueba, para que su tráfico no se confunda con un intruso.
 
 ### 11.6 Actividad práctica
 
@@ -1488,7 +1486,7 @@ Una respuesta normal a la función 6 repite la petición. Una respuesta normal a
 
 ### 12.3 El registro dentro del dispositivo
 
-El respondedor registra cada lectura, cada escritura aceptada con su valor anterior y el nuevo, y cada excepción. En los equipos reales, estos son exactamente los registros que habría deseado tener en el capítulo 7. Una ráfaga de respuestas de excepción 02 desde un mismo origen es una señal clara de que alguien está cartografiando el espacio de registros; una racha de excepciones 03 es alguien que prueba los límites. En los equipos reales esos registros suelen faltar, y por eso el laboratorio los hace visibles. Una ráfaga de excepciones de dirección ilegal desde un mismo origen es señal de cartografiado; una racha de excepciones de valor ilegal es alguien que prueba los límites. Guarde el registro del laboratorio junto con las respuestas en hexadecimal para que un revisor pueda emparejar cada excepción con una petición.
+El respondedor registra cada lectura, cada escritura aceptada con su valor anterior y el nuevo, y cada excepción. En los equipos reales, estos son exactamente los registros que habría deseado tener en el capítulo 7. Una ráfaga de respuestas de excepción 02 desde un mismo origen es una señal clara de que alguien está cartografiando el espacio de registros; una racha de excepciones 03 es alguien que prueba los límites. En los equipos reales esos registros suelen faltar, y por eso el laboratorio los hace visibles. Guarde el registro del laboratorio junto con las respuestas en hexadecimal para que un revisor pueda emparejar cada excepción con una petición.
 
 ### 12.4 Ejemplo resuelto: el respondedor de banco (sintético)
 
@@ -1577,7 +1575,7 @@ Si el respondedor devuelve la excepción 2 para una lectura de los registros 8 a
 
 ### 12.7 Actividad práctica
 
-Añada al respondedor la función 16 (escribir varios registros) con la misma política: todos los registros del rango deben poder escribirse y todos los valores deben estar dentro de sus límites, o se rechaza la escritura completa. Pruebe cuatro casos: todo permitido; una dirección que no se puede escribir; un valor fuera de rango; un recuento de bytes incoherente con la cantidad. Rechace la escritura completa si algún registro no se puede escribir o algún valor está fuera de sus límites. Pruebe todo permitido, una dirección que no se puede escribir, un valor fuera de rango y un recuento de bytes que no coincide con la cantidad. Anote las cuatro respuestas en hexadecimal y, junto a ellas, las líneas del registro.
+Añada al respondedor la función 16 (escribir varios registros) con la misma política: todos los registros del rango deben poder escribirse y todos los valores deben estar dentro de sus límites, o se rechaza la escritura completa. Pruebe cuatro casos: todo permitido; una dirección que no se puede escribir; un valor fuera de rango; un recuento de bytes incoherente con la cantidad. Anote las cuatro respuestas en hexadecimal y, junto a ellas, las líneas del registro. Por último, envíe una escritura con la función 16 que incluya un registro que su tratamiento de la función 6 ya rechaza (como el registro 0), y confirme que el registro da el mismo motivo para ambos rechazos.
 
 ### 12.8 Errores comunes y límites
 
@@ -1695,7 +1693,7 @@ El capítulo 10 dejó un elemento abierto: fw-01 deniega el tráfico de los pues
 
 ### 13.5 El registro de diagnóstico
 
-Escriba sobre la marcha, en UTC, con las cuatro etiquetas: *observado*, *inferido*, *hecho*, *abierto*. Un buen registro permite que un colega que toma el relevo en el cambio de turno continúe sin preguntarle nada, y permite que un investigador reconstruya después qué se cambió y cuándo. El capítulo 16 ofrece una plantilla; el capítulo 18 lo sella como evidencia del proyecto. Escriba sobre la marcha en UTC con las cuatro etiquetas, para que un colega en el cambio de turno pueda continuar sin preguntarle nada. Incluya referencias a la evidencia de cada observación, como el hash de la exportación de configuración de la RTU y el intervalo del registro del servidor de salto. En el Lab 18, el registro se convierte en 05-troubleshooting-log.md, y el hash de su manifiesto se verifica como OK cuando se comprueba el paquete.
+Escriba sobre la marcha, en UTC, con las cuatro etiquetas: *observado*, *inferido*, *hecho*, *abierto*. Un buen registro permite que un colega que toma el relevo en el cambio de turno continúe sin preguntarle nada, y permite que un investigador reconstruya después qué se cambió y cuándo. El capítulo 16 ofrece una plantilla; el capítulo 18 lo sella como evidencia del proyecto. Incluya referencias a la evidencia de cada observación, como el hash de la exportación de configuración de la RTU y el intervalo del registro del servidor de salto. En el Lab 18, el registro se convierte en 05-troubleshooting-log.md, y el hash de su manifiesto se verifica como OK cuando se comprueba el paquete.
 
 ### 13.6 Actividad práctica
 
@@ -1703,10 +1701,7 @@ Añada al Lab 13 la hipótesis H6 «el firmware de la RTU falló y pasó a un mo
 
 ### 13.7 Errores comunes y límites
 
-- Reiniciar primero, lo que destruye la evidencia volátil y a menudo oculta la causa.
-- Contrastar las hipótesis de una en una y detenerse en la primera que «encaja».
 - Tratar una hipótesis coherente como demostrada; solo está *aún sin refutar*.
-- Cambiar varias cosas a la vez.
 - El Lab 13 compara valores predichos exactos; las observaciones reales tienen incertidumbre, y una sola observación poco fiable no debería refutar por sí sola una hipótesis.
 
 - Reiniciar primero y destruir la evidencia volátil.
@@ -1821,7 +1816,7 @@ manifest digest fdea74f1d09e359c
 
 La cuenta de automatización puede leer o cambiar todos los equipos que gestiona, así que: guarde sus credenciales en una bóveda y rótelas; restrinja desde dónde puede conectarse; exija revisión de los cambios en su estado deseado; alerte de las ejecuciones fuera del calendario. El aviso de CISA sobre el acceso prolongado a infraestructuras críticas describe actores que usan herramientas de administración legítimas y cuentas válidas ([CISA AA24-038A](https://www.cisa.gov/news-events/cybersecurity-advisories/aa24-038a)); una cuenta de automatización con privilegios excesivos es exactamente una herramienta así.
 
-Guarde las credenciales de la automatización en una bóveda, restrinja desde dónde puede conectarse la cuenta y alerte de las ejecuciones fuera del calendario. Una herramienta que puede cambiar todos los equipos es tan atractiva para un adversario como una estación de ingeniería. Revise los cambios de su estado deseado igual que revisa los cambios del cortafuegos.
+Una herramienta que puede cambiar todos los equipos es tan atractiva para un adversario como una estación de ingeniería. Revise los cambios de su estado deseado igual que revisa los cambios del cortafuegos.
 
 ### 14.6 Actividad práctica
 
@@ -1829,16 +1824,14 @@ Amplíe el Lab 14 para que, ante un cambio no aprobado, escriba un registro de c
 
 ### 14.7 Errores comunes y límites
 
-- Revertir automáticamente toda deriva.
-- Manifiestos guardados en el equipo que protegen.
 - Solo hashes; ninguna copia aprobada con la que comparar el contenido.
-- Automatización que sondea los dispositivos de campo de forma agresiva y degrada el proceso.
 - El Lab 14 ignora los permisos, la propiedad y las marcas de tiempo, que importan tanto como el contenido (un archivo de servicio con escritura para todos es una deriva).
 
 - Revertir automáticamente toda deriva y destruir la evidencia de un cambio no aprobado.
 - Guardar el manifiesto en el equipo que protege.
 - Calcular hashes solo del contenido e ignorar los permisos que hacen que un archivo de servicio tenga escritura para todos.
 - Sondear los dispositivos de campo de forma tan agresiva que falla el ciclo de sondeo.
+- Informar de una deriva sin anotar con qué versión aprobada de la línea base se comparó.
 
 ### Ejercicios — capítulo 14
 
@@ -1955,9 +1948,7 @@ Añada un nodo `power-ups-a` que necesitan tanto `esx-02` como `esx-03`, y un no
 
 ### 15.6 Errores comunes y límites
 
-- Enumerar solo las dependencias directas.
 - Tratar el directorio y el servicio de hora como «infraestructura» sin responsable de servicio.
-- Suponer sin comprobarlo que los operadores de telecomunicaciones aíslan las redes privadas de sus clientes entre sí y de las VPN corporativas.
 - Contar dependientes en lugar de examinar qué *servicios* se ven afectados y por qué *rutas*.
 - El grafo del Lab 15 es binario (necesita / no necesita); las dependencias reales tienen modos degradados y temporizadores (una credencial en caché funciona durante horas; un reloj deriva lentamente).
 
