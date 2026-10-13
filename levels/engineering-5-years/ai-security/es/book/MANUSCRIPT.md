@@ -26,7 +26,7 @@ Las fuentes se comprobaron el 12 de octubre de 2026: NIST [AI 100-1](https://doi
 | Parte | Capítulos |
 |---|---|
 | Fundamentos | [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) |
-| Sistemas y seguridad | [11](#ch-11) · [12](#ch-12) · [13](../../en/book/MANUSCRIPT.md#ch-13) · [14](../../en/book/MANUSCRIPT.md#ch-14) · [15](../../en/book/MANUSCRIPT.md#ch-15) · [16](../../en/book/MANUSCRIPT.md#ch-16) · [17](../../en/book/MANUSCRIPT.md#ch-17) · [18](../../en/book/MANUSCRIPT.md#ch-18) · [19](../../en/book/MANUSCRIPT.md#ch-19) |
+| Sistemas y seguridad | [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](../../en/book/MANUSCRIPT.md#ch-19) |
 | Ingeniería de seguridad de la IA | [20](../../en/book/MANUSCRIPT.md#ch-20) · [21](../../en/book/MANUSCRIPT.md#ch-21) · [22](../../en/book/MANUSCRIPT.md#ch-22) · [23](../../en/book/MANUSCRIPT.md#ch-23) · [24](../../en/book/MANUSCRIPT.md#ch-24) · [25](../../en/book/MANUSCRIPT.md#ch-25) · [26](../../en/book/MANUSCRIPT.md#ch-26) · [27](../../en/book/MANUSCRIPT.md#ch-27) · [28](../../en/book/MANUSCRIPT.md#ch-28) · [29](../../en/book/MANUSCRIPT.md#ch-29) · [30](../../en/book/MANUSCRIPT.md#ch-30) · [31](../../en/book/MANUSCRIPT.md#ch-31) · [32](../../en/book/MANUSCRIPT.md#ch-32) · [33](../../en/book/MANUSCRIPT.md#ch-33) · [34](../../en/book/MANUSCRIPT.md#ch-34) · [35](../../en/book/MANUSCRIPT.md#ch-35) · [36](../../en/book/MANUSCRIPT.md#ch-36) · [37](../../en/book/MANUSCRIPT.md#ch-37) · [38](../../en/book/MANUSCRIPT.md#ch-38) · [39](../../en/book/MANUSCRIPT.md#ch-39) · [40](../../en/book/MANUSCRIPT.md#ch-40) · [41](../../en/book/MANUSCRIPT.md#ch-41) · [42](../../en/book/MANUSCRIPT.md#ch-42) |
 | Práctica y proyecto final | [43](../../en/book/MANUSCRIPT.md#ch-43) · [44](../../en/book/MANUSCRIPT.md#ch-44) · [45](../../en/book/MANUSCRIPT.md#ch-45) · [46](../../en/book/MANUSCRIPT.md#ch-46) · [47](../../en/book/MANUSCRIPT.md#ch-47) · [48](../../en/book/MANUSCRIPT.md#ch-48) · [49](../../en/book/MANUSCRIPT.md#ch-49) · [50](../../en/book/MANUSCRIPT.md#ch-50) |
 
@@ -783,7 +783,311 @@ El aislamiento del sistema operativo convierte «el modelo podría ser manipulad
 
 ### Siga estudiando — capítulo 12 de 50
 
-[← Capítulo 11 (borrador)](#ch-11) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 13 (borrador) →](../../en/book/MANUSCRIPT.md#ch-13)
+[← Capítulo 11 (borrador)](#ch-11) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 13 (borrador) →](#ch-13)
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Sistemas de datos
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) modelar conjuntos de datos con esquemas, linaje y versiones; (2) proteger los datos de entrenamiento y de recuperación frente a la manipulación y la filtración; (3) diseñar almacenes para la generación aumentada por recuperación (RAG) con control de acceso; y (4) aplicar los principios de protección de datos a los datos de IA.
+
+### 13.1 Esquemas, linaje y versiones
+
+Todo conjunto de datos debería tener un esquema, un registro de la procedencia de cada elemento (linaje o procedencia) y un identificador de versión. Las herramientas de versionado de datos o unos simples hashes del contenido permiten decir exactamente qué datos entrenaron qué modelo, algo esencial al investigar un envenenamiento. Cuando un modelo empieza a comportarse de forma extraña, la primera pregunta de la investigación es de qué aprendió. Sin versiones, el equipo solo puede adivinar si se incluyó un lote sospechoso de etiquetas. Con ellas, puede enumerar todos los elementos añadidos desde el último modelo bueno, averiguar quién suministró cada uno y reentrenar con una versión limpia para confirmar la causa.
+
+### 13.2 Integridad de los datos de entrenamiento
+
+El envenenamiento requiere acceso de escritura a parte de los datos de entrenamiento. Carlini et al. (arXiv:2302.10149) mostraron que los conjuntos de datos a escala web distribuidos como listas de URL pueden envenenarse comprando dominios caducados; los hashes de integridad del contenido en el momento de la recogida frustran ese ataque concreto. Restrinja quién puede añadir o reetiquetar datos, registre los cambios y revise muestras de las fuentes nuevas. Los hashes protegen lo que se recogió, no si era honesto desde el principio. Un contratista de etiquetado con acceso legítimo puede seguir introduciendo etiquetas erróneas, así que revise muestras por fuente y vigile los cambios en las estadísticas de las etiquetas tras cada entrega.
+
+### 13.3 Almacenes de recuperación
+
+Los sistemas RAG guardan fragmentos de documentos y sus *embeddings* en una base de datos vectorial. OWASP LLM 2025 incluye las *debilidades de vectores y embeddings* (LLM08): la falta de control de acceso permite a un usuario recuperar documentos que no debería ver, y los documentos envenenados pueden inyectar instrucciones. Aplique los permisos por documento en el momento de la recuperación, usando la identidad del *usuario final*, y etiquete la procedencia y el nivel de confianza de cada fragmento. Comprobar con la identidad del usuario importa porque el propio servicio de recuperación suele tener acceso a todo. Si busca con su propia autoridad, el modelo recibe documentos que el usuario nunca podría abrir, y una pregunta bien elegida los sacará a la luz en una respuesta. Las etiquetas de procedencia permiten que el prompt y la capa de política traten con la debida cautela el texto de contratistas o de fuentes externas.
+
+### 13.4 Protección de datos
+
+Minimice los datos personales en el entrenamiento y la recuperación; fije límites de conservación; considere la privacidad diferencial para el entrenamiento con datos sensibles (Abadi et al., arXiv:1607.00133). La inferencia de pertenencia (Shokri et al., arXiv:1610.05820) muestra que los modelos pueden revelar si se usó un registro. La minimización es la protección más barata: los datos que nunca se recogieron no pueden filtrarse a través de un modelo. Los límites de conservación eliminan los datos cuando termina su finalidad, lo que también reduce lo que podría exponer una brecha. La privacidad diferencial añade ruido calibrado durante el entrenamiento para que ningún registro individual cambie mucho el modelo, con cierto coste en exactitud. La inferencia de pertenencia concreta el riesgo, ya que incluso las salidas agregadas pueden revelar que se usó el registro de una persona concreta.
+
+### 13.5 Ejemplo resuelto (caso sintético de NRS)
+
+El almacén vectorial de Wrench contenía en un solo índice los manuales, las notas de los técnicos y los informes de incidentes de seguridad laboral de Recursos Humanos. Cualquier técnico podía recuperar informes de RR. HH. con preguntas hábiles. Sam separó los índices por sensibilidad, añadió listas de control de acceso por documento que se comprueban frente al usuario solicitante en el momento de la consulta y añadió un campo de procedencia (interna/contratista/externa) que la plantilla del prompt usa para marcar el texto no confiable.
+
+Separar los índices no habría bastado por sí solo, ya que un técnico que consulta el índice correcto sigue necesitando una comprobación por documento. El campo de procedencia también facilita las investigaciones: una respuesta que citó texto de un contratista puede rastrearse hasta su documento de origen.
+
+### 13.6 Errores y límites
+
+- Un solo índice de recuperación para todos los niveles de sensibilidad.
+- Comprobar los permisos con la identidad del servicio en lugar de la del usuario.
+- Ningún registro de qué datos entrenaron qué modelo.
+
+Un único índice impone un solo modelo de permisos a documentos de sensibilidad muy distinta, de modo que o el acceso es demasiado amplio o el sistema se vuelve inutilizable. Comprobar con la identidad del servicio entrega a cada usuario los derechos del servicio. La falta de registros del entrenamiento convierte las investigaciones de envenenamiento en conjeturas. La revisión de diseño de Sam hace tres preguntas correspondientes: cuántos índices hay y por qué, qué identidad se comprueba en la recuperación y dónde se registra la versión de los datos de entrenamiento de cada modelo.
+
+### Ejercicios — capítulo 13
+
+- **EX037 — Linaje.** ¿Qué tres hechos debe registrar el linaje de un elemento de entrenamiento? Rúbrica: 3 = fuente, momento de recogida/versión, transformaciones (y quién lo añadió); 2 = dos; 1 = uno; 0 = nada.
+- **EX038 — Acceso en RAG.** ¿Por qué debe la recuperación usar la identidad del usuario final? Rúbrica: 3 = de lo contrario, el modelo recupera documentos que el usuario no tiene permitido ver (*confused deputy*); 2 = parcial; 1 = vago; 0 = incorrecto.
+- **EX039 — Dominios caducados.** ¿Cómo frustran los hashes del contenido el ataque de envenenamiento mediante dominios caducados? Rúbrica: 3 = el contenido descargado que cambió tras la recogida no supera el hash y se rechaza; 2 = parcial; 1 = vago; 0 = incorrecto.
+
+### Síntesis del capítulo
+
+Los datos son la superficie de ataque que entrena e informa a los modelos. El linaje, el control de escritura, los permisos de recuperación por usuario y la minimización de datos los protegen.
+
+### Siga estudiando — capítulo 13 de 50
+
+[← Capítulo 12 (borrador)](#ch-12) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 14 (borrador) →](#ch-14)
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Ingeniería de software
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) aplicar un ciclo de vida de desarrollo seguro al software con IA; (2) gestionar requisitos, versiones y cambios de modelos y prompts además del código; (3) realizar revisión de código e integración continua con controles de seguridad y de evaluación; y (4) planificar publicaciones y reversiones de componentes de IA.
+
+### 14.1 Un ciclo de vida para el software de IA
+
+Un ciclo de vida de desarrollo seguro añade actividades de seguridad a cada fase: requisitos (casos de abuso), diseño (modelado de amenazas), implementación (codificación segura, control de dependencias), verificación (pruebas, evaluaciones, ejercicios de equipo rojo) y publicación (aprobación formal, monitorización). En la IA, los artefactos se multiplican: código, pesos del modelo, datos de entrenamiento, prompts, índices de recuperación y conjuntos de evaluación. Cada uno debe versionarse y revisarse; un cambio en el prompt del sistema puede alterar el comportamiento de seguridad tanto como un cambio de código. Los casos de abuso se escriben junto a los requisitos normales, por ejemplo «un boletín de un proveedor intenta que Wrench cree una orden de trabajo».
+
+### 14.2 Gestión de la configuración de modelos y prompts
+
+Guarde los prompts en el control de versiones, no en una consola web. Dé a cada modelo una entrada en el registro con su hash, la versión de los datos de entrenamiento, los resultados de evaluación y el estado de aprobación. Despliegue haciendo referencia a una versión del registro, de modo que la producción siempre pueda rastrearse y revertirse. Un prompt editado en una consola web no tiene revisión, ni historial, ni vínculo con la evaluación que lo aprobó. En el control de versiones, cada cambio tiene un autor y un diff, y el control de CI se ejecuta sobre él como sobre cualquier cambio de código. La entrada del registro vincula un modelo desplegado con los datos y las pruebas que lo respaldan, de modo que un auditor puede preguntar qué se está ejecutando y obtener una respuesta exacta.
+
+### 14.3 Revisión e integración continua
+
+La revisión de código detecta errores de diseño y de lógica; en los componentes de IA, revise también los cambios de prompts y de datos. La integración continua debe ejecutar las pruebas unitarias, las comprobaciones de dependencias y un *control de evaluación de seguridad*: un conjunto fijo de pruebas de inyección, de *jailbreak* y de mal uso con umbrales que bloquean la publicación si se superan. El control debe usar pruebas reservadas, no los ejemplos con los que ajustaron los desarrolladores. Las pruebas reservadas las custodia un responsable distinto y se renuevan con nuevos patrones de ataque, de modo que el control mide la generalización y no la memoria.
+
+### 14.4 Publicación y reversión
+
+Publique de forma gradual (despliegue canario a una pequeña parte del tráfico), vigile las métricas y tenga lista la versión anterior. En los modelos, revertir significa cambiar la referencia del registro, algo fácil solo si se planificó. Un canario expone una versión nueva a una pequeña parte del tráfico real mientras la versión antigua atiende al resto. Entre las métricas vigiladas hay señales de seguridad, como las propuestas de herramientas rechazadas y las alertas del detector, no solo la latencia y los errores. La reversión debe ensayarse: el equipo de Sam vuelve cada mes a la versión anterior del registro en preproducción para confirmar que sigue funcionando, ya que una reversión nunca probada puede fallar el día en que se necesite.
+
+### 14.5 Ejemplo resuelto (caso sintético de NRS)
+
+Un desarrollador cambió el prompt del sistema de Wrench para que las respuestas fueran más amables. El control de seguridad de la CI ejecutó 300 casos de inyección reservados y observó que las propuestas de llamadas a herramientas no autorizadas subían del 1,0 % al 4,3 % (la capa de política seguía bloqueándolas, pero el umbral del control para las propuestas era del 2 %). La publicación quedó bloqueada; el equipo descubrió que una frase nueva, «intenta siempre cumplir el objetivo del usuario», fomentaba seguir las instrucciones del texto recuperado. La reformularon y la tasa volvió al 1,1 %. La capa de política hizo que ningún daño llegara a producción, pero el control detectó el debilitamiento de una capa anterior antes de su publicación.
+
+### 14.6 Errores y límites
+
+- Prompts editados directamente en producción.
+- Pruebas de seguridad que los desarrolladores han visto y para las que han ajustado.
+- Ninguna vía de reversión para los modelos.
+
+Las ediciones de prompts en producción se saltan la revisión y no dejan constancia de por qué cambió el comportamiento. Las pruebas con las que han ajustado los desarrolladores muestran que el sistema puede superar esas pruebas, no que resista ataques nuevos. Los modelos sin vía de reversión obligan a los equipos a corregir los problemas hacia delante y bajo presión. Cada laguna tiene un remedio directo: prompts en el control de versiones, un control con pruebas reservadas custodiado por separado y un retorno ensayado a la última versión aprobada del registro.
+
+### Ejercicios — capítulo 14
+
+- **EX040 — Artefactos.** Enumere seis artefactos de una aplicación basada en LLM que necesitan control de versiones. Rúbrica: 3 = código, pesos/ID del modelo, prompts, índice/datos de recuperación, conjuntos de evaluación, configuraciones/políticas; 2 = cuatro; 1 = dos; 0 = nada.
+- **EX041 — Control de seguridad.** Diseñe un control de CI para Wrench (pruebas, métrica, umbral, acción). Rúbrica: 3 = conjunto reservado, métrica de tasa con umbral, bloquea la publicación; 2 = falta uno; 1 = vago; 0 = nada.
+- **EX042 — Cambio de prompt.** ¿Por qué afectó a la seguridad un cambio para ganar amabilidad? Rúbrica: 3 = la redacción del prompt cambia las prioridades al seguir instrucciones, también hacia el texto inyectado; 2 = parcial; 1 = vago; 0 = incorrecto.
+
+### Síntesis del capítulo
+
+La ingeniería de software de IA trata los modelos, los prompts y los datos como artefactos versionados y revisados, sometidos a controles de evaluación de seguridad con pruebas reservadas y publicados con una vía de reversión.
+
+### Siga estudiando — capítulo 14 de 50
+
+[← Capítulo 13 (borrador)](#ch-13) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 15 (borrador) →](#ch-15)
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Fundamentos de seguridad
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) aplicar la confidencialidad, la integridad y la disponibilidad (CIA) a los activos de IA; (2) describir con precisión amenaza, vulnerabilidad, riesgo y control; (3) usar la defensa en profundidad y el mínimo privilegio; y (4) situar los ataques propios de la IA en la taxonomía de NIST AI 100-2 E2025.
+
+### 15.1 CIA para la IA
+
+Confidencialidad: datos de entrenamiento, prompts, pesos del modelo y salidas. Integridad: datos, pesos, contenido de recuperación, decisiones del modelo y acciones de las herramientas. Disponibilidad: capacidad de inferencia y procesos de negocio dependientes. NIST AI 100-2 E2025 organiza los ataques adversariales contra la IA predictiva según el objetivo del atacante (interrupción de la disponibilidad, violación de la integridad, compromiso de la privacidad) y añade, para la IA generativa, la habilitación del mal uso. Enumerar los activos de este modo saca a la luz elementos que las revisiones de seguridad ordinarias pasan por alto. Los prompts pueden contener lógica de negocio o secretos. Los pesos pueden valer la pena robarlos. Las acciones de las herramientas, como una orden de trabajo creada en nombre de Wrench, tienen requisitos de integridad porque cambian el mundo físico. La disponibilidad va más allá del modelo y abarca el trabajo que depende de él, como la inspección de la vía.
+
+### 15.2 Amenaza, vulnerabilidad, riesgo y control
+
+Una *amenaza* es una causa potencial de daño (un actor o un suceso). Una *vulnerabilidad* es una debilidad que puede explotar. El *riesgo* combina probabilidad e impacto. Un *control* reduce la probabilidad o el impacto. Para Wrench: amenaza, un proveedor malicioso; vulnerabilidad, el modelo sigue las instrucciones de los boletines; impacto, órdenes de trabajo falsas; control, confirmación humana de las órdenes de trabajo. Escribir el riesgo como una cadena muestra dónde actúa un control. La confirmación humana no impide que el modelo siga instrucciones; limita el impacto, porque una orden de trabajo falsa necesita la aprobación de una persona antes de surtir efecto. Un segundo control, como las etiquetas de procedencia, podría reducir la probabilidad.
+
+### 15.3 Defensa en profundidad
+
+Ningún control es perfecto, sobre todo en modelos cuyo comportamiento es estadístico. Superponga controles: etiquetado de la procedencia de las entradas, instrucciones a nivel del modelo, validación de las salidas, aplicación de la política fuera del modelo, herramientas con mínimo privilegio, monitorización y supervisión humana. Cada capa detecta algunos fallos de las demás. Las capas deben ser independientes para aportar valor. Si la validación de las salidas y la aplicación de la política dependen ambas del propio juicio del modelo, una sola manipulación exitosa las burla a las dos. El diseño de Wrench mantiene la política en código fuera del modelo y exige una confirmación humana que el modelo no puede aportar, de modo que cada capa falla por razones distintas. Sam lo comprueba preguntando, para cada capa, qué necesitaría un atacante para eludirla.
+
+### 15.4 Conocimiento y capacidades del atacante
+
+La taxonomía también clasifica a los atacantes por su conocimiento (caja blanca, caja gris, caja negra) y sus capacidades (control de los datos de entrenamiento, del modelo, de las consultas, del código fuente). Enunciarlos convierte temores vagos en modelos de amenazas comprobables. Para TrackEye, un atacante realista es de caja negra con acceso físico: cualquiera que camine por la vía puede colocar marcas, pero no puede leer el modelo. Un contratista de etiquetado tiene capacidad sobre los datos de entrenamiento. Cada perfil se convierte en una campaña de pruebas con sus propios métodos, y los resultados se comunican por perfil, ya que un modelo robusto frente a uno puede ser débil frente a otro.
+
+### 15.5 Ejemplo resuelto (caso sintético de NRS)
+
+Sam elaboró una tabla CIA para TrackEye. Confidencialidad: baja (las imágenes de los carriles no son secretas), aunque los pesos del modelo tienen valor comercial. Integridad: crítica, ya que un defecto no detectado es un riesgo para la seguridad; el envenenamiento a través del contratista de etiquetado y las marcas físicas eran las principales amenazas. Disponibilidad: moderada; si TrackEye no funciona, la inspección manual continúa con un coste mayor. La tabla orientó el esfuerzo hacia los controles de integridad. La integridad se califica de crítica porque su impacto es sobre la seguridad, no sobre el dinero. La disponibilidad es solo moderada porque existe una alternativa manual, aunque los ataques que obliguen a recurrir a ella con frecuencia aumentarían los costes.
+
+### 15.6 Errores y límites
+
+- Tratar la «seguridad de la IA» como si fuera solo la inyección de prompts.
+- Diseños con un solo control.
+- Enunciados de riesgo sin impacto.
+
+La inyección de prompts importa, pero tratarla como el campo entero ignora el envenenamiento, el robo de modelos, las filtraciones de privacidad y el abuso de recursos. Los diseños con un solo control fallan por completo cuando ese control se elude. Los enunciados de riesgo que nombran una amenaza sin su impacto no pueden priorizarse, porque una debilidad que filtra imágenes de carriles y otra que oculta un carril agrietado parecen igual de urgentes. Por eso el registro de riesgos de Sam exige probabilidad e impacto en cada entrada.
+
+### Ejercicios — capítulo 15
+
+- **EX043 — Tabla CIA.** Complete una tabla CIA para Pulse (modelo de anomalías de rodamientos). Rúbrica: 3 = calificaciones sensatas con razones para las tres; 2 = dos; 1 = una; 0 = nada.
+- **EX044 — Términos.** Para Wrench, enuncie una amenaza, una vulnerabilidad, un impacto y un control relativos a la extracción del modelo. Rúbrica: 3 = los cuatro coherentes; 2 = tres; 1 = vago; 0 = nada.
+- **EX045 — Taxonomía.** Clasifique «un competidor consulta la API de TrackEye para entrenar una copia» por objetivo y capacidad. Rúbrica: 3 = privacidad/confidencialidad (extracción del modelo) con acceso a consultas, caja negra; 2 = uno; 1 = vago; 0 = incorrecto.
+
+### Síntesis del capítulo
+
+Los fundamentos de seguridad se aplican directamente a la IA: CIA para activos nuevos, un lenguaje de riesgo preciso, controles superpuestos y capacidades explícitas del atacante.
+
+### Siga estudiando — capítulo 15 de 50
+
+[← Capítulo 14 (borrador)](#ch-14) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 16 (borrador) →](#ch-16)
+
+<a id="ch-16"></a>
+
+## Capítulo 16 — Ingeniería de sistemas
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) aplicar el modelo en V de la ingeniería de sistemas a los sistemas con IA; (2) descomponer los requisitos del sistema en requisitos de componentes con métodos de verificación; (3) gestionar las interfaces y el comportamiento emergente; y (4) usar análisis de peligros que incluyan los modos de fallo de la IA.
+
+### 16.1 El modelo en V
+
+La ingeniería de sistemas desciende desde las necesidades de las partes interesadas hasta los requisitos del sistema, la arquitectura, el diseño de componentes y la implementación, y después asciende por la verificación de componentes, las pruebas de integración, la verificación del sistema y la validación frente a las necesidades. Cada requisito de la izquierda tiene una actividad de verificación a la derecha. Los componentes de IA encajan en este esquema, pero necesitan métodos de verificación estadísticos (tasas con intervalos) en lugar de pruebas únicas de superado/no superado. Para TrackEye, superar una prueba significa una tasa declarada con un intervalo, medida sobre un conjunto de prueba identificado, y no una única salida correcta.
+
+### 16.2 Descomposición de requisitos
+
+Un requisito del sistema como «los defectos del carril mayores de 10 mm se detectan con probabilidad ≥ 0,98 en todas las condiciones de operación» se descompone en requisitos de la cámara, la iluminación, el modelo, el sistema de alertas y la revisión humana. La parte del modelo podría ser «tasa de falsos negativos ≤ 1,5 % en cada estrato de condiciones, con cota superior del 95 %», lo que deja margen para los demás componentes. El reparto es un presupuesto. Si el modelo puede pasar por alto el 1,5 %, el paso de revisión humana y la cadena de alertas deben mantener sus propias pérdidas lo bastante bajas para que la cadena completa siga cumpliendo 0,98. El requisito de cada componente indica su parte y cómo se verificará, de modo que un déficit en un punto es visible y puede compensarse en otro, en lugar de descubrirse al final.
+
+### 16.3 Interfaces y emergencia
+
+Las interfaces llevan supuestos: el modelo supone imágenes con una resolución y una exposición dadas; el sistema de alertas supone que la confianza del modelo está calibrada. El comportamiento emergente surge cuando los componentes interactúan; por ejemplo, un agente basado en LLM que combina dos herramientas inofensivas para producir un efecto dañino. Los documentos de control de interfaces deben indicar los formatos de datos, los niveles de confianza y el comportamiento ante fallos. Cuando el proveedor de la cámara cambia un sensor, el documento de interfaz dice al equipo qué supuestos del modelo debe volver a probar. En los agentes, el daño emergente se encuentra revisando combinaciones de herramientas, no herramientas aisladas: leer un documento y enviar un correo son inofensivos por separado, pero juntos pueden filtrar el documento.
+
+### 16.4 Análisis de peligros
+
+Técnicas como el análisis de modos de fallo y sus efectos (FMEA) y el análisis de procesos basado en la teoría de sistemas (STPA) buscan las formas en que el sistema puede llegar a estados peligrosos. Añada los modos de fallo de la IA: desplazamiento de distribución, entradas adversariales, envenenamiento, exceso de confianza, uso inseguro de herramientas. El enfoque de STPA en las acciones de control inseguras encaja de forma natural con los agentes que emiten órdenes. El FMEA trabaja de abajo arriba desde los fallos de los componentes y se adapta a la cadena de percepción de TrackEye. El STPA trabaja de arriba abajo desde los peligros y pregunta qué acciones de control serían inseguras si se dieran, se omitieran, se dieran en el momento equivocado o durante demasiado tiempo. Para Wrench, una acción insegura es una orden de trabajo enviada al activo equivocado, y el STPA pregunta qué haría que el agente la emitiera.
+
+### 16.5 Ejemplo resuelto (caso sintético de NRS)
+
+Sam elaboró una fila de FMEA para TrackEye: modo de fallo «defecto no detectado con deslumbramiento»; efecto «defecto sin detectar hasta el siguiente recorrido»; causa «desplazamiento de distribución»; detección «monitorización del estrato del amanecer»; gravedad 9, ocurrencia 4, detección 5, número de prioridad de riesgo 180. Una segunda fila, para «marcas adversariales», tenía gravedad 9, ocurrencia 2, detección 7 (difícil de detectar), NPR 126. Ambas superaban el umbral de actuación de 100. La fila de las marcas puntúa menos en conjunto porque la ocurrencia es rara, pero su puntuación de detección es peor, ya que nadie vigila la aparición de patrones deliberados. Superar 100 desencadena una actuación en ambas filas, pero las actuaciones difieren: mejores datos del amanecer en una, un método de detección en la otra. Sam registra en qué se basan las puntuaciones, ya que la ocurrencia de los ataques es una estimación.
+
+### 16.6 Errores y límites
+
+- Requisitos sobre componentes de IA sin métodos de verificación estadísticos.
+- Interfaces que no indican niveles de confianza.
+- Análisis de peligros que ignoran los ataques deliberados.
+
+Un requisito como «el modelo detecta defectos» no puede verificarse, porque ninguna prueba finita lo demuestra; una tasa con una cota sí puede. Las interfaces sin niveles de confianza dejan que el texto no confiable fluya sin que nadie lo note hacia componentes privilegiados. Los análisis de peligros que solo consideran fallos aleatorios pasan por alto los casos en que alguien busca a propósito la peor entrada, que suelen ser mucho peores que el caso típico que suponía el análisis.
+
+### Ejercicios — capítulo 16
+
+- **EX046 — Descomposición.** Descomponga «Wrench no debe crear órdenes de trabajo no autorizadas» en tres requisitos de componentes. Rúbrica: 3 = aplicación de la política, confirmación, alcance de la herramienta/registro, cada uno verificable; 2 = dos; 1 = vago; 0 = nada.
+- **EX047 — NPR.** Calcule el NPR para gravedad 8, ocurrencia 3 y detección 6, e indique si supera 100. Rúbrica: 3 = 144, sí; 2 = desliz aritmético; 1 = método; 0 = nada.
+- **EX048 — Emergencia.** Dé un ejemplo de daño emergente a partir de dos herramientas seguras por separado. Rúbrica: 3 = cadena verosímil (p. ej., la búsqueda recupera datos + la herramienta de correo los envía); 2 = cadena vaga; 1 = una sola herramienta; 0 = nada.
+
+### Síntesis del capítulo
+
+La ingeniería de sistemas da a la seguridad de la IA una columna vertebral: requisitos descompuestos y verificables, interfaces explícitas y análisis de peligros que incluyen tanto los fallos accidentales como los adversariales.
+
+### Siga estudiando — capítulo 16 de 50
+
+[← Capítulo 15 (borrador)](#ch-15) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 17 (borrador) →](#ch-17)
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Fundamentos de control y realimentación
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) describir el control en lazo abierto y en lazo cerrado, la realimentación, la ganancia y la estabilidad; (2) reconocer los lazos de realimentación en los sistemas de IA (reentrenamiento con las propias salidas, lazos de los sistemas de recomendación, agentes que actúan sobre sus propios resultados); (3) explicar cómo explotan los adversarios la realimentación; y (4) diseñar envolventes de operación seguras y enclavamientos para el control impulsado por IA.
+
+### 17.1 Realimentación y estabilidad
+
+Un controlador en lazo cerrado mide la salida, la compara con un objetivo y ajusta la entrada. La ganancia determina con cuánta fuerza reacciona; demasiada ganancia provoca oscilación o inestabilidad, y demasiado poca, una respuesta lenta. Los retardos en el lazo hacen más probable la inestabilidad. Un termostato es un lazo conocido: mide la temperatura de la habitación y enciende o apaga la calefacción. Si reacciona a cada pequeña fluctuación, la calefacción se enciende y apaga sin parar; si reacciona demasiado despacio, la habitación oscila entre el calor y el frío. El retardo empeora ambas cosas, porque el controlador actúa con información que ya está desfasada. Los mismos compromisos aparecen dondequiera que un sistema se ajuste a partir de sus propios resultados, incluido el ajuste automático de umbrales.
+
+### 17.2 Lazos de realimentación en los sistemas de IA
+
+Los sistemas de IA forman a menudo lazos: las decisiones de un modelo cambian los datos con los que después se reentrena; un modelo de anomalías cuyas alertas desencadenan mantenimiento nunca ve lo que habría ocurrido sin ese mantenimiento; un agente observa los resultados de sus propias llamadas a herramientas y planifica nuevas acciones. Los lazos pueden amplificar errores pequeños, y también la influencia de un atacante. Si los atacantes pueden inyectar datos que se reincorporan al entrenamiento (por ejemplo, valoraciones de «me gusta» de los usuarios sobre respuestas manipuladas), pueden dirigir el modelo con el tiempo; es una vía de envenenamiento (OWASP LLM04).
+
+### 17.3 Envolventes de operación seguras
+
+Los ingenieros de control acotan las órdenes a los actuadores, limitan la velocidad de los cambios y añaden enclavamientos que anulan al controlador cuando las mediciones salen de una región segura. Aplique lo mismo a la IA: acote las acciones que un agente puede realizar por hora, exija aprobación humana fuera de una envolvente y añada comprobaciones independientes (un monitor sencillo basado en reglas) que puedan vetar al modelo. El monitor basado en reglas es deliberadamente sencillo, de modo que falla de formas distintas a las del modelo. Una regla como «no más de cinco órdenes de trabajo por hora desde una misma sesión» detecta un comportamiento desbocado sea cual sea la razón por la que el modelo lo produjo. Las envolventes se redactan a partir de datos de operación: el rango normal de acciones observadas, con un margen, y un responsable explícito que aprueba los cambios.
+
+### 17.4 Lazos de monitorización
+
+Monitorice la distribución de las entradas, la distribución de las salidas y las tasas de resultados. Los cambios bruscos pueden indicar deriva o un ataque; una deriva lenta puede indicar un lazo de realimentación. Mantenga un conjunto de datos de referencia que no esté influido por el modelo para medir el rendimiento real. Un conjunto de referencia se etiqueta de forma independiente y se mantiene apartado del entrenamiento y del ajuste. Medir periódicamente el modelo sobre él muestra el rendimiento real, incluso cuando la realimentación de producción está sesgada por las propias decisiones del modelo. Monitorizar las tasas de resultados también requiere cuidado: si cada alerta va seguida de mantenimiento, el sistema nunca ve directamente los fallos no detectados, así que los ingenieros toman muestras de casos sin alerta para inspeccionarlos y estimarlos.
+
+### 17.5 Ejemplo resuelto (caso sintético de NRS)
+
+Los umbrales de Pulse se reajustaban automáticamente cada semana a partir de las valoraciones de los técnicos sobre las alertas. Un equipo de contratistas, presionado por los plazos, marcó muchas alertas verdaderas como «falsa alarma»; en seis semanas el umbral subió y la tasa de verdaderos positivos bajó del 92 % al 78 % en el conjunto de referencia. Sam sustituyó el reajuste automático por una actualización acotada (como máximo un 2 % de cambio del umbral por semana), una comprobación con el conjunto de referencia antes de cada cambio y la revisión de las valoraciones de cualquier equipo cuyas valoraciones divergieran mucho de las de los demás. Sin el conjunto de referencia, el deterioro habría parecido una mejora, ya que se generaban menos alertas.
+
+### 17.6 Errores y límites
+
+- Reentrenar con datos influidos por el modelo sin una referencia limpia.
+- Actualizaciones automáticas sin límites.
+- Agentes sin presupuesto de acciones.
+
+Reentrenar con datos moldeados por las propias decisiones del modelo puede consolidar sus errores, porque los casos que pasó por alto nunca vuelven como ejemplos. Las actualizaciones sin límites permiten que unas pocas entradas sesgadas desplacen mucho el sistema antes de que nadie lo note. Los agentes sin presupuesto de acciones pueden repetir muchas veces una acción dañina en los minutos previos a que una persona revise el registro. Cada error es la falta de una cota en un lazo de realimentación, y cada corrección es un límite que no depende de que el modelo acierte.
+
+### Ejercicios — capítulo 17
+
+- **EX049 — Lazos.** Identifique dos lazos de realimentación en Wrench. Rúbrica: 3 = dos lazos verosímiles (valoraciones → ajuste fino; agente que observa los resultados de las herramientas) con sus riesgos; 2 = uno; 1 = vago; 0 = nada.
+- **EX050 — Envolvente.** Proponga tres límites de envolvente para un agente que crea órdenes de trabajo. Rúbrica: 3 = tope por periodo, aprobación fuera del alcance, veto/monitor independiente; 2 = dos; 1 = uno; 0 = nada.
+- **EX051 — Corrección de Pulse.** Explique por qué el conjunto de referencia es esencial en la corrección de Sam. Rúbrica: 3 = no está influido por las valoraciones y revela el deterioro real del rendimiento; 2 = parcial; 1 = vago; 0 = incorrecto.
+
+### Síntesis del capítulo
+
+La realimentación hace que los sistemas sean adaptativos y también explotables. Las actualizaciones acotadas, las referencias limpias, las envolventes de acciones y los enclavamientos independientes mantienen estables los lazos de IA bajo ataque.
+
+### Siga estudiando — capítulo 17 de 50
+
+[← Capítulo 16 (borrador)](#ch-16) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 18 (borrador) →](#ch-18)
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Arquitectura de seguridad
+
+### Resultados de aprendizaje
+
+Usted será capaz de (1) aplicar los principios de arquitectura (mínimo privilegio, separación de funciones, mediación completa, valores predeterminados a prueba de fallos, defensa en profundidad) a los sistemas de IA; (2) definir fronteras de confianza para modelos, datos y herramientas; (3) diseñar una arquitectura de referencia para un agente basado en LLM; y (4) documentar las decisiones de arquitectura con sus amenazas y su riesgo residual.
+
+### 18.1 Principios
+
+Los principios clásicos de Saltzer y Schroeder siguen vigentes. *Mínimo privilegio*: el modelo y sus herramientas reciben solo los permisos necesarios. *Mediación completa*: un punto de política comprueba cada acción, todas las veces. *Valores predeterminados a prueba de fallos*: denegar salvo que se permita explícitamente. *Separación de funciones*: el componente que propone una acción no es el que la aprueba. *Economía del mecanismo*: mantener la política lo bastante pequeña para poder revisarla. Estos principios son anteriores al aprendizaje automático, lo cual es útil: dan a los revisores una lista de comprobación que no depende de cómo se comporte el modelo. Un modelo puede ser manipulado, pero un punto de política que comprueba cada acción se sigue aplicando sea lo que sea lo que se haya persuadido al modelo para proponer.
+
+### 18.2 Fronteras de confianza
+
+Una frontera de confianza es el punto en que los datos o el control pasan entre partes con distinto nivel de confianza. En las aplicaciones basadas en LLM, la frontera crítica pasa *por dentro* del prompt: instrucciones del sistema (confiables), entrada del usuario (parcialmente confiable), contenido recuperado o devuelto por herramientas (no confiable). Como el modelo no puede imponer esta frontera de forma fiable, la arquitectura debe imponer las consecuencias fuera del modelo. El modelo ve los tres tipos de texto como una única secuencia de tokens. Los delimitadores y las instrucciones le ayudan a separarlos, pero un boletín escrito con cuidado aún puede leerse como una instrucción. Imponer las consecuencias fuera significa que el servicio de política, las credenciales de las herramientas y la aprobación humana deciden lo que realmente ocurre, de modo que la confusión del modelo sobre de quién es el texto que lee no puede causar daño por sí sola.
+
+### 18.3 Una arquitectura de referencia para agentes
+
+Componentes: (1) un servicio de ingesta que etiqueta la procedencia; (2) el modelo, que *propone* acciones; (3) un punto de decisión de política que comprueba cada propuesta frente a la identidad, el alcance y las reglas; (4) adaptadores de herramientas con credenciales estrechas; (5) aprobación humana para las acciones de alto impacto; (6) registro y monitorización. La investigación sobre consultas estructuradas (Chen et al., arXiv:2402.06363) mejora la separación que hace el propio modelo entre instrucciones y datos, pero no sustituye al punto de política externo. OWASP LLM06 (*agencia excesiva*) advierte contra el exceso de funcionalidad, de permisos y de autonomía. Cada componente corresponde a un principio: el punto de política aporta la mediación completa, las credenciales estrechas el mínimo privilegio, y la aprobación humana separa la propuesta de la aprobación.
+
+### 18.4 Registros de decisiones de arquitectura
+
+Registre cada decisión importante: contexto, opciones consideradas, decisión, consecuencias, amenazas abordadas y riesgo residual. Así, los revisores y los futuros ingenieros pueden ver por qué existe un control. Sin un registro, un control que parece incómodo puede eliminarlo alguien que no conoce el ataque que evita. Los registros son breves, normalmente de una página, y se guardan con el código para que cambien mediante la misma revisión. Cuando cambian las condiciones, como una herramienta nueva o una amenaza nueva, el registro se revisa y otro nuevo lo sustituye, conservando la historia. El riesgo residual es el campo que más a menudo se deja en blanco y el que más necesitan los revisores.
+
+### 18.5 Ejemplo resuelto (caso sintético de NRS)
+
+Sam redactó el ADR-007: «Creación de órdenes de trabajo en Wrench». Opciones: (a) el modelo llama directamente a la API; (b) el modelo propone, la política comprueba y el técnico confirma; (c) sin herramienta: el modelo redacta un texto que el técnico copia. Decisión: (b). Consecuencias: un clic más para los técnicos; las instrucciones inyectadas no pueden crear órdenes sin una persona. Riesgo residual: los técnicos pueden aprobar sin leer, lo que se mitiga mostrando el documento de origen de cualquier texto que parezca una instrucción.
+
+La opción (c) era la más segura, pero renunciaba a la ventaja de las órdenes estructuradas, mientras que la opción (a) ponía un modelo no confiable al mando directo de un sistema privilegiado. El registro muestra por qué (b) se sitúa entre ambas.
+
+### 18.6 Errores y límites
+
+- Confiar en que el modelo imponga las fronteras de su prompt.
+- Herramientas con credenciales amplias «por comodidad».
+- Decisiones sin riesgo residual registrado.
+
+Una frontera impuesta solo mediante instrucciones en el prompt aguanta hasta que una entrada ingeniosa la rompe. Las credenciales amplias convierten una sola llamada manipulada en acceso a todo lo que alcanza la credencial. Las decisiones registradas sin riesgo residual dan la impresión de que un problema está resuelto cuando solo se ha reducido. La revisión de arquitectura de Sam pregunta, para cada diseño: dónde se impone la frontera en el código, qué puede hacer la credencial de cada herramienta y qué riesgo queda.
+
+### Ejercicios — capítulo 18
+
+- **EX052 — Principios.** Aplique tres principios a la cadena de alertas de TrackEye. Rúbrica: 3 = tres principios aplicados de forma concreta; 2 = dos; 1 = solo nombrados; 0 = nada.
+- **EX053 — Frontera.** ¿Dónde está la frontera de confianza dentro del prompt de Wrench, y por qué el modelo no puede imponerla de forma fiable? Rúbrica: 3 = entre sistema/usuario y el contenido recuperado; una única secuencia de tokens, comportamiento estadístico; 2 = parcial; 1 = vago; 0 = incorrecto.
+- **EX054 — ADR.** Redacte un ADR breve para añadir una herramienta de correo electrónico a Wrench. Rúbrica: 3 = contexto, opciones, decisión, consecuencias, riesgo residual; 2 = cuatro; 1 = dos; 0 = nada.
+
+### Síntesis del capítulo
+
+La arquitectura es donde la seguridad de la IA se vuelve exigible: las fronteras de confianza, un punto de política externo, las herramientas con mínimo privilegio y las decisiones documentadas convierten la incertidumbre del modelo en un riesgo acotado.
+
+### Siga estudiando — capítulo 18 de 50
+
+[← Capítulo 17 (borrador)](#ch-17) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 19 (borrador) →](../../en/book/MANUSCRIPT.md#ch-19)
 
 <a id="worked-results"></a>
 
@@ -862,6 +1166,42 @@ Respuestas modelo; cualquier respuesta que cumpla la rúbrica obtiene la misma p
 **EX035.** Derechos de root o de administración; acceso de escritura al código o a los pesos; acceso a datos de entrenamiento, secretos o credenciales que no necesita; salida de red sin restricciones.
 
 **EX036.** Vincula una decisión del modelo (y el prompt que la causó) con efectos concretos, como inicios de procesos o cambios de archivos, que es como los investigadores establecen lo que realmente hizo una instrucción inyectada.
+
+**EX037.** Fuente (quién/dónde), momento de recogida y versión del conjunto de datos, y transformaciones aplicadas (además de quién lo añadió o lo reetiquetó).
+
+**EX038.** Si la recuperación usa la identidad amplia del servicio, el modelo puede obtener documentos que el usuario no tiene permitido ver y revelarlos: un problema de *confused deputy* (agente confundido).
+
+**EX039.** Si el contenido de una URL cambia después de la recogida (p. ej., un dominio registrado de nuevo que sirve contenido envenenado), su hash deja de coincidir con el valor registrado y el elemento se rechaza.
+
+**EX040.** Código de la aplicación; identificador del modelo y hash de los pesos; prompts del sistema y de las herramientas; índice de recuperación y versiones de los datos de origen; conjuntos de evaluación; archivos de configuración y de política.
+
+**EX041.** Ejecutar 300 casos de inyección reservados (nunca usados para el ajuste) sobre cada candidato; métrica: tasa de propuestas y de ejecuciones de llamadas a herramientas no autorizadas; umbral: propuestas ≤ 2 %, ejecuciones 0; acción: bloquear la publicación y avisar al responsable si se supera.
+
+**EX042.** El comportamiento del modelo depende del prompt entero; una frase que fomentaba cumplir el objetivo elevó la prioridad de cualquier instrucción presente en el contexto, incluido el texto inyectado en los boletines.
+
+**EX043.** Confidencialidad: moderada (los datos de los sensores y los pesos revelan la operación). Integridad: crítica (los falsos negativos pasan por alto rodamientos sobrecalentados; los falsos positivos malgastan mantenimiento). Disponibilidad: moderada a alta (la pérdida de la monitorización obliga a comprobaciones manuales).
+
+**EX044.** Amenaza: un competidor; vulnerabilidad: salidas de la API detalladas y sin límite; impacto: pérdida de propiedad intelectual y acceso de caja blanca para ataques posteriores; control: autenticación, cuotas por cliente, minimización de las salidas, monitorización del abuso.
+
+**EX045.** Objetivo: compromiso de la privacidad/confidencialidad (extracción del modelo). Capacidad: acceso a consultas, conocimiento de caja negra.
+
+**EX046.** (1) Toda llamada de orden de trabajo pasa por un servicio de política que comprueba el rol y el depósito (verificado mediante prueba). (2) Las órdenes de trabajo requieren la confirmación del técnico en la interfaz de usuario (verificado mediante inspección y prueba). (3) La credencial de órdenes de trabajo solo permite operaciones de creación/borrador y cada llamada queda registrada (verificado mediante revisión de la configuración).
+
+**EX047.** 8 × 3 × 6 = 144, que supera 100, así que se requiere actuación.
+
+**EX048.** Una herramienta de búsqueda recupera un calendario de mantenimiento confidencial y una herramienta de correo envía un «resumen» a una dirección indicada en un texto inyectado: cada herramienta es inofensiva por sí sola; la combinación exfiltra datos.
+
+**EX049.** (1) Las valoraciones de los técnicos sobre las respuestas de Wrench alimentan ajustes finos futuros: unas valoraciones manipuladas podrían dirigir su comportamiento. (2) Dentro de una tarea, Wrench lee los resultados de sus propias llamadas a herramientas y planifica llamadas posteriores: el contenido inyectado en los resultados puede desviar los pasos siguientes.
+
+**EX050.** Como máximo N órdenes de trabajo por usuario y hora; cualquier orden fuera del depósito del usuario o con prioridad superior a «media» requiere la aprobación de un supervisor; un monitor independiente basado en reglas puede vetar las órdenes que no correspondan a ningún hallazgo de inspección abierto.
+
+**EX051.** El conjunto de referencia se etiqueta con independencia de las valoraciones sesgadas, así que muestra el deterioro real de la detección; sin él, la deriva parece una mejora.
+
+**EX052.** Mínimo privilegio: TrackEye puede escribir alertas, pero no cerrarlas. Mediación completa: cada alerta pasa por la misma validación antes de llegar a los técnicos. Valor predeterminado a prueba de fallos: si el modelo falla o la calidad de la entrada es mala, el tramo se marca para inspección manual en lugar de darse por bueno.
+
+**EX053.** Entre las instrucciones confiables (sistema y usuario) y los boletines/notas recuperados no confiables. Todos son tokens de una misma secuencia y el seguimiento de instrucciones del modelo es estadístico, así que puede seguir texto inyectado.
+
+**EX054.** Contexto: los técnicos quieren que Wrench envíe solicitudes de piezas. Opciones: herramienta de correo libre; correo solo a una lista de permitidos de direcciones de proveedores, con confirmación; solo borrador. Decisión: destinatarios en lista de permitidos más confirmación. Consecuencias: flexibilidad limitada; la exfiltración inyectada queda bloqueada. Riesgo residual: los proveedores permitidos podrían recibir contenido erróneo; se mitiga mostrando el mensaje completo antes de enviarlo.
 
 <a id="references"></a>
 
