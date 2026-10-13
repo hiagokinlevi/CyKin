@@ -52,39 +52,17 @@ Lena Fischer is a computer science student at the fictional Hollowbrook Universi
 
 Security rules are logical statements. "Only staff may change menu prices" can be written: if a user changes a price, then the user is staff. Writing rules this way exposes ambiguity: does "staff" include student volunteers who run the café till? CampusEats decides they are a separate role, "volunteer", without price rights.
 
-Section one point two develops mathematical reasoning with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section one point two, Grace Nwosu expects mathematical claims to carry owners and dates.
-
 ### 1.3 Implication and negation
 
 The contrapositive of "if price change then staff" is "if not staff then no price change". Tests check the contrapositive: a volunteer tries a price change and must be refused. Negating a rule correctly matters: the opposite of "all requests are logged" is "some request is not logged", not "no requests are logged".
-
-Section one point three develops mathematical reasoning with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section one point three, Grace Nwosu expects mathematical claims to carry owners and dates.
 
 ### 1.4 Gaps and contradictions
 
 Two rules "volunteers may issue refunds up to £5" and "only staff may issue refunds" contradict each other. Lena's table of roles and actions makes such conflicts visible before code is written.
 
-Section one point four develops mathematical reasoning with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section one point four, Grace Nwosu expects mathematical claims to carry owners and dates.
-
-Section one point four treats the case precise rules as testable only when evidence and ticket IDs are recorded.
-
 ### 1.5 Quantifiers
 
 "Every dependency has an owner" is a universal statement; one counterexample disproves it. Lena checks the CampusEats dependency list and finds three packages with no named owner.
-
-Section one point five develops mathematical reasoning with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section one point five, Grace Nwosu expects mathematical claims to carry owners and dates.
-
-Section one point five treats the case precise rules as testable only when evidence and ticket IDs are recorded.
-
-For section one point five, Hollowbrook University will not accept mathematical work without a written trail.
 
 ### Worked example
 
@@ -122,67 +100,25 @@ You will (1) describe the parts of a web application system; (2) trace a request
 
 CampusEats has a browser front end, a web server running application code, a database, a payment provider and a hosting platform. Its code depends on dozens of open-source packages fetched at build time.
 
-Section two point one develops computing systems with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section two point one, Grace Nwosu expects computing claims to carry owners and dates.
-
-Section two point one treats the parts following request as testable only when evidence and ticket IDs are recorded.
-
 ### 2.2 Following a request
 
 A student taps "order": the browser sends a request over HTTPS; the server checks the session, validates the order, writes to the database, calls the payment provider and returns a confirmation page. Each step is a place where data could be altered, exposed or lost.
-
-Section two point two develops computing systems with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section two point two, Grace Nwosu expects computing claims to carry owners and dates.
-
-Section two point two treats the parts following request as testable only when evidence and ticket IDs are recorded.
 
 ### 2.3 Third-party code
 
 Third-party code runs in three places: packages bundled into the browser code, packages on the server, and services such as payments. A flaw in any of them affects CampusEats even though the society did not write it.
 
-Section two point three develops computing systems with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section two point three, Grace Nwosu expects computing claims to carry owners and dates.
-
-Section two point three treats the parts following request as testable only when evidence and ticket IDs are recorded.
-
 ### 2.4 Build and deploy
 
 Code goes from the repository to a build service that installs dependencies, runs tests and creates a deployable bundle. The integrity check that stopped the build in Lena's first week sits at the install step.
-
-Section two point four develops computing systems with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section two point four, Grace Nwosu expects computing claims to carry owners and dates.
-
-Section two point four treats the parts following request as testable only when evidence and ticket IDs are recorded.
 
 ### 2.5 Responsibilities
 
 The society owns its code and configuration; the hosting platform owns servers; the payment provider owns payments. The university's security office sets policy and helps with reviews.
 
-Section two point five develops computing systems with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section two point five, Grace Nwosu expects computing claims to carry owners and dates.
-
-Section two point five treats the parts following request as testable only when evidence and ticket IDs are recorded.
-
-For section two point five, Hollowbrook University will not accept computing work without a written trail.
-
 ### 2.6 Shared responsibility
 
 When responsibilities overlap or are unclear, gaps appear; Lena lists who owns each part.
-
-Section two point six develops computing systems with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section two point six, Grace Nwosu expects computing claims to carry owners and dates.
-
-Section two point six treats the parts following request as testable only when evidence and ticket IDs are recorded.
-
-For section two point six, Hollowbrook University will not accept computing work without a written trail.
-
-Section two point six fails closed if computing evidence is missing rather than guessing.
 
 ### Inventory
 
@@ -224,57 +160,21 @@ You will (1) write readable functions with clear inputs and outputs; (2) handle 
 
 Lena writes order_total(items) that adds prices from the menu table, never from the browser, because prices sent by the browser can be changed. Business values come from trusted sources.
 
-Section three point one develops programming with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section three point one, Grace Nwosu expects programming claims to carry owners and dates.
-
-Section three point one treats clear functions errors secrets as testable only when evidence and ticket IDs are recorded.
-
-For section three point one, Hollowbrook University will not accept programming work without a written trail.
-
 ### 3.2 Errors
 
 If an item is not on the menu, the function raises an error and the order is refused. Silent defaults, like treating unknown items as free, are dangerous.
-
-Section three point two develops programming with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section three point two, Grace Nwosu expects programming claims to carry owners and dates.
-
-Section three point two treats clear functions errors secrets as testable only when evidence and ticket IDs are recorded.
-
-For section three point two, Hollowbrook University will not accept programming work without a written trail.
 
 ### 3.3 Secrets do not belong in code
 
 The leaked token began as a hard-coded test value in a configuration file. Secrets belong in environment variables or a secrets manager, never in the repository, even for "test" keys, because repositories are copied and kept forever. OWASP Top 10:2021 A05 Security Misconfiguration and A07 Identification and Authentication Failures both relate to mishandled credentials.
 
-Section three point three develops programming with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section three point three, Grace Nwosu expects programming claims to carry owners and dates.
-
 ### 3.4 Version control
 
 Each change is a commit with a clear message. A ".gitignore" file excludes local configuration files. Removing a secret in a later commit does not remove it from history; the secret must be revoked.
 
-Section three point four develops programming with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section three point four, Grace Nwosu expects programming claims to carry owners and dates.
-
-Section three point four treats clear functions errors secrets as testable only when evidence and ticket IDs are recorded.
-
 ### 3.5 Pre-commit checks
 
 A pre-commit hook scans changes for secret-like strings before they leave the developer's machine.
-
-Section three point five develops programming with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section three point five, Grace Nwosu expects programming claims to carry owners and dates.
-
-Section three point five treats clear functions errors secrets as testable only when evidence and ticket IDs are recorded.
-
-For section three point five, Hollowbrook University will not accept programming work without a written trail.
-
-Section three point five fails closed if programming evidence is missing rather than guessing.
 
 ### Code review
 
@@ -316,73 +216,25 @@ You will (1) write clear, evidence-based academic text on security topics; (2) c
 
 An academic essay states a question, reviews evidence, argues and concludes. Lena's first essay asks: "Why do secrets leak into source repositories?"
 
-Section four point one develops academic writing with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section four point one, Grace Nwosu expects academic claims to carry owners and dates.
-
-Section four point one treats structure evidence accurate citation as testable only when evidence and ticket IDs are recorded.
-
-For section four point one, Hollowbrook University will not accept academic work without a written trail.
-
 ### 4.2 Evidence
 
 She cites the OWASP Top 10:2021 for categories of failure and NIST SP 800-218 (SSDF) practice PS.1 on protecting code from unauthorised access and tampering. She uses the CampusEats incident as a case, with permission and without the token value.
-
-Section four point two develops academic writing with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section four point two, Grace Nwosu expects academic claims to carry owners and dates.
-
-Section four point two treats structure evidence accurate citation as testable only when evidence and ticket IDs are recorded.
 
 ### 4.3 Accurate citation
 
 Every claim with a source has a citation with author, year and title; quotations are marked. Lena checks each reference against the original.
 
-Section four point three develops academic writing with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section four point three, Grace Nwosu expects academic claims to carry owners and dates.
-
-Section four point three treats structure evidence accurate citation as testable only when evidence and ticket IDs are recorded.
-
-For section four point three, Hollowbrook University will not accept academic work without a written trail.
-
 ### 4.4 Responsible detail
 
 Security writing describes weaknesses, effects and fixes, not instructions for misuse. Lena's essay explains why the token was dangerous without describing how anyone could use it.
-
-Section four point four develops academic writing with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section four point four, Grace Nwosu expects academic claims to carry owners and dates.
-
-Section four point four treats structure evidence accurate citation as testable only when evidence and ticket IDs are recorded.
-
-For section four point four, Hollowbrook University will not accept academic work without a written trail.
 
 ### 4.5 Clarity
 
 Short sentences, defined terms, one idea per paragraph.
 
-Section four point five develops academic writing with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section four point five, Grace Nwosu expects academic claims to carry owners and dates.
-
-Section four point five treats structure evidence accurate citation as testable only when evidence and ticket IDs are recorded.
-
-For section four point five, Hollowbrook University will not accept academic work without a written trail.
-
-Section four point five fails closed if academic evidence is missing rather than guessing.
-
 ### 4.6 Feedback
 
 Grace comments that the essay's best paragraph is the one explaining why "test keys" are still dangerous: they often share infrastructure with live systems.
-
-Section four point six develops academic writing with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section four point six, Grace Nwosu expects academic claims to carry owners and dates.
-
-Section four point six treats structure evidence accurate citation as testable only when evidence and ticket IDs are recorded.
-
-For section four point six, Hollowbrook University will not accept academic work without a written trail.
 
 ### Sources to read
 
@@ -428,57 +280,21 @@ You will (1) explain core security concepts for applications; (2) describe the O
 
 Confidentiality protects student details and order history; integrity protects prices, orders and the code itself; availability keeps ordering working at lunchtime.
 
-Section five point one develops security literacy with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section five point one, Grace Nwosu expects security claims to carry owners and dates.
-
-Section five point one treats cia owasp top supply as testable only when evidence and ticket IDs are recorded.
-
-For section five point one, Hollowbrook University will not accept security work without a written trail.
-
 ### 5.2 OWASP Top 10:2021
 
 The ten categories are Broken Access Control, Cryptographic Failures, Injection, Insecure Design, Security Misconfiguration, Vulnerable and Outdated Components, Identification and Authentication Failures, Software and Data Integrity Failures, Security Logging and Monitoring Failures, and Server-Side Request Forgery. The token leak relates to misconfiguration and authentication; the hash mismatch to software and data integrity.
-
-Section five point two develops security literacy with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section five point two, Grace Nwosu expects security claims to carry owners and dates.
 
 ### 5.3 Supply chain risks
 
 Ohm et al. (2020) reviewed real cases of malicious open-source packages; Ladisa et al. (2023) organised attacks on open-source supply chains into a taxonomy from source to distribution. Consumers like CampusEats face both known vulnerabilities in honest packages and, more rarely, deliberately malicious ones.
 
-Section five point three develops security literacy with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section five point three, Grace Nwosu expects security claims to carry owners and dates.
-
-Section five point three treats cia owasp top supply as testable only when evidence and ticket IDs are recorded.
-
 ### 5.4 Reading advisories
 
 An advisory names the package, affected versions, fixed versions, severity and a description. A CVE identifier allows cross-referencing.
 
-Section five point four develops security literacy with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section five point four, Grace Nwosu expects security claims to carry owners and dates.
-
-Section five point four treats cia owasp top supply as testable only when evidence and ticket IDs are recorded.
-
-For section five point four, Hollowbrook University will not accept security work without a written trail.
-
 ### 5.5 Weakness names
 
 The CWE Top 25 names common weaknesses like cross-site scripting (CWE-79) and SQL injection (CWE-89).
-
-Section five point five develops security literacy with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section five point five, Grace Nwosu expects security claims to carry owners and dates.
-
-Section five point five treats cia owasp top supply as testable only when evidence and ticket IDs are recorded.
-
-For section five point five, Hollowbrook University will not accept security work without a written trail.
-
-Section five point five fails closed if security evidence is missing rather than guessing.
 
 ### Severity
 
@@ -524,21 +340,9 @@ You will (1) represent version ranges as sets; (2) compare versions as ordered t
 
 Semantic versions such as 1.10.2 have three numbers: major, minor and patch. They are ordered as tuples: compare major first, then minor, then patch. As text, "1.10.2" sorts before "1.4.7" because the character "1" comes before "4", which is wrong.
 
-Section six point one develops discrete structures with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section six point one, Grace Nwosu expects discrete claims to carry owners and dates.
-
-Section six point one treats versions as tuples ranges as testable only when evidence and ticket IDs are recorded.
-
 ### 6.2 Ranges as sets
 
 A caret range ^1.4.0 means the set of versions at least 1.4.0 and below 2.0.0. Package managers pick the highest version in the set that is available. Understanding the set tells you which fixes you receive automatically and which need a manual change.
-
-Section six point two develops discrete structures with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section six point two, Grace Nwosu expects discrete claims to carry owners and dates.
-
-Section six point two treats versions as tuples ranges as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — Lab — version ranges
 
@@ -565,35 +369,13 @@ text sort would pick: 1.4.7
 
 Of six versions, three satisfy ^1.4.0: 1.4.0, 1.4.7 and 1.10.2. The highest, chosen correctly by tuple order, is 1.10.2. Text sorting would wrongly pick 1.4.7, which could leave a project on an older, possibly vulnerable version.
 
-Section six point three develops discrete structures with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section six point three, Grace Nwosu expects discrete claims to carry owners and dates.
-
-Section six point three treats versions as tuples ranges as testable only when evidence and ticket IDs are recorded.
-
-For section six point three, Hollowbrook University will not accept discrete work without a written trail.
-
 ### 6.4 Why it matters
 
 If a fix is released in 1.10.2 and a tool sorts as text, it would think 1.4.7 is newest and report the project as up to date. Kula et al. (2018) showed that many projects already lag behind fixes; errors like this make it worse.
 
-Section six point four develops discrete structures with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section six point four, Grace Nwosu expects discrete claims to carry owners and dates.
-
-Section six point four treats versions as tuples ranges as testable only when evidence and ticket IDs are recorded.
-
 ### 6.5 Lockfiles
 
 A lockfile records the exact version chosen, so builds are repeatable. Ranges decide what may be chosen; lockfiles record what was chosen.
-
-Section six point five develops discrete structures with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section six point five, Grace Nwosu expects discrete claims to carry owners and dates.
-
-Section six point five treats versions as tuples ranges as testable only when evidence and ticket IDs are recorded.
-
-For section six point five, Hollowbrook University will not accept discrete work without a written trail.
 
 ### Pre-releases
 
@@ -639,69 +421,25 @@ You will (1) explain HTTP and HTTPS for web applications; (2) describe cookies a
 
 Browsers send requests with a method (GET, POST), a path, headers and sometimes a body; servers respond with a status, headers and a body. CampusEats uses HTTPS so traffic is encrypted and the server authenticated.
 
-Section seven point one develops networks and protocols with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section seven point one, Grace Nwosu expects networks claims to carry owners and dates.
-
-Section seven point one treats http basics cookies security as testable only when evidence and ticket IDs are recorded.
-
 ### 7.2 Cookies
 
 The session cookie identifies a logged-in student. Attributes protect it: Secure (only sent over HTTPS), HttpOnly (not readable by page scripts) and SameSite (limits sending with requests from other sites). ASVS session-management requirements specify these.
-
-Section seven point two develops networks and protocols with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section seven point two, Grace Nwosu expects networks claims to carry owners and dates.
-
-Section seven point two treats http basics cookies security as testable only when evidence and ticket IDs are recorded.
 
 ### 7.3 Security headers
 
 Response headers such as Strict-Transport-Security and Content-Security-Policy tell browsers to apply extra protections; chapter 25's lab checks them.
 
-Section seven point three develops networks and protocols with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section seven point three, Grace Nwosu expects networks claims to carry owners and dates.
-
-Section seven point three treats http basics cookies security as testable only when evidence and ticket IDs are recorded.
-
-For section seven point three, Hollowbrook University will not accept networks work without a written trail.
-
 ### 7.4 Downloading dependencies
 
 Package managers download over HTTPS from registries. The lockfile's hashes allow checking that the bytes received are the ones expected (chapter 22).
-
-Section seven point four develops networks and protocols with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section seven point four, Grace Nwosu expects networks claims to carry owners and dates.
-
-Section seven point four treats http basics cookies security as testable only when evidence and ticket IDs are recorded.
-
-For section seven point four, Hollowbrook University will not accept networks work without a written trail.
 
 ### 7.5 Network protections
 
 The hosting platform provides a firewall and rate limiting; the database is not reachable from the internet.
 
-Section seven point five develops networks and protocols with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section seven point five, Grace Nwosu expects networks claims to carry owners and dates.
-
-Section seven point five treats http basics cookies security as testable only when evidence and ticket IDs are recorded.
-
-For section seven point five, Hollowbrook University will not accept networks work without a written trail.
-
 ### 7.6 Outbound calls
 
 CampusEats calls the payment provider; it only calls known addresses, which protects against server-side request forgery (OWASP A10).
-
-Section seven point six develops networks and protocols with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section seven point six, Grace Nwosu expects networks claims to carry owners and dates.
-
-Section seven point six treats http basics cookies security as testable only when evidence and ticket IDs are recorded.
-
-For section seven point six, Hollowbrook University will not accept networks work without a written trail.
 
 ### DNS
 
@@ -747,23 +485,9 @@ You will (1) encode output for its context; (2) explain cross-site scripting as 
 
 CampusEats shows student reviews of dishes. If review text is inserted into the page as HTML, any markup in it would be interpreted by the browser. This weakness, cross-site scripting (CWE-79), lets one user's text run in another user's browser.
 
-Section eight point one develops programming ii with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section eight point one, Grace Nwosu expects programming claims to carry owners and dates.
-
-Section eight point one treats untrusted data in pages as testable only when evidence and ticket IDs are recorded.
-
 ### 8.2 Encoding
 
 Encoding converts special characters to safe forms: < becomes &lt;, & becomes &amp;, " becomes &quot;. The browser then shows them as text.
-
-Section eight point two develops programming ii with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section eight point two, Grace Nwosu expects programming claims to carry owners and dates.
-
-Section eight point two treats untrusted data in pages as testable only when evidence and ticket IDs are recorded.
-
-For section eight point two, Hollowbrook University will not accept programming work without a written trail.
 
 ### Lab — Lab — escaping output
 
@@ -786,47 +510,17 @@ escaped: <p>Great pasta &lt;b&gt;5/5&lt;/b&gt; &amp; &quot;fast&quot;</p>
 
 The raw version would let the browser treat <b> as bold markup; the escaped version shows "<b>5/5</b>" as literal text, with & and quotes encoded. The review reads the same to people but cannot change the page structure.
 
-Section eight point three develops programming ii with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section eight point three, Grace Nwosu expects programming claims to carry owners and dates.
-
-Section eight point three treats untrusted data in pages as testable only when evidence and ticket IDs are recorded.
-
 ### 8.4 Framework defaults
 
 CampusEats' template engine escapes by default. Developers must not turn this off; the few places that need trusted markup use a reviewed helper.
-
-Section eight point four develops programming ii with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section eight point four, Grace Nwosu expects programming claims to carry owners and dates.
-
-Section eight point four treats untrusted data in pages as testable only when evidence and ticket IDs are recorded.
-
-For section eight point four, Hollowbrook University will not accept programming work without a written trail.
 
 ### 8.5 Context matters
 
 Text inside an attribute, a script or a URL needs different encoding; frameworks handle common cases, which is another reason to rely on them.
 
-Section eight point five develops programming ii with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section eight point five, Grace Nwosu expects programming claims to carry owners and dates.
-
-Section eight point five treats untrusted data in pages as testable only when evidence and ticket IDs are recorded.
-
-For section eight point five, Hollowbrook University will not accept programming work without a written trail.
-
 ### 8.6 Defence in depth
 
 A Content-Security-Policy header limits which scripts can run, reducing harm if encoding is missed somewhere.
-
-Section eight point six develops programming ii with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section eight point six, Grace Nwosu expects programming claims to carry owners and dates.
-
-Section eight point six treats untrusted data in pages as testable only when evidence and ticket IDs are recorded.
-
-For section eight point six, Hollowbrook University will not accept programming work without a written trail.
 
 ### Testing encoding
 
@@ -868,23 +562,9 @@ You will (1) design simple database tables for an application; (2) use parameter
 
 CampusEats has tables for students, menu items, orders and order lines. Each order line refers to a menu item by its identifier, and prices are copied at order time so later price changes do not alter past orders.
 
-Section nine point one develops data and databases with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section nine point one, Grace Nwosu expects data claims to carry owners and dates.
-
-Section nine point one treats tables parameterised queries lab as testable only when evidence and ticket IDs are recorded.
-
 ### 9.2 Parameterised queries
 
 Queries send SQL text and values separately, so values cannot change the query's structure. This prevents SQL injection (CWE-89, OWASP A03).
-
-Section nine point two develops data and databases with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section nine point two, Grace Nwosu expects data claims to carry owners and dates.
-
-Section nine point two treats tables parameterised queries lab as testable only when evidence and ticket IDs are recorded.
-
-For section nine point two, Hollowbrook University will not accept data work without a written trail.
 
 ### Lab — Lab — safe search
 
@@ -912,37 +592,13 @@ search 'curry': ['veg curry']
 
 Searching for "100%" returns only "100% juice". Without escaping, % is a wildcard in LIKE and "100%" would also match "1000 island salad". The lab escapes %, _ and backslash in the user's text and uses a parameter, so the search means exactly what the student typed.
 
-Section nine point three develops data and databases with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section nine point three, Grace Nwosu expects data claims to carry owners and dates.
-
-Section nine point three treats tables parameterised queries lab as testable only when evidence and ticket IDs are recorded.
-
 ### 9.4 Permissions
 
 The application's database account can read and write its tables but cannot drop tables or create users. Reporting uses a read-only account.
 
-Section nine point four develops data and databases with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section nine point four, Grace Nwosu expects data claims to carry owners and dates.
-
-Section nine point four treats tables parameterised queries lab as testable only when evidence and ticket IDs are recorded.
-
-For section nine point four, Hollowbrook University will not accept data work without a written trail.
-
 ### 9.5 Backups
 
 Nightly encrypted backups are tested monthly by restoring to a test database.
-
-Section nine point five develops data and databases with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section nine point five, Grace Nwosu expects data claims to carry owners and dates.
-
-Section nine point five treats tables parameterised queries lab as testable only when evidence and ticket IDs are recorded.
-
-For section nine point five, Hollowbrook University will not accept data work without a written trail.
-
-Section nine point five fails closed if data evidence is missing rather than guessing.
 
 ### Data minimisation
 
@@ -988,73 +644,25 @@ You will (1) distinguish authorised from unauthorised testing; (2) follow respon
 
 Testing systems without permission is unethical and often illegal, even to "help". Lena tests only CampusEats' test environment, under written permission from the society and Grace.
 
-Section ten point one develops ethics and authorized practice with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section ten point one, Grace Nwosu expects ethics claims to carry owners and dates.
-
-Section ten point one treats authorisation scope found something as testable only when evidence and ticket IDs are recorded.
-
-For section ten point one, Hollowbrook University will not accept ethics work without a written trail.
-
 ### 10.2 Scope
 
 Permission lists systems, time and methods. The payment provider's systems are out of scope; Lena never tests them.
-
-Section ten point two develops ethics and authorized practice with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section ten point two, Grace Nwosu expects ethics claims to carry owners and dates.
-
-Section ten point two treats authorisation scope found something as testable only when evidence and ticket IDs are recorded.
-
-For section ten point two, Hollowbrook University will not accept ethics work without a written trail.
 
 ### 10.3 Found something?
 
 If Lena finds a flaw in another system, such as a café's own website, she reports it through the university security office rather than probing further.
 
-Section ten point three develops ethics and authorized practice with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section ten point three, Grace Nwosu expects ethics claims to carry owners and dates.
-
-Section ten point three treats authorisation scope found something as testable only when evidence and ticket IDs are recorded.
-
-For section ten point three, Hollowbrook University will not accept ethics work without a written trail.
-
 ### 10.4 Disclosure
 
 Flaws in open-source packages used by CampusEats are reported privately to maintainers, with time to fix before publication.
-
-Section ten point four develops ethics and authorized practice with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section ten point four, Grace Nwosu expects ethics claims to carry owners and dates.
-
-Section ten point four treats authorisation scope found something as testable only when evidence and ticket IDs are recorded.
-
-For section ten point four, Hollowbrook University will not accept ethics work without a written trail.
 
 ### 10.5 Privacy
 
 Order histories reveal habits and dietary needs. Developers access real data only when needed and log their access.
 
-Section ten point five develops ethics and authorized practice with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section ten point five, Grace Nwosu expects ethics claims to carry owners and dates.
-
-Section ten point five treats authorisation scope found something as testable only when evidence and ticket IDs are recorded.
-
-For section ten point five, Hollowbrook University will not accept ethics work without a written trail.
-
 ### 10.6 Honesty
 
 Students must not overstate findings or hide mistakes; the society's incident notes describe the token leak honestly.
-
-Section ten point six develops ethics and authorized practice with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section ten point six, Grace Nwosu expects ethics claims to carry owners and dates.
-
-Section ten point six treats authorisation scope found something as testable only when evidence and ticket IDs are recorded.
-
-For section ten point six, Hollowbrook University will not accept ethics work without a written trail.
 
 ### Codes of conduct
 
@@ -1104,65 +712,25 @@ You will (1) explain processes, users and permissions on servers; (2) apply leas
 
 On the hosting platform, CampusEats runs as a process under its own user with no administrator rights. Files it can change are limited to temporary and log folders. If a flaw let someone control the process, they would gain only these limited rights.
 
-Section eleven point one develops operating systems with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section eleven point one, Grace Nwosu expects operating claims to carry owners and dates.
-
-Section eleven point one treats processes and users containers as testable only when evidence and ticket IDs are recorded.
-
 ### 11.2 Containers
 
 CampusEats runs in a container: a packaged process with its own file system view. The container image is built from a small base image, reducing the number of installed programs that could have flaws. The image is rebuilt weekly to include operating system security updates.
-
-Section eleven point two develops operating systems with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section eleven point two, Grace Nwosu expects operating claims to carry owners and dates.
-
-Section eleven point two treats processes and users containers as testable only when evidence and ticket IDs are recorded.
 
 ### 11.3 Build isolation
 
 Each build runs in a fresh container that is destroyed afterwards. Package install scripts run during builds, and Ohm et al. (2020) found that malicious packages often act at install time; isolation and limited network access during builds reduce what such a script could reach.
 
-Section eleven point three develops operating systems with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section eleven point three, Grace Nwosu expects operating claims to carry owners and dates.
-
-Section eleven point three treats processes and users containers as testable only when evidence and ticket IDs are recorded.
-
 ### 11.4 Secrets at runtime
 
 The payment key is provided to the running container as an environment variable from the platform's secret store. It is never written to logs or files, and only the payment module reads it.
-
-Section eleven point four develops operating systems with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section eleven point four, Grace Nwosu expects operating claims to carry owners and dates.
-
-Section eleven point four treats processes and users containers as testable only when evidence and ticket IDs are recorded.
 
 ### 11.5 Logs
 
 The operating system and platform record process restarts, deployments and errors, which help investigate problems.
 
-Section eleven point five develops operating systems with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section eleven point five, Grace Nwosu expects operating claims to carry owners and dates.
-
-Section eleven point five treats processes and users containers as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point five, Hollowbrook University will not accept operating work without a written trail.
-
 ### 11.6 Updates
 
 Base images are pinned by digest and updated deliberately, so the team knows exactly which image each release used.
-
-Section eleven point six develops operating systems with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section eleven point six, Grace Nwosu expects operating claims to carry owners and dates.
-
-Section eleven point six treats processes and users containers as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point six, Hollowbrook University will not accept operating work without a written trail.
 
 ### Worked example
 
@@ -1200,14 +768,6 @@ You will (1) compute precision and recall for a security check; (2) interpret ba
 
 After the token leak, CampusEats adds a secret scanner. Lena measures it on 200 synthetic commits whose true status she knows: 10 contain real secrets, 190 do not.
 
-Section twelve point one develops probability and statistics with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twelve point one, Grace Nwosu expects probability claims to carry owners and dates.
-
-Section twelve point one treats measuring scanner lab result as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point one, Hollowbrook University will not accept probability work without a written trail.
-
 ### Lab — Lab — scanner precision and recall
 
 ```python
@@ -1226,45 +786,17 @@ precision 0.30  recall 0.90  flagged 30 of 200
 
 The scanner flagged 30 commits: 9 true secrets (true positives) and 21 harmless strings (false positives); it missed 1 secret (false negative). Precision is 0.30: only 30% of flags are real. Recall is 0.90: it finds 90% of real secrets.
 
-Section twelve point two develops probability and statistics with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twelve point two, Grace Nwosu expects probability claims to carry owners and dates.
-
-Section twelve point two treats measuring scanner lab result as testable only when evidence and ticket IDs are recorded.
-
 ### 12.3 Base rates
 
 With only 10 secrets in 200 commits, even a fairly accurate scanner produces more false than true flags. This is the base-rate effect. A scanner with low precision is tolerable if each flag takes seconds to check; otherwise developers start ignoring it, as Johnson et al. (2013) found for noisy tools.
-
-Section twelve point three develops probability and statistics with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twelve point three, Grace Nwosu expects probability claims to carry owners and dates.
-
-Section twelve point three treats measuring scanner lab result as testable only when evidence and ticket IDs are recorded.
 
 ### 12.4 Thresholds
 
 Raising the threshold would cut false positives but miss more secrets. For secrets, missing one is costly, so the society keeps high recall and reduces review time instead.
 
-Section twelve point four develops probability and statistics with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twelve point four, Grace Nwosu expects probability claims to carry owners and dates.
-
-Section twelve point four treats measuring scanner lab result as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point four, Hollowbrook University will not accept probability work without a written trail.
-
 ### 12.5 Uncertainty
 
 Ten real secrets is a small number; recall of 0.90 could easily be 0.7 or 1.0 on another sample. Lena reports counts, not just percentages.
-
-Section twelve point five develops probability and statistics with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twelve point five, Grace Nwosu expects probability claims to carry owners and dates.
-
-Section twelve point five treats measuring scanner lab result as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point five, Hollowbrook University will not accept probability work without a written trail.
 
 ### Confidence in small samples
 
@@ -1306,25 +838,9 @@ You will (1) implement authentication and sessions securely; (2) generate unpred
 
 Students sign in through the university's single sign-on service, so CampusEats never handles their passwords. Staff accounts require multi-factor authentication. OWASP Top 10:2021 A07 covers identification and authentication failures.
 
-Section thirteen point one develops identity and access with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirteen point one, Grace Nwosu expects identity claims to carry owners and dates.
-
-Section thirteen point one treats authentication sessions lab result as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point one, Hollowbrook University will not accept identity work without a written trail.
-
 ### 13.2 Sessions
 
 After sign-in, CampusEats creates a session token stored in a cookie. Tokens must be long and random so they cannot be guessed; Python's secrets module provides suitable randomness.
-
-Section thirteen point two develops identity and access with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirteen point two, Grace Nwosu expects identity claims to carry owners and dates.
-
-Section thirteen point two treats authentication sessions lab result as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point two, Hollowbrook University will not accept identity work without a written trail.
 
 ### Lab — Lab — tokens and expiry
 
@@ -1352,49 +868,17 @@ distinct: True
 
 Each token is 43 characters (32 random bytes encoded), and the two tokens are distinct. With a 30-minute limit and the clock at minute 40, the token created at minute 0 (age 40) is expired and the token created at minute 25 (age 15) is valid.
 
-Section thirteen point three develops identity and access with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirteen point three, Grace Nwosu expects identity claims to carry owners and dates.
-
-Section thirteen point three treats authentication sessions lab result as testable only when evidence and ticket IDs are recorded.
-
 ### 13.4 Expiry and logout
 
 Sessions expire after 30 minutes of inactivity and are deleted on logout on the server, not just in the browser.
-
-Section thirteen point four develops identity and access with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirteen point four, Grace Nwosu expects identity claims to carry owners and dates.
-
-Section thirteen point four treats authentication sessions lab result as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point four, Hollowbrook University will not accept identity work without a written trail.
 
 ### 13.5 Roles
 
 Roles are student, volunteer, staff and admin, each with a defined set of actions from Lena's table in chapter 1. Checks happen on the server for every request.
 
-Section thirteen point five develops identity and access with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirteen point five, Grace Nwosu expects identity claims to carry owners and dates.
-
-Section thirteen point five treats authentication sessions lab result as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point five, Hollowbrook University will not accept identity work without a written trail.
-
 ### 13.6 Least privilege
 
 Admin is limited to two people; actions are logged.
-
-Section thirteen point six develops identity and access with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirteen point six, Grace Nwosu expects identity claims to carry owners and dates.
-
-Section thirteen point six treats authentication sessions lab result as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point six, Hollowbrook University will not accept identity work without a written trail.
-
-Section thirteen point six fails closed if identity evidence is missing rather than guessing.
 
 ### Access reviews
 
@@ -1440,71 +924,25 @@ You will (1) identify personal data in an application; (2) apply data protection
 
 CampusEats holds names, university emails, order histories and optional dietary preferences. Dietary information can reveal health or religious beliefs, making it sensitive.
 
-Section fourteen point one develops privacy foundations with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section fourteen point one, Grace Nwosu expects privacy claims to carry owners and dates.
-
-Section fourteen point one treats personal data principles privacy as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point one, Hollowbrook University will not accept privacy work without a written trail.
-
 ### 14.2 Principles
 
 Collect only what is needed, use it only for stated purposes, keep it accurate, delete it when no longer needed and protect it. These principles appear in data protection laws in many countries.
-
-Section fourteen point two develops privacy foundations with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section fourteen point two, Grace Nwosu expects privacy claims to carry owners and dates.
-
-Section fourteen point two treats personal data principles privacy as testable only when evidence and ticket IDs are recorded.
 
 ### 14.3 Privacy by design
 
 Dietary preferences are optional and stored separately with tighter access. Analytics use counts, not individual histories.
 
-Section fourteen point three develops privacy foundations with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section fourteen point three, Grace Nwosu expects privacy claims to carry owners and dates.
-
-Section fourteen point three treats personal data principles privacy as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point three, Hollowbrook University will not accept privacy work without a written trail.
-
 ### 14.4 Requests
 
 Students can download or delete their data from their profile page. Deletion removes personal details but keeps anonymised order counts for café planning.
-
-Section fourteen point four develops privacy foundations with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section fourteen point four, Grace Nwosu expects privacy claims to carry owners and dates.
-
-Section fourteen point four treats personal data principles privacy as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point four, Hollowbrook University will not accept privacy work without a written trail.
 
 ### 14.5 Supply chain and privacy
 
 Third-party scripts in the browser can see page content. CampusEats removed an analytics script that collected more than needed, replacing it with server-side counts.
 
-Section fourteen point five develops privacy foundations with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section fourteen point five, Grace Nwosu expects privacy claims to carry owners and dates.
-
-Section fourteen point five treats personal data principles privacy as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point five, Hollowbrook University will not accept privacy work without a written trail.
-
 ### 14.6 Breach response
 
 If personal data might be exposed, the university's data protection officer must be informed quickly.
-
-Section fourteen point six develops privacy foundations with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section fourteen point six, Grace Nwosu expects privacy claims to carry owners and dates.
-
-Section fourteen point six treats personal data principles privacy as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point six, Hollowbrook University will not accept privacy work without a written trail.
 
 ### Retention schedule
 
@@ -1554,77 +992,25 @@ You will (1) choose measures that show whether security is improving; (2) collec
 
 "We ran the scanner 400 times" is activity. "Secrets reaching the public repository fell from 2 to 0 per term" is an outcome. Outcomes show whether risk changed.
 
-Section fifteen point one develops evidence and measurement with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section fifteen point one, Grace Nwosu expects evidence claims to carry owners and dates.
-
-Section fifteen point one treats activity versus outcome measures as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point one, Hollowbrook University will not accept evidence work without a written trail.
-
 ### 15.2 Measures for CampusEats
 
 Time to fix high-severity advisories, number of secrets found after push (should be zero), share of dependencies with an owner, and failed integrity checks investigated.
-
-Section fifteen point two develops evidence and measurement with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section fifteen point two, Grace Nwosu expects evidence claims to carry owners and dates.
-
-Section fifteen point two treats activity versus outcome measures as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point two, Hollowbrook University will not accept evidence work without a written trail.
 
 ### 15.3 Collecting evidence
 
 Measures come from tools automatically where possible: CI logs, scanner results, advisory tracker. Manual counts are checked by a second person.
 
-Section fifteen point three develops evidence and measurement with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section fifteen point three, Grace Nwosu expects evidence claims to carry owners and dates.
-
-Section fifteen point three treats activity versus outcome measures as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point three, Hollowbrook University will not accept evidence work without a written trail.
-
 ### 15.4 Baselines
 
 Before changes, Lena records a baseline: last term, 2 secrets reached the public repository and median advisory fix time was 21 days.
-
-Section fifteen point four develops evidence and measurement with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section fifteen point four, Grace Nwosu expects evidence claims to carry owners and dates.
-
-Section fifteen point four treats activity versus outcome measures as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point four, Hollowbrook University will not accept evidence work without a written trail.
 
 ### 15.5 Presenting
 
 A one-page summary per term with trends and short explanations.
 
-Section fifteen point five develops evidence and measurement with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section fifteen point five, Grace Nwosu expects evidence claims to carry owners and dates.
-
-Section fifteen point five treats activity versus outcome measures as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point five, Hollowbrook University will not accept evidence work without a written trail.
-
-Section fifteen point five fails closed if evidence evidence is missing rather than guessing.
-
 ### 15.6 Honesty
 
 If a measure gets worse, it is reported with a reason and plan.
-
-Section fifteen point six develops evidence and measurement with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section fifteen point six, Grace Nwosu expects evidence claims to carry owners and dates.
-
-Section fifteen point six treats activity versus outcome measures as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point six, Hollowbrook University will not accept evidence work without a written trail.
-
-Section fifteen point six fails closed if evidence evidence is missing rather than guessing.
 
 ### Using measures to decide
 
@@ -1674,79 +1060,29 @@ You will (1) design layered defences for a web application; (2) place trust boun
 
 CampusEats' defences are layered: the hosting platform's firewall and rate limits at the edge; validation, encoding and authorisation in the application; least-privilege database accounts and encryption for data; and a pipeline that checks code and dependencies before anything is deployed. If one layer fails, others still protect students.
 
-Section sixteen point one develops security architecture with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section sixteen point one, Grace Nwosu expects security claims to carry owners and dates.
-
-Section sixteen point one treats layers trust boundaries environments as testable only when evidence and ticket IDs are recorded.
-
 ### 16.2 Trust boundaries
 
 Boundaries separate the browser from the server, the server from the database, CampusEats from the payment provider, and the build from the internet. At each boundary, data is checked: requests are validated, payment callbacks are verified (chapter 17), downloaded packages are hash-checked (chapter 22).
-
-Section sixteen point two develops security architecture with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section sixteen point two, Grace Nwosu expects security claims to carry owners and dates.
-
-Section sixteen point two treats layers trust boundaries environments as testable only when evidence and ticket IDs are recorded.
 
 ### 16.3 Environments
 
 Development, test and production are separate, with separate secrets. The leaked token was a test key; because test and production were separate, the leak could not touch real payments. Lena records this as evidence that separation limited harm.
 
-Section sixteen point three develops security architecture with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section sixteen point three, Grace Nwosu expects security claims to carry owners and dates.
-
-Section sixteen point three treats layers trust boundaries environments as testable only when evidence and ticket IDs are recorded.
-
 ### 16.4 Secrets architecture
 
 Secrets live in the platform's secret store, scoped per environment, rotated each term and when people leave.
-
-Section sixteen point four develops security architecture with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section sixteen point four, Grace Nwosu expects security claims to carry owners and dates.
-
-Section sixteen point four treats layers trust boundaries environments as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point four, Hollowbrook University will not accept security work without a written trail.
 
 ### 16.5 Third-party scripts
 
 Only two third-party browser scripts remain, both loaded from CampusEats' own domain at pinned versions with integrity hashes.
 
-Section sixteen point five develops security architecture with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section sixteen point five, Grace Nwosu expects security claims to carry owners and dates.
-
-Section sixteen point five treats layers trust boundaries environments as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point five, Hollowbrook University will not accept security work without a written trail.
-
 ### 16.6 Decision records
 
 Each architecture choice is recorded briefly: context, options, decision, consequences. When new members ask "why is it like this?", the record answers.
 
-Section sixteen point six develops security architecture with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section sixteen point six, Grace Nwosu expects security claims to carry owners and dates.
-
-Section sixteen point six treats layers trust boundaries environments as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point six, Hollowbrook University will not accept security work without a written trail.
-
 ### 16.7 Reviews
 
 Grace reviews architecture changes that cross a trust boundary, such as adding a new external service.
-
-Section sixteen point seven develops security architecture with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section sixteen point seven, Grace Nwosu expects security claims to carry owners and dates.
-
-Section sixteen point seven treats layers trust boundaries environments as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point seven, Hollowbrook University will not accept security work without a written trail.
 
 ### Monitoring
 
@@ -1788,21 +1124,9 @@ You will (1) distinguish hashing, message authentication and encryption; (2) ver
 
 A hash such as SHA-256 creates a fingerprint of data; anyone can compute it. A message authentication code (MAC) such as HMAC-SHA256 uses a shared secret, so only holders of the secret can create a valid tag. Encryption hides content. Integrity and secrecy are different goals.
 
-Section seventeen point one develops cryptography concepts with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section seventeen point one, Grace Nwosu expects cryptography claims to carry owners and dates.
-
-Section seventeen point one treats three tools the payment as testable only when evidence and ticket IDs are recorded.
-
 ### 17.2 The payment callback
 
 Chapter 2 found that CampusEats did not verify the payment provider's "paid" messages. Without verification, anyone who could send a request to the callback address could mark an order as paid. The provider signs each message with HMAC-SHA256 using a shared secret; CampusEats must check it.
-
-Section seventeen point two develops cryptography concepts with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section seventeen point two, Grace Nwosu expects cryptography claims to carry owners and dates.
-
-Section seventeen point two treats three tools the payment as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — Lab — verifying a webhook
 
@@ -1829,47 +1153,17 @@ altered amount  reject: signature mismatch
 
 The original message is accepted because its signature matches. When the amount is changed from 8.50 to 0.50, the signature no longer matches and the message is rejected. The lab uses hmac.compare_digest, which compares in constant time and avoids leaking information through timing.
 
-Section seventeen point three develops cryptography concepts with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section seventeen point three, Grace Nwosu expects cryptography claims to carry owners and dates.
-
-Section seventeen point three treats three tools the payment as testable only when evidence and ticket IDs are recorded.
-
 ### 17.4 Key management
 
 The shared secret is stored in the secret store, separate for test and production, and rotated when people with access leave.
-
-Section seventeen point four develops cryptography concepts with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section seventeen point four, Grace Nwosu expects cryptography claims to carry owners and dates.
-
-Section seventeen point four treats three tools the payment as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point four, Hollowbrook University will not accept cryptography work without a written trail.
 
 ### 17.5 Do not invent crypto
 
 Use standard algorithms and well-maintained libraries; home-made schemes fail in subtle ways. OWASP Top 10:2021 A02 covers cryptographic failures.
 
-Section seventeen point five develops cryptography concepts with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section seventeen point five, Grace Nwosu expects cryptography claims to carry owners and dates.
-
-Section seventeen point five treats three tools the payment as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point five, Hollowbrook University will not accept cryptography work without a written trail.
-
 ### 17.6 Replay
 
 A valid message could be sent twice. The provider includes a unique event ID; CampusEats stores processed IDs and ignores repeats.
-
-Section seventeen point six develops cryptography concepts with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section seventeen point six, Grace Nwosu expects cryptography claims to carry owners and dates.
-
-Section seventeen point six treats three tools the payment as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point six, Hollowbrook University will not accept cryptography work without a written trail.
 
 ### Worked example
 
@@ -1907,85 +1201,29 @@ You will (1) form a research question from practice; (2) choose between survey, 
 
 After the token leak, Lena asks: "Do pre-commit secret hooks reduce secrets pushed by student developers?"
 
-Section eighteen point one develops research methods with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section eighteen point one, Grace Nwosu expects research claims to carry owners and dates.
-
-Section eighteen point one treats question from practice choosing as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point one, Hollowbrook University will not accept research work without a written trail.
-
 ### 18.2 Choosing a method
 
 A survey could ask developers about their habits; an experiment could compare groups with and without the hook; a case study could examine CampusEats in depth. Lena chooses a small comparison across two terms plus a short survey.
-
-Section eighteen point two develops research methods with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section eighteen point two, Grace Nwosu expects research claims to carry owners and dates.
-
-Section eighteen point two treats question from practice choosing as testable only when evidence and ticket IDs are recorded.
 
 ### 18.3 Ethics
 
 Participants consent; no individual results are reported; data are anonymised. The university ethics process approves the plan.
 
-Section eighteen point three develops research methods with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section eighteen point three, Grace Nwosu expects research claims to carry owners and dates.
-
-Section eighteen point three treats question from practice choosing as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point three, Hollowbrook University will not accept research work without a written trail.
-
 ### 18.4 Data
 
 Counts of secrets caught by the server-side scanner per term, before and after the hook, and survey answers about whether the hook was ever bypassed.
-
-Section eighteen point four develops research methods with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section eighteen point four, Grace Nwosu expects research claims to carry owners and dates.
-
-Section eighteen point four treats question from practice choosing as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point four, Hollowbrook University will not accept research work without a written trail.
 
 ### 18.5 Analysis
 
 Counts are small, so Lena reports them directly and avoids percentages that look precise.
 
-Section eighteen point five develops research methods with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section eighteen point five, Grace Nwosu expects research claims to carry owners and dates.
-
-Section eighteen point five treats question from practice choosing as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point five, Hollowbrook University will not accept research work without a written trail.
-
-Section eighteen point five fails closed if research evidence is missing rather than guessing.
-
 ### 18.6 Results
 
 Server-side detections fell from 5 to 1 per term; 3 of 14 developers said they had bypassed the hook at least once, usually when it flagged a harmless string.
 
-Section eighteen point six develops research methods with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section eighteen point six, Grace Nwosu expects research claims to carry owners and dates.
-
-Section eighteen point six treats question from practice choosing as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point six, Hollowbrook University will not accept research work without a written trail.
-
 ### 18.7 Interpretation
 
 The hook helps, but false positives cause bypasses, so the precision work from chapter 12 matters.
-
-Section eighteen point seven develops research methods with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section eighteen point seven, Grace Nwosu expects research claims to carry owners and dates.
-
-Section eighteen point seven treats question from practice choosing as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point seven, Hollowbrook University will not accept research work without a written trail.
 
 ### Literature first
 
@@ -2027,79 +1265,29 @@ You will (1) define application security and software supply chain security; (2)
 
 Application security protects software from flaws in its design and code. Software supply chain security protects everything that goes into the software and how it reaches users: source code, dependencies, build systems, artifacts and distribution.
 
-Section nineteen point one develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section nineteen point one, Grace Nwosu expects application claims to carry owners and dates.
-
-Section nineteen point one treats definitions why the chain as testable only when evidence and ticket IDs are recorded.
-
 ### 19.2 Why the chain matters
 
 CampusEats' code is a small fraction of what runs: most comes from open-source packages. Zimmermann et al. (2019) showed that in the npm ecosystem a few packages and maintainers can affect huge numbers of others, so a single compromise spreads widely.
-
-Section nineteen point two develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section nineteen point two, Grace Nwosu expects application claims to carry owners and dates.
-
-Section nineteen point two treats definitions why the chain as testable only when evidence and ticket IDs are recorded.
 
 ### 19.3 Trust theory
 
 Thompson's "Reflections on Trusting Trust" (1984) argued that you cannot fully trust code you did not create yourself, including compilers. Practical security therefore builds evidence, such as hashes, signatures and provenance, rather than assuming trust.
 
-Section nineteen point three develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section nineteen point three, Grace Nwosu expects application claims to carry owners and dates.
-
-Section nineteen point three treats definitions why the chain as testable only when evidence and ticket IDs are recorded.
-
 ### 19.4 Frameworks
 
 NIST SP 800-218 (SSDF) structures secure development practices; SLSA v1.0 defines build provenance levels; OWASP SAMM v2 measures programme maturity; OWASP ASVS defines application requirements.
-
-Section nineteen point four develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section nineteen point four, Grace Nwosu expects application claims to carry owners and dates.
-
-Section nineteen point four treats definitions why the chain as testable only when evidence and ticket IDs are recorded.
-
-For section nineteen point four, Hollowbrook University will not accept application work without a written trail.
 
 ### 19.5 Taxonomy
 
 Ladisa et al. (2023) organised attacks on open-source supply chains by stage and linked them to safeguards, giving a map of where controls belong.
 
-Section nineteen point five develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section nineteen point five, Grace Nwosu expects application claims to carry owners and dates.
-
-Section nineteen point five treats definitions why the chain as testable only when evidence and ticket IDs are recorded.
-
-For section nineteen point five, Hollowbrook University will not accept application work without a written trail.
-
 ### 19.6 CampusEats in theory
 
 The leaked token was a source-stage problem; the hash mismatch was a distribution-stage check working as designed.
 
-Section nineteen point six develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section nineteen point six, Grace Nwosu expects application claims to carry owners and dates.
-
-Section nineteen point six treats definitions why the chain as testable only when evidence and ticket IDs are recorded.
-
-For section nineteen point six, Hollowbrook University will not accept application work without a written trail.
-
 ### 19.7 Limits of theory
 
 Frameworks describe what good looks like but not how much is enough for a small student project; judgement is needed.
-
-Section nineteen point seven develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section nineteen point seven, Grace Nwosu expects application claims to carry owners and dates.
-
-Section nineteen point seven treats definitions why the chain as testable only when evidence and ticket IDs are recorded.
-
-For section nineteen point seven, Hollowbrook University will not accept application work without a written trail.
 
 ### Worked example
 
@@ -2137,69 +1325,25 @@ You will (1) learn from published supply-chain cases at a conceptual level; (2) 
 
 Real cases show how failures happen in practice. This chapter uses published research summaries, describing what went wrong and what controls help, without technical details of attacks.
 
-Section twenty point one develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty point one, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty point one treats why cases malicious packages as testable only when evidence and ticket IDs are recorded.
-
-For section twenty point one, Hollowbrook University will not accept application work without a written trail.
-
 ### 20.2 Malicious packages
 
 Ohm et al. (2020) collected hundreds of malicious packages from public registries. Common patterns included lookalike names, packages that ran code during installation, and takeovers of existing packages. Lesson: check new dependency names, limit install-time network access and watch for unexpected maintainer changes.
-
-Section twenty point two develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty point two, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty point two treats why cases malicious packages as testable only when evidence and ticket IDs are recorded.
 
 ### 20.3 Vulnerable dependencies
 
 Decan et al. (2018) studied how vulnerabilities in npm packages propagate through dependency networks and how long fixes take to reach dependents. Lesson: monitor transitive dependencies and update promptly.
 
-Section twenty point three develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty point three, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty point three treats why cases malicious packages as testable only when evidence and ticket IDs are recorded.
-
 ### 20.4 Build and distribution
 
 Ladisa et al. (2023) describe attacks on build systems and distribution channels. Lesson: isolated builds, signed artifacts, hash checks and provenance.
-
-Section twenty point four develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty point four, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty point four treats why cases malicious packages as testable only when evidence and ticket IDs are recorded.
-
-For section twenty point four, Hollowbrook University will not accept application work without a written trail.
 
 ### 20.5 Trust in open source
 
 Wermke et al. (2022) interviewed open-source maintainers about trust and security, finding varied practices and reliance on personal trust. Lesson: consumers should not assume upstream security processes.
 
-Section twenty point five develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty point five, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty point five treats why cases malicious packages as testable only when evidence and ticket IDs are recorded.
-
-For section twenty point five, Hollowbrook University will not accept application work without a written trail.
-
 ### 20.6 CampusEats lessons
 
 The society adopts a lookalike-name check, build network restrictions and weekly dependency updates.
-
-Section twenty point six develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty point six, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty point six treats why cases malicious packages as testable only when evidence and ticket IDs are recorded.
-
-For section twenty point six, Hollowbrook University will not accept application work without a written trail.
 
 ### Updating the cards
 
@@ -2241,75 +1385,29 @@ You will (1) draw a data flow diagram for an application and its pipeline; (2) m
 
 Shostack (2014) recommends simple data flow diagrams for threat modelling: external entities (students, payment provider, package registry), processes (web app, build service), data stores (database, artifact store) and data flows between them. Lena draws CampusEats on one page.
 
-Section twenty-one point one develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-one point one, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-one point one treats data flow diagrams trust as testable only when evidence and ticket IDs are recorded.
-
 ### 21.2 Trust boundaries
 
 She draws dashed lines where trust changes: between students' browsers and the web app, between the web app and the payment provider, between the build service and the public registry, and between the build service and production.
-
-Section twenty-one point two develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-one point two, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-one point two treats data flow diagrams trust as testable only when evidence and ticket IDs are recorded.
 
 ### 21.3 STRIDE
 
 For each element, the team asks Shostack's STRIDE questions: could someone Spoof an identity, Tamper with data, Repudiate an action, cause Information disclosure, Deny service, or Elevate privilege?
 
-Section twenty-one point three develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-one point three, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-one point three treats data flow diagrams trust as testable only when evidence and ticket IDs are recorded.
-
 ### 21.4 Example threats
 
 Spoofing: a forged payment callback (fixed in chapter 17). Tampering: a package altered in transit (lockfile hashes, chapter 22). Information disclosure: secrets in the repository (scanning). Elevation: a volunteer reaching staff functions (role checks). Denial: lunchtime traffic spikes (rate limits and caching).
-
-Section twenty-one point four develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-one point four, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-one point four treats data flow diagrams trust as testable only when evidence and ticket IDs are recorded.
 
 ### 21.5 Prioritising
 
 Each threat is rated low, medium or high for likelihood and impact. High-high items must have a control and a test.
 
-Section twenty-one point five develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-one point five, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-one point five treats data flow diagrams trust as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-one point five, Hollowbrook University will not accept application work without a written trail.
-
 ### 21.6 Four questions
 
 Shostack's four questions frame the session: what are we working on, what can go wrong, what are we going to do about it, did we do a good job?
 
-Section twenty-one point six develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-one point six, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-one point six treats data flow diagrams trust as testable only when evidence and ticket IDs are recorded.
-
 ### 21.7 Keeping it small
 
 A one-hour session each term keeps the model current without burdening volunteers.
-
-Section twenty-one point seven develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-one point seven, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-one point seven treats data flow diagrams trust as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-one point seven, Hollowbrook University will not accept application work without a written trail.
 
 ### Worked example
 
@@ -2347,12 +1445,6 @@ You will (1) explain lockfiles and integrity hashes; (2) verify downloaded packa
 
 CampusEats' lockfile records each package's exact version and a cryptographic hash of its contents. On install, the package manager compares downloaded bytes with the hash and stops if they differ.
 
-Section twenty-two point one develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-two point one, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-two point one treats lockfiles with hashes lab as testable only when evidence and ticket IDs are recorded.
-
 ### Lab — Lab — checking hashes
 
 ```python
@@ -2379,55 +1471,21 @@ date-tools-0.4.2  ok
 
 menu-ui and date-tools match their lockfile hashes. pay-client 1.8.0 does not: the downloaded content differs from what was recorded, and installation stops. This is the check that halted the build in Lena's first week.
 
-Section twenty-two point two develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-two point two, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-two point two treats lockfiles with hashes lab as testable only when evidence and ticket IDs are recorded.
-
 ### 22.3 Investigating
 
 A mismatch can mean a corrupted download, a registry problem, a republished package or tampering. The society does not override the check. Lena compares the package metadata and finds the maintainer had rebuilt and re-uploaded 1.8.0 with a small change, which good registries usually prevent. The society reports it to the maintainer and pins the previous known-good version until 1.8.1 is published.
-
-Section twenty-two point three develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-two point three, Grace Nwosu expects application claims to carry owners and dates.
 
 ### 22.4 SBOMs
 
 A software bill of materials lists every component and version in a build. NTIA (2021) defined minimum elements, including supplier, component name, version, unique identifiers, dependency relationships, the SBOM's author and a timestamp. CampusEats generates an SBOM for every build.
 
-Section twenty-two point four develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-two point four, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-two point four treats lockfiles with hashes lab as testable only when evidence and ticket IDs are recorded.
-
 ### 22.5 Using SBOMs
 
 When an advisory appears, searching SBOMs shows which releases contain the affected component.
 
-Section twenty-two point five develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-two point five, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-two point five treats lockfiles with hashes lab as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-two point five, Hollowbrook University will not accept application work without a written trail.
-
 ### 22.6 Dependency owners
 
 Each direct dependency has a named owner in the society.
-
-Section twenty-two point six develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-two point six, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-two point six treats lockfiles with hashes lab as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-two point six, Hollowbrook University will not accept application work without a written trail.
-
-Section twenty-two point six fails closed if application evidence is missing rather than guessing.
 
 ### Pinning carefully
 
@@ -2469,23 +1527,9 @@ You will (1) scan code changes for secrets; (2) combine patterns with character-
 
 The token leak showed secrets can slip into repositories. Scanning checks every change before and after it is pushed.
 
-Section twenty-three point one develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-three point one, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-three point one treats why scan patterns and as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-three point one, Hollowbrook University will not accept application work without a written trail.
-
 ### 23.2 Patterns and variety
 
 Many tokens have known prefixes or lengths, so scanners use patterns. Random-looking strings also have high character variety (entropy). Combining both reduces false alarms on long but repetitive strings.
-
-Section twenty-three point two develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-three point two, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-three point two treats why scan patterns and as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — Lab — scanning a diff
 
@@ -2513,49 +1557,17 @@ aaaaaaaa... entropy 0.00 -> low variety, ignore
 
 Two long strings match the pattern. The token-like string has entropy 4.86 bits per character and is flagged as a likely secret. The string of repeated "a" characters has entropy 0.00 and is ignored. The URL and comment lines do not match the pattern.
 
-Section twenty-three point three develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-three point three, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-three point three treats why scan patterns and as testable only when evidence and ticket IDs are recorded.
-
 ### 23.4 Responding
 
 When a secret is found: revoke or rotate it first, then remove it from the code, then check logs for any use. Rewriting history does not undo exposure, because copies may exist.
-
-Section twenty-three point four develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-three point four, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-three point four treats why scan patterns and as testable only when evidence and ticket IDs are recorded.
 
 ### 23.5 Preventing recurrence
 
 Pre-commit hooks, server-side scanning, secret stores, and onboarding training.
 
-Section twenty-three point five develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-three point five, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-three point five treats why scan patterns and as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-three point five, Hollowbrook University will not accept application work without a written trail.
-
-Section twenty-three point five fails closed if application evidence is missing rather than guessing.
-
 ### 23.6 Measuring
 
 Lena tracks scanner precision and recall as in chapter 12.
-
-Section twenty-three point six develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-three point six, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-three point six treats why scan patterns and as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-three point six, Hollowbrook University will not accept application work without a written trail.
-
-Section twenty-three point six fails closed if application evidence is missing rather than guessing.
 
 ### Where to scan
 
@@ -2597,85 +1609,29 @@ You will (1) select preventive, detective and corrective controls for the supply
 
 Branch protection with required review; secrets kept out of code; lockfile hashes; lookalike-name checks for new dependencies; isolated builds with limited network.
 
-Section twenty-four point one develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-four point one, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-four point one treats preventive controls detective controls as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point one, Hollowbrook University will not accept application work without a written trail.
-
 ### 24.2 Detective controls
 
 Secret scanning after push; nightly advisory checks against SBOMs; alerts on failed integrity checks; logs of deployments.
-
-Section twenty-four point two develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-four point two, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-four point two treats preventive controls detective controls as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point two, Hollowbrook University will not accept application work without a written trail.
 
 ### 24.3 Corrective controls
 
 Secret rotation procedure; dependency update process; rollback to the previous release.
 
-Section twenty-four point three develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-four point three, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-four point three treats preventive controls detective controls as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point three, Hollowbrook University will not accept application work without a written trail.
-
-Section twenty-four point three fails closed if application evidence is missing rather than guessing.
-
 ### 24.4 Policy in CI
 
 A CI step fails the build when: a high-severity advisory affects a dependency without an approved exception, a new dependency has no owner, or the lockfile is out of date. NIST SP 800-218 practices PW.4 (reuse well-secured software) and RV.1 (identify vulnerabilities continuously) support these checks.
-
-Section twenty-four point four develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-four point four, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-four point four treats preventive controls detective controls as testable only when evidence and ticket IDs are recorded.
 
 ### 24.5 Exceptions
 
 An exception records the reason, owner and expiry date; expired exceptions fail the build again.
 
-Section twenty-four point five develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-four point five, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-four point five treats preventive controls detective controls as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point five, Hollowbrook University will not accept application work without a written trail.
-
 ### 24.6 Effectiveness
 
 Each control has a measure: number of times it caught something, false alarms and time cost.
 
-Section twenty-four point six develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-four point six, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-four point six treats preventive controls detective controls as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point six, Hollowbrook University will not accept application work without a written trail.
-
 ### 24.7 Proportion
 
 CampusEats is a volunteer project; controls must be light enough that members keep using them.
-
-Section twenty-four point seven develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-four point seven, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-four point seven treats preventive controls detective controls as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point seven, Hollowbrook University will not accept application work without a written trail.
 
 ### Review cycle
 
@@ -2721,12 +1677,6 @@ You will (1) check an application's HTTP security headers; (2) interpret missing
 
 Browsers apply extra protections when servers send certain headers: Content-Security-Policy limits which scripts and resources can load; Strict-Transport-Security makes the browser use HTTPS only; X-Content-Type-Options stops the browser guessing content types; Referrer-Policy limits information in links to other sites. OWASP's testing guide (WSTG v4.2) includes checks for such configuration.
 
-Section twenty-five point one develops laboratory with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-five point one, Grace Nwosu expects laboratory claims to carry owners and dates.
-
-Section twenty-five point one treats security headers lab result as testable only when evidence and ticket IDs are recorded.
-
 ### Lab — Lab — header check
 
 ```python
@@ -2751,63 +1701,21 @@ Referrer-Policy             MISSING
 
 Strict-Transport-Security and X-Content-Type-Options are present. Content-Security-Policy and Referrer-Policy are missing. The response also reveals a "Server" header naming the software version, which gives unnecessary information.
 
-Section twenty-five point two develops laboratory with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-five point two, Grace Nwosu expects laboratory claims to carry owners and dates.
-
-Section twenty-five point two treats security headers lab result as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point two, Hollowbrook University will not accept laboratory work without a written trail.
-
 ### 25.3 Adding headers
 
 Referrer-Policy is simple to add. Content-Security-Policy needs care: a strict policy can break pages that load scripts from other places. Lena starts with a report-only policy that logs violations without blocking, reviews the reports for two weeks, then enforces.
-
-Section twenty-five point three develops laboratory with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-five point three, Grace Nwosu expects laboratory claims to carry owners and dates.
-
-Section twenty-five point three treats security headers lab result as testable only when evidence and ticket IDs are recorded.
 
 ### 25.4 Removing information
 
 The Server header is reduced to a generic value.
 
-Section twenty-five point four develops laboratory with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-five point four, Grace Nwosu expects laboratory claims to carry owners and dates.
-
-Section twenty-five point four treats security headers lab result as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point four, Hollowbrook University will not accept laboratory work without a written trail.
-
-Section twenty-five point four fails closed if laboratory evidence is missing rather than guessing.
-
 ### 25.5 Automated tests
 
 A CI test requests key pages in the test environment and checks headers, so a later change cannot silently remove them.
 
-Section twenty-five point five develops laboratory with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-five point five, Grace Nwosu expects laboratory claims to carry owners and dates.
-
-Section twenty-five point five treats security headers lab result as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point five, Hollowbrook University will not accept laboratory work without a written trail.
-
 ### 25.6 Lab practice
 
 All checks run against the test environment, never against systems the society does not own.
-
-Section twenty-five point six develops laboratory with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-five point six, Grace Nwosu expects laboratory claims to carry owners and dates.
-
-Section twenty-five point six treats security headers lab result as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point six, Hollowbrook University will not accept laboratory work without a written trail.
-
-Section twenty-five point six fails closed if laboratory evidence is missing rather than guessing.
 
 ### Recording results
 
@@ -2853,63 +1761,25 @@ You will (1) sign build artifacts and verify signatures before deployment; (2) r
 
 A hash shows the bytes match a reference; a signature shows who produced them. CampusEats' build service signs each release bundle, and the deployment step verifies the signature before installing.
 
-Section twenty-six point one develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-six point one, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-six point one treats why sign keyless signing as testable only when evidence and ticket IDs are recorded.
-
 ### 26.2 Keyless signing
 
 Long-lived signing keys can leak, like the token did. Sigstore (Newman et al., 2022) issues short-lived certificates tied to the build service's identity and records signatures in a public transparency log. CampusEats adopts this approach for its release bundles.
-
-Section twenty-six point two develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-six point two, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-six point two treats why sign keyless signing as testable only when evidence and ticket IDs are recorded.
 
 ### 26.3 Provenance
 
 Provenance is a record of how an artifact was built: which source commit, which build service, which steps. SLSA v1.0 defines build levels: Level 1 requires provenance to exist; Level 2 requires a hosted build platform that signs provenance; Level 3 requires a hardened platform that resists tampering by build users.
 
-Section twenty-six point three develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-six point three, Grace Nwosu expects application claims to carry owners and dates.
-
 ### 26.4 CampusEats' level
 
 Builds run on a hosted CI service that generates signed provenance, roughly matching Build Level 2. Level 3 depends on the CI provider's guarantees, which the society reviews.
-
-Section twenty-six point four develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-six point four, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-six point four treats why sign keyless signing as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-six point four, Hollowbrook University will not accept application work without a written trail.
 
 ### 26.5 Verifying at deployment
 
 The deployment step checks: the signature is valid and from the expected build identity; the provenance shows the expected repository and a reviewed commit. If any check fails, deployment stops.
 
-Section twenty-six point five develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-six point five, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-six point five treats why sign keyless signing as testable only when evidence and ticket IDs are recorded.
-
 ### 26.6 in-toto
 
 in-toto (Torres-Arias et al., 2019) generalises this idea, recording and verifying every step in the chain.
-
-Section twenty-six point six develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-six point six, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-six point six treats why sign keyless signing as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-six point six, Hollowbrook University will not accept application work without a written trail.
 
 ### Transparency logs
 
@@ -2951,67 +1821,25 @@ You will (1) verify an application against ASVS requirements; (2) plan authorise
 
 The OWASP Application Security Verification Standard lists testable requirements at three levels. CampusEats targets ASVS 4.0.3 Level 1 for most areas and Level 2 for authentication, session management and access control, because it handles payments and personal data. ASVS 5.0.0 reorganised chapters; Lena notes both identifiers for each requirement she checks.
 
-Section twenty-seven point one develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-seven point one, Grace Nwosu expects application claims to carry owners and dates.
-
 ### 27.2 Planning tests
 
 Using the WSTG v4.2, Lena selects tests for configuration, authentication, authorisation, session management, input validation and error handling. Testing happens only in the test environment, under the society's written permission.
-
-Section twenty-seven point two develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-seven point two, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-seven point two treats asvs planning tests evidence as testable only when evidence and ticket IDs are recorded.
 
 ### 27.3 Evidence
 
 Each requirement gets pass, fail or not applicable, with evidence: a test log, a configuration screenshot or code reference.
 
-Section twenty-seven point three develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-seven point three, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-seven point three treats asvs planning tests evidence as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point three, Hollowbrook University will not accept application work without a written trail.
-
 ### 27.4 Results
 
 46 requirements checked: 41 pass, 4 fail, 1 not applicable. Failures: password reset links valid too long for staff accounts, missing rate limit on login for staff, verbose error page in one admin screen, and missing audit log for menu price changes.
-
-Section twenty-seven point four develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-seven point four, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-seven point four treats asvs planning tests evidence as testable only when evidence and ticket IDs are recorded.
 
 ### 27.5 Prioritising
 
 Fixes are ordered by risk: rate limit and reset link first (account takeover risk), then audit log and error page.
 
-Section twenty-seven point five develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-seven point five, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-seven point five treats asvs planning tests evidence as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point five, Hollowbrook University will not accept application work without a written trail.
-
 ### 27.6 Retesting
 
 Each fix is retested by someone else.
-
-Section twenty-seven point six develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-seven point six, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-seven point six treats asvs planning tests evidence as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point six, Hollowbrook University will not accept application work without a written trail.
-
-Section twenty-seven point six fails closed if application evidence is missing rather than guessing.
 
 ### Automating checks
 
@@ -3057,71 +1885,25 @@ You will (1) analyse incidents and near misses without blame; (2) find root caus
 
 The goal is to understand how the system allowed a failure, not to blame a person. People make mistakes; systems should catch them.
 
-Section twenty-eight point one develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-eight point one, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-eight point one treats blameless analysis the token as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point one, Hollowbrook University will not accept application work without a written trail.
-
 ### 28.2 The token leak
 
 Timeline: test token added to config/test.env; .gitignore excluded the wrong path; commit pushed to public repository; server-side scanner flagged it two hours later; token revoked within fifteen minutes of the alert.
-
-Section twenty-eight point two develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-eight point two, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-eight point two treats blameless analysis the token as testable only when evidence and ticket IDs are recorded.
 
 ### 28.3 Root cause and factors
 
 Root cause: secrets were kept in files inside the repository folder. Contributing factors: no pre-commit hook; the .gitignore mistake; unclear guidance about test keys.
 
-Section twenty-eight point three develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-eight point three, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-eight point three treats blameless analysis the token as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point three, Hollowbrook University will not accept application work without a written trail.
-
 ### 28.4 Actions
 
 Move all secrets to the secret store; add the pre-commit hook; write guidance; add a CI check that fails if any .env file is committed.
-
-Section twenty-eight point four develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-eight point four, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-eight point four treats blameless analysis the token as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point four, Hollowbrook University will not accept application work without a written trail.
 
 ### 28.5 Near misses
 
 The pay-client hash mismatch was a near miss handled well; its analysis records what worked (the check, not overriding it) so it is kept.
 
-Section twenty-eight point five develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-eight point five, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-eight point five treats blameless analysis the token as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point five, Hollowbrook University will not accept application work without a written trail.
-
 ### 28.6 Sharing
 
 A short write-up is shared with other student projects at the university.
-
-Section twenty-eight point six develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-eight point six, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-eight point six treats blameless analysis the token as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point six, Hollowbrook University will not accept application work without a written trail.
 
 ### Tracking actions
 
@@ -3163,77 +1945,25 @@ You will (1) operate the application securely; (2) monitor logs and alerts; (3) 
 
 CampusEats logs sign-ins, role changes, failed authorisation, payment callback verification failures and deployments. Alerts go to two on-call members during term.
 
-Section twenty-nine point one develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-nine point one, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-nine point one treats monitoring routine updates advisory as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point one, Hollowbrook University will not accept application work without a written trail.
-
 ### 29.2 Routine updates
 
 A bot opens weekly pull requests updating dependencies within allowed ranges; tests run automatically, and members merge them on Mondays. Major version updates are planned separately.
-
-Section twenty-nine point two develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-nine point two, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-nine point two treats monitoring routine updates advisory as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point two, Hollowbrook University will not accept application work without a written trail.
 
 ### 29.3 Advisory response
 
 High-severity advisories affecting CampusEats are fixed within 7 days, medium within 30.
 
-Section twenty-nine point three develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-nine point three, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-nine point three treats monitoring routine updates advisory as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point three, Hollowbrook University will not accept application work without a written trail.
-
-Section twenty-nine point three fails closed if application evidence is missing rather than guessing.
-
 ### 29.4 Incident process
 
 Detect, assess, contain, fix, recover, review. A short template records each incident.
-
-Section twenty-nine point four develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-nine point four, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-nine point four treats monitoring routine updates advisory as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point four, Hollowbrook University will not accept application work without a written trail.
 
 ### 29.5 Holidays
 
 During holidays, ordering is closed and the app shows a notice; updates continue so the app is current when term starts.
 
-Section twenty-nine point five develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-nine point five, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-nine point five treats monitoring routine updates advisory as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point five, Hollowbrook University will not accept application work without a written trail.
-
 ### 29.6 Hand-over
 
 Each year graduating members hand over roles and access is reviewed.
-
-Section twenty-nine point six develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section twenty-nine point six, Grace Nwosu expects application claims to carry owners and dates.
-
-Section twenty-nine point six treats monitoring routine updates advisory as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point six, Hollowbrook University will not accept application work without a written trail.
-
-Section twenty-nine point six fails closed if application evidence is missing rather than guessing.
 
 ### On-call guide
 
@@ -3279,89 +2009,29 @@ You will (1) run a complete supply-chain check on a release; (2) combine SBOM, h
 
 Lena runs a full check on the CampusEats release candidate in the test environment: generate the SBOM, check advisories, verify lockfile hashes, verify the signature and provenance, run ASVS-related tests.
 
-Section thirty point one develops laboratory ii with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty point one, Grace Nwosu expects laboratory claims to carry owners and dates.
-
-Section thirty point one treats the exercise sbom and as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point one, Hollowbrook University will not accept laboratory work without a written trail.
-
 ### 30.2 SBOM and advisories
 
 The SBOM lists 84 components; one medium advisory affects a development-only tool that does not ship; it is recorded as not applicable.
-
-Section thirty point two develops laboratory ii with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty point two, Grace Nwosu expects laboratory claims to carry owners and dates.
-
-Section thirty point two treats the exercise sbom and as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point two, Hollowbrook University will not accept laboratory work without a written trail.
 
 ### 30.3 Hashes
 
 All packages match lockfile hashes.
 
-Section thirty point three develops laboratory ii with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty point three, Grace Nwosu expects laboratory claims to carry owners and dates.
-
-Section thirty point three treats the exercise sbom and as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point three, Hollowbrook University will not accept laboratory work without a written trail.
-
-Section thirty point three fails closed if laboratory evidence is missing rather than guessing.
-
 ### 30.4 Signature and provenance
 
 The bundle is signed by the expected build identity; provenance shows the expected repository and a reviewed commit.
-
-Section thirty point four develops laboratory ii with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty point four, Grace Nwosu expects laboratory claims to carry owners and dates.
-
-Section thirty point four treats the exercise sbom and as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point four, Hollowbrook University will not accept laboratory work without a written trail.
 
 ### 30.5 Tests
 
 All authorisation, encoding and header tests pass.
 
-Section thirty point five develops laboratory ii with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty point five, Grace Nwosu expects laboratory claims to carry owners and dates.
-
-Section thirty point five treats the exercise sbom and as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point five, Hollowbrook University will not accept laboratory work without a written trail.
-
-Section thirty point five fails closed if laboratory evidence is missing rather than guessing.
-
 ### 30.6 Report
 
 A one-page release verification report lists each check, result and evidence link; it becomes part of the release.
 
-Section thirty point six develops laboratory ii with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty point six, Grace Nwosu expects laboratory claims to carry owners and dates.
-
-Section thirty point six treats the exercise sbom and as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point six, Hollowbrook University will not accept laboratory work without a written trail.
-
 ### 30.7 Conduct
 
 All work is done in the test environment under permission; findings are recorded in the private tracker.
-
-Section thirty point seven develops laboratory ii with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty point seven, Grace Nwosu expects laboratory claims to carry owners and dates.
-
-Section thirty point seven treats the exercise sbom and as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point seven, Hollowbrook University will not accept laboratory work without a written trail.
 
 ### Comparing releases
 
@@ -3411,63 +2081,25 @@ You will (1) analyse complex situations combining application and supply-chain i
 
 A small image-resizing package CampusEats uses has had no release for three years; an advisory reports a flaw with no fix. Options: replace it, maintain a fixed copy internally, or remove the feature (dish photos). The society replaces it with a maintained library, after checking its maintenance activity and number of maintainers.
 
-Section thirty-one point one develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-one point one, Grace Nwosu expects application claims to carry owners and dates.
-
 ### 31.2 Maintainer change
 
 A package's maintainer hands it to a new, unknown account, and a new version adds an install script. Ohm et al. (2020) noted takeovers of existing packages as a pattern in malicious package cases. The society holds the update, checks the change notes and the script's purpose, and asks in the project's issue tracker. The script turns out to be a legitimate build step, but the society keeps the update on hold until other users confirm.
-
-Section thirty-one point two develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
 
 ### 31.3 Uncertainty
 
 Often you cannot know quickly whether a change is malicious. Holding updates is safe if the current version has no known issues; pin and wait.
 
-Section thirty-one point three develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-one point three, Grace Nwosu expects application claims to carry owners and dates.
-
-Section thirty-one point three treats abandoned dependency maintainer change as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-one point three, Hollowbrook University will not accept application work without a written trail.
-
 ### 31.4 Upstream communication
 
 Polite, specific questions in public trackers help everyone; private reports go through security contacts.
-
-Section thirty-one point four develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-one point four, Grace Nwosu expects application claims to carry owners and dates.
-
-Section thirty-one point four treats abandoned dependency maintainer change as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-one point four, Hollowbrook University will not accept application work without a written trail.
 
 ### 31.5 Combined issues
 
 A flaw in a template library could allow cross-site scripting only if the app uses a rare feature. Checking reachability prevents panic: CampusEats does not use it, but updates anyway.
 
-Section thirty-one point five develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-one point five, Grace Nwosu expects application claims to carry owners and dates.
-
-Section thirty-one point five treats abandoned dependency maintainer change as testable only when evidence and ticket IDs are recorded.
-
 ### 31.6 Balance
 
 Each response balances risk, effort and the volunteers' time.
-
-Section thirty-one point six develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-one point six, Grace Nwosu expects application claims to carry owners and dates.
-
-Section thirty-one point six treats abandoned dependency maintainer change as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-one point six, Hollowbrook University will not accept application work without a written trail.
-
-Section thirty-one point six fails closed if application evidence is missing rather than guessing.
 
 ### Worked example
 
@@ -3505,69 +2137,25 @@ You will (1) work with legal, procurement and privacy teams on software risks; (
 
 Open-source licences set conditions for use. A dependency with a licence incompatible with the university's rules must be replaced. CampusEats checks licences automatically and sends unusual ones to the university's legal team.
 
-Section thirty-two point one develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-two point one, Grace Nwosu expects application claims to carry owners and dates.
-
-Section thirty-two point one treats legal and licences procurement as testable only when evidence and ticket IDs are recorded.
-
 ### 32.2 Procurement
 
 When cafés asked for a till integration, the university's procurement team needed security questions for the till vendor: Does it follow secure development practices like the SSDF? Does it provide SBOMs and timely fixes? Lena drafts the questions with Grace.
-
-Section thirty-two point two develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-two point two, Grace Nwosu expects application claims to carry owners and dates.
-
-Section thirty-two point two treats legal and licences procurement as testable only when evidence and ticket IDs are recorded.
 
 ### 32.3 Privacy
 
 The data protection officer reviews new features that use personal data, such as loyalty points.
 
-Section thirty-two point three develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-two point three, Grace Nwosu expects application claims to carry owners and dates.
-
-Section thirty-two point three treats legal and licences procurement as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-two point three, Hollowbrook University will not accept application work without a written trail.
-
 ### 32.4 Accessibility
 
 Security features must be usable by everyone: multi-factor prompts and error messages must work with screen readers.
-
-Section thirty-two point four develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-two point four, Grace Nwosu expects application claims to carry owners and dates.
-
-Section thirty-two point four treats legal and licences procurement as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-two point four, Hollowbrook University will not accept application work without a written trail.
 
 ### 32.5 Usability
 
 Johnson et al. (2013) showed developers avoid tools that are hard to use; the same applies to students facing awkward security steps. Good design reduces workarounds.
 
-Section thirty-two point five develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-two point five, Grace Nwosu expects application claims to carry owners and dates.
-
-Section thirty-two point five treats legal and licences procurement as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-two point five, Hollowbrook University will not accept application work without a written trail.
-
 ### 32.6 Communication
 
 Each discipline uses different words; Lena keeps a glossary and explains technical terms in one sentence.
-
-Section thirty-two point six develops application and software supply chain with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-two point six, Grace Nwosu expects application claims to carry owners and dates.
-
-Section thirty-two point six treats legal and licences procurement as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-two point six, Hollowbrook University will not accept application work without a written trail.
 
 ### Shared language
 
@@ -3613,89 +2201,29 @@ You will (1) design a comparative study; (2) choose measures and controls for co
 
 Lena's next question: do student projects that adopt dependency update bots fix high-severity advisories faster than those that do not?
 
-Section thirty-three point one develops research methods ii with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-three point one, Grace Nwosu expects research claims to carry owners and dates.
-
-Section thirty-three point one treats question design confounders coding as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-three point one, Hollowbrook University will not accept research work without a written trail.
-
 ### 33.2 Design
 
 Compare 12 student projects at Hollowbrook: 6 with bots, 6 without, matched by size. Measure days from advisory publication to fix merged.
-
-Section thirty-three point two develops research methods ii with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-three point two, Grace Nwosu expects research claims to carry owners and dates.
-
-Section thirty-three point two treats question design confounders coding as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-three point two, Hollowbrook University will not accept research work without a written trail.
 
 ### 33.3 Confounders
 
 Projects with bots may have more experienced members. Lena records team experience and checks whether it differs between groups.
 
-Section thirty-three point three develops research methods ii with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-three point three, Grace Nwosu expects research claims to carry owners and dates.
-
-Section thirty-three point three treats question design confounders coding as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-three point three, Hollowbrook University will not accept research work without a written trail.
-
 ### 33.4 Coding agreement
 
 Two people independently judge whether each fix fully addresses the advisory. Agreement is measured with Cohen's kappa and interpreted with Landis and Koch (1977).
-
-Section thirty-three point four develops research methods ii with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-three point four, Grace Nwosu expects research claims to carry owners and dates.
-
-Section thirty-three point four treats question design confounders coding as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-three point four, Hollowbrook University will not accept research work without a written trail.
 
 ### 33.5 Analysis
 
 Medians are compared because fix times are skewed; individual values are shown.
 
-Section thirty-three point five develops research methods ii with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-three point five, Grace Nwosu expects research claims to carry owners and dates.
-
-Section thirty-three point five treats question design confounders coding as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-three point five, Hollowbrook University will not accept research work without a written trail.
-
-Section thirty-three point five fails closed if research evidence is missing rather than guessing.
-
 ### 33.6 Reproducibility
 
 Scripts and a synthetic version of the data are shared.
 
-Section thirty-three point six develops research methods ii with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-three point six, Grace Nwosu expects research claims to carry owners and dates.
-
-Section thirty-three point six treats question design confounders coding as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-three point six, Hollowbrook University will not accept research work without a written trail.
-
-Section thirty-three point six fails closed if research evidence is missing rather than guessing.
-
 ### 33.7 Prior work
 
 Kula et al. (2018) found developers often do not update dependencies; Lena's study asks whether tooling helps in student projects.
-
-Section thirty-three point seven develops research methods ii with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-three point seven, Grace Nwosu expects research claims to carry owners and dates.
-
-Section thirty-three point seven treats question design confounders coding as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-three point seven, Hollowbrook University will not accept research work without a written trail.
 
 ### Ethics and consent
 
@@ -3741,77 +2269,25 @@ You will (1) compare two approaches to a supply-chain problem; (2) define criter
 
 CampusEats must choose between two ways of keeping dependencies current: a bot that opens small weekly pull requests, or a monthly manual "update day".
 
-Section thirty-four point one develops comparative project with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-four point one, Grace Nwosu expects comparative claims to carry owners and dates.
-
-Section thirty-four point one treats the problem criteria trial as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-four point one, Hollowbrook University will not accept comparative work without a written trail.
-
 ### 34.2 Criteria
 
 Time to apply high-severity fixes, member time spent, number of broken builds and member satisfaction.
-
-Section thirty-four point two develops comparative project with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-four point two, Grace Nwosu expects comparative claims to carry owners and dates.
-
-Section thirty-four point two treats the problem criteria trial as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-four point two, Hollowbrook University will not accept comparative work without a written trail.
 
 ### 34.3 Trial
 
 Each approach runs for six weeks in turn, with records kept.
 
-Section thirty-four point three develops comparative project with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-four point three, Grace Nwosu expects comparative claims to carry owners and dates.
-
-Section thirty-four point three treats the problem criteria trial as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-four point three, Hollowbrook University will not accept comparative work without a written trail.
-
-Section thirty-four point three fails closed if comparative evidence is missing rather than guessing.
-
 ### 34.4 Results
 
 Bot: high-severity fixes applied in a median of 3 days; 2 hours of member time per week; 3 broken builds, each fixed quickly. Manual: median 16 days; 5 hours on update day each month; 1 large broken build that took a day to fix.
-
-Section thirty-four point four develops comparative project with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-four point four, Grace Nwosu expects comparative claims to carry owners and dates.
-
-Section thirty-four point four treats the problem criteria trial as testable only when evidence and ticket IDs are recorded.
 
 ### 34.5 Satisfaction
 
 Members preferred the bot, saying small changes were easier to review.
 
-Section thirty-four point five develops comparative project with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-four point five, Grace Nwosu expects comparative claims to carry owners and dates.
-
-Section thirty-four point five treats the problem criteria trial as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-four point five, Hollowbrook University will not accept comparative work without a written trail.
-
-Section thirty-four point five fails closed if comparative evidence is missing rather than guessing.
-
 ### 34.6 Recommendation
 
 Adopt the bot, keep a monthly review of major versions.
-
-Section thirty-four point six develops comparative project with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-four point six, Grace Nwosu expects comparative claims to carry owners and dates.
-
-Section thirty-four point six treats the problem criteria trial as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-four point six, Hollowbrook University will not accept comparative work without a written trail.
-
-Section thirty-four point six fails closed if comparative evidence is missing rather than guessing.
 
 ### Fair comparison
 
@@ -3857,75 +2333,25 @@ You will (1) propose a capstone that addresses a real need; (2) set objectives a
 
 Several student projects at Hollowbrook share the same problems CampusEats faced. Lena proposes a "secure project starter": a template repository with secret scanning, lockfile hash checks, SBOM generation, signing and provenance, update bot configuration and ASVS-based tests.
 
-Section thirty-five point one develops capstone proposal with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-five point one, Grace Nwosu expects capstone claims to carry owners and dates.
-
-Section thirty-five point one treats the need objectives success as testable only when evidence and ticket IDs are recorded.
-
 ### 35.2 Objectives
 
 Make it easy for new projects to start with good supply-chain hygiene; measure adoption and effect.
-
-Section thirty-five point two develops capstone proposal with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-five point two, Grace Nwosu expects capstone claims to carry owners and dates.
-
-Section thirty-five point two treats the need objectives success as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-five point two, Hollowbrook University will not accept capstone work without a written trail.
 
 ### 35.3 Success criteria
 
 At least four projects adopt it in a term; zero secrets reach public repositories in adopting projects; setup takes under one hour.
 
-Section thirty-five point three develops capstone proposal with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-five point three, Grace Nwosu expects capstone claims to carry owners and dates.
-
-Section thirty-five point three treats the need objectives success as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-five point three, Hollowbrook University will not accept capstone work without a written trail.
-
 ### 35.4 Method
 
 Build the template, pilot with two projects, improve, then offer to all.
-
-Section thirty-five point four develops capstone proposal with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-five point four, Grace Nwosu expects capstone claims to carry owners and dates.
-
-Section thirty-five point four treats the need objectives success as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-five point four, Hollowbrook University will not accept capstone work without a written trail.
-
-Section thirty-five point four fails closed if capstone evidence is missing rather than guessing.
 
 ### 35.5 Risks
 
 Low adoption (mitigate with a workshop); maintenance burden (Grace's office agrees to own it after Lena graduates).
 
-Section thirty-five point five develops capstone proposal with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-five point five, Grace Nwosu expects capstone claims to carry owners and dates.
-
-Section thirty-five point five treats the need objectives success as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-five point five, Hollowbrook University will not accept capstone work without a written trail.
-
 ### 35.6 Approval
 
 Grace and Lena's supervisor sign off.
-
-Section thirty-five point six develops capstone proposal with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-five point six, Grace Nwosu expects capstone claims to carry owners and dates.
-
-Section thirty-five point six treats the need objectives success as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-five point six, Hollowbrook University will not accept capstone work without a written trail.
-
-Section thirty-five point six fails closed if capstone evidence is missing rather than guessing.
 
 ### Timeline
 
@@ -3971,67 +2397,25 @@ You will (1) apply application security skills in a community setting; (2) suppo
 
 Lena volunteers with a local charity that runs a food-bank booking website built by volunteers. Under a written agreement with the charity, she helps review its development practices, not to test live systems without permission.
 
-Section thirty-six point one develops field or community practice with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-six point one, Grace Nwosu expects field claims to carry owners and dates.
-
-Section thirty-six point one treats the setting what she as testable only when evidence and ticket IDs are recorded.
-
 ### 36.2 What she finds
 
 The site's repository is private but shared with many past volunteers; three still have write access. Dependencies have not been updated for a year; two have high-severity advisories. A database password is stored in a configuration file in the repository.
-
-Section thirty-six point two develops field or community practice with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-six point two, Grace Nwosu expects field claims to carry owners and dates.
-
-Section thirty-six point two treats the setting what she as testable only when evidence and ticket IDs are recorded.
 
 ### 36.3 What she does
 
 She helps the charity remove old access, move the password to the hosting platform's secret settings and rotate it, and set up an update bot. She explains each step so volunteers can continue.
 
-Section thirty-six point three develops field or community practice with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-six point three, Grace Nwosu expects field claims to carry owners and dates.
-
-Section thirty-six point three treats the setting what she as testable only when evidence and ticket IDs are recorded.
-
 ### 36.4 Teaching
 
 Lena runs a two-hour workshop for the charity's volunteers on secrets, updates and access, using the CampusEats case cards.
-
-Section thirty-six point four develops field or community practice with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-six point four, Grace Nwosu expects field claims to carry owners and dates.
-
-Section thirty-six point four treats the setting what she as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-six point four, Hollowbrook University will not accept field work without a written trail.
 
 ### 36.5 Boundaries
 
 Lena does not access the food bank's client data; she works only on code and configuration with the charity's coordinator present.
 
-Section thirty-six point five develops field or community practice with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-six point five, Grace Nwosu expects field claims to carry owners and dates.
-
-Section thirty-six point five treats the setting what she as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-six point five, Hollowbrook University will not accept field work without a written trail.
-
 ### 36.6 Reflection
 
 Lena notes that small organisations need simple, sustainable practices more than advanced tools.
-
-Section thirty-six point six develops field or community practice with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-six point six, Grace Nwosu expects field claims to carry owners and dates.
-
-Section thirty-six point six treats the setting what she as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-six point six, Hollowbrook University will not accept field work without a written trail.
 
 ### Agreement
 
@@ -4073,73 +2457,25 @@ You will (1) critically review published evidence on supply-chain security; (2) 
 
 Lena's seminar group reviews five studies: Ohm et al. (2020) on malicious packages, Zimmermann et al. (2019) on npm ecosystem risk, Decan et al. (2018) on vulnerability propagation, Kula et al. (2018) on dependency updating and Wermke et al. (2022) on open-source trust.
 
-Section thirty-seven point one develops evidence review seminar with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-seven point one, Grace Nwosu expects evidence claims to carry owners and dates.
-
-Section thirty-seven point one treats choosing studies designs limits as testable only when evidence and ticket IDs are recorded.
-
 ### 37.2 Designs
 
 Two are case collections, two are large-scale measurement studies, one is an interview study. Each design answers different questions: what happens, how often, and why.
-
-Section thirty-seven point two develops evidence review seminar with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-seven point two, Grace Nwosu expects evidence claims to carry owners and dates.
-
-Section thirty-seven point two treats choosing studies designs limits as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-seven point two, Hollowbrook University will not accept evidence work without a written trail.
 
 ### 37.3 Limits
 
 Case collections show only discovered cases; measurement studies depend on data quality and ecosystem; interview studies have small, self-selected samples.
 
-Section thirty-seven point three develops evidence review seminar with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-seven point three, Grace Nwosu expects evidence claims to carry owners and dates.
-
-Section thirty-seven point three treats choosing studies designs limits as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-seven point three, Hollowbrook University will not accept evidence work without a written trail.
-
 ### 37.4 Synthesis
 
 Together they suggest: risk concentrates in widely used packages; updates lag; malicious packages exploit trust and install-time behaviour; maintainers vary widely in security practice.
-
-Section thirty-seven point four develops evidence review seminar with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-seven point four, Grace Nwosu expects evidence claims to carry owners and dates.
-
-Section thirty-seven point four treats choosing studies designs limits as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-seven point four, Hollowbrook University will not accept evidence work without a written trail.
 
 ### 37.5 Implications
 
 For small projects: fewer dependencies, prompt updates, install-time restrictions, and checks on new names and maintainers.
 
-Section thirty-seven point five develops evidence review seminar with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-seven point five, Grace Nwosu expects evidence claims to carry owners and dates.
-
-Section thirty-seven point five treats choosing studies designs limits as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-seven point five, Hollowbrook University will not accept evidence work without a written trail.
-
 ### 37.6 Presentation
 
 The group presents a balanced view, separating strong findings from tentative ones.
-
-Section thirty-seven point six develops evidence review seminar with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-seven point six, Grace Nwosu expects evidence claims to carry owners and dates.
-
-Section thirty-seven point six treats choosing studies designs limits as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-seven point six, Hollowbrook University will not accept evidence work without a written trail.
-
-Section thirty-seven point six fails closed if evidence evidence is missing rather than guessing.
 
 ### Reading critically
 
@@ -4185,77 +2521,25 @@ You will (1) build the secure project starter template; (2) integrate checks int
 
 Lena builds the template: CI configuration with tests, secret scanning, lockfile checks, SBOM generation, signing and provenance; an update bot configuration; a set of ASVS-based tests for sessions, headers and authorisation; and a README with setup steps.
 
-Section thirty-eight point one develops capstone implementation with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-eight point one, Grace Nwosu expects capstone claims to carry owners and dates.
-
-Section thirty-eight point one treats building self-application pilot problems as testable only when evidence and ticket IDs are recorded.
-
 ### 38.2 Self-application
 
 The template itself follows its own rules: its dependencies are minimal and updated by the bot, and its releases are signed.
-
-Section thirty-eight point two develops capstone implementation with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-eight point two, Grace Nwosu expects capstone claims to carry owners and dates.
-
-Section thirty-eight point two treats building self-application pilot problems as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-eight point two, Hollowbrook University will not accept capstone work without a written trail.
 
 ### 38.3 Pilot
 
 Two student projects, a society events app and a study-room booking tool, adopt it.
 
-Section thirty-eight point three develops capstone implementation with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-eight point three, Grace Nwosu expects capstone claims to carry owners and dates.
-
-Section thirty-eight point three treats building self-application pilot problems as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-eight point three, Hollowbrook University will not accept capstone work without a written trail.
-
-Section thirty-eight point three fails closed if capstone evidence is missing rather than guessing.
-
 ### 38.4 Problems found
 
 Setup took 2.5 hours, not under one, mainly because of signing configuration. The secret scanner flagged sample keys in the template's own documentation.
-
-Section thirty-eight point four develops capstone implementation with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-eight point four, Grace Nwosu expects capstone claims to carry owners and dates.
-
-Section thirty-eight point four treats building self-application pilot problems as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-eight point four, Hollowbrook University will not accept capstone work without a written trail.
 
 ### 38.5 Fixes
 
 A setup script automates signing configuration; documentation sample keys are marked and allowlisted.
 
-Section thirty-eight point five develops capstone implementation with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-eight point five, Grace Nwosu expects capstone claims to carry owners and dates.
-
-Section thirty-eight point five treats building self-application pilot problems as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-eight point five, Hollowbrook University will not accept capstone work without a written trail.
-
-Section thirty-eight point five fails closed if capstone evidence is missing rather than guessing.
-
 ### 38.6 After fixes
 
 Setup time falls to 40 minutes in a third trial.
-
-Section thirty-eight point six develops capstone implementation with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-eight point six, Grace Nwosu expects capstone claims to carry owners and dates.
-
-Section thirty-eight point six treats building self-application pilot problems as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-eight point six, Hollowbrook University will not accept capstone work without a written trail.
-
-Section thirty-eight point six fails closed if capstone evidence is missing rather than guessing.
 
 ### Documentation
 
@@ -4301,85 +2585,25 @@ You will (1) evaluate the capstone against success criteria; (2) collect quantit
 
 Five projects adopted the template in the term, above the target of four.
 
-Section thirty-nine point one develops capstone evaluation with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-nine point one, Grace Nwosu expects capstone claims to carry owners and dates.
-
-Section thirty-nine point one treats adoption secrets setup time as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-nine point one, Hollowbrook University will not accept capstone work without a written trail.
-
-Section thirty-nine point one fails closed if capstone evidence is missing rather than guessing.
-
 ### 39.2 Secrets
 
 No secrets reached public repositories in adopting projects; the scanner caught two before push.
-
-Section thirty-nine point two develops capstone evaluation with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-nine point two, Grace Nwosu expects capstone claims to carry owners and dates.
-
-Section thirty-nine point two treats adoption secrets setup time as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-nine point two, Hollowbrook University will not accept capstone work without a written trail.
-
-Section thirty-nine point two fails closed if capstone evidence is missing rather than guessing.
 
 ### 39.3 Setup time
 
 Median setup 40 minutes across five projects.
 
-Section thirty-nine point three develops capstone evaluation with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-nine point three, Grace Nwosu expects capstone claims to carry owners and dates.
-
-Section thirty-nine point three treats adoption secrets setup time as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-nine point three, Hollowbrook University will not accept capstone work without a written trail.
-
-Section thirty-nine point three fails closed if capstone evidence is missing rather than guessing.
-
 ### 39.4 Feedback
 
 Teams liked ready-made tests; some found SBOM output confusing. Lena adds a short guide.
-
-Section thirty-nine point four develops capstone evaluation with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-nine point four, Grace Nwosu expects capstone claims to carry owners and dates.
-
-Section thirty-nine point four treats adoption secrets setup time as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-nine point four, Hollowbrook University will not accept capstone work without a written trail.
-
-Section thirty-nine point four fails closed if capstone evidence is missing rather than guessing.
 
 ### 39.5 Limits
 
 One term, five projects, volunteers who may have been more security-minded than average.
 
-Section thirty-nine point five develops capstone evaluation with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-nine point five, Grace Nwosu expects capstone claims to carry owners and dates.
-
-Section thirty-nine point five treats adoption secrets setup time as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-nine point five, Hollowbrook University will not accept capstone work without a written trail.
-
-Section thirty-nine point five fails closed if capstone evidence is missing rather than guessing.
-
 ### 39.6 Handover
 
 Grace's office takes ownership with a named maintainer; the monthly update job runs automatically.
-
-Section thirty-nine point six develops capstone evaluation with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section thirty-nine point six, Grace Nwosu expects capstone claims to carry owners and dates.
-
-Section thirty-nine point six treats adoption secrets setup time as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-nine point six, Hollowbrook University will not accept capstone work without a written trail.
-
-Section thirty-nine point six fails closed if capstone evidence is missing rather than guessing.
 
 ### Qualitative evidence
 
@@ -4429,71 +2653,25 @@ You will (1) write a bachelor's thesis on the capstone; (2) connect it to standa
 
 Introduction (CampusEats incidents), background (OWASP, SSDF, SLSA, SBOM, literature), method (template design and pilot), results, discussion, limitations, conclusion.
 
-Section forty point one develops thesis and presentation with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section forty point one, Grace Nwosu expects thesis claims to carry owners and dates.
-
-Section forty point one treats thesis structure connections presentation as testable only when evidence and ticket IDs are recorded.
-
-For section forty point one, Hollowbrook University will not accept thesis work without a written trail.
-
 ### 40.2 Connections
 
 The template implements SSDF practices across all four groups and SLSA build provenance; its tests draw on ASVS. The discussion relates findings to Johnson et al. (2013) on tool adoption: the template worked because it made secure defaults easy.
-
-Section forty point two develops thesis and presentation with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section forty point two, Grace Nwosu expects thesis claims to carry owners and dates.
-
-Section forty point two treats thesis structure connections presentation as testable only when evidence and ticket IDs are recorded.
 
 ### 40.3 Presentation
 
 Fifteen minutes to examiners, Grace and student project leads: the problem, the template, results, limits and handover.
 
-Section forty point three develops thesis and presentation with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section forty point three, Grace Nwosu expects thesis claims to carry owners and dates.
-
-Section forty point three treats thesis structure connections presentation as testable only when evidence and ticket IDs are recorded.
-
-For section forty point three, Hollowbrook University will not accept thesis work without a written trail.
-
 ### 40.4 Questions
 
 "Would this work for larger projects?" Lena explains it would need customisation and stronger review processes, and suggests a study.
-
-Section forty point four develops thesis and presentation with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section forty point four, Grace Nwosu expects thesis claims to carry owners and dates.
-
-Section forty point four treats thesis structure connections presentation as testable only when evidence and ticket IDs are recorded.
-
-For section forty point four, Hollowbrook University will not accept thesis work without a written trail.
 
 ### 40.5 Reflection
 
 From logic statements about access rules in year one to a template used by five projects, Lena sees security as a habit built into everyday tools.
 
-Section forty point five develops thesis and presentation with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section forty point five, Grace Nwosu expects thesis claims to carry owners and dates.
-
-Section forty point five treats thesis structure connections presentation as testable only when evidence and ticket IDs are recorded.
-
-For section forty point five, Hollowbrook University will not accept thesis work without a written trail.
-
 ### 40.6 Next steps
 
 Lena plans a master's degree and continues to maintain the template as a volunteer.
-
-Section forty point six develops thesis and presentation with a Hollowbrook University note Lena Fischer can demo offline.
-
-Under section forty point six, Grace Nwosu expects thesis claims to carry owners and dates.
-
-Section forty point six treats thesis structure connections presentation as testable only when evidence and ticket IDs are recorded.
-
-For section forty point six, Hollowbrook University will not accept thesis work without a written trail.
 
 ### Writing the thesis
 

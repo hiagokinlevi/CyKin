@@ -51,8 +51,6 @@ Taking log₂ of a work factor gives "bits of security". A cost of 2^128 operati
 
 "Big-O" statements describe behaviour as input size tends to infinity and hide constants. Shor's *n*³ hides a large constant and, more importantly, the overhead of quantum error correction, which may multiply physical qubit counts by a thousand or more. Resource estimates such as [Gidney (2025)](https://arxiv.org/abs/2505.15917) — under one million noisy qubits for RSA-2048 under stated hardware assumptions — fill in those constants. An engineer must never read an asymptotic bound as a time.
 
-Section one point three develops calculus with a Brightwater Port Authority note the engineer can demo offline.
-
 ### 1.4 Practical activity — Lab G
 
 ```python
@@ -72,12 +70,6 @@ for n in (1024, 2048, 3072):
 
 Expected output:
 
-Section one point four develops calculus with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section one point four, the BPA board expects calculus claims to carry owners and dates.
-
-Section one point four treats why an engineer needs as testable only when evidence and ticket IDs are recorded.
-
 ```text
 Symmetric key search: classical 2^k trials vs Grover ~2^(k/2) sequential iterations
   k=128: classical 2^128, Grover ~2^64
@@ -95,19 +87,7 @@ The GNFS formula is heuristic (its *o*(1) term is dropped), so the bit values ap
 
 BPA's board asks whether to double AES key sizes "because of quantum". Using 1.1: AES-128 under Grover falls to roughly 2^64 sequential iterations in the idealized model, but Grover parallelizes poorly, so many guidance documents still accept AES-128; moving bulk encryption to AES-256 is cheap and removes the debate. The urgent item is not AES but every RSA and elliptic-curve key exchange, which Shor breaks outright.
 
-Section one point five develops calculus with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section one point five, the BPA board expects calculus claims to carry owners and dates.
-
 ### 1.6 Common errors and limits
-Section one point six develops calculus with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section one point six, the BPA board expects calculus claims to carry owners and dates.
-
-Section one point six treats why an engineer needs as testable only when evidence and ticket IDs are recorded.
-
-For section one point six, Brightwater Port Authority will not accept calculus work without a written trail.
-
 
 - Treating Grover as fatal to symmetric cryptography.
 - Reading *O*(*n*³) as "fast" without error-correction overhead.
@@ -138,8 +118,6 @@ You will (1) compute in modular arithmetic and polynomial rings; (2) explain the
 
 Arithmetic modulo *q* keeps numbers in {0, …, *q*−1}. RSA uses a composite modulus; elliptic-curve cryptography uses groups of points over a prime field. Both rely on the hardness of finding a hidden *period* — the order of an element, or a discrete logarithm. Shor's insight is that a quantum computer can find periods efficiently with the quantum Fourier transform; that is why every scheme whose security reduces to a hidden period in an abelian group falls together.
 
-Section two point one develops discrete mathematics with a Brightwater Port Authority note the engineer can demo offline.
-
 ### 2.2 Polynomial rings
 
 ML-KEM ([FIPS 203](https://doi.org/10.6028/NIST.FIPS.203)) computes with polynomials of degree below 256 whose coefficients are integers modulo *q* = 3329, reduced modulo *x*^256 + 1. In this ring, multiplying by *x* shifts coefficients up one place, and the coefficient that falls off the top wraps to the bottom with its sign flipped, because *x*^*n* = −1. Vectors and matrices of such polynomials form a *module*, hence "module-lattice". The structure gives compact keys and fast multiplication (via the number-theoretic transform), while hardness comes from adding small noise — the subject of Chapter 24.
@@ -167,14 +145,6 @@ print("a*a  =", mul(a, a))
 
 Expected output:
 
-Section two point three develops discrete mathematics with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section two point three, the BPA board expects discrete claims to carry owners and dates.
-
-Section two point three treats modular arithmetic polynomial rings as testable only when evidence and ticket IDs are recorded.
-
-For section two point three, Brightwater Port Authority will not accept discrete work without a written trail.
-
 ```text
 a*x  = [14, 1, 2, 0]  (coefficients shift; x^3 * x = x^4 = -1 -> 17-3 = 14)
 a*a  = [6, 4, 12, 6]
@@ -186,25 +156,11 @@ Check by hand: (1 + 2*x* + 3*x*³)·*x* = *x* + 2*x*² + 3*x*⁴ = *x* + 2*x*² 
 
 A cryptographic hash maps any input to a fixed-length digest. Its required properties are *preimage resistance* (given a digest, find no input), *second-preimage resistance* and *collision resistance*. Hash-based signatures (SLH-DSA in [FIPS 205](https://doi.org/10.6028/NIST.FIPS.205); LMS and XMSS in [SP 800-208](https://doi.org/10.6028/NIST.SP.800-208)) need only these properties, which is why they are the most conservative post-quantum signatures: quantum computers are not known to do much better than Grover-style speed-ups against good hash functions.
 
-Section two point four develops discrete mathematics with a Brightwater Port Authority note the engineer can demo offline.
-
 ### 2.5 Worked example
 
 A BPA developer asks why the post-quantum library "multiplies polynomials" when RSA "just exponentiates". The answer: RSA's security lives in the multiplicative group modulo *N*, where Shor finds periods. ML-KEM's lives in noisy linear algebra over a polynomial ring, where no period-finding shortcut is known; the ring is for efficiency, the noise is for security.
 
-Section two point five develops discrete mathematics with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section two point five, the BPA board expects discrete claims to carry owners and dates.
-
 ### 2.6 Common errors and limits
-Section two point six develops discrete mathematics with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section two point six, the BPA board expects discrete claims to carry owners and dates.
-
-Section two point six treats modular arithmetic polynomial rings as testable only when evidence and ticket IDs are recorded.
-
-For section two point six, Brightwater Port Authority will not accept discrete work without a written trail.
-
 
 - Forgetting the sign flip when reducing by *x*^*n* + 1.
 - Thinking ring structure alone provides security (without noise, the linear system is easy).
@@ -239,10 +195,6 @@ A classical bit is 0 or 1. A qubit's state is a combination α|0⟩ + β|1⟩ wi
 
 Entangled qubits have correlated measurement outcomes that cannot be explained by independent states. Gates — rotations of single qubits and controlled operations on pairs — build circuits. Algorithms are measured in logical gate counts and circuit *depth*, the number of sequential layers, which matters because errors accumulate with time.
 
-Section three point two develops physics for computing with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section three point two, the BPA board expects physics claims to carry owners and dates.
-
 ### 3.3 Decoherence and error correction
 
 Physical qubits lose their state through interaction with the environment (decoherence) and through imperfect gates. Quantum error correction encodes one *logical* qubit in many *physical* qubits — in surface-code designs, hundreds to thousands — and continuously measures syndromes to correct errors. This overhead is why estimates for breaking RSA-2048 moved from twenty million noisy qubits ([Gidney and Ekerå 2021](https://doi.org/10.22331/q-2021-04-15-433)) to under a million ([Gidney 2025](https://arxiv.org/abs/2505.15917)) as algorithms and codes improved — and why counts of physical qubits in press releases say little about cryptographic relevance without error rates.
@@ -251,25 +203,11 @@ Physical qubits lose their state through interaction with the environment (decoh
 
 Quantum key distribution (QKD) uses quantum states of light to agree keys, with security grounded in physics, but it needs special hardware, point-to-point links and authenticated classical channels, and it does not provide signatures. Several agencies, including the [NSA](https://www.nsa.gov/Cybersecurity/Quantum-Key-Distribution-QKD-and-Quantum-Cryptography-QC/), recommend PQC rather than QKD for most uses. This book treats QKD as a niche technology and PQC as the migration path.
 
-Section three point four develops physics for computing with a Brightwater Port Authority note the engineer can demo offline.
-
 ### 3.5 Worked example
 
 A vendor tells BPA that "a 1,000-qubit machine was announced, so RSA is broken soon". The engineering response: ask for error rates, logical qubit counts and circuit depth; compare with published resource estimates; note that a thousand noisy physical qubits is orders of magnitude short of the estimates; and still migrate, because recorded traffic must stay secret for decades (Chapter 20).
 
-Section three point five develops physics for computing with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section three point five, the BPA board expects physics claims to carry owners and dates.
-
 ### 3.6 Common errors and limits
-Section three point six develops physics for computing with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section three point six, the BPA board expects physics claims to carry owners and dates.
-
-Section three point six treats qubits and measurement entanglement as testable only when evidence and ticket IDs are recorded.
-
-For section three point six, Brightwater Port Authority will not accept physics work without a written trail.
-
 
 - Saying quantum computers "try all answers at once".
 - Equating physical and logical qubits.
@@ -300,65 +238,27 @@ You will (1) write small, testable Python programs with the standard library; (2
 
 Cryptographic functions operate on bytes. Python's `str` is text; convert with an explicit encoding (`"text".encode("utf-8")`). Mixing them causes subtle bugs, such as hashing the string representation of a byte object (`"b'...'"`) instead of the bytes themselves. Integers convert with `int.from_bytes(b, "big")` and `n.to_bytes(length, "big")`; always state the byte order and length, because protocol specifications such as FIPS 203 define exact encodings.
 
-Section four point one develops programming with a Brightwater Port Authority note the engineer can demo offline.
-
 ### 4.2 Randomness
 
 Use `secrets.token_bytes()` for keys and nonces; never `random`, which is a predictable pseudo-random generator designed for simulations. The labs in this book use `random` only to generate synthetic data and toy parameters, and say so.
-
-Section four point two develops programming with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section four point two, the BPA board expects programming claims to carry owners and dates.
-
-Section four point two treats bytes not strings randomness as testable only when evidence and ticket IDs are recorded.
 
 ### 4.3 Hashes and MACs
 
 `hashlib.sha256`, `hashlib.sha3_256` and `hashlib.shake_256` are available; SHA-3 and SHAKE are used inside ML-KEM and ML-DSA. `hmac.new(key, msg, hashlib.sha256)` computes a message authentication code, and `hmac.compare_digest` compares tags in constant time — a normal `==` can leak timing information about where two values first differ.
 
-Section four point three develops programming with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section four point three, the BPA board expects programming claims to carry owners and dates.
-
 ### 4.4 Testing
 
 Every function gets a test with a known answer. For cryptography, *known-answer tests* (KATs) published with standards let you confirm that an implementation produces exactly the expected bytes. NIST's Cryptographic Algorithm Validation Program publishes test vectors for approved algorithms.
-
-Section four point four develops programming with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section four point four, the BPA board expects programming claims to carry owners and dates.
-
-Section four point four treats bytes not strings randomness as testable only when evidence and ticket IDs are recorded.
 
 ### 4.5 Worked example: a hash-chain audit log
 
 BPA wants tamper-evident logs. Each entry stores `h_i = SHA-256(h_{i-1} || entry_i)`. A short program computes the chain, and a test verifies that changing any entry changes every later hash. The program uses bytes throughout, fixed encodings and `compare_digest`. This is a sound use of standard primitives; designing a new signature scheme would not be.
 
-Section four point five develops programming with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section four point five, the BPA board expects programming claims to carry owners and dates.
-
 ### 4.6 Practical activity
 
 Write the hash-chain function with a test, then add a deliberate bug (hashing `str(entry)` instead of `entry`) and see the test catch it.
 
-Section four point six develops programming with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section four point six, the BPA board expects programming claims to carry owners and dates.
-
-Section four point six treats bytes not strings randomness as testable only when evidence and ticket IDs are recorded.
-
-For section four point six, Brightwater Port Authority will not accept programming work without a written trail.
-
 ### 4.7 Common errors and limits
-Section four point seven develops programming with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section four point seven, the BPA board expects programming claims to carry owners and dates.
-
-Section four point seven treats bytes not strings randomness as testable only when evidence and ticket IDs are recorded.
-
-For section four point seven, Brightwater Port Authority will not accept programming work without a written trail.
-
 
 - Using `random` for keys.
 - Comparing secrets with `==`.
@@ -389,49 +289,23 @@ You will (1) write a decision memo that separates facts, assumptions and recomme
 
 A memo opens with the decision requested, then gives context, options, recommendation, risks and what would change the recommendation. In PQC work, label four kinds of statement: **fact** ("FIPS 203 was published in August 2024"), **assumption** ("we plan as if a cryptographically relevant quantum computer could exist within 15 years"), **estimate** ("migration of the VPN will take nine months") and **recommendation**. Mixing them is how timelines become myths.
 
-Section five point one develops engineering communication with a Brightwater Port Authority note the engineer can demo offline.
-
 ### 5.2 Communicating uncertainty
 
 Never give a single "Q-Day". State a range of assumptions and show which decisions are robust across it. Mosca's inequality — if data lifetime plus migration time exceeds time-to-quantum, act now ([Mosca 2018](https://doi.org/10.1109/MSP.2018.3761723)) — is useful precisely because it can be evaluated across a range. A recommendation that holds for all plausible ranges is easy to defend.
-
-Section five point two develops engineering communication with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section five point two, the BPA board expects engineering claims to carry owners and dates.
 
 ### 5.3 Diagrams
 
 Architecture diagrams show components, trust boundaries and where each cryptographic function happens: key exchange, signature, data at rest. Every diagram needs a text alternative describing the same content for accessibility and for review; reviewers often find errors when forced to read the text version.
 
-Section five point three develops engineering communication with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section five point three, the BPA board expects engineering claims to carry owners and dates.
-
-Section five point three treats the decision memo communicating as testable only when evidence and ticket IDs are recorded.
-
 ### 5.4 Audiences
 
 For engineers: algorithms, parameter sets, protocols, test evidence. For executives: risk, cost, schedule, what is protected and what is not. For auditors: requirement traceability and evidence. The same facts, differently ordered.
-
-Section five point four develops engineering communication with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section five point four, the BPA board expects engineering claims to carry owners and dates.
-
-Section five point four treats the decision memo communicating as testable only when evidence and ticket IDs are recorded.
 
 ### 5.5 Worked example: BPA's one-page memo
 
 Decision requested: fund a 12-month cryptographic inventory and a hybrid TLS pilot. Facts: standards exist; customs records must remain confidential for 25 years. Assumption: time-to-quantum swept from 10 to 30 years. Finding: for 25-year records, any time-to-quantum below about 26 years (25 years of confidentiality plus roughly 9 months of migration) means today's recorded traffic is at risk — so the decision is robust across the whole 10–30-year sweep except its optimistic tail, and the tail does not change the action. Not claimed: any date. Risks: middlebox incompatibility, vendor delay.
 
 ### 5.6 Common errors and limits
-Section five point six develops engineering communication with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section five point six, the BPA board expects engineering claims to carry owners and dates.
-
-Section five point six treats the decision memo communicating as testable only when evidence and ticket IDs are recorded.
-
-For section five point six, Brightwater Port Authority will not accept engineering work without a written trail.
-
 
 - Executive slides with a single date for quantum computers.
 - Diagrams without text alternatives.
@@ -462,10 +336,6 @@ You will (1) use exponential and logarithmic models for growth and decay; (2) co
 
 Many quantities in this field are modelled exponentially: the volume of recorded traffic, the decline in cost per qubit, the decay of a certificate's usefulness. A model *f*(*t*) = *f*₀·*e*^(*rt*) has doubling time ln 2 / *r*. Engineers should treat such models as scenarios: an assumed doubling time of qubit quality is an assumption, not a law.
 
-Section six point one develops calculus ii with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section six point one, the BPA board expects calculus claims to carry owners and dates.
-
 ### 6.2 Sums and integrals for exposure
 
 Suppose BPA records traffic at a rate *v*(*t*) GB per year, and any traffic recorded before migration date *T* is exposed if a CRQC appears at time *Z*. The exposed volume is the integral of *v* from 0 to *T*. If *v* grows exponentially, ∫₀^*T* *v*₀*e*^(*rt*) d*t* = (*v*₀/*r*)(*e*^(*rT*) − 1): delaying migration grows exposure faster than linearly. The engineering lesson is that a one-year delay late in the programme costs more exposure than a one-year delay early.
@@ -474,39 +344,15 @@ Suppose BPA records traffic at a rate *v*(*t*) GB per year, and any traffic reco
 
 Parameter choice is constrained optimization. Example: choose an ML-KEM parameter set to maximize security subject to a handshake byte budget. ML-KEM-512, -768 and -1024 offer NIST categories 1, 3 and 5 with encapsulation keys of 800, 1,184 and 1,568 bytes ([FIPS 203](https://doi.org/10.6028/NIST.FIPS.203)). If the budget for the client key share is 1,300 bytes, ML-KEM-768 is the largest that fits. Lagrange multipliers formalize such trade-offs for continuous variables; in discrete parameter sets you simply enumerate.
 
-Section six point three develops calculus ii with a Brightwater Port Authority note the engineer can demo offline.
-
 ### 6.4 Worked example
 
 BPA's customs exchange sends 2 TB/year today, growing 20% per year (*r* ≈ 0.182). Exposed volume if migration completes after 3 years: (2/0.182)(*e*^0.547 − 1) ≈ 8.0 TB; after 5 years: ≈ 16.3 TB. Two extra years roughly double the exposed archive.
-
-Section six point four develops calculus ii with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section six point four, the BPA board expects calculus claims to carry owners and dates.
-
-Section six point four treats exponential models sums and as testable only when evidence and ticket IDs are recorded.
 
 ### 6.5 Practical activity
 
 Compute the exposed volume for migration after 1–8 years and plot (or tabulate) it. Identify the year where exposure exceeds 10 TB.
 
-Section six point five develops calculus ii with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section six point five, the BPA board expects calculus claims to carry owners and dates.
-
-Section six point five treats exponential models sums and as testable only when evidence and ticket IDs are recorded.
-
-For section six point five, Brightwater Port Authority will not accept calculus work without a written trail.
-
 ### 6.6 Common errors and limits
-Section six point six develops calculus ii with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section six point six, the BPA board expects calculus claims to carry owners and dates.
-
-Section six point six treats exponential models sums and as testable only when evidence and ticket IDs are recorded.
-
-For section six point six, Brightwater Port Authority will not accept calculus work without a written trail.
-
 
 - Treating growth assumptions as forecasts.
 - Linear thinking about delay under exponential growth.
@@ -537,8 +383,6 @@ You will (1) reason about rare events such as decryption failures; (2) estimate 
 
 Lattice KEMs have a tiny probability that decapsulation produces the wrong key. FIPS 203's parameter sets keep it extremely small — around 2^-139 for ML-KEM-512 and smaller for the larger sets — far below any rate an engineer will observe. The expected number of failures in *N* operations is *N*·*p*. Lab P shows why a probability like 2^-20, fine for many engineering purposes, would be unacceptable for a KEM used billions of times, while 2^-139 is negligible at any scale.
 
-Section seven point one develops probability and statistics with a Brightwater Port Authority note the engineer can demo offline.
-
 ### 7.2 Practical activity — Lab P
 
 ```python
@@ -553,16 +397,6 @@ for p_exp in (-20, -40, -139):
 
 Expected output:
 
-Section seven point two develops probability and statistics with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section seven point two, the BPA board expects probability claims to carry owners and dates.
-
-Section seven point two treats rare events practical activity as testable only when evidence and ticket IDs are recorded.
-
-For section seven point two, Brightwater Port Authority will not accept probability work without a written trail.
-
-Section seven point two fails closed if probability evidence is missing rather than guessing.
-
 ```text
 p = 2^  -20, 1e+09 operations -> expected failures 9.537e+02
 p = 2^  -20, 1e+15 operations -> expected failures 9.537e+08
@@ -576,35 +410,15 @@ p = 2^ -139, 1e+15 operations -> expected failures 1.435e-27
 
 When measuring handshake failure rates after enabling a hybrid group, report an interval, not just a point. For small proportions use the Wilson interval (Chapter 37's canary lab uses it). The *rule of three* gives a quick bound: if zero failures occur in *n* trials, the 95% upper bound on the rate is about 3/*n*.
 
-Section seven point three develops probability and statistics with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section seven point three, the BPA board expects probability claims to carry owners and dates.
-
 ### 7.4 Statistical versus cryptographic security
 
 A statistical test that finds no failures in a million runs says only that the rate is probably below 3 × 10^-6. Cryptographic security levels such as 2^-128 cannot be established by testing; they come from analysis. Engineers test to find bugs, not to prove security.
-
-Section seven point four develops probability and statistics with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section seven point four, the BPA board expects probability claims to carry owners and dates.
-
-Section seven point four treats rare events practical activity as testable only when evidence and ticket IDs are recorded.
 
 ### 7.5 Worked example
 
 BPA's pilot sees 0 handshake failures in 12,000 hybrid connections at one site. The rule of three bounds the failure rate below 2.5 × 10^-4 (95%). Is that good enough to roll out to 2 million daily connections? At the bound, up to 500 failures per day could still occur — so the gate needs a larger canary before full rollout.
 
-Section seven point five develops probability and statistics with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section seven point five, the BPA board expects probability claims to carry owners and dates.
-
 ### 7.6 Common errors and limits
-Section seven point six develops probability and statistics with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section seven point six, the BPA board expects probability claims to carry owners and dates.
-
-Section seven point six treats rare events practical activity as testable only when evidence and ticket IDs are recorded.
-
 
 - "No failures observed" interpreted as "rate is zero".
 - Confusing a decryption-failure probability with a security level.
@@ -635,55 +449,23 @@ You will (1) relate algorithm performance to processor features such as vector u
 
 Lattice schemes spend most of their time in polynomial multiplication via the number-theoretic transform and in hashing with SHAKE. Vector instructions (AVX2 on x86, NEON on ARM) parallelize coefficient operations, making ML-KEM very fast on servers. Constrained microcontrollers without vector units are slower but often still acceptable; memory, not speed, is usually the limit there.
 
-Section eight point one develops computer architecture with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section eight point one, the BPA board expects computer claims to carry owners and dates.
-
 ### 8.2 Side channels
 
 Execution time, cache access patterns and power draw can reveal secrets if they depend on secret values. The "KyberSlash" findings showed that a division by a constant whose dividend depended on secret data leaked timing in several Kyber implementations ([Bernstein et al. 2024](https://eprint.iacr.org/2024/1049)). Constant-time coding — no secret-dependent branches, memory indices or variable-time instructions — is a requirement, not an optimization.
-
-Section eight point two develops computer architecture with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section eight point two, the BPA board expects computer claims to carry owners and dates.
 
 ### 8.3 Memory and code size
 
 ML-DSA signing needs several kilobytes of working memory; SLH-DSA signatures are large but keys are tiny; stateful hash-based schemes need non-volatile state that must never roll back. On a gate scanner with 64 KB of RAM, the choice of signature verification algorithm is an architecture decision.
 
-Section eight point three develops computer architecture with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section eight point three, the BPA board expects computer claims to carry owners and dates.
-
-Section eight point three treats performance features side channels as testable only when evidence and ticket IDs are recorded.
-
 ### 8.4 HSMs and secure elements
 
 Private keys at BPA's certificate authority live in an HSM. Migration needs HSM firmware that supports ML-DSA and possibly LMS/XMSS with state protection, validated under the relevant certification program. HSM upgrade cycles are often years long — a classic constraint on migration schedules.
-
-Section eight point four develops computer architecture with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section eight point four, the BPA board expects computer claims to carry owners and dates.
-
-Section eight point four treats performance features side channels as testable only when evidence and ticket IDs are recorded.
 
 ### 8.5 Worked example
 
 BPA's crane controllers verify firmware signatures in a bootloader with 32 KB of flash available. ML-DSA-44 verification code and a 1,312-byte public key may fit; an LMS verifier is smaller and needs only hashing, and since only verification happens on the device, LMS's state problem stays at the signing server. The architecture review records both options and their memory budgets.
 
-Section eight point five develops computer architecture with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section eight point five, the BPA board expects computer claims to carry owners and dates.
-
 ### 8.6 Common errors and limits
-Section eight point six develops computer architecture with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section eight point six, the BPA board expects computer claims to carry owners and dates.
-
-Section eight point six treats performance features side channels as testable only when evidence and ticket IDs are recorded.
-
-For section eight point six, Brightwater Port Authority will not accept computer work without a written trail.
-
 
 - Benchmarking only on servers.
 - Assuming a correct implementation is constant-time.
@@ -714,57 +496,23 @@ You will (1) structure code so that algorithms are replaceable; (2) parse and va
 
 Write code against interfaces — `kem.encapsulate(public_key)`, `signer.sign(message)` — not against algorithm-specific functions. An algorithm identifier, chosen by policy, selects the implementation. This is the programming basis of crypto-agility ([CSWP 39](https://doi.org/10.6028/NIST.CSWP.39-upd1)): migration becomes a configuration change plus testing, not a rewrite.
 
-Section nine point one develops programming ii with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section nine point one, the BPA board expects programming claims to carry owners and dates.
-
 ### 9.2 Input validation
 
 Post-quantum keys and ciphertexts have fixed lengths per parameter set. FIPS 203 requires checks on encapsulation keys (a modulus check that encoded coefficients are below *q*) and decapsulation keys before use. Code should reject wrong lengths before calling a library and never "pad" or "truncate" to make inputs fit.
-
-Section nine point two develops programming ii with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section nine point two, the BPA board expects programming claims to carry owners and dates.
 
 ### 9.3 Testing beyond examples
 
 Known-answer tests confirm exact outputs. Property-based tests check invariants over many random inputs: decapsulate(encapsulate(pk)) yields the same key; a signature verifies for the signed message and fails for any one-bit change. Negative tests matter as much as positive ones.
 
-Section nine point three develops programming ii with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section nine point three, the BPA board expects programming claims to carry owners and dates.
-
-Section nine point three treats interfaces over implementations input as testable only when evidence and ticket IDs are recorded.
-
 ### 9.4 Dependencies
 
 Pin versions of cryptographic libraries, track their advisories and record which algorithms and parameter sets each exposes. Draft-era names (e.g. "Kyber768") and final names (ML-KEM-768) are not interchangeable: the final standard changed details, so draft implementations do not interoperate with FIPS 203.
-
-Section nine point four develops programming ii with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section nine point four, the BPA board expects programming claims to carry owners and dates.
-
-Section nine point four treats interfaces over implementations input as testable only when evidence and ticket IDs are recorded.
 
 ### 9.5 Worked example
 
 BPA's e-document service calls `rsa_sign()` in 41 places. Refactoring introduces `Signer` with implementations `RSA-PSS-3072` and `ML-DSA-65`, selected by a policy file. A test suite runs every call path with both. The diff is large once; the next migration will be small.
 
-Section nine point five develops programming ii with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section nine point five, the BPA board expects programming claims to carry owners and dates.
-
-Section nine point five treats interfaces over implementations input as testable only when evidence and ticket IDs are recorded.
-
 ### 9.6 Common errors and limits
-Section nine point six develops programming ii with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section nine point six, the BPA board expects programming claims to carry owners and dates.
-
-Section nine point six treats interfaces over implementations input as testable only when evidence and ticket IDs are recorded.
-
-For section nine point six, Brightwater Port Authority will not accept programming work without a written trail.
-
 
 - Hard-coding algorithm names and key lengths.
 - Treating draft and final algorithm versions as the same.
@@ -799,51 +547,23 @@ You will (1) apply professional ethics to cryptographic migration decisions; (2)
 
 Engineering codes of ethics place public welfare first. In PQC work this means protecting people whose data will remain sensitive for decades — medical, legal, customs and personal records — even though harm, if it comes, comes years after the engineer's decision. It also means honesty: neither minimizing the risk ("quantum is science fiction") nor inflating it to sell ("RSA will be broken next year").
 
-Section ten point one develops engineering ethics and safety with a Brightwater Port Authority note the engineer can demo offline.
-
 ### 10.2 Who bears the risk
 
 Data subjects bear harvest-now-decrypt-later risk, but they rarely decide migration budgets. An ethical engineer makes this asymmetry visible in decision memos: "If we postpone, customs declarants' commercial data recorded from now until migration may become readable by a future adversary."
-
-Section ten point two develops engineering ethics and safety with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section ten point two, the BPA board expects engineering claims to carry owners and dates.
-
-Section ten point two treats duties who bears the as testable only when evidence and ticket IDs are recorded.
 
 ### 10.3 Safety interactions
 
 Cryptographic changes can break availability: an oversized handshake that a middlebox drops, a firmware signature that a bootloader cannot verify, a certificate that a medical device rejects. In safety-related systems — cranes, port traffic control — a failed update can stop operations or create hazards. Change management with rollback plans, testing in isolated environments and staged rollouts is an ethical duty, not bureaucracy.
 
-Section ten point three develops engineering ethics and safety with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section ten point three, the BPA board expects engineering claims to carry owners and dates.
-
 ### 10.4 Responsible disclosure and testing limits
 
 If testing reveals a vulnerability in a product, report it to the vendor and give time to fix before publishing. Never test systems you are not authorized to test, and never run downgrade experiments on production traffic.
-
-Section ten point four develops engineering ethics and safety with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section ten point four, the BPA board expects engineering claims to carry owners and dates.
-
-Section ten point four treats duties who bears the as testable only when evidence and ticket IDs are recorded.
 
 ### 10.5 Worked example
 
 A vendor offers BPA a "quantum-proof" appliance using an unpublished algorithm. Ethical evaluation: an unvetted algorithm offers no assurance (Rainbow and SIKE were broken despite years of public scrutiny — [Beullens 2022](https://eprint.iacr.org/2022/214), [Castryck and Decru 2022](https://eprint.iacr.org/2022/975)); the marketing overstates; the engineer's duty is to recommend standardized algorithms and to say why, even if the vendor is a friend of management.
 
-Section ten point five develops engineering ethics and safety with a Brightwater Port Authority note the engineer can demo offline.
-
 ### 10.6 Common errors and limits
-Section ten point six develops engineering ethics and safety with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section ten point six, the BPA board expects engineering claims to carry owners and dates.
-
-Section ten point six treats duties who bears the as testable only when evidence and ticket IDs are recorded.
-
-For section ten point six, Brightwater Port Authority will not accept engineering work without a written trail.
-
 
 - Deferring migration because the harm is far away.
 - Accepting marketing terms like "quantum-proof".
@@ -878,43 +598,19 @@ In TLS 1.3 ([RFC 8446](https://www.rfc-editor.org/rfc/rfc8446.html)) the client 
 
 An Ethernet path typically carries 1,500-byte IP packets, about 1,460 bytes of TCP payload. A ClientHello with a hybrid share often exceeds that and needs two TCP segments. TCP handles this transparently, but some middleboxes and servers inspect only the first packet. Google reported such incompatibilities when Chrome began offering hybrid Kyber ([Chromium Blog 2023](https://blog.chromium.org/2023/08/protecting-chrome-traffic-with-hybrid.html)). Over UDP (QUIC, DTLS, IKEv2) larger messages raise fragmentation and amplification-limit issues that protocol designers handle explicitly.
 
-Section eleven point two develops networks and protocols with a Brightwater Port Authority note the engineer can demo offline.
-
 ### 11.3 Other protocols
 
 IKEv2 VPNs add post-quantum key exchange through additional exchanges ([RFC 9370](https://www.rfc-editor.org/rfc/rfc9370.html) defines multiple key exchanges in IKEv2). SSH implementations have deployed hybrid key exchange methods combining a lattice KEM with X25519. DNSSEC is mostly a signature problem: post-quantum signatures are much larger than today's ECDSA signatures, which strains UDP responses.
-
-Section eleven point three develops networks and protocols with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section eleven point three, the BPA board expects networks claims to carry owners and dates.
 
 ### 11.4 Ossification
 
 When middleboxes assume protocol fields never change, new values break connections. TLS 1.3 introduced GREASE ([RFC 8701](https://www.rfc-editor.org/rfc/rfc8701.html)) — random reserved values — to keep implementations tolerant. Post-quantum migration is a test of ossification: the protocol allows it, but deployed equipment may not.
 
-Section eleven point four develops networks and protocols with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section eleven point four, the BPA board expects networks claims to carry owners and dates.
-
-Section eleven point four treats tls size and the as testable only when evidence and ticket IDs are recorded.
-
 ### 11.5 Worked example
 
 BPA's terminal staff report that the shipping-line portal fails through the old inspection proxy after enabling a hybrid group. Packet traces show the proxy resetting connections whose ClientHello spans two segments. Options: update proxy firmware, bypass inspection for that destination, or temporarily disable the hybrid group only on that path while the vendor fixes it — keeping it everywhere else.
 
-Section eleven point five develops networks and protocols with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section eleven point five, the BPA board expects networks claims to carry owners and dates.
-
 ### 11.6 Common errors and limits
-Section eleven point six develops networks and protocols with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section eleven point six, the BPA board expects networks claims to carry owners and dates.
-
-Section eleven point six treats tls size and the as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point six, Brightwater Port Authority will not accept networks work without a written trail.
-
 
 - Assuming hybrid key exchange also migrates certificates.
 - Forgetting UDP protocols' size limits.
@@ -945,55 +641,23 @@ You will (1) locate cryptographic libraries and configuration in an operating sy
 
 On a Linux server, TLS usually comes from a shared library (OpenSSL, GnuTLS, NSS, BoringSSL in some applications), SSH from OpenSSH, VPNs from kernel IPsec plus a user-space IKE daemon. Applications may also bundle their own libraries — Java, Go and Rust programs often do. An inventory that checks only the system library misses statically linked or bundled cryptography.
 
-Section twelve point one develops operating systems with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twelve point one, the BPA board expects operating claims to carry owners and dates.
-
 ### 12.2 System-wide policies
 
 Some distributions provide system-wide cryptographic policies that set default algorithms for all libraries that honour them. Policies are a powerful agility lever: changing one profile can enable hybrid groups or disable weak algorithms across many services. Their limit is coverage — applications with bundled libraries ignore them.
-
-Section twelve point two develops operating systems with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twelve point two, the BPA board expects operating claims to carry owners and dates.
-
-Section twelve point two treats where cryptography lives system-wide as testable only when evidence and ticket IDs are recorded.
 
 ### 12.3 Secure boot and updates
 
 Firmware verifies the bootloader's signature, which verifies the kernel's, and so on. These signatures must remain verifiable for the device's lifetime, which may exceed a decade. That makes boot chains early candidates for hash-based signatures (LMS, XMSS per [SP 800-208](https://doi.org/10.6028/NIST.SP.800-208)), which CNSA 2.0 also prioritizes for software and firmware signing.
 
-Section twelve point three develops operating systems with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twelve point three, the BPA board expects operating claims to carry owners and dates.
-
 ### 12.4 Entropy and key storage
 
 Keys need good randomness from the OS (`getrandom`), especially at early boot and in virtual machines. Private keys belong in protected storage — HSMs, TPMs or OS keystores — never in world-readable files.
-
-Section twelve point four develops operating systems with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twelve point four, the BPA board expects operating claims to carry owners and dates.
-
-Section twelve point four treats where cryptography lives system-wide as testable only when evidence and ticket IDs are recorded.
 
 ### 12.5 Worked example
 
 BPA's inventory of a terminal server finds OpenSSL 3.x as the system library, a Java application with its own provider, a Go binary statically linked, and an IPsec daemon. Enabling hybrid TLS through the system policy affects only the first; the other two need application changes. The migration plan records one work item per cryptographic provider, not per server.
 
-Section twelve point five develops operating systems with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twelve point five, the BPA board expects operating claims to carry owners and dates.
-
 ### 12.6 Common errors and limits
-Section twelve point six develops operating systems with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twelve point six, the BPA board expects operating claims to carry owners and dates.
-
-Section twelve point six treats where cryptography lives system-wide as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point six, Brightwater Port Authority will not accept operating work without a written trail.
-
 
 - Assuming one policy change migrates the whole host.
 - Ignoring boot-chain signatures because they are "not network".
@@ -1024,55 +688,23 @@ You will (1) classify data by confidentiality lifetime; (2) distinguish encrypti
 
 The key input to quantum risk is how long data must stay secret. BPA's container manifests matter for weeks; customs declarations for 25 years; employee records for decades. Classify data by lifetime first; the migration order follows.
 
-Section thirteen point one develops data systems with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirteen point one, the BPA board expects data claims to carry owners and dates.
-
-Section thirteen point one treats confidentiality lifetime at rest as testable only when evidence and ticket IDs are recorded.
-
 ### 13.2 At rest, in transit, in backups
 
 Bulk data at rest is usually encrypted with symmetric algorithms (AES-GCM), which are not seriously threatened by quantum computers at 256-bit keys. The danger is in **how symmetric keys are protected**: if a data key is wrapped with RSA or transmitted over an ECDH-protected channel that an adversary recorded, the data inherits that vulnerability. Backups and archives copied to third parties extend exposure.
-
-Section thirteen point two develops data systems with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirteen point two, the BPA board expects data claims to carry owners and dates.
 
 ### 13.3 Envelope encryption
 
 Cloud key-management services encrypt data with a data key and wrap the data key with a master key. If the master key is symmetric and stays inside the service, quantum risk is low; if keys are exchanged between parties using RSA-OAEP or ECDH (as in many document-encryption formats), the wrap is the weak point. Post-quantum KEMs can replace those wraps — the CMS standard now has a [KEM-based mechanism](https://www.rfc-editor.org/rfc/rfc9629.html) (RFC 9629).
 
-Section thirteen point three develops data systems with a Brightwater Port Authority note the engineer can demo offline.
-
 ### 13.4 Database and replication links
 
 Database replication across sites often runs over TLS. Recorded replication streams of a 25-year customs database are a prime harvest target, making replication links early hybrid-TLS candidates.
-
-Section thirteen point four develops data systems with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirteen point four, the BPA board expects data claims to carry owners and dates.
-
-Section thirteen point four treats confidentiality lifetime at rest as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point four, Brightwater Port Authority will not accept data work without a written trail.
 
 ### 13.5 Worked example
 
 BPA's customs archive: AES-256-GCM at rest (acceptable), data keys wrapped by an on-premises KMS with an AES master key (acceptable), nightly replication to a disaster-recovery site over TLS 1.2 with ECDHE (vulnerable to harvest), and exports to the national customs agency as RSA-encrypted files (vulnerable). Priorities: replication link and export format.
 
-Section thirteen point five develops data systems with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirteen point five, the BPA board expects data claims to carry owners and dates.
-
 ### 13.6 Common errors and limits
-Section thirteen point six develops data systems with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirteen point six, the BPA board expects data claims to carry owners and dates.
-
-Section thirteen point six treats confidentiality lifetime at rest as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point six, Brightwater Port Authority will not accept data work without a written trail.
-
 
 - Replacing AES "because quantum" while leaving RSA key wraps.
 - Ignoring backup and export paths.
@@ -1103,61 +735,23 @@ You will (1) manage requirements, design, implementation and testing in a migrat
 
 A migration is a software project: requirements (which functions must become quantum-resistant, by when), design (hybrid or pure PQC, which libraries), implementation, testing, staged release and maintenance. Cryptographic changes are high-impact and low-visibility: if wrong, they fail silently or catastrophically.
 
-Section fourteen point one develops software engineering with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section fourteen point one, the BPA board expects software claims to carry owners and dates.
-
-Section fourteen point one treats lifecycle review sbom and as testable only when evidence and ticket IDs are recorded.
-
 ### 14.2 Review
 
 Every cryptographic change gets review by someone with cryptographic knowledge, plus tests for interoperability. Checklists ask: are algorithm identifiers from policy? Are lengths validated? Are comparisons constant-time? Is the library version pinned and supported?
-
-Section fourteen point two develops software engineering with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section fourteen point two, the BPA board expects software claims to carry owners and dates.
-
-Section fourteen point two treats lifecycle review sbom and as testable only when evidence and ticket IDs are recorded.
 
 ### 14.3 SBOM and CBOM
 
 An SBOM lists components and versions. A CBOM extends this to cryptographic assets: algorithms, parameter sets, key lengths, protocols, certificates and where keys live. Formats such as CycloneDX support CBOM fields. A CBOM is the basis for answering "where do we use RSA?" in minutes rather than months.
 
-Section fourteen point three develops software engineering with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section fourteen point three, the BPA board expects software claims to carry owners and dates.
-
 ### 14.4 Staged releases
 
 Use feature flags for algorithm choices, canary deployments with measured failure rates (Chapter 37) and rollback plans. Keep both old and new algorithms available during transition.
-
-Section fourteen point four develops software engineering with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section fourteen point four, the BPA board expects software claims to carry owners and dates.
-
-Section fourteen point four treats lifecycle review sbom and as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point four, Brightwater Port Authority will not accept software work without a written trail.
 
 ### 14.5 Worked example
 
 BPA's portal team adds hybrid TLS behind a flag, runs interoperability tests against the top 50 partner clients, deploys to 1% of traffic, monitors failures and promotes in steps. The CBOM is updated automatically from build metadata so the inventory stays current.
 
-Section fourteen point five develops software engineering with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section fourteen point five, the BPA board expects software claims to carry owners and dates.
-
-Section fourteen point five treats lifecycle review sbom and as testable only when evidence and ticket IDs are recorded.
-
 ### 14.6 Common errors and limits
-Section fourteen point six develops software engineering with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section fourteen point six, the BPA board expects software claims to carry owners and dates.
-
-Section fourteen point six treats lifecycle review sbom and as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point six, Brightwater Port Authority will not accept software work without a written trail.
-
 
 - Cryptographic changes merged without specialist review.
 - CBOMs built once by hand and never updated.
@@ -1192,53 +786,23 @@ You will (1) apply confidentiality, integrity and availability to cryptographic 
 
 Confidentiality is threatened by recorded key exchanges; integrity and authenticity by future signature forgery on long-lived documents and firmware; availability by migration itself — oversized messages, incompatible clients, expired certificates. A plan that improves confidentiality but causes outages has failed on availability.
 
-Section fifteen point one develops security fundamentals with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section fifteen point one, the BPA board expects security claims to carry owners and dates.
-
-Section fifteen point one treats cia in migration security as testable only when evidence and ticket IDs are recorded.
-
 ### 15.2 Security categories
 
 NIST defined five post-quantum security categories by comparison with the cost of breaking symmetric primitives: category 1 is at least as hard as key search on AES-128, category 3 as AES-192, category 5 as AES-256; categories 2 and 4 compare with SHA-256 and SHA-384 collisions. ML-KEM-512/768/1024 target categories 1/3/5 ([FIPS 203](https://doi.org/10.6028/NIST.FIPS.203)). CNSA 2.0 requires the category-5 sets (ML-KEM-1024, ML-DSA-87) for national-security systems.
-
-Section fifteen point two develops security fundamentals with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section fifteen point two, the BPA board expects security claims to carry owners and dates.
 
 ### 15.3 Attack models
 
 **Passive recording now, decryption later** threatens confidentiality of anything protected by vulnerable key exchange today. **Active attacks with a quantum computer** — impersonating a server by forging signatures — require the CRQC to exist at the time of attack, so signature migration is less urgent for short-lived authentication but urgent for long-lived roots of trust. **Forgery of archived signatures** threatens documents whose signatures must remain meaningful for years.
 
-Section fifteen point three develops security fundamentals with a Brightwater Port Authority note the engineer can demo offline.
-
 ### 15.4 Defence in depth
 
 Hybrid key exchange is defence in depth across assumptions: an attacker must break both the traditional and the post-quantum component ([RFC 9794](https://www.rfc-editor.org/rfc/rfc9794.html)). Agility is defence in depth across time: if one algorithm weakens, replace it quickly.
-
-Section fifteen point four develops security fundamentals with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section fifteen point four, the BPA board expects security claims to carry owners and dates.
-
-Section fifteen point four treats cia in migration security as testable only when evidence and ticket IDs are recorded.
 
 ### 15.5 Worked example
 
 BPA's bills of lading are signed with ECDSA and must be verifiable for 12 years. A CRQC within 12 years would allow forging a bill dated in the past unless the document carries a post-quantum signature or a trusted timestamp chain that is itself migrated. Priority: high — integrity of legal documents over long periods.
 
-Section fifteen point five develops security fundamentals with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section fifteen point five, the BPA board expects security claims to carry owners and dates.
-
 ### 15.6 Common errors and limits
-Section fifteen point six develops security fundamentals with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section fifteen point six, the BPA board expects security claims to carry owners and dates.
-
-Section fifteen point six treats cia in migration security as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point six, Brightwater Port Authority will not accept security work without a written trail.
-
 
 - Treating PQC as confidentiality-only.
 - Choosing category 5 everywhere without considering size and performance.
@@ -1269,57 +833,23 @@ You will (1) apply a systems lifecycle to a multi-year migration; (2) manage int
 
 A port-wide migration spans concept (why and what), requirements, architecture, implementation, integration, verification, validation, operation and retirement. Lifecycle standards such as ISO/IEC/IEEE 15288 describe these processes. Cryptographic migration differs from most system changes because it touches every interface at once and because partners outside the organization must change in step.
 
-Section sixteen point one develops systems engineering with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section sixteen point one, the BPA board expects systems claims to carry owners and dates.
-
 ### 16.2 Interfaces and dependencies
 
 BPA depends on shipping lines (VPN peers), the customs agency (export formats), vendors (appliances, HSMs, crane firmware) and browser makers (TLS clients). An interface control document lists, per interface, the current algorithms, the target, who must change and by when. Dependencies explain schedules better than effort estimates.
-
-Section sixteen point two develops systems engineering with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section sixteen point two, the BPA board expects systems claims to carry owners and dates.
-
-Section sixteen point two treats lifecycle view interfaces and as testable only when evidence and ticket IDs are recorded.
 
 ### 16.3 Trade studies
 
 A trade study compares options against weighted criteria. For BPA's VPN: (a) hybrid IKEv2 with ML-KEM now, (b) wait for vendor native support, (c) add a pre-shared-key layer as an interim mitigation. Criteria: security gain, availability risk, cost, partner readiness, standards conformance. Weights come from requirements, not preference.
 
-Section sixteen point three develops systems engineering with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section sixteen point three, the BPA board expects systems claims to carry owners and dates.
-
 ### 16.4 V&V planning
 
 Verification asks "did we build it right?" (requirements met); validation asks "did we build the right thing?" (stakeholder needs met). Plan both before implementation: for example, verify that the VPN negotiates ML-KEM-768 or stronger in every tunnel, and validate that shipping-line operations continue without delay.
-
-Section sixteen point four develops systems engineering with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section sixteen point four, the BPA board expects systems claims to carry owners and dates.
-
-Section sixteen point four treats lifecycle view interfaces and as testable only when evidence and ticket IDs are recorded.
 
 ### 16.5 Worked example
 
 The trade study scores option (a) highest on security and standards, (b) highest on availability, (c) as a cheap interim. Decision: (c) immediately for the two highest-value partners, (a) in a pilot with one partner, (b) for others when vendors deliver — documented with review dates.
 
-Section sixteen point five develops systems engineering with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section sixteen point five, the BPA board expects systems claims to carry owners and dates.
-
-Section sixteen point five treats lifecycle view interfaces and as testable only when evidence and ticket IDs are recorded.
-
 ### 16.6 Common errors and limits
-Section sixteen point six develops systems engineering with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section sixteen point six, the BPA board expects systems claims to carry owners and dates.
-
-Section sixteen point six treats lifecycle view interfaces and as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point six, Brightwater Port Authority will not accept systems work without a written trail.
-
 
 - Planning migration as an internal project when partners must change too.
 - Trade studies with weights chosen after scoring.
@@ -1354,59 +884,23 @@ You will (1) model a migration programme as a feedback loop; (2) choose leading 
 
 A feedback loop measures output, compares it with a set point and adjusts input. In migration, the "output" is protected share of traffic and assets; the set point is the target trajectory; the input is engineering effort and rollout pace. Without measurement there is no control — only hope.
 
-Section seventeen point one develops control and feedback basics with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section seventeen point one, the BPA board expects control claims to carry owners and dates.
-
 ### 17.2 Indicators
 
 **Lagging** indicators show results: percentage of key exchanges negotiated with hybrid groups, share of certificates with post-quantum signatures, unknown-asset share. **Leading** indicators predict results: vendors with committed PQC roadmaps, CBOM coverage, test-environment readiness. A dashboard needs both.
-
-Section seventeen point two develops control and feedback basics with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section seventeen point two, the BPA board expects control claims to carry owners and dates.
-
-Section seventeen point two treats programmes as loops indicators as testable only when evidence and ticket IDs are recorded.
 
 ### 17.3 Stability
 
 Over-correction causes oscillation: enabling hybrid groups everywhere after a good week, rolling back everywhere after a bad day. Control theory suggests damping — smaller steps, delays for measurement and hysteresis (different thresholds for promoting and rolling back).
 
-Section seventeen point three develops control and feedback basics with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section seventeen point three, the BPA board expects control claims to carry owners and dates.
-
-Section seventeen point three treats programmes as loops indicators as testable only when evidence and ticket IDs are recorded.
-
 ### 17.4 Rollout gates as controllers
 
 A canary gate is a simple controller: increase exposure when the failure rate's upper confidence bound is below budget, hold otherwise, roll back only when a higher threshold is crossed. Chapter 37 implements one.
-
-Section seventeen point four develops control and feedback basics with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section seventeen point four, the BPA board expects control claims to carry owners and dates.
-
-Section seventeen point four treats programmes as loops indicators as testable only when evidence and ticket IDs are recorded.
 
 ### 17.5 Worked example
 
 BPA's dashboard shows hybrid negotiation at 62% of portal traffic (lagging) and CBOM coverage at 71% of assets (leading). Unknown assets are 18%. The control action: raise inventory effort on unknown assets rather than push portal traffic higher, because the larger risk sits where nothing is measured.
 
-Section seventeen point five develops control and feedback basics with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section seventeen point five, the BPA board expects control claims to carry owners and dates.
-
-Section seventeen point five treats programmes as loops indicators as testable only when evidence and ticket IDs are recorded.
-
 ### 17.6 Common errors and limits
-Section seventeen point six develops control and feedback basics with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section seventeen point six, the BPA board expects control claims to carry owners and dates.
-
-Section seventeen point six treats programmes as loops indicators as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point six, Brightwater Port Authority will not accept control work without a written trail.
-
 
 - Dashboards with only lagging indicators.
 - Rolling back globally for local faults (over-correction).
@@ -1441,59 +935,23 @@ You will (1) identify trust boundaries and where cryptography enforces them; (2)
 
 Draw every boundary where data crosses between trust domains: internet to portal, BPA to shipping line, terminal network to crane network, BPA to customs agency. At each boundary, list the cryptographic functions: key establishment, authentication, integrity, confidentiality at rest. That list is the architecture's skeleton.
 
-Section eighteen point one develops security architecture with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section eighteen point one, the BPA board expects security claims to carry owners and dates.
-
-Section eighteen point one treats trust boundaries cryptographic services as testable only when evidence and ticket IDs are recorded.
-
 ### 18.2 Cryptographic services
 
 Centralize where possible: a TLS termination layer, a PKI with an HSM-backed CA, a key-management service, a signing service for firmware and documents. Centralization turns migration of one service into migration for many consumers. Decentralized cryptography — each application with its own library and keys — multiplies the work.
-
-Section eighteen point two develops security architecture with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section eighteen point two, the BPA board expects security claims to carry owners and dates.
-
-Section eighteen point two treats trust boundaries cryptographic services as testable only when evidence and ticket IDs are recorded.
 
 ### 18.3 Crypto-agility as architecture
 
 NIST's crypto-agility white paper ([CSWP 39](https://doi.org/10.6028/NIST.CSWP.39-upd1)) describes agility as the capability to replace algorithms in protocols, applications, software, hardware and infrastructure while preserving security and operations. Architecturally this means: algorithm choices in policy, not code; protocols that negotiate algorithms securely; certificate and key lifecycles short enough to rotate; and inventory that shows where everything is.
 
-Section eighteen point three develops security architecture with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section eighteen point three, the BPA board expects security claims to carry owners and dates.
-
 ### 18.4 Hybrid placement
 
 Decide where hybrids apply: key exchange at every external TLS and VPN boundary first; signatures for long-lived roots and firmware next; internal service-to-service traffic by data lifetime. Record the decision and its review date.
-
-Section eighteen point four develops security architecture with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section eighteen point four, the BPA board expects security claims to carry owners and dates.
-
-Section eighteen point four treats trust boundaries cryptographic services as testable only when evidence and ticket IDs are recorded.
 
 ### 18.5 Worked example
 
 BPA's target architecture: hybrid TLS at the edge proxy and partner VPNs; a new PQC-capable HSM for the CA; LMS-signed crane firmware via a central signing service with state management; ML-DSA for bills of lading with timestamping; policy-driven algorithm selection in internal services.
 
-Section eighteen point five develops security architecture with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section eighteen point five, the BPA board expects security claims to carry owners and dates.
-
-Section eighteen point five treats trust boundaries cryptographic services as testable only when evidence and ticket IDs are recorded.
-
 ### 18.6 Common errors and limits
-Section eighteen point six develops security architecture with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section eighteen point six, the BPA board expects security claims to carry owners and dates.
-
-Section eighteen point six treats trust boundaries cryptographic services as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point six, Brightwater Port Authority will not accept security work without a written trail.
-
 
 - Architecture diagrams with no cryptographic functions marked.
 - Each team choosing algorithms independently.
@@ -1528,10 +986,6 @@ You will (1) explain digital signatures, certificates and PKI hierarchies; (2) u
 
 A signature binds a message to a key; a certificate binds a key to an identity, signed by a certificate authority (CA); a chain leads to a root trusted by relying parties. Roots often live 20+ years, so a root key that a future CRQC could forge undermines every certificate beneath it.
 
-Section nineteen point one develops identity and cryptography with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section nineteen point one, the BPA board expects identity claims to carry owners and dates.
-
 ### 19.2 Hash-based signatures from first principles
 
 A Lamport one-time signature publishes hashes of two random secrets per message-digest bit and reveals one secret per bit when signing. Security needs only a one-way hash. Using a key twice reveals both secrets at many positions, enabling forgery. Merkle trees combine many one-time keys under one public key; LMS and XMSS ([RFC 8554](https://www.rfc-editor.org/rfc/rfc8554.html), [RFC 8391](https://www.rfc-editor.org/rfc/rfc8391.html), [SP 800-208](https://doi.org/10.6028/NIST.SP.800-208)) do this statefully; SLH-DSA ([FIPS 205](https://doi.org/10.6028/NIST.FIPS.205)) avoids state by using a hypertree with few-time signatures at the leaves, at the cost of larger signatures.
@@ -1562,16 +1016,6 @@ print("signature size:", 256 * 32, "bytes; public key:", 2 * 256 * 32, "bytes")
 
 Expected output:
 
-Section nineteen point three develops identity and cryptography with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section nineteen point three, the BPA board expects identity claims to carry owners and dates.
-
-Section nineteen point three treats signatures and pki hash-based as testable only when evidence and ticket IDs are recorded.
-
-For section nineteen point three, Brightwater Port Authority will not accept identity work without a written trail.
-
-Section nineteen point three fails closed if identity evidence is missing rather than guessing.
-
 ```text
 valid signature verifies: True
 tampered message rejected: True
@@ -1580,10 +1024,6 @@ signature size: 8192 bytes; public key: 16384 bytes
 ```
 
 ### 19.4 The standardized options
-Section nineteen point four develops identity and cryptography with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section nineteen point four, the BPA board expects identity claims to carry owners and dates.
-
 
 | Scheme | Basis | Public key / signature (bytes) | Notes |
 |---|---|---|---|
@@ -1596,17 +1036,7 @@ Under section nineteen point four, the BPA board expects identity claims to carr
 
 BPA's PKI plan: a new ML-DSA-87 root (or a composite traditional+PQC root, depending on relying-party support) created now and distributed; intermediates migrated over the next certificate cycle; LMS for firmware signing with HSM-protected state; SLH-DSA considered for a rarely used offline root because of its conservative assumption.
 
-Section nineteen point five develops identity and cryptography with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section nineteen point five, the BPA board expects identity claims to carry owners and dates.
-
 ### 19.6 Common errors and limits
-Section nineteen point six develops identity and cryptography with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section nineteen point six, the BPA board expects identity claims to carry owners and dates.
-
-Section nineteen point six treats signatures and pki hash-based as testable only when evidence and ticket IDs are recorded.
-
 
 - Reusing one-time or stateful keys (state rollback after a backup restore is a classic failure).
 - Migrating leaf certificates while leaving a vulnerable long-lived root.
@@ -1637,15 +1067,9 @@ You will (1) explain the quantum threat to deployed cryptography precisely; (2) 
 
 Shor's algorithm breaks RSA, finite-field Diffie–Hellman, DSA, ECDSA, EdDSA, ECDH and X25519 — every widely deployed public-key algorithm. Grover's algorithm weakens symmetric ciphers and hashes only modestly; AES-256 and SHA-384/SHA-512 remain conservative choices. So migration is about *public-key* cryptography: key establishment and digital signatures.
 
-Section twenty point one develops quantum and post-quantum security engineering with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty point one, the BPA board expects quantum claims to carry owners and dates.
-
 ### 20.2 Prioritizing with Mosca
 
 For each system, estimate *x* (how long its data or signatures must remain secure), *y* (how long migration will take) and treat *z* (time until a CRQC) as a range. If *x* + *y* > *z* for plausible *z*, the system is already late ([Mosca 2018](https://doi.org/10.1109/MSP.2018.3761723)). BPA's customs data (*x* = 25) is late under any plausible range; the container-tracking feed (*x* ≈ 0.1) can follow the normal technology cycle.
-
-Section twenty point two develops quantum and post-quantum security engineering with a Brightwater Port Authority note the engineer can demo offline.
 
 ### 20.3 Standards and policy, with status
 
@@ -1655,29 +1079,11 @@ NIST published ML-KEM ([FIPS 203](https://doi.org/10.6028/NIST.FIPS.203)), ML-DS
 
 The NCCoE's [Migration to Post-Quantum Cryptography project](https://www.nccoe.nist.gov/crypto-agility-considerations-migrating-post-quantum-cryptographic-algorithms) runs two workstreams with industry collaborators — cryptographic discovery (inventory tools that support risk-based prioritization) and interoperability testing of the standardized algorithms in common protocols. Engineering work packages for BPA: inventory (CBOM), requirements, architecture, vendor engagement, pilots, rollout, verification and agility.
 
-Section twenty point four develops quantum and post-quantum security engineering with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty point four, the BPA board expects quantum claims to carry owners and dates.
-
 ### 20.5 Worked example
 
 BPA's initial priority list: (1) customs replication and exports — confidentiality, *x* = 25; (2) partner VPNs — recorded traffic includes commercial terms, *x* = 10; (3) PKI root and firmware signing — long-lived trust; (4) public portal — hybrid TLS available cheaply; (5) internal short-lived telemetry — later.
 
-Section twenty point five develops quantum and post-quantum security engineering with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty point five, the BPA board expects quantum claims to carry owners and dates.
-
-Section twenty point five treats what breaks and what as testable only when evidence and ticket IDs are recorded.
-
 ### 20.6 Common errors and limits
-Section twenty point six develops quantum and post-quantum security engineering with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty point six, the BPA board expects quantum claims to carry owners and dates.
-
-Section twenty point six treats what breaks and what as testable only when evidence and ticket IDs are recorded.
-
-For section twenty point six, Brightwater Port Authority will not accept quantum work without a written trail.
-
 
 - Migrating symmetric cryptography first.
 - Treating policy dates as quantum forecasts.
@@ -1708,23 +1114,11 @@ You will (1) write verifiable PQC requirements; (2) derive requirements from dat
 
 A requirement is necessary, unambiguous, verifiable and traceable. "The system shall be quantum-safe" fails all four. Better: "REQ-KE-01: All TLS connections at the external edge shall negotiate X25519MLKEM768 or a stronger PQ/T hybrid group when the client offers one. Verification: passive telemetry shows ≥ 99% of offering clients negotiate it."
 
-Section twenty-one point one develops quantum and post-quantum security requirements with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-one point one, the BPA board expects quantum claims to carry owners and dates.
-
 ### 21.2 Sources
 
 Derive requirements from: data confidentiality lifetimes (Chapter 13), signature validity periods (bills of lading: 12 years), policy (NIST transition plans, sector regulators, CNSA 2.0 for national-security partners), partner capabilities and operational constraints (handshake size budgets, device memory).
 
-Section twenty-one point two develops quantum and post-quantum security requirements with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-one point two, the BPA board expects quantum claims to carry owners and dates.
-
-Section twenty-one point two treats good requirements sources requirement as testable only when evidence and ticket IDs are recorded.
-
 ### 21.3 Requirement categories
-Section twenty-one point three develops quantum and post-quantum security requirements with a Brightwater Port Authority note the engineer can demo offline.
-
 
 - **Key establishment**: which protocols use hybrid or PQC KEMs, which parameter sets.
 - **Signatures**: which artefacts need post-quantum signatures, by when.
@@ -1736,29 +1130,11 @@ Section twenty-one point three develops quantum and post-quantum security requir
 
 Each requirement links to a source and to a verification method (test, analysis, inspection, demonstration). A traceability matrix shows coverage and helps reviewers find orphaned requirements.
 
-Section twenty-one point four develops quantum and post-quantum security requirements with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-one point four, the BPA board expects quantum claims to carry owners and dates.
-
-Section twenty-one point four treats good requirements sources requirement as testable only when evidence and ticket IDs are recorded.
-
 ### 21.5 Worked example
 
 BPA's customs export requirement: "REQ-EXP-03: Files exported to the customs agency shall be encrypted to the agency's ML-KEM-1024 key using CMS KEMRecipientInfo ([RFC 9629](https://www.rfc-editor.org/rfc/rfc9629.html)), with an RSA-OAEP recipient retained in parallel until the agency confirms support (target date recorded). Verification: inspection of exported file structure; interoperability test with agency test system."
 
-Section twenty-one point five develops quantum and post-quantum security requirements with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-one point five, the BPA board expects quantum claims to carry owners and dates.
-
 ### 21.6 Common errors and limits
-Section twenty-one point six develops quantum and post-quantum security requirements with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-one point six, the BPA board expects quantum claims to carry owners and dates.
-
-Section twenty-one point six treats good requirements sources requirement as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-one point six, Brightwater Port Authority will not accept quantum work without a written trail.
-
 
 - Requirements that name products instead of properties.
 - No availability or agility requirements.
@@ -1789,59 +1165,23 @@ You will (1) model systems as assets, flows and cryptographic functions; (2) bui
 
 Model each asset (service, device, data store) and each flow between assets. Annotate flows with protocol, key-establishment algorithm, authentication algorithm and data classes carried. Annotate stores with encryption, key-wrapping method and retention. The model becomes the backbone of inventory, threat analysis and planning.
 
-Section twenty-two point one develops quantum and post-quantum security system with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-two point one, the BPA board expects quantum claims to carry owners and dates.
-
-Section twenty-two point one treats asset and flow models as testable only when evidence and ticket IDs are recorded.
-
 ### 22.2 CBOM data model
 
 A minimal CBOM entity set: *Asset* (id, owner, type, location); *CryptoUse* (asset, function: key-exchange/signature/encryption/hash, algorithm, parameter set, protocol, library, source of evidence, last observed); *Key/Certificate* (algorithm, size, issuer, expiry, storage); *DataClass* (lifetime). The *source of evidence* field — code, configuration, passive observation, vendor declaration — matters because sources differ in reliability.
-
-Section twenty-two point two develops quantum and post-quantum security system with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-two point two, the BPA board expects quantum claims to carry owners and dates.
 
 ### 22.3 Exposure computation
 
 Exposure of a flow = (data lifetime > time until assumed CRQC) × (vulnerable key exchange) × (recordable by adversary). A query over the model lists exposed flows; joining with traffic volume ranks them. Uncertain fields are *unknown*, never assumed safe.
 
-Section twenty-two point three develops quantum and post-quantum security system with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-two point three, the BPA board expects quantum claims to carry owners and dates.
-
-Section twenty-two point three treats asset and flow models as testable only when evidence and ticket IDs are recorded.
-
 ### 22.4 Worked example
 
 BPA's model has 412 assets and 1,930 flows. Querying for flows carrying lifetime ≥ 10-year data over ECDHE-only key exchange returns 37 flows, 29 of which pass through four gateways — making the gateways the highest-leverage migration targets.
-
-Section twenty-two point four develops quantum and post-quantum security system with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-two point four, the BPA board expects quantum claims to carry owners and dates.
-
-Section twenty-two point four treats asset and flow models as testable only when evidence and ticket IDs are recorded.
 
 ### 22.5 Practical activity
 
 Sketch the CBOM entities in a table or as Python dataclasses, then populate ten records from the BPA description and write a query for exposed flows. Chapter 29's Lab I extends this.
 
-Section twenty-two point five develops quantum and post-quantum security system with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-two point five, the BPA board expects quantum claims to carry owners and dates.
-
-Section twenty-two point five treats asset and flow models as testable only when evidence and ticket IDs are recorded.
-
 ### 22.6 Common errors and limits
-Section twenty-two point six develops quantum and post-quantum security system with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-two point six, the BPA board expects quantum claims to carry owners and dates.
-
-Section twenty-two point six treats asset and flow models as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-two point six, Brightwater Port Authority will not accept quantum work without a written trail.
-
 
 - Models that record algorithms but not evidence source.
 - Treating unknown as safe.
@@ -1884,37 +1224,15 @@ You will (1) model quantum-era threats with STRIDE-style analysis; (2) analyse f
 
 Failure-mode and effects analysis (FMEA) applies: oversized handshakes dropped by middleboxes; clients that cannot parse new certificates; HSMs that cannot hold new keys; stateful signature keys reused after backup restore; interoperability failures between draft and final implementations; expired transition certificates. Each has a cause, effect, detection method and mitigation.
 
-Section twenty-three point two develops quantum and post-quantum security threat with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-three point two, the BPA board expects quantum claims to carry owners and dates.
-
 ### 23.3 Risk scoring
 
 Score likelihood and impact; for harvest threats, impact scales with data lifetime and volume. Avoid false precision: three or five levels with clear definitions are enough.
-
-Section twenty-three point three develops quantum and post-quantum security threat with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-three point three, the BPA board expects quantum claims to carry owners and dates.
-
-Section twenty-three point three treats quantum-era threats migration failure as testable only when evidence and ticket IDs are recorded.
 
 ### 23.4 Worked example
 
 FMEA for BPA's crane firmware signing with LMS: failure "state counter reset after HSM restore" → effect "one-time key reuse enabling forgery" → detection "monotonic counter audit against log" → mitigation "HSM with state reservation, restore procedures that forbid rollback, separate key per signing site". Severity high, likelihood medium → priority action.
 
-Section twenty-three point four develops quantum and post-quantum security threat with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-three point four, the BPA board expects quantum claims to carry owners and dates.
-
 ### 23.5 Common errors and limits
-Section twenty-three point five develops quantum and post-quantum security threat with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-three point five, the BPA board expects quantum claims to carry owners and dates.
-
-Section twenty-three point five treats quantum-era threats migration failure as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-three point five, Brightwater Port Authority will not accept quantum work without a written trail.
-
 
 - Analysing only cryptanalytic threats, not migration failures.
 - Assuming hybrids remove the need to analyse downgrade.
@@ -1949,17 +1267,9 @@ You will (1) explain learning with errors (LWE) and why noise makes linear algeb
 
 Given a random matrix *A* and *b* = *A*·*s* + *e* mod *q*, where *s* is secret and *e* is a vector of small random errors, find *s*. Without *e* this is Gaussian elimination. With *e*, no efficient classical or quantum algorithm is known for suitable parameters; [Regev (2009)](https://doi.org/10.1145/1568318.1568324) related LWE to worst-case lattice problems. Best attacks use lattice reduction, whose cost grows exponentially in dimension.
 
-Section twenty-four point one develops quantum and post-quantum security methods with a Brightwater Port Authority note the engineer can demo offline.
-
 ### 24.2 Encrypting one bit
 
 To encrypt a bit, sum a random subset of rows of (*A*, *b*): *u* = Σ*r*ᵢ*A*ᵢ, *v* = Σ*r*ᵢ*b*ᵢ + bit·⌊*q*/2⌋. The key holder computes *v* − ⟨*u*, *s*⟩ = bit·⌊*q*/2⌋ + small noise and rounds. Decryption works while the accumulated noise stays below *q*/4.
-
-Section twenty-four point two develops quantum and post-quantum security methods with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-four point two, the BPA board expects quantum claims to carry owners and dates.
-
-Section twenty-four point two treats learning with errors encrypting as testable only when evidence and ticket IDs are recorded.
 
 ### 24.3 Practical activity — Lab W (toy, insecure)
 
@@ -1986,14 +1296,6 @@ print(f"toy LWE: {ok}/2000 bits decrypted correctly (noise stays below q/4)")
 
 Expected output:
 
-Section twenty-four point three develops quantum and post-quantum security methods with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-four point three, the BPA board expects quantum claims to carry owners and dates.
-
-Section twenty-four point three treats learning with errors encrypting as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point three, Brightwater Port Authority will not accept quantum work without a written trail.
-
 ```text
 toy LWE: 2000/2000 bits decrypted correctly (noise stays below q/4)
 ```
@@ -2004,23 +1306,11 @@ These parameters are far too small for security and leak through many routes; th
 
 ML-KEM replaces integers with polynomials in Z₃₃₂₉[*x*]/(*x*²⁵⁶+1) and uses module structure (*k* = 2, 3 or 4 polynomial vectors) for compact keys, compresses ciphertexts, samples noise from a centred binomial distribution and derives randomness with SHAKE. The underlying public-key encryption is only secure against passive attackers; ML-KEM applies a Fujisaki–Okamoto-style transform — re-encrypting during decapsulation and returning a pseudo-random "implicit rejection" key on mismatch — to resist chosen-ciphertext attacks ([FIPS 203](https://doi.org/10.6028/NIST.FIPS.203)).
 
-Section twenty-four point four develops quantum and post-quantum security methods with a Brightwater Port Authority note the engineer can demo offline.
-
 ### 24.5 Worked example
 
 A BPA engineer asks why ML-KEM decapsulation re-encrypts. Answer: to detect manipulated ciphertexts. Without that check, an attacker could submit crafted ciphertexts and learn about the secret key from whether decryption succeeds. Implementations must perform the comparison in constant time, or the timing of the check leaks the same information.
 
-Section twenty-four point five develops quantum and post-quantum security methods with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-four point five, the BPA board expects quantum claims to carry owners and dates.
-
 ### 24.6 Common errors and limits
-Section twenty-four point six develops quantum and post-quantum security methods with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-four point six, the BPA board expects quantum claims to carry owners and dates.
-
-Section twenty-four point six treats learning with errors encrypting as testable only when evidence and ticket IDs are recorded.
-
 
 - Thinking LWE security comes from the matrix rather than the noise.
 - Using the passive-secure encryption without the FO transform.
@@ -2051,19 +1341,9 @@ You will (1) run a structured design studio on a real-shaped problem; (2) produc
 
 Design quantum-resistant key establishment for BPA's public portal and partner API edge: 2 million connections per day, mixed client population (browsers, partner software, old handheld scanners), an inspection proxy on one path and a CDN in front of the portal. Constraints: no availability regression beyond the requirement in Chapter 21, budget for one appliance upgrade, six-month timeline.
 
-Section twenty-five point one develops design studio with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-five point one, the BPA board expects design claims to carry owners and dates.
-
 ### 25.2 Studio method
 
 Teams produce: context diagram; requirements subset; two alternatives; trade study; chosen design with configuration sketch; test plan; risks. Each team presents for ten minutes and receives critique from a panel playing operations, security, partners and finance.
-
-Section twenty-five point two develops design studio with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-five point two, the BPA board expects design claims to carry owners and dates.
-
-Section twenty-five point two treats brief studio method reference as testable only when evidence and ticket IDs are recorded.
 
 ### 25.3 Reference solution outline
 
@@ -2073,19 +1353,7 @@ Terminate TLS at the CDN and edge proxy with X25519MLKEM768 offered first and X2
 
 Operations asks how fallback is monitored; security asks whether fallback could be forced (in TLS 1.3, only by breaking authentication or exploiting application-level retry logic, which must be checked); partners ask about their clients' library versions; finance asks about appliance costs. Good teams answer with evidence or add work items.
 
-Section twenty-five point four develops design studio with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-five point four, the BPA board expects design claims to carry owners and dates.
-
 ### 25.5 Common errors and limits
-Section twenty-five point five develops design studio with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-five point five, the BPA board expects design claims to carry owners and dates.
-
-Section twenty-five point five treats brief studio method reference as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point five, Brightwater Port Authority will not accept design work without a written trail.
-
 
 - Designs that ignore the old client population.
 - No measurement plan for negotiated groups.
@@ -2120,27 +1388,15 @@ You will (1) compare pure PQC, PQ/T hybrid and interim mitigations; (2) evaluate
 
 **Pure PQC** uses only post-quantum algorithms: simpler, smaller than hybrid, but stakes everything on newer assumptions. **PQ/T hybrid** combines both ([RFC 9794](https://www.rfc-editor.org/rfc/rfc9794.html)): secure if either holds, at extra cost in bytes and complexity. During transition, many protocols and guidance documents favour hybrids for key exchange; some government guidance, such as CNSA 2.0, accepts pure PQC with the category-5 parameter sets. The choice depends on the risk appetite for cryptanalytic surprise versus complexity.
 
-Section twenty-six point one develops quantum and post-quantum security architecture with a Brightwater Port Authority note the engineer can demo offline.
-
 ### 26.2 Certificates
 
 Options for post-quantum authentication: (a) **pure PQC certificates** (ML-DSA keys and signatures); (b) **composite certificates** in which one certificate carries a traditional and a post-quantum key and both signatures must verify; (c) **parallel chains** — two certificates, one per algorithm, with negotiation choosing; (d) **delayed migration** with short-lived classical certificates, acceptable where active quantum attacks are not yet feasible. Each trades compatibility, size and complexity.
-
-Section twenty-six point two develops quantum and post-quantum security architecture with a Brightwater Port Authority note the engineer can demo offline.
 
 ### 26.3 Interim mitigations
 
 Where PQC is not yet available — old VPN appliances, for example — mixing a pre-shared symmetric key into key derivation can protect recorded traffic, since PSKs are not vulnerable to Shor. [RFC 8784](https://www.rfc-editor.org/rfc/rfc8784.html) defines such a mechanism for IKEv2. PSKs bring key-distribution and rotation burdens, so they are a bridge, not a destination.
 
-Section twenty-six point three develops quantum and post-quantum security architecture with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-six point three, the BPA board expects quantum claims to carry owners and dates.
-
 ### 26.4 Decision table
-Section twenty-six point four develops quantum and post-quantum security architecture with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-six point four, the BPA board expects quantum claims to carry owners and dates.
-
 
 | Context | Key exchange | Authentication |
 |---|---|---|
@@ -2154,21 +1410,7 @@ Under section twenty-six point four, the BPA board expects quantum claims to car
 
 BPA debates composite certificates for its internal PKI. Pros: one chain, both algorithms verified. Cons: limited library support, larger certificates, complex policy. Decision: parallel chains internally where clients can be updated, delay public certificate migration until browser ecosystem support exists; review annually.
 
-Section twenty-six point five develops quantum and post-quantum security architecture with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-six point five, the BPA board expects quantum claims to carry owners and dates.
-
-Section twenty-six point five treats pure versus hybrid certificates as testable only when evidence and ticket IDs are recorded.
-
 ### 26.6 Common errors and limits
-Section twenty-six point six develops quantum and post-quantum security architecture with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-six point six, the BPA board expects quantum claims to carry owners and dates.
-
-Section twenty-six point six treats pure versus hybrid certificates as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-six point six, Brightwater Port Authority will not accept quantum work without a written trail.
-
 
 - One architecture for all contexts.
 - PSKs without rotation plans.
@@ -2217,14 +1459,6 @@ print("context changed       ", combine(pq, trad, b"other-transcript"))
 
 Expected output:
 
-Section twenty-seven point two develops quantum and post-quantum security control with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-seven point two, the BPA board expects quantum claims to carry owners and dates.
-
-Section twenty-seven point two treats combiner controls practical activity as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point two, Brightwater Port Authority will not accept quantum work without a written trail.
-
 ```text
 baseline               d48e982e8c06ca60
 PQ secret changed      d4c36ea2d90b2e9c
@@ -2238,49 +1472,19 @@ Changing either secret or the context changes the output: the derived key depend
 
 Algorithm negotiation must be authenticated. TLS 1.3 signs the transcript, so an attacker who strips hybrid groups is detected unless they can forge the server's signature. Application logic that retries without hybrid groups after any failure re-opens downgrade; controls: log and alert on fallback, and disable fallback where all peers support hybrids.
 
-Section twenty-seven point three develops quantum and post-quantum security control with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-seven point three, the BPA board expects quantum claims to carry owners and dates.
-
 ### 27.4 Key-management controls
 
 New key types need lifecycle controls: generation in approved modules, storage, rotation, backup and destruction. ML-KEM decapsulation keys can be stored as a 64-byte seed per FIPS 203; stateful hash-based signature keys require state protection against rollback; ML-DSA keys need HSM support.
-
-Section twenty-seven point four develops quantum and post-quantum security control with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-seven point four, the BPA board expects quantum claims to carry owners and dates.
-
-Section twenty-seven point four treats combiner controls practical activity as testable only when evidence and ticket IDs are recorded.
 
 ### 27.5 Policy controls
 
 An allow-list of algorithms and parameter sets per context — e.g. "edge TLS: X25519MLKEM768, SecP256r1MLKEM768; fallback X25519 until 2027-12-31" — implemented in configuration and verified by telemetry.
 
-Section twenty-seven point five develops quantum and post-quantum security control with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-seven point five, the BPA board expects quantum claims to carry owners and dates.
-
-Section twenty-seven point five treats combiner controls practical activity as testable only when evidence and ticket IDs are recorded.
-
 ### 27.6 Worked example
 
 A BPA team proposes XOR-ing the two shared secrets to save a KDF call. Review rejects it: XOR offers no context binding and is fragile in some security proofs; use the protocol's standard combiner or SP 800-56C derivation with both secrets and context.
 
-Section twenty-seven point six develops quantum and post-quantum security control with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-seven point six, the BPA board expects quantum claims to carry owners and dates.
-
-Section twenty-seven point six treats combiner controls practical activity as testable only when evidence and ticket IDs are recorded.
-
 ### 27.7 Common errors and limits
-Section twenty-seven point seven develops quantum and post-quantum security control with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-seven point seven, the BPA board expects quantum claims to carry owners and dates.
-
-Section twenty-seven point seven treats combiner controls practical activity as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point seven, Brightwater Port Authority will not accept quantum work without a written trail.
-
 
 - Ad-hoc combiners (XOR, truncation).
 - Silent fallback without logging.
@@ -2311,55 +1515,23 @@ You will (1) select vetted libraries and validated modules; (2) integrate ML-KEM
 
 Use maintained, reviewed implementations with constant-time code, test vectors and, where required, validation under NIST's Cryptographic Module Validation Program (CMVP). Prefer libraries that implement the final FIPS versions, not draft Kyber/Dilithium. Record the library, version and algorithm identifiers in the CBOM.
 
-Section twenty-eight point one develops quantum and post-quantum security implementation with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-eight point one, the BPA board expects quantum claims to carry owners and dates.
-
-Section twenty-eight point one treats library selection integration through as testable only when evidence and ticket IDs are recorded.
-
 ### 28.2 Integration through providers
 
 Most platforms expose cryptography through providers (OpenSSL providers, Java security providers, PKCS#11 for HSMs). Integrate PQC by adding or upgrading providers and configuring algorithm names through policy. Applications calling generic interfaces (Chapter 9) need no code changes; those calling algorithm-specific functions do.
-
-Section twenty-eight point two develops quantum and post-quantum security implementation with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-eight point two, the BPA board expects quantum claims to carry owners and dates.
-
-Section twenty-eight point two treats library selection integration through as testable only when evidence and ticket IDs are recorded.
 
 ### 28.3 Identifiers and encodings
 
 Interoperability depends on exact identifiers: TLS codepoints (0x11EC for X25519MLKEM768 in the [IANA registry](https://www.iana.org/assignments/tls-parameters/tls-parameters.xhtml)), X.509 object identifiers for ML-DSA and ML-KEM keys, and key encodings (seed versus expanded key). Mismatches cause failures that look like network faults.
 
-Section twenty-eight point three develops quantum and post-quantum security implementation with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-eight point three, the BPA board expects quantum claims to carry owners and dates.
-
 ### 28.4 Stateful signatures
 
 LMS/XMSS signing must never reuse a one-time key index. Controls: perform signing in an HSM that enforces monotonic state; reserve index ranges per signer; forbid restoring state from backups; monitor remaining signature capacity ([SP 800-208](https://doi.org/10.6028/NIST.SP.800-208) requires hardware-module key generation and signing for these schemes). If these controls are infeasible, prefer stateless SLH-DSA or ML-DSA.
-
-Section twenty-eight point four develops quantum and post-quantum security implementation with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-eight point four, the BPA board expects quantum claims to carry owners and dates.
 
 ### 28.5 Worked example
 
 BPA integrates ML-DSA-65 for bills of lading. The signing service uses an HSM via PKCS#11; verifiers in partner systems use a different library. Interoperability testing reveals that one library expected an expanded private-key format — irrelevant to verifiers but blocking key import in a backup HSM. Resolution: standardize on seed-based key storage and test import/export in both HSMs before production.
 
-Section twenty-eight point five develops quantum and post-quantum security implementation with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-eight point five, the BPA board expects quantum claims to carry owners and dates.
-
 ### 28.6 Common errors and limits
-Section twenty-eight point six develops quantum and post-quantum security implementation with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-eight point six, the BPA board expects quantum claims to carry owners and dates.
-
-Section twenty-eight point six treats library selection integration through as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point six, Brightwater Port Authority will not accept quantum work without a written trail.
-
 
 - Mixing draft and final algorithm implementations.
 - Software signing for stateful schemes.
@@ -2394,10 +1566,6 @@ You will (1) build and query a CBOM; (2) measure negotiated versus configured al
 
 Inventory evidence comes from code scanning, configuration analysis, passive network observation of handshakes, endpoint logs and vendor declarations. Each sees different things: code shows intent, configuration shows what is offered, passive observation shows what is negotiated, vendors declare what closed products do. Combine them and record the source per finding.
 
-Section twenty-nine point one develops quantum and post-quantum security measurement with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-nine point one, the BPA board expects quantum claims to carry owners and dates.
-
 ### 29.2 Practical activity — Lab I
 
 ```python
@@ -2418,12 +1586,6 @@ print("hybrid key exchange present on:", [r[0] for r in records if "MLKEM" in r[
 
 Expected output:
 
-Section twenty-nine point two develops quantum and post-quantum security measurement with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-nine point two, the BPA board expects quantum claims to carry owners and dates.
-
-Section twenty-nine point two treats sources of evidence practical as testable only when evidence and ticket IDs are recorded.
-
 ```text
 assets 5, unknown 1 (20%)
 quantum-vulnerable uses 5: gateway-1/signature, scada-hmi/key-exchange, scada-hmi/signature, billing/key-exchange, vpn/key-exchange
@@ -2433,10 +1595,6 @@ hybrid key exchange present on: ['gateway-1']
 The crane PLC's unknown status is a finding, not a gap to hide: it is 20% of this tiny inventory and must be resolved by vendor declaration or testbed analysis.
 
 ### 29.3 Metrics
-Section twenty-nine point three develops quantum and post-quantum security measurement with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-nine point three, the BPA board expects quantum claims to carry owners and dates.
-
 
 - **Coverage**: assets with at least one cryptographic determination ÷ all assets.
 - **Unknown share**: reported separately.
@@ -2448,33 +1606,11 @@ Under section twenty-nine point three, the BPA board expects quantum claims to c
 
 "Percentage migrated" can be inflated by redefining assets or counting configuration instead of negotiation. Use auditable denominators and publish definitions.
 
-Section twenty-nine point four develops quantum and post-quantum security measurement with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-nine point four, the BPA board expects quantum claims to carry owners and dates.
-
-Section twenty-nine point four treats sources of evidence practical as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point four, Brightwater Port Authority will not accept quantum work without a written trail.
-
 ### 29.5 Worked example
 
 BPA's first CBOM report: 412 assets, coverage 82%, unknown 18%, 311 vulnerable uses, hybrid negotiation 0% (before rollout). After six months: coverage 94%, unknown 6%, hybrid negotiation 64% of edge connections, vulnerable uses on long-lived data reduced from 37 flows to 12.
 
-Section twenty-nine point five develops quantum and post-quantum security measurement with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-nine point five, the BPA board expects quantum claims to carry owners and dates.
-
-Section twenty-nine point five treats sources of evidence practical as testable only when evidence and ticket IDs are recorded.
-
 ### 29.6 Common errors and limits
-Section twenty-nine point six develops quantum and post-quantum security measurement with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section twenty-nine point six, the BPA board expects quantum claims to carry owners and dates.
-
-Section twenty-nine point six treats sources of evidence practical as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point six, Brightwater Port Authority will not accept quantum work without a written trail.
-
 
 - Hiding unknowns.
 - Counting configured algorithms as protection.
@@ -2509,12 +1645,6 @@ You will (1) verify implementations with known-answer tests; (2) write negative 
 
 Known-answer tests (KATs) feed fixed inputs and compare outputs with published values. Standards bodies and the NIST Cryptographic Algorithm Validation Program publish vectors; for ML-KEM, deterministic test modes allow fixed randomness so outputs can be compared byte for byte.
 
-Section thirty point one develops verification laboratory with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty point one, the BPA board expects verification claims to carry owners and dates.
-
-Section thirty point one treats known-answer tests practical activity as testable only when evidence and ticket IDs are recorded.
-
 ### 30.2 Practical activity — Lab V
 
 ```python
@@ -2540,12 +1670,6 @@ for param, n in [("ML-KEM-768", 1184), ("ML-KEM-768", 1183), ("ML-KEM-512", 1184
 
 Expected output:
 
-Section thirty point two develops verification laboratory with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty point two, the BPA board expects verification claims to carry owners and dates.
-
-Section thirty point two treats known-answer tests practical activity as testable only when evidence and ticket IDs are recorded.
-
 ```text
 KAT sha3_256      PASS
 KAT shake_128/32  PASS
@@ -2560,43 +1684,15 @@ The length validator is only the first check: FIPS 203 also requires checking th
 
 Run handshakes between every pair of client and server implementations in scope; encapsulate with one library and decapsulate with another; sign with the HSM and verify in partner software. Record the matrix. Interoperability failures early in the programme are cheap; in production they are outages.
 
-Section thirty point three develops verification laboratory with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty point three, the BPA board expects verification claims to carry owners and dates.
-
-Section thirty point three treats known-answer tests practical activity as testable only when evidence and ticket IDs are recorded.
-
 ### 30.4 Evidence
 
 Each test run records: implementation and version, test vectors used, result, date, operator. Evidence feeds the verification column of the traceability matrix (Chapter 21).
-
-Section thirty point four develops verification laboratory with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty point four, the BPA board expects verification claims to carry owners and dates.
-
-Section thirty point four treats known-answer tests practical activity as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point four, Brightwater Port Authority will not accept verification work without a written trail.
 
 ### 30.5 Worked example
 
 BPA's interoperability matrix for edge TLS: three server stacks × five client families. Two failures: an old partner library offered the obsolete pre-standard codepoint and could not complete hybrid handshakes; a load balancer stripped unknown groups. Both get work items; neither blocks rollout, because fallback to X25519 works and is logged.
 
-Section thirty point five develops verification laboratory with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty point five, the BPA board expects verification claims to carry owners and dates.
-
 ### 30.6 Common errors and limits
-Section thirty point six develops verification laboratory with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty point six, the BPA board expects verification claims to carry owners and dates.
-
-Section thirty point six treats known-answer tests practical activity as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point six, Brightwater Port Authority will not accept verification work without a written trail.
-
-Section thirty point six fails closed if verification evidence is missing rather than guessing.
-
 
 - Only positive tests.
 - Testing a library against itself.
@@ -2631,51 +1727,23 @@ You will (1) apply constant-time techniques to lattice code; (2) understand faul
 
 Lattice implementations must avoid secret-dependent branches, memory accesses and variable-time instructions. Division is a known trap: compilers and processors may implement division by a constant with variable timing, and KyberSlash showed real leaks from secret-dependent divisions ([Bernstein et al. 2024](https://eprint.iacr.org/2024/1049)). The fix is arithmetic that avoids division (multiplication by precomputed constants and shifts) and verification with timing-analysis tools.
 
-Section thirty-one point one develops quantum and post-quantum security implementation with a Brightwater Port Authority note the engineer can demo offline.
-
 ### 31.2 Decapsulation comparison
 
 ML-KEM's implicit rejection compares a re-encrypted ciphertext with the received one. The comparison and the selection between the real key and the rejection key must be constant-time; otherwise timing reveals whether a manipulated ciphertext decrypted "correctly", re-opening chosen-ciphertext attacks.
-
-Section thirty-one point two develops quantum and post-quantum security implementation with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-one point two, the BPA board expects quantum claims to carry owners and dates.
-
-Section thirty-one point two treats constant time decapsulation comparison as testable only when evidence and ticket IDs are recorded.
 
 ### 31.3 Fault attacks
 
 Injecting faults (voltage glitches, clock glitches, lasers) can skip checks or corrupt computations. In signatures, a fault during ML-DSA signing can leak information about the secret key; in deterministic schemes, faults can be especially dangerous. Countermeasures include redundant computation, verifying a signature before releasing it and hardened hardware. These matter for devices an attacker can physically access — gate scanners, smart cards.
 
-Section thirty-one point three develops quantum and post-quantum security implementation with a Brightwater Port Authority note the engineer can demo offline.
-
 ### 31.4 Randomness and seeds
 
 ML-KEM key generation and encapsulation consume fresh randomness; ML-DSA offers a "hedged" mode mixing fresh randomness with deterministic derivation, which helps against fault and randomness failures ([FIPS 204](https://doi.org/10.6028/NIST.FIPS.204)). Seeds that generate keys are as sensitive as the keys themselves.
-
-Section thirty-one point four develops quantum and post-quantum security implementation with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-one point four, the BPA board expects quantum claims to carry owners and dates.
-
-Section thirty-one point four treats constant time decapsulation comparison as testable only when evidence and ticket IDs are recorded.
 
 ### 31.5 Worked example
 
 BPA's gate-scanner vendor provides an ML-DSA verifier for firmware. Since the device only verifies, secret-key leakage is not at stake on the device; the main risks are faults that skip the verification result. Countermeasure: verify twice with different code paths and check a hash of the image after boot.
 
-Section thirty-one point five develops quantum and post-quantum security implementation with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-one point five, the BPA board expects quantum claims to carry owners and dates.
-
 ### 31.6 Common errors and limits
-Section thirty-one point six develops quantum and post-quantum security implementation with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-one point six, the BPA board expects quantum claims to carry owners and dates.
-
-Section thirty-one point six treats constant time decapsulation comparison as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-one point six, Brightwater Port Authority will not accept quantum work without a written trail.
-
 
 - Assuming compilers preserve constant-time intent.
 - Ignoring physical attacks for field devices.
@@ -2706,59 +1774,23 @@ You will (1) identify reliability risks from larger messages and new code paths;
 
 New risks: fragmentation and middlebox drops; timeouts on slow constrained devices; certificate parsing failures; library bugs in new code; exhausted stateful signature keys; HSM performance limits. Each needs detection and response.
 
-Section thirty-two point one develops quantum and post-quantum security reliability with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-two point one, the BPA board expects quantum claims to carry owners and dates.
-
-Section thirty-two point one treats reliability risks secure fallback as testable only when evidence and ticket IDs are recorded.
-
 ### 32.2 Secure fallback
 
 Fallback can preserve availability but must not create silent downgrade. Design rules: fallback only to approved algorithms; log every fallback with reason; alert when fallback rates rise; set an expiry date on fallback permission; never fall back on authentication failures, only on demonstrable incompatibility.
-
-Section thirty-two point two develops quantum and post-quantum security reliability with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-two point two, the BPA board expects quantum claims to carry owners and dates.
-
-Section thirty-two point two treats reliability risks secure fallback as testable only when evidence and ticket IDs are recorded.
 
 ### 32.3 Capacity of stateful schemes
 
 An LMS key with tree height 20 supports about one million signatures; a height-10 tree about one thousand. Capacity must exceed expected signing volume over the key's life with margin; monitoring alerts at thresholds (e.g. 70% used) trigger planned rollover.
 
-Section thirty-two point three develops quantum and post-quantum security reliability with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-two point three, the BPA board expects quantum claims to carry owners and dates.
-
-Section thirty-two point three treats reliability risks secure fallback as testable only when evidence and ticket IDs are recorded.
-
 ### 32.4 Silent failures
 
 The worst reliability failure is security silently disabled: a configuration that falls back to classical-only everywhere because of a typo. Monitoring negotiated groups (Chapter 29) detects this.
-
-Section thirty-two point four develops quantum and post-quantum security reliability with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-two point four, the BPA board expects quantum claims to carry owners and dates.
-
-Section thirty-two point four treats reliability risks secure fallback as testable only when evidence and ticket IDs are recorded.
 
 ### 32.5 Worked example
 
 BPA signs about 2,000 firmware images a year across all device families. A height-15 LMS tree (32,768 signatures) per signing site lasts more than a decade at current volume; the team still sets alerts at 50% and 80% and documents rollover to a new key with distribution of its public key in advance.
 
-Section thirty-two point five develops quantum and post-quantum security reliability with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-two point five, the BPA board expects quantum claims to carry owners and dates.
-
 ### 32.6 Common errors and limits
-Section thirty-two point six develops quantum and post-quantum security reliability with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-two point six, the BPA board expects quantum claims to carry owners and dates.
-
-Section thirty-two point six treats reliability risks secure fallback as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-two point six, Brightwater Port Authority will not accept quantum work without a written trail.
-
 
 - Fallback without logging or expiry.
 - Under-sized stateful keys.
@@ -2793,51 +1825,23 @@ You will (1) analyse how cryptographic migration interacts with safety-related o
 
 At BPA, cranes, gate systems and vessel-traffic services must keep operating. A failed firmware signature verification can brick a crane controller; a certificate rejected by a gate scanner can stop trucks. Migration steps on such systems require testing on spare units, maintenance windows, verified rollback images and operator sign-off.
 
-Section thirty-three point one develops quantum and post-quantum security safety with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-three point one, the BPA board expects quantum claims to carry owners and dates.
-
 ### 33.2 Resilient rollout
 
 Use rings: lab → spare unit → one low-impact unit → one site → all. Each ring has a hold period and explicit success criteria. Keep the previous verification key trusted until the new chain is proven, so rollback remains possible.
-
-Section thirty-three point two develops quantum and post-quantum security safety with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-three point two, the BPA board expects quantum claims to carry owners and dates.
-
-Section thirty-three point two treats safety interactions resilient rollout as testable only when evidence and ticket IDs are recorded.
 
 ### 33.3 Cryptographic incident response
 
 Plan for: a vulnerability in a PQC library (patch and re-key), a key compromise (revoke and replace), a stateful key index reuse (treat as compromise), and a cryptanalytic break of an algorithm (switch to the alternative). Hybrids give time in the last case: if ML-KEM were weakened, X25519 still protects against classical attackers while agility replaces the post-quantum component — for example with HQC once standardized ([IR 8545](https://doi.org/10.6028/NIST.IR.8545)).
 
-Section thirty-three point three develops quantum and post-quantum security safety with a Brightwater Port Authority note the engineer can demo offline.
-
 ### 33.4 Tabletop: algorithm break
 
 Scenario: a credible paper reports a practical attack on one post-quantum signature parameter set. Questions: where is it used (CBOM)? What depends on it (roots, firmware)? What is the alternative (SLH-DSA, a different ML-DSA level)? How long does replacement take (time-to-replace metric)? Who decides? The tabletop measures agility directly.
-
-Section thirty-three point four develops quantum and post-quantum security safety with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-three point four, the BPA board expects quantum claims to carry owners and dates.
 
 ### 33.5 Worked example
 
 BPA's tabletop finds that crane firmware trusts only one signature algorithm, with no provision for a second key in the bootloader. Action: the next bootloader release accepts two verification keys of different algorithms (e.g. LMS and ML-DSA), so a break of one does not strand devices.
 
-Section thirty-three point five develops quantum and post-quantum security safety with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-three point five, the BPA board expects quantum claims to carry owners and dates.
-
 ### 33.6 Common errors and limits
-Section thirty-three point six develops quantum and post-quantum security safety with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-three point six, the BPA board expects quantum claims to carry owners and dates.
-
-Section thirty-three point six treats safety interactions resilient rollout as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-three point six, Brightwater Port Authority will not accept quantum work without a written trail.
-
 
 - Rolling cryptographic changes to safety systems without spares and rollback.
 - No plan for algorithm compromise.
@@ -2865,10 +1869,6 @@ Safety and resilience demand ringed rollouts with rollback, incident plans that 
 You will (1) integrate PQC across TLS, VPN, PKI, code signing and data formats; (2) manage partner and vendor integration; (3) sequence integration to manage dependencies; and (4) run integration tests end to end. It builds on Chapters 16, 28 and 30.
 
 ### 34.1 Integration map
-Section thirty-four point one develops quantum and post-quantum security integration with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-four point one, the BPA board expects quantum claims to carry owners and dates.
-
 
 | Domain | Integration point | Dependency |
 |---|---|---|
@@ -2882,49 +1882,19 @@ Under section thirty-four point one, the BPA board expects quantum claims to car
 
 Partners move at their own pace. Publish a migration notice with timelines, supported algorithms and test endpoints; offer an interoperability test environment; keep classical paths available with dated sunset. The customs agency, for example, may accept ML-KEM-wrapped exports only after its own upgrade; parallel recipients in CMS (classical and PQC) bridge the gap.
 
-Section thirty-four point two develops quantum and post-quantum security integration with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-four point two, the BPA board expects quantum claims to carry owners and dates.
-
 ### 34.3 Sequencing
 
 Sequence by dependency and value: edge TLS first (independent, high value); PKI root and HSM next (long lead time, enabler for signatures); firmware signing as devices are refreshed; documents with partners; internal services by data lifetime.
-
-Section thirty-four point three develops quantum and post-quantum security integration with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-four point three, the BPA board expects quantum claims to carry owners and dates.
-
-Section thirty-four point three treats integration map partner integration as testable only when evidence and ticket IDs are recorded.
 
 ### 34.4 End-to-end tests
 
 Integration tests exercise whole flows: a partner client connecting through the edge to an API that signs a document with ML-DSA, stored and replicated over hybrid TLS, verified by a customs test system. Failures in such tests reveal interface mismatches no unit test finds.
 
-Section thirty-four point four develops quantum and post-quantum security integration with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-four point four, the BPA board expects quantum claims to carry owners and dates.
-
-Section thirty-four point four treats integration map partner integration as testable only when evidence and ticket IDs are recorded.
-
 ### 34.5 Worked example
 
 BPA's integration plan has 14 work packages. A dependency graph shows that the HSM upgrade gates five of them; procurement is therefore started in month one even though signatures are not urgent until month nine.
 
-Section thirty-four point five develops quantum and post-quantum security integration with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-four point five, the BPA board expects quantum claims to carry owners and dates.
-
-Section thirty-four point five treats integration map partner integration as testable only when evidence and ticket IDs are recorded.
-
 ### 34.6 Common errors and limits
-Section thirty-four point six develops quantum and post-quantum security integration with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-four point six, the BPA board expects quantum claims to carry owners and dates.
-
-Section thirty-four point six treats integration map partner integration as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-four point six, Brightwater Port Authority will not accept quantum work without a written trail.
-
 
 - Integrating domains in isolation.
 - Forgetting partner sunset dates.
@@ -2934,8 +1904,6 @@ For section thirty-four point six, Brightwater Port Authority will not accept qu
 ### 34.7 Integration readiness checklist
 
 Before BPA switches a partner link to hybrid key exchange, the integration owner confirms four items: the partner's stack advertises the same hybrid group, both sides log the negotiated group, a classical fallback is still allowed only where the agreed exception list permits it, and a joint test window is booked with a rollback contact on each side. A link that fails any item stays on its current configuration and is rescheduled rather than forced.
-
-Section thirty-four point seven develops quantum and post-quantum security integration with a Brightwater Port Authority note the engineer can demo offline.
 
 ### Exercises
 
@@ -2962,33 +1930,15 @@ You will (1) design post-quantum authentication for a document and firmware ecos
 
 Design post-quantum signatures for BPA's (a) electronic bills of lading verifiable for 12 years by partners and courts, and (b) firmware for 3,000 field devices with 10–20 year lifetimes and constrained bootloaders. Constraints: partner verification software varies; some devices cannot be updated beyond one more bootloader version.
 
-Section thirty-five point one develops design studio ii with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-five point one, the BPA board expects design claims to carry owners and dates.
-
-Section thirty-five point one treats brief reference solution outline as testable only when evidence and ticket IDs are recorded.
-
 ### 35.2 Reference solution outline
 
 (a) Bills of lading: sign with ML-DSA-65 alongside the existing ECDSA signature during transition (dual signatures in the document format), add trusted timestamps, and plan re-timestamping (archive timestamp renewal) so that evidence remains valid if an algorithm weakens. (b) Firmware: final bootloader version accepts two verification keys — LMS (SP 800-208, verify-only on device, signing in HSM with state control) and ML-DSA-44 — so that compromise or breakage of one leaves the other; sign every image with both.
-
-Section thirty-five point two develops design studio ii with a Brightwater Port Authority note the engineer can demo offline.
 
 ### 35.3 Panel critique
 
 Legal asks whether dual signatures confuse courts — answer: document policy states either valid signature suffices during transition, both required after a date. Operations asks about signing throughput — LMS capacity sized per Chapter 32. Security asks why not SLH-DSA for firmware — its larger signatures (7.8 kB+ for the small variant) may exceed boot-time and storage budgets on the smallest devices, but it remains a candidate for others.
 
-Section thirty-five point three develops design studio ii with a Brightwater Port Authority note the engineer can demo offline.
-
 ### 35.4 Common errors and limits
-Section thirty-five point four develops design studio ii with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-five point four, the BPA board expects design claims to carry owners and dates.
-
-Section thirty-five point four treats brief reference solution outline as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-five point four, Brightwater Port Authority will not accept design work without a written trail.
-
 
 - Single-algorithm trust anchors for devices that cannot be updated again.
 - Ignoring long-term validation and timestamp renewal.
@@ -3023,10 +1973,6 @@ You will (1) budget bytes and computation for post-quantum handshakes; (2) measu
 
 ML-KEM adds about 2.3 kB to a hybrid TLS handshake (1,216-byte client share plus 1,120-byte server share). Post-quantum certificates add far more: each ML-DSA-44 certificate carries a 1,312-byte key and a 2,420-byte signature; a chain plus CertificateVerify and Certificate Transparency signatures can exceed 15 kB — beyond TCP's initial congestion window in many configurations, costing an extra round trip.
 
-Section thirty-six point one develops quantum and post-quantum security performance with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-six point one, the BPA board expects quantum claims to carry owners and dates.
-
 ### 36.2 Practical activity — Lab B
 
 ```python
@@ -3044,10 +1990,6 @@ for a in algs:
 
 Expected output:
 
-Section thirty-six point two develops quantum and post-quantum security performance with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-six point two, the BPA board expects quantum claims to carry owners and dates.
-
 ```text
 ECDSA P-256          ~  1290 bytes of certificates and signatures
 RSA-2048             ~  2620 bytes of certificates and signatures
@@ -3062,39 +2004,15 @@ The ~400-byte per-certificate overhead and the two embedded SCT signatures are s
 
 ML-KEM operations are fast — often faster than X25519 on servers with vector instructions. ML-DSA signing and verification are fast; SLH-DSA signing is slow (milliseconds to seconds depending on variant). Server capacity planning therefore focuses on bandwidth and signing services rather than KEM CPU.
 
-Section thirty-six point three develops quantum and post-quantum security performance with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-six point three, the BPA board expects quantum claims to carry owners and dates.
-
-Section thirty-six point three treats byte budgets practical activity as testable only when evidence and ticket IDs are recorded.
-
 ### 36.4 Measurement
 
 Measure handshake latency percentiles (p50, p95, p99) by client type and network path before and after; throughput of signing services; HSM operations per second for new algorithms. Report distributions, not averages.
-
-Section thirty-six point four develops quantum and post-quantum security performance with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-six point four, the BPA board expects quantum claims to carry owners and dates.
-
-Section thirty-six point four treats byte budgets practical activity as testable only when evidence and ticket IDs are recorded.
 
 ### 36.5 Worked example
 
 BPA measures edge handshakes: p50 latency +0.4 ms, p99 +3 ms after enabling X25519MLKEM768 (synthetic); within budget. A test of an ML-DSA-65 chain on a satellite link to a vessel shows an extra round trip (+600 ms) — so vessel connections keep classical certificates longer and get session resumption tuned.
 
-Section thirty-six point five develops quantum and post-quantum security performance with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-six point five, the BPA board expects quantum claims to carry owners and dates.
-
 ### 36.6 Common errors and limits
-Section thirty-six point six develops quantum and post-quantum security performance with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-six point six, the BPA board expects quantum claims to carry owners and dates.
-
-Section thirty-six point six treats byte budgets practical activity as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-six point six, Brightwater Port Authority will not accept quantum work without a written trail.
-
 
 - Benchmarking only CPU.
 - Averages instead of tail latency.
@@ -3129,12 +2047,6 @@ You will (1) operate staged rollouts with statistical gates; (2) monitor negotia
 
 Promote a rollout stage only when the upper confidence bound of the failure rate is within the budget. Small canaries cannot demonstrate small effects — the bound is wide — so the gate holds until enough traffic has been observed.
 
-Section thirty-seven point one develops quantum and post-quantum security operations with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-seven point one, the BPA board expects quantum claims to carry owners and dates.
-
-Section thirty-seven point one treats canary gates practical activity as testable only when evidence and ticket IDs are recorded.
-
 ### 37.2 Practical activity — Lab K
 
 ```python
@@ -3151,12 +2063,6 @@ for stage, k, n in [("1% canary", 3, 5000), ("10% canary", 28, 50000), ("10% can
 
 Expected output:
 
-Section thirty-seven point two develops quantum and post-quantum security operations with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-seven point two, the BPA board expects quantum claims to carry owners and dates.
-
-Section thirty-seven point two treats canary gates practical activity as testable only when evidence and ticket IDs are recorded.
-
 ```text
 1% canary                3/5000  upper95=0.00176  HOLD
 10% canary               28/50000  upper95=0.00081  PROMOTE
@@ -3169,41 +2075,15 @@ The 1% canary holds not because failures are high but because 5,000 connections 
 
 Dashboards: negotiated groups by service, fallback rate and reasons, handshake failures by path, certificate algorithms in use, stateful key capacity, library versions. Alerts on fallback spikes and on any unexpected classical-only negotiation where hybrids are required.
 
-Section thirty-seven point three develops quantum and post-quantum security operations with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-seven point three, the BPA board expects quantum claims to carry owners and dates.
-
-Section thirty-seven point three treats canary gates practical activity as testable only when evidence and ticket IDs are recorded.
-
 ### 37.4 Certificate and key operations
 
 Certificate lifecycle automation (for example ACME, [RFC 8555](https://www.rfc-editor.org/rfc/rfc8555.html)) makes algorithm changes routine: short-lived certificates can switch algorithms at renewal. Key ceremonies for new PQC roots are planned like any root ceremony, with witnesses and recorded procedures.
-
-Section thirty-seven point four develops quantum and post-quantum security operations with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-seven point four, the BPA board expects quantum claims to carry owners and dates.
-
-Section thirty-seven point four treats canary gates practical activity as testable only when evidence and ticket IDs are recorded.
 
 ### 37.5 Worked example
 
 BPA's operations runbook for hybrid TLS: daily dashboard review during rollout; promote via gates; on gate hold, investigate by path; on fallback spike, check recent changes; on proxy-site failures, apply path-specific exception with expiry and open vendor ticket.
 
-Section thirty-seven point five develops quantum and post-quantum security operations with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-seven point five, the BPA board expects quantum claims to carry owners and dates.
-
-Section thirty-seven point five treats canary gates practical activity as testable only when evidence and ticket IDs are recorded.
-
 ### 37.6 Common errors and limits
-Section thirty-seven point six develops quantum and post-quantum security operations with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-seven point six, the BPA board expects quantum claims to carry owners and dates.
-
-Section thirty-seven point six treats canary gates practical activity as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-seven point six, Brightwater Port Authority will not accept quantum work without a written trail.
-
 
 - Promoting on point estimates from small canaries.
 - Global rollback for local faults.
@@ -3238,57 +2118,23 @@ You will (1) validate that the migrated system meets stakeholder needs; (2) dist
 
 Verification shows requirements are met ("edge TLS negotiates X25519MLKEM768 with 99.2% of offering clients"). Validation shows the system serves its purpose ("shipping lines, customs and staff operate normally, and long-lived data flows are protected against recording"). Both are needed; one does not imply the other.
 
-Section thirty-eight point one develops quantum and post-quantum security validation with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-eight point one, the BPA board expects quantum claims to carry owners and dates.
-
 ### 38.2 Acceptance tests
 
 Partners run acceptance tests on their workflows; operations staff confirm no new incidents; legal confirms dual-signed documents are acceptable; device teams confirm firmware updates succeed across models. Record acceptance with dates and signatories.
-
-Section thirty-eight point two develops quantum and post-quantum security validation with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-eight point two, the BPA board expects quantum claims to carry owners and dates.
-
-Section thirty-eight point two treats verification versus validation acceptance as testable only when evidence and ticket IDs are recorded.
 
 ### 38.3 Validating risk reduction
 
 Claim carefully: "Recorded edge traffic negotiated with hybrid groups is protected against future quantum decryption if either X25519 or ML-KEM-768 remains secure" is defensible. "BPA is quantum-safe" is not — certificates, some VPNs, devices and unknown assets remain. Validation reports what is protected and what is not.
 
-Section thirty-eight point three develops quantum and post-quantum security validation with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-eight point three, the BPA board expects quantum claims to carry owners and dates.
-
 ### 38.4 Independent validation
 
 An independent team (internal audit or external assessor) samples flows, checks negotiated algorithms from their own vantage point and reviews the CBOM's unknowns. Independence catches optimistic self-assessment.
-
-Section thirty-eight point four develops quantum and post-quantum security validation with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-eight point four, the BPA board expects quantum claims to carry owners and dates.
-
-Section thirty-eight point four treats verification versus validation acceptance as testable only when evidence and ticket IDs are recorded.
 
 ### 38.5 Worked example
 
 BPA's validation report: 64% of edge connections hybrid (verification); partner acceptance complete for 11 of 14 lines (validation); customs exports dual-recipient (validation pending agency test); firmware dual-key bootloader on 40% of devices; unknown assets 6%. Statement of residual risk lists the remaining classical paths with dates.
 
-Section thirty-eight point five develops quantum and post-quantum security validation with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-eight point five, the BPA board expects quantum claims to carry owners and dates.
-
-Section thirty-eight point five treats verification versus validation acceptance as testable only when evidence and ticket IDs are recorded.
-
 ### 38.6 Common errors and limits
-Section thirty-eight point six develops quantum and post-quantum security validation with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-eight point six, the BPA board expects quantum claims to carry owners and dates.
-
-Section thirty-eight point six treats verification versus validation acceptance as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-eight point six, Brightwater Port Authority will not accept quantum work without a written trail.
-
 
 - Treating verification metrics as validation.
 - Overclaiming "quantum-safe".
@@ -3323,10 +2169,6 @@ You will (1) design for crypto-agility so future changes are cheap; (2) implemen
 
 The post-quantum transition will not be the last: parameter sets may change, HQC and FN-DSA will arrive, and some algorithm may weaken. [CSWP 39](https://doi.org/10.6028/NIST.CSWP.39-upd1) describes agility across protocols, applications, hardware and infrastructure. Maintainable systems make algorithm change a routine operation measured in days.
 
-Section thirty-nine point one develops quantum and post-quantum security maintainability with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-nine point one, the BPA board expects quantum claims to carry owners and dates.
-
 ### 39.2 Practical activity — Lab A
 
 ```python
@@ -3352,14 +2194,6 @@ print("old tag after retirement:", check(k, m, a1, t1))
 
 Expected output:
 
-Section thirty-nine point two develops quantum and post-quantum security maintainability with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-nine point two, the BPA board expects quantum claims to carry owners and dates.
-
-Section thirty-nine point two treats agility as maintainability practical as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-nine point two, Brightwater Port Authority will not accept quantum work without a written trail.
-
 ```text
 old tag still verifies during transition: True
 new tag verifies: True | algorithms: hmac-sha256 -> hmac-sha3-256
@@ -3372,41 +2206,15 @@ The lab uses symmetric MACs to keep the code short; the pattern — registry, po
 
 Retiring an algorithm has phases: stop generating new uses; accept old uses during a transition window; reject after a date; remove code. Each phase is a policy change plus monitoring of residual use.
 
-Section thirty-nine point three develops quantum and post-quantum security maintainability with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-nine point three, the BPA board expects quantum claims to carry owners and dates.
-
-Section thirty-nine point three treats agility as maintainability practical as testable only when evidence and ticket IDs are recorded.
-
 ### 39.4 Documentation and inventory
 
 Keep the CBOM, interface control documents, policies and runbooks current through automation where possible (build-time CBOM generation, telemetry-fed dashboards). Stale documentation makes the next migration as hard as the first.
-
-Section thirty-nine point four develops quantum and post-quantum security maintainability with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-nine point four, the BPA board expects quantum claims to carry owners and dates.
-
-Section thirty-nine point four treats agility as maintainability practical as testable only when evidence and ticket IDs are recorded.
 
 ### 39.5 Worked example
 
 BPA measures time-to-replace by switching the internal MAC algorithm on a test service through policy: 2 days including tests. The same exercise on a legacy service with hard-coded algorithms takes 6 weeks — a quantified case for refactoring.
 
-Section thirty-nine point five develops quantum and post-quantum security maintainability with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-nine point five, the BPA board expects quantum claims to carry owners and dates.
-
-Section thirty-nine point five treats agility as maintainability practical as testable only when evidence and ticket IDs are recorded.
-
 ### 39.6 Common errors and limits
-Section thirty-nine point six develops quantum and post-quantum security maintainability with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section thirty-nine point six, the BPA board expects quantum claims to carry owners and dates.
-
-Section thirty-nine point six treats agility as maintainability practical as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-nine point six, Brightwater Port Authority will not accept quantum work without a written trail.
-
 
 - Treating PQC migration as a one-time project.
 - Accepting algorithm identifiers from untrusted input without policy checks.
@@ -3441,61 +2249,23 @@ You will (1) verify end-to-end protections from an attacker's vantage point in a
 
 In an isolated lab replicating BPA's edge, capture handshakes and confirm the negotiated group from the wire, not from server logs. Verify that recorded sessions with hybrid groups would require breaking both X25519 and ML-KEM — by checking that the session key derivation includes both shares (Lab C's principle).
 
-Section forty point one develops verification laboratory ii with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty point one, the BPA board expects verification claims to carry owners and dates.
-
 ### 40.2 Downgrade tests
 
 A lab man-in-the-middle strips hybrid groups from ClientHello. Expected: TLS 1.3's transcript signature causes failure, or the client retries without hybrid only if application logic permits — which the test should catch and the policy should forbid where possible. Run only in the lab.
-
-Section forty point two develops verification laboratory ii with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty point two, the BPA board expects verification claims to carry owners and dates.
-
-Section forty point two treats attacker's-vantage verification downgrade tests as testable only when evidence and ticket IDs are recorded.
 
 ### 40.3 State-handling tests
 
 For LMS/XMSS: simulate HSM restore from backup and confirm the HSM refuses to reuse indices; simulate concurrent signing requests and confirm no duplicate index; exhaust a small test tree and confirm signing stops cleanly.
 
-Section forty point three develops verification laboratory ii with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty point three, the BPA board expects verification claims to carry owners and dates.
-
-Section forty point three treats attacker's-vantage verification downgrade tests as testable only when evidence and ticket IDs are recorded.
-
 ### 40.4 Verification report
 
 Report: scope, environment, tests, results, deviations, residual issues, evidence links. A good report lets a reviewer re-run tests.
-
-Section forty point four develops verification laboratory ii with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty point four, the BPA board expects verification claims to carry owners and dates.
-
-Section forty point four treats attacker's-vantage verification downgrade tests as testable only when evidence and ticket IDs are recorded.
-
-For section forty point four, Brightwater Port Authority will not accept verification work without a written trail.
 
 ### 40.5 Worked example
 
 BPA's lab finds that one internal client library retries with classical-only groups after any handshake error, including those caused by an attacker. Fix: restrict retry to specific incompatibility errors, log retries and plan removal of fallback for that client by a set date.
 
-Section forty point five develops verification laboratory ii with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty point five, the BPA board expects verification claims to carry owners and dates.
-
-Section forty point five treats attacker's-vantage verification downgrade tests as testable only when evidence and ticket IDs are recorded.
-
 ### 40.6 Common errors and limits
-Section forty point six develops verification laboratory ii with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty point six, the BPA board expects verification claims to carry owners and dates.
-
-Section forty point six treats attacker's-vantage verification downgrade tests as testable only when evidence and ticket IDs are recorded.
-
-For section forty point six, Brightwater Port Authority will not accept verification work without a written trail.
-
 
 - Verifying from server logs only.
 - Downgrade testing on production.
@@ -3530,49 +2300,19 @@ You will (1) optimize parameter and algorithm choices across a system; (2) reduc
 
 ML-KEM-768 (category 3) is the common default for hybrid TLS; ML-KEM-1024 where policy requires category 5 (CNSA 2.0). ML-DSA-44 versus -65 trades size against margin. Choose per context with documented rationale, not "maximum everywhere".
 
-Section forty-one point one develops quantum and post-quantum security system with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-one point one, the BPA board expects quantum claims to carry owners and dates.
-
-Section forty-one point one treats parameter choices overhead reduction as testable only when evidence and ticket IDs are recorded.
-
 ### 41.2 Overhead reduction
 
 Session resumption avoids repeated full handshakes; connection reuse amortizes certificate cost; certificate compression ([RFC 8879](https://www.rfc-editor.org/rfc/rfc8879.html)) helps classical chains but compresses random-looking post-quantum keys and signatures poorly; trimming intermediate certificates where clients cache them reduces bytes.
-
-Section forty-one point two develops quantum and post-quantum security system with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-one point two, the BPA board expects quantum claims to carry owners and dates.
-
-Section forty-one point two treats parameter choices overhead reduction as testable only when evidence and ticket IDs are recorded.
 
 ### 41.3 Risk-reduction prioritization
 
 With limited budget, rank remaining work by exposure reduced per unit effort: flows carrying long-lived data × volume ÷ effort. A greedy ordering is usually good enough and transparent.
 
-Section forty-one point three develops quantum and post-quantum security system with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-one point three, the BPA board expects quantum claims to carry owners and dates.
-
-Section forty-one point three treats parameter choices overhead reduction as testable only when evidence and ticket IDs are recorded.
-
 ### 41.4 Worked example
 
 BPA's remaining items: vessel links (high latency cost of large chains; moderate data lifetime), legacy VPN (high lifetime, appliance replacement cost), internal telemetry (low lifetime). Optimization: vessel links get hybrid key exchange only (cheap) with classical certificates and tuned resumption; legacy VPN gets PSK mixing now and appliance replacement next budget cycle; telemetry waits.
 
-Section forty-one point four develops quantum and post-quantum security system with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-one point four, the BPA board expects quantum claims to carry owners and dates.
-
 ### 41.5 Common errors and limits
-Section forty-one point five develops quantum and post-quantum security system with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-one point five, the BPA board expects quantum claims to carry owners and dates.
-
-Section forty-one point five treats parameter choices overhead reduction as testable only when evidence and ticket IDs are recorded.
-
-For section forty-one point five, Brightwater Port Authority will not accept quantum work without a written trail.
-
 
 - Category 5 everywhere without need.
 - Expecting compression to shrink PQC signatures.
@@ -3586,10 +2326,6 @@ Optimization decisions should be revisited when inputs change. A new browser rel
 ### 41.6 Optimisation that must not weaken security
 
 Shrinking handshake size by dropping intermediate certificates or caching keys for longer can save milliseconds, but each such change is reviewed against BPA's confidentiality horizon. An optimisation that shortens latency but reintroduces a classical-only path for the 25-year customs data is rejected, however large the gain.
-
-Section forty-one point six develops quantum and post-quantum security system with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-one point six, the BPA board expects quantum claims to carry owners and dates.
 
 ### Exercises
 
@@ -3616,59 +2352,23 @@ You will (1) formulate an applied research question from engineering work; (2) d
 
 Engineering raises research-worthy questions: how often do middleboxes mishandle large ClientHellos in a given sector? What is the real time-to-replace for different architectures? How accurate are inventory tools against adjudicated ground truth? The [master's](../../../../masters-2-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) and [doctoral](../../../../doctorate-2-years/quantum-post-quantum-security/en/book/MANUSCRIPT.md) books in this area develop such studies in depth.
 
-Section forty-two point one develops quantum and post-quantum security applied with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-two point one, the BPA board expects quantum claims to carry owners and dates.
-
 ### 42.2 Small studies
 
 Define question, population, measurements, comparison and analysis before collecting data; use synthetic or authorized data; report intervals and limits. An engineering thesis (Chapter 49) can include one such study.
-
-Section forty-two point two develops quantum and post-quantum security applied with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-two point two, the BPA board expects quantum claims to carry owners and dates.
-
-Section forty-two point two treats questions from practice small as testable only when evidence and ticket IDs are recorded.
 
 ### 42.3 Reading research
 
 Check what a paper's numbers measure (configured or negotiated? lab or field?), whether baselines are fair, whether code and data are available, and how old the results are — the field moves quickly, and results about draft algorithms may not apply to final standards.
 
-Section forty-two point three develops quantum and post-quantum security applied with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-two point three, the BPA board expects quantum claims to carry owners and dates.
-
-Section forty-two point three treats questions from practice small as testable only when evidence and ticket IDs are recorded.
-
 ### 42.4 Contributing back
 
 Report interoperability bugs to implementers, publish anonymized aggregate findings, contribute test vectors, and participate in standards discussions. Coordinate disclosure of vulnerabilities.
-
-Section forty-two point four develops quantum and post-quantum security applied with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-two point four, the BPA board expects quantum claims to carry owners and dates.
-
-Section forty-two point four treats questions from practice small as testable only when evidence and ticket IDs are recorded.
-
-For section forty-two point four, Brightwater Port Authority will not accept quantum work without a written trail.
 
 ### 42.5 Worked example
 
 BPA's engineers ask whether their passive telemetry under-counts hybrid negotiation because of TLS 1.3 encrypted extensions. A small study compares server-log and wire-capture determinations on 1,000 synthetic sessions in the lab and finds agreement on the key-exchange group (visible in clear in ServerHello) but not on certificate algorithms (encrypted) — an applied finding that changes the measurement design.
 
-Section forty-two point five develops quantum and post-quantum security applied with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-two point five, the BPA board expects quantum claims to carry owners and dates.
-
 ### 42.6 Common errors and limits
-Section forty-two point six develops quantum and post-quantum security applied with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-two point six, the BPA board expects quantum claims to carry owners and dates.
-
-Section forty-two point six treats questions from practice small as testable only when evidence and ticket IDs are recorded.
-
-For section forty-two point six, Brightwater Port Authority will not accept quantum work without a written trail.
-
 
 - Studies designed after data collection.
 - Applying draft-algorithm results to final standards.
@@ -3703,59 +2403,23 @@ You will (1) work within a real-shaped migration team under supervision; (2) app
 
 A placement in a security team, a vendor, a public agency or a standards organization exposes the realities of migration: procurement cycles, legacy systems, partner politics, change freezes. In this book the placement is simulated at BPA; in a real programme, the host's confidentiality rules apply.
 
-Section forty-three point one develops industry or public-service practice with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-three point one, the BPA board expects industry claims to carry owners and dates.
-
 ### 43.2 Professional practice
 
 Follow change control: every cryptographic change has a ticket, risk assessment, test evidence, approval and rollback plan. Document decisions with rationale. Communicate progress in the host's language — risk and service impact rather than algorithm names.
-
-Section forty-three point two develops industry or public-service practice with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-three point two, the BPA board expects industry claims to carry owners and dates.
-
-Section forty-three point two treats the placement professional practice as testable only when evidence and ticket IDs are recorded.
 
 ### 43.3 Theory versus practice
 
 Common surprises: inventory is harder than algorithm selection; vendors' "PQC-ready" claims vary from roadmaps to shipping features; partners set the pace; the hardest problems are organizational. Record these as reflective notes.
 
-Section forty-three point three develops industry or public-service practice with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-three point three, the BPA board expects industry claims to carry owners and dates.
-
-Section forty-three point three treats the placement professional practice as testable only when evidence and ticket IDs are recorded.
-
 ### 43.4 Confidentiality
 
 The placement report describes methods and lessons without identifying systems, vulnerabilities or partners. Use synthetic examples where needed and get host approval before submission.
-
-Section forty-three point four develops industry or public-service practice with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-three point four, the BPA board expects industry claims to carry owners and dates.
-
-Section forty-three point four treats the placement professional practice as testable only when evidence and ticket IDs are recorded.
-
-For section forty-three point four, Brightwater Port Authority will not accept industry work without a written trail.
 
 ### 43.5 Worked example
 
 A placement student at BPA (synthetic) builds the passive-telemetry dashboard. Lessons recorded: one TLS library logged only the "first offered" group, not the negotiated one — the dashboard was wrong until fixed; vendor declarations for appliances took eight weeks to obtain; the change board required a rollback rehearsal before approving hybrid TLS on the partner API.
 
-Section forty-three point five develops industry or public-service practice with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-three point five, the BPA board expects industry claims to carry owners and dates.
-
 ### 43.6 Common errors and limits
-Section forty-three point six develops industry or public-service practice with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-three point six, the BPA board expects industry claims to carry owners and dates.
-
-Section forty-three point six treats the placement professional practice as testable only when evidence and ticket IDs are recorded.
-
-For section forty-three point six, Brightwater Port Authority will not accept industry work without a written trail.
-
 
 - Bypassing change control "because it's only configuration".
 - Reports that disclose host vulnerabilities.
@@ -3790,12 +2454,6 @@ You will (1) scope a capstone migration project; (2) produce requirements, archi
 
 Migrate BPA's partner-facing ecosystem — edge TLS, partner VPNs, bills-of-lading signatures and customs exports — to quantum-resistant key establishment and a defined path for signatures, with crypto-agility and measurement, within an 18-month programme. Capstone I covers scoping through a first increment; Capstone II (Chapter 46) completes and validates.
 
-Section forty-four point one develops engineering capstone with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-four point one, the BPA board expects engineering claims to carry owners and dates.
-
-Section forty-four point one treats capstone brief deliverables for as testable only when evidence and ticket IDs are recorded.
-
 ### 44.2 Deliverables for Capstone I
 
 1. Scope statement and stakeholder map.
@@ -3806,43 +2464,15 @@ Section forty-four point one treats capstone brief deliverables for as testable 
 6. First increment: hybrid TLS on the partner API in a test environment with measurement.
 7. Plan for Capstone II with risks.
 
-Section forty-four point two develops engineering capstone with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-four point two, the BPA board expects engineering claims to carry owners and dates.
-
-Section forty-four point two treats capstone brief deliverables for as testable only when evidence and ticket IDs are recorded.
-
 ### 44.3 Assessment
 
 Assessors look for traceability from requirements to design to tests, honest unknowns in the CBOM, a working increment with evidence, and a plan whose dependencies are visible.
-
-Section forty-four point three develops engineering capstone with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-four point three, the BPA board expects engineering claims to carry owners and dates.
-
-Section forty-four point three treats capstone brief deliverables for as testable only when evidence and ticket IDs are recorded.
-
-For section forty-four point three, Brightwater Port Authority will not accept engineering work without a written trail.
 
 ### 44.4 Worked example
 
 A model Capstone I submission identifies 37 exposed long-lived flows, chooses hybrid key exchange everywhere external, defers public certificate migration with rationale, demonstrates the partner-API increment with 0 failures in 20,000 lab connections (95% upper bound 1.5 × 10^-4) and lists HSM procurement as the critical path.
 
-Section forty-four point four develops engineering capstone with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-four point four, the BPA board expects engineering claims to carry owners and dates.
-
-Section forty-four point four treats capstone brief deliverables for as testable only when evidence and ticket IDs are recorded.
-
 ### 44.5 Common errors and limits
-Section forty-four point five develops engineering capstone with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-four point five, the BPA board expects engineering claims to carry owners and dates.
-
-Section forty-four point five treats capstone brief deliverables for as testable only when evidence and ticket IDs are recorded.
-
-For section forty-four point five, Brightwater Port Authority will not accept engineering work without a written trail.
-
 
 - Scope too broad to deliver an increment.
 - No baseline measurement.
@@ -3856,12 +2486,6 @@ Keep a decision log from the first day of the capstone. Each entry records the d
 ### 44.6 Agreeing the capstone baseline
 
 Capstone I begins by recording BPA's starting state: which links use hybrid key exchange, which certificates chain to classical roots, and which inventory entries are still unverified. Progress in Capstone II is measured against this baseline, so later claims of improvement can be checked by the assessor.
-
-Section forty-four point six develops engineering capstone with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-four point six, the BPA board expects engineering claims to carry owners and dates.
-
-Section forty-four point six treats capstone brief deliverables for as testable only when evidence and ticket IDs are recorded.
 
 ### Exercises
 
@@ -3888,15 +2512,7 @@ You will (1) conduct and receive an independent design review; (2) use a structu
 
 Reviewers independent of the design team read the requirements, architecture, threat analysis and evidence, then interview the team. Findings are written, classified (critical, major, minor, observation) and answered.
 
-Section forty-five point one develops independent design review with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-five point one, the BPA board expects independent claims to carry owners and dates.
-
-Section forty-five point one treats review method pqc review as testable only when evidence and ticket IDs are recorded.
-
 ### 45.2 PQC review checklist
-Section forty-five point two develops independent design review with a Brightwater Port Authority note the engineer can demo offline.
-
 
 - Are all public-key uses inventoried, with unknowns reported?
 - Are algorithms and parameter sets from current standards (FIPS 203/204/205, SP 800-208) and are draft-era implementations excluded?
@@ -3912,31 +2528,11 @@ Section forty-five point two develops independent design review with a Brightwat
 
 Critical: a design flaw that defeats the security goal (e.g. XOR combiner without binding, stateful keys in software with backups). Major: significant gap (no fallback monitoring). Minor: documentation or clarity. Observations: suggestions.
 
-Section forty-five point three develops independent design review with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-five point three, the BPA board expects independent claims to carry owners and dates.
-
-Section forty-five point three treats review method pqc review as testable only when evidence and ticket IDs are recorded.
-
 ### 45.4 Worked example
 
 Review of the model Capstone I: one major finding — customs exports would use ML-KEM only, with no traditional component and no interoperability evidence from the agency; response: add parallel RSA-OAEP recipient during transition and schedule agency test. One minor — CBOM evidence source missing for 40 records; fixed.
 
-Section forty-five point four develops independent design review with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-five point four, the BPA board expects independent claims to carry owners and dates.
-
-Section forty-five point four treats review method pqc review as testable only when evidence and ticket IDs are recorded.
-
 ### 45.5 Common errors and limits
-Section forty-five point five develops independent design review with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-five point five, the BPA board expects independent claims to carry owners and dates.
-
-Section forty-five point five treats review method pqc review as testable only when evidence and ticket IDs are recorded.
-
-For section forty-five point five, Brightwater Port Authority will not accept independent work without a written trail.
-
 
 - Reviews by the design team itself.
 - Findings without severity or response.
@@ -3971,53 +2567,19 @@ You will (1) complete the capstone implementation across domains; (2) execute ve
 
 Complete hybrid key exchange on edge and partner VPNs (or interim PSK where appliances lack support), dual-signed bills of lading with timestamps, dual-recipient customs exports, CBOM coverage ≥ 95% with unknowns reported, and an agility demonstration.
 
-Section forty-six point one develops engineering capstone ii with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-six point one, the BPA board expects engineering claims to carry owners and dates.
-
-Section forty-six point one treats scope of capstone ii as testable only when evidence and ticket IDs are recorded.
-
 ### 46.2 Verification and validation
 
 Run Verification Laboratories I and II test suites against the completed system; collect partner acceptance; produce the residual-risk statement. Address every review finding with evidence.
-
-Section forty-six point two develops engineering capstone ii with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-six point two, the BPA board expects engineering claims to carry owners and dates.
-
-Section forty-six point two treats scope of capstone ii as testable only when evidence and ticket IDs are recorded.
-
-For section forty-six point two, Brightwater Port Authority will not accept engineering work without a written trail.
 
 ### 46.3 Agility demonstration
 
 Demonstrate replacing one algorithm through policy within the target time — for example, switching the edge's preferred hybrid group from X25519MLKEM768 to SecP256r1MLKEM768 for a compliance scenario, then back, measuring time-to-replace and confirming telemetry follows.
 
-Section forty-six point three develops engineering capstone ii with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-six point three, the BPA board expects engineering claims to carry owners and dates.
-
-Section forty-six point three treats scope of capstone ii as testable only when evidence and ticket IDs are recorded.
-
 ### 46.4 Worked example
 
 Model results: edge hybrid share 71%; VPNs — 9 of 14 partners with ML-KEM additional key exchange, 5 with PSK mixing; bills of lading dual-signed since month 14; exports dual-recipient, agency acceptance pending; CBOM coverage 96%, unknown 4%; agility demonstration: policy change to full negotiation in 3 days.
 
-Section forty-six point four develops engineering capstone ii with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-six point four, the BPA board expects engineering claims to carry owners and dates.
-
-Section forty-six point four treats scope of capstone ii as testable only when evidence and ticket IDs are recorded.
-
 ### 46.5 Common errors and limits
-Section forty-six point five develops engineering capstone ii with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-six point five, the BPA board expects engineering claims to carry owners and dates.
-
-Section forty-six point five treats scope of capstone ii as testable only when evidence and ticket IDs are recorded.
-
-For section forty-six point five, Brightwater Port Authority will not accept engineering work without a written trail.
-
 
 - Claiming completion with unresolved review findings.
 - Agility demonstrated only on a test bench.
@@ -4031,8 +2593,6 @@ Capstone II is also the moment to rehearse handover. Write the operations runboo
 ### 46.6 Handing the capstone to operations
 
 The Capstone II package goes to BPA's operations team with the configuration changes, the test evidence, the rollback steps and a list of what remains classical and why. An operations engineer replays the agility demonstration without the student present; only when that replay succeeds does the capstone count as transferable rather than a one-person result, and any step that needed the student's help is rewritten.
-
-Section forty-six point six develops engineering capstone ii with a Brightwater Port Authority note the engineer can demo offline.
 
 ### Exercises
 
@@ -4059,53 +2619,19 @@ You will (1) design and run a controlled failure trial; (2) recover from cryptog
 
 In an isolated replica environment: (a) PQC library vulnerability requiring emergency patch and re-key; (b) LMS signing HSM restored from backup — confirm refusal to sign until state is reconciled; (c) simulated algorithm break: disable ML-DSA in policy and switch bills-of-lading signing to the alternative; (d) middlebox update that drops large ClientHellos at one site.
 
-Section forty-seven point one develops failure and recovery trial with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-seven point one, the BPA board expects failure claims to carry owners and dates.
-
 ### 47.2 Objectives
 
 Define recovery time objectives: e.g. patch and re-key edge within 72 hours; switch signature algorithm within 14 days; path-specific exception for middlebox within 2 hours. Measure actual times.
-
-Section forty-seven point two develops failure and recovery trial with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-seven point two, the BPA board expects failure claims to carry owners and dates.
-
-Section forty-seven point two treats trial scenarios objectives running as testable only when evidence and ticket IDs are recorded.
-
-For section forty-seven point two, Brightwater Port Authority will not accept failure work without a written trail.
 
 ### 47.3 Running the trial
 
 Brief participants; inject faults; observe without helping; record times, decisions and problems; stop if safety or production is at risk (it should not be — replica only).
 
-Section forty-seven point three develops failure and recovery trial with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-seven point three, the BPA board expects failure claims to carry owners and dates.
-
-Section forty-seven point three treats trial scenarios objectives running as testable only when evidence and ticket IDs are recorded.
-
-For section forty-seven point three, Brightwater Port Authority will not accept failure work without a written trail.
-
 ### 47.4 Worked example
 
 Model trial results: (a) 41 hours; (b) HSM refused, but the runbook lacked reconciliation steps — added; (c) 19 days, exceeding objective because partner verifiers needed updates — partner test endpoints added to the plan; (d) 35 minutes.
 
-Section forty-seven point four develops failure and recovery trial with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-seven point four, the BPA board expects failure claims to carry owners and dates.
-
-Section forty-seven point four treats trial scenarios objectives running as testable only when evidence and ticket IDs are recorded.
-
 ### 47.5 Common errors and limits
-Section forty-seven point five develops failure and recovery trial with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-seven point five, the BPA board expects failure claims to carry owners and dates.
-
-Section forty-seven point five treats trial scenarios objectives running as testable only when evidence and ticket IDs are recorded.
-
-For section forty-seven point five, Brightwater Port Authority will not accept failure work without a written trail.
-
 
 - Trials on production.
 - Objectives set after the trial.
@@ -4119,10 +2645,6 @@ Trials should vary who is on duty. A recovery that works only when the system's 
 ### 47.6 Following up the trial findings
 
 Each gap found in the trial becomes a tracked action: the missing reconciliation steps in the runbook, the partner test endpoints and the slower-than-planned 19-day partner rollout. The trial is repeated for the scenarios that failed their objective, and the repeat results are added to the evidence dossier beside the originals, so readers can see both the failure and the correction.
-
-Section forty-seven point six develops failure and recovery trial with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-seven point six, the BPA board expects failure claims to carry owners and dates.
 
 ### Exercises
 
@@ -4149,65 +2671,23 @@ You will (1) assemble an evidence dossier for the migrated system; (2) link evid
 
 Requirements and traceability matrix; architecture and decision records; CBOM snapshots with method; threat and FMEA analyses; test reports (KATs, interoperability, downgrade, state); measurement data (negotiated groups, failures, latency); validation and acceptance records; failure-trial reports; residual-risk statement; agility demonstration results.
 
-Section forty-eight point one develops evidence dossier with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-eight point one, the BPA board expects evidence claims to carry owners and dates.
-
-Section forty-eight point one treats contents linking claims to as testable only when evidence and ticket IDs are recorded.
-
 ### 48.2 Linking claims to evidence
 
 Every claim in summaries has an evidence identifier. "Edge connections negotiating hybrid groups: 71% (EV-MEAS-14, 30-day window, passive telemetry)". Unlinked claims are removed.
-
-Section forty-eight point two develops evidence dossier with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-eight point two, the BPA board expects evidence claims to carry owners and dates.
-
-Section forty-eight point two treats contents linking claims to as testable only when evidence and ticket IDs are recorded.
-
-For section forty-eight point two, Brightwater Port Authority will not accept evidence work without a written trail.
 
 ### 48.3 Protecting evidence
 
 Evidence can reveal weaknesses. Classify dossier parts; share sensitive parts (vulnerability details, network maps) only with authorized reviewers; publish only sanitized summaries.
 
-Section forty-eight point three develops evidence dossier with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-eight point three, the BPA board expects evidence claims to carry owners and dates.
-
-Section forty-eight point three treats contents linking claims to as testable only when evidence and ticket IDs are recorded.
-
-For section forty-eight point three, Brightwater Port Authority will not accept evidence work without a written trail.
-
 ### 48.4 Reviewability
 
 Use a consistent structure, index and version control. A successor should find in minutes where ML-DSA keys live and how to replace them.
-
-Section forty-eight point four develops evidence dossier with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-eight point four, the BPA board expects evidence claims to carry owners and dates.
-
-Section forty-eight point four treats contents linking claims to as testable only when evidence and ticket IDs are recorded.
-
-For section forty-eight point four, Brightwater Port Authority will not accept evidence work without a written trail.
 
 ### 48.5 Worked example
 
 BPA's dossier index lists 126 evidence items. An auditor samples ten claims and traces each to evidence in under an hour; one claim — "all firmware dual-signed" — is found to apply only to devices with the new bootloader; the claim is corrected to "all images dual-signed; 40% of devices verify both".
 
-Section forty-eight point five develops evidence dossier with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-eight point five, the BPA board expects evidence claims to carry owners and dates.
-
 ### 48.6 Common errors and limits
-Section forty-eight point six develops evidence dossier with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-eight point six, the BPA board expects evidence claims to carry owners and dates.
-
-Section forty-eight point six treats contents linking claims to as testable only when evidence and ticket IDs are recorded.
-
-For section forty-eight point six, Brightwater Port Authority will not accept evidence work without a written trail.
-
 
 - Claims without evidence identifiers.
 - Dossiers with sensitive details shared broadly.
@@ -4221,12 +2701,6 @@ Dossiers also need a maintenance owner. Evidence ages: measurements become stale
 ### 48.7 Keeping the dossier current
 
 BPA's dossier is versioned: each update states what changed, why and who approved it. When a standard is revised or a vendor ships a new post-quantum option, the affected claims are re-checked and their evidence refreshed, and stale items are marked rather than silently removed.
-
-Section forty-eight point seven develops evidence dossier with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-eight point seven, the BPA board expects evidence claims to carry owners and dates.
-
-Section forty-eight point seven treats contents linking claims to as testable only when evidence and ticket IDs are recorded.
 
 ### Exercises
 
@@ -4253,61 +2727,23 @@ You will (1) write an engineering thesis that documents the design, implementati
 
 Introduction (problem, stakeholders, contribution); background (quantum threat, standards, hybrids, agility); requirements; design and alternatives; implementation; verification and validation; operations and failure trial; discussion (lessons, generalization, limits); conclusion and future work. Optionally include an applied study (Chapter 42).
 
-Section forty-nine point one develops engineering thesis with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-nine point one, the BPA board expects engineering claims to carry owners and dates.
-
-Section forty-nine point one treats structure results and limits as testable only when evidence and ticket IDs are recorded.
-
 ### 49.2 Results and limits
 
 Report measured results with windows and intervals; state residual risks; describe limits with direction (e.g. "passive telemetry cannot see certificate algorithms in TLS 1.3, so certificate migration status is from configuration only").
-
-Section forty-nine point two develops engineering thesis with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-nine point two, the BPA board expects engineering claims to carry owners and dates.
-
-Section forty-nine point two treats structure results and limits as testable only when evidence and ticket IDs are recorded.
 
 ### 49.3 Generalization
 
 Lessons that generalize: inventory first; hybrid key exchange early; authentication by trust-anchor lifetime; agility measured; partners set pace. Lessons that may not: specific failure rates, vendor behaviours, BPA's dependency structure.
 
-Section forty-nine point three develops engineering thesis with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-nine point three, the BPA board expects engineering claims to carry owners and dates.
-
-Section forty-nine point three treats structure results and limits as testable only when evidence and ticket IDs are recorded.
-
 ### 49.4 Integrity
 
 Cite standards and research accurately; distinguish your work from team work; label synthetic data; do not disclose host confidential information.
-
-Section forty-nine point four develops engineering thesis with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-nine point four, the BPA board expects engineering claims to carry owners and dates.
-
-Section forty-nine point four treats structure results and limits as testable only when evidence and ticket IDs are recorded.
-
-For section forty-nine point four, Brightwater Port Authority will not accept engineering work without a written trail.
 
 ### 49.5 Worked example
 
 A model thesis abstract: "This thesis designs and validates a quantum-resistant migration for a synthetic port authority's partner ecosystem. Hybrid X25519MLKEM768 key exchange reached 71% of edge connections without exceeding the failure budget; partner VPNs used ML-KEM additional exchanges or interim pre-shared-key mixing; bills of lading were dual-signed with ML-DSA-65 and ECDSA with timestamp renewal; a policy-driven design replaced a KEM in three days. Certificates on the public portal remain classical; residual risks and generalizable lessons are discussed."
 
-Section forty-nine point five develops engineering thesis with a Brightwater Port Authority note the engineer can demo offline.
-
 ### 49.6 Common errors and limits
-Section forty-nine point six develops engineering thesis with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section forty-nine point six, the BPA board expects engineering claims to carry owners and dates.
-
-Section forty-nine point six treats structure results and limits as testable only when evidence and ticket IDs are recorded.
-
-For section forty-nine point six, Brightwater Port Authority will not accept engineering work without a written trail.
-
-Section forty-nine point six fails closed if engineering evidence is missing rather than guessing.
-
 
 - Overgeneralizing from one organization.
 - Omitting residual risks.
@@ -4342,14 +2778,6 @@ You will (1) present and defend the engineering thesis; (2) answer technical, et
 
 Twenty minutes: problem and stakes; requirements; architecture and key decisions; results with evidence; failures and recovery; residual risk; what you would do differently. Use diagrams with text alternatives.
 
-Section fifty point one develops final defense with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section fifty point one, the BPA board expects final claims to carry owners and dates.
-
-Section fifty point one treats presentation likely questions demonstration as testable only when evidence and ticket IDs are recorded.
-
-For section fifty point one, Brightwater Port Authority will not accept final work without a written trail.
-
 ### 50.2 Likely questions
 
 - Why hybrid rather than pure PQC? (Hedge against cryptanalytic surprise; cite Rainbow/SIKE; cost accepted.)
@@ -4362,35 +2790,11 @@ For section fifty point one, Brightwater Port Authority will not accept final wo
 
 Show the dashboard, a policy-driven algorithm change in the replica environment and the dossier tracing for one claim.
 
-Section fifty point three develops final defense with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section fifty point three, the BPA board expects final claims to carry owners and dates.
-
-Section fifty point three treats presentation likely questions demonstration as testable only when evidence and ticket IDs are recorded.
-
-For section fifty point three, Brightwater Port Authority will not accept final work without a written trail.
-
 ### 50.4 Forward plan
 
 Agility is the legacy: schedule re-verification of standards (FN-DSA, HQC, revised IR 8547), annual algorithm-break tabletops, CBOM refresh automation and partner reviews.
 
-Section fifty point four develops final defense with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section fifty point four, the BPA board expects final claims to carry owners and dates.
-
-Section fifty point four treats presentation likely questions demonstration as testable only when evidence and ticket IDs are recorded.
-
-For section fifty point four, Brightwater Port Authority will not accept final work without a written trail.
-
 ### 50.5 Common errors and limits
-Section fifty point five develops final defense with a Brightwater Port Authority note the engineer can demo offline.
-
-Under section fifty point five, the BPA board expects final claims to carry owners and dates.
-
-Section fifty point five treats presentation likely questions demonstration as testable only when evidence and ticket IDs are recorded.
-
-For section fifty point five, Brightwater Port Authority will not accept final work without a written trail.
-
 
 - Claiming the organization is "quantum-safe".
 - No answer for algorithm compromise.

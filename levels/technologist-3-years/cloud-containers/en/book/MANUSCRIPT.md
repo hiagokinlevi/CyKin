@@ -52,41 +52,17 @@ Priya Nair is a technologist student at the fictional Northgate Polytechnic. In 
 
 Cloud computing, as defined in NIST SP 800-145, lets customers use pooled computing resources on demand. The resources are still physical machines with processors, memory, disks and network cards, owned and operated by a provider. Knowing this helps Priya understand that a cloud server is a share of real hardware, not something abstract.
 
-Section one point two develops computing systems with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section one point two, Kwame Asante expects computing claims to carry owners and dates.
-
 ### 1.3 Processes and programs
 
 A program is a file of instructions; a process is a running copy of it, with its own memory and permissions. A web server, a database and a backup job are separate processes. Security questions often start with which process is running, as which user, and with what access.
-
-Section one point three develops computing systems with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section one point three, Kwame Asante expects computing claims to carry owners and dates.
-
-Section one point three treats starting the placement hardware as testable only when evidence and ticket IDs are recorded.
 
 ### 1.4 Memory and storage
 
 Memory holds working data and disappears when power is lost. Storage keeps data on disk. In cloud systems, a container's own disk is often temporary, so anything worth keeping must go to separate storage, such as a managed database or a storage bucket.
 
-Section one point four develops computing systems with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section one point four, Kwame Asante expects computing claims to carry owners and dates.
-
-Section one point four treats starting the placement hardware as testable only when evidence and ticket IDs are recorded.
-
 ### 1.5 Files and permissions
 
 Operating systems record who owns each file and who may read, write or run it. Mistakes here, such as a configuration file readable by everyone, are common causes of exposure.
-
-Section one point five develops computing systems with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section one point five, Kwame Asante expects computing claims to carry owners and dates.
-
-Section one point five treats starting the placement hardware as testable only when evidence and ticket IDs are recorded.
-
-For section one point five, Cobalt Hosting will not accept computing work without a written trail.
 
 ### Worked example
 
@@ -124,67 +100,25 @@ You will (1) explain addresses, ports and protocols; (2) describe how a web requ
 
 Each machine on a network has an address. A port number identifies a particular service on that machine, such as 443 for HTTPS. When a firewall rule allows a port, it allows anyone who can reach that address to talk to the service behind it.
 
-Section two point one develops networks and internet services with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section two point one, Kwame Asante expects networks claims to carry owners and dates.
-
-Section two point one treats addresses and ports web as testable only when evidence and ticket IDs are recorded.
-
 ### 2.2 A web request
 
 When a dental patient opens Riverside Dental Group's booking page, their browser looks up the name using DNS, connects to Cobalt's proxy on port 443, and the proxy forwards the request to the web container. The response travels back the same way.
-
-Section two point two develops networks and internet services with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section two point two, Kwame Asante expects networks claims to carry owners and dates.
-
-Section two point two treats addresses and ports web as testable only when evidence and ticket IDs are recorded.
 
 ### 2.3 Encryption in transit
 
 TLS encrypts traffic between browser and proxy so others on the network cannot read it. Traffic between services inside a cluster may or may not be encrypted; Priya learns to check rather than assume.
 
-Section two point three develops networks and internet services with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section two point three, Kwame Asante expects networks claims to carry owners and dates.
-
-Section two point three treats addresses and ports web as testable only when evidence and ticket IDs are recorded.
-
 ### 2.4 Private and public networks
 
 Some services, such as databases, should only be reachable from inside a private network. Exposing them to the internet without need increases risk greatly.
-
-Section two point four develops networks and internet services with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section two point four, Kwame Asante expects networks claims to carry owners and dates.
-
-Section two point four treats addresses and ports web as testable only when evidence and ticket IDs are recorded.
-
-For section two point four, Cobalt Hosting will not accept networks work without a written trail.
 
 ### 2.5 Load balancers and proxies
 
 A proxy or load balancer receives traffic and passes it on. It is a natural place to enforce TLS, limit request sizes and log requests.
 
-Section two point five develops networks and internet services with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section two point five, Kwame Asante expects networks claims to carry owners and dates.
-
-Section two point five treats addresses and ports web as testable only when evidence and ticket IDs are recorded.
-
-For section two point five, Cobalt Hosting will not accept networks work without a written trail.
-
 ### 2.6 Network diagrams
 
 Kwame keeps a simple diagram for each client showing which parts face the internet. Priya notices that two diagrams are out of date.
-
-Section two point six develops networks and internet services with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section two point six, Kwame Asante expects networks claims to carry owners and dates.
-
-Section two point six treats addresses and ports web as testable only when evidence and ticket IDs are recorded.
-
-For section two point six, Cobalt Hosting will not accept networks work without a written trail.
 
 ### Worked example
 
@@ -222,69 +156,25 @@ You will (1) read short Python scripts; (2) use lists and dictionaries to hold r
 
 The six-hour search happened because staff checked each client by hand. A short script that reads a list of workloads and prints which images they use could answer the same question in seconds.
 
-Section three point one develops programming foundations with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section three point one, Kwame Asante expects programming claims to carry owners and dates.
-
-Section three point one treats why scripting helps values as testable only when evidence and ticket IDs are recorded.
-
 ### 3.2 Values, lists and dictionaries
 
 A list holds items in order. A dictionary maps names to values, such as workload name to image. Most of the labs in this course use these two structures with synthetic data.
-
-Section three point two develops programming foundations with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section three point two, Kwame Asante expects programming claims to carry owners and dates.
-
-Section three point two treats why scripting helps values as testable only when evidence and ticket IDs are recorded.
 
 ### 3.3 Loops and conditions
 
 A loop goes through each item; a condition decides what to do with it. Together they let a script find every workload whose image is not on an approved list.
 
-Section three point three develops programming foundations with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section three point three, Kwame Asante expects programming claims to carry owners and dates.
-
-Section three point three treats why scripting helps values as testable only when evidence and ticket IDs are recorded.
-
-For section three point three, Cobalt Hosting will not accept programming work without a written trail.
-
 ### 3.4 Clear output
 
 A good check prints counts first and then the details, so a reader sees the size of the problem before the list. Priya adopts this habit.
-
-Section three point four develops programming foundations with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section three point four, Kwame Asante expects programming claims to carry owners and dates.
-
-Section three point four treats why scripting helps values as testable only when evidence and ticket IDs are recorded.
-
-For section three point four, Cobalt Hosting will not accept programming work without a written trail.
 
 ### 3.5 Standard library only
 
 The course labs use only Python's standard library, so they run anywhere without installing packages. This also avoids bringing in code that Cobalt has not reviewed.
 
-Section three point five develops programming foundations with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section three point five, Kwame Asante expects programming claims to carry owners and dates.
-
-Section three point five treats why scripting helps values as testable only when evidence and ticket IDs are recorded.
-
-For section three point five, Cobalt Hosting will not accept programming work without a written trail.
-
 ### 3.6 Reading before running
 
 Priya reads every script before running it, even one written by a colleague. Kwame says this is good practice for any code that touches client systems.
-
-Section three point six develops programming foundations with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section three point six, Kwame Asante expects programming claims to carry owners and dates.
-
-Section three point six treats why scripting helps values as testable only when evidence and ticket IDs are recorded.
-
-For section three point six, Cobalt Hosting will not accept programming work without a written trail.
 
 ### Comments and names
 
@@ -326,75 +216,25 @@ You will (1) model hosting assets as records; (2) choose fields that answer secu
 
 To answer "which clients use this image?", Cobalt needs records linking client, cluster, workload and image. Priya drafts a simple model with those four fields plus an owner.
 
-Section four point one develops data models with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section four point one, Kwame Asante expects data claims to carry owners and dates.
-
-Section four point one treats what to record consistent as testable only when evidence and ticket IDs are recorded.
-
-For section four point one, Cobalt Hosting will not accept data work without a written trail.
-
 ### 4.2 Consistent names
 
 Two staff wrote the same image as "node14" and "node:14". Inconsistent names break searches. Priya proposes always recording the full image reference, including registry and tag.
-
-Section four point two develops data models with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section four point two, Kwame Asante expects data claims to carry owners and dates.
-
-Section four point two treats what to record consistent as testable only when evidence and ticket IDs are recorded.
-
-For section four point two, Cobalt Hosting will not accept data work without a written trail.
 
 ### 4.3 Identifiers
 
 Each record needs a unique identifier, so updates change the right row. Workload names alone are not unique because two clients both have a workload called web.
 
-Section four point three develops data models with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section four point three, Kwame Asante expects data claims to carry owners and dates.
-
-Section four point three treats what to record consistent as testable only when evidence and ticket IDs are recorded.
-
-For section four point three, Cobalt Hosting will not accept data work without a written trail.
-
 ### 4.4 Tables and files
 
 Records can live in a spreadsheet, a CSV file or a database. For now Cobalt uses a CSV file kept in its configuration repository, so changes are reviewed.
-
-Section four point four develops data models with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section four point four, Kwame Asante expects data claims to carry owners and dates.
-
-Section four point four treats what to record consistent as testable only when evidence and ticket IDs are recorded.
-
-For section four point four, Cobalt Hosting will not accept data work without a written trail.
 
 ### 4.5 Keeping data current
 
 A model is useful only if it is updated. Priya suggests generating the records from the clusters automatically each night rather than typing them.
 
-Section four point five develops data models with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section four point five, Kwame Asante expects data claims to carry owners and dates.
-
-Section four point five treats what to record consistent as testable only when evidence and ticket IDs are recorded.
-
-For section four point five, Cobalt Hosting will not accept data work without a written trail.
-
 ### 4.6 Sensitive fields
 
 The model avoids storing secrets or patient data; it describes systems, not people.
-
-Section four point six develops data models with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section four point six, Kwame Asante expects data claims to carry owners and dates.
-
-Section four point six treats what to record consistent as testable only when evidence and ticket IDs are recorded.
-
-For section four point six, Cobalt Hosting will not accept data work without a written trail.
-
-Section four point six fails closed if data evidence is missing rather than guessing.
 
 ### Checking the model
 
@@ -436,67 +276,25 @@ You will (1) explain confidentiality, integrity and availability; (2) describe t
 
 Confidentiality keeps data from the wrong people, integrity keeps it accurate, and availability keeps it usable when needed. A booking system needs all three: patient details must stay private, appointments must be correct, and the site must be up.
 
-Section five point one develops security literacy with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section five point one, Kwame Asante expects security claims to carry owners and dates.
-
-Section five point one treats three goals shared responsibility as testable only when evidence and ticket IDs are recorded.
-
 ### 5.2 Shared responsibility
 
 AWS, Azure and Google Cloud each publish a shared responsibility model: the provider secures the underlying infrastructure, and the customer secures what they configure and run. Cobalt, as a hosting company, adds a third layer: it manages clusters for clients, who still own their data and users.
-
-Section five point two develops security literacy with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section five point two, Kwame Asante expects security claims to carry owners and dates.
-
-Section five point two treats three goals shared responsibility as testable only when evidence and ticket IDs are recorded.
 
 ### 5.3 Common failures
 
 Public storage buckets, overly broad permissions, unpatched images and missing logs appear again and again in cloud incidents. None requires a clever attacker; all are configuration problems.
 
-Section five point three develops security literacy with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section five point three, Kwame Asante expects security claims to carry owners and dates.
-
-Section five point three treats three goals shared responsibility as testable only when evidence and ticket IDs are recorded.
-
-For section five point three, Cobalt Hosting will not accept security work without a written trail.
-
 ### 5.4 Threats and vulnerabilities
 
 A threat is something that could cause harm; a vulnerability is a weakness it could use. The old Node image is a vulnerability; whether it matters depends on how the workload is exposed.
-
-Section five point four develops security literacy with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section five point four, Kwame Asante expects security claims to carry owners and dates.
-
-Section five point four treats three goals shared responsibility as testable only when evidence and ticket IDs are recorded.
 
 ### 5.5 Risk
 
 Risk combines how likely harm is and how bad it would be. Priya learns to describe risk in words before using numbers.
 
-Section five point five develops security literacy with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section five point five, Kwame Asante expects security claims to carry owners and dates.
-
-Section five point five treats three goals shared responsibility as testable only when evidence and ticket IDs are recorded.
-
-For section five point five, Cobalt Hosting will not accept security work without a written trail.
-
 ### 5.6 Ethics of access
 
 Placement students see client systems. Priya signs Cobalt's confidentiality agreement and only accesses what her tasks require.
-
-Section five point six develops security literacy with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section five point six, Kwame Asante expects security claims to carry owners and dates.
-
-Section five point six treats three goals shared responsibility as testable only when evidence and ticket IDs are recorded.
-
-For section five point six, Cobalt Hosting will not accept security work without a written trail.
 
 ### Words to use
 
@@ -538,67 +336,25 @@ You will (1) explain virtual machines and containers; (2) compare their isolatio
 
 A virtual machine runs a full operating system on shared hardware, separated by a hypervisor. Cloud providers use this to run many customers on the same physical machine.
 
-Section six point one develops operating systems and virtualization with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section six point one, Kwame Asante expects operating claims to carry owners and dates.
-
-Section six point one treats virtual machines containers isolation as testable only when evidence and ticket IDs are recorded.
-
-For section six point one, Cobalt Hosting will not accept operating work without a written trail.
-
 ### 6.2 Containers
 
 A container packages an application with the files it needs and runs it as an isolated process on a shared kernel. Containers start quickly and are small, which is why Cobalt uses them.
-
-Section six point two develops operating systems and virtualization with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section six point two, Kwame Asante expects operating claims to carry owners and dates.
-
-Section six point two treats virtual machines containers isolation as testable only when evidence and ticket IDs are recorded.
 
 ### 6.3 Isolation differences
 
 Containers share the host kernel, so their isolation is weaker than separate virtual machines. NIST SP 800-190 advises grouping containers of similar sensitivity on the same hosts and keeping the host operating system minimal.
 
-Section six point three develops operating systems and virtualization with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section six point three, Kwame Asante expects operating claims to carry owners and dates.
-
-Section six point three treats virtual machines containers isolation as testable only when evidence and ticket IDs are recorded.
-
 ### 6.4 Images
 
 An image is a layered file bundle from which containers start. It includes a base layer, often a small operating system, plus the application. The advisory affected the base layer, so every image built on it was affected.
-
-Section six point four develops operating systems and virtualization with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section six point four, Kwame Asante expects operating claims to carry owners and dates.
-
-Section six point four treats virtual machines containers isolation as testable only when evidence and ticket IDs are recorded.
 
 ### 6.5 Tags and digests
 
 A tag such as node:14 is a label that can be moved; a digest identifies exact content. Recording digests gives a reliable answer to "what exactly is running?"
 
-Section six point five develops operating systems and virtualization with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section six point five, Kwame Asante expects operating claims to carry owners and dates.
-
-Section six point five treats virtual machines containers isolation as testable only when evidence and ticket IDs are recorded.
-
-For section six point five, Cobalt Hosting will not accept operating work without a written trail.
-
 ### 6.6 Running as root
 
 Containers that run as root give more power to anyone who compromises them. Kubernetes Pod Security Standards discourage it in the Restricted profile.
-
-Section six point six develops operating systems and virtualization with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section six point six, Kwame Asante expects operating claims to carry owners and dates.
-
-Section six point six treats virtual machines containers isolation as testable only when evidence and ticket IDs are recorded.
-
-For section six point six, Cobalt Hosting will not accept operating work without a written trail.
 
 ### Hosts and nodes
 
@@ -640,71 +396,25 @@ You will (1) explain authentication and authorisation; (2) apply least privilege
 
 Authentication confirms who someone is; authorisation decides what they may do. In cloud systems, identities include people, services and automation such as the CI bot.
 
-Section seven point one develops identity and access foundations with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section seven point one, Kwame Asante expects identity claims to carry owners and dates.
-
-Section seven point one treats who and what least as testable only when evidence and ticket IDs are recorded.
-
-For section seven point one, Cobalt Hosting will not accept identity work without a written trail.
-
 ### 7.2 Least privilege
 
 Each identity should have only the access it needs. Sandhu et al. (1996) describe role-based access control, where permissions are grouped into roles and roles assigned to users, making least privilege easier to manage.
-
-Section seven point two develops identity and access foundations with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section seven point two, Kwame Asante expects identity claims to carry owners and dates.
-
-Section seven point two treats who and what least as testable only when evidence and ticket IDs are recorded.
 
 ### 7.3 Kubernetes RBAC
 
 Kubernetes uses Roles and ClusterRoles to grant actions on resources, bound to users or service accounts. A ClusterRoleBinding to cluster-admin grants everything and should be rare.
 
-Section seven point three develops identity and access foundations with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section seven point three, Kwame Asante expects identity claims to carry owners and dates.
-
-Section seven point three treats who and what least as testable only when evidence and ticket IDs are recorded.
-
-For section seven point three, Cobalt Hosting will not accept identity work without a written trail.
-
 ### 7.4 Service accounts
 
 Workloads run with service accounts. The default service account should have no extra permissions; each workload that needs API access gets its own account.
-
-Section seven point four develops identity and access foundations with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section seven point four, Kwame Asante expects identity claims to carry owners and dates.
-
-Section seven point four treats who and what least as testable only when evidence and ticket IDs are recorded.
-
-For section seven point four, Cobalt Hosting will not accept identity work without a written trail.
 
 ### 7.5 Leavers
 
 When staff leave, their access must be removed. Priya finds an account called old-admin still active on one cluster.
 
-Section seven point five develops identity and access foundations with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section seven point five, Kwame Asante expects identity claims to carry owners and dates.
-
-Section seven point five treats who and what least as testable only when evidence and ticket IDs are recorded.
-
-For section seven point five, Cobalt Hosting will not accept identity work without a written trail.
-
 ### 7.6 Multi-factor authentication
 
 Console access for staff requires a second factor, which greatly reduces the impact of stolen passwords.
-
-Section seven point six develops identity and access foundations with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section seven point six, Kwame Asante expects identity claims to carry owners and dates.
-
-Section seven point six treats who and what least as testable only when evidence and ticket IDs are recorded.
-
-For section seven point six, Cobalt Hosting will not accept identity work without a written trail.
 
 ### Reviewing access regularly
 
@@ -750,71 +460,25 @@ You will (1) describe defence in depth; (2) place controls at layers of a hostin
 
 Defence in depth means several controls so one failure does not expose everything. For a client site: network rules, TLS at the proxy, admission rules in the cluster, least-privilege service accounts and logs.
 
-Section eight point one develops security architecture basics with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section eight point one, Kwame Asante expects security claims to carry owners and dates.
-
-Section eight point one treats layers trust boundaries zero as testable only when evidence and ticket IDs are recorded.
-
 ### 8.2 Trust boundaries
 
 A trust boundary is where data passes between areas with different levels of trust, such as internet to proxy or cluster to managed database. Controls cluster at boundaries.
-
-Section eight point two develops security architecture basics with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section eight point two, Kwame Asante expects security claims to carry owners and dates.
-
-Section eight point two treats layers trust boundaries zero as testable only when evidence and ticket IDs are recorded.
-
-For section eight point two, Cobalt Hosting will not accept security work without a written trail.
 
 ### 8.3 Zero trust ideas
 
 NIST SP 800-207 describes zero trust: no implicit trust based on network location; each request is authenticated and authorised. Cobalt does not need a full programme, but the idea supports checking service identities inside clusters.
 
-Section eight point three develops security architecture basics with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section eight point three, Kwame Asante expects security claims to carry owners and dates.
-
-Section eight point three treats layers trust boundaries zero as testable only when evidence and ticket IDs are recorded.
-
 ### 8.4 Separation of clients
 
 Cobalt runs each large client in its own cluster and smaller clients in separate namespaces of a shared cluster with network policies between them.
-
-Section eight point four develops security architecture basics with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section eight point four, Kwame Asante expects security claims to carry owners and dates.
-
-Section eight point four treats layers trust boundaries zero as testable only when evidence and ticket IDs are recorded.
-
-For section eight point four, Cobalt Hosting will not accept security work without a written trail.
 
 ### 8.5 Simplicity
 
 A design staff understand is more secure in practice than a complex one they work around.
 
-Section eight point five develops security architecture basics with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section eight point five, Kwame Asante expects security claims to carry owners and dates.
-
-Section eight point five treats layers trust boundaries zero as testable only when evidence and ticket IDs are recorded.
-
-For section eight point five, Cobalt Hosting will not accept security work without a written trail.
-
 ### 8.6 Architecture records
 
 Each client has a one-page architecture record with layers and boundaries.
-
-Section eight point six develops security architecture basics with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section eight point six, Kwame Asante expects security claims to carry owners and dates.
-
-Section eight point six treats layers trust boundaries zero as testable only when evidence and ticket IDs are recorded.
-
-For section eight point six, Cobalt Hosting will not accept security work without a written trail.
-
-Section eight point six fails closed if security evidence is missing rather than guessing.
 
 ### Architecture and clients
 
@@ -860,73 +524,25 @@ You will (1) collect evidence about system state; (2) define simple measures; (3
 
 Evidence is a record that shows the state of a system at a time: a configuration export, a log entry, an inventory file. A colleague saying "it is fine" is not evidence.
 
-Section nine point one develops evidence and measurement with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section nine point one, Kwame Asante expects evidence claims to carry owners and dates.
-
-Section nine point one treats what counts as evidence as testable only when evidence and ticket IDs are recorded.
-
 ### 9.2 Timestamps and sources
 
 Each piece of evidence needs when it was collected and from where, so others can check it.
-
-Section nine point two develops evidence and measurement with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section nine point two, Kwame Asante expects evidence claims to carry owners and dates.
-
-Section nine point two treats what counts as evidence as testable only when evidence and ticket IDs are recorded.
-
-For section nine point two, Cobalt Hosting will not accept evidence work without a written trail.
 
 ### 9.3 Simple measures
 
 Useful measures for Cobalt: share of workloads using approved images, number of baseline failures per cluster, and time to answer an advisory.
 
-Section nine point three develops evidence and measurement with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section nine point three, Kwame Asante expects evidence claims to carry owners and dates.
-
-Section nine point three treats what counts as evidence as testable only when evidence and ticket IDs are recorded.
-
-For section nine point three, Cobalt Hosting will not accept evidence work without a written trail.
-
 ### 9.4 Baselines and trends
 
 A single number means little; comparing it over time shows whether things improve.
-
-Section nine point four develops evidence and measurement with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section nine point four, Kwame Asante expects evidence claims to carry owners and dates.
-
-Section nine point four treats what counts as evidence as testable only when evidence and ticket IDs are recorded.
-
-For section nine point four, Cobalt Hosting will not accept evidence work without a written trail.
-
-Section nine point four fails closed if evidence evidence is missing rather than guessing.
 
 ### 9.5 Misleading numbers
 
 A percentage hides small totals. "50% of clusters failing" may mean one of two. Priya always shows counts alongside percentages.
 
-Section nine point five develops evidence and measurement with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section nine point five, Kwame Asante expects evidence claims to carry owners and dates.
-
-Section nine point five treats what counts as evidence as testable only when evidence and ticket IDs are recorded.
-
-For section nine point five, Cobalt Hosting will not accept evidence work without a written trail.
-
 ### 9.6 Storing evidence
 
 Evidence is kept in the configuration repository with read-only history so it cannot be quietly changed.
-
-Section nine point six develops evidence and measurement with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section nine point six, Kwame Asante expects evidence claims to carry owners and dates.
-
-Section nine point six treats what counts as evidence as testable only when evidence and ticket IDs are recorded.
-
-For section nine point six, Cobalt Hosting will not accept evidence work without a written trail.
 
 ### Measurement plan
 
@@ -972,71 +588,25 @@ You will (1) map the cloud and container security field; (2) locate Cobalt's pro
 
 Cloud and container security covers configuring cloud services, building and running images, managing identities, protecting data and monitoring. Standards include NIST SP 800-190 for containers, CSA CCM v4 for cloud controls and the CIS Benchmarks for configuration.
 
-Section ten point one develops cloud and container security orientation with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section ten point one, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section ten point one treats the field cobalt's problem as testable only when evidence and ticket IDs are recorded.
-
 ### 10.2 Cobalt's problem
 
 The six-hour search showed that Cobalt lacked an inventory of images. Without it, advisories, audits and incidents all start slowly.
-
-Section ten point two develops cloud and container security orientation with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section ten point two, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section ten point two treats the field cobalt's problem as testable only when evidence and ticket IDs are recorded.
-
-For section ten point two, Cobalt Hosting will not accept cloud work without a written trail.
 
 ### 10.3 Main areas
 
 Priya groups the work into inventory, configuration baselines, identity, data flows, pipeline checks and monitoring.
 
-Section ten point three develops cloud and container security orientation with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section ten point three, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section ten point three treats the field cobalt's problem as testable only when evidence and ticket IDs are recorded.
-
-For section ten point three, Cobalt Hosting will not accept cloud work without a written trail.
-
 ### 10.4 Kubernetes security docs
 
 The Kubernetes project documents Pod Security Standards, RBAC, network policies and good practices for secrets. These are free and written for operators.
-
-Section ten point four develops cloud and container security orientation with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section ten point four, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section ten point four treats the field cobalt's problem as testable only when evidence and ticket IDs are recorded.
-
-For section ten point four, Cobalt Hosting will not accept cloud work without a written trail.
 
 ### 10.5 Plan
 
 Over the next chapters Priya will build an inventory, check data flows, apply a baseline, review logs, add pipeline checks and evaluate the result.
 
-Section ten point five develops cloud and container security orientation with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section ten point five, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section ten point five treats the field cobalt's problem as testable only when evidence and ticket IDs are recorded.
-
-For section ten point five, Cobalt Hosting will not accept cloud work without a written trail.
-
 ### 10.6 Agreement
 
 Kwame and Northgate agree on her placement objectives and confirm she works only on synthetic copies or with supervision.
-
-Section ten point six develops cloud and container security orientation with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section ten point six, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section ten point six treats the field cobalt's problem as testable only when evidence and ticket IDs are recorded.
-
-For section ten point six, Cobalt Hosting will not accept cloud work without a written trail.
 
 ### Learning resources
 
@@ -1082,19 +652,9 @@ You will (1) build an inventory of running workloads and their images; (2) compa
 
 Using the data model from chapter 4, Priya exports the workloads from the shared client cluster into a synthetic list. Each entry links a workload to the full image reference it runs. This is the asset list that was missing during the advisory search.
 
-Section eleven point one develops cloud and container security assets with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section eleven point one, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section eleven point one treats from model to inventory as testable only when evidence and ticket IDs are recorded.
-
 ### 11.2 Approved images
 
 Cobalt keeps an approved list: images built by its own pipeline, scanned and stored in its private registry. Anything else is unapproved, either pulled straight from a public registry or built outside the pipeline. Shu et al. (2017) found that many public images contained known vulnerabilities, which is why Cobalt prefers its own builds.
-
-Section eleven point two develops cloud and container security assets with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section eleven point two, Kwame Asante expects cloud claims to carry owners and dates.
 
 ### Lab — Lab — image inventory
 
@@ -1125,33 +685,13 @@ workloads 8, approved 5, not approved 3
 
 Of 8 workloads, 5 run approved images and 3 do not. Two, booking and cron, pull node:14 and python:3.6 directly from a public registry; both are old versions. One, reports, uses an internal image that was never added to the approved list.
 
-Section eleven point three develops cloud and container security assets with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section eleven point three, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section eleven point three treats from model to inventory as testable only when evidence and ticket IDs are recorded.
-
 ### 11.4 Context for each finding
 
 Priya adds context: booking faces the internet and handles appointments, so it matters most; cron sends files to a partner; reports is internal. Context decides the order of fixes.
 
-Section eleven point four develops cloud and container security assets with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section eleven point four, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section eleven point four treats from model to inventory as testable only when evidence and ticket IDs are recorded.
-
 ### 11.5 Owners
 
 Each unapproved image is assigned to the team that deploys it, with a target date.
-
-Section eleven point five develops cloud and container security assets with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section eleven point five, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section eleven point five treats from model to inventory as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point five, Cobalt Hosting will not accept cloud work without a written trail.
 
 ### Regenerating
 
@@ -1193,21 +733,9 @@ You will (1) list data flows for a client system; (2) mark trust boundaries; (3)
 
 Knowing what runs is half the picture; knowing where data goes is the other. Patient contact details move from browser to booking to email service; reports go to a storage bucket; files go to a partner.
 
-Section twelve point one develops cloud and container security data with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twelve point one, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section twelve point one treats why flows matter recording as testable only when evidence and ticket IDs are recorded.
-
 ### 12.2 Recording flows
 
 Priya records each flow as source, destination, zone and whether it is encrypted. The zone shows whether the flow stays inside the cluster, goes to a managed service or crosses the internet.
-
-Section twelve point two develops cloud and container security data with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twelve point two, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section twelve point two treats why flows matter recording as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — Lab — data flows
 
@@ -1236,47 +764,17 @@ flows 8, crossing a boundary 6
 
 Of 8 flows, 6 cross a boundary. One, booking to the email API over the internet, is not encrypted and is flagged for review. One inside the cluster, web to API, is also unencrypted and noted as a known limit.
 
-Section twelve point three develops cloud and container security data with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twelve point three, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section twelve point three treats why flows matter recording as testable only when evidence and ticket IDs are recorded.
-
 ### 12.4 Following up
 
 Priya checks the booking configuration and finds the email library set to a plain connection. Switching to the encrypted endpoint is a one-line configuration change, tested in staging first.
-
-Section twelve point four develops cloud and container security data with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twelve point four, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section twelve point four treats why flows matter recording as testable only when evidence and ticket IDs are recorded.
 
 ### 12.5 Data minimisation
 
 She also asks whether the email needs the patient's full details. It needs only a name and time, so the flow is reduced.
 
-Section twelve point five develops cloud and container security data with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twelve point five, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section twelve point five treats why flows matter recording as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point five, Cobalt Hosting will not accept cloud work without a written trail.
-
 ### 12.6 Keeping the list current
 
 The flow list is reviewed whenever a new integration is added.
-
-Section twelve point six develops cloud and container security data with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twelve point six, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section twelve point six treats why flows matter recording as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point six, Cobalt Hosting will not accept cloud work without a written trail.
-
-Section twelve point six fails closed if cloud evidence is missing rather than guessing.
 
 ### Partner flows
 
@@ -1322,71 +820,25 @@ You will (1) write plain risk scenarios; (2) rate likelihood and impact; (3) pri
 
 A scenario states what could go wrong, how, and what the result would be, without describing attack steps. For example: an outdated booking image contains a known flaw; if exploited, patient contact details could be exposed.
 
-Section thirteen point one develops cloud and container security risk with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section thirteen point one, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section thirteen point one treats writing scenarios four scenarios as testable only when evidence and ticket IDs are recorded.
-
 ### 13.2 Four scenarios
 
 Priya writes four: outdated public images in booking; the client-b cluster without audit logs, so misuse would go unseen; a leftover admin account; and the unencrypted email flow.
-
-Section thirteen point two develops cloud and container security risk with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section thirteen point two, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section thirteen point two treats writing scenarios four scenarios as testable only when evidence and ticket IDs are recorded.
 
 ### 13.3 Rating
 
 She rates likelihood and impact as low, medium or high, recording a sentence of reasoning for each.
 
-Section thirteen point three develops cloud and container security risk with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section thirteen point three, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section thirteen point three treats writing scenarios four scenarios as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point three, Cobalt Hosting will not accept cloud work without a written trail.
-
 ### 13.4 Prioritising
 
 High impact and medium or high likelihood come first: outdated booking image and missing audit logs. The admin account was already removed; the email flow is fixed.
-
-Section thirteen point four develops cloud and container security risk with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section thirteen point four, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section thirteen point four treats writing scenarios four scenarios as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point four, Cobalt Hosting will not accept cloud work without a written trail.
 
 ### 13.5 Residual risk
 
 After fixes, some risk remains; the scenario record notes it.
 
-Section thirteen point five develops cloud and container security risk with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section thirteen point five, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section thirteen point five treats writing scenarios four scenarios as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point five, Cobalt Hosting will not accept cloud work without a written trail.
-
-Section thirteen point five fails closed if cloud evidence is missing rather than guessing.
-
 ### 13.6 Sharing
 
 Scenarios are shared with clients in plain language as part of Cobalt's service review.
-
-Section thirteen point six develops cloud and container security risk with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section thirteen point six, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section thirteen point six treats writing scenarios four scenarios as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point six, Cobalt Hosting will not accept cloud work without a written trail.
 
 ### Scenario register
 
@@ -1430,65 +882,25 @@ You will (1) use benchmarks to define a configuration baseline; (2) select check
 
 The CIS Benchmarks give consensus configuration recommendations for platforms including Kubernetes and the main cloud providers. They are long; small teams choose the checks that matter most for their risks.
 
-Section fourteen point one develops cloud and container security methods with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section fourteen point one, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section fourteen point one treats benchmarks choosing checks why as testable only when evidence and ticket IDs are recorded.
-
 ### 14.2 Choosing checks
 
 Priya picks six checks linked to her scenarios: audit logging on, anonymous access off, a Restricted default for pod security, encryption of secrets at rest, no public API endpoint, and automatic node upgrades.
-
-Section fourteen point two develops cloud and container security methods with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section fourteen point two, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section fourteen point two treats benchmarks choosing checks why as testable only when evidence and ticket IDs are recorded.
 
 ### 14.3 Why each matters
 
 Audit logging supports investigation; anonymous access off prevents unauthenticated requests; the Restricted default blocks risky pods; secrets encryption protects stored credentials; a private endpoint reduces exposure; auto-upgrades keep nodes patched.
 
-Section fourteen point three develops cloud and container security methods with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section fourteen point three, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section fourteen point three treats benchmarks choosing checks why as testable only when evidence and ticket IDs are recorded.
-
 ### 14.4 Writing it down
 
 The baseline is a small file with each setting and its expected value, kept in the repository with a short reason for each.
-
-Section fourteen point four develops cloud and container security methods with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section fourteen point four, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section fourteen point four treats benchmarks choosing checks why as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point four, Cobalt Hosting will not accept cloud work without a written trail.
 
 ### 14.5 Managed services
 
 Some settings are controlled by the provider in managed Kubernetes; the baseline notes which ones Cobalt sets and which it relies on the provider for, citing the provider's shared responsibility page.
 
-Section fourteen point five develops cloud and container security methods with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section fourteen point five, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section fourteen point five treats benchmarks choosing checks why as testable only when evidence and ticket IDs are recorded.
-
 ### 14.6 Exceptions
 
 Where a client needs a different value, the exception is recorded with owner and expiry.
-
-Section fourteen point six develops cloud and container security methods with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section fourteen point six, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section fourteen point six treats benchmarks choosing checks why as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point six, Cobalt Hosting will not accept cloud work without a written trail.
 
 ### Version control for the baseline
 
@@ -1530,14 +942,6 @@ You will (1) run a baseline check against synthetic cluster settings; (2) interp
 
 Priya exports settings for three clusters into synthetic records: client-a, client-b and Cobalt's internal cluster. The lab compares each with the baseline.
 
-Section fifteen point one develops cloud and container security guided with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section fifteen point one, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section fifteen point one treats setup reading the result as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point one, Cobalt Hosting will not accept cloud work without a written trail.
-
 ### Lab — Lab — baseline check
 
 ```python
@@ -1568,47 +972,17 @@ internal: 5/6 pass; fails: pod_security_default
 
 Client-a passes 5 of 6, failing only on a public endpoint. Client-b passes 1 of 6: audit logging, pod security default, secrets encryption, public endpoint and node auto-upgrade all fail. The internal cluster passes 5 of 6, with a Baseline rather than Restricted default.
 
-Section fifteen point two develops cloud and container security guided with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section fifteen point two, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section fifteen point two treats setup reading the result as testable only when evidence and ticket IDs are recorded.
-
 ### 15.3 Why client-b differs
 
 Client-b was set up years ago by a contractor and never reviewed. It explains why the old admin account was found there too.
-
-Section fifteen point three develops cloud and container security guided with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section fifteen point three, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section fifteen point three treats setup reading the result as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point three, Cobalt Hosting will not accept cloud work without a written trail.
 
 ### 15.4 Plan
 
 Client-b gets a planned rebuild; client-a's endpoint is restricted to Cobalt's office addresses; the internal cluster moves to Restricted after checking its workloads.
 
-Section fifteen point four develops cloud and container security guided with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section fifteen point four, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section fifteen point four treats setup reading the result as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point four, Cobalt Hosting will not accept cloud work without a written trail.
-
 ### 15.5 Total
 
 Seven failures across three clusters form the starting count for later comparison.
-
-Section fifteen point five develops cloud and container security guided with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section fifteen point five, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section fifteen point five treats setup reading the result as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point five, Cobalt Hosting will not accept cloud work without a written trail.
 
 ### Running safely
 
@@ -1654,73 +1028,25 @@ You will (1) apply Pod Security Standards; (2) use network policies; (3) handle 
 
 Kubernetes defines three profiles: Privileged, Baseline and Restricted. Restricted requires, among other things, running as non-root and dropping extra capabilities. Namespaces are labelled with the level to enforce.
 
-Section sixteen point one develops cloud and container security methods with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section sixteen point one, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section sixteen point one treats pod security standards network as testable only when evidence and ticket IDs are recorded.
-
 ### 16.2 Network policies
 
 By default pods can talk to all other pods. A network policy limits this, for example allowing booking to reach only the API and email service.
-
-Section sixteen point two develops cloud and container security methods with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section sixteen point two, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section sixteen point two treats pod security standards network as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point two, Cobalt Hosting will not accept cloud work without a written trail.
 
 ### 16.3 Secrets
 
 The Kubernetes good-practice guide for secrets advises encryption at rest, least-privilege access to secrets and avoiding secrets in images or source code.
 
-Section sixteen point three develops cloud and container security methods with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section sixteen point three, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section sixteen point three treats pod security standards network as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point three, Cobalt Hosting will not accept cloud work without a written trail.
-
 ### 16.4 Starting with warn
 
 Pod Security admission supports warn and audit modes, which report violations without blocking. Priya uses these first.
-
-Section sixteen point four develops cloud and container security methods with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section sixteen point four, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section sixteen point four treats pod security standards network as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point four, Cobalt Hosting will not accept cloud work without a written trail.
 
 ### 16.5 Fixing workloads
 
 Most failures are fixed by setting a non-root user in the image and adding a security context.
 
-Section sixteen point five develops cloud and container security methods with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section sixteen point five, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section sixteen point five treats pod security standards network as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point five, Cobalt Hosting will not accept cloud work without a written trail.
-
 ### 16.6 Recording progress
 
 Each namespace's level is tracked in the inventory.
-
-Section sixteen point six develops cloud and container security methods with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section sixteen point six, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section sixteen point six treats pod security standards network as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point six, Cobalt Hosting will not accept cloud work without a written trail.
-
-Section sixteen point six fails closed if cloud evidence is missing rather than guessing.
 
 ### Namespaces and labels
 
@@ -1772,73 +1098,25 @@ You will (1) choose tools for inventory, scanning and checks; (2) prefer simple 
 
 Priya lists needs: export workloads, scan images for known vulnerabilities, check baselines, check code before merge.
 
-Section seventeen point one develops cloud and container security tooling with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section seventeen point one, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section seventeen point one treats needs first options criteria as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point one, Cobalt Hosting will not accept cloud work without a written trail.
-
 ### 17.2 Options
 
 Scanners and checkers exist from providers, open-source projects and vendors. The course labs show the logic with stdlib Python so it is understood before a tool is chosen.
-
-Section seventeen point two develops cloud and container security tooling with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section seventeen point two, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section seventeen point two treats needs first options criteria as testable only when evidence and ticket IDs are recorded.
 
 ### 17.3 Criteria
 
 Cobalt chooses tools that are maintained, produce readable output, run in the pipeline and do not need wide permissions.
 
-Section seventeen point three develops cloud and container security tooling with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section seventeen point three, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section seventeen point three treats needs first options criteria as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point three, Cobalt Hosting will not accept cloud work without a written trail.
-
 ### 17.4 Scanner limits
 
 Image scanners match packages against vulnerability databases; they miss custom code flaws and can report vulnerabilities that are not reachable.
-
-Section seventeen point four develops cloud and container security tooling with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section seventeen point four, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section seventeen point four treats needs first options criteria as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point four, Cobalt Hosting will not accept cloud work without a written trail.
 
 ### 17.5 Prioritising findings
 
 Jacobs et al. (2021) describe EPSS, which estimates the likelihood a vulnerability will be exploited. Cobalt uses it alongside severity to order fixes.
 
-Section seventeen point five develops cloud and container security tooling with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section seventeen point five, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section seventeen point five treats needs first options criteria as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point five, Cobalt Hosting will not accept cloud work without a written trail.
-
 ### 17.6 Sprawl
 
 Each tool adds maintenance. Priya recommends two tools rather than five.
-
-Section seventeen point six develops cloud and container security tooling with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section seventeen point six, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section seventeen point six treats needs first options criteria as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point six, Cobalt Hosting will not accept cloud work without a written trail.
-
-Section seventeen point six fails closed if cloud evidence is missing rather than guessing.
 
 ### Testing a tool
 
@@ -1892,77 +1170,25 @@ You will (1) describe preventive, detective and corrective controls; (2) map Cob
 
 Preventive controls stop problems (admission rules); detective controls find them (logs and scans); corrective controls fix them (rebuild and redeploy).
 
-Section eighteen point one develops cloud and container security controls with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section eighteen point one, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section eighteen point one treats control types cobalt's controls as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point one, Cobalt Hosting will not accept cloud work without a written trail.
-
 ### 18.2 Cobalt's controls
 
 Approved registry, baseline checks, Pod Security admission, network policies, pipeline checks, audit logs and an advisory process.
-
-Section eighteen point two develops cloud and container security controls with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section eighteen point two, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section eighteen point two treats control types cobalt's controls as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point two, Cobalt Hosting will not accept cloud work without a written trail.
 
 ### 18.3 Framework mapping
 
 Priya maps each to CSA CCM v4 domains, such as identity and access management, and to NIST SP 800-190 recommendations on images and registries.
 
-Section eighteen point three develops cloud and container security controls with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section eighteen point three, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section eighteen point three treats control types cobalt's controls as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point three, Cobalt Hosting will not accept cloud work without a written trail.
-
 ### 18.4 Gaps
 
 The mapping shows no tested restore of client data, which becomes a new task.
-
-Section eighteen point four develops cloud and container security controls with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section eighteen point four, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section eighteen point four treats control types cobalt's controls as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point four, Cobalt Hosting will not accept cloud work without a written trail.
 
 ### 18.5 Owners and evidence
 
 Each control has an owner and a source of evidence.
 
-Section eighteen point five develops cloud and container security controls with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section eighteen point five, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section eighteen point five treats control types cobalt's controls as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point five, Cobalt Hosting will not accept cloud work without a written trail.
-
-Section eighteen point five fails closed if cloud evidence is missing rather than guessing.
-
 ### 18.6 Clients
 
 The control list goes into each client's service description.
-
-Section eighteen point six develops cloud and container security controls with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section eighteen point six, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section eighteen point six treats control types cobalt's controls as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point six, Cobalt Hosting will not accept cloud work without a written trail.
-
-Section eighteen point six fails closed if cloud evidence is missing rather than guessing.
 
 ### Testing controls
 
@@ -2018,14 +1244,6 @@ You will (1) summarise audit events; (2) identify events needing review; (3) set
 
 Kubernetes audit logs record requests to the API: who, what action, which resource. With client-b now logging, Priya has data to review.
 
-Section nineteen point one develops cloud and container security monitoring with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section nineteen point one, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section nineteen point one treats audit logs reading the as testable only when evidence and ticket IDs are recorded.
-
-For section nineteen point one, Cobalt Hosting will not accept cloud work without a written trail.
-
 ### Lab — Lab — audit summary
 
 ```python
@@ -2060,45 +1278,17 @@ events 66
 
 Of 66 events, most are routine: the CI bot creating and updating deployments, staff reading pods. Four lines need review: the CI bot reading secrets three times, old-admin creating a cluster role binding and reading a secret, and an anonymous request.
 
-Section nineteen point two develops cloud and container security monitoring with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section nineteen point two, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section nineteen point two treats audit logs reading the as testable only when evidence and ticket IDs are recorded.
-
 ### 19.3 Investigating
 
 The CI bot reads a secret it needs for deployment, which is expected but its access can be narrowed. The old-admin events predate removal. The anonymous request came before anonymous access was turned off.
-
-Section nineteen point three develops cloud and container security monitoring with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section nineteen point three, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section nineteen point three treats audit logs reading the as testable only when evidence and ticket IDs are recorded.
 
 ### 19.4 Alerts
 
 Priya proposes alerts for new cluster role bindings, secret reads by people and any anonymous request.
 
-Section nineteen point four develops cloud and container security monitoring with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section nineteen point four, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section nineteen point four treats audit logs reading the as testable only when evidence and ticket IDs are recorded.
-
-For section nineteen point four, Cobalt Hosting will not accept cloud work without a written trail.
-
 ### 19.5 Noise
 
 Alerts that fire constantly are ignored; each must lead to an action.
-
-Section nineteen point five develops cloud and container security monitoring with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section nineteen point five, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section nineteen point five treats audit logs reading the as testable only when evidence and ticket IDs are recorded.
-
-For section nineteen point five, Cobalt Hosting will not accept cloud work without a written trail.
 
 ### Retention
 
@@ -2146,75 +1336,25 @@ You will (1) diagnose failures caused by security controls; (2) restore service 
 
 New controls can break workloads: Restricted rejects a pod, a network policy blocks a needed connection, or a narrowed role stops the CI bot.
 
-Section twenty point one develops cloud and container security troubleshooting with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty point one, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section twenty point one treats common breakages method example as testable only when evidence and ticket IDs are recorded.
-
-For section twenty point one, Cobalt Hosting will not accept cloud work without a written trail.
-
 ### 20.2 Method
 
 Priya follows a method: read the error, check recent changes, reproduce in staging, fix the smallest thing, record it.
-
-Section twenty point two develops cloud and container security troubleshooting with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty point two, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section twenty point two treats common breakages method example as testable only when evidence and ticket IDs are recorded.
-
-For section twenty point two, Cobalt Hosting will not accept cloud work without a written trail.
 
 ### 20.3 Example one
 
 After enforcing Restricted, the cron job fails to start because it writes to a root-owned folder. The fix is a writable volume, not relaxing the policy.
 
-Section twenty point three develops cloud and container security troubleshooting with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty point three, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section twenty point three treats common breakages method example as testable only when evidence and ticket IDs are recorded.
-
-For section twenty point three, Cobalt Hosting will not accept cloud work without a written trail.
-
 ### 20.4 Example two
 
 A network policy blocks reports from reaching the storage service. Adding the specific egress rule fixes it.
-
-Section twenty point four develops cloud and container security troubleshooting with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty point four, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section twenty point four treats common breakages method example as testable only when evidence and ticket IDs are recorded.
-
-For section twenty point four, Cobalt Hosting will not accept cloud work without a written trail.
 
 ### 20.5 Rolling back
 
 If a fix takes too long, the change is rolled back and retried later, keeping the client service up.
 
-Section twenty point five develops cloud and container security troubleshooting with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty point five, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section twenty point five treats common breakages method example as testable only when evidence and ticket IDs are recorded.
-
-For section twenty point five, Cobalt Hosting will not accept cloud work without a written trail.
-
 ### 20.6 Learning
 
 Each breakage is added to a short guide for teams.
-
-Section twenty point six develops cloud and container security troubleshooting with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty point six, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section twenty point six treats common breakages method example as testable only when evidence and ticket IDs are recorded.
-
-For section twenty point six, Cobalt Hosting will not accept cloud work without a written trail.
-
-Section twenty point six fails closed if cloud evidence is missing rather than guessing.
 
 ### A shared guide
 
@@ -2268,71 +1408,25 @@ You will (1) connect cluster workloads to managed cloud services securely; (2) u
 
 Client systems use managed databases, storage buckets and email services. Each connection needs an identity and permissions, and each is a place where data leaves the cluster.
 
-Section twenty-one point one develops cloud and container security service with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-one point one, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section twenty-one point one treats managed services stored keys as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-one point one, Cobalt Hosting will not accept cloud work without a written trail.
-
 ### 21.2 Stored keys
 
 Older Cobalt setups stored long-lived cloud access keys as Kubernetes secrets. If leaked, these keys work from anywhere until someone revokes them.
-
-Section twenty-one point two develops cloud and container security service with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-one point two, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section twenty-one point two treats managed services stored keys as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-one point two, Cobalt Hosting will not accept cloud work without a written trail.
 
 ### 21.3 Workload identity
 
 Major providers let a Kubernetes service account be linked to a cloud identity, issuing short-lived credentials automatically. This removes stored keys and makes access traceable to a workload.
 
-Section twenty-one point three develops cloud and container security service with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-one point three, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section twenty-one point three treats managed services stored keys as testable only when evidence and ticket IDs are recorded.
-
 ### 21.4 Least privilege for services
 
 The reports workload needs to write to one bucket path, not read every bucket. Priya narrows its policy accordingly.
-
-Section twenty-one point four develops cloud and container security service with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-one point four, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section twenty-one point four treats managed services stored keys as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-one point four, Cobalt Hosting will not accept cloud work without a written trail.
 
 ### 21.5 Storage exposure
 
 Buckets are private by default; any public access must be an approved exception. A weekly check lists bucket access settings across client accounts.
 
-Section twenty-one point five develops cloud and container security service with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-one point five, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section twenty-one point five treats managed services stored keys as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-one point five, Cobalt Hosting will not accept cloud work without a written trail.
-
 ### 21.6 Reviewing integrations
 
 When a new integration is added, the flow list, inventory and permissions are updated together, using a short checklist.
-
-Section twenty-one point six develops cloud and container security service with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-one point six, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section twenty-one point six treats managed services stored keys as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-one point six, Cobalt Hosting will not accept cloud work without a written trail.
 
 ### Integration checklist
 
@@ -2376,25 +1470,9 @@ You will (1) add security checks to the deployment pipeline; (2) block risky cha
 
 Finding a public bucket after deployment means it was exposed for a time. Checking infrastructure code before merge stops it reaching production.
 
-Section twenty-two point one develops cloud and container security automation with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-two point one, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section twenty-two point one treats shift checks earlier iac as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-two point one, Cobalt Hosting will not accept cloud work without a written trail.
-
 ### 22.2 IaC smells
 
 Rahman et al. (2019) studied infrastructure-as-code scripts and found recurring security smells, such as hard-coded secrets and admin by default. Cobalt's rules target similar patterns.
-
-Section twenty-two point two develops cloud and container security automation with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-two point two, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section twenty-two point two treats shift checks earlier iac as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-two point two, Cobalt Hosting will not accept cloud work without a written trail.
 
 ### Lab — Lab — pipeline checks
 
@@ -2430,35 +1508,13 @@ PR-45: pass
 
 Of 5 proposed changes, 3 are blocked: PR-42 makes a bucket public, PR-43 uses the mutable latest tag and runs as root, and PR-44 puts a secret in a file. PR-41 and PR-45 pass.
 
-Section twenty-two point three develops cloud and container security automation with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-two point three, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section twenty-two point three treats shift checks earlier iac as testable only when evidence and ticket IDs are recorded.
-
 ### 22.4 Explaining blocks
 
 Each blocked change gets a message stating the rule, why it matters and how to fix it. Developers fix most within the day.
 
-Section twenty-two point four develops cloud and container security automation with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-two point four, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section twenty-two point four treats shift checks earlier iac as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-two point four, Cobalt Hosting will not accept cloud work without a written trail.
-
 ### 22.5 Exceptions
 
 A rare legitimate need, such as a public bucket for website images, uses an approved exception label reviewed by Kwame.
-
-Section twenty-two point five develops cloud and container security automation with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-two point five, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section twenty-two point five treats shift checks earlier iac as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-two point five, Cobalt Hosting will not accept cloud work without a written trail.
 
 ### Measuring the checks
 
@@ -2506,14 +1562,6 @@ You will (1) compare measures before and after improvements; (2) judge whether c
 
 Priya returns to her measures from chapter 9: unapproved images, baseline failures and time to answer an advisory.
 
-Section twenty-three point one develops cloud and container security evaluation with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-three point one, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section twenty-three point one treats what to compare reading as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-three point one, Cobalt Hosting will not accept cloud work without a written trail.
-
 ### Lab — Lab — before and after
 
 ```python
@@ -2537,47 +1585,17 @@ hours_to_answer_advisory: 6.0 -> 0.5 (92% lower)
 
 Unapproved images fall from 3 to 1 (67% lower), baseline failures from 7 to 2 (71% lower), and the time to answer an advisory from 6 hours to half an hour (92% lower).
 
-Section twenty-three point two develops cloud and container security evaluation with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-three point two, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section twenty-three point two treats what to compare reading as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-three point two, Cobalt Hosting will not accept cloud work without a written trail.
-
 ### 23.3 Checking the advisory time
 
 To measure fairly, Kwame gives Priya a new synthetic advisory without warning. She answers it from the inventory in about 30 minutes, including checking two edge cases.
-
-Section twenty-three point three develops cloud and container security evaluation with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-three point three, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section twenty-three point three treats what to compare reading as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-three point three, Cobalt Hosting will not accept cloud work without a written trail.
 
 ### 23.4 Limits
 
 The counts are small and come from one placement period. Other changes, such as staff leaving, also affected results.
 
-Section twenty-three point four develops cloud and container security evaluation with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-three point four, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section twenty-three point four treats what to compare reading as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-three point four, Cobalt Hosting will not accept cloud work without a written trail.
-
 ### 23.5 Remaining items
 
 One unapproved image (cron, waiting for the partner's new format) and two baseline failures (internal cluster default and client-a endpoint during change window) remain, each with an owner and date.
-
-Section twenty-three point five develops cloud and container security evaluation with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-three point five, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section twenty-three point five treats what to compare reading as testable only when evidence and ticket IDs are recorded.
 
 ### Sharing results
 
@@ -2629,75 +1647,25 @@ You will (1) ask a focused practical question; (2) collect and analyse data care
 
 Priya asks: how often do Cobalt's clusters drift from baseline between checks? It is answerable with data Cobalt already has.
 
-Section twenty-four point one develops applied research methods with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-four point one, Kwame Asante expects applied claims to carry owners and dates.
-
-Section twenty-four point one treats question from practice method as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point one, Cobalt Hosting will not accept applied work without a written trail.
-
 ### 24.2 Method
 
 She runs the baseline check daily for four weeks on synthetic copies of the settings history and counts new failures.
-
-Section twenty-four point two develops applied research methods with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-four point two, Kwame Asante expects applied claims to carry owners and dates.
-
-Section twenty-four point two treats question from practice method as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point two, Cobalt Hosting will not accept applied work without a written trail.
 
 ### 24.3 Reading research
 
 Armbrust et al. (2010) describe the cloud computing model and its obstacles, including configuration complexity. Verma et al. (2015) describe Borg, Google's cluster manager, explaining how large clusters are managed by automation, which supports Cobalt's move to automated checks.
 
-Section twenty-four point three develops applied research methods with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-four point three, Kwame Asante expects applied claims to carry owners and dates.
-
-Section twenty-four point three treats question from practice method as testable only when evidence and ticket IDs are recorded.
-
 ### 24.4 Analysis
 
 She counts drift events per cluster and notes causes, such as manual console changes.
-
-Section twenty-four point four develops applied research methods with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-four point four, Kwame Asante expects applied claims to carry owners and dates.
-
-Section twenty-four point four treats question from practice method as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point four, Cobalt Hosting will not accept applied work without a written trail.
 
 ### 24.5 Ethics
 
 Data describes systems, not individual performance; names are removed from change records.
 
-Section twenty-four point five develops applied research methods with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-four point five, Kwame Asante expects applied claims to carry owners and dates.
-
-Section twenty-four point five treats question from practice method as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point five, Cobalt Hosting will not accept applied work without a written trail.
-
-Section twenty-four point five fails closed if applied evidence is missing rather than guessing.
-
 ### 24.6 Writing up
 
 A two-page report states question, method, results and limits.
-
-Section twenty-four point six develops applied research methods with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-four point six, Kwame Asante expects applied claims to carry owners and dates.
-
-Section twenty-four point six treats question from practice method as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point six, Cobalt Hosting will not accept applied work without a written trail.
-
-Section twenty-four point six fails closed if applied evidence is missing rather than guessing.
 
 ### Choosing method
 
@@ -2753,79 +1721,25 @@ You will (1) work in a team on a shared security improvement; (2) divide work; (
 
 Priya joins two other placement students to build a client-ready security summary page generated from the inventory and baseline results.
 
-Section twenty-five point one develops team project studio with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-five point one, Kwame Asante expects team claims to carry owners and dates.
-
-Section twenty-five point one treats the project dividing work as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point one, Cobalt Hosting will not accept team work without a written trail.
-
 ### 25.2 Dividing work
 
 One builds the data export, one the page, and Priya the checks and wording.
-
-Section twenty-five point two develops team project studio with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-five point two, Kwame Asante expects team claims to carry owners and dates.
-
-Section twenty-five point two treats the project dividing work as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point two, Cobalt Hosting will not accept team work without a written trail.
 
 ### 25.3 Reviews
 
 Each change is reviewed by another student and Kwame before merge.
 
-Section twenty-five point three develops team project studio with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-five point three, Kwame Asante expects team claims to carry owners and dates.
-
-Section twenty-five point three treats the project dividing work as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point three, Cobalt Hosting will not accept team work without a written trail.
-
-Section twenty-five point three fails closed if team evidence is missing rather than guessing.
-
 ### 25.4 Communication
 
 A short daily note lists progress and blockers.
-
-Section twenty-five point four develops team project studio with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-five point four, Kwame Asante expects team claims to carry owners and dates.
-
-Section twenty-five point four treats the project dividing work as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point four, Cobalt Hosting will not accept team work without a written trail.
-
-Section twenty-five point four fails closed if team evidence is missing rather than guessing.
 
 ### 25.5 Client voice
 
 They show a draft to Riverside Dental's practice manager, who asks for plain words and fewer numbers.
 
-Section twenty-five point five develops team project studio with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-five point five, Kwame Asante expects team claims to carry owners and dates.
-
-Section twenty-five point five treats the project dividing work as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point five, Cobalt Hosting will not accept team work without a written trail.
-
 ### 25.6 Result
 
 The final page shows status in three colours with a one-line explanation each.
-
-Section twenty-five point six develops team project studio with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-five point six, Kwame Asante expects team claims to carry owners and dates.
-
-Section twenty-five point six treats the project dividing work as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point six, Cobalt Hosting will not accept team work without a written trail.
-
-Section twenty-five point six fails closed if team evidence is missing rather than guessing.
 
 ### Working agreement
 
@@ -2885,75 +1799,25 @@ You will (1) prepare work for others to run; (2) write runbooks; (3) identify ow
 
 Priya's placement ends in two months. Her checks must keep running without her.
 
-Section twenty-six point one develops cloud and container security operational with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-six point one, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section twenty-six point one treats why handoff runbooks owners as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-six point one, Cobalt Hosting will not accept cloud work without a written trail.
-
 ### 26.2 Runbooks
 
 Each check has a runbook: what it does, how to run it, what to do with results, who to contact.
-
-Section twenty-six point two develops cloud and container security operational with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-six point two, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section twenty-six point two treats why handoff runbooks owners as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-six point two, Cobalt Hosting will not accept cloud work without a written trail.
 
 ### 26.3 Owners
 
 The platform team owns the checks; client account managers own client communication.
 
-Section twenty-six point three develops cloud and container security operational with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-six point three, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section twenty-six point three treats why handoff runbooks owners as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-six point three, Cobalt Hosting will not accept cloud work without a written trail.
-
 ### 26.4 Alert routes
 
 Alerts go to the on-call channel with a link to the runbook.
-
-Section twenty-six point four develops cloud and container security operational with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-six point four, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section twenty-six point four treats why handoff runbooks owners as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-six point four, Cobalt Hosting will not accept cloud work without a written trail.
 
 ### 26.5 Known limits
 
 The handoff states what the checks do not cover.
 
-Section twenty-six point five develops cloud and container security operational with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-six point five, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section twenty-six point five treats why handoff runbooks owners as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-six point five, Cobalt Hosting will not accept cloud work without a written trail.
-
-Section twenty-six point five fails closed if cloud evidence is missing rather than guessing.
-
 ### 26.6 Practice
 
 A colleague runs each check from the runbook alone while Priya watches.
-
-Section twenty-six point six develops cloud and container security operational with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-six point six, Kwame Asante expects cloud claims to carry owners and dates.
-
-Section twenty-six point six treats why handoff runbooks owners as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-six point six, Cobalt Hosting will not accept cloud work without a written trail.
 
 ### Knowledge transfer sessions
 
@@ -3017,16 +1881,6 @@ You will (1) check a handoff pack for completeness; (2) validate controls in pro
 
 Kwame provides a list of eight required items for any handoff.
 
-Section twenty-seven point one develops deployment and validation with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-seven point one, Kwame Asante expects deployment claims to carry owners and dates.
-
-Section twenty-seven point one treats handoff checklist reading the as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point one, Cobalt Hosting will not accept deployment work without a written trail.
-
-Section twenty-seven point one fails closed if deployment evidence is missing rather than guessing.
-
 ### Lab — Lab — handoff check
 
 ```python
@@ -3051,51 +1905,17 @@ handoff items 6/8 present
 
 Six of eight items are present. Missing: the restore test record and the client contact.
 
-Section twenty-seven point two develops deployment and validation with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-seven point two, Kwame Asante expects deployment claims to carry owners and dates.
-
-Section twenty-seven point two treats handoff checklist reading the as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point two, Cobalt Hosting will not accept deployment work without a written trail.
-
 ### 27.3 Restore test
 
 Priya and the platform team restore a synthetic copy of Riverside Dental's database in a test account and time it at 40 minutes.
-
-Section twenty-seven point three develops deployment and validation with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-seven point three, Kwame Asante expects deployment claims to carry owners and dates.
-
-Section twenty-seven point three treats handoff checklist reading the as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point three, Cobalt Hosting will not accept deployment work without a written trail.
 
 ### 27.4 Client contact
 
 The account manager adds the named client contact.
 
-Section twenty-seven point four develops deployment and validation with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-seven point four, Kwame Asante expects deployment claims to carry owners and dates.
-
-Section twenty-seven point four treats handoff checklist reading the as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point four, Cobalt Hosting will not accept deployment work without a written trail.
-
-Section twenty-seven point four fails closed if deployment evidence is missing rather than guessing.
-
 ### 27.5 Validation in production
 
 Each check is run in production once with Kwame watching, results compared with staging.
-
-Section twenty-seven point five develops deployment and validation with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-seven point five, Kwame Asante expects deployment claims to carry owners and dates.
-
-Section twenty-seven point five treats handoff checklist reading the as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point five, Cobalt Hosting will not accept deployment work without a written trail.
 
 ### Why a checklist
 
@@ -3163,81 +1983,25 @@ You will (1) respond to a real-style advisory using the new tools; (2) communica
 
 A synthetic advisory names a flaw in a common Python base image version.
 
-Section twenty-eight point one develops field practice with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-eight point one, Kwame Asante expects field claims to carry owners and dates.
-
-Section twenty-eight point one treats the advisory response prioritising as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point one, Cobalt Hosting will not accept field work without a written trail.
-
-Section twenty-eight point one fails closed if field evidence is missing rather than guessing.
-
 ### 28.2 Response
 
 Priya runs the inventory and finds one internal workload using it, plus none in client clusters.
-
-Section twenty-eight point two develops field practice with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-eight point two, Kwame Asante expects field claims to carry owners and dates.
-
-Section twenty-eight point two treats the advisory response prioritising as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point two, Cobalt Hosting will not accept field work without a written trail.
 
 ### 28.3 Prioritising
 
 Using severity and EPSS, she rates it medium and schedules a rebuild within a week.
 
-Section twenty-eight point three develops field practice with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-eight point three, Kwame Asante expects field claims to carry owners and dates.
-
-Section twenty-eight point three treats the advisory response prioritising as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point three, Cobalt Hosting will not accept field work without a written trail.
-
 ### 28.4 Communication
 
 Clients receive a short note: assessed, not affected, internal fix scheduled.
-
-Section twenty-eight point four develops field practice with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-eight point four, Kwame Asante expects field claims to carry owners and dates.
-
-Section twenty-eight point four treats the advisory response prioritising as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point four, Cobalt Hosting will not accept field work without a written trail.
-
-Section twenty-eight point four fails closed if field evidence is missing rather than guessing.
 
 ### 28.5 Record
 
 The response is recorded with times, decisions and evidence.
 
-Section twenty-eight point five develops field practice with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-eight point five, Kwame Asante expects field claims to carry owners and dates.
-
-Section twenty-eight point five treats the advisory response prioritising as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point five, Cobalt Hosting will not accept field work without a written trail.
-
-Section twenty-eight point five fails closed if field evidence is missing rather than guessing.
-
 ### 28.6 Comparison
 
 The response took 25 minutes compared with six hours before.
-
-Section twenty-eight point six develops field practice with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-eight point six, Kwame Asante expects field claims to carry owners and dates.
-
-Section twenty-eight point six treats the advisory response prioritising as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point six, Cobalt Hosting will not accept field work without a written trail.
-
-Section twenty-eight point six fails closed if field evidence is missing rather than guessing.
 
 ### Using severity and EPSS
 
@@ -3297,81 +2061,25 @@ You will (1) combine course work into a capstone; (2) define success criteria; (
 
 Priya's capstone is a "client security baseline kit": inventory, baseline, pipeline rules, log alerts, runbooks.
 
-Section twenty-nine point one develops capstone build with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-nine point one, Kwame Asante expects capstone claims to carry owners and dates.
-
-Section twenty-nine point one treats capstone criteria build testing as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point one, Cobalt Hosting will not accept capstone work without a written trail.
-
 ### 29.2 Criteria
 
 Success: runs on all clusters, under one hour to answer an advisory, runbooks tested by another person.
-
-Section twenty-nine point two develops capstone build with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-nine point two, Kwame Asante expects capstone claims to carry owners and dates.
-
-Section twenty-nine point two treats capstone criteria build testing as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point two, Cobalt Hosting will not accept capstone work without a written trail.
 
 ### 29.3 Build
 
 She packages the scripts and documents in one repository folder with a readme.
 
-Section twenty-nine point three develops capstone build with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-nine point three, Kwame Asante expects capstone claims to carry owners and dates.
-
-Section twenty-nine point three treats capstone criteria build testing as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point three, Cobalt Hosting will not accept capstone work without a written trail.
-
-Section twenty-nine point three fails closed if capstone evidence is missing rather than guessing.
-
 ### 29.4 Testing
 
 A colleague installs the kit for a new synthetic client from the readme alone.
-
-Section twenty-nine point four develops capstone build with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-nine point four, Kwame Asante expects capstone claims to carry owners and dates.
-
-Section twenty-nine point four treats capstone criteria build testing as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point four, Cobalt Hosting will not accept capstone work without a written trail.
-
-Section twenty-nine point four fails closed if capstone evidence is missing rather than guessing.
 
 ### 29.5 Fixes
 
 Two unclear steps are rewritten.
 
-Section twenty-nine point five develops capstone build with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-nine point five, Kwame Asante expects capstone claims to carry owners and dates.
-
-Section twenty-nine point five treats capstone criteria build testing as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point five, Cobalt Hosting will not accept capstone work without a written trail.
-
-Section twenty-nine point five fails closed if capstone evidence is missing rather than guessing.
-
 ### 29.6 Safety
 
 The kit reads settings only and changes nothing.
-
-Section twenty-nine point six develops capstone build with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section twenty-nine point six, Kwame Asante expects capstone claims to carry owners and dates.
-
-Section twenty-nine point six treats capstone criteria build testing as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point six, Cobalt Hosting will not accept capstone work without a written trail.
-
-Section twenty-nine point six fails closed if capstone evidence is missing rather than guessing.
 
 ### Repository layout
 
@@ -3443,85 +2151,25 @@ You will (1) present the capstone; (2) reflect on learning; (3) plan next steps.
 
 Priya presents to Northgate and Cobalt: problem, approach, results, limits.
 
-Section thirty point one develops capstone assessment with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section thirty point one, Kwame Asante expects capstone claims to carry owners and dates.
-
-Section thirty point one treats presentation assessment reflection next as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point one, Cobalt Hosting will not accept capstone work without a written trail.
-
-Section thirty point one fails closed if capstone evidence is missing rather than guessing.
-
 ### 30.2 Assessment
 
 Examiners check criteria, evidence and reflection.
-
-Section thirty point two develops capstone assessment with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section thirty point two, Kwame Asante expects capstone claims to carry owners and dates.
-
-Section thirty point two treats presentation assessment reflection next as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point two, Cobalt Hosting will not accept capstone work without a written trail.
-
-Section thirty point two fails closed if capstone evidence is missing rather than guessing.
 
 ### 30.3 Reflection
 
 She notes strengths in inventory and automation, weaker in client communication early on.
 
-Section thirty point three develops capstone assessment with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section thirty point three, Kwame Asante expects capstone claims to carry owners and dates.
-
-Section thirty point three treats presentation assessment reflection next as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point three, Cobalt Hosting will not accept capstone work without a written trail.
-
-Section thirty point three fails closed if capstone evidence is missing rather than guessing.
-
 ### 30.4 Next steps
 
 Cobalt offers her a junior role; she plans to study for a cloud certification.
-
-Section thirty point four develops capstone assessment with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section thirty point four, Kwame Asante expects capstone claims to carry owners and dates.
-
-Section thirty point four treats presentation assessment reflection next as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point four, Cobalt Hosting will not accept capstone work without a written trail.
-
-Section thirty point four fails closed if capstone evidence is missing rather than guessing.
 
 ### 30.5 Lessons
 
 Know what runs, check it often, explain plainly.
 
-Section thirty point five develops capstone assessment with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section thirty point five, Kwame Asante expects capstone claims to carry owners and dates.
-
-Section thirty point five treats presentation assessment reflection next as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point five, Cobalt Hosting will not accept capstone work without a written trail.
-
-Section thirty point five fails closed if capstone evidence is missing rather than guessing.
-
 ### 30.6 Thanks
 
 She credits Kwame and the team.
-
-Section thirty point six develops capstone assessment with a Cobalt Hosting note Priya Nair can demo offline.
-
-Under section thirty point six, Kwame Asante expects capstone claims to carry owners and dates.
-
-Section thirty point six treats presentation assessment reflection next as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point six, Cobalt Hosting will not accept capstone work without a written trail.
-
-Section thirty point six fails closed if capstone evidence is missing rather than guessing.
 
 ### Examiner feedback
 

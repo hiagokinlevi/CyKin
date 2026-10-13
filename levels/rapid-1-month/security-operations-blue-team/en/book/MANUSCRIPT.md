@@ -45,53 +45,25 @@ You will (1) explain what security operations means for a small organisation; (2
 
 Leo Barros is office manager at the fictional Marlow & Finch, a 12-person accountancy. IT is handled by a small outside support company, BrightPath IT. On a Monday morning, a client phones to ask why partner Elaine Finch emailed asking them to pay an invoice into a new bank account. Elaine sent no such email. Leo has one month, with this rapid course, to set up basic security operations so the firm notices such things itself.
 
-Section one point one develops security operations in one month with a Marlow & Finch note Leo Barros can demo offline.
-
 ### 1.2 What security operations means
 
 Security operations is the routine of watching for signs of attack, deciding what matters and acting quickly. Large firms run a security operations centre (SOC); small firms need the same habits on a small scale. MITRE's "11 Strategies of a World-Class Cybersecurity Operations Center" (Knerler, Parker and Zimmerman, 2022) starts with knowing what you protect and who has authority, which applies to a 12-person firm as much as to a bank.
-
-Section one point two develops security operations in one month with a Marlow & Finch note Leo Barros can demo offline.
 
 ### 1.3 What to protect
 
 For Marlow & Finch: client financial data, email accounts (because criminals use them for invoice fraud) and the accounts software. Email matters most because it is how money is requested.
 
-Section one point three develops security operations in one month with a Marlow & Finch note Leo Barros can demo offline.
-
-Under section one point three, Leo Barros expects security claims to carry owners and dates.
-
-Section one point three treats the case what security as testable only when evidence and ticket IDs are recorded.
-
 ### 1.4 A few good signals
 
 A small firm cannot watch everything. Leo picks four signals: sign-ins from unusual countries or at night, new mailbox forwarding rules, multi-factor authentication (MFA) changes, and staff reports of odd emails. These cover the most common ways small firms are attacked.
-
-Section one point four develops security operations in one month with a Marlow & Finch note Leo Barros can demo offline.
-
-Under section one point four, Leo Barros expects security claims to carry owners and dates.
-
-Section one point four treats the case what security as testable only when evidence and ticket IDs are recorded.
 
 ### 1.5 Who watches, who acts
 
 BrightPath IT receives security alerts from the email service and calls Leo for anything urgent. Leo can ask BrightPath to reset passwords and block sign-ins at any hour; partners are told afterwards. This is written on one page and signed by both partners.
 
-Section one point five develops security operations in one month with a Marlow & Finch note Leo Barros can demo offline.
-
-Under section one point five, Leo Barros expects security claims to carry owners and dates.
-
-Section one point five treats the case what security as testable only when evidence and ticket IDs are recorded.
-
 ### 1.6 Frameworks in plain words
 
 NIST CSF 2.0 (CSWP 29, 2024) groups security work into Govern, Identify, Protect, Detect, Respond and Recover. Leo's plan touches each: a signed page (Govern), knowing what matters (Identify), MFA (Protect), the four signals (Detect), the call list (Respond) and backups (Recover).
-
-Section one point six develops security operations in one month with a Marlow & Finch note Leo Barros can demo offline.
-
-Under section one point six, Leo Barros expects security claims to carry owners and dates.
-
-Section one point six treats the case what security as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -139,12 +111,6 @@ You will (1) read sign-in records for unusual country and time; (2) find mailbox
 
 The email service records each sign-in with user, time and approximate country. NIST SP 800-92 (Kent and Souppaya, 2006) explains why such logs must be kept and checked; Leo asks BrightPath to keep 90 days.
 
-Section two point one develops spotting the signs with a Marlow & Finch note Leo Barros can demo offline.
-
-Under section two point one, Leo Barros expects spotting claims to carry owners and dates.
-
-Section two point one treats sign-in records lab result as testable only when evidence and ticket IDs are recorded.
-
 ### Lab — Lab — unusual sign-ins
 
 ```python
@@ -173,57 +139,21 @@ e.finch   Sat 00:02 BR CHECK: new country, night
 
 Two of Elaine's sign-ins are flagged: Friday 23:47 and Saturday 00:02, both from Brazil (BR) and both at night. Her daytime sign-ins from the UK, and other staff's, are normal.
 
-Section two point two develops spotting the signs with a Marlow & Finch note Leo Barros can demo offline.
-
-Under section two point two, Leo Barros expects spotting claims to carry owners and dates.
-
-Section two point two treats sign-in records lab result as testable only when evidence and ticket IDs are recorded.
-
-For section two point two, Marlow & Finch will not accept spotting work without a written trail.
-
 ### 2.3 Forwarding rules
 
 BrightPath checks Elaine's mailbox: at 23:51 on Friday a rule was created that forwards any email containing "invoice" or "payment" to an outside address and deletes the copy. This hid the fraud from Elaine.
-
-Section two point three develops spotting the signs with a Marlow & Finch note Leo Barros can demo offline.
-
-Under section two point three, Leo Barros expects spotting claims to carry owners and dates.
-
-Section two point three treats sign-in records lab result as testable only when evidence and ticket IDs are recorded.
 
 ### 2.4 The story
 
 Thursday: Elaine entered her password on a fake "document shared with you" page (found in her browser history). Friday night: a criminal signed in, created the rule and sent the fake invoice to two clients. MFA was not enabled on her account.
 
-Section two point four develops spotting the signs with a Marlow & Finch note Leo Barros can demo offline.
-
-Under section two point four, Leo Barros expects spotting claims to carry owners and dates.
-
-Section two point four treats sign-in records lab result as testable only when evidence and ticket IDs are recorded.
-
 ### 2.5 Not jumping to conclusions
 
 A new country can be travel; Leo checks Elaine was at home. Night sign-ins can be a phone syncing; the country rules this out.
 
-Section two point five develops spotting the signs with a Marlow & Finch note Leo Barros can demo offline.
-
-Under section two point five, Leo Barros expects spotting claims to carry owners and dates.
-
-Section two point five treats sign-in records lab result as testable only when evidence and ticket IDs are recorded.
-
-For section two point five, Marlow & Finch will not accept spotting work without a written trail.
-
 ### 2.6 ATT&CK
 
 MITRE ATT&CK (Strom et al., 2018) lists email forwarding rules as a known collection technique; BrightPath uses this to check for similar rules on other mailboxes.
-
-Section two point six develops spotting the signs with a Marlow & Finch note Leo Barros can demo offline.
-
-Under section two point six, Leo Barros expects spotting claims to carry owners and dates.
-
-Section two point six treats sign-in records lab result as testable only when evidence and ticket IDs are recorded.
-
-For section two point six, Marlow & Finch will not accept spotting work without a written trail.
 
 ### Asking the right person
 
@@ -275,63 +205,25 @@ You will (1) contain a compromised email account in the right order; (2) warn cl
 
 BrightPath's playbook for a compromised mailbox, following the response ideas in NIST SP 800-61r3 (Nelson et al., 2025): sign out all sessions, reset the password, remove the forwarding rule, turn on MFA, then review sent items and rules. Doing the reset before signing out sessions can leave the criminal connected.
 
-Section three point one develops acting fast and calmly with a Marlow & Finch note Leo Barros can demo offline.
-
-Under section three point one, Leo Barros expects acting claims to carry owners and dates.
-
 ### 3.2 Timing
 
 Leo approves at 10:05 on Monday. Sessions are revoked at 10:08, the password reset at 10:09, the rule removed at 10:11 and MFA enabled at 10:20 once Elaine sets up the app on her phone.
-
-Section three point two develops acting fast and calmly with a Marlow & Finch note Leo Barros can demo offline.
-
-Under section three point two, Leo Barros expects acting claims to carry owners and dates.
-
-Section three point two treats order of actions timing as testable only when evidence and ticket IDs are recorded.
 
 ### 3.3 Checking the money
 
 Leo calls both clients who received the fake invoice. One had not paid; the other had paid £4,800 that morning. Leo tells that client to call their bank immediately; the bank attempts a recall.
 
-Section three point three develops acting fast and calmly with a Marlow & Finch note Leo Barros can demo offline.
-
-Under section three point three, Leo Barros expects acting claims to carry owners and dates.
-
-Section three point three treats order of actions timing as testable only when evidence and ticket IDs are recorded.
-
 ### 3.4 Warning clients
 
 A short email from the firm's main address to all clients, approved by the partners: "We will never change our bank details by email. If you receive such a request, phone us on our usual number." No technical details, no blame.
-
-Section three point four develops acting fast and calmly with a Marlow & Finch note Leo Barros can demo offline.
-
-Under section three point four, Leo Barros expects acting claims to carry owners and dates.
-
-Section three point four treats order of actions timing as testable only when evidence and ticket IDs are recorded.
 
 ### 3.5 Reporting
 
 The firm reports the fraud to the national fraud reporting service and, since client contact details in Elaine's mailbox may have been viewed, asks its data protection adviser whether the regulator must be told.
 
-Section three point five develops acting fast and calmly with a Marlow & Finch note Leo Barros can demo offline.
-
-Under section three point five, Leo Barros expects acting claims to carry owners and dates.
-
-Section three point five treats order of actions timing as testable only when evidence and ticket IDs are recorded.
-
 ### 3.6 Recording
 
 Leo records each action with its time in a simple incident log.
-
-Section three point six develops acting fast and calmly with a Marlow & Finch note Leo Barros can demo offline.
-
-Under section three point six, Leo Barros expects acting claims to carry owners and dates.
-
-Section three point six treats order of actions timing as testable only when evidence and ticket IDs are recorded.
-
-For section three point six, Marlow & Finch will not accept acting work without a written trail.
-
-Section three point six fails closed if acting evidence is missing rather than guessing.
 
 ### Telling staff
 
@@ -382,63 +274,25 @@ You will (1) set up simple ongoing monitoring with a provider; (2) measure wheth
 
 BrightPath turns on alerts in the email service for the four signals from chapter 1 and sends Leo a weekly summary. Shared detection ideas such as SigmaHQ rules inspire the alert choices, though BrightPath uses the email service's built-in alerts.
 
-Section four point one develops keeping watch and getting better with a Marlow & Finch note Leo Barros can demo offline.
-
-Under section four point one, Leo Barros expects keeping claims to carry owners and dates.
-
-Section four point one treats ongoing alerts measuring usefulness as testable only when evidence and ticket IDs are recorded.
-
 ### 4.2 Measuring usefulness
 
 In the first month, there are 11 alerts: 8 for sign-ins abroad (6 were Leo's colleague on holiday in Spain, 2 a partner's phone using a roaming network), 2 MFA changes (new phones), 1 forwarding rule (a staff member forwarding to her own personal email, against policy). None were attacks, but the forwarding rule found a policy issue.
-
-Section four point two develops keeping watch and getting better with a Marlow & Finch note Leo Barros can demo offline.
-
-Under section four point two, Leo Barros expects keeping claims to carry owners and dates.
 
 ### 4.3 Reducing noise
 
 Staff tell Leo before travelling; BrightPath adds the trip to a list so alerts are checked quickly. Axelsson (2000) explains why rare attacks make most alerts false; the aim is quick checks, not zero alerts.
 
-Section four point three develops keeping watch and getting better with a Marlow & Finch note Leo Barros can demo offline.
-
-Under section four point three, Leo Barros expects keeping claims to carry owners and dates.
-
-Section four point three treats ongoing alerts measuring usefulness as testable only when evidence and ticket IDs are recorded.
-
 ### 4.4 Lessons review
 
 A 30-minute meeting asks what happened, what worked and what to change. Actions: MFA for all staff (done), phone-check rule for bank detail changes (done), staff phishing training (booked), and a twice-yearly check of who has admin rights.
-
-Section four point four develops keeping watch and getting better with a Marlow & Finch note Leo Barros can demo offline.
-
-Under section four point four, Leo Barros expects keeping claims to carry owners and dates.
-
-Section four point four treats ongoing alerts measuring usefulness as testable only when evidence and ticket IDs are recorded.
 
 ### 4.5 Continuous monitoring
 
 NIST SP 800-137 (Dempsey et al., 2011) describes monitoring as continuous, feeding decisions over time. For Leo this means the weekly summary, the monthly partner review and yearly checks of the plan.
 
-Section four point five develops keeping watch and getting better with a Marlow & Finch note Leo Barros can demo offline.
-
-Under section four point five, Leo Barros expects keeping claims to carry owners and dates.
-
-Section four point five treats ongoing alerts measuring usefulness as testable only when evidence and ticket IDs are recorded.
-
 ### 4.6 Next steps
 
 Leo plans to learn more about incident response and resilience.
-
-Section four point six develops keeping watch and getting better with a Marlow & Finch note Leo Barros can demo offline.
-
-Under section four point six, Leo Barros expects keeping claims to carry owners and dates.
-
-Section four point six treats ongoing alerts measuring usefulness as testable only when evidence and ticket IDs are recorded.
-
-For section four point six, Marlow & Finch will not accept keeping work without a written trail.
-
-Section four point six fails closed if keeping evidence is missing rather than guessing.
 
 ### Worked example
 

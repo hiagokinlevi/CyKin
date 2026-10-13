@@ -52,13 +52,9 @@ Ordinary computers use bits that are 0 or 1. Quantum computers use *qubits*, whi
 
 If a large, reliable quantum computer were built, it could work out the secret keys behind RSA and elliptic-curve cryptography. That would let an attacker read traffic protected by those methods and forge signatures. Symmetric encryption such as AES-256 and fingerprints (hashes) such as SHA-256 would remain strong. So the problem is specific: the "agree a secret" and "sign" parts of today's systems need replacing; the bulk encryption does not.
 
-Section one point three develops quantum and post-quantum security foundations with a Bluebird Bakery Online (BBO) note the learner can demo offline.
-
 ### 1.4 Two kinds of risk with different timing
 
 *Harvest now, decrypt later*: someone records scrambled traffic today, stores it, and unlocks it years later once a quantum computer exists. This only matters for information that must stay private for many years — medical details, contracts, identity documents, payroll. *Forge later*: once a quantum computer exists, someone could fake digital seals — for example, a fake software update. This matters most for things that must be trusted for a long time.
-
-Section one point four develops quantum and post-quantum security foundations with a Bluebird Bakery Online (BBO) note the learner can demo offline.
 
 ### 1.5 The new standards
 
@@ -95,25 +91,11 @@ With a guess of ten years, customer accounts and payroll files would be at risk;
 
 Priya asks: "Should I buy a 'quantum-proof' security box I saw advertised?" Answer: "No. There is no such thing as 'quantum-proof', and the protection that matters for us comes from the software our providers run. The new standards are already appearing in browsers and web services. Our job is to keep devices updated, use reputable providers and ask the ones holding customer and payroll data about their post-quantum plans."
 
-Section one point eight develops quantum and post-quantum security foundations with a Bluebird Bakery Online (BBO) note the learner can demo offline.
-
 ### 1.9 Practice activities
 
 1. Write a three-sentence explanation of quantum risk for a friend who is not technical. 2. Find one news article about quantum computers and underline any claim that sounds exaggerated. 3. Re-run Lab M in your head with *z* = 8: which items would be at risk?
 
-Section one point nine develops quantum and post-quantum security foundations with a Bluebird Bakery Online (BBO) note the learner can demo offline.
-
-Under section one point nine, the mentor expects quantum claims to carry owners and dates.
-
-Section one point nine treats locks and seals what as testable only when evidence and ticket IDs are recorded.
-
 ### 1.10 Common mistakes
-Section one point one zero develops quantum and post-quantum security foundations with a Bluebird Bakery Online (BBO) note the learner can demo offline.
-
-Under section one point one zero, the mentor expects quantum claims to carry owners and dates.
-
-Section one point one zero treats locks and seals what as testable only when evidence and ticket IDs are recorded.
-
 
 - Saying quantum computers "break all encryption" — symmetric encryption and hashes remain strong.
 - Quoting a single date for when quantum computers will arrive.
@@ -164,57 +146,27 @@ A scope answers five questions: *What* systems may I look at? *How* may I look (
 
 To understand quantum readiness, you need facts such as which provider runs a service, which security settings or versions it uses, and how long data must be kept. You do not need customers' names, card numbers, passwords or message contents. Writing down less is safer: if your notes are lost, nothing sensitive leaks.
 
-Section two point three develops scope permission and safe practice with a Bluebird Bakery Online (BBO) note the learner can demo offline.
-
-Under section two point three, the mentor expects scope claims to carry owners and dates.
-
 ### 2.4 Responsible handling
 
 If you come across something sensitive or worrying — a password written on a sticky note, a shared folder open to everyone, an alert from a provider — do not explore further. Tell the owner (Priya) straight away and suggest contacting the provider. Never try to "test" whether a found password works. If you think you have found a weakness in a company's product, tell the company privately; do not post about it publicly.
-
-Section two point four develops scope permission and safe practice with a Bluebird Bakery Online (BBO) note the learner can demo offline.
 
 ### 2.5 Unsafe experiments
 
 Some online guides show how to force a connection to use older, weaker settings ("downgrade") or how to capture other people's network traffic. These are only appropriate in isolated labs run by trained professionals with permission. In this course, labs run entirely on your own computer with made-up data.
 
-Section two point five develops scope permission and safe practice with a Bluebird Bakery Online (BBO) note the learner can demo offline.
-
-Under section two point five, the mentor expects scope claims to carry owners and dates.
-
 ### 2.6 Reporting clearly
 
 A good note says: what you looked at, when, how, what you found, why it matters and what you suggest. Example: "8 October, bakery account page of the email provider (read only): the provider's help page says connections use modern TLS and lists post-quantum key exchange as 'rolling out'. Matters because staff emails include payroll attachments. Suggest: ask the provider for a date."
-
-Section two point six develops scope permission and safe practice with a Bluebird Bakery Online (BBO) note the learner can demo offline.
 
 ### 2.7 Worked example
 
 A classmate says: "Let's scan the shopping centre's Wi-Fi to see whose devices are quantum-vulnerable." The safe answer: "We don't have permission and it could expose other people's data. Instead, let's look at our own phones' settings and read the Wi-Fi provider's public documentation."
 
-Section two point seven develops scope permission and safe practice with a Bluebird Bakery Online (BBO) note the learner can demo offline.
-
-Under section two point seven, the mentor expects scope claims to carry owners and dates.
-
-Section two point seven treats why permission matters simple as testable only when evidence and ticket IDs are recorded.
-
 ### 2.8 Practice activities
 
 1. Write a scope for reviewing your own home router's settings. 2. List three pieces of information you would *not* write down during a review. 3. Rewrite a vague note ("email is fine I think") into a clear one.
 
-Section two point eight develops scope permission and safe practice with a Bluebird Bakery Online (BBO) note the learner can demo offline.
-
-Under section two point eight, the mentor expects scope claims to carry owners and dates.
-
-Section two point eight treats why permission matters simple as testable only when evidence and ticket IDs are recorded.
-
 ### 2.9 Common mistakes
-Section two point nine develops scope permission and safe practice with a Bluebird Bakery Online (BBO) note the learner can demo offline.
-
-Under section two point nine, the mentor expects scope claims to carry owners and dates.
-
-Section two point nine treats why permission matters simple as testable only when evidence and ticket IDs are recorded.
-
 
 - Thinking "it's public, so I can test it".
 - Writing down passwords or customer details.
@@ -257,47 +209,21 @@ You will (1) list the services a small organization depends on; (2) note what da
 
 Start with what the business uses every day: the online shop, card payments, email, the staff portal, supplier file transfers, office Wi-Fi, the shop tills and any connected equipment such as an oven controller. Write each down with a one-line description.
 
-Section three point one develops quantum and post-quantum security systems with a Bluebird Bakery Online (BBO) note the learner can demo offline.
-
-Under section three point one, the mentor expects quantum claims to carry owners and dates.
-
-Section three point one treats listing services data and as testable only when evidence and ticket IDs are recorded.
-
 ### 3.2 Data and lifetimes
 
 For each service, note the kind of data it handles and how long that data must stay private. At BBO: customer accounts (names, addresses, order history; kept about ten years for tax and loyalty records); payroll files (twelve years); supplier contracts (seven years); order confirmations (useful for months). Long lifetimes mean harvest-now-decrypt-later matters more.
-
-Section three point two develops quantum and post-quantum security systems with a Bluebird Bakery Online (BBO) note the learner can demo offline.
-
-Under section three point two, the mentor expects quantum claims to carry owners and dates.
 
 ### 3.3 Who controls security
 
 Small organizations rarely run their own servers. The web-shop provider controls the shop's connections; the payment company controls card security; the email provider controls email; the router maker controls Wi-Fi equipment updates. BBO controls choices like which providers to use, keeping devices updated, and asking questions. Writing down the controller tells you whom to ask.
 
-Section three point three develops quantum and post-quantum security systems with a Bluebird Bakery Online (BBO) note the learner can demo offline.
-
-Under section three point three, the mentor expects quantum claims to carry owners and dates.
-
 ### 3.4 Recording facts with their source
 
 Each fact should say where it came from: "Provider help page, 8 October", "Router settings page, version 2.1", "Asked Priya". Facts from documentation are less certain than facts you observed directly, such as your browser showing the connection details.
 
-Section three point four develops quantum and post-quantum security systems with a Bluebird Bakery Online (BBO) note the learner can demo offline.
-
-Under section three point four, the mentor expects quantum claims to carry owners and dates.
-
-Section three point four treats listing services data and as testable only when evidence and ticket IDs are recorded.
-
 ### 3.5 Unknowns are questions
 
 If you do not know something — which security settings the oven controller uses — write "unknown" and turn it into a question for the right person. Unknown is not the same as safe.
-
-Section three point five develops quantum and post-quantum security systems with a Bluebird Bakery Online (BBO) note the learner can demo offline.
-
-Under section three point five, the mentor expects quantum claims to carry owners and dates.
-
-Section three point five treats listing services data and as testable only when evidence and ticket IDs are recorded.
 
 ### 3.6 Practical activity — Lab J
 
@@ -321,12 +247,6 @@ for prop, c in sorted(summary.items()):
 
 Expected output:
 
-Section three point six develops quantum and post-quantum security systems with a Bluebird Bakery Online (BBO) note the learner can demo offline.
-
-Under section three point six, the mentor expects quantum claims to carry owners and dates.
-
-Section three point six treats listing services data and as testable only when evidence and ticket IDs are recorded.
-
 ```text
 bakery    hybrid=0 classical=1 unknown=1
 office    hybrid=1 classical=0 unknown=0
@@ -339,37 +259,15 @@ The bakery's oven controller has no recorded information, so it shows as unknown
 
 Combine lifetimes and control. First: services holding long-lived data that BBO can influence — ask the payroll and email providers about their post-quantum plans and keep accounts updated. Next: services with unknowns — ask the oven-controller maker. Last: short-lived data such as order confirmations.
 
-Section three point seven develops quantum and post-quantum security systems with a Bluebird Bakery Online (BBO) note the learner can demo offline.
-
-Under section three point seven, the mentor expects quantum claims to carry owners and dates.
-
-Section three point seven treats listing services data and as testable only when evidence and ticket IDs are recorded.
-
 ### 3.8 Worked example
 
 BBO's list (synthetic): online shop (provider; customer accounts 10 years; provider documentation says hybrid key exchange enabled); payroll service (provider; 12 years; unknown — ask); email (provider; payroll attachments; "rolling out" — ask for date); supplier file transfer (provider; contracts 7 years; classical — ask); oven controller (manufacturer; no personal data; unknown — ask about updates). Priorities: payroll and email questions first.
-
-Section three point eight develops quantum and post-quantum security systems with a Bluebird Bakery Online (BBO) note the learner can demo offline.
-
-Under section three point eight, the mentor expects quantum claims to carry owners and dates.
 
 ### 3.9 Practice activities
 
 1. List the services your household or a club you belong to depends on. 2. For each, write the data held, lifetime and controller. 3. Turn two unknowns into questions.
 
-Section three point nine develops quantum and post-quantum security systems with a Bluebird Bakery Online (BBO) note the learner can demo offline.
-
-Under section three point nine, the mentor expects quantum claims to carry owners and dates.
-
-Section three point nine treats listing services data and as testable only when evidence and ticket IDs are recorded.
-
 ### 3.10 Common mistakes
-Section three point one zero develops quantum and post-quantum security systems with a Bluebird Bakery Online (BBO) note the learner can demo offline.
-
-Under section three point one zero, the mentor expects quantum claims to carry owners and dates.
-
-Section three point one zero treats listing services data and as testable only when evidence and ticket IDs are recorded.
-
 
 - Forgetting equipment such as tills and controllers.
 - Treating unknown as safe.
@@ -412,8 +310,6 @@ You will (1) read a simple configuration audit; (2) explain "offered" versus "us
 
 This lab checks made-up configurations for four BBO services. It asks two questions: does the service offer the new hybrid method, and does it prefer it?
 
-Section four point one develops quantum and post-quantum security guided with a Bluebird Bakery Online (BBO) note the learner can demo offline.
-
 ```python
 # Lab T (ch 4): audit synthetic TLS server configurations for post-quantum key exchange and preference order.
 configs = {  # service: ordered list of offered groups (server preference) - synthetic
@@ -445,15 +341,9 @@ The online shop offers and prefers hybrid. The staff portal offers hybrid but pr
 
 A setting that *offers* the new method is not the same as connections that *use* it. What matters is what happens when a connection is made. Technical staff check this with connection logs or tools; as a learner, you can see it for your own browser.
 
-Section four point two develops quantum and post-quantum security guided with a Bluebird Bakery Online (BBO) note the learner can demo offline.
-
-Under section four point two, the mentor expects quantum claims to carry owners and dates.
-
 ### 4.3 Checking your own browser (with permission)
 
 On your own computer, using a website you normally visit, you can look at the connection details. In some browsers the security panel or developer tools show the "key exchange" used, and you may see X25519MLKEM768 for sites that use hybrid protection. This is ordinary use of your own browser — you are not probing the site. Do not use scanning tools against websites.
-
-Section four point three develops quantum and post-quantum security guided with a Bluebird Bakery Online (BBO) note the learner can demo offline.
 
 ### 4.4 Writing a readiness note
 
@@ -465,57 +355,23 @@ A readiness note for an owner should be short and calm: what you looked at, what
 
 Good questions are specific and answerable: "Do your connections use post-quantum or hybrid key exchange (for example X25519MLKEM768)? If not, when? Which of our data do you keep, and for how long? How will you tell us about changes?"
 
-Section four point five develops quantum and post-quantum security guided with a Bluebird Bakery Online (BBO) note the learner can demo offline.
-
-Under section four point five, the mentor expects quantum claims to carry owners and dates.
-
-Section four point five treats the guided lab lab as testable only when evidence and ticket IDs are recorded.
-
 ### 4.6 Applied synthesis
 
 Putting the month together: you can now explain what quantum computers threaten and what they do not (Chapter 1), work safely with permission (Chapter 2), map a small organization's services, data and controllers (Chapter 3), read a simple audit and write an owner's note (this chapter). That is a complete, useful first task.
-
-Section four point six develops quantum and post-quantum security guided with a Bluebird Bakery Online (BBO) note the learner can demo offline.
-
-Under section four point six, the mentor expects quantum claims to carry owners and dates.
 
 ### 4.7 Next steps
 
 If you want to go further: the professional course teaches the full migration workflow; the technical course teaches hands-on configuration and verification. Keep up with news from reliable sources such as NIST, and be sceptical of headlines.
 
-Section four point seven develops quantum and post-quantum security guided with a Bluebird Bakery Online (BBO) note the learner can demo offline.
-
-Under section four point seven, the mentor expects quantum claims to carry owners and dates.
-
-Section four point seven treats the guided lab lab as testable only when evidence and ticket IDs are recorded.
-
 ### 4.8 Worked example
 
 Priya reads the note and asks: "So do we need to spend money?" Answer: "Not now. Our main actions are emails to providers and keeping things updated. If the payroll provider has no plan, we can consider switching at the next contract renewal."
-
-Section four point eight develops quantum and post-quantum security guided with a Bluebird Bakery Online (BBO) note the learner can demo offline.
-
-Under section four point eight, the mentor expects quantum claims to carry owners and dates.
-
-Section four point eight treats the guided lab lab as testable only when evidence and ticket IDs are recorded.
 
 ### 4.9 Practice activities
 
 1. Rewrite the readiness note for your household or club. 2. Draft one provider email from the questions above. 3. Explain "offered versus used" to a friend using an everyday analogy.
 
-Section four point nine develops quantum and post-quantum security guided with a Bluebird Bakery Online (BBO) note the learner can demo offline.
-
-Under section four point nine, the mentor expects quantum claims to carry owners and dates.
-
-Section four point nine treats the guided lab lab as testable only when evidence and ticket IDs are recorded.
-
 ### 4.10 Common mistakes
-Section four point one zero develops quantum and post-quantum security guided with a Bluebird Bakery Online (BBO) note the learner can demo offline.
-
-Under section four point one zero, the mentor expects quantum claims to carry owners and dates.
-
-Section four point one zero treats the guided lab lab as testable only when evidence and ticket IDs are recorded.
-
 
 - Reporting "offered" as "used".
 - Scanning websites instead of looking at your own browser.

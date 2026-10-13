@@ -44,33 +44,17 @@ You will (1) turn a practitioner worry into a researchable question; (2) run a d
 
 Port security managers in CPSG believe that sharing indicators "helps". Lucía converts that belief into a question with a population, an intervention, a comparison and an outcome: among port operators, does receiving indicators through CPSG's TAXII 2.1 collection shorten the time between an indicator's first publication and a block rule in the member's controls, compared with similar operators outside the group? That structure makes clear what data she needs and what she does not.
 
-Section one point one develops research question and literature method with a the organisation note Lucía Ferraz can demo offline.
-
 ### 1.2 Search method
 
 A literature method states databases, search strings, date limits, languages, and inclusion and exclusion rules. Lucía searches digital libraries for "threat intelligence sharing" AND (effectiveness OR evaluation OR measurement), 2011–2026, English and Spanish. She includes empirical studies and standards; she excludes marketing pages without method.
-
-Section one point two develops research question and literature method with a the organisation note Lucía Ferraz can demo offline.
-
-Under section one point two, Prof. Daniel Okafor expects research claims to carry owners and dates.
 
 ### 1.3 Grading sources
 
 Standards such as NIST SP 800-150 and the OASIS STIX/TAXII 2.1 specifications define practice and formats. Peer-reviewed studies test claims. Vendor reports describe observations under commercial incentives. Government guidance such as ICD 203 sets analytic norms. A literature chapter should keep these strands distinct so that a reader knows which claims are measured and which are recommended.
 
-Section one point three develops research question and literature method with a the organisation note Lucía Ferraz can demo offline.
-
-Under section one point three, Prof. Daniel Okafor expects research claims to carry owners and dates.
-
 ### 1.4 The search log
 
 Each search gets a row: date, database, string, hits, screened, included, reason for exclusions. The log is an appendix, and it lets an examiner see that the review was not cherry-picked.
-
-Section one point four develops research question and literature method with a the organisation note Lucía Ferraz can demo offline.
-
-Under section one point four, Prof. Daniel Okafor expects research claims to carry owners and dates.
-
-Section one point four treats from worry to question as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -112,47 +96,21 @@ You will (1) compare the intelligence cycle with CTI practice in a SOC; (2) expl
 
 Textbook intelligence moves through direction, collection, processing, analysis, dissemination and feedback. In a port SOC the cycle is compressed and noisy: requirements arrive as incident tickets, collection is a feed subscription, and feedback is rare. Seminar discussion should ask where the cycle breaks — usually at direction and feedback.
 
-Section two point one develops threat intelligence and osint advanced with a the organisation note Lucía Ferraz can demo offline.
-
-Under section two point one, Prof. Daniel Okafor expects threat claims to carry owners and dates.
-
 ### 2.2 Three levels
 
 Strategic intelligence informs boards about adversary intent and trends; operational intelligence describes campaigns and their timing; tactical intelligence supplies indicators and technique detail. Lucía's study sits at the tactical–operational boundary: indicators and how quickly they become controls.
-
-Section two point two develops threat intelligence and osint advanced with a the organisation note Lucía Ferraz can demo offline.
-
-Under section two point two, Prof. Daniel Okafor expects threat claims to carry owners and dates.
-
-Section two point two treats cycle versus practice three as testable only when evidence and ticket IDs are recorded.
 
 ### 2.3 Models as tools for tasks
 
 Hutchins et al. help decide where to place controls across phases. The Diamond Model helps pivot from one event to related events through shared infrastructure or capability. ATT&CK supplies a common vocabulary — for example T1566 Phishing or T1071 Application Layer Protocol — that lets a sharing group describe behaviour beyond fragile indicators, which Bianco's Pyramid of Pain ranks as more costly for adversaries to change.
 
-Section two point three develops threat intelligence and osint advanced with a the organisation note Lucía Ferraz can demo offline.
-
 ### 2.4 OSINT at seminar depth
 
 Open sources include company filings, ship-tracking broadcasts, public code repositories and news. Using them still raises duties: data-protection law where people are identifiable, platform terms, and the risk of tipping off subjects. Seminar exercises use synthetic profiles only.
 
-Section two point four develops threat intelligence and osint advanced with a the organisation note Lucía Ferraz can demo offline.
-
-Under section two point four, Prof. Daniel Okafor expects threat claims to carry owners and dates.
-
-Section two point four treats cycle versus practice three as testable only when evidence and ticket IDs are recorded.
-
 ### 2.5 TLP and sharing culture
 
 FIRST TLP 2.0 defines CLEAR, GREEN, AMBER, AMBER+STRICT and RED. Communities like CPSG depend on members honouring labels; one breach can end sharing for years.
-
-Section two point five develops threat intelligence and osint advanced with a the organisation note Lucía Ferraz can demo offline.
-
-Under section two point five, Prof. Daniel Okafor expects threat claims to carry owners and dates.
-
-Section two point five treats cycle versus practice three as testable only when evidence and ticket IDs are recorded.
-
-For section two point five, the organisation will not accept threat work without a written trail.
 
 ### Worked example
 
@@ -194,47 +152,21 @@ You will (1) choose between observational and quasi-experimental designs; (2) id
 
 Lucía cannot randomly assign ports to CPSG membership. She can compare members with non-members, but members may differ — larger budgets, more staff — and those differences, not sharing, might explain faster blocking. A design that ignores this is a correlation study dressed as an evaluation.
 
-Section three point one develops study design ethics and reproducibility with a the organisation note Lucía Ferraz can demo offline.
-
-Under section three point one, Prof. Daniel Okafor expects study claims to carry owners and dates.
-
 ### 3.2 Handling confounders
 
 Options include matching members to non-members of similar size, comparing the same port before and after joining, or adjusting for SOC staffing. Each choice is written into the proposal, not chosen after seeing which gives the nicer result.
-
-Section three point two develops study design ethics and reproducibility with a the organisation note Lucía Ferraz can demo offline.
-
-Under section three point two, Prof. Daniel Okafor expects study claims to carry owners and dates.
-
-Section three point two treats observational limits handling confounders as testable only when evidence and ticket IDs are recorded.
 
 ### 3.3 Consent and TLP
 
 CPSG data carries TLP:AMBER. Research use needs explicit agreement from the community's governance board, and each member must be able to opt out. Results will be aggregated so that no single member's timings can be recovered. Non-member data must come from voluntary participants, not from probing their infrastructure.
 
-Section three point three develops study design ethics and reproducibility with a the organisation note Lucía Ferraz can demo offline.
-
-Under section three point three, Prof. Daniel Okafor expects study claims to carry owners and dates.
-
 ### 3.4 Personal data
 
 Time-to-block logs may include analyst user names. Lucía removes them at source; she needs timings, not people. Data-protection law such as the GDPR applies even in security research, and minimisation is the simplest compliance step.
 
-Section three point four develops study design ethics and reproducibility with a the organisation note Lucía Ferraz can demo offline.
-
-Under section three point four, Prof. Daniel Okafor expects study claims to carry owners and dates.
-
-Section three point four treats observational limits handling confounders as testable only when evidence and ticket IDs are recorded.
-
 ### 3.5 Reproducibility plan
 
 Analysis scripts in the standard library, a data dictionary, synthetic sample files and a fixed random seed for any resampling. The plan is part of the proposal.
-
-Section three point five develops study design ethics and reproducibility with a the organisation note Lucía Ferraz can demo offline.
-
-Under section three point five, Prof. Daniel Okafor expects study claims to carry owners and dates.
-
-Section three point five treats observational limits handling confounders as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -276,12 +208,6 @@ You will (1) build an analysis-of-competing-hypotheses (ACH) matrix; (2) identif
 
 Analysts tend to settle on the first plausible story. Heuer's method forces several hypotheses onto the table and asks which evidence is inconsistent with each. The hypothesis with the fewest serious inconsistencies survives — provisionally.
 
-Section four point one develops threat intelligence and osint competing with a the organisation note Lucía Ferraz can demo offline.
-
-Under section four point one, Prof. Daniel Okafor expects threat claims to carry owners and dates.
-
-Section four point one treats why competing explanations reading as testable only when evidence and ticket IDs are recorded.
-
 ### Lab 1 — ACH matrix
 
 ```python
@@ -315,39 +241,17 @@ diagnostic items: 4 of 5
 
 H1, a criminal ransomware crew, has no inconsistencies; H2, an insider, has two; H3, state-aligned espionage, has three. Item E2 — access from a contractor VPN account — fits every hypothesis and is therefore not diagnostic. Four of five items discriminate. The matrix does not prove H1; it shows H1 is least contradicted by this evidence.
 
-Section four point two develops threat intelligence and osint competing with a the organisation note Lucía Ferraz can demo offline.
-
-Under section four point two, Prof. Daniel Okafor expects threat claims to carry owners and dates.
-
 ### 4.3 Estimative language
 
 ICD 203 asks products to express uncertainty and to distinguish evidence from judgment. Kent's essay on words of estimative probability showed how readers interpret "probable" very differently. A team should publish its own scale — for example "likely" meaning roughly 55–80% — and use it consistently.
-
-Section four point three develops threat intelligence and osint competing with a the organisation note Lucía Ferraz can demo offline.
-
-Under section four point three, Prof. Daniel Okafor expects threat claims to carry owners and dates.
-
-Section four point three treats why competing explanations reading as testable only when evidence and ticket IDs are recorded.
 
 ### 4.4 Change triggers
 
 Every judgment carries indicators that would change it: evidence of data sale without ransom (would raise H3), or a confession from a disgruntled employee (would raise H2). Writing triggers prevents silent drift.
 
-Section four point four develops threat intelligence and osint competing with a the organisation note Lucía Ferraz can demo offline.
-
-Under section four point four, Prof. Daniel Okafor expects threat claims to carry owners and dates.
-
-Section four point four treats why competing explanations reading as testable only when evidence and ticket IDs are recorded.
-
 ### 4.5 ATT&CK as evidence vocabulary
 
 Mapping evidence to ATT&CK — staging and T1486 Data Encrypted for Impact for E1 — helps other analysts check whether behaviour matches a known group's profile without overrelying on names.
-
-Section four point five develops threat intelligence and osint competing with a the organisation note Lucía Ferraz can demo offline.
-
-Under section four point five, Prof. Daniel Okafor expects threat claims to carry owners and dates.
-
-Section four point five treats why competing explanations reading as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -389,49 +293,21 @@ You will (1) write a dissertation proposal with measurable aims; (2) define each
 
 Aim 1: measure median time-to-block for indicators received via CPSG. Aim 2: compare with matched non-members. Aim 3: describe how often shared indicators were judged not worth blocking. Each aim names its variable and its analysis.
 
-Section five point one develops proposal and pilot with a the organisation note Lucía Ferraz can demo offline.
-
-Under section five point one, Prof. Daniel Okafor expects proposal claims to carry owners and dates.
-
-Section five point one treats aims and measures data as testable only when evidence and ticket IDs are recorded.
-
 ### 5.2 Data dictionary
 
 `t_pub`: timestamp the indicator was first published to the TAXII collection (UTC). `t_block`: timestamp a block rule became active in the member's control. `ttb_h`: hours between them. `ioc_type`: domain, ip, hash or url. `decision`: blocked, monitored, ignored. Every field has a type, unit and allowed values.
-
-Section five point two develops proposal and pilot with a the organisation note Lucía Ferraz can demo offline.
-
-Under section five point two, Prof. Daniel Okafor expects proposal claims to carry owners and dates.
 
 ### 5.3 Pilot
 
 A pilot with one member and two weeks of synthetic-format logs tests whether `t_block` is recorded at all. Many organisations log rule edits only in change tickets with day-level precision, which would make hour-level timings impossible.
 
-Section five point three develops proposal and pilot with a the organisation note Lucía Ferraz can demo offline.
-
-Under section five point three, Prof. Daniel Okafor expects proposal claims to carry owners and dates.
-
-Section five point three treats aims and measures data as testable only when evidence and ticket IDs are recorded.
-
 ### 5.4 Revising without drifting
 
 If the pilot shows day-level precision only, Lucía can change the unit to days — a measurement revision — but should not change the question to something easier, such as "do members like the feed?" That would be scope drift.
 
-Section five point four develops proposal and pilot with a the organisation note Lucía Ferraz can demo offline.
-
-Under section five point four, Prof. Daniel Okafor expects proposal claims to carry owners and dates.
-
-Section five point four treats aims and measures data as testable only when evidence and ticket IDs are recorded.
-
 ### 5.5 Indicator formats
 
 CPSG publishes STIX 2.1 indicator objects. The pilot confirms that `created` and `valid_from` are populated, giving a trustworthy `t_pub`. Objects missing required properties are logged as data-quality findings for the community.
-
-Section five point five develops proposal and pilot with a the organisation note Lucía Ferraz can demo offline.
-
-Under section five point five, Prof. Daniel Okafor expects proposal claims to carry owners and dates.
-
-Section five point five treats aims and measures data as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -473,12 +349,6 @@ You will (1) validate incoming structured data before analysis; (2) compute and 
 
 Members export STIX 2.1 objects from CPSG's TAXII collection with their block logs. Before any statistics, Lucía checks that objects carry required properties and well-formed identifiers. Malformed objects are counted and reported to the community, not silently repaired.
 
-Section six point one develops data collection and analysis with a the organisation note Lucía Ferraz can demo offline.
-
-Under section six point one, Prof. Daniel Okafor expects data claims to carry owners and dates.
-
-Section six point one treats validate first what the as testable only when evidence and ticket IDs are recorded.
-
 ### Lab 2 — STIX property check
 
 ```python
@@ -514,12 +384,6 @@ threat-actor--0f9c3a5e-6b1d-4c39-9a8e-2b9f6a7d1c11 PROBLEMS: spec_version
 
 The first indicator passes. The second lacks `pattern` and `valid_from` and has an identifier that is not `type--UUID`. The threat-actor object lacks `spec_version`, which STIX 2.1 requires on domain objects. Only valid objects contribute `t_pub` values.
 
-Section six point two develops data collection and analysis with a the organisation note Lucía Ferraz can demo offline.
-
-Under section six point two, Prof. Daniel Okafor expects data claims to carry owners and dates.
-
-Section six point two treats validate first what the as testable only when evidence and ticket IDs are recorded.
-
 ### Lab 3 — time-to-block medians
 
 ```python
@@ -545,29 +409,13 @@ difference=7.0h ratio=3.33
 
 Timing data are skewed — a few slow cases dominate means — so medians are reported. Members' median is 3.0 hours, non-members' 10.0 hours: a difference of 7.0 hours, ratio 3.33. With samples of seven and six, uncertainty is wide; a bootstrap interval or a rank-based test would be reported beside the medians.
 
-Section six point three develops data collection and analysis with a the organisation note Lucía Ferraz can demo offline.
-
-Under section six point three, Prof. Daniel Okafor expects data claims to carry owners and dates.
-
 ### 6.4 Description versus cause
 
 The result describes faster blocking among members in this sample. Given the confounders discussed in Chapter 3, Lucía writes "is associated with" rather than "causes", unless the before-and-after stratum shows a consistent change on joining.
 
-Section six point four develops data collection and analysis with a the organisation note Lucía Ferraz can demo offline.
-
-Under section six point four, Prof. Daniel Okafor expects data claims to carry owners and dates.
-
-Section six point four treats validate first what the as testable only when evidence and ticket IDs are recorded.
-
 ### 6.5 Reporting data quality back
 
 The validation counts are themselves a contribution. Lucía sends CPSG a short data-quality note listing how many objects lacked required properties, grouped by publishing member class, so producers can fix their exports. The note follows the same aggregation rule as the dissertation.
-
-Section six point five develops data collection and analysis with a the organisation note Lucía Ferraz can demo offline.
-
-Under section six point five, Prof. Daniel Okafor expects data claims to carry owners and dates.
-
-Section six point five treats validate first what the as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -609,47 +457,21 @@ You will (1) structure a dissertation around research questions; (2) write a lim
 
 Introduction states the question and why ports care. Literature shows what is known and the gap. Methods describe design, data dictionary, ethics and validation. Results answer each aim in order. Discussion interprets, compares with literature, and states implications. Conclusion is short. Each results subsection should open with the aim it answers.
 
-Section seven point one develops dissertation writing and limitations with a the organisation note Lucía Ferraz can demo offline.
-
-Under section seven point one, Prof. Daniel Okafor expects dissertation claims to carry owners and dates.
-
 ### 7.2 Strong limitations
 
 A strong limitation names the problem, its likely direction of bias, and what was done about it. "Small sample" alone is weak. "With seven members and six non-members, the median difference is imprecise; the bootstrap interval is wide and crosses small effects, so practical significance is uncertain" is strong.
-
-Section seven point two develops dissertation writing and limitations with a the organisation note Lucía Ferraz can demo offline.
-
-Under section seven point two, Prof. Daniel Okafor expects dissertation claims to carry owners and dates.
 
 ### 7.3 Two audiences
 
 Examiners want method and argument. CPSG members want a one-page brief: what the median gap was, what it suggests for staffing and automation, and what it does not show. The brief carries the same caveats in plainer language.
 
-Section seven point three develops dissertation writing and limitations with a the organisation note Lucía Ferraz can demo offline.
-
-Under section seven point three, Prof. Daniel Okafor expects dissertation claims to carry owners and dates.
-
-Section seven point three treats structure follows questions strong as testable only when evidence and ticket IDs are recorded.
-
 ### 7.4 Restricted data in writing
 
 The dissertation is likely to be public through the university library, so it is written as TLP:CLEAR. No member names, no indicator values from the AMBER collection, no quotations from member bulletins. Synthetic examples illustrate formats.
 
-Section seven point four develops dissertation writing and limitations with a the organisation note Lucía Ferraz can demo offline.
-
-Under section seven point four, Prof. Daniel Okafor expects dissertation claims to carry owners and dates.
-
-Section seven point four treats structure follows questions strong as testable only when evidence and ticket IDs are recorded.
-
 ### 7.5 Judgment language
 
 When interpreting, separate observation ("members blocked faster in this sample") from judgment ("automation of TAXII ingestion likely explains part of the gap"), as ICD 203 recommends for analytic products. Label the judgment's confidence and basis.
-
-Section seven point five develops dissertation writing and limitations with a the organisation note Lucía Ferraz can demo offline.
-
-Under section seven point five, Prof. Daniel Okafor expects dissertation claims to carry owners and dates.
-
-Section seven point five treats structure follows questions strong as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -691,51 +513,21 @@ You will (1) commission an independent methods review before submission; (2) pre
 
 A colleague outside the project reruns the analysis from the archive using synthetic sample files and checks that every figure matches. A second reader checks that no restricted information leaked into text, tables or figure captions. Both reviews are documented.
 
-Section eight point one develops independent review and defense with a the organisation note Lucía Ferraz can demo offline.
-
-Under section eight point one, Prof. Daniel Okafor expects independent claims to carry owners and dates.
-
-Section eight point one treats independent methods review likely as testable only when evidence and ticket IDs are recorded.
-
 ### 8.2 Likely viva questions
 
 Why not a randomised design? How did you handle confounding? What did members consent to? What would change your conclusion? Why medians? Is the STIX validation rule set complete? Practise answers that cite the dissertation's own pages.
-
-Section eight point two develops independent review and defense with a the organisation note Lucía Ferraz can demo offline.
-
-Under section eight point two, Prof. Daniel Okafor expects independent claims to carry owners and dates.
-
-Section eight point two treats independent methods review likely as testable only when evidence and ticket IDs are recorded.
 
 ### 8.3 Responding to findings
 
 If the reviewer finds a figure that does not match, fix it, record the correction in a change log, and check whether any conclusion changes. Examiners respect a visible correction more than an invisible one discovered later.
 
-Section eight point three develops independent review and defense with a the organisation note Lucía Ferraz can demo offline.
-
-Under section eight point three, Prof. Daniel Okafor expects independent claims to carry owners and dates.
-
-Section eight point three treats independent methods review likely as testable only when evidence and ticket IDs are recorded.
-
 ### 8.4 Returning value
 
 CPSG gave data; the community should get results first. Lucía presents the brief to the governance board before public defence, under the agreed aggregation rules. NIST SP 800-150 stresses that sharing relationships rely on trust and reciprocity; research that extracts without returning erodes both.
 
-Section eight point four develops independent review and defense with a the organisation note Lucía Ferraz can demo offline.
-
-Under section eight point four, Prof. Daniel Okafor expects independent claims to carry owners and dates.
-
-Section eight point four treats independent methods review likely as testable only when evidence and ticket IDs are recorded.
-
 ### 8.5 After the defence
 
 Delete raw timings as agreed, archive code and synthetic samples, and record the deletion. If publishing a paper, recheck that the published version still meets the board's conditions.
-
-Section eight point five develops independent review and defense with a the organisation note Lucía Ferraz can demo offline.
-
-Under section eight point five, Prof. Daniel Okafor expects independent claims to carry owners and dates.
-
-Section eight point five treats independent methods review likely as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 

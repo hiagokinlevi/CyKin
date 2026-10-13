@@ -53,43 +53,17 @@ Kwame Asante is an engineering student at the fictional Ridgeway Institute of Te
 
 A derivative measures how fast something changes. If ticket-web's dependency count grows from 40 to 160 over four years, the average rate is 30 new components per year. The instantaneous rate tells you whether growth is speeding up: a steepening curve means review effort must grow faster too.
 
-Section one point two develops calculus with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section one point two, Ingrid Solberg expects calculus claims to carry owners and dates.
-
-Section one point two treats the case rates of as testable only when evidence and ticket IDs are recorded.
-
 ### 1.3 Accumulation
 
 An integral adds up a rate over time. If a vulnerable component is present for t days at a risk rate r(t), the accumulated exposure is the area under r(t). Shortening the time to upgrade reduces this area directly; this is why later chapters measure remediation days.
-
-Section one point three develops calculus with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section one point three, Ingrid Solberg expects calculus claims to carry owners and dates.
-
-Section one point three treats the case rates of as testable only when evidence and ticket IDs are recorded.
 
 ### 1.4 Reading graphs
 
 Kwame plots weekly open advisories for ticket-web. The slope after a big framework upgrade is negative for six weeks, then flattens. A flat line at a non-zero value means advisories arrive as fast as they are fixed.
 
-Section one point four develops calculus with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section one point four, Ingrid Solberg expects calculus claims to carry owners and dates.
-
-Section one point four treats the case rates of as testable only when evidence and ticket IDs are recorded.
-
 ### 1.5 Limits
 
 Calculus models assume smooth change; real advisories arrive in jumps. Models are guides for reasoning, not precise forecasts.
-
-Section one point five develops calculus with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section one point five, Ingrid Solberg expects calculus claims to carry owners and dates.
-
-Section one point five treats the case rates of as testable only when evidence and ticket IDs are recorded.
-
-For section one point five, Coastline Transit will not accept calculus work without a written trail.
 
 ### Worked example
 
@@ -127,23 +101,9 @@ You will (1) model software dependencies as directed graphs; (2) compute transit
 
 A directed graph has nodes and arrows. Each package is a node; an arrow from A to B means A depends on B. ticket-web depends directly on three packages, which depend on others.
 
-Section two point one develops discrete mathematics with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section two point one, Ingrid Solberg expects discrete claims to carry owners and dates.
-
-Section two point one treats graphs transitive closure lab as testable only when evidence and ticket IDs are recorded.
-
 ### 2.2 Transitive closure
 
 The set of all nodes reachable from ticket-web is its transitive dependency set. Every node in it is code that runs inside ticket-web, even if no Coastline developer chose it.
-
-Section two point two develops discrete mathematics with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section two point two, Ingrid Solberg expects discrete claims to carry owners and dates.
-
-Section two point two treats graphs transitive closure lab as testable only when evidence and ticket IDs are recorded.
-
-For section two point two, Coastline Transit will not accept discrete work without a written trail.
 
 ### Lab — Lab — reaching dependencies
 
@@ -173,35 +133,13 @@ reached via more than one path: zipx
 
 ticket-web has 3 direct dependencies but 9 in total. zipx is reached by more than one path (from qr-make and from imgkit), so updating it may require coordinating two parents.
 
-Section two point three develops discrete mathematics with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section two point three, Ingrid Solberg expects discrete claims to carry owners and dates.
-
-Section two point three treats graphs transitive closure lab as testable only when evidence and ticket IDs are recorded.
-
-For section two point three, Coastline Transit will not accept discrete work without a written trail.
-
 ### 2.4 Why it matters
 
 Decan, Mens and Constantinou (2018) measured how vulnerabilities in npm spread through such transitive links; Zimmermann et al. (2019) showed that a few packages and maintainers reach a large share of an ecosystem. Graph structure explains why one flaw can affect thousands of applications.
 
-Section two point four develops discrete mathematics with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section two point four, Ingrid Solberg expects discrete claims to carry owners and dates.
-
-Section two point four treats graphs transitive closure lab as testable only when evidence and ticket IDs are recorded.
-
 ### 2.5 Cycles
 
 Some ecosystems allow cycles; search must track visited nodes, as the lab's "seen" set does, or it will loop forever.
-
-Section two point five develops discrete mathematics with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section two point five, Ingrid Solberg expects discrete claims to carry owners and dates.
-
-Section two point five treats graphs transitive closure lab as testable only when evidence and ticket IDs are recorded.
-
-For section two point five, Coastline Transit will not accept discrete work without a written trail.
 
 ### Counting paths
 
@@ -243,61 +181,21 @@ You will (1) explain the physical basis of computation and storage; (2) relate e
 
 Bits are stored as charge, magnetism or light. Physical effects such as radiation, heat and wear can flip bits. Memory with error-correcting codes detects and fixes single-bit errors.
 
-Section three point one develops physics for computing with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section three point one, Ingrid Solberg expects physics claims to carry owners and dates.
-
-Section three point one treats bits as physics storage as testable only when evidence and ticket IDs are recorded.
-
-For section three point one, Coastline Transit will not accept physics work without a written trail.
-
 ### 3.2 Storage reliability
 
 Disks and flash wear out; silent corruption is rare but real at scale. Coastline's artifact mirror stores thousands of build files for years.
-
-Section three point two develops physics for computing with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section three point two, Ingrid Solberg expects physics claims to carry owners and dates.
-
-Section three point two treats bits as physics storage as testable only when evidence and ticket IDs are recorded.
-
-For section three point two, Coastline Transit will not accept physics work without a written trail.
 
 ### 3.3 Integrity checks
 
 A cryptographic digest such as SHA-256 changes completely if any bit changes. Checking digests detects corruption and tampering alike; chapter 19 returns to this in the lab.
 
-Section three point three develops physics for computing with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section three point three, Ingrid Solberg expects physics claims to carry owners and dates.
-
-Section three point three treats bits as physics storage as testable only when evidence and ticket IDs are recorded.
-
-For section three point three, Coastline Transit will not accept physics work without a written trail.
-
 ### 3.4 Heat and performance
 
 Hot servers slow down; build machines under heavy load can time out, producing incomplete artifacts. Monitoring temperature and build duration helps catch this.
 
-Section three point four develops physics for computing with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section three point four, Ingrid Solberg expects physics claims to carry owners and dates.
-
-Section three point four treats bits as physics storage as testable only when evidence and ticket IDs are recorded.
-
-For section three point four, Coastline Transit will not accept physics work without a written trail.
-
 ### 3.5 The mirror mismatch
 
 Investigation showed the mismatched mirror copy was truncated during a storage failure, not tampered with. But the team could not tell which until they compared logs.
-
-Section three point five develops physics for computing with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section three point five, Ingrid Solberg expects physics claims to carry owners and dates.
-
-Section three point five treats bits as physics storage as testable only when evidence and ticket IDs are recorded.
-
-For section three point five, Coastline Transit will not accept physics work without a written trail.
 
 ### Redundancy
 
@@ -343,75 +241,25 @@ You will (1) write clear, small functions; (2) handle errors explicitly; (3) rea
 
 A function should do one thing. Kwame writes fare_for(zone, passengers) that returns a price, separate from code that reads the form.
 
-Section four point one develops programming with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section four point one, Ingrid Solberg expects programming claims to carry owners and dates.
-
-Section four point one treats small functions explicit errors as testable only when evidence and ticket IDs are recorded.
-
-For section four point one, Coastline Transit will not accept programming work without a written trail.
-
 ### 4.2 Explicit errors
 
 If zone is unknown, the function raises an error instead of returning zero, which would make tickets free. Failing safely is a security property.
-
-Section four point two develops programming with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section four point two, Ingrid Solberg expects programming claims to carry owners and dates.
-
-Section four point two treats small functions explicit errors as testable only when evidence and ticket IDs are recorded.
-
-For section four point two, Coastline Transit will not accept programming work without a written trail.
 
 ### 4.3 Testing
 
 Each function has small tests: valid zones, unknown zone, zero passengers. Tests run on every change.
 
-Section four point three develops programming with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section four point three, Ingrid Solberg expects programming claims to carry owners and dates.
-
-Section four point three treats small functions explicit errors as testable only when evidence and ticket IDs are recorded.
-
-For section four point three, Coastline Transit will not accept programming work without a written trail.
-
 ### 4.4 Secure defaults
 
 Defaults should be the safe choice: deny unless allowed, escape output unless told otherwise. The template flaw in tmpl arose when one function's default skipped escaping for certain attributes.
-
-Section four point four develops programming with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section four point four, Ingrid Solberg expects programming claims to carry owners and dates.
-
-Section four point four treats small functions explicit errors as testable only when evidence and ticket IDs are recorded.
-
-For section four point four, Coastline Transit will not accept programming work without a written trail.
 
 ### 4.5 Readability
 
 Clear names and short functions make review effective; reviewers miss flaws in long, tangled code.
 
-Section four point five develops programming with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section four point five, Ingrid Solberg expects programming claims to carry owners and dates.
-
-Section four point five treats small functions explicit errors as testable only when evidence and ticket IDs are recorded.
-
-For section four point five, Coastline Transit will not accept programming work without a written trail.
-
-Section four point five fails closed if programming evidence is missing rather than guessing.
-
 ### 4.6 CWE vocabulary
 
 MITRE's CWE Top 25 lists weaknesses such as improper input validation (CWE-20) and cross-site scripting (CWE-79). Learning their names early helps read advisories.
-
-Section four point six develops programming with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section four point six, Ingrid Solberg expects programming claims to carry owners and dates.
-
-Section four point six treats small functions explicit errors as testable only when evidence and ticket IDs are recorded.
-
-For section four point six, Coastline Transit will not accept programming work without a written trail.
 
 ### Version control
 
@@ -457,65 +305,21 @@ You will (1) write clear technical reports; (2) present security findings to mix
 
 Engineers want detail, managers want decisions and impact, the public wants reassurance and facts. Kwame writes the same finding three ways.
 
-Section five point one develops engineering communication with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section five point one, Ingrid Solberg expects engineering claims to carry owners and dates.
-
-Section five point one treats audiences report structure diagrams as testable only when evidence and ticket IDs are recorded.
-
-For section five point one, Coastline Transit will not accept engineering work without a written trail.
-
 ### 5.2 Report structure
 
 Summary, context, findings, evidence, recommendations, limitations. The summary fits in five lines.
-
-Section five point two develops engineering communication with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section five point two, Ingrid Solberg expects engineering claims to carry owners and dates.
-
-Section five point two treats audiences report structure diagrams as testable only when evidence and ticket IDs are recorded.
-
-For section five point two, Coastline Transit will not accept engineering work without a written trail.
-
-Section five point two fails closed if engineering evidence is missing rather than guessing.
 
 ### 5.3 Diagrams
 
 Kwame's dependency graph diagram made the tmpl surprise clear to managers in one glance.
 
-Section five point three develops engineering communication with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section five point three, Ingrid Solberg expects engineering claims to carry owners and dates.
-
-Section five point three treats audiences report structure diagrams as testable only when evidence and ticket IDs are recorded.
-
-For section five point three, Coastline Transit will not accept engineering work without a written trail.
-
-Section five point three fails closed if engineering evidence is missing rather than guessing.
-
 ### 5.4 Uncertainty
 
 "We have no evidence the flaw was used" is different from "the flaw was not used". Ingrid insists on accurate phrasing.
 
-Section five point four develops engineering communication with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section five point four, Ingrid Solberg expects engineering claims to carry owners and dates.
-
-Section five point four treats audiences report structure diagrams as testable only when evidence and ticket IDs are recorded.
-
-For section five point four, Coastline Transit will not accept engineering work without a written trail.
-
 ### 5.5 Responsible detail
 
 Reports about flaws avoid giving step-by-step misuse instructions; they describe the weakness, its effect and the fix.
-
-Section five point five develops engineering communication with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section five point five, Ingrid Solberg expects engineering claims to carry owners and dates.
-
-Section five point five treats audiences report structure diagrams as testable only when evidence and ticket IDs are recorded.
-
-For section five point five, Coastline Transit will not accept engineering work without a written trail.
 
 ### Written decisions
 
@@ -561,47 +365,21 @@ You will (1) use series and growth models to reason about compounding effects; (
 
 When each component brings its own dependencies, the total can grow like a geometric series. If every package added brings, on average, 0.8 new transitive packages, adding one direct dependency adds 1 + 0.8 + 0.64 + ... = 1/(1 − 0.8) = 5 packages in expectation. This simple sum explains why a small decision can enlarge the attack surface far more than expected.
 
-Section six point one develops calculus ii with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section six point one, Ingrid Solberg expects calculus claims to carry owners and dates.
-
 ### 6.2 Decay models
 
 After Coastline releases a fixed version of its mobile ticket app, users update gradually. If 10% of the remaining old installations update each day, the share still on the old version after t days is 0.9^t: about 35% after 10 days and 4% after 30. This exponential decay model helps plan how long old server-side support for the vulnerable version must continue.
-
-Section six point two develops calculus ii with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section six point two, Ingrid Solberg expects calculus claims to carry owners and dates.
 
 ### 6.3 Linear versus exponential
 
 Kwame fits both models to the real update data from the last app release. The exponential model fits the first two weeks well but overestimates updating later, when the remaining users are those who rarely open the app. Neither model is perfect; he reports both and the range they imply.
 
-Section six point three develops calculus ii with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section six point three, Ingrid Solberg expects calculus claims to carry owners and dates.
-
 ### 6.4 Using the models
 
 The models inform two decisions: whether to force updates for security fixes, and how long to keep compatibility code. A forced update shortens the tail but annoys riders whose phones are old.
 
-Section six point four develops calculus ii with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section six point four, Ingrid Solberg expects calculus claims to carry owners and dates.
-
-Section six point four treats compounding decay models linear as testable only when evidence and ticket IDs are recorded.
-
 ### 6.5 Honest fit
 
 A good fit on past data does not guarantee future behaviour; holidays, app store delays and phone models change patterns. Kwame states the model's assumptions in every chart caption.
-
-Section six point five develops calculus ii with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section six point five, Ingrid Solberg expects calculus claims to carry owners and dates.
-
-Section six point five treats compounding decay models linear as testable only when evidence and ticket IDs are recorded.
-
-For section six point five, Coastline Transit will not accept calculus work without a written trail.
 
 ### Worked example
 
@@ -639,21 +417,9 @@ You will (1) reason about rare events and false alarms; (2) compute and interpre
 
 Most new dependencies are legitimate. If 1 in 1,000 proposed packages were malicious and a check flagged 5% of legitimate ones, most flags would still be false alarms. This is the base-rate effect: alerts must be cheap to review or teams will ignore them.
 
-Section seven point one develops probability and statistics with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section seven point one, Ingrid Solberg expects probability claims to carry owners and dates.
-
-Section seven point one treats rare events and base as testable only when evidence and ticket IDs are recorded.
-
 ### 7.2 Lookalike names
 
 Ohm et al. (2020) documented malicious packages that used names close to popular ones (typosquatting). A defensive check compares each newly proposed dependency name with popular names and asks a human to look when they differ by a single character.
-
-Section seven point two develops probability and statistics with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section seven point two, Ingrid Solberg expects probability claims to carry owners and dates.
-
-Section seven point two treats rare events and base as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — Lab — name similarity
 
@@ -687,31 +453,13 @@ requests     REVIEW: near requestz
 
 Three of four proposed names are flagged: escape-htm1 (one character from escape-html), qr-maker (one from qr-make), and requests (one from requestz). datefmt is not near any popular name. The requests flag shows why review matters: in another ecosystem "requests" may be a well-known legitimate package, so the human reviewer checks publisher, history and download counts before deciding.
 
-Section seven point three develops probability and statistics with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section seven point three, Ingrid Solberg expects probability claims to carry owners and dates.
-
 ### 7.4 Choosing a threshold
 
 A distance of 1 catches most single typing errors with few flags; a distance of 2 would flag many more legitimate names. Kwame measures over a month: 38 new dependency proposals, 4 flagged at distance 1, of which 1 was suspicious and blocked after review.
 
-Section seven point four develops probability and statistics with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section seven point four, Ingrid Solberg expects probability claims to carry owners and dates.
-
-Section seven point four treats rare events and base as testable only when evidence and ticket IDs are recorded.
-
 ### 7.5 Statistics for decisions
 
 Kwame reports the flag rate and the reviewed outcomes, not just "the check works". Over time these counts estimate the check's precision.
-
-Section seven point five develops probability and statistics with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section seven point five, Ingrid Solberg expects probability claims to carry owners and dates.
-
-Section seven point five treats rare events and base as testable only when evidence and ticket IDs are recorded.
-
-For section seven point five, Coastline Transit will not accept probability work without a written trail.
 
 ### Worked example
 
@@ -749,59 +497,21 @@ You will (1) explain how processors execute code and isolate processes; (2) rela
 
 Processors fetch instructions, decode them and execute them, reading and writing memory. Operating systems use hardware features such as privilege levels and virtual memory to separate programs.
 
-Section eight point one develops computer architecture with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section eight point one, Ingrid Solberg expects computer claims to carry owners and dates.
-
-Section eight point one treats execution memory and weaknesses as testable only when evidence and ticket IDs are recorded.
-
-For section eight point one, Coastline Transit will not accept computer work without a written trail.
-
 ### 8.2 Memory and weaknesses
 
 In languages without automatic bounds checks, writing past the end of a buffer can corrupt nearby data. The CWE Top 25 includes out-of-bounds write (CWE-787) and use after free (CWE-416), both memory-safety weaknesses. ticket-web's image library imgkit is written in such a language and wrapped for the web app.
-
-Section eight point two develops computer architecture with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section eight point two, Ingrid Solberg expects computer claims to carry owners and dates.
-
-Section eight point two treats execution memory and weaknesses as testable only when evidence and ticket IDs are recorded.
 
 ### 8.3 Hardware help
 
 Features such as non-executable memory and address randomisation make memory flaws harder to misuse, but do not remove the flaw. Defence in depth combines them with safer code.
 
-Section eight point three develops computer architecture with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section eight point three, Ingrid Solberg expects computer claims to carry owners and dates.
-
-Section eight point three treats execution memory and weaknesses as testable only when evidence and ticket IDs are recorded.
-
-For section eight point three, Coastline Transit will not accept computer work without a written trail.
-
 ### 8.4 Language choice
 
 Memory-safe languages prevent many of these weaknesses by design. Coastline writes new services in memory-safe languages and isolates imgkit in a separate process with limited permissions.
 
-Section eight point four develops computer architecture with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section eight point four, Ingrid Solberg expects computer claims to carry owners and dates.
-
-Section eight point four treats execution memory and weaknesses as testable only when evidence and ticket IDs are recorded.
-
-For section eight point four, Coastline Transit will not accept computer work without a written trail.
-
 ### 8.5 Isolation by design
 
 Running risky parsing code in its own process, with no network access and a time limit, limits damage if a flaw is triggered by a malformed image.
-
-Section eight point five develops computer architecture with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section eight point five, Ingrid Solberg expects computer claims to carry owners and dates.
-
-Section eight point five treats execution memory and weaknesses as testable only when evidence and ticket IDs are recorded.
-
-For section eight point five, Coastline Transit will not accept computer work without a written trail.
 
 ### Measuring isolation
 
@@ -843,10 +553,6 @@ You will (1) validate input with allowlists; (2) separate parsing from business 
 
 An allowlist says exactly what is acceptable: zones A to D, one to nine passengers, four digits for card endings. Anything else is rejected. This is safer than trying to list everything bad. ASVS 4.0.3's validation chapter (V5) and the OWASP Top 10:2021 category A03 Injection both stress validating and handling input safely.
 
-Section nine point one develops programming ii with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section nine point one, Ingrid Solberg expects programming claims to carry owners and dates.
-
 ### Lab — Lab — validating fields
 
 ```python
@@ -872,49 +578,17 @@ form 3: rejected passengers, card_last4
 
 Form 1 is accepted. Form 2 is rejected because zone Z is not allowed. Form 3 is rejected for two fields: 12 passengers exceeds the single-digit rule and "42a2" is not four digits.
 
-Section nine point two develops programming ii with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section nine point two, Ingrid Solberg expects programming claims to carry owners and dates.
-
-Section nine point two treats allowlists lab result where as testable only when evidence and ticket IDs are recorded.
-
-For section nine point two, Coastline Transit will not accept programming work without a written trail.
-
 ### 9.3 Where to validate
 
 Validation happens on the server; browser checks improve user experience but can be bypassed. Validation is also not the only defence: output must still be escaped and queries parameterised (chapter 13).
-
-Section nine point three develops programming ii with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section nine point three, Ingrid Solberg expects programming claims to carry owners and dates.
-
-Section nine point three treats allowlists lab result where as testable only when evidence and ticket IDs are recorded.
-
-For section nine point three, Coastline Transit will not accept programming work without a written trail.
 
 ### 9.4 Error handling
 
 Rejected forms return a clear message naming the field, without echoing the raw input. Logs record the rejection without storing card data.
 
-Section nine point four develops programming ii with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section nine point four, Ingrid Solberg expects programming claims to carry owners and dates.
-
-Section nine point four treats allowlists lab result where as testable only when evidence and ticket IDs are recorded.
-
-For section nine point four, Coastline Transit will not accept programming work without a written trail.
-
 ### 9.5 Testing rules
 
 Each rule has tests for boundaries: zone A and D accepted, E rejected; 1 and 9 passengers accepted, 0 and 10 rejected.
-
-Section nine point five develops programming ii with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section nine point five, Ingrid Solberg expects programming claims to carry owners and dates.
-
-Section nine point five treats allowlists lab result where as testable only when evidence and ticket IDs are recorded.
-
-For section nine point five, Coastline Transit will not accept programming work without a written trail.
 
 ### Canonical forms
 
@@ -956,67 +630,25 @@ You will (1) apply professional ethics to software security work; (2) handle dis
 
 Engineers owe duties to the public, employers and the profession. For a transit app, public duties include protecting riders' payment data and keeping ticket sales available during disruptions.
 
-Section ten point one develops engineering ethics and safety with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section ten point one, Ingrid Solberg expects engineering claims to carry owners and dates.
-
-Section ten point one treats duties responsible handling disclosure as testable only when evidence and ticket IDs are recorded.
-
-For section ten point one, Coastline Transit will not accept engineering work without a written trail.
-
 ### 10.2 Responsible handling
 
 When Kwame notices that an old staff test account still works on the staging site, he reports it to Ingrid rather than exploring what it can do. Testing beyond what you are authorised to do is wrong even with good intentions.
-
-Section ten point two develops engineering ethics and safety with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section ten point two, Ingrid Solberg expects engineering claims to carry owners and dates.
-
-Section ten point two treats duties responsible handling disclosure as testable only when evidence and ticket IDs are recorded.
 
 ### 10.3 Disclosure
 
 When the team finds a flaw in an open-source component, it reports privately to the maintainers and waits for a fix before discussing it publicly, a practice known as coordinated disclosure.
 
-Section ten point three develops engineering ethics and safety with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section ten point three, Ingrid Solberg expects engineering claims to carry owners and dates.
-
-Section ten point three treats duties responsible handling disclosure as testable only when evidence and ticket IDs are recorded.
-
 ### 10.4 Safety and availability
 
 Security changes can break services. Forcing all riders to update the app during a storm, when ferries are cancelled and people need tickets for alternative buses, could cause real harm. Timing matters.
-
-Section ten point four develops engineering ethics and safety with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section ten point four, Ingrid Solberg expects engineering claims to carry owners and dates.
-
-Section ten point four treats duties responsible handling disclosure as testable only when evidence and ticket IDs are recorded.
 
 ### 10.5 Conflicts of interest
 
 Kwame's friend runs a company selling scanning tools. When Coastline evaluates scanners, Kwame declares the relationship and steps back from the decision.
 
-Section ten point five develops engineering ethics and safety with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section ten point five, Ingrid Solberg expects engineering claims to carry owners and dates.
-
-Section ten point five treats duties responsible handling disclosure as testable only when evidence and ticket IDs are recorded.
-
-For section ten point five, Coastline Transit will not accept engineering work without a written trail.
-
 ### 10.6 Codes of conduct
 
 Professional bodies' codes emphasise honesty, competence and public welfare. They help when pressure to ship conflicts with safety.
-
-Section ten point six develops engineering ethics and safety with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section ten point six, Ingrid Solberg expects engineering claims to carry owners and dates.
-
-Section ten point six treats duties responsible handling disclosure as testable only when evidence and ticket IDs are recorded.
-
-For section ten point six, Coastline Transit will not accept engineering work without a written trail.
 
 ### Whistleblowing
 
@@ -1058,65 +690,25 @@ You will (1) explain how web requests travel and are protected; (2) describe TLS
 
 A rider's phone sends an HTTPS request to ticket-web. DNS finds the server address, TCP carries data, TLS encrypts and authenticates the connection, and HTTP carries the request and response. A weakness at any layer can expose data.
 
-Section eleven point one develops networks and protocols with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section eleven point one, Ingrid Solberg expects networks claims to carry owners and dates.
-
-Section eleven point one treats web requests tls package as testable only when evidence and ticket IDs are recorded.
-
 ### 11.2 TLS
 
 TLS lets the phone check that it is talking to Coastline's real server, using a certificate signed by a trusted authority, and then encrypts traffic. OWASP Top 10:2021 A02 Cryptographic Failures includes sending sensitive data without proper encryption.
-
-Section eleven point two develops networks and protocols with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section eleven point two, Ingrid Solberg expects networks claims to carry owners and dates.
-
-Section eleven point two treats web requests tls package as testable only when evidence and ticket IDs are recorded.
 
 ### 11.3 Package downloads
 
 Build servers download dependencies over the network. If downloads used plain HTTP, or if certificate checks were disabled, an attacker on the network could substitute a different package. Coastline's builds use HTTPS only, with checks enabled, and verify each package against a lockfile hash.
 
-Section eleven point three develops networks and protocols with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section eleven point three, Ingrid Solberg expects networks claims to carry owners and dates.
-
-Section eleven point three treats web requests tls package as testable only when evidence and ticket IDs are recorded.
-
 ### 11.4 Restricting egress
 
 Build machines are allowed to reach only the package registry mirror and source host. Unexpected outbound connections during a build are blocked and logged, which limits what a malicious install script could reach.
-
-Section eleven point four develops networks and protocols with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section eleven point four, Ingrid Solberg expects networks claims to carry owners and dates.
-
-Section eleven point four treats web requests tls package as testable only when evidence and ticket IDs are recorded.
 
 ### 11.5 Internal mirror
 
 Coastline uses an internal mirror of approved packages. It reduces dependence on the public registry's availability and gives one place to apply checks.
 
-Section eleven point five develops networks and protocols with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section eleven point five, Ingrid Solberg expects networks claims to carry owners and dates.
-
-Section eleven point five treats web requests tls package as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point five, Coastline Transit will not accept networks work without a written trail.
-
 ### 11.6 Monitoring
 
 Network logs from the build environment are kept, so the team can check what a build contacted.
-
-Section eleven point six develops networks and protocols with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section eleven point six, Ingrid Solberg expects networks claims to carry owners and dates.
-
-Section eleven point six treats web requests tls package as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point six, Coastline Transit will not accept networks work without a written trail.
 
 ### Certificate checks in code
 
@@ -1158,65 +750,25 @@ You will (1) explain processes, users and permissions; (2) apply least privilege
 
 Each program runs as a process owned by a user account. Permissions decide which files and devices it can use. ticket-web runs as a dedicated service user, not as an administrator.
 
-Section twelve point one develops operating systems with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twelve point one, Ingrid Solberg expects operating claims to carry owners and dates.
-
-Section twelve point one treats processes and users least as testable only when evidence and ticket IDs are recorded.
-
 ### 12.2 Least privilege
 
 The service user can read its code and write only to its log and temporary folders. If a flaw lets an attacker run code inside ticket-web, they gain only these limited rights.
-
-Section twelve point two develops operating systems with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twelve point two, Ingrid Solberg expects operating claims to carry owners and dates.
-
-Section twelve point two treats processes and users least as testable only when evidence and ticket IDs are recorded.
 
 ### 12.3 Build isolation
 
 Each build runs in a fresh, short-lived container or virtual machine, destroyed afterwards. This prevents one build from leaving files that affect the next, an issue SLSA v1.0 addresses in its build requirements for isolated builds.
 
-Section twelve point three develops operating systems with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twelve point three, Ingrid Solberg expects operating claims to carry owners and dates.
-
-Section twelve point three treats processes and users least as testable only when evidence and ticket IDs are recorded.
-
 ### 12.4 Secrets on the system
 
 Build credentials are injected only for the steps that need them and never written to disk. A build that prints environment variables must not reveal tokens; the CI system masks them in logs.
-
-Section twelve point four develops operating systems with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twelve point four, Ingrid Solberg expects operating claims to carry owners and dates.
-
-Section twelve point four treats processes and users least as testable only when evidence and ticket IDs are recorded.
 
 ### 12.5 OS logs
 
 Operating systems record process starts, logins and permission changes. These logs help answer what happened during a build or on a server.
 
-Section twelve point five develops operating systems with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twelve point five, Ingrid Solberg expects operating claims to carry owners and dates.
-
-Section twelve point five treats processes and users least as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point five, Coastline Transit will not accept operating work without a written trail.
-
 ### 12.6 Patching the OS
 
 Base images for servers and builds are rebuilt weekly with security updates, and a record shows which image each build used.
-
-Section twelve point six develops operating systems with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twelve point six, Ingrid Solberg expects operating claims to carry owners and dates.
-
-Section twelve point six treats processes and users least as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point six, Coastline Transit will not accept operating work without a written trail.
 
 ### File permissions review
 
@@ -1258,23 +810,9 @@ You will (1) design data stores with security in mind; (2) use parameterised que
 
 ticket-web stores riders, tickets and payments. Card numbers are not stored; the payment provider holds them, and ticket-web keeps only a token and the last four digits.
 
-Section thirteen point one develops data systems with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirteen point one, Ingrid Solberg expects data claims to carry owners and dates.
-
-Section thirteen point one treats data design queries and as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point one, Coastline Transit will not accept data work without a written trail.
-
 ### 13.2 Queries and injection
 
 When code builds database queries by joining strings with user input, characters in the input can change the query's meaning. This weakness, SQL injection (CWE-89), is part of OWASP Top 10:2021 A03 Injection. The defence is parameterised queries, which send the query and the data separately.
-
-Section thirteen point two develops data systems with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirteen point two, Ingrid Solberg expects data claims to carry owners and dates.
-
-Section thirteen point two treats data design queries and as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — Lab — parameterised queries
 
@@ -1303,37 +841,13 @@ string-built query failed: near "Neil": syntax error
 
 With a parameterised query, looking up "Ann O'Neil" returns her zone A. The string-built version fails with a syntax error because the apostrophe in her name ends the text early. The same mechanism that breaks for an honest name is what makes string-built queries dangerous; parameterisation removes it.
 
-Section thirteen point three develops data systems with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirteen point three, Ingrid Solberg expects data claims to carry owners and dates.
-
-Section thirteen point three treats data design queries and as testable only when evidence and ticket IDs are recorded.
-
 ### 13.4 Access to data
 
 Staff access goes through roles: support sees tickets but not payment tokens; finance sees refunds. Database accounts used by the app have only the permissions it needs.
 
-Section thirteen point four develops data systems with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirteen point four, Ingrid Solberg expects data claims to carry owners and dates.
-
-Section thirteen point four treats data design queries and as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point four, Coastline Transit will not accept data work without a written trail.
-
 ### 13.5 Backups and retention
 
 Backups are encrypted and tested; rider data is deleted after the legal retention period.
-
-Section thirteen point five develops data systems with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirteen point five, Ingrid Solberg expects data claims to carry owners and dates.
-
-Section thirteen point five treats data design queries and as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point five, Coastline Transit will not accept data work without a written trail.
-
-Section thirteen point five fails closed if data evidence is missing rather than guessing.
 
 ### Encryption at rest
 
@@ -1375,71 +889,25 @@ You will (1) use a development lifecycle that builds in security; (2) apply code
 
 Coastline plans, designs, builds, tests, releases and maintains ticket-web in two-week iterations. Security activities sit in each step rather than at the end.
 
-Section fourteen point one develops software engineering with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section fourteen point one, Ingrid Solberg expects software claims to carry owners and dates.
-
-Section fourteen point one treats lifecycle the ssdf code as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point one, Coastline Transit will not accept software work without a written trail.
-
 ### 14.2 The SSDF
 
 NIST SP 800-218 (Souppaya et al., 2022) organises secure development practices into four groups: Prepare the Organization (PO), Protect the Software (PS), Produce Well-Secured Software (PW) and Respond to Vulnerabilities (RV). Kwame maps Coastline's activities to these groups to find gaps.
-
-Section fourteen point two develops software engineering with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section fourteen point two, Ingrid Solberg expects software claims to carry owners and dates.
-
-Section fourteen point two treats lifecycle the ssdf code as testable only when evidence and ticket IDs are recorded.
 
 ### 14.3 Code review
 
 Every change is reviewed by another engineer. A checklist prompts reviewers to look at input handling, authorisation and new dependencies.
 
-Section fourteen point three develops software engineering with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section fourteen point three, Ingrid Solberg expects software claims to carry owners and dates.
-
-Section fourteen point three treats lifecycle the ssdf code as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point three, Coastline Transit will not accept software work without a written trail.
-
 ### 14.4 Continuous integration
 
 Each change runs tests, static analysis, the dependency name check (chapter 7) and an advisory check. Failures block merging.
-
-Section fourteen point four develops software engineering with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section fourteen point four, Ingrid Solberg expects software claims to carry owners and dates.
-
-Section fourteen point four treats lifecycle the ssdf code as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point four, Coastline Transit will not accept software work without a written trail.
 
 ### 14.5 Dependency policy
 
 New dependencies need a reason, an owner and a check of maintenance activity. Kula et al. (2018) found that developers often do not update dependencies, so each dependency's owner is responsible for keeping it current.
 
-Section fourteen point five develops software engineering with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section fourteen point five, Ingrid Solberg expects software claims to carry owners and dates.
-
-Section fourteen point five treats lifecycle the ssdf code as testable only when evidence and ticket IDs are recorded.
-
 ### 14.6 Release
 
 Releases are built by CI, signed, and recorded with their digests.
-
-Section fourteen point six develops software engineering with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section fourteen point six, Ingrid Solberg expects software claims to carry owners and dates.
-
-Section fourteen point six treats lifecycle the ssdf code as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point six, Coastline Transit will not accept software work without a written trail.
-
-Section fourteen point six fails closed if software evidence is missing rather than guessing.
 
 ### Definition of done
 
@@ -1485,59 +953,21 @@ You will (1) explain confidentiality, integrity and availability for application
 
 Confidentiality keeps rider data private; integrity ensures tickets and prices are not altered and that deployed code is what was built; availability keeps ticket sales running. Supply-chain attacks are mainly integrity attacks on code.
 
-Section fifteen point one develops security fundamentals with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section fifteen point one, Ingrid Solberg expects security claims to carry owners and dates.
-
-Section fifteen point one treats cia assets and threats as testable only when evidence and ticket IDs are recorded.
-
 ### 15.2 Assets and threats
 
 Assets: payment tokens, rider accounts, the build pipeline, signing keys. Threats: criminals seeking payment data, fraudsters seeking free tickets, attackers targeting the pipeline to reach many riders.
-
-Section fifteen point two develops security fundamentals with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section fifteen point two, Ingrid Solberg expects security claims to carry owners and dates.
-
-Section fifteen point two treats cia assets and threats as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point two, Coastline Transit will not accept security work without a written trail.
 
 ### 15.3 OWASP Top 10:2021
 
 The ten categories are Broken Access Control, Cryptographic Failures, Injection, Insecure Design, Security Misconfiguration, Vulnerable and Outdated Components, Identification and Authentication Failures, Software and Data Integrity Failures, Security Logging and Monitoring Failures, and Server-Side Request Forgery. The tmpl advisory relates to Vulnerable and Outdated Components (A06); the mirror mismatch to Software and Data Integrity Failures (A08).
 
-Section fifteen point three develops security fundamentals with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section fifteen point three, Ingrid Solberg expects security claims to carry owners and dates.
-
 ### 15.4 Controls
 
 Preventive (validation, least privilege), detective (logs, advisory checks) and corrective (patching, rollback).
 
-Section fifteen point four develops security fundamentals with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section fifteen point four, Ingrid Solberg expects security claims to carry owners and dates.
-
-Section fifteen point four treats cia assets and threats as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point four, Coastline Transit will not accept security work without a written trail.
-
-Section fifteen point four fails closed if security evidence is missing rather than guessing.
-
 ### 15.5 Defence in depth
 
 No control is perfect; layers mean one failure does not lead to disaster.
-
-Section fifteen point five develops security fundamentals with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section fifteen point five, Ingrid Solberg expects security claims to carry owners and dates.
-
-Section fifteen point five treats cia assets and threats as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point five, Coastline Transit will not accept security work without a written trail.
-
-Section fifteen point five fails closed if security evidence is missing rather than guessing.
 
 ### Security requirements early
 
@@ -1583,63 +1013,25 @@ You will (1) treat an application and its pipeline as one system; (2) define sys
 
 ticket-web is not just code: it includes the source repository, CI, artifact storage, deployment, servers, third-party services (payments, maps) and the people who operate them. A weakness anywhere can affect riders. Systems engineering looks at all parts together and at how they connect.
 
-Section sixteen point one develops systems engineering with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section sixteen point one, Ingrid Solberg expects systems claims to carry owners and dates.
-
-Section sixteen point one treats the whole system boundaries as testable only when evidence and ticket IDs are recorded.
-
 ### 16.2 Boundaries
 
 Kwame draws the system boundary: Coastline controls source, CI, mirror and servers; the payment provider and public registry are outside. Interfaces across the boundary (registry downloads, payment API calls) are where trust must be checked, because Coastline cannot inspect what happens beyond them.
-
-Section sixteen point two develops systems engineering with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section sixteen point two, Ingrid Solberg expects systems claims to carry owners and dates.
-
-Section sixteen point two treats the whole system boundaries as testable only when evidence and ticket IDs are recorded.
 
 ### 16.3 Interfaces
 
 Each interface has an owner and a contract: what is sent, how it is authenticated, what happens on failure. The registry interface's contract says downloads must match lockfile hashes; the payment interface's says requests are signed and responses verified.
 
-Section sixteen point three develops systems engineering with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section sixteen point three, Ingrid Solberg expects systems claims to carry owners and dates.
-
-Section sixteen point three treats the whole system boundaries as testable only when evidence and ticket IDs are recorded.
-
 ### 16.4 Traceability
 
 Requirements such as "only reviewed code is deployed" are traced to the components that enforce them (repository branch protection, CI policy, deployment check) and to tests that prove them. A requirement with no traced component is a gap.
-
-Section sixteen point four develops systems engineering with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section sixteen point four, Ingrid Solberg expects systems claims to carry owners and dates.
-
-Section sixteen point four treats the whole system boundaries as testable only when evidence and ticket IDs are recorded.
 
 ### 16.5 Change management
 
 Changes to one part, such as a new CI runner, are checked for effects on others. A change board reviews changes to the pipeline itself, since a pipeline change can affect every future release.
 
-Section sixteen point five develops systems engineering with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section sixteen point five, Ingrid Solberg expects systems claims to carry owners and dates.
-
-Section sixteen point five treats the whole system boundaries as testable only when evidence and ticket IDs are recorded.
-
 ### 16.6 Interfaces as risk
 
 Many supply-chain attacks in the Ladisa et al. (2023) taxonomy target interfaces between stages: source to build, build to distribution, distribution to install.
-
-Section sixteen point six develops systems engineering with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section sixteen point six, Ingrid Solberg expects systems claims to carry owners and dates.
-
-Section sixteen point six treats the whole system boundaries as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point six, Coastline Transit will not accept systems work without a written trail.
 
 ### Worked example
 
@@ -1677,71 +1069,25 @@ You will (1) explain feedback loops in engineering; (2) apply feedback to securi
 
 A controller measures an output, compares it with a target and adjusts. A thermostat measures temperature and switches heating. Security processes are loops too: measure open advisories, compare with targets, adjust effort.
 
-Section seventeen point one develops control and feedback basics with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section seventeen point one, Ingrid Solberg expects control claims to carry owners and dates.
-
-Section seventeen point one treats feedback loops the advisory as testable only when evidence and ticket IDs are recorded.
-
 ### 17.2 The advisory loop
 
 Coastline's target: no critical advisory open more than 7 days. Each morning, the advisory check reports open items; the team adjusts priorities. The loop's sensor is the SBOM-based check (chapter 24); its actuator is engineering time.
-
-Section seventeen point two develops control and feedback basics with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section seventeen point two, Ingrid Solberg expects control claims to carry owners and dates.
-
-Section seventeen point two treats feedback loops the advisory as testable only when evidence and ticket IDs are recorded.
 
 ### 17.3 Delays
 
 Feedback with long delays causes trouble. If the advisory report were monthly, problems would be found late and fixes would come in bursts. Daily reports shorten the loop.
 
-Section seventeen point three develops control and feedback basics with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section seventeen point three, Ingrid Solberg expects control claims to carry owners and dates.
-
-Section seventeen point three treats feedback loops the advisory as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point three, Coastline Transit will not accept control work without a written trail.
-
 ### 17.4 Oscillation
 
 Overreacting causes swings: one week everyone drops features to fix low-severity items, the next week nothing gets fixed. Clear thresholds and steady capacity keep the loop stable.
-
-Section seventeen point four develops control and feedback basics with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section seventeen point four, Ingrid Solberg expects control claims to carry owners and dates.
-
-Section seventeen point four treats feedback loops the advisory as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point four, Coastline Transit will not accept control work without a written trail.
 
 ### 17.5 Positive feedback
 
 Some loops amplify: more noise leads to ignoring alerts, which leads to more unresolved items and more noise. Recognising such loops helps break them early.
 
-Section seventeen point five develops control and feedback basics with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section seventeen point five, Ingrid Solberg expects control claims to carry owners and dates.
-
-Section seventeen point five treats feedback loops the advisory as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point five, Coastline Transit will not accept control work without a written trail.
-
 ### 17.6 Measuring the loop
 
 The loop's performance is measured by time to remediate, studied in chapter 29.
-
-Section seventeen point six develops control and feedback basics with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section seventeen point six, Ingrid Solberg expects control claims to carry owners and dates.
-
-Section seventeen point six treats feedback loops the advisory as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point six, Coastline Transit will not accept control work without a written trail.
-
-Section seventeen point six fails closed if control evidence is missing rather than guessing.
 
 ### Setting targets
 
@@ -1783,69 +1129,25 @@ You will (1) design layered security for a web application and pipeline; (2) app
 
 Coastline's architecture has edge protection (a web application firewall and rate limits), the application (validation, authorisation, escaping), data (encryption, least privilege) and pipeline (reviewed source, isolated builds, signed artifacts, verified deployment).
 
-Section eighteen point one develops security architecture with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section eighteen point one, Ingrid Solberg expects security claims to carry owners and dates.
-
-Section eighteen point one treats layers trust boundaries pipeline as testable only when evidence and ticket IDs are recorded.
-
 ### 18.2 Trust boundaries
 
 Boundaries separate zones of different trust: internet to web tier, web tier to database, CI to production. Every boundary has checks. Secrets for production are never available to pull-request builds from untrusted branches.
-
-Section eighteen point two develops security architecture with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section eighteen point two, Ingrid Solberg expects security claims to carry owners and dates.
-
-Section eighteen point two treats layers trust boundaries pipeline as testable only when evidence and ticket IDs are recorded.
 
 ### 18.3 Pipeline architecture
 
 Source changes are reviewed; builds run on hosted, isolated runners; outputs are signed; provenance records who built what from which source; deployment verifies signature and provenance. This follows the SLSA v1.0 model of build provenance and in-toto's idea (Torres-Arias et al., 2019) of recording and checking each step.
 
-Section eighteen point three develops security architecture with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section eighteen point three, Ingrid Solberg expects security claims to carry owners and dates.
-
-Section eighteen point three treats layers trust boundaries pipeline as testable only when evidence and ticket IDs are recorded.
-
 ### 18.4 Signing
 
 Signing proves who published an artifact. Sigstore (Newman et al., 2022) offers signing with short-lived certificates tied to identities, avoiding long-lived keys that can leak.
-
-Section eighteen point four develops security architecture with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section eighteen point four, Ingrid Solberg expects security claims to carry owners and dates.
-
-Section eighteen point four treats layers trust boundaries pipeline as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point four, Coastline Transit will not accept security work without a written trail.
 
 ### 18.5 Decisions
 
 Each choice has a decision record: options, trade-offs, chosen design.
 
-Section eighteen point five develops security architecture with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section eighteen point five, Ingrid Solberg expects security claims to carry owners and dates.
-
-Section eighteen point five treats layers trust boundaries pipeline as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point five, Coastline Transit will not accept security work without a written trail.
-
-Section eighteen point five fails closed if security evidence is missing rather than guessing.
-
 ### 18.6 Threat of the builder
 
 Thompson (1984) reminds architects that build tools themselves must be trusted; Coastline pins its build tools by digest and rebuilds them from known sources where possible.
-
-Section eighteen point six develops security architecture with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section eighteen point six, Ingrid Solberg expects security claims to carry owners and dates.
-
-Section eighteen point six treats layers trust boundaries pipeline as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point six, Coastline Transit will not accept security work without a written trail.
 
 ### Network segmentation
 
@@ -1887,14 +1189,6 @@ You will (1) explain hashing, signing and encryption for software integrity; (2)
 
 A cryptographic hash such as SHA-256 maps any data to a fixed-length digest; any change gives a different digest. Publishing the digest lets anyone check an artifact.
 
-Section nineteen point one develops identity and cryptography with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section nineteen point one, Ingrid Solberg expects identity claims to carry owners and dates.
-
-Section nineteen point one treats hashes lab result signatures as testable only when evidence and ticket IDs are recorded.
-
-For section nineteen point one, Coastline Transit will not accept identity work without a written trail.
-
 ### Lab — Lab — verifying an artifact
 
 ```python
@@ -1919,61 +1213,21 @@ mirror copy  DIGEST MISMATCH - do not deploy
 
 The release copy matches its published digest and is verified. The mirror copy, with extra bytes, gives a digest mismatch and is marked "do not deploy". The lab uses hmac.compare_digest, a constant-time comparison, a good habit when comparing secrets and a safe default for digests.
 
-Section nineteen point two develops identity and cryptography with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section nineteen point two, Ingrid Solberg expects identity claims to carry owners and dates.
-
-Section nineteen point two treats hashes lab result signatures as testable only when evidence and ticket IDs are recorded.
-
 ### 19.3 Signatures
 
 A digest proves the file matches a reference, but who published the reference? A digital signature binds the digest to an identity. Deployment checks both.
-
-Section nineteen point three develops identity and cryptography with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section nineteen point three, Ingrid Solberg expects identity claims to carry owners and dates.
-
-Section nineteen point three treats hashes lab result signatures as testable only when evidence and ticket IDs are recorded.
-
-For section nineteen point three, Coastline Transit will not accept identity work without a written trail.
 
 ### 19.4 Keys and identities
 
 Build signing uses short-lived credentials issued to the CI identity, not personal keys. Developers sign in with multi-factor authentication; OWASP Top 10:2021 A07 covers identification and authentication failures.
 
-Section nineteen point four develops identity and cryptography with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section nineteen point four, Ingrid Solberg expects identity claims to carry owners and dates.
-
-Section nineteen point four treats hashes lab result signatures as testable only when evidence and ticket IDs are recorded.
-
-For section nineteen point four, Coastline Transit will not accept identity work without a written trail.
-
 ### 19.5 Encryption
 
 Encryption protects confidentiality, for example of backups and network traffic; it is not the same as integrity protection.
 
-Section nineteen point five develops identity and cryptography with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section nineteen point five, Ingrid Solberg expects identity claims to carry owners and dates.
-
-Section nineteen point five treats hashes lab result signatures as testable only when evidence and ticket IDs are recorded.
-
-For section nineteen point five, Coastline Transit will not accept identity work without a written trail.
-
 ### 19.6 Key management
 
 Keys are stored in a managed key service, rotated and access-logged.
-
-Section nineteen point six develops identity and cryptography with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section nineteen point six, Ingrid Solberg expects identity claims to carry owners and dates.
-
-Section nineteen point six treats hashes lab result signatures as testable only when evidence and ticket IDs are recorded.
-
-For section nineteen point six, Coastline Transit will not accept identity work without a written trail.
-
-Section nineteen point six fails closed if identity evidence is missing rather than guessing.
 
 ### Rotation and revocation
 
@@ -2019,65 +1273,25 @@ You will (1) describe the software supply chain from source to user; (2) identif
 
 Source code is written, reviewed and stored; dependencies are fetched; code is built; artifacts are stored and distributed; software is deployed and updated. Each stage has actors: developers, maintainers, registries, CI providers and operators.
 
-Section twenty point one develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty point one, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty point one treats the chain attack classes as testable only when evidence and ticket IDs are recorded.
-
 ### 20.2 Attack classes
 
 Ohm et al. (2020) and Ladisa et al. (2023) describe attacks such as malicious packages, compromised maintainer accounts, tampering with build systems and substituting artifacts during distribution. This course stays defensive: it uses these classes to decide where controls belong, not to describe how to carry attacks out.
-
-Section twenty point two develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty point two, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty point two treats the chain attack classes as testable only when evidence and ticket IDs are recorded.
 
 ### 20.3 Coastline's controls
 
 Source: branch protection and review. Dependencies: lockfiles, name checks, mirror, advisory checks. Build: isolated hosted runners, pinned tools. Artifacts: signing, provenance, digest checks. Deployment: verification policy. Operation: monitoring and update process.
 
-Section twenty point three develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty point three, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty point three treats the chain attack classes as testable only when evidence and ticket IDs are recorded.
-
 ### 20.4 Standards
 
 SLSA v1.0 describes build track levels with increasing provenance and isolation guarantees; the SSDF (SP 800-218) practice PS.2 asks producers to provide a way to verify release integrity; ASVS includes requirements on components and configuration.
-
-Section twenty point four develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty point four, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty point four treats the chain attack classes as testable only when evidence and ticket IDs are recorded.
 
 ### 20.5 Open source realities
 
 Wermke et al. (2022) found that open-source projects vary widely in security practices and rely heavily on trust in contributors. Consumers like Coastline cannot assume upstream controls exist.
 
-Section twenty point five develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty point five, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty point five treats the chain attack classes as testable only when evidence and ticket IDs are recorded.
-
-For section twenty point five, Coastline Transit will not accept application work without a written trail.
-
 ### 20.6 Engineering context
 
 Supply chain security is an engineering problem: it requires requirements, design, measurement and verification like any other system property.
-
-Section twenty point six develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty point six, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty point six treats the chain attack classes as testable only when evidence and ticket IDs are recorded.
-
-For section twenty point six, Coastline Transit will not accept application work without a written trail.
 
 ### Responsibility
 
@@ -2119,67 +1333,25 @@ You will (1) write verifiable security requirements for an application and its p
 
 Requirements come from threats (what could go wrong), standards (ASVS, SSDF, SLSA), law and contracts (payment card rules) and incidents (the mirror mismatch, the tmpl advisory).
 
-Section twenty-one point one develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-one point one, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-one point one treats sources of requirements writing as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-one point one, Coastline Transit will not accept application work without a written trail.
-
 ### 21.2 Writing them well
 
 A good requirement is specific and testable: "Deployment shall refuse any artifact whose SHA-256 digest does not match the signed build record" rather than "artifacts shall be secure".
-
-Section twenty-one point two develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-one point two, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-one point two treats sources of requirements writing as testable only when evidence and ticket IDs are recorded.
 
 ### 21.3 Application requirements
 
 Using ASVS as a base, Coastline selects requirements for authentication, access control, validation, output encoding and logging. ASVS 4.0.3 offers three levels; Coastline targets Level 2 for ticket-web because it handles payments. ASVS 5.0.0 keeps the level idea with reorganised chapters, so Kwame records both identifiers.
 
-Section twenty-one point three develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-one point three, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-one point three treats sources of requirements writing as testable only when evidence and ticket IDs are recorded.
-
 ### 21.4 Pipeline requirements
 
 From SLSA v1.0: builds on a hosted platform, provenance generated by the platform, provenance verified before deployment. From SSDF: PO.3 secure toolchains, PS.1 protect code from unauthorised changes, PS.2 provide verification mechanisms, RV.1 identify vulnerabilities continuously.
-
-Section twenty-one point four develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-one point four, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-one point four treats sources of requirements writing as testable only when evidence and ticket IDs are recorded.
 
 ### 21.5 Prioritising
 
 Requirements are ranked by risk reduction and effort; must-haves cover the two incidents.
 
-Section twenty-one point five develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-one point five, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-one point five treats sources of requirements writing as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-one point five, Coastline Transit will not accept application work without a written trail.
-
 ### 21.6 Acceptance tests
 
 Each requirement has a test: e.g., deploy a deliberately mismatched synthetic artifact in staging and confirm refusal.
-
-Section twenty-one point six develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-one point six, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-one point six treats sources of requirements writing as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-one point six, Coastline Transit will not accept application work without a written trail.
 
 ### Traceability to tests
 
@@ -2221,67 +1393,25 @@ You will (1) model the application and pipeline as data flows; (2) identify trus
 
 Shostack (2014) recommends data flow diagrams for threat modelling: external entities, processes, data stores and flows, with trust boundaries drawn across flows. Kwame draws ticket-web: rider browser, web app, database, payment provider; and the pipeline: developer, repository, CI, mirror, artifact store, deployment.
 
-Section twenty-two point one develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-two point one, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-two point one treats data flow diagrams trust as testable only when evidence and ticket IDs are recorded.
-
 ### 22.2 Trust boundaries
 
 Boundaries appear between rider and web app, web app and payment provider, CI and public registry, CI and production. Every flow crossing a boundary is a place to ask what could go wrong.
-
-Section twenty-two point two develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-two point two, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-two point two treats data flow diagrams trust as testable only when evidence and ticket IDs are recorded.
 
 ### 22.3 Software as data
 
 An SBOM lists components and versions; NTIA (2021) defined minimum elements: supplier, component name, version, unique identifiers, dependency relationship, author of SBOM data and timestamp. Provenance records how an artifact was built. These are data models the pipeline produces and consumes.
 
-Section twenty-two point three develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-two point three, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-two point three treats data flow diagrams trust as testable only when evidence and ticket IDs are recorded.
-
 ### 22.4 Linking models
 
 Each deployed artifact links to its SBOM and provenance by digest. Given a running server, the team can find exactly which components it contains.
-
-Section twenty-two point four develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-two point four, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-two point four treats data flow diagrams trust as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-two point four, Coastline Transit will not accept application work without a written trail.
 
 ### 22.5 Model upkeep
 
 Models are stored with the code and updated in the same pull request as architecture changes.
 
-Section twenty-two point five develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-two point five, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-two point five treats data flow diagrams trust as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-two point five, Coastline Transit will not accept application work without a written trail.
-
 ### 22.6 Simplicity
 
 Models should be just detailed enough to support decisions; a diagram nobody can read helps nobody.
-
-Section twenty-two point six develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-two point six, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-two point six treats data flow diagrams trust as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-two point six, Coastline Transit will not accept application work without a written trail.
 
 ### Verifying flows
 
@@ -2327,71 +1457,25 @@ You will (1) apply STRIDE to the system model; (2) analyse failure modes of pipe
 
 Shostack (2014) describes STRIDE: Spoofing, Tampering, Repudiation, Information disclosure, Denial of service and Elevation of privilege. Kwame applies it to each element and flow in the model.
 
-Section twenty-three point one develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-three point one, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-three point one treats stride examples failure modes as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-three point one, Coastline Transit will not accept application work without a written trail.
-
 ### 23.2 Examples
 
 Spoofing: a fake package with a lookalike name. Tampering: an altered artifact on the mirror. Repudiation: a deployment without a record of who approved it. Information disclosure: secrets in build logs. Denial of service: registry outage stopping builds. Elevation of privilege: a pull request from an untrusted fork gaining access to production secrets.
-
-Section twenty-three point two develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-three point two, Ingrid Solberg expects application claims to carry owners and dates.
 
 ### 23.3 Failure modes
 
 Failure mode and effects analysis asks how each component can fail without an attacker: mirror corruption, CI outage, expired signing certificates, clock errors breaking certificate checks.
 
-Section twenty-three point three develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-three point three, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-three point three treats stride examples failure modes as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-three point three, Coastline Transit will not accept application work without a written trail.
-
 ### 23.4 Ranking
 
 Each threat or failure is rated for likelihood and impact on a 1–3 scale; the product ranks them.
-
-Section twenty-three point four develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-three point four, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-three point four treats stride examples failure modes as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-three point four, Coastline Transit will not accept application work without a written trail.
 
 ### 23.5 Linking to controls
 
 Each high-ranked item must have a control and a test. Untracked items are risks recorded for management.
 
-Section twenty-three point five develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-three point five, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-three point five treats stride examples failure modes as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-three point five, Coastline Transit will not accept application work without a written trail.
-
 ### 23.6 Review
 
 The analysis is revisited when the architecture changes and after incidents.
-
-Section twenty-three point six develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-three point six, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-three point six treats stride examples failure modes as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-three point six, Coastline Transit will not accept application work without a written trail.
-
-Section twenty-three point six fails closed if application evidence is missing rather than guessing.
 
 ### Abuse cases
 
@@ -2437,25 +1521,9 @@ You will (1) generate and use an SBOM; (2) match components to advisories with v
 
 CI generates an SBOM for every build from the lockfile and build metadata, in a standard format, stored with the artifact.
 
-Section twenty-four point one develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-four point one, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-four point one treats generating sboms matching advisories as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point one, Coastline Transit will not accept application work without a written trail.
-
 ### 24.2 Matching advisories
 
 Advisories list affected version ranges and fixed versions. Matching must compare versions numerically, not as text: "2.0.9" is lower than "2.0.10".
-
-Section twenty-four point two develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-four point two, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-four point two treats generating sboms matching advisories as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point two, Coastline Transit will not accept application work without a written trail.
 
 ### Lab — Lab — SBOM against advisories
 
@@ -2484,33 +1552,13 @@ ADV-104 webfw   installed 4.1.2 affected [3.0.0, 3.9.9) -> not affected
 
 Two of four advisories apply: ADV-101 affects tmpl 2.0.9 (fixed in 2.0.10) and ADV-103 affects imgkit 5.2.1 (fixed in 5.2.2). zipx 1.3.0 is past its fixed version 1.2.5, and webfw 4.1.2 is outside ADV-104's range. Note that comparing "2.0.9" and "2.0.10" as text would wrongly suggest 2.0.9 is newer.
 
-Section twenty-four point three develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-four point three, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-four point three treats generating sboms matching advisories as testable only when evidence and ticket IDs are recorded.
-
 ### 24.4 Prioritising
 
 Not every affected component is equally urgent. Kwame considers severity, whether the vulnerable function is reachable in ticket-web, and the exploitation likelihood estimated by EPSS (Jacobs et al., 2021). imgkit is isolated (chapter 8), which reduces its urgency; tmpl renders every page, so it goes first.
 
-Section twenty-four point four develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-four point four, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-four point four treats generating sboms matching advisories as testable only when evidence and ticket IDs are recorded.
-
 ### 24.5 In CI
 
 The check runs on every build and nightly against the current release, because new advisories appear for unchanged code.
-
-Section twenty-four point five develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-four point five, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-four point five treats generating sboms matching advisories as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point five, Coastline Transit will not accept application work without a written trail.
 
 ### Handling false matches
 
@@ -2556,67 +1604,25 @@ You will (1) work in a team on a supply-chain design problem; (2) produce altern
 
 Kwame's studio team of four receives a brief from Coastline: design how the mobile ticket app, now built in CI, should be signed, verified and updated, meeting the requirements from chapter 21.
 
-Section twenty-five point one develops design studio with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-five point one, Ingrid Solberg expects design claims to carry owners and dates.
-
-Section twenty-five point one treats the brief alternatives critique as testable only when evidence and ticket IDs are recorded.
-
 ### 25.2 Alternatives
 
 Option A: traditional long-lived signing key in a hardware module. Option B: keyless signing with short-lived certificates tied to the CI identity (the Sigstore model). Option C: platform app-store signing only.
-
-Section twenty-five point two develops design studio with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-five point two, Ingrid Solberg expects design claims to carry owners and dates.
-
-Section twenty-five point two treats the brief alternatives critique as testable only when evidence and ticket IDs are recorded.
 
 ### 25.3 Critique
 
 Against requirements: A is strong but needs key ceremonies and rotation; B reduces key-theft risk and adds a public transparency log but depends on an external service; C is simplest but gives Coastline no independent verification.
 
-Section twenty-five point three develops design studio with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-five point three, Ingrid Solberg expects design claims to carry owners and dates.
-
-Section twenty-five point three treats the brief alternatives critique as testable only when evidence and ticket IDs are recorded.
-
 ### 25.4 Prototype
 
 The team prototypes B with synthetic artifacts in a test environment, measuring time added to builds (about 20 seconds).
-
-Section twenty-five point four develops design studio with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-five point four, Ingrid Solberg expects design claims to carry owners and dates.
-
-Section twenty-five point four treats the brief alternatives critique as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point four, Coastline Transit will not accept design work without a written trail.
 
 ### 25.5 Presentation
 
 Ten minutes to Ingrid and two Coastline engineers, with the requirement table, risks and recommendation.
 
-Section twenty-five point five develops design studio with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-five point five, Ingrid Solberg expects design claims to carry owners and dates.
-
-Section twenty-five point five treats the brief alternatives critique as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point five, Coastline Transit will not accept design work without a written trail.
-
 ### 25.6 Peer review
 
 Another studio team reviews the design and asks how verification works offline on buses with no signal; the team adds cached verification material.
-
-Section twenty-five point six develops design studio with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-five point six, Ingrid Solberg expects design claims to carry owners and dates.
-
-Section twenty-five point six treats the brief alternatives critique as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point six, Coastline Transit will not accept design work without a written trail.
 
 ### Team roles
 
@@ -2662,63 +1668,25 @@ You will (1) compare architectural options for dependency management and build i
 
 How should ticket-web obtain dependencies? Option 1: fetch directly from the public registry with lockfile hashes. Option 2: an internal mirror that proxies and caches the registry. Option 3: a curated internal repository where each new package version is reviewed before use.
 
-Section twenty-six point one develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-six point one, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-six point one treats the question risk trade-offs as testable only when evidence and ticket IDs are recorded.
-
 ### 26.2 Risk trade-offs
 
 Option 1 is simple but depends on the registry's availability and offers no central control point. Option 2 adds caching, logging and a place for checks, with modest cost. Option 3 gives the most control but slows updates, which can lengthen exposure to known flaws; Kula et al. (2018) showed that update friction already causes lag, and Decan et al. (2018) showed how lag spreads vulnerabilities.
-
-Section twenty-six point two develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-six point two, Ingrid Solberg expects application claims to carry owners and dates.
 
 ### 26.3 Build options
 
 For builds: self-hosted runners give control but must be maintained and isolated; hosted runners from the CI provider offer fresh, isolated environments and platform-generated provenance aligned with SLSA v1.0 Build Level 2 and above, but depend on the provider.
 
-Section twenty-six point three develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-six point three, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-six point three treats the question risk trade-offs as testable only when evidence and ticket IDs are recorded.
-
 ### 26.4 Reproducibility
 
 Reproducible builds (Lamb and Zacchiroli, 2022) let an independent builder recreate the same bits, detecting tampering in the original build. Coastline evaluates making ticket-web's server build reproducible; it requires fixing timestamps and ordering in the build.
-
-Section twenty-six point four develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-six point four, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-six point four treats the question risk trade-offs as testable only when evidence and ticket IDs are recorded.
 
 ### 26.5 Usability
 
 Developers need fast builds and simple upgrades. A design that slows them down will be worked around, echoing Johnson et al. (2013) on tool adoption.
 
-Section twenty-six point five develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-six point five, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-six point five treats the question risk trade-offs as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-six point five, Coastline Transit will not accept application work without a written trail.
-
 ### 26.6 Decision
 
 Coastline chooses option 2 with automatic checks (name similarity, advisories, licence), hosted runners, and a pilot of reproducible server builds.
-
-Section twenty-six point six develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-six point six, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-six point six treats the question risk trade-offs as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-six point six, Coastline Transit will not accept application work without a written trail.
 
 ### Worked example
 
@@ -2756,69 +1724,25 @@ You will (1) design specific controls for source, dependencies, build and deploy
 
 Branch protection requires review by one engineer and passing checks; signed commits for release branches; no direct pushes to main.
 
-Section twenty-seven point one develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-seven point one, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-seven point one treats source controls dependency controls as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point one, Coastline Transit will not accept application work without a written trail.
-
 ### 27.2 Dependency controls
 
 The CI dependency gate fails a build if: a lockfile hash does not match, a new name is within edit distance 1 of a popular name without an approved review, or a critical advisory applies without an exception.
-
-Section twenty-seven point two develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-seven point two, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-seven point two treats source controls dependency controls as testable only when evidence and ticket IDs are recorded.
 
 ### 27.3 Build controls
 
 Builds run on hosted runners with pinned tool versions; production secrets are not available to builds from forks; the platform generates provenance.
 
-Section twenty-seven point three develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-seven point three, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-seven point three treats source controls dependency controls as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point three, Coastline Transit will not accept application work without a written trail.
-
 ### 27.4 Deployment controls
 
 The deploy policy allows an artifact only if built by the approved builder from the approved repository from reviewed commits, with a valid signature and matching digest. Policies are written as code, version-controlled and reviewed like application code.
-
-Section twenty-seven point four develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-seven point four, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-seven point four treats source controls dependency controls as testable only when evidence and ticket IDs are recorded.
 
 ### 27.5 Failure behaviour
 
 Controls fail closed: if the advisory service is unreachable, the build waits and retries rather than skipping the check; after one hour, the on-call engineer is paged.
 
-Section twenty-seven point five develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-seven point five, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-seven point five treats source controls dependency controls as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point five, Coastline Transit will not accept application work without a written trail.
-
 ### 27.6 Exceptions
 
 Exceptions need an owner, a reason, an expiry date and approval by Ingrid. Expired exceptions block builds again.
-
-Section twenty-seven point six develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-seven point six, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-seven point six treats source controls dependency controls as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point six, Coastline Transit will not accept application work without a written trail.
 
 ### Policy testing
 
@@ -2860,65 +1784,25 @@ You will (1) implement output encoding and authorisation checks in the applicati
 
 Cross-site scripting (CWE-79) happens when untrusted data is placed into pages without encoding for its context. The fixed tmpl version escapes attributes by default. Kwame also adds a test that renders synthetic rider names with special characters and checks they appear as text, not markup.
 
-Section twenty-eight point one develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-eight point one, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-eight point one treats output encoding authorisation upgrading as testable only when evidence and ticket IDs are recorded.
-
 ### 28.2 Authorisation
 
 Every endpoint calls a central authorisation function with the user's role and the resource owner. Checks happen on the server, aligned with OWASP Top 10:2021 A01 and ASVS access-control requirements.
-
-Section twenty-eight point two develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-eight point two, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-eight point two treats output encoding authorisation upgrading as testable only when evidence and ticket IDs are recorded.
 
 ### 28.3 Upgrading tmpl
 
 The upgrade from 2.0.9 to 2.0.10 is small but changes one default. Tests catch two templates that relied on unescaped output for trusted icons; they are rewritten to use an explicit safe-markup helper reviewed by Ingrid.
 
-Section twenty-eight point three develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-eight point three, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-eight point three treats output encoding authorisation upgrading as testable only when evidence and ticket IDs are recorded.
-
 ### 28.4 Implementing the gate
 
 The dependency gate is a small CI step reading the lockfile and SBOM, calling the advisory feed and the name-similarity check, and applying the policy. Its own code is reviewed and tested.
-
-Section twenty-eight point four develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-eight point four, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-eight point four treats output encoding authorisation upgrading as testable only when evidence and ticket IDs are recorded.
 
 ### 28.5 Regression review
 
 After the changes, a reviewer compares rendered pages before and after and runs the authorisation test suite.
 
-Section twenty-eight point five develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-eight point five, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-eight point five treats output encoding authorisation upgrading as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point five, Coastline Transit will not accept application work without a written trail.
-
 ### 28.6 Rollback plan
 
 Each release can be rolled back to the previous signed artifact within ten minutes.
-
-Section twenty-eight point six develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-eight point six, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-eight point six treats output encoding authorisation upgrading as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point six, Coastline Transit will not accept application work without a written trail.
 
 ### Code review focus
 
@@ -2960,14 +1844,6 @@ You will (1) define security metrics for application and supply chain; (2) compu
 
 Coastline measures time to remediate findings by severity, share of builds with valid provenance, number of active exceptions, and dependency freshness (how many versions behind the latest).
 
-Section twenty-nine point one develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-nine point one, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-nine point one treats what to measure lab as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point one, Coastline Transit will not accept application work without a written trail.
-
 ### Lab — Lab — remediation times
 
 ```python
@@ -2992,45 +1868,17 @@ medium   n=4 median=67.5 target=90 late=1
 
 Critical: three findings, median 5 days, one late (9 days against a 7-day target). High: five findings, median 20 days, two late (41 and 33 against 30). Medium: four findings, median 67.5 days, one late (120 against 90).
 
-Section twenty-nine point two develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-nine point two, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-nine point two treats what to measure lab as testable only when evidence and ticket IDs are recorded.
-
 ### 29.3 Late items
 
 The late critical item waited for a vendor patch; the late highs needed a framework upgrade that took two sprints. Measuring lateness leads to the cause, not blame.
-
-Section twenty-nine point three develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-nine point three, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-nine point three treats what to measure lab as testable only when evidence and ticket IDs are recorded.
 
 ### 29.4 Perverse incentives
 
 If teams are rewarded only for closing fast, they may downgrade severities. Coastline reviews severity changes monthly.
 
-Section twenty-nine point four develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-nine point four, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-nine point four treats what to measure lab as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point four, Coastline Transit will not accept application work without a written trail.
-
 ### 29.5 Freshness
 
 The median dependency is one minor version behind; two are more than two major versions behind and planned for replacement.
-
-Section twenty-nine point five develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section twenty-nine point five, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section twenty-nine point five treats what to measure lab as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point five, Coastline Transit will not accept application work without a written trail.
 
 ### Reading the dashboard
 
@@ -3076,14 +1924,6 @@ You will (1) write unit tests for security rules; (2) test boundaries and negati
 
 Security rules, such as who may issue a refund, are business logic that can break silently. Tests make the intended behaviour explicit and catch regressions.
 
-Section thirty point one develops verification laboratory with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty point one, Ingrid Solberg expects verification claims to carry owners and dates.
-
-Section thirty point one treats why test security rules as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point one, Coastline Transit will not accept verification work without a written trail.
-
 ### Lab — Lab — refund authorisation tests
 
 ```python
@@ -3110,49 +1950,17 @@ tests run: 4 failures: 0 errors: 0
 
 Four tests run and all pass: a rider cannot refund, an agent can refund 50 but not 51, a supervisor can refund 500. The 50/51 pair tests the boundary exactly.
 
-Section thirty point two develops verification laboratory with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty point two, Ingrid Solberg expects verification claims to carry owners and dates.
-
-Section thirty point two treats why test security rules as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point two, Coastline Transit will not accept verification work without a written trail.
-
 ### 30.3 Negative cases
 
 Tests that check something is refused are as important as tests that check something is allowed. Two of the four lab tests are negative.
-
-Section thirty point three develops verification laboratory with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty point three, Ingrid Solberg expects verification claims to carry owners and dates.
-
-Section thirty point three treats why test security rules as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point three, Coastline Transit will not accept verification work without a written trail.
 
 ### 30.4 In CI
 
 The tests run on every change; a failure blocks merging. Coverage reports show which authorisation branches are exercised.
 
-Section thirty point four develops verification laboratory with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty point four, Ingrid Solberg expects verification claims to carry owners and dates.
-
-Section thirty point four treats why test security rules as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point four, Coastline Transit will not accept verification work without a written trail.
-
 ### 30.5 Mutation thinking
 
 Kwame changes "<= 50" to "< 50" in a scratch copy: the agent-small test fails, proving the test detects that mistake.
-
-Section thirty point five develops verification laboratory with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty point five, Ingrid Solberg expects verification claims to carry owners and dates.
-
-Section thirty point five treats why test security rules as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point five, Coastline Transit will not accept verification work without a written trail.
 
 ### Test naming
 
@@ -3198,63 +2006,25 @@ You will (1) implement build provenance and signing in CI; (2) implement deploym
 
 The hosted CI platform generates provenance for each build: builder identity, source repository, commit digest, build steps and output digests. The record is signed by the platform, so a compromised build script cannot forge it, which is the key property of SLSA v1.0's higher build levels.
 
-Section thirty-one point one develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-one point one, Ingrid Solberg expects application claims to carry owners and dates.
-
 ### 31.2 Signing
 
 The artifact is signed with keyless signing tied to the CI workflow's identity, and the signature is recorded in a transparency log, following the Sigstore model (Newman et al., 2022). Anyone can later check when and by which identity the artifact was signed.
-
-Section thirty-one point two develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-one point two, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-one point two treats provenance in ci signing as testable only when evidence and ticket IDs are recorded.
 
 ### 31.3 Storage
 
 The artifact, its SBOM, provenance and signature are stored together and linked by the artifact digest. Retention is at least as long as the release is in use, plus one year.
 
-Section thirty-one point three develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-one point three, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-one point three treats provenance in ci signing as testable only when evidence and ticket IDs are recorded.
-
 ### 31.4 Deployment verification
 
 The deployment tool fetches the artifact and its records, verifies the signature, checks the provenance against policy (chapter 38's lab) and compares digests before installing. Any failure stops the deployment with a clear message.
-
-Section thirty-one point four develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-one point four, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-one point four treats provenance in ci signing as testable only when evidence and ticket IDs are recorded.
 
 ### 31.5 End-to-end test
 
 A staging pipeline deploys a known-good synthetic artifact and three deliberately flawed ones (wrong digest, wrong builder, missing signature). The test passes only if the first deploys and the others are refused.
 
-Section thirty-one point five develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-one point five, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-one point five treats provenance in ci signing as testable only when evidence and ticket IDs are recorded.
-
 ### 31.6 Performance
 
 Verification adds 12 seconds to deployment, acceptable for the team.
-
-Section thirty-one point six develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-one point six, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-one point six treats provenance in ci signing as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-one point six, Coastline Transit will not accept application work without a written trail.
-
-Section thirty-one point six fails closed if application evidence is missing rather than guessing.
 
 ### Worked example
 
@@ -3292,71 +2062,25 @@ You will (1) make security controls reliable; (2) avoid single points of failure
 
 A control that often fails gets switched off. The dependency gate and deployment verification must be dependable, with clear errors and quick recovery.
 
-Section thirty-two point one develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-two point one, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-two point one treats reliable controls external dependencies as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-two point one, Coastline Transit will not accept application work without a written trail.
-
 ### 32.2 External dependencies
 
 The pipeline depends on the public registry, the advisory feed, the transparency log and the CI provider. Each can fail. The internal mirror covers registry outages; cached advisory data covers short feed outages; verification material is cached for transparency-log outages.
-
-Section thirty-two point two develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-two point two, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-two point two treats reliable controls external dependencies as testable only when evidence and ticket IDs are recorded.
 
 ### 32.3 Fail closed, recover fast
 
 Failing closed protects integrity, but long outages block releases. Coastline sets a recovery process: if a check is unavailable for more than four hours and a critical fix must ship, Ingrid can approve a documented manual verification with two engineers.
 
-Section thirty-two point three develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-two point three, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-two point three treats reliable controls external dependencies as testable only when evidence and ticket IDs are recorded.
-
 ### 32.4 Measuring availability
 
 The team logs every control failure: cause, duration and effect. Over a quarter the gate was unavailable for 3 hours in total, all due to the advisory feed.
-
-Section thirty-two point four develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-two point four, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-two point four treats reliable controls external dependencies as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-two point four, Coastline Transit will not accept application work without a written trail.
 
 ### 32.5 Redundancy
 
 A second advisory source is added, reducing dependence on one feed.
 
-Section thirty-two point five develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-two point five, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-two point five treats reliable controls external dependencies as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-two point five, Coastline Transit will not accept application work without a written trail.
-
-Section thirty-two point five fails closed if application evidence is missing rather than guessing.
-
 ### 32.6 Testing failure
 
 Every quarter the team simulates an outage of each external service in staging to check the fallback works.
-
-Section thirty-two point six develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-two point six, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-two point six treats reliable controls external dependencies as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-two point six, Coastline Transit will not accept application work without a written trail.
 
 ### Error messages
 
@@ -3402,69 +2126,25 @@ You will (1) plan for compromise of a dependency or the pipeline; (2) design res
 
 Even with good controls, a dependency or build component may be compromised. Resilience means detecting quickly, limiting damage and recovering to a known-good state.
 
-Section thirty-three point one develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-three point one, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-three point one treats assume compromise response plan as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-three point one, Coastline Transit will not accept application work without a written trail.
-
 ### 33.2 Response plan
 
 The supply-chain playbook: identify affected artifacts using SBOMs and provenance; stop deployments; roll back to the last known-good signed release; rotate any credentials the compromised component could have reached; notify stakeholders.
-
-Section thirty-three point two develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-three point two, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-three point two treats assume compromise response plan as testable only when evidence and ticket IDs are recorded.
 
 ### 33.3 Known-good state
 
 Because every artifact is linked to its SBOM and provenance, the team can find the last release that did not include a compromised version and redeploy it.
 
-Section thirty-three point three develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-three point three, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-three point three treats assume compromise response plan as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-three point three, Coastline Transit will not accept application work without a written trail.
-
 ### 33.4 Rider safety
 
 Ticket sales must continue. A fallback paper-ticket process and the previous app version keep service running.
-
-Section thirty-three point four develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-three point four, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-three point four treats assume compromise response plan as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-three point four, Coastline Transit will not accept application work without a written trail.
 
 ### 33.5 Exercise
 
 Coastline runs a tabletop: "a widely used package in ticket-web is reported compromised; versions 1.4.2–1.4.3 contained malicious code". Using SBOM search, the team finds that only one release included 1.4.2 and that it was deployed for two days.
 
-Section thirty-three point five develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-three point five, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-three point five treats assume compromise response plan as testable only when evidence and ticket IDs are recorded.
-
 ### 33.6 Lessons
 
 The exercise shows that credential rotation would take a full day because tokens were scattered; the team consolidates them in the secrets manager.
-
-Section thirty-three point six develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-three point six, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-three point six treats assume compromise response plan as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-three point six, Coastline Transit will not accept application work without a written trail.
 
 ### Communication
 
@@ -3510,71 +2190,25 @@ You will (1) integrate application security and supply-chain controls into one w
 
 Developers see one pipeline: tests, static analysis, dependency gate, build with provenance, signing, staging deploy with verification, production deploy with verification. Results appear in one place in the pull request.
 
-Section thirty-four point one develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-four point one, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-four point one treats one workflow aligning teams as testable only when evidence and ticket IDs are recorded.
-
 ### 34.2 Aligning teams
 
 The security team writes policies; the platform team runs the pipeline; product teams own fixes. A weekly meeting resolves conflicts.
-
-Section thirty-four point two develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-four point two, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-four point two treats one workflow aligning teams as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-four point two, Coastline Transit will not accept application work without a written trail.
 
 ### 34.3 Avoiding duplication
 
 Two tools both scanned dependencies with different advisory data, producing contradictory results. The team keeps one as the gate and uses the other only for comparison reports.
 
-Section thirty-four point three develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-four point three, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-four point three treats one workflow aligning teams as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-four point three, Coastline Transit will not accept application work without a written trail.
-
 ### 34.4 Developer experience
 
 Messages explain what failed, why it matters and how to fix it, with links. Median CI time is kept under 12 minutes.
-
-Section thirty-four point four develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-four point four, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-four point four treats one workflow aligning teams as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-four point four, Coastline Transit will not accept application work without a written trail.
 
 ### 34.5 Integration testing
 
 Changes to any control are tested in a staging copy of the pipeline before rollout.
 
-Section thirty-four point five develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-four point five, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-four point five treats one workflow aligning teams as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-four point five, Coastline Transit will not accept application work without a written trail.
-
 ### 34.6 SAMM view
 
 OWASP SAMM v2 (2020) maturity assessment shows Coastline rising in Implementation (secure build, secure deployment) and Verification after integration.
-
-Section thirty-four point six develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-four point six, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-four point six treats one workflow aligning teams as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-four point six, Coastline Transit will not accept application work without a written trail.
 
 ### Documentation
 
@@ -3620,75 +2254,25 @@ You will (1) design a supply-chain improvement for a third-party integration; (2
 
 Coastline plans to add a vendor's journey-planning widget to ticket-web. Kwame's team must design how to integrate it safely.
 
-Section thirty-five point one develops design studio ii with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-five point one, Ingrid Solberg expects design claims to carry owners and dates.
-
-Section thirty-five point one treats the brief vendor risk as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-five point one, Coastline Transit will not accept design work without a written trail.
-
 ### 35.2 Vendor risk
 
 Questions to the vendor: Do you follow the SSDF? Do you provide SBOMs and signed releases? How fast do you fix vulnerabilities? Do you have a disclosure process?
-
-Section thirty-five point two develops design studio ii with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-five point two, Ingrid Solberg expects design claims to carry owners and dates.
-
-Section thirty-five point two treats the brief vendor risk as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-five point two, Coastline Transit will not accept design work without a written trail.
 
 ### 35.3 Technical isolation
 
 Options: include the vendor's script directly in ticket-web pages; host a pinned copy with an integrity hash; or load the widget in a sandboxed frame on a separate domain. The sandboxed frame limits the widget's access to rider data.
 
-Section thirty-five point three develops design studio ii with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-five point three, Ingrid Solberg expects design claims to carry owners and dates.
-
-Section thirty-five point three treats the brief vendor risk as testable only when evidence and ticket IDs are recorded.
-
 ### 35.4 Contractual controls
 
 The contract requires notification of security incidents within 48 hours, SBOM delivery with each release and fixing critical flaws within 14 days.
-
-Section thirty-five point four develops design studio ii with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-five point four, Ingrid Solberg expects design claims to carry owners and dates.
-
-Section thirty-five point four treats the brief vendor risk as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-five point four, Coastline Transit will not accept design work without a written trail.
 
 ### 35.5 Monitoring
 
 Coastline monitors the widget's domain and versions and alerts on unexpected changes.
 
-Section thirty-five point five develops design studio ii with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-five point five, Ingrid Solberg expects design claims to carry owners and dates.
-
-Section thirty-five point five treats the brief vendor risk as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-five point five, Coastline Transit will not accept design work without a written trail.
-
-Section thirty-five point five fails closed if design evidence is missing rather than guessing.
-
 ### 35.6 Presentation
 
 The team presents to Ingrid, procurement and legal.
-
-Section thirty-five point six develops design studio ii with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-five point six, Ingrid Solberg expects design claims to carry owners and dates.
-
-Section thirty-five point six treats the brief vendor risk as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-five point six, Coastline Transit will not accept design work without a written trail.
-
-Section thirty-five point six fails closed if design evidence is missing rather than guessing.
 
 ### Exit planning
 
@@ -3738,71 +2322,25 @@ You will (1) keep security controls fast as the codebase and team grow; (2) scal
 
 Over two years ticket-web grows to 220 components and 30 developers, with 60 builds a day. Checks that took seconds now risk slowing everyone.
 
-Section thirty-six point one develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-six point one, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-six point one treats growth incremental checks safe as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-six point one, Coastline Transit will not accept application work without a written trail.
-
 ### 36.2 Incremental checks
 
 The dependency gate checks only components that changed in a pull request, and a nightly job checks everything. This cut median gate time from 90 to 15 seconds.
-
-Section thirty-six point two develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-six point two, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-six point two treats growth incremental checks safe as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-six point two, Coastline Transit will not accept application work without a written trail.
 
 ### 36.3 Safe caching
 
 Advisory data is cached for one hour; the cache key includes the feed's version so stale data is detected. Caches must never be shared between untrusted pull-request builds and release builds, or a poisoned cache could affect releases.
 
-Section thirty-six point three develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-six point three, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-six point three treats growth incremental checks safe as testable only when evidence and ticket IDs are recorded.
-
 ### 36.4 Parallelism
 
 Tests and checks run in parallel jobs; provenance generation happens once at the end.
-
-Section thirty-six point four develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-six point four, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-six point four treats growth incremental checks safe as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-six point four, Coastline Transit will not accept application work without a written trail.
 
 ### 36.5 Measuring cost
 
 Kwame measures each control's time: tests 6 minutes, static analysis 2, gate 15 seconds, signing 20 seconds, verification 12 seconds. Security controls are under 10% of CI time.
 
-Section thirty-six point five develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-six point five, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-six point five treats growth incremental checks safe as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-six point five, Coastline Transit will not accept application work without a written trail.
-
 ### 36.6 Scale of data
 
 SBOMs for all releases are stored in a searchable index so a question like "which releases contain zipx 1.2.x?" answers in seconds.
-
-Section thirty-six point six develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-six point six, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-six point six treats growth incremental checks safe as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-six point six, Coastline Transit will not accept application work without a written trail.
 
 ### Planning for growth
 
@@ -3844,77 +2382,25 @@ You will (1) operate the application securely in production; (2) monitor for sec
 
 ticket-web logs authentication events, authorisation failures, input validation rejections and admin actions; the pipeline logs builds, signing and deployments. OWASP Top 10:2021 A09 highlights logging and monitoring failures.
 
-Section thirty-seven point one develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-seven point one, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-seven point one treats monitoring alerts patching configuration as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-seven point one, Coastline Transit will not accept application work without a written trail.
-
 ### 37.2 Alerts
 
 Alerts fire on unusual patterns: many authorisation failures from one account, a deployment not from the approved pipeline, or a signature verification failure.
-
-Section thirty-seven point two develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-seven point two, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-seven point two treats monitoring alerts patching configuration as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-seven point two, Coastline Transit will not accept application work without a written trail.
 
 ### 37.3 Patching
 
 Servers rebuild weekly from updated base images; the application follows the remediation targets.
 
-Section thirty-seven point three develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-seven point three, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-seven point three treats monitoring alerts patching configuration as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-seven point three, Coastline Transit will not accept application work without a written trail.
-
 ### 37.4 Configuration
 
 Configuration is stored as code and compared nightly with running systems; drift is reported.
-
-Section thirty-seven point four develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-seven point four, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-seven point four treats monitoring alerts patching configuration as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-seven point four, Coastline Transit will not accept application work without a written trail.
 
 ### 37.5 On-call
 
 A rota covers security alerts outside office hours, with playbooks.
 
-Section thirty-seven point five develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-seven point five, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-seven point five treats monitoring alerts patching configuration as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-seven point five, Coastline Transit will not accept application work without a written trail.
-
-Section thirty-seven point five fails closed if application evidence is missing rather than guessing.
-
 ### 37.6 Working with operations
 
 Security events are shared with Coastline's operations centre.
-
-Section thirty-seven point six develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-seven point six, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-seven point six treats monitoring alerts patching configuration as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-seven point six, Coastline Transit will not accept application work without a written trail.
-
-Section thirty-seven point six fails closed if application evidence is missing rather than guessing.
 
 ### Incident handover
 
@@ -3964,14 +2450,6 @@ You will (1) validate that deployed artifacts meet provenance policy; (2) check 
 
 Validation checks the real system against requirements: are only artifacts built by the approved builder, from the approved repository, from reviewed commits, running?
 
-Section thirty-eight point one develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-eight point one, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-eight point one treats what validation means lab as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-eight point one, Coastline Transit will not accept application work without a written trail.
-
 ### Lab — Lab — provenance policy
 
 ```python
@@ -3997,49 +2475,17 @@ ticket-web-3.2.2 DENY: unreviewed commit
 
 ticket-web-3.2.0 is allowed. ticket-web-3.2.1 is denied because it was built on "laptop-kd", not the approved hosted runner. ticket-web-3.2.2 is denied because its commit was not reviewed.
 
-Section thirty-eight point two develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-eight point two, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-eight point two treats what validation means lab as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-eight point two, Coastline Transit will not accept application work without a written trail.
-
 ### 38.3 Investigating denials
 
 3.2.1 was built during the earlier period before all builds moved to CI; it is retired. 3.2.2 came from an emergency change whose after-the-fact review had not been recorded; the review is completed and the release rebuilt.
-
-Section thirty-eight point three develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-eight point three, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-eight point three treats what validation means lab as testable only when evidence and ticket IDs are recorded.
 
 ### 38.4 Evidence for auditors
 
 A monthly report lists every running artifact and its policy result, with links to provenance. This supports SSDF PS.2 and PS.3 (archive and protect each release).
 
-Section thirty-eight point four develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-eight point four, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-eight point four treats what validation means lab as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-eight point four, Coastline Transit will not accept application work without a written trail.
-
 ### 38.5 Continuous validation
 
 The check runs hourly against running servers, not only at deployment.
-
-Section thirty-eight point five develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-eight point five, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-eight point five treats what validation means lab as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-eight point five, Coastline Transit will not accept application work without a written trail.
-
-Section thirty-eight point five fails closed if application evidence is missing rather than guessing.
 
 ### Validation coverage
 
@@ -4085,73 +2531,25 @@ You will (1) keep dependencies and controls maintainable over years; (2) plan re
 
 A component with no releases for two years and unanswered issues is a risk: flaws may never be fixed. Kwame finds four in ticket-web.
 
-Section thirty-nine point one develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-nine point one, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-nine point one treats abandoned components replacement planning as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-nine point one, Coastline Transit will not accept application work without a written trail.
-
 ### 39.2 Replacement planning
 
 For each, options are: replace with a maintained alternative, take over maintenance internally, or remove the feature. qr-make is replaced by a maintained library; one small helper is copied in and owned internally.
-
-Section thirty-nine point two develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-nine point two, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-nine point two treats abandoned components replacement planning as testable only when evidence and ticket IDs are recorded.
 
 ### 39.3 Reducing dependencies
 
 Some packages are used for one tiny function. Removing them reduces attack surface and update work. Kwame removes 11 such packages.
 
-Section thirty-nine point three develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-nine point three, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-nine point three treats abandoned components replacement planning as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-nine point three, Coastline Transit will not accept application work without a written trail.
-
 ### 39.4 Ownership
 
 Each dependency has an owning team listed in a file in the repository.
-
-Section thirty-nine point four develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-nine point four, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-nine point four treats abandoned components replacement planning as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-nine point four, Coastline Transit will not accept application work without a written trail.
 
 ### 39.5 Supporting upstream
 
 Coastline sponsors two critical upstream projects and contributes fixes, recognising findings from Wermke et al. (2022) that open-source maintainers often lack resources.
 
-Section thirty-nine point five develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-nine point five, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-nine point five treats abandoned components replacement planning as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-nine point five, Coastline Transit will not accept application work without a written trail.
-
 ### 39.6 Control maintenance
 
 Policies and checks are reviewed yearly; obsolete rules are removed.
-
-Section thirty-nine point six develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section thirty-nine point six, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section thirty-nine point six treats abandoned components replacement planning as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-nine point six, Coastline Transit will not accept application work without a written trail.
-
-Section thirty-nine point six fails closed if application evidence is missing rather than guessing.
 
 ### Choosing new dependencies
 
@@ -4201,71 +2599,25 @@ You will (1) plan an authorised security test of the application and pipeline; (
 
 Testing requires written authorisation stating scope (staging ticket-web and pipeline), time window and contacts. Kwame's team tests only within that scope.
 
-Section forty point one develops verification laboratory ii with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty point one, Ingrid Solberg expects verification claims to carry owners and dates.
-
-Section forty point one treats authorisation wstg structure pipeline as testable only when evidence and ticket IDs are recorded.
-
-For section forty point one, Coastline Transit will not accept verification work without a written trail.
-
 ### 40.2 WSTG structure
 
 The OWASP Web Security Testing Guide v4.2 organises tests into areas such as configuration, identity, authentication, authorisation, session management, input validation and business logic. The team selects tests matching their ASVS Level 2 requirements.
-
-Section forty point two develops verification laboratory ii with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty point two, Ingrid Solberg expects verification claims to carry owners and dates.
-
-Section forty point two treats authorisation wstg structure pipeline as testable only when evidence and ticket IDs are recorded.
 
 ### 40.3 Pipeline review
 
 For the pipeline, the team reviews configuration: branch protection, secret exposure to forks, runner isolation, policy enforcement mode.
 
-Section forty point three develops verification laboratory ii with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty point three, Ingrid Solberg expects verification claims to carry owners and dates.
-
-Section forty point three treats authorisation wstg structure pipeline as testable only when evidence and ticket IDs are recorded.
-
-For section forty point three, Coastline Transit will not accept verification work without a written trail.
-
 ### 40.4 Evidence
 
 Each ASVS requirement gets pass, fail or not applicable, with evidence such as screenshots of configuration or test logs.
-
-Section forty point four develops verification laboratory ii with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty point four, Ingrid Solberg expects verification claims to carry owners and dates.
-
-Section forty point four treats authorisation wstg structure pipeline as testable only when evidence and ticket IDs are recorded.
-
-For section forty point four, Coastline Transit will not accept verification work without a written trail.
 
 ### 40.5 Results
 
 30 application requirements: 27 pass, 2 fail (session timeout too long; missing rate limit on password reset), 1 not applicable. 12 pipeline requirements: 11 pass, 1 fail (a self-hosted runner still used for a reporting job).
 
-Section forty point five develops verification laboratory ii with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty point five, Ingrid Solberg expects verification claims to carry owners and dates.
-
-Section forty point five treats authorisation wstg structure pipeline as testable only when evidence and ticket IDs are recorded.
-
-For section forty point five, Coastline Transit will not accept verification work without a written trail.
-
 ### 40.6 Reporting
 
 Findings describe the weakness, its impact and the fix, without step-by-step misuse instructions, and go to owners with target dates.
-
-Section forty point six develops verification laboratory ii with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty point six, Ingrid Solberg expects verification claims to carry owners and dates.
-
-Section forty point six treats authorisation wstg structure pipeline as testable only when evidence and ticket IDs are recorded.
-
-For section forty point six, Coastline Transit will not accept verification work without a written trail.
 
 ### Retesting
 
@@ -4315,63 +2667,25 @@ You will (1) optimise the security system as a whole rather than individual cont
 
 Individual controls can each look good while the system performs poorly. Kwame maps the flow of an advisory from publication to deployed fix: detection (nightly check), triage (owner assigned), fix (code change), review, build, staging, production. He measures the median time in each step over six months of synthetic records.
 
-Section forty-one point one develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-one point one, Ingrid Solberg expects application claims to carry owners and dates.
-
 ### 41.2 Finding the bottleneck
 
 Detection takes under a day, fix and review two days, but waiting for the next production release window takes a median of six days. The bottleneck is not security tooling; it is the release schedule.
-
-Section forty-one point two develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-one point two, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section forty-one point two treats whole-system view finding the as testable only when evidence and ticket IDs are recorded.
 
 ### 41.3 Changing the system
 
 Coastline introduces a fast lane: security fixes that pass all checks can deploy any weekday morning with one approver. The median time from advisory to deployed fix falls from 10 to 4 days.
 
-Section forty-one point three develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-one point three, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section forty-one point three treats whole-system view finding the as testable only when evidence and ticket IDs are recorded.
-
 ### 41.4 Cost and risk
 
 The fast lane adds some deployment risk, managed by automatic rollback and verification. Kwame compares expected exposure saved (6 days per advisory times about 20 relevant advisories a year) with the effort of extra deployments (about 30 minutes each).
-
-Section forty-one point four develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-one point four, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section forty-one point four treats whole-system view finding the as testable only when evidence and ticket IDs are recorded.
 
 ### 41.5 Choosing next improvements
 
 With data on each step, the team ranks improvements by days saved per hour of effort. Faster triage through automatic owner assignment ranks next.
 
-Section forty-one point five develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-one point five, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section forty-one point five treats whole-system view finding the as testable only when evidence and ticket IDs are recorded.
-
-For section forty-one point five, Coastline Transit will not accept application work without a written trail.
-
 ### 41.6 Avoiding local optimisation
 
 Speeding up scanning further would save hours, not days; the system view keeps attention on what matters.
-
-Section forty-one point six develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-one point six, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section forty-one point six treats whole-system view finding the as testable only when evidence and ticket IDs are recorded.
-
-For section forty-one point six, Coastline Transit will not accept application work without a written trail.
 
 ### Worked example
 
@@ -4409,65 +2723,25 @@ You will (1) formulate an applied research question from engineering practice; (
 
 Kwame asks: does requiring a written justification for new dependencies reduce the number added without lowering developer satisfaction? This connects to findings that dependency growth spreads risk (Zimmermann et al., 2019; Decan et al., 2018).
 
-Section forty-two point one develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-two point one, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section forty-two point one treats the question design results as testable only when evidence and ticket IDs are recorded.
-
 ### 42.2 Design
 
 A before-and-after comparison over two six-month periods at Coastline, with dependency additions counted from the repository and satisfaction measured by a short anonymous survey. The study uses only repository metadata and anonymous survey answers, with Coastline's approval.
-
-Section forty-two point two develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-two point two, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section forty-two point two treats the question design results as testable only when evidence and ticket IDs are recorded.
 
 ### 42.3 Results
 
 New direct dependencies fell from 34 to 19. Survey satisfaction with the dependency process stayed similar (3.8 to 3.7 on a 5-point scale). Justifications most often cited "needed for a new feature" and "replacing an abandoned package".
 
-Section forty-two point three develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-two point three, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section forty-two point three treats the question design results as testable only when evidence and ticket IDs are recorded.
-
 ### 42.4 Interpretation
 
 The justification step seems to reduce casual additions without much frustration. But other changes happened at the same time, such as the new checklist and fewer new features in the second period.
-
-Section forty-two point four develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-two point four, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section forty-two point four treats the question design results as testable only when evidence and ticket IDs are recorded.
 
 ### 42.5 Limitations
 
 One company, two periods, no control group; survey response rate 60%. The findings are suggestive, not conclusive.
 
-Section forty-two point five develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-two point five, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section forty-two point five treats the question design results as testable only when evidence and ticket IDs are recorded.
-
-For section forty-two point five, Coastline Transit will not accept application work without a written trail.
-
 ### 42.6 Reporting
 
 Kwame writes a short paper for a student conference and a summary for Coastline's engineering blog, using synthetic examples.
-
-Section forty-two point six develops application and software supply chain with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-two point six, Ingrid Solberg expects application claims to carry owners and dates.
-
-Section forty-two point six treats the question design results as testable only when evidence and ticket IDs are recorded.
-
-For section forty-two point six, Coastline Transit will not accept application work without a written trail.
 
 ### Ethics of the study
 
@@ -4513,71 +2787,25 @@ You will (1) work in a professional engineering team on security tasks; (2) appl
 
 Kwame spends twelve weeks at Coastline Transit as a placement engineer in Ingrid's platform team, working on the pipeline and the ticket-web application.
 
-Section forty-three point one develops industry or public-service practice with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-three point one, Ingrid Solberg expects industry claims to carry owners and dates.
-
-Section forty-three point one treats the placement tasks conduct as testable only when evidence and ticket IDs are recorded.
-
-For section forty-three point one, Coastline Transit will not accept industry work without a written trail.
-
 ### 43.2 Tasks
 
 He triages dependency advisories, writes authorisation tests, improves gate messages, joins on-call shadowing and helps prepare the annual security review.
-
-Section forty-three point two develops industry or public-service practice with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-three point two, Ingrid Solberg expects industry claims to carry owners and dates.
-
-Section forty-three point two treats the placement tasks conduct as testable only when evidence and ticket IDs are recorded.
-
-For section forty-three point two, Coastline Transit will not accept industry work without a written trail.
 
 ### 43.3 Conduct
 
 He signs confidentiality terms, uses only approved systems and data, and never tests outside authorised scope. When he finds an issue in a vendor's widget, he reports it to Ingrid, who handles it with the vendor under the contract.
 
-Section forty-three point three develops industry or public-service practice with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-three point three, Ingrid Solberg expects industry claims to carry owners and dates.
-
-Section forty-three point three treats the placement tasks conduct as testable only when evidence and ticket IDs are recorded.
-
 ### 43.4 Public service
 
 As a public transport operator, Coastline's priority is safe, reliable service for riders. Kwame sees how security work is balanced with service continuity, such as timing upgrades away from peak travel.
-
-Section forty-three point four develops industry or public-service practice with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-three point four, Ingrid Solberg expects industry claims to carry owners and dates.
-
-Section forty-three point four treats the placement tasks conduct as testable only when evidence and ticket IDs are recorded.
 
 ### 43.5 Mentoring
 
 Weekly meetings with Ingrid review his work and learning goals.
 
-Section forty-three point five develops industry or public-service practice with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-three point five, Ingrid Solberg expects industry claims to carry owners and dates.
-
-Section forty-three point five treats the placement tasks conduct as testable only when evidence and ticket IDs are recorded.
-
-For section forty-three point five, Coastline Transit will not accept industry work without a written trail.
-
-Section forty-three point five fails closed if industry evidence is missing rather than guessing.
-
 ### 43.6 Reflection
 
 Kwame keeps a journal of decisions and lessons, reviewed by his course tutor.
-
-Section forty-three point six develops industry or public-service practice with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-three point six, Ingrid Solberg expects industry claims to carry owners and dates.
-
-Section forty-three point six treats the placement tasks conduct as testable only when evidence and ticket IDs are recorded.
-
-For section forty-three point six, Coastline Transit will not accept industry work without a written trail.
 
 ### Working with operations
 
@@ -4623,75 +2851,25 @@ You will (1) define a capstone project addressing a real supply-chain need; (2) 
 
 Coastline's mobile app builds now run in CI, but the app has no independent check that what riders install matches the signed build. Kwame's capstone: design and build a verification service that checks published app versions against provenance and signatures, and alerts on mismatches.
 
-Section forty-four point one develops engineering capstone with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-four point one, Ingrid Solberg expects engineering claims to carry owners and dates.
-
-Section forty-four point one treats the need requirements success as testable only when evidence and ticket IDs are recorded.
-
 ### 44.2 Requirements
 
 Check each new app store release within one hour; compare its digest with the signed build record; verify provenance policy; alert on mismatch; produce a monthly report.
-
-Section forty-four point two develops engineering capstone with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-four point two, Ingrid Solberg expects engineering claims to carry owners and dates.
-
-Section forty-four point two treats the need requirements success as testable only when evidence and ticket IDs are recorded.
-
-For section forty-four point two, Coastline Transit will not accept engineering work without a written trail.
 
 ### 44.3 Success measures
 
 All releases checked within one hour; zero missed mismatches in a test set of 20 synthetic releases with 5 deliberate mismatches; false alerts under one per month.
 
-Section forty-four point three develops engineering capstone with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-four point three, Ingrid Solberg expects engineering claims to carry owners and dates.
-
-Section forty-four point three treats the need requirements success as testable only when evidence and ticket IDs are recorded.
-
-For section forty-four point three, Coastline Transit will not accept engineering work without a written trail.
-
 ### 44.4 Plan
 
 Twelve weeks: design (2), build (5), test (3), report (2). Weekly reviews with Ingrid and a tutor.
-
-Section forty-four point four develops engineering capstone with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-four point four, Ingrid Solberg expects engineering claims to carry owners and dates.
-
-Section forty-four point four treats the need requirements success as testable only when evidence and ticket IDs are recorded.
-
-For section forty-four point four, Coastline Transit will not accept engineering work without a written trail.
-
-Section forty-four point four fails closed if engineering evidence is missing rather than guessing.
 
 ### 44.5 Risks
 
 App store APIs may change; mitigation: abstract the fetch step. Access to signing records needs approval; mitigation: request early.
 
-Section forty-four point five develops engineering capstone with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-four point five, Ingrid Solberg expects engineering claims to carry owners and dates.
-
-Section forty-four point five treats the need requirements success as testable only when evidence and ticket IDs are recorded.
-
-For section forty-four point five, Coastline Transit will not accept engineering work without a written trail.
-
 ### 44.6 Agreement
 
 Ingrid and the course tutor sign the project plan.
-
-Section forty-four point six develops engineering capstone with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-four point six, Ingrid Solberg expects engineering claims to carry owners and dates.
-
-Section forty-four point six treats the need requirements success as testable only when evidence and ticket IDs are recorded.
-
-For section forty-four point six, Coastline Transit will not accept engineering work without a written trail.
-
-Section forty-four point six fails closed if engineering evidence is missing rather than guessing.
 
 ### Scope control
 
@@ -4737,73 +2915,25 @@ You will (1) prepare a design for independent review; (2) receive and respond to
 
 Kwame prepares a design document: purpose, requirements, architecture, data flows, threat model (STRIDE), controls and test plan.
 
-Section forty-five point one develops independent design review with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-five point one, Ingrid Solberg expects independent claims to carry owners and dates.
-
-Section forty-five point one treats preparing reviewers findings responses as testable only when evidence and ticket IDs are recorded.
-
-For section forty-five point one, Coastline Transit will not accept independent work without a written trail.
-
 ### 45.2 Reviewers
 
 A Coastline security engineer, an external engineer from another transit agency and a course tutor review it.
-
-Section forty-five point two develops independent design review with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-five point two, Ingrid Solberg expects independent claims to carry owners and dates.
-
-Section forty-five point two treats preparing reviewers findings responses as testable only when evidence and ticket IDs are recorded.
-
-For section forty-five point two, Coastline Transit will not accept independent work without a written trail.
 
 ### 45.3 Findings
 
 Major: the verification service itself holds credentials to the app store API; if compromised, it could hide mismatches. Minor: logging retention unspecified; alert channel single point of failure.
 
-Section forty-five point three develops independent design review with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-five point three, Ingrid Solberg expects independent claims to carry owners and dates.
-
-Section forty-five point three treats preparing reviewers findings responses as testable only when evidence and ticket IDs are recorded.
-
-For section forty-five point three, Coastline Transit will not accept independent work without a written trail.
-
 ### 45.4 Responses
 
 For the major issue, credentials are read-only and alerts are also sent to a separate system the service cannot modify. Minor issues are fixed with specific values and a second alert channel.
-
-Section forty-five point four develops independent design review with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-five point four, Ingrid Solberg expects independent claims to carry owners and dates.
-
-Section forty-five point four treats preparing reviewers findings responses as testable only when evidence and ticket IDs are recorded.
 
 ### 45.5 Traceability
 
 Every review comment links to the design change it caused, or a reason for no change.
 
-Section forty-five point five develops independent design review with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-five point five, Ingrid Solberg expects independent claims to carry owners and dates.
-
-Section forty-five point five treats preparing reviewers findings responses as testable only when evidence and ticket IDs are recorded.
-
-For section forty-five point five, Coastline Transit will not accept independent work without a written trail.
-
 ### 45.6 Value
 
 Independent reviewers see assumptions the author cannot.
-
-Section forty-five point six develops independent design review with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-five point six, Ingrid Solberg expects independent claims to carry owners and dates.
-
-Section forty-five point six treats preparing reviewers findings responses as testable only when evidence and ticket IDs are recorded.
-
-For section forty-five point six, Coastline Transit will not accept independent work without a written trail.
-
-Section forty-five point six fails closed if independent evidence is missing rather than guessing.
 
 ### Review meeting
 
@@ -4853,73 +2983,25 @@ You will (1) build and test the capstone system; (2) measure against success cri
 
 Kwame builds the verifier in a memory-safe language using standard libraries where possible, with its own CI, signing and provenance, so it meets the same rules it enforces.
 
-Section forty-six point one develops engineering capstone ii with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-six point one, Ingrid Solberg expects engineering claims to carry owners and dates.
-
-Section forty-six point one treats building testing timing unexpected as testable only when evidence and ticket IDs are recorded.
-
-For section forty-six point one, Coastline Transit will not accept engineering work without a written trail.
-
 ### 46.2 Testing
 
 The test set of 20 synthetic releases includes 5 mismatches: altered file, missing signature, wrong builder, unreviewed commit and an extra file. All 5 are detected; no false alerts on the 15 good releases.
-
-Section forty-six point two develops engineering capstone ii with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-six point two, Ingrid Solberg expects engineering claims to carry owners and dates.
-
-Section forty-six point two treats building testing timing unexpected as testable only when evidence and ticket IDs are recorded.
 
 ### 46.3 Timing
 
 Each release is checked in a median of 7 minutes after detection; the slowest takes 22 minutes, within the one-hour target.
 
-Section forty-six point three develops engineering capstone ii with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-six point three, Ingrid Solberg expects engineering claims to carry owners and dates.
-
-Section forty-six point three treats building testing timing unexpected as testable only when evidence and ticket IDs are recorded.
-
-For section forty-six point three, Coastline Transit will not accept engineering work without a written trail.
-
 ### 46.4 Unexpected problem
 
 App store metadata sometimes lags; the verifier now retries for up to 45 minutes before alerting "not yet available" rather than "mismatch".
-
-Section forty-six point four develops engineering capstone ii with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-six point four, Ingrid Solberg expects engineering claims to carry owners and dates.
-
-Section forty-six point four treats building testing timing unexpected as testable only when evidence and ticket IDs are recorded.
-
-For section forty-six point four, Coastline Transit will not accept engineering work without a written trail.
 
 ### 46.5 Documentation
 
 Operations guide, architecture notes, runbook for alerts and a test report.
 
-Section forty-six point five develops engineering capstone ii with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-six point five, Ingrid Solberg expects engineering claims to carry owners and dates.
-
-Section forty-six point five treats building testing timing unexpected as testable only when evidence and ticket IDs are recorded.
-
-For section forty-six point five, Coastline Transit will not accept engineering work without a written trail.
-
-Section forty-six point five fails closed if engineering evidence is missing rather than guessing.
-
 ### 46.6 Handover readiness
 
 Coastline's platform team reviews the code and runs it in staging for two weeks.
-
-Section forty-six point six develops engineering capstone ii with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-six point six, Ingrid Solberg expects engineering claims to carry owners and dates.
-
-Section forty-six point six treats building testing timing unexpected as testable only when evidence and ticket IDs are recorded.
-
-For section forty-six point six, Coastline Transit will not accept engineering work without a written trail.
 
 ### Code quality
 
@@ -4965,73 +3047,25 @@ You will (1) plan a controlled failure trial of the pipeline and verifier; (2) o
 
 With approval, Coastline runs a planned trial in staging: a synthetic tampered artifact is placed on the mirror, and the signing service is made unavailable for two hours.
 
-Section forty-seven point one develops failure and recovery trial with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-seven point one, Ingrid Solberg expects failure claims to carry owners and dates.
-
-Section forty-seven point one treats the trial expectations observations as testable only when evidence and ticket IDs are recorded.
-
-For section forty-seven point one, Coastline Transit will not accept failure work without a written trail.
-
 ### 47.2 Expectations
 
 The deployment should refuse the tampered artifact; the verifier should alert; builds should wait during the signing outage and resume afterwards.
-
-Section forty-seven point two develops failure and recovery trial with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-seven point two, Ingrid Solberg expects failure claims to carry owners and dates.
-
-Section forty-seven point two treats the trial expectations observations as testable only when evidence and ticket IDs are recorded.
-
-For section forty-seven point two, Coastline Transit will not accept failure work without a written trail.
 
 ### 47.3 Observations
 
 The tampered artifact is refused within seconds and the alert reaches on-call in 3 minutes. During the signing outage, builds queue as designed, but one team, unaware of the trial, tries to bypass signing with a manual flag; the policy blocks it.
 
-Section forty-seven point three develops failure and recovery trial with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-seven point three, Ingrid Solberg expects failure claims to carry owners and dates.
-
-Section forty-seven point three treats the trial expectations observations as testable only when evidence and ticket IDs are recorded.
-
 ### 47.4 Recovery
 
 After the outage, queued builds complete within 25 minutes. The mirror is cleaned and its digests rechecked.
-
-Section forty-seven point four develops failure and recovery trial with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-seven point four, Ingrid Solberg expects failure claims to carry owners and dates.
-
-Section forty-seven point four treats the trial expectations observations as testable only when evidence and ticket IDs are recorded.
-
-For section forty-seven point four, Coastline Transit will not accept failure work without a written trail.
 
 ### 47.5 Lessons
 
 Communication: teams need notice of trials and a status page during outages. The manual flag is removed entirely.
 
-Section forty-seven point five develops failure and recovery trial with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-seven point five, Ingrid Solberg expects failure claims to carry owners and dates.
-
-Section forty-seven point five treats the trial expectations observations as testable only when evidence and ticket IDs are recorded.
-
-For section forty-seven point five, Coastline Transit will not accept failure work without a written trail.
-
 ### 47.6 Measuring
 
 Time to detect: 3 minutes; time to recover: 25 minutes after service return.
-
-Section forty-seven point six develops failure and recovery trial with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-seven point six, Ingrid Solberg expects failure claims to carry owners and dates.
-
-Section forty-seven point six treats the trial expectations observations as testable only when evidence and ticket IDs are recorded.
-
-For section forty-seven point six, Coastline Transit will not accept failure work without a written trail.
-
-Section forty-seven point six fails closed if failure evidence is missing rather than guessing.
 
 ### Safety of the trial
 
@@ -5081,79 +3115,25 @@ You will (1) assemble evidence that the system meets its requirements; (2) organ
 
 The dossier shows assessors and Coastline that the capstone and the pipeline controls meet their requirements.
 
-Section forty-eight point one develops evidence dossier with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-eight point one, Ingrid Solberg expects evidence claims to carry owners and dates.
-
-Section forty-eight point one treats purpose structure evidence types as testable only when evidence and ticket IDs are recorded.
-
-For section forty-eight point one, Coastline Transit will not accept evidence work without a written trail.
-
 ### 48.2 Structure
 
 For each requirement: statement, implementation, verification method, evidence links and status. Sections cover the verifier, the pipeline controls it relies on and the operational procedures.
-
-Section forty-eight point two develops evidence dossier with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-eight point two, Ingrid Solberg expects evidence claims to carry owners and dates.
-
-Section forty-eight point two treats purpose structure evidence types as testable only when evidence and ticket IDs are recorded.
-
-For section forty-eight point two, Coastline Transit will not accept evidence work without a written trail.
 
 ### 48.3 Evidence types
 
 Test reports (chapter 46), design review records (45), failure trial results (47), validation reports (38) and metrics (29).
 
-Section forty-eight point three develops evidence dossier with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-eight point three, Ingrid Solberg expects evidence claims to carry owners and dates.
-
-Section forty-eight point three treats purpose structure evidence types as testable only when evidence and ticket IDs are recorded.
-
-For section forty-eight point three, Coastline Transit will not accept evidence work without a written trail.
-
-Section forty-eight point three fails closed if evidence evidence is missing rather than guessing.
-
 ### 48.4 Gaps
 
 Two requirements are partly met: monthly reports exist but are not yet reviewed by management; alert response is tested in staging only. Both are stated with plans.
-
-Section forty-eight point four develops evidence dossier with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-eight point four, Ingrid Solberg expects evidence claims to carry owners and dates.
-
-Section forty-eight point four treats purpose structure evidence types as testable only when evidence and ticket IDs are recorded.
-
-For section forty-eight point four, Coastline Transit will not accept evidence work without a written trail.
 
 ### 48.5 Usability
 
 The dossier begins with a one-page summary table.
 
-Section forty-eight point five develops evidence dossier with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-eight point five, Ingrid Solberg expects evidence claims to carry owners and dates.
-
-Section forty-eight point five treats purpose structure evidence types as testable only when evidence and ticket IDs are recorded.
-
-For section forty-eight point five, Coastline Transit will not accept evidence work without a written trail.
-
-Section forty-eight point five fails closed if evidence evidence is missing rather than guessing.
-
 ### 48.6 Maintenance
 
 The dossier is versioned; after handover, the platform team updates it.
-
-Section forty-eight point six develops evidence dossier with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-eight point six, Ingrid Solberg expects evidence claims to carry owners and dates.
-
-Section forty-eight point six treats purpose structure evidence types as testable only when evidence and ticket IDs are recorded.
-
-For section forty-eight point six, Coastline Transit will not accept evidence work without a written trail.
-
-Section forty-eight point six fails closed if evidence evidence is missing rather than guessing.
 
 ### Audience needs
 
@@ -5203,75 +3183,25 @@ You will (1) write an engineering thesis on the capstone; (2) connect design, im
 
 Introduction (problem and need), background (supply chain, SLSA, SSDF, Sigstore, in-toto, reproducible builds), requirements, design, implementation, verification, trial, discussion, conclusion.
 
-Section forty-nine point one develops engineering thesis with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-nine point one, Ingrid Solberg expects engineering claims to carry owners and dates.
-
-Section forty-nine point one treats structure literature connections discussion as testable only when evidence and ticket IDs are recorded.
-
-For section forty-nine point one, Coastline Transit will not accept engineering work without a written trail.
-
 ### 49.2 Literature connections
 
 The thesis positions the verifier as a consumer-side check complementary to producer-side controls described in SLSA v1.0 and the SSDF, and relates its use of signing and transparency logs to Newman et al. (2022). It cites Ladisa et al. (2023) to show which attack classes the verifier addresses (distribution-stage tampering) and which it does not (malicious source commits by authorised maintainers).
-
-Section forty-nine point two develops engineering thesis with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-nine point two, Ingrid Solberg expects engineering claims to carry owners and dates.
 
 ### 49.3 Discussion
 
 The verifier detects mismatches between built and published apps quickly, but relies on trustworthy build records; reproducible builds would add an independent check.
 
-Section forty-nine point three develops engineering thesis with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-nine point three, Ingrid Solberg expects engineering claims to carry owners and dates.
-
-Section forty-nine point three treats structure literature connections discussion as testable only when evidence and ticket IDs are recorded.
-
-For section forty-nine point three, Coastline Transit will not accept engineering work without a written trail.
-
 ### 49.4 Limitations
 
 One organisation, synthetic mismatches, short operating period.
-
-Section forty-nine point four develops engineering thesis with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-nine point four, Ingrid Solberg expects engineering claims to carry owners and dates.
-
-Section forty-nine point four treats structure literature connections discussion as testable only when evidence and ticket IDs are recorded.
-
-For section forty-nine point four, Coastline Transit will not accept engineering work without a written trail.
-
-Section forty-nine point four fails closed if engineering evidence is missing rather than guessing.
 
 ### 49.5 Future work
 
 Reproducible mobile builds; sharing verification results among transit agencies.
 
-Section forty-nine point five develops engineering thesis with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-nine point five, Ingrid Solberg expects engineering claims to carry owners and dates.
-
-Section forty-nine point five treats structure literature connections discussion as testable only when evidence and ticket IDs are recorded.
-
-For section forty-nine point five, Coastline Transit will not accept engineering work without a written trail.
-
-Section forty-nine point five fails closed if engineering evidence is missing rather than guessing.
-
 ### 49.6 Academic standards
 
 Citations are checked against sources; all case data are synthetic or approved.
-
-Section forty-nine point six develops engineering thesis with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section forty-nine point six, Ingrid Solberg expects engineering claims to carry owners and dates.
-
-Section forty-nine point six treats structure literature connections discussion as testable only when evidence and ticket IDs are recorded.
-
-For section forty-nine point six, Coastline Transit will not accept engineering work without a written trail.
-
-Section forty-nine point six fails closed if engineering evidence is missing rather than guessing.
 
 ### Writing process
 
@@ -5321,77 +3251,25 @@ You will (1) present and defend the capstone and thesis; (2) answer technical an
 
 Twenty-five minutes: the original incidents, requirements, design, results, trial, limits and future work.
 
-Section fifty point one develops final defense with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section fifty point one, Ingrid Solberg expects final claims to carry owners and dates.
-
-Section fifty point one treats presentation technical questions ethical as testable only when evidence and ticket IDs are recorded.
-
-For section fifty point one, Coastline Transit will not accept final work without a written trail.
-
-Section fifty point one fails closed if final evidence is missing rather than guessing.
-
 ### 50.2 Technical questions
 
 "What if an attacker compromises your CI provider?" Kwame explains that provenance would then be untrustworthy and reproducible builds or a second independent builder would be needed. "Why not verify every file on riders' phones?" He explains privacy and battery costs, and that store-level checks catch tampering before installation.
-
-Section fifty point two develops final defense with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section fifty point two, Ingrid Solberg expects final claims to carry owners and dates.
-
-Section fifty point two treats presentation technical questions ethical as testable only when evidence and ticket IDs are recorded.
 
 ### 50.3 Ethical questions
 
 "Could the verifier's data reveal riders?" No: it handles only app releases, not rider data.
 
-Section fifty point three develops final defense with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section fifty point three, Ingrid Solberg expects final claims to carry owners and dates.
-
-Section fifty point three treats presentation technical questions ethical as testable only when evidence and ticket IDs are recorded.
-
-For section fifty point three, Coastline Transit will not accept final work without a written trail.
-
 ### 50.4 Reflection
 
 From calculus models of exposure to a deployed verifier, Kwame sees supply-chain security as an engineering discipline of requirements, design, measurement and verification.
-
-Section fifty point four develops final defense with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section fifty point four, Ingrid Solberg expects final claims to carry owners and dates.
-
-Section fifty point four treats presentation technical questions ethical as testable only when evidence and ticket IDs are recorded.
-
-For section fifty point four, Coastline Transit will not accept final work without a written trail.
 
 ### 50.5 Development
 
 He plans a professional certification and joins an open-source supply-chain security working group.
 
-Section fifty point five develops final defense with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section fifty point five, Ingrid Solberg expects final claims to carry owners and dates.
-
-Section fifty point five treats presentation technical questions ethical as testable only when evidence and ticket IDs are recorded.
-
-For section fifty point five, Coastline Transit will not accept final work without a written trail.
-
-Section fifty point five fails closed if final evidence is missing rather than guessing.
-
 ### 50.6 Thanks
 
 Ingrid and the Coastline team receive the final dossier and verifier.
-
-Section fifty point six develops final defense with a Coastline Transit note Kwame Asante can demo offline.
-
-Under section fifty point six, Ingrid Solberg expects final claims to carry owners and dates.
-
-Section fifty point six treats presentation technical questions ethical as testable only when evidence and ticket IDs are recorded.
-
-For section fifty point six, Coastline Transit will not accept final work without a written trail.
-
-Section fifty point six fails closed if final evidence is missing rather than guessing.
 
 ### Preparing the defense
 

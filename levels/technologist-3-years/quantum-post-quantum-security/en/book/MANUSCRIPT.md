@@ -47,8 +47,6 @@ Every KLS service sits on a stack. Servers and scanners have processors, memory,
 
 Cryptography appears at every layer: secure boot signatures in firmware; disk encryption and keystores in the OS; TLS, SSH and IPsec in libraries and daemons; JSON Web Token signatures and field encryption in applications; HSMs or cloud KMS holding root keys. Each location has a *change mechanism*: configuration (minutes), package upgrade (days), vendor release (months), hardware replacement (years). Writing down the mechanism next to each cryptographic use is the single most useful habit for planning work.
 
-Section one point two develops computing systems with a Kestrel Logistics Software note the platform engineer can demo offline.
-
 ### 1.3 Quantum computers in one page
 
 Quantum computers manipulate qubits whose joint states interfere; specific algorithms exploit this. Shor's algorithm (Shor, 1997) finds hidden periods and so breaks RSA, Diffie–Hellman and elliptic-curve cryptography; Grover's algorithm (Grover, 1996) gives only a square-root speed-up for brute-force search, so AES-256 and SHA-256 stay fit for purpose. Breaking RSA-2048 needs a large *error-corrected* machine; Gidney (2025) estimated under a million noisy qubits running for under a week under stated assumptions, and no such machine exists. For implementers the practical message is simple: replace public-key key exchange and signatures; keep symmetric encryption and hashes at adequate sizes.
@@ -57,29 +55,11 @@ Quantum computers manipulate qubits whose joint states interfere; specific algor
 
 KLS's warehouse scanner: TPM-less ARM board (hardware), vendor bootloader verifying RSA signatures (firmware, change by hardware refresh), embedded Linux (OS, vendor image), libcurl with an old TLS library (library, vendor release), and a scanning app that uploads manifests over HTTPS (application, KLS code). Of five layers, KLS directly controls one. The scanner's TLS key exchange can only become hybrid when the vendor ships a new image.
 
-Section one point four develops computing systems with a Kestrel Logistics Software note the platform engineer can demo offline.
-
 ### 1.5 Practical activity
 
 For one service you administer in a lab, list each layer, one cryptographic function in it, and the change mechanism. Mark which you control.
 
-Section one point five develops computing systems with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section one point five, the KLS platform team expects computing claims to carry owners and dates.
-
-Section one point five treats layers an implementer touches as testable only when evidence and ticket IDs are recorded.
-
-For section one point five, Kestrel Logistics Software will not accept computing work without a written trail.
-
 ### 1.6 Common errors and limits
-Section one point six develops computing systems with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section one point six, the KLS platform team expects computing claims to carry owners and dates.
-
-Section one point six treats layers an implementer touches as testable only when evidence and ticket IDs are recorded.
-
-For section one point six, Kestrel Logistics Software will not accept computing work without a written trail.
-
 
 - Assuming an application change can fix firmware cryptography.
 - Treating quantum computers as general accelerators.
@@ -110,10 +90,6 @@ You will (1) explain DNS, HTTP, TLS, SSH and IPsec at implementation level; (2) 
 
 KLS's customers reach the API through DNS and HTTPS; partners exchange files over SFTP (SSH); offices connect over IPsec VPNs. Each secure channel does two jobs: *key establishment* (agreeing session keys) and *authentication* (proving identity with certificates, host keys or pre-shared keys). Quantum risk to the first is harvest-now-decrypt-later; to the second, future forgery.
 
-Section two point one develops networks and internet services with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section two point one, the KLS platform team expects networks claims to carry owners and dates.
-
 ### 2.2 Hybrid key exchange by protocol
 
 In TLS 1.3 ([RFC 8446](https://www.rfc-editor.org/rfc/rfc8446.html)) the hybrid group X25519MLKEM768 ([RFC 10024](https://www.rfc-editor.org/rfc/rfc10024.html)) combines ML-KEM-768 with X25519; the client key share grows from 32 to 1,216 bytes and the server share to 1,120 bytes. In SSH, OpenSSH added a hybrid ML-KEM/X25519 key exchange, `mlkem768x25519-sha256`, and later made it the default ([OpenSSH release notes](https://www.openssh.com/releasenotes.html)), after earlier shipping an sntrup761-based hybrid. In IKEv2, [RFC 9370](https://www.rfc-editor.org/rfc/rfc9370.html) allows up to seven additional key exchanges, used to add ML-KEM alongside classical Diffie–Hellman; [RFC 8784](https://www.rfc-editor.org/rfc/rfc8784.html) mixes post-quantum pre-shared keys as an interim measure. Terminology for such combinations is in [RFC 9794](https://www.rfc-editor.org/rfc/rfc9794.html).
@@ -122,37 +98,15 @@ In TLS 1.3 ([RFC 8446](https://www.rfc-editor.org/rfc/rfc8446.html)) the hybrid 
 
 A ClientHello carrying an ML-KEM key share usually exceeds one 1,500-byte packet. Most stacks handle this; some middleboxes and old load balancers do not. Post-quantum signatures are larger still (ML-DSA-44: 2,420 bytes per signature in [FIPS 204](https://doi.org/10.6028/NIST.FIPS.204)), which matters once certificates change. DNSSEC, which runs over UDP with tight size limits, is especially sensitive to signature size.
 
-Section two point three develops networks and internet services with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section two point three, the KLS platform team expects networks claims to carry owners and dates.
-
 ### 2.4 Worked example
 
 KLS enables X25519MLKEM768 on a staging API gateway. Modern browsers and the Go-based customer SDK negotiate it immediately; a customer's legacy Java client offers only classical groups and falls back to X25519, as intended. A third-party monitoring probe times out — its appliance drops the two-segment ClientHello. The fix is a probe upgrade, not disabling the group.
-
-Section two point four develops networks and internet services with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section two point four, the KLS platform team expects networks claims to carry owners and dates.
 
 ### 2.5 Practical activity
 
 In a lab, connect to a test server with a TLS client that prints the negotiated group, once with hybrid offered and once without. Record ClientHello sizes from a capture of your own lab traffic.
 
-Section two point five develops networks and internet services with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section two point five, the KLS platform team expects networks claims to carry owners and dates.
-
-Section two point five treats services and their secure as testable only when evidence and ticket IDs are recorded.
-
 ### 2.6 Common errors and limits
-Section two point six develops networks and internet services with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section two point six, the KLS platform team expects networks claims to carry owners and dates.
-
-Section two point six treats services and their secure as testable only when evidence and ticket IDs are recorded.
-
-For section two point six, Kestrel Logistics Software will not accept networks work without a written trail.
-
 
 - Believing hybrid key exchange changes certificate algorithms.
 - Treating SSH and TLS migrations as one task.
@@ -183,35 +137,17 @@ You will (1) write small Python scripts with functions, dictionaries and loops; 
 
 Implementers script to inventory, verify and automate. A thirty-line script that parses configuration exports and flags classical-only services is worth more than a manual checklist because it can run every night. This book's labs use only the Python standard library so they run anywhere.
 
-Section three point one develops programming foundations with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section three point one, the KLS platform team expects programming claims to carry owners and dates.
-
-Section three point one treats scripts for implementers bytes as testable only when evidence and ticket IDs are recorded.
-
 ### 3.2 Bytes and lengths
 
 Keys, ciphertexts and signatures are bytes with exact lengths: ML-KEM-768 encapsulation keys are 1,184 bytes and ciphertexts 1,088 bytes ([FIPS 203](https://doi.org/10.6028/NIST.FIPS.203)); ML-DSA-65 public keys 1,952 bytes and signatures 3,309 bytes (FIPS 204). Code that stores these in fixed-size database columns, base64 fields or protocol buffers sized for ECDSA will truncate or reject them. Always check lengths explicitly and fail closed.
-
-Section three point two develops programming foundations with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section three point two, the KLS platform team expects programming claims to carry owners and dates.
 
 ### 3.3 Standard-library cryptography
 
 `secrets.token_bytes(n)` gives secure random bytes; `random` does not. `hashlib.sha256`, `hashlib.sha3_256` and `hashlib.shake_256` compute hashes; `hmac.new(key, msg, hashlib.sha256)` computes MACs; `hmac.compare_digest` compares secrets in constant time. Python's standard library does not implement ML-KEM or ML-DSA; production code calls a vetted library or the platform provider.
 
-Section three point three develops programming foundations with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section three point three, the KLS platform team expects programming claims to carry owners and dates.
-
 ### 3.4 Worked example
 
 A KLS developer stores public keys in a column `VARCHAR(512)` holding base64 text. Base64 expands bytes by 4/3, so a 1,952-byte ML-DSA-65 key needs 2,604 characters and is silently truncated by a permissive database mode. A test that round-trips a 1,952-byte random value through the storage layer would have caught it:
-
-Section three point four develops programming foundations with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section three point four, the KLS platform team expects programming claims to carry owners and dates.
 
 ```python
 import base64, secrets
@@ -225,23 +161,7 @@ print("round trip ok,", len(enc), "chars")
 
 Write `check_len(kind, data)` using a dictionary of expected lengths for ML-KEM-512/768/1024 encapsulation keys, and test valid and invalid inputs.
 
-Section three point five develops programming foundations with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section three point five, the KLS platform team expects programming claims to carry owners and dates.
-
-Section three point five treats scripts for implementers bytes as testable only when evidence and ticket IDs are recorded.
-
-For section three point five, Kestrel Logistics Software will not accept programming work without a written trail.
-
 ### 3.6 Common errors and limits
-Section three point six develops programming foundations with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section three point six, the KLS platform team expects programming claims to carry owners and dates.
-
-Section three point six treats scripts for implementers bytes as testable only when evidence and ticket IDs are recorded.
-
-For section three point six, Kestrel Logistics Software will not accept programming work without a written trail.
-
 
 - Fixed-size fields sized for classical keys.
 - `random` for secrets.
@@ -275,29 +195,13 @@ You will (1) model services, endpoints, certificates and algorithms as related r
 
 A practical schema has tables for `service` (name, owner, tier), `endpoint` (host, port, protocol), `crypto_use` (endpoint, function, algorithm, parameter, library, version), `observation` (crypto_use, method, timestamp, observer) and `data_class` (name, confidentiality_years) linked to services. Separating observation from use lets you record that the same use was seen by a scanner on Monday and confirmed in configuration on Wednesday.
 
-Section four point one develops data models with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section four point one, the KLS platform team expects data claims to carry owners and dates.
-
 ### 4.2 Provenance and freshness
 
 Every row needs a method (passive capture, configuration, code scan, vendor statement) and a timestamp. Stale observations are downgraded to "unverified" rather than deleted. Without provenance, a dashboard mixes facts with guesses and nobody knows which.
 
-Section four point two develops data models with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section four point two, the KLS platform team expects data claims to carry owners and dates.
-
-Section four point two treats an inventory schema provenance as testable only when evidence and ticket IDs are recorded.
-
 ### 4.3 Lifetimes
 
 Attach `confidentiality_years` to data classes. KLS's shipment records must stay confidential for ten years by contract; billing data seven; telemetry one. A query joining lifetimes to key-exchange algorithms produces the harvest-now-decrypt-later candidate list automatically.
-
-Section four point three develops data models with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section four point three, the KLS platform team expects data claims to carry owners and dates.
-
-Section four point three treats an inventory schema provenance as testable only when evidence and ticket IDs are recorded.
 
 ### 4.4 Worked example
 
@@ -314,35 +218,11 @@ print("HNDL candidates:", [r[0] for r in rows])
 
 The query returns partner SFTP and the billing database; telemetry drops out because its data is short-lived, and the gateway is already hybrid.
 
-Section four point four develops data models with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section four point four, the KLS platform team expects data claims to carry owners and dates.
-
-Section four point four treats an inventory schema provenance as testable only when evidence and ticket IDs are recorded.
-
-For section four point four, Kestrel Logistics Software will not accept data work without a written trail.
-
 ### 4.5 Practical activity
 
 Extend the example with an `observation` table and a query listing uses whose newest observation is older than 90 days.
 
-Section four point five develops data models with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section four point five, the KLS platform team expects data claims to carry owners and dates.
-
-Section four point five treats an inventory schema provenance as testable only when evidence and ticket IDs are recorded.
-
-For section four point five, Kestrel Logistics Software will not accept data work without a written trail.
-
 ### 4.6 Common errors and limits
-Section four point six develops data models with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section four point six, the KLS platform team expects data claims to carry owners and dates.
-
-Section four point six treats an inventory schema provenance as testable only when evidence and ticket IDs are recorded.
-
-For section four point six, Kestrel Logistics Software will not accept data work without a written trail.
-
 
 - Flat spreadsheets without provenance.
 - Deleting stale data instead of marking it.
@@ -378,59 +258,23 @@ You will (1) apply confidentiality, integrity, availability and authenticity to 
 
 Implementers change cryptography to improve confidentiality and authenticity, but every change risks availability. A hybrid group that a load balancer cannot parse is an outage. Good practice treats availability as a co-equal requirement: staged rollout, rollback, monitoring.
 
-Section five point one develops security literacy with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section five point one, the KLS platform team expects security claims to carry owners and dates.
-
-Section five point one treats properties and changes risk as testable only when evidence and ticket IDs are recorded.
-
 ### 5.2 Risk vocabulary
 
 An *asset* (shipment records), a *threat* (an adversary recording traffic), a *vulnerability* (classical key exchange) and a *control* (hybrid key exchange) combine into a risk scenario. Quantum vulnerabilities are properties of algorithms, not bugs, and become exploitable when a capability appears.
-
-Section five point two develops security literacy with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section five point two, the KLS platform team expects security claims to carry owners and dates.
-
-Section five point two treats properties and changes risk as testable only when evidence and ticket IDs are recorded.
 
 ### 5.3 Two patterns
 
 *Harvest now, decrypt later*: recorded traffic is decrypted once a quantum computer exists; urgent for data whose confidentiality lasts beyond that time. *Forge later*: once a quantum computer exists, signatures can be forged; urgent for long-lived trust (root CAs, firmware signing, documents verified for years) and for devices that cannot be updated.
 
-Section five point three develops security literacy with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section five point three, the KLS platform team expects security claims to carry owners and dates.
-
 ### 5.4 Worked example
 
 KLS's partner SFTP service carries customs documents kept confidential ten years; it uses ECDH key exchange: HNDL-exposed now. Its host key is Ed25519: forge-later exposure, lower urgency because host keys can be rotated quickly once SSH clients support post-quantum host-key algorithms. The API's JWT signing keys rotate weekly: forge-later exposure is minimal until a quantum computer exists.
-
-Section five point four develops security literacy with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section five point four, the KLS platform team expects security claims to carry owners and dates.
 
 ### 5.5 Practical activity
 
 Write three risk scenarios for KLS services using the asset–threat–vulnerability–control pattern; label each HNDL, forge-later or neither.
 
-Section five point five develops security literacy with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section five point five, the KLS platform team expects security claims to carry owners and dates.
-
-Section five point five treats properties and changes risk as testable only when evidence and ticket IDs are recorded.
-
-For section five point five, Kestrel Logistics Software will not accept security work without a written trail.
-
 ### 5.6 Common errors and limits
-Section five point six develops security literacy with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section five point six, the KLS platform team expects security claims to carry owners and dates.
-
-Section five point six treats properties and changes risk as testable only when evidence and ticket IDs are recorded.
-
-For section five point six, Kestrel Logistics Software will not accept security work without a written trail.
-
 
 - Forgetting availability in change plans.
 - Treating all quantum risk as equally urgent.
@@ -466,55 +310,23 @@ You will (1) explain process isolation, privileges and keystores; (2) identify s
 
 On Linux, most services link a system TLS library; OpenSSL 3.5 added ML-KEM, ML-DSA and SLH-DSA support and hybrid TLS groups ([OpenSSL 3.5 release notes](https://github.com/openssl/openssl/blob/openssl-3.5/NEWS.md)). Some distributions centralise allowed algorithms in a system-wide crypto policy. Windows uses CNG; mobile platforms provide keystores and platform TLS. The provider version on the host largely determines what services can negotiate — unless the service brings its own library.
 
-Section six point one develops operating systems and virtualization with a Kestrel Logistics Software note the platform engineer can demo offline.
-
 ### 6.2 Containers and static linking
 
 Containers bundle their own user-space libraries; upgrading the host OS does not change the TLS library inside an image. Go and Rust binaries often statically link their cryptography. Implementers must inventory images and binaries, not just hosts, and rebuild images on updated base layers.
-
-Section six point two develops operating systems and virtualization with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section six point two, the KLS platform team expects operating claims to carry owners and dates.
 
 ### 6.3 Virtualization and keys
 
 Hypervisors, virtual TPMs and cloud KMS hold keys for disks and workloads. Their APIs and algorithm support change on the cloud provider's schedule. Record which KMS key types and algorithms each workload uses.
 
-Section six point three develops operating systems and virtualization with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section six point three, the KLS platform team expects operating claims to carry owners and dates.
-
-Section six point three treats providers and policies containers as testable only when evidence and ticket IDs are recorded.
-
 ### 6.4 Worked example
 
 KLS upgrades its Kubernetes nodes to a distribution with OpenSSL 3.5. The NGINX ingress container still runs an older base image and continues to offer only classical groups. A rebuild on a new base image enables X25519MLKEM768. The billing service, written in Go, gains hybrid support only after a toolchain upgrade because Go's TLS stack is compiled in.
-
-Section six point four develops operating systems and virtualization with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section six point four, the KLS platform team expects operating claims to carry owners and dates.
 
 ### 6.5 Practical activity
 
 On a lab host, list the OpenSSL version on the host and inside two containers; list Go or Rust binaries and their toolchain versions.
 
-Section six point five develops operating systems and virtualization with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section six point five, the KLS platform team expects operating claims to carry owners and dates.
-
-Section six point five treats providers and policies containers as testable only when evidence and ticket IDs are recorded.
-
-For section six point five, Kestrel Logistics Software will not accept operating work without a written trail.
-
 ### 6.6 Common errors and limits
-Section six point six develops operating systems and virtualization with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section six point six, the KLS platform team expects operating claims to carry owners and dates.
-
-Section six point six treats providers and policies containers as testable only when evidence and ticket IDs are recorded.
-
-For section six point six, Kestrel Logistics Software will not accept operating work without a written trail.
-
 
 - Assuming host upgrades change containers.
 - Editing system crypto policies on production without staging.
@@ -522,8 +334,6 @@ For section six point six, Kestrel Logistics Software will not accept operating 
 ### 6.7 Patch cadence
 
 Post-quantum support arrives through ordinary patching, so the team's patch cadence becomes a migration lever. Track for each base image and toolchain how many days it lags the current supported release. Services that lag by a year cannot adopt hybrid key exchange without a large catch-up upgrade, which is riskier than the small regular upgrades that would have kept them current.
-
-Section six point seven develops operating systems and virtualization with a Kestrel Logistics Software note the platform engineer can demo offline.
 
 ### Exercises
 
@@ -550,57 +360,23 @@ You will (1) distinguish authentication from authorization in services; (2) expl
 
 Users log in through SSO whose tokens are signed (RSA or ECDSA); services authenticate each other with mutual TLS certificates; administrators use SSH keys; CI pipelines sign artefacts; devices hold certificates for enrolment. Authorization (roles, policies) is not threatened by quantum computers; the signatures behind authentication are.
 
-Section seven point one develops identity and access foundations with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section seven point one, the KLS platform team expects identity claims to carry owners and dates.
-
 ### 7.2 Chains and trust stores
 
 A certificate is trusted if it chains to a root in the verifier's trust store. Introducing a post-quantum root means updating every trust store first — operating systems, language runtimes, appliances, partner systems. Internal PKI is the best place to start post-quantum certificates because KLS controls both issuers and verifiers.
-
-Section seven point two develops identity and access foundations with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section seven point two, the KLS platform team expects identity claims to carry owners and dates.
 
 ### 7.3 Order of changes
 
 Start with items where forge-later risk is high and control is high: internal root and intermediates, code signing for long-lived artefacts. Leave short-lived tokens for later; their keys can rotate quickly once libraries support ML-DSA ([FIPS 204](https://doi.org/10.6028/NIST.FIPS.204)). Public web certificates follow public CA and browser support.
 
-Section seven point three develops identity and access foundations with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section seven point three, the KLS platform team expects identity claims to carry owners and dates.
-
 ### 7.4 Worked example
 
 KLS's identity inventory: SSO tokens RS256 (1-hour lifetime); service mTLS from internal CA (ECDSA P-256, 90-day leaves, 15-year root); SSH user keys Ed25519; release signing RSA-3072. Priority: internal root (long-lived, controlled), release signing (artefacts verified for years), then mTLS leaves, SSH and tokens.
-
-Section seven point four develops identity and access foundations with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section seven point four, the KLS platform team expects identity claims to carry owners and dates.
-
-Section seven point four treats where signatures authenticate chains as testable only when evidence and ticket IDs are recorded.
 
 ### 7.5 Practical activity
 
 Draw KLS's internal PKI with root, intermediates and leaf types, and list every trust store that must accept a new root.
 
-Section seven point five develops identity and access foundations with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section seven point five, the KLS platform team expects identity claims to carry owners and dates.
-
-Section seven point five treats where signatures authenticate chains as testable only when evidence and ticket IDs are recorded.
-
-For section seven point five, Kestrel Logistics Software will not accept identity work without a written trail.
-
 ### 7.6 Common errors and limits
-Section seven point six develops identity and access foundations with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section seven point six, the KLS platform team expects identity claims to carry owners and dates.
-
-Section seven point six treats where signatures authenticate chains as testable only when evidence and ticket IDs are recorded.
-
-For section seven point six, Kestrel Logistics Software will not accept identity work without a written trail.
-
 
 - Issuing post-quantum leaves before trust stores accept the root.
 - Treating authorization data as quantum-vulnerable.
@@ -608,8 +384,6 @@ For section seven point six, Kestrel Logistics Software will not accept identity
 ### 7.7 SSH host and user keys
 
 SSH illustrates the split between key exchange and identity. Hybrid key exchange in OpenSSH protects session confidentiality now, while host keys and user keys remain classical signatures. Rotating host keys is operationally cheap if clients use certificates or managed known-hosts files, and expensive if every user has pinned individual keys. Moving administrators to SSH certificates issued by a central authority is therefore a useful agility step even before any post-quantum host-key algorithm is deployed.
-
-Section seven point seven develops identity and access foundations with a Kestrel Logistics Software note the platform engineer can demo offline.
 
 ### Exercises
 
@@ -636,57 +410,23 @@ You will (1) draw service diagrams with trust boundaries; (2) annotate flows wit
 
 Traffic crosses boundaries — internet to edge, edge to service mesh, service to database, office to cloud. TLS is often terminated and re-established at each hop: CDN, load balancer, ingress, sidecar. Each termination is a separate negotiation with its own algorithm choice; a hybrid group at the CDN says nothing about the CDN-to-origin hop.
 
-Section eight point one develops security architecture basics with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section eight point one, the KLS platform team expects security claims to carry owners and dates.
-
 ### 8.2 Annotated diagrams
 
 Annotate each flow with protocol, key exchange, authentication, data lifetime and who controls each end. The annotated diagram is the implementer's map: flows with long-lived data, classical key exchange and an untrusted path are the first to change.
-
-Section eight point two develops security architecture basics with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section eight point two, the KLS platform team expects security claims to carry owners and dates.
-
-Section eight point two treats boundaries and termination annotated as testable only when evidence and ticket IDs are recorded.
 
 ### 8.3 Agility features
 
 Implementers build agility by: configuring algorithms in one place (central TLS profiles, ingress annotations, crypto policies); keeping algorithm identifiers in stored data; using libraries that support several algorithms; leaving room in fields and buffers for larger keys; and testing every configured algorithm in CI. NIST's [CSWP 39](https://doi.org/10.6028/NIST.CSWP.39-upd1) discusses these considerations.
 
-Section eight point three develops security architecture basics with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section eight point three, the KLS platform team expects security claims to carry owners and dates.
-
 ### 8.4 Worked example
 
 KLS's customer path: browser → CDN (hybrid) → origin load balancer (classical) → ingress (classical) → API pods (plaintext inside mesh with mTLS sidecars, ECDHE). The internet hop is protected; the CDN-to-origin hop crosses the provider's network and the internet and carries ten-year data. Priority: enable hybrid on the origin load balancer and ingress; then evaluate the mesh.
-
-Section eight point four develops security architecture basics with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section eight point four, the KLS platform team expects security claims to carry owners and dates.
 
 ### 8.5 Practical activity
 
 Draw and annotate the path for KLS's partner SFTP and office VPN flows; mark termination points.
 
-Section eight point five develops security architecture basics with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section eight point five, the KLS platform team expects security claims to carry owners and dates.
-
-Section eight point five treats boundaries and termination annotated as testable only when evidence and ticket IDs are recorded.
-
-For section eight point five, Kestrel Logistics Software will not accept security work without a written trail.
-
 ### 8.6 Common errors and limits
-Section eight point six develops security architecture basics with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section eight point six, the KLS platform team expects security claims to carry owners and dates.
-
-Section eight point six treats boundaries and termination annotated as testable only when evidence and ticket IDs are recorded.
-
-For section eight point six, Kestrel Logistics Software will not accept security work without a written trail.
-
 
 - Judging the whole path by the first hop.
 - Hard-coding cipher suites in many places.
@@ -694,8 +434,6 @@ For section eight point six, Kestrel Logistics Software will not accept security
 ### 8.7 Review checklist
 
 When reviewing a new service design, ask: which hops terminate TLS, and who configures each; which groups and signature algorithms each hop offers and prefers; where algorithm choices are configured; which stored data carries algorithm identifiers; and whether any field, buffer or message limit assumes classical sizes. Five questions asked at design time prevent most of the rework that later inventories uncover.
-
-Section eight point seven develops security architecture basics with a Kestrel Logistics Software note the platform engineer can demo offline.
 
 ### Exercises
 
@@ -722,61 +460,23 @@ You will (1) choose valid sources for each cryptographic fact; (2) state coverag
 
 The negotiated TLS group is visible in the ServerHello and server logs; in TLS 1.3 the certificate is encrypted, so certificate algorithms come from configuration or endpoint inspection. SSH key exchange appears in daemon logs at verbose levels. VPN negotiation appears in appliance logs. Match each fact to the source that can actually see it.
 
-Section nine point one develops evidence and measurement with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section nine point one, the KLS platform team expects evidence claims to carry owners and dates.
-
 ### 9.2 Coverage and denominators
 
 "80 % hybrid" needs a denominator (connections? services? tier-1 services?) and coverage (which sensors, which sites). Implementers should report: services with hybrid enabled (configuration), share of connections negotiating hybrid (logs), and share of services with no evidence.
-
-Section nine point two develops evidence and measurement with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section nine point two, the KLS platform team expects evidence claims to carry owners and dates.
-
-Section nine point two treats sources per fact coverage as testable only when evidence and ticket IDs are recorded.
 
 ### 9.3 Team metrics
 
 Useful metrics for implementers: share of tier-1 services offering and preferring hybrid; share of images built on approved base layers; time from approved change to deployment; number of classical-only listeners on internet-facing addresses; failed-handshake rate by cause.
 
-Section nine point three develops evidence and measurement with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section nine point three, the KLS platform team expects evidence claims to carry owners and dates.
-
-Section nine point three treats sources per fact coverage as testable only when evidence and ticket IDs are recorded.
-
 ### 9.4 Worked example
 
 KLS's first dashboard showed "hybrid connections: 71 %". Breakdown: browser traffic to CDN 96 % hybrid (CDN logs, full coverage); API SDK traffic 40 % (gateway logs); partner SFTP 0 % (daemon logs); office VPN 0 % (config); scanners unknown. The single figure mostly measured browsers.
-
-Section nine point four develops evidence and measurement with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section nine point four, the KLS platform team expects evidence claims to carry owners and dates.
-
-Section nine point four treats sources per fact coverage as testable only when evidence and ticket IDs are recorded.
 
 ### 9.5 Practical activity
 
 Design three metrics with definition, source, denominator, coverage and owner.
 
-Section nine point five develops evidence and measurement with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section nine point five, the KLS platform team expects evidence claims to carry owners and dates.
-
-Section nine point five treats sources per fact coverage as testable only when evidence and ticket IDs are recorded.
-
-For section nine point five, Kestrel Logistics Software will not accept evidence work without a written trail.
-
 ### 9.6 Common errors and limits
-Section nine point six develops evidence and measurement with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section nine point six, the KLS platform team expects evidence claims to carry owners and dates.
-
-Section nine point six treats sources per fact coverage as testable only when evidence and ticket IDs are recorded.
-
-For section nine point six, Kestrel Logistics Software will not accept evidence work without a written trail.
-
 
 - Single headline percentages.
 - Claiming certificate facts from passive TLS 1.3 captures.
@@ -812,17 +512,9 @@ You will (1) summarise NIST's post-quantum standards and their status; (2) expla
 
 NIST published [FIPS 203](https://doi.org/10.6028/NIST.FIPS.203) (ML-KEM), [FIPS 204](https://doi.org/10.6028/NIST.FIPS.204) (ML-DSA) and [FIPS 205](https://doi.org/10.6028/NIST.FIPS.205) (SLH-DSA) in August 2024; [SP 800-208](https://doi.org/10.6028/NIST.SP.800-208) covers LMS and XMSS; [SP 800-227](https://doi.org/10.6028/NIST.SP.800-227) gives KEM recommendations. NIST's draft [IR 8547](https://doi.org/10.6028/NIST.IR.8547.ipd) proposes deprecating quantum-vulnerable algorithms after 2030 and disallowing them after 2035. FN-DSA and an HQC-based KEM were in development.
 
-Section ten point one develops quantum and post-quantum security orientation with a Kestrel Logistics Software note the platform engineer can demo offline.
-
 ### 10.2 The idea underneath ML-KEM
 
 Learning With Errors (Regev, 2009) hides a secret in noisy linear equations.
-
-Section ten point two develops quantum and post-quantum security orientation with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section ten point two, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section ten point two treats standards the idea underneath as testable only when evidence and ticket IDs are recorded.
 
 ```python
 # Lab W (ch 10): a TOY Regev-style LWE encryption of one bit. Deliberately insecure parameters.
@@ -857,37 +549,15 @@ The toy uses 16 dimensions and is trivially breakable; ML-KEM uses structured mo
 
 ML-KEM is a KEM: KeyGen → (encapsulation key, decapsulation key); Encaps(ek) → (ciphertext, 32-byte shared secret); Decaps(dk, ct) → shared secret. ML-KEM-512/768/1024 target NIST categories 1/3/5, with encapsulation keys of 800/1,184/1,568 bytes and ciphertexts of 768/1,088/1,568 bytes. X25519MLKEM768 in TLS uses ML-KEM-768.
 
-Section ten point three develops quantum and post-quantum security orientation with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section ten point three, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section ten point three treats standards the idea underneath as testable only when evidence and ticket IDs are recorded.
-
 ### 10.4 Implementer rules
 
 Use vetted libraries and platform providers; never write your own. Keep libraries updated (KyberSlash showed timing leaks in some implementations; Bernstein et al., 2024). Prefer hybrids during transition. Check lengths and handle errors without leaking detail. Record algorithm and library versions in the inventory.
-
-Section ten point four develops quantum and post-quantum security orientation with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section ten point four, the KLS platform team expects quantum claims to carry owners and dates.
 
 ### 10.5 Worked example
 
 A KLS developer proposes a home-grown ML-KEM in Python "for the scanners". Response: rejected — the standard library lacks ML-KEM, toy code is unsafe, and the vendor's image or a vetted library is the only acceptable route; meanwhile the scanners' data flows are minimised.
 
-Section ten point five develops quantum and post-quantum security orientation with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section ten point five, the KLS platform team expects quantum claims to carry owners and dates.
-
 ### 10.6 Common errors and limits
-Section ten point six develops quantum and post-quantum security orientation with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section ten point six, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section ten point six treats standards the idea underneath as testable only when evidence and ticket IDs are recorded.
-
-For section ten point six, Kestrel Logistics Software will not accept quantum work without a written trail.
-
 
 - Treating the toy lab as usable.
 - Using ML-KEM as if it encrypted arbitrary messages.
@@ -895,8 +565,6 @@ For section ten point six, Kestrel Logistics Software will not accept quantum wo
 ### 10.7 Signatures in one paragraph
 
 ML-DSA (FIPS 204) is the general-purpose lattice signature, with ML-DSA-44/65/87 signatures of 2,420/3,309/4,627 bytes. SLH-DSA (FIPS 205) relies only on hash functions; its public keys are tiny but its signatures run from 7,856 to 49,856 bytes. LMS and XMSS (SP 800-208) are compact hash-based signatures that require the signer to track state and never reuse an index. Implementers will meet ML-DSA in certificates and code signing first, and hash-based schemes in firmware signing.
-
-Section ten point seven develops quantum and post-quantum security orientation with a Kestrel Logistics Software note the platform engineer can demo offline.
 
 ### Exercises
 
@@ -923,17 +591,9 @@ You will (1) build an asset register scoped for cryptographic migration; (2) ass
 
 Start from the services customers and staff use, not from IP ranges. For each service list its endpoints, the data classes it handles, the cryptographic functions it performs, and the teams and vendors who control them. Include things that are easy to forget: CI/CD signing, backup transfers, monitoring agents, partner integrations, warehouse devices and administrative access paths.
 
-Section eleven point one develops quantum and post-quantum security assets with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section eleven point one, the KLS platform team expects quantum claims to carry owners and dates.
-
 ### 11.2 Tiers
 
 Tier 1: flows carrying data whose confidentiality must last beyond plausible quantum timelines, and trust anchors whose signatures must remain unforgeable for many years. Tier 2: shorter-lived data or trust that is still important. Tier 3: short-lived data and easily rotated credentials. Tiers drive order of work, monitoring depth and evidence requirements.
-
-Section eleven point two develops quantum and post-quantum security assets with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section eleven point two, the KLS platform team expects quantum claims to carry owners and dates.
 
 ### 11.3 Mosca's inequality for implementers
 
@@ -943,41 +603,15 @@ Mosca (2018): if data must stay secure for *x* years, migration takes *y* years,
 
 Each asset needs a named owner and a list of upstream dependencies: the CDN, the cloud load balancer, the managed database, the scanner vendor. A service is only as migrated as its slowest controlling party.
 
-Section eleven point four develops quantum and post-quantum security assets with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section eleven point four, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section eleven point four treats scoping the register tiers as testable only when evidence and ticket IDs are recorded.
-
 ### 11.5 Worked example
 
 KLS tiers (synthetic): Tier 1 — partner SFTP (10-year customs data, ECDH), CDN-to-origin path (10-year shipment data), internal root CA (15-year validity), release signing. Tier 2 — billing DB replication (7-year data), office VPN. Tier 3 — telemetry, SSO tokens. Estimated *y*: SFTP 0.5 years (OpenSSH upgrade and partner coordination), CDN-to-origin 0.25 years (load-balancer configuration), internal CA 2 years, scanners 4 years (vendor refresh).
-
-Section eleven point five develops quantum and post-quantum security assets with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section eleven point five, the KLS platform team expects quantum claims to carry owners and dates.
 
 ### 11.6 Practical activity
 
 Create a tiered register of ten KLS assets with owner, data lifetime, trust lifetime, change mechanism and estimated *y*.
 
-Section eleven point six develops quantum and post-quantum security assets with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section eleven point six, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section eleven point six treats scoping the register tiers as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point six, Kestrel Logistics Software will not accept quantum work without a written trail.
-
 ### 11.7 Common errors and limits
-Section eleven point seven develops quantum and post-quantum security assets with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section eleven point seven, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section eleven point seven treats scoping the register tiers as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point seven, Kestrel Logistics Software will not accept quantum work without a written trail.
-
 
 - Starting from network scans rather than services.
 - Tiers without written criteria.
@@ -1008,19 +642,9 @@ You will (1) trace data flows end to end across termination points; (2) build a 
 
 A flow is protected only as strongly as its weakest segment. Trace shipment data from a customer's system through the CDN, origin load balancer, ingress, service mesh, message queue, database replication and backup copy. At each segment record protocol, key exchange, authentication, data lifetime and controller.
 
-Section twelve point one develops quantum and post-quantum security data with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twelve point one, the KLS platform team expects quantum claims to carry owners and dates.
-
 ### 12.2 The CBOM
 
 A CBOM lists, per asset and function, algorithm, parameters, implementation and evidence source. Build it by merging configuration exports, log summaries, image scans and vendor statements.
-
-Section twelve point two develops quantum and post-quantum security data with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twelve point two, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section twelve point two treats tracing flows the cbom as testable only when evidence and ticket IDs are recorded.
 
 ### 12.3 Practical activity — Lab I
 
@@ -1042,12 +666,6 @@ print("hybrid key exchange present on:", [r[0] for r in records if "MLKEM" in r[
 
 Expected output:
 
-Section twelve point three develops quantum and post-quantum security data with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twelve point three, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section twelve point three treats tracing flows the cbom as testable only when evidence and ticket IDs are recorded.
-
 ```text
 assets 6, unknown 1 (17%)
 quantum-vulnerable uses 5: api-gateway/signature, warehouse-scanner/key-exchange, warehouse-scanner/signature, billing-db/key-exchange, office-vpn/key-exchange
@@ -1060,27 +678,11 @@ The forklift telemetry unit has no evidence at all; until the vendor answers, it
 
 KLS controls its load balancers, ingress and code; the CDN provider controls the edge; the cloud provider controls managed database replication; partners control their SFTP clients. Write controller next to every segment and open a ticket or vendor request for each segment KLS cannot change.
 
-Section twelve point four develops quantum and post-quantum security data with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twelve point four, the KLS platform team expects quantum claims to carry owners and dates.
-
 ### 12.5 Worked example
 
 Tracing a shipment record: customer API client → CDN edge (hybrid, CDN-controlled) → origin LB (classical, KLS) → ingress (classical, KLS) → API pod → Kafka (TLS classical, KLS) → managed Postgres replication (provider, algorithm undocumented) → nightly backup to object storage over HTTPS (provider SDK in KLS job, classical). Seven segments, four KLS can change, one unknown.
 
-Section twelve point five develops quantum and post-quantum security data with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twelve point five, the KLS platform team expects quantum claims to carry owners and dates.
-
 ### 12.6 Common errors and limits
-Section twelve point six develops quantum and post-quantum security data with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twelve point six, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section twelve point six treats tracing flows the cbom as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point six, Kestrel Logistics Software will not accept quantum work without a written trail.
-
 
 - Stopping the trace at the edge.
 - Treating managed services as "secure by default" without evidence.
@@ -1114,59 +716,23 @@ You will (1) write implementable risk scenarios for quantum and migration risks;
 
 Quantum risk is what happens if nothing changes: recorded traffic decrypted, signatures forged. Migration risk is what can go wrong while changing: outages from large handshakes, silent fallback to classical, certificate validation failures, performance regressions, key-management mistakes. Implementers own both and must not trade one blindly for the other.
 
-Section thirteen point one develops quantum and post-quantum security risk with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section thirteen point one, the KLS platform team expects quantum claims to carry owners and dates.
-
 ### 13.2 Scenario format
 
 Each scenario names the asset, the event, the cause, the effect, how it would be detected, likelihood and impact on simple 1–5 scales, the control and the test that shows the control works.
-
-Section thirteen point two develops quantum and post-quantum security risk with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section thirteen point two, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section thirteen point two treats two kinds of risk as testable only when evidence and ticket IDs are recorded.
 
 ### 13.3 Silent fallback
 
 The most dangerous migration risk is invisible: a configuration change, image rollback or new load balancer reverts to classical-only negotiation, and nothing breaks. Without monitoring of negotiated groups, it may persist for months. Every hybrid deployment needs an alert on fallback share.
 
-Section thirteen point three develops quantum and post-quantum security risk with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section thirteen point three, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section thirteen point three treats two kinds of risk as testable only when evidence and ticket IDs are recorded.
-
 ### 13.4 Worked example
 
 Scenario: "Origin LB rollback restores classical-only TLS profile." Cause: emergency rollback to an old configuration. Effect: tier-1 shipment data again HNDL-exposed. Detection: hybrid-share alert from LB logs. Likelihood 3, impact 4. Control: TLS profile versioned separately from application config; rollback runbooks restore application only. Test: monthly drill rolling back the application and confirming the hybrid share stays above 95 %.
-
-Section thirteen point four develops quantum and post-quantum security risk with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section thirteen point four, the KLS platform team expects quantum claims to carry owners and dates.
 
 ### 13.5 Practical activity
 
 Write five scenarios for KLS — two quantum, three migration — and rank them.
 
-Section thirteen point five develops quantum and post-quantum security risk with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section thirteen point five, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section thirteen point five treats two kinds of risk as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point five, Kestrel Logistics Software will not accept quantum work without a written trail.
-
 ### 13.6 Common errors and limits
-Section thirteen point six develops quantum and post-quantum security risk with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section thirteen point six, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section thirteen point six treats two kinds of risk as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point six, Kestrel Logistics Software will not accept quantum work without a written trail.
-
 
 - Ignoring migration-induced risk.
 - Scenarios without detection.
@@ -1202,10 +768,6 @@ You will (1) explain how hybrid key exchange combines secrets; (2) run a toy com
 
 In a hybrid, both components produce shared secrets; a key-derivation step combines them with context so the result is secure if either component is. [SP 800-227](https://doi.org/10.6028/NIST.SP.800-227) discusses KEM combination; TLS concatenates the secrets and feeds them into its HKDF-based key schedule.
 
-Section fourteen point one develops quantum and post-quantum security methods with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section fourteen point one, the KLS platform team expects quantum claims to carry owners and dates.
-
 ### 14.2 Practical activity — Lab C
 
 ```python
@@ -1224,16 +786,6 @@ print("context changed       ", combine(pq, trad, b"other-transcript"))
 
 Expected output:
 
-Section fourteen point two develops quantum and post-quantum security methods with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section fourteen point two, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section fourteen point two treats combining secrets practical activity as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point two, Kestrel Logistics Software will not accept quantum work without a written trail.
-
-Section fourteen point two fails closed if quantum evidence is missing rather than guessing.
-
 ```text
 baseline               d48e982e8c06ca60
 PQ secret changed      d4c36ea2d90b2e9c
@@ -1245,33 +797,15 @@ context changed        af06eca8abcd45a9
 
 [RFC 10024](https://www.rfc-editor.org/rfc/rfc10024.html) defines the group: the client sends an ML-KEM-768 encapsulation key followed by an X25519 public key (1,216 bytes); the server returns an ML-KEM ciphertext followed by its X25519 share (1,120 bytes); the shared secret is the ML-KEM secret concatenated with the X25519 secret. If a client sends only classical shares, a server that prefers hybrid may answer with HelloRetryRequest asking for the hybrid share, adding a round trip; tune client key-share predictions accordingly.
 
-Section fourteen point three develops quantum and post-quantum security methods with a Kestrel Logistics Software note the platform engineer can demo offline.
-
 ### 14.4 Configuring a lab server
 
 In OpenSSL-based servers the group list is configurable, for example `Groups = X25519MLKEM768:X25519:secp256r1` in an OpenSSL configuration file or an `ssl_ecdh_curve`-style directive in a web server. Order matters: the server's preference decides the outcome when the client offers several. OpenSSL 3.5's default keyshares include X25519MLKEM768 ([OpenSSL 3.5 NEWS](https://github.com/openssl/openssl/blob/openssl-3.5/NEWS.md)). Check your product's documentation for exact syntax.
-
-Section fourteen point four develops quantum and post-quantum security methods with a Kestrel Logistics Software note the platform engineer can demo offline.
 
 ### 14.5 Worked example
 
 KLS staging ingress: groups set to `X25519MLKEM768:X25519`. Test client A (OpenSSL 3.5) negotiates the hybrid; test client B (older library) negotiates X25519. A misordered list `X25519:X25519MLKEM768` caused both to choose X25519 — offered, never selected.
 
-Section fourteen point five develops quantum and post-quantum security methods with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section fourteen point five, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section fourteen point five treats combining secrets practical activity as testable only when evidence and ticket IDs are recorded.
-
 ### 14.6 Common errors and limits
-Section fourteen point six develops quantum and post-quantum security methods with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section fourteen point six, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section fourteen point six treats combining secrets practical activity as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point six, Kestrel Logistics Software will not accept quantum work without a written trail.
-
 
 - Hybrid listed but not preferred.
 - Forgetting HelloRetryRequest latency.
@@ -1305,12 +839,6 @@ You will (1) run known-answer and negative tests; (2) build a reproducible lab e
 
 Build an isolated lab: two VMs or containers (server and client) with a current TLS library supporting ML-KEM, a capture point on the lab network, and scripts to run handshakes and record outcomes. No production data; no connection to production networks.
 
-Section fifteen point one develops quantum and post-quantum security guided with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section fifteen point one, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section fifteen point one treats lab environment practical activity as testable only when evidence and ticket IDs are recorded.
-
 ### 15.2 Practical activity — Lab V
 
 ```python
@@ -1336,12 +864,6 @@ for param, n in [("ML-KEM-768", 1184), ("ML-KEM-768", 1183), ("ML-KEM-512", 1184
 
 Expected output:
 
-Section fifteen point two develops quantum and post-quantum security guided with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section fifteen point two, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section fifteen point two treats lab environment practical activity as testable only when evidence and ticket IDs are recorded.
-
 ```text
 KAT sha3_256      PASS
 KAT shake_128/32  PASS
@@ -1356,39 +878,15 @@ Known-answer tests confirm primitives match references; negative tests confirm m
 
 Record versions, configuration hashes, commands, outputs and interpretations. Store them in version control next to scripts. A lab result you cannot reproduce is an anecdote.
 
-Section fifteen point three develops quantum and post-quantum security guided with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section fifteen point three, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section fifteen point three treats lab environment practical activity as testable only when evidence and ticket IDs are recorded.
-
 ### 15.4 Negative controls
 
 Before trusting a check, show it can fail: configure the server without the hybrid group and confirm your script reports classical; flip a byte in a KAT and confirm FAIL.
-
-Section fifteen point four develops quantum and post-quantum security guided with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section fifteen point four, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section fifteen point four treats lab environment practical activity as testable only when evidence and ticket IDs are recorded.
 
 ### 15.5 Worked example
 
 KLS lab record "LAB-015": server OpenSSL 3.5.x, client matrix of four libraries, script `handshake.sh` printing negotiated group; results: three hybrid, one classical (older Java client, expected). Negative control: server without hybrid → script printed classical for all four. Interpretation: configuration correct; Java client upgrade required for hybrid.
 
-Section fifteen point five develops quantum and post-quantum security guided with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section fifteen point five, the KLS platform team expects quantum claims to carry owners and dates.
-
 ### 15.6 Common errors and limits
-Section fifteen point six develops quantum and post-quantum security guided with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section fifteen point six, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section fifteen point six treats lab environment practical activity as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point six, Kestrel Logistics Software will not accept quantum work without a written trail.
-
 
 - Labs connected to production.
 - Results without versions.
@@ -1424,10 +922,6 @@ You will (1) explain ML-DSA, SLH-DSA, LMS and XMSS from an implementer's view; (
 
 ML-DSA ([FIPS 204](https://doi.org/10.6028/NIST.FIPS.204)): fast, moderate sizes (44/65/87: public keys 1,312/1,952/2,592 bytes; signatures 2,420/3,309/4,627 bytes). SLH-DSA ([FIPS 205](https://doi.org/10.6028/NIST.FIPS.205)): hash-only assumptions, 32–64-byte public keys, 7,856–49,856-byte signatures, slower signing. LMS/XMSS ([SP 800-208](https://doi.org/10.6028/NIST.SP.800-208)): compact, stateful, to be used in hardware modules that manage state.
 
-Section sixteen point one develops quantum and post-quantum security methods with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section sixteen point one, the KLS platform team expects quantum claims to carry owners and dates.
-
 ### 16.2 Practical activity — Lab B
 
 ```python
@@ -1445,16 +939,6 @@ for a in algs:
 
 Expected output:
 
-Section sixteen point two develops quantum and post-quantum security methods with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section sixteen point two, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section sixteen point two treats signature options practical activity as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point two, Kestrel Logistics Software will not accept quantum work without a written trail.
-
-Section sixteen point two fails closed if quantum evidence is missing rather than guessing.
-
 ```text
 ECDSA P-256          ~  1290 bytes of certificates and signatures
 RSA-2048             ~  2620 bytes of certificates and signatures
@@ -1467,35 +951,15 @@ SLH-DSA-SHA2-128s    ~ 40144 bytes of certificates and signatures
 
 For the internal CA: confirm HSM support for ML-DSA key generation and signing; create an ML-DSA root and intermediate in a lab; issue test leaves; test every relying party (ingress, mesh sidecars, Java services, monitoring agents) for chain validation; then distribute the root to trust stores in production before issuing production leaves. Keep the classical hierarchy in parallel.
 
-Section sixteen point three develops quantum and post-quantum security methods with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section sixteen point three, the KLS platform team expects quantum claims to carry owners and dates.
-
 ### 16.4 Code and firmware signing
 
 For release artefacts verified for years, ML-DSA is the practical choice once package tooling supports it; consider dual signatures (classical plus ML-DSA) during transition so old verifiers still work. For firmware signed rarely, LMS in an HSM or SLH-DSA is attractive because verification is simple and assumptions conservative.
-
-Section sixteen point four develops quantum and post-quantum security methods with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section sixteen point four, the KLS platform team expects quantum claims to carry owners and dates.
 
 ### 16.5 Worked example
 
 KLS's mesh uses 90-day ECDSA leaves. Lab B suggests ML-DSA-44 chains add ~14 kB per handshake. Inside a data centre that cost is acceptable; on scanner links over cellular it may not be. Plan: ML-DSA-44 for mesh mTLS after lab validation; scanners stay classical until vendor refresh, documented as residual risk.
 
-Section sixteen point five develops quantum and post-quantum security methods with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section sixteen point five, the KLS platform team expects quantum claims to carry owners and dates.
-
 ### 16.6 Common errors and limits
-Section sixteen point six develops quantum and post-quantum security methods with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section sixteen point six, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section sixteen point six treats signature options practical activity as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point six, Kestrel Logistics Software will not accept quantum work without a written trail.
-
 
 - Using LMS/XMSS in software without protected state.
 - Issuing PQ leaves before trust stores accept the root.
@@ -1529,10 +993,6 @@ You will (1) use configuration audits to detect classical-only and misordered se
 
 *Configuration auditors* read server configuration and report offered groups and preference. *Active TLS/SSH clients* in a lab or authorized scope report what a server negotiates. *Log parsers* summarise negotiated algorithms from production logs. *Image and binary analysers* find library versions. *Certificate inventories* list signature algorithms and validity. Each sees part of the picture.
 
-Section seventeen point one develops quantum and post-quantum security tooling with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section seventeen point one, the KLS platform team expects quantum claims to carry owners and dates.
-
 ### 17.2 Practical activity — Lab T
 
 ```python
@@ -1553,14 +1013,6 @@ for svc, groups in configs.items():
 
 Expected output:
 
-Section seventeen point two develops quantum and post-quantum security tooling with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section seventeen point two, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section seventeen point two treats tool classes practical activity as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point two, Kestrel Logistics Software will not accept quantum work without a written trail.
-
 ```text
 api-gateway       OK (hybrid preferred)
 customer-portal   WARN hybrid offered but not preferred
@@ -1574,41 +1026,15 @@ The customer portal offers hybrid but prefers X25519 — a quiet misconfiguratio
 
 Ask what a tool actually observes, from where, with which client library. An active scanner using an old library cannot negotiate hybrid and will report every server as classical. Validate tools against a lab server with known configuration before trusting them.
 
-Section seventeen point three develops quantum and post-quantum security tooling with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section seventeen point three, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section seventeen point three treats tool classes practical activity as testable only when evidence and ticket IDs are recorded.
-
 ### 17.4 Authorized use
 
 Active scanning of services requires authorization even inside your organization; scope it to listed hosts and agreed windows. Never scan partners or third parties without written permission.
-
-Section seventeen point four develops quantum and post-quantum security tooling with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section seventeen point four, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section seventeen point four treats tool classes practical activity as testable only when evidence and ticket IDs are recorded.
 
 ### 17.5 Worked example
 
 KLS's first active scan reported "0 % hybrid" across the estate. The scanner's bundled OpenSSL predated ML-KEM support. After upgrading the scanner and validating it against the lab server, the scan showed the API gateway and CDN-fronted services negotiating hybrid, consistent with logs.
 
-Section seventeen point five develops quantum and post-quantum security tooling with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section seventeen point five, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section seventeen point five treats tool classes practical activity as testable only when evidence and ticket IDs are recorded.
-
 ### 17.6 Common errors and limits
-Section seventeen point six develops quantum and post-quantum security tooling with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section seventeen point six, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section seventeen point six treats tool classes practical activity as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point six, Kestrel Logistics Software will not accept quantum work without a written trail.
-
 
 - Trusting tool output without validation.
 - Checking presence rather than preference.
@@ -1644,71 +1070,27 @@ You will (1) implement hybrid key exchange controls for TLS, SSH and IPsec; (2) 
 
 TLS: enable X25519MLKEM768 and prefer it on internet-facing and tier-1 listeners. SSH: place `mlkem768x25519-sha256` first in server `KexAlgorithms` where OpenSSH versions support it. IPsec: configure an additional ML-KEM key exchange per RFC 9370 where appliances support it, or RFC 8784 PSKs as an interim measure on fixed site-to-site links.
 
-Section eighteen point one develops quantum and post-quantum security controls with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section eighteen point one, the KLS platform team expects quantum claims to carry owners and dates.
-
 ### 18.2 Data and key controls
 
 Send less long-lived data across untrusted links; encrypt sensitive fields at the application layer with keys that never cross the network under classical key exchange; shorten retention where contracts permit. Keep keys in HSM or KMS; record their algorithms in the inventory.
-
-Section eighteen point two develops quantum and post-quantum security controls with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section eighteen point two, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section eighteen point two treats key-exchange controls data and as testable only when evidence and ticket IDs are recorded.
 
 ### 18.3 Central profiles
 
 Define named crypto profiles (for example `kls-modern`: TLS 1.3 only, groups `X25519MLKEM768:X25519`, ECDSA certificates) and apply them by reference in ingress, load balancers and service templates. Changing the profile changes all users after testing.
 
-Section eighteen point three develops quantum and post-quantum security controls with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section eighteen point three, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section eighteen point three treats key-exchange controls data and as testable only when evidence and ticket IDs are recorded.
-
 ### 18.4 Residual risk
 
 For each service record what remains classical (usually authentication), what is unknown, and what depends on third parties, with owner and review date.
-
-Section eighteen point four develops quantum and post-quantum security controls with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section eighteen point four, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section eighteen point four treats key-exchange controls data and as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point four, Kestrel Logistics Software will not accept quantum work without a written trail.
 
 ### 18.5 Worked example
 
 Partner SFTP: OpenSSH upgraded; `KexAlgorithms mlkem768x25519-sha256,sntrup761x25519-sha512@openssh.com,curve25519-sha256`; partners using older clients still negotiate curve25519 and are notified; sessions using the hybrid are monitored. Residual: Ed25519 host key (forge-later), partners on old clients (HNDL until they upgrade), owner Platform Team, review quarterly.
 
-Section eighteen point five develops quantum and post-quantum security controls with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section eighteen point five, the KLS platform team expects quantum claims to carry owners and dates.
-
 ### 18.6 Practical activity
 
 Write a `kls-modern` profile for one product you use and apply it in a lab.
 
-Section eighteen point six develops quantum and post-quantum security controls with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section eighteen point six, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section eighteen point six treats key-exchange controls data and as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point six, Kestrel Logistics Software will not accept quantum work without a written trail.
-
 ### 18.7 Common errors and limits
-Section eighteen point seven develops quantum and post-quantum security controls with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section eighteen point seven, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section eighteen point seven treats key-exchange controls data and as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point seven, Kestrel Logistics Software will not accept quantum work without a written trail.
-
 
 - Per-service hand configuration.
 - Controls without residual-risk notes.
@@ -1742,19 +1124,9 @@ You will (1) log negotiated algorithms in TLS, SSH and VPN services; (2) build d
 
 TLS: negotiated group, protocol version, cipher suite, certificate signature algorithm (server-side), client library hints if available. SSH: KEX algorithm and host-key algorithm. VPN: key-exchange methods per tunnel. Many servers can log these with configuration changes; add fields to access logs rather than enabling verbose debug logs in production.
 
-Section nineteen point one develops quantum and post-quantum security monitoring with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section nineteen point one, the KLS platform team expects quantum claims to carry owners and dates.
-
 ### 19.2 Dashboards and alerts
 
 Per service and site: hybrid share, fallback share, handshake failure rate by cause. Alerts: hybrid share drops by more than five points in an hour (rollback or misconfiguration); failure rate exceeds budget during rollout.
-
-Section nineteen point two develops quantum and post-quantum security monitoring with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section nineteen point two, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section nineteen point two treats what to log dashboards as testable only when evidence and ticket IDs are recorded.
 
 ### 19.3 Practical activity — Lab K
 
@@ -1772,16 +1144,6 @@ for stage, k, n in [("1% canary", 3, 5000), ("10% canary", 28, 50000), ("10% can
 
 Expected output:
 
-Section nineteen point three develops quantum and post-quantum security monitoring with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section nineteen point three, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section nineteen point three treats what to log dashboards as testable only when evidence and ticket IDs are recorded.
-
-For section nineteen point three, Kestrel Logistics Software will not accept quantum work without a written trail.
-
-Section nineteen point three fails closed if quantum evidence is missing rather than guessing.
-
 ```text
 1% canary                3/5000  upper95=0.00176  HOLD
 10% canary               28/50000  upper95=0.00081  PROMOTE
@@ -1792,29 +1154,11 @@ Section nineteen point three fails closed if quantum evidence is missing rather 
 
 Logs may arrive minutes or days late; partner-side changes are visible only when partners connect. Annotate dashboards with coverage and lag so that decisions use the right time window.
 
-Section nineteen point four develops quantum and post-quantum security monitoring with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section nineteen point four, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section nineteen point four treats what to log dashboards as testable only when evidence and ticket IDs are recorded.
-
 ### 19.5 Worked example
 
 KLS adds `$ssl_curve` (or the product's equivalent) to ingress logs and builds a dashboard. A week later the alert fires: hybrid share on the customer portal dropped from 93 % to 4 % after a release. Cause: the release restored an old ingress annotation. Rollback of the annotation restored the share within an hour.
 
-Section nineteen point five develops quantum and post-quantum security monitoring with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section nineteen point five, the KLS platform team expects quantum claims to carry owners and dates.
-
 ### 19.6 Common errors and limits
-Section nineteen point six develops quantum and post-quantum security monitoring with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section nineteen point six, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section nineteen point six treats what to log dashboards as testable only when evidence and ticket IDs are recorded.
-
-For section nineteen point six, Kestrel Logistics Software will not accept quantum work without a written trail.
-
 
 - Debug logging in production.
 - Monitoring failures but not fallback.
@@ -1850,12 +1194,6 @@ You will (1) apply a systematic troubleshooting method to handshake failures; (2
 
 Reproduce, isolate, hypothesise, test, fix, verify, document. Reproduce in the lab with the same client and path; isolate by removing hops; form a hypothesis tied to evidence; change one thing; verify with negotiation logs; document the cause and fix.
 
-Section twenty point one develops quantum and post-quantum security troubleshooting with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty point one, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section twenty point one treats method practical activity lab as testable only when evidence and ticket IDs are recorded.
-
 ### 20.2 Practical activity — Lab H
 
 ```python
@@ -1880,14 +1218,6 @@ for c, n in causes.most_common(): print(f"{n}  {c}")
 
 Expected output:
 
-Section twenty point two develops quantum and post-quantum security troubleshooting with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty point two, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section twenty point two treats method practical activity lab as testable only when evidence and ticket IDs are recorded.
-
-For section twenty point two, Kestrel Logistics Software will not accept quantum work without a written trail.
-
 ```text
 3  large ClientHello dropped (proxy-b)
 1  client/server group mismatch
@@ -1901,37 +1231,15 @@ Three failures cluster on one proxy with large ClientHellos; that pattern points
 
 *Large ClientHello dropped* by old firewalls or proxies: upgrade, bypass or adjust. *No shared group*: client and server lists do not overlap (e.g. a server configured hybrid-only and a classical-only client). *Certificate verification failure*: client cannot verify ML-DSA or lacks the new root. *HelloRetryRequest loops or latency*: client key-share prediction mismatches. *Performance*: CPU spikes on constrained devices.
 
-Section twenty point three develops quantum and post-quantum security troubleshooting with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty point three, the KLS platform team expects quantum claims to carry owners and dates.
-
 ### 20.4 Documenting
 
 Each incident record states symptoms, evidence, cause, fix, verification and residual issues. Patterns across incidents inform vendor requests and rollout plans.
-
-Section twenty point four develops quantum and post-quantum security troubleshooting with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty point four, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section twenty point four treats method practical activity lab as testable only when evidence and ticket IDs are recorded.
-
-For section twenty point four, Kestrel Logistics Software will not accept quantum work without a written trail.
 
 ### 20.5 Worked example
 
 KLS ticket: "Warehouse office cannot reach portal since Tuesday." Evidence: timeouts only through proxy-b; ClientHello 1,530 bytes; direct path works. Hypothesis: proxy-b drops second segment. Test: lab replica of proxy-b firmware reproduces. Fix: proxy firmware update; interim: portal bypass rule for that office. Verified: hybrid negotiations from office resume. Residual: two other offices with the same proxy model scheduled for update.
 
-Section twenty point five develops quantum and post-quantum security troubleshooting with a Kestrel Logistics Software note the platform engineer can demo offline.
-
 ### 20.6 Common errors and limits
-Section twenty point six develops quantum and post-quantum security troubleshooting with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty point six, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section twenty point six treats method practical activity lab as testable only when evidence and ticket IDs are recorded.
-
-For section twenty point six, Kestrel Logistics Software will not accept quantum work without a written trail.
-
 
 - Disabling hybrid globally to fix one path.
 - Changing several things at once.
@@ -1939,8 +1247,6 @@ For section twenty point six, Kestrel Logistics Software will not accept quantum
 ### 20.7 Escalating to vendors
 
 When the cause lies in a product you do not control, escalate with evidence: product and firmware version, a minimal reproduction in the lab, captures from lab traffic only, and the expected behaviour with a reference to the relevant standard (for example RFC 8446 on ClientHello handling, or RFC 10024 for the hybrid group). Precise reports get fixed faster, and they become part of the residual-risk record until the fix ships.
-
-Section twenty point seven develops quantum and post-quantum security troubleshooting with a Kestrel Logistics Software note the platform engineer can demo offline.
 
 ### Exercises
 
@@ -1967,63 +1273,31 @@ You will (1) integrate post-quantum settings across CDN, load balancer, ingress,
 
 Integration means every hop agrees. At the CDN, enable hybrid key exchange to clients and to origin where the provider supports it. At the origin load balancer and ingress, apply the central profile. In the service mesh, upgrade sidecar proxies and control-plane certificates; mesh mTLS is internal but may cross shared networks between availability zones. In applications, upgrade SDKs that make outbound calls to partners and cloud APIs.
 
-Section twenty-one point one develops quantum and post-quantum security service with a Kestrel Logistics Software note the platform engineer can demo offline.
-
 ### 21.2 Managed services
 
 Managed databases, queues and object storage negotiate TLS with libraries the provider controls. Ask providers which groups their endpoints offer, whether hybrid is available, and how to require it. Record answers as vendor evidence and verify from client-side logs where possible. Some providers expose post-quantum options per endpoint or region; others publish roadmaps only.
-
-Section twenty-one point two develops quantum and post-quantum security service with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-one point two, the KLS platform team expects quantum claims to carry owners and dates.
 
 ### 21.3 Partners and customers
 
 Partners integrate through SFTP, APIs and VPNs. Publish a compatibility notice: what KLS now offers, what KLS will require and when, and a test endpoint. Keep classical fallback during a published transition window; set an end date aligned with policy and contracts, and track partner adoption.
 
-Section twenty-one point three develops quantum and post-quantum security service with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-one point three, the KLS platform team expects quantum claims to carry owners and dates.
-
 ### 21.4 Compatibility during transition
 
 Offer hybrid and classical, prefer hybrid, monitor fallback, and remove classical only when fallback share is below an agreed threshold for an agreed period and exceptions are documented. For certificates, run dual chains or dual endpoints only where products support them cleanly; otherwise keep classical certificates until relying parties can verify ML-DSA.
-
-Section twenty-one point four develops quantum and post-quantum security service with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-one point four, the KLS platform team expects quantum claims to carry owners and dates.
 
 ### 21.5 Worked example
 
 KLS integration plan for the customer API: CDN hybrid to clients (done) and to origin (provider supports it from Q1; enable and verify in origin logs); origin LB and ingress `kls-modern` profile; mesh sidecars upgraded in the next platform release; outbound SDK calls to the payment provider remain classical until the provider supports hybrid (vendor ticket). Partner notice published with a staging endpoint and a twelve-month window before classical-only partners must upgrade.
 
-Section twenty-one point five develops quantum and post-quantum security service with a Kestrel Logistics Software note the platform engineer can demo offline.
-
 ### 21.6 Practical activity
 
 Write an integration checklist for one KLS flow covering every hop, the owner, evidence of completion and the external dependencies.
-
-Section twenty-one point six develops quantum and post-quantum security service with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-one point six, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section twenty-one point six treats layer by layer managed as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-one point six, Kestrel Logistics Software will not accept quantum work without a written trail.
 
 ### 21.7 Integration testing
 
 Integration tests should exercise the whole path, not each hop alone: a synthetic client in each customer region calls the API through the CDN and records the negotiated group at the edge and, via origin logs, at the origin. Run the test after every change to any hop. When the test fails at one hop, the per-hop evidence tells you where to look. This end-to-end check is what lets the team claim that a flow, rather than a component, is migrated.
 
 ### 21.8 Common errors and limits
-Section twenty-one point eight develops quantum and post-quantum security service with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-one point eight, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section twenty-one point eight treats layer by layer managed as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-one point eight, Kestrel Logistics Software will not accept quantum work without a written trail.
-
 
 - Migrating hops independently with no end-to-end check.
 - Removing classical support before partners are ready.
@@ -2054,19 +1328,9 @@ You will (1) automate inventory, configuration audits and negotiation checks in 
 
 Pipelines already build images and deploy configuration; add steps that extract library versions from images, compare TLS profiles with the approved profile, and update the CBOM. A pull request that changes an ingress profile should show its cryptographic diff, just as it shows a code diff.
 
-Section twenty-two point one develops quantum and post-quantum security automation with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-two point one, the KLS platform team expects quantum claims to carry owners and dates.
-
 ### 22.2 Policy-driven selection
 
 Applications that sign or encrypt data should look up algorithms from configuration and record identifiers with data, so that migration is a policy change.
-
-Section twenty-two point two develops quantum and post-quantum security automation with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-two point two, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section twenty-two point two treats inventory and audits in as testable only when evidence and ticket IDs are recorded.
 
 ### 22.3 Practical activity — Lab A
 
@@ -2093,16 +1357,6 @@ print("old tag after retirement:", check(k, m, a1, t1))
 
 Expected output:
 
-Section twenty-two point three develops quantum and post-quantum security automation with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-two point three, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section twenty-two point three treats inventory and audits in as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-two point three, Kestrel Logistics Software will not accept quantum work without a written trail.
-
-Section twenty-two point three fails closed if quantum evidence is missing rather than guessing.
-
 ```text
 old tag still verifies during transition: True
 new tag verifies: True | algorithms: hmac-sha256 -> hmac-sha3-256
@@ -2113,43 +1367,19 @@ old tag after retirement: False
 
 Gates fail a deployment if: a tier-1 listener's profile lacks the hybrid group or does not prefer it; a base image's TLS library is older than the approved minimum; a new dependency introduces a hard-coded classical algorithm where policy requires agility. Every gate needs an exception path with an owner and expiry.
 
-Section twenty-two point four develops quantum and post-quantum security automation with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-two point four, the KLS platform team expects quantum claims to carry owners and dates.
-
 ### 22.5 Certificate automation
 
 ACME ([RFC 8555](https://www.rfc-editor.org/rfc/rfc8555.html)) and internal issuance APIs automate certificate renewal. Make the requested key and signature algorithms explicit parameters, so that switching internal leaves to ML-DSA is a change of template, not of scripts. Test renewal of a post-quantum certificate in staging before relying on it.
-
-Section twenty-two point five develops quantum and post-quantum security automation with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-two point five, the KLS platform team expects quantum claims to carry owners and dates.
 
 ### 22.6 Worked example
 
 KLS adds a CI job, `crypto-gate`, that parses rendered Kubernetes manifests, extracts ingress TLS groups, and fails if a tier-1 ingress lacks `X25519MLKEM768` first. In its first week it blocks two releases that copied an old annotation; both are fixed in minutes rather than discovered weeks later by monitoring.
 
-Section twenty-two point six develops quantum and post-quantum security automation with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-two point six, the KLS platform team expects quantum claims to carry owners and dates.
-
 ### 22.7 Automation risks
 
 Automation multiplies mistakes as efficiently as it multiplies fixes. Protect pipeline configuration with review, sign pipeline definitions where tooling allows, and stage changes to central profiles through the same canary process as code. A wrong profile pushed automatically to every ingress is a large outage; the same profile pushed to one canary ingress is a small, informative one.
 
-Section twenty-two point seven develops quantum and post-quantum security automation with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-two point seven, the KLS platform team expects quantum claims to carry owners and dates.
-
 ### 22.8 Common errors and limits
-Section twenty-two point eight develops quantum and post-quantum security automation with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-two point eight, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section twenty-two point eight treats inventory and audits in as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-two point eight, Kestrel Logistics Software will not accept quantum work without a written trail.
-
 
 - Gates without exception paths.
 - Automating issuance with hard-coded algorithms.
@@ -2180,77 +1410,31 @@ You will (1) evaluate a deployment against its objectives; (2) measure performan
 
 Typical objectives: tier-1 flows negotiate hybrid key exchange end to end; failure rates within budget; latency within budget; fallback below threshold; residual risks documented; monitoring and runbooks in place.
 
-Section twenty-three point one develops quantum and post-quantum security evaluation with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-three point one, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section twenty-three point one treats objectives performance coverage and as testable only when evidence and ticket IDs are recorded.
-
 ### 23.2 Performance
 
 Measure handshake latency at the median and 99th percentile, CPU per handshake on servers and constrained clients, and bytes per handshake. ML-KEM operations are fast — typically comparable to or faster than elliptic-curve operations on servers — so the visible costs are usually bytes and occasional extra round trips, not CPU. Measure on representative paths, including mobile and warehouse networks.
-
-Section twenty-three point two develops quantum and post-quantum security evaluation with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-three point two, the KLS platform team expects quantum claims to carry owners and dates.
 
 ### 23.3 Coverage and residual risk
 
 Report the share of tier-1 flows fully migrated (all segments), partly migrated and unknown. List residual risks with owners. Compare with the start of the programme.
 
-Section twenty-three point three develops quantum and post-quantum security evaluation with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-three point three, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section twenty-three point three treats objectives performance coverage and as testable only when evidence and ticket IDs are recorded.
-
 ### 23.4 Report
 
 An evaluation report states objectives, methods, results, deviations, residual risk and recommendations, with evidence links. Operations need detail; management needs a one-page summary.
-
-Section twenty-three point four develops quantum and post-quantum security evaluation with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-three point four, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section twenty-three point four treats objectives performance coverage and as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-three point four, Kestrel Logistics Software will not accept quantum work without a written trail.
 
 ### 23.5 Worked example
 
 KLS evaluation (synthetic) after six months: tier-1 flows 9 of 14 fully migrated, 4 partly (provider or partner segments), 1 unknown (forklift telemetry). Failure rate +0.01 points (within budget). API handshake p50 +0.6 ms, p99 +2.8 ms; warehouse scanners not migrated. Residual: certificates classical everywhere; payment-provider calls classical. Recommendation: internal PKI pilot next; continue partner adoption tracking.
 
-Section twenty-three point five develops quantum and post-quantum security evaluation with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-three point five, the KLS platform team expects quantum claims to carry owners and dates.
-
 ### 23.6 Practical activity
 
 Write a one-page evaluation summary for your lab deployment with objectives, results and residual risk.
-
-Section twenty-three point six develops quantum and post-quantum security evaluation with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-three point six, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section twenty-three point six treats objectives performance coverage and as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-three point six, Kestrel Logistics Software will not accept quantum work without a written trail.
 
 ### 23.7 Comparing with the baseline
 
 An evaluation is only meaningful against a baseline captured before the change: failure rates, latency distributions, CPU and bytes per handshake on each path. If no baseline exists, capture one now from a classical-only control group — for example, a small share of traffic or a staging replica — before drawing conclusions. Without a baseline, an apparent regression may be normal weekly variation, and an apparent improvement may be a quiet week.
 
-Section twenty-three point seven develops quantum and post-quantum security evaluation with a Kestrel Logistics Software note the platform engineer can demo offline.
-
 ### 23.8 Common errors and limits
-Section twenty-three point eight develops quantum and post-quantum security evaluation with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-three point eight, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section twenty-three point eight treats objectives performance coverage and as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-three point eight, Kestrel Logistics Software will not accept quantum work without a written trail.
-
 
 - Counting partly migrated flows as done.
 - Measuring only median latency.
@@ -2281,79 +1465,31 @@ You will (1) frame practical research questions for implementation teams; (2) de
 
 Implementation research answers questions like: does the hybrid group increase failures on the warehouse network? Which partner clients negotiate hybrid SSH? How much does an ML-DSA-44 chain add to mesh latency? Each has a population, a measure and a decision.
 
-Section twenty-four point one develops applied research methods with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-four point one, the KLS platform team expects applied claims to carry owners and dates.
-
-Section twenty-four point one treats practical questions experiments measurement as testable only when evidence and ticket IDs are recorded.
-
 ### 24.2 Experiments
 
 Change one variable (hybrid on/off, chain type), hold others fixed (hardware, network emulation, client versions), randomise order, repeat runs, and record everything. Paired designs, where each client runs both conditions, reduce noise.
-
-Section twenty-four point two develops applied research methods with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-four point two, the KLS platform team expects applied claims to carry owners and dates.
-
-Section twenty-four point two treats practical questions experiments measurement as testable only when evidence and ticket IDs are recorded.
 
 ### 24.3 Measurement studies
 
 Count properties across a population: groups negotiated by partner SFTP clients over a month, image library versions across the registry. Define the population and coverage; report unknowns.
 
-Section twenty-four point three develops applied research methods with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-four point three, the KLS platform team expects applied claims to carry owners and dates.
-
-Section twenty-four point three treats practical questions experiments measurement as testable only when evidence and ticket IDs are recorded.
-
 ### 24.4 Reporting
 
 Report medians and percentiles with intervals, numbers of runs, environment and limitations. Share scripts. If a result surprises you, replicate before acting.
-
-Section twenty-four point four develops applied research methods with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-four point four, the KLS platform team expects applied claims to carry owners and dates.
-
-Section twenty-four point four treats practical questions experiments measurement as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point four, Kestrel Logistics Software will not accept applied work without a written trail.
 
 ### 24.5 Worked example
 
 Question: does ML-DSA-44 mTLS increase p99 latency for mesh calls? Design: staging cluster, 10 service pairs, 2,000 calls per pair per condition, randomised order, three days. Result (synthetic): p50 +0.3 ms, p99 +1.9 ms (95 % CI 1.2–2.7); CPU unchanged within noise. Limitation: staging traffic patterns are simpler than production. Decision: proceed to a production canary.
 
-Section twenty-four point five develops applied research methods with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-four point five, the KLS platform team expects applied claims to carry owners and dates.
-
 ### 24.6 Practical activity
 
 Design an experiment comparing hybrid and classical handshake failure rates on an emulated warehouse network with 2 % loss.
-
-Section twenty-four point six develops applied research methods with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-four point six, the KLS platform team expects applied claims to carry owners and dates.
-
-Section twenty-four point six treats practical questions experiments measurement as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point six, Kestrel Logistics Software will not accept applied work without a written trail.
 
 ### 24.7 Sample sizes
 
 For rare events, sample size decides whether a result is informative. To show a failure rate below 0.1 % with reasonable confidence, you need several thousand trials with few failures; with a few hundred, even zero failures leaves an upper bound near 1 %. Estimate the needed sample before starting, using the confidence-bound method of Chapter 19, and plan the run length accordingly rather than stopping when the result looks good.
 
-Section twenty-four point seven develops applied research methods with a Kestrel Logistics Software note the platform engineer can demo offline.
-
 ### 24.8 Common errors and limits
-Section twenty-four point eight develops applied research methods with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-four point eight, the KLS platform team expects applied claims to carry owners and dates.
-
-Section twenty-four point eight treats practical questions experiments measurement as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point eight, Kestrel Logistics Software will not accept applied work without a written trail.
-
 
 - Changing several variables at once.
 - Stopping early when results look favourable.
@@ -2384,79 +1520,31 @@ You will (1) work in a team to plan and execute a migration slice; (2) divide wo
 
 Teams of four take one KLS flow — partner SFTP, office VPN, customer API or internal mesh — and deliver a migrated lab replica with inventory, configuration, tests, monitoring, runbook and evaluation.
 
-Section twenty-five point one develops team project studio with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-five point one, the KLS platform team expects team claims to carry owners and dates.
-
-Section twenty-five point one treats the studio brief dividing as testable only when evidence and ticket IDs are recorded.
-
 ### 25.2 Dividing work
 
 Split by layer (network, platform, application, PKI) and by dependency: tasks that unblock others (lab environment, inventory) come first. Keep a shared board with owners and definitions of done.
-
-Section twenty-five point two develops team project studio with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-five point two, the KLS platform team expects team claims to carry owners and dates.
-
-Section twenty-five point two treats the studio brief dividing as testable only when evidence and ticket IDs are recorded.
 
 ### 25.3 Reviews
 
 Every configuration change gets a peer review against the central profile; every claim in the evaluation needs evidence a reviewer can rerun. Reviews catch the misordered group list and the missing negative control.
 
-Section twenty-five point three develops team project studio with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-five point three, the KLS platform team expects team claims to carry owners and dates.
-
-Section twenty-five point three treats the studio brief dividing as testable only when evidence and ticket IDs are recorded.
-
 ### 25.4 Status communication
 
 Weekly status: done, next, blocked, risks. Blockers name what is needed and from whom. Avoid percentage-complete figures that hide risk.
-
-Section twenty-five point four develops team project studio with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-five point four, the KLS platform team expects team claims to carry owners and dates.
-
-Section twenty-five point four treats the studio brief dividing as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point four, Kestrel Logistics Software will not accept team work without a written trail.
 
 ### 25.5 Worked example
 
 Team "SFTP": week 1 lab and inventory (owner A); week 2 OpenSSH upgrade and KEX configuration (B); week 3 partner client matrix — six client types, two classical-only (C); week 4 monitoring and runbook (D); week 5 evaluation. Blocked in week 3 waiting for a partner client image; escalated to the instructor acting as partner manager; substituted a documented emulation.
 
-Section twenty-five point five develops team project studio with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-five point five, the KLS platform team expects team claims to carry owners and dates.
-
 ### 25.6 Practical activity
 
 Form a team, choose a flow, write the plan and first status report.
-
-Section twenty-five point six develops team project studio with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-five point six, the KLS platform team expects team claims to carry owners and dates.
-
-Section twenty-five point six treats the studio brief dividing as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point six, Kestrel Logistics Software will not accept team work without a written trail.
 
 ### 25.7 Working agreements
 
 Agree how the team will work before starting: how decisions are made and recorded, how reviews are requested and how quickly they are answered, how secrets used in the lab are stored, and what happens when someone is blocked for more than a day. Written agreements prevent the most common studio failures — silent blocking and unreviewed changes — and mirror how production platform teams operate.
 
-Section twenty-five point seven develops team project studio with a Kestrel Logistics Software note the platform engineer can demo offline.
-
 ### 25.8 Common errors and limits
-Section twenty-five point eight develops team project studio with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-five point eight, the KLS platform team expects team claims to carry owners and dates.
-
-Section twenty-five point eight treats the studio brief dividing as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point eight, Kestrel Logistics Software will not accept team work without a written trail.
-
 
 - Everyone working on the same layer.
 - Reviews skipped under time pressure.
@@ -2487,81 +1575,31 @@ You will (1) prepare a service for handoff to operations; (2) write runbooks for
 
 Operations need: architecture and trace for the flow; the applied crypto profile and its version; the inventory entries; dashboards and alerts; runbooks; residual-risk register; exception list with expiries; vendor and partner contacts; and the evaluation report.
 
-Section twenty-six point one develops quantum and post-quantum security operational with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-six point one, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section twenty-six point one treats handoff package runbooks ownership as testable only when evidence and ticket IDs are recorded.
-
 ### 26.2 Runbooks
 
 Write runbooks for: hybrid share drop; handshake failures through a proxy; partner `no_shared_group`; certificate verification failures after PKI changes; HSM or KMS errors in issuance. Each has symptoms, checks, safe actions, rollback and escalation.
-
-Section twenty-six point two develops quantum and post-quantum security operational with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-six point two, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section twenty-six point two treats handoff package runbooks ownership as testable only when evidence and ticket IDs are recorded.
 
 ### 26.3 Ownership
 
 Name owners for the central profiles, the internal CA, exception approvals, the CBOM feeds and the dashboards. Ownership gaps are where regressions live.
 
-Section twenty-six point three develops quantum and post-quantum security operational with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-six point three, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section twenty-six point three treats handoff package runbooks ownership as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-six point three, Kestrel Logistics Software will not accept quantum work without a written trail.
-
 ### 26.4 Training
 
 Run a short session for operators: what changed, how to read the dashboard, what the runbooks say, and one tabletop exercise. Record attendance and questions; update runbooks with answers.
-
-Section twenty-six point four develops quantum and post-quantum security operational with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-six point four, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section twenty-six point four treats handoff package runbooks ownership as testable only when evidence and ticket IDs are recorded.
 
 ### 26.5 Worked example
 
 KLS hands the customer API flow to the SRE team with a package in the service repository. The tabletop: "hybrid share drops to 5 % after a release". Operators follow the runbook, identify the annotation, restore the profile, and confirm recovery in 12 minutes. One gap found: the runbook assumed access to a dashboard SREs did not have — fixed before sign-off.
 
-Section twenty-six point five develops quantum and post-quantum security operational with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-six point five, the KLS platform team expects quantum claims to carry owners and dates.
-
 ### 26.6 Practical activity
 
 Write the handoff package index and one runbook for your studio flow.
-
-Section twenty-six point six develops quantum and post-quantum security operational with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-six point six, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section twenty-six point six treats handoff package runbooks ownership as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-six point six, Kestrel Logistics Software will not accept quantum work without a written trail.
 
 ### 26.7 Acceptance criteria
 
 Operations should accept a handoff only when criteria are met: dashboards visible to the on-call team, alerts routed and tested, runbooks exercised in a tabletop, owners named in the service catalogue, and the residual-risk register reviewed. Writing the criteria down turns handoff from a meeting into a checklist, and it gives operations a fair basis to say "not yet".
 
-Section twenty-six point seven develops quantum and post-quantum security operational with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-six point seven, the KLS platform team expects quantum claims to carry owners and dates.
-
 ### 26.8 Common errors and limits
-Section twenty-six point eight develops quantum and post-quantum security operational with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-six point eight, the KLS platform team expects quantum claims to carry owners and dates.
-
-Section twenty-six point eight treats handoff package runbooks ownership as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-six point eight, Kestrel Logistics Software will not accept quantum work without a written trail.
-
 
 - Handoffs without runbooks.
 - Unowned profiles or exceptions.
@@ -2592,81 +1630,31 @@ You will (1) plan production deployment with stages, gates and rollback; (2) val
 
 Stage 1: canary listener or 1 % of traffic; stage 2: 10 %; stage 3: all tier-1 listeners; stage 4: remaining listeners. Gates: failure-rate upper bound within budget, fallback within expectation, no unexplained alert, runbooks ready. Each stage has a minimum duration covering weekly patterns.
 
-Section twenty-seven point one develops deployment and validation with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-seven point one, the KLS platform team expects deployment claims to carry owners and dates.
-
-Section twenty-seven point one treats stages and gates validation as testable only when evidence and ticket IDs are recorded.
-
 ### 27.2 Validation in production
 
 Validate with synthetic clients in each region and with production negotiation logs; confirm every segment of tier-1 flows. Sample certificates and configurations independently of the deploying team.
-
-Section twenty-seven point two develops deployment and validation with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-seven point two, the KLS platform team expects deployment claims to carry owners and dates.
-
-Section twenty-seven point two treats stages and gates validation as testable only when evidence and ticket IDs are recorded.
 
 ### 27.3 Exceptions
 
 When a client population cannot cope — an old proxy, a partner client — create an exception: scope, reason, compensating control, owner, expiry. Route the population to a classical-compatible listener if needed, rather than weakening the default.
 
-Section twenty-seven point three develops deployment and validation with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-seven point three, the KLS platform team expects deployment claims to carry owners and dates.
-
-Section twenty-seven point three treats stages and gates validation as testable only when evidence and ticket IDs are recorded.
-
 ### 27.4 Closing
 
 Close the deployment with an evidence pack: stages and gate results, validation results, exceptions, residual risk, and the handoff acceptance.
-
-Section twenty-seven point four develops deployment and validation with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-seven point four, the KLS platform team expects deployment claims to carry owners and dates.
-
-Section twenty-seven point four treats stages and gates validation as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point four, Kestrel Logistics Software will not accept deployment work without a written trail.
 
 ### 27.5 Worked example
 
 KLS deploys `kls-modern` to all internet-facing listeners. Stage 2 shows one customer's corporate proxy failing; exception created with a dedicated listener for that customer's IP range, expiry six months, customer notified. Stage 3 passes; validation from five regions shows hybrid at edge and origin. Closure pack filed; residual risk: certificates classical.
 
-Section twenty-seven point five develops deployment and validation with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-seven point five, the KLS platform team expects deployment claims to carry owners and dates.
-
 ### 27.6 Practical activity
 
 Write a deployment plan with stages, gates, rollback and exception process for your studio flow.
-
-Section twenty-seven point six develops deployment and validation with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-seven point six, the KLS platform team expects deployment claims to carry owners and dates.
-
-Section twenty-seven point six treats stages and gates validation as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point six, Kestrel Logistics Software will not accept deployment work without a written trail.
 
 ### 27.7 Change freeze and timing
 
 Avoid deploying cryptographic changes just before peak business periods — for a logistics platform, end-of-quarter shipping peaks — or during other major changes, because overlapping changes make failures hard to attribute. Schedule stages when the owning team is staffed to watch dashboards, and record the planned and actual timing in the closure pack.
 
-Section twenty-seven point seven develops deployment and validation with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-seven point seven, the KLS platform team expects deployment claims to carry owners and dates.
-
 ### 27.8 Common errors and limits
-Section twenty-seven point eight develops deployment and validation with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-seven point eight, the KLS platform team expects deployment claims to carry owners and dates.
-
-Section twenty-seven point eight treats stages and gates validation as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point eight, Kestrel Logistics Software will not accept deployment work without a written trail.
-
 
 - Weakening the default to accommodate one client.
 - Stages shorter than weekly cycles.
@@ -2697,83 +1685,31 @@ You will (1) apply implementation skills in a supervised placement; (2) work wit
 
 Typical tasks: extend an inventory feed, validate a scanner, update a crypto profile in staging, build a dashboard panel, write a runbook, test a vendor appliance's hybrid support in a lab.
 
-Section twenty-eight point one develops field practice with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-eight point one, the KLS platform team expects field claims to carry owners and dates.
-
-Section twenty-eight point one treats placement tasks change control as testable only when evidence and ticket IDs are recorded.
-
 ### 28.2 Change control and authorization
 
 Follow the host organization's change process; get written scope for any scanning or testing; never run tools against production without approval; never take data off approved systems. Report serious findings — such as exposed private keys — immediately through the organization's process.
-
-Section twenty-eight point two develops field practice with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-eight point two, the KLS platform team expects field claims to carry owners and dates.
-
-Section twenty-eight point two treats placement tasks change control as testable only when evidence and ticket IDs are recorded.
 
 ### 28.3 Working with mentors
 
 Agree goals with your mentor in week one; ask for review of every change; keep a log of what you did and learned; ask questions early.
 
-Section twenty-eight point three develops field practice with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-eight point three, the KLS platform team expects field claims to carry owners and dates.
-
-Section twenty-eight point three treats placement tasks change control as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point three, Kestrel Logistics Software will not accept field work without a written trail.
-
 ### 28.4 Reflection
 
 Each week: task, evidence produced, surprise, lesson, next step. Link lessons to chapters of this book.
-
-Section twenty-eight point four develops field practice with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-eight point four, the KLS platform team expects field claims to carry owners and dates.
-
-Section twenty-eight point four treats placement tasks change control as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point four, Kestrel Logistics Software will not accept field work without a written trail.
 
 ### 28.5 Worked example
 
 A student on placement at a (synthetic) regional parcel company validates the company's TLS scanner against a lab server, finds its library predates ML-KEM support, and documents the upgrade. With approval, they add a negotiated-group field to the load-balancer logs in staging and build a dashboard panel; the mentor promotes it to production after review.
 
-Section twenty-eight point five develops field practice with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-eight point five, the KLS platform team expects field claims to carry owners and dates.
-
 ### 28.6 Practical activity
 
 Write your placement scope agreement and the first two weekly reflection entries.
-
-Section twenty-eight point six develops field practice with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-eight point six, the KLS platform team expects field claims to carry owners and dates.
-
-Section twenty-eight point six treats placement tasks change control as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point six, Kestrel Logistics Software will not accept field work without a written trail.
 
 ### 28.7 Professional conduct
 
 Placements are also a test of conduct: respecting confidentiality agreements, not discussing the host's weaknesses outside approved channels, crediting colleagues' work, and admitting mistakes quickly. A student who reports "I ran the audit against the wrong host list; here is what happened and what I did" builds more trust than one whose error is discovered later by someone else.
 
-Section twenty-eight point seven develops field practice with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-eight point seven, the KLS platform team expects field claims to carry owners and dates.
-
 ### 28.8 Common errors and limits
-Section twenty-eight point eight develops field practice with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-eight point eight, the KLS platform team expects field claims to carry owners and dates.
-
-Section twenty-eight point eight treats placement tasks change control as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point eight, Kestrel Logistics Software will not accept field work without a written trail.
-
 
 - Acting outside scope.
 - Unreviewed changes.
@@ -2804,81 +1740,31 @@ You will (1) build a complete migrated slice of a service in a lab; (2) integrat
 
 Choose one KLS-like flow end to end with at least three hops. Deliver: lab infrastructure as code; inventory entries and trace; central crypto profile applied at each hop; CI gate; negotiation logging and dashboard; runbooks; exception and residual-risk register; evaluation data.
 
-Section twenty-nine point one develops capstone build with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-nine point one, the KLS platform team expects capstone claims to carry owners and dates.
-
-Section twenty-nine point one treats scope build order reproducibility as testable only when evidence and ticket IDs are recorded.
-
 ### 29.2 Build order
 
 Lab infrastructure → inventory and trace → profile → automation gate → monitoring → runbooks → evaluation. Commit at each step with a short decision record.
-
-Section twenty-nine point two develops capstone build with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-nine point two, the KLS platform team expects capstone claims to carry owners and dates.
-
-Section twenty-nine point two treats scope build order reproducibility as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point two, Kestrel Logistics Software will not accept capstone work without a written trail.
 
 ### 29.3 Reproducibility
 
 Anyone should be able to clone the repository, run one command to build the lab, and reproduce the dashboard numbers from logged runs. Pin versions; fix random seeds for synthetic data.
 
-Section twenty-nine point three develops capstone build with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-nine point three, the KLS platform team expects capstone claims to carry owners and dates.
-
-Section twenty-nine point three treats scope build order reproducibility as testable only when evidence and ticket IDs are recorded.
-
 ### 29.4 Decision records
 
 Record decisions such as "ML-KEM-768 hybrid rather than ML-KEM-1024 because policy requires category 3 and RFC 10024's group uses -768" or "classical certificates retained because relying-party library X lacks ML-DSA".
-
-Section twenty-nine point four develops capstone build with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-nine point four, the KLS platform team expects capstone claims to carry owners and dates.
-
-Section twenty-nine point four treats scope build order reproducibility as testable only when evidence and ticket IDs are recorded.
 
 ### 29.5 Worked example
 
 Capstone (synthetic): partner SFTP via a bastion and an internal file processor. Build: Terraform-style lab scripts, OpenSSH with hybrid KEX first, an audit script in CI checking `KexAlgorithms`, log parser feeding a dashboard of KEX share, runbooks for `no_shared_group` and fallback, exception for an emulated legacy partner client. Evaluation data from 3,000 sessions across six client types.
 
-Section twenty-nine point five develops capstone build with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-nine point five, the KLS platform team expects capstone claims to carry owners and dates.
-
 ### 29.6 Practical activity
 
 Create your capstone repository with the build order as milestones.
-
-Section twenty-nine point six develops capstone build with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-nine point six, the KLS platform team expects capstone claims to carry owners and dates.
-
-Section twenty-nine point six treats scope build order reproducibility as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point six, Kestrel Logistics Software will not accept capstone work without a written trail.
 
 ### 29.7 Security of the build
 
 Treat the capstone repository as production-grade: no real secrets committed, lab keys generated at build time, access limited to the team and assessors, and dependency versions pinned. Include a short threat note for the lab itself — what an attacker could do with the repository and how you prevented it. Assessors will look for this, and it is a habit worth keeping.
 
-Section twenty-nine point seven develops capstone build with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-nine point seven, the KLS platform team expects capstone claims to carry owners and dates.
-
 ### 29.8 Common errors and limits
-Section twenty-nine point eight develops capstone build with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section twenty-nine point eight, the KLS platform team expects capstone claims to carry owners and dates.
-
-Section twenty-nine point eight treats scope build order reproducibility as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point eight, Kestrel Logistics Software will not accept capstone work without a written trail.
-
 
 - Building without infrastructure as code.
 - Skipping the CI gate.
@@ -2909,81 +1795,31 @@ You will (1) evaluate your capstone against criteria; (2) demonstrate it live; (
 
 Assessment criteria: completeness of the slice; correctness of configuration (hybrid preferred, fallback controlled); quality of automation and monitoring; runbooks exercised; reproducibility; residual risk and exceptions documented; clarity of decisions and evaluation.
 
-Section thirty point one develops capstone assessment with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section thirty point one, the KLS platform team expects capstone claims to carry owners and dates.
-
-Section thirty point one treats criteria live demonstration questions as testable only when evidence and ticket IDs are recorded.
-
 ### 30.2 Live demonstration
 
 Demonstrate: build the lab; show negotiation of hybrid KEX; trigger a fallback by reverting configuration and show the alert; follow the runbook to recover; show the CI gate blocking a bad change.
-
-Section thirty point two develops capstone assessment with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section thirty point two, the KLS platform team expects capstone claims to carry owners and dates.
-
-Section thirty point two treats criteria live demonstration questions as testable only when evidence and ticket IDs are recorded.
 
 ### 30.3 Questions
 
 Expect: "Why is the server's order important?", "What does hybrid not protect?", "How would you migrate host keys?", "What happens if ML-KEM is weakened?", "How do you know the scanner is right?" Answer with evidence from your repository.
 
-Section thirty point three develops capstone assessment with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section thirty point three, the KLS platform team expects capstone claims to carry owners and dates.
-
-Section thirty point three treats criteria live demonstration questions as testable only when evidence and ticket IDs are recorded.
-
 ### 30.4 Handover
 
 Leave a README, decision records, runbooks and open issues so another team can extend the work.
-
-Section thirty point four develops capstone assessment with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section thirty point four, the KLS platform team expects capstone claims to carry owners and dates.
-
-Section thirty point four treats criteria live demonstration questions as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point four, Kestrel Logistics Software will not accept capstone work without a written trail.
 
 ### 30.5 Worked example
 
 Assessment of the SFTP capstone: build in 9 minutes; hybrid KEX shown in logs; fallback triggered and alert raised in 2 minutes; recovery by runbook in 4 minutes; CI gate blocked a reordered `KexAlgorithms` line. Examiner asks about host keys; student explains forge-later timing, SSH certificates as an agility step and waiting for post-quantum host-key algorithms in OpenSSH.
 
-Section thirty point five develops capstone assessment with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section thirty point five, the KLS platform team expects capstone claims to carry owners and dates.
-
 ### 30.6 Practical activity
 
 Rehearse your demonstration with a peer acting as examiner; time each step.
-
-Section thirty point six develops capstone assessment with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section thirty point six, the KLS platform team expects capstone claims to carry owners and dates.
-
-Section thirty point six treats criteria live demonstration questions as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point six, Kestrel Logistics Software will not accept capstone work without a written trail.
 
 ### 30.7 Self-assessment
 
 Before the assessment, score yourself against each criterion with evidence links, and note one weakness you would fix with more time. Examiners value candidates who see their own gaps; it shows the judgment that operations teams rely on. Include the self-assessment in the handover so future teams know where to start.
 
-Section thirty point seven develops capstone assessment with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section thirty point seven, the KLS platform team expects capstone claims to carry owners and dates.
-
 ### 30.8 Common errors and limits
-Section thirty point eight develops capstone assessment with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section thirty point eight, the KLS platform team expects capstone claims to carry owners and dates.
-
-Section thirty point eight treats criteria live demonstration questions as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point eight, Kestrel Logistics Software will not accept capstone work without a written trail.
-
 
 - Demos that depend on manual steps not in the repository.
 - Claiming hybrid protects authentication.
@@ -2993,10 +1829,6 @@ For section thirty point eight, Kestrel Logistics Software will not accept capst
 ### 30.9 After the assessment
 
 Within a week of the assessment the student files the examiner's questions and their answers with the capstone record, fixes any documentation gap the examiner found, and hands KLS operations a one-page summary of what the SFTP service now negotiates and what is still classical. That summary is the starting point for the next migration step.
-
-Section thirty point nine develops capstone assessment with a Kestrel Logistics Software note the platform engineer can demo offline.
-
-Under section thirty point nine, the KLS platform team expects capstone claims to carry owners and dates.
 
 ### Exercises
 

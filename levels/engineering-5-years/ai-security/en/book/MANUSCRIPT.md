@@ -44,23 +44,13 @@ You will (1) compute derivatives of the functions used in machine learning (poly
 
 The derivative f′(x) measures how much f changes when x changes a little: f(x + h) ≈ f(x) + h f′(x). Engineers use this as a *sensitivity*: if a bearing's temperature model has a large derivative with respect to an input, small sensor errors cause large output changes. Machine-learning models are functions of inputs and parameters, so derivatives tell us how outputs respond to both.
 
-Section one point one develops calculus with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 1.2 Rules you will use constantly
 
 Power rule (xⁿ)′ = n xⁿ⁻¹; exponential (eˣ)′ = eˣ; logarithm (ln x)′ = 1/x; product, quotient and chain rules. The logistic function σ(z) = 1/(1 + e⁻ᶻ) maps any real number to (0, 1) and satisfies σ′(z) = σ(z)(1 − σ(z)). The logistic loss for a label y ∈ {−1, +1} and score z = w·x is L = ln(1 + e^(−y z)); by the chain rule, ∂L/∂w = −y x / (1 + e^(y w x)).
 
-Section one point two develops calculus with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section one point two, the NRS mentor expects calculus claims to carry owners and dates.
-
 ### 1.3 Checking derivatives numerically
 
 A central finite difference (f(x + h) − f(x − h)) / 2h approximates f′(x) with error proportional to h². Comparing it with your analytic formula is the standard test for gradient code; mismatch means a bug. The lab does exactly this, then takes six gradient-descent steps that lower the loss.
-
-Section one point three develops calculus with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section one point three, the NRS mentor expects calculus claims to carry owners and dates.
 
 ```python
 """Lab G: gradients by calculus and by finite differences (stdlib only).
@@ -100,23 +90,11 @@ step 6: w=1.1652 loss=0.0928
 
 Training moves *parameters* against the gradient of the loss. An evasion attacker moves the *input* along the gradient of the loss with respect to the input, to make the loss larger — the idea behind the fast gradient sign method (Goodfellow et al., arXiv:1412.6572). So derivatives are both the engine of learning and a map for the attacker. Defences that hide or break gradients without changing the model's behaviour give a false sense of security (Athalye et al., arXiv:1802.00420).
 
-Section one point four develops calculus with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 1.5 Worked example (synthetic NRS case)
 
 Sam computes the derivative of TrackEye's final logistic score with respect to one pixel-intensity feature and finds 0.8 per unit, while most features are below 0.05. A dirty lens that shifts that feature by 0.5 changes the score by about 0.4 — enough to flip a borderline decision. Sam records the feature as a *high-sensitivity input* for later robustness testing.
 
-Section one point five develops calculus with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section one point five, the NRS mentor expects calculus claims to carry owners and dates.
-
 ### 1.6 Errors and limits
-Section one point six develops calculus with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section one point six, the NRS mentor expects calculus claims to carry owners and dates.
-
-Section one point six treats derivatives as sensitivity rules as testable only when evidence and ticket IDs are recorded.
-
 
 - Forgetting the chain rule's inner derivative.
 - Using too small an h in finite differences (rounding error) or too large (truncation error).
@@ -148,51 +126,23 @@ You will (1) use sets, relations, functions and logic to describe system behavio
 
 A model is a function f: X → Y from an input set to an output set. A policy is a predicate P(user, action, resource) that is true when the action is allowed. Logical connectives (∧, ∨, ¬, →) and quantifiers (∀, ∃) let us write security properties exactly: "∀ tool call c issued by Wrench, Authorised(requesting_user(c), c)". Writing properties this way reveals ambiguities — what is the "requesting user" when the call was triggered by text in a supplier bulletin?
 
-Section two point one develops discrete mathematics with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 2.2 Relations and graphs
 
 A directed graph of components (camera → preprocessing → model → alert queue → technician) shows where data flows and where trust changes. Paths from an *untrusted source* to a *privileged sink* are the routes an attacker can use; for language-model applications, the path "supplier bulletin → Wrench prompt → work-order tool" is exactly an indirect prompt-injection path (Greshake et al., arXiv:2302.12173). Reachability in graphs is computed by breadth- or depth-first search.
-
-Section two point two develops discrete mathematics with a Northgate Rail Systems note Sam Ito can demo offline.
 
 ### 2.3 Counting
 
 Combinatorics estimates search spaces. If an attacker can change any 3 of 100 features to one of 4 values, there are C(100,3) × 4³ = 161,700 × 64 ≈ 10.3 million variants — feasible to search by computer. Counting shows why "nobody will find the bad input" is not a defence.
 
-Section two point three develops discrete mathematics with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section two point three, the NRS mentor expects discrete claims to carry owners and dates.
-
-Section two point three treats sets functions and logic as testable only when evidence and ticket IDs are recorded.
-
 ### 2.4 Induction and invariants
 
 An *invariant* is a property that holds before and after every step. "The work-order tool can only be called with a technician's session token" is an invariant; proving it holds for every code path (by induction over steps) is stronger than testing a few cases.
-
-Section two point four develops discrete mathematics with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section two point four, the NRS mentor expects discrete claims to carry owners and dates.
-
-Section two point four treats sets functions and logic as testable only when evidence and ticket IDs are recorded.
 
 ### 2.5 Worked example (synthetic NRS case)
 
 Sam draws Wrench's data-flow graph with nodes for user chat, manuals, technician notes, supplier bulletins (external), the model and two tools (search, create_work_order). Two untrusted-to-privileged paths exist: bulletin → model → create_work_order and technician notes (editable by contractors) → model → create_work_order. Sam writes the property "∀ create_work_order calls, a human technician confirmed it" and marks both paths for controls.
 
-Section two point five develops discrete mathematics with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section two point five, the NRS mentor expects discrete claims to carry owners and dates.
-
 ### 2.6 Errors and limits
-Section two point six develops discrete mathematics with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section two point six, the NRS mentor expects discrete claims to carry owners and dates.
-
-Section two point six treats sets functions and logic as testable only when evidence and ticket IDs are recorded.
-
-For section two point six, Northgate Rail Systems will not accept discrete work without a written trail.
-
 
 - Informal policies with hidden exceptions.
 - Forgetting indirect paths through data stores.
@@ -224,49 +174,23 @@ You will (1) relate signals, noise and sampling to sensor and camera inputs; (2)
 
 Sensors convert physical quantities into numbers. Every measurement contains noise; sampling turns continuous signals into discrete ones, and sampling below twice the highest frequency (the Nyquist rate) causes aliasing. Cameras integrate light over exposure time; motion blur, glare and low light all change pixel values. A vision model trained on clear daytime images may meet very different inputs at night or in rain.
 
-Section three point one develops physics for computing with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 3.2 Physical shifts versus attacks
 
 *Natural* distribution shift comes from physics: dust on lenses, temperature drift in thermistors, vibration. *Adversarial* physical attacks deliberately craft objects or signals: printed patterns that cause misclassification or injected signals that spoof sensors. Research has shown that perturbations can survive printing and camera capture under varied viewing conditions when optimised over many transformations. Both kinds of shift must be tested; the engineering difference is that adversaries search for the worst case while nature samples typical cases.
-
-Section three point two develops physics for computing with a Northgate Rail Systems note Sam Ito can demo offline.
 
 ### 3.3 Energy, heat and side channels
 
 Computation consumes power and emits heat and electromagnetic signals that can leak information (side channels). For AI accelerators, timing and power measurements have been studied as ways to infer model properties. Physical access therefore belongs in the threat model of edge AI devices like an inspection-train computer.
 
-Section three point three develops physics for computing with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section three point three, the NRS mentor expects physics claims to carry owners and dates.
-
 ### 3.4 Specifying physical test conditions
 
 An engineering specification lists conditions: illumination range (lux), temperature range, vibration spectrum, lens contamination levels, and train speed. Each becomes a test axis. For security, add adversarial conditions within the threat model — for example, "an attacker can place markings on sleepers but cannot access the train".
-
-Section three point four develops physics for computing with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section three point four, the NRS mentor expects physics claims to carry owners and dates.
-
-Section three point four treats signals noise and sampling as testable only when evidence and ticket IDs are recorded.
 
 ### 3.5 Worked example (synthetic NRS case)
 
 TrackEye's false-negative rate rose from 2% to 9% on dawn runs. Sam traced it to low sun angle causing glare at 60–80 km/h. The fix combined a polarising filter, an exposure change and 4,000 additional dawn images. Sam also added a test axis for deliberate markings near rails, since anyone walking the line could place them.
 
-Section three point five develops physics for computing with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section three point five, the NRS mentor expects physics claims to carry owners and dates.
-
 ### 3.6 Errors and limits
-Section three point six develops physics for computing with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section three point six, the NRS mentor expects physics claims to carry owners and dates.
-
-Section three point six treats signals noise and sampling as testable only when evidence and ticket IDs are recorded.
-
-For section three point six, Northgate Rail Systems will not accept physics work without a written trail.
-
 
 - Testing only in laboratory lighting.
 - Confusing natural shift with attack (or ignoring either).
@@ -298,27 +222,13 @@ You will (1) write small, correct Python programs with functions, loops and data
 
 A program states exactly what the computer does. Variables hold values; functions package steps; loops repeat; conditionals choose. Readable code uses clear names and small functions. The labs in this book use only Python's standard library so they run anywhere.
 
-Section four point one develops programming with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section four point one, the NRS mentor expects programming claims to carry owners and dates.
-
-Section four point one treats programs as precise instructions as testable only when evidence and ticket IDs are recorded.
-
 ### 4.2 Data structures
 
 Lists hold sequences; dictionaries map keys to values; sets hold unique items. A model inventory is naturally a list of dictionaries; a policy allowlist is naturally a set. Choosing the right structure makes code shorter and safer: membership in a set is a clear, fast test for "is this tool allowed?".
 
-Section four point two develops programming with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section four point two, the NRS mentor expects programming claims to carry owners and dates.
-
 ### 4.3 Untrusted input
 
 Any data from outside your program — files, network messages, model outputs — is untrusted. Never pass it to `eval`, shell commands or database queries without strict validation. This applies to AI: OWASP LLM 2025 lists *improper output handling* (LLM05) because applications often execute or render model output directly. Parse with strict parsers (e.g., `json.loads`), validate types and ranges, and reject unknown fields.
-
-Section four point three develops programming with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section four point three, the NRS mentor expects programming claims to carry owners and dates.
 
 ### 4.4 Errors as information
 
@@ -328,21 +238,9 @@ When code fails, it should fail *closed* and explain itself. A parser that silen
 
 An `assert` states what must be true. Unit tests call functions with chosen inputs and check outputs, including edge cases (empty lists, very large values, malformed text). Tests make later changes safe.
 
-Section four point five develops programming with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section four point five, the NRS mentor expects programming claims to carry owners and dates.
-
-Section four point five treats programs as precise instructions as testable only when evidence and ticket IDs are recorded.
-
 ### 4.6 Worked example (synthetic NRS case)
 
 Sam writes a function that parses Wrench's proposed work order (JSON) before it reaches the work-order system:
-
-Section four point six develops programming with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section four point six, the NRS mentor expects programming claims to carry owners and dates.
-
-Section four point six treats programs as precise instructions as testable only when evidence and ticket IDs are recorded.
 
 ```python
 import json
@@ -363,12 +261,6 @@ except AssertionError as e:
 The program prints the valid order, then `rejected: bad asset id`. The model's output is treated as data to validate, never as code.
 
 ### 4.7 Errors and limits
-Section four point seven develops programming with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section four point seven, the NRS mentor expects programming claims to carry owners and dates.
-
-Section four point seven treats programs as precise instructions as testable only when evidence and ticket IDs are recorded.
-
 
 - Executing model output as code or shell commands.
 - Validation that only checks happy paths.
@@ -400,61 +292,27 @@ You will (1) write clear technical documents (requirements, design notes, test r
 
 Requirements say what a system must do and must not do. Design notes explain choices and alternatives. Test reports state what was tested, how, results and limits. Incident summaries state what happened, impact, cause and actions. Each has a reader with a decision to make; write for that decision.
 
-Section five point one develops engineering communication with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section five point one, the NRS mentor expects engineering claims to carry owners and dates.
-
 ### 5.2 Communicating uncertainty
 
 Never write "the model is secure". Write "under the tested conditions (list), the false-negative rate was 2.1% (95% interval 1.6–2.7%); untested conditions include heavy snow and deliberate markings". Numbers with intervals and explicit conditions let readers judge for themselves. Separate *facts* (measured), *assessments* (your judgement) and *recommendations*.
-
-Section five point two develops engineering communication with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section five point two, the NRS mentor expects engineering claims to carry owners and dates.
-
-Section five point two treats the engineer's documents communicating as testable only when evidence and ticket IDs are recorded.
 
 ### 5.3 Documenting AI components
 
 Model cards (Mitchell et al., arXiv:1810.03993) describe a model's intended use, out-of-scope uses, evaluation data, metrics broken down by relevant factors, and ethical considerations. Datasheets for datasets (Gebru et al., arXiv:1803.09010) describe motivation, composition, collection, preprocessing, uses, distribution and maintenance. Both make hidden assumptions visible to downstream engineers and auditors.
 
-Section five point three develops engineering communication with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section five point three, the NRS mentor expects engineering claims to carry owners and dates.
-
 ### 5.4 Audiences
 
 Engineers need precise interfaces and failure modes. Managers need risk, cost and options. Regulators and auditors need traceable evidence linked to requirements. The same fact may appear in three forms.
-
-Section five point four develops engineering communication with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section five point four, the NRS mentor expects engineering claims to carry owners and dates.
-
-Section five point four treats the engineer's documents communicating as testable only when evidence and ticket IDs are recorded.
 
 ### 5.5 Structure and traceability
 
 Number requirements (REQ-SEC-012) and refer to them from design notes and test reports so that anyone can trace a requirement to its evidence. Use tables for conditions and results, figures for trends, and short paragraphs for reasoning. Put the conclusion first and the method second for decision readers; reverse it for reviewers who must check the method. Version every document and keep a change log: an evaluation that was true for model v1.3 may be false for v1.4.
 
-Section five point five develops engineering communication with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 5.6 Worked example (synthetic NRS case)
 
 Sam's first TrackEye test report said "works well in most conditions". The supervisor returned it. The revised version had a one-paragraph summary for managers ("dawn false negatives are 4.5× daytime; fix in progress; interim: second visual check at dawn"), a table by condition with intervals for engineers, and a model-card section stating out-of-scope uses (not validated for tram rails or snow).
 
-Section five point six develops engineering communication with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section five point six, the NRS mentor expects engineering claims to carry owners and dates.
-
 ### 5.7 Errors and limits
-Section five point seven develops engineering communication with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section five point seven, the NRS mentor expects engineering claims to carry owners and dates.
-
-Section five point seven treats the engineer's documents communicating as testable only when evidence and ticket IDs are recorded.
-
-For section five point seven, Northgate Rail Systems will not accept engineering work without a written trail.
-
 
 - Absolute claims ("secure", "safe") without conditions.
 - Mixing measurement and opinion.
@@ -486,51 +344,23 @@ You will (1) compute partial derivatives and gradients of multivariate functions
 
 For f(x₁, …, xₙ), the partial derivative ∂f/∂xᵢ holds other variables fixed. The gradient ∇f collects them into a vector pointing in the direction of steepest increase. For a linear score s = w·x + b, ∇ₓ s = w: the weights *are* the input gradient, which is why linear models are easy to attack along sign(w).
 
-Section six point one develops calculus ii with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section six point one, the NRS mentor expects calculus claims to carry owners and dates.
-
 ### 6.2 The multivariate chain rule
 
 Neural networks are compositions f = f_L ∘ … ∘ f₁. The chain rule multiplies Jacobian matrices layer by layer; backpropagation computes this product efficiently from the output backwards. The same algorithm gives gradients with respect to inputs, which white-box attacks use.
-
-Section six point two develops calculus ii with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section six point two, the NRS mentor expects calculus claims to carry owners and dates.
-
-Section six point two treats partial derivatives and gradients as testable only when evidence and ticket IDs are recorded.
 
 ### 6.3 Taylor approximation and worst-case change
 
 First-order Taylor: f(x + δ) ≈ f(x) + ∇f(x)·δ. If an attacker may change each feature by at most ε (an L∞ budget), the largest first-order change is ε·‖∇f(x)‖₁, achieved by δ = ε·sign(∇f(x)) — exactly the FGSM step (Goodfellow et al., arXiv:1412.6572). Under an L2 budget, the worst change is ε·‖∇f(x)‖₂. Norms matter: a gradient with many small components can still have a large L1 norm in high dimensions, which is one explanation for adversarial vulnerability of high-dimensional models.
 
-Section six point three develops calculus ii with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 6.4 Lipschitz constants
 
 A function is L-Lipschitz if |f(x) − f(y)| ≤ L‖x − y‖. If a classifier's margin at x is m and its score is L-Lipschitz, no perturbation smaller than m/L can flip the decision — a *certificate*. Computing tight L for deep networks is hard, which is why certified methods such as randomized smoothing (Cohen et al., arXiv:1902.02918) use probabilistic arguments instead.
-
-Section six point four develops calculus ii with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section six point four, the NRS mentor expects calculus claims to carry owners and dates.
 
 ### 6.5 Worked example (synthetic NRS case)
 
 Pulse's bearing anomaly score is s = 0.9·t + 0.4·v − 0.2·h + c (temperature, vibration, humidity, normalised). With ε = 0.1 per feature, the worst first-order change is 0.1 × (0.9 + 0.4 + 0.2) = 0.15. Sam compares this to the typical margin (0.3) and concludes that a sensor-spoofing attacker limited to ±0.1 cannot hide a clearly hot bearing, but can hide borderline ones.
 
-Section six point five develops calculus ii with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section six point five, the NRS mentor expects calculus claims to carry owners and dates.
-
 ### 6.6 Errors and limits
-Section six point six develops calculus ii with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section six point six, the NRS mentor expects calculus claims to carry owners and dates.
-
-Section six point six treats partial derivatives and gradients as testable only when evidence and ticket IDs are recorded.
-
-For section six point six, Northgate Rail Systems will not accept calculus work without a written trail.
-
 
 - Using first-order estimates far from the point where they are accurate.
 - Confusing L1, L2 and L∞ budgets.
@@ -562,17 +392,9 @@ You will (1) apply Bayes' rule to detection problems; (2) explain base rates and
 
 P(A | B) = P(B | A) P(A) / P(B). For a detector of malicious prompts, the true-positive rate is P(alert | malicious) and the false-positive rate is P(alert | benign). What operators care about is *precision*, P(malicious | alert), which depends strongly on the base rate P(malicious).
 
-Section seven point one develops probability and statistics with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section seven point one, the NRS mentor expects probability claims to carry owners and dates.
-
 ### 7.2 The base-rate effect
 
 The lab computes precision for three detectors and three prevalences. A detector with 95% TPR and 5% FPR looks good, but if only 1 in 1,000 prompts is malicious, fewer than 2% of its alerts are real. Arp et al. (arXiv:2010.09470) list the base-rate fallacy among the common pitfalls of machine learning in security.
-
-Section seven point two develops probability and statistics with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section seven point two, the NRS mentor expects probability claims to carry owners and dates.
 
 ```python
 """Lab B: base rates and alarm precision (Bayes' rule).
@@ -604,47 +426,19 @@ tpr=0.80 fpr=0.001 prevalence=0.001 precision=0.445 alerts_per_10k=18
 
 An observed rate k/n has uncertainty. The Wilson score interval is reliable even for small n or rates near 0 or 1. Report intervals, and size studies so intervals are narrow enough for the decision: n ≈ z² p(1 − p)/h² for half-width h.
 
-Section seven point three develops probability and statistics with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section seven point three, the NRS mentor expects probability claims to carry owners and dates.
-
-Section seven point three treats conditional probability and bayes as testable only when evidence and ticket IDs are recorded.
-
 ### 7.4 Distributions and independence
 
 Binomial models count successes in independent trials. Many security evaluations violate independence: prompts generated from one template are correlated, so the effective sample size is smaller. Group by template and resample groups (a *cluster bootstrap*) when estimating intervals.
-
-Section seven point four develops probability and statistics with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section seven point four, the NRS mentor expects probability claims to carry owners and dates.
-
-Section seven point four treats conditional probability and bayes as testable only when evidence and ticket IDs are recorded.
 
 ### 7.5 Comparing two systems
 
 To decide whether a new filter is better than the old one, run both on the *same* items and analyse the paired differences; item difficulty then cancels. A paired bootstrap — resample items, recompute the difference, take percentiles — gives an interval for the improvement. If the interval includes zero, the data do not show an improvement, however attractive the point estimate.
 
-Section seven point five develops probability and statistics with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section seven point five, the NRS mentor expects probability claims to carry owners and dates.
-
 ### 7.6 Worked example (synthetic NRS case)
 
 Wrench's injection detector had 95% TPR and 1% FPR in testing. Sam estimated that perhaps 1 in 1,000 supplier bulletins would ever contain an injection attempt. From the lab, precision would be about 8.7% with 109 alerts per 10,000 bulletins — mostly false alarms. Sam recommended routing alerts to a lightweight review queue rather than blocking, and pairing detection with privilege limits so that missed attacks have bounded impact.
 
-Section seven point six develops probability and statistics with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section seven point six, the NRS mentor expects probability claims to carry owners and dates.
-
 ### 7.7 Errors and limits
-Section seven point seven develops probability and statistics with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section seven point seven, the NRS mentor expects probability claims to carry owners and dates.
-
-Section seven point seven treats conditional probability and bayes as testable only when evidence and ticket IDs are recorded.
-
-For section seven point seven, Northgate Rail Systems will not accept probability work without a written trail.
-
 
 - Quoting accuracy instead of precision at realistic base rates.
 - Treating correlated samples as independent.
@@ -676,51 +470,23 @@ You will (1) describe CPUs, memory hierarchies, GPUs and accelerators used for m
 
 CPUs execute general instructions with deep caches. GPUs and AI accelerators execute thousands of simple operations in parallel, ideal for matrix multiplication. Models move between host memory and device memory; data in device memory may be shared across processes or tenants in cloud settings, so isolation matters.
 
-Section eight point one develops computer architecture with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section eight point one, the NRS mentor expects computer claims to carry owners and dates.
-
-Section eight point one treats processors and accelerators numeric as testable only when evidence and ticket IDs are recorded.
-
 ### 8.2 Numeric formats
 
 Training often uses 32-bit or 16-bit floating point; inference may use 8-bit integers (quantisation). Lower precision changes outputs slightly and can change decisions near boundaries. Security evaluations must use the *deployed* precision: an attack or defence measured in 32-bit may behave differently in 8-bit, and vice versa.
-
-Section eight point two develops computer architecture with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section eight point two, the NRS mentor expects computer claims to carry owners and dates.
-
-Section eight point two treats processors and accelerators numeric as testable only when evidence and ticket IDs are recorded.
 
 ### 8.3 Architectural attack surfaces
 
 Memory-safety bugs in model-serving code can expose weights or inputs. Shared caches and timing can leak information across processes (side channels). Hardware faults — including deliberately induced ones such as rowhammer-style bit flips — can corrupt weights; research has shown that a small number of flipped bits in a network's parameters can sharply degrade or redirect it. Firmware and drivers are part of the trusted computing base.
 
-Section eight point three develops computer architecture with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 8.4 Trusted execution and attestation
 
 Trusted execution environments (TEEs) and confidential-computing GPUs aim to protect code and data in use from the host operator, and *remote attestation* lets a client verify what code is running. They reduce some risks (curious cloud operator) but not others (a vulnerable model server inside the enclave, prompt injection).
-
-Section eight point four develops computer architecture with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section eight point four, the NRS mentor expects computer claims to carry owners and dates.
 
 ### 8.5 Worked example (synthetic NRS case)
 
 TrackEye runs on an edge computer in the inspection train with an 8-bit quantised model. Sam found the robustness tests had been run on the 32-bit model in the lab; rerunning on the deployed 8-bit build changed false negatives at dawn from 9.0% to 9.6%. Sam added "evaluate on the deployed artefact and hardware" as a requirement and noted that the edge computer's maintenance port gives physical access to firmware — a threat-model item.
 
-Section eight point five develops computer architecture with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 8.6 Errors and limits
-Section eight point six develops computer architecture with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section eight point six, the NRS mentor expects computer claims to carry owners and dates.
-
-Section eight point six treats processors and accelerators numeric as testable only when evidence and ticket IDs are recorded.
-
-For section eight point six, Northgate Rail Systems will not accept computer work without a written trail.
-
 
 - Evaluating a different numeric precision from the one deployed.
 - Assuming TEEs solve application-level attacks.
@@ -752,49 +518,23 @@ You will (1) structure larger programs into modules with clear interfaces; (2) m
 
 Large programs are divided into modules with narrow interfaces. For AI systems, separate *data loading*, *model inference*, *policy enforcement* and *tool execution*. The policy module should be small, reviewable and independent of the model: it decides what is allowed regardless of what the model says. This is the software form of least privilege.
 
-Section nine point one develops programming ii with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section nine point one, the NRS mentor expects programming claims to carry owners and dates.
-
 ### 9.2 Dependencies and supply chain
 
 AI projects pull many libraries and model files. Pin versions, verify hashes, and prefer safe serialisation: loading untrusted *pickle* files in Python can execute arbitrary code, which is why formats designed to hold only tensors are preferred for model weights. OWASP LLM 2025 lists *supply chain* (LLM03) and *data and model poisoning* (LLM04). Gu et al. (arXiv:1708.06733) showed that a backdoored model obtained from a third party can behave normally on clean inputs.
-
-Section nine point two develops programming ii with a Northgate Rail Systems note Sam Ito can demo offline.
 
 ### 9.3 Testing beyond examples
 
 Regression tests freeze known-good behaviour so changes cannot silently break it. Property-based tests generate many inputs and check invariants ("the policy never allows `create_work_order` without a confirmation flag"). For AI components, a *golden set* of inputs with expected outputs detects behavioural drift when a model or prompt changes.
 
-Section nine point three develops programming ii with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section nine point three, the NRS mentor expects programming claims to carry owners and dates.
-
 ### 9.4 An evaluation harness
 
 A harness loads a test set, runs the component, records outputs and computes metrics with intervals. It must be deterministic given a seed, log versions (model hash, prompt version, code commit) and keep test data separate from development data.
-
-Section nine point four develops programming ii with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section nine point four, the NRS mentor expects programming claims to carry owners and dates.
-
-Section nine point four treats modules and interfaces dependencies as testable only when evidence and ticket IDs are recorded.
 
 ### 9.5 Worked example (synthetic NRS case)
 
 Sam restructured Wrench into four modules. The `policy` module (80 lines) checks every proposed tool call against the user's role and requires a confirmation token for work orders. A property-based test generated 10,000 random tool-call requests and confirmed none passed without a token. The dependency review found a model-conversion script that loaded pickle files from a shared folder; Sam replaced it with a tensor-only format loader and added hash verification.
 
-Section nine point five develops programming ii with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 9.6 Errors and limits
-Section nine point six develops programming ii with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section nine point six, the NRS mentor expects programming claims to carry owners and dates.
-
-Section nine point six treats modules and interfaces dependencies as testable only when evidence and ticket IDs are recorded.
-
-For section nine point six, Northgate Rail Systems will not accept programming work without a written trail.
-
 
 - Policy logic embedded in prompts rather than code.
 - Unpinned dependencies and unverified model files.
@@ -826,47 +566,23 @@ You will (1) apply professional engineering ethics to AI systems; (2) distinguis
 
 Engineering codes of ethics put public safety, health and welfare first, require honesty about capabilities and limits, and require competence. For AI this means not overstating what a model can do, documenting known failure modes, and refusing to deploy where risk is unacceptable.
 
-Section ten point one develops engineering ethics and safety with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section ten point one, the NRS mentor expects engineering claims to carry owners and dates.
-
-Section ten point one treats professional duties safety and as testable only when evidence and ticket IDs are recorded.
-
 ### 10.2 Safety and security
 
 Safety engineering addresses accidental failure; security addresses deliberate attack. In AI they interact: an adversarial input can cause a safety failure (a missed rail defect), and a safety mechanism (a fallback to manual inspection) can be abused to cause denial of service. The NIST AI RMF (AI 100-1) lists *safe* and *secure and resilient* among trustworthy-AI characteristics and stresses managing them together.
-
-Section ten point two develops engineering ethics and safety with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section ten point two, the NRS mentor expects engineering claims to carry owners and dates.
 
 ### 10.3 Authorised testing and disclosure
 
 Test only systems you own or have written permission to test, within a defined scope and time. Never run attacks against public AI services without authorisation; terms of service often forbid it. When you find a vulnerability in someone else's product, report it privately to the vendor and agree a timeline before publishing (coordinated disclosure). Keep test data synthetic or properly governed; never extract or publish personal data.
 
-Section ten point three develops engineering ethics and safety with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 10.4 Law and regulation
 
 Regulation (EU) 2024/1689 (the AI Act) classifies some AI systems as high-risk — including safety components of critical infrastructure — and requires risk management, data governance, technical documentation, logging, human oversight, and accuracy, robustness and cybersecurity (Article 15). Obligations apply in stages from 2025 to 2027. Engineers should know whether their system may fall into a regulated category and involve legal experts; this book gives orientation, not legal advice.
-
-Section ten point four develops engineering ethics and safety with a Northgate Rail Systems note Sam Ito can demo offline.
 
 ### 10.5 Worked example (synthetic NRS case)
 
 A manager asked Sam to raise TrackEye's alert threshold to reduce false alarms before a demonstration. Sam computed that false negatives would rise from 2% to 5% on daytime data. Sam documented the trade-off, declined to change the production threshold without a safety review, and proposed a demonstration-only configuration clearly labelled as such. Sam also noted that TrackEye, as a safety component of rail infrastructure, may be high-risk under the AI Act, and flagged this for legal review.
 
-Section ten point five develops engineering ethics and safety with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 10.6 Errors and limits
-Section ten point six develops engineering ethics and safety with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section ten point six, the NRS mentor expects engineering claims to carry owners and dates.
-
-Section ten point six treats professional duties safety and as testable only when evidence and ticket IDs are recorded.
-
-For section ten point six, Northgate Rail Systems will not accept engineering work without a written trail.
-
 
 - Treating ethics as separate from technical decisions.
 - Testing third-party AI services without permission.
@@ -897,10 +613,6 @@ You will (1) explain the network path of a model-serving request (DNS, TCP, TLS,
 ### 11.1 The request path
 
 A client resolves the service name with DNS, opens a TCP connection, negotiates TLS (which authenticates the server and encrypts traffic) and sends an HTTP request — typically JSON containing a prompt or features. The server returns a response, perhaps streamed token by token. Each layer has its own failure modes: DNS spoofing, TLS misconfiguration, HTTP request smuggling, oversized bodies.
-
-Section eleven point one develops networks and protocols with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section eleven point one, the NRS mentor expects networks claims to carry owners and dates.
 
 ### 11.2 Threats specific to AI APIs
 
@@ -939,25 +651,11 @@ The lab shows a token bucket that serves a normal client fully while limiting a 
 
 Place training clusters, model registries, serving endpoints and tool back-ends in separate network zones. Serving should not reach training data stores; an LLM agent's tool back-end (for example a work-order system) should accept calls only from the policy service, not directly from the model host. Egress filtering prevents a compromised or manipulated component from sending data to arbitrary destinations — a direct mitigation for exfiltration through injected tool calls.
 
-Section eleven point three develops networks and protocols with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 11.4 Worked example (synthetic NRS case)
 
 Wrench's model host could reach the internet to fetch supplier bulletins and could also call the work-order API directly. Sam moved bulletin fetching into a separate ingestion service that stores sanitised copies, removed internet egress from the model host, and made the work-order API accept requests only from the policy service with mutual TLS.
 
-Section eleven point four develops networks and protocols with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section eleven point four, the NRS mentor expects networks claims to carry owners and dates.
-
 ### 11.5 Errors and limits
-Section eleven point five develops networks and protocols with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section eleven point five, the NRS mentor expects networks claims to carry owners and dates.
-
-Section eleven point five treats the request path threats as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point five, Northgate Rail Systems will not accept networks work without a written trail.
-
 
 - Rate limits on requests but not on tokens or compute.
 - Flat networks where the model host reaches everything.
@@ -989,29 +687,13 @@ You will (1) explain processes, users, permissions and isolation; (2) sandbox co
 
 The operating system runs programs as processes with an identity (user, groups) and enforces permissions on files, devices and network sockets. A model server should run as a dedicated unprivileged user with read-only access to its weights and no write access to code directories.
 
-Section twelve point one develops operating systems with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twelve point one, the NRS mentor expects operating claims to carry owners and dates.
-
-Section twelve point one treats processes and privileges isolation as testable only when evidence and ticket IDs are recorded.
-
 ### 12.2 Isolation mechanisms
 
 Containers (namespaces and control groups on Linux), virtual machines and system-call filters (seccomp) isolate processes. When an AI agent can run code — a "code interpreter" tool — that code must run in a sandbox with no network, a temporary file system, CPU and memory limits and a time limit. Treat every code string produced by a model as untrusted, because prompt injection can control it.
 
-Section twelve point two develops operating systems with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 12.3 Resource limits
 
 Control groups limit CPU, memory and GPU share; without them, one oversized request can starve others. This is the OS-level part of defending against unbounded consumption.
-
-Section twelve point three develops operating systems with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twelve point three, the NRS mentor expects operating claims to carry owners and dates.
-
-Section twelve point three treats processes and privileges isolation as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point three, Northgate Rail Systems will not accept operating work without a written trail.
 
 ### 12.4 Secrets and file permissions
 
@@ -1021,29 +703,11 @@ Model servers often need credentials — for a vector database, a tool API or a 
 
 System logs (authentication, process starts, file access audits) complement application logs. For AI incidents, correlate the model's request ID with OS events: did a tool call cause a process to start or a file to change?
 
-Section twelve point five develops operating systems with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twelve point five, the NRS mentor expects operating claims to carry owners and dates.
-
-Section twelve point five treats processes and privileges isolation as testable only when evidence and ticket IDs are recorded.
-
 ### 12.6 Worked example (synthetic NRS case)
 
 Wrench gained a "calculate" tool that runs short Python snippets for torque and wear calculations. Sam ran it in a container with no network, a read-only root, a 64 MB memory limit, a 2-second CPU limit and a seccomp profile. A synthetic test bulletin containing an instruction to "calculate" something that opened a network socket failed safely and was logged.
 
-Section twelve point six develops operating systems with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twelve point six, the NRS mentor expects operating claims to carry owners and dates.
-
 ### 12.7 Errors and limits
-Section twelve point seven develops operating systems with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twelve point seven, the NRS mentor expects operating claims to carry owners and dates.
-
-Section twelve point seven treats processes and privileges isolation as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point seven, Northgate Rail Systems will not accept operating work without a written trail.
-
 
 - Model servers running as root.
 - Code tools with network access.
@@ -1075,55 +739,23 @@ You will (1) model datasets with schemas, lineage and versions; (2) protect trai
 
 Every dataset should have a schema, a record of where each item came from (lineage or provenance), and a version identifier. Data-version tools or simple content hashes let you say exactly which data trained which model — essential when investigating poisoning.
 
-Section thirteen point one develops data systems with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirteen point one, the NRS mentor expects data claims to carry owners and dates.
-
-Section thirteen point one treats schemas lineage and versions as testable only when evidence and ticket IDs are recorded.
-
 ### 13.2 Integrity of training data
 
 Poisoning requires write access to some training data. Carlini et al. (arXiv:2302.10149) showed that web-scale datasets distributed as URL lists can be poisoned by buying expired domains; integrity hashes of the content at collection time defeat that particular attack. Restrict who can add or relabel data, log changes and review samples from new sources.
-
-Section thirteen point two develops data systems with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirteen point two, the NRS mentor expects data claims to carry owners and dates.
 
 ### 13.3 Retrieval stores
 
 RAG systems store document chunks and embeddings in a vector database. OWASP LLM 2025 lists *vector and embedding weaknesses* (LLM08): missing access control lets a user retrieve documents they should not see; poisoned documents can inject instructions. Enforce document-level permissions at retrieval time, using the *end user's* identity, and label each chunk's provenance and trust level.
 
-Section thirteen point three develops data systems with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirteen point three, the NRS mentor expects data claims to carry owners and dates.
-
 ### 13.4 Data protection
 
 Minimise personal data in training and retrieval; set retention limits; consider differential privacy for sensitive training (Abadi et al., arXiv:1607.00133). Membership inference (Shokri et al., arXiv:1610.05820) shows that models can reveal whether a record was used.
-
-Section thirteen point four develops data systems with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirteen point four, the NRS mentor expects data claims to carry owners and dates.
-
-Section thirteen point four treats schemas lineage and versions as testable only when evidence and ticket IDs are recorded.
 
 ### 13.5 Worked example (synthetic NRS case)
 
 Wrench's vector store held manuals, technician notes and HR safety-incident reports in one index. Any technician could retrieve HR reports through clever questions. Sam split indexes by sensitivity, added per-document access-control lists checked against the requesting user at query time, and added a provenance field (internal/contractor/external) that the prompt template uses to mark untrusted text.
 
-Section thirteen point five develops data systems with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirteen point five, the NRS mentor expects data claims to carry owners and dates.
-
 ### 13.6 Errors and limits
-Section thirteen point six develops data systems with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirteen point six, the NRS mentor expects data claims to carry owners and dates.
-
-Section thirteen point six treats schemas lineage and versions as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point six, Northgate Rail Systems will not accept data work without a written trail.
-
 
 - One retrieval index for all sensitivity levels.
 - Checking permissions with the service's identity instead of the user's.
@@ -1155,51 +787,23 @@ You will (1) apply a secure development lifecycle to AI-enabled software; (2) ma
 
 A secure development lifecycle adds security activities to each phase: requirements (abuse cases), design (threat modelling), implementation (secure coding, dependency control), verification (tests, evaluations, red-teaming) and release (sign-off, monitoring). For AI, the artefacts multiply: code, model weights, training data, prompts, retrieval indexes and evaluation sets. Each must be versioned and reviewed; a changed system prompt can alter security behaviour as much as a code change.
 
-Section fourteen point one develops software engineering with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 14.2 Configuration management for models and prompts
 
 Store prompts in version control, not in a web console. Give each model a registry entry with its hash, training-data version, evaluation results and approval status. Deploy by reference to a registry version, so that production can always be traced and rolled back.
-
-Section fourteen point two develops software engineering with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section fourteen point two, the NRS mentor expects software claims to carry owners and dates.
-
-Section fourteen point two treats lifecycle for ai software as testable only when evidence and ticket IDs are recorded.
 
 ### 14.3 Review and continuous integration
 
 Code review catches design and logic errors; for AI components also review prompt changes and data changes. Continuous integration should run unit tests, dependency checks, and a *security evaluation gate*: a fixed suite of injection, jailbreak and misuse tests with thresholds that block release if exceeded. The gate must use held-out tests, not the examples developers tuned against.
 
-Section fourteen point three develops software engineering with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section fourteen point three, the NRS mentor expects software claims to carry owners and dates.
-
 ### 14.4 Release and rollback
 
 Release gradually (canary deployment to a small share of traffic), watch metrics, and keep the previous version ready. For models, rollback means switching the registry reference — easy only if you planned for it.
-
-Section fourteen point four develops software engineering with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section fourteen point four, the NRS mentor expects software claims to carry owners and dates.
-
-Section fourteen point four treats lifecycle for ai software as testable only when evidence and ticket IDs are recorded.
 
 ### 14.5 Worked example (synthetic NRS case)
 
 A developer changed Wrench's system prompt to make answers friendlier. The CI security gate ran 300 held-out injection cases and found unauthorised-tool-call proposals rising from 1.0% to 4.3% (the policy layer still blocked them, but the gate's threshold for proposals was 2%). The release was blocked; the team found that a new sentence "always try to complete the user's goal" encouraged following instructions in retrieved text. They reworded it and the rate returned to 1.1%.
 
-Section fourteen point five develops software engineering with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 14.6 Errors and limits
-Section fourteen point six develops software engineering with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section fourteen point six, the NRS mentor expects software claims to carry owners and dates.
-
-Section fourteen point six treats lifecycle for ai software as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point six, Northgate Rail Systems will not accept software work without a written trail.
-
 
 - Prompts edited directly in production.
 - Security tests that developers have seen and tuned to.
@@ -1231,55 +835,23 @@ You will (1) apply confidentiality, integrity and availability (CIA) to AI asset
 
 Confidentiality: training data, prompts, model weights and outputs. Integrity: data, weights, retrieval content, model decisions and tool actions. Availability: inference capacity and dependent business processes. NIST AI 100-2 E2025 organises adversarial attacks on predictive AI by the attacker's objective — availability breakdown, integrity violation, privacy compromise — and adds misuse enablement for generative AI.
 
-Section fifteen point one develops security fundamentals with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section fifteen point one, the NRS mentor expects security claims to carry owners and dates.
-
 ### 15.2 Threat, vulnerability, risk, control
 
 A *threat* is a potential cause of harm (an actor or event). A *vulnerability* is a weakness it can exploit. *Risk* combines likelihood and impact. A *control* reduces likelihood or impact. For Wrench: threat — a malicious supplier; vulnerability — the model follows instructions in bulletins; impact — false work orders; control — human confirmation of work orders.
-
-Section fifteen point two develops security fundamentals with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section fifteen point two, the NRS mentor expects security claims to carry owners and dates.
 
 ### 15.3 Defence in depth
 
 No single control is perfect, especially for models whose behaviour is statistical. Layer controls: input provenance labelling, model-level instructions, output validation, policy enforcement outside the model, least-privilege tools, monitoring and human oversight. Each layer catches some failures of the others.
 
-Section fifteen point three develops security fundamentals with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section fifteen point three, the NRS mentor expects security claims to carry owners and dates.
-
-Section fifteen point three treats cia for ai threat as testable only when evidence and ticket IDs are recorded.
-
 ### 15.4 The attacker's knowledge and capabilities
 
 The taxonomy also classifies attackers by knowledge (white-box, grey-box, black-box) and capabilities (control of training data, of the model, of queries, of the source code). Stating these turns vague fears into testable threat models.
-
-Section fifteen point four develops security fundamentals with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section fifteen point four, the NRS mentor expects security claims to carry owners and dates.
-
-Section fifteen point four treats cia for ai threat as testable only when evidence and ticket IDs are recorded.
 
 ### 15.5 Worked example (synthetic NRS case)
 
 Sam built a CIA table for TrackEye. Confidentiality: low (images of rails are not secret) but model weights are commercially valuable. Integrity: critical — a missed defect is a safety risk; poisoning through the labelling contractor and physical markings were the main threats. Availability: moderate — if TrackEye is down, manual inspection continues at higher cost. The table steered effort toward integrity controls.
 
-Section fifteen point five develops security fundamentals with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section fifteen point five, the NRS mentor expects security claims to carry owners and dates.
-
 ### 15.6 Errors and limits
-Section fifteen point six develops security fundamentals with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section fifteen point six, the NRS mentor expects security claims to carry owners and dates.
-
-Section fifteen point six treats cia for ai threat as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point six, Northgate Rail Systems will not accept security work without a written trail.
-
 
 - Treating "AI security" as only prompt injection.
 - Single-control designs.
@@ -1311,53 +883,23 @@ You will (1) apply the systems-engineering V-model to AI-enabled systems; (2) de
 
 Systems engineering descends from stakeholder needs to system requirements, architecture, component design and implementation, then ascends through component verification, integration testing, system verification and validation against needs. Every requirement on the left has a verification activity on the right. AI components fit into this but need statistical verification methods (rates with intervals) rather than single pass/fail tests.
 
-Section sixteen point one develops systems engineering with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section sixteen point one, the NRS mentor expects systems claims to carry owners and dates.
-
 ### 16.2 Requirements decomposition
 
 A system requirement such as "rail defects larger than 10 mm are detected with probability ≥ 0.98 in all operating conditions" decomposes into camera, lighting, model, alerting and human-review requirements. The model's share might be "false-negative rate ≤ 1.5% in each condition stratum with 95% upper bound", leaving margin for other components.
-
-Section sixteen point two develops systems engineering with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section sixteen point two, the NRS mentor expects systems claims to carry owners and dates.
-
-Section sixteen point two treats the v-model requirements decomposition as testable only when evidence and ticket IDs are recorded.
 
 ### 16.3 Interfaces and emergence
 
 Interfaces carry assumptions: the model assumes images at a given resolution and exposure; the alert system assumes the model's confidence is calibrated. Emergent behaviour arises when components interact — for example, an LLM agent combining two harmless tools to produce a harmful effect. Interface control documents should state data formats, trust levels and failure behaviour.
 
-Section sixteen point three develops systems engineering with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section sixteen point three, the NRS mentor expects systems claims to carry owners and dates.
-
 ### 16.4 Hazard analysis
 
 Techniques such as failure modes and effects analysis (FMEA) and system-theoretic process analysis (STPA) look for ways the system can reach hazardous states. Add AI failure modes: distribution shift, adversarial inputs, poisoning, overconfidence, unsafe tool use. STPA's focus on unsafe control actions is a natural fit for agents that issue commands.
-
-Section sixteen point four develops systems engineering with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section sixteen point four, the NRS mentor expects systems claims to carry owners and dates.
 
 ### 16.5 Worked example (synthetic NRS case)
 
 Sam ran an FMEA row for TrackEye: failure mode "missed defect under glare"; effect "defect undetected until next run"; cause "distribution shift"; detection "dawn stratum monitoring"; severity 9, occurrence 4, detection 5, risk priority number 180. A second row for "adversarial marking" had severity 9, occurrence 2, detection 7 (hard to detect), RPN 126. Both exceeded the action threshold of 100.
 
-Section sixteen point five develops systems engineering with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section sixteen point five, the NRS mentor expects systems claims to carry owners and dates.
-
 ### 16.6 Errors and limits
-Section sixteen point six develops systems engineering with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section sixteen point six, the NRS mentor expects systems claims to carry owners and dates.
-
-Section sixteen point six treats the v-model requirements decomposition as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point six, Northgate Rail Systems will not accept systems work without a written trail.
-
 
 - Requirements on AI components without statistical verification methods.
 - Interfaces that do not state trust levels.
@@ -1389,12 +931,6 @@ You will (1) describe open- and closed-loop control, feedback, gain and stabilit
 
 A closed-loop controller measures output, compares it with a target and adjusts input. Gain determines how strongly it reacts; too much gain causes oscillation or instability, too little causes slow response. Delays in the loop make instability more likely.
 
-Section seventeen point one develops control and feedback basics with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section seventeen point one, the NRS mentor expects control claims to carry owners and dates.
-
-Section seventeen point one treats feedback and stability feedback as testable only when evidence and ticket IDs are recorded.
-
 ### 17.2 Feedback loops in AI systems
 
 AI systems often form loops: a model's decisions change the data it is later retrained on; an anomaly model whose alerts trigger maintenance never sees what would have happened without maintenance; an agent observes the results of its own tool calls and plans further actions. Loops can amplify small errors — and amplify an attacker's influence. If attackers can inject data that is fed back into training (for example user feedback "thumbs up" on manipulated answers), they can steer the model over time; this is a poisoning path (OWASP LLM04).
@@ -1403,35 +939,15 @@ AI systems often form loops: a model's decisions change the data it is later ret
 
 Control engineers bound actuator commands, rate-limit changes, and add interlocks that override the controller when measurements leave a safe region. Apply the same to AI: bound the actions an agent may take per hour, require human approval outside an envelope, and add independent checks (a simple rule-based monitor) that can veto the model.
 
-Section seventeen point three develops control and feedback basics with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section seventeen point three, the NRS mentor expects control claims to carry owners and dates.
-
 ### 17.4 Monitoring loops
 
 Monitor input distribution, output distribution and outcome rates. Sudden changes may indicate drift or attack; slow drift may indicate a feedback loop. Keep a reference dataset that is not influenced by the model to measure true performance.
-
-Section seventeen point four develops control and feedback basics with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section seventeen point four, the NRS mentor expects control claims to carry owners and dates.
-
-Section seventeen point four treats feedback and stability feedback as testable only when evidence and ticket IDs are recorded.
 
 ### 17.5 Worked example (synthetic NRS case)
 
 Pulse's thresholds were automatically retuned weekly from technician feedback on alerts. A contractor team, under schedule pressure, marked many true alerts as "false alarm"; over six weeks the threshold rose and true-positive rate fell from 92% to 78% on the reference set. Sam replaced automatic retuning with a bounded update (at most 2% threshold change per week), a reference-set check before each change, and review of feedback from any team whose feedback diverged sharply from others.
 
-Section seventeen point five develops control and feedback basics with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 17.6 Errors and limits
-Section seventeen point six develops control and feedback basics with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section seventeen point six, the NRS mentor expects control claims to carry owners and dates.
-
-Section seventeen point six treats feedback and stability feedback as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point six, Northgate Rail Systems will not accept control work without a written trail.
-
 
 - Retraining on model-influenced data without a clean reference.
 - Unbounded automatic updates.
@@ -1463,53 +979,23 @@ You will (1) apply architecture principles (least privilege, separation of dutie
 
 Saltzer and Schroeder's classic principles still apply. *Least privilege*: the model and its tools get only the permissions needed. *Complete mediation*: every action is checked by a policy point, every time. *Fail-safe defaults*: deny unless explicitly allowed. *Separation of duties*: the component that proposes an action is not the one that approves it. *Economy of mechanism*: keep the policy small enough to review.
 
-Section eighteen point one develops security architecture with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section eighteen point one, the NRS mentor expects security claims to carry owners and dates.
-
 ### 18.2 Trust boundaries
 
 A trust boundary is where data or control passes between parties with different trust. In LLM applications the critical boundary runs *inside* the prompt: system instructions (trusted), user input (partly trusted), retrieved or tool-returned content (untrusted). Because the model cannot reliably enforce this boundary, the architecture must enforce consequences outside the model.
-
-Section eighteen point two develops security architecture with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section eighteen point two, the NRS mentor expects security claims to carry owners and dates.
 
 ### 18.3 A reference architecture for agents
 
 Components: (1) an ingestion service that labels provenance; (2) the model, which *proposes* actions; (3) a policy decision point that checks each proposal against identity, scope and rules; (4) tool adapters with narrow credentials; (5) human approval for high-impact actions; (6) logging and monitoring. Research on structured queries (Chen et al., arXiv:2402.06363) improves the model's own separation of instructions and data but does not replace the external policy point. OWASP LLM06 (*excessive agency*) warns against excessive functionality, permissions and autonomy.
 
-Section eighteen point three develops security architecture with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 18.4 Architecture decision records
 
 Record each significant decision: context, options considered, decision, consequences, threats addressed and residual risk. Reviewers and future engineers can then see why a control exists.
-
-Section eighteen point four develops security architecture with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section eighteen point four, the NRS mentor expects security claims to carry owners and dates.
-
-Section eighteen point four treats principles trust boundaries reference as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point four, Northgate Rail Systems will not accept security work without a written trail.
 
 ### 18.5 Worked example (synthetic NRS case)
 
 Sam wrote ADR-007: "Wrench work-order creation". Options: (a) model calls API directly; (b) model proposes, policy checks, technician confirms; (c) no tool, model drafts text for the technician to copy. Decision: (b). Consequences: one more click for technicians; injected instructions cannot create orders without a human. Residual risk: technicians may approve without reading — mitigated by showing the source document of any instruction-like text.
 
-Section eighteen point five develops security architecture with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section eighteen point five, the NRS mentor expects security claims to carry owners and dates.
-
 ### 18.6 Errors and limits
-Section eighteen point six develops security architecture with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section eighteen point six, the NRS mentor expects security claims to carry owners and dates.
-
-Section eighteen point six treats principles trust boundaries reference as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point six, Northgate Rail Systems will not accept security work without a written trail.
-
 
 - Trusting the model to enforce boundaries in its prompt.
 - Tools with broad credentials "for convenience".
@@ -1541,19 +1027,9 @@ You will (1) design identity and access for users, services and AI agents; (2) a
 
 Every action must be attributable. An AI agent should act *on behalf of* a user with delegated, scoped permissions (for example OAuth tokens restricted to specific scopes) rather than with a powerful service account. Short-lived credentials limit damage if leaked; never place credentials in prompts.
 
-Section nineteen point one develops identity and cryptography with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section nineteen point one, the NRS mentor expects identity claims to carry owners and dates.
-
-Section nineteen point one treats identities for agents hashing as testable only when evidence and ticket IDs are recorded.
-
 ### 19.2 Hashing and manifests
 
 A cryptographic hash such as SHA-256 maps a file to a fixed-size digest; any change — even one bit — produces a different digest. A manifest lists the expected digest of every artefact (weights, tokenizer, configuration). The lab detects both a one-bit change in weights and an added configuration line.
-
-Section nineteen point two develops identity and cryptography with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section nineteen point two, the NRS mentor expects identity claims to carry owners and dates.
 
 ```python
 """Lab H: integrity of model artefacts with SHA-256 manifests (stdlib only).
@@ -1590,39 +1066,15 @@ tokenizer.json  OK
 
 A hash proves a file matches a manifest; a *digital signature* on the manifest proves who produced it. Signing model artefacts and recording provenance (which data, code and pipeline produced them) lets consumers verify origin. This addresses OWASP LLM03 (*supply chain*) and backdoor risks from third-party models (Gu et al., arXiv:1708.06733).
 
-Section nineteen point three develops identity and cryptography with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section nineteen point three, the NRS mentor expects identity claims to carry owners and dates.
-
 ### 19.4 Encryption
 
 Encrypt training data and weights at rest and all traffic in transit (TLS). Encryption protects confidentiality against storage theft and interception but not against a legitimate-looking query that extracts information from the model.
-
-Section nineteen point four develops identity and cryptography with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section nineteen point four, the NRS mentor expects identity claims to carry owners and dates.
-
-Section nineteen point four treats identities for agents hashing as testable only when evidence and ticket IDs are recorded.
 
 ### 19.5 Worked example (synthetic NRS case)
 
 NRS receives TrackEye model updates from a vision-model supplier. Sam required a signed manifest with SHA-256 digests for each file, verified on the inspection-train computer before loading. In a test, a modified configuration enabling remote code loading was rejected, matching the lab's `config.yaml MISMATCH`.
 
-Section nineteen point five develops identity and cryptography with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section nineteen point five, the NRS mentor expects identity claims to carry owners and dates.
-
-Section nineteen point five treats identities for agents hashing as testable only when evidence and ticket IDs are recorded.
-
 ### 19.6 Errors and limits
-Section nineteen point six develops identity and cryptography with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section nineteen point six, the NRS mentor expects identity claims to carry owners and dates.
-
-Section nineteen point six treats identities for agents hashing as testable only when evidence and ticket IDs are recorded.
-
-For section nineteen point six, Northgate Rail Systems will not accept identity work without a written trail.
-
 
 - Agents using shared admin service accounts.
 - Hashes fetched from the same place as the files (an attacker can change both).
@@ -1654,15 +1106,9 @@ You will (1) describe the AI lifecycle (data, training, evaluation, deployment, 
 
 Data collection can be poisoned; labelling can be corrupted; training pipelines and third-party models can carry backdoors; evaluation can be gamed or leaked; deployed models face evasion, extraction, membership inference and prompt injection; monitoring can be blinded; retired models may leave data behind. Each stage needs owners and controls.
 
-Section twenty point one develops ai and machine-learning security engineering with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty point one, the NRS mentor expects ai claims to carry owners and dates.
-
 ### 20.2 The NIST AI RMF as an organising frame
 
 NIST AI 100-1 defines four functions. *Govern*: policies, roles, accountability. *Map*: context, intended use, stakeholders, risks. *Measure*: analyse, assess and track risks with appropriate methods. *Manage*: prioritise and act on risks. NIST AI 600-1 profiles these for generative AI and lists risks such as information security, confabulation and data privacy with suggested actions. Engineers mostly work in Map, Measure and Manage, inside Govern's rules.
-
-Section twenty point two develops ai and machine-learning security engineering with a Northgate Rail Systems note Sam Ito can demo offline.
 
 ### 20.3 Which framework for which question
 
@@ -1673,35 +1119,15 @@ Section twenty point two develops ai and machine-learning security engineering w
 
 Frameworks give vocabulary and checklists; they are not evidence that a system is secure.
 
-Section twenty point three develops ai and machine-learning security engineering with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 20.4 Scoping
 
 An engineering task needs a scope: which system, which lifecycle stages, which threats, what assets and what is out of scope. Explicit exclusions prevent false assurance.
-
-Section twenty point four develops ai and machine-learning security engineering with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty point four, the NRS mentor expects ai claims to carry owners and dates.
-
-Section twenty point four treats the lifecycle and its as testable only when evidence and ticket IDs are recorded.
 
 ### 20.5 Worked example (synthetic NRS case)
 
 NRS asked Sam to "secure the AI". Sam turned it into three scoped workstreams: TrackEye integrity (poisoning via labelling contractor; physical adversarial markings; supply-chain of model updates), Wrench agency (prompt injection; excessive agency; sensitive disclosure), and Pulse resilience (sensor spoofing; feedback-loop drift). Model extraction was explicitly out of scope for this quarter because no AI API is exposed externally.
 
-Section twenty point five develops ai and machine-learning security engineering with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty point five, the NRS mentor expects ai claims to carry owners and dates.
-
 ### 20.6 Errors and limits
-Section twenty point six develops ai and machine-learning security engineering with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty point six, the NRS mentor expects ai claims to carry owners and dates.
-
-Section twenty point six treats the lifecycle and its as testable only when evidence and ticket IDs are recorded.
-
-For section twenty point six, Northgate Rail Systems will not accept ai work without a written trail.
-
 
 - Using a framework checklist as proof of security.
 - Scopes with no exclusions.
@@ -1733,15 +1159,7 @@ You will (1) write security requirements for AI components that are specific, me
 
 An abuse case describes how someone could misuse the system: "A supplier embeds an instruction in a bulletin that causes Wrench to schedule unnecessary maintenance." Each abuse case yields requirements that prevent, detect or limit it.
 
-Section twenty-one point one develops ai and machine-learning security requirements with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-one point one, the NRS mentor expects ai claims to carry owners and dates.
-
-Section twenty-one point one treats from abuse cases to as testable only when evidence and ticket IDs are recorded.
-
 ### 21.2 Kinds of requirement
-Section twenty-one point two develops ai and machine-learning security requirements with a Northgate Rail Systems note Sam Ito can demo offline.
-
 
 - **Functional security**: "Work orders require technician confirmation."
 - **Statistical behaviour**: "On the held-out injection suite (≥ 600 cases), Wrench proposes unauthorised tool calls in ≤ 2% of cases (95% upper bound)."
@@ -1753,35 +1171,15 @@ Section twenty-one point two develops ai and machine-learning security requireme
 
 State the population (test suite), metric, threshold, confidence level and minimum sample size. "Robust to attacks" is not verifiable. "Accuracy under PGD with L∞ ε = 4/255 ≥ 70% on the held-out set" is — and it states the threat model implicitly.
 
-Section twenty-one point three develops ai and machine-learning security requirements with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-one point three, the NRS mentor expects ai claims to carry owners and dates.
-
-Section twenty-one point three treats from abuse cases to as testable only when evidence and ticket IDs are recorded.
-
 ### 21.4 Traceability
 
 Link each requirement to its source (abuse case, OWASP entry, AI Act article, ISO/IEC 42001 control objective) and its verification method. EU AI Act Article 15 requires high-risk systems to be resilient against attempts to alter use or performance by exploiting vulnerabilities, naming data poisoning, model poisoning, adversarial examples and confidentiality attacks; requirements addressing each make compliance arguments traceable.
-
-Section twenty-one point four develops ai and machine-learning security requirements with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-one point four, the NRS mentor expects ai claims to carry owners and dates.
 
 ### 21.5 Worked example (synthetic NRS case)
 
 Sam wrote REQ-AI-014: "TrackEye false-negative rate for defects ≥ 10 mm shall be ≤ 1.5% with 95% upper bound, per condition stratum (day, dawn/dusk, night, rain), on a held-out set of ≥ 1,000 defects per stratum; verified by test report at each release." Source: hazard H-03 and AI Act Art. 15 (accuracy). REQ-AI-015 addressed adversarial markings: "No single marking ≤ 20 × 20 cm placed ≥ 0.5 m from the rail shall reduce detection of an adjacent defect below 95% in the physical test campaign."
 
-Section twenty-one point five develops ai and machine-learning security requirements with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 21.6 Errors and limits
-Section twenty-one point six develops ai and machine-learning security requirements with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-one point six, the NRS mentor expects ai claims to carry owners and dates.
-
-Section twenty-one point six treats from abuse cases to as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-one point six, Northgate Rail Systems will not accept ai work without a written trail.
-
 
 - Requirements without thresholds or test sets.
 - Thresholds without confidence bounds.
@@ -1813,55 +1211,23 @@ You will (1) build data-flow diagrams for AI systems with trust levels; (2) mode
 
 Draw external entities (users, suppliers), processes (ingestion, model, policy, tools), data stores (training set, vector store, logs) and flows. Annotate each flow with trust level and data classification. AI adds new elements: training pipelines, model registries, prompt templates and evaluation stores.
 
-Section twenty-two point one develops ai and machine-learning security system with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-two point one, the NRS mentor expects ai claims to carry owners and dates.
-
-Section twenty-two point one treats data-flow diagrams for ai as testable only when evidence and ticket IDs are recorded.
-
 ### 22.2 Provenance and taint
 
 Taint tracking marks data from untrusted sources and follows it through processing. In LLM systems, any text derived from untrusted input — including a model's summary of an untrusted document — remains tainted. Tool calls whose arguments are tainted deserve extra checks. Greshake et al. (arXiv:2302.12173) demonstrated how injected content travels from a retrieved source into actions.
-
-Section twenty-two point two develops ai and machine-learning security system with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-two point two, the NRS mentor expects ai claims to carry owners and dates.
 
 ### 22.3 Assets, entry points, sinks
 
 Assets: data, weights, decisions, credentials, reputation. Entry points: anywhere data enters (uploads, retrieval, sensors, feedback). Privileged sinks: actions with impact (sending e-mail, writing records, actuating equipment). The most important paths run from low-trust entry points to high-impact sinks.
 
-Section twenty-two point three develops ai and machine-learning security system with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-two point three, the NRS mentor expects ai claims to carry owners and dates.
-
-Section twenty-two point three treats data-flow diagrams for ai as testable only when evidence and ticket IDs are recorded.
-
 ### 22.4 Data models
 
 Describe training data composition (sources, classes, conditions), its update process and who can modify it. A datasheet (Gebru et al., arXiv:1803.09010) is the documentation form; the data model is the engineering form.
-
-Section twenty-two point four develops ai and machine-learning security system with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-two point four, the NRS mentor expects ai claims to carry owners and dates.
-
-Section twenty-two point four treats data-flow diagrams for ai as testable only when evidence and ticket IDs are recorded.
 
 ### 22.5 Worked example (synthetic NRS case)
 
 Sam's DFD for Wrench marked supplier bulletins and contractor notes as low trust, manuals as medium (they come from manufacturers but are rarely altered), and technician chat as authenticated. Taint propagated through the model's summaries into the `create_work_order` arguments. Three privileged sinks were found: work-order creation, parts e-mail and a forgotten "update asset status" tool that a pilot had enabled. Sam removed the third tool until it had its own review.
 
-Section twenty-two point five develops ai and machine-learning security system with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 22.6 Errors and limits
-Section twenty-two point six develops ai and machine-learning security system with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-two point six, the NRS mentor expects ai claims to carry owners and dates.
-
-Section twenty-two point six treats data-flow diagrams for ai as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-two point six, Northgate Rail Systems will not accept ai work without a written trail.
-
 
 - Diagrams without trust levels.
 - Treating model output as clean because the model "processed" it.
@@ -1893,37 +1259,17 @@ You will (1) run a structured threat analysis on an AI system using STRIDE-style
 
 Walk each element of the data-flow diagram and ask: can it be *spoofed* (fake sensor, fake supplier), *tampered* (poisoned data, modified weights), *repudiated* (untraceable agent action), *disclosed* (membership inference, prompt leakage), *denied* (resource exhaustion), or used to *elevate privilege* (prompt injection reaching a tool)? Add AI-specific prompts: can the model be *evaded*, *extracted*, *backdoored*, or made to *confabulate* convincingly?
 
-Section twenty-three point one develops ai and machine-learning security threat with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-three point one, the NRS mentor expects ai claims to carry owners and dates.
-
 ### 23.2 Mapping to shared catalogues
 
 MITRE ATLAS organises adversary behaviour against AI into tactics (such as reconnaissance, resource development, initial access, ML model access, persistence, defense evasion, discovery, collection, ML attack staging, exfiltration and impact) and techniques, with real-world case studies. Mapping your threats to ATLAS techniques and OWASP LLM entries helps reviewers check coverage and links to known mitigations.
-
-Section twenty-three point two develops ai and machine-learning security threat with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-three point two, the NRS mentor expects ai claims to carry owners and dates.
 
 ### 23.3 Combining with failure analysis
 
 Threats and failures often share effects: a missed defect can come from glare (failure) or a marking (attack). Analyse them together, so that controls such as stratified monitoring and manual fallback cover both.
 
-Section twenty-three point three develops ai and machine-learning security threat with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-three point three, the NRS mentor expects ai claims to carry owners and dates.
-
-Section twenty-three point three treats structured threat analysis mapping as testable only when evidence and ticket IDs are recorded.
-
 ### 23.4 Ranking
 
 Estimate likelihood (attacker capability and motivation, exposure) and impact (safety, financial, legal, reputational). Use a simple ordinal scale and document reasoning. Re-rank when the system or threat landscape changes.
-
-Section twenty-three point four develops ai and machine-learning security threat with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-three point four, the NRS mentor expects ai claims to carry owners and dates.
-
-Section twenty-three point four treats structured threat analysis mapping as testable only when evidence and ticket IDs are recorded.
 
 ### 23.4b Keeping the analysis alive
 
@@ -1933,17 +1279,7 @@ Threat models age. New tools, data sources, model versions and published attacks
 
 Sam's top five for Wrench: (1) indirect injection via supplier bulletin → work-order tool (likelihood medium, impact high); (2) contractor-note injection (medium/high); (3) sensitive disclosure from HR documents in retrieval (medium/medium, mitigated in Chapter 13); (4) system-prompt extraction revealing tool names (high/low); (5) resource exhaustion via very long documents (medium/medium). Each was mapped to OWASP (LLM01, LLM01, LLM02, LLM07, LLM10) and to ATLAS techniques for prompt injection and denial of ML service.
 
-Section twenty-three point five develops ai and machine-learning security threat with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 23.6 Errors and limits
-Section twenty-three point six develops ai and machine-learning security threat with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-three point six, the NRS mentor expects ai claims to carry owners and dates.
-
-Section twenty-three point six treats structured threat analysis mapping as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-three point six, Northgate Rail Systems will not accept ai work without a written trail.
-
 
 - Threat lists without the system model behind them.
 - Ignoring non-adversarial failures with the same effect.
@@ -1974,12 +1310,6 @@ You will (1) run basic adversarial evaluations — evasion, poisoning and member
 ### 24.1 Evasion evaluation
 
 Evasion tests perturb inputs within a budget and measure accuracy. Report accuracy as a function of budget. The lab trains a logistic regression and applies FGSM-style perturbations; accuracy drops from 98.5% to chance as ε grows.
-
-Section twenty-four point one develops ai and machine-learning security methods with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-four point one, the NRS mentor expects ai claims to carry owners and dates.
-
-Section twenty-four point one treats evasion evaluation poisoning evaluation as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Lab E: evasion of a toy linear classifier (synthetic data, stdlib only).
@@ -2028,12 +1358,6 @@ eps=1.00 accuracy=0.505
 ### 24.2 Poisoning evaluation
 
 Poisoning tests add or relabel training data and measure both clean accuracy and targeted effects. Backdoor success can be high while clean accuracy is unchanged, so both metrics are essential.
-
-Section twenty-four point two develops ai and machine-learning security methods with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-four point two, the NRS mentor expects ai claims to carry owners and dates.
-
-Section twenty-four point two treats evasion evaluation poisoning evaluation as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Lab P: label-flip poisoning and a backdoor trigger on a toy nearest-centroid
@@ -2091,14 +1415,6 @@ backdoor: add n triggered class-1 points labelled 0
 
 Privacy tests measure how well an attacker can distinguish training members from non-members, as AUC and as true-positive rate at low false-positive rate.
 
-Section twenty-four point three develops ai and machine-learning security methods with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-four point three, the NRS mentor expects ai claims to carry owners and dates.
-
-Section twenty-four point three treats evasion evaluation poisoning evaluation as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point three, Northgate Rail Systems will not accept ai work without a written trail.
-
 ```python
 """Lab M: membership inference against an overfit 1-nearest-neighbour 'model'
 that returns a confidence score. Synthetic records only; teaching model."""
@@ -2135,10 +1451,6 @@ k=25 attack_auc=0.520 best_advantage=0.060
 
 Toy models make concepts measurable in seconds; real models need stronger attacks (multi-step PGD per Madry et al., arXiv:1706.06083; adaptive attacks per Carlini et al., arXiv:1902.06705), larger test sets and authorised environments. Always evaluate the deployed artefact. Never run these methods against systems you are not authorised to test.
 
-Section twenty-four point four develops ai and machine-learning security methods with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-four point four, the NRS mentor expects ai claims to carry owners and dates.
-
 ### 24.4b Reading results responsibly
 
 Each evaluation answers a narrow question: "how does *this* model behave under *this* attack with *this* budget?" Record the attack, its parameters, the number of test items, seeds and intervals. A strong result under a weak attack says little; a weak result under a strong attack is informative. When a defence appears to work, try an attack that knows the defence before believing it — the central lesson of Athalye et al. (arXiv:1802.00420). Keep all evaluation code and outputs so that later model versions can be compared on exactly the same tests.
@@ -2147,17 +1459,7 @@ Each evaluation answers a narrow question: "how does *this* model behave under *
 
 Sam ran the three labs to brief NRS managers in fifteen minutes: evasion shows sensitivity to small changes, poisoning shows why the labelling contractor matters, and membership inference shows why Pulse's sensor data should not be exposed with full confidences. Sam then scoped a real evaluation of TrackEye in the test yard with printed markings, with the operations director's written authorization.
 
-Section twenty-four point five develops ai and machine-learning security methods with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 24.6 Errors and limits
-Section twenty-four point six develops ai and machine-learning security methods with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-four point six, the NRS mentor expects ai claims to carry owners and dates.
-
-Section twenty-four point six treats evasion evaluation poisoning evaluation as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point six, Northgate Rail Systems will not accept ai work without a written trail.
-
 
 - Reporting one ε point.
 - Measuring only clean accuracy after poisoning.
@@ -2189,39 +1491,17 @@ You will (1) work in a team to design an AI-enabled subsystem with security requ
 
 Teams of three to five receive a brief, produce a design in two weeks, present it to a panel and revise it. The panel plays roles: operator, attacker, safety assessor and budget owner. The point is to practise making and defending trade-offs, not to find a perfect design.
 
-Section twenty-five point one develops design studio with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-five point one, the NRS mentor expects design claims to carry owners and dates.
-
 ### 25.2 The brief (synthetic)
 
 Design an LLM-based assistant that helps NRS depot planners schedule inspections using maintenance history, weather forecasts and supplier bulletins. It may propose schedule changes; a planner must approve them.
-
-Section twenty-five point two develops design studio with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-five point two, the NRS mentor expects design claims to carry owners and dates.
-
-Section twenty-five point two treats studio format the brief as testable only when evidence and ticket IDs are recorded.
 
 ### 25.3 The design package
 
 1. Context and stakeholders. 2. Requirements (functional, security, statistical, operational) with verification methods. 3. Architecture with trust boundaries and an external policy point. 4. Threat model ranked and mapped to OWASP/ATLAS. 5. Verification plan: evaluation suites, sample sizes, gates. 6. Residual risks and open questions.
 
-Section twenty-five point three develops design studio with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-five point three, the NRS mentor expects design claims to carry owners and dates.
-
-Section twenty-five point three treats studio format the brief as testable only when evidence and ticket IDs are recorded.
-
 ### 25.4 Critique
 
 Each panel role asks questions from its perspective. The attacker role is especially valuable: "I control a weather-feed mirror. What can I do?" Teams must answer with their architecture, not with promises about the model.
-
-Section twenty-five point four develops design studio with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-five point four, the NRS mentor expects design claims to carry owners and dates.
-
-Section twenty-five point four treats studio format the brief as testable only when evidence and ticket IDs are recorded.
 
 ### 25.4b Trade-off tables
 
@@ -2231,17 +1511,7 @@ Present alternatives in a table with columns for security effect, safety effect,
 
 Sam's team proposed reading supplier bulletins directly into the planner prompt. The attacker panelist showed (in design terms) that a bulletin could ask the model to postpone inspections on a route. The team revised: bulletins are summarised by a separate low-privilege model whose output is labelled untrusted; schedule changes affecting safety-critical inspections require two approvals; and every proposed change shows the source documents that influenced it.
 
-Section twenty-five point five develops design studio with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 25.6 Errors and limits
-Section twenty-five point six develops design studio with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-five point six, the NRS mentor expects design claims to carry owners and dates.
-
-Section twenty-five point six treats studio format the brief as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point six, Northgate Rail Systems will not accept design work without a written trail.
-
 
 - Designs that rely on the model "ignoring" malicious text.
 - Packages without verification plans.
@@ -2283,47 +1553,19 @@ These patterns reduce injection impact by limiting what untrusted text can influ
 
 Return labels rather than full probability vectors when clients do not need confidences (reduces extraction and membership-inference signal); add input validation and out-of-distribution detection; ensemble or randomise where it increases attack cost; isolate training from serving.
 
-Section twenty-six point two develops ai and machine-learning security architecture with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-six point two, the NRS mentor expects ai claims to carry owners and dates.
-
-Section twenty-six point two treats patterns for llm applications as testable only when evidence and ticket IDs are recorded.
-
 ### 26.3 Hosted versus self-hosted
 
 Hosted models offer strong operations and fast updates but change without notice, process data outside your boundary and may restrict testing. Self-hosted models give control and reproducibility but make you responsible for patching, capacity and safety tuning. The choice is a risk decision involving data protection, testing authority and supply-chain trust.
-
-Section twenty-six point three develops ai and machine-learning security architecture with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-six point three, the NRS mentor expects ai claims to carry owners and dates.
 
 ### 26.4 Trade-off analysis
 
 Score each alternative on residual injection impact, data exposure, utility, latency, cost and operational burden. Make the weighting explicit and get stakeholders to agree on it before scoring.
 
-Section twenty-six point four develops ai and machine-learning security architecture with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-six point four, the NRS mentor expects ai claims to carry owners and dates.
-
-Section twenty-six point four treats patterns for llm applications as testable only when evidence and ticket IDs are recorded.
-
 ### 26.5 Worked example (synthetic NRS case)
 
 For the depot-planner assistant, Sam compared single-model, dual-model and plan-then-execute. Dual-model scored best on injection impact (untrusted bulletins only produce a constrained "affected asset IDs and severity" record) but cost 30% more latency. Plan-then-execute could not handle planners' iterative questions well. The team chose dual-model for bulletin processing and single-model for free conversation without tools.
 
-Section twenty-six point five develops ai and machine-learning security architecture with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-six point five, the NRS mentor expects ai claims to carry owners and dates.
-
 ### 26.6 Errors and limits
-Section twenty-six point six develops ai and machine-learning security architecture with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-six point six, the NRS mentor expects ai claims to carry owners and dates.
-
-Section twenty-six point six treats patterns for llm applications as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-six point six, Northgate Rail Systems will not accept ai work without a written trail.
-
 
 - Choosing patterns by fashion rather than threat model.
 - Quarantined models whose "structured" output is free text.
@@ -2355,37 +1597,17 @@ You will (1) design preventive, detective and corrective controls for AI risks; 
 
 Preventive controls stop an event (least-privilege tools, signed models). Detective controls reveal it (anomaly monitoring, injection classifiers, canary documents). Corrective controls limit and recover (rollback, credential revocation, human review queues). A sound design uses all three.
 
-Section twenty-seven point one develops ai and machine-learning security control with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-seven point one, the NRS mentor expects ai claims to carry owners and dates.
-
-Section twenty-seven point one treats control types guardrails and as testable only when evidence and ticket IDs are recorded.
-
 ### 27.2 Guardrails and validation
 
 Input guardrails classify or transform inputs (detecting instruction-like content in retrieved text; normalising encodings). Output guardrails check outputs before use (schema validation, secret scanning, policy checks on proposed actions). Validation must be strict and outside the model. Classifiers have error rates: plan for misses and false positives.
-
-Section twenty-seven point two develops ai and machine-learning security control with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-seven point two, the NRS mentor expects ai claims to carry owners and dates.
 
 ### 27.3 Controls for predictive models
 
 Adversarial training (Madry et al., arXiv:1706.06083) improves robustness within a threat model at a cost in clean accuracy and training compute. Certified methods (Cohen et al., arXiv:1902.02918) give guarantees for small perturbations. Data hygiene — provenance, deduplication, outlier review, restricted labelling — reduces poisoning. Differential privacy (Abadi et al., arXiv:1607.00133) reduces membership leakage.
 
-Section twenty-seven point three develops ai and machine-learning security control with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-seven point three, the NRS mentor expects ai claims to carry owners and dates.
-
 ### 27.4 Measuring control effectiveness
 
 Measure each control's effect on attack success *and* its side effects (false positives, latency, utility). The lab shows that a keyword filter is easily bypassed, while allowlisting and treating retrieved content as data remove the exfiltration path in this toy agent.
-
-Section twenty-seven point four develops ai and machine-learning security control with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-seven point four, the NRS mentor expects ai claims to carry owners and dates.
-
-Section twenty-seven point four treats control types guardrails and as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Lab I: indirect prompt injection against a toy tool-using 'agent'.
@@ -2434,17 +1656,7 @@ defence=separate  exfil_calls= 0/20 any_injected_call= 0/20 benign_calls=0/20
 
 Sam's control set for Wrench: preventive — tool allowlist per role, confirmation for work orders, parts e-mail only to supplier allowlist; detective — classifier flags instruction-like text in bulletins and logs it, alert on unusual tool-call rates; corrective — one-click revocation of Wrench's tool credentials, rollback of prompt versions. Testing showed the classifier caught 70% of injected bulletins with 2% false positives; because prevention did not depend on it, its misses were tolerable.
 
-Section twenty-seven point five develops ai and machine-learning security control with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 27.6 Errors and limits
-Section twenty-seven point six develops ai and machine-learning security control with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-seven point six, the NRS mentor expects ai claims to carry owners and dates.
-
-Section twenty-seven point six treats control types guardrails and as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point six, Northgate Rail Systems will not accept ai work without a written trail.
-
 
 - Keyword or regex filters as the main defence.
 - Controls with unmeasured side effects.
@@ -2476,8 +1688,6 @@ You will (1) implement a policy enforcement point for model-proposed actions; (2
 
 The model emits a *proposal* (tool name and arguments in a schema). The enforcement point validates the schema, checks the tool against the user's role, checks arguments against scope (depot, asset), checks whether arguments are tainted by untrusted content, and decides: allow, require confirmation, or deny. Decisions are logged with reasons.
 
-Section twenty-eight point one develops ai and machine-learning security implementation with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ```python
 ROLE_TOOLS = {"technician": {"search", "create_work_order"}, "viewer": {"search"}}
 def decide(role, tool, args, tainted):
@@ -2497,51 +1707,19 @@ It prints `deny`, `allow` and `confirm: tainted arguments` for the three cases.
 
 When assembling a prompt, wrap each retrieved chunk with its source and trust level, and state in the system instructions that labelled untrusted content is data. This helps the model but is *not* a security boundary; the enforcement point remains authoritative.
 
-Section twenty-eight point two develops ai and machine-learning security implementation with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-eight point two, the NRS mentor expects ai claims to carry owners and dates.
-
-Section twenty-eight point two treats policy enforcement point provenance as testable only when evidence and ticket IDs are recorded.
-
 ### 28.3 Output validation and secret scanning
 
 Validate structured outputs with strict parsers. Scan free-text outputs for secrets (API-key patterns, internal hostnames) and for personal data before display or sending. Escape outputs before rendering in web pages to avoid script injection (OWASP LLM05).
-
-Section twenty-eight point three develops ai and machine-learning security implementation with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-eight point three, the NRS mentor expects ai claims to carry owners and dates.
-
-Section twenty-eight point three treats policy enforcement point provenance as testable only when evidence and ticket IDs are recorded.
 
 ### 28.4 Testing the implementation
 
 Unit tests cover each rule; property tests generate random proposals and check invariants; adversarial tests replay a corpus of injected documents end to end and verify that no forbidden action executes.
 
-Section twenty-eight point four develops ai and machine-learning security implementation with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-eight point four, the NRS mentor expects ai claims to carry owners and dates.
-
-Section twenty-eight point four treats policy enforcement point provenance as testable only when evidence and ticket IDs are recorded.
-
 ### 28.5 Worked example (synthetic NRS case)
 
 Sam implemented the enforcement point as a separate service with 140 lines of policy code and 60 tests. An adversarial replay of 600 synthetic injected bulletins produced 41 model proposals for work orders; all 41 were routed to confirmation with the tainted flag, and none executed automatically.
 
-Section twenty-eight point five develops ai and machine-learning security implementation with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-eight point five, the NRS mentor expects ai claims to carry owners and dates.
-
-Section twenty-eight point five treats policy enforcement point provenance as testable only when evidence and ticket IDs are recorded.
-
 ### 28.6 Errors and limits
-Section twenty-eight point six develops ai and machine-learning security implementation with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-eight point six, the NRS mentor expects ai claims to carry owners and dates.
-
-Section twenty-eight point six treats policy enforcement point provenance as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point six, Northgate Rail Systems will not accept ai work without a written trail.
-
 
 - Enforcement inside the model prompt.
 - Rendering model output as HTML without escaping.
@@ -2583,21 +1761,9 @@ You will (1) choose metrics for AI-security properties (attack success rate, rob
 
 Always pair a security metric with a cost metric measured on the same items.
 
-Section twenty-nine point one develops ai and machine-learning security measurement with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-nine point one, the NRS mentor expects ai claims to carry owners and dates.
-
 ### 29.2 Uncertainty
 
 Use Wilson intervals for rates, bootstrap for averaged metrics, and paired bootstrap for comparisons. Report seeds and their spread.
-
-Section twenty-nine point two develops ai and machine-learning security measurement with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-nine point two, the NRS mentor expects ai claims to carry owners and dates.
-
-Section twenty-nine point two treats metrics that match properties as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point two, Northgate Rail Systems will not accept ai work without a written trail.
 
 ```python
 """Lab S: reporting attack-success rates honestly: Wilson intervals,
@@ -2642,37 +1808,15 @@ baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
 
 Leakage between tuning and test sets inflates results; weak or non-adaptive attacks make defences look strong (Athalye et al., arXiv:1802.00420); ignoring base rates misleads about detector usefulness (Arp et al., arXiv:2010.09470). When an LLM is used as a judge of outputs, validate it against human labels on a sample and report agreement; judges can be biased toward fluent or refusing answers.
 
-Section twenty-nine point three develops ai and machine-learning security measurement with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 29.4 Measurement programmes
 
 A release decision needs a fixed suite (held out, versioned), thresholds tied to requirements, a schedule (each release and periodically), and ownership. Track metrics over time to detect regressions and drift. Store raw outputs so that metrics can be recomputed if definitions change.
-
-Section twenty-nine point four develops ai and machine-learning security measurement with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-nine point four, the NRS mentor expects ai claims to carry owners and dates.
-
-Section twenty-nine point four treats metrics that match properties as testable only when evidence and ticket IDs are recorded.
 
 ### 29.5 Worked example (synthetic NRS case)
 
 Sam's measurement plan for Wrench: injection ASR on 600 held-out tasks (requirement ≤ 2% proposals, 0 executions), false-confirmation rate on 600 benign tasks (≤ 5%), task success on 300 planner tasks (≥ 90%), each with Wilson intervals; LLM-judge labels validated on 150 human-labelled outputs (agreement 93%). Results feed the CI gate and a quarterly report.
 
-Section twenty-nine point five develops ai and machine-learning security measurement with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-nine point five, the NRS mentor expects ai claims to carry owners and dates.
-
-Section twenty-nine point five treats metrics that match properties as testable only when evidence and ticket IDs are recorded.
-
 ### 29.6 Errors and limits
-Section twenty-nine point six develops ai and machine-learning security measurement with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section twenty-nine point six, the NRS mentor expects ai claims to carry owners and dates.
-
-Section twenty-nine point six treats metrics that match properties as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point six, Northgate Rail Systems will not accept ai work without a written trail.
-
 
 - Security metrics without cost metrics.
 - Unvalidated LLM judges.
@@ -2704,27 +1848,13 @@ You will (1) plan and run a contained verification campaign for an AI component 
 
 Work only in an isolated environment: no production credentials, no internet egress for components under test, synthetic or authorised data, and harmless payloads targeting reserved domains such as `.invalid`. Record a written scope and authorization even for internal labs. Reset the environment between campaigns.
 
-Section thirty point one develops verification laboratory with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty point one, the NRS mentor expects verification claims to carry owners and dates.
-
-Section thirty point one treats laboratory rules campaign plan as testable only when evidence and ticket IDs are recorded.
-
 ### 30.2 Campaign plan
 
 For each requirement: test set, method, sample size, threshold and evidence to record. Order tests so that cheap checks run first (schema validation, policy unit tests) and expensive ones later (adversarial suites).
 
-Section thirty point two develops verification laboratory with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty point two, the NRS mentor expects verification claims to carry owners and dates.
-
-Section thirty point two treats laboratory rules campaign plan as testable only when evidence and ticket IDs are recorded.
-
 ### 30.3 Executing the campaign
 
 Run the labs in this book as warm-up, then the real suites. For the toy components, the following outputs are the expected baselines:
-
-Section thirty point three develops verification laboratory with a Northgate Rail Systems note Sam Ito can demo offline.
 
 ```python
 """Lab I: indirect prompt injection against a toy tool-using 'agent'.
@@ -2803,31 +1933,11 @@ The injection lab verifies that only external controls (allowlist, separation) r
 
 For each requirement: result with interval, pass/fail, evidence location, deviations, and residual risk. Summarise for decision makers in one paragraph and list follow-up actions with owners.
 
-Section thirty point four develops verification laboratory with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty point four, the NRS mentor expects verification claims to carry owners and dates.
-
-Section thirty point four treats laboratory rules campaign plan as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point four, Northgate Rail Systems will not accept verification work without a written trail.
-
 ### 30.5 Worked example (synthetic NRS case)
 
 Sam's campaign on Wrench v1.4 tested nine requirements. Eight passed. REQ-AI-021 (parts e-mail only to allowlisted suppliers) failed: a proposal used a supplier's alias address not on the list, and the adapter resolved aliases *after* the policy check. The fix moved alias resolution before the policy check; the re-test passed. The report recorded the failure, fix and re-test as evidence.
 
-Section thirty point five develops verification laboratory with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty point five, the NRS mentor expects verification claims to carry owners and dates.
-
 ### 30.6 Errors and limits
-Section thirty point six develops verification laboratory with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty point six, the NRS mentor expects verification claims to carry owners and dates.
-
-Section thirty point six treats laboratory rules campaign plan as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point six, Northgate Rail Systems will not accept verification work without a written trail.
-
 
 - Labs connected to production systems.
 - Reports that hide failures fixed during the campaign.
@@ -2858,10 +1968,6 @@ You will (1) implement monitoring and abuse detection for model services; (2) im
 ### 31.1 Monitoring and abuse detection
 
 Log per-client query volumes, input diversity, token counts, refusals and tool-call proposals. Robust statistics (median and median absolute deviation) find outliers without being skewed by the outliers themselves. The lab flags a synthetic scraper that sends a grid-like sweep of inputs typical of extraction attempts.
-
-Section thirty-one point one develops ai and machine-learning security implementation with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-one point one, the NRS mentor expects ai claims to carry owners and dates.
 
 ```python
 """Lab A: spotting extraction-style abuse in a synthetic API log.
@@ -2906,47 +2012,19 @@ client99 queries=600 robust_z= 30.58 distinct_ratio=0.10 FLAG
 
 Hash data at ingestion; keep immutable versions; require reviewed merges for label changes; run automated checks for duplicates, class balance shifts and suspicious feature–label correlations (possible triggers); quarantine new sources until reviewed.
 
-Section thirty-one point two develops ai and machine-learning security implementation with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-one point two, the NRS mentor expects ai claims to carry owners and dates.
-
-Section thirty-one point two treats monitoring and abuse detection as testable only when evidence and ticket IDs are recorded.
-
 ### 31.3 Secure model loading and update
 
 Load only signed artefacts whose manifest digests match; use tensor-only formats; verify on the target device; keep the previous version for rollback; record which version served each request.
-
-Section thirty-one point three develops ai and machine-learning security implementation with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-one point three, the NRS mentor expects ai claims to carry owners and dates.
-
-Section thirty-one point three treats monitoring and abuse detection as testable only when evidence and ticket IDs are recorded.
 
 ### 31.4 Logging and alerting
 
 Correlate request IDs across model, policy and tool services. Alerts should be specific ("client99 robust z = 30.6; distinct-input ratio 0.10") and routed to an owner with a runbook. Avoid logging sensitive prompt content in full; log hashes or redacted forms when possible, consistent with data-protection obligations.
 
-Section thirty-one point four develops ai and machine-learning security implementation with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-one point four, the NRS mentor expects ai claims to carry owners and dates.
-
-Section thirty-one point four treats monitoring and abuse detection as testable only when evidence and ticket IDs are recorded.
-
 ### 31.5 Worked example (synthetic NRS case)
 
 NRS opened a limited TrackEye API to a partner. Sam deployed the monitoring rules: robust z-score above 3.5 on daily volume, or distinct-input ratio below 0.2 with high volume, triggers review. In the first month one partner script was flagged; it was a misconfigured retry loop, not an attack, and the partner fixed it. Sam kept the rule and documented the false positive.
 
-Section thirty-one point five develops ai and machine-learning security implementation with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 31.6 Errors and limits
-Section thirty-one point six develops ai and machine-learning security implementation with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-one point six, the NRS mentor expects ai claims to carry owners and dates.
-
-Section thirty-one point six treats monitoring and abuse detection as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-one point six, Northgate Rail Systems will not accept ai work without a written trail.
-
 
 - Mean-and-standard-deviation thresholds that the outlier itself inflates.
 - Logging full prompts with personal data indefinitely.
@@ -2983,53 +2061,23 @@ You will (1) define reliability for AI components (consistent correct behaviour 
 
 Classical reliability asks how often a component fails. For AI, "failure" includes wrong outputs that look normal. Reliability therefore includes accuracy across conditions (stratified error rates), *calibration* (does 90% confidence mean 90% correct?), stability across versions and availability of the service.
 
-Section thirty-two point one develops ai and machine-learning security reliability with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-two point one, the NRS mentor expects ai claims to carry owners and dates.
-
-Section thirty-two point one treats reliability for ai calibration as testable only when evidence and ticket IDs are recorded.
-
 ### 32.2 Calibration
 
 A calibrated model's confidence matches its accuracy. Overconfident models make downstream automation brittle: if TrackEye says 99% "no defect" but is right only 95% of the time at that confidence, operators trust it too much. Measure calibration with reliability diagrams or expected calibration error; recalibrate with simple methods such as temperature scaling on held-out data.
-
-Section thirty-two point two develops ai and machine-learning security reliability with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-two point two, the NRS mentor expects ai claims to carry owners and dates.
 
 ### 32.3 Redundancy and degradation
 
 Redundancy can be *diverse* (a different model or a rule-based check) or *repeated* (a second inference). Diverse redundancy helps against shared failure modes and some attacks, because an adversarial input crafted for one model may not transfer perfectly. Graceful degradation defines what happens when a component fails or is uncertain: TrackEye flags segments for manual review rather than marking them clear.
 
-Section thirty-two point three develops ai and machine-learning security reliability with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 32.4 Reliability or attack?
 
 When error rates change, ask: did inputs change (drift), did the model change (version), or did someone act (attack)? Look at timing, affected strata, correlation with specific sources and logs. Many apparent attacks are drift; some apparent drift is an attack.
-
-Section thirty-two point four develops ai and machine-learning security reliability with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-two point four, the NRS mentor expects ai claims to carry owners and dates.
-
-Section thirty-two point four treats reliability for ai calibration as testable only when evidence and ticket IDs are recorded.
 
 ### 32.5 Worked example (synthetic NRS case)
 
 Pulse's false-negative rate rose on one route. Logs showed the rise coincided with a sensor-firmware update that changed units on two axles — a reliability failure, not an attack. Sam added unit checks at ingestion and a diverse rule-based threshold check that would have caught the extreme readings regardless of the model.
 
-Section thirty-two point five develops ai and machine-learning security reliability with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-two point five, the NRS mentor expects ai claims to carry owners and dates.
-
 ### 32.6 Errors and limits
-Section thirty-two point six develops ai and machine-learning security reliability with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-two point six, the NRS mentor expects ai claims to carry owners and dates.
-
-Section thirty-two point six treats reliability for ai calibration as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-two point six, Northgate Rail Systems will not accept ai work without a written trail.
-
 
 - Treating confidence scores as probabilities without calibration.
 - Redundancy with identical models (shared failure).
@@ -3061,49 +2109,23 @@ You will (1) design AI systems that remain safe when components fail or are atta
 
 Every AI decision path needs a defined safe state: manual inspection, a conservative default, refusing an action, or escalating to a human. Safety cases argue, with evidence, that hazards are controlled to acceptable levels — including hazards caused by adversaries.
 
-Section thirty-three point one develops ai and machine-learning security safety with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-three point one, the NRS mentor expects ai claims to carry owners and dates.
-
-Section thirty-three point one treats safe failure resilience effective as testable only when evidence and ticket IDs are recorded.
-
 ### 33.2 Resilience
 
 Resilience is the ability to anticipate, withstand, recover from and adapt to adverse conditions. For AI: anticipate with threat models and monitoring; withstand with layered controls; recover with rollback, retraining from verified data and credential revocation; adapt by updating tests and controls after incidents. The NIST AI RMF lists *secure and resilient* as a characteristic of trustworthy AI.
-
-Section thirty-three point two develops ai and machine-learning security safety with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-three point two, the NRS mentor expects ai claims to carry owners and dates.
 
 ### 33.3 Effective human oversight
 
 Oversight fails when humans approve by habit ("automation bias") or lack information. Effective oversight shows the evidence behind a proposal (sources, confidence, what is unusual), limits volume so reviewers can concentrate, and tracks approval quality (for example, inserting known-bad test proposals to measure catch rates, with reviewers' consent and clear policy). The EU AI Act requires high-risk systems to be designed for effective human oversight (Article 14).
 
-Section thirty-three point three develops ai and machine-learning security safety with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 33.4 Misuse of generative capabilities
 
 Generative systems can be misused to produce harmful content or to assist attacks. NIST AI 600-1 discusses risks including information security and dangerous content, with suggested actions. Engineering responses include usage policies, abuse monitoring, refusal training, rate limits and restricting high-risk capabilities to authenticated, accountable users.
-
-Section thirty-three point four develops ai and machine-learning security safety with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-three point four, the NRS mentor expects ai claims to carry owners and dates.
 
 ### 33.5 Worked example (synthetic NRS case)
 
 Sam measured that planners approved 97% of Wrench's work-order proposals in a median of 4 seconds. With the planners' agreement, a monthly exercise inserted clearly marked synthetic test proposals with wrong assets; only 60% were rejected. The team redesigned the approval screen to highlight assets outside the planner's usual routes and any instruction-like source text; the catch rate in the next exercise rose to 88%.
 
-Section thirty-three point five develops ai and machine-learning security safety with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 33.6 Errors and limits
-Section thirty-three point six develops ai and machine-learning security safety with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-three point six, the NRS mentor expects ai claims to carry owners and dates.
-
-Section thirty-three point six treats safe failure resilience effective as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-three point six, Northgate Rail Systems will not accept ai work without a written trail.
-
 
 - Human review as a checkbox.
 - No defined safe state.
@@ -3135,67 +2157,27 @@ You will (1) integrate AI components into existing enterprise systems securely; 
 
 Integrations multiply privileges. An assistant connected to e-mail, document storage, ticketing and maintenance systems can combine data and actions across them. Each connector is a potential path for injection (content in) and exfiltration or misuse (actions out). OWASP LLM06 (*excessive agency*) names excessive functionality, permissions and autonomy as root causes.
 
-Section thirty-four point one develops ai and machine-learning security integration with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-four point one, the NRS mentor expects ai claims to carry owners and dates.
-
 ### 34.2 Identity across systems
 
 Use delegated, per-user authorization so that the assistant can never do more than the user could. Avoid shared service accounts with broad scopes. Propagate the user's identity to every downstream call and enforce permissions in the downstream system as well.
-
-Section thirty-four point two develops ai and machine-learning security integration with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-four point two, the NRS mentor expects ai claims to carry owners and dates.
-
-Section thirty-four point two treats integration risks identity across as testable only when evidence and ticket IDs are recorded.
 
 ### 34.3 Data contracts
 
 Define for each integration what data is exchanged, its format, classification and trust level. Reject data that violates the contract. Mark content from external systems as untrusted when it reaches a model.
 
-Section thirty-four point three develops ai and machine-learning security integration with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-four point three, the NRS mentor expects ai claims to carry owners and dates.
-
-Section thirty-four point three treats integration risks identity across as testable only when evidence and ticket IDs are recorded.
-
 ### 34.4 Tool and connector ecosystems
 
 Third-party connectors and tool servers are supply-chain components. Review their permissions and code, pin versions, and run them with minimal credentials. Tool descriptions are themselves text the model reads; a malicious or compromised tool description can inject instructions. Allowlist tools explicitly per application.
-
-Section thirty-four point four develops ai and machine-learning security integration with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-four point four, the NRS mentor expects ai claims to carry owners and dates.
-
-Section thirty-four point four treats integration risks identity across as testable only when evidence and ticket IDs are recorded.
 
 ### 34.5 Integration testing
 
 Test end to end with adversarial content in every inbound integration (documents, e-mails, tickets) and verify that outbound actions respect policy. Include failure injection: connector timeouts, malformed data, revoked credentials.
 
-Section thirty-four point five develops ai and machine-learning security integration with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-four point five, the NRS mentor expects ai claims to carry owners and dates.
-
-Section thirty-four point five treats integration risks identity across as testable only when evidence and ticket IDs are recorded.
-
 ### 34.6 Worked example (synthetic NRS case)
 
 NRS wanted Wrench connected to the ticketing system. Sam's review found that the connector's default token could close any ticket in the company. The integration was redesigned with per-user tokens scoped to the user's depot queues and "comment" rather than "close" permission. An adversarial ticket containing instructions to close other tickets produced a proposal that the policy layer denied.
 
-Section thirty-four point six develops ai and machine-learning security integration with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-four point six, the NRS mentor expects ai claims to carry owners and dates.
-
 ### 34.7 Errors and limits
-Section thirty-four point seven develops ai and machine-learning security integration with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-four point seven, the NRS mentor expects ai claims to carry owners and dates.
-
-Section thirty-four point seven treats integration risks identity across as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-four point seven, Northgate Rail Systems will not accept ai work without a written trail.
-
 
 - Connectors with default broad scopes.
 - Trusting tool descriptions from third parties.
@@ -3227,55 +2209,23 @@ You will (1) design a complete AI-enabled system with security, safety and opera
 
 Design "Yardmind", an AI system for NRS that uses TrackEye detections, Pulse alerts and Wrench to plan and dispatch maintenance crews across a region, including proposing track speed restrictions to a human controller.
 
-Section thirty-five point one develops design studio ii with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-five point one, the NRS mentor expects design claims to carry owners and dates.
-
-Section thirty-five point one treats brief synthetic what is as testable only when evidence and ticket IDs are recorded.
-
 ### 35.2 What is new compared with Studio I
 
 Studio II adds a **safety-and-security case**: a structured argument that the system is acceptably safe and secure, supported by evidence. A common structure is claim → argument → evidence: "Yardmind cannot impose or lift a speed restriction without a controller's approval" (claim), "all restriction actions pass the enforcement point which requires a signed controller decision" (argument), "code review CR-112, test report TR-208, penetration test PT-05" (evidence). Include assumptions and defeaters — what would make the argument fail.
-
-Section thirty-five point two develops design studio ii with a Northgate Rail Systems note Sam Ito can demo offline.
 
 ### 35.3 Multidisciplinary panel
 
 The panel includes a controller (operational realism), a safety assessor (hazard coverage), a red-teamer (attack paths), a data-protection officer (personal data of crews) and a finance lead. Each signs off or lists conditions.
 
-Section thirty-five point three develops design studio ii with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-five point three, the NRS mentor expects design claims to carry owners and dates.
-
-Section thirty-five point three treats brief synthetic what is as testable only when evidence and ticket IDs are recorded.
-
 ### 35.4 Iteration
 
 Teams revise within one week and present a *delta*: what changed, why, and which panel conditions are now met. Unresolved conditions become explicit residual risks with owners.
-
-Section thirty-five point four develops design studio ii with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-five point four, the NRS mentor expects design claims to carry owners and dates.
-
-Section thirty-five point four treats brief synthetic what is as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-five point four, Northgate Rail Systems will not accept design work without a written trail.
 
 ### 35.5 Worked example (synthetic NRS case)
 
 Sam's team argued that Yardmind could *propose* speed restrictions but never apply or lift them. The red-teamer asked about lifting: could a manipulated Pulse feed cause Yardmind to recommend lifting a restriction prematurely? The team added a rule: recommendations to lift restrictions require two independent evidence sources (a TrackEye pass and a human inspection record), and controllers see both. The safety assessor accepted with the condition that lifting recommendations are logged for monthly audit.
 
-Section thirty-five point five develops design studio ii with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 35.6 Errors and limits
-Section thirty-five point six develops design studio ii with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-five point six, the NRS mentor expects design claims to carry owners and dates.
-
-Section thirty-five point six treats brief synthetic what is as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-five point six, Northgate Rail Systems will not accept design work without a written trail.
-
 
 - Safety cases without defeaters.
 - Treating "propose" as risk-free when humans routinely accept proposals.
@@ -3307,17 +2257,9 @@ You will (1) relate performance engineering (latency, throughput, cost) to secur
 
 Every guardrail, classifier, second model and approval step adds latency and cost. Under load, teams are tempted to disable controls. Design controls with performance budgets from the start and measure them like any other feature.
 
-Section thirty-six point one develops ai and machine-learning security performance with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-six point one, the NRS mentor expects ai claims to carry owners and dates.
-
-Section thirty-six point one treats security controls cost performance as testable only when evidence and ticket IDs are recorded.
-
 ### 36.2 Unbounded consumption
 
 OWASP LLM10 covers attacks that exhaust resources or budgets: extremely long inputs, prompts that cause very long outputs, recursive agent loops, and high request volumes. Controls: input size limits, output token caps, per-request compute timeouts, maximum agent steps, per-client token quotas, and cost alerts. The token-bucket lab shows how rate and burst settings trade service for normal users against protection from floods.
-
-Section thirty-six point two develops ai and machine-learning security performance with a Northgate Rail Systems note Sam Ito can demo offline.
 
 ```python
 """Lab R: token-bucket limits against unbounded consumption (synthetic).
@@ -3350,37 +2292,15 @@ limit=1/s burst= 5 normal_served= 62/90 flood_served=  64/3000
 
 Use observed usage percentiles (for example the 99th percentile of tokens per user per hour) plus headroom, and differentiate tiers. Re-tune as usage changes. Combine quotas with anomaly detection, since attackers can stay just below fixed limits.
 
-Section thirty-six point three develops ai and machine-learning security performance with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-six point three, the NRS mentor expects ai claims to carry owners and dates.
-
-Section thirty-six point three treats security controls cost performance as testable only when evidence and ticket IDs are recorded.
-
 ### 36.4 Scale and control effectiveness
 
 At scale, rare events become common: a 0.1% injection success rate over 10 million documents per month is 10,000 successes. Controls that rely on human review must be sized for that volume, or be designed so that each success has bounded impact.
-
-Section thirty-six point four develops ai and machine-learning security performance with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-six point four, the NRS mentor expects ai claims to carry owners and dates.
-
-Section thirty-six point four treats security controls cost performance as testable only when evidence and ticket IDs are recorded.
 
 ### 36.5 Worked example (synthetic NRS case)
 
 A misbehaving integration caused Wrench to loop: each tool result triggered another search, reaching 400 steps on one task and consuming a day's budget. Sam set a maximum of 12 steps per task, a per-task token cap and a cost alert at 150% of the daily median. The injection classifier was moved to run only on retrieved content rather than on every message, cutting its cost by 60% without reducing coverage of the untrusted path.
 
-Section thirty-six point five develops ai and machine-learning security performance with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 36.6 Errors and limits
-Section thirty-six point six develops ai and machine-learning security performance with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-six point six, the NRS mentor expects ai claims to carry owners and dates.
-
-Section thirty-six point six treats security controls cost performance as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-six point six, Northgate Rail Systems will not accept ai work without a written trail.
-
 
 - Request-count limits that ignore token and compute cost.
 - Disabling controls under load.
@@ -3412,63 +2332,27 @@ You will (1) run AI systems in production with security operations (monitoring, 
 
 Feed AI telemetry into the security operations centre: injection-classifier flags, policy denials, unusual tool-call rates, extraction-like query patterns, model-load verification failures and drift alarms. Define severities and owners.
 
-Section thirty-seven point one develops ai and machine-learning security operations with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-seven point one, the NRS mentor expects ai claims to carry owners and dates.
-
-Section thirty-seven point one treats security operations for ai as testable only when evidence and ticket IDs are recorded.
-
 ### 37.2 AI incident runbooks
 
 Runbooks give steps for: suspected prompt injection with action taken (contain: revoke tool credentials, disable tool; investigate: trace request IDs to source document; recover: undo actions, purge poisoned documents; learn: add to tests); suspected data poisoning (freeze training, identify affected versions by lineage, roll back to verified model); suspected extraction (throttle client, preserve logs, notify legal); model integrity failure (stop loading, verify supply chain).
-
-Section thirty-seven point two develops ai and machine-learning security operations with a Northgate Rail Systems note Sam Ito can demo offline.
 
 ### 37.3 Vulnerability management
 
 Track vulnerabilities in model-serving software, libraries and connectors like any software. Track model-level weaknesses (new jailbreak techniques, newly published attacks) by monitoring sources such as MITRE ATLAS case studies, vendor advisories and research. Re-test after model or prompt updates.
 
-Section thirty-seven point three develops ai and machine-learning security operations with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-seven point three, the NRS mentor expects ai claims to carry owners and dates.
-
-Section thirty-seven point three treats security operations for ai as testable only when evidence and ticket IDs are recorded.
-
 ### 37.4 Change management
 
 Changes to models, prompts, tools and retrieval sources go through the release process with security gates, canary deployment and rollback. Emergency changes (e.g., disabling a tool) are pre-approved in runbooks.
-
-Section thirty-seven point four develops ai and machine-learning security operations with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-seven point four, the NRS mentor expects ai claims to carry owners and dates.
-
-Section thirty-seven point four treats security operations for ai as testable only when evidence and ticket IDs are recorded.
 
 ### 37.5 Operational metrics
 
 Report monthly: policy denials and confirmations, injection flags, incidents by type and time to contain, evaluation-suite results per release, quota breaches, and open risks. Trends matter more than single numbers.
 
-Section thirty-seven point five develops ai and machine-learning security operations with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-seven point five, the NRS mentor expects ai claims to carry owners and dates.
-
-Section thirty-seven point five treats security operations for ai as testable only when evidence and ticket IDs are recorded.
-
 ### 37.6 Worked example (synthetic NRS case)
 
 At 02:10 the SOC saw a burst of Wrench proposals to create work orders on one line, all confirmed by a single night-shift account within seconds. The runbook led the on-call engineer to suspend that account's Wrench tool access, trace the proposals to a bulletin uploaded at 01:55, and find it contained instruction-like text. The account owner had approved without reading. Orders were cancelled; the bulletin source was blocked; the approval UI gained a rate limit on approvals per minute.
 
-Section thirty-seven point six develops ai and machine-learning security operations with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 37.7 Errors and limits
-Section thirty-seven point seven develops ai and machine-learning security operations with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-seven point seven, the NRS mentor expects ai claims to carry owners and dates.
-
-Section thirty-seven point seven treats security operations for ai as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-seven point seven, Northgate Rail Systems will not accept ai work without a written trail.
-
 
 - AI telemetry not reaching the SOC.
 - No runbooks for model-specific incidents.
@@ -3500,51 +2384,23 @@ You will (1) distinguish verification (built right) from validation (right thing
 
 Verification checks that the system meets its specified requirements. Validation checks that the requirements and the system serve stakeholders' real needs in the real environment. A system can pass every requirement and still be unsafe if the requirements missed a threat or if users behave differently than assumed.
 
-Section thirty-eight point one develops ai and machine-learning security validation with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-eight point one, the NRS mentor expects ai claims to carry owners and dates.
-
 ### 38.2 Operational validation
 
 Run pilots in realistic conditions: real (authorised) workloads, real users, realistic adversarial content. Observe how users interact with controls — do they read approval screens, do they work around restrictions? Measure task success and security outcomes together.
-
-Section thirty-eight point two develops ai and machine-learning security validation with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-eight point two, the NRS mentor expects ai claims to carry owners and dates.
-
-Section thirty-eight point two treats verification versus validation operational as testable only when evidence and ticket IDs are recorded.
 
 ### 38.3 Red teaming as validation
 
 A red team with a defined scope and authorization tries to achieve attacker goals against the integrated system, using any technique within the rules. Unlike a test suite, red teams find unanticipated paths. NIST AI 600-1 lists red-teaming among suggested actions for generative AI. Report findings with severity and fixes, and convert successful paths into regression tests.
 
-Section thirty-eight point three develops ai and machine-learning security validation with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-eight point three, the NRS mentor expects ai claims to carry owners and dates.
-
 ### 38.4 Fitness for purpose
 
 The validation report states: the intended use, the conditions tested, results against stakeholder needs, red-team findings and their status, residual risks, and a recommendation (deploy, deploy with conditions, do not deploy) signed by accountable owners.
-
-Section thirty-eight point four develops ai and machine-learning security validation with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-eight point four, the NRS mentor expects ai claims to carry owners and dates.
-
-Section thirty-eight point four treats verification versus validation operational as testable only when evidence and ticket IDs are recorded.
 
 ### 38.5 Worked example (synthetic NRS case)
 
 Wrench passed verification. During a four-week pilot at two depots, planners asked Wrench to "do everything from the bulletin" — a usage pattern not anticipated, which raised the share of proposals derived from untrusted text. An authorised internal red team then achieved one unauthorised parts order by chaining a search result into a supplier-allowlisted e-mail with a modified part number. Validation outcome: deploy with conditions — part numbers in e-mails must match an open work order, and training for planners on bulletin-driven requests.
 
 ### 38.6 Errors and limits
-Section thirty-eight point six develops ai and machine-learning security validation with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-eight point six, the NRS mentor expects ai claims to carry owners and dates.
-
-Section thirty-eight point six treats verification versus validation operational as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-eight point six, Northgate Rail Systems will not accept ai work without a written trail.
-
 
 - Treating verification as validation.
 - Red teams without scope or with the developers grading themselves.
@@ -3576,67 +2432,27 @@ You will (1) design AI systems whose security can be maintained as models, data 
 
 Hosted models are updated; open models gain new versions; libraries patch vulnerabilities; attackers publish new techniques; business processes change. A secure design that cannot be updated safely will become insecure.
 
-Section thirty-nine point one develops ai and machine-learning security maintainability with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-nine point one, the NRS mentor expects ai claims to carry owners and dates.
-
-Section thirty-nine point one treats change is constant update as testable only when evidence and ticket IDs are recorded.
-
 ### 39.2 Update strategy
 
 Pin versions and update deliberately: each model or dependency update triggers the security evaluation gate, a canary deployment and a rollback plan. For hosted models that change without notice, run the evaluation suite on a schedule and alert on regressions. Keep abstraction layers so that a model can be swapped without rewriting policy enforcement.
-
-Section thirty-nine point two develops ai and machine-learning security maintainability with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-nine point two, the NRS mentor expects ai claims to carry owners and dates.
 
 ### 39.3 Keeping knowledge current
 
 Assign owners for the threat model, evaluation suites, model cards and runbooks, with review dates. Add every incident and red-team finding to the regression suite. Track external sources (OWASP updates, MITRE ATLAS additions, NIST publications) and record whether each change affects your system.
 
-Section thirty-nine point three develops ai and machine-learning security maintainability with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-nine point three, the NRS mentor expects ai claims to carry owners and dates.
-
-Section thirty-nine point three treats change is constant update as testable only when evidence and ticket IDs are recorded.
-
 ### 39.4 Technical debt in AI security
 
 Debt accumulates as one-off filters, exceptions and undocumented prompt tweaks. Periodically refactor: remove controls that no longer serve a threat, consolidate filters into the enforcement point, and document remaining exceptions with expiry dates.
-
-Section thirty-nine point four develops ai and machine-learning security maintainability with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-nine point four, the NRS mentor expects ai claims to carry owners and dates.
-
-Section thirty-nine point four treats change is constant update as testable only when evidence and ticket IDs are recorded.
 
 ### 39.5 Retirement
 
 Retiring a model includes revoking its credentials, removing access paths, deciding what to do with weights (they may encode training data), deleting or archiving data according to retention rules, and updating inventories. ISO/IEC 42001 expects AI system lifecycle processes including retirement.
 
-Section thirty-nine point five develops ai and machine-learning security maintainability with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-nine point five, the NRS mentor expects ai claims to carry owners and dates.
-
-Section thirty-nine point five treats change is constant update as testable only when evidence and ticket IDs are recorded.
-
 ### 39.6 Worked example (synthetic NRS case)
 
 A hosted embedding model used for Wrench's retrieval was silently updated by the provider. The scheduled evaluation found that retrieval now ranked HR documents higher for some queries; the access-control filter still blocked them, but the team was alerted. Sam added "embedding model version" to monitoring and moved to a pinned version with scheduled upgrades.
 
-Section thirty-nine point six develops ai and machine-learning security maintainability with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-nine point six, the NRS mentor expects ai claims to carry owners and dates.
-
 ### 39.7 Errors and limits
-Section thirty-nine point seven develops ai and machine-learning security maintainability with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section thirty-nine point seven, the NRS mentor expects ai claims to carry owners and dates.
-
-Section thirty-nine point seven treats change is constant update as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-nine point seven, Northgate Rail Systems will not accept ai work without a written trail.
-
 
 - No owner for the threat model or evaluation suite.
 - Exceptions without expiry dates.
@@ -3668,21 +2484,9 @@ You will (1) run an integrated verification campaign across several AI component
 
 Lab I tested components; Lab II tests the system. Combine attacks with failures: injection during a connector outage; poisoning detected during a model update; extraction attempts while monitoring is degraded. Systems often fail at these intersections.
 
-Section forty point one develops verification laboratory ii with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty point one, the NRS mentor expects verification claims to carry owners and dates.
-
-Section forty point one treats integrated campaigns acceptance criteria as testable only when evidence and ticket IDs are recorded.
-
 ### 40.2 Acceptance criteria
 
 Use statistical criteria tied to requirements: for a rate requirement ≤ p with confidence 95%, the upper Wilson bound (or exact bound) must be below p. With zero failures, about 3/p trials are needed (rule of three). Decide criteria before running.
-
-Section forty point two develops verification laboratory ii with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty point two, the NRS mentor expects verification claims to carry owners and dates.
-
-Section forty point two treats integrated campaigns acceptance criteria as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Lab S: reporting attack-success rates honestly: Wilson intervals,
@@ -3727,14 +2531,6 @@ baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
 
 Detector requirements must be checked at realistic base rates; a detector that passes TPR/FPR thresholds may still produce unusable precision in operation.
 
-Section forty point three develops verification laboratory ii with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty point three, the NRS mentor expects verification claims to carry owners and dates.
-
-Section forty point three treats integrated campaigns acceptance criteria as testable only when evidence and ticket IDs are recorded.
-
-For section forty point three, Northgate Rail Systems will not accept verification work without a written trail.
-
 ```python
 """Lab B: base rates and alarm precision (Bayes' rule).
 A detector for malicious prompts with given true- and false-positive rates
@@ -3765,27 +2561,11 @@ tpr=0.80 fpr=0.001 prevalence=0.001 precision=0.445 alerts_per_10k=18
 
 Organise evidence by requirement: test plan, raw results, analysis, pass/fail, deviations, re-tests. Include environment descriptions, model and data versions with hashes, and tool versions. An independent assessor should be able to follow each requirement to its evidence without asking the team.
 
-Section forty point four develops verification laboratory ii with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty point four, the NRS mentor expects verification claims to carry owners and dates.
-
-Section forty point four treats integrated campaigns acceptance criteria as testable only when evidence and ticket IDs are recorded.
-
 ### 40.5 Worked example (synthetic NRS case)
 
 Sam's integrated campaign ran 18 scenarios across TrackEye, Pulse and Wrench. Scenario 11 (Pulse sensor spoofing during a ticketing-connector outage) revealed that when ticketing failed, Pulse alerts were queued silently for 40 minutes. The fix added an alert-path health check with fallback to SMS for critical alerts. All rate requirements were evaluated with predefined Wilson upper bounds; two that had passed point estimates failed their bounds and needed larger test sets, after which one passed and one led to a model improvement.
 
-Section forty point five develops verification laboratory ii with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 40.6 Errors and limits
-Section forty point six develops verification laboratory ii with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty point six, the NRS mentor expects verification claims to carry owners and dates.
-
-Section forty point six treats integrated campaigns acceptance criteria as testable only when evidence and ticket IDs are recorded.
-
-For section forty point six, Northgate Rail Systems will not accept verification work without a written trail.
-
 
 - Only testing components in isolation.
 - Acceptance criteria decided after seeing results.
@@ -3822,53 +2602,23 @@ You will (1) optimise an AI system across security, safety, utility and cost; (2
 
 Security improvements usually cost utility, latency or money. Plot alternatives on two or more axes (for example attack success versus task success) and identify the *Pareto front*: options where no other option is better on every axis. Decision makers then choose a point on the front using explicit priorities.
 
-Section forty-one point one develops ai and machine-learning security system with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-one point one, the NRS mentor expects ai claims to carry owners and dates.
-
 ### 41.2 Threshold tuning
 
 Detectors and anomaly models have thresholds. Choose them with a cost model: cost of a missed attack × its probability versus cost of a false alarm × its probability, at realistic base rates. Tune on validation data, never on the final test set, and revisit as base rates change.
-
-Section forty-one point two develops ai and machine-learning security system with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-one point two, the NRS mentor expects ai claims to carry owners and dates.
 
 ### 41.3 Placing controls
 
 Where a control sits changes its cost and effect. Running an injection classifier only on untrusted retrieved content (instead of every message) cuts cost while keeping coverage of the risky path. Placing confirmation only on high-impact actions reduces friction. Optimisation means putting strong controls on high-risk paths and light ones elsewhere.
 
-Section forty-one point three develops ai and machine-learning security system with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-one point three, the NRS mentor expects ai claims to carry owners and dates.
-
 ### 41.4 Goodhart's law
 
 When a measure becomes a target, it ceases to be a good measure. Teams that optimise a fixed jailbreak benchmark can overfit to it while real robustness does not improve. Keep held-out and refreshed suites, red-team periodically, and track several metrics.
-
-Section forty-one point four develops ai and machine-learning security system with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-one point four, the NRS mentor expects ai claims to carry owners and dates.
-
-Section forty-one point four treats multi-objective optimisation threshold tuning as testable only when evidence and ticket IDs are recorded.
 
 ### 41.5 Worked example (synthetic NRS case)
 
 Sam evaluated five Wrench configurations on attack success (injection suite) and task success (planner suite): A (no controls) 31%/95%; B (classifier blocking) 9%/86%; C (policy + confirmation) 0.0% executions/93%; D (C + classifier flagging) 0.0%/93% with better reviewer focus; E (dual model + C) 0.0%/90%. B is dominated by C. D was chosen: same task success as C, plus flags that improved reviewer catch rates.
 
-Section forty-one point five develops ai and machine-learning security system with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-one point five, the NRS mentor expects ai claims to carry owners and dates.
-
 ### 41.6 Errors and limits
-Section forty-one point six develops ai and machine-learning security system with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-one point six, the NRS mentor expects ai claims to carry owners and dates.
-
-Section forty-one point six treats multi-objective optimisation threshold tuning as testable only when evidence and ticket IDs are recorded.
-
-For section forty-one point six, Northgate Rail Systems will not accept ai work without a written trail.
-
 
 - Optimising one number.
 - Tuning thresholds on test data.
@@ -3900,55 +2650,23 @@ You will (1) frame an applied research question from an engineering problem; (2)
 
 Engineering problems become research questions when the answer is not known and would generalise: "Does marking untrusted content with provenance labels reduce injection proposals in our agent, and by how much compared with a dual-model pattern?" Keep scope to what one semester can answer.
 
-Section forty-two point one develops ai and machine-learning security applied with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-two point one, the NRS mentor expects ai claims to carry owners and dates.
-
-Section forty-two point one treats from problem to question as testable only when evidence and ticket IDs are recorded.
-
 ### 42.2 Efficient literature review
 
 Start from authoritative overviews — NIST AI 100-2 E2025 for adversarial ML, OWASP LLM 2025 for application risks, MITRE ATLAS for techniques — then read key papers: Greshake et al. (arXiv:2302.12173) and Liu et al. (arXiv:2306.05499) on prompt injection; Chen et al. (arXiv:2402.06363) on structured-query defences; Carlini et al. (arXiv:1902.06705) on evaluation. Record threat model, method, metric and limits for each.
-
-Section forty-two point two develops ai and machine-learning security applied with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-two point two, the NRS mentor expects ai claims to carry owners and dates.
 
 ### 42.3 Valid small experiments
 
 Pre-specify hypotheses and metrics; use held-out test sets; compare against strong baselines; run several seeds; report paired differences with intervals; include an adaptive attack that targets your method. Check common pitfalls in Arp et al. (arXiv:2010.09470).
 
-Section forty-two point three develops ai and machine-learning security applied with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-two point three, the NRS mentor expects ai claims to carry owners and dates.
-
-Section forty-two point three treats from problem to question as testable only when evidence and ticket IDs are recorded.
-
 ### 42.4 Reporting for practitioners
 
 State the setting precisely, the effect with its interval, the cost, the conditions under which it failed, and what a practitioner should do with the result.
-
-Section forty-two point four develops ai and machine-learning security applied with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-two point four, the NRS mentor expects ai claims to carry owners and dates.
-
-Section forty-two point four treats from problem to question as testable only when evidence and ticket IDs are recorded.
 
 ### 42.5 Worked example (synthetic NRS case)
 
 Sam's applied question compared provenance labelling alone, dual-model, and both, on 400 synthetic injected bulletins and 400 benign tasks, five seeds each. Labelling reduced injection proposals from 14% to 9% (paired CI 3–7 points); dual-model to 2%; both to 1.5%. An adaptive payload that imitated the label format raised labelling-only proposals back to 13%, while dual-model held at 2.5%. Conclusion for practitioners: labels help a little and are easily imitated; constrained interfaces help more; neither replaces enforcement.
 
-Section forty-two point five develops ai and machine-learning security applied with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 42.6 Errors and limits
-Section forty-two point six develops ai and machine-learning security applied with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-two point six, the NRS mentor expects ai claims to carry owners and dates.
-
-Section forty-two point six treats from problem to question as testable only when evidence and ticket IDs are recorded.
-
-For section forty-two point six, Northgate Rail Systems will not accept ai work without a written trail.
-
 
 - Questions too broad for the time available.
 - No adaptive attack against the proposed method.
@@ -3980,41 +2698,17 @@ You will (1) work within an organisation's AI governance and security processes;
 
 A placement connects coursework with organisational reality: budgets, deadlines, legacy systems, procurement and regulation. Agree goals with the host and the university: typically one deliverable (an assessment, a control implementation, an evaluation suite) plus participation in routine processes.
 
-Section forty-three point one develops industry or public-service practice with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-three point one, the NRS mentor expects industry claims to carry owners and dates.
-
-Section forty-three point one treats placement goals governance in as testable only when evidence and ticket IDs are recorded.
-
 ### 43.2 Governance in practice
 
 Organisations adopting ISO/IEC 42001 or the NIST AI RMF have AI policies, inventories, risk assessments and approval boards. Learn how an AI system is proposed, assessed, approved and monitored, who signs off and what evidence they expect.
-
-Section forty-three point two develops industry or public-service practice with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-three point two, the NRS mentor expects industry claims to carry owners and dates.
-
-Section forty-three point two treats placement goals governance in as testable only when evidence and ticket IDs are recorded.
 
 ### 43.3 Authorised work only
 
 All testing on placement is governed by written authorization from the system owner, specifying scope, methods and time. Use non-production environments where possible. Report findings through the host's channels; never disclose them externally without permission.
 
-Section forty-three point three develops industry or public-service practice with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-three point three, the NRS mentor expects industry claims to carry owners and dates.
-
-Section forty-three point three treats placement goals governance in as testable only when evidence and ticket IDs are recorded.
-
 ### 43.4 Reflective practice
 
 Keep a weekly log: what you did, what evidence you produced, what surprised you, what you would do differently. Reflection turns experience into transferable skill and is assessed.
-
-Section forty-three point four develops industry or public-service practice with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-three point four, the NRS mentor expects industry claims to carry owners and dates.
-
-Section forty-three point four treats placement goals governance in as testable only when evidence and ticket IDs are recorded.
 
 ### 43.4b Working with constraints
 
@@ -4023,8 +2717,6 @@ Real organisations rarely start from a clean design. Legacy systems lack logs, v
 ### 43.5 Worked example (synthetic NRS case)
 
 Sam's placement goal was to build the AI inventory for NRS. Using the inventory lab as a starting template, Sam catalogued 14 AI systems, including three spreadsheets with embedded ML add-ins nobody had registered. The inventory scored exposure, autonomy, data sensitivity and untrusted input; the CV-screening pilot in HR scored high and was sent for a fuller assessment, partly because recruitment systems can be high-risk under the EU AI Act.
-
-Section forty-three point five develops industry or public-service practice with a Northgate Rail Systems note Sam Ito can demo offline.
 
 ```python
 """Lab V: an AI system inventory scored for review priority (synthetic).
@@ -4062,14 +2754,6 @@ churn-predictor    score= 3 owasp=LLM02
 ```
 
 ### 43.6 Errors and limits
-Section forty-three point six develops industry or public-service practice with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-three point six, the NRS mentor expects industry claims to carry owners and dates.
-
-Section forty-three point six treats placement goals governance in as testable only when evidence and ticket IDs are recorded.
-
-For section forty-three point six, Northgate Rail Systems will not accept industry work without a written trail.
-
 
 - Testing beyond the written scope.
 - Placement deliverables nobody will maintain.
@@ -4101,43 +2785,17 @@ You will (1) define a capstone AI-security engineering project with a client, re
 
 A good capstone has a real (or realistic synthetic) client, an AI component with meaningful security risk, a deliverable that can be built and verified in two semesters, and a clear evaluation. Examples: a secured RAG assistant with enforcement and evaluation harness; a poisoning-resistant data pipeline; a monitoring service for extraction and abuse.
 
-Section forty-four point one develops engineering capstone with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-four point one, the NRS mentor expects engineering claims to carry owners and dates.
-
 ### 44.2 Project plan
 
 Include: problem statement; stakeholders; scope and exclusions; requirements (functional, security, statistical, operational) with verification methods; architecture with trust boundaries; threat model; verification plan; risk register for the project itself (data access, compute, team availability); milestones and deliverables; ethics and authorization.
-
-Section forty-four point two develops engineering capstone with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-four point two, the NRS mentor expects engineering claims to carry owners and dates.
-
-Section forty-four point two treats choosing the project project as testable only when evidence and ticket IDs are recorded.
 
 ### 44.3 Baseline approval
 
 A review panel approves the baseline: requirements, architecture and plan. After approval, changes go through change control, so scope creep is visible and justified.
 
-Section forty-four point three develops engineering capstone with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-four point three, the NRS mentor expects engineering claims to carry owners and dates.
-
-Section forty-four point three treats choosing the project project as testable only when evidence and ticket IDs are recorded.
-
-For section forty-four point three, Northgate Rail Systems will not accept engineering work without a written trail.
-
 ### 44.4 Teamwork
 
 Assign roles (lead, security architect, ML engineer, test lead) but rotate review duties so everyone understands the whole. Keep decisions in ADRs and meetings brief with recorded actions.
-
-Section forty-four point four develops engineering capstone with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-four point four, the NRS mentor expects engineering claims to carry owners and dates.
-
-Section forty-four point four treats choosing the project project as testable only when evidence and ticket IDs are recorded.
-
-For section forty-four point four, Northgate Rail Systems will not accept engineering work without a written trail.
 
 ### 44.4b Ethics and authorization for the capstone
 
@@ -4147,17 +2805,7 @@ Even synthetic projects need an authorization note: which environments, data and
 
 Sam's team chose "Bulletin Gate": a service that ingests supplier bulletins, extracts structured maintenance facts with a quarantined model, flags instruction-like content, and passes only structured records to Wrench. Requirements included: extraction accuracy ≥ 95% on 500 held-out bulletins; zero instruction text in output records (schema-enforced); ≤ 2 s median latency; full provenance. Exclusions: image attachments (deferred). The panel approved with one condition: add an adaptive-attack test set written by another team.
 
-Section forty-four point five develops engineering capstone with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 44.6 Errors and limits
-Section forty-four point six develops engineering capstone with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-four point six, the NRS mentor expects engineering claims to carry owners and dates.
-
-Section forty-four point six treats choosing the project project as testable only when evidence and ticket IDs are recorded.
-
-For section forty-four point six, Northgate Rail Systems will not accept engineering work without a written trail.
-
 
 - Capstones too large to verify.
 - Requirements without verification methods.
@@ -4189,41 +2837,17 @@ You will (1) conduct an independent security design review of another team's AI 
 
 Reviewers must not have designed the system. They need the design package, access to designers for questions, and enough time. Independence reveals assumptions that designers cannot see.
 
-Section forty-five point one develops independent design review with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-five point one, the NRS mentor expects independent claims to carry owners and dates.
-
-Section forty-five point one treats independence review method findings as testable only when evidence and ticket IDs are recorded.
-
-For section forty-five point one, Northgate Rail Systems will not accept independent work without a written trail.
-
 ### 45.2 Review method
 
 Combine a checklist and threat-driven exploration. Checklist items: trust boundaries drawn; enforcement outside the model; least-privilege tools; delegated identity; provenance and taint; output handling; supply-chain verification; data protection; monitoring and runbooks; evaluation gates with held-out suites; human-oversight design; failure modes and safe states. Threat-driven: walk OWASP LLM 2025 entries and relevant MITRE ATLAS techniques against the design and ask, for each, "what stops this, and what if that fails?"
-
-Section forty-five point two develops independent design review with a Northgate Rail Systems note Sam Ito can demo offline.
 
 ### 45.3 Findings
 
 Each finding: title; severity (with criteria); description; evidence (diagram, document section); impact; recommendation; and status. Separate findings from observations and positive notes. Be specific enough that the designers can act.
 
-Section forty-five point three develops independent design review with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-five point three, the NRS mentor expects independent claims to carry owners and dates.
-
-Section forty-five point three treats independence review method findings as testable only when evidence and ticket IDs are recorded.
-
 ### 45.4 Receiving a review
 
 Thank reviewers, clarify misunderstandings in the design documents (if a reviewer misunderstood, others will), accept or contest findings with evidence, and track every finding to closure.
-
-Section forty-five point four develops independent design review with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-five point four, the NRS mentor expects independent claims to carry owners and dates.
-
-Section forty-five point four treats independence review method findings as testable only when evidence and ticket IDs are recorded.
-
-For section forty-five point four, Northgate Rail Systems will not accept independent work without a written trail.
 
 ### 45.4b Severity criteria
 
@@ -4233,17 +2857,7 @@ Agree severity criteria before the review. For example: *critical* — an extern
 
 Sam reviewed another team's "Crew Chat" design (an assistant for track crews). High finding: the assistant's retrieval used a service account with access to all depots' documents, filtering results only in the prompt ("only answer about your depot"). Recommendation: per-user retrieval permissions enforced in the vector store query. Medium: no output escaping for a web view. Positive: excellent provenance labelling. The team fixed the high finding before the next milestone.
 
-Section forty-five point five develops independent design review with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 45.6 Errors and limits
-Section forty-five point six develops independent design review with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-five point six, the NRS mentor expects independent claims to carry owners and dates.
-
-Section forty-five point six treats independence review method findings as testable only when evidence and ticket IDs are recorded.
-
-For section forty-five point six, Northgate Rail Systems will not accept independent work without a written trail.
-
 
 - Reviews by the designers themselves.
 - Vague findings without evidence.
@@ -4275,41 +2889,17 @@ You will (1) build and integrate the capstone system to its approved baseline; (
 
 Implement in increments, each ending with tests and a short demo. Keep requirements traceability current: each requirement points to code, configuration and tests. Use the CI security gate from Chapter 14 from the first increment.
 
-Section forty-six point one develops engineering capstone ii with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-six point one, the NRS mentor expects engineering claims to carry owners and dates.
-
-Section forty-six point one treats building to the baseline as testable only when evidence and ticket IDs are recorded.
-
 ### 46.2 Implementing controls
 
 Implement the enforcement point, provenance handling, output validation, monitoring and supply-chain checks as separate, testable modules. Avoid "temporary" bypasses; if one is necessary for development, gate it behind configuration that cannot be enabled in the release build.
-
-Section forty-six point two develops engineering capstone ii with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-six point two, the NRS mentor expects engineering claims to carry owners and dates.
-
-Section forty-six point two treats building to the baseline as testable only when evidence and ticket IDs are recorded.
 
 ### 46.3 Evaluation harness
 
 Build the harness that runs held-out benign and adversarial suites, computes metrics with intervals and stores raw outputs. Include the independent adaptive-attack set provided by another team. Run it nightly and at each release candidate.
 
-Section forty-six point three develops engineering capstone ii with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-six point three, the NRS mentor expects engineering claims to carry owners and dates.
-
-Section forty-six point three treats building to the baseline as testable only when evidence and ticket IDs are recorded.
-
 ### 46.4 Defects and changes
 
 Track defects with severity; security defects block release until fixed or formally accepted with a risk owner. Changes to scope or requirements go through the change control agreed in Capstone I.
-
-Section forty-six point four develops engineering capstone ii with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-six point four, the NRS mentor expects engineering claims to carry owners and dates.
-
-Section forty-six point four treats building to the baseline as testable only when evidence and ticket IDs are recorded.
 
 ### 46.4b Demonstrations and evidence
 
@@ -4319,19 +2909,7 @@ End each increment with a short demonstration to the client that includes at lea
 
 During build, Bulletin Gate's quarantined model sometimes copied instruction-like sentences into a free-text "notes" field of its output schema. The schema was tightened: notes became an enumeration of predefined maintenance categories plus numeric fields. The adaptive set from the other team then produced zero instruction strings in outputs across 300 cases (95% upper bound ≈ 1%), while extraction accuracy fell from 96.4% to 95.3% — still meeting the requirement.
 
-Section forty-six point five develops engineering capstone ii with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-six point five, the NRS mentor expects engineering claims to carry owners and dates.
-
 ### 46.6 Errors and limits
-Section forty-six point six develops engineering capstone ii with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-six point six, the NRS mentor expects engineering claims to carry owners and dates.
-
-Section forty-six point six treats building to the baseline as testable only when evidence and ticket IDs are recorded.
-
-For section forty-six point six, Northgate Rail Systems will not accept engineering work without a written trail.
-
 
 - Free-text fields that reopen injection paths.
 - Development bypasses shipped to production.
@@ -4363,55 +2941,23 @@ You will (1) plan and run a controlled failure-and-recovery trial for an AI syst
 
 A recovery plan that has never been exercised is a hypothesis. A trial tests whether people, tools and procedures detect, contain and recover from realistic failures and attacks within target times.
 
-Section forty-seven point one develops failure and recovery trial with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-seven point one, the NRS mentor expects failure claims to carry owners and dates.
-
-Section forty-seven point one treats purpose planning metrics after-action as testable only when evidence and ticket IDs are recorded.
-
 ### 47.2 Planning
 
 Define scenarios (for example: poisoned training batch discovered; injected document causes tool proposals; signed model fails verification at deployment; monitoring service down during an extraction attempt), objectives, safety rules, observers, success criteria and a stop condition. Run in a staging environment with synthetic data. Inform participants of the exercise window but not the scenario details, so detection is realistic.
-
-Section forty-seven point two develops failure and recovery trial with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-seven point two, the NRS mentor expects failure claims to carry owners and dates.
 
 ### 47.3 Metrics
 
 Time to detect, time to contain, time to recover, correctness of actions, communication quality and data loss. Compare with targets in requirements (for example, contain tool misuse within 15 minutes).
 
-Section forty-seven point three develops failure and recovery trial with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-seven point three, the NRS mentor expects failure claims to carry owners and dates.
-
-Section forty-seven point three treats purpose planning metrics after-action as testable only when evidence and ticket IDs are recorded.
-
 ### 47.4 After-action review
 
 Within a week, hold a blameless review: what happened, what worked, what did not, and actions with owners. Update runbooks, monitoring and design.
-
-Section forty-seven point four develops failure and recovery trial with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-seven point four, the NRS mentor expects failure claims to carry owners and dates.
-
-Section forty-seven point four treats purpose planning metrics after-action as testable only when evidence and ticket IDs are recorded.
-
-For section forty-seven point four, Northgate Rail Systems will not accept failure work without a written trail.
 
 ### 47.5 Worked example (synthetic NRS case)
 
 Sam's team ran three scenarios on Bulletin Gate and Wrench in staging. Scenario A (injected bulletin) was detected in 6 minutes by the classifier flag and contained in 11 by revoking Wrench's work-order credential. Scenario B (poisoned extraction model update) was blocked at deployment by manifest verification within 1 minute. Scenario C (monitoring outage plus scraping) was detected only after 52 minutes, when monitoring recovered — missing the 30-minute target. The fix added a "monitoring heartbeat missing" alert and a default throttle when monitoring is down.
 
 ### 47.6 Errors and limits
-Section forty-seven point six develops failure and recovery trial with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-seven point six, the NRS mentor expects failure claims to carry owners and dates.
-
-Section forty-seven point six treats purpose planning metrics after-action as testable only when evidence and ticket IDs are recorded.
-
-For section forty-seven point six, Northgate Rail Systems will not accept failure work without a written trail.
-
 
 - Trials that only test technology, not people and procedures.
 - Blame-focused reviews that discourage reporting.
@@ -4448,12 +2994,6 @@ You will (1) assemble an evidence dossier that supports a safety-and-security ca
 
 The dossier is the complete, organised body of evidence that the system meets its requirements and that its residual risks are understood and accepted. It supports the safety-and-security case and is what an assessor, client or regulator would examine.
 
-Section forty-eight point one develops evidence dossier with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-eight point one, the NRS mentor expects evidence claims to carry owners and dates.
-
-Section forty-eight point one treats what the dossier is as testable only when evidence and ticket IDs are recorded.
-
 ### 48.2 Structure
 
 1. Summary: system, intended use, claims, residual risks, recommendation.
@@ -4466,17 +3006,9 @@ Section forty-eight point one treats what the dossier is as testable only when e
 8. Documentation: model cards, datasheets, runbooks.
 9. Residual-risk register with owners and review dates.
 
-Section forty-eight point two develops evidence dossier with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 48.3 Integrity and reproducibility
 
 Record hashes of evidence files in a manifest; store the dossier in a version-controlled repository; make evaluation reproducible from recorded configurations (scripts, seeds, environments). The hash lab from Chapter 19 is the simplest form of this discipline.
-
-Section forty-eight point three develops evidence dossier with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-eight point three, the NRS mentor expects evidence claims to carry owners and dates.
-
-Section forty-eight point three treats what the dossier is as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Lab H: integrity of model artefacts with SHA-256 manifests (stdlib only).
@@ -4513,27 +3045,11 @@ tokenizer.json  OK
 
 List what was not tested, what failed and was accepted, and what depends on assumptions (for example, "technicians read approval screens"). Regulators and clients trust dossiers that state limits.
 
-Section forty-eight point four develops evidence dossier with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-eight point four, the NRS mentor expects evidence claims to carry owners and dates.
-
-Section forty-eight point four treats what the dossier is as testable only when evidence and ticket IDs are recorded.
-
 ### 48.5 Worked example (synthetic NRS case)
 
 Sam's Bulletin Gate dossier had 41 requirements, 39 passed, one passed after a fix and re-test, and one (image attachments) was formally out of scope. Residual risks included adaptive attacks beyond the tested set, dependence on supplier channel authentication and reviewer attention. The evidence manifest listed 312 files with SHA-256 hashes; an assessor reran the evaluation harness from the dossier and reproduced the headline numbers within their intervals.
 
-Section forty-eight point five develops evidence dossier with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 48.6 Errors and limits
-Section forty-eight point six develops evidence dossier with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-eight point six, the NRS mentor expects evidence claims to carry owners and dates.
-
-Section forty-eight point six treats what the dossier is as testable only when evidence and ticket IDs are recorded.
-
-For section forty-eight point six, Northgate Rail Systems will not accept evidence work without a written trail.
-
 
 - Dossiers that collect documents without linking them to claims.
 - Missing versions and hashes.
@@ -4565,57 +3081,23 @@ You will (1) write an engineering thesis that presents the problem, design, impl
 
 Introduction (problem, client, objectives); background (AI-security concepts and frameworks: NIST AI RMF and AI 100-2 E2025, OWASP LLM 2025, MITRE ATLAS, relevant regulation such as the EU AI Act); requirements and threat model; design and alternatives; implementation; verification and validation; recovery trial; discussion (what worked, what did not, why); limitations and future work; conclusion; appendices (dossier summary, traceability matrix).
 
-Section forty-nine point one develops engineering thesis with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-nine point one, the NRS mentor expects engineering claims to carry owners and dates.
-
 ### 49.2 Positioning
 
 Explain how your design relates to known patterns and research: for prompt injection, Greshake et al. (arXiv:2302.12173) on indirect injection and Chen et al. (arXiv:2402.06363) on structured queries; for evaluation discipline, Carlini et al. (arXiv:1902.06705). State what is new in your engineering context even if the ideas are known.
-
-Section forty-nine point two develops engineering thesis with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-nine point two, the NRS mentor expects engineering claims to carry owners and dates.
 
 ### 49.3 Critical evaluation
 
 Evaluate against requirements and stakeholder needs, compare with alternatives, and discuss threats to validity: synthetic data, limited adaptive attacks, small user studies. Avoid marketing language.
 
-Section forty-nine point three develops engineering thesis with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-nine point three, the NRS mentor expects engineering claims to carry owners and dates.
-
-Section forty-nine point three treats thesis structure positioning critical as testable only when evidence and ticket IDs are recorded.
-
-For section forty-nine point three, Northgate Rail Systems will not accept engineering work without a written trail.
-
 ### 49.4 Writing for two audiences
 
 The body is for assessors; an executive summary and a two-page practitioner note translate the results into decisions. Keep numbers consistent across all of them.
-
-Section forty-nine point four develops engineering thesis with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-nine point four, the NRS mentor expects engineering claims to carry owners and dates.
-
-Section forty-nine point four treats thesis structure positioning critical as testable only when evidence and ticket IDs are recorded.
-
-For section forty-nine point four, Northgate Rail Systems will not accept engineering work without a written trail.
 
 ### 49.5 Worked example (synthetic NRS case)
 
 Sam's thesis concluded that Bulletin Gate eliminated instruction text from records reaching Wrench in all 300 adaptive cases (95% upper bound ≈ 1%) with a 1.1-point accuracy cost, and that the main remaining risks were outside the gate: approval behaviour and supplier channel authentication. Sam's limitations section noted that adaptive attacks were written by one other student team in two weeks and that real bulletins might contain formats not represented in the synthetic corpus.
 
-Section forty-nine point five develops engineering thesis with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 49.6 Errors and limits
-Section forty-nine point six develops engineering thesis with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section forty-nine point six, the NRS mentor expects engineering claims to carry owners and dates.
-
-Section forty-nine point six treats thesis structure positioning critical as testable only when evidence and ticket IDs are recorded.
-
-For section forty-nine point six, Northgate Rail Systems will not accept engineering work without a written trail.
-
 
 - Theses that narrate work without evaluating it.
 - Inconsistent numbers across summary and body.
@@ -4647,27 +3129,13 @@ You will (1) present and defend the capstone and thesis before an examination pa
 
 Twenty-five minutes: problem and client (3), requirements and threat model (4), design and alternatives (5), verification, validation and recovery trial results (8), residual risks and limitations (3), conclusions and next steps (2). Show one slide that states the main claim with its evidence and bound.
 
-Section fifty point one develops final defense with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section fifty point one, the NRS mentor expects final claims to carry owners and dates.
-
-Section fifty point one treats presentation likely questions professional as testable only when evidence and ticket IDs are recorded.
-
 ### 50.2 Likely questions
 
 "What happens if the quarantined model is replaced by a stronger one that follows injected instructions better?" "Why not just use a classifier?" "What is your residual risk and who accepted it?" "How would this hold under the EU AI Act for a high-risk system?" "What did the red team find and what did you change?" "What would you do with twice the time?" Answer directly, show evidence, state the limit.
 
-Section fifty point two develops final defense with a Northgate Rail Systems note Sam Ito can demo offline.
-
 ### 50.3 Professional development
 
 AI security changes quickly. Plan how you will stay current: follow NIST, OWASP and MITRE ATLAS updates; read key venues; participate in authorised red-team exercises and community projects; maintain an evaluation portfolio; and keep ethical commitments — authorised testing, coordinated disclosure, honest claims.
-
-Section fifty point three develops final defense with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section fifty point three, the NRS mentor expects final claims to carry owners and dates.
-
-Section fifty point three treats presentation likely questions professional as testable only when evidence and ticket IDs are recorded.
 
 ### 50.4 Worked example (synthetic NRS case)
 
@@ -4719,14 +3187,6 @@ defence=separate  exfil_calls= 0/20 any_injected_call= 0/20 benign_calls=0/20
 The panel also asked Sam to rerun the injection lab live to illustrate why external controls matter; the output matched the thesis.
 
 ### 50.5 Errors and limits
-Section fifty point five develops final defense with a Northgate Rail Systems note Sam Ito can demo offline.
-
-Under section fifty point five, the NRS mentor expects final claims to carry owners and dates.
-
-Section fifty point five treats presentation likely questions professional as testable only when evidence and ticket IDs are recorded.
-
-For section fifty point five, Northgate Rail Systems will not accept final work without a written trail.
-
 
 - Spending most of the time on background.
 - Claims that depend on the model behaving well.

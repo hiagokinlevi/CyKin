@@ -525,10 +525,6 @@ for cid, text in claims.items():
 
 Expected output:
 
-Section two point nine develops critical infrastructure and sector security with a the organisation note Cascade Study can demo offline.
-
-Under section two point nine, the mentor expects critical claims to carry owners and dates.
-
 ```text
 C1: open: no independent strong validation; evidence=['P1', 'P2']; strong+independent=[]
 C2: supported (>=2 independent strong validations); evidence=['P3', 'P6']; strong+independent=['P3', 'P6']
@@ -547,8 +543,6 @@ A gap becomes a doctoral contribution when it passes four tests: **Open** — th
 The Cascade Study's statement (to be refined in Chapter 3): *In distribution outages requiring sequential manual feeder restoration, ordering by critical-service time-to-impact, compared with ordering by customers restored, reduces predeclared weighted critical-service loss by at least 20%, while increasing customer-hours lost by no more than 15%; this is refuted if the reduction is below 20% in an independently built model of a second region, or if operators in a blinded tabletop do not choose the ordering when given the same information.*
 
 ### 2.11 Common errors and limits
-Section two point one one develops critical infrastructure and sector security with a the organisation note Cascade Study can demo offline.
-
 
 - Searching only security venues and declaring a gap that engineering has already filled.
 - Citing percolation results as consequence predictions for specific places.
@@ -774,8 +768,6 @@ The candidate's first draft compared DEP with SILO only and reported, in a pilot
 This is the single most important design decision in the book: **choose the comparison that represents best current practice, not the one that makes the method look best.**
 
 ### 3.10 Common errors and limits
-Section three point one zero develops original contribution proposal with a the organisation note Cascade Study can demo offline.
-
 
 - Comparing against a straw-man baseline (no prioritization at all, or random).
 - Omitting the cost side of a trade-off that scheduling theory predicts.
@@ -1028,8 +1020,6 @@ Every revision is logged in the deviation log with the date and confirmation tha
 In the tabletop pilot, P02 asked why the hospital's generator buffer was shown as 26 hours when "everyone knows the water goes first". The candidate had displayed only direct power buffers. The display was revised to show **effective time-to-impact** (the minimum over all paths, as in Lab 3) alongside direct buffers, with the path shown. This changed the instrument — a legitimate pilot outcome — and raised a methodological point for the main study: the comparison between "with display" and "without display" now tested the effective-time-to-impact display, not merely any criticality information. The hypotheses for the tabletop were refined accordingly, *before* the main study, and the change was preregistered as an amendment.
 
 ### 4.9 Common errors and limits
-Section four point nine develops baseline replication and pilot with a the organisation note Cascade Study can demo offline.
-
 
 - Declaring a reproduction successful after checking a single output.
 - Setting tolerances after seeing the discrepancy.
@@ -1323,8 +1313,6 @@ A result transports from one context to another when the causal structure releva
 Report, at minimum: the preregistration and all amendments with dates; the deviation log; every hypothesis with its verdict, including failures; effect sizes relative to smallest effects of interest; Monte Carlo intervals labelled as such; ORACLE gaps; tabletop design, consent, attrition and results with exact tests and qualitative themes; each validation type with what it establishes; and the two regions' configuration *at the level of detail allowed by the information-protection tiers* (Chapter 7). Follow a recognized reporting structure for simulation studies where one exists in the target venue, and for the tabletop follow the transparency expectations of human-subjects research in your field.
 
 ### 5.7 Common errors and limits
-Section five point seven develops main study and independent validation with a the organisation note Cascade Study can demo offline.
-
 
 - Analysing two policies' means separately instead of paired differences.
 - Increasing the number of draws until a difference is "significant".
@@ -1523,10 +1511,6 @@ A good response letter quotes each comment, states whether it is accepted, partl
 - *Responsive:* "Partly accepted. Port Halvard was selected on predeclared mechanism-derived criteria, which makes it a fair test of the mechanism but not an estimate of how often DEP helps. We added a 200-region analysis (§6.3.3), narrowed the claim to regions with order divergence and stated that the frequency of divergence in real regions is unknown (Limitations, item 4)."
 
 ### 6.8 Common errors and limits
-Section six point eight develops peer critique and revision with a the organisation note Cascade Study can demo offline.
-
-Under section six point eight, the mentor expects peer claims to carry owners and dates.
-
 
 - Treating peer review as a hurdle instead of a method.
 - Evaluating a policy only in the model used to derive it.
@@ -1728,12 +1712,6 @@ A limitations section is part of the argument: it states the rebuttal conditions
 The candidate's first archive plan placed everything at T2 "to be safe". The committee rejected it: over-restriction prevents verification and is not safe, only unaccountable. The revised plan used the tier table in §7.4.2, published all code and synthetic configurations at T0 with a single regeneration command, placed tabletop transcripts at T2 under the consent terms participants signed, and recorded the T3 partner material in a description that told examiners exactly which analyses depended on it — none of the confirmatory results did, by design, because the study used invented regions for all public claims and used partner data only for elicitation ranges and face validity. That design decision, made in Chapter 1, is what made a largely public archive possible.
 
 ### 7.9 Common errors and limits
-Section seven point nine develops thesis synthesis and reproducibility archive with a the organisation note Cascade Study can demo offline.
-
-Under section seven point nine, the mentor expects thesis claims to carry owners and dates.
-
-Section seven point nine treats the thesis as an as testable only when evidence and ticket IDs are recorded.
-
 
 - Writing the thesis as a chronological lab notebook rather than an argument.
 - Restricting everything, or publishing everything, instead of tiering.
@@ -1919,10 +1897,6 @@ Each study has a falsifiable claim, a safe design and a partner model, and each 
 The answer concedes what is true, cites the specific evidence, restates the narrowed claim and names the next study. It does not defend the original, broader claim.
 
 ### 8.8 Common errors and limits
-Section eight point eight develops defense and publication plan with a the organisation note Cascade Study can demo offline.
-
-Under section eight point eight, the mentor expects defense claims to carry owners and dates.
-
 
 - Abstracts and conclusions that claim more than the chapters.
 - Treating the defense as a presentation rather than an examination of independence.

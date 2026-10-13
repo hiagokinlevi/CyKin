@@ -51,43 +51,19 @@ In August 2024 NIST published three standards: [FIPS 203](https://doi.org/10.602
 
 *Harvest now, decrypt later*: an adversary records encrypted traffic today and decrypts it once a quantum computer exists. This matters now for data that must stay confidential for many years — for MTI, life-policy records (40 years) and claims records (10 years). *Forge later*: once a quantum computer exists, an adversary could forge signatures, certificates and software updates. This matters most for things trusted for a long time, such as root certificates, signed archives and devices that cannot be updated.
 
-Section one point three develops security foundations for practitioners with a Marlow & Tide Insurance note the practitioner can demo offline.
-
 ### 1.4 Hybrid key exchange
 
 During the transition, systems combine a post-quantum method with a traditional one so an attacker would need to break both. This *hybrid* approach (terminology in [RFC 9794](https://www.rfc-editor.org/rfc/rfc9794.html)) is now available in common web software as the TLS group X25519MLKEM768 ([RFC 10024](https://www.rfc-editor.org/rfc/rfc10024.html)). Hybrid key exchange protects the confidentiality of sessions; it does not by itself make certificates or signatures post-quantum.
-
-Section one point four develops security foundations for practitioners with a Marlow & Tide Insurance note the practitioner can demo offline.
 
 ### 1.5 Worked example
 
 A draft status report says: "Our website is now quantum-proof because we enabled Kyber." Corrected: "The broker portal now uses hybrid post-quantum key exchange (X25519MLKEM768, based on ML-KEM from NIST FIPS 203) for connections from up-to-date browsers. This protects recorded portal traffic against future decryption. The portal's certificate still uses a classical signature; certificate migration is planned separately."
 
-Section one point five develops security foundations for practitioners with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section one point five, MTI platform team expects security claims to carry owners and dates.
-
 ### 1.6 Practice task
 
 Rewrite three sentences from a vendor brochure or news article about quantum security so that they are accurate, sourced and appropriately cautious.
 
-Section one point six develops security foundations for practitioners with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section one point six, MTI platform team expects security claims to carry owners and dates.
-
-Section one point six treats what changes and what as testable only when evidence and ticket IDs are recorded.
-
-For section one point six, Marlow & Tide Insurance will not accept security work without a written trail.
-
 ### 1.7 Common errors and limits
-Section one point seven develops security foundations for practitioners with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section one point seven, MTI platform team expects security claims to carry owners and dates.
-
-Section one point seven treats what changes and what as testable only when evidence and ticket IDs are recorded.
-
-For section one point seven, Marlow & Tide Insurance will not accept security work without a written trail.
-
 
 - "Quantum-proof" or "unbreakable" claims.
 - Treating IR 8547's draft dates as final.
@@ -121,19 +97,9 @@ You will (1) map MTI's services to the data they carry and how long it must stay
 
 List each service, the data it handles and how long that data must stay confidential or trustworthy. Use contracts, regulations and retention schedules as sources, and ask data owners when unsure. For MTI: life-policy archive 40 years; claims records 10 years; broker portal sessions carry personal data relevant for about 7 years; quote requests are short-lived.
 
-Section two point one develops quantum and post-quantum security service with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section two point one, MTI platform team expects quantum claims to carry owners and dates.
-
 ### 2.2 Mosca's rule
 
 Mosca (2018): if data must stay secure for *x* years, migration takes *y* years, and a capable quantum computer may arrive in *z* years, then data is already at risk when *x* + *y* > *z*. Since nobody knows *z*, try several values.
-
-Section two point two develops quantum and post-quantum security service with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section two point two, MTI platform team expects quantum claims to carry owners and dates.
-
-Section two point two treats services and data lifetimes as testable only when evidence and ticket IDs are recorded.
 
 ### 2.3 Practical activity — Lab M
 
@@ -148,12 +114,6 @@ for z in (10, 15, 20):  # years until a cryptographically relevant quantum compu
 
 Expected output:
 
-Section two point three develops quantum and post-quantum security service with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section two point three, MTI platform team expects quantum claims to carry owners and dates.
-
-Section two point three treats services and data lifetimes as testable only when evidence and ticket IDs are recorded.
-
 ```text
 z=10: at risk now -> life-policy archive, claims records
 z=15: at risk now -> life-policy archive
@@ -166,39 +126,15 @@ The life-policy archive is at risk under every assumption; claims records only i
 
 Data owners (underwriting, claims) set lifetimes; system owners (IT teams) make changes; suppliers control products; procurement writes contracts; legal and compliance track obligations; executives approve budgets and accept risk; auditors check evidence. List what each needs from the workflow and what you need from them.
 
-Section two point four develops quantum and post-quantum security service with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section two point four, MTI platform team expects quantum claims to carry owners and dates.
-
 ### 2.5 Worked example
 
 MTI's first priority list: 1) transfers of life-policy records between offices and the archive; 2) reinsurer SFTP exchanges carrying claims data; 3) broker portal; 4) internal CA planning (forge-later, long validity). Quote requests are deprioritised. The list is explained to the executive sponsor as "protect what must stay secret longest, first".
-
-Section two point five develops quantum and post-quantum security service with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section two point five, MTI platform team expects quantum claims to carry owners and dates.
 
 ### 2.6 Practice task
 
 Build a five-row table of MTI services with data, lifetime, source of lifetime and owner; run Lab M with your own values.
 
-Section two point six develops quantum and post-quantum security service with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section two point six, MTI platform team expects quantum claims to carry owners and dates.
-
-Section two point six treats services and data lifetimes as testable only when evidence and ticket IDs are recorded.
-
-For section two point six, Marlow & Tide Insurance will not accept quantum work without a written trail.
-
 ### 2.7 Common errors and limits
-Section two point seven develops quantum and post-quantum security service with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section two point seven, MTI platform team expects quantum claims to carry owners and dates.
-
-Section two point seven treats services and data lifetimes as testable only when evidence and ticket IDs are recorded.
-
-For section two point seven, Marlow & Tide Insurance will not accept quantum work without a written trail.
-
 
 - Lifetimes guessed instead of sourced.
 - A single assumed quantum date.
@@ -206,10 +142,6 @@ For section two point seven, Marlow & Tide Insurance will not accept quantum wor
 ### 2.8 Revisiting the list
 
 Priorities change when facts change: a new contract extends a retention period, a supplier ships hybrid support, a service is retired. Review the priority list each quarter with data owners and system owners, record what changed and why, and keep the old versions. Auditors and executives trust a list that visibly evolves with evidence more than one that never changes.
-
-Section two point eight develops quantum and post-quantum security service with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section two point eight, MTI platform team expects quantum claims to carry owners and dates.
 
 ### Exercises
 
@@ -239,83 +171,31 @@ You will (1) obtain and respect written authorization; (2) collect only necessar
 
 Even "harmless" activities — reading configurations, running an inventory tool, asking for logs — need written authorization from the system owner stating systems, methods, time window, data handling and contacts. Active tests that alter negotiation are done only in isolated labs by technical staff.
 
-Section three point one develops authorized practice and evidence handling with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section three point one, MTI platform team expects authorized claims to carry owners and dates.
-
-Section three point one treats authorization minimum necessary evidence as testable only when evidence and ticket IDs are recorded.
-
 ### 3.2 Minimum necessary evidence
 
 Collect what answers the question: algorithm names, versions, certificate details, dates. Do not collect message contents or customer data. Prefer configuration exports and summaries over raw captures.
-
-Section three point two develops authorized practice and evidence handling with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section three point two, MTI platform team expects authorized claims to carry owners and dates.
-
-Section three point two treats authorization minimum necessary evidence as testable only when evidence and ticket IDs are recorded.
 
 ### 3.3 Storage and labelling
 
 Store evidence in the agreed repository with labels: source, date, collector, system, classification. Restrict access; inventories of weaknesses are sensitive. Keep a log of who accessed what.
 
-Section three point three develops authorized practice and evidence handling with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section three point three, MTI platform team expects authorized claims to carry owners and dates.
-
-Section three point three treats authorization minimum necessary evidence as testable only when evidence and ticket IDs are recorded.
-
 ### 3.4 Sensitive findings
 
 If you find something serious — an exposed private key, an unpatched system with a known vulnerability — report it immediately through the security process; do not investigate further on your own.
-
-Section three point four develops authorized practice and evidence handling with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section three point four, MTI platform team expects authorized claims to carry owners and dates.
-
-Section three point four treats authorization minimum necessary evidence as testable only when evidence and ticket IDs are recorded.
 
 ### 3.5 Supplier information
 
 Suppliers may share roadmaps under confidentiality. Record them as supplier statements, respect the agreement, and do not forward them outside the people who need them.
 
-Section three point five develops authorized practice and evidence handling with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section three point five, MTI platform team expects authorized claims to carry owners and dates.
-
-Section three point five treats authorization minimum necessary evidence as testable only when evidence and ticket IDs are recorded.
-
-For section three point five, Marlow & Tide Insurance will not accept authorized work without a written trail.
-
 ### 3.6 Worked example
 
 MTI's coordinator requests configuration exports for the insurer SFTP servers. The authorization (ticket SEC-118) covers read-only export, 1–15 October, results stored in the security evidence repository, contact the infrastructure lead. The export shows OpenSSH version and key-exchange settings; no file contents are touched. A supplier's roadmap received under NDA is stored with restricted access and labelled "supplier statement, confidential".
-
-Section three point six develops authorized practice and evidence handling with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section three point six, MTI platform team expects authorized claims to carry owners and dates.
 
 ### 3.7 Practice task
 
 Write an authorization request and an evidence label for one inventory activity.
 
-Section three point seven develops authorized practice and evidence handling with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section three point seven, MTI platform team expects authorized claims to carry owners and dates.
-
-Section three point seven treats authorization minimum necessary evidence as testable only when evidence and ticket IDs are recorded.
-
-For section three point seven, Marlow & Tide Insurance will not accept authorized work without a written trail.
-
 ### 3.8 Common errors and limits
-Section three point eight develops authorized practice and evidence handling with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section three point eight, MTI platform team expects authorized claims to carry owners and dates.
-
-Section three point eight treats authorization minimum necessary evidence as testable only when evidence and ticket IDs are recorded.
-
-For section three point eight, Marlow & Tide Insurance will not accept authorized work without a written trail.
-
 
 - Collecting more data than needed.
 - Evidence without labels.
@@ -354,14 +234,6 @@ You will (1) run an inventory using several sources; (2) build and read a crypto
 
 Configuration exports, certificate lists from the CA, network observations by technical teams, application documentation, and supplier questionnaires. Each answers different questions; combine them.
 
-Section four point one develops quantum and post-quantum security core with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section four point one, MTI platform team expects quantum claims to carry owners and dates.
-
-Section four point one treats inventory sources practical activity as testable only when evidence and ticket IDs are recorded.
-
-For section four point one, Marlow & Tide Insurance will not accept quantum work without a written trail.
-
 ### 4.2 Practical activity — Lab I
 
 ```python
@@ -382,16 +254,6 @@ print("hybrid key exchange present on:", [r[0] for r in records if "MLKEM" in r[
 
 Expected output:
 
-Section four point two develops quantum and post-quantum security core with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section four point two, MTI platform team expects quantum claims to carry owners and dates.
-
-Section four point two treats inventory sources practical activity as testable only when evidence and ticket IDs are recorded.
-
-For section four point two, Marlow & Tide Insurance will not accept quantum work without a written trail.
-
-Section four point two fails closed if quantum evidence is missing rather than guessing.
-
 ```text
 assets 6, unknown 1 (17%)
 quantum-vulnerable uses 5: broker-portal/signature, claims-app/key-exchange, claims-app/signature, policy-db/key-exchange, office-vpn/key-exchange
@@ -402,61 +264,23 @@ hybrid key exchange present on: ['broker-portal']
 
 A simple grade: A observed in operation; B authoritative configuration; C inferred from documentation or code; D supplier claim; U unknown. Priorities based on D or U evidence need verification before money is spent.
 
-Section four point three develops quantum and post-quantum security core with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section four point three, MTI platform team expects quantum claims to carry owners and dates.
-
-Section four point three treats inventory sources practical activity as testable only when evidence and ticket IDs are recorded.
-
 ### 4.4 Exposure classes
 
 Record-now (HNDL): classical key exchange carrying long-lived data. Forge-later: classical signatures trusted for long periods or hard to replace. Adequate: symmetric encryption and hashes at good sizes. Unknown.
-
-Section four point four develops quantum and post-quantum security core with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section four point four, MTI platform team expects quantum claims to carry owners and dates.
-
-Section four point four treats inventory sources practical activity as testable only when evidence and ticket IDs are recorded.
 
 ### 4.5 Unknowns as work
 
 Every unknown becomes a task with owner and due date: ask the supplier, request a configuration export, ask technical staff to observe. Track the unknown share as a headline measure.
 
-Section four point five develops quantum and post-quantum security core with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section four point five, MTI platform team expects quantum claims to carry owners and dates.
-
-Section four point five treats inventory sources practical activity as testable only when evidence and ticket IDs are recorded.
-
 ### 4.6 Worked example
 
 MTI's first CBOM extract matches Lab I: six assets, five quantum-vulnerable uses, one unknown (the call recorder). Grades: broker portal A (observed), claims app B, policy DB B, call recorder U, office VPN B. Tasks: supplier questionnaire to the call-recorder vendor; confirm claims-app signing algorithm with its owner.
-
-Section four point six develops quantum and post-quantum security core with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section four point six, MTI platform team expects quantum claims to carry owners and dates.
 
 ### 4.7 Practice task
 
 Grade and classify each Lab I record and write tasks for the unknowns.
 
-Section four point seven develops quantum and post-quantum security core with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section four point seven, MTI platform team expects quantum claims to carry owners and dates.
-
-Section four point seven treats inventory sources practical activity as testable only when evidence and ticket IDs are recorded.
-
-For section four point seven, Marlow & Tide Insurance will not accept quantum work without a written trail.
-
 ### 4.8 Common errors and limits
-Section four point eight develops quantum and post-quantum security core with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section four point eight, MTI platform team expects quantum claims to carry owners and dates.
-
-Section four point eight treats inventory sources practical activity as testable only when evidence and ticket IDs are recorded.
-
-For section four point eight, Marlow & Tide Insurance will not accept quantum work without a written trail.
-
 
 - One source only.
 - Treating supplier claims as observations.
@@ -495,10 +319,6 @@ You will (1) read the output of configuration audits and inventory tools; (2) di
 
 Configuration audits show what a service offers and in which order. Log summaries from technical teams show what was negotiated. Certificate inventories show signature algorithms and expiry dates. Supplier questionnaires show claims. As a practitioner you will rarely run active tools yourself; you will read and interpret their output.
 
-Section five point one develops quantum and post-quantum security tools with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section five point one, MTI platform team expects quantum claims to carry owners and dates.
-
 ### 5.2 Practical activity — Lab T
 
 ```python
@@ -519,12 +339,6 @@ for svc, groups in configs.items():
 
 Expected output:
 
-Section five point two develops quantum and post-quantum security tools with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section five point two, MTI platform team expects quantum claims to carry owners and dates.
-
-Section five point two treats what tools show practical as testable only when evidence and ticket IDs are recorded.
-
 ```text
 quote-api         OK (hybrid preferred)
 claims-portal     WARN hybrid offered but not preferred
@@ -538,67 +352,27 @@ The claims portal "offers but does not prefer" hybrid: a configuration audit tha
 
 A passive sensor in TLS 1.3 sees the negotiated group but not the certificate, which is encrypted. An active scanner with an old library reports everything as classical. A configuration export may be stale. A questionnaire may describe a product version MTI does not run. Write the blind spot next to each result.
 
-Section five point three develops quantum and post-quantum security tools with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section five point three, MTI platform team expects quantum claims to carry owners and dates.
-
 ### 5.4 Interpreting questionnaires
 
 Good answers name algorithms and parameter sets (ML-KEM-768 per FIPS 203), protocols (TLS 1.3 hybrid group per RFC 10024; IKEv2 per RFC 9370), product versions and dates, and offer test access. Weak answers say "PQC-ready" or "roadmap under review". Score answers consistently, for example 0 = no answer, 1 = undated claim, 2 = dated roadmap naming algorithms and protocols, 3 = shipped and verifiable.
-
-Section five point four develops quantum and post-quantum security tools with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section five point four, MTI platform team expects quantum claims to carry owners and dates.
 
 ### 5.5 From output to finding
 
 A finding states observation, source, date, impact, recommendation and owner. "Claims portal: hybrid group offered but X25519 preferred (configuration audit, 6 October). Impact: claims sessions remain HNDL-exposed. Recommendation: reorder groups to prefer X25519MLKEM768; verify with logs. Owner: Web Platform."
 
-Section five point five develops quantum and post-quantum security tools with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section five point five, MTI platform team expects quantum claims to carry owners and dates.
-
-Section five point five treats what tools show practical as testable only when evidence and ticket IDs are recorded.
-
 ### 5.6 Worked example
 
 The audit flags insurer-sftp as classical-only. The infrastructure team confirms the OpenSSH version predates hybrid support. Finding raised: upgrade and enable `mlkem768x25519-sha256`; coordinate with reinsurers whose clients may be old; owner Infrastructure; due in one quarter.
-
-Section five point six develops quantum and post-quantum security tools with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section five point six, MTI platform team expects quantum claims to carry owners and dates.
-
-Section five point six treats what tools show practical as testable only when evidence and ticket IDs are recorded.
 
 ### 5.7 Practice task
 
 Turn each Lab T line into a finding or an "as expected" note.
 
-Section five point seven develops quantum and post-quantum security tools with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section five point seven, MTI platform team expects quantum claims to carry owners and dates.
-
-Section five point seven treats what tools show practical as testable only when evidence and ticket IDs are recorded.
-
-For section five point seven, Marlow & Tide Insurance will not accept quantum work without a written trail.
-
 ### 5.8 Asking the right follow-up
 
 When tool output surprises you, ask technical staff three questions before raising a finding: is the tool current enough to see post-quantum algorithms; is the data fresh; and does the result match another source? Many apparent findings disappear — or become more serious — after these checks.
 
-Section five point eight develops quantum and post-quantum security tools with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section five point eight, MTI platform team expects quantum claims to carry owners and dates.
-
 ### 5.9 Common errors and limits
-Section five point nine develops quantum and post-quantum security tools with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section five point nine, MTI platform team expects quantum claims to carry owners and dates.
-
-Section five point nine treats what tools show practical as testable only when evidence and ticket IDs are recorded.
-
-For section five point nine, Marlow & Tide Insurance will not accept quantum work without a written trail.
-
 
 - Presence counted as success.
 - Ignoring blind spots.
@@ -632,93 +406,35 @@ You will (1) run the migration workflow as a repeatable cycle; (2) define roles,
 
 1. **Scope** services and confirm authorization. 2. **Inventory** with graded evidence. 3. **Prioritise** by lifetime, exposure and change route. 4. **Plan** each item: control, owner, date, dependencies. 5. **Implement** through the owning team's change process. 6. **Verify** with negotiation evidence. 7. **Record** residual risk and exceptions. 8. **Report** and repeat each quarter.
 
-Section six point one develops quantum and post-quantum security operational with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section six point one, MTI platform team expects quantum claims to carry owners and dates.
-
-Section six point one treats the cycle roles tracker as testable only when evidence and ticket IDs are recorded.
-
 ### 6.2 Roles
 
 Coordinator (you): runs the cycle, keeps the tracker, writes reports. System owners: implement changes. Data owners: confirm lifetimes. Procurement: supplier clauses. Security architecture: standards. Executive sponsor: decisions and risk acceptance. Internal audit: independent checks.
-
-Section six point two develops quantum and post-quantum security operational with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section six point two, MTI platform team expects quantum claims to carry owners and dates.
-
-Section six point two treats the cycle roles tracker as testable only when evidence and ticket IDs are recorded.
 
 ### 6.3 Tracker states
 
 Use simple states: *Unknown* → *Assessed* → *Planned* → *In progress* → *Implemented* → *Verified* → *Closed* (or *Exception*). An item moves to Verified only with evidence of negotiation, not just a change ticket.
 
-Section six point three develops quantum and post-quantum security operational with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section six point three, MTI platform team expects quantum claims to carry owners and dates.
-
-Section six point three treats the cycle roles tracker as testable only when evidence and ticket IDs are recorded.
-
 ### 6.4 Dependencies
 
 Many items wait on suppliers or partners. Record the dependency, the request sent, the answer and the follow-up date. Escalate unanswered requests through procurement or account management.
-
-Section six point four develops quantum and post-quantum security operational with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section six point four, MTI platform team expects quantum claims to carry owners and dates.
-
-Section six point four treats the cycle roles tracker as testable only when evidence and ticket IDs are recorded.
 
 ### 6.5 Outcome measures
 
 Report: share of tier-1 items Verified; share Unknown; number of open exceptions and how many are past expiry; supplier answers received. Avoid activity counts such as "meetings held".
 
-Section six point five develops quantum and post-quantum security operational with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section six point five, MTI platform team expects quantum claims to carry owners and dates.
-
-Section six point five treats the cycle roles tracker as testable only when evidence and ticket IDs are recorded.
-
 ### 6.6 Worked example
 
 MTI's tracker after one quarter (synthetic): 64 tier-1 items — 6 Verified, 9 Implemented, 14 In progress, 18 Planned, 11 Assessed, 6 Unknown; 3 exceptions. Report headline: "9 % of tier-1 items verified, 9 % unknown; reinsurer SFTP and archive transfers in progress; 3 exceptions, none past expiry."
-
-Section six point six develops quantum and post-quantum security operational with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section six point six, MTI platform team expects quantum claims to carry owners and dates.
-
-Section six point six treats the cycle roles tracker as testable only when evidence and ticket IDs are recorded.
 
 ### 6.7 Practice task
 
 Set up a tracker for ten MTI items and move three through the states with evidence.
 
-Section six point seven develops quantum and post-quantum security operational with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section six point seven, MTI platform team expects quantum claims to carry owners and dates.
-
-Section six point seven treats the cycle roles tracker as testable only when evidence and ticket IDs are recorded.
-
-For section six point seven, Marlow & Tide Insurance will not accept quantum work without a written trail.
-
 ### 6.8 Cadence
 
 A monthly working meeting with system owners keeps items moving; a quarterly report goes to the sponsor; an annual review revisits the standard, priorities and lifetimes. Keep each meeting short and driven by the tracker: blocked items first, then items due, then new unknowns.
 
-Section six point eight develops quantum and post-quantum security operational with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section six point eight, MTI platform team expects quantum claims to carry owners and dates.
-
-Section six point eight treats the cycle roles tracker as testable only when evidence and ticket IDs are recorded.
-
 ### 6.9 Common errors and limits
-Section six point nine develops quantum and post-quantum security operational with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section six point nine, MTI platform team expects quantum claims to carry owners and dates.
-
-Section six point nine treats the cycle roles tracker as testable only when evidence and ticket IDs are recorded.
-
-For section six point nine, Marlow & Tide Insurance will not accept quantum work without a written trail.
-
 
 - Marking items done on a change ticket alone.
 - Dependencies without follow-up dates.
@@ -752,21 +468,9 @@ You will (1) describe the main controls available for quantum risk; (2) match co
 
 *Hybrid key exchange* (X25519MLKEM768 in TLS; ML-KEM in IKEv2 via RFC 9370; `mlkem768x25519-sha256` in SSH). *Interim pre-shared keys* mixed into VPNs (RFC 8784) for fixed links. *Data minimization*: send and keep less long-lived data. *Signature migration planning*: post-quantum internal CA, code-signing plans, archive timestamp renewal. *Procurement clauses*: algorithm support, inventories, update commitments. *Exception management*: time-limited acceptance with compensating controls.
 
-Section seven point one develops quantum and post-quantum security controls with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section seven point one, MTI platform team expects quantum claims to carry owners and dates.
-
 ### 7.2 Matching controls
 
 HNDL exposure → hybrid key exchange and minimization first. Forge-later exposure → signature plans, procurement and archive renewal. Unknown → investigation. Supplier-controlled → contract clauses and roadmap tracking.
-
-Section seven point two develops quantum and post-quantum security controls with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section seven point two, MTI platform team expects quantum claims to carry owners and dates.
-
-Section seven point two treats controls matching controls practical as testable only when evidence and ticket IDs are recorded.
-
-For section seven point two, Marlow & Tide Insurance will not accept quantum work without a written trail.
 
 ### 7.3 Practical activity — Lab A
 
@@ -793,10 +497,6 @@ print("old tag after retirement:", check(k, m, a1, t1))
 
 Expected output:
 
-Section seven point three develops quantum and post-quantum security controls with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section seven point three, MTI platform team expects quantum claims to carry owners and dates.
-
 ```text
 old tag still verifies during transition: True
 new tag verifies: True | algorithms: hmac-sha256 -> hmac-sha3-256
@@ -809,63 +509,23 @@ When algorithms are chosen by policy and labelled in the data, migration is a co
 
 Verification means evidence that the control works in operation: negotiation logs showing hybrid on the intended service, certificate inventory showing new algorithms, questionnaire answers confirmed by observation, minimization confirmed by data-flow review. A change ticket is evidence of intent, not of effect.
 
-Section seven point four develops quantum and post-quantum security controls with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section seven point four, MTI platform team expects quantum claims to carry owners and dates.
-
-Section seven point four treats controls matching controls practical as testable only when evidence and ticket IDs are recorded.
-
 ### 7.5 Residual risk
 
 For each verified item, record what remains: usually classical authentication, partners on old clients, or devices awaiting replacement. Give each residual risk an owner and review date.
-
-Section seven point five develops quantum and post-quantum security controls with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section seven point five, MTI platform team expects quantum claims to carry owners and dates.
-
-Section seven point five treats controls matching controls practical as testable only when evidence and ticket IDs are recorded.
 
 ### 7.6 Worked example
 
 Reinsurer SFTP: control — hybrid SSH key exchange after OpenSSH upgrade; verification — sshd logs show 7 of 10 reinsurers negotiating the hybrid; residual — three reinsurers on old clients (notified, deadline in 12 months), host keys classical; owner Infrastructure; review quarterly.
 
-Section seven point six develops quantum and post-quantum security controls with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section seven point six, MTI platform team expects quantum claims to carry owners and dates.
-
-Section seven point six treats controls matching controls practical as testable only when evidence and ticket IDs are recorded.
-
 ### 7.7 Practice task
 
 For three MTI items, write control, verification evidence and residual risk.
-
-Section seven point seven develops quantum and post-quantum security controls with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section seven point seven, MTI platform team expects quantum claims to carry owners and dates.
-
-Section seven point seven treats controls matching controls practical as testable only when evidence and ticket IDs are recorded.
-
-For section seven point seven, Marlow & Tide Insurance will not accept quantum work without a written trail.
 
 ### 7.8 Exceptions
 
 When a control cannot be applied in time, raise an exception: scope, reason, compensating controls, owner, expiry. The sponsor approves; the tracker shows it; expiry triggers review. Exceptions are normal; exceptions without expiry are not.
 
-Section seven point eight develops quantum and post-quantum security controls with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section seven point eight, MTI platform team expects quantum claims to carry owners and dates.
-
-Section seven point eight treats controls matching controls practical as testable only when evidence and ticket IDs are recorded.
-
 ### 7.9 Common errors and limits
-Section seven point nine develops quantum and post-quantum security controls with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section seven point nine, MTI platform team expects quantum claims to carry owners and dates.
-
-Section seven point nine treats controls matching controls practical as testable only when evidence and ticket IDs are recorded.
-
-For section seven point nine, Marlow & Tide Insurance will not accept quantum work without a written trail.
-
 
 - Change tickets accepted as verification.
 - Residual risk omitted.
@@ -899,87 +559,35 @@ You will (1) analyse a realistic migration case end to end; (2) apply the workfl
 
 MTI's life-policy archive (synthetic): 40-year confidentiality and verifiability; documents signed with RSA-2048; transferred nightly from regional offices over IPsec VPNs with ECDH; stored encrypted with AES-256, keys wrapped by an HSM using RSA-OAEP; VPN appliances from a supplier whose firmware supports RFC 9370 from version 7.4, with MTI on 7.1; archive software vendor states "PQC signatures on roadmap".
 
-Section eight point one develops quantum and post-quantum security supervised with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section eight point one, MTI platform team expects quantum claims to carry owners and dates.
-
 ### 8.2 Analysis
 
 Exposure: transfers are HNDL-exposed now (40-year data). Signatures are forge-later exposed (documents must stay verifiable for decades). AES-256 at rest is adequate; RSA key wrapping matters if wrapped keys ever leave the HSM or are backed up off-site.
-
-Section eight point two develops quantum and post-quantum security supervised with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section eight point two, MTI platform team expects quantum claims to carry owners and dates.
-
-Section eight point two treats the case analysis options as testable only when evidence and ticket IDs are recorded.
 
 ### 8.3 Options
 
 (A) Upgrade VPN firmware to 7.4 and enable hybrid key exchange; (B) interim RFC 8784 PSKs on the archive tunnels until A; (C) reduce transfers by sending documents once at completion instead of nightly re-sync; (D) archive signature plan: require vendor dates for ML-DSA support and plan timestamp renewal. Criteria: protection, time, cost, operational risk, dependency.
 
-Section eight point three develops quantum and post-quantum security supervised with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section eight point three, MTI platform team expects quantum claims to carry owners and dates.
-
 ### 8.4 Governance gaps
 
 No owner for archive cryptography; no contract clause requiring the archive vendor to support post-quantum signatures; no exception process used for the VPN delay.
-
-Section eight point four develops quantum and post-quantum security supervised with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section eight point four, MTI platform team expects quantum claims to carry owners and dates.
-
-Section eight point four treats the case analysis options as testable only when evidence and ticket IDs are recorded.
-
-For section eight point four, Marlow & Tide Insurance will not accept quantum work without a written trail.
 
 ### 8.5 Recommendation
 
 A within two quarters, with C immediately and B for the two offices whose appliances cannot be upgraded until hardware refresh; D as a procurement action with a deadline; name Records Management as owner of archive cryptography; register an exception for the two offices with expiry at refresh.
 
-Section eight point five develops quantum and post-quantum security supervised with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section eight point five, MTI platform team expects quantum claims to carry owners and dates.
-
 ### 8.6 Worked example of presentation
 
 "Recommendation: protect archive transfers within six months by upgrading VPN firmware and enabling hybrid post-quantum key exchange, reduce nightly transfers now, and use interim pre-shared keys at two offices. Cost: CU 40–70k (synthetic). Residual: classical document signatures until the archive vendor delivers ML-DSA; we request a contract amendment with dates."
-
-Section eight point six develops quantum and post-quantum security supervised with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section eight point six, MTI platform team expects quantum claims to carry owners and dates.
 
 ### 8.7 Practice task
 
 Analyse the case yourself, score options against criteria, and compare with the recommendation above.
 
-Section eight point seven develops quantum and post-quantum security supervised with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section eight point seven, MTI platform team expects quantum claims to carry owners and dates.
-
-Section eight point seven treats the case analysis options as testable only when evidence and ticket IDs are recorded.
-
-For section eight point seven, Marlow & Tide Insurance will not accept quantum work without a written trail.
-
 ### 8.8 Supervisor review
 
 Present your analysis to your supervisor before sharing it: they will check whether the facts are graded correctly, whether options were considered fairly and whether the recommendation stays within what the evidence supports. Incorporate comments and record what changed.
 
-Section eight point eight develops quantum and post-quantum security supervised with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section eight point eight, MTI platform team expects quantum claims to carry owners and dates.
-
-Section eight point eight treats the case analysis options as testable only when evidence and ticket IDs are recorded.
-
 ### 8.9 Common errors and limits
-Section eight point nine develops quantum and post-quantum security supervised with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section eight point nine, MTI platform team expects quantum claims to carry owners and dates.
-
-Section eight point nine treats the case analysis options as testable only when evidence and ticket IDs are recorded.
-
-For section eight point nine, Marlow & Tide Insurance will not accept quantum work without a written trail.
-
 
 - Ignoring signatures because key exchange is urgent.
 - Options without criteria.
@@ -1013,91 +621,35 @@ You will (1) write reports for executives, owners, suppliers and auditors; (2) c
 
 Executives need decisions, risk posture, costs and residual risk on one page. System owners need specific findings with evidence and deadlines. Suppliers need clear requirements and dates. Auditors need evidence and method. Staff need to know what changes for them.
 
-Section nine point one develops communication ethics and reporting with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section nine point one, MTI platform team expects communication claims to carry owners and dates.
-
-Section nine point one treats audiences uncertainty tone ethics as testable only when evidence and ticket IDs are recorded.
-
 ### 9.2 Uncertainty
 
 Say what is known (standards published, algorithms in use), what is estimated (migration durations), and what is unknown (when a capable quantum computer will exist). Use ranges and show that recommendations hold across them. Avoid single-date predictions.
-
-Section nine point two develops communication ethics and reporting with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section nine point two, MTI platform team expects communication claims to carry owners and dates.
-
-Section nine point two treats audiences uncertainty tone ethics as testable only when evidence and ticket IDs are recorded.
 
 ### 9.3 Tone
 
 Fear-based messages ("quantum apocalypse") produce either panic or dismissal. Overconfident messages ("we are quantum-safe") collapse at the first audit. Calm, specific messages work: "we are protecting the data that must stay private longest first; here is progress and what remains."
 
-Section nine point three develops communication ethics and reporting with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section nine point three, MTI platform team expects communication claims to carry owners and dates.
-
-Section nine point three treats audiences uncertainty tone ethics as testable only when evidence and ticket IDs are recorded.
-
 ### 9.4 Ethics
 
 Reports about weaknesses are sensitive; share them on a need-to-know basis. Do not exaggerate risk to win budget or understate it to avoid work. Credit teams' work accurately. Label synthetic examples in training materials. Report problems you discover, including your own mistakes.
-
-Section nine point four develops communication ethics and reporting with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section nine point four, MTI platform team expects communication claims to carry owners and dates.
-
-Section nine point four treats audiences uncertainty tone ethics as testable only when evidence and ticket IDs are recorded.
 
 ### 9.5 Oral presentation
 
 Lead with the question and answer, show evidence, end with decisions needed. Keep slides simple; prepare for questions about assumptions and status of guidance.
 
-Section nine point five develops communication ethics and reporting with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section nine point five, MTI platform team expects communication claims to carry owners and dates.
-
-Section nine point five treats audiences uncertainty tone ethics as testable only when evidence and ticket IDs are recorded.
-
-For section nine point five, Marlow & Tide Insurance will not accept communication work without a written trail.
-
 ### 9.6 Worked example
 
 Quarterly executive summary (synthetic): "Position: 9 % of tier-1 items verified, 9 % still unknown (down from 31 %). Highlights: reinsurer SFTP now uses hybrid post-quantum key exchange for 7 of 10 partners. Risks: archive vendor has no dated plan for post-quantum signatures. Decisions needed: approve contract amendment request; approve two exceptions for offices awaiting hardware refresh. Outlook: archive transfers protected by Q2 if firmware upgrades proceed."
-
-Section nine point six develops communication ethics and reporting with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section nine point six, MTI platform team expects communication claims to carry owners and dates.
 
 ### 9.7 Practice task
 
 Write the same quarter's message for system owners and for a supplier.
 
-Section nine point seven develops communication ethics and reporting with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section nine point seven, MTI platform team expects communication claims to carry owners and dates.
-
-Section nine point seven treats audiences uncertainty tone ethics as testable only when evidence and ticket IDs are recorded.
-
-For section nine point seven, Marlow & Tide Insurance will not accept communication work without a written trail.
-
 ### 9.8 Handling pushback
 
 Owners may object to deadlines; executives may question cost. Respond with evidence: the lifetime of the data, the robustness of the priority list across timelines, the cost range and the residual risk of waiting. Offer options rather than ultimatums, and record the decision and who made it.
 
-Section nine point eight develops communication ethics and reporting with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section nine point eight, MTI platform team expects communication claims to carry owners and dates.
-
 ### 9.9 Common errors and limits
-Section nine point nine develops communication ethics and reporting with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section nine point nine, MTI platform team expects communication claims to carry owners and dates.
-
-Section nine point nine treats audiences uncertainty tone ethics as testable only when evidence and ticket IDs are recorded.
-
-For section nine point nine, Marlow & Tide Insurance will not accept communication work without a written trail.
-
 
 - One report for all audiences.
 - False precision about timelines.
@@ -1131,21 +683,9 @@ You will (1) check the quality of the inventory and tracker; (2) detect common w
 
 Check regularly: stale evidence (older than the agreed age), items without owners, unknowns without tasks, items marked Verified without evidence, exceptions past expiry. Sample ten items each month and check their evidence yourself.
 
-Section ten point one develops quantum and post-quantum security quality with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section ten point one, MTI platform team expects quantum claims to carry owners and dates.
-
-Section ten point one treats data quality workflow failures as testable only when evidence and ticket IDs are recorded.
-
 ### 10.2 Workflow failures
 
 *Silent fallback*: an item verified last quarter has reverted to classical after an update. *Stuck items*: dependencies with no follow-up. *Scope creep*: the workflow absorbs unrelated work. *Report drift*: definitions change between quarters without notice.
-
-Section ten point two develops quantum and post-quantum security quality with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section ten point two, MTI platform team expects quantum claims to carry owners and dates.
-
-Section ten point two treats data quality workflow failures as testable only when evidence and ticket IDs are recorded.
 
 ### 10.3 Practical activity — Lab K
 
@@ -1163,10 +703,6 @@ for stage, k, n in [("1% canary", 3, 5000), ("10% canary", 28, 50000), ("10% can
 
 Expected output:
 
-Section ten point three develops quantum and post-quantum security quality with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section ten point three, MTI platform team expects quantum claims to carry owners and dates.
-
 ```text
 1% canary                3/5000  upper95=0.00176  HOLD
 10% canary               28/50000  upper95=0.00081  PROMOTE
@@ -1179,61 +715,23 @@ Technical teams roll out changes in stages and promote only when failure rates s
 
 When a rollout causes problems, your role is coordination: make sure the right owners are engaged, the impact is understood, communication goes out, the tracker shows the item as blocked with a reason, and lessons are captured. Leave technical diagnosis to technical staff.
 
-Section ten point four develops quantum and post-quantum security quality with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section ten point four, MTI platform team expects quantum claims to carry owners and dates.
-
-Section ten point four treats data quality workflow failures as testable only when evidence and ticket IDs are recorded.
-
 ### 10.5 Lessons learned
 
 After each quarter and each significant incident, hold a short review: what went well, what didn't, what to change in the workflow. Record changes to definitions and procedures.
-
-Section ten point five develops quantum and post-quantum security quality with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section ten point five, MTI platform team expects quantum claims to carry owners and dates.
-
-Section ten point five treats data quality workflow failures as testable only when evidence and ticket IDs are recorded.
 
 ### 10.6 Worked example
 
 A monthly sample finds that the broker portal, marked Verified in Q1, shows 4 % hybrid in Q2 logs. Cause: a platform update restored a default profile. Actions: item moved back to In progress; owner restores profile; a quality rule is added — every Verified item is re-checked automatically each month. Lessons recorded.
 
-Section ten point six develops quantum and post-quantum security quality with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section ten point six, MTI platform team expects quantum claims to carry owners and dates.
-
 ### 10.7 Practice task
 
 Design a monthly quality checklist of eight checks for MTI's tracker.
-
-Section ten point seven develops quantum and post-quantum security quality with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section ten point seven, MTI platform team expects quantum claims to carry owners and dates.
-
-Section ten point seven treats data quality workflow failures as testable only when evidence and ticket IDs are recorded.
-
-For section ten point seven, Marlow & Tide Insurance will not accept quantum work without a written trail.
 
 ### 10.8 Measuring quality
 
 Report a quality measure alongside progress: for example, the share of sampled items whose evidence matched their tracker state. A falling quality score is an early warning that progress figures may be overstated.
 
-Section ten point eight develops quantum and post-quantum security quality with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section ten point eight, MTI platform team expects quantum claims to carry owners and dates.
-
-Section ten point eight treats data quality workflow failures as testable only when evidence and ticket IDs are recorded.
-
 ### 10.9 Common errors and limits
-Section ten point nine develops quantum and post-quantum security quality with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section ten point nine, MTI platform team expects quantum claims to carry owners and dates.
-
-Section ten point nine treats data quality workflow failures as testable only when evidence and ticket IDs are recorded.
-
-For section ten point nine, Marlow & Tide Insurance will not accept quantum work without a written trail.
-
 
 - Trusting Verified forever.
 - Coordinators doing technical diagnosis.
@@ -1267,99 +765,35 @@ You will (1) run a full workflow cycle on a synthetic dataset; (2) produce track
 
 The lab uses a synthetic MTI dataset: 40 assets with configuration exports, a few log summaries, supplier questionnaire answers and data-lifetime records. Your supervisor and peers play owners, suppliers and the sponsor. No real systems or data are involved.
 
-Section eleven point one develops supervised laboratory with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section eleven point one, MTI platform team expects supervised claims to carry owners and dates.
-
-Section eleven point one treats setup tasks the incident as testable only when evidence and ticket IDs are recorded.
-
 ### 11.2 Tasks
 
 Day 1: scope, authorization (simulated), inventory and grading. Day 2: prioritisation with Mosca's rule and exposure classes. Day 3: plan items, send supplier requests, raise findings. Day 4: a simulated rollout with gate results and one incident (silent fallback). Day 5: quarterly report and presentation.
-
-Section eleven point two develops supervised laboratory with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section eleven point two, MTI platform team expects supervised claims to carry owners and dates.
-
-Section eleven point two treats setup tasks the incident as testable only when evidence and ticket IDs are recorded.
 
 ### 11.3 The incident
 
 Mid-lab, the "platform owner" reports that the quote API's hybrid share dropped after an update. You coordinate: tracker update, owner engagement, communication to stakeholders, lessons.
 
-Section eleven point three develops supervised laboratory with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section eleven point three, MTI platform team expects supervised claims to carry owners and dates.
-
-Section eleven point three treats setup tasks the incident as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point three, Marlow & Tide Insurance will not accept supervised work without a written trail.
-
 ### 11.4 Assessment
 
 Supervisors assess accuracy of the inventory and priorities, quality of findings and evidence handling, tracker integrity, communication, and handling of the incident.
-
-Section eleven point four develops supervised laboratory with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section eleven point four, MTI platform team expects supervised claims to carry owners and dates.
-
-Section eleven point four treats setup tasks the incident as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point four, Marlow & Tide Insurance will not accept supervised work without a written trail.
 
 ### 11.5 Worked example
 
 A participant's Day 2 output: 9 tier-1 assets; priority list headed by archive transfers and reinsurer SFTP; 6 unknowns with tasks; Mosca table across *z* = 10, 15, 20. Supervisor feedback: one supplier claim graded as B should be D; corrected and the priority of that asset reduced pending verification.
 
-Section eleven point five develops supervised laboratory with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section eleven point five, MTI platform team expects supervised claims to carry owners and dates.
-
-Section eleven point five treats setup tasks the incident as testable only when evidence and ticket IDs are recorded.
-
 ### 11.6 Practice task
 
 Complete the five-day lab and keep a short daily log.
-
-Section eleven point six develops supervised laboratory with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section eleven point six, MTI platform team expects supervised claims to carry owners and dates.
-
-Section eleven point six treats setup tasks the incident as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point six, Marlow & Tide Insurance will not accept supervised work without a written trail.
-
-Section eleven point six fails closed if supervised evidence is missing rather than guessing.
 
 ### 11.7 Reflection
 
 At the end, write a one-page reflection: what you did well, what you would change, which skill needs more practice, and one improvement to the workflow itself. Share it with your supervisor.
 
-Section eleven point seven develops supervised laboratory with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section eleven point seven, MTI platform team expects supervised claims to carry owners and dates.
-
-Section eleven point seven treats setup tasks the incident as testable only when evidence and ticket IDs are recorded.
-
 ### 11.8 Working with simulated stakeholders
 
 Treat role-players as real: send clear, polite requests with deadlines; record answers; escalate when deadlines pass. The lab assesses whether you can keep a workflow moving through other people, which is the core of the practitioner's job.
 
-Section eleven point eight develops supervised laboratory with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section eleven point eight, MTI platform team expects supervised claims to carry owners and dates.
-
-Section eleven point eight treats setup tasks the incident as testable only when evidence and ticket IDs are recorded.
-
 ### 11.9 Common errors and limits
-Section eleven point nine develops supervised laboratory with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section eleven point nine, MTI platform team expects supervised claims to carry owners and dates.
-
-Section eleven point nine treats setup tasks the incident as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point nine, Marlow & Tide Insurance will not accept supervised work without a written trail.
-
 
 - Treating the lab as a spreadsheet exercise.
 - Missing the incident's communication step.
@@ -1393,89 +827,35 @@ You will (1) assemble a portfolio showing each course outcome; (2) present your 
 
 Include: an accurate explainer (Chapter 1); a service and stakeholder map with priorities (2); authorization and evidence labels (3); a graded CBOM extract (4); findings from tool output (5); a tracker with states and dependencies (6); control, verification and residual-risk records (7); the case analysis (8); reports for two audiences (9); a quality checklist and lessons (10); the lab outputs and reflection (11).
 
-Section twelve point one develops practice portfolio and final review with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section twelve point one, MTI platform team expects practice claims to carry owners and dates.
-
 ### 12.2 Presentation
 
 Ten minutes: the workflow, what you produced, one decision you supported, one lesson. Then questions.
-
-Section twelve point two develops practice portfolio and final review with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section twelve point two, MTI platform team expects practice claims to carry owners and dates.
-
-Section twelve point two treats portfolio contents presentation likely as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point two, Marlow & Tide Insurance will not accept practice work without a written trail.
 
 ### 12.3 Likely questions
 
 "How do you know an item is verified?" "Why is the archive first?" "Is IR 8547 final?" "What does hybrid key exchange not protect?" "What would you do if a supplier never answers?" Answer with evidence from your portfolio.
 
-Section twelve point three develops practice portfolio and final review with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section twelve point three, MTI platform team expects practice claims to carry owners and dates.
-
-Section twelve point three treats portfolio contents presentation likely as testable only when evidence and ticket IDs are recorded.
-
 ### 12.4 Next steps
 
 Agree with your manager which workflow responsibilities you will take on, which skills to deepen (for example, the technical course for hands-on configuration), and when you will review progress.
-
-Section twelve point four develops practice portfolio and final review with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section twelve point four, MTI platform team expects practice claims to carry owners and dates.
-
-Section twelve point four treats portfolio contents presentation likely as testable only when evidence and ticket IDs are recorded.
 
 ### 12.5 Staying current
 
 Track NIST and IETF publications, sector guidance and supplier announcements. Update your explainer and the workflow's standards section when status changes — for example when FN-DSA or the HQC standard is published, or IR 8547 is finalised.
 
-Section twelve point five develops practice portfolio and final review with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section twelve point five, MTI platform team expects practice claims to carry owners and dates.
-
-Section twelve point five treats portfolio contents presentation likely as testable only when evidence and ticket IDs are recorded.
-
 ### 12.6 Worked example
 
 A participant presents MTI's Q2 position, the archive case recommendation and the broker-portal regression lesson. Asked "What does hybrid not protect?", they answer: "Authentication — the portal certificate is still classical — plus any hop or partner still on classical key exchange, and data recorded before the change." Asked about IR 8547, they state it is a draft with proposed dates and show how MTI's internal dates were set.
-
-Section twelve point six develops practice portfolio and final review with a Marlow & Tide Insurance note the practitioner can demo offline.
 
 ### 12.7 Practice task
 
 Assemble your portfolio and rehearse the presentation with a peer.
 
-Section twelve point seven develops practice portfolio and final review with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section twelve point seven, MTI platform team expects practice claims to carry owners and dates.
-
-Section twelve point seven treats portfolio contents presentation likely as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point seven, Marlow & Tide Insurance will not accept practice work without a written trail.
-
 ### 12.8 Professional habits
 
 The habits this course builds — sourcing every claim, grading evidence, recording decisions, stating residual risk, communicating calmly — apply to any security programme. Practise them deliberately in your next role; they are what make a practitioner trusted to coordinate work across teams.
 
-Section twelve point eight develops practice portfolio and final review with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section twelve point eight, MTI platform team expects practice claims to carry owners and dates.
-
-Section twelve point eight treats portfolio contents presentation likely as testable only when evidence and ticket IDs are recorded.
-
 ### 12.9 Common errors and limits
-Section twelve point nine develops practice portfolio and final review with a Marlow & Tide Insurance note the practitioner can demo offline.
-
-Under section twelve point nine, MTI platform team expects practice claims to carry owners and dates.
-
-Section twelve point nine treats portfolio contents presentation likely as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point nine, Marlow & Tide Insurance will not accept practice work without a written trail.
-
 
 - Portfolios of documents without evidence of outcomes.
 - Overclaiming in answers.

@@ -48,21 +48,13 @@ Threat-intelligence research touches three sensitive populations at once: victim
 
 Public visibility does not equal permission. A profile page may be reachable without login, yet its platform's terms may forbid automated collection, and the person's data may still be personal data under GDPR. Tomas's rule: before any collection, write down the lawful basis, the terms that apply, the minimisation step and the retention period. If any of the four is blank, collection waits.
 
-Section one point two develops advanced research integrity and methods with a the organisation note Tomas Ekberg can demo offline.
-
 ### 1.3 Pre-registration
 
 Pre-registering the research question, hypotheses, coding scheme and analysis plan before seeing outcome data protects against unconscious fitting. In CTI, where attribution narratives are seductive, this matters: once a group name such as APT29 (ATT&CK G0016) appears in a report, analysts tend to read every later artefact as confirming it. Heuer's Psychology of Intelligence Analysis documents this tendency in human judgment.
 
-Section one point three develops advanced research integrity and methods with a the organisation note Tomas Ekberg can demo offline.
-
 ### 1.4 The ethics file
 
 The file holds: data inventory, lawful basis, TLP handling for each source, de-identification method, storage location, access list, retention clock, and a plan for incidental findings (for example, discovering an unreported live compromise in a sample). That last item is specific to security research and is often missing.
-
-Section one point four develops advanced research integrity and methods with a the organisation note Tomas Ekberg can demo offline.
-
-Under section one point four, Dr. Hana Sato expects advanced claims to carry owners and dates.
 
 ### Worked example
 
@@ -108,27 +100,13 @@ Hutchins, Cloppert and Amin (2011) proposed the intrusion kill chain — reconna
 
 Several questions remain weakly evidenced: how well confidence language in reports predicts later confirmation; how much indicator sharing actually reduces harm (NIST SP 800-150 describes how to share, not how much benefit results); how reproducible attribution is between independent teams; and how to measure the value of strategic intelligence for decision-makers. Each is researchable with careful design and synthetic or consented data.
 
-Section two point two develops threat intelligence and osint research with a the organisation note Tomas Ekberg can demo offline.
-
-Under section two point two, Dr. Hana Sato expects threat claims to carry owners and dates.
-
 ### 2.3 OSINT method frontier
 
 Open-source investigation has grown faster than its validation. Questions include geolocation error rates, the reliability of archived web captures, and the privacy costs of aggregating individually harmless public facts. Doctoral work here must weigh research value against the harm of building aggregation tools.
 
-Section two point three develops threat intelligence and osint research with a the organisation note Tomas Ekberg can demo offline.
-
-Under section two point three, Dr. Hana Sato expects threat claims to carry owners and dates.
-
-Section two point three treats three models three claims as testable only when evidence and ticket IDs are recorded.
-
 ### 2.4 Writing the gap
 
 A good gap statement has three parts: what is known (with citations), what is not known (stated precisely), and why it matters to a decision. "Little research exists on CTI" is not a gap; "no published study measures calibration of estimative language in vendor CTI reports against later confirmation" is.
-
-Section two point four develops threat intelligence and osint research with a the organisation note Tomas Ekberg can demo offline.
-
-Under section two point four, Dr. Hana Sato expects threat claims to carry owners and dates.
 
 ### Worked example
 
@@ -170,47 +148,21 @@ You will (1) frame a falsifiable research question; (2) define constructs and th
 
 "Confidence language matters" cannot fail. "Statements labelled 'highly likely' in the corpus are later confirmed at a rate at least 20 percentage points above statements labelled 'possible'" can fail. A doctoral contribution earns its name by risking refutation.
 
-Section three point one develops original contribution proposal with a the organisation note Tomas Ekberg can demo offline.
-
-Under section three point one, Dr. Hana Sato expects original claims to carry owners and dates.
-
-Section three point one treats falsifiable questions constructs and as testable only when evidence and ticket IDs are recorded.
-
 ### 3.2 Constructs and measures
 
 Construct: analytic confidence as communicated. Measure: the estimative phrase in the key judgment, mapped to a numeric range on a published scale, for example Kent's words of estimative probability. Construct: confirmation. Measure: whether a later authoritative source in the corpus — an indictment summary, a vendor retraction, or a joint advisory — supports or contradicts the claim within 24 months. Every mapping decision is written in a codebook.
-
-Section three point two develops original contribution proposal with a the organisation note Tomas Ekberg can demo offline.
 
 ### 3.3 Design that can fail
 
 Tomas chooses a retrospective cohort design: sample key judgments, code their stated probability, code outcomes blind to the original phrase, and compute calibration. The design fails if outcomes are unknowable for most claims, so the proposal sets a minimum of 300 resolvable judgments before analysis proceeds.
 
-Section three point three develops original contribution proposal with a the organisation note Tomas Ekberg can demo offline.
-
-Under section three point three, Dr. Hana Sato expects original claims to carry owners and dates.
-
-Section three point three treats falsifiable questions constructs and as testable only when evidence and ticket IDs are recorded.
-
 ### 3.4 Threats to validity
 
 Internal: coders may infer the phrase from context and bias outcome coding. Construct: an "outcome" source may itself rely on the original report. External: commercial reports may differ from government ones. Statistical: small bins give unstable calibration. Writing these down now lets the committee judge the plan rather than the luck of the result.
 
-Section three point four develops original contribution proposal with a the organisation note Tomas Ekberg can demo offline.
-
-Under section three point four, Dr. Hana Sato expects original claims to carry owners and dates.
-
 ### 3.5 Contribution claim
 
 The claim is narrow: the first measured calibration estimate of estimative language in a defined synthetic-plus-licensed corpus, with an open codebook. It is not "CTI is unreliable".
-
-Section three point five develops original contribution proposal with a the organisation note Tomas Ekberg can demo offline.
-
-Under section three point five, Dr. Hana Sato expects original claims to carry owners and dates.
-
-Section three point five treats falsifiable questions constructs and as testable only when evidence and ticket IDs are recorded.
-
-For section three point five, the organisation will not accept original work without a written trail.
 
 ### Worked example
 
@@ -252,12 +204,6 @@ You will (1) replicate a simple published-style baseline before building on it; 
 
 Building on an unreplicated baseline compounds error. A pilot that reproduces a known, simple measurement — such as overlap between two indicator feeds, a quantity often discussed in sharing literature — checks that your pipeline, parsing and definitions behave before the expensive study.
 
-Section four point one develops baseline replication and pilot with a the organisation note Tomas Ekberg can demo offline.
-
-Under section four point one, Dr. Hana Sato expects baseline claims to carry owners and dates.
-
-Section four point one treats why replicate first reading as testable only when evidence and ticket IDs are recorded.
-
 ### Lab 1 — overlap baseline
 
 ```python
@@ -283,10 +229,6 @@ only in B: ['drop.example']
 ### 4.2 Reading overlap
 
 Three of six distinct indicators are shared, a Jaccard of 0.500. Overlap says nothing about quality: two feeds can agree on stale indicators. Bianco's Pyramid of Pain reminds analysts that hashes and IP addresses are cheap for adversaries to change, so high overlap on low-pyramid indicators is modest news.
-
-Section four point two develops baseline replication and pilot with a the organisation note Tomas Ekberg can demo offline.
-
-Under section four point two, Dr. Hana Sato expects baseline claims to carry owners and dates.
 
 ### Lab 2 — calibration pilot
 
@@ -317,17 +259,9 @@ stated 0.1  observed 0.00  (k=3)
 
 Twelve pilot judgments give a Brier score of 0.183 (0 is perfect, 0.25 is what always saying 0.5 earns on balanced outcomes). The 0.9 bin is confirmed only two times in three, suggesting overconfidence at the top; the 0.1 bin is well behaved. With three items per bin, none of this is a finding — it is a test that the code works and a hint about where sample size must be largest.
 
-Section four point three develops baseline replication and pilot with a the organisation note Tomas Ekberg can demo offline.
-
 ### 4.4 Feasibility decision
 
 The pilot passes if parsing succeeds, coders can resolve outcomes for at least the floor fraction, and the scoring code reproduces hand calculations. It fails if outcomes are mostly unresolvable or coding takes far longer than budgeted.
-
-Section four point four develops baseline replication and pilot with a the organisation note Tomas Ekberg can demo offline.
-
-Under section four point four, Dr. Hana Sato expects baseline claims to carry owners and dates.
-
-Section four point four treats why replicate first reading as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -369,12 +303,6 @@ You will (1) organise blind double-coding of a corpus; (2) compute inter-rater a
 
 Two trained coders label each sampled event independently with the Diamond core feature that a key judgment concerns — adversary, capability, infrastructure or victim — and with outcome codes. Coders do not see each other's work until both are finished.
 
-Section five point one develops main study and independent validation with a the organisation note Tomas Ekberg can demo offline.
-
-Under section five point one, Dr. Hana Sato expects main claims to carry owners and dates.
-
-Section five point one treats double-coding reading kappa adjudication as testable only when evidence and ticket IDs are recorded.
-
 ### Lab 3 — agreement
 
 ```python
@@ -402,39 +330,17 @@ disagreements: [2, 7]
 
 Raw agreement of 0.80 sounds strong, but chance alone would produce 0.31 given how often each label appears. Kappa removes that chance component and gives 0.710, conventionally described as substantial. Disagreements at items 2 and 7 both involve infrastructure versus another feature — a hint that the codebook's definition of infrastructure needs an example about shared hosting.
 
-Section five point two develops main study and independent validation with a the organisation note Tomas Ekberg can demo offline.
-
-Under section five point two, Dr. Hana Sato expects main claims to carry owners and dates.
-
 ### 5.3 Adjudication
 
 A third person resolves disagreements using the codebook, and both original codes are preserved. Changing the codebook mid-study requires a version note and, where possible, recoding of earlier items with the new definition.
-
-Section five point three develops main study and independent validation with a the organisation note Tomas Ekberg can demo offline.
-
-Under section five point three, Dr. Hana Sato expects main claims to carry owners and dates.
-
-Section five point three treats double-coding reading kappa adjudication as testable only when evidence and ticket IDs are recorded.
 
 ### 5.4 Independent validation
 
 A separate team re-runs the analysis from the archived data and code without assistance. Agreement on headline numbers is the validation. Disagreement is not failure; it is information that must be reported.
 
-Section five point four develops main study and independent validation with a the organisation note Tomas Ekberg can demo offline.
-
-Under section five point four, Dr. Hana Sato expects main claims to carry owners and dates.
-
-Section five point four treats double-coding reading kappa adjudication as testable only when evidence and ticket IDs are recorded.
-
 ### 5.5 Sharing results in standard form
 
 Where findings include structured indicators or relationships, STIX 2.1 objects allow others to parse them; however, aggregated research results are usually better shared as tables and code than as indicators.
-
-Section five point five develops main study and independent validation with a the organisation note Tomas Ekberg can demo offline.
-
-Under section five point five, Dr. Hana Sato expects main claims to carry owners and dates.
-
-Section five point five treats double-coding reading kappa adjudication as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -476,47 +382,21 @@ You will (1) solicit adversarial critique of your own study; (2) apply ICD 203 t
 
 A thesis committee is friendly by design. Doctoral candidates should also seek a red-cell reader: someone asked to find the weakest assumption. In CTI method research the classic weak points are circular outcome sources, corpus selection bias toward dramatic incidents, and confidence scales mapped after seeing the data.
 
-Section six point one develops peer critique and revision with a the organisation note Tomas Ekberg can demo offline.
-
-Under section six point one, Dr. Hana Sato expects peer claims to carry owners and dates.
-
 ### 6.2 ICD 203 as a lens
 
 ICD 203 asks analytic products to describe source quality, express uncertainty, separate information from assumptions and judgments, incorporate alternatives, show relevance, argue clearly, explain changes of judgment, aim for accuracy and use effective visuals. A research paper about CTI should meet the same bar it measures. Tomas runs his draft against that list and finds he never stated how his own conclusion would change if outcome sources were only half as independent as assumed.
-
-Section six point two develops peer critique and revision with a the organisation note Tomas Ekberg can demo offline.
 
 ### 6.3 Point-by-point responses
 
 Each reviewer comment receives a numbered reply: accepted with change (cite page), accepted partially (explain), or declined (explain with evidence). Silence on a comment reads as evasion.
 
-Section six point three develops peer critique and revision with a the organisation note Tomas Ekberg can demo offline.
-
-Under section six point three, Dr. Hana Sato expects peer claims to carry owners and dates.
-
-Section six point three treats inviting the hardest reader as testable only when evidence and ticket IDs are recorded.
-
-For section six point three, the organisation will not accept peer work without a written trail.
-
 ### 6.4 Substantive versus cosmetic
 
 A sensitivity analysis that moves the headline Brier from 0.17 to 0.21 is substantive and must reach the abstract. Fixing figure fonts is cosmetic. Candidates who bury substantive changes in an appendix lose trust.
 
-Section six point four develops peer critique and revision with a the organisation note Tomas Ekberg can demo offline.
-
-Under section six point four, Dr. Hana Sato expects peer claims to carry owners and dates.
-
-Section six point four treats inviting the hardest reader as testable only when evidence and ticket IDs are recorded.
-
 ### 6.5 Alternative hypotheses
 
 Analysis of competing hypotheses, discussed by Heuer, asks which evidence is inconsistent with each explanation rather than which is consistent with the favourite. A critique round is a good moment to list alternatives: for example, that apparent overconfidence reflects selective follow-up reporting rather than analyst miscalibration.
-
-Section six point five develops peer critique and revision with a the organisation note Tomas Ekberg can demo offline.
-
-Under section six point five, Dr. Hana Sato expects peer claims to carry owners and dates.
-
-Section six point five treats inviting the hardest reader as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -558,47 +438,21 @@ You will (1) structure a thesis so each chapter carries one claim; (2) build a r
 
 Readers should be able to state each chapter's claim in a sentence: integrity design; gap; proposal; baseline replication; main calibration result; robustness under critique. If a chapter has three unrelated claims, split it; if it has none, cut it.
 
-Section seven point one develops thesis synthesis and reproducibility archive with a the organisation note Tomas Ekberg can demo offline.
-
-Under section seven point one, Dr. Hana Sato expects thesis claims to carry owners and dates.
-
-Section seven point one treats one claim per chapter as testable only when evidence and ticket IDs are recorded.
-
 ### 7.2 What the archive contains
 
 Code, codebook versions, synthetic test data, aggregate result tables, the pre-registration, and a script that rebuilds every figure. Restricted inputs — TLP:AMBER+STRICT reports, licensed vendor text — are replaced by a manifest of identifiers and SHA-256 hashes so that someone with lawful access can verify they hold the same files.
-
-Section seven point two develops thesis synthesis and reproducibility archive with a the organisation note Tomas Ekberg can demo offline.
-
-Under section seven point two, Dr. Hana Sato expects thesis claims to carry owners and dates.
 
 ### 7.3 Environment
 
 Record the Python version and confirm the analysis uses only the standard library, or pin every dependency. Record any random seed used for sampling. "It ran on my laptop" is not reproducibility.
 
-Section seven point three develops thesis synthesis and reproducibility archive with a the organisation note Tomas Ekberg can demo offline.
-
-Under section seven point three, Dr. Hana Sato expects thesis claims to carry owners and dates.
-
-Section seven point three treats one claim per chapter as testable only when evidence and ticket IDs are recorded.
-
 ### 7.4 Data-availability statement
 
 State what is open, what is restricted and why, and how an authorised researcher can request access. Do not say "available on request" if requests will in practice be refused.
 
-Section seven point four develops thesis synthesis and reproducibility archive with a the organisation note Tomas Ekberg can demo offline.
-
-Under section seven point four, Dr. Hana Sato expects thesis claims to carry owners and dates.
-
-Section seven point four treats one claim per chapter as testable only when evidence and ticket IDs are recorded.
-
 ### 7.5 Machine-readable outputs
 
 Where the thesis produces reusable structures — for example a mapping of estimative phrases to probability ranges — publish them as plain JSON or CSV with a schema. If the work creates threat objects, STIX 2.1 and TAXII 2.1 provide standard exchange formats, but a methods thesis rarely needs them.
-
-Section seven point five develops thesis synthesis and reproducibility archive with a the organisation note Tomas Ekberg can demo offline.
-
-Under section seven point five, Dr. Hana Sato expects thesis claims to carry owners and dates.
 
 ### Worked example
 
@@ -640,51 +494,21 @@ You will (1) prepare a defence that foregrounds limits; (2) choose publication v
 
 Examiners test whether you know where your result stops. Open with the claim, the evidence and the three strongest threats to validity. A candidate who raises the follow-up-bias problem before the examiner does controls the conversation.
 
-Section eight point one develops defense and publication plan with a the organisation note Tomas Ekberg can demo offline.
-
-Under section eight point one, Dr. Hana Sato expects defense claims to carry owners and dates.
-
-Section eight point one treats defence posture venues vendor as testable only when evidence and ticket IDs are recorded.
-
 ### 8.2 Venues
 
 Peer-reviewed security venues, intelligence-studies journals and practitioner conferences reach different audiences. A methods result about calibration may need both: a journal for the method and a practitioner talk for SOC leaders. Pre-prints speed dissemination but should carry the same limits section as the final paper.
-
-Section eight point two develops defense and publication plan with a the organisation note Tomas Ekberg can demo offline.
-
-Under section eight point two, Dr. Hana Sato expects defense claims to carry owners and dates.
-
-Section eight point two treats defence posture venues vendor as testable only when evidence and ticket IDs are recorded.
 
 ### 8.3 Vendor sensitivity
 
 Even with synthetic or anonymised presentation, a reader may guess which vendor a pattern describes. Offer affected parties a short preview where agreements require it, but do not let preview become veto over honest findings. Never disclose TLP-restricted content to obtain goodwill.
 
-Section eight point three develops defense and publication plan with a the organisation note Tomas Ekberg can demo offline.
-
-Under section eight point three, Dr. Hana Sato expects defense claims to carry owners and dates.
-
-Section eight point three treats defence posture venues vendor as testable only when evidence and ticket IDs are recorded.
-
 ### 8.4 TLP in outputs
 
 Public papers are effectively TLP:CLEAR. Anything derived from restricted inputs must be aggregated enough that the source cannot be reconstructed. Check with the sharing community when in doubt.
 
-Section eight point four develops defense and publication plan with a the organisation note Tomas Ekberg can demo offline.
-
-Under section eight point four, Dr. Hana Sato expects defense claims to carry owners and dates.
-
-Section eight point four treats defence posture venues vendor as testable only when evidence and ticket IDs are recorded.
-
 ### 8.5 Follow-on work
 
 Natural extensions: a prospective study where analysts record numeric probabilities at writing time; a cross-language comparison; an intervention that trains calibration and measures change. Each needs its own ethics file.
-
-Section eight point five develops defense and publication plan with a the organisation note Tomas Ekberg can demo offline.
-
-Under section eight point five, Dr. Hana Sato expects defense claims to carry owners and dates.
-
-Section eight point five treats defence posture venues vendor as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 

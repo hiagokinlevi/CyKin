@@ -43,19 +43,11 @@ You will (1) use confidentiality, integrity and availability to describe AI risk
 
 Confidentiality: customer records, uploaded documents, system prompts and training data must not reach the wrong people. Integrity: answers, scores and actions must not be manipulated — for example by text hidden in an uploaded document. Availability: the service must stay up and affordable; floods of long requests can exhaust budgets. NIST AI 100-2 E2025 uses comparable attacker goals (availability, integrity, privacy) to organise attacks on AI.
 
-Section one point one develops security foundations for practitioners with a Meridian Mutual note the practitioner can demo offline.
-
 ### 1.2 Basic vocabulary
 
 A threat is a possible source of harm (a fraudster). A vulnerability is a weakness (ClaimChat books callbacks for any claim number). Risk combines how likely a harm is with how bad it would be. A control reduces risk (an ownership check). Precise words help teams agree quickly on what to fix.
 
-Section one point two develops security foundations for practitioners with a Meridian Mutual note the practitioner can demo offline.
-
-Under section one point two, claims security expects security claims to carry owners and dates.
-
 ### 1.3 Frameworks and their uses
-Section one point three develops security foundations for practitioners with a Meridian Mutual note the practitioner can demo offline.
-
 
 - NIST AI RMF (AI 100-1): organising risk work into Govern, Map, Measure and Manage.
 - NIST AI 600-1: risks specific to generative AI.
@@ -68,29 +60,11 @@ Section one point three develops security foundations for practitioners with a M
 
 AI systems behave statistically; they can be steered by text an attacker supplies (prompt injection); they learn from data that can be corrupted; and their outputs can leak training data. Ordinary controls still matter — access control, logging, patching — but AI adds new paths to harm.
 
-Section one point four develops security foundations for practitioners with a Meridian Mutual note the practitioner can demo offline.
-
-Under section one point four, claims security expects security claims to carry owners and dates.
-
-Section one point four treats the cia triad applied as testable only when evidence and ticket IDs are recorded.
-
 ### 1.5 Worked example (synthetic Meridian case)
 
 On her first day, Sofia describes ClaimChat in CIA terms. Confidentiality: a customer might see another customer's claim. Integrity: a repair quote containing hidden text might make ClaimChat tell a customer their claim is approved. Availability: automated scripts could flood ClaimChat during a storm, when real customers need it most. She maps the second to OWASP LLM01 and the first to LLM02.
 
-Section one point five develops security foundations for practitioners with a Meridian Mutual note the practitioner can demo offline.
-
-Under section one point five, claims security expects security claims to carry owners and dates.
-
 ### 1.6 Errors and limits
-Section one point six develops security foundations for practitioners with a Meridian Mutual note the practitioner can demo offline.
-
-Under section one point six, claims security expects security claims to carry owners and dates.
-
-Section one point six treats the cia triad applied as testable only when evidence and ticket IDs are recorded.
-
-For section one point six, Meridian Mutual will not accept security work without a written trail.
-
 
 - Treating AI as a black box outside normal security.
 - Confusing a vulnerability with a risk.
@@ -124,53 +98,21 @@ You will (1) describe an AI service's purpose, users and affected people; (2) id
 
 Start every assessment by asking what the service is for, who uses it, and who is affected by its outputs even without using it. ClaimChat's users are customers; affected people include claims handlers who receive callbacks and third parties named in claims.
 
-Section two point one develops ai and machine-learning security service with a Meridian Mutual note the practitioner can demo offline.
-
-Under section two point one, claims security expects ai claims to carry owners and dates.
-
-Section two point one treats purpose users affected people as testable only when evidence and ticket IDs are recorded.
-
 ### 2.2 Stakeholders
 
 Product owners want value and speed; operations wants stability; legal and privacy want compliance; customer service wants fewer complaints; security wants bounded harm. Talk to each early. Their concerns become requirements, and their support makes controls stick.
-
-Section two point two develops ai and machine-learning security service with a Meridian Mutual note the practitioner can demo offline.
-
-Under section two point two, claims security expects ai claims to carry owners and dates.
-
-Section two point two treats purpose users affected people as testable only when evidence and ticket IDs are recorded.
 
 ### 2.3 A simple data-flow picture
 
 Draw boxes for the customer, the chat app, the model, document reading, the claims database and the callback tool; arrows for data; dashed lines where trust changes (customer input, uploaded documents, model output to tools). This picture shows where untrusted content can steer actions.
 
-Section two point three develops ai and machine-learning security service with a Meridian Mutual note the practitioner can demo offline.
-
-Under section two point three, claims security expects ai claims to carry owners and dates.
-
-Section two point three treats purpose users affected people as testable only when evidence and ticket IDs are recorded.
-
 ### 2.4 AI assets
 
 List: model (vendor and version), system prompt, data sources, tools and their permissions, keys, logs. Note owner and sensitivity for each. System prompts can leak (OWASP LLM07), so they must not contain secrets.
 
-Section two point four develops ai and machine-learning security service with a Meridian Mutual note the practitioner can demo offline.
-
-Under section two point four, claims security expects ai claims to carry owners and dates.
-
-Section two point four treats purpose users affected people as testable only when evidence and ticket IDs are recorded.
-
 ### 2.5 Which services first
 
 Services that read untrusted content, can take actions, handle personal data, or affect many people deserve attention first.
-
-Section two point five develops ai and machine-learning security service with a Meridian Mutual note the practitioner can demo offline.
-
-Under section two point five, claims security expects ai claims to carry owners and dates.
-
-Section two point five treats purpose users affected people as testable only when evidence and ticket IDs are recorded.
-
-For section two point five, Meridian Mutual will not accept ai work without a written trail.
 
 ```python
 """Lab V: an AI system inventory scored for review priority (synthetic).
@@ -211,17 +153,7 @@ churn-predictor    score= 3 owasp=LLM02
 
 Sofia interviews ClaimChat's product owner, a claims team lead and the privacy officer. The team lead worries about fake urgent callbacks flooding handlers; the privacy officer about uploaded documents containing health information. Sofia's data-flow picture shows uploaded documents entering the model's input directly — a path for indirect injection. Her asset list reveals that the vendor key is shared with a test environment.
 
-Section two point six develops ai and machine-learning security service with a Meridian Mutual note the practitioner can demo offline.
-
 ### 2.7 Errors and limits
-Section two point seven develops ai and machine-learning security service with a Meridian Mutual note the practitioner can demo offline.
-
-Under section two point seven, claims security expects ai claims to carry owners and dates.
-
-Section two point seven treats purpose users affected people as testable only when evidence and ticket IDs are recorded.
-
-For section two point seven, Meridian Mutual will not accept ai work without a written trail.
-
 
 - Skipping affected people who are not users.
 - Talking only to technical staff.
@@ -255,57 +187,21 @@ You will (1) work only within written authorisation; (2) use synthetic data and 
 
 Before any test, have written permission from the system owner stating systems, activities, dates, data and contacts. Testing without it can break the law and harm customers, even when intentions are good. If you find something outside scope, stop and ask.
 
-Section three point one develops authorized practice and evidence handling with a Meridian Mutual note the practitioner can demo offline.
-
-Under section three point one, claims security expects authorized claims to carry owners and dates.
-
-Section three point one treats authorisation safe environments evidence as testable only when evidence and ticket IDs are recorded.
-
 ### 3.2 Safe environments
 
 Test on isolated copies with synthetic data. If production testing is ever approved, use dedicated test accounts and actions that cannot affect real customers.
-
-Section three point two develops authorized practice and evidence handling with a Meridian Mutual note the practitioner can demo offline.
-
-Under section three point two, claims security expects authorized claims to carry owners and dates.
-
-Section three point two treats authorisation safe environments evidence as testable only when evidence and ticket IDs are recorded.
-
-For section three point two, Meridian Mutual will not accept authorized work without a written trail.
 
 ### 3.3 Evidence
 
 Record date and time, system and version, steps, inputs, outputs and tool logs. Measure effects (a callback was booked) rather than impressions (the reply sounded odd). Keep originals unchanged; work on copies; note who handled evidence.
 
-Section three point three develops authorized practice and evidence handling with a Meridian Mutual note the practitioner can demo offline.
-
-Under section three point three, claims security expects authorized claims to carry owners and dates.
-
-Section three point three treats authorisation safe environments evidence as testable only when evidence and ticket IDs are recorded.
-
 ### 3.4 Sensitive findings
 
 If you see real personal data, a live vulnerability or signs of an actual attack, stop testing and escalate through the incident process. Do not share details beyond those who need them. Coordinate disclosure with vendors when their products are affected.
 
-Section three point four develops authorized practice and evidence handling with a Meridian Mutual note the practitioner can demo offline.
-
-Under section three point four, claims security expects authorized claims to carry owners and dates.
-
-Section three point four treats authorisation safe environments evidence as testable only when evidence and ticket IDs are recorded.
-
 ### 3.5 Repeat and quantify
 
 Repeat tests to estimate rates, and report the uncertainty.
-
-Section three point five develops authorized practice and evidence handling with a Meridian Mutual note the practitioner can demo offline.
-
-Under section three point five, claims security expects authorized claims to carry owners and dates.
-
-Section three point five treats authorisation safe environments evidence as testable only when evidence and ticket IDs are recorded.
-
-For section three point five, Meridian Mutual will not accept authorized work without a written trail.
-
-Section three point five fails closed if authorized evidence is missing rather than guessing.
 
 ```python
 """Lab S: reporting attack-success rates honestly: Wilson intervals,
@@ -350,17 +246,7 @@ baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
 
 Sofia's authorisation covers ClaimChat staging for two weeks, synthetic customers only. She uploads 40 synthetic repair quotes containing hidden text asking for an urgent callback. 11 of 40 cause an urgent booking (interval about 16–43%). During testing she notices a real customer's name in a staging log — production data copied by mistake. She stops, reports it to her supervisor and the privacy officer, and continues only after the data is removed.
 
-Section three point six develops authorized practice and evidence handling with a Meridian Mutual note the practitioner can demo offline.
-
 ### 3.7 Errors and limits
-Section three point seven develops authorized practice and evidence handling with a Meridian Mutual note the practitioner can demo offline.
-
-Under section three point seven, claims security expects authorized claims to carry owners and dates.
-
-Section three point seven treats authorisation safe environments evidence as testable only when evidence and ticket IDs are recorded.
-
-For section three point seven, Meridian Mutual will not accept authorized work without a written trail.
-
 
 - Verbal permission only.
 - Testing with real customer data.
@@ -399,29 +285,13 @@ You will (1) describe the main attack classes and how each is tested; (2) test L
 
 Evasion: inputs crafted to fool a model (Goodfellow et al., arXiv:1412.6572). Poisoning: corrupting training data or adding backdoors (Gu et al., arXiv:1708.06733). Privacy: membership inference (Shokri et al., arXiv:1610.05820) and model extraction (Tramèr et al., arXiv:1609.02943). Prompt injection: direct (typed by the user) and indirect (hidden in content the model reads; Greshake et al., arXiv:2302.12173).
 
-Section four point one develops ai and machine-learning security core with a Meridian Mutual note the practitioner can demo offline.
-
-Under section four point one, claims security expects ai claims to carry owners and dates.
-
 ### 4.2 Testing for injection
 
 Build test inputs that try to make the assistant do something it should not: book a callback for another claim, reveal its instructions, mark a claim as approved, include a link carrying data. Plant them in messages and in documents. Vary wording, language and placement. Judge by effects in tool logs and data, not by the tone of replies.
 
-Section four point two develops ai and machine-learning security core with a Meridian Mutual note the practitioner can demo offline.
-
-Under section four point two, claims security expects ai claims to carry owners and dates.
-
 ### 4.3 Testing classifiers
 
 For FraudFlag, change the features a fraudster controls (claim amount split, timing, description) and measure how often known fraud cases fall below the flag threshold.
-
-Section four point three develops ai and machine-learning security core with a Meridian Mutual note the practitioner can demo offline.
-
-Under section four point three, claims security expects ai claims to carry owners and dates.
-
-Section four point three treats attack classes testing for as testable only when evidence and ticket IDs are recorded.
-
-For section four point three, Meridian Mutual will not accept ai work without a written trail.
 
 ```python
 """Lab E: evasion of a toy linear classifier (synthetic data, stdlib only).
@@ -471,41 +341,15 @@ eps=1.00 accuracy=0.505
 
 Ask whether outputs reveal training data or allow copying the model. Detailed scores and unlimited queries increase both risks.
 
-Section four point four develops ai and machine-learning security core with a Meridian Mutual note the practitioner can demo offline.
-
-Under section four point four, claims security expects ai claims to carry owners and dates.
-
-Section four point four treats attack classes testing for as testable only when evidence and ticket IDs are recorded.
-
-For section four point four, Meridian Mutual will not accept ai work without a written trail.
-
 ### 4.5 Matching methods to risks
 
 Start from the risks in your data-flow picture. Uploaded documents → indirect injection tests. Tools → agency tests. Scoring API → extraction and evasion tests. Personal data in training → membership tests.
-
-Section four point five develops ai and machine-learning security core with a Meridian Mutual note the practitioner can demo offline.
-
-Under section four point five, claims security expects ai claims to carry owners and dates.
-
-Section four point five treats attack classes testing for as testable only when evidence and ticket IDs are recorded.
 
 ### 4.6 Worked example (synthetic Meridian case)
 
 Sofia's test plan for ClaimChat: 40 direct and 60 indirect injection cases (in uploaded quotes and photos' text), 20 disclosure cases, 10 consumption cases. For FraudFlag: 30 evasion variations on known synthetic fraud claims. In the evasion analogue, the lab shows a toy model's accuracy dropping from 0.985 to 0.505 as perturbations grow — a reason not to let one score decide a claim.
 
-Section four point six develops ai and machine-learning security core with a Meridian Mutual note the practitioner can demo offline.
-
-Under section four point six, claims security expects ai claims to carry owners and dates.
-
 ### 4.7 Errors and limits
-Section four point seven develops ai and machine-learning security core with a Meridian Mutual note the practitioner can demo offline.
-
-Under section four point seven, claims security expects ai claims to carry owners and dates.
-
-Section four point seven treats attack classes testing for as testable only when evidence and ticket IDs are recorded.
-
-For section four point seven, Meridian Mutual will not accept ai work without a written trail.
-
 
 - Judging tests by reply tone.
 - Only direct injection tests.
@@ -539,33 +383,13 @@ You will (1) use a simple test harness and logs; (2) interpret results with rate
 
 A harness runs test cases against a staging service, collects replies and tool logs, grades outcomes with rules and writes a report. Logs with request IDs let you see what the model read, what it proposed and what was executed.
 
-Section five point one develops ai and machine-learning security tools with a Meridian Mutual note the practitioner can demo offline.
-
-Under section five point one, claims security expects ai claims to carry owners and dates.
-
-Section five point one treats harness and logs rates as testable only when evidence and ticket IDs are recorded.
-
 ### 5.2 Rates and intervals
 
 Report successes over trials with an interval. 0 in 100 still allows about 3%. A drop from 28% to 10% on 40 cases each may be real, but intervals overlap; more cases help.
 
-Section five point two develops ai and machine-learning security tools with a Meridian Mutual note the practitioner can demo offline.
-
-Under section five point two, claims security expects ai claims to carry owners and dates.
-
-Section five point two treats harness and logs rates as testable only when evidence and ticket IDs are recorded.
-
-For section five point two, Meridian Mutual will not accept ai work without a written trail.
-
 ### 5.3 Base rates
 
 A fraud model with 95% detection and 5% false positives sounds strong. If 1 in 100 claims is fraudulent, only about 16% of flagged claims are fraud. Honest claimants bear the cost of the rest.
-
-Section five point three develops ai and machine-learning security tools with a Meridian Mutual note the practitioner can demo offline.
-
-Under section five point three, claims security expects ai claims to carry owners and dates.
-
-Section five point three treats harness and logs rates as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Lab B: base rates and alarm precision (Bayes' rule).
@@ -597,39 +421,15 @@ tpr=0.80 fpr=0.001 prevalence=0.001 precision=0.445 alerts_per_10k=18
 
 Ask what threat the tool addresses; how it was evaluated (adaptively? by effects?); its false-positive rate on your traffic; what data it sends out; and whether it blocks or only monitors. Test it on your own suite before relying on it.
 
-Section five point four develops ai and machine-learning security tools with a Meridian Mutual note the practitioner can demo offline.
-
-Under section five point four, claims security expects ai claims to carry owners and dates.
-
-Section five point four treats harness and logs rates as testable only when evidence and ticket IDs are recorded.
-
 ### 5.5 Common misreadings
 
 "No attacks succeeded" from a small suite; "accuracy is high" ignoring base rates; "the filter blocks injection" based on vendor examples; "the model refused" while the tool still ran.
-
-Section five point five develops ai and machine-learning security tools with a Meridian Mutual note the practitioner can demo offline.
-
-Under section five point five, claims security expects ai claims to carry owners and dates.
-
-Section five point five treats harness and logs rates as testable only when evidence and ticket IDs are recorded.
 
 ### 5.6 Worked example (synthetic Meridian case)
 
 FraudFlag flags 6% of claims; fraud prevalence is about 1%. Sofia computes that most flagged claimants are honest and that each waits five extra days. She recommends reviewing flagged claims within 48 hours and telling claimants only that their claim is "under standard review". A vendor offers an injection filter; on her 60 indirect cases it blocks 38 but also blocks 9 of 100 normal uploads (handwritten quotes with unusual phrasing).
 
-Section five point six develops ai and machine-learning security tools with a Meridian Mutual note the practitioner can demo offline.
-
 ### 5.7 Errors and limits
-Section five point seven develops ai and machine-learning security tools with a Meridian Mutual note the practitioner can demo offline.
-
-Under section five point seven, claims security expects ai claims to carry owners and dates.
-
-Section five point seven treats harness and logs rates as testable only when evidence and ticket IDs are recorded.
-
-For section five point seven, Meridian Mutual will not accept ai work without a written trail.
-
-Section five point seven fails closed if ai evidence is missing rather than guessing.
-
 
 - Small suites reported as proof.
 - Ignoring false-positive costs.
@@ -663,55 +463,21 @@ You will (1) follow an AI-security workflow from intake to closure; (2) triage f
 
 Intake (a new AI service, change or concern) → context and data flow → risk scenarios → tests → findings → remediation → verification → closure and records. Each step has an owner and a record.
 
-Section six point one develops ai and machine-learning security operational with a Meridian Mutual note the practitioner can demo offline.
-
-Under section six point one, claims security expects ai claims to carry owners and dates.
-
-Section six point one treats workflow triage remediation tracking as testable only when evidence and ticket IDs are recorded.
-
 ### 6.2 Triage
 
 Severity considers impact (money, data, people affected, legal), likelihood (how easy, how exposed), and detectability. Findings that let outsiders take actions on others' accounts or see their data are usually high or critical.
-
-Section six point two develops ai and machine-learning security operational with a Meridian Mutual note the practitioner can demo offline.
-
-Under section six point two, claims security expects ai claims to carry owners and dates.
-
-Section six point two treats workflow triage remediation tracking as testable only when evidence and ticket IDs are recorded.
 
 ### 6.3 Remediation tracking
 
 Each finding gets an owner, a due date by severity, a fix, a verification test and a closure note. Accepted risks need a named approver and review date.
 
-Section six point three develops ai and machine-learning security operational with a Meridian Mutual note the practitioner can demo offline.
-
-Under section six point three, claims security expects ai claims to carry owners and dates.
-
-Section six point three treats workflow triage remediation tracking as testable only when evidence and ticket IDs are recorded.
-
 ### 6.4 Change management
 
 Model updates, prompt edits, new documents sources, new tools and configuration changes all alter behaviour. Route them through change management with a re-test before release.
 
-Section six point four develops ai and machine-learning security operational with a Meridian Mutual note the practitioner can demo offline.
-
-Under section six point four, claims security expects ai claims to carry owners and dates.
-
-Section six point four treats workflow triage remediation tracking as testable only when evidence and ticket IDs are recorded.
-
-For section six point four, Meridian Mutual will not accept ai work without a written trail.
-
 ### 6.5 Working with operations
 
 Agree how alerts reach you, how you reach on-call, and who can disable a tool in an emergency. Share runbooks.
-
-Section six point five develops ai and machine-learning security operational with a Meridian Mutual note the practitioner can demo offline.
-
-Under section six point five, claims security expects ai claims to carry owners and dates.
-
-Section six point five treats workflow triage remediation tracking as testable only when evidence and ticket IDs are recorded.
-
-For section six point five, Meridian Mutual will not accept ai work without a written trail.
 
 ```python
 """Lab A: spotting extraction-style abuse in a synthetic API log.
@@ -756,17 +522,7 @@ client99 queries=600 robust_z= 30.58 distinct_ratio=0.10 FLAG
 
 Sofia's three findings: (1) urgent callbacks via injected uploads — high; (2) ClaimChat reveals claim status for any claim number given a postcode — high; (3) long-message floods — medium. Owners and due dates are set. A month later, the product team edits the system prompt; change management triggers a re-test, which shows finding 1 has returned because the edit removed an instruction the team had relied on. Sofia uses this to argue that the urgent-callback rule must move into the callback tool itself.
 
-Section six point six develops ai and machine-learning security operational with a Meridian Mutual note the practitioner can demo offline.
-
 ### 6.7 Errors and limits
-Section six point seven develops ai and machine-learning security operational with a Meridian Mutual note the practitioner can demo offline.
-
-Under section six point seven, claims security expects ai claims to carry owners and dates.
-
-Section six point seven treats workflow triage remediation tracking as testable only when evidence and ticket IDs are recorded.
-
-For section six point seven, Meridian Mutual will not accept ai work without a written trail.
-
 
 - Findings without owners or due dates.
 - Prompt edits outside change management.
@@ -804,10 +560,6 @@ You will (1) choose controls that bound harm independently of the model; (2) con
 ### 7.1 Controls that bound harm
 
 Because models can be steered, the most reliable controls work regardless of what the model says: ownership checks in tools; limits on what tools can do; rate and cost limits; access control on documents; confirmation by a human for consequential actions. Model-side measures (instructions, filters) reduce how often things go wrong but do not set a bound.
-
-Section seven point one develops ai and machine-learning security controls with a Meridian Mutual note the practitioner can demo offline.
-
-Under section seven point one, claims security expects ai claims to carry owners and dates.
 
 ### 7.2 Configuring controls
 
@@ -852,10 +604,6 @@ for mode in ("none", "keyword", "allowlist", "separate"):
 
 Expected output:
 
-Section seven point two develops ai and machine-learning security controls with a Meridian Mutual note the practitioner can demo offline.
-
-Under section seven point two, claims security expects ai claims to carry owners and dates.
-
 ```text
 defence=none      exfil_calls=17/20 any_injected_call=20/20 benign_calls=0/20
 defence=keyword   exfil_calls=10/20 any_injected_call=10/20 benign_calls=0/20
@@ -867,51 +615,19 @@ defence=separate  exfil_calls= 0/20 any_injected_call= 0/20 benign_calls=0/20
 
 Show the customer exactly what will happen, built from structured data: "Book an urgent callback for claim C-20931 on 14 Oct, 10:00?" Do not let model-written text describe the action.
 
-Section seven point three develops ai and machine-learning security controls with a Meridian Mutual note the practitioner can demo offline.
-
-Under section seven point three, claims security expects ai claims to carry owners and dates.
-
-Section seven point three treats controls that bound harm as testable only when evidence and ticket IDs are recorded.
-
 ### 7.4 Verification
 
 For each control, a positive test (normal use works) and a negative test (abuse blocked). Use held-out cases not used during tuning. Re-run after every change.
-
-Section seven point four develops ai and machine-learning security controls with a Meridian Mutual note the practitioner can demo offline.
-
-Under section seven point four, claims security expects ai claims to carry owners and dates.
-
-Section seven point four treats controls that bound harm as testable only when evidence and ticket IDs are recorded.
-
-For section seven point four, Meridian Mutual will not accept ai work without a written trail.
 
 ### 7.5 Evidence
 
 Record control, configuration location, test IDs, versions, results with intervals, date and tester.
 
-Section seven point five develops ai and machine-learning security controls with a Meridian Mutual note the practitioner can demo offline.
-
-Under section seven point five, claims security expects ai claims to carry owners and dates.
-
-Section seven point five treats controls that bound harm as testable only when evidence and ticket IDs are recorded.
-
-For section seven point five, Meridian Mutual will not accept ai work without a written trail.
-
 ### 7.6 Worked example (synthetic Meridian case)
 
 The team moves the urgent-callback rule into the tool: urgent only if the claim belongs to the customer, the claim is under 72 hours old, and fewer than two urgent bookings exist that day. Sofia re-runs her 60 indirect cases plus 30 new held-out ones: 0 urgent bookings without meeting the rules; normal bookings still succeed in 98 of 100 tests. The lab shows the same pattern: only allow-listing and separation bring exfiltration calls to zero.
 
-Section seven point six develops ai and machine-learning security controls with a Meridian Mutual note the practitioner can demo offline.
-
 ### 7.7 Errors and limits
-Section seven point seven develops ai and machine-learning security controls with a Meridian Mutual note the practitioner can demo offline.
-
-Under section seven point seven, claims security expects ai claims to carry owners and dates.
-
-Section seven point seven treats controls that bound harm as testable only when evidence and ticket IDs are recorded.
-
-For section seven point seven, Meridian Mutual will not accept ai work without a written trail.
-
 
 - Controls only in prompts.
 - Only negative tests.
@@ -945,73 +661,27 @@ You will (1) analyse an AI incident or near miss under supervision; (2) reconstr
 
 A case analysis explains what happened, why, and what should change. It is blameless: it focuses on systems and decisions, not individuals, so people report problems openly.
 
-Section eight point one develops ai and machine-learning security supervised with a Meridian Mutual note the practitioner can demo offline.
-
-Under section eight point one, claims security expects ai claims to carry owners and dates.
-
-Section eight point one treats case analysis timeline causes as testable only when evidence and ticket IDs are recorded.
-
-For section eight point one, Meridian Mutual will not accept ai work without a written trail.
-
 ### 8.2 Timeline
 
 From logs and traces: when content entered, when the model read it, what it proposed, what was executed, when it was noticed, what containment happened. Precise times help separate cause from coincidence.
-
-Section eight point two develops ai and machine-learning security supervised with a Meridian Mutual note the practitioner can demo offline.
-
-Under section eight point two, claims security expects ai claims to carry owners and dates.
-
-Section eight point two treats case analysis timeline causes as testable only when evidence and ticket IDs are recorded.
 
 ### 8.3 Causes and contributing factors
 
 The direct cause is what produced the harm (an injected instruction led to a tool call). Contributing factors made it possible or worse (no ownership check; uploads not treated as untrusted; no alert on urgent-booking spikes).
 
-Section eight point three develops ai and machine-learning security supervised with a Meridian Mutual note the practitioner can demo offline.
-
-Under section eight point three, claims security expects ai claims to carry owners and dates.
-
-Section eight point three treats case analysis timeline causes as testable only when evidence and ticket IDs are recorded.
-
 ### 8.4 Proportionate fixes
 
 Fix the cause and the most important contributing factors. Prefer controls that bound harm. Add a regression test and, where useful, a monitoring signal.
 
-Section eight point four develops ai and machine-learning security supervised with a Meridian Mutual note the practitioner can demo offline.
-
-Under section eight point four, claims security expects ai claims to carry owners and dates.
-
-Section eight point four treats case analysis timeline causes as testable only when evidence and ticket IDs are recorded.
-
-For section eight point four, Meridian Mutual will not accept ai work without a written trail.
-
 ### 8.5 Writing it up
 
 Summary; timeline; impact; causes; contributing factors; actions with owners and dates; lessons. MITRE ATLAS case studies show a useful style for describing techniques.
-
-Section eight point five develops ai and machine-learning security supervised with a Meridian Mutual note the practitioner can demo offline.
-
-Under section eight point five, claims security expects ai claims to carry owners and dates.
-
-Section eight point five treats case analysis timeline causes as testable only when evidence and ticket IDs are recorded.
-
-For section eight point five, Meridian Mutual will not accept ai work without a written trail.
 
 ### 8.6 Worked example (synthetic Meridian case)
 
 During a storm, FraudFlag flags 30% of claims instead of 6%. Timeline: a new claim form field ("storm reference") was added on Monday; FraudFlag received it as an unknown category; scores jumped. No attack. Direct cause: an unhandled new input. Contributing: no change-management link between form changes and the model; no alert on flag-rate spikes. Fixes: map the new field; add the model to the form change checklist; alert when flag rate doubles. Under supervision, Sofia writes the analysis; her supervisor asks her to quantify impact (4,100 claims delayed by an average of two days).
 
 ### 8.7 Errors and limits
-Section eight point seven develops ai and machine-learning security supervised with a Meridian Mutual note the practitioner can demo offline.
-
-Under section eight point seven, claims security expects ai claims to carry owners and dates.
-
-Section eight point seven treats case analysis timeline causes as testable only when evidence and ticket IDs are recorded.
-
-For section eight point seven, Meridian Mutual will not accept ai work without a written trail.
-
-Section eight point seven fails closed if ai evidence is missing rather than guessing.
-
 
 - Blaming individuals.
 - Fixing symptoms only.
@@ -1045,71 +715,27 @@ You will (1) write findings and reports for different audiences; (2) state uncer
 
 Engineers need reproduction steps and fixes. Managers need impact, priority and decisions. Customers and the public need clear, accurate, timely information. Write separately for each, from the same facts.
 
-Section nine point one develops communication ethics and reporting with a Meridian Mutual note the practitioner can demo offline.
-
-Under section nine point one, claims security expects communication claims to carry owners and dates.
-
-Section nine point one treats audiences honest uncertainty ethical as testable only when evidence and ticket IDs are recorded.
-
 ### 9.2 Honest uncertainty
 
 Say what you tested, how many times, what you found, and what you did not test. "0 of 90 attempts succeeded (95% upper bound about 3%) on staging; non-English uploads untested" is honest. "ClaimChat is secure" is not.
-
-Section nine point two develops communication ethics and reporting with a Meridian Mutual note the practitioner can demo offline.
-
-Under section nine point two, claims security expects communication claims to carry owners and dates.
-
-Section nine point two treats audiences honest uncertainty ethical as testable only when evidence and ticket IDs are recorded.
 
 ### 9.3 Ethical pressure
 
 You may be asked to soften findings before a launch. Keep facts unchanged; you may add context and management responses. If pressure continues, escalate and record it. Your duty includes people outside the organisation who could be harmed.
 
-Section nine point three develops communication ethics and reporting with a Meridian Mutual note the practitioner can demo offline.
-
-Under section nine point three, claims security expects communication claims to carry owners and dates.
-
-Section nine point three treats audiences honest uncertainty ethical as testable only when evidence and ticket IDs are recorded.
-
 ### 9.4 Protecting affected people
 
 Consider who bears the harm: honest claimants wrongly flagged, customers whose data leaks. Recommend recourse: explanations, appeals, fast human review. The EU AI Act's Article 14 emphasises human oversight that can understand, interpret and override AI outputs in high-risk systems.
-
-Section nine point four develops communication ethics and reporting with a Meridian Mutual note the practitioner can demo offline.
-
-Under section nine point four, claims security expects communication claims to carry owners and dates.
-
-Section nine point four treats audiences honest uncertainty ethical as testable only when evidence and ticket IDs are recorded.
 
 ### 9.5 Incident communication
 
 Inform the right people quickly, with what is known, what is not, and next update time. Avoid speculation. Coordinate external messages through the designated owner.
 
-Section nine point five develops communication ethics and reporting with a Meridian Mutual note the practitioner can demo offline.
-
-Under section nine point five, claims security expects communication claims to carry owners and dates.
-
-Section nine point five treats audiences honest uncertainty ethical as testable only when evidence and ticket IDs are recorded.
-
-For section nine point five, Meridian Mutual will not accept communication work without a written trail.
-
 ### 9.6 Worked example (synthetic Meridian case)
 
 Before ClaimChat's wider launch, a manager asks Sofia to label the disclosure finding "low" because it is "fixed already". The fix is deployed but not yet verified on the held-out suite. Sofia keeps the rating, adds "fix deployed; verification due Friday", and offers to update the report after verification. On Friday, 0 of 20 disclosure tests succeed; she lowers the status to "closed — verified", with evidence.
 
-Section nine point six develops communication ethics and reporting with a Meridian Mutual note the practitioner can demo offline.
-
 ### 9.7 Errors and limits
-Section nine point seven develops communication ethics and reporting with a Meridian Mutual note the practitioner can demo offline.
-
-Under section nine point seven, claims security expects communication claims to carry owners and dates.
-
-Section nine point seven treats audiences honest uncertainty ethical as testable only when evidence and ticket IDs are recorded.
-
-For section nine point seven, Meridian Mutual will not accept communication work without a written trail.
-
-Section nine point seven fails closed if communication evidence is missing rather than guessing.
-
 
 - One report for all audiences.
 - Overstated certainty.
@@ -1148,43 +774,17 @@ You will (1) check the quality of AI-security work — tests, findings, evidence
 
 Are tests repeatable? Are results measured by effects? Are suites big enough for the claims made? Are held-out cases used? Are findings reproducible by someone else? Is evidence complete and dated? A peer review against these questions catches most weaknesses.
 
-Section ten point one develops ai and machine-learning security quality with a Meridian Mutual note the practitioner can demo offline.
-
-Under section ten point one, claims security expects ai claims to carry owners and dates.
-
-Section ten point one treats quality checks troubleshooting steps as testable only when evidence and ticket IDs are recorded.
-
 ### 10.2 Troubleshooting steps
 
 Define the symptom precisely; check recent changes (model, prompt, documents, tools, configuration, input forms); pull traces for failing and working cases; form hypotheses; test one at a time on staging; fix; verify; record.
-
-Section ten point two develops ai and machine-learning security quality with a Meridian Mutual note the practitioner can demo offline.
-
-Under section ten point two, claims security expects ai claims to carry owners and dates.
-
-Section ten point two treats quality checks troubleshooting steps as testable only when evidence and ticket IDs are recorded.
 
 ### 10.3 Accident or attack
 
 Accidents often affect many users evenly and coincide with changes. Attacks often cluster by account, source or time and show deliberate variation. Keep both in mind until evidence separates them.
 
-Section ten point three develops ai and machine-learning security quality with a Meridian Mutual note the practitioner can demo offline.
-
-Under section ten point three, claims security expects ai claims to carry owners and dates.
-
-Section ten point three treats quality checks troubleshooting steps as testable only when evidence and ticket IDs are recorded.
-
 ### 10.4 Preventing recurrence
 
 Add a regression test; add a monitoring signal; fix the process gap that allowed it (for example, linking form changes to model reviews).
-
-Section ten point four develops ai and machine-learning security quality with a Meridian Mutual note the practitioner can demo offline.
-
-Under section ten point four, claims security expects ai claims to carry owners and dates.
-
-Section ten point four treats quality checks troubleshooting steps as testable only when evidence and ticket IDs are recorded.
-
-For section ten point four, Meridian Mutual will not accept ai work without a written trail.
 
 ```python
 """Lab P: label-flip poisoning and a backdoor trigger on a toy nearest-centroid
@@ -1242,27 +842,11 @@ backdoor: add n triggered class-1 points labelled 0
 
 Before submitting work, ask: what would a sceptical reviewer challenge? Where am I relying on assumptions? What did I not test?
 
-Section ten point five develops ai and machine-learning security quality with a Meridian Mutual note the practitioner can demo offline.
-
-Under section ten point five, claims security expects ai claims to carry owners and dates.
-
-Section ten point five treats quality checks troubleshooting steps as testable only when evidence and ticket IDs are recorded.
-
-For section ten point five, Meridian Mutual will not accept ai work without a written trail.
-
 ### 10.6 Worked example (synthetic Meridian case)
 
 FraudFlag's weekly report shows a particular garage's claims never flagged, even when amounts are extreme. Sofia considers: data issue (garage mis-coded), model issue, or attack (labels poisoned). Label history shows one investigator marking every flagged claim from that garage as "genuine" over three months — 140 relabels. The poisoning lab shows how targeted labels can create a backdoor-like blind spot while overall accuracy stays steady. It is escalated as a possible insider case; Meridian adds second review for relabels and a test set of synthetic extreme claims per garage.
 
 ### 10.7 Errors and limits
-Section ten point seven develops ai and machine-learning security quality with a Meridian Mutual note the practitioner can demo offline.
-
-Under section ten point seven, claims security expects ai claims to carry owners and dates.
-
-Section ten point seven treats quality checks troubleshooting steps as testable only when evidence and ticket IDs are recorded.
-
-For section ten point seven, Meridian Mutual will not accept ai work without a written trail.
-
 
 - Assuming an attack without evidence, or ruling it out too early.
 - Fixes without regression tests.
@@ -1296,33 +880,13 @@ You will (1) run a supervised end-to-end lab on an AI-service copy; (2) test, co
 
 The course environment provides an assistant copy with document upload, retrieval and two tools, plus a scoring API. Synthetic accounts and documents only. Your supervisor approves the plan before you start.
 
-Section eleven point one develops supervised laboratory with a Meridian Mutual note the practitioner can demo offline.
-
-Under section eleven point one, claims security expects supervised claims to carry owners and dates.
-
-Section eleven point one treats setup part assistant part as testable only when evidence and ticket IDs are recorded.
-
 ### 11.2 Part A — assistant
 
 Run the injection, disclosure and agency suites on the default configuration. Configure controls from Chapter 7. Re-run, including held-out cases. Measure normal-task completion before and after.
 
-Section eleven point two develops supervised laboratory with a Meridian Mutual note the practitioner can demo offline.
-
-Under section eleven point two, claims security expects supervised claims to carry owners and dates.
-
-Section eleven point two treats setup part assistant part as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point two, Meridian Mutual will not accept supervised work without a written trail.
-
 ### 11.3 Part B — scoring API
 
 Run the privacy and extraction labs.
-
-Section eleven point three develops supervised laboratory with a Meridian Mutual note the practitioner can demo offline.
-
-Under section eleven point three, claims security expects supervised claims to carry owners and dates.
-
-Section eleven point three treats setup part assistant part as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Lab M: membership inference against an overfit 1-nearest-neighbour 'model'
@@ -1394,47 +958,15 @@ After the planned suites, spend a supervised hour trying new ways around your co
 
 Controls can block normal use. Record false refusals and completion rates; adjust where the cost is too high, and note the trade-off.
 
-Section eleven point four develops supervised laboratory with a Meridian Mutual note the practitioner can demo offline.
-
-Under section eleven point four, claims security expects supervised claims to carry owners and dates.
-
-Section eleven point four treats setup part assistant part as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point four, Meridian Mutual will not accept supervised work without a written trail.
-
 ### 11.5 Report
 
 Table per category: before, after, held-out, intervals; completion; remaining failures; recommendations; what was not tested.
-
-Section eleven point five develops supervised laboratory with a Meridian Mutual note the practitioner can demo offline.
-
-Under section eleven point five, claims security expects supervised claims to carry owners and dates.
-
-Section eleven point five treats setup part assistant part as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point five, Meridian Mutual will not accept supervised work without a written trail.
 
 ### 11.6 Worked example (synthetic Meridian case)
 
 Sofia's lab: injection-caused actions 17/50 → 0/50 (held-out 0/25); disclosure 7/20 → 0/20; agency 5/15 → 0/15; completion 47/50 → 46/50. Part B: she recommends FraudFlag's partner API return only "standard / review" and adds per-partner rate limits. Not tested: image-only uploads with text in pictures. Her supervisor signs off the report with one request: add intervals for the held-out results.
 
-Section eleven point six develops supervised laboratory with a Meridian Mutual note the practitioner can demo offline.
-
-Under section eleven point six, claims security expects supervised claims to carry owners and dates.
-
-Section eleven point six treats setup part assistant part as testable only when evidence and ticket IDs are recorded.
-
 ### 11.7 Errors and limits
-Section eleven point seven develops supervised laboratory with a Meridian Mutual note the practitioner can demo offline.
-
-Under section eleven point seven, claims security expects supervised claims to carry owners and dates.
-
-Section eleven point seven treats setup part assistant part as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point seven, Meridian Mutual will not accept supervised work without a written trail.
-
-Section eleven point seven fails closed if supervised evidence is missing rather than guessing.
-
 
 - Skipping the baseline.
 - Ignoring side effects.
@@ -1468,41 +1000,17 @@ You will (1) assemble a practice portfolio; (2) review the course's main princip
 
 Include: a context and data-flow analysis; a test plan and results; a finding report; a control verification record; a case analysis; a communication sample; the lab report. Remove confidential details and use synthetic examples where needed. For each item, add a short note on what you learnt.
 
-Section twelve point one develops practice portfolio and final review with a Meridian Mutual note the practitioner can demo offline.
-
-Under section twelve point one, claims security expects practice claims to carry owners and dates.
-
 ### 12.2 Principles to keep
 
 Start from context and affected people. Work only with authorisation. Assume models can be steered; enforce consequential limits outside them. Measure by effects, with intervals and base rates. Verify controls in both directions and after every change. Communicate honestly to each audience.
-
-Section twelve point two develops practice portfolio and final review with a Meridian Mutual note the practitioner can demo offline.
-
-Under section twelve point two, claims security expects practice claims to carry owners and dates.
-
-Section twelve point two treats portfolio principles to keep as testable only when evidence and ticket IDs are recorded.
 
 ### 12.3 Readiness and gaps
 
 Rate yourself on: mapping a service; designing tests; configuring and verifying controls; interpreting results; writing findings; incident analysis. Choose two gaps to work on next.
 
-Section twelve point three develops practice portfolio and final review with a Meridian Mutual note the practitioner can demo offline.
-
-Under section twelve point three, claims security expects practice claims to carry owners and dates.
-
-Section twelve point three treats portfolio principles to keep as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point three, Meridian Mutual will not accept practice work without a written trail.
-
 ### 12.4 Continuing development
 
 Follow OWASP, NIST and MITRE ATLAS updates; practise in authorised labs and capture-the-flag events with AI tracks; read one research paper a month — for example, Greshake et al. (arXiv:2302.12173) on indirect injection; join a professional community.
-
-Section twelve point four develops practice portfolio and final review with a Meridian Mutual note the practitioner can demo offline.
-
-Under section twelve point four, claims security expects practice claims to carry owners and dates.
-
-Section twelve point four treats portfolio principles to keep as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Lab R: token-bucket limits against unbounded consumption (synthetic).
@@ -1535,14 +1043,6 @@ limit=1/s burst= 5 normal_served= 62/90 flood_served=  64/3000
 
 Authorised testing only; protect personal data; report honestly; coordinate disclosure; consider people affected by AI decisions.
 
-Section twelve point five develops practice portfolio and final review with a Meridian Mutual note the practitioner can demo offline.
-
-Under section twelve point five, claims security expects practice claims to carry owners and dates.
-
-Section twelve point five treats portfolio principles to keep as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point five, Meridian Mutual will not accept practice work without a written trail.
-
 ### 12.5b Using the portfolio
 
 Bring the portfolio to performance reviews and job interviews, and use it with your supervisor to agree on the next responsibilities.
@@ -1551,19 +1051,7 @@ Bring the portfolio to performance reviews and job interviews, and use it with y
 
 Sofia's portfolio has seven items. Her self-assessment shows strengths in mapping and communication (from her claims background) and gaps in statistics and automation. Her plan: complete a statistics short course; automate her ClaimChat suite in the pipeline with the engineering team; present the FraudFlag case at an internal forum. Her supervisor adds a stretch goal: lead the next quarterly evaluation with support.
 
-Section twelve point six develops practice portfolio and final review with a Meridian Mutual note the practitioner can demo offline.
-
 ### 12.7 Errors and limits
-Section twelve point seven develops practice portfolio and final review with a Meridian Mutual note the practitioner can demo offline.
-
-Under section twelve point seven, claims security expects practice claims to carry owners and dates.
-
-Section twelve point seven treats portfolio principles to keep as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point seven, Meridian Mutual will not accept practice work without a written trail.
-
-Section twelve point seven fails closed if practice evidence is missing rather than guessing.
-
 
 - Portfolios with confidential data.
 - Plans without measurable goals.

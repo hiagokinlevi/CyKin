@@ -45,85 +45,33 @@ You will (1) restate core security concepts in a CTI context; (2) describe the i
 
 Priya has run IT support at Bramwell Insurance Brokers for eight years. She knows the systems, the users and the help desk. Her manager adds CTI to her role: one day a week to turn outside information about threats into better defences.
 
-Section one point one develops security foundations for practitioners with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section one point one, FSSG expects security claims to carry owners and dates.
-
-Section one point one treats starting point core terms as testable only when evidence and ticket IDs are recorded.
-
 ### 1.2 Core terms
 
 Threat: an actor or event that could cause harm. Vulnerability: a weakness. Risk: likelihood combined with impact. Control: a measure that reduces risk. Intelligence informs the threat side so controls are chosen well.
-
-Section one point two develops security foundations for practitioners with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section one point two, FSSG expects security claims to carry owners and dates.
-
-Section one point two treats starting point core terms as testable only when evidence and ticket IDs are recorded.
 
 ### 1.3 The cycle as a routine
 
 Direction (what does BIB need to know?), collection (FSSG, advisories, internal reports), processing (cleaning indicators), analysis (what it means for BIB), dissemination (to whoever acts) and feedback. For Priya it becomes a weekly checklist.
 
-Section one point three develops security foundations for practitioners with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section one point three, FSSG expects security claims to carry owners and dates.
-
-Section one point three treats starting point core terms as testable only when evidence and ticket IDs are recorded.
-
 ### 1.4 Models
 
 MITRE ATT&CK names adversary techniques — Phishing is T1566. The Hutchins et al. kill chain shows phases where defenders can act. The Diamond Model describes events by adversary, capability, infrastructure and victim.
-
-Section one point four develops security foundations for practitioners with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section one point four, FSSG expects security claims to carry owners and dates.
-
-Section one point four treats starting point core terms as testable only when evidence and ticket IDs are recorded.
 
 ### 1.5 Standards
 
 STIX 2.1 for data, TAXII 2.1 for exchange, FIRST TLP 2.0 for sharing limits, NIST SP 800-150 for sharing practice.
 
-Section one point five develops security foundations for practitioners with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section one point five, FSSG expects security claims to carry owners and dates.
-
-Section one point five treats starting point core terms as testable only when evidence and ticket IDs are recorded.
-
-For section one point five, Bramwell Insurance Brokers will not accept security work without a written trail.
-
 ### 1.6 Realistic goals
 
 In one day a week Priya can triage FSSG items, match indicators against email and DNS logs, brief the help desk and report monthly. Deep malware analysis and attribution are out of scope.
-
-Section one point six develops security foundations for practitioners with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section one point six, FSSG expects security claims to carry owners and dates.
-
-Section one point six treats starting point core terms as testable only when evidence and ticket IDs are recorded.
 
 ### 1.7 What brokers face
 
 Insurance brokers hold personal and financial client data and move money. Business email compromise, credential phishing against the client portal and ransomware are the main concerns reported in the sector.
 
-Section one point seven develops security foundations for practitioners with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section one point seven, FSSG expects security claims to carry owners and dates.
-
-Section one point seven treats starting point core terms as testable only when evidence and ticket IDs are recorded.
-
 ### 1.8 Learning plan
 
 Each chapter adds one routine to her week, so the role grows steadily.
-
-Section one point eight develops security foundations for practitioners with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section one point eight, FSSG expects security claims to carry owners and dates.
-
-Section one point eight treats starting point core terms as testable only when evidence and ticket IDs are recorded.
-
-For section one point eight, Bramwell Insurance Brokers will not accept security work without a written trail.
 
 ### Worked example
 
@@ -163,91 +111,33 @@ You will (1) identify BIB's intelligence consumers and their decisions; (2) writ
 
 The managing director decides budgets. The operations manager decides on process changes such as payment verification. The IT team configures email and network controls. The help desk talks to staff. The compliance officer handles regulators and data protection.
 
-Section two point one develops threat intelligence and osint service with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section two point one, FSSG expects threat claims to carry owners and dates.
-
-Section two point one treats consumers requirements products expectations as testable only when evidence and ticket IDs are recorded.
-
 ### 2.2 Requirements
 
 Priya interviews each and writes requirements: "Which fraud methods target brokers' payment processes this quarter?" (operations); "Which vulnerabilities in our CRM and portal are being exploited?" (IT); "Are BIB credentials or client data exposed publicly?" (compliance).
-
-Section two point two develops threat intelligence and osint service with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section two point two, FSSG expects threat claims to carry owners and dates.
-
-Section two point two treats consumers requirements products expectations as testable only when evidence and ticket IDs are recorded.
 
 ### 2.3 Products
 
 Managing director: quarterly half-page. Operations: alerts when a fraud method appears. IT: indicator lists and vulnerability notes. Help desk: weekly scam update. Compliance: notices of data exposure.
 
-Section two point three develops threat intelligence and osint service with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section two point three, FSSG expects threat claims to carry owners and dates.
-
-Section two point three treats consumers requirements products expectations as testable only when evidence and ticket IDs are recorded.
-
-For section two point three, Bramwell Insurance Brokers will not accept threat work without a written trail.
-
 ### 2.4 Expectations
 
 Priya explains that CTI reduces surprise but cannot predict every attack. She agrees what "urgent" means: active exploitation of a system BIB runs, or a fraud method targeting BIB by name.
-
-Section two point four develops threat intelligence and osint service with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section two point four, FSSG expects threat claims to carry owners and dates.
-
-Section two point four treats consumers requirements products expectations as testable only when evidence and ticket IDs are recorded.
 
 ### 2.5 Business email compromise
 
 Fraudsters impersonate clients or insurers to redirect payments. The operations manager's decision — whether to require call-back verification for changed bank details — depends on intelligence about how common this is in the sector.
 
-Section two point five develops threat intelligence and osint service with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section two point five, FSSG expects threat claims to carry owners and dates.
-
-Section two point five treats consumers requirements products expectations as testable only when evidence and ticket IDs are recorded.
-
 ### 2.6 Feedback
 
 Each consumer gets a two-question form quarterly.
-
-Section two point six develops threat intelligence and osint service with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section two point six, FSSG expects threat claims to carry owners and dates.
-
-Section two point six treats consumers requirements products expectations as testable only when evidence and ticket IDs are recorded.
-
-For section two point six, Bramwell Insurance Brokers will not accept threat work without a written trail.
-
-Section two point six fails closed if threat evidence is missing rather than guessing.
 
 ### 2.7 Saying no
 
 Requests outside requirements, such as researching a difficult client's personal life, are declined politely.
 
-Section two point seven develops threat intelligence and osint service with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section two point seven, FSSG expects threat claims to carry owners and dates.
-
-Section two point seven treats consumers requirements products expectations as testable only when evidence and ticket IDs are recorded.
-
-For section two point seven, Bramwell Insurance Brokers will not accept threat work without a written trail.
-
 ### 2.8 Writing it down
 
 A one-page requirements list, approved by the manager, guides what Priya collects.
-
-Section two point eight develops threat intelligence and osint service with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section two point eight, FSSG expects threat claims to carry owners and dates.
-
-Section two point eight treats consumers requirements products expectations as testable only when evidence and ticket IDs are recorded.
-
-For section two point eight, Bramwell Insurance Brokers will not accept threat work without a written trail.
 
 ### Regulatory context
 
@@ -291,93 +181,33 @@ You will (1) work within written authorisation; (2) apply TLP 2.0 and data-prote
 
 Priya's role description and the IT security policy list what she may do: read intelligence sources, search BIB logs, draft requests, share sanitised items with FSSG. Anything else needs approval.
 
-Section three point one develops authorized practice and evidence handling with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section three point one, FSSG expects authorized claims to carry owners and dates.
-
-Section three point one treats authorisation tlp data protection as testable only when evidence and ticket IDs are recorded.
-
 ### 3.2 TLP 2.0
 
 CLEAR: public. GREEN: community. AMBER: BIB and its clients on need-to-know. AMBER+STRICT: BIB only. RED: named people. Priya stores items with labels and checks before forwarding.
-
-Section three point two develops authorized practice and evidence handling with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section three point two, FSSG expects authorized claims to carry owners and dates.
-
-Section three point two treats authorisation tlp data protection as testable only when evidence and ticket IDs are recorded.
-
-For section three point two, Bramwell Insurance Brokers will not accept authorized work without a written trail.
 
 ### 3.3 Data protection
 
 Logs and emails contain personal data of staff and clients. Under the GDPR-style rules BIB follows, she uses only what is needed, keeps extracts briefly and removes personal details before sharing.
 
-Section three point three develops authorized practice and evidence handling with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section three point three, FSSG expects authorized claims to carry owners and dates.
-
-Section three point three treats authorisation tlp data protection as testable only when evidence and ticket IDs are recorded.
-
 ### 3.4 Evidence
 
 When a phishing email is reported, she saves the original message file, records who reported it and when, and computes a hash of the file. Analysis uses a copy.
-
-Section three point four develops authorized practice and evidence handling with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section three point four, FSSG expects authorized claims to carry owners and dates.
-
-Section three point four treats authorisation tlp data protection as testable only when evidence and ticket IDs are recorded.
 
 ### 3.5 Approval needed
 
 Contacting police, requesting takedowns, notifying regulators, buying intelligence services, or engaging with suspected criminals. Each goes through management and, where needed, legal advice.
 
-Section three point five develops authorized practice and evidence handling with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section three point five, FSSG expects authorized claims to carry owners and dates.
-
-Section three point five treats authorisation tlp data protection as testable only when evidence and ticket IDs are recorded.
-
-For section three point five, Bramwell Insurance Brokers will not accept authorized work without a written trail.
-
 ### 3.6 OSINT boundaries
 
 Public sources only, within terms of service, no fake accounts, no closed forums, no attempts to identify private individuals.
-
-Section three point six develops authorized practice and evidence handling with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section three point six, FSSG expects authorized claims to carry owners and dates.
-
-Section three point six treats authorisation tlp data protection as testable only when evidence and ticket IDs are recorded.
-
-For section three point six, Bramwell Insurance Brokers will not accept authorized work without a written trail.
 
 ### 3.7 Records
 
 A simple log: item, source, label, action, date.
 
-Section three point seven develops authorized practice and evidence handling with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section three point seven, FSSG expects authorized claims to carry owners and dates.
-
-Section three point seven treats authorisation tlp data protection as testable only when evidence and ticket IDs are recorded.
-
-For section three point seven, Bramwell Insurance Brokers will not accept authorized work without a written trail.
-
-Section three point seven fails closed if authorized evidence is missing rather than guessing.
-
 ### 3.8 Mistakes
 
 If something is shared wrongly, report it at once and ask recipients to delete it.
-
-Section three point eight develops authorized practice and evidence handling with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section three point eight, FSSG expects authorized claims to carry owners and dates.
-
-Section three point eight treats authorisation tlp data protection as testable only when evidence and ticket IDs are recorded.
-
-For section three point eight, Bramwell Insurance Brokers will not accept authorized work without a written trail.
 
 ### Chain of custody
 
@@ -421,97 +251,33 @@ You will (1) triage, grade and tag intelligence; (2) write calibrated judgments;
 
 Relevant? Timely? Actionable? Source known? Most items fail relevance and are logged only.
 
-Section four point one develops threat intelligence and osint core with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section four point one, FSSG expects threat claims to carry owners and dates.
-
-Section four point one treats triage grading tagging calibrated as testable only when evidence and ticket IDs are recorded.
-
-For section four point one, Bramwell Insurance Brokers will not accept threat work without a written trail.
-
 ### 4.2 Grading
 
 Admiralty scale: source A–F, information 1–6. FSSG with a good record: B. A vendor blog: C until its record is known. Anonymous posts: F.
-
-Section four point two develops threat intelligence and osint core with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section four point two, FSSG expects threat claims to carry owners and dates.
-
-Section four point two treats triage grading tagging calibrated as testable only when evidence and ticket IDs are recorded.
-
-For section four point two, Bramwell Insurance Brokers will not accept threat work without a written trail.
 
 ### 4.3 Tagging
 
 Tag ATT&CK techniques supported by the text: invoice fraud by email (T1566 if links or attachments are used; otherwise a social-engineering pretext), credential use (T1078), encryption for impact (T1486).
 
-Section four point three develops threat intelligence and osint core with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section four point three, FSSG expects threat claims to carry owners and dates.
-
-Section four point three treats triage grading tagging calibrated as testable only when evidence and ticket IDs are recorded.
-
 ### 4.4 Calibrated words
 
 Use a fixed scale: unlikely (20–45%), roughly even (45–55%), likely (55–80%), very likely (80–95%). ICD 203 asks analysts to express uncertainty clearly and explain confidence.
-
-Section four point four develops threat intelligence and osint core with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section four point four, FSSG expects threat claims to carry owners and dates.
-
-Section four point four treats triage grading tagging calibrated as testable only when evidence and ticket IDs are recorded.
-
-For section four point four, Bramwell Insurance Brokers will not accept threat work without a written trail.
 
 ### 4.5 Alternatives
 
 Before concluding, ask: what else could explain this? A spike in failed logins may be an attack — or a password-policy change forcing resets.
 
-Section four point five develops threat intelligence and osint core with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section four point five, FSSG expects threat claims to carry owners and dates.
-
-Section four point five treats triage grading tagging calibrated as testable only when evidence and ticket IDs are recorded.
-
-For section four point five, Bramwell Insurance Brokers will not accept threat work without a written trail.
-
 ### 4.6 Notes
 
 Three lines: what happened; what it means for BIB with likelihood and confidence; what to do and who does it.
-
-Section four point six develops threat intelligence and osint core with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section four point six, FSSG expects threat claims to carry owners and dates.
-
-Section four point six treats triage grading tagging calibrated as testable only when evidence and ticket IDs are recorded.
-
-For section four point six, Bramwell Insurance Brokers will not accept threat work without a written trail.
 
 ### 4.7 Consistency
 
 Priya and the IT manager grade the same five items monthly and compare.
 
-Section four point seven develops threat intelligence and osint core with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section four point seven, FSSG expects threat claims to carry owners and dates.
-
-Section four point seven treats triage grading tagging calibrated as testable only when evidence and ticket IDs are recorded.
-
-For section four point seven, Bramwell Insurance Brokers will not accept threat work without a written trail.
-
 ### 4.8 Time
 
 Triage in minutes; analysis only for items that pass.
-
-Section four point eight develops threat intelligence and osint core with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section four point eight, FSSG expects threat claims to carry owners and dates.
-
-Section four point eight treats triage grading tagging calibrated as testable only when evidence and ticket IDs are recorded.
-
-For section four point eight, Bramwell Insurance Brokers will not accept threat work without a written trail.
-
-Section four point eight fails closed if threat evidence is missing rather than guessing.
 
 ### Business email compromise signs
 
@@ -555,14 +321,6 @@ You will (1) use a simple scoring tool for triage; (2) interpret its output crit
 
 Priya receives about forty items a week. A transparent score — relevance, freshness, source grade — puts the most useful first.
 
-Section five point one develops threat intelligence and osint tools with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section five point one, FSSG expects threat claims to carry owners and dates.
-
-Section five point one treats why score reading the as testable only when evidence and ticket IDs are recorded.
-
-For section five point one, Bramwell Insurance Brokers will not accept threat work without a written trail.
-
 ### Lab — triage scoring
 
 ```python
@@ -594,79 +352,29 @@ Q2 4 ransomware in manufacturing -> log only
 
 Q3, a flaw in BIB's CRM version from an A-grade source within five days, scores 8 and goes to analysis. Q1, the broker-portal phishing wave from FSSG, scores 7 — analysis. Q4, a forum claim that broker data is for sale, scores 5 — check, because it is relevant and fresh but from an F source. Q5 (relevant but 40 days old) and Q2 (fresh but about manufacturing) score 4 and are logged only.
 
-Section five point two develops threat intelligence and osint tools with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
 ### 5.3 Interpreting
 
 Scores order work; they do not decide. Q4 is low-grade but could matter if true; Priya checks whether BIB data appears in the claim's sample through FSSG rather than visiting the forum.
-
-Section five point three develops threat intelligence and osint tools with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section five point three, FSSG expects threat claims to carry owners and dates.
-
-Section five point three treats why score reading the as testable only when evidence and ticket IDs are recorded.
 
 ### 5.4 OSINT tools
 
 Certificate-transparency search for lookalikes of bramwell.example; national advisories; vendor vulnerability pages. Used within terms.
 
-Section five point four develops threat intelligence and osint tools with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section five point four, FSSG expects threat claims to carry owners and dates.
-
-Section five point four treats why score reading the as testable only when evidence and ticket IDs are recorded.
-
-For section five point four, Bramwell Insurance Brokers will not accept threat work without a written trail.
-
 ### 5.5 Tool limits
 
 A score ignores context the tool does not know — such as a planned CRM upgrade making Q3 moot next week.
-
-Section five point five develops threat intelligence and osint tools with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section five point five, FSSG expects threat claims to carry owners and dates.
-
-Section five point five treats why score reading the as testable only when evidence and ticket IDs are recorded.
-
-For section five point five, Bramwell Insurance Brokers will not accept threat work without a written trail.
 
 ### 5.6 Adjusting weights
 
 If too many irrelevant items reach analysis, adjust weights and document the change.
 
-Section five point six develops threat intelligence and osint tools with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section five point six, FSSG expects threat claims to carry owners and dates.
-
-Section five point six treats why score reading the as testable only when evidence and ticket IDs are recorded.
-
-For section five point six, Bramwell Insurance Brokers will not accept threat work without a written trail.
-
 ### 5.7 Spreadsheet versions
 
 The same scoring works in a spreadsheet; the script is easier to audit.
 
-Section five point seven develops threat intelligence and osint tools with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section five point seven, FSSG expects threat claims to carry owners and dates.
-
-Section five point seven treats why score reading the as testable only when evidence and ticket IDs are recorded.
-
-For section five point seven, Bramwell Insurance Brokers will not accept threat work without a written trail.
-
 ### 5.8 Review
 
 Monthly, compare scores with what actually proved useful.
-
-Section five point eight develops threat intelligence and osint tools with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section five point eight, FSSG expects threat claims to carry owners and dates.
-
-Section five point eight treats why score reading the as testable only when evidence and ticket IDs are recorded.
-
-For section five point eight, Bramwell Insurance Brokers will not accept threat work without a written trail.
-
-Section five point eight fails closed if threat evidence is missing rather than guessing.
 
 ### Recording tool runs
 
@@ -710,109 +418,37 @@ You will (1) run a repeatable weekly CTI workflow; (2) track items from arrival 
 
 Monday: FSSG items scored and triaged. Tuesday: indicator matching in email and DNS logs; requests drafted. Wednesday: help-desk scam update. Thursday: follow-ups. Last Friday: monthly summary.
 
-Section six point one develops threat intelligence and osint operational with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section six point one, FSSG expects threat claims to carry owners and dates.
-
-Section six point one treats the week tracking coordination as testable only when evidence and ticket IDs are recorded.
-
-For section six point one, Bramwell Insurance Brokers will not accept threat work without a written trail.
-
 ### 6.2 Tracking
 
 Each item gets a ticket: arrival, source, label, grade, score, decision, actions, closure date. Open tickets show what is pending.
-
-Section six point two develops threat intelligence and osint operational with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section six point two, FSSG expects threat claims to carry owners and dates.
-
-Section six point two treats the week tracking coordination as testable only when evidence and ticket IDs are recorded.
-
-For section six point two, Bramwell Insurance Brokers will not accept threat work without a written trail.
 
 ### 6.3 Coordination
 
 IT applies blocks and patches; the help desk briefs staff; operations changes processes. Priya's requests name the owner and deadline.
 
-Section six point three develops threat intelligence and osint operational with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section six point three, FSSG expects threat claims to carry owners and dates.
-
-Section six point three treats the week tracking coordination as testable only when evidence and ticket IDs are recorded.
-
-For section six point three, Bramwell Insurance Brokers will not accept threat work without a written trail.
-
 ### 6.4 Urgent path
 
 Active exploitation of BIB's CRM or portal, or a fraud method naming BIB, skips the routine: phone the owner, open a priority ticket, inform the manager.
-
-Section six point four develops threat intelligence and osint operational with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section six point four, FSSG expects threat claims to carry owners and dates.
-
-Section six point four treats the week tracking coordination as testable only when evidence and ticket IDs are recorded.
-
-For section six point four, Bramwell Insurance Brokers will not accept threat work without a written trail.
 
 ### 6.5 Closure
 
 Items close when action is done and verified, or when a decision not to act is recorded with reason.
 
-Section six point five develops threat intelligence and osint operational with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section six point five, FSSG expects threat claims to carry owners and dates.
-
-Section six point five treats the week tracking coordination as testable only when evidence and ticket IDs are recorded.
-
-For section six point five, Bramwell Insurance Brokers will not accept threat work without a written trail.
-
 ### 6.6 Cover
 
 When Priya is away, the IT manager follows the same checklist, using her handover note.
-
-Section six point six develops threat intelligence and osint operational with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section six point six, FSSG expects threat claims to carry owners and dates.
-
-Section six point six treats the week tracking coordination as testable only when evidence and ticket IDs are recorded.
-
-For section six point six, Bramwell Insurance Brokers will not accept threat work without a written trail.
 
 ### 6.7 Metrics
 
 Items received, analysed, actioned; time from arrival to action; blocks that stopped connections.
 
-Section six point seven develops threat intelligence and osint operational with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section six point seven, FSSG expects threat claims to carry owners and dates.
-
-Section six point seven treats the week tracking coordination as testable only when evidence and ticket IDs are recorded.
-
-For section six point seven, Bramwell Insurance Brokers will not accept threat work without a written trail.
-
 ### 6.8 Workload
 
 If the week overflows, Priya drops lowest-scored items first and tells her manager.
 
-Section six point eight develops threat intelligence and osint operational with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section six point eight, FSSG expects threat claims to carry owners and dates.
-
-Section six point eight treats the week tracking coordination as testable only when evidence and ticket IDs are recorded.
-
-For section six point eight, Bramwell Insurance Brokers will not accept threat work without a written trail.
-
 ### 6.9 FSSG feedback
 
 Every month she tells FSSG which items helped BIB; communities improve when members respond.
-
-Section six point nine develops threat intelligence and osint operational with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section six point nine, FSSG expects threat claims to carry owners and dates.
-
-Section six point nine treats the week tracking coordination as testable only when evidence and ticket IDs are recorded.
-
-For section six point nine, Bramwell Insurance Brokers will not accept threat work without a written trail.
 
 ### Handover note
 
@@ -856,111 +492,37 @@ You will (1) turn intelligence into control requests; (2) choose controls by ind
 
 Each request states intelligence and source, label, the control change, expected benefit, side effects, verification and review date.
 
-Section seven point one develops threat intelligence and osint controls with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section seven point one, FSSG expects threat claims to carry owners and dates.
-
-Section seven point one treats requests choosing controls process as testable only when evidence and ticket IDs are recorded.
-
-For section seven point one, Bramwell Insurance Brokers will not accept threat work without a written trail.
-
 ### 7.2 Choosing controls
 
 Sender domains to the email gateway; malicious domains to DNS filtering; hashes to endpoint protection; technique intelligence to configuration — for example, multi-factor authentication on the client portal against Valid Accounts (T1078), and call-back verification against payment fraud.
-
-Section seven point two develops threat intelligence and osint controls with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section seven point two, FSSG expects threat claims to carry owners and dates.
-
-Section seven point two treats requests choosing controls process as testable only when evidence and ticket IDs are recorded.
 
 ### 7.3 Process controls
 
 Not all controls are technical. Business email compromise is best countered by verification procedures, dual approval for payments and staff awareness.
 
-Section seven point three develops threat intelligence and osint controls with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section seven point three, FSSG expects threat claims to carry owners and dates.
-
-Section seven point three treats requests choosing controls process as testable only when evidence and ticket IDs are recorded.
-
-For section seven point three, Bramwell Insurance Brokers will not accept threat work without a written trail.
-
 ### 7.4 Verification
 
 Technical: test lookups, harmless test messages, configuration checks. Process: ask operations to confirm call-backs happened for the month's bank-detail changes.
-
-Section seven point four develops threat intelligence and osint controls with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section seven point four, FSSG expects threat claims to carry owners and dates.
-
-Section seven point four treats requests choosing controls process as testable only when evidence and ticket IDs are recorded.
-
-For section seven point four, Bramwell Insurance Brokers will not accept threat work without a written trail.
 
 ### 7.5 Collateral damage
 
 Blocking a domain used by an insurer partner would disrupt business; check with operations first.
 
-Section seven point five develops threat intelligence and osint controls with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section seven point five, FSSG expects threat claims to carry owners and dates.
-
-Section seven point five treats requests choosing controls process as testable only when evidence and ticket IDs are recorded.
-
-For section seven point five, Bramwell Insurance Brokers will not accept threat work without a written trail.
-
 ### 7.6 Review
 
 Blocks expire; process controls are reviewed annually.
-
-Section seven point six develops threat intelligence and osint controls with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section seven point six, FSSG expects threat claims to carry owners and dates.
-
-Section seven point six treats requests choosing controls process as testable only when evidence and ticket IDs are recorded.
-
-For section seven point six, Bramwell Insurance Brokers will not accept threat work without a written trail.
-
-Section seven point six fails closed if threat evidence is missing rather than guessing.
 
 ### 7.7 Recording
 
 The control register lists every change made because of intelligence.
 
-Section seven point seven develops threat intelligence and osint controls with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section seven point seven, FSSG expects threat claims to carry owners and dates.
-
-Section seven point seven treats requests choosing controls process as testable only when evidence and ticket IDs are recorded.
-
-For section seven point seven, Bramwell Insurance Brokers will not accept threat work without a written trail.
-
-Section seven point seven fails closed if threat evidence is missing rather than guessing.
-
 ### 7.8 Measuring effect
 
 Count blocked connections, quarantined messages and prevented fraudulent payments reported by operations.
 
-Section seven point eight develops threat intelligence and osint controls with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section seven point eight, FSSG expects threat claims to carry owners and dates.
-
-Section seven point eight treats requests choosing controls process as testable only when evidence and ticket IDs are recorded.
-
-For section seven point eight, Bramwell Insurance Brokers will not accept threat work without a written trail.
-
 ### 7.9 ATT&CK mitigations
 
 Technique pages list mitigations that can inspire requests, adapted to BIB's tools.
-
-Section seven point nine develops threat intelligence and osint controls with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section seven point nine, FSSG expects threat claims to carry owners and dates.
-
-Section seven point nine treats requests choosing controls process as testable only when evidence and ticket IDs are recorded.
-
-For section seven point nine, Bramwell Insurance Brokers will not accept threat work without a written trail.
 
 ### Staff awareness as a control
 
@@ -1004,107 +566,37 @@ You will (1) analyse a realistic incident under supervision; (2) build a timelin
 
 A broker receives an email apparently from an insurer announcing new bank details. Finance pays one premium to the new account before call-back verification catches a second request. Priya analyses the case with an external responder as supervisor.
 
-Section eight point one develops threat intelligence and osint supervised with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section eight point one, FSSG expects threat claims to carry owners and dates.
-
-Section eight point one treats the case timeline mapping as testable only when evidence and ticket IDs are recorded.
-
 ### 8.2 Timeline
 
 Collect times from the email gateway, finance system and call-back log. Convert all to UTC. Order events: lookalike domain registered; email received; first payment; second request; call-back; fraud confirmed.
-
-Section eight point two develops threat intelligence and osint supervised with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section eight point two, FSSG expects threat claims to carry owners and dates.
-
-Section eight point two treats the case timeline mapping as testable only when evidence and ticket IDs are recorded.
 
 ### 8.3 Mapping
 
 Domain registration: Acquire Infrastructure (T1583) — preparation. Email: Phishing (T1566) as delivery of a pretext. No malware or account compromise is evident.
 
-Section eight point three develops threat intelligence and osint supervised with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section eight point three, FSSG expects threat claims to carry owners and dates.
-
-Section eight point three treats the case timeline mapping as testable only when evidence and ticket IDs are recorded.
-
-For section eight point three, Bramwell Insurance Brokers will not accept threat work without a written trail.
-
 ### 8.4 Diamond view
 
 Adversary: unknown fraud group. Capability: social-engineering pretext. Infrastructure: lookalike domain and a bank account. Victim: BIB finance team.
-
-Section eight point four develops threat intelligence and osint supervised with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section eight point four, FSSG expects threat claims to carry owners and dates.
-
-Section eight point four treats the case timeline mapping as testable only when evidence and ticket IDs are recorded.
-
-For section eight point four, Bramwell Insurance Brokers will not accept threat work without a written trail.
 
 ### 8.5 Confidence and gaps
 
 High confidence in the sequence; low confidence about whether the insurer's own mailbox was compromised. Ask the insurer through proper channels.
 
-Section eight point five develops threat intelligence and osint supervised with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section eight point five, FSSG expects threat claims to carry owners and dates.
-
-Section eight point five treats the case timeline mapping as testable only when evidence and ticket IDs are recorded.
-
-For section eight point five, Bramwell Insurance Brokers will not accept threat work without a written trail.
-
 ### 8.6 Lessons
 
 Call-back verification worked on the second request; it was not yet mandatory on the first.
-
-Section eight point six develops threat intelligence and osint supervised with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section eight point six, FSSG expects threat claims to carry owners and dates.
-
-Section eight point six treats the case timeline mapping as testable only when evidence and ticket IDs are recorded.
-
-For section eight point six, Bramwell Insurance Brokers will not accept threat work without a written trail.
 
 ### 8.7 Sharing
 
 A GREEN item to FSSG with the lookalike domain and pretext, without client details.
 
-Section eight point seven develops threat intelligence and osint supervised with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section eight point seven, FSSG expects threat claims to carry owners and dates.
-
-Section eight point seven treats the case timeline mapping as testable only when evidence and ticket IDs are recorded.
-
-For section eight point seven, Bramwell Insurance Brokers will not accept threat work without a written trail.
-
 ### 8.8 Supervisor review
 
 The responder checks Priya's timeline and wording before release.
 
-Section eight point eight develops threat intelligence and osint supervised with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section eight point eight, FSSG expects threat claims to carry owners and dates.
-
-Section eight point eight treats the case timeline mapping as testable only when evidence and ticket IDs are recorded.
-
-For section eight point eight, Bramwell Insurance Brokers will not accept threat work without a written trail.
-
-Section eight point eight fails closed if threat evidence is missing rather than guessing.
-
 ### 8.9 Legal steps
 
 Management reports the fraud to the bank and police; Priya provides the timeline.
-
-Section eight point nine develops threat intelligence and osint supervised with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section eight point nine, FSSG expects threat claims to carry owners and dates.
-
-Section eight point nine treats the case timeline mapping as testable only when evidence and ticket IDs are recorded.
-
-For section eight point nine, Bramwell Insurance Brokers will not accept threat work without a written trail.
 
 ### Kill chain view
 
@@ -1148,113 +640,37 @@ You will (1) write reports for different audiences; (2) express uncertainty hone
 
 Start with the judgment and the action. Detail follows for those who need it.
 
-Section nine point one develops communication ethics and reporting with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section nine point one, FSSG expects communication claims to carry owners and dates.
-
-Section nine point one treats bottom line first audiences as testable only when evidence and ticket IDs are recorded.
-
-For section nine point one, Bramwell Insurance Brokers will not accept communication work without a written trail.
-
 ### 9.2 Audiences
 
 Managing director: risk and decisions. Operations: process changes. IT: technical details. Staff: what to look for and how to report.
-
-Section nine point two develops communication ethics and reporting with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section nine point two, FSSG expects communication claims to carry owners and dates.
-
-Section nine point two treats bottom line first audiences as testable only when evidence and ticket IDs are recorded.
-
-For section nine point two, Bramwell Insurance Brokers will not accept communication work without a written trail.
 
 ### 9.3 Uncertainty
 
 Use the agreed probability words and a confidence level, and say what would change the judgment. ICD 203 standards — sourcing, uncertainty, alternatives, logic — make a good self-check.
 
-Section nine point three develops communication ethics and reporting with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section nine point three, FSSG expects communication claims to carry owners and dates.
-
-Section nine point three treats bottom line first audiences as testable only when evidence and ticket IDs are recorded.
-
-For section nine point three, Bramwell Insurance Brokers will not accept communication work without a written trail.
-
 ### 9.4 Labels
 
 Every product carries a TLP label in the header. Staff awareness notes are usually CLEAR internally; FSSG-derived detail may be AMBER.
-
-Section nine point four develops communication ethics and reporting with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section nine point four, FSSG expects communication claims to carry owners and dates.
-
-Section nine point four treats bottom line first audiences as testable only when evidence and ticket IDs are recorded.
-
-For section nine point four, Bramwell Insurance Brokers will not accept communication work without a written trail.
 
 ### 9.5 Ethical dilemmas
 
 Pressure to make a threat sound bigger to win budget; pressure to downplay an incident to avoid embarrassment. Both damage trust. Report what the evidence supports.
 
-Section nine point five develops communication ethics and reporting with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section nine point five, FSSG expects communication claims to carry owners and dates.
-
-Section nine point five treats bottom line first audiences as testable only when evidence and ticket IDs are recorded.
-
-For section nine point five, Bramwell Insurance Brokers will not accept communication work without a written trail.
-
 ### 9.6 Naming people
 
 Reports name roles, not staff who clicked a link. Blame discourages reporting.
-
-Section nine point six develops communication ethics and reporting with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section nine point six, FSSG expects communication claims to carry owners and dates.
-
-Section nine point six treats bottom line first audiences as testable only when evidence and ticket IDs are recorded.
-
-For section nine point six, Bramwell Insurance Brokers will not accept communication work without a written trail.
 
 ### 9.7 Clients
 
 Client details stay out of intelligence products; the compliance officer manages client communications.
 
-Section nine point seven develops communication ethics and reporting with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section nine point seven, FSSG expects communication claims to carry owners and dates.
-
-Section nine point seven treats bottom line first audiences as testable only when evidence and ticket IDs are recorded.
-
-For section nine point seven, Bramwell Insurance Brokers will not accept communication work without a written trail.
-
 ### 9.8 Length
 
 One page for most products; appendices for detail.
 
-Section nine point eight develops communication ethics and reporting with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section nine point eight, FSSG expects communication claims to carry owners and dates.
-
-Section nine point eight treats bottom line first audiences as testable only when evidence and ticket IDs are recorded.
-
-For section nine point eight, Bramwell Insurance Brokers will not accept communication work without a written trail.
-
-Section nine point eight fails closed if communication evidence is missing rather than guessing.
-
 ### 9.9 Review
 
 A colleague reads each management report before release.
-
-Section nine point nine develops communication ethics and reporting with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section nine point nine, FSSG expects communication claims to carry owners and dates.
-
-Section nine point nine treats bottom line first audiences as testable only when evidence and ticket IDs are recorded.
-
-For section nine point nine, Bramwell Insurance Brokers will not accept communication work without a written trail.
-
-Section nine point nine fails closed if communication evidence is missing rather than guessing.
 
 ### Report structure
 
@@ -1298,113 +714,37 @@ You will (1) measure the quality of CTI products; (2) detect and fix common faul
 
 Relevance, timeliness, accuracy, clarity and actionability. Each can be checked: was the item about BIB systems? delivered before it mattered? confirmed or withdrawn later? understood? acted on?
 
-Section ten point one develops threat intelligence and osint quality with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section ten point one, FSSG expects threat claims to carry owners and dates.
-
-Section ten point one treats quality dimensions common faults as testable only when evidence and ticket IDs are recorded.
-
-For section ten point one, Bramwell Insurance Brokers will not accept threat work without a written trail.
-
 ### 10.2 Common faults
 
 Stale indicators causing false blocks; missed items because email alerts went to spam; wrong labels; notes without clear actions.
-
-Section ten point two develops threat intelligence and osint quality with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section ten point two, FSSG expects threat claims to carry owners and dates.
-
-Section ten point two treats quality dimensions common faults as testable only when evidence and ticket IDs are recorded.
-
-For section ten point two, Bramwell Insurance Brokers will not accept threat work without a written trail.
 
 ### 10.3 Troubleshooting
 
 Trace the item's path: received, triaged, analysed, sent, acted. Find where it stopped.
 
-Section ten point three develops threat intelligence and osint quality with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section ten point three, FSSG expects threat claims to carry owners and dates.
-
-Section ten point three treats quality dimensions common faults as testable only when evidence and ticket IDs are recorded.
-
-For section ten point three, Bramwell Insurance Brokers will not accept threat work without a written trail.
-
 ### 10.4 Feedback
 
 Quarterly two-question forms; quick chats with the help desk. "What helped? What was noise?"
-
-Section ten point four develops threat intelligence and osint quality with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section ten point four, FSSG expects threat claims to carry owners and dates.
-
-Section ten point four treats quality dimensions common faults as testable only when evidence and ticket IDs are recorded.
-
-For section ten point four, Bramwell Insurance Brokers will not accept threat work without a written trail.
 
 ### 10.5 Improvements
 
 One change per month: shorter notes, earlier scam updates, new lookalike monitoring.
 
-Section ten point five develops threat intelligence and osint quality with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section ten point five, FSSG expects threat claims to carry owners and dates.
-
-Section ten point five treats quality dimensions common faults as testable only when evidence and ticket IDs are recorded.
-
-For section ten point five, Bramwell Insurance Brokers will not accept threat work without a written trail.
-
 ### 10.6 Accuracy tracking
 
 Record judgments with probability words; later note what happened. Over time, see if "likely" events happened more often than "unlikely" ones.
-
-Section ten point six develops threat intelligence and osint quality with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section ten point six, FSSG expects threat claims to carry owners and dates.
-
-Section ten point six treats quality dimensions common faults as testable only when evidence and ticket IDs are recorded.
-
-For section ten point six, Bramwell Insurance Brokers will not accept threat work without a written trail.
 
 ### 10.7 Source review
 
 Each quarter, review sources: items received, used, withdrawn.
 
-Section ten point seven develops threat intelligence and osint quality with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section ten point seven, FSSG expects threat claims to carry owners and dates.
-
-Section ten point seven treats quality dimensions common faults as testable only when evidence and ticket IDs are recorded.
-
-For section ten point seven, Bramwell Insurance Brokers will not accept threat work without a written trail.
-
-Section ten point seven fails closed if threat evidence is missing rather than guessing.
-
 ### 10.8 False positives
 
 When a block is wrong, remove it quickly, apologise, find the cause, adjust rules.
 
-Section ten point eight develops threat intelligence and osint quality with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section ten point eight, FSSG expects threat claims to carry owners and dates.
-
-Section ten point eight treats quality dimensions common faults as testable only when evidence and ticket IDs are recorded.
-
-For section ten point eight, Bramwell Insurance Brokers will not accept threat work without a written trail.
-
 ### 10.9 Documentation
 
 Keep a short improvement log.
-
-Section ten point nine develops threat intelligence and osint quality with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section ten point nine, FSSG expects threat claims to carry owners and dates.
-
-Section ten point nine treats quality dimensions common faults as testable only when evidence and ticket IDs are recorded.
-
-For section ten point nine, Bramwell Insurance Brokers will not accept threat work without a written trail.
-
-Section ten point nine fails closed if threat evidence is missing rather than guessing.
 
 ### Peer comparison
 
@@ -1448,16 +788,6 @@ You will (1) run an automated pre-release check on a brief; (2) fix failures bef
 
 Offline, synthetic, standard library. The supervisor reviews outputs and the corrected brief.
 
-Section eleven point one develops supervised laboratory with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section eleven point one, FSSG expects supervised claims to carry owners and dates.
-
-Section eleven point one treats lab rules reading the as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point one, Bramwell Insurance Brokers will not accept supervised work without a written trail.
-
-Section eleven point one fails closed if supervised evidence is missing rather than guessing.
-
 ### Lab — brief release check
 
 ```python
@@ -1490,97 +820,33 @@ HOLD: fix failures before release
 
 The brief has a valid TLP:GREEN label, a bottom line first, a confidence level and listed actions. It fails one check: the text contains a staff email address at bramwell.example. The script holds the release until the failure is fixed.
 
-Section eleven point two develops supervised laboratory with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section eleven point two, FSSG expects supervised claims to carry owners and dates.
-
-Section eleven point two treats lab rules reading the as testable only when evidence and ticket IDs are recorded.
-
 ### 11.3 Fixing
 
 Replace "j.smith@bramwell.example" with "a staff member". Rerun: all checks pass and the script prints "release".
-
-Section eleven point three develops supervised laboratory with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section eleven point three, FSSG expects supervised claims to carry owners and dates.
-
-Section eleven point three treats lab rules reading the as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point three, Bramwell Insurance Brokers will not accept supervised work without a written trail.
 
 ### 11.4 Why each check
 
 Label: wrong or missing labels cause leaks. Bottom line: busy readers act on the first sentence. Confidence: readers need to know how sure we are. Actions: intelligence without action is news. Staff email: personal data does not belong in a GREEN community product.
 
-Section eleven point four develops supervised laboratory with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section eleven point four, FSSG expects supervised claims to carry owners and dates.
-
-Section eleven point four treats lab rules reading the as testable only when evidence and ticket IDs are recorded.
-
 ### 11.5 Limits of checks
 
 The script finds email addresses only for BIB's domain; it misses names and client addresses. A human read remains mandatory.
-
-Section eleven point five develops supervised laboratory with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section eleven point five, FSSG expects supervised claims to carry owners and dates.
-
-Section eleven point five treats lab rules reading the as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point five, Bramwell Insurance Brokers will not accept supervised work without a written trail.
 
 ### 11.6 Extending
 
 Students may add a check for phone numbers, or for probability words outside the agreed scale. Each new check gets a test case.
 
-Section eleven point six develops supervised laboratory with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section eleven point six, FSSG expects supervised claims to carry owners and dates.
-
-Section eleven point six treats lab rules reading the as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point six, Bramwell Insurance Brokers will not accept supervised work without a written trail.
-
 ### 11.7 Holding is safe
 
 The script holds rather than releases when anything fails — a fail-closed design.
-
-Section eleven point seven develops supervised laboratory with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section eleven point seven, FSSG expects supervised claims to carry owners and dates.
-
-Section eleven point seven treats lab rules reading the as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point seven, Bramwell Insurance Brokers will not accept supervised work without a written trail.
-
-Section eleven point seven fails closed if supervised evidence is missing rather than guessing.
 
 ### 11.8 Lab report
 
 Record the first run, the fix, the second run and one proposed extension with its test case.
 
-Section eleven point eight develops supervised laboratory with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section eleven point eight, FSSG expects supervised claims to carry owners and dates.
-
-Section eleven point eight treats lab rules reading the as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point eight, Bramwell Insurance Brokers will not accept supervised work without a written trail.
-
 ### 11.9 Supervisor sign-off
 
 The supervisor signs only after reading the corrected brief.
-
-Section eleven point nine develops supervised laboratory with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section eleven point nine, FSSG expects supervised claims to carry owners and dates.
-
-Section eleven point nine treats lab rules reading the as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point nine, Bramwell Insurance Brokers will not accept supervised work without a written trail.
-
-Section eleven point nine fails closed if supervised evidence is missing rather than guessing.
 
 ### Running in practice
 
@@ -1624,107 +890,37 @@ You will (1) assemble a CTI practice portfolio; (2) reflect on growth and gaps; 
 
 Requirements list; weekly routine and ticket samples (sanitised); triage scoring with a review; the fraud case report; a control request with verification; a management report; the improvement log; the lab outputs.
 
-Section twelve point one develops practice portfolio and final review with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section twelve point one, FSSG expects practice claims to carry owners and dates.
-
-Section twelve point one treats portfolio contents sanitising reflection as testable only when evidence and ticket IDs are recorded.
-
 ### 12.2 Sanitising
 
 All portfolio items use synthetic or sanitised content. FSSG material appears only as GREEN summaries or not at all. Staff and clients are never named.
-
-Section twelve point two develops practice portfolio and final review with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section twelve point two, FSSG expects practice claims to carry owners and dates.
-
-Section twelve point two treats portfolio contents sanitising reflection as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point two, Bramwell Insurance Brokers will not accept practice work without a written trail.
 
 ### 12.3 Reflection
 
 What changed at BIB because of CTI? Call-back verification, MFA for remote email, lookalike monitoring. What remains weak? Partner mailbox compromise, limited log retention.
 
-Section twelve point three develops practice portfolio and final review with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section twelve point three, FSSG expects practice claims to carry owners and dates.
-
-Section twelve point three treats portfolio contents sanitising reflection as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point three, Bramwell Insurance Brokers will not accept practice work without a written trail.
-
 ### 12.4 Next six months
 
 Extend lookalike monitoring to insurer partners; formalise FSSG feedback; train the IT manager as backup; review requirements with the new operations manager.
-
-Section twelve point four develops practice portfolio and final review with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section twelve point four, FSSG expects practice claims to carry owners and dates.
-
-Section twelve point four treats portfolio contents sanitising reflection as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point four, Bramwell Insurance Brokers will not accept practice work without a written trail.
 
 ### 12.5 Sustaining
 
 Document the routine, keep templates, schedule reviews and keep the manager's support by showing outcomes.
 
-Section twelve point five develops practice portfolio and final review with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section twelve point five, FSSG expects practice claims to carry owners and dates.
-
-Section twelve point five treats portfolio contents sanitising reflection as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point five, Bramwell Insurance Brokers will not accept practice work without a written trail.
-
 ### 12.6 Assessment
 
 The portfolio is assessed on safety, accuracy, usefulness and reflection, using the course rubric.
-
-Section twelve point six develops practice portfolio and final review with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section twelve point six, FSSG expects practice claims to carry owners and dates.
-
-Section twelve point six treats portfolio contents sanitising reflection as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point six, Bramwell Insurance Brokers will not accept practice work without a written trail.
 
 ### 12.7 Continuing learning
 
 Follow ATT&CK and TLP updates, attend FSSG meetings, read sector advisories and consider the technical or postgraduate courses.
 
-Section twelve point seven develops practice portfolio and final review with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section twelve point seven, FSSG expects practice claims to carry owners and dates.
-
-Section twelve point seven treats portfolio contents sanitising reflection as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point seven, Bramwell Insurance Brokers will not accept practice work without a written trail.
-
 ### 12.8 Mentoring
 
 Explaining the routine to a colleague confirms that it is documented well enough to survive absence.
 
-Section twelve point eight develops practice portfolio and final review with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section twelve point eight, FSSG expects practice claims to carry owners and dates.
-
-Section twelve point eight treats portfolio contents sanitising reflection as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point eight, Bramwell Insurance Brokers will not accept practice work without a written trail.
-
 ### 12.9 Celebrate
 
 Note concrete wins: a prevented payment, a blocked lookalike, an avoided outage.
-
-Section twelve point nine develops practice portfolio and final review with a Bramwell Insurance Brokers note Priya Nair can demo offline.
-
-Under section twelve point nine, FSSG expects practice claims to carry owners and dates.
-
-Section twelve point nine treats portfolio contents sanitising reflection as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point nine, Bramwell Insurance Brokers will not accept practice work without a written trail.
 
 ### Feedback from consumers
 

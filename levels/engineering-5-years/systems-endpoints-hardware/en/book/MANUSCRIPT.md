@@ -54,39 +54,17 @@ Mateo Rossi is an engineering student at the fictional Ardmore Institute of Tech
 
 Calculus studies how quantities change. If unwanted software accumulates on unmanaged PCs at a roughly steady rate, the number of affected PCs grows linearly with time; if one infected PC spreads problems to others on the same network, growth can become faster than linear. The derivative describes the rate at that moment.
 
-Section one point two develops calculus with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section one point two, Marta Silva expects calculus claims to carry owners and dates.
-
 ### 1.3 Functions of time
 
 Mateo models the share of PCs with leftover personal files as a function f(t) of days since the last manual clean-up. Fernhill's records suggest about three new cases per day across the network, so f grows by roughly one per cent of the fleet each day until staff intervene.
-
-Section one point three develops calculus with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section one point three, Marta Silva expects calculus claims to carry owners and dates.
 
 ### 1.4 Why rates matter for design
 
 A nightly restore resets f to zero every 24 hours. Instead of letting problems accumulate for weeks, the design limits exposure to a single day. Thinking in rates makes the benefit of frequent resets visible.
 
-Section one point four develops calculus with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section one point four, Marta Silva expects calculus claims to carry owners and dates.
-
-Section one point four treats the project behind the as testable only when evidence and ticket IDs are recorded.
-
 ### 1.5 Limits and approximation
 
 Real data are noisy; a smooth function is an approximation. Engineers use it to reason, then check it against measurements.
-
-Section one point five develops calculus with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section one point five, Marta Silva expects calculus claims to carry owners and dates.
-
-Section one point five treats the project behind the as testable only when evidence and ticket IDs are recorded.
-
-For section one point five, Fernhill Library Network will not accept calculus work without a written trail.
 
 ### Worked example
 
@@ -124,53 +102,21 @@ You will (1) use sets, logic and graphs to describe endpoint configurations; (2)
 
 The software allowed on a public PC forms a set A. The software actually executed during a week forms a set E. Anything in E but not in A, written E minus A, is unauthorised. This simple set difference is the core of application control, which Mateo will design later.
 
-Section two point one develops discrete mathematics with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section two point one, Marta Silva expects discrete claims to carry owners and dates.
-
 ### 2.2 Logic for requirements
 
 Requirements can be written as logical statements: "if a PC is public, then USB storage is disabled". Writing them precisely avoids ambiguity, such as whether staff PCs are included.
-
-Section two point two develops discrete mathematics with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section two point two, Marta Silva expects discrete claims to carry owners and dates.
-
-Section two point two treats sets of software logic as testable only when evidence and ticket IDs are recorded.
-
-For section two point two, Fernhill Library Network will not accept discrete work without a written trail.
 
 ### 2.3 Graphs
 
 Fernhill's network can be drawn as a graph: PCs, switches and servers are nodes; network links are edges. A graph shows which PCs can reach each other. If public PCs can reach staff laptops directly, a problem on one could affect the other.
 
-Section two point three develops discrete mathematics with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section two point three, Marta Silva expects discrete claims to carry owners and dates.
-
-Section two point three treats sets of software logic as testable only when evidence and ticket IDs are recorded.
-
 ### 2.4 Counting configurations
 
 With ten yes-or-no settings, there are 2 to the power 10, or 1,024, possible configurations. Only one is the approved baseline. Counting shows why drift is likely without automation: many ways to be wrong, one way to be right.
 
-Section two point four develops discrete mathematics with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section two point four, Marta Silva expects discrete claims to carry owners and dates.
-
-Section two point four treats sets of software logic as testable only when evidence and ticket IDs are recorded.
-
 ### 2.5 Proof habits
 
 Discrete mathematics trains careful reasoning: stating assumptions, checking edge cases and not generalising from a few examples.
-
-Section two point five develops discrete mathematics with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section two point five, Marta Silva expects discrete claims to carry owners and dates.
-
-Section two point five treats sets of software logic as testable only when evidence and ticket IDs are recorded.
-
-For section two point five, Fernhill Library Network will not accept discrete work without a written trail.
 
 ### Applying it to the project
 
@@ -212,53 +158,21 @@ You will (1) relate physical properties of hardware to security; (2) explain sto
 
 Data on solid-state drives and hard disks persist without power. Deleting a file usually removes only its index, not the data. This is why a patron's "deleted" CV may still be recoverable, and why Fernhill needs full restores and disk encryption rather than relying on users to delete files.
 
-Section three point one develops physics for computing with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section three point one, Marta Silva expects physics claims to carry owners and dates.
-
 ### 3.2 Memory and power
 
 Memory loses its contents when power is removed, but not instantly; this is one reason why encryption keys are protected while devices are running and why devices should lock or shut down when unattended.
-
-Section three point two develops physics for computing with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section three point two, Marta Silva expects physics claims to carry owners and dates.
-
-Section three point two treats storage persistence memory and as testable only when evidence and ticket IDs are recorded.
 
 ### 3.3 Physical disturbance
 
 Kim et al. (2014) showed that repeatedly accessing rows in DRAM can flip bits in neighbouring rows, a physical effect of densely packed memory cells. It shows that hardware behaviour can create security problems that software alone did not expect.
 
-Section three point three develops physics for computing with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section three point three, Marta Silva expects physics claims to carry owners and dates.
-
-Section three point three treats storage persistence memory and as testable only when evidence and ticket IDs are recorded.
-
 ### 3.4 Heat and reliability
 
 Heat shortens component life. Public PCs in small enclosures fail more often, which matters when planning reliability in chapter 32.
 
-Section three point four develops physics for computing with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section three point four, Marta Silva expects physics claims to carry owners and dates.
-
-Section three point four treats storage persistence memory and as testable only when evidence and ticket IDs are recorded.
-
-For section three point four, Fernhill Library Network will not accept physics work without a written trail.
-
 ### 3.5 Physical access
 
 Anyone at a public PC has physical access: they can attach devices, reboot or open firmware menus. Physical security and firmware settings matter as much as software.
-
-Section three point five develops physics for computing with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section three point five, Marta Silva expects physics claims to carry owners and dates.
-
-Section three point five treats storage persistence memory and as testable only when evidence and ticket IDs are recorded.
-
-For section three point five, Fernhill Library Network will not accept physics work without a written trail.
 
 ### Encryption and physical theft
 
@@ -300,59 +214,21 @@ You will (1) write small Python programs that read records and check conditions;
 
 Fernhill's 300 PCs cannot be checked by hand each day. Small programs that read configuration records and report problems make checks repeatable.
 
-Section four point one develops programming with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section four point one, Marta Silva expects programming claims to carry owners and dates.
-
-Section four point one treats why program variables and as testable only when evidence and ticket IDs are recorded.
-
-For section four point one, Fernhill Library Network will not accept programming work without a written trail.
-
 ### 4.2 Variables and types
 
 Settings come as text, numbers and true-or-false values. A program must compare like with like: "15" as text is not the number 15.
-
-Section four point two develops programming with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section four point two, Marta Silva expects programming claims to carry owners and dates.
-
-Section four point two treats why program variables and as testable only when evidence and ticket IDs are recorded.
-
-For section four point two, Fernhill Library Network will not accept programming work without a written trail.
 
 ### 4.3 Functions
 
 A function such as check(pc, requirements) returns a list of gaps. Writing it once and calling it for every PC avoids copying code.
 
-Section four point three develops programming with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section four point three, Marta Silva expects programming claims to carry owners and dates.
-
-Section four point three treats why program variables and as testable only when evidence and ticket IDs are recorded.
-
-For section four point three, Fernhill Library Network will not accept programming work without a written trail.
-
 ### 4.4 Testing with known answers
 
 Before running on real data, Mateo tests his function on two synthetic PCs: one that meets every requirement and one that fails exactly two. If the output matches, he trusts the function more.
 
-Section four point four develops programming with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section four point four, Marta Silva expects programming claims to carry owners and dates.
-
-Section four point four treats why program variables and as testable only when evidence and ticket IDs are recorded.
-
 ### 4.5 Standard library only
 
 The course labs use only Python's standard library, so they run on any machine and introduce no unreviewed code.
-
-Section four point five develops programming with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section four point five, Marta Silva expects programming claims to carry owners and dates.
-
-Section four point five treats why program variables and as testable only when evidence and ticket IDs are recorded.
-
-For section four point five, Fernhill Library Network will not accept programming work without a written trail.
 
 ### Reading code before running
 
@@ -400,63 +276,21 @@ You will (1) write clear engineering documents; (2) tailor communication to libr
 
 Marta needs technical detail; branch managers need to know what changes for patrons; the library board needs costs and benefits. One project, three kinds of document.
 
-Section five point one develops engineering communication with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section five point one, Marta Silva expects engineering claims to carry owners and dates.
-
-Section five point one treats audiences problem statements decision as testable only when evidence and ticket IDs are recorded.
-
-For section five point one, Fernhill Library Network will not accept engineering work without a written trail.
-
 ### 5.2 Problem statements
 
 Mateo writes a one-paragraph problem statement: personal files left on public PCs and unauthorised software, caused by PCs that keep changes indefinitely.
-
-Section five point two develops engineering communication with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section five point two, Marta Silva expects engineering claims to carry owners and dates.
-
-Section five point two treats audiences problem statements decision as testable only when evidence and ticket IDs are recorded.
-
-For section five point two, Fernhill Library Network will not accept engineering work without a written trail.
 
 ### 5.3 Decision records
 
 Each design decision is recorded with options, choice and reasons, so later readers understand why.
 
-Section five point three develops engineering communication with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section five point three, Marta Silva expects engineering claims to carry owners and dates.
-
-Section five point three treats audiences problem statements decision as testable only when evidence and ticket IDs are recorded.
-
-For section five point three, Fernhill Library Network will not accept engineering work without a written trail.
-
 ### 5.4 Plain language
 
 Avoid jargon with staff: say "the computer resets itself overnight" rather than "non-persistent image restore".
 
-Section five point four develops engineering communication with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section five point four, Marta Silva expects engineering claims to carry owners and dates.
-
-Section five point four treats audiences problem statements decision as testable only when evidence and ticket IDs are recorded.
-
-For section five point four, Fernhill Library Network will not accept engineering work without a written trail.
-
 ### 5.5 Diagrams
 
 A simple diagram of the nightly cycle helps everyone see the plan.
-
-Section five point five develops engineering communication with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section five point five, Marta Silva expects engineering claims to carry owners and dates.
-
-Section five point five treats audiences problem statements decision as testable only when evidence and ticket IDs are recorded.
-
-For section five point five, Fernhill Library Network will not accept engineering work without a written trail.
-
-Section five point five fails closed if engineering evidence is missing rather than guessing.
 
 ### Writing for the board
 
@@ -508,59 +342,21 @@ You will (1) use accumulation and integrals to estimate total exposure; (2) comp
 
 If f(t) is the number of PCs holding leftover personal data at time t, the area under f over a month estimates total exposure in PC-days. Integrals measure accumulation.
 
-Section six point one develops calculus ii with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section six point one, Marta Silva expects calculus claims to carry owners and dates.
-
-Section six point one treats accumulation manual clean-up nightly as testable only when evidence and ticket IDs are recorded.
-
 ### 6.2 Manual clean-up
 
 With three new cases a day and fortnightly clean-ups, f rises from 0 to about 42 and drops: each fortnight's area is a triangle of about (14 × 42) / 2 = 294 PC-days.
-
-Section six point two develops calculus ii with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section six point two, Marta Silva expects calculus claims to carry owners and dates.
-
-Section six point two treats accumulation manual clean-up nightly as testable only when evidence and ticket IDs are recorded.
-
-For section six point two, Fernhill Library Network will not accept calculus work without a written trail.
 
 ### 6.3 Nightly restore
 
 With nightly resets, each day's triangle is (1 × 3) / 2 = 1.5 PC-days, or 21 per fortnight, far smaller.
 
-Section six point three develops calculus ii with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section six point three, Marta Silva expects calculus claims to carry owners and dates.
-
-Section six point three treats accumulation manual clean-up nightly as testable only when evidence and ticket IDs are recorded.
-
-For section six point three, Fernhill Library Network will not accept calculus work without a written trail.
-
 ### 6.4 Comparing designs
 
 The ratio, about 14 to 1, quantifies the benefit. Engineers often compare designs by such areas: total exposure, total downtime or total cost.
 
-Section six point four develops calculus ii with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section six point four, Marta Silva expects calculus claims to carry owners and dates.
-
-Section six point four treats accumulation manual clean-up nightly as testable only when evidence and ticket IDs are recorded.
-
-For section six point four, Fernhill Library Network will not accept calculus work without a written trail.
-
 ### 6.5 Assumptions
 
 The estimate assumes steady arrival of cases and full removal at each reset. Chapter 28 tests the second assumption.
-
-Section six point five develops calculus ii with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section six point five, Marta Silva expects calculus claims to carry owners and dates.
-
-Section six point five treats accumulation manual clean-up nightly as testable only when evidence and ticket IDs are recorded.
-
-For section six point five, Fernhill Library Network will not accept calculus work without a written trail.
 
 ### Checking with data
 
@@ -612,14 +408,6 @@ You will (1) model independent failures with the binomial distribution; (2) inte
 
 Even a reliable restore job can fail. If each PC's nightly restore fails independently with probability p, the number of failures among n PCs follows a binomial distribution.
 
-Section seven point one develops probability and statistics with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section seven point one, Marta Silva expects probability claims to carry owners and dates.
-
-Section seven point one treats failure probability reading the as testable only when evidence and ticket IDs are recorded.
-
-For section seven point one, Fernhill Library Network will not accept probability work without a written trail.
-
 ### Lab — Lab — restore failures
 
 ```python
@@ -645,33 +433,13 @@ expected failures per night 1.2
 
 With 300 PCs and p = 0.004, the expected number of failures per night is 1.2. The chance of at least one failure is 0.700, of at least three 0.120, and of at least five 0.008.
 
-Section seven point two develops probability and statistics with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section seven point two, Marta Silva expects probability claims to carry owners and dates.
-
-Section seven point two treats failure probability reading the as testable only when evidence and ticket IDs are recorded.
-
 ### 7.3 Operational meaning
 
 Most nights at least one PC will fail to restore, so the design needs an alert and a simple fix. Five or more failures would be very unusual and suggest a shared cause, such as a bad image.
 
-Section seven point three develops probability and statistics with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section seven point three, Marta Silva expects probability claims to carry owners and dates.
-
-Section seven point three treats failure probability reading the as testable only when evidence and ticket IDs are recorded.
-
 ### 7.4 Independence
 
 The binomial model assumes failures are independent. A network outage would break that assumption, causing many failures together.
-
-Section seven point four develops probability and statistics with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section seven point four, Marta Silva expects probability claims to carry owners and dates.
-
-Section seven point four treats failure probability reading the as testable only when evidence and ticket IDs are recorded.
-
-For section seven point four, Fernhill Library Network will not accept probability work without a written trail.
 
 ### Measuring p
 
@@ -723,61 +491,21 @@ You will (1) describe processors, memory, firmware and boot; (2) explain privile
 
 A PC has a processor, memory, storage, firmware (UEFI) and peripherals. Firmware starts first, initialises hardware and loads the bootloader, which loads the operating system.
 
-Section eight point one develops computer architecture with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section eight point one, Marta Silva expects computer claims to carry owners and dates.
-
-Section eight point one treats components privilege levels speculative as testable only when evidence and ticket IDs are recorded.
-
-For section eight point one, Fernhill Library Network will not accept computer work without a written trail.
-
 ### 8.2 Privilege levels
 
 Processors separate privileged kernel code from user code. User programs cannot directly change kernel memory; this separation underpins operating system security.
-
-Section eight point two develops computer architecture with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section eight point two, Marta Silva expects computer claims to carry owners and dates.
-
-Section eight point two treats components privilege levels speculative as testable only when evidence and ticket IDs are recorded.
-
-For section eight point two, Fernhill Library Network will not accept computer work without a written trail.
 
 ### 8.3 Speculative execution
 
 Kocher et al. (2019) showed that processors executing instructions speculatively can leak data across these boundaries. Vendors responded with microcode and operating system updates, which public PCs must receive.
 
-Section eight point three develops computer architecture with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section eight point three, Marta Silva expects computer claims to carry owners and dates.
-
-Section eight point three treats components privilege levels speculative as testable only when evidence and ticket IDs are recorded.
-
-For section eight point three, Fernhill Library Network will not accept computer work without a written trail.
-
 ### 8.4 Trusted Platform Module
 
 Many PCs include a TPM, a small chip that stores keys and records measurements of boot components. It supports disk encryption and boot integrity checks.
 
-Section eight point four develops computer architecture with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section eight point four, Marta Silva expects computer claims to carry owners and dates.
-
-Section eight point four treats components privilege levels speculative as testable only when evidence and ticket IDs are recorded.
-
-For section eight point four, Fernhill Library Network will not accept computer work without a written trail.
-
 ### 8.5 Firmware settings
 
 UEFI settings control boot order, Secure Boot and passwords. If patrons can change boot order, they can start other operating systems.
-
-Section eight point five develops computer architecture with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section eight point five, Marta Silva expects computer claims to carry owners and dates.
-
-Section eight point five treats components privilege levels speculative as testable only when evidence and ticket IDs are recorded.
-
-For section eight point five, Fernhill Library Network will not accept computer work without a written trail.
 
 ### Firmware as a target
 
@@ -827,61 +555,21 @@ You will (1) structure larger programs; (2) use dictionaries, files and hashing;
 
 Dictionaries map names to values, such as file paths to digests. Lists hold ordered records. Most of Mateo's checks use both.
 
-Section nine point one develops programming ii with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section nine point one, Marta Silva expects programming claims to carry owners and dates.
-
-Section nine point one treats data structures hashing files as testable only when evidence and ticket IDs are recorded.
-
-For section nine point one, Fernhill Library Network will not accept programming work without a written trail.
-
 ### 9.2 Hashing
 
 A cryptographic hash such as SHA-256 produces a fixed-length digest; any change to a file changes its digest. Comparing digests is a fast way to detect changes.
-
-Section nine point two develops programming ii with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section nine point two, Marta Silva expects programming claims to carry owners and dates.
-
-Section nine point two treats data structures hashing files as testable only when evidence and ticket IDs are recorded.
-
-For section nine point two, Fernhill Library Network will not accept programming work without a written trail.
 
 ### 9.3 Files and paths
 
 Programs read configuration and manifest files. Paths must be handled carefully so that a check reads the intended file.
 
-Section nine point three develops programming ii with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section nine point three, Marta Silva expects programming claims to carry owners and dates.
-
-Section nine point three treats data structures hashing files as testable only when evidence and ticket IDs are recorded.
-
-For section nine point three, Fernhill Library Network will not accept programming work without a written trail.
-
 ### 9.4 Errors
 
 If a file is missing, the program should report it, not crash or skip silently. A missing file can itself be a finding.
 
-Section nine point four develops programming ii with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section nine point four, Marta Silva expects programming claims to carry owners and dates.
-
-Section nine point four treats data structures hashing files as testable only when evidence and ticket IDs are recorded.
-
-For section nine point four, Fernhill Library Network will not accept programming work without a written trail.
-
 ### 9.5 Modules
 
 Splitting code into modules, such as one for reading data and one for checks, makes testing easier.
-
-Section nine point five develops programming ii with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section nine point five, Marta Silva expects programming claims to carry owners and dates.
-
-Section nine point five treats data structures hashing files as testable only when evidence and ticket IDs are recorded.
-
-For section nine point five, Fernhill Library Network will not accept programming work without a written trail.
 
 ### Building the manifest
 
@@ -933,61 +621,21 @@ You will (1) apply professional ethics to endpoint work; (2) protect patron priv
 
 Engineers owe care to the public. At Fernhill, the public are patrons, many of whom rely on library PCs for job applications and benefits.
 
-Section ten point one develops engineering ethics and safety with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section ten point one, Marta Silva expects engineering claims to carry owners and dates.
-
-Section ten point one treats professional duties privacy accessibility as testable only when evidence and ticket IDs are recorded.
-
-For section ten point one, Fernhill Library Network will not accept engineering work without a written trail.
-
 ### 10.2 Privacy
 
 The project aims to stop personal data being left behind. It must not create new privacy risks, such as logging what patrons browse. Logs record system events, not content.
-
-Section ten point two develops engineering ethics and safety with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section ten point two, Marta Silva expects engineering claims to carry owners and dates.
-
-Section ten point two treats professional duties privacy accessibility as testable only when evidence and ticket IDs are recorded.
 
 ### 10.3 Accessibility
 
 Some patrons use screen readers and magnifiers. A strict design that blocks these tools would harm them. Requirements must include accessibility.
 
-Section ten point three develops engineering ethics and safety with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section ten point three, Marta Silva expects engineering claims to carry owners and dates.
-
-Section ten point three treats professional duties privacy accessibility as testable only when evidence and ticket IDs are recorded.
-
-For section ten point three, Fernhill Library Network will not accept engineering work without a written trail.
-
 ### 10.4 Authorisation
 
 Mateo works only on Fernhill systems with Marta's written agreement and tests on lab PCs, not in-use machines.
 
-Section ten point four develops engineering ethics and safety with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section ten point four, Marta Silva expects engineering claims to carry owners and dates.
-
-Section ten point four treats professional duties privacy accessibility as testable only when evidence and ticket IDs are recorded.
-
-For section ten point four, Fernhill Library Network will not accept engineering work without a written trail.
-
 ### 10.5 Honesty
 
 Reports state limitations and do not overclaim security.
-
-Section ten point five develops engineering ethics and safety with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section ten point five, Marta Silva expects engineering claims to carry owners and dates.
-
-Section ten point five treats professional duties privacy accessibility as testable only when evidence and ticket IDs are recorded.
-
-For section ten point five, Fernhill Library Network will not accept engineering work without a written trail.
-
-Section ten point five fails closed if engineering evidence is missing rather than guessing.
 
 ### Data minimisation
 
@@ -1043,57 +691,21 @@ You will (1) describe the networks public PCs use; (2) explain segmentation and 
 
 Each Fernhill branch has a switch connecting public PCs, staff laptops, printers and a router to the internet. Public PCs use DNS, HTTPS for browsing and a print protocol to reach the print server.
 
-Section eleven point one develops networks and protocols with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section eleven point one, Marta Silva expects networks claims to carry owners and dates.
-
-Section eleven point one treats branch networks segmentation old as testable only when evidence and ticket IDs are recorded.
-
 ### 11.2 Segmentation
 
 Placing public PCs on their own network segment, with firewall rules allowing only internet, printing and the management server, prevents them from reaching staff devices. This answers the design question from chapter 2.
-
-Section eleven point two develops networks and protocols with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section eleven point two, Marta Silva expects networks claims to carry owners and dates.
-
-Section eleven point two treats branch networks segmentation old as testable only when evidence and ticket IDs are recorded.
 
 ### 11.3 Old protocols
 
 SMB version 1, an old file-sharing protocol, has known weaknesses and should be disabled on all endpoints, as baselines from CIS and Microsoft recommend.
 
-Section eleven point three develops networks and protocols with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section eleven point three, Marta Silva expects networks claims to carry owners and dates.
-
-Section eleven point three treats branch networks segmentation old as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point three, Fernhill Library Network will not accept networks work without a written trail.
-
 ### 11.4 Management traffic
 
 The restore and update system needs a management connection from each PC to a central server. This traffic must be authenticated and encrypted.
 
-Section eleven point four develops networks and protocols with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section eleven point four, Marta Silva expects networks claims to carry owners and dates.
-
-Section eleven point four treats branch networks segmentation old as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point four, Fernhill Library Network will not accept networks work without a written trail.
-
 ### 11.5 Logging
 
 Network devices can log connections, helping detect if a public PC tries to reach unexpected addresses.
-
-Section eleven point five develops networks and protocols with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section eleven point five, Marta Silva expects networks claims to carry owners and dates.
-
-Section eleven point five treats branch networks segmentation old as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point five, Fernhill Library Network will not accept networks work without a written trail.
 
 ### Name resolution and filtering
 
@@ -1139,59 +751,21 @@ You will (1) explain processes, users, permissions and services; (2) describe ho
 
 Operating systems run programs as users with permissions. A patron session should run as a standard user, not an administrator, so it cannot change system files or install system-wide software.
 
-Section twelve point one develops operating systems with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twelve point one, Marta Silva expects operating claims to carry owners and dates.
-
-Section twelve point one treats users and permissions services as testable only when evidence and ticket IDs are recorded.
-
 ### 12.2 Services
 
 Background services run continuously. Unneeded services increase attack surface; NIST SP 800-123 recommends removing or disabling unnecessary services on servers, and the same principle applies to endpoints.
-
-Section twelve point two develops operating systems with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twelve point two, Marta Silva expects operating claims to carry owners and dates.
-
-Section twelve point two treats users and permissions services as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point two, Fernhill Library Network will not accept operating work without a written trail.
 
 ### 12.3 Kernel protection
 
 The kernel enforces separation between processes. The Linux kernel self-protection project documents techniques that make the kernel harder to misuse; Windows has comparable features in its security baselines.
 
-Section twelve point three develops operating systems with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twelve point three, Marta Silva expects operating claims to carry owners and dates.
-
-Section twelve point three treats users and permissions services as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point three, Fernhill Library Network will not accept operating work without a written trail.
-
 ### 12.4 Updates
 
 Operating system updates fix vulnerabilities. Public PCs must receive them even though they reset nightly, so the golden image itself must be updated.
 
-Section twelve point four develops operating systems with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twelve point four, Marta Silva expects operating claims to carry owners and dates.
-
-Section twelve point four treats users and permissions services as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point four, Fernhill Library Network will not accept operating work without a written trail.
-
 ### 12.5 Logs
 
 The OS records events such as logons, installations and errors, which feed monitoring.
-
-Section twelve point five develops operating systems with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twelve point five, Marta Silva expects operating claims to carry owners and dates.
-
-Section twelve point five treats users and permissions services as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point five, Fernhill Library Network will not accept operating work without a written trail.
 
 ### Least functionality
 
@@ -1239,61 +813,21 @@ You will (1) design records for inventory, restore results and events; (2) choos
 
 The project needs an inventory of PCs (asset tag, branch, model, firmware version), nightly restore results (PC, date, success, duration) and security events (PC, time, event type).
 
-Section thirteen point one develops data systems with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirteen point one, Marta Silva expects data claims to carry owners and dates.
-
-Section thirteen point one treats records needed keys privacy as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point one, Fernhill Library Network will not accept data work without a written trail.
-
 ### 13.2 Keys
 
 Asset tags uniquely identify PCs even when hostnames change, so they are used as keys.
-
-Section thirteen point two develops data systems with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirteen point two, Marta Silva expects data claims to carry owners and dates.
-
-Section thirteen point two treats records needed keys privacy as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point two, Fernhill Library Network will not accept data work without a written trail.
 
 ### 13.3 Privacy
 
 Records never store patron names or browsing. Session records count logons, not identities.
 
-Section thirteen point three develops data systems with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirteen point three, Marta Silva expects data claims to carry owners and dates.
-
-Section thirteen point three treats records needed keys privacy as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point three, Fernhill Library Network will not accept data work without a written trail.
-
 ### 13.4 Retention
 
 Restore and event records are kept for one year, enough to analyse trends; older records are deleted.
 
-Section thirteen point four develops data systems with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirteen point four, Marta Silva expects data claims to carry owners and dates.
-
-Section thirteen point four treats records needed keys privacy as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point four, Fernhill Library Network will not accept data work without a written trail.
-
 ### 13.5 Queries
 
 Typical questions: which PCs failed restore last night, which branch has the slowest restores, which firmware versions are in use.
-
-Section thirteen point five develops data systems with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirteen point five, Marta Silva expects data claims to carry owners and dates.
-
-Section thirteen point five treats records needed keys privacy as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point five, Fernhill Library Network will not accept data work without a written trail.
 
 ### Testing queries
 
@@ -1353,63 +887,21 @@ You will (1) manage code with version control and reviews; (2) write requirement
 
 All scripts, image definitions and configuration files live in a version-controlled repository, so every change is recorded with author and reason.
 
-Section fourteen point one develops software engineering with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section fourteen point one, Marta Silva expects software claims to carry owners and dates.
-
-Section fourteen point one treats version control reviews requirements as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point one, Fernhill Library Network will not accept software work without a written trail.
-
 ### 14.2 Reviews
 
 Changes are reviewed by another person before use, catching mistakes early.
-
-Section fourteen point two develops software engineering with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section fourteen point two, Marta Silva expects software claims to carry owners and dates.
-
-Section fourteen point two treats version control reviews requirements as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point two, Fernhill Library Network will not accept software work without a written trail.
-
-Section fourteen point two fails closed if software evidence is missing rather than guessing.
 
 ### 14.3 Requirements
 
 Requirements are numbered and testable, such as "R3: USB storage devices are blocked on public PCs".
 
-Section fourteen point three develops software engineering with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section fourteen point three, Marta Silva expects software claims to carry owners and dates.
-
-Section fourteen point three treats version control reviews requirements as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point three, Fernhill Library Network will not accept software work without a written trail.
-
 ### 14.4 Tests
 
 Each requirement has a test, run on a lab PC before an image is released.
 
-Section fourteen point four develops software engineering with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section fourteen point four, Marta Silva expects software claims to carry owners and dates.
-
-Section fourteen point four treats version control reviews requirements as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point four, Fernhill Library Network will not accept software work without a written trail.
-
 ### 14.5 Releases
 
 New golden images are released in stages: lab PC, one branch, then all branches, so problems affect few PCs first.
-
-Section fourteen point five develops software engineering with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section fourteen point five, Marta Silva expects software claims to carry owners and dates.
-
-Section fourteen point five treats version control reviews requirements as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point five, Fernhill Library Network will not accept software work without a written trail.
 
 ### Change history in practice
 
@@ -1461,63 +953,21 @@ You will (1) apply confidentiality, integrity and availability to public PCs; (2
 
 Confidentiality: patrons' data must not be left for others. Integrity: PCs must run only approved software and settings. Availability: PCs must be ready when the library opens.
 
-Section fifteen point one develops security fundamentals with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section fifteen point one, Marta Silva expects security claims to carry owners and dates.
-
-Section fifteen point one treats goals threats principles controls as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point one, Fernhill Library Network will not accept security work without a written trail.
-
 ### 15.2 Threats
 
 Threats include careless users, curious users, malicious software from websites or USB devices and equipment failures.
-
-Section fifteen point two develops security fundamentals with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section fifteen point two, Marta Silva expects security claims to carry owners and dates.
-
-Section fifteen point two treats goals threats principles controls as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point two, Fernhill Library Network will not accept security work without a written trail.
 
 ### 15.3 Principles
 
 Saltzer and Schroeder (1975) set out design principles including least privilege, fail-safe defaults and economy of mechanism. A public PC that resets to a minimal, locked image applies all three.
 
-Section fifteen point three develops security fundamentals with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section fifteen point three, Marta Silva expects security claims to carry owners and dates.
-
-Section fifteen point three treats goals threats principles controls as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point three, Fernhill Library Network will not accept security work without a written trail.
-
 ### 15.4 Controls
 
 CIS Controls v8 groups safeguards such as inventory, secure configuration and data recovery, each relevant to the project.
 
-Section fifteen point four develops security fundamentals with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section fifteen point four, Marta Silva expects security claims to carry owners and dates.
-
-Section fifteen point four treats goals threats principles controls as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point four, Fernhill Library Network will not accept security work without a written trail.
-
 ### 15.5 Risk
 
 Risk combines likelihood and impact; chapter 23 ranks scenarios.
-
-Section fifteen point five develops security fundamentals with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section fifteen point five, Marta Silva expects security claims to carry owners and dates.
-
-Section fifteen point five treats goals threats principles controls as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point five, Fernhill Library Network will not accept security work without a written trail.
-
-Section fifteen point five fails closed if security evidence is missing rather than guessing.
 
 ### Threats in plain words
 
@@ -1573,63 +1023,21 @@ You will (1) define system boundaries and interfaces; (2) manage requirements th
 
 The system includes public PCs, the golden image, the management server, the restore mechanism and monitoring. Patron personal devices and the internet are outside.
 
-Section sixteen point one develops systems engineering with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section sixteen point one, Marta Silva expects systems claims to carry owners and dates.
-
-Section sixteen point one treats system boundary interfaces life as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point one, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 16.2 Interfaces
 
 Interfaces include the PC-to-server management channel, the print service and the network segment rules.
-
-Section sixteen point two develops systems engineering with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section sixteen point two, Marta Silva expects systems claims to carry owners and dates.
-
-Section sixteen point two treats system boundary interfaces life as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point two, Fernhill Library Network will not accept systems work without a written trail.
 
 ### 16.3 Life cycle
 
 Requirements are defined, designed, implemented, verified, operated and retired. Each stage has outputs.
 
-Section sixteen point three develops systems engineering with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section sixteen point three, Marta Silva expects systems claims to carry owners and dates.
-
-Section sixteen point three treats system boundary interfaces life as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point three, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 16.4 Configuration management
 
 NIST SP 800-128 describes security-focused configuration management: baselines, change control and monitoring. The golden image is the baseline.
 
-Section sixteen point four develops systems engineering with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section sixteen point four, Marta Silva expects systems claims to carry owners and dates.
-
-Section sixteen point four treats system boundary interfaces life as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point four, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 16.5 Verification planning
 
 Each requirement gets a verification method: test, inspection or analysis.
-
-Section sixteen point five develops systems engineering with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section sixteen point five, Marta Silva expects systems claims to carry owners and dates.
-
-Section sixteen point five treats system boundary interfaces life as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point five, Fernhill Library Network will not accept systems work without a written trail.
-
-Section sixteen point five fails closed if systems evidence is missing rather than guessing.
 
 ### Ownership of components
 
@@ -1685,61 +1093,21 @@ You will (1) describe feedback loops; (2) apply them to configuration and restor
 
 A feedback loop measures a system's state, compares it with a target and acts to reduce the difference. A thermostat is the classic example.
 
-Section seventeen point one develops control and feedback basics with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section seventeen point one, Marta Silva expects control claims to carry owners and dates.
-
-Section seventeen point one treats feedback configuration as control as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point one, Fernhill Library Network will not accept control work without a written trail.
-
 ### 17.2 Configuration as control
 
 The nightly restore is a feedback loop: measure (compare with the golden image), compare (detect differences) and act (restore).
-
-Section seventeen point two develops control and feedback basics with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section seventeen point two, Marta Silva expects control claims to carry owners and dates.
-
-Section seventeen point two treats feedback configuration as control as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point two, Fernhill Library Network will not accept control work without a written trail.
 
 ### 17.3 Delay
 
 Loops with long delays let problems grow before correction. Fortnightly manual clean-ups had a 14-day delay; nightly restore has one day.
 
-Section seventeen point three develops control and feedback basics with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section seventeen point three, Marta Silva expects control claims to carry owners and dates.
-
-Section seventeen point three treats feedback configuration as control as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point three, Fernhill Library Network will not accept control work without a written trail.
-
 ### 17.4 Over-correction
 
 Aggressive loops can cause disruption, such as restoring during a patron's session. The restore runs after closing time to avoid this.
 
-Section seventeen point four develops control and feedback basics with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section seventeen point four, Marta Silva expects control claims to carry owners and dates.
-
-Section seventeen point four treats feedback configuration as control as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point four, Fernhill Library Network will not accept control work without a written trail.
-
 ### 17.5 Monitoring the loop
 
 The loop itself must be monitored: if restores fail silently, the system drifts.
-
-Section seventeen point five develops control and feedback basics with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section seventeen point five, Marta Silva expects control claims to carry owners and dates.
-
-Section seventeen point five treats feedback configuration as control as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point five, Fernhill Library Network will not accept control work without a written trail.
 
 ### Stability
 
@@ -1795,65 +1163,21 @@ You will (1) design layered controls for public PCs; (2) place controls at firmw
 
 Firmware: Secure Boot and firmware password. OS: standard users, minimal services, disk encryption. Application: allowlist. Data: nightly restore of patron area. Network: segmentation. Monitoring: event logs and restore alerts.
 
-Section eighteen point one develops security architecture with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section eighteen point one, Marta Silva expects security claims to carry owners and dates.
-
-Section eighteen point one treats layers defence in depth as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point one, Fernhill Library Network will not accept security work without a written trail.
-
 ### 18.2 Defence in depth
 
 If one layer fails, others still protect. If the allowlist misses a program, the nightly restore removes it.
-
-Section eighteen point two develops security architecture with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section eighteen point two, Marta Silva expects security claims to carry owners and dates.
-
-Section eighteen point two treats layers defence in depth as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point two, Fernhill Library Network will not accept security work without a written trail.
 
 ### 18.3 Firmware resilience
 
 NIST SP 800-193 sets principles for protecting, detecting and recovering firmware; SP 800-147 gives BIOS protection guidelines for update authentication.
 
-Section eighteen point three develops security architecture with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section eighteen point three, Marta Silva expects security claims to carry owners and dates.
-
-Section eighteen point three treats layers defence in depth as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point three, Fernhill Library Network will not accept security work without a written trail.
-
 ### 18.4 Application control
 
 Microsoft documents application control for Windows, allowing only approved software to run.
 
-Section eighteen point four develops security architecture with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section eighteen point four, Marta Silva expects security claims to carry owners and dates.
-
-Section eighteen point four treats layers defence in depth as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point four, Fernhill Library Network will not accept security work without a written trail.
-
-Section eighteen point four fails closed if security evidence is missing rather than guessing.
-
 ### 18.5 Trade-offs
 
 More layers add complexity and maintenance. The design keeps each layer simple.
-
-Section eighteen point five develops security architecture with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section eighteen point five, Marta Silva expects security claims to carry owners and dates.
-
-Section eighteen point five treats layers defence in depth as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point five, Fernhill Library Network will not accept security work without a written trail.
-
-Section eighteen point five fails closed if security evidence is missing rather than guessing.
 
 ### Mapping to standards
 
@@ -1905,63 +1229,21 @@ You will (1) explain authentication for patrons and staff; (2) describe encrypti
 
 Patrons log in with library card numbers via a session manager; the PC itself runs a standard local account.
 
-Section nineteen point one develops identity and cryptography with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section nineteen point one, Marta Silva expects identity claims to carry owners and dates.
-
-Section nineteen point one treats patron sessions staff access as testable only when evidence and ticket IDs are recorded.
-
-For section nineteen point one, Fernhill Library Network will not accept identity work without a written trail.
-
 ### 19.2 Staff access
 
 Staff administration uses separate named accounts with multi-factor authentication.
-
-Section nineteen point two develops identity and cryptography with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section nineteen point two, Marta Silva expects identity claims to carry owners and dates.
-
-Section nineteen point two treats patron sessions staff access as testable only when evidence and ticket IDs are recorded.
-
-For section nineteen point two, Fernhill Library Network will not accept identity work without a written trail.
-
-Section nineteen point two fails closed if identity evidence is missing rather than guessing.
 
 ### 19.3 Encryption at rest
 
 Disk encryption, supported by the TPM, protects data if a PC or disk is stolen. Microsoft documents BitLocker for Windows.
 
-Section nineteen point three develops identity and cryptography with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section nineteen point three, Marta Silva expects identity claims to carry owners and dates.
-
-Section nineteen point three treats patron sessions staff access as testable only when evidence and ticket IDs are recorded.
-
-For section nineteen point three, Fernhill Library Network will not accept identity work without a written trail.
-
 ### 19.4 Encryption in transit
 
 Management traffic uses TLS with certificates so PCs talk only to the genuine server.
 
-Section nineteen point four develops identity and cryptography with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section nineteen point four, Marta Silva expects identity claims to carry owners and dates.
-
-Section nineteen point four treats patron sessions staff access as testable only when evidence and ticket IDs are recorded.
-
-For section nineteen point four, Fernhill Library Network will not accept identity work without a written trail.
-
 ### 19.5 Signatures
 
 Golden images and updates are signed; PCs verify signatures before applying them, as SP 800-147 recommends for firmware updates.
-
-Section nineteen point five develops identity and cryptography with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section nineteen point five, Marta Silva expects identity claims to carry owners and dates.
-
-Section nineteen point five treats patron sessions staff access as testable only when evidence and ticket IDs are recorded.
-
-For section nineteen point five, Fernhill Library Network will not accept identity work without a written trail.
 
 ### Key management
 
@@ -2021,61 +1303,21 @@ You will (1) describe the public PC service as an engineering problem; (2) ident
 
 Fernhill's 300 public PCs serve about 2,000 sessions a day. Staff are librarians, not IT specialists. The IT team is Marta and one technician. Budget is limited.
 
-Section twenty point one develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty point one, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty point one treats context stakeholders constraints objectives as testable only when evidence and ticket IDs are recorded.
-
-For section twenty point one, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 20.2 Stakeholders
 
 Patrons want working, private PCs. Librarians want fewer problems to handle. Marta wants less manual work. The board wants cost control and no data incidents.
-
-Section twenty point two develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty point two, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty point two treats context stakeholders constraints objectives as testable only when evidence and ticket IDs are recorded.
-
-For section twenty point two, Fernhill Library Network will not accept systems work without a written trail.
 
 ### 20.3 Constraints
 
 Existing hardware must be reused; changes must not disrupt opening hours; accessibility tools must work.
 
-Section twenty point three develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty point three, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty point three treats context stakeholders constraints objectives as testable only when evidence and ticket IDs are recorded.
-
-For section twenty point three, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 20.4 Objectives
 
 O1: no patron data persists beyond one day. O2: only approved software runs. O3: PCs are ready at opening. O4: manual effort falls.
 
-Section twenty point four develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty point four, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty point four treats context stakeholders constraints objectives as testable only when evidence and ticket IDs are recorded.
-
-For section twenty point four, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 20.5 Standards context
 
 The design draws on CIS Benchmarks, Microsoft security baselines, NIST SP 800-123 and SP 800-40r4.
-
-Section twenty point five develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty point five, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty point five treats context stakeholders constraints objectives as testable only when evidence and ticket IDs are recorded.
-
-For section twenty point five, Fernhill Library Network will not accept systems work without a written trail.
 
 ### Success measures
 
@@ -2131,61 +1373,21 @@ You will (1) write security requirements from objectives; (2) make them testable
 
 Each objective yields requirements. O1 yields R4 nightly restore of the patron area and R8 staff disk encryption. O2 yields R5 application control in enforce mode and R3 USB storage blocked.
 
-Section twenty-one point one develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-one point one, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty-one point one treats from objectives to requirements as testable only when evidence and ticket IDs are recorded.
-
 ### 21.2 Boot integrity
 
 R1 Secure Boot enabled and R2 firmware password set protect the restore mechanism itself.
-
-Section twenty-one point two develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-one point two, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty-one point two treats from objectives to requirements as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-one point two, Fernhill Library Network will not accept systems work without a written trail.
 
 ### 21.3 Operations
 
 R6 automatic logoff after 15 minutes idle; R7 remote logging of security events; R9 alert on restore failure.
 
-Section twenty-one point three develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-one point three, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty-one point three treats from objectives to requirements as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-one point three, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 21.4 Accessibility
 
 R10 approved accessibility tools available on every PC.
 
-Section twenty-one point four develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-one point four, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty-one point four treats from objectives to requirements as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-one point four, Fernhill Library Network will not accept systems work without a written trail.
-
-Section twenty-one point four fails closed if systems evidence is missing rather than guessing.
-
 ### 21.5 Priorities
 
 R1, R4 and R5 are must-haves; R9 and R10 are must-haves for safe operation and fairness.
-
-Section twenty-one point five develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-one point five, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty-one point five treats from objectives to requirements as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-one point five, Fernhill Library Network will not accept systems work without a written trail.
 
 ### Requirement attributes
 
@@ -2241,23 +1443,9 @@ You will (1) model the boot chain and measured components; (2) compare observed 
 
 Firmware verifies the bootloader, which verifies the kernel; the kernel loads an initial file system and then applies the kiosk policy. Each component can be measured by its digest.
 
-Section twenty-two point one develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-two point one, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty-two point one treats boot chain model manifest as testable only when evidence and ticket IDs are recorded.
-
 ### 22.2 Manifest
 
 The golden image release includes a manifest of expected digests for each component.
-
-Section twenty-two point two develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-two point two, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty-two point two treats boot chain model manifest as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-two point two, Fernhill Library Network will not accept systems work without a written trail.
 
 ### Lab — Lab — boot measurements
 
@@ -2287,35 +1475,13 @@ kiosk-policy  MISMATCH  9ad757800d10
 
 Four components match the manifest; the kiosk policy does not. One of five components differs.
 
-Section twenty-two point three develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-two point three, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty-two point three treats boot chain model manifest as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-two point three, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 22.4 Interpreting
 
 The mismatch shows the PC is running policy version 2.0, not 2.1. Investigation finds the PC was offline during the update. The fix is to reapply the release, not to treat the PC as compromised.
 
-Section twenty-two point four develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-two point four, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty-two point four treats boot chain model manifest as testable only when evidence and ticket IDs are recorded.
-
 ### 22.5 Data model
 
 Measurement results are stored with PC, date, component and status.
-
-Section twenty-two point five develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-two point five, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty-two point five treats boot chain model manifest as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-two point five, Fernhill Library Network will not accept systems work without a written trail.
 
 ### Measured boot and attestation
 
@@ -2367,14 +1533,6 @@ You will (1) list misuse and failure scenarios; (2) rank by likelihood and impac
 
 Mateo lists seven scenarios, from personal files left behind to a staff laptop lost unencrypted, rating likelihood and impact from 1 to 5.
 
-Section twenty-three point one develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-three point one, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty-three point one treats scenarios reading the ranking as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-three point one, Fernhill Library Network will not accept systems work without a written trail.
-
 ### Lab — Lab — scenario ranking
 
 ```python
@@ -2402,33 +1560,13 @@ Run with `python3 lab_scenarios.py`. Verified output:
 
 Top: unauthorised software installed by a patron (16), personal files left behind (15), malware via USB (12), silent restore failure (10). Firmware update failure scores 8, boot settings changed 6, lost staff laptop 5.
 
-Section twenty-three point two develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-three point two, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty-three point two treats scenarios reading the ranking as testable only when evidence and ticket IDs are recorded.
-
 ### 23.3 Linking to requirements
 
 Software installs map to R5; files to R4; USB to R3; silent restore failure to R9; firmware update failure to firmware resilience; boot settings to R2; staff laptop to R8.
 
-Section twenty-three point three develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-three point three, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty-three point three treats scenarios reading the ranking as testable only when evidence and ticket IDs are recorded.
-
 ### 23.4 Coverage
 
 Every scenario has at least one requirement; silent restore failure, though lower ranked, has severe impact.
-
-Section twenty-three point four develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-three point four, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty-three point four treats scenarios reading the ranking as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-three point four, Fernhill Library Network will not accept systems work without a written trail.
 
 ### Reasoning for ratings
 
@@ -2484,14 +1622,6 @@ You will (1) verify an image against hardening requirements; (2) use benchmarks 
 
 CIS Benchmarks and Microsoft baselines provide recommended settings; DISA STIGs offer stricter options. Mateo selects ten requirements relevant to kiosks.
 
-Section twenty-four point one develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-four point one, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty-four point one treats sources reading the result as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point one, Fernhill Library Network will not accept systems work without a written trail.
-
 ### Lab — Lab — image hardening check
 
 ```python
@@ -2517,37 +1647,13 @@ requirements 10, met 8
 
 Eight of ten requirements are met. Gaps: firmware password not set, and application control in audit rather than enforce mode.
 
-Section twenty-four point two develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-four point two, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty-four point two treats sources reading the result as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point two, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 24.3 Closing gaps
 
 Firmware passwords are set through the vendor's management tool. Application control stays in audit until chapter 31 evaluates the allowlist, avoiding blocking needed tools.
 
-Section twenty-four point three develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-four point three, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty-four point three treats sources reading the result as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point three, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 24.4 Recording
 
 Each gap and decision is recorded in the image release notes.
-
-Section twenty-four point four develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-four point four, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty-four point four treats sources reading the result as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point four, Fernhill Library Network will not accept systems work without a written trail.
 
 ### Choosing among sources
 
@@ -2603,63 +1709,21 @@ You will (1) present an initial design for critique; (2) respond to feedback; (3
 
 Students present designs to peers and industry guests, who critique them.
 
-Section twenty-five point one develops design studio with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-five point one, Marta Silva expects design claims to carry owners and dates.
-
-Section twenty-five point one treats studio format mateo's design as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point one, Fernhill Library Network will not accept design work without a written trail.
-
-Section twenty-five point one fails closed if design evidence is missing rather than guessing.
-
 ### 25.2 Mateo's design
 
 A hardened golden image, nightly restore of the patron area, Secure Boot with firmware password, application control, USB storage blocked, public segment and monitoring.
-
-Section twenty-five point two develops design studio with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-five point two, Marta Silva expects design claims to carry owners and dates.
-
-Section twenty-five point two treats studio format mateo's design as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point two, Fernhill Library Network will not accept design work without a written trail.
 
 ### 25.3 Feedback
 
 A guest asks how patrons save work. Another asks what happens when the restore server is down.
 
-Section twenty-five point three develops design studio with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-five point three, Marta Silva expects design claims to carry owners and dates.
-
-Section twenty-five point three treats studio format mateo's design as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point three, Fernhill Library Network will not accept design work without a written trail.
-
 ### 25.4 Responses
 
 Patrons can save to their own USB storage? No: USB storage is blocked, so the notice directs them to email or cloud storage; a print-to-PDF option helps. If the server is down, PCs restore from a local protected copy.
 
-Section twenty-five point four develops design studio with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-five point four, Marta Silva expects design claims to carry owners and dates.
-
-Section twenty-five point four treats studio format mateo's design as testable only when evidence and ticket IDs are recorded.
-
 ### 25.5 Iteration
 
 The local restore copy becomes a design change.
-
-Section twenty-five point five develops design studio with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-five point five, Marta Silva expects design claims to carry owners and dates.
-
-Section twenty-five point five treats studio format mateo's design as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point five, Fernhill Library Network will not accept design work without a written trail.
-
-Section twenty-five point five fails closed if design evidence is missing rather than guessing.
 
 ### Learning from critique
 
@@ -2715,63 +1779,21 @@ You will (1) compare alternative architectures; (2) evaluate trade-offs; (3) sel
 
 Full disk reimage nightly from the network: strongest reset, but slow and network-heavy.
 
-Section twenty-six point one develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-six point one, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty-six point one treats alternative alternative alternative criteria as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-six point one, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 26.2 Alternative B
 
 Patron-area restore plus signed golden image updates monthly: faster, less traffic, relies on strong OS protection for system areas.
-
-Section twenty-six point two develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-six point two, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty-six point two treats alternative alternative alternative criteria as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-six point two, Fernhill Library Network will not accept systems work without a written trail.
 
 ### 26.3 Alternative C
 
 Thin clients with sessions hosted centrally: easier to manage but needs new hardware and server capacity.
 
-Section twenty-six point three develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-six point three, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty-six point three treats alternative alternative alternative criteria as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-six point three, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 26.4 Criteria
 
 Security, restore time, network load, cost and accessibility.
 
-Section twenty-six point four develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-six point four, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty-six point four treats alternative alternative alternative criteria as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-six point four, Fernhill Library Network will not accept systems work without a written trail.
-
-Section twenty-six point four fails closed if systems evidence is missing rather than guessing.
-
 ### 26.5 Choice
 
 B with a weekly full reimage: daily patron reset, weekly system reset, using existing hardware.
-
-Section twenty-six point five develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-six point five, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty-six point five treats alternative alternative alternative criteria as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-six point five, Fernhill Library Network will not accept systems work without a written trail.
 
 ### Scoring alternatives
 
@@ -2835,61 +1857,21 @@ You will (1) specify each control in detail; (2) define parameters and failure b
 
 Runs at 22:00 after closing; restores the patron area from the protected copy; verifies digests; reports result.
 
-Section twenty-seven point one develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-seven point one, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty-seven point one treats restore control application control as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point one, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 27.2 Application control
 
 Allowlist of approved programs by publisher signature and path; audit mode first, then enforce.
-
-Section twenty-seven point two develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-seven point two, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty-seven point two treats restore control application control as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point two, Fernhill Library Network will not accept systems work without a written trail.
 
 ### 27.3 Boot control
 
 Secure Boot on; firmware password set; boot order locked to internal disk.
 
-Section twenty-seven point three develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-seven point three, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty-seven point three treats restore control application control as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point three, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 27.4 Failure behaviour
 
 If restore fails, the PC shows "out of service" at next start and alerts staff; it does not open a session.
 
-Section twenty-seven point four develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-seven point four, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty-seven point four treats restore control application control as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point four, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 27.5 Dependencies
 
 Restore depends on boot integrity; alerts depend on logging; updates depend on signing keys.
-
-Section twenty-seven point five develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-seven point five, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty-seven point five treats restore control application control as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point five, Fernhill Library Network will not accept systems work without a written trail.
 
 ### Logging design
 
@@ -2957,25 +1939,9 @@ You will (1) implement the restore mechanism on lab PCs; (2) detect session chan
 
 Mateo configures three lab PCs with the golden image and restore script.
 
-Section twenty-eight point one develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-eight point one, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty-eight point one treats implementation test session reading as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point one, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 28.2 Test session
 
 A synthetic session changes the browser home page and saves a CV in the patron area.
-
-Section twenty-eight point two develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-eight point two, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty-eight point two treats implementation test session reading as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point two, Fernhill Library Network will not accept systems work without a written trail.
 
 ### Lab — Lab — session changes and restore
 
@@ -3003,37 +1969,13 @@ differences after restore: 0
 
 Two items changed or were added during the session: the browser configuration and the CV. After restore, there are zero differences from the golden manifest.
 
-Section twenty-eight point three develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-eight point three, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty-eight point three treats implementation test session reading as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point three, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 28.4 Assumption checked
 
 This confirms the chapter 6 assumption of full removal for the patron area.
 
-Section twenty-eight point four develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-eight point four, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty-eight point four treats implementation test session reading as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point four, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 28.5 Edge cases
 
 Tests also cover a session ended by power loss and a PC rebooted mid-restore; both restore correctly at next start.
-
-Section twenty-eight point five develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-eight point five, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty-eight point five treats implementation test session reading as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point five, Fernhill Library Network will not accept systems work without a written trail.
 
 ### Test plan
 
@@ -3093,14 +2035,6 @@ You will (1) measure restore times across branches; (2) summarise variation; (3)
 
 Restore duration per PC per night, by branch, over a week of pilot operation.
 
-Section twenty-nine point one develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-nine point one, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty-nine point one treats measures reading the result as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point one, Fernhill Library Network will not accept systems work without a written trail.
-
 ### Lab — Lab — restore timing
 
 ```python
@@ -3127,37 +2061,13 @@ all: median 6.3, within 15-min window 21/21
 
 Central median 6.3 minutes (max 7.2), Eastgate median 9.2 (max 12.8, stdev 1.39), Millbrook median 5.3 (max 5.6). All 21 sampled restores finished within the 15-minute window.
 
-Section twenty-nine point two develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-nine point two, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty-nine point two treats measures reading the result as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point two, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 29.3 Eastgate variation
 
 Eastgate is slower and more variable. Investigation finds older disks and a congested network link.
 
-Section twenty-nine point three develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-nine point three, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty-nine point three treats measures reading the result as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point three, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 29.4 Action
 
 Eastgate's disks are scheduled for replacement and its restore traffic is staggered.
-
-Section twenty-nine point four develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section twenty-nine point four, Marta Silva expects systems claims to carry owners and dates.
-
-Section twenty-nine point four treats measures reading the result as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point four, Fernhill Library Network will not accept systems work without a written trail.
 
 ### Why spread matters
 
@@ -3225,65 +2135,21 @@ You will (1) verify requirements on lab PCs; (2) record evidence; (3) distinguis
 
 For each requirement, Mateo runs its test on lab PCs and records evidence: screenshots of settings, logs and test outputs.
 
-Section thirty point one develops verification laboratory with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty point one, Marta Silva expects verification claims to carry owners and dates.
-
-Section thirty point one treats verification examples recording independence as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point one, Fernhill Library Network will not accept verification work without a written trail.
-
 ### 30.2 Examples
 
 R1 verified by firmware report; R3 by inserting a synthetic USB storage device and confirming block; R6 by idle timeout test.
-
-Section thirty point two develops verification laboratory with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty point two, Marta Silva expects verification claims to carry owners and dates.
-
-Section thirty point two treats verification examples recording independence as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point two, Fernhill Library Network will not accept verification work without a written trail.
 
 ### 30.3 Recording
 
 Each result is pass, fail or untested, with date and tester.
 
-Section thirty point three develops verification laboratory with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty point three, Marta Silva expects verification claims to carry owners and dates.
-
-Section thirty point three treats verification examples recording independence as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point three, Fernhill Library Network will not accept verification work without a written trail.
-
-Section thirty point three fails closed if verification evidence is missing rather than guessing.
-
 ### 30.4 Independence
 
 A technician repeats three tests without Mateo present.
 
-Section thirty point four develops verification laboratory with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty point four, Marta Silva expects verification claims to carry owners and dates.
-
-Section thirty point four treats verification examples recording independence as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point four, Fernhill Library Network will not accept verification work without a written trail.
-
-Section thirty point four fails closed if verification evidence is missing rather than guessing.
-
 ### 30.5 Findings
 
 Remote logging (R7) is not reaching the central server from one lab PC due to a firewall rule.
-
-Section thirty point five develops verification laboratory with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty point five, Marta Silva expects verification claims to carry owners and dates.
-
-Section thirty point five treats verification examples recording independence as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point five, Fernhill Library Network will not accept verification work without a written trail.
 
 ### Evidence quality
 
@@ -3353,14 +2219,6 @@ You will (1) evaluate an application allowlist against a week of executions; (2)
 
 With application control in audit mode for a week, the system logs every program that would have been blocked.
 
-Section thirty-one point one develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-one point one, Marta Silva expects systems claims to carry owners and dates.
-
-Section thirty-one point one treats audit data reading the as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-one point one, Fernhill Library Network will not accept systems work without a written trail.
-
 ### Lab — Lab — allowlist evaluation
 
 ```python
@@ -3387,37 +2245,13 @@ executions 2003, would be blocked 23
 
 Of 2,003 executions, 23 would be blocked: game_setup.exe (6), toolbar_installer.exe (3) and accessibility_reader.exe (14).
 
-Section thirty-one point two develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-one point two, Marta Silva expects systems claims to carry owners and dates.
-
-Section thirty-one point two treats audit data reading the as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-one point two, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 31.3 Interpretation
 
 The game and toolbar installers are exactly what the control should stop. The accessibility reader is a needed tool missing from the list.
 
-Section thirty-one point three develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-one point three, Marta Silva expects systems claims to carry owners and dates.
-
-Section thirty-one point three treats audit data reading the as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-one point three, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 31.4 Fix and enforce
 
 The reader is added by publisher signature; another audit week shows only unwanted installers blocked; enforce mode begins.
-
-Section thirty-one point four develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-one point four, Marta Silva expects systems claims to carry owners and dates.
-
-Section thirty-one point four treats audit data reading the as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-one point four, Fernhill Library Network will not accept systems work without a written trail.
 
 ### Allowlist design choices
 
@@ -3477,14 +2311,6 @@ You will (1) calculate availability and MTBF; (2) compare before and after self-
 
 In a month, 42 PC failures occurred across 300 PCs. Before self-restore, each took about 18 hours to fix manually; after, about half an hour.
 
-Section thirty-two point one develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-two point one, Marta Silva expects systems claims to carry owners and dates.
-
-Section thirty-two point one treats data reading the result as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-two point one, Fernhill Library Network will not accept systems work without a written trail.
-
 ### Lab — Lab — availability
 
 ```python
@@ -3509,37 +2335,13 @@ MTBF per PC 5143 hours
 
 Downtime falls from 756 to 21 PC-hours; availability rises from 0.9965 to 0.9999. MTBF per PC is about 5,143 hours.
 
-Section thirty-two point two develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-two point two, Marta Silva expects systems claims to carry owners and dates.
-
-Section thirty-two point two treats data reading the result as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-two point two, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 32.3 Meaning
 
 Fewer PCs out of service means patrons wait less and staff handle fewer complaints.
 
-Section thirty-two point three develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-two point three, Marta Silva expects systems claims to carry owners and dates.
-
-Section thirty-two point three treats data reading the result as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-two point three, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 32.4 Assumptions
 
 Failure count is assumed unchanged; self-restore may also reduce failures, which would further improve results.
-
-Section thirty-two point four develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-two point four, Marta Silva expects systems claims to carry owners and dates.
-
-Section thirty-two point four treats data reading the result as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-two point four, Fernhill Library Network will not accept systems work without a written trail.
 
 ### Definitions
 
@@ -3607,63 +2409,21 @@ You will (1) plan for failures of the design itself; (2) recover from bad images
 
 If a released image breaks PCs, staged release limits impact, and PCs can roll back to the previous signed image.
 
-Section thirty-three point one develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-three point one, Marta Silva expects systems claims to carry owners and dates.
-
-Section thirty-three point one treats bad image firmware updates as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-three point one, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 33.2 Firmware updates
 
 NIST SP 800-193 emphasises recovery for firmware. Fernhill keeps vendor recovery tools and tests firmware updates on lab PCs first.
-
-Section thirty-three point two develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-three point two, Marta Silva expects systems claims to carry owners and dates.
-
-Section thirty-three point two treats bad image firmware updates as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-three point two, Fernhill Library Network will not accept systems work without a written trail.
 
 ### 33.3 Server outage
 
 PCs restore from local protected copies for up to a week without the server.
 
-Section thirty-three point three develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-three point three, Marta Silva expects systems claims to carry owners and dates.
-
-Section thirty-three point three treats bad image firmware updates as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-three point three, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 33.4 Recovery drills
 
 Each quarter, the team practises rolling back an image on lab PCs.
 
-Section thirty-three point four develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-three point four, Marta Silva expects systems claims to carry owners and dates.
-
-Section thirty-three point four treats bad image firmware updates as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-three point four, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 33.5 Human factors
 
 Instructions are short and printed, for use under pressure.
-
-Section thirty-three point five develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-three point five, Marta Silva expects systems claims to carry owners and dates.
-
-Section thirty-three point five treats bad image firmware updates as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-three point five, Fernhill Library Network will not accept systems work without a written trail.
-
-Section thirty-three point five fails closed if systems evidence is missing rather than guessing.
 
 ### Fail-safe design
 
@@ -3731,65 +2491,21 @@ You will (1) integrate the design with library services; (2) manage dependencies
 
 Public PCs must work with the session booking system, the print service and the catalogue.
 
-Section thirty-four point one develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-four point one, Marta Silva expects systems claims to carry owners and dates.
-
-Section thirty-four point one treats services dependencies end-to-end test as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-four point one, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 34.2 Dependencies
 
 Each service is listed with owner, interface and test.
-
-Section thirty-four point two develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-four point two, Marta Silva expects systems claims to carry owners and dates.
-
-Section thirty-four point two treats services dependencies end-to-end test as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-four point two, Fernhill Library Network will not accept systems work without a written trail.
-
-Section thirty-four point two fails closed if systems evidence is missing rather than guessing.
 
 ### 34.3 End-to-end test
 
 A tester books a session, prints, uses the catalogue and the reader, logs off and confirms restore.
 
-Section thirty-four point three develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-four point three, Marta Silva expects systems claims to carry owners and dates.
-
-Section thirty-four point three treats services dependencies end-to-end test as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-four point three, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 34.4 Issues
 
 Printing fails after restore because a printer mapping is stored in the patron area; it is moved to the system image.
 
-Section thirty-four point four develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-four point four, Marta Silva expects systems claims to carry owners and dates.
-
-Section thirty-four point four treats services dependencies end-to-end test as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-four point four, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 34.5 Change coordination
 
 Service owners are told before image releases.
-
-Section thirty-four point five develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-four point five, Marta Silva expects systems claims to carry owners and dates.
-
-Section thirty-four point five treats services dependencies end-to-end test as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-four point five, Fernhill Library Network will not accept systems work without a written trail.
-
-Section thirty-four point five fails closed if systems evidence is missing rather than guessing.
 
 ### Integration testing schedule
 
@@ -3857,65 +2573,21 @@ You will (1) present the integrated design; (2) respond to expert critique; (3) 
 
 Mateo presents the design with measurements: restore times, availability and allowlist results.
 
-Section thirty-five point one develops design studio ii with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-five point one, Marta Silva expects design claims to carry owners and dates.
-
-Section thirty-five point one treats presentation critique responses improvements as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-five point one, Fernhill Library Network will not accept design work without a written trail.
-
 ### 35.2 Critique
 
 A guest from another library asks about cost of maintaining the allowlist. Another asks about patrons who need software not on the list.
-
-Section thirty-five point two develops design studio ii with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-five point two, Marta Silva expects design claims to carry owners and dates.
-
-Section thirty-five point two treats presentation critique responses improvements as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-five point two, Fernhill Library Network will not accept design work without a written trail.
 
 ### 35.3 Responses
 
 Maintenance takes about an hour a week; a request form lets librarians propose additions, reviewed weekly.
 
-Section thirty-five point three develops design studio ii with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-five point three, Marta Silva expects design claims to carry owners and dates.
-
-Section thirty-five point three treats presentation critique responses improvements as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-five point three, Fernhill Library Network will not accept design work without a written trail.
-
 ### 35.4 Improvements
 
 Add a dashboard for librarians; automate weekly reimage reports.
 
-Section thirty-five point four develops design studio ii with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-five point four, Marta Silva expects design claims to carry owners and dates.
-
-Section thirty-five point four treats presentation critique responses improvements as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-five point four, Fernhill Library Network will not accept design work without a written trail.
-
-Section thirty-five point four fails closed if design evidence is missing rather than guessing.
-
 ### 35.5 Prioritising
 
 Dashboard first, because librarians are the daily users.
-
-Section thirty-five point five develops design studio ii with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-five point five, Marta Silva expects design claims to carry owners and dates.
-
-Section thirty-five point five treats presentation critique responses improvements as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-five point five, Fernhill Library Network will not accept design work without a written trail.
-
-Section thirty-five point five fails closed if design evidence is missing rather than guessing.
 
 ### Turning critique into a plan
 
@@ -3991,63 +2663,21 @@ You will (1) assess performance impacts; (2) plan for growth; (3) avoid bottlene
 
 Application control adds negligible delay to program start; restore runs after hours.
 
-Section thirty-six point one develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-six point one, Marta Silva expects systems claims to carry owners and dates.
-
-Section thirty-six point one treats performance network load growth as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-six point one, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 36.2 Network load
 
 Weekly full reimages generate large traffic; they are staggered by branch.
-
-Section thirty-six point two develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-six point two, Marta Silva expects systems claims to carry owners and dates.
-
-Section thirty-six point two treats performance network load growth as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-six point two, Fernhill Library Network will not accept systems work without a written trail.
 
 ### 36.3 Growth
 
 Fernhill plans 60 more PCs. Restore server capacity is checked: current peak use is 40%.
 
-Section thirty-six point three develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-six point three, Marta Silva expects systems claims to carry owners and dates.
-
-Section thirty-six point three treats performance network load growth as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-six point three, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 36.4 Bottlenecks
 
 Eastgate's link is the main bottleneck; upgrading it is recommended.
 
-Section thirty-six point four develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-six point four, Marta Silva expects systems claims to carry owners and dates.
-
-Section thirty-six point four treats performance network load growth as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-six point four, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 36.5 Monitoring
 
 Performance metrics join the dashboard.
-
-Section thirty-six point five develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-six point five, Marta Silva expects systems claims to carry owners and dates.
-
-Section thirty-six point five treats performance network load growth as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-six point five, Fernhill Library Network will not accept systems work without a written trail.
-
-Section thirty-six point five fails closed if systems evidence is missing rather than guessing.
 
 ### Measuring performance impact
 
@@ -4123,61 +2753,21 @@ You will (1) define daily operations; (2) set alerts and runbooks; (3) train sta
 
 Each morning the technician checks the restore report and repairs failed PCs before opening.
 
-Section thirty-seven point one develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-seven point one, Marta Silva expects systems claims to carry owners and dates.
-
-Section thirty-seven point one treats daily routine alerts runbooks as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-seven point one, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 37.2 Alerts
 
 Per-PC restore failures and the five-failure incident threshold from chapter 7 alert IT.
-
-Section thirty-seven point two develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-seven point two, Marta Silva expects systems claims to carry owners and dates.
-
-Section thirty-seven point two treats daily routine alerts runbooks as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-seven point two, Fernhill Library Network will not accept systems work without a written trail.
 
 ### 37.3 Runbooks
 
 Short runbooks cover failed restore, out-of-service PCs and image rollback.
 
-Section thirty-seven point three develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-seven point three, Marta Silva expects systems claims to carry owners and dates.
-
-Section thirty-seven point three treats daily routine alerts runbooks as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-seven point three, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 37.4 Patching
 
 Monthly OS updates follow SP 800-40r4 planning: test in lab, release to one branch, then all.
 
-Section thirty-seven point four develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-seven point four, Marta Silva expects systems claims to carry owners and dates.
-
-Section thirty-seven point four treats daily routine alerts runbooks as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-seven point four, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 37.5 Training
 
 Librarians learn to recognise an out-of-service screen and call IT.
-
-Section thirty-seven point five develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-seven point five, Marta Silva expects systems claims to carry owners and dates.
-
-Section thirty-seven point five treats daily routine alerts runbooks as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-seven point five, Fernhill Library Network will not accept systems work without a written trail.
 
 ### Patch management
 
@@ -4253,14 +2843,6 @@ You will (1) validate that requirements are met in operation; (2) trace requirem
 
 Validation asks whether the system meets user needs in real use; verification asked whether it met requirements in tests.
 
-Section thirty-eight point one develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-eight point one, Marta Silva expects systems claims to carry owners and dates.
-
-Section thirty-eight point one treats validation reading the result as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-eight point one, Fernhill Library Network will not accept systems work without a written trail.
-
 ### Lab — Lab — traceability
 
 ```python
@@ -4286,37 +2868,13 @@ requirements 10: pass 8, fail 1, untested 1
 
 Of 10 requirements, 8 pass, 1 fails (R7 remote logging) and 1 is untested (R9 restore alert in production).
 
-Section thirty-eight point two develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-eight point two, Marta Silva expects systems claims to carry owners and dates.
-
-Section thirty-eight point two treats validation reading the result as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-eight point two, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 38.3 Closing
 
 R7's firewall fix is applied and re-tested; R9 is tested by deliberately failing a lab PC's restore and checking the alert.
 
-Section thirty-eight point three develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-eight point three, Marta Silva expects systems claims to carry owners and dates.
-
-Section thirty-eight point three treats validation reading the result as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-eight point three, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 38.4 User validation
 
 Librarians report fewer patron complaints and no leftover files found in a month.
-
-Section thirty-eight point four develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-eight point four, Marta Silva expects systems claims to carry owners and dates.
-
-Section thirty-eight point four treats validation reading the result as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-eight point four, Fernhill Library Network will not accept systems work without a written trail.
 
 ### Verification versus validation
 
@@ -4388,63 +2946,21 @@ You will (1) design for long-term maintenance; (2) document; (3) plan for staff 
 
 The repository holds image definitions, scripts, runbooks and decision records.
 
-Section thirty-nine point one develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-nine point one, Marta Silva expects systems claims to carry owners and dates.
-
-Section thirty-nine point one treats documentation simplicity staff changes as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-nine point one, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 39.2 Simplicity
 
 One image for all public PCs and few custom scripts keep maintenance manageable.
-
-Section thirty-nine point two develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-nine point two, Marta Silva expects systems claims to carry owners and dates.
-
-Section thirty-nine point two treats documentation simplicity staff changes as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-nine point two, Fernhill Library Network will not accept systems work without a written trail.
 
 ### 39.3 Staff changes
 
 Two people can perform every task; documentation is tested by a new technician.
 
-Section thirty-nine point three develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-nine point three, Marta Silva expects systems claims to carry owners and dates.
-
-Section thirty-nine point three treats documentation simplicity staff changes as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-nine point three, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 39.4 Vendor changes
 
 Hardware refreshes require testing firmware and Secure Boot settings on new models.
 
-Section thirty-nine point four develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-nine point four, Marta Silva expects systems claims to carry owners and dates.
-
-Section thirty-nine point four treats documentation simplicity staff changes as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-nine point four, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 39.5 Review cycle
 
 The design is reviewed annually against updated benchmarks.
-
-Section thirty-nine point five develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section thirty-nine point five, Marta Silva expects systems claims to carry owners and dates.
-
-Section thirty-nine point five treats documentation simplicity staff changes as testable only when evidence and ticket IDs are recorded.
-
-For section thirty-nine point five, Fernhill Library Network will not accept systems work without a written trail.
-
-Section thirty-nine point five fails closed if systems evidence is missing rather than guessing.
 
 ### Maintaining baselines
 
@@ -4524,65 +3040,21 @@ You will (1) verify resilience features; (2) test recovery; (3) record results.
 
 Mateo tests rollback, server outage, firmware recovery and restore alert.
 
-Section forty point one develops verification laboratory ii with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty point one, Marta Silva expects verification claims to carry owners and dates.
-
-Section forty point one treats tests rollback outage firmware as testable only when evidence and ticket IDs are recorded.
-
-For section forty point one, Fernhill Library Network will not accept verification work without a written trail.
-
-Section forty point one fails closed if verification evidence is missing rather than guessing.
-
 ### 40.2 Rollback
 
 A deliberately broken image on a lab PC is rolled back in ten minutes.
-
-Section forty point two develops verification laboratory ii with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty point two, Marta Silva expects verification claims to carry owners and dates.
-
-Section forty point two treats tests rollback outage firmware as testable only when evidence and ticket IDs are recorded.
-
-For section forty point two, Fernhill Library Network will not accept verification work without a written trail.
 
 ### 40.3 Outage
 
 With the server disconnected for three days, lab PCs restore from local copies each night.
 
-Section forty point three develops verification laboratory ii with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty point three, Marta Silva expects verification claims to carry owners and dates.
-
-Section forty point three treats tests rollback outage firmware as testable only when evidence and ticket IDs are recorded.
-
-For section forty point three, Fernhill Library Network will not accept verification work without a written trail.
-
 ### 40.4 Firmware recovery
 
 A simulated failed firmware update on a lab PC is recovered with the vendor's recovery tool.
 
-Section forty point four develops verification laboratory ii with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty point four, Marta Silva expects verification claims to carry owners and dates.
-
-Section forty point four treats tests rollback outage firmware as testable only when evidence and ticket IDs are recorded.
-
-For section forty point four, Fernhill Library Network will not accept verification work without a written trail.
-
 ### 40.5 Results
 
 All four tests pass; results are recorded with evidence.
-
-Section forty point five develops verification laboratory ii with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty point five, Marta Silva expects verification claims to carry owners and dates.
-
-Section forty point five treats tests rollback outage firmware as testable only when evidence and ticket IDs are recorded.
-
-For section forty point five, Fernhill Library Network will not accept verification work without a written trail.
-
-Section forty point five fails closed if verification evidence is missing rather than guessing.
 
 ### Test design for resilience
 
@@ -4670,65 +3142,21 @@ You will (1) optimise restore and update processes; (2) reduce cost and effort; 
 
 Reduce restore time at Eastgate, reduce weekly reimage traffic and reduce allowlist maintenance.
 
-Section forty-one point one develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-one point one, Marta Silva expects systems claims to carry owners and dates.
-
-Section forty-one point one treats targets restore traffic allowlist as testable only when evidence and ticket IDs are recorded.
-
-For section forty-one point one, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 41.2 Restore
 
 Replacing Eastgate's disks cuts its median from 9.2 to about 6 minutes.
-
-Section forty-one point two develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-one point two, Marta Silva expects systems claims to carry owners and dates.
-
-Section forty-one point two treats targets restore traffic allowlist as testable only when evidence and ticket IDs are recorded.
-
-For section forty-one point two, Fernhill Library Network will not accept systems work without a written trail.
 
 ### 41.3 Traffic
 
 Differential reimaging sends only changed blocks, reducing weekly traffic by about two thirds.
 
-Section forty-one point three develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-one point three, Marta Silva expects systems claims to carry owners and dates.
-
-Section forty-one point three treats targets restore traffic allowlist as testable only when evidence and ticket IDs are recorded.
-
-For section forty-one point three, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 41.4 Allowlist
 
 Publisher-based rules reduce manual updates.
 
-Section forty-one point four develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-one point four, Marta Silva expects systems claims to carry owners and dates.
-
-Section forty-one point four treats targets restore traffic allowlist as testable only when evidence and ticket IDs are recorded.
-
-For section forty-one point four, Fernhill Library Network will not accept systems work without a written trail.
-
-Section forty-one point four fails closed if systems evidence is missing rather than guessing.
-
 ### 41.5 Guardrail
 
 Every optimisation is re-verified against requirements before release.
-
-Section forty-one point five develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-one point five, Marta Silva expects systems claims to carry owners and dates.
-
-Section forty-one point five treats targets restore traffic allowlist as testable only when evidence and ticket IDs are recorded.
-
-For section forty-one point five, Fernhill Library Network will not accept systems work without a written trail.
-
-Section forty-one point five fails closed if systems evidence is missing rather than guessing.
 
 ### Measuring optimisation
 
@@ -4820,61 +3248,21 @@ You will (1) ask a research question from the project; (2) collect data; (3) rel
 
 Does nightly restore reduce help-desk calls about public PCs?
 
-Section forty-two point one develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-two point one, Marta Silva expects systems claims to carry owners and dates.
-
-Section forty-two point one treats question data findings literature as testable only when evidence and ticket IDs are recorded.
-
-For section forty-two point one, Fernhill Library Network will not accept systems work without a written trail.
-
-Section forty-two point one fails closed if systems evidence is missing rather than guessing.
-
 ### 42.2 Data
 
 Call logs for three months before and after deployment, categorised by topic.
-
-Section forty-two point two develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-two point two, Marta Silva expects systems claims to carry owners and dates.
-
-Section forty-two point two treats question data findings literature as testable only when evidence and ticket IDs are recorded.
-
-For section forty-two point two, Fernhill Library Network will not accept systems work without a written trail.
 
 ### 42.3 Findings
 
 Calls about slow or broken PCs fall by about half; calls about saving work rise slightly.
 
-Section forty-two point three develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-two point three, Marta Silva expects systems claims to carry owners and dates.
-
-Section forty-two point three treats question data findings literature as testable only when evidence and ticket IDs are recorded.
-
-For section forty-two point three, Fernhill Library Network will not accept systems work without a written trail.
-
 ### 42.4 Literature
 
 Forrest et al. (1996) proposed defining normal behaviour of Unix processes to detect anomalies; Mateo notes that a fixed image makes "normal" easier to define, supporting future monitoring work.
 
-Section forty-two point four develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-two point four, Marta Silva expects systems claims to carry owners and dates.
-
-Section forty-two point four treats question data findings literature as testable only when evidence and ticket IDs are recorded.
-
 ### 42.5 Limits
 
 Other changes, such as new staff, may also affect calls.
-
-Section forty-two point five develops systems endpoints and hardware security with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-two point five, Marta Silva expects systems claims to carry owners and dates.
-
-Section forty-two point five treats question data findings literature as testable only when evidence and ticket IDs are recorded.
-
-For section forty-two point five, Fernhill Library Network will not accept systems work without a written trail.
 
 ### Method details
 
@@ -4954,63 +3342,21 @@ You will (1) work within a public-service organisation; (2) follow its governanc
 
 Mateo spends a term at Fernhill supporting deployment to all branches.
 
-Section forty-three point one develops industry or public-service practice with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-three point one, Marta Silva expects industry claims to carry owners and dates.
-
-Section forty-three point one treats placement governance supervision professional as testable only when evidence and ticket IDs are recorded.
-
-For section forty-three point one, Fernhill Library Network will not accept industry work without a written trail.
-
 ### 43.2 Governance
 
 Changes go through Fernhill's change board; data handling follows its privacy policy.
-
-Section forty-three point two develops industry or public-service practice with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-three point two, Marta Silva expects industry claims to carry owners and dates.
-
-Section forty-three point two treats placement governance supervision professional as testable only when evidence and ticket IDs are recorded.
-
-For section forty-three point two, Fernhill Library Network will not accept industry work without a written trail.
 
 ### 43.3 Supervision
 
 Marta supervises daily; Dr Novak reviews weekly.
 
-Section forty-three point three develops industry or public-service practice with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-three point three, Marta Silva expects industry claims to carry owners and dates.
-
-Section forty-three point three treats placement governance supervision professional as testable only when evidence and ticket IDs are recorded.
-
-For section forty-three point three, Fernhill Library Network will not accept industry work without a written trail.
-
-Section forty-three point three fails closed if industry evidence is missing rather than guessing.
-
 ### 43.4 Professional conduct
 
 Mateo does not access patron accounts and works only on approved tasks.
 
-Section forty-three point four develops industry or public-service practice with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-three point four, Marta Silva expects industry claims to carry owners and dates.
-
-Section forty-three point four treats placement governance supervision professional as testable only when evidence and ticket IDs are recorded.
-
-For section forty-three point four, Fernhill Library Network will not accept industry work without a written trail.
-
 ### 43.5 Delivery
 
 All three branches move to the new design during the term.
-
-Section forty-three point five develops industry or public-service practice with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-three point five, Marta Silva expects industry claims to carry owners and dates.
-
-Section forty-three point five treats placement governance supervision professional as testable only when evidence and ticket IDs are recorded.
-
-For section forty-three point five, Fernhill Library Network will not accept industry work without a written trail.
 
 ### Daily work
 
@@ -5094,67 +3440,21 @@ You will (1) define the capstone scope; (2) plan work and risks; (3) set accepta
 
 The capstone delivers the full self-restoring hardened public PC service, documented and handed to Fernhill.
 
-Section forty-four point one develops engineering capstone with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-four point one, Marta Silva expects engineering claims to carry owners and dates.
-
-Section forty-four point one treats scope work plan risks as testable only when evidence and ticket IDs are recorded.
-
-For section forty-four point one, Fernhill Library Network will not accept engineering work without a written trail.
-
 ### 44.2 Work plan
 
 Remaining tasks: dashboard, firmware update process, final documentation.
-
-Section forty-four point two develops engineering capstone with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-four point two, Marta Silva expects engineering claims to carry owners and dates.
-
-Section forty-four point two treats scope work plan risks as testable only when evidence and ticket IDs are recorded.
-
-For section forty-four point two, Fernhill Library Network will not accept engineering work without a written trail.
-
-Section forty-four point two fails closed if engineering evidence is missing rather than guessing.
 
 ### 44.3 Risks
 
 Hardware delays, staff availability and vendor changes.
 
-Section forty-four point three develops engineering capstone with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-four point three, Marta Silva expects engineering claims to carry owners and dates.
-
-Section forty-four point three treats scope work plan risks as testable only when evidence and ticket IDs are recorded.
-
-For section forty-four point three, Fernhill Library Network will not accept engineering work without a written trail.
-
-Section forty-four point three fails closed if engineering evidence is missing rather than guessing.
-
 ### 44.4 Acceptance criteria
 
 All ten requirements passing; restore within window for 30 consecutive nights; documentation tested by a new technician.
 
-Section forty-four point four develops engineering capstone with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-four point four, Marta Silva expects engineering claims to carry owners and dates.
-
-Section forty-four point four treats scope work plan risks as testable only when evidence and ticket IDs are recorded.
-
-For section forty-four point four, Fernhill Library Network will not accept engineering work without a written trail.
-
 ### 44.5 Approval
 
 Marta and Dr Novak approve the plan.
-
-Section forty-four point five develops engineering capstone with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-four point five, Marta Silva expects engineering claims to carry owners and dates.
-
-Section forty-four point five treats scope work plan risks as testable only when evidence and ticket IDs are recorded.
-
-For section forty-four point five, Fernhill Library Network will not accept engineering work without a written trail.
-
-Section forty-four point five fails closed if engineering evidence is missing rather than guessing.
 
 ### Risk responses
 
@@ -5250,67 +3550,21 @@ You will (1) undergo independent review; (2) address findings; (3) improve the d
 
 An engineer from another council reviews the design and evidence.
 
-Section forty-five point one develops independent design review with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-five point one, Marta Silva expects independent claims to carry owners and dates.
-
-Section forty-five point one treats reviewer findings response recording as testable only when evidence and ticket IDs are recorded.
-
-For section forty-five point one, Fernhill Library Network will not accept independent work without a written trail.
-
-Section forty-five point one fails closed if independent evidence is missing rather than guessing.
-
 ### 45.2 Findings
 
 Strong restore and layering; weaker monitoring of firmware versions; signing key storage needs improvement.
-
-Section forty-five point two develops independent design review with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-five point two, Marta Silva expects independent claims to carry owners and dates.
-
-Section forty-five point two treats reviewer findings response recording as testable only when evidence and ticket IDs are recorded.
-
-For section forty-five point two, Fernhill Library Network will not accept independent work without a written trail.
 
 ### 45.3 Response
 
 Firmware versions join the dashboard; signing keys move to a hardware security module service.
 
-Section forty-five point three develops independent design review with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-five point three, Marta Silva expects independent claims to carry owners and dates.
-
-Section forty-five point three treats reviewer findings response recording as testable only when evidence and ticket IDs are recorded.
-
-For section forty-five point three, Fernhill Library Network will not accept independent work without a written trail.
-
 ### 45.4 Recording
 
 Findings and responses are recorded.
 
-Section forty-five point four develops independent design review with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-five point four, Marta Silva expects independent claims to carry owners and dates.
-
-Section forty-five point four treats reviewer findings response recording as testable only when evidence and ticket IDs are recorded.
-
-For section forty-five point four, Fernhill Library Network will not accept independent work without a written trail.
-
-Section forty-five point four fails closed if independent evidence is missing rather than guessing.
-
 ### 45.5 Value
 
 External eyes see what the team overlooked.
-
-Section forty-five point five develops independent design review with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-five point five, Marta Silva expects independent claims to carry owners and dates.
-
-Section forty-five point five treats reviewer findings response recording as testable only when evidence and ticket IDs are recorded.
-
-For section forty-five point five, Fernhill Library Network will not accept independent work without a written trail.
-
-Section forty-five point five fails closed if independent evidence is missing rather than guessing.
 
 ### Preparing for review
 
@@ -5398,69 +3652,21 @@ You will (1) complete implementation; (2) meet acceptance criteria; (3) prepare 
 
 Dashboard, firmware process and documentation are completed.
 
-Section forty-six point one develops engineering capstone ii with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-six point one, Marta Silva expects engineering claims to carry owners and dates.
-
-Section forty-six point one treats implementation acceptance handover residual as testable only when evidence and ticket IDs are recorded.
-
-For section forty-six point one, Fernhill Library Network will not accept engineering work without a written trail.
-
-Section forty-six point one fails closed if engineering evidence is missing rather than guessing.
-
 ### 46.2 Acceptance
 
 Ten requirements pass; restore within window for 30 nights; a new technician uses the docs successfully.
-
-Section forty-six point two develops engineering capstone ii with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-six point two, Marta Silva expects engineering claims to carry owners and dates.
-
-Section forty-six point two treats implementation acceptance handover residual as testable only when evidence and ticket IDs are recorded.
-
-For section forty-six point two, Fernhill Library Network will not accept engineering work without a written trail.
 
 ### 46.3 Handover
 
 Mateo hands over to Marta and the technician with a walkthrough.
 
-Section forty-six point three develops engineering capstone ii with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-six point three, Marta Silva expects engineering claims to carry owners and dates.
-
-Section forty-six point three treats implementation acceptance handover residual as testable only when evidence and ticket IDs are recorded.
-
-For section forty-six point three, Fernhill Library Network will not accept engineering work without a written trail.
-
-Section forty-six point three fails closed if engineering evidence is missing rather than guessing.
-
 ### 46.4 Residual risks
 
 Older hardware and dependence on vendor firmware support remain.
 
-Section forty-six point four develops engineering capstone ii with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-six point four, Marta Silva expects engineering claims to carry owners and dates.
-
-Section forty-six point four treats implementation acceptance handover residual as testable only when evidence and ticket IDs are recorded.
-
-For section forty-six point four, Fernhill Library Network will not accept engineering work without a written trail.
-
-Section forty-six point four fails closed if engineering evidence is missing rather than guessing.
-
 ### 46.5 Sign-off
 
 Fernhill signs off acceptance.
-
-Section forty-six point five develops engineering capstone ii with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-six point five, Marta Silva expects engineering claims to carry owners and dates.
-
-Section forty-six point five treats implementation acceptance handover residual as testable only when evidence and ticket IDs are recorded.
-
-For section forty-six point five, Fernhill Library Network will not accept engineering work without a written trail.
-
-Section forty-six point five fails closed if engineering evidence is missing rather than guessing.
 
 ### Handover pack
 
@@ -5544,65 +3750,21 @@ You will (1) run a full failure and recovery trial; (2) measure recovery; (3) le
 
 With Fernhill's agreement, a branch simulates a bad image release after closing time.
 
-Section forty-seven point one develops failure and recovery trial with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-seven point one, Marta Silva expects failure claims to carry owners and dates.
-
-Section forty-seven point one treats trial detection recovery lessons as testable only when evidence and ticket IDs are recorded.
-
-For section forty-seven point one, Fernhill Library Network will not accept failure work without a written trail.
-
 ### 47.2 Detection
 
 Restore digests fail; the five-failure alert fires within minutes.
-
-Section forty-seven point two develops failure and recovery trial with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-seven point two, Marta Silva expects failure claims to carry owners and dates.
-
-Section forty-seven point two treats trial detection recovery lessons as testable only when evidence and ticket IDs are recorded.
-
-For section forty-seven point two, Fernhill Library Network will not accept failure work without a written trail.
-
-Section forty-seven point two fails closed if failure evidence is missing rather than guessing.
 
 ### 47.3 Recovery
 
 Rollback to the previous image completes for the branch in 40 minutes.
 
-Section forty-seven point three develops failure and recovery trial with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-seven point three, Marta Silva expects failure claims to carry owners and dates.
-
-Section forty-seven point three treats trial detection recovery lessons as testable only when evidence and ticket IDs are recorded.
-
-For section forty-seven point three, Fernhill Library Network will not accept failure work without a written trail.
-
 ### 47.4 Lessons
 
 The runbook lacked a step for confirming printer mappings after rollback.
 
-Section forty-seven point four develops failure and recovery trial with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-seven point four, Marta Silva expects failure claims to carry owners and dates.
-
-Section forty-seven point four treats trial detection recovery lessons as testable only when evidence and ticket IDs are recorded.
-
-For section forty-seven point four, Fernhill Library Network will not accept failure work without a written trail.
-
 ### 47.5 Improvement
 
 The step is added and tested.
-
-Section forty-seven point five develops failure and recovery trial with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-seven point five, Marta Silva expects failure claims to carry owners and dates.
-
-Section forty-seven point five treats trial detection recovery lessons as testable only when evidence and ticket IDs are recorded.
-
-For section forty-seven point five, Fernhill Library Network will not accept failure work without a written trail.
-
-Section forty-seven point five fails closed if failure evidence is missing rather than guessing.
 
 ### Trial safety
 
@@ -5690,71 +3852,21 @@ You will (1) assemble evidence for assessment; (2) link claims to evidence; (3) 
 
 Requirements, design records, test results, measurements, reviews, trials and operations data.
 
-Section forty-eight point one develops evidence dossier with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-eight point one, Marta Silva expects evidence claims to carry owners and dates.
-
-Section forty-eight point one treats contents linking privacy integrity as testable only when evidence and ticket IDs are recorded.
-
-For section forty-eight point one, Fernhill Library Network will not accept evidence work without a written trail.
-
-Section forty-eight point one fails closed if evidence evidence is missing rather than guessing.
-
 ### 48.2 Linking
 
 Each claim in the thesis links to dossier items.
-
-Section forty-eight point two develops evidence dossier with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-eight point two, Marta Silva expects evidence claims to carry owners and dates.
-
-Section forty-eight point two treats contents linking privacy integrity as testable only when evidence and ticket IDs are recorded.
-
-For section forty-eight point two, Fernhill Library Network will not accept evidence work without a written trail.
-
-Section forty-eight point two fails closed if evidence evidence is missing rather than guessing.
 
 ### 48.3 Privacy
 
 No patron data appear; operational data are aggregated.
 
-Section forty-eight point three develops evidence dossier with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-eight point three, Marta Silva expects evidence claims to carry owners and dates.
-
-Section forty-eight point three treats contents linking privacy integrity as testable only when evidence and ticket IDs are recorded.
-
-For section forty-eight point three, Fernhill Library Network will not accept evidence work without a written trail.
-
-Section forty-eight point three fails closed if evidence evidence is missing rather than guessing.
-
 ### 48.4 Integrity
 
 Files carry digests so assessors can confirm they are unchanged.
 
-Section forty-eight point four develops evidence dossier with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-eight point four, Marta Silva expects evidence claims to carry owners and dates.
-
-Section forty-eight point four treats contents linking privacy integrity as testable only when evidence and ticket IDs are recorded.
-
-For section forty-eight point four, Fernhill Library Network will not accept evidence work without a written trail.
-
-Section forty-eight point four fails closed if evidence evidence is missing rather than guessing.
-
 ### 48.5 Review
 
 Dr Novak checks a sample of links.
-
-Section forty-eight point five develops evidence dossier with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-eight point five, Marta Silva expects evidence claims to carry owners and dates.
-
-Section forty-eight point five treats contents linking privacy integrity as testable only when evidence and ticket IDs are recorded.
-
-For section forty-eight point five, Fernhill Library Network will not accept evidence work without a written trail.
-
-Section forty-eight point five fails closed if evidence evidence is missing rather than guessing.
 
 ### Organising the dossier
 
@@ -5846,69 +3958,21 @@ You will (1) write the engineering thesis; (2) synthesise design, evidence and l
 
 Problem, requirements, design, implementation, verification, validation, operations, lessons.
 
-Section forty-nine point one develops engineering thesis with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-nine point one, Marta Silva expects engineering claims to carry owners and dates.
-
-Section forty-nine point one treats structure key results lessons as testable only when evidence and ticket IDs are recorded.
-
-For section forty-nine point one, Fernhill Library Network will not accept engineering work without a written trail.
-
-Section forty-nine point one fails closed if engineering evidence is missing rather than guessing.
-
 ### 49.2 Key results
 
 Exposure reduced from about 294 to 21 PC-days per fortnight (estimate); availability 0.9999; help-desk breakdown calls halved.
-
-Section forty-nine point two develops engineering thesis with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-nine point two, Marta Silva expects engineering claims to carry owners and dates.
-
-Section forty-nine point two treats structure key results lessons as testable only when evidence and ticket IDs are recorded.
-
-For section forty-nine point two, Fernhill Library Network will not accept engineering work without a written trail.
 
 ### 49.3 Lessons
 
 Audit before enforce; test restore scope; design recovery for the design.
 
-Section forty-nine point three develops engineering thesis with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-nine point three, Marta Silva expects engineering claims to carry owners and dates.
-
-Section forty-nine point three treats structure key results lessons as testable only when evidence and ticket IDs are recorded.
-
-For section forty-nine point three, Fernhill Library Network will not accept engineering work without a written trail.
-
-Section forty-nine point three fails closed if engineering evidence is missing rather than guessing.
-
 ### 49.4 Limitations
 
 One organisation; synthetic-structure figures; older hardware.
 
-Section forty-nine point four develops engineering thesis with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-nine point four, Marta Silva expects engineering claims to carry owners and dates.
-
-Section forty-nine point four treats structure key results lessons as testable only when evidence and ticket IDs are recorded.
-
-For section forty-nine point four, Fernhill Library Network will not accept engineering work without a written trail.
-
-Section forty-nine point four fails closed if engineering evidence is missing rather than guessing.
-
 ### 49.5 Contribution
 
 A tested, documented design for public PC services others can adapt.
-
-Section forty-nine point five develops engineering thesis with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section forty-nine point five, Marta Silva expects engineering claims to carry owners and dates.
-
-Section forty-nine point five treats structure key results lessons as testable only when evidence and ticket IDs are recorded.
-
-For section forty-nine point five, Fernhill Library Network will not accept engineering work without a written trail.
-
-Section forty-nine point five fails closed if engineering evidence is missing rather than guessing.
 
 ### Writing process
 
@@ -6004,69 +4068,21 @@ You will (1) defend the thesis; (2) answer questions; (3) reflect on professiona
 
 Mateo presents in thirty minutes and answers questions.
 
-Section fifty point one develops final defense with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section fifty point one, Marta Silva expects final claims to carry owners and dates.
-
-Section fifty point one treats defense questions answers reflection as testable only when evidence and ticket IDs are recorded.
-
-For section fifty point one, Fernhill Library Network will not accept final work without a written trail.
-
-Section fifty point one fails closed if final evidence is missing rather than guessing.
-
 ### 50.2 Questions
 
 Examiners ask about privacy, accessibility and long-term costs.
-
-Section fifty point two develops final defense with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section fifty point two, Marta Silva expects final claims to carry owners and dates.
-
-Section fifty point two treats defense questions answers reflection as testable only when evidence and ticket IDs are recorded.
-
-For section fifty point two, Fernhill Library Network will not accept final work without a written trail.
-
-Section fifty point two fails closed if final evidence is missing rather than guessing.
 
 ### 50.3 Answers
 
 Logs hold no content; accessibility tools were protected by audit-first; costs are mainly staff time, which fell.
 
-Section fifty point three develops final defense with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section fifty point three, Marta Silva expects final claims to carry owners and dates.
-
-Section fifty point three treats defense questions answers reflection as testable only when evidence and ticket IDs are recorded.
-
-For section fifty point three, Fernhill Library Network will not accept final work without a written trail.
-
 ### 50.4 Reflection
 
 Mateo learned that users shape security designs as much as threats do.
 
-Section fifty point four develops final defense with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section fifty point four, Marta Silva expects final claims to carry owners and dates.
-
-Section fifty point four treats defense questions answers reflection as testable only when evidence and ticket IDs are recorded.
-
-For section fifty point four, Fernhill Library Network will not accept final work without a written trail.
-
-Section fifty point four fails closed if final evidence is missing rather than guessing.
-
 ### 50.5 Next
 
 Fernhill hires him part-time to maintain the service.
-
-Section fifty point five develops final defense with a Fernhill Library Network note Mateo Rossi can demo offline.
-
-Under section fifty point five, Marta Silva expects final claims to carry owners and dates.
-
-Section fifty point five treats defense questions answers reflection as testable only when evidence and ticket IDs are recorded.
-
-For section fifty point five, Fernhill Library Network will not accept final work without a written trail.
-
-Section fifty point five fails closed if final evidence is missing rather than guessing.
 
 ### Preparing the defense
 

@@ -55,19 +55,11 @@ NIST AI 100-1 organises AI risk work into Govern, Map, Measure and Manage. Use i
 
 You rarely have the evidence you want. Three tools help. *Bounding*: if zero failures were seen in n independent trials, the 95% upper bound on the failure rate is roughly 3/n, so 0 in 300 still allows about 1%. *Reversibility*: prefer options that can be undone cheaply — a feature flag, a refund limit, a staged rollout. *Value of information*: ask whether more testing could change the decision; if not, decide now.
 
-Section one point four develops advanced security decision-making with a Corvane Freight note Corvane Freight can demo offline.
-
 ### 1.5 Worked example (synthetic Corvane case)
 
 The board asks Amira whether Dispatch Copilot may issue refunds automatically. Options: (a) no refunds by the agent; (b) refunds up to €50 with policy checks outside the model; (c) refunds up to €500. Evidence: in an isolated test, 0 of 400 adversarial conversations produced an out-of-policy refund under option (b) (upper bound ≈ 0.75%), while customer-service data estimate €180,000 a year in handling savings. Values: the finance director accepts up to €5,000 a year in wrongful refunds. Amira computes the worst plausible exposure at 0.75% of 60,000 refunds × €50 ≈ €22,500, above appetite, so she recommends (b) at a €20 limit for three months, with a trigger to revisit after 10,000 live refunds or any confirmed abuse.
 
 ### 1.6 Errors and limits
-Section one point six develops advanced security decision-making with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section one point six, the mentor expects advanced claims to carry owners and dates.
-
-Section one point six treats why ai-security decisions are as testable only when evidence and ticket IDs are recorded.
-
 
 - Presenting a single score instead of options and consequences.
 - Treating "no failures seen" as "no failures possible".
@@ -106,23 +98,13 @@ NIST AI 100-2 E2025 classifies attacks on predictive and generative AI by the at
 
 Mature organisations keep an inventory of AI systems with owners and risk tiers; threat-model each deployment; test with adversarial suites before release; enforce consequential actions outside the model (policy services, scoped credentials, human confirmation); monitor usage and outcomes; and run incident response that includes model and prompt rollback. ISO/IEC 42001 provides a management-system frame for this work.
 
-Section two point two develops ai and machine-learning security current with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section two point two, the mentor expects ai claims to carry owners and dates.
-
 ### 2.3 Why external enforcement
 
 Indirect prompt injection — instructions hidden in content the model reads — was demonstrated against real LLM-integrated applications by Greshake et al. (arXiv:2302.12173). Automated adversarial suffixes transfer between models (Zou et al., arXiv:2307.15043). Since no current method makes a model reliably ignore injected instructions, the accepted pattern is to assume the model can be steered and to bound what it can do: least-privilege tools, checks that do not rely on the model's judgment, and confirmation for consequential actions.
 
-Section two point three develops ai and machine-learning security current with a Corvane Freight note Corvane Freight can demo offline.
-
 ### 2.4 Mature versus research
 
 Mature: inventories, access control around models, rate limits, output handling, supply-chain hashing, statistical evaluation. Partly mature: injection classifiers, structured prompting such as StruQ (arXiv:2402.06363), membership-inference auditing. Research: certified robustness at scale, reliable detection of backdoors in large models (see Hubinger et al., arXiv:2401.05566, on deceptive behaviour persisting through safety training).
-
-Section two point four develops ai and machine-learning security current with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section two point four, the mentor expects ai claims to carry owners and dates.
 
 ```python
 """Lab I: indirect prompt injection against a toy tool-using 'agent'.
@@ -171,17 +153,7 @@ defence=separate  exfil_calls= 0/20 any_injected_call= 0/20 benign_calls=0/20
 
 Amira maps Dispatch Copilot. Retrieval of carrier emails creates LLM01 (indirect injection) exposure; refund and rebooking tools create LLM06 (excessive agency); customer addresses in context create LLM02; free text rendered in the staff console creates LLM05. In ATLAS terms she lists prompt injection and exfiltration via the agent's tools. The lab shows the pattern behind her design: keyword filtering halves exfiltration calls (10/20) but only tool allow-listing and separating untrusted content from instructions reach 0/20.
 
-Section two point five develops ai and machine-learning security current with a Corvane Freight note Corvane Freight can demo offline.
-
 ### 2.6 Errors and limits
-Section two point six develops ai and machine-learning security current with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section two point six, the mentor expects ai claims to carry owners and dates.
-
-Section two point six treats taxonomies in current use as testable only when evidence and ticket IDs are recorded.
-
-For section two point six, Corvane Freight will not accept ai work without a written trail.
-
 
 - Using a taxonomy as a checklist without mapping it to the system.
 - Treating partly mature defences as solved.
@@ -215,17 +187,9 @@ You will (1) distinguish kinds of AI-security evidence and their strength; (2) r
 
 From weaker to stronger: vendor claims; documentation of controls; configuration review; non-adaptive testing with fixed suites; adaptive testing by people who know the defence; independent red teaming; and monitored production outcomes. Each has a place, but a claim should cite evidence matching its strength. "The model resists injection" needs adaptive testing; "the agent cannot refund over €20" can be shown by configuration review plus tests of the policy service, because enforcement does not depend on the model.
 
-Section three point one develops ai and machine-learning security specialist with a Corvane Freight note Corvane Freight can demo offline.
-
 ### 3.2 Rates and intervals
 
 Report successes over trials with a 95% interval (Wilson is a good default). Three successes in 20 trials (15%) gives roughly 5–36%; the same rate in 2,000 trials gives 13.5–16.6%. Compare defences on the same suite and report the difference with an interval. Vary random seeds and report the spread.
-
-Section three point two develops ai and machine-learning security specialist with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section three point two, the mentor expects ai claims to carry owners and dates.
-
-Section three point two treats kinds of evidence rates as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Lab S: reporting attack-success rates honestly: Wilson intervals,
@@ -270,35 +234,15 @@ baseline_asr=0.350 defended_asr=0.190 reduction_ci95=[0.120, 0.203]
 
 Carlini et al. (arXiv:1902.06705) list common faults in robustness evaluations; Athalye et al. (arXiv:1802.00420) showed that defences relying on obfuscated gradients were broken by adapted attacks. Warning signs: only fixed public attack strings; the defender wrote all tests; no baseline; tiny samples; success measured by the model's words rather than by what happened (a tool call, a data release).
 
-Section three point three develops ai and machine-learning security specialist with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section three point three, the mentor expects ai claims to carry owners and dates.
-
 ### 3.4 Privacy and poisoning evidence
 
 Membership inference (Shokri et al., arXiv:1610.05820) is measured as attack advantage or AUC over balanced member/non-member sets; differential privacy (Abadi et al., arXiv:1607.00133) gives a formal bound instead of a measurement. Poisoning evidence reports both clean accuracy and attack success, because backdoors (Gu et al., arXiv:1708.06733) can leave clean accuracy unchanged.
-
-Section three point four develops ai and machine-learning security specialist with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section three point four, the mentor expects ai claims to carry owners and dates.
 
 ### 3.5 Worked example (synthetic Corvane case)
 
 A vendor claims its injection filter "blocks 99% of attacks". Amira asks for the suite: 500 public strings, non-adaptive, measured by classifier output. Her team builds 300 adaptive cases against Dispatch Copilot and measures tool calls: the filter alone allows 41 harmful calls (13.7%, interval ≈ 10.2–18.0%). With the refund policy service, 0 of 300 reach payment (upper bound ≈ 1%). Her evidence statement credits the policy service, not the filter.
 
-Section three point five develops ai and machine-learning security specialist with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section three point five, the mentor expects ai claims to carry owners and dates.
-
 ### 3.6 Errors and limits
-Section three point six develops ai and machine-learning security specialist with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section three point six, the mentor expects ai claims to carry owners and dates.
-
-Section three point six treats kinds of evidence rates as testable only when evidence and ticket IDs are recorded.
-
-For section three point six, Corvane Freight will not accept ai work without a written trail.
-
 
 - Quoting rates without trials or intervals.
 - Accepting non-adaptive results for adaptive threats.
@@ -332,43 +276,23 @@ You will (1) analyse AI-security risk for affected people, not only the organisa
 
 Organisational risk registers record losses to the organisation. AI failures often fall on others: a customer wrongly refused, a worker whose data leaks, a driver directed to a wrong address. NIST AI 100-1 asks organisations to consider impacts on individuals, groups, organisations and society. A senior specialist should list affected parties for each risk and ask whether they can notice, contest and recover from the harm.
 
-Section four point one develops advanced risk and ethics with a Corvane Freight note Corvane Freight can demo offline.
-
 ### 4.2 The AI Act in practice
 
 Regulation (EU) 2024/1689 classifies AI systems by risk. High-risk systems carry obligations including risk management, data governance, logging, human oversight — Article 14 requires that people overseeing the system can understand its limits, interpret outputs and intervene or stop it — and Article 15, which requires appropriate accuracy, robustness and cybersecurity, naming threats such as data poisoning, model poisoning, adversarial examples and confidentiality attacks. Whether a given system is high-risk depends on its use; establish this with legal counsel rather than assuming.
-
-Section four point two develops advanced risk and ethics with a Corvane Freight note Corvane Freight can demo offline.
 
 ### 4.3 Ethics of testing and disclosure
 
 Testing must be authorised and scoped; synthetic or consented data should be used; tests on production must not harm users. When you find a weakness in a vendor's model, coordinate disclosure: inform the vendor, agree a timeline, avoid publishing working exploits that endanger others. When internal pressure pushes to hide a finding, document it and escalate: suppressing evidence of a risk to others is an ethical failure even if no rule names it.
 
-Section four point three develops advanced risk and ethics with a Corvane Freight note Corvane Freight can demo offline.
-
 ### 4.4 Management systems
 
 ISO/IEC 42001 asks organisations to define AI policy, roles, risk assessment and treatment, impact assessment, and continual improvement. Its value for security is that risk work becomes recurring and audited rather than a one-off review.
-
-Section four point four develops advanced risk and ethics with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section four point four, the mentor expects advanced claims to carry owners and dates.
-
-Section four point four treats whose risk the ai as testable only when evidence and ticket IDs are recorded.
 
 ### 4.5 Worked example (synthetic Corvane case)
 
 FraudScore flags supplier invoices; flagged suppliers wait 30 days for payment. Amira finds that small suppliers with irregular invoicing are flagged four times as often as large ones. Even if fraud losses fall, the harm lands on small businesses who cannot see why they are delayed. Her risk entry lists them as an affected party; treatment adds a reason code, a 5-day human review and an appeal channel. She records the residual risk and asks the finance director to accept it in writing.
 
 ### 4.6 Errors and limits
-Section four point six develops advanced risk and ethics with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section four point six, the mentor expects advanced claims to carry owners and dates.
-
-Section four point six treats whose risk the ai as testable only when evidence and ticket IDs are recorded.
-
-For section four point six, Corvane Freight will not accept advanced work without a written trail.
-
 
 - Registers that omit affected people.
 - Assuming AI Act classification without legal advice.
@@ -402,47 +326,23 @@ You will (1) generate several architectures for an AI feature; (2) compare them 
 
 A common failure is to secure the first design proposed. Generate at least three: the minimal design (the model drafts, a human acts); the bounded agent (the model calls narrow tools with external checks); and the broad agent (the model has general tools). Then compare. Often the minimal design delivers most of the value with little risk.
 
-Section five point one develops ai and machine-learning security design with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section five point one, the mentor expects ai claims to carry owners and dates.
-
 ### 5.2 Patterns
 
 *Privilege separation*: one component reads untrusted content without tool access and returns structured data; another, which never sees raw untrusted text, decides actions. *Plan-then-execute*: the model proposes a plan in a fixed schema; a deterministic checker validates it against policy before execution. *Structured outputs*: actions are typed fields, not free text, so validation is exact. *Scoped credentials*: tool calls run with the end user's rights, never with a service account that can reach all records.
-
-Section five point two develops ai and machine-learning security design with a Corvane Freight note Corvane Freight can demo offline.
 
 ### 5.3 Model-side versus system-side
 
 Model-side defences — safety training, injection classifiers, structured queries — reduce the rate of bad outputs. System-side defences — policy checks, limits, sandboxing, confirmation — bound the harm when bad outputs occur. Wei et al. (arXiv:2307.02483) analyse why safety training fails against jailbreaks, supporting the view that model-side defences should not be the only layer. Use both, but put guarantees in the system.
 
-Section five point three develops ai and machine-learning security design with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section five point three, the mentor expects ai claims to carry owners and dates.
-
 ### 5.4 Comparing designs
 
 Score each design on: harm bound (worst-case loss per incident), expected failure rate, user value, operating cost, implementation effort and reversibility. Present a table and a recommendation, and say which scores are estimates.
-
-Section five point four develops ai and machine-learning security design with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section five point four, the mentor expects ai claims to carry owners and dates.
-
-Section five point four treats generate before choosing patterns as testable only when evidence and ticket IDs are recorded.
 
 ### 5.5 Worked example (synthetic Corvane case)
 
 For rebooking, Amira compares: (A) Copilot drafts a rebooking, an agent clicks confirm — harm bound one wrong booking per click, value moderate; (B) Copilot proposes a structured rebooking checked against the shipment owner and date rules, executed automatically for shipments under €2,000 — harm bound limited by value cap, value high; (C) Copilot has a general logistics API key — harm bound the whole shipment database. She recommends B with privilege separation: a reader model parses carrier emails into fields; the planner never sees the raw email text.
 
 ### 5.6 Errors and limits
-Section five point six develops ai and machine-learning security design with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section five point six, the mentor expects ai claims to carry owners and dates.
-
-Section five point six treats generate before choosing patterns as testable only when evidence and ticket IDs are recorded.
-
-For section five point six, Corvane Freight will not accept ai work without a written trail.
-
 
 - Comparing only one design with "do nothing".
 - Relying on prompt instructions as a boundary.
@@ -476,27 +376,13 @@ You will (1) design a controlled evaluation comparing defences; (2) control conf
 
 Change one thing at a time. Hold the model version, prompt, retrieval index and test suite fixed while comparing defences; record versions. Split suites into development cases (used to tune defences) and held-out cases (used once for reporting), and include adaptive cases written by people who did not build the defence.
 
-Section six point one develops ai and machine-learning security controlled with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section six point one, the mentor expects ai claims to carry owners and dates.
-
 ### 6.2 Metrics and sample size
 
 Measure effects: harmful tool calls, records disclosed, money moved. Also measure costs: false refusals and task completion on normal traffic. To distinguish 15% from 10% attack success with reasonable confidence you need a few hundred cases per arm; to claim a rate below 1% you need several hundred cases with zero or near-zero failures.
 
-Section six point two develops ai and machine-learning security controlled with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section six point two, the mentor expects ai claims to carry owners and dates.
-
 ### 6.3 Classical threats
 
 For predictive models, controlled evaluation includes poisoning and evasion. The lab shows label-flip poisoning barely moving clean accuracy, while a backdoor with 80 triggered points reaches 98% attack success at unchanged clean accuracy. Clean-accuracy monitoring alone would miss it.
-
-Section six point three develops ai and machine-learning security controlled with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section six point three, the mentor expects ai claims to carry owners and dates.
-
-Section six point three treats controlled comparison metrics and as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Lab P: label-flip poisoning and a backdoor trigger on a toy nearest-centroid
@@ -554,27 +440,11 @@ backdoor: add n triggered class-1 points labelled 0
 
 Report per defence: attack success with interval, difference from baseline with interval, side effects, cost, and conditions (versions, suites, dates). End with what the result implies for the decision and what it does not show.
 
-Section six point four develops ai and machine-learning security controlled with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section six point four, the mentor expects ai claims to carry owners and dates.
-
-Section six point four treats controlled comparison metrics and as testable only when evidence and ticket IDs are recorded.
-
 ### 6.5 Worked example (synthetic Corvane case)
 
 Amira's team compares the baseline Copilot, Copilot with an injection classifier, and Copilot with privilege separation, on 400 held-out adaptive cases plus 2,000 normal conversations. Harmful tool calls: 22%, 9% and 0.5%. Normal-task completion: 91%, 86% and 90%. The classifier cut attacks but also blocked legitimate carrier emails containing words like "ignore the previous slot". She recommends privilege separation, keeping the classifier only as a monitoring signal. For FraudScore she adds a backdoor test using synthetic trigger invoices.
 
-Section six point five develops ai and machine-learning security controlled with a Corvane Freight note Corvane Freight can demo offline.
-
 ### 6.6 Errors and limits
-Section six point six develops ai and machine-learning security controlled with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section six point six, the mentor expects ai claims to carry owners and dates.
-
-Section six point six treats controlled comparison metrics and as testable only when evidence and ticket IDs are recorded.
-
-For section six point six, Corvane Freight will not accept ai work without a written trail.
-
 
 - Changing model and defence together.
 - Tuning on the reporting suite.
@@ -607,8 +477,6 @@ You will (1) build an AI-system inventory with risk tiers; (2) integrate AI cont
 ### 7.1 Inventory and tiers
 
 You cannot secure what you do not know. An inventory lists each AI system, owner, purpose, model source, data, tools, users, affected parties and risk tier. Tier by consequence: what is the worst plausible harm, and how many people does it reach? Agents with write tools and systems affecting rights rank highest. Shadow AI — staff pasting data into public chatbots — belongs in the inventory as a use, even if no system was built.
-
-Section seven point one develops ai and machine-learning security organizational with a Corvane Freight note Corvane Freight can demo offline.
 
 ```python
 """Lab V: an AI system inventory scored for review priority (synthetic).
@@ -649,43 +517,19 @@ churn-predictor    score= 3 owasp=LLM02
 
 Change management covers model, prompt and retrieval-index changes as well as code. Access management covers the identities agents use. Vendor management asks model and API providers about data use, retention, security testing and incident notification. Incident response adds playbooks for prompt injection, data leakage through a model and poisoned data, including rollback of models and prompts. Integration beats a separate "AI process" that teams can ignore.
 
-Section seven point two develops ai and machine-learning security organizational with a Corvane Freight note Corvane Freight can demo offline.
-
 ### 7.3 Roles
 
 Assign: a system owner accountable for each AI system; an AI-security function setting standards and testing; data owners approving data use; and a risk committee accepting residual risk for high tiers. ISO/IEC 42001 expects such roles to be defined and resourced.
-
-Section seven point three develops ai and machine-learning security organizational with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section seven point three, the mentor expects ai claims to carry owners and dates.
-
-Section seven point three treats inventory and tiers reuse as testable only when evidence and ticket IDs are recorded.
 
 ### 7.4 Metrics
 
 Useful organisation metrics: percentage of AI systems inventoried and tiered; high-tier systems with current adversarial evaluation; time to roll back a model or prompt; AI-related incidents and near misses; percentage of agent tools with external enforcement. Avoid vanity metrics like "number of prompts filtered".
 
-Section seven point four develops ai and machine-learning security organizational with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section seven point four, the mentor expects ai claims to carry owners and dates.
-
-Section seven point four treats inventory and tiers reuse as testable only when evidence and ticket IDs are recorded.
-
 ### 7.5 Worked example (synthetic Corvane case)
 
 Amira's inventory finds 23 AI uses: 3 built systems, 11 vendor features switched on in SaaS products, and 9 shadow uses. Two vendor features — an email assistant with mailbox access and a CRM summariser — had never been reviewed. She tiers them, adds AI questions to the vendor questionnaire, adds "prompt or model change" to the change-advisory checklist, and writes an injection playbook. Her first-year roadmap targets all high-tier systems evaluated within six months.
 
-Section seven point five develops ai and machine-learning security organizational with a Corvane Freight note Corvane Freight can demo offline.
-
 ### 7.6 Errors and limits
-Section seven point six develops ai and machine-learning security organizational with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section seven point six, the mentor expects ai claims to carry owners and dates.
-
-Section seven point six treats inventory and tiers reuse as testable only when evidence and ticket IDs are recorded.
-
-For section seven point six, Corvane Freight will not accept ai work without a written trail.
-
 
 - Inventories that miss vendor features and shadow use.
 - Parallel AI processes nobody follows.
@@ -719,17 +563,9 @@ You will (1) analyse cases where controls conflict or evidence is ambiguous; (2)
 
 Logging every prompt supports investigation but stores personal data; strict refusal reduces misuse but harms legitimate users; human confirmation bounds harm but causes approval fatigue. Difficult cases are rarely solved by one more control; they need explicit trade-offs, owners and monitoring of both sides.
 
-Section eight point one develops ai and machine-learning security difficult with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section eight point one, the mentor expects ai claims to carry owners and dates.
-
-Section eight point one treats conflicting controls multi-agent and as testable only when evidence and ticket IDs are recorded.
-
 ### 8.2 Multi-agent and supply chain
 
 When agents call agents, an injection in one can propagate. Treat every agent-to-agent message as untrusted input and keep enforcement at each tool boundary. Supply-chain cases include poisoned public datasets — Carlini et al. (arXiv:2302.10149) show that poisoning web-scale datasets is practical — and model files from public hubs. Pin hashes, record provenance and prefer formats that do not execute code on load.
-
-Section eight point two develops ai and machine-learning security difficult with a Corvane Freight note Corvane Freight can demo offline.
 
 ```python
 """Lab H: integrity of model artefacts with SHA-256 manifests (stdlib only).
@@ -766,35 +602,15 @@ tokenizer.json  OK
 
 Fine-tuned models can memorise and reveal training data; Carlini et al. (arXiv:2012.07805) extracted verbatim training examples from a language model. When a model is fine-tuned on customer messages, test for verbatim regurgitation and membership inference, and consider deduplication, filtering and differential privacy.
 
-Section eight point three develops ai and machine-learning security difficult with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section eight point three, the mentor expects ai claims to carry owners and dates.
-
-Section eight point three treats conflicting controls multi-agent and as testable only when evidence and ticket IDs are recorded.
-
 ### 8.4 Incidents with uncertain cause
 
 Was the wrong refund an injection, a model error, or a policy bug? Preserve prompts, retrieved documents, tool calls and versions; reproduce on an isolated copy; consider all three until evidence separates them. Contain first: lower limits, disable the tool, roll back the prompt.
-
-Section eight point four develops ai and machine-learning security difficult with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section eight point four, the mentor expects ai claims to carry owners and dates.
-
-Section eight point four treats conflicting controls multi-agent and as testable only when evidence and ticket IDs are recorded.
 
 ### 8.5 Worked example (synthetic Corvane case)
 
 Copilot rebooked 14 shipments to a new depot after reading a carrier email. Was it an attack? The email said "Per updated routing, all Thursday loads go to Depot 7". Logs show the email came from a real carrier account that had been compromised. Amira contains by disabling automatic rebooking, notifies the carrier, and adds a rule: depot changes require a matching entry in the routing system, not just email text. She records that the model behaved as designed — the design trusted email too much.
 
 ### 8.6 Errors and limits
-Section eight point six develops ai and machine-learning security difficult with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section eight point six, the mentor expects ai claims to carry owners and dates.
-
-Section eight point six treats conflicting controls multi-agent and as testable only when evidence and ticket IDs are recorded.
-
-For section eight point six, Corvane Freight will not accept ai work without a written trail.
-
 
 - Seeking a single control for a trade-off.
 - Trusting agent-to-agent messages.
@@ -828,37 +644,17 @@ You will (1) build an assurance case for an AI system; (2) report AI-security po
 
 An assurance case is a structured argument: a claim ("Copilot cannot issue refunds outside policy"), arguments ("refunds pass a policy service independent of the model"), and evidence (tests, configuration, monitoring). Each claim should state its conditions and the evidence's age. Weak points are explicit: what would make the claim false?
 
-Section nine point one develops ai and machine-learning security leadership with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section nine point one, the mentor expects ai claims to carry owners and dates.
-
 ### 9.2 Reporting upward
 
 Boards need a short, honest picture: which AI systems carry the most risk, how much of that risk is treated, what incidents occurred, which decisions need them. Use few metrics, trends, and plain statements of residual risk. Do not hide uncertainty behind green dashboards.
-
-Section nine point two develops ai and machine-learning security leadership with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section nine point two, the mentor expects ai claims to carry owners and dates.
-
-Section nine point two treats assurance cases reporting upward as testable only when evidence and ticket IDs are recorded.
 
 ### 9.3 Audit and red teaming
 
 Internal audit checks that processes run as designed: inventories maintained, evaluations current, changes reviewed. Independent red teams test whether controls work against motivated attackers. Ganguli et al. (arXiv:2209.07858) describe lessons from red teaming language models; scope red teams on objectives (move money, exfiltrate data) rather than on lists of prompts.
 
-Section nine point three develops ai and machine-learning security leadership with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section nine point three, the mentor expects ai claims to carry owners and dates.
-
 ### 9.4 Leading contested decisions
 
 Product teams want speed; risk teams want evidence. Lead by making the disagreement concrete: which harm, how likely, what evidence would change minds. Offer reversible paths. When you overrule, say why in writing.
-
-Section nine point four develops ai and machine-learning security leadership with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section nine point four, the mentor expects ai claims to carry owners and dates.
-
-Section nine point four treats assurance cases reporting upward as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Lab A: spotting extraction-style abuse in a synthetic API log.
@@ -903,29 +699,11 @@ client99 queries=600 robust_z= 30.58 distinct_ratio=0.10 FLAG
 
 Every model update, prompt change, new tool or new data source can invalidate evidence. Tie claims to versions; re-run evaluations automatically; monitor production signals (the lab flags a client whose query volume is a robust-z outlier, a sign of possible extraction or abuse).
 
-Section nine point five develops ai and machine-learning security leadership with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section nine point five, the mentor expects ai claims to carry owners and dates.
-
-Section nine point five treats assurance cases reporting upward as testable only when evidence and ticket IDs are recorded.
-
 ### 9.6 Worked example (synthetic Corvane case)
 
 Amira's quarterly board report has one page: top five AI risks with trend arrows, two incidents (depot rebooking, a shadow-AI data paste), evaluation coverage 4 of 5 high-tier systems, and one decision request: approve raising the refund cap to €50 based on 12,000 live refunds with 2 confirmed wrongful ones. The assurance case for the cap lists its weak point: carrier-email compromise.
 
-Section nine point six develops ai and machine-learning security leadership with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section nine point six, the mentor expects ai claims to carry owners and dates.
-
 ### 9.7 Errors and limits
-Section nine point seven develops ai and machine-learning security leadership with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section nine point seven, the mentor expects ai claims to carry owners and dates.
-
-Section nine point seven treats assurance cases reporting upward as testable only when evidence and ticket IDs are recorded.
-
-For section nine point seven, Corvane Freight will not accept ai work without a written trail.
-
 
 - Assurance cases without conditions or dates.
 - Green dashboards hiding unknowns.
@@ -959,51 +737,23 @@ You will (1) read AI-security papers efficiently; (2) critique threat models, me
 
 Read in three passes: abstract, figures and conclusion to decide relevance; threat model and method to understand the claim; evaluation and limitations to judge it. Keep a one-paragraph note per paper: claim, threat model, evidence, limits, relevance to your systems.
 
-Section ten point one develops research reading and critique with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section ten point one, the mentor expects research claims to carry owners and dates.
-
-Section ten point one treats reading efficiently critique questions as testable only when evidence and ticket IDs are recorded.
-
 ### 10.2 Critique questions
 
 What can the attacker do and know? Is the threat model realistic for your deployment? Are baselines and adaptive attacks included? Are results measured by effects and reported with uncertainty? Would a small change in setting break the result? Did the authors release code and data? Papers such as Carlini et al. (arXiv:1902.06705) give a checklist for robustness evaluations; Arp et al. (arXiv:2010.09470) list pitfalls in machine learning for security, including sampling bias, data snooping and inappropriate baselines.
-
-Section ten point two develops research reading and critique with a Corvane Freight note Corvane Freight can demo offline.
 
 ### 10.3 Transfer to practice
 
 An attack demonstrated on an open model with white-box access may not apply to an API-only deployment — but transfer results such as Zou et al. (arXiv:2307.15043) show that some attacks found on open models work on closed ones. A defence evaluated on a public benchmark may fail on your traffic. State transfer assumptions explicitly.
 
-Section ten point three develops research reading and critique with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section ten point three, the mentor expects research claims to carry owners and dates.
-
 ### 10.4 Keeping up
 
 Follow a small set of sources: NIST and OWASP updates, MITRE ATLAS case studies, major security and ML conferences, and preprint servers with skepticism. Hold a monthly reading session where one person presents a paper's relevance to company systems.
-
-Section ten point four develops research reading and critique with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section ten point four, the mentor expects research claims to carry owners and dates.
-
-Section ten point four treats reading efficiently critique questions as testable only when evidence and ticket IDs are recorded.
 
 ### 10.5 Worked example (synthetic Corvane case)
 
 A colleague circulates a preprint claiming a new filter "eliminates prompt injection". Amira's critique: the evaluation uses 200 public injection strings with no adaptive attacker; success is measured by the model's text rather than tool calls; no false-refusal rate is reported; code is not released. Her conclusion: interesting as a monitoring signal; not evidence to remove the policy service. She contrasts it with Greshake et al. (arXiv:2302.12173), whose demonstrations against real applications motivated Corvane's design.
 
-Section ten point five develops research reading and critique with a Corvane Freight note Corvane Freight can demo offline.
-
 ### 10.6 Errors and limits
-Section ten point six develops research reading and critique with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section ten point six, the mentor expects research claims to carry owners and dates.
-
-Section ten point six treats reading efficiently critique questions as testable only when evidence and ticket IDs are recorded.
-
-For section ten point six, Corvane Freight will not accept research work without a written trail.
-
 
 - Citing abstracts without reading evaluations.
 - Assuming results transfer without checking threat models.
@@ -1037,43 +787,17 @@ You will (1) scope an applied AI-security project with an organisation; (2) plan
 
 A good project answers a decision the organisation must make: "Should we enable autonomous rebooking?", "Does deduplication reduce leakage from our fine-tuned model?" Agree the decision owner, the systems in scope, authorisation in writing, data rules (synthetic or approved), success criteria and timeline.
 
-Section eleven point one develops applied project with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section eleven point one, the mentor expects applied claims to carry owners and dates.
-
-Section eleven point one treats scoping planning execution evaluation as testable only when evidence and ticket IDs are recorded.
-
 ### 11.2 Planning
 
 Plan in phases: baseline (current state and risk), intervention (design or controls), evaluation (controlled tests), decision support (report and recommendation), handover. Each phase has a deliverable and a review. Keep a risk register for the project itself: test damage, data exposure, schedule slips.
-
-Section eleven point two develops applied project with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section eleven point two, the mentor expects applied claims to carry owners and dates.
-
-Section eleven point two treats scoping planning execution evaluation as testable only when evidence and ticket IDs are recorded.
 
 ### 11.3 Execution
 
 Work on isolated copies. Log every test. Stop and escalate if you find a live vulnerability affecting customers; that takes priority over the project timeline. Hold weekly reviews with the decision owner.
 
-Section eleven point three develops applied project with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section eleven point three, the mentor expects applied claims to carry owners and dates.
-
-Section eleven point three treats scoping planning execution evaluation as testable only when evidence and ticket IDs are recorded.
-
 ### 11.4 Evaluation
 
 Measure against the criteria agreed at scoping. Use held-out and adaptive cases and measure side effects. Report failures honestly.
-
-Section eleven point four develops applied project with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section eleven point four, the mentor expects applied claims to carry owners and dates.
-
-Section eleven point four treats scoping planning execution evaluation as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point four, Corvane Freight will not accept applied work without a written trail.
 
 ```python
 """Lab M: membership inference against an overfit 1-nearest-neighbour 'model'
@@ -1111,27 +835,11 @@ k=25 attack_auc=0.520 best_advantage=0.060
 
 Deliver: the report; the evaluation harness and suites so tests can be re-run; configuration changes; runbooks; and a list of open risks with owners. A project that cannot be repeated after you leave has limited value.
 
-Section eleven point five develops applied project with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section eleven point five, the mentor expects applied claims to carry owners and dates.
-
-Section eleven point five treats scoping planning execution evaluation as testable only when evidence and ticket IDs are recorded.
-
 ### 11.6 Worked example (synthetic Corvane case)
 
 A student on placement, Tomás, takes Amira's question: does deduplicating customer messages before fine-tuning a reply-suggestion model reduce membership-inference leakage? Criteria: attack advantage below 0.1 with less than 2 points loss in reply quality. In the lab analogue, records repeated once give advantage 0.20; at higher counts it falls to about 0.06–0.07. On Corvane's isolated copy, deduplication cuts advantage from 0.17 to 0.06 with 1 point quality loss. He hands over the harness, the deduplication job and a runbook for retesting after each fine-tune.
 
-Section eleven point six develops applied project with a Corvane Freight note Corvane Freight can demo offline.
-
 ### 11.7 Errors and limits
-Section eleven point seven develops applied project with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section eleven point seven, the mentor expects applied claims to carry owners and dates.
-
-Section eleven point seven treats scoping planning execution evaluation as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point seven, Corvane Freight will not accept applied work without a written trail.
-
 
 - Projects without a decision owner.
 - Testing on production.
@@ -1165,37 +873,17 @@ You will (1) review the course's main principles; (2) transfer them to new AI te
 
 Decide among options with explicit uncertainty. Map each system to taxonomies, then to its own data, tools and affected people. Assume models can be steered; enforce consequences outside them. Evaluate adaptively, measure effects and report intervals. Integrate AI into existing processes. Assure claims with dated evidence and keep them current. Read research for its threat model.
 
-Section twelve point one develops final review and transfer with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section twelve point one, the mentor expects final claims to carry owners and dates.
-
 ### 12.2 Transfer to new technology
 
 New capabilities — computer-use agents, multimodal inputs, on-device models, model-to-model protocols — will keep arriving. Ask the same questions: what untrusted input reaches the model? What can it do? What enforces limits outside it? What evidence shows the limits hold? Multimodal inputs, for example, extend the injection channel to images and audio; the principle of separating untrusted content from authority still applies.
-
-Section twelve point two develops final review and transfer with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section twelve point two, the mentor expects final claims to carry owners and dates.
 
 ### 12.3 Personal practice plan
 
 Plan for the next year: one system you will assure end to end; one evaluation you will automate; one paper a month; one community contribution (a test suite, a talk, a framework comment); and ethics commitments — authorised testing, coordinated disclosure, honest reporting.
 
-Section twelve point three develops final review and transfer with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section twelve point three, the mentor expects final claims to carry owners and dates.
-
-Section twelve point three treats principles to keep transfer as testable only when evidence and ticket IDs are recorded.
-
 ### 12.4 Mentoring
 
 Teach juniors to ask "what can it do?" before "what can it say?". Review their evaluations for adaptive cases and intervals. Share decision records so they see reasoning, not just outcomes.
-
-Section twelve point four develops final review and transfer with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section twelve point four, the mentor expects final claims to carry owners and dates.
-
-Section twelve point four treats principles to keep transfer as testable only when evidence and ticket IDs are recorded.
 
 ```python
 """Lab B: base rates and alarm precision (Bayes' rule).
@@ -1227,25 +915,11 @@ tpr=0.80 fpr=0.001 prevalence=0.001 precision=0.445 alerts_per_10k=18
 
 Can you write a decision record a board could act on? Can you design an evaluation that would change a decision? Can you explain why a 95%-accurate detector can produce mostly false alarms (the lab: at prevalence 0.1%, precision is 1.9%)? Can you lead a contested decision without hiding uncertainty?
 
-Section twelve point five develops final review and transfer with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section twelve point five, the mentor expects final claims to carry owners and dates.
-
 ### 12.6 Worked example (synthetic Corvane case)
 
 A year on, Corvane plans a computer-use agent to operate a legacy carrier portal. Amira applies the same questions: the portal's pages are untrusted input; the agent's clicks are actions; enforcement must sit in a proxy that permits only listed operations with the user's credentials; evaluation needs adaptive pages with hidden instructions. Her decision record proposes a three-month pilot on read-only operations first.
 
-Section twelve point six develops final review and transfer with a Corvane Freight note Corvane Freight can demo offline.
-
 ### 12.7 Errors and limits
-Section twelve point seven develops final review and transfer with a Corvane Freight note Corvane Freight can demo offline.
-
-Under section twelve point seven, the mentor expects final claims to carry owners and dates.
-
-Section twelve point seven treats principles to keep transfer as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point seven, Corvane Freight will not accept final work without a written trail.
-
 
 - Treating each new technology as needing new principles.
 - Plans without measurable commitments.

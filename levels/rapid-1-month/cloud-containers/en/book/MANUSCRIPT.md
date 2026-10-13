@@ -49,53 +49,21 @@ Leila Ahmadi is the practice manager and only IT person at the fictional Oakfiel
 
 NIST SP 800-145 describes cloud computing as on-demand access to shared computing resources managed by a provider. For Oakfield, that means the storage service, the email service and the hosted platform running the booking container. The clinic owns no servers.
 
-Section one point two develops cloud and container security foundations with a Oakfield Physiotherapy note Leila Ahmadi can demo offline.
-
-Under section one point two, Ben Hartley expects cloud claims to carry owners and dates.
-
-Section one point two treats the trigger what cloud as testable only when evidence and ticket IDs are recorded.
-
 ### 1.3 Containers in plain terms
 
 A container is a packaged application with everything it needs to run. The booking app container was built by the developer from a base image; if the base image is old, the app inherits its flaws even if the clinic never touches the code.
-
-Section one point three develops cloud and container security foundations with a Oakfield Physiotherapy note Leila Ahmadi can demo offline.
-
-Under section one point three, Ben Hartley expects cloud claims to carry owners and dates.
-
-Section one point three treats the trigger what cloud as testable only when evidence and ticket IDs are recorded.
 
 ### 1.4 Who does what
 
 Each provider's shared responsibility page explains that the provider secures its infrastructure while the customer controls accounts, sharing settings, data and what it runs. Oakfield's sharing mistake sits entirely on the clinic's side.
 
-Section one point four develops cloud and container security foundations with a Oakfield Physiotherapy note Leila Ahmadi can demo offline.
-
-Under section one point four, Ben Hartley expects cloud claims to carry owners and dates.
-
-Section one point four treats the trigger what cloud as testable only when evidence and ticket IDs are recorded.
-
 ### 1.5 Proportionate decisions
 
 A small clinic cannot do everything at once. Ben suggests three first decisions: fix sharing on sensitive folders today, turn on multi-factor authentication for every account this week, and agree with the developer how the booking container will be kept updated.
 
-Section one point five develops cloud and container security foundations with a Oakfield Physiotherapy note Leila Ahmadi can demo offline.
-
-Under section one point five, Ben Hartley expects cloud claims to carry owners and dates.
-
-Section one point five treats the trigger what cloud as testable only when evidence and ticket IDs are recorded.
-
 ### 1.6 Recording decisions
 
 Leila writes each decision with date, reason and owner in a one-page log.
-
-Section one point six develops cloud and container security foundations with a Oakfield Physiotherapy note Leila Ahmadi can demo offline.
-
-Under section one point six, Ben Hartley expects cloud claims to carry owners and dates.
-
-Section one point six treats the trigger what cloud as testable only when evidence and ticket IDs are recorded.
-
-For section one point six, Oakfield Physiotherapy will not accept cloud work without a written trail.
 
 ### Worked example
 
@@ -143,77 +111,29 @@ You will (1) work within the clinic's authority and data protection duties; (2) 
 
 As practice manager, Leila is authorised by the clinic's owner, physiotherapist Mark Ellis, to manage accounts and settings. She confirms this in writing for the course and agrees she will only review Oakfield's own services.
 
-Section two point one develops scope permission and safe practice with a Oakfield Physiotherapy note Leila Ahmadi can demo offline.
-
-Under section two point one, Ben Hartley expects scope claims to carry owners and dates.
-
-Section two point one treats authority evidence first what as testable only when evidence and ticket IDs are recorded.
-
 ### 2.2 Evidence first
 
 Before changing more settings, Leila exports the storage service's sharing report and the activity log for the patient letters folder. She saves them with date and time in a restricted folder.
-
-Section two point two develops scope permission and safe practice with a Oakfield Physiotherapy note Leila Ahmadi can demo offline.
-
-Under section two point two, Ben Hartley expects scope claims to carry owners and dates.
-
-Section two point two treats authority evidence first what as testable only when evidence and ticket IDs are recorded.
 
 ### 2.3 What the log shows
 
 The activity log shows the folder was set to anyone-with-link in January when a colleague shared one letter with a hospital. The log records four views from outside the clinic: three match the hospital's domain, one is the patient's own forwarded view.
 
-Section two point three develops scope permission and safe practice with a Oakfield Physiotherapy note Leila Ahmadi can demo offline.
-
-Under section two point three, Ben Hartley expects scope claims to carry owners and dates.
-
-Section two point three treats authority evidence first what as testable only when evidence and ticket IDs are recorded.
-
 ### 2.4 Data protection
 
 Leila follows the regulator's guidance for small organisations, recording what happened, who was affected and why she judges the risk low. Mark, as data controller, makes the final decision and records it.
-
-Section two point four develops scope permission and safe practice with a Oakfield Physiotherapy note Leila Ahmadi can demo offline.
-
-Under section two point four, Ben Hartley expects scope claims to carry owners and dates.
-
-Section two point four treats authority evidence first what as testable only when evidence and ticket IDs are recorded.
 
 ### 2.5 Safe practice
 
 Leila does not try to "test" whether other links work by guessing addresses or using outside tools. She uses the provider's own reports and settings pages.
 
-Section two point five develops scope permission and safe practice with a Oakfield Physiotherapy note Leila Ahmadi can demo offline.
-
-Under section two point five, Ben Hartley expects scope claims to carry owners and dates.
-
-Section two point five treats authority evidence first what as testable only when evidence and ticket IDs are recorded.
-
-For section two point five, Oakfield Physiotherapy will not accept scope work without a written trail.
-
 ### 2.6 Accounts
 
 Each staff member has their own account; the shared reception login is replaced, so the logs show who did what.
 
-Section two point six develops scope permission and safe practice with a Oakfield Physiotherapy note Leila Ahmadi can demo offline.
-
-Under section two point six, Ben Hartley expects scope claims to carry owners and dates.
-
-Section two point six treats authority evidence first what as testable only when evidence and ticket IDs are recorded.
-
-For section two point six, Oakfield Physiotherapy will not accept scope work without a written trail.
-
 ### 2.7 Multi-factor authentication
 
 All accounts get a second factor. Two staff without smartphones receive hardware keys.
-
-Section two point seven develops scope permission and safe practice with a Oakfield Physiotherapy note Leila Ahmadi can demo offline.
-
-Under section two point seven, Ben Hartley expects scope claims to carry owners and dates.
-
-Section two point seven treats authority evidence first what as testable only when evidence and ticket IDs are recorded.
-
-For section two point seven, Oakfield Physiotherapy will not accept scope work without a written trail.
 
 ### Leavers
 
@@ -265,23 +185,9 @@ You will (1) list the clinic's data and where it is shared; (2) check sharing ag
 
 Leila writes a one-line rule: sensitive items may be shared only with staff or administrators; non-sensitive items may also be public. Patient letters, referrals, invoices, backups and the booking app configuration count as sensitive.
 
-Section three point one develops cloud and container security systems with a Oakfield Physiotherapy note Leila Ahmadi can demo offline.
-
-Under section three point one, Ben Hartley expects cloud claims to carry owners and dates.
-
-Section three point one treats simple policy checking every as testable only when evidence and ticket IDs are recorded.
-
 ### 3.2 Checking every item
 
 The April problem might not be the only one, so she checks every top-level item in storage against the rule.
-
-Section three point two develops cloud and container security systems with a Oakfield Physiotherapy note Leila Ahmadi can demo offline.
-
-Under section three point two, Ben Hartley expects cloud claims to carry owners and dates.
-
-Section three point two treats simple policy checking every as testable only when evidence and ticket IDs are recorded.
-
-For section three point two, Oakfield Physiotherapy will not accept cloud work without a written trail.
 
 ### Lab — Lab — sharing check
 
@@ -309,53 +215,21 @@ items 8, sensitive 5, shared too widely 3
 
 Of 8 items, 5 are sensitive and 3 are shared too widely: patient-letters (already fixed in chapter 1, still in the April export), invoices and old-backup.zip, all set to anyone-with-link.
 
-Section three point three develops cloud and container security systems with a Oakfield Physiotherapy note Leila Ahmadi can demo offline.
-
-Under section three point three, Ben Hartley expects cloud claims to carry owners and dates.
-
-Section three point three treats simple policy checking every as testable only when evidence and ticket IDs are recorded.
-
-For section three point three, Oakfield Physiotherapy will not accept cloud work without a written trail.
-
 ### 3.4 Acting
 
 Invoices are set to staff-only. The old backup, from a previous system, is no longer needed; after checking with Mark and noting the clinic's retention rules, Leila deletes it. Fewer copies mean less to protect.
-
-Section three point four develops cloud and container security systems with a Oakfield Physiotherapy note Leila Ahmadi can demo offline.
-
-Under section three point four, Ben Hartley expects cloud claims to carry owners and dates.
-
-Section three point four treats simple policy checking every as testable only when evidence and ticket IDs are recorded.
 
 ### 3.5 The booking container
 
 Leila asks the developer which base image the booking app uses and how often it is rebuilt. The answer is an older image last rebuilt a year ago. NIST SP 800-190 advises rebuilding images regularly from maintained bases and using trusted registries; Shu et al. (2017) found many public images carried known vulnerabilities.
 
-Section three point five develops cloud and container security systems with a Oakfield Physiotherapy note Leila Ahmadi can demo offline.
-
-Under section three point five, Ben Hartley expects cloud claims to carry owners and dates.
-
 ### 3.6 Agreement with the developer
 
 They agree on a monthly rebuild from a maintained base, with the developer sending a one-line confirmation each time.
 
-Section three point six develops cloud and container security systems with a Oakfield Physiotherapy note Leila Ahmadi can demo offline.
-
-Under section three point six, Ben Hartley expects cloud claims to carry owners and dates.
-
-Section three point six treats simple policy checking every as testable only when evidence and ticket IDs are recorded.
-
-For section three point six, Oakfield Physiotherapy will not accept cloud work without a written trail.
-
 ### 3.7 Secrets
 
 The booking app's configuration contains a database password. The developer moves it into the platform's secret settings, following the Kubernetes good-practice idea of keeping secrets out of images and files.
-
-Section three point seven develops cloud and container security systems with a Oakfield Physiotherapy note Leila Ahmadi can demo offline.
-
-Under section three point seven, Ben Hartley expects cloud claims to carry owners and dates.
-
-Section three point seven treats simple policy checking every as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -402,23 +276,9 @@ You will (1) set up a monthly routine; (2) measure it over three months; (3) bri
 
 Ben helps Leila write six monthly tasks: review sharing links, check admin accounts and multi-factor authentication, check that a backup can be restored, confirm the booking app image was rebuilt, review leavers' access, and read the providers' security notices.
 
-Section four point one develops cloud and container security guided with a Oakfield Physiotherapy note Leila Ahmadi can demo offline.
-
-Under section four point one, Ben Hartley expects cloud claims to carry owners and dates.
-
-Section four point one treats the routine why these as testable only when evidence and ticket IDs are recorded.
-
 ### 4.2 Why these six
 
 Each task matches something that went wrong or nearly did: sharing, accounts, backups, the old image, leavers and changes announced by providers.
-
-Section four point two develops cloud and container security guided with a Oakfield Physiotherapy note Leila Ahmadi can demo offline.
-
-Under section four point two, Ben Hartley expects cloud claims to carry owners and dates.
-
-Section four point two treats the routine why these as testable only when evidence and ticket IDs are recorded.
-
-For section four point two, Oakfield Physiotherapy will not accept cloud work without a written trail.
 
 ### Lab — Lab — routine record
 
@@ -444,57 +304,21 @@ July: 6/6 done
 
 May: 3 of 6 tasks done; missed backup restore, image update and reading notices. June: 5 of 6; the image update was still missing. July: 6 of 6.
 
-Section four point three develops cloud and container security guided with a Oakfield Physiotherapy note Leila Ahmadi can demo offline.
-
-Under section four point three, Ben Hartley expects cloud claims to carry owners and dates.
-
-Section four point three treats the routine why these as testable only when evidence and ticket IDs are recorded.
-
-For section four point three, Oakfield Physiotherapy will not accept cloud work without a written trail.
-
 ### 4.4 Fixing the gaps
 
 The backup restore was missed in May because nobody knew how; Leila practises in June with a test folder. The image update was late because the developer was on holiday; they agree a backup contact.
-
-Section four point four develops cloud and container security guided with a Oakfield Physiotherapy note Leila Ahmadi can demo offline.
-
-Under section four point four, Ben Hartley expects cloud claims to carry owners and dates.
-
-Section four point four treats the routine why these as testable only when evidence and ticket IDs are recorded.
 
 ### 4.5 Keeping it light
 
 The routine takes about an hour a month. Leila books it in the calendar for the first Monday.
 
-Section four point five develops cloud and container security guided with a Oakfield Physiotherapy note Leila Ahmadi can demo offline.
-
-Under section four point five, Ben Hartley expects cloud claims to carry owners and dates.
-
-Section four point five treats the routine why these as testable only when evidence and ticket IDs are recorded.
-
-For section four point five, Oakfield Physiotherapy will not accept cloud work without a written trail.
-
 ### 4.6 Course synthesis
 
 In one month Leila moved from a forwarded link to a working routine: understand what the clinic controls, work within authority, keep evidence, check everything against a simple rule, keep dependencies current and repeat monthly.
 
-Section four point six develops cloud and container security guided with a Oakfield Physiotherapy note Leila Ahmadi can demo offline.
-
-Under section four point six, Ben Hartley expects cloud claims to carry owners and dates.
-
-Section four point six treats the routine why these as testable only when evidence and ticket IDs are recorded.
-
 ### 4.7 Further steps
 
 The CIS Benchmarks and CSA CCM v4 are more detailed than a small clinic needs now, but Leila keeps them as references if Oakfield grows.
-
-Section four point seven develops cloud and container security guided with a Oakfield Physiotherapy note Leila Ahmadi can demo offline.
-
-Under section four point seven, Ben Hartley expects cloud claims to carry owners and dates.
-
-Section four point seven treats the routine why these as testable only when evidence and ticket IDs are recorded.
-
-For section four point seven, Oakfield Physiotherapy will not accept cloud work without a written trail.
 
 ### Recording
 

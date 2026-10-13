@@ -46,45 +46,21 @@ You will (1) describe the purpose of a SOC; (2) name the main SOC functions; (3)
 
 Carlos Mendes has just joined the small security operations centre at the fictional Northgate Borough Council as a trainee analyst. His lead is Aisha Rahman. On his second morning, at 09:04, the monitoring system shows 46 failed logons from one internet address, 203.0.113.80, against the council's remote-access portal, followed at 09:09 by a successful logon to "parks01", a shared account used by the parks department. This book follows Carlos as he learns to handle events like this one.
 
-Section one point one develops what security operations centre does with a Northgate Borough Council note Carlos Mendes can demo offline.
-
 ### 1.2 Purpose
 
 A SOC watches an organisation's systems for signs of attack or misuse, decides which signs matter, and coordinates the response. Zimmerman's "Ten Strategies of a World-Class Cybersecurity Operations Center" (MITRE, 2014) and its successor "11 Strategies" by Knerler, Parker and Zimmerman (MITRE, 2022) describe the SOC as a team with a clear mission, authority and resources rather than a room full of screens.
-
-Section one point two develops what security operations centre does with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section one point two, Aisha Rahman expects what claims to carry owners and dates.
 
 ### 1.3 Functions
 
 Typical functions are monitoring and triage, incident response, threat intelligence, detection engineering, vulnerability awareness and tool maintenance. At Northgate, four analysts cover all of these with help from the IT team.
 
-Section one point three develops what security operations centre does with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section one point three, Aisha Rahman expects what claims to carry owners and dates.
-
-Section one point three treats the case purpose functions as testable only when evidence and ticket IDs are recorded.
-
 ### 1.4 Relationships
 
 The SOC does not own most systems. It needs IT to change firewall rules, reset passwords or rebuild machines, and it needs management to accept risks and approve major actions. Good relationships are part of the job.
 
-Section one point four develops what security operations centre does with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section one point four, Aisha Rahman expects what claims to carry owners and dates.
-
-Section one point four treats the case purpose functions as testable only when evidence and ticket IDs are recorded.
-
 ### 1.5 Frameworks
 
 NIST Cybersecurity Framework 2.0 (CSWP 29, 2024) groups security outcomes into Govern, Identify, Protect, Detect, Respond and Recover. Most SOC work sits in Detect and Respond but depends on the others.
-
-Section one point five develops what security operations centre does with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section one point five, Aisha Rahman expects what claims to carry owners and dates.
-
-Section one point five treats the case purpose functions as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -123,67 +99,25 @@ You will (1) explain what logs and telemetry are; (2) list key log sources for a
 
 A log is a record written by a system when something happens: a logon, a file change, a network connection. Telemetry is the broader stream of such data sent to the SOC. NIST SP 800-92 (Kent and Souppaya, 2006) is the classic guide to log management.
 
-Section two point one develops logs and telemetry with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section two point one, Aisha Rahman expects logs claims to carry owners and dates.
-
-Section two point one treats what logs are key as testable only when evidence and ticket IDs are recorded.
-
 ### 2.2 Key sources
 
 For Northgate: the remote-access portal, domain controllers, endpoint agents, the email gateway, the web proxy and the firewall. The 09:04 alert came from the portal's authentication log.
-
-Section two point two develops logs and telemetry with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section two point two, Aisha Rahman expects logs claims to carry owners and dates.
-
-Section two point two treats what logs are key as testable only when evidence and ticket IDs are recorded.
-
-For section two point two, Northgate Borough Council will not accept logs work without a written trail.
 
 ### 2.3 Useful entries
 
 A useful entry has a time, source, user, action and outcome. The portal entry "09:09 OK 203.0.113.80 parks01" has all five. Entries missing the user or source are much harder to use.
 
-Section two point three develops logs and telemetry with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section two point three, Aisha Rahman expects logs claims to carry owners and dates.
-
-Section two point three treats what logs are key as testable only when evidence and ticket IDs are recorded.
-
 ### 2.4 Time
 
 All systems must agree on time; Northgate uses a central time server. If the portal clock were five minutes slow, the logon would seem to come before the guessing, confusing the story.
-
-Section two point four develops logs and telemetry with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section two point four, Aisha Rahman expects logs claims to carry owners and dates.
-
-Section two point four treats what logs are key as testable only when evidence and ticket IDs are recorded.
 
 ### 2.5 Retention
 
 Logs are kept for a set period, here 90 days searchable and one year archived, as agreed with the records manager. Without retention, past activity cannot be checked.
 
-Section two point five develops logs and telemetry with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section two point five, Aisha Rahman expects logs claims to carry owners and dates.
-
-Section two point five treats what logs are key as testable only when evidence and ticket IDs are recorded.
-
-For section two point five, Northgate Borough Council will not accept logs work without a written trail.
-
 ### 2.6 Collection
 
 Logs flow into a central security information and event management (SIEM) system where analysts search and correlate them.
-
-Section two point six develops logs and telemetry with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section two point six, Aisha Rahman expects logs claims to carry owners and dates.
-
-Section two point six treats what logs are key as testable only when evidence and ticket IDs are recorded.
-
-For section two point six, Northgate Borough Council will not accept logs work without a written trail.
 
 ### Normalisation
 
@@ -226,69 +160,25 @@ You will (1) explain what a SIEM does; (2) describe how rules produce alerts; (3
 
 A SIEM collects logs, normalises their fields, stores them for search and runs rules that raise alerts. Northgate's SIEM receives about four million events a day.
 
-Section three point one develops the siem and alerting with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section three point one, Aisha Rahman expects the claims to carry owners and dates.
-
-Section three point one treats what siem does rules as testable only when evidence and ticket IDs are recorded.
-
-For section three point one, Northgate Borough Council will not accept the work without a written trail.
-
 ### 3.2 Rules
 
 A rule describes a pattern, such as "20 or more failed logons from one source in 10 minutes". When the pattern matches, the SIEM raises an alert. Sigma (SigmaHQ) is an open, vendor-neutral format for sharing such rules.
-
-Section three point two develops the siem and alerting with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section three point two, Aisha Rahman expects the claims to carry owners and dates.
-
-Section three point two treats what siem does rules as testable only when evidence and ticket IDs are recorded.
 
 ### 3.3 Events, alerts, incidents
 
 An event is anything logged. An alert is an event or group that a rule flagged. An incident is a confirmed situation that harms or threatens security, as defined in NIST SP 800-61r3 (Nelson et al., 2025). Most alerts are not incidents.
 
-Section three point three develops the siem and alerting with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section three point three, Aisha Rahman expects the claims to carry owners and dates.
-
-Section three point three treats what siem does rules as testable only when evidence and ticket IDs are recorded.
-
 ### 3.4 Severity
 
 Each rule has a severity. The failed-logon rule is medium; a success after guessing raises it to high.
-
-Section three point four develops the siem and alerting with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section three point four, Aisha Rahman expects the claims to carry owners and dates.
-
-Section three point four treats what siem does rules as testable only when evidence and ticket IDs are recorded.
-
-For section three point four, Northgate Borough Council will not accept the work without a written trail.
 
 ### 3.5 Alert queue
 
 Alerts wait in a queue sorted by severity and time. Analysts take the top one, investigate and record a decision.
 
-Section three point five develops the siem and alerting with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section three point five, Aisha Rahman expects the claims to carry owners and dates.
-
-Section three point five treats what siem does rules as testable only when evidence and ticket IDs are recorded.
-
-For section three point five, Northgate Borough Council will not accept the work without a written trail.
-
 ### 3.6 Noise
 
 Rules that fire often without real problems create noise that hides important alerts. Alahmadi et al. (2022) found analysts widely frustrated by false positives.
-
-Section three point six develops the siem and alerting with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section three point six, Aisha Rahman expects the claims to carry owners and dates.
-
-Section three point six treats what siem does rules as testable only when evidence and ticket IDs are recorded.
-
-For section three point six, Northgate Borough Council will not accept the work without a written trail.
 
 ### Correlation
 
@@ -331,14 +221,6 @@ You will (1) read authentication log entries; (2) count failures per source; (3)
 
 Logon attempts record user, source, time and result. Patterns in failures reveal guessing.
 
-Section four point one develops reading authentication logs with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section four point one, Aisha Rahman expects reading claims to carry owners and dates.
-
-Section four point one treats authentication events lab result as testable only when evidence and ticket IDs are recorded.
-
-For section four point one, Northgate Borough Council will not accept reading work without a written trail.
-
 ### Lab — Lab — counting failures
 
 ```python
@@ -366,45 +248,17 @@ success from alerting source: ['09:09 OK 203.0.113.80 parks01']
 
 The lab counts 46 failures from 203.0.113.80, above the threshold of 20, while two other sources had 3 and 2 failures, which looks like normal typing mistakes. It also finds the 09:09 success for parks01 from the alerting source.
 
-Section four point two develops reading authentication logs with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section four point two, Aisha Rahman expects reading claims to carry owners and dates.
-
-Section four point two treats authentication events lab result as testable only when evidence and ticket IDs are recorded.
-
 ### 4.3 Success after failure
 
 A success from the same source after many failures is a strong sign the guessing worked. It moves the case from "attempt" to "possible compromise".
-
-Section four point three develops reading authentication logs with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section four point three, Aisha Rahman expects reading claims to carry owners and dates.
-
-Section four point three treats authentication events lab result as testable only when evidence and ticket IDs are recorded.
-
-For section four point three, Northgate Borough Council will not accept reading work without a written trail.
 
 ### 4.4 Shared accounts
 
 parks01 is used by several gardeners on a shared tablet. No one person is responsible for its password, which had not changed in three years. Shared accounts are easy to guess and hard to investigate because you cannot tell which person used them.
 
-Section four point four develops reading authentication logs with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section four point four, Aisha Rahman expects reading claims to carry owners and dates.
-
-Section four point four treats authentication events lab result as testable only when evidence and ticket IDs are recorded.
-
 ### 4.5 ATT&CK
 
 MITRE ATT&CK (Strom et al., 2018) describes adversary behaviour; the pattern here matches its brute-force technique under Credential Access.
-
-Section four point five develops reading authentication logs with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section four point five, Aisha Rahman expects reading claims to carry owners and dates.
-
-Section four point five treats authentication events lab result as testable only when evidence and ticket IDs are recorded.
-
-For section four point five, Northgate Borough Council will not accept reading work without a written trail.
 
 ### Username patterns
 
@@ -447,21 +301,9 @@ You will (1) explain what triage means in a SOC; (2) rank alerts by severity and
 
 Triage is the quick first look at an alert to decide what it is and how urgent it is. The aim is not to finish the investigation but to put each alert in the right place: close it, investigate it now, or escalate it.
 
-Section five point one develops triage and prioritisation with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section five point one, Aisha Rahman expects triage claims to carry owners and dates.
-
-Section five point one treats what triage is two as testable only when evidence and ticket IDs are recorded.
-
 ### 5.2 Two inputs
 
 Urgency depends on how serious the activity is (severity) and how important the affected system is (asset criticality). A new admin on a payroll server matters more than failed logons on a library kiosk, even if both rules are "medium".
-
-Section five point two develops triage and prioritisation with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section five point two, Aisha Rahman expects triage claims to carry owners and dates.
-
-Section five point two treats what triage is two as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — Lab — ranking alerts
 
@@ -490,45 +332,17 @@ A3 score=1 P4 Failed logons on library kiosk
 
 Multiplying severity by criticality (each 1–3) puts the new admin on the payroll server first (score 9, P1), outbound traffic from a finance PC to a new domain second (6, P2), disabled antivirus on a reception PC third (4, P3), and the blocked malware and kiosk failures last (P4). The blocked malware is low because the protection worked, but it is still checked later.
 
-Section five point three develops triage and prioritisation with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section five point three, Aisha Rahman expects triage claims to carry owners and dates.
-
 ### 5.4 Escalation
 
 Carlos escalates to Aisha when an alert is P1, when he is unsure, or when an action would affect services. Escalating is not failure; guessing is.
-
-Section five point four develops triage and prioritisation with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section five point four, Aisha Rahman expects triage claims to carry owners and dates.
-
-Section five point four treats what triage is two as testable only when evidence and ticket IDs are recorded.
-
-For section five point four, Northgate Borough Council will not accept triage work without a written trail.
 
 ### 5.5 Recording
 
 Each triage note states what was seen, what was checked, the decision and the reason. "Closed — benign" with no reason helps no one.
 
-Section five point five develops triage and prioritisation with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section five point five, Aisha Rahman expects triage claims to carry owners and dates.
-
-Section five point five treats what triage is two as testable only when evidence and ticket IDs are recorded.
-
-For section five point five, Northgate Borough Council will not accept triage work without a written trail.
-
 ### 5.6 Asset list
 
 Triage depends on knowing which systems matter. Northgate keeps an asset list with a criticality value for each server and group of PCs, maintained with IT.
-
-Section five point six develops triage and prioritisation with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section five point six, Aisha Rahman expects triage claims to carry owners and dates.
-
-Section five point six treats what triage is two as testable only when evidence and ticket IDs are recorded.
-
-For section five point six, Northgate Borough Council will not accept triage work without a written trail.
 
 ### Worked example
 
@@ -567,65 +381,25 @@ You will (1) describe what endpoint agents record; (2) read process and account 
 
 Endpoint detection and response (EDR) agents on laptops and servers record processes started, files changed, network connections and account changes, and can isolate a machine from the network on command.
 
-Section six point one develops endpoint telemetry with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section six point one, Aisha Rahman expects endpoint claims to carry owners and dates.
-
-Section six point one treats endpoint agents process events as testable only when evidence and ticket IDs are recorded.
-
 ### 6.2 Process events
 
 A process event shows which program ran, who ran it, what started it and the command line. Unusual parents, such as a word processor starting a command shell, are worth a look.
-
-Section six point two develops endpoint telemetry with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section six point two, Aisha Rahman expects endpoint claims to carry owners and dates.
-
-Section six point two treats endpoint agents process events as testable only when evidence and ticket IDs are recorded.
 
 ### 6.3 Account events
 
 Windows records account creation, group changes and logons with event IDs; the SIEM labels them so analysts need not memorise numbers.
 
-Section six point three develops endpoint telemetry with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section six point three, Aisha Rahman expects endpoint claims to carry owners and dates.
-
-Section six point three treats endpoint agents process events as testable only when evidence and ticket IDs are recorded.
-
-For section six point three, Northgate Borough Council will not accept endpoint work without a written trail.
-
 ### 6.4 Confirming compromise
 
 For the parks01 case, Carlos checks the remote-access portal session: after logging in, parks01 opened the council's internal file share and listed folders for 6 minutes, then disconnected. No files were downloaded according to the share's audit log.
-
-Section six point four develops endpoint telemetry with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section six point four, Aisha Rahman expects endpoint claims to carry owners and dates.
-
-Section six point four treats endpoint agents process events as testable only when evidence and ticket IDs are recorded.
 
 ### 6.5 Isolation
 
 Isolating cuts a machine off from the network except from the EDR console. It stops spread but also stops the user working, so it needs the right authority and a reason.
 
-Section six point five develops endpoint telemetry with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section six point five, Aisha Rahman expects endpoint claims to carry owners and dates.
-
-Section six point five treats endpoint agents process events as testable only when evidence and ticket IDs are recorded.
-
 ### 6.6 Health of agents
 
 Missing agents mean missing data. Northgate's console lists PCs whose agents have not reported in 24 hours; IT fixes them weekly.
-
-Section six point six develops endpoint telemetry with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section six point six, Aisha Rahman expects endpoint claims to carry owners and dates.
-
-Section six point six treats endpoint agents process events as testable only when evidence and ticket IDs are recorded.
-
-For section six point six, Northgate Borough Council will not accept endpoint work without a written trail.
 
 ### Timeline building
 
@@ -668,79 +442,29 @@ You will (1) explain why email is a common entry point; (2) read email gateway a
 
 Phishing emails try to trick people into opening attachments, entering passwords on fake sites or approving payments. They are one of the most common starting points of incidents.
 
-Section seven point one develops email and phishing alerts with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section seven point one, Aisha Rahman expects email claims to carry owners and dates.
-
-Section seven point one treats why email gateway alerts as testable only when evidence and ticket IDs are recorded.
-
 ### 7.2 Gateway alerts
 
 The email gateway scans messages and flags suspicious senders, links and attachments. It blocks many but not all.
-
-Section seven point two develops email and phishing alerts with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section seven point two, Aisha Rahman expects email claims to carry owners and dates.
-
-Section seven point two treats why email gateway alerts as testable only when evidence and ticket IDs are recorded.
-
-For section seven point two, Northgate Borough Council will not accept email work without a written trail.
 
 ### 7.3 User reports
 
 Northgate staff have a "report phishing" button. Reports go to the SOC queue. Each report gets a reply, even if the message was harmless, so people keep reporting.
 
-Section seven point three develops email and phishing alerts with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section seven point three, Aisha Rahman expects email claims to carry owners and dates.
-
-Section seven point three treats why email gateway alerts as testable only when evidence and ticket IDs are recorded.
-
 ### 7.4 The finance case
 
 On Carlos's third day, a finance officer reports an email titled "Overdue invoice" with a link to invoice-portal.example. The gateway had let it through. Twelve other staff received it.
-
-Section seven point four develops email and phishing alerts with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section seven point four, Aisha Rahman expects email claims to carry owners and dates.
-
-Section seven point four treats why email gateway alerts as testable only when evidence and ticket IDs are recorded.
 
 ### 7.5 Removal
 
 With approval, the email team removes the message from all twelve mailboxes and blocks the sender and domain.
 
-Section seven point five develops email and phishing alerts with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section seven point five, Aisha Rahman expects email claims to carry owners and dates.
-
-Section seven point five treats why email gateway alerts as testable only when evidence and ticket IDs are recorded.
-
-For section seven point five, Northgate Borough Council will not accept email work without a written trail.
-
 ### 7.6 Follow-up
 
 Carlos checks proxy logs (chapter 8) for anyone who clicked, and asks those users whether they entered a password.
 
-Section seven point six develops email and phishing alerts with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section seven point six, Aisha Rahman expects email claims to carry owners and dates.
-
-Section seven point six treats why email gateway alerts as testable only when evidence and ticket IDs are recorded.
-
-For section seven point six, Northgate Borough Council will not accept email work without a written trail.
-
 ### 7.7 Training link
 
 The council's awareness team uses the anonymised example in next month's staff bulletin.
-
-Section seven point seven develops email and phishing alerts with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section seven point seven, Aisha Rahman expects email claims to carry owners and dates.
-
-Section seven point seven treats why email gateway alerts as testable only when evidence and ticket IDs are recorded.
-
-For section seven point seven, Northgate Borough Council will not accept email work without a written trail.
 
 ### Checking the message safely
 
@@ -783,14 +507,6 @@ You will (1) read web proxy logs; (2) match traffic against indicators; (3) iden
 
 A web proxy records which internal host visited which domain and when. It is ideal for answering "who clicked?".
 
-Section eight point one develops network and proxy logs with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section eight point one, Aisha Rahman expects network claims to carry owners and dates.
-
-Section eight point one treats proxy logs lab result as testable only when evidence and ticket IDs are recorded.
-
-For section eight point one, Northgate Borough Council will not accept network work without a written trail.
-
 ### Lab — Lab — matching indicators
 
 ```python
@@ -819,59 +535,21 @@ hosts to check: 2 of 4
 
 Of four hosts in the sample, two contacted domains on the indicator list: 10.2.0.31 visited invoice-portal.example twice (the finance PC from chapter 7), and 10.2.0.77 visited cdn-files.example.
 
-Section eight point two develops network and proxy logs with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section eight point two, Aisha Rahman expects network claims to carry owners and dates.
-
-Section eight point two treats proxy logs lab result as testable only when evidence and ticket IDs are recorded.
-
-For section eight point two, Northgate Borough Council will not accept network work without a written trail.
-
 ### 8.3 The second host
 
 10.2.0.77 was not in the phishing case. Carlos checks: it is a planning-office PC; cdn-files.example came from a separate list of indicators from a national alert. The visit was a single download blocked by the proxy.
-
-Section eight point three develops network and proxy logs with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section eight point three, Aisha Rahman expects network claims to carry owners and dates.
-
-Section eight point three treats proxy logs lab result as testable only when evidence and ticket IDs are recorded.
 
 ### 8.4 Firewall logs
 
 Firewalls record allowed and blocked connections by address and port; they help when traffic bypasses the proxy.
 
-Section eight point four develops network and proxy logs with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section eight point four, Aisha Rahman expects network claims to carry owners and dates.
-
-Section eight point four treats proxy logs lab result as testable only when evidence and ticket IDs are recorded.
-
-For section eight point four, Northgate Borough Council will not accept network work without a written trail.
-
 ### 8.5 Encryption
 
 Most web traffic is encrypted; proxies see domains but often not full addresses or content.
 
-Section eight point five develops network and proxy logs with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section eight point five, Aisha Rahman expects network claims to carry owners and dates.
-
-Section eight point five treats proxy logs lab result as testable only when evidence and ticket IDs are recorded.
-
-For section eight point five, Northgate Borough Council will not accept network work without a written trail.
-
 ### 8.6 Indicators expire
 
 Domains on indicator lists get reused or cleaned up; old indicators cause false alarms.
-
-Section eight point six develops network and proxy logs with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section eight point six, Aisha Rahman expects network claims to carry owners and dates.
-
-Section eight point six treats proxy logs lab result as testable only when evidence and ticket IDs are recorded.
-
-For section eight point six, Northgate Borough Council will not accept network work without a written trail.
 
 ### Time windows
 
@@ -918,71 +596,25 @@ You will (1) explain what threat intelligence is; (2) distinguish indicators fro
 
 Threat intelligence is information about threats that helps you decide what to do. Useful intelligence is timely, relevant to your organisation and actionable.
 
-Section nine point one develops threat intelligence basics with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section nine point one, Aisha Rahman expects threat claims to carry owners and dates.
-
-Section nine point one treats what it is indicators as testable only when evidence and ticket IDs are recorded.
-
-For section nine point one, Northgate Borough Council will not accept threat work without a written trail.
-
 ### 9.2 Indicators and behaviours
 
 Indicators are specific values such as domains and addresses; they change quickly. Behaviours, described in MITRE ATT&CK, change slowly. The pyramid of pain idea says behaviours are harder for attackers to change.
-
-Section nine point two develops threat intelligence basics with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section nine point two, Aisha Rahman expects threat claims to carry owners and dates.
-
-Section nine point two treats what it is indicators as testable only when evidence and ticket IDs are recorded.
 
 ### 9.3 Sources
 
 Northgate receives a national government alert feed, a local-government sharing group and vendor reports. Each is rated for reliability based on past accuracy.
 
-Section nine point three develops threat intelligence basics with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section nine point three, Aisha Rahman expects threat claims to carry owners and dates.
-
-Section nine point three treats what it is indicators as testable only when evidence and ticket IDs are recorded.
-
-For section nine point three, Northgate Borough Council will not accept threat work without a written trail.
-
 ### 9.4 Relevance
 
 A report about attacks on councils' remote-access portals is highly relevant after the parks01 case; a report about a mobile banking app is not.
-
-Section nine point four develops threat intelligence basics with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section nine point four, Aisha Rahman expects threat claims to carry owners and dates.
-
-Section nine point four treats what it is indicators as testable only when evidence and ticket IDs are recorded.
-
-For section nine point four, Northgate Borough Council will not accept threat work without a written trail.
 
 ### 9.5 Acting on intelligence
 
 The sharing group warns that password guessing against council portals has increased. Aisha asks IT to require multi-factor authentication on the portal for all accounts, including shared ones.
 
-Section nine point five develops threat intelligence basics with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section nine point five, Aisha Rahman expects threat claims to carry owners and dates.
-
-Section nine point five treats what it is indicators as testable only when evidence and ticket IDs are recorded.
-
-For section nine point five, Northgate Borough Council will not accept threat work without a written trail.
-
 ### 9.6 Sharing back
 
 Northgate shares its own anonymised indicators (203.0.113.80 and the invoice domain) with the group.
-
-Section nine point six develops threat intelligence basics with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section nine point six, Aisha Rahman expects threat claims to carry owners and dates.
-
-Section nine point six treats what it is indicators as testable only when evidence and ticket IDs are recorded.
-
-For section nine point six, Northgate Borough Council will not accept threat work without a written trail.
 
 ### Rating reliability
 
@@ -1029,69 +661,25 @@ You will (1) describe the incident response life cycle in NIST SP 800-61r3; (2) 
 
 NIST SP 800-61 Revision 3 (Nelson et al., 2025) places incident response within CSF 2.0: preparation through Govern, Identify and Protect; detection and analysis through Detect; response through Respond; and recovery through Recover, with lessons feeding improvement.
 
-Section ten point one develops the incident response process with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section ten point one, Aisha Rahman expects the claims to carry owners and dates.
-
-Section ten point one treats the life cycle roles as testable only when evidence and ticket IDs are recorded.
-
 ### 10.2 Roles
 
 An incident lead coordinates, analysts investigate, IT acts on systems, communications handles messages and a manager approves big decisions. In a small SOC one person may hold several roles, but each must be named.
-
-Section ten point two develops the incident response process with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section ten point two, Aisha Rahman expects the claims to carry owners and dates.
-
-Section ten point two treats the life cycle roles as testable only when evidence and ticket IDs are recorded.
 
 ### 10.3 The record
 
 The incident record holds a timeline, decisions, evidence references, actions and owners. Carlos opened INC-0417 for the parks01 compromise.
 
-Section ten point three develops the incident response process with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section ten point three, Aisha Rahman expects the claims to carry owners and dates.
-
-Section ten point three treats the life cycle roles as testable only when evidence and ticket IDs are recorded.
-
-For section ten point three, Northgate Borough Council will not accept the work without a written trail.
-
 ### 10.4 Severity levels
 
 Northgate uses three levels: minor (one account, no data), significant (data exposure or several systems) and major (service disruption). INC-0417 is minor.
-
-Section ten point four develops the incident response process with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section ten point four, Aisha Rahman expects the claims to carry owners and dates.
-
-Section ten point four treats the life cycle roles as testable only when evidence and ticket IDs are recorded.
-
-For section ten point four, Northgate Borough Council will not accept the work without a written trail.
 
 ### 10.5 Closure
 
 An incident closes when containment is confirmed, systems are restored and lessons are recorded.
 
-Section ten point five develops the incident response process with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section ten point five, Aisha Rahman expects the claims to carry owners and dates.
-
-Section ten point five treats the life cycle roles as testable only when evidence and ticket IDs are recorded.
-
-For section ten point five, Northgate Borough Council will not accept the work without a written trail.
-
 ### 10.6 Lessons
 
 A short review asks what happened, what went well, what to change, with owners and dates.
-
-Section ten point six develops the incident response process with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section ten point six, Aisha Rahman expects the claims to carry owners and dates.
-
-Section ten point six treats the life cycle roles as testable only when evidence and ticket IDs are recorded.
-
-For section ten point six, Northgate Borough Council will not accept the work without a written trail.
 
 ### Evidence handling
 
@@ -1134,71 +722,25 @@ You will (1) choose containment actions proportionate to risk; (2) get the right
 
 Disable an account, reset a password, block an address, isolate a machine or remove an email. Each has a cost to the business.
 
-Section eleven point one develops containment and communication with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section eleven point one, Aisha Rahman expects containment claims to carry owners and dates.
-
-Section eleven point one treats options proportion approvals talking as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point one, Northgate Borough Council will not accept containment work without a written trail.
-
 ### 11.2 Proportion
 
 Choose the smallest action that stops the harm. For parks01, disabling the account was enough; isolating the depot tablet was not needed because it was not involved.
-
-Section eleven point two develops containment and communication with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section eleven point two, Aisha Rahman expects containment claims to carry owners and dates.
-
-Section eleven point two treats options proportion approvals talking as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point two, Northgate Borough Council will not accept containment work without a written trail.
 
 ### 11.3 Approvals
 
 Northgate's playbook lets analysts disable accounts and block addresses alone; isolating servers needs the IT manager.
 
-Section eleven point three develops containment and communication with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section eleven point three, Aisha Rahman expects containment claims to carry owners and dates.
-
-Section eleven point three treats options proportion approvals talking as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point three, Northgate Borough Council will not accept containment work without a written trail.
-
 ### 11.4 Talking to users
 
 The parks supervisor is told: "Your team's shared login was used by someone outside the council this morning. We have disabled it. IT will set up individual logins today." Plain words, no blame.
-
-Section eleven point four develops containment and communication with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section eleven point four, Aisha Rahman expects containment claims to carry owners and dates.
-
-Section eleven point four treats options proportion approvals talking as testable only when evidence and ticket IDs are recorded.
 
 ### 11.5 Managers
 
 A short email to the head of IT and the information governance lead sets out facts, actions and next steps.
 
-Section eleven point five develops containment and communication with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section eleven point five, Aisha Rahman expects containment claims to carry owners and dates.
-
-Section eleven point five treats options proportion approvals talking as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point five, Northgate Borough Council will not accept containment work without a written trail.
-
 ### 11.6 Data protection
 
 If personal data might have been exposed, the data protection officer must be told early; for parks01 no personal data was accessed.
-
-Section eleven point six develops containment and communication with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section eleven point six, Aisha Rahman expects containment claims to carry owners and dates.
-
-Section eleven point six treats options proportion approvals talking as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point six, Northgate Borough Council will not accept containment work without a written trail.
 
 ### External partners
 
@@ -1241,65 +783,25 @@ You will (1) explain the detection engineering cycle; (2) write a detection idea
 
 Detection engineering turns knowledge about threats into rules: pick a behaviour, find the data that shows it, write the rule, test it, deploy it, then measure and tune. It is a loop, not a one-off task.
 
-Section twelve point one develops detection engineering basics with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section twelve point one, Aisha Rahman expects detection claims to carry owners and dates.
-
-Section twelve point one treats the cycle choosing behaviour as testable only when evidence and ticket IDs are recorded.
-
 ### 12.2 Choosing a behaviour
 
 After INC-0417, Aisha asks Carlos to write a rule for "successful logon from a source that had many failures shortly before". The behaviour matches ATT&CK's brute-force technique and is visible in portal logs.
-
-Section twelve point two develops detection engineering basics with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section twelve point two, Aisha Rahman expects detection claims to carry owners and dates.
-
-Section twelve point two treats the cycle choosing behaviour as testable only when evidence and ticket IDs are recorded.
 
 ### 12.3 Structure
 
 Sigma rules have a title, description, log source, detection condition, false-positive notes and level. Writing the idea in this structure, even for a SIEM that uses its own language, forces clarity: Carlos writes log source "remote-access portal authentication", condition "success where same source had 20 or more failures in previous 15 minutes", level high.
 
-Section twelve point three develops detection engineering basics with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section twelve point three, Aisha Rahman expects detection claims to carry owners and dates.
-
 ### 12.4 Testing
 
 Carlos replays the synthetic Monday log in a test index. The rule fires once, at 09:09, for parks01. He also replays a week of normal logs: it does not fire.
-
-Section twelve point four develops detection engineering basics with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section twelve point four, Aisha Rahman expects detection claims to carry owners and dates.
-
-Section twelve point four treats the cycle choosing behaviour as testable only when evidence and ticket IDs are recorded.
 
 ### 12.5 Documentation
 
 Each rule gets a short page: what it detects, why, data needed, expected false positives and first triage steps.
 
-Section twelve point five develops detection engineering basics with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section twelve point five, Aisha Rahman expects detection claims to carry owners and dates.
-
-Section twelve point five treats the cycle choosing behaviour as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point five, Northgate Borough Council will not accept detection work without a written trail.
-
 ### 12.6 Review
 
 Another analyst reviews logic and documentation before deployment.
-
-Section twelve point six develops detection engineering basics with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section twelve point six, Aisha Rahman expects detection claims to carry owners and dates.
-
-Section twelve point six treats the cycle choosing behaviour as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point six, Northgate Borough Council will not accept detection work without a written trail.
-
-Section twelve point six fails closed if detection evidence is missing rather than guessing.
 
 ### Rule naming
 
@@ -1342,81 +844,29 @@ You will (1) define false positives and false negatives; (2) measure a rule's us
 
 A false positive is an alert that is not a real problem; a false negative is a real problem that raised no alert. Axelsson (2000) showed that when real attacks are rare, even accurate detectors produce mostly false alarms; this is the base-rate problem.
 
-Section thirteen point one develops tuning and false positives with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section thirteen point one, Aisha Rahman expects tuning claims to carry owners and dates.
-
-Section thirteen point one treats definitions measuring tuning options as testable only when evidence and ticket IDs are recorded.
-
 ### 13.2 Measuring
 
 For each rule Carlos counts alerts in a month and how many were real. The "admin tool used" rule fired 220 times; 2 were real.
-
-Section thirteen point two develops tuning and false positives with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section thirteen point two, Aisha Rahman expects tuning claims to carry owners and dates.
-
-Section thirteen point two treats definitions measuring tuning options as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point two, Northgate Borough Council will not accept tuning work without a written trail.
 
 ### 13.3 Tuning options
 
 Exclude known safe sources, raise thresholds, add context such as time of day, or combine with another signal. Each option risks missing something.
 
-Section thirteen point three develops tuning and false positives with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section thirteen point three, Aisha Rahman expects tuning claims to carry owners and dates.
-
-Section thirteen point three treats definitions measuring tuning options as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point three, Northgate Borough Council will not accept tuning work without a written trail.
-
 ### 13.4 The admin-tool rule
 
 Most firings were IT staff using the tool from their own machines. Carlos excludes the IT admin workstations by name, keeping alerts for the tool used anywhere else.
-
-Section thirteen point four develops tuning and false positives with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section thirteen point four, Aisha Rahman expects tuning claims to carry owners and dates.
-
-Section thirteen point four treats definitions measuring tuning options as testable only when evidence and ticket IDs are recorded.
 
 ### 13.5 Recording
 
 The tuning note states the change, reason, expected effect and review date.
 
-Section thirteen point five develops tuning and false positives with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section thirteen point five, Aisha Rahman expects tuning claims to carry owners and dates.
-
-Section thirteen point five treats definitions measuring tuning options as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point five, Northgate Borough Council will not accept tuning work without a written trail.
-
 ### 13.6 Watching after
 
 In the next month the rule fires 14 times, 2 real. The exclusion list is reviewed quarterly so departed staff's machines are removed.
 
-Section thirteen point six develops tuning and false positives with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section thirteen point six, Aisha Rahman expects tuning claims to carry owners and dates.
-
-Section thirteen point six treats definitions measuring tuning options as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point six, Northgate Borough Council will not accept tuning work without a written trail.
-
 ### 13.7 Research context
 
 Sommer and Paxson (2010) warned that detection systems which seem accurate in testing often struggle in real environments; local tuning is how SOCs cope.
-
-Section thirteen point seven develops tuning and false positives with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section thirteen point seven, Aisha Rahman expects tuning claims to carry owners and dates.
-
-Section thirteen point seven treats definitions measuring tuning options as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point seven, Northgate Borough Council will not accept tuning work without a written trail.
 
 ### Feedback from analysts
 
@@ -1463,71 +913,25 @@ You will (1) map detections to ATT&CK techniques; (2) identify gaps in coverage;
 
 Each rule is tagged with the ATT&CK techniques it detects. A coverage map shows which techniques have rules and which do not.
 
-Section fourteen point one develops coverage with att ck and with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section fourteen point one, Aisha Rahman expects coverage claims to carry owners and dates.
-
-Section fourteen point one treats mapping gaps prioritising fend as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point one, Northgate Borough Council will not accept coverage work without a written trail.
-
 ### 14.2 Gaps
 
 Northgate's map shows good coverage of initial access by phishing and credential guessing, but little for data moved to cloud storage.
-
-Section fourteen point two develops coverage with att ck and with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section fourteen point two, Aisha Rahman expects coverage claims to carry owners and dates.
-
-Section fourteen point two treats mapping gaps prioritising fend as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point two, Northgate Borough Council will not accept coverage work without a written trail.
 
 ### 14.3 Prioritising
 
 Gaps are ranked by how likely the technique is against councils (from intelligence) and how damaging. Data exfiltration from file shares ranks high.
 
-Section fourteen point three develops coverage with att ck and with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section fourteen point three, Aisha Rahman expects coverage claims to carry owners and dates.
-
-Section fourteen point three treats mapping gaps prioritising fend as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point three, Northgate Borough Council will not accept coverage work without a written trail.
-
 ### 14.4 D3FEND
 
 MITRE D3FEND (Kaloroumakis and Smith, 2021) is a knowledge graph of defensive techniques, linked to ATT&CK. It helps describe what a control does, such as "user behaviour analysis" or "network traffic analysis".
-
-Section fourteen point four develops coverage with att ck and with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section fourteen point four, Aisha Rahman expects coverage claims to carry owners and dates.
-
-Section fourteen point four treats mapping gaps prioritising fend as testable only when evidence and ticket IDs are recorded.
 
 ### 14.5 Coverage is not quality
 
 A tagged rule may be noisy, untested or blind on some systems. Northgate marks each mapping as tested or untested.
 
-Section fourteen point five develops coverage with att ck and with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section fourteen point five, Aisha Rahman expects coverage claims to carry owners and dates.
-
-Section fourteen point five treats mapping gaps prioritising fend as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point five, Northgate Borough Council will not accept coverage work without a written trail.
-
 ### 14.6 Data first
 
 Some gaps exist because data is missing; the cloud storage gap needs proxy logs with upload sizes.
-
-Section fourteen point six develops coverage with att ck and with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section fourteen point six, Aisha Rahman expects coverage claims to carry owners and dates.
-
-Section fourteen point six treats mapping gaps prioritising fend as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point six, Northgate Borough Council will not accept coverage work without a written trail.
 
 ### Presenting coverage
 
@@ -1570,16 +974,6 @@ You will (1) choose meaningful SOC metrics; (2) compute median times; (3) avoid 
 
 Metrics show whether the SOC is improving and where to invest.
 
-Section fifteen point one develops soc metrics with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section fifteen point one, Aisha Rahman expects soc claims to carry owners and dates.
-
-Section fifteen point one treats why measure lab result as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point one, Northgate Borough Council will not accept soc work without a written trail.
-
-Section fifteen point one fails closed if soc evidence is missing rather than guessing.
-
 ### Lab — Lab — response times
 
 ```python
@@ -1604,63 +998,21 @@ acknowledged within 10 min: 4 of 6
 
 For six incidents, the median time to acknowledge is 7 minutes and the median time to contain is 45.5 minutes; four of six were acknowledged within 10 minutes. I4, acknowledged after 25 minutes and contained after 140, happened during a shift change.
 
-Section fifteen point two develops soc metrics with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section fifteen point two, Aisha Rahman expects soc claims to carry owners and dates.
-
-Section fifteen point two treats why measure lab result as testable only when evidence and ticket IDs are recorded.
-
 ### 15.3 Medians
 
 Medians resist one very long case dragging the average.
-
-Section fifteen point three develops soc metrics with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section fifteen point three, Aisha Rahman expects soc claims to carry owners and dates.
-
-Section fifteen point three treats why measure lab result as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point three, Northgate Borough Council will not accept soc work without a written trail.
-
-Section fifteen point three fails closed if soc evidence is missing rather than guessing.
 
 ### 15.4 Bad metrics
 
 Counting closed alerts per analyst encourages closing quickly without care. Northgate avoids it.
 
-Section fifteen point four develops soc metrics with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section fifteen point four, Aisha Rahman expects soc claims to carry owners and dates.
-
-Section fifteen point four treats why measure lab result as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point four, Northgate Borough Council will not accept soc work without a written trail.
-
 ### 15.5 Better metrics
 
 Time to contain, share of alerts with clear notes, rule precision and percentage of assets sending logs.
 
-Section fifteen point five develops soc metrics with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section fifteen point five, Aisha Rahman expects soc claims to carry owners and dates.
-
-Section fifteen point five treats why measure lab result as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point five, Northgate Borough Council will not accept soc work without a written trail.
-
 ### 15.6 Presenting
 
 One page, trends over months, with explanation of outliers.
-
-Section fifteen point six develops soc metrics with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section fifteen point six, Aisha Rahman expects soc claims to carry owners and dates.
-
-Section fifteen point six treats why measure lab result as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point six, Northgate Borough Council will not accept soc work without a written trail.
-
-Section fifteen point six fails closed if soc evidence is missing rather than guessing.
 
 ### Data quality for metrics
 
@@ -1707,73 +1059,25 @@ You will (1) organise SOC shifts; (2) write effective handovers; (3) recognise a
 
 Northgate monitors 07:00–19:00 on weekdays with on-call cover at night and weekends.
 
-Section sixteen point one develops shifts handover and wellbeing with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section sixteen point one, Aisha Rahman expects shifts claims to carry owners and dates.
-
-Section sixteen point one treats shifts handover on-call fatigue as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point one, Northgate Borough Council will not accept shifts work without a written trail.
-
 ### 16.2 Handover
 
 Each shift ends with a written note: open cases, promised calls, alerts being watched.
-
-Section sixteen point two develops shifts handover and wellbeing with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section sixteen point two, Aisha Rahman expects shifts claims to carry owners and dates.
-
-Section sixteen point two treats shifts handover on-call fatigue as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point two, Northgate Borough Council will not accept shifts work without a written trail.
 
 ### 16.3 On-call
 
 The on-call analyst carries a phone for P1 alerts only, so sleep is not broken for minor things.
 
-Section sixteen point three develops shifts handover and wellbeing with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section sixteen point three, Aisha Rahman expects shifts claims to carry owners and dates.
-
-Section sixteen point three treats shifts handover on-call fatigue as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point three, Northgate Borough Council will not accept shifts work without a written trail.
-
 ### 16.4 Fatigue
 
 Repetitive alerts cause fatigue; analysts start skipping checks. Alahmadi et al. (2022) interviewed and surveyed SOC practitioners and found that floods of false alarms frustrate analysts and erode trust in their tools; fatigue and turnover follow when this goes unaddressed.
-
-Section sixteen point four develops shifts handover and wellbeing with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section sixteen point four, Aisha Rahman expects shifts claims to carry owners and dates.
-
-Section sixteen point four treats shifts handover on-call fatigue as testable only when evidence and ticket IDs are recorded.
 
 ### 16.5 Support
 
 Rotating tasks, time for projects and learning, and managers who listen.
 
-Section sixteen point five develops shifts handover and wellbeing with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section sixteen point five, Aisha Rahman expects shifts claims to carry owners and dates.
-
-Section sixteen point five treats shifts handover on-call fatigue as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point five, Northgate Borough Council will not accept shifts work without a written trail.
-
 ### 16.6 Mistakes
 
 A just culture treats honest mistakes as learning chances.
-
-Section sixteen point six develops shifts handover and wellbeing with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section sixteen point six, Aisha Rahman expects shifts claims to carry owners and dates.
-
-Section sixteen point six treats shifts handover on-call fatigue as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point six, Northgate Borough Council will not accept shifts work without a written trail.
-
-Section sixteen point six fails closed if shifts evidence is missing rather than guessing.
 
 ### Night cover
 
@@ -1824,73 +1128,25 @@ You will (1) explain continuous monitoring per SP 800-137; (2) assess SOC maturi
 
 NIST SP 800-137 (Dempsey et al., 2011) describes information security continuous monitoring: ongoing awareness of security, vulnerabilities and threats to support risk decisions.
 
-Section seventeen point one develops continuous monitoring and soc maturity with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section seventeen point one, Aisha Rahman expects continuous claims to carry owners and dates.
-
-Section seventeen point one treats continuous monitoring soc-cmm northgate's as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point one, Northgate Borough Council will not accept continuous work without a written trail.
-
 ### 17.2 SOC-CMM
 
 The SOC Capability Maturity Model (van Os, 2016) assesses business, people, process, technology and services domains.
-
-Section seventeen point two develops continuous monitoring and soc maturity with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section seventeen point two, Aisha Rahman expects continuous claims to carry owners and dates.
-
-Section seventeen point two treats continuous monitoring soc-cmm northgate's as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point two, Northgate Borough Council will not accept continuous work without a written trail.
 
 ### 17.3 Northgate's assessment
 
 Strong on process documentation, weak on technology coverage and people development.
 
-Section seventeen point three develops continuous monitoring and soc maturity with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section seventeen point three, Aisha Rahman expects continuous claims to carry owners and dates.
-
-Section seventeen point three treats continuous monitoring soc-cmm northgate's as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point three, Northgate Borough Council will not accept continuous work without a written trail.
-
 ### 17.4 Improvement plan
 
 Three items: log coverage to 95% of servers, training budget per analyst, quarterly rule reviews.
-
-Section seventeen point four develops continuous monitoring and soc maturity with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section seventeen point four, Aisha Rahman expects continuous claims to carry owners and dates.
-
-Section seventeen point four treats continuous monitoring soc-cmm northgate's as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point four, Northgate Borough Council will not accept continuous work without a written trail.
 
 ### 17.5 Governance
 
 Results go to the council's risk committee each quarter, tying SOC work to CSF 2.0 Govern.
 
-Section seventeen point five develops continuous monitoring and soc maturity with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section seventeen point five, Aisha Rahman expects continuous claims to carry owners and dates.
-
-Section seventeen point five treats continuous monitoring soc-cmm northgate's as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point five, Northgate Borough Council will not accept continuous work without a written trail.
-
 ### 17.6 Research
 
 Vielberth et al. (2020) surveyed SOCs and found people, process and technology must be balanced.
-
-Section seventeen point six develops continuous monitoring and soc maturity with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section seventeen point six, Aisha Rahman expects continuous claims to carry owners and dates.
-
-Section seventeen point six treats continuous monitoring soc-cmm northgate's as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point six, Northgate Borough Council will not accept continuous work without a written trail.
 
 ### Measuring progress
 
@@ -1941,75 +1197,25 @@ You will (1) review the whole SOC journey; (2) connect each skill to the case; (
 
 From Monday's 46 failures to a tuned, tested rule and MFA on the portal, Carlos has seen the full loop.
 
-Section eighteen point one develops review and next steps with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section eighteen point one, Aisha Rahman expects review claims to carry owners and dates.
-
-Section eighteen point one treats looking back skills development as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point one, Northgate Borough Council will not accept review work without a written trail.
-
 ### 18.2 Skills
 
 Logs, triage, endpoint and network analysis, intelligence, response, detection, tuning, metrics, wellbeing and maturity.
-
-Section eighteen point two develops review and next steps with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section eighteen point two, Aisha Rahman expects review claims to carry owners and dates.
-
-Section eighteen point two treats looking back skills development as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point two, Northgate Borough Council will not accept review work without a written trail.
 
 ### 18.3 Development
 
 Carlos plans a certificate course and a lab project on file-share monitoring.
 
-Section eighteen point three develops review and next steps with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section eighteen point three, Aisha Rahman expects review claims to carry owners and dates.
-
-Section eighteen point three treats looking back skills development as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point three, Northgate Borough Council will not accept review work without a written trail.
-
 ### 18.4 Mentoring
 
 Aisha meets him monthly to review cases.
-
-Section eighteen point four develops review and next steps with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section eighteen point four, Aisha Rahman expects review claims to carry owners and dates.
-
-Section eighteen point four treats looking back skills development as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point four, Northgate Borough Council will not accept review work without a written trail.
-
-Section eighteen point four fails closed if review evidence is missing rather than guessing.
 
 ### 18.5 Ethics
 
 SOC access to staff activity is powerful; it must be used only for security purposes, under policy.
 
-Section eighteen point five develops review and next steps with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section eighteen point five, Aisha Rahman expects review claims to carry owners and dates.
-
-Section eighteen point five treats looking back skills development as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point five, Northgate Borough Council will not accept review work without a written trail.
-
 ### 18.6 Next course
 
 The next stop covers incident response and cyber resilience in depth.
-
-Section eighteen point six develops review and next steps with a Northgate Borough Council note Carlos Mendes can demo offline.
-
-Under section eighteen point six, Aisha Rahman expects review claims to carry owners and dates.
-
-Section eighteen point six treats looking back skills development as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point six, Northgate Borough Council will not accept review work without a written trail.
 
 ### What the case taught
 

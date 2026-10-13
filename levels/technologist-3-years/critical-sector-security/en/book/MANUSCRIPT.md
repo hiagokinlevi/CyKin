@@ -251,8 +251,6 @@ None of these is proof of an attack. The corporate-to-PLC flow might be an engin
 
 Run Lab 2. It assigns each address to a zone with the `ipaddress` module, compares each flow with the declared conduits, and reports declared flows with zero traffic.
 
-Section two point five develops networks and internet services with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
 **Lab 2** (save as `lab02.py`, run with `python3 lab02.py`):
 
 ```python
@@ -377,8 +375,6 @@ A validation function that returns only "valid" or "invalid" forces a bad choice
 
 Four habits make small tools trustworthy. Keep **one function per decision**, so it can be tested alone. Make the **state explicit** — the last-seen sequence per station is passed in, not hidden in a global. **Fail closed** — any path you did not anticipate ends in reject, not accept. And **test with bad cases first**: for every check, write at least one input that should fail it, and run them all after every change.
 
-Section three point four develops programming foundations with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
 ### 3.5 Worked example: the station message validator (synthetic)
 
 Lab 3 implements the six layers. Running it over eleven synthetic messages produces three accepts, six rejects and two quarantines. Look at the cases that a naive parser would get wrong: `nan` parses as a float and would be stored; `210.5;DROP` is caught only because the value is parsed as a number rather than passed through as text; `PS-7` fails because the pattern is matched in full; a repeated sequence number 102 is rejected as a replay even though the message is otherwise perfect; and a chlorine value of 9.80 mg/L is quarantined, not rejected, because a person needs to know whether the analyser at PS-07 has failed.
@@ -386,10 +382,6 @@ Lab 3 implements the six layers. Running it over eleven synthetic messages produ
 ### 3.6 Practical activity: validator and test cases
 
 **Lab 3** (save as `lab03.py`, run with `python3 lab03.py`):
-
-Section three point six develops programming foundations with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section three point six, FSTS Platform expects programming claims to carry owners and dates.
 
 ```python
 # Lab 3 - validating telemetry messages before they reach the historian (offline, standard library only)
@@ -510,13 +502,9 @@ A **data model** says what kinds of things the records describe (**entities**: a
 
 A **constraint** is a rule the database enforces on every write. `NOT NULL` says a value must be present; `CHECK (criticality BETWEEN 1 AND 3)` says only those values are allowed; a foreign key says the referenced row must exist (in SQLite, foreign-key enforcement must be switched on per connection, a detail worth knowing because it surprises people). Constraints move validation from "someone should check" to "the system refuses". They are Chapter 3's input validation applied to records.
 
-Section four point two develops data models with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
 ### 4.3 Missing values are findings
 
 In an inventory, a missing value is not a blank; it is a statement that something is unknown. An asset with no owner is an asset nobody will patch, review or decommission. An asset with unknown firmware is one whose vulnerabilities cannot be assessed. Queries should therefore look *for* missing values, not ignore them. SQL's `NULL` behaves specially: `owner_id = NULL` is never true; you must write `owner_id IS NULL`. Many silent reporting errors come from forgetting this.
-
-Section four point three develops data models with a Fallowmere Shared Technology Services note the technologist can demo offline.
 
 ### 4.4 Joins answer the real questions
 
@@ -529,14 +517,6 @@ Lab 4 builds a small inventory in an in-memory SQLite database (Python's `sqlite
 ### 4.6 Practical activity: inventory queries
 
 **Lab 4** (save as `lab04.py`, run with `python3 lab04.py`):
-
-Section four point six develops data models with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section four point six, FSTS Platform expects data claims to carry owners and dates.
-
-Section four point six treats entities attributes and keys as testable only when evidence and ticket IDs are recorded.
-
-For section four point six, Fallowmere Shared Technology Services will not accept data work without a written trail.
 
 ```python
 # Lab 4 - an asset inventory as a relational model (offline, standard library only: sqlite3)
@@ -683,13 +663,7 @@ An FSTS status report says: "LANTERN is secure. Firewalls are in place. Backups 
 
 Pick one LANTERN control from Chapters 2–4 (for example, the message validator). Write a one-page **control card**: name; risk it addresses; type (prevent / detect / recover); where it is implemented; owner; how it could fail; evidence that it works; date of last evidence. You will extend these cards in Chapter 18.
 
-Section five point six develops security literacy with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section five point six, FSTS Platform expects security claims to carry owners and dates.
-
 ### 5.7 Common errors and limits
-Section five point seven develops security literacy with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
 
 - Using "secure" as a state rather than describing specific protections and their evidence.
 - Treating confidentiality as the top priority in a control system and accepting outage risk to protect it.
@@ -740,13 +714,9 @@ LANTERN's relays and historian are ordinary servers. Most compromises of such se
 
 Run each service as its own unprivileged account (`relay`, not `root`). Give that account read access to its configuration, write access only to its own data and log directories, and no shell login. Use the operating system's service manager to restart it on failure and to apply further restrictions (for example, a read-only view of most of the filesystem). If the relay process is ever compromised, these choices determine whether the attacker holds one service or the whole host.
 
-Section six point two develops operating systems and virtualization with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
 ### 6.3 Configuration files are security-relevant
 
 On a relay, the most security-relevant files are its configuration (what it listens on, where it forwards, where its key lives), its allowlist of stations, and its service definition (which account it runs as, with what restrictions). A change to any of them changes the security of the service. File permissions matter as much as content: a service definition that has become writable by any user lets any local user decide what runs as the service.
-
-Section six point three develops operating systems and virtualization with a Fallowmere Shared Technology Services note the technologist can demo offline.
 
 ### 6.4 File-integrity baselines
 
@@ -763,10 +733,6 @@ You baseline RLY-01's three configuration files. A week later the comparison sho
 ### 6.7 Practical activity: file-integrity baseline
 
 **Lab 6** (save as `lab06.py`, run with `python3 lab06.py`):
-
-Section six point seven develops operating systems and virtualization with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section six point seven, FSTS Platform expects operating claims to carry owners and dates.
 
 ```python
 # Lab 6 - a file-integrity baseline for the relay host's configuration (offline, standard library only)
@@ -885,13 +851,9 @@ In the incident reports of Chapter 5, access is a recurring thread: remote acces
 
 Accounts go wrong at transitions. A **joiner** gets access copied from a colleague and inherits privileges they do not need. A **mover** keeps old access when gaining new. A **leaver**'s accounts remain enabled because nobody told the system owner. The fix is a process linked to an authoritative source — the HR roster — and a periodic **access review** that catches what the process missed.
 
-Section seven point three develops identity and access foundations with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
 ### 7.4 The access review
 
 An access review compares three things: the **accounts** that exist on a system (exported from it, not from memory), the **roster** of people and their status, and a statement of **need** — which roles each team requires on each system. Findings fall into recognizable types: orphans (accounts with no matching person), leavers still enabled (worse if used after leaving), unjustified roles, privileged access without MFA, dormant accounts, shared accounts, and standing supplier access.
-
-Section seven point four develops identity and access foundations with a Fallowmere Shared Technology Services note the technologist can demo offline.
 
 ### 7.5 Worked example: quarterly review of RLY-01 and HIST-01 (synthetic)
 
@@ -902,14 +864,6 @@ Note what the script does *not* flag: `svc-relay` has no MFA, which is normal fo
 ### 7.6 Practical activity: access review
 
 **Lab 7** (save as `lab07.py`, run with `python3 lab07.py`):
-
-Section seven point six develops identity and access foundations with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section seven point six, FSTS Platform expects identity claims to carry owners and dates.
-
-Section seven point six treats identify authenticate authorize kinds as testable only when evidence and ticket IDs are recorded.
-
-For section seven point six, Fallowmere Shared Technology Services will not accept identity work without a written trail.
 
 ```python
 # Lab 7 - quarterly access review for the relay and historian (offline, standard library only)
@@ -1025,8 +979,6 @@ Segmentation of control networks from business networks, with controlled and mon
 
 Many diagrams show the data path and omit the **management path**: how administrators, backup systems, monitoring agents and suppliers reach each host. Management paths usually carry the most powerful access in the system. In LANTERN, administration reaches relays only from a management jump host in the corporate zone, with MFA; suppliers reach the jump host through a time-bound account (Chapter 7); monitoring receives logs pushed *from* the relays rather than logging in to them.
 
-Section eight point three develops security architecture basics with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
 ### 8.4 Designing for operability
 
 A secure design that operators cannot run will be bypassed. Ask for each control: how is it maintained? What happens at 03:00 when it fails? How does an engineer get emergency access, and how is that access recorded? What does the service do when the relay is down — do operators know that their historian view is stale? Design **degraded modes** deliberately: LANTERN's stations buffer 24 hours of readings locally, so a relay outage loses timeliness, not data; the operator display shows the age of every value.
@@ -1035,8 +987,6 @@ A secure design that operators cannot run will be bypassed. Ask for each control
 
 Architectures erode through reasonable-sounding exceptions: a "temporary" firewall rule for a supplier, a dual-homed laptop used for configuration, a report server moved into the control zone "to make it faster", a shared administrator account for convenience. Each one is small; together they remove the separation. The defences are routine: conduits recorded with owner and expiry (Chapter 2), flow reviews, rule reviews, and refusing undocumented exceptions.
 
-Section eight point five develops security architecture basics with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
 ### 8.6 Worked example: a request that crosses zones (synthetic)
 
 Water operations asks for the historian to send a weekly "recommended setpoint" file to PS-07's PLC, to automate an optimization. Checked against §8.1, the request breaks the most important property: it creates a path from the corporate zone to the station zone that carries *control* information. You do not refuse it outright; you return the design question to its owner with alternatives: an operator reviews the recommendation in the control-room system and applies it there; or the file goes to the control-room system, which validates and stages it for operator approval. Either preserves the direction of trust. Your role is to show the consequence and the alternatives, and to record the decision.
@@ -1044,10 +994,6 @@ Water operations asks for the historian to send a weekly "recommended setpoint" 
 ### 8.7 Practical activity: draw the management path
 
 Draw LANTERN's zones and conduits from Chapter 2, then add every management path: administrator SSH via the jump host, supplier access, backup, monitoring, time, package updates. For each, record source, destination, protocol, authentication and owner. Mark any path that would let a single credential reach both the corporate and station zones.
-
-Section eight point seven develops security architecture basics with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section eight point seven, FSTS Platform expects security claims to carry owners and dates.
 
 ### 8.8 Common errors and limits
 
@@ -1058,8 +1004,6 @@ Under section eight point seven, FSTS Platform expects security claims to carry 
 - Accepting exceptions without owner or expiry.
 
 Architecture limits what can happen; it does not show what does happen. Verification needs flows, logs and tests (Chapters 2, 19 and 23).
-
-Section eight point eight develops security architecture basics with a Fallowmere Shared Technology Services note the technologist can demo offline.
 
 ### Exercises — chapter 8
 
@@ -1100,13 +1044,9 @@ Every later chapter asks you to prove something with evidence: that a control wo
 
 A measure is useful when someone else could recompute it. State the **question** ("how quickly do we install vendor fixes on station controllers?"), the **population** (which assets, which fixes), the **numerator and denominator**, the **period**, the **source** of the data, and what is **excluded** and why. A patch-compliance figure of "96 %" with no denominator might mean 96 % of office laptops, which says nothing about the pumping stations.
 
-Section nine point one develops evidence and measurement with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
 ### 9.2 Distributions, not just averages
 
 Operational quantities — time to patch, time to restore, alert response time — are usually skewed: most are quick, a few are very slow, and the slow ones are the ones that matter. The **median** describes the typical case; the **90th percentile** (p90) describes the bad cases; the **mean** is pulled by outliers and describes neither well. Report median and p90 together, and look at the maximum.
-
-Section nine point two develops evidence and measurement with a Fallowmere Shared Technology Services note the technologist can demo offline.
 
 ### 9.3 Open items and survivorship
 
@@ -1118,8 +1058,6 @@ Pooling groups with very different behaviour is the related trap. A single media
 
 Critical-service tests are expensive, so samples are small: ten restore drills, eight injected test alerts. "9 out of 10 drills met the target" is a fact; "our restore success rate is 90 %" is an over-claim. A **confidence interval** shows the range of underlying rates consistent with the data. For proportions from small samples, the **Wilson score interval** behaves well ([Wilson, 1927](https://doi.org/10.1080/01621459.1927.10502953)). For 9 of 10, the 95 % Wilson interval is roughly 0.60 to 0.98: the true rate could plausibly be as low as 60 %.
 
-Section nine point four develops evidence and measurement with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
 ### 9.5 Worked example: patch latency and restore drills (synthetic)
 
 FSTS's monthly report says "median patch latency: 9 days". Lab 9 recomputes it by group. Corporate IT: 12 of 12 fixes installed, median 5.5 days, p90 about 9. Relay/historian: 6 of 8 installed, median 18.5 days, p90 about 31, two still open. Station PLC/RTU: only 3 of 8 installed, median 95 days, five still open. The pooled median of 9 days is arithmetically correct and operationally misleading: it describes laptops, and it omits the seven open fixes — five of them on the highest-consequence assets.
@@ -1129,12 +1067,6 @@ Station controllers are slower to patch for good reasons: vendors must certify f
 ### 9.6 Practical activity: honest measures
 
 **Lab 9** (save as `lab09.py`, run with `python3 lab09.py`):
-
-Section nine point six develops evidence and measurement with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section nine point six, FSTS Platform expects evidence claims to carry owners and dates.
-
-Section nine point six treats what good measure states as testable only when evidence and ticket IDs are recorded.
 
 ```python
 # Lab 9 - measuring patch latency and a restore drill honestly (offline, standard library only)
@@ -1182,8 +1114,6 @@ Write the report line you would send instead of "median patch latency: 9 days". 
 - Changing a measure's definition between reports without saying so.
 
 Measures describe what was recorded. If the source data are incomplete — fixes not recorded, drills not logged — no statistic will repair that.
-
-Section nine point seven develops evidence and measurement with a Fallowmere Shared Technology Services note the technologist can demo offline.
 
 ### Exercises — chapter 9
 
@@ -1254,15 +1184,7 @@ At 02:10 the FSTS jump host fails a disk. Water operations loses remote administ
 
 For each Fallowmere customer, list three FSTS-run systems. For each system write: what people lose if it stops, how quickly that loss becomes harmful, who decides on emergency action, and which other system it depends on. Keep this table; Chapter 11 turns it into an inventory with dependencies.
 
-Section ten point six develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section ten point six, FSTS Platform expects critical claims to carry owners and dates.
-
 ### 10.7 Common errors and limits
-Section ten point seven develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section ten point seven, FSTS Platform expects critical claims to carry owners and dates.
-
 
 - Treating every system run by an IT team as having the same consequence.
 - Measuring harm only in data or money.
@@ -1322,8 +1244,6 @@ Chapter 4 showed how to model an inventory. This chapter is about filling it tru
 
 No single source is complete. **Purchase and contract records** know what was bought but not where it went. **Configuration-management or engineering records** know the design but may lag reality. **Network observation** (switch tables, flow records, a passive sensor) sees what talks but not what is silent. **Site surveys** see what is physically present but are expensive and infrequent. **Vendor portals** know firmware versions for what they support. Combine at least two sources and record which source said what.
 
-Section eleven point two develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
 ### 11.3 Safe discovery in operational networks
 
 Active scanning — sending probes to every address — is routine in office networks and risky in control networks: some older controllers and embedded devices can misbehave or reset when probed unexpectedly. NIST's OT guide advises caution with active scanning in OT environments and favours passive methods or carefully planned, coordinated active work ([NIST SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final)). For an implementer the rule is: in the station zone, use passive sources (flow records, switch tables, the controllers' own configuration exports done by their engineers) unless an active method has been agreed with operations, tested on a spare, and scheduled.
@@ -1336,10 +1256,6 @@ When sources disagree, the disagreement is information. An asset in purchase rec
 
 Critical services often run equipment past vendor support, because replacement needs capital, outages and re-certification. The inventory must make this visible, with a **compensating-control** plan for each unsupported asset: tighter segmentation, stricter allowlists, extra monitoring, spare parts, and a replacement date owned by someone with budget.
 
-Section eleven point five develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section eleven point five, FSTS Platform expects critical claims to carry owners and dates.
-
 ### 11.6 Worked example: reconciling PS-09 (synthetic)
 
 Three sources describe pumping station PS-09. The purchase record lists a Kell R2 RTU bought in 2017. The engineering record lists firmware 1.1 and owner "Water Ops". Flow records show 10.20.0.13 talking to the relay until three weeks ago, and nothing since (Chapter 2's silent station). The inventory (Chapter 4) has no owner for PS09-RTU and records vendor support ended 2025-12-31. You record four discrepancies: owner missing in the inventory but present in the engineering record (fix the record, after confirming with Water Ops); support ended (needs a compensating-control plan); station silent (operational issue, raised with Water operations the same day); and firmware not independently verified (ask Water's engineer to export the RTU configuration at the next site visit — Chapter 28).
@@ -1347,10 +1263,6 @@ Three sources describe pumping station PS-09. The purchase record lists a Kell R
 ### 11.7 Practical activity: three-source reconciliation
 
 Using the Lab 4 inventory and the Lab 2 flows, list every asset or address that appears in one source but not the other, and every attribute that differs. For each, write the next action and owner. Do not probe any device to resolve a discrepancy; ask the owner.
-
-Section eleven point seven develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section eleven point seven, FSTS Platform expects critical claims to carry owners and dates.
 
 ### 11.8 Common errors and limits
 
@@ -1362,8 +1274,6 @@ Under section eleven point seven, FSTS Platform expects critical claims to carry
 - Hiding discrepancies to make the inventory look complete.
 
 An inventory is a model of reality, always slightly out of date. Its quality is measured by how recently each record was verified and how quickly discrepancies are closed.
-
-Section eleven point eight develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
 
 ### Exercises — chapter 11
 
@@ -1404,8 +1314,6 @@ Chapter 2 compared network flows with declared conduits. A conduit says *a path 
 
 Each entry in LANTERN's register records: identifier; source and destination (systems, not just addresses); **data class**; whether the flow is encrypted in transit; how long the destination keeps the data; the purpose; the owner; and, for personal data, the legal basis recorded by the data owner. The register is a document that people read in an incident ("what left the hospital gateway?") and in a privacy request ("where does this patient's pump data go?").
 
-Section twelve point one develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
 ### 12.2 Data classes
 
 For an implementer, four classes cover most of a critical shared service:
@@ -1425,8 +1333,6 @@ Registers decay like inventories. Verify them by sampling what actually happens:
 
 Most data-flow problems begin with a reasonable request: a supplier wants telemetry for remote diagnostics; a reporting team wants a copy of clinical gateway events. Before such a flow starts, the register entry is written and reviewed — by the data owner, by security (protection and conduit), and where personal data are involved by the privacy function. If it carries control or configuration data, the architecture rule of Chapter 8 applies.
 
-Section twelve point four develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
 ### 12.5 Worked example: register versus reality (synthetic)
 
 Lab 12 compares five register entries with seven observed flows. Four registered flows match. Three differences matter:
@@ -1440,14 +1346,6 @@ The third is the most serious despite being encrypted: patient-linked data have 
 ### 12.6 Practical activity: register check
 
 **Lab 12** (save as `lab12.py`, run with `python3 lab12.py`):
-
-Section twelve point six develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section twelve point six, FSTS Platform expects critical claims to carry owners and dates.
-
-Section twelve point six treats the register data classes as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point six, Fallowmere Shared Technology Services will not accept critical work without a written trail.
 
 ```python
 # Lab 12 - checking a data-flow register against what the service actually sends (offline, standard library only)
@@ -1505,8 +1403,6 @@ HIGH unregistered flow CLIN-GW->REPORTS (patient-linked, encrypted=True)
 
 The register shows what is known; flows that leave by unexpected routes (removable media, a supplier's laptop) need other controls.
 
-Section twelve point seven develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
 ### Exercises — chapter 12
 
 **EX034 — Triage the differences.** *Objective:* prioritize data-flow findings. *Inputs:* Lab 12 output. *Constraints:* one action and owner per finding. *Steps:* (1) rank the three findings; (2) give the first action and the owner; (3) say which needs to be reported to someone outside FSTS. *Expected evidence:* table. *Rubric:* 3 = CLIN-GW→REPORTS first (unapproved patient-linked data in a wrong audience: stop flow with hospital data owner's agreement, assess), DF5 retention second (hospital data owner and Halden contract), vendor-support clear-text third (stop or encrypt, register); recognizes that whether external reporting is needed is the data owner's and privacy function's decision; 2 = ranking defensible, owners vague; 1 = ranks by encryption only; 0 = none.
@@ -1546,8 +1442,6 @@ Risk assessment can be done at many depths; NIST's guide describes a full proces
 
 "Ransomware" is a category. A scenario is: "Ransomware delivered through a phishing email encrypts HIST-01; station data still reach the relay, which buffers them; operators lose trend displays and weekly compliance reports until the historian is restored." A good scenario names the **cause**, the **path**, the **affected asset**, the **consequence** for people and service, and the **existing controls**. It can then be tested ("does the relay really buffer? for how long?") and monitored.
 
-Section thirteen point one develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
 ### 13.2 Consequence first
 
 Consequence describes what happens to people: how many, for how long, and whether anyone could be harmed. A simple banding uses people × hours of disruption, with any credible safety effect placed in the highest band regardless of numbers. **Likelihood** is a judgement band (1 to 5) informed by exposure, known threats and history. Write the reason for each band; a band without a reason cannot be challenged.
@@ -1558,17 +1452,9 @@ Many registers rank by the product likelihood × consequence. The product is con
 
 For each scenario record the controls that already reduce it and whether they have been tested (Chapter 23). An untested control is a hope, and should not lower the band much. The **residual risk** — what remains after controls — needs an owner who has accepted it, by name of role, with a review date.
 
-Section thirteen point three develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section thirteen point three, FSTS Platform expects critical claims to carry owners and dates.
-
 ### 13.4 From scenarios to work
 
 The register's value is the work it produces. For each of the top scenarios, list the implementation tasks that would reduce consequence or likelihood, and the monitoring that would detect it in progress. A register that produces no tasks is a document; one that produces tasks with owners is a plan.
-
-Section thirteen point four develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section thirteen point four, FSTS Platform expects critical claims to carry owners and dates.
 
 ### 13.5 Worked example: six Fallowmere scenarios (synthetic)
 
@@ -1581,14 +1467,6 @@ R2 deserves a note. LANTERN does not carry commands, so R2's path does not pass 
 ### 13.6 Practical activity: scenario ranking
 
 **Lab 13** (save as `lab13.py`, run with `python3 lab13.py`):
-
-Section thirteen point six develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section thirteen point six, FSTS Platform expects critical claims to carry owners and dates.
-
-Section thirteen point six treats scenarios not categories consequence as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point six, Fallowmere Shared Technology Services will not accept critical work without a written trail.
 
 ```python
 # Lab 13 - a small risk-scenario register ranked by consequence first (offline, standard library only)
@@ -1640,10 +1518,6 @@ ranked by CxL product only:
 - Leaving out scenarios outside your system that your system must detect.
 
 Bands are judgements. Their value is that they make reasoning explicit and comparable, not that they measure risk precisely.
-
-Section thirteen point seven develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section thirteen point seven, FSTS Platform expects critical claims to carry owners and dates.
 
 ### Exercises — chapter 13
 
@@ -1698,13 +1572,9 @@ In OT, the approval for any change that could affect the physical process includ
 
 A change plan for LANTERN states: what will change and why; affected systems and customers; pre-checks (backups taken, rollback staged, operations informed); the **window** (agreed with operations — not during the morning demand peak or a scheduled report run); step-by-step implementation; **verification** (how you will know it worked — specific checks, not "test the service"); **rollback** criteria and steps; and who to call. Chapter 27 extends this to deployments with canaries.
 
-Section fourteen point three develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
 ### 14.4 Evidence of change
 
 After a change, three things should agree: the change record (what was approved), the version-controlled baseline (what should now be true) and the system itself (what is true, verified by the integrity check of Chapter 6 and the drift check of Chapter 22). When they disagree, either the change was not made as approved or the record is wrong. Both are findings.
-
-Section fourteen point four develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
 
 ### 14.5 Worked example: adding PS-11 (synthetic)
 
@@ -1713,12 +1583,6 @@ Water operations commissions a new station, PS-11. Adding it to LANTERN is a sta
 ### 14.6 Practical activity: write a normal-change plan
 
 Write a full change plan for: "Move RLY-02's SSH listener from all interfaces to the management interface only." Include every element of §14.3. Pay attention to the risk that you lock yourself out: how will you reach the host if the change fails?
-
-Section fourteen point six develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section fourteen point six, FSTS Platform expects critical claims to carry owners and dates.
-
-Section fourteen point six treats configuration baselines change control as testable only when evidence and ticket IDs are recorded.
 
 ### 14.7 Common errors and limits
 
@@ -1730,8 +1594,6 @@ Section fourteen point six treats configuration baselines change control as test
 - Emergency changes never reviewed afterwards, so they become permanent.
 
 Change control controls *authorized* change. It does not detect unauthorized change; that is the job of integrity and drift checks.
-
-Section fourteen point seven develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
 
 ### Exercises — chapter 14
 
@@ -1778,23 +1640,13 @@ A MAC does **not** provide confidentiality (the message is still readable), does
 
 A MAC is computed over bytes. If sender and receiver serialize the same message differently — different key order, different spacing — verification fails. LANTERN's messages are serialized as JSON with sorted keys and no spaces, and the MAC is computed over exactly those bytes. Always define the canonical form explicitly.
 
-Section fifteen point two develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section fifteen point two, FSTS Platform expects critical claims to carry owners and dates.
-
 ### 15.3 Constant-time comparison
 
 Comparing the received MAC with the expected one using an ordinary string comparison can leak, through timing, how many leading characters matched. Python's `hmac.compare_digest` compares in time independent of where the inputs differ ([Python hmac documentation](https://docs.python.org/3/library/hmac.html)). Use it for every MAC comparison.
 
-Section fifteen point three develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section fifteen point three, FSTS Platform expects critical claims to carry owners and dates.
-
 ### 15.4 Freshness and ordering
 
 Two cheap checks defeat replay. A **time window** rejects messages whose timestamp is more than a set number of seconds from the receiver's clock (here 120 s); it depends on both clocks being right (Chapter 17). A **sequence number** per station, increasing with each message, lets the receiver reject any message whose number is not greater than the last accepted. Both values are inside the MAC'd body, so an attacker cannot change them without invalidating the MAC.
-
-Section fifteen point four develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
 
 ### 15.5 Guided build
 
@@ -1863,10 +1715,6 @@ Work through it in this order: (1) read `seal` and identify the canonical form; 
 The lab key is printed in the source because it is fake; in production the key lives in a protected store, readable only by the relay's service account, and each station has its own key so that one stolen key does not let an attacker impersonate every station. Keys need generation, distribution, rotation and revocation procedures (Chapter 18). The transport here is not encrypted; in production the relay–historian leg uses TLS 1.3 ([RFC 8446](https://www.rfc-editor.org/rfc/rfc8446)), and whether the station leg can use TLS depends on what the field devices support. Many older field devices cannot compute HMACs at all; then the MAC is applied by a small gateway at the station, and the gateway–device link must be physically protected.
 
 ### 15.7 Common errors and limits
-Section fifteen point seven develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section fifteen point seven, FSTS Platform expects critical claims to carry owners and dates.
-
 
 - Using a plain hash and calling it authentication.
 - Computing the MAC over a re-serialized object rather than the received bytes.
@@ -1915,8 +1763,6 @@ Methods I (Chapter 14) controlled change. Methods II covers the two routines tha
 
 Advisories arrive from vendors, national agencies and security mailing lists. The first question is **applicability**: do we run the affected product and version, in a configuration where the flaw matters? This depends on the inventory (Chapter 11) being accurate about versions. Record the decision — "applicable", "not applicable (reason)", "unknown (action to find out)" — for every advisory touching a product in the inventory. "Unknown" is common in OT and must have an owner.
 
-Section sixteen point one develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
 ### 16.2 Prioritization
 
 A severity score describes the flaw in general; your priority depends on your situation. Three questions sharpen it. **Is it being exploited?** CISA's Known Exploited Vulnerabilities catalog lists flaws with evidence of active exploitation ([CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog)); such entries move to the front. **Is it exposed?** A flaw reachable from the internet or from the corporate zone is more urgent than one reachable only from inside a well-controlled conduit. **What is the consequence?** A flaw on a criticality-1 asset in the station zone matters more than one on a depot kiosk. Patch management guidance treats this as risk-based scheduling with defined maintenance plans for different asset groups ([NIST SP 800-40 Rev. 4](https://csrc.nist.gov/pubs/sp/800/40/r4/final)).
@@ -1925,15 +1771,9 @@ A severity score describes the flaw in general; your priority depends on your si
 
 Station controllers may need vendor-certified firmware, a site visit, an outage window and re-testing of the process. Treatment then has two parts: **compensating controls now** (restrict the conduit further, disable the vulnerable function if not used, add monitoring for exploitation attempts, increase review of the device's configuration) and **a dated plan** for the fix. Record both, and the residual risk owner (Chapter 13). Remember Chapter 9: these long-open items must appear in your patch measures.
 
-Section sixteen point three develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
 ### 16.4 Verification
 
 A fix is complete when it is verified on the device: the version is confirmed (from the device or its engineering export, not from the ticket), the service works (Chapter 27's checks), and the compensating controls that are no longer needed are removed under change control — otherwise temporary rules accumulate.
-
-Section sixteen point four develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section sixteen point four, FSTS Platform expects critical claims to carry owners and dates.
 
 ### 16.5 Backups and restore tests
 
@@ -1952,15 +1792,7 @@ An advisory reports a flaw in the Arlen 300 PLC's web management interface, firm
 
 Write the full record for the §16.6 advisory: applicability per asset, priority with reasons for each of the three questions, compensating controls with evidence, fix plan with dates and owners, verification steps, and the residual-risk owner.
 
-Section sixteen point seven develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section sixteen point seven, FSTS Platform expects critical claims to carry owners and dates.
-
-Section sixteen point seven treats vulnerability intake and applicability as testable only when evidence and ticket IDs are recorded.
-
 ### 16.8 Common errors and limits
-Section sixteen point eight develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
 
 - Prioritizing by severity score alone.
 - Marking "not applicable" without checking versions.
@@ -2021,8 +1853,6 @@ The syslog protocol, [RFC 5424](https://www.rfc-editor.org/rfc/rfc5424), defines
 
 A **normalizer** turns each source's format into one common record: UTC time, host, application, severity, and named fields such as `src`, `user`, `dst`, `dport`, `action`. Downstream rules (Chapter 19) are then written once. A normalizer must **count what it cannot parse** and report it: silent drops are how a monitoring system goes blind to the one source that changed its format.
 
-Section seventeen point four develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
 ### 17.5 Tools you can trust
 
 Implementers write small tools constantly. Trust in a tool's output comes from: a clear statement of what it handles and what it does not; tests with bad and edge cases (Chapter 3); counts of inputs, outputs and rejects that add up; deterministic output for the same input; and version control. Write your own tool when the task is small and specific; use an established, maintained tool when the task is general (a full syslog collector, a TLS library, a database). Never write your own cryptography — use the standard library's.
@@ -2034,14 +1864,6 @@ Lab 17 parses seven lines from the relay, firewall, historian and depot kiosk. S
 ### 17.7 Practical activity: normalizer
 
 **Lab 17** (save as `lab17.py`, run with `python3 lab17.py`):
-
-Section seventeen point seven develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section seventeen point seven, FSTS Platform expects critical claims to carry owners and dates.
-
-Section seventeen point seven treats what to log time as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point seven, Fallowmere Shared Technology Services will not accept critical work without a written trail.
 
 ```python
 # Lab 17 - normalizing RFC 5424-style syslog lines into JSON records (offline, standard library only)
@@ -2178,15 +2000,7 @@ Evidence differs by type of control. For a **configuration** control (SSH bound 
 
 Write a rotation runbook for one station key: preparation (new key generated and stored, relay configured to accept old *and* new for a short overlap), cut-over at the station gateway, verification (messages accepted with the new key version; MAC failures counted), removal of the old key, and rollback. State the overlap length and why.
 
-Section eighteen point seven develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section eighteen point seven, FSTS Platform expects critical claims to carry owners and dates.
-
 ### 18.8 Common errors and limits
-Section eighteen point eight develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section eighteen point eight, FSTS Platform expects critical claims to carry owners and dates.
-
 
 - Selecting controls from a catalogue without walking a scenario, producing many controls and gaps between them.
 - Controls with no owner, or owned by a person rather than a role.
@@ -2237,8 +2051,6 @@ Three sources produce LANTERN's rules. **Scenarios** (Chapter 13): each step on 
 
 In critical services, many of the most important alerts are about things that *stop* happening: a station that stops reporting, a relay that stops forwarding, a log source that falls silent, a backup that does not run. Absence rules need an **expected rhythm** (a heartbeat every five minutes) and a **tolerance** (alert after 15 minutes of silence). They catch outages, failed devices, cut cables, misconfigurations — and attackers who disable logging.
 
-Section nineteen point two develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
 ### 19.3 Events, episodes and alert quality
 
 A rule that fires for every matching event floods the on-call technologist: 14 failed logins become 14 alerts. Better rules alert once per **episode** — the first event in a window, with a count of the rest — and attach context: source zone, asset criticality, related recent events. Track each rule's **false-alarm rate** and its **response time**. A rule that has fired a hundred times without a true positive is training people to ignore it; tune it, change its threshold, or route it to a daily report instead of a page.
@@ -2247,15 +2059,9 @@ A rule that fires for every matching event floods the on-call technologist: 14 f
 
 Every alert needs an owner and a **first action** written in the rule: "Corporate→station Modbus: check whether an approved engineering session is in progress (change calendar); if not, call Water control room, then preserve flow records." Alerts that affect the physical process go to Water operations as well as FSTS. Write first actions before turning a rule on.
 
-Section nineteen point four develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section nineteen point four, FSTS Platform expects critical claims to carry owners and dates.
-
 ### 19.5 Monitoring the monitoring
 
 Rules, sources and forwarders fail silently. Monitor: each source's event rate (an absence rule for logs); the normalizer's unparsed count (Chapter 17); each rule's last evaluation time; and periodic **test events** that should produce known alerts (Chapter 23). NIST's guidance on information security continuous monitoring emphasizes ongoing awareness of whether controls remain effective ([NIST SP 800-137](https://csrc.nist.gov/pubs/sp/800/137/final)).
-
-Section nineteen point five develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
 
 ### 19.6 Worked example: one night, three rules (synthetic)
 
@@ -2266,14 +2072,6 @@ Taken with Chapter 17's timeline, Rule B is the alert that matters most: the wor
 ### 19.7 Practical activity: rules over events
 
 **Lab 19** (save as `lab19.py`, run with `python3 lab19.py`):
-
-Section nineteen point seven develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section nineteen point seven, FSTS Platform expects critical claims to carry owners and dates.
-
-Section nineteen point seven treats where rules come from as testable only when evidence and ticket IDs are recorded.
-
-For section nineteen point seven, Fallowmere Shared Technology Services will not accept critical work without a written trail.
 
 ```python
 # Lab 19 - three monitoring rules over normalized events, including "absence" (offline, standard library only)
@@ -2330,8 +2128,6 @@ alerts: 4 | rule B fired per event, not per episode: 2
 
 Rules detect what was anticipated. Unanticipated behaviour needs people who look at data — threat hunting, reviews — and absence rules, which catch effects without knowing causes.
 
-Section nineteen point eight develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
 ### Exercises — chapter 19
 
 **EX055 — Episode rule.** *Objective:* reduce alert noise without losing information. *Inputs:* Lab 19. *Constraints:* standard library only. *Steps:* (1) change Rule B so it raises one alert per source–destination pair per 60 minutes, recording the count of matching events; (2) run and show the output; (3) explain what information is preserved. *Expected evidence:* code, output, explanation. *Rubric:* 3 = one Rule B alert with count 2 and first/last times; explanation that counts and times are preserved for investigation while the page fires once; 2 = works, count missing; 1 = not run; 0 = none.
@@ -2386,8 +2182,6 @@ Restarting a service clears its memory, rotates logs, and may destroy the only e
 
 Escalate to the incident process when any of these is true: evidence of unauthorized access or change (an unapproved configuration difference, a leaver's account used — Chapter 7); a security control has failed in a way that could be exploited; data may have gone where they should not (Chapter 12); or the cause cannot be found and a malicious cause is plausible. Escalating is not an accusation. It brings in people with different authority and duties, including the operator's reporting obligations (Chapter 10).
 
-Section twenty point three develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
 ### 20.4 Missing data: four common causes
 
 Missing telemetry is LANTERN's commonest symptom. The data themselves usually discriminate between causes:
@@ -2408,14 +2202,6 @@ For PS-07, the gap of four consecutive messages could be a carrier drop, a stati
 ### 20.6 Practical activity: discriminate the causes
 
 **Lab 20** (save as `lab20.py`, run with `python3 lab20.py`):
-
-Section twenty point six develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section twenty point six, FSTS Platform expects critical claims to carry owners and dates.
-
-Section twenty point six treats method preserve before you as testable only when evidence and ticket IDs are recorded.
-
-For section twenty point six, Fallowmere Shared Technology Services will not accept critical work without a written trail.
 
 ```python
 # Lab 20 - troubleshooting "missing telemetry": sequence gaps versus clock skew (offline, standard library only)
@@ -2449,10 +2235,6 @@ PS-09 points in dashboard window: 0
 ```
 
 ### 20.7 Common errors and limits
-Section twenty point seven develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section twenty point seven, FSTS Platform expects critical claims to carry owners and dates.
-
 
 - Restarting first and investigating later.
 - One hypothesis, usually the most familiar.
@@ -2509,8 +2291,6 @@ For each neighbour, write down the interface as an agreement:
 
 A **RACI** matrix records for each activity who is Responsible (does it), Accountable (owns the outcome — exactly one), Consulted and Informed. Test it with a scenario: walk through "relay compromised at 02:00" and check that every step has exactly one accountable role, that nobody needs to be consulted who cannot be reached at 02:00, and that the people who must act on the physical process are informed early.
 
-Section twenty-one point two develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
 ### 21.3 Supplier integration
 
 Suppliers are part of the service. Their remote access is a path into it; their software updates are changes to it; their outages are your outages. Integration means: their access through the declared path; their change notices into your change calendar; their security advisories into your vulnerability routine (Chapter 16); and contract terms that require notification of incidents affecting you. CISA's Secure by Design initiative encourages manufacturers to take ownership of customer security outcomes ([CISA Secure by Design](https://www.cisa.gov/securebydesign)); as a customer, ask suppliers how they meet such expectations and record the answers.
@@ -2527,17 +2307,7 @@ The draft RACI for "suspected compromise of a relay" lists: FSTS on-call — R; 
 
 Write a one-page interface agreement between LANTERN and Water operations covering: what each side provides, service levels (timeliness, value age display), alert routing, how a suspected telemetry problem is reported, the triggers for "telemetry unreliable", and review frequency.
 
-Section twenty-one point six develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section twenty-one point six, FSTS Platform expects critical claims to carry owners and dates.
-
-Section twenty-one point six treats interfaces are agreements responsibility as testable only when evidence and ticket IDs are recorded.
-
 ### 21.7 Common errors and limits
-Section twenty-one point seven develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section twenty-one point seven, FSTS Platform expects critical claims to carry owners and dates.
-
 
 - Treating integration as data formats and APIs only.
 - RACI matrices with several accountable roles, or none.
@@ -2588,10 +2358,6 @@ Write the desired state of each host class as data in version control: SSH setti
 
 Good automation separates **plan** from **apply**. The plan lists every intended change: host, setting, current value, desired value, and mode. The apply step executes an approved plan, not a fresh computation. This gives a person a chance to see what will happen, gives the change record something specific to approve, and produces evidence afterwards.
 
-Section twenty-two point two develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section twenty-two point two, FSTS Platform expects critical claims to carry owners and dates.
-
 ### 22.3 Safe auto-fix versus ticket
 
 Some drift is safe to correct automatically: settings that are low-risk, reversible and well-understood (re-disabling SSH password authentication; restoring the approved time servers; restoring log forwarding). Other drift must go through change control: anything that may change service behaviour (a package version), anything that may be evidence (an unexpected debug listener — which may be an attacker's or an engineer's, and should be preserved before removal, Chapter 20), and anything that affects the physical process. Write the auto-fix list explicitly and keep it short.
@@ -2604,10 +2370,6 @@ Automation must protect against its own mistakes. Common limits: apply to **one 
 
 The automation's own code and desired-state files are high-value: whoever can change them can change every host. Protect them with review before merge, restricted write access, signed commits or protected branches, and logs of each run. The automation's credentials to read and change hosts are privileged accounts (Chapter 7).
 
-Section twenty-two point five develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section twenty-two point five, FSTS Platform expects critical claims to carry owners and dates.
-
 ### 22.6 Worked example: a dry run across three relays (synthetic)
 
 Lab 22 compares desired state with three relays. RLY-01 is compliant. RLY-02 has SSH password authentication re-enabled and public time servers — both on the auto-fix list. RLY-03 has a debug listener on all interfaces, an older relay package and no log forwarding. Two of three hosts have drifted, more than half the fleet, so the guard halts the run. Here the halt is a false alarm in one sense — the source of truth is fine — but the rule is right to stop: a person confirms the desired state, then approves applying the three auto-fixes host by host, while the debug listener and package version go to tickets. The debug listener on RLY-03 is the same symptom found by the integrity check on RLY-01 in Chapter 6: twice is a pattern, and the troubleshooting method of Chapter 20 applies.
@@ -2617,14 +2379,6 @@ Notice too that RLY-03's missing log forwarding means its own logs about the deb
 ### 22.7 Practical activity: drift plan
 
 **Lab 22** (save as `lab22.py`, run with `python3 lab22.py`):
-
-Section twenty-two point seven develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section twenty-two point seven, FSTS Platform expects critical claims to carry owners and dates.
-
-Section twenty-two point seven treats configuration as code plan as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-two point seven, Fallowmere Shared Technology Services will not accept critical work without a written trail.
 
 ```python
 # Lab 22 - automated configuration-drift check with a dry-run plan (offline, standard library only)
@@ -2671,10 +2425,6 @@ guard: drifted hosts 2 of 3 -> HALT and escalate (possible bad source of truth)
 ```
 
 ### 22.8 Common errors and limits
-Section twenty-two point eight develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section twenty-two point eight, FSTS Platform expects critical claims to carry owners and dates.
-
 
 - Automation that applies changes without a reviewable plan.
 - Long auto-fix lists, including settings that may be evidence or change behaviour.
@@ -2730,17 +2480,9 @@ Before any test, write and get signed **rules of engagement**: purpose; systems 
 
 Decide before testing what result will count as "effective". A **claim rule** might be: the 95 % Wilson lower bound of the detection rate is at least 0.70 and the median time to alert meets the target. Fixing the rule in advance stops the temptation to choose a flattering interpretation afterwards. Chapter 9's lesson applies: small numbers of tests give wide intervals, so "8 of 8 detected" may still not meet the rule.
 
-Section twenty-three point three develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
 ### 23.4 From results to work
 
 Each control that is "not yet shown" needs either improvement (fix the rule, the source, the configuration) or more tests (if the issue is only sample size). Record the next test date. Each control "shown effective" is re-tested on a schedule, because controls degrade.
-
-Section twenty-three point four develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section twenty-three point four, FSTS Platform expects critical claims to carry owners and dates.
-
-Section twenty-three point four treats what to test rules as testable only when evidence and ticket IDs are recorded.
 
 ### 23.5 Worked example: a quarter's control tests (synthetic)
 
@@ -2754,14 +2496,6 @@ Lab 23 applies the claim rule to six controls. Two are shown effective: Rule A d
 ### 23.6 Practical activity: evaluate controls
 
 **Lab 23** (save as `lab23.py`, run with `python3 lab23.py`):
-
-Section twenty-three point six develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section twenty-three point six, FSTS Platform expects critical claims to carry owners and dates.
-
-Section twenty-three point six treats what to test rules as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-three point six, Fallowmere Shared Technology Services will not accept critical work without a written trail.
 
 ```python
 # Lab 23 - evaluating whether the service's controls work, not only whether they exist (offline, standard library only)
@@ -2848,10 +2582,6 @@ Technologists are often asked questions that sound simple — "did the new alert
 
 Write the question so that data can answer it: population (which stations, alerts, hosts), measure (with definition — Chapter 9), comparison (against what), period and decision (what will be done differently depending on the answer). "Did the new first-action text for Rule C reduce time from alert to control-room call?" is answerable; "is monitoring better?" is not.
 
-Section twenty-four point one develops applied research methods with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section twenty-four point one, FSTS Platform expects applied claims to carry owners and dates.
-
 ### 24.2 Comparisons and their traps
 
 - **Before/after** on the same system is easy and weak: anything else that changed in the period (staff, season, workload) can explain the difference.
@@ -2868,19 +2598,9 @@ Use data the service already records where possible: alert and acknowledgement t
 
 For small operational studies, simple methods are best and most honest: medians and percentiles (Chapter 9), differences between groups with the number of observations stated, intervals for proportions (Wilson), and a check of whether the result survives obvious alternative explanations (remove one unusual week; compare shifts separately). If the conclusion changes when one data point is removed, say so.
 
-Section twenty-four point four develops applied research methods with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section twenty-four point four, FSTS Platform expects applied claims to carry owners and dates.
-
 ### 24.5 Reporting
 
 A one-page study note has: question; method (population, measure, comparison, period, what was decided in advance); results with counts; limits and alternative explanations; and recommendation with the confidence it deserves. Separate observed results from inferences, as everywhere in this book.
-
-Section twenty-four point five develops applied research methods with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section twenty-four point five, FSTS Platform expects applied claims to carry owners and dates.
-
-Section twenty-four point five treats from question to study as testable only when evidence and ticket IDs are recorded.
 
 ### 24.6 Worked example: did the new first-action text help? (synthetic)
 
@@ -2890,15 +2610,7 @@ FSTS rewrote Rule C's alert to include a first action ("call the Water control r
 
 Choose one question from: (a) has RLY-02's p95 latency increased since relayd 2.4.1? (b) do quarterly station visits find drift that automated checks miss? (c) does the access review find fewer issues each quarter? Write the study design: question, population, measure, comparison, period, decision, data source, ethical and safety notes, analysis planned in advance.
 
-Section twenty-four point seven develops applied research methods with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section twenty-four point seven, FSTS Platform expects applied claims to carry owners and dates.
-
 ### 24.8 Common errors and limits
-Section twenty-four point eight develops applied research methods with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section twenty-four point eight, FSTS Platform expects applied claims to carry owners and dates.
-
 
 - Questions that data cannot answer.
 - Before/after comparisons presented as proof.
@@ -2950,19 +2662,13 @@ A LANTERN delivery team at FSTS has four or five people: a **service owner** (pr
 
 Every work item states what "done" means as **acceptance criteria** that produce evidence. "Add station-silence alerting" is a wish. "Rule C alerts within 20 minutes of a station's heartbeat stopping, verified by three injected test silences across two stations; first action written and agreed by Water control room; control card updated" is a work item. The evidence becomes part of the capstone record.
 
-Section twenty-five point two develops team project studio with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
 ### 25.3 Review as a control
 
 Peer review of code, desired-state files, firewall changes and runbooks catches errors, spreads knowledge and makes it harder for one compromised or careless account to change the service alone. Make review **required** for anything that changes the service (protected branches, Chapter 22), **specific** (the reviewer checks against acceptance criteria and the design properties of Chapter 8, not just style), and **recorded**. Rotate reviewers so that review is not rubber-stamped by one habitual approver.
 
-Section twenty-five point three develops team project studio with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
 ### 25.4 Rhythm
 
 A short, regular rhythm suits operational teams: a weekly planning conversation (what will be done, by whom, with what evidence), a brief daily check (what is blocked), and a review at the end of each cycle (what was delivered, shown with its evidence to the customer representative). Operational work — incidents, faults — interrupts project work; plan for it rather than pretending it will not happen.
-
-Section twenty-five point four develops team project studio with a Fallowmere Shared Technology Services note the technologist can demo offline.
 
 ### 25.5 Blameless reviews
 
@@ -2976,19 +2682,7 @@ During the project, a technologist merged a desired-state change that removed `1
 
 Write the backlog for the capstone (Chapter 29): at least ten work items covering the relay, validation, authentication, historian, logging, monitoring rules, access, backup and restore, automation, runbooks and evidence. Each needs acceptance criteria that produce evidence and an owner role.
 
-Section twenty-five point seven develops team project studio with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section twenty-five point seven, FSTS Platform expects team claims to carry owners and dates.
-
-Section twenty-five point seven treats the team and its as testable only when evidence and ticket IDs are recorded.
-
 ### 25.8 Common errors and limits
-Section twenty-five point eight develops team project studio with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section twenty-five point eight, FSTS Platform expects team claims to carry owners and dates.
-
-Section twenty-five point eight treats the team and its as testable only when evidence and ticket IDs are recorded.
-
 
 - Work items without acceptance criteria.
 - Review that checks style, not substance; or one habitual reviewer.
@@ -3054,15 +2748,9 @@ Core LANTERN runbooks: add or remove a station (standard change); rotate a stati
 
 The receiving team should be able to answer "is LANTERN healthy?" in two minutes from a dashboard or a daily report: stations reporting / expected; accept, reject and quarantine counts per hour; relay resource headroom (Chapter 1); clock offsets; log-source freshness; last successful backup and last restore test; rules last evaluated; open alerts; silenced rules and their expiry (Chapter 25).
 
-Section twenty-six point three develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section twenty-six point three, FSTS Platform expects critical claims to carry owners and dates.
-
 ### 26.4 Running the handover
 
 Handover is a process, not an email. Run it in stages: walk-through of the pack with the receiving team; **shadowing**, where the receiving team performs routine tasks with the project team watching; **reverse shadowing**, where the project team watches the receiving team handle an injected test alert and a runbook; and **acceptance**, where the service owner and receiving team lead sign off with open items listed. Agree an **early-life support** period in which the project team remains available.
-
-Section twenty-six point four develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
 
 ### 26.5 Worked example: a handover that found three gaps (synthetic)
 
@@ -3072,17 +2760,7 @@ During reverse shadowing, the FSTS operations team is given a test Rule C alert 
 
 Write the runbook "Respond to Rule C — station silent" using §26.2's structure, including the decision point from §26.5. Ask a colleague (or, if studying alone, yourself after a day's break) to follow it against the Lab 20 data and note every place they hesitated.
 
-Section twenty-six point six develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section twenty-six point six, FSTS Platform expects critical claims to carry owners and dates.
-
-Section twenty-six point six treats what is handed over as testable only when evidence and ticket IDs are recorded.
-
 ### 26.7 Common errors and limits
-Section twenty-six point seven develops critical infrastructure and sector security with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section twenty-six point seven, FSTS Platform expects critical claims to carry owners and dates.
-
 
 - Documentation delivered without testing that others can use it.
 - Runbooks that say "investigate" or "fix the issue".
@@ -3138,15 +2816,9 @@ A **canary** deployment installs the new version on one host first and compares 
 
 After each host is upgraded, validate: **functional** properties (all stations accepted, latency normal, historian receiving); **security** properties (MAC checks still enforced — inject a test message with a wrong MAC; listeners unchanged — run the drift check; logs still forwarded and parsed — check the normalizer's counts); and **operational** properties (alerts still evaluated; health report green). Security regressions are easy to miss because a service can work perfectly while a check has been silently disabled.
 
-Section twenty-seven point three develops deployment and validation with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
 ### 27.4 What the window cannot show
 
 A one-hour night-time canary shows behaviour at night-time load for one hour. It says nothing about the morning demand peak, weekly report runs (Chapter 1), month-end reporting or rare message types. Either extend the window over the periods that matter or state the gap and watch those periods closely after promotion.
-
-Section twenty-seven point four develops deployment and validation with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section twenty-seven point four, FSTS Platform expects deployment claims to carry owners and dates.
 
 ### 27.5 Worked example: relayd 2.4.1 (synthetic)
 
@@ -3155,14 +2827,6 @@ Pre-checks pass: approved change, control room informed, configuration backed up
 ### 27.6 Practical activity: canary decision
 
 **Lab 27** (save as `lab27.py`, run with `python3 lab27.py`):
-
-Section twenty-seven point six develops deployment and validation with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section twenty-seven point six, FSTS Platform expects deployment claims to carry owners and dates.
-
-Section twenty-seven point six treats pre-checks canaries and promotion as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point six, Fallowmere Shared Technology Services will not accept deployment work without a written trail.
 
 ```python
 # Lab 27 - pre- and post-deployment validation with a canary and a rollback rule (offline, standard library only)
@@ -3197,12 +2861,6 @@ decision: promote to rly-02, then rly-01
 ```
 
 ### 27.7 Common errors and limits
-Section twenty-seven point seven develops deployment and validation with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section twenty-seven point seven, FSTS Platform expects deployment claims to carry owners and dates.
-
-Section twenty-seven point seven treats pre-checks canaries and promotion as testable only when evidence and ticket IDs are recorded.
-
 
 - Installing packages without verifying their origin.
 - Promotion criteria decided after seeing canary results.
@@ -3254,12 +2912,6 @@ Before going to PS-07, agree with Water operations: purpose and tasks; date and 
 
 Physical safety rules at operational sites come from the operator and from health-and-safety law: confined spaces, chemicals (chlorine dosing rooms), electrical panels, lone working, weather. Follow the site's induction and the operator's instructions; if in doubt, stop and ask. Security work never justifies a safety shortcut.
 
-Section twenty-eight point two develops field practice with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section twenty-eight point two, FSTS Platform expects field claims to carry owners and dates.
-
-Section twenty-eight point two treats planning visit safety first as testable only when evidence and ticket IDs are recorded.
-
 ### 28.3 Evidence collection at site
 
 Field visits are the moment to verify what remote sources cannot: the physical presence and labels of devices (Chapter 11); firmware versions read from the device or its engineering export by Water's engineer; cabling that may create undeclared paths (a second network cable to a cellular modem, a laptop left connected); physical protection of the station gateway that holds HMAC keys (Chapter 15); and the state of local buffering and time. Photograph labels and panels only with permission and without capturing passwords or screens with sensitive data. Record everything with time and source, under observed / inferred / done / open.
@@ -3268,19 +2920,13 @@ Field visits are the moment to verify what remote sources cannot: the physical p
 
 Field equipment is a classic path into control systems: USB drives and maintenance laptops carry malware between sites and networks. Use dedicated, scanned media; never connect a personal device; never connect a field laptop to the corporate network and a station network at the same time; record what was connected to what. CISA's performance goals include controls on connecting unauthorized devices and media to OT networks ([CISA CPGs](https://www.cisa.gov/cross-sector-cybersecurity-performance-goals)).
 
-Section twenty-eight point four develops field practice with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
 ### 28.5 Working with operations
 
 Operations staff hold authority over the process and knowledge that no document contains. Ask them what they would expect to see if the station were misbehaving; how they would run it manually; what changed recently. Explain what you are doing in plain language, and stop if they ask you to. Many of the best findings at site come from conversations: "we sometimes plug the vendor's laptop into that spare port" is worth more than a scan.
 
-Section twenty-eight point five develops field practice with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
 ### 28.6 Exercises with operators
 
 A **tabletop exercise** walks through a scenario in discussion; a **functional exercise** performs some actions for real in a controlled way. For LANTERN, an annual exercise with Water operations tests the "telemetry unreliable" trigger (Chapter 21): FSTS declares it, the control room switches to manual readings at selected stations, and both sides time each step and record problems. The exercise is planned with rules of engagement (Chapter 23) and stop conditions, and ends with a blameless review (Chapter 25).
-
-Section twenty-eight point six develops field practice with a Fallowmere Shared Technology Services note the technologist can demo offline.
 
 ### 28.7 Worked example: the PS-07 visit (synthetic)
 
@@ -3290,19 +2936,7 @@ You visit PS-07 with Water's engineer to read the PLC firmware (for Chapter 16's
 
 Write a site work plan for the PS-09 visit (Chapter 11 discrepancies: firmware not independently verified, station silent for three weeks). Include every element of §28.1, safety notes, the evidence you intend to collect, what you will not touch, and how findings will be recorded and raised.
 
-Section twenty-eight point eight develops field practice with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section twenty-eight point eight, FSTS Platform expects field claims to carry owners and dates.
-
-Section twenty-eight point eight treats planning visit safety first as testable only when evidence and ticket IDs are recorded.
-
 ### 28.9 Common errors and limits
-Section twenty-eight point nine develops field practice with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section twenty-eight point nine, FSTS Platform expects field claims to carry owners and dates.
-
-Section twenty-eight point nine treats planning visit safety first as testable only when evidence and ticket IDs are recorded.
-
 
 - Visits without an approved plan or without Water's engineer.
 - Field laptops used for other work or connected to several networks.
@@ -3426,8 +3060,6 @@ PS-07 mean chlorine stored: 0.606 mg/L
 
 Check that the numbers add up. Messages on the wire: 120 + 119 + 85 + 3 injected = 327. Stored: 324 (all genuine readings). Not stored: 3 (the replay, the forgery and the out-of-range reading). Alerts: four, one of each kind, and four of four injected tests detected. The digest lets anyone confirm later that the record has not been edited; in a real service the record would be stored off-host and the digest written into the change or test ticket.
 
-Section twenty-nine point three develops capstone build with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
 ### 29.4 A defect that only appears in combination
 
 Change the injected out-of-range message's sequence number from 20 to 1000 — as a faulty station gateway might after a reset — and rerun. The result changes dramatically: stored readings fall from 324 to 225 and alerts rise from 4 to 103. Ninety-nine genuine PS-07 readings are rejected as replays. The cause is that the relay updates its last-seen sequence number *after* authentication but *before* the range check: the out-of-range message is authentic, so its sequence number 1000 is recorded, and every later genuine message (sequence 21 to 119) looks like a replay.
@@ -3439,10 +3071,6 @@ Each component was "correct" by its own chapter's tests. Chapter 3 warned agains
 The project version of the capstone, done in a team (Chapter 25), builds the same shape with real components in a lab: three relay virtual machines, a historian database, log forwarding to a collector, the normalizer, three monitoring rules plus self-monitoring, configuration as code with a drift check, a backup and timed restore, runbooks and a handover pack. Use only lab equipment or simulated stations. The deliverable is the **service evidence record**: for each requirement in §29.1, the test performed, its date, the raw output, the result against a pre-stated claim rule (Chapter 23), and the open items.
 
 ### 29.6 Common errors and limits
-Section twenty-nine point six develops capstone build with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section twenty-nine point six, FSTS Platform expects capstone claims to carry owners and dates.
-
 
 - Testing components separately and assuming the combination works.
 - Evidence records whose counts do not add up.
@@ -3493,8 +3121,6 @@ A design review is a structured conversation in which reviewers test whether the
 
 Operational evidence is the record of the service running: health reports over weeks, alerts and their handling, control tests with results against claim rules (Chapter 23), restore tests, access reviews, drift reports, problem records, and blameless reviews with their changes. Assessors look for: evidence that is **dated and sourced**; **counts that add up**; claim rules stated **before** results; "not yet shown" handled honestly; and **limits** stated (synthetic data, lab equipment, short periods).
 
-Section thirty point two develops capstone assessment with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
 ### 30.3 Assessment rubric
 
 | Criterion | 3 — strong | 2 — adequate | 1 — weak | 0 — missing |
@@ -3511,10 +3137,6 @@ Section thirty point two develops capstone assessment with a Fallowmere Shared T
 
 The capstones that do worst are rarely the least technical. They are the ones that present configuration as evidence, hide a failed test, choose claim rules after the results, test only components, or describe a design that the evidence does not match. The capstones that do best are often modest in scope and exact in evidence.
 
-Section thirty point four develops capstone assessment with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section thirty point four, FSTS Platform expects capstone claims to carry owners and dates.
-
 ### 30.5 Worked example: two capstone summaries (synthetic)
 
 Team A: "LANTERN is fully secured with HMAC, validation, monitoring and backups. All tests passed." Team B: "Four of four injected faults were detected in the final run (record digest aa40e3905d17…). Rule C met its claim rule only after four further successful tests (12/12, lower bound 0.76); FIM detection is not yet shown (4/6, daily checks too slow — change raised). We found and fixed a replay-state defect during integration (Chapter 29). The historian restore met its 4-hour RTO in 9 of 10 drills; the failure was a runbook gap, fixed and re-tested. We have not tested key compromise or carrier failure at scale." Team B's summary scores higher on every criterion except perhaps confidence — and confidence is not a criterion.
@@ -3523,8 +3145,6 @@ Team A: "LANTERN is fully secured with HMAC, validation, monitoring and backups.
 
 The course has taught one method, applied thirty times: know what must stay true about the service; build it so that it stays true; check that it does, with evidence someone else can verify; notice quickly when it stops; respond without destroying evidence; and hand it on so that others can do the same. The vocabulary changes by sector — chlorine and pumps in water, drug libraries in a hospital, timetables at a depot — but the method transfers.
 
-Section thirty point six develops capstone assessment with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
 ### 30.7 Continuing practice
 
 Services and threats change; so do standards. Keep a short continuing-practice plan: re-read the main standards you rely on when they are revised (NIST CSF 2.0, SP 800-82, the CISA CPGs, the sector guidance for your jurisdiction); follow the advisories for the products in your inventory; take part in exercises; review one public incident report a month for failed assumptions (Chapter 5); and seek review of your own work. The next course in the study path, the Cybersecurity bachelor's course, broadens the foundations behind much of what this book applied.
@@ -3532,14 +3152,6 @@ Services and threats change; so do standards. Keep a short continuing-practice p
 ### 30.8 Practical activity: self-assessment
 
 Score your capstone against §30.3 before your assessor does. For every criterion below 3, write what evidence would raise it and when you could produce it.
-
-Section thirty point eight develops capstone assessment with a Fallowmere Shared Technology Services note the technologist can demo offline.
-
-Under section thirty point eight, FSTS Platform expects capstone claims to carry owners and dates.
-
-Section thirty point eight treats the design review operational as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point eight, Fallowmere Shared Technology Services will not accept capstone work without a written trail.
 
 ### Exercises — chapter 30
 

@@ -47,57 +47,25 @@ You will (1) state the core security goals for an internal business application;
 
 Priya Nair, a quality engineer moving into application security, takes the six-month professional course at the fictional Westgate Professional Institute while working at the fictional freight company Harbourline Freight, mentored by security lead Marcus Bell. During a routine build review she noticed that one internal package, hl-auth, had been resolved from the public package registry rather than Harbourline's internal one. Nothing harmful was found in the published package, but the build had trusted a source nobody intended.
 
-Section one point one develops security foundations for practitioners with a Harbourline Freight note Priya Nair can demo offline.
-
 ### 1.2 Security goals
 
 Confidentiality, integrity and availability apply to TrackPort, Harbourline's shipment-tracking application: customer addresses must stay private, shipment records must not be altered and the service must stay up for depots. Supply chain security protects integrity before the software even runs: everything built into TrackPort must be what the team intended.
-
-Section one point two develops security foundations for practitioners with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section one point two, Marcus Bell expects security claims to carry owners and dates.
 
 ### 1.3 Why the case matters
 
 If a build can take a package from an unintended source, someone else's code could run with TrackPort's access to customer and shipment data. Ladisa et al. (2023) catalogue this and other supply chain attack paths; the defensive response is to control and check where every dependency comes from.
 
-Section one point three develops security foundations for practitioners with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section one point three, Marcus Bell expects security claims to carry owners and dates.
-
 ### 1.4 Frameworks used
 
 NIST SP 800-218 (SSDF) for secure development practices; OWASP ASVS 4.0.3 for application requirements; SLSA v1.0 for build integrity; OWASP SAMM v2 to judge maturity; OWASP Top 10:2021, whose A06 and A08 cover vulnerable components and software integrity failures.
-
-Section one point four develops security foundations for practitioners with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section one point four, Marcus Bell expects security claims to carry owners and dates.
-
-Section one point four treats the opening case security as testable only when evidence and ticket IDs are recorded.
 
 ### 1.5 The professional role
 
 Priya's role is to find, explain and help fix risks with developers, not to work alone. Most fixes are made by the team that owns the code.
 
-Section one point five develops security foundations for practitioners with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section one point five, Marcus Bell expects security claims to carry owners and dates.
-
-Section one point five treats the opening case security as testable only when evidence and ticket IDs are recorded.
-
-For section one point five, Harbourline Freight will not accept security work without a written trail.
-
 ### 1.6 Course plan
 
 Context, authorised practice, methods, tools, workflow, controls, a supervised case, reporting, quality, a lab and a portfolio.
-
-Section one point six develops security foundations for practitioners with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section one point six, Marcus Bell expects security claims to carry owners and dates.
-
-Section one point six treats the opening case security as testable only when evidence and ticket IDs are recorded.
-
-For section one point six, Harbourline Freight will not accept security work without a written trail.
 
 ### Worked example
 
@@ -137,65 +105,25 @@ You will (1) map TrackPort's users, data and dependencies; (2) identify stakehol
 
 TrackPort is a web and mobile application used by customers to track shipments and by depot staff to update them. It holds customer names, addresses and phone numbers, shipment contents and delivery photos. It depends on about 180 open-source packages and four internal packages.
 
-Section two point one develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section two point one, Marcus Bell expects application claims to carry owners and dates.
-
-Section two point one treats the service stakeholders their as testable only when evidence and ticket IDs are recorded.
-
 ### 2.2 Stakeholders
 
 The TrackPort developers own the code and fixes. The platform team runs the build service and the internal registry. Marcus's security team sets requirements. The product manager decides priorities. Depot managers need TrackPort available during shifts.
-
-Section two point two develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section two point two, Marcus Bell expects application claims to carry owners and dates.
-
-Section two point two treats the service stakeholders their as testable only when evidence and ticket IDs are recorded.
 
 ### 2.3 Their priorities
 
 Developers want few interruptions and clear findings; platform wants changes that apply to all teams; product wants features shipped; depots want no outages. A supply chain fix that ignores these will be resisted.
 
-Section two point three develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section two point three, Marcus Bell expects application claims to carry owners and dates.
-
-Section two point three treats the service stakeholders their as testable only when evidence and ticket IDs are recorded.
-
 ### 2.4 Agreeing ways of working
 
 Priya agrees with the TrackPort lead that findings arrive as tickets with evidence and a suggested fix, high findings are discussed within a day, and security work fits into normal sprint planning.
-
-Section two point four develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section two point four, Marcus Bell expects application claims to carry owners and dates.
-
-Section two point four treats the service stakeholders their as testable only when evidence and ticket IDs are recorded.
 
 ### 2.5 The registry decision
 
 Who should decide how package sources are configured? The platform team, because one change protects every team using the build service.
 
-Section two point five develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section two point five, Marcus Bell expects application claims to carry owners and dates.
-
-Section two point five treats the service stakeholders their as testable only when evidence and ticket IDs are recorded.
-
-For section two point five, Harbourline Freight will not accept application work without a written trail.
-
 ### 2.6 Stakeholder map
 
 A one-page map lists each stakeholder, what they need and how they are informed.
-
-Section two point six develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section two point six, Marcus Bell expects application claims to carry owners and dates.
-
-Section two point six treats the service stakeholders their as testable only when evidence and ticket IDs are recorded.
-
-For section two point six, Harbourline Freight will not accept application work without a written trail.
 
 ### Keeping stakeholders informed
 
@@ -239,67 +167,25 @@ You will (1) confirm authorisation before reviewing systems; (2) handle code, lo
 
 Priya's review of build dependencies is authorised in writing by Marcus and the TrackPort lead, naming the repositories, build logs and registry settings in scope. Reviewing other teams' systems needs their owners' agreement.
 
-Section three point one develops authorized practice and evidence handling with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section three point one, Marcus Bell expects authorized claims to carry owners and dates.
-
-Section three point one treats authorisation defensive scope evidence as testable only when evidence and ticket IDs are recorded.
-
 ### 3.2 Defensive scope
 
 The work reads configurations, lock files and logs; it does not publish packages to public registries or test whether a public name could be taken. Such tests could affect other organisations and are not needed to fix the configuration.
-
-Section three point two develops authorized practice and evidence handling with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section three point two, Marcus Bell expects authorized claims to carry owners and dates.
-
-Section three point two treats authorisation defensive scope evidence as testable only when evidence and ticket IDs are recorded.
 
 ### 3.3 Evidence
 
 The build log showing hl-auth fetched from the public registry, the lock file entry with its hash and the registry configuration are saved with dates and hashes.
 
-Section three point three develops authorized practice and evidence handling with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section three point three, Marcus Bell expects authorized claims to carry owners and dates.
-
-Section three point three treats authorisation defensive scope evidence as testable only when evidence and ticket IDs are recorded.
-
-For section three point three, Harbourline Freight will not accept authorized work without a written trail.
-
 ### 3.4 Personal data
 
 Build logs rarely contain personal data, but application logs do; Priya uses synthetic test data in any reproduction.
-
-Section three point four develops authorized practice and evidence handling with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section three point four, Marcus Bell expects authorized claims to carry owners and dates.
-
-Section three point four treats authorisation defensive scope evidence as testable only when evidence and ticket IDs are recorded.
-
-For section three point four, Harbourline Freight will not accept authorized work without a written trail.
 
 ### 3.5 Decision records
 
 Decisions such as "the published public hl-auth was not harmful, based on comparing its contents with our internal version" are recorded with who decided and on what evidence.
 
-Section three point five develops authorized practice and evidence handling with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section three point five, Marcus Bell expects authorized claims to carry owners and dates.
-
-Section three point five treats authorisation defensive scope evidence as testable only when evidence and ticket IDs are recorded.
-
 ### 3.6 Sharing findings
 
 Findings are shared within the teams that need them; external reporting to the registry operator is decided by Marcus.
-
-Section three point six develops authorized practice and evidence handling with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section three point six, Marcus Bell expects authorized claims to carry owners and dates.
-
-Section three point six treats authorisation defensive scope evidence as testable only when evidence and ticket IDs are recorded.
-
-For section three point six, Harbourline Freight will not accept authorized work without a written trail.
 
 ### Handling credentials found
 
@@ -343,12 +229,6 @@ You will (1) check where each dependency is resolved from; (2) identify names cl
 
 Every dependency should come from an intended source: internal packages from the internal registry, public packages from the public registry through a controlled proxy. A rule that internal name prefixes may only resolve internally prevents the hl-auth problem.
 
-Section four point one develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section four point one, Marcus Bell expects application claims to carry owners and dates.
-
-Section four point one treats dependency sources lab result as testable only when evidence and ticket IDs are recorded.
-
 ### Lab — Lab — dependency sources
 
 ```python
@@ -385,41 +265,17 @@ hl-ledger  internal ok
 
 hl-geo and hl-ledger resolve internally (ok). hl-auth is flagged: internal name resolved from PUBLIC registry. yamkit is flagged as close to the popular yamlkit, to confirm it was intended. dateparse and httpwire are ok. The close-name check uses Python's difflib and is only a prompt for a person to check.
 
-Section four point two develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section four point two, Marcus Bell expects application claims to carry owners and dates.
-
 ### 4.3 Similar names
 
 Packages with names similar to popular ones can be installed by mistake. Ohm et al. (2020) describe how such names have been used to spread harmful packages. Reviewers confirm the intended name before approving a new dependency.
-
-Section four point three develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section four point three, Marcus Bell expects application claims to carry owners and dates.
-
-Section four point three treats dependency sources lab result as testable only when evidence and ticket IDs are recorded.
 
 ### 4.4 Source controls
 
 The build service is configured so that internal prefixes resolve only from the internal registry, lock files pin versions with hashes, and builds fail on a hash mismatch.
 
-Section four point four develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section four point four, Marcus Bell expects application claims to carry owners and dates.
-
-Section four point four treats dependency sources lab result as testable only when evidence and ticket IDs are recorded.
-
 ### 4.5 Reviewing new dependencies
 
 A new dependency requires a short note: purpose, maintainer activity, licence and source.
-
-Section four point five develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section four point five, Marcus Bell expects application claims to carry owners and dates.
-
-Section four point five treats dependency sources lab result as testable only when evidence and ticket IDs are recorded.
-
-For section four point five, Harbourline Freight will not accept application work without a written trail.
 
 ### Proxy registry
 
@@ -463,14 +319,6 @@ You will (1) interpret output from code, dependency and secret scanners; (2) ded
 
 Static analysis (SAST) reads code for risky patterns; software composition analysis (SCA) matches dependencies to advisories; secret scanners look for credentials. Each produces findings with different accuracy.
 
-Section five point one develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section five point one, Marcus Bell expects application claims to carry owners and dates.
-
-Section five point one treats scanner types lab result as testable only when evidence and ticket IDs are recorded.
-
-For section five point one, Harbourline Freight will not accept application work without a written trail.
-
 ### Lab — Lab — finding triage
 
 ```python
@@ -511,41 +359,17 @@ by severity: {'high': 4, 'critical': 1, 'medium': 1}
 
 Seven raw findings reduce to six unique ones (the sql-concat finding in orders.py appeared twice). Ranked by reachability then severity: sql-concat in orders.py, ADV-22 and missing-authz in shipments.py are reachable highs and come first. The critical ADV-21 ranks fourth because the affected function is not reachable from TrackPort's code. The api-key in tests/fixtures.py and weak-hash in legacy_export.py follow.
 
-Section five point two develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
 ### 5.3 Reachability
 
 A vulnerable function that the application never calls is less urgent than a reachable one, but it is still fixed in normal updates because code changes can make it reachable later.
-
-Section five point three develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section five point three, Marcus Bell expects application claims to carry owners and dates.
-
-Section five point three treats scanner types lab result as testable only when evidence and ticket IDs are recorded.
 
 ### 5.4 Checking findings
 
 Priya reads each high finding in context. The test fixture api-key is a synthetic placeholder, so the secret scanner gets an allow-list entry with a review date.
 
-Section five point four develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section five point four, Marcus Bell expects application claims to carry owners and dates.
-
-Section five point four treats scanner types lab result as testable only when evidence and ticket IDs are recorded.
-
-For section five point four, Harbourline Freight will not accept application work without a written trail.
-
 ### 5.5 Alert fatigue
 
 Johnson et al. (2013) found that developers avoid static analysis tools largely because of false positives and poor explanations. Priya sends only checked, ranked findings with explanations.
-
-Section five point five develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section five point five, Marcus Bell expects application claims to carry owners and dates.
-
-Section five point five treats scanner types lab result as testable only when evidence and ticket IDs are recorded.
-
-For section five point five, Harbourline Freight will not accept application work without a written trail.
 
 ### Explaining findings
 
@@ -589,75 +413,25 @@ You will (1) design a workflow from finding to fix; (2) assign owners and target
 
 Scanner or review finding → Priya checks and ranks → ticket in TrackPort's backlog with evidence and suggested fix → developer fixes → reviewer confirms → scanner re-run closes the ticket.
 
-Section six point one develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section six point one, Marcus Bell expects application claims to carry owners and dates.
-
-Section six point one treats the workflow targets ownership as testable only when evidence and ticket IDs are recorded.
-
-For section six point one, Harbourline Freight will not accept application work without a written trail.
-
 ### 6.2 Targets
 
 Remediation targets by severity: critical 7 days, high 30, medium 90. Targets are agreed with the product manager so they compete fairly with features.
-
-Section six point two develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section six point two, Marcus Bell expects application claims to carry owners and dates.
-
-Section six point two treats the workflow targets ownership as testable only when evidence and ticket IDs are recorded.
-
-For section six point two, Harbourline Freight will not accept application work without a written trail.
 
 ### 6.3 Ownership
 
 Each ticket has one owner. Platform issues go to the platform team, application issues to TrackPort.
 
-Section six point three develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section six point three, Marcus Bell expects application claims to carry owners and dates.
-
-Section six point three treats the workflow targets ownership as testable only when evidence and ticket IDs are recorded.
-
-For section six point three, Harbourline Freight will not accept application work without a written trail.
-
 ### 6.4 Tracking
 
 A weekly view shows open findings by age and severity.
-
-Section six point four develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section six point four, Marcus Bell expects application claims to carry owners and dates.
-
-Section six point four treats the workflow targets ownership as testable only when evidence and ticket IDs are recorded.
-
-For section six point four, Harbourline Freight will not accept application work without a written trail.
-
-Section six point four fails closed if application evidence is missing rather than guessing.
 
 ### 6.5 Escalation
 
 Findings past their target are discussed with the lead; repeated misses go to the product manager with the risk explained.
 
-Section six point five develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section six point five, Marcus Bell expects application claims to carry owners and dates.
-
-Section six point five treats the workflow targets ownership as testable only when evidence and ticket IDs are recorded.
-
-For section six point five, Harbourline Freight will not accept application work without a written trail.
-
 ### 6.6 Exceptions
 
 If a fix is not possible in time, a risk acceptance records the reason, compensating controls and a new date, signed by the product manager.
-
-Section six point six develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section six point six, Marcus Bell expects application claims to carry owners and dates.
-
-Section six point six treats the workflow targets ownership as testable only when evidence and ticket IDs are recorded.
-
-For section six point six, Harbourline Freight will not accept application work without a written trail.
 
 ### Weekly review
 
@@ -701,69 +475,25 @@ You will (1) put build and dependency controls in place; (2) verify each with sa
 
 Internal-prefix rule in the build service; lock files with hashes; build failure on mismatch; dependency review notes; pinned build actions; least-privilege build tokens; and provenance for each TrackPort release.
 
-Section seven point one develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section seven point one, Marcus Bell expects application claims to carry owners and dates.
-
-Section seven point one treats controls chosen provenance verifying as testable only when evidence and ticket IDs are recorded.
-
 ### 7.2 Provenance
 
 The build service produces a signed provenance statement naming the source commit, builder and inputs. SLSA v1.0 build level 2 requires provenance signed by a hosted build platform. Tools such as in-toto (Torres-Arias et al., 2019) and Sigstore (Newman et al., 2022) support creating and verifying such statements.
-
-Section seven point two develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section seven point two, Marcus Bell expects application claims to carry owners and dates.
-
-Section seven point two treats controls chosen provenance verifying as testable only when evidence and ticket IDs are recorded.
 
 ### 7.3 Verifying controls
 
 Each control gets a safe test using synthetic internal packages: a test project naming a fake internal package confirms the build refuses to resolve it publicly; a lock file with an altered hash confirms the build fails; a release without provenance is refused by deployment.
 
-Section seven point three develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section seven point three, Marcus Bell expects application claims to carry owners and dates.
-
-Section seven point three treats controls chosen provenance verifying as testable only when evidence and ticket IDs are recorded.
-
 ### 7.4 Recording results
 
 Tests and results are stored with dates; failures become tickets.
-
-Section seven point four develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section seven point four, Marcus Bell expects application claims to carry owners and dates.
-
-Section seven point four treats controls chosen provenance verifying as testable only when evidence and ticket IDs are recorded.
-
-For section seven point four, Harbourline Freight will not accept application work without a written trail.
-
-Section seven point four fails closed if application evidence is missing rather than guessing.
 
 ### 7.5 Ongoing checks
 
 The tests run automatically each week, so a configuration change that weakens a control is caught quickly.
 
-Section seven point five develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section seven point five, Marcus Bell expects application claims to carry owners and dates.
-
-Section seven point five treats controls chosen provenance verifying as testable only when evidence and ticket IDs are recorded.
-
-For section seven point five, Harbourline Freight will not accept application work without a written trail.
-
 ### 7.6 SSDF mapping
 
 These controls address SSDF practices for protecting all forms of code and verifying third-party software.
-
-Section seven point six develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section seven point six, Marcus Bell expects application claims to carry owners and dates.
-
-Section seven point six treats controls chosen provenance verifying as testable only when evidence and ticket IDs are recorded.
-
-For section seven point six, Harbourline Freight will not accept application work without a written trail.
 
 ### Rolling out controls
 
@@ -807,69 +537,25 @@ You will (1) analyse a supply chain case under supervision; (2) build a timeline
 
 Marcus asks Priya to analyse a synthetic case from another Harbourline team: a mobile app release included an analytics library update that began collecting device identifiers the privacy notice did not mention.
 
-Section eight point one develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section eight point one, Marcus Bell expects application claims to carry owners and dates.
-
-Section eight point one treats the case timeline causes as testable only when evidence and ticket IDs are recorded.
-
 ### 8.2 Timeline
 
 Day 0 the update was merged with a lock file change of 400 lines; day 3 released; day 20 a customer asked about data collection; day 22 the library was rolled back.
-
-Section eight point two develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section eight point two, Marcus Bell expects application claims to carry owners and dates.
-
-Section eight point two treats the case timeline causes as testable only when evidence and ticket IDs are recorded.
-
-For section eight point two, Harbourline Freight will not accept application work without a written trail.
 
 ### 8.3 Causes
 
 The update was bundled with dozens of other changes, so reviewers did not notice a new data collection feature. There was no rule requiring privacy review for analytics libraries.
 
-Section eight point three develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section eight point three, Marcus Bell expects application claims to carry owners and dates.
-
-Section eight point three treats the case timeline causes as testable only when evidence and ticket IDs are recorded.
-
 ### 8.4 Missed signals
 
 The library's release notes mentioned the new collection feature; nobody read them because updates were routine.
-
-Section eight point four develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section eight point four, Marcus Bell expects application claims to carry owners and dates.
-
-Section eight point four treats the case timeline causes as testable only when evidence and ticket IDs are recorded.
-
-For section eight point four, Harbourline Freight will not accept application work without a written trail.
 
 ### 8.5 Recommendations
 
 Separate pull requests for analytics and advertising libraries; release-note reading for those libraries; a privacy check in the release checklist.
 
-Section eight point five develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section eight point five, Marcus Bell expects application claims to carry owners and dates.
-
-Section eight point five treats the case timeline causes as testable only when evidence and ticket IDs are recorded.
-
-For section eight point five, Harbourline Freight will not accept application work without a written trail.
-
 ### 8.6 Proportion
 
 The recommendations add minutes to a few updates rather than slowing all updates.
-
-Section eight point six develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section eight point six, Marcus Bell expects application claims to carry owners and dates.
-
-Section eight point six treats the case timeline causes as testable only when evidence and ticket IDs are recorded.
-
-For section eight point six, Harbourline Freight will not accept application work without a written trail.
 
 ### Interviewing the team
 
@@ -913,75 +599,25 @@ You will (1) write clear findings and reports for different readers; (2) communi
 
 Developers need precise locations and fixes; managers need risk, cost and decisions; customers need plain explanations of impact. One finding may need three versions.
 
-Section nine point one develops communication ethics and reporting with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section nine point one, Marcus Bell expects communication claims to carry owners and dates.
-
-Section nine point one treats readers structure uncertainty ethics as testable only when evidence and ticket IDs are recorded.
-
-For section nine point one, Harbourline Freight will not accept communication work without a written trail.
-
 ### 9.2 Structure
 
 A finding report: summary, what was found, evidence, impact in TrackPort's context, recommendation, owner and target date.
-
-Section nine point two develops communication ethics and reporting with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section nine point two, Marcus Bell expects communication claims to carry owners and dates.
-
-Section nine point two treats readers structure uncertainty ethics as testable only when evidence and ticket IDs are recorded.
-
-For section nine point two, Harbourline Freight will not accept communication work without a written trail.
 
 ### 9.3 Uncertainty
 
 Say what is known and unknown: "No harmful content was found in the public hl-auth package; we cannot rule out that it was downloaded by others."
 
-Section nine point three develops communication ethics and reporting with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section nine point three, Marcus Bell expects communication claims to carry owners and dates.
-
-Section nine point three treats readers structure uncertainty ethics as testable only when evidence and ticket IDs are recorded.
-
-For section nine point three, Harbourline Freight will not accept communication work without a written trail.
-
 ### 9.4 Ethics
 
 Findings about other organisations' packages are reported through official channels, never publicised to embarrass. Information about weaknesses is shared only with those who need it.
-
-Section nine point four develops communication ethics and reporting with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section nine point four, Marcus Bell expects communication claims to carry owners and dates.
-
-Section nine point four treats readers structure uncertainty ethics as testable only when evidence and ticket IDs are recorded.
-
-For section nine point four, Harbourline Freight will not accept communication work without a written trail.
 
 ### 9.5 External reporting
 
 Vulnerabilities in open-source dependencies found by Harbourline are reported privately to maintainers following their security policy, with time to fix.
 
-Section nine point five develops communication ethics and reporting with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section nine point five, Marcus Bell expects communication claims to carry owners and dates.
-
-Section nine point five treats readers structure uncertainty ethics as testable only when evidence and ticket IDs are recorded.
-
-For section nine point five, Harbourline Freight will not accept communication work without a written trail.
-
 ### 9.6 Tone
 
 Reports describe systems and processes, not individual blame.
-
-Section nine point six develops communication ethics and reporting with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section nine point six, Marcus Bell expects communication claims to carry owners and dates.
-
-Section nine point six treats readers structure uncertainty ethics as testable only when evidence and ticket IDs are recorded.
-
-For section nine point six, Harbourline Freight will not accept communication work without a written trail.
-
-Section nine point six fails closed if communication evidence is missing rather than guessing.
 
 ### Reporting to managers
 
@@ -1025,14 +661,6 @@ You will (1) measure whether the workflow meets its targets; (2) find where it f
 
 Priya measures how many findings were fixed within target, by severity, from the ticket records.
 
-Section ten point one develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section ten point one, Marcus Bell expects application claims to carry owners and dates.
-
-Section ten point one treats measuring lab result finding as testable only when evidence and ticket IDs are recorded.
-
-For section ten point one, Harbourline Freight will not accept application work without a written trail.
-
 ### Lab — Lab — remediation targets
 
 ```python
@@ -1058,45 +686,17 @@ medium   target  90d: 3/4 on time (75%), longest 120d
 
 Critical: 1 of 2 on time (50%), longest 9 days against a 7-day target. High: 3 of 4 on time (75%), longest 41 days against 30. Medium: 3 of 4 on time (75%), longest 120 days against 90. The critical miss matters most despite the small numbers.
 
-Section ten point two develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section ten point two, Marcus Bell expects application claims to carry owners and dates.
-
-Section ten point two treats measuring lab result finding as testable only when evidence and ticket IDs are recorded.
-
 ### 10.3 Finding causes
 
 Priya reviews each missed target. The late critical waited two days for a platform change; the late high was the blocked framework upgrade; the late medium was forgotten after its owner moved teams.
-
-Section ten point three develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section ten point three, Marcus Bell expects application claims to carry owners and dates.
-
-Section ten point three treats measuring lab result finding as testable only when evidence and ticket IDs are recorded.
 
 ### 10.4 Improvements
 
 Platform requests for criticals get a same-day contact; ownership transfers when people move; blocked items get risk acceptances earlier.
 
-Section ten point four develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section ten point four, Marcus Bell expects application claims to carry owners and dates.
-
-Section ten point four treats measuring lab result finding as testable only when evidence and ticket IDs are recorded.
-
-For section ten point four, Harbourline Freight will not accept application work without a written trail.
-
 ### 10.5 Troubleshooting tools
 
 When scanners produce odd results, Priya checks versions of the scanner and its advisory data first, then the project's lock file.
-
-Section ten point five develops application and software supply chain with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section ten point five, Marcus Bell expects application claims to carry owners and dates.
-
-Section ten point five treats measuring lab result finding as testable only when evidence and ticket IDs are recorded.
-
-For section ten point five, Harbourline Freight will not accept application work without a written trail.
 
 ### Reading the lab
 
@@ -1144,79 +744,25 @@ You will (1) run a supervised end-to-end exercise on synthetic projects; (2) app
 
 Marcus sets a supervised lab with a synthetic project, depot-scan, containing lock files, scanner outputs and ticket records. Priya has three hours to produce a report.
 
-Section eleven point one develops supervised laboratory with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section eleven point one, Marcus Bell expects supervised claims to carry owners and dates.
-
-Section eleven point one treats the exercise steps supervision as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point one, Harbourline Freight will not accept supervised work without a written trail.
-
 ### 11.2 Steps
 
 Run the source check (one internal name resolved publicly, one similar name); triage scanner findings (deduplicate, rank by reachability); assign targets and owners; measure past remediation; write the report.
-
-Section eleven point two develops supervised laboratory with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section eleven point two, Marcus Bell expects supervised claims to carry owners and dates.
-
-Section eleven point two treats the exercise steps supervision as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point two, Harbourline Freight will not accept supervised work without a written trail.
 
 ### 11.3 Supervision
 
 Marcus observes, answers questions about context, and stops any step that would touch real systems. The lab environment has no network access to public registries.
 
-Section eleven point three develops supervised laboratory with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section eleven point three, Marcus Bell expects supervised claims to carry owners and dates.
-
-Section eleven point three treats the exercise steps supervision as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point three, Harbourline Freight will not accept supervised work without a written trail.
-
 ### 11.4 The report
 
 A two-page report with findings, evidence, recommendations and an executive summary of five lines.
-
-Section eleven point four develops supervised laboratory with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section eleven point four, Marcus Bell expects supervised claims to carry owners and dates.
-
-Section eleven point four treats the exercise steps supervision as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point four, Harbourline Freight will not accept supervised work without a written trail.
-
-Section eleven point four fails closed if supervised evidence is missing rather than guessing.
 
 ### 11.5 Assessment
 
 Marcus scores completeness, accuracy, prioritisation and clarity.
 
-Section eleven point five develops supervised laboratory with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section eleven point five, Marcus Bell expects supervised claims to carry owners and dates.
-
-Section eleven point five treats the exercise steps supervision as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point five, Harbourline Freight will not accept supervised work without a written trail.
-
-Section eleven point five fails closed if supervised evidence is missing rather than guessing.
-
 ### 11.6 Reflection
 
 Priya notes where she hesitated: deciding reachability without the call graph.
-
-Section eleven point six develops supervised laboratory with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section eleven point six, Marcus Bell expects supervised claims to carry owners and dates.
-
-Section eleven point six treats the exercise steps supervision as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point six, Harbourline Freight will not accept supervised work without a written trail.
-
-Section eleven point six fails closed if supervised evidence is missing rather than guessing.
 
 ### Preparing for the lab
 
@@ -1264,69 +810,25 @@ You will (1) assemble a portfolio of practice evidence; (2) map it to frameworks
 
 The hl-auth finding and its resolution; the dependency source review; the triage format adopted by TrackPort; the workflow and its metrics; the case analysis; the private disclosure; the supervised lab report.
 
-Section twelve point one develops practice portfolio and final review with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section twelve point one, Marcus Bell expects practice claims to carry owners and dates.
-
-Section twelve point one treats portfolio contents mapping outcomes as testable only when evidence and ticket IDs are recorded.
-
 ### 12.2 Mapping
 
 Priya maps each item to SSDF practice groups and to OWASP SAMM v2 practices such as Threat Assessment, Security Requirements, Secure Build and Defect Management, showing where Harbourline's maturity rose.
-
-Section twelve point two develops practice portfolio and final review with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section twelve point two, Marcus Bell expects practice claims to carry owners and dates.
-
-Section twelve point two treats portfolio contents mapping outcomes as testable only when evidence and ticket IDs are recorded.
 
 ### 12.3 Outcomes
 
 Internal names can no longer resolve publicly; criticals are fixed on time; findings arrive checked and ranked; releases carry provenance.
 
-Section twelve point three develops practice portfolio and final review with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section twelve point three, Marcus Bell expects practice claims to carry owners and dates.
-
-Section twelve point three treats portfolio contents mapping outcomes as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point three, Harbourline Freight will not accept practice work without a written trail.
-
 ### 12.4 Limits
 
 Coverage is TrackPort and the shared build service; other teams have not yet adopted the triage workflow; reachability is judged manually.
-
-Section twelve point four develops practice portfolio and final review with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section twelve point four, Marcus Bell expects practice claims to carry owners and dates.
-
-Section twelve point four treats portfolio contents mapping outcomes as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point four, Harbourline Freight will not accept practice work without a written trail.
 
 ### 12.5 Reflection
 
 Priya writes that her quality-engineering habits, careful reproduction and clear evidence, transferred directly to security work.
 
-Section twelve point five develops practice portfolio and final review with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section twelve point five, Marcus Bell expects practice claims to carry owners and dates.
-
-Section twelve point five treats portfolio contents mapping outcomes as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point five, Harbourline Freight will not accept practice work without a written trail.
-
 ### 12.6 Development plan
 
 Next: threat modelling with Shostack's (2014) four questions for new TrackPort features, and extending the workflow to two more teams.
-
-Section twelve point six develops practice portfolio and final review with a Harbourline Freight note Priya Nair can demo offline.
-
-Under section twelve point six, Marcus Bell expects practice claims to carry owners and dates.
-
-Section twelve point six treats portfolio contents mapping outcomes as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point six, Harbourline Freight will not accept practice work without a written trail.
 
 ### Assessor feedback
 

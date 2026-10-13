@@ -47,10 +47,6 @@ At an HHG property, a front-desk PC runs the PMS client, which talks over the si
 
 Encryption protects data moving between boxes (TLS, VPNs, SSH) and stored data (disk and database encryption). Signatures prove who is who (certificates on servers, signed software updates, signed lock firmware). Each use has an *owner* and a *change route*: a setting you can change, a package you can upgrade, a vendor update, or a hardware replacement.
 
-Section one point two develops computing and service architecture with a Halden Hotel Group note the technician can demo offline.
-
-Under section one point two, the HHG platform team expects computing claims to carry owners and dates.
-
 ### 1.3 What quantum computers threaten
 
 A large, error-corrected quantum computer running Shor's algorithm (Shor, 1997) could break the public-key methods used today to agree keys and sign — RSA and elliptic curves. It would not meaningfully break AES-256 encryption or SHA-256 hashing. No such machine exists yet. Two risks follow: someone could *record* encrypted traffic now and decrypt it later ("harvest now, decrypt later"), and once such a machine exists someone could *forge* signatures. NIST has published replacement algorithms: ML-KEM ([FIPS 203](https://doi.org/10.6028/NIST.FIPS.203)) for key agreement and ML-DSA ([FIPS 204](https://doi.org/10.6028/NIST.FIPS.204)) and SLH-DSA ([FIPS 205](https://doi.org/10.6028/NIST.FIPS.205)) for signatures.
@@ -59,29 +55,11 @@ A large, error-corrected quantum computer running Shor's algorithm (Shor, 1997) 
 
 The operator lists cryptographic uses at the Harbour property: PMS client to server over site VPN (ECDH key exchange; change route: VPN appliance firmware, vendor); POS to payment processor (TLS; processor and POS vendor); lock firmware signed with RSA (lock vendor; hardware refresh); guest portal TLS at the load balancer (HHG operations; configuration). Only the last one is a change the operations team can make today.
 
-Section one point four develops computing and service architecture with a Halden Hotel Group note the technician can demo offline.
-
 ### 1.5 Hands-on activity
 
 Draw the service map for one property from the description above. For each arrow write: protocol, owner, change route.
 
-Section one point five develops computing and service architecture with a Halden Hotel Group note the technician can demo offline.
-
-Under section one point five, the HHG platform team expects computing claims to carry owners and dates.
-
-Section one point five treats the service map where as testable only when evidence and ticket IDs are recorded.
-
-For section one point five, Halden Hotel Group will not accept computing work without a written trail.
-
 ### 1.6 Common errors and limits
-Section one point six develops computing and service architecture with a Halden Hotel Group note the technician can demo offline.
-
-Under section one point six, the HHG platform team expects computing claims to carry owners and dates.
-
-Section one point six treats the service map where as testable only when evidence and ticket IDs are recorded.
-
-For section one point six, Halden Hotel Group will not accept computing work without a written trail.
-
 
 - Missing devices such as locks and POS terminals.
 - Assuming every change is a setting.
@@ -113,61 +91,27 @@ You will (1) explain TLS, SSH and IPsec at the level needed to check them; (2) i
 
 TLS protects web and API traffic; SSH protects administrator logins and file transfers (SFTP); IPsec protects site-to-site VPNs. Each first agrees a session key (key exchange) and proves identity (certificates, host keys or pre-shared keys), then encrypts data with a symmetric cipher.
 
-Section two point one develops networks and protocols with a Halden Hotel Group note the technician can demo offline.
-
-Under section two point one, the HHG platform team expects networks claims to carry owners and dates.
-
-Section two point one treats three secure channels hybrid as testable only when evidence and ticket IDs are recorded.
-
 ### 2.2 Hybrid key exchange
 
 The transition design combines a post-quantum and a classical method so that both would have to be broken — called *hybrid* ([RFC 9794](https://www.rfc-editor.org/rfc/rfc9794.html)). In TLS 1.3 the hybrid group X25519MLKEM768 is defined in [RFC 10024](https://www.rfc-editor.org/rfc/rfc10024.html). In SSH, OpenSSH offers `mlkem768x25519-sha256` ([OpenSSH release notes](https://www.openssh.com/releasenotes.html)). In IPsec, [RFC 9370](https://www.rfc-editor.org/rfc/rfc9370.html) adds extra key exchanges such as ML-KEM.
-
-Section two point two develops networks and protocols with a Halden Hotel Group note the technician can demo offline.
 
 ### 2.3 Reading the negotiated group
 
 On a lab machine with a current OpenSSL, `openssl s_client -connect lab-server:443 -groups X25519MLKEM768:X25519` prints details of the handshake, including the negotiated group in recent versions. Server logs can record the group if configured. For SSH, `ssh -v` prints the key-exchange algorithm chosen ("kex: algorithm: …"). Only run such commands against systems you are authorized to test.
 
-Section two point three develops networks and protocols with a Halden Hotel Group note the technician can demo offline.
-
-Under section two point three, the HHG platform team expects networks claims to carry owners and dates.
-
 ### 2.4 Bigger handshakes
 
 The client's TLS key share grows from 32 bytes (X25519) to 1,216 bytes (X25519MLKEM768), so the first message often no longer fits in one network packet. Most networks handle this; some old firewalls do not. Post-quantum signatures add more when certificates change: an ML-DSA-44 signature is 2,420 bytes.
-
-Section two point four develops networks and protocols with a Halden Hotel Group note the technician can demo offline.
-
-Under section two point four, the HHG platform team expects networks claims to carry owners and dates.
 
 ### 2.5 Worked example
 
 An HHG operator connects from the lab to the staging guest portal with a current client and sees the hybrid group negotiated. With an older client, the connection succeeds with X25519 — the expected fallback. Through the lab copy of the Summit property's old firewall, the connection times out; the operator records the firewall model and firmware for follow-up.
 
-Section two point five develops networks and protocols with a Halden Hotel Group note the technician can demo offline.
-
-Under section two point five, the HHG platform team expects networks claims to carry owners and dates.
-
 ### 2.6 Hands-on activity
 
 In your lab, run a TLS client against a test server twice — with and without the hybrid group offered — and record the negotiated group each time. Repeat for SSH with `ssh -v`.
 
-Section two point six develops networks and protocols with a Halden Hotel Group note the technician can demo offline.
-
-Under section two point six, the HHG platform team expects networks claims to carry owners and dates.
-
-Section two point six treats three secure channels hybrid as testable only when evidence and ticket IDs are recorded.
-
 ### 2.7 Common errors and limits
-Section two point seven develops networks and protocols with a Halden Hotel Group note the technician can demo offline.
-
-Under section two point seven, the HHG platform team expects networks claims to carry owners and dates.
-
-Section two point seven treats three secure channels hybrid as testable only when evidence and ticket IDs are recorded.
-
-For section two point seven, Halden Hotel Group will not accept networks work without a written trail.
-
 
 - Thinking hybrid key exchange changes certificates.
 - Testing systems without authorization.
@@ -199,51 +143,23 @@ You will (1) find which cryptographic libraries a system uses; (2) check version
 
 Most Linux services use OpenSSL; OpenSSL 3.5 added ML-KEM, ML-DSA and SLH-DSA and offers X25519MLKEM768 by default in TLS ([OpenSSL 3.5 NEWS](https://github.com/openssl/openssl/blob/openssl-3.5/NEWS.md)). Check with `openssl version`. Containers carry their own libraries, so check inside them too. Applications written in Go or Java use their own TLS stacks; record the runtime version. OpenSSH's version is shown by `ssh -V`.
 
-Section three point one develops operating systems and identities with a Halden Hotel Group note the technician can demo offline.
-
 ### 3.2 Certificates and trust stores
 
 A server certificate is signed by a certificate authority (CA). Clients trust certificates that chain to a root in their trust store. The operating system has a trust store; Java and some applications have their own. Post-quantum certificates will need new roots added to every relevant trust store before servers use them.
-
-Section three point two develops operating systems and identities with a Halden Hotel Group note the technician can demo offline.
-
-Under section three point two, the HHG platform team expects operating claims to carry owners and dates.
 
 ### 3.3 Handling keys
 
 Private keys belong in protected files readable only by the service account, or better in hardware modules or key-management services. Never paste keys into tickets, chat or logs. If you find an exposed private key, stop and report it through your organization's process; do not copy or test it.
 
-Section three point three develops operating systems and identities with a Halden Hotel Group note the technician can demo offline.
-
-Under section three point three, the HHG platform team expects operating claims to carry owners and dates.
-
 ### 3.4 Worked example
 
 The operator checks the HHG file-exchange server: `openssl version` shows 3.0.x (no ML-KEM); `ssh -V` shows an OpenSSH release older than the one that introduced `mlkem768x25519-sha256`. Conclusion: both TLS and SSH upgrades are needed before hybrid key exchange is possible. The PMS server runs a Java application with its own TLS stack; its runtime version goes in the inventory for the vendor to confirm support.
-
-Section three point four develops operating systems and identities with a Halden Hotel Group note the technician can demo offline.
 
 ### 3.5 Hands-on activity
 
 On a lab VM, record OpenSSL and OpenSSH versions, list the trust stores present, and check permissions on a test private key file.
 
-Section three point five develops operating systems and identities with a Halden Hotel Group note the technician can demo offline.
-
-Under section three point five, the HHG platform team expects operating claims to carry owners and dates.
-
-Section three point five treats libraries and versions certificates as testable only when evidence and ticket IDs are recorded.
-
-For section three point five, Halden Hotel Group will not accept operating work without a written trail.
-
 ### 3.6 Common errors and limits
-Section three point six develops operating systems and identities with a Halden Hotel Group note the technician can demo offline.
-
-Under section three point six, the HHG platform team expects operating claims to carry owners and dates.
-
-Section three point six treats libraries and versions certificates as testable only when evidence and ticket IDs are recorded.
-
-For section three point six, Halden Hotel Group will not accept operating work without a written trail.
-
 
 - Checking the host and forgetting containers.
 - Adding roots to the OS store only.
@@ -251,8 +167,6 @@ For section three point six, Halden Hotel Group will not accept operating work w
 ### 3.7 Service accounts and permissions
 
 Services should run under their own accounts with access only to their own keys and configuration. When you upgrade a library to gain post-quantum support, check that the upgrade did not reset file ownership or permissions on key files — package scripts sometimes do. A quick `ls -l` on the key directory before and after the change, saved with your evidence, shows nothing was loosened.
-
-Section three point seven develops operating systems and identities with a Halden Hotel Group note the technician can demo offline.
 
 ### Exercises
 
@@ -280,12 +194,6 @@ You will (1) read and write JSON and CSV in Python; (2) summarise inventory expo
 
 Inventories arrive as JSON from APIs and CSV from spreadsheets and scanners. Python's `json` and `csv` modules read both. Always check the fields you need are present and have expected types.
 
-Section four point one develops scripting and data formats with a Halden Hotel Group note the technician can demo offline.
-
-Under section four point one, the HHG platform team expects scripting claims to carry owners and dates.
-
-Section four point one treats formats practical activity lab as testable only when evidence and ticket IDs are recorded.
-
 ### 4.2 Practical activity — Lab J
 
 ```python
@@ -308,14 +216,6 @@ for prop, c in sorted(summary.items()):
 
 Expected output:
 
-Section four point two develops scripting and data formats with a Halden Hotel Group note the technician can demo offline.
-
-Under section four point two, the HHG platform team expects scripting claims to carry owners and dates.
-
-Section four point two treats formats practical activity lab as testable only when evidence and ticket IDs are recorded.
-
-For section four point two, Halden Hotel Group will not accept scripting work without a written trail.
-
 ```text
 harbour   hybrid=1 classical=1 unknown=0
 lakeside  hybrid=1 classical=0 unknown=0
@@ -328,51 +228,19 @@ The Summit lock hub has no recorded group. The script counts it as *unknown*, no
 
 Treating missing values as a negative answer makes reports look complete and hides work. An unknown means "find out", and should create a task: ask the vendor, check configuration or observe traffic.
 
-Section four point three develops scripting and data formats with a Halden Hotel Group note the technician can demo offline.
-
-Under section four point three, the HHG platform team expects scripting claims to carry owners and dates.
-
-Section four point three treats formats practical activity lab as testable only when evidence and ticket IDs are recorded.
-
 ### 4.4 Rerunnable scripts
 
 Put the input path and output format in arguments, print what was read (number of records), and keep scripts in version control with a short README. A script someone else can rerun next month is worth far more than a one-off calculation.
-
-Section four point four develops scripting and data formats with a Halden Hotel Group note the technician can demo offline.
-
-Under section four point four, the HHG platform team expects scripting claims to carry owners and dates.
-
-Section four point four treats formats practical activity lab as testable only when evidence and ticket IDs are recorded.
 
 ### 4.5 Worked example
 
 An operator receives `endpoints.csv` from a scanner. Their script counts hybrid, classical and unknown per property, prints the total rows read (48), and writes a small CSV for the dashboard. When the scanner output adds a new column next month, the script still works because it reads columns by name.
 
-Section four point five develops scripting and data formats with a Halden Hotel Group note the technician can demo offline.
-
-Under section four point five, the HHG platform team expects scripting claims to carry owners and dates.
-
 ### 4.6 Hands-on activity
 
 Modify Lab J to also print the share of hybrid endpoints across all properties.
 
-Section four point six develops scripting and data formats with a Halden Hotel Group note the technician can demo offline.
-
-Under section four point six, the HHG platform team expects scripting claims to carry owners and dates.
-
-Section four point six treats formats practical activity lab as testable only when evidence and ticket IDs are recorded.
-
-For section four point six, Halden Hotel Group will not accept scripting work without a written trail.
-
 ### 4.7 Common errors and limits
-Section four point seven develops scripting and data formats with a Halden Hotel Group note the technician can demo offline.
-
-Under section four point seven, the HHG platform team expects scripting claims to carry owners and dates.
-
-Section four point seven treats formats practical activity lab as testable only when evidence and ticket IDs are recorded.
-
-For section four point seven, Halden Hotel Group will not accept scripting work without a written trail.
-
 
 - Reading columns by position.
 - Silently skipping rows with errors.
@@ -409,69 +277,27 @@ You will (1) work only within written scope; (2) collect evidence that others ca
 
 Before running any check — even a TLS client connection to a production server — confirm it is within your written scope: which systems, which methods, which times, and who to call if something goes wrong. Active tests that try to force downgrades or inject faults are done only in an isolated lab.
 
-Section five point one develops security scope and evidence with a Halden Hotel Group note the technician can demo offline.
-
-Under section five point one, the HHG platform team expects security claims to carry owners and dates.
-
 ### 5.2 Evidence
 
 Good evidence is specific and reproducible: the command, the target, the time, the output, and the tool version. Screenshots alone are weak; saved text output with a note is better. Store evidence where your team agreed, not on your laptop.
-
-Section five point two develops security scope and evidence with a Halden Hotel Group note the technician can demo offline.
-
-Under section five point two, the HHG platform team expects security claims to carry owners and dates.
-
-Section five point two treats scope evidence sensitive data as testable only when evidence and ticket IDs are recorded.
 
 ### 5.3 Sensitive data
 
 Handshake captures, logs and configuration files can contain hostnames, client addresses and sometimes credentials. Collect only what you need (for example, the negotiated group), avoid full packet payloads, and follow retention rules.
 
-Section five point three develops security scope and evidence with a Halden Hotel Group note the technician can demo offline.
-
-Under section five point three, the HHG platform team expects security claims to carry owners and dates.
-
-Section five point three treats scope evidence sensitive data as testable only when evidence and ticket IDs are recorded.
-
 ### 5.4 Reporting
 
 A finding states what you observed, where, when, how, why it matters and what you recommend, plus who owns the fix. Keep facts separate from opinions.
-
-Section five point four develops security scope and evidence with a Halden Hotel Group note the technician can demo offline.
-
-Under section five point four, the HHG platform team expects security claims to carry owners and dates.
-
-Section five point four treats scope evidence sensitive data as testable only when evidence and ticket IDs are recorded.
 
 ### 5.5 Worked example
 
 Finding (synthetic): "On 3 October 10:15, from the lab jump host (in scope per ticket OPS-412), `openssl s_client` to guest-portal.staging.hhg.example negotiated X25519 although the server configuration lists X25519MLKEM768. Output saved in evidence/OPS-412/. Likely cause: group order. Impact: hybrid protection not in use on staging. Recommendation: reorder groups; recheck. Owner: Web Operations."
 
-Section five point five develops security scope and evidence with a Halden Hotel Group note the technician can demo offline.
-
-Under section five point five, the HHG platform team expects security claims to carry owners and dates.
-
 ### 5.6 Hands-on activity
 
 Write a finding in this format for a lab result from Chapter 2.
 
-Section five point six develops security scope and evidence with a Halden Hotel Group note the technician can demo offline.
-
-Under section five point six, the HHG platform team expects security claims to carry owners and dates.
-
-Section five point six treats scope evidence sensitive data as testable only when evidence and ticket IDs are recorded.
-
-For section five point six, Halden Hotel Group will not accept security work without a written trail.
-
 ### 5.7 Common errors and limits
-Section five point seven develops security scope and evidence with a Halden Hotel Group note the technician can demo offline.
-
-Under section five point seven, the HHG platform team expects security claims to carry owners and dates.
-
-Section five point seven treats scope evidence sensitive data as testable only when evidence and ticket IDs are recorded.
-
-For section five point seven, Halden Hotel Group will not accept security work without a written trail.
-
 
 - Testing outside scope "just to check".
 - Evidence without time or tool version.
@@ -508,63 +334,27 @@ You will (1) build a simple system model listing cryptographic uses per service;
 
 For each service list: function (key exchange, authentication, stored-data encryption, software signing), algorithm, library or device, owner, change route, and data lifetime. Keep it in a shared table.
 
-Section six point one develops quantum and post-quantum security system with a Halden Hotel Group note the technician can demo offline.
-
-Under section six point one, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section six point one treats the model exposure classes as testable only when evidence and ticket IDs are recorded.
-
 ### 6.2 Exposure classes
 
 *Record-now risk*: classical key exchange protecting data that must stay secret for years (guest passport details, 7 years). *Forge-later risk*: classical signatures that must stay trustworthy for years or cannot be changed quickly (lock firmware, the internal CA). *Fine for now*: AES-256, SHA-256, short-lived tokens. *Unknown*: no evidence yet.
-
-Section six point two develops quantum and post-quantum security system with a Halden Hotel Group note the technician can demo offline.
-
-Under section six point two, the HHG platform team expects quantum claims to carry owners and dates.
 
 ### 6.3 Picking first actions
 
 First actions are record-now risks that operations can change by configuration: for HHG, the guest portal and booking API on the load balancer, and the file-exchange server after upgrade. Vendor-dependent items become vendor questions; unknowns become investigation tasks.
 
-Section six point three develops quantum and post-quantum security system with a Halden Hotel Group note the technician can demo offline.
-
-Under section six point three, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section six point three treats the model exposure classes as testable only when evidence and ticket IDs are recorded.
-
 ### 6.4 Worked example
 
 HHG model extract: guest portal (TLS, ECDHE → hybrid available by config, 7-year data, Web Ops) — act now; site VPN (IPsec, ECDH, vendor firmware, 7-year data, Network Ops) — vendor question; lock firmware (RSA signature, hardware, lock vendor) — forge-later, procurement note; reservations DB at rest (AES-256) — fine; minibar sensors (unknown) — investigate.
 
-Section six point four develops quantum and post-quantum security system with a Halden Hotel Group note the technician can demo offline.
-
-Under section six point four, the HHG platform team expects quantum claims to carry owners and dates.
-
 ### 6.5 Hands-on activity
 
 Build the model table for six HHG services and mark first actions.
-
-Section six point five develops quantum and post-quantum security system with a Halden Hotel Group note the technician can demo offline.
-
-Under section six point five, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section six point five treats the model exposure classes as testable only when evidence and ticket IDs are recorded.
-
-For section six point five, Halden Hotel Group will not accept quantum work without a written trail.
 
 ### 6.6 Using Mosca's rule
 
 A simple rule of thumb (Mosca, 2018): add how long the data must stay secret to how long the change will take; if the total is longer than the time until a capable quantum computer might exist, the data is already at risk. Nobody knows that last number, so try several values (for example 10, 15 and 20 years). Guest records (7 years) plus a two-year VPN upgrade give 9 years — at risk only if such a computer came within 9 years, which is uncertain but not impossible, so the VPN goes on the list behind items with longer lifetimes.
 
 ### 6.7 Common errors and limits
-Section six point seven develops quantum and post-quantum security system with a Halden Hotel Group note the technician can demo offline.
-
-Under section six point seven, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section six point seven treats the model exposure classes as testable only when evidence and ticket IDs are recorded.
-
-For section six point seven, Halden Hotel Group will not accept quantum work without a written trail.
-
 
 - No data lifetime in the model.
 - Treating unknown as fine.
@@ -596,12 +386,6 @@ You will (1) collect cryptographic facts from configuration, logs and vendors; (
 
 Configuration files tell you what a service *offers*. Logs tell you what was *negotiated*. Vendor statements tell you what a closed device *claims*. Each fact in the CBOM should say which source it came from and when.
 
-Section seven point one develops quantum and post-quantum security data with a Halden Hotel Group note the technician can demo offline.
-
-Under section seven point one, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section seven point one treats sources practical activity lab as testable only when evidence and ticket IDs are recorded.
-
 ### 7.2 Practical activity — Lab I
 
 ```python
@@ -622,14 +406,6 @@ print("hybrid key exchange present on:", [r[0] for r in records if "MLKEM" in r[
 
 Expected output:
 
-Section seven point two develops quantum and post-quantum security data with a Halden Hotel Group note the technician can demo offline.
-
-Under section seven point two, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section seven point two treats sources practical activity lab as testable only when evidence and ticket IDs are recorded.
-
-For section seven point two, Halden Hotel Group will not accept quantum work without a written trail.
-
 ```text
 assets 6, unknown 1 (17%)
 quantum-vulnerable uses 5: booking-gateway/signature, door-lock-hub/key-exchange, door-lock-hub/signature, reservations-db/key-exchange, property-vpn/key-exchange
@@ -642,59 +418,23 @@ The minibar sensor is unknown; until it is investigated, the CBOM cannot say whe
 
 Web servers and load balancers can usually log the TLS protocol, cipher and group per connection; add those fields to the access log format in staging first, check the log volume, then promote. SSH servers log the key-exchange algorithm at an appropriate log level. VPN appliances log the methods negotiated per tunnel. Log only what you need: algorithm fields, service, time and a coarse client identifier.
 
-Section seven point three develops quantum and post-quantum security data with a Halden Hotel Group note the technician can demo offline.
-
 ### 7.4 Coverage
 
 Report what share of services has evidence, by source. "Hybrid on 40 % of connections" means little unless you say which services and sensors were included. Show unknowns next to every figure.
-
-Section seven point four develops quantum and post-quantum security data with a Halden Hotel Group note the technician can demo offline.
-
-Under section seven point four, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section seven point four treats sources practical activity lab as testable only when evidence and ticket IDs are recorded.
 
 ### 7.5 Worked example
 
 HHG adds the negotiated group to load-balancer logs. After a week, the dashboard shows: booking API 88 % hybrid; guest portal 3 % hybrid (a configuration problem found in Chapter 5); file exchange 0 % (old OpenSSH); property VPNs — configuration evidence only, 0 of 12 hybrid; locks and minibar sensors — unknown.
 
-Section seven point five develops quantum and post-quantum security data with a Halden Hotel Group note the technician can demo offline.
-
-Under section seven point five, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section seven point five treats sources practical activity lab as testable only when evidence and ticket IDs are recorded.
-
 ### 7.6 Hands-on activity
 
 In the lab, add the negotiated TLS group to a web server's access log and confirm it appears for hybrid and classical clients.
-
-Section seven point six develops quantum and post-quantum security data with a Halden Hotel Group note the technician can demo offline.
-
-Under section seven point six, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section seven point six treats sources practical activity lab as testable only when evidence and ticket IDs are recorded.
-
-For section seven point six, Halden Hotel Group will not accept quantum work without a written trail.
 
 ### 7.7 Keeping the CBOM up to date
 
 Update the CBOM after every relevant change: library upgrades, new certificates, new devices, vendor firmware. Mark entries older than three months as "needs re-check". An out-of-date CBOM is worse than none if people trust it.
 
-Section seven point seven develops quantum and post-quantum security data with a Halden Hotel Group note the technician can demo offline.
-
-Under section seven point seven, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section seven point seven treats sources practical activity lab as testable only when evidence and ticket IDs are recorded.
-
 ### 7.8 Common errors and limits
-Section seven point eight develops quantum and post-quantum security data with a Halden Hotel Group note the technician can demo offline.
-
-Under section seven point eight, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section seven point eight treats sources practical activity lab as testable only when evidence and ticket IDs are recorded.
-
-For section seven point eight, Halden Hotel Group will not accept quantum work without a written trail.
-
 
 - Treating configuration as proof of negotiation.
 - Verbose debug logging in production.
@@ -730,57 +470,23 @@ You will (1) list ways post-quantum changes can fail; (2) recognise each from sy
 
 Collect evidence first (time, client, path, error). Limit impact narrowly: route the affected client group to a compatible listener, or roll back the change on the affected site only. Do not disable hybrid everywhere because of one path; that removes protection from all other traffic.
 
-Section eight point two develops quantum and post-quantum security failure with a Halden Hotel Group note the technician can demo offline.
-
-Under section eight point two, the HHG platform team expects quantum claims to carry owners and dates.
-
 ### 8.3 Silent fallback deserves alerts
 
 Because nothing breaks, silent fallback can last for months. Add an alert when the hybrid share on a service drops sharply, and check the last change on that service first.
-
-Section eight point three develops quantum and post-quantum security failure with a Halden Hotel Group note the technician can demo offline.
-
-Under section eight point three, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section eight point three treats common failure modes safe as testable only when evidence and ticket IDs are recorded.
 
 ### 8.4 Worked example
 
 After a load-balancer update at the data centre, the booking API's hybrid share falls from 88 % to 2 % with no errors. The operator checks the change log: the update restored a default TLS profile. Restoring the approved profile returns the share to 87 % within ten minutes. A note is added to the change checklist: "Re-apply TLS profile after firmware updates."
 
-Section eight point four develops quantum and post-quantum security failure with a Halden Hotel Group note the technician can demo offline.
-
-Under section eight point four, the HHG platform team expects quantum claims to carry owners and dates.
-
 ### 8.5 Hands-on activity
 
 For each failure mode in 8.1, write the symptom you would see on the dashboard or in a ticket, and your first check.
-
-Section eight point five develops quantum and post-quantum security failure with a Halden Hotel Group note the technician can demo offline.
-
-Under section eight point five, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section eight point five treats common failure modes safe as testable only when evidence and ticket IDs are recorded.
-
-For section eight point five, Halden Hotel Group will not accept quantum work without a written trail.
 
 ### 8.6 Rollback rules
 
 Every change that touches cryptographic settings needs a written rollback: the exact previous configuration, who may trigger rollback, and how to confirm success. Prefer rolling back one site or listener rather than the whole estate. After rollback, keep the evidence and open a problem ticket so the cause is fixed instead of the change being forgotten.
 
-Section eight point six develops quantum and post-quantum security failure with a Halden Hotel Group note the technician can demo offline.
-
-Under section eight point six, the HHG platform team expects quantum claims to carry owners and dates.
-
 ### 8.7 Common errors and limits
-Section eight point seven develops quantum and post-quantum security failure with a Halden Hotel Group note the technician can demo offline.
-
-Under section eight point seven, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section eight point seven treats common failure modes safe as testable only when evidence and ticket IDs are recorded.
-
-For section eight point seven, Halden Hotel Group will not accept quantum work without a written trail.
-
 
 - Global disable to fix a local fault.
 - No alert for silent fallback.
@@ -812,12 +518,6 @@ You will (1) use client tools to check negotiation; (2) estimate handshake sizes
 
 `openssl s_client` (TLS), `ssh -v` (SSH), and VPN appliance status commands show negotiated algorithms. Use a client with post-quantum support; an old client will always report classical. Record client version with every result.
 
-Section nine point one develops quantum and post-quantum security tools with a Halden Hotel Group note the technician can demo offline.
-
-Under section nine point one, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section nine point one treats client tools practical activity as testable only when evidence and ticket IDs are recorded.
-
 ### 9.2 Practical activity — Lab B
 
 ```python
@@ -835,12 +535,6 @@ for a in algs:
 
 Expected output:
 
-Section nine point two develops quantum and post-quantum security tools with a Halden Hotel Group note the technician can demo offline.
-
-Under section nine point two, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section nine point two treats client tools practical activity as testable only when evidence and ticket IDs are recorded.
-
 ```text
 ECDSA P-256          ~  1290 bytes of certificates and signatures
 RSA-2048             ~  2620 bytes of certificates and signatures
@@ -855,61 +549,23 @@ Post-quantum certificates make handshakes much bigger. Operators need these numb
 
 Before using a scanner on real systems, test it against lab servers with known settings: hybrid preferred, hybrid offered but not preferred, classical only. If the tool cannot tell these apart, do not use its results.
 
-Section nine point three develops quantum and post-quantum security tools with a Halden Hotel Group note the technician can demo offline.
-
-Under section nine point three, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section nine point three treats client tools practical activity as testable only when evidence and ticket IDs are recorded.
-
 ### 9.4 A repeatable method
 
 1. Confirm scope. 2. Record tool and version. 3. Run the check. 4. Save the output. 5. Compare with the expected result. 6. Record the finding or "as expected". Repeating the same steps makes results comparable over time.
-
-Section nine point four develops quantum and post-quantum security tools with a Halden Hotel Group note the technician can demo offline.
-
-Under section nine point four, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section nine point four treats client tools practical activity as testable only when evidence and ticket IDs are recorded.
 
 ### 9.5 Worked example
 
 An HHG operator's scanner reports every server as classical. Testing against the lab shows the scanner bundles an old OpenSSL. After upgrading, it correctly identifies the lab's hybrid server; only then is it used on the staging estate, within scope.
 
-Section nine point five develops quantum and post-quantum security tools with a Halden Hotel Group note the technician can demo offline.
-
-Under section nine point five, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section nine point five treats client tools practical activity as testable only when evidence and ticket IDs are recorded.
-
 ### 9.6 Hands-on activity
 
 Validate one TLS client tool against three lab server settings and record the results.
-
-Section nine point six develops quantum and post-quantum security tools with a Halden Hotel Group note the technician can demo offline.
-
-Under section nine point six, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section nine point six treats client tools practical activity as testable only when evidence and ticket IDs are recorded.
-
-For section nine point six, Halden Hotel Group will not accept quantum work without a written trail.
 
 ### 9.7 Reading sizes
 
 Lab B's numbers are estimates under stated assumptions: two certificates in the chain, about 400 bytes of other certificate fields, two certificate-transparency signatures. Real chains can be longer or shorter. When you need exact numbers for a firewall rule or a ticket, capture a lab handshake and measure it, then note the configuration it came from.
 
-Section nine point seven develops quantum and post-quantum security tools with a Halden Hotel Group note the technician can demo offline.
-
-Under section nine point seven, the HHG platform team expects quantum claims to carry owners and dates.
-
 ### 9.8 Common errors and limits
-Section nine point eight develops quantum and post-quantum security tools with a Halden Hotel Group note the technician can demo offline.
-
-Under section nine point eight, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section nine point eight treats client tools practical activity as testable only when evidence and ticket IDs are recorded.
-
-For section nine point eight, Halden Hotel Group will not accept quantum work without a written trail.
-
 
 - Using unvalidated tools.
 - Results without client versions.
@@ -917,10 +573,6 @@ For section nine point eight, Halden Hotel Group will not accept quantum work wi
 ### 9.9 Comparing results over time
 
 Keep each check's saved output in a dated folder so that next month's run can be compared line by line. A simple `diff` between two runs of the same script quickly shows which services changed negotiation, which is often faster than reading a dashboard when you are investigating a specific complaint.
-
-Section nine point nine develops quantum and post-quantum security tools with a Halden Hotel Group note the technician can demo offline.
-
-Under section nine point nine, the HHG platform team expects quantum claims to carry owners and dates.
 
 ### Exercises
 
@@ -948,21 +600,9 @@ You will (1) configure hybrid key exchange on TLS and SSH servers in a lab; (2) 
 
 On OpenSSL-based servers, set the group list with hybrid first, for example `X25519MLKEM768:X25519:secp256r1`. Web servers and load balancers expose this through a directive or profile; check your product documentation for exact names. Order matters when the server decides.
 
-Section ten point one develops quantum and post-quantum security control with a Halden Hotel Group note the technician can demo offline.
-
-Under section ten point one, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section ten point one treats tls configuration ssh configuration as testable only when evidence and ticket IDs are recorded.
-
 ### 10.2 SSH configuration
 
 In OpenSSH's server configuration, put `mlkem768x25519-sha256` first in `KexAlgorithms`, followed by `sntrup761x25519-sha512@openssh.com` and `curve25519-sha256` for compatibility. Reload the service and test with `ssh -v` from a client that supports the hybrid.
-
-Section ten point two develops quantum and post-quantum security control with a Halden Hotel Group note the technician can demo offline.
-
-Under section ten point two, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section ten point two treats tls configuration ssh configuration as testable only when evidence and ticket IDs are recorded.
 
 ### 10.3 Practical activity — Lab T
 
@@ -984,14 +624,6 @@ for svc, groups in configs.items():
 
 Expected output:
 
-Section ten point three develops quantum and post-quantum security control with a Halden Hotel Group note the technician can demo offline.
-
-Under section ten point three, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section ten point three treats tls configuration ssh configuration as testable only when evidence and ticket IDs are recorded.
-
-For section ten point three, Halden Hotel Group will not accept quantum work without a written trail.
-
 ```text
 booking-api       OK (hybrid preferred)
 guest-portal      WARN hybrid offered but not preferred
@@ -1005,49 +637,19 @@ The guest portal offers hybrid but prefers X25519 — the problem found in Chapt
 
 Every production change goes through a change ticket: what, why, when, risk, test evidence, rollback, approver. Make the change in staging, verify, then apply in production in a low-traffic window, verify again and close the ticket with evidence.
 
-Section ten point four develops quantum and post-quantum security control with a Halden Hotel Group note the technician can demo offline.
-
-Under section ten point four, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section ten point four treats tls configuration ssh configuration as testable only when evidence and ticket IDs are recorded.
-
 ### 10.5 Worked example
 
 Ticket OPS-430: reorder groups on guest-portal load balancer to `X25519MLKEM768:X25519:secp256r1`. Staging test: hybrid negotiated by current clients, X25519 by an old client. Production change Tuesday 06:00; verification at 06:10 shows hybrid negotiated; dashboard hybrid share climbs from 3 % to 85 % by noon. Rollback plan (restore previous order) not needed.
-
-Section ten point five develops quantum and post-quantum security control with a Halden Hotel Group note the technician can demo offline.
-
-Under section ten point five, the HHG platform team expects quantum claims to carry owners and dates.
 
 ### 10.6 Hands-on activity
 
 In the lab, configure a TLS server and an SSH server with hybrid first; verify with clients; write the change ticket you would raise for production.
 
-Section ten point six develops quantum and post-quantum security control with a Halden Hotel Group note the technician can demo offline.
-
-Under section ten point six, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section ten point six treats tls configuration ssh configuration as testable only when evidence and ticket IDs are recorded.
-
 ### 10.7 Keep fallback for now
 
 During transition, keep classical options after the hybrid so that older clients still connect. Removing them is a separate, later decision based on monitoring that shows few remaining classical clients and agreement with service owners and partners.
 
-Section ten point seven develops quantum and post-quantum security control with a Halden Hotel Group note the technician can demo offline.
-
-Under section ten point seven, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section ten point seven treats tls configuration ssh configuration as testable only when evidence and ticket IDs are recorded.
-
 ### 10.8 Common errors and limits
-Section ten point eight develops quantum and post-quantum security control with a Halden Hotel Group note the technician can demo offline.
-
-Under section ten point eight, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section ten point eight treats tls configuration ssh configuration as testable only when evidence and ticket IDs are recorded.
-
-For section ten point eight, Halden Hotel Group will not accept quantum work without a written trail.
-
 
 - Hybrid listed after classical.
 - Removing fallback too early.
@@ -1079,12 +681,6 @@ You will (1) verify that changes achieved their aim; (2) run known-answer and ne
 
 A configuration can say hybrid while connections negotiate classical. Verify from the client side (tool output) and the server side (logs). For SSH, check the KEX algorithm in `ssh -v`; for VPNs, check tunnel status.
 
-Section eleven point one develops quantum and post-quantum security verification with a Halden Hotel Group note the technician can demo offline.
-
-Under section eleven point one, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section eleven point one treats verify negotiation not configuration as testable only when evidence and ticket IDs are recorded.
-
 ### 11.2 Practical activity — Lab V
 
 ```python
@@ -1110,14 +706,6 @@ for param, n in [("ML-KEM-768", 1184), ("ML-KEM-768", 1183), ("ML-KEM-512", 1184
 
 Expected output:
 
-Section eleven point two develops quantum and post-quantum security verification with a Halden Hotel Group note the technician can demo offline.
-
-Under section eleven point two, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section eleven point two treats verify negotiation not configuration as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point two, Halden Hotel Group will not accept quantum work without a written trail.
-
 ```text
 KAT sha3_256      PASS
 KAT shake_128/32  PASS
@@ -1132,63 +720,23 @@ Known-answer tests check that functions produce published outputs; negative test
 
 To trust a check, show it can fail: run it against a server with hybrid removed and confirm it reports classical. A check that always says "pass" is useless.
 
-Section eleven point three develops quantum and post-quantum security verification with a Halden Hotel Group note the technician can demo offline.
-
-Under section eleven point three, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section eleven point three treats verify negotiation not configuration as testable only when evidence and ticket IDs are recorded.
-
 ### 11.4 Closing with evidence
 
 Attach outputs, dashboard screenshots with times, and the configuration version to the ticket. Note anything unexpected, even if the change worked.
-
-Section eleven point four develops quantum and post-quantum security verification with a Halden Hotel Group note the technician can demo offline.
-
-Under section eleven point four, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section eleven point four treats verify negotiation not configuration as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point four, Halden Hotel Group will not accept quantum work without a written trail.
 
 ### 11.5 Worked example
 
 After OPS-430, the operator verifies: three client types against the production portal (two hybrid, one older client classical as expected); load-balancer logs show 85 % hybrid; negative control in staging (hybrid removed) correctly shows 0 %. Evidence attached; ticket closed.
 
-Section eleven point five develops quantum and post-quantum security verification with a Halden Hotel Group note the technician can demo offline.
-
-Under section eleven point five, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section eleven point five treats verify negotiation not configuration as testable only when evidence and ticket IDs are recorded.
-
 ### 11.6 Hands-on activity
 
 Verify a lab change from both client and server sides and include a negative control.
-
-Section eleven point six develops quantum and post-quantum security verification with a Halden Hotel Group note the technician can demo offline.
-
-Under section eleven point six, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section eleven point six treats verify negotiation not configuration as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point six, Halden Hotel Group will not accept quantum work without a written trail.
 
 ### 11.7 Verifying after other changes
 
 Verification is not only for your own changes. Re-check hybrid negotiation after any update that touches the TLS or SSH stack — operating system patches, load-balancer firmware, container image rebuilds — because such updates can reset configuration. A short scripted check run after every patch window catches regressions within hours.
 
-Section eleven point seven develops quantum and post-quantum security verification with a Halden Hotel Group note the technician can demo offline.
-
-Under section eleven point seven, the HHG platform team expects quantum claims to carry owners and dates.
-
 ### 11.8 Common errors and limits
-Section eleven point eight develops quantum and post-quantum security verification with a Halden Hotel Group note the technician can demo offline.
-
-Under section eleven point eight, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section eleven point eight treats verify negotiation not configuration as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point eight, Halden Hotel Group will not accept quantum work without a written trail.
-
 
 - Verifying configuration only.
 - No negative control.
@@ -1223,85 +771,31 @@ You will (1) build an isolated lab with hybrid-capable TLS and SSH; (2) reproduc
 
 Use two or three virtual machines or containers on an isolated network: a server with a current OpenSSL and OpenSSH, a client with current tools, and optionally an old client. No production data, no connection to production networks, no real credentials.
 
-Section twelve point one develops contained laboratory with a Halden Hotel Group note the technician can demo offline.
-
-Under section twelve point one, the HHG platform team expects contained claims to carry owners and dates.
-
-Section twelve point one treats lab build exercises in as testable only when evidence and ticket IDs are recorded.
-
 ### 12.2 Exercises in the lab
 
 Configure the server with hybrid first; connect with the current client (expect hybrid) and old client (expect classical fallback). Then reorder the groups to put classical first and observe that the current client now negotiates classical — the silent fallback of Chapter 8. Restore the correct order.
-
-Section twelve point two develops contained laboratory with a Halden Hotel Group note the technician can demo offline.
-
-Under section twelve point two, the HHG platform team expects contained claims to carry owners and dates.
-
-Section twelve point two treats lab build exercises in as testable only when evidence and ticket IDs are recorded.
 
 ### 12.3 Reproducing a size failure
 
 Some labs can emulate a device that drops large first messages, for example a proxy configured with a small buffer. Observe timeouts with hybrid and success without it. This shows why the fix is on the network device, not in removing protection.
 
-Section twelve point three develops contained laboratory with a Halden Hotel Group note the technician can demo offline.
-
-Under section twelve point three, the HHG platform team expects contained claims to carry owners and dates.
-
-Section twelve point three treats lab build exercises in as testable only when evidence and ticket IDs are recorded.
-
 ### 12.4 Lab report
 
 State purpose, environment (versions), steps, results, interpretation and lessons. Include outputs.
-
-Section twelve point four develops contained laboratory with a Halden Hotel Group note the technician can demo offline.
-
-Under section twelve point four, the HHG platform team expects contained claims to carry owners and dates.
-
-Section twelve point four treats lab build exercises in as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point four, Halden Hotel Group will not accept contained work without a written trail.
 
 ### 12.5 Worked example
 
 An HHG trainee's lab report: server OpenSSL 3.5.x and current OpenSSH; current client negotiated X25519MLKEM768 and `mlkem768x25519-sha256`; old client fell back to classical; reordered groups caused silent fallback; restored. Lesson: always check preference order after edits.
 
-Section twelve point five develops contained laboratory with a Halden Hotel Group note the technician can demo offline.
-
-Under section twelve point five, the HHG platform team expects contained claims to carry owners and dates.
-
-Section twelve point five treats lab build exercises in as testable only when evidence and ticket IDs are recorded.
-
 ### 12.6 Hands-on activity
 
 Build the lab and complete the steps; write your report.
-
-Section twelve point six develops contained laboratory with a Halden Hotel Group note the technician can demo offline.
-
-Under section twelve point six, the HHG platform team expects contained claims to carry owners and dates.
-
-Section twelve point six treats lab build exercises in as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point six, Halden Hotel Group will not accept contained work without a written trail.
-
-Section twelve point six fails closed if contained evidence is missing rather than guessing.
 
 ### 12.7 Lab safety
 
 Keep the lab network separate from home or office networks; use generated test keys; destroy the lab when finished or snapshot it with notes. Never point lab tools at production hosts by mistake: use hostnames that cannot resolve outside the lab, and double-check targets before running commands.
 
-Section twelve point seven develops contained laboratory with a Halden Hotel Group note the technician can demo offline.
-
-Under section twelve point seven, the HHG platform team expects contained claims to carry owners and dates.
-
 ### 12.8 Common errors and limits
-Section twelve point eight develops contained laboratory with a Halden Hotel Group note the technician can demo offline.
-
-Under section twelve point eight, the HHG platform team expects contained claims to carry owners and dates.
-
-Section twelve point eight treats lab build exercises in as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point eight, Halden Hotel Group will not accept contained work without a written trail.
-
 
 - Labs connected to production.
 - Skipping the old-client test.
@@ -1309,8 +803,6 @@ For section twelve point eight, Halden Hotel Group will not accept contained wor
 ### 12.9 Extending the lab
 
 Once the basics work, extend the lab one step at a time: add a second server behind a reverse proxy to show that each hop negotiates separately; add a log parser that counts hybrid and classical sessions; or add an SSH bastion to practise the SFTP configuration of Chapter 10. Each extension should end with a short note in the report so the lab grows into a reusable training environment for the team.
-
-Section twelve point nine develops contained laboratory with a Halden Hotel Group note the technician can demo offline.
 
 ### Exercises
 
@@ -1338,12 +830,6 @@ You will (1) follow a step-by-step troubleshooting method; (2) triage failure lo
 
 Reproduce → isolate → hypothesise → test → fix → verify → record. Reproduce with the same client and path in the lab if possible. Isolate by trying a direct path, a different client, or hybrid off for one test connection. Change one thing at a time.
 
-Section thirteen point one develops quantum and post-quantum security troubleshooting with a Halden Hotel Group note the technician can demo offline.
-
-Under section thirteen point one, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section thirteen point one treats method practical activity lab as testable only when evidence and ticket IDs are recorded.
-
 ### 13.2 Practical activity — Lab H
 
 ```python
@@ -1368,12 +854,6 @@ for c, n in causes.most_common(): print(f"{n}  {c}")
 
 Expected output:
 
-Section thirteen point two develops quantum and post-quantum security troubleshooting with a Halden Hotel Group note the technician can demo offline.
-
-Under section thirteen point two, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section thirteen point two treats method practical activity lab as testable only when evidence and ticket IDs are recorded.
-
 ```text
 3  large ClientHello dropped (proxy-b)
 1  client/server group mismatch
@@ -1387,55 +867,23 @@ Three timeouts share one proxy and a large first message: the proxy is the likel
 
 Proxy or firewall drops large messages → firmware update or configuration fix on that device; meanwhile route affected users to a compatible listener. No shared group → restore classical fallback on the server or upgrade the client. Certificate verification failure → add the new root to the client's trust store or keep the classical certificate for that client group. Silent fallback → fix the group order and add an alert.
 
-Section thirteen point three develops quantum and post-quantum security troubleshooting with a Halden Hotel Group note the technician can demo offline.
-
 ### 13.4 Recording
 
 Write the symptoms, evidence, cause, fix, verification and anything left to do. Link related tickets so patterns are visible: three properties with the same firewall model should become one vendor case.
-
-Section thirteen point four develops quantum and post-quantum security troubleshooting with a Halden Hotel Group note the technician can demo offline.
-
-Under section thirteen point four, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section thirteen point four treats method practical activity lab as testable only when evidence and ticket IDs are recorded.
 
 ### 13.5 Worked example
 
 Ticket: "Summit front desk cannot load guest portal since Monday." Evidence: timeouts only from Summit; Lab H-style triage shows large ClientHello via the property firewall. Lab test with the same firewall firmware reproduces it. Interim: a policy routes Summit's front-desk subnet to a listener without the hybrid group, recorded as an exception. Fix: firewall firmware update Thursday; exception removed; hybrid negotiations from Summit confirmed.
 
-Section thirteen point five develops quantum and post-quantum security troubleshooting with a Halden Hotel Group note the technician can demo offline.
-
 ### 13.6 Hands-on activity
 
 Using Lab H's output, write three tickets — one per distinct cause — with first checks.
-
-Section thirteen point six develops quantum and post-quantum security troubleshooting with a Halden Hotel Group note the technician can demo offline.
-
-Under section thirteen point six, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section thirteen point six treats method practical activity lab as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point six, Halden Hotel Group will not accept quantum work without a written trail.
 
 ### 13.7 Asking for help
 
 Escalate when the cause is outside your control or the fix needs a change you are not authorized to make. Include evidence, what you tried and what you need. Good escalations are short, specific and reproducible; they are answered faster.
 
-Section thirteen point seven develops quantum and post-quantum security troubleshooting with a Halden Hotel Group note the technician can demo offline.
-
-Under section thirteen point seven, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section thirteen point seven treats method practical activity lab as testable only when evidence and ticket IDs are recorded.
-
 ### 13.8 Common errors and limits
-Section thirteen point eight develops quantum and post-quantum security troubleshooting with a Halden Hotel Group note the technician can demo offline.
-
-Under section thirteen point eight, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section thirteen point eight treats method practical activity lab as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point eight, Halden Hotel Group will not accept quantum work without a written trail.
-
 
 - Turning hybrid off everywhere.
 - Changing several settings at once.
@@ -1467,12 +915,6 @@ You will (1) automate routine checks of negotiation and configuration; (2) use c
 
 Schedule scripts to: run a client check against each in-scope service daily; parse logs for hybrid share; audit configuration exports for presence and preference. Send results to the dashboard and alert on changes.
 
-Section fourteen point one develops quantum and post-quantum security automation with a Halden Hotel Group note the technician can demo offline.
-
-Under section fourteen point one, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section fourteen point one treats routine checks practical activity as testable only when evidence and ticket IDs are recorded.
-
 ### 14.2 Practical activity — Lab K
 
 ```python
@@ -1489,12 +931,6 @@ for stage, k, n in [("1% canary", 3, 5000), ("10% canary", 28, 50000), ("10% can
 
 Expected output:
 
-Section fourteen point two develops quantum and post-quantum security automation with a Halden Hotel Group note the technician can demo offline.
-
-Under section fourteen point two, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section fourteen point two treats routine checks practical activity as testable only when evidence and ticket IDs are recorded.
-
 ```text
 1% canary                3/5000  upper95=0.00176  HOLD
 10% canary               28/50000  upper95=0.00081  PROMOTE
@@ -1507,63 +943,23 @@ When a change is rolled out in stages, the decision to move to the next stage sh
 
 Run the full check set automatically after each patch window and compare with the previous run. Differences go to the on-call operator.
 
-Section fourteen point three develops quantum and post-quantum security automation with a Halden Hotel Group note the technician can demo offline.
-
-Under section fourteen point three, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section fourteen point three treats routine checks practical activity as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point three, Halden Hotel Group will not accept quantum work without a written trail.
-
 ### 14.4 Maintainable scripts
 
 Version control, a README, clear inputs and outputs, error messages that say what went wrong, and a small test with known input. Avoid hard-coded passwords; use the approved secret store.
-
-Section fourteen point four develops quantum and post-quantum security automation with a Halden Hotel Group note the technician can demo offline.
-
-Under section fourteen point four, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section fourteen point four treats routine checks practical activity as testable only when evidence and ticket IDs are recorded.
 
 ### 14.5 Worked example
 
 HHG schedules a nightly job that runs `openssl s_client` checks against 14 staging and production endpoints in scope, extracts the negotiated group, and writes a CSV. A diff with the previous night flags two endpoints that changed from hybrid to classical after a load-balancer patch; the morning operator restores the profile.
 
-Section fourteen point five develops quantum and post-quantum security automation with a Halden Hotel Group note the technician can demo offline.
-
-Under section fourteen point five, the HHG platform team expects quantum claims to carry owners and dates.
-
 ### 14.6 Hands-on activity
 
 Write a script that reads a list of lab hosts, runs a TLS check on each, and prints host and negotiated group.
-
-Section fourteen point six develops quantum and post-quantum security automation with a Halden Hotel Group note the technician can demo offline.
-
-Under section fourteen point six, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section fourteen point six treats routine checks practical activity as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point six, Halden Hotel Group will not accept quantum work without a written trail.
 
 ### 14.7 Automation and scope
 
 Automated checks are still checks: they need to be inside written scope, run at agreed times and stop if a target behaves unexpectedly. Keep the target list in the repository, reviewed like code, so nobody adds an out-of-scope host by accident.
 
-Section fourteen point seven develops quantum and post-quantum security automation with a Halden Hotel Group note the technician can demo offline.
-
-Under section fourteen point seven, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section fourteen point seven treats routine checks practical activity as testable only when evidence and ticket IDs are recorded.
-
 ### 14.8 Common errors and limits
-Section fourteen point eight develops quantum and post-quantum security automation with a Halden Hotel Group note the technician can demo offline.
-
-Under section fourteen point eight, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section fourteen point eight treats routine checks practical activity as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point eight, Halden Hotel Group will not accept quantum work without a written trail.
-
 
 - Promoting a stage on a small, lucky sample.
 - Scripts with embedded secrets.
@@ -1571,10 +967,6 @@ For section fourteen point eight, Halden Hotel Group will not accept quantum wor
 ### 14.9 Alert quality
 
 An alert that fires every night for a known, accepted exception teaches operators to ignore alerts. Suppress known exceptions explicitly, with an expiry date that matches the exception record, and review suppressions monthly. Each alert should link to its runbook so the person woken at 03:00 knows what to do first.
-
-Section fourteen point nine develops quantum and post-quantum security automation with a Halden Hotel Group note the technician can demo offline.
-
-Under section fourteen point nine, the HHG platform team expects quantum claims to carry owners and dates.
 
 ### Exercises
 
@@ -1602,31 +994,13 @@ You will (1) trace a flow across all hops; (2) identify who controls each hop; (
 
 A booking from a travel agency reaches HHG through the agency's system, the file-exchange server, an internal processor and the reservations database. Each hop negotiates separately. A hybrid connection at one hop says nothing about the next.
 
-Section fifteen point one develops quantum and post-quantum security integration with a Halden Hotel Group note the technician can demo offline.
-
-Under section fifteen point one, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section fifteen point one treats every hop counts controllers as testable only when evidence and ticket IDs are recorded.
-
 ### 15.2 Controllers
 
 Write who controls each hop: HHG operations, a vendor, a cloud provider or a partner. HHG can change its own servers; for the rest it can only ask, require in contracts or route around.
 
-Section fifteen point two develops quantum and post-quantum security integration with a Halden Hotel Group note the technician can demo offline.
-
-Under section fifteen point two, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section fifteen point two treats every hop counts controllers as testable only when evidence and ticket IDs are recorded.
-
 ### 15.3 Requests
 
 A good vendor or partner request names the product and version, asks which post-quantum algorithms and protocols are supported, by which version and date, and asks for a test system. Record answers as vendor evidence until verified.
-
-Section fifteen point three develops quantum and post-quantum security integration with a Halden Hotel Group note the technician can demo offline.
-
-Under section fifteen point three, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section fifteen point three treats every hop counts controllers as testable only when evidence and ticket IDs are recorded.
 
 ### 15.4 Practical activity — Lab A
 
@@ -1653,12 +1027,6 @@ print("old tag after retirement:", check(k, m, a1, t1))
 
 Expected output:
 
-Section fifteen point four develops quantum and post-quantum security integration with a Halden Hotel Group note the technician can demo offline.
-
-Under section fifteen point four, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section fifteen point four treats every hop counts controllers as testable only when evidence and ticket IDs are recorded.
-
 ```text
 old tag still verifies during transition: True
 new tag verifies: True | algorithms: hmac-sha256 -> hmac-sha3-256
@@ -1671,41 +1039,15 @@ Systems that read algorithm choices from policy can change them without code cha
 
 The channel SFTP flow: travel agency client (partner) → HHG SFTP server (HHG) → internal processor (HHG) → reservations DB (HHG, managed service). After upgrading OpenSSH and enabling hybrid KEX, 5 of 9 agencies negotiate hybrid; four use old clients. HHG sends them a notice with a test endpoint and a twelve-month window.
 
-Section fifteen point five develops quantum and post-quantum security integration with a Halden Hotel Group note the technician can demo offline.
-
-Under section fifteen point five, the HHG platform team expects quantum claims to carry owners and dates.
-
 ### 15.6 Hands-on activity
 
 Trace one HHG flow with all hops and controllers and draft one vendor request.
-
-Section fifteen point six develops quantum and post-quantum security integration with a Halden Hotel Group note the technician can demo offline.
-
-Under section fifteen point six, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section fifteen point six treats every hop counts controllers as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point six, Halden Hotel Group will not accept quantum work without a written trail.
 
 ### 15.7 Tracking dependencies
 
 Keep a simple dependency list: hop, controller, request sent, answer, evidence grade, next follow-up date. Review it monthly. Dependencies that never get answered are risks to raise with your manager, not tasks to forget.
 
-Section fifteen point seven develops quantum and post-quantum security integration with a Halden Hotel Group note the technician can demo offline.
-
-Under section fifteen point seven, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section fifteen point seven treats every hop counts controllers as testable only when evidence and ticket IDs are recorded.
-
 ### 15.8 Common errors and limits
-Section fifteen point eight develops quantum and post-quantum security integration with a Halden Hotel Group note the technician can demo offline.
-
-Under section fifteen point eight, the HHG platform team expects quantum claims to carry owners and dates.
-
-Section fifteen point eight treats every hop counts controllers as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point eight, Halden Hotel Group will not accept quantum work without a written trail.
-
 
 - Judging a flow by one hop.
 - Treating vendor claims as facts.
@@ -1713,8 +1055,6 @@ For section fifteen point eight, Halden Hotel Group will not accept quantum work
 ### 15.9 Routing around a dependency
 
 When a controller cannot or will not change soon, sometimes HHG can protect the data another way: move the sensitive part of a transfer to a channel HHG controls, reduce what is sent, or terminate a hybrid connection at an HHG gateway close to the partner. Each workaround needs approval and an entry in the exception register, because it changes the service design.
-
-Section fifteen point nine develops quantum and post-quantum security integration with a Halden Hotel Group note the technician can demo offline.
 
 ### Exercises
 
@@ -1742,83 +1082,31 @@ You will (1) write runbooks for post-quantum operations; (2) document configurat
 
 A runbook says: when to use it (symptoms), what to check, safe actions, rollback, how to confirm, who to call. Write runbooks for hybrid share drops, large-handshake timeouts, no shared group, and certificate verification errors.
 
-Section sixteen point one develops technical documentation and safety with a Halden Hotel Group note the technician can demo offline.
-
-Under section sixteen point one, the HHG platform team expects technical claims to carry owners and dates.
-
-Section sixteen point one treats runbooks baselines safety and as testable only when evidence and ticket IDs are recorded.
-
 ### 16.2 Baselines
 
 A configuration baseline lists the approved settings for each service type: TLS versions, groups and order, SSH `KexAlgorithms`, certificate types, logging fields. Store it in version control; changes go through review.
-
-Section sixteen point two develops technical documentation and safety with a Halden Hotel Group note the technician can demo offline.
-
-Under section sixteen point two, the HHG platform team expects technical claims to carry owners and dates.
-
-Section sixteen point two treats runbooks baselines safety and as testable only when evidence and ticket IDs are recorded.
 
 ### 16.3 Safety and authorization
 
 Never run active tests on production without written approval; never try to force downgrades outside the isolated lab; never handle keys outside approved tools; report exposed keys immediately. Label synthetic data as such in all documents and training material.
 
-Section sixteen point three develops technical documentation and safety with a Halden Hotel Group note the technician can demo offline.
-
-Under section sixteen point three, the HHG platform team expects technical claims to carry owners and dates.
-
-Section sixteen point three treats runbooks baselines safety and as testable only when evidence and ticket IDs are recorded.
-
 ### 16.4 Keeping documents current
 
 Review runbooks after every incident and every major change. Put a "last reviewed" date and owner at the top. Remove steps that no longer apply.
-
-Section sixteen point four develops technical documentation and safety with a Halden Hotel Group note the technician can demo offline.
-
-Under section sixteen point four, the HHG platform team expects technical claims to carry owners and dates.
-
-Section sixteen point four treats runbooks baselines safety and as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point four, Halden Hotel Group will not accept technical work without a written trail.
 
 ### 16.5 Worked example
 
 HHG runbook "Hybrid share drop on a TLS service": symptoms — dashboard alert, hybrid share below 50 %; checks — last change on the service, current TLS profile vs baseline; actions — re-apply baseline profile on the affected listener; rollback — previous profile from version control; confirm — hybrid share recovers within 30 minutes; call — Web Ops on-call, then platform lead. Last reviewed 2 October; owner Web Ops.
 
-Section sixteen point five develops technical documentation and safety with a Halden Hotel Group note the technician can demo offline.
-
-Under section sixteen point five, the HHG platform team expects technical claims to carry owners and dates.
-
 ### 16.6 Hands-on activity
 
 Write a runbook for "No shared group on SFTP" using the format above.
-
-Section sixteen point six develops technical documentation and safety with a Halden Hotel Group note the technician can demo offline.
-
-Under section sixteen point six, the HHG platform team expects technical claims to carry owners and dates.
-
-Section sixteen point six treats runbooks baselines safety and as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point six, Halden Hotel Group will not accept technical work without a written trail.
 
 ### 16.7 Writing for the night shift
 
 Runbooks are read under pressure, often at night. Use short numbered steps, exact commands, expected outputs and clear stop points ("if the share has not recovered after step 4, call the platform lead"). Avoid long explanations in the steps; link to background instead.
 
-Section sixteen point seven develops technical documentation and safety with a Halden Hotel Group note the technician can demo offline.
-
-Under section sixteen point seven, the HHG platform team expects technical claims to carry owners and dates.
-
-Section sixteen point seven treats runbooks baselines safety and as testable only when evidence and ticket IDs are recorded.
-
 ### 16.8 Common errors and limits
-Section sixteen point eight develops technical documentation and safety with a Halden Hotel Group note the technician can demo offline.
-
-Under section sixteen point eight, the HHG platform team expects technical claims to carry owners and dates.
-
-Section sixteen point eight treats runbooks baselines safety and as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point eight, Halden Hotel Group will not accept technical work without a written trail.
-
 
 - Runbooks without rollback.
 - Baselines kept only in someone's head.
@@ -1826,10 +1114,6 @@ For section sixteen point eight, Halden Hotel Group will not accept technical wo
 ### 16.9 Sharing documentation
 
 Store runbooks and baselines where on-call staff can reach them during an outage — not only in a system that might itself be down. Many teams keep a read-only copy in a second location. Mark documents that contain sensitive configuration detail and restrict them accordingly, while keeping general procedures widely readable.
-
-Section sixteen point nine develops technical documentation and safety with a Halden Hotel Group note the technician can demo offline.
-
-Under section sixteen point nine, the HHG platform team expects technical claims to carry owners and dates.
 
 ### Exercises
 
@@ -1857,85 +1141,31 @@ You will (1) run a multi-hop lab with monitoring; (2) inject and diagnose failur
 
 Client → reverse proxy → web server, plus an SSH server, all hybrid-capable; a log parser feeding a simple dashboard; a "legacy" client; and a proxy that can be set to drop large first messages.
 
-Section seventeen point one develops contained laboratory ii with a Halden Hotel Group note the technician can demo offline.
-
-Under section seventeen point one, the HHG platform team expects contained claims to carry owners and dates.
-
-Section seventeen point one treats lab layout scenarios timing as testable only when evidence and ticket IDs are recorded.
-
 ### 17.2 Scenarios
 
 The instructor (or a teammate) injects one failure at a time: reorder groups on the proxy; restrict the proxy buffer; remove classical fallback on SSH; replace the server certificate with one from an untrusted lab root. You diagnose with logs and tools and fix using runbooks.
-
-Section seventeen point two develops contained laboratory ii with a Halden Hotel Group note the technician can demo offline.
-
-Under section seventeen point two, the HHG platform team expects contained claims to carry owners and dates.
 
 ### 17.3 Timing
 
 Record time to detect, time to diagnose and time to fix. The goal is not speed for its own sake but finding which steps of the runbook slowed you down.
 
-Section seventeen point three develops contained laboratory ii with a Halden Hotel Group note the technician can demo offline.
-
-Under section seventeen point three, the HHG platform team expects contained claims to carry owners and dates.
-
-Section seventeen point three treats lab layout scenarios timing as testable only when evidence and ticket IDs are recorded.
-
 ### 17.4 Debrief
 
 After each scenario: what happened, what you did, what helped, what to change in the runbook or dashboard. Update the documents immediately.
-
-Section seventeen point four develops contained laboratory ii with a Halden Hotel Group note the technician can demo offline.
-
-Under section seventeen point four, the HHG platform team expects contained claims to carry owners and dates.
-
-Section seventeen point four treats lab layout scenarios timing as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point four, Halden Hotel Group will not accept contained work without a written trail.
 
 ### 17.5 Worked example
 
 Scenario 2 (proxy buffer): detection 3 minutes (timeouts in logs), diagnosis 11 minutes (operator first suspected the server), fix 2 minutes (proxy setting restored). Debrief: add "check proxy before server when timeouts appear on one path" to the runbook; add per-path panels to the dashboard.
 
-Section seventeen point five develops contained laboratory ii with a Halden Hotel Group note the technician can demo offline.
-
-Under section seventeen point five, the HHG platform team expects contained claims to carry owners and dates.
-
-Section seventeen point five treats lab layout scenarios timing as testable only when evidence and ticket IDs are recorded.
-
 ### 17.6 Hands-on activity
 
 Run all four scenarios; record times and debrief notes.
-
-Section seventeen point six develops contained laboratory ii with a Halden Hotel Group note the technician can demo offline.
-
-Under section seventeen point six, the HHG platform team expects contained claims to carry owners and dates.
-
-Section seventeen point six treats lab layout scenarios timing as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point six, Halden Hotel Group will not accept contained work without a written trail.
-
-Section seventeen point six fails closed if contained evidence is missing rather than guessing.
 
 ### 17.7 Working as a pair
 
 Practise in pairs: one operator drives, the other reads the runbook and records times and observations. Swap roles each scenario. Pairing exposes unclear steps quickly and mirrors how incidents are handled on real on-call rotations.
 
-Section seventeen point seven develops contained laboratory ii with a Halden Hotel Group note the technician can demo offline.
-
-Under section seventeen point seven, the HHG platform team expects contained claims to carry owners and dates.
-
-Section seventeen point seven treats lab layout scenarios timing as testable only when evidence and ticket IDs are recorded.
-
 ### 17.8 Common errors and limits
-Section seventeen point eight develops contained laboratory ii with a Halden Hotel Group note the technician can demo offline.
-
-Under section seventeen point eight, the HHG platform team expects contained claims to carry owners and dates.
-
-Section seventeen point eight treats lab layout scenarios timing as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point eight, Halden Hotel Group will not accept contained work without a written trail.
-
 
 - Skipping debriefs.
 - Fixing without diagnosing.
@@ -1943,10 +1173,6 @@ For section seventeen point eight, Halden Hotel Group will not accept contained 
 ### 17.9 Recording the exercise
 
 Keep a short log of each lab session — date, scenarios, times, debrief actions and who took part — in the team repository. Over several sessions the log shows whether detection and fix times are improving and which runbooks have changed as a result. It is also evidence for supervisors and auditors that the team practises its procedures rather than merely writing them.
-
-Section seventeen point nine develops contained laboratory ii with a Halden Hotel Group note the technician can demo offline.
-
-Under section seventeen point nine, the HHG platform team expects contained claims to carry owners and dates.
 
 ### Exercises
 
@@ -1974,89 +1200,31 @@ You will (1) plan and complete a supervised operations project; (2) apply checks
 
 Examples: enable and verify hybrid key exchange on one service in staging and production under supervision; build the negotiated-group dashboard for a set of services; write and test runbooks for post-quantum failure modes; build the CBOM for one property.
 
-Section eighteen point one develops supervised technical project with a Halden Hotel Group note the technician can demo offline.
-
-Under section eighteen point one, the HHG platform team expects supervised claims to carry owners and dates.
-
-Section eighteen point one treats project choices plan execution as testable only when evidence and ticket IDs are recorded.
-
 ### 18.2 Plan
 
 Scope and authorization; steps with evidence for each; risks and rollback; timeline; supervisor checkpoints.
-
-Section eighteen point two develops supervised technical project with a Halden Hotel Group note the technician can demo offline.
-
-Under section eighteen point two, the HHG platform team expects supervised claims to carry owners and dates.
-
-Section eighteen point two treats project choices plan execution as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point two, Halden Hotel Group will not accept supervised work without a written trail.
 
 ### 18.3 Execution
 
 Follow change control; save evidence; verify from both sides; update documents. Ask for help early when blocked.
 
-Section eighteen point three develops supervised technical project with a Halden Hotel Group note the technician can demo offline.
-
-Under section eighteen point three, the HHG platform team expects supervised claims to carry owners and dates.
-
-Section eighteen point three treats project choices plan execution as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point three, Halden Hotel Group will not accept supervised work without a written trail.
-
 ### 18.4 Report and handover
 
 Report: aim, what was done, evidence, results, remaining issues and recommendations. Handover: runbooks, scripts, dashboards and the list of open items, each with an owner.
-
-Section eighteen point four develops supervised technical project with a Halden Hotel Group note the technician can demo offline.
-
-Under section eighteen point four, the HHG platform team expects supervised claims to carry owners and dates.
-
-Section eighteen point four treats project choices plan execution as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point four, Halden Hotel Group will not accept supervised work without a written trail.
 
 ### 18.5 Worked example
 
 Project (synthetic): "Hybrid SSH for channel SFTP." Steps: upgrade OpenSSH in staging; configure `KexAlgorithms`; test six agency client types; production change under ticket; verify; dashboard panel for KEX share; runbook for "no shared group"; partner notice. Results: 5 of 9 agencies hybrid after a month; four on notice. Handover to Network Ops with open items for the four agencies.
 
-Section eighteen point five develops supervised technical project with a Halden Hotel Group note the technician can demo offline.
-
-Under section eighteen point five, the HHG platform team expects supervised claims to carry owners and dates.
-
 ### 18.6 Hands-on activity
 
 Write your project plan and get it approved by your supervisor.
-
-Section eighteen point six develops supervised technical project with a Halden Hotel Group note the technician can demo offline.
-
-Under section eighteen point six, the HHG platform team expects supervised claims to carry owners and dates.
-
-Section eighteen point six treats project choices plan execution as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point six, Halden Hotel Group will not accept supervised work without a written trail.
 
 ### 18.7 Reflecting on the project
 
 Finish with a short reflection: what went as planned, what surprised you, which skill you used most, and what you would do differently. Share it with your supervisor; it is often the most useful input for the next trainee's project.
 
-Section eighteen point seven develops supervised technical project with a Halden Hotel Group note the technician can demo offline.
-
-Under section eighteen point seven, the HHG platform team expects supervised claims to carry owners and dates.
-
-Section eighteen point seven treats project choices plan execution as testable only when evidence and ticket IDs are recorded.
-
 ### 18.8 Common errors and limits
-Section eighteen point eight develops supervised technical project with a Halden Hotel Group note the technician can demo offline.
-
-Under section eighteen point eight, the HHG platform team expects supervised claims to carry owners and dates.
-
-Section eighteen point eight treats project choices plan execution as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point eight, Halden Hotel Group will not accept supervised work without a written trail.
-
-Section eighteen point eight fails closed if supervised evidence is missing rather than guessing.
-
 
 - Starting without approval.
 - Reports without evidence.

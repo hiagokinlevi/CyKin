@@ -47,77 +47,29 @@ You will (1) describe the parts of a computer and how software runs on them; (2)
 
 A computer has a processor, memory, storage and network connections. The operating system manages them and runs applications. Each layer can record what happens: the operating system logs logons, applications log their own actions, and network devices log connections.
 
-Section one point one develops computing systems with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section one point one, Raj Patel expects computing claims to carry owners and dates.
-
-Section one point one treats parts of system the as testable only when evidence and ticket IDs are recorded.
-
 ### 1.2 The course case
 
 **Mei Tanaka** studies on the technologist programme at the fictional **Harbourside Polytechnic** and joins the fictional **Copperleaf Managed Security**, a small provider that monitors about forty small businesses. Her mentor is SOC lead **Raj Patel**. One client is **BrightSmile Dental**, a chain of three clinics.
-
-Section one point two develops computing systems with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section one point two, Raj Patel expects computing claims to carry owners and dates.
-
-Section one point two treats parts of system the as testable only when evidence and ticket IDs are recorded.
 
 ### 1.3 Clients and servers
 
 At each BrightSmile clinic, reception PCs (clients) use a practice-management server that stores appointments and patient records. A file share on the same server holds X-ray images and letters.
 
-Section one point three develops computing systems with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section one point three, Raj Patel expects computing claims to carry owners and dates.
-
-Section one point three treats parts of system the as testable only when evidence and ticket IDs are recorded.
-
-For section one point three, BrightSmile Dental will not accept computing work without a written trail.
-
 ### 1.4 Services
 
 The server runs several services: the database, file sharing, and remote desktop so the clinic's IT contractor can support it from outside. Every running service is something that could be misused and something that can be monitored.
-
-Section one point four develops computing systems with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section one point four, Raj Patel expects computing claims to carry owners and dates.
-
-Section one point four treats parts of system the as testable only when evidence and ticket IDs are recorded.
 
 ### 1.5 What gets recorded
 
 Copperleaf installs an endpoint agent on servers and PCs that sends security events to its SIEM. The clinic's firewall sends connection logs. Together they show logons, new accounts, file changes and network connections.
 
-Section one point five develops computing systems with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section one point five, Raj Patel expects computing claims to carry owners and dates.
-
-Section one point five treats parts of system the as testable only when evidence and ticket IDs are recorded.
-
 ### 1.6 Roles drive monitoring
 
 A server holding patient records needs closer monitoring than a waiting-room tablet. Mei lists each device's role so alerts can be weighted.
 
-Section one point six develops computing systems with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section one point six, Raj Patel expects computing claims to carry owners and dates.
-
-Section one point six treats parts of system the as testable only when evidence and ticket IDs are recorded.
-
-For section one point six, BrightSmile Dental will not accept computing work without a written trail.
-
 ### 1.7 Small-business reality
 
 Small clients have no IT staff on site; an office manager is the contact. Copperleaf's advice must be simple to act on.
-
-Section one point seven develops computing systems with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section one point seven, Raj Patel expects computing claims to carry owners and dates.
-
-Section one point seven treats parts of system the as testable only when evidence and ticket IDs are recorded.
-
-For section one point seven, BrightSmile Dental will not accept computing work without a written trail.
 
 ### Worked example
 
@@ -155,79 +107,29 @@ You will (1) explain IP addressing, ports and common internet services; (2) dist
 
 Devices have IP addresses. Clinic PCs use private addresses (10.x.x.x) inside the clinic; the firewall translates them to one public address on the internet. Logs show which side an address belongs to.
 
-Section two point one develops networks and internet services with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section two point one, Raj Patel expects networks claims to carry owners and dates.
-
-Section two point one treats addresses ports and services as testable only when evidence and ticket IDs are recorded.
-
 ### 2.2 Ports and services
 
 Services listen on numbered ports: 443 for web, 3389 for remote desktop, 445 for file sharing. A firewall rule that forwards port 3389 from the internet to the server exposes remote desktop to anyone.
-
-Section two point two develops networks and internet services with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section two point two, Raj Patel expects networks claims to carry owners and dates.
-
-Section two point two treats addresses ports and services as testable only when evidence and ticket IDs are recorded.
 
 ### 2.3 Internet services
 
 Clinics use cloud email, an online booking site and a card-payment terminal. Each creates connections the firewall logs.
 
-Section two point three develops networks and internet services with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section two point three, Raj Patel expects networks claims to carry owners and dates.
-
-Section two point three treats addresses ports and services as testable only when evidence and ticket IDs are recorded.
-
-For section two point three, BrightSmile Dental will not accept networks work without a written trail.
-
 ### 2.4 Reading firewall logs
 
 A log line shows time, source address, destination address, port and action (allowed or denied). Many denied connections from one external address to port 3389 suggest password guessing or scanning.
-
-Section two point four develops networks and internet services with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section two point four, Raj Patel expects networks claims to carry owners and dates.
-
-Section two point four treats addresses ports and services as testable only when evidence and ticket IDs are recorded.
 
 ### 2.5 Internal versus external
 
 Activity from inside the clinic network is usually staff; from outside it is anyone. Detection rules treat them differently.
 
-Section two point five develops networks and internet services with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section two point five, Raj Patel expects networks claims to carry owners and dates.
-
-Section two point five treats addresses ports and services as testable only when evidence and ticket IDs are recorded.
-
-For section two point five, BrightSmile Dental will not accept networks work without a written trail.
-
 ### 2.6 Exposure
 
 Exposed services are a common entry route. The safer design is a VPN: staff and the IT contractor connect securely first, and remote desktop is not exposed directly.
 
-Section two point six develops networks and internet services with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section two point six, Raj Patel expects networks claims to carry owners and dates.
-
-Section two point six treats addresses ports and services as testable only when evidence and ticket IDs are recorded.
-
-For section two point six, BrightSmile Dental will not accept networks work without a written trail.
-
 ### 2.7 Case
 
 Mei filters clinic 2's firewall log for port 3389 and sees thousands of connection attempts per day from many countries.
-
-Section two point seven develops networks and internet services with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section two point seven, Raj Patel expects networks claims to carry owners and dates.
-
-Section two point seven treats addresses ports and services as testable only when evidence and ticket IDs are recorded.
-
-For section two point seven, BrightSmile Dental will not accept networks work without a written trail.
 
 ### DNS and names
 
@@ -269,39 +171,13 @@ You will (1) write simple programs to parse log lines; (2) use lists, dictionari
 
 Logs arrive as text. A short program can split lines into fields, count events and skip broken lines faster and more reliably than reading by eye.
 
-Section three point one develops programming foundations with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section three point one, Raj Patel expects programming claims to carry owners and dates.
-
-Section three point one treats why program splitting lines as testable only when evidence and ticket IDs are recorded.
-
-For section three point one, BrightSmile Dental will not accept programming work without a written trail.
-
 ### 3.2 Splitting lines
 
 Each event line has a time, host, event ID and key=value fields. Splitting on spaces gives the parts; a dictionary maps event IDs to names such as "logon failure".
 
-Section three point two develops programming foundations with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section three point two, Raj Patel expects programming claims to carry owners and dates.
-
-Section three point two treats why program splitting lines as testable only when evidence and ticket IDs are recorded.
-
-For section three point two, BrightSmile Dental will not accept programming work without a written trail.
-
 ### 3.3 Counting
 
 Python's Counter adds up how often each event type appears.
-
-Section three point three develops programming foundations with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section three point three, Raj Patel expects programming claims to carry owners and dates.
-
-Section three point three treats why program splitting lines as testable only when evidence and ticket IDs are recorded.
-
-For section three point three, BrightSmile Dental will not accept programming work without a written trail.
-
-Section three point three fails closed if programming evidence is missing rather than guessing.
 
 ### Lab — parsing event lines
 
@@ -339,35 +215,13 @@ unparsed lines: 1
 
 From seven lines, the parser counts three logon failures, one logon success, one account creation and one addition to a local group, and reports one unparsed line. The broken line was skipped and counted, not silently lost.
 
-Section three point four develops programming foundations with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section three point four, Raj Patel expects programming claims to carry owners and dates.
-
-Section three point four treats why program splitting lines as testable only when evidence and ticket IDs are recorded.
-
 ### 3.5 Safe handling
 
 Real logs contain truncated or odd lines. Programs must skip them, count them and continue.
 
-Section three point five develops programming foundations with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section three point five, Raj Patel expects programming claims to carry owners and dates.
-
-Section three point five treats why program splitting lines as testable only when evidence and ticket IDs are recorded.
-
-For section three point five, BrightSmile Dental will not accept programming work without a written trail.
-
 ### 3.6 Testing
 
 Mei runs the parser on these known lines first; the expected counts are written down before running, so a mismatch shows a bug.
-
-Section three point six develops programming foundations with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section three point six, Raj Patel expects programming claims to carry owners and dates.
-
-Section three point six treats why program splitting lines as testable only when evidence and ticket IDs are recorded.
-
-For section three point six, BrightSmile Dental will not accept programming work without a written trail.
 
 ### Keeping it readable
 
@@ -413,83 +267,29 @@ You will (1) describe security events as structured records; (2) define consiste
 
 An event becomes a record with fields: time, host, user, action, outcome, source address. Structured records can be searched, counted and joined.
 
-Section four point one develops data models with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section four point one, Raj Patel expects data claims to carry owners and dates.
-
-Section four point one treats events as records consistent as testable only when evidence and ticket IDs are recorded.
-
-For section four point one, BrightSmile Dental will not accept data work without a written trail.
-
 ### 4.2 Consistent names
 
 Copperleaf monitors forty clients with different systems. If one calls the field "user", another "account" and a third "UserName", every rule must handle all three. Copperleaf maps all to one common model at ingestion.
-
-Section four point two develops data models with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section four point two, Raj Patel expects data claims to carry owners and dates.
-
-Section four point two treats events as records consistent as testable only when evidence and ticket IDs are recorded.
 
 ### 4.3 Entities
 
 Users, hosts and clients are entities that persist across events. A table for each holds attributes such as role, criticality and owner.
 
-Section four point three develops data models with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section four point three, Raj Patel expects data claims to carry owners and dates.
-
-Section four point three treats events as records consistent as testable only when evidence and ticket IDs are recorded.
-
-For section four point three, BrightSmile Dental will not accept data work without a written trail.
-
 ### 4.4 Relationships
 
 A user logs on to a host; a host belongs to a client. These links let analysts ask "which client is this host?" instantly.
-
-Section four point four develops data models with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section four point four, Raj Patel expects data claims to carry owners and dates.
-
-Section four point four treats events as records consistent as testable only when evidence and ticket IDs are recorded.
-
-For section four point four, BrightSmile Dental will not accept data work without a written trail.
 
 ### 4.5 Time
 
 All times are stored in UTC with the original time zone recorded, so events from clients in different zones line up.
 
-Section four point five develops data models with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section four point five, Raj Patel expects data claims to carry owners and dates.
-
-Section four point five treats events as records consistent as testable only when evidence and ticket IDs are recorded.
-
-For section four point five, BrightSmile Dental will not accept data work without a written trail.
-
 ### 4.6 Raw and normalised
 
 The original raw line is kept alongside normalised fields, so nothing is lost if parsing was wrong.
 
-Section four point six develops data models with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section four point six, Raj Patel expects data claims to carry owners and dates.
-
-Section four point six treats events as records consistent as testable only when evidence and ticket IDs are recorded.
-
-For section four point six, BrightSmile Dental will not accept data work without a written trail.
-
 ### 4.7 Case
 
 The BrightSmile events from chapter 3 are stored with host CLINIC2-SRV, which links to client BrightSmile and criticality "high".
-
-Section four point seven develops data models with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section four point seven, Raj Patel expects data claims to carry owners and dates.
-
-Section four point seven treats events as records consistent as testable only when evidence and ticket IDs are recorded.
-
-For section four point seven, BrightSmile Dental will not accept data work without a written trail.
 
 ### Enrichment
 
@@ -531,83 +331,29 @@ You will (1) explain common threats to small businesses; (2) describe ransomware
 
 Small businesses face phishing, account compromise, invoice fraud and ransomware. They are attacked not because they are important but because they are numerous and often lightly defended.
 
-Section five point one develops security literacy with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section five point one, Raj Patel expects security claims to carry owners and dates.
-
-Section five point one treats small-business threats ransomware exposed as testable only when evidence and ticket IDs are recorded.
-
-For section five point one, BrightSmile Dental will not accept security work without a written trail.
-
 ### 5.2 Ransomware
 
 Ransomware encrypts files and demands payment. Before encryption, attackers usually gain access (for example through exposed remote desktop), create or abuse administrator accounts, and disable protections. Each step leaves traces defenders can detect.
-
-Section five point two develops security literacy with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section five point two, Raj Patel expects security claims to carry owners and dates.
-
-Section five point two treats small-business threats ransomware exposed as testable only when evidence and ticket IDs are recorded.
 
 ### 5.3 Exposed remote access
 
 Remote desktop open to the internet attracts automated password guessing. Weak or reused passwords make guessing succeed.
 
-Section five point three develops security literacy with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section five point three, Raj Patel expects security claims to carry owners and dates.
-
-Section five point three treats small-business threats ransomware exposed as testable only when evidence and ticket IDs are recorded.
-
-For section five point three, BrightSmile Dental will not accept security work without a written trail.
-
 ### 5.4 Helpful behaviours
 
 Strong unique passwords, MFA on remote access, prompt updates and offline backups make attacks harder and recovery easier.
-
-Section five point four develops security literacy with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section five point four, Raj Patel expects security claims to carry owners and dates.
-
-Section five point four treats small-business threats ransomware exposed as testable only when evidence and ticket IDs are recorded.
-
-For section five point four, BrightSmile Dental will not accept security work without a written trail.
 
 ### 5.5 Health data
 
 Dental records are sensitive personal data. A breach affects patients and brings legal duties to notify.
 
-Section five point five develops security literacy with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section five point five, Raj Patel expects security claims to carry owners and dates.
-
-Section five point five treats small-business threats ransomware exposed as testable only when evidence and ticket IDs are recorded.
-
-For section five point five, BrightSmile Dental will not accept security work without a written trail.
-
 ### 5.6 The defender's view
 
 Defenders focus on the observable steps: access, privilege, defence changes, file activity. Detecting early steps gives time to act before encryption.
 
-Section five point six develops security literacy with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section five point six, Raj Patel expects security claims to carry owners and dates.
-
-Section five point six treats small-business threats ransomware exposed as testable only when evidence and ticket IDs are recorded.
-
-For section five point six, BrightSmile Dental will not accept security work without a written trail.
-
 ### 5.7 Case
 
 The events from chapter 3 match the early steps: guessing, access as a weak account, a new administrator.
-
-Section five point seven develops security literacy with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section five point seven, Raj Patel expects security claims to carry owners and dates.
-
-Section five point seven treats small-business threats ransomware exposed as testable only when evidence and ticket IDs are recorded.
-
-For section five point seven, BrightSmile Dental will not accept security work without a written trail.
 
 ### Backups as defence
 
@@ -649,81 +395,29 @@ You will (1) explain how Windows and Linux record logons, accounts and processes
 
 Windows records logon successes (4624), failures (4625), account creation (4720) and group membership changes (4732) when auditing is enabled. Linux records authentication in system logs. These IDs and messages are the raw material for many SOC rules.
 
-Section six point one develops operating systems and virtualization with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section six point one, Raj Patel expects operating claims to carry owners and dates.
-
-Section six point one treats operating system events audit as testable only when evidence and ticket IDs are recorded.
-
 ### 6.2 Audit settings
 
 Events appear only if audit policy enables them. Copperleaf's onboarding checklist sets audit policy on each client server and verifies that test events arrive.
-
-Section six point two develops operating systems and virtualization with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section six point two, Raj Patel expects operating claims to carry owners and dates.
-
-Section six point two treats operating system events audit as testable only when evidence and ticket IDs are recorded.
-
-For section six point two, BrightSmile Dental will not accept operating work without a written trail.
 
 ### 6.3 Processes
 
 Process creation events show which programs ran and which program started them. A file-encryption tool started from an unusual folder is a strong signal.
 
-Section six point three develops operating systems and virtualization with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section six point three, Raj Patel expects operating claims to carry owners and dates.
-
-Section six point three treats operating system events audit as testable only when evidence and ticket IDs are recorded.
-
-For section six point three, BrightSmile Dental will not accept operating work without a written trail.
-
 ### 6.4 Virtualization
 
 Many small businesses run servers as virtual machines on one physical host. The host's management console can start, stop or snapshot every server, so access to it is highly privileged and must be monitored.
-
-Section six point four develops operating systems and virtualization with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section six point four, Raj Patel expects operating claims to carry owners and dates.
-
-Section six point four treats operating system events audit as testable only when evidence and ticket IDs are recorded.
 
 ### 6.5 Snapshots
 
 Snapshots capture a server's state and can help recovery, but are not a backup if stored on the same host an attacker controls.
 
-Section six point five develops operating systems and virtualization with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section six point five, Raj Patel expects operating claims to carry owners and dates.
-
-Section six point five treats operating system events audit as testable only when evidence and ticket IDs are recorded.
-
-For section six point five, BrightSmile Dental will not accept operating work without a written trail.
-
 ### 6.6 Account changes
 
 New accounts and additions to administrator groups are rare in small clinics. Alerting on them catches attackers who create their own access.
 
-Section six point six develops operating systems and virtualization with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section six point six, Raj Patel expects operating claims to carry owners and dates.
-
-Section six point six treats operating system events audit as testable only when evidence and ticket IDs are recorded.
-
-For section six point six, BrightSmile Dental will not accept operating work without a written trail.
-
 ### 6.7 Case
 
 BrightSmile's server is a virtual machine; the host is managed by the IT contractor.
-
-Section six point seven develops operating systems and virtualization with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section six point seven, Raj Patel expects operating claims to carry owners and dates.
-
-Section six point seven treats operating system events audit as testable only when evidence and ticket IDs are recorded.
-
-For section six point seven, BrightSmile Dental will not accept operating work without a written trail.
 
 ### Updates
 
@@ -765,83 +459,29 @@ You will (1) explain authentication, authorisation and least privilege; (2) desc
 
 Authentication proves who someone is; authorisation decides what they may do. A reception account should book appointments, not create administrator accounts.
 
-Section seven point one develops identity and access foundations with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section seven point one, Raj Patel expects identity claims to carry owners and dates.
-
-Section seven point one treats authentication and authorisation least as testable only when evidence and ticket IDs are recorded.
-
-For section seven point one, BrightSmile Dental will not accept identity work without a written trail.
-
 ### 7.2 Least privilege
 
 Each account gets only the rights it needs. At BrightSmile, the reception account was a local administrator because an old booking program once needed it — an excess privilege that let the attacker create support2.
-
-Section seven point two develops identity and access foundations with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section seven point two, Raj Patel expects identity claims to carry owners and dates.
-
-Section seven point two treats authentication and authorisation least as testable only when evidence and ticket IDs are recorded.
 
 ### 7.3 Shared accounts
 
 Several receptionists share one "reception" login. Shared accounts make it impossible to tell who did what and often have weak passwords that everyone knows.
 
-Section seven point three develops identity and access foundations with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section seven point three, Raj Patel expects identity claims to carry owners and dates.
-
-Section seven point three treats authentication and authorisation least as testable only when evidence and ticket IDs are recorded.
-
-For section seven point three, BrightSmile Dental will not accept identity work without a written trail.
-
 ### 7.4 Service accounts
 
 Programs run under service accounts with fixed passwords. They should not be able to log on interactively.
-
-Section seven point four develops identity and access foundations with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section seven point four, Raj Patel expects identity claims to carry owners and dates.
-
-Section seven point four treats authentication and authorisation least as testable only when evidence and ticket IDs are recorded.
-
-For section seven point four, BrightSmile Dental will not accept identity work without a written trail.
 
 ### 7.5 MFA on remote access
 
 Requiring MFA for remote desktop or VPN would have stopped the password-guessing attack even with a weak password.
 
-Section seven point five develops identity and access foundations with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section seven point five, Raj Patel expects identity claims to carry owners and dates.
-
-Section seven point five treats authentication and authorisation least as testable only when evidence and ticket IDs are recorded.
-
-For section seven point five, BrightSmile Dental will not accept identity work without a written trail.
-
 ### 7.6 Detecting misuse
 
 Rules alert on interactive logons by service accounts, logons by shared accounts outside opening hours and new administrator accounts.
 
-Section seven point six develops identity and access foundations with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section seven point six, Raj Patel expects identity claims to carry owners and dates.
-
-Section seven point six treats authentication and authorisation least as testable only when evidence and ticket IDs are recorded.
-
-For section seven point six, BrightSmile Dental will not accept identity work without a written trail.
-
 ### 7.7 Case improvement
 
 After the incident, BrightSmile gives each receptionist a personal account, removes administrator rights from reception, and requires MFA on the new VPN.
-
-Section seven point seven develops identity and access foundations with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section seven point seven, Raj Patel expects identity claims to carry owners and dates.
-
-Section seven point seven treats authentication and authorisation least as testable only when evidence and ticket IDs are recorded.
-
-For section seven point seven, BrightSmile Dental will not accept identity work without a written trail.
 
 ### Account reviews
 
@@ -883,81 +523,29 @@ You will (1) describe zones and boundaries in a small business network; (2) plac
 
 Even a clinic has zones: reception PCs, the server, the X-ray workstation, guest Wi-Fi and the internet. Guest Wi-Fi should never reach the server.
 
-Section eight point one develops security architecture basics with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section eight point one, Raj Patel expects security claims to carry owners and dates.
-
-Section eight point one treats zones boundaries remote access as testable only when evidence and ticket IDs are recorded.
-
-For section eight point one, BrightSmile Dental will not accept security work without a written trail.
-
 ### 8.2 Boundaries
 
 The firewall separates zones and the internet. Rules should allow only needed traffic: reception PCs to the server's database and file ports, nothing from the internet inward except through the VPN.
-
-Section eight point two develops security architecture basics with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section eight point two, Raj Patel expects security claims to carry owners and dates.
-
-Section eight point two treats zones boundaries remote access as testable only when evidence and ticket IDs are recorded.
 
 ### 8.3 Remote access
 
 A VPN with MFA lets the IT contractor and managers connect securely. Remote desktop is then allowed only from VPN addresses.
 
-Section eight point three develops security architecture basics with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section eight point three, Raj Patel expects security claims to carry owners and dates.
-
-Section eight point three treats zones boundaries remote access as testable only when evidence and ticket IDs are recorded.
-
-For section eight point three, BrightSmile Dental will not accept security work without a written trail.
-
 ### 8.4 Sensors
 
 Endpoint agents on server and PCs, firewall logs and the cloud email audit log give Copperleaf visibility. The X-ray workstation runs vendor software that forbids agents, so firewall logs are its only monitoring.
-
-Section eight point four develops security architecture basics with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section eight point four, Raj Patel expects security claims to carry owners and dates.
-
-Section eight point four treats zones boundaries remote access as testable only when evidence and ticket IDs are recorded.
 
 ### 8.5 Backups
 
 Backups must sit outside the zone an attacker could control, or be immutable.
 
-Section eight point five develops security architecture basics with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section eight point five, Raj Patel expects security claims to carry owners and dates.
-
-Section eight point five treats zones boundaries remote access as testable only when evidence and ticket IDs are recorded.
-
-For section eight point five, BrightSmile Dental will not accept security work without a written trail.
-
-Section eight point five fails closed if security evidence is missing rather than guessing.
-
 ### 8.6 Defence in depth
 
 No single control stops everything: VPN, MFA, least privilege, monitoring and backups together make a successful attack much harder.
 
-Section eight point six develops security architecture basics with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section eight point six, Raj Patel expects security claims to carry owners and dates.
-
-Section eight point six treats zones boundaries remote access as testable only when evidence and ticket IDs are recorded.
-
-For section eight point six, BrightSmile Dental will not accept security work without a written trail.
-
 ### 8.7 Reviewing against attacks
 
 Mei walks the ransomware steps from chapter 5 through the new architecture: access now needs VPN plus MFA; privilege is limited; monitoring alerts on account changes and file spikes; backups are offline.
-
-Section eight point seven develops security architecture basics with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section eight point seven, Raj Patel expects security claims to carry owners and dates.
-
-Section eight point seven treats zones boundaries remote access as testable only when evidence and ticket IDs are recorded.
 
 ### Documenting the architecture
 
@@ -999,23 +587,9 @@ You will (1) build baselines of normal activity; (2) measure deviations simply a
 
 Normal activity varies by hour. Clinic servers are busy during opening hours and almost silent at night. A baseline records typical counts for each hour.
 
-Section nine point one develops evidence and measurement with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section nine point one, Raj Patel expects evidence claims to carry owners and dates.
-
-Section nine point one treats baselines measuring deviation reading as testable only when evidence and ticket IDs are recorded.
-
-For section nine point one, BrightSmile Dental will not accept evidence work without a written trail.
-
 ### 9.2 Measuring deviation
 
 Comparing tonight's count to the baseline's mean and maximum shows whether activity is unusual. Simple rules — "above the highest value seen plus a margin" — are easy to explain to clients.
-
-Section nine point two develops evidence and measurement with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section nine point two, Raj Patel expects evidence claims to carry owners and dates.
-
-Section nine point two treats baselines measuring deviation reading as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — hourly logon baseline
 
@@ -1043,49 +617,17 @@ tonight 01:00 logons=7 vs mean 0.1 -> UNUSUAL
 
 Over ten working days, the server averaged 0.1 logons at 01:00 (maximum 1), 13.8 at 09:00 and 9.1 at 13:00. Tonight's seven logons at 01:00 are far above the night-time maximum and flagged as unusual.
 
-Section nine point three develops evidence and measurement with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section nine point three, Raj Patel expects evidence claims to carry owners and dates.
-
-Section nine point three treats baselines measuring deviation reading as testable only when evidence and ticket IDs are recorded.
-
-For section nine point three, BrightSmile Dental will not accept evidence work without a written trail.
-
 ### 9.4 Evidence preservation
 
 When an incident starts, analysts export relevant logs, record a hash for each file and note who exported what and when. Exports are stored read-only.
-
-Section nine point four develops evidence and measurement with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section nine point four, Raj Patel expects evidence claims to carry owners and dates.
-
-Section nine point four treats baselines measuring deviation reading as testable only when evidence and ticket IDs are recorded.
-
-For section nine point four, BrightSmile Dental will not accept evidence work without a written trail.
 
 ### 9.5 Consistent times
 
 All times are UTC in records, with local time added in client reports. Mixing them causes confusion about sequence.
 
-Section nine point five develops evidence and measurement with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section nine point five, Raj Patel expects evidence claims to carry owners and dates.
-
-Section nine point five treats baselines measuring deviation reading as testable only when evidence and ticket IDs are recorded.
-
-For section nine point five, BrightSmile Dental will not accept evidence work without a written trail.
-
 ### 9.6 Measurement honesty
 
 Ten days is a short baseline; holidays and staff changes alter patterns. Mei notes these limits in every report.
-
-Section nine point six develops evidence and measurement with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section nine point six, Raj Patel expects evidence claims to carry owners and dates.
-
-Section nine point six treats baselines measuring deviation reading as testable only when evidence and ticket IDs are recorded.
-
-For section nine point six, BrightSmile Dental will not accept evidence work without a written trail.
 
 ### Clock checks
 
@@ -1131,79 +673,29 @@ You will (1) describe what a managed SOC does for small clients; (2) explain the
 
 Copperleaf provides monitoring, triage, investigation and response guidance to clients that cannot run their own SOC. It operates under service agreements that define what is monitored, response times and what Copperleaf may do on clients' systems.
 
-Section ten point one develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section ten point one, Raj Patel expects security claims to carry owners and dates.
-
-Section ten point one treats managed soc workflow authority as testable only when evidence and ticket IDs are recorded.
-
 ### 10.2 Workflow
 
 Logs flow into the SIEM; rules raise alerts; analysts triage, investigate and either close, advise the client or act under agreed authority; every step is recorded in the case system.
-
-Section ten point two develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section ten point two, Raj Patel expects security claims to carry owners and dates.
-
-Section ten point two treats managed soc workflow authority as testable only when evidence and ticket IDs are recorded.
 
 ### 10.3 Authority
 
 Copperleaf may isolate an endpoint through its agent and disable accounts it manages, but only for alert types and clients where the agreement allows. Other actions are advised, not taken.
 
-Section ten point three develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section ten point three, Raj Patel expects security claims to carry owners and dates.
-
-Section ten point three treats managed soc workflow authority as testable only when evidence and ticket IDs are recorded.
-
 ### 10.4 Frameworks
 
 NIST CSF 2.0 organises outcomes into Govern, Identify, Protect, Detect, Respond and Recover; Copperleaf mainly delivers Detect and Respond. NIST SP 800-61r3 frames incident response within risk management and continuous improvement.
-
-Section ten point four develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section ten point four, Raj Patel expects security claims to carry owners and dates.
-
-Section ten point four treats managed soc workflow authority as testable only when evidence and ticket IDs are recorded.
 
 ### 10.5 Roles
 
 Tier-1 analysts triage; senior analysts investigate; Raj leads and approves containment; client contacts receive advice and make business decisions.
 
-Section ten point five develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section ten point five, Raj Patel expects security claims to carry owners and dates.
-
-Section ten point five treats managed soc workflow authority as testable only when evidence and ticket IDs are recorded.
-
-For section ten point five, BrightSmile Dental will not accept security work without a written trail.
-
 ### 10.6 Service levels
 
 High-severity alerts are acknowledged within 15 minutes, 24 hours a day.
 
-Section ten point six develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section ten point six, Raj Patel expects security claims to carry owners and dates.
-
-Section ten point six treats managed soc workflow authority as testable only when evidence and ticket IDs are recorded.
-
-For section ten point six, BrightSmile Dental will not accept security work without a written trail.
-
-Section ten point six fails closed if security evidence is missing rather than guessing.
-
 ### 10.7 Mei's role
 
 As a trainee, Mei triages under supervision and drafts client advice for Raj's review.
-
-Section ten point seven develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section ten point seven, Raj Patel expects security claims to carry owners and dates.
-
-Section ten point seven treats managed soc workflow authority as testable only when evidence and ticket IDs are recorded.
-
-For section ten point seven, BrightSmile Dental will not accept security work without a written trail.
 
 ### Communication with clients
 
@@ -1245,81 +737,29 @@ You will (1) build and maintain client asset inventories; (2) assign criticality
 
 An alert on a host means little without knowing what the host does, who owns it and how important it is. Context turns "new admin on CLINIC2-SRV" into "new admin on the server holding patient records at a clinic that is closed tonight".
 
-Section eleven point one develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section eleven point one, Raj Patel expects security claims to carry owners and dates.
-
-Section eleven point one treats why context inventories criticality as testable only when evidence and ticket IDs are recorded.
-
 ### 11.2 Inventories
 
 For each client, Copperleaf records hosts, roles, operating systems, criticality (low, medium, high), business hours and contacts. Agents report hosts automatically; roles and criticality come from the client.
-
-Section eleven point two develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section eleven point two, Raj Patel expects security claims to carry owners and dates.
-
-Section eleven point two treats why context inventories criticality as testable only when evidence and ticket IDs are recorded.
 
 ### 11.3 Criticality
 
 Servers with patient or financial data are high; reception PCs medium; guest devices low. Criticality multiplies alert severity in queue ordering.
 
-Section eleven point three develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section eleven point three, Raj Patel expects security claims to carry owners and dates.
-
-Section eleven point three treats why context inventories criticality as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point three, BrightSmile Dental will not accept security work without a written trail.
-
 ### 11.4 Business hours
 
 Clinic hours make night-time activity on clinic systems more suspicious; a law firm with late workers has different hours.
-
-Section eleven point four develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section eleven point four, Raj Patel expects security claims to carry owners and dates.
-
-Section eleven point four treats why context inventories criticality as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point four, BrightSmile Dental will not accept security work without a written trail.
 
 ### 11.5 Keeping current
 
 Inventories decay as clients add devices. A monthly report lists new hosts seen by agents but missing roles, and Copperleaf asks the client to classify them.
 
-Section eleven point five develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section eleven point five, Raj Patel expects security claims to carry owners and dates.
-
-Section eleven point five treats why context inventories criticality as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point five, BrightSmile Dental will not accept security work without a written trail.
-
 ### 11.6 Contacts
 
 Every client has a primary and backup contact with phone numbers for night calls; at BrightSmile these are the office manager and the IT contractor.
 
-Section eleven point six develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section eleven point six, Raj Patel expects security claims to carry owners and dates.
-
-Section eleven point six treats why context inventories criticality as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point six, BrightSmile Dental will not accept security work without a written trail.
-
 ### 11.7 Case
 
 When the support2 alert fired, enrichment showed "CLINIC2-SRV — high — patient records — clinic closed".
-
-Section eleven point seven develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section eleven point seven, Raj Patel expects security claims to carry owners and dates.
-
-Section eleven point seven treats why context inventories criticality as testable only when evidence and ticket IDs are recorded.
-
-For section eleven point seven, BrightSmile Dental will not accept security work without a written trail.
 
 ### Context in reports
 
@@ -1361,83 +801,29 @@ You will (1) trace how logs flow from client sites to the SOC; (2) identify coll
 
 Events travel from the client's endpoints (agent) and firewall (syslog) over the internet to Copperleaf's collectors, then to the SIEM, where rules run and alerts go to the case system.
 
-Section twelve point one develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twelve point one, Raj Patel expects security claims to carry owners and dates.
-
-Section twelve point one treats the path collection points as testable only when evidence and ticket IDs are recorded.
-
 ### 12.2 Collection points
 
 Agents send directly over encrypted connections. Firewalls send syslog to a small collector box at each client site, which forwards it securely.
-
-Section twelve point two develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twelve point two, Raj Patel expects security claims to carry owners and dates.
-
-Section twelve point two treats the path collection points as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point two, BrightSmile Dental will not accept security work without a written trail.
 
 ### 12.3 Delays
 
 Agent events usually arrive within a minute; firewall logs within five. Cloud email audit logs can take up to 30 minutes.
 
-Section twelve point three develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twelve point three, Raj Patel expects security claims to carry owners and dates.
-
-Section twelve point three treats the path collection points as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point three, BrightSmile Dental will not accept security work without a written trail.
-
 ### 12.4 Gaps
 
 A collector box that loses power, an expired certificate or a firewall update that resets logging settings can stop data silently.
-
-Section twelve point four develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twelve point four, Raj Patel expects security claims to carry owners and dates.
-
-Section twelve point four treats the path collection points as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point four, BrightSmile Dental will not accept security work without a written trail.
 
 ### 12.5 Monitoring the flow
 
 Copperleaf tracks events per source per hour; a sudden drop to zero raises a data-gap alert to engineering, not to analysts' main queue.
 
-Section twelve point five develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twelve point five, Raj Patel expects security claims to carry owners and dates.
-
-Section twelve point five treats the path collection points as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point five, BrightSmile Dental will not accept security work without a written trail.
-
 ### 12.6 Documentation
 
 Each client has a data-flow diagram: sources, collectors, protocols and expected volumes.
 
-Section twelve point six develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twelve point six, Raj Patel expects security claims to carry owners and dates.
-
-Section twelve point six treats the path collection points as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point six, BrightSmile Dental will not accept security work without a written trail.
-
 ### 12.7 Case
 
 During onboarding of a new client, Mei checks the diagram against actual data and finds firewall logs missing.
-
-Section twelve point seven develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twelve point seven, Raj Patel expects security claims to carry owners and dates.
-
-Section twelve point seven treats the path collection points as testable only when evidence and ticket IDs are recorded.
-
-For section twelve point seven, BrightSmile Dental will not accept security work without a written trail.
 
 ### Integrity in transit
 
@@ -1479,81 +865,29 @@ You will (1) write risk scenarios for small-business clients; (2) link scenarios
 
 A risk scenario describes how harm could happen: who, through what route, to which asset, with what impact. For BrightSmile: "an external attacker guesses a password on exposed remote desktop, gains admin rights and encrypts patient records".
 
-Section thirteen point one develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section thirteen point one, Raj Patel expects security claims to carry owners and dates.
-
-Section thirteen point one treats what scenario is scenarios as testable only when evidence and ticket IDs are recorded.
-
 ### 13.2 Scenarios for clinics
 
 Copperleaf uses five for small healthcare clients: ransomware via remote access, email account takeover leading to invoice fraud, lost unencrypted laptop, insider misuse of patient records, and supplier compromise (for example the IT contractor's account).
-
-Section thirteen point two develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section thirteen point two, Raj Patel expects security claims to carry owners and dates.
-
-Section thirteen point two treats what scenario is scenarios as testable only when evidence and ticket IDs are recorded.
 
 ### 13.3 Likelihood and impact
 
 Each scenario gets a rough rating. Ransomware via remote access is high likelihood (before the VPN change) and high impact.
 
-Section thirteen point three develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section thirteen point three, Raj Patel expects security claims to carry owners and dates.
-
-Section thirteen point three treats what scenario is scenarios as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point three, BrightSmile Dental will not accept security work without a written trail.
-
 ### 13.4 Mapping to detection
 
 For each scenario, the team lists detections that would catch its steps — failed logons, new admin accounts, rename spikes — and response actions.
-
-Section thirteen point four develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section thirteen point four, Raj Patel expects security claims to carry owners and dates.
-
-Section thirteen point four treats what scenario is scenarios as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point four, BrightSmile Dental will not accept security work without a written trail.
 
 ### 13.5 Gaps
 
 The supplier-compromise scenario had no specific detection: a contractor logon looks normal. Mei proposes alerting on contractor logons outside agreed support windows.
 
-Section thirteen point five develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section thirteen point five, Raj Patel expects security claims to carry owners and dates.
-
-Section thirteen point five treats what scenario is scenarios as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point five, BrightSmile Dental will not accept security work without a written trail.
-
 ### 13.6 Review after incidents
 
 After the BrightSmile incident, the ransomware scenario's likelihood is reduced for that client (VPN and MFA added) but kept high for clients without them.
 
-Section thirteen point six develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section thirteen point six, Raj Patel expects security claims to carry owners and dates.
-
-Section thirteen point six treats what scenario is scenarios as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point six, BrightSmile Dental will not accept security work without a written trail.
-
 ### 13.7 ATT&CK link
 
 Scenario steps are tagged with ATT&CK techniques for consistency across clients.
-
-Section thirteen point seven develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section thirteen point seven, Raj Patel expects security claims to carry owners and dates.
-
-Section thirteen point seven treats what scenario is scenarios as testable only when evidence and ticket IDs are recorded.
-
-For section thirteen point seven, BrightSmile Dental will not accept security work without a written trail.
 
 ### Sharing scenarios with clients
 
@@ -1595,23 +929,9 @@ You will (1) design threshold detections for remote logon failures; (2) distingu
 
 A threshold rule counts events in a time window and alerts when the count passes a limit. For remote desktop guessing: failed logons from one source in 15 minutes.
 
-Section fourteen point one develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section fourteen point one, Raj Patel expects security claims to carry owners and dates.
-
-Section fourteen point one treats the method choosing the as testable only when evidence and ticket IDs are recorded.
-
 ### 14.2 Choosing the window
 
 Fifteen minutes catches fast automated guessing; slower attackers need a longer window or a daily count rule.
-
-Section fourteen point two develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section fourteen point two, Raj Patel expects security claims to carry owners and dates.
-
-Section fourteen point two treats the method choosing the as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point two, BrightSmile Dental will not accept security work without a written trail.
 
 ### Lab — failures by source
 
@@ -1637,47 +957,17 @@ Run with `python3 lab_rdp.py`. Verified output:
 
 In one 15-minute window, 203.0.113.45 produced 46 failures and triggers the alert. An internal address, 10.2.0.15, had four failures — a receptionist mistyping — and is excluded from this rule. An external address with three failures is below the threshold of 20.
 
-Section fourteen point three develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section fourteen point three, Raj Patel expects security claims to carry owners and dates.
-
-Section fourteen point three treats the method choosing the as testable only when evidence and ticket IDs are recorded.
-
 ### 14.4 Internal sources
 
 Internal failures are handled by a separate, higher threshold, because staff mistakes are common and attackers inside the network show other signs.
-
-Section fourteen point four develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section fourteen point four, Raj Patel expects security claims to carry owners and dates.
-
-Section fourteen point four treats the method choosing the as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point four, BrightSmile Dental will not accept security work without a written trail.
 
 ### 14.5 Setting the threshold
 
 Mei looks at a month of history: legitimate external failures (the contractor mistyping) never exceeded six in 15 minutes. A threshold of 20 leaves margin.
 
-Section fourteen point five develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section fourteen point five, Raj Patel expects security claims to carry owners and dates.
-
-Section fourteen point five treats the method choosing the as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point five, BrightSmile Dental will not accept security work without a written trail.
-
 ### 14.6 Documentation
 
 The rule page states purpose, logic, threshold reasoning, known benign triggers and response steps.
-
-Section fourteen point six develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section fourteen point six, Raj Patel expects security claims to carry owners and dates.
-
-Section fourteen point six treats the method choosing the as testable only when evidence and ticket IDs are recorded.
-
-For section fourteen point six, BrightSmile Dental will not accept security work without a written trail.
 
 ### Testing the rule
 
@@ -1719,23 +1009,9 @@ You will (1) practise detecting mass file changes in a safe lab; (2) set a spike
 
 The training lab replays synthetic file-share events from a clinic. No real files are touched. The exercise asks trainees to detect the start of mass renaming, a typical sign of encryption.
 
-Section fifteen point one develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section fifteen point one, Raj Patel expects security claims to carry owners and dates.
-
-Section fifteen point one treats the lab baseline and as testable only when evidence and ticket IDs are recorded.
-
 ### 15.2 Baseline and threshold
 
 In quiet minutes, the share sees 0–3 renames per minute. The rule sets the limit at ten times the highest quiet value: 30 renames per minute.
-
-Section fifteen point two develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section fifteen point two, Raj Patel expects security claims to carry owners and dates.
-
-Section fifteen point two treats the lab baseline and as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point two, BrightSmile Dental will not accept security work without a written trail.
 
 ### Lab — rename spike
 
@@ -1766,49 +1042,17 @@ limit = 30
 
 From 01:30 to 01:33, renames stay between 0 and 3. At 01:34 they jump to 180, then 410 and 395 — far above the limit of 30. The spike begins at 01:34.
 
-Section fifteen point three develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section fifteen point three, Raj Patel expects security claims to carry owners and dates.
-
-Section fifteen point three treats the lab baseline and as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point three, BrightSmile Dental will not accept security work without a written trail.
-
 ### 15.4 Response decision
 
 A spike on a patient-records share at night is acted on immediately: isolate the server, then investigate. Waiting for certainty would let encryption continue.
-
-Section fifteen point four develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section fifteen point four, Raj Patel expects security claims to carry owners and dates.
-
-Section fifteen point four treats the lab baseline and as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point four, BrightSmile Dental will not accept security work without a written trail.
 
 ### 15.5 False alarms
 
 Legitimate bulk renames happen — for example, an X-ray system reorganising folders after an update. The response step includes a quick check of the process doing the renaming.
 
-Section fifteen point five develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section fifteen point five, Raj Patel expects security claims to carry owners and dates.
-
-Section fifteen point five treats the lab baseline and as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point five, BrightSmile Dental will not accept security work without a written trail.
-
 ### 15.6 Reflection
 
 Trainees compare their time-to-isolation in the lab. The fastest act within two minutes of the spike.
-
-Section fifteen point six develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section fifteen point six, Raj Patel expects security claims to carry owners and dates.
-
-Section fifteen point six treats the lab baseline and as testable only when evidence and ticket IDs are recorded.
-
-For section fifteen point six, BrightSmile Dental will not accept security work without a written trail.
 
 ### Practising the call
 
@@ -1850,79 +1094,29 @@ You will (1) build sequence detections linking several events; (2) correlate acc
 
 Many attacks show a sequence: access, then privilege, then impact. A rule that looks for steps in order is stronger than any single step.
 
-Section sixteen point one develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section sixteen point one, Raj Patel expects security claims to carry owners and dates.
-
-Section sixteen point one treats sequences the brightsmile sequence as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point one, BrightSmile Dental will not accept security work without a written trail.
-
 ### 16.2 The BrightSmile sequence
 
 Logon from an external address, then account creation by that session, then the new account added to Administrators within 30 minutes. Each step alone is sometimes legitimate; together they are rare.
-
-Section sixteen point two develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section sixteen point two, Raj Patel expects security claims to carry owners and dates.
-
-Section sixteen point two treats sequences the brightsmile sequence as testable only when evidence and ticket IDs are recorded.
 
 ### 16.3 Building the rule
 
 Mei's rule joins three event types on host and session within 30 minutes. The alert text lists all three steps with times, so analysts do not have to search.
 
-Section sixteen point three develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section sixteen point three, Raj Patel expects security claims to carry owners and dates.
-
-Section sixteen point three treats sequences the brightsmile sequence as testable only when evidence and ticket IDs are recorded.
-
 ### 16.4 Tuning
 
 At one client, the IT contractor routinely creates admin accounts for new staff after logging in remotely through the VPN. The rule excludes sessions from the contractor's VPN addresses during support windows but still alerts outside them.
-
-Section sixteen point four develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section sixteen point four, Raj Patel expects security claims to carry owners and dates.
-
-Section sixteen point four treats sequences the brightsmile sequence as testable only when evidence and ticket IDs are recorded.
 
 ### 16.5 Severity
 
 Sequences on high-criticality hosts at night are rated high and page the on-call analyst.
 
-Section sixteen point five develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section sixteen point five, Raj Patel expects security claims to carry owners and dates.
-
-Section sixteen point five treats sequences the brightsmile sequence as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point five, BrightSmile Dental will not accept security work without a written trail.
-
 ### 16.6 Testing
 
 Mei tests the rule against the BrightSmile events: it fires at 01:22, twelve minutes before the rename spike.
 
-Section sixteen point six develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section sixteen point six, Raj Patel expects security claims to carry owners and dates.
-
-Section sixteen point six treats sequences the brightsmile sequence as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point six, BrightSmile Dental will not accept security work without a written trail.
-
 ### 16.7 Value of earlier alerts
 
 Earlier detection gives more time. If this rule had existed, isolation could have happened before any file was renamed.
-
-Section sixteen point seven develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section sixteen point seven, Raj Patel expects security claims to carry owners and dates.
-
-Section sixteen point seven treats sequences the brightsmile sequence as testable only when evidence and ticket IDs are recorded.
-
-For section sixteen point seven, BrightSmile Dental will not accept security work without a written trail.
 
 ### Maintaining exceptions
 
@@ -1964,79 +1158,29 @@ You will (1) describe the SOC's main tools and their roles; (2) choose tools app
 
 Copperleaf uses a SIEM for collection, search and rules; endpoint agents for telemetry and isolation; a case-management system for alerts and notes; and a shared knowledge base of rule pages and client profiles.
 
-Section seventeen point one develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section seventeen point one, Raj Patel expects security claims to carry owners and dates.
-
-Section seventeen point one treats the toolset fit for as testable only when evidence and ticket IDs are recorded.
-
 ### 17.2 Fit for size
 
 A small SOC needs tools that are easy to maintain, support many clients and integrate well. Feature-heavy tools that need a dedicated engineer can be a burden.
-
-Section seventeen point two develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section seventeen point two, Raj Patel expects security claims to carry owners and dates.
-
-Section seventeen point two treats the toolset fit for as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point two, BrightSmile Dental will not accept security work without a written trail.
 
 ### 17.3 Workflow support
 
 Knerler, Parker and Zimmerman (2022) advise leveraging tools to support analyst workflow. At Copperleaf, alerts open in the case system with enrichment and links to the client profile, so analysts rarely switch screens.
 
-Section seventeen point three develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section seventeen point three, Raj Patel expects security claims to carry owners and dates.
-
-Section seventeen point three treats the toolset fit for as testable only when evidence and ticket IDs are recorded.
-
 ### 17.4 Multi-client separation
 
 Tools must keep clients' data separate and show which client each alert belongs to. Mistakes here could leak one client's data to another.
-
-Section seventeen point four develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section seventeen point four, Raj Patel expects security claims to carry owners and dates.
-
-Section seventeen point four treats the toolset fit for as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point four, BrightSmile Dental will not accept security work without a written trail.
 
 ### 17.5 Evaluating tools
 
 Copperleaf judges tools by outcomes: time to triage, missed detections, effort to maintain. A trial of a new endpoint agent measures these on three clients before any decision.
 
-Section seventeen point five develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section seventeen point five, Raj Patel expects security claims to carry owners and dates.
-
-Section seventeen point five treats the toolset fit for as testable only when evidence and ticket IDs are recorded.
-
 ### 17.6 Tool health
 
 Tools themselves need monitoring: agent versions, SIEM storage and rule run times.
 
-Section seventeen point six develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section seventeen point six, Raj Patel expects security claims to carry owners and dates.
-
-Section seventeen point six treats the toolset fit for as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point six, BrightSmile Dental will not accept security work without a written trail.
-
 ### 17.7 Avoiding tool sprawl
 
 Each new tool needs an owner and a reason; overlapping tools are retired.
-
-Section seventeen point seven develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section seventeen point seven, Raj Patel expects security claims to carry owners and dates.
-
-Section seventeen point seven treats the toolset fit for as testable only when evidence and ticket IDs are recorded.
-
-For section seventeen point seven, BrightSmile Dental will not accept security work without a written trail.
 
 ### Access to tools
 
@@ -2078,81 +1222,29 @@ You will (1) recommend preventive controls after detections; (2) prioritise cont
 
 Each incident shows which preventive control would have stopped it earlier. At BrightSmile: VPN with MFA for remote access, removal of admin rights from reception, personal accounts and offline backups.
 
-Section eighteen point one develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section eighteen point one, Raj Patel expects security claims to carry owners and dates.
-
-Section eighteen point one treats from detection to prevention as testable only when evidence and ticket IDs are recorded.
-
 ### 18.2 Prioritising
 
 Copperleaf ranks recommendations by risk reduction and effort. VPN with MFA is top: it removes the main entry route for little cost.
-
-Section eighteen point two develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section eighteen point two, Raj Patel expects security claims to carry owners and dates.
-
-Section eighteen point two treats from detection to prevention as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point two, BrightSmile Dental will not accept security work without a written trail.
 
 ### 18.3 Client decisions
 
 Clients decide and pay; Copperleaf advises. Clear explanations and cost estimates help clients act.
 
-Section eighteen point three develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section eighteen point three, Raj Patel expects security claims to carry owners and dates.
-
-Section eighteen point three treats from detection to prevention as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point three, BrightSmile Dental will not accept security work without a written trail.
-
 ### 18.4 Verifying
 
 After the client says a control is in place, Copperleaf checks: an external scan (authorised in the agreement) confirms port 3389 is closed; a test logon confirms MFA on the VPN.
-
-Section eighteen point four develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section eighteen point four, Raj Patel expects security claims to carry owners and dates.
-
-Section eighteen point four treats from detection to prevention as testable only when evidence and ticket IDs are recorded.
 
 ### 18.5 Tracking adoption
 
 A dashboard shows each client's open recommendations and age. Raj reviews it monthly with account managers.
 
-Section eighteen point five develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section eighteen point five, Raj Patel expects security claims to carry owners and dates.
-
-Section eighteen point five treats from detection to prevention as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point five, BrightSmile Dental will not accept security work without a written trail.
-
 ### 18.6 Controls across clients
 
 When one client's incident reveals a common weakness, Copperleaf checks all clients. Six other clients also exposed remote desktop.
 
-Section eighteen point six develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section eighteen point six, Raj Patel expects security claims to carry owners and dates.
-
-Section eighteen point six treats from detection to prevention as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point six, BrightSmile Dental will not accept security work without a written trail.
-
 ### 18.7 Defensive technique names
 
 Recommendations are tagged with D3FEND technique names to keep wording consistent across clients.
-
-Section eighteen point seven develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section eighteen point seven, Raj Patel expects security claims to carry owners and dates.
-
-Section eighteen point seven treats from detection to prevention as testable only when evidence and ticket IDs are recorded.
-
-For section eighteen point seven, BrightSmile Dental will not accept security work without a written trail.
 
 ### Explaining cost
 
@@ -2194,83 +1286,29 @@ You will (1) run continuous monitoring across many clients; (2) balance alert vo
 
 NIST SP 800-137 describes continuous monitoring as an ongoing programme tied to risk, not a one-off check. Copperleaf monitors client systems 24 hours a day with defined frequencies for different checks.
 
-Section nineteen point one develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section nineteen point one, Raj Patel expects security claims to carry owners and dates.
-
-Section nineteen point one treats continuous monitoring frequencies capacity as testable only when evidence and ticket IDs are recorded.
-
 ### 19.2 Frequencies
 
 Rules on logons and file activity run every minute; daily checks cover patch levels and account lists; monthly reports cover inventory and recommendations.
-
-Section nineteen point two develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section nineteen point two, Raj Patel expects security claims to carry owners and dates.
-
-Section nineteen point two treats continuous monitoring frequencies capacity as testable only when evidence and ticket IDs are recorded.
-
-For section nineteen point two, BrightSmile Dental will not accept security work without a written trail.
 
 ### 19.3 Capacity
 
 Two analysts cover nights for forty clients. Rules that page at night must be precise; lower-value alerts wait for the morning queue.
 
-Section nineteen point three develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section nineteen point three, Raj Patel expects security claims to carry owners and dates.
-
-Section nineteen point three treats continuous monitoring frequencies capacity as testable only when evidence and ticket IDs are recorded.
-
-For section nineteen point three, BrightSmile Dental will not accept security work without a written trail.
-
 ### 19.4 Source health
 
 Heartbeat checks show agents that stopped reporting. A missing heartbeat on a server is treated as an alert in its own right.
-
-Section nineteen point four develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section nineteen point four, Raj Patel expects security claims to carry owners and dates.
-
-Section nineteen point four treats continuous monitoring frequencies capacity as testable only when evidence and ticket IDs are recorded.
-
-For section nineteen point four, BrightSmile Dental will not accept security work without a written trail.
 
 ### 19.5 Coverage
 
 For each client, the share of priority scenarios with tested detections is tracked. BrightSmile's rises from 40% to 80% after the incident work.
 
-Section nineteen point five develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section nineteen point five, Raj Patel expects security claims to carry owners and dates.
-
-Section nineteen point five treats continuous monitoring frequencies capacity as testable only when evidence and ticket IDs are recorded.
-
-For section nineteen point five, BrightSmile Dental will not accept security work without a written trail.
-
 ### 19.6 Client reporting
 
 Monthly reports show alerts handled, incidents, open recommendations and coverage in plain language.
 
-Section nineteen point six develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section nineteen point six, Raj Patel expects security claims to carry owners and dates.
-
-Section nineteen point six treats continuous monitoring frequencies capacity as testable only when evidence and ticket IDs are recorded.
-
-For section nineteen point six, BrightSmile Dental will not accept security work without a written trail.
-
 ### 19.7 Reviewing noise
 
 Each week the team reviews the noisiest rules and tunes or retires them.
-
-Section nineteen point seven develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section nineteen point seven, Raj Patel expects security claims to carry owners and dates.
-
-Section nineteen point seven treats continuous monitoring frequencies capacity as testable only when evidence and ticket IDs are recorded.
-
-For section nineteen point seven, BrightSmile Dental will not accept security work without a written trail.
 
 ### Handover between shifts
 
@@ -2316,23 +1354,9 @@ You will (1) diagnose monitoring failures systematically; (2) use heartbeats and
 
 When data stops, analysts work along the data path: is the host up, is the agent running, is the network reaching Copperleaf, is the SIEM ingesting? Each check narrows the cause.
 
-Section twenty point one develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty point one, Raj Patel expects security claims to carry owners and dates.
-
-Section twenty point one treats systematic diagnosis heartbeats reading as testable only when evidence and ticket IDs are recorded.
-
 ### 20.2 Heartbeats
 
 Agents send a heartbeat every five minutes. Gaps over ten minutes are stale; over an hour, missing.
-
-Section twenty point two develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty point two, Raj Patel expects security claims to carry owners and dates.
-
-Section twenty point two treats systematic diagnosis heartbeats reading as testable only when evidence and ticket IDs are recorded.
-
-For section twenty point two, BrightSmile Dental will not accept security work without a written trail.
 
 ### Lab — heartbeat check
 
@@ -2360,47 +1384,17 @@ CLINIC3-SRV  last heartbeat  18 min ago STALE
 
 CLINIC2-SRV last reported 95 minutes ago (missing) and CLINIC3-SRV 18 minutes ago (stale); the others are fine. Two servers need attention, the missing one first.
 
-Section twenty point three develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty point three, Raj Patel expects security claims to carry owners and dates.
-
-Section twenty point three treats systematic diagnosis heartbeats reading as testable only when evidence and ticket IDs are recorded.
-
-For section twenty point three, BrightSmile Dental will not accept security work without a written trail.
-
 ### 20.4 Failure or tampering
 
 An attacker might stop the agent. Analysts check what happened just before the gap: was there a logon, a service stop, a reboot? A gap right after a suspicious logon is treated as an incident.
-
-Section twenty point four develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty point four, Raj Patel expects security claims to carry owners and dates.
-
-Section twenty point four treats systematic diagnosis heartbeats reading as testable only when evidence and ticket IDs are recorded.
 
 ### 20.5 Fixes
 
 CLINIC2-SRV was rebooted for updates and its agent failed to start because of a corrupted update; CLINIC3-SRV's clinic had a brief internet outage. The agent is reinstalled; the outage resolves itself.
 
-Section twenty point five develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty point five, Raj Patel expects security claims to carry owners and dates.
-
-Section twenty point five treats systematic diagnosis heartbeats reading as testable only when evidence and ticket IDs are recorded.
-
 ### 20.6 Recording
 
 Each fix goes into the knowledge base: symptoms, cause, solution.
-
-Section twenty point six develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty point six, Raj Patel expects security claims to carry owners and dates.
-
-Section twenty point six treats systematic diagnosis heartbeats reading as testable only when evidence and ticket IDs are recorded.
-
-For section twenty point six, BrightSmile Dental will not accept security work without a written trail.
-
-Section twenty point six fails closed if security evidence is missing rather than guessing.
 
 ### Escalating to engineering
 
@@ -2446,83 +1440,29 @@ You will (1) integrate SOC alerts with client contacts and IT contractors; (2) d
 
 Copperleaf's case system connects to phone paging for on-call analysts, email and SMS to client contacts, and the IT contractors' ticket systems for follow-up work.
 
-Section twenty-one point one develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-one point one, Raj Patel expects security claims to carry owners and dates.
-
-Section twenty-one point one treats integration points escalation per as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-one point one, BrightSmile Dental will not accept security work without a written trail.
-
 ### 21.2 Escalation per client
 
 Each client profile lists who to contact for which severity and when. BrightSmile: high severity at night — office manager by phone, then IT contractor; medium — email next business day.
-
-Section twenty-one point two develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-one point two, Raj Patel expects security claims to carry owners and dates.
-
-Section twenty-one point two treats integration points escalation per as testable only when evidence and ticket IDs are recorded.
 
 ### 21.3 Contractor tickets
 
 When a fix needs the IT contractor, Copperleaf opens a ticket in the contractor's system automatically with the details and links back to the case.
 
-Section twenty-one point three develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-one point three, Raj Patel expects security claims to carry owners and dates.
-
-Section twenty-one point three treats integration points escalation per as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-one point three, BrightSmile Dental will not accept security work without a written trail.
-
 ### 21.4 Reliability
 
 If an integration fails — SMS gateway down, contractor ticket rejected — the case system flags the failure and the analyst uses the fallback: phone call.
-
-Section twenty-one point four develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-one point four, Raj Patel expects security claims to carry owners and dates.
-
-Section twenty-one point four treats integration points escalation per as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-one point four, BrightSmile Dental will not accept security work without a written trail.
 
 ### 21.5 Message content
 
 Automated messages are short, plain and never include sensitive data such as patient names; details stay in the secure portal.
 
-Section twenty-one point five develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-one point five, Raj Patel expects security claims to carry owners and dates.
-
-Section twenty-one point five treats integration points escalation per as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-one point five, BrightSmile Dental will not accept security work without a written trail.
-
 ### 21.6 Testing
 
 Integrations are tested monthly with a test alert routed to a test contact.
 
-Section twenty-one point six develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-one point six, Raj Patel expects security claims to carry owners and dates.
-
-Section twenty-one point six treats integration points escalation per as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-one point six, BrightSmile Dental will not accept security work without a written trail.
-
 ### 21.7 Case
 
 During the BrightSmile incident, the automatic SMS to the office manager failed because her number had changed.
-
-Section twenty-one point seven develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-one point seven, Raj Patel expects security claims to carry owners and dates.
-
-Section twenty-one point seven treats integration points escalation per as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-one point seven, BrightSmile Dental will not accept security work without a written trail.
 
 ### Language and tone
 
@@ -2564,35 +1504,13 @@ You will (1) identify SOC tasks suitable for automation; (2) design automated co
 
 Repetitive, well-understood steps suit automation: enriching alerts, opening contractor tickets, isolating a host on a high-confidence spike. Judgement calls do not.
 
-Section twenty-two point one develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-two point one, Raj Patel expects security claims to carry owners and dates.
-
-Section twenty-two point one treats what to automate automated as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-two point one, BrightSmile Dental will not accept security work without a written trail.
-
 ### 22.2 Automated containment
 
 After BrightSmile, Copperleaf automates isolation for rename spikes on high-criticality servers, for clients whose agreements allow it, so containment does not wait for an analyst.
 
-Section twenty-two point two develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-two point two, Raj Patel expects security claims to carry owners and dates.
-
-Section twenty-two point two treats what to automate automated as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-two point two, BrightSmile Dental will not accept security work without a written trail.
-
 ### 22.3 Guard rails
 
 Automation can go wrong at scale: a bad rule could isolate every PC in a clinic. A guard limits automatic isolation to two hosts per client per hour; beyond that, the on-call analyst is paged.
-
-Section twenty-two point three develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-two point three, Raj Patel expects security claims to carry owners and dates.
-
-Section twenty-two point three treats what to automate automated as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — containment guard
 
@@ -2623,35 +1541,13 @@ ISOLATE OAK-PC4 (Oakfield Law)
 
 Two BrightSmile PCs are isolated automatically; the third triggers a page instead because the guard is reached. Oakfield Law's PC is isolated because that client's count is separate.
 
-Section twenty-two point four develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-two point four, Raj Patel expects security claims to carry owners and dates.
-
-Section twenty-two point four treats what to automate automated as testable only when evidence and ticket IDs are recorded.
-
 ### 22.5 Testing
 
 Automation is tested in the lab with synthetic alerts, then enabled in monitor mode (logging what it would do) for two weeks before acting.
 
-Section twenty-two point five develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-two point five, Raj Patel expects security claims to carry owners and dates.
-
-Section twenty-two point five treats what to automate automated as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-two point five, BrightSmile Dental will not accept security work without a written trail.
-
 ### 22.6 Review
 
 Every automated action is reviewed the next morning; wrong actions lead to rule or guard changes.
-
-Section twenty-two point six develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-two point six, Raj Patel expects security claims to carry owners and dates.
-
-Section twenty-two point six treats what to automate automated as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-two point six, BrightSmile Dental will not accept security work without a written trail.
 
 ### Client consent
 
@@ -2693,23 +1589,9 @@ You will (1) evaluate detection rules with precision and recall from case outcom
 
 Rules drift as clients change. Monthly evaluation shows which rules work, which waste analyst time and which miss attacks.
 
-Section twenty-three point one develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-three point one, Raj Patel expects security claims to carry owners and dates.
-
-Section twenty-three point one treats why evaluate measures reading as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-three point one, BrightSmile Dental will not accept security work without a written trail.
-
 ### 23.2 Measures
 
 From closed cases, each alert is a true positive (real issue) or false positive. Missed detections (false negatives) come from incidents found other ways, such as client reports. Precision is TP ÷ (TP + FP); recall is TP ÷ (TP + FN).
-
-Section twenty-three point two develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-three point two, Raj Patel expects security claims to carry owners and dates.
-
-Section twenty-three point two treats why evaluate measures reading as testable only when evidence and ticket IDs are recorded.
 
 ### Lab — monthly rule quality
 
@@ -2735,45 +1617,17 @@ AV disabled      TP= 1 FP= 9 FN=1 precision=0.10 recall=0.50
 
 The remote-logon brute-force rule has precision 0.80 and recall 1.00. New local admin has precision 0.40 — many legitimate account changes. Rename spike has 0.67. The AV-disabled rule has precision 0.10 and missed one real case (recall 0.50), the weakest rule.
 
-Section twenty-three point three develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-three point three, Raj Patel expects security claims to carry owners and dates.
-
-Section twenty-three point three treats why evaluate measures reading as testable only when evidence and ticket IDs are recorded.
-
 ### 23.4 Actions
 
 AV-disabled is redesigned (the ten-minute change from chapter 19, plus a check for tamper-protection events). New local admin gets the contractor-window exception from chapter 16.
-
-Section twenty-three point four develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-three point four, Raj Patel expects security claims to carry owners and dates.
-
-Section twenty-three point four treats why evaluate measures reading as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-three point four, BrightSmile Dental will not accept security work without a written trail.
 
 ### 23.5 Small numbers
 
 A rule with three alerts a month gives unstable percentages; Mei reports counts beside rates.
 
-Section twenty-three point five develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-three point five, Raj Patel expects security claims to carry owners and dates.
-
-Section twenty-three point five treats why evaluate measures reading as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-three point five, BrightSmile Dental will not accept security work without a written trail.
-
 ### 23.6 Missed detections
 
 The missed AV case was found by the client noticing pop-ups; the evaluation asks why the rule did not fire — the event type had changed after an antivirus update.
-
-Section twenty-three point six develops security operations and blue team with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-three point six, Raj Patel expects security claims to carry owners and dates.
-
-Section twenty-three point six treats why evaluate measures reading as testable only when evidence and ticket IDs are recorded.
 
 ### Sharing results
 
@@ -2815,85 +1669,29 @@ You will (1) frame a practical research question in a managed SOC; (2) collect a
 
 Mei asks: "Do clients who received a 15-minute security briefing report suspicious emails more often than those who did not?"
 
-Section twenty-four point one develops applied research methods with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-four point one, Raj Patel expects applied claims to carry owners and dates.
-
-Section twenty-four point one treats the question data measure as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point one, BrightSmile Dental will not accept applied work without a written trail.
-
 ### 24.2 Data
 
 Copperleaf briefed twelve clients last year as part of onboarding; eighteen others were not briefed. The phishing report mailbox records reports by client.
-
-Section twenty-four point two develops applied research methods with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-four point two, Raj Patel expects applied claims to carry owners and dates.
-
-Section twenty-four point two treats the question data measure as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point two, BrightSmile Dental will not accept applied work without a written trail.
 
 ### 24.3 Measure
 
 Reports per 100 staff per quarter, so client sizes are comparable.
 
-Section twenty-four point three develops applied research methods with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-four point three, Raj Patel expects applied claims to carry owners and dates.
-
-Section twenty-four point three treats the question data measure as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point three, BrightSmile Dental will not accept applied work without a written trail.
-
-Section twenty-four point three fails closed if applied evidence is missing rather than guessing.
-
 ### 24.4 Comparison
 
 Briefed clients averaged 4.1 reports per 100 staff per quarter; others 1.6. The difference is large, but the groups were not randomly chosen: briefed clients joined more recently and may differ in other ways.
-
-Section twenty-four point four develops applied research methods with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-four point four, Raj Patel expects applied claims to carry owners and dates.
-
-Section twenty-four point four treats the question data measure as testable only when evidence and ticket IDs are recorded.
 
 ### 24.5 Ethics
 
 Data are aggregated per client; no individual staff are identified. Clients agreed to anonymised use in Copperleaf's improvement work.
 
-Section twenty-four point five develops applied research methods with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-four point five, Raj Patel expects applied claims to carry owners and dates.
-
-Section twenty-four point five treats the question data measure as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point five, BrightSmile Dental will not accept applied work without a written trail.
-
 ### 24.6 Limits
 
 Confounding by joining date and client type; small numbers; reports are not the same as resisting phishing.
 
-Section twenty-four point six develops applied research methods with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-four point six, Raj Patel expects applied claims to carry owners and dates.
-
-Section twenty-four point six treats the question data measure as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point six, BrightSmile Dental will not accept applied work without a written trail.
-
 ### 24.7 Next step
 
 Mei proposes briefing six of the unbriefed clients next quarter, chosen by lot, and comparing with the other twelve unbriefed — a fairer test.
-
-Section twenty-four point seven develops applied research methods with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-four point seven, Raj Patel expects applied claims to carry owners and dates.
-
-Section twenty-four point seven treats the question data measure as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-four point seven, BrightSmile Dental will not accept applied work without a written trail.
 
 ### Literature
 
@@ -2939,87 +1737,29 @@ You will (1) work in a team to design a SOC improvement; (2) divide roles and in
 
 Teams of three design an onboarding package that brings a new small client to "monitored and verified" within two weeks.
 
-Section twenty-five point one develops team project studio with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-five point one, Raj Patel expects team claims to carry owners and dates.
-
-Section twenty-five point one treats the brief mei's team as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point one, BrightSmile Dental will not accept team work without a written trail.
-
 ### 25.2 Mei's team
 
 Mei, a networking student and a programming student divide the work: data flows and verification (Mei), firewall and VPN checks (networking), and automation of the onboarding checklist (programming).
-
-Section twenty-five point two develops team project studio with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-five point two, Raj Patel expects team claims to carry owners and dates.
-
-Section twenty-five point two treats the brief mei's team as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point two, BrightSmile Dental will not accept team work without a written trail.
 
 ### 25.3 Design
 
 Day 1–2: agreement and contacts; day 3–5: agents and syslog; day 6–8: verification with test events per data flow; day 9–10: baseline collection; day 11–14: rule enablement and first report.
 
-Section twenty-five point three develops team project studio with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-five point three, Raj Patel expects team claims to carry owners and dates.
-
-Section twenty-five point three treats the brief mei's team as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point three, BrightSmile Dental will not accept team work without a written trail.
-
 ### 25.4 Critique
 
 Raj and a client account manager critique the design. The account manager notes clients rarely respond within a day; the team adds a reminder step and a "waiting on client" status so delays are visible.
-
-Section twenty-five point four develops team project studio with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-five point four, Raj Patel expects team claims to carry owners and dates.
-
-Section twenty-five point four treats the brief mei's team as testable only when evidence and ticket IDs are recorded.
 
 ### 25.5 Integration
 
 The automated checklist marks each step done only when evidence is attached, such as a screenshot of test events arriving.
 
-Section twenty-five point five develops team project studio with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-five point five, Raj Patel expects team claims to carry owners and dates.
-
-Section twenty-five point five treats the brief mei's team as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point five, BrightSmile Dental will not accept team work without a written trail.
-
 ### 25.6 Teamwork
 
 Weekly stand-ups and a shared board keep the three parts aligned.
 
-Section twenty-five point six develops team project studio with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-five point six, Raj Patel expects team claims to carry owners and dates.
-
-Section twenty-five point six treats the brief mei's team as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point six, BrightSmile Dental will not accept team work without a written trail.
-
-Section twenty-five point six fails closed if team evidence is missing rather than guessing.
-
 ### 25.7 Presentation
 
 The final presentation shows the two-week plan, evidence requirements and the dashboard.
-
-Section twenty-five point seven develops team project studio with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-five point seven, Raj Patel expects team claims to carry owners and dates.
-
-Section twenty-five point seven treats the brief mei's team as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-five point seven, BrightSmile Dental will not accept team work without a written trail.
-
-Section twenty-five point seven fails closed if team evidence is missing rather than guessing.
 
 ### Documentation
 
@@ -3065,83 +1805,29 @@ You will (1) hand over a new detection or process to operations; (2) write runbo
 
 A detection built by an engineer becomes the analysts' daily work. Handoff ensures they understand it, can act on it and know whom to ask.
 
-Section twenty-six point one develops operational handoff with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-six point one, Raj Patel expects operational claims to carry owners and dates.
-
-Section twenty-six point one treats what handoff means runbooks as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-six point one, BrightSmile Dental will not accept operational work without a written trail.
-
 ### 26.2 Runbooks
 
 Each alert type gets a runbook: what the alert means, what to check first, decision points, actions allowed per client agreement, and how to close. Mei writes the runbook for the sequence rule from chapter 16.
-
-Section twenty-six point two develops operational handoff with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-six point two, Raj Patel expects operational claims to carry owners and dates.
-
-Section twenty-six point two treats what handoff means runbooks as testable only when evidence and ticket IDs are recorded.
 
 ### 26.3 Training
 
 A 20-minute session walks analysts through the runbook using the BrightSmile replay. Each analyst then triages two lab alerts alone.
 
-Section twenty-six point three develops operational handoff with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-six point three, Raj Patel expects operational claims to carry owners and dates.
-
-Section twenty-six point three treats what handoff means runbooks as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-six point three, BrightSmile Dental will not accept operational work without a written trail.
-
 ### 26.4 Confirming understanding
 
 Mei checks that analysts reach the right decisions in the lab. One analyst isolates on a contractor-window alert that should have been a phone call; the runbook is clarified.
-
-Section twenty-six point four develops operational handoff with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-six point four, Raj Patel expects operational claims to carry owners and dates.
-
-Section twenty-six point four treats what handoff means runbooks as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-six point four, BrightSmile Dental will not accept operational work without a written trail.
 
 ### 26.5 Ownership
 
 The rule has an owner (Mei during placement, then a named engineer), a review date and a feedback channel.
 
-Section twenty-six point five develops operational handoff with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-six point five, Raj Patel expects operational claims to carry owners and dates.
-
-Section twenty-six point five treats what handoff means runbooks as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-six point five, BrightSmile Dental will not accept operational work without a written trail.
-
 ### 26.6 Go-live
 
 The rule goes live on a Monday morning, not before a weekend, so problems are found while staff are available.
 
-Section twenty-six point six develops operational handoff with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-six point six, Raj Patel expects operational claims to carry owners and dates.
-
-Section twenty-six point six treats what handoff means runbooks as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-six point six, BrightSmile Dental will not accept operational work without a written trail.
-
 ### 26.7 Feedback
 
 Analysts' comments in the first two weeks lead to two wording changes in the alert text.
-
-Section twenty-six point seven develops operational handoff with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-six point seven, Raj Patel expects operational claims to carry owners and dates.
-
-Section twenty-six point seven treats what handoff means runbooks as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-six point seven, BrightSmile Dental will not accept operational work without a written trail.
 
 ### Retiring old procedures
 
@@ -3183,85 +1869,29 @@ You will (1) deploy detections across many clients safely; (2) validate detectio
 
 New rules go to three pilot clients, then to the rest in groups. Each stage has a check: alert volume within expectations, no errors.
 
-Section twenty-seven point one develops deployment and validation with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-seven point one, Raj Patel expects deployment claims to carry owners and dates.
-
-Section twenty-seven point one treats staged deployment validation authorisation as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point one, BrightSmile Dental will not accept deployment work without a written trail.
-
 ### 27.2 Validation
 
 Validation asks whether rules catch the behaviour they target in each client's real environment. Copperleaf runs authorised test actions on each client's systems with a test account: create a local account and add it to Administrators, then remove it.
-
-Section twenty-seven point two develops deployment and validation with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-seven point two, Raj Patel expects deployment claims to carry owners and dates.
-
-Section twenty-seven point two treats staged deployment validation authorisation as testable only when evidence and ticket IDs are recorded.
 
 ### 27.3 Authorisation
 
 Tests are listed in the service agreement and scheduled with the client contact. They never touch real data.
 
-Section twenty-seven point three develops deployment and validation with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-seven point three, Raj Patel expects deployment claims to carry owners and dates.
-
-Section twenty-seven point three treats staged deployment validation authorisation as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point three, BrightSmile Dental will not accept deployment work without a written trail.
-
 ### 27.4 Evidence
 
 Each client's validation record shows test time, expected alert, actual alert time and analyst who confirmed.
-
-Section twenty-seven point four develops deployment and validation with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-seven point four, Raj Patel expects deployment claims to carry owners and dates.
-
-Section twenty-seven point four treats staged deployment validation authorisation as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point four, BrightSmile Dental will not accept deployment work without a written trail.
 
 ### 27.5 Failures
 
 At four clients the sequence rule did not fire. At three, account-management auditing was disabled; at one, the agent was an old version.
 
-Section twenty-seven point five develops deployment and validation with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-seven point five, Raj Patel expects deployment claims to carry owners and dates.
-
-Section twenty-seven point five treats staged deployment validation authorisation as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point five, BrightSmile Dental will not accept deployment work without a written trail.
-
 ### 27.6 Fixes and retest
 
 Auditing is enabled and the agent upgraded; retests pass.
 
-Section twenty-seven point six develops deployment and validation with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-seven point six, Raj Patel expects deployment claims to carry owners and dates.
-
-Section twenty-seven point six treats staged deployment validation authorisation as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point six, BrightSmile Dental will not accept deployment work without a written trail.
-
-Section twenty-seven point six fails closed if deployment evidence is missing rather than guessing.
-
 ### 27.7 Exceptions
 
 One client's vendor-managed system cannot have auditing enabled; the gap is recorded and the client informed.
-
-Section twenty-seven point seven develops deployment and validation with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-seven point seven, Raj Patel expects deployment claims to carry owners and dates.
-
-Section twenty-seven point seven treats staged deployment validation authorisation as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-seven point seven, BrightSmile Dental will not accept deployment work without a written trail.
 
 ### Scheduling with clients
 
@@ -3303,87 +1933,29 @@ You will (1) work in a live managed SOC under supervision; (2) apply professiona
 
 Mei's final field practice is eight weeks full-time at Copperleaf, rotating between day and evening shifts under Raj's supervision.
 
-Section twenty-eight point one develops field practice with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-eight point one, Raj Patel expects field claims to carry owners and dates.
-
-Section twenty-eight point one treats the placement conduct daily as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point one, BrightSmile Dental will not accept field work without a written trail.
-
 ### 28.2 Conduct
 
 She signs confidentiality terms, never discusses clients outside work and uses client data only in Copperleaf's systems.
-
-Section twenty-eight point two develops field practice with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-eight point two, Raj Patel expects field claims to carry owners and dates.
-
-Section twenty-eight point two treats the placement conduct daily as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point two, BrightSmile Dental will not accept field work without a written trail.
 
 ### 28.3 Daily work
 
 Triage of medium alerts, drafting client advice for review, onboarding checks and the weekly noise review.
 
-Section twenty-eight point three develops field practice with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-eight point three, Raj Patel expects field claims to carry owners and dates.
-
-Section twenty-eight point three treats the placement conduct daily as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point three, BrightSmile Dental will not accept field work without a written trail.
-
 ### 28.4 Client contact
 
 By week four, Mei makes routine client calls herself, with Raj listening in for the first few.
-
-Section twenty-eight point four develops field practice with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-eight point four, Raj Patel expects field claims to carry owners and dates.
-
-Section twenty-eight point four treats the placement conduct daily as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point four, BrightSmile Dental will not accept field work without a written trail.
 
 ### 28.5 Mistakes
 
 In week three, Mei closes an alert as benign without checking the client's business hours; Raj spots it in review. The alert was benign, but the check was required. She adds it to her personal checklist.
 
-Section twenty-eight point five develops field practice with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-eight point five, Raj Patel expects field claims to carry owners and dates.
-
-Section twenty-eight point five treats the placement conduct daily as testable only when evidence and ticket IDs are recorded.
-
 ### 28.6 Journal
 
 A weekly journal records cases, decisions, mistakes and lessons; her polytechnic tutor reviews it.
 
-Section twenty-eight point six develops field practice with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-eight point six, Raj Patel expects field claims to carry owners and dates.
-
-Section twenty-eight point six treats the placement conduct daily as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point six, BrightSmile Dental will not accept field work without a written trail.
-
-Section twenty-eight point six fails closed if field evidence is missing rather than guessing.
-
 ### 28.7 Evaluation
 
 Raj's evaluation covers technical skill, judgement, communication and reliability.
-
-Section twenty-eight point seven develops field practice with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-eight point seven, Raj Patel expects field claims to carry owners and dates.
-
-Section twenty-eight point seven treats the placement conduct daily as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-eight point seven, BrightSmile Dental will not accept field work without a written trail.
-
-Section twenty-eight point seven fails closed if field evidence is missing rather than guessing.
 
 ### Shift handover
 
@@ -3425,87 +1997,29 @@ You will (1) build a capstone improvement for the managed SOC; (2) integrate det
 
 Mei builds a "ransomware early warning" package for all healthcare clients: the sequence rule, the rename-spike rule with automated isolation and guard, heartbeat-gap alerts on servers, and a monthly coverage report.
 
-Section twenty-nine point one develops capstone build with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-nine point one, Raj Patel expects capstone claims to carry owners and dates.
-
-Section twenty-nine point one treats the capstone requirements building as testable only when evidence and ticket IDs are recorded.
-
 ### 29.2 Requirements
 
 Detect the BrightSmile sequence within 5 minutes of the admin-group change; isolate on rename spikes within 2 minutes; page on server heartbeat gaps over 15 minutes at night; no more than one false page per client per month.
-
-Section twenty-nine point two develops capstone build with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-nine point two, Raj Patel expects capstone claims to carry owners and dates.
-
-Section twenty-nine point two treats the capstone requirements building as testable only when evidence and ticket IDs are recorded.
 
 ### 29.3 Building
 
 Rules are written in the SIEM, automation in Copperleaf's playbook tool, reports from SIEM queries. Everything is stored in version control with change notes.
 
-Section twenty-nine point three develops capstone build with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-nine point three, Raj Patel expects capstone claims to carry owners and dates.
-
-Section twenty-nine point three treats the capstone requirements building as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point three, BrightSmile Dental will not accept capstone work without a written trail.
-
 ### 29.4 Testing
 
 Each component is tested in the lab with synthetic events: the BrightSmile replay, the rename spike and a stopped agent.
-
-Section twenty-nine point four develops capstone build with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-nine point four, Raj Patel expects capstone claims to carry owners and dates.
-
-Section twenty-nine point four treats the capstone requirements building as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point four, BrightSmile Dental will not accept capstone work without a written trail.
 
 ### 29.5 Guard rails
 
 The isolation guard from chapter 22 is reused; heartbeat paging respects client maintenance windows.
 
-Section twenty-nine point five develops capstone build with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-nine point five, Raj Patel expects capstone claims to carry owners and dates.
-
-Section twenty-nine point five treats the capstone requirements building as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point five, BrightSmile Dental will not accept capstone work without a written trail.
-
-Section twenty-nine point five fails closed if capstone evidence is missing rather than guessing.
-
 ### 29.6 Documentation
 
 Runbooks for each alert, a client-facing summary and an owner list.
 
-Section twenty-nine point six develops capstone build with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-nine point six, Raj Patel expects capstone claims to carry owners and dates.
-
-Section twenty-nine point six treats the capstone requirements building as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point six, BrightSmile Dental will not accept capstone work without a written trail.
-
-Section twenty-nine point six fails closed if capstone evidence is missing rather than guessing.
-
 ### 29.7 Peer review
 
 A senior analyst reviews logic and runbooks before deployment.
-
-Section twenty-nine point seven develops capstone build with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section twenty-nine point seven, Raj Patel expects capstone claims to carry owners and dates.
-
-Section twenty-nine point seven treats the capstone requirements building as testable only when evidence and ticket IDs are recorded.
-
-For section twenty-nine point seven, BrightSmile Dental will not accept capstone work without a written trail.
-
-Section twenty-nine point seven fails closed if capstone evidence is missing rather than guessing.
 
 ### Version control and change notes
 
@@ -3547,81 +2061,29 @@ You will (1) assess the capstone against requirements with evidence; (2) validat
 
 Each requirement is checked with lab results, authorised client tests and one month of live operation across twelve healthcare clients.
 
-Section thirty point one develops capstone assessment with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section thirty point one, Raj Patel expects capstone claims to carry owners and dates.
-
-Section thirty point one treats assessment plan client validation as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point one, BrightSmile Dental will not accept capstone work without a written trail.
-
 ### 30.2 Client validation
 
 With agreement from each client, Copperleaf runs the account test (chapter 27) and a stopped-agent test during maintenance windows. Rename spikes are tested only in the lab, since generating them on client systems would disrupt work.
-
-Section thirty point two develops capstone assessment with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section thirty point two, Raj Patel expects capstone claims to carry owners and dates.
-
-Section thirty point two treats assessment plan client validation as testable only when evidence and ticket IDs are recorded.
 
 ### 30.3 Results
 
 Sequence alerts arrived in 1–4 minutes at all twelve clients. Heartbeat pages arrived in 11–14 minutes. In live operation, false pages averaged 0.4 per client per month. Rename isolation is verified in the lab only.
 
-Section thirty point three develops capstone assessment with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section thirty point three, Raj Patel expects capstone claims to carry owners and dates.
-
-Section thirty point three treats assessment plan client validation as testable only when evidence and ticket IDs are recorded.
-
 ### 30.4 Live event
 
 One real event occurred: a clinic PC's new admin account at night, caught by the sequence rule and contained before any file activity. The account belonged to an attacker using a phished contractor password.
-
-Section thirty point four develops capstone assessment with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section thirty point four, Raj Patel expects capstone claims to carry owners and dates.
-
-Section thirty point four treats assessment plan client validation as testable only when evidence and ticket IDs are recorded.
 
 ### 30.5 Reflection
 
 What worked: reusing tested components, staged deployment. What did not: the first heartbeat interval; one client's maintenance window was undocumented, causing a false page.
 
-Section thirty point five develops capstone assessment with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section thirty point five, Raj Patel expects capstone claims to carry owners and dates.
-
-Section thirty point five treats assessment plan client validation as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point five, BrightSmile Dental will not accept capstone work without a written trail.
-
 ### 30.6 Presentation
 
 Mei presents to Copperleaf's team and her assessors: requirements, evidence, the live event, limits and maintenance plan.
 
-Section thirty point six develops capstone assessment with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section thirty point six, Raj Patel expects capstone claims to carry owners and dates.
-
-Section thirty point six treats assessment plan client validation as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point six, BrightSmile Dental will not accept capstone work without a written trail.
-
 ### 30.7 Handover
 
 The package passes to a named engineer with a review date.
-
-Section thirty point seven develops capstone assessment with a BrightSmile Dental note Mei Tanaka can demo offline.
-
-Under section thirty point seven, Raj Patel expects capstone claims to carry owners and dates.
-
-Section thirty point seven treats assessment plan client validation as testable only when evidence and ticket IDs are recorded.
-
-For section thirty point seven, BrightSmile Dental will not accept capstone work without a written trail.
-
-Section thirty point seven fails closed if capstone evidence is missing rather than guessing.
 
 ### Assessor criteria
 
