@@ -44,17 +44,25 @@ You will (1) list the building systems a hospital depends on; (2) explain how ea
 
 Behind the wards sit air-handling units that keep operating theatres at controlled temperature, humidity and pressure; chillers and boilers; medical gas alarm panels that warn when oxygen pressure drops; elevators that move patients between floors; and access control on doors to pharmacies and maternity units. A building management system (BMS) ties many of these together on a network with a central workstation.
 
+Most of these systems are invisible to patients and to many staff until they fail. At Millbrook they include the two theatre air-handling units, a chiller, a medical gas alarm panel, the lift controller and the access control server, all reached from one BMS workstation. Knowing the list is the first step towards asking who protects each item.
+
 ### 1.2 Why they are cyber-physical
 
 Each system reads sensors and drives equipment in the physical world through controllers. Once those controllers are networked, a change made on a screen anywhere on the network can move a damper, stop a pump or unlock a door. NIST SP 800-82r3 covers building automation explicitly within operational technology for exactly this reason.
+
+At Millbrook a setpoint typed on BMS-WS can change the air in an operating theatre, and a schedule on DOOR-SRV decides which doors open. Neither change needs anyone to stand in a plant room. That is what makes these systems a security concern: whoever can reach the screen can reach the equipment behind it.
 
 ### 1.3 Consequence for patients
 
 Office IT failures delay work. Building-system failures can harm patients: a theatre that loses positive pressure risks surgical infection; a silenced gas alarm hides a real drop; a stuck elevator delays an emergency transfer. Security planning in a hospital begins by asking which failure would hurt someone, and how quickly.
 
+Write the answer for each system in a sentence a clinician would recognise, and note how long the hospital can cope before harm becomes likely. A theatre may cope for minutes before a list is cancelled; a ward may manage a door failure for hours with keys. Those timescales later decide which risks come first in planning and in an incident.
+
 ### 1.4 Who owns them
 
 Building systems are often owned by estates or facilities teams, maintained by contractors, and invisible to the hospital's IT security staff. Closing that gap — agreeing who is responsible for the security of each system — is often the first practical win.
+
+At Millbrook, Aisha's first meeting is with the estates manager rather than with the IT team, because estates runs the BMS and holds the contractor relationships. The outcome she wants is a short list with one named owner per system, agreed by both sides. Without it, every later finding risks being passed between teams with nobody acting on it.
 
 ### Worked example (synthetic Millbrook)
 
@@ -94,21 +102,31 @@ You will (1) explain why clinical safety outranks security convenience; (2) desc
 
 A security fix that switches off a theatre's ventilation during surgery is worse than the risk it fixes. Every security task in clinical areas is planned with the people responsible for patients, and timed around them.
 
+In practice this means asking the theatre manager when lists run before booking any work on AHU-OT1 or AHU-OT2, and choosing a time when no patient depends on the system. A delay of a few days to reach a safe slot is normally acceptable. A security change made in a hurry during surgery is not.
+
 ### 2.2 Contingency already exists
 
 Hospitals prepare for building failures independent of cyber attacks: cylinder oxygen when piped supply fails, portable cooling, manual door keys, elevator rescue procedures. These are also the fall-back when a networked system is untrusted. Knowing them lets security staff suggest isolating a system without leaving patients unsupported.
+
+Ask estates when each fall-back was last exercised and who would start it at night. A cylinder supply that nobody has checked, or manual keys that cannot be found, is not a fall-back. Writing these arrangements beside each system in the inventory lets security staff propose isolation in an incident knowing what will keep patients safe meanwhile.
 
 ### 2.3 Authority
 
 Estates managers authorise work on building plant; theatre managers decide when a theatre is available; the medical gas authorised person controls gas systems; IT security advises. Contractors work under an estates permit. Analysts never instruct a contractor to change a clinical system directly.
 
+For Aisha this means every request goes through the person with authority. If she finds a weak password on a controller, she reports it to the estates manager, who arranges for the contractor to change it under a permit. Instructing the contractor directly, even with good intent, bypasses the checks that protect patients and leaves no record of who approved the change.
+
 ### 2.4 Permits in hospitals
 
 Work in clinical areas often needs infection-control approval as well as an estates permit: a technician opening a ceiling panel in a theatre can release dust. Even a non-invasive check may need a booking slot.
 
+Ask early what approvals a task needs, because a booking slot for a theatre plant room can take days to agree. Aisha's firmware check needed an estates permit, the theatre manager's confirmation and a contractor escort. Note each approval in the work record, and close the permit when the work ends, even when nothing was changed.
+
 ### 2.5 Talking to clinicians
 
 Explain security work in the language of patient risk and theatre time. "We need one hour on Saturday so nobody can change theatre air from outside" gets agreement faster than a list of protocols.
+
+Ask clinicians what would worry them, such as an unplanned temperature change during an operation, and connect the security work to that worry. Keep requests short and concrete: which theatre, which hour, what will happen and how it will be checked. Report back after the work, so the next request is easier to agree.
 
 ### Worked example (synthetic Millbrook)
 
@@ -148,21 +166,31 @@ You will (1) describe how BMS controllers communicate; (2) explain why building 
 
 Sensors and actuators connect to field controllers by wire. Controllers talk to each other and to the BMS server over a building network. Common protocols include BACnet, usually carried over UDP on port 47808 as BACnet/IP, and Modbus/TCP for some plant such as chillers. Many devices also offer a web interface for configuration.
 
+At Millbrook the BMS sits on VLAN 300, and the theatre air-handling controllers report to it over BACnet/IP. The chiller may use Modbus/TCP. Record which protocol each device uses in the inventory, because it decides what a firewall rule must allow and what monitoring can see.
+
 ### 3.2 Trust by default
 
 Like many industrial protocols, classic BACnet and Modbus deployments accept commands from anything that can reach them. A laptop on the same network can usually read every point and often write setpoints. Secure variants exist but are not yet common in installed buildings.
+
+That means the network boundary is the main control. If a corporate PC or a contractor's laptop can reach VLAN 300, it can probably read theatre temperatures and change setpoints without a password. Treat any path into the building network as a path to the equipment, and design rules on that assumption.
 
 ### 3.3 Where the networks meet
 
 The BMS workstation may sit on the hospital's corporate network so estates staff can reach it from offices. Contractors add remote access for support. Lifts may have their own cellular link to the manufacturer. Each meeting point is a place an attacker on the hospital network could step into building control.
 
+At Millbrook the most important meeting point is BMS-WS, which sits on both the building VLAN and the corporate network. Each such point should be listed with its owner and purpose. The later chapters on remote access and segmentation start from this list, so missing a route here means missing it there too.
+
 ### 3.4 What an analyst does
 
 Ask the estates team and contractor for a network drawing; compare it with switch and firewall configuration held by the network team; never scan building controllers to find out. Some old controllers crash under scans.
 
+Record which source supplied each fact, and mark anything seen only on a drawing as unconfirmed until it is checked against switch or firewall data. Where the sources disagree, ask the contractor and the network team together. Some answers will need a visit to a plant room, booked through estates.
+
 ### 3.5 Wireless
 
 Some sensors report over wireless links to gateways. Ask where each gateway connects and who manages its keys.
+
+A wireless gateway can be an unlisted way into the building network, and its keys may never have been changed since installation. Record each gateway in the inventory with its location, the network it connects to, who holds its keys and when they were last changed. Treat a gateway that reaches VLAN 300 as part of the BMS zone.  Ask the contractor for this list in writing.
 
 ### Worked example (synthetic Millbrook)
 
@@ -202,6 +230,8 @@ You will (1) build a building-device inventory grouped by system; (2) flag devic
 
 System, device name, location, owner, controller model, firmware, installation year, network address, vendor support status and clinical consequence. Building plant lasts twenty years or more, so support status matters more here than in office IT.
 
+Each field answers a question someone will ask. Owner tells you whom to call; firmware and support status tell you whether fixes exist; network address tells you which firewall rules apply; clinical consequence tells you how urgent a finding is. A missing field is itself a finding to fill in, not a blank to ignore.
+
 ### 4.2 Grouping
 
 Grouping by system shows who to talk to: HVAC devices go to the estates mechanical lead, the gas panel to the medical gas authorised person, the lift to its maintenance contractor.
@@ -231,21 +261,31 @@ elevator           1 device(s): LIFT-CTRL
 medical gas alarm  1 device(s): MGAS-PANEL
 ```
 
+Grouping also shows where one weakness affects several devices. The three HVAC devices may share a contractor and a password policy, so a problem found on one should be checked on all. Lab 4 groups Millbrook's six devices by system and flags those without vendor support.
+
 ### 4.3 Reading the output
 
 Two devices are unsupported: CHILLER-1, installed in 2015, and LIFT-CTRL from 2012. "Unsupported" means the vendor will publish no fixes for new weaknesses. They cannot simply be replaced — a chiller costs a large sum and replacement takes planning — so they need compensating controls: tighter network isolation, no remote access, closer monitoring.
+
+Write the compensating controls next to each unsupported device in the inventory, with an owner and a date, so they are not forgotten. Also note when the device is due to be replaced, because compensating controls are a bridge, not a permanent answer. Confirm the support status with the vendor before treating the lab's flag as final.
 
 ### 4.4 Using the inventory
 
 The inventory feeds advisory matching (Chapter 10), segmentation (Chapter 8) and the capstone risk report (Chapter 12). Keep it under access control.
 
+Because the inventory names devices, versions and addresses, it is also a useful map for an attacker. Share it with the people who need it, such as estates, the network team and the contractors for their own systems, and keep older copies out of email. Record who changed it and when, so a reader can trust its contents.  Review access to it each quarter.
+
 ### 4.5 Where the data comes from
 
 The BMS contractor's handover file, estates maintenance records, purchase orders, the network team's switch tables and walk-downs in plant rooms all contribute. Each source misses something: handover files predate later additions, purchase records miss items bought by contractors, and plant rooms hold devices nobody listed. Comparing them, and recording which source supplied each field, makes the inventory trustworthy.
 
+At Millbrook the handover file from the BMS contractor is the starting point, but the network team's switch tables show devices on VLAN 300 that the file omits. Walk-downs in plant rooms are booked through estates. When sources disagree, record both values and resolve them with the owner rather than choosing one silently.
+
 ### 4.6 Consequence column
 
 Write the clinical consequence in plain words for each device, agreed with estates and clinical leads, so priorities are clear to non-specialists.
+
+For example: AHU-OT1, theatre 1 loses pressure control; MGAS-PANEL, staff not warned of an oxygen supply fault; LIFT-CTRL, delayed patient transfers between floors. Write these with estates and clinical leads, not alone. The column later drives the order of work in the risk report, so its wording should be clear to managers who have never seen the plant.  Review the wording yearly.
 
 ### Worked example (synthetic Millbrook)
 
@@ -285,21 +325,31 @@ You will (1) find default and shared accounts on building systems; (2) apply ETS
 
 Controllers and web interfaces often leave the factory with documented usernames and passwords. Integrators sometimes keep one password across every site they maintain. Both mean that anyone who has read a manual or worked for that integrator can log in.
 
+At Millbrook, DOOR-SRV's web interface still accepted the factory password from its public manual. A check for defaults should cover every controller and web interface in the inventory, done by or with the contractor during a booked slot, without trying passwords against live systems on your own. Record each result and the date it was checked.
+
 ### 5.2 Shared estates accounts
 
 The BMS workstation may have one login used by every shift engineer. That makes changes untraceable. Individual accounts, even if only on the BMS server, let the trend log name the person who changed a setpoint.
+
+Named accounts also help when something goes wrong. If a theatre setpoint changes at night, a shared login cannot say who made the change, while a named one can, as Chapter 9's trend review shows. Where a controller allows only one account, keep the password in the vault and log each use with the engineer's name.
 
 ### 5.3 A procurement baseline
 
 ETSI EN 303 645 requires no universal default passwords, a vulnerability disclosure policy, software updates and secure communication, among other provisions; NIST IR 8259 lists foundational activities manufacturers should perform. Hospital purchasing can turn these into contract questions for new building devices, so the problem shrinks over time.
 
+For each new building device, ask the supplier in writing: does each unit have a unique password, is there a published way to report vulnerabilities, for how long will updates be provided, and is communication protected? Keep the answers with the purchase record. A supplier who cannot answer is itself useful information for the buyer.
+
 ### 5.4 Rules that estates staff can follow
 
 Unique passwords per device stored in a managed password vault; named accounts on the BMS; admin rights only for planned work; passwords changed when a contractor's staff leave.
 
+Write the rules on one page, agreed with the estates manager, and check that the vault is available on the shifts that need it. When a rule is hard to follow, such as changing passwords whenever a contractor's staff leave, agree how the hospital will learn about the departure. Review the rules after any incident that involved an account.
+
 ### 5.5 Checking the change worked
 
 After a password is changed, try the old one from the BMS workstation in the same booked slot to confirm it fails, and confirm operators can still log in with the new arrangement.
+
+Record both results in the change ticket. If the old password still works, the change has not taken effect, perhaps because the device has more than one account or interface. If operators cannot log in with the new arrangement, they may revert to a shared password, which undoes the work; fix the access problem in the same slot.
 
 ### Worked example (synthetic Millbrook)
 
@@ -339,6 +389,8 @@ You will (1) explain why building interfaces end up on the internet; (2) compare
 
 A contractor opens a port so they can reach the BMS web page from home; a lift company adds a router; a firewall rule from a project is never removed. MITRE ATT&CK for ICS lists T0883 Internet Accessible Device for exactly this situation, and CISA advisories repeatedly urge removing control system interfaces from direct internet access.
 
+At Millbrook a rule added in 2023 for chiller commissioning exposed BACnet and the BMS web login directly to the internet, and nobody removed it after the project. Every opening of this kind starts with a reasonable request for convenience. The task is to give contractors a supported route so they do not need to ask for ports.
+
 ### 6.2 Checking exposure
 
 The hospital's network team, or an authorised service, produces a list of the hospital's public addresses and open services. The analyst compares it with the approved list — normally only the remote access gateway.
@@ -362,17 +414,25 @@ Run with `python3 lab_exposure.py`. Verified output:
 unapproved: 2
 ```
 
+Get the export from the people who own the addresses, and do not probe hospital addresses yourself unless the network team has authorised it. The approved list should be short and should name an owner for each entry. Lab 6 compares Millbrook's export with an approved list containing only the VPN gateway.
+
 ### 6.3 Reading the result
 
 The VPN gateway on 203.0.113.10 port 443 is approved. Address 203.0.113.24 exposes BACnet/IP on 47808 and a BMS web login on 80. Both are unapproved: anyone on the internet could attempt to read or command controllers, or guess the web password.
+
+The exposure matters more because of what sits behind it. BACnet accepts commands from anyone who can reach it, so this is not only a data leak but a route to theatre air and chiller settings. That combination places it at the top of the analyst's report to the network team and estates.
 
 ### 6.4 Responding
 
 Report at once to the network team and estates; ask the network owner to close the exposure through emergency change; check logs for connections from outside; find who opened it and why, and give them a supported route instead.
 
+Keep the export, the times and the log extracts with the report, because they show how long the exposure lasted and whether anyone used it. At Millbrook the firewall logs showed many outside attempts to reach port 47808 over recent months. That finding is passed to estates to check controller settings and trend logs for changes in the same period.
+
 ### 6.5 Preventing recurrence
 
 Add a monthly exposure check to the network team's calendar, require an end date on every firewall rule opened for a project, and make contractors request remote access through the gateway process rather than asking for ports.
+
+Each measure closes one cause. The monthly check catches what slips through; end dates make project rules expire; the gateway process gives contractors a route that does not need open ports. Track the monthly check in the register with the date and result, so a missed month is visible.
 
 ### Worked example (synthetic Millbrook)
 
@@ -412,17 +472,25 @@ You will (1) inventory every remote route into building systems; (2) apply CISA 
 
 A hospital may have separate contractors for BMS, chillers, lifts, fire alarms and access control, each wanting remote support. Without a policy, each installs its own route: a remote desktop tool on the workstation, a router, a cellular modem.
 
+At Millbrook Aisha found four separate routes, three of them installed by contractors for their own convenience. None was malicious, but each was a way in that the hospital did not control. The first task is to list every route, with who installed it, what it reaches and whether anyone still uses it.
+
 ### 7.2 Lessons from AA21-042A
 
 The CISA advisory on the 2021 compromise of a U.S. water treatment facility describes remote access software being used to reach a control system. Its recommendations include multi-factor authentication, strong remote desktop passwords, closing unused remote desktop ports and auditing remote connections. MITRE ATT&CK for ICS describes misuse of such routes as T0886 Remote Services.
+
+For Millbrook the lessons map directly onto the routes Aisha found. A remote desktop tool on BMS-WS is the same kind of route described in the advisory. Requiring multi-factor authentication, auditing connections and closing unused remote desktop access are practical steps estates and the contractors can agree, without waiting for a larger project.
 
 ### 7.3 A controlled process
 
 One hospital-owned remote access gateway; a named, multi-factor account for each contractor engineer; accounts disabled by default and enabled per ticket; access limited to the specific system the contractor maintains; sessions recorded where possible; the account disabled when the session ends.
 
+Write the process in a short document that contractors sign, so they know how to get access in an emergency as well as for planned work. Test it once with each contractor before the old routes are removed. Review gateway accounts weekly, because accounts left enabled after a session are themselves a finding, as Millbrook's risk report later shows.
+
 ### 7.4 Removing the old routes
 
 Once the gateway is in place, remove remote desktop tools installed directly on building workstations and disconnect unmanaged modems — in agreement with the contractor and estates, at a planned time, so support is not lost during an emergency.
+
+At Millbrook the order was agreed with estates: the remote desktop tool was removed only after the BMS contractor's gateway account worked, the chiller router a week later, and the lift link restricted rather than removed. Record each removal with the date and who confirmed it, then check the route inventory again to make sure nothing has reappeared.
 
 ### Worked example (synthetic Millbrook)
 
@@ -462,21 +530,31 @@ You will (1) define zones and conduits for Millbrook's building systems using IE
 
 IEC 62443-3-2 describes grouping assets into zones with similar security requirements and connecting them through conduits. At Millbrook a sensible start is: a BMS zone (controllers and BMS server), a safety-relevant zone (medical gas alarm and lift, each separately), an access control zone, a DMZ for the gateway and data exports, and the corporate zone.
 
+Write each zone with its members, owner and the consequence if it is compromised. Medical gas alarms and lifts are kept in separate zones because their failures matter for patient safety and their contractors differ. A zone diagram that estates and the network team both accept is the starting point for any rule table.
+
 ### 8.2 Conduits and rules
 
 Write each conduit as a small set of rules: BMS-WS (moved into the BMS zone) to controllers on BACnet/IP; gateway to BMS-WS for contractor sessions; BMS server to a DMZ data server for energy reports. Everything else is denied. Corporate PCs never connect straight to controllers.
+
+Write each rule with its source, destination, protocol and port, a reason and an owner, so it can be reviewed later. Check the rules against the route inventory, so that nothing approved is blocked and nothing unapproved remains. A rule without an owner should be treated as a candidate for removal.
 
 ### 8.3 Fixing the dual-homed workstation
 
 Removing BMS-WS's corporate network card closes the bridge from Chapter 3. Estates staff who need to view the BMS from offices use a read-only dashboard on the DMZ server, or a jump host reached through the gateway.
 
+Before removing the card, agree with estates which office tasks used it and test the replacement route with the staff who will use it. Do the change in a booked slot and confirm afterwards that BMS-WS still reaches its controllers. Record the change against the risk list entry that Aisha made when she found the bridge.
+
 ### 8.4 Migrating safely
 
 Change one conduit at a time, at times agreed with estates and theatre managers; watch for lost points on the BMS after each step; keep the previous configuration ready to restore.
 
+Agree beforehand which BMS points will be checked after each step and who will check them. At Millbrook, after the second step two controllers stopped reporting because a conduit to a time server had been forgotten; it was found because points were checked straight away. Note such surprises in the rule table so the next change avoids them.
+
 ### 8.5 Documentation
 
 Publish the zone diagram and rule table with revision numbers and owners so contractors can request changes against them.
+
+Keep the diagram and table in a place estates, the network team and contractors can all read, and refer to them in every change request. When a change is made, update the revision number and note who approved it. Out-of-date documentation leads contractors to request rules that already exist or that contradict the design.  Keep superseded revisions so that past decisions can be traced.
 
 ### Worked example (synthetic Millbrook)
 
@@ -516,6 +594,8 @@ You will (1) use BMS trend logs as security evidence; (2) flag changes outside a
 
 A BMS records values over time — temperatures, setpoints, valve positions — mainly for engineers. The same records show when a setpoint changed and, with named accounts, who changed it. They are often the best evidence of tampering in a building system.
 
+For Aisha, the trend log is often the first place to look when something seems wrong, because it shows the physical effect directly. Find out how often each point is sampled and how long records are kept before relying on them. Where accounts are shared, the trend shows what changed but not who changed it.
+
 ### 9.2 Change windows
 
 Estates agrees windows for planned setpoint changes, for example weekday mornings. A change outside a window is not necessarily malicious, but it needs an explanation.
@@ -539,21 +619,31 @@ Run with `python3 lab_trend.py`. Verified output:
 09:00 setpoint 26.0->21.0 in window
 ```
 
+The windows should be agreed with estates and written down, with any exceptions such as emergency repairs. Outside the window, the question is simply what happened and who did it. Lab 9 checks one theatre setpoint trend against a morning window and flags any change outside it.  Review them yearly.
+
 ### 9.3 Reading the output
 
 At 03:00 the theatre setpoint rose from 20 °C to 26 °C, outside the 08:00–10:00 window; it was set back to 21 °C at 09:00 inside the window. The 03:00 change is the one to review.
+
+The return to 21 °C at 09:00 is inside the window, but it is still worth noting because it suggests someone noticed the earlier change and corrected it. Both changes belong in the review, with the questions of who made each and why. The lab shows only the setpoint; the actual theatre temperature trend would show whether the change mattered.
 
 ### 9.4 Combining sources
 
 Check the BMS audit log for who was logged in at 03:00; the gateway log for remote sessions; the firewall log for connections to the BMS zone. Agreement between sources strengthens the conclusion either way.
 
+Record what each source showed, including the ones that showed nothing. At Millbrook the gateway log had no sessions at 03:00, which made a remote change unlikely, and the BMS audit log named the night engineer. The firewall log would have been checked as well if the first two had disagreed.
+
 ### 9.5 Alerting
 
 Where the BMS supports it, raise an alarm for setpoint changes outside windows on critical units, sent to the estates on-call engineer.
 
+Agree with estates which units count as critical, such as the theatre air-handling units, and what the on-call engineer should do on receiving the alarm. An alarm that nobody acts on soon gets ignored. Test it once after setting it up, during a planned change, and record the result.  Review the alarm list each quarter with the on-call engineers, removing units that no longer need it.
+
 ### 9.6 Keeping evidence
 
 When a change needs review, export the relevant trend and audit records the same day, note the export time, and store them with the review notes; BMS retention is often short.
+
+Store exports where only the people reviewing the change can read them, with a note of where each came from. At Millbrook trend logs were kept for only 14 days, which later became a finding in Aisha's risk report. Until retention is extended, same-day export is the only safe practice.
 
 ### Worked example (synthetic Millbrook)
 
@@ -593,25 +683,37 @@ You will (1) match advisories to the building inventory; (2) decide between patc
 
 CISA's advisories index includes many building automation, access control and lift products, alongside vendor notices. Subscribe to those relevant to Millbrook's vendors.
 
+Use the inventory to choose which vendors and products to follow, including the BMS controllers, the access control server and the lift controller. Check the CISA index and the vendor pages regularly, and record the date of each check. An advisory that arrives after an incident is far less useful than one read the week it was published.
+
 ### 10.2 Matching
 
 For each advisory: is the product in our inventory, at an affected version, reachable in the way the advisory describes? Unsupported devices (Chapter 4) often match old advisories that will never be fixed.
+
+Record the answer to each question in the advisory register, even when the product is not present. For unsupported devices such as CHILLER-1 and LIFT-CTRL, an advisory without a fix leads straight to compensating controls: tighter isolation, no remote access and closer monitoring, as agreed for those devices in the inventory work.
 
 ### 10.3 Choosing
 
 Patching a BMS controller usually needs a contractor visit, a booked slot and checks of every point afterwards. Mitigations — firewall rules, disabling a web interface, restricting the gateway account — can often be applied sooner. Record which you chose and why.
 
+The choice depends on consequence and on how soon a safe slot is available. A mitigation applied today may be better than a patch next month, as long as it is checked to block the path the advisory describes. Write the decision in the register with the date, owner and review date.
+
 ### 10.4 Tracking
 
 A simple register: advisory, products affected here, decision, mitigation, patch date, owner, review date. Report open high-consequence items to the estates manager monthly.
+
+Keep the register in the same place as the inventory, so that a new advisory can be matched quickly. Review it with the estates manager each month and close items only when completion has been shown, such as a version check after patching. Items left open for a long time need a fresh decision rather than silent ageing.
 
 ### 10.5 Testing after patching
 
 Afterwards, the contractor confirms every point reports, alarms work and schedules are correct; estates signs off.
 
+Agree the checks before the patch, with a list of points and alarms to test and the person who will test them. Keep a fall-back ready, such as the previous firmware or manual keys for doors. Record the results and the sign-off in the advisory register, so the item can be closed with evidence.  Patch one unit first where possible, and check it before moving to the next.
+
 ### 10.6 Vendor contact
 
 When an advisory is unclear about building configurations, ask the vendor or integrator directly: which models and options are affected, whether the vulnerable feature is enabled by default, and whether a mitigation has been tested on systems like Millbrook's. Record the answer and who gave it. Vendors' product security teams usually respond faster when the question names the exact model and version from the inventory.
+
+Keep the vendor's answers with the advisory in the register, and repeat the question if the answer is unclear. If the vendor confirms that a mitigation works, still check it at Millbrook, because local configuration can differ.
 
 ### Worked example (synthetic Millbrook)
 
@@ -651,21 +753,31 @@ You will (1) adapt the incident response steps to building systems; (2) decide w
 
 NIST SP 800-82r3 stresses preparing OT incident response with operations staff. In a hospital that means estates, clinical site managers, the IT security team and contractors agree beforehand: who leads, what each system's manual fall-back is, and how to reach contractors at night.
 
+Write the agreement down as a short plan with phone numbers, the fall-back for each critical system and who may order isolation. Exercise it at least once with estates and a contractor, perhaps on a quiet weekend. The first incident is the wrong time to discover that the chiller contractor has no night contact.
+
 ### 11.2 Detect and assess
 
 An alarm, an out-of-window setpoint or a ransom note on BMS-WS starts the process. The first question is clinical: is any area unsafe now? The site manager and estates decide immediate protective steps — moving a theatre list, switching to cylinder oxygen alarms monitored by staff.
+
+Only after the clinical picture is clear does the security assessment begin: what is affected, how it started and whether it is spreading. At Millbrook the first call on the ransom night was to estates, who confirmed that theatres were empty and wards normal before the network team acted.
 
 ### 11.3 Contain
 
 If the BMS cannot be trusted, controllers can usually run their last programmed schedules without the server. Isolating the BMS zone at its firewall stops further remote commands while plant keeps running locally. Estates staff patrol plant rooms and check critical values by hand.
 
+Before isolating, check how each critical controller behaves without the server, because some fall back to defaults that differ from normal operation. At Millbrook the conduits were blocked at 22:55 and controllers carried on with their schedules, while estates engineers patrolled hourly. Note the time of each containment step for the incident record.
+
 ### 11.4 Evidence and recovery
 
 Preserve logs and images before rebuilding; restore BMS-WS and the server from verified backups; check every critical point against local readings; reconnect conduits one at a time.
 
+Agree beforehand where evidence will be stored and who will take it, so that rebuilding is not delayed. At Millbrook BMS-WS was rebuilt from a verified image the next morning and conduits were restored by 14:00 after point checks. Keep the evidence until the incident lead decides it is no longer needed.  Record each step and its time.
+
 ### 11.5 Communication
 
 The incident lead informs hospital management, who decide about external notification. Analysts do not contact the press or regulators themselves.
+
+Analysts support the incident lead by providing clear facts with times and sources. They should avoid informal messages to colleagues or contractors that could spread inaccurate information. If a regulator or journalist contacts an analyst directly, pass the request to the incident lead without comment.  Keep a copy of every update sent, with its time, so the incident record shows what was said and when it was said.
 
 ### Worked example (synthetic Millbrook)
 
@@ -705,25 +817,37 @@ You will (1) assemble inventory, exposure, access, segmentation and monitoring f
 
 Scope and method; systems in scope with owners; findings, each with evidence; risk rating; recommended actions with owners and dates; residual risk the hospital accepts. Keep it to a few pages with an appendix for evidence.
 
+Write the scope first, naming which systems were reviewed and which were not, so readers know what the report covers. Each finding should point to its evidence in the appendix, and each action to an owner. The residual risk part should say who accepted it, as decided by hospital managers.
+
 ### 12.2 Rating
 
 Rate consequence (patient harm, service loss) and likelihood (exposure, ease, known activity) on simple three-level scales, agreed with estates and clinical leads. A medium likelihood with severe patient consequence usually outranks a high likelihood with minor consequence.
+
+Agree the scales before rating any finding, and write a sentence explaining each level so different readers apply them in the same way. At Millbrook the lift controller rated high consequence and medium likelihood, which put it at the top of the list. Ratings should be reviewed when the evidence changes.
 
 ### 12.3 Recommendations
 
 Each one names a specific change, an owner, a date and how completion will be shown. Include quick wins (closing exposure, removing old remote tools) and longer projects (replacing unsupported plant).
 
+At Millbrook the recommendations included replacing LIFT-CTRL and a weekly check of gateway accounts. Each was written with an owner, a date and the evidence that would show completion, such as a purchase order or a weekly account report. Vague recommendations without owners rarely lead to change.  Separate quick wins from projects in the list.
+
 ### 12.4 Presenting
 
 Lead with the top three risks in patient terms; show what has already improved; ask for decisions, not admiration.
+
+Keep the presentation short, with one slide per top risk and one slide of improvements. Bring the evidence appendix in case managers ask, but do not present it. End with the specific decisions needed, such as funding to replace LIFT-CTRL, and confirm who will act on each decision.  Send the slides afterwards with the summary, so that absent managers see the same decisions and owners.
 
 ### 12.5 Evidence appendix
 
 For each finding, keep the photograph, log extract or configuration excerpt that supports it, with the date and who collected it. Managers rarely read the appendix, but auditors and the next analyst will, and it lets anyone check that the finding was real.
 
+Store the appendix with access controls, because it contains details about devices, addresses and weaknesses. Link each item to its finding number, and record where the original evidence is kept.  A finding with no supporting item should be marked unconfirmed until evidence is collected.
+
 ### 12.6 After the meeting
 
 Record the decisions taken, owners and dates in the tracking register, send a one-page summary to attendees, and book the six-month review. Progress against the actions becomes the opening slide next time, which keeps attention on change rather than on new findings.
+
+Check at the six-month review whether each action was completed, and update the ratings where the evidence has changed. Actions that slipped need a new date and a reason. Keep the summary short so that attendees read it, and file it with the report.
 
 ### Worked example (synthetic Millbrook)
 
