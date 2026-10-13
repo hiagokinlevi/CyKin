@@ -54,17 +54,25 @@ Mateo Rossi is an engineering student at the fictional Ardmore Institute of Tech
 
 Calculus studies how quantities change. If unwanted software accumulates on unmanaged PCs at a roughly steady rate, the number of affected PCs grows linearly with time; if one infected PC spreads problems to others on the same network, growth can become faster than linear. The derivative describes the rate at that moment.
 
+For Fernhill the difference matters. Steady accumulation can be handled by periodic clean-ups; faster growth means waiting makes each clean-up harder. Mateo checks which pattern Fernhill's records show before choosing a design.
+
 ### 1.3 Functions of time
 
 Mateo models the share of PCs with leftover personal files as a function f(t) of days since the last manual clean-up. Fernhill's records suggest about three new cases per day across the network, so f grows by roughly one per cent of the fleet each day until staff intervene.
+
+The function is simple, but it already answers a useful question: after a week without attention, about a fifth of the fleet would hold someone else's files. Mateo states that estimate with its assumptions.
 
 ### 1.4 Why rates matter for design
 
 A nightly restore resets f to zero every 24 hours. Instead of letting problems accumulate for weeks, the design limits exposure to a single day. Thinking in rates makes the benefit of frequent resets visible.
 
+The same reasoning applies to unwanted software. A toolbar installed in the morning disappears by the next opening, so it can affect at most one day of patrons. Mateo writes this down as the main argument for the project, because it explains the benefit without technical terms. It also shows the limit: anything that happens during a single day is still exposed until the reset, so other controls are needed for the hours in between.
+
 ### 1.5 Limits and approximation
 
 Real data are noisy; a smooth function is an approximation. Engineers use it to reason, then check it against measurements.
+
+Mateo's model assumes three cases a day, every day. Fernhill's records show quieter Sundays and busier Mondays, so the real curve has steps rather than a straight line. He keeps the simple model for explaining the idea to managers and compares it with the counted cases each month. If the two drift apart, the model is revised rather than the data being ignored. A model that is never checked becomes a story people repeat.
 
 ### Worked example
 
@@ -106,17 +114,25 @@ The software allowed on a public PC forms a set A. The software actually execute
 
 Requirements can be written as logical statements: "if a PC is public, then USB storage is disabled". Writing them precisely avoids ambiguity, such as whether staff PCs are included.
 
+Mateo found that the first draft said only that USB storage must be disabled, without saying on which PCs. Rewritten as an implication with a clear condition, the rule could be checked by a program: for each PC, if it is marked public, the setting must be off. Staff laptops fall outside the condition, which is what Marta intended, and the record now says so explicitly.
+
 ### 2.3 Graphs
 
 Fernhill's network can be drawn as a graph: PCs, switches and servers are nodes; network links are edges. A graph shows which PCs can reach each other. If public PCs can reach staff laptops directly, a problem on one could affect the other.
+
+Mateo built the first graph from Fernhill's network documents and then checked it against switch configurations, as the errors note advises. He found one link the documents did not show. The graph also helps when planning changes: removing a single edge can separate the public PCs from staff devices entirely.
 
 ### 2.4 Counting configurations
 
 With ten yes-or-no settings, there are 2 to the power 10, or 1,024, possible configurations. Only one is the approved baseline. Counting shows why drift is likely without automation: many ways to be wrong, one way to be right.
 
+Mateo saw this in practice. Of the first twenty PCs he checked by hand, several had at least one setting that differed from the baseline, each in a different way. Nobody had made a deliberate change; small fixes and user actions had added up. Automated checks and nightly restores bring every PC back to the single approved combination.
+
 ### 2.5 Proof habits
 
 Discrete mathematics trains careful reasoning: stating assumptions, checking edge cases and not generalising from a few examples.
+
+Mateo applies these habits to the project's rules. When he claims that every public PC resets nightly, he asks what would make the claim false: a PC switched off overnight, a branch closed for a holiday, a new PC added without the restore tool. Each case becomes a test. A claim that holds only for the PCs he happened to check is not yet a rule, however many examples support it.
 
 ### Applying it to the project
 
@@ -158,21 +174,31 @@ You will (1) relate physical properties of hardware to security; (2) explain sto
 
 Data on solid-state drives and hard disks persist without power. Deleting a file usually removes only its index, not the data. This is why a patron's "deleted" CV may still be recoverable, and why Fernhill needs full restores and disk encryption rather than relying on users to delete files.
 
+Mateo demonstrated this to Marta on a lab PC with synthetic files. After an ordinary delete, a recovery tool found the file's contents still on the disk. After a restore from the clean image, the patron area held nothing from before. The demonstration convinced her more than any explanation did.
+
 ### 3.2 Memory and power
 
 Memory loses its contents when power is removed, but not instantly; this is one reason why encryption keys are protected while devices are running and why devices should lock or shut down when unattended.
+
+For Fernhill this means a public PC left logged in with an open session is a risk even if its disk is encrypted, because the key is in use while it runs. Mateo's requirements therefore include automatic logoff after inactivity and a restart at closing time. Shutting down clears memory and returns the device to a state where the encryption protects the disk again.
 
 ### 3.3 Physical disturbance
 
 Kim et al. (2014) showed that repeatedly accessing rows in DRAM can flip bits in neighbouring rows, a physical effect of densely packed memory cells. It shows that hardware behaviour can create security problems that software alone did not expect.
 
+Fernhill cannot fix such effects itself; they are addressed by hardware makers and firmware updates. Mateo notes the lesson for his design: keep firmware updated, buy hardware with published mitigations and do not assume that software controls alone describe what the machine can do. He records firmware versions in the inventory so updates can be tracked. A software audit that ignores the hardware it runs on gives only part of the picture.
+
 ### 3.4 Heat and reliability
 
 Heat shortens component life. Public PCs in small enclosures fail more often, which matters when planning reliability in chapter 32.
 
+Mateo checked the failure records and found that PCs in the cramped study carrels at Millbrook failed more often than those on open desks. Better airflow, or moving the units, may cost less than replacing them. Heat also affects how long nightly restores take, since overheating drives slow down. These are practical details, but a system that resets every night depends on hardware that keeps working every night.
+
 ### 3.5 Physical access
 
 Anyone at a public PC has physical access: they can attach devices, reboot or open firmware menus. Physical security and firmware settings matter as much as software.
+
+Mateo's design therefore locks firmware settings with an administrator password, disables booting from external devices and places cases where they can be seen by staff. None of these makes tampering impossible. Together they make it harder and more noticeable, which suits a public space where staff are present but cannot watch every screen.
 
 ### Encryption and physical theft
 
@@ -214,21 +240,31 @@ You will (1) write small Python programs that read records and check conditions;
 
 Fernhill's 300 PCs cannot be checked by hand each day. Small programs that read configuration records and report problems make checks repeatable.
 
+Before the project, Marta checked a few PCs per branch each month and hoped the rest were similar. A program can check every PC every day in seconds and print only the ones that need attention. The program does not replace her judgment; it tells her where to look. Running the same check every day also produces a history, so Marta can see whether problems are rising or falling.
+
 ### 4.2 Variables and types
 
 Settings come as text, numbers and true-or-false values. A program must compare like with like: "15" as text is not the number 15.
+
+Mateo met this exact problem in the worked example, where minutes stored as text made every PC appear to fail. He now converts each value to the expected type as soon as it is read, and treats a value that cannot be converted as an error to report. A setting recorded as yes in one export and true in another is normalised the same way, so later code never has to guess.
 
 ### 4.3 Functions
 
 A function such as check(pc, requirements) returns a list of gaps. Writing it once and calling it for every PC avoids copying code.
 
+When a requirement changes, Mateo edits the function in one place, and every PC is checked against the new rule on the next run. Each gap the function returns names the setting, the expected value and the actual value, so Marta can see what is wrong without reading the code. Keeping the function free of side effects means it can be tested with invented PCs and no network access.
+
 ### 4.4 Testing with known answers
 
 Before running on real data, Mateo tests his function on two synthetic PCs: one that meets every requirement and one that fails exactly two. If the output matches, he trusts the function more.
 
+He then adds cases for unusual inputs: a PC record with a missing setting, a value of the wrong type and an empty record. Each should produce a clear error rather than a pass. Tests with known answers catch mistakes that reading the code misses, and they keep catching them when the function is changed later.
+
 ### 4.5 Standard library only
 
 The course labs use only Python's standard library, so they run on any machine and introduce no unreviewed code.
+
+Avoiding extra packages also makes the labs easier to review. Anyone checking a script can see everything it does, because the only code it uses ships with Python itself. For Fernhill's own checks Mateo follows the same rule, since a library downloaded from the internet would need its own security review before running on the library's network. It also keeps the labs small.
 
 ### Reading code before running
 
@@ -276,21 +312,31 @@ You will (1) write clear engineering documents; (2) tailor communication to libr
 
 Marta needs technical detail; branch managers need to know what changes for patrons; the library board needs costs and benefits. One project, three kinds of document.
 
+Mateo writes each document for one audience and checks it with someone from that group. Marta's notes list exact settings and image versions. The branch managers' note explains what patrons will see and what staff should say. The board receives costs and benefits on a single page. Using one document for all three would bore two audiences and confuse the third.
+
 ### 5.2 Problem statements
 
 Mateo writes a one-paragraph problem statement: personal files left on public PCs and unauthorised software, caused by PCs that keep changes indefinitely.
+
+The statement names the harm, the cause and who is affected, without proposing a solution. That leaves room to compare options fairly. Mateo shows it to Marta and two branch managers, who agree it describes what they see. The agreed statement becomes the first page of the project file, and every later requirement should help solve it. Marta signed the page as the project owner.
 
 ### 5.3 Decision records
 
 Each design decision is recorded with options, choice and reasons, so later readers understand why.
 
+Mateo's first record compared nightly restore with a commercial cleaning tool and with staff clearing files by hand. It listed the effort, cost and protection of each, and why restore was chosen. When a new manager later asked why the library did not just buy the tool, Marta answered by pointing to the record. A decision without a record tends to be argued again every time someone new joins.
+
 ### 5.4 Plain language
 
 Avoid jargon with staff: say "the computer resets itself overnight" rather than "non-persistent image restore".
 
+Mateo tested his wording on three librarians before sending a notice. One asked what non-persistent meant, which settled the matter. Plain language does not mean less accuracy: the overnight reset still wipes downloads and saved files, and the notice says so directly. Staff who understand the change can explain it to patrons, which matters more than any poster. Mateo kept a short glossary for staff questions.
+
 ### 5.5 Diagrams
 
 A simple diagram of the nightly cycle helps everyone see the plan.
+
+Mateo drew four boxes in a circle: patron session, logoff, overnight restore and morning check. Arrows showed what happens to files at each step. He pinned it in each branch's staff room, and librarians began using it to answer patrons' questions. When the design later added a check before restore, the diagram was updated the same week, so it never described an outdated process. Each version was dated.
 
 ### Writing for the board
 
