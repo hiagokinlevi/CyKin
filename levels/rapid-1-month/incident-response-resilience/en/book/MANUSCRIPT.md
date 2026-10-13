@@ -7197,7 +7197,23 @@ This lesson does not alter the canonical Harbor Library timeline or any already 
 
 ### 4.22 BH4 offline laboratory — reconstruction state and negative controls
 
-<a id="ir-rapid-ch04-bh4-lab"></a>
+The BH4 laboratory turns the blind-handoff contract of §4.21 into a small, offline program. It does not touch Harbor Library systems. It checks whether a reconstruction dictionary is internally consistent and whether negative controls flip the expected failure labels.
+
+**What the script receives.** A frozen reconstruction object with fields for checkpoint, chosen branch (S or P), last reported action, current-effect status, failed or unknown acceptance gates, next approval owner and review trigger. Each field must cite a permitted synthetic source identifier from the R-series or branch cards released for that checkpoint.
+
+**Positive path.** When every required field is present, the branch matches the packet, and current-effect status is `not_independently_verified` rather than a false claim of full recovery, the script prints `RECONSTRUCTION_STRUCTURALLY_VALID`. That label means only that the dictionary is complete enough for a human receiver exercise. It does not mean a real booking service was restored.
+
+**Negative controls.** Run each on a copy of the fixture, then restore the baseline:
+
+1. Set `current_effect` to `fully_recovered` while a later gate remains failed. Expect `UNSUPPORTED_RECOVERY_CLAIM`.
+2. Omit the next-approval owner. Expect `MISSING_OWNER`.
+3. Cite a card from a later round than the declared checkpoint. Expect `RELEASE_BOUNDARY_VIOLATION`.
+4. Mix Branch S and Branch P identifiers in one history. Expect `BRANCH_MIX`.
+
+**How to use the result.** Predict each label before running the control. Record the printed line beside your frozen receiver answer from §4.21. A green structural label with a failed human reconstruction still fails the exercise: the script checks invented dictionaries, not comprehension under time pressure.
+
+**Limits.** The laboratory cannot authenticate a GitHub link, pause writes, verify an identity provider or certify a backup. Those remain outside this fictional course. Keep the six chapter outputs, the sender packet and the receiver answer as the evidence of learning; the script is only a consistency aid.
+
 
 **Classification:** Entirely synthetic, independent BH4 teaching fixture. It is not R1–R24, Branch S/P, P1/C1, V1, F1, F4-AUDIT, L2, DEL4 or an observed production handoff.
 
@@ -7371,6 +7387,8 @@ Compare your run with the [worked BH4 transcript and limitations](#ir-rapid-ch04
 **Negative experiment:** Change only the receiver's `D_report` value and observe `FAIL_RECEIVER_RECONSTRUCTION:D_report`; restore it to the reported branch status for the baseline. Alternatively, remove C1's manifest pointer and observe `FAIL_MISSING_POINTER:C1`. Never treat a missing pointer as proof that the booking comparison passed.
 
 **Required lab submission:** Twelve output lines, a per-variant failure table, the identified source-release boundary, a one-paragraph distinction between packet validity and independent human reconstruction, and a proposed next safe request for each selected branch.
+
+<a id="ir-rapid-ch04-bh4-lab"></a>
 
 ### 4.23 Two-role practical — a handoff without the author
 
