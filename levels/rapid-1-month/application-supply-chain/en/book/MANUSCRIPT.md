@@ -49,21 +49,51 @@ Owen Clarke is the only IT person at the fictional charity Riverside Food Networ
 
 Application security protects the website's own code and settings. Software supply chain security protects everything the site is built from: the platform, its plugins, themes and the services they call, and the path by which each arrives and is updated. For a small charity, the supply chain is most of the website.
 
+Section one point two develops application and software supply chain with a Riverside Food Network note Owen Clarke can demo offline.
+
+Under section one point two, Nadia Haddad expects application claims to carry owners and dates.
+
 ### 1.3 Main risks
 
 Outdated components with known flaws (OWASP Top 10:2021 A06); components that are no longer maintained; components from unofficial sources; weak administrator sign-in (A07); and integrity failures, where an update or file is changed before it arrives (A08).
+
+Section one point three develops application and software supply chain with a Riverside Food Network note Owen Clarke can demo offline.
+
+Under section one point three, Nadia Haddad expects application claims to carry owners and dates.
+
+Section one point three treats the opening case what as testable only when evidence and ticket IDs are recorded.
 
 ### 1.4 Proportionate decisions
 
 Owen has a few hours a week. He decides by asking three questions for each risk: how likely is it, how much harm would it cause to donors and the charity, and how cheap is the fix? Cheap fixes for likely, harmful risks go first.
 
+Section one point four develops application and software supply chain with a Riverside Food Network note Owen Clarke can demo offline.
+
+Under section one point four, Nadia Haddad expects application claims to carry owners and dates.
+
+Section one point four treats the opening case what as testable only when evidence and ticket IDs are recorded.
+
 ### 1.5 Frameworks as guides
 
 NIST SP 800-218 (SSDF) and OWASP SAMM v2 are written for software producers and larger organisations, but their ideas scale down: know your components, keep them updated, check what you install, and have a plan for problems.
 
+Section one point five develops application and software supply chain with a Riverside Food Network note Owen Clarke can demo offline.
+
+Under section one point five, Nadia Haddad expects application claims to carry owners and dates.
+
+Section one point five treats the opening case what as testable only when evidence and ticket IDs are recorded.
+
 ### 1.6 The month's plan
 
 Week 1 foundations and decisions; week 2 scope and safe practice; week 3 components, data and dependencies; week 4 guided lab and putting it together.
+
+Section one point six develops application and software supply chain with a Riverside Food Network note Owen Clarke can demo offline.
+
+Under section one point six, Nadia Haddad expects application claims to carry owners and dates.
+
+Section one point six treats the opening case what as testable only when evidence and ticket IDs are recorded.
+
+For section one point six, Riverside Food Network will not accept application work without a written trail.
 
 ### Worked example
 
@@ -111,25 +141,59 @@ You will (1) confirm permission before checking or changing the website; (2) set
 
 Owen is employed by the charity, but changes to the website still need the director's agreement, recorded in an email that names what he will check and change. The website host's terms also say what customers may test. Owen checks only the charity's own site and accounts; he does not probe the host's systems or other sites.
 
+Section two point one develops scope permission and safe practice with a Riverside Food Network note Owen Clarke can demo offline.
+
+Under section two point one, Nadia Haddad expects scope claims to carry owners and dates.
+
 ### 2.2 Scope
 
 The scope for the month: the donation website, its administrator accounts, its plugins and theme, and the charity's account with the website host. Out of scope: the payment provider's systems, which belong to the provider, and volunteers' personal devices.
+
+Section two point two develops scope permission and safe practice with a Riverside Food Network note Owen Clarke can demo offline.
+
+Under section two point two, Nadia Haddad expects scope claims to carry owners and dates.
+
+Section two point two treats permission scope safe practice as testable only when evidence and ticket IDs are recorded.
 
 ### 2.3 Safe practice
 
 Before any change, Owen takes a full backup and confirms it can be restored. He tests updates on a staging copy, a private copy of the site with donor data removed or replaced by synthetic records. He makes one change at a time and notes it in a simple change log.
 
+Section two point three develops scope permission and safe practice with a Riverside Food Network note Owen Clarke can demo offline.
+
+Under section two point three, Nadia Haddad expects scope claims to carry owners and dates.
+
 ### 2.4 Donor data
 
 The site stores donor names, emails and donation amounts; card details stay with the payment provider. Owen never copies donor data to his own devices and uses synthetic records for testing.
+
+Section two point four develops scope permission and safe practice with a Riverside Food Network note Owen Clarke can demo offline.
+
+Under section two point four, Nadia Haddad expects scope claims to carry owners and dates.
+
+Section two point four treats permission scope safe practice as testable only when evidence and ticket IDs are recorded.
 
 ### 2.5 Defensive only
 
 The course teaches checking and fixing, not attacking. Owen does not run tools that try to break into the site; he reviews versions, settings and logs.
 
+Section two point five develops scope permission and safe practice with a Riverside Food Network note Owen Clarke can demo offline.
+
+Under section two point five, Nadia Haddad expects scope claims to carry owners and dates.
+
+Section two point five treats permission scope safe practice as testable only when evidence and ticket IDs are recorded.
+
+For section two point five, Riverside Food Network will not accept scope work without a written trail.
+
 ### 2.6 When to ask for help
 
 If he sees signs that the site has already been misused, such as unknown administrator accounts, Owen stops, preserves evidence and contacts the host's support and Nadia.
+
+Section two point six develops scope permission and safe practice with a Riverside Food Network note Owen Clarke can demo offline.
+
+Under section two point six, Nadia Haddad expects scope claims to carry owners and dates.
+
+Section two point six treats permission scope safe practice as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -177,6 +241,10 @@ You will (1) list the website's components and versions; (2) check advisories, m
 
 Owen exports the plugin list from the site's administration page: name, version and whether each is active. He adds the theme, the platform version and the outside services the site calls: the payment provider and the newsletter service. This list is the charity's inventory, the base for every other check.
 
+Section three point one develops application and software supply chain with a Riverside Food Network note Owen Clarke can demo offline.
+
+Under section three point one, Nadia Haddad expects application claims to carry owners and dates.
+
 ### Lab — Lab — component review
 
 ```python
@@ -214,17 +282,35 @@ newsletter      5.1.3  ok
 
 donate-form 3.2.0 must be updated to 3.2.4, the version that fixes a published advisory. event-calendar 1.4.1 is flagged UNMAINTAINED: its last release was 1,606 days ago. photo-gallery 2.0.0 is flagged REMOVE because it is not in use. newsletter 5.1.3 is ok. Each flag leads to a different action: update, replace or remove.
 
+Section three point two develops application and software supply chain with a Riverside Food Network note Owen Clarke can demo offline.
+
+Under section three point two, Nadia Haddad expects application claims to carry owners and dates.
+
 ### 3.3 Why maintenance matters
 
 A component with no releases for years will not receive fixes for future flaws. Kula et al. (2018) found that outdated dependencies are common because updating takes effort; Zimmermann et al. (2019) showed that a few maintainers can affect very many users. Small sites benefit from choosing popular, actively maintained components.
+
+Section three point three develops application and software supply chain with a Riverside Food Network note Owen Clarke can demo offline.
+
+Under section three point three, Nadia Haddad expects application claims to carry owners and dates.
 
 ### 3.4 Data flows
 
 Donor details move from the donation form to the site's database, the card details go directly to the payment provider's page, and email addresses go to the newsletter service if the donor opts in. Each flow is a place to check: the form component, database access, the payment hand-off and the newsletter connection.
 
+Section three point four develops application and software supply chain with a Riverside Food Network note Owen Clarke can demo offline.
+
+Under section three point four, Nadia Haddad expects application claims to carry owners and dates.
+
 ### 3.5 Deciding
 
 Update donate-form now (it handles donor data and has an advisory). Replace event-calendar with a maintained alternative within the month. Remove photo-gallery after confirming nobody needs it. Keep newsletter and turn on automatic security updates where the host supports them.
+
+Section three point five develops application and software supply chain with a Riverside Food Network note Owen Clarke can demo offline.
+
+Under section three point five, Nadia Haddad expects application claims to carry owners and dates.
+
+Section three point five treats listing components lab result as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
@@ -271,6 +357,12 @@ You will (1) prepare a safe update with a pre-release checklist; (2) verify down
 
 Owen prepares the donate-form update to 3.2.4. He downloads it from the plugin's official page, compares its SHA-256 hash with the one published by the vendor, takes a backup and tests it on staging with synthetic donations.
 
+Section four point one develops application and software supply chain with a Riverside Food Network note Owen Clarke can demo offline.
+
+Under section four point one, Nadia Haddad expects application claims to carry owners and dates.
+
+Section four point one treats the update lab result as testable only when evidence and ticket IDs are recorded.
+
 ### Lab — Lab — release checklist
 
 ```python
@@ -306,17 +398,37 @@ NOT READY: admin accounts use MFA
 
 Four items pass: official source used, hash matches vendor, backup taken and tested on staging copy. One fails: admin accounts use MFA, because one volunteer administrator has not finished setting up multi-factor sign-in. The lab prints NOT READY: admin accounts use MFA. Owen holds the release until the volunteer completes setup the next morning, then reruns the checklist and releases.
 
+Section four point two develops application and software supply chain with a Riverside Food Network note Owen Clarke can demo offline.
+
+Under section four point two, Nadia Haddad expects application claims to carry owners and dates.
+
 ### 4.3 Why a checklist
 
 A checklist makes sure nothing is skipped under time pressure. Each item links to an earlier lesson: sources and hashes protect integrity, backups and staging protect availability, multi-factor sign-in protects the administrator accounts that could change everything else. SLSA v1.0 and Sigstore (Newman et al., 2022) show how larger projects automate similar integrity checks.
+
+Section four point three develops application and software supply chain with a Riverside Food Network note Owen Clarke can demo offline.
+
+Under section four point three, Nadia Haddad expects application claims to carry owners and dates.
 
 ### 4.4 Routines
 
 Weekly: check for plugin updates and apply security updates after staging. Monthly: review the component list and administrator accounts. Yearly: review maintenance of each component and the restore test. All are noted in the change log.
 
+Section four point four develops application and software supply chain with a Riverside Food Network note Owen Clarke can demo offline.
+
+Under section four point four, Nadia Haddad expects application claims to carry owners and dates.
+
+Section four point four treats the update lab result as testable only when evidence and ticket IDs are recorded.
+
 ### 4.5 Putting it together
 
 By the end of the month: multi-factor sign-in for all administrators, a component inventory, donate-form updated, event-calendar replaced, photo-gallery removed, automatic security updates on, and written routines.
+
+Section four point five develops application and software supply chain with a Riverside Food Network note Owen Clarke can demo offline.
+
+Under section four point five, Nadia Haddad expects application claims to carry owners and dates.
+
+Section four point five treats the update lab result as testable only when evidence and ticket IDs are recorded.
 
 ### Worked example
 
