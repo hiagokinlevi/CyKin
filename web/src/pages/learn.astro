@@ -121,6 +121,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       } catch (error) { if (id === requestId) { $('status').textContent = String(error); $('reader-intro').textContent = 'Leia o curso diretamente no GitHub enquanto o serviço é restabelecido.'; } }
     }
     async function renderMarkdown(target: HTMLElement, markdown: string, sourceUrl: string) {
+      for (const old of target.querySelectorAll<HTMLImageElement>('img[data-mermaid-url]')) URL.revokeObjectURL(old.dataset.mermaidUrl!);
       const html = await marked.parse(markdown, { gfm: true });
       target.innerHTML = DOMPurify.sanitize(html, { ADD_TAGS: ['input'], ADD_ATTR: ['class', 'id'] });
       const fileBase = sourceUrl.split('#')[0];
@@ -139,11 +140,28 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       const diagrams = target.querySelectorAll<HTMLElement>('pre code.language-mermaid');
       if (diagrams.length) {
       const mermaid = (await import('mermaid')).default;
-      mermaid.initialize({ startOnLoad: false, securityLevel: 'strict', theme: document.documentElement.dataset.theme === 'light' ? 'default' : 'dark' });
+      mermaid.initialize({ startOnLoad: false, securityLevel: 'strict', flowchart: { htmlLabels: false }, theme: document.documentElement.dataset.theme === 'light' ? 'default' : 'dark' });
       for (const block of diagrams) {
         const parent = block.parentElement!; const code = block.textContent || '';
-        const container = document.createElement('div'); container.className = 'diagram';
-        try { const rendered = await mermaid.render('mermaid-' + Math.random().toString(36).slice(2), code); container.innerHTML = DOMPurify.sanitize(rendered.svg, { USE_PROFILES: { svg: true, svgFilters: true } }); parent.replaceWith(container); }
+        const container = document.createElement('figure'); container.className = 'diagram';
+        try {
+          const rendered = await mermaid.render('mermaid-' + Math.random().toString(36).slice(2), code);
+          // SVG-as-image keeps Mermaid's foreignObject labels visible while the
+          // browser treats the document as inert, isolated image content.
+          const url = URL.createObjectURL(new Blob([rendered.svg], { type: 'image/svg+xml' }));
+          const viewport = document.createElement('div'); viewport.className = 'diagram-viewport';
+          const picture = document.createElement('img'); picture.src = url; picture.dataset.mermaidUrl = url; picture.alt = 'Technical diagram from this lesson';
+          picture.addEventListener('load', () => {
+            const ratio = picture.naturalWidth / picture.naturalHeight;
+            if (ratio > 5) picture.classList.add('diagram-wide');
+            if (ratio < .5) picture.classList.add('diagram-tall');
+          }, { once: true });
+          viewport.append(picture);
+          const full = document.createElement('a'); full.href = url; full.target = '_blank'; full.rel = 'noopener noreferrer'; full.textContent = 'Open full diagram ↗';
+          const source = document.createElement('details'); const summary = document.createElement('summary'); summary.textContent = 'View diagram source';
+          const raw = document.createElement('pre'); raw.textContent = code; source.append(summary, raw);
+          container.append(viewport, full, source); parent.replaceWith(container);
+        }
         catch { /* Keep the original source when a diagram is invalid. */ }
       }
       }
@@ -234,7 +252,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </script>
 </BaseLayout>
 
-<style>
+<style is:global>
   .learn-heading { padding: 72px 0 28px; background: radial-gradient(circle at 80% 15%, rgba(65,121,246,.18), transparent 42%), var(--bg-2); border-bottom: 1px solid var(--line); }
   .learn-heading h1 { font-size: clamp(2.25rem,4.5vw,4.4rem); margin-bottom: 12px; }.learn-heading p { max-width: 760px; color: var(--muted); }
   .study-controls { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; padding: 18px; margin-top: 25px; box-shadow: none; }
@@ -245,7 +263,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .lesson-list { border-top: 1px solid var(--line); }.lesson-list-title { padding: 15px 20px 7px; font-weight: 800; font-size: .75rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
   .reader { min-height: 560px; padding: clamp(26px,4vw,52px); }.reader-kicker { color: var(--gold); font-weight: 800; font-size: .74rem; letter-spacing: .13em; }.reader h2 { font-size: clamp(1.8rem,3vw,2.7rem); margin: 8px 0 12px; }.reader-intro { color: var(--muted); }.source-bar { border-bottom: 1px solid var(--line); padding: 8px 0 18px; margin-bottom: 24px; color: var(--gold); font-size: .82rem; font-weight: 800; }
   .empty-state { padding: 110px 20px; text-align: center; }.empty-state h2 { font-size: 1.7rem; }.empty-state p { color: var(--muted); max-width: 460px; margin: auto; }.empty-symbol { color: var(--gold); font-size: 3rem; }
-  .prose { color: var(--text); overflow-wrap: anywhere; line-height: 1.75; }.prose :global(h2) { margin-top: 2.2rem; font-size: 1.6rem; }.prose :global(h3) { margin-top: 1.8rem; font-size: 1.25rem; }.prose :global(a) { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }.prose :global(pre) { background: #071a3b; color: #e9f1ff; padding: 17px; border: 1px solid var(--line); border-radius: 13px; overflow-x: auto; }.prose :global(code) { background: var(--surface-2); padding: 2px 4px; border-radius: 4px; }.prose :global(pre code) { background: none; padding: 0; }.prose :global(blockquote) { margin-inline: 0; border-left: 3px solid var(--gold); padding-left: 18px; color: var(--muted); }.prose :global(table) { display: block; overflow-x: auto; border-collapse: collapse; max-width: 100%; }.prose :global(th),.prose :global(td) { border: 1px solid var(--line); padding: 8px 11px; text-align: left; }.prose :global(img),.prose :global(.diagram svg) { max-width: 100%; height: auto; }.prose :global(.diagram) { overflow-x: auto; padding: 12px; background: var(--bg-2); border-radius: 12px; }
+  .prose { color: var(--text); overflow-wrap: anywhere; line-height: 1.75; }.prose h2 { margin-top: 2.2rem; font-size: 1.6rem; }.prose h3 { margin-top: 1.8rem; font-size: 1.25rem; }.prose a { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }.prose pre { background: #071a3b; color: #e9f1ff; padding: 17px; border: 1px solid var(--line); border-radius: 13px; overflow-x: auto; }.prose code { background: var(--surface-2); padding: 2px 4px; border-radius: 4px; }.prose pre code { background: none; padding: 0; }.prose blockquote { margin-inline: 0; border-left: 3px solid var(--gold); padding-left: 18px; color: var(--muted); }.prose table { display: block; overflow-x: auto; border-collapse: collapse; max-width: 100%; }.prose th,.prose td { border: 1px solid var(--line); padding: 8px 11px; text-align: left; }.prose img { max-width: 100%; height: auto; }.prose .diagram { margin: 1.3rem 0; padding: 12px; background: var(--bg-2); border-radius: 12px; }.diagram-viewport { max-height: min(75vh, 760px); overflow: auto; }.diagram-viewport img { display: block; width: 100%; max-width: none; height: auto; margin: 0 auto; }.diagram-viewport img.diagram-tall { width: min(100%, 520px); }.diagram-viewport img.diagram-wide { width: 1800px; }.prose .diagram>a { display: inline-block; margin: 9px 0; font-size: .82rem; }.prose .diagram summary { cursor: pointer; color: var(--gold); font-size: .82rem; }.prose .diagram pre { margin: 12px 0 0; }
   .answer-section { margin-top: 32px; padding: 18px; background: var(--bg-2); border: 1px solid var(--line); border-radius: 14px; }.answer-section summary { font-weight: 800; cursor: pointer; color: var(--gold); }.answer-section .prose { margin-top: 18px; }.lesson-nav { display: flex; gap: 10px; justify-content: space-between; margin-top: 34px; border-top: 1px solid var(--line); padding-top: 24px; }.lesson-nav button:disabled { opacity: .4; cursor: not-allowed; }
   .progress-tools { margin-top: 32px; padding: 20px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface-2); }.progress-tools h3 { margin: 7px 0; font-size: 1.25rem; }.progress-tools p { color: var(--muted); font-size: .87rem; }.progress-tools .button { margin: 8px 0; }.exercise-form { display: grid; gap: 8px; margin-top: 15px; border-top: 1px solid var(--line); padding-top: 15px; }.exercise-form label { font-weight: 800; font-size: .85rem; }.exercise-form textarea { resize: vertical; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: 10px; padding: 11px; font: inherit; }.exercise-form button { justify-self: start; }
   @media (max-width: 980px) { .workspace { grid-template-columns: 300px minmax(0,1fr); }.study-controls { grid-template-columns: repeat(2,1fr); } }

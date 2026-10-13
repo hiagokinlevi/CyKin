@@ -30,9 +30,20 @@ npm run build
 uv run pytest -q
 uv run pywrangler deploy
 
-curl --fail --show-error --silent https://cykin.org/api/health
-curl --fail --show-error --silent https://cykin.org/ | grep -q 'CyKin'
-curl --fail --show-error --silent \
+curl_options=()
+if ! curl --fail --silent --output /dev/null https://cykin.org/api/health; then
+  # A newly created custom domain can be visible at Cloudflare while this
+  # computer still has a cached negative DNS answer. Verify through public DNS.
+  public_ip="$(dig @1.1.1.1 +short A cykin.org | head -n 1)"
+  if [[ -z "$public_ip" ]]; then
+    echo 'The public CyKin domain does not resolve.' >&2
+    exit 1
+  fi
+  curl_options=(--resolve "cykin.org:443:$public_ip")
+fi
+curl --fail --show-error --silent "${curl_options[@]}" https://cykin.org/api/health
+curl --fail --show-error --silent "${curl_options[@]}" https://cykin.org/ | grep -q 'CyKin'
+curl --fail --show-error --silent "${curl_options[@]}" \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json, text/event-stream' \
   --data '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{}}' \
