@@ -3493,25 +3493,37 @@ You will (1) build and test the capstone system; (2) measure against success cri
 
 Kwame builds the verifier in a memory-safe language using standard libraries where possible, with its own CI, signing and provenance, so it meets the same rules it enforces.
 
+A verifier that skipped the controls it checks would be an obvious weak point: an attacker who altered the verifier could make every mismatch look clean. Building it through the same pipeline means its own releases are signed, have provenance and pass the dependency gate. Using standard libraries keeps its dependency graph small, which reduces the chance that a third-party package undermines it.
+
 ### 46.2 Testing
 
 The test set of 20 synthetic releases includes 5 mismatches: altered file, missing signature, wrong builder, unreviewed commit and an extra file. All 5 are detected; no false alerts on the 15 good releases.
+
+Each mismatch type tests a different check: digest comparison, signature verification, builder policy, review status and file listing. Detecting all five shows every check works, and the absence of false alerts on good releases shows the checks are not over-sensitive. The test set is stored with the code and run on every change.
 
 ### 46.3 Timing
 
 Each release is checked in a median of 7 minutes after detection; the slowest takes 22 minutes, within the one-hour target.
 
+Reporting the median and the slowest case together shows both typical behaviour and the margin against the target. Most of the time is spent waiting for store metadata rather than computing. A slowest case of twenty-two minutes leaves plenty of room under the hour, even if store responses slow down. Kwame records the timing of every check, so a gradual slowdown is visible long before it threatens the target.
+
 ### 46.4 Unexpected problem
 
 App store metadata sometimes lags; the verifier now retries for up to 45 minutes before alerting "not yet available" rather than "mismatch".
+
+Reporting a mismatch when the data simply has not arrived would produce false alerts, which the success measures limit to fewer than one a month. The new status separates two situations that need different responses. If metadata is still missing after the retry window, the alert says so plainly, and on-call checks the store rather than starting a tampering investigation. Kwame adds this case to the test set, using a synthetic release whose metadata appears late.
 
 ### 46.5 Documentation
 
 Operations guide, architecture notes, runbook for alerts and a test report.
 
+Each document serves a different reader. The operations guide explains how to run and update the service. The architecture notes record design choices and their reasons. The runbook tells on-call engineers what each alert means and what to do first. The test report gives evidence that the success measures were met. All four are kept in the repository and reviewed with code changes, so they stay accurate after Kwame leaves.
+
 ### 46.6 Handover readiness
 
 Coastline's platform team reviews the code and runs it in staging for two weeks.
+
+Running in staging lets the platform team see the verifier under realistic conditions before relying on it. During the two weeks, its engineers handle any alerts themselves, with Kwame available to explain. Their code review checks that they can understand and change the service without him. Any issues found are fixed before the service moves to production, and the team signs off only when it is confident it can operate the verifier alone. That sign-off is the readiness test.
 
 ### Code quality
 
@@ -3557,25 +3569,37 @@ You will (1) plan a controlled failure trial of the pipeline and verifier; (2) o
 
 With approval, Coastline runs a planned trial in staging: a synthetic tampered artifact is placed on the mirror, and the signing service is made unavailable for two hours.
 
+The two failures test different properties. The tampered artifact tests integrity controls: would anything bad reach a server? The signing outage tests failing closed and recovery: do builds stop safely, and do they resume cleanly? Approval names the trial lead, the time window and the systems involved, and only staging is touched.
+
 ### 47.2 Expectations
 
 The deployment should refuse the tampered artifact; the verifier should alert; builds should wait during the signing outage and resume afterwards.
+
+Writing expectations before the trial turns it into a test rather than a demonstration. Each expectation can be observed and timed, so the result is clearly pass or fail. If something unexpected happens, the gap between expectation and observation is the lesson. Expectations come from the requirements and the control design, so the trial also checks that the design was implemented as intended.
 
 ### 47.3 Observations
 
 The tampered artifact is refused within seconds and the alert reaches on-call in 3 minutes. During the signing outage, builds queue as designed, but one team, unaware of the trial, tries to bypass signing with a manual flag; the policy blocks it.
 
+The alert time comes from the moment the artifact was placed, not when someone noticed. Refusal in seconds shows the digest check ran before any installation step. The blocked manual flag is the surprise: the trial was not meant to test it, yet it showed that a bypass still existed in the configuration and that the policy caught its use. Observations are logged with timestamps by an observer who has no other role.
+
 ### 47.4 Recovery
 
 After the outage, queued builds complete within 25 minutes. The mirror is cleaned and its digests rechecked.
+
+Twenty-five minutes reflects the backlog of builds that piled up during two hours, processed with normal capacity. Rechecking every digest on the mirror confirms that only the synthetic artifact was affected and that cleaning it left nothing behind. Recovery counts as finished only when the system is back to a verified state, not when builds simply restart. The team also checks that no build skipped signing during the outage by comparing the build log with the transparency log.
 
 ### 47.5 Lessons
 
 Communication: teams need notice of trials and a status page during outages. The manual flag is removed entirely.
 
+The team that tried the manual flag was acting reasonably with the information it had: builds were stuck and nobody had said why. Telling all teams in advance and showing outages on a status page would have prevented the attempt. Removing the flag altogether means no one can try it in future, whether during a trial or a real outage. The emergency path described in earlier chapters, with named approval, remains the only route for urgent fixes.
+
 ### 47.6 Measuring
 
 Time to detect: 3 minutes; time to recover: 25 minutes after service return.
+
+These two numbers give the yearly trial a baseline. If detection takes longer next year, the team will look at alert routing; if recovery takes longer, at build capacity or queue handling. Measuring recovery from service return separates Coastline's response from the length of the outage, which Coastline did not control. Both figures are added to the evidence dossier, with the trial date beside them, so next year's result can be compared directly.
 
 ### Safety of the trial
 
@@ -3625,25 +3649,37 @@ You will (1) assemble evidence that the system meets its requirements; (2) organ
 
 The dossier shows assessors and Coastline that the capstone and the pipeline controls meet their requirements.
 
+Assessors need to judge the capstone against academic criteria, while Coastline needs confidence to operate the verifier and rely on the controls around it. One dossier serves both, because both need the same thing: each claim backed by evidence that someone else can check. Without the dossier, the evidence would be spread across repositories, reports and emails, and nobody could easily confirm that everything had been tested.
+
 ### 48.2 Structure
 
 For each requirement: statement, implementation, verification method, evidence links and status. Sections cover the verifier, the pipeline controls it relies on and the operational procedures.
+
+Repeating the same fields for every requirement makes the dossier easy to scan and makes missing evidence obvious. The verification method says how the requirement was checked; the evidence links lead straight to the results. Grouping by system part follows how operators think about the service. A status of met, partly met or not met is chosen from evidence, never from intent.
 
 ### 48.3 Evidence types
 
 Test reports (chapter 46), design review records (45), failure trial results (47), validation reports (38) and metrics (29).
 
+Different kinds of evidence answer different questions. Tests show the verifier behaves correctly in controlled cases; review records show the design was challenged and improved; the trial shows behaviour under failure; validation reports show the controls hold on running systems; metrics show performance over time. Together they give a fuller picture than any one type could, and an assessor can follow whichever kind best answers their question. Each item carries a date, so readers can tell how recent it is.
+
 ### 48.4 Gaps
 
 Two requirements are partly met: monthly reports exist but are not yet reviewed by management; alert response is tested in staging only. Both are stated with plans.
+
+Stating gaps openly makes the rest of the dossier more credible, because readers can see the author is not hiding weaknesses. Each gap has an owner and a date, which turns it from an admission into a plan. Management review of the reports is scheduled for the next quarter; a production test of alert response needs an agreed window with operations.
 
 ### 48.5 Usability
 
 The dossier begins with a one-page summary table.
 
+The table lists each requirement with its status and a link to the detail, so a reader can see the overall picture in a minute and go deeper where they need to. Assessors usually sample a few requirements; the summary helps them choose. Operators use it to find the parts that matter to them. Partly met items are marked clearly in the table rather than buried in the detail. The table is generated from the detailed entries, so it cannot drift from them, and it shows the date of the last update at the top.
+
 ### 48.6 Maintenance
 
 The dossier is versioned; after handover, the platform team updates it.
+
+A dossier that stops being updated becomes misleading, since the system and its evidence change over time. Versioning lets readers see what changed and when. The platform team adds new test results, trial outcomes and validation reports as they arrive, and closes the two gaps when their plans are complete. A yearly review checks that every link still works and every status is still accurate, and the dossier is included in the material for Coastline's annual security review.
 
 ### Audience needs
 
@@ -3693,25 +3729,37 @@ You will (1) write an engineering thesis on the capstone; (2) connect design, im
 
 Introduction (problem and need), background (supply chain, SLSA, SSDF, Sigstore, in-toto, reproducible builds), requirements, design, implementation, verification, trial, discussion, conclusion.
 
+The structure follows the engineering work in the order it happened, which helps readers see how each choice led to the next. The background gives readers who do not know supply-chain security enough context to follow the design. Verification and trial chapters present evidence, and the discussion interprets it. Each chapter ends with a link to the next, so the argument reads as one piece. Kwame writes the conclusion last, after the discussion is settled, so it states only what the evidence supports.
+
 ### 49.2 Literature connections
 
 The thesis positions the verifier as a consumer-side check complementary to producer-side controls described in SLSA v1.0 and the SSDF, and relates its use of signing and transparency logs to Newman et al. (2022). It cites Ladisa et al. (2023) to show which attack classes the verifier addresses (distribution-stage tampering) and which it does not (malicious source commits by authorised maintainers).
+
+Naming what the verifier does not address is as important as naming what it does. A reader who assumed the verifier covered malicious commits would trust it for the wrong job. Mapping it onto a published taxonomy lets others compare it with their own controls.
 
 ### 49.3 Discussion
 
 The verifier detects mismatches between built and published apps quickly, but relies on trustworthy build records; reproducible builds would add an independent check.
 
+This dependency on build records is the verifier's main weakness. If the CI provider or build step were compromised, the records would describe the compromised build as legitimate, and the verifier would confirm a match. Reproducible builds would allow a second builder to produce the same output independently, so a mismatch between builders would reveal tampering in one of them. The discussion explains this honestly instead of presenting the verifier as a complete answer.
+
 ### 49.4 Limitations
 
 One organisation, synthetic mismatches, short operating period.
+
+Each limit restricts how far the results can be generalised. One organisation means other transit agencies or app stores might behave differently. Synthetic mismatches test the known types well but may not represent real attacks, which are designed to be hard to detect. A short operating period does not show how the verifier behaves over months of store changes and updates. Kwame explains how each limit affects his conclusions, and which future work would address it.
 
 ### 49.5 Future work
 
 Reproducible mobile builds; sharing verification results among transit agencies.
 
+Each item follows from a limitation. Reproducible mobile builds would address the dependence on trustworthy build records. Sharing results among agencies that use the same app vendor would test the approach in other organisations and could detect a problem affecting many of them at once, building on the external reviewer's suggestion. Kwame describes what each would need, so others can pick them up, including the data each would need and who might provide it.
+
 ### 49.6 Academic standards
 
 Citations are checked against sources; all case data are synthetic or approved.
+
+Checking citations means reading the source to confirm it says what the thesis claims, not copying references from other papers. Kwame finds one case where he had cited a paper for a broader claim than it makes, and he narrows his sentence. Case data are synthetic or approved by Coastline, and the thesis states this clearly, so readers know no confidential details are disclosed. The tutor checks the reference list and the data statement before submission, and any figures from Coastline are confirmed by Ingrid.
 
 ### Writing process
 
@@ -3761,25 +3809,37 @@ You will (1) present and defend the capstone and thesis; (2) answer technical an
 
 Twenty-five minutes: the original incidents, requirements, design, results, trial, limits and future work.
 
+Starting with the original incidents reminds examiners why the work matters. The middle part moves quickly through requirements and design to the results, where most attention belongs. Limits and future work come before questions, so examiners see that Kwame knows what the verifier cannot do. He leaves time for questions rather than filling every minute with slides. A single results slide shows the five detected mismatches and timings.
+
 ### 50.2 Technical questions
 
 "What if an attacker compromises your CI provider?" Kwame explains that provenance would then be untrustworthy and reproducible builds or a second independent builder would be needed. "Why not verify every file on riders' phones?" He explains privacy and battery costs, and that store-level checks catch tampering before installation.
+
+Both answers show he understands the boundaries of his design. The first admits a real weakness and names a remedy instead of defending the design at all costs. The second explains a choice in terms of riders' interests, privacy and battery life, and shows that the chosen check sits at a point where it still catches the threat. Examiners look for this kind of reasoning more than for perfect designs.
 
 ### 50.3 Ethical questions
 
 "Could the verifier's data reveal riders?" No: it handles only app releases, not rider data.
 
+Kwame explains the answer further: the verifier reads release files and build records from the store and Coastline's systems, and it never touches riders' phones or accounts. Logs record releases and check results only. He adds that the verifier could still affect riders indirectly, for example if a false alert delayed a needed security update, which is why the false alert rate was a success measure. Examiners also ask about disclosure, and he describes how a real mismatch would be reported through Coastline's incident process.
+
 ### 50.4 Reflection
 
 From calculus models of exposure to a deployed verifier, Kwame sees supply-chain security as an engineering discipline of requirements, design, measurement and verification.
+
+Looking back, he notices how the first-year incidents shaped every later step. The template advisory led to SBOMs and advisory checks; the mirror mismatch led to digests, signing and provenance. Mathematics and physics courses that once seemed distant gave him ways to model exposure and reason about corruption. He ends with the view that controls are only as good as the evidence that they work.
 
 ### 50.5 Development
 
 He plans a professional certification and joins an open-source supply-chain security working group.
 
+A certification gives a structured way to keep his knowledge current and shows employers what he knows. The working group connects him with engineers who face similar problems in other organisations and lets him contribute to shared tools and standards. He also plans to keep reading new research, since attack classes and defences change quickly. Ingrid agrees to remain an informal mentor, meeting him monthly to review his goals.
+
 ### 50.6 Thanks
 
 Ingrid and the Coastline team receive the final dossier and verifier.
+
+The handover is a way of saying thanks in practice, since the work stays with the organisation that supported it. Kwame also thanks his tutor, the reviewers and his classmates who played examiners. He notes in his thesis acknowledgements that the external reviewer's suggestion changed his future work. Coastline's leadership thanks the platform team for hosting him, and the verifier is listed as a team project in the next annual security review, with Kwame named as its original author.
 
 ### Preparing the defense
 
