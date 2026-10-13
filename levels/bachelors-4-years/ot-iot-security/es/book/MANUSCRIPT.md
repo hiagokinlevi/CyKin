@@ -28,7 +28,7 @@ NIST [SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final); [serie I
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](../../en/book/MANUSCRIPT.md#ch-31) · [32](../../en/book/MANUSCRIPT.md#ch-32) · [33](../../en/book/MANUSCRIPT.md#ch-33) · [34](../../en/book/MANUSCRIPT.md#ch-34) · [35](../../en/book/MANUSCRIPT.md#ch-35) · [36](../../en/book/MANUSCRIPT.md#ch-36) · [37](../../en/book/MANUSCRIPT.md#ch-37) · [38](../../en/book/MANUSCRIPT.md#ch-38) · [39](../../en/book/MANUSCRIPT.md#ch-39) · [40](../../en/book/MANUSCRIPT.md#ch-40) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) |
 
 [Resultados resueltos](#worked-results) · [Referencias](#references)
 
@@ -1769,7 +1769,536 @@ Las evaluaciones frente a una base de referencia son útiles cuando se comunican
 
 ### Siga estudiando — capítulo 30 de 40
 
-[← Capítulo 29 (borrador)](#ch-29) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 31 (borrador) →](../../en/book/MANUSCRIPT.md#ch-31)
+[← Capítulo 29 (borrador)](#ch-29) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 31 (borrador) →](#ch-31)
+
+<a id="ch-31"></a>
+
+## Capítulo 31 — Seguridad de TO, IoT y sistemas ciberfísicos: casos avanzados
+
+### Resultados de aprendizaje
+
+Usted podrá (1) analizar un marco modular de ataque a ICS a partir de un aviso de CISA; (2) distinguir la capacidad del uso observado; (3) derivar oportunidades de detección del comportamiento documentado; y (4) comparar un aviso centrado en capacidades con un informe de incidente.
+
+### 31.1 Herramientas dirigidas a dispositivos ICS/SCADA
+
+CISA, junto con agencias asociadas, publicó en abril de 2022 el aviso AA22-103A, que advertía de que actores de amenazas persistentes avanzadas habían desarrollado herramientas a medida capaces de buscar, comprometer y controlar determinados PLC de Schneider Electric, PLC OMRON Sysmac NEX y servidores OPC UA una vez que tenían acceso a la red de TO. El mismo aviso describe una herramienta que explotaba un controlador de software vulnerable de placas base ASRock para comprometer estaciones de ingeniería basadas en Windows. El aviso nombra familias de productos y herramientas, no víctimas, y eso condiciona cómo debe leerlo LDHP.
+
+### 31.2 Capacidad no es incidente
+
+A diferencia de la alerta de Ucrania de 2015, AA22-103A no describe una interrupción en una víctima con nombre. Describe una capacidad. La respuesta adecuada es la preparación: inventariar las familias de productos afectadas, restringir los protocolos de ingeniería a las estaciones de ingeniería, supervisar las conexiones inesperadas y proteger los controladores de software de las estaciones de trabajo. Entre las mitigaciones del aviso figuran aislar las redes de ICS, exigir autenticación multifactor para el acceso remoto y vigilar la presencia de controladores de software inusuales.
+
+La lectura de Maya para LDHP: no se usa ninguna de las familias de productos nombradas, pero el servidor OPC UA de HIST-1 y los controladores de software de EWS-1 son las exposiciones genéricas que describe el aviso.
+
+### 31.3 Del comportamiento a la detección
+
+El comportamiento documentado sugiere detecciones concretas: un equipo nuevo que habla el protocolo de ingeniería de un fabricante de PLC; la carga o descarga de programas fuera de una ventana de cambios (ATT&CK for ICS T0843 *Program Download*); sesiones OPC UA desde equipos distintos de los clientes conocidos; la carga en una estación de trabajo de un controlador de software firmado del que se sabe que es vulnerable. Maya añadió dos de ellas a la supervisión de LDHP: las sesiones OPC UA con HIST-1 desde clientes no aprobados y los eventos de carga de controladores de software en EWS-1, que ahora figuran en la lista de reenvío de registros de la estación. La tercera, la descarga de programas en PLC-H fuera de una ventana de cambios, encaja en el monitor pasivo existente en el conmutador de control, que ya alerta de las descargas de firmware; ampliarlo a las descargas de lógica solo necesita como entrada el calendario de ventanas de cambios.
+
+### 31.4 Comparar tipos de casos
+
+Los informes de incidentes enseñan lo que ocurrió con restricciones reales; los avisos de capacidad enseñan lo que podría ocurrir a continuación. Ambos son necesarios, y ninguno sustituye a su propio inventario. La tabla de casos de Maya del capítulo 20 usaba informes de incidentes: la planta de agua de 2021 y Mirai, cada uno con un equivalente en LDHP. AA22-103A añade una entrada de otro tipo, porque LDHP no usa ninguno de sus productos nombrados. Su respuesta, dos detecciones nuevas para HIST-1 y EWS-1, surgió del inventario y no de la lista de productos del aviso. Una planta que solo hubiera comprobado la lista de productos habría concluido que no había nada que hacer.
+
+### Ejemplo resuelto (LDHP sintética)
+
+LDHP no usa ninguna de las familias de productos nombradas en AA22-103A. Maya no se detiene ahí: señala que el servidor OPC UA de HIST-1 es una exposición genérica, añade a la supervisión «sesiones OPC UA desde clientes no aprobados» y añade «eventos de carga de controladores de software en EWS-1» a la lista de reenvío de registros de la estación de trabajo.
+
+> **Caso sintético — Lakeside District Heating Plant.** La combinación de productos de LDHP es inventada; AA22-103A es un aviso real.
+
+### Errores y límites
+
+Los avisos son instantáneas; compruebe si hay actualizaciones. No descargue ni ejecute las herramientas nombradas en los avisos fuera de un entorno de investigación autorizado y aislado.
+
+### Ejercicios — capítulo 31
+
+- **EX091 — Alcance del aviso.** Nombre las dos familias de fabricantes de PLC y el tipo de servidor enumerados en AA22-103A. *Rúbrica:* 3 = Schneider Electric, OMRON (Sysmac NEX), servidores OPC UA; 2 = dos; 1 = uno; 0 = nada.
+- **EX092 — Una detección a partir de T0843.** Escriba una idea de regla de detección basada en el comportamiento de descarga de programas. *Rúbrica:* 3 = alertar de una descarga de programa en un PLC fuera de una ventana de cambios aprobada o desde un equipo que no sea de ingeniería; 2 = parcial; 1 = «supervisar los PLC»; 0 = nada.
+- **EX093 — No afectados, pero actuando.** ¿Por qué actuar ante un aviso que nombra productos que usted no tiene? *Rúbrica:* 3 = las técnicas se transfieren (OPC UA, controladores de software de las estaciones, protocolos de ingeniería); el inventario puede estar incompleto; 2 = uno; 1 = «por si acaso»; 0 = nada.
+
+### Síntesis del capítulo
+
+El análisis de casos avanzados significa leer los avisos buscando comportamientos, traducir los comportamientos en detecciones y negarse a concluir «no nos afecta» solo a partir de una lista de productos.
+
+### Siga estudiando — capítulo 31 de 40
+
+[← Capítulo 30 (borrador)](#ch-30) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 32 (borrador) →](#ch-32)
+
+<a id="ch-32"></a>
+
+## Capítulo 32 — Seguridad de TO, IoT y sistemas ciberfísicos: interfaces interdisciplinarias
+
+### Resultados de aprendizaje
+
+Usted podrá (1) explicar cómo se relaciona el trabajo de seguridad con la seguridad de procesos, las operaciones, las compras y el derecho; (2) escribir requisitos de seguridad para una especificación de compra; (3) participar en una revisión conjunta de seguridad funcional y ciberseguridad; y (4) comunicarse con profesionales ajenos a la seguridad usando sus propios términos.
+
+### 32.1 Ingenieros de seguridad funcional
+
+Los equipos de seguridad de procesos realizan estudios de peligros y operabilidad (HAZOP) y determinan los niveles de integridad de seguridad de las funciones instrumentadas de seguridad conforme a IEC 61511. Un ingeniero de ciberseguridad se une para preguntar, para cada peligro, si una causa cibernética podría iniciarlo o desactivar la capa de protección. El resultado es compartido: un registro de peligros que enumera las causas cibernéticas junto a los fallos de los equipos. La contribución de Maya al HAZOP de LDHP es el ejemplo de este capítulo: «punto de consigna manipulado mediante una escritura de red no autorizada», añadido como causa en el nodo de alta temperatura de impulsión, junto al fallo del controlador y a una válvula atascada en posición abierta.
+
+### 32.2 Compras
+
+El momento más barato para corregir la seguridad es antes de la compra. Una especificación puede exigir capacidades de IEC 62443-4-2 en un nivel de seguridad indicado, conformidad con ETSI EN 303 645 para dispositivos de tipo consumo, una SBOM, un proceso de divulgación de vulnerabilidades, un periodo de soporte definido y firmware firmado. Sin estas cláusulas, la planta hereda lo que el fabricante entregue. Para la próxima compra de contadores de LDHP, esas cláusulas habrían descartado MTR-C antes de la entrega: no tiene mecanismo de actualización, ni contacto de divulgación, ni comunicación segura, tres incumplimientos que ahora cuestan una sustitución en 12 meses.
+
+### 32.3 Operaciones y mantenimiento
+
+Los operadores juzgan cualquier cambio por su efecto en su turno. Presente los cambios de seguridad en sus términos: «este cambio en el cortafuegos significa que la pantalla de tendencias del historiador se actualiza cada 10 s en lugar de cada 2 s». Los técnicos de mantenimiento necesitan procedimientos que se ajusten a sus herramientas; exigir un portátil que no llevan consigo fracasa en silencio. En LDHP, el cambio de la lista de permitidos del capítulo 27 se presentaría al equipo de turno así: «HMI-1 sigue escribiendo los mismos puntos de consigna; el historiador ya no puede escribir nada; si se rechaza una escritura legítima, llamen al ingeniero de control, que puede verla en el registro del cortafuegos». Esa frase responde a la pregunta de los operadores, qué cambia esta noche, sin una sola palabra sobre códigos de función.
+
+### 32.4 Derecho y regulación
+
+Según la jurisdicción, la calefacción urbana puede estar regulada como infraestructura crítica con obligaciones de notificación de incidentes. El personal de seguridad debe conocer los plazos de notificación y quién notifica. Este libro ofrece orientación, no asesoramiento jurídico. Para un estudiante de seguridad en LDHP, el paso práctico es averiguar a través del responsable de cumplimiento de la propia planta qué régimen se aplica, qué cuenta como incidente notificable y quién lo notifica. En el ejercicio de mesa del capítulo 29, una escritura del punto de consigna desde la VLAN de oficina que cortó la calefacción durante cinco minutos bien podría alcanzar un umbral de notificación. Saberlo a las 02:18 cambia qué evidencia conserva el analista y a quién llama después el jefe de turno.
+
+### Ejemplo resuelto (LDHP sintética)
+
+En la revisión HAZOP de LDHP de «alta temperatura de impulsión», las causas existentes eran el fallo del controlador y la válvula atascada en posición abierta. Maya añade como causa «punto de consigna manipulado mediante una escritura de red no autorizada», con la salvaguarda existente del disparo por alta temperatura de SIS-H (transmisor independiente, cableado) y una salvaguarda adicional recomendada: los límites de punto de consigna de PLC-H (capítulo 24).
+
+> **Caso sintético — Lakeside District Heating Plant.** El nodo HAZOP y las recomendaciones son inventados.
+
+### Errores y límites
+
+Un ingeniero de ciberseguridad no está cualificado para cambiar las determinaciones de SIL; recomiende y deje que decida el equipo de seguridad funcional. Las cláusulas de compra necesitan verificarse en la entrega.
+
+### Ejercicios — capítulo 32
+
+- **EX094 — Tres cláusulas de compra.** Escriba tres cláusulas de seguridad para la próxima compra de pasarelas de contadores de LDHP. *Rúbrica:* 3 = tres cláusulas específicas y verificables; 2 = dos; 1 = «debe ser seguro»; 0 = nada.
+- **EX095 — Una causa cibernética en el HAZOP.** Para el nodo «bajo caudal de circulación», añada una causa cibernética y su salvaguarda. *Rúbrica:* 3 = causa cibernética plausible más salvaguarda independiente; 2 = solo la causa; 1 = fallo de un equipo; 0 = nada.
+- **EX096 — Explicar un cambio a los operadores.** Explique en términos de operador la aplicación de la lista de permitidos en HMI-1. *Rúbrica:* 3 = qué ven, qué hacer si algo se bloquea, a quién llamar; 2 = dos; 1 = jerga; 0 = nada.
+
+### Síntesis del capítulo
+
+La seguridad de TO tiene éxito a través de otras disciplinas: revisiones de seguridad funcional, cláusulas de compra, cambios centrados en los operadores y conocimiento de las obligaciones legales.
+
+### Siga estudiando — capítulo 32 de 40
+
+[← Capítulo 31 (borrador)](#ch-31) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 33 (borrador) →](#ch-33)
+
+<a id="ch-33"></a>
+
+## Capítulo 33 — Métodos de investigación II
+
+### Resultados de aprendizaje
+
+Usted podrá (1) diseñar un estudio de simulación replicable con hipótesis prerregistradas; (2) elegir tamaños muestrales para estimar proporciones; (3) comunicar tamaños del efecto e intervalos en lugar de solo la significación; y (4) escribir una sección de amenazas a la validez que un revisor acepte.
+
+### 33.1 Prerregistro
+
+Escribir las hipótesis, las medidas, el análisis y las reglas de parada antes de ejecutar el experimento impide ajustar el análisis al resultado. Para un estudio de detectores: «H1: la proporción de falsas alarmas de CUSUM en 300 ejecuciones tranquilas será menor que la de la banda; medida principal: ejecuciones con alguna falsa alarma; análisis: diferencia de proporciones con intervalo al 95 %». En el proyecto final de Maya, la regla de parada es el número fijo de semillas: 300 ejecuciones tranquilas y 300 con ataque, sin añadir ejecuciones adicionales si el primer resultado parece débil. Fijar la medida, ejecuciones con alguna falsa alarma, también le impide cambiar después a otra medida que resulte favorecer a CUSUM.
+
+### 33.2 Tamaño muestral para una proporción
+
+Para estimar una proporción cercana a p con un margen de error E al 95 %, n ≈ 1,96² p(1−p)/E². Para p = 0,2 y E = 0,05, n ≈ 246. Para afirmar una tasa inferior al 1 % cuando no se observa ninguna, la regla del tres necesita n ≈ 300. Las 300 semillas tranquilas de Maya se derivan de la segunda fórmula: con 0 falsas alarmas en 300 ejecuciones, la cota superior es de aproximadamente un 1 %, que es la afirmación que ella quiere poder hacer. Cuarenta ejecuciones, como en el capítulo 25, solo podrían respaldar alrededor de un 8,8 %. Sus 300 semillas con ataque por pendiente proceden de la primera fórmula, dimensionadas para que una proporción de detección cercana a 0,8 tenga un margen de unos 5 puntos.
+
+### 33.3 Tamaños del efecto
+
+«p < 0,05» dice poco sobre el tamaño. Comunique la diferencia: banda 22,5 % frente a CUSUM 0 % de ejecuciones con falsa alarma, diferencia de 22,5 puntos (con su intervalo calculado). Los lectores pueden entonces decidir si importa en la operación. Con los números del capítulo 25, la banda dio falsas alarmas en 9 de 40 ejecuciones tranquilas y CUSUM en 0 de 40. La diferencia, 22,5 puntos, importa a los operadores porque significa una alarma molesta aproximadamente en una de cada cuatro ejecuciones, frente a ninguna observada. Un valor p solo diría que es improbable que la diferencia se deba al azar, que es el dato menos interesante sobre ella. Un operador que decide si aceptar CUSUM en HMI-1 necesita el tamaño y las cotas de cada lado.
+
+### 33.4 Paquete de replicación
+
+Publique el código, las semillas, los parámetros, la versión de Python y el comando exacto. En este libro, los laboratorios incluyen su salida verificada para que el lector pueda comprobar que una nueva ejecución coincide. El paquete de replicación de Maya para el estudio de detectores contiene `lab_detect.py`, los rangos de semillas (0–39 tranquilas y 1000–1039 con ataque para la ejecución del capítulo 25; 0–299 y 1000–1299 previstas para el proyecto final), los valores de umbral y de holgura, la versión de Python y la línea de comandos. Cualquiera que lo vuelva a ejecutar debería obtener exactamente 9/40 y 0/40 ejecuciones con falsa alarma; un recuento distinto significa que algo del paquete está mal, no que el resultado sea incierto.
+
+### Ejemplo resuelto (LDHP sintética)
+
+El prerregistro del proyecto final de Maya fija: 300 semillas tranquilas y 300 con ataque, tres pendientes de ataque, umbral elegido en un conjunto de ajuste separado de 50 semillas y después congelado. Resultado principal: detección en 60 muestras. También enuncia qué resultado falsaría H1.
+
+> **Caso sintético — Lakeside District Heating Plant.** El plan corresponde a un estudio simulado.
+
+### 33.5 Resultados negativos
+
+Si CUSUM no supera a la banda con el umbral congelado, ese es un hallazgo publicable en una tesis de grado siempre que el método haya sido sólido. Comuníquelo con los mismos intervalos que habría usado para un resultado positivo y discuta qué hipótesis —modelo de ruido, pendiente del ataque o elección del umbral— lo explica con más probabilidad. Ocultar un resultado negativo y volver a ejecutar con nuevos ajustes hasta que algo «funcione» es la práctica que el prerregistro existe para impedir.
+
+El umbral congelado de Maya es lo que hace creíble un resultado así.
+
+### 33.6 El control de versiones como cuaderno de laboratorio
+
+Haga commit del archivo de prerregistro antes de la primera ejecución experimental, y haga commit de los resultados con el comando exacto que los produjo. El historial de commits muestra entonces el orden de las decisiones, que es lo que comprueba un examinador cuando un resultado parece sospechosamente limpio. Para Maya, el primer commit contiene el prerregistro con el diseño de 300 semillas y la regla del umbral congelado; a continuación viene el commit del ajuste, sobre las 50 semillas separadas; después, el commit de evaluación registra el comando y las salidas. Un examinador puede confirmar así que el umbral existía antes de ejecutar cualquier semilla de evaluación.
+
+### Errores y límites
+
+Los estudios de simulación se replican con facilidad, pero pueden no trasladarse a las plantas. Las comparaciones múltiples inflan los falsos descubrimientos; ajústelas o declare de antemano un resultado principal.
+
+### Ejercicios — capítulo 33
+
+- **EX097 — Tamaño muestral para un 10 % ± 3 %.** Calcule n para estimar una proporción cercana a 0,10 con ±0,03 al 95 %. *Rúbrica:* 3 ≈ 385; 2 = método; 1 = usa E = 3; 0 = nada.
+- **EX098 — ¿Por qué congelar los umbrales?** Explique por qué el umbral se ajusta con semillas separadas. *Rúbrica:* 3 = evita el sobreajuste a los datos de evaluación; estimación no sesgada; 2 = parcial; 1 = vago; 0 = nada.
+- **EX099 — Un resultado falsador.** Enuncie el resultado que falsaría H1. *Rúbrica:* 3 = proporción de falsas alarmas de CUSUM ≥ la de la banda (el intervalo incluye una diferencia cero o queda por debajo); 2 = parcial; 1 = «si CUSUM falla»; 0 = nada.
+
+### Síntesis del capítulo
+
+El rigor en la investigación aplicada de TO procede del prerregistro, de muestras adecuadas, de tamaños del efecto con intervalos y de paquetes de replicación completos.
+
+### Siga estudiando — capítulo 33 de 40
+
+[← Capítulo 32 (borrador)](#ch-32) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 34 (borrador) →](#ch-34)
+
+<a id="ch-34"></a>
+
+## Capítulo 34 — Proyecto comparativo
+
+### Resultados de aprendizaje
+
+Usted podrá (1) comparar dos arquitecturas de acceso remoto de proveedores frente a criterios explícitos; (2) construir una matriz de decisión ponderada y probar su sensibilidad; (3) documentar las hipótesis de cada opción; y (4) hacer una recomendación con su riesgo residual.
+
+### 34.1 Las dos opciones
+
+Opción A: VPN persistente desde el proveedor hasta un servidor de salto en la DMZ de LDHP, con MFA. Opción B: sesiones intermediadas bajo demanda: el jefe de turno habilita una sesión para una incidencia, el proveedor se conecta a través de un intermediario en la nube hasta el servidor de salto, la sesión se graba y termina al cabo de cuatro horas. Ambas evitan las conexiones directas con PLC-H. Estas dos opciones surgieron del punto de partida de LDHP, la herramienta de escritorio remoto del proveedor siempre activa. Ambas cierran esa ruta. La pregunta es cuál encaja en una planta que necesita la ayuda del proveedor por la noche.
+
+### 34.2 Criterios
+
+Exposición (cuánto tiempo existe una ruta), atribución (usuarios nominativos, grabación), encaje operativo (¿puede ayudar un proveedor a las 3 de la madrugada?), coste y dependencia de terceros. Los pesos reflejan las prioridades de LDHP: exposición 0,3, atribución 0,25, encaje operativo 0,25, coste 0,1, dependencia de terceros 0,1. Los pesos se fijaron antes de puntuar, en una reunión con el responsable de operaciones de LDHP, y por eso pueden cuestionarse sin acusar a quien puntúa de haberlos elegido para favorecer a su preferida. La exposición tiene el mayor peso porque tanto el caso del agua de 2021 como la propia herramienta siempre activa de LDHP dependían de cuánto tiempo permanecía abierta una ruta remota. El coste pesa poco porque la diferencia entre ambas opciones es pequeña comparada con el coste de una noche sin calefacción.
+
+### 34.3 Puntuación
+
+Puntuaciones de 1 a 5. A: exposición 2, atribución 3, encaje 5, coste 4, dependencia 4 → 0,6 + 0,75 + 1,25 + 0,4 + 0,4 = 3,40. B: exposición 5, atribución 5, encaje 3, coste 3, dependencia 2 → 1,5 + 1,25 + 0,75 + 0,3 + 0,2 = 4,00. B va por delante. La opción B gana sobre todo en exposición y atribución: una ruta que solo existe durante cuatro horas por incidencia, y una sesión grabada con una cuenta nominativa del proveedor. La opción A gana en encaje operativo, porque una VPN persistente está disponible a las 3 de la madrugada sin que nadie la habilite. La diferencia de 0,60 procede casi por completo de la exposición, donde B puntúa 5 frente al 2 de A, así que la recomendación solo es tan buena como ese par de puntuaciones. Si se juzgara que el intermediario en la nube es una dependencia más débil de lo indicado, la ventaja de B se reduciría, aunque no lo suficiente por sí sola para invertirla.
+
+### 34.4 Sensibilidad
+
+Suba el encaje operativo a 0,45 y baje la exposición a 0,1: A = 0,2 + 0,75 + 2,25 + 0,4 + 0,4 = 4,00; B = 0,5 + 1,25 + 1,35 + 0,3 + 0,2 = 3,60. La clasificación se invierte, así que la recomendación depende de cuánto valore la planta la disponibilidad nocturna del proveedor. Dígalo explícitamente. La inversión se produce porque el encaje operativo es donde A puntúa 5 y B puntúa 3: con un peso de 0,45, esa diferencia vale 0,9, más que la ventaja de B en exposición con el peso reducido de 0,1. La respuesta de Maya no fue elegir la ponderación que prefería, sino reforzar el criterio más débil de B: un procedimiento nocturno en el que el jefe de turno habilita una sesión mediante una llamada telefónica al ingeniero de guardia.
+
+### Ejemplo resuelto (LDHP sintética)
+
+Maya recomienda B con un cambio para abordar su criterio más débil: un procedimiento nocturno documentado en el que el jefe de turno puede habilitar una sesión mediante una llamada telefónica al ingeniero de guardia. Registra el riesgo residual de que el intermediario en la nube sea una dependencia de terceros y solicita su certificación de seguridad.
+
+> **Caso sintético — Lakeside District Heating Plant.** Las puntuaciones son juicios de la estudiante sobre opciones inventadas.
+
+### 34.5 Evidencia para cada puntuación
+
+Adjunte un motivo a cada número. La puntuación de atribución de 5 de B se basa en la grabación de las sesiones y en las cuentas nominativas del proveedor en el intermediario; la puntuación de exposición de 2 de A se basa en que la VPN es alcanzable de forma permanente, incluso cuando no hay trabajo programado. Si un revisor discute una puntuación, la columna de evidencia muestra exactamente qué comprobar, y la prueba de sensibilidad muestra si la discusión podría llegar a cambiar la recomendación.
+
+La puntuación de dependencia de 2 de B se basa en el intermediario en la nube, y por eso Maya solicitó su certificación de seguridad.
+
+### 34.6 Presentar la comparación
+
+Muestre al director de la planta la matriz, el resultado de sensibilidad y un párrafo por opción que describa una llamada de soporte nocturna con cada diseño. Los escenarios concretos son más fáciles de juzgar que los totales ponderados. Para las dos opciones de LDHP, el párrafo nocturno hace la mayor parte del trabajo. Con A, se llama a un ingeniero del proveedor a las 03:00 por una avería de la caldera; se conecta a través de la VPN, que siempre está abierta, y llega al servidor de salto en minutos. Con B, el jefe de turno llama al ingeniero de guardia, que habilita una sesión de cuatro horas para la incidencia; el proveedor se conecta a través del intermediario y la sesión se graba. El director puede ver que B cuesta una llamada y unos minutos por la noche, y que A deja la ruta abierta todas las demás noches del año.
+
+### Errores y límites
+
+Las matrices ponderadas mezclan juicio y aritmética; revele los pesos y realice comprobaciones de sensibilidad. Las puntuaciones sin evidencia son opiniones.
+
+### Ejercicios — capítulo 34
+
+- **EX100 — Recalcular con pesos iguales.** Con un peso de 0,2 para los cinco criterios, puntúe A y B. *Rúbrica:* 3 = A 3,6, B 3,6, empate señalado; 2 = uno correcto; 1 = errores aritméticos; 0 = nada.
+- **EX101 — Una hipótesis tras la puntuación de exposición de B.** Nombre una hipótesis en la que se basa dar a B una exposición de 5. *Rúbrica:* 3 = las sesiones terminan de verdad, el intermediario no puede abrir sesiones por sí mismo, se impone la habilitación por el jefe de turno; 2 = vaga pero pertinente; 1 = ninguna pertinente; 0 = nada.
+- **EX102 — Cuándo invertir la recomendación.** Enuncie la condición en la que debería elegirse A. *Rúbrica:* 3 = si la disponibilidad del proveedor 24/7 pesa más que la exposición (peso alto del encaje) y el riesgo de A se compensa; 2 = parcial; 1 = «si es más barata»; 0 = nada.
+
+### Síntesis del capítulo
+
+El trabajo comparativo es honesto cuando los criterios, los pesos, la evidencia y la sensibilidad son visibles, y la recomendación indica cuándo cambiaría.
+
+### Siga estudiando — capítulo 34 de 40
+
+[← Capítulo 33 (borrador)](#ch-33) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 35 (borrador) →](#ch-35)
+
+<a id="ch-35"></a>
+
+## Capítulo 35 — Propuesta del proyecto final
+
+### Resultados de aprendizaje
+
+Usted podrá (1) escribir una propuesta de proyecto final con problema, pregunta, alcance, método, ética y calendario; (2) definir entregables que puedan evaluarse; (3) enunciar los límites de seguridad y de autorización; y (4) obtener la aprobación del alcance por parte de su supervisor.
+
+### 35.1 Estructura de la propuesta
+
+Una propuesta de proyecto final para este curso tiene siete partes: planteamiento del problema (un párrafo con una fuente citada), pregunta de investigación o de diseño, alcance y exclusiones, método, límites éticos y de seguridad, entregables con criterios de aceptación, y un calendario con hitos. No supere las cuatro páginas; un supervisor debe poder aprobarla o rechazarla en una sola reunión. La propuesta de Maya cabe en tres páginas: un párrafo de problema que cita ATT&CK for ICS T0836 y CISA AA21-042A, una pregunta sobre con qué exactitud puede clasificar escrituras Modbus un monitor basado en reglas, un alcance sintético y sin conexión, y entregables comprobables.
+
+### 35.2 Un alcance que encaje
+
+Los proyectos finales de grado fracasan más a menudo por el alcance que por la dificultad. «Proteger LDHP» no es un proyecto final. «Diseñar, implementar y evaluar un monitor pasivo de escrituras Modbus para la captura sintética de la zona de control de LDHP, midiendo la precisión y la exhaustividad en seis clases de ataque» sí lo es. La pregunta del proyecto final de Maya se acerca a la segunda: clasificar las escrituras Modbus de una captura sintética de LDHP con reglas del capítulo 27 más una regla de frecuencia, y medir la precisión y la exhaustividad. Es lo bastante acotada como para terminarla en un semestre y aun así responde a algo que les importa a los ingenieros de LDHP: si la supervisión pasiva habría detectado una escritura como la del ejercicio de mesa del capítulo 29. El alcance también dice lo que queda fuera: otros protocolos, las capturas en vivo y cualquier aplicación de bloqueos.
+
+### 35.3 Límite ético y de seguridad
+
+La propuesta debe enunciar: todos los datos son sintéticos o los proporciona un propietario mediante un acuerdo escrito; no se sondeará ningún controlador ni red reales; cualquier herramienta es pasiva y funciona sin conexión; los resultados que revelen una debilidad de un producto real pasan por la divulgación coordinada. Un supervisor firma esta sección. Para el proyecto de Maya, el límite es fácil de enunciar y aun así debe firmarse: las capturas son tráfico sintético de LDHP, el monitor lee archivos y nunca abre un socket de red, y nada se ejecuta contra PLC-H ni contra ningún controlador real. Si su trabajo sugiriera un fallo en un producto de PLC real, iría primero al fabricante.
+
+### 35.4 Criterios de aceptación
+
+Cada entregable necesita una comprobación: «el monitor procesa el conjunto de evaluación de 8 casos e informa de TP/FP/FN/TN con precisión y exhaustividad» es comprobable; «una buena herramienta» no lo es. Los tres criterios de Maya son comprobables de este modo: el monitor procesa el conjunto de 8 casos e informa de una matriz de confusión; informa de la precisión y la exhaustividad con sus denominadores; y detecta cada una de las seis clases de ataque. El tercero es el que su evaluación marca después como cumplido en parte. Un criterio que no puede fallar, como «el monitor es útil», no le da al examinador nada que evaluar ni al estudiante nada que defender.
+
+### Ejemplo resuelto (LDHP sintética)
+
+La propuesta de Maya. Problema: las escrituras no autorizadas de puntos de consigna, como las descritas en ATT&CK for ICS T0836, suelen pasar inadvertidas para los operadores (motivado por CISA AA21-042A, donde el personal lo advirtió solo porque estaba mirando la pantalla). Pregunta: ¿con qué exactitud puede un monitor basado en reglas clasificar las escrituras Modbus de una captura sintética? Alcance: sin conexión, sintético, solo Modbus/TCP. Método: reglas de lista de permitidos del capítulo 27 más una regla de frecuencia; conjunto de evaluación del capítulo 38. Calendario: 12 semanas con hitos en las semanas 3, 7 y 10.
+
+> **Caso sintético — Lakeside District Heating Plant.** El proyecto final usa solo capturas sintéticas.
+
+### Errores y límites
+
+Prometer de más en las métricas de una propuesta («detección del 100 %») prepara el fracaso. Las propuestas deberían prever que un resultado negativo sea aceptable si está bien fundamentado.
+
+### Ejercicios — capítulo 35
+
+- **EX103 — Acotar una idea de proyecto final.** Reescriba «una IA que proteja la calefacción urbana» como una pregunta de proyecto final acotada. *Rúbrica:* 3 = datos, método, medida, límite; 2 = tres; 1 = sigue siendo amplia; 0 = nada.
+- **EX104 — El párrafo ético.** Escriba en tres frases el límite ético y de seguridad del proyecto de Maya. *Rúbrica:* 3 = solo datos sintéticos, sin sondeos, vía de divulgación; 2 = dos; 1 = genérico; 0 = nada.
+- **EX105 — Un criterio de aceptación.** Escriba un criterio de aceptación para el entregable «informe de evaluación». *Rúbrica:* 3 = contenido y comprobación concretos (matriz de confusión, intervalos, semillas); 2 = parcial; 1 = «informe completo»; 0 = nada.
+
+### Síntesis del capítulo
+
+Una propuesta sólida es pequeña, comprobable y está acotada por una ética explícita, y admite un resultado negativo honesto.
+
+### Siga estudiando — capítulo 35 de 40
+
+[← Capítulo 34 (borrador)](#ch-34) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 36 (borrador) →](#ch-36)
+
+<a id="ch-36"></a>
+
+## Capítulo 36 — Práctica de campo o comunitaria
+
+### Resultados de aprendizaje
+
+Usted podrá (1) planificar una estancia supervisada o un proyecto comunitario con una empresa de servicios, un centro educativo o un municipio; (2) acordar un alcance escrito que excluya las pruebas en vivo; (3) realizar trabajos de concienciación o de inventario que ayuden a un operador pequeño; y (4) reflexionar sobre la práctica con un diario estructurado.
+
+### 36.1 Lo que un estudiante de grado puede ofrecer con seguridad
+
+Las pequeñas empresas de agua, los centros educativos con sistemas de gestión de edificios y las cooperativas comunitarias de calefacción a menudo carecen de personal de seguridad. Un estudiante supervisado puede ayudar con trabajos de bajo riesgo y mucha documentación: una lista de activos a partir de los registros existentes, una revisión de los mecanismos de acceso remoto, una lista de comprobación de higiene de contraseñas, una sesión de concienciación para los operadores. Ninguno de ellos requiere tocar un controlador en funcionamiento.
+
+Cada una de estas tareas usa registros o conversaciones en lugar de acceso a los controladores, así que un error cuesta tiempo, pero no puede detener una bomba ni una caldera. La lista de activos de Maya para la cooperativa de calefacción es un ejemplo: construida a partir de facturas y planos, aun así encontró un router celular no documentado en la sala de calderas.
+
+### 36.2 El acuerdo
+
+El acuerdo de la estancia nombra a la persona responsable de la organización anfitriona, al supervisor, los entregables, las reglas de tratamiento de datos (qué sale del emplazamiento, cómo se almacena y cuándo se borra) y una prohibición explícita de escanear, sondear o cambiar configuraciones. Si la anfitriona pide «un escaneo rápido», el estudiante remite la petición al supervisor. Cuando el gerente de la cooperativa le pidió a Maya que «hiciera un escaneo para ver si nos han hackeado», el acuerdo le dio la respuesta: declinar con cortesía, explicar que escanear está fuera del alcance acordado, ofrecer en su lugar la revisión documental y trasladar la petición a su supervisor.
+
+### 36.3 Trabajar con operadores pequeños
+
+Los consejos deben ajustarse a su presupuesto y su personal. «Desplieguen un SOC» no le sirve de nada a una cooperativa de tres personas; «retiren la herramienta de escritorio remoto siempre activa y usen la función de sesiones bajo demanda del proveedor, habilitada desde el teléfono del gerente» sí es aplicable. Los recursos gratuitos de CISA para pequeños sistemas de agua potable y aguas residuales son un ejemplo de orientación escrita para este público. El ejemplo del acceso remoto también encaja en una cooperativa de tres personas porque no requiere equipos nuevos ni personal de supervisión, solo un cambio en la forma en que se conecta el proveedor. La recomendación de Maya para el router de la sala de calderas sigue el mismo patrón: confirmar para qué sirve, desactivarlo si no se necesita y, en caso contrario, permitir que el proveedor lo use solo a petición.
+
+### 36.4 Diario reflexivo
+
+Después de cada visita, anote: qué hice, qué observé, qué me sorprendió, qué haría de otra manera y cualquier cuestión ética que surgiera. La reflexión convierte la actividad en aprendizaje. La entrada de Maya tras la visita a la sala de calderas podría decir: hice, una lista de activos a partir de facturas y planos; observé, un router celular en la sala de calderas que ninguna factura mencionaba; me sorprendió, el gerente no sabía que existía, aunque era anterior a su época; de otra manera, pedir los documentos de puesta en marcha del fabricante del cuadro eléctrico antes de la visita, no después; cuestión ética, la petición del gerente de «hacer un escaneo», que ella declinó y trasladó a su supervisor. La entrada no nombra ninguna dirección ni credencial, así que puede mostrarse tal cual a un evaluador.
+
+### Ejemplo resuelto (sintético)
+
+La estancia de Maya en una cooperativa ficticia de calefacción de un pueblo produce una lista de activos de dos páginas construida a partir de facturas y de los planos del fabricante del cuadro eléctrico, y descubre un router celular no documentado en la sala de calderas. Su recomendación: confirmar con el fabricante del cuadro para qué sirve, desactivarlo si no se necesita y, en caso contrario, exigir que el proveedor lo habilite solo a petición.
+
+> **Caso sintético — cooperativa ficticia de un pueblo.** La cooperativa y el router son inventados.
+
+### Errores y límites
+
+Un estudiante no es un consultor; el supervisor revisa las recomendaciones antes de entregarlas. El trabajo comunitario no debe crear una dependencia que el estudiante no pueda sostener una vez terminada la estancia.
+
+### Ejercicios — capítulo 36
+
+- **EX106 — Responder a una petición de escaneo.** El gerente de la cooperativa pide a Maya que «haga un escaneo para ver si nos han hackeado». Escriba su respuesta. *Rúbrica:* 3 = declina con cortesía, explica el alcance, ofrece una alternativa segura, remite al supervisor; 2 = tres; 1 = acepta con salvedades; 0 = lo ejecuta.
+- **EX107 — Regla de tratamiento de datos.** Escriba una regla de tratamiento de datos para la lista de activos. *Rúbrica:* 3 = dónde se almacena, quién puede acceder, fecha de borrado; 2 = dos; 1 = «guardarla bien»; 0 = nada.
+- **EX108 — Una entrada del diario.** Escriba la línea «qué me sorprendió» sobre el router celular. *Rúbrica:* 3 = observación concreta y lección sobre las rutas no documentadas; 2 = solo la observación; 1 = genérico; 0 = nada.
+
+### Síntesis del capítulo
+
+La práctica de campo permite a los estudiantes ayudar a los operadores pequeños con documentación y criterio, dentro de acuerdos escritos que mantienen intactos los sistemas en funcionamiento.
+
+### Siga estudiando — capítulo 36 de 40
+
+[← Capítulo 35 (borrador)](#ch-35) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 37 (borrador) →](#ch-37)
+
+<a id="ch-37"></a>
+
+## Capítulo 37 — Seminario de revisión de evidencia
+
+### Resultados de aprendizaje
+
+Usted podrá (1) revisar críticamente una afirmación publicada sobre seguridad de TO; (2) graduar la calidad de la evidencia, desde la anécdota hasta la medición replicada; (3) comprobar si las conclusiones se derivan de los datos presentados; y (4) dar y recibir una revisión por pares estructurada.
+
+### 37.1 Una escalera de evidencia
+
+De la más débil a la más fuerte: afirmación de marketing de un fabricante; anécdota aislada; informe de caso de una fuente primaria; medición sistemática en un sistema; medición replicada en varios sistemas o por equipos independientes. Un seminario pregunta ante cada afirmación: ¿en qué peldaño está y va la conclusión más allá de él? La revisión de Maya del informe de un compañero aplica la escalera: «CUSUM elimina las falsas alarmas en la calefacción urbana» pretende un resultado replicado, pero la evidencia es una sola medición sistemática con datos sintéticos, 0 de 40 ejecuciones. Ese peldaño respalda «no se observaron falsas alarmas, cota superior de aproximadamente un 8,8 %», no la eliminación, y no dice nada sobre plantas reales.
+
+### 37.2 Leer un artículo de medición
+
+El estudio de Mirai de Antonakakis et al. (USENIX Security 2017) es un buen texto para un seminario: combina varias fuentes de datos —escaneos de un telescopio de red, honeypots, datos de DNS y datos de las víctimas de los ataques— para estimar el tamaño y el comportamiento de la infección. Pregunte: ¿qué ve y qué no ve cada fuente? ¿Cómo se contaron los dispositivos infectados cuando cambian las direcciones IP? ¿Qué conclusiones dependen de una sola fuente? Para el seminario de LDHP, el ejercicio útil es tomar una conclusión, como la proporción de infecciones a través de credenciales de Telnet por defecto, y nombrar la fuente en la que se basa.
+
+### 37.3 Leer una revisión bibliográfica
+
+Giraldo et al. (ACM Computing Surveys, 2018) clasifican los trabajos de detección basada en la física. La fortaleza de una revisión es su amplitud; su riesgo es que comunica lo que afirman los artículos en lugar de volver a probarlo. Úsela para encontrar artículos primarios y debilidades recurrentes, como los modelos de atacante incoherentes. Para el estudio de detectores de Maya, Giraldo et al. remitieron a la evaluación basada en el impacto de Urbina et al., que orientó su decisión de variar la pendiente del ataque en lugar de comunicar una sola tasa de detección. La revisión también le advirtió de que muchos artículos sobre detectores no usan ningún modelo de atacante coherente, y por eso su prerregistro nombra la rampa de 0,08 °C por muestra como su clase de ataque antes de cualquier ejecución.
+
+### 37.4 Revisión por pares estructurada
+
+Formato de la revisión: resumen con sus propias palabras; principales fortalezas; preocupaciones mayores (validez, comparaciones que faltan, conclusiones exageradas); cuestiones menores; una recomendación. Comente el trabajo, no a la persona. La revisión de Maya del informe de CUSUM de su compañero sigue exactamente este orden. Su resumen reformula la afirmación, la fortaleza nombra el script reproducible con semillas, su preocupación mayor es que 0 de 40 ejecuciones sintéticas no pueden respaldar «elimina», y su cuestión menor es el retardo expresado en muestras en lugar de en minutos. La recomendación, revisar la afirmación y añadir la cota de aproximadamente un 8,8 %, le dice al autor qué cambiar. Separar las preocupaciones mayores de las menores muestra qué cambio es imprescindible para que el informe se sostenga.
+
+### Ejemplo resuelto (LDHP sintética)
+
+El informe de un compañero afirma que «CUSUM elimina las falsas alarmas en la calefacción urbana». La revisión de Maya: resumen; fortaleza: script reproducible con semillas; preocupación mayor: 0/40 ejecuciones sintéticas respaldan «no se observaron falsas alarmas, cota superior ≈ 8,8 %», no la eliminación, y no se probó nada con datos reales de planta; menor: la unidad del retardo (muestras) no se convierte a minutos; recomendación: revisar la afirmación y añadir la cota.
+
+> **Caso sintético — Lakeside District Heating Plant.** El informe del compañero es inventado.
+
+### Errores y límites
+
+La revisión por pares comprueba el razonamiento, no la verdad; los revisores también pasan por alto errores. El prestigio de una publicación no es evidencia de que sea correcta.
+
+### Ejercicios — capítulo 37
+
+- **EX109 — Situar afirmaciones en la escalera.** Sitúe en la escalera de evidencia: (a) un folleto de un fabricante que dice «bloquea el 99,9 % de los ataques a ICS», (b) AA21-042A. *Rúbrica:* 3 = (a) afirmación de marketing, (b) informe de caso primario; 2 = uno; 1 = invertidos; 0 = nada.
+- **EX110 — Cuestionar una conclusión de una sola fuente.** Identifique una conclusión del estudio de Mirai que sería más débil si se basara solo en datos de honeypots, y por qué. *Rúbrica:* 3 = tamaño de la infección/estimación de la población; los honeypots solo ven los dispositivos que contactan con ellos; 2 = parcial; 1 = vago; 0 = nada.
+- **EX111 — Escribir una preocupación mayor.** Escriba la preocupación mayor para un artículo que evalúa un detector en una sola planta simulada con umbrales ajustados a mano. *Rúbrica:* 3 = generalización y sesgo por ajustar con los datos de prueba, con la corrección solicitada; 2 = uno; 1 = comentario de estilo; 0 = nada.
+
+### Síntesis del capítulo
+
+La revisión de la evidencia pregunta cuán fuerte es la evidencia, si la conclusión se ajusta a ella y cómo decirlo de forma constructiva.
+
+### Siga estudiando — capítulo 37 de 40
+
+[← Capítulo 36 (borrador)](#ch-36) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 38 (borrador) →](#ch-38)
+
+<a id="ch-38"></a>
+
+## Capítulo 38 — Implementación del proyecto final
+
+### Resultados de aprendizaje
+
+Usted podrá (1) implementar el artefacto de un proyecto final en incrementos pequeños y probados; (2) mantener un registro de cambios y un registro de decisiones; (3) evaluar el artefacto con un conjunto etiquetado mediante una matriz de confusión; y (4) comunicar la precisión y la exhaustividad con sus denominadores.
+
+### 38.1 Incrementos
+
+Construya primero la versión completa más pequeña: leer un archivo de captura, clasificar cada escritura, imprimir las decisiones. Después añada las reglas una a una, cada una con pruebas (capítulo 8) y vectores de conformidad (capítulo 27). Una herramienta pequeña que funciona en la semana 4 vale más que una ambiciosa que nunca llega a ejecutarse. La versión de la semana 4 de Maya leía una captura sintética, clasificaba cada escritura Modbus frente a la lista de permitidos del capítulo 27 e imprimía una decisión por línea. La regla de frecuencia llegó después, con sus propias pruebas, y la regla de cambio acumulado solo después de que la evaluación mostrara que no se detectaba el ataque de deriva. Cada incremento podía ejecutarse y comprobarse frente a los ocho casos etiquetados antes de empezar el siguiente.
+
+### 38.2 Registros de decisiones
+
+Cuando elija, registre por qué: «Decisión 7: tratar las escrituras durante una ventana de mantenimiento programada como benign-maint solo si el identificador de la incidencia aparece en la lista de la ventana; alternativas consideradas: regla solo horaria (rechazada: los internos podrían sincronizar sus ataques con ella)». Los registros de decisiones permiten a los examinadores seguir el razonamiento. Las decisiones posteriores de Maya siguen el mismo formato. Tras la evaluación, un registro añade una regla de cambio acumulado para el ataque de deriva no detectado, y rechaza la alternativa de un umbral menor por escritura porque marcaba los ajustes ordinarios de los operadores. Otro registra la correlación de las escrituras del HMI con los eventos de inicio de sesión de los operadores, para abordar la escritura del punto de consigna que procedía de HMI-1, un origen permitido.
+
+### 38.3 Evaluación
+
+El laboratorio evalúa la salida de un monitor en ocho casos etiquetados del conjunto sintético de Maya.
+
+```python
+"""Lab 38: capstone evaluation - precision/recall with denominators (synthetic results)."""
+cases = [("replay", True, True), ("replay", True, True), ("setpoint", True, False), ("setpoint", True, True),
+         ("benign-maint", False, True), ("benign", False, False), ("benign", False, False), ("drift", True, False)]
+tp = sum(a and d for _, a, d in cases); fp = sum((not a) and d for _, a, d in cases)
+fn = sum(a and not d for _, a, d in cases); tn = sum((not a) and not d for _, a, d in cases)
+print(f"TP={tp} FP={fp} FN={fn} TN={tn}")
+print(f"precision={tp}/{tp+fp}={tp/(tp+fp):.2f} recall={tp}/{tp+fn}={tp/(tp+fn):.2f}")
+print("missed classes:", sorted({c for c, a, d in cases if a and not d}))
+```
+
+Ejecútelo con `python3 lab_eval.py`. Salida verificada:
+
+```text
+TP=3 FP=1 FN=2 TN=2
+precision=3/4=0.75 recall=3/5=0.60
+missed classes: ['drift', 'setpoint']
+```
+
+Los ocho casos incluyen cinco ataques y tres escrituras benignas, entre ellas una escritura de mantenimiento. El laboratorio calcula la precisión y la exhaustividad a partir de las etiquetas del monitor e imprime la matriz de confusión. El conjunto es de juguete: su propósito es mostrar qué clases no detecta el monitor, y un noveno caso podría cambiar todas las tasas. Su valor está en que cada caso tiene una respuesta conocida escrita antes de ejecutar el monitor, así que una discrepancia siempre es un error del monitor o de la etiqueta, y Maya registra cuál.
+
+### 38.4 Leer la matriz de confusión
+
+Tres verdaderos positivos, un falso positivo (una escritura de mantenimiento marcada), dos falsos negativos (un ataque de punto de consigna y el ataque de deriva no detectados), dos verdaderos negativos. Precisión 3/4 = 0,75; exhaustividad 3/5 = 0,60. Ocho casos son demasiado pocos para obtener tasas precisas —un intervalo de Wilson para 3/5 abarca aproximadamente de 0,23 a 0,88—, así que el uso honesto de esta tabla es encontrar clases de fallo, no clasificar herramientas. El único falso positivo es la escritura de mantenimiento, que la decisión 7 trata como benigna solo cuando el identificador de su incidencia aparece en la lista de la ventana. Los dos fallos de detección apuntan a correcciones distintas, una regla de cambio acumulado para el ataque de deriva y la correlación con los inicios de sesión para la escritura desde HMI-1, y por eso Maya examina cada clase por separado en lugar de ajustar un único umbral.
+
+### Ejemplo resuelto (LDHP sintética)
+
+Maya examina los dos fallos de detección. El ataque de deriva usó muchas escrituras pequeñas, cada una dentro del rango permitido: un monitor basado en reglas sin una regla de frecuencia o de tendencia no puede verlo. El ataque de punto de consigna no detectado procedía del propio HMI-1, que está en la lista de permitidos. Ambos llevan a nuevos registros de decisión: añadir una regla de cambio acumulado y correlacionar las escrituras del HMI con los eventos de inicio de sesión de los operadores.
+
+> **Caso sintético — Lakeside District Heating Plant.** Los ocho casos son un conjunto de juguete con fines ilustrativos.
+
+### Errores y límites
+
+Las etiquetas solo son tan buenas como el autor del escenario; un ataque etiquetado como «benigno» corrompe todas las métricas. No ajuste las reglas con los casos de evaluación para después comunicar los mismos números.
+
+### Ejercicios — capítulo 38
+
+- **EX112 — Corregir el falso positivo.** Proponga un cambio que evite marcar la escritura de mantenimiento sin ocultar ataques reales. *Rúbrica:* 3 = exigir que coincidan la incidencia/ventana y la cuenta de ingeniería, y seguir registrándola; 2 = parcial; 1 = ignorar el horario de mantenimiento; 0 = nada.
+- **EX113 — Exhaustividad tras una corrección.** Si la regla de cambio acumulado detecta el caso de deriva y nada más cambia, ¿cuál es la nueva exhaustividad? *Rúbrica:* 3 = 4/5 = 0,80; 2 = número correcto sin fracción; 1 = 0,75; 0 = nada.
+- **EX114 — Por qué importa el intervalo.** Explique por qué la exhaustividad de 0,60 no puede compararse con el 0,70 de otra herramienta en un conjunto distinto de 10 casos. *Rúbrica:* 3 = muestras diminutas, intervalos amplios que se solapan, distinta combinación de casos; 2 = uno; 1 = «herramientas distintas»; 0 = nada.
+
+### Síntesis del capítulo
+
+Implemente en incrementos probados, registre las decisiones y use los conjuntos de evaluación pequeños para encontrar clases de fallo, no para afirmar tasas.
+
+### Siga estudiando — capítulo 38 de 40
+
+[← Capítulo 37 (borrador)](#ch-37) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 39 (borrador) →](#ch-39)
+
+<a id="ch-39"></a>
+
+## Capítulo 39 — Evaluación del proyecto final
+
+### Resultados de aprendizaje
+
+Usted podrá (1) evaluar un proyecto final frente a su propia propuesta; (2) separar resultados, interpretación y limitaciones; (3) realizar una autoevaluación estructurada con la rúbrica del curso; y (4) planificar el trabajo que necesitaría hacer quien le suceda.
+
+### 39.1 Frente a la propuesta
+
+Vuelva a los criterios de aceptación escritos en el capítulo 35. Para cada uno, registre cumplido, cumplido en parte o no cumplido, con evidencia. Un proyecto final que no cumple un criterio pero explica por qué —por ejemplo, que la clase de deriva no podía detectarse solo con reglas— todavía puede obtener una calificación alta. La tabla de evaluación de Maya muestra en uso los tres resultados posibles. Los criterios 1 y 2 se cumplen, con la matriz de confusión y los denominadores como evidencia, mientras que el criterio 3 se cumple en parte: cinco de seis clases de ataque tras la regla de cambio acumulado, con la escritura interna originada en el HMI todavía sin detectar y el motivo enunciado.
+
+### 39.2 Resultados frente a interpretación
+
+Los resultados son lo que produjo la evaluación: «exhaustividad de 4/5 en el conjunto de ocho casos». La interpretación es lo que usted cree que significa: «la regla de cambio acumulado aborda la manipulación lenta». Las limitaciones acotan la interpretación: «probado solo con datos sintéticos y un único perfil de deriva». Mantener tres encabezados impide que los resultados absorban en silencio las opiniones. En la tesis de Maya, la exhaustividad subió a 4/5 en el conjunto de ocho casos cuando la regla de cambio acumulado detectó el ataque de deriva; la escritura desde HMI-1 sigue sin detectarse. Esa frase es un resultado. «El monitor es adecuado para LDHP» sería una interpretación que la limitación, un único perfil de deriva con datos sintéticos, todavía no respalda.
+
+### 39.3 Rúbrica de autoevaluación
+
+Puntúese de 0 a 3 en: planteamiento del problema, adecuación del método, calidad de la evidencia, seguridad y ética, comunicación. Escriba una frase de evidencia por cada puntuación. Los supervisores usan la misma rúbrica; las diferencias abren una conversación útil. Maya se puntuó con un 2 en calidad de la evidencia, con la frase «ocho casos son un conjunto de juguete», y con un 3 en seguridad y ética, con «solo sin conexión, documentado». Los resultados resueltos explican por qué un 2 y no un 3 es justo: el análisis es reproducible y comunica los denominadores, pero ocho casos sintéticos con un único perfil de deriva no pueden respaldar afirmaciones generales. Una autopuntuación de 3 en ese punto habría sido el primer motivo de desacuerdo con su supervisor.
+
+### 39.4 Plan para quien le suceda
+
+Enumere lo que haría con tres meses más: un segundo modelo de proceso, capturas reales anonimizadas (proporcionadas por un propietario), un estudio de usabilidad con operadores. Ordénelo por su valor para la pregunta. Para Maya, la clasificación pone en primer lugar la escritura originada en el HMI, porque es la clase que su monitor sigue sin detectar: correlacionar las escrituras con los inicios de sesión de los operadores, sobre capturas anonimizadas proporcionadas por un propietario, pondría a prueba el remedio. Un segundo modelo de proceso, como el vaso de expansión del capítulo 21, viene después, ya que un monitor ajustado a un lazo puede no trasladarse a otro. Un estudio de usabilidad con operadores va al final, porque solo importa cuando el monitor ya detecta las clases que importan.
+
+### Ejemplo resuelto (LDHP sintética)
+
+Tabla de evaluación de Maya: criterio 1 (procesa el conjunto de 8 casos, informa de la matriz de confusión): cumplido; criterio 2 (precisión y exhaustividad con denominadores): cumplido; criterio 3 (detecta las seis clases de ataque): cumplido en parte, cinco de seis tras la regla de cambio acumulado, con la escritura interna originada en el HMI todavía sin detectar. Autoevaluación: calidad de la evidencia 2 («ocho casos son un conjunto de juguete»), seguridad 3 («solo sin conexión, documentado»).
+
+> **Caso sintético — Lakeside District Heating Plant.** Las puntuaciones son una ilustración resuelta.
+
+### 39.5 La visión del supervisor
+
+Los supervisores buscan la coherencia entre la pregunta, la evidencia y las afirmaciones. Un comentario frecuente en esta etapa es que la sección de conclusiones repite los resultados en lugar de responder a la pregunta de investigación. Reescriba la conclusión para que su primera frase responda directamente a la pregunta del capítulo 35, la segunda enuncie la limitación más importante y la tercera nombre el siguiente estudio. La primera frase de Maya respondería directamente a la pregunta de su propuesta: con capturas sintéticas de LDHP, el monitor basado en reglas clasificó correctamente cinco de seis clases de ataque.
+
+### Errores y límites
+
+La autoevaluación tiende a puntuar de más la comunicación y de menos la adecuación del método. No redefina los criterios de aceptación a posteriori para que se ajusten a los resultados.
+
+### Ejercicios — capítulo 39
+
+- **EX115 — Clasificar tres frases.** Etiquete como resultado, interpretación o limitación: (a) «precisión 4/5»; (b) «la herramienta está lista para un piloto»; (c) «se probó un perfil de deriva». *Rúbrica:* 3 = R, I, L; 2 = dos; 1 = una; 0 = nada.
+- **EX116 — Puntuar la calidad de la evidencia.** Justifique una puntuación de 2 (no de 3) en calidad de la evidencia para el proyecto final de Maya. *Rúbrica:* 3 = reproducible y correcto, pero el pequeño conjunto sintético limita la generalidad; 2 = parcial; 1 = «podría ser mejor»; 0 = nada.
+- **EX117 — La tarea principal para quien le suceda.** ¿Qué tarea de continuación refuerza más la pregunta de investigación y por qué? *Rúbrica:* 3 = un modelo de proceso adicional o capturas proporcionadas por un propietario para probar la generalización; 2 = solo la tarea; 1 = pulir la interfaz; 0 = nada.
+
+### Síntesis del capítulo
+
+Evalúe un proyecto final frente a sus propias promesas, mantenga los resultados separados de las opiniones y deje un camino ordenado para quien continúe el trabajo.
+
+### Siga estudiando — capítulo 39 de 40
+
+[← Capítulo 38 (borrador)](#ch-38) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 40 (borrador) →](#ch-40)
+
+<a id="ch-40"></a>
+
+## Capítulo 40 — Tesis y presentación
+
+### Resultados de aprendizaje
+
+Usted podrá (1) estructurar una tesis de grado en seguridad de TO; (2) diseñar diapositivas que muestren evidencia en lugar de decoración; (3) preparar una defensa oral anticipando las preguntas; y (4) publicar un paquete de replicación de forma responsable.
+
+### 40.1 Estructura de la tesis
+
+Introducción (problema, pregunta, contribución); antecedentes (normas y trabajos previos, citados con precisión: NIST SP 800-82r3, las partes pertinentes de IEC 62443, las técnicas de ATT&CK for ICS, los artículos revisados por pares que usted haya leído); método; resultados; discusión, incluidas las limitaciones; conclusión y trabajo futuro; apéndices con el código y la descripción de los datos. Mantenga visible la etiqueta de sintético en el pie de cada figura que use datos de LDHP. Para la tesis de Maya, el capítulo de antecedentes cita ATT&CK for ICS T0836 y CISA AA21-042A para el problema, IEC 62443-3-3 para los controles de zonas y conductos que sustentan su lista de permitidos, y Urbina et al. para evaluar los detectores por el impacto del atacante. Cada figura construida a partir de capturas de LDHP lleva «datos sintéticos» en su pie.
+
+### 40.2 Diapositivas
+
+Un mensaje por diapositiva, enunciado en su título: «La supervisión basada en reglas no detectó la deriva lenta; una regla acumulada la recuperó». Muestre la matriz de confusión, los denominadores y el intervalo. Evite las imágenes de hackers y los iconos de candados; los examinadores los leen como señal de un contenido débil. La diapositiva de resultados de Maya muestra su matriz de ocho casos con los recuentos en cada celda —tres verdaderos positivos, un falso positivo, dos falsos negativos, dos verdaderos negativos— y el intervalo de Wilson para la exhaustividad de 3/5, aproximadamente de 0,23 a 0,88. Su título enuncia el hallazgo en lugar de decir «Resultados». Así, el tribunal puede preguntar por el falso positivo, una escritura de mantenimiento marcada, sin tener que descifrar antes el gráfico.
+
+### 40.3 Anticipar las preguntas
+
+Prepare respuestas para: ¿Por qué datos sintéticos? ¿Cómo fallaría esto en una planta real? ¿Cuál es la carga de falsas alarmas para los operadores por turno? ¿Por qué estas clases de ataque? ¿Qué haría un atacante que conociera sus reglas? Responder «no lo sé, pero así es como lo averiguaría» es aceptable; inventar números no lo es. Para la pregunta sobre las falsas alarmas, Maya puede responder con sus propios datos: un falso positivo en ocho casos es demasiado poco para estimar la carga por turno, y lo dice, junto con el número de horas tranquilas que necesitaría para medirla. Para la pregunta sobre el atacante, sus dos fallos de detección ya responden en parte: muchas escrituras pequeñas dentro del rango permitido, y escrituras desde el propio HMI-1.
+
+### 40.4 Publicación responsable
+
+Publique el código, las semillas y los datos sintéticos bajo una licencia abierta. No publique nada que sea un ataque funcional contra productos reales. Si el trabajo encontró una vulnerabilidad real, la publicación espera a la divulgación coordinada (capítulo 10). El repositorio de la tesis de Maya contendría el código del monitor, las capturas sintéticas de LDHP con su generador y sus semillas, y los ocho casos etiquetados. No contendría nada que envíe escrituras Modbus, porque el monitor solo lee archivos de captura. Si su trabajo hubiera revelado un fallo en el tratamiento del código de función 8 por parte de un PLC real, la descripción en la tesis esperaría a que el fabricante tuviera una corrección.
+
+### Ejemplo resuelto (LDHP sintética)
+
+La defensa de Maya empieza con la contribución en una frase: «Un monitor de escrituras Modbus basado en reglas, con una regla de cambio acumulado, detectó cinco de seis clases de ataque sintéticas en las capturas de LDHP; la clase restante —escrituras desde un HMI legítimo— requiere correlación con la identidad del operador». Su diapositiva final enumera tres limitaciones y el plan de continuación del capítulo 39.
+
+> **Caso sintético — Lakeside District Heating Plant.** La tesis es una ilustración resuelta con datos simulados.
+
+### Errores y límites
+
+Una tesis se juzga más por su razonamiento y su honestidad que por el tamaño del resultado. Los capítulos de revisión bibliográfica largos que resumen sin evaluar añaden páginas, no puntos.
+
+### Ejercicios — capítulo 40
+
+- **EX118 — Un título de diapositiva que lleve la afirmación.** Escriba el título de la diapositiva que muestra el resultado de exhaustividad de 4/5. *Rúbrica:* 3 = afirmación en una frase completa con matiz; 2 = afirmación sin matiz; 1 = «Resultados»; 0 = nada.
+- **EX119 — Defenderse frente a un atacante informado.** Redacte una respuesta a «¿qué haría un atacante que conociera sus reglas?». *Rúbrica:* 3 = admite la evasión (p. ej., a través del HMI o por debajo del umbral acumulado), cita el margen de impacto al estilo de Urbina, propone una defensa; 2 = dos; 1 = lo niega; 0 = nada.
+- **EX120 — Qué no publicar.** Nombre un elemento que debería excluirse del paquete de replicación público y por qué. *Rúbrica:* 3 = cualquier cosa utilizable contra productos reales o cualquier dato proporcionado por un propietario; motivo; 2 = solo el elemento; 1 = «el código»; 0 = nada.
+
+### Síntesis del capítulo
+
+Una tesis cierra el curso mostrando que usted sabe plantear una pregunta de seguridad de TO, responderla con evidencia honesta y comunicar los límites de la respuesta a quienes deben actuar en consecuencia.
+
+### Siga estudiando — capítulo 40 de 40
+
+[← Capítulo 39 (borrador)](#ch-39) · [Índice de capítulos del curso](../SUBJECTS.md) · [Resultados resueltos ↓](#worked-results) · [Siguiente curso a través del índice de capítulos →](../SUBJECTS.md)
 
 <a id="worked-results"></a>
 
@@ -1956,6 +2485,66 @@ Respuestas modelo para EX001–EX120. Lakeside District Heating Plant, Maya Chen
 **EX089.** Todas las disposiciones aparecen como carencias de la flota, pero MTR-A las supera todas y MTR-B solo incumple una; el directivo podría financiar la sustitución de toda la flota cuando el problema real se concentra en MTR-C, más un restablecimiento de contraseñas barato para MTR-B.
 
 **EX090.** Una descripción de cómo se firman criptográficamente las actualizaciones y cómo se verifican en el dispositivo, el historial de actualizaciones publicado por el fabricante y su periodo de soporte declarado, y una demostración en banco de la aplicación de una actualización y del rechazo de una manipulada.
+
+**EX091.** PLC de Schneider Electric, PLC OMRON Sysmac NEX y servidores Open Platform Communications Unified Architecture (OPC UA).
+
+**EX092.** Alertar siempre que la supervisión pasiva vea una operación de descarga de programa (o de cambio de lógica) en PLC-H que no proceda de EWS-1 o que se produzca fuera de una ventana de cambios registrada en el sistema de mantenimiento.
+
+**EX093.** Las técnicas —abusar de OPC UA, de los protocolos de ingeniería y de controladores de software vulnerables de las estaciones de trabajo— se aplican a otros productos, y un inventario que dice «no tenemos ninguno» puede estar incompleto; actuar sobre detecciones genéricas reduce la exposición a la siguiente variante.
+
+**EX094.** (1) El fabricante deberá proporcionar una SBOM para cada versión de firmware en formato SPDX o CycloneDX. (2) La pasarela no deberá tener ninguna contraseña por defecto universal y deberá forzar una credencial única en la puesta en marcha (disposición 5.1 de ETSI EN 303 645). (3) El fabricante deberá publicar una política de divulgación de vulnerabilidades y proporcionar actualizaciones de seguridad durante al menos siete años tras la entrega.
+
+**EX095.** Causa: una escritura no autorizada detiene la bomba de circulación P-2 a través de la interfaz de red de su variador de velocidad. Salvaguarda: un interruptor de bajo caudal cableado que dispara los quemadores de la caldera a través de SIS-H, independiente de la red de los variadores.
+
+**EX096.** «A partir del lunes, HMI-1 solo ejecutará el programa del HMI y las herramientas aprobadas. Si algo que usan normalmente no arranca, aparecerá un mensaje; en la planta no cambia nada. Anoten qué intentaron y llamen al ingeniero de control a la extensión 214; no intenten sortearlo».
+
+**EX097.** n = 1,96² × 0,10 × 0,90 / 0,03² = 3,8416 × 0,09 / 0,0009 ≈ 384,2, es decir, unas 385 ejecuciones.
+
+**EX098.** Elegir el umbral con las mismas ejecuciones usadas para la evaluación lo ajusta al ruido de esas ejecuciones y hace optimistas las estimaciones de falsas alarmas y de detección; ajustarlo con semillas separadas y congelarlo da una estimación honesta del rendimiento con datos no vistos.
+
+**EX099.** H1 queda falsada si, en las 300 ejecuciones tranquilas, la proporción de ejecuciones de CUSUM con alguna falsa alarma no es menor que la de la banda, es decir, si el intervalo al 95 % de (banda − CUSUM) incluye el cero o queda por debajo de él.
+
+**EX100.** A = 0,2 × (2 + 3 + 5 + 4 + 4) = 3,6; B = 0,2 × (5 + 5 + 3 + 3 + 2) = 3,6: un empate exacto, que muestra que son los pesos los que separan las opciones.
+
+**EX101.** Que el intermediario no puede iniciar sesiones sin la aprobación del jefe de turno y que las sesiones terminan automáticamente a las cuatro horas; si falla cualquiera de las dos cosas, B tiene una ruta persistente como A.
+
+**EX102.** Elegir A cuando la planta juzgue la disponibilidad del proveedor las veinticuatro horas más importante que la exposición de la ruta —por ejemplo, si el encaje tiene un peso ≥ 0,45, como en la prueba de sensibilidad—, y solo con controles compensatorios como la grabación de las sesiones y revisiones mensuales de los accesos.
+
+**EX103.** «¿Puede un clasificador de regresión logística entrenado con 20 características sintéticas de la temperatura de impulsión de LDHP distinguir una deriva lenta del punto de consigna de los cambios normales de carga, medido por la exhaustividad con una tasa fija de falsas alarmas del 5 % en ejecuciones simuladas reservadas, sin ningún acceso a una planta real?».
+
+**EX104.** «Todos los datos de este proyecto son sintéticos y los generan los scripts del repositorio; no se contactará con ningún controlador, red ni servicio reales. El monitor solo lee archivos de captura sin conexión. Si el trabajo revela una debilidad en cualquier producto real, se comunicará a través del proceso de divulgación del fabricante y no se publicará hasta que esté coordinado».
+
+**EX105.** «El informe de evaluación contiene la matriz de confusión del conjunto de 8 casos, la precisión y la exhaustividad con numeradores y denominadores, la lista de clases de ataque no detectadas, el hash de commit del script y las semillas, y sus números coinciden con una nueva ejecución de `lab_eval.py`».
+
+**EX106.** «Gracias por confiarme esto. Mi acuerdo de estancia no me permite escanear ni sondear sus sistemas, porque incluso los escaneos sencillos pueden perturbar los controladores antiguos. Lo que sí puedo hacer esta semana es revisar con usted sus mecanismos de acceso remoto y sus registros, y preguntaré a mi supervisor si una empresa cualificada debería hacer una evaluación técnica».
+
+**EX107.** «La lista de activos se almacena solo en la carpeta cifrada del proyecto de la universidad, compartida con el supervisor y el gerente de la cooperativa, y se borra de todos los dispositivos del estudiante el último día de la estancia».
+
+**EX108.** «Me sorprendió que un router celular pudiera estar en la sala de calderas sin aparecer en ningún plano ni factura: significa que el diagrama de red de la cooperativa no es un mapa fiable de cómo pueden alcanzar la caldera desde fuera».
+
+**EX109.** (a) Peldaño inferior: una afirmación de marketing no verificada, sin método ni denominador. (b) Un informe de caso primario de una fuente gubernamental: más fuerte, pero se trata de un solo incidente.
+
+**EX110.** La estimación de cuántos dispositivos se infectaron: los honeypots solo observan los bots que casualmente los escanean o atacan, así que cuentan de menos y están sesgados por dónde se sitúan; los datos del telescopio proporcionan la visión más amplia de la población.
+
+**EX111.** «El detector se ajusta y se evalúa en la misma planta simulada, así que las tasas de falsas alarmas y de detección comunicadas probablemente sean optimistas y puedan no generalizarse. Ajusten los umbrales con semillas separadas, congélenlos y evalúen con al menos un modelo de proceso adicional o un conjunto de datos publicado».
+
+**EX112.** Clasificar una escritura como benign-maint solo cuando procede de EWS-1 con una cuenta nominativa de ingeniero y su hora cae dentro de una ventana de mantenimiento vinculada a una incidencia abierta; seguir registrando la escritura e incluirla en la revisión diaria para que un interno no pueda esconderse tras la ventana.
+
+**EX113.** TP sube a 4 y FN baja a 1, así que la exhaustividad = 4/5 = 0,80; la precisión queda en 4/5 = 0,80 si el falso positivo se mantiene.
+
+**EX114.** Con 5 casos de ataque, 0,60 tiene un intervalo al 95 % de aproximadamente 0,23–0,88, y un conjunto de 10 casos tiene un intervalo igual de amplio y clases de ataque distintas, así que las dos cifras se solapan casi por completo y miden cosas diferentes.
+
+**EX115.** (a) Resultado. (b) Interpretación, y una que va más allá de esta evidencia. (c) Limitación.
+
+**EX116.** El análisis es reproducible, usa las métricas correctas y comunica los denominadores, pero ocho casos sintéticos con un único perfil de deriva no pueden respaldar afirmaciones generales, así que la evidencia es sólida pero estrecha: un 2 y no un 3.
+
+**EX117.** Probar con un segundo modelo de proceso construido de forma independiente (o con capturas anonimizadas proporcionadas por un propietario mediante un acuerdo), porque la principal pregunta abierta es si el conjunto de reglas se generaliza más allá de la planta para la que se diseñó.
+
+**EX118.** «Añadir una regla de cambio acumulado elevó la exhaustividad de 3/5 a 4/5 en el conjunto sintético de ocho casos: un hallazgo sobre clases de fallo, no una estimación de tasas».
+
+**EX119.** «Harían escrituras desde el propio HMI-1 o mantendrían cada cambio por debajo del umbral acumulado, como describen Urbina et al. para los ataques sigilosos. Mi monitor no puede impedirlo; acota cuánto puede moverse el punto de consigna sin que se note, y correlacionar las escrituras con los inicios de sesión de los operadores es la siguiente defensa que probaría».
+
+**EX120.** Cualquier exportación de configuración, captura o mapa de registros proporcionado por un propietario real, aunque esté anonimizado, porque puede revelar su arquitectura; se queda bajo el acuerdo de datos, mientras que el paquete público contiene solo los generadores sintéticos y las semillas.
 
 <a id="references"></a>
 
