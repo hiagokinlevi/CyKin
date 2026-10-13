@@ -28,7 +28,7 @@ NIST [SP 800-82 Rev. 3](https://csrc.nist.gov/pubs/sp/800/82/r3/final); [serie I
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](../../en/book/MANUSCRIPT.md#ch-10) · [11](../../en/book/MANUSCRIPT.md#ch-11) · [12](../../en/book/MANUSCRIPT.md#ch-12) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) |
 
 [Resultados resueltos](#worked-results) · [Referencias](#references)
 
@@ -589,7 +589,177 @@ Los registros de tendencias muestran qué cambió y cuándo; combinados con los 
 
 ### Siga estudiando — capítulo 09 de 12
 
-[← Capítulo 08 (borrador)](#ch-08) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 10 (borrador) →](../../en/book/MANUSCRIPT.md#ch-10)
+[← Capítulo 08 (borrador)](#ch-08) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 10 (borrador) →](#ch-10)
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Avisos y parches para los sistemas del edificio
+
+### Resultados de aprendizaje
+
+Usted podrá (1) hacer corresponder los avisos con el inventario del edificio; (2) decidir entre aplicar un parche o una mitigación; y (3) hacer el seguimiento de las decisiones a lo largo del tiempo.
+
+### 10.1 Fuentes
+
+El índice de avisos de CISA incluye muchos productos de automatización de edificios, control de accesos y ascensores, junto con los avisos de los fabricantes. Suscríbase a los que sean pertinentes para los fabricantes de Millbrook. Use el inventario para elegir qué fabricantes y productos seguir, incluidos los controladores del BMS, el servidor de control de accesos y el controlador del ascensor. Consulte con regularidad el índice de CISA y las páginas de los fabricantes, y registre la fecha de cada consulta. Un aviso que llega después de un incidente es mucho menos útil que uno leído la semana en que se publicó.
+
+### 10.2 Correspondencia
+
+Para cada aviso: ¿está el producto en nuestro inventario, en una versión afectada y accesible de la forma que describe el aviso? Los dispositivos sin soporte (capítulo 4) suelen corresponder a avisos antiguos que nunca se corregirán. Registre la respuesta a cada pregunta en el registro de avisos, incluso cuando el producto no esté presente. Para los dispositivos sin soporte, como CHILLER-1 y LIFT-CTRL, un aviso sin corrección lleva directamente a los controles compensatorios: un aislamiento más estricto, ningún acceso remoto y una supervisión más cercana, como se acordó para esos dispositivos en el trabajo de inventario.
+
+### 10.3 Elegir
+
+Aplicar un parche a un controlador del BMS suele requerir una visita del contratista, una franja reservada y la comprobación posterior de todos los puntos. Las mitigaciones (reglas de cortafuegos, desactivar una interfaz web, restringir la cuenta de la pasarela) a menudo pueden aplicarse antes. Registre qué eligió y por qué. La elección depende de la consecuencia y de cuándo haya disponible una franja segura. Una mitigación aplicada hoy puede ser mejor que un parche el mes que viene, siempre que se compruebe que bloquea la vía que describe el aviso. Anote la decisión en el registro con la fecha, el responsable y la fecha de revisión.
+
+### 10.4 Seguimiento
+
+Un registro sencillo: aviso, productos afectados aquí, decisión, mitigación, fecha del parche, responsable, fecha de revisión. Informe cada mes al jefe de mantenimiento e instalaciones de los elementos abiertos de consecuencia alta. Guarde el registro en el mismo lugar que el inventario, para que un aviso nuevo pueda cotejarse con rapidez. Revíselo cada mes con el jefe de mantenimiento e instalaciones y cierre los elementos solo cuando se haya demostrado que están completados, por ejemplo con una comprobación de versión tras el parche. Los elementos que llevan mucho tiempo abiertos necesitan una decisión nueva, no un envejecimiento silencioso.
+
+### 10.5 Pruebas tras el parche
+
+Después, el contratista confirma que todos los puntos informan, que las alarmas funcionan y que los horarios son correctos; mantenimiento da la conformidad. Acuerde las comprobaciones antes del parche, con una lista de puntos y alarmas que probar y la persona que los probará. Tenga lista una alternativa, como el firmware anterior o llaves manuales para las puertas. Registre los resultados y la conformidad en el registro de avisos, para que el elemento pueda cerrarse con evidencia. Siempre que sea posible, aplique primero el parche a una sola unidad y compruébela antes de pasar a la siguiente.
+
+### 10.6 Contacto con el fabricante
+
+Cuando un aviso no sea claro sobre las configuraciones de los edificios, pregunte directamente al fabricante o al integrador: qué modelos y opciones están afectados, si la función vulnerable está activada por defecto y si se ha probado una mitigación en sistemas como el de Millbrook. Registre la respuesta y quién la dio. Los equipos de seguridad de producto de los fabricantes suelen responder antes cuando la pregunta nombra el modelo y la versión exactos que figuran en el inventario. Guarde las respuestas del fabricante con el aviso en el registro, y repita la pregunta si la respuesta no es clara. Si el fabricante confirma que una mitigación funciona, compruébela igualmente en Millbrook, porque la configuración local puede ser distinta.
+
+### Ejemplo resuelto (Millbrook sintético)
+
+Un aviso sintético advierte de que la interfaz web de DOOR-SRV permite eludir la autenticación en la versión 4.1; Millbrook usa la 4.1. Tras el capítulo 8, la interfaz solo es accesible desde la zona de control de accesos, y la corrección del fabricante, la 4.2, requiere una interrupción de 30 minutos de los horarios de las puertas. La decisión: restringir hoy la interfaz a la estación de trabajo de la oficina de seguridad y aplicar el parche el domingo a las 06:00, con llaves manuales entregadas a los supervisores de planta durante la interrupción.
+
+> **Caso sintético — Millbrook.** El aviso y las versiones son inventados; CISA publica la lista de los avisos reales.
+
+### Errores y límites
+
+Los avisos pueden omitir detalles; pregunte a los fabricantes. Hay que comprobar que una mitigación bloquea realmente la vía descrita.
+
+### Ejercicios — capítulo 10
+
+- **EX046 — Tres preguntas de correspondencia.** Formule las tres preguntas que deciden si un aviso importa aquí. *Rúbrica:* 3 = producto presente, versión afectada, accesible como se describe; 2 = dos; 1 = una; 0 = nada.
+- **EX047 — Correspondencia sin soporte.** Un aviso afecta a LIFT-CTRL y no hay corrección prevista. ¿Cuál es la decisión? *Rúbrica:* 3 = aislamiento y supervisión compensatorios, registrarlo, adelantar la sustitución; 2 = parcial; 1 = ignorarlo; 0 = nada.
+- **EX048 — Plan para la interrupción de las puertas.** ¿Por qué se entregan llaves manuales durante el parche de DOOR-SRV? *Rúbrica:* 3 = los horarios de las puertas no están disponibles, las áreas restringidas deben seguir controladas y accesibles; 2 = parcial; 1 = sin motivo; 0 = nada.
+- **EX049 — Entrada del registro.** Redacte la entrada de seguimiento del aviso de DOOR-SRV. *Rúbrica:* 3 = aviso, producto y versión, decisión, mitigación, fecha del parche, responsable, revisión; 2 = la mayoría; 1 = poco; 0 = nada.
+- **EX050 — Comprobar una mitigación.** ¿Cómo confirmaría que la restricción de la interfaz funciona? *Rúbrica:* 3 = el responsable de la red confirma la regla; una prueba autorizada falla desde otra zona y funciona desde la oficina de seguridad; 2 = parcial; 1 = suponerlo; 0 = nada.
+
+### Síntesis del capítulo
+
+Los avisos se cotejan, se mitigan con rapidez, se parchean en franjas reservadas con alternativas preparadas y se siguen hasta su cierre.
+
+### Siga estudiando — capítulo 10 de 12
+
+[← Capítulo 09 (borrador)](#ch-09) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 11 (borrador) →](#ch-11)
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Respuesta a incidentes en los sistemas del edificio de un hospital
+
+### Resultados de aprendizaje
+
+Usted podrá (1) adaptar los pasos de respuesta a incidentes a los sistemas del edificio; (2) decidir cuándo aislar el BMS; y (3) coordinarse con los equipos clínicos, de mantenimiento y de informática.
+
+### 11.1 Planificar con antelación
+
+NIST SP 800-82r3 insiste en preparar la respuesta a incidentes de TO junto con el personal de operación. En un hospital eso significa que mantenimiento, los responsables clínicos de guardia del centro, el equipo de seguridad informática y los contratistas acuerdan de antemano quién dirige, cuál es la alternativa manual de cada sistema y cómo localizar a los contratistas de noche. Ponga el acuerdo por escrito en un plan breve con números de teléfono, la alternativa de cada sistema crítico y quién puede ordenar el aislamiento. Ensáyelo al menos una vez con mantenimiento y un contratista, quizá un fin de semana tranquilo. El primer incidente es el peor momento para descubrir que el contratista de la enfriadora no tiene contacto nocturno.
+
+### 11.2 Detectar y evaluar
+
+Una alarma, un punto de consigna fuera de ventana o una nota de rescate en BMS-WS ponen en marcha el proceso. La primera pregunta es clínica: ¿hay ahora alguna zona insegura? El responsable clínico de guardia y mantenimiento deciden las medidas de protección inmediatas, como trasladar una sesión quirúrgica o pasar a alarmas de oxígeno en botellas vigiladas por el personal. Solo cuando el panorama clínico está claro empieza la evaluación de seguridad: qué está afectado, cómo empezó y si se está extendiendo. En Millbrook, la primera llamada la noche del rescate fue a mantenimiento, que confirmó que los quirófanos estaban vacíos y las plantas con normalidad antes de que actuara el equipo de redes.
+
+### 11.3 Contener
+
+Si no se puede confiar en el BMS, los controladores normalmente pueden seguir ejecutando sus últimos horarios programados sin el servidor. Aislar la zona del BMS en su cortafuegos detiene nuevas órdenes remotas mientras las instalaciones siguen funcionando localmente. El personal de mantenimiento recorre las salas de máquinas y comprueba a mano los valores críticos. Antes de aislar, compruebe cómo se comporta cada controlador crítico sin el servidor, porque algunos vuelven a valores por defecto distintos del funcionamiento normal. En Millbrook los conductos se bloquearon a las 22:55 y los controladores siguieron con sus horarios, mientras los ingenieros de mantenimiento hacían rondas cada hora. Anote la hora de cada paso de contención para el registro del incidente.
+
+### 11.4 Evidencia y recuperación
+
+Conserve los registros y las imágenes antes de reconstruir; restaure BMS-WS y el servidor a partir de copias de seguridad verificadas; compare cada punto crítico con las lecturas locales; vuelva a conectar los conductos de uno en uno. Acuerde de antemano dónde se guardará la evidencia y quién la tomará, para que la reconstrucción no se retrase. En Millbrook el responsable del incidente hizo copiar al almacén de evidencias la imagen del disco de BMS-WS y el extracto del registro del cortafuegos de 22:00 a 23:00 antes de que empezara la reconstrucción. Conserve la evidencia hasta que el responsable del incidente decida que ya no es necesaria. Registre cada paso y su hora.
+
+### 11.5 Comunicación
+
+El responsable del incidente informa a la dirección del hospital, que decide sobre la notificación externa. Los analistas no se ponen en contacto por su cuenta con la prensa ni con los reguladores. Los analistas apoyan al responsable del incidente aportando hechos claros con horas y fuentes. Deben evitar mensajes informales a compañeros o contratistas que puedan difundir información inexacta. Si un regulador o un periodista se pone en contacto directamente con un analista, este traslada la petición al responsable del incidente sin hacer comentarios. Guarde una copia de cada actualización enviada, con su hora, para que el registro del incidente muestre qué se dijo y cuándo.
+
+### Ejemplo resuelto (Millbrook sintético)
+
+A las 22:40 BMS-WS muestra un mensaje de rescate. Mantenimiento confirma que los quirófanos están vacíos y las plantas con normalidad. El equipo de redes bloquea los conductos de la zona del BMS a las 22:55; los controladores siguen con sus horarios. Los ingenieros de mantenimiento hacen rondas cada hora. A la mañana siguiente BMS-WS se reconstruye a partir de una imagen verificada, se comprueba el servidor y los conductos quedan restaurados a las 14:00, tras comprobar los puntos.
+
+> **Caso sintético — Millbrook.** El incidente es inventado.
+
+### Errores y límites
+
+Algunos controladores pasan a valores seguros por defecto que difieren del funcionamiento normal; conózcalos antes de aislar. La supervisión mediante rondas no puede durar indefinidamente; planifique el personal.
+
+### Ejercicios — capítulo 11
+
+- **EX051 — Primera pregunta.** ¿Cuál es la primera pregunta cuando BMS-WS muestra un mensaje de rescate, y quién la responde? *Rúbrica:* 3 = ¿hay alguna zona clínica insegura?; responsable clínico de guardia y mantenimiento; 2 = solo la pregunta; 1 = una pregunta informática; 0 = nada.
+- **EX052 — Por qué el aislamiento es aceptable.** Explique por qué bloquear los conductos de la zona del BMS no detuvo la ventilación. *Rúbrica:* 3 = los controladores ejecutan horarios locales sin el servidor; 2 = parcial; 1 = sí la detuvo; 0 = nada.
+- **EX053 — Supervisión manual.** ¿Qué sustituye a la supervisión del BMS mientras está aislado? *Rúbrica:* 3 = rondas de mantenimiento leyendo los valores locales, comprobación de alarmas por el personal; 2 = parcial; 1 = vago; 0 = nada.
+- **EX054 — Reconexión.** Describa cómo se restauran los conductos tras la recuperación. *Rúbrica:* 3 = de uno en uno, comparando los puntos con las lecturas locales; 2 = parcial; 1 = todos a la vez; 0 = nada.
+- **EX055 — Valores seguros por defecto.** ¿Por qué debe conocer Aisha el comportamiento a prueba de fallos de los controladores antes de recomendar el aislamiento? *Rúbrica:* 3 = algunos valores por defecto cambian el funcionamiento (p. ej., ventiladores parados o al máximo) y podrían afectar a los pacientes; 2 = parcial; 1 = no hace falta; 0 = nada.
+
+### Síntesis del capítulo
+
+La seguridad clínica va primero, el control local mantiene las instalaciones, el aislamiento detiene el daño remoto y la evidencia precede a la recuperación.
+
+### Siga estudiando — capítulo 11 de 12
+
+[← Capítulo 10 (borrador)](#ch-10) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 12 (borrador) →](#ch-12)
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Proyecto final: un informe de riesgos de los sistemas del edificio
+
+### Resultados de aprendizaje
+
+Usted podrá (1) reunir en un informe de riesgos los hallazgos de inventario, exposición, acceso, segmentación y supervisión; (2) priorizar por consecuencia clínica y probabilidad; y (3) presentarlo a la dirección del hospital.
+
+### 12.1 Estructura
+
+Alcance y método; sistemas incluidos, con sus responsables; hallazgos, cada uno con su evidencia; valoración del riesgo; acciones recomendadas con responsables y fechas; riesgo residual que acepta el hospital. Limítelo a unas pocas páginas, con un anexo para la evidencia. Escriba primero el alcance, nombrando qué sistemas se revisaron y cuáles no, para que los lectores sepan qué cubre el informe. Cada hallazgo debe remitir a su evidencia en el anexo, y cada acción a un responsable. La parte de riesgo residual debe decir quién lo aceptó, según lo decidido por la dirección del hospital.
+
+### 12.2 Valoración
+
+Valore la consecuencia (daño a los pacientes, pérdida de servicio) y la probabilidad (exposición, facilidad, actividad conocida) con escalas sencillas de tres niveles, acordadas con los responsables de mantenimiento y clínicos. Una probabilidad media con una consecuencia grave para los pacientes suele estar por encima de una probabilidad alta con una consecuencia menor. Acuerde las escalas antes de valorar ningún hallazgo, y escriba una frase que explique cada nivel para que distintos lectores las apliquen de la misma manera. En Millbrook el controlador del ascensor obtuvo consecuencia alta y probabilidad media, lo que lo situó en lo más alto de la lista. Las valoraciones deben revisarse cuando cambie la evidencia.
+
+### 12.3 Recomendaciones
+
+Cada una nombra un cambio concreto, un responsable, una fecha y cómo se demostrará que está completada. Incluya mejoras rápidas (cerrar la exposición, retirar herramientas remotas antiguas) y proyectos más largos (sustituir instalaciones sin soporte). En Millbrook las recomendaciones incluyeron la sustitución de LIFT-CTRL y una comprobación semanal de las cuentas de la pasarela. Cada una se redactó con un responsable, una fecha y la evidencia que demostraría que está completada, como una orden de compra o un informe semanal de cuentas. Las recomendaciones vagas y sin responsable rara vez conducen a un cambio. Separe en la lista las mejoras rápidas de los proyectos.
+
+### 12.4 Presentación
+
+Empiece por los tres riesgos principales expresados en términos de pacientes; muestre lo que ya ha mejorado; pida decisiones, no admiración. Mantenga la presentación breve, con una diapositiva por cada riesgo principal y una diapositiva de mejoras. Lleve el anexo de evidencia por si la dirección pregunta, pero no lo presente. Termine con las decisiones concretas que se necesitan, como la financiación para sustituir LIFT-CTRL, y confirme quién actuará sobre cada decisión. Envíe después las diapositivas con el resumen, para que los directivos ausentes vean las mismas decisiones y responsables.
+
+### 12.5 Anexo de evidencia
+
+Para cada hallazgo, conserve la fotografía, el extracto de registro o el fragmento de configuración que lo respalda, con la fecha y quién lo recogió. La dirección rara vez lee el anexo, pero los auditores y el siguiente analista sí lo harán, y permite a cualquiera comprobar que el hallazgo era real. Guarde el anexo con controles de acceso, porque contiene detalles sobre dispositivos, direcciones y debilidades. Vincule cada elemento a su número de hallazgo y registre dónde se guarda la evidencia original. Un hallazgo sin ningún elemento que lo respalde debe marcarse como no confirmado hasta que se recoja evidencia.
+
+### 12.6 Después de la reunión
+
+Registre en el registro de seguimiento las decisiones tomadas, los responsables y las fechas, envíe un resumen de una página a los asistentes y reserve la revisión de los seis meses. El avance en las acciones se convierte en la diapositiva inicial de la próxima vez, lo que mantiene la atención en el cambio y no en los hallazgos nuevos. En la revisión de los seis meses, compruebe si se completó cada acción y actualice las valoraciones donde haya cambiado la evidencia. Las acciones retrasadas necesitan una fecha nueva y un motivo. Mantenga el resumen breve para que los asistentes lo lean, y archívelo con el informe.
+
+### Ejemplo resuelto (Millbrook sintético)
+
+El informe de Aisha enumera: (1) LIFT-CTRL sin soporte y con un enlace celular: consecuencia alta (traslados de pacientes), probabilidad media; (2) cuentas residuales de contratistas no desactivadas tras las sesiones: consecuencia alta, probabilidad media; (3) registros de tendencias conservados solo 14 días: consecuencia media, probabilidad alta. Ya corregido: la exposición de BACnet a internet, la estación BMS-WS conectada a dos redes y la contraseña por defecto de DOOR-SRV. La dirección aprueba financiar la sustitución de LIFT-CTRL el año que viene y una comprobación semanal de las cuentas de la pasarela.
+
+> **Caso sintético — Millbrook.** El informe y las valoraciones son inventados.
+
+### Errores y límites
+
+Un informe refleja la evidencia disponible en su fecha; programe una revisión. No es una evaluación formal según IEC 62443.
+
+### Ejercicios — capítulo 12
+
+- **EX056 — Secciones del informe.** Enumere las seis secciones del informe de riesgos. *Rúbrica:* 3 = alcance y método, sistemas y responsables, hallazgos y evidencia, valoración, acciones, riesgo residual; 2 = cuatro; 1 = dos; 0 = nada.
+- **EX057 — Ordenar dos riesgos.** Ordene «retención de tendencias del BMS de 14 días» frente a «ascensor sin soporte con enlace celular» y justifíquelo. *Rúbrica:* 3 = primero el ascensor; la consecuencia en los traslados de pacientes pesa más que la pérdida de evidencia; 2 = orden correcto; 1 = invertido; 0 = nada.
+- **EX058 — Redactar una recomendación.** Redacte una recomendación completa para las cuentas residuales de contratistas. *Rúbrica:* 3 = cambio concreto, responsable, fecha, evidencia de que está completada; 2 = tres; 1 = vago; 0 = nada.
+- **EX059 — Abrir la presentación.** Escriba la frase inicial de la presentación de Aisha a la dirección. *Rúbrica:* 3 = el riesgo principal en términos de pacientes, con la petición; 2 = clara pero técnica; 1 = jerga; 0 = nada.
+- **EX060 — Riesgo residual.** Indique un riesgo residual que Millbrook debe aceptar hasta el año que viene y por qué es aceptable. *Rúbrica:* 3 = LIFT-CTRL hasta su sustitución, nombrando los controles compensatorios; 2 = solo el riesgo; 1 = ninguno aceptado; 0 = nada.
+
+### Síntesis del capítulo
+
+Un informe breve, respaldado por evidencia, ordenado por consecuencia y con acciones asignadas convierte los hallazgos en cambios financiados.
+
+### Siga estudiando — capítulo 12 de 12
+
+[← Capítulo 11 (borrador)](#ch-11) · [Índice de capítulos del curso](../SUBJECTS.md) · [Resultados resueltos ↓](#worked-results) · [Siguiente curso a través del índice de capítulos →](../SUBJECTS.md)
 
 <a id="worked-results"></a>
 
@@ -686,6 +856,36 @@ Respuestas modelo para EX001–EX060. Millbrook Hospital Building Systems, Aisha
 **EX044.** El quirófano estaría fuera de su intervalo de temperatura al empezar la sesión quirúrgica de la mañana, así que la cirugía podría retrasarse hasta que se recuperen las condiciones, y el confort del personal y las condiciones de esterilidad se verían comprometidos.
 
 **EX045.** Exigir que todo cambio fuera de ventana se anote en el registro del turno con el motivo, y configurar una alarma del BMS dirigida al ingeniero de guardia cuando un punto de consigna crítico cambie fuera de la ventana.
+
+**EX046.** ¿Tenemos el producto? ¿Usamos una versión afectada? ¿Se puede alcanzar la debilidad de la forma que describe el aviso?
+
+**EX047.** Registrar que el aviso se aplica y no puede parchearse, mantener LIFT-CTRL aislado con solo su vía de mantenimiento, supervisar sus conexiones y subir la prioridad de su sustitución en el plan de inversiones.
+
+**EX048.** Durante la interrupción de 30 minutos los horarios electrónicos de las puertas pueden no funcionar, así que los supervisores de planta necesitan llaves para mantener las puertas de farmacia y de maternidad a la vez seguras y utilizables.
+
+**EX049.** «Aviso: elusión de la autenticación web de DOOR-SRV, v4.1 (la nuestra). Decisión: mitigar y después parchear. Mitigación: interfaz limitada a la estación de trabajo de la oficina de seguridad. Parche 4.2 el domingo a las 06:00 con llaves manuales. Responsable: responsable de sistemas de seguridad de mantenimiento. Revisión tras el parche.»
+
+**EX050.** Pedir al responsable de la red que muestre la regla y después, en una prueba acordada, confirmar que la página web carga desde la estación de trabajo de la oficina de seguridad y falla desde otro equipo de la zona de control de accesos.
+
+**EX051.** «¿Hay ahora mismo alguna zona clínica insegura?», que responde el responsable clínico de guardia junto con mantenimiento, antes de cualquier acción técnica.
+
+**EX052.** Los controladores de campo guardan sus propios programas y horarios y siguen haciendo funcionar las unidades de tratamiento de aire sin el servidor ni la estación de trabajo del BMS; el cortafuegos solo detuvo las órdenes procedentes de fuera de la zona.
+
+**EX053.** Rondas de mantenimiento cada hora leyendo las pantallas locales en las salas de máquinas, y el personal de las plantas y de los quirófanos vigilando las alarmas locales, incluidos los paneles de gases medicinales.
+
+**EX054.** Tras la reconstrucción, el equipo de redes reactiva un conducto cada vez, y mantenimiento compara cada punto crítico del BMS con las lecturas locales antes de restaurar el siguiente conducto.
+
+**EX055.** Algunos controladores vuelven a valores por defecto, como ventiladores a velocidad fija o compuertas cerradas, cuando pierden el servidor, lo que podría alterar la presión de los quirófanos, así que la recomendación debe tener en cuenta ese comportamiento.
+
+**EX056.** Alcance y método; sistemas incluidos y responsables; hallazgos con evidencia; valoración del riesgo; acciones recomendadas con responsables y fechas; riesgo residual aceptado.
+
+**EX057.** El ascensor va primero: si se usa indebidamente o falla, los traslados de pacientes entre plantas se retrasan, un daño clínico directo, mientras que una retención corta de las tendencias debilita sobre todo las investigaciones.
+
+**EX058.** «Las cuentas de la pasarela se desactivan automáticamente al terminar cada sesión asociada a un ticket; responsable: jefe del equipo de redes; plazo: final del mes que viene; evidencia: informe semanal que muestre que no hay cuentas de contratistas activadas fuera de tickets abiertos.»
+
+**EX059.** «Nuestros ascensores trasladan pacientes entre los quirófanos y las plantas, y su controlador ya no puede recibir parches; les pedimos que financien su sustitución el año que viene.»
+
+**EX060.** LIFT-CTRL sigue en servicio hasta su sustitución; es aceptable porque está aislado en su propia zona, su enlace celular está restringido al centro de servicio del contratista y sujeto a tickets, y sus conexiones se supervisan.
 
 <a id="references"></a>
 
