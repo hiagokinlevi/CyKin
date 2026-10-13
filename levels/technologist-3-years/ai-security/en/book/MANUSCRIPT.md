@@ -1522,7 +1522,7 @@ Reproduce on staging with synthetic data. Keep production evidence read-only. If
 
 ### 20.4 Fix and prevent
 
-Fix the cause, add a regression test to the harness, and update runbooks. If the root cause was a design trust assumption, fix the design, not just the symptom. The 60-day case was fixed at both levels: the expired page was removed, and the design gained an expiry field and a nightly job so expired content cannot reach answers again. A regression test asks about the return window on every change. The runbook for wrong policy answers now begins with checking retrieved documents for expired content.
+Fix the cause, add a regression test to the harness, and update runbooks. If the root cause was a design trust assumption, fix the design, not just the symptom. The 60-day case was fixed at both levels: the expired page was removed, and the design gained an expiry field and a nightly job so expired content cannot reach answers again. A regression test asks about the return window on every change. The runbook for wrong policy answers now checks retrieved documents for expired content right after the version check.
 
 ### 20.4b Communicating during troubleshooting
 
@@ -1538,7 +1538,7 @@ Customers report the assistant quoting a 60-day return window; the policy is 30 
 - Debugging in production.
 - Fixes without regression tests.
 
-The 60-day case avoided each: Jonas checked versions and data before blaming the model, reproduced on staging, and added a regression test. Had he debugged in production, a test question could have reached a real customer's conversation. Without the test, the next expired campaign page would bring the same symptom back. The runbook now lists these checks in that order. Checking versions and retrieval first takes minutes and rules out the commonest causes. Its first step is the version check, and its second is a check of retrieved documents for expired content.
+The 60-day case avoided each: Jonas checked versions and data before blaming the model, reproduced on staging, and added a regression test. Had he debugged in production, a test question could have reached a real customer's conversation. Without the test, the next expired campaign page would bring the same symptom back. The runbook now lists these checks in that order: its first step is the version check, and its second is a check of retrieved documents for expired content. Checking versions and retrieval first takes minutes and rules out the commonest causes.
 
 ### Exercises
 
@@ -1576,7 +1576,7 @@ When one AI service calls another, treat the response as untrusted input. An inj
 
 ### 21.4 Integration contracts
 
-Write down for each integration: data exchanged, format, validation rules, authentication, rate limits, error handling, and who to contact. Review contracts when either side changes. For the email writer integration, the contract records that Ask Brightwell sends a template ID and one short escaped field, that mail goes only to the verified address, the one-email rate limit, and contacts in marketing and Jonas's team. Either side changing triggers a review against this contract. The email writer contract is the first written this way, and it now serves as Brightwell's template for later integrations.
+Write down for each integration: data exchanged, format, validation rules, authentication, rate limits, error handling, and who to contact. Review contracts when either side changes. For the email writer integration, the contract records that Ask Brightwell sends a template ID and one short escaped field, that mail goes only to the verified address, the one-email rate limit, and contacts in marketing and Jonas's team. The email writer contract is the first written this way, and it now serves as Brightwell's template for later integrations.
 
 ### 21.4b Testing integrations
 
