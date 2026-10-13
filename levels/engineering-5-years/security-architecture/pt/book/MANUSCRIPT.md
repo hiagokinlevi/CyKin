@@ -1,7 +1,7 @@
 # Arquitetura e Engenharia de Segurança: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 122, curso de engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–42 de 50 já estão escritos em português, com os exercícios EX001–EX126 e suas resoluções com rubricas de 0 a 3 e 13 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 43–50 (EX127–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–50 de 50 têm texto didático escrito à mão; os exercícios EX001–EX150 têm resoluções correspondentes com rubricas de 0 a 3; os quinze laboratórios offline usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos, e suas saídas foram incorporadas de execuções reais, idênticas às da edição em inglês. Revisão independente, revisão linguística e a verificação de 300 páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que vão projetar, verificar e operar sistemas seguros.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios calculam crescimento, fecho transitivo, probabilidades, disponibilidade, árvores de falhas, limites de taxa, diferenças entre regras, métricas e digests sobre dados sintéticos, e usam sqlite3 em memória para mostrar a injeção e sua correção; nada toca um sistema real. Projetos de produção usam produtos e padrões consagrados; nunca crie sua própria criptografia. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,7 @@ Saltzer e Schroeder (1975), [doi:10.1109/PROC.1975.9939](https://doi.org/10.1109
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) · [41](#ch-41) · [42](#ch-42) |
-
-Capítulos 43–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-43), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) · [25](#ch-25) · [26](#ch-26) · [27](#ch-27) · [28](#ch-28) · [29](#ch-29) · [30](#ch-30) · [31](#ch-31) · [32](#ch-32) · [33](#ch-33) · [34](#ch-34) · [35](#ch-35) · [36](#ch-36) · [37](#ch-37) · [38](#ch-38) · [39](#ch-39) · [40](#ch-40) · [41](#ch-41) · [42](#ch-42) · [43](#ch-43) · [44](#ch-44) · [45](#ch-45) · [46](#ch-46) · [47](#ch-47) · [48](#ch-48) · [49](#ch-49) · [50](#ch-50) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1949,11 +1947,362 @@ Desenhos antes e depois não conseguem excluir mudanças simultâneas. Contagens
 
 - **EX126 — Fator de confusão.** Que fator de confusão limita a conclusão? *Rubrica:* 3 = as melhorias nos registros de ativos aconteceram ao mesmo tempo;; 2 = registros de ativos;; 1 = nenhuma;; 0 = nenhuma.
 
+<a id="ch-43"></a>
+
+## Capítulo 43 — Prática na indústria ou no serviço público
+
+### Objetivos de aprendizagem
+
+Você vai (1) trabalhar dentro de uma equipe profissional de arquitetura; (2) aplicar os métodos do curso sob pressão real de prazo e orçamento; (3) refletir sobre as diferenças entre o estudo e a prática.
+
+### 43.1 Entrar na equipe
+
+No quinto ano, Sofia passa um semestre como integrante júnior da equipe de arquitetura da Corvia. Suas tarefas são reais, mas supervisionadas: revisar projetos enviados pelas equipes de projeto, manter o modelo de arquitetura, participar de sessões de modelagem de ameaças e redigir registros de decisão. Ela logo descobre que os projetos raramente chegam com declarações de contexto ou requisitos completos. Boa parte do seu trabalho é fazer as perguntas dos capítulos 20 e 21 a gerentes de projeto ocupados, com educação e persistência, porque a revisão não avança sem respostas. A arquitetura profissional é tanto facilitação quanto conhecimento técnico.
+
+### 43.2 Pressão e pragmatismo
+
+Um projeto para acrescentar um novo parceiro de integração com bicicletas compartilhadas precisa ser lançado em três semanas. Um processo de projeto completo é impossível. Sofia e seu supervisor acordam uma revisão proporcional: confirmar que a integração usa o gateway de parceiros com tokens com escopo, verificar os dados compartilhados contra a classificação, conduzir uma sessão de modelagem de ameaças de uma hora e registrar dois riscos residuais para o responsável do negócio aceitar. Eles documentam o que não foi revisado. Sofia aprende que uma revisão proporcional, com registros honestos de seus limites, protege a organização melhor do que bloquear todo projeto ou aprovar sem olhar.
+
+### 43.3 Estudo versus prática
+
+Sofia mantém um diário reflexivo. No estudo, os problemas eram bem definidos e as informações completas; na prática, as informações são parciais e mudam toda semana. No estudo, ela era dona dos seus projetos; na prática, influencia projetos de outras pessoas. Os métodos continuam valendo, mas em formas mais leves: um esboço rápido de fluxo de dados em vez de um modelo completo, uma lista de riscos ordenada em vez de uma análise quantitativa. O feedback do seu supervisor observa que seu ponto forte é a escrita clara e sua área de desenvolvimento é a negociação. O diário passa a fazer parte do seu portfólio final.
+
+### Exemplo resolvido
+
+Sofia revisa projetos, conduz em três semanas uma revisão proporcional de uma integração com bicicletas compartilhadas com dois riscos residuais aceitos e registra reflexões comparando estudo e prática.
+
+> **Caso sintético.** A equipe, os projetos e o feedback são sintéticos.
+
+### Erros e limites
+
+Revisões proporcionais podem deixar passar problemas; seus limites precisam ser registrados. A experiência de estágio numa organização pode não se generalizar.
+
+### Exercícios
+
+- **EX127 — Constatação sobre facilitação.** Em que Sofia constatou que consistia boa parte do seu trabalho de revisão? *Rubrica:* 3 = fazer perguntas de contexto e requisitos a gerentes de projeto ocupados;; 2 = perguntas;; 1 = programar;; 0 = nenhuma.
+
+- **EX128 — Revisão proporcional.** O que incluiu a revisão da integração com bicicletas compartilhadas? *Rubrica:* 3 = verificação do gateway e dos tokens com escopo, verificação da classificação dos dados, modelagem de ameaças de uma hora, dois riscos residuais aceitos;; 2 = três;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX129 — Área de desenvolvimento.** Que área de desenvolvimento seu supervisor apontou? *Rubrica:* 3 = negociação;; 2 = negociação;; 1 = escrita;; 0 = nenhuma.
+
+<a id="ch-44"></a>
+
+## Capítulo 44 — Projeto final de engenharia I
+
+### Objetivos de aprendizagem
+
+Você vai (1) definir um problema de arquitetura para o projeto final, com escopo e critérios de sucesso; (2) planejar as evidências do projeto final; (3) obter o acordo do supervisor e da parceira.
+
+### 44.1 Escolher o problema
+
+Para seu projeto final, Sofia escolhe a arquitetura de segurança do back-office da bilhetagem baseada em conta da Corvia, partindo do Ateliê de Projeto II, mas com profundidade de implementação numa fatia definida: ingestão das validações, cálculo das tarifas e tratamento das contestações. O problema é real, delimitado e avaliável. Ela escreve critérios de sucesso: todas as ameaças de alta prioridade mitigadas ou aceitas pelos responsáveis; testes de verificação aprovados para todo requisito de segurança no escopo; um ensaio de recuperação que cumpra um tempo de recuperação declarado; e uma revisão independente sem achados críticos não resolvidos. Critérios claros permitem que os examinadores julguem o sucesso sem depender de impressões.
+
+### 44.2 Planejar as evidências
+
+Sofia planeja as evidências que vai produzir: os requisitos e a tabela de rastreabilidade, o modelo de ameaças, as especificações dos controles, os relatórios de verificação, um relatório do ensaio de recuperação, as linhas de base das métricas e o relatório da revisão independente. Cada evidência sustenta uma afirmação no assurance case final. Ela as programa de trás para a frente a partir da data de entrega, deixando tempo para revisões depois da revisão independente. Daniel avisa que os projetos finais fracassam mais por evidências atrasadas do que por projetos ruins, porque os estudantes deixam os testes e a documentação para o fim, quando não há tempo para corrigir o que eles revelam.
+
+### 44.3 Acordo e limites
+
+Sofia escreve um termo de projeto final assinado por seu supervisor na universidade, por Daniel e pelo chefe dos sistemas de bilhetagem da Corvia. Ele declara o escopo, as entregas, o ambiente de laboratório que ela pode usar, as restrições de dados e como a Corvia pode usar seu trabalho. Ele exclui mudanças em produção; qualquer implementação acontece num espelho de laboratório. Também trata da propriedade intelectual e da publicação: sua tese pode descrever a arquitetura em termos gerais, mas não revelar fraquezas específicas. Acordar esses pontos cedo evita disputas depois e protege tanto a estudante quanto a parceira.
+
+### Exemplo resolvido
+
+Sofia delimita um projeto final de três componentes com quatro critérios de sucesso, programa sete evidências de trás para a frente a partir da entrega e assina um termo com três partes.
+
+> **Caso sintético.** O projeto final, o termo e as partes são sintéticos.
+
+### Erros e limites
+
+Os critérios de sucesso podem ser manipulados se forem estreitos demais. Os espelhos de laboratório podem não ter a complexidade da produção.
+
+### Exercícios
+
+- **EX130 — Critérios de sucesso.** Cite dois critérios de sucesso do projeto final de Sofia. *Rubrica:* 3 = dois entre ameaças mitigadas ou aceitas, testes de verificação aprovados, tempo de recuperação cumprido, revisão sem achados críticos;; 2 = um;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX131 — Fracasso comum.** Segundo Daniel, por que os projetos finais costumam fracassar? *Rubrica:* 3 = evidências produzidas tarde demais para corrigir o que revelam;; 2 = evidências atrasadas;; 1 = projeto ruim;; 0 = nenhuma.
+
+- **EX132 — Exclusão do termo.** O que o termo exclui? *Rubrica:* 3 = mudanças em produção; o trabalho acontece num espelho de laboratório;; 2 = produção;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-45"></a>
+
+## Capítulo 45 — Revisão independente de projeto
+
+### Objetivos de aprendizagem
+
+Você vai (1) preparar um projeto para revisão independente; (2) responder aos achados da revisão; (3) revisar o projeto de outro estudante de forma construtiva.
+
+### 45.1 Preparar-se para a revisão
+
+Sofia envia o pacote de projeto do seu projeto final a um revisor independente, um arquiteto sênior de outra operadora de transporte, sob um acordo de confidencialidade. Ela inclui um guia de leitura que declara o escopo, as decisões principais, as questões em aberto conhecidas e as perguntas específicas que quer ver examinadas, como se o seu projeto de detecção de replay se sustenta na carga de pico. Guiar o revisor torna a revisão mais útil: um revisor sem orientação pode passar horas em diagramas menores e deixar passar as decisões que mais importam. Ela também lista o que está fora do escopo, para que o revisor não suponha que foi esquecido.
+
+### 45.2 Responder aos achados
+
+O revisor devolve doze achados: um crítico, quatro maiores e sete menores. O achado crítico é que o tratamento das contestações permite que os atendentes ajustem tarifas sem uma segunda aprovação acima de um limite, repetindo um padrão visto no capítulo 14. Sofia o corrige com uma regra de dupla aprovação e novos testes. Num dos achados maiores, sobre a retenção de logs, ela discorda e explica por quê, com referência aos requisitos de privacidade; o revisor aceita a explicação. Ela registra cada achado, resposta e evidência numa tabela. Responder bem significa corrigir o que está certo e argumentar com respeito onde ela tem evidências.
+
+### 45.3 Revisar os outros
+
+Sofia também revisa o projeto final de um colega sobre o controle de acesso às garagens. Ela usa a mesma abordagem que valorizou: ler o guia, concentrar-se nas decisões principais, classificar os achados por gravidade e sugerir correções. Ela descobre que a revogação dos crachás depende de um processamento em lote noturno, o que deixa uma janela de até um dia para funcionários demitidos. Ela redige o achado com o cenário, o impacto e uma melhoria sugerida, evitando linguagem de julgamento. Revisar ensina tanto quanto ser revisado, porque a treina para ver os próprios projetos com os olhos de alguém de fora, cético.
+
+### Exemplo resolvido
+
+Sofia orienta um revisor externo, corrige uma lacuna crítica de dupla aprovação, contesta com evidências um achado maior e revisa o projeto de acesso às garagens de um colega.
+
+> **Caso sintético.** Os revisores, os achados e o projeto do colega são sintéticos.
+
+### Erros e limites
+
+Um único revisor tem pontos cegos; projetos importantes se beneficiam de vários. As divergências precisam de evidências, não de senioridade.
+
+### Exercícios
+
+- **EX133 — Guia de leitura.** O que o guia de leitura de Sofia inclui? *Rubrica:* 3 = escopo, decisões principais, questões em aberto, perguntas específicas, itens fora do escopo;; 2 = três;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX134 — Achado crítico.** Qual foi o achado crítico e sua correção? *Rubrica:* 3 = atendentes ajustando tarifas sem segunda aprovação; dupla aprovação acima de um limite;; 2 = os dois;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX135 — Achado no projeto do colega.** Que fraqueza Sofia encontrou no projeto do colega? *Rubrica:* 3 = a revogação em lote noturno deixa até um dia de acesso para funcionários demitidos;; 2 = lote;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-46"></a>
+
+## Capítulo 46 — Projeto final de engenharia II
+
+### Objetivos de aprendizagem
+
+Você vai (1) implementar e verificar a fatia do projeto final num espelho de laboratório; (2) construir um assurance case que ligue afirmações a evidências; (3) gerenciar mudanças de escopo no fim de um projeto.
+
+### 46.1 Implementação no espelho
+
+Sofia implementa a fatia do projeto final num espelho de laboratório do back-office, usando validadores e passageiros sintéticos. Ela configura a ingestão com certificados de dispositivo, detecção de replay e carga de tarifas assinadas; o cálculo das tarifas com tarifas versionadas; e o tratamento das contestações com dupla aprovação. Ela roda de novo as suítes de verificação dos capítulos 30 e 40, adaptadas ao novo projeto, e acrescenta testes para os achados da revisão independente. Todos os requisitos de segurança no escopo agora têm testes aprovados, com duas exceções documentadas em que o laboratório não consegue reproduzir o hardware de produção.
+
+### 46.2 O assurance case
+
+Um assurance case é um argumento estruturado de que um sistema atende às suas afirmações de segurança, sustentado por evidências. A afirmação principal de Sofia é que a fatia do back-office protege a integridade das tarifas e a privacidade dos passageiros dentro do escopo declarado. As subafirmações cobrem entradas autênticas, cálculo correto, contestações controladas e dados protegidos. Cada subafirmação se liga a requisitos, controles, resultados de verificação e achados de revisão. O NIST SP 800-160 Vol. 1 Rev. 1 enfatiza a garantia (assurance) como confiança baseada em evidências. O case torna as lacunas visíveis: uma subafirmação depende apenas da revisão de projeto, então ela acrescenta um teste.
+
+### 46.3 Mudanças de escopo tardias
+
+Dois meses antes da entrega, a Corvia lhe pede que acrescente os reembolsos ao projeto final. Sofia avalia a mudança: os reembolsos exigiriam novos requisitos, análise de ameaças e testes, colocando em risco a qualidade de todo o resto. Ela propõe, em vez disso, documentar como a arquitetura se estenderia aos reembolsos, sem implementá-los, e listar isso como trabalho futuro. Seu supervisor e Daniel concordam. Gerenciar o escopo significa proteger a qualidade do trabalho já assumido; dizer não com uma alternativa fundamentada é uma habilidade profissional, e não uma falta de cooperação.
+
+### Exemplo resolvido
+
+Sofia implementa a fatia num espelho de laboratório com testes aprovados, constrói um assurance case que expõe uma subafirmação sem testes e recusa o acréscimo tardio dos reembolsos com um plano de extensão documentado.
+
+> **Caso sintético.** O espelho de laboratório, o assurance case e o pedido são sintéticos; o SP 800-160 Vol. 1 Rev. 1 é real.
+
+### Erros e limites
+
+Assurance cases podem dar falsa confiança se as evidências forem fracas. As exceções do laboratório precisam ser validadas depois em produção.
+
+### Exercícios
+
+- **EX136 — Exceções do laboratório.** Quantos requisitos não puderam ser testados no laboratório, e por quê? *Rubrica:* 3 = dois, porque o laboratório não consegue reproduzir o hardware de produção;; 2 = contagem e motivo;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX137 — Lacuna do assurance case.** Que lacuna o assurance case revelou? *Rubrica:* 3 = uma subafirmação dependia apenas da revisão de projeto; foi acrescentado um teste;; 2 = só revisão;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX138 — Resposta ao escopo.** Como Sofia respondeu ao pedido tardio dos reembolsos? *Rubrica:* 3 = propôs documentar a extensão como trabalho futuro em vez de implementá-la;; 2 = alternativa;; 1 = aceitou;; 0 = nenhuma.
+
+<a id="ch-47"></a>
+
+## Capítulo 47 — Ensaio de falha e recuperação
+
+### Objetivos de aprendizagem
+
+Você vai (1) planejar um ensaio controlado de falha e recuperação; (2) medir a recuperação contra os objetivos; (3) melhorar os procedimentos de recuperação a partir das evidências do ensaio.
+
+### 47.1 Planejar o ensaio
+
+O projeto final de Sofia inclui um ensaio de recuperação no espelho de laboratório. O cenário: um ransomware criptografa os servidores de cálculo das tarifas, e a equipe precisa restaurar o serviço a partir de backups offline enquanto os validadores continuam operando offline. Os objetivos são um tempo de recuperação de quatro horas para o cálculo das tarifas e nenhuma perda de registros de validação, já que os validadores os guardam em buffer. Ela escreve o plano com papéis, etapas, critérios de sucesso, limites de segurança e um procedimento de interrupção, e informa todos os envolvidos. Os ensaios são preparados com cuidado porque o propósito é aprender com segurança, e não causar uma indisponibilidade real.
+
+### 47.2 Executar e medir
+
+Durante o ensaio, a equipe reconstrói os servidores a partir de imagens, restaura o banco de dados a partir do último backup offline, recarrega as tabelas de tarifas verificadas e reprocessa os registros de validação guardados em buffer. Sofia registra os tempos de cada etapa. O laboratório abaixo resume os tempos sintéticos: a recuperação total excede o objetivo de quatro horas porque a restauração do banco de dados e o reprocessamento dos registros levam mais tempo do que o planejado. Nenhum registro de validação é perdido. Os tempos medidos substituem as estimativas otimistas no plano de recuperação, o que é o principal valor do ensaio: agora o plano reflete o que a equipe de fato consegue fazer.
+
+### Laboratório — Tempos do ensaio de recuperação
+
+```python
+# Synthetic recovery trial step timings (minutes) vs a 4-hour objective.
+steps = [("declare and isolate", 20), ("rebuild servers from images", 55), ("restore database", 120),
+         ("reload verified tariffs", 15), ("replay buffered tap records", 95), ("reconcile and sign-off", 20)]
+total = sum(m for _, m in steps)
+for s, m in steps: print(f"{s:30} {m:4d} min")
+print(f"total {total} min = {total/60:.1f} h; objective 240 min; met: {total <= 240}")
+print("tap records lost: 0 (validators buffered all records)")
+```
+
+Execute com `python3 lab_recovery.py`. Saída verificada:
+
+```text
+declare and isolate              20 min
+rebuild servers from images      55 min
+restore database                120 min
+reload verified tariffs          15 min
+replay buffered tap records      95 min
+reconcile and sign-off           20 min
+total 325 min = 5.4 h; objective 240 min; met: False
+tap records lost: 0 (validators buffered all records)
+```
+
+### 47.3 Melhorar o procedimento
+
+A equipe analisa o estouro. A restauração do banco de dados foi lenta porque os backups foram comprimidos com uma configuração que limita a restauração paralela; o reprocessamento dos registros foi lento porque processava os registros um de cada vez. Sofia propõe mudar o formato do backup e processar o reprocessamento em lotes, e então roda de novo essas duas etapas, reduzindo bastante o tempo combinado. Ela atualiza o runbook de recuperação e agenda o próximo ensaio completo. A função recover do NIST CSF 2.0 enfatiza a melhoria do planejamento de recuperação a partir das lições aprendidas, e o ensaio põe esse princípio em prática com números, e não com opiniões.
+
+### Exemplo resolvido
+
+Sofia conduz um ensaio de recuperação de ransomware no espelho de laboratório, mede um tempo total acima do objetivo de quatro horas sem perda de registros e corrige os gargalos da restauração e do reprocessamento.
+
+> **Caso sintético.** O ensaio, os tempos e as correções são sintéticos; o NIST CSF 2.0 é real.
+
+### Erros e limites
+
+Os ensaios de laboratório omitem o estresse e os problemas de coordenação do mundo real. Os backups precisam ser testados quanto à integridade, não só à velocidade.
+
+### Exercícios
+
+- **EX139 — Objetivos do ensaio.** Quais eram os dois objetivos de recuperação? *Rubrica:* 3 = cálculo das tarifas restaurado em quatro horas e nenhum registro de validação perdido;; 2 = os dois;; 1 = um;; 0 = nenhuma.
+
+- **EX140 — Resultado dos tempos no laboratório.** Que tempo total de recuperação o laboratório relatou, e quais etapas estouraram? *Rubrica:* 3 = 325 minutos (5,4 horas); a restauração do banco (120 min) e o reprocessamento dos registros (95 min) dominaram;; 2 = os dois;; 1 = cumprido;; 0 = nenhuma.
+
+- **EX141 — Duas correções.** Que duas correções Sofia propôs? *Rubrica:* 3 = mudar a compressão do backup para permitir restauração paralela; reprocessar os registros em lotes;; 2 = as duas;; 1 = uma;; 0 = nenhuma.
+
+<a id="ch-48"></a>
+
+## Capítulo 48 — Dossiê de evidências
+
+### Objetivos de aprendizagem
+
+Você vai (1) compilar um dossiê de evidências que sustente o assurance case; (2) proteger a integridade das evidências com manifestos; (3) mapear as evidências para normas, para públicos externos.
+
+### 48.1 Compilar o dossiê
+
+Sofia compila as evidências do seu projeto final num dossiê: requisitos e rastreabilidade, modelo de ameaças, registros de decisão, especificações dos controles, relatórios de verificação, respostas à revisão independente, relatório do ensaio de recuperação, linhas de base das métricas e o assurance case. Cada item tem um identificador, data, autor e as afirmações que sustenta. O dossiê é organizado pela estrutura do assurance case, para que um examinador consiga seguir qualquer afirmação até sua evidência. Daniel observa que a mesma disciplina é usada em setores regulados, nos quais os auditores esperam rastrear as afirmações até as evidências sem pedir aos engenheiros que expliquem de memória.
+
+### 48.2 Integridade das evidências
+
+Uma evidência que pode ser alterada em silêncio é fraca. Sofia gera um manifesto que lista cada arquivo do dossiê com seu digest SHA-256, conforme especificado no FIPS 180-4, e guarda o manifesto separadamente com seu supervisor. Qualquer pessoa pode depois verificar que o dossiê não foi alterado desde a entrega. O laboratório abaixo constrói um manifesto para arquivos sintéticos do dossiê e o verifica, sinalizando um arquivo editado depois que o manifesto foi criado. Para garantias mais fortes, o próprio manifesto poderia ser assinado, mas, para uma entrega acadêmica, a cópia guardada separadamente é suficiente.
+
+### Laboratório — Manifesto do dossiê
+
+```python
+# SHA-256 manifest for synthetic dossier files (FIPS 180-4 via hashlib).
+import hashlib
+files = {"assurance_case.md": b"Claim C1 fare integrity...\n", "threat_model.md": b"STRIDE table v4\n",
+         "verification_report.md": b"30 tests, 30 pass\n", "recovery_trial.md": b"total 325 min\n"}
+manifest = {k: hashlib.sha256(v).hexdigest() for k, v in files.items()}
+files["verification_report.md"] = b"30 tests, 30 pass (edited)\n"
+for k, v in files.items():
+    print(f"{k:24} {'OK' if hashlib.sha256(v).hexdigest() == manifest[k] else 'CHANGED'}")
+```
+
+Execute com `python3 lab_dossier.py`. Saída verificada:
+
+```text
+assurance_case.md        OK
+threat_model.md          OK
+verification_report.md   CHANGED
+recovery_trial.md        OK
+```
+
+### 48.3 Mapear para normas
+
+Leitores externos costumam perguntar como um projeto se relaciona com normas conhecidas. Sofia acrescenta uma tabela de mapeamento que liga seus controles às famílias de controles do NIST SP 800-53 Rev. 5 e aos controles da ISO/IEC 27002:2022, com uma nota de que o mapeamento mostra cobertura de temas, e não certificação ou conformidade. Por exemplo, as tabelas de tarifas assinadas se ligam a controles relacionados à integridade, e as revisões de acesso dos atendentes de contestação se ligam ao controle de acesso. O mapeamento ajuda os auditores da Corvia e os futuros engenheiros a situar seu trabalho em frameworks conhecidos, enquanto a nota impede que os leitores exagerem o que o mapeamento prova.
+
+### Exemplo resolvido
+
+Sofia organiza seu dossiê pelas afirmações do assurance case, cria um manifesto SHA-256 guardado por seu supervisor e mapeia os controles para o SP 800-53 Rev. 5 e a ISO/IEC 27002:2022, com a ressalva de que mostra apenas cobertura.
+
+> **Caso sintético.** O conteúdo do dossiê é sintético; o FIPS 180-4, o SP 800-53 Rev. 5 e a ISO/IEC 27002:2022 são reais.
+
+### Erros e limites
+
+Os manifestos detectam alterações, mas não se a evidência original era sólida. Os mapeamentos podem ser lidos erroneamente como alegações de conformidade.
+
+### Exercícios
+
+- **EX142 — Organização do dossiê.** Como o dossiê é organizado, e por quê? *Rubrica:* 3 = pela estrutura do assurance case, para que qualquer afirmação possa ser rastreada até a evidência;; 2 = estrutura;; 1 = alfabética;; 0 = nenhuma.
+
+- **EX143 — Resultado do manifesto no laboratório.** Que arquivo o laboratório do dossiê sinalizou? *Rubrica:* 3 = verification_report.md, editado depois que o manifesto foi criado;; 2 = arquivo nomeado;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX144 — Ressalva do mapeamento.** Que ressalva acompanha o mapeamento para normas? *Rubrica:* 3 = mostra cobertura de temas, não certificação ou conformidade;; 2 = cobertura;; 1 = conformidade;; 0 = nenhuma.
+
+<a id="ch-49"></a>
+
+## Capítulo 49 — Tese de engenharia
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever uma tese de engenharia que argumente a partir de evidências; (2) apresentar a justificativa do projeto, os resultados e as limitações; (3) contribuir com conhecimento reutilizável para a prática.
+
+### 49.1 O argumento da tese
+
+A tese de Sofia argumenta que uma arquitetura de back-office em camadas, com entradas autenticadas, tarifas assinadas e versionadas, contestações com dupla aprovação e recuperação ensaiada, pode proteger a integridade das tarifas e a privacidade dos passageiros na bilhetagem baseada em conta, dentro de premissas declaradas. A tese não é um diário de projeto. Cada capítulo sustenta uma parte do argumento: contexto e requisitos, projeto e alternativas, implementação e verificação, validação e recuperação, e discussão. Ela escreve primeiro a conclusão como uma lista de afirmações e depois confere se cada capítulo entrega evidências para pelo menos uma afirmação e se nenhuma afirmação fica sem apoio.
+
+### 49.2 Justificativa e resultados
+
+Para cada escolha de projeto importante, a tese explica as alternativas consideradas, os critérios e os motivos, com base nos registros de decisão. Os resultados incluem as taxas de aprovação da verificação, os achados do red team e do estudo com usuários, os tempos do ensaio de recuperação antes e depois da melhoria e métricas como a tempestividade da revogação. Sofia apresenta os números com contexto: o tempo de recuperação melhorou depois das correções, mas só foi demonstrado num espelho de laboratório. Ela referencia normas reais, como o SP 800-160 Vol. 1 Rev. 1 e o SP 800-53 Rev. 5, onde orientaram as escolhas, e evita sugerir que seguir uma norma garante a segurança.
+
+### 49.3 Limitações e reuso
+
+As limitações incluem as diferenças entre o espelho de laboratório e a produção, os dados sintéticos de passageiros, o contexto de uma única organização e a ausência de evidências operacionais de longo prazo. Sofia declara cada uma com seu provável efeito. Para tornar o trabalho reutilizável, ela generaliza padrões: configuração assinada com verificações de publicação independentes, revogação disparada pelo status do ativo com conciliação e revisão proporcional para projetos rápidos. Cada padrão inclui quando se aplica e quando não se aplica. Padrões reutilizáveis costumam ser o resultado mais valioso de uma tese de engenharia, porque outros engenheiros podem adaptá-los sem repetir o projeto inteiro.
+
+### Exemplo resolvido
+
+Sofia estrutura sua tese em torno de afirmações listadas, apresenta a justificativa e os resultados medidos com contexto, declara quatro limitações e generaliza três padrões reutilizáveis.
+
+> **Caso sintético.** O conteúdo da tese é sintético; o SP 800-160 Vol. 1 Rev. 1 e o SP 800-53 Rev. 5 são reais.
+
+### Erros e limites
+
+Padrões abstraídos de um único caso podem não se transferir. Os resultados de laboratório precisam de confirmação em produção.
+
+### Exercícios
+
+- **EX145 — Não é um diário.** Como uma tese difere de um diário de projeto? *Rubrica:* 3 = argumenta afirmações com evidências, em vez de narrar acontecimentos;; 2 = argumento;; 1 = iguais;; 0 = nenhuma.
+
+- **EX146 — Contexto da recuperação.** Que contexto Sofia dá para o tempo de recuperação melhorado? *Rubrica:* 3 = só foi demonstrado num espelho de laboratório;; 2 = só laboratório;; 1 = produção;; 0 = nenhuma.
+
+- **EX147 — Padrão reutilizável.** Cite um padrão reutilizável da tese. *Rubrica:* 3 = configuração assinada com verificações de publicação independentes, revogação disparada pelo ativo com conciliação ou revisão proporcional;; 2 = um;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-50"></a>
+
+## Capítulo 50 — Defesa final
+
+### Objetivos de aprendizagem
+
+Você vai (1) defender uma tese de engenharia diante de examinadores e praticantes; (2) responder a questionamentos com evidências e limites reconhecidos; (3) planejar o desenvolvimento profissional depois da formatura.
+
+### 50.1 Preparar a defesa
+
+Sofia prepara uma apresentação de vinte minutos centrada no problema, nas decisões principais, nas evidências e nos limites, e não em tudo o que fez. Ela antecipa as perguntas: por que não levar tudo para a nuvem, como o projeto lida com uma chave de assinatura de tarifas roubada, se o achado do red team significa que o projeto falhou e como seus padrões se aplicam a operadoras menores. Para cada uma, prepara uma resposta que aponta para uma seção da tese ou para uma evidência do dossiê. Ela ensaia com Daniel e com colegas, cronometrando-se e praticando respostas curtas e diretas.
+
+### 50.2 Responder aos questionamentos
+
+Um examinador pergunta se o projeto de tarifas assinadas não perde o sentido caso a chave de assinatura seja roubada. Sofia explica o projeto em camadas: a lista de publicações independente mantida pelo financeiro revelaria versões não publicadas, e o rollback limita o dano; ela admite que um comprometimento coordenado da chave e da lista do financeiro derrotaria os controles. Um praticante pergunta se o sucesso do red team mostra uma falha. Ela responde que ele validou a especificação ao revelar uma lacuna de requisito, que foi corrigida. Admitir com precisão onde o projeto deixa de proteger convence mais do que alegar que ele não pode falhar.
+
+### 50.3 Depois da defesa
+
+Os examinadores aprovam a tese com correções menores: esclarecer a notação do assurance case e acrescentar um parágrafo sobre o calendário da migração pós-quântica. Sofia as conclui e arquiva a tese e o dossiê com seu manifesto. Daniel lhe oferece uma vaga de arquiteta júnior na Corvia. Seu plano de desenvolvimento inclui liderar um programa completo de modelagem de ameaças, estudar a fundo os padrões pós-quânticos do NIST e orientar o estagiário do próximo ano. Sua reflexão observa que cinco anos lhe ensinaram que a arquitetura de segurança é a disciplina de tornar os tradeoffs explícitos, fundamentados em evidências e com responsáveis.
+
+### Exemplo resolvido
+
+Sofia defende sua tese, admite o limite do comprometimento conjunto da chave e da lista, apresenta o achado do red team como sucesso da validação, conclui as correções e planeja seu primeiro ano profissional.
+
+> **Caso sintético.** Os examinadores, as perguntas e a oferta de emprego são sintéticos.
+
+### Erros e limites
+
+O desempenho na defesa não é o mesmo que a qualidade do projeto. As correções não devem mudar afirmações sem novas evidências.
+
+### Exercícios
+
+- **EX148 — Foco da apresentação.** Em que a apresentação de Sofia se concentra? *Rubrica:* 3 = problema, decisões principais, evidências e limites, e não tudo o que foi feito;; 2 = foco;; 1 = tudo;; 0 = nenhuma.
+
+- **EX149 — Resposta sobre o roubo da chave.** Que limite Sofia admite sobre chaves de tarifas roubadas? *Rubrica:* 3 = um comprometimento coordenado da chave e da lista de publicações do financeiro derrotaria os controles;; 2 = comprometimento conjunto;; 1 = nenhuma;; 0 = nenhuma.
+
+- **EX150 — Reflexão final.** Como Sofia resume a arquitetura de segurança em sua reflexão? *Rubrica:* 3 = tornar os tradeoffs explícitos, fundamentados em evidências e com responsáveis;; 2 = três partes;; 1 = tecnologia;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX126 (as de EX127–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Sofia Mbeki, Daniel Ferreira, a Kestrel Polytechnic University, a Corvia Regional Transit e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX150. Sofia Mbeki, Daniel Ferreira, a Kestrel Polytechnic University, a Corvia Regional Transit e todos os números são sintéticos; as respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Que o aumento de cada mês é proporcional ao volume atual, de modo que o crescimento absoluto continua se acelerando.
 
@@ -2206,6 +2555,54 @@ Respostas-modelo para EX001–EX126 (as de EX127–EX150 estão na edição em i
 **EX125.** Porque uma lista de dispositivos que ainda se autenticavam depois da desativação poderia ajudar um atacante a encontrar pontos fracos.
 
 **EX126.** As melhorias nos registros de ativos ocorreram ao mesmo tempo que a mudança dos certificados.
+
+**EX127.** Pedir aos gerentes de projeto o contexto e os requisitos que faltavam para que as revisões pudessem avançar.
+
+**EX128.** Confirmar o uso do gateway com tokens com escopo, verificar a classificação dos dados compartilhados, uma sessão de modelagem de ameaças de uma hora e dois riscos residuais aceitos pelo responsável.
+
+**EX129.** Negociação, ao lado do seu ponto forte na escrita clara.
+
+**EX130.** Todas as ameaças de alta prioridade mitigadas ou aceitas, e testes de verificação aprovados para todo requisito no escopo.
+
+**EX131.** Porque os testes e a documentação são deixados para tão tarde que os problemas que revelam não podem ser corrigidos.
+
+**EX132.** Quaisquer mudanças em sistemas de produção; a implementação fica limitada a um espelho de laboratório.
+
+**EX133.** Escopo, decisões principais, questões em aberto conhecidas, perguntas específicas e o que está fora do escopo.
+
+**EX134.** Os atendentes podiam ajustar tarifas sem segunda aprovação; Sofia acrescentou dupla aprovação acima de um limite, com testes.
+
+**EX135.** A revogação dos crachás rodava como um lote noturno, deixando funcionários demitidos com até um dia de acesso.
+
+**EX136.** Dois, porque o laboratório não conseguia reproduzir certos hardwares de produção.
+
+**EX137.** Uma subafirmação sustentada apenas pela revisão de projeto, para a qual Sofia acrescentou um teste.
+
+**EX138.** Ela propôs documentar como os reembolsos se encaixariam, como trabalho futuro, em vez de implementá-los.
+
+**EX139.** Restaurar o cálculo das tarifas em até quatro horas e não perder nenhum registro de validação.
+
+**EX140.** A recuperação total levou 325 minutos, 5,4 horas, acima do objetivo de 240 minutos, com a restauração do banco em 120 e o reprocessamento em 95 minutos dominando.
+
+**EX141.** Mudar o formato do backup para permitir a restauração paralela e processar em lotes o reprocessamento dos registros de validação.
+
+**EX142.** Pela estrutura do assurance case, para que um examinador possa rastrear cada afirmação até sua evidência.
+
+**EX143.** verification_report.md, que foi editado depois que o manifesto foi criado.
+
+**EX144.** Que ele mostra apenas a cobertura de temas, e não certificação ou conformidade.
+
+**EX145.** É um argumento que sustenta afirmações com evidências, e não um relato cronológico do trabalho.
+
+**EX146.** Que ele só foi demonstrado num espelho de laboratório, e não em produção.
+
+**EX147.** A revogação disparada pelas mudanças de status do ativo, apoiada por uma conciliação diária.
+
+**EX148.** O problema, as decisões principais, as evidências e os limites, e não um relato completo de todo o trabalho.
+
+**EX149.** Que, se a chave de assinatura e a lista de publicações independente do financeiro fossem comprometidas juntas, os controles falhariam.
+
+**EX150.** Como a disciplina de tornar os tradeoffs explícitos, fundamentados em evidências e com responsáveis.
 
 <a id="references"></a>
 ## Referências
