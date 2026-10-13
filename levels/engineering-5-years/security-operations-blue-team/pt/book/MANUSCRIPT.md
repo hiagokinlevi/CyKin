@@ -1,7 +1,7 @@
 # Operações de Segurança e Blue Team: Curso de Engenharia
 
 - Idioma: português do Brasil (`pt`); curso 130, curso de engenharia (5 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–20 de 50 já estão escritos em português, com os exercícios EX001–EX060 e suas resoluções com rubricas de 0 a 3 e 3 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 21–50 (EX061–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–24 de 50 já estão escritos em português, com os exercícios EX001–EX072 e suas resoluções com rubricas de 0 a 3 e 4 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 25–50 (EX073–EX150) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de engenharia que vão projetar, construir, verificar e operar sistemas de monitoramento de segurança e os processos de SOC em torno deles.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limite ético e legal: monitore e responda apenas em sistemas que você está autorizado a defender; nada de código de exploração, *payloads*, procedimentos de ataque ou instruções para escapar da detecção. As detecções são ensinadas do lado do defensor, com telemetria sintética. Todas as evidências, pessoas e organizações são **sintéticas**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ NIST [SP 800-61r3](https://doi.org/10.6028/NIST.SP.800-61r3), [SP 800-92](https:
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) · [16](#ch-16) · [17](#ch-17) · [18](#ch-18) · [19](#ch-19) · [20](#ch-20) · [21](#ch-21) · [22](#ch-22) · [23](#ch-23) · [24](#ch-24) |
 
-Capítulos 21–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-21), até a chegada dos próximos lotes.
+Capítulos 25–50: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-25), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -1322,11 +1322,289 @@ A engenharia de SOC parte da missão, dos serviços, das restrições e das part
 
 [← Capítulo 19 (rascunho)](#ch-19) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 21 (rascunho) →](#ch-21)
 
+<a id="ch-21"></a>
+
+## Capítulo 21 — Operações de segurança e blue team: requisitos
+
+### Objetivos de aprendizagem
+
+Você vai (1) levantar requisitos de SOC junto às partes interessadas e a partir das ameaças; (2) escrever requisitos funcionais e não funcionais mensuráveis; (3) rastrear requisitos até ameaças e testes; (4) priorizar requisitos sob restrições.
+
+### 21.1 Fontes de requisitos
+
+Os requisitos vêm da missão, das ameaças, das regulações, dos incidentes e das dores dos analistas. O incidente do portal produziu o requisito "detectar provável tomada de conta no portal do cliente em até 15 minutos". Cada fonte puxa numa direção. As ameaças sugerem o que os atacantes vão tentar; as regulações definem mínimos, como a retenção; os incidentes expõem lacunas que de fato machucaram; as dores dos analistas revelam onde o trabalho é desperdiçado com regras ruidosas ou falta de contexto. Coletar de todas elas evita um conjunto de requisitos que reflita apenas a voz mais alta, e a fonte de cada um é registrada ao lado dele.
+
+### 21.2 Requisitos funcionais
+
+Dizem o que o sistema faz: ingerir os logs do balanceador de carga; correlacionar falhas e sucessos por rede; gerar um alerta com o ID do cliente, a rede de origem e as ações subsequentes. Cada enunciado é formulado como algo que o sistema precisa fazer, para que um testador possa conferi-lo diretamente: alimentar logs do balanceador e ver se são ingeridos; criar uma rajada de falhas seguida de um sucesso e ver se a correlação dispara; abrir o alerta e ver se ele traz os três campos nomeados. Verbos vagos como "suportar" ou "tratar" são evitados.
+
+### 21.3 Requisitos não funcionais
+
+Dizem quão bem: latência abaixo de 5 minutos do evento ao alerta; disponibilidade de 99,5% para o *pipeline*; no máximo 10 alertas falsos por dia para o turno da noite; dados retidos por 90 dias na camada quente. Essas qualidades são muitas vezes onde os sistemas decepcionam, porque são fáceis de esquecer durante o projeto. Uma regra logicamente perfeita, mas que alerta vinte minutos atrasada, perde a meta. Uma meta de disponibilidade de 99,5% admite cerca de 44 horas de indisponibilidade do *pipeline* por ano, que Amara compara com as janelas de manutenção já planejadas, para conferir se o número é realista.
+
+### 21.4 Redação mensurável
+
+"Rápido" e "preciso" não podem ser testados. Cada requisito declara um número, uma condição e um método de medição. Por exemplo, "rápido" vira "95% dos alertas criados em até 5 minutos após o evento que os aciona, medidos do horário do evento ao horário do alerta ao longo de um mês civil". O método importa tanto quanto o número: medir a partir do horário de ingestão, e não do horário do evento, esconderia atrasos na entrega dos logs e faria o *pipeline* parecer melhor do que é. Amara reescreve todos os requisitos nessa forma e pede a Paolo que tente escrever um teste para cada um; o que ele não conseguir testar volta para ser reescrito.
+
+### 21.5 Rastreabilidade
+
+Uma tabela liga cada requisito à sua fonte (ameaça, regulação, incidente), ao elemento de projeto que o atende e ao teste que o verifica. Os IDs de técnicas do ATT&CK dão uma referência comum para as fontes de ameaça. A tabela funciona nos dois sentidos. Lendo para a frente, a partir de uma ameaça, vê-se se algo a trata; lendo para trás, a partir de um teste, vê-se por que ele existe. Uma regulação alterada é rastreada do mesmo modo, de sua linha até os requisitos e testes que a citam. Usar IDs de técnicas permite à equipe de segurança e aos relatórios externos se referirem à mesma ameaça sem ambiguidade.
+
+### 21.6 Priorização
+
+Com equipe limitada, Amara e Paolo classificam os requisitos como obrigatório, desejável ou opcional, guiados pelo risco e pelo custo. Um obrigatório é algo sem o qual o sistema falha em seu propósito, como detectar a tomada de conta; um desejável acrescenta valor real, mas pode esperar, como enriquecer os alertas com o nível do cliente; um opcional é bom de ter. Classificar abertamente permite aos gestores ver o que não será entregue neste trimestre, em vez de descobrirem isso mais tarde, quando o tempo acabar. Os obrigatórios são financiados primeiro; os opcionais esperam capacidade ociosa.
+
+### 21.7 Controle de mudanças
+
+Os requisitos mudam; cada mudança é registrada com motivo e aprovação, e os testes afetados são atualizados. Sem isso, os requisitos se deslocam em silêncio por meio de conversas, e os testes acabam verificando algo com que ninguém concordou. Registrar o motivo mantém as mudanças honestas: baixar o limite de alertas falsos porque os analistas reclamaram é diferente de baixá-lo porque o turno da noite foi reduzido. Atualizar os testes junto mantém a verificação alinhada com o que agora se espera do sistema. Paolo aprova cada mudança, e o requisito mantém seu histórico, para que resultados de testes anteriores ainda possam ser interpretados em relação à versão vigente na época.
+
+### Critérios de aceitação
+
+Cada requisito tem critérios de aceitação acordados antes da construção: que resultado em qual teste conta como aprovado. Acordá-los cedo evita discussões posteriores sobre se o trabalho está pronto e dá aos analistas uma promessa clara do que a nova detecção vai entregar.
+
+### Exemplo resolvido
+
+O requisito R-07 de Amara diz: "O *pipeline* deve gerar um alerta de possível tomada de conta em até 15 minutos após um login bem-sucedido no portal que se siga a pelo menos 6 falhas para usuários distintos a partir da mesma /24 em 10 minutos; verificado mensalmente por um evento sintético cronometrado." Paolo o aprova como obrigatório.
+
+> **Caso sintético.** Os requisitos são inventados.
+
+### Erros e limites
+
+Requisitos demais se tornam ingerenciáveis; concentre-se nos ligados a riscos reais.
+
+### Exercícios
+
+- **EX061 — Funcional versus não funcional.** Dê um requisito funcional e um não funcional do caso. *Rubrica:* 3 = por exemplo, correlacionar falhas/sucessos; latência abaixo de 5 minutos; 2 = um; 1 = confuso; 0 = nada.
+- **EX062 — Redação mensurável.** Reescreva "os alertas precisam ser rápidos" como um requisito mensurável. *Rubrica:* 3 = número, condição, medição; 2 = parcial; 1 = inalterado; 0 = nada.
+- **EX063 — Tabela de rastreabilidade.** Que colunas tem a tabela de rastreabilidade? *Rubrica:* 3 = requisito, fonte, elemento de projeto, teste; 2 = três; 1 = uma; 0 = nada.
+
+### Síntese
+
+Requisitos mensuráveis, rastreáveis e priorizados transformam incidentes e ameaças em trabalho de engenharia.
+
+### Continue estudando — capítulo 21 de 50
+
+[← Capítulo 20 (rascunho)](#ch-20) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 22 (rascunho) →](#ch-22)
+
+<a id="ch-22"></a>
+
+## Capítulo 22 — Operações de segurança e blue team: modelos de sistema e de dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) modelar o *pipeline* do SOC como etapas e repositórios de dados; (2) definir o modelo de dados de eventos; (3) modelar entidades como usuários, hosts e clientes; (4) usar modelos para encontrar lacunas.
+
+### 22.1 Modelo do *pipeline*
+
+O *pipeline* da Lindqvist tem etapas: coleta (agentes, syslog, APIs de nuvem), transporte, análise e normalização, enriquecimento (dados de ativos e de identidade), armazenamento, detecção, alerta e gestão de casos. Cada etapa pode falhar, atrasar ou distorcer os dados. Pensar em etapas ajuda a localizar problemas. Um alerta ausente pode significar que o evento nunca foi coletado, foi descartado no transporte, falhou na análise, não tinha o enriquecimento de que a regra precisava, expirou no armazenamento ou nunca casou com a regra. Cada etapa recebe suas próprias medidas de saúde, para que um analista possa seguir um evento pelo *pipeline* e descobrir onde ele desapareceu.
+
+### 22.2 Modelo de eventos
+
+Todo evento normalizado traz horário (UTC), fonte, host, usuário, ação, resultado e uma referência ao registro bruto. Um modelo compartilhado permite que uma regra funcione em várias fontes. Manter uma referência ao registro bruto importa porque a normalização pode perder detalhes ou introduzir erros; um analista pode precisar da linha original para conferir o que a fonte de fato disse. Registrar o horário em UTC evita confusão entre fontes em fusos diferentes. Como todas as fontes se mapeiam para os mesmos campos, uma regra sobre logins malsucedidos funciona no portal, na VPN e no acesso dos funcionários.
+
+### 22.3 Modelo de entidades
+
+As entidades persistem entre eventos: um cliente, um funcionário, um host, uma rede. As tabelas de entidades guardam atributos como criticidade, responsável e locais habituais, usados no enriquecimento. Os eventos são momentos; as entidades lhes dão contexto. Um alerta sobre um host significa mais quando também mostra que o host é um servidor de pagamentos de responsabilidade do financeiro. Os locais habituais de um cliente ajudam a julgar se um login vindo de um país novo é incomum. As tabelas de entidades precisam de atualização, já que dados desatualizados enganam os analistas tanto quanto dados ausentes.
+
+### 22.4 Relações
+
+Clientes possuem contas; funcionários usam hosts; hosts ficam em zonas. Modelar as relações permite aos analistas perguntar automaticamente "em que zona está este host?". Sem relações modeladas, um analista precisa procurar cada vínculo manualmente em sistemas diferentes, o que é lento durante um incidente. Com elas, um alerta pode mostrar automaticamente que o host pertence a uma zona de depósito e que seu usuário habitual está de licença. As relações também permitem às regras raciocinar entre entidades, por exemplo sinalizando um funcionário que usa um host fora de sua própria zona.
+
+### 22.5 Lacunas a partir dos modelos
+
+Percorrendo o modelo etapa por etapa, Amara confere cada fonte: ela é coletada, analisada, enriquecida e coberta por detecções? As redes dos depósitos são coletadas, mas não enriquecidas, porque o inventário de ativos não tem os dispositivos dos depósitos. O percurso é sistemático: para cada fonte, quatro perguntas de sim ou não. A falta de enriquecimento dos dispositivos dos depósitos significa que os alertas sobre eles trazem apenas um endereço, sem responsável, local ou função, de modo que os analistas precisam investigar do zero. A correção fica a montante: acrescentar os dispositivos dos depósitos ao inventário de ativos, o que ajuda as operações de TI tanto quanto o SOC.
+
+### 22.6 Responsável pelo modelo
+
+O modelo de dados pertence à equipe de engenharia de detecção; as mudanças são versionadas como as regras. Um responsável decide quais campos existem e o que significam, e revisa as mudanças propostas. O versionamento permite às regras declarar que versão do modelo esperam, para que a renomeação de um campo não as quebre em silêncio. Sem um responsável, engenheiros diferentes acrescentam campos com significados sobrepostos, e com o tempo o modelo compartilhado se fragmenta em dialetos de cada fonte. O responsável publica um registro de mudanças, e os autores de regras o leem antes de cada liberação. Campos descontinuados continuam disponíveis por uma liberação, para que as regras possam migrar sem lacuna de cobertura.
+
+### 22.7 Modelos e pessoas
+
+Os modelos também incluem quem age em cada etapa: que equipe corrige erros de análise, quem mantém as tabelas de enriquecimento. Um diagrama de *pipeline* que mostra apenas sistemas esconde o trabalho humano que o mantém funcionando. Nomear a equipe responsável pelas falhas dos analisadores faz com que os alertas sobre análise quebrada cheguem a alguém capaz de agir. Nomear o responsável pelas tabelas de enriquecimento faz com que as entradas desatualizadas tenham alguém que responda por elas. Amara acrescenta um responsável a cada etapa do diagrama do *pipeline*. Cada responsável também tem um substituto nomeado, para que uma falha de analisador durante as férias ainda chegue a alguém capaz de corrigi-la.
+
+### Atualidade do enriquecimento
+
+As tabelas de enriquecimento precisam estar em dia. Um host transferido do financeiro para os depósitos e ainda marcado como "financeiro" engana os analistas. Amara acrescenta uma data de atualização a cada tabela.
+
+### Exemplo resolvido
+
+A matriz de cobertura de Amara lista 14 fontes contra 6 etapas. Duas células estão vazias para as redes dos depósitos (enriquecimento, detecção) e uma para o balanceador de carga do portal (detecção, recém-coletado). Ela transforma cada célula vazia num item do *backlog* com um responsável.
+
+> **Caso sintético.** As fontes e a matriz são inventadas.
+
+### Erros e limites
+
+Os modelos simplificam; uma fonte marcada como "coletada" ainda pode ter lacunas no tempo ou nos campos.
+
+### Exercícios
+
+- **EX064 — Etapas do *pipeline*.** Liste as etapas do *pipeline* em ordem. *Rubrica:* 3 = coleta, transporte, análise/normalização, enriquecimento, armazenamento, detecção, alerta, caso; 2 = a maioria em ordem; 1 = poucas; 0 = nada.
+- **EX065 — Lacuna dos depósitos.** Por que as redes dos depósitos não eram enriquecidas? *Rubrica:* 3 = o inventário de ativos não tinha os dispositivos dos depósitos; 2 = parcial; 1 = nenhum motivo; 0 = nada.
+- **EX066 — Uso da matriz.** Como Amara usou a matriz de cobertura? *Rubrica:* 3 = as células vazias viraram itens do *backlog* com responsável; 2 = parcial; 1 = arquivou-a; 0 = nada.
+
+### Síntese
+
+Os modelos de *pipeline*, de eventos e de entidades expõem onde os dados faltam, não são enriquecidos ou não são detectados.
+
+### Continue estudando — capítulo 22 de 50
+
+[← Capítulo 21 (rascunho)](#ch-21) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 23 (rascunho) →](#ch-23)
+
+<a id="ch-23"></a>
+
+## Capítulo 23 — Operações de segurança e blue team: análise de ameaças e falhas
+
+### Objetivos de aprendizagem
+
+Você vai (1) analisar as ameaças relevantes para a organização com o ATT&CK; (2) analisar os modos de falha do sistema de monitoramento; (3) combinar as visões de ameaças e de falhas em prioridades; (4) documentar as análises para revisão.
+
+### 23.1 Análise de ameaças
+
+A análise de ameaças da Lindqvist pergunta que adversários miram empresas de logística e que técnicas usam. Relatórios públicos e os grupos do ATT&CK mostram abuso de credenciais, *phishing* contra funcionários, *ransomware* e fraude por meio de contas de clientes. Começar pelos adversários que miram o setor mantém a análise ancorada no que de fato acontece a empresas semelhantes. Para uma empresa de logística, a fraude de entregas e o desvio de pagamentos são tão relevantes quanto o roubo de dados. Os grupos do ATT&CK documentam técnicas vistas em campanhas reais, o que transforma uma preocupação genérica com *ransomware* em comportamentos específicos que o SOC pode procurar.
+
+### 23.2 Cobertura de técnicas
+
+Para cada técnica relevante, a equipe registra as fontes de dados necessárias, as detecções existentes e a confiança. Os mapas de cobertura mostram forças (abuso de credenciais no portal) e lacunas (movimento lateral nas redes dos depósitos). A confiança registra quão segura a equipe está de que uma detecção funcionaria, com base em testes, e não em sua mera existência. Uma regra escrita, mas nunca testada, recebe confiança baixa. O mapa de cobertura torna as prioridades visíveis para gestores que não sabem ler regras: forte numa área, fraco em outra, com a evidência por trás de cada classificação.
+
+### 23.3 Análise de falhas
+
+O próprio sistema de monitoramento falha: fontes silenciam, analisadores quebram depois de atualizações, tabelas de enriquecimento ficam desatualizadas, regras são desativadas e esquecidas. Uma tabela de modos de falha e efeitos lista cada falha, seu efeito sobre a detecção, como ela seria notada e sua probabilidade. O formato vem da análise de segurança da engenharia, onde é usado para máquinas e instalações. Aplicado ao monitoramento, cada linha pergunta: se esta parte falhar, que detecções param de funcionar, com que rapidez saberíamos e quão provável é? Um analisador que quebra depois de uma atualização é provável e pode passar dias despercebido, então fica no topo da lista.
+
+### 23.4 Falhas silenciosas
+
+As piores falhas são as silenciosas: uma fonte para de enviar e nada alerta. Elas recebem uma detecção própria, tratada no capítulo 47. O silêncio é perigoso porque a ausência de alertas parece igual à ausência de ataques. Uma fonte que normalmente envia dez mil eventos por hora e de repente não envia nenhum deveria, ela mesma, disparar um alarme. Volumes esperados por fonte, com alertas para quedas grandes, transformam o silêncio num sinal visível. Algumas fontes são naturalmente silenciosas à noite, então os limiares comparam cada hora com a mesma hora das semanas anteriores, e não com uma média diária fixa.
+
+### 23.5 Combinando as visões
+
+A prioridade é mais alta onde uma técnica importante depende de um componente frágil — por exemplo, a detecção de tomada de conta dependendo de uma única alimentação de logs do balanceador de carga. A análise de ameaças mostra o que importa; a análise de falhas mostra o que é frágil. A interseção das duas é onde uma única falha deixaria o SOC cego para uma técnica importante. A alimentação do balanceador de carga é um exemplo claro: se ela parar, a detecção de tomada de conta se degrada. A resposta é uma segunda alimentação ou um monitoramento cerrado da existente. Amara marca essas interseções em vermelho no mapa de cobertura.
+
+### 23.6 Revisão
+
+As análises são revisadas pelos analistas, pelas operações de TI e pelo gabinete do CISO, e retomadas depois de incidentes ou de grandes mudanças. Os analistas sabem em quais detecções se confia na prática; as operações de TI sabem quais componentes são frágeis; o gabinete do CISO conhece as prioridades do negócio. Cada visão corrige as outras. Retomar a análise depois de incidentes a mantém atual, já que um incidente muitas vezes revela uma técnica ou um modo de falha que a revisão original deixou passar. Cada revisão produz uma versão datada, com uma lista curta de mudanças e de quem as pediu, para que leitores posteriores vejam como a visão da equipe sobre ameaças e falhas evoluiu com o tempo.
+
+### 23.7 Evitando vieses
+
+As equipes dão peso demais aos incidentes recentes. Usar o ATT&CK como lista de verificação ajuda a considerar técnicas que ainda não atingiram a Lindqvist. Depois do incidente do portal, a atenção se concentra no abuso de credenciais, e é tentador gastar todo o esforço ali. Uma lista de verificação obriga a equipe a olhar de forma sistemática para outras técnicas, como o mau uso de ferramentas de gerenciamento remoto nos depósitos, que ainda não causaram problemas. A dor recente é um sinal útil, mas um guia completo ruim. Cada técnica deixada de fora é marcada com um motivo curto.
+
+### Ameaças internas e de fraude
+
+Nem toda ameaça é externa. Funcionários com acesso a contas de clientes poderiam fazer mau uso dele, e fraudadores podem usar recursos legítimos do portal. Essas ameaças dependem mais de logs de negócio, como alterações de endereço e reembolsos, do que de telemetria técnica.
+
+### Exemplo resolvido
+
+Entrada da tabela de falhas de Amara: "A alimentação de logs do balanceador de carga para → nenhum alerta de tomada de conta → notado só por acaso → probabilidade média (a alimentação quebrou duas vezes no ano passado) → prioridade alta. Ação: monitoramento de *heartbeat* e um segundo caminho de alimentação."
+
+> **Caso sintético.** As análises são inventadas.
+
+### Erros e limites
+
+Os relatórios de ameaças descrevem a experiência de outros; adapte-os ao seu ambiente.
+
+### Exercícios
+
+- **EX067 — Registro de cobertura.** O que é registrado para cada técnica relevante? *Rubrica:* 3 = fontes de dados, detecções, confiança; 2 = dois; 1 = um; 0 = nada.
+- **EX068 — Falha silenciosa.** Por que as falhas silenciosas são as piores? *Rubrica:* 3 = nada alerta, então a detecção desaparece sem ser notada; 2 = parcial; 1 = vago; 0 = nada.
+- **EX069 — Prioridade combinada.** Por que a alimentação do balanceador de carga foi classificada como alta? *Rubrica:* 3 = uma detecção importante depende de uma única alimentação frágil; 2 = parcial; 1 = aleatório; 0 = nada.
+
+### Síntese
+
+Combine a cobertura de ameaças com a análise de falhas do sistema de monitoramento para definir as prioridades.
+
+### Continue estudando — capítulo 23 de 50
+
+[← Capítulo 22 (rascunho)](#ch-22) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 24 (rascunho) →](#ch-24)
+
+<a id="ch-24"></a>
+
+## Capítulo 24 — Operações de segurança e blue team: métodos I
+
+### Objetivos de aprendizagem
+
+Você vai (1) projetar detecções por limiar e por correlação; (2) avaliar regras contra janelas rotuladas; (3) comparar variantes de regras por verdadeiros e falsos positivos; (4) escolher variantes pelo propósito operacional.
+
+### 24.1 Regras por limiar
+
+Uma regra por limiar dispara quando uma contagem numa janela ultrapassa um limite: pelo menos 5 usuários distintos falhando a partir de uma /24 em 10 minutos. Contar usuários distintos, em vez do total de falhas, mira o padrão de *stuffing*: muitas contas, poucas tentativas cada. Um único cliente falhando dez vezes não acionaria a regra, o que é intencional. A janela e o limite são parâmetros a ajustar, e a documentação da regra registra os valores escolhidos e a evidência que levou a eles. Cinco em dez minutos é o ponto de partida.
+
+### 24.2 Regras de correlação
+
+Uma regra de correlação exige várias condições, possivelmente de fontes diferentes: falhas seguidas de um sucesso, ou um sucesso seguido de uma alteração de endereço. A correlação acrescenta significado ao juntar passos que são fracos isoladamente. Falhas acontecem o tempo todo; um sucesso isolado é normal; falhas seguidas de um sucesso a partir da mesma rede sugerem uma senha adivinhada. Uma alteração de endereço depois de um login vindo de uma rede nova é mais suspeita do que qualquer dos dois eventos separadamente. Essas regras precisam de fontes com horários alinhados e campos compartilhados. Os desvios de relógio entre as fontes precisam ser pequenos.
+
+### Laboratório — comparando variantes de regras
+
+```python
+"""Evaluate a Sigma-style burst rule over synthetic 10-minute windows with labels."""
+windows = [  # (window, distinct users failed, any success, label)
+    ("09:50", 2, True, "benign"), ("10:00", 7, True, "attack"), ("10:10", 6, False, "attack"),
+    ("10:20", 1, False, "benign"), ("11:00", 9, False, "benign"),   # load test
+    ("13:30", 5, True, "attack"), ("14:00", 3, True, "benign"), ("15:00", 6, False, "benign")]
+def rule(users, success, threshold): return users >= threshold and success
+for t in (5, 6):
+    tp = sum(rule(u, s, t) and l == "attack" for _, u, s, l in windows)
+    fp = sum(rule(u, s, t) and l == "benign" for _, u, s, l in windows)
+    fn = sum(not rule(u, s, t) and l == "attack" for _, u, s, l in windows)
+    print(f"threshold={t} with-success: TP={tp} FP={fp} FN={fn}")
+tp = sum(u >= 5 and l == "attack" for _, u, s, l in windows); fp = sum(u >= 5 and l == "benign" for _, u, s, l in windows)
+print(f"threshold=5 no success clause: TP={tp} FP={fp} FN={3-tp}")
+```
+
+Execute com `python3 lab_rule.py`. Saída verificada:
+
+```text
+threshold=5 with-success: TP=2 FP=0 FN=1
+threshold=6 with-success: TP=1 FP=0 FN=2
+threshold=5 no success clause: TP=3 FP=2 FN=0
+```
+
+### 24.3 Lendo o resultado
+
+Com a cláusula de sucesso e limiar 5, a regra pega 2 de 3 janelas de ataque, sem alertas falsos; com limiar 6, pega apenas 1. Sem a cláusula de sucesso, o limiar 5 pega as 3 janelas de ataque, mas acrescenta 2 alertas falsos — o teste de carga das 11:00 e uma janela das 15:00. Os números mostram a troca com clareza. Exigir um sucesso torna a regra precisa, mas custa uma janela de ataque, uma tentativa que nunca teve sucesso. Retirar a cláusula pega todas as tentativas, mas acrescenta ruído, inclusive um teste de carga que uma exceção para ferramenta assinada poderia remover. Elevar o limiar para seis perde mais uma janela real sem remover nenhum alerta falso, já que não havia nenhum.
+
+### 24.4 O propósito decide
+
+A variante sem sucesso detecta tentativas; a variante com sucesso detecta comprometimento provável. A Lindqvist usa as duas: as tentativas vão para uma fila diurna de ajuste dos limites de taxa; o comprometimento provável aciona o turno da noite. Nenhuma variante é simplesmente melhor; cada uma responde a uma pergunta diferente. As tentativas importam para ajustar as defesas, como os limites de taxa, e podem esperar o dia. O comprometimento provável exige ação em minutos, então justifica acordar alguém. Dividir a regra por propósito dá a cada uma a urgência certa, em vez de forçar um único limiar de meio-termo para as duas necessidades.
+
+### 24.5 Rótulos
+
+A avaliação precisa de janelas rotuladas. Os rótulos vêm de incidentes investigados, de testes autorizados e da revisão de amostras pelos analistas. Cada fonte de rótulos tem fraquezas. Os incidentes investigados são confiáveis, mas poucos; os testes autorizados são limpos, mas podem não se parecer com ataques reais; as revisões dos analistas são abundantes, mas podem estar erradas. Registrar de onde veio cada rótulo permite aos avaliadores ponderá-los e verificar se os resultados dependem demais de um tipo de rótulo. Ao lado de cada uma de suas oito janelas, Amara escreve qual fonte forneceu o rótulo e quem o confirmou, para que um revisor possa contestar qualquer rótulo isolado.
+
+### 24.6 Amostras pequenas
+
+Oito janelas apenas ilustram o método; uma avaliação real usa semanas de dados. Com oito janelas, uma única janela mal rotulada muda os resultados drasticamente. Semanas de dados dão centenas de janelas, o suficiente para estimar taxas com confiança útil e para ver a variação entre dias úteis e fins de semana. O conjunto pequeno continua valioso para o ensino e para testes unitários, em que cada janela pode ser conferida à mão. Amara declara o tamanho da amostra ao lado de cada número que relata, para que ninguém confunda o exemplo didático com um desempenho medido da regra em produção.
+
+### Nomes e severidade das regras
+
+Cada variante recebe um nome claro e uma severidade. "Tentativas de *stuffing* no portal" é baixa e vai para a fila; "Possível tomada de conta no portal" é alta e aciona o plantão. Os nomes dizem aos analistas o que esperar antes de abrirem o alerta, o que acelera a triagem e reduz a confusão entre regras parecidas.
+
+### Exemplo resolvido
+
+Amara apresenta os resultados a Paolo como uma tabela de variantes, com uma recomendação: acionar o plantão com "limiar 5 com sucesso" e enviar "limiar 5 sem sucesso" para a revisão diurna. A janela de ataque das 10:10 que foi perdida não teve sucesso, então a regra de acionamento corretamente ficou em silêncio — o atacante ainda não tinha entrado. Isso traz o limiar de acionamento de volta dos 6 em que o laço de ajuste anterior se estabilizou para 5. Aquele laço ajustava a regra só de falhas, em que elevar o limiar era a única forma de cortar alertas falsos. Uma vez acrescentada a cláusula de sucesso, ela remove os alertas falsos por si só: nas janelas do laboratório, o limiar 5 com sucesso não tem alertas falsos e pega duas janelas de ataque, enquanto o 6 pega apenas uma. Manter o 6 perderia detecção sem ganhar nada, então o limiar do R-07 é alterado para 5 por meio do controle de mudanças.
+
+> **Caso sintético.** As janelas e os rótulos vêm do script do laboratório.
+
+### Erros e limites
+
+Os próprios rótulos podem estar errados; revise os contestados.
+
+### Exercícios
+
+- **EX070 — Resultados das variantes.** Informe VP, FP e FN das três variantes. *Rubrica:* 3 = 5+sucesso 2/0/1; 6+sucesso 1/0/2; 5 sem sucesso 3/2/0; 2 = duas; 1 = uma; 0 = nada.
+- **EX071 — Dois propósitos.** Por que manter uma variante com sucesso e outra sem sucesso? *Rubrica:* 3 = tentativas vs comprometimento provável; filas diferentes; 2 = parcial; 1 = escolher uma; 0 = nada.
+- **EX072 — A janela perdida.** Por que perder a janela das 10:10 é aceitável para a regra de acionamento? *Rubrica:* 3 = ainda sem sucesso: não há comprometimento para acionar; 2 = parcial; 1 = não é aceitável; 0 = nada.
+
+### Síntese
+
+Projete variantes de regras para propósitos distintos e escolha-as por resultados medidos em dados rotulados.
+
+### Continue estudando — capítulo 24 de 50
+
+[← Capítulo 23 (rascunho)](#ch-23) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 25 (rascunho) →](#ch-25)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX060 (as de EX061–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Amara Osei, Paolo Ricci, a Kingsbridge Engineering University, a Lindqvist Freight e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX072 (as de EX073–EX150 estão na edição em inglês até a tradução dos capítulos correspondentes). Amara Osei, Paolo Ricci, a Kingsbridge Engineering University, a Lindqvist Freight e todos os números são sintéticos. As respostas dos laboratórios citam saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** O acúmulo varia segundo dB/dt = A(t) − C(t): chegadas por hora menos alertas resolvidos por hora.
 
@@ -1447,6 +1725,30 @@ Respostas-modelo para EX001–EX060 (as de EX061–EX150 estão na edição em i
 **EX059.** Seu software antigo não consegue rodar agentes de *endpoint*, então o monitoramento de rede é a única opção.
 
 **EX060.** Com apenas dois analistas à noite, cada alerta encaminhado a eles precisa valer o tempo limitado que têm.
+
+**EX061.** Funcional: correlacionar falhas e sucessos por rede; não funcional: latência do alerta abaixo de 5 minutos.
+
+**EX062.** "Os alertas devem ser gerados em até 5 minutos após o evento que os aciona, medidos por eventos sintéticos cronometrados mensais."
+
+**EX063.** O requisito, sua fonte, o elemento de projeto que o atende e o teste que o verifica.
+
+**EX064.** Coleta, transporte, análise e normalização, enriquecimento, armazenamento, detecção, alerta e gestão de casos.
+
+**EX065.** O inventário de ativos não continha os dispositivos dos depósitos, então não havia com o que enriquecer.
+
+**EX066.** Cada célula vazia virou um item do *backlog* com um responsável nomeado.
+
+**EX067.** As fontes de dados de que precisa, as detecções existentes e a confiança nelas.
+
+**EX068.** Porque nada as sinaliza, a cobertura de detecção desaparece sem que ninguém perceba.
+
+**EX069.** A detecção de tomada de conta depende dessa única alimentação, que já quebrou antes.
+
+**EX070.** Limiar 5 com sucesso: 2, 0, 1; limiar 6 com sucesso: 1, 0, 2; limiar 5 sem sucesso: 3, 2, 0.
+
+**EX071.** Uma detecta tentativas, para o trabalho diurno de ajuste; a outra detecta comprometimento provável e aciona o turno da noite.
+
+**EX072.** O ataque das 10:10 não tinha tido sucesso, então não havia comprometimento para acionar o plantão; a regra de tentativas ainda o registra.
 
 <a id="references"></a>
 ## Referências

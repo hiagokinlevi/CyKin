@@ -1620,7 +1620,7 @@ For example, 'fast' becomes '95% of alerts created within 5 minutes of the trigg
 
 A table links each requirement to its source (threat, regulation, incident), the design element that meets it and the test that verifies it. ATT&CK technique IDs give a common reference for threat sources.
 
-The table works in both directions. Reading forward from a threat shows whether anything addresses it; reading backward from a test shows why it exists. Using technique IDs means the security team and outside reports can refer to the same threat without ambiguity.
+The table works in both directions. Reading forward from a threat shows whether anything addresses it; reading backward from a test shows why it exists. A changed regulation is traced the same way, from its row to the requirements and tests that cite it. Using technique IDs means the security team and outside reports can refer to the same threat without ambiguity.
 
 ### 21.6 Prioritisation
 
