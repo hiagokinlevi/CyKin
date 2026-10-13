@@ -1,22 +1,22 @@
-# Subjects and book chapters — Quantum and post-quantum security / Master's course / Português
+# Disciplinas e capítulos do livro — Segurança Quântica e Pós-Quântica / Mestrado / Português
 
-**One course, one principal book, 8 subjects and chapters, one course skill.** Only links marked Draft point to authored teaching; a planned chapter is a summary, not a completed lesson.
+**Um curso, um livro principal, 8 disciplinas e capítulos, uma skill do curso.** Apenas os links marcados como Rascunho levam a conteúdo didático escrito; um capítulo planejado é um resumo, não uma lição concluída.
 
-This is an English working index awaiting translation and review for this language.
+Edição em português do Brasil, escrita a partir da edição de referência em inglês; revisão técnica e linguística pendente.
 
-[Home](../../../../README.md) · [Complete study path](../../../../STUDY_PATH.md) · [Course home](../README.md) · [Book plan](book/PLAN.md) · [Course skill](../skill/SKILL.md)
+[Início](../../../../README.md) · [Trilha de estudo completa](../../../../STUDY_PATH.md) · [Página do curso](../README.md) · [Plano do livro](book/PLAN.md) · [Skill do curso](../skill/SKILL.md)
 
-**Course 182 of 207.** Read chapters 01–08 from top to bottom. For each chapter, use its Draft link when present; the numbered plan link is a summary only. Attempt exercises before consulting the book's worked answers. The final row links to the next course in this same language.
+**Curso 182 de 207.** Leia os capítulos 01–08 de cima para baixo. Para cada capítulo, use o link Rascunho; o link numerado do plano é apenas um resumo. Tente os exercícios antes de consultar as resoluções no fim do livro. A última linha leva ao próximo curso neste mesmo idioma.
 
-| Semester | Chapter / plan | Curricular subject | Hours | Planned A4 pages | Exercise target | Teaching state | Next step |
+| Semestre | Capítulo / plano | Disciplina | Horas | Páginas A4 previstas | Meta de exercícios | Estado didático | Próximo passo |
 |---|---|---|---:|---:|---:|---|---|
-| 1 | [01](book/PLAN.md#ch-01) | Research question and literature method | 150 | 75 | 7 | Planned | [02 · Plan](book/PLAN.md#ch-02) |
-| 1 | [02](book/PLAN.md#ch-02) | Quantum and post-quantum security: advanced seminar | 150 | 75 | 7 | Planned | [03 · Plan](book/PLAN.md#ch-03) |
-| 2 | [03](book/PLAN.md#ch-03) | Study design, ethics and reproducibility | 150 | 75 | 6 | Planned | [04 · Plan](book/PLAN.md#ch-04) |
-| 2 | [04](book/PLAN.md#ch-04) | Quantum and post-quantum security: competing explanations | 150 | 75 | 6 | Planned | [05 · Plan](book/PLAN.md#ch-05) |
-| 3 | [05](book/PLAN.md#ch-05) | Proposal and pilot | 150 | 75 | 6 | Planned | [06 · Plan](book/PLAN.md#ch-06) |
-| 3 | [06](book/PLAN.md#ch-06) | Data collection and analysis | 150 | 75 | 6 | Planned | [07 · Plan](book/PLAN.md#ch-07) |
-| 4 | [07](book/PLAN.md#ch-07) | Dissertation writing and limitations | 150 | 75 | 6 | Planned | [08 · Plan](book/PLAN.md#ch-08) |
-| 4 | [08](book/PLAN.md#ch-08) | Independent review and defense | 150 | 75 | 6 | Planned | [Course 183 →](../../ot-iot-security/pt/SUBJECTS.md) |
+| 1 | [01](book/PLAN.md#ch-01) | Pergunta de pesquisa e método de revisão da literatura | 150 | 75 | 7 | [Rascunho](book/MANUSCRIPT.md#ch-01) | [02 · Rascunho](book/MANUSCRIPT.md#ch-02) |
+| 1 | [02](book/PLAN.md#ch-02) | Segurança quântica e pós-quântica: seminário avançado | 150 | 75 | 7 | [Rascunho](book/MANUSCRIPT.md#ch-02) | [03 · Rascunho](book/MANUSCRIPT.md#ch-03) |
+| 2 | [03](book/PLAN.md#ch-03) | Desenho do estudo, ética e reprodutibilidade | 150 | 75 | 6 | [Rascunho](book/MANUSCRIPT.md#ch-03) | [04 · Rascunho](book/MANUSCRIPT.md#ch-04) |
+| 2 | [04](book/PLAN.md#ch-04) | Segurança quântica e pós-quântica: explicações concorrentes | 150 | 75 | 6 | [Rascunho](book/MANUSCRIPT.md#ch-04) | [05 · Rascunho](book/MANUSCRIPT.md#ch-05) |
+| 3 | [05](book/PLAN.md#ch-05) | Proposta e piloto | 150 | 75 | 6 | [Rascunho](book/MANUSCRIPT.md#ch-05) | [06 · Rascunho](book/MANUSCRIPT.md#ch-06) |
+| 3 | [06](book/PLAN.md#ch-06) | Coleta e análise de dados | 150 | 75 | 6 | [Rascunho](book/MANUSCRIPT.md#ch-06) | [07 · Rascunho](book/MANUSCRIPT.md#ch-07) |
+| 4 | [07](book/PLAN.md#ch-07) | Redação da dissertação e limitações | 150 | 75 | 6 | [Rascunho](book/MANUSCRIPT.md#ch-07) | [08 · Rascunho](book/MANUSCRIPT.md#ch-08) |
+| 4 | [08](book/PLAN.md#ch-08) | Revisão independente e defesa | 150 | 75 | 6 | [Rascunho](book/MANUSCRIPT.md#ch-08) | [Curso 183 →](../../ot-iot-security/pt/SUBJECTS.md) |
 
-A planned next step is a navigation target, not an authored lesson. Keep the completion position at the first unwritten chapter. Page and exercise columns are editorial targets. The book is complete only after its content and A4 rendering meet the publication gate.
+Um próximo passo planejado é um destino de navegação, não uma lição escrita. As colunas de páginas e exercícios são metas editoriais. O livro só estará completo quando seu conteúdo e a renderização em A4 atenderem ao critério de publicação.
