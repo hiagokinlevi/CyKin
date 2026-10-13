@@ -2439,25 +2439,37 @@ You will (1) analyse complex situations combining application and supply-chain i
 
 A small image-resizing package CampusEats uses has had no release for three years; an advisory reports a flaw with no fix. Options: replace it, maintain a fixed copy internally, or remove the feature (dish photos). The society replaces it with a maintained library, after checking its maintenance activity and number of maintainers.
 
+Maintaining a fixed copy would have made the society responsible for a library none of its members understood well, and removing dish photos would have upset the cafés. Lena records the choice in a decision record with the evidence about the new library, and the owner list is updated so the replacement has a named owner from the start.
+
 ### 31.2 Maintainer change
 
 A package's maintainer hands it to a new, unknown account, and a new version adds an install script. Ohm et al. (2020) noted takeovers of existing packages as a pattern in malicious package cases. The society holds the update, checks the change notes and the script's purpose, and asks in the project's issue tracker. The script turns out to be a legitimate build step, but the society keeps the update on hold until other users confirm.
+
+Lena notes in the dependency's record what was checked and who decided, so the hold is not forgotten.
 
 ### 31.3 Uncertainty
 
 Often you cannot know quickly whether a change is malicious. Holding updates is safe if the current version has no known issues; pin and wait.
 
+Lena writes the rule down for the society: if a change cannot be explained and the current version is safe, the update waits. Each hold has an owner and a date to look again, so a precaution does not become a permanent freeze that leaves CampusEats behind on later fixes. If an advisory later affects the pinned version, the hold must be resolved immediately rather than at its planned date.
+
 ### 31.4 Upstream communication
 
 Polite, specific questions in public trackers help everyone; private reports go through security contacts.
+
+Lena's question about the install script was short, named the version and the file, and asked only what it did, without accusing anyone. The new maintainer answered within a day, and other users found the answer useful. Anything that might be a vulnerability goes instead to the project's security contact, as described in the ethics chapter, so it is not made public before a fix exists.
 
 ### 31.5 Combined issues
 
 A flaw in a template library could allow cross-site scripting only if the app uses a rare feature. Checking reachability prevents panic: CampusEats does not use it, but updates anyway.
 
+Lena checks reachability by searching the CampusEats templates for the affected feature and confirming that the template engine is configured without it. She records the evidence, so the decision does not depend on memory. Updating anyway costs little through the weekly process and removes the need to recheck if a future feature starts using the affected code.
+
 ### 31.6 Balance
 
 Each response balances risk, effort and the volunteers' time.
+
+The society cannot investigate every update in depth, so it puts most effort where the risk is highest: packages that run at install time, handle payments or run in students' browsers. Routine updates to small, well-maintained development tools get less attention. Lena writes these tiers into the handbook, so members know which changes need a careful look and which can follow the normal weekly process. Grace reviews the tiers each year.
 
 ### Worked example
 
@@ -2495,25 +2507,37 @@ You will (1) work with legal, procurement and privacy teams on software risks; (
 
 Open-source licences set conditions for use. A dependency with a licence incompatible with the university's rules must be replaced. CampusEats checks licences automatically and sends unusual ones to the university's legal team.
 
+The licence check runs in CI alongside the advisory check and fails the build for a licence on the university's blocked list. Lena explains to members that licences matter for the same reason as security: the society must be able to keep using what it ships. Any exception is recorded with the legal team's advice.
+
 ### 32.2 Procurement
 
 When cafés asked for a till integration, the university's procurement team needed security questions for the till vendor: Does it follow secure development practices like the SSDF? Does it provide SBOMs and timely fixes? Lena drafts the questions with Grace.
+
+The questions are short and ask for evidence, such as a sample SBOM or the vendor's advisory process, rather than a yes or no. Procurement scores the answers alongside price and features, and Lena's questions are later added to the university's standard list for software purchases that handle student data.
 
 ### 32.3 Privacy
 
 The data protection officer reviews new features that use personal data, such as loyalty points.
 
+The officer asks what data the feature needs, how long it will be kept and whether students can opt out. For loyalty points, the society proposes counting orders without storing new personal data, and the officer approves it with a retention limit. Lena records the review in the feature's decision record, so the reasons are available if the feature changes later or is extended to other cafés.
+
 ### 32.4 Accessibility
 
 Security features must be usable by everyone: multi-factor prompts and error messages must work with screen readers.
+
+Lena tests the staff sign-in and error pages with a screen reader and finds that one error message is shown only as a red border with no text. The fix adds a clear message. A security step that some users cannot complete pushes them towards workarounds, such as sharing accounts, which undoes the protection it was meant to give. Lena adds a screen-reader check to the release verification report.
 
 ### 32.5 Usability
 
 Johnson et al. (2013) showed developers avoid tools that are hard to use; the same applies to students facing awkward security steps. Good design reduces workarounds.
 
+When members complained that the secret scanner's alerts were confusing, Lena rewrote them to say what was found, why it matters and how to fix it. Bypasses of the hook dropped the next term. She now asks of every new control how long it takes to use and what a confused member would do. Usability is a security property.
+
 ### 32.6 Communication
 
 Each discipline uses different words; Lena keeps a glossary and explains technical terms in one sentence.
+
+The glossary includes terms that mean different things to different groups, such as "incident", which the legal team uses more narrowly than developers do. When Lena writes for procurement or the data protection officer, she checks the glossary first. Misunderstandings between disciplines caused more delay in her early work than technical problems did, and the glossary has reduced them noticeably. New members receive a copy when they join, and anyone may add a term.
 
 ### Shared language
 
@@ -2559,29 +2583,43 @@ You will (1) design a comparative study; (2) choose measures and controls for co
 
 Lena's next question: do student projects that adopt dependency update bots fix high-severity advisories faster than those that do not?
 
+The question comes from the society's own experience with the bot and the comparison in the next chapter, but it asks whether the result holds across other student projects. Lena writes down her expected answer and the evidence that would contradict it before collecting any data. She also checks that the data she needs exists in each project's repository history and advisory records, so that the study is feasible before she asks anyone to take part.
+
 ### 33.2 Design
 
 Compare 12 student projects at Hollowbrook: 6 with bots, 6 without, matched by size. Measure days from advisory publication to fix merged.
+
+Matching by size controls for one obvious difference, since larger projects have more dependencies and more advisories. Each project's owners give consent, and fix times come from repository history, which already exists, so the study does not change anyone's behaviour. Lena defines "fix merged" precisely, so every project is measured the same way. She writes the definitions in the study plan and asks Grace to review them before any data are collected.
 
 ### 33.3 Confounders
 
 Projects with bots may have more experienced members. Lena records team experience and checks whether it differs between groups.
 
+If the groups differ, a faster fix time could reflect experience rather than the bot. Lena also notes other possible factors, such as whether a project has an active maintainer during holidays, and records them for each project. With only twelve projects she cannot adjust for many factors statistically, so she reports them openly and discusses how each could affect the result.
+
 ### 33.4 Coding agreement
 
 Two people independently judge whether each fix fully addresses the advisory. Agreement is measured with Cohen's kappa and interpreted with Landis and Koch (1977).
+
+Before coding, the two people agree written criteria and practise on examples not in the study. Disagreements are discussed and the agreed result recorded, but the kappa reported is the one from before discussion, which shows how clear the criteria really were. Lena also reports the number of cases each pair disagreed on, so the kappa can be understood in context.
 
 ### 33.5 Analysis
 
 Medians are compared because fix times are skewed; individual values are shown.
 
+A few very slow fixes would distort a mean, so the median gives a fairer picture of a typical fix. Showing every value lets readers see the spread and spot unusual projects. With six projects per group, Lena avoids claiming a precise difference and describes the pattern, noting which values drive it and whether the conclusion would change if any one project were removed. All results go in an appendix.
+
 ### 33.6 Reproducibility
 
 Scripts and a synthetic version of the data are shared.
 
+Real repository data cannot always be shared, since it could identify projects or members, so the synthetic version keeps the structure and approximate values without real names. The scripts produce every figure in the report from the data, and Lena tests them on a clean machine before publishing, so another student could rerun the analysis and check it. A short guide explains how to run the scripts and what each output shows, so the work can be reused.
+
 ### 33.7 Prior work
 
 Kula et al. (2018) found developers often do not update dependencies; Lena's study asks whether tooling helps in student projects.
+
+Kula and colleagues studied large professional ecosystems, so their findings may not apply to small student teams with short membership. Lena's study cannot settle the wider question, but it adds evidence from a setting the earlier work did not cover. She states this limit in the report and suggests repeating the study at another university. Her review also lists more recent work.
 
 ### Ethics and consent
 
@@ -2627,25 +2665,37 @@ You will (1) compare two approaches to a supply-chain problem; (2) define criter
 
 CampusEats must choose between two ways of keeping dependencies current: a bot that opens small weekly pull requests, or a monthly manual "update day".
 
+Both approaches keep dependencies within their allowed ranges; they differ in how often changes arrive and how much work each step needs. Lena frames the choice as a comparison with agreed criteria, so the decision rests on evidence rather than on which members argue loudest. Lena prepares a short description of each approach, including what members would do each week or month, so everyone understands what is being compared before the trial begins.
+
 ### 34.2 Criteria
 
 Time to apply high-severity fixes, member time spent, number of broken builds and member satisfaction.
+
+The criteria are agreed before the trial starts. Fix time measures security benefit, member time and broken builds measure cost, and satisfaction shows whether members will keep using the approach. Lena defines each measure precisely, for example counting member time from the update log rather than estimates, so both approaches are measured the same way. Satisfaction is gathered with a short anonymous survey at the end of each period, asking the same three questions both times.
 
 ### 34.3 Trial
 
 Each approach runs for six weeks in turn, with records kept.
 
+Running them one after the other means the same members and the same code are compared, though the advisories that appear in each period differ. Lena notes this as a limitation. Six weeks is long enough to include several advisories and at least one monthly update day. Records are kept in the tracker as the trial runs, not reconstructed later. The order of the two periods is chosen by coin toss, and both run during term.
+
 ### 34.4 Results
 
 Bot: high-severity fixes applied in a median of 3 days; 2 hours of member time per week; 3 broken builds, each fixed quickly. Manual: median 16 days; 5 hours on update day each month; 1 large broken build that took a day to fix.
+
+The bot took more member time over a month, but it was spread in small pieces and fixes arrived much sooner. The manual approach was cheaper in hours, but its single broken build was large and hard to diagnose, because many packages changed at once. Lena reports both sides so the society can weigh them.
 
 ### 34.5 Satisfaction
 
 Members preferred the bot, saying small changes were easier to review.
 
+Several members also said the manual day was hard to schedule around exams, and one update day was postponed. A few members found the weekly pull requests repetitive, which suggested grouping minor updates for development-only tools. Lena reports the comments with the numbers, since satisfaction predicts whether an approach will still be followed after the people who chose it leave. Most members answered. Their comments are kept with the survey results.
+
 ### 34.6 Recommendation
 
 Adopt the bot, keep a monthly review of major versions.
+
+The recommendation follows from the fix time result, which matters most for security, and from members' preference. Lena states the cost honestly: the bot takes more total time each month, but in smaller pieces. The society adopts it, groups development-only updates to reduce noise and plans to review the decision after a year, using the same measures as the trial. Lena shares the results with Grace. Grace's office later uses the trial as an example for other projects.
 
 ### Fair comparison
 
@@ -2691,25 +2741,37 @@ You will (1) propose a capstone that addresses a real need; (2) set objectives a
 
 Several student projects at Hollowbrook share the same problems CampusEats faced. Lena proposes a "secure project starter": a template repository with secret scanning, lockfile hash checks, SBOM generation, signing and provenance, update bot configuration and ASVS-based tests.
 
+Each part of the template is something CampusEats already uses and has measured, so the starter packages tested practice rather than new ideas. Lena checks with Grace's office that no similar template already exists. The proposal names the projects that have asked for help with supply-chain problems, so the need is shown with evidence.
+
 ### 35.2 Objectives
 
 Make it easy for new projects to start with good supply-chain hygiene; measure adoption and effect.
+
+The first objective is about ease, because projects adopt what is simple to set up. The second makes the proposal testable: it is not enough to publish the template; Lena must show whether projects use it and whether it reduces problems such as leaked secrets. Each objective links to a success criterion, so the evaluation at the end can be clear. Both are agreed with Grace.
 
 ### 35.3 Success criteria
 
 At least four projects adopt it in a term; zero secrets reach public repositories in adopting projects; setup takes under one hour.
 
+Each criterion can be checked with data already available: adoption from the template's usage records, secrets from server-side scanning and setup time from a timed trial with new members. The thresholds are modest so that success is achievable in one term, and Lena records what she would conclude if a criterion is narrowly missed. These were agreed before the pilot.
+
 ### 35.4 Method
 
 Build the template, pilot with two projects, improve, then offer to all.
+
+The two pilot projects are chosen to differ, one web app and one data project, so the template is tested in more than one setting. Lena times each setup, records every problem the pilot teams hit and fixes the template before the wider offer. Changes are tracked in the template's repository, so the final version can be compared with the first and each improvement linked to the pilot problem that caused it.
 
 ### 35.5 Risks
 
 Low adoption (mitigate with a workshop); maintenance burden (Grace's office agrees to own it after Lena graduates).
 
+Other risks include the template becoming out of date and projects copying it without understanding its checks. Lena plans quarterly updates and a short guide explaining each check. Each risk has an owner and a mitigation, and the plan is reviewed at the midpoint of the project. A further risk is that the template's checks slow builds enough to annoy members, so Lena includes build time in the pilot measures and sets a limit.
+
 ### 35.6 Approval
 
 Grace and Lena's supervisor sign off.
+
+The sign-off records the objectives, success criteria and scope, and it names Grace's office as the future owner. Any later change to the plan is noted in a dated addendum that both sign. With approval in place, Lena begins the pilot, knowing exactly what she will be evaluated against at the end of the year. Copies are kept with the template's repository and in the university's project records, so the plan can be found by later members.
 
 ### Timeline
 
