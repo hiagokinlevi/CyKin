@@ -10,9 +10,9 @@ English is the reference edition.
 
 | Week | Chapter / plan | Curricular subject | Hours | Planned A4 pages | Exercise target | Teaching state | Next step |
 |---|---|---|---:|---:|---:|---|---|
-| 1 | [01](book/PLAN.md#ch-01) | Privacy and data protection: foundations and decisions | 20 | 80 | 13 | Planned | [02 · Plan](book/PLAN.md#ch-02) |
-| 2 | [02](book/PLAN.md#ch-02) | Scope, permission and safe practice | 20 | 80 | 13 | Planned | [03 · Plan](book/PLAN.md#ch-03) |
-| 3 | [03](book/PLAN.md#ch-03) | Privacy and data protection: systems, data and dependencies | 20 | 80 | 12 | Planned | [04 · Plan](book/PLAN.md#ch-04) |
-| 4 | [04](book/PLAN.md#ch-04) | Privacy and data protection: guided lab and applied synthesis | 20 | 80 | 12 | Planned | [Course 005 →](../../security-governance-risk-compliance/en/SUBJECTS.md) |
+| 1 | [01](book/PLAN.md#ch-01) | Privacy and data protection: foundations and decisions | 20 | 80 | 13 | [Draft](book/MANUSCRIPT.md#ch-01) | [02 · Draft](book/MANUSCRIPT.md#ch-02) |
+| 2 | [02](book/PLAN.md#ch-02) | Scope, permission and safe practice | 20 | 80 | 13 | [Draft](book/MANUSCRIPT.md#ch-02) | [03 · Draft](book/MANUSCRIPT.md#ch-03) |
+| 3 | [03](book/PLAN.md#ch-03) | Privacy and data protection: systems, data and dependencies | 20 | 80 | 12 | [Draft](book/MANUSCRIPT.md#ch-03) | [04 · Draft](book/MANUSCRIPT.md#ch-04) |
+| 4 | [04](book/PLAN.md#ch-04) | Privacy and data protection: guided lab and applied synthesis | 20 | 80 | 12 | [Draft](book/MANUSCRIPT.md#ch-04) | [Course 005 →](../../security-governance-risk-compliance/en/SUBJECTS.md) |
 
 A planned next step is a navigation target, not an authored lesson. Keep the completion position at the first unwritten chapter. Page and exercise columns are editorial targets. The book is complete only after its content and A4 rendering meet the publication gate.
