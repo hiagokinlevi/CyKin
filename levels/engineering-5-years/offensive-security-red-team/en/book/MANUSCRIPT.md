@@ -225,7 +225,7 @@ A pure function can be called from a unit test with a fake scope and from the li
 
 ### 4.2 Data structures that resist errors
 
-Store ports as a `set` of integers, not a comma-separated string: membership is exact and "443" cannot match "4430". Store CIDRs as parsed network objects (the standard `ipaddress` module) rather than strings, because string prefix matching thinks 10.2.0.5 is inside "10.20". Store findings as dictionaries with a fixed schema and validate required keys on creation.
+Store ports as a `set` of integers, not a comma-separated string: membership is exact and "443" cannot match "4430". Store CIDRs as parsed network objects (the standard `ipaddress` module) rather than strings, because string prefix matching thinks 10.200.0.5 is inside "10.20". Store findings as dictionaries with a fixed schema and validate required keys on creation.
 
 Wrong types create silent bugs that look like scope mistakes. A string of ports invites a substring match; a set of integers does not. String prefix checks on addresses are a classic trap, which is why the standard library's network objects exist. Validating finding records on creation catches a missing ticket reference before the report is written, when fixing it still costs seconds rather than an awkward correction to the client.
 
