@@ -8034,7 +8034,7 @@ CANONICAL_CONTACT BLOCK_INVENTED_CANONICAL_PREMISE
 
 The first result rejects a positive source-availability description with no cited records. The second rejects a string before Python truthiness can turn it into a supposed variant authorization. The remaining controls reject unsupported changes to the canonical retention, query-coverage and contact premises. A blocking result identifies an input inconsistency, not a deleted source, an observed attack or a production action. Preserve the five-point supplementary lab rubric: assess these controls within its existing evidence-boundary and unsupported-claim criterion. No EX identifier is added.
 
-The first two variants declare a later card's content in a 09:05 source set; the last tries to interpret B19's training scope without either relevant card. The guard refuses the unsupported claim rather than quietly adding missing cards. None changes the twenty baseline case results or proves authentic provenance outside this fixture.
+In the separate three-line **release-guard** transcript above, the first two variants declare a later card's content in a 09:05 source set; the last tries to interpret B19's training scope without either relevant card. The guard refuses the unsupported claim rather than quietly adding missing cards. None changes the twenty baseline case results or proves authentic provenance outside this fixture.
 
 #### Interpretation of positive and negative controls
 
