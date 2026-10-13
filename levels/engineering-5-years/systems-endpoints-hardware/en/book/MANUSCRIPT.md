@@ -1167,21 +1167,31 @@ You will (1) define system boundaries and interfaces; (2) manage requirements th
 
 The system includes public PCs, the golden image, the management server, the restore mechanism and monitoring. Patron personal devices and the internet are outside.
 
+Drawing the line tells Fernhill what the project must control and what it can only influence. A patron's phone plugged in to charge is outside the boundary, but the PC's response to it is inside. Websites are outside, yet the browser and the restore that clears downloads are inside. Mateo puts the boundary on the context diagram so that every later discussion starts from the same picture.
+
 ### 16.2 Interfaces
 
 Interfaces include the PC-to-server management channel, the print service and the network segment rules.
+
+Two more complete the list on Mateo's diagram: the session booking system, which tells each PC who may log in, and the feed of restore results and events to the central store. Each interface has a short description of what crosses it, in which direction, how it is protected and who owns each end. Problems found in testing almost always sat at one of these five points.
 
 ### 16.3 Life cycle
 
 Requirements are defined, designed, implemented, verified, operated and retired. Each stage has outputs.
 
+For Fernhill the outputs are concrete documents and artefacts that someone can open and check. Moving to the next stage needs the previous outputs to exist and be reviewed: no design before agreed requirements, no branch release before verification evidence. The stages can overlap on small changes, but the outputs are still produced, which keeps the record complete for the next person who inherits the system. Retirement is planned from the start.
+
 ### 16.4 Configuration management
 
 NIST SP 800-128 describes security-focused configuration management: baselines, change control and monitoring. The golden image is the baseline.
 
+For Fernhill the three parts are simple. The baseline is the approved image release. Change control is the review and staged release process. Monitoring is the daily comparison of each PC with its manifest and the restore results. A change made directly on a PC without going through the image is drift, and the nightly restore removes it. Changes that should stay must go through the image.
+
 ### 16.5 Verification planning
 
 Each requirement gets a verification method: test, inspection or analysis.
+
+Tests suit settings that can be checked by a script, such as USB storage being blocked. Inspection suits documents and physical facts, such as firmware passwords recorded in the key store. Analysis suits properties that cannot be tested directly, such as the exposure calculation. Mateo chooses the method when writing each requirement, because a requirement nobody knows how to verify is usually written too vaguely. The method is recorded beside the requirement in the verification table, together with who performs it.
 
 ### Ownership of components
 
@@ -1237,25 +1247,35 @@ You will (1) describe feedback loops; (2) apply them to configuration and restor
 
 A feedback loop measures a system's state, compares it with a target and acts to reduce the difference. A thermostat is the classic example.
 
+The thermostat measures temperature, compares it with the setting and switches the heating on or off. Every loop has those parts: a sensor, a target, a comparison and an action. Mateo uses the thermostat to explain the restore design to librarians, because everyone has met one and knows what happens when its sensor breaks. Mateo then names each part for the restore loop.
+
 ### 17.2 Configuration as control
 
 The nightly restore is a feedback loop: measure (compare with the golden image), compare (detect differences) and act (restore).
+
+Strictly, the restore does not need to find differences before acting; it resets the patron area whatever its state. The comparison with the manifest still matters, because it measures how far each PC drifted during the day and confirms the reset worked. Mateo keeps both: the restore acts, and the check afterwards measures. Without the measurement, Fernhill would know the restore ran but not whether it succeeded.
 
 ### 17.3 Delay
 
 Loops with long delays let problems grow before correction. Fortnightly manual clean-ups had a 14-day delay; nightly restore has one day.
 
+The exposure calculation earlier in the course is a measure of the same thing: the longer the delay, the larger the area under the curve. Shortening the delay from a fortnight to a day reduces exposure by roughly the ratio of the two. Further shortening, such as restoring after every session, would cut exposure again but would need more time between patrons, which branch managers rejected.
+
 ### 17.4 Over-correction
 
 Aggressive loops can cause disruption, such as restoring during a patron's session. The restore runs after closing time to avoid this.
+
+Mateo considered restoring after each logoff and rejected it for now: a full restore takes several minutes, and patrons queue for PCs at busy times. A lighter clean-up of the patron profile at logoff, with the full restore overnight, gives most of the benefit without the queue. Any change to the restore timing is tested at one branch first, because a loop that disrupts service soon loses staff support.
 
 ### 17.5 Monitoring the loop
 
 The loop itself must be monitored: if restores fail silently, the system drifts.
 
+Mateo's morning report lists every PC whose restore did not finish successfully, and staff check that list before opening. A PC that has not reported at all is listed too, since silence may mean the restore never started. Counting failures each night also feeds the incident alert. Without these checks, a broken restore would leave the PC carrying yesterday's files while everyone believed it was clean. The report reaches staff before eight.
+
 ### Stability
 
-A control loop should correct problems without causing new ones. If the restore loop ran too often, it might interrupt patrons; if too rarely, problems accumulate. Nightly after closing balances both. Mateo also adds a guard: if more than five PCs fail restore, the system stops releasing new images until IT investigates, preventing a bad update from repeatedly breaking PCs.
+A control loop should correct problems without causing new ones. If the restore loop ran too often, it might interrupt patrons; if too rarely, problems accumulate. Nightly after closing balances both. Mateo also adds a guard: if five or more PCs fail restore in one night, the system stops releasing new images until IT investigates, preventing a bad update from repeatedly breaking PCs.
 
 This guard links the probability work in chapter 7 to operations.
 
@@ -1307,21 +1327,31 @@ You will (1) design layered controls for public PCs; (2) place controls at firmw
 
 Firmware: Secure Boot and firmware password. OS: standard users, minimal services, disk encryption. Application: allowlist. Data: nightly restore of patron area. Network: segmentation. Monitoring: event logs and restore alerts.
 
+Mateo writes the layers as a table with what each stops and what it depends on. The firmware layer protects the boot of everything above it. The monitoring layer watches the others. Writing them out showed that the data layer, the nightly restore, does the most work, which the worked example discusses with Dr Novak.
+
 ### 18.2 Defence in depth
 
 If one layer fails, others still protect. If the allowlist misses a program, the nightly restore removes it.
+
+Mateo tested this on a lab PC by deliberately adding a program to the allowlist by mistake and installing it in the patron area. The program ran that day, as the allowlist now permitted it, but was gone after the overnight restore. The test shows the layers working together, and also shows the limit: during that one day, the mistake was live. Layers reduce harm; they do not remove the need to get each one right.
 
 ### 18.3 Firmware resilience
 
 NIST SP 800-193 sets principles for protecting, detecting and recovering firmware; SP 800-147 gives BIOS protection guidelines for update authentication.
 
+For Fernhill the practical meaning is that firmware updates must come signed from the vendor and be checked before they are applied, that firmware settings are protected by a password, and that a damaged firmware can be detected and restored from a known-good copy. Mateo checks which of these the existing PC models support. Older models lacking recovery features are listed for replacement first.
+
 ### 18.4 Application control
 
 Microsoft documents application control for Windows, allowing only approved software to run.
 
+The documented approach lets Fernhill define which programs may run by publisher, path or file hash, and blocks everything else. Mateo starts the allowlist from the image contents list and adds accessibility tools after testing with patrons who use them. Rules are first run in audit mode, which logs what would have been blocked, so the team can find missing entries before enforcing. Enforcement begins only after a week with no unexpected audit entries.
+
 ### 18.5 Trade-offs
 
 More layers add complexity and maintenance. The design keeps each layer simple.
+
+Each layer needs its own maintenance: firmware passwords to manage, allowlist entries to review, segment rules to update. Mateo estimated the weekly hours for each and checked them against Marta's team's time, since a layer that nobody has time to maintain drifts until it no longer protects. He chose standard tools that Fernhill's staff could learn, rather than more powerful ones they would struggle to run. The estimate is reviewed every year.
 
 ### Mapping to standards
 
@@ -1373,21 +1403,31 @@ You will (1) explain authentication for patrons and staff; (2) describe encrypti
 
 Patrons log in with library card numbers via a session manager; the PC itself runs a standard local account.
 
+The session manager checks the card number against the library system and sets a time limit on the session. When the patron logs out or the time ends, the session closes and the profile is cleared. The PC's local account never knows who the patron was, which keeps identities off the machine and away from the nightly restore's logs. Mateo tested this on a lab PC.
+
 ### 19.2 Staff access
 
 Staff administration uses separate named accounts with multi-factor authentication.
+
+Named accounts mean every administrative action can be traced to a person, which shared accounts would prevent. The second factor stops a stolen password from being enough. Mateo checked that the second factor works from the branches, where mobile signal is poor at Millbrook, and chose hardware tokens for that reason. Staff who leave have their accounts disabled the same day by Marta. Administrative sessions time out after a short idle period, and every sign-in is logged.
 
 ### 19.3 Encryption at rest
 
 Disk encryption, supported by the TPM, protects data if a PC or disk is stolen. Microsoft documents BitLocker for Windows.
 
+Encryption matters most for staff laptops and for public PCs that could be carried away. The key is released by the TPM only when the boot chain matches, so a disk moved to another machine stays unreadable. Mateo confirmed that encryption is turned on for every public PC by checking the management reports, not by assuming the image setting was applied everywhere.
+
 ### 19.4 Encryption in transit
 
 Management traffic uses TLS with certificates so PCs talk only to the genuine server.
 
+The server's certificate is issued by Fernhill's own authority, and PCs trust only that authority for management traffic. A device pretending to be the server on the branch network would fail the check. Mateo tested this by pointing a lab PC at a test server with an untrusted certificate, and the PC refused to connect and logged the reason. The certificate's expiry is tracked with alerts well ahead, so renewal never surprises staff.
+
 ### 19.5 Signatures
 
 Golden images and updates are signed; PCs verify signatures before applying them, as SP 800-147 recommends for firmware updates.
+
+Signing means a PC applies an image only if it was produced by Fernhill's release process. An image altered on the server or in transit fails the check. The worked example confirms this on a lab PC. The protection is only as good as the signing key's security, which the key management discussion below takes up as a risk to resolve. Failures are logged and alerted.
 
 ### Key management
 
@@ -1447,21 +1487,31 @@ You will (1) describe the public PC service as an engineering problem; (2) ident
 
 Fernhill's 300 public PCs serve about 2,000 sessions a day. Staff are librarians, not IT specialists. The IT team is Marta and one technician. Budget is limited.
 
+These facts shape every choice. Two thousand sessions a day means the PCs must be ready and reliable, since a queue forms quickly when several are down. A small IT team means designs must run themselves and report clearly. Librarians need to understand what the PCs do without technical training. A limited budget favours reusing existing hardware and standard tools.
+
 ### 20.2 Stakeholders
 
 Patrons want working, private PCs. Librarians want fewer problems to handle. Marta wants less manual work. The board wants cost control and no data incidents.
+
+Mateo interviewed members of each group and recorded what they said in their own words. Patrons mostly wanted PCs that work and do not show other people's files. Librarians wanted fewer interruptions. The board's questions were about cost and reputation. The interviews also revealed that some patrons valued keeping files between sessions, which the design cannot offer, so the notices explain alternatives.
 
 ### 20.3 Constraints
 
 Existing hardware must be reused; changes must not disrupt opening hours; accessibility tools must work.
 
+Each constraint rules out options. Reusing hardware excludes designs that need new devices. Avoiding disruption means changes happen overnight or at one branch first. Accessibility tools must keep working, which shapes the allowlist. Mateo lists the constraints at the front of the requirements so that reviewers can check a proposed design against them before considering anything else. Marta added one more constraint: changes must be explainable to librarians in a single short briefing.
+
 ### 20.4 Objectives
 
 O1: no patron data persists beyond one day. O2: only approved software runs. O3: PCs are ready at opening. O4: manual effort falls.
 
+Each objective is short enough to remember and points to a measure. Mateo checked them with Marta and the board's representative. The first draft included an objective to make the PCs secure, which was dropped as unmeasurable; the four that remain can each be checked against data the project already collects. Each objective has a named owner who reports on it quarterly.
+
 ### 20.5 Standards context
 
 The design draws on CIS Benchmarks, Microsoft security baselines, NIST SP 800-123 and SP 800-40r4.
+
+Mateo uses these as references rather than recipes. The baselines provide tested settings; SP 800-123 provides principles for keeping systems minimal; SP 800-40r4 guides patch planning. Where a recommended setting conflicts with a library need, such as accessibility, he records the deviation with its reason and a compensating control. Each reference is listed with the version used. Deviations are reviewed with Marta each year, and removed when the underlying need disappears.
 
 ### Success measures
 
