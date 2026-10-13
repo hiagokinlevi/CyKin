@@ -315,7 +315,7 @@ Dois analistas voluntários que não participam do estudo principal fazem a tria
 
 ### 4.5 O que o piloto encontrou
 
-Os analistas não notaram o campo de criticidade do ativo porque ele ficava na parte de baixo do cartão; o log não registrava as mudanças de disposição; 40 alertas levaram 70 minutos, causando fadiga. Nadia move os campos de contexto para perto do topo, corrige o log e divide os 40 alertas em duas sessões de 20. Cada mudança consta do registro de mudanças v1.1 antes do início do estudo principal. A constatação sobre a fadiga importa para a validade: analistas cansados erram mais no fim de uma sessão, o que poderia enviesar a condição que viesse em segundo lugar.
+Os analistas não notaram o campo de criticidade do ativo porque ele ficava na parte de baixo do cartão; o log não registrava as mudanças de disposição; 40 alertas levaram 70 minutos, causando fadiga. Nadia move os campos de contexto para perto do topo, corrige o log e divide os 40 alertas em duas sessões de 20 com um intervalo de 15 minutos. Cada mudança consta do registro de mudanças v1.1 antes do início do estudo principal. A constatação sobre a fadiga importa para a validade: analistas cansados erram mais no fim de uma sessão, o que poderia enviesar a condição que viesse em segundo lugar.
 
 ### 4.6 Dados do piloto
 

@@ -315,7 +315,7 @@ Two volunteer analysts not in the main study triage 40 alerts, 20 in each condit
 
 ### 4.5 What the pilot found
 
-Analysts did not notice the asset criticality field because it sat at the bottom of the card; logging missed disposition changes; 40 alerts took 70 minutes, causing fatigue. Nadia moves context fields near the top, fixes logging, and splits the 40 alerts into two sessions of 20. Each change is listed in the v1.1 change log before the main study begins. The fatigue finding matters for validity: tired analysts make more errors late in a session, which could bias whichever condition comes second.
+Analysts did not notice the asset criticality field because it sat at the bottom of the card; logging missed disposition changes; 40 alerts took 70 minutes, causing fatigue. Nadia moves context fields near the top, fixes logging, and splits the 40 alerts into two sessions of 20 with a 15-minute break. Each change is listed in the v1.1 change log before the main study begins. The fatigue finding matters for validity: tired analysts make more errors late in a session, which could bias whichever condition comes second.
 
 ### 4.6 Pilot data
 
