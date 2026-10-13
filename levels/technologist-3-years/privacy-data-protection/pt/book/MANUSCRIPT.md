@@ -1,7 +1,7 @@
 # Privacidade e Proteção de Dados: Curso de Tecnólogo
 
 - Idioma: português do Brasil (`pt`); curso 073, curso de tecnólogo (3 anos). Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–10 de 30 já estão escritos em português, com os exercícios EX001–EX030 e suas resoluções com rubricas de 0 a 3; os capítulos 11–30 (EX031–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho parcial em português**. Os capítulos 1–15 de 30 já estão escritos em português, com os exercícios EX001–EX045 e suas resoluções com rubricas de 0 a 3 e 3 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 16–30 (EX046–EX090) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
 - Público: estudantes de tecnólogo que aprendem a verificar como sistemas reais tratam dados pessoais.
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
 - Limites: os laboratórios inspecionam os fluxos de SDKs de um aplicativo sintético, testam a completude da exportação de um pedido de acesso, varrem arquivos sintéticos em busca de padrões de dados pessoais, conferem a retenção de imagens de CFTV e automatizam a exclusão de contas inativas, sempre sobre dados sintéticos. A análise jurídica é didática e não constitui aconselhamento jurídico; a LGPD e os atos da ANPD são citados pelo texto oficial e parafraseados. Pessoas, organizações, sistemas e dados são **sintéticos**, salvo quando uma frase cita uma fonte pública.
@@ -29,9 +29,9 @@ Regulamento (UE) 2016/679 (GDPR), artigos 5, 9, 15, 28, 30, 32, 33 e 35; Lei nº
 
 | Capítulos em português |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) |
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) · [13](#ch-13) · [14](#ch-14) · [15](#ch-15) |
 
-Capítulos 11–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-11), até a chegada dos próximos lotes.
+Capítulos 16–30: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-16), até a chegada dos próximos lotes.
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -435,11 +435,279 @@ A escolha da base legal depende dos fatos; revise-a com o jurídico.
 - **EX029 — Base do marketing.** Que base legal os e-mails de marketing usam? *Rubrica:* 3 = consentimento;; 2 = correta;; 1 = contrato;; 0 = nenhuma.
 - **EX030 — Condição para a frequência cardíaca.** Que condição os dados de saúde de frequência cardíaca podem exigir? *Rubrica:* 3 = consentimento explícito pelo artigo 9;; 2 = menciona consentimento;; 1 = nenhuma;; 0 = nenhuma.
 
+<a id="ch-11"></a>
+
+## Capítulo 11 — Privacidade e proteção de dados: ativos e contexto
+
+### Objetivos de aprendizagem
+
+Você vai (1) classificar os ativos de dados pessoais; (2) entender as expectativas dos alunos; (3) relacionar o contexto ao uso adequado.
+
+### 11.1 Classes de ativos
+
+Aisha classifica os ativos: identidade, pagamento, treino, frequência cardíaca, CFTV e marketing, e avalia a sensibilidade e o volume de cada um. Os dados de identidade incluem nomes, e-mails, telefones e as fotos das carteirinhas. Os de pagamento incluem dados bancários e tokens de cartão. Os de treino incluem aulas e exercícios. A frequência cardíaca vem das cintas. O CFTV cobre entradas e salas de musculação. O marketing inclui preferências e respostas a campanhas. Ela classifica a frequência cardíaca e o CFTV como os mais sensíveis, e identidade e treino como os maiores em volume; pagamento fica em terceiro, porque os tokens ficam com o processador.
+
+### 11.2 Expectativas
+
+Aisha pergunta a vinte voluntários sobre suas expectativas. São alunos que responderam a um aviso em duas unidades, e as perguntas curtas tratam de para onde os dados vão, quem pode vê-los e por quanto tempo são guardados. A maioria espera que os dados de treino fiquem no aplicativo e sejam excluídos quando saírem da academia. Vários se surpreendem ao saber que as telas das aulas mostram zonas cardíacas com o primeiro nome, e dois dizem que deixaram de usar as cintas por isso. Ela registra as opiniões de forma anônima e as leva para o trabalho de análise de riscos do capítulo seguinte.
+
+### 11.3 Contexto
+
+A integridade contextual pergunta se um fluxo de informação respeita as normas do contexto em que os dados foram compartilhados. Os alunos compartilham a frequência cardíaca com os trainers para treinar melhor. Um fluxo para anunciantes serve a outra finalidade e rompe essas normas, mesmo que um aviso o mencione, e as expectativas dos alunos confirmam isso. Aisha usa esse referencial para explicar à equipe do aplicativo por que alguns fluxos lícitos ainda parecem errados aos alunos, e por que a confiança depende de respeitar o contexto, e não apenas de cumprir as exigências formais de transparência.
+
+### 11.4 Prioridades
+
+Aisha ordena os ativos combinando a sensibilidade com a amplitude da exposição. A frequência cardíaca é sensível e chega a fornecedores e telas. As imagens de CFTV são sensíveis e acessadas pelos gerentes locais sem registro. Os dados de pagamento são sensíveis, mas já protegidos pelo processador de pagamentos. A frequência cardíaca e o CFTV ficam, portanto, em primeiro lugar. Essa ordem orienta quais fluxos de dados ela examina primeiro no capítulo seguinte e quais controles proporá depois. O Sr. Reilly observa que o contexto ajuda a decidir onde a proteção importa mais.
+
+### Exemplo resolvido
+
+Aisha classifica seis tipos de ativos, levanta as expectativas dos alunos, aplica a integridade contextual aos dados de frequência cardíaca e coloca a frequência cardíaca e o CFTV no topo.
+
+> **Caso sintético.** A pesquisa é sintética; Nissenbaum (2004) é real.
+
+### Erros e limites
+
+Vinte voluntários não são representativos.
+
+### Exercícios
+
+- **EX031 — Classes de ativos.** Cite quatro classes de ativos. *Rubrica:* 3 = identidade, pagamento, treino, frequência cardíaca, CFTV, marketing;; 2 = três;; 1 = nenhuma;; 0 = nenhuma.
+- **EX032 — Expectativa dos alunos.** O que a maioria dos voluntários esperava sobre os dados de treino? *Rubrica:* 3 = ficam no aplicativo e são excluídos na saída;; 2 = uma parte;; 1 = nada;; 0 = nenhuma.
+- **EX033 — Prioridades.** Que ativos ficam no topo? *Rubrica:* 3 = frequência cardíaca e CFTV;; 2 = um;; 1 = errado;; 0 = nenhuma.
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Privacidade e proteção de dados: fluxos de dados
+
+### Objetivos de aprendizagem
+
+Você vai (1) inspecionar os SDKs embutidos num aplicativo; (2) conferir a cobertura pelo aviso e pelos contratos; (3) recomendar mudanças.
+
+### 12.1 SDKs
+
+O aplicativo da Quayside embute cinco kits de desenvolvimento de software (SDKs). Um SDK é uma biblioteca fornecida por outra empresa e incluída no aplicativo para oferecer uma funcionalidade, como relatórios de falhas ou chat, e pode coletar dados sem que a equipe do aplicativo perceba. Aisha gera uma versão de teste, entra com alunos sintéticos e registra o tráfego de rede enquanto usa treinos, aulas e chat. Depois lista cada SDK, os campos que ele recebe e se o aviso de privacidade e os contratos o cobrem, para comparar o que o aplicativo diz com o que de fato envia.
+
+### 12.2 Resultados
+
+O laboratório mostra que os SDKs de relatório de falhas, análise de uso e chat de atendimento estão cobertos pelo aviso e pelos contratos. A rede de anúncios recebe o identificador de publicidade, a zona cardíaca e a localização, e não está no aviso nem tem contrato. O login social não tem contrato. A zona cardíaca deriva de dados de saúde, e enviá-la com identificador de publicidade e localização permite montar um perfil do condicionamento e dos deslocamentos do aluno; é o achado mais grave. Os desenvolvedores contam que o SDK veio com uma funcionalidade de promoções dois anos antes e ninguém revisou sua coleta.
+
+### 12.3 Recomendações
+
+Aisha recomenda remover o SDK da rede de anúncios, assinar um contrato com o provedor de login social e atualizar o aviso de privacidade. Recomenda também uma regra: nenhum SDK entra sem revisão de privacidade. Cada recomendação tem responsável e data: a equipe do aplicativo remove o SDK, compras cuida do contrato do login social e o encarregado atualiza o aviso. Ela pede ainda à equipe do aplicativo que mantenha no repositório uma lista de todos os SDKs, com versão e finalidade, para que as revisões futuras partam de um registro exato, e não da memória de alguém.
+
+### 12.4 Acompanhamento
+
+A equipe do aplicativo remove o SDK de anúncios na versão seguinte. Aisha testa de novo, com as mesmas contas sintéticas e os mesmos passos, para que os resultados possam ser comparados diretamente, e confirma que nenhum dado de frequência cardíaca sai para anunciantes. O tráfego para a rede de anúncios desapareceu, e o contrato do login social é assinado em um mês. Aisha acrescenta à lista de verificação de cada versão uma pergunta simples aos desenvolvedores: esta versão acrescenta ou atualiza alguma biblioteca de terceiros que envia dados para fora do aparelho? O Sr. Reilly observa que a revisão deve se repetir a cada versão.
+
+### Laboratório — Fluxos de dados dos SDKs e sua cobertura
+
+```python
+# Fitness app: what does each embedded SDK receive, and is it covered by the privacy notice and a contract?
+sdks = [("crash reporter", ["device model", "app version"], True, True),
+        ("analytics", ["member id", "screen views", "workout type"], True, True),
+        ("ad network", ["advertising id", "heart rate zone", "location"], False, False),
+        ("chat support", ["member id", "name", "messages"], True, True),
+        ("social login", ["email", "name"], True, False)]
+for name, data, notice, contract in sdks:
+    issues = ([] if notice else ["not in notice"]) + ([] if contract else ["no contract"])
+    health = any(d in ("heart rate zone",) for d in data)
+    print(f"{name:15s} {', '.join(data):40s} {'OK' if not issues else '; '.join(issues)}{' [HEALTH DATA]' if health else ''}")
+```
+
+Execute com `python3 lab_flows.py`. Saída verificada:
+
+```text
+crash reporter  device model, app version                OK
+analytics       member id, screen views, workout type    OK
+ad network      advertising id, heart rate zone, location not in notice; no contract [HEALTH DATA]
+chat support    member id, name, messages                OK
+social login    email, name                              no contract
+```
+
+### Exemplo resolvido
+
+Aisha descobre que a rede de anúncios recebe a zona cardíaca e a localização sem aviso nem contrato e que o login social não tem contrato, e o SDK de anúncios é removido.
+
+> **Caso sintético.** Os SDKs são sintéticos.
+
+### Erros e limites
+
+A inspeção de rede pode deixar escapar dados enviados mais tarde ou em lotes.
+
+### Exercícios
+
+- **EX034 — Pior SDK.** Que SDK é o achado mais grave? *Rubrica:* 3 = a rede de anúncios, que recebe zona cardíaca e localização sem aviso nem contrato;; 2 = cita-o;; 1 = outro;; 0 = nenhuma.
+- **EX035 — Lacuna do login social.** Que lacuna o login social tem? *Rubrica:* 3 = não tem contrato;; 2 = correta;; 1 = nenhuma;; 0 = nenhuma.
+- **EX036 — Regra para SDKs.** Que regra Aisha recomendou? *Rubrica:* 3 = nenhum SDK entra sem revisão de privacidade;; 2 = menciona revisão;; 1 = nenhuma;; 0 = nenhuma.
+
+<a id="ch-13"></a>
+
+## Capítulo 13 — Privacidade e proteção de dados: cenários de risco
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever cenários de risco para os dados dos alunos; (2) classificar probabilidade e impacto; (3) escolher tratamentos.
+
+### 13.1 Cenários
+
+Aisha escreve quatro cenários: dados de frequência cardíaca vazados para anunciantes; imagens de CFTV dos corredores dos vestiários acessadas pela equipe; listas de alunos fotografadas e compartilhadas; e conta do aplicativo sequestrada. Cada cenário diz quem age, o que faz, que dados são afetados e que dano se segue. Por exemplo, uma recepcionista curiosa sobre uma vizinha vê os vídeos das chegadas dela e os compartilha, causando constrangimento e sofrimento. Escrever os cenários assim ajuda os gerentes a reconhecer os riscos nas próprias unidades, em vez de tratar a privacidade como um assunto jurídico abstrato.
+
+### 13.2 Classificações
+
+Aisha classifica cada cenário de um a três em probabilidade e em impacto. A probabilidade considera a frequência de eventos parecidos e a facilidade de provocá-los. O impacto considera o dano aos alunos, como sofrimento, discriminação ou perda financeira, e não só o dano à Quayside. O vazamento da frequência cardíaca tem impacto alto, porque dados de saúde podem afetar seguros ou empregos. O sequestro de conta tem probabilidade alta, porque os alunos costumam reaproveitar senhas de outros serviços. Os dois ficam, portanto, em três por três, no topo da lista, enquanto os demais cenários ficam abaixo.
+
+### 13.3 Tratamentos
+
+Os tratamentos incluem a revisão de SDKs, o registro de acessos ao CFTV, a orientação à equipe e o login multifator opcional no aplicativo. Aisha escolhe tratamentos que reduzam a probabilidade ou o impacto. A revisão de SDKs reduz a chance de novos vazamentos. O registro de acessos ao CFTV dissuade o uso indevido e o torna detectável. A orientação reduz as listas fotografadas. O login multifator protege as contas. Ela registra o risco residual depois de cada tratamento e aceita que algum risco permanece, como alunos que escolhem senhas fracas; o do vazamento da frequência cardíaca cai de alto para médio.
+
+### 13.4 Responsáveis
+
+Cada tratamento recebe um responsável e uma data. Os responsáveis são pessoas com autoridade para agir, e não comitês: o líder do aplicativo cuida da revisão de SDKs e das mudanças de login; o diretor de operações, do registro de acessos ao CFTV; o gerente de treinamento, da orientação à equipe. As datas são realistas e combinadas com os responsáveis. Aisha revisa a lista todo mês e informa os itens atrasados ao encarregado, que pode escalá-los à liderança. O Sr. Reilly observa que os cenários ajudam quem não é especialista a entender os riscos e a agir.
+
+### Exemplo resolvido
+
+Aisha escreve quatro cenários, classifica o vazamento da frequência cardíaca e o sequestro de conta como os mais altos e atribui tratamentos com responsáveis.
+
+> **Caso sintético.** Os cenários são sintéticos.
+
+### Erros e limites
+
+As classificações são subjetivas; discuta-as com os colegas.
+
+### Exercícios
+
+- **EX037 — Cenários mais altos.** Que cenários ficam no topo? *Rubrica:* 3 = vazamento da frequência cardíaca e sequestro de conta;; 2 = um;; 1 = nenhum;; 0 = nenhuma.
+- **EX038 — Tratamento do CFTV.** Que tratamento enfrenta o uso indevido do CFTV? *Rubrica:* 3 = registro de acessos;; 2 = menciona registro;; 1 = nenhum;; 0 = nenhuma.
+- **EX039 — Valor dos cenários.** Por que usar cenários? *Rubrica:* 3 = ajudam quem não é especialista a entender os riscos;; 2 = menciona compreensão;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-14"></a>
+
+## Capítulo 14 — Privacidade e proteção de dados: métodos I
+
+### Objetivos de aprendizagem
+
+Você vai (1) testar a completude da resposta a um pedido de acesso; (2) encontrar os sistemas esquecidos; (3) melhorar o processo.
+
+### 14.1 O teste
+
+Aisha testa o processo de pedidos de acesso da Quayside com um aluno sintético. Ela cria um aluno que usa o aplicativo, reserva aulas, conversa com o atendimento, aparece numa entrada do índice do CFTV e recebe marketing. Depois envia um pedido de acesso pelo canal normal e espera a resposta que um aluno real receberia, para ver o processo como os alunos o vivem, e não como a equipe o descreve. A primeira exportação busca no sistema de matrículas, no perfil do aplicativo e nos pagamentos; Aisha a compara com todos os sistemas que guardam dados desse aluno.
+
+### 14.2 Resultados
+
+O laboratório mostra que a exportação cobriu 47 de 287 registros, 16%, em três de sete sistemas. Ficaram de fora o histórico de treinos, o índice do CFTV, o chat de atendimento e o marketing. O artigo 15 do GDPR, como o art. 18, II, da LGPD, garante acesso a todos os dados pessoais tratados. A equipe buscou nos sistemas que conhecia melhor e esqueceu os outros, porque nenhuma lista dizia onde ficavam os dados dos alunos. O histórico de treinos, o maior conjunto, faltou porque fica num banco separado do aplicativo; o índice do CFTV e as transcrições do chat estavam com fornecedores, a quem ninguém tinha pedido nada.
+
+### 14.3 Melhoria
+
+Aisha cria, a partir do inventário, uma lista de verificação de sistemas e atribui um responsável a cada busca. As Diretrizes 01/2022 do EDPB ajudam a definir o que precisa ser incluído. A lista traz cada sistema, o método de busca, o responsável, o tempo esperado e as necessidades de ocultação: as imagens de CFTV precisam ter outras pessoas desfocadas, e as transcrições do chat podem citar funcionários. A equipe agora registra quais sistemas foram pesquisados em cada pedido. Esse registro, guardado por dois anos, também mostra à autoridade, se ela perguntar, como a Quayside cumpre sua obrigação.
+
+### 14.4 Novo teste
+
+Depois das mudanças, um segundo aluno sintético recebe uma resposta que cobre os sete sistemas e chega dentro do prazo de um mês do GDPR; na LGPD, o art. 19, II, fixa quinze dias para a declaração completa. A equipe percebe que as buscas nos fornecedores são as mais demoradas e passa a iniciá-las no primeiro dia. Aisha recomenda repetir o teste duas vezes por ano e sempre que um sistema novo entrar, porque os sistemas novos são o lugar mais provável para as lacunas reaparecerem. O Sr. Reilly observa que testes de ponta a ponta revelam lacunas que os documentos de procedimento escondem.
+
+### Laboratório — Completude da exportação de um pedido de acesso
+
+```python
+# Access request completeness: which systems hold data for a synthetic member, and which did the first export search?
+holding = {"membership": 14, "app profile": 9, "workout history": 220, "CCTV index": 3, "chat support": 6, "marketing": 11, "payments": 24}
+searched = {"membership", "app profile", "payments"}
+found = sum(v for k, v in holding.items() if k in searched); total = sum(holding.values())
+for k, v in holding.items(): print(f"{k:16s} records {v:4d} {'searched' if k in searched else 'MISSED'}")
+print(f"first export covered {found} of {total} records ({found/total:.0%}) in {len(searched)} of {len(holding)} systems")
+```
+
+Execute com `python3 lab_sar.py`. Saída verificada:
+
+```text
+membership       records   14 searched
+app profile      records    9 searched
+workout history  records  220 MISSED
+CCTV index       records    3 MISSED
+chat support     records    6 MISSED
+marketing        records   11 MISSED
+payments         records   24 searched
+first export covered 47 of 287 records (16%) in 3 of 7 systems
+```
+
+### Exemplo resolvido
+
+Aisha descobre que a primeira exportação cobriu 47 de 287 registros (16%) em três de sete sistemas, acrescenta uma lista de verificação baseada no inventário e confirma a cobertura completa no novo teste.
+
+> **Caso sintético.** O aluno é sintético; o artigo 15 do GDPR, os arts. 18 e 19 da LGPD e as Diretrizes 01/2022 do EDPB são reais.
+
+### Erros e limites
+
+As imagens de CFTV exigem a ocultação de outras pessoas antes da entrega.
+
+### Exercícios
+
+- **EX040 — Cobertura.** Que parcela dos registros a primeira exportação cobriu? *Rubrica:* 3 = 47 de 287, 16%;; 2 = aproximadamente;; 1 = errada;; 0 = nenhuma.
+- **EX041 — Sistemas esquecidos.** Cite dois sistemas esquecidos. *Rubrica:* 3 = histórico de treinos, índice do CFTV, chat de atendimento, marketing;; 2 = um;; 1 = nenhum;; 0 = nenhuma.
+- **EX042 — Correção.** O que fechou a lacuna? *Rubrica:* 3 = lista de verificação baseada no inventário, com responsáveis pelas buscas;; 2 = menciona lista;; 1 = nada;; 0 = nenhuma.
+
+<a id="ch-15"></a>
+
+## Capítulo 15 — Privacidade e proteção de dados: laboratório guiado
+
+### Objetivos de aprendizagem
+
+Você vai (1) conduzir com segurança um laboratório guiado de privacidade; (2) verificar a retenção do CFTV; (3) registrar os resultados.
+
+### 15.1 Plano do laboratório
+
+Aisha planeja um laboratório guiado sobre a retenção do CFTV numa unidade, usando um índice sintético de vídeos. A política da Quayside guarda as imagens por trinta dias, salvo se marcadas por um incidente. As Diretrizes 3/2019 do EDPB sobre dispositivos de vídeo tratam da retenção e da transparência. O índice lista a câmera, a data e a marcação de incidente de cada vídeo, mas nenhuma imagem, então o laboratório não exige assistir às gravações de pessoas reais. Aisha combina o plano com o gerente e o encarregado e escreve que resultado indicaria um problema: qualquer vídeo sem marcação com mais de trinta dias.
+
+### 15.2 Resultados
+
+O laboratório confere 500 vídeos. Desses, 304 têm mais de trinta dias; doze estão guardados por incidentes; 292 deveriam ter sido excluídos. O vídeo sem marcação mais antigo tem 75 dias, então a exclusão automática não está funcionando. O resultado surpreende o gerente, que acreditava que a exclusão era automática. Os vídeos marcados são esperados, já que as imagens ligadas a incidentes ficam guardadas até a resolução. A idade do vídeo mais antigo sugere que a exclusão parou cerca de seis semanas antes da verificação, e o log do firmware confirma a data exata da interrupção.
+
+### 15.3 Correção
+
+O gravador da unidade teve a exclusão automática desligada depois de uma atualização de firmware, que voltou várias configurações aos padrões de fábrica. Aisha religa a exclusão e acrescenta uma verificação mensal. Ela pergunta ao fornecedor se as atualizações nas outras unidades fizeram o mesmo, e ele confirma o problema num modelo de gravador. Ela confere as outras unidades com esse modelo e encontra mais duas com a exclusão desligada, corrigidas na mesma semana. Depois, pede ao fornecedor que envie as notas de atualização com antecedência, para que as configurações de privacidade sejam conferidas antes de cada atualização.
+
+### 15.4 Registro
+
+Aisha registra os achados e a correção: a data, o método, o resultado, a causa raiz, a correção e as verificações de acompanhamento. Ela sugere ainda que o fornecedor mude seu processo de atualização para que as configurações de privacidade sobrevivam às atualizações. A verificação mensal entra na rotina do gerente, e os resultados vão alimentar o monitoramento que ela construirá mais adiante no curso para as quarenta unidades, com esta unidade servindo de modelo para as demais. O Sr. Reilly observa que os laboratórios guiados mostram como uma verificação simples revela uma falha silenciosa.
+
+### Laboratório — Imagens de CFTV além do prazo de retenção
+
+```python
+# CCTV footage retention: clips older than 30 days must be deleted unless flagged for an incident.
+import random
+r = random.Random(8)
+clips = [(r.randint(0, 75), r.random() < 0.04) for _ in range(500)]
+over = [a for a, f in clips if a > 30 and not f]; held = [a for a, f in clips if a > 30 and f]
+print(f"clips {len(clips)}; older than 30 days {len(over)+len(held)}; held for incidents {len(held)}; to delete {len(over)}")
+print(f"oldest unflagged clip {max(over)} days")
+```
+
+Execute com `python3 lab_cctv.py`. Saída verificada:
+
+```text
+clips 500; older than 30 days 304; held for incidents 12; to delete 292
+oldest unflagged clip 75 days
+```
+
+### Exemplo resolvido
+
+Aisha encontra 292 de 500 vídeos com mais de trinta dias (o mais antigo com 75 dias), liga isso à exclusão desligada por uma atualização de firmware, religa a exclusão e acrescenta uma verificação mensal.
+
+> **Caso sintético.** Os vídeos são sintéticos; as Diretrizes 3/2019 do EDPB são reais.
+
+### Erros e limites
+
+O resultado de uma unidade pode não representar as quarenta.
+
+### Exercícios
+
+- **EX043 — Vídeos a excluir.** Quantos vídeos deveriam ser excluídos? *Rubrica:* 3 = 292;; 2 = aproximado;; 1 = errado;; 0 = nenhuma.
+- **EX044 — Causa raiz.** Por que as imagens não eram excluídas? *Rubrica:* 3 = uma atualização de firmware desligou a exclusão automática;; 2 = menciona firmware;; 1 = nada;; 0 = nenhuma.
+- **EX045 — Verificação contínua.** Que controle contínuo Aisha acrescentou? *Rubrica:* 3 = uma verificação mensal da retenção;; 2 = menciona mensal;; 1 = nenhum;; 0 = nenhuma.
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX030 (as de EX031–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). Aisha Bello, o Sr. Tom Reilly, o Lindon Technical Institute, a Quayside Fitness e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX045 (as de EX046–EX090 estão na edição em inglês até a tradução dos capítulos correspondentes). Aisha Bello, o Sr. Tom Reilly, o Lindon Technical Institute, a Quayside Fitness e todos os números são sintéticos. As respostas dos laboratórios citam as saídas verificadas. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Sistema de matrículas, aplicativo, vestíveis e CFTV (também a catraca e as reservas das unidades).
 
@@ -500,6 +768,36 @@ Respostas-modelo para EX001–EX030 (as de EX031–EX090 estão na edição em i
 **EX029.** Consentimento.
 
 **EX030.** Uma condição do artigo 9, como o consentimento explícito.
+
+**EX031.** Identidade, pagamento, frequência cardíaca e CFTV (também treino e marketing).
+
+**EX032.** Que fiquem no aplicativo e sejam excluídos quando saírem da academia.
+
+**EX033.** Os dados de frequência cardíaca e as imagens de CFTV.
+
+**EX034.** A rede de anúncios.
+
+**EX035.** Não tem contrato.
+
+**EX036.** Todo SDK novo exige revisão de privacidade.
+
+**EX037.** O vazamento dos dados de frequência cardíaca e o sequestro de conta do aplicativo.
+
+**EX038.** Registrar e revisar os acessos às imagens.
+
+**EX039.** Tornam os riscos concretos para quem não é especialista.
+
+**EX040.** 47 de 287 (16%).
+
+**EX041.** Histórico de treinos e chat de atendimento (também índice do CFTV e marketing).
+
+**EX042.** Uma lista de verificação baseada no inventário, com um responsável por sistema.
+
+**EX043.** 292.
+
+**EX044.** A exclusão automática foi desligada por uma atualização de firmware.
+
+**EX045.** Uma verificação mensal da retenção do CFTV.
 
 <a id="references"></a>
 ## Referências
