@@ -2575,29 +2575,43 @@ You will (1) assess safety risks of SOC actions on operations; (2) design respon
 
 Response actions can harm the business. Isolating a depot workstation might stop dispatch for a shift. Playbooks state which assets are safety- or business-critical and require approval before isolating them.
 
+A dispatch workstation that stops for a shift could leave dozens of trucks without routes and customers without deliveries. That harm may exceed the risk from a suspicious process, especially if the evidence is weak. Requiring approval for critical assets makes the trade-off explicit: the analyst presents the evidence, the business owner weighs operational impact, and the decision and its reasons are recorded in the case.
+
 ### 33.2 Critical services
 
 Lindqvist lists services that must continue: dispatch, driver routing, customer tracking and payments. For each, the SOC agrees acceptable actions and contacts in advance.
+
+Agreeing actions in advance avoids arguments during an incident, when time is short and stress is high. For dispatch, the agreed action might be blocking one suspicious connection rather than isolating the whole machine. Each service has a named business contact with a phone number that works at night, and the list is checked every quarter because people change roles.
 
 ### 33.3 SOC resilience
 
 The SOC itself can fail: the SIEM may go down, the case system may be unavailable, or the SOC office may be inaccessible. NIST CSF 2.0's Recover function and SP 800-61r3 call for planning and practising recovery.
 
+A SOC that depends entirely on its SIEM is blind when the SIEM is down, which is exactly when an attacker who caused the outage would act. Planning for recovery means listing the SOC's own dependencies, deciding how long each can be missing, and preparing alternatives. Practising those plans matters, because untested recovery steps often fail on the first real attempt.
+
 ### 33.4 Fallbacks
 
 If the SIEM fails, analysts can query critical sources directly using read-only accounts and runbooks. If the case system fails, a shared offline template records actions until it returns.
+
+Read-only accounts let analysts look at authentication and firewall logs on their source systems without risk of changing them. Runbooks give the exact steps, since analysts used to the SIEM's interface may not know each source's own tools. The offline template captures times, actions and decisions, so the case history can be entered into the case system afterwards without gaps.
 
 ### 33.5 Exercises
 
 Twice a year the SOC rehearses: "SIEM unavailable for four hours during a portal attack". Rehearsals reveal missing access, outdated runbooks and unclear roles.
 
+Combining an outage with an attack makes the exercise realistic: real failures often coincide with incidents, sometimes because the attacker caused them. Four hours is long enough for workarounds to be needed rather than waited out. Observers note where analysts hesitated, which steps were missing and which contacts did not answer, and each finding gets an owner and a deadline.
+
 ### 33.6 Recovery
 
 After a failure, the SOC checks for gaps in data, replays buffered logs and reviews whether detections missed anything during the outage.
 
+Logs buffered at sources or collectors during the outage may arrive in a burst when the SIEM returns. Rules that run on live data may not process them, so engineers rerun key detections over the outage window. Any gap that could not be recovered is recorded, so later investigations know that period has incomplete data. Paolo signs off the gap list.
+
 ### 33.7 Case
 
 In the first exercise, analysts discover the read-only accounts for direct log access had expired.
+
+Nobody had noticed because the accounts were never used in normal operations; they expired silently under the password policy. Had the outage been real, analysts would have lost an hour or more getting access approved. The fix is a monthly check that logs into each fallback account, and an alert two weeks before any of them expires. Amara also adds the fallback accounts to the access review list, so their owners confirm each quarter that they are still needed.
 
 ### Communication during failure
 
@@ -2639,29 +2653,43 @@ You will (1) integrate the SOC with IT service management, identity and customer
 
 A detection is only useful if its result reaches the people and systems that act. The possible-takeover alert must reach the case system, the customer service queue and the identity platform that holds accounts.
 
+An alert sitting in the SIEM helps nobody until an analyst acts on it, a customer service agent knows what to tell the customer, and the identity platform actually blocks the account. Each handover is a point where information can be lost or delayed. Integration design maps every handover, including what data must pass across it and how quickly.
+
 ### 34.2 IT service management
 
 Alerts that need IT action, such as fixing a log feed, become tickets in the IT service system with agreed priority mapping: SOC "high" means IT "P2", with a four-hour response.
+
+Without an agreed mapping, a SOC 'high' might land in IT's queue as a routine request and wait days. The mapping translates urgency into terms the receiving team already uses. Four hours is agreed with IT as realistic for their staffing. Tickets carry a link back to the SOC case, so both teams can follow progress.
 
 ### 34.3 Identity platform
 
 The automation calls the customer identity platform's interface to place holds and invalidate sessions. The interface uses a dedicated service account with only those permissions, and every call is logged.
 
+A dedicated account with only hold and invalidate permissions limits damage if the automation is misused or compromised: it cannot read customer data or change passwords. Logging every call creates an audit trail showing which accounts were held, when and by which alert. Those logs are themselves monitored for unusual volumes.
+
 ### 34.4 Customer service
 
 Customer service sees a simplified view: "account on security hold, reason: suspicious login, contact customer by registered phone". They do not see raw logs.
+
+Raw logs contain details that customer service does not need and could misread or disclose. The simplified view gives exactly what an agent needs to act: that the account is held, why in plain terms, and how to contact the customer safely. Using the registered phone number guards against an attacker who changed the email address.
 
 ### 34.5 Interface contracts
 
 Each integration has a contract: data fields, formats, rate limits, error codes and owner. Contracts prevent silent breakage when one side changes.
 
+Rate limits matter because the automation might call the identity platform many times during a large incident. Error codes let the automation tell 'account not found' from 'platform overloaded'. Owners on both sides are notified of planned changes. Contracts are stored with the integration code and tested, so a breaking change shows up before production. Version numbers mark each contract revision.
+
 ### 34.6 Failure handling
 
 If the identity platform does not respond, the automation retries twice, then raises a high-priority alert for manual action. It never assumes success.
 
+Assuming success when the platform does not answer could leave a compromised account active while the SOC believes it is held. Two retries cover brief network hiccups without delaying too long. The manual alert gives an analyst the details needed to place the hold by hand through the platform's console, and the case records which path was used.
+
 ### 34.7 Testing
 
 Integration tests run monthly with a synthetic test customer account reserved for this purpose.
+
+A reserved test account behaves like a real customer but belongs to no one, so holds and session invalidation can be exercised safely. Monthly testing catches changes on the identity platform's side, such as a renamed field or a revoked permission. Test results are logged and failures open a ticket with the integration owner. A test that leaves the reserved account on hold is itself a failure, so the test ends by releasing the hold and checking that the account works normally again.
 
 ### Ownership of integrations
 
@@ -2703,29 +2731,43 @@ You will (1) design a solution to a cross-cutting SOC problem in a team; (2) bal
 
 Night shift has two analysts. Studio II asks teams to reduce night alert load by 40% without increasing missed priority incidents.
 
+Two analysts at night cannot investigate everything that arrives, so some alerts wait or are closed quickly. Reducing load without increasing missed incidents is a constraint pulling in two directions, which is what makes it a design problem rather than a simple cut. Teams must show evidence for both halves of the goal. Teams receive a month of anonymised alert data and the incident list for the same period, so their proposals can be checked against what actually happened.
+
 ### 35.2 Options explored
 
 Amara's team considers: moving low-severity rules to a morning queue; a managed provider for overflow; automation of enrichment so each alert takes less time; and stricter rule promotion criteria.
+
+Each option attacks load differently: rescheduling removes alerts from the night entirely, overflow shares them with outsiders, enrichment makes each one quicker, and promotion criteria stop new noisy rules from reaching nights. They can be combined, but each has risks, such as morning backlogs or the provider's lack of context. Costs are estimated for each.
 
 ### 35.3 Analysis
 
 Using a month of alert data, they find 55% of night alerts come from five rules, three of which have never led to an incident. Moving those three to morning review cuts night load by 31%. Automated enrichment saves about two minutes per remaining alert.
 
+Data change the discussion from opinion to evidence. Five rules generating over half the night alerts is a typical concentration, and three of them with no incidents ever is strong evidence of low value at night. Two minutes saved on each remaining alert adds up across a shift, giving analysts time for real investigations.
+
 ### 35.4 Human factors
 
 Analysts in the studio session warn that moving alerts to morning creates a morning backlog. The team schedules a 30-minute morning review slot and limits the queue.
+
+Engineers might count the problem solved once alerts leave the night queue, but analysts know someone must handle them later. A morning backlog left unchecked would grow and push other work aside. Scheduling a fixed slot and limiting the queue keeps the moved work visible and bounded. The analysts also ask that morning review be shared on a rota, so it does not fall on whoever arrives first.
 
 ### 35.5 The design
 
 Move three rules to morning review; automate enrichment for the top ten alert types; set promotion criteria for new night-paging rules (precision above 0.3 in monitor-only mode); review after one month.
 
+Each element addresses a finding: rescheduling the three no-incident rules, enrichment for the most common alert types, and promotion criteria so new rules prove their value before paging anyone at night. A precision above 0.3 means at least three in ten alerts are real. The one-month review checks both load and missed incidents.
+
 ### 35.6 Critique of others
 
 Amara's team questions another team's proposal to page only on "critical" assets: the asset inventory marks only 40% of systems, so many unclassified assets would never page.
 
+The flaw is in the data, not the idea: paging only on critical assets would work if criticality were known for every system. With only 40% classified, the other 60% would never page, whatever happened on them. Amara's team suggests treating unclassified assets as critical until the inventory is completed. The other team accepts the point and revises its proposal before the final presentation.
+
 ### 35.7 Readiness
 
 The design includes owners, a timeline and a rollback: rules can be restored to night paging in minutes.
+
+Owners make sure each change has someone responsible for it. The timeline sets when each part goes live and when the review happens. Rollback in minutes means that if missed incidents rise, the three rules return to night paging immediately, which makes the trial safe to run. The one-month review compares night alert counts and missed priority incidents with the month before, using the same definitions. Paolo and the night-shift lead attend it together.
 
 ### Worked example
 
@@ -2763,6 +2805,8 @@ You will (1) size SIEM ingestion and storage from source rates; (2) plan for pea
 
 Ingestion is measured in events per second (EPS). Summing sources gives the average; peaks during incidents or business hours can be several times higher.
 
+Average EPS sets the baseline for storage and licensing; peak EPS sets the size of collectors and processing. A system sized only for the average will lag or drop events exactly when activity spikes, often during an incident. Engineers measure EPS per source over several weeks to see daily, weekly and seasonal patterns. Amara records results per source in a table.
+
 ### Lab — sizing the pipeline
 
 ```python
@@ -2787,21 +2831,31 @@ raw GB/day=285.1  90-day hot TB=25.7
 
 Four sources give 6,000 EPS on average and 15,000 at a 2.5× peak. At 550 bytes per event, raw volume is 285.1 GB per day, and 90 days hot would need 25.7 TB — far above the 12 TB tier, confirming the need for the tiering decided in chapter 26.
 
+The arithmetic: 6,000 events per second times 86,400 seconds times 550 bytes gives about 285 GB a day. Ninety days of that is far beyond the hot tier. Peak rate matters for processing but not for storage, since storage follows the daily total. The comparison makes tiering a necessity rather than an option.
+
 ### 36.3 Peaks
 
 Pipelines must handle peaks without dropping priority data. Buffers absorb short spikes; sustained peaks need capacity or graceful degradation.
+
+A buffer acts like a reservoir: it fills during a spike and drains when the rate falls. If a peak lasts longer than the buffer can hold, events must be dropped or processed more slowly. Graceful degradation decides which events go first, keeping authentication and other priority sources intact. Buffer sizes are set from the longest spikes measured on each source over the past year, with a margin, and the margin is checked again after any major new source joins.
 
 ### 36.4 Reducing volume
 
 Options: filter events with no detection or investigation value, summarise high-volume sources (for example, firewall flows into hourly aggregates), and tier storage. Each reduction is checked against detection and investigation needs before applying.
 
+Filtering removes events entirely, so it needs the most care: something that seems useless now may matter in a later investigation. Summarising keeps the pattern but loses detail, such as individual flows. Tiering keeps everything but moves older data to cheaper storage. Each choice is recorded with the reason and the checks done.
+
 ### 36.5 Query performance
 
 Rules that scan large time ranges or unindexed fields slow everything. Engineers measure rule run times and rewrite the slowest.
 
+A rule that searches thirty days of firewall logs every five minutes repeats enormous work and competes with analysts' searches. Engineers list rules by run time and resource use, then rewrite the worst, for example by narrowing the time range or using indexed fields. The improvement is measured before and after. A run-time report is produced weekly and the slowest five rules are named in it.
+
 ### 36.6 Scale tests
 
 Before peak season, the team replays a day of synthetic logs at 3× speed in the test SIEM to check that rules keep up.
+
+Replaying at three times normal speed simulates a heavy peak without waiting for one. The test watches rule delays, queue lengths and dropped events. If rules fall behind, the team adds capacity or optimises queries before the busy season, not during it. Results are compared with the previous year's test. The synthetic day includes a simulated incident burst, so the test reflects the uneven load of a real busy day.
 
 ### Cost visibility
 
@@ -2843,29 +2897,43 @@ You will (1) run day-to-day SOC operations: shifts, handovers and queues; (2) ap
 
 Lindqvist's SOC runs day and night shifts. Handovers use a template: open cases, alerts awaiting action, system health issues and expected events (such as planned maintenance). Chapter 29's slowest case happened at handover; overlapping shifts by 15 minutes now gives time to talk.
 
+Written handovers stop knowledge from leaving with the outgoing analyst. Expected events, such as maintenance windows, prevent the incoming shift from treating planned outages as attacks. Fifteen minutes of overlap allows a conversation about anything the template does not capture, such as an analyst's unease about an alert that has not yet produced firm evidence.
+
 ### 37.2 Triage
 
 Analysts follow a triage sequence: confirm the alert is valid, gather context from enrichment, decide benign, suspicious or malicious, and either close with reason or escalate. Sundaramurthy et al. (2014) observed that much of this knowledge is tacit; written triage notes per rule make it shareable.
+
+Confirming validity first avoids investigating alerts caused by broken parsing or test events. Context from enrichment answers who, what and where quickly. Closing with a reason, rather than simply closing, gives data for tuning and lets reviewers check decisions. Written notes per rule capture what experienced analysts know but rarely write down.
 
 ### 37.3 Escalation
 
 Escalation paths name who to call for each alert type, with times. Analysts never hesitate to escalate; false escalations are reviewed without blame.
 
+Hesitation is dangerous: an analyst who waits to be sure may lose the time needed to contain an attack. Reviewing false escalations without blame keeps analysts willing to escalate. The review asks what information would have helped decide, which often leads to better enrichment or clearer playbooks. Contact lists are checked weekly. When a named person does not answer within the stated time, the path lists who comes next, so analysts never wait on a single phone.
+
 ### 37.4 Workload
 
 Alert fatigue lowers accuracy (Alahmadi et al., 2022). Queue limits, rotation between alert types and protected time for investigation reduce fatigue.
+
+Fatigue builds when analysts handle similar alerts for hours, making mistakes more likely. Queue limits stop a single analyst being buried; rotation varies the work; protected time lets analysts finish deep investigations without constant interruption. Managers track queue sizes per analyst, not just in total. Amara checks whether her rules add to the heaviest queues. When they do, she looks first at enrichment or tuning that could make each alert faster to handle.
 
 ### 37.5 Wellbeing
 
 Night work and incidents are stressful. Managers watch for burnout signs and share incident load.
 
+Signs of burnout include withdrawal, irritability, rising errors and frequent sickness. Sharing incident load means the same person is not on every major incident. Managers offer debriefs after distressing cases and make sure night workers get proper rest between shifts. Healthy staff make better decisions. Lindqvist offers confidential counselling to SOC staff, and managers mention it openly so that using it carries no stigma. Rotas are planned at least four weeks ahead.
+
 ### 37.6 Daily feedback
 
 Each morning, the team spends ten minutes on yesterday's noisy rules and confusing alerts; engineers take actions.
 
+Ten minutes each morning keeps small problems from growing. Analysts mention the alerts that wasted time or were hard to understand; engineers note actions, such as adding a field or adjusting a threshold. Tracking actions to completion shows analysts that their feedback has effect, which keeps them giving it. Actions appear on a shared board, each marked with an owner and a due date, and finished items are announced at the next meeting.
+
 ### 37.7 Engineering in operations
 
 Amara spends one day a week in the queue, so she sees the effect of her rules on analysts first-hand.
+
+Seeing alerts from the analyst's chair reveals problems that are invisible from the engineering side: missing context, confusing titles or rules that fire at the worst moments. Amara rewrites two alert titles after her first day in the queue. The practice also builds trust between engineers and analysts. She logs what she sees each week and brings the most common complaints to the morning feedback meeting.
 
 ### Closing well
 
@@ -2907,29 +2975,43 @@ You will (1) validate that detections work against realistic behaviour; (2) plan
 
 Validation asks whether the SOC detects what matters in real conditions. Verification (chapter 30) proved rules match their specifications; validation tests whether the specifications and the whole system catch realistic behaviour.
 
+A rule can match its specification perfectly while the specification itself is wrong, for example by assuming attackers always fail many times before succeeding. Validation tests the assumptions by using realistic behaviour, which may differ from what engineers imagined. It also checks the whole system, including analysts and playbooks, rather than rules alone.
+
 ### 38.2 Purple-team validation
 
 In a purple-team exercise, an authorised team performs agreed, safe simulations of techniques while defenders watch. Scope, timing and stop conditions are approved by the CISO. The SOC sees which simulations produced alerts, which produced only logs and which left nothing.
+
+Watching together is what makes it purple rather than red: the goal is learning, not catching the defenders out. Stop conditions protect operations, such as halting if a simulation affects a live service. Recording which simulations left no trace at all identifies data gaps, often the most valuable finding of the exercise.
 
 ### 38.3 Technique selection
 
 Lindqvist chooses twelve priority ATT&CK techniques from its threat analysis, including valid account use, new services and remote logons into depot networks.
 
+Twelve is enough to cover the most important risks without overwhelming the team in one exercise. Choosing from the threat analysis keeps the selection relevant to Lindqvist rather than generic. Including depot techniques tests the newly built monitoring, which has not yet seen realistic activity. The list is agreed with the CISO, and each technique is linked to the threat analysis entry that justified it, so the selection can be revisited when the analysis changes.
+
 ### 38.4 Outcomes
 
 For each simulation the result is: alerted, logged but no alert, or not logged. Each category leads to a different fix: tuning, new detection or new data source.
+
+Alerted means the full chain worked. Logged but no alert means the data exist but no rule uses them, so the fix is a new or tuned detection. Not logged means the SOC was blind, so the fix starts with collecting a new source. Counting outcomes across techniques gives a clear coverage picture.
 
 ### 38.5 Real incidents
 
 Validation also uses real incidents: did the SOC detect them, or did customers report them first? The portal takeover was detected internally — a validation point for R-07.
 
+Real incidents test the system against actual attackers rather than simulations. A customer reporting an incident first is a sign that detection failed somewhere. The portal takeover being caught internally supports R-07, though a single case is limited evidence, and the SOC keeps counting over time. Amara logs each incident's detection source in the case system so the share found internally can be counted.
+
 ### 38.6 Avoiding gaming
 
 Defenders do not get the simulation script in advance; otherwise detections are tuned to the test rather than the behaviour.
 
+If defenders know exactly which simulations will run and when, they can tune rules to catch those specific events, which inflates results without improving real detection. Keeping the details secret, while sharing the general scope, ensures the exercise tests how the SOC would perform against unannounced activity. The authorised team keeps its detailed plan with the CISO's office, and defenders learn the specifics only during the debrief after the exercise ends.
+
 ### 38.7 Repeat
 
 Validation repeats quarterly; results feed the coverage metric from chapter 29.
+
+Quarterly repetition shows whether fixes worked and whether coverage drifts as systems change. Techniques that alerted last time are tested again, because a parser change or rule edit could have broken them. The trend over several quarters gives managers a clear view of progress. Results are compared quarter by quarter in a single table, with each technique's outcome over time. A technique that moves from alerted to logged-only is treated as a regression and investigated like a defect, with an owner and a deadline.
 
 ### Safety of exercises
 
