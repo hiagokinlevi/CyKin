@@ -76,11 +76,11 @@ Toda afirmación factual sobre una ley, un estándar, un protocolo, un incidente
 23. [Infraestructura crítica y seguridad sectorial: evaluación](#ch-23): comprobar si los controles funcionan y decir con cuánta seguridad se sabe.
 24. [Métodos de investigación aplicada](#ch-24): responder a una pregunta operativa con un estudio pequeño y honesto.
 25. [Taller de proyecto en equipo](#ch-25): trabajar como equipo de entrega en un servicio compartido.
-26. [Infraestructura crítica y seguridad sectorial: traspaso operativo](../../en/book/MANUSCRIPT.md#ch-26): manuales de operación, titularidad y un traspaso que sobreviva al turno de noche.
-27. [Despliegue y validación](../../en/book/MANUSCRIPT.md#ch-27): comprobaciones previas, despliegues canario, vuelta atrás y validación posterior al despliegue.
-28. [Práctica sobre el terreno](../../en/book/MANUSCRIPT.md#ch-28): trabajar con seguridad en emplazamientos remotos y con el personal de operaciones.
-29. [Construcción del proyecto final](../../en/book/MANUSCRIPT.md#ch-29): el servicio monitorizado de extremo a extremo y su registro de evidencia.
-30. [Evaluación del proyecto final](../../en/book/MANUSCRIPT.md#ch-30): revisión del diseño, evidencia operativa y evaluación del proyecto de integración.
+26. [Infraestructura crítica y seguridad sectorial: traspaso operativo](#ch-26): manuales de operación, titularidad y un traspaso que sobreviva al turno de noche.
+27. [Despliegue y validación](#ch-27): comprobaciones previas, despliegues canario, vuelta atrás y validación posterior al despliegue.
+28. [Práctica sobre el terreno](#ch-28): trabajar con seguridad en emplazamientos remotos y con el personal de operaciones.
+29. [Construcción del proyecto final](#ch-29): el servicio monitorizado de extremo a extremo y su registro de evidencia.
+30. [Evaluación del proyecto final](#ch-30): revisión del diseño, evidencia operativa y evaluación del proyecto de integración.
 
 Apéndices: [Resultados resueltos y notas de evaluación](#worked-results) · [Glosario](#glossary) · [Referencias](#references).
 
@@ -2797,9 +2797,508 @@ Los servicios los construyen equipos. Asigne a los roles responsabilidades clara
 <!-- cyberabc:chapter-navigation:start ch-25 -->
 ### Siga estudiando — capítulo 25 de 30
 
-[← Capítulo 24](#ch-24) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 26 →](../../en/book/MANUSCRIPT.md#ch-26)
+[← Capítulo 24](#ch-24) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 26 →](#ch-26)
 
 Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-26"></a>
+
+## Capítulo 26 — Infraestructura crítica y seguridad sectorial: traspaso operativo
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted debería ser capaz de:
+
+- preparar un servicio para su traspaso del equipo del proyecto a las personas que lo operarán cada día;
+- redactar **manuales de operación** que un colega competente pueda seguir a las 03:00 sin su autor;
+- definir la titularidad, los niveles de servicio y la evidencia de que el servicio está sano;
+- llevar a cabo un traspaso que compruebe la comprensión, no que se limite a entregar documentos.
+
+Un servicio no está terminado cuando funciona; está terminado cuando otra persona puede operarlo. Muchos controles de seguridad fallan en el traspaso: la persona que entendía la rotación de claves deja el proyecto; el equipo de guardia nunca aprendió qué significa la primera acción de la regla C; la restauración de las copias solo la ensayó su autor.
+
+### 26.1 Qué se traspasa
+
+Un paquete de traspaso de LANTERN contiene:
+
+- **Descripción del servicio**: propósito, clientes, arquitectura con zonas, conductos y caminos de gestión (capítulo 8), y las propiedades de diseño que deben preservarse.
+- **Titularidad**: responsable del servicio, responsable técnico, responsable de seguridad, contactos de los clientes y de los proveedores, con sus roles y números fuera del horario laboral.
+- **Niveles de servicio**: lo que pueden esperar los clientes (telemetría en 60 s, antigüedad del valor visible, RTO de 4 h para el historiador) y cómo se miden (capítulo 9).
+- **Manuales de operación** para las tareas rutinarias y de emergencia (véase «Manuales de operación que funcionan a las 03:00», más abajo).
+- **Fichas de control** de todos los controles, con las fechas de la última evidencia (capítulo 18).
+- **Monitorización**: cada regla con su primera acción y las comprobaciones de automonitorización (capítulo 19).
+- **Elementos abiertos**: problemas conocidos, riesgos aceptados con sus responsables y controles compensatorios con fechas de fin.
+- **Registro de evidencia**: qué se ha probado y cuándo (el capítulo 29 lo reúne).
+
+### 26.2 Manuales de operación que funcionan a las 03:00
+
+Un buen manual de operación se escribe para un colega competente que no ha visto antes este servicio y que trabaja bajo presión de tiempo. Indica su **propósito** y **cuándo usarlo**; los **requisitos previos** (acceso, herramientas, aprobaciones); los **pasos**, numerados, cada uno con la orden o acción exacta y lo que debería verse; los **puntos de decisión** («si el registro del retransmisor muestra fallos de MAC, vaya al paso 9; si no, al paso 12»); las **notas de seguridad** donde un paso pueda afectar a las operaciones; la **reversión**; y **cómo registrar** lo hecho. Pruebe cada manual haciendo que alguien distinto de su autor lo siga en un sistema de prueba y cronométrelo.
+
+Manuales de operación esenciales de LANTERN: añadir o retirar una estación (cambio estándar); rotar la clave de una estación; reconstruir el equipo del retransmisor; restaurar el historiador; responder a cada regla de alerta; sospecha de compromiso del retransmisor (primeros pasos y escalado); mantenimiento planificado con operaciones de Agua; habilitar el acceso de un proveedor.
+
+### 26.3 Evidencia de salud
+
+El equipo receptor debería poder responder a «¿está sano LANTERN?» en dos minutos a partir de un panel o de un informe diario: estaciones que informan / esperadas; recuentos por hora de aceptaciones, rechazos y cuarentenas; margen de recursos del retransmisor (capítulo 1); desfases de reloj; frescura de las fuentes de registros; última copia correcta y última prueba de restauración; última evaluación de las reglas; alertas abiertas; reglas silenciadas y su caducidad (capítulo 25). El traspaso de este capítulo encontró la carencia: el informe de salud decía «copias OK», pero no mostraba ninguna fecha de prueba de restauración. Para LANTERN, la comprobación de dos minutos mostraría 14 estaciones esperadas, los recuentos de aceptaciones, rechazos y cuarentenas, los desfases de reloj frente a la alerta de 2 s, el disco de RLY-01 frente a su alarma del 85 % y cualquier regla silenciada con su caducidad.
+
+### 26.4 Llevar a cabo el traspaso
+
+El traspaso es un proceso, no un correo electrónico. Llévelo a cabo por etapas: recorrido del paquete con el equipo receptor; **acompañamiento**, en el que el equipo receptor realiza tareas rutinarias mientras el equipo del proyecto observa; **acompañamiento inverso**, en el que el equipo del proyecto observa cómo el equipo receptor gestiona una alerta de prueba inyectada y un manual de operación; y **aceptación**, en la que el responsable del servicio y el jefe del equipo receptor dan su conformidad con los elementos abiertos enumerados. Acuerde un periodo de **soporte inicial** durante el cual el equipo del proyecto sigue disponible.
+
+El acompañamiento inverso de Fallowmere usó una alerta inyectada de la regla C para PS-09.
+
+### 26.5 Ejemplo resuelto: un traspaso que encontró tres carencias (sintético)
+
+Durante el acompañamiento inverso, se entrega al equipo de operaciones de FSTS una alerta de prueba de la regla C para PS-09. El tecnólogo de guardia sigue el manual de operación y llama a la sala de control de Agua (correctamente) y después comprueba el estado del operador, tal como está escrito. El manual no menciona revisar el registro de fallos de MAC del retransmisor, así que el tecnólogo llama a BayTel; la causa inyectada era una discrepancia de claves. Segundo, el manual de rotación de claves menciona «el almacén de claves» sin decir dónde está ni quién tiene acceso; el equipo receptor no puede seguirlo. Tercero, el informe de salud muestra «copias OK», pero no la fecha de la última prueba de restauración. Las tres carencias se corrigen antes de la aceptación; el traspaso se retrasa una semana, lo que resulta mucho más barato que descubrir las carencias durante un incidente.
+
+### 26.6 Actividad práctica: redacte y pruebe un manual de operación
+
+Redacte el manual de operación «Responder a la regla C: estación en silencio» con la estructura de «Manuales de operación que funcionan a las 03:00», más arriba, incluido el punto de decisión del ejemplo resuelto anterior («un traspaso que encontró tres carencias»). Pida a un colega (o, si estudia solo, a usted mismo tras un día de descanso) que lo siga con los datos del Lab 20 y anote cada punto en el que dudó. Use la lección del traspaso como punto de decisión: después de llamar a la sala de control de Agua, revise el registro de fallos de MAC del retransmisor para la estación en silencio antes de llamar a BayTel. En la prueba del traspaso, la causa inyectada era una discrepancia de claves, y el manual sin ese paso envió al tecnólogo de guardia al operador. Con los datos del Lab 20, el mismo paso separa los mensajes perdidos de PS-07 del desfase de reloj de PS-09.
+
+### 26.7 Errores frecuentes y límites
+
+- Documentación entregada sin comprobar que otros pueden usarla.
+- Manuales de operación que dicen «investigar» o «resolver el problema».
+- Informes de salud que muestran el éxito de la configuración, pero no evidencia de eficacia.
+- Traspaso sin acompañamiento.
+- Elementos abiertos y riesgos aceptados omitidos para que el servicio parezca completo.
+- Un equipo del proyecto que desaparece el día después de la aceptación.
+
+El simulacro de PS-09 detectó el segundo error: «comprobar el estado del operador» envió al tecnólogo a BayTel por una discrepancia de claves.
+
+La línea «copias OK» sin fecha de restauración es el tercero.
+
+### Ejercicios — capítulo 26
+
+**EX076 — Crítica de un manual de operación.** *Objetivo:* mejorar un manual de operación. *Entradas:* «Rotación de claves: 1. Generar una clave nueva. 2. Ponerla en el retransmisor y en la estación. 3. Comprobar que funciona. 4. Borrar la clave antigua». *Restricciones:* identifique al menos seis problemas. *Pasos:* enumere los problemas y reescríbalo. *Evidencia esperada:* lista y reescritura. *Rúbrica:* 3 = faltan el propósito y los requisitos previos, no se indica la ubicación del almacén ni el acceso, no hay periodo de solapamiento (capítulo 18), no hay verificación concreta, no hay aviso de seguridad ni a operaciones, no hay reversión, se borra la clave antigua demasiado pronto para la acumulación, no hay registro; la reescritura los resuelve; 2 = cuatro o cinco; 1 = cosméticos; 0 = nada.
+
+**EX077 — Informe de salud.** *Objetivo:* definir la evidencia de salud. *Entradas:* el capítulo 26 («Evidencia de salud»). *Restricciones:* una pantalla; diez elementos como máximo. *Pasos:* elija los elementos, asigne a cada uno un umbral verde/ámbar/rojo e indique quién lo lee cada día. *Evidencia esperada:* tabla. *Rúbrica:* 3 = elementos que cubren la disponibilidad (estaciones que informan), la integridad (rechazos y cuarentenas), la capacidad, la hora, el registro, las copias y la restauración, la salud de la monitorización y los silenciamientos; umbrales razonables; lector nombrado; 2 = ocho elementos o umbrales débiles; 1 = lista sin umbrales; 0 = nada.
+
+**EX078 — Decisión de aceptación.** *Objetivo:* decidir si se acepta un traspaso. *Entradas:* todos los manuales de operación probados excepto la restauración del historiador (probada solo por su autor); dos fichas de control carecen de fechas de evidencia; un riesgo aceptado (PS09-RTU sin soporte) tiene responsable y plan. *Restricciones:* aceptar, aceptar con condiciones o rechazar. *Pasos:* decida y justifíquelo, enumerando las condiciones con fechas. *Evidencia esperada:* párrafo. *Rúbrica:* 3 = aceptar con condiciones: prueba independiente de restauración del historiador en un plazo corto, evidencia de los dos controles antes de una fecha, soporte inicial hasta que se cumplan las condiciones; reconoce que el riesgo aceptado está bien gestionado; 2 = decisión sin condiciones; 1 = aceptar sin condiciones; 0 = nada.
+
+### Síntesis del capítulo
+
+Un servicio está terminado cuando otros pueden operarlo. Traspase un paquete con la descripción, la titularidad, los niveles de servicio, los manuales de operación, las fichas de control, la monitorización, los elementos abiertos y la evidencia. Redacte los manuales de operación para un colega competente a las 03:00 y pruébelos con alguien distinto del autor. Aporte evidencia de salud que muestre la eficacia, no solo la configuración. Lleve a cabo el traspaso como recorrido, acompañamiento, acompañamiento inverso y aceptación con soporte inicial, y corrija las carencias que revele.
+
+<!-- cyberabc:chapter-navigation:start ch-26 -->
+### Siga estudiando — capítulo 26 de 30
+
+[← Capítulo 25](#ch-25) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 27 →](#ch-27)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-27"></a>
+
+## Capítulo 27 — Despliegue y validación
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted debería ser capaz de:
+
+- preparar un despliegue con **comprobaciones previas**, incluida la verificación de lo que se va a desplegar;
+- desplegar por etapas con un **canario** y criterios explícitos de promoción y de reversión;
+- validar después del despliegue frente a las propiedades funcionales y de seguridad del servicio;
+- indicar lo que una ventana de validación puede y no puede mostrar.
+
+El capítulo 14 planificó los cambios; el capítulo 22 automatizó la configuración. Este capítulo trata de los despliegues de software (una nueva versión del retransmisor, una actualización del historiador), en los que el cambio es mayor y más difícil de prever. En los servicios críticos, el objetivo es encontrar un problema en un solo equipo, en un momento tranquilo y con una reversión preparada, y no en todos los equipos en el pico de la mañana.
+
+### 27.1 Comprobaciones previas
+
+Antes de desplegar: el cambio está aprobado; operaciones conoce la ventana; se ha hecho una copia de seguridad de la configuración y el paquete de reversión está preparado; y el **propio paquete está verificado**: su firma o su resumen publicado se han comprobado con los del proveedor, de modo que lo que instala es lo que el proveedor publicó. Las guías de desarrollo seguro piden a los productores que protejan la integridad del software publicado, por ejemplo con firmas ([NIST SP 800-218](https://csrc.nist.gov/pubs/sp/800/218/final)); como implementador, su parte consiste en comprobarlas y en tratar un paquete no verificable como un hallazgo.
+
+### 27.2 Canarios y criterios de promoción
+
+Un despliegue **canario** instala la nueva versión primero en un equipo y lo compara con los equipos que siguen en la versión antigua, durante el mismo periodo y con la misma carga. El manual práctico de SRE de Google describe el despliegue canario como un despliegue parcial y limitado en el tiempo que se evalúa frente a una población de control antes de un despliegue más amplio ([Google SRE workbook, Canarying releases](https://sre.google/workbook/canarying-releases/)). Redacte los **criterios de promoción** antes de desplegar: para LANTERN, una proporción de aceptación no más de 0,2 puntos porcentuales por debajo del control; una latencia p95 no más de un 25 % por encima del control; ningún reinicio; rechazos por MAC sin cambios. Si falla cualquier criterio, revierta el canario y abra un registro de problema. Si se cumplen todos, promocione un equipo cada vez.
+
+### 27.3 Validación después del despliegue
+
+Después de actualizar cada equipo, valide: las propiedades **funcionales** (todas las estaciones aceptadas, latencia normal, el historiador recibe); las propiedades de **seguridad** (las comprobaciones del MAC siguen aplicándose: inyecte un mensaje de prueba con un MAC erróneo; los servicios a la escucha no han cambiado: ejecute la comprobación de deriva; los registros siguen reenviándose y analizándose: revise los recuentos del normalizador); y las propiedades **operativas** (las alertas siguen evaluándose; el informe de salud está en verde). Las regresiones de seguridad son fáciles de pasar por alto, porque un servicio puede funcionar perfectamente mientras una comprobación se ha deshabilitado en silencio.
+
+En RLY-03, la comprobación de deriva tras la 2.4.1 seguía mostrando el servicio de depuración a la escucha: la función superó la validación, una propiedad de seguridad no.
+
+### 27.4 Lo que la ventana no puede mostrar
+
+Un canario nocturno de una hora muestra el comportamiento con la carga nocturna durante una hora. No dice nada del pico de demanda de la mañana, de las ejecuciones semanales del informe (capítulo 1), de los informes de cierre de mes ni de los tipos de mensaje poco frecuentes. Amplíe la ventana a los periodos que importan o declare la carencia y vigile de cerca esos periodos tras la promoción. El canario de relayd 2.4.1 se ejecutó durante una hora nocturna, así que su caída de 0,0010 en la proporción de aceptación se registró como elemento abierto para el pico de la mañana.
+
+Las ejecuciones semanales del informe los días 6 y 7, con alrededor del 62 % de CPU, son otro periodo que una hora nocturna no puede mostrar.
+
+### 27.5 Ejemplo resuelto: relayd 2.4.1 (sintético)
+
+Las comprobaciones previas se superan: cambio aprobado, sala de control informada, copia de la configuración hecha, paquete de reversión preparado, firma del paquete verificada. El canario RLY-03 ejecuta la 2.4.1 durante una hora frente a RLY-01 con la 2.4.0. Proporción de aceptación de 0,9985 frente a 0,9994 (una caída de 0,0010, dentro de 0,002); latencia p95 de 41 ms frente a 37 ms (dentro del 25 %); ningún reinicio; rechazos por MAC sin cambios. Decisión: promocionar a RLY-02 y después a RLY-01. La validación posterior al despliegue en RLY-03 inyecta un mensaje de prueba con un MAC erróneo (rechazado, como se esperaba) y ejecuta la comprobación de deriva, que sigue mostrando el servicio de depuración a la escucha del capítulo 22, un recordatorio de que el despliegue no corrigió la deriva de configuración y no debe presentarse como si lo hubiera hecho. La caída de la proporción de aceptación, aunque está dentro de los criterios, se registra como elemento abierto que hay que comprobar en el pico de la mañana.
+
+### 27.6 Actividad práctica: decisión sobre el canario
+
+**Lab 27** (guárdelo como `lab27.py` y ejecútelo con `python3 lab27.py`):
+
+```python
+# Lab 27 - pre- and post-deployment validation with a canary and a rollback rule (offline, standard library only)
+# Synthetic: relayd 2.4.1 rolled to rly-03 first (canary), compared with rly-01 still on 2.4.0 for one hour.
+checks_pre = {"backup of config taken": True, "rollback package staged": True, "change ticket approved": True,
+              "operations told (control room)": True, "maintenance window open": True, "signature of package verified": True}
+canary = {"msgs_in": 7200, "msgs_accepted": 7189, "mac_rejects": 0, "p95_latency_ms": 41, "cpu_p95": 38, "restarts": 0}
+control = {"msgs_in": 7200, "msgs_accepted": 7196, "mac_rejects": 0, "p95_latency_ms": 37, "cpu_p95": 36, "restarts": 0}
+limits = {"accept_ratio_drop": 0.002, "latency_ratio": 1.25, "restarts": 0}
+print("pre-checks:", "PASS" if all(checks_pre.values()) else "FAIL " + str([k for k, v in checks_pre.items() if not v]))
+ra, rc = canary["msgs_accepted"] / canary["msgs_in"], control["msgs_accepted"] / control["msgs_in"]
+results = {
+  "acceptance ratio": (rc - ra <= limits["accept_ratio_drop"], f"{ra:.4f} vs {rc:.4f} (drop {rc-ra:.4f})"),
+  "p95 latency": (canary["p95_latency_ms"] <= control["p95_latency_ms"] * limits["latency_ratio"], f"{canary['p95_latency_ms']} vs {control['p95_latency_ms']} ms"),
+  "restarts": (canary["restarts"] <= limits["restarts"], str(canary["restarts"])),
+  "MAC rejects unchanged": (canary["mac_rejects"] == control["mac_rejects"], str(canary["mac_rejects"])),
+}
+for k, (ok, detail) in results.items(): print(f"  {k:<22} {'pass' if ok else 'FAIL'}  {detail}")
+print("decision:", "promote to rly-02, then rly-01" if all(ok for ok, _ in results.values()) else "ROLL BACK canary and open problem record")
+# What the canary cannot show: a 1-hour window at night says nothing about the morning demand peak or month-end reports.
+```
+
+Salida esperada (Python 3.13.5):
+
+```text
+pre-checks: PASS
+  acceptance ratio       pass  0.9985 vs 0.9994 (drop 0.0010)
+  p95 latency            pass  41 vs 37 ms
+  restarts               pass  0
+  MAC rejects unchanged  pass  0
+decision: promote to rly-02, then rly-01
+```
+
+Compruebe cada línea frente a los criterios fijados antes de la ventana: proporción de aceptación de 0,9985 frente a 0,9994, una caída de 0,0010 dentro del 0,002 permitido; latencia p95 de 41 ms frente a 37 ms, dentro del 25 %; ningún reinicio; rechazos por MAC sin cambios. Todos se cumplen, así que la decisión es promocionar a RLY-02 y después a RLY-01, un equipo cada vez. La caída, aunque está dentro de los criterios, permanece en la lista de elementos abiertos para el pico de la mañana.
+
+Si la caída hubiera sido de 0,0025, la regla fijada de antemano habría exigido la reversión, por pequeña que pareciera la diferencia.
+
+### 27.7 Errores frecuentes y límites
+
+- Instalar paquetes sin verificar su origen.
+- Criterios de promoción decididos después de ver los resultados del canario.
+- Validar la función, pero no las propiedades de seguridad.
+- Una ventana del canario que no abarca los periodos de carga real.
+- Promocionar todos los equipos restantes a la vez después del canario.
+- Una reversión que nunca se probó.
+
+El despliegue de relayd 2.4.1 evitó todos ellos: firma verificada, criterios fijados antes del canario, un mensaje con MAC erróneo inyectado después y promoción de un equipo cada vez.
+
+El elemento abierto para el pico de la mañana es la forma de tratar el cuarto cuando la ventana no puede ser más larga.
+
+### Ejercicios — capítulo 27
+
+**EX079 — Haga fallar el canario.** *Objetivo:* aplicar la regla de reversión. *Entradas:* el Lab 27. *Restricciones:* cambie solo los números del canario. *Pasos:* (1) fije en 7170 el recuento de mensajes aceptados del canario; (2) ejecútelo; (3) indique la decisión y las tres primeras acciones. *Evidencia esperada:* salida y acciones. *Rúbrica:* 3 = la caída de la aceptación ≈ 0,0036 no cumple el criterio de 0,002, decisión de revertir; acciones: revertir el canario con el cambio, conservar los registros del canario y los motivos de rechazo, abrir un registro de problema e informar a la sala de control; 2 = decisión correcta, acciones escasas; 1 = no ejecutado; 0 = nada.
+
+**EX080 — Conjunto de validación de seguridad.** *Objetivo:* especificar las comprobaciones de seguridad posteriores al despliegue. *Entradas:* el capítulo 27 («Validación después del despliegue»). *Restricciones:* cinco comprobaciones, cada una con su resultado esperado. *Pasos:* enumérelas. *Evidencia esperada:* tabla. *Rúbrica:* 3 = prueba con MAC erróneo rechazada, prueba de reproducción rechazada, la comprobación de deriva no muestra servicios nuevos a la escucha, recuento de líneas no analizadas del normalizador sin cambios, el servicio se ejecuta con una cuenta sin privilegios, la prueba de alerta sigue saltando; 2 = cuatro; 1 = solo función; 0 = nada.
+
+**EX081 — Amplíe la ventana.** *Objetivo:* diseñar una ventana del canario que cubra la carga real. *Entradas:* ejecuciones semanales del informe los días 6 y 7 (capítulo 1), pico de la mañana de 06:00 a 09:00. *Restricciones:* el cambio debe completarse en diez días. *Pasos:* proponga la ventana o ventanas, los puntos de promoción y los criterios comprobados en cada uno. *Evidencia esperada:* calendario. *Rúbrica:* 3 = canario a lo largo de al menos un pico de la mañana y una ejecución del informe antes de la promoción, con los criterios evaluados en cada uno, y después promoción escalonada dentro de los diez días; indica que la reversión está preparada en todo momento; 2 = cubre uno; 1 = mantiene la ventana de una hora; 0 = nada.
+
+### Síntesis del capítulo
+
+Despliegue por etapas. Compruebe de antemano las aprobaciones, a operaciones, las copias de seguridad, la reversión y el origen del paquete. Use un canario en un equipo frente a un control, con criterios de promoción fijados de antemano; revierta ante cualquier fallo y, si todo va bien, promocione un equipo cada vez. Valide las propiedades funcionales, de seguridad y operativas después de cada equipo, y declare con honestidad lo que la ventana de validación no pudo mostrar.
+
+<!-- cyberabc:chapter-navigation:start ch-27 -->
+### Siga estudiando — capítulo 27 de 30
+
+[← Capítulo 26](#ch-26) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 28 →](#ch-28)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-28"></a>
+
+## Capítulo 28 — Práctica sobre el terreno
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted debería ser capaz de:
+
+- planificar y llevar a cabo una visita a un emplazamiento operativo remoto con seguridad y con el acuerdo del operador;
+- recoger evidencia de configuración y de inventario en un emplazamiento sin perturbar el proceso;
+- trabajar con el personal de operaciones como socios, respetando su autoridad sobre el proceso físico;
+- participar en un ejercicio que ponga a prueba la integración del servicio con los planes de continuidad.
+
+Gran parte del trabajo de un tecnólogo de servicios críticos ocurre lejos del escritorio: en estaciones de bombeo, salas de máquinas, cocheras y salas de equipos de los hospitales. El trabajo sobre el terreno conlleva sus propios riesgos físicos, operativos y de seguridad. Este capítulo trata de hacerlo bien.
+
+### 28.1 Planificar una visita
+
+Antes de ir a PS-07, acuerde con operaciones de Agua: el propósito y las tareas; la fecha y la hora (evitando el pico de demanda y otros trabajos planificados); quién estará presente por parte de Agua (el trabajo en la instalación sobre los equipos de control lo realizan los ingenieros de Agua o se hace con ellos); las condiciones de acceso (llaves, alarmas, procedimiento de trabajo en solitario); el equipo que lleva (un portátil limpio, actualizado y dedicado al trabajo de campo, solo con las herramientas necesarias); y lo que tocará y lo que no. Póngalo por escrito en un breve plan de trabajo y consiga su aprobación como si fuera un cambio (capítulo 14).
+
+### 28.2 La seguridad física, primero
+
+Las normas de seguridad física en los emplazamientos operativos proceden del operador y de la legislación de seguridad y salud: espacios confinados, productos químicos (salas de dosificación de cloro), cuadros eléctricos, trabajo en solitario, meteorología. Siga la formación de acogida del emplazamiento y las instrucciones del operador; ante la duda, deténgase y pregunte. El trabajo de seguridad nunca justifica un atajo en la seguridad física. En PS-07, la sala de dosificación de cloro forma parte del recorrido de la visita; el ingeniero de Agua la encabeza y decide dónde puede situarse usted.
+
+El trabajo en solitario en una estación como PS-09, en silencio durante tres semanas, necesita un acuerdo de comunicación periódica con la sala de control de Agua antes de la visita, no después.
+
+### 28.3 Recogida de evidencia en el emplazamiento
+
+Las visitas sobre el terreno son el momento de verificar lo que las fuentes remotas no pueden: la presencia física y las etiquetas de los dispositivos (capítulo 11); las versiones de firmware leídas del dispositivo o de su exportación de ingeniería por el ingeniero de Agua; el cableado que puede crear caminos no declarados (un segundo cable de red hacia un módem celular, un portátil que se dejó conectado); la protección física de la pasarela de la estación que guarda las claves HMAC (capítulo 15); y el estado del almacenamiento local y de la hora. Fotografíe etiquetas y cuadros solo con permiso y sin captar contraseñas ni pantallas con datos sensibles. Registre todo con la hora y la fuente, como observado / inferido / hecho / abierto.
+
+### 28.4 Soportes extraíbles y portátiles de campo
+
+El equipo de campo es una vía clásica de entrada a los sistemas de control: las memorias USB y los portátiles de mantenimiento transportan malware entre emplazamientos y redes. Use soportes dedicados y analizados; no conecte nunca un dispositivo personal; no conecte nunca un portátil de campo a la red corporativa y a la red de una estación a la vez; registre qué se conectó a qué. Los objetivos de rendimiento de la CISA incluyen controles sobre la conexión de dispositivos y soportes no autorizados a las redes de TO ([CISA CPGs](https://www.cisa.gov/cross-sector-cybersecurity-performance-goals)).
+
+El módem celular de PS-07, instalado por Kell para la asistencia remota y todavía conectado al segundo puerto del PLC, muestra el mismo riesgo desde el lado del proveedor: una conexión que nadie registró.
+
+### 28.5 Trabajar con operaciones
+
+El personal de operaciones tiene autoridad sobre el proceso y un conocimiento que no recoge ningún documento. Pregúnteles qué esperarían ver si la estación funcionara mal, cómo la operarían manualmente y qué ha cambiado recientemente. Explique lo que hace en un lenguaje claro y deténgase si se lo piden. Muchos de los mejores hallazgos en los emplazamientos salen de las conversaciones: «a veces conectamos el portátil del proveedor a ese puerto libre» vale más que un escaneo. En PS-07, el ingeniero explicó el módem en una frase; ningún escaneo habría contado su historia.
+
+### 28.6 Ejercicios con los operadores
+
+Un **ejercicio de mesa** recorre un escenario en una discusión; un **ejercicio funcional** realiza algunas acciones de verdad de forma controlada. Para LANTERN, un ejercicio anual con operaciones de Agua pone a prueba el desencadenante «telemetría no fiable» (capítulo 21): FSTS lo declara, la sala de control pasa a lecturas manuales en estaciones seleccionadas y ambas partes cronometran cada paso y registran los problemas. El ejercicio se planifica con reglas de enfrentamiento (capítulo 23) y condiciones de detención, y termina con una revisión sin culpables (capítulo 25).
+
+Las tres semanas de silencio de PS-09 son un buen punto de partida para un ejercicio de mesa.
+
+### 28.7 Ejemplo resuelto: la visita a PS-07 (sintético)
+
+Usted visita PS-07 con el ingeniero de Agua para leer el firmware del PLC (para el aviso del capítulo 16) e inspeccionar la pasarela de la estación. Hallazgos: el firmware del PLC, leído del dispositivo por el ingeniero, es la 3.9, tal como estaba registrado. El armario de la pasarela no está cerrado con llave y su archivo de claves está en una tarjeta extraíble: la protección física es más débil de lo que suponía el diseño. Un módem celular, que no figura en ningún inventario, está conectado al segundo puerto del PLC; el ingeniero explica que Kell lo instaló hace años para la asistencia remota y que ahora nadie lo usa. El reloj de la estación es correcto. Usted no desconecta el módem (eso es un cambio en un emplazamiento operativo), pero lo registra, fotografía su etiqueta con permiso, y el ingeniero abre un cambio para retirarlo después de que Agua confirme que nada depende de él. El módem es un conducto no declarado (capítulo 2) que ningún registro de flujos habría mostrado jamás.
+
+### 28.8 Actividad práctica: plan de trabajo en el emplazamiento
+
+Redacte un plan de trabajo para la visita a PS-09 (discrepancias del capítulo 11: firmware no verificado de forma independiente, estación en silencio durante tres semanas). Incluya todos los elementos de «Planificar una visita», más arriba, las notas de seguridad, la evidencia que pretende recoger, lo que no tocará y cómo se registrarán y notificarán los hallazgos. Para PS-09, la lista de evidencia del plan debería incluir el firmware de la RTU leído del dispositivo, el reloj de la estación comparado con el del retransmisor y el estado de la ruta NTP, dado el desfase de 422 segundos encontrado en el capítulo 20. Enumere lo que no tocará, como la configuración de la RTU y el archivo de claves de la pasarela, y quién abre el cambio si se encuentra un módem como el de PS-07.
+
+### 28.9 Errores frecuentes y límites
+
+- Visitas sin un plan aprobado o sin el ingeniero de Agua.
+- Portátiles de campo usados para otros trabajos o conectados a varias redes.
+- Arreglar cosas en el emplazamiento sin control de cambios.
+- Fotografías que captan contraseñas o pantallas sensibles.
+- Tratar al personal de operaciones como un obstáculo y no como un socio.
+- Ejercicios sin condiciones de detención.
+
+Desconectar en el acto el módem de PS-07 habría sido el tercer error, por evidente que pareciera que no se usaba; Agua confirmó primero que nada dependía de él, y el ingeniero abrió el cambio.
+
+El armario de la pasarela sin cerrar de PS-07 marca un límite de la propia visita: usted puede registrar que el archivo de claves HMAC está en una tarjeta extraíble, pero cerrar el armario o trasladar la clave es un cambio de Agua, no algo que le corresponda hacer a usted ese día.
+
+### Ejercicios — capítulo 28
+
+**EX082 — Registre el módem.** *Objetivo:* redactar correctamente los hallazgos de campo. *Entradas:* el capítulo 28 («Ejemplo resuelto: la visita a PS-07»). *Restricciones:* etiquetas observado / inferido / hecho / abierto; ninguna recomendación de actuar sin control de cambios. *Pasos:* redacte el registro del hallazgo e indique qué registros deben actualizarse. *Evidencia esperada:* registro. *Rúbrica:* 3 = observado (módem presente, modelo/etiqueta, conectado al puerto 2 del PLC, explicación del ingeniero), inferido (camino remoto no declarado, posiblemente activo), hecho (fotografiado con permiso, cambio abierto por Agua), abierto (si tiene alimentación y una SIM operativa, quién es titular de la cuenta, fecha de retirada); inventario, lista de conductos, registro de flujos de datos y registro de riesgos actualizados; 2 = etiquetas mezcladas; 1 = narración; 0 = nada.
+
+**EX083 — Normas para el portátil de campo.** *Objetivo:* definir los controles del equipo de campo. *Entradas:* el capítulo 28 («Soportes extraíbles y portátiles de campo»). *Restricciones:* seis normas, cada una con su forma de comprobación. *Pasos:* redáctelas. *Evidencia esperada:* tabla. *Rúbrica:* 3 = dispositivo dedicado, actualizado y bastionado, sin uso personal, nunca con doble conexión, soportes extraíbles analizados y dedicados, registro de conexiones mantenido, dispositivo comprobado tras cada visita; cada una con su comprobación; 2 = cuatro o cinco; 1 = genéricas; 0 = nada.
+
+**EX084 — Plan de ejercicio.** *Objetivo:* planificar un ejercicio funcional. *Entradas:* el desencadenante «telemetría no fiable» (capítulo 21). *Restricciones:* dos estaciones; ningún efecto sobre el suministro; una hora. *Pasos:* redacte los objetivos, el escenario, los participantes, los pasos con puntos de cronometraje, las condiciones de detención, las notas de seguridad y cómo se registran los resultados. *Evidencia esperada:* una página. *Rúbrica:* 3 = objetivos medibles (tiempo hasta la declaración, tiempo hasta la primera lectura manual), escenario realista, autoridad de la sala de control preservada, condiciones de detención ante cualquier inquietud sobre el proceso, seguridad en los emplazamientos, revisión sin culpables programada; 2 = un elemento débil; 1 = solo ejercicio de mesa; 0 = nada.
+
+### Síntesis del capítulo
+
+El trabajo sobre el terreno verifica lo que las fuentes remotas no pueden y conlleva sus propios riesgos. Planifique las visitas con el operador, siga las normas de seguridad del emplazamiento, trabaje con los ingenieros de operaciones sobre los equipos de control y recoja evidencia sin perturbar el proceso ni cambiar nada fuera del control de cambios. Controle estrictamente los portátiles y soportes de campo. Trate al personal de operaciones como socios y ejercite la integración del servicio con los planes de continuidad mediante ejercicios planificados que puedan detenerse.
+
+<!-- cyberabc:chapter-navigation:start ch-28 -->
+### Siga estudiando — capítulo 28 de 30
+
+[← Capítulo 27](#ch-27) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 29 →](#ch-29)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-29"></a>
+
+## Capítulo 29 — Construcción del proyecto final
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted debería ser capaz de:
+
+- integrar los componentes construidos a lo largo del curso en un único servicio monitorizado de extremo a extremo;
+- inyectar fallos de prueba seguros y mostrar que el servicio detecta o rechaza cada uno;
+- producir un **registro de evidencia del servicio** que otra persona pueda comprobar;
+- encontrar y explicar un defecto que solo aparece cuando se combinan los componentes.
+
+Este es el resultado práctico del curso: *implementar un servicio de extremo a extremo con controles monitorizados*. El Lab 29 combina, en un solo archivo, el sellado en la estación del capítulo 15, la validación del capítulo 3, un historiador en un modelo relacional (capítulo 4), la monitorización con una regla de ausencia (capítulo 19) y un registro de evidencia con un resumen criptográfico (capítulos 6 y 20). Es lo bastante pequeño para leerlo entero; el proyecto final le pide construir la misma forma a mayor escala.
+
+### 29.1 Lo que debe demostrar el proyecto final
+
+1. **La ruta de los datos funciona**: las lecturas de todas las estaciones llegan al historiador, validadas y autenticadas.
+2. **Los controles funcionan**: los fallos inyectados (una reproducción, un mensaje falsificado, un valor fuera de rango y el silencio de una estación) se rechazan, se ponen en cuarentena o generan una alerta, cada uno.
+3. **La monitorización funciona**: se generan alertas para cada fallo inyectado y para nada más.
+4. **Existe evidencia**: un registro de la ejecución legible por máquina, con recuentos que cuadran y un resumen criptográfico que permite detectar cambios posteriores.
+5. **Se declaran los límites**: lo que la ejecución no muestra.
+
+### 29.2 La construcción
+
+El Lab 29 genera dos horas de lecturas sintéticas de tres estaciones, con PS-09 en silencio del minuto 50 al 84. Inyecta cuatro pruebas: una reproducción de un mensaje anterior de PS-04, un mensaje de PS-07 sellado con la clave equivocada y una lectura de cloro fuera de rango de 7,5 mg/L de PS-07 que ocupa el hueco del minuto 20, además del silencio de PS-09. El retransmisor verifica el MAC, rechaza las reproducciones, pone en cuarentena los valores fuera de rango y almacena el resto; la monitorización añade una regla de silencio; el registro de evidencia resume la ejecución.
+
+**Lab 29** (guárdelo como `lab29.py` y ejecútelo con `python3 lab29.py`):
+
+```python
+# Lab 29 - capstone: an end-to-end monitored telemetry service in one file (offline, standard library only)
+# Synthetic stations -> authenticated relay -> validated historian (sqlite3) -> monitoring -> evidence record.
+import hashlib, hmac, json, random, sqlite3
+random.seed(29)
+KEY = b"lantern-lab-key-not-real-0001"
+LIMITS = {"LEVEL_M": (0.0, 12.0), "CL2_MGL": (0.0, 5.0)}
+def seal(m, key=KEY):
+    body = json.dumps(m, sort_keys=True, separators=(",", ":"))
+    return body + "." + hmac.new(key, body.encode(), hashlib.sha256).hexdigest()
+# 1. stations emit one reading per minute for 120 minutes; PS-09 goes silent 50-84; one injected test of each fault
+wire, now0 = [], 1_790_000_000
+for st, tag, base in (("PS-04", "LEVEL_M", 3.4), ("PS-07", "CL2_MGL", 0.6), ("PS-09", "LEVEL_M", 5.1)):
+    for i in range(120):
+        if st == "PS-09" and 50 <= i < 85: continue
+        if st == "PS-07" and i == 20: continue  # the injected out-of-range test takes this slot
+        wire.append((now0 + 60*i, seal({"st": st, "tag": tag, "v": round(base + random.gauss(0, 0.05), 3), "ts": now0 + 60*i, "seq": i})))
+wire.append((now0 + 600, wire[3][1]))                                                         # TEST: replay
+wire.append((now0 + 900, seal({"st": "PS-07", "tag": "CL2_MGL", "v": 0.6, "ts": now0 + 900, "seq": 999}, key=b"x")))  # TEST: forged
+wire.append((now0 + 1200, seal({"st": "PS-07", "tag": "CL2_MGL", "v": 7.5, "ts": now0 + 1200, "seq": 20})))         # TEST: out of range
+wire.sort(key=lambda w: w[0])
+# 2. relay + historian
+db = sqlite3.connect(":memory:")
+db.execute("CREATE TABLE reading(st TEXT, tag TEXT, v REAL, ts INTEGER, seq INTEGER, PRIMARY KEY(st, seq))")
+events, last = [], {}
+for t, w in wire:
+    body, mac = w.rsplit(".", 1)
+    if not hmac.compare_digest(hmac.new(KEY, body.encode(), hashlib.sha256).hexdigest(), mac):
+        events.append((t, "mac_reject", "?")); continue
+    m = json.loads(body)
+    if m["seq"] <= last.get(m["st"], -1):
+        events.append((t, "replay_reject", m["st"])); continue
+    lo, hi = LIMITS[m["tag"]]
+    last[m["st"]] = m["seq"]
+    if not lo <= m["v"] <= hi:
+        events.append((t, "range_quarantine", m["st"])); continue
+    db.execute("INSERT INTO reading VALUES (?,?,?,?,?)", (m["st"], m["tag"], m["v"], m["ts"], m["seq"]))
+# 3. monitoring: security events and silence > 15 min
+alerts = [(t, kind, st) for t, kind, st in events]
+for st, in db.execute("SELECT DISTINCT st FROM reading"):
+    ts = [r[0] for r in db.execute("SELECT ts FROM reading WHERE st=? ORDER BY ts", (st,))]
+    alerts += [(a + 900, "silence", st) for a, b in zip(ts, ts[1:]) if b - a > 900]
+# 4. evidence record
+stored = db.execute("SELECT COUNT(*) FROM reading").fetchone()[0]
+record = {"period_utc_s": [now0, now0 + 7140], "messages_on_wire": len(wire), "stored": stored,
+          "alerts": sorted({(k, s) for _, k, s in alerts}), "injected_tests": 4,
+          "injected_tests_detected": len({k for _, k, _ in alerts} & {"replay_reject", "mac_reject", "range_quarantine", "silence"}),
+          "alert_count": len(alerts)}
+blob = json.dumps(record, sort_keys=True).encode()
+print(json.dumps(record, sort_keys=True))
+print("evidence sha256:", hashlib.sha256(blob).hexdigest()[:24], "...")
+print("PS-07 mean chlorine stored: %.3f mg/L" % db.execute("SELECT AVG(v) FROM reading WHERE st='PS-07'").fetchone()[0])
+```
+
+Salida esperada (Python 3.13.5):
+
+```text
+{"alert_count": 4, "alerts": [["mac_reject", "?"], ["range_quarantine", "PS-07"], ["replay_reject", "PS-04"], ["silence", "PS-09"]], "injected_tests": 4, "injected_tests_detected": 4, "messages_on_wire": 327, "period_utc_s": [1790000000, 1790007140], "stored": 324}
+evidence sha256: aa40e3905d178699f1460e1c ...
+PS-07 mean chlorine stored: 0.606 mg/L
+```
+
+### 29.3 Leer el registro de evidencia
+
+Compruebe que los números cuadran. Mensajes en la red: 120 + 119 + 85 + 3 inyectados = 327. Almacenados: 324 (todas las lecturas legítimas). No almacenados: 3 (la reproducción, la falsificación y la lectura fuera de rango). Alertas: cuatro, una de cada tipo, y cuatro de cuatro pruebas inyectadas detectadas. El resumen criptográfico permite a cualquiera confirmar más tarde que el registro no se ha editado; en un servicio real, el registro se guardaría fuera del equipo y el resumen se anotaría en la incidencia del cambio o de la prueba. Si el recuento de almacenados hubiera sido 325, una lectura legítima quedaría sin explicar.
+
+### 29.4 Un defecto que solo aparece en combinación
+
+Cambie el número de secuencia del mensaje fuera de rango inyectado de 20 a 1000 (como podría hacer una pasarela de estación defectuosa tras un reinicio) y vuelva a ejecutarlo. El resultado cambia de forma drástica: las lecturas almacenadas bajan de 324 a 225 y las alertas suben de 4 a 103. Noventa y nueve lecturas legítimas de PS-07 se rechazan como reproducciones. La causa es que el retransmisor actualiza su último número de secuencia visto *después* de la autenticación pero *antes* de la comprobación de rango: el mensaje fuera de rango es auténtico, así que se registra su número de secuencia 1000, y todos los mensajes legítimos posteriores (secuencias 21 a 119) parecen reproducciones.
+
+Cada componente era «correcto» según las pruebas de su propio capítulo. El capítulo 3 advertía de que no se actualizara el estado de reproducción antes de que se superaran todas las demás comprobaciones; el capítulo 15 situó la actualización después de la autenticación. La combinación muestra el agujero que queda: un mensaje **auténtico pero inverosímil** puede envenenar el estado de reproducción. Las correcciones incluyen: actualizar el estado solo al aceptar *o* poner en cuarentena un mensaje cuya secuencia sea verosímil (rechazar los saltos de secuencia mayores que un límite, por ejemplo 1.000 o un día de mensajes, salvo en un modo explícito de resincronización); alertar ante saltos grandes; y dar a los operadores un procedimiento de resincronización revisado. Este es exactamente el motivo por el que el proyecto final prueba el servicio integrado y no solo sus partes.
+
+### 29.5 Construir el proyecto final real
+
+La versión de proyecto del trabajo final, hecha en equipo (capítulo 25), construye la misma forma con componentes reales en un laboratorio: tres máquinas virtuales de retransmisor, una base de datos del historiador, reenvío de registros a un recopilador, el normalizador, tres reglas de monitorización más la automonitorización, configuración como código con una comprobación de deriva, una copia de seguridad y una restauración cronometrada, manuales de operación y un paquete de traspaso. Use solo equipos de laboratorio o estaciones simuladas. El entregable es el **registro de evidencia del servicio**: para cada requisito de «Lo que debe demostrar el proyecto final», más arriba, la prueba realizada, su fecha, la salida bruta, el resultado frente a una regla de afirmación declarada de antemano (capítulo 23) y los elementos abiertos.
+
+### 29.6 Errores frecuentes y límites
+
+- Probar los componentes por separado y suponer que la combinación funciona.
+- Registros de evidencia cuyos recuentos no cuadran.
+- Pruebas inyectadas que el equipo diseñó para que se superaran.
+- Ningún resumen criptográfico ni copia de la evidencia fuera del equipo.
+- Omitir el apartado «lo que esto no muestra»: el Lab 29 no muestra nada sobre dispositivos de campo reales, el comportamiento del operador de telecomunicaciones, la carga a escala ni los atacantes que se adaptan.
+
+El resumen del equipo A en el capítulo 30 comete el quinto: no declara ningún límite.
+
+Una falsificación inyectada construida con la clave real de la estación no probaría nada; el equipo debe diseñar pruebas que puedan fallar.
+
+### Ejercicios — capítulo 29
+
+**EX085 — Reproduzca el defecto.** *Objetivo:* encontrar y explicar un defecto de integración. *Entradas:* el Lab 29. *Restricciones:* cambie solo el número de secuencia de la prueba fuera de rango. *Pasos:* (1) fíjelo en 1000 y ejecútelo; (2) informe del recuento de almacenados, del recuento de alertas y de qué mensajes se perdieron; (3) explique la causa en términos del orden de las comprobaciones. *Evidencia esperada:* salida y explicación. *Rúbrica:* 3 = stored 225, alert_count 103, 99 lecturas legítimas de PS-07 rechazadas como reproducciones, explicación de que el estado se actualizó para un mensaje auténtico pero fuera de rango; 2 = números correctos, explicación escasa; 1 = no ejecutado; 0 = nada.
+
+**EX086 — Corríjalo.** *Objetivo:* corregir el defecto sin abrir una brecha de reproducción. *Entradas:* el Lab 29 con la secuencia 1000. *Restricciones:* solo la biblioteca estándar; las reproducciones deben seguir rechazándose. *Pasos:* (1) implemente un salto de secuencia máximo de 1.000 (rechazando los saltos mayores con un evento distinto, `seq_jump_reject`) u otra corrección defendible; (2) ejecútelo con la secuencia 1000 y con la secuencia 20; (3) muestre que la prueba de reproducción sigue rechazándose en ambos casos. *Evidencia esperada:* código y ambas salidas. *Rúbrica:* 3 = el salto de 981 (de 19 a 1000) está dentro de 1.000, así que el estudiante debe advertir que un límite de 1.000 no detecta este caso y elegir un límite más estricto o basado en el tiempo (por ejemplo, un salto no mayor que los minutos transcurridos más un margen), con stored 324 restablecido y la reproducción todavía rechazada; 2 = la corrección funciona en este caso, pero falta el razonamiento sobre el límite; 1 = elimina la protección contra la reproducción; 0 = nada.
+
+**EX087 — Revisión del registro de evidencia.** *Objetivo:* comprobar un registro como evaluador. *Entradas:* la salida del Lab 29 con la secuencia 20. *Restricciones:* comprobaciones solo a partir del registro y del código del laboratorio. *Pasos:* (1) verifique que los recuentos cuadran; (2) recalcule el resumen a partir del JSON impreso y compare sus primeros 24 caracteres; (3) enumere tres límites que el registro debería declarar. *Evidencia esperada:* cálculos y lista. *Rúbrica:* 3 = 327 = 324 + 3 confirmado; resumen recalculado aplicando el hash a la cadena JSON exacta; límites como datos sintéticos, sin dispositivos de campo ni operador de telecomunicaciones, una sola ejecución, sin adversario adaptativo, sin carga a escala; 2 = dos partes; 1 = una; 0 = nada.
+
+### Síntesis del capítulo
+
+El proyecto final integra el curso en un único servicio monitorizado y lo demuestra con pruebas inyectadas y un registro de evidencia comprobable. Los recuentos deben cuadrar, el registro debe protegerse con un resumen criptográfico y guardarse fuera del equipo, y sus límites deben declararse. Las pruebas de integración encuentran defectos que las pruebas de componentes no detectan: aquí, un mensaje auténtico pero inverosímil envenenó el estado de reproducción, un agujero visible solo cuando se encontraron la validación, la autenticación y el orden.
+
+<!-- cyberabc:chapter-navigation:start ch-29 -->
+### Siga estudiando — capítulo 29 de 30
+
+[← Capítulo 28](#ch-28) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 30 →](#ch-30)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-30"></a>
+
+## Capítulo 30 — Evaluación del proyecto final
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted debería ser capaz de:
+
+- presentar un proyecto de integración a una **revisión del diseño**, defendiendo las decisiones frente a las propiedades de diseño y los riesgos;
+- reunir y presentar **evidencia operativa** de que los controles funcionan, con reglas de afirmación y límites;
+- evaluar su propio proyecto final y los de otros con una rúbrica explícita;
+- planificar la práctica continua que mantiene actualizados un servicio y sus propias competencias.
+
+El plan de evaluación del curso tiene tres partes: un **proyecto de integración** (capítulo 29), la **evidencia operativa** (el registro de evidencia y los resultados de las pruebas a lo largo del tiempo) y una **revisión del diseño**. Este capítulo explica cómo se evalúa cada una y cierra el libro repasando el método que ha enseñado.
+
+### 30.1 La revisión del diseño
+
+Una revisión del diseño es una conversación estructurada en la que los revisores comprueban si el servicio cumple sus requisitos y preserva sus propiedades clave. Prepare: la arquitectura con zonas, conductos y caminos de gestión; la propiedad del sentido de la confianza y cómo la preserva cada cambio (capítulo 8); los escenarios de riesgo principales y el conjunto de controles de cada uno (capítulos 13 y 18); el registro de flujos de datos (capítulo 12); los riesgos aceptados con sus responsables. Los revisores harán preguntas del tipo «¿qué ocurre si…?»: si el retransmisor se ve comprometido; si se filtra una clave; si falla el operador de telecomunicaciones; si la fuente de verdad de la automatización es errónea; si la persona que lo construyó se marcha. Responda con el diseño y la evidencia, y diga «eso no lo hemos probado» cuando sea cierto: una carencia honesta puntúa mejor que una suposición segura de sí misma.
+
+### 30.2 Evidencia operativa
+
+La evidencia operativa es el registro del servicio en funcionamiento: informes de salud a lo largo de semanas, alertas y su gestión, pruebas de control con sus resultados frente a reglas de afirmación (capítulo 23), pruebas de restauración, revisiones de accesos, informes de deriva, registros de problemas y revisiones sin culpables con sus cambios. Los evaluadores buscan: evidencia **fechada y con fuente**; **recuentos que cuadren**; reglas de afirmación declaradas **antes** de los resultados; un tratamiento honesto de lo «aún no demostrado»; y **límites** declarados (datos sintéticos, equipos de laboratorio, periodos cortos).
+
+El resumen del equipo B de este capítulo es el modelo: recuentos, un resumen criptográfico, una regla de afirmación y una carencia declarada.
+
+### 30.3 Rúbrica de evaluación
+
+| Criterio | 3 — sólido | 2 — adecuado | 1 — débil | 0 — ausente |
+|---|---|---|---|---|
+| Función de extremo a extremo | Todos los requisitos del capítulo 29 («Lo que debe demostrar el proyecto final») demostrados con evidencia bruta | Un requisito con evidencia escasa | Función afirmada, no mostrada | No funciona |
+| Controles y monitorización | Cada escenario principal tiene controles de prevención/detección/recuperación probados frente a reglas de afirmación; hay automonitorización | Carencias en un escenario o sin automonitorización | Controles configurados pero sin probar | Ninguno |
+| Propiedades de diseño | Sentido de la confianza e independencia de las capas preservados y argumentados; caminos de gestión mostrados | Una propiedad argumentada débilmente | Solo un diagrama | Ninguna |
+| Operabilidad y traspaso | Manuales de operación probados por otros; evidencia de salud; traspaso con elementos abiertos | Manuales no probados por otros | Solo documentos | Nada |
+| Calidad de la evidencia | Fechada, con fuente, cuadra, con resumen criptográfico, límites declarados | Un punto débil | Varios puntos débiles | Ninguna |
+| Honestidad sobre los límites | Carencias y lo «aún no demostrado» declarados con claridad y con planes | Declarados pero sin planes | Carencias ocultas | — |
+| Seguridad y ética | Todo el trabajo práctico dentro de lo autorizado; ningún sistema real tocado | — | Falta menor | Actividad no autorizada (suspende el proyecto final) |
+
+### 30.4 Fallos habituales en los proyectos finales
+
+Los proyectos finales con peores resultados rara vez son los menos técnicos. Son los que presentan la configuración como evidencia, ocultan una prueba fallida, eligen las reglas de afirmación después de los resultados, prueban solo los componentes o describen un diseño que la evidencia no respalda. Los que obtienen mejores resultados suelen ser modestos en alcance y exactos en la evidencia. El equipo A, «totalmente asegurado… todas las pruebas superadas», muestra los dos primeros fallos. El equipo B, en cambio, informa de las pruebas adicionales de la regla C, del 4 de 6 de la FIM y de un compromiso de claves sin probar.
+
+### 30.5 Ejemplo resuelto: dos resúmenes de proyecto final (sintético)
+
+Equipo A: «LANTERN está totalmente asegurado con HMAC, validación, monitorización y copias de seguridad. Todas las pruebas se superaron». Equipo B: «Cuatro de cuatro fallos inyectados se detectaron en la ejecución final (resumen criptográfico del registro aa40e3905d17…). La regla C cumplió su regla de afirmación solo después de más pruebas (12/12 tras cuatro éxitos más, límite inferior 0,76); la detección de la FIM aún no está demostrada (4/6; las comprobaciones diarias son demasiado lentas; cambio abierto). Encontramos y corregimos un defecto del estado de reproducción durante la integración (capítulo 29). La restauración del historiador cumplió su RTO de 4 horas en 9 de 10 simulacros; el fallo se debió a una carencia del manual de operación, corregida y vuelta a probar. No hemos probado el compromiso de claves ni la caída del operador de telecomunicaciones a escala». El resumen del equipo B puntúa más alto en todos los criterios, salvo quizá en seguridad en sí mismo, y la seguridad en sí mismo no es un criterio.
+
+### 30.6 Mirando atrás: el método
+
+El curso ha enseñado un solo método, aplicado treinta veces: saber qué debe seguir siendo cierto sobre el servicio; construirlo para que siga siéndolo; comprobar que lo es, con evidencia que otra persona pueda verificar; advertir con rapidez cuándo deja de serlo; responder sin destruir la evidencia; y traspasarlo para que otros puedan hacer lo mismo. El vocabulario cambia según el sector (cloro y bombas en el agua, bibliotecas de fármacos en un hospital, horarios en unas cocheras), pero el método se transfiere.
+
+PS-09 recorrió una vez todo el método: en silencio, conciliada, objeto de una alerta, explicada por su reloj.
+
+### 30.7 Práctica continua
+
+Los servicios y las amenazas cambian, y también las normas. Mantenga un breve plan de práctica continua: vuelva a leer las normas principales en las que se apoya cuando se revisen (NIST CSF 2.0, SP 800-82, los CPG de la CISA, la guía sectorial de su jurisdicción); siga los avisos de los productos de su inventario; participe en ejercicios; revise cada mes un informe público de incidente en busca de suposiciones fallidas (capítulo 5); y pida que se revise su propio trabajo. El siguiente curso del itinerario de estudio, el curso de grado en Ciberseguridad, amplía los fundamentos de mucho de lo que este libro ha aplicado.
+
+### 30.8 Actividad práctica: autoevaluación
+
+Puntúe su proyecto final con la rúbrica de evaluación anterior antes de que lo haga su evaluador. Para cada criterio por debajo de 3, escriba qué evidencia lo elevaría y cuándo podría producirla. Use el resumen del equipo B como referencia de la evidencia que necesita cada puntuación. Si la regla C cumplió su regla de afirmación en su registro solo después de pruebas adicionales, dígalo y dé los recuentos, como hizo el equipo B con 12 de 12 y un límite inferior de 0,76. Si la FIM aún no está demostrada en su registro, puntúe ese criterio con honestidad y nombre el cambio que lo elevaría, como comprobaciones de integridad más frecuentes de los archivos críticos, con una fecha para la nueva prueba. Una autoevaluación que difiere de la del evaluador en más de un punto en algún criterio suele significar que faltaba evidencia, no que el trabajo fuera débil.
+
+### Ejercicios — capítulo 30
+
+**EX088 — Responda a los revisores.** *Objetivo:* defender un diseño con honestidad. *Entradas:* preguntas: (a) «¿Qué ocurre si se filtra la clave HMAC del retransmisor?»; (b) «¿Y si se marcha la persona que construyó la automatización?»; (c) «¿Y si BayTel cae durante un día?». *Restricciones:* responda a partir del diseño y la evidencia de este libro; indique dónde falta evidencia. *Pasos:* responda a cada una en 100–150 palabras. *Evidencia esperada:* tres respuestas. *Rúbrica:* 3 = (a) las claves por estación limitan el impacto; la detección mediante un origen inesperado o anomalías de secuencia es débil, y se admite la carencia; manual de rotación probado; pasos de revocación; (b) revisión, rotación de roles, manuales de operación, cadena protegida, traspaso, con evidencia del acompañamiento; (c) las estaciones almacenan 24 h, alertas de silencio, desencadenante de lecturas manuales, margen para la subida de la acumulación, e indica si se ha ejercitado una caída de un día; 2 = una respuesta débil; 1 = seguridad sin evidencia; 0 = nada.
+
+**EX089 — Evalúe a los equipos A y B.** *Objetivo:* aplicar la rúbrica. *Entradas:* los resúmenes del capítulo 30 («Ejemplo resuelto: dos resúmenes de proyecto final»). *Restricciones:* puntúe solo lo que muestra el resumen. *Pasos:* puntúe a ambos en cada criterio y justifíquelo. *Evidencia esperada:* tabla. *Rúbrica:* 3 = equipo A bajo en calidad de la evidencia y honestidad (solo afirmaciones), desconocido en lo demás; equipo B alto en calidad de la evidencia y honestidad, de adecuado a sólido en controles con carencias declaradas; el evaluador indica qué evidencia adicional necesita de cada uno; 2 = puntuaciones defendibles, justificación escasa; 1 = puntuaciones según la seguridad del tono; 0 = nada.
+
+**EX090 — Plan de práctica continua.** *Objetivo:* planificar cómo mantenerse al día. *Entradas:* los productos de su inventario y la guía sectorial de su jurisdicción. *Restricciones:* una página; actividades mensuales, trimestrales y anuales; fuentes nombradas con sus versiones. *Pasos:* redacte el plan. *Evidencia esperada:* el plan. *Rúbrica:* 3 = fuentes y versiones concretas (por ejemplo, NIST CSF 2.0, SP 800-82 Rev. 3, los CPG de la CISA o el CAF del NCSC), suscripciones a avisos de los productos del inventario, lectura mensual de informes de incidentes, participación trimestral en ejercicios, revisión anual de las normas, revisión por pares; carga de trabajo realista; 2 = fuentes genéricas; 1 = intención vaga; 0 = nada.
+
+### Síntesis del capítulo
+
+El proyecto final se evalúa mediante la revisión del diseño, la evidencia operativa y el proyecto de integración. Los revisores premian los diseños que preservan sus propiedades clave, los controles probados frente a reglas de afirmación declaradas de antemano, la evidencia fechada, con fuente, coherente y protegida, y la honestidad sobre lo que no se ha demostrado. El método del curso (saber qué debe seguir siendo cierto, construir para ello, comprobarlo, advertir el fallo, responder con cuidado, traspasarlo) se transfiere entre sectores y debe mantenerse al día con la práctica continua.
+
+<!-- cyberabc:chapter-navigation:start ch-30 -->
+### Siga estudiando — capítulo 30 de 30
+
+[← Capítulo 29](#ch-29) · [Índice de capítulos del curso](../SUBJECTS.md) · [Siguiente curso desde el índice de capítulos →](../SUBJECTS.md)
+
+Este es el último capítulo de este curso; el índice enlaza con el siguiente curso del itinerario completo de estudio.
 <!-- cyberabc:chapter-navigation:end -->
 
 <a id="worked-results"></a>
@@ -3018,6 +3517,46 @@ Cada fila tiene exactamente una A. La decisión operativa corresponde a Agua, y 
 **EX074 — Lista de comprobación de la revisión.** (1) Cada sistema referenciado (servidor, dirección, certificado) existe y responde; (2) se preserva el sentido de la confianza: ningún camino nuevo hacia la zona de estaciones; (3) ningún servicio nuevo a la escucha en todas las interfaces; (4) ningún secreto en el cambio; (5) reversión definida y probada, o trivialmente reversible; (6) criterios de aceptación y pasos de verificación indicados; (7) clientes afectados y operaciones informados cuando sea necesario; (8) despliegue escalonado, un equipo cada vez, con condiciones de detención.
 
 **EX075 — Revisión sin culpables.** *Cronología:* 01:10, la regla B salta repetidamente por una sesión de ingeniería ruidosa pero conocida; 01:25, la guardia silencia la regla B durante 24 h para detener los avisos; el traspaso de la mañana siguiente no menciona el silenciamiento; días 1 a 3, se produce sin alerta un flujo no declarado de la red corporativa a una estación. *Qué tenía sentido:* los avisos eran duplicados de una actividad conocida; silenciarlos mantenía la atención en otras alertas. *Condiciones:* la regla B alertaba por evento, no por episodio (capítulo 19); los silenciamientos no tenían caducidad automática ni visibilidad; la lista de comprobación del traspaso no incluía los silenciamientos. *Cambios:* alertas por episodio para la regla B (monitorización de FSTS); silenciamientos limitados a 4 h, con caducidad automática y visibles en el informe de salud (equipo de plataforma); punto «silenciamientos activos» en la lista de comprobación del traspaso (responsable del servicio).
+
+### Capítulo 26: EX076–EX078
+
+**EX076 — Crítica de un manual de operación.** Problemas: no hay propósito ni cuándo usarlo; no hay requisitos previos (acceso al almacén de claves, aprobaciones, Agua informada); «generar» sin método (fuente aleatoria segura, dónde); no se indica la ubicación del almacén de claves ni su custodio; no hay periodo de solapamiento (los mensajes acumulados llevan MAC con la clave antigua, capítulo 18); «comprobar que funciona» sin comprobaciones concretas; no hay aviso a operaciones (las estaciones pueden quedar en silencio); no hay reversión; borrar la clave antigua de inmediato rompe las subidas de la acumulación; no se registran la versión de clave ni la hora. Reescritura: propósito; requisitos previos; generar en el almacén de claves; preparar la clave nueva en el retransmisor (aceptar la antigua y la nueva); avisar a la sala de control; conmutar en la pasarela de la estación; verificar que los mensajes se aceptan con la nueva versión de clave y que el recuento de fallos de MAC es cero; tras 26–48 h, eliminar la clave antigua y verificar que se rechaza un mensaje de prueba con la clave antigua; reversión (devolver la estación a la clave antigua durante el solapamiento); registro.
+
+**EX077 — Informe de salud.** Elementos y umbrales (verde/ámbar/rojo): estaciones que informan (14/14 / 13 / ≤ 12); rechazos + cuarentenas por hora (< 10 / 10–50 / > 50); días hasta la alarma de disco del retransmisor (> 30 / 10–30 / < 10); desfase de reloj máximo (< 1 s / 1–2 s / > 2 s); fuentes de registros frescas (todas / 1 desactualizada / > 1 desactualizada); última copia (< 24 h / 24–48 h / > 48 h); última prueba de restauración (< 90 días / 90–120 / > 120); reglas evaluadas (< 5 min / 5–15 / > 15); silenciamientos activos (0 / 1 con caducidad / alguno sin caducidad); alertas abiertas de más de 4 h (0 / 1–2 / > 2). Lo lee cada día a las 08:30 el jefe de operaciones de FSTS.
+
+**EX078 — Decisión de aceptación.** Aceptar con condiciones: (1) un miembro del equipo receptor ejecuta el manual de operación de restauración del historiador, cronometrado frente al RTO de 4 h, en dos semanas; (2) se aporta en dos semanas la evidencia de los dos controles sin fechas; (3) soporte inicial del equipo del proyecto hasta que se cumplan ambas condiciones. El PS09-RTU sin soporte está bien gestionado como riesgo aceptado con responsable y plan, y no bloquea la aceptación. Rechazar sin más retrasaría un servicio que, por lo demás, está listo; aceptar sin condiciones dejaría la capacidad de recuperación más importante demostrada solo por su autor.
+
+### Capítulo 27: EX079–EX081
+
+**EX079 — Haga fallar el canario.** Con 7170 aceptados: proporción de aceptación de 0,9958 frente a 0,9994, caída de 0,0036, que no cumple el criterio de 0,002; las demás comprobaciones se superan; decisión `ROLL BACK canary and open problem record`. Primeras acciones: (1) revertir RLY-03 a la 2.4.0 con el cambio existente; (2) conservar los registros del canario, en especial los motivos de los 30 mensajes rechazados, antes de que roten; (3) informar a la sala de control de Agua de que el despliegue está en pausa y abrir un registro de problema con Kell o con quien mantenga el retransmisor.
+
+**EX080 — Conjunto de validación de seguridad.** (1) Mensaje de prueba con MAC erróneo → rechazado «bad MAC»; (2) reproducción de un mensaje legítimo reciente → rechazado «replay»; (3) comprobación de deriva → ningún servicio nuevo a la escucha ni claves de seguridad cambiadas; (4) recuento de líneas no analizadas del normalizador para el equipo → sin cambios (cero); (5) el proceso del retransmisor se ejecuta con la cuenta sin privilegios `relay` → confirmado; (6) prueba inyectada de la regla A desde una dirección marcada → alerta dentro del objetivo.
+
+**EX081 — Amplíe la ventana.** Día 1 (martes), 22:00: desplegar el canario en RLY-03. Día 2: evaluar los criterios en el pico de la mañana de 06:00 a 09:00. Días 6 y 7: mantener el canario durante la ejecución semanal del informe, evaluando los criterios durante la ejecución. Día 8: si todo se cumple, promocionar a RLY-02; evaluar en el pico de la mañana del día 9. Día 10: promocionar a RLY-01 y validar. Paquete de reversión preparado y probado el día 1; cualquier fallo en cualquier punto de control desencadena la reversión de los equipos que tengan la nueva versión. Se completa en diez días.
+
+### Capítulo 28: EX082–EX084
+
+**EX082 — Registre el módem.** *Observado (10 de octubre, 10:40, PS-07, con el ingeniero de Agua J. Abara):* módem celular, etiqueta "Kell RS-4", conectado al puerto 2 del PLC; LED de alimentación encendido; no figura en el inventario ni en la lista de conductos; el ingeniero afirma que Kell lo instaló para la asistencia remota hace unos seis años y cree que no se usa. *Inferido:* un camino remoto no declarado hacia el PLC que puede estar activo. *Hecho:* etiqueta fotografiada con permiso; Agua abrió el cambio CHG-W-221 para confirmar las dependencias y retirarlo. *Abierto:* si hay una SIM activa y quién es titular de la cuenta (Agua con Kell, antes del 17 de octubre); fecha de retirada; si otras estaciones tienen módems similares (punto de revisión para las visitas restantes). Registros actualizados: inventario, lista de conductos, registro de flujos de datos y registro de riesgos (nuevo escenario).
+
+**EX083 — Normas para el portátil de campo.** (1) Un portátil de campo dedicado, que no se usa para nada más; comprobación: registro del activo y registro de préstamos. (2) Actualizado y bastionado antes de cada visita; comprobación: informe de cumplimiento previo a la visita. (3) Sin uso personal ni navegación; comprobación: revisión periódica. (4) Nunca conectado a la vez a la red corporativa y a la de una estación; comprobación: registro de conexiones mantenido en cada visita. (5) Soportes extraíbles dedicados y analizados antes y después de cada uso; comprobación: registro de análisis. (6) Portátil comprobado tras cada visita (integridad y análisis antimalware); comprobación: informe posterior a la visita.
+
+**EX084 — Plan de ejercicio.** Objetivos: tiempo desde las condiciones del desencadenante hasta la declaración (objetivo: 15 min); tiempo desde la declaración hasta la primera lectura manual en cada estación (objetivo: 45 min); claridad de las comunicaciones. Escenario: aviso sintético de fallos de MAC en tres estaciones (inyectado en el sistema de prueba, no real). Participantes: responsable de seguridad de FSTS, jefe de turno de Agua, sala de control, dos técnicos de campo, observador del SOC. Pasos con puntos de cronometraje: T0, señal inyectada; T1, declaración; T2, técnicos de campo enviados; T3, primeras lecturas comunicadas por teléfono; T4, fin declarado. Condiciones de detención: cualquier alarma real, inquietud sobre el suministro o petición de la sala de control. Seguridad: normas habituales de seguridad del emplazamiento y de trabajo en solitario. Resultados registrados por un cronometrador; revisión sin culpables en el plazo de una semana.
+
+### Capítulo 29: EX085–EX087
+
+**EX085 — Reproduzca el defecto.** Con la secuencia de la prueba fuera de rango fijada en 1000: `"stored": 225`, `"alert_count": 103`, y las alertas incluyen ahora `["replay_reject", "PS-07"]`. Perdidas: 99 lecturas legítimas de PS-07 (secuencias 21–119). Causa: el retransmisor registra el último número de secuencia después de la autenticación pero antes de la comprobación de rango; el mensaje auténtico fuera de rango fija en 1000 la última secuencia de PS-07, así que todos los mensajes legítimos posteriores tienen un número menor y se rechazan como reproducciones.
+
+**EX086 — Corríjalo.** Un límite de 1.000 no sirve aquí: el salto de 19 a 1000 es de 981. Un límite basado en el tiempo funciona: rechazar (evento `seq_jump_reject`) cuando el salto supera los minutos transcurridos desde el último mensaje aceptado de la estación más un margen de 5. Implementado en el Lab 29 (registrando `last_t` por estación junto a `last`), la ejecución con la secuencia 1000 da `"stored": 324`, `"alert_count": 4` con `seq_jump_reject` para PS-07 en lugar de la cuarentena por rango, y la reproducción de PS-04 sigue rechazándose; con la secuencia 20, la salida no cambia respecto a la original (stored 324, cuatro alertas). El regreso de PS-09 tras sus 35 minutos de silencio se acepta porque su salto de 36 está dentro de 36 + 5. Observe que `injected_tests_detected` indica 3 con la secuencia 1000 porque el conjunto de detección aún no incluye `seq_jump_reject`: añádalo.
+
+**EX087 — Revisión del registro de evidencia.** Recuentos: mensajes en la red 327 = 120 (PS-04) + 119 (PS-07, menos el hueco que ocupa la prueba) + 85 (PS-09) + 3 mensajes inyectados; almacenados 324 = 327 − 3 (reproducción rechazada, falsificación rechazada, fuera de rango en cuarentena). Resumen: aplicar el hash a la línea JSON impresa exactamente (`sha256` de los bytes sin el salto de línea final) da un resumen que empieza por `aa40e3905d178699f1460e1c`, igual que el impreso. Límites que hay que declarar: estaciones y valores sintéticos; una sola ejecución de dos horas; sin dispositivos de campo reales, operador de telecomunicaciones ni carga a escala; sin adversario adaptativo; gestión de claves simplificada (clave en el código fuente).
+
+### Capítulo 30: EX088–EX090
+
+**EX088 — Responda a los revisores.** (a) Filtración de una clave: las claves son por estación, así que una clave filtrada permite a un atacante suplantar a una estación, no a todas; los mensajes falsificados superarían el MAC y la validación si fueran verosímiles; la detección es débil (podrían delatarla números de secuencia duplicados desde dos orígenes o valores que no concuerdan con los de las estaciones vecinas, pero no se ha probado); respuesta: revocar y rotar con el manual de operación probado, y tratar los datos de esa estación como no fiables hasta la rotación. (b) Se marcha quien lo construyó: el estado deseado y la automatización están en un repositorio revisado con al menos dos mantenedores; el equipo receptor siguió los manuales de operación durante el acompañamiento; las credenciales están en una bóveda, no en manos de la persona; el acceso se retira mediante el proceso de bajas. (c) BayTel cae durante un día: las estaciones almacenan 24 h; saltan las alertas de silencio; Agua pasa a lecturas manuales; al volver, la subida de la acumulación se ha probado para 4 h, pero no para 24 h: una carencia honesta, con una prueba planificada.
+
+**EX089 — Evalúe a los equipos A y B.** Equipo A: función de extremo a extremo 1 (afirmada), controles 1 (configurados, sin resultados de pruebas), propiedades de diseño: desconocidas, operabilidad: desconocida, calidad de la evidencia 0–1 (sin fechas, recuentos ni resumen criptográfico), honestidad 1 (ninguna carencia declarada). Equipo B: función 3 (cuatro de cuatro con resumen criptográfico), controles 2–3 (reglas de afirmación aplicadas, FIM aún no demostrada con un cambio abierto), propiedades de diseño: no se muestran en el resumen, operabilidad 2 (carencia del manual de operación encontrada y corregida), calidad de la evidencia 3, honestidad 3 (áreas sin probar nombradas). El evaluador pide al equipo A la evidencia bruta y al equipo B su material de revisión del diseño antes de las puntuaciones finales.
+
+**EX090 — Plan de práctica continua.** Mensual: leer los avisos de los productos del inventario (avisos de los fabricantes; fuentes del CERT nacional; CISA KEV) y un informe público de incidente, anotando las suposiciones fallidas; revisar las tendencias del informe de salud. Trimestral: participar en un ejercicio o una prueba de control; revisar con un compañero los hallazgos de la revisión de accesos y de deriva. Anual: volver a leer las versiones en uso de NIST CSF 2.0, SP 800-82 Rev. 3 y los CPG de la CISA o el CAF del NCSC, y la guía sectorial de la jurisdicción; comprobar si hay revisiones; actualizar las fichas de control afectadas; pedir una revisión externa de una parte del propio trabajo. Carga de trabajo: unas cuatro horas al mes.
 
 <a id="glossary"></a>
 
