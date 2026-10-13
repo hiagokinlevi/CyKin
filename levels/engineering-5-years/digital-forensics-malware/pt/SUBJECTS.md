@@ -13,15 +13,15 @@ Edição em português do Brasil, escrita a partir da edição de referência em
 | 1 | [01](book/PLAN.md#ch-01) | Cálculo I | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-01) | [02 · Rascunho](book/MANUSCRIPT.md#ch-02) |
 | 1 | [02](book/PLAN.md#ch-02) | Matemática discreta | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-02) | [03 · Rascunho](book/MANUSCRIPT.md#ch-03) |
 | 1 | [03](book/PLAN.md#ch-03) | Física para computação | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-03) | [04 · Rascunho](book/MANUSCRIPT.md#ch-04) |
-| 1 | [04](book/PLAN.md#ch-04) | Programação I | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-04) | [05 · Plano](book/PLAN.md#ch-05) |
-| 1 | [05](book/PLAN.md#ch-05) | Comunicação em engenharia | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-05)) | [06 · Plano](book/PLAN.md#ch-06) |
-| 2 | [06](book/PLAN.md#ch-06) | Cálculo II | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-06)) | [07 · Plano](book/PLAN.md#ch-07) |
-| 2 | [07](book/PLAN.md#ch-07) | Probabilidade e estatística | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-07)) | [08 · Plano](book/PLAN.md#ch-08) |
-| 2 | [08](book/PLAN.md#ch-08) | Arquitetura de computadores | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-08)) | [09 · Plano](book/PLAN.md#ch-09) |
-| 2 | [09](book/PLAN.md#ch-09) | Programação II | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-09)) | [10 · Plano](book/PLAN.md#ch-10) |
-| 2 | [10](book/PLAN.md#ch-10) | Ética e segurança na engenharia | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-10)) | [11 · Plano](book/PLAN.md#ch-11) |
-| 3 | [11](book/PLAN.md#ch-11) | Redes e protocolos | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-11)) | [12 · Plano](book/PLAN.md#ch-12) |
-| 3 | [12](book/PLAN.md#ch-12) | Sistemas operacionais | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-12)) | [13 · Plano](book/PLAN.md#ch-13) |
+| 1 | [04](book/PLAN.md#ch-04) | Programação I | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-04) | [05 · Rascunho](book/MANUSCRIPT.md#ch-05) |
+| 1 | [05](book/PLAN.md#ch-05) | Comunicação em engenharia | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-05) | [06 · Rascunho](book/MANUSCRIPT.md#ch-06) |
+| 2 | [06](book/PLAN.md#ch-06) | Cálculo II | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-06) | [07 · Rascunho](book/MANUSCRIPT.md#ch-07) |
+| 2 | [07](book/PLAN.md#ch-07) | Probabilidade e estatística | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-07) | [08 · Rascunho](book/MANUSCRIPT.md#ch-08) |
+| 2 | [08](book/PLAN.md#ch-08) | Arquitetura de computadores | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-08) | [09 · Rascunho](book/MANUSCRIPT.md#ch-09) |
+| 2 | [09](book/PLAN.md#ch-09) | Programação II | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-09) | [10 · Rascunho](book/MANUSCRIPT.md#ch-10) |
+| 2 | [10](book/PLAN.md#ch-10) | Ética e segurança na engenharia | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-10) | [11 · Rascunho](book/MANUSCRIPT.md#ch-11) |
+| 3 | [11](book/PLAN.md#ch-11) | Redes e protocolos | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-11) | [12 · Rascunho](book/MANUSCRIPT.md#ch-12) |
+| 3 | [12](book/PLAN.md#ch-12) | Sistemas operacionais | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-12) | [13 · Plano](book/PLAN.md#ch-13) |
 | 3 | [13](book/PLAN.md#ch-13) | Sistemas de dados | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-13)) | [14 · Plano](book/PLAN.md#ch-14) |
 | 3 | [14](book/PLAN.md#ch-14) | Engenharia de software | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-14)) | [15 · Plano](book/PLAN.md#ch-15) |
 | 3 | [15](book/PLAN.md#ch-15) | Fundamentos de segurança | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-15)) | [16 · Plano](book/PLAN.md#ch-16) |
