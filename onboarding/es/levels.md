@@ -17,7 +17,7 @@ La guía de cada curso enumera todos los capítulos en orden. Un capítulo del m
 | # | Tema | Guía de lecciones | Empezar en el capítulo 01 | Capítulos en el manuscrito / previstos |
 |---:|---|---|---|---:|
 | 01 | Ciberseguridad | [Guía de lecciones](../../levels/rapid-1-month/cybersecurity/es/SUBJECTS.md) | [Capítulo 01: solo plan](../../levels/rapid-1-month/cybersecurity/es/book/PLAN.md#ch-01) | 0/4 |
-| 02 | Seguridad de la información | [Guía de lecciones](../../levels/rapid-1-month/information-security/es/SUBJECTS.md) | [Capítulo 01: solo plan](../../levels/rapid-1-month/information-security/es/book/PLAN.md#ch-01) | 0/4 |
+| 02 | Seguridad de la información | [Guía de lecciones](../../levels/rapid-1-month/information-security/es/SUBJECTS.md) | [Leer capítulo 01](../../levels/rapid-1-month/information-security/es/book/MANUSCRIPT.md#ch-01) | 4/4 |
 | 03 | Gobernanza de datos | [Guía de lecciones](../../levels/rapid-1-month/data-governance/es/SUBJECTS.md) | [Capítulo 01: solo plan](../../levels/rapid-1-month/data-governance/es/book/PLAN.md#ch-01) | 0/4 |
 | 04 | Privacidad y protección de datos | [Guía de lecciones](../../levels/rapid-1-month/privacy-data-protection/es/SUBJECTS.md) | [Capítulo 01: solo plan](../../levels/rapid-1-month/privacy-data-protection/es/book/PLAN.md#ch-01) | 0/4 |
 | 05 | Gobierno, riesgo y cumplimiento de seguridad | [Guía de lecciones](../../levels/rapid-1-month/security-governance-risk-compliance/es/SUBJECTS.md) | [Capítulo 01: solo plan](../../levels/rapid-1-month/security-governance-risk-compliance/es/book/PLAN.md#ch-01) | 0/4 |

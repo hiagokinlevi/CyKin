@@ -1,18 +1,18 @@
-# Subjects and book chapters — Information security / Rapid course / Español
+# Asignaturas y capítulos del libro — Seguridad de la información / Curso rápido / Español
 
-**One course, one principal book, 4 subjects and chapters, one course skill.** Only links marked Draft point to authored teaching; a planned chapter is a summary, not a completed lesson.
+**Un curso, un libro principal, 4 asignaturas y capítulos, una skill del curso.** Los enlaces marcados como Lección abren contenido didáctico publicado; un capítulo planificado es un resumen, no una lección terminada.
 
-This is an English working index awaiting translation and review for this language.
+Edición en español neutro, escrita a partir de la edición de referencia en inglés; revisión técnica y lingüística pendiente.
 
-[Home](../../../../README.md) · [Complete study path](../../../../STUDY_PATH.md) · [Course home](../README.md) · [Book plan](book/PLAN.md) · [Course skill](../skill/SKILL.md)
+[Inicio](../../../../README.md) · [Ruta de estudio completa](../../../../STUDY_PATH.md) · [Página del curso](../README.md) · [Plan del libro](book/PLAN.md) · [Skill del curso](../skill/SKILL.md)
 
-**Course 002 of 207.** Read chapters 01–04 from top to bottom. For each chapter, use its Draft link when present; the numbered plan link is a summary only. Attempt exercises before consulting the book's worked answers. The final row links to the next course in this same language.
+**Curso 002 de 207.** Lea los capítulos 01–04 de arriba abajo. Para cada capítulo, use el enlace Lección; el enlace numerado del plan es solo un resumen. Intente resolver los ejercicios antes de consultar los resultados resueltos al final del libro. La última fila lleva al siguiente curso en este mismo idioma.
 
-| Week | Chapter / plan | Curricular subject | Hours | Planned A4 pages | Exercise target | Teaching state | Next step |
+| Semana | Capítulo / plan | Asignatura | Horas | Páginas A4 previstas | Meta de ejercicios | Estado didáctico | Siguiente paso |
 |---|---|---|---:|---:|---:|---|---|
-| 1 | [01](book/PLAN.md#ch-01) | Information security: foundations and decisions | 20 | 80 | 13 | Planned | [02 · Plan](book/PLAN.md#ch-02) |
-| 2 | [02](book/PLAN.md#ch-02) | Scope, permission and safe practice | 20 | 80 | 13 | Planned | [03 · Plan](book/PLAN.md#ch-03) |
-| 3 | [03](book/PLAN.md#ch-03) | Information security: systems, data and dependencies | 20 | 80 | 12 | Planned | [04 · Plan](book/PLAN.md#ch-04) |
-| 4 | [04](book/PLAN.md#ch-04) | Information security: guided lab and applied synthesis | 20 | 80 | 12 | Planned | [Course 003 →](../../data-governance/es/SUBJECTS.md) |
+| 1 | [01](book/PLAN.md#ch-01) | Un mes para corregir lo básico | 20 | 80 | 13 | [Lección](book/MANUSCRIPT.md#ch-01) | [02 · Lección](book/MANUSCRIPT.md#ch-02) |
+| 2 | [02](book/PLAN.md#ch-02) | Cuentas, dispositivos y uso compartido | 20 | 80 | 13 | [Lección](book/MANUSCRIPT.md#ch-02) | [03 · Lección](book/MANUSCRIPT.md#ch-03) |
+| 3 | [03](book/PLAN.md#ch-03) | Correo, fraude y personas | 20 | 80 | 12 | [Lección](book/MANUSCRIPT.md#ch-03) | [04 · Lección](book/MANUSCRIPT.md#ch-04) |
+| 4 | [04](book/PLAN.md#ch-04) | Copias de seguridad, incidentes y el plan que sigue | 20 | 80 | 12 | [Lección](book/MANUSCRIPT.md#ch-04) | [Curso 003 →](../../data-governance/es/SUBJECTS.md) |
 
-A planned next step is a navigation target, not an authored lesson. Keep the completion position at the first unwritten chapter. Page and exercise columns are editorial targets. The book is complete only after its content and A4 rendering meet the publication gate.
+Un siguiente paso planificado es un destino de navegación, no una lección escrita. Las columnas de páginas y ejercicios son metas editoriales. El libro solo estará completo cuando su contenido y su maquetación A4 cumplan el criterio de publicación.

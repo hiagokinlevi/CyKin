@@ -10,7 +10,7 @@ Each subject is one lesson and one chapter in its language edition's single publ
 |---|---:|---:|---:|---:|---:|---:|
 | English | 199/207 | 4007/4186 | 3867/4007 | 4007/4007 | 4007/4007 | 4007/4007 |
 | Português | 124/207 | 2509/4186 | 2412/2509 | 2509/2509 | 2509/2509 | 2509/2509 |
-| Español | 26/207 | 512/4186 | 470/512 | 512/512 | 512/512 | 512/512 |
+| Español | 27/207 | 516/4186 | 474/516 | 516/516 | 516/516 | 516/516 |
 
 The example and visual columns detect explicit headings and Mermaid/image syntax. They are conservative signals: prose examples, tables and logical drawings may exist without matching those patterns. An exercise is counted when its ID appears inside the chapter; this table does not certify its quality or worked answer. No count is raised by an empty template or a link to a plan.
 
@@ -21,7 +21,7 @@ Open a numbered entry to read its public lessons. A *(plan)* entry still needs a
 | Level · academic area | English | Português | Español |
 |---|---:|---:|---:|
 | rapid-1-month · Cybersecurity | [3/4](levels/rapid-1-month/cybersecurity/en/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/cybersecurity/pt/book/PLAN.md) | [0/4 (plan)](levels/rapid-1-month/cybersecurity/es/book/PLAN.md) |
-| rapid-1-month · Information security | [4/4](levels/rapid-1-month/information-security/en/book/MANUSCRIPT.md) | [4/4](levels/rapid-1-month/information-security/pt/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/information-security/es/book/PLAN.md) |
+| rapid-1-month · Information security | [4/4](levels/rapid-1-month/information-security/en/book/MANUSCRIPT.md) | [4/4](levels/rapid-1-month/information-security/pt/book/MANUSCRIPT.md) | [4/4](levels/rapid-1-month/information-security/es/book/MANUSCRIPT.md) |
 | rapid-1-month · Data governance | [4/4](levels/rapid-1-month/data-governance/en/book/MANUSCRIPT.md) | [4/4](levels/rapid-1-month/data-governance/pt/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/data-governance/es/book/PLAN.md) |
 | rapid-1-month · Privacy and data protection | [4/4](levels/rapid-1-month/privacy-data-protection/en/book/MANUSCRIPT.md) | [4/4](levels/rapid-1-month/privacy-data-protection/pt/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/privacy-data-protection/es/book/PLAN.md) |
 | rapid-1-month · Security governance, risk and compliance | [4/4](levels/rapid-1-month/security-governance-risk-compliance/en/book/MANUSCRIPT.md) | [4/4](levels/rapid-1-month/security-governance-risk-compliance/pt/book/MANUSCRIPT.md) | [0/4 (plan)](levels/rapid-1-month/security-governance-risk-compliance/es/book/PLAN.md) |

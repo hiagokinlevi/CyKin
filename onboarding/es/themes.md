@@ -39,7 +39,7 @@ La guía de cada curso enumera todos los capítulos en orden. Un capítulo del m
 
 | Nivel | Guía de lecciones | Empezar en el capítulo 01 | Capítulos en el manuscrito / previstos |
 |---|---|---|---:|
-| Rápido | [Guía de lecciones](../../levels/rapid-1-month/information-security/es/SUBJECTS.md) | [Capítulo 01: solo plan](../../levels/rapid-1-month/information-security/es/book/PLAN.md#ch-01) | 0/4 |
+| Rápido | [Guía de lecciones](../../levels/rapid-1-month/information-security/es/SUBJECTS.md) | [Leer capítulo 01](../../levels/rapid-1-month/information-security/es/book/MANUSCRIPT.md#ch-01) | 4/4 |
 | Profesional | [Guía de lecciones](../../levels/professional-6-months/information-security/es/SUBJECTS.md) | [Capítulo 01: solo plan](../../levels/professional-6-months/information-security/es/book/PLAN.md#ch-01) | 0/12 |
 | Técnico | [Guía de lecciones](../../levels/technical-18-months/information-security/es/SUBJECTS.md) | [Capítulo 01: solo plan](../../levels/technical-18-months/information-security/es/book/PLAN.md#ch-01) | 0/18 |
 | Tecnólogo | [Guía de lecciones](../../levels/technologist-3-years/information-security/es/SUBJECTS.md) | [Capítulo 01: solo plan](../../levels/technologist-3-years/information-security/es/book/PLAN.md#ch-01) | 0/30 |
