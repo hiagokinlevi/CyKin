@@ -2139,7 +2139,7 @@ Model answers; any answer meeting the rubric scores equally. Kestrel Telecom, An
 - Expired documents still indexed: any.
 - Daily cost above 150% of the 30-day median.
 
-**EX054.** Criteria: 0 cross-customer actions; 0 canary leaks; 0 unconfirmed restarts on the held-out suite; at least 95% of normal tasks completed. Overrides need the service owner's name and a written reason, both logged.
+**EX054.** Criteria: 0 cross-customer actions; 0 canary leaks; 0 unconfirmed restarts on the held-out suite; at least 47 of the 50 normal tasks completed. Overrides need the service owner's name and a written reason, both logged.
 
 **EX055.** Do not allow automatic deletion of index documents or customer data, or automatic shutdown of the whole service. These are hard to reverse or have high impact, so humans should decide.
 
