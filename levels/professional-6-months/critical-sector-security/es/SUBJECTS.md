@@ -15,10 +15,10 @@ Edición en español neutro, escrita a partir de la edición de referencia en in
 | 2 | [03](book/PLAN.md#ch-03) | Práctica autorizada y tratamiento de la evidencia | 30 | 30 | 5 | [Borrador](book/MANUSCRIPT.md#ch-03) | [04 · Borrador](book/MANUSCRIPT.md#ch-04) |
 | 2 | [04](book/PLAN.md#ch-04) | Métodos fundamentales | 30 | 30 | 5 | [Borrador](book/MANUSCRIPT.md#ch-04) | [05 · Borrador](book/MANUSCRIPT.md#ch-05) |
 | 3 | [05](book/PLAN.md#ch-05) | Herramientas e interpretación | 30 | 30 | 5 | [Borrador](book/MANUSCRIPT.md#ch-05) | [06 · Borrador](book/MANUSCRIPT.md#ch-06) |
-| 3 | [06](book/PLAN.md#ch-06) | Flujo de trabajo operativo | 30 | 30 | 5 | [Borrador](book/MANUSCRIPT.md#ch-06) | [07 · Plan](book/PLAN.md#ch-07) |
-| 4 | [07](book/PLAN.md#ch-07) | Controles y verificación | 30 | 30 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-07)) | [08 · Plan](book/PLAN.md#ch-08) |
-| 4 | [08](book/PLAN.md#ch-08) | Análisis supervisado de un caso | 30 | 30 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-08)) | [09 · Plan](book/PLAN.md#ch-09) |
-| 5 | [09](book/PLAN.md#ch-09) | Comunicación, ética e informes | 30 | 30 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-09)) | [10 · Plan](book/PLAN.md#ch-10) |
+| 3 | [06](book/PLAN.md#ch-06) | Flujo de trabajo operativo | 30 | 30 | 5 | [Borrador](book/MANUSCRIPT.md#ch-06) | [07 · Borrador](book/MANUSCRIPT.md#ch-07) |
+| 4 | [07](book/PLAN.md#ch-07) | Controles y verificación | 30 | 30 | 5 | [Borrador](book/MANUSCRIPT.md#ch-07) | [08 · Borrador](book/MANUSCRIPT.md#ch-08) |
+| 4 | [08](book/PLAN.md#ch-08) | Análisis supervisado de un caso | 30 | 30 | 5 | [Borrador](book/MANUSCRIPT.md#ch-08) | [09 · Borrador](book/MANUSCRIPT.md#ch-09) |
+| 5 | [09](book/PLAN.md#ch-09) | Comunicación, ética e informes | 30 | 30 | 5 | [Borrador](book/MANUSCRIPT.md#ch-09) | [10 · Plan](book/PLAN.md#ch-10) |
 | 5 | [10](book/PLAN.md#ch-10) | Calidad y diagnóstico de averías | 30 | 30 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-10)) | [11 · Plan](book/PLAN.md#ch-11) |
 | 6 | [11](book/PLAN.md#ch-11) | Laboratorio supervisado | 30 | 30 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-11)) | [12 · Plan](book/PLAN.md#ch-12) |
 | 6 | [12](book/PLAN.md#ch-12) | Portafolio de práctica y revisión final | 30 | 30 | 5 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-12)) | [Curso 047 →](../../../technical-18-months/cybersecurity/es/SUBJECTS.md) |
