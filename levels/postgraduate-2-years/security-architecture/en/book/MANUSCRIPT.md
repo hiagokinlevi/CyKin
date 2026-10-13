@@ -70,7 +70,7 @@ Decision records can become paperwork if no one reads them. Assumptions must be 
 - **EX002 — Assumption example.** Give the assumption Priya could not yet verify. *Rubric:* 3 = cloud service availability in rural clinics with poor connectivity;; 2 = availability;; 1 = certificate outages;; 0 = none.
 - **EX003 — Value for the board.** Which value did Priya leave to the board? *Rubric:* 3 = how much clinic downtime is acceptable to save money;; 2 = downtime;; 1 = firewall models;; 0 = none.
 - **EX004 — Circular arguments.** What causes circular architecture arguments, according to the chapter? *Rubric:* 3 = mixing facts, assumptions and values;; 2 = mixing;; 1 = budget;; 0 = none.
-- **EX005 — Revisit conditions.** Why include revisit conditions in a decision record? *Rubric:* 3 = so a later architect can judge whether the decision still holds;; 2 = future review;; 1 = none;; 0 = none.
+- **EX005 — Revisit conditions.** Why include revisit conditions in a decision record? *Rubric:* 3 = so a later architect can judge whether the decision still holds;; 2 = future review;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -112,11 +112,11 @@ Three interviews do not represent a sector. Guidance alignment is not proof of s
 
 ### Exercises
 
-- **EX006 — Common pattern.** Name two patterns the three peer organisations share. *Rubric:* 3 = identity-centred access, device segmentation, brokered vendor access, review boards;; 2 = one;; 1 = none;; 0 = none.
+- **EX006 — Common pattern.** Name two patterns the three peer organisations share. *Rubric:* 3 = identity-centred access, device segmentation, brokered vendor access, review boards;; 2 = one;; 1 = vague;; 0 = none.
 - **EX007 — SABSA use.** How do peers use SABSA? *Rubric:* 3 = they borrow parts such as attribute profiles, not the full method;; 2 = parts;; 1 = full method;; 0 = none.
 - **EX008 — Verification gap.** What verification gap did Priya find in practice? *Rubric:* 3 = delivered systems are rarely tested against their designs;; 2 = testing;; 1 = design reviews;; 0 = none.
 - **EX009 — First priority.** Why rank device segmentation first at Corvane? *Rubric:* 3 = a laptop infection could reach infusion pump management stations;; 2 = patient safety;; 1 = cost;; 0 = none.
-- **EX010 — Why cite sources.** Why did Priya present gaps with sources? *Rubric:* 3 = so they are seen as measured against guidance, not opinion;; 2 = credibility;; 1 = none;; 0 = none.
+- **EX010 — Why cite sources.** Why did Priya present gaps with sources? *Rubric:* 3 = so they are seen as measured against guidance, not opinion;; 2 = credibility;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -185,7 +185,7 @@ Inventories miss devices. Reachability models ignore application-layer paths not
 - **EX011 — Specialist knowledge.** What did clinical engineers know that architects often lack? *Rubric:* 3 = which devices cannot be patched and which vendor connections they need;; 2 = devices;; 1 = nothing;; 0 = none.
 - **EX012 — Current path.** How could administrative laptops reach clinical devices under current rules? *Rubric:* 3 = through the shared print server;; 2 = print server;; 1 = directly;; 0 = none.
 - **EX013 — Proposed path.** What can reach clinical devices under the proposed rules? *Rubric:* 3 = only the clinical engineering jump host;; 2 = jump host;; 1 = everything;; 0 = none.
-- **EX014 — Recording dates.** Why record each source's date? *Rubric:* 3 = inventories are often incomplete, so currency must be shown;; 2 = currency;; 1 = none;; 0 = none.
+- **EX014 — Recording dates.** Why record each source's date? *Rubric:* 3 = inventories are often incomplete, so currency must be shown;; 2 = currency;; 1 = vague;; 0 = none.
 - **EX015 — Proportion.** What does proportionate evidence mean here? *Rubric:* 3 = enough to justify the decision and show limits, with detail in appendices;; 2 = enough;; 1 = everything;; 0 = none.
 
 ### Synthesis
@@ -229,7 +229,7 @@ Ranges can be too wide to guide action. Escalation without evidence can look lik
 ### Exercises
 
 - **EX016 — Why ranges.** Why give risk as ranges rather than single numbers? *Rubric:* 3 = to show uncertainty and avoid false confidence;; 2 = uncertainty;; 1 = precision;; 0 = none.
-- **EX017 — Three harms.** Which three kinds of harm did Priya separate? *Rubric:* 3 = patient safety, privacy and financial;; 2 = two;; 1 = none;; 0 = none.
+- **EX017 — Three harms.** Which three kinds of harm did Priya separate? *Rubric:* 3 = patient safety, privacy and financial;; 2 = two;; 1 = vague;; 0 = none.
 - **EX018 — Not monetising safety.** Why not convert patient safety into money? *Rubric:* 3 = it hides an ethical judgement inside arithmetic;; 2 = ethics;; 1 = easier;; 0 = none.
 - **EX019 — Right authority.** Who holds authority over clinical risk at Corvane? *Rubric:* 3 = the clinical governance committee;; 2 = committee;; 1 = architecture team;; 0 = none.
 - **EX020 — Handling the discount.** How did Priya handle the vendor's delay offer? *Rubric:* 3 = documented and escalated to the clinical governance committee;; 2 = escalated;; 1 = accepted;; 0 = none.
@@ -301,7 +301,7 @@ Attribute scores are judgements. Two access paths add operational load.
 - **EX022 — Highest weight.** Which attribute did clinical leaders weight highest and why? *Rubric:* 3 = availability, because clinics cannot stop seeing patients;; 2 = availability;; 1 = cost;; 0 = none.
 - **EX023 — Base ranking.** Which option ranked first in the base case in the lab? *Rubric:* 3 = hybrid, 4.10;; 2 = hybrid;; 1 = cloud;; 0 = none.
 - **EX024 — Cloud wins when.** When does the cloud option win in the sweep? *Rubric:* 3 = at an availability weight of 0.20 or lower;; 2 = low weight;; 1 = always;; 0 = none.
-- **EX025 — Hybrid cost.** What hidden cost does the hybrid option carry? *Rubric:* 3 = two access paths, with a risk the fallback is neglected;; 2 = fallback;; 1 = none;; 0 = none.
+- **EX025 — Hybrid cost.** What hidden cost does the hybrid option carry? *Rubric:* 3 = two access paths, with a risk the fallback is neglected;; 2 = fallback;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -344,8 +344,8 @@ Small samples are fragile. Staff may behave differently when they know they are 
 ### Exercises
 
 - **EX026 — Choosing by lot.** Why choose pilot clinics by lot? *Rubric:* 3 = to prevent picking the easiest sites;; 2 = bias;; 1 = convenience;; 0 = none.
-- **EX027 — Outage result.** What were monthly outage minutes in pilot and comparison clinics? *Rubric:* 3 = eleven versus thirty-four;; 2 = lower;; 1 = none;; 0 = none.
-- **EX028 — Staff cost.** What staff cost did the pilot show? *Rubric:* 3 = sign-in rose by four seconds;; 2 = four seconds;; 1 = none;; 0 = none.
+- **EX027 — Outage result.** What were monthly outage minutes in pilot and comparison clinics? *Rubric:* 3 = eleven versus thirty-four;; 2 = lower;; 1 = vague;; 0 = none.
+- **EX028 — Staff cost.** What staff cost did the pilot show? *Rubric:* 3 = sign-in rose by four seconds;; 2 = four seconds;; 1 = vague;; 0 = none.
 - **EX029 — Ticket pattern.** How did help desk tickets change? *Rubric:* 3 = rose in month one, then fell below comparison;; 2 = rise then fall;; 1 = flat;; 0 = none.
 - **EX030 — Recommendation.** What did Priya recommend after the pilot? *Rubric:* 3 = a staged rollout with continued measurement;; 2 = staged;; 1 = big bang;; 0 = none.
 
@@ -389,10 +389,10 @@ Triage can miss risky projects that answer no. Fast boards can become rubber sta
 
 ### Exercises
 
-- **EX031 — Audit traceability.** How did linking records to the ISMS help auditors? *Rubric:* 3 = they can trace a control back to its design decision;; 2 = traceability;; 1 = none;; 0 = none.
+- **EX031 — Audit traceability.** How did linking records to the ISMS help auditors? *Rubric:* 3 = they can trace a control back to its design decision;; 2 = traceability;; 1 = vague;; 0 = none.
 - **EX032 — Old board problem.** What was wrong with the old review board? *Rubric:* 3 = it reviewed everything monthly and became a bottleneck;; 2 = bottleneck;; 1 = too fast;; 0 = none.
 - **EX033 — Triage triggers.** Which project features trigger board review? *Rubric:* 3 = suppliers, patient data flows, clinical devices, internet exposure;; 2 = two;; 1 = all projects;; 0 = none.
-- **EX034 — Board effect.** What changed within a quarter of the redesign? *Rubric:* 3 = more projects came forward voluntarily;; 2 = voluntary;; 1 = none;; 0 = none.
+- **EX034 — Board effect.** What changed within a quarter of the redesign? *Rubric:* 3 = more projects came forward voluntarily;; 2 = voluntary;; 1 = vague;; 0 = none.
 - **EX035 — Integration principle.** When does integration with other functions work? *Rubric:* 3 = when each function sees architecture helping its own goals;; 2 = shared goals;; 1 = mandates;; 0 = none.
 
 ### Synthesis
@@ -437,7 +437,7 @@ Exceptions tend to become permanent without dates. Staged mergers stall under bu
 
 - **EX036 — Scanner treatment.** How was the unsupported scanner treated? *Rubric:* 3 = isolated, limited to the imaging archive, monitored, with a replacement date;; 2 = isolation;; 1 = replaced now;; 0 = none.
 - **EX037 — Exception owner.** Who accepted the scanner's residual risk? *Rubric:* 3 = the clinical governance committee, in writing;; 2 = committee;; 1 = architect;; 0 = none.
-- **EX038 — Merger dilemma.** Why was neither quick connection nor full separation acceptable? *Rubric:* 3 = quick imports weaknesses; separation blocks shared patient records;; 2 = both sides;; 1 = none;; 0 = none.
+- **EX038 — Merger dilemma.** Why was neither quick connection nor full separation acceptable? *Rubric:* 3 = quick imports weaknesses; separation blocks shared patient records;; 2 = both sides;; 1 = vague;; 0 = none.
 - **EX039 — First merger stage.** What was the first merger stage? *Rubric:* 3 = a brokered connection for specific applications only;; 2 = brokered;; 1 = full join;; 0 = none.
 - **EX040 — Goal in hard cases.** What is the goal in difficult cases? *Rubric:* 3 = make risk visible, owned and temporary where possible;; 2 = visible;; 1 = remove all risk;; 0 = none.
 
@@ -500,9 +500,9 @@ Verification samples may miss failures. Metrics can be gamed once targets are se
 
 ### Exercises
 
-- **EX041 — Delegation principle.** What principles let the team decide without Priya? *Rubric:* 3 = deny by default, identity before network, dated owned exceptions;; 2 = two;; 1 = none;; 0 = none.
-- **EX042 — Three levels.** What three levels does Priya distinguish? *Rubric:* 3 = designed, implemented and verified;; 2 = two;; 1 = none;; 0 = none.
-- **EX043 — Lab counts.** What were the counts at each level in the lab? *Rubric:* 3 = 36 designed, 29 implemented, 19 verified;; 2 = partly;; 1 = none;; 0 = none.
+- **EX041 — Delegation principle.** What principles let the team decide without Priya? *Rubric:* 3 = deny by default, identity before network, dated owned exceptions;; 2 = two;; 1 = vague;; 0 = none.
+- **EX042 — Three levels.** What three levels does Priya distinguish? *Rubric:* 3 = designed, implemented and verified;; 2 = two;; 1 = vague;; 0 = none.
+- **EX043 — Lab counts.** What were the counts at each level in the lab? *Rubric:* 3 = 36 designed, 29 implemented, 19 verified;; 2 = partly;; 1 = vague;; 0 = none.
 - **EX044 — Assurance versus reassurance.** What makes Priya's reporting assurance rather than reassurance? *Rubric:* 3 = it reports what has been verified, by whom and how;; 2 = verification;; 1 = tone;; 0 = none.
 - **EX045 — Trusted metric.** When does a metric earn trust, according to Priya? *Rubric:* 3 = when it occasionally delivers bad news;; 2 = bad news;; 1 = always green;; 0 = none.
 
@@ -546,8 +546,8 @@ Critiques can be harsher on unwelcome findings. Transfer reasoning is itself unc
 
 ### Exercises
 
-- **EX046 — Three questions.** What three questions guide Priya's reading? *Rubric:* 3 = what was measured, how compared, would the setting resemble a clinic;; 2 = two;; 1 = none;; 0 = none.
-- **EX047 — Falsifiable claims.** Why look for studies stating what would contradict them? *Rubric:* 3 = security research often lacks falsifiable claims;; 2 = falsifiable;; 1 = none;; 0 = none.
+- **EX046 — Three questions.** What three questions guide Priya's reading? *Rubric:* 3 = what was measured, how compared, would the setting resemble a clinic;; 2 = two;; 1 = vague;; 0 = none.
+- **EX047 — Falsifiable claims.** Why look for studies stating what would contradict them? *Rubric:* 3 = security research often lacks falsifiable claims;; 2 = falsifiable;; 1 = vague;; 0 = none.
 - **EX048 — Mechanism not transferring.** Which mechanism from the enterprise study did not transfer? *Rubric:* 3 = dedicated security operations staff watching alerts;; 2 = staffing;; 1 = segmentation;; 0 = none.
 - **EX049 — Transfer conclusion.** What did Priya conclude about transfer? *Rubric:* 3 = direction likely applies, effect size uncertain;; 2 = direction;; 1 = full transfer;; 0 = none.
 - **EX050 — Weak design.** Why was one paper marked weak? *Rubric:* 3 = uncontrolled before-and-after comparison during other changes;; 2 = uncontrolled;; 1 = small sample;; 0 = none.
@@ -613,11 +613,11 @@ Rubrics compress judgement into numbers. Discovery weeks add time.
 
 ### Exercises
 
-- **EX051 — First-clinic surprise.** What did the first clinic reveal? *Rubric:* 3 = an undocumented blood analyser connection to a laboratory service;; 2 = undocumented;; 1 = none;; 0 = none.
-- **EX052 — Response to surprise.** How did Priya change later clinic plans? *Rubric:* 3 = added a discovery week before rule changes;; 2 = discovery;; 1 = none;; 0 = none.
+- **EX051 — First-clinic surprise.** What did the first clinic reveal? *Rubric:* 3 = an undocumented blood analyser connection to a laboratory service;; 2 = undocumented;; 1 = vague;; 0 = none.
+- **EX052 — Response to surprise.** How did Priya change later clinic plans? *Rubric:* 3 = added a discovery week before rule changes;; 2 = discovery;; 1 = vague;; 0 = none.
 - **EX053 — Rubric gap.** On which criterion did Priya score herself above the assessors in the lab? *Rubric:* 3 = verification: self 3, assessors 2;; 2 = verification;; 1 = stakeholders;; 0 = none.
-- **EX054 — Assessors' concern.** What was the assessors' concern about verification? *Rubric:* 3 = two clinics were verified by Priya alone;; 2 = independence;; 1 = none;; 0 = none.
-- **EX055 — Completion rule.** Why was the project complete only after handover? *Rubric:* 3 = a design only its author can operate is not delivered;; 2 = handover;; 1 = none;; 0 = none.
+- **EX054 — Assessors' concern.** What was the assessors' concern about verification? *Rubric:* 3 = two clinics were verified by Priya alone;; 2 = independence;; 1 = vague;; 0 = none.
+- **EX055 — Completion rule.** Why was the project complete only after handover? *Rubric:* 3 = a design only its author can operate is not delivered;; 2 = handover;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -659,9 +659,9 @@ Attribution of outcomes is uncertain. Transfer claims need testing in the new do
 
 ### Exercises
 
-- **EX056 — Remaining risk.** What concentration of risk remained at Corvane? *Rubric:* 3 = the identity provider;; 2 = identity;; 1 = none;; 0 = none.
-- **EX057 — Attribution care.** Which outcome might have happened anyway? *Rubric:* 3 = reduced outages from a vendor's own improvements;; 2 = vendor;; 1 = none;; 0 = none.
-- **EX058 — Methods that transfer.** Name two methods that transfer to the water utility. *Rubric:* 3 = decision records, attribute criteria, reachability models, staged rollouts;; 2 = one;; 1 = none;; 0 = none.
+- **EX056 — Remaining risk.** What concentration of risk remained at Corvane? *Rubric:* 3 = the identity provider;; 2 = identity;; 1 = vague;; 0 = none.
+- **EX057 — Attribution care.** Which outcome might have happened anyway? *Rubric:* 3 = reduced outages from a vendor's own improvements;; 2 = vendor;; 1 = vague;; 0 = none.
+- **EX058 — Methods that transfer.** Name two methods that transfer to the water utility. *Rubric:* 3 = decision records, attribute criteria, reachability models, staged rollouts;; 2 = one;; 1 = vague;; 0 = none.
 - **EX059 — What changes in transfer.** What changes when moving to the utility? *Rubric:* 3 = attribute weights and rarer change windows;; 2 = weights;; 1 = nothing;; 0 = none.
 - **EX060 — Growing judgement.** How does judgement grow, according to Dr Voss? *Rubric:* 3 = by honestly reviewing past decisions;; 2 = review;; 1 = frameworks;; 0 = none.
 

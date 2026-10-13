@@ -71,11 +71,11 @@ Publishing partner-specific weaknesses turns research into an attack guide; repo
 
 - **EX001 — Research question.** What does Yusuf's question compare? *Rubric:* 3 = risk-ranked versus uniform control application;; 2 = correct;; 1 = partial;; 0 = none.
 - **EX002 — Partner scale.** How many departments does Fernvale have? *Rubric:* 3 = thirty;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX003 — Live testing rule.** When may Yusuf test live systems? *Rubric:* 3 = only with written authorisation;; 2 = correct;; 1 = none;; 0 = none.
+- **EX003 — Live testing rule.** When may Yusuf test live systems? *Rubric:* 3 = only with written authorisation;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX004 — Found vulnerability.** What happens if Yusuf finds a vulnerability? *Rubric:* 3 = report it to Fernvale's security team;; 2 = correct;; 1 = publish;; 0 = none.
 - **EX005 — Chosen design.** Which design does Yusuf choose? *Rubric:* 3 = difference-in-differences;; 2 = correct;; 1 = other;; 0 = none.
-- **EX006 — Natural comparison.** Why does a comparison group exist? *Rubric:* 3 = risk-ranked patching rolls out to some departments first;; 2 = correct;; 1 = none;; 0 = none.
-- **EX007 — Ethics condition.** What condition did the ethics committee add? *Rubric:* 3 = security lead reviews publications for sensitivity;; 2 = correct;; 1 = none;; 0 = none.
+- **EX006 — Natural comparison.** Why does a comparison group exist? *Rubric:* 3 = risk-ranked patching rolls out to some departments first;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX007 — Ethics condition.** What condition did the ethics committee add? *Rubric:* 3 = security lead reviews publications for sensitivity;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-02"></a>
 
@@ -143,12 +143,12 @@ Claiming a thesis tests a whole framework overstates what one study can show.
 
 ### Exercises
 
-- **EX008 — Saltzer principle.** Name one Saltzer and Schroeder design principle. *Rubric:* 3 = least privilege, fail-safe defaults or complete mediation;; 2 = one;; 1 = none;; 0 = none.
+- **EX008 — Saltzer principle.** Name one Saltzer and Schroeder design principle. *Rubric:* 3 = least privilege, fail-safe defaults or complete mediation;; 2 = one;; 1 = vague;; 0 = none.
 - **EX009 — Anderson insight.** What does Anderson show most failures arise from? *Rubric:* 3 = incentives, usability and process;; 2 = most;; 1 = one;; 0 = none.
 - **EX010 — CSF functions.** Name the six CSF 2.0 functions. *Rubric:* 3 = govern, identify, protect, detect, respond, recover;; 2 = all;; 1 = some;; 0 = none.
-- **EX011 — High-water rule.** How does FIPS 199 set a system's category? *Rubric:* 3 = the highest of the three impact ratings;; 2 = correct;; 1 = none;; 0 = none.
+- **EX011 — High-water rule.** How does FIPS 199 set a system's category? *Rubric:* 3 = the highest of the three impact ratings;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX012 — High systems.** Which synthetic systems are high? *Rubric:* 3 = payroll, water control and case records;; 2 = all;; 1 = some;; 0 = none.
-- **EX013 — Water control reason.** Why is water control high despite low confidentiality impact? *Rubric:* 3 = integrity and availability failures could harm the public;; 2 = correct;; 1 = none;; 0 = none.
+- **EX013 — Water control reason.** Why is water control high despite low confidentiality impact? *Rubric:* 3 = integrity and availability failures could harm the public;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX014 — Stated gap.** How narrowly does Yusuf state his gap? *Rubric:* 3 = two outcome measures in one public body;; 2 = correct;; 1 = partial;; 0 = none.
 
 <a id="ch-03"></a>
@@ -188,9 +188,9 @@ Changing hypotheses after seeing outcome data invalidates confirmatory claims.
 ### Exercises
 
 - **EX015 — First hypothesis.** What does the first hypothesis predict? *Rubric:* 3 = a larger fall in median critical patch latency in adopting departments;; 2 = correct;; 1 = partial;; 0 = none.
-- **EX016 — Median choice.** Why use medians for patch latency? *Rubric:* 3 = latency is skewed by a few very slow cases;; 2 = correct;; 1 = none;; 0 = none.
-- **EX017 — Excess privilege definition.** How is excess privilege measured? *Rubric:* 3 = share of accounts with permissions outside their role baseline;; 2 = correct;; 1 = none;; 0 = none.
-- **EX018 — Selection response.** How will Yusuf address the selection threat? *Rubric:* 3 = compare pre-adoption trends;; 2 = correct;; 1 = none;; 0 = none.
+- **EX016 — Median choice.** Why use medians for patch latency? *Rubric:* 3 = latency is skewed by a few very slow cases;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX017 — Excess privilege definition.** How is excess privilege measured? *Rubric:* 3 = share of accounts with permissions outside their role baseline;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX018 — Selection response.** How will Yusuf address the selection threat? *Rubric:* 3 = compare pre-adoption trends;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX019 — Statistician question.** What did the statistician ask about? *Rubric:* 3 = sample size;; 2 = correct;; 1 = other;; 0 = none.
 - **EX020 — Freeze timing.** When is the pre-registration frozen? *Rubric:* 3 = before outcome data are extracted;; 2 = correct;; 1 = after;; 0 = none.
 
@@ -260,12 +260,12 @@ Letting baselines change during a study confounds the measure with the intervent
 
 ### Exercises
 
-- **EX021 — Baseline gap cause.** What explained the small baseline difference? *Rubric:* 3 = the council excluded systems scheduled for retirement;; 2 = correct;; 1 = none;; 0 = none.
+- **EX021 — Baseline gap cause.** What explained the small baseline difference? *Rubric:* 3 = the council excluded systems scheduled for retirement;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX022 — Excess share.** What share of pilot accounts held excess privilege? *Rubric:* 3 = 25.3% (152 of 600);; 2 = correct;; 1 = wrong;; 0 = none.
 - **EX023 — Admin finding.** How many accounts held admin console access without need? *Rubric:* 3 = 34;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX024 — Admin seriousness.** Why is unneeded admin console access most serious? *Rubric:* 3 = it allows system-wide configuration changes;; 2 = correct;; 1 = none;; 0 = none.
-- **EX025 — Measure refinement.** What refinement was made after the audit? *Rubric:* 3 = exclude permissions with approved unexpired exceptions;; 2 = correct;; 1 = none;; 0 = none.
-- **EX026 — Baseline freeze.** Why are role baselines frozen? *Rubric:* 3 = so baseline changes do not confound the measure;; 2 = correct;; 1 = none;; 0 = none.
+- **EX024 — Admin seriousness.** Why is unneeded admin console access most serious? *Rubric:* 3 = it allows system-wide configuration changes;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX025 — Measure refinement.** What refinement was made after the audit? *Rubric:* 3 = exclude permissions with approved unexpired exceptions;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX026 — Baseline freeze.** Why are role baselines frozen? *Rubric:* 3 = so baseline changes do not confound the measure;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-05"></a>
 
@@ -332,9 +332,9 @@ Describing an interval that includes zero as proof of an effect misleads practit
 - **EX027 — Adopter medians.** How did adopters' median latency change? *Rubric:* 3 = 14.6 to 10.1 days;; 2 = correct;; 1 = wrong;; 0 = none.
 - **EX028 — DiD estimate.** What is the difference-in-differences estimate? *Rubric:* 3 = minus 3.4 days;; 2 = correct;; 1 = wrong;; 0 = none.
 - **EX029 — Interval bounds.** What is the 95% bootstrap interval? *Rubric:* 3 = minus 7.4 to plus 1.2 days;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX030 — Zero meaning.** What does the interval including zero mean? *Rubric:* 3 = the data are consistent with no effect;; 2 = correct;; 1 = none;; 0 = none.
-- **EX031 — Catch-up concern.** Why might part of the fall be catching up? *Rubric:* 3 = adopters started slower than comparisons;; 2 = correct;; 1 = none;; 0 = none.
-- **EX032 — Validator alternative.** What alternative analysis did the validator try? *Rubric:* 3 = means of log latency;; 2 = correct;; 1 = none;; 0 = none.
+- **EX030 — Zero meaning.** What does the interval including zero mean? *Rubric:* 3 = the data are consistent with no effect;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX031 — Catch-up concern.** Why might part of the fall be catching up? *Rubric:* 3 = adopters started slower than comparisons;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX032 — Validator alternative.** What alternative analysis did the validator try? *Rubric:* 3 = means of log latency;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-06"></a>
 
@@ -373,11 +373,11 @@ Presenting exploratory reanalysis as confirmatory evidence hides researcher choi
 ### Exercises
 
 - **EX033 — Three critiques.** Name the three reviewer points. *Rubric:* 3 = power, comparator choice, missing mechanism;; 2 = all;; 1 = some;; 0 = none.
-- **EX034 — Power finding.** What did the power simulation show? *Rubric:* 3 = about thirty percent detection, far below eighty;; 2 = correct;; 1 = none;; 0 = none.
+- **EX034 — Power finding.** What did the power simulation show? *Rubric:* 3 = about thirty percent detection, far below eighty;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX035 — Excluded comparator.** Which comparator was excluded in sensitivity analysis? *Rubric:* 3 = the water utility;; 2 = correct;; 1 = other;; 0 = none.
 - **EX036 — Sensitivity label.** How is the sensitivity analysis labelled? *Rubric:* 3 = exploratory;; 2 = correct;; 1 = confirmatory;; 0 = none.
 - **EX037 — Mechanism contents.** What did risk-ranked patching change? *Rubric:* 3 = category-based scoring, high systems first, weekly reports;; 2 = most;; 1 = few;; 0 = none.
-- **EX038 — Narrowed conclusion.** What is the narrowed conclusion? *Rubric:* 3 = a modest, uncertain reduction in one council;; 2 = correct;; 1 = none;; 0 = none.
+- **EX038 — Narrowed conclusion.** What is the narrowed conclusion? *Rubric:* 3 = a modest, uncertain reduction in one council;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-07"></a>
 
@@ -415,12 +415,12 @@ Archiving real system names and versions can expose the partner to attack.
 
 ### Exercises
 
-- **EX039 — Third study.** What did the access review study find? *Rubric:* 3 = a clearer reduction in excess privilege;; 2 = correct;; 1 = none;; 0 = none.
+- **EX039 — Third study.** What did the access review study find? *Rubric:* 3 = a clearer reduction in excess privilege;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX040 — Checksum tool.** Which module computes the checksums? *Rubric:* 3 = hashlib;; 2 = correct;; 1 = other;; 0 = none.
-- **EX041 — Removed figure.** What figure did the security lead ask to remove? *Rubric:* 3 = the slowest-patched system category;; 2 = correct;; 1 = none;; 0 = none.
+- **EX041 — Removed figure.** What figure did the security lead ask to remove? *Rubric:* 3 = the slowest-patched system category;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX042 — Generic labels.** What details become generic labels? *Rubric:* 3 = system names, versions, network details and department codes;; 2 = most;; 1 = few;; 0 = none.
 - **EX043 — Archive data.** What data does the public archive contain? *Rubric:* 3 = synthetic data reproducing reported figures;; 2 = correct;; 1 = real;; 0 = none.
-- **EX044 — Transferability aid.** How does Yusuf help readers judge transferability? *Rubric:* 3 = describes Fernvale's size, sector and regulation;; 2 = correct;; 1 = none;; 0 = none.
+- **EX044 — Transferability aid.** How does Yusuf help readers judge transferability? *Rubric:* 3 = describes Fernvale's size, sector and regulation;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-08"></a>
 
@@ -458,12 +458,12 @@ Drifting into stronger language under questioning overstates the thesis.
 
 ### Exercises
 
-- **EX045 — Side-by-side slide.** What does the key slide show together? *Rubric:* 3 = the inconclusive patch result and the clearer privilege result;; 2 = correct;; 1 = none;; 0 = none.
-- **EX046 — Generalisation answer.** What can one council's study provide? *Rubric:* 3 = a tested measurement approach and an estimate for pooling;; 2 = correct;; 1 = none;; 0 = none.
-- **EX047 — Incident counts.** Why were incident counts not used? *Rubric:* 3 = rare and inconsistently recorded;; 2 = correct;; 1 = none;; 0 = none.
-- **EX048 — Corrections required.** Name one required correction. *Rubric:* 3 = clarify the pilot definition change or add a prior-measures table;; 2 = one;; 1 = none;; 0 = none.
+- **EX045 — Side-by-side slide.** What does the key slide show together? *Rubric:* 3 = the inconclusive patch result and the clearer privilege result;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX046 — Generalisation answer.** What can one council's study provide? *Rubric:* 3 = a tested measurement approach and an estimate for pooling;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX047 — Incident counts.** Why were incident counts not used? *Rubric:* 3 = rare and inconsistently recorded;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX048 — Corrections required.** Name one required correction. *Rubric:* 3 = clarify the pilot definition change or add a prior-measures table;; 2 = one;; 1 = vague;; 0 = none.
 - **EX049 — Paper count.** How many papers does Yusuf plan? *Rubric:* 3 = three;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX050 — Key contribution.** What may be Yusuf's most valuable contribution? *Rubric:* 3 = the methodological approach using operational logs;; 2 = correct;; 1 = none;; 0 = none.
+- **EX050 — Key contribution.** What may be Yusuf's most valuable contribution? *Rubric:* 3 = the methodological approach using operational logs;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="worked-results"></a>
 

@@ -784,7 +784,7 @@ Diagramas se afastam da realidade; revise-os em relação ao que está implantad
 
 - **EX047 — Interface com a fábrica.** Como as chaves são protegidas a caminho da fábrica? *Rubrica:* 3 = cifradas sob uma chave de transporte, nunca em claro;; 2 = cifradas;; 1 = por e-mail;; 0 = nenhuma.
 
-- **EX048 — Lição sobre a propriedade.** Que falha passada motivou a tabela de responsabilidades? *Rubrica:* 3 = a revogação ficou entre equipes, e chaves comprometidas continuaram ativas por meses;; 2 = etapa sem dono;; 1 = nenhuma;; 0 = nenhuma.
+- **EX048 — Lição sobre a propriedade.** Que falha passada motivou a tabela de responsabilidades? *Rubrica:* 3 = a revogação ficou entre equipes, e chaves comprometidas continuaram ativas por meses;; 2 = etapa sem dono;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1020,7 +1020,7 @@ Especificar demais a implementação pode bloquear projetos melhores; especifica
 
 - **EX061 — Reescrever uma meta.** Reescreva "as leituras devem ser seguras" como um requisito verificável. *Rubrica:* 3 = nomeia HMAC-SHA256, chave por medidor de 256 bits, rejeição quando a verificação falha;; 2 = mecanismo parcial;; 1 = vago;; 0 = nenhuma.
 
-- **EX062 — Normas de assinatura.** Que normas sustentam as opções de assinatura do firmware? *Rubrica:* 3 = FIPS 186-5 (ECDSA P-256) ou RFC 8032 (Ed25519);; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+- **EX062 — Normas de assinatura.** Que normas sustentam as opções de assinatura do firmware? *Rubrica:* 3 = FIPS 186-5 (ECDSA P-256) ou RFC 8032 (Ed25519);; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
 - **EX063 — Exemplo de garantia.** Dê dois requisitos de garantia. *Rubrica:* 3 = dois entre bibliotecas mantidas, HSMs validados, testes independentes de falsificação, cerimônias com testemunhas;; 2 = um;; 1 = item funcional;; 0 = nenhuma.
 
@@ -1264,9 +1264,9 @@ Notas escondem premissas; explique-as. A custódia em nuvem precisa de controles
 
 - **EX076 — Tamanho da assinatura.** Por que o projeto de chave pública não coube nas leituras? *Rubrica:* 3 = as assinaturas Ed25519 têm 64 bytes, excedendo o limite de 32 bytes;; 2 = tamanho;; 1 = velocidade;; 0 = nenhuma.
 
-- **EX077 — Restrição regulatória.** Que restrição regulatória afeta a escolha do serviço de chaves? *Rubrica:* 3 = as chaves do faturamento precisam permanecer sob o controle da companhia;; 2 = custódia;; 1 = nenhuma;; 0 = nenhuma.
+- **EX077 — Restrição regulatória.** Que restrição regulatória afeta a escolha do serviço de chaves? *Rubrica:* 3 = as chaves do faturamento precisam permanecer sob o controle da companhia;; 2 = custódia;; 1 = vago;; 0 = nenhuma.
 
-- **EX078 — Condição de reversão.** Dê uma condição que reverteria a decisão sobre as leituras. *Rubrica:* 3 = quadros de rádio maiores, tornando as assinaturas viáveis;; 2 = quadros maiores;; 1 = nenhuma;; 0 = nenhuma.
+- **EX078 — Condição de reversão.** Dê uma condição que reverteria a decisão sobre as leituras. *Rubrica:* 3 = quadros de rádio maiores, tornando as assinaturas viáveis;; 2 = quadros maiores;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1308,7 +1308,7 @@ Cerimônias falham se os roteiros forem ignorados sob pressão de tempo. Control
 
 - **EX080 — Propósito da cerimônia.** Qual é o propósito da cerimônia de chaves? *Rubrica:* 3 = produzir evidências de que nenhuma pessoa sozinha jamais teve a chave raiz;; 2 = evidências;; 1 = velocidade;; 0 = nenhuma.
 
-- **EX081 — Lacuna encontrada.** Que lacuna o mapa de riscos revelou, e como ela foi fechada? *Rubrica:* 3 = a deriva de relógio só tinha controle corretivo; acrescentou-se um controle detectivo que acompanha o desvio;; 2 = lacuna nomeada;; 1 = nenhuma;; 0 = nenhuma.
+- **EX081 — Lacuna encontrada.** Que lacuna o mapa de riscos revelou, e como ela foi fechada? *Rubrica:* 3 = a deriva de relógio só tinha controle corretivo; acrescentou-se um controle detectivo que acompanha o desvio;; 2 = lacuna nomeada;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -2064,11 +2064,11 @@ Estágios podem virar observação passiva; defina tarefas e revisões concretas
 
 ### Exercícios
 
-- **EX127 — Tarefas do estágio.** Cite duas tarefas que Aiyana realizou no estágio. *Rubrica:* 3 = duas entre triagem de alertas, ajuda na rotação, atualização de runbooks;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+- **EX127 — Tarefas do estágio.** Cite duas tarefas que Aiyana realizou no estágio. *Rubrica:* 3 = duas entre triagem de alertas, ajuda na rotação, atualização de runbooks;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
 - **EX128 — Lição do controle de mudanças.** Que evento mostrou o valor do controle de mudanças? *Rubrica:* 3 = uma mudança não revisada no gateway desativou as verificações de certificados de cliente em homologação, pega antes da produção;; 2 = evento;; 1 = nenhum;; 0 = nenhuma.
 
-- **EX129 — Lacuna de competência.** Que competências ela identificou para desenvolver? *Rubrica:* 3 = negociar requisitos de segurança com fornecedores e explicar riscos a gestores;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+- **EX129 — Lacuna de competência.** Que competências ela identificou para desenvolver? *Rubrica:* 3 = negociar requisitos de segurança com fornecedores e explicar riscos a gestores;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -2358,11 +2358,11 @@ Defender todas as decisões como perfeitas mina a credibilidade; reconheça os t
 
 ### Exercícios
 
-- **EX148 — Lição da defesa simulada.** Que fraqueza a defesa simulada expôs? *Rubrica:* 3 = premissas de custo não totalmente justificadas;; 2 = custos;; 1 = nenhuma;; 0 = nenhuma.
+- **EX148 — Lição da defesa simulada.** Que fraqueza a defesa simulada expôs? *Rubrica:* 3 = premissas de custo não totalmente justificadas;; 2 = custos;; 1 = vago;; 0 = nenhuma.
 
 - **EX149 — Mitigações do risco central.** Que mitigações ela citou para o risco central das chaves? *Rubrica:* 3 = HSMs, derivação por medidor, monitoramento, controle duplo;; 2 = três;; 1 = uma;; 0 = nenhuma.
 
-- **EX150 — Responsabilidade da engenheira.** Como Aiyana descreve sua responsabilidade contínua? *Rubrica:* 3 = deixar um sistema que outros consigam entender, operar, testar e mudar com segurança, com documentação e evidências;; 2 = parcial;; 1 = nenhuma;; 0 = nenhuma.
+- **EX150 — Responsabilidade da engenheira.** Como Aiyana descreve sua responsabilidade contínua? *Rubrica:* 3 = deixar um sistema que outros consigam entender, operar, testar e mudar com segurança, com documentação e evidências;; 2 = parcial;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 

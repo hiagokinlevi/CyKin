@@ -71,7 +71,7 @@ As taxas de base aqui são ilustrativas; as taxas reais precisam ser estimadas.
 ### Exercícios
 
 - **EX001 — Necessidade e base.** Como Elena reescreve a regra de compartilhamento? *Rubrica:* 3 = compartilhamento permitido só se for necessário e existir base legal;; 2 = menciona necessidade;; 1 = mantém a original;; 0 = nenhuma.
-- **EX002 — Premissa do aplicativo popular.** Que premissa oculta há em "o aplicativo é popular, então é seguro"? *Rubrica:* 3 = a popularidade implica tratamento cuidadoso dos dados;; 2 = cita uma premissa;; 1 = nenhuma;; 0 = nenhuma.
+- **EX002 — Premissa do aplicativo popular.** Que premissa oculta há em "o aplicativo é popular, então é seguro"? *Rubrica:* 3 = a popularidade implica tratamento cuidadoso dos dados;; 2 = cita uma premissa;; 1 = vago;; 0 = nenhuma.
 - **EX003 — Aplicativos marcados.** Aproximadamente que parcela dos aplicativos marcados é de fato ruim no exemplo de Elena? *Rubrica:* 3 = cerca de um em seis;; 2 = uma minoria;; 1 = a maioria;; 0 = nenhuma.
 
 ### Síntese
@@ -1314,7 +1314,7 @@ As marcações precisam ser exatas; alunos não marcados nas fotografias escapam
 ### Exercícios
 
 - **EX076 — Registro ausente.** Como é tratado um aluno sem registro de consentimento? *Rubrica:* 3 = como sem consentimento; a fotografia é retida;; 2 = como recusa;; 1 = como consentimento;; 0 = nenhuma.
-- **EX077 — Fotos retidas.** Quais fotografias exigem ação? *Rubrica:* 3 = a do dia esportivo (P02) e a do coral (P05, P08);; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+- **EX077 — Fotos retidas.** Quais fotografias exigem ação? *Rubrica:* 3 = a do dia esportivo (P02) e a do coral (P05, P08);; 2 = uma;; 1 = vago;; 0 = nenhuma.
 - **EX078 — Honestidade sobre a revogação.** O que os pais precisam saber sobre a revogação? *Rubrica:* 3 = ela interrompe o uso futuro, mas não recolhe as cópias impressas;; 2 = menciona limites;; 1 = tudo é removido;; 0 = nenhuma.
 
 ### Síntese
@@ -1622,7 +1622,7 @@ As contagens de temas dependem da codificação; um segundo codificador melhora 
 ### Exercícios
 
 - **EX097 — Principal motivador.** Segundo as evidências combinadas, o que leva à maior parte das adoções sem verificação? *Rubrica:* 3 = o desconhecimento do processo;; 2 = menciona conhecimento;; 1 = resistência;; 0 = nenhuma.
-- **EX098 — Revisão rápida.** Que revisão rápida Elena recomendou? *Rubrica:* 3 = revisão dos aplicativos solicitados em até cinco dias letivos;; 2 = menciona rapidez;; 1 = nenhuma;; 0 = nenhuma.
+- **EX098 — Revisão rápida.** Que revisão rápida Elena recomendou? *Rubrica:* 3 = revisão dos aplicativos solicitados em até cinco dias letivos;; 2 = menciona rapidez;; 1 = vago;; 0 = nenhuma.
 - **EX099 — Segunda entrevistadora.** Por que uma colega conduziu duas entrevistas? *Rubrica:* 3 = para verificar se o papel de Elena influenciava as respostas;; 2 = menciona viés;; 1 = sem motivo;; 0 = nenhuma.
 
 ### Síntese
@@ -1887,7 +1887,7 @@ Um período letivo é pouco; os efeitos podem mudar quando a novidade passar.
 
 - **EX115 — Critério não atendido.** Que critério não foi atendido? *Rubrica:* 3 = a ativação pelos pais: 83% contra 85%;; 2 = menciona ativação;; 1 = todos atendidos;; 0 = nenhuma.
 - **EX116 — Questão de equidade.** Por que a baixa ativação é uma questão de equidade? *Rubrica:* 3 = as famílias que não acessam o portal perdem informações oportunas;; 2 = menciona justiça;; 1 = só técnica;; 0 = nenhuma.
-- **EX117 — Nova necessidade.** Que nova necessidade a avaliação revelou? *Rubrica:* 3 = o compartilhamento seguro com profissionais externos;; 2 = menciona profissionais;; 1 = nenhuma;; 0 = nenhuma.
+- **EX117 — Nova necessidade.** Que nova necessidade a avaliação revelou? *Rubrica:* 3 = o compartilhamento seguro com profissionais externos;; 2 = menciona profissionais;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 

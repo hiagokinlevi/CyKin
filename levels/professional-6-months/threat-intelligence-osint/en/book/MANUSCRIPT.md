@@ -296,7 +296,7 @@ Scales reduce ambiguity, not error; track outcomes.
 ### Exercises
 
 - **EX016 — Grade a blog.** What grade would a new vendor blog's source receive and why? *Rubric:* 3 = C (or similar) until record known; 2 = grade; 1 = A; 0 = none.
-- **EX017 — Alternative.** Give an alternative explanation for a failed-login spike. *Rubric:* 3 = policy change/update lockouts; 2 = vague; 1 = none; 0 = none.
+- **EX017 — Alternative.** Give an alternative explanation for a failed-login spike. *Rubric:* 3 = policy change/update lockouts; 2 = vague; 1 = minimal attempt; 0 = none.
 - **EX018 — Likely band.** What range does "likely" cover on the scale? *Rubric:* 3 = 55–80%; 2 = close; 1 = wrong; 0 = none.
 - **EX019 — Two causes.** Why did Priya's note mention both causes? *Rubric:* 3 = evidence for both; avoid ignoring minority attack; 2 = partial; 1 = indecision; 0 = none.
 - **EX020 — Note lines.** What are the three lines of a note? *Rubric:* 3 = what, meaning with likelihood/confidence, action/owner; 2 = two; 1 = one; 0 = none.
@@ -394,7 +394,7 @@ Scores encode assumptions; review them.
 
 - **EX021 — Lab order.** Give the lab's ranking with actions. *Rubric:* 3 = Q3 8, Q1 7 analyse; Q4 5 check; Q5, Q2 4 log; 2 = order; 1 = partial; 0 = none.
 - **EX022 — Q4 handling.** How should Priya check the forum claim safely? *Rubric:* 3 = via FSSG/contracted provider, not visiting forum; 2 = partial; 1 = visit forum; 0 = none.
-- **EX023 — Missing context.** Give an example of context a score cannot know. *Rubric:* 3 = planned upgrade or similar; 2 = vague; 1 = none; 0 = none.
+- **EX023 — Missing context.** Give an example of context a score cannot know. *Rubric:* 3 = planned upgrade or similar; 2 = vague; 1 = minimal attempt; 0 = none.
 - **EX024 — Lookalike check.** Why ask marketing before blocking the new domain? *Rubric:* 3 = may be legitimate campaign site; 2 = partial; 1 = no need; 0 = none.
 - **EX025 — Weight change.** What should accompany any change to scoring weights? *Rubric:* 3 = documentation with reason, review; 2 = partial; 1 = nothing; 0 = none.
 
@@ -543,7 +543,7 @@ A control's absence of alerts does not prove it works; test it.
 - **EX031 — BEC controls.** Which controls best counter business email compromise? *Rubric:* 3 = verification call-backs, dual approval, awareness; 2 = two; 1 = firewall; 0 = none.
 - **EX032 — Process verification.** How can a process control be verified? *Rubric:* 3 = confirm call-backs happened for actual changes; 2 = partial; 1 = assume; 0 = none.
 - **EX033 — Partner domain.** Why check with operations before blocking a domain? *Rubric:* 3 = may be partner insurer; business disruption; 2 = partial; 1 = no need; 0 = none.
-- **EX034 — MFA verification.** How was the MFA pilot verified? *Rubric:* 3 = sign-in logs show second factor per login; 2 = partial; 1 = none; 0 = none.
+- **EX034 — MFA verification.** How was the MFA pilot verified? *Rubric:* 3 = sign-in logs show second factor per login; 2 = partial; 1 = vague; 0 = none.
 - **EX035 — Register.** Why keep a register of intelligence-driven changes? *Rubric:* 3 = traceability, review, evidence of value; 2 = partial; 1 = no reason; 0 = none.
 
 ### Synthesis
@@ -617,7 +617,7 @@ Missing logs at partners limit conclusions; state them.
 - **EX036 — Timeline order.** Order the case's events. *Rubric:* 3 = registration, email, payment, second request, call-back, confirmation; 2 = mostly; 1 = muddled; 0 = none.
 - **EX037 — Technique map.** Map the registration and email to ATT&CK. *Rubric:* 3 = T1583; T1566; 2 = one; 1 = wrong; 0 = none.
 - **EX038 — Diamond vertices.** Fill the Diamond vertices for the case. *Rubric:* 3 = all four correct; 2 = three; 1 = one; 0 = none.
-- **EX039 — Open question.** What remained uncertain, and how should it be resolved? *Rubric:* 3 = insurer mailbox compromise; ask insurer through channels; 2 = one; 1 = none; 0 = none.
+- **EX039 — Open question.** What remained uncertain, and how should it be resolved? *Rubric:* 3 = insurer mailbox compromise; ask insurer through channels; 2 = one; 1 = vague; 0 = none.
 - **EX040 — Recommendation.** What two recommendations followed? *Rubric:* 3 = mandatory call-back; lookalike monitoring for partners; 2 = one; 1 = vague; 0 = none.
 
 ### Synthesis
@@ -940,7 +940,7 @@ Portfolios show selected work; assessors may ask to see routine samples.
 
 - **EX056 — Portfolio list.** List six portfolio items. *Rubric:* 3 = six valid; 2 = four; 1 = two; 0 = none.
 - **EX057 — Sanitising rule.** How should FSSG material appear in the portfolio? *Rubric:* 3 = only GREEN summaries or not at all; no names; 2 = partial; 1 = full; 0 = none.
-- **EX058 — Remaining weakness.** Name two remaining weaknesses at BIB. *Rubric:* 3 = partner mailbox compromise; log retention; 2 = one; 1 = none; 0 = none.
+- **EX058 — Remaining weakness.** Name two remaining weaknesses at BIB. *Rubric:* 3 = partner mailbox compromise; log retention; 2 = one; 1 = vague; 0 = none.
 - **EX059 — Six-month plan.** Give three items for the next six months. *Rubric:* 3 = three valid; 2 = two; 1 = one; 0 = none.
 - **EX060 — Concrete wins.** Why record concrete wins? *Rubric:* 3 = show value, keep support/budget; 2 = partial; 1 = vanity; 0 = none.
 

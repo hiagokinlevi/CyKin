@@ -69,12 +69,12 @@ Uma réplica sintética não reproduz todas as peculiaridades de registros reais
 
 ### Exercícios
 
-- **EX001 — Pergunta de pesquisa.** Qual é a pergunta de doutorado de Nadia? *Rubrica:* 3 = como decisões de governança alteram estatísticas publicadas;; 2 = menciona decisões;; 1 = nenhuma;; 0 = nenhuma.
-- **EX002 — Direitos de decisão.** Como Khatri e Brown enquadram a governança? *Rubrica:* 3 = decidir quem detém direitos de decisão sobre os dados;; 2 = menciona direitos;; 1 = nenhuma;; 0 = nenhuma.
+- **EX001 — Pergunta de pesquisa.** Qual é a pergunta de doutorado de Nadia? *Rubrica:* 3 = como decisões de governança alteram estatísticas publicadas;; 2 = menciona decisões;; 1 = vago;; 0 = nenhuma.
+- **EX002 — Direitos de decisão.** Como Khatri e Brown enquadram a governança? *Rubrica:* 3 = decidir quem detém direitos de decisão sobre os dados;; 2 = menciona direitos;; 1 = vago;; 0 = nenhuma.
 - **EX003 — Regra da réplica.** Que dados Nadia pode analisar? *Rubrica:* 3 = uma réplica sintética a partir de distribuições publicadas;; 2 = correto;; 1 = dados reais;; 0 = nenhuma.
-- **EX004 — Rastreabilidade.** Como cada número deve ser rastreável? *Rubrica:* 3 = até uma execução de script sob controle de versão;; 2 = menciona scripts;; 1 = nenhuma;; 0 = nenhuma.
-- **EX005 — Pré-registro.** Por que pré-registrar hipóteses? *Rubrica:* 3 = para não remodelá-las depois dos resultados;; 2 = menciona viés;; 1 = nenhuma;; 0 = nenhuma.
-- **EX006 — Duas hipóteses.** Enuncie uma hipótese pré-registrada. *Rubrica:* 3 = direitos pouco claros causam limiares inconsistentes; limiares deslocam contagens;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+- **EX004 — Rastreabilidade.** Como cada número deve ser rastreável? *Rubrica:* 3 = até uma execução de script sob controle de versão;; 2 = menciona scripts;; 1 = vago;; 0 = nenhuma.
+- **EX005 — Pré-registro.** Por que pré-registrar hipóteses? *Rubrica:* 3 = para não remodelá-las depois dos resultados;; 2 = menciona viés;; 1 = vago;; 0 = nenhuma.
+- **EX006 — Duas hipóteses.** Enuncie uma hipótese pré-registrada. *Rubrica:* 3 = direitos pouco claros causam limiares inconsistentes; limiares deslocam contagens;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 - **EX007 — Modelo ISO.** Onde a ISO/IEC 38505-1 coloca a responsabilização? *Rubrica:* 3 = no órgão de governança;; 2 = correto;; 1 = gestores;; 0 = nenhuma.
 
 <a id="ch-02"></a>
@@ -144,11 +144,11 @@ Os índices das dimensões dependem das definições das regras; publique as reg
 
 - **EX008 — Além da acurácia.** O que Wang e Strong acrescentaram à acurácia? *Rubrica:* 3 = atualidade, relevância, acessibilidade, interpretabilidade;; 2 = duas;; 1 = uma;; 0 = nenhuma.
 - **EX009 — Completude.** Que índice de completude o laboratório informou? *Rubrica:* 3 = 0,798;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX010 — Causa do menor índice.** Por que a completude é a mais baixa? *Rubrica:* 3 = faltam códigos de setor ou códigos postais;; 2 = menciona ausência;; 1 = nenhuma;; 0 = nenhuma.
-- **EX011 — Causa da unicidade.** Por que a unicidade fica abaixo de um? *Rubrica:* 3 = números de registro duplicados;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX012 — Mudança de índice.** Por que a completude subiu sem que nenhum registro mudasse? *Rubrica:* 3 = mudou a regra para setores em branco;; 2 = menciona regra;; 1 = nenhuma;; 0 = nenhuma.
-- **EX013 — Papel da ISO 8000.** O que a ISO 8000-8 oferece? *Rubrica:* 3 = conceitos e pré-requisitos para medir a qualidade de dados;; 2 = menciona medição;; 1 = nenhuma;; 0 = nenhuma.
-- **EX014 — Lacuna de pesquisa.** Que lacuna Nadia aborda? *Rubrica:* 3 = como decisões sobre regras são tomadas e deslocam números publicados;; 2 = menciona decisões;; 1 = nenhuma;; 0 = nenhuma.
+- **EX010 — Causa do menor índice.** Por que a completude é a mais baixa? *Rubrica:* 3 = faltam códigos de setor ou códigos postais;; 2 = menciona ausência;; 1 = vago;; 0 = nenhuma.
+- **EX011 — Causa da unicidade.** Por que a unicidade fica abaixo de um? *Rubrica:* 3 = números de registro duplicados;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX012 — Mudança de índice.** Por que a completude subiu sem que nenhum registro mudasse? *Rubrica:* 3 = mudou a regra para setores em branco;; 2 = menciona regra;; 1 = vago;; 0 = nenhuma.
+- **EX013 — Papel da ISO 8000.** O que a ISO 8000-8 oferece? *Rubrica:* 3 = conceitos e pré-requisitos para medir a qualidade de dados;; 2 = menciona medição;; 1 = vago;; 0 = nenhuma.
+- **EX014 — Lacuna de pesquisa.** Que lacuna Nadia aborda? *Rubrica:* 3 = como decisões sobre regras são tomadas e deslocam números publicados;; 2 = menciona decisões;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-03"></a>
 
@@ -186,12 +186,12 @@ Projetos que prometem demais fracassam na validação; restrinja o escopo cedo.
 
 ### Exercícios
 
-- **EX015 — Três afirmações.** Enuncie uma das afirmações de Nadia. *Rubrica:* 3 = matriz de direitos de decisão; decisões mudam contagens; documentação reduz variação;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+- **EX015 — Três afirmações.** Enuncie uma das afirmações de Nadia. *Rubrica:* 3 = matriz de direitos de decisão; decisões mudam contagens; documentação reduz variação;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 - **EX016 — Precisão.** Defina precisão no pareamento. *Rubrica:* 3 = proporção de pares vinculados que são correspondências verdadeiras;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 - **EX017 — Revocação.** Defina revocação no pareamento. *Rubrica:* 3 = proporção de correspondências verdadeiras que foram vinculadas;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 - **EX018 — Codificação de decisões.** Como cada decisão de governança é codificada? *Rubrica:* 3 = quem tomou, se documentada, se revisada;; 2 = a maioria;; 1 = um item;; 0 = nenhuma.
 - **EX019 — Cláusula de revisão.** O que Westmark pode revisar antes da publicação? *Rubrica:* 3 = somente a exatidão factual;; 2 = correto;; 1 = conteúdo;; 0 = nenhuma.
-- **EX020 — Restrição.** Como o Prof. Eriksen restringiu o plano? *Rubrica:* 3 = comparação entre divulgações limitada a dois indicadores;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX020 — Restrição.** Como o Prof. Eriksen restringiu o plano? *Rubrica:* 3 = comparação entre divulgações limitada a dois indicadores;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-04"></a>
 
@@ -257,10 +257,10 @@ Supor independência entre os campos, como faz este piloto, pode distorcer os pe
 
 - **EX021 — Fórmula do peso.** O que a concordância em um campo soma ao peso? *Rubrica:* 3 = log de m sobre u;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 - **EX022 — Limiar 4.** Que precisão e revocação ocorrem no limiar 4? *Rubrica:* 3 = 0,953 e 0,920;; 2 = ambas;; 1 = uma;; 0 = nenhuma.
-- **EX023 — Limiar mais alto.** O que acontece quando o limiar sobe para 8? *Rubrica:* 3 = menos falsas correspondências, mais verdadeiras perdidas;; 2 = menciona o compromisso;; 1 = nenhuma;; 0 = nenhuma.
+- **EX023 — Limiar mais alto.** O que acontece quando o limiar sobe para 8? *Rubrica:* 3 = menos falsas correspondências, mais verdadeiras perdidas;; 2 = menciona o compromisso;; 1 = vago;; 0 = nenhuma.
 - **EX024 — Titular indefinido.** Quem é o titular do limiar em Westmark? *Rubrica:* 3 = não está claro; as equipes apontam uma para a outra;; 2 = menciona indefinição;; 1 = nomeia uma equipe;; 0 = nenhuma.
-- **EX025 — Estimativas defasadas.** O que mais nunca havia sido atualizado? *Rubrica:* 3 = as estimativas de m e u;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX026 — Atualização do diário.** O que Nadia fez antes de acrescentar a nova variável? *Rubrica:* 3 = atualizou o diário de pré-registro;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX025 — Estimativas defasadas.** O que mais nunca havia sido atualizado? *Rubrica:* 3 = as estimativas de m e u;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX026 — Atualização do diário.** O que Nadia fez antes de acrescentar a nova variável? *Rubrica:* 3 = atualizou o diário de pré-registro;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-05"></a>
 
@@ -300,10 +300,10 @@ As faixas plausíveis vêm de entrevistas; outras organizações podem usar faix
 
 - **EX027 — Três decisões.** Cite as três decisões variadas. *Rubrica:* 3 = limiar, reestimação de m e u, imputação de setor;; 2 = todas;; 1 = uma;; 0 = nenhuma.
 - **EX028 — Maior efeito.** Qual decisão teve o maior efeito? *Rubrica:* 3 = o limiar de pareamento;; 2 = correto;; 1 = outra;; 0 = nenhuma.
-- **EX029 — Limiar baixo.** O que acontece com as contagens em limiares baixos? *Rubrica:* 3 = vínculos falsos inflam as contagens;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX030 — Método de validação.** Por que a validação foi independente? *Rubrica:* 3 = outro pesquisador reimplementou a partir da descrição com nova semente;; 2 = menciona reimplementação;; 1 = nenhuma;; 0 = nenhuma.
-- **EX031 — Discrepância.** O que causou a discrepância na validação? *Rubrica:* 3 = tratamento não documentado de empates no limiar;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX032 — Atenção.** O que a atenção da governança seguiu em Westmark? *Rubrica:* 3 = a visibilidade, e não o impacto;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX029 — Limiar baixo.** O que acontece com as contagens em limiares baixos? *Rubrica:* 3 = vínculos falsos inflam as contagens;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX030 — Método de validação.** Por que a validação foi independente? *Rubrica:* 3 = outro pesquisador reimplementou a partir da descrição com nova semente;; 2 = menciona reimplementação;; 1 = vago;; 0 = nenhuma.
+- **EX031 — Discrepância.** O que causou a discrepância na validação? *Rubrica:* 3 = tratamento não documentado de empates no limiar;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX032 — Atenção.** O que a atenção da governança seguiu em Westmark? *Rubrica:* 3 = a visibilidade, e não o impacto;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-06"></a>
 
@@ -341,12 +341,12 @@ Análises de sensibilidade testam apenas as alternativas escolhidas; outras pode
 
 ### Exercícios
 
-- **EX033 — Crítica sobre nomes.** Que crítica dizia respeito aos nomes? *Rubrica:* 3 = a réplica pode subestimar a variação de nomes;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX034 — Mudança na sensibilidade.** Como Nadia testou a variação de nomes? *Rubrica:* 3 = reduziu o m dos nomes de 0,95 para 0,85;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX033 — Crítica sobre nomes.** Que crítica dizia respeito aos nomes? *Rubrica:* 3 = a réplica pode subestimar a variação de nomes;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX034 — Mudança na sensibilidade.** Como Nadia testou a variação de nomes? *Rubrica:* 3 = reduziu o m dos nomes de 0,95 para 0,85;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX035 — Resultado robusto.** O que permaneceu igual na análise de sensibilidade? *Rubrica:* 3 = a ordenação das decisões por efeito;; 2 = correto;; 1 = as magnitudes;; 0 = nenhuma.
 - **EX036 — Triangulação.** O que os documentos mostraram sobre revisões do limiar? *Rubrica:* 3 = nenhuma desde a escolha original; uma proposta nunca agendada;; 2 = ambos;; 1 = um;; 0 = nenhuma.
 - **EX037 — Redação estrutural.** Como Nadia reescreveu o texto sobre titularidade? *Rubrica:* 3 = uma lacuna estrutural, não falha pessoal;; 2 = correto;; 1 = culpa;; 0 = nenhuma.
-- **EX038 — Desenho de continuidade.** Que continuidade Nadia propôs? *Rubrica:* 3 = quatro divulgações documentadas contra uma série de comparação;; 2 = menciona comparação;; 1 = nenhuma;; 0 = nenhuma.
+- **EX038 — Desenho de continuidade.** Que continuidade Nadia propôs? *Rubrica:* 3 = quatro divulgações documentadas contra uma série de comparação;; 2 = menciona comparação;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-07"></a>
 
@@ -413,12 +413,12 @@ Uma lista de verificação simplifica os princípios FAIR; alguns itens exigem j
 
 ### Exercícios
 
-- **EX039 — Afirmação da tese.** Qual é a afirmação central da tese? *Rubrica:* 3 = decisões de governança moldam estatísticas; as mais influentes recebem menos atenção;; 2 = menciona atenção;; 1 = nenhuma;; 0 = nenhuma.
+- **EX039 — Afirmação da tese.** Qual é a afirmação central da tese? *Rubrica:* 3 = decisões de governança moldam estatísticas; as mais influentes recebem menos atenção;; 2 = menciona atenção;; 1 = vago;; 0 = nenhuma.
 - **EX040 — Letras FAIR.** O que significam as letras de FAIR? *Rubrica:* 3 = localizável, acessível, interoperável, reutilizável;; 2 = todas;; 1 = duas;; 0 = nenhuma.
 - **EX041 — Registro vinculado.** Que pontuação obteve o registro de emprego vinculado? *Rubrica:* 3 = 4 de 8;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 - **EX042 — Média.** Qual foi a pontuação média da lista? *Rubrica:* 3 = 0,53;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX043 — Conteúdo excluído.** O que Nadia exclui do arquivo? *Rubrica:* 3 = material confidencial de Westmark;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX044 — Teste do arquivo.** Como o Prof. Eriksen testou o arquivo? *Rubrica:* 3 = um aluno novo regenerou duas figuras;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX043 — Conteúdo excluído.** O que Nadia exclui do arquivo? *Rubrica:* 3 = material confidencial de Westmark;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX044 — Teste do arquivo.** Como o Prof. Eriksen testou o arquivo? *Rubrica:* 3 = um aluno novo regenerou duas figuras;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-08"></a>
 
@@ -456,12 +456,12 @@ Cronogramas de publicação atrasam; priorize o artigo que mais afeta a prática
 
 ### Exercícios
 
-- **EX045 — Pergunta sobre precisão.** Por que não simplesmente maximizar a precisão? *Rubrica:* 3 = a revocação cai e algumas regiões são subcontabilizadas;; 2 = menciona revocação;; 1 = nenhuma;; 0 = nenhuma.
+- **EX045 — Pergunta sobre precisão.** Por que não simplesmente maximizar a precisão? *Rubrica:* 3 = a revocação cai e algumas regiões são subcontabilizadas;; 2 = menciona revocação;; 1 = vago;; 0 = nenhuma.
 - **EX046 — Escolha de governança.** Que tipo de decisão é escolher o erro tolerável? *Rubrica:* 3 = uma decisão de governança;; 2 = correto;; 1 = técnica;; 0 = nenhuma.
-- **EX047 — Resultado da defesa.** Qual foi o resultado da defesa? *Rubrica:* 3 = aprovação com correções menores;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX047 — Resultado da defesa.** Qual foi o resultado da defesa? *Rubrica:* 3 = aprovação com correções menores;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX048 — Artigos.** Quantos artigos Nadia planeja? *Rubrica:* 3 = três;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX049 — Decisões do conselho.** Qual recomendação o conselho levou a piloto em vez de adotar? *Rubrica:* 3 = publicar estimativas de precisão e revocação;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX050 — Recomendações verificáveis.** Por que recomendações verificáveis são valiosas? *Rubrica:* 3 = a próxima divulgação mostra a adoção;; 2 = menciona verificação;; 1 = nenhuma;; 0 = nenhuma.
+- **EX049 — Decisões do conselho.** Qual recomendação o conselho levou a piloto em vez de adotar? *Rubrica:* 3 = publicar estimativas de precisão e revocação;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX050 — Recomendações verificáveis.** Por que recomendações verificáveis são valiosas? *Rubrica:* 3 = a próxima divulgação mostra a adoção;; 2 = menciona verificação;; 1 = vago;; 0 = nenhuma.
 
 <a id="worked-results"></a>
 

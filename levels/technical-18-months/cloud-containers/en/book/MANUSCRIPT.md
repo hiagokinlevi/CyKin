@@ -75,9 +75,9 @@ Service model labels are approximate; record actual responsibilities rather than
 ### Exercises
 
 - **EX001 — Incident summary.** Describe the March incident in one sentence. *Rubric:* 3 = manifests bucket made public for partner, about three days; 2 = partial; 1 = vague; 0 = none.
-- **EX002 — Service models.** Which NIST service model best fits Fairway's managed cluster, and why? *Rubric:* 3 = platform-like; provider runs control plane; 2 = partial; 1 = none; 0 = none.
-- **EX003 — Operator record.** Why record who operates each component? *Rubric:* 3 = shows where Fairway must configure security; 2 = partial; 1 = none; 0 = none.
-- **EX004 — Missing component.** What component did Grace add and why did it matter? *Rubric:* 3 = partner file transfer; its absence led to improvising; 2 = partial; 1 = none; 0 = none.
+- **EX002 — Service models.** Which NIST service model best fits Fairway's managed cluster, and why? *Rubric:* 3 = platform-like; provider runs control plane; 2 = partial; 1 = vague; 0 = none.
+- **EX003 — Operator record.** Why record who operates each component? *Rubric:* 3 = shows where Fairway must configure security; 2 = partial; 1 = vague; 0 = none.
+- **EX004 — Missing component.** What component did Grace add and why did it matter? *Rubric:* 3 = partner file transfer; its absence led to improvising; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -131,10 +131,10 @@ Assuming firewalls protect managed services leads to false confidence.
 
 ### Exercises
 
-- **EX005 — Encryption limit.** What does HTTPS not decide? *Rubric:* 3 = who may read the data; 2 = partial; 1 = none; 0 = none.
-- **EX006 — Bucket names.** Why do bucket names matter for exposure? *Rubric:* 3 = reachable by name over internet; 2 = partial; 1 = none; 0 = none.
-- **EX007 — Firewall gap.** Why did Fairway's firewall not prevent the downloads? *Rubric:* 3 = provider's public endpoint; policy is the gate; 2 = partial; 1 = none; 0 = none.
-- **EX008 — Private endpoint.** Which Fairway service already uses a private endpoint? *Rubric:* 3 = database; 2 = partial; 1 = none; 0 = none.
+- **EX005 — Encryption limit.** What does HTTPS not decide? *Rubric:* 3 = who may read the data; 2 = partial; 1 = vague; 0 = none.
+- **EX006 — Bucket names.** Why do bucket names matter for exposure? *Rubric:* 3 = reachable by name over internet; 2 = partial; 1 = vague; 0 = none.
+- **EX007 — Firewall gap.** Why did Fairway's firewall not prevent the downloads? *Rubric:* 3 = provider's public endpoint; policy is the gate; 2 = partial; 1 = vague; 0 = none.
+- **EX008 — Private endpoint.** Which Fairway service already uses a private endpoint? *Rubric:* 3 = database; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -194,9 +194,9 @@ Removing permissions can break workflows; agree changes with the people affected
 
 ### Exercises
 
-- **EX009 — Root permission.** Which permission let dev-sam make the bucket public? *Rubric:* 3 = change bucket policies; 2 = partial; 1 = none; 0 = none.
-- **EX010 — Developer need.** What do developers actually need on storage? *Rubric:* 3 = upload and read objects; 2 = partial; 1 = none; 0 = none.
-- **EX011 — CI scope.** How should CI deploy be limited? *Rubric:* 3 = site-assets bucket only; 2 = partial; 1 = none; 0 = none.
+- **EX009 — Root permission.** Which permission let dev-sam make the bucket public? *Rubric:* 3 = change bucket policies; 2 = partial; 1 = vague; 0 = none.
+- **EX010 — Developer need.** What do developers actually need on storage? *Rubric:* 3 = upload and read objects; 2 = partial; 1 = vague; 0 = none.
+- **EX011 — CI scope.** How should CI deploy be limited? *Rubric:* 3 = site-assets bucket only; 2 = partial; 1 = vague; 0 = none.
 - **EX012 — Roles.** Name Fairway's three roles. *Rubric:* 3 = developer, operator, auditor; 2 = two; 1 = one; 0 = none.
 
 ### Synthesis
@@ -257,10 +257,10 @@ Simple parsers may mis-read complex YAML; use them only on simple synthetic exam
 
 ### Exercises
 
-- **EX013 — Formats.** Which format do Kubernetes manifests usually use? *Rubric:* 3 = YAML; 2 = partial; 1 = none; 0 = none.
-- **EX014 — Library.** Why use only the standard library? *Rubric:* 3 = runs anywhere, no unreviewed packages; 2 = partial; 1 = none; 0 = none.
-- **EX015 — Secret output.** What should a secret check print? *Rubric:* 3 = key name and file, not value; 2 = partial; 1 = none; 0 = none.
-- **EX016 — Review request.** What did Grace ask Tomás to add? *Rubric:* 3 = count at top, comment on expected value; 2 = partial; 1 = none; 0 = none.
+- **EX013 — Formats.** Which format do Kubernetes manifests usually use? *Rubric:* 3 = YAML; 2 = partial; 1 = vague; 0 = none.
+- **EX014 — Library.** Why use only the standard library? *Rubric:* 3 = runs anywhere, no unreviewed packages; 2 = partial; 1 = vague; 0 = none.
+- **EX015 — Secret output.** What should a secret check print? *Rubric:* 3 = key name and file, not value; 2 = partial; 1 = vague; 0 = none.
+- **EX016 — Review request.** What did Grace ask Tomás to add? *Rubric:* 3 = count at top, comment on expected value; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -324,10 +324,10 @@ Working outside scope, even with good intentions, can break trust and rules.
 
 ### Exercises
 
-- **EX017 — Out of scope.** What was out of scope? *Rubric:* 3 = partner systems; 2 = partial; 1 = none; 0 = none.
-- **EX018 — Authorisation.** Who signed the scope? *Rubric:* 3 = Grace and IT manager; 2 = partial; 1 = none; 0 = none.
+- **EX017 — Out of scope.** What was out of scope? *Rubric:* 3 = partner systems; 2 = partial; 1 = vague; 0 = none.
+- **EX018 — Authorisation.** Who signed the scope? *Rubric:* 3 = Grace and IT manager; 2 = partial; 1 = vague; 0 = none.
 - **EX019 — Evidence note.** What did Tomás record with the export? *Rubric:* 3 = who, when, which account; 2 = two; 1 = one; 0 = none.
-- **EX020 — Fact versus judgement.** Why separate facts from conclusions? *Rubric:* 3 = others can check reasoning; 2 = partial; 1 = none; 0 = none.
+- **EX020 — Fact versus judgement.** Why separate facts from conclusions? *Rubric:* 3 = others can check reasoning; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -392,9 +392,9 @@ A model is a simplification; check it against real settings.
 ### Exercises
 
 - **EX021 — Sensitive data.** Which data is most sensitive? *Rubric:* 3 = backups, manifests, driver photos; 2 = two; 1 = one; 0 = none.
-- **EX022 — Public bucket.** Which bucket should be public? *Rubric:* 3 = assets only; 2 = partial; 1 = none; 0 = none.
+- **EX022 — Public bucket.** Which bucket should be public? *Rubric:* 3 = assets only; 2 = partial; 1 = vague; 0 = none.
 - **EX023 — Storage controls.** Which controls belong at the storage boundary? *Rubric:* 3 = public block, least privilege, encryption, logging; 2 = three; 1 = two; 0 = none.
-- **EX024 — Provider duty.** What does the provider secure? *Rubric:* 3 = storage infrastructure; 2 = partial; 1 = none; 0 = none.
+- **EX024 — Provider duty.** What does the provider secure? *Rubric:* 3 = storage infrastructure; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -480,10 +480,10 @@ Without data access logs, the reads would have been invisible; the absence of lo
 
 ### Exercises
 
-- **EX025 — Lab timeline.** Give the start and end of exposure. *Rubric:* 3 = 3 March 16:41 to 6 March 10:02; 2 = partial; 1 = none; 0 = none.
-- **EX026 — Anonymous reads.** How many anonymous reads occurred and who made them? *Rubric:* 3 = two; matched partner range; 2 = partial; 1 = none; 0 = none.
-- **EX027 — Log limit.** What can the logs not prove? *Rubric:* 3 = no other copies; 2 = partial; 1 = none; 0 = none.
-- **EX028 — Decision owner.** Who decided on notification? *Rubric:* 3 = data protection lead; 2 = partial; 1 = none; 0 = none.
+- **EX025 — Lab timeline.** Give the start and end of exposure. *Rubric:* 3 = 3 March 16:41 to 6 March 10:02; 2 = partial; 1 = vague; 0 = none.
+- **EX026 — Anonymous reads.** How many anonymous reads occurred and who made them? *Rubric:* 3 = two; matched partner range; 2 = partial; 1 = vague; 0 = none.
+- **EX027 — Log limit.** What can the logs not prove? *Rubric:* 3 = no other copies; 2 = partial; 1 = vague; 0 = none.
+- **EX028 — Decision owner.** Who decided on notification? *Rubric:* 3 = data protection lead; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -553,8 +553,8 @@ Fixing only one cause leaves the others to combine again.
 
 - **EX029 — Three conditions.** Which three conditions combined? *Rubric:* 3 = missing service, broad permission, no guardrail; 2 = two; 1 = one; 0 = none.
 - **EX030 — Cause groups.** Name the three cause groups. *Rubric:* 3 = process, access, technical; 2 = two; 1 = one; 0 = none.
-- **EX031 — Technical control.** Which technical control matches? *Rubric:* 3 = account-level public access block; 2 = partial; 1 = none; 0 = none.
-- **EX032 — Obscurity.** Why is a hard-to-guess link not enough? *Rubric:* 3 = obscurity is not access control; 2 = partial; 1 = none; 0 = none.
+- **EX031 — Technical control.** Which technical control matches? *Rubric:* 3 = account-level public access block; 2 = partial; 1 = vague; 0 = none.
+- **EX032 — Obscurity.** Why is a hard-to-guess link not enough? *Rubric:* 3 = obscurity is not access control; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -628,8 +628,8 @@ A benchmark is a starting point; adapt it to the system.
 
 - **EX033 — Methods.** Name three ways to check settings. *Rubric:* 3 = exports, provider tools, scanners; 2 = two; 1 = one; 0 = none.
 - **EX034 — Policy rules.** List the four storage rules. *Rubric:* 3 = block public, encrypt, version, log; 2 = three; 1 = two; 0 = none.
-- **EX035 — Exception.** Which exception applies? *Rubric:* 3 = assets bucket public read; 2 = partial; 1 = none; 0 = none.
-- **EX036 — Mapping value.** Why map rules to benchmarks? *Rubric:* 3 = explain to auditors; 2 = partial; 1 = none; 0 = none.
+- **EX035 — Exception.** Which exception applies? *Rubric:* 3 = assets bucket public read; 2 = partial; 1 = vague; 0 = none.
+- **EX036 — Mapping value.** Why map rules to benchmarks? *Rubric:* 3 = explain to auditors; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -705,10 +705,10 @@ Account-wide settings can break legitimate uses; plan exceptions before enabling
 
 ### Exercises
 
-- **EX037 — Account block.** Why move assets to another account? *Rubric:* 3 = so account-wide block can apply elsewhere; 2 = partial; 1 = none; 0 = none.
-- **EX038 — Versioning.** What does versioning allow? *Rubric:* 3 = restoring deleted or overwritten files; 2 = partial; 1 = none; 0 = none.
-- **EX039 — Change route.** How are changes made? *Rubric:* 3 = repository with review; 2 = partial; 1 = none; 0 = none.
-- **EX040 — Testing.** Where were changes tested first? *Rubric:* 3 = staging bucket; 2 = partial; 1 = none; 0 = none.
+- **EX037 — Account block.** Why move assets to another account? *Rubric:* 3 = so account-wide block can apply elsewhere; 2 = partial; 1 = vague; 0 = none.
+- **EX038 — Versioning.** What does versioning allow? *Rubric:* 3 = restoring deleted or overwritten files; 2 = partial; 1 = vague; 0 = none.
+- **EX039 — Change route.** How are changes made? *Rubric:* 3 = repository with review; 2 = partial; 1 = vague; 0 = none.
+- **EX040 — Testing.** Where were changes tested first? *Rubric:* 3 = staging bucket; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -806,10 +806,10 @@ Verification checks settings, not that data was never exposed.
 
 ### Exercises
 
-- **EX041 — Lab total.** How many differences, across how many buckets? *Rubric:* 3 = 6 across 4; 2 = partial; 1 = none; 0 = none.
-- **EX042 — Worst bucket.** Which bucket was fixed first and why? *Rubric:* 3 = driver-photos; personal data unencrypted; 2 = partial; 1 = none; 0 = none.
-- **EX043 — Approved exception.** Which difference is acceptable? *Rubric:* 3 = site-assets public access; 2 = partial; 1 = none; 0 = none.
-- **EX044 — Root cause.** Why was driver-photos misconfigured? *Rubric:* 3 = copied example; 2 = partial; 1 = none; 0 = none.
+- **EX041 — Lab total.** How many differences, across how many buckets? *Rubric:* 3 = 6 across 4; 2 = partial; 1 = vague; 0 = none.
+- **EX042 — Worst bucket.** Which bucket was fixed first and why? *Rubric:* 3 = driver-photos; personal data unencrypted; 2 = partial; 1 = vague; 0 = none.
+- **EX043 — Approved exception.** Which difference is acceptable? *Rubric:* 3 = site-assets public access; 2 = partial; 1 = vague; 0 = none.
+- **EX044 — Root cause.** Why was driver-photos misconfigured? *Rubric:* 3 = copied example; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -902,9 +902,9 @@ Name-based search misses secrets with unusual names; it is a first pass.
 ### Exercises
 
 - **EX045 — Lab hits.** Which keys were found? *Rubric:* 3 = DB_PASSWORD, API_TOKEN, CLOUD_SECRET_KEY; 2 = two; 1 = one; 0 = none.
-- **EX046 — Rotation.** Why rotate after moving? *Rubric:* 3 = values may have been copied; 2 = partial; 1 = none; 0 = none.
-- **EX047 — Search limit.** What can name-based search miss? *Rubric:* 3 = unusual names; 2 = partial; 1 = none; 0 = none.
-- **EX048 — Rotation plan.** How was the worker breakage managed? *Rubric:* 3 = quiet hour, developer present; 2 = partial; 1 = none; 0 = none.
+- **EX046 — Rotation.** Why rotate after moving? *Rubric:* 3 = values may have been copied; 2 = partial; 1 = vague; 0 = none.
+- **EX047 — Search limit.** What can name-based search miss? *Rubric:* 3 = unusual names; 2 = partial; 1 = vague; 0 = none.
+- **EX048 — Rotation plan.** How was the worker breakage managed? *Rubric:* 3 = quiet hour, developer present; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -980,10 +980,10 @@ Disabling a control to fix a symptom often reintroduces the original risk.
 
 ### Exercises
 
-- **EX049 — Brochure fix.** What fixed the brochure error? *Rubric:* 3 = moving it to assets account; 2 = partial; 1 = none; 0 = none.
-- **EX050 — CI need.** What did CI deploy need? *Rubric:* 3 = clear a cache path in site-assets; 2 = partial; 1 = none; 0 = none.
-- **EX051 — Rollback rule.** State the rollback rule. *Rubric:* 3 = reverse if no fix in an hour; 2 = partial; 1 = none; 0 = none.
-- **EX052 — Colleague suggestion.** Why not turn the block off for a day? *Rubric:* 3 = reintroduces the risk; 2 = partial; 1 = none; 0 = none.
+- **EX049 — Brochure fix.** What fixed the brochure error? *Rubric:* 3 = moving it to assets account; 2 = partial; 1 = vague; 0 = none.
+- **EX050 — CI need.** What did CI deploy need? *Rubric:* 3 = clear a cache path in site-assets; 2 = partial; 1 = vague; 0 = none.
+- **EX051 — Rollback rule.** State the rollback rule. *Rubric:* 3 = reverse if no fix in an hour; 2 = partial; 1 = vague; 0 = none.
+- **EX052 — Colleague suggestion.** Why not turn the block off for a day? *Rubric:* 3 = reintroduces the risk; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1059,10 +1059,10 @@ Automation catches known patterns; new services may need new checks.
 
 ### Exercises
 
-- **EX053 — Alert speed.** How fast did the drill alert arrive? *Rubric:* 3 = four minutes; 2 = partial; 1 = none; 0 = none.
-- **EX054 — Pipeline block.** What infrastructure changes are blocked? *Rubric:* 3 = public access, disabled encryption; 2 = partial; 1 = none; 0 = none.
-- **EX055 — Exclusion.** Why exclude the assets account? *Rubric:* 3 = avoid constant alerts; 2 = partial; 1 = none; 0 = none.
-- **EX056 — Owners.** Who owns the alert and scripts? *Rubric:* 3 = Grace; Tomás; 2 = partial; 1 = none; 0 = none.
+- **EX053 — Alert speed.** How fast did the drill alert arrive? *Rubric:* 3 = four minutes; 2 = partial; 1 = vague; 0 = none.
+- **EX054 — Pipeline block.** What infrastructure changes are blocked? *Rubric:* 3 = public access, disabled encryption; 2 = partial; 1 = vague; 0 = none.
+- **EX055 — Exclusion.** Why exclude the assets account? *Rubric:* 3 = avoid constant alerts; 2 = partial; 1 = vague; 0 = none.
+- **EX056 — Owners.** Who owns the alert and scripts? *Rubric:* 3 = Grace; Tomás; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1138,10 +1138,10 @@ Signed links can still be forwarded; keep expiry short.
 
 ### Exercises
 
-- **EX057 — Sharing method.** What sharing method replaced the public bucket? *Rubric:* 3 = signed links expiring in 24h; 2 = partial; 1 = none; 0 = none.
-- **EX058 — Partner duties.** What did the partner agree? *Rubric:* 3 = download promptly, delete after; 2 = partial; 1 = none; 0 = none.
-- **EX059 — Image source.** Where does Fairway build images from? *Rubric:* 3 = maintained base in own registry; 2 = partial; 1 = none; 0 = none.
-- **EX060 — Link risk.** What risk remains with signed links? *Rubric:* 3 = forwarding; 2 = partial; 1 = none; 0 = none.
+- **EX057 — Sharing method.** What sharing method replaced the public bucket? *Rubric:* 3 = signed links expiring in 24h; 2 = partial; 1 = vague; 0 = none.
+- **EX058 — Partner duties.** What did the partner agree? *Rubric:* 3 = download promptly, delete after; 2 = partial; 1 = vague; 0 = none.
+- **EX059 — Image source.** Where does Fairway build images from? *Rubric:* 3 = maintained base in own registry; 2 = partial; 1 = vague; 0 = none.
+- **EX060 — Link risk.** What risk remains with signed links? *Rubric:* 3 = forwarding; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1226,9 +1226,9 @@ Documents decay; give each a review date.
 ### Exercises
 
 - **EX061 — Runbook contents.** What does the alert runbook cover? *Rubric:* 3 = meaning, check, revert, tell; 2 = three; 1 = two; 0 = none.
-- **EX062 — Safety rule.** What must documents never include? *Rubric:* 3 = secret values, customer data; 2 = partial; 1 = none; 0 = none.
-- **EX063 — Test.** How is each runbook tested? *Rubric:* 3 = colleague follows it; 2 = partial; 1 = none; 0 = none.
-- **EX064 — Fix.** What did the stuck colleague's test lead to? *Rubric:* 3 = exact command and path added; 2 = partial; 1 = none; 0 = none.
+- **EX062 — Safety rule.** What must documents never include? *Rubric:* 3 = secret values, customer data; 2 = partial; 1 = vague; 0 = none.
+- **EX063 — Test.** How is each runbook tested? *Rubric:* 3 = colleague follows it; 2 = partial; 1 = vague; 0 = none.
+- **EX064 — Fix.** What did the stuck colleague's test lead to? *Rubric:* 3 = exact command and path added; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1322,9 +1322,9 @@ Not all drift is bad; decide whether to fix live or update the declaration.
 ### Exercises
 
 - **EX065 — Lab result.** Which settings drifted? *Rubric:* 3 = logging, endpoint, replicas; 2 = two; 1 = one; 0 = none.
-- **EX066 — Priority.** Which drift mattered most? *Rubric:* 3 = public endpoint; 2 = partial; 1 = none; 0 = none.
-- **EX067 — Replicas.** How was the replicas drift handled? *Rubric:* 3 = declaration updated; 2 = partial; 1 = none; 0 = none.
-- **EX068 — Endpoint cause.** Why had the endpoint been opened? *Rubric:* 3 = vendor support call; 2 = partial; 1 = none; 0 = none.
+- **EX066 — Priority.** Which drift mattered most? *Rubric:* 3 = public endpoint; 2 = partial; 1 = vague; 0 = none.
+- **EX067 — Replicas.** How was the replicas drift handled? *Rubric:* 3 = declaration updated; 2 = partial; 1 = vague; 0 = none.
+- **EX068 — Endpoint cause.** Why had the endpoint been opened? *Rubric:* 3 = vendor support call; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1410,8 +1410,8 @@ Projects judged only on tools miss process changes.
 
 - **EX069 — Pack contents.** What is in the guardrail pack? *Rubric:* 3 = policy, verification, alerts, drift, sharing, runbooks; 2 = four; 1 = two; 0 = none.
 - **EX070 — Results.** Give the measured results. *Rubric:* 3 = 6→1 differences, 3→0 drift, 4-minute alert; 2 = two; 1 = one; 0 = none.
-- **EX071 — New accounts.** What was added for new accounts? *Rubric:* 3 = block and alerts at setup; 2 = partial; 1 = none; 0 = none.
-- **EX072 — Lesson.** What did Tomás learn about the incident? *Rubric:* 3 = process gap as well as technical; 2 = partial; 1 = none; 0 = none.
+- **EX071 — New accounts.** What was added for new accounts? *Rubric:* 3 = block and alerts at setup; 2 = partial; 1 = vague; 0 = none.
+- **EX072 — Lesson.** What did Tomás learn about the incident? *Rubric:* 3 = process gap as well as technical; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 

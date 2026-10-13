@@ -364,7 +364,7 @@ ETSI EN 303 645 targets consumer IoT; for industrial-grade building controllers,
 ### Exercises
 
 - **EX021 — Why integrator passwords matter.** Explain the risk of one integrator password reused across many hospitals. *Rubric:* 3 = one leak or ex-employee opens every site; 2 = partial; 1 = vague; 0 = none.
-- **EX022 — Traceable changes.** How do named BMS accounts help after an unexpected setpoint change? *Rubric:* 3 = trend/audit log shows who changed it; supports investigation; 2 = partial; 1 = none; 0 = none.
+- **EX022 — Traceable changes.** How do named BMS accounts help after an unexpected setpoint change? *Rubric:* 3 = trend/audit log shows who changed it; supports investigation; 2 = partial; 1 = vague; 0 = none.
 - **EX023 — Contract questions.** Turn three ETSI EN 303 645 provisions into purchase-contract questions. *Rubric:* 3 = three accurate questions (defaults, disclosure, updates/encryption); 2 = two; 1 = one; 0 = none.
 - **EX024 — Contractor leaver.** A contractor engineer who knew Millbrook passwords leaves the firm. What happens? *Rubric:* 3 = change affected passwords in vault, review access, record; 2 = some; 1 = nothing; 0 = none.
 - **EX025 — Right standard.** Which standard fits an industrial BMS controller better than ETSI EN 303 645, and why? *Rubric:* 3 = IEC 62443-4-2; component requirements for industrial automation; 2 = name only; 1 = wrong; 0 = none.
@@ -660,7 +660,7 @@ Trend logs may sample infrequently and miss short changes; clocks must be synchr
 - **EX041 — Window logic.** Why is the 09:00 change not flagged? *Rubric:* 3 = 09:00 falls inside 08:00–10:00 window; 2 = "allowed"; 1 = wrong; 0 = none.
 - **EX042 — Modified trend.** If the window were 02:00–04:00, what would the lab print? *Rubric:* 3 = 03:00 "in window", 09:00 "OUTSIDE WINDOW - review"; 2 = one; 1 = same; 0 = none.
 - **EX043 — Three sources.** Which three logs does Aisha combine with the trend? *Rubric:* 3 = BMS audit, gateway, firewall; 2 = two; 1 = one; 0 = none.
-- **EX044 — Clinical impact.** What clinical impact could a theatre setpoint of 26 °C have overnight? *Rubric:* 3 = theatre unusable/out of specification at start of list, delay or infection-control concern; 2 = partial; 1 = none; 0 = none.
+- **EX044 — Clinical impact.** What clinical impact could a theatre setpoint of 26 °C have overnight? *Rubric:* 3 = theatre unusable/out of specification at start of list, delay or infection-control concern; 2 = partial; 1 = vague; 0 = none.
 - **EX045 — Process improvement.** What change prevents the next unexplained out-of-window change? *Rubric:* 3 = shift log entry required, alarm on out-of-window change; 2 = one; 1 = blame; 0 = none.
 
 ### Synthesis

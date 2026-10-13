@@ -205,7 +205,7 @@ Treating shared-ledger risk as each institution's private matter ignores harm th
 ### Exercises
 
 - **EX016 — Shared risk example.** Name one shared risk. *Rubric:* 3 = a contract defect affecting all balances;; 2 = compromised partner validator;; 1 = office fire at one branch;; 0 = none.
-- **EX017 — Collective control.** What shared control does Nadia propose? *Rubric:* 3 = joint incident procedures;; 2 = agreed pause criteria;; 1 = none;; 0 = none.
+- **EX017 — Collective control.** What shared control does Nadia propose? *Rubric:* 3 = joint incident procedures;; 2 = agreed pause criteria;; 1 = vague;; 0 = none.
 - **EX018 — Ledger data choice.** What appears on the ledger? *Rubric:* 3 = settlement amounts and pseudonymous institution references;; 2 = amounts only;; 1 = member names;; 0 = none.
 - **EX019 — Pause condition.** What must accompany any pause? *Rubric:* 3 = two institutions and a published explanation;; 2 = two approvals;; 1 = nothing;; 0 = none.
 - **EX020 — Speaking up.** How does Nadia raise the upgrade-key concern? *Rubric:* 3 = writes it into committee papers;; 2 = documents it;; 1 = stays silent;; 0 = none.
@@ -252,7 +252,7 @@ Choosing the first design proposed prevents comparison with better alternatives.
 
 - **EX021 — Hosting alternatives.** Name one validator hosting alternative. *Rubric:* 3 = each institution hosting its own;; 2 = vendor hosting;; 1 = no validators;; 0 = none.
 - **EX022 — Reversal trade-off.** Why reject on-ledger reversal? *Rubric:* 3 = settlement would never be truly final;; 2 = finality;; 1 = too slow;; 0 = none.
-- **EX023 — Upgrade timelock.** What timelock applies to upgrades? *Rubric:* 3 = 48 hours;; 2 = 48h;; 1 = none;; 0 = none.
+- **EX023 — Upgrade timelock.** What timelock applies to upgrades? *Rubric:* 3 = 48 hours;; 2 = 48h;; 1 = vague;; 0 = none.
 - **EX024 — Vendor role.** What role does the vendor accept? *Rubric:* 3 = advisory without keys;; 2 = advisory;; 1 = key holder;; 0 = none.
 - **EX025 — Validator total.** How many validators does the selected design have? *Rubric:* 3 = four, including an independent operator;; 2 = four;; 1 = three;; 0 = none.
 
@@ -334,7 +334,7 @@ Presenting detection without cost, or cost without detection, biases the decisio
 - **EX026 — Design B description.** What does design B add? *Rubric:* 3 = two reviewers from different institutions and a summary;; 2 = two reviewers;; 1 = nothing;; 0 = none.
 - **EX027 — Detection results.** How many errors do A and B catch? *Rubric:* 3 = A 1 of 4, B 4 of 4;; 2 = 1/4 and 4/4;; 1 = both 4;; 0 = none.
 - **EX028 — Median times.** What are the median sign-off times? *Rubric:* 3 = 6 and 11.5 minutes;; 2 = 6/11.5;; 1 = equal;; 0 = none.
-- **EX029 — Weekly cost.** What weekly cost does design B add? *Rubric:* 3 = about three hours of reviewer time;; 2 = three hours;; 1 = none;; 0 = none.
+- **EX029 — Weekly cost.** What weekly cost does design B add? *Rubric:* 3 = about three hours of reviewer time;; 2 = three hours;; 1 = vague;; 0 = none.
 - **EX030 — Cheaper variant.** What cheaper option is suggested for later testing? *Rubric:* 3 = one reviewer with the summary;; 2 = summary only;; 1 = no review;; 0 = none.
 
 ### Synthesis
@@ -426,7 +426,7 @@ Pausing reflexively on every ambiguous alert imposes costs that a working contro
 - **EX036 — Decision deadline.** Within what time must the team decide? *Rubric:* 3 = thirty minutes;; 2 = 30 minutes;; 1 = one day;; 0 = none.
 - **EX037 — Fault cause.** What caused the duplicate in the scenario? *Rubric:* 3 = a network fault causing retries;; 2 = retries;; 1 = theft;; 0 = none.
 - **EX038 — Pause decision.** Why does the team not pause? *Rubric:* 3 = the control worked and pausing would delay everything;; 2 = proportionality;; 1 = forgot;; 0 = none.
-- **EX039 — Contract improvement.** What contract improvement follows? *Rubric:* 3 = reject any transfer identifier already settled;; 2 = duplicate check;; 1 = none;; 0 = none.
+- **EX039 — Contract improvement.** What contract improvement follows? *Rubric:* 3 = reject any transfer identifier already settled;; 2 = duplicate check;; 1 = vague;; 0 = none.
 - **EX040 — Near-miss value.** Why are near misses valuable? *Rubric:* 3 = they reveal weaknesses without harm;; 2 = learning;; 1 = they are not;; 0 = none.
 
 ### Synthesis
@@ -471,7 +471,7 @@ Presenting an external review as a guarantee overstates what assurance provides.
 
 - **EX041 — Assurance areas.** Name one assurance area. *Rubric:* 3 = validator resilience;; 2 = key control;; 1 = marketing;; 0 = none.
 - **EX042 — Review scope exclusion.** What is excluded from the review scope? *Rubric:* 3 = partner networks;; 2 = networks;; 1 = contract code;; 0 = none.
-- **EX043 — Review findings.** What did the external review find? *Rubric:* 3 = two medium and one low;; 2 = three findings;; 1 = none;; 0 = none.
+- **EX043 — Review findings.** What did the external review find? *Rubric:* 3 = two medium and one low;; 2 = three findings;; 1 = vague;; 0 = none.
 - **EX044 — Reporting rhythm.** How often are boards briefed? *Rubric:* 3 = quarterly;; 2 = every quarter;; 1 = yearly;; 0 = none.
 - **EX045 — Report purpose.** What is assurance reporting ultimately for? *Rubric:* 3 = enabling governance;; 2 = oversight;; 1 = decoration;; 0 = none.
 
@@ -517,7 +517,7 @@ Reading unexploited as unexploitable leads to ignoring findings that still matte
 
 - **EX046 — Study finding.** What did Perez and Livshits find? *Rubric:* 3 = only a small fraction of reported weaknesses were exploited;; 2 = few exploited;; 1 = all exploited;; 0 = none.
 - **EX047 — Study strength.** What is the study's main strength? *Rubric:* 3 = large-scale on-chain data;; 2 = real data;; 1 = interviews;; 0 = none.
-- **EX048 — Study limitation.** Name one limitation Nadia notes. *Rubric:* 3 = hard to detect all exploitation from public data;; 2 = public chains only;; 1 = none;; 0 = none.
+- **EX048 — Study limitation.** Name one limitation Nadia notes. *Rubric:* 3 = hard to detect all exploitation from public data;; 2 = public chains only;; 1 = vague;; 0 = none.
 - **EX049 — Triage rule.** What does the triage rule require? *Rubric:* 3 = fix privileged-role and settlement findings before deployment;; 2 = fix critical ones;; 1 = ignore tools;; 0 = none.
 - **EX050 — Over-generalisation caution.** Why fix findings even if unexploited elsewhere? *Rubric:* 3 = unexploited does not mean unexploitable;; 2 = still possible;; 1 = tidiness;; 0 = none.
 
@@ -640,7 +640,7 @@ A review that reports only successes prevents the organisation from learning.
 
 - **EX056 — Average availability.** What was average availability over six months? *Rubric:* 3 = 99.7 percent;; 2 = 99.7%;; 1 = 90 percent;; 0 = none.
 - **EX057 — Underestimated assumption.** Which assumption was underestimated? *Rubric:* 3 = the training burden;; 2 = training;; 1 = costs;; 0 = none.
-- **EX058 — Extension condition.** Name one condition for extending the pilot. *Rubric:* 3 = a second external review;; 2 = minute-level monitoring;; 1 = none;; 0 = none.
+- **EX058 — Extension condition.** Name one condition for extending the pilot. *Rubric:* 3 = a second external review;; 2 = minute-level monitoring;; 1 = vague;; 0 = none.
 - **EX059 — Lesson example.** Name one transferable lesson. *Rubric:* 3 = distributed control of privileged functions;; 2 = embed in processes;; 1 = trust vendors;; 0 = none.
 - **EX060 — Hardest problems.** What did Nadia find hardest? *Rubric:* 3 = aligning partners;; 2 = governance;; 1 = coding;; 0 = none.
 

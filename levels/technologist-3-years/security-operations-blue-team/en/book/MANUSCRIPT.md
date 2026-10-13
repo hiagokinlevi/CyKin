@@ -177,7 +177,7 @@ Firewall logs show connections, not whether logons succeeded; check the server's
 
 - **EX004 — Port meaning.** What does a forwarded port 3389 mean? *Rubric:* 3 = remote desktop exposed to the internet; 2 = partial; 1 = vague; 0 = none.
 - **EX005 — Internal and external.** Why treat internal and external traffic differently? *Rubric:* 3 = internal usually staff; external could be anyone; 2 = partial; 1 = same; 0 = none.
-- **EX006 — Safer design.** What safer design replaces exposed remote desktop? *Rubric:* 3 = VPN first, no direct exposure; 2 = partial; 1 = none; 0 = none.
+- **EX006 — Safer design.** What safer design replaces exposed remote desktop? *Rubric:* 3 = VPN first, no direct exposure; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -362,8 +362,8 @@ Mapping to a common model can hide source-specific detail; keep the raw record.
 ### Exercises
 
 - **EX010 — Common model.** Why map all clients' fields to one model? *Rubric:* 3 = rules work across clients without handling variants; 2 = partial; 1 = style; 0 = none.
-- **EX011 — Raw retention.** Why keep the raw line? *Rubric:* 3 = recover if parsing wrong; nothing lost; 2 = partial; 1 = none; 0 = none.
-- **EX012 — Client field.** How did the client field help Mei? *Rubric:* 3 = separated two clients' support2 accounts at once; 2 = partial; 1 = none; 0 = none.
+- **EX011 — Raw retention.** Why keep the raw line? *Rubric:* 3 = recover if parsing wrong; nothing lost; 2 = partial; 1 = vague; 0 = none.
+- **EX012 — Client field.** How did the client field help Mei? *Rubric:* 3 = separated two clients' support2 accounts at once; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -517,9 +517,9 @@ Enabling more auditing adds volume; enable what rules and investigations need.
 
 ### Exercises
 
-- **EX016 — Event IDs.** What do event IDs 4720 and 4732 record? *Rubric:* 3 = account created; added to local group; 2 = one; 1 = none; 0 = none.
+- **EX016 — Event IDs.** What do event IDs 4720 and 4732 record? *Rubric:* 3 = account created; added to local group; 2 = one; 1 = vague; 0 = none.
 - **EX017 — Hypervisor access.** Why must virtualization host access be monitored? *Rubric:* 3 = controls all VMs: start, stop, snapshot; 2 = partial; 1 = vague; 0 = none.
-- **EX018 — Missing setting.** What was missing on clinic 2's server and how was it fixed? *Rubric:* 3 = process creation logging off; enabled and tested; 2 = partial; 1 = none; 0 = none.
+- **EX018 — Missing setting.** What was missing on clinic 2's server and how was it fixed? *Rubric:* 3 = process creation logging off; enabled and tested; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -595,8 +595,8 @@ Time-based rules break when business hours change; review them with the client.
 
 ### Exercises
 
-- **EX019 — Excess privilege.** What excess privilege helped the attacker? *Rubric:* 3 = reception account was local admin; 2 = partial; 1 = none; 0 = none.
-- **EX020 — Shared account problems.** Name two problems with shared accounts. *Rubric:* 3 = no individual accountability; weak known passwords; 2 = one; 1 = none; 0 = none.
+- **EX019 — Excess privilege.** What excess privilege helped the attacker? *Rubric:* 3 = reception account was local admin; 2 = partial; 1 = vague; 0 = none.
+- **EX020 — Shared account problems.** Name two problems with shared accounts. *Rubric:* 3 = no individual accountability; weak known passwords; 2 = one; 1 = vague; 0 = none.
 - **EX021 — Hours rule.** How was the out-of-hours rule adjusted, and why? *Rubric:* 3 = widened to 06:45 after early receptionist matches; 2 = partial; 1 = deleted; 0 = none.
 
 ### Synthesis
@@ -675,7 +675,7 @@ Small clients may resist changes that inconvenience staff; explain the risk plai
 
 - **EX022 — Firewall rule set.** What inbound traffic should the clinic firewall allow from the internet? *Rubric:* 3 = only VPN; nothing else; 2 = partial; 1 = remote desktop; 0 = none.
 - **EX023 — X-ray workstation.** How is the X-ray workstation monitored, and why? *Rubric:* 3 = firewall logs only; vendor forbids agents; 2 = partial; 1 = agent; 0 = none.
-- **EX024 — Clinic 3 finding.** What did the review find at clinic 3? *Rubric:* 3 = guest Wi-Fi shared reception network; separated; 2 = partial; 1 = none; 0 = none.
+- **EX024 — Clinic 3 finding.** What did the review find at clinic 3? *Rubric:* 3 = guest Wi-Fi shared reception network; separated; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -929,7 +929,7 @@ Client-provided criticality can be wrong; question it when alerts reveal surpris
 
 - **EX031 — Context value.** How did context change the meaning of the support2 alert? *Rubric:* 3 = patient-records server at closed clinic: urgent; 2 = partial; 1 = vague; 0 = none.
 - **EX032 — Inventory fields.** List four fields in a client asset inventory. *Rubric:* 3 = hosts, roles, OS, criticality, hours, contacts (four); 2 = three; 1 = one; 0 = none.
-- **EX033 — Unknown hosts.** What were the two unknown hosts, and what was done? *Rubric:* 3 = card terminal recorded; personal laptop → guest Wi-Fi advised; 2 = partial; 1 = none; 0 = none.
+- **EX033 — Unknown hosts.** What were the two unknown hosts, and what was done? *Rubric:* 3 = card terminal recorded; personal laptop → guest Wi-Fi advised; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1007,7 +1007,7 @@ Volume checks catch total loss but not partial loss of some event types.
 
 - **EX034 — Arrival times.** Give typical arrival delays for agent, firewall and cloud email logs. *Rubric:* 3 = ~1 min, ~5 min, up to 30 min; 2 = two; 1 = one; 0 = none.
 - **EX035 — Silent gaps.** Name three causes of silent data gaps. *Rubric:* 3 = collector power loss, expired certificate, firewall update resetting logging; 2 = two; 1 = one; 0 = none.
-- **EX036 — Onboarding fix.** What was wrong at the new client and how was it confirmed fixed? *Rubric:* 3 = syslog sent to old address; corrected; volume verified in SIEM; 2 = partial; 1 = none; 0 = none.
+- **EX036 — Onboarding fix.** What was wrong at the new client and how was it confirmed fixed? *Rubric:* 3 = syslog sent to old address; corrected; volume verified in SIEM; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1085,7 +1085,7 @@ Ratings are judgements; revisit them when the threat or client changes.
 
 - **EX037 — Scenario parts.** What parts make up a risk scenario? *Rubric:* 3 = who, route, asset, impact; 2 = three; 1 = one; 0 = none.
 - **EX038 — Five scenarios.** List the five healthcare scenarios. *Rubric:* 3 = ransomware remote access, email takeover fraud, lost laptop, insider misuse, supplier compromise; 2 = four; 1 = two; 0 = none.
-- **EX039 — Supplier gap.** How was the supplier-compromise gap addressed? *Rubric:* 3 = alert on contractor logons outside support windows; 2 = partial; 1 = none; 0 = none.
+- **EX039 — Supplier gap.** How was the supplier-compromise gap addressed? *Rubric:* 3 = alert on contractor logons outside support windows; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1352,7 +1352,7 @@ Sequence rules depend on all event types being logged; one missing step silences
 
 - **EX046 — Sequence steps.** What three steps does the rule join? *Rubric:* 3 = external logon, account creation, admin group add within 30 min; 2 = two; 1 = one; 0 = none.
 - **EX047 — Contractor exception.** How was the contractor's routine work handled? *Rubric:* 3 = exclude VPN addresses during support windows; alert outside; 2 = partial; 1 = exclude all; 0 = none.
-- **EX048 — Benefit estimate.** What did the replay show about timing? *Rubric:* 3 = fires 01:22, 12 min before spike; quick ack could isolate before 01:34; 2 = partial; 1 = none; 0 = none.
+- **EX048 — Benefit estimate.** What did the replay show about timing? *Rubric:* 3 = fires 01:22, 12 min before spike; quick ack could isolate before 01:34; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1429,7 +1429,7 @@ Vendor demonstrations show best cases; trial tools in your own environment.
 ### Exercises
 
 - **EX049 — Four tools.** Name the four main parts of Copperleaf's toolset. *Rubric:* 3 = SIEM, endpoint agents, case management, knowledge base; 2 = three; 1 = one; 0 = none.
-- **EX050 — Client separation.** Why must tools separate clients' data? *Rubric:* 3 = prevent leaking one client's data to another; know which client; 2 = partial; 1 = none; 0 = none.
+- **EX050 — Client separation.** Why must tools separate clients' data? *Rubric:* 3 = prevent leaking one client's data to another; know which client; 2 = partial; 1 = vague; 0 = none.
 - **EX051 — Trial outcome.** What did the agent trial show and decide? *Rubric:* 3 = 2 min faster triage, more memory on old PCs; servers and newer PCs only; 2 = partial; 1 = adopted everywhere; 0 = none.
 
 ### Synthesis
@@ -1508,7 +1508,7 @@ Advice that clients do not act on reduces no risk; follow up persistently.
 
 - **EX052 — BrightSmile controls.** List the four preventive controls recommended for BrightSmile. *Rubric:* 3 = VPN+MFA, remove reception admin, personal accounts, offline backups; 2 = three; 1 = one; 0 = none.
 - **EX053 — Verification.** How did Copperleaf verify the VPN change? *Rubric:* 3 = authorised external scan shows 3389 closed; test logon confirms MFA; 2 = partial; 1 = client word; 0 = none.
-- **EX054 — Cross-client check.** What did the cross-client check find and achieve? *Rubric:* 3 = 6 exposed; 5 moved to VPN in a month; 1 planned with allow-list; 2 = partial; 1 = none; 0 = none.
+- **EX054 — Cross-client check.** What did the cross-client check find and achieve? *Rubric:* 3 = 6 exposed; 5 moved to VPN in a month; 1 planned with allow-list; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1688,7 +1688,7 @@ Heartbeats show the agent is alive, not that every event type is being collected
 
 - **EX058 — Lab states.** Which hosts are missing or stale? *Rubric:* 3 = CLINIC2-SRV missing (95), CLINIC3-SRV stale (18); 2 = one; 1 = wrong; 0 = none.
 - **EX059 — Tampering check.** How do analysts tell failure from tampering? *Rubric:* 3 = look at events just before the gap: logon, service stop, reboot; 2 = partial; 1 = assume failure; 0 = none.
-- **EX060 — Root causes.** What caused the two problems? *Rubric:* 3 = failed agent start after update; brief internet outage; 2 = one; 1 = none; 0 = none.
+- **EX060 — Root causes.** What caused the two problems? *Rubric:* 3 = failed agent start after update; brief internet outage; 2 = one; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1766,7 +1766,7 @@ Integrations depend on details clients forget to update; verify them regularly.
 
 - **EX061 — Escalation profile.** Describe BrightSmile's escalation for high severity at night. *Rubric:* 3 = office manager by phone, then IT contractor; 2 = partial; 1 = email; 0 = none.
 - **EX062 — Message safety.** What must automated messages avoid? *Rubric:* 3 = sensitive data like patient names; details in portal; 2 = partial; 1 = nothing; 0 = none.
-- **EX063 — SMS failure.** Why did the SMS fail and what changed? *Rubric:* 3 = number changed; quarterly contact confirmation added; 2 = partial; 1 = none; 0 = none.
+- **EX063 — SMS failure.** Why did the SMS fail and what changed? *Rubric:* 3 = number changed; quarterly contact confirmation added; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1863,7 +1863,7 @@ Guard rails slow response in genuine large outbreaks; the page ensures a human d
 
 - **EX064 — Automation fit.** Which tasks suit automation and which do not? *Rubric:* 3 = repetitive well-understood steps vs judgement calls; 2 = partial; 1 = all; 0 = none.
 - **EX065 — Lab behaviour.** What did the guard do in the lab? *Rubric:* 3 = isolated 2 BrightSmile hosts, paged for third; Oakfield isolated separately; 2 = partial; 1 = wrong; 0 = none.
-- **EX066 — Monitor-mode finding.** What did monitor mode reveal and how was it fixed? *Rubric:* 3 = X-ray update renames would isolate; exclude signed vendor update process; 2 = partial; 1 = none; 0 = none.
+- **EX066 — Monitor-mode finding.** What did monitor mode reveal and how was it fixed? *Rubric:* 3 = X-ray update renames would isolate; exclude signed vendor update process; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2037,7 +2037,7 @@ Observational comparisons suggest; randomised comparisons test.
 
 - **EX070 — Comparable measure.** Why use reports per 100 staff per quarter? *Rubric:* 3 = clients differ in size; rate comparable; 2 = partial; 1 = simpler; 0 = none.
 - **EX071 — Confounding.** Why can the 4.1 vs 1.6 difference not be credited to briefings alone? *Rubric:* 3 = groups not random; joining date and type differ; 2 = partial; 1 = it can; 0 = none.
-- **EX072 — Fairer test.** What follow-up did Mei propose? *Rubric:* 3 = brief 6 unbriefed chosen by lot, compare with other 12; 2 = partial; 1 = none; 0 = none.
+- **EX072 — Fairer test.** What follow-up did Mei propose? *Rubric:* 3 = brief 6 unbriefed chosen by lot, compare with other 12; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2352,7 +2352,7 @@ Placements vary by host; tutors ensure learning goals are met.
 ### Exercises
 
 - **EX082 — Daily work.** List three daily tasks Mei performed. *Rubric:* 3 = triage, drafting advice, onboarding checks, noise review (three); 2 = two; 1 = one; 0 = none.
-- **EX083 — Week-three mistake.** What was Mei's mistake and her response? *Rubric:* 3 = closed without checking business hours; added to checklist; 2 = partial; 1 = none; 0 = none.
+- **EX083 — Week-three mistake.** What was Mei's mistake and her response? *Rubric:* 3 = closed without checking business hours; added to checklist; 2 = partial; 1 = vague; 0 = none.
 - **EX084 — Call lesson.** What did the defensive client teach Mei? *Rubric:* 3 = frame as routine check first; 2 = partial; 1 = nothing; 0 = none.
 
 ### Synthesis
@@ -2430,8 +2430,8 @@ Lab timings exclude real-world delays such as slow client links.
 ### Exercises
 
 - **EX085 — Package parts.** List the four parts of the package. *Rubric:* 3 = sequence rule, rename spike with isolation, heartbeat gaps, coverage report; 2 = three; 1 = one; 0 = none.
-- **EX086 — Requirements.** State two requirements of the package. *Rubric:* 3 = e.g. sequence within 5 min; isolate within 2 min; heartbeat page >15 min; ≤1 false page/month (two); 2 = one; 1 = none; 0 = none.
-- **EX087 — Heartbeat fix.** Why did the heartbeat test miss its target and what fixed it? *Rubric:* 3 = 5-min check interval; changed to 2 min; 13 min; 2 = partial; 1 = none; 0 = none.
+- **EX086 — Requirements.** State two requirements of the package. *Rubric:* 3 = e.g. sequence within 5 min; isolate within 2 min; heartbeat page >15 min; ≤1 false page/month (two); 2 = one; 1 = vague; 0 = none.
+- **EX087 — Heartbeat fix.** Why did the heartbeat test miss its target and what fixed it? *Rubric:* 3 = 5-min check interval; changed to 2 min; 13 min; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2512,7 +2512,7 @@ One month and twelve clients give an early picture; continue measuring.
 ### Exercises
 
 - **EX088 — Results summary.** Summarise the capstone results. *Rubric:* 3 = sequence 1–4 min; heartbeat 11–14 min; 0.4 false pages; rename lab only; 2 = partial; 1 = one; 0 = none.
-- **EX089 — Live event.** Describe the live event caught. *Rubric:* 3 = night admin account by phished contractor password; contained before files; 2 = partial; 1 = none; 0 = none.
+- **EX089 — Live event.** Describe the live event caught. *Rubric:* 3 = night admin account by phished contractor password; contained before files; 2 = partial; 1 = vague; 0 = none.
 - **EX090 — Lab-only test.** Why was rename isolation tested only in the lab? *Rubric:* 3 = live test could disrupt patient care; proportionate; stated limit; 2 = partial; 1 = forgot; 0 = none.
 
 ### Synthesis

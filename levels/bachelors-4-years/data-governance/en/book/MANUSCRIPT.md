@@ -70,8 +70,8 @@ Treating governance as a software purchase ignores decisions and responsibilitie
 ### Exercises
 
 - **EX001 — Course case.** Which organisation does the course follow? *Rubric:* 3 = Harbourline Co-operative;; 2 = correct;; 1 = other;; 0 = none.
-- **EX002 — Email problem.** What went wrong with a marketing email? *Rubric:* 3 = it went to members who asked not to be contacted;; 2 = correct;; 1 = none;; 0 = none.
-- **EX003 — Fourth goal.** What goal did the tutor add? *Rubric:* 3 = learn to judge evidence;; 2 = correct;; 1 = none;; 0 = none.
+- **EX002 — Email problem.** What went wrong with a marketing email? *Rubric:* 3 = it went to members who asked not to be contacted;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX003 — Fourth goal.** What goal did the tutor add? *Rubric:* 3 = learn to judge evidence;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-02"></a>
 
@@ -109,9 +109,9 @@ Assuming identical labels mean identical definitions causes disputes.
 
 ### Exercises
 
-- **EX004 — Knowledge example.** Give the course's example of knowledge. *Rubric:* 3 = milk sales rise before holidays, so order more;; 2 = correct;; 1 = none;; 0 = none.
-- **EX005 — Sales disagreement.** Why did sales reports disagree? *Rubric:* 3 = finance includes tax, stores exclude it;; 2 = correct;; 1 = none;; 0 = none.
-- **EX006 — Unstructured example.** Name one unstructured data example at Harbourline. *Rubric:* 3 = customer emails, contracts or photographs;; 2 = correct;; 1 = none;; 0 = none.
+- **EX004 — Knowledge example.** Give the course's example of knowledge. *Rubric:* 3 = milk sales rise before holidays, so order more;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX005 — Sales disagreement.** Why did sales reports disagree? *Rubric:* 3 = finance includes tax, stores exclude it;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX006 — Unstructured example.** Name one unstructured data example at Harbourline. *Rubric:* 3 = customer emails, contracts or photographs;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-03"></a>
 
@@ -150,8 +150,8 @@ Blaming the team that notices a problem ignores its source.
 ### Exercises
 
 - **EX007 — Systems touched.** How many systems use data from one sale? *Rubric:* 3 = five;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX008 — Generic codes.** Why do staff key generic product codes? *Rubric:* 3 = to keep queues moving when barcodes fail;; 2 = correct;; 1 = none;; 0 = none.
-- **EX009 — Shared resource.** What do governance rules balance? *Rubric:* 3 = local convenience against wider needs;; 2 = correct;; 1 = none;; 0 = none.
+- **EX008 — Generic codes.** Why do staff key generic product codes? *Rubric:* 3 = to keep queues moving when barcodes fail;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX009 — Shared resource.** What do governance rules balance? *Rubric:* 3 = local convenience against wider needs;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-04"></a>
 
@@ -189,8 +189,8 @@ Tidy totals do not prove correct formulas; reconcile with sources.
 
 ### Exercises
 
-- **EX010 — Missing store.** Why was the newest store excluded? *Rubric:* 3 = a formula range stopped one row short;; 2 = correct;; 1 = none;; 0 = none.
-- **EX011 — Check cell.** What does the check cell compare? *Rubric:* 3 = summary total with source report total;; 2 = correct;; 1 = none;; 0 = none.
+- **EX010 — Missing store.** Why was the newest store excluded? *Rubric:* 3 = a formula range stopped one row short;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX011 — Check cell.** What does the check cell compare? *Rubric:* 3 = summary total with source report total;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX012 — Moved process.** Which process moves out of spreadsheets? *Rubric:* 3 = the board sales summary;; 2 = correct;; 1 = other;; 0 = none.
 
 <a id="ch-05"></a>
@@ -229,9 +229,9 @@ Counting rows when the question asks for distinct people gives wrong answers.
 
 ### Exercises
 
-- **EX013 — Foreign key role.** What does the member number in purchases link to? *Rubric:* 3 = the member table;; 2 = correct;; 1 = none;; 0 = none.
-- **EX014 — Free-text problem.** What did free-text store names cause? *Rubric:* 3 = one store split into several in reports;; 2 = correct;; 1 = none;; 0 = none.
-- **EX015 — Normalisation trade-off.** What can normalisation make harder? *Rubric:* 3 = queries;; 2 = correct;; 1 = none;; 0 = none.
+- **EX013 — Foreign key role.** What does the member number in purchases link to? *Rubric:* 3 = the member table;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX014 — Free-text problem.** What did free-text store names cause? *Rubric:* 3 = one store split into several in reports;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX015 — Normalisation trade-off.** What can normalisation make harder? *Rubric:* 3 = queries;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-06"></a>
 
@@ -269,7 +269,7 @@ Reporting counts without totals hides the scale of problems.
 
 ### Exercises
 
-- **EX016 — Encoding issue.** What happened without specifying encoding? *Rubric:* 3 = accented names were garbled;; 2 = correct;; 1 = none;; 0 = none.
+- **EX016 — Encoding issue.** What happened without specifying encoding? *Rubric:* 3 = accented names were garbled;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX017 — Birth year rule.** What range did the birth year check use? *Rubric:* 3 = 1910 to 2010;; 2 = correct;; 1 = wrong;; 0 = none.
 - **EX018 — Report order.** What order should a report follow? *Rubric:* 3 = what was checked, how much failed, why it matters, what next;; 2 = correct;; 1 = partial;; 0 = none.
 
@@ -310,8 +310,8 @@ Hand-picked samples overstate problems; sample randomly.
 ### Exercises
 
 - **EX019 — Typical basket.** Which summary better describes a typical basket? *Rubric:* 3 = the median;; 2 = correct;; 1 = mean;; 0 = none.
-- **EX020 — Sample bias.** Why not pick suspicious-looking records? *Rubric:* 3 = they are not typical and overstate problems;; 2 = correct;; 1 = none;; 0 = none.
-- **EX021 — Loyalty claim.** Why might the loyalty spending claim be wrong? *Rubric:* 3 = regular shoppers may be more likely to join;; 2 = correct;; 1 = none;; 0 = none.
+- **EX020 — Sample bias.** Why not pick suspicious-looking records? *Rubric:* 3 = they are not typical and overstate problems;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX021 — Loyalty claim.** Why might the loyalty spending claim be wrong? *Rubric:* 3 = regular shoppers may be more likely to join;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-08"></a>
 
@@ -349,9 +349,9 @@ Truncated axes exaggerate differences; start bars at zero.
 
 ### Exercises
 
-- **EX022 — Main finding.** What was Amara's one-sentence finding? *Rubric:* 3 = about one in five records lacks an email;; 2 = correct;; 1 = none;; 0 = none.
+- **EX022 — Main finding.** What was Amara's one-sentence finding? *Rubric:* 3 = about one in five records lacks an email;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX023 — Chart fix.** How did Amara fix the chart? *Rubric:* 3 = started the axis at zero and added member counts;; 2 = correct;; 1 = partial;; 0 = none.
-- **EX024 — Jargon replacement.** What replaced completeness ratio? *Rubric:* 3 = share of records with an email address;; 2 = correct;; 1 = none;; 0 = none.
+- **EX024 — Jargon replacement.** What replaced completeness ratio? *Rubric:* 3 = share of records with an email address;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-09"></a>
 
@@ -390,8 +390,8 @@ Bundled consent is not freely given; separate it.
 ### Exercises
 
 - **EX025 — Marketing basis.** What lawful basis do marketing emails need here? *Rubric:* 3 = consent;; 2 = correct;; 1 = other;; 0 = none.
-- **EX026 — Rights problem.** What problem did Amara find with rights requests? *Rubric:* 3 = no central log, some unanswered;; 2 = correct;; 1 = none;; 0 = none.
-- **EX027 — Recall data.** Which data support food safety recalls? *Rubric:* 3 = supplier and batch data;; 2 = correct;; 1 = none;; 0 = none.
+- **EX026 — Rights problem.** What problem did Amara find with rights requests? *Rubric:* 3 = no central log, some unanswered;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX027 — Recall data.** Which data support food safety recalls? *Rubric:* 3 = supplier and batch data;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-10"></a>
 
@@ -429,8 +429,8 @@ Legal does not mean acceptable; ask whether uses are fair and expected.
 
 ### Exercises
 
-- **EX028 — Pregnancy alternative.** What replaced the pregnancy inference plan? *Rubric:* 3 = discounts for members choosing a family interest;; 2 = correct;; 1 = none;; 0 = none.
-- **EX029 — App discount fix.** How did Amara address the app-only discount? *Rubric:* 3 = printed vouchers at tills;; 2 = correct;; 1 = none;; 0 = none.
+- **EX028 — Pregnancy alternative.** What replaced the pregnancy inference plan? *Rubric:* 3 = discounts for members choosing a family interest;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX029 — App discount fix.** How did Amara address the app-only discount? *Rubric:* 3 = printed vouchers at tills;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX030 — Review timing.** When does ethical review work best? *Rubric:* 3 = early, before campaigns are designed;; 2 = correct;; 1 = late;; 0 = none.
 
 <a id="ch-11"></a>
@@ -471,7 +471,7 @@ Copying a full framework into a small organisation creates unused bureaucracy.
 
 - **EX031 — Tutor definition.** How does the tutor simplify governance? *Rubric:* 3 = deciding who decides what about data and ensuring decisions are followed;; 2 = correct;; 1 = partial;; 0 = none.
 - **EX032 — Five domains.** Name Khatri and Brown's five domains. *Rubric:* 3 = principles, quality, metadata, access, life cycle;; 2 = all;; 1 = some;; 0 = none.
-- **EX033 — Access practice.** How was access granted at Harbourline? *Rubric:* 3 = by IT on request without owner approval;; 2 = correct;; 1 = none;; 0 = none.
+- **EX033 — Access practice.** How was access granted at Harbourline? *Rubric:* 3 = by IT on request without owner approval;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-12"></a>
 
@@ -511,7 +511,7 @@ Naming stewards without allocating time makes the role disappear.
 
 - **EX034 — Loyalty owner.** Who owns loyalty data? *Rubric:* 3 = the marketing director;; 2 = correct;; 1 = other;; 0 = none.
 - **EX035 — Delegation limit.** What cannot be delegated to IT? *Rubric:* 3 = accountability;; 2 = correct;; 1 = tasks;; 0 = none.
-- **EX036 — Common failure.** What is the most common role failure? *Rubric:* 3 = naming stewards without giving them time;; 2 = correct;; 1 = none;; 0 = none.
+- **EX036 — Common failure.** What is the most common role failure? *Rubric:* 3 = naming stewards without giving them time;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-13"></a>
 
@@ -549,7 +549,7 @@ Long policies mixing levels go unread; separate and shorten.
 
 ### Exercises
 
-- **EX037 — Standard example.** Give the course's example of a standard. *Rubric:* 3 = every loyalty record has a valid store code;; 2 = correct;; 1 = none;; 0 = none.
+- **EX037 — Standard example.** Give the course's example of a standard. *Rubric:* 3 = every loyalty record has a valid store code;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX038 — Policy length.** How long was Amara's policy? *Rubric:* 3 = two pages;; 2 = correct;; 1 = wrong;; 0 = none.
 - **EX039 — Review flag.** When are documents flagged? *Rubric:* 3 = not reviewed for two years;; 2 = correct;; 1 = wrong;; 0 = none.
 
@@ -629,7 +629,7 @@ FAIR does not mean open; restricted data can still be findable.
 
 ### Exercises
 
-- **EX043 — Active member dispute.** How did marketing and finance define active member? *Rubric:* 3 = purchase in a year versus six months;; 2 = correct;; 1 = none;; 0 = none.
+- **EX043 — Active member dispute.** How did marketing and finance define active member? *Rubric:* 3 = purchase in a year versus six months;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX044 — Catalogue start.** What tool did Amara use first? *Rubric:* 3 = a simple shared table;; 2 = correct;; 1 = other;; 0 = none.
 - **EX045 — FAIR meaning.** What does FAIR stand for? *Rubric:* 3 = findable, accessible, interoperable, reusable;; 2 = all;; 1 = some;; 0 = none.
 
@@ -669,8 +669,8 @@ Automatic merges without review can combine different people.
 
 ### Exercises
 
-- **EX046 — Store list issues.** Name one store list difference. *Rubric:* 3 = closed store still active, new store missing or duplicate code;; 2 = one;; 1 = none;; 0 = none.
-- **EX047 — Merge safeguard.** What safeguard applies before merging? *Rubric:* 3 = steward review of possible matches;; 2 = correct;; 1 = none;; 0 = none.
+- **EX046 — Store list issues.** Name one store list difference. *Rubric:* 3 = closed store still active, new store missing or duplicate code;; 2 = one;; 1 = vague;; 0 = none.
+- **EX047 — Merge safeguard.** What safeguard applies before merging? *Rubric:* 3 = steward review of possible matches;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX048 — Survivorship email.** Which email survives? *Rubric:* 3 = the most recently confirmed;; 2 = correct;; 1 = other;; 0 = none.
 
 <a id="ch-17"></a>
@@ -710,7 +710,7 @@ Lakes without catalogues and owners become unusable.
 ### Exercises
 
 - **EX049 — Weak flows.** Where do data most often go missing? *Rubric:* 3 = manual exports;; 2 = correct;; 1 = other;; 0 = none.
-- **EX050 — Refund finding.** What did lineage reveal? *Rubric:* 3 = an undocumented exclusion of refunds;; 2 = correct;; 1 = none;; 0 = none.
+- **EX050 — Refund finding.** What did lineage reveal? *Rubric:* 3 = an undocumented exclusion of refunds;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX051 — Lake recommendation.** What should any lake have from day one? *Rubric:* 3 = catalogue entries, owners and retention rules;; 2 = all;; 1 = some;; 0 = none.
 
 <a id="ch-18"></a>
@@ -775,7 +775,7 @@ Field completeness overstates usable rows; report row completeness too.
 
 - **EX052 — Lowest field.** Which field is least complete? *Rubric:* 3 = birth year at 68.6%;; 2 = correct;; 1 = other;; 0 = none.
 - **EX053 — Complete rows.** How many records are complete on all fields? *Rubric:* 3 = 2,594;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX054 — Birth year action.** What was decided about birth year? *Rubric:* 3 = not chased for everyone, needed only for age offers;; 2 = correct;; 1 = none;; 0 = none.
+- **EX054 — Birth year action.** What was decided about birth year? *Rubric:* 3 = not chased for everyone, needed only for age offers;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-19"></a>
 
@@ -813,9 +813,9 @@ Rules that never change eventually reject valid data.
 
 ### Exercises
 
-- **EX055 — Rule LQ-03.** What does rule LQ-03 check? *Rubric:* 3 = emails contain one at sign and a domain;; 2 = correct;; 1 = none;; 0 = none.
+- **EX055 — Rule LQ-03.** What does rule LQ-03 check? *Rubric:* 3 = emails contain one at sign and a domain;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX056 — Month-long breach.** Who reviews issues below threshold for a month? *Rubric:* 3 = the governance group;; 2 = correct;; 1 = other;; 0 = none.
-- **EX057 — Postcode change.** Why did the postcode rule change? *Rubric:* 3 = a new region used a different format;; 2 = correct;; 1 = none;; 0 = none.
+- **EX057 — Postcode change.** Why did the postcode rule change? *Rubric:* 3 = a new region used a different format;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-20"></a>
 
@@ -853,8 +853,8 @@ Closing issues without verifying fixes lets problems return.
 
 ### Exercises
 
-- **EX058 — Points cause.** What caused missing loyalty points? *Rubric:* 3 = a till setting to keep card details offline was off;; 2 = correct;; 1 = none;; 0 = none.
-- **EX059 — Closing evidence.** What evidence closed the points issue? *Rubric:* 3 = offline purchases over two weeks received points;; 2 = correct;; 1 = none;; 0 = none.
+- **EX058 — Points cause.** What caused missing loyalty points? *Rubric:* 3 = a till setting to keep card details offline was off;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX059 — Closing evidence.** What evidence closed the points issue? *Rubric:* 3 = offline purchases over two weeks received points;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX060 — Log patterns.** What did the log show most issues related to? *Rubric:* 3 = store codes and member duplicates;; 2 = both;; 1 = one;; 0 = none.
 
 <a id="ch-21"></a>
@@ -916,8 +916,8 @@ Mapping bad codes downstream without fixing sources creates endless cleaning.
 ### Exercises
 
 - **EX061 — Invalid share.** What share of rows had invalid codes? *Rubric:* 3 = 4.5% (89 of 2,000);; 2 = correct;; 1 = partial;; 0 = none.
-- **EX062 — S41 cause.** Why did S41 appear? *Rubric:* 3 = a new store opened before being added to the list;; 2 = correct;; 1 = none;; 0 = none.
-- **EX063 — S00 cause.** What produced S00? *Rubric:* 3 = a test till left on the live network;; 2 = correct;; 1 = none;; 0 = none.
+- **EX062 — S41 cause.** Why did S41 appear? *Rubric:* 3 = a new store opened before being added to the list;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX063 — S00 cause.** What produced S00? *Rubric:* 3 = a test till left on the live network;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-22"></a>
 
@@ -955,7 +955,7 @@ Security teams deciding access without knowing data leads to poor choices.
 
 ### Exercises
 
-- **EX064 — Access finding.** What did Amara find about loyalty access? *Rubric:* 3 = all head office staff could see full details;; 2 = correct;; 1 = none;; 0 = none.
+- **EX064 — Access finding.** What did Amara find about loyalty access? *Rubric:* 3 = all head office staff could see full details;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX065 — Incident cause.** Why did the emailed spreadsheet incident happen? *Rubric:* 3 = no approved remote working route and easy extracts;; 2 = both;; 1 = one;; 0 = none.
 - **EX066 — Access review.** How often do owners review access lists? *Rubric:* 3 = quarterly;; 2 = correct;; 1 = wrong;; 0 = none.
 
@@ -996,8 +996,8 @@ Collecting data just in case increases risk without benefit.
 ### Exercises
 
 - **EX067 — Removed fields.** Which fields did Amara recommend removing? *Rubric:* 3 = gender and marital status;; 2 = both;; 1 = one;; 0 = none.
-- **EX068 — Bakery redesign.** How was the bakery proposal changed? *Rubric:* 3 = Harbourline sends offers itself to consenting members;; 2 = correct;; 1 = none;; 0 = none.
-- **EX069 — Forgotten database.** What did the inventory find? *Rubric:* 3 = an old survey database;; 2 = correct;; 1 = none;; 0 = none.
+- **EX068 — Bakery redesign.** How was the bakery proposal changed? *Rubric:* 3 = Harbourline sends offers itself to consenting members;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX069 — Forgotten database.** What did the inventory find? *Rubric:* 3 = an old survey database;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-24"></a>
 
@@ -1036,7 +1036,7 @@ Informal sharing arrangements drift beyond their original purpose.
 ### Exercises
 
 - **EX070 — Suppression rule.** What suppression rule did Amara suggest? *Rubric:* 3 = suppress cells with fewer than ten transactions;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX071 — Stale export.** What did monitoring find? *Rubric:* 3 = a supplier receiving a file five months after contract end;; 2 = correct;; 1 = none;; 0 = none.
+- **EX071 — Stale export.** What did monitoring find? *Rubric:* 3 = a supplier receiving a file five months after contract end;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX072 — Template terms.** Name three template terms. *Rubric:* 3 = purpose, fields, security, retention, breach notice, audit;; 2 = three;; 1 = one;; 0 = none.
 
 <a id="ch-25"></a>
@@ -1136,8 +1136,8 @@ Deleting without checking dependencies can remove records still legally required
 ### Exercises
 
 - **EX076 — Over-retained count.** How many records exceeded retention? *Rubric:* 3 = 2,521 (50.4%);; 2 = correct;; 1 = partial;; 0 = none.
-- **EX077 — Pre-deletion check.** What did Amara confirm with finance first? *Rubric:* 3 = no tax records exist only in loyalty;; 2 = correct;; 1 = none;; 0 = none.
-- **EX078 — Marketing effect.** What did marketing lose? *Rubric:* 3 = a win-back segment;; 2 = correct;; 1 = none;; 0 = none.
+- **EX077 — Pre-deletion check.** What did Amara confirm with finance first? *Rubric:* 3 = no tax records exist only in loyalty;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX078 — Marketing effect.** What did marketing lose? *Rubric:* 3 = a win-back segment;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-27"></a>
 
@@ -1176,8 +1176,8 @@ Uncertified self-service reports multiply conflicting figures.
 ### Exercises
 
 - **EX079 — Model weakness.** Where does the churn model perform worse? *Rubric:* 3 = rural stores;; 2 = correct;; 1 = other;; 0 = none.
-- **EX080 — Segment problem.** Why did the segment underrepresent older customers? *Rubric:* 3 = it used birth year, which is often missing;; 2 = correct;; 1 = none;; 0 = none.
-- **EX081 — Self-service basis.** What should self-service reports use? *Rubric:* 3 = certified data sets;; 2 = correct;; 1 = none;; 0 = none.
+- **EX080 — Segment problem.** Why did the segment underrepresent older customers? *Rubric:* 3 = it used birth year, which is often missing;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX081 — Self-service basis.** What should self-service reports use? *Rubric:* 3 = certified data sets;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-28"></a>
 
@@ -1217,7 +1217,7 @@ Quiz scores alone do not show changed behaviour; check data indicators.
 
 - **EX082 — Store priority.** What was the store staff priority? *Rubric:* 3 = entry quality;; 2 = correct;; 1 = other;; 0 = none.
 - **EX083 — Session length.** How long are the sessions? *Rubric:* 3 = about thirty minutes;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX084 — Fairer comparison.** What did the tutor suggest for fairer comparison? *Rubric:* 3 = staggering training across stores;; 2 = correct;; 1 = none;; 0 = none.
+- **EX084 — Fairer comparison.** What did the tutor suggest for fairer comparison? *Rubric:* 3 = staggering training across stores;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-29"></a>
 
@@ -1297,7 +1297,7 @@ Aiming for top maturity everywhere wastes resources in small organisations.
 
 - **EX088 — Quality rating.** What level did quality receive? *Rubric:* 3 = three;; 2 = correct;; 1 = wrong;; 0 = none.
 - **EX089 — Agreed targets.** What targets were agreed? *Rubric:* 3 = level three everywhere, four for quality, in two years;; 2 = correct;; 1 = partial;; 0 = none.
-- **EX090 — Bias reduction.** How can assessment bias be reduced? *Rubric:* 3 = include someone outside the data team;; 2 = correct;; 1 = none;; 0 = none.
+- **EX090 — Bias reduction.** How can assessment bias be reduced? *Rubric:* 3 = include someone outside the data team;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-31"></a>
 
@@ -1335,9 +1335,9 @@ Treating resistance as obstruction misses design problems it reveals.
 
 ### Exercises
 
-- **EX091 — Drop-down fix.** What fixed the drop-down complaints? *Rubric:* 3 = sorting by store name with codes alongside;; 2 = correct;; 1 = none;; 0 = none.
+- **EX091 — Drop-down fix.** What fixed the drop-down complaints? *Rubric:* 3 = sorting by store name with codes alongside;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX092 — Champion role.** What do data champions do? *Rubric:* 3 = answer questions locally and pass feedback to stewards;; 2 = correct;; 1 = partial;; 0 = none.
-- **EX093 — Champion suggestion.** What did the first champions meeting suggest? *Rubric:* 3 = a laminated guide to common codes for tills;; 2 = correct;; 1 = none;; 0 = none.
+- **EX093 — Champion suggestion.** What did the first champions meeting suggest? *Rubric:* 3 = a laminated guide to common codes for tills;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-32"></a>
 
@@ -1376,7 +1376,7 @@ Treating staff time as free underestimates governance costs.
 ### Exercises
 
 - **EX094 — Hidden cost.** What cost is often underestimated? *Rubric:* 3 = staff time;; 2 = correct;; 1 = other;; 0 = none.
-- **EX095 — Sensitivity purpose.** Why show sensitivity to assumptions? *Rubric:* 3 = readers see the case does not rely on optimism;; 2 = correct;; 1 = none;; 0 = none.
+- **EX095 — Sensitivity purpose.** Why show sensitivity to assumptions? *Rubric:* 3 = readers see the case does not rely on optimism;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX096 — Questioned item.** Which estimate did the finance director question? *Rubric:* 3 = breach risk;; 2 = correct;; 1 = other;; 0 = none.
 
 <a id="ch-33"></a>
@@ -1416,8 +1416,8 @@ Starting rules before the inventory leads to rework.
 ### Exercises
 
 - **EX097 — Amara's leads.** Which deliverables does Amara lead? *Rubric:* 3 = quality rules and retention;; 2 = both;; 1 = one;; 0 = none.
-- **EX098 — First deliverable.** Why must the inventory come first? *Rubric:* 3 = other deliverables depend on knowing what data exist;; 2 = correct;; 1 = none;; 0 = none.
-- **EX099 — Requirement risk response.** How will the group handle unclear requirements? *Rubric:* 3 = confirm requirements in writing after client meetings;; 2 = correct;; 1 = none;; 0 = none.
+- **EX098 — First deliverable.** Why must the inventory come first? *Rubric:* 3 = other deliverables depend on knowing what data exist;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX099 — Requirement risk response.** How will the group handle unclear requirements? *Rubric:* 3 = confirm requirements in writing after client meetings;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-34"></a>
 
@@ -1457,7 +1457,7 @@ Sections written separately drift apart; agree names first.
 
 - **EX100 — Field count.** How many fields did the inventory list? *Rubric:* 3 = twenty-two;; 2 = correct;; 1 = wrong;; 0 = none.
 - **EX101 — Payment tokens.** Who should hold payment tokens? *Rubric:* 3 = only the payment processor;; 2 = correct;; 1 = other;; 0 = none.
-- **EX102 — Next-time change.** What would Amara do differently? *Rubric:* 3 = start a glossary on day one;; 2 = correct;; 1 = none;; 0 = none.
+- **EX102 — Next-time change.** What would Amara do differently? *Rubric:* 3 = start a glossary on day one;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-35"></a>
 
@@ -1495,9 +1495,9 @@ Refusing or complying automatically with unusual requests both risk mistakes; as
 
 ### Exercises
 
-- **EX103 — Persuasion method.** How did Amara get the commercial director's attention? *Rubric:* 3 = a one-page summary linking errors to shelf prices and complaints;; 2 = correct;; 1 = none;; 0 = none.
-- **EX104 — Complaint list condition.** What condition applied to the complaint list? *Rubric:* 3 = contact only about the complaint itself;; 2 = correct;; 1 = none;; 0 = none.
-- **EX105 — Dissertation idea.** What dissertation idea emerged? *Rubric:* 3 = whether data champions improve entry quality;; 2 = correct;; 1 = none;; 0 = none.
+- **EX103 — Persuasion method.** How did Amara get the commercial director's attention? *Rubric:* 3 = a one-page summary linking errors to shelf prices and complaints;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX104 — Complaint list condition.** What condition applied to the complaint list? *Rubric:* 3 = contact only about the complaint itself;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX105 — Dissertation idea.** What dissertation idea emerged? *Rubric:* 3 = whether data champions improve entry quality;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-36"></a>
 
@@ -1536,7 +1536,7 @@ Before-and-after comparisons alone cannot separate effects from general trends.
 ### Exercises
 
 - **EX106 — Chosen design.** Which design did Amara choose? *Rubric:* 3 = difference-in-differences;; 2 = correct;; 1 = other;; 0 = none.
-- **EX107 — Selection threat.** What is the selection threat here? *Rubric:* 3 = volunteer stores may already be more careful;; 2 = correct;; 1 = none;; 0 = none.
+- **EX107 — Selection threat.** What is the selection threat here? *Rubric:* 3 = volunteer stores may already be more careful;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX108 — Real data needs.** What would real data require? *Rubric:* 3 = ethics approval and Harbourline permission;; 2 = both;; 1 = one;; 0 = none.
 
 <a id="ch-37"></a>
@@ -1575,9 +1575,9 @@ Planning analysis after seeing data invites biased choices.
 
 ### Exercises
 
-- **EX109 — Literature gap.** What gap did Amara find? *Rubric:* 3 = little research on data champion networks;; 2 = correct;; 1 = none;; 0 = none.
+- **EX109 — Literature gap.** What gap did Amara find? *Rubric:* 3 = little research on data champion networks;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX110 — Store design.** How many stores receive champions? *Rubric:* 3 = ten of twenty;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX111 — Pre-registration.** Why write the plan before generating data? *Rubric:* 3 = to avoid adjusting analysis toward a preferred result;; 2 = correct;; 1 = none;; 0 = none.
+- **EX111 — Pre-registration.** Why write the plan before generating data? *Rubric:* 3 = to avoid adjusting analysis toward a preferred result;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-38"></a>
 
@@ -1617,7 +1617,7 @@ Recovering a built-in effect shows the method works, not that the effect is real
 
 - **EX112 — Interval result.** Did the bootstrap interval include zero? *Rubric:* 3 = no;; 2 = correct;; 1 = yes;; 0 = none.
 - **EX113 — Faster-improving scenario.** What happens if champion stores were already improving faster? *Rubric:* 3 = the method overstates the effect;; 2 = correct;; 1 = understates;; 0 = none.
-- **EX114 — Recommendation.** What did Amara recommend to Harbourline? *Rubric:* 3 = introduce champions in stages for real evaluation;; 2 = correct;; 1 = none;; 0 = none.
+- **EX114 — Recommendation.** What did Amara recommend to Harbourline? *Rubric:* 3 = introduce champions in stages for real evaluation;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-39"></a>
 
@@ -1657,7 +1657,7 @@ Unchecked citations risk errors and misconduct; verify each one.
 
 - **EX115 — Writing order.** Which chapter did Amara write first? *Rubric:* 3 = method;; 2 = correct;; 1 = other;; 0 = none.
 - **EX116 — Reproducibility support.** How did Amara support reproducibility? *Rubric:* 3 = documented generation and commented code in an appendix;; 2 = correct;; 1 = partial;; 0 = none.
-- **EX117 — Citation identifiers.** What did she include for articles where available? *Rubric:* 3 = digital object identifiers;; 2 = correct;; 1 = none;; 0 = none.
+- **EX117 — Citation identifiers.** What did she include for articles where available? *Rubric:* 3 = digital object identifiers;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-40"></a>
 
@@ -1695,8 +1695,8 @@ Defensive answers to valid questions weaken a strong study.
 
 ### Exercises
 
-- **EX118 — Reporting bias answer.** How did Amara address reporting bias? *Rubric:* 3 = automated rules applied equally to all stores;; 2 = correct;; 1 = none;; 0 = none.
-- **EX119 — Examiner suggestion.** What did examiners suggest? *Rubric:* 3 = explore effects on different invalid entry types;; 2 = correct;; 1 = none;; 0 = none.
+- **EX118 — Reporting bias answer.** How did Amara address reporting bias? *Rubric:* 3 = automated rules applied equally to all stores;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX119 — Examiner suggestion.** What did examiners suggest? *Rubric:* 3 = explore effects on different invalid entry types;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX120 — Next role.** What role will Amara take? *Rubric:* 3 = steward in Harbourline's data team;; 2 = correct;; 1 = other;; 0 = none.
 
 <a id="worked-results"></a>

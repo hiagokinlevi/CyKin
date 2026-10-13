@@ -1364,7 +1364,7 @@ Signatures prove origin and integrity, not truth of the content. Shared team acc
 
 - **EX055 — Signature limit.** What does a valid signature on a feed prove, and what does it not? *Rubric:* 3 = origin/integrity; not accuracy of indicators; 2 = one half; 1 = proves truth; 0 = none.
 - **EX056 — RED access.** Who may read a TLP:RED report in Lantern? *Rubric:* 3 = only named recipients listed on the report; 2 = small team; 1 = all SOC; 0 = none.
-- **EX057 — Expiry alerts.** Propose an alert schedule for certificate expiry. *Rubric:* 3 = multiple lead times (e.g. 30/14/3 days) + owner; 2 = one alert; 1 = none; 0 = none.
+- **EX057 — Expiry alerts.** Propose an alert schedule for certificate expiry. *Rubric:* 3 = multiple lead times (e.g. 30/14/3 days) + owner; 2 = one alert; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1496,7 +1496,7 @@ Requirements that copy a vendor's product features are not stakeholder needs. To
 
 - **EX061 — Verifiable rewrite.** Rewrite "Lantern shall share quickly with partners" as a verifiable requirement. *Rubric:* 3 = metric, threshold, scope, percentage/time; 2 = metric only; 1 = unchanged; 0 = none.
 - **EX062 — PIR derivation.** Derive one system requirement from "Which adversaries target regional distributors?" *Rubric:* 3 = specific shall statement (e.g. tag/report actor targeting sector) with verification; 2 = vague; 1 = unrelated; 0 = none.
-- **EX063 — Privacy requirement.** Write a privacy requirement for Lantern's OSINT module. *Rubric:* 3 = verifiable prohibition/limit (no personal social profiles; organisational sources only) + test; 2 = statement without test; 1 = none; 0 = none.
+- **EX063 — Privacy requirement.** Write a privacy requirement for Lantern's OSINT module. *Rubric:* 3 = verifiable prohibition/limit (no personal social profiles; organisational sources only) + test; 2 = statement without test; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1759,7 +1759,7 @@ Studios reward clarity, not volume. A design without monitoring is incomplete.
 ### Exercises
 
 - **EX073 — ADR parts.** List the four sections of an ADR. *Rubric:* 3 = context, decision, alternatives, consequences; 2 = three; 1 = one; 0 = none.
-- **EX074 — Polling consequence.** State one consequence of 15-minute polling. *Rubric:* 3 = up to 15 min latency (plus load trade-off); 2 = latency vaguely; 1 = none; 0 = none.
+- **EX074 — Polling consequence.** State one consequence of 15-minute polling. *Rubric:* 3 = up to 15 min latency (plus load trade-off); 2 = latency vaguely; 1 = vague; 0 = none.
 - **EX075 — Header minimisation.** What fields replace full email headers in the revised design? *Rubric:* 3 = sender domain, subject hash, indicator fields; 2 = two; 1 = keep full headers; 0 = none.
 
 ### Synthesis
@@ -1919,7 +1919,7 @@ Labels describe sharing limits, not classification levels in a government sense.
 
 - **EX079 — Gate verdicts.** Quote the lab verdicts for R-1 and R-3. *Rubric:* 3 = R-1 BLOCK (GREEN to public), R-3 BLOCK (RED to team); 2 = one; 1 = allow; 0 = none.
 - **EX080 — Unknown label.** Why does R-5 block rather than allow? *Rubric:* 3 = unknown label → fail closed; 2 = unknown; 1 = should allow; 0 = none.
-- **EX081 — Approval record.** What must be stored with an approved OT firewall push? *Rubric:* 3 = approver, time, object/rule version, reason; 2 = two; 1 = none; 0 = none.
+- **EX081 — Approval record.** What must be stored with an approved OT firewall push? *Rubric:* 3 = approver, time, object/rule version, reason; 2 = two; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2202,7 +2202,7 @@ Redistributing licensed enrichment can breach contracts. Sightings can reveal a 
 
 - **EX091 — Provider field.** Why record the provider of each enrichment field? *Rubric:* 3 = enforce redistribution/retention terms at export; 2 = audit; 1 = no reason; 0 = none.
 - **EX092 — Sighting contents.** What does Lantern share in sighting objects, and what does it remove? *Rubric:* 3 = counts/time ranges/indicator ref; removes hostnames/users; 2 = one half; 1 = everything; 0 = none.
-- **EX093 — Compute on read.** Give one advantage of computing decayed confidence on read. *Rubric:* 3 = no mass nightly rewrites/single model function; 2 = vague efficiency; 1 = none; 0 = none.
+- **EX093 — Compute on read.** Give one advantage of computing decayed confidence on read. *Rubric:* 3 = no mass nightly rewrites/single model function; 2 = vague efficiency; 1 = minimal attempt; 0 = none.
 
 ### Synthesis
 
@@ -2357,7 +2357,7 @@ Interlocks can be bypassed under pressure; audit every override. Safety analysis
 
 ### Exercises
 
-- **EX097 — Physical harm.** Give one way an IT-style block could cause operational harm in a grid. *Rubric:* 3 = specific mechanism (cut SCADA visibility, block safety patch); 2 = vague; 1 = none; 0 = none.
+- **EX097 — Physical harm.** Give one way an IT-style block could cause operational harm in a grid. *Rubric:* 3 = specific mechanism (cut SCADA visibility, block safety patch); 2 = vague; 1 = minimal attempt; 0 = none.
 - **EX098 — Interlock list.** Name three interlocks Lantern applies to OT actions. *Rubric:* 3 = three of no auto OT/protected allow-list/max change size/two-person approval; 2 = two; 1 = one; 0 = none.
 - **EX099 — Source loss.** How does ATT&CK-mapped behavioural detection help when a feed disappears? *Rubric:* 3 = detects techniques independent of feed indicators; 2 = partial; 1 = no help; 0 = none.
 
@@ -2801,7 +2801,7 @@ Documentation that describes intentions rather than reality misleads. Pinning AT
 
 ### Exercises
 
-- **EX115 — Docs test.** How did Kofi test documentation quality? *Rubric:* 3 = new engineer adds synthetic partner using only docs; gaps fixed; 2 = review by peer; 1 = none; 0 = none.
+- **EX115 — Docs test.** How did Kofi test documentation quality? *Rubric:* 3 = new engineer adds synthetic partner using only docs; gaps fixed; 2 = review by peer; 1 = vague; 0 = none.
 - **EX116 — Debt entry.** Write a technical-debt register entry for a hard-coded polling interval. *Rubric:* 3 = description, cost/risk, target date; 2 = two parts; 1 = comment only; 0 = none.
 - **EX117 — ATT&CK version.** Why store the ATT&CK version with each mapping? *Rubric:* 3 = techniques change/deprecate; enables migration report; 2 = partial; 1 = unnecessary; 0 = none.
 
@@ -2942,8 +2942,8 @@ Local optimisations can move bottlenecks elsewhere; re-measure the whole path. S
 ### Exercises
 
 - **EX121 — Proxy trap.** Why can maximising objects ingested per day harm outcomes? *Rubric:* 3 = more noise/analyst overload/lower precision; 2 = partial; 1 = always good; 0 = none.
-- **EX122 — Quality check.** What quality check accompanied the approval-speed improvement? *Rubric:* 3 = spot check showed no rise in retractions; 2 = some check; 1 = none; 0 = none.
-- **EX123 — Deliberate delay.** Name one delay in Lantern that must not be optimised away. *Rubric:* 3 = OT two-person approval (or similar safety gate) with reason; 2 = name only; 1 = none; 0 = none.
+- **EX122 — Quality check.** What quality check accompanied the approval-speed improvement? *Rubric:* 3 = spot check showed no rise in retractions; 2 = some check; 1 = vague; 0 = none.
+- **EX123 — Deliberate delay.** Name one delay in Lantern that must not be optimised away. *Rubric:* 3 = OT two-person approval (or similar safety gate) with reason; 2 = name only; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3522,7 +3522,7 @@ Overclaiming is the most common thesis defect. Confidential material from placem
 
 - **EX145 — Contribution or context.** Is an explanation of TAXII 2.1 endpoints a contribution? Explain. *Rubric:* 3 = no; background context; 2 = no; 1 = yes; 0 = none.
 - **EX146 — Overclaim fix.** Rewrite "Lantern stops all phishing" honestly. *Rubric:* 3 = measured, scoped, hedged claim; 2 = hedged but unmeasured; 1 = unchanged; 0 = none.
-- **EX147 — Limitation effect.** State the likely effect of evaluating on one organisation's environment. *Rubric:* 3 = limits generalisability; results may differ elsewhere; 2 = vague; 1 = none; 0 = none.
+- **EX147 — Limitation effect.** State the likely effect of evaluating on one organisation's environment. *Rubric:* 3 = limits generalisability; results may differ elsewhere; 2 = vague; 1 = minimal attempt; 0 = none.
 
 ### Synthesis
 
@@ -3591,7 +3591,7 @@ Rehearsed answers that ignore the actual question frustrate examiners. Claiming 
 ### Exercises
 
 - **EX148 — Refusal list.** Name three things Kofi refused to build and why. *Rubric:* 3 = three of personal social collection, terms-violating scraping, home-address enrichment, unapproved OT automation, each with reason; 2 = two; 1 = one; 0 = none.
-- **EX149 — Poisoning gap.** What poisoning case does Kofi concede Lantern would miss? *Rubric:* 3 = legitimate small supplier not on allow-list; 2 = vague gap; 1 = none; 0 = none.
+- **EX149 — Poisoning gap.** What poisoning case does Kofi concede Lantern would miss? *Rubric:* 3 = legitimate small supplier not on allow-list; 2 = vague gap; 1 = minimal attempt; 0 = none.
 - **EX150 — Next course.** What is the next course after this book, and what must not be claimed about the draft? *Rubric:* 3 = course 134 RED engineering + no accreditation/finished-book claim; 2 = one; 1 = wrong; 0 = none.
 
 ### Synthesis

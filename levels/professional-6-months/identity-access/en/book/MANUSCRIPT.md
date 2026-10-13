@@ -253,7 +253,7 @@ Presenting drift as individual wrongdoing makes staff defensive and hides proces
 ### Exercises
 
 - **EX021 — Admin baseline.** What is the administrator baseline? *Rubric:* 3 = staff and client contacts;; 2 = two groups;; 1 = everything;; 0 = none.
-- **EX022 — Partner extra.** What extra group do partners have? *Rubric:* 3 = billing;; 2 = billing;; 1 = payroll;; 0 = none.
+- **EX022 — Partner extra.** What extra group do partners have? *Rubric:* 3 = billing;; 2 = billing, without explanation;; 1 = payroll;; 0 = none.
 - **EX023 — Drift meaning.** What is a group beyond baseline? *Rubric:* 3 = exception with reason or drift;; 2 = drift;; 1 = normal;; 0 = none.
 - **EX024 — Drift cause.** Name one cause of drift. *Rubric:* 3 = covering for absent colleagues;; 2 = role change;; 1 = attack;; 0 = none.
 - **EX025 — Naming approach.** How are individuals handled in the partner summary? *Rubric:* 3 = not named; names to managers only;; 2 = anonymous;; 1 = named;; 0 = none.
@@ -432,8 +432,8 @@ Granting access from verbal requests leaves no approver or reason to review.
 
 - **EX036 — Request fields.** Name two request form fields. *Rubric:* 3 = who and why;; 2 = duration, approval;; 1 = colour;; 0 = none.
 - **EX037 — Extra approval.** Which requests need the managing partner? *Rubric:* 3 = partner-level or payroll access;; 2 = payroll;; 1 = all;; 0 = none.
-- **EX038 — Narrowed change.** What change was narrowed? *Rubric:* 3 = guests from any domain to named domains;; 2 = guest domains;; 1 = none;; 0 = none.
-- **EX039 — Audit finding.** What did audit matching find? *Rubric:* 3 = two group additions without request;; 2 = two;; 1 = none;; 0 = none.
+- **EX038 — Narrowed change.** What change was narrowed? *Rubric:* 3 = guests from any domain to named domains;; 2 = guest domains;; 1 = vague;; 0 = none.
+- **EX039 — Audit finding.** What did audit matching find? *Rubric:* 3 = two group additions without request;; 2 = two;; 1 = vague;; 0 = none.
 - **EX040 — Urgent rule.** What rule covers urgent grants? *Rubric:* 3 = log a request the same day;; 2 = same day;; 1 = forbidden;; 0 = none.
 
 ### Synthesis
@@ -521,7 +521,7 @@ Recording guest expiry dates without enforcing them leaves expired guests active
 ### Exercises
 
 - **EX041 — Guest policy.** What must each guest have? *Rubric:* 3 = sponsor and expiry within six months;; 2 = sponsor;; 1 = nothing;; 0 = none.
-- **EX042 — client-b issue.** What was wrong with client-b? *Rubric:* 3 = expired but still enabled;; 2 = not enforced;; 1 = none;; 0 = none.
+- **EX042 — client-b issue.** What was wrong with client-b? *Rubric:* 3 = expired but still enabled;; 2 = not enforced;; 1 = vague;; 0 = none.
 - **EX043 — consult issue.** What was wrong with consult? *Rubric:* 3 = no sponsor and no expiry;; 2 = both;; 1 = inactive;; 0 = none.
 - **EX044 — Sponsor found.** Who became consult's sponsor? *Rubric:* 3 = the managing partner;; 2 = partner;; 1 = Daniel;; 0 = none.
 - **EX045 — Process fix.** What process fix was made? *Rubric:* 3 = automatic expiry with sponsor reminders;; 2 = enforcement;; 1 = nothing;; 0 = none.
@@ -614,7 +614,7 @@ Fixing repeated support cases one by one without changing controls keeps them re
 
 - **EX051 — Report length.** How long is the partner report? *Rubric:* 3 = two pages;; 2 = short;; 1 = twenty pages;; 0 = none.
 - **EX052 — Partner tablet cause.** Why could the partner not reach email? *Rubric:* 3 = old app without modern authentication;; 2 = old app;; 1 = password;; 0 = none.
-- **EX053 — Proactive fix.** What proactive step was taken? *Rubric:* 3 = updated the app for two other staff;; 2 = updated;; 1 = none;; 0 = none.
+- **EX053 — Proactive fix.** What proactive step was taken? *Rubric:* 3 = updated the app for two other staff;; 2 = updated;; 1 = vague;; 0 = none.
 - **EX054 — Common cause.** Name one common troubleshooting cause. *Rubric:* 3 = old apps;; 2 = phone changes;; 1 = weather;; 0 = none.
 - **EX055 — Control link.** Which improvement addresses phone changes? *Rubric:* 3 = a phone change guide;; 2 = guide;; 1 = nothing;; 0 = none.
 
@@ -659,8 +659,8 @@ A portfolio that lists activities without verification evidence does not show co
 ### Exercises
 
 - **EX056 — MFA result.** How did MFA coverage change? *Rubric:* 3 = 41 to 60 of 60;; 2 = full;; 1 = fell;; 0 = none.
-- **EX057 — Drift result.** What was the drift result? *Rubric:* 3 = three to one recorded exception;; 2 = reduced;; 1 = none;; 0 = none.
-- **EX058 — Remaining gap.** Name one remaining gap. *Rubric:* 3 = tax software separate accounts;; 2 = text fallback;; 1 = none;; 0 = none.
+- **EX057 — Drift result.** What was the drift result? *Rubric:* 3 = three to one recorded exception;; 2 = reduced;; 1 = vague;; 0 = none.
+- **EX058 — Remaining gap.** Name one remaining gap. *Rubric:* 3 = tax software separate accounts;; 2 = text fallback;; 1 = vague;; 0 = none.
 - **EX059 — Handover training.** What did Daniel show the office manager? *Rubric:* 3 = how to run both scripts;; 2 = scripts;; 1 = nothing;; 0 = none.
 - **EX060 — Real test.** What did Helen call the real test? *Rubric:* 3 = firm can continue without him;; 2 = continuity;; 1 = grades;; 0 = none.
 

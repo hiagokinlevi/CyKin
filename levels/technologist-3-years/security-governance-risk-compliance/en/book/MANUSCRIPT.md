@@ -65,9 +65,9 @@ Asset lists miss devices bought locally. Service maps simplify dependencies.
 
 ### Exercises
 
-- **EX001 — Blind spot.** Why were imaging devices missing from IT's list? *Rubric:* 3 = dentists bought them directly from suppliers;; 2 = local purchase;; 1 = none;; 0 = none.
-- **EX002 — Asset types.** Name the four asset types Priya used. *Rubric:* 3 = hardware, software, data and services;; 2 = four;; 1 = none;; 0 = none.
-- **EX003 — Treatment dependency.** Which systems does treatment depend on? *Rubric:* 3 = imaging and patient records;; 2 = imaging;; 1 = none;; 0 = none.
+- **EX001 — Blind spot.** Why were imaging devices missing from IT's list? *Rubric:* 3 = dentists bought them directly from suppliers;; 2 = local purchase;; 1 = vague;; 0 = none.
+- **EX002 — Asset types.** Name the four asset types Priya used. *Rubric:* 3 = hardware, software, data and services;; 2 = four;; 1 = vague;; 0 = none.
+- **EX003 — Treatment dependency.** Which systems does treatment depend on? *Rubric:* 3 = imaging and patient records;; 2 = imaging;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -110,8 +110,8 @@ Site surveys can miss changes. Encryption checks need technical confirmation.
 ### Exercises
 
 - **EX004 — Card terminal placement.** Where should card terminals sit? *Rubric:* 3 = on a separate network segment;; 2 = segment;; 1 = guest Wi-Fi;; 0 = none.
-- **EX005 — Unencrypted path.** Which data path was not always encrypted? *Rubric:* 3 = laboratory orders by ordinary email;; 2 = lab email;; 1 = none;; 0 = none.
-- **EX006 — Top network fix.** Which fix ranked first? *Rubric:* 3 = separating guest Wi-Fi from clinic devices;; 2 = guest Wi-Fi;; 1 = none;; 0 = none.
+- **EX005 — Unencrypted path.** Which data path was not always encrypted? *Rubric:* 3 = laboratory orders by ordinary email;; 2 = lab email;; 1 = vague;; 0 = none.
+- **EX006 — Top network fix.** Which fix ranked first? *Rubric:* 3 = separating guest Wi-Fi from clinic devices;; 2 = guest Wi-Fi;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -153,9 +153,9 @@ Scripts depend on accurate input. Old dates may be data errors.
 
 ### Exercises
 
-- **EX007 — Repeatability.** Why are scripts better than manual counting for repeated checks? *Rubric:* 3 = the same check runs the same way each time;; 2 = repeatable;; 1 = none;; 0 = none.
-- **EX008 — Filter conditions.** Which two conditions did Priya combine? *Rubric:* 3 = patient data without owner, or not updated for over a year;; 2 = sensitivity and age;; 1 = none;; 0 = none.
-- **EX009 — Output change.** How did Priya improve the output? *Rubric:* 3 = headings, date, explanations, sorted by clinic;; 2 = clarity;; 1 = none;; 0 = none.
+- **EX007 — Repeatability.** Why are scripts better than manual counting for repeated checks? *Rubric:* 3 = the same check runs the same way each time;; 2 = repeatable;; 1 = vague;; 0 = none.
+- **EX008 — Filter conditions.** Which two conditions did Priya combine? *Rubric:* 3 = patient data without owner, or not updated for over a year;; 2 = sensitivity and age;; 1 = vague;; 0 = none.
+- **EX009 — Output change.** How did Priya improve the output? *Rubric:* 3 = headings, date, explanations, sorted by clinic;; 2 = clarity;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -197,9 +197,9 @@ Models need maintenance. Codes can be mistyped too.
 
 ### Exercises
 
-- **EX010 — Key example.** Give one key used in Priya's tables. *Rubric:* 3 = clinic code, asset tag or staff number;; 2 = key;; 1 = none;; 0 = none.
-- **EX011 — Linking tables.** When are linking tables needed? *Rubric:* 3 = for many-to-many relationships;; 2 = many-to-many;; 1 = none;; 0 = none.
-- **EX012 — Clinic names.** What problem did inconsistent clinic names cause? *Rubric:* 3 = wrong counts per clinic;; 2 = miscounts;; 1 = none;; 0 = none.
+- **EX010 — Key example.** Give one key used in Priya's tables. *Rubric:* 3 = clinic code, asset tag or staff number;; 2 = key;; 1 = vague;; 0 = none.
+- **EX011 — Linking tables.** When are linking tables needed? *Rubric:* 3 = for many-to-many relationships;; 2 = many-to-many;; 1 = vague;; 0 = none.
+- **EX012 — Clinic names.** What problem did inconsistent clinic names cause? *Rubric:* 3 = wrong counts per clinic;; 2 = miscounts;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -241,8 +241,8 @@ Talks fade without reinforcement. Features need configuration.
 
 ### Exercises
 
-- **EX013 — Fraud control.** Which control addresses fake supplier invoices? *Rubric:* 3 = callback check for changed bank details;; 2 = callback;; 1 = none;; 0 = none.
-- **EX014 — Existing features.** What governance gap did Priya find with controls? *Rubric:* 3 = features available but not consistently switched on;; 2 = unused features;; 1 = none;; 0 = none.
+- **EX013 — Fraud control.** Which control addresses fake supplier invoices? *Rubric:* 3 = callback check for changed bank details;; 2 = callback;; 1 = vague;; 0 = none.
+- **EX014 — Existing features.** What governance gap did Priya find with controls? *Rubric:* 3 = features available but not consistently switched on;; 2 = unused features;; 1 = vague;; 0 = none.
 - **EX015 — Clinician argument.** Which argument works best with clinicians? *Rubric:* 3 = patient safety;; 2 = patients;; 1 = fear;; 0 = none.
 
 ### Synthesis
@@ -285,9 +285,9 @@ Reports may lag reality. Shared responsibility terms vary by provider.
 
 ### Exercises
 
-- **EX016 — Imaging exception.** How should imaging devices on old operating systems be treated? *Rubric:* 3 = network isolation recorded in the risk register;; 2 = isolation;; 1 = none;; 0 = none.
+- **EX016 — Imaging exception.** How should imaging devices on old operating systems be treated? *Rubric:* 3 = network isolation recorded in the risk register;; 2 = isolation;; 1 = vague;; 0 = none.
 - **EX017 — Provider duty.** Under shared responsibility, what does Riverton control? *Rubric:* 3 = user access and configuration;; 2 = access;; 1 = infrastructure;; 0 = none.
-- **EX018 — Screen lock fix.** What did Priya suggest instead of disabled screen locks? *Rubric:* 3 = longer timeout with quick unlock;; 2 = usable compromise;; 1 = none;; 0 = none.
+- **EX018 — Screen lock fix.** What did Priya suggest instead of disabled screen locks? *Rubric:* 3 = longer timeout with quick unlock;; 2 = usable compromise;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -329,9 +329,9 @@ End dates can cut off needed access. Badge systems cost money.
 
 ### Exercises
 
-- **EX019 — Temporary fix.** How are temporary accounts controlled? *Rubric:* 3 = created with an end date that disables them automatically;; 2 = expiry;; 1 = none;; 0 = none.
+- **EX019 — Temporary fix.** How are temporary accounts controlled? *Rubric:* 3 = created with an end date that disables them automatically;; 2 = expiry;; 1 = vague;; 0 = none.
 - **EX020 — Receptionist access.** What can receptionists not see? *Rubric:* 3 = clinical notes;; 2 = notes;; 1 = appointments;; 0 = none.
-- **EX021 — Shared account problem.** Why are shared reception accounts a problem? *Rubric:* 3 = impossible to know who did what;; 2 = accountability;; 1 = none;; 0 = none.
+- **EX021 — Shared account problem.** Why are shared reception accounts a problem? *Rubric:* 3 = impossible to know who did what;; 2 = accountability;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -373,9 +373,9 @@ Standards lag new devices. Compensating measures may be weaker.
 
 ### Exercises
 
-- **EX022 — Four segments.** Which four network segments does the standard define? *Rubric:* 3 = clinical devices, reception, card terminals, guest Wi-Fi;; 2 = four;; 1 = none;; 0 = none.
-- **EX023 — Standard benefit.** Why does a standard design help audits? *Rubric:* 3 = differences between clinics stand out;; 2 = consistency;; 1 = none;; 0 = none.
-- **EX024 — Deviation record.** What does each deviation record include? *Rubric:* 3 = difference, reason, risk, compensating measures and review date;; 2 = record;; 1 = none;; 0 = none.
+- **EX022 — Four segments.** Which four network segments does the standard define? *Rubric:* 3 = clinical devices, reception, card terminals, guest Wi-Fi;; 2 = four;; 1 = vague;; 0 = none.
+- **EX023 — Standard benefit.** Why does a standard design help audits? *Rubric:* 3 = differences between clinics stand out;; 2 = consistency;; 1 = vague;; 0 = none.
+- **EX024 — Deviation record.** What does each deviation record include? *Rubric:* 3 = difference, reason, risk, compensating measures and review date;; 2 = record;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -440,8 +440,8 @@ Fresh evidence can still be weak. Limits are judgement calls.
 
 ### Exercises
 
-- **EX025 — Shelf life.** Why does evidence have a shelf life? *Rubric:* 3 = old tests say little about current control operation;; 2 = freshness;; 1 = none;; 0 = none.
-- **EX026 — Stale count.** How many of six items were stale? *Rubric:* 3 = three;; 2 = 3;; 1 = none;; 0 = none.
+- **EX025 — Shelf life.** Why does evidence have a shelf life? *Rubric:* 3 = old tests say little about current control operation;; 2 = freshness;; 1 = vague;; 0 = none.
+- **EX026 — Stale count.** How many of six items were stale? *Rubric:* 3 = three;; 2 = 3;; 1 = vague;; 0 = none.
 - **EX027 — Most serious.** Which stale item was most serious and why? *Rubric:* 3 = the supplier SOC 2 report, as the provider holds all patient records;; 2 = supplier;; 1 = access review;; 0 = none.
 
 ### Synthesis
@@ -484,9 +484,9 @@ Legal obligations need professional advice. Roles change with growth.
 
 ### Exercises
 
-- **EX028 — Compliance meaning.** What does compliance mean for Riverton? *Rubric:* 3 = meeting obligations from law, card rules and contracts;; 2 = obligations;; 1 = none;; 0 = none.
-- **EX029 — Obligation source.** Why does the source of an obligation matter? *Rubric:* 3 = it determines priority and who is involved;; 2 = priority;; 1 = none;; 0 = none.
-- **EX030 — Undocumented role.** Whose responsibilities were not written down? *Rubric:* 3 = the external support provider's;; 2 = provider;; 1 = none;; 0 = none.
+- **EX028 — Compliance meaning.** What does compliance mean for Riverton? *Rubric:* 3 = meeting obligations from law, card rules and contracts;; 2 = obligations;; 1 = vague;; 0 = none.
+- **EX029 — Obligation source.** Why does the source of an obligation matter? *Rubric:* 3 = it determines priority and who is involved;; 2 = priority;; 1 = vague;; 0 = none.
+- **EX030 — Undocumented role.** Whose responsibilities were not written down? *Rubric:* 3 = the external support provider's;; 2 = provider;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -528,9 +528,9 @@ Criteria involve judgement. Classifications are misapplied.
 
 ### Exercises
 
-- **EX031 — Growth fact.** Which planned change affects Riverton's context? *Rubric:* 3 = three new clinics next year;; 2 = growth;; 1 = none;; 0 = none.
-- **EX032 — Classification levels.** What are the three classification levels? *Rubric:* 3 = public, internal, confidential;; 2 = three;; 1 = none;; 0 = none.
-- **EX033 — Major impact.** Give the example of a major impact. *Rubric:* 3 = clinics closed over a day or reportable breach affecting many patients;; 2 = major;; 1 = none;; 0 = none.
+- **EX031 — Growth fact.** Which planned change affects Riverton's context? *Rubric:* 3 = three new clinics next year;; 2 = growth;; 1 = vague;; 0 = none.
+- **EX032 — Classification levels.** What are the three classification levels? *Rubric:* 3 = public, internal, confidential;; 2 = three;; 1 = vague;; 0 = none.
+- **EX033 — Major impact.** Give the example of a major impact. *Rubric:* 3 = clinics closed over a day or reportable breach affecting many patients;; 2 = major;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -572,9 +572,9 @@ Maps miss informal flows such as phone photos. Contracts do not guarantee practi
 
 ### Exercises
 
-- **EX034 — Flow count.** How many data flows did Priya map? *Rubric:* 3 = eleven;; 2 = 11;; 1 = none;; 0 = none.
+- **EX034 — Flow count.** How many data flows did Priya map? *Rubric:* 3 = eleven;; 2 = 11;; 1 = vague;; 0 = none.
 - **EX035 — Missing agreements.** Which parties lacked written agreements? *Rubric:* 3 = two laboratories;; 2 = labs;; 1 = insurers;; 0 = none.
-- **EX036 — Booking form issue.** What was wrong with the booking site? *Rubric:* 3 = it collected medical history it did not need;; 2 = excess data;; 1 = none;; 0 = none.
+- **EX036 — Booking form issue.** What was wrong with the booking site? *Rubric:* 3 = it collected medical history it did not need;; 2 = excess data;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -616,9 +616,9 @@ Scenarios reflect imagination limits. Selection involves judgement.
 
 ### Exercises
 
-- **EX037 — Scenario structure.** What three parts does each scenario contain? *Rubric:* 3 = cause, event and consequences;; 2 = three;; 1 = none;; 0 = none.
+- **EX037 — Scenario structure.** What three parts does each scenario contain? *Rubric:* 3 = cause, event and consequences;; 2 = three;; 1 = vague;; 0 = none.
 - **EX038 — Causes use.** What do listed causes point to? *Rubric:* 3 = preventive controls;; 2 = prevention;; 1 = recovery;; 0 = none.
-- **EX039 — Short list.** Why focus on a short list of scenarios? *Rubric:* 3 = effort should go where it matters most;; 2 = focus;; 1 = none;; 0 = none.
+- **EX039 — Short list.** Why focus on a short list of scenarios? *Rubric:* 3 = effort should go where it matters most;; 2 = focus;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -681,8 +681,8 @@ Manager estimates are rough. Averages hide severe outcomes.
 ### Exercises
 
 - **EX040 — Highest scenario.** Which scenario has the highest expected annual loss? *Rubric:* 3 = ransomware at 27k;; 2 = ransomware;; 1 = records;; 0 = none.
-- **EX041 — Total loss.** What is the total expected annual loss? *Rubric:* 3 = 55k;; 2 = 55,000;; 1 = none;; 0 = none.
-- **EX042 — Frequent but small.** Which scenario happens most often but costs least per year? *Rubric:* 3 = misdirected records at 8k;; 2 = records;; 1 = none;; 0 = none.
+- **EX041 — Total loss.** What is the total expected annual loss? *Rubric:* 3 = 55k;; 2 = 55,000;; 1 = vague;; 0 = none.
+- **EX042 — Frequent but small.** Which scenario happens most often but costs least per year? *Rubric:* 3 = misdirected records at 8k;; 2 = records;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -724,9 +724,9 @@ Workshops reflect who attends. Dates slip.
 
 ### Exercises
 
-- **EX043 — Anchoring defence.** How did Priya avoid anchoring in the workshop? *Rubric:* 3 = each participant gave views before discussion;; 2 = independent views;; 1 = none;; 0 = none.
-- **EX044 — Ransomware treatment.** What treatments were proposed for ransomware? *Rubric:* 3 = network segmentation and offline backup testing;; 2 = two;; 1 = none;; 0 = none.
-- **EX045 — Commitment.** Why agree owners and dates in the room? *Rubric:* 3 = it increases commitment;; 2 = commitment;; 1 = none;; 0 = none.
+- **EX043 — Anchoring defence.** How did Priya avoid anchoring in the workshop? *Rubric:* 3 = each participant gave views before discussion;; 2 = independent views;; 1 = vague;; 0 = none.
+- **EX044 — Ransomware treatment.** What treatments were proposed for ransomware? *Rubric:* 3 = network segmentation and offline backup testing;; 2 = two;; 1 = vague;; 0 = none.
+- **EX045 — Commitment.** Why agree owners and dates in the room? *Rubric:* 3 = it increases commitment;; 2 = commitment;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -768,8 +768,8 @@ Residual estimates are uncertain. Insurance terms limit cover.
 
 ### Exercises
 
-- **EX046 — Avoidance example.** How can Riverton avoid the card skimming risk? *Rubric:* 3 = move card payment to a hosted page;; 2 = hosted page;; 1 = none;; 0 = none.
-- **EX047 — Residual purpose.** Why record residual next to original estimates? *Rubric:* 3 = to show what treatments achieve against appetite;; 2 = comparison;; 1 = none;; 0 = none.
+- **EX046 — Avoidance example.** How can Riverton avoid the card skimming risk? *Rubric:* 3 = move card payment to a hosted page;; 2 = hosted page;; 1 = vague;; 0 = none.
+- **EX047 — Residual purpose.** Why record residual next to original estimates? *Rubric:* 3 = to show what treatments achieve against appetite;; 2 = comparison;; 1 = vague;; 0 = none.
 - **EX048 — Accepted risk.** Which residual risk did the managing director accept? *Rubric:* 3 = lost laptops;; 2 = laptops;; 1 = ransomware;; 0 = none.
 
 ### Synthesis
@@ -848,9 +848,9 @@ Four clinics are a small pilot. Pass or fail loses detail.
 
 ### Exercises
 
-- **EX049 — Strongest clinic.** Which clinic passed all three controls? *Rubric:* 3 = South;; 2 = South;; 1 = East;; 0 = none.
-- **EX050 — Failure list.** List the four failures. *Rubric:* 3 = North access, East screenlock, East access, West backup;; 2 = four;; 1 = none;; 0 = none.
-- **EX051 — Pattern cause.** Why did access review fail in two clinics? *Rubric:* 3 = managers received account lists late;; 2 = process;; 1 = none;; 0 = none.
+- **EX049 — Strongest clinic.** Which clinic passed all three controls? *Rubric:* 3 = South;; 2 = South, without explanation;; 1 = East;; 0 = none.
+- **EX050 — Failure list.** List the four failures. *Rubric:* 3 = North access, East screenlock, East access, West backup;; 2 = four;; 1 = vague;; 0 = none.
+- **EX051 — Pattern cause.** Why did access review fail in two clinics? *Rubric:* 3 = managers received account lists late;; 2 = process;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -892,9 +892,9 @@ Registers age. Mappings can overstate coverage.
 
 ### Exercises
 
-- **EX052 — Backup control.** How does the monthly backup test operate? *Rubric:* 3 = IT lead restores five sample files and records the result;; 2 = restore test;; 1 = none;; 0 = none.
-- **EX053 — Multi-obligation.** Why does a control supporting several obligations matter more? *Rubric:* 3 = its failure affects several obligations;; 2 = importance;; 1 = none;; 0 = none.
-- **EX054 — Not applicable.** Why are secure development controls not applicable? *Rubric:* 3 = Riverton develops no software;; 2 = no development;; 1 = none;; 0 = none.
+- **EX052 — Backup control.** How does the monthly backup test operate? *Rubric:* 3 = IT lead restores five sample files and records the result;; 2 = restore test;; 1 = vague;; 0 = none.
+- **EX053 — Multi-obligation.** Why does a control supporting several obligations matter more? *Rubric:* 3 = its failure affects several obligations;; 2 = importance;; 1 = vague;; 0 = none.
+- **EX054 — Not applicable.** Why are secure development controls not applicable? *Rubric:* 3 = Riverton develops no software;; 2 = no development;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -957,9 +957,9 @@ Thresholds are judgement calls. Indicators can be gamed.
 
 ### Exercises
 
-- **EX055 — Threshold.** What threshold applies to unpatched critical vulnerabilities? *Rubric:* 3 = ten;; 2 = 10;; 1 = none;; 0 = none.
-- **EX056 — Breach months.** Which months breached the threshold? *Rubric:* 3 = June and July;; 2 = two;; 1 = none;; 0 = none.
-- **EX057 — Escalation rule.** What escalation rule did Priya recommend? *Rubric:* 3 = two consecutive breaches go to the operations manager;; 2 = rule;; 1 = none;; 0 = none.
+- **EX055 — Threshold.** What threshold applies to unpatched critical vulnerabilities? *Rubric:* 3 = ten;; 2 = 10;; 1 = vague;; 0 = none.
+- **EX056 — Breach months.** Which months breached the threshold? *Rubric:* 3 = June and July;; 2 = two;; 1 = vague;; 0 = none.
+- **EX057 — Escalation rule.** What escalation rule did Priya recommend? *Rubric:* 3 = two consecutive breaches go to the operations manager;; 2 = rule;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1001,9 +1001,9 @@ Workarounds can hide malicious use. Badge systems need support.
 
 ### Exercises
 
-- **EX058 — Problem types.** What three types of control problem did Priya separate? *Rubric:* 3 = design, operation and evidence;; 2 = three;; 1 = none;; 0 = none.
+- **EX058 — Problem types.** What three types of control problem did Priya separate? *Rubric:* 3 = design, operation and evidence;; 2 = three;; 1 = vague;; 0 = none.
 - **EX059 — Workaround cause.** Why did receptionists keep screens awake? *Rubric:* 3 = unlocking repeatedly slowed patient check-in;; 2 = usability;; 1 = laziness;; 0 = none.
-- **EX060 — Evidence error.** What evidence problem did Priya find? *Rubric:* 3 = tester checked an unmanaged spare computer;; 2 = test scope;; 1 = none;; 0 = none.
+- **EX060 — Evidence error.** What evidence problem did Priya find? *Rubric:* 3 = tester checked an unmanaged spare computer;; 2 = test scope;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1045,9 +1045,9 @@ Ticket fields get skipped. Linkages need discipline.
 
 ### Exercises
 
-- **EX061 — Exceptions as tickets.** How are exceptions handled in the ticketing system? *Rubric:* 3 = as tickets with expiry dates;; 2 = expiry;; 1 = none;; 0 = none.
-- **EX062 — Incident linkage.** How does a misdirected email incident affect the register? *Rubric:* 3 = it updates the likelihood of that risk;; 2 = update;; 1 = none;; 0 = none.
-- **EX063 — Evidence timing.** Why is evidence built into normal work better? *Rubric:* 3 = more reliable and less burdensome than pre-audit assembly;; 2 = built-in;; 1 = none;; 0 = none.
+- **EX061 — Exceptions as tickets.** How are exceptions handled in the ticketing system? *Rubric:* 3 = as tickets with expiry dates;; 2 = expiry;; 1 = vague;; 0 = none.
+- **EX062 — Incident linkage.** How does a misdirected email incident affect the register? *Rubric:* 3 = it updates the likelihood of that risk;; 2 = update;; 1 = vague;; 0 = none.
+- **EX063 — Evidence timing.** Why is evidence built into normal work better? *Rubric:* 3 = more reliable and less burdensome than pre-audit assembly;; 2 = built-in;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1109,9 +1109,9 @@ Name mismatches cause false findings. Unread reports defeat automation.
 
 ### Exercises
 
-- **EX064 — Leaver accounts.** Which leavers still had accounts? *Rubric:* 3 = b.osei and d.wu;; 2 = two;; 1 = none;; 0 = none.
-- **EX065 — Orphan origins.** Where did the orphan accounts come from? *Rubric:* 3 = a locum account and a provider test account;; 2 = origins;; 1 = none;; 0 = none.
-- **EX066 — Manual decision.** Why not disable accounts automatically? *Rubric:* 3 = findings need context a human must check;; 2 = context;; 1 = none;; 0 = none.
+- **EX064 — Leaver accounts.** Which leavers still had accounts? *Rubric:* 3 = b.osei and d.wu;; 2 = two;; 1 = vague;; 0 = none.
+- **EX065 — Orphan origins.** Where did the orphan accounts come from? *Rubric:* 3 = a locum account and a provider test account;; 2 = origins;; 1 = vague;; 0 = none.
+- **EX066 — Manual decision.** Why not disable accounts automatically? *Rubric:* 3 = findings need context a human must check;; 2 = context;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1153,9 +1153,9 @@ One year is short. Survey responses may be polite.
 
 ### Exercises
 
-- **EX067 — Evaluation sources.** Which sources did the evaluation use? *Rubric:* 3 = register, test results, indicators, evidence log and survey;; 2 = five;; 1 = none;; 0 = none.
-- **EX068 — Segmentation progress.** How many clinics completed segmentation? *Rubric:* 3 = twelve of fourteen;; 2 = 12/14;; 1 = none;; 0 = none.
-- **EX069 — Remaining burden.** Which task remained time-consuming? *Rubric:* 3 = the access review;; 2 = access review;; 1 = none;; 0 = none.
+- **EX067 — Evaluation sources.** Which sources did the evaluation use? *Rubric:* 3 = register, test results, indicators, evidence log and survey;; 2 = five;; 1 = vague;; 0 = none.
+- **EX068 — Segmentation progress.** How many clinics completed segmentation? *Rubric:* 3 = twelve of fourteen;; 2 = 12/14;; 1 = vague;; 0 = none.
+- **EX069 — Remaining burden.** Which task remained time-consuming? *Rubric:* 3 = the access review;; 2 = access review;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1197,9 +1197,9 @@ Self-reported time. Seven clinics per group.
 
 ### Exercises
 
-- **EX070 — Quality measure.** How is review quality measured? *Rubric:* 3 = inappropriate rights found by a second check;; 2 = second check;; 1 = none;; 0 = none.
-- **EX071 — Allocation.** How were clinics allocated? *Rubric:* 3 = by drawing names;; 2 = random;; 1 = none;; 0 = none.
-- **EX072 — Time result.** What median times did the groups report? *Rubric:* 3 = forty versus ninety minutes;; 2 = 40 vs 90;; 1 = none;; 0 = none.
+- **EX070 — Quality measure.** How is review quality measured? *Rubric:* 3 = inappropriate rights found by a second check;; 2 = second check;; 1 = vague;; 0 = none.
+- **EX071 — Allocation.** How were clinics allocated? *Rubric:* 3 = by drawing names;; 2 = random;; 1 = vague;; 0 = none.
+- **EX072 — Time result.** What median times did the groups report? *Rubric:* 3 = forty versus ninety minutes;; 2 = 40 vs 90;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1241,9 +1241,9 @@ Team dynamics vary. Client requests can expand scope.
 
 ### Exercises
 
-- **EX073 — Pack contents.** What does the onboarding pack contain? *Rubric:* 3 = setup checklist, manager-owned controls, evidence requirements, training;; 2 = four parts;; 1 = none;; 0 = none.
-- **EX074 — Review finding.** What did peer review find in Priya's work? *Rubric:* 3 = two terms used inconsistently;; 2 = inconsistency;; 1 = none;; 0 = none.
-- **EX075 — Client request.** What did the clinic manager ask for? *Rubric:* 3 = a one-page checklist;; 2 = one page;; 1 = none;; 0 = none.
+- **EX073 — Pack contents.** What does the onboarding pack contain? *Rubric:* 3 = setup checklist, manager-owned controls, evidence requirements, training;; 2 = four parts;; 1 = vague;; 0 = none.
+- **EX074 — Review finding.** What did peer review find in Priya's work? *Rubric:* 3 = two terms used inconsistently;; 2 = inconsistency;; 1 = vague;; 0 = none.
+- **EX075 — Client request.** What did the clinic manager ask for? *Rubric:* 3 = a one-page checklist;; 2 = one page;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1286,8 +1286,8 @@ Runbooks age. Backup people may lack practice.
 ### Exercises
 
 - **EX076 — Runbook audience.** Who should runbooks be written for? *Rubric:* 3 = someone who has never done the task;; 2 = newcomer;; 1 = expert;; 0 = none.
-- **EX077 — Readiness gap.** Which process needed more guidance? *Rubric:* 3 = the indicator review escalation;; 2 = escalation;; 1 = none;; 0 = none.
-- **EX078 — Support period.** How long will Priya remain available after handoff? *Rubric:* 3 = one month;; 2 = 1 month;; 1 = none;; 0 = none.
+- **EX077 — Readiness gap.** Which process needed more guidance? *Rubric:* 3 = the indicator review escalation;; 2 = escalation;; 1 = vague;; 0 = none.
+- **EX078 — Support period.** How long will Priya remain available after handoff? *Rubric:* 3 = one month;; 2 = 1 month;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1329,9 +1329,9 @@ Validation is a snapshot. Suppliers may reconnect devices later.
 
 ### Exercises
 
-- **EX079 — Failed check.** Which validation check failed? *Rubric:* 3 = an imaging device on the reception segment;; 2 = imaging;; 1 = none;; 0 = none.
-- **EX080 — Approval basis.** On what basis did the operations manager approve opening? *Rubric:* 3 = the validation report;; 2 = report;; 1 = none;; 0 = none.
-- **EX081 — Pre-opening value.** Why validate before opening? *Rubric:* 3 = fixing problems before patients arrive is cheaper;; 2 = cost;; 1 = none;; 0 = none.
+- **EX079 — Failed check.** Which validation check failed? *Rubric:* 3 = an imaging device on the reception segment;; 2 = imaging;; 1 = vague;; 0 = none.
+- **EX080 — Approval basis.** On what basis did the operations manager approve opening? *Rubric:* 3 = the validation report;; 2 = report;; 1 = vague;; 0 = none.
+- **EX081 — Pre-opening value.** Why validate before opening? *Rubric:* 3 = fixing problems before patients arrive is cheaper;; 2 = cost;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1374,8 +1374,8 @@ Placements vary in quality. Pressure can be subtle.
 ### Exercises
 
 - **EX082 — Routine work.** What does much GRC work consist of? *Rubric:* 3 = steady follow-up;; 2 = follow-up;; 1 = analysis;; 0 = none.
-- **EX083 — Small scope reason.** Why was Riverton's PCI DSS scope small? *Rubric:* 3 = hosted payment page and segmented terminals;; 2 = design;; 1 = none;; 0 = none.
-- **EX084 — Integrity response.** How did Priya respond to the request to mark a review complete? *Rubric:* 3 = declined and helped complete it;; 2 = honest help;; 1 = none;; 0 = none.
+- **EX083 — Small scope reason.** Why was Riverton's PCI DSS scope small? *Rubric:* 3 = hosted payment page and segmented terminals;; 2 = design;; 1 = vague;; 0 = none.
+- **EX084 — Integrity response.** How did Priya respond to the request to mark a review complete? *Rubric:* 3 = declined and helped complete it;; 2 = honest help;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1417,9 +1417,9 @@ Dashboards can be ignored. Source data quality limits value.
 
 ### Exercises
 
-- **EX085 — Highlights.** What does the weekly summary highlight? *Rubric:* 3 = overdue actions, stale evidence, threshold breaches, failed controls;; 2 = four;; 1 = none;; 0 = none.
-- **EX086 — Source dates.** Why did Priya add last-updated dates for each source? *Rubric:* 3 = a resolved action appeared because a source was stale;; 2 = freshness;; 1 = none;; 0 = none.
-- **EX087 — Lasting value.** What does lasting value depend on? *Rubric:* 3 = simplicity, documentation and a named maintainer;; 2 = maintainability;; 1 = none;; 0 = none.
+- **EX085 — Highlights.** What does the weekly summary highlight? *Rubric:* 3 = overdue actions, stale evidence, threshold breaches, failed controls;; 2 = four;; 1 = vague;; 0 = none.
+- **EX086 — Source dates.** Why did Priya add last-updated dates for each source? *Rubric:* 3 = a resolved action appeared because a source was stale;; 2 = freshness;; 1 = vague;; 0 = none.
+- **EX087 — Lasting value.** What does lasting value depend on? *Rubric:* 3 = simplicity, documentation and a named maintainer;; 2 = maintainability;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1463,7 +1463,7 @@ Assessments sample skills. Reported improvements have several causes.
 
 - **EX088 — Missing files.** How does the tool handle missing source files? *Rubric:* 3 = reports them clearly;; 2 = explicit;; 1 = silent;; 0 = none.
 - **EX089 — Patient data.** Does the tool read patient records? *Rubric:* 3 = no, only governance records;; 2 = no;; 1 = yes;; 0 = none.
-- **EX090 — Future suggestion.** What did assessors suggest for a future version? *Rubric:* 3 = simple trend charts;; 2 = charts;; 1 = none;; 0 = none.
+- **EX090 — Future suggestion.** What did assessors suggest for a future version? *Rubric:* 3 = simple trend charts;; 2 = charts;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

@@ -698,7 +698,7 @@ Listas de verificação viram rotina; alterne os exemplos e audite amostras das 
 
 ### Exercícios
 
-- **EX040 — História de privacidade.** Escreva uma história de usuário de privacidade do capítulo. *Rubrica:* 3 = p. ex., como paciente, quero minhas gravações eliminadas depois de trinta dias, salvo pedido em contrário;; 2 = história semelhante;; 1 = nenhuma;; 0 = nenhuma.
+- **EX040 — História de privacidade.** Escreva uma história de usuário de privacidade do capítulo. *Rubrica:* 3 = p. ex., como paciente, quero minhas gravações eliminadas depois de trinta dias, salvo pedido em contrário;; 2 = história semelhante;; 1 = vago;; 0 = nenhuma.
 - **EX041 — Achado da revisão.** O que a lista de revisão detectou no primeiro mês? *Rubrica:* 3 = uma mudança que enviaria nomes completos a um relatório de falhas;; 2 = menciona relatório de falhas;; 1 = nada;; 0 = nenhuma.
 - **EX042 — Dados de teste sintéticos.** Por que trocar as cópias de produção por pacientes gerados? *Rubrica:* 3 = os ambientes de teste são menos protegidos; dados sintéticos evitam expor dados de saúde;; 2 = menciona segurança;; 1 = só usa mascaramento;; 0 = nenhuma.
 
@@ -787,8 +787,8 @@ Matrizes de rastreabilidade ficam desatualizadas se não forem revistas a cada m
 ### Exercícios
 
 - **EX046 — Interface mais fraca.** O que é o problema da interface mais fraca? *Rubrica:* 3 = uma propriedade de privacidade ignorada em um componente, na prática, não existe;; 2 = menciona componentes;; 1 = nenhuma ideia;; 0 = nenhuma.
-- **EX047 — Lacuna da análise.** Que lacuna a matriz de rastreabilidade revelou? *Rubrica:* 3 = a área de análise não tinha requisito de retenção;; 2 = menciona a análise;; 1 = nenhuma;; 0 = nenhuma.
-- **EX048 — Divergência contratual.** Que divergência Zara encontrou no fornecedor? *Rubrica:* 3 = o fornecedor pode guardar gravações por 90 dias contra os 30 da Pellmore;; 2 = menciona retenção;; 1 = nenhuma;; 0 = nenhuma.
+- **EX047 — Lacuna da análise.** Que lacuna a matriz de rastreabilidade revelou? *Rubrica:* 3 = a área de análise não tinha requisito de retenção;; 2 = menciona a análise;; 1 = vago;; 0 = nenhuma.
+- **EX048 — Divergência contratual.** Que divergência Zara encontrou no fornecedor? *Rubrica:* 3 = o fornecedor pode guardar gravações por 90 dias contra os 30 da Pellmore;; 2 = menciona retenção;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -832,7 +832,7 @@ Os sinais podem gerar alarmes falsos; revise os limiares depois dos primeiros me
 
 - **EX049 — Realimentação ausente.** Por que, em termos de controle, a política de retenção no papel falhou? *Rubrica:* 3 = não havia medição, então nenhuma realimentação ajustava o processo;; 2 = menciona monitoramento;; 1 = outra causa;; 0 = nenhuma.
 - **EX050 — Sinal de bisbilhotice.** Que sinal pode revelar bisbilhotice por parte da equipe? *Rubrica:* 3 = visualizações de prontuários sem consulta agendada;; 2 = menciona visualizações;; 1 = nenhum;; 0 = nenhuma.
-- **EX051 — Defesa contra manipulação.** Como Zara se protege da manipulação das categorias? *Rubrica:* 3 = acompanha as mudanças de categoria e exige aprovação;; 2 = menciona monitoramento;; 1 = nenhuma;; 0 = nenhuma.
+- **EX051 — Defesa contra manipulação.** Como Zara se protege da manipulação das categorias? *Rubrica:* 3 = acompanha as mudanças de categoria e exige aprovação;; 2 = menciona monitoramento;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1008,7 +1008,7 @@ A ordenação não pode adiar indefinidamente um dever legal; os itens mais abai
 
 - **EX061 — Marcação de finalidades.** Como Zara transforma a limitação da finalidade em requisito? *Rubrica:* 3 = marca os campos com as finalidades permitidas; os serviços leem só os campos marcados para sua finalidade;; 2 = menciona marcações;; 1 = repete o princípio;; 0 = nenhuma.
 - **EX062 — Acesso testável.** Reescreva de forma testável "os pacientes devem poder acessar seus dados". *Rubrica:* 3 = baixar todos os dados em até um minuto, em formato legível por máquina;; 2 = parcialmente mensurável;; 1 = vago;; 0 = nenhuma.
-- **EX063 — Lacuna de portabilidade.** Que lacuna os requisitos de direitos revelaram? *Rubrica:* 3 = não há formato estruturado de exportação para a portabilidade;; 2 = menciona exportação;; 1 = nenhuma;; 0 = nenhuma.
+- **EX063 — Lacuna de portabilidade.** Que lacuna os requisitos de direitos revelaram? *Rubrica:* 3 = não há formato estruturado de exportação para a portabilidade;; 2 = menciona exportação;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1289,7 +1289,7 @@ As notas dependem dos pesos; mostre a sensibilidade a pesos diferentes.
 ### Exercícios
 
 - **EX076 — Trade-off da centralização.** Qual é o principal trade-off da centralização? *Rubrica:* 3 = análise mais fácil, mas exposição concentrada;; 2 = menciona risco;; 1 = diz que é a melhor em tudo;; 0 = nenhuma.
-- **EX077 — Limites das PETs.** Cite um limite de cada uma de duas tecnologias de aprimoramento da privacidade. *Rubrica:* 3 = por exemplo, a privacidade diferencial perde acurácia em grupos pequenos; a computação multipartes é complexa e lenta;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+- **EX077 — Limites das PETs.** Cite um limite de cada uma de duas tecnologias de aprimoramento da privacidade. *Rubrica:* 3 = por exemplo, a privacidade diferencial perde acurácia em grupos pequenos; a computação multipartes é complexa e lenta;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 - **EX078 — Decisão híbrida.** O que o comitê de arquitetura decidiu? *Rubrica:* 3 = federação para as comparações, mais um conjunto restrito e pseudonimizado para as auditorias de segurança;; 2 = uma parte;; 1 = centralizar;; 0 = nenhuma.
 
 ### Síntese
@@ -1732,7 +1732,7 @@ As perguntas reservadas podem alertar um parente controlador se forem vistas; pr
 ### Exercícios
 
 - **EX103 — Anotações por padrão.** Por que as anotações das consultas nunca são compartilhadas por padrão? *Rubrica:* 3 = carregam normas de confidencialidade; levá-las adiante exige a escolha explícita do paciente;; 2 = menciona confidencialidade;; 1 = compartilhar tudo;; 0 = nenhuma.
-- **EX104 — Defesa contra coerção.** Que solução de projeto responde à coerção por parentes? *Rubrica:* 3 = perguntas reservadas quando o paciente está sozinho, mais as perguntas dos médicos;; 2 = uma parte;; 1 = nenhuma;; 0 = nenhuma.
+- **EX104 — Defesa contra coerção.** Que solução de projeto responde à coerção por parentes? *Rubrica:* 3 = perguntas reservadas quando o paciente está sozinho, mais as perguntas dos médicos;; 2 = uma parte;; 1 = vago;; 0 = nenhuma.
 - **EX105 — Quem altera as configurações.** Quem pode alterar as configurações de compartilhamento? *Rubrica:* 3 = o paciente ou, se ele não tiver capacidade, um representante legal verificado;; 2 = só o paciente;; 1 = o cuidador;; 0 = nenhuma.
 
 ### Síntese
@@ -1883,7 +1883,7 @@ Grupos pequenos de validação podem não representar todos os pacientes; recrut
 
 - **EX112 — Verificação e validação.** Diferencie verificação de validação. *Rubrica:* 3 = a verificação confere se os requisitos são atendidos; a validação confere se os requisitos atendem às necessidades reais;; 2 = uma;; 1 = confunde;; 0 = nenhuma.
 - **EX113 — Expectativa sobre a eliminação.** O que a validação revelou sobre a eliminação? *Rubrica:* 3 = os pacientes esperavam a remoção total do prontuário, que a lei impede; faltava explicação;; 2 = menciona a expectativa;; 1 = nada;; 0 = nenhuma.
-- **EX114 — Premissa refinada.** Que premissa jurídica a assessoria refinou? *Rubrica:* 3 = algumas anotações de sintomas feitas pelo paciente fazem parte do prontuário e precisam ser guardadas;; 2 = menciona anotações;; 1 = nenhuma;; 0 = nenhuma.
+- **EX114 — Premissa refinada.** Que premissa jurídica a assessoria refinou? *Rubrica:* 3 = algumas anotações de sintomas feitas pelo paciente fazem parte do prontuário e precisam ser guardadas;; 2 = menciona anotações;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1970,7 +1970,7 @@ Passar nos testes não prova a ausência de vulnerabilidades.
 ### Exercícios
 
 - **EX118 — Sucesso parcial.** Que ataque adversarial teve sucesso parcial, e por quê? *Rubrica:* 3 = a inferência sobre as estatísticas de uma clínica rural, por meio de relatórios legados com contagens pequenas;; 2 = menciona a clínica rural;; 1 = nenhum;; 0 = nenhuma.
-- **EX119 — Regra das saídas legadas.** Que regra Zara acrescentou depois do vazamento estatístico? *Rubrica:* 3 = procurar as saídas da abordagem anterior sempre que uma nova proteção for introduzida;; 2 = menciona legado;; 1 = nenhuma;; 0 = nenhuma.
+- **EX119 — Regra das saídas legadas.** Que regra Zara acrescentou depois do vazamento estatístico? *Rubrica:* 3 = procurar as saídas da abordagem anterior sempre que uma nova proteção for introduzida;; 2 = menciona legado;; 1 = vago;; 0 = nenhuma.
 - **EX120 — Valor da independência.** Por que contratar testes independentes depois de testes internos rigorosos? *Rubrica:* 3 = hábitos diferentes encontram problemas diferentes, como o vazamento no preenchimento automático;; 2 = menciona independência;; 1 = desnecessário;; 0 = nenhuma.
 
 ### Síntese
@@ -2059,7 +2059,7 @@ Os voluntários podem não representar os pacientes com pouca familiaridade digi
 
 - **EX124 — Critério de sucesso.** Que critério Zara fixou antes do estudo? *Rubrica:* 3 = pelo menos 80% de compreensão correta;; 2 = menciona limiar;; 1 = nenhum;; 0 = nenhuma.
 - **EX125 — Efeito da pré-visualização.** Que compreensão as duas telas alcançaram? *Rubrica:* 3 = 71% na atual, 90% na pré-visualização;; 2 = um número;; 1 = errado;; 0 = nenhuma.
-- **EX126 — Ressalva do estudo.** Cite uma ressalva ao resultado de compreensão. *Rubrica:* 3 = amostra pequena, voluntários confiantes ou cenários em vez de relações reais;; 2 = ressalva vaga;; 1 = nenhuma;; 0 = nenhuma.
+- **EX126 — Ressalva do estudo.** Cite uma ressalva ao resultado de compreensão. *Rubrica:* 3 = amostra pequena, voluntários confiantes ou cenários em vez de relações reais;; 2 = ressalva vaga;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -2376,7 +2376,7 @@ Os resumos detectam mudança, não verdade; um arquivo de aparência correta ain
 
 - **EX142 — Arquivo divergente.** Que arquivo falhou na verificação de integridade? *Rubrica:* 3 = erasure_test.log;; 2 = cita o log de eliminação;; 1 = nenhum;; 0 = nenhuma.
 - **EX143 — O que a divergência mostra.** O que uma divergência de resumo prova e o que não prova? *Rubrica:* 3 = o arquivo mudou desde a aprovação; não diz quem o mudou nem por quê;; 2 = uma parte;; 1 = prova fraude;; 0 = nenhuma.
-- **EX144 — Lição sobre evidências.** Que lição de processo decorre da divergência? *Rubrica:* 3 = versionar as evidências em vez de sobrescrevê-las, com datas e motivos;; 2 = menciona versões;; 1 = nenhuma;; 0 = nenhuma.
+- **EX144 — Lição sobre evidências.** Que lição de processo decorre da divergência? *Rubrica:* 3 = versionar as evidências em vez de sobrescrevê-las, com datas e motivos;; 2 = menciona versões;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -2463,7 +2463,7 @@ Uma defesa aprovada não é o fim do aprendizado; a prática vai expor novas lac
 ### Exercícios
 
 - **EX148 — Garantia dos modelos.** Como as garantias se mantêm quando os modelos mudam? *Rubrica:* 3 = cada novo modelo exige análise de sensibilidade e revisão;; 2 = menciona revisão;; 1 = automático;; 0 = nenhuma.
-- **EX149 — Resposta sobre o fornecedor.** Que evidência Zara citou sobre a dependência do fornecedor? *Rubrica:* 3 = o exercício de violação e a cláusula de aviso em doze horas;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+- **EX149 — Resposta sobre o fornecedor.** Que evidência Zara citou sobre a dependência do fornecedor? *Rubrica:* 3 = o exercício de violação e a cláusula de aviso em doze horas;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 - **EX150 — Conclusão do curso.** O que Zara conclui sobre a engenharia de privacidade? *Rubrica:* 3 = é um jeito de construir sistemas com responsabilidade desde o início, e não um complemento;; 2 = menciona projeto;; 1 = especialidade;; 0 = nenhuma.
 
 ### Síntese

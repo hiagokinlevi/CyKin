@@ -65,8 +65,8 @@ Smooth curves simplify noisy weekly data. Exposure models ignore how attractive 
 
 ### Exercises
 
-- **EX001 — Rate meaning.** What does the derivative of weekly reports tell Greyford? *Rubric:* 3 = whether reporting is rising, levelling off or falling;; 2 = trend;; 1 = none;; 0 = none.
-- **EX002 — Straight-line flaw.** Why would a straight line mislead for reports after a campaign? *Rubric:* 3 = it predicts reports growing for ever;; 2 = unbounded;; 1 = none;; 0 = none.
+- **EX001 — Rate meaning.** What does the derivative of weekly reports tell Greyford? *Rubric:* 3 = whether reporting is rising, levelling off or falling;; 2 = trend;; 1 = vague;; 0 = none.
+- **EX002 — Straight-line flaw.** Why would a straight line mislead for reports after a campaign? *Rubric:* 3 = it predicts reports growing for ever;; 2 = unbounded;; 1 = vague;; 0 = none.
 - **EX003 — Exposure area.** How does integration define exposure? *Rubric:* 3 = area under unreported inboxes over time;; 2 = area;; 1 = count;; 0 = none.
 
 ### Synthesis
@@ -109,8 +109,8 @@ Logic captures written rules, not informal practice. Counts depend on a typical 
 
 ### Exercises
 
-- **EX004 — Rule conflict.** Which two rules conflict in the control room? *Rubric:* 3 = lock screens when leaving versus stay signed in during incidents;; 2 = both rules;; 1 = none;; 0 = none.
-- **EX005 — Set difference use.** What did the set difference reveal? *Rubric:* 3 = eleven staff with remote access but no training;; 2 = untrained;; 1 = none;; 0 = none.
+- **EX004 — Rule conflict.** Which two rules conflict in the control room? *Rubric:* 3 = lock screens when leaving versus stay signed in during incidents;; 2 = both rules;; 1 = vague;; 0 = none.
+- **EX005 — Set difference use.** What did the set difference reveal? *Rubric:* 3 = eleven staff with remote access but no training;; 2 = untrained;; 1 = vague;; 0 = none.
 - **EX006 — Change frequency.** How often might an engineer face a password change with separate schedules? *Rubric:* 3 = roughly every week;; 2 = weekly;; 1 = yearly;; 0 = none.
 
 ### Synthesis
@@ -154,7 +154,7 @@ Environmental fixes need ergonomic expertise. Alarm reduction must not remove cr
 ### Exercises
 
 - **EX007 — Predictable errors.** Why are many control room errors predictable? *Rubric:* 3 = they follow from lighting, noise, glare and shift length;; 2 = environment;; 1 = carelessness;; 0 = none.
-- **EX008 — Alarm noise.** What happens when operators see hundreds of low-value alarms? *Rubric:* 3 = they acknowledge without reading;; 2 = fatigue;; 1 = none;; 0 = none.
+- **EX008 — Alarm noise.** What happens when operators see hundreds of low-value alarms? *Rubric:* 3 = they acknowledge without reading;; 2 = fatigue;; 1 = vague;; 0 = none.
 - **EX009 — Door redesign.** How can a door design reduce tailgating? *Rubric:* 3 = faster closer and a separate delivery entrance;; 2 = design;; 1 = signs;; 0 = none.
 
 ### Synthesis
@@ -225,9 +225,9 @@ Averages hide patterns. Pseudonymised data can still identify people in small gr
 
 ### Exercises
 
-- **EX010 — Testing habit.** Why test with a list whose answer is known? *Rubric:* 3 = a program can run but still give wrong answers;; 2 = correctness;; 1 = none;; 0 = none.
-- **EX011 — Lab peak.** Which week had the most reports in the lab, and how many? *Rubric:* 3 = week 3 with 41 reports;; 2 = week 3;; 1 = none;; 0 = none.
-- **EX012 — Data rule.** What rule did Aiko write at the top of her script? *Rubric:* 3 = use counts; pseudonymise with a separate key if individuals are needed;; 2 = minimum data;; 1 = none;; 0 = none.
+- **EX010 — Testing habit.** Why test with a list whose answer is known? *Rubric:* 3 = a program can run but still give wrong answers;; 2 = correctness;; 1 = vague;; 0 = none.
+- **EX011 — Lab peak.** Which week had the most reports in the lab, and how many? *Rubric:* 3 = week 3 with 41 reports;; 2 = week 3;; 1 = vague;; 0 = none.
+- **EX012 — Data rule.** What rule did Aiko write at the top of her script? *Rubric:* 3 = use counts; pseudonymise with a separate key if individuals are needed;; 2 = minimum data;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -269,9 +269,9 @@ Simplified messages can drop caveats. Department totals can still single out tin
 
 ### Exercises
 
-- **EX013 — Operator suggestion.** What did operators suggest moving first in the note? *Rubric:* 3 = what to do if you already clicked;; 2 = clicked step;; 1 = none;; 0 = none.
+- **EX013 — Operator suggestion.** What did operators suggest moving first in the note? *Rubric:* 3 = what to do if you already clicked;; 2 = clicked step;; 1 = vague;; 0 = none.
 - **EX014 — Blame-free framing.** How does Aiko frame clicking for managers? *Rubric:* 3 = as an expected outcome of good lures, focusing on reporting speed;; 2 = expected;; 1 = failure;; 0 = none.
-- **EX015 — Same facts.** What keeps adapted messages honest? *Rubric:* 3 = the same facts and limitations in every version;; 2 = consistency;; 1 = none;; 0 = none.
+- **EX015 — Same facts.** What keeps adapted messages honest? *Rubric:* 3 = the same facts and limitations in every version;; 2 = consistency;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -338,9 +338,9 @@ Exponential decay is an assumption. Knowledge measures may not reflect behaviour
 
 ### Exercises
 
-- **EX016 — Half-life.** What half-life does the lab's decay rate imply? *Rubric:* 3 = about 2.9 months;; 2 = about 3 months;; 1 = none;; 0 = none.
+- **EX016 — Half-life.** What half-life does the lab's decay rate imply? *Rubric:* 3 = about 2.9 months;; 2 = about 3 months;; 1 = vague;; 0 = none.
 - **EX017 — Schedule result.** Which schedule kept the higher average benefit in the lab? *Rubric:* 3 = quarterly: 0.72 versus 0.55 for annual;; 2 = quarterly;; 1 = annual;; 0 = none.
-- **EX018 — Missing cost.** What cost did Aiko add to the comparison? *Rubric:* 3 = staff minutes spent on training;; 2 = staff time;; 1 = none;; 0 = none.
+- **EX018 — Missing cost.** What cost did Aiko add to the comparison? *Rubric:* 3 = staff minutes spent on training;; 2 = staff time;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -407,8 +407,8 @@ Intervals assume independent responses. Merging groups hides real differences.
 
 ### Exercises
 
-- **EX019 — Field engineer interval.** What interval did the lab give for 9 of 60? *Rubric:* 3 = 15.0%, Wilson 95% interval 8.1% to 26.1%;; 2 = wide;; 1 = none;; 0 = none.
-- **EX020 — Ranking risk.** Why not rank teams publicly by report rate? *Rubric:* 3 = small teams swing randomly and rankings shame chance results;; 2 = noise;; 1 = none;; 0 = none.
+- **EX019 — Field engineer interval.** What interval did the lab give for 9 of 60? *Rubric:* 3 = 15.0%, Wilson 95% interval 8.1% to 26.1%;; 2 = wide;; 1 = vague;; 0 = none.
+- **EX020 — Ranking risk.** Why not rank teams publicly by report rate? *Rubric:* 3 = small teams swing randomly and rankings shame chance results;; 2 = noise;; 1 = vague;; 0 = none.
 - **EX021 — Group size rule.** What minimum group size does Aiko report? *Rubric:* 3 = twenty;; 2 = 20;; 1 = eight;; 0 = none.
 
 ### Synthesis
@@ -451,9 +451,9 @@ Hardware features vary by model. Recovery processes can become an attack path.
 
 ### Exercises
 
-- **EX022 — Invisible chips.** How do users experience secure hardware? *Rubric:* 3 = fewer passwords and simpler steps;; 2 = simpler;; 1 = none;; 0 = none.
-- **EX023 — Laptop choice.** Why prefer the hardware-backed PIN for field laptops? *Rubric:* 3 = similar protection without engineers writing passwords on laptops;; 2 = usability;; 1 = none;; 0 = none.
-- **EX024 — Key loss requirement.** What process requirement addresses lost security keys? *Rubric:* 3 = spare keys at depots and quick recovery;; 2 = spares;; 1 = none;; 0 = none.
+- **EX022 — Invisible chips.** How do users experience secure hardware? *Rubric:* 3 = fewer passwords and simpler steps;; 2 = simpler;; 1 = vague;; 0 = none.
+- **EX023 — Laptop choice.** Why prefer the hardware-backed PIN for field laptops? *Rubric:* 3 = similar protection without engineers writing passwords on laptops;; 2 = usability;; 1 = vague;; 0 = none.
+- **EX024 — Key loss requirement.** What process requirement addresses lost security keys? *Rubric:* 3 = spare keys at depots and quick recovery;; 2 = spares;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -525,7 +525,7 @@ Fingerprints can split variants of one campaign. Minimal storage may limit later
 
 ### Exercises
 
-- **EX025 — Grouping benefit.** Why group duplicate reports? *Rubric:* 3 = many reports of one email need only one investigation;; 2 = workload;; 1 = none;; 0 = none.
+- **EX025 — Grouping benefit.** Why group duplicate reports? *Rubric:* 3 = many reports of one email need only one investigation;; 2 = workload;; 1 = vague;; 0 = none.
 - **EX026 — Lab grouping.** How many distinct emails did forty reports reduce to in the lab? *Rubric:* 3 = six, the top one first reported after 9 minutes;; 2 = six;; 1 = forty;; 0 = none.
 - **EX027 — Stored fields.** What does the triage program store? *Rubric:* 3 = sender, subject fingerprint and report times only;; 2 = minimal;; 1 = bodies;; 0 = none.
 
@@ -570,8 +570,8 @@ Even ethical simulations can upset some staff. Rules need review as threats chan
 ### Exercises
 
 - **EX028 — Justified deception.** When can deception in simulations be justified? *Rubric:* 3 = clear safety purpose, approval, no harm and honest explanation afterwards;; 2 = conditions;; 1 = always;; 0 = none.
-- **EX029 — Forbidden lures.** Which lure themes are excluded? *Rubric:* 3 = pay, health, family and redundancy fears;; 2 = two;; 1 = none;; 0 = none.
-- **EX030 — Control room rule.** Why avoid simulations on control room consoles during shifts? *Rubric:* 3 = distraction could affect water treatment safety;; 2 = safety;; 1 = none;; 0 = none.
+- **EX029 — Forbidden lures.** Which lure themes are excluded? *Rubric:* 3 = pay, health, family and redundancy fears;; 2 = two;; 1 = vague;; 0 = none.
+- **EX030 — Control room rule.** Why avoid simulations on control room consoles during shifts? *Rubric:* 3 = distraction could affect water treatment safety;; 2 = safety;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -613,9 +613,9 @@ Lookalike-name detection has false positives. Warnings lose force if overused.
 
 ### Exercises
 
-- **EX031 — Protocol value.** Why are attacks stopped by protocols valuable for human factors? *Rubric:* 3 = no person has to judge them;; 2 = no judgement;; 1 = none;; 0 = none.
-- **EX032 — Ignored banner.** Why do staff ignore the external sender banner? *Rubric:* 3 = almost every supplier email carries it;; 2 = too frequent;; 1 = none;; 0 = none.
-- **EX033 — Warning test.** How many of ten staff chose to report with the new warning? *Rubric:* 3 = eight;; 2 = 8;; 1 = none;; 0 = none.
+- **EX031 — Protocol value.** Why are attacks stopped by protocols valuable for human factors? *Rubric:* 3 = no person has to judge them;; 2 = no judgement;; 1 = vague;; 0 = none.
+- **EX032 — Ignored banner.** Why do staff ignore the external sender banner? *Rubric:* 3 = almost every supplier email carries it;; 2 = too frequent;; 1 = vague;; 0 = none.
+- **EX033 — Warning test.** How many of ten staff chose to report with the new warning? *Rubric:* 3 = eight;; 2 = 8;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -657,9 +657,9 @@ Automatic updates can break software. Temporary rights need expiry checks.
 
 ### Exercises
 
-- **EX034 — Habit risk.** Why are frequent routine prompts dangerous? *Rubric:* 3 = habitual clicking carries over to rare dangerous prompts;; 2 = habit;; 1 = none;; 0 = none.
+- **EX034 — Habit risk.** Why are frequent routine prompts dangerous? *Rubric:* 3 = habitual clicking carries over to rare dangerous prompts;; 2 = habit;; 1 = vague;; 0 = none.
 - **EX035 — Certificate fix.** How were internal certificate warnings removed? *Rubric:* 3 = by fixing internal certificates;; 2 = fix certs;; 1 = ignore;; 0 = none.
-- **EX036 — Acceptance design.** What makes least privilege acceptable to staff? *Rubric:* 3 = self-service catalogue, one-hour requests and temporary rights;; 2 = low cost;; 1 = none;; 0 = none.
+- **EX036 — Acceptance design.** What makes least privilege acceptable to staff? *Rubric:* 3 = self-service catalogue, one-hour requests and temporary rights;; 2 = low cost;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -701,9 +701,9 @@ Regulators may require individual records. Aggregation thresholds can be bypasse
 
 ### Exercises
 
-- **EX037 — Omitted table.** Which table did Aiko deliberately omit? *Rubric:* 3 = individual staff linked to simulation clicks;; 2 = click table;; 1 = none;; 0 = none.
+- **EX037 — Omitted table.** Which table did Aiko deliberately omit? *Rubric:* 3 = individual staff linked to simulation clicks;; 2 = click table;; 1 = vague;; 0 = none.
 - **EX038 — Completion record.** What is stored for required training completion? *Rubric:* 3 = completion dates only, not quiz scores;; 2 = dates;; 1 = scores;; 0 = none.
-- **EX039 — Use policy.** What did the approved policy statement say? *Rubric:* 3 = awareness data will not be used for discipline;; 2 = no discipline;; 1 = none;; 0 = none.
+- **EX039 — Use policy.** What did the approved policy statement say? *Rubric:* 3 = awareness data will not be used for discipline;; 2 = no discipline;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -745,8 +745,8 @@ Eight testers miss rare issues. Lab tests differ from real field conditions.
 
 ### Exercises
 
-- **EX040 — Field conditions.** What conditions affect field engineers' email use? *Rubric:* 3 = phones, gloves and bright light;; 2 = conditions;; 1 = none;; 0 = none.
-- **EX041 — Mobile defect.** What usability defect did testing find? *Rubric:* 3 = the mobile report button scrolled off screen;; 2 = scrolling;; 1 = none;; 0 = none.
+- **EX040 — Field conditions.** What conditions affect field engineers' email use? *Rubric:* 3 = phones, gloves and bright light;; 2 = conditions;; 1 = vague;; 0 = none.
+- **EX041 — Mobile defect.** What usability defect did testing find? *Rubric:* 3 = the mobile report button scrolled off screen;; 2 = scrolling;; 1 = vague;; 0 = none.
 - **EX042 — Defect severity.** Why was the scrolling problem high severity? *Rubric:* 3 = reporting is the feature's main purpose;; 2 = core task;; 1 = cosmetic;; 0 = none.
 
 ### Synthesis
@@ -789,9 +789,9 @@ Influence principles explain but do not predict individual behaviour. Industry r
 
 ### Exercises
 
-- **EX043 — People as defenders.** Why see people as defenders too? *Rubric:* 3 = it shifts design towards supporting good behaviour;; 2 = support;; 1 = none;; 0 = none.
-- **EX044 — CEO lure.** Which principles does a fake urgent CEO payment request combine? *Rubric:* 3 = authority and urgency;; 2 = two;; 1 = none;; 0 = none.
-- **EX045 — Vendor call control.** Which control addresses fake vendor phone calls? *Rubric:* 3 = callback verification using a known number;; 2 = callback;; 1 = none;; 0 = none.
+- **EX043 — People as defenders.** Why see people as defenders too? *Rubric:* 3 = it shifts design towards supporting good behaviour;; 2 = support;; 1 = vague;; 0 = none.
+- **EX044 — CEO lure.** Which principles does a fake urgent CEO payment request combine? *Rubric:* 3 = authority and urgency;; 2 = two;; 1 = vague;; 0 = none.
+- **EX045 — Vendor call control.** Which control addresses fake vendor phone calls? *Rubric:* 3 = callback verification using a known number;; 2 = callback;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -833,9 +833,9 @@ Function allocation changes as tools improve. Time limits may not suit every sta
 
 ### Exercises
 
-- **EX046 — People as components.** What does treating people as system components change? *Rubric:* 3 = their limits and strengths become part of the design;; 2 = design input;; 1 = none;; 0 = none.
+- **EX046 — People as components.** What does treating people as system components change? *Rubric:* 3 = their limits and strengths become part of the design;; 2 = design input;; 1 = vague;; 0 = none.
 - **EX047 — Machine functions.** Which phishing defence functions suit machines? *Rubric:* 3 = filtering known bad mail, domain checks, grouping reports;; 2 = two;; 1 = judging context;; 0 = none.
-- **EX048 — Alarm requirement.** What does the operator requirement forbid? *Rubric:* 3 = entering a password while acknowledging a critical alarm;; 2 = password at alarm;; 1 = none;; 0 = none.
+- **EX048 — Alarm requirement.** What does the operator requirement forbid? *Rubric:* 3 = entering a password while acknowledging a critical alarm;; 2 = password at alarm;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -899,9 +899,9 @@ Simple loop models omit social influences. Automated thanks can feel insincere.
 
 ### Exercises
 
-- **EX049 — Open loop.** What happens when reporters hear nothing back? *Rubric:* 3 = the loop is open and reporting may decline;; 2 = decline;; 1 = none;; 0 = none.
-- **EX050 — Feedback parts.** What are the three parts of the feedback design? *Rubric:* 3 = instant thank-you, confirmation of verdict and monthly summary;; 2 = two;; 1 = none;; 0 = none.
-- **EX051 — Lab outcome.** How did reporting differ in the lab after 12 months? *Rubric:* 3 = 60% with feedback versus 18% without;; 2 = higher;; 1 = none;; 0 = none.
+- **EX049 — Open loop.** What happens when reporters hear nothing back? *Rubric:* 3 = the loop is open and reporting may decline;; 2 = decline;; 1 = vague;; 0 = none.
+- **EX050 — Feedback parts.** What are the three parts of the feedback design? *Rubric:* 3 = instant thank-you, confirmation of verdict and monthly summary;; 2 = two;; 1 = vague;; 0 = none.
+- **EX051 — Lab outcome.** How did reporting differ in the lab after 12 months? *Rubric:* 3 = 60% with feedback versus 18% without;; 2 = higher;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -943,9 +943,9 @@ Layers add cost and complexity. Removing vigilance needs may reduce staff engage
 
 ### Exercises
 
-- **EX052 — Single password risk.** What happens if one stolen password gives access to everything? *Rubric:* 3 = every staff member must be perfect all the time;; 2 = perfection;; 1 = none;; 0 = none.
+- **EX052 — Single password risk.** What happens if one stolen password gives access to everything? *Rubric:* 3 = every staff member must be perfect all the time;; 2 = perfection;; 1 = vague;; 0 = none.
 - **EX053 — Staff as a layer.** How does Aiko position staff in the layered design? *Rubric:* 3 = as one layer among many, not the last line of defence;; 2 = one layer;; 1 = last line;; 0 = none.
-- **EX054 — Security key benefit.** How do security keys reduce reliance on vigilance? *Rubric:* 3 = they will not authenticate to fake login pages;; 2 = phishing-resistant;; 1 = none;; 0 = none.
+- **EX054 — Security key benefit.** How do security keys reduce reliance on vigilance? *Rubric:* 3 = they will not authenticate to fake login pages;; 2 = phishing-resistant;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -987,8 +987,8 @@ Security keys need replacement logistics. Some systems may not support them yet.
 
 ### Exercises
 
-- **EX055 — Prompt abuse.** How can app approvals be abused? *Rubric:* 3 = repeated prompts until a tired user accepts;; 2 = prompt fatigue;; 1 = none;; 0 = none.
-- **EX056 — Key and fake site.** Why does a fake site get nothing useful from a security key? *Rubric:* 3 = the key checks the site's identity before signing;; 2 = origin check;; 1 = none;; 0 = none.
+- **EX055 — Prompt abuse.** How can app approvals be abused? *Rubric:* 3 = repeated prompts until a tired user accepts;; 2 = prompt fatigue;; 1 = vague;; 0 = none.
+- **EX056 — Key and fake site.** Why does a fake site get nothing useful from a security key? *Rubric:* 3 = the key checks the site's identity before signing;; 2 = origin check;; 1 = vague;; 0 = none.
 - **EX057 — No SMS fallback.** Why avoid text codes as fallback? *Rubric:* 3 = they would reintroduce phishing risk;; 2 = phishing;; 1 = cost;; 0 = none.
 
 ### Synthesis
@@ -1031,9 +1031,9 @@ Stakeholder lists can omit quiet groups such as contractors. Policy summaries si
 
 ### Exercises
 
-- **EX058 — Field scope.** Name three topics within human factors and cyber policy. *Rubric:* 3 = usability, awareness and training, culture, social engineering, policy design;; 2 = two;; 1 = none;; 0 = none.
+- **EX058 — Field scope.** Name three topics within human factors and cyber policy. *Rubric:* 3 = usability, awareness and training, culture, social engineering, policy design;; 2 = two;; 1 = vague;; 0 = none.
 - **EX059 — Policy as constraints.** How does Aiko choose to read policy? *Rubric:* 3 = as design constraints and goals;; 2 = constraints;; 1 = rules only;; 0 = none.
-- **EX060 — Failure mode.** When does human factors work fail, according to Prof. Kerr? *Rubric:* 3 = when it serves only one stakeholder;; 2 = one stakeholder;; 1 = none;; 0 = none.
+- **EX060 — Failure mode.** When does human factors work fail, according to Prof. Kerr? *Rubric:* 3 = when it serves only one stakeholder;; 2 = one stakeholder;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1075,8 +1075,8 @@ Workshop participants may not represent quieter staff. Rankings reflect who atte
 
 ### Exercises
 
-- **EX061 — Office fear.** What barrier did office staff describe? *Rubric:* 3 = fear of looking foolish if they report a genuine email;; 2 = embarrassment;; 1 = none;; 0 = none.
-- **EX062 — Vague requirement.** Why avoid "staff should be aware" as a requirement? *Rubric:* 3 = it cannot be verified;; 2 = untestable;; 1 = none;; 0 = none.
+- **EX061 — Office fear.** What barrier did office staff describe? *Rubric:* 3 = fear of looking foolish if they report a genuine email;; 2 = embarrassment;; 1 = vague;; 0 = none.
+- **EX062 — Vague requirement.** Why avoid "staff should be aware" as a requirement? *Rubric:* 3 = it cannot be verified;; 2 = untestable;; 1 = vague;; 0 = none.
 - **EX063 — Top priorities.** Which requirements ranked highest? *Rubric:* 3 = one-tap mobile reporting and fast thank-you messages;; 2 = both;; 1 = platform;; 0 = none.
 
 ### Synthesis
@@ -1120,8 +1120,8 @@ Models omit informal channels like chat messages. Default settings change with t
 ### Exercises
 
 - **EX064 — Programme output.** Which output does Greyford care about most? *Rubric:* 3 = faster reporting and fewer successful attacks;; 2 = outcomes;; 1 = completion;; 0 = none.
-- **EX065 — Export problem.** What data flow worried Aiko? *Rubric:* 3 = individual simulation results exported to a manager spreadsheet;; 2 = export;; 1 = none;; 0 = none.
-- **EX066 — Risky decision points.** Which decision points deserve attention first? *Rubric:* 3 = those with little information and high pressure, like urgent phone requests;; 2 = pressure;; 1 = none;; 0 = none.
+- **EX065 — Export problem.** What data flow worried Aiko? *Rubric:* 3 = individual simulation results exported to a manager spreadsheet;; 2 = export;; 1 = vague;; 0 = none.
+- **EX066 — Risky decision points.** Which decision points deserve attention first? *Rubric:* 3 = those with little information and high pressure, like urgent phone requests;; 2 = pressure;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1163,7 +1163,7 @@ Error categories overlap in practice. Attackers adapt to known verification step
 
 ### Exercises
 
-- **EX067 — Pretext steps.** Which steps make up the vendor pretext? *Rubric:* 3 = online research, impersonating email, follow-up call, remote session request;; 2 = three;; 1 = none;; 0 = none.
+- **EX067 — Pretext steps.** Which steps make up the vendor pretext? *Rubric:* 3 = online research, impersonating email, follow-up call, remote session request;; 2 = three;; 1 = vague;; 0 = none.
 - **EX068 — Lapse defence.** What defends against lapses? *Rubric:* 3 = reminders or automation such as auto-lock;; 2 = automation;; 1 = training;; 0 = none.
 - **EX069 — Violations as signals.** What do violations often signal? *Rubric:* 3 = unworkable rules rather than bad intent;; 2 = rule design;; 1 = malice;; 0 = none.
 
@@ -1228,9 +1228,9 @@ Walkthroughs depend on evaluator imagination. Surveys measure perceptions, not b
 
 ### Exercises
 
-- **EX070 — Walkthrough question.** What four questions guide each walkthrough step? *Rubric:* 3 = know what to do, see how, understand feedback, know success;; 2 = three;; 1 = none;; 0 = none.
+- **EX070 — Walkthrough question.** What four questions guide each walkthrough step? *Rubric:* 3 = know what to do, see how, understand feedback, know success;; 2 = three;; 1 = vague;; 0 = none.
 - **EX071 — Top barrier.** What was the most common reporting barrier in the lab? *Rubric:* 3 = unsure whether suspicious enough: 71 of 180;; 2 = uncertainty;; 1 = phone;; 0 = none.
-- **EX072 — Clear message.** What message addresses that barrier? *Rubric:* 3 = any doubt is a good reason to report;; 2 = doubt;; 1 = none;; 0 = none.
+- **EX072 — Clear message.** What message addresses that barrier? *Rubric:* 3 = any doubt is a good reason to report;; 2 = doubt;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1273,8 +1273,8 @@ Studio projects lack real deployment pressures. Small tests may favour novelty.
 ### Exercises
 
 - **EX073 — Psychology framing.** What framing did the psychology student suggest? *Rubric:* 3 = reporting as helping colleagues;; 2 = helping;; 1 = duty;; 0 = none.
-- **EX074 — Driver constraint.** What constraint did the practitioner raise? *Rubric:* 3 = drivers cannot use phones while driving;; 2 = driving;; 1 = none;; 0 = none.
-- **EX075 — Design changes.** Name two changes after critique. *Rubric:* 3 = depot terminal reporting, hotline, shorter summary;; 2 = two;; 1 = none;; 0 = none.
+- **EX074 — Driver constraint.** What constraint did the practitioner raise? *Rubric:* 3 = drivers cannot use phones while driving;; 2 = driving;; 1 = vague;; 0 = none.
+- **EX075 — Design changes.** Name two changes after critique. *Rubric:* 3 = depot terminal reporting, hotline, shorter summary;; 2 = two;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1337,8 +1337,8 @@ Scores are judgements. Hybrid designs can lose focus if not managed.
 ### Exercises
 
 - **EX076 — Design-led weakness.** Where does the design-led option score weakest? *Rubric:* 3 = regulatory evidence;; 2 = evidence;; 1 = risk;; 0 = none.
-- **EX077 — Weighted totals.** What were the weighted totals in the lab? *Rubric:* 3 = compliance 2.75, reporting 3.85, design 3.90;; 2 = ordering;; 1 = none;; 0 = none.
-- **EX078 — Hybrid robustness.** How did Aiko test the hybrid recommendation? *Rubric:* 3 = doubling the regulatory evidence weight;; 2 = sensitivity;; 1 = none;; 0 = none.
+- **EX077 — Weighted totals.** What were the weighted totals in the lab? *Rubric:* 3 = compliance 2.75, reporting 3.85, design 3.90;; 2 = ordering;; 1 = vague;; 0 = none.
+- **EX078 — Hybrid robustness.** How did Aiko test the hybrid recommendation? *Rubric:* 3 = doubling the regulatory evidence weight;; 2 = sensitivity;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1381,7 +1381,7 @@ Callback procedures fail if supplier files are wrong. Nudges lose effect over ti
 ### Exercises
 
 - **EX079 — Callback number source.** Where must the callback number come from? *Rubric:* 3 = the supplier file, not the request;; 2 = known source;; 1 = the request;; 0 = none.
-- **EX080 — Nudge limits.** What ethical limits apply to nudges? *Rubric:* 3 = transparent, easy to override and never manipulative;; 2 = two;; 1 = none;; 0 = none.
+- **EX080 — Nudge limits.** What ethical limits apply to nudges? *Rubric:* 3 = transparent, easy to override and never manipulative;; 2 = two;; 1 = vague;; 0 = none.
 - **EX081 — Role-play not deception.** How was the verification procedure tested? *Rubric:* 3 = role-play with a colleague acting as caller;; 2 = role-play;; 1 = real deception;; 0 = none.
 
 ### Synthesis
@@ -1424,9 +1424,9 @@ Launch spikes may fade. Help channels need staff time.
 
 ### Exercises
 
-- **EX082 — Acceptance checklist.** What served as the acceptance checklist? *Rubric:* 3 = the requirements from chapter 21;; 2 = requirements;; 1 = none;; 0 = none.
-- **EX083 — Avoided message.** Which message style did Aiko avoid? *Rubric:* 3 = fear-based messages;; 2 = fear;; 1 = none;; 0 = none.
-- **EX084 — Common question.** What did most early questions concern? *Rubric:* 3 = whether to report newsletters and supplier invoices;; 2 = newsletters;; 1 = none;; 0 = none.
+- **EX082 — Acceptance checklist.** What served as the acceptance checklist? *Rubric:* 3 = the requirements from chapter 21;; 2 = requirements;; 1 = vague;; 0 = none.
+- **EX083 — Avoided message.** Which message style did Aiko avoid? *Rubric:* 3 = fear-based messages;; 2 = fear;; 1 = vague;; 0 = none.
+- **EX084 — Common question.** What did most early questions concern? *Rubric:* 3 = whether to report newsletters and supplier invoices;; 2 = newsletters;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1492,9 +1492,9 @@ Unreported emails are only found if detected another way. Paired measures still 
 
 ### Exercises
 
-- **EX085 — Lead measure.** Why lead with reporting time? *Rubric:* 3 = it relates directly to how long attacks stay active;; 2 = exposure;; 1 = none;; 0 = none.
-- **EX086 — Lab exposure.** How much exposure came from the two unreported emails? *Rubric:* 3 = two never-reported emails caused 93% of inbox-minutes exposure;; 2 = most exposure;; 1 = none;; 0 = none.
-- **EX087 — Paired measures.** Why watch measures in pairs? *Rubric:* 3 = to stop one target being gamed at another's expense;; 2 = gaming;; 1 = none;; 0 = none.
+- **EX085 — Lead measure.** Why lead with reporting time? *Rubric:* 3 = it relates directly to how long attacks stay active;; 2 = exposure;; 1 = vague;; 0 = none.
+- **EX086 — Lab exposure.** How much exposure came from the two unreported emails? *Rubric:* 3 = two never-reported emails caused 93% of inbox-minutes exposure;; 2 = most exposure;; 1 = vague;; 0 = none.
+- **EX087 — Paired measures.** Why watch measures in pairs? *Rubric:* 3 = to stop one target being gamed at another's expense;; 2 = gaming;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1559,9 +1559,9 @@ Volunteers may be more confident than typical staff. Phone models vary widely.
 
 ### Exercises
 
-- **EX088 — Dashboard check.** What did Aiko verify about the dashboard? *Rubric:* 3 = only groups of twenty or more and no individual export;; 2 = aggregation;; 1 = none;; 0 = none.
-- **EX089 — Usability fix.** What usability problem did one volunteer reveal? *Rubric:* 3 = guidance linked only from the intranet;; 2 = link;; 1 = none;; 0 = none.
-- **EX090 — Lab verification.** How many requirements passed in each verification round? *Rubric:* 3 = 5 of 6 passed, then 6 of 6 after the notification fix;; 2 = 5 then 6;; 1 = none;; 0 = none.
+- **EX088 — Dashboard check.** What did Aiko verify about the dashboard? *Rubric:* 3 = only groups of twenty or more and no individual export;; 2 = aggregation;; 1 = vague;; 0 = none.
+- **EX089 — Usability fix.** What usability problem did one volunteer reveal? *Rubric:* 3 = guidance linked only from the intranet;; 2 = link;; 1 = vague;; 0 = none.
+- **EX090 — Lab verification.** How many requirements passed in each verification round? *Rubric:* 3 = 5 of 6 passed, then 6 of 6 after the notification fix;; 2 = 5 then 6;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1605,7 +1605,7 @@ Second officers may approve without calling if busy. Vendors may resist ticket g
 
 - **EX091 — Hold release.** Who cannot release the payment hold? *Rubric:* 3 = the person who received the request;; 2 = requester;; 1 = second officer;; 0 = none.
 - **EX092 — Vendor gate.** What must exist before a vendor session starts? *Rubric:* 3 = a valid approved maintenance ticket;; 2 = ticket;; 1 = a phone call;; 0 = none.
-- **EX093 — Role-based training.** How does role-based training differ from general awareness? *Rubric:* 3 = it focuses on steps specific roles must perform;; 2 = role steps;; 1 = none;; 0 = none.
+- **EX093 — Role-based training.** How does role-based training differ from general awareness? *Rubric:* 3 = it focuses on steps specific roles must perform;; 2 = role steps;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1669,7 +1669,7 @@ Real failure rates are hard to measure. Independence can erode over time.
 ### Exercises
 
 - **EX094 — Two checks.** What is the joint failure rate of two independent 5% checks? *Rubric:* 3 = 0.25%;; 2 = 0.0025;; 1 = 10%;; 0 = none.
-- **EX095 — Lab common cause.** How did a common cause change joint failure? *Rubric:* 3 = joint failure rose from 0.25% to 1.45%;; 2 = rise;; 1 = none;; 0 = none.
+- **EX095 — Lab common cause.** How did a common cause change joint failure? *Rubric:* 3 = joint failure rose from 0.25% to 1.45%;; 2 = rise;; 1 = vague;; 0 = none.
 - **EX096 — Building independence.** How did Aiko build independence into the second check? *Rubric:* 3 = different information and a different team;; 2 = different;; 1 = same email;; 0 = none.
 
 ### Synthesis
@@ -1712,9 +1712,9 @@ Tabletop exercises may miss practical problems. Alerts may be ignored.
 
 ### Exercises
 
-- **EX097 — Safety rule extension.** Which safety rule was extended to remote requests? *Rubric:* 3 = second engineer for dosing changes;; 2 = two-person;; 1 = none;; 0 = none.
+- **EX097 — Safety rule extension.** Which safety rule was extended to remote requests? *Rubric:* 3 = second engineer for dosing changes;; 2 = two-person;; 1 = vague;; 0 = none.
 - **EX098 — Resilience aim.** What question does designing for deception shift to? *Rubric:* 3 = how fast the organisation recovers;; 2 = recovery;; 1 = whether people are fooled;; 0 = none.
-- **EX099 — Tabletop finding.** What gap did the first tabletop reveal? *Rubric:* 3 = no out-of-hours security contact known;; 2 = rota;; 1 = none;; 0 = none.
+- **EX099 — Tabletop finding.** What gap did the first tabletop reveal? *Rubric:* 3 = no out-of-hours security contact known;; 2 = rota;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1756,9 +1756,9 @@ Automatic incident creation may cause noise. Framework mapping can become box-ti
 
 ### Exercises
 
-- **EX100 — Automatic action.** What happens when triage confirms a widely received malicious email? *Rubric:* 3 = an incident ticket opens and the email is removed;; 2 = ticket;; 1 = none;; 0 = none.
-- **EX101 — CSF function.** Which CSF 2.0 function covers roles, policies and oversight? *Rubric:* 3 = Govern;; 2 = govern;; 1 = Protect;; 0 = none.
-- **EX102 — Risk evidence.** Which measure informs the payment fraud risk? *Rubric:* 3 = held change requests and verified fakes;; 2 = held requests;; 1 = none;; 0 = none.
+- **EX100 — Automatic action.** What happens when triage confirms a widely received malicious email? *Rubric:* 3 = an incident ticket opens and the email is removed;; 2 = ticket;; 1 = vague;; 0 = none.
+- **EX101 — CSF function.** Which CSF 2.0 function covers roles, policies and oversight? *Rubric:* 3 = Govern;; 2 = govern, without explanation;; 1 = Protect;; 0 = none.
+- **EX102 — Risk evidence.** Which measure informs the payment fraud risk? *Rubric:* 3 = held change requests and verified fakes;; 2 = held requests;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1800,8 +1800,8 @@ Small tests may not generalise. Lists of genuine senders need maintenance.
 
 ### Exercises
 
-- **EX103 — Three questions.** What are the three questions in the new guide? *Rubric:* 3 = expected, urgent, asks for money credentials or access;; 2 = three;; 1 = none;; 0 = none.
-- **EX104 — Test result.** How did correct decisions change? *Rubric:* 3 = from nine to eleven out of twelve;; 2 = rise;; 1 = none;; 0 = none.
+- **EX103 — Three questions.** What are the three questions in the new guide? *Rubric:* 3 = expected, urgent, asks for money credentials or access;; 2 = three;; 1 = vague;; 0 = none.
+- **EX104 — Test result.** How did correct decisions change? *Rubric:* 3 = from nine to eleven out of twelve;; 2 = rise;; 1 = vague;; 0 = none.
 - **EX105 — Compromised supplier.** What answered the compromised-supplier challenge? *Rubric:* 3 = the payment hold control;; 2 = layered control;; 1 = the guide;; 0 = none.
 
 ### Synthesis
@@ -1868,8 +1868,8 @@ Real arrivals cluster around campaigns. Automatic verdicts can be wrong.
 ### Exercises
 
 - **EX106 — Analyst rate.** What triage rate did Aiko assume per analyst? *Rubric:* 3 = about twelve reports an hour;; 2 = twelve;; 1 = forty;; 0 = none.
-- **EX107 — Lab queue.** How long were average waits at 40, 80 and 95 reports a day? *Rubric:* 3 = 7, 14 and 25 minutes;; 2 = rise;; 1 = none;; 0 = none.
-- **EX108 — Service level.** What service level did Aiko set? *Rubric:* 3 = verdict within one working hour for 90%;; 2 = one hour;; 1 = none;; 0 = none.
+- **EX107 — Lab queue.** How long were average waits at 40, 80 and 95 reports a day? *Rubric:* 3 = 7, 14 and 25 minutes;; 2 = rise;; 1 = vague;; 0 = none.
+- **EX108 — Service level.** What service level did Aiko set? *Rubric:* 3 = verdict within one working hour for 90%;; 2 = one hour;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1911,9 +1911,9 @@ Opt-outs reduce coverage. Panels may approve borderline lures.
 
 ### Exercises
 
-- **EX109 — Banned lures.** Which lures are banned? *Rubric:* 3 = those exploiting personal distress such as pay or health;; 2 = distress;; 1 = none;; 0 = none.
-- **EX110 — Embedded training.** Why is post-click feedback short and kind? *Rubric:* 3 = Lain et al. found embedded training pages did not help;; 2 = research;; 1 = none;; 0 = none.
-- **EX111 — Withdrawn template.** Why was one template withdrawn? *Rubric:* 3 = it mimicked an HR leave message too close to personal matters;; 2 = HR;; 1 = none;; 0 = none.
+- **EX109 — Banned lures.** Which lures are banned? *Rubric:* 3 = those exploiting personal distress such as pay or health;; 2 = distress;; 1 = vague;; 0 = none.
+- **EX110 — Embedded training.** Why is post-click feedback short and kind? *Rubric:* 3 = Lain et al. found embedded training pages did not help;; 2 = research;; 1 = vague;; 0 = none.
+- **EX111 — Withdrawn template.** Why was one template withdrawn? *Rubric:* 3 = it mimicked an HR leave message too close to personal matters;; 2 = HR;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1973,8 +1973,8 @@ Before-after designs are weak. Attack patterns change year to year.
 ### Exercises
 
 - **EX112 — Definition.** What does validation ask? *Rubric:* 3 = whether the system achieves its purpose;; 2 = purpose;; 1 = built as specified;; 0 = none.
-- **EX113 — Lab outcomes.** What did the lab show for median report time and reporting share? *Rubric:* 3 = 38 to 9 minutes; 41% to 78%;; 2 = improvement;; 1 = none;; 0 = none.
-- **EX114 — Month-end burden.** What compliance budget effect did Aiko find? *Rubric:* 3 = the payment hold adds month-end work;; 2 = finance;; 1 = none;; 0 = none.
+- **EX113 — Lab outcomes.** What did the lab show for median report time and reporting share? *Rubric:* 3 = 38 to 9 minutes; 41% to 78%;; 2 = improvement;; 1 = vague;; 0 = none.
+- **EX114 — Month-end burden.** What compliance budget effect did Aiko find? *Rubric:* 3 = the payment hold adds month-end work;; 2 = finance;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2035,9 +2035,9 @@ Review dates are often missed. Handover packs go stale.
 
 ### Exercises
 
-- **EX115 — Custom software.** Why avoid custom software? *Rubric:* 3 = it needs specialists to maintain;; 2 = maintenance;; 1 = none;; 0 = none.
-- **EX116 — Lab review load.** Which quarter had the most content due for review? *Rubric:* 3 = Q3 with 14 items;; 2 = Q3;; 1 = none;; 0 = none.
-- **EX117 — Recording reasons.** Why record the reasons for decisions? *Rubric:* 3 = so successors can adapt wisely;; 2 = adapt;; 1 = none;; 0 = none.
+- **EX115 — Custom software.** Why avoid custom software? *Rubric:* 3 = it needs specialists to maintain;; 2 = maintenance;; 1 = vague;; 0 = none.
+- **EX116 — Lab review load.** Which quarter had the most content due for review? *Rubric:* 3 = Q3 with 14 items;; 2 = Q3;; 1 = vague;; 0 = none.
+- **EX117 — Recording reasons.** Why record the reasons for decisions? *Rubric:* 3 = so successors can adapt wisely;; 2 = adapt;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2101,9 +2101,9 @@ Synthetic replays miss real confusion. Live checks are harder to control.
 
 ### Exercises
 
-- **EX118 — Regression found.** What regression was found? *Rubric:* 3 = automatic verdicts lacked the guidance link;; 2 = missing link;; 1 = none;; 0 = none.
-- **EX119 — Lab load.** How fast were verdicts during the campaign replay? *Rubric:* 3 = 99% within one hour; slowest 104 minutes;; 2 = met;; 1 = none;; 0 = none.
-- **EX120 — Untested factor.** What did the replay not include? *Rubric:* 3 = the confusion of a real campaign;; 2 = live effects;; 1 = none;; 0 = none.
+- **EX118 — Regression found.** What regression was found? *Rubric:* 3 = automatic verdicts lacked the guidance link;; 2 = missing link;; 1 = vague;; 0 = none.
+- **EX119 — Lab load.** How fast were verdicts during the campaign replay? *Rubric:* 3 = 99% within one hour; slowest 104 minutes;; 2 = met;; 1 = vague;; 0 = none.
+- **EX120 — Untested factor.** What did the replay not include? *Rubric:* 3 = the confusion of a real campaign;; 2 = live effects;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2169,7 +2169,7 @@ Effect estimates are uncertain. Greedy selection is not always optimal.
 ### Exercises
 
 - **EX121 — Best value.** Which option had the highest benefit per cost? *Rubric:* 3 = security keys for targeted roles;; 2 = keys;; 1 = simulations;; 0 = none.
-- **EX122 — Lab selection.** What did the lab select within the budget? *Rubric:* 3 = keys, filtering and peak analyst for 95 of 100 units;; 2 = three;; 1 = none;; 0 = none.
+- **EX122 — Lab selection.** What did the lab select within the budget? *Rubric:* 3 = keys, filtering and peak analyst for 95 of 100 units;; 2 = three;; 1 = vague;; 0 = none.
 - **EX123 — Herley's point.** Which cost did Aiko include following Herley (2009)? *Rubric:* 3 = staff effort;; 2 = effort;; 1 = money only;; 0 = none.
 
 ### Synthesis
@@ -2213,8 +2213,8 @@ Few teams give low power. Contamination between teams is possible.
 ### Exercises
 
 - **EX124 — Unit of randomisation.** What unit was randomised? *Rubric:* 3 = teams;; 2 = team;; 1 = individuals;; 0 = none.
-- **EX125 — Accuracy definition.** How was reporting accuracy defined? *Rubric:* 3 = share of a person's reports that are genuine threats;; 2 = genuine share;; 1 = none;; 0 = none.
-- **EX126 — Null result.** Why publish the inconclusive result? *Rubric:* 3 = unpublished nulls distort the research record;; 2 = record;; 1 = none;; 0 = none.
+- **EX125 — Accuracy definition.** How was reporting accuracy defined? *Rubric:* 3 = share of a person's reports that are genuine threats;; 2 = genuine share;; 1 = vague;; 0 = none.
+- **EX126 — Null result.** Why publish the inconclusive result? *Rubric:* 3 = unpublished nulls distort the research record;; 2 = record;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2257,7 +2257,7 @@ Reflective logs can become self-justifying. Public statements need updating.
 ### Exercises
 
 - **EX127 — Constraint adaptation.** How did Aiko adapt to slow decisions? *Rubric:* 3 = planning around budget cycles and involving operators early;; 2 = planning;; 1 = bypassing rules;; 0 = none.
-- **EX128 — Customer statement.** What did the customer statement promise? *Rubric:* 3 = Greyford will never ask for bank details by email;; 2 = never;; 1 = none;; 0 = none.
+- **EX128 — Customer statement.** What did the customer statement promise? *Rubric:* 3 = Greyford will never ask for bank details by email;; 2 = never;; 1 = vague;; 0 = none.
 - **EX129 — Biggest lesson.** What did her log show about learning culture? *Rubric:* 3 = most understanding came from listening;; 2 = listening;; 1 = surveys;; 0 = none.
 
 ### Synthesis
@@ -2300,9 +2300,9 @@ Contractor turnover complicates evaluation. Small groups give wide uncertainty.
 
 ### Exercises
 
-- **EX130 — Gap addressed.** Which group did the capstone address? *Rubric:* 3 = contractors and temporary staff;; 2 = contractors;; 1 = none;; 0 = none.
-- **EX131 — Contractor concern.** What did contractors not want? *Rubric:* 3 = more monitoring than employees;; 2 = monitoring;; 1 = none;; 0 = none.
-- **EX132 — Stopping rule.** What did Prof. Kerr ask Aiko to define in advance? *Rubric:* 3 = the result that would lead her to abandon the design;; 2 = abandon;; 1 = none;; 0 = none.
+- **EX130 — Gap addressed.** Which group did the capstone address? *Rubric:* 3 = contractors and temporary staff;; 2 = contractors;; 1 = vague;; 0 = none.
+- **EX131 — Contractor concern.** What did contractors not want? *Rubric:* 3 = more monitoring than employees;; 2 = monitoring;; 1 = vague;; 0 = none.
+- **EX132 — Stopping rule.** What did Prof. Kerr ask Aiko to define in advance? *Rubric:* 3 = the result that would lead her to abandon the design;; 2 = abandon;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2363,8 +2363,8 @@ Reviewers may miss issues. Accepted risks may be forgotten.
 
 ### Exercises
 
-- **EX133 — Spoofing finding.** What did the architect find? *Rubric:* 3 = the forwarding address could be spoofed to send fake verdicts;; 2 = spoofing;; 1 = none;; 0 = none.
-- **EX134 — Lab tally.** How many findings stayed open after the response? *Rubric:* 3 = 5 closed, 1 medium open;; 2 = one open;; 1 = none;; 0 = none.
+- **EX133 — Spoofing finding.** What did the architect find? *Rubric:* 3 = the forwarding address could be spoofed to send fake verdicts;; 2 = spoofing;; 1 = vague;; 0 = none.
+- **EX134 — Lab tally.** How many findings stayed open after the response? *Rubric:* 3 = 5 closed, 1 medium open;; 2 = one open;; 1 = vague;; 0 = none.
 - **EX135 — Residual acceptance.** Who signed the residual risk acceptance? *Rubric:* 3 = the risk owner;; 2 = owner;; 1 = the designer;; 0 = none.
 
 ### Synthesis
@@ -2426,7 +2426,7 @@ Small pilots cannot show equivalence precisely. Contractor turnover affects resu
 
 ### Exercises
 
-- **EX136 — Pilot rates.** What were the simulation reporting rates? *Rubric:* 3 = contractors 21/60 and employees 26/60;; 2 = 35% vs 43%;; 1 = none;; 0 = none.
+- **EX136 — Pilot rates.** What were the simulation reporting rates? *Rubric:* 3 = contractors 21/60 and employees 26/60;; 2 = 35% vs 43%;; 1 = vague;; 0 = none.
 - **EX137 — Lab test.** What p-value did Fisher's exact test give? *Rubric:* 3 = about 0.45;; 2 = not significant;; 1 = 0.05;; 0 = none.
 - **EX138 — Decision basis.** What was the scaling decision based on? *Rubric:* 3 = predefined criteria including the stopping rule;; 2 = criteria;; 1 = significance;; 0 = none.
 
@@ -2487,8 +2487,8 @@ Planned trials are less stressful than real failures. Quiet-time trials miss pea
 ### Exercises
 
 - **EX139 — Trial ethics.** What does the trial test? *Rubric:* 3 = systems and procedures, not individuals;; 2 = systems;; 1 = staff vigilance;; 0 = none.
-- **EX140 — Lab recovery.** Which scenario exceeded its target in the lab? *Rubric:* 3 = triage outage, 60 minutes against 30;; 2 = triage;; 1 = none;; 0 = none.
-- **EX141 — Fix added.** What fix followed the triage outage? *Rubric:* 3 = an automatic reply from the mailbox itself;; 2 = acknowledgement;; 1 = none;; 0 = none.
+- **EX140 — Lab recovery.** Which scenario exceeded its target in the lab? *Rubric:* 3 = triage outage, 60 minutes against 30;; 2 = triage;; 1 = vague;; 0 = none.
+- **EX141 — Fix added.** What fix followed the triage outage? *Rubric:* 3 = an automatic reply from the mailbox itself;; 2 = acknowledgement;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2547,8 +2547,8 @@ Strength ratings are judgements. Dossiers become outdated.
 ### Exercises
 
 - **EX142 — Organisation.** How is the dossier organised? *Rubric:* 3 = around claims with evidence beneath each;; 2 = claims;; 1 = by date;; 0 = none.
-- **EX143 — Lab strengths.** What did the lab count? *Rubric:* 3 = 1 strong, 3 moderate, 1 weak claim;; 2 = counts;; 1 = none;; 0 = none.
-- **EX144 — Avoided claim.** Which claim did Aiko avoid? *Rubric:* 3 = that the programme changed culture;; 2 = culture;; 1 = none;; 0 = none.
+- **EX143 — Lab strengths.** What did the lab count? *Rubric:* 3 = 1 strong, 3 moderate, 1 weak claim;; 2 = counts;; 1 = vague;; 0 = none.
+- **EX144 — Avoided claim.** Which claim did Aiko avoid? *Rubric:* 3 = that the programme changed culture;; 2 = culture;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2590,9 +2590,9 @@ One case limits generalisation. Literature may not fit the utility context.
 
 ### Exercises
 
-- **EX145 — Structure basis.** What does the thesis structure follow? *Rubric:* 3 = the engineering life cycle;; 2 = life cycle;; 1 = none;; 0 = none.
-- **EX146 — Separation.** What does Aiko keep separate? *Rubric:* 3 = what her data show and what the literature suggests;; 2 = separation;; 1 = none;; 0 = none.
-- **EX147 — Requested change.** What change did Prof. Kerr request? *Rubric:* 3 = move the ethical simulation rules into the main text;; 2 = ethics;; 1 = none;; 0 = none.
+- **EX145 — Structure basis.** What does the thesis structure follow? *Rubric:* 3 = the engineering life cycle;; 2 = life cycle;; 1 = vague;; 0 = none.
+- **EX146 — Separation.** What does Aiko keep separate? *Rubric:* 3 = what her data show and what the literature suggests;; 2 = separation;; 1 = vague;; 0 = none.
+- **EX147 — Requested change.** What change did Prof. Kerr request? *Rubric:* 3 = move the ethical simulation rules into the main text;; 2 = ethics;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2635,8 +2635,8 @@ Defenses test communication as well as substance. Next steps need funding.
 ### Exercises
 
 - **EX148 — Simulation role.** How does Aiko describe the role of simulations? *Rubric:* 3 = sparing calibration under agreed rules, not the main measure;; 2 = calibration;; 1 = main measure;; 0 = none.
-- **EX149 — Failure examples.** Which failure modes did Aiko cite? *Rubric:* 3 = triage outage and month-end common cause;; 2 = two;; 1 = none;; 0 = none.
-- **EX150 — Next step.** Name one next step Aiko listed. *Rubric:* 3 = multi-site study of feedback wording;; 2 = study;; 1 = none;; 0 = none.
+- **EX149 — Failure examples.** Which failure modes did Aiko cite? *Rubric:* 3 = triage outage and month-end common cause;; 2 = two;; 1 = vague;; 0 = none.
+- **EX150 — Next step.** Name one next step Aiko listed. *Rubric:* 3 = multi-site study of feedback wording;; 2 = study;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

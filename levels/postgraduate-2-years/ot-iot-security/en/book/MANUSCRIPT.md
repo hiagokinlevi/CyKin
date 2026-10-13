@@ -347,7 +347,7 @@ A private APN is not encryption; carriers' internal networks are outside BWRP's 
 ### Exercises
 
 - **EX021 — The rejected option's record.** Write the rejection entry for Alternative 3. *Rubric:* 3 = reason with evidence and conditions for reconsideration; 2 = reason only; 1 = "not chosen"; 0 = none.
-- **EX022 — Trust assumption in a private APN.** State the trust assumption Alternative 1 depends on. *Rubric:* 3 = carrier isolates APN traffic and manages access correctly; 2 = vague; 1 = none; 0 = none.
+- **EX022 — Trust assumption in a private APN.** State the trust assumption Alternative 1 depends on. *Rubric:* 3 = carrier isolates APN traffic and manages access correctly; 2 = vague; 1 = minimal attempt; 0 = none.
 - **EX023 — Lifecycle cost of RTU VPNs.** List two recurring tasks Alternative 2 adds. *Rubric:* 3 = certificate renewal/rotation, router firmware patching (or concentrator maintenance); 2 = one; 1 = one-off tasks; 0 = none.
 - **EX024 — A hybrid justification.** Justify applying Alternative 2 only to six stations. *Rubric:* 3 = consequence-based tiering, cost proportional to risk; 2 = partial; 1 = cost only; 0 = none.
 - **EX025 — Conduit description.** Describe Alternative 2's conduit in zone-and-conduit language. *Rubric:* 3 = conduit from each lift-station zone through IPsec tunnel to DMZ concentrator then to SCADA zone, with stated controls; 2 = partial; 1 = "VPN"; 0 = none.
@@ -497,7 +497,7 @@ RACI tables fail if two parties are both Accountable. Metrics can be gamed; revi
 - **EX032 — Three change-board questions.** Rewrite the three security questions so a non-specialist can answer them yes/no. *Rubric:* 3 = three clear yes/no questions; 2 = two; 1 = jargon; 0 = none.
 - **EX033 — A metric that backfires.** Explain how "zero open OT findings" could backfire. *Rubric:* 3 = discourages reporting/finding; incentivises closing without fixing; 2 = partial; 1 = vague; 0 = none.
 - **EX034 — Inventory completeness figure.** Compute BWRP's combined inventory completeness. *Rubric:* 3 = 55/64 ≈ 85.9 %; 2 = right fraction; 1 = 14/23 only; 0 = none.
-- **EX035 — Reporting line choice.** Give one advantage of the OT security lead reporting to the plant director rather than the CISO. *Rubric:* 3 = authority over operations decisions, process context; 2 = vague; 1 = none; 0 = none.
+- **EX035 — Reporting line choice.** Give one advantage of the OT security lead reporting to the plant director rather than the CISO. *Rubric:* 3 = authority over operations decisions, process context; 2 = vague; 1 = minimal attempt; 0 = none.
 
 ### Synthesis
 
@@ -828,7 +828,7 @@ Transfer briefs go stale; date them. Portfolio reviews can rationalise past choi
 
 ### Exercises
 
-- **EX056 — Spotting an inconsistency.** Identify a tension between Chapter 5's decision and Chapter 7's metrics. *Rubric:* 3 = new RTU routers (Alt 2) add assets/patching not yet reflected in metrics; 2 = plausible other tension; 1 = none; 0 = none.
+- **EX056 — Spotting an inconsistency.** Identify a tension between Chapter 5's decision and Chapter 7's metrics. *Rubric:* 3 = new RTU routers (Alt 2) add assets/patching not yet reflected in metrics; 2 = plausible other tension; 1 = vague; 0 = none.
 - **EX057 — Transferring the consequence model.** Rewrite BWRP's central concern for a food factory. *Rubric:* 3 = product contamination/recall via recipe or temperature manipulation; 2 = vague; 1 = same as water; 0 = none.
 - **EX058 — The expiring evidence.** When must the restore drill be repeated to keep G4 supported under the 18-month rule? *Rubric:* 3 = before May 2027; 2 = approximately; 1 = wrong; 0 = none.
 - **EX059 — What a successor needs first.** Choose the single most important item in the brief and justify it. *Rubric:* 3 = reasoned choice (e.g. open decision with near trigger or weak spot); 2 = choice only; 1 = vague; 0 = none.

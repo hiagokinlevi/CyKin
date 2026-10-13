@@ -66,11 +66,11 @@ Plain-language definitions simplify. Referral lists must be revisited as skills 
 
 ### Exercises
 
-- **EX001 — Owen's definition.** How did Owen describe security in his own words? *Rubric:* 3 = keep tenant information private, records correct and services running;; 2 = three parts;; 1 = none;; 0 = none.
-- **EX002 — Integrity example.** Why does integrity matter for rent accounts? *Rubric:* 3 = a wrong balance could cause wrongful arrears letters;; 2 = arrears;; 1 = none;; 0 = none.
+- **EX001 — Owen's definition.** How did Owen describe security in his own words? *Rubric:* 3 = keep tenant information private, records correct and services running;; 2 = three parts;; 1 = vague;; 0 = none.
+- **EX002 — Integrity example.** Why does integrity matter for rent accounts? *Rubric:* 3 = a wrong balance could cause wrongful arrears letters;; 2 = arrears;; 1 = vague;; 0 = none.
 - **EX003 — Availability example.** Which service shows availability's importance? *Rubric:* 3 = repairs, such as a broken boiler in winter;; 2 = repairs;; 1 = portal;; 0 = none.
 - **EX004 — Course limit.** What will the course make Owen? *Rubric:* 3 = a capable practitioner who knows when to ask specialists;; 2 = practitioner;; 1 = expert;; 0 = none.
-- **EX005 — Specialist topics.** Name one topic Owen will refer to specialists. *Rubric:* 3 = cryptography, cloud configuration or legal questions;; 2 = one;; 1 = none;; 0 = none.
+- **EX005 — Specialist topics.** Name one topic Owen will refer to specialists. *Rubric:* 3 = cryptography, cloud configuration or legal questions;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -112,11 +112,11 @@ Short interviews miss detail. Owners may not foresee all consequences.
 
 ### Exercises
 
-- **EX006 — Why name owners.** Why name business owners for services? *Rubric:* 3 = only they can accept trade-offs;; 2 = trade-offs;; 1 = none;; 0 = none.
-- **EX007 — Safeguarding concern.** What did the safeguarding lead stress? *Rubric:* 3 = a leaked new address could endanger someone fleeing abuse;; 2 = address;; 1 = none;; 0 = none.
-- **EX008 — Portal compromise.** How was the portal conflict resolved? *Rubric:* 3 = extra verification only for viewing or changing contact details;; 2 = step-up;; 1 = none;; 0 = none.
-- **EX009 — Dissolving conflict.** Why do many conflicts disappear in good designs? *Rubric:* 3 = different data is protected differently;; 2 = differentiate;; 1 = none;; 0 = none.
-- **EX010 — Interview method.** How did Owen keep stakeholder interviews comparable? *Rubric:* 3 = twenty minutes with the same questions for every owner;; 2 = same questions;; 1 = none;; 0 = none.
+- **EX006 — Why name owners.** Why name business owners for services? *Rubric:* 3 = only they can accept trade-offs;; 2 = trade-offs;; 1 = vague;; 0 = none.
+- **EX007 — Safeguarding concern.** What did the safeguarding lead stress? *Rubric:* 3 = a leaked new address could endanger someone fleeing abuse;; 2 = address;; 1 = vague;; 0 = none.
+- **EX008 — Portal compromise.** How was the portal conflict resolved? *Rubric:* 3 = extra verification only for viewing or changing contact details;; 2 = step-up;; 1 = vague;; 0 = none.
+- **EX009 — Dissolving conflict.** Why do many conflicts disappear in good designs? *Rubric:* 3 = different data is protected differently;; 2 = differentiate;; 1 = vague;; 0 = none.
+- **EX010 — Interview method.** How did Owen keep stakeholder interviews comparable? *Rubric:* 3 = twenty minutes with the same questions for every owner;; 2 = same questions;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -158,7 +158,7 @@ Authorisations may be vague. Checksums prove integrity, not completeness.
 
 ### Exercises
 
-- **EX011 — Who authorised.** Who authorised Owen's review? *Rubric:* 3 = the system owner and Kwame Asante, head of IT;; 2 = both;; 1 = none;; 0 = none.
+- **EX011 — Who authorised.** Who authorised Owen's review? *Rubric:* 3 = the system owner and Kwame Asante, head of IT;; 2 = both;; 1 = vague;; 0 = none.
 - **EX012 — Checksum purpose.** Why calculate a checksum of each export? *Rubric:* 3 = to show later it was not altered;; 2 = integrity;; 1 = secrecy;; 0 = none.
 - **EX013 — Mistaken data.** What did Owen do when tenant names appeared? *Rubric:* 3 = stopped, informed the owner and deleted the extra data;; 2 = stop;; 1 = continued;; 0 = none.
 - **EX014 — Deletion.** When are working copies deleted? *Rubric:* 3 = when the work ends, as agreed;; 2 = end of work;; 1 = never;; 0 = none.
@@ -226,11 +226,11 @@ Multiplied scores imply false precision. Models miss informal channels such as p
 
 ### Exercises
 
-- **EX016 — Sensitive note.** Which sensitive data appeared in repairs access notes? *Rubric:* 3 = key safe codes;; 2 = key codes;; 1 = none;; 0 = none.
-- **EX017 — Disclosure threat.** What disclosure threat did STRIDE find? *Rubric:* 3 = key safe codes visible to every contractor;; 2 = codes;; 1 = none;; 0 = none.
+- **EX016 — Sensitive note.** Which sensitive data appeared in repairs access notes? *Rubric:* 3 = key safe codes;; 2 = key codes;; 1 = vague;; 0 = none.
+- **EX017 — Disclosure threat.** What disclosure threat did STRIDE find? *Rubric:* 3 = key safe codes visible to every contractor;; 2 = codes;; 1 = vague;; 0 = none.
 - **EX018 — Top rank.** Which threat ranked highest in the lab and with what score? *Rubric:* 3 = key safe code disclosure, 9;; 2 = key codes;; 1 = portal outage;; 0 = none.
-- **EX019 — Score caution.** What caution did Owen give about scores? *Rubric:* 3 = they guide order but are not precise measurements;; 2 = ordering;; 1 = none;; 0 = none.
-- **EX020 — Second rank.** Which threat ranked second in the lab? *Rubric:* 3 = former contractor accounts still active, 6;; 2 = former accounts;; 1 = none;; 0 = none.
+- **EX019 — Score caution.** What caution did Owen give about scores? *Rubric:* 3 = they guide order but are not precise measurements;; 2 = ordering;; 1 = vague;; 0 = none.
+- **EX020 — Second rank.** Which threat ranked second in the lab? *Rubric:* 3 = former contractor accounts still active, 6;; 2 = former accounts;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -272,11 +272,11 @@ Severity labels are generic. Tool coverage gaps are easy to miss.
 
 ### Exercises
 
-- **EX021 — Existing capability.** Why learn existing tools first? *Rubric:* 3 = organisations often own unused capabilities;; 2 = already owned;; 1 = none;; 0 = none.
-- **EX022 — Real findings.** Which two scanner findings mattered? *Rubric:* 3 = an outdated library and weak TLS on an old live test subdomain;; 2 = two;; 1 = none;; 0 = none.
+- **EX021 — Existing capability.** Why learn existing tools first? *Rubric:* 3 = organisations often own unused capabilities;; 2 = already owned;; 1 = vague;; 0 = none.
+- **EX022 — Real findings.** Which two scanner findings mattered? *Rubric:* 3 = an outdated library and weak TLS on an old live test subdomain;; 2 = two;; 1 = vague;; 0 = none.
 - **EX023 — Secure score.** What does a high cloud secure score not mean? *Rubric:* 3 = that tenant data is safe;; 2 = not safety;; 1 = safe;; 0 = none.
 - **EX024 — Empty scan.** What might no findings on a server mean? *Rubric:* 3 = the scanner could not reach it;; 2 = reachability;; 1 = secure;; 0 = none.
-- **EX025 — Tool notes.** What three things does Owen record for each tool? *Rubric:* 3 = what it measures, what it cannot see, how to confirm surprises;; 2 = two;; 1 = none;; 0 = none.
+- **EX025 — Tool notes.** What three things does Owen record for each tool? *Rubric:* 3 = what it measures, what it cannot see, how to confirm surprises;; 2 = two;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -318,11 +318,11 @@ Contract clauses depend on enforcement. Automated expiry can lock out active sta
 
 ### Exercises
 
-- **EX026 — Woven steps.** Why add steps to existing processes? *Rubric:* 3 = they get done more reliably than separate procedures;; 2 = reliability;; 1 = none;; 0 = none.
+- **EX026 — Woven steps.** Why add steps to existing processes? *Rubric:* 3 = they get done more reliably than separate procedures;; 2 = reliability;; 1 = vague;; 0 = none.
 - **EX027 — Expiry period.** When do contractor accounts expire? *Rubric:* 3 = after ninety days unless renewed;; 2 = ninety days;; 1 = never;; 0 = none.
-- **EX028 — Key code change.** How were key safe codes restricted? *Rubric:* 3 = only for the assigned contractor and visit day;; 2 = assigned;; 1 = none;; 0 = none.
-- **EX029 — Account reduction.** How did active contractor accounts change? *Rubric:* 3 = from 210 to 135;; 2 = fell;; 1 = none;; 0 = none.
-- **EX030 — Leaver reporting.** How fast must contractors report leavers? *Rubric:* 3 = within two working days, written into contracts;; 2 = two days;; 1 = none;; 0 = none.
+- **EX028 — Key code change.** How were key safe codes restricted? *Rubric:* 3 = only for the assigned contractor and visit day;; 2 = assigned;; 1 = vague;; 0 = none.
+- **EX029 — Account reduction.** How did active contractor accounts change? *Rubric:* 3 = from 210 to 135;; 2 = fell;; 1 = vague;; 0 = none.
+- **EX030 — Leaver reporting.** How fast must contractors report leavers? *Rubric:* 3 = within two working days, written into contracts;; 2 = two days;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -389,11 +389,11 @@ Test accounts may not reflect real data volume. Vendor settings can revert after
 
 ### Exercises
 
-- **EX031 — Tamper control.** Which control addresses altered job notes? *Rubric:* 3 = a change history contractors cannot edit;; 2 = history;; 1 = none;; 0 = none.
-- **EX032 — Vague requirement.** Why is "contractor access must be secure" a poor requirement? *Rubric:* 3 = it cannot be tested;; 2 = untestable;; 1 = none;; 0 = none.
-- **EX033 — Lab coverage.** What did the first test round show in the lab? *Rubric:* 3 = 3 of 4 requirements passed; code visibility failed;; 2 = 3 of 4;; 1 = none;; 0 = none.
-- **EX034 — Failure cause.** Why did the code visibility test fail? *Rubric:* 3 = the vendor cut off at the end of the following day;; 2 = cutoff;; 1 = none;; 0 = none.
-- **EX035 — Retest result.** What did the second round show in the lab? *Rubric:* 3 = all 4 requirements passed after the vendor fix;; 2 = 4 of 4;; 1 = none;; 0 = none.
+- **EX031 — Tamper control.** Which control addresses altered job notes? *Rubric:* 3 = a change history contractors cannot edit;; 2 = history;; 1 = vague;; 0 = none.
+- **EX032 — Vague requirement.** Why is "contractor access must be secure" a poor requirement? *Rubric:* 3 = it cannot be tested;; 2 = untestable;; 1 = vague;; 0 = none.
+- **EX033 — Lab coverage.** What did the first test round show in the lab? *Rubric:* 3 = 3 of 4 requirements passed; code visibility failed;; 2 = 3 of 4;; 1 = vague;; 0 = none.
+- **EX034 — Failure cause.** Why did the code visibility test fail? *Rubric:* 3 = the vendor cut off at the end of the following day;; 2 = cutoff;; 1 = vague;; 0 = none.
+- **EX035 — Retest result.** What did the second round show in the lab? *Rubric:* 3 = all 4 requirements passed after the vendor fix;; 2 = 4 of 4;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -435,11 +435,11 @@ Historical cases have missing evidence. Holds can delay genuine refunds.
 
 ### Exercises
 
-- **EX036 — Weak questions.** Why were the identity questions weak? *Rubric:* 3 = criminals can find date of birth and address;; 2 = public data;; 1 = none;; 0 = none.
-- **EX037 — System cause.** What system design enabled the fraud? *Rubric:* 3 = same-day bank change and refund without notification;; 2 = same day;; 1 = none;; 0 = none.
+- **EX036 — Weak questions.** Why were the identity questions weak? *Rubric:* 3 = criminals can find date of birth and address;; 2 = public data;; 1 = vague;; 0 = none.
+- **EX037 — System cause.** What system design enabled the fraud? *Rubric:* 3 = same-day bank change and refund without notification;; 2 = same day;; 1 = vague;; 0 = none.
 - **EX038 — Principle.** Which principle did Owen apply? *Rubric:* 3 = separation of privilege;; 2 = separation;; 1 = least privilege;; 0 = none.
-- **EX039 — Measure change.** Why adjust call centre measures? *Rubric:* 3 = handling time targets discouraged extra checks;; 2 = incentives;; 1 = none;; 0 = none.
-- **EX040 — Refund hold.** How long is the refund hold after a bank change? *Rubric:* 3 = seven days;; 2 = seven;; 1 = none;; 0 = none.
+- **EX039 — Measure change.** Why adjust call centre measures? *Rubric:* 3 = handling time targets discouraged extra checks;; 2 = incentives;; 1 = vague;; 0 = none.
+- **EX040 — Refund hold.** How long is the refund hold after a bank change? *Rubric:* 3 = seven days;; 2 = seven;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -481,11 +481,11 @@ Summaries can omit important caveats. Reporting concerns can strain working rela
 
 ### Exercises
 
-- **EX041 — Summary content.** What does the one-page summary contain? *Rubric:* 3 = findings, actions taken, what remains and decisions needed;; 2 = three;; 1 = none;; 0 = none.
-- **EX042 — Appendix material.** What did Ines ask Owen to move to an appendix? *Rubric:* 3 = lengthy method descriptions;; 2 = methods;; 1 = none;; 0 = none.
+- **EX041 — Summary content.** What does the one-page summary contain? *Rubric:* 3 = findings, actions taken, what remains and decisions needed;; 2 = three;; 1 = vague;; 0 = none.
+- **EX042 — Appendix material.** What did Ines ask Owen to move to an appendix? *Rubric:* 3 = lengthy method descriptions;; 2 = methods;; 1 = vague;; 0 = none.
 - **EX043 — Access concern.** How did Owen handle the manager's access to safeguarding notes? *Rubric:* 3 = reported facts to the data protection officer without investigating or confronting;; 2 = proper channel;; 1 = confronted;; 0 = none.
 - **EX044 — Honest answer.** How did Owen answer whether Thornbury is safe from refund fraud? *Rubric:* 3 = controls block the past method but other routes remain;; 2 = uncertainty;; 1 = yes;; 0 = none.
-- **EX045 — Confidentiality.** Why keep the access concern confidential? *Rubric:* 3 = to protect people until facts are established;; 2 = protect;; 1 = none;; 0 = none.
+- **EX045 — Confidentiality.** Why keep the access concern confidential? *Rubric:* 3 = to protect people until facts are established;; 2 = protect;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -527,11 +527,11 @@ Exceptions can be abused if checks weaken. Three months is a short observation p
 
 ### Exercises
 
-- **EX046 — Self-review gaps.** What did Owen's self-review find? *Rubric:* 3 = two decisions without owners and one requirement tested once before an update;; 2 = gaps;; 1 = none;; 0 = none.
-- **EX047 — Genuine cases.** How many genuine urgent cases occur per month? *Rubric:* 3 = about twelve;; 2 = twelve;; 1 = none;; 0 = none.
+- **EX046 — Self-review gaps.** What did Owen's self-review find? *Rubric:* 3 = two decisions without owners and one requirement tested once before an update;; 2 = gaps;; 1 = vague;; 0 = none.
+- **EX047 — Genuine cases.** How many genuine urgent cases occur per month? *Rubric:* 3 = about twelve;; 2 = twelve;; 1 = vague;; 0 = none.
 - **EX048 — Exception path.** How can the hold be shortened? *Rubric:* 3 = call back to the registered number by a different team, then one day;; 2 = call back;; 1 = removed;; 0 = none.
-- **EX049 — Principle kept.** Which principle does the exception preserve? *Rubric:* 3 = separation of privilege, by requiring two people;; 2 = two people;; 1 = none;; 0 = none.
-- **EX050 — Early results.** What happened in the first three months of the exception? *Rubric:* 3 = complaints fell and no fraud used the exception;; 2 = both;; 1 = none;; 0 = none.
+- **EX049 — Principle kept.** Which principle does the exception preserve? *Rubric:* 3 = separation of privilege, by requiring two people;; 2 = two people;; 1 = vague;; 0 = none.
+- **EX050 — Early results.** What happened in the first three months of the exception? *Rubric:* 3 = complaints fell and no fraud used the exception;; 2 = both;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -599,11 +599,11 @@ Role definitions may be wrong. Access outside the system remains invisible.
 
 ### Exercises
 
-- **EX051 — Definition first.** Why define expected permissions before the review? *Rubric:* 3 = a review is only as good as its definition of needs;; 2 = baseline;; 1 = none;; 0 = none.
-- **EX052 — Lab finding count.** How many users had excess permissions in the lab? *Rubric:* 3 = 4 of 9;; 2 = four;; 1 = none;; 0 = none.
+- **EX051 — Definition first.** Why define expected permissions before the review? *Rubric:* 3 = a review is only as good as its definition of needs;; 2 = baseline;; 1 = vague;; 0 = none.
+- **EX052 — Lab finding count.** How many users had excess permissions in the lab? *Rubric:* 3 = 4 of 9;; 2 = four;; 1 = vague;; 0 = none.
 - **EX053 — Top risks.** Which findings ranked highest? *Rubric:* 3 = the active leaver account and unneeded safeguarding access;; 2 = two;; 1 = finance;; 0 = none.
 - **EX054 — Report structure.** Where do individual names go in Owen's report? *Rubric:* 3 = a restricted appendix;; 2 = appendix;; 1 = main text;; 0 = none.
-- **EX055 — Lab blind spot.** What could the lab not see? *Rubric:* 3 = permissions inside documents or shared folders outside the system;; 2 = outside access;; 1 = none;; 0 = none.
+- **EX055 — Lab blind spot.** What could the lab not see? *Rubric:* 3 = permissions inside documents or shared folders outside the system;; 2 = outside access;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -645,11 +645,11 @@ Portfolios can overstate individual contribution. Short-term outcomes may not la
 
 ### Exercises
 
-- **EX056 — Portfolio notes.** What note accompanies each portfolio item? *Rubric:* 3 = what he did, what he learned and what he would change;; 2 = three;; 1 = none;; 0 = none.
+- **EX056 — Portfolio notes.** What note accompanies each portfolio item? *Rubric:* 3 = what he did, what he learned and what he would change;; 2 = three;; 1 = vague;; 0 = none.
 - **EX057 — Fraud caution.** Why is no reported fraud not proof of success? *Rubric:* 3 = a few months without fraud does not prove the risk has gone;; 2 = short period;; 1 = proof;; 0 = none.
-- **EX058 — Next learning.** What will Owen study next? *Rubric:* 3 = identity and cloud security;; 2 = identity;; 1 = none;; 0 = none.
-- **EX059 — Background strength.** Why did Owen's background become a strength? *Rubric:* 3 = architecture is largely coordinating people, decisions and evidence;; 2 = coordination;; 1 = none;; 0 = none.
-- **EX060 — Data in portfolio.** How is personal data handled in the portfolio? *Rubric:* 3 = removed or replaced with synthetic examples;; 2 = removed;; 1 = none;; 0 = none.
+- **EX058 — Next learning.** What will Owen study next? *Rubric:* 3 = identity and cloud security;; 2 = identity;; 1 = vague;; 0 = none.
+- **EX059 — Background strength.** Why did Owen's background become a strength? *Rubric:* 3 = architecture is largely coordinating people, decisions and evidence;; 2 = coordination;; 1 = vague;; 0 = none.
+- **EX060 — Data in portfolio.** How is personal data handled in the portfolio? *Rubric:* 3 = removed or replaced with synthetic examples;; 2 = removed;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

@@ -115,10 +115,10 @@ Kappa summarises agreement but hides where disagreement lies; inspect disagreeme
 - **EX001 — Research question.** State Lucía's research question. *Rubric:* 3 = whether checklist review leaves fewer high-severity issues than unstructured review;; 2 = checklist vs usual;; 1 = tools;; 0 = none.
 - **EX002 — Category sources.** Which public sources shape the four categories? *Rubric:* 3 = SWC registry and OWASP Smart Contract Top 10;; 2 = SWC;; 1 = CVE;; 0 = none.
 - **EX003 — Kappa value.** What kappa did the coders reach? *Rubric:* 3 = 0.833 from 35 of 40 agreed;; 2 = 0.83;; 1 = 0.875;; 0 = none.
-- **EX004 — Disagreement pattern.** What pattern did the disagreements show? *Rubric:* 3 = four of five went to other;; 2 = other absorbs;; 1 = none;; 0 = none.
+- **EX004 — Disagreement pattern.** What pattern did the disagreements show? *Rubric:* 3 = four of five went to other;; 2 = other absorbs;; 1 = vague;; 0 = none.
 - **EX005 — Disclosure rule.** When may partners share findings? *Rubric:* 3 = after fixes deployed or contract retired;; 2 = after fix;; 1 = anytime;; 0 = none.
 - **EX006 — Publication limit.** What may never appear in publications? *Rubric:* 3 = code or steps that reproduce an attack;; 2 = attack steps;; 1 = names;; 0 = none.
-- **EX007 — External validity.** What external validity concern does Lucía note? *Rubric:* 3 = permissioned ledger may not generalise to public DeFi;; 2 = generalisation;; 1 = none;; 0 = none.
+- **EX007 — External validity.** What external validity concern does Lucía note? *Rubric:* 3 = permissioned ledger may not generalise to public DeFi;; 2 = generalisation;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -256,7 +256,7 @@ Choosing hypotheses or analyses after seeing the data produces results that cann
 ### Exercises
 
 - **EX015 — Residual definition.** What is a residual issue? *Rubric:* 3 = high-severity issue found by blinded reviewer after first review closed;; 2 = missed issue;; 1 = any finding;; 0 = none.
-- **EX016 — Secondary hypothesis.** What is the secondary hypothesis? *Rubric:* 3 = checklist reduces residual access-control issues most;; 2 = access control;; 1 = none;; 0 = none.
+- **EX016 — Secondary hypothesis.** What is the secondary hypothesis? *Rubric:* 3 = checklist reduces residual access-control issues most;; 2 = access control;; 1 = vague;; 0 = none.
 - **EX017 — Contract allocation.** How are contracts allocated? *Rubric:* 3 = 24 randomised within size strata, 12 per arm;; 2 = random;; 1 = chosen;; 0 = none.
 - **EX018 — Seeding limit.** What weaknesses may contracts contain? *Rubric:* 3 = only those documented in public registries;; 2 = public;; 1 = new ones;; 0 = none.
 - **EX019 — Planned test.** What test is planned? *Rubric:* 3 = one-sided permutation test with fixed seed;; 2 = permutation;; 1 = t-test only;; 0 = none.
@@ -353,7 +353,7 @@ Skipping a pilot leaves ambiguities that add noise to the main study.
 - **EX022 — High share.** What share of baseline findings were high severity? *Rubric:* 3 = 17 of 60, 28.3%;; 2 = 28%;; 1 = 50%;; 0 = none.
 - **EX023 — Top category.** Which category had the most high findings? *Rubric:* 3 = access control, nine;; 2 = access;; 1 = arithmetic;; 0 = none.
 - **EX024 — Project variation.** Why stratify by project? *Rubric:* 3 = projects differ in high findings;; 2 = variation;; 1 = cost;; 0 = none.
-- **EX025 — Pilot problem.** What did the pilot reveal? *Rubric:* 3 = unrecorded skips and three ambiguous items;; 2 = ambiguity;; 1 = none;; 0 = none.
+- **EX025 — Pilot problem.** What did the pilot reveal? *Rubric:* 3 = unrecorded skips and three ambiguous items;; 2 = ambiguity;; 1 = vague;; 0 = none.
 - **EX026 — Change logging.** How are checklist changes recorded? *Rubric:* 3 = deviation log against the registered plan;; 2 = log;; 1 = not recorded;; 0 = none.
 
 ### Synthesis
@@ -444,7 +444,7 @@ Reporting only a p-value without effect size, sample size and limits overstates 
 - **EX029 — Zero counts.** How many contracts had zero residual high issues? *Rubric:* 3 = 8 of 12 checklist, 2 of 12 usual;; 2 = 8 and 2;; 1 = all;; 0 = none.
 - **EX030 — Fidelity meaning.** Why monitor fidelity? *Rubric:* 3 = to keep the procedures distinct;; 2 = separation;; 1 = speed;; 0 = none.
 - **EX031 — Validation outcome.** What did the second reviewer change? *Rubric:* 3 = downgraded two usual-arm issues to medium;; 2 = downgrades;; 1 = nothing;; 0 = none.
-- **EX032 — Time cost.** What cost did the checklist add? *Rubric:* 3 = about fifteen percent longer reviews;; 2 = time;; 1 = none;; 0 = none.
+- **EX032 — Time cost.** What cost did the checklist add? *Rubric:* 3 = about fifteen percent longer reviews;; 2 = time;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -546,7 +546,7 @@ Releasing contract code or detailed weakness descriptions in an archive can help
 - **EX041 — Archive excluded.** What does the archive exclude? *Rubric:* 3 = contract source, addresses, attack-enabling descriptions;; 2 = code;; 1 = seeds;; 0 = none.
 - **EX042 — Weakness representation.** How are seeded weaknesses described? *Rubric:* 3 = registry identifiers and categories only;; 2 = IDs;; 1 = full detail;; 0 = none.
 - **EX043 — Removed field.** What did the security review remove? *Rubric:* 3 = an over-detailed free-text reasoning field;; 2 = free text;; 1 = nothing;; 0 = none.
-- **EX044 — Contribution count.** Name one listed contribution. *Rubric:* 3 = validated codebook;; 2 = randomised comparison;; 1 = none;; 0 = none.
+- **EX044 — Contribution count.** Name one listed contribution. *Rubric:* 3 = validated codebook;; 2 = randomised comparison;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -596,8 +596,8 @@ Publishing detailed weakness examples from partner contracts could aid attackers
 - **EX046 — Rehearsal output.** What does each rehearsal produce? *Rubric:* 3 = list of weak answers to strengthen;; 2 = weak answers;; 1 = slides;; 0 = none.
 - **EX047 — Anticipated question.** Name one anticipated question. *Rubric:* 3 = why permissioned contracts;; 2 = how severity was rated;; 1 = favourite colour;; 0 = none.
 - **EX048 — Pre-submission check.** What happens before submission? *Rubric:* 3 = partner security leads confirm nothing aids attacks;; 2 = security review;; 1 = nothing;; 0 = none.
-- **EX049 — Corrections requested.** What corrections were requested? *Rubric:* 3 = clarify severity examples, expand economic and oracle risks;; 2 = two;; 1 = none;; 0 = none.
-- **EX050 — Follow-up work.** What follow-up is proposed? *Rubric:* 3 = study public DeFi protocols with post-fix findings;; 2 = DeFi;; 1 = none;; 0 = none.
+- **EX049 — Corrections requested.** What corrections were requested? *Rubric:* 3 = clarify severity examples, expand economic and oracle risks;; 2 = two;; 1 = vague;; 0 = none.
+- **EX050 — Follow-up work.** What follow-up is proposed? *Rubric:* 3 = study public DeFi protocols with post-fix findings;; 2 = DeFi;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

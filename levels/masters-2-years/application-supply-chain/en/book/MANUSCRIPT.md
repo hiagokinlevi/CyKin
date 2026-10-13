@@ -87,13 +87,13 @@ Small literatures can reflect search limits; report the search fully so readers 
 
 ### Exercises
 
-- **EX001 — The problem.** What problem triggered the study? *Rubric:* 3 = access-control flaws recurring; invoice view; refunds two releases later; 2 = partial; 1 = none; 0 = none.
+- **EX001 — The problem.** What problem triggered the study? *Rubric:* 3 = access-control flaws recurring; invoice view; refunds two releases later; 2 = partial; 1 = vague; 0 = none.
 - **EX002 — Question parts.** Name the parts of Sofia's question. *Rubric:* 3 = intervention, outcome, alternative explanations; 2 = two; 1 = one; 0 = none.
-- **EX003 — OWASP rank.** Where does broken access control rank in the OWASP Top 10:2021? *Rubric:* 3 = A01, first; 2 = one; 1 = none; 0 = none.
-- **EX004 — CWE names.** Give two CWE entries related to the case. *Rubric:* 3 = CWE-862, CWE-639; 2 = one; 1 = none; 0 = none.
-- **EX005 — Search log.** What does the search log record? *Rubric:* 3 = date, database, query, hits, exclusions with reasons; 2 = partial; 1 = none; 0 = none.
-- **EX006 — Grey literature.** How does Sofia use WSTG? *Rubric:* 3 = definitions not effectiveness evidence; 2 = partial; 1 = none; 0 = none.
-- **EX007 — Usability warning.** What did Johnson et al. (2013) find? *Rubric:* 3 = developers avoid tools with false positives, poor explanations; 2 = partial; 1 = none; 0 = none.
+- **EX003 — OWASP rank.** Where does broken access control rank in the OWASP Top 10:2021? *Rubric:* 3 = A01, first; 2 = one; 1 = vague; 0 = none.
+- **EX004 — CWE names.** Give two CWE entries related to the case. *Rubric:* 3 = CWE-862, CWE-639; 2 = one; 1 = vague; 0 = none.
+- **EX005 — Search log.** What does the search log record? *Rubric:* 3 = date, database, query, hits, exclusions with reasons; 2 = partial; 1 = vague; 0 = none.
+- **EX006 — Grey literature.** How does Sofia use WSTG? *Rubric:* 3 = definitions not effectiveness evidence; 2 = partial; 1 = vague; 0 = none.
+- **EX007 — Usability warning.** What did Johnson et al. (2013) find? *Rubric:* 3 = developers avoid tools with false positives, poor explanations; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -160,12 +160,12 @@ Mapping to frameworks shows alignment, not effectiveness.
 ### Exercises
 
 - **EX008 — SSDF groups.** Name the four SSDF practice groups. *Rubric:* 3 = prepare, protect, produce, respond; 2 = three; 1 = one; 0 = none.
-- **EX009 — Intervention placement.** Where does the intervention sit in SSDF and SAMM? *Rubric:* 3 = PW.8; SAMM verification; 2 = partial; 1 = none; 0 = none.
-- **EX010 — Version care.** Why record both ASVS identifiers? *Rubric:* 3 = 5.0.0 renumbered chapters; 2 = partial; 1 = none; 0 = none.
+- **EX009 — Intervention placement.** Where does the intervention sit in SSDF and SAMM? *Rubric:* 3 = PW.8; SAMM verification; 2 = partial; 1 = vague; 0 = none.
+- **EX010 — Version care.** Why record both ASVS identifiers? *Rubric:* 3 = 5.0.0 renumbered chapters; 2 = partial; 1 = vague; 0 = none.
 - **EX011 — Four questions.** State Shostack's four questions. *Rubric:* 3 = working on; go wrong; do about it; good job; 2 = three; 1 = one; 0 = none.
-- **EX012 — Library link.** How can libraries cause regressions? *Rubric:* 3 = upgrade changes defaults; traceable inputs help; 2 = partial; 1 = none; 0 = none.
-- **EX013 — Classmate critique.** What was the critique and response? *Rubric:* 3 = tests check only listed cases; measure matrix completeness; 2 = partial; 1 = none; 0 = none.
-- **EX014 — Mapping addition.** What did Dr Lee add to the mapping? *Rubric:* 3 = CWE entry per test; 2 = partial; 1 = none; 0 = none.
+- **EX012 — Library link.** How can libraries cause regressions? *Rubric:* 3 = upgrade changes defaults; traceable inputs help; 2 = partial; 1 = vague; 0 = none.
+- **EX013 — Classmate critique.** What was the critique and response? *Rubric:* 3 = tests check only listed cases; measure matrix completeness; 2 = partial; 1 = vague; 0 = none.
+- **EX014 — Mapping addition.** What did Dr Lee add to the mapping? *Rubric:* 3 = CWE entry per test; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -239,12 +239,12 @@ A before-and-after design cannot rule out other changes happening at the same ti
 
 ### Exercises
 
-- **EX015 — Design type.** What design does Sofia use? *Rubric:* 3 = interrupted time series, 6 before 6 after; 2 = partial; 1 = none; 0 = none.
-- **EX016 — Normalisation.** Why use findings per KLOC? *Rubric:* 3 = adjusts for amount of change; 2 = partial; 1 = none; 0 = none.
-- **EX017 — Ethics safeguard.** How are developers protected? *Rubric:* 3 = findings attributed to releases; not used in reviews; 2 = partial; 1 = none; 0 = none.
-- **EX018 — Unfixed flaws.** What rule applies to unfixed flaws? *Rubric:* 3 = never described; all fixed before publication; 2 = partial; 1 = none; 0 = none.
-- **EX019 — Reproducible.** How can others reproduce without company data? *Rubric:* 3 = scripts + synthetic dataset same structure; 2 = partial; 1 = none; 0 = none.
-- **EX020 — Classification.** How are findings classified? *Rubric:* 3 = two people with A01 definition; disagreements logged; 2 = partial; 1 = none; 0 = none.
+- **EX015 — Design type.** What design does Sofia use? *Rubric:* 3 = interrupted time series, 6 before 6 after; 2 = partial; 1 = vague; 0 = none.
+- **EX016 — Normalisation.** Why use findings per KLOC? *Rubric:* 3 = adjusts for amount of change; 2 = partial; 1 = vague; 0 = none.
+- **EX017 — Ethics safeguard.** How are developers protected? *Rubric:* 3 = findings attributed to releases; not used in reviews; 2 = partial; 1 = vague; 0 = none.
+- **EX018 — Unfixed flaws.** What rule applies to unfixed flaws? *Rubric:* 3 = never described; all fixed before publication; 2 = partial; 1 = vague; 0 = none.
+- **EX019 — Reproducible.** How can others reproduce without company data? *Rubric:* 3 = scripts + synthetic dataset same structure; 2 = partial; 1 = vague; 0 = none.
+- **EX020 — Classification.** How are findings classified? *Rubric:* 3 = two people with A01 definition; disagreements logged; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -319,11 +319,11 @@ Unmeasured explanations may remain; say which you could not check.
 ### Exercises
 
 - **EX021 — Four alternatives.** List four alternative explanations. *Rubric:* 3 = pentest effort, framework, new developer, tester focus; 2 = three; 1 = one; 0 = none.
-- **EX022 — Effort check.** How was pentest effort checked? *Rubric:* 3 = tester-days stable at four; 2 = partial; 1 = none; 0 = none.
-- **EX023 — Framework effect.** What did the framework upgrade add? *Rubric:* 3 = default deny for unmapped routes; 2 = partial; 1 = none; 0 = none.
-- **EX024 — Separation result.** What did separating routes show? *Rubric:* 3 = unaffected routes still fell; real but smaller effect; 2 = partial; 1 = none; 0 = none.
-- **EX025 — Scope check.** Was authorisation always in scope? *Rubric:* 3 = yes, all twelve releases; 2 = one; 1 = none; 0 = none.
-- **EX026 — Honest reporting.** How will Sofia report causes? *Rubric:* 3 = tests one cause among several; 2 = partial; 1 = none; 0 = none.
+- **EX022 — Effort check.** How was pentest effort checked? *Rubric:* 3 = tester-days stable at four; 2 = partial; 1 = vague; 0 = none.
+- **EX023 — Framework effect.** What did the framework upgrade add? *Rubric:* 3 = default deny for unmapped routes; 2 = partial; 1 = vague; 0 = none.
+- **EX024 — Separation result.** What did separating routes show? *Rubric:* 3 = unaffected routes still fell; real but smaller effect; 2 = partial; 1 = vague; 0 = none.
+- **EX025 — Scope check.** Was authorisation always in scope? *Rubric:* 3 = yes, all twelve releases; 2 = one; 1 = vague; 0 = none.
+- **EX026 — Honest reporting.** How will Sofia report causes? *Rubric:* 3 = tests one cause among several; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -420,11 +420,11 @@ A test environment may differ from production configuration.
 ### Exercises
 
 - **EX027 — Proposal sections.** List five proposal sections. *Rubric:* 3 = background, question, design, ethics, alternatives, timeline, risks (five); 2 = three; 1 = one; 0 = none.
-- **EX028 — Matrix meaning.** What does the role matrix state? *Rubric:* 3 = per role and endpoint, allowed or not; 2 = partial; 1 = none; 0 = none.
-- **EX029 — Lab mismatches.** What mismatches did the lab find? *Rubric:* 3 = customer reads other invoice; support issues refunds; 2 = one; 1 = none; 0 = none.
-- **EX030 — Completeness fix.** How was matrix completeness addressed? *Rubric:* 3 = list framework routes; flag unmapped; 2 = partial; 1 = none; 0 = none.
-- **EX031 — Clear failures.** Why did developers find failures clear? *Rubric:* 3 = named role, endpoint, intended decision; 2 = partial; 1 = none; 0 = none.
-- **EX032 — Health checks.** How were the unmapped health checks handled? *Rubric:* 3 = deny for all user roles; 2 = partial; 1 = none; 0 = none.
+- **EX028 — Matrix meaning.** What does the role matrix state? *Rubric:* 3 = per role and endpoint, allowed or not; 2 = partial; 1 = vague; 0 = none.
+- **EX029 — Lab mismatches.** What mismatches did the lab find? *Rubric:* 3 = customer reads other invoice; support issues refunds; 2 = one; 1 = vague; 0 = none.
+- **EX030 — Completeness fix.** How was matrix completeness addressed? *Rubric:* 3 = list framework routes; flag unmapped; 2 = partial; 1 = vague; 0 = none.
+- **EX031 — Clear failures.** Why did developers find failures clear? *Rubric:* 3 = named role, endpoint, intended decision; 2 = partial; 1 = vague; 0 = none.
+- **EX032 — Health checks.** How were the unmapped health checks handled? *Rubric:* 3 = deny for all user roles; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -525,12 +525,12 @@ Pentest findings depend on tester skill; changes of tester could affect counts.
 
 ### Exercises
 
-- **EX033 — Classifier agreement.** How many findings did classifiers agree on? *Rubric:* 3 = 46 of 48; 2 = one; 1 = none; 0 = none.
-- **EX034 — Per-release figures.** Give findings per release before and after. *Rubric:* 3 = 2.83 and 0.50; 2 = one; 1 = none; 0 = none.
-- **EX035 — Rate ratio.** What is the rate ratio? *Rubric:* 3 = 0.14 (0.415 to 0.058); 2 = partial; 1 = none; 0 = none.
-- **EX036 — Change size.** Why does change size strengthen the result? *Rubric:* 3 = after period changed more code; 2 = partial; 1 = none; 0 = none.
-- **EX037 — Caution.** What does Sofia avoid claiming? *Rubric:* 3 = 86% reduction caused by tests; 2 = partial; 1 = none; 0 = none.
-- **EX038 — Product effect.** What side effect did a developer describe? *Rubric:* 3 = matrix forced explicit role decisions; 2 = partial; 1 = none; 0 = none.
+- **EX033 — Classifier agreement.** How many findings did classifiers agree on? *Rubric:* 3 = 46 of 48; 2 = one; 1 = vague; 0 = none.
+- **EX034 — Per-release figures.** Give findings per release before and after. *Rubric:* 3 = 2.83 and 0.50; 2 = one; 1 = vague; 0 = none.
+- **EX035 — Rate ratio.** What is the rate ratio? *Rubric:* 3 = 0.14 (0.415 to 0.058); 2 = partial; 1 = vague; 0 = none.
+- **EX036 — Change size.** Why does change size strengthen the result? *Rubric:* 3 = after period changed more code; 2 = partial; 1 = vague; 0 = none.
+- **EX037 — Caution.** What does Sofia avoid claiming? *Rubric:* 3 = 86% reduction caused by tests; 2 = partial; 1 = vague; 0 = none.
+- **EX038 — Product effect.** What side effect did a developer describe? *Rubric:* 3 = matrix forced explicit role decisions; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -609,11 +609,11 @@ Over-hedging can hide useful findings; balance caution with clarity.
 ### Exercises
 
 - **EX039 — Chapter list.** List the dissertation chapters. *Rubric:* 3 = intro, literature, method, results, alternatives, discussion, limitations, conclusion; 2 = six; 1 = three; 0 = none.
-- **EX040 — Limitation form.** What must each limitation state? *Rubric:* 3 = meaning for claim; future work; 2 = partial; 1 = none; 0 = none.
-- **EX041 — Confidentiality.** How is Tallyline protected? *Rubric:* 3 = named with permission; rounded; synthetic examples; 2 = partial; 1 = none; 0 = none.
-- **EX042 — Standards link.** How do results link to ASVS and SSDF? *Rubric:* 3 = continuous ASVS authorisation; evidence PW.8; 2 = partial; 1 = none; 0 = none.
-- **EX043 — Hedging words.** Give a hedged phrasing. *Rubric:* 3 = "was followed by", "consistent with"; 2 = partial; 1 = none; 0 = none.
-- **EX044 — Dynamic roles.** When might the approach not work? *Rubric:* 3 = apps with hundreds of dynamic roles; 2 = partial; 1 = none; 0 = none.
+- **EX040 — Limitation form.** What must each limitation state? *Rubric:* 3 = meaning for claim; future work; 2 = partial; 1 = vague; 0 = none.
+- **EX041 — Confidentiality.** How is Tallyline protected? *Rubric:* 3 = named with permission; rounded; synthetic examples; 2 = partial; 1 = vague; 0 = none.
+- **EX042 — Standards link.** How do results link to ASVS and SSDF? *Rubric:* 3 = continuous ASVS authorisation; evidence PW.8; 2 = partial; 1 = vague; 0 = none.
+- **EX043 — Hedging words.** Give a hedged phrasing. *Rubric:* 3 = "was followed by", "consistent with"; 2 = partial; 1 = vague; 0 = none.
+- **EX044 — Dynamic roles.** When might the approach not work? *Rubric:* 3 = apps with hundreds of dynamic roles; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -691,12 +691,12 @@ A single defense cannot test generalisation; replication by others is needed.
 
 ### Exercises
 
-- **EX045 — Reviewer role.** What did the independent reviewer do? *Rubric:* 3 = re-ran scripts; confirmed; suggested routes count; 2 = partial; 1 = none; 0 = none.
-- **EX046 — Ratio answer.** How did Sofia defend the 0.14 ratio? *Rubric:* 3 = imprecise but consistent with other evidence; 2 = partial; 1 = none; 0 = none.
-- **EX047 — Missing tests.** How are missing tests caught? *Rubric:* 3 = route completeness check; 2 = partial; 1 = none; 0 = none.
+- **EX045 — Reviewer role.** What did the independent reviewer do? *Rubric:* 3 = re-ran scripts; confirmed; suggested routes count; 2 = partial; 1 = vague; 0 = none.
+- **EX046 — Ratio answer.** How did Sofia defend the 0.14 ratio? *Rubric:* 3 = imprecise but consistent with other evidence; 2 = partial; 1 = vague; 0 = none.
+- **EX047 — Missing tests.** How are missing tests caught? *Rubric:* 3 = route completeness check; 2 = partial; 1 = vague; 0 = none.
 - **EX048 — Dissemination.** List three dissemination outputs. *Rubric:* 3 = short paper, blog, OWASP talk; 2 = two; 1 = one; 0 = none.
-- **EX049 — Next step.** What did Tallyline do next? *Rubric:* 3 = extend to mobile API; 2 = partial; 1 = none; 0 = none.
-- **EX050 — Dataset sharing.** How was the dataset shared? *Rubric:* 3 = CC0 for a course; 2 = partial; 1 = none; 0 = none.
+- **EX049 — Next step.** What did Tallyline do next? *Rubric:* 3 = extend to mobile API; 2 = partial; 1 = vague; 0 = none.
+- **EX050 — Dataset sharing.** How was the dataset shared? *Rubric:* 3 = CC0 for a course; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 

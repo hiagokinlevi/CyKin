@@ -76,8 +76,8 @@ SOCs differ widely in size and scope; Northgate's is small and generalist.
 
 - **EX001 — SOC purpose.** In one sentence, what is a SOC for? *Rubric:* 3 = watch, decide what matters, coordinate response; 2 = partial; 1 = vague; 0 = none.
 - **EX002 — Morning event.** Summarise the 09:04–09:09 events. *Rubric:* 3 = 46 failures from 203.0.113.80, then parks01 success at 09:09; 2 = partial; 1 = wrong; 0 = none.
-- **EX003 — Who changes systems.** Why does the SOC depend on IT? *Rubric:* 3 = SOC does not own most systems; IT makes changes; 2 = partial; 1 = none; 0 = none.
-- **EX004 — CSF functions.** Which two CSF 2.0 functions hold most SOC work? *Rubric:* 3 = Detect and Respond; 2 = one; 1 = none; 0 = none.
+- **EX003 — Who changes systems.** Why does the SOC depend on IT? *Rubric:* 3 = SOC does not own most systems; IT makes changes; 2 = partial; 1 = vague; 0 = none.
+- **EX004 — CSF functions.** Which two CSF 2.0 functions hold most SOC work? *Rubric:* 3 = Detect and Respond; 2 = one; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -136,9 +136,9 @@ More logs cost money to store and search; collect what supports decisions.
 ### Exercises
 
 - **EX005 — Five fields.** Name five fields of a useful log entry. *Rubric:* 3 = time, source, user, action, outcome; 2 = four; 1 = two; 0 = none.
-- **EX006 — Time agreement.** Why must clocks agree? *Rubric:* 3 = otherwise event order is wrong; 2 = partial; 1 = none; 0 = none.
+- **EX006 — Time agreement.** Why must clocks agree? *Rubric:* 3 = otherwise event order is wrong; 2 = partial; 1 = vague; 0 = none.
 - **EX007 — Log sources.** List four Northgate log sources. *Rubric:* 3 = portal, DCs, endpoint agents, email, proxy, firewall (four); 2 = two; 1 = one; 0 = none.
-- **EX008 — Retention purpose.** Why keep logs for a set period? *Rubric:* 3 = to check past activity; 2 = partial; 1 = none; 0 = none.
+- **EX008 — Retention purpose.** Why keep logs for a set period? *Rubric:* 3 = to check past activity; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -197,9 +197,9 @@ SIEM rules only see what is logged; gaps in collection are blind spots.
 ### Exercises
 
 - **EX009 — Three terms.** Distinguish event, alert and incident. *Rubric:* 3 = logged thing; rule-flagged; confirmed harm/threat; 2 = partial; 1 = confused; 0 = none.
-- **EX010 — Rule example.** Give the failed-logon rule in words. *Rubric:* 3 = 20+ failures from one source in 10 min; 2 = partial; 1 = none; 0 = none.
+- **EX010 — Rule example.** Give the failed-logon rule in words. *Rubric:* 3 = 20+ failures from one source in 10 min; 2 = partial; 1 = vague; 0 = none.
 - **EX011 — Sigma.** What is Sigma? *Rubric:* 3 = open vendor-neutral rule format; 2 = partial; 1 = tool; 0 = none.
-- **EX012 — Linking alerts.** Why link the two alerts in one case? *Rubric:* 3 = shared source; whole story visible; 2 = partial; 1 = none; 0 = none.
+- **EX012 — Linking alerts.** Why link the two alerts in one case? *Rubric:* 3 = shared source; whole story visible; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -277,9 +277,9 @@ Some sources are shared by many users (for example a mobile carrier); check befo
 ### Exercises
 
 - **EX013 — Lab counts.** What did the lab report? *Rubric:* 3 = 46 from .80 ALERT; 3 and 2 ok; success parks01; 2 = partial; 1 = one; 0 = none.
-- **EX014 — Why success matters.** Why does a later success matter? *Rubric:* 3 = guessing may have worked; possible compromise; 2 = partial; 1 = none; 0 = none.
-- **EX015 — Shared account risk.** Give two risks of shared accounts. *Rubric:* 3 = easy to guess/old password; cannot tell who used it; 2 = one; 1 = none; 0 = none.
-- **EX016 — Recommended action.** What did Carlos recommend? *Rubric:* 3 = disable parks01; check activity since 09:09; 2 = partial; 1 = none; 0 = none.
+- **EX014 — Why success matters.** Why does a later success matter? *Rubric:* 3 = guessing may have worked; possible compromise; 2 = partial; 1 = vague; 0 = none.
+- **EX015 — Shared account risk.** Give two risks of shared accounts. *Rubric:* 3 = easy to guess/old password; cannot tell who used it; 2 = one; 1 = vague; 0 = none.
+- **EX016 — Recommended action.** What did Carlos recommend? *Rubric:* 3 = disable parks01; check activity since 09:09; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -359,7 +359,7 @@ A simple score can mislead; an analyst's judgement can override it with a record
 - **EX017 — Triage aim.** What is the aim of triage? *Rubric:* 3 = place alert: close, investigate, escalate; 2 = partial; 1 = finish; 0 = none.
 - **EX018 — Lab order.** Give the top two alerts from the lab and their scores. *Rubric:* 3 = A2 9 P1; A4 6 P2; 2 = partial; 1 = wrong; 0 = none.
 - **EX019 — When to escalate.** When does Carlos escalate? *Rubric:* 3 = P1, unsure, service-affecting action; 2 = two; 1 = one; 0 = none.
-- **EX020 — A2 outcome.** How was A2 resolved? *Rubric:* 3 = approved change ticket; closed with ticket number; 2 = partial; 1 = none; 0 = none.
+- **EX020 — A2 outcome.** How was A2 resolved? *Rubric:* 3 = approved change ticket; closed with ticket number; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -418,9 +418,9 @@ EDR records what the agent can see; it misses machines without agents and action
 ### Exercises
 
 - **EX021 — EDR records.** List four kinds of event an EDR records. *Rubric:* 3 = processes, files, network, accounts; 2 = three; 1 = one; 0 = none.
-- **EX022 — Suspicious parent.** Give an example of an unusual parent process. *Rubric:* 3 = word processor starting a shell; 2 = partial; 1 = none; 0 = none.
-- **EX023 — parks01 activity.** What did parks01 do after logging in? *Rubric:* 3 = listed file share folders 6 min; no downloads; 2 = partial; 1 = none; 0 = none.
-- **EX024 — Isolation trade-off.** What is the trade-off of isolating a machine? *Rubric:* 3 = stops spread but stops user working; needs authority; 2 = partial; 1 = none; 0 = none.
+- **EX022 — Suspicious parent.** Give an example of an unusual parent process. *Rubric:* 3 = word processor starting a shell; 2 = partial; 1 = vague; 0 = none.
+- **EX023 — parks01 activity.** What did parks01 do after logging in? *Rubric:* 3 = listed file share folders 6 min; no downloads; 2 = partial; 1 = vague; 0 = none.
+- **EX024 — Isolation trade-off.** What is the trade-off of isolating a machine? *Rubric:* 3 = stops spread but stops user working; needs authority; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -482,10 +482,10 @@ Users may not admit clicking; logs fill the gap but never fully.
 
 ### Exercises
 
-- **EX025 — Why reply.** Why reply to every report? *Rubric:* 3 = keeps people reporting; 2 = partial; 1 = none; 0 = none.
+- **EX025 — Why reply.** Why reply to every report? *Rubric:* 3 = keeps people reporting; 2 = partial; 1 = vague; 0 = none.
 - **EX026 — Recipients.** How many staff received the email? *Rubric:* 3 = 13 (reporter plus 12); 2 = partial; 1 = wrong; 0 = none.
-- **EX027 — Removal steps.** What two actions followed approval? *Rubric:* 3 = removed from mailboxes; blocked sender and domain; 2 = one; 1 = none; 0 = none.
-- **EX028 — Password entered.** What was done for the user who entered her password? *Rubric:* 3 = reset; sign-ins checked; 2 = partial; 1 = none; 0 = none.
+- **EX027 — Removal steps.** What two actions followed approval? *Rubric:* 3 = removed from mailboxes; blocked sender and domain; 2 = one; 1 = vague; 0 = none.
+- **EX028 — Password entered.** What was done for the user who entered her password? *Rubric:* 3 = reset; sign-ins checked; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -572,9 +572,9 @@ Matching indicators finds known bad things only; new domains will not match.
 ### Exercises
 
 - **EX029 — Lab hits.** Which hosts matched and what domains? *Rubric:* 3 = 10.2.0.31 invoice-portal; 10.2.0.77 cdn-files; 2 = partial; 1 = one; 0 = none.
-- **EX030 — Second host outcome.** What was found on 10.2.0.77? *Rubric:* 3 = planning PC; download blocked; no new processes; closed; 2 = partial; 1 = none; 0 = none.
+- **EX030 — Second host outcome.** What was found on 10.2.0.77? *Rubric:* 3 = planning PC; download blocked; no new processes; closed; 2 = partial; 1 = vague; 0 = none.
 - **EX031 — Encryption limit.** What can proxies see in encrypted traffic? *Rubric:* 3 = domains, often not content; 2 = partial; 1 = all; 0 = none.
-- **EX032 — Indicator limits.** Give one limit of indicator matching. *Rubric:* 3 = only known bad; old indicators false alarms; 2 = partial; 1 = none; 0 = none.
+- **EX032 — Indicator limits.** Give one limit of indicator matching. *Rubric:* 3 = only known bad; old indicators false alarms; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -637,9 +637,9 @@ Intelligence can be wrong or late; combine it with your own data.
 ### Exercises
 
 - **EX033 — Useful intelligence.** Give three qualities of useful intelligence. *Rubric:* 3 = timely, relevant, actionable; 2 = two; 1 = one; 0 = none.
-- **EX034 — Indicators vs behaviours.** Why focus on behaviours? *Rubric:* 3 = change slowly; harder for attackers to change; 2 = partial; 1 = none; 0 = none.
-- **EX035 — Action taken.** What action followed the sharing-group warning? *Rubric:* 3 = MFA on portal for all accounts; 2 = partial; 1 = none; 0 = none.
-- **EX036 — Sharing back.** What did Northgate share? *Rubric:* 3 = 203.0.113.80 and invoice domain, anonymised; 2 = partial; 1 = none; 0 = none.
+- **EX034 — Indicators vs behaviours.** Why focus on behaviours? *Rubric:* 3 = change slowly; harder for attackers to change; 2 = partial; 1 = vague; 0 = none.
+- **EX035 — Action taken.** What action followed the sharing-group warning? *Rubric:* 3 = MFA on portal for all accounts; 2 = partial; 1 = vague; 0 = none.
+- **EX036 — Sharing back.** What did Northgate share? *Rubric:* 3 = 203.0.113.80 and invoice domain, anonymised; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -697,10 +697,10 @@ Real incidents rarely follow the stages in order; the cycle is a guide.
 
 ### Exercises
 
-- **EX037 — Life cycle link.** How does SP 800-61r3 relate to CSF 2.0? *Rubric:* 3 = maps response to CSF functions; 2 = partial; 1 = none; 0 = none.
+- **EX037 — Life cycle link.** How does SP 800-61r3 relate to CSF 2.0? *Rubric:* 3 = maps response to CSF functions; 2 = partial; 1 = vague; 0 = none.
 - **EX038 — Five roles.** Name the roles in an incident. *Rubric:* 3 = lead, analysts, IT, communications, manager; 2 = four; 1 = two; 0 = none.
-- **EX039 — Severity.** Why is INC-0417 minor? *Rubric:* 3 = one account, no data taken; 2 = partial; 1 = none; 0 = none.
-- **EX040 — Lessons.** Name two lessons from INC-0417. *Rubric:* 3 = named accounts for gardeners; MFA on portal; 2 = one; 1 = none; 0 = none.
+- **EX039 — Severity.** Why is INC-0417 minor? *Rubric:* 3 = one account, no data taken; 2 = partial; 1 = vague; 0 = none.
+- **EX040 — Lessons.** Name two lessons from INC-0417. *Rubric:* 3 = named accounts for gardeners; MFA on portal; 2 = one; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -758,10 +758,10 @@ Over-containment can cause more harm than the attack; under-containment lets it 
 
 ### Exercises
 
-- **EX041 — Proportion.** Why was the tablet not isolated? *Rubric:* 3 = not involved; smallest action enough; 2 = partial; 1 = none; 0 = none.
-- **EX042 — Approval rule.** Which action needed the IT manager? *Rubric:* 3 = isolating servers; 2 = partial; 1 = none; 0 = none.
-- **EX043 — User message.** What made the supervisor message good? *Rubric:* 3 = plain, facts, action, no blame; 2 = partial; 1 = none; 0 = none.
-- **EX044 — Business impact.** How was payroll protected? *Rubric:* 3 = named accounts created same day; 2 = partial; 1 = none; 0 = none.
+- **EX041 — Proportion.** Why was the tablet not isolated? *Rubric:* 3 = not involved; smallest action enough; 2 = partial; 1 = vague; 0 = none.
+- **EX042 — Approval rule.** Which action needed the IT manager? *Rubric:* 3 = isolating servers; 2 = partial; 1 = vague; 0 = none.
+- **EX043 — User message.** What made the supervisor message good? *Rubric:* 3 = plain, facts, action, no blame; 2 = partial; 1 = vague; 0 = none.
+- **EX044 — Business impact.** How was payroll protected? *Rubric:* 3 = named accounts created same day; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -821,7 +821,7 @@ A rule tested on one replay may still miss variations, such as guessing spread a
 
 - **EX045 — Cycle steps.** List the steps of the detection cycle. *Rubric:* 3 = behaviour, data, write, test, deploy, measure/tune; 2 = four; 1 = two; 0 = none.
 - **EX046 — Sigma fields.** Name four fields of a Sigma rule. *Rubric:* 3 = title, description, log source, detection, false positives, level (four); 2 = two; 1 = one; 0 = none.
-- **EX047 — Test results.** What did testing show? *Rubric:* 3 = fired once at 09:09; not on normal week; 2 = partial; 1 = none; 0 = none.
+- **EX047 — Test results.** What did testing show? *Rubric:* 3 = fired once at 09:09; not on normal week; 2 = partial; 1 = vague; 0 = none.
 - **EX048 — Live firings.** Describe the two live firings. *Rubric:* 3 = forgotten password benign; real guessing on councillor stopped by MFA; 2 = partial; 1 = one; 0 = none.
 
 ### Synthesis
@@ -888,10 +888,10 @@ Every exclusion is a place an attacker could hide; keep them narrow and reviewed
 
 ### Exercises
 
-- **EX049 — Base rate.** What is the base-rate problem? *Rubric:* 3 = rare attacks mean mostly false alarms; 2 = partial; 1 = none; 0 = none.
-- **EX050 — Tuning change.** How was the admin-tool rule tuned? *Rubric:* 3 = excluded named IT admin workstations; 2 = partial; 1 = none; 0 = none.
-- **EX051 — Result.** What changed after tuning? *Rubric:* 3 = 220 to 14 alerts; 2 real still caught; 2 = partial; 1 = none; 0 = none.
-- **EX052 — Why not silence.** Why not silence the rule? *Rubric:* 3 = would miss the 2 real cases; 2 = partial; 1 = none; 0 = none.
+- **EX049 — Base rate.** What is the base-rate problem? *Rubric:* 3 = rare attacks mean mostly false alarms; 2 = partial; 1 = vague; 0 = none.
+- **EX050 — Tuning change.** How was the admin-tool rule tuned? *Rubric:* 3 = excluded named IT admin workstations; 2 = partial; 1 = vague; 0 = none.
+- **EX051 — Result.** What changed after tuning? *Rubric:* 3 = 220 to 14 alerts; 2 real still caught; 2 = partial; 1 = vague; 0 = none.
+- **EX052 — Why not silence.** Why not silence the rule? *Rubric:* 3 = would miss the 2 real cases; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -949,10 +949,10 @@ ATT&CK coverage maps can look reassuring while hiding untested rules.
 
 ### Exercises
 
-- **EX053 — Gap found.** What gap did the map show? *Rubric:* 3 = data moved to cloud storage; 2 = partial; 1 = none; 0 = none.
-- **EX054 — Ranking gaps.** How are gaps ranked? *Rubric:* 3 = likelihood against councils and damage; 2 = partial; 1 = none; 0 = none.
-- **EX055 — D3FEND.** What is D3FEND? *Rubric:* 3 = knowledge graph of defensive techniques linked to ATT&CK; 2 = partial; 1 = none; 0 = none.
-- **EX056 — Approved rules.** Which two detections were approved? *Rubric:* 3 = large uploads to personal cloud; mass file reads; 2 = one; 1 = none; 0 = none.
+- **EX053 — Gap found.** What gap did the map show? *Rubric:* 3 = data moved to cloud storage; 2 = partial; 1 = vague; 0 = none.
+- **EX054 — Ranking gaps.** How are gaps ranked? *Rubric:* 3 = likelihood against councils and damage; 2 = partial; 1 = vague; 0 = none.
+- **EX055 — D3FEND.** What is D3FEND? *Rubric:* 3 = knowledge graph of defensive techniques linked to ATT&CK; 2 = partial; 1 = vague; 0 = none.
+- **EX056 — Approved rules.** Which two detections were approved? *Rubric:* 3 = large uploads to personal cloud; mass file reads; 2 = one; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1034,10 +1034,10 @@ Six cases are too few for strong conclusions.
 
 ### Exercises
 
-- **EX057 — Lab medians.** Give the two lab medians. *Rubric:* 3 = acknowledge 7; contain 45.5; 2 = one; 1 = none; 0 = none.
-- **EX058 — Why medians.** Why use medians? *Rubric:* 3 = resist long outliers; 2 = partial; 1 = none; 0 = none.
-- **EX059 — Bad metric.** Name a metric that drives bad behaviour. *Rubric:* 3 = closed alerts per analyst; 2 = partial; 1 = none; 0 = none.
-- **EX060 — I4 fix.** What change followed the I4 outlier? *Rubric:* 3 = 15-min shift overlap; 2 = partial; 1 = none; 0 = none.
+- **EX057 — Lab medians.** Give the two lab medians. *Rubric:* 3 = acknowledge 7; contain 45.5; 2 = one; 1 = vague; 0 = none.
+- **EX058 — Why medians.** Why use medians? *Rubric:* 3 = resist long outliers; 2 = partial; 1 = vague; 0 = none.
+- **EX059 — Bad metric.** Name a metric that drives bad behaviour. *Rubric:* 3 = closed alerts per analyst; 2 = partial; 1 = vague; 0 = none.
+- **EX060 — I4 fix.** What change followed the I4 outlier? *Rubric:* 3 = 15-min shift overlap; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1103,10 +1103,10 @@ Small teams have less room to rotate.
 
 ### Exercises
 
-- **EX061 — On-call scope.** Why page on-call for P1 only? *Rubric:* 3 = protect sleep; 2 = partial; 1 = none; 0 = none.
+- **EX061 — On-call scope.** Why page on-call for P1 only? *Rubric:* 3 = protect sleep; 2 = partial; 1 = vague; 0 = none.
 - **EX062 — Handover contents.** What goes in a handover? *Rubric:* 3 = open cases, promised calls, watched alerts; 2 = two; 1 = one; 0 = none.
 - **EX063 — Burnout factors.** What did Alahmadi et al. (2022) find about false alarms and analysts? *Rubric:* 3 = frustration and eroded trust in tools; 2 = one of these; 1 = vague; 0 = none.
-- **EX064 — Carlos's change.** What change helped Carlos? *Rubric:* 3 = afternoon detection work rotation; 2 = partial; 1 = none; 0 = none.
+- **EX064 — Carlos's change.** What change helped Carlos? *Rubric:* 3 = afternoon detection work rotation; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1172,10 +1172,10 @@ Maturity models describe capability, not effectiveness against real attacks.
 
 ### Exercises
 
-- **EX065 — SP 800-137 aim.** What does continuous monitoring support? *Rubric:* 3 = risk decisions with ongoing awareness; 2 = partial; 1 = none; 0 = none.
+- **EX065 — SP 800-137 aim.** What does continuous monitoring support? *Rubric:* 3 = risk decisions with ongoing awareness; 2 = partial; 1 = vague; 0 = none.
 - **EX066 — SOC-CMM domains.** Name the five SOC-CMM domains. *Rubric:* 3 = business, people, process, technology, services; 2 = four; 1 = two; 0 = none.
-- **EX067 — Weak areas.** Where was Northgate weak? *Rubric:* 3 = technology coverage, people development; 2 = one; 1 = none; 0 = none.
-- **EX068 — Log gap.** How many servers lacked logs and how many were fixed? *Rubric:* 3 = 18; 15; 2 = one; 1 = none; 0 = none.
+- **EX067 — Weak areas.** Where was Northgate weak? *Rubric:* 3 = technology coverage, people development; 2 = one; 1 = vague; 0 = none.
+- **EX068 — Log gap.** How many servers lacked logs and how many were fixed? *Rubric:* 3 = 18; 15; 2 = one; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1238,9 +1238,9 @@ A technical course covers foundations; deeper study needs practice.
 ### Exercises
 
 - **EX069 — Full loop.** Summarise the INC-0417 loop. *Rubric:* 3 = alert, triage, contain, lessons, rule, MFA; 2 = partial; 1 = one; 0 = none.
-- **EX070 — Ethics.** Why must SOC access be limited? *Rubric:* 3 = powerful; security purposes under policy; 2 = partial; 1 = none; 0 = none.
-- **EX071 — Review numbers.** What did the six-month review list? *Rubric:* 3 = 120 alerts, 3 incidents, 2 rules, 1 metric; 2 = partial; 1 = none; 0 = none.
-- **EX072 — Plan.** Name one development step. *Rubric:* 3 = certificate course or file-share monitoring project; 2 = partial; 1 = none; 0 = none.
+- **EX070 — Ethics.** Why must SOC access be limited? *Rubric:* 3 = powerful; security purposes under policy; 2 = partial; 1 = vague; 0 = none.
+- **EX071 — Review numbers.** What did the six-month review list? *Rubric:* 3 = 120 alerts, 3 incidents, 2 rules, 1 metric; 2 = partial; 1 = vague; 0 = none.
+- **EX072 — Plan.** Name one development step. *Rubric:* 3 = certificate course or file-share monitoring project; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 

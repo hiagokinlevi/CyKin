@@ -92,13 +92,13 @@ Pre-registration does not remove all bias. Kappa depends on how often each band 
 
 ### Exercises
 
-- **EX001 — Falsifiable plan.** What makes Amara's question falsifiable? *Rubric:* 3 = she states beforehand which results would show her idea is wrong;; 2 = prior statement;; 1 = none;; 0 = none.
-- **EX002 — Cox critique.** What did Cox (2008) show about risk matrices? *Rubric:* 3 = identical ratings for very different risks and possible rank reversals;; 2 = information loss;; 1 = none;; 0 = none.
+- **EX001 — Falsifiable plan.** What makes Amara's question falsifiable? *Rubric:* 3 = she states beforehand which results would show her idea is wrong;; 2 = prior statement;; 1 = vague;; 0 = none.
+- **EX002 — Cox critique.** What did Cox (2008) show about risk matrices? *Rubric:* 3 = identical ratings for very different risks and possible rank reversals;; 2 = information loss;; 1 = vague;; 0 = none.
 - **EX003 — Standards neutrality.** What approaches do ISO/IEC 27005:2022 and SP 800-30r1 allow? *Rubric:* 3 = qualitative, semi-quantitative and quantitative;; 2 = all three;; 1 = quantitative only;; 0 = none.
 - **EX004 — Publication rule.** What may appear in published scenarios? *Rubric:* 3 = only synthetic composites;; 2 = synthetic;; 1 = real weaknesses;; 0 = none.
-- **EX005 — Interest declaration.** What does Amara declare? *Rubric:* 3 = no financial interest in risk quantification products;; 2 = conflict;; 1 = none;; 0 = none.
+- **EX005 — Interest declaration.** What does Amara declare? *Rubric:* 3 = no financial interest in risk quantification products;; 2 = conflict;; 1 = vague;; 0 = none.
 - **EX006 — Baseline kappa.** What kappa did the two assessors reach? *Rubric:* 3 = 0.19, slight agreement;; 2 = 0.19;; 1 = 0.62;; 0 = none.
-- **EX007 — Baseline meaning.** Why does low agreement matter for the register? *Rubric:* 3 = priorities may depend on who rated the risk;; 2 = rater effect;; 1 = none;; 0 = none.
+- **EX007 — Baseline meaning.** Why does low agreement matter for the register? *Rubric:* 3 = priorities may depend on who rated the risk;; 2 = rater effect;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -146,11 +146,11 @@ Literature maps date quickly. Practice reports may be selective.
 
 - **EX008 — Govern function.** What did CSF 2.0 add? *Rubric:* 3 = a Govern function;; 2 = Govern;; 1 = Detect;; 0 = none.
 - **EX009 — Gordon-Loeb result.** What upper bound did Gordon and Loeb derive? *Rubric:* 3 = about 37% of expected loss;; 2 = 1/e;; 1 = 100%;; 0 = none.
-- **EX010 — Spears and Barki.** What did Spears and Barki (2010) find? *Rubric:* 3 = user participation improves alignment with business processes;; 2 = participation;; 1 = none;; 0 = none.
+- **EX010 — Spears and Barki.** What did Spears and Barki (2010) find? *Rubric:* 3 = user participation improves alignment with business processes;; 2 = participation;; 1 = vague;; 0 = none.
 - **EX011 — Why matrices persist.** Why do matrices remain common? *Rubric:* 3 = easy to explain and expected by auditors;; 2 = social benefits;; 1 = accuracy;; 0 = none.
-- **EX012 — Defined gap.** What gap does Amara study? *Rubric:* 3 = field evidence comparing matrices with calibrated quantification;; 2 = field evidence;; 1 = none;; 0 = none.
-- **EX013 — Supervisor request.** What did Prof. Delgado ask Amara to state? *Rubric:* 3 = which effects the design cannot detect;; 2 = limits;; 1 = none;; 0 = none.
-- **EX014 — Evidence types.** Why does Amara sort the literature by type of support? *Rubric:* 3 = models, experiments and practice reports support claims differently;; 2 = evidence strength;; 1 = none;; 0 = none.
+- **EX012 — Defined gap.** What gap does Amara study? *Rubric:* 3 = field evidence comparing matrices with calibrated quantification;; 2 = field evidence;; 1 = vague;; 0 = none.
+- **EX013 — Supervisor request.** What did Prof. Delgado ask Amara to state? *Rubric:* 3 = which effects the design cannot detect;; 2 = limits;; 1 = vague;; 0 = none.
+- **EX014 — Evidence types.** Why does Amara sort the literature by type of support? *Rubric:* 3 = models, experiments and practice reports support claims differently;; 2 = evidence strength;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -225,12 +225,12 @@ Small models illustrate, they do not prove. Reference panels can share biases.
 
 ### Exercises
 
-- **EX015 — Three questions.** What are the three research questions about? *Rubric:* 3 = agreement, calibration and treatment order;; 2 = three;; 1 = none;; 0 = none.
-- **EX016 — Brier definition.** What is the Brier score? *Rubric:* 3 = average squared difference between forecasts and outcomes;; 2 = squared error;; 1 = none;; 0 = none.
+- **EX015 — Three questions.** What are the three research questions about? *Rubric:* 3 = agreement, calibration and treatment order;; 2 = three;; 1 = vague;; 0 = none.
+- **EX016 — Brier definition.** What is the Brier score? *Rubric:* 3 = average squared difference between forecasts and outcomes;; 2 = squared error;; 1 = vague;; 0 = none.
 - **EX017 — Model top risk.** Which scenario has the largest expected loss in the lab? *Rubric:* 3 = ransomware on records, about 192k;; 2 = ransomware;; 1 = payment fraud;; 0 = none.
 - **EX018 — Matrix top risks.** Which scenarios top the matrix in the lab? *Rubric:* 3 = payment fraud and supplier outage tied at 6;; 2 = tie;; 1 = ransomware;; 0 = none.
-- **EX019 — Panel mitigation.** How is reference panel bias mitigated? *Rubric:* 3 = three independent panel members;; 2 = three;; 1 = none;; 0 = none.
-- **EX020 — Participation agreement.** What did Amara agree with Corvane in writing? *Rubric:* 3 = a minimum participation level;; 2 = participation;; 1 = none;; 0 = none.
+- **EX019 — Panel mitigation.** How is reference panel bias mitigated? *Rubric:* 3 = three independent panel members;; 2 = three;; 1 = vague;; 0 = none.
+- **EX020 — Participation agreement.** What did Amara agree with Corvane in writing? *Rubric:* 3 = a minimum participation level;; 2 = participation;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -301,12 +301,12 @@ Simulations depend on input ranges. Pilot gains may not persist.
 
 ### Exercises
 
-- **EX021 — Simulation size.** How many simulated years did the lab run? *Rubric:* 3 = twenty thousand;; 2 = 20,000;; 1 = none;; 0 = none.
-- **EX022 — Mean annual loss.** What mean annual loss did the lab report? *Rubric:* 3 = about 709 thousand;; 2 = 709k;; 1 = none;; 0 = none.
-- **EX023 — No-loss years.** In roughly what share of years was there no loss? *Rubric:* 3 = about three in four;; 2 = 75%;; 1 = none;; 0 = none.
-- **EX024 — Exceedance figure.** What was the chance of losing more than two million? *Rubric:* 3 = about 16%;; 2 = 0.163;; 1 = none;; 0 = none.
-- **EX025 — Pilot calibration.** How did range hit rates change with training? *Rubric:* 3 = from about half to about eight in ten;; 2 = improved;; 1 = none;; 0 = none.
-- **EX026 — Unchanged outcomes.** What did Amara keep unchanged when amending the protocol? *Rubric:* 3 = the pre-registered primary outcomes;; 2 = primary outcomes;; 1 = none;; 0 = none.
+- **EX021 — Simulation size.** How many simulated years did the lab run? *Rubric:* 3 = twenty thousand;; 2 = 20,000;; 1 = vague;; 0 = none.
+- **EX022 — Mean annual loss.** What mean annual loss did the lab report? *Rubric:* 3 = about 709 thousand;; 2 = 709k;; 1 = vague;; 0 = none.
+- **EX023 — No-loss years.** In roughly what share of years was there no loss? *Rubric:* 3 = about three in four;; 2 = 75%;; 1 = vague;; 0 = none.
+- **EX024 — Exceedance figure.** What was the chance of losing more than two million? *Rubric:* 3 = about 16%;; 2 = 0.163;; 1 = vague;; 0 = none.
+- **EX025 — Pilot calibration.** How did range hit rates change with training? *Rubric:* 3 = from about half to about eight in ten;; 2 = improved;; 1 = vague;; 0 = none.
+- **EX026 — Unchanged outcomes.** What did Amara keep unchanged when amending the protocol? *Rubric:* 3 = the pre-registered primary outcomes;; 2 = primary outcomes;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -373,11 +373,11 @@ Thirty events give wide uncertainty. Assessors may share information across grou
 ### Exercises
 
 - **EX027 — Group allocation.** How were assessors assigned to methods? *Rubric:* 3 = randomly, fifteen per group;; 2 = random;; 1 = by seniority;; 0 = none.
-- **EX028 — Events occurred.** How many of thirty forecast events occurred? *Rubric:* 3 = eleven;; 2 = 11;; 1 = none;; 0 = none.
-- **EX029 — Brier comparison.** What Brier scores did the groups achieve? *Rubric:* 3 = matrix 0.180, calibrated 0.167;; 2 = calibrated lower;; 1 = none;; 0 = none.
-- **EX030 — Top-five overlap.** How many of the panel's top five did each group include? *Rubric:* 3 = calibrated four, matrix three;; 2 = four vs three;; 1 = none;; 0 = none.
-- **EX031 — Tie effect.** Why do ties matter in the matrix group? *Rubric:* 3 = they force informal judgement where inconsistency enters;; 2 = ties;; 1 = none;; 0 = none.
-- **EX032 — Replication result.** What did the second board's study show? *Rubric:* 3 = same direction, smaller differences;; 2 = partial replication;; 1 = none;; 0 = none.
+- **EX028 — Events occurred.** How many of thirty forecast events occurred? *Rubric:* 3 = eleven;; 2 = 11;; 1 = vague;; 0 = none.
+- **EX029 — Brier comparison.** What Brier scores did the groups achieve? *Rubric:* 3 = matrix 0.180, calibrated 0.167;; 2 = calibrated lower;; 1 = vague;; 0 = none.
+- **EX030 — Top-five overlap.** How many of the panel's top five did each group include? *Rubric:* 3 = calibrated four, matrix three;; 2 = four vs three;; 1 = vague;; 0 = none.
+- **EX031 — Tie effect.** Why do ties matter in the matrix group? *Rubric:* 3 = they force informal judgement where inconsistency enters;; 2 = ties;; 1 = vague;; 0 = none.
+- **EX032 — Replication result.** What did the second board's study show? *Rubric:* 3 = same direction, smaller differences;; 2 = partial replication;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -423,9 +423,9 @@ Board studies are small. Reframing can weaken claims too much.
 
 ### Exercises
 
-- **EX033 — Statistician point.** What did the statistician object to? *Rubric:* 3 = thirty events are too few;; 2 = sample size;; 1 = none;; 0 = none.
-- **EX034 — Auditor answer.** How can quantitative methods meet ISO/IEC 27001:2022 expectations? *Rubric:* 3 = by recording inputs and reasoning in a repeatable process;; 2 = documentation;; 1 = none;; 0 = none.
-- **EX035 — Unresolvable objection.** Which objection cannot be resolved by Amara's data? *Rubric:* 3 = whether rare-event losses can be meaningfully estimated;; 2 = philosophical;; 1 = none;; 0 = none.
+- **EX033 — Statistician point.** What did the statistician object to? *Rubric:* 3 = thirty events are too few;; 2 = sample size;; 1 = vague;; 0 = none.
+- **EX034 — Auditor answer.** How can quantitative methods meet ISO/IEC 27001:2022 expectations? *Rubric:* 3 = by recording inputs and reasoning in a repeatable process;; 2 = documentation;; 1 = vague;; 0 = none.
+- **EX035 — Unresolvable objection.** Which objection cannot be resolved by Amara's data? *Rubric:* 3 = whether rare-event losses can be meaningfully estimated;; 2 = philosophical;; 1 = vague;; 0 = none.
 - **EX036 — Bootstrap result.** What did the bootstrap interval for the Brier difference show? *Rubric:* 3 = it includes zero;; 2 = uncertain;; 1 = significant;; 0 = none.
 - **EX037 — Board preference.** Which presentation did most board members prefer? *Rubric:* 3 = loss exceedance charts once explained;; 2 = exceedance;; 1 = matrix;; 0 = none.
 - **EX038 — Reframed contribution.** How did Amara reframe her contribution? *Rubric:* 3 = evidence about trade-offs, not a verdict;; 2 = trade-offs;; 1 = superiority;; 0 = none.
@@ -494,12 +494,12 @@ Digests prove integrity, not correctness. Context can still identify partners.
 
 ### Exercises
 
-- **EX039 — Training cost.** What training cost does the thesis report? *Rubric:* 3 = ninety minutes per assessor;; 2 = 90 minutes;; 1 = none;; 0 = none.
-- **EX040 — Archive contents.** Name the four archived files. *Rubric:* 3 = protocol, scenarios, analysis code and codebook;; 2 = four;; 1 = none;; 0 = none.
+- **EX039 — Training cost.** What training cost does the thesis report? *Rubric:* 3 = ninety minutes per assessor;; 2 = 90 minutes;; 1 = vague;; 0 = none.
+- **EX040 — Archive contents.** Name the four archived files. *Rubric:* 3 = protocol, scenarios, analysis code and codebook;; 2 = four;; 1 = vague;; 0 = none.
 - **EX041 — Digest purpose.** What do the manifest digests let others confirm? *Rubric:* 3 = files have not changed since submission;; 2 = integrity;; 1 = correctness;; 0 = none.
-- **EX042 — Context leak.** How can a GRC study leak information without names? *Rubric:* 3 = through identifying context such as unusual systems;; 2 = context;; 1 = none;; 0 = none.
+- **EX042 — Context leak.** How can a GRC study leak information without names? *Rubric:* 3 = through identifying context such as unusual systems;; 2 = context;; 1 = vague;; 0 = none.
 - **EX043 — Terminology source.** Which standard's terms does Amara use for risk criteria and treatment? *Rubric:* 3 = ISO 31000:2018;; 2 = ISO 31000;; 1 = COBIT;; 0 = none.
-- **EX044 — Claim tracing.** How did Amara test coherence? *Rubric:* 3 = a fellow candidate traced three random claims;; 2 = tracing;; 1 = none;; 0 = none.
+- **EX044 — Claim tracing.** How did Amara test coherence? *Rubric:* 3 = a fellow candidate traced three random claims;; 2 = tracing;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -545,11 +545,11 @@ Examiners have their own views. Publication takes time.
 
 ### Exercises
 
-- **EX045 — Examiner mix.** Which three perspectives did the examiners cover? *Rubric:* 3 = theory, standards and practice;; 2 = three;; 1 = none;; 0 = none.
+- **EX045 — Examiner mix.** Which three perspectives did the examiners cover? *Rubric:* 3 = theory, standards and practice;; 2 = three;; 1 = vague;; 0 = none.
 - **EX046 — Rare-event answer.** How did Amara answer on rare catastrophic losses? *Rubric:* 3 = calibration is necessary but not sufficient;; 2 = limits;; 1 = proof;; 0 = none.
 - **EX047 — RMF fit.** Where does the method fit in SP 800-37r2? *Rubric:* 3 = the assess and monitor steps;; 2 = assess;; 1 = authorise;; 0 = none.
 - **EX048 — Misuse safeguard.** What safeguards against motivated risk assessment? *Rubric:* 3 = governance with ranges, recorded assumptions and independent review;; 2 = governance;; 1 = method choice;; 0 = none.
-- **EX049 — Defense outcome.** What was the defense outcome? *Rubric:* 3 = pass with minor corrections;; 2 = pass;; 1 = none;; 0 = none.
+- **EX049 — Defense outcome.** What was the defense outcome? *Rubric:* 3 = pass with minor corrections;; 2 = pass;; 1 = vague;; 0 = none.
 - **EX050 — Shared resource.** What will Amara share for other organisations? *Rubric:* 3 = the synthetic scenario set;; 2 = scenarios;; 1 = real data;; 0 = none.
 
 ### Synthesis

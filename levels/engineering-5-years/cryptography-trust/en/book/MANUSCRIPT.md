@@ -462,7 +462,7 @@ Tamper resistance raises attacker cost but is not absolute. Hardware acceleratio
 
 ### Exercises
 
-- **EX022 — Hardware AES benefit.** Name two benefits of hardware AES instructions. *Rubric:* 3 = speed and constant-time execution resisting timing leaks;; 2 = one;; 1 = none;; 0 = none.
+- **EX022 — Hardware AES benefit.** Name two benefits of hardware AES instructions. *Rubric:* 3 = speed and constant-time execution resisting timing leaks;; 2 = one;; 1 = vague;; 0 = none.
 - **EX023 — Cache leak.** How can a cache leak secrets? *Rubric:* 3 = access time depends on cached data; secret-dependent accesses reveal keys to a co-resident program;; 2 = timing mentioned;; 1 = no leak;; 0 = none.
 - **EX024 — Secure element value.** What does a secure element prevent compared with keys in flash? *Rubric:* 3 = dumping memory from one opened meter does not reveal its key;; 2 = protects key;; 1 = encrypts data;; 0 = none.
 
@@ -508,7 +508,7 @@ Wrappers can hide bugs as well as complexity; they must be reviewed and tested. 
 
 - **EX025 — Wrapper benefit.** How does the wrapper reduce misuse? *Rubric:* 3 = callers cannot choose algorithms, pass raw keys, or compare tags unsafely;; 2 = hides details;; 1 = faster;; 0 = none.
 - **EX026 — Silent failure.** Why does verify return only true or false to callers? *Rubric:* 3 = detailed reasons help attackers probe; details go to protected logs;; 2 = security;; 1 = simpler;; 0 = none.
-- **EX027 — Missing negative tests.** What danger do negative tests guard against? *Rubric:* 3 = a verifier that always returns true passing all positive tests;; 2 = bugs;; 1 = none;; 0 = none.
+- **EX027 — Missing negative tests.** What danger do negative tests guard against? *Rubric:* 3 = a verifier that always returns true passing all positive tests;; 2 = bugs;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -550,7 +550,7 @@ Treating every security control as fail-closed can create safety hazards; treati
 
 ### Exercises
 
-- **EX028 — Expiry hazard.** What safety risk did Aiyana see in refusing to report on signature failure? *Rubric:* 3 = utility blind to leaks if a certificate expires;; 2 = outage;; 1 = none;; 0 = none.
+- **EX028 — Expiry hazard.** What safety risk did Aiyana see in refusing to report on signature failure? *Rubric:* 3 = utility blind to leaks if a certificate expires;; 2 = outage;; 1 = vague;; 0 = none.
 - **EX029 — Disclosure path.** How was the low-battery flaw handled? *Rubric:* 3 = reported to Marcus and vendor via coordinated disclosure, kept confidential, not tested on live meters;; 2 = reported;; 1 = posted publicly;; 0 = none.
 - **EX030 — Firmware fail mode.** Should firmware verification fail open or closed, and why? *Rubric:* 3 = closed: keep current firmware rather than install unverified code;; 2 = closed;; 1 = open;; 0 = none.
 
@@ -594,7 +594,7 @@ TLS does not authenticate data origin beyond the endpoint; message-level control
 
 ### Exercises
 
-- **EX031 — Hop attackers.** Name the attacker Aiyana associates with the cellular hop. *Rubric:* 3 = the cellular carrier or anyone on its network;; 2 = network;; 1 = none;; 0 = none.
+- **EX031 — Hop attackers.** Name the attacker Aiyana associates with the cellular hop. *Rubric:* 3 = the cellular carrier or anyone on its network;; 2 = network;; 1 = vague;; 0 = none.
 - **EX032 — Forward secrecy.** What does forward secrecy mean in TLS 1.3? *Rubric:* 3 = recorded traffic cannot be decrypted later even if long-term keys leak, due to ephemeral key exchange;; 2 = ephemeral keys;; 1 = encryption;; 0 = none.
 - **EX033 — Why HMAC too.** Why add HMAC tags when TLS is already used? *Rubric:* 3 = TLS ends at the gateway; HMAC lets the database detect altered readings from compromised intermediaries;; 2 = layering;; 1 = redundant;; 0 = none.
 
@@ -816,7 +816,7 @@ Diagrams drift from reality; review them against deployments. Traceability helps
 
 - **EX046 — Lifecycle stages.** List four key lifecycle stages from SP 800-57. *Rubric:* 3 = four of generation, distribution, use, storage, rotation, revocation, destruction;; 2 = three;; 1 = one;; 0 = none.
 - **EX047 — Factory interface.** How are keys protected on the way to the factory? *Rubric:* 3 = encrypted under a transport key, never in clear;; 2 = encrypted;; 1 = emailed;; 0 = none.
-- **EX048 — Ownership lesson.** What past failure motivated the responsibility table? *Rubric:* 3 = revocation fell between teams and compromised keys stayed active for months;; 2 = unowned step;; 1 = none;; 0 = none.
+- **EX048 — Ownership lesson.** What past failure motivated the responsibility table? *Rubric:* 3 = revocation fell between teams and compromised keys stayed active for months;; 2 = unowned step;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1063,7 +1063,7 @@ Over-specifying implementation can block better designs; under-specifying parame
 ### Exercises
 
 - **EX061 — Rewriting a goal.** Rewrite "readings must be secure" as a verifiable requirement. *Rubric:* 3 = names HMAC-SHA256, 256-bit per-meter key, rejection on failed verification;; 2 = partial mechanism;; 1 = vague;; 0 = none.
-- **EX062 — Signature standards.** Which standards back the firmware signature options? *Rubric:* 3 = FIPS 186-5 (ECDSA P-256) or RFC 8032 (Ed25519);; 2 = one;; 1 = none;; 0 = none.
+- **EX062 — Signature standards.** Which standards back the firmware signature options? *Rubric:* 3 = FIPS 186-5 (ECDSA P-256) or RFC 8032 (Ed25519);; 2 = one;; 1 = vague;; 0 = none.
 - **EX063 — Assurance example.** Give two assurance requirements. *Rubric:* 3 = two of maintained libraries, validated HSMs, independent forgery testing, witnessed ceremonies;; 2 = one;; 1 = functional item;; 0 = none.
 
 ### Synthesis
@@ -1317,8 +1317,8 @@ Scores hide assumptions; explain them. Cloud custody needs contractual and techn
 ### Exercises
 
 - **EX076 — Signature size.** Why did the public-key design not fit readings? *Rubric:* 3 = Ed25519 signatures are 64 bytes, exceeding the 32-byte limit;; 2 = size;; 1 = speed;; 0 = none.
-- **EX077 — Regulatory constraint.** What regulatory constraint affects the key service choice? *Rubric:* 3 = billing keys must remain under the utility's control;; 2 = custody;; 1 = none;; 0 = none.
-- **EX078 — Reversal condition.** Give a condition that would reverse the readings decision. *Rubric:* 3 = larger radio frames making signatures feasible;; 2 = frames bigger;; 1 = none;; 0 = none.
+- **EX077 — Regulatory constraint.** What regulatory constraint affects the key service choice? *Rubric:* 3 = billing keys must remain under the utility's control;; 2 = custody;; 1 = vague;; 0 = none.
+- **EX078 — Reversal condition.** Give a condition that would reverse the readings decision. *Rubric:* 3 = larger radio frames making signatures feasible;; 2 = frames bigger;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1362,7 +1362,7 @@ Ceremonies fail if scripts are ignored under time pressure. Controls mapped on p
 
 - **EX079 — Control types.** Give one preventive, one detective and one corrective control. *Rubric:* 3 = e.g. HSM non-export, verification alerts, revocation;; 2 = two;; 1 = one;; 0 = none.
 - **EX080 — Ceremony purpose.** What is the purpose of the key ceremony? *Rubric:* 3 = produce evidence that no single person ever had the root key;; 2 = evidence;; 1 = speed;; 0 = none.
-- **EX081 — Gap found.** Which gap did the risk map reveal and how was it closed? *Rubric:* 3 = clock drift had only corrective control; added skew-tracking detective control;; 2 = gap named;; 1 = none;; 0 = none.
+- **EX081 — Gap found.** Which gap did the risk map reveal and how was it closed? *Rubric:* 3 = clock drift had only corrective control; added skew-tracking detective control;; 2 = gap named;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1714,7 +1714,7 @@ Backup roots must be protected as carefully as primaries. Untested runbooks fail
 
 - **EX097 — Failed tag behaviour.** What happens to a reading whose tag fails? *Rubric:* 3 = quarantined with alert, not discarded, preserving evidence;; 2 = quarantine;; 1 = discarded;; 0 = none.
 - **EX098 — Intermediate compromise.** Summarise the response to a leaked firmware intermediate key. *Rubric:* 3 = root-signed revocation, new intermediate in ceremony, re-sign firmware, push new trust;; 2 = partial;; 1 = ignore;; 0 = none.
-- **EX099 — Backup root.** Why do meters hold a backup root? *Rubric:* 3 = loss or compromise of the primary root remains survivable;; 2 = resilience;; 1 = none;; 0 = none.
+- **EX099 — Backup root.** Why do meters hold a backup root? *Rubric:* 3 = loss or compromise of the primary root remains survivable;; 2 = resilience;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1756,7 +1756,7 @@ Contracts drift unless tested automatically. End-to-end tests are slow, so keep 
 
 ### Exercises
 
-- **EX100 — Missing flow.** Which flow was missing before integration analysis? *Rubric:* 3 = handheld tool requesting a new meter key during replacement;; 2 = provisioning;; 1 = none;; 0 = none.
+- **EX100 — Missing flow.** Which flow was missing before integration analysis? *Rubric:* 3 = handheld tool requesting a new meter key during replacement;; 2 = provisioning;; 1 = vague;; 0 = none.
 - **EX101 — Handheld blob.** Why do handheld tools receive an encrypted blob instead of a key? *Rubric:* 3 = only the meter's secure element can unwrap it, so handhelds never hold keys;; 2 = protect key;; 1 = speed;; 0 = none.
 - **EX102 — Revocation routing.** What did end-to-end testing reveal about revocation, and what fixed it? *Rubric:* 3 = revocations reached monitoring but not billing; route through queue all verifiers subscribe to;; 2 = finding only;; 1 = fix only;; 0 = none.
 
@@ -1933,7 +1933,7 @@ Validation in one district may not represent the whole service area. Independent
 ### Exercises
 
 - **EX112 — Validation question.** How does validation differ from verification? *Rubric:* 3 = validation checks real stakeholder needs; verification checks build against specification;; 2 = difference partial;; 1 = same;; 0 = none.
-- **EX113 — Key extraction.** What did the independent test extract and what did it confirm? *Rubric:* 3 = a key from a prototype without secure element, confirming the secure-element requirement;; 2 = finding;; 1 = none;; 0 = none.
+- **EX113 — Key extraction.** What did the independent test extract and what did it confirm? *Rubric:* 3 = a key from a prototype without secure element, confirming the secure-element requirement;; 2 = finding;; 1 = vague;; 0 = none.
 - **EX114 — Firmware miss.** What firmware result missed its target and why? *Rubric:* 3 = 97 percent within thirty days versus 99, due to unreachable meters in flooded pits;; 2 = number;; 1 = reason;; 0 = none.
 
 ### Synthesis
@@ -1976,7 +1976,7 @@ Agility can introduce downgrade attacks if weak options remain accepted. Documen
 
 ### Exercises
 
-- **EX115 — Agility mechanism.** Name two mechanisms that give agility. *Rubric:* 3 = algorithm identifiers in messages, configured allowed lists, algorithm tags in inventory;; 2 = one;; 1 = none;; 0 = none.
+- **EX115 — Agility mechanism.** Name two mechanisms that give agility. *Rubric:* 3 = algorithm identifiers in messages, configured allowed lists, algorithm tags in inventory;; 2 = one;; 1 = vague;; 0 = none.
 - **EX116 — Deprecation steps.** What are the three steps of retiring an algorithm? *Rubric:* 3 = stop new keys, migrate existing uses, remove verification after grace period;; 2 = two;; 1 = one;; 0 = none.
 - **EX117 — Knowledge risk.** Why is knowledge management a security control? *Rubric:* 3 = incidents start when nobody remembers why designs were chosen;; 2 = memory;; 1 = not;; 0 = none.
 
@@ -2022,7 +2022,7 @@ Side-channel tests are bounded by budget and technique. Residual risk statements
 
 - **EX118 — Hardware scope.** What limit applies to the physical test results? *Rubric:* 3 = they apply to the tested hardware revision; new revisions need retesting;; 2 = revision;; 1 = universal;; 0 = none.
 - **EX119 — Clock jump.** What did the clock-jump injection reveal? *Rubric:* 3 = certificate rejected as not yet valid correctly, but alert message unclear and rewritten;; 2 = alert;; 1 = failure;; 0 = none.
-- **EX120 — Residual example.** Give one accepted residual risk and its rationale. *Rubric:* 3 = single-meter key extraction by advanced attacker, limited by per-meter keys (or both data centres lost, offline recovery);; 2 = example;; 1 = none;; 0 = none.
+- **EX120 — Residual example.** Give one accepted residual risk and its rationale. *Rubric:* 3 = single-meter key extraction by advanced attacker, limited by per-meter keys (or both data centres lost, offline recovery);; 2 = example;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2152,9 +2152,9 @@ Placements can become passive observation; set concrete tasks and reviews. Chang
 
 ### Exercises
 
-- **EX127 — Placement tasks.** Name two tasks Aiyana performed on placement. *Rubric:* 3 = two of alert triage, assisting rotation, updating runbooks;; 2 = one;; 1 = none;; 0 = none.
-- **EX128 — Change-control lesson.** What event showed the value of change control? *Rubric:* 3 = an unreviewed gateway change disabled client certificate checks in staging, caught before production;; 2 = event;; 1 = none;; 0 = none.
-- **EX129 — Skill gap.** Which skills did she identify to develop? *Rubric:* 3 = negotiating security requirements with vendors and explaining risk to managers;; 2 = one;; 1 = none;; 0 = none.
+- **EX127 — Placement tasks.** Name two tasks Aiyana performed on placement. *Rubric:* 3 = two of alert triage, assisting rotation, updating runbooks;; 2 = one;; 1 = vague;; 0 = none.
+- **EX128 — Change-control lesson.** What event showed the value of change control? *Rubric:* 3 = an unreviewed gateway change disabled client certificate checks in staging, caught before production;; 2 = event;; 1 = vague;; 0 = none.
+- **EX129 — Skill gap.** Which skills did she identify to develop? *Rubric:* 3 = negotiating security requirements with vendors and explaining risk to managers;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2198,7 +2198,7 @@ Capstones often over-scope; firm exclusions protect delivery. Evidence planned l
 
 - **EX130 — Capstone goal.** What must the revocation pipeline achieve? *Rubric:* 3 = revocation reaches every verifier within one minute and is auditable;; 2 = one minute;; 1 = vague;; 0 = none.
 - **EX131 — Exclusion.** What did Aiyana exclude from scope and why? *Rubric:* 3 = meter firmware changes, needing vendor involvement beyond the time available;; 2 = firmware;; 1 = nothing;; 0 = none.
-- **EX132 — Project risk.** Name one project risk and its mitigation. *Rubric:* 3 = e.g. key service upgrade conflict mitigated by early meeting;; 2 = risk only;; 1 = none;; 0 = none.
+- **EX132 — Project risk.** Name one project risk and its mitigation. *Rubric:* 3 = e.g. key service upgrade conflict mitigated by early meeting;; 2 = risk only;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2330,7 +2330,7 @@ Exercises with unrealistic conditions give false confidence. Using production ke
 
 - **EX139 — Test root.** Why does the trial use a test root and test meters? *Rubric:* 3 = to exercise real procedures without exposing production keys;; 2 = safety;; 1 = realism;; 0 = none.
 - **EX140 — Quorum in practice.** How did the quorum design help during the trial? *Rubric:* 3 = only three of five custodians were available, enough for recovery;; 2 = quorum;; 1 = not;; 0 = none.
-- **EX141 — Trial findings.** Name two findings from the post-trial review. *Rubric:* 3 = two of outdated spare HSM firmware, wrong phone number, missing inventory step;; 2 = one;; 1 = none;; 0 = none.
+- **EX141 — Trial findings.** Name two findings from the post-trial review. *Rubric:* 3 = two of outdated spare HSM firmware, wrong phone number, missing inventory step;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2418,7 +2418,7 @@ Theses that list activities instead of arguing claims are weak. Claiming more th
 
 - **EX145 — Thesis nature.** What is the thesis, according to the chapter? *Rubric:* 3 = an argument that the design meets requirements under stated assumptions, not a diary;; 2 = argument;; 1 = diary;; 0 = none.
 - **EX146 — Lab appendix statement.** What does the thesis say about the laboratory programs? *Rubric:* 3 = stdlib only on synthetic data; production uses vetted libraries and HSMs;; 2 = stdlib;; 1 = production code;; 0 = none.
-- **EX147 — Thesis limits.** Name two limits Aiyana states. *Rubric:* 3 = two of single utility, pilot not full deployment, uninspected vendor implementations;; 2 = one;; 1 = none;; 0 = none.
+- **EX147 — Thesis limits.** Name two limits Aiyana states. *Rubric:* 3 = two of single utility, pilot not full deployment, uninspected vendor implementations;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2460,9 +2460,9 @@ Defending every decision as perfect undermines credibility; acknowledge trade-of
 
 ### Exercises
 
-- **EX148 — Mock defense lesson.** What weakness did the mock defense expose? *Rubric:* 3 = cost assumptions not fully justified;; 2 = costs;; 1 = none;; 0 = none.
+- **EX148 — Mock defense lesson.** What weakness did the mock defense expose? *Rubric:* 3 = cost assumptions not fully justified;; 2 = costs;; 1 = vague;; 0 = none.
 - **EX149 — Central risk mitigations.** Which mitigations did she cite for central key risk? *Rubric:* 3 = HSMs, per-meter derivation, monitoring, dual control;; 2 = three;; 1 = one;; 0 = none.
-- **EX150 — Engineer's responsibility.** How does Aiyana describe her ongoing responsibility? *Rubric:* 3 = leave a system others can understand, operate, test and change safely with documentation and evidence;; 2 = partial;; 1 = none;; 0 = none.
+- **EX150 — Engineer's responsibility.** How does Aiyana describe her ongoing responsibility? *Rubric:* 3 = leave a system others can understand, operate, test and change safely with documentation and evidence;; 2 = partial;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

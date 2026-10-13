@@ -784,7 +784,7 @@ Quatro clínicas são um piloto pequeno. Aprovado ou reprovado perde detalhes.
 
 ### Exercícios
 
-- **EX049 — Clínica mais forte.** Que clínica passou nos três controles? *Rubrica:* 3 = South;; 2 = South;; 1 = East;; 0 = nenhuma.
+- **EX049 — Clínica mais forte.** Que clínica passou nos três controles? *Rubrica:* 3 = South;; 2 = South, sem justificativa;; 1 = East;; 0 = nenhuma.
 - **EX050 — Lista de falhas.** Liste as quatro falhas. *Rubrica:* 3 = North acesso, East bloqueio de tela, East acesso, West backup;; 2 = quatro;; 1 = nada;; 0 = nenhuma.
 - **EX051 — Causa do padrão.** Por que a revisão de acesso falhou em duas clínicas? *Rubrica:* 3 = os gerentes receberam as listas de contas atrasadas;; 2 = processo;; 1 = nada;; 0 = nenhuma.
 

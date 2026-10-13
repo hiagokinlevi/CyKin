@@ -74,7 +74,7 @@ Os registros de decisão podem virar burocracia se ninguém os lê. As premissas
 
 - **EX004 — Discussões circulares.** Segundo o capítulo, o que causa discussões circulares de arquitetura? *Rubrica:* 3 = misturar fatos, premissas e valores;; 2 = misturar;; 1 = orçamento;; 0 = nenhuma.
 
-- **EX005 — Condições de revisão.** Por que incluir condições de revisão num registro de decisão? *Rubrica:* 3 = para que um arquiteto posterior possa julgar se a decisão ainda vale;; 2 = revisão futura;; 1 = nenhuma;; 0 = nenhuma.
+- **EX005 — Condições de revisão.** Por que incluir condições de revisão num registro de decisão? *Rubrica:* 3 = para que um arquiteto posterior possa julgar se a decisão ainda vale;; 2 = revisão futura;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -112,7 +112,7 @@ Três entrevistas não representam um setor. O alinhamento às orientações nã
 
 ### Exercícios
 
-- **EX006 — Padrão comum.** Cite dois padrões que as três organizações pares compartilham. *Rubrica:* 3 = acesso centrado em identidade, segmentação de dispositivos, acesso intermediado de fornecedores, comitês de revisão;; 2 = um;; 1 = nenhuma;; 0 = nenhuma.
+- **EX006 — Padrão comum.** Cite dois padrões que as três organizações pares compartilham. *Rubrica:* 3 = acesso centrado em identidade, segmentação de dispositivos, acesso intermediado de fornecedores, comitês de revisão;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
 - **EX007 — Uso do SABSA.** Como os pares usam o SABSA? *Rubrica:* 3 = aproveitam partes, como os perfis de atributos, e não o método completo;; 2 = partes;; 1 = método completo;; 0 = nenhuma.
 
@@ -120,7 +120,7 @@ Três entrevistas não representam um setor. O alinhamento às orientações nã
 
 - **EX009 — Primeira prioridade.** Por que ordenar a segmentação dos dispositivos em primeiro lugar na Corvane? *Rubrica:* 3 = uma infecção num notebook poderia alcançar as estações de gerenciamento das bombas de infusão;; 2 = segurança do paciente;; 1 = custo;; 0 = nenhuma.
 
-- **EX010 — Por que citar fontes.** Por que Priya apresentou as lacunas com fontes? *Rubrica:* 3 = para que sejam vistas como medidas contra orientações, e não como opinião;; 2 = credibilidade;; 1 = nenhuma;; 0 = nenhuma.
+- **EX010 — Por que citar fontes.** Por que Priya apresentou as lacunas com fontes? *Rubrica:* 3 = para que sejam vistas como medidas contra orientações, e não como opinião;; 2 = credibilidade;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -188,7 +188,7 @@ Os inventários deixam dispositivos de fora. Os modelos de alcançabilidade igno
 
 - **EX013 — Caminho proposto.** O que consegue alcançar os dispositivos clínicos sob as regras propostas? *Rubrica:* 3 = apenas o jump host da engenharia clínica;; 2 = jump host;; 1 = tudo;; 0 = nenhuma.
 
-- **EX014 — Registrar datas.** Por que registrar a data de cada fonte? *Rubrica:* 3 = os inventários costumam ser incompletos, então é preciso mostrar a atualidade;; 2 = atualidade;; 1 = nenhuma;; 0 = nenhuma.
+- **EX014 — Registrar datas.** Por que registrar a data de cada fonte? *Rubrica:* 3 = os inventários costumam ser incompletos, então é preciso mostrar a atualidade;; 2 = atualidade;; 1 = vago;; 0 = nenhuma.
 
 - **EX015 — Proporção.** O que significa evidência proporcional aqui? *Rubrica:* 3 = o bastante para justificar a decisão e mostrar os limites, com os detalhes em apêndices;; 2 = o bastante;; 1 = tudo;; 0 = nenhuma.
 
@@ -230,7 +230,7 @@ As faixas podem ser largas demais para orientar a ação. Escalar sem evidência
 
 - **EX016 — Por que faixas.** Por que expressar o risco em faixas, e não em números únicos? *Rubrica:* 3 = para mostrar a incerteza e evitar falsa confiança;; 2 = incerteza;; 1 = precisão;; 0 = nenhuma.
 
-- **EX017 — Três danos.** Que três tipos de dano Priya separou? *Rubrica:* 3 = segurança do paciente, privacidade e financeiro;; 2 = dois;; 1 = nenhuma;; 0 = nenhuma.
+- **EX017 — Três danos.** Que três tipos de dano Priya separou? *Rubrica:* 3 = segurança do paciente, privacidade e financeiro;; 2 = dois;; 1 = vago;; 0 = nenhuma.
 
 - **EX018 — Não monetizar a segurança.** Por que não converter a segurança do paciente em dinheiro? *Rubrica:* 3 = isso esconde um julgamento ético dentro da aritmética;; 2 = ética;; 1 = é mais fácil;; 0 = nenhuma.
 
@@ -305,7 +305,7 @@ As notas por atributo são julgamentos. Dois caminhos de acesso aumentam a carga
 
 - **EX024 — Quando a nuvem vence.** Quando a opção em nuvem vence na varredura? *Rubrica:* 3 = com peso de disponibilidade de 0,20 ou menos;; 2 = peso baixo;; 1 = sempre;; 0 = nenhuma.
 
-- **EX025 — Custo da híbrida.** Que custo oculto a opção híbrida carrega? *Rubrica:* 3 = dois caminhos de acesso, com risco de a contingência ser negligenciada;; 2 = contingência;; 1 = nenhuma;; 0 = nenhuma.
+- **EX025 — Custo da híbrida.** Que custo oculto a opção híbrida carrega? *Rubrica:* 3 = dois caminhos de acesso, com risco de a contingência ser negligenciada;; 2 = contingência;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -345,9 +345,9 @@ Amostras pequenas são frágeis. A equipe pode se comportar de outro modo quando
 
 - **EX026 — Escolher por sorteio.** Por que sortear as clínicas do piloto? *Rubrica:* 3 = para impedir a escolha dos locais mais fáceis;; 2 = viés;; 1 = conveniência;; 0 = nenhuma.
 
-- **EX027 — Resultado de indisponibilidade.** Quantos minutos mensais de indisponibilidade tiveram as clínicas do piloto e as de comparação? *Rubrica:* 3 = onze contra trinta e quatro;; 2 = menos;; 1 = nenhuma;; 0 = nenhuma.
+- **EX027 — Resultado de indisponibilidade.** Quantos minutos mensais de indisponibilidade tiveram as clínicas do piloto e as de comparação? *Rubrica:* 3 = onze contra trinta e quatro;; 2 = menos;; 1 = vago;; 0 = nenhuma.
 
-- **EX028 — Custo para a equipe.** Que custo para a equipe o piloto mostrou? *Rubrica:* 3 = o login subiu quatro segundos;; 2 = quatro segundos;; 1 = nenhuma;; 0 = nenhuma.
+- **EX028 — Custo para a equipe.** Que custo para a equipe o piloto mostrou? *Rubrica:* 3 = o login subiu quatro segundos;; 2 = quatro segundos;; 1 = vago;; 0 = nenhuma.
 
 - **EX029 — Padrão dos chamados.** Como mudaram os chamados ao help desk? *Rubrica:* 3 = subiram no primeiro mês e depois caíram abaixo da comparação;; 2 = subida e queda;; 1 = estáveis;; 0 = nenhuma.
 
@@ -389,13 +389,13 @@ A triagem pode deixar passar projetos arriscados que respondem não. Comitês r�
 
 ### Exercícios
 
-- **EX031 — Rastreabilidade para a auditoria.** Como ligar os registros ao SGSI ajudou os auditores? *Rubrica:* 3 = eles conseguem rastrear um controle até sua decisão de projeto;; 2 = rastreabilidade;; 1 = nenhuma;; 0 = nenhuma.
+- **EX031 — Rastreabilidade para a auditoria.** Como ligar os registros ao SGSI ajudou os auditores? *Rubrica:* 3 = eles conseguem rastrear um controle até sua decisão de projeto;; 2 = rastreabilidade;; 1 = vago;; 0 = nenhuma.
 
 - **EX032 — Problema do comitê antigo.** O que havia de errado com o antigo comitê de revisão? *Rubrica:* 3 = revisava tudo mensalmente e virou um gargalo;; 2 = gargalo;; 1 = rápido demais;; 0 = nenhuma.
 
 - **EX033 — Gatilhos da triagem.** Que características de um projeto disparam a revisão pelo comitê? *Rubrica:* 3 = fornecedores, fluxos de dados de pacientes, dispositivos clínicos, exposição à internet;; 2 = dois;; 1 = todos os projetos;; 0 = nenhuma.
 
-- **EX034 — Efeito do comitê.** O que mudou em um trimestre após o redesenho? *Rubrica:* 3 = mais projetos se apresentaram voluntariamente;; 2 = voluntário;; 1 = nenhuma;; 0 = nenhuma.
+- **EX034 — Efeito do comitê.** O que mudou em um trimestre após o redesenho? *Rubrica:* 3 = mais projetos se apresentaram voluntariamente;; 2 = voluntário;; 1 = vago;; 0 = nenhuma.
 
 - **EX035 — Princípio de integração.** Quando a integração com outras funções funciona? *Rubrica:* 3 = quando cada função vê a arquitetura ajudando seus próprios objetivos;; 2 = objetivos comuns;; 1 = imposições;; 0 = nenhuma.
 
@@ -439,7 +439,7 @@ As exceções tendem a se tornar permanentes sem datas. Fusões escalonadas empe
 
 - **EX037 — Responsável pela exceção.** Quem aceitou o risco residual do scanner? *Rubrica:* 3 = o comitê de governança clínica, por escrito;; 2 = comitê;; 1 = arquiteta;; 0 = nenhuma.
 
-- **EX038 — Dilema da fusão.** Por que nem a conexão rápida nem a separação total eram aceitáveis? *Rubrica:* 3 = a rápida importa fraquezas; a separação bloqueia os prontuários compartilhados;; 2 = os dois lados;; 1 = nenhuma;; 0 = nenhuma.
+- **EX038 — Dilema da fusão.** Por que nem a conexão rápida nem a separação total eram aceitáveis? *Rubrica:* 3 = a rápida importa fraquezas; a separação bloqueia os prontuários compartilhados;; 2 = os dois lados;; 1 = vago;; 0 = nenhuma.
 
 - **EX039 — Primeira etapa da fusão.** Qual foi a primeira etapa da fusão? *Rubrica:* 3 = uma conexão intermediada apenas para aplicações específicas;; 2 = intermediada;; 1 = junção total;; 0 = nenhuma.
 
@@ -500,11 +500,11 @@ As amostras de verificação podem deixar passar falhas. As métricas podem ser 
 
 ### Exercícios
 
-- **EX041 — Princípio de delegação.** Que princípios permitem que a equipe decida sem Priya? *Rubrica:* 3 = negar por padrão, identidade antes da rede, exceções datadas e com responsável;; 2 = dois;; 1 = nenhuma;; 0 = nenhuma.
+- **EX041 — Princípio de delegação.** Que princípios permitem que a equipe decida sem Priya? *Rubrica:* 3 = negar por padrão, identidade antes da rede, exceções datadas e com responsável;; 2 = dois;; 1 = vago;; 0 = nenhuma.
 
-- **EX042 — Três níveis.** Que três níveis Priya distingue? *Rubrica:* 3 = projetado, implementado e verificado;; 2 = dois;; 1 = nenhuma;; 0 = nenhuma.
+- **EX042 — Três níveis.** Que três níveis Priya distingue? *Rubrica:* 3 = projetado, implementado e verificado;; 2 = dois;; 1 = vago;; 0 = nenhuma.
 
-- **EX043 — Contagens do laboratório.** Quais foram as contagens em cada nível no laboratório? *Rubrica:* 3 = 36 projetados, 29 implementados, 19 verificados;; 2 = em parte;; 1 = nenhuma;; 0 = nenhuma.
+- **EX043 — Contagens do laboratório.** Quais foram as contagens em cada nível no laboratório? *Rubrica:* 3 = 36 projetados, 29 implementados, 19 verificados;; 2 = em parte;; 1 = vago;; 0 = nenhuma.
 
 - **EX044 — Garantia versus tranquilização.** O que faz do relato de Priya garantia, e não tranquilização? *Rubrica:* 3 = ele relata o que foi verificado, por quem e como;; 2 = verificação;; 1 = tom;; 0 = nenhuma.
 
@@ -546,9 +546,9 @@ As críticas podem ser mais duras com achados indesejados. O raciocínio sobre t
 
 ### Exercícios
 
-- **EX046 — Três perguntas.** Que três perguntas orientam a leitura de Priya? *Rubrica:* 3 = o que foi medido, como se comparou, se o cenário se pareceria com uma clínica;; 2 = duas;; 1 = nenhuma;; 0 = nenhuma.
+- **EX046 — Três perguntas.** Que três perguntas orientam a leitura de Priya? *Rubrica:* 3 = o que foi medido, como se comparou, se o cenário se pareceria com uma clínica;; 2 = duas;; 1 = vago;; 0 = nenhuma.
 
-- **EX047 — Afirmações falseáveis.** Por que procurar estudos que declarem o que os contrariaria? *Rubrica:* 3 = a pesquisa em segurança muitas vezes carece de afirmações falseáveis;; 2 = falseável;; 1 = nenhuma;; 0 = nenhuma.
+- **EX047 — Afirmações falseáveis.** Por que procurar estudos que declarem o que os contrariaria? *Rubrica:* 3 = a pesquisa em segurança muitas vezes carece de afirmações falseáveis;; 2 = falseável;; 1 = vago;; 0 = nenhuma.
 
 - **EX048 — Mecanismo que não se transfere.** Que mecanismo do estudo empresarial não se transferiu? *Rubrica:* 3 = uma equipe dedicada de operações de segurança observando os alertas;; 2 = equipe;; 1 = segmentação;; 0 = nenhuma.
 
@@ -613,15 +613,15 @@ As rubricas comprimem o julgamento em números. As semanas de descoberta acresce
 
 ### Exercícios
 
-- **EX051 — Surpresa da primeira clínica.** O que a primeira clínica revelou? *Rubrica:* 3 = uma conexão não documentada de um analisador de sangue para um serviço de laboratório;; 2 = não documentada;; 1 = nenhuma;; 0 = nenhuma.
+- **EX051 — Surpresa da primeira clínica.** O que a primeira clínica revelou? *Rubrica:* 3 = uma conexão não documentada de um analisador de sangue para um serviço de laboratório;; 2 = não documentada;; 1 = vago;; 0 = nenhuma.
 
-- **EX052 — Resposta à surpresa.** Como Priya mudou os planos das clínicas seguintes? *Rubrica:* 3 = acrescentou uma semana de descoberta antes das mudanças de regra;; 2 = descoberta;; 1 = nenhuma;; 0 = nenhuma.
+- **EX052 — Resposta à surpresa.** Como Priya mudou os planos das clínicas seguintes? *Rubrica:* 3 = acrescentou uma semana de descoberta antes das mudanças de regra;; 2 = descoberta;; 1 = vago;; 0 = nenhuma.
 
 - **EX053 — Diferença na rubrica.** Em que critério Priya se deu nota acima da dos avaliadores no laboratório? *Rubrica:* 3 = verificação: ela 3, avaliadores 2;; 2 = verificação;; 1 = partes interessadas;; 0 = nenhuma.
 
-- **EX054 — Preocupação dos avaliadores.** Qual era a preocupação dos avaliadores sobre a verificação? *Rubrica:* 3 = duas clínicas foram verificadas só por Priya;; 2 = independência;; 1 = nenhuma;; 0 = nenhuma.
+- **EX054 — Preocupação dos avaliadores.** Qual era a preocupação dos avaliadores sobre a verificação? *Rubrica:* 3 = duas clínicas foram verificadas só por Priya;; 2 = independência;; 1 = vago;; 0 = nenhuma.
 
-- **EX055 — Regra de conclusão.** Por que o projeto só estava concluído depois da passagem? *Rubrica:* 3 = um projeto que só seu autor consegue operar não foi entregue;; 2 = passagem;; 1 = nenhuma;; 0 = nenhuma.
+- **EX055 — Regra de conclusão.** Por que o projeto só estava concluído depois da passagem? *Rubrica:* 3 = um projeto que só seu autor consegue operar não foi entregue;; 2 = passagem;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -659,11 +659,11 @@ A atribuição dos resultados é incerta. As afirmações de transferência prec
 
 ### Exercícios
 
-- **EX056 — Risco remanescente.** Que concentração de risco permaneceu na Corvane? *Rubrica:* 3 = o provedor de identidade;; 2 = identidade;; 1 = nenhuma;; 0 = nenhuma.
+- **EX056 — Risco remanescente.** Que concentração de risco permaneceu na Corvane? *Rubrica:* 3 = o provedor de identidade;; 2 = identidade;; 1 = vago;; 0 = nenhuma.
 
-- **EX057 — Cuidado na atribuição.** Que resultado poderia ter acontecido de qualquer modo? *Rubrica:* 3 = a redução de indisponibilidades por melhorias do próprio fornecedor;; 2 = fornecedor;; 1 = nenhuma;; 0 = nenhuma.
+- **EX057 — Cuidado na atribuição.** Que resultado poderia ter acontecido de qualquer modo? *Rubrica:* 3 = a redução de indisponibilidades por melhorias do próprio fornecedor;; 2 = fornecedor;; 1 = vago;; 0 = nenhuma.
 
-- **EX058 — Métodos que se transferem.** Cite dois métodos que se transferem para a empresa de saneamento. *Rubrica:* 3 = registros de decisão, critérios por atributo, modelos de alcançabilidade, implantações escalonadas;; 2 = um;; 1 = nenhuma;; 0 = nenhuma.
+- **EX058 — Métodos que se transferem.** Cite dois métodos que se transferem para a empresa de saneamento. *Rubrica:* 3 = registros de decisão, critérios por atributo, modelos de alcançabilidade, implantações escalonadas;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
 - **EX059 — O que muda na transferência.** O que muda ao passar para a empresa de saneamento? *Rubrica:* 3 = os pesos dos atributos e janelas de mudança mais raras;; 2 = pesos;; 1 = nada;; 0 = nenhuma.
 

@@ -89,17 +89,17 @@ Fixing the visible problem quickly is right, but the review must still look for 
 
 - **EX001 — Trigger.** What made Leila notice the sharing problem? *Rubric:* 3 = patient's letter opened without login via forwarded link; 2 = partial; 1 = vague; 0 = none.
 - **EX002 — Services used.** Name three cloud services Oakfield relies on. *Rubric:* 3 = storage, email, hosted booking platform; 2 = two; 1 = one; 0 = none.
-- **EX003 — Container inheritance.** Why can an old base image affect the booking app? *Rubric:* 3 = app inherits its flaws; 2 = partial; 1 = none; 0 = none.
-- **EX004 — Responsibility side.** On which side of shared responsibility does the sharing mistake sit? *Rubric:* 3 = clinic's side; 2 = partial; 1 = none; 0 = none.
+- **EX003 — Container inheritance.** Why can an old base image affect the booking app? *Rubric:* 3 = app inherits its flaws; 2 = partial; 1 = vague; 0 = none.
+- **EX004 — Responsibility side.** On which side of shared responsibility does the sharing mistake sit? *Rubric:* 3 = clinic's side; 2 = partial; 1 = vague; 0 = none.
 - **EX005 — First decisions.** List Ben's three first decisions. *Rubric:* 3 = fix sharing, MFA, container update agreement; 2 = two; 1 = one; 0 = none.
 - **EX006 — Decision log.** What does each decision log entry contain? *Rubric:* 3 = date, reason, owner; 2 = two; 1 = one; 0 = none.
-- **EX007 — Notification question.** What did Ben advise about telling patients? *Rubric:* 3 = gather evidence, consult guidance; 2 = partial; 1 = none; 0 = none.
-- **EX008 — Ownership of servers.** Does Oakfield own any servers? *Rubric:* 3 = no; 2 = partial; 1 = none; 0 = none.
-- **EX009 — Definition source.** Which standard defines cloud computing used here? *Rubric:* 3 = NIST SP 800-145; 2 = partial; 1 = none; 0 = none.
-- **EX010 — Clinic size effect.** Why make proportionate rather than complete changes? *Rubric:* 3 = small clinic cannot do everything; 2 = partial; 1 = none; 0 = none.
-- **EX011 — Visible fix limit.** What must follow the quick fix? *Rubric:* 3 = look for similar problems; 2 = partial; 1 = none; 0 = none.
-- **EX012 — Provider duty.** What does the provider secure? *Rubric:* 3 = its infrastructure; 2 = partial; 1 = none; 0 = none.
-- **EX013 — Folder change.** What did Leila change on the first afternoon? *Rubric:* 3 = patient letters to staff-only; 2 = partial; 1 = none; 0 = none.
+- **EX007 — Notification question.** What did Ben advise about telling patients? *Rubric:* 3 = gather evidence, consult guidance; 2 = partial; 1 = vague; 0 = none.
+- **EX008 — Ownership of servers.** Does Oakfield own any servers? *Rubric:* 3 = no; 2 = partial; 1 = vague; 0 = none.
+- **EX009 — Definition source.** Which standard defines cloud computing used here? *Rubric:* 3 = NIST SP 800-145; 2 = partial; 1 = vague; 0 = none.
+- **EX010 — Clinic size effect.** Why make proportionate rather than complete changes? *Rubric:* 3 = small clinic cannot do everything; 2 = partial; 1 = vague; 0 = none.
+- **EX011 — Visible fix limit.** What must follow the quick fix? *Rubric:* 3 = look for similar problems; 2 = partial; 1 = vague; 0 = none.
+- **EX012 — Provider duty.** What does the provider secure? *Rubric:* 3 = its infrastructure; 2 = partial; 1 = vague; 0 = none.
+- **EX013 — Folder change.** What did Leila change on the first afternoon? *Rubric:* 3 = patient letters to staff-only; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -175,19 +175,19 @@ Changing settings before exporting evidence can erase the record of what was exp
 
 ### Exercises
 
-- **EX014 — Authority source.** Who authorises Leila's work? *Rubric:* 3 = Mark Ellis, clinic owner; 2 = partial; 1 = none; 0 = none.
-- **EX015 — Evidence exports.** What did Leila export first? *Rubric:* 3 = sharing report and activity log; 2 = partial; 1 = none; 0 = none.
-- **EX016 — Origin of link.** How did the folder become shared with anyone? *Rubric:* 3 = January share with hospital; 2 = partial; 1 = none; 0 = none.
-- **EX017 — Outside views.** What did the outside views show? *Rubric:* 3 = four: three hospital, one patient; 2 = partial; 1 = none; 0 = none.
-- **EX018 — Decision maker.** Who makes the final notification decision? *Rubric:* 3 = Mark as data controller; 2 = partial; 1 = none; 0 = none.
-- **EX019 — Unsafe testing.** What did Leila avoid doing? *Rubric:* 3 = guessing links or outside tools; 2 = partial; 1 = none; 0 = none.
-- **EX020 — Shared login.** Why replace the reception login? *Rubric:* 3 = logs show who did what; 2 = partial; 1 = none; 0 = none.
-- **EX021 — Hardware keys.** How were staff without smartphones handled? *Rubric:* 3 = hardware keys; 2 = partial; 1 = none; 0 = none.
-- **EX022 — Log deletion.** Why must the log be kept? *Rubric:* 3 = it is evidence; 2 = partial; 1 = none; 0 = none.
-- **EX023 — Order of work.** Why export before changing more settings? *Rubric:* 3 = changes can erase the record; 2 = partial; 1 = none; 0 = none.
-- **EX024 — Scope limit.** Which services does Leila review? *Rubric:* 3 = Oakfield's own only; 2 = partial; 1 = none; 0 = none.
+- **EX014 — Authority source.** Who authorises Leila's work? *Rubric:* 3 = Mark Ellis, clinic owner; 2 = partial; 1 = vague; 0 = none.
+- **EX015 — Evidence exports.** What did Leila export first? *Rubric:* 3 = sharing report and activity log; 2 = partial; 1 = vague; 0 = none.
+- **EX016 — Origin of link.** How did the folder become shared with anyone? *Rubric:* 3 = January share with hospital; 2 = partial; 1 = vague; 0 = none.
+- **EX017 — Outside views.** What did the outside views show? *Rubric:* 3 = four: three hospital, one patient; 2 = partial; 1 = vague; 0 = none.
+- **EX018 — Decision maker.** Who makes the final notification decision? *Rubric:* 3 = Mark as data controller; 2 = partial; 1 = vague; 0 = none.
+- **EX019 — Unsafe testing.** What did Leila avoid doing? *Rubric:* 3 = guessing links or outside tools; 2 = partial; 1 = vague; 0 = none.
+- **EX020 — Shared login.** Why replace the reception login? *Rubric:* 3 = logs show who did what; 2 = partial; 1 = vague; 0 = none.
+- **EX021 — Hardware keys.** How were staff without smartphones handled? *Rubric:* 3 = hardware keys; 2 = partial; 1 = vague; 0 = none.
+- **EX022 — Log deletion.** Why must the log be kept? *Rubric:* 3 = it is evidence; 2 = partial; 1 = vague; 0 = none.
+- **EX023 — Order of work.** Why export before changing more settings? *Rubric:* 3 = changes can erase the record; 2 = partial; 1 = vague; 0 = none.
+- **EX024 — Scope limit.** Which services does Leila review? *Rubric:* 3 = Oakfield's own only; 2 = partial; 1 = vague; 0 = none.
 - **EX025 — Risk record.** What does Leila record for data protection? *Rubric:* 3 = what happened, who affected, why low risk; 2 = two; 1 = one; 0 = none.
-- **EX026 — Written confirmation.** Why confirm authority in writing? *Rubric:* 3 = clear limits, protection; 2 = partial; 1 = none; 0 = none.
+- **EX026 — Written confirmation.** Why confirm authority in writing? *Rubric:* 3 = clear limits, protection; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -285,18 +285,18 @@ A one-off check finds today's problems; only a routine finds tomorrow's.
 
 ### Exercises
 
-- **EX027 — Policy rule.** State Leila's sharing rule. *Rubric:* 3 = sensitive only staff/admins; non-sensitive may be public; 2 = partial; 1 = none; 0 = none.
+- **EX027 — Policy rule.** State Leila's sharing rule. *Rubric:* 3 = sensitive only staff/admins; non-sensitive may be public; 2 = partial; 1 = vague; 0 = none.
 - **EX028 — Lab result.** Which items were shared too widely? *Rubric:* 3 = patient-letters, invoices, old-backup; 2 = two; 1 = one; 0 = none.
-- **EX029 — Sensitive count.** How many items were sensitive? *Rubric:* 3 = 5; 2 = partial; 1 = none; 0 = none.
-- **EX030 — Backup decision.** What was done with the old backup and why? *Rubric:* 3 = deleted after checking retention; fewer copies; 2 = partial; 1 = none; 0 = none.
-- **EX031 — Image age.** What did the developer reveal about the image? *Rubric:* 3 = old, rebuilt a year ago; 2 = partial; 1 = none; 0 = none.
-- **EX032 — Rebuild agreement.** What rebuild schedule was agreed? *Rubric:* 3 = monthly with confirmation; 2 = partial; 1 = none; 0 = none.
-- **EX033 — Password move.** Where did the database password go? *Rubric:* 3 = platform secret settings; 2 = partial; 1 = none; 0 = none.
-- **EX034 — Public images.** What did Shu et al. (2017) find? *Rubric:* 3 = many public images had known vulnerabilities; 2 = partial; 1 = none; 0 = none.
-- **EX035 — Platform question.** Do the ideas apply without Kubernetes? *Rubric:* 3 = yes: images, rebuilds, secrets, least privilege; 2 = partial; 1 = none; 0 = none.
-- **EX036 — Why check all.** Why check every item, not just the reported folder? *Rubric:* 3 = other problems may exist; 2 = partial; 1 = none; 0 = none.
-- **EX037 — One-off limit.** What can a one-off check not do? *Rubric:* 3 = find future problems; 2 = partial; 1 = none; 0 = none.
-- **EX038 — Container guidance.** Which NIST publication covers container images? *Rubric:* 3 = SP 800-190; 2 = partial; 1 = none; 0 = none.
+- **EX029 — Sensitive count.** How many items were sensitive? *Rubric:* 3 = 5; 2 = partial; 1 = vague; 0 = none.
+- **EX030 — Backup decision.** What was done with the old backup and why? *Rubric:* 3 = deleted after checking retention; fewer copies; 2 = partial; 1 = vague; 0 = none.
+- **EX031 — Image age.** What did the developer reveal about the image? *Rubric:* 3 = old, rebuilt a year ago; 2 = partial; 1 = vague; 0 = none.
+- **EX032 — Rebuild agreement.** What rebuild schedule was agreed? *Rubric:* 3 = monthly with confirmation; 2 = partial; 1 = vague; 0 = none.
+- **EX033 — Password move.** Where did the database password go? *Rubric:* 3 = platform secret settings; 2 = partial; 1 = vague; 0 = none.
+- **EX034 — Public images.** What did Shu et al. (2017) find? *Rubric:* 3 = many public images had known vulnerabilities; 2 = partial; 1 = vague; 0 = none.
+- **EX035 — Platform question.** Do the ideas apply without Kubernetes? *Rubric:* 3 = yes: images, rebuilds, secrets, least privilege; 2 = partial; 1 = vague; 0 = none.
+- **EX036 — Why check all.** Why check every item, not just the reported folder? *Rubric:* 3 = other problems may exist; 2 = partial; 1 = vague; 0 = none.
+- **EX037 — One-off limit.** What can a one-off check not do? *Rubric:* 3 = find future problems; 2 = partial; 1 = vague; 0 = none.
+- **EX038 — Container guidance.** Which NIST publication covers container images? *Rubric:* 3 = SP 800-190; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -401,17 +401,17 @@ Routines decay when one person holds them; share and record them.
 ### Exercises
 
 - **EX039 — Six tasks.** List the six monthly tasks. *Rubric:* 3 = sharing, admin/MFA, backup restore, image update, leavers, notices; 2 = five; 1 = three; 0 = none.
-- **EX040 — Task origins.** Why were these six tasks chosen? *Rubric:* 3 = each matches a real or near problem; 2 = partial; 1 = none; 0 = none.
-- **EX041 — Lab trend.** Give the three monthly results. *Rubric:* 3 = 3/6, 5/6, 6/6; 2 = partial; 1 = none; 0 = none.
-- **EX042 — May gap.** Why was the restore missed in May? *Rubric:* 3 = nobody knew how; 2 = partial; 1 = none; 0 = none.
-- **EX043 — Image delay.** What caused the late image update and the fix? *Rubric:* 3 = developer holiday; backup contact; 2 = partial; 1 = none; 0 = none.
-- **EX044 — Time cost.** How long does the routine take? *Rubric:* 3 = about an hour a month; 2 = partial; 1 = none; 0 = none.
-- **EX045 — Scheduling.** When is the routine done? *Rubric:* 3 = first Monday; 2 = partial; 1 = none; 0 = none.
-- **EX046 — Course arc.** Summarise the course in one sentence. *Rubric:* 3 = understand, authority, evidence, check, dependencies, repeat; 2 = partial; 1 = none; 0 = none.
-- **EX047 — References.** Why keep CIS and CCM v4 as references? *Rubric:* 3 = for growth later; 2 = partial; 1 = none; 0 = none.
-- **EX048 — Continuity.** How was continuity ensured? *Rubric:* 3 = one-page instructions, trained deputy; 2 = partial; 1 = none; 0 = none.
-- **EX049 — Deputy result.** What did the deputy do in August? *Rubric:* 3 = completed routine with Leila watching; 2 = partial; 1 = none; 0 = none.
-- **EX050 — Decay risk.** Why do routines decay? *Rubric:* 3 = one person holds them; 2 = partial; 1 = none; 0 = none.
+- **EX040 — Task origins.** Why were these six tasks chosen? *Rubric:* 3 = each matches a real or near problem; 2 = partial; 1 = vague; 0 = none.
+- **EX041 — Lab trend.** Give the three monthly results. *Rubric:* 3 = 3/6, 5/6, 6/6; 2 = partial; 1 = vague; 0 = none.
+- **EX042 — May gap.** Why was the restore missed in May? *Rubric:* 3 = nobody knew how; 2 = partial; 1 = vague; 0 = none.
+- **EX043 — Image delay.** What caused the late image update and the fix? *Rubric:* 3 = developer holiday; backup contact; 2 = partial; 1 = vague; 0 = none.
+- **EX044 — Time cost.** How long does the routine take? *Rubric:* 3 = about an hour a month; 2 = partial; 1 = vague; 0 = none.
+- **EX045 — Scheduling.** When is the routine done? *Rubric:* 3 = first Monday; 2 = partial; 1 = vague; 0 = none.
+- **EX046 — Course arc.** Summarise the course in one sentence. *Rubric:* 3 = understand, authority, evidence, check, dependencies, repeat; 2 = partial; 1 = vague; 0 = none.
+- **EX047 — References.** Why keep CIS and CCM v4 as references? *Rubric:* 3 = for growth later; 2 = partial; 1 = vague; 0 = none.
+- **EX048 — Continuity.** How was continuity ensured? *Rubric:* 3 = one-page instructions, trained deputy; 2 = partial; 1 = vague; 0 = none.
+- **EX049 — Deputy result.** What did the deputy do in August? *Rubric:* 3 = completed routine with Leila watching; 2 = partial; 1 = vague; 0 = none.
+- **EX050 — Decay risk.** Why do routines decay? *Rubric:* 3 = one person holds them; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 

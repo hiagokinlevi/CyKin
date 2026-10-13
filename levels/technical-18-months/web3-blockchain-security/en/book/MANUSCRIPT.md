@@ -113,7 +113,7 @@ Making a firewall change without verifying it can break the service or leave exp
 
 - **EX005 — Map contents.** What does Aiko record for each connection? *Rubric:* 3 = port and protocol;; 2 = ports;; 1 = colour;; 0 = none.
 - **EX006 — Exposure found.** What exposure did she find? *Rubric:* 3 = node three's interface open to the office network;; 2 = node three;; 1 = peer ports;; 0 = none.
-- **EX007 — Verification scope.** What limits Aiko's connectivity tests? *Rubric:* 3 = authorised machines within written scope;; 2 = written scope;; 1 = none;; 0 = none.
+- **EX007 — Verification scope.** What limits Aiko's connectivity tests? *Rubric:* 3 = authorised machines within written scope;; 2 = written scope;; 1 = vague;; 0 = none.
 - **EX008 — Unverified change risk.** Why verify changes? *Rubric:* 3 = unverified changes cause outages and false confidence;; 2 = confirm effect;; 1 = habit;; 0 = none.
 
 ### Synthesis
@@ -202,9 +202,9 @@ Silently skipping invalid records hides data problems that need fixing at the so
 ### Exercises
 
 - **EX013 — Settings advice.** What did Mr Kowal suggest about settings? *Rubric:* 3 = store them in one place;; 2 = central settings;; 1 = hard-code everywhere;; 0 = none.
-- **EX014 — Format quirk.** Name one format quirk Aiko meets. *Rubric:* 3 = numbers arriving as text;; 2 = date formats;; 1 = none;; 0 = none.
+- **EX014 — Format quirk.** Name one format quirk Aiko meets. *Rubric:* 3 = numbers arriving as text;; 2 = date formats;; 1 = vague;; 0 = none.
 - **EX015 — Validation rule.** Name one validation rule. *Rubric:* 3 = block numbers must increase;; 2 = amounts positive whole numbers;; 1 = anything goes;; 0 = none.
-- **EX016 — Invalid records found.** What invalid records were found? *Rubric:* 3 = two loans returned before they were borrowed;; 2 = date errors;; 1 = none;; 0 = none.
+- **EX016 — Invalid records found.** What invalid records were found? *Rubric:* 3 = two loans returned before they were borrowed;; 2 = date errors;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -732,7 +732,7 @@ Untracked dependencies become outdated unnoticed until a problem forces an urgen
 
 ### Exercises
 
-- **EX057 — Load conflict.** What conflict did Aiko find? *Rubric:* 3 = accounting export reading nodes during backups;; 2 = export timing;; 1 = none;; 0 = none.
+- **EX057 — Load conflict.** What conflict did Aiko find? *Rubric:* 3 = accounting export reading nodes during backups;; 2 = export timing;; 1 = vague;; 0 = none.
 - **EX058 — Dependency example.** Name one tracked dependency. *Rubric:* 3 = hardware wallet firmware;; 2 = ledger client;; 1 = office chairs;; 0 = none.
 - **EX059 — Update path.** How are routine updates applied? *Rubric:* 3 = tested, then one component at a time through tickets;; 2 = tested and staged;; 1 = all at once;; 0 = none.
 - **EX060 — Urgent fix path.** What does the urgent path require? *Rubric:* 3 = the manager's approval;; 2 = approval;; 1 = nothing;; 0 = none.

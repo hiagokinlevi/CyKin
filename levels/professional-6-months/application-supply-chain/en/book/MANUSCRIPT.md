@@ -79,10 +79,10 @@ A single finding is a starting point; avoid concluding more than the evidence sh
 
 ### Exercises
 
-- **EX001 — Opening finding.** What did Priya notice? *Rubric:* 3 = hl-auth resolved from public registry; 2 = partial; 1 = none; 0 = none.
-- **EX002 — Integrity link.** How does supply chain security relate to integrity? *Rubric:* 3 = ensures what is built is intended; 2 = partial; 1 = none; 0 = none.
-- **EX003 — Top 10 categories.** Which Top 10:2021 categories apply? *Rubric:* 3 = A06 and A08; 2 = one; 1 = none; 0 = none.
-- **EX004 — Role.** What is Priya's professional role? *Rubric:* 3 = find, explain, help fix with teams; 2 = partial; 1 = none; 0 = none.
+- **EX001 — Opening finding.** What did Priya notice? *Rubric:* 3 = hl-auth resolved from public registry; 2 = partial; 1 = vague; 0 = none.
+- **EX002 — Integrity link.** How does supply chain security relate to integrity? *Rubric:* 3 = ensures what is built is intended; 2 = partial; 1 = vague; 0 = none.
+- **EX003 — Top 10 categories.** Which Top 10:2021 categories apply? *Rubric:* 3 = A06 and A08; 2 = one; 1 = vague; 0 = none.
+- **EX004 — Role.** What is Priya's professional role? *Rubric:* 3 = find, explain, help fix with teams; 2 = partial; 1 = vague; 0 = none.
 - **EX005 — Summary contents.** What did Priya's summary include? *Rubric:* 3 = seen, why matters, unknown; 2 = two; 1 = one; 0 = none.
 
 ### Synthesis
@@ -142,10 +142,10 @@ Stakeholder priorities change; revisit the map each quarter.
 ### Exercises
 
 - **EX006 — Data held.** What data does TrackPort hold? *Rubric:* 3 = names, addresses, phones, contents, photos; 2 = three; 1 = one; 0 = none.
-- **EX007 — Fix owner.** Who owns fixes in TrackPort code? *Rubric:* 3 = TrackPort developers; 2 = partial; 1 = none; 0 = none.
-- **EX008 — Registry owner.** Why does the platform team own the registry fix? *Rubric:* 3 = one change protects all teams; 2 = partial; 1 = none; 0 = none.
+- **EX007 — Fix owner.** Who owns fixes in TrackPort code? *Rubric:* 3 = TrackPort developers; 2 = partial; 1 = vague; 0 = none.
+- **EX008 — Registry owner.** Why does the platform team own the registry fix? *Rubric:* 3 = one change protects all teams; 2 = partial; 1 = vague; 0 = none.
 - **EX009 — Ways of working.** What did Priya agree with the lead? *Rubric:* 3 = tickets with evidence; highs in a day; sprint planning; 2 = two; 1 = one; 0 = none.
-- **EX010 — Framing.** How did Priya frame the finding for platform? *Rubric:* 3 = single setting protects all teams; 2 = partial; 1 = none; 0 = none.
+- **EX010 — Framing.** How did Priya frame the finding for platform? *Rubric:* 3 = single setting protects all teams; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -204,10 +204,10 @@ Without written authorisation, even well-meant review can cause harm or conflict
 ### Exercises
 
 - **EX011 — Authorisation contents.** What did the authorisation name? *Rubric:* 3 = repositories, build logs, registry settings; 2 = two; 1 = one; 0 = none.
-- **EX012 — Out of scope.** What did the review not do? *Rubric:* 3 = publish or test public names; 2 = partial; 1 = none; 0 = none.
+- **EX012 — Out of scope.** What did the review not do? *Rubric:* 3 = publish or test public names; 2 = partial; 1 = vague; 0 = none.
 - **EX013 — Evidence saved.** What evidence was saved? *Rubric:* 3 = build log, lock entry and hash, config; 2 = two; 1 = one; 0 = none.
-- **EX014 — Public package.** What was the public hl-auth? *Rubric:* 3 = old copy published by mistake; 2 = partial; 1 = none; 0 = none.
-- **EX015 — External report.** Who decides external reporting? *Rubric:* 3 = Marcus; 2 = partial; 1 = none; 0 = none.
+- **EX014 — Public package.** What was the public hl-auth? *Rubric:* 3 = old copy published by mistake; 2 = partial; 1 = vague; 0 = none.
+- **EX015 — External report.** Who decides external reporting? *Rubric:* 3 = Marcus; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -293,10 +293,10 @@ Similar-name checks produce false alarms; they guide review, not decisions.
 
 ### Exercises
 
-- **EX016 — Lab flags.** Which dependencies did the lab flag? *Rubric:* 3 = hl-auth public; yamkit close to yamlkit; 2 = one; 1 = none; 0 = none.
-- **EX017 — Prefix rule.** What rule prevents the hl-auth problem? *Rubric:* 3 = internal prefixes only from internal registry; 2 = partial; 1 = none; 0 = none.
-- **EX018 — Build failure.** When does the build fail? *Rubric:* 3 = hash mismatch; 2 = partial; 1 = none; 0 = none.
-- **EX019 — yamkit outcome.** What was yamkit? *Rubric:* 3 = mistaken name for yamlkit; replaced; 2 = partial; 1 = none; 0 = none.
+- **EX016 — Lab flags.** Which dependencies did the lab flag? *Rubric:* 3 = hl-auth public; yamkit close to yamlkit; 2 = one; 1 = vague; 0 = none.
+- **EX017 — Prefix rule.** What rule prevents the hl-auth problem? *Rubric:* 3 = internal prefixes only from internal registry; 2 = partial; 1 = vague; 0 = none.
+- **EX018 — Build failure.** When does the build fail? *Rubric:* 3 = hash mismatch; 2 = partial; 1 = vague; 0 = none.
+- **EX019 — yamkit outcome.** What was yamkit? *Rubric:* 3 = mistaken name for yamlkit; replaced; 2 = partial; 1 = vague; 0 = none.
 - **EX020 — Review note.** What does a new dependency note contain? *Rubric:* 3 = purpose, maintainers, licence, source, exact name; 2 = three; 1 = one; 0 = none.
 
 ### Synthesis
@@ -387,11 +387,11 @@ Reachability analysis can be wrong; record why something was judged unreachable.
 
 ### Exercises
 
-- **EX021 — Dedup.** How many unique findings were there? *Rubric:* 3 = 6 of 7; 2 = partial; 1 = none; 0 = none.
+- **EX021 — Dedup.** How many unique findings were there? *Rubric:* 3 = 6 of 7; 2 = partial; 1 = vague; 0 = none.
 - **EX022 — Top three.** Which findings ranked first? *Rubric:* 3 = sql-concat, ADV-22, missing-authz; 2 = two; 1 = one; 0 = none.
-- **EX023 — Critical rank.** Why did critical ADV-21 rank fourth? *Rubric:* 3 = not reachable; 2 = partial; 1 = none; 0 = none.
-- **EX024 — Fixture key.** How was the fixture api-key handled? *Rubric:* 3 = allow-list with review date; 2 = partial; 1 = none; 0 = none.
-- **EX025 — Fatigue.** What did Johnson et al. find? *Rubric:* 3 = false positives deter use; 2 = partial; 1 = none; 0 = none.
+- **EX023 — Critical rank.** Why did critical ADV-21 rank fourth? *Rubric:* 3 = not reachable; 2 = partial; 1 = vague; 0 = none.
+- **EX024 — Fixture key.** How was the fixture api-key handled? *Rubric:* 3 = allow-list with review date; 2 = partial; 1 = vague; 0 = none.
+- **EX025 — Fatigue.** What did Johnson et al. find? *Rubric:* 3 = false positives deter use; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -451,9 +451,9 @@ Targets without tracking are ignored; tracking without fair escalation creates r
 
 - **EX026 — Workflow.** Outline the workflow. *Rubric:* 3 = finding, check, ticket, fix, confirm, rescan; 2 = four; 1 = two; 0 = none.
 - **EX027 — Targets.** What are the targets? *Rubric:* 3 = critical 7, high 30, medium 90; 2 = two; 1 = one; 0 = none.
-- **EX028 — Agreed with.** Who agreed the targets? *Rubric:* 3 = product manager; 2 = partial; 1 = none; 0 = none.
+- **EX028 — Agreed with.** Who agreed the targets? *Rubric:* 3 = product manager; 2 = partial; 1 = vague; 0 = none.
 - **EX029 — Exception record.** What does a risk acceptance contain? *Rubric:* 3 = reason, compensating controls, new date, signature; 2 = three; 1 = one; 0 = none.
-- **EX030 — Blocked fix.** How was the blocked fix handled? *Rubric:* 3 = risk acceptance with compensating check; 2 = partial; 1 = none; 0 = none.
+- **EX030 — Blocked fix.** How was the blocked fix handled? *Rubric:* 3 = risk acceptance with compensating check; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -512,10 +512,10 @@ Provenance shows how a release was built; it does not show the code is free of f
 ### Exercises
 
 - **EX031 — Controls.** List four controls. *Rubric:* 3 = prefix rule, hashes, mismatch failure, review notes, pinned actions, tokens, provenance; 2 = three; 1 = one; 0 = none.
-- **EX032 — SLSA L2.** What does SLSA build L2 require? *Rubric:* 3 = provenance signed by hosted platform; 2 = partial; 1 = none; 0 = none.
-- **EX033 — Prefix test.** How is the prefix rule tested? *Rubric:* 3 = fake internal package must not resolve publicly; 2 = partial; 1 = none; 0 = none.
-- **EX034 — Upgrade catch.** What did the weekly test catch? *Rubric:* 3 = upgrade reset registry config; 2 = partial; 1 = none; 0 = none.
-- **EX035 — Provenance limit.** What does provenance not prove? *Rubric:* 3 = code free of flaws; 2 = partial; 1 = none; 0 = none.
+- **EX032 — SLSA L2.** What does SLSA build L2 require? *Rubric:* 3 = provenance signed by hosted platform; 2 = partial; 1 = vague; 0 = none.
+- **EX033 — Prefix test.** How is the prefix rule tested? *Rubric:* 3 = fake internal package must not resolve publicly; 2 = partial; 1 = vague; 0 = none.
+- **EX034 — Upgrade catch.** What did the weekly test catch? *Rubric:* 3 = upgrade reset registry config; 2 = partial; 1 = vague; 0 = none.
+- **EX035 — Provenance limit.** What does provenance not prove? *Rubric:* 3 = code free of flaws; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -573,11 +573,11 @@ Hindsight makes signals look obvious; judge decisions by what was knowable at th
 
 ### Exercises
 
-- **EX036 — Case.** What happened? *Rubric:* 3 = analytics update collected identifiers without notice; 2 = partial; 1 = none; 0 = none.
-- **EX037 — Cause.** Why was it missed? *Rubric:* 3 = bundled in large change; no privacy rule; 2 = partial; 1 = none; 0 = none.
-- **EX038 — Missed signal.** What signal was missed? *Rubric:* 3 = release notes; 2 = partial; 1 = none; 0 = none.
+- **EX036 — Case.** What happened? *Rubric:* 3 = analytics update collected identifiers without notice; 2 = partial; 1 = vague; 0 = none.
+- **EX037 — Cause.** Why was it missed? *Rubric:* 3 = bundled in large change; no privacy rule; 2 = partial; 1 = vague; 0 = none.
+- **EX038 — Missed signal.** What signal was missed? *Rubric:* 3 = release notes; 2 = partial; 1 = vague; 0 = none.
 - **EX039 — Recommendations.** List the recommendations. *Rubric:* 3 = separate PRs; read notes; privacy check; 2 = two; 1 = one; 0 = none.
-- **EX040 — Cut item.** What did Marcus ask Priya to cut and why? *Rubric:* 3 = sign-off for every update; disproportionate; 2 = partial; 1 = none; 0 = none.
+- **EX040 — Cut item.** What did Marcus ask Priya to cut and why? *Rubric:* 3 = sign-off for every update; disproportionate; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -636,10 +636,10 @@ Overconfident reports damage trust when facts change; state uncertainty early.
 ### Exercises
 
 - **EX041 — Report structure.** List the finding report sections. *Rubric:* 3 = summary, finding, evidence, impact, recommendation, owner, date; 2 = four; 1 = two; 0 = none.
-- **EX042 — Readers.** What do managers need? *Rubric:* 3 = risk, cost, decisions; 2 = partial; 1 = none; 0 = none.
-- **EX043 — Uncertainty.** How is uncertainty expressed? *Rubric:* 3 = state known and unknown; 2 = partial; 1 = none; 0 = none.
-- **EX044 — External report.** How was the library flaw reported? *Rubric:* 3 = privately per security policy; 2 = partial; 1 = none; 0 = none.
-- **EX045 — Tone.** What should reports avoid? *Rubric:* 3 = individual blame; 2 = partial; 1 = none; 0 = none.
+- **EX042 — Readers.** What do managers need? *Rubric:* 3 = risk, cost, decisions; 2 = partial; 1 = vague; 0 = none.
+- **EX043 — Uncertainty.** How is uncertainty expressed? *Rubric:* 3 = state known and unknown; 2 = partial; 1 = vague; 0 = none.
+- **EX044 — External report.** How was the library flaw reported? *Rubric:* 3 = privately per security policy; 2 = partial; 1 = vague; 0 = none.
+- **EX045 — Tone.** What should reports avoid? *Rubric:* 3 = individual blame; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -718,11 +718,11 @@ Small numbers swing widely; look at causes as well as percentages.
 
 ### Exercises
 
-- **EX046 — Lab critical.** What was the critical result? *Rubric:* 3 = 1/2, longest 9 days; 2 = partial; 1 = none; 0 = none.
-- **EX047 — Lab high.** What was the high result? *Rubric:* 3 = 3/4, longest 41; 2 = partial; 1 = none; 0 = none.
+- **EX046 — Lab critical.** What was the critical result? *Rubric:* 3 = 1/2, longest 9 days; 2 = partial; 1 = vague; 0 = none.
+- **EX047 — Lab high.** What was the high result? *Rubric:* 3 = 3/4, longest 41; 2 = partial; 1 = vague; 0 = none.
 - **EX048 — Causes.** Name the causes of misses. *Rubric:* 3 = platform wait; blocked upgrade; owner moved; 2 = two; 1 = one; 0 = none.
-- **EX049 — Fixes.** Name two improvements. *Rubric:* 3 = same-day contact; ownership transfer; early acceptance; 2 = one; 1 = none; 0 = none.
-- **EX050 — Small numbers.** Why state sample sizes? *Rubric:* 3 = percentages swing with few items; 2 = partial; 1 = none; 0 = none.
+- **EX049 — Fixes.** Name two improvements. *Rubric:* 3 = same-day contact; ownership transfer; early acceptance; 2 = one; 1 = vague; 0 = none.
+- **EX050 — Small numbers.** Why state sample sizes? *Rubric:* 3 = percentages swing with few items; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -785,10 +785,10 @@ A supervised lab tests method under time; real cases add politics and missing da
 ### Exercises
 
 - **EX051 — Steps.** List the lab steps. *Rubric:* 3 = sources, triage, targets, measure, report; 2 = three; 1 = one; 0 = none.
-- **EX052 — Safety.** How was the lab kept safe? *Rubric:* 3 = no network to public registries; supervised; 2 = partial; 1 = none; 0 = none.
+- **EX052 — Safety.** How was the lab kept safe? *Rubric:* 3 = no network to public registries; supervised; 2 = partial; 1 = vague; 0 = none.
 - **EX053 — Scoring.** What did Marcus score? *Rubric:* 3 = completeness, accuracy, prioritisation, clarity; 2 = two; 1 = one; 0 = none.
-- **EX054 — Fix.** What did Marcus flag? *Rubric:* 3 = unclear owner; 2 = partial; 1 = none; 0 = none.
-- **EX055 — Hesitation.** Where did Priya hesitate? *Rubric:* 3 = reachability without call graph; 2 = partial; 1 = none; 0 = none.
+- **EX054 — Fix.** What did Marcus flag? *Rubric:* 3 = unclear owner; 2 = partial; 1 = vague; 0 = none.
+- **EX055 — Hesitation.** Where did Priya hesitate? *Rubric:* 3 = reachability without call graph; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -852,9 +852,9 @@ A portfolio shows what was done; reviewers also look for honest limits.
 
 - **EX056 — Contents.** Name four portfolio items. *Rubric:* 3 = finding, review, triage, workflow, case, disclosure, lab; 2 = three; 1 = one; 0 = none.
 - **EX057 — SAMM practices.** Which SAMM practices were mapped? *Rubric:* 3 = threat assessment, requirements, secure build, defect management; 2 = two; 1 = one; 0 = none.
-- **EX058 — Outcomes.** State two outcomes. *Rubric:* 3 = no public internal names; criticals on time; ranked findings; provenance; 2 = one; 1 = none; 0 = none.
-- **EX059 — Limits.** Name a limit. *Rubric:* 3 = only TrackPort; manual reachability; 2 = partial; 1 = none; 0 = none.
-- **EX060 — Next step.** What is Priya's next development step? *Rubric:* 3 = threat modelling; extend to more teams; 2 = partial; 1 = none; 0 = none.
+- **EX058 — Outcomes.** State two outcomes. *Rubric:* 3 = no public internal names; criticals on time; ranked findings; provenance; 2 = one; 1 = vague; 0 = none.
+- **EX059 — Limits.** Name a limit. *Rubric:* 3 = only TrackPort; manual reachability; 2 = partial; 1 = vague; 0 = none.
+- **EX060 — Next step.** What is Priya's next development step? *Rubric:* 3 = threat modelling; extend to more teams; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 

@@ -105,19 +105,19 @@ Assuming a laptop is fine because it seems to work is how the stolen laptop's st
 
 ### Exercises
 
-- **EX001 — Inventory first.** Why does the course start with a device list? *Rubric:* 3 = cannot protect unknown devices, links to CIS; 2 = knowing devices; 1 = none; 0 = none.
+- **EX001 — Inventory first.** Why does the course start with a device list? *Rubric:* 3 = cannot protect unknown devices, links to CIS; 2 = knowing devices; 1 = vague; 0 = none.
 - **EX002 — Spreadsheet columns.** List the columns of Leah's device spreadsheet. *Rubric:* 3 = five columns; 2 = four; 1 = fewer; 0 = none.
 - **EX003 — Cupboard laptop.** What should happen to an unused old laptop? *Rubric:* 3 = wipe and recycle with record; 2 = remove; 1 = keep; 0 = none.
 - **EX004 — Five checks.** Name the five quick checks. *Rubric:* 3 = all five; 2 = four; 1 = fewer; 0 = none.
 - **EX005 — Weakest checks.** Which checks scored lowest in the lab? *Rubric:* 3 = encryption and standard user, 8/12; 2 = one; 1 = wrong; 0 = none.
 - **EX006 — All-five count.** How many laptops passed every check? *Rubric:* 3 = 3 of 12; 2 = three; 1 = wrong; 0 = none.
 - **EX007 — Worst laptop.** Which laptop did worst and why might that be? *Rubric:* 3 = FB07, old weekend volunteer laptop; 2 = FB07; 1 = wrong; 0 = none.
-- **EX008 — Full disk.** How can a full disk stop updates? *Rubric:* 3 = no space to download and install; 2 = blocks; 1 = none; 0 = none.
-- **EX009 — Paused updates.** What should Leah do about paused updates? *Rubric:* 3 = remove pause, set automatic; 2 = unpause; 1 = none; 0 = none.
-- **EX010 — Other software.** Besides Windows, what else needs updating? *Rubric:* 3 = browser and PDF reader with checking; 2 = apps; 1 = none; 0 = none.
+- **EX008 — Full disk.** How can a full disk stop updates? *Rubric:* 3 = no space to download and install; 2 = blocks; 1 = vague; 0 = none.
+- **EX009 — Paused updates.** What should Leah do about paused updates? *Rubric:* 3 = remove pause, set automatic; 2 = unpause; 1 = vague; 0 = none.
+- **EX010 — Other software.** Besides Windows, what else needs updating? *Rubric:* 3 = browser and PDF reader with checking; 2 = apps; 1 = vague; 0 = none.
 - **EX011 — Restart timing.** When should automatic restarts happen at a food bank? *Rubric:* 3 = outside opening hours; 2 = later; 1 = anytime; 0 = none.
-- **EX012 — Recording dates.** Why write the date beside each check? *Rubric:* 3 = shows when status was true, enables comparison; 2 = tracking; 1 = none; 0 = none.
-- **EX013 — Stolen laptop lesson.** What did the stolen laptop reveal about the food bank? *Rubric:* 3 = unknown encryption and contents; 2 = no records; 1 = none; 0 = none.
+- **EX012 — Recording dates.** Why write the date beside each check? *Rubric:* 3 = shows when status was true, enables comparison; 2 = tracking; 1 = vague; 0 = none.
+- **EX013 — Stolen laptop lesson.** What did the stolen laptop reveal about the food bank? *Rubric:* 3 = unknown encryption and contents; 2 = no records; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -177,18 +177,18 @@ Turning on MFA without backup codes can lock someone out if they lose their phon
 
 ### Exercises
 
-- **EX014 — Admin danger.** What can a harmful program do when its user is an administrator? *Rubric:* 3 = change anything, install, disable protection; 2 = more damage; 1 = none; 0 = none.
+- **EX014 — Admin danger.** What can a harmful program do when its user is an administrator? *Rubric:* 3 = change anything, install, disable protection; 2 = more damage; 1 = vague; 0 = none.
 - **EX015 — Admin password storage.** Where should the separate admin passwords be kept? *Rubric:* 3 = password manager, limited people; 2 = securely; 1 = note; 0 = none.
-- **EX016 — App requests.** How do volunteers get new apps without admin rights? *Rubric:* 3 = Leah installs from approved list; 2 = ask; 1 = none; 0 = none.
-- **EX017 — MFA backup.** Why keep backup codes in the safe? *Rubric:* 3 = recovery if phone lost; 2 = backup; 1 = none; 0 = none.
-- **EX018 — Email sensitivity.** Why does email need MFA at a food bank? *Rubric:* 3 = client personal data; 2 = protection; 1 = none; 0 = none.
+- **EX016 — App requests.** How do volunteers get new apps without admin rights? *Rubric:* 3 = Leah installs from approved list; 2 = ask; 1 = vague; 0 = none.
+- **EX017 — MFA backup.** Why keep backup codes in the safe? *Rubric:* 3 = recovery if phone lost; 2 = backup; 1 = vague; 0 = none.
+- **EX018 — Email sensitivity.** Why does email need MFA at a food bank? *Rubric:* 3 = client personal data; 2 = protection; 1 = vague; 0 = none.
 - **EX019 — Shared login.** How should the front desk login be handled? *Rubric:* 3 = strong password in shared vault, personal booking accounts; 2 = vault; 1 = shared note; 0 = none.
 - **EX020 — Four settings.** Name the four key settings applied. *Rubric:* 3 = all four; 2 = three; 1 = fewer; 0 = none.
-- **EX021 — Tamper protection.** What does tamper protection prevent? *Rubric:* 3 = turning off Defender; 2 = disabling; 1 = none; 0 = none.
-- **EX022 — Checklist value.** Why use a printed checklist for settings? *Rubric:* 3 = consistency across laptops; 2 = reminder; 1 = none; 0 = none.
-- **EX023 — Traceability.** Why do volunteers use personal booking accounts? *Rubric:* 3 = traceable actions; 2 = accountability; 1 = none; 0 = none.
-- **EX024 — Passphrase advice.** What password advice did Leah give? *Rubric:* 3 = long passphrase with manager; 2 = long; 1 = none; 0 = none.
-- **EX025 — In-person help.** Why help volunteers with MFA in person? *Rubric:* 3 = reduces lockouts and confusion; 2 = support; 1 = none; 0 = none.
+- **EX021 — Tamper protection.** What does tamper protection prevent? *Rubric:* 3 = turning off Defender; 2 = disabling; 1 = vague; 0 = none.
+- **EX022 — Checklist value.** Why use a printed checklist for settings? *Rubric:* 3 = consistency across laptops; 2 = reminder; 1 = vague; 0 = none.
+- **EX023 — Traceability.** Why do volunteers use personal booking accounts? *Rubric:* 3 = traceable actions; 2 = accountability; 1 = vague; 0 = none.
+- **EX024 — Passphrase advice.** What password advice did Leah give? *Rubric:* 3 = long passphrase with manager; 2 = long; 1 = vague; 0 = none.
+- **EX025 — In-person help.** Why help volunteers with MFA in person? *Rubric:* 3 = reduces lockouts and confusion; 2 = support; 1 = vague; 0 = none.
 - **EX026 — Week two result.** Summarise the state at the end of week two. *Rubric:* 3 = standard users, MFA, settings; 2 = two; 1 = one; 0 = none.
 
 ### Synthesis
@@ -250,16 +250,16 @@ A recovery key saved only on the laptop itself is useless if the laptop is locke
 ### Exercises
 
 - **EX027 — Off versus on.** When does disk encryption protect a stolen laptop? *Rubric:* 3 = when switched off or locked at startup; 2 = when off; 1 = always; 0 = none.
-- **EX028 — TPM role.** What does the TPM do for BitLocker? *Rubric:* 3 = holds keys, no extra startup password; 2 = keys; 1 = none; 0 = none.
+- **EX028 — TPM role.** What does the TPM do for BitLocker? *Rubric:* 3 = holds keys, no extra startup password; 2 = keys; 1 = vague; 0 = none.
 - **EX029 — Key locations.** Where did Leah store recovery keys? *Rubric:* 3 = cloud account and safe; 2 = one; 1 = laptop; 0 = none.
-- **EX030 — Disabled TPM.** What did Leah do about a disabled TPM? *Rubric:* 3 = enabled in firmware with agreement; 2 = enabled; 1 = none; 0 = none.
-- **EX031 — Verify step.** Why verify encryption after turning it on? *Rubric:* 3 = confirm protection active; 2 = check; 1 = none; 0 = none.
-- **EX032 — Desktop files.** Why move desktop files into the cloud service? *Rubric:* 3 = backed up and versioned; 2 = backup; 1 = none; 0 = none.
-- **EX033 — Version history.** How long are previous versions kept? *Rubric:* 3 = 30 days; 2 = month; 1 = none; 0 = none.
-- **EX034 — Restore test.** Describe the two restore tests. *Rubric:* 3 = deleted file and older version; 2 = one; 1 = none; 0 = none.
+- **EX030 — Disabled TPM.** What did Leah do about a disabled TPM? *Rubric:* 3 = enabled in firmware with agreement; 2 = enabled; 1 = vague; 0 = none.
+- **EX031 — Verify step.** Why verify encryption after turning it on? *Rubric:* 3 = confirm protection active; 2 = check; 1 = vague; 0 = none.
+- **EX032 — Desktop files.** Why move desktop files into the cloud service? *Rubric:* 3 = backed up and versioned; 2 = backup; 1 = vague; 0 = none.
+- **EX033 — Version history.** How long are previous versions kept? *Rubric:* 3 = 30 days; 2 = month; 1 = vague; 0 = none.
+- **EX034 — Restore test.** Describe the two restore tests. *Rubric:* 3 = deleted file and older version; 2 = one; 1 = vague; 0 = none.
 - **EX035 — CIS backup control.** Which CIS Control covers data recovery? *Rubric:* 3 = Control 11; 2 = 11; 1 = wrong; 0 = none.
-- **EX036 — Key mistake.** What is wrong with saving the key only on the laptop? *Rubric:* 3 = inaccessible when locked; 2 = bad; 1 = none; 0 = none.
-- **EX037 — Answering trustees.** How would Leah now answer trustees after a theft? *Rubric:* 3 = encrypted, verified date, data safe; 2 = encrypted; 1 = none; 0 = none.
+- **EX036 — Key mistake.** What is wrong with saving the key only on the laptop? *Rubric:* 3 = inaccessible when locked; 2 = bad; 1 = vague; 0 = none.
+- **EX037 — Answering trustees.** How would Leah now answer trustees after a theft? *Rubric:* 3 = encrypted, verified date, data safe; 2 = encrypted; 1 = vague; 0 = none.
 - **EX038 — Week three result.** Summarise week three's result. *Rubric:* 3 = encrypted 12/12, cloud, restores; 2 = two; 1 = one; 0 = none.
 
 ### Synthesis
@@ -320,18 +320,18 @@ A routine kept in one person's head stops when they leave; write it down and tra
 
 ### Exercises
 
-- **EX039 — Before and after.** State the quick check result before and after. *Rubric:* 3 = 3/12 to 12/12; 2 = one; 1 = none; 0 = none.
-- **EX040 — Routine length.** How long should the monthly routine take? *Rubric:* 3 = about fifteen minutes; 2 = short; 1 = none; 0 = none.
+- **EX039 — Before and after.** State the quick check result before and after. *Rubric:* 3 = 3/12 to 12/12; 2 = one; 1 = vague; 0 = none.
+- **EX040 — Routine length.** How long should the monthly routine take? *Rubric:* 3 = about fifteen minutes; 2 = short; 1 = vague; 0 = none.
 - **EX041 — Routine items.** List the five monthly routine items. *Rubric:* 3 = all five; 2 = four; 1 = fewer; 0 = none.
-- **EX042 — Second volunteer.** Why train a second volunteer? *Rubric:* 3 = continuity; 2 = backup; 1 = none; 0 = none.
+- **EX042 — Second volunteer.** Why train a second volunteer? *Rubric:* 3 = continuity; 2 = backup; 1 = vague; 0 = none.
 - **EX043 — Lost laptop steps.** What are the lost laptop steps? *Rubric:* 3 = confirm encryption, sign out, change password; 2 = two; 1 = one; 0 = none.
 - **EX044 — Antivirus warning.** What should a volunteer do on an antivirus warning? *Rubric:* 3 = disconnect, call Leah; 2 = call; 1 = ignore; 0 = none.
-- **EX045 — Lockout identity.** Before resetting a locked account, what does Leah do? *Rubric:* 3 = verify by phone; 2 = verify; 1 = none; 0 = none.
-- **EX046 — New volunteer setup.** How is a new volunteer set up? *Rubric:* 3 = standard account, MFA in person, saving guidance; 2 = account; 1 = none; 0 = none.
+- **EX045 — Lockout identity.** Before resetting a locked account, what does Leah do? *Rubric:* 3 = verify by phone; 2 = verify; 1 = vague; 0 = none.
+- **EX046 — New volunteer setup.** How is a new volunteer set up? *Rubric:* 3 = standard account, MFA in person, saving guidance; 2 = account; 1 = vague; 0 = none.
 - **EX047 — Leaver timing.** When are leaver accounts disabled? *Rubric:* 3 = same day; 2 = soon; 1 = later; 0 = none.
-- **EX048 — Remaining items.** Name the two remaining items. *Rubric:* 3 = old laptop replacement and management service; 2 = one; 1 = none; 0 = none.
-- **EX049 — Trustee update.** What did trustees ask for? *Rubric:* 3 = two-line update each meeting; 2 = updates; 1 = none; 0 = none.
-- **EX050 — Main lesson.** In one sentence, what did the month achieve? *Rubric:* 3 = from unknown to known with routines; 2 = improvement; 1 = none; 0 = none.
+- **EX048 — Remaining items.** Name the two remaining items. *Rubric:* 3 = old laptop replacement and management service; 2 = one; 1 = vague; 0 = none.
+- **EX049 — Trustee update.** What did trustees ask for? *Rubric:* 3 = two-line update each meeting; 2 = updates; 1 = vague; 0 = none.
+- **EX050 — Main lesson.** In one sentence, what did the month achieve? *Rubric:* 3 = from unknown to known with routines; 2 = improvement; 1 = vague; 0 = none.
 
 ### Synthesis
 

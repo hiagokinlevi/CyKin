@@ -96,12 +96,12 @@ Kappa depends on how common each label is; report raw agreement and label counts
 ### Exercises
 
 - **EX001 — Thesis question.** State Yusuf's research question. *Rubric:* 3 = automated update tools shorten exposure; why some lag; 2 = partial; 1 = vague; 0 = none.
-- **EX002 — Exposure definition.** How is exposure defined? *Rubric:* 3 = days from fix release to adoption excluding vulnerable versions; 2 = partial; 1 = none; 0 = none.
-- **EX003 — Prior work.** What did Kula et al. (2018) find? *Rubric:* 3 = many projects do not update; often unaware of vulnerabilities; 2 = partial; 1 = none; 0 = none.
+- **EX002 — Exposure definition.** How is exposure defined? *Rubric:* 3 = days from fix release to adoption excluding vulnerable versions; 2 = partial; 1 = vague; 0 = none.
+- **EX003 — Prior work.** What did Kula et al. (2018) find? *Rubric:* 3 = many projects do not update; often unaware of vulnerabilities; 2 = partial; 1 = vague; 0 = none.
 - **EX004 — Kappa result.** Report the lab's agreement figures. *Rubric:* 3 = 0.90 observed, 0.505 chance, kappa 0.80 substantial; 2 = partial; 1 = one; 0 = none.
-- **EX005 — Why kappa.** Why not report raw agreement alone? *Rubric:* 3 = corrects for chance agreement; 2 = partial; 1 = none; 0 = none.
-- **EX006 — Integrity safeguard.** Give two integrity safeguards in Yusuf's study. *Rubric:* 3 = no live testing; ethics approval; anonymised; aggregate reporting (two); 2 = one; 1 = none; 0 = none.
-- **EX007 — Pre-registration.** Why pre-register the analysis plan? *Rubric:* 3 = prevents choosing analyses after seeing data; 2 = partial; 1 = none; 0 = none.
+- **EX005 — Why kappa.** Why not report raw agreement alone? *Rubric:* 3 = corrects for chance agreement; 2 = partial; 1 = vague; 0 = none.
+- **EX006 — Integrity safeguard.** Give two integrity safeguards in Yusuf's study. *Rubric:* 3 = no live testing; ethics approval; anonymised; aggregate reporting (two); 2 = one; 1 = vague; 0 = none.
+- **EX007 — Pre-registration.** Why pre-register the analysis plan? *Rubric:* 3 = prevents choosing analyses after seeing data; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -155,13 +155,13 @@ A gap claim is only as good as the search; document databases, terms and dates.
 
 ### Exercises
 
-- **EX008 — Taxonomy use.** How does Yusuf use Ladisa et al. (2023)? *Rubric:* 3 = place thesis as defensive known-vulnerability question, not malicious code; 2 = partial; 1 = none; 0 = none.
-- **EX009 — Concentration finding.** What did Zimmermann et al. (2019) show? *Rubric:* 3 = few maintainer accounts reach large share of packages; 2 = partial; 1 = none; 0 = none.
+- **EX008 — Taxonomy use.** How does Yusuf use Ladisa et al. (2023)? *Rubric:* 3 = place thesis as defensive known-vulnerability question, not malicious code; 2 = partial; 1 = vague; 0 = none.
+- **EX009 — Concentration finding.** What did Zimmermann et al. (2019) show? *Rubric:* 3 = few maintainer accounts reach large share of packages; 2 = partial; 1 = vague; 0 = none.
 - **EX010 — Four integrity tools.** Name four integrity frameworks or tools. *Rubric:* 3 = SLSA, in-toto, Sigstore, reproducible builds; 2 = three; 1 = one; 0 = none.
-- **EX011 — Trusting trust.** What does Thompson (1984) remind us? *Rubric:* 3 = tools themselves can be subverted; 2 = partial; 1 = none; 0 = none.
-- **EX012 — SSDF gap.** What does the SSDF leave open? *Rubric:* 3 = how fast response is achievable; 2 = partial; 1 = none; 0 = none.
-- **EX013 — EPSS role.** How could EPSS help the thesis? *Rubric:* 3 = weight exposure by exploit probability; 2 = partial; 1 = none; 0 = none.
-- **EX014 — Gap halves.** What are the two halves of Yusuf's gap? *Rubric:* 3 = comparative measurement + human explanations; 2 = one; 1 = none; 0 = none.
+- **EX011 — Trusting trust.** What does Thompson (1984) remind us? *Rubric:* 3 = tools themselves can be subverted; 2 = partial; 1 = vague; 0 = none.
+- **EX012 — SSDF gap.** What does the SSDF leave open? *Rubric:* 3 = how fast response is achievable; 2 = partial; 1 = vague; 0 = none.
+- **EX013 — EPSS role.** How could EPSS help the thesis? *Rubric:* 3 = weight exposure by exploit probability; 2 = partial; 1 = vague; 0 = none.
+- **EX014 — Gap halves.** What are the two halves of Yusuf's gap? *Rubric:* 3 = comparative measurement + human explanations; 2 = one; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -219,12 +219,12 @@ Matching reduces but cannot remove selection effects; say so.
 
 ### Exercises
 
-- **EX015 — Contribution parts.** What makes the contribution new? *Rubric:* 3 = matched comparison + interview explanations; 2 = partial; 1 = none; 0 = none.
-- **EX016 — Falsifier.** When would H1 fail? *Rubric:* 3 = bootstrap interval includes zero; 2 = partial; 1 = none; 0 = none.
-- **EX017 — Matching purpose.** Why match projects? *Rubric:* 3 = avoid comparing busy with abandoned; selection; 2 = partial; 1 = none; 0 = none.
-- **EX018 — Measurement threat.** State the measurement threat and its mitigation. *Rubric:* 3 = manifest change may not reach production; check release notes sample; 2 = partial; 1 = none; 0 = none.
-- **EX019 — Panel challenge.** How did Yusuf answer the H2 challenge? *Rubric:* 3 = compare stated reason with reverted upgrade history; 2 = partial; 1 = none; 0 = none.
-- **EX020 — SSDF link.** Which SSDF practice does the thesis inform? *Rubric:* 3 = RV.2; 2 = partial; 1 = none; 0 = none.
+- **EX015 — Contribution parts.** What makes the contribution new? *Rubric:* 3 = matched comparison + interview explanations; 2 = partial; 1 = vague; 0 = none.
+- **EX016 — Falsifier.** When would H1 fail? *Rubric:* 3 = bootstrap interval includes zero; 2 = partial; 1 = vague; 0 = none.
+- **EX017 — Matching purpose.** Why match projects? *Rubric:* 3 = avoid comparing busy with abandoned; selection; 2 = partial; 1 = vague; 0 = none.
+- **EX018 — Measurement threat.** State the measurement threat and its mitigation. *Rubric:* 3 = manifest change may not reach production; check release notes sample; 2 = partial; 1 = vague; 0 = none.
+- **EX019 — Panel challenge.** How did Yusuf answer the H2 challenge? *Rubric:* 3 = compare stated reason with reverted upgrade history; 2 = partial; 1 = vague; 0 = none.
+- **EX020 — SSDF link.** Which SSDF practice does the thesis inform? *Rubric:* 3 = RV.2; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -302,11 +302,11 @@ Pilot effects are noisy; do not use them to set expectations for the main study'
 
 ### Exercises
 
-- **EX021 — Replication aim.** Why replicate before extending? *Rubric:* 3 = check scripts reproduce known pattern; 2 = partial; 1 = none; 0 = none.
-- **EX022 — Pilot medians.** Give the pilot medians. *Rubric:* 3 = 4.5 days bot; 38 days no bot; 2 = one; 1 = none; 0 = none.
-- **EX023 — p04 story.** Why did p04 take 40 days? *Rubric:* 3 = bot PR day 1; tests failed on changed default; fixed day 40; 2 = partial; 1 = none; 0 = none.
-- **EX024 — Range specifiers.** What did the pilot reveal about adoption? *Rubric:* 3 = ranges permit fix if lockfile updated; add lockfiles; 2 = partial; 1 = none; 0 = none.
-- **EX025 — Pilot status.** How is the pilot reported? *Rubric:* 3 = feasibility, not evidence for H1; 2 = partial; 1 = none; 0 = none.
+- **EX021 — Replication aim.** Why replicate before extending? *Rubric:* 3 = check scripts reproduce known pattern; 2 = partial; 1 = vague; 0 = none.
+- **EX022 — Pilot medians.** Give the pilot medians. *Rubric:* 3 = 4.5 days bot; 38 days no bot; 2 = one; 1 = vague; 0 = none.
+- **EX023 — p04 story.** Why did p04 take 40 days? *Rubric:* 3 = bot PR day 1; tests failed on changed default; fixed day 40; 2 = partial; 1 = vague; 0 = none.
+- **EX024 — Range specifiers.** What did the pilot reveal about adoption? *Rubric:* 3 = ranges permit fix if lockfile updated; add lockfiles; 2 = partial; 1 = vague; 0 = none.
+- **EX025 — Pilot status.** How is the pilot reported? *Rubric:* 3 = feasibility, not evidence for H1; 2 = partial; 1 = vague; 0 = none.
 - **EX026 — Three revisions.** List the three protocol revisions. *Rubric:* 3 = lockfiles; PR open dates; code test failures; 2 = two; 1 = one; 0 = none.
 
 ### Synthesis
@@ -387,12 +387,12 @@ Bootstrap intervals assume the sample represents the population; matched pairs f
 
 ### Exercises
 
-- **EX027 — Lab numbers.** Report the lab's observed difference and interval. *Rubric:* 3 = 33.5; 8.0 to 118.5; 2 = partial; 1 = none; 0 = none.
-- **EX028 — Wide interval.** Why is the pilot interval wide? *Rubric:* 3 = small samples; 2 = partial; 1 = none; 0 = none.
-- **EX029 — Main result.** What was the main-study result? *Rubric:* 3 = 21 days, 15–28; H1 supported; 2 = partial; 1 = none; 0 = none.
-- **EX030 — Validation outcome.** What did independent validation find? *Rubric:* 3 = 33/34 match; one day off from time zone; UTC rule; 2 = partial; 1 = none; 0 = none.
-- **EX031 — Top lag reason.** What was the most common lag reason? *Rubric:* 3 = test failures on bot updates (9); 2 = partial; 1 = none; 0 = none.
-- **EX032 — Sensitivity analysis.** What sensitivity analysis was run? *Rubric:* 3 = EPSS-weighted exposure; held; 2 = partial; 1 = none; 0 = none.
+- **EX027 — Lab numbers.** Report the lab's observed difference and interval. *Rubric:* 3 = 33.5; 8.0 to 118.5; 2 = partial; 1 = vague; 0 = none.
+- **EX028 — Wide interval.** Why is the pilot interval wide? *Rubric:* 3 = small samples; 2 = partial; 1 = vague; 0 = none.
+- **EX029 — Main result.** What was the main-study result? *Rubric:* 3 = 21 days, 15–28; H1 supported; 2 = partial; 1 = vague; 0 = none.
+- **EX030 — Validation outcome.** What did independent validation find? *Rubric:* 3 = 33/34 match; one day off from time zone; UTC rule; 2 = partial; 1 = vague; 0 = none.
+- **EX031 — Top lag reason.** What was the most common lag reason? *Rubric:* 3 = test failures on bot updates (9); 2 = partial; 1 = vague; 0 = none.
+- **EX032 — Sensitivity analysis.** What sensitivity analysis was run? *Rubric:* 3 = EPSS-weighted exposure; held; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -450,12 +450,12 @@ Within-project comparisons can be confounded by time trends, such as ecosystem-w
 
 ### Exercises
 
-- **EX033 — Reviewer question.** What did Yusuf ask reviewers? *Rubric:* 3 = what would make them reject the main claim; 2 = partial; 1 = none; 0 = none.
-- **EX034 — Selection critique.** How did Yusuf answer Reviewer 1? *Rubric:* 3 = within-project before/after comparison; 12 days; 2 = partial; 1 = none; 0 = none.
-- **EX035 — Scope critique.** How was Reviewer 2's point handled? *Rubric:* 3 = scope: producer-side exposure; 2 = partial; 1 = none; 0 = none.
-- **EX036 — Revised headline.** Give the revised headline. *Rubric:* 3 = 21 days shorter between; 12 within; 2 = partial; 1 = none; 0 = none.
-- **EX037 — Guidance addition.** What did the practitioner critique add? *Rubric:* 3 = tests for updates; failing bot PR is a security task with owner; 2 = partial; 1 = none; 0 = none.
-- **EX038 — Change log value.** Why keep a change log? *Rubric:* 3 = transparent; fast re-review; 2 = partial; 1 = none; 0 = none.
+- **EX033 — Reviewer question.** What did Yusuf ask reviewers? *Rubric:* 3 = what would make them reject the main claim; 2 = partial; 1 = vague; 0 = none.
+- **EX034 — Selection critique.** How did Yusuf answer Reviewer 1? *Rubric:* 3 = within-project before/after comparison; 12 days; 2 = partial; 1 = vague; 0 = none.
+- **EX035 — Scope critique.** How was Reviewer 2's point handled? *Rubric:* 3 = scope: producer-side exposure; 2 = partial; 1 = vague; 0 = none.
+- **EX036 — Revised headline.** Give the revised headline. *Rubric:* 3 = 21 days shorter between; 12 within; 2 = partial; 1 = vague; 0 = none.
+- **EX037 — Guidance addition.** What did the practitioner critique add? *Rubric:* 3 = tests for updates; failing bot PR is a security task with owner; 2 = partial; 1 = vague; 0 = none.
+- **EX038 — Change log value.** Why keep a change log? *Rubric:* 3 = transparent; fast re-review; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -539,10 +539,10 @@ Hashes prove files are unchanged, not that they are correct.
 
 - **EX039 — Argument chain.** Summarise the thesis argument. *Rubric:* 3 = measurable; lower with bots; partly causal; limited by tests; 2 = partial; 1 = one; 0 = none.
 - **EX040 — Archive list.** List four archive contents. *Rubric:* 3 = scripts, replicas, codebook, pre-registration, README, manifest (four); 2 = two; 1 = one; 0 = none.
-- **EX041 — Lab outcome.** What did the manifest lab show? *Rubric:* 3 = exposure match; codes mismatch from unrecorded correction; 2 = partial; 1 = none; 0 = none.
-- **EX042 — Fix.** How was the mismatch fixed? *Rubric:* 3 = change log, regenerate manifest, new version tag; 2 = partial; 1 = none; 0 = none.
-- **EX043 — Private data.** What stays private? *Rubric:* 3 = interview transcripts; 2 = partial; 1 = none; 0 = none.
-- **EX044 — Hash limit.** What do hashes not prove? *Rubric:* 3 = correctness; 2 = partial; 1 = none; 0 = none.
+- **EX041 — Lab outcome.** What did the manifest lab show? *Rubric:* 3 = exposure match; codes mismatch from unrecorded correction; 2 = partial; 1 = vague; 0 = none.
+- **EX042 — Fix.** How was the mismatch fixed? *Rubric:* 3 = change log, regenerate manifest, new version tag; 2 = partial; 1 = vague; 0 = none.
+- **EX043 — Private data.** What stays private? *Rubric:* 3 = interview transcripts; 2 = partial; 1 = vague; 0 = none.
+- **EX044 — Hash limit.** What do hashes not prove? *Rubric:* 3 = correctness; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -605,11 +605,11 @@ One ecosystem and three packages are a modest base; future work should replicate
 ### Exercises
 
 - **EX045 — Defense outline.** List the defense sections. *Rubric:* 3 = question, gap, methods, results, limits, contributions; 2 = four; 1 = two; 0 = none.
-- **EX046 — Bot risk answer.** How did Yusuf answer the bot-risk question? *Rubric:* 3 = Ladisa taxonomy includes tool compromise; not measured; 2 = partial; 1 = none; 0 = none.
-- **EX047 — Honest stance.** What is better than overclaiming? *Rubric:* 3 = "don't know; here's how I'd find out"; 2 = partial; 1 = none; 0 = none.
-- **EX048 — Publications.** Name the planned outputs. *Rubric:* 3 = two papers + practitioner report; 2 = partial; 1 = none; 0 = none.
-- **EX049 — Disclosure.** How were the six projects handled? *Rubric:* 3 = foundation security team contacted privately; aggregate in thesis; 2 = partial; 1 = none; 0 = none.
-- **EX050 — Practical size.** Why is 12 days important? *Rubric:* 3 = ~40% of 30-day median; 2 = partial; 1 = none; 0 = none.
+- **EX046 — Bot risk answer.** How did Yusuf answer the bot-risk question? *Rubric:* 3 = Ladisa taxonomy includes tool compromise; not measured; 2 = partial; 1 = vague; 0 = none.
+- **EX047 — Honest stance.** What is better than overclaiming? *Rubric:* 3 = "don't know; here's how I'd find out"; 2 = partial; 1 = vague; 0 = none.
+- **EX048 — Publications.** Name the planned outputs. *Rubric:* 3 = two papers + practitioner report; 2 = partial; 1 = vague; 0 = none.
+- **EX049 — Disclosure.** How were the six projects handled? *Rubric:* 3 = foundation security team contacted privately; aggregate in thesis; 2 = partial; 1 = vague; 0 = none.
+- **EX050 — Practical size.** Why is 12 days important? *Rubric:* 3 = ~40% of 30-day median; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 

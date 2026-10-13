@@ -680,7 +680,7 @@ A ordem dos objetivos pode ser contestada. Na prática, as classificações se c
 
 ### Exercícios
 
-- **EX043 — Prioridade dos medidores.** Que objetivo importa mais para as leituras dos medidores? *Rubrica:* 3 = integridade;; 2 = integridade;; 1 = confidencialidade;; 0 = nenhuma.
+- **EX043 — Prioridade dos medidores.** Que objetivo importa mais para as leituras dos medidores? *Rubrica:* 3 = integridade;; 2 = integridade, sem justificativa;; 1 = confidencialidade;; 0 = nenhuma.
 - **EX044 — Partes do risco.** Que vulnerabilidade Nadia identificou no acesso de fornecedores? *Rubrica:* 3 = uma senha compartilhada;; 2 = senha compartilhada;; 1 = nada;; 0 = nenhuma.
 - **EX045 — Exemplo corretivo.** Dê o controle corretivo do acesso de fornecedores. *Rubrica:* 3 = procedimento testado para revogar o acesso durante incidentes;; 2 = revogar;; 1 = nada;; 0 = nenhuma.
 

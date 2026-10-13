@@ -71,9 +71,9 @@ Experience without structured methods makes decisions hard to defend.
 
 - **EX001 — Clinic count.** How many clinics does Moorfield run? *Rubric:* 3 = twenty-two;; 2 = correct;; 1 = wrong;; 0 = none.
 - **EX002 — Central team.** How large is the central IT team? *Rubric:* 3 = four people;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX003 — Workplace problems.** Name one workplace problem Elena brings. *Rubric:* 3 = patch delays in small clinics;; 2 = one;; 1 = none;; 0 = none.
-- **EX004 — Course addition.** What does the course add to Elena's experience? *Rubric:* 3 = frameworks, measurement and board communication;; 2 = correct;; 1 = none;; 0 = none.
-- **EX005 — Goal evidence.** What evidence shows the programme goal is met? *Rubric:* 3 = a board-approved programme document;; 2 = correct;; 1 = none;; 0 = none.
+- **EX003 — Workplace problems.** Name one workplace problem Elena brings. *Rubric:* 3 = patch delays in small clinics;; 2 = one;; 1 = vague;; 0 = none.
+- **EX004 — Course addition.** What does the course add to Elena's experience? *Rubric:* 3 = frameworks, measurement and board communication;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX005 — Goal evidence.** What evidence shows the programme goal is met? *Rubric:* 3 = a board-approved programme document;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-02"></a>
 
@@ -111,9 +111,9 @@ Activities without records cannot show they happen consistently.
 
 ### Exercises
 
-- **EX006 — Committee members.** Who sits on the security committee? *Rubric:* 3 = Elena, operations director, clinical lead;; 2 = correct;; 1 = none;; 0 = none.
-- **EX007 — Missing records.** What does Moorfield lack despite doing activities? *Rubric:* 3 = records;; 2 = correct;; 1 = none;; 0 = none.
-- **EX008 — Board addition.** What limit does the board add? *Rubric:* 3 = no clinic unable to treat patients over half a day;; 2 = correct;; 1 = none;; 0 = none.
+- **EX006 — Committee members.** Who sits on the security committee? *Rubric:* 3 = Elena, operations director, clinical lead;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX007 — Missing records.** What does Moorfield lack despite doing activities? *Rubric:* 3 = records;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX008 — Board addition.** What limit does the board add? *Rubric:* 3 = no clinic unable to treat patients over half a day;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX009 — Excluded party.** What is excluded from scope? *Rubric:* 3 = the dental laboratory;; 2 = correct;; 1 = other;; 0 = none.
 - **EX010 — Overview standard.** Which standard gives the family overview? *Rubric:* 3 = ISO/IEC 27000:2026;; 2 = correct;; 1 = other;; 0 = none.
 
@@ -153,10 +153,10 @@ Uncalibrated ratings vary widely between assessors.
 
 ### Exercises
 
-- **EX011 — Threat example.** Name one main threat identified. *Rubric:* 3 = ransomware;; 2 = one;; 1 = none;; 0 = none.
-- **EX012 — Calibration rule.** When do raters discuss differences? *Rubric:* 3 = when they differ by more than one point;; 2 = correct;; 1 = none;; 0 = none.
-- **EX013 — Linked risks.** Which two risks worsen ransomware damage? *Rubric:* 3 = patch delays and weak recovery;; 2 = correct;; 1 = none;; 0 = none.
-- **EX014 — Misuse treatment.** How is staff misuse treated? *Rubric:* 3 = access reviews and alerts on unusual viewing;; 2 = correct;; 1 = none;; 0 = none.
+- **EX011 — Threat example.** Name one main threat identified. *Rubric:* 3 = ransomware;; 2 = one;; 1 = vague;; 0 = none.
+- **EX012 — Calibration rule.** When do raters discuss differences? *Rubric:* 3 = when they differ by more than one point;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX013 — Linked risks.** Which two risks worsen ransomware damage? *Rubric:* 3 = patch delays and weak recovery;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX014 — Misuse treatment.** How is staff misuse treated? *Rubric:* 3 = access reviews and alerts on unusual viewing;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX015 — Transfer method.** What transfers some financial loss? *Rubric:* 3 = cyber insurance;; 2 = correct;; 1 = other;; 0 = none.
 
 <a id="ch-04"></a>
@@ -195,10 +195,10 @@ Devices bought outside central purchasing often escape patching and backup.
 
 ### Exercises
 
-- **EX016 — Unregistered devices.** What unregistered devices does Elena find? *Rubric:* 3 = imaging computers bought by dentists;; 2 = correct;; 1 = none;; 0 = none.
-- **EX017 — Old systems.** Why do imaging computers run old systems? *Rubric:* 3 = suppliers have not certified newer versions;; 2 = correct;; 1 = none;; 0 = none.
+- **EX016 — Unregistered devices.** What unregistered devices does Elena find? *Rubric:* 3 = imaging computers bought by dentists;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX017 — Old systems.** Why do imaging computers run old systems? *Rubric:* 3 = suppliers have not certified newer versions;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX018 — Restricted data.** Which information is restricted? *Rubric:* 3 = clinical records, images and payment data;; 2 = correct;; 1 = other;; 0 = none.
-- **EX019 — Supplier fix.** What does Elena recommend for imaging supplier access? *Rubric:* 3 = individual accounts, MFA, session-only access;; 2 = correct;; 1 = none;; 0 = none.
+- **EX019 — Supplier fix.** What does Elena recommend for imaging supplier access? *Rubric:* 3 = individual accounts, MFA, session-only access;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX020 — Records owner.** Who owns patient records? *Rubric:* 3 = the clinical lead;; 2 = correct;; 1 = other;; 0 = none.
 
 <a id="ch-05"></a>
@@ -269,9 +269,9 @@ An overall compliance figure can hide clinics with serious gaps.
 
 - **EX021 — Overall compliance.** What is overall patch compliance? *Rubric:* 3 = 513 of 566, 90.6 percent;; 2 = correct;; 1 = wrong;; 0 = none.
 - **EX022 — Lowest clinic.** Which clinic is lowest? *Rubric:* 3 = C19 at 50.0 percent;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX023 — Common factor.** What do the three lowest clinics share? *Rubric:* 3 = a part-time local IT contact;; 2 = correct;; 1 = none;; 0 = none.
-- **EX024 — Schedule fix.** How is update scheduling changed? *Rubric:* 3 = lunchtime with restarts outside appointments;; 2 = correct;; 1 = none;; 0 = none.
-- **EX025 — Imaging control.** How are unpatchable imaging computers protected? *Rubric:* 3 = isolated segment and restricted access;; 2 = correct;; 1 = none;; 0 = none.
+- **EX023 — Common factor.** What do the three lowest clinics share? *Rubric:* 3 = a part-time local IT contact;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX024 — Schedule fix.** How is update scheduling changed? *Rubric:* 3 = lunchtime with restarts outside appointments;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX025 — Imaging control.** How are unpatchable imaging computers protected? *Rubric:* 3 = isolated segment and restricted access;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-06"></a>
 
@@ -309,11 +309,11 @@ Copying colleagues' access spreads excess rights across clinics.
 
 ### Exercises
 
-- **EX026 — Receptionist view.** What can receptionists see? *Rubric:* 3 = appointments and contact details;; 2 = correct;; 1 = none;; 0 = none.
-- **EX027 — Break-glass review.** Who reviews break-glass use? *Rubric:* 3 = the clinical lead weekly;; 2 = correct;; 1 = none;; 0 = none.
+- **EX026 — Receptionist view.** What can receptionists see? *Rubric:* 3 = appointments and contact details;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX027 — Break-glass review.** Who reviews break-glass use? *Rubric:* 3 = the clinical lead weekly;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX028 — Leftover access.** Which staff most often kept access? *Rubric:* 3 = locum dentists;; 2 = correct;; 1 = other;; 0 = none.
 - **EX029 — Admin factor.** What protects administrator accounts? *Rubric:* 3 = hardware security keys;; 2 = correct;; 1 = other;; 0 = none.
-- **EX030 — Supplier gateway.** How do suppliers connect? *Rubric:* 3 = managed gateway with MFA and recorded sessions;; 2 = correct;; 1 = none;; 0 = none.
+- **EX030 — Supplier gateway.** How do suppliers connect? *Rubric:* 3 = managed gateway with MFA and recorded sessions;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-07"></a>
 
@@ -385,8 +385,8 @@ Lookalike domains pass a quick glance, so relying on staff spotting them fails.
 - **EX031 — Message count.** How many messages does the log contain? *Rubric:* 3 = 5,823;; 2 = correct;; 1 = wrong;; 0 = none.
 - **EX032 — Lookalike count.** How many lookalike domains are flagged? *Rubric:* 3 = four;; 2 = correct;; 1 = wrong;; 0 = none.
 - **EX033 — Lookalike messages.** How many messages came from lookalike domains? *Rubric:* 3 = 23;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX034 — Edit distance.** What does edit distance count? *Rubric:* 3 = single-character changes between strings;; 2 = correct;; 1 = none;; 0 = none.
-- **EX035 — Payment rule.** What is the payment change rule? *Rubric:* 3 = confirm by calling a known number;; 2 = correct;; 1 = none;; 0 = none.
+- **EX034 — Edit distance.** What does edit distance count? *Rubric:* 3 = single-character changes between strings;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX035 — Payment rule.** What is the payment change rule? *Rubric:* 3 = confirm by calling a known number;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-08"></a>
 
@@ -425,7 +425,7 @@ Backups reachable with everyday administrator credentials can be destroyed by ra
 ### Exercises
 
 - **EX036 — Immutable period.** How long are immutable copies held? *Rubric:* 3 = thirty days;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX037 — Record objectives.** What are the patient record objectives? *Rubric:* 3 = four hours, one hour of data;; 2 = correct;; 1 = none;; 0 = none.
+- **EX037 — Record objectives.** What are the patient record objectives? *Rubric:* 3 = four hours, one hour of data;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX038 — First test.** How long did the first restore take? *Rubric:* 3 = six hours;; 2 = correct;; 1 = wrong;; 0 = none.
 - **EX039 — Second test.** How long did the second test take? *Rubric:* 3 = three hours;; 2 = correct;; 1 = wrong;; 0 = none.
 - **EX040 — Missing forms.** What was missing in the continuity trial? *Rubric:* 3 = paper consent forms;; 2 = correct;; 1 = other;; 0 = none.
@@ -466,11 +466,11 @@ Discovering notification deadlines late can turn an incident into a regulatory b
 
 ### Exercises
 
-- **EX041 — Report channel.** How do staff report incidents? *Rubric:* 3 = a single phone number or email address;; 2 = correct;; 1 = none;; 0 = none.
+- **EX041 — Report channel.** How do staff report incidents? *Rubric:* 3 = a single phone number or email address;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX042 — CSF alignment.** Which CSF 2.0 functions guide the process? *Rubric:* 3 = Respond and Recover;; 2 = correct;; 1 = other;; 0 = none.
 - **EX043 — Notification partner.** Who helps decide on notification? *Rubric:* 3 = the data protection officer;; 2 = correct;; 1 = other;; 0 = none.
-- **EX044 — Exercise gap.** What gap did the exercise reveal? *Rubric:* 3 = supplier not required to notify promptly;; 2 = correct;; 1 = none;; 0 = none.
-- **EX045 — Review outcome.** Name one improvement from reviews. *Rubric:* 3 = locum account expiry;; 2 = one;; 1 = none;; 0 = none.
+- **EX044 — Exercise gap.** What gap did the exercise reveal? *Rubric:* 3 = supplier not required to notify promptly;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX045 — Review outcome.** Name one improvement from reviews. *Rubric:* 3 = locum account expiry;; 2 = one;; 1 = vague;; 0 = none.
 
 <a id="ch-10"></a>
 
@@ -511,8 +511,8 @@ Measures that never change decisions waste attention.
 - **EX046 — Measure count.** How many measures does Elena select? *Rubric:* 3 = six;; 2 = correct;; 1 = wrong;; 0 = none.
 - **EX047 — Avoided count.** Which count does Elena avoid? *Rubric:* 3 = blocked connections;; 2 = correct;; 1 = other;; 0 = none.
 - **EX048 — Report length.** How long is the board report? *Rubric:* 3 = two pages;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX049 — Imaging decision.** What decision follows the imaging question? *Rubric:* 3 = pressure the supplier jointly with other groups;; 2 = correct;; 1 = none;; 0 = none.
-- **EX050 — Pruning.** What does Elena propose for unused measures? *Rubric:* 3 = stop them;; 2 = correct;; 1 = none;; 0 = none.
+- **EX049 — Imaging decision.** What decision follows the imaging question? *Rubric:* 3 = pressure the supplier jointly with other groups;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX050 — Pruning.** What does Elena propose for unused measures? *Rubric:* 3 = stop them;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-11"></a>
 
@@ -551,10 +551,10 @@ Claiming a project proves resilience against real attacks overstates evidence.
 ### Exercises
 
 - **EX051 — Capstone risk.** Which risk does the capstone address? *Rubric:* 3 = ransomware;; 2 = correct;; 1 = other;; 0 = none.
-- **EX052 — Clinic criterion.** What is the per-clinic patch criterion? *Rubric:* 3 = at least ninety percent in every clinic;; 2 = correct;; 1 = none;; 0 = none.
+- **EX052 — Clinic criterion.** What is the per-clinic patch criterion? *Rubric:* 3 = at least ninety percent in every clinic;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX053 — Missed criterion.** Which criterion is narrowly missed? *Rubric:* 3 = per-clinic patch compliance;; 2 = correct;; 1 = other;; 0 = none.
 - **EX054 — Final recovery.** How long did the final recovery take? *Rubric:* 3 = three hours ten minutes;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX055 — Next step.** What does Elena recommend next? *Rubric:* 3 = an independent incident response test;; 2 = correct;; 1 = none;; 0 = none.
+- **EX055 — Next step.** What does Elena recommend next? *Rubric:* 3 = an independent incident response test;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-12"></a>
 
@@ -592,11 +592,11 @@ Leading with technical detail loses a board audience.
 
 ### Exercises
 
-- **EX056 — Board language.** What language does Elena use for the board? *Rubric:* 3 = clinics able to treat patients;; 2 = correct;; 1 = none;; 0 = none.
+- **EX056 — Board language.** What language does Elena use for the board? *Rubric:* 3 = clinics able to treat patients;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX057 — Main new cost.** What was the main new cost? *Rubric:* 3 = the backup provider;; 2 = correct;; 1 = other;; 0 = none.
 - **EX058 — Capstone result.** What result does Elena achieve? *Rubric:* 3 = distinction;; 2 = correct;; 1 = other;; 0 = none.
-- **EX059 — Board adoption.** What does the board adopt? *Rubric:* 3 = Elena's measures as quarterly reporting;; 2 = correct;; 1 = none;; 0 = none.
-- **EX060 — Certification driver.** Why consider ISO/IEC 27001 certification? *Rubric:* 3 = insurers have begun to request it;; 2 = correct;; 1 = none;; 0 = none.
+- **EX059 — Board adoption.** What does the board adopt? *Rubric:* 3 = Elena's measures as quarterly reporting;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX060 — Certification driver.** Why consider ISO/IEC 27001 certification? *Rubric:* 3 = insurers have begun to request it;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="worked-results"></a>
 

@@ -190,7 +190,7 @@ Maps simplify; cloud services may change internal components without notice.
 
 - **EX004 — Event sources.** Name three campus systems that produce security events. *Rubric:* 3 = identity provider, mail service, Wi-Fi controllers, managed laptops (three); 2 = two; 1 = one; 0 = none.
 - **EX005 — Student devices.** Why can the SOC see students only through university services? *Rubric:* 3 = personal unmanaged laptops send no logs; 2 = partial; 1 = vague; 0 = none.
-- **EX006 — Map gap.** What gap did Lucas's map reveal? *Rubric:* 3 = Wi-Fi logs not forwarded; cannot tell campus origin; 2 = partial; 1 = none; 0 = none.
+- **EX006 — Map gap.** What gap did Lucas's map reveal? *Rubric:* 3 = Wi-Fi logs not forwarded; cannot tell campus origin; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -501,7 +501,7 @@ Sets are only as complete as the logs that build them; missing click data shrink
 ### Exercises
 
 - **EX016 — Set intersection.** What does C ∩ S represent? *Rubric:* 3 = clicked and had suspicious sign-ins: strongest compromise candidates; 2 = partial; 1 = vague; 0 = none.
-- **EX017 — Graph spread.** How does a mail graph reveal a spreading account? *Rubric:* 3 = many new outgoing edges after compromise time; 2 = partial; 1 = none; 0 = none.
+- **EX017 — Graph spread.** How does a mail graph reveal a spreading account? *Rubric:* 3 = many new outgoing edges after compromise time; 2 = partial; 1 = vague; 0 = none.
 - **EX018 — Pair count.** How many clicker pairs exist among 33 clickers? *Rubric:* 3 = 528 with formula; 2 = number only; 1 = wrong; 0 = none.
 
 ### Synthesis
@@ -1079,7 +1079,7 @@ MFA reduces password-only compromise but attackers adapt, for example by trickin
 
 - **EX037 — Identity signals.** List three identity compromise signals. *Rubric:* 3 = new country/device, impossible travel, legacy protocol, MFA change (three); 2 = two; 1 = one; 0 = none.
 - **EX038 — Legacy risk.** Why do legacy protocols matter even for MFA users? *Rubric:* 3 = they do not support MFA, so password alone suffices; 2 = partial; 1 = irrelevant; 0 = none.
-- **EX039 — Controls adopted.** What identity controls did Riverton adopt? *Rubric:* 3 = student MFA required, legacy protocols disabled; 2 = one; 1 = none; 0 = none.
+- **EX039 — Controls adopted.** What identity controls did Riverton adopt? *Rubric:* 3 = student MFA required, legacy protocols disabled; 2 = one; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1320,7 +1320,7 @@ Universities value openness; controls must fit research and teaching needs.
 ### Exercises
 
 - **EX046 — Cloud logs.** Why are cloud provider logs central to Riverton's SOC? *Rubric:* 3 = mail and identity are in the cloud; 2 = partial; 1 = vague; 0 = none.
-- **EX047 — Research boundary.** What change was proposed for research servers? *Rubric:* 3 = restrict inbound SSH to VPN and campus; SSH keys; 2 = partial; 1 = none; 0 = none.
+- **EX047 — Research boundary.** What change was proposed for research servers? *Rubric:* 3 = restrict inbound SSH to VPN and campus; SSH keys; 2 = partial; 1 = vague; 0 = none.
 - **EX048 — Defence in depth.** Give three layers protecting campus mail accounts. *Rubric:* 3 = filtering, MFA, legacy blocking, rule monitoring (three); 2 = two; 1 = one; 0 = none.
 
 ### Synthesis
@@ -1397,7 +1397,7 @@ Cryptography protects data in specific ways; it does not make a system secure by
 
 ### Exercises
 
-- **EX049 — Hash uses.** Name two SOC uses of hashes. *Rubric:* 3 = identify files, check evidence integrity; 2 = one; 1 = none; 0 = none.
+- **EX049 — Hash uses.** Name two SOC uses of hashes. *Rubric:* 3 = identify files, check evidence integrity; 2 = one; 1 = vague; 0 = none.
 - **EX050 — DKIM.** What does a DKIM signature let receivers check? *Rubric:* 3 = message came from claimed domain unchanged; 2 = partial; 1 = encryption; 0 = none.
 - **EX051 — Variant hashes.** Why did two copies of the phishing email have different hashes? *Rubric:* 3 = personalised content changes hash; group by subject/link; 2 = partial; 1 = error; 0 = none.
 
@@ -1632,7 +1632,7 @@ Synthetic exercises may miss real-world friction.
 ### Exercises
 
 - **EX058 — Containment delay.** Why did s2047's containment take about six hours? *Rubric:* 3 = z-score check ran in morning batch; 2 = partial; 1 = unknown; 0 = none.
-- **EX059 — Recurring lesson.** What lesson recurred across cases? *Rubric:* 3 = first signal from people, not tools; 2 = partial; 1 = none; 0 = none.
+- **EX059 — Recurring lesson.** What lesson recurred across cases? *Rubric:* 3 = first signal from people, not tools; 2 = partial; 1 = vague; 0 = none.
 - **EX060 — Delay source.** What often causes response delays according to Lucas's analysis? *Rubric:* 3 = unclear authority rather than missing tools; 2 = partial; 1 = tools; 0 = none.
 
 ### Synthesis
@@ -1954,7 +1954,7 @@ Controls change behaviour; attackers adapt, so monitoring must follow.
 
 - **EX070 — Control changes.** List the four controls adopted after the campaign. *Rubric:* 3 = student MFA, legacy disabled, forwarding blocked, report button; 2 = three; 1 = one; 0 = none.
 - **EX071 — Forwarding side effect.** How was the forwarding block's side effect handled? *Rubric:* 3 = exception process with manager approval and reason; 2 = partial; 1 = ignored; 0 = none.
-- **EX072 — MFA trend caveat.** What caveat did Lucas attach to the MFA results? *Rubric:* 3 = attackers may shift to MFA fatigue prompts; 2 = partial; 1 = none; 0 = none.
+- **EX072 — MFA trend caveat.** What caveat did Lucas attach to the MFA results? *Rubric:* 3 = attackers may shift to MFA fatigue prompts; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2474,7 +2474,7 @@ Known cases test only what happened before; new attacker timings may still be mi
 ### Exercises
 
 - **EX088 — Lab outcome.** Which account was detected and which missed, and why? *Rubric:* 3 = s2047 detected (6 min); s3310 missed (149 min outside 60); 2 = partial; 1 = wrong; 0 = none.
-- **EX089 — Two fixes.** What two changes were made? *Rubric:* 3 = 6-hour window; stand-alone keyword-deletion rule; 2 = one; 1 = none; 0 = none.
+- **EX089 — Two fixes.** What two changes were made? *Rubric:* 3 = 6-hour window; stand-alone keyword-deletion rule; 2 = one; 1 = vague; 0 = none.
 - **EX090 — Stand-alone logic.** Why can a keyword-deletion rule alert on its own? *Rubric:* 3 = such rules are rare and suspicious regardless of sign-in; 2 = partial; 1 = no reason; 0 = none.
 
 ### Synthesis
@@ -2553,7 +2553,7 @@ Cross-organisation cases depend on others' logs and willingness to share.
 
 - **EX091 — Three explanations.** List three explanations for the night-time SSH activity. *Rubric:* 3 = legitimate late work, partner account compromised, shared credentials; 2 = two; 1 = one; 0 = none.
 - **EX092 — Deciding evidence.** What evidence decided the case? *Rubric:* 3 = partner SOC saw unusual country sign-in; collaborator denied working; 2 = partial; 1 = transfer size; 0 = none.
-- **EX093 — Collaboration lesson.** What lesson concerns research collaborations? *Rubric:* 3 = shared SOC contacts; verify unusual access quickly; list external collaborators; 2 = partial; 1 = none; 0 = none.
+- **EX093 — Collaboration lesson.** What lesson concerns research collaborations? *Rubric:* 3 = shared SOC contacts; verify unusual access quickly; list external collaborators; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2713,7 +2713,7 @@ One university's survey cannot represent students elsewhere.
 
 - **EX097 — Survey results.** Report the three response shares and the margin of error. *Rubric:* 3 = 61% delete, 24% report, 15% unsure; ±5 points; 2 = partial; 1 = one; 0 = none.
 - **EX098 — Main theme.** What was the most common interview theme? *Rubric:* 3 = did not know how to report (4 of 5); 2 = partial; 1 = other; 0 = none.
-- **EX099 — Validity threat.** Name one validity threat and its likely direction. *Rubric:* 3 = volunteers more aware → true reporting even lower; or intentions ≠ behaviour; 2 = partial; 1 = none; 0 = none.
+- **EX099 — Validity threat.** Name one validity threat and its likely direction. *Rubric:* 3 = volunteers more aware → true reporting even lower; or intentions ≠ behaviour; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2795,7 +2795,7 @@ Three cases cannot establish general rules.
 
 - **EX100 — Comparison criteria.** List the four comparison criteria. *Rubric:* 3 = acknowledgement time, reporter feedback, purge automation, staffing; 2 = three; 1 = one; 0 = none.
 - **EX101 — Trade-off finding.** What trade-off did the comparison reveal? *Rubric:* 3 = speed vs feedback; no model best everywhere; 2 = partial; 1 = one best; 0 = none.
-- **EX102 — Adopted change.** What did Riverton adopt from the comparison? *Rubric:* 3 = automated purges, keeping feedback; 2 = partial; 1 = none; 0 = none.
+- **EX102 — Adopted change.** What did Riverton adopt from the comparison? *Rubric:* 3 = automated purges, keeping feedback; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2876,7 +2876,7 @@ Proposals change; record changes with reasons.
 ### Exercises
 
 - **EX103 — Three aims.** State the three capstone aims. *Rubric:* 3 = package rules, add mass-mailing detection, measure before/after on 20 scenarios; 2 = two; 1 = one; 0 = none.
-- **EX104 — Test safety.** How are test scenarios kept safe? *Rubric:* 3 = university test accounts, benign actions, no real accounts; 2 = partial; 1 = none; 0 = none.
+- **EX104 — Test safety.** How are test scenarios kept safe? *Rubric:* 3 = university test accounts, benign actions, no real accounts; 2 = partial; 1 = vague; 0 = none.
 - **EX105 — Requirements.** List the three requirements. *Rubric:* 3 = ≥80% detection, ≤3 false/week, within 30 min; 2 = two; 1 = one; 0 = none.
 
 ### Synthesis
@@ -2953,8 +2953,8 @@ Community help is limited by time; leave documentation and contacts so improveme
 
 ### Exercises
 
-- **EX106 — Built-in alerts.** Which built-in alerts were enabled? *Rubric:* 3 = suspicious sign-ins and forwarding rules; 2 = one; 1 = none; 0 = none.
-- **EX107 — Boundaries.** What boundaries did Lucas keep? *Rubric:* 3 = no mailbox or personal data access; configure with manager present; documentation; 2 = partial; 1 = none; 0 = none.
+- **EX106 — Built-in alerts.** Which built-in alerts were enabled? *Rubric:* 3 = suspicious sign-ins and forwarding rules; 2 = one; 1 = vague; 0 = none.
+- **EX107 — Boundaries.** What boundaries did Lucas keep? *Rubric:* 3 = no mailbox or personal data access; configure with manager present; documentation; 2 = partial; 1 = vague; 0 = none.
 - **EX108 — Capacity principle.** Why must advice fit the charity's capacity? *Rubric:* 3 = unmaintainable perfect plan worse than simple maintainable one; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
@@ -3035,8 +3035,8 @@ Peer review improves evidence but cannot replace testing.
 
 ### Exercises
 
-- **EX109 — Peer questions.** What two peer questions challenged Lucas's evidence? *Rubric:* 3 = slow attackers in scenarios; two weeks too short for false-alert rate; 2 = one; 1 = none; 0 = none.
-- **EX110 — Weak claim.** What overclaim did Dr. Kim identify? *Rubric:* 3 = "will detect most compromises" vs "detects most test scenarios"; 2 = partial; 1 = none; 0 = none.
+- **EX109 — Peer questions.** What two peer questions challenged Lucas's evidence? *Rubric:* 3 = slow attackers in scenarios; two weeks too short for false-alert rate; 2 = one; 1 = vague; 0 = none.
+- **EX110 — Weak claim.** What overclaim did Dr. Kim identify? *Rubric:* 3 = "will detect most compromises" vs "detects most test scenarios"; 2 = partial; 1 = vague; 0 = none.
 - **EX111 — Changes made.** What did Lucas change after the seminar? *Rubric:* 3 = added slow scenarios, recorded detection times, reworded; 2 = two; 1 = one; 0 = none.
 
 ### Synthesis
@@ -3115,7 +3115,7 @@ A week of live data shows early behaviour only.
 
 - **EX112 — Mass-mailing rule.** State the mass-mailing rule. *Rubric:* 3 = risky sign-in in past day + >50 new internal recipients; 2 = partial; 1 = vague; 0 = none.
 - **EX113 — Society officer.** How was the society officer match handled? *Rubric:* 3 = added check for reported subjects or new domains; 2 = partial; 1 = ignored; 0 = none.
-- **EX114 — Live result.** What happened in the first live week? *Rubric:* 3 = one alert; 120 messages, new domain; contained in 25 min; 2 = partial; 1 = none; 0 = none.
+- **EX114 — Live result.** What happened in the first live week? *Rubric:* 3 = one alert; 120 messages, new domain; contained in 25 min; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 

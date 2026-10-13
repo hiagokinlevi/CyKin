@@ -362,7 +362,7 @@ Avaliações curtas não captam efeitos de longo prazo. Os escritórios diferem 
 - **EX026 — Ordem da implantação.** Como foi escolhida a ordem da implantação? *Rubrica:* 3 = por sorteio;; 2 = aleatória;; 1 = por tamanho;; 0 = nenhuma.
 - **EX027 — Medida de resultado.** Que resultado foi usado? *Rubrica:* 3 = proporção de e-mails maliciosos reportados por escritório por mês;; 2 = proporção reportada;; 1 = cliques;; 0 = nenhuma.
 - **EX028 — Estimativa no laboratório.** Que diferença dentro dos meses o laboratório encontrou? *Rubrica:* 3 = cerca de 14,4 pontos, proporção da permutação 0,001;; 2 = positiva;; 1 = nada;; 0 = nenhuma.
-- **EX029 — Sem simulações.** As simulações fizeram parte da avaliação? *Rubrica:* 3 = não;; 2 = nenhuma;; 1 = sim;; 0 = nenhuma.
+- **EX029 — Sem simulações.** As simulações fizeram parte da avaliação? *Rubrica:* 3 = não;; 2 = nenhuma;; 1 = sim;; 0 = sem resposta.
 - **EX030 — Atraso máximo.** Qual foi o atraso máximo para qualquer escritório? *Rubrica:* 3 = dois meses;; 2 = 2;; 1 = nada;; 0 = nenhuma.
 
 ### Síntese

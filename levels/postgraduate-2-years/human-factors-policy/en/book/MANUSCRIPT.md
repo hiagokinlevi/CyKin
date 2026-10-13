@@ -82,11 +82,11 @@ Loss estimates are uncertain. Hours estimates may omit hidden effort.
 
 ### Exercises
 
-- **EX001 — Decision frame.** What elements make up Daniel's decision frame? *Rubric:* 3 = options, outcomes, uncertainties and people affected;; 2 = frame;; 1 = none;; 0 = none.
-- **EX002 — Herley cost.** Why include staff hours following Herley (2009)? *Rubric:* 3 = security advice imposes real user costs;; 2 = burden;; 1 = none;; 0 = none.
-- **EX003 — Lab comparison.** How did the two options compare on loss reduction and hours? *Rubric:* 3 = verification 310k and 1,800 h; simulations 140k and 4,500 h;; 2 = verification better;; 1 = none;; 0 = none.
-- **EX004 — Mind-changer.** What evidence would change Daniel's mind? *Rubric:* 3 = simulation results predicting real fraud losses;; 2 = prediction;; 1 = none;; 0 = none.
-- **EX005 — Note purpose.** Why document the rationale? *Rubric:* 3 = so it can be challenged and compared with outcomes later;; 2 = record;; 1 = none;; 0 = none.
+- **EX001 — Decision frame.** What elements make up Daniel's decision frame? *Rubric:* 3 = options, outcomes, uncertainties and people affected;; 2 = frame;; 1 = vague;; 0 = none.
+- **EX002 — Herley cost.** Why include staff hours following Herley (2009)? *Rubric:* 3 = security advice imposes real user costs;; 2 = burden;; 1 = vague;; 0 = none.
+- **EX003 — Lab comparison.** How did the two options compare on loss reduction and hours? *Rubric:* 3 = verification 310k and 1,800 h; simulations 140k and 4,500 h;; 2 = verification better;; 1 = vague;; 0 = none.
+- **EX004 — Mind-changer.** What evidence would change Daniel's mind? *Rubric:* 3 = simulation results predicting real fraud losses;; 2 = prediction;; 1 = vague;; 0 = none.
+- **EX005 — Note purpose.** Why document the rationale? *Rubric:* 3 = so it can be challenged and compared with outcomes later;; 2 = record;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -130,9 +130,9 @@ Peer conversations are anecdotal. Guidance is not evidence of effect.
 
 - **EX006 — Common practice.** Which measure dominates common practice? *Rubric:* 3 = click rates by department;; 2 = clicks;; 1 = reporting speed;; 0 = none.
 - **EX007 — Weakest stages.** Which programme stages were weakest at Calloway? *Rubric:* 3 = needs assessment and evaluation;; 2 = two;; 1 = delivery;; 0 = none.
-- **EX008 — Embedded training gap.** What evidence conflicts with Calloway's embedded training? *Rubric:* 3 = Lain et al. found it did not reduce clicks;; 2 = Lain;; 1 = none;; 0 = none.
-- **EX009 — Poster gap.** Which practice conflicts with Bada et al. (2019)? *Rubric:* 3 = alarming fear-based posters;; 2 = fear;; 1 = none;; 0 = none.
-- **EX010 — Reporting gap.** Why is reporting weak at Calloway? *Rubric:* 3 = the report address is buried;; 2 = access;; 1 = none;; 0 = none.
+- **EX008 — Embedded training gap.** What evidence conflicts with Calloway's embedded training? *Rubric:* 3 = Lain et al. found it did not reduce clicks;; 2 = Lain;; 1 = vague;; 0 = none.
+- **EX009 — Poster gap.** Which practice conflicts with Bada et al. (2019)? *Rubric:* 3 = alarming fear-based posters;; 2 = fear;; 1 = vague;; 0 = none.
+- **EX010 — Reporting gap.** Why is reporting weak at Calloway? *Rubric:* 3 = the report address is buried;; 2 = access;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -190,11 +190,11 @@ Transferability is a judgement. Published studies favour positive results.
 
 ### Exercises
 
-- **EX011 — Lain design strength.** What gives Lain et al. strong internal validity? *Rubric:* 3 = randomised conditions over fifteen months;; 2 = randomisation;; 1 = none;; 0 = none.
+- **EX011 — Lain design strength.** What gives Lain et al. strong internal validity? *Rubric:* 3 = randomised conditions over fifteen months;; 2 = randomisation;; 1 = vague;; 0 = none.
 - **EX012 — Adams and Sasse method.** What did Adams and Sasse (1999) offer? *Rubric:* 3 = depth from questionnaires and interviews;; 2 = depth;; 1 = effect size;; 0 = none.
-- **EX013 — Lab difference.** What risk difference did the lab compute? *Rubric:* 3 = 6.0 points, interval -7.1 to 19.1;; 2 = wide;; 1 = none;; 0 = none.
-- **EX014 — Interval meaning.** What does the wide interval mean? *Rubric:* 3 = benefit could be small or zero;; 2 = uncertain;; 1 = none;; 0 = none.
-- **EX015 — Transfer judgement.** Why does Lain's reporting finding likely transfer? *Rubric:* 3 = Calloway resembles the large email-heavy company;; 2 = similarity;; 1 = none;; 0 = none.
+- **EX013 — Lab difference.** What risk difference did the lab compute? *Rubric:* 3 = 6.0 points, interval -7.1 to 19.1;; 2 = wide;; 1 = vague;; 0 = none.
+- **EX014 — Interval meaning.** What does the wide interval mean? *Rubric:* 3 = benefit could be small or zero;; 2 = uncertain;; 1 = vague;; 0 = none.
+- **EX015 — Transfer judgement.** Why does Lain's reporting finding likely transfer? *Rubric:* 3 = Calloway resembles the large email-heavy company;; 2 = similarity;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -237,10 +237,10 @@ Panels can approve borderline content. Ethics reviews may become routine.
 ### Exercises
 
 - **EX016 — Fraud vulnerability.** Where does the payment fraud vulnerability lie? *Rubric:* 3 = in the absence of independent verification;; 2 = process;; 1 = staff character;; 0 = none.
-- **EX017 — Bonus template.** Why is the bonus template unethical? *Rubric:* 3 = it exploits financial hopes;; 2 = distress;; 1 = none;; 0 = none.
-- **EX018 — Ranking harm.** What harm do department rankings cause? *Rubric:* 3 = public shaming that undermines trust;; 2 = trust;; 1 = none;; 0 = none.
-- **EX019 — Panel members.** Who sits on the template review panel? *Rubric:* 3 = staff representatives and HR;; 2 = representatives;; 1 = none;; 0 = none.
-- **EX020 — Performance rule.** What rule applies to simulation results and performance reviews? *Rubric:* 3 = they are never used;; 2 = prohibition;; 1 = none;; 0 = none.
+- **EX017 — Bonus template.** Why is the bonus template unethical? *Rubric:* 3 = it exploits financial hopes;; 2 = distress;; 1 = vague;; 0 = none.
+- **EX018 — Ranking harm.** What harm do department rankings cause? *Rubric:* 3 = public shaming that undermines trust;; 2 = trust;; 1 = vague;; 0 = none.
+- **EX019 — Panel members.** Who sits on the template review panel? *Rubric:* 3 = staff representatives and HR;; 2 = representatives;; 1 = vague;; 0 = none.
+- **EX020 — Performance rule.** What rule applies to simulation results and performance reviews? *Rubric:* 3 = they are never used;; 2 = prohibition;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -307,9 +307,9 @@ Scores are subjective. Combined designs may overload teams.
 
 - **EX021 — Design C weakness.** Where does Design C score lowest? *Rubric:* 3 = regulatory evidence;; 2 = evidence;; 1 = risk;; 0 = none.
 - **EX022 — Weight timing.** When were weights agreed? *Rubric:* 3 = before scoring;; 2 = before;; 1 = after;; 0 = none.
-- **EX023 — Lab sensitivity.** How robust was the combined design in the lab? *Rubric:* 3 = first in 10 of 10 weight variations;; 2 = robust;; 1 = none;; 0 = none.
-- **EX024 — Phasing.** Over what period is the combined design phased? *Rubric:* 3 = eighteen months;; 2 = 18;; 1 = none;; 0 = none.
-- **EX025 — Combined risk.** What risk does the combination carry? *Rubric:* 3 = project overload;; 2 = overload;; 1 = none;; 0 = none.
+- **EX023 — Lab sensitivity.** How robust was the combined design in the lab? *Rubric:* 3 = first in 10 of 10 weight variations;; 2 = robust;; 1 = vague;; 0 = none.
+- **EX024 — Phasing.** Over what period is the combined design phased? *Rubric:* 3 = eighteen months;; 2 = 18;; 1 = vague;; 0 = none.
+- **EX025 — Combined risk.** What risk does the combination carry? *Rubric:* 3 = project overload;; 2 = overload;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -381,9 +381,9 @@ Short evaluations miss long-term effects. Offices differ in exposure.
 
 - **EX026 — Rollout order.** How was the rollout order chosen? *Rubric:* 3 = randomly;; 2 = random;; 1 = by size;; 0 = none.
 - **EX027 — Outcome measure.** What outcome was used? *Rubric:* 3 = share of malicious emails reported per office per month;; 2 = reported share;; 1 = clicks;; 0 = none.
-- **EX028 — Lab estimate.** What within-month difference did the lab find? *Rubric:* 3 = about 14.4 points, permutation share 0.001;; 2 = positive;; 1 = none;; 0 = none.
-- **EX029 — No simulations.** Were simulations part of the evaluation? *Rubric:* 3 = no;; 2 = none;; 1 = yes;; 0 = none.
-- **EX030 — Maximum delay.** What was the maximum delay for any office? *Rubric:* 3 = two months;; 2 = 2;; 1 = none;; 0 = none.
+- **EX028 — Lab estimate.** What within-month difference did the lab find? *Rubric:* 3 = about 14.4 points, permutation share 0.001;; 2 = positive;; 1 = vague;; 0 = none.
+- **EX029 — No simulations.** Were simulations part of the evaluation? *Rubric:* 3 = no;; 2 = none;; 1 = yes;; 0 = no answer.
+- **EX030 — Maximum delay.** What was the maximum delay for any office? *Rubric:* 3 = two months;; 2 = 2;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -425,10 +425,10 @@ Integration takes time. Framework mapping can become paperwork.
 
 ### Exercises
 
-- **EX031 — HR agreement.** What did HR agree about simulation data? *Rubric:* 3 = it stays out of performance processes;; 2 = separation;; 1 = none;; 0 = none.
+- **EX031 — HR agreement.** What did HR agree about simulation data? *Rubric:* 3 = it stays out of performance processes;; 2 = separation;; 1 = vague;; 0 = none.
 - **EX032 — Govern scope.** What does the CSF 2.0 Govern function cover? *Rubric:* 3 = roles, responsibilities, policy and oversight;; 2 = governance;; 1 = detection;; 0 = none.
 - **EX033 — Framework role.** What role should frameworks play? *Rubric:* 3 = describe structures, not define success;; 2 = structure;; 1 = outcomes;; 0 = none.
-- **EX034 — Finance resistance.** Why did finance resist the verification control? *Rubric:* 3 = it slowed month-end payments;; 2 = month-end;; 1 = none;; 0 = none.
+- **EX034 — Finance resistance.** Why did finance resist the verification control? *Rubric:* 3 = it slowed month-end payments;; 2 = month-end;; 1 = vague;; 0 = none.
 - **EX035 — Resistance lesson.** What does resistance often signal? *Rubric:* 3 = a real cost;; 2 = cost;; 1 = stubbornness;; 0 = none.
 
 ### Synthesis
@@ -471,9 +471,9 @@ Support may be seen as leniency. Executive buy-in may fade.
 
 ### Exercises
 
-- **EX036 — Clicker roles.** Where did most repeated clickers work? *Rubric:* 3 = high-volume external email roles such as claims;; 2 = claims;; 1 = none;; 0 = none.
+- **EX036 — Clicker roles.** Where did most repeated clickers work? *Rubric:* 3 = high-volume external email roles such as claims;; 2 = claims;; 1 = vague;; 0 = none.
 - **EX037 — Clicker support.** What support did Daniel propose for repeated clickers? *Rubric:* 3 = workload review, extra filtering and phishing-resistant authentication;; 2 = support;; 1 = remedial training;; 0 = none.
-- **EX038 — Executive message.** What did the CEO agree to do? *Rubric:* 3 = record a message welcoming verification calls;; 2 = permission;; 1 = none;; 0 = none.
+- **EX038 — Executive message.** What did the CEO agree to do? *Rubric:* 3 = record a message welcoming verification calls;; 2 = permission;; 1 = vague;; 0 = none.
 - **EX039 — Password sharing cause.** What underlying issue did the password-sharing report reveal? *Rubric:* 3 = understaffing;; 2 = workload;; 1 = malice;; 0 = none.
 - **EX040 — Sanction rule.** When do sanctions apply under Daniel's principles? *Rubric:* 3 = only for deliberate harmful acts;; 2 = deliberate;; 1 = any mistake;; 0 = none.
 
@@ -536,8 +536,8 @@ Champions vary in commitment. Quarterly data are noisy.
 ### Exercises
 
 - **EX041 — Programme purpose.** What purpose did Daniel set? *Rubric:* 3 = help people make safe choices easily and report quickly;; 2 = purpose;; 1 = compliance;; 0 = none.
-- **EX042 — Modelling behaviour.** How does Daniel model desired behaviour? *Rubric:* 3 = reporting his own near misses openly;; 2 = openness;; 1 = none;; 0 = none.
-- **EX043 — Lab trend.** How did median report time move across the quarters? *Rubric:* 3 = 52, 31, 19 and 14 minutes;; 2 = falling;; 1 = none;; 0 = none.
+- **EX042 — Modelling behaviour.** How does Daniel model desired behaviour? *Rubric:* 3 = reporting his own near misses openly;; 2 = openness;; 1 = vague;; 0 = none.
+- **EX043 — Lab trend.** How did median report time move across the quarters? *Rubric:* 3 = 52, 31, 19 and 14 minutes;; 2 = falling;; 1 = vague;; 0 = none.
 - **EX044 — Assurance meaning.** What does assurance mean here? *Rubric:* 3 = evidence that controls work and outcomes improve;; 2 = evidence;; 1 = activity lists;; 0 = none.
 - **EX045 — Board answer.** How did Daniel answer whether Calloway is safe? *Rubric:* 3 = specific risks reduced but deception not eliminated;; 2 = candour;; 1 = yes;; 0 = none.
 
@@ -581,11 +581,11 @@ Critique can drift into fault-finding. Implications may stretch evidence.
 
 ### Exercises
 
-- **EX046 — Methods focus.** Why does Daniel read methods sections carefully? *Rubric:* 3 = summaries elsewhere often overstate or omit limits;; 2 = accuracy;; 1 = none;; 0 = none.
-- **EX047 — Budget strength.** Name a strength of the compliance budget paper. *Rubric:* 3 = grounded in interviews across organisations;; 2 = grounding;; 1 = none;; 0 = none.
-- **EX048 — Budget limit.** Name a limit of the compliance budget paper. *Rubric:* 3 = the budget is hard to measure directly;; 2 = measurement;; 1 = none;; 0 = none.
+- **EX046 — Methods focus.** Why does Daniel read methods sections carefully? *Rubric:* 3 = summaries elsewhere often overstate or omit limits;; 2 = accuracy;; 1 = vague;; 0 = none.
+- **EX047 — Budget strength.** Name a strength of the compliance budget paper. *Rubric:* 3 = grounded in interviews across organisations;; 2 = grounding;; 1 = vague;; 0 = none.
+- **EX048 — Budget limit.** Name a limit of the compliance budget paper. *Rubric:* 3 = the budget is hard to measure directly;; 2 = measurement;; 1 = vague;; 0 = none.
 - **EX049 — Lens use.** How should managers treat the compliance budget? *Rubric:* 3 = as a lens, not a precise quantity;; 2 = lens;; 1 = number;; 0 = none.
-- **EX050 — Charter implications.** Where did Daniel record his implications? *Rubric:* 3 = the programme charter with citations;; 2 = charter;; 1 = none;; 0 = none.
+- **EX050 — Charter implications.** Where did Daniel record his implications? *Rubric:* 3 = the programme charter with citations;; 2 = charter;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -646,11 +646,11 @@ Short periods mislead. Key loss needs good recovery.
 
 ### Exercises
 
-- **EX051 — Target group.** Which staff received keys first? *Rubric:* 3 = claims and finance staff, 240 people;; 2 = targeted roles;; 1 = none;; 0 = none.
-- **EX052 — Two keys.** Why does each person register two keys? *Rubric:* 3 = as a backup if one is lost;; 2 = backup;; 1 = none;; 0 = none.
-- **EX053 — Help desk pattern.** What did the lab show for help desk calls? *Rubric:* 3 = rose to 62 in month one, then fell to 31 by month four from a base of 45;; 2 = dip;; 1 = none;; 0 = none.
-- **EX054 — Attacker shift.** What might attackers shift to? *Rubric:* 3 = phone-based fraud;; 2 = phone;; 1 = none;; 0 = none.
-- **EX055 — Audience order.** Who heard the results first? *Rubric:* 3 = staff;; 2 = staff;; 1 = the board;; 0 = none.
+- **EX051 — Target group.** Which staff received keys first? *Rubric:* 3 = claims and finance staff, 240 people;; 2 = targeted roles;; 1 = vague;; 0 = none.
+- **EX052 — Two keys.** Why does each person register two keys? *Rubric:* 3 = as a backup if one is lost;; 2 = backup;; 1 = vague;; 0 = none.
+- **EX053 — Help desk pattern.** What did the lab show for help desk calls? *Rubric:* 3 = rose to 62 in month one, then fell to 31 by month four from a base of 45;; 2 = dip;; 1 = vague;; 0 = none.
+- **EX054 — Attacker shift.** What might attackers shift to? *Rubric:* 3 = phone-based fraud;; 2 = phone;; 1 = vague;; 0 = none.
+- **EX055 — Audience order.** Who heard the results first? *Rubric:* 3 = staff;; 2 = staff, without explanation;; 1 = the board;; 0 = none.
 
 ### Synthesis
 
@@ -692,11 +692,11 @@ Reviews can be self-serving. Transfer guides oversimplify.
 
 ### Exercises
 
-- **EX056 — Programme shift.** What did the programme shift from and to? *Rubric:* 3 = from simulations and rankings to reporting, feedback, verification and keys;; 2 = shift;; 1 = none;; 0 = none.
-- **EX057 — Failed scheme.** What early scheme failed and why? *Rubric:* 3 = champions without allocated time;; 2 = time;; 1 = none;; 0 = none.
-- **EX058 — Hospital difference.** What would matter more in a hospital? *Rubric:* 3 = burden, due to clinical time pressure;; 2 = burden;; 1 = none;; 0 = none.
-- **EX059 — Transfer distinction.** What must transfer distinguish? *Rubric:* 3 = why something worked from how it was done;; 2 = principle;; 1 = none;; 0 = none.
-- **EX060 — Article suggestion.** What article did Dr Holm suggest? *Rubric:* 3 = on the stepped evaluation;; 2 = evaluation;; 1 = none;; 0 = none.
+- **EX056 — Programme shift.** What did the programme shift from and to? *Rubric:* 3 = from simulations and rankings to reporting, feedback, verification and keys;; 2 = shift;; 1 = vague;; 0 = none.
+- **EX057 — Failed scheme.** What early scheme failed and why? *Rubric:* 3 = champions without allocated time;; 2 = time;; 1 = vague;; 0 = none.
+- **EX058 — Hospital difference.** What would matter more in a hospital? *Rubric:* 3 = burden, due to clinical time pressure;; 2 = burden;; 1 = vague;; 0 = none.
+- **EX059 — Transfer distinction.** What must transfer distinguish? *Rubric:* 3 = why something worked from how it was done;; 2 = principle;; 1 = vague;; 0 = none.
+- **EX060 — Article suggestion.** What article did Dr Holm suggest? *Rubric:* 3 = on the stepped evaluation;; 2 = evaluation;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

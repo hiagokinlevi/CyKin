@@ -3785,8 +3785,8 @@ Open comments without fixed/declined/risk states mean the design is not approved
 ### Exercises
 
 - **EX133 — Block.** Write a blocking comment for a fail-open retry. Rubric: 3 = cites safety req + fix ask; 2 = vague block; 1 = nit; 0 = approve.
-- **EX134 — Checklist.** Add one item for radio engagements. Rubric: 3 = specific; 2 = vague; 1 = none; 0 = none.
-- **EX135 — Dissent.** One sentence of recorded dissent. Rubric: 3 = clear; 2 = hedged; 1 = none; 0 = none.
+- **EX134 — Checklist.** Add one item for radio engagements. Rubric: 3 = specific; 2 = vague; 1 = minimal attempt; 0 = none.
+- **EX135 — Dissent.** One sentence of recorded dissent. Rubric: 3 = clear; 2 = hedged; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -4041,8 +4041,8 @@ Losing the scope file mid-engagement is the worst client consequence on the plat
 ### Exercises
 
 - **EX139 — Inject.** Write one inject and expected safe behaviour. Rubric: 3 = both; 2 = inject only; 1 = vague; 0 = unsafe.
-- **EX140 — Measure.** Primary measure for policy-loss inject. Rubric: 3 = time to deny-all; 2 = vague uptime; 1 = none; 0 = none.
-- **EX141 — Action.** Turn a 45s result into a corrective ticket title. Rubric: 3 = specific; 2 = vague; 1 = none; 0 = none.
+- **EX140 — Measure.** Primary measure for policy-loss inject. Rubric: 3 = time to deny-all; 2 = vague uptime; 1 = minimal attempt; 0 = none.
+- **EX141 — Action.** Turn a 45s result into a corrective ticket title. Rubric: 3 = specific; 2 = vague; 1 = minimal attempt; 0 = none.
 
 ### Synthesis
 

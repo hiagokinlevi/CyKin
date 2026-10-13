@@ -84,7 +84,7 @@ Synthetic alerts simplify real operations. Results transfer only as far as the a
 - **EX004 — Rewrite the aim.** Turn "enriched alerts make analysts better" into a testable aim. *Rubric:* 3 = measures, conditions, ground truth, uncertainty; 2 = three; 1 = vague; 0 = none.
 - **EX005 — Pre-registration content.** Name five things registered before the main study. *Rubric:* 3 = hypotheses, measures, sample-size reasoning, analysis, exclusions; 2 = three; 1 = one; 0 = none.
 - **EX006 — Participant protection.** How are analyst participants protected? *Rubric:* 3 = voluntary consent, no individual scores to managers, withdrawal; 2 = two; 1 = one; 0 = none.
-- **EX007 — Synthetic boundary.** State the main limit of synthetic alert sets. *Rubric:* 3 = transfer only as far as the mix resembles reality; say what is missing; 2 = partial; 1 = none; 0 = none.
+- **EX007 — Synthetic boundary.** State the main limit of synthetic alert sets. *Rubric:* 3 = transfer only as far as the mix resembles reality; say what is missing; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -168,7 +168,7 @@ Frontier claims age quickly; Nadia dates her review and records search terms so 
 - **EX011 — REACT properties.** List the five alarm properties proposed by Alahmadi et al. *Rubric:* 3 = Reliable, Explainable, Analytical, Contextual, Transferable; 2 = three; 1 = one; 0 = none.
 - **EX012 — Closed-world critique.** Summarise Sommer and Paxson's caution. *Rubric:* 3 = rare attacks, huge benign variety, costly unexplained errors; 2 = two; 1 = one; 0 = none.
 - **EX013 — Thesis position.** Where does Nadia's thesis sit, and why? *Rubric:* 3 = alert/triage level; tests Contextual property on benign triggers without hiding attacks; 2 = partial; 1 = detector; 0 = none.
-- **EX014 — Updating reviews.** How does Nadia keep her review updatable? *Rubric:* 3 = dates it and records search terms; 2 = one; 1 = none; 0 = none.
+- **EX014 — Updating reviews.** How does Nadia keep her review updatable? *Rubric:* 3 = dates it and records search terms; 2 = one; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -257,7 +257,7 @@ Eight events cannot validate a rule; the lab shows method, not rule quality.
 - **EX016 — Why test rules first.** Why must detection be evaluated before the triage experiment? *Rubric:* 3 = triage must be the bottleneck being studied; 2 = partial; 1 = no reason; 0 = none.
 - **EX017 — Replay result.** Give precision and recall for v1 and v2. *Rubric:* 3 = v1 0.50/0.75, v2 1.00/1.00; 2 = one rule; 1 = wrong; 0 = none.
 - **EX018 — Keeping v1 alerts.** Why keep v1's benign triggers in the corpus? *Rubric:* 3 = they are realistic triage material context should help dismiss; 2 = partial; 1 = mistake; 0 = none.
-- **EX019 — Novelty gap.** What gap establishes novelty? *Rubric:* 3 = few controlled experiments on alert context with ground truth; 2 = partial; 1 = none; 0 = none.
+- **EX019 — Novelty gap.** What gap establishes novelty? *Rubric:* 3 = few controlled experiments on alert context with ground truth; 2 = partial; 1 = vague; 0 = none.
 - **EX020 — Small sample.** What does the eight-event replay not show? *Rubric:* 3 = rule validity; it only illustrates the method; 2 = partial; 1 = proves rule; 0 = none.
 
 ### Synthesis
@@ -338,7 +338,7 @@ Kappa depends on prevalence; with very unbalanced labels, high agreement can sti
 - **EX023 — Interpreting kappa.** How is 0.73 described on the Landis and Koch scale? *Rubric:* 3 = substantial (0.61–0.80); 2 = substantial only; 1 = wrong; 0 = none.
 - **EX024 — Disagreements.** What happened to the two disagreements? *Rubric:* 3 = discussed; one label corrected, one alert rewritten; 2 = partial; 1 = ignored; 0 = none.
 - **EX025 — Pilot findings.** Name three pilot findings and their fixes. *Rubric:* 3 = field placement, logging, fatigue with fixes; 2 = two; 1 = one; 0 = none.
-- **EX026 — Kappa caveat.** What caveat applies to kappa? *Rubric:* 3 = prevalence effect; unbalanced labels lower kappa despite agreement; 2 = partial; 1 = none; 0 = none.
+- **EX026 — Kappa caveat.** What caveat applies to kappa? *Rubric:* 3 = prevalence effect; unbalanced labels lower kappa despite agreement; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -423,7 +423,7 @@ Eight analysts from one SOC limit generalisation; analyst effects may dominate.
 - **EX028 — Enrichment fields.** What context did enriched cards add? *Rubric:* 3 = asset criticality, user role, benign-history count; 2 = two; 1 = one; 0 = none.
 - **EX029 — Interval results.** Report both accuracies with intervals. *Rubric:* 3 = 0.738 [0.664, 0.800]; 0.869 [0.808, 0.913]; 2 = values only; 1 = wrong; 0 = none.
 - **EX030 — Paired analysis.** Why is the paired analysis the main test? *Rubric:* 3 = same analysts in both conditions; 2 = partial; 1 = no reason; 0 = none.
-- **EX031 — Harm found.** What harm did enrichment cause? *Rubric:* 3 = two attacks closed with high benign-history count; 2 = partial; 1 = none; 0 = none.
+- **EX031 — Harm found.** What harm did enrichment cause? *Rubric:* 3 = two attacks closed with high benign-history count; 2 = partial; 1 = vague; 0 = none.
 - **EX032 — Validation method.** How was the analysis independently validated? *Rubric:* 3 = outside statistician reran from raw logs blind to results; matched; 2 = partial; 1 = self-checked; 0 = none.
 
 ### Synthesis
@@ -481,7 +481,7 @@ A four-analyst follow-up is exploratory; it guides future work but cannot settle
 - **EX033 — Severity classes.** Name the four severity classes used. *Rubric:* 3 = validity, conclusions, scope, realism; 2 = three; 1 = one; 0 = none.
 - **EX034 — Confounded fields.** What was Reviewer 2's critique, and how was it answered? *Rubric:* 3 = fields confounded; single-field follow-up, history drives gain and misses; 2 = partial; 1 = ignored; 0 = none.
 - **EX035 — Safety framing.** How was the missed-attack critique handled? *Rubric:* 3 = moved to abstract; recommend counter-prompt with history; 2 = partial; 1 = footnote; 0 = none.
-- **EX036 — Realism response.** What answered the synthetic-corpus critique? *Rubric:* 3 = limits section; release generator for testing; 2 = one; 1 = none; 0 = none.
+- **EX036 — Realism response.** What answered the synthetic-corpus critique? *Rubric:* 3 = limits section; release generator for testing; 2 = one; 1 = vague; 0 = none.
 - **EX037 — Letter format.** Describe a good response letter entry. *Rubric:* 3 = quote, change with location or reasoned disagreement; 2 = partial; 1 = rebuttal only; 0 = none.
 - **EX038 — Follow-up status.** Why is the follow-up labelled exploratory? *Rubric:* 3 = small, unplanned for confirmation; cannot settle attribution; 2 = partial; 1 = confirmatory; 0 = none.
 

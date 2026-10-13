@@ -71,13 +71,13 @@ Measuring only alert volume rewards switching rules off; recall must be measured
 
 ### Exercises
 
-- **EX001 — Why tuning matters.** Explain why bulk-closing alerts is a security risk. *Rubric:* 3 = important alerts ignored among noise;; 2 = risk;; 1 = none;; 0 = none.
-- **EX002 — Search log.** What should a literature search log record? *Rubric:* 3 = strings, sources, dates, counts, decisions;; 2 = some;; 1 = none;; 0 = none.
-- **EX003 — Normalising volume.** Why normalise alert volume by traffic? *Rubric:* 3 = traffic changes confound;; 2 = fairness;; 1 = none;; 0 = none.
-- **EX004 — Precision and recall.** Define precision and recall for alert rules. *Rubric:* 3 = both correct;; 2 = one;; 1 = none;; 0 = none.
+- **EX001 — Why tuning matters.** Explain why bulk-closing alerts is a security risk. *Rubric:* 3 = important alerts ignored among noise;; 2 = risk;; 1 = vague;; 0 = none.
+- **EX002 — Search log.** What should a literature search log record? *Rubric:* 3 = strings, sources, dates, counts, decisions;; 2 = some;; 1 = vague;; 0 = none.
+- **EX003 — Normalising volume.** Why normalise alert volume by traffic? *Rubric:* 3 = traffic changes confound;; 2 = fairness;; 1 = vague;; 0 = none.
+- **EX004 — Precision and recall.** Define precision and recall for alert rules. *Rubric:* 3 = both correct;; 2 = one;; 1 = vague;; 0 = none.
 - **EX005 — Labelled set source.** How is the labelled event set built without attacking anything? *Rubric:* 3 = past incidents and authorised tests from records;; 2 = records;; 1 = attacks;; 0 = none.
-- **EX006 — Volume-only danger.** What perverse outcome does a volume-only measure reward? *Rubric:* 3 = switching rules off;; 2 = fewer alerts;; 1 = none;; 0 = none.
-- **EX007 — Scope boundary.** Name two things outside the study's scope. *Rubric:* 3 = new products and ML;; 2 = one;; 1 = none;; 0 = none.
+- **EX006 — Volume-only danger.** What perverse outcome does a volume-only measure reward? *Rubric:* 3 = switching rules off;; 2 = fewer alerts;; 1 = vague;; 0 = none.
+- **EX007 — Scope boundary.** Name two things outside the study's scope. *Rubric:* 3 = new products and ML;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -150,13 +150,13 @@ Quoting a detector's accuracy without the base rate misleads decision makers.
 
 ### Exercises
 
-- **EX008 — Detection methods.** Contrast signature and anomaly detection in two sentences. *Rubric:* 3 = strengths and weaknesses of both;; 2 = definitions;; 1 = none;; 0 = none.
-- **EX009 — Precision collapse.** Using the lab, state precision at base rates 0.01 and 0.0001. *Rubric:* 3 = 0.490 and 0.009;; 2 = one;; 1 = none;; 0 = none.
-- **EX010 — Tuning priority.** Why does lowering false positive rate matter more than raising detection rate here? *Rubric:* 3 = base rate effect;; 2 = noise;; 1 = none;; 0 = none.
-- **EX011 — Closure notes.** Why are closure notes valuable for research? *Rubric:* 3 = source of labels and tuning info;; 2 = records;; 1 = none;; 0 = none.
-- **EX012 — Enrichment.** How does asset enrichment help triage? *Rubric:* 3 = context on importance and owner;; 2 = context;; 1 = none;; 0 = none.
-- **EX013 — Policy philosophy.** What did Bro's design emphasise? *Rubric:* 3 = operator-defined policy scripts;; 2 = policy;; 1 = none;; 0 = none.
-- **EX014 — Prevalence estimate.** Why does Corvane's prevalence near 0.001 explain analyst experience? *Rubric:* 3 = precision about 0.09;; 2 = mostly false;; 1 = none;; 0 = none.
+- **EX008 — Detection methods.** Contrast signature and anomaly detection in two sentences. *Rubric:* 3 = strengths and weaknesses of both;; 2 = definitions;; 1 = vague;; 0 = none.
+- **EX009 — Precision collapse.** Using the lab, state precision at base rates 0.01 and 0.0001. *Rubric:* 3 = 0.490 and 0.009;; 2 = one;; 1 = vague;; 0 = none.
+- **EX010 — Tuning priority.** Why does lowering false positive rate matter more than raising detection rate here? *Rubric:* 3 = base rate effect;; 2 = noise;; 1 = vague;; 0 = none.
+- **EX011 — Closure notes.** Why are closure notes valuable for research? *Rubric:* 3 = source of labels and tuning info;; 2 = records;; 1 = vague;; 0 = none.
+- **EX012 — Enrichment.** How does asset enrichment help triage? *Rubric:* 3 = context on importance and owner;; 2 = context;; 1 = vague;; 0 = none.
+- **EX013 — Policy philosophy.** What did Bro's design emphasise? *Rubric:* 3 = operator-defined policy scripts;; 2 = policy;; 1 = vague;; 0 = none.
+- **EX014 — Prevalence estimate.** Why does Corvane's prevalence near 0.001 explain analyst experience? *Rubric:* 3 = precision about 0.09;; 2 = mostly false;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -216,12 +216,12 @@ Before-after designs are vulnerable to coincident changes; record everything els
 
 ### Exercises
 
-- **EX015 — Time-series design.** Why use four weeks either side? *Rubric:* 3 = capture weekly variation;; 2 = more data;; 1 = none;; 0 = none.
-- **EX016 — Payload removal.** Why remove payload excerpts from exports? *Rubric:* 3 = may contain personal data;; 2 = privacy;; 1 = none;; 0 = none.
-- **EX017 — Disabling evidence.** What evidence is required to disable a rule? *Rubric:* 3 = service absent at Corvane;; 2 = justification;; 1 = none;; 0 = none.
-- **EX018 — Governance purpose.** How does tuning governance protect validity? *Rubric:* 3 = prevents gaming metrics by weakening detection;; 2 = oversight;; 1 = none;; 0 = none.
-- **EX019 — Data location.** Why keep data on a Corvane machine? *Rubric:* 3 = control and minimisation;; 2 = security;; 1 = none;; 0 = none.
-- **EX020 — Coincident changes.** Give an example of a coincident change to record. *Rubric:* 3 = sensor upgrade or traffic shift;; 2 = example;; 1 = none;; 0 = none.
+- **EX015 — Time-series design.** Why use four weeks either side? *Rubric:* 3 = capture weekly variation;; 2 = more data;; 1 = vague;; 0 = none.
+- **EX016 — Payload removal.** Why remove payload excerpts from exports? *Rubric:* 3 = may contain personal data;; 2 = privacy;; 1 = vague;; 0 = none.
+- **EX017 — Disabling evidence.** What evidence is required to disable a rule? *Rubric:* 3 = service absent at Corvane;; 2 = justification;; 1 = vague;; 0 = none.
+- **EX018 — Governance purpose.** How does tuning governance protect validity? *Rubric:* 3 = prevents gaming metrics by weakening detection;; 2 = oversight;; 1 = vague;; 0 = none.
+- **EX019 — Data location.** Why keep data on a Corvane machine? *Rubric:* 3 = control and minimisation;; 2 = security;; 1 = vague;; 0 = none.
+- **EX020 — Coincident changes.** Give an example of a coincident change to record. *Rubric:* 3 = sensor upgrade or traffic shift;; 2 = example;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -304,11 +304,11 @@ Normalising by the wrong denominator, such as hosts instead of traffic, can crea
 ### Exercises
 
 - **EX021 — Alternative list.** List four alternative explanations for falling alerts. *Rubric:* 3 = four;; 2 = three;; 1 = fewer;; 0 = none.
-- **EX022 — Normalised result.** State the normalised change. *Rubric:* 3 = 512 to 191 per 100 GB;; 2 = direction;; 1 = none;; 0 = none.
-- **EX023 — Step timing.** Why does the week-five step support the tuning explanation? *Rubric:* 3 = coincides with change date;; 2 = timing;; 1 = none;; 0 = none.
-- **EX024 — Retired server.** Why can the retired server not explain the step? *Rubric:* 3 = retired after the step;; 2 = timing;; 1 = none;; 0 = none.
-- **EX025 — Denominator choice.** Why might hosts be a poor denominator? *Rubric:* 3 = alerts track traffic not hosts;; 2 = mismatch;; 1 = none;; 0 = none.
-- **EX026 — Evidence table.** What columns does the explanations table need? *Rubric:* 3 = explanation, evidence, verdict;; 2 = two;; 1 = none;; 0 = none.
+- **EX022 — Normalised result.** State the normalised change. *Rubric:* 3 = 512 to 191 per 100 GB;; 2 = direction;; 1 = vague;; 0 = none.
+- **EX023 — Step timing.** Why does the week-five step support the tuning explanation? *Rubric:* 3 = coincides with change date;; 2 = timing;; 1 = vague;; 0 = none.
+- **EX024 — Retired server.** Why can the retired server not explain the step? *Rubric:* 3 = retired after the step;; 2 = timing;; 1 = vague;; 0 = none.
+- **EX025 — Denominator choice.** Why might hosts be a poor denominator? *Rubric:* 3 = alerts track traffic not hosts;; 2 = mismatch;; 1 = vague;; 0 = none.
+- **EX026 — Evidence table.** What columns does the explanations table need? *Rubric:* 3 = explanation, evidence, verdict;; 2 = two;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -374,12 +374,12 @@ Global exceptions for noisy hosts create blind spots if those hosts are compromi
 
 ### Exercises
 
-- **EX027 — Success criteria.** State the two success criteria. *Rubric:* 3 = both;; 2 = one;; 1 = none;; 0 = none.
+- **EX027 — Success criteria.** State the two success criteria. *Rubric:* 3 = both;; 2 = one;; 1 = vague;; 0 = none.
 - **EX028 — Noise sources.** Name the three main noise sources. *Rubric:* 3 = three;; 2 = two;; 1 = one;; 0 = none.
-- **EX029 — Narrow exceptions.** Why reject a global exception for the backup server? *Rubric:* 3 = blind spot if compromised;; 2 = too broad;; 1 = none;; 0 = none.
-- **EX030 — Threshold change.** What justified raising the scanning threshold? *Rubric:* 3 = analyst confirmation legitimate tools exceed five;; 2 = evidence;; 1 = none;; 0 = none.
-- **EX031 — Expiry dates.** Why give exceptions expiry dates? *Rubric:* 3 = force review;; 2 = review;; 1 = none;; 0 = none.
-- **EX032 — Pilot result.** What was the pilot result? *Rubric:* 3 = 64% reduction, no missed events;; 2 = reduction;; 1 = none;; 0 = none.
+- **EX029 — Narrow exceptions.** Why reject a global exception for the backup server? *Rubric:* 3 = blind spot if compromised;; 2 = too broad;; 1 = vague;; 0 = none.
+- **EX030 — Threshold change.** What justified raising the scanning threshold? *Rubric:* 3 = analyst confirmation legitimate tools exceed five;; 2 = evidence;; 1 = vague;; 0 = none.
+- **EX031 — Expiry dates.** Why give exceptions expiry dates? *Rubric:* 3 = force review;; 2 = review;; 1 = vague;; 0 = none.
+- **EX032 — Pilot result.** What was the pilot result? *Rubric:* 3 = 64% reduction, no missed events;; 2 = reduction;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -460,12 +460,12 @@ Celebrating volume reduction while ignoring a lost detection would misrepresent 
 
 ### Exercises
 
-- **EX033 — Precision meaning.** Explain precision 0.031 in analyst terms. *Rubric:* 3 = about 3 per 100 actionable;; 2 = three percent;; 1 = none;; 0 = none.
-- **EX034 — Recall change.** What does recall 0.950 to 0.925 mean? *Rubric:* 3 = one fewer detected event;; 2 = lower;; 1 = none;; 0 = none.
-- **EX035 — Miss cause.** What caused the miss? *Rubric:* 3 = backup exception too broad in time;; 2 = exception;; 1 = none;; 0 = none.
-- **EX036 — Fix test.** How was the fix tested? *Rubric:* 3 = rerun on labelled set;; 2 = tested;; 1 = none;; 0 = none.
-- **EX037 — Cost of fix.** What did the fix cost in alerts? *Rubric:* 3 = about 40 per week;; 2 = small;; 1 = none;; 0 = none.
-- **EX038 — Honest reporting.** Why report the lost detection prominently? *Rubric:* 3 = integrity and improvement;; 2 = honesty;; 1 = none;; 0 = none.
+- **EX033 — Precision meaning.** Explain precision 0.031 in analyst terms. *Rubric:* 3 = about 3 per 100 actionable;; 2 = three percent;; 1 = vague;; 0 = none.
+- **EX034 — Recall change.** What does recall 0.950 to 0.925 mean? *Rubric:* 3 = one fewer detected event;; 2 = lower;; 1 = vague;; 0 = none.
+- **EX035 — Miss cause.** What caused the miss? *Rubric:* 3 = backup exception too broad in time;; 2 = exception;; 1 = vague;; 0 = none.
+- **EX036 — Fix test.** How was the fix tested? *Rubric:* 3 = rerun on labelled set;; 2 = tested;; 1 = vague;; 0 = none.
+- **EX037 — Cost of fix.** What did the fix cost in alerts? *Rubric:* 3 = about 40 per week;; 2 = small;; 1 = vague;; 0 = none.
+- **EX038 — Honest reporting.** Why report the lost detection prominently? *Rubric:* 3 = integrity and improvement;; 2 = honesty;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -534,11 +534,11 @@ Limitations written as a token paragraph do not help readers judge results.
 ### Exercises
 
 - **EX039 — Appendix contents.** List three appendices. *Rubric:* 3 = register, scripts, data;; 2 = two;; 1 = one;; 0 = none.
-- **EX040 — Label limit.** How might labels bias recall? *Rubric:* 3 = unnoticed events missing;; 2 = incomplete;; 1 = none;; 0 = none.
-- **EX041 — Labelled set upkeep.** How should Corvane maintain the labelled set? *Rubric:* 3 = add confirmed incidents;; 2 = update;; 1 = none;; 0 = none.
-- **EX042 — Practitioner lead.** Write the summary's first sentence. *Rubric:* 3 = operational outcome;; 2 = partial;; 1 = none;; 0 = none.
-- **EX043 — Structure change.** Why move the base-rate explanation earlier? *Rubric:* 3 = motivates study;; 2 = clarity;; 1 = none;; 0 = none.
-- **EX044 — Transferability.** What must other organisations do to adopt the procedure? *Rubric:* 3 = build their own labelled sets;; 2 = adapt;; 1 = none;; 0 = none.
+- **EX040 — Label limit.** How might labels bias recall? *Rubric:* 3 = unnoticed events missing;; 2 = incomplete;; 1 = vague;; 0 = none.
+- **EX041 — Labelled set upkeep.** How should Corvane maintain the labelled set? *Rubric:* 3 = add confirmed incidents;; 2 = update;; 1 = vague;; 0 = none.
+- **EX042 — Practitioner lead.** Write the summary's first sentence. *Rubric:* 3 = operational outcome;; 2 = partial;; 1 = vague;; 0 = none.
+- **EX043 — Structure change.** Why move the base-rate explanation earlier? *Rubric:* 3 = motivates study;; 2 = clarity;; 1 = vague;; 0 = none.
+- **EX044 — Transferability.** What must other organisations do to adopt the procedure? *Rubric:* 3 = build their own labelled sets;; 2 = adapt;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -602,12 +602,12 @@ Independent review loses value if the reviewer helped design the changes.
 
 ### Exercises
 
-- **EX045 — Review sample.** What did the independent review find? *Rubric:* 3 = 48 of 50 appropriate, 2 tightened;; 2 = mostly fine;; 1 = none;; 0 = none.
-- **EX046 — Reviewer independence.** Why must the reviewer be uninvolved? *Rubric:* 3 = avoid bias;; 2 = independence;; 1 = none;; 0 = none.
-- **EX047 — Small label set.** Defend the 40-event label set. *Rubric:* 3 = quality over quantity, growth plan;; 2 = small;; 1 = none;; 0 = none.
-- **EX048 — Viva slide.** Which slide best answers causation questions? *Rubric:* 3 = normalised series and explanations table;; 2 = series;; 1 = none;; 0 = none.
-- **EX049 — Adoption.** What did Corvane adopt? *Rubric:* 3 = quarterly exception reviews;; 2 = reviews;; 1 = none;; 0 = none.
-- **EX050 — Outcome.** What was the viva outcome? *Rubric:* 3 = minor corrections;; 2 = pass;; 1 = none;; 0 = none.
+- **EX045 — Review sample.** What did the independent review find? *Rubric:* 3 = 48 of 50 appropriate, 2 tightened;; 2 = mostly fine;; 1 = vague;; 0 = none.
+- **EX046 — Reviewer independence.** Why must the reviewer be uninvolved? *Rubric:* 3 = avoid bias;; 2 = independence;; 1 = vague;; 0 = none.
+- **EX047 — Small label set.** Defend the 40-event label set. *Rubric:* 3 = quality over quantity, growth plan;; 2 = small;; 1 = vague;; 0 = none.
+- **EX048 — Viva slide.** Which slide best answers causation questions? *Rubric:* 3 = normalised series and explanations table;; 2 = series;; 1 = vague;; 0 = none.
+- **EX049 — Adoption.** What did Corvane adopt? *Rubric:* 3 = quarterly exception reviews;; 2 = reviews;; 1 = vague;; 0 = none.
+- **EX050 — Outcome.** What was the viva outcome? *Rubric:* 3 = minor corrections;; 2 = pass;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

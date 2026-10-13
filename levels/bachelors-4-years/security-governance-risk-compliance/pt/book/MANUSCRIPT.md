@@ -1677,7 +1677,7 @@ Correções no meio do caminho complicam a avaliação. Um trimestre é um teste
 ### Exercícios
 
 - **EX112 — Registro de perguntas.** Por que Sofia registra as perguntas dos gestores? *Rubrica:* 3 = revelam partes pouco claras do desenho;; 2 = clareza;; 1 = nada;; 0 = nenhuma.
-- **EX113 — Permissão esclarecida.** Que descrição de permissão foi esclarecida? *Rubrica:* 3 = escalonamento de caso;; 2 = escalonamento de caso;; 1 = nada;; 0 = nenhuma.
+- **EX113 — Permissão esclarecida.** Que descrição de permissão foi esclarecida? *Rubrica:* 3 = escalonamento de caso;; 2 = escalonamento de caso, sem justificativa;; 1 = vago;; 0 = nenhuma.
 - **EX114 — Definições duplas.** Por que registrar a conclusão pelas duas definições? *Rubrica:* 3 = para comparar com justiça com os trimestres anteriores;; 2 = comparabilidade;; 1 = nada;; 0 = nenhuma.
 
 ### Síntese

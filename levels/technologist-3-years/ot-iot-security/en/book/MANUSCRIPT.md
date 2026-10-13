@@ -1127,7 +1127,7 @@ Mapping to foundational requirements shows coverage, not adequacy. A control tha
 ### Exercises
 
 - **EX052 — Mapping allow-listing.** Which foundational requirement does HMI application allow-listing support? *Rubric:* 3 = FR 3 system integrity with reason; 2 = FR only; 1 = FR 4; 0 = none.
-- **EX053 — A bad-day check.** Describe the bad-day effect of supervised sessions and its mitigation. *Rubric:* 3 = night delay; on-call approver; 2 = one; 1 = none; 0 = none.
+- **EX053 — A bad-day check.** Describe the bad-day effect of supervised sessions and its mitigation. *Rubric:* 3 = night delay; on-call approver; 2 = one; 1 = vague; 0 = none.
 - **EX054 — Compensating for PLC-R2.** List two compensating controls for PLC-R2's lack of authentication. *Rubric:* 3 = restrict sources to HMI-C/HIST; monitor writes from other hosts; 2 = one; 1 = "add password"; 0 = none.
 
 ### Synthesis
@@ -1451,7 +1451,7 @@ A passed test shows the control worked at test time for that case; drift can und
 ### Exercises
 
 - **EX067 — Writing a test.** Write the test and expected result for "only HMI-C and HIST can reach PLC-R1". *Rubric:* 3 = test from a non-approved host plus approved host, expected outcomes, window; 2 = one side; 1 = vague; 0 = none.
-- **EX068 — Interpreting a before/after count.** Unapproved flows fell from 2 types to 0. Name one reason other than the controls. *Rubric:* 3 = observation window/capture placement changed or seasonal activity absent; 2 = vague; 1 = none; 0 = none.
+- **EX068 — Interpreting a before/after count.** Unapproved flows fell from 2 types to 0. Name one reason other than the controls. *Rubric:* 3 = observation window/capture placement changed or seasonal activity absent; 2 = vague; 1 = minimal attempt; 0 = none.
 - **EX069 — Reporting the failure.** Write the evaluation line for the camera rule failure. *Rubric:* 3 = test, result, cause, corrective action, retest date; 2 = three; 1 = "minor issue"; 0 = none.
 
 ### Synthesis
@@ -1706,7 +1706,7 @@ Bench testing cannot reproduce every device behaviour. Validation only covers wh
 
 - **EX079 — Ordering the steps.** Put in order: validate, apply new rules, back up current rules, monitor 24 h. *Rubric:* 3 = back up, apply, validate, monitor; 2 = one swap; 1 = random; 0 = none.
 - **EX080 — Why the HIST flow was missed.** Explain how the missing flow got past the matrix and how to prevent it next time. *Rubric:* 3 = observation window/historian polling not captured; confirm with owners and longer captures; 2 = one; 1 = blame; 0 = none.
-- **EX081 — A rollback criterion.** Write the rollback criterion for the GW-LOG check. *Rubric:* 3 = uploads failing for > 10 minutes after change → rollback; 2 = vague timing; 1 = none; 0 = none.
+- **EX081 — A rollback criterion.** Write the rollback criterion for the GW-LOG check. *Rubric:* 3 = uploads failing for > 10 minutes after change → rollback; 2 = vague timing; 1 = minimal attempt; 0 = none.
 
 ### Synthesis
 
@@ -1764,7 +1764,7 @@ Field placements vary; follow the host's rules even where they differ from this 
 
 - **EX082 — Pre-visit checklist.** List four things to have before entering NCS's machine room. *Rubric:* 3 = induction, PPE, escort/permission, alarm/muster knowledge; 2 = three; 1 = laptop; 0 = none.
 - **EX083 — Declining the reset politely.** Write what Priya says to the operator. *Rubric:* 3 = declines, explains role and evidence reason, offers help, calls right person; 2 = partial; 1 = refuses curtly; 0 = resets.
-- **EX084 — A reflection entry.** Write the "what I would do differently" line for that visit. *Rubric:* 3 = specific, actionable improvement; 2 = vague; 1 = none; 0 = none.
+- **EX084 — A reflection entry.** Write the "what I would do differently" line for that visit. *Rubric:* 3 = specific, actionable improvement; 2 = vague; 1 = minimal attempt; 0 = none.
 
 ### Synthesis
 
@@ -1820,7 +1820,7 @@ Combining checks multiplies the ways input files can be wrong; validate inputs f
 
 ### Exercises
 
-- **EX085 — Choosing exit statuses.** Which statuses should make the drift checker exit non-zero? *Rubric:* 3 = UNAPPROVED, EXPIRED, VERSION-CONFLICT, no-data (any problem); 2 = some; 1 = none; 0 = none.
+- **EX085 — Choosing exit statuses.** Which statuses should make the drift checker exit non-zero? *Rubric:* 3 = UNAPPROVED, EXPIRED, VERSION-CONFLICT, no-data (any problem); 2 = some; 1 = vague; 0 = none.
 - **EX086 — A test fixture.** Describe a fixture that tests the certificate check's boundary at 30 days. *Rubric:* 3 = cert exactly 30 days out expects renew-now, 31 expects plan; 2 = one; 1 = vague; 0 = none.
 - **EX087 — Why no auto-remediation?** Justify decision 5 in two sentences. *Rubric:* 3 = actions on OT need approval/context; automated mistakes could stop operations; 2 = one; 1 = vague; 0 = none.
 
@@ -1878,7 +1878,7 @@ Demonstrations on curated data can hide brittleness; include one messy input. Se
 
 ### Exercises
 
-- **EX088 — Scoring honesty.** What evidence would justify a 3 for honesty? *Rubric:* 3 = explicit limitations section with specific failure modes and untested areas; 2 = brief caveat; 1 = none; 0 = none.
+- **EX088 — Scoring honesty.** What evidence would justify a 3 for honesty? *Rubric:* 3 = explicit limitations section with specific failure modes and untested areas; 2 = brief caveat; 1 = vague; 0 = none.
 - **EX089 — The attacker question.** Draft an answer to "what would an attacker who knows about the checker do?" *Rubric:* 3 = act between weekly runs or poison baseline/inventory; mitigations; 2 = partial; 1 = denies; 0 = none.
 - **EX090 — The usability fix.** Write the "what to do" text for a VERSION-CONFLICT line. *Rubric:* 3 = plain steps: confirm on device with contractor, update inventory, check advisories; 2 = partial; 1 = jargon; 0 = none.
 

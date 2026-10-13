@@ -93,12 +93,12 @@ High agreement on a pilot set does not guarantee agreement on later tickets; re-
 ### Exercises
 
 - **EX001 — Research question.** State Yusuf's research question. *Rubric:* 3 = ring vs flat: time to patch and failures; 2 = partial; 1 = vague; 0 = none.
-- **EX002 — Primary outcomes.** Which primary outcomes were pre-registered? *Rubric:* 3 = 95th pct days to patch; failure rate; 2 = one; 1 = none; 0 = none.
+- **EX002 — Primary outcomes.** Which primary outcomes were pre-registered? *Rubric:* 3 = 95th pct days to patch; failure rate; 2 = one; 1 = vague; 0 = none.
 - **EX003 — Kappa values.** Report the lab's agreement figures. *Rubric:* 3 = 0.875, 0.296, 0.822; 2 = two; 1 = one; 0 = none.
-- **EX004 — Interpretation band.** How do Landis and Koch classify 0.822? *Rubric:* 3 = almost perfect; 2 = partial; 1 = none; 0 = none.
-- **EX005 — Codebook rule.** Which rule was added after disagreements? *Rubric:* 3 = app fails until reboot → reboot; 2 = partial; 1 = none; 0 = none.
-- **EX006 — Redaction.** How are staff and patient names protected? *Rubric:* 3 = redacted before leaving trust, approved process; 2 = partial; 1 = none; 0 = none.
-- **EX007 — Patch framing.** How does SP 800-40r4 frame patching? *Rubric:* 3 = preventive maintenance balancing speed and disruption; 2 = partial; 1 = none; 0 = none.
+- **EX004 — Interpretation band.** How do Landis and Koch classify 0.822? *Rubric:* 3 = almost perfect; 2 = partial; 1 = vague; 0 = none.
+- **EX005 — Codebook rule.** Which rule was added after disagreements? *Rubric:* 3 = app fails until reboot → reboot; 2 = partial; 1 = vague; 0 = none.
+- **EX006 — Redaction.** How are staff and patient names protected? *Rubric:* 3 = redacted before leaving trust, approved process; 2 = partial; 1 = vague; 0 = none.
+- **EX007 — Patch framing.** How does SP 800-40r4 frame patching? *Rubric:* 3 = preventive maintenance balancing speed and disruption; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -148,13 +148,13 @@ Citing famous hardware papers can make a deployment study sound more technical t
 
 ### Exercises
 
-- **EX008 — Li and Paxson.** What did Li and Paxson (2017) find about security patches? *Rubric:* 3 = smaller fixes; long-lived vulnerabilities; 2 = partial; 1 = none; 0 = none.
-- **EX009 — Nappa finding.** How does shared code affect patching per Nappa et al. (2015)? *Rubric:* 3 = copies stay unpatched; 2 = partial; 1 = none; 0 = none.
-- **EX010 — Operators.** What did Dietrich et al. (2018) find? *Rubric:* 3 = misconfigs under pressure, weak process; 2 = partial; 1 = none; 0 = none.
-- **EX011 — Hardware updates.** Why do hardware flaws matter for deployment? *Rubric:* 3 = fixes arrive as firmware/microcode/OS updates; 2 = partial; 1 = none; 0 = none.
+- **EX008 — Li and Paxson.** What did Li and Paxson (2017) find about security patches? *Rubric:* 3 = smaller fixes; long-lived vulnerabilities; 2 = partial; 1 = vague; 0 = none.
+- **EX009 — Nappa finding.** How does shared code affect patching per Nappa et al. (2015)? *Rubric:* 3 = copies stay unpatched; 2 = partial; 1 = vague; 0 = none.
+- **EX010 — Operators.** What did Dietrich et al. (2018) find? *Rubric:* 3 = misconfigs under pressure, weak process; 2 = partial; 1 = vague; 0 = none.
+- **EX011 — Hardware updates.** Why do hardware flaws matter for deployment? *Rubric:* 3 = fixes arrive as firmware/microcode/OS updates; 2 = partial; 1 = vague; 0 = none.
 - **EX012 — SP 800-193.** Name SP 800-193's three principles. *Rubric:* 3 = protect, detect, recover; 2 = two; 1 = one; 0 = none.
-- **EX013 — Gap.** What gap does the study address? *Rubric:* 3 = in-organisation strategy comparison with speed and breakage; 2 = partial; 1 = none; 0 = none.
-- **EX014 — Firmware category.** Why are firmware updates separated? *Rubric:* 3 = different failure modes; 2 = partial; 1 = none; 0 = none.
+- **EX013 — Gap.** What gap does the study address? *Rubric:* 3 = in-organisation strategy comparison with speed and breakage; 2 = partial; 1 = vague; 0 = none.
+- **EX014 — Firmware category.** Why are firmware updates separated? *Rubric:* 3 = different failure modes; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -212,12 +212,12 @@ Two sites give limited generalisation; the thesis must say so.
 
 ### Exercises
 
-- **EX015 — Hypotheses.** State H1 and H2. *Rubric:* 3 = ring reduces 95th pct days; ring reduces failures; 2 = one; 1 = none; 0 = none.
-- **EX016 — Design reason.** Why is the design quasi-experimental? *Rubric:* 3 = endpoints cannot be randomised individually; 2 = partial; 1 = none; 0 = none.
-- **EX017 — Ring sizes.** Give the ring sizes. *Rubric:* 3 = 40, 160, 800; 2 = partial; 1 = none; 0 = none.
-- **EX018 — Baseline data.** Why collect three months of baseline data? *Rubric:* 3 = measure site differences; 2 = partial; 1 = none; 0 = none.
+- **EX015 — Hypotheses.** State H1 and H2. *Rubric:* 3 = ring reduces 95th pct days; ring reduces failures; 2 = one; 1 = vague; 0 = none.
+- **EX016 — Design reason.** Why is the design quasi-experimental? *Rubric:* 3 = endpoints cannot be randomised individually; 2 = partial; 1 = vague; 0 = none.
+- **EX017 — Ring sizes.** Give the ring sizes. *Rubric:* 3 = 40, 160, 800; 2 = partial; 1 = vague; 0 = none.
+- **EX018 — Baseline data.** Why collect three months of baseline data? *Rubric:* 3 = measure site differences; 2 = partial; 1 = vague; 0 = none.
 - **EX019 — Contributions.** List the three contributions. *Rubric:* 3 = effects, codebook, dataset and code; 2 = two; 1 = one; 0 = none.
-- **EX020 — Ward randomisation.** Why not randomise wards? *Rubric:* 3 = site-level policies would mix treatments; 2 = partial; 1 = none; 0 = none.
+- **EX020 — Ward randomisation.** Why not randomise wards? *Rubric:* 3 = site-level policies would mix treatments; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -297,12 +297,12 @@ A pilot shows feasibility, not effect; do not report pilot timings as results.
 
 ### Exercises
 
-- **EX021 — Replication.** How close was the replication? *Rubric:* 3 = within one percentage point; 2 = partial; 1 = none; 0 = none.
+- **EX021 — Replication.** How close was the replication? *Rubric:* 3 = within one percentage point; 2 = partial; 1 = vague; 0 = none.
 - **EX022 — Pilot medians.** Give the pilot ring medians. *Rubric:* 3 = 2, 6, 11 days; 2 = two; 1 = one; 0 = none.
-- **EX023 — Missing reboots.** What caused missing reboot times and how was it fixed? *Rubric:* 3 = shutdowns; next boot as reboot; 2 = partial; 1 = none; 0 = none.
-- **EX024 — Ring 2 concern.** How was the ring 2 concern answered? *Rubric:* 3 = max 16 within 30-day policy; 2 = partial; 1 = none; 0 = none.
-- **EX025 — Config items.** Why store rings as configuration items? *Rubric:* 3 = changes recorded; 2 = partial; 1 = none; 0 = none.
-- **EX026 — Pilot limit.** What can a pilot not show? *Rubric:* 3 = effect; 2 = partial; 1 = none; 0 = none.
+- **EX023 — Missing reboots.** What caused missing reboot times and how was it fixed? *Rubric:* 3 = shutdowns; next boot as reboot; 2 = partial; 1 = vague; 0 = none.
+- **EX024 — Ring 2 concern.** How was the ring 2 concern answered? *Rubric:* 3 = max 16 within 30-day policy; 2 = partial; 1 = vague; 0 = none.
+- **EX025 — Config items.** Why store rings as configuration items? *Rubric:* 3 = changes recorded; 2 = partial; 1 = vague; 0 = none.
+- **EX026 — Pilot limit.** What can a pilot not show? *Rubric:* 3 = effect; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -399,11 +399,11 @@ Site-level designs cannot rule out unmeasured site differences.
 ### Exercises
 
 - **EX027 — Lab results.** Report the main figures for both sites. *Rubric:* 3 = ring 14.1/0.011; flat 20.7/0.028; 2 = two; 1 = one; 0 = none.
-- **EX028 — Confidence interval.** Give the failure-rate difference and CI. *Rubric:* 3 = 0.017 [0.005, 0.029]; 2 = partial; 1 = none; 0 = none.
-- **EX029 — Baseline adjustment.** How was the baseline difference handled? *Rubric:* 3 = report raw and adjusted; 2 = partial; 1 = none; 0 = none.
-- **EX030 — Validation.** How was validation done? *Rubric:* 3 = second analyst from plan and data; 2 = partial; 1 = none; 0 = none.
-- **EX031 — Practical meaning.** How did Yusuf express the lower bound practically? *Rubric:* 3 = ~60 fewer failures a year; 2 = partial; 1 = none; 0 = none.
-- **EX032 — Remaining threat.** Which threat remains? *Rubric:* 3 = unmeasured site differences; 2 = partial; 1 = none; 0 = none.
+- **EX028 — Confidence interval.** Give the failure-rate difference and CI. *Rubric:* 3 = 0.017 [0.005, 0.029]; 2 = partial; 1 = vague; 0 = none.
+- **EX029 — Baseline adjustment.** How was the baseline difference handled? *Rubric:* 3 = report raw and adjusted; 2 = partial; 1 = vague; 0 = none.
+- **EX030 — Validation.** How was validation done? *Rubric:* 3 = second analyst from plan and data; 2 = partial; 1 = vague; 0 = none.
+- **EX031 — Practical meaning.** How did Yusuf express the lower bound practically? *Rubric:* 3 = ~60 fewer failures a year; 2 = partial; 1 = vague; 0 = none.
+- **EX032 — Remaining threat.** Which threat remains? *Rubric:* 3 = unmeasured site differences; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -467,12 +467,12 @@ Defensive replies to critique weaken a thesis; evidence-based revisions strength
 
 ### Exercises
 
-- **EX033 — Hawthorne.** What was the Hawthorne critique? *Rubric:* 3 = ring IT team worked harder knowing they were studied; 2 = partial; 1 = none; 0 = none.
-- **EX034 — Staffing check.** What evidence addressed it? *Rubric:* 3 = staffing and overtime records equal; 2 = partial; 1 = none; 0 = none.
-- **EX035 — Claim change.** How was the claim softened? *Rubric:* 3 = consistent with; 2 = partial; 1 = none; 0 = none.
-- **EX036 — Recoding.** How was failure coding re-checked? *Rubric:* 3 = new coder on 20% sample; 2 = partial; 1 = none; 0 = none.
+- **EX033 — Hawthorne.** What was the Hawthorne critique? *Rubric:* 3 = ring IT team worked harder knowing they were studied; 2 = partial; 1 = vague; 0 = none.
+- **EX034 — Staffing check.** What evidence addressed it? *Rubric:* 3 = staffing and overtime records equal; 2 = partial; 1 = vague; 0 = none.
+- **EX035 — Claim change.** How was the claim softened? *Rubric:* 3 = consistent with; 2 = partial; 1 = vague; 0 = none.
+- **EX036 — Recoding.** How was failure coding re-checked? *Rubric:* 3 = new coder on 20% sample; 2 = partial; 1 = vague; 0 = none.
 - **EX037 — Limitations.** Which limitations were added? *Rubric:* 3 = two sites, one sector, synthetic-structure data; 2 = two; 1 = one; 0 = none.
-- **EX038 — Advice.** What did Prof. Solberg advise? *Rubric:* 3 = accept openly; 2 = partial; 1 = none; 0 = none.
+- **EX038 — Advice.** What did Prof. Solberg advise? *Rubric:* 3 = accept openly; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -560,12 +560,12 @@ Archives fail silently when files change; digests make change visible.
 
 ### Exercises
 
-- **EX039 — Thesis claim.** Summarise the thesis claim. *Rubric:* 3 = staged deployment associated with faster, fewer failures at one trust; 2 = partial; 1 = none; 0 = none.
+- **EX039 — Thesis claim.** Summarise the thesis claim. *Rubric:* 3 = staged deployment associated with faster, fewer failures at one trust; 2 = partial; 1 = vague; 0 = none.
 - **EX040 — Archive parts.** List archive contents. *Rubric:* 3 = data, code, codebook, pre-registration, readme; 2 = four; 1 = two; 0 = none.
-- **EX041 — Manifest total.** How many files and bytes in the lab manifest? *Rubric:* 3 = 4 files, 101 bytes; 2 = partial; 1 = none; 0 = none.
-- **EX042 — Digest use.** What do digests allow? *Rubric:* 3 = confirm files unchanged; 2 = partial; 1 = none; 0 = none.
-- **EX043 — Mismatch cause.** What caused the archivist's mismatch? *Rubric:* 3 = line-ending change; 2 = partial; 1 = none; 0 = none.
-- **EX044 — Real text.** Why does real ticket text not enter the archive? *Rubric:* 3 = privacy; synthetic-structure data instead; 2 = partial; 1 = none; 0 = none.
+- **EX041 — Manifest total.** How many files and bytes in the lab manifest? *Rubric:* 3 = 4 files, 101 bytes; 2 = partial; 1 = vague; 0 = none.
+- **EX042 — Digest use.** What do digests allow? *Rubric:* 3 = confirm files unchanged; 2 = partial; 1 = vague; 0 = none.
+- **EX043 — Mismatch cause.** What caused the archivist's mismatch? *Rubric:* 3 = line-ending change; 2 = partial; 1 = vague; 0 = none.
+- **EX044 — Real text.** Why does real ticket text not enter the archive? *Rubric:* 3 = privacy; synthetic-structure data instead; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -640,11 +640,11 @@ Overstating impact in a defense invites hard questions; stay with evidence.
 ### Exercises
 
 - **EX045 — Questions asked.** Which topics did examiners raise? *Rubric:* 3 = generalisation, firmware, cost; 2 = two; 1 = one; 0 = none.
-- **EX046 — Firmware finding.** What did firmware updates show? *Rubric:* 3 = higher failure in both arms; 2 = partial; 1 = none; 0 = none.
+- **EX046 — Firmware finding.** What did firmware updates show? *Rubric:* 3 = higher failure in both arms; 2 = partial; 1 = vague; 0 = none.
 - **EX047 — Outputs.** What publications are planned? *Rubric:* 3 = journal paper, practitioner report, archive; 2 = two; 1 = one; 0 = none.
-- **EX048 — Trust change.** What did Harrowgate change? *Rubric:* 3 = kept rings, added firmware recovery checks; 2 = partial; 1 = none; 0 = none.
-- **EX049 — Future study.** What future design did Yusuf propose? *Rubric:* 3 = multi-trust randomised start dates; 2 = partial; 1 = none; 0 = none.
-- **EX050 — Clinical ethics.** What ethical boundary was kept? *Rubric:* 3 = no clinical change solely for research; 2 = partial; 1 = none; 0 = none.
+- **EX048 — Trust change.** What did Harrowgate change? *Rubric:* 3 = kept rings, added firmware recovery checks; 2 = partial; 1 = vague; 0 = none.
+- **EX049 — Future study.** What future design did Yusuf propose? *Rubric:* 3 = multi-trust randomised start dates; 2 = partial; 1 = vague; 0 = none.
+- **EX050 — Clinical ethics.** What ethical boundary was kept? *Rubric:* 3 = no clinical change solely for research; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 

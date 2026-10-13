@@ -93,7 +93,7 @@ Spending the first week comparing paid products delays free steps that remove mo
 - **EX010 — Password guidance.** What does NIST SP 800-63B recommend for passwords? *Rubric:* 3 = long and checked against leaked lists;; 2 = long;; 1 = symbols;; 0 = none.
 - **EX011 — Passkey benefit.** Why do passkeys resist fake sign-in pages? *Rubric:* 3 = only work on the genuine site;; 2 = genuine site;; 1 = longer;; 0 = none.
 - **EX012 — Week three.** What happens in week three? *Rubric:* 3 = list accounts, users and second steps;; 2 = listing;; 1 = report;; 0 = none.
-- **EX013 — Plan benefit.** How does the plan help Rosa? *Rubric:* 3 = she knows what to expect and when;; 2 = clarity;; 1 = none;; 0 = none.
+- **EX013 — Plan benefit.** How does the plan help Rosa? *Rubric:* 3 = she knows what to expect and when;; 2 = clarity;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -147,7 +147,7 @@ Collecting staff passwords to "check" them exposes them and breaks trust.
 
 ### Exercises
 
-- **EX014 — Rosa's changes.** Which changes must Rosa make herself? *Rubric:* 3 = anything involving payments;; 2 = payments;; 1 = none;; 0 = none.
+- **EX014 — Rosa's changes.** Which changes must Rosa make herself? *Rubric:* 3 = anything involving payments;; 2 = payments;; 1 = vague;; 0 = none.
 - **EX015 — Permission value.** Why does permission protect Mia? *Rubric:* 3 = she can show she acted as asked;; 2 = proof;; 1 = nothing;; 0 = none.
 - **EX016 — Password rule.** What must Mia never ask staff? *Rubric:* 3 = to tell her their passwords;; 2 = passwords;; 1 = names;; 0 = none.
 - **EX017 — Manager meaning.** What is a password manager? *Rubric:* 3 = an app that stores passwords securely;; 2 = app;; 1 = notebook;; 0 = none.
@@ -360,11 +360,11 @@ Turning on second steps for everyone in the middle of a busy day without checkin
 - **EX040 — Mailbox fix.** How was the shared orders mailbox fixed? *Rubric:* 3 = personal sign-ins with access to the shared mailbox;; 2 = personal;; 1 = new password;; 0 = none.
 - **EX041 — Staff role.** What can the shop staff role do? *Rubric:* 3 = view and pack orders, not change prices;; 2 = view;; 1 = everything;; 0 = none.
 - **EX042 — Till note fate.** What happened to the till password note? *Rubric:* 3 = shredded after old passwords stopped working;; 2 = shredded;; 1 = kept;; 0 = none.
-- **EX043 — Former staff found.** How many former staff still had access? *Rubric:* 3 = three;; 2 = 3;; 1 = none;; 0 = none.
+- **EX043 — Former staff found.** How many former staff still had access? *Rubric:* 3 = three;; 2 = 3;; 1 = vague;; 0 = none.
 - **EX044 — Score change.** How did the checklist score change? *Rubric:* 3 = 2 to 7 of 8;; 2 = improved;; 1 = fell;; 0 = none.
 - **EX045 — Remaining item.** Which item remains? *Rubric:* 3 = recovery details up to date;; 2 = recovery;; 1 = MFA;; 0 = none.
-- **EX046 — Recovery risk.** Why do wrong recovery details matter? *Rubric:* 3 = could let someone else reset or lock Rosa out;; 2 = reset;; 1 = none;; 0 = none.
-- **EX047 — Report habits.** Name one habit in the report. *Rubric:* 3 = check the account list every three months;; 2 = add/remove promptly;; 1 = none;; 0 = none.
+- **EX046 — Recovery risk.** Why do wrong recovery details matter? *Rubric:* 3 = could let someone else reset or lock Rosa out;; 2 = reset;; 1 = vague;; 0 = none.
+- **EX047 — Report habits.** Name one habit in the report. *Rubric:* 3 = check the account list every three months;; 2 = add/remove promptly;; 1 = vague;; 0 = none.
 - **EX048 — Next account.** Which account is next to secure? *Rubric:* 3 = supplier portal;; 2 = supplier;; 1 = email;; 0 = none.
 - **EX049 — Report storage.** Where does Rosa keep the report? *Rubric:* 3 = in the password manager with the account list;; 2 = manager;; 1 = desk;; 0 = none.
 - **EX050 — Checking sign-in.** Why check each sign-in before moving on? *Rubric:* 3 = so nobody is locked out on a busy day;; 2 = lockout;; 1 = speed;; 0 = none.

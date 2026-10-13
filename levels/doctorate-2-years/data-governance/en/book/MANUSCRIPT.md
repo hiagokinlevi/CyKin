@@ -69,12 +69,12 @@ A synthetic replica cannot reproduce every quirk of real records; state this lim
 
 ### Exercises
 
-- **EX001 — Research question.** What is Nadia's doctoral question? *Rubric:* 3 = how governance decisions change published statistics;; 2 = mentions decisions;; 1 = none;; 0 = none.
-- **EX002 — Decision rights.** How do Khatri and Brown frame governance? *Rubric:* 3 = deciding who holds decision rights over data;; 2 = mentions rights;; 1 = none;; 0 = none.
+- **EX001 — Research question.** What is Nadia's doctoral question? *Rubric:* 3 = how governance decisions change published statistics;; 2 = mentions decisions;; 1 = vague;; 0 = none.
+- **EX002 — Decision rights.** How do Khatri and Brown frame governance? *Rubric:* 3 = deciding who holds decision rights over data;; 2 = mentions rights;; 1 = vague;; 0 = none.
 - **EX003 — Replica rule.** What data may Nadia analyse? *Rubric:* 3 = a synthetic replica from published distributions;; 2 = correct;; 1 = real;; 0 = none.
-- **EX004 — Traceability.** How must every figure be traceable? *Rubric:* 3 = to a script run under version control;; 2 = mentions scripts;; 1 = none;; 0 = none.
-- **EX005 — Pre-registration.** Why pre-register hypotheses? *Rubric:* 3 = to avoid reshaping them after results;; 2 = mentions bias;; 1 = none;; 0 = none.
-- **EX006 — Two hypotheses.** State one pre-registered hypothesis. *Rubric:* 3 = unclear rights cause inconsistent thresholds; thresholds shift counts;; 2 = one;; 1 = none;; 0 = none.
+- **EX004 — Traceability.** How must every figure be traceable? *Rubric:* 3 = to a script run under version control;; 2 = mentions scripts;; 1 = vague;; 0 = none.
+- **EX005 — Pre-registration.** Why pre-register hypotheses? *Rubric:* 3 = to avoid reshaping them after results;; 2 = mentions bias;; 1 = vague;; 0 = none.
+- **EX006 — Two hypotheses.** State one pre-registered hypothesis. *Rubric:* 3 = unclear rights cause inconsistent thresholds; thresholds shift counts;; 2 = one;; 1 = vague;; 0 = none.
 - **EX007 — ISO model.** Where does ISO/IEC 38505-1 place accountability? *Rubric:* 3 = with the governing body;; 2 = correct;; 1 = managers;; 0 = none.
 
 <a id="ch-02"></a>
@@ -144,11 +144,11 @@ Dimension scores depend on rule definitions; publish the rules with the scores.
 
 - **EX008 — Beyond accuracy.** What did Wang and Strong add to accuracy? *Rubric:* 3 = timeliness, relevance, accessibility, interpretability;; 2 = two;; 1 = one;; 0 = none.
 - **EX009 — Completeness.** What completeness score did the lab report? *Rubric:* 3 = 0.798;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX010 — Lowest cause.** Why is completeness lowest? *Rubric:* 3 = missing sector codes or postcodes;; 2 = mentions missing;; 1 = none;; 0 = none.
-- **EX011 — Uniqueness cause.** Why is uniqueness below one? *Rubric:* 3 = duplicated registration numbers;; 2 = correct;; 1 = none;; 0 = none.
-- **EX012 — Score change.** Why did completeness rise without any record changing? *Rubric:* 3 = the rule for blank sectors changed;; 2 = mentions rule;; 1 = none;; 0 = none.
-- **EX013 — ISO 8000 role.** What does ISO 8000-8 provide? *Rubric:* 3 = concepts and prerequisites for measuring data quality;; 2 = mentions measuring;; 1 = none;; 0 = none.
-- **EX014 — Research gap.** What gap does Nadia address? *Rubric:* 3 = how rule decisions are made and shift published figures;; 2 = mentions decisions;; 1 = none;; 0 = none.
+- **EX010 — Lowest cause.** Why is completeness lowest? *Rubric:* 3 = missing sector codes or postcodes;; 2 = mentions missing;; 1 = vague;; 0 = none.
+- **EX011 — Uniqueness cause.** Why is uniqueness below one? *Rubric:* 3 = duplicated registration numbers;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX012 — Score change.** Why did completeness rise without any record changing? *Rubric:* 3 = the rule for blank sectors changed;; 2 = mentions rule;; 1 = vague;; 0 = none.
+- **EX013 — ISO 8000 role.** What does ISO 8000-8 provide? *Rubric:* 3 = concepts and prerequisites for measuring data quality;; 2 = mentions measuring;; 1 = vague;; 0 = none.
+- **EX014 — Research gap.** What gap does Nadia address? *Rubric:* 3 = how rule decisions are made and shift published figures;; 2 = mentions decisions;; 1 = vague;; 0 = none.
 
 <a id="ch-03"></a>
 
@@ -186,12 +186,12 @@ Proposals that promise too much fail at validation; narrow scope early.
 
 ### Exercises
 
-- **EX015 — Three claims.** State one of Nadia's claims. *Rubric:* 3 = decision rights matrix; decisions change counts; documentation reduces variation;; 2 = one;; 1 = none;; 0 = none.
+- **EX015 — Three claims.** State one of Nadia's claims. *Rubric:* 3 = decision rights matrix; decisions change counts; documentation reduces variation;; 2 = one;; 1 = vague;; 0 = none.
 - **EX016 — Precision.** Define precision in linkage. *Rubric:* 3 = share of linked pairs that are true matches;; 2 = correct;; 1 = wrong;; 0 = none.
 - **EX017 — Recall.** Define recall in linkage. *Rubric:* 3 = share of true matches that are linked;; 2 = correct;; 1 = wrong;; 0 = none.
 - **EX018 — Coding decisions.** How is each governance decision coded? *Rubric:* 3 = who made it, documented, reviewed;; 2 = most;; 1 = one;; 0 = none.
 - **EX019 — Review clause.** What may Westmark review before publication? *Rubric:* 3 = factual accuracy only;; 2 = correct;; 1 = content;; 0 = none.
-- **EX020 — Narrowing.** How did Prof. Eriksen narrow the plan? *Rubric:* 3 = release comparison limited to two indicators;; 2 = correct;; 1 = none;; 0 = none.
+- **EX020 — Narrowing.** How did Prof. Eriksen narrow the plan? *Rubric:* 3 = release comparison limited to two indicators;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-04"></a>
 
@@ -257,10 +257,10 @@ Assuming field independence, as this pilot does, can distort weights; test it la
 
 - **EX021 — Weight formula.** What does agreement on a field add to the weight? *Rubric:* 3 = log of m over u;; 2 = correct;; 1 = wrong;; 0 = none.
 - **EX022 — Threshold 4.** What precision and recall occur at threshold 4? *Rubric:* 3 = 0.953 and 0.920;; 2 = both;; 1 = one;; 0 = none.
-- **EX023 — Higher threshold.** What happens when the threshold rises to 8? *Rubric:* 3 = fewer false matches, more missed true ones;; 2 = mentions trade-off;; 1 = none;; 0 = none.
+- **EX023 — Higher threshold.** What happens when the threshold rises to 8? *Rubric:* 3 = fewer false matches, more missed true ones;; 2 = mentions trade-off;; 1 = vague;; 0 = none.
 - **EX024 — Unclear owner.** Who owns the threshold at Westmark? *Rubric:* 3 = unclear; teams point to each other;; 2 = mentions unclear;; 1 = names one;; 0 = none.
-- **EX025 — Stale estimates.** What else had never been updated? *Rubric:* 3 = m and u estimates;; 2 = correct;; 1 = none;; 0 = none.
-- **EX026 — Log update.** What did Nadia do before adding the new variable? *Rubric:* 3 = updated her pre-registration log;; 2 = correct;; 1 = none;; 0 = none.
+- **EX025 — Stale estimates.** What else had never been updated? *Rubric:* 3 = m and u estimates;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX026 — Log update.** What did Nadia do before adding the new variable? *Rubric:* 3 = updated her pre-registration log;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-05"></a>
 
@@ -300,10 +300,10 @@ Plausible ranges come from interviews; other organisations may use wider ranges.
 
 - **EX027 — Three decisions.** Name the three decisions varied. *Rubric:* 3 = threshold, m and u re-estimation, sector imputation;; 2 = all;; 1 = one;; 0 = none.
 - **EX028 — Largest effect.** Which decision had the largest effect? *Rubric:* 3 = the linkage threshold;; 2 = correct;; 1 = other;; 0 = none.
-- **EX029 — Low threshold.** What happens to counts at low thresholds? *Rubric:* 3 = false links inflate counts;; 2 = correct;; 1 = none;; 0 = none.
-- **EX030 — Validation method.** How was validation independent? *Rubric:* 3 = another researcher reimplemented from the description with a new seed;; 2 = mentions reimplementation;; 1 = none;; 0 = none.
-- **EX031 — Discrepancy.** What caused the validation discrepancy? *Rubric:* 3 = undocumented tie handling at the threshold;; 2 = correct;; 1 = none;; 0 = none.
-- **EX032 — Attention.** What has governance attention followed at Westmark? *Rubric:* 3 = visibility rather than impact;; 2 = correct;; 1 = none;; 0 = none.
+- **EX029 — Low threshold.** What happens to counts at low thresholds? *Rubric:* 3 = false links inflate counts;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX030 — Validation method.** How was validation independent? *Rubric:* 3 = another researcher reimplemented from the description with a new seed;; 2 = mentions reimplementation;; 1 = vague;; 0 = none.
+- **EX031 — Discrepancy.** What caused the validation discrepancy? *Rubric:* 3 = undocumented tie handling at the threshold;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX032 — Attention.** What has governance attention followed at Westmark? *Rubric:* 3 = visibility rather than impact;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-06"></a>
 
@@ -341,12 +341,12 @@ Sensitivity analyses test chosen alternatives only; others may matter.
 
 ### Exercises
 
-- **EX033 — Name critique.** What critique concerned names? *Rubric:* 3 = replica may understate name variation;; 2 = correct;; 1 = none;; 0 = none.
-- **EX034 — Sensitivity change.** How did Nadia test name variation? *Rubric:* 3 = lowered m for names from 0.95 to 0.85;; 2 = correct;; 1 = none;; 0 = none.
+- **EX033 — Name critique.** What critique concerned names? *Rubric:* 3 = replica may understate name variation;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX034 — Sensitivity change.** How did Nadia test name variation? *Rubric:* 3 = lowered m for names from 0.95 to 0.85;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX035 — Robust result.** What stayed the same in the sensitivity analysis? *Rubric:* 3 = the ranking of decisions by effect;; 2 = correct;; 1 = sizes;; 0 = none.
 - **EX036 — Triangulation.** What did documents show about threshold reviews? *Rubric:* 3 = none since the original choice; a proposal never scheduled;; 2 = both;; 1 = one;; 0 = none.
 - **EX037 — Structural wording.** How did Nadia revise her wording on ownership? *Rubric:* 3 = a structural gap, not personal failure;; 2 = correct;; 1 = blame;; 0 = none.
-- **EX038 — Follow-up design.** What follow-up did Nadia propose? *Rubric:* 3 = four documented releases against a comparison series;; 2 = mentions comparison;; 1 = none;; 0 = none.
+- **EX038 — Follow-up design.** What follow-up did Nadia propose? *Rubric:* 3 = four documented releases against a comparison series;; 2 = mentions comparison;; 1 = vague;; 0 = none.
 
 <a id="ch-07"></a>
 
@@ -413,12 +413,12 @@ A checklist simplifies FAIR principles; some items need judgement, not ticks.
 
 ### Exercises
 
-- **EX039 — Thesis claim.** What is the core thesis claim? *Rubric:* 3 = governance decisions shape statistics; influential ones get least attention;; 2 = mentions attention;; 1 = none;; 0 = none.
+- **EX039 — Thesis claim.** What is the core thesis claim? *Rubric:* 3 = governance decisions shape statistics; influential ones get least attention;; 2 = mentions attention;; 1 = vague;; 0 = none.
 - **EX040 — FAIR letters.** What do the FAIR letters stand for? *Rubric:* 3 = findable, accessible, interoperable, reusable;; 2 = all;; 1 = two;; 0 = none.
 - **EX041 — Linked record.** What score did the linked employment record get? *Rubric:* 3 = 4 of 8;; 2 = correct;; 1 = wrong;; 0 = none.
 - **EX042 — Mean score.** What was the mean checklist score? *Rubric:* 3 = 0.53;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX043 — Excluded content.** What does Nadia exclude from the archive? *Rubric:* 3 = confidential Westmark material;; 2 = correct;; 1 = none;; 0 = none.
-- **EX044 — Archive test.** How did Prof. Eriksen test the archive? *Rubric:* 3 = a new student regenerated two figures;; 2 = correct;; 1 = none;; 0 = none.
+- **EX043 — Excluded content.** What does Nadia exclude from the archive? *Rubric:* 3 = confidential Westmark material;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX044 — Archive test.** How did Prof. Eriksen test the archive? *Rubric:* 3 = a new student regenerated two figures;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-08"></a>
 
@@ -456,12 +456,12 @@ Publication timelines slip; prioritise the paper that most affects practice.
 
 ### Exercises
 
-- **EX045 — Precision question.** Why not just maximise precision? *Rubric:* 3 = recall falls and some regions are undercounted;; 2 = mentions recall;; 1 = none;; 0 = none.
+- **EX045 — Precision question.** Why not just maximise precision? *Rubric:* 3 = recall falls and some regions are undercounted;; 2 = mentions recall;; 1 = vague;; 0 = none.
 - **EX046 — Governance choice.** What kind of decision is choosing tolerable error? *Rubric:* 3 = a governance decision;; 2 = correct;; 1 = technical;; 0 = none.
-- **EX047 — Defense result.** What was the defense outcome? *Rubric:* 3 = pass with minor corrections;; 2 = correct;; 1 = none;; 0 = none.
+- **EX047 — Defense result.** What was the defense outcome? *Rubric:* 3 = pass with minor corrections;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX048 — Papers.** How many papers does Nadia plan? *Rubric:* 3 = three;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX049 — Board decisions.** Which recommendation did the board pilot rather than adopt? *Rubric:* 3 = publishing precision and recall estimates;; 2 = correct;; 1 = none;; 0 = none.
-- **EX050 — Checkable advice.** Why are checkable recommendations valuable? *Rubric:* 3 = next release shows adoption;; 2 = mentions verification;; 1 = none;; 0 = none.
+- **EX049 — Board decisions.** Which recommendation did the board pilot rather than adopt? *Rubric:* 3 = publishing precision and recall estimates;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX050 — Checkable advice.** Why are checkable recommendations valuable? *Rubric:* 3 = next release shows adoption;; 2 = mentions verification;; 1 = vague;; 0 = none.
 
 <a id="worked-results"></a>
 

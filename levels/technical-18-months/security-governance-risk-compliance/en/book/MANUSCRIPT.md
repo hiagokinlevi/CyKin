@@ -65,10 +65,10 @@ Maps omit informal tools. Owners may not accept responsibility.
 
 ### Exercises
 
-- **EX001 — Shared component.** Which component supports both the shop and branches? *Rubric:* 3 = the stock database;; 2 = stock database;; 1 = none;; 0 = none.
-- **EX002 — Unowned items.** Which two components had no owner? *Rubric:* 3 = route planning service and branch Wi-Fi;; 2 = two;; 1 = none;; 0 = none.
-- **EX003 — Why owners.** Why assign owners early? *Rubric:* 3 = unowned components are where problems go unnoticed;; 2 = visibility;; 1 = none;; 0 = none.
-- **EX004 — Service list.** Name three Fenwick services. *Rubric:* 3 = in-branch sales, online shop, deliveries;; 2 = services;; 1 = none;; 0 = none.
+- **EX001 — Shared component.** Which component supports both the shop and branches? *Rubric:* 3 = the stock database;; 2 = stock database;; 1 = vague;; 0 = none.
+- **EX002 — Unowned items.** Which two components had no owner? *Rubric:* 3 = route planning service and branch Wi-Fi;; 2 = two;; 1 = vague;; 0 = none.
+- **EX003 — Why owners.** Why assign owners early? *Rubric:* 3 = unowned components are where problems go unnoticed;; 2 = visibility;; 1 = vague;; 0 = none.
+- **EX004 — Service list.** Name three Fenwick services. *Rubric:* 3 = in-branch sales, online shop, deliveries;; 2 = services;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -110,10 +110,10 @@ Diagrams drift. Change forms get skipped in emergencies.
 
 ### Exercises
 
-- **EX005 — Unsegmented branch.** What problem did the second branch have? *Rubric:* 3 = everything on one switch without segments;; 2 = flat network;; 1 = none;; 0 = none.
+- **EX005 — Unsegmented branch.** What problem did the second branch have? *Rubric:* 3 = everything on one switch without segments;; 2 = flat network;; 1 = vague;; 0 = none.
 - **EX006 — Payment connections.** Which connections does the payment segment need? *Rubric:* 3 = payment gateway and IT management;; 2 = two;; 1 = internet;; 0 = none.
-- **EX007 — Change record.** What should a change record capture? *Rubric:* 3 = what, why, who approved and when;; 2 = four;; 1 = none;; 0 = none.
-- **EX008 — Scope reduction.** How does segmentation help with PCI DSS? *Rubric:* 3 = reduces systems in scope;; 2 = scope;; 1 = none;; 0 = none.
+- **EX007 — Change record.** What should a change record capture? *Rubric:* 3 = what, why, who approved and when;; 2 = four;; 1 = vague;; 0 = none.
+- **EX008 — Scope reduction.** How does segmentation help with PCI DSS? *Rubric:* 3 = reduces systems in scope;; 2 = scope;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -155,10 +155,10 @@ Removing rights can break software. Card sign-in needs hardware.
 
 ### Exercises
 
-- **EX009 — Shared till problem.** Why is a shared till login a problem? *Rubric:* 3 = cannot trace who processed a refund;; 2 = accountability;; 1 = none;; 0 = none.
-- **EX010 — Admin rights risk.** Why remove local administrator rights? *Rubric:* 3 = malware could install itself with full control;; 2 = malware;; 1 = none;; 0 = none.
-- **EX011 — Separate admin.** Why use separate administrator accounts? *Rubric:* 3 = compromise of an everyday account should not give admin rights;; 2 = separation;; 1 = none;; 0 = none.
-- **EX012 — Testing first.** Why test removal of rights on three computers first? *Rubric:* 3 = to find software that breaks;; 2 = pilot;; 1 = none;; 0 = none.
+- **EX009 — Shared till problem.** Why is a shared till login a problem? *Rubric:* 3 = cannot trace who processed a refund;; 2 = accountability;; 1 = vague;; 0 = none.
+- **EX010 — Admin rights risk.** Why remove local administrator rights? *Rubric:* 3 = malware could install itself with full control;; 2 = malware;; 1 = vague;; 0 = none.
+- **EX011 — Separate admin.** Why use separate administrator accounts? *Rubric:* 3 = compromise of an everyday account should not give admin rights;; 2 = separation;; 1 = vague;; 0 = none.
+- **EX012 — Testing first.** Why test removal of rights on three computers first? *Rubric:* 3 = to find software that breaks;; 2 = pilot;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -229,10 +229,10 @@ Exports may be out of date. Baselines need review.
 
 ### Exercises
 
-- **EX013 — JSON benefit.** Why are JSON exports useful for checks? *Rubric:* 3 = named fields are easy to read in scripts;; 2 = structure;; 1 = none;; 0 = none.
+- **EX013 — JSON benefit.** Why are JSON exports useful for checks? *Rubric:* 3 = named fields are easy to read in scripts;; 2 = structure;; 1 = vague;; 0 = none.
 - **EX014 — Compliant laptop.** Which laptop met the baseline? *Rubric:* 3 = FW-LT01;; 2 = LT01;; 1 = LT03;; 0 = none.
-- **EX015 — Two deviations.** Which laptop had two deviations? *Rubric:* 3 = FW-LT03, 30-minute lock and local admin;; 2 = LT03;; 1 = none;; 0 = none.
-- **EX016 — Stricter setting.** Why is FW-LT04's five-minute lock acceptable? *Rubric:* 3 = it is stricter than the ten-minute baseline;; 2 = stricter;; 1 = none;; 0 = none.
+- **EX015 — Two deviations.** Which laptop had two deviations? *Rubric:* 3 = FW-LT03, 30-minute lock and local admin;; 2 = LT03;; 1 = vague;; 0 = none.
+- **EX016 — Stricter setting.** Why is FW-LT04's five-minute lock acceptable? *Rubric:* 3 = it is stricter than the ten-minute baseline;; 2 = stricter;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -274,10 +274,10 @@ Scopes can be unclear. Evidence folders need access control.
 
 ### Exercises
 
-- **EX017 — Excluded activity.** Which activity was outside Amina's scope? *Rubric:* 3 = vulnerability testing of live systems;; 2 = testing;; 1 = none;; 0 = none.
-- **EX018 — Evidence record.** What should an evidence record include? *Rubric:* 3 = what, when, who, how and original output;; 2 = record;; 1 = none;; 0 = none.
+- **EX017 — Excluded activity.** Which activity was outside Amina's scope? *Rubric:* 3 = vulnerability testing of live systems;; 2 = testing;; 1 = vague;; 0 = none.
+- **EX018 — Evidence record.** What should an evidence record include? *Rubric:* 3 = what, when, who, how and original output;; 2 = record;; 1 = vague;; 0 = none.
 - **EX019 — Out-of-scope response.** What should you do on spotting something outside scope? *Rubric:* 3 = report it with existing evidence;; 2 = report;; 1 = test it;; 0 = none.
-- **EX020 — Unchangeable storage.** Why store evidence where it cannot be changed? *Rubric:* 3 = so others can trust it shows exactly what was seen;; 2 = integrity;; 1 = none;; 0 = none.
+- **EX020 — Unchangeable storage.** Why store evidence where it cannot be changed? *Rubric:* 3 = so others can trust it shows exactly what was seen;; 2 = integrity;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -319,10 +319,10 @@ Tables simplify complex links. Roles change.
 
 ### Exercises
 
-- **EX021 — Baseline purpose.** Why is a baseline check not busywork? *Rubric:* 3 = it supports a policy, reduces a risk and produces evidence;; 2 = purpose;; 1 = none;; 0 = none.
+- **EX021 — Baseline purpose.** Why is a baseline check not busywork? *Rubric:* 3 = it supports a policy, reduces a risk and produces evidence;; 2 = purpose;; 1 = vague;; 0 = none.
 - **EX022 — Accountable person.** Who is accountable for security at Fenwick? *Rubric:* 3 = the finance director;; 2 = finance director;; 1 = IT lead;; 0 = none.
-- **EX023 — Firewall links.** Which policy and obligation do firewall reviews support? *Rubric:* 3 = network policy and card payment obligations;; 2 = links;; 1 = none;; 0 = none.
-- **EX024 — Table use.** How does the task table help technicians? *Rubric:* 3 = prioritise when time is short;; 2 = priorities;; 1 = none;; 0 = none.
+- **EX023 — Firewall links.** Which policy and obligation do firewall reviews support? *Rubric:* 3 = network policy and card payment obligations;; 2 = links;; 1 = vague;; 0 = none.
+- **EX024 — Table use.** How does the task table help technicians? *Rubric:* 3 = prioritise when time is short;; 2 = priorities;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -395,10 +395,10 @@ Simple thresholds miss slow attacks. Logs can be incomplete.
 
 ### Exercises
 
-- **EX025 — Log retention.** Why must log retention be planned? *Rubric:* 3 = policy and card rules often require it;; 2 = requirements;; 1 = none;; 0 = none.
+- **EX025 — Log retention.** Why must log retention be planned? *Rubric:* 3 = policy and card rules often require it;; 2 = requirements;; 1 = vague;; 0 = none.
 - **EX026 — Flagged account.** Which account was flagged and why? *Rubric:* 3 = admin, 7 failures above 5;; 2 = admin;; 1 = j.park;; 0 = none.
-- **EX027 — j.park reading.** How did Amina interpret j.park's failures? *Rubric:* 3 = likely a mistyped password, followed by success;; 2 = typo;; 1 = none;; 0 = none.
-- **EX028 — Response actions.** What actions followed the alert? *Rubric:* 3 = block the address and rename the admin account;; 2 = two;; 1 = none;; 0 = none.
+- **EX027 — j.park reading.** How did Amina interpret j.park's failures? *Rubric:* 3 = likely a mistyped password, followed by success;; 2 = typo;; 1 = vague;; 0 = none.
+- **EX028 — Response actions.** What actions followed the alert? *Rubric:* 3 = block the address and rename the admin account;; 2 = two;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -440,10 +440,10 @@ Lists miss novel failures. Checks may fail too.
 
 ### Exercises
 
-- **EX029 — Backup failure.** How would missed backup files be detected? *Rubric:* 3 = restore tests;; 2 = restore;; 1 = none;; 0 = none.
-- **EX030 — Silent failures.** Why must checks be scheduled? *Rubric:* 3 = some failures are silent until something breaks;; 2 = silent;; 1 = none;; 0 = none.
-- **EX031 — Certificate owner.** Who owns the certificate expiry failure mode? *Rubric:* 3 = the IT lead;; 2 = IT lead;; 1 = none;; 0 = none.
-- **EX032 — Failure mode parts.** What three things does each failure mode describe? *Rubric:* 3 = what goes wrong, how it shows, impact;; 2 = three;; 1 = none;; 0 = none.
+- **EX029 — Backup failure.** How would missed backup files be detected? *Rubric:* 3 = restore tests;; 2 = restore;; 1 = vague;; 0 = none.
+- **EX030 — Silent failures.** Why must checks be scheduled? *Rubric:* 3 = some failures are silent until something breaks;; 2 = silent;; 1 = vague;; 0 = none.
+- **EX031 — Certificate owner.** Who owns the certificate expiry failure mode? *Rubric:* 3 = the IT lead;; 2 = IT lead;; 1 = vague;; 0 = none.
+- **EX032 — Failure mode parts.** What three things does each failure mode describe? *Rubric:* 3 = what goes wrong, how it shows, impact;; 2 = three;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -485,10 +485,10 @@ Scores hide severity. Checklists miss context.
 
 ### Exercises
 
-- **EX033 — Method limit.** What is one limit of the multiply-scores method? *Rubric:* 3 = rare severe events can look low;; 2 = severity;; 1 = none;; 0 = none.
-- **EX034 — Missing item.** What did the checklist reveal as missing? *Rubric:* 3 = a written incident response plan;; 2 = incident plan;; 1 = none;; 0 = none.
-- **EX035 — Tool choice.** What tools did Amina recommend? *Rubric:* 3 = ticketing, validated spreadsheets and short scripts;; 2 = existing tools;; 1 = none;; 0 = none.
-- **EX036 — Checklist ratings.** How is each checklist item marked? *Rubric:* 3 = in place, partly in place or missing, with evidence;; 2 = three states;; 1 = none;; 0 = none.
+- **EX033 — Method limit.** What is one limit of the multiply-scores method? *Rubric:* 3 = rare severe events can look low;; 2 = severity;; 1 = vague;; 0 = none.
+- **EX034 — Missing item.** What did the checklist reveal as missing? *Rubric:* 3 = a written incident response plan;; 2 = incident plan;; 1 = vague;; 0 = none.
+- **EX035 — Tool choice.** What tools did Amina recommend? *Rubric:* 3 = ticketing, validated spreadsheets and short scripts;; 2 = existing tools;; 1 = vague;; 0 = none.
+- **EX036 — Checklist ratings.** How is each checklist item marked? *Rubric:* 3 = in place, partly in place or missing, with evidence;; 2 = three states;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -530,10 +530,10 @@ Thresholds need tuning. Tests sample only some files.
 
 ### Exercises
 
-- **EX037 — Threshold choice.** What alert threshold did Amina set? *Rubric:* 3 = five failures within ten minutes;; 2 = 5 in 10;; 1 = none;; 0 = none.
-- **EX038 — Threshold trade-off.** Why not set the threshold lower? *Rubric:* 3 = many false alarms from mistyped passwords;; 2 = false alarms;; 1 = none;; 0 = none.
-- **EX039 — Before-after tests.** Why test both before and after a change? *Rubric:* 3 = shows old state worked and change broke nothing;; 2 = baseline;; 1 = none;; 0 = none.
-- **EX040 — Backup scope.** Which data were added to backup jobs? *Rubric:* 3 = the stock database and online shop data;; 2 = two;; 1 = none;; 0 = none.
+- **EX037 — Threshold choice.** What alert threshold did Amina set? *Rubric:* 3 = five failures within ten minutes;; 2 = 5 in 10;; 1 = vague;; 0 = none.
+- **EX038 — Threshold trade-off.** Why not set the threshold lower? *Rubric:* 3 = many false alarms from mistyped passwords;; 2 = false alarms;; 1 = vague;; 0 = none.
+- **EX039 — Before-after tests.** Why test both before and after a change? *Rubric:* 3 = shows old state worked and change broke nothing;; 2 = baseline;; 1 = vague;; 0 = none.
+- **EX040 — Backup scope.** Which data were added to backup jobs? *Rubric:* 3 = the stock database and online shop data;; 2 = two;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -598,9 +598,9 @@ Approved lists can be wrong. Verification is periodic.
 ### Exercises
 
 - **EX041 — Unapproved count.** How many rules were unapproved? *Rubric:* 3 = two;; 2 = 2;; 1 = three;; 0 = none.
-- **EX042 — Urgent rule.** Which unapproved rule was urgent? *Rubric:* 3 = remote desktop from anywhere to the payment segment;; 2 = RDP;; 1 = none;; 0 = none.
-- **EX043 — RDP cause.** Why did the remote desktop rule exist? *Rubric:* 3 = a support company added it for a one-off repair;; 2 = support;; 1 = none;; 0 = none.
-- **EX044 — Two controls.** Why are both change control and verification needed? *Rubric:* 3 = verification finds what change control missed;; 2 = complementary;; 1 = none;; 0 = none.
+- **EX042 — Urgent rule.** Which unapproved rule was urgent? *Rubric:* 3 = remote desktop from anywhere to the payment segment;; 2 = RDP;; 1 = vague;; 0 = none.
+- **EX043 — RDP cause.** Why did the remote desktop rule exist? *Rubric:* 3 = a support company added it for a one-off repair;; 2 = support;; 1 = vague;; 0 = none.
+- **EX044 — Two controls.** Why are both change control and verification needed? *Rubric:* 3 = verification finds what change control missed;; 2 = complementary;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -642,10 +642,10 @@ Labs differ from production. Scenarios simplify.
 
 ### Exercises
 
-- **EX045 — Lab isolation.** Why is the lab isolated? *Rubric:* 3 = to avoid risking real systems and data;; 2 = safety;; 1 = none;; 0 = none.
+- **EX045 — Lab isolation.** Why is the lab isolated? *Rubric:* 3 = to avoid risking real systems and data;; 2 = safety;; 1 = vague;; 0 = none.
 - **EX046 — Lab result.** What was the actual result of the leaver test? *Rubric:* 3 = flagged but not disabled;; 2 = stalled;; 1 = disabled;; 0 = none.
-- **EX047 — Gap cause.** Why was the account not disabled? *Rubric:* 3 = required manual approval was not given;; 2 = approval;; 1 = none;; 0 = none.
-- **EX048 — Recommendation.** What did Amina recommend? *Rubric:* 3 = escalation if approval not given within one day;; 2 = escalation;; 1 = none;; 0 = none.
+- **EX047 — Gap cause.** Why was the account not disabled? *Rubric:* 3 = required manual approval was not given;; 2 = approval;; 1 = vague;; 0 = none.
+- **EX048 — Recommendation.** What did Amina recommend? *Rubric:* 3 = escalation if approval not given within one day;; 2 = escalation;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -687,9 +687,9 @@ Hypothesis lists can miss causes. Success reports can mislead.
 
 ### Exercises
 
-- **EX049 — Hypotheses.** Name the three hypotheses Amina listed. *Rubric:* 3 = wrong folder, corrupted backup, wrong restore procedure;; 2 = three;; 1 = none;; 0 = none.
-- **EX050 — Misleading success.** Why did the backup report success? *Rubric:* 3 = it backed up an old, empty folder;; 2 = wrong target;; 1 = none;; 0 = none.
-- **EX051 — Process fix.** What process change did Amina add? *Rubric:* 3 = review backup coverage after system upgrades;; 2 = change process;; 1 = none;; 0 = none.
+- **EX049 — Hypotheses.** Name the three hypotheses Amina listed. *Rubric:* 3 = wrong folder, corrupted backup, wrong restore procedure;; 2 = three;; 1 = vague;; 0 = none.
+- **EX050 — Misleading success.** Why did the backup report success? *Rubric:* 3 = it backed up an old, empty folder;; 2 = wrong target;; 1 = vague;; 0 = none.
+- **EX051 — Process fix.** What process change did Amina add? *Rubric:* 3 = review backup coverage after system upgrades;; 2 = change process;; 1 = vague;; 0 = none.
 - **EX052 — Success meaning.** What does a backup success message show? *Rubric:* 3 = a job ran, not that the right data were protected;; 2 = ran;; 1 = protected;; 0 = none.
 
 ### Synthesis
@@ -755,10 +755,10 @@ Lists can omit certificates. Tickets can be ignored.
 
 ### Exercises
 
-- **EX053 — Automation candidate.** Why is certificate expiry a good automation candidate? *Rubric:* 3 = simple, repetitive and costly to forget;; 2 = fit;; 1 = none;; 0 = none.
+- **EX053 — Automation candidate.** Why is certificate expiry a good automation candidate? *Rubric:* 3 = simple, repetitive and costly to forget;; 2 = fit;; 1 = vague;; 0 = none.
 - **EX054 — Expired certificate.** Which certificate had expired? *Rubric:* 3 = vpn.fenwick.example, 3 days earlier;; 2 = VPN;; 1 = shop;; 0 = none.
 - **EX055 — Warning certificate.** Which certificate was in warning? *Rubric:* 3 = shop, 19 days left;; 2 = shop;; 1 = mail;; 0 = none.
-- **EX056 — Delivery path.** How do results reach owners? *Rubric:* 3 = daily email to IT lead and tickets for warnings and alerts;; 2 = tickets;; 1 = none;; 0 = none.
+- **EX056 — Delivery path.** How do results reach owners? *Rubric:* 3 = daily email to IT lead and tickets for warnings and alerts;; 2 = tickets;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -801,9 +801,9 @@ Assurance reports have limited scope. Fallbacks need practice.
 ### Exercises
 
 - **EX057 — Critical providers.** Which providers are critical for online sales? *Rubric:* 3 = shop platform and payment gateway;; 2 = two;; 1 = email;; 0 = none.
-- **EX058 — Missing assurance.** Which provider had no formal assurance? *Rubric:* 3 = the network support company;; 2 = support company;; 1 = none;; 0 = none.
-- **EX059 — Contract gap fill.** How can contracts help where formal reports are missing? *Rubric:* 3 = include security requirements such as removing temporary rules;; 2 = contracts;; 1 = none;; 0 = none.
-- **EX060 — Shop fallback.** What is the fallback if the shop platform fails? *Rubric:* 3 = post a notice and take phone orders;; 2 = manual;; 1 = none;; 0 = none.
+- **EX058 — Missing assurance.** Which provider had no formal assurance? *Rubric:* 3 = the network support company;; 2 = support company;; 1 = vague;; 0 = none.
+- **EX059 — Contract gap fill.** How can contracts help where formal reports are missing? *Rubric:* 3 = include security requirements such as removing temporary rules;; 2 = contracts;; 1 = vague;; 0 = none.
+- **EX060 — Shop fallback.** What is the fallback if the shop platform fails? *Rubric:* 3 = post a notice and take phone orders;; 2 = manual;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -845,10 +845,10 @@ Procedures go stale. Steps can be skipped.
 
 ### Exercises
 
-- **EX061 — Procedure parts.** What does each procedure list? *Rubric:* 3 = purpose, prerequisites, steps, expected results, what to do if different;; 2 = five;; 1 = none;; 0 = none.
+- **EX061 — Procedure parts.** What does each procedure list? *Rubric:* 3 = purpose, prerequisites, steps, expected results, what to do if different;; 2 = five;; 1 = vague;; 0 = none.
 - **EX062 — Restore safety.** Where should data be restored first? *Rubric:* 3 = a test location, not over live data;; 2 = test location;; 1 = live;; 0 = none.
-- **EX063 — Stale danger.** Why can out-of-date procedures be worse than none? *Rubric:* 3 = they give false confidence and lead to wrong actions;; 2 = false confidence;; 1 = none;; 0 = none.
-- **EX064 — Firewall timing.** When should firewall changes be scheduled? *Rubric:* 3 = outside trading hours, after approval;; 2 = timing;; 1 = none;; 0 = none.
+- **EX063 — Stale danger.** Why can out-of-date procedures be worse than none? *Rubric:* 3 = they give false confidence and lead to wrong actions;; 2 = false confidence;; 1 = vague;; 0 = none.
+- **EX064 — Firewall timing.** When should firewall changes be scheduled? *Rubric:* 3 = outside trading hours, after approval;; 2 = timing;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -890,10 +890,10 @@ Injected problems are known to be coming. Labs simplify.
 
 ### Exercises
 
-- **EX065 — Injected problems.** Which two problems were injected? *Rubric:* 3 = guest Wi-Fi file sharing rule and reactivated test account;; 2 = two;; 1 = none;; 0 = none.
+- **EX065 — Injected problems.** Which two problems were injected? *Rubric:* 3 = guest Wi-Fi file sharing rule and reactivated test account;; 2 = two;; 1 = vague;; 0 = none.
 - **EX066 — Approval step.** What did Amina do before making changes? *Rubric:* 3 = waited for approval;; 2 = approval;; 1 = acted at once;; 0 = none.
-- **EX067 — Note contents.** What does the incident note include? *Rubric:* 3 = finding, time, detection, actions, approval and prevention;; 2 = contents;; 1 = none;; 0 = none.
-- **EX068 — Preventive idea.** What preventive measure did Amina suggest? *Rubric:* 3 = block guest Wi-Fi from internal systems by default;; 2 = default deny;; 1 = none;; 0 = none.
+- **EX067 — Note contents.** What does the incident note include? *Rubric:* 3 = finding, time, detection, actions, approval and prevention;; 2 = contents;; 1 = vague;; 0 = none.
+- **EX068 — Preventive idea.** What preventive measure did Amina suggest? *Rubric:* 3 = block guest Wi-Fi from internal systems by default;; 2 = default deny;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -935,10 +935,10 @@ Six weeks is short. Some issues need suppliers.
 
 ### Exercises
 
-- **EX069 — Pack checks.** Which four checks does the pack run? *Rubric:* 3 = baseline, firewall verification, certificate expiry, account reconciliation;; 2 = four;; 1 = none;; 0 = none.
-- **EX070 — Issues found.** How many issues did the checks find in six weeks? *Rubric:* 3 = eleven;; 2 = 11;; 1 = none;; 0 = none.
+- **EX069 — Pack checks.** Which four checks does the pack run? *Rubric:* 3 = baseline, firewall verification, certificate expiry, account reconciliation;; 2 = four;; 1 = vague;; 0 = none.
+- **EX070 — Issues found.** How many issues did the checks find in six weeks? *Rubric:* 3 = eleven;; 2 = 11;; 1 = vague;; 0 = none.
 - **EX071 — Closed tickets.** How many issues were closed within two weeks? *Rubric:* 3 = nine;; 2 = 9;; 1 = eleven;; 0 = none.
-- **EX072 — Extensibility proof.** What showed the pack could be extended? *Rubric:* 3 = a technician added a new check during training;; 2 = extension;; 1 = none;; 0 = none.
+- **EX072 — Extensibility proof.** What showed the pack could be extended? *Rubric:* 3 = a technician added a new check during training;; 2 = extension;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

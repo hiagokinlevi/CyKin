@@ -70,8 +70,8 @@ Tratar a governança como a compra de um software ignora as decisões e as respo
 ### Exercícios
 
 - **EX001 — Caso do curso.** Que organização o curso acompanha? *Rubrica:* 3 = a Harbourline Co-operative;; 2 = correto;; 1 = outra;; 0 = nenhuma.
-- **EX002 — Problema do e-mail.** O que deu errado com um e-mail de marketing? *Rubrica:* 3 = foi enviado a membros que pediram para não ser contatados;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX003 — Quarta meta.** Que meta o tutor acrescentou? *Rubrica:* 3 = aprender a julgar evidências;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX002 — Problema do e-mail.** O que deu errado com um e-mail de marketing? *Rubrica:* 3 = foi enviado a membros que pediram para não ser contatados;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX003 — Quarta meta.** Que meta o tutor acrescentou? *Rubrica:* 3 = aprender a julgar evidências;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-02"></a>
 
@@ -109,9 +109,9 @@ Supor que rótulos idênticos significam definições idênticas gera disputas.
 
 ### Exercícios
 
-- **EX004 — Exemplo de conhecimento.** Dê o exemplo de conhecimento usado no curso. *Rubrica:* 3 = as vendas de leite sobem antes dos feriados, então encomenda-se mais;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX005 — Divergência de vendas.** Por que os relatórios de vendas divergiam? *Rubrica:* 3 = o financeiro inclui impostos, as lojas os excluem;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX006 — Exemplo não estruturado.** Cite um exemplo de dado não estruturado na Harbourline. *Rubrica:* 3 = e-mails de clientes, contratos ou fotografias;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX004 — Exemplo de conhecimento.** Dê o exemplo de conhecimento usado no curso. *Rubrica:* 3 = as vendas de leite sobem antes dos feriados, então encomenda-se mais;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX005 — Divergência de vendas.** Por que os relatórios de vendas divergiam? *Rubrica:* 3 = o financeiro inclui impostos, as lojas os excluem;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX006 — Exemplo não estruturado.** Cite um exemplo de dado não estruturado na Harbourline. *Rubrica:* 3 = e-mails de clientes, contratos ou fotografias;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-03"></a>
 
@@ -150,8 +150,8 @@ Culpar a equipe que percebe um problema ignora sua origem.
 ### Exercícios
 
 - **EX007 — Sistemas envolvidos.** Quantos sistemas usam os dados de uma única venda? *Rubrica:* 3 = cinco;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX008 — Códigos genéricos.** Por que os funcionários digitam códigos de produto genéricos? *Rubrica:* 3 = para a fila andar quando o código de barras falha;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX009 — Recurso compartilhado.** O que as regras de governança equilibram? *Rubrica:* 3 = a conveniência local e as necessidades mais amplas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX008 — Códigos genéricos.** Por que os funcionários digitam códigos de produto genéricos? *Rubrica:* 3 = para a fila andar quando o código de barras falha;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX009 — Recurso compartilhado.** O que as regras de governança equilibram? *Rubrica:* 3 = a conveniência local e as necessidades mais amplas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-04"></a>
 
@@ -189,8 +189,8 @@ Totais arrumados não provam que as fórmulas estão corretas; concilie com as f
 
 ### Exercícios
 
-- **EX010 — Loja ausente.** Por que a loja mais nova ficou de fora? *Rubrica:* 3 = um intervalo de fórmula terminava uma linha antes;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX011 — Célula de verificação.** O que a célula de verificação compara? *Rubrica:* 3 = o total do resumo com o total do relatório de origem;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX010 — Loja ausente.** Por que a loja mais nova ficou de fora? *Rubrica:* 3 = um intervalo de fórmula terminava uma linha antes;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX011 — Célula de verificação.** O que a célula de verificação compara? *Rubrica:* 3 = o total do resumo com o total do relatório de origem;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX012 — Processo transferido.** Que processo sai das planilhas? *Rubrica:* 3 = o resumo de vendas do conselho;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 
 <a id="ch-05"></a>
@@ -229,9 +229,9 @@ Contar linhas quando a pergunta pede pessoas distintas dá respostas erradas.
 
 ### Exercícios
 
-- **EX013 — Papel da chave estrangeira.** A que o número de membro nas compras está ligado? *Rubrica:* 3 = à tabela de membros;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX014 — Problema do texto livre.** O que os nomes de lojas em texto livre causaram? *Rubrica:* 3 = uma loja dividida em várias nos relatórios;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX015 — Contrapartida da normalização.** O que a normalização pode dificultar? *Rubrica:* 3 = as consultas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX013 — Papel da chave estrangeira.** A que o número de membro nas compras está ligado? *Rubrica:* 3 = à tabela de membros;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX014 — Problema do texto livre.** O que os nomes de lojas em texto livre causaram? *Rubrica:* 3 = uma loja dividida em várias nos relatórios;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX015 — Contrapartida da normalização.** O que a normalização pode dificultar? *Rubrica:* 3 = as consultas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-06"></a>
 
@@ -269,7 +269,7 @@ Relatar contagens sem totais esconde a escala dos problemas.
 
 ### Exercícios
 
-- **EX016 — Problema de codificação.** O que aconteceu sem a codificação especificada? *Rubrica:* 3 = os nomes com acentos ficaram embaralhados;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX016 — Problema de codificação.** O que aconteceu sem a codificação especificada? *Rubrica:* 3 = os nomes com acentos ficaram embaralhados;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX017 — Regra do ano de nascimento.** Que intervalo a verificação do ano de nascimento usou? *Rubrica:* 3 = de 1910 a 2010;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 - **EX018 — Ordem do relatório.** Que ordem um relatório deve seguir? *Rubrica:* 3 = o que foi verificado, quanto falhou, por que importa, o que vem a seguir;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
 
@@ -310,8 +310,8 @@ Amostras escolhidas a dedo superestimam os problemas; sorteie as amostras.
 ### Exercícios
 
 - **EX019 — Cesta típica.** Que resumo descreve melhor uma cesta típica? *Rubrica:* 3 = a mediana;; 2 = correto;; 1 = a média;; 0 = nenhuma.
-- **EX020 — Viés da amostra.** Por que não escolher os registros que parecem suspeitos? *Rubrica:* 3 = eles não são típicos e superestimam os problemas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX021 — Afirmação sobre a fidelidade.** Por que a afirmação sobre os gastos dos membros pode estar errada? *Rubrica:* 3 = clientes habituais podem ter mais propensão a aderir;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX020 — Viés da amostra.** Por que não escolher os registros que parecem suspeitos? *Rubrica:* 3 = eles não são típicos e superestimam os problemas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX021 — Afirmação sobre a fidelidade.** Por que a afirmação sobre os gastos dos membros pode estar errada? *Rubrica:* 3 = clientes habituais podem ter mais propensão a aderir;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-08"></a>
 
@@ -349,9 +349,9 @@ Eixos truncados exageram as diferenças; comece as barras do zero.
 
 ### Exercícios
 
-- **EX022 — Constatação principal.** Qual foi a constatação de Amara em uma frase? *Rubrica:* 3 = cerca de um em cada cinco registros não tem e-mail;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX022 — Constatação principal.** Qual foi a constatação de Amara em uma frase? *Rubrica:* 3 = cerca de um em cada cinco registros não tem e-mail;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX023 — Correção do gráfico.** Como Amara corrigiu o gráfico? *Rubrica:* 3 = começou o eixo do zero e acrescentou a contagem de membros;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
-- **EX024 — Substituição do jargão.** O que substituiu razão de completude? *Rubrica:* 3 = parcela de registros com endereço de e-mail;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX024 — Substituição do jargão.** O que substituiu razão de completude? *Rubrica:* 3 = parcela de registros com endereço de e-mail;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-09"></a>
 
@@ -390,8 +390,8 @@ Consentimento embutido não é livre; separe-o.
 ### Exercícios
 
 - **EX025 — Base para marketing.** De que base legal os e-mails de marketing precisam aqui? *Rubrica:* 3 = consentimento;; 2 = correto;; 1 = outra;; 0 = nenhuma.
-- **EX026 — Problema dos direitos.** Que problema Amara encontrou nos pedidos de exercício de direitos? *Rubrica:* 3 = não havia registro central, e alguns ficaram sem resposta;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX027 — Dados de recolhimento.** Que dados sustentam os recolhimentos por segurança dos alimentos? *Rubrica:* 3 = os dados de fornecedores e de lotes;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX026 — Problema dos direitos.** Que problema Amara encontrou nos pedidos de exercício de direitos? *Rubrica:* 3 = não havia registro central, e alguns ficaram sem resposta;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX027 — Dados de recolhimento.** Que dados sustentam os recolhimentos por segurança dos alimentos? *Rubrica:* 3 = os dados de fornecedores e de lotes;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-10"></a>
 
@@ -429,8 +429,8 @@ Legal não significa aceitável; pergunte se os usos são justos e esperados.
 
 ### Exercícios
 
-- **EX028 — Alternativa à inferência.** O que substituiu o plano de inferir gravidez? *Rubrica:* 3 = descontos para membros que escolhem o interesse família;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX029 — Correção do desconto no aplicativo.** Como Amara tratou o desconto exclusivo do aplicativo? *Rubrica:* 3 = cupons impressos nos caixas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX028 — Alternativa à inferência.** O que substituiu o plano de inferir gravidez? *Rubrica:* 3 = descontos para membros que escolhem o interesse família;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX029 — Correção do desconto no aplicativo.** Como Amara tratou o desconto exclusivo do aplicativo? *Rubrica:* 3 = cupons impressos nos caixas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX030 — Momento da revisão.** Quando a revisão ética funciona melhor? *Rubrica:* 3 = cedo, antes de as campanhas serem desenhadas;; 2 = correto;; 1 = tarde;; 0 = nenhuma.
 
 <a id="ch-11"></a>
@@ -471,7 +471,7 @@ Copiar um modelo completo para uma organização pequena cria burocracia sem uso
 
 - **EX031 — Definição do tutor.** Como o tutor simplifica a governança? *Rubrica:* 3 = decidir quem decide o quê sobre os dados e garantir que as decisões sejam cumpridas;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
 - **EX032 — Cinco domínios.** Cite os cinco domínios de Khatri e Brown. *Rubrica:* 3 = princípios, qualidade, metadados, acesso, ciclo de vida;; 2 = todos;; 1 = alguns;; 0 = nenhuma.
-- **EX033 — Prática de acesso.** Como o acesso era concedido na Harbourline? *Rubrica:* 3 = pela TI, a pedido, sem aprovação de um dono;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX033 — Prática de acesso.** Como o acesso era concedido na Harbourline? *Rubrica:* 3 = pela TI, a pedido, sem aprovação de um dono;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-12"></a>
 
@@ -511,7 +511,7 @@ Nomear curadores sem reservar tempo faz o papel desaparecer.
 
 - **EX034 — Dono da fidelidade.** Quem é dono dos dados de fidelidade? *Rubrica:* 3 = o diretor de marketing;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 - **EX035 — Limite da delegação.** O que não pode ser delegado à TI? *Rubrica:* 3 = a responsabilização;; 2 = correto;; 1 = as tarefas;; 0 = nenhuma.
-- **EX036 — Falha comum.** Qual é a falha mais comum dos papéis? *Rubrica:* 3 = nomear curadores sem lhes dar tempo;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX036 — Falha comum.** Qual é a falha mais comum dos papéis? *Rubrica:* 3 = nomear curadores sem lhes dar tempo;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-13"></a>
 
@@ -549,7 +549,7 @@ Políticas longas que misturam níveis não são lidas; separe e encurte.
 
 ### Exercícios
 
-- **EX037 — Exemplo de padrão.** Dê o exemplo de padrão usado no curso. *Rubrica:* 3 = todo registro de fidelidade tem um código de loja válido;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX037 — Exemplo de padrão.** Dê o exemplo de padrão usado no curso. *Rubrica:* 3 = todo registro de fidelidade tem um código de loja válido;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX038 — Tamanho da política.** Qual era o tamanho da política de Amara? *Rubrica:* 3 = duas páginas;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 - **EX039 — Sinalização de revisão.** Quando os documentos são sinalizados? *Rubrica:* 3 = sem revisão há dois anos;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 
@@ -629,7 +629,7 @@ FAIR não significa aberto; dados restritos ainda podem ser localizáveis.
 
 ### Exercícios
 
-- **EX043 — Disputa sobre membro ativo.** Como o marketing e o financeiro definiam membro ativo? *Rubrica:* 3 = compra em um ano versus em seis meses;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX043 — Disputa sobre membro ativo.** Como o marketing e o financeiro definiam membro ativo? *Rubrica:* 3 = compra em um ano versus em seis meses;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX044 — Início do catálogo.** Que ferramenta Amara usou primeiro? *Rubrica:* 3 = uma tabela compartilhada simples;; 2 = correto;; 1 = outra;; 0 = nenhuma.
 - **EX045 — Significado de FAIR.** O que significa FAIR? *Rubrica:* 3 = localizável, acessível, interoperável, reutilizável;; 2 = todos;; 1 = alguns;; 0 = nenhuma.
 
@@ -669,8 +669,8 @@ Fusões automáticas sem revisão podem juntar pessoas diferentes.
 
 ### Exercícios
 
-- **EX046 — Problemas da lista de lojas.** Cite uma diferença entre as listas de lojas. *Rubrica:* 3 = loja fechada ainda ativa, loja nova ausente ou código duplicado;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
-- **EX047 — Salvaguarda da fusão.** Que salvaguarda se aplica antes da fusão? *Rubrica:* 3 = a revisão dos possíveis pares por um curador;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX046 — Problemas da lista de lojas.** Cite uma diferença entre as listas de lojas. *Rubrica:* 3 = loja fechada ainda ativa, loja nova ausente ou código duplicado;; 2 = uma;; 1 = vago;; 0 = nenhuma.
+- **EX047 — Salvaguarda da fusão.** Que salvaguarda se aplica antes da fusão? *Rubrica:* 3 = a revisão dos possíveis pares por um curador;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX048 — E-mail sobrevivente.** Que e-mail sobrevive? *Rubrica:* 3 = o confirmado mais recentemente;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 
 <a id="ch-17"></a>
@@ -710,7 +710,7 @@ Amara mapeia os sistemas e sinaliza as exportações manuais, adverte que *data 
 ### Exercícios
 
 - **EX049 — Fluxos frágeis.** Onde os dados mais se perdem? *Rubrica:* 3 = nas exportações manuais;; 2 = correto;; 1 = outro;; 0 = nenhuma.
-- **EX050 — Constatação sobre devoluções.** O que a linhagem revelou? *Rubrica:* 3 = uma exclusão de devoluções não documentada;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX050 — Constatação sobre devoluções.** O que a linhagem revelou? *Rubrica:* 3 = uma exclusão de devoluções não documentada;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX051 — Recomendação para o data lake.** O que qualquer *data lake* deve ter desde o primeiro dia? *Rubrica:* 3 = entradas de catálogo, donos e regras de retenção;; 2 = todos;; 1 = alguns;; 0 = nenhuma.
 
 <a id="ch-18"></a>
@@ -775,7 +775,7 @@ A completude por campo superestima as linhas utilizáveis; informe também a com
 
 - **EX052 — Campo mais baixo.** Que campo é o menos completo? *Rubrica:* 3 = o ano de nascimento, com 68,6%;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 - **EX053 — Linhas completas.** Quantos registros estão completos em todos os campos? *Rubrica:* 3 = 2.594;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX054 — Ação sobre o ano de nascimento.** O que foi decidido sobre o ano de nascimento? *Rubrica:* 3 = não buscá-lo para todos, pois só é necessário para as ofertas por idade;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX054 — Ação sobre o ano de nascimento.** O que foi decidido sobre o ano de nascimento? *Rubrica:* 3 = não buscá-lo para todos, pois só é necessário para as ofertas por idade;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-19"></a>
 
@@ -813,9 +813,9 @@ Regras que nunca mudam acabam rejeitando dados válidos.
 
 ### Exercícios
 
-- **EX055 — Regra LQ-03.** O que a regra LQ-03 verifica? *Rubrica:* 3 = que os e-mails contêm uma arroba e um domínio;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX055 — Regra LQ-03.** O que a regra LQ-03 verifica? *Rubrica:* 3 = que os e-mails contêm uma arroba e um domínio;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX056 — Violação de um mês.** Quem revisa os problemas que ficam abaixo do limiar por um mês? *Rubrica:* 3 = o grupo de governança;; 2 = correto;; 1 = outro;; 0 = nenhuma.
-- **EX057 — Mudança do CEP.** Por que a regra do CEP mudou? *Rubrica:* 3 = uma nova região usava outro formato;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX057 — Mudança do CEP.** Por que a regra do CEP mudou? *Rubrica:* 3 = uma nova região usava outro formato;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-20"></a>
 
@@ -853,8 +853,8 @@ Encerrar problemas sem verificar as correções deixa os problemas voltarem.
 
 ### Exercícios
 
-- **EX058 — Causa dos pontos.** O que causou a falta de pontos de fidelidade? *Rubrica:* 3 = uma configuração do caixa para manter os dados do cartão sem conexão estava desligada;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX059 — Evidência de encerramento.** Que evidência encerrou o problema dos pontos? *Rubrica:* 3 = as compras sem conexão de duas semanas receberam pontos;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX058 — Causa dos pontos.** O que causou a falta de pontos de fidelidade? *Rubrica:* 3 = uma configuração do caixa para manter os dados do cartão sem conexão estava desligada;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX059 — Evidência de encerramento.** Que evidência encerrou o problema dos pontos? *Rubrica:* 3 = as compras sem conexão de duas semanas receberam pontos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX060 — Padrões do registro.** A que a maioria dos problemas do registro se referia? *Rubrica:* 3 = códigos de loja e membros duplicados;; 2 = ambos;; 1 = um;; 0 = nenhuma.
 
 <a id="ch-21"></a>
@@ -916,8 +916,8 @@ Mapear códigos errados mais adiante sem corrigir as origens cria uma limpeza se
 ### Exercícios
 
 - **EX061 — Parcela inválida.** Que parcela das linhas tinha códigos inválidos? *Rubrica:* 3 = 4,5% (89 de 2.000);; 2 = correto;; 1 = parcial;; 0 = nenhuma.
-- **EX062 — Causa do S41.** Por que o S41 apareceu? *Rubrica:* 3 = uma loja nova abriu antes de entrar na lista;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX063 — Causa do S00.** O que produziu o S00? *Rubrica:* 3 = um caixa de teste deixado na rede de produção;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX062 — Causa do S41.** Por que o S41 apareceu? *Rubrica:* 3 = uma loja nova abriu antes de entrar na lista;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX063 — Causa do S00.** O que produziu o S00? *Rubrica:* 3 = um caixa de teste deixado na rede de produção;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-22"></a>
 
@@ -955,7 +955,7 @@ Equipes de segurança que decidem o acesso sem conhecer os dados fazem escolhas 
 
 ### Exercícios
 
-- **EX064 — Constatação sobre o acesso.** O que Amara descobriu sobre o acesso à fidelidade? *Rubrica:* 3 = todos os funcionários da sede viam os dados completos;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX064 — Constatação sobre o acesso.** O que Amara descobriu sobre o acesso à fidelidade? *Rubrica:* 3 = todos os funcionários da sede viam os dados completos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX065 — Causa do incidente.** Por que aconteceu o incidente da planilha enviada por e-mail? *Rubrica:* 3 = falta de um meio aprovado de trabalho remoto e extrações fáceis;; 2 = ambos;; 1 = um;; 0 = nenhuma.
 - **EX066 — Revisão de acesso.** Com que frequência os donos revisam as listas de acesso? *Rubrica:* 3 = a cada trimestre;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 
@@ -996,8 +996,8 @@ Coletar dados por precaução aumenta o risco sem trazer benefício.
 ### Exercícios
 
 - **EX067 — Campos retirados.** Que campos Amara recomendou retirar? *Rubrica:* 3 = gênero e estado civil;; 2 = ambos;; 1 = um;; 0 = nenhuma.
-- **EX068 — Redesenho da parceria.** Como a proposta da padaria foi alterada? *Rubrica:* 3 = a própria Harbourline envia as ofertas aos membros que consentem;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX069 — Banco esquecido.** O que o inventário encontrou? *Rubrica:* 3 = um antigo banco de dados de pesquisa;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX068 — Redesenho da parceria.** Como a proposta da padaria foi alterada? *Rubrica:* 3 = a própria Harbourline envia as ofertas aos membros que consentem;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX069 — Banco esquecido.** O que o inventário encontrou? *Rubrica:* 3 = um antigo banco de dados de pesquisa;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-24"></a>
 
@@ -1036,7 +1036,7 @@ Arranjos informais de compartilhamento se desviam de sua finalidade original.
 ### Exercícios
 
 - **EX070 — Regra de supressão.** Que regra de supressão Amara sugeriu? *Rubrica:* 3 = suprimir as células com menos de dez transações;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX071 — Exportação esquecida.** O que o monitoramento encontrou? *Rubrica:* 3 = um fornecedor recebendo um arquivo cinco meses depois do fim do contrato;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX071 — Exportação esquecida.** O que o monitoramento encontrou? *Rubrica:* 3 = um fornecedor recebendo um arquivo cinco meses depois do fim do contrato;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX072 — Cláusulas do modelo.** Cite três cláusulas do modelo. *Rubrica:* 3 = finalidade, campos, segurança, retenção, notificação de incidentes, auditoria;; 2 = três;; 1 = uma;; 0 = nenhuma.
 
 <a id="ch-25"></a>
@@ -1136,8 +1136,8 @@ Eliminar sem verificar as dependências pode apagar registros ainda exigidos por
 ### Exercícios
 
 - **EX076 — Contagem em excesso.** Quantos registros ultrapassavam a retenção? *Rubrica:* 3 = 2.521 (50,4%);; 2 = correto;; 1 = parcial;; 0 = nenhuma.
-- **EX077 — Verificação prévia.** O que Amara confirmou primeiro com o financeiro? *Rubrica:* 3 = que nenhum registro fiscal existe apenas na fidelidade;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX078 — Efeito no marketing.** O que o marketing perdeu? *Rubrica:* 3 = um segmento de reconquista;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX077 — Verificação prévia.** O que Amara confirmou primeiro com o financeiro? *Rubrica:* 3 = que nenhum registro fiscal existe apenas na fidelidade;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX078 — Efeito no marketing.** O que o marketing perdeu? *Rubrica:* 3 = um segmento de reconquista;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-27"></a>
 
@@ -1176,8 +1176,8 @@ Relatórios de autosserviço sem certificação multiplicam números conflitante
 ### Exercícios
 
 - **EX079 — Fragilidade do modelo.** Onde o modelo de evasão tem desempenho pior? *Rubrica:* 3 = nas lojas rurais;; 2 = correto;; 1 = outro;; 0 = nenhuma.
-- **EX080 — Problema do segmento.** Por que o segmento sub-representava os clientes mais velhos? *Rubrica:* 3 = usava o ano de nascimento, que muitas vezes falta;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX081 — Base do autosserviço.** O que os relatórios de autosserviço devem usar? *Rubrica:* 3 = conjuntos de dados certificados;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX080 — Problema do segmento.** Por que o segmento sub-representava os clientes mais velhos? *Rubrica:* 3 = usava o ano de nascimento, que muitas vezes falta;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX081 — Base do autosserviço.** O que os relatórios de autosserviço devem usar? *Rubrica:* 3 = conjuntos de dados certificados;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-28"></a>
 
@@ -1217,7 +1217,7 @@ Notas de questionário, sozinhas, não mostram mudança de comportamento; confir
 
 - **EX082 — Prioridade das lojas.** Qual era a prioridade dos funcionários das lojas? *Rubrica:* 3 = a qualidade do lançamento;; 2 = correto;; 1 = outra;; 0 = nenhuma.
 - **EX083 — Duração das sessões.** Quanto duram as sessões? *Rubrica:* 3 = cerca de trinta minutos;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX084 — Comparação mais justa.** O que o tutor sugeriu para uma comparação mais justa? *Rubrica:* 3 = escalonar o treinamento entre as lojas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX084 — Comparação mais justa.** O que o tutor sugeriu para uma comparação mais justa? *Rubrica:* 3 = escalonar o treinamento entre as lojas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-29"></a>
 
@@ -1297,7 +1297,7 @@ Mirar a maturidade máxima em tudo desperdiça recursos em organizações pequen
 
 - **EX088 — Nota da qualidade.** Que nível a qualidade recebeu? *Rubrica:* 3 = três;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 - **EX089 — Metas acordadas.** Que metas foram acordadas? *Rubrica:* 3 = nível três em tudo e quatro para a qualidade, em dois anos;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
-- **EX090 — Redução do viés.** Como o viés da avaliação pode ser reduzido? *Rubrica:* 3 = incluindo alguém de fora da equipe de dados;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX090 — Redução do viés.** Como o viés da avaliação pode ser reduzido? *Rubrica:* 3 = incluindo alguém de fora da equipe de dados;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-31"></a>
 
@@ -1335,9 +1335,9 @@ Tratar a resistência como obstrução deixa escapar os problemas de desenho que
 
 ### Exercícios
 
-- **EX091 — Correção da lista suspensa.** O que acabou com as reclamações sobre a lista suspensa? *Rubrica:* 3 = ordenar pelo nome da loja, com os códigos ao lado;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX091 — Correção da lista suspensa.** O que acabou com as reclamações sobre a lista suspensa? *Rubrica:* 3 = ordenar pelo nome da loja, com os códigos ao lado;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX092 — Papel do multiplicador.** O que fazem os multiplicadores de dados? *Rubrica:* 3 = respondem às dúvidas localmente e repassam as sugestões aos curadores;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
-- **EX093 — Sugestão dos multiplicadores.** O que a primeira reunião dos multiplicadores sugeriu? *Rubrica:* 3 = um guia plastificado dos códigos comuns para os caixas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX093 — Sugestão dos multiplicadores.** O que a primeira reunião dos multiplicadores sugeriu? *Rubrica:* 3 = um guia plastificado dos códigos comuns para os caixas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-32"></a>
 
@@ -1376,7 +1376,7 @@ Tratar o tempo das pessoas como gratuito subestima os custos da governança.
 ### Exercícios
 
 - **EX094 — Custo oculto.** Que custo costuma ser subestimado? *Rubrica:* 3 = o tempo das pessoas;; 2 = correto;; 1 = outro;; 0 = nenhuma.
-- **EX095 — Propósito da sensibilidade.** Por que mostrar a sensibilidade às premissas? *Rubrica:* 3 = os leitores veem que a justificativa não depende de otimismo;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX095 — Propósito da sensibilidade.** Por que mostrar a sensibilidade às premissas? *Rubrica:* 3 = os leitores veem que a justificativa não depende de otimismo;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX096 — Item questionado.** Que estimativa o diretor financeiro questionou? *Rubrica:* 3 = o risco de incidentes;; 2 = correto;; 1 = outra;; 0 = nenhuma.
 
 <a id="ch-33"></a>
@@ -1416,8 +1416,8 @@ Começar as regras antes do inventário leva a retrabalho.
 ### Exercícios
 
 - **EX097 — Responsabilidades de Amara.** Por quais entregas Amara é responsável? *Rubrica:* 3 = regras de qualidade e retenção;; 2 = ambas;; 1 = uma;; 0 = nenhuma.
-- **EX098 — Primeira entrega.** Por que o inventário precisa vir primeiro? *Rubrica:* 3 = as outras entregas dependem de saber que dados existem;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX099 — Resposta ao risco de requisitos.** Como o grupo vai lidar com requisitos pouco claros? *Rubrica:* 3 = confirmando os requisitos por escrito depois das reuniões com o cliente;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX098 — Primeira entrega.** Por que o inventário precisa vir primeiro? *Rubrica:* 3 = as outras entregas dependem de saber que dados existem;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX099 — Resposta ao risco de requisitos.** Como o grupo vai lidar com requisitos pouco claros? *Rubrica:* 3 = confirmando os requisitos por escrito depois das reuniões com o cliente;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-34"></a>
 
@@ -1457,7 +1457,7 @@ Seções escritas separadamente se afastam umas das outras; acorde os nomes prim
 
 - **EX100 — Contagem de campos.** Quantos campos o inventário listou? *Rubrica:* 3 = vinte e dois;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 - **EX101 — Tokens de pagamento.** Quem deve guardar os *tokens* de pagamento? *Rubrica:* 3 = apenas o processador de pagamentos;; 2 = correto;; 1 = outro;; 0 = nenhuma.
-- **EX102 — Mudança para a próxima vez.** O que Amara faria diferente? *Rubrica:* 3 = começar um glossário no primeiro dia;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX102 — Mudança para a próxima vez.** O que Amara faria diferente? *Rubrica:* 3 = começar um glossário no primeiro dia;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-35"></a>
 
@@ -1495,9 +1495,9 @@ Recusar ou atender automaticamente a pedidos incomuns traz risco de erro nos doi
 
 ### Exercícios
 
-- **EX103 — Método de convencimento.** Como Amara conseguiu a atenção do diretor comercial? *Rubrica:* 3 = um resumo de uma página ligando os erros aos preços nas gôndolas e às reclamações;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX104 — Condição da lista de reclamações.** Que condição se aplicou à lista de reclamações? *Rubrica:* 3 = contato apenas sobre a própria reclamação;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX105 — Ideia de trabalho de conclusão.** Que ideia de trabalho de conclusão surgiu? *Rubrica:* 3 = se os multiplicadores de dados melhoram a qualidade dos lançamentos;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX103 — Método de convencimento.** Como Amara conseguiu a atenção do diretor comercial? *Rubrica:* 3 = um resumo de uma página ligando os erros aos preços nas gôndolas e às reclamações;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX104 — Condição da lista de reclamações.** Que condição se aplicou à lista de reclamações? *Rubrica:* 3 = contato apenas sobre a própria reclamação;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX105 — Ideia de trabalho de conclusão.** Que ideia de trabalho de conclusão surgiu? *Rubrica:* 3 = se os multiplicadores de dados melhoram a qualidade dos lançamentos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-36"></a>
 
@@ -1536,7 +1536,7 @@ Comparações antes e depois, sozinhas, não separam os efeitos das tendências 
 ### Exercícios
 
 - **EX106 — Desenho escolhido.** Que desenho Amara escolheu? *Rubrica:* 3 = diferenças em diferenças;; 2 = correto;; 1 = outro;; 0 = nenhuma.
-- **EX107 — Ameaça de seleção.** Qual é a ameaça de seleção aqui? *Rubrica:* 3 = as lojas voluntárias podem já ser mais cuidadosas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX107 — Ameaça de seleção.** Qual é a ameaça de seleção aqui? *Rubrica:* 3 = as lojas voluntárias podem já ser mais cuidadosas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX108 — Exigências dos dados reais.** O que os dados reais exigiriam? *Rubrica:* 3 = aprovação ética e autorização da Harbourline;; 2 = ambas;; 1 = uma;; 0 = nenhuma.
 
 <a id="ch-37"></a>
@@ -1575,9 +1575,9 @@ Planejar a análise depois de ver os dados convida a escolhas enviesadas.
 
 ### Exercícios
 
-- **EX109 — Lacuna na literatura.** Que lacuna Amara encontrou? *Rubrica:* 3 = pouca pesquisa sobre redes de multiplicadores de dados;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX109 — Lacuna na literatura.** Que lacuna Amara encontrou? *Rubrica:* 3 = pouca pesquisa sobre redes de multiplicadores de dados;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX110 — Desenho das lojas.** Quantas lojas recebem multiplicadores? *Rubrica:* 3 = dez de vinte;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX111 — Pré-registro.** Por que escrever o plano antes de gerar os dados? *Rubrica:* 3 = para evitar ajustar a análise em direção a um resultado preferido;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX111 — Pré-registro.** Por que escrever o plano antes de gerar os dados? *Rubrica:* 3 = para evitar ajustar a análise em direção a um resultado preferido;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-38"></a>
 
@@ -1617,7 +1617,7 @@ Recuperar um efeito embutido mostra que o método funciona, não que o efeito é
 
 - **EX112 — Resultado do intervalo.** O intervalo por *bootstrap* incluía o zero? *Rubrica:* 3 = não;; 2 = correto;; 1 = sim;; 0 = nenhuma.
 - **EX113 — Cenário de melhora mais rápida.** O que acontece se as lojas com multiplicadores já melhoravam mais rápido? *Rubrica:* 3 = o método superestima o efeito;; 2 = correto;; 1 = subestima;; 0 = nenhuma.
-- **EX114 — Recomendação.** O que Amara recomendou à Harbourline? *Rubrica:* 3 = introduzir os multiplicadores em etapas para uma avaliação real;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX114 — Recomendação.** O que Amara recomendou à Harbourline? *Rubrica:* 3 = introduzir os multiplicadores em etapas para uma avaliação real;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-39"></a>
 
@@ -1657,7 +1657,7 @@ Citações não conferidas trazem risco de erro e de má conduta; confira cada u
 
 - **EX115 — Ordem de redação.** Que capítulo Amara escreveu primeiro? *Rubrica:* 3 = o de método;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 - **EX116 — Apoio à reprodutibilidade.** Como Amara apoiou a reprodutibilidade? *Rubrica:* 3 = com a geração documentada e o código comentado em um apêndice;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
-- **EX117 — Identificadores das citações.** O que ela incluiu nos artigos, quando disponível? *Rubrica:* 3 = os identificadores de objeto digital (DOI);; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX117 — Identificadores das citações.** O que ela incluiu nos artigos, quando disponível? *Rubrica:* 3 = os identificadores de objeto digital (DOI);; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-40"></a>
 
@@ -1695,8 +1695,8 @@ Respostas defensivas a perguntas válidas enfraquecem um estudo forte.
 
 ### Exercícios
 
-- **EX118 — Resposta ao viés de relato.** Como Amara tratou o viés de relato? *Rubrica:* 3 = regras automatizadas aplicadas igualmente a todas as lojas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX119 — Sugestão dos examinadores.** O que os examinadores sugeriram? *Rubrica:* 3 = explorar os efeitos sobre diferentes tipos de lançamentos inválidos;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX118 — Resposta ao viés de relato.** Como Amara tratou o viés de relato? *Rubrica:* 3 = regras automatizadas aplicadas igualmente a todas as lojas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX119 — Sugestão dos examinadores.** O que os examinadores sugeriram? *Rubrica:* 3 = explorar os efeitos sobre diferentes tipos de lançamentos inválidos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX120 — Próxima função.** Que função Amara vai assumir? *Rubrica:* 3 = curadora na equipe de dados da Harbourline;; 2 = correto;; 1 = outra;; 0 = nenhuma.
 
 <a id="worked-results"></a>

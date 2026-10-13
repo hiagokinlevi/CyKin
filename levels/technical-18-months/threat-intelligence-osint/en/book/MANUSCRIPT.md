@@ -250,8 +250,8 @@ Address-based searches miss attackers using residential proxies.
 ### Exercises
 
 - **EX009 — Why education.** Why is T1078 common in education? *Rubric:* 3 = student password reuse/many accounts; 2 = partial; 1 = no reason; 0 = none.
-- **EX010 — Admin separation.** Give two controls for administrator accounts supported by intelligence. *Rubric:* 3 = separate admin accounts, strong MFA, no email; 2 = one; 1 = none; 0 = none.
-- **EX011 — Search discipline.** How is student privacy protected during sign-in searches? *Rubric:* 3 = tied to intelligence item, recorded, no browsing; 2 = partial; 1 = none; 0 = none.
+- **EX010 — Admin separation.** Give two controls for administrator accounts supported by intelligence. *Rubric:* 3 = separate admin accounts, strong MFA, no email; 2 = one; 1 = vague; 0 = none.
+- **EX011 — Search discipline.** How is student privacy protected during sign-in searches? *Rubric:* 3 = tied to intelligence item, recorded, no browsing; 2 = partial; 1 = vague; 0 = none.
 - **EX012 — Spray outcome.** What three actions followed the two successful spray logins? *Rubric:* 3 = reset, revoke sessions, check access (and MFA plan); 2 = two; 1 = one; 0 = none.
 
 ### Synthesis
@@ -682,9 +682,9 @@ Fixing one failure can create another; test changes.
 ### Exercises
 
 - **EX029 — Revision site.** Classify the revision-site block and its cause. *Rubric:* 3 = false positive; stale cloud address; 2 = one; 1 = attack; 0 = none.
-- **EX030 — Missed match.** Give two causes of false negatives. *Rubric:* 3 = normalisation, missing logs, retention; 2 = one; 1 = none; 0 = none.
+- **EX030 — Missed match.** Give two causes of false negatives. *Rubric:* 3 = normalisation, missing logs, retention; 2 = one; 1 = vague; 0 = none.
 - **EX031 — Pattern meaning.** What do three label failures in one term suggest? *Rubric:* 3 = process problem; fix process; 2 = partial; 1 = careless people; 0 = none.
-- **EX032 — Fix applied.** What process change followed the revision-site case? *Rubric:* 3 = address expiry shortened to 30 days; 2 = partial; 1 = none; 0 = none.
+- **EX032 — Fix applied.** What process change followed the revision-site case? *Rubric:* 3 = address expiry shortened to 30 days; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1319,7 +1319,7 @@ Fallbacks need testing; an untested plan may fail when needed.
 
 ### Exercises
 
-- **EX057 — Fallback list.** Give the fallback for an ESX outage and for a platform failure. *Rubric:* 3 = national advisories; scripts read email alerts; 2 = one; 1 = none; 0 = none.
+- **EX057 — Fallback list.** Give the fallback for an ESX outage and for a platform failure. *Rubric:* 3 = national advisories; scripts read email alerts; 2 = one; 1 = vague; 0 = none.
 - **EX058 — Earliest warning.** Which consumer is often also the earliest source? *Rubric:* 3 = help desk reports; 2 = partial; 1 = management; 0 = none.
 - **EX059 — Enrolment outputs.** List the four outputs from the enrolment-week case. *Rubric:* 3 = blocks, help desk script, ESX item, (identification of domains); 2 = two; 1 = one; 0 = none.
 - **EX060 — Supplier advisory.** Who besides technical owners should receive supplier advisories? *Rubric:* 3 = contract managers; 2 = partial; 1 = students; 0 = none.
@@ -1412,7 +1412,7 @@ Documentation cannot replace judgment; runbooks state when to escalate.
 
 - **EX061 — Runbook parts.** List five parts of a runbook. *Rubric:* 3 = purpose, prerequisites, steps, checks, failure actions; 2 = three; 1 = one; 0 = none.
 - **EX062 — Runbook label.** Why are runbooks usually internal? *Rubric:* 3 = reveal defensive workings; 2 = partial; 1 = public; 0 = none.
-- **EX063 — Hesitation test.** How was the credential runbook improved? *Rubric:* 3 = specified restricted ticket, no passwords, encrypted attachment; 2 = partial; 1 = none; 0 = none.
+- **EX063 — Hesitation test.** How was the credential runbook improved? *Rubric:* 3 = specified restricted ticket, no passwords, encrypted attachment; 2 = partial; 1 = vague; 0 = none.
 - **EX064 — Safety sheet.** Name four rules on the safety sheet. *Rubric:* 3 = four valid; 2 = three; 1 = one; 0 = none.
 
 ### Synthesis
@@ -1610,7 +1610,7 @@ Small projects show value but need continued ownership to last.
 
 - **EX069 — Project plan.** Summarise the five-week plan. *Rubric:* 3 = requirements, build synthetic, test past data, report-only, handover; 2 = three; 1 = one; 0 = none.
 - **EX070 — Privacy step.** How does the scam list protect personal data? *Rubric:* 3 = script strips names/emails; human check; help desk only; 2 = two; 1 = one; 0 = none.
-- **EX071 — Grouping fix.** What grouping problem appeared and how was it fixed? *Rubric:* 3 = library/parking fines merged; rule added after help-desk feedback; 2 = partial; 1 = none; 0 = none.
+- **EX071 — Grouping fix.** What grouping problem appeared and how was it fixed? *Rubric:* 3 = library/parking fines merged; rule added after help-desk feedback; 2 = partial; 1 = vague; 0 = none.
 - **EX072 — Time result.** Did the project meet its time target? *Rubric:* 3 = yes, 25 min vs 30 target (from 2 h); 2 = yes; 1 = no; 0 = none.
 
 ### Synthesis

@@ -66,8 +66,8 @@ Service lists miss informal tools. Managers may overstate their own needs.
 
 ### Exercises
 
-- **EX001 — Services first.** Why list services before devices? *Rubric:* 3 = a device matters only for the services it supports;; 2 = purpose;; 1 = none;; 0 = none.
-- **EX002 — Grace's addition.** What did Grace add to the map? *Rubric:* 3 = a head office backup appliance copying imaging servers nightly;; 2 = backup;; 1 = none;; 0 = none.
+- **EX001 — Services first.** Why list services before devices? *Rubric:* 3 = a device matters only for the services it supports;; 2 = purpose;; 1 = vague;; 0 = none.
+- **EX002 — Grace's addition.** What did Grace add to the map? *Rubric:* 3 = a head office backup appliance copying imaging servers nightly;; 2 = backup;; 1 = vague;; 0 = none.
 - **EX003 — Payment fallback.** Why are payments not ranked critical? *Rubric:* 3 = they can fall back to taking card details later by phone;; 2 = fallback;; 1 = unimportant;; 0 = none.
 - **EX004 — Critical services.** Which services are critical? *Rubric:* 3 = patient records and imaging;; 2 = both;; 1 = email;; 0 = none.
 
@@ -111,9 +111,9 @@ Old software may need old protocols. Router changes can disrupt card terminals i
 
 ### Exercises
 
-- **EX005 — Flat network risk.** Why is the flat practice network a risk? *Rubric:* 3 = any infected PC can reach the imaging server;; 2 = spread;; 1 = none;; 0 = none.
-- **EX006 — SMB question.** Why ask which SMB version the imaging server uses? *Rubric:* 3 = old versions have weaknesses exploited by ransomware;; 2 = ransomware;; 1 = none;; 0 = none.
-- **EX007 — Router fix.** How was router administration restricted? *Rubric:* 3 = to the staff network, not guest wireless;; 2 = staff only;; 1 = none;; 0 = none.
+- **EX005 — Flat network risk.** Why is the flat practice network a risk? *Rubric:* 3 = any infected PC can reach the imaging server;; 2 = spread;; 1 = vague;; 0 = none.
+- **EX006 — SMB question.** Why ask which SMB version the imaging server uses? *Rubric:* 3 = old versions have weaknesses exploited by ransomware;; 2 = ransomware;; 1 = vague;; 0 = none.
+- **EX007 — Router fix.** How was router administration restricted? *Rubric:* 3 = to the staff network, not guest wireless;; 2 = staff only;; 1 = vague;; 0 = none.
 - **EX008 — Larger issue.** What issue needs a planned redesign? *Rubric:* 3 = the flat network;; 2 = flat network;; 1 = printers;; 0 = none.
 
 ### Synthesis
@@ -156,10 +156,10 @@ Fast sign-in methods need lost-badge handling. Vendor fixes may change with upda
 
 ### Exercises
 
-- **EX009 — Shared account risk.** Why is the shared administrator account risky? *Rubric:* 3 = downloads run with full rights and there is no record of users;; 2 = rights and accountability;; 1 = none;; 0 = none.
+- **EX009 — Shared account risk.** Why is the shared administrator account risky? *Rubric:* 3 = downloads run with full rights and there is no record of users;; 2 = rights and accountability;; 1 = vague;; 0 = none.
 - **EX010 — Charting fix.** How was the charting program fixed? *Rubric:* 3 = a vendor configuration granting rights only to its own folder;; 2 = folder rights;; 1 = admin rights;; 0 = none.
-- **EX011 — Lock timing.** After how long do surgery PCs lock? *Rubric:* 3 = five minutes idle;; 2 = five;; 1 = none;; 0 = none.
-- **EX012 — Convenience.** Why is convenience a security requirement in clinics? *Rubric:* 3 = slow controls get bypassed;; 2 = bypass;; 1 = none;; 0 = none.
+- **EX011 — Lock timing.** After how long do surgery PCs lock? *Rubric:* 3 = five minutes idle;; 2 = five;; 1 = vague;; 0 = none.
+- **EX012 — Convenience.** Why is convenience a security requirement in clinics? *Rubric:* 3 = slow controls get bypassed;; 2 = bypass;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -240,8 +240,8 @@ Scripts break when export formats change. Success emails create false comfort.
 
 ### Exercises
 
-- **EX013 — Quiet failure.** Why had Grace missed the Elmfield failures? *Rubric:* 3 = the appliance only emailed on success;; 2 = success emails;; 1 = none;; 0 = none.
-- **EX014 — Lab result.** What did the lab report for Elmfield? *Rubric:* 3 = 4 of 7 nights ok, last success 2026-03-05;; 2 = three failures;; 1 = none;; 0 = none.
+- **EX013 — Quiet failure.** Why had Grace missed the Elmfield failures? *Rubric:* 3 = the appliance only emailed on success;; 2 = success emails;; 1 = vague;; 0 = none.
+- **EX014 — Lab result.** What did the lab report for Elmfield? *Rubric:* 3 = 4 of 7 nights ok, last success 2026-03-05;; 2 = three failures;; 1 = vague;; 0 = none.
 - **EX015 — Unknown status.** Why treat unknown status values as failures? *Rubric:* 3 = hiding problems is worse than no monitoring;; 2 = safe default;; 1 = success;; 0 = none.
 - **EX016 — Root cause.** What caused the Elmfield failures? *Rubric:* 3 = a full disk on the imaging server;; 2 = disk;; 1 = network;; 0 = none.
 
@@ -285,10 +285,10 @@ Scopes can exclude where problems lie. Statements need checking before they beco
 
 ### Exercises
 
-- **EX017 — Exclusions.** What did the scope exclude? *Rubric:* 3 = the cloud practice management system and the payment provider's systems;; 2 = both;; 1 = none;; 0 = none.
+- **EX017 — Exclusions.** What did the scope exclude? *Rubric:* 3 = the cloud practice management system and the payment provider's systems;; 2 = both;; 1 = vague;; 0 = none.
 - **EX018 — Not permitted.** What was Nadia not permitted to do? *Rubric:* 3 = test attacks;; 2 = attacks;; 1 = interviews;; 0 = none.
 - **EX019 — Sticky note.** How did Nadia handle the sticky note claim? *Rubric:* 3 = recorded it as a statement and checked it herself;; 2 = verify;; 1 = ignored;; 0 = none.
-- **EX020 — Finding example.** Give a finding from Nadia's report. *Rubric:* 3 = the imaging server shares a folder readable by everyone;; 2 = share;; 1 = none;; 0 = none.
+- **EX020 — Finding example.** Give a finding from Nadia's report. *Rubric:* 3 = the imaging server shares a folder readable by everyone;; 2 = share;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -330,10 +330,10 @@ Models miss undocumented flows. Router features vary by model.
 
 ### Exercises
 
-- **EX021 — Unneeded paths.** Which devices never need to talk to reception PCs? *Rubric:* 3 = card terminals and X-ray sensors;; 2 = both;; 1 = none;; 0 = none.
-- **EX022 — Imaging boundary.** Why place a boundary around clinical imaging? *Rubric:* 3 = image integrity affects diagnosis;; 2 = integrity;; 1 = none;; 0 = none.
-- **EX023 — Four segments.** What four segments did Nadia propose? *Rubric:* 3 = staff PCs, clinical imaging, payment terminals and guest;; 2 = three;; 1 = none;; 0 = none.
-- **EX024 — Router support.** How does the router support segments? *Rubric:* 3 = virtual LANs;; 2 = VLANs;; 1 = none;; 0 = none.
+- **EX021 — Unneeded paths.** Which devices never need to talk to reception PCs? *Rubric:* 3 = card terminals and X-ray sensors;; 2 = both;; 1 = vague;; 0 = none.
+- **EX022 — Imaging boundary.** Why place a boundary around clinical imaging? *Rubric:* 3 = image integrity affects diagnosis;; 2 = integrity;; 1 = vague;; 0 = none.
+- **EX023 — Four segments.** What four segments did Nadia propose? *Rubric:* 3 = staff PCs, clinical imaging, payment terminals and guest;; 2 = three;; 1 = vague;; 0 = none.
+- **EX024 — Router support.** How does the router support segments? *Rubric:* 3 = virtual LANs;; 2 = VLANs;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -375,10 +375,10 @@ Vendor audit logs may be limited. Central logging adds cost and a dependency.
 
 ### Exercises
 
-- **EX025 — Image headers.** What sensitive data do X-ray file headers carry? *Rubric:* 3 = patient names and dates of birth;; 2 = identifiers;; 1 = none;; 0 = none.
-- **EX026 — Telemetry rule.** Why tie each signal to a question? *Rubric:* 3 = telemetry without a question becomes noise;; 2 = purpose;; 1 = none;; 0 = none.
+- **EX025 — Image headers.** What sensitive data do X-ray file headers carry? *Rubric:* 3 = patient names and dates of birth;; 2 = identifiers;; 1 = vague;; 0 = none.
+- **EX026 — Telemetry rule.** Why tie each signal to a question? *Rubric:* 3 = telemetry without a question becomes noise;; 2 = purpose;; 1 = vague;; 0 = none.
 - **EX027 — Log location.** Where should PC and firewall logs go? *Rubric:* 3 = a cloud log service staff cannot modify;; 2 = central;; 1 = local PC;; 0 = none.
-- **EX028 — Clock sync.** Why synchronise device clocks? *Rubric:* 3 = so events can be ordered correctly;; 2 = ordering;; 1 = none;; 0 = none.
+- **EX028 — Clock sync.** Why synchronise device clocks? *Rubric:* 3 = so events can be ordered correctly;; 2 = ordering;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -420,10 +420,10 @@ Response cards age as systems change. Restore times are estimates until tested.
 
 ### Exercises
 
-- **EX029 — Ransomware signs.** How does ransomware usually differ from accidental deletion? *Rubric:* 3 = many files change quickly and ransom notes appear;; 2 = volume;; 1 = none;; 0 = none.
+- **EX029 — Ransomware signs.** How does ransomware usually differ from accidental deletion? *Rubric:* 3 = many files change quickly and ransom notes appear;; 2 = volume;; 1 = vague;; 0 = none.
 - **EX030 — First ransomware step.** What is the first step for ransomware? *Rubric:* 3 = disconnect the server from the network;; 2 = isolate;; 1 = restore;; 0 = none.
-- **EX031 — Internet fallback.** What is the fallback when the internet fails? *Rubric:* 3 = a mobile data backup router and printed day lists;; 2 = backup router;; 1 = none;; 0 = none.
-- **EX032 — Restore estimate.** How long is the imaging restore estimated to take? *Rubric:* 3 = four hours;; 2 = four;; 1 = none;; 0 = none.
+- **EX031 — Internet fallback.** What is the fallback when the internet fails? *Rubric:* 3 = a mobile data backup router and printed day lists;; 2 = backup router;; 1 = vague;; 0 = none.
+- **EX032 — Restore estimate.** How long is the imaging restore estimated to take? *Rubric:* 3 = four hours;; 2 = four;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -465,9 +465,9 @@ Checklists go stale. Threat models depend on accurate designs.
 
 ### Exercises
 
-- **EX033 — Checklist limit.** What is the limit of a checklist? *Rubric:* 3 = it only finds what it lists;; 2 = coverage;; 1 = none;; 0 = none.
-- **EX034 — STRIDE finding.** What did STRIDE find in the booking design? *Rubric:* 3 = other patients' names shown on the calendar;; 2 = names;; 1 = none;; 0 = none.
-- **EX035 — Vendor fix.** How did the vendor fix the calendar? *Rubric:* 3 = show only free slots;; 2 = slots;; 1 = none;; 0 = none.
+- **EX033 — Checklist limit.** What is the limit of a checklist? *Rubric:* 3 = it only finds what it lists;; 2 = coverage;; 1 = vague;; 0 = none.
+- **EX034 — STRIDE finding.** What did STRIDE find in the booking design? *Rubric:* 3 = other patients' names shown on the calendar;; 2 = names;; 1 = vague;; 0 = none.
+- **EX035 — Vendor fix.** How did the vendor fix the calendar? *Rubric:* 3 = show only free slots;; 2 = slots;; 1 = vague;; 0 = none.
 - **EX036 — Method for new systems.** Which method suits new systems? *Rubric:* 3 = STRIDE threat modelling;; 2 = STRIDE;; 1 = checklist;; 0 = none.
 
 ### Synthesis
@@ -537,10 +537,10 @@ Tests cover only listed flows. Router syntax differs from the test model.
 
 ### Exercises
 
-- **EX037 — Rule order.** Why must specific allows come before the general deny? *Rubric:* 3 = routers apply the first matching rule;; 2 = first match;; 1 = none;; 0 = none.
-- **EX038 — Undocumented rules.** Why do undocumented rules accumulate? *Rubric:* 3 = nobody dares delete them;; 2 = fear;; 1 = none;; 0 = none.
-- **EX039 — Lab failure.** Which forbidden flow did the first test allow? *Rubric:* 3 = reception to imaging on port 8443;; 2 = reception;; 1 = none;; 0 = none.
-- **EX040 — Fix.** How did Nadia fix the broad rule? *Rubric:* 3 = split staff into reception and surgery segments;; 2 = split;; 1 = none;; 0 = none.
+- **EX037 — Rule order.** Why must specific allows come before the general deny? *Rubric:* 3 = routers apply the first matching rule;; 2 = first match;; 1 = vague;; 0 = none.
+- **EX038 — Undocumented rules.** Why do undocumented rules accumulate? *Rubric:* 3 = nobody dares delete them;; 2 = fear;; 1 = vague;; 0 = none.
+- **EX039 — Lab failure.** Which forbidden flow did the first test allow? *Rubric:* 3 = reception to imaging on port 8443;; 2 = reception;; 1 = vague;; 0 = none.
+- **EX040 — Fix.** How did Nadia fix the broad rule? *Rubric:* 3 = split staff into reception and surgery segments;; 2 = split;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -582,10 +582,10 @@ Tests at one time do not prove future behaviour. Moving a laptop between segment
 
 ### Exercises
 
-- **EX041 — Why not the screen.** Why not rely on the router's configuration screen? *Rubric:* 3 = configured and actual behaviour can differ;; 2 = behaviour;; 1 = none;; 0 = none.
-- **EX042 — Guest test.** What did the guest network test confirm? *Rubric:* 3 = internet only, no internal devices;; 2 = internet only;; 1 = none;; 0 = none.
-- **EX043 — Failed test.** Which test failed and why? *Rubric:* 3 = surgery printer unreachable; placed in reception segment;; 2 = printer;; 1 = none;; 0 = none.
-- **EX044 — Reuse.** How will the tests be reused? *Rubric:* 3 = added to the change procedure for future changes;; 2 = change procedure;; 1 = none;; 0 = none.
+- **EX041 — Why not the screen.** Why not rely on the router's configuration screen? *Rubric:* 3 = configured and actual behaviour can differ;; 2 = behaviour;; 1 = vague;; 0 = none.
+- **EX042 — Guest test.** What did the guest network test confirm? *Rubric:* 3 = internet only, no internal devices;; 2 = internet only;; 1 = vague;; 0 = none.
+- **EX043 — Failed test.** Which test failed and why? *Rubric:* 3 = surgery printer unreachable; placed in reception segment;; 2 = printer;; 1 = vague;; 0 = none.
+- **EX044 — Reuse.** How will the tests be reused? *Rubric:* 3 = added to the change procedure for future changes;; 2 = change procedure;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -654,10 +654,10 @@ Simulations simplify attacker behaviour. Surgery PCs remain a path to imaging.
 
 ### Exercises
 
-- **EX045 — Lab safety.** What rule protects the lab? *Rubric:* 3 = no real malware and no internet connection;; 2 = isolated;; 1 = none;; 0 = none.
-- **EX046 — Flat result.** How many machines did the infection reach on the flat network? *Rubric:* 3 = all 8;; 2 = all;; 1 = none;; 0 = none.
-- **EX047 — Segmented result.** How many machines were affected on the segmented design? *Rubric:* 3 = 3 reception PCs;; 2 = three;; 1 = none;; 0 = none.
-- **EX048 — Most valuable result.** Why is the backup server restriction the most valuable result? *Rubric:* 3 = it keeps recovery possible;; 2 = recovery;; 1 = none;; 0 = none.
+- **EX045 — Lab safety.** What rule protects the lab? *Rubric:* 3 = no real malware and no internet connection;; 2 = isolated;; 1 = vague;; 0 = none.
+- **EX046 — Flat result.** How many machines did the infection reach on the flat network? *Rubric:* 3 = all 8;; 2 = all;; 1 = vague;; 0 = none.
+- **EX047 — Segmented result.** How many machines were affected on the segmented design? *Rubric:* 3 = 3 reception PCs;; 2 = three;; 1 = vague;; 0 = none.
+- **EX048 — Most valuable result.** Why is the backup server restriction the most valuable result? *Rubric:* 3 = it keeps recovery possible;; 2 = recovery;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -699,10 +699,10 @@ Vendor documentation can be incomplete. Retry behaviour hides denials from users
 
 ### Exercises
 
-- **EX049 — Precise symptom.** What precise symptom did Nadia record? *Rubric:* 3 = slow image loading in two of four surgeries since Tuesday;; 2 = precise;; 1 = none;; 0 = none.
-- **EX050 — Log evidence.** What did the firewall logs show? *Rubric:* 3 = denied connections from surgery PCs to the imaging server on a second port;; 2 = denials;; 1 = none;; 0 = none.
+- **EX049 — Precise symptom.** What precise symptom did Nadia record? *Rubric:* 3 = slow image loading in two of four surgeries since Tuesday;; 2 = precise;; 1 = vague;; 0 = none.
+- **EX050 — Log evidence.** What did the firewall logs show? *Rubric:* 3 = denied connections from surgery PCs to the imaging server on a second port;; 2 = denials;; 1 = vague;; 0 = none.
 - **EX051 — Proper fix.** How was it fixed? *Rubric:* 3 = one documented rule for that port only, then retesting;; 2 = narrow rule;; 1 = allow all;; 0 = none.
-- **EX052 — Prevention.** What prevents a repeat? *Rubric:* 3 = documenting new device network needs before installation;; 2 = change procedure;; 1 = none;; 0 = none.
+- **EX052 — Prevention.** What prevents a repeat? *Rubric:* 3 = documenting new device network needs before installation;; 2 = change procedure;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -766,10 +766,10 @@ Exports may omit some settings. Baselines need owners to stay current.
 
 ### Exercises
 
-- **EX053 — Why drift matters.** Why does drift matter? *Rubric:* 3 = one forgotten change can undo the design's protection;; 2 = undo;; 1 = none;; 0 = none.
-- **EX054 — Westcott finding.** What did the lab find at Westcott? *Rubric:* 3 = remote administration enabled from the internet;; 2 = remote admin;; 1 = none;; 0 = none.
+- **EX053 — Why drift matters.** Why does drift matter? *Rubric:* 3 = one forgotten change can undo the design's protection;; 2 = undo;; 1 = vague;; 0 = none.
+- **EX054 — Westcott finding.** What did the lab find at Westcott? *Rubric:* 3 = remote administration enabled from the internet;; 2 = remote admin;; 1 = vague;; 0 = none.
 - **EX055 — Baseline update.** Why was Norbury's difference added to the baseline? *Rubric:* 3 = all practices will soon have the new sensors;; 2 = approved;; 1 = ignored;; 0 = none.
-- **EX056 — Empty export.** Why test for empty exports? *Rubric:* 3 = an empty export could look like perfect compliance;; 2 = false pass;; 1 = none;; 0 = none.
+- **EX056 — Empty export.** Why test for empty exports? *Rubric:* 3 = an empty export could look like perfect compliance;; 2 = false pass;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -814,7 +814,7 @@ Supplier commitments may not be honoured. Fallbacks need regular practice.
 - **EX057 — Deepest dependency.** Which dependency is deepest and why? *Rubric:* 3 = the practice management vendor; all appointments and records live there;; 2 = practice system;; 1 = email;; 0 = none.
 - **EX058 — Vendor access change.** How should X-ray vendor access change? *Rubric:* 3 = enabled on request, approved, named accounts with multi-factor;; 2 = on request;; 1 = always on;; 0 = none.
 - **EX059 — Text service data.** What data does the text service actually need? *Rubric:* 3 = first names and appointment times;; 2 = minimal;; 1 = full records;; 0 = none.
-- **EX060 — Records fallback.** What is the fallback if the practice system fails? *Rubric:* 3 = printing next-day lists each evening;; 2 = print;; 1 = none;; 0 = none.
+- **EX060 — Records fallback.** What is the fallback if the practice system fails? *Rubric:* 3 = printing next-day lists each evening;; 2 = print;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -857,9 +857,9 @@ Documents drift when changes skip the procedure. Too many cautions dilute attent
 ### Exercises
 
 - **EX061 — Test of documentation.** How is documentation judged? *Rubric:* 3 = whether someone else can follow it correctly without help;; 2 = usability;; 1 = length;; 0 = none.
-- **EX062 — Imaging restart caution.** What caution applies to restarting the imaging server? *Rubric:* 3 = check with surgeries first to avoid interrupting an X-ray;; 2 = check surgeries;; 1 = none;; 0 = none.
+- **EX062 — Imaging restart caution.** What caution applies to restarting the imaging server? *Rubric:* 3 = check with surgeries first to avoid interrupting an X-ray;; 2 = check surgeries;; 1 = vague;; 0 = none.
 - **EX063 — Placing cautions.** Where should cautions be placed? *Rubric:* 3 = directly before the step they apply to;; 2 = in-step;; 1 = appendix;; 0 = none.
-- **EX064 — Quarterly check finding.** What did the first quarterly check find? *Rubric:* 3 = an outdated router screenshot;; 2 = screenshot;; 1 = none;; 0 = none.
+- **EX064 — Quarterly check finding.** What did the first quarterly check find? *Rubric:* 3 = an outdated router screenshot;; 2 = screenshot;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -927,9 +927,9 @@ Planted attacks may be easier than real ones. Location data can be wrong.
 
 ### Exercises
 
-- **EX065 — Normal first.** What did Nadia describe before writing rules? *Rubric:* 3 = normal behaviour: five towns, 7am to 7pm;; 2 = normal;; 1 = none;; 0 = none.
-- **EX066 — Rule A result.** What were Rule A's results? *Rubric:* 3 = 4 alerts, 3 attacks caught, 1 false alarm;; 2 = numbers;; 1 = none;; 0 = none.
-- **EX067 — Rule B result.** What were Rule B's results? *Rubric:* 3 = 3 alerts, 3 attacks caught, 0 false alarms;; 2 = numbers;; 1 = none;; 0 = none.
+- **EX065 — Normal first.** What did Nadia describe before writing rules? *Rubric:* 3 = normal behaviour: five towns, 7am to 7pm;; 2 = normal;; 1 = vague;; 0 = none.
+- **EX066 — Rule A result.** What were Rule A's results? *Rubric:* 3 = 4 alerts, 3 attacks caught, 1 false alarm;; 2 = numbers;; 1 = vague;; 0 = none.
+- **EX067 — Rule B result.** What were Rule B's results? *Rubric:* 3 = 3 alerts, 3 attacks caught, 0 false alarms;; 2 = numbers;; 1 = vague;; 0 = none.
 - **EX068 — Blind spot.** What would Rule B miss? *Rubric:* 3 = a stolen password used in working hours from a usual town;; 2 = working hours;; 1 = nothing;; 0 = none.
 
 ### Synthesis
@@ -972,10 +972,10 @@ Supervision may hide gaps in independent skill. Remaining gaps need owners after
 
 ### Exercises
 
-- **EX069 — Pre-rollout check.** What did Nadia confirm before each rollout? *Rubric:* 3 = device lists with the practice manager and any new devices;; 2 = devices;; 1 = none;; 0 = none.
-- **EX070 — Ashby issue.** What issue occurred at Ashby? *Rubric:* 3 = a card terminal on the wrong switch port;; 2 = port;; 1 = none;; 0 = none.
-- **EX071 — Remaining work.** What did Nadia list as remaining? *Rubric:* 3 = multi-factor sign-in for the practice system and staff training;; 2 = both;; 1 = none;; 0 = none.
-- **EX072 — Strongest habit.** What did Daniel call her strongest habit? *Rubric:* 3 = testing before and after every change;; 2 = testing;; 1 = none;; 0 = none.
+- **EX069 — Pre-rollout check.** What did Nadia confirm before each rollout? *Rubric:* 3 = device lists with the practice manager and any new devices;; 2 = devices;; 1 = vague;; 0 = none.
+- **EX070 — Ashby issue.** What issue occurred at Ashby? *Rubric:* 3 = a card terminal on the wrong switch port;; 2 = port;; 1 = vague;; 0 = none.
+- **EX071 — Remaining work.** What did Nadia list as remaining? *Rubric:* 3 = multi-factor sign-in for the practice system and staff training;; 2 = both;; 1 = vague;; 0 = none.
+- **EX072 — Strongest habit.** What did Daniel call her strongest habit? *Rubric:* 3 = testing before and after every change;; 2 = testing;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

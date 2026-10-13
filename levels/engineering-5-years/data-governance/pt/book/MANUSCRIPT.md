@@ -70,8 +70,8 @@ O crescimento linear é uma suposição; revise-a quando os planos de instalaç�
 ### Exercícios
 
 - **EX001 — Taxa diária.** Aproximadamente quantas leituras chegam por dia? *Rubrica:* 3 = cerca de 2,16 milhões;; 2 = próximo;; 1 = errado;; 0 = nenhuma.
-- **EX002 — Falha de fluxo.** O que pode significar uma queda brusca na taxa de leituras? *Rubrica:* 3 = um fluxo de dados com falha;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX003 — Efeito da agregação.** O que faz a agregação em totais diários depois de dois anos? *Rubrica:* 3 = reduz muito o armazenamento;; 2 = menciona redução;; 1 = nenhuma;; 0 = nenhuma.
+- **EX002 — Falha de fluxo.** O que pode significar uma queda brusca na taxa de leituras? *Rubrica:* 3 = um fluxo de dados com falha;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX003 — Efeito da agregação.** O que faz a agregação em totais diários depois de dois anos? *Rubrica:* 3 = reduz muito o armazenamento;; 2 = menciona redução;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-02"></a>
 
@@ -109,9 +109,9 @@ Regras formais ainda podem codificar o requisito errado; valide-as com os donos 
 
 ### Exercícios
 
-- **EX004 — Regra do conjunto vazio.** Que conjunto deveria ser vazio? *Rubrica:* 3 = medidores com leituras mas sem imóvel vinculado;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX004 — Regra do conjunto vazio.** Que conjunto deveria ser vazio? *Rubrica:* 3 = medidores com leituras mas sem imóvel vinculado;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX005 — Verificação de função.** Quantos medidores correspondiam a dois imóveis? *Rubrica:* 3 = doze;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX006 — Uso do grafo.** O que mostra seguir as arestas no sentido inverso a partir de um relatório? *Rubrica:* 3 = todas as fontes das quais ele depende;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX006 — Uso do grafo.** O que mostra seguir as arestas no sentido inverso a partir de um relatório? *Rubrica:* 3 = todas as fontes das quais ele depende;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-03"></a>
 
@@ -149,8 +149,8 @@ A calibração reduz a incerteza, mas não a elimina; informe-a.
 
 ### Exercícios
 
-- **EX007 — Efeito da deriva.** Como uma deriva para cima do sensor afeta as estimativas de perdas? *Rubrica:* 3 = as perdas parecem menores;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX008 — Erro de unidade.** O que a confusão de unidades fez com um distrito? *Rubrica:* 3 = inflou mil vezes a demanda;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX007 — Efeito da deriva.** Como uma deriva para cima do sensor afeta as estimativas de perdas? *Rubrica:* 3 = as perdas parecem menores;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX008 — Erro de unidade.** O que a confusão de unidades fez com um distrito? *Rubrica:* 3 = inflou mil vezes a demanda;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX009 — Campos de metadados.** Cite três campos de metadados de sensor. *Rubrica:* 3 = identificador, localização, tipo, unidade, exatidão, instalação, calibração, responsável;; 2 = três;; 1 = um;; 0 = nenhuma.
 
 <a id="ch-04"></a>
@@ -189,9 +189,9 @@ As regras de validação no código se afastam das regras escritas; revise as du
 
 ### Exercícios
 
-- **EX010 — Arquivo de rejeitos.** Por que gravar um arquivo de rejeitos em vez de descartar linhas? *Rubrica:* 3 = dá aos donos evidências para corrigir a origem;; 2 = menciona evidências;; 1 = nenhuma;; 0 = nenhuma.
+- **EX010 — Arquivo de rejeitos.** Por que gravar um arquivo de rejeitos em vez de descartar linhas? *Rubrica:* 3 = dá aos donos evidências para corrigir a origem;; 2 = menciona evidências;; 1 = vago;; 0 = nenhuma.
 - **EX011 — Política de erros.** O que significa falhar alto na estrutura e baixo no conteúdo? *Rubrica:* 3 = parar quando falta coluna, registrar linhas ruins e continuar;; 2 = ambos;; 1 = um;; 0 = nenhuma.
-- **EX012 — Achado da revisão.** O que a revisão de código encontrou? *Rubrica:* 3 = um erro *off-by-one* nos carimbos de data e hora;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX012 — Achado da revisão.** O que a revisão de código encontrou? *Rubrica:* 3 = um erro *off-by-one* nos carimbos de data e hora;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-05"></a>
 
@@ -230,7 +230,7 @@ Resumos curtos podem perder ressalvas; mantenha visível a principal limitação
 ### Exercícios
 
 - **EX013 — Estrutura da nota.** Que estrutura a Profa. Varga exigiu? *Rubrica:* 3 = resumo, contexto, método, achados, impacto, recomendações;; 2 = a maioria;; 1 = poucos;; 0 = nenhuma.
-- **EX014 — Decisão do gestor.** Que decisão o gestor tomou? *Rubrica:* 3 = aprovar a validação de unidades em todos os fluxos;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX014 — Decisão do gestor.** Que decisão o gestor tomou? *Rubrica:* 3 = aprovar a validação de unidades em todos os fluxos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX015 — Conteúdo do registro.** O que contém um registro de decisão? *Rubrica:* 3 = data, decisão, quem decidiu, opções, evidências;; 2 = a maioria;; 1 = um;; 0 = nenhuma.
 
 <a id="ch-06"></a>
@@ -310,8 +310,8 @@ Os limites de controle supõem processos estáveis; recalcule-os depois de mudan
 ### Exercícios
 
 - **EX019 — Estimativa de erro.** Que taxa de erro a amostra indicou? *Rubrica:* 3 = 2 por cento;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX020 — Julgamento da meta.** Por que o dono não pode afirmar que a meta de 3 por cento foi cumprida? *Rubrica:* 3 = o intervalo inclui valores acima de 3 por cento;; 2 = menciona intervalo;; 1 = nenhuma;; 0 = nenhuma.
-- **EX021 — Sinal de controle.** O que causou o dia fora dos limites? *Rubrica:* 3 = uma atualização de firmware em um lote de medidores;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX020 — Julgamento da meta.** Por que o dono não pode afirmar que a meta de 3 por cento foi cumprida? *Rubrica:* 3 = o intervalo inclui valores acima de 3 por cento;; 2 = menciona intervalo;; 1 = vago;; 0 = nenhuma.
+- **EX021 — Sinal de controle.** O que causou o dia fora dos limites? *Rubrica:* 3 = uma atualização de firmware em um lote de medidores;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-08"></a>
 
@@ -349,9 +349,9 @@ Kofi liga os limites de memória dos medidores às regras de dados atrasados, en
 
 ### Exercícios
 
-- **EX022 — Limite de sete dias.** Quando um medidor perde leituras? *Rubrica:* 3 = falha mais longa que seu período de armazenamento;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX023 — Horário de verão.** Que problema o horário de verão cria? *Rubrica:* 3 = horas aparentemente duplicadas ou ausentes;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX024 — Limite do checksum.** O que um *checksum* não prova? *Rubrica:* 3 = quem enviou os dados;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX022 — Limite de sete dias.** Quando um medidor perde leituras? *Rubrica:* 3 = falha mais longa que seu período de armazenamento;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX023 — Horário de verão.** Que problema o horário de verão cria? *Rubrica:* 3 = horas aparentemente duplicadas ou ausentes;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX024 — Limite do checksum.** O que um *checksum* não prova? *Rubrica:* 3 = quem enviou os dados;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-09"></a>
 
@@ -390,8 +390,8 @@ Os testes cobrem apenas os casos que alguém imaginou; acrescente casos tirados 
 ### Exercícios
 
 - **EX025 — Estrutura da regra.** O que cada regra expõe? *Rubrica:* 3 = nome, descrição e função;; 2 = todos;; 1 = um;; 0 = nenhuma.
-- **EX026 — Achado do teste.** O que o teste unitário revelou? *Rubrica:* 3 = a regra rejeitava indevidamente trocas de medidor;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX027 — Revisão do domínio.** O que o engenheiro de medição apontou? *Rubrica:* 3 = medidores antigos enviam leituras só uma vez por dia;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX026 — Achado do teste.** O que o teste unitário revelou? *Rubrica:* 3 = a regra rejeitava indevidamente trocas de medidor;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX027 — Revisão do domínio.** O que o engenheiro de medição apontou? *Rubrica:* 3 = medidores antigos enviam leituras só uma vez por dia;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-10"></a>
 
@@ -429,9 +429,9 @@ A pressão ética costuma ser sutil; registre as decisões e seus motivos.
 
 ### Exercícios
 
-- **EX028 — Exemplo de segurança.** Dê uma consequência de dados ruins para a segurança das pessoas. *Rubrica:* 3 = uma leitura de pressão errada deixa um hospital sem água;; 2 = menciona dano;; 1 = nenhuma;; 0 = nenhuma.
+- **EX028 — Exemplo de segurança.** Dê uma consequência de dados ruins para a segurança das pessoas. *Rubrica:* 3 = uma leitura de pressão errada deixa um hospital sem água;; 2 = menciona dano;; 1 = vago;; 0 = nenhuma.
 - **EX029 — Cuidado com o cadastro.** O que Kofi recomendou para o cadastro prioritário? *Rubrica:* 3 = confirmação anual e acesso restrito;; 2 = ambos;; 1 = um;; 0 = nenhuma.
-- **EX030 — Competência.** Por que Kofi encaminhou a mudança na qualidade da água? *Rubrica:* 3 = faltava-lhe competência em química;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX030 — Competência.** Por que Kofi encaminhou a mudança na qualidade da água? *Rubrica:* 3 = faltava-lhe competência em química;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-11"></a>
 
@@ -469,9 +469,9 @@ Documentos de fluxo envelhecem depressa; revise-os depois de mudanças na rede.
 
 ### Exercícios
 
-- **EX031 — Troca de responsável.** Por que ninguém conseguia responder a perguntas de ponta a ponta? *Rubrica:* 3 = o responsável pela governança muda a cada fronteira;; 2 = menciona fronteiras;; 1 = nenhuma;; 0 = nenhuma.
-- **EX032 — Lacuna industrial.** Que lacuna Kofi encontrou na rede industrial? *Rubrica:* 3 = protocolo sem autenticação;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX033 — Dados atrasados.** Quando os atrasos se concentram? *Rubrica:* 3 = em períodos de tempestade;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX031 — Troca de responsável.** Por que ninguém conseguia responder a perguntas de ponta a ponta? *Rubrica:* 3 = o responsável pela governança muda a cada fronteira;; 2 = menciona fronteiras;; 1 = vago;; 0 = nenhuma.
+- **EX032 — Lacuna industrial.** Que lacuna Kofi encontrou na rede industrial? *Rubrica:* 3 = protocolo sem autenticação;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX033 — Dados atrasados.** Quando os atrasos se concentram? *Rubrica:* 3 = em períodos de tempestade;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-12"></a>
 
@@ -509,9 +509,9 @@ As permissões se desviam depois de correções emergenciais; verifique-as com r
 
 ### Exercícios
 
-- **EX034 — Correção de permissão.** O que Kofi mudou no diretório de extratos? *Rubrica:* 3 = leitura só pela conta de processamento e pela equipe de dados;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX035 — Encadeamento de rotinas.** Como as rotinas agora se protegem de entradas ruins? *Rubrica:* 3 = cada uma verifica se a anterior teve sucesso com as contagens esperadas;; 2 = menciona a anterior;; 1 = nenhuma;; 0 = nenhuma.
-- **EX036 — Achado da homologação.** O que o teste em homologação detectou? *Rubrica:* 3 = uma mudança na interpretação de carimbos de data e hora;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX034 — Correção de permissão.** O que Kofi mudou no diretório de extratos? *Rubrica:* 3 = leitura só pela conta de processamento e pela equipe de dados;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX035 — Encadeamento de rotinas.** Como as rotinas agora se protegem de entradas ruins? *Rubrica:* 3 = cada uma verifica se a anterior teve sucesso com as contagens esperadas;; 2 = menciona a anterior;; 1 = vago;; 0 = nenhuma.
+- **EX036 — Achado da homologação.** O que o teste em homologação detectou? *Rubrica:* 3 = uma mudança na interpretação de carimbos de data e hora;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-13"></a>
 
@@ -549,9 +549,9 @@ Restrições podem bloquear correções urgentes; defina um processo controlado 
 
 ### Exercícios
 
-- **EX037 — Finalidade da chave estrangeira.** O que as chaves estrangeiras garantem aqui? *Rubrica:* 3 = leituras se referem a medidores reais, e medidores a imóveis reais;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX037 — Finalidade da chave estrangeira.** O que as chaves estrangeiras garantem aqui? *Rubrica:* 3 = leituras se referem a medidores reais, e medidores a imóveis reais;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX038 — Listas de distritos.** Quantas versões da lista de distritos existiam? *Rubrica:* 3 = três;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX039 — Finalidade do histórico.** Por que guardar datas de início e fim de vigência? *Rubrica:* 3 = para explicar contas antigas com os fatos da época;; 2 = menciona o passado;; 1 = nenhuma;; 0 = nenhuma.
+- **EX039 — Finalidade do histórico.** Por que guardar datas de início e fim de vigência? *Rubrica:* 3 = para explicar contas antigas com os fatos da época;; 2 = menciona o passado;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-14"></a>
 
@@ -589,9 +589,9 @@ Tolerâncias largas demais escondem mudanças reais; revise-as com os responsáv
 
 ### Exercícios
 
-- **EX040 — Requisito testável.** Dê um requisito testável do *pipeline*. *Rubrica:* 3 = leituras aceitas têm medidor e unidade válidos; rejeitos relatados em uma hora; totais conciliam;; 2 = um;; 1 = nenhuma;; 0 = nenhuma.
-- **EX041 — Achado dos testes de dados.** O que os testes de dados detectaram? *Rubrica:* 3 = um arquivo do fornecedor com nova ordem de colunas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX042 — Valores fixos.** O que substituiu os limiares fixos no código? *Rubrica:* 3 = valores de configuração revisados pelos donos;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX040 — Requisito testável.** Dê um requisito testável do *pipeline*. *Rubrica:* 3 = leituras aceitas têm medidor e unidade válidos; rejeitos relatados em uma hora; totais conciliam;; 2 = um;; 1 = vago;; 0 = nenhuma.
+- **EX041 — Achado dos testes de dados.** O que os testes de dados detectaram? *Rubrica:* 3 = um arquivo do fornecedor com nova ordem de colunas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX042 — Valores fixos.** O que substituiu os limiares fixos no código? *Rubrica:* 3 = valores de configuração revisados pelos donos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-15"></a>
 
@@ -630,7 +630,7 @@ Dados pseudonimizados continuam sendo dados pessoais; proteja-os de acordo.
 ### Exercícios
 
 - **EX043 — Prioridade dos dados de controle.** Quais propriedades vêm primeiro para os dados do sistema de controle? *Rubrica:* 3 = disponibilidade e integridade;; 2 = ambas;; 1 = uma;; 0 = nenhuma.
-- **EX044 — Conta compartilhada.** Que problema do *data warehouse* Kofi corrigiu? *Rubrica:* 3 = conta compartilhada de analistas substituída por contas nominais;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX044 — Conta compartilhada.** Que problema do *data warehouse* Kofi corrigiu? *Rubrica:* 3 = conta compartilhada de analistas substituída por contas nominais;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX045 — Regras para extratos.** Cite duas regras para extratos futuros. *Rubrica:* 3 = aprovação do dono, campos mínimos, criptografia, expiração;; 2 = duas;; 1 = uma;; 0 = nenhuma.
 
 <a id="ch-16"></a>
@@ -669,7 +669,7 @@ Documentos de interface falham se os parceiros não estiverem obrigados a cumpri
 
 ### Exercícios
 
-- **EX046 — Sintoma distante.** Como um defeito de firmware em medidores pode aparecer? *Rubrica:* 3 = como uma reclamação de conta;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX046 — Sintoma distante.** Como um defeito de firmware em medidores pode aparecer? *Rubrica:* 3 = como uma reclamação de conta;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX047 — Campos da interface.** O que define um documento de controle de interface? *Rubrica:* 3 = campos, unidades, formatos, horários, tratamento de erros, contatos;; 2 = a maioria;; 1 = poucos;; 0 = nenhuma.
 - **EX048 — Etapa mais fraca.** Qual etapa do ciclo de vida estava menos definida? *Rubrica:* 3 = a eliminação;; 2 = correto;; 1 = outra;; 0 = nenhuma.
 
@@ -709,7 +709,7 @@ Metas demais sobrecarregam os donos; mantenha as malhas focadas.
 
 ### Exercícios
 
-- **EX049 — Malha aberta.** Por que a malha de qualidade da Tidewater estava aberta? *Rubrica:* 3 = não havia uma etapa confiável de ação corretiva;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX049 — Malha aberta.** Por que a malha de qualidade da Tidewater estava aberta? *Rubrica:* 3 = não havia uma etapa confiável de ação corretiva;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX050 — Correção da oscilação.** Como Kofi impediu que os limiares oscilassem? *Rubrica:* 3 = dados semanais de rejeição e passos pequenos;; 2 = ambos;; 1 = um;; 0 = nenhuma.
 - **EX051 — Velocidade da malha.** Com que rapidez as ações passaram a ser registradas depois da nomeação de responsáveis? *Rubrica:* 3 = uma semana em vez de três;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 
@@ -749,9 +749,9 @@ As etiquetas só valem o que vale sua manutenção; audite-as.
 
 ### Exercícios
 
-- **EX052 — Regra para dados de teste.** Que regra Kofi propôs para os ambientes de teste? *Rubrica:* 3 = dados pessoais de produção nunca entram em teste;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX053 — Controles por etiqueta.** Por que atrelar os controles a etiquetas de metadados? *Rubrica:* 3 = as proteções se aplicam automaticamente e escalam;; 2 = menciona automático;; 1 = nenhuma;; 0 = nenhuma.
-- **EX054 — Responsável pelas etiquetas.** Quem aprova as etiquetas de classificação? *Rubrica:* 3 = os donos dos dados, no registro;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX052 — Regra para dados de teste.** Que regra Kofi propôs para os ambientes de teste? *Rubrica:* 3 = dados pessoais de produção nunca entram em teste;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX053 — Controles por etiqueta.** Por que atrelar os controles a etiquetas de metadados? *Rubrica:* 3 = as proteções se aplicam automaticamente e escalam;; 2 = menciona automático;; 1 = vago;; 0 = nenhuma.
+- **EX054 — Responsável pelas etiquetas.** Quem aprova as etiquetas de classificação? *Rubrica:* 3 = os donos dos dados, no registro;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-19"></a>
 
@@ -791,7 +791,7 @@ Kofi encontra 230 medidores retirados com identidades válidas, vincula a revoga
 
 - **EX055 — Identidades obsoletas.** Quantos medidores retirados ainda tinham identidades válidas? *Rubrica:* 3 = 230;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 - **EX056 — Status do pseudônimo.** Pseudônimos gerados por *hash* com chave são anônimos? *Rubrica:* 3 = não, continuam sendo dados pessoais;; 2 = correto;; 1 = sim;; 0 = nenhuma.
-- **EX057 — Local da chave.** Onde uma chave estava guardada indevidamente? *Rubrica:* 3 = em um arquivo de script;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX057 — Local da chave.** Onde uma chave estava guardada indevidamente? *Rubrica:* 3 = em um arquivo de script;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-20"></a>
 
@@ -830,8 +830,8 @@ Organogramas de papéis não criam autoridade; confirme-a nas descrições de ca
 ### Exercícios
 
 - **EX058 — Direitos sobre retenção.** Quem decidia a retenção antes do mapa? *Rubrica:* 3 = ninguém;; 2 = correto;; 1 = alguém;; 0 = nenhuma.
-- **EX059 — Dever do curador.** O que fazem os curadores? *Rubrica:* 3 = mantêm regras e definições no dia a dia;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX060 — Indicador de foco.** Que indicador os capítulos seguintes acompanham? *Rubrica:* 3 = o indicador de perdas informado ao regulador;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX059 — Dever do curador.** O que fazem os curadores? *Rubrica:* 3 = mantêm regras e definições no dia a dia;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX060 — Indicador de foco.** Que indicador os capítulos seguintes acompanham? *Rubrica:* 3 = o indicador de perdas informado ao regulador;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-21"></a>
 
@@ -870,7 +870,7 @@ Um limiar sem método de medição não é testável; defina os dois.
 ### Exercícios
 
 - **EX061 — Requisito de pontualidade.** Que afirmação de pontualidade Kofi escreveu? *Rubrica:* 3 = fluxo até as 06:00 em pelo menos 95% dos dias;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
-- **EX062 — Conflito da rua.** Como foi resolvido o conflito sobre o nível de rua? *Rubrica:* 3 = agregação por distrito com pelo menos cinquenta imóveis;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX062 — Conflito da rua.** Como foi resolvido o conflito sobre o nível de rua? *Rubrica:* 3 = agregação por distrito com pelo menos cinquenta imóveis;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX063 — Topo da lista.** Quais requisitos ficaram no topo? *Rubrica:* 3 = designação de donos, conciliação e pontualidade;; 2 = a maioria;; 1 = um;; 0 = nenhuma.
 
 <a id="ch-22"></a>
@@ -942,7 +942,7 @@ A linhagem estática não vê dependências em tempo de execução; compare-a co
 
 - **EX064 — Contagem a montante.** Quantos nós a montante há por trás do número do conselho? *Rubrica:* 3 = sete;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 - **EX065 — Nós sem dono.** Quais nós não tinham dono? *Rubrica:* 3 = field_app.manual_read e sensors.flow_raw;; 2 = ambos;; 1 = um;; 0 = nenhuma.
-- **EX066 — Verificação de desvio.** Como Kofi encontra dependências ausentes do modelo? *Rubrica:* 3 = comparação trimestral com os registros de consultas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX066 — Verificação de desvio.** Como Kofi encontra dependências ausentes do modelo? *Rubrica:* 3 = comparação trimestral com os registros de consultas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-23"></a>
 
@@ -981,8 +981,8 @@ Notas definidas por uma só pessoa são palpites; acorde-as com os donos.
 ### Exercícios
 
 - **EX067 — Maior risco.** Qual falha ficou em primeiro lugar? *Rubrica:* 3 = um sensor de vazão travado;; 2 = correto;; 1 = outra;; 0 = nenhuma.
-- **EX068 — Sintomas comuns.** Por que a detecção deve servir a ameaças e a falhas? *Rubrica:* 3 = muitas vezes produzem os mesmos sintomas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX069 — Mitigação dos sensores.** Que mitigação trata os sensores travados? *Rubrica:* 3 = um detector *flat-line* a cargo da operação da rede;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX068 — Sintomas comuns.** Por que a detecção deve servir a ameaças e a falhas? *Rubrica:* 3 = muitas vezes produzem os mesmos sintomas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX069 — Mitigação dos sensores.** Que mitigação trata os sensores travados? *Rubrica:* 3 = um detector *flat-line* a cargo da operação da rede;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-24"></a>
 
@@ -1021,8 +1021,8 @@ Limiares copiados de outra companhia ignoram as condições locais.
 ### Exercícios
 
 - **EX070 — Dimensões dos sensores.** Quais dimensões mais importam para os sensores de vazão? *Rubrica:* 3 = acurácia e completude;; 2 = ambas;; 1 = uma;; 0 = nenhuma.
-- **EX071 — Método de acurácia.** Como a acurácia dos sensores é verificada? *Rubrica:* 3 = com um medidor de referência portátil durante a manutenção;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX072 — Limite da validade.** O que as regras de validade não pegam? *Rubrica:* 3 = valores plausíveis, mas errados;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX071 — Método de acurácia.** Como a acurácia dos sensores é verificada? *Rubrica:* 3 = com um medidor de referência portátil durante a manutenção;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX072 — Limite da validade.** O que as regras de validade não pegam? *Rubrica:* 3 = valores plausíveis, mas errados;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-25"></a>
 
@@ -1060,7 +1060,7 @@ Defender um projeto em vez de ouvir desperdiça a crítica.
 
 ### Exercícios
 
-- **EX073 — Fraqueza central.** Que fraqueza a banca viu no serviço central? *Rubrica:* 3 = ponto único de falha;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX073 — Fraqueza central.** Que fraqueza a banca viu no serviço central? *Rubrica:* 3 = ponto único de falha;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX074 — Mudança nos alertas.** Como as notificações aos donos foram alteradas? *Rubrica:* 3 = alertas só em violações, mais um resumo semanal;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
 - **EX075 — Subestimado.** O que Kofi havia subestimado? *Rubrica:* 3 = as falhas e o comportamento humano;; 2 = ambos;; 1 = um;; 0 = nenhuma.
 
@@ -1100,9 +1100,9 @@ Arquiteturas da moda podem não servir; pontue-as em relação aos seus requisit
 
 ### Exercícios
 
-- **EX076 — Fraqueza da mesh.** Por que a *data mesh* teve nota baixa na Tidewater? *Rubrica:* 3 = conciliação fraca entre domínios na maturidade atual;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX076 — Fraqueza da mesh.** Por que a *data mesh* teve nota baixa na Tidewater? *Rubrica:* 3 = conciliação fraca entre domínios na maturidade atual;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX077 — Opção escolhida.** Que arquitetura foi escolhida? *Rubrica:* 3 = a híbrida;; 2 = correto;; 1 = outra;; 0 = nenhuma.
-- **EX078 — Condição para reabrir.** Dê uma condição para reabrir a decisão. *Rubrica:* 3 = equipes de domínio atingirem níveis de competência acordados;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX078 — Condição para reabrir.** Dê uma condição para reabrir a decisão. *Rubrica:* 3 = equipes de domínio atingirem níveis de competência acordados;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-27"></a>
 
@@ -1140,9 +1140,9 @@ Controles sem evidência não podem ser demonstrados.
 
 ### Exercícios
 
-- **EX079 — Exemplo corretivo.** Dê um controle corretivo. *Rubrica:* 3 = nova solicitação de arquivos, correções aprovadas ou republicação de números;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX079 — Exemplo corretivo.** Dê um controle corretivo. *Rubrica:* 3 = nova solicitação de arquivos, correções aprovadas ou republicação de números;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX080 — Tamanho do catálogo.** Quantos controles há no catálogo? *Rubrica:* 3 = trinta e um;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX081 — Método de teste.** Como os controles são testados a cada trimestre? *Rubrica:* 3 = injetando erros sintéticos em teste;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX081 — Método de teste.** Como os controles são testados a cada trimestre? *Rubrica:* 3 = injetando erros sintéticos em teste;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-28"></a>
 
@@ -1215,8 +1215,8 @@ A média das taxas por regra superestima a qualidade; informe a taxa de todas as
 ### Exercícios
 
 - **EX082 — Taxa de todas as regras.** Que proporção das linhas passou em todas as regras? *Rubrica:* 3 = 96,5% (9.650 de 10.000);; 2 = correto;; 1 = parcial;; 0 = nenhuma.
-- **EX083 — Causa das leituras menores.** O que causou principalmente as leituras menores que a anterior? *Rubrica:* 3 = trocas de medidor começando do zero;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX084 — Tratamento da meta.** Como Kofi lidou com a meta não atingida? *Rubrica:* 3 = relatou com honestidade, com causas e correções;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX083 — Causa das leituras menores.** O que causou principalmente as leituras menores que a anterior? *Rubrica:* 3 = trocas de medidor começando do zero;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX084 — Tratamento da meta.** Como Kofi lidou com a meta não atingida? *Rubrica:* 3 = relatou com honestidade, com causas e correções;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-29"></a>
 
@@ -1275,7 +1275,7 @@ Médias escondem agrupamentos; plote os valores diários.
 ### Exercícios
 
 - **EX085 — Proporção de atrasos.** Em que proporção dos dias o fluxo atrasou? *Rubrica:* 3 = 12,2% (11 de 90);; 2 = correto;; 1 = parcial;; 0 = nenhuma.
-- **EX086 — Causa do agrupamento.** O que causou a semana de atrasos? *Rubrica:* 3 = a rotina de backup de uma atualização rodando antes da exportação;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX086 — Causa do agrupamento.** O que causou a semana de atrasos? *Rubrica:* 3 = a rotina de backup de uma atualização rodando antes da exportação;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX087 — Dias espalhados.** Quantos dias de atraso ficaram fora daquela semana? *Rubrica:* 3 = quatro;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 
 <a id="ch-30"></a>
@@ -1315,8 +1315,8 @@ Passar em testes com erros injetados não prova completude; declare os limites.
 ### Exercícios
 
 - **EX088 — Contagem de detecções.** Quantos erros injetados foram detectados no início? *Rubrica:* 3 = dez de doze;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX089 — Correção das colunas trocadas.** Que verificação pega colunas trocadas? *Rubrica:* 3 = comparar a distribuição de cada coluna com o histórico;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX090 — Verificação versus validação.** A que pergunta a verificação responde? *Rubrica:* 3 = se os controles foram construídos do jeito certo;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX089 — Correção das colunas trocadas.** Que verificação pega colunas trocadas? *Rubrica:* 3 = comparar a distribuição de cada coluna com o histórico;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX090 — Verificação versus validação.** A que pergunta a verificação responde? *Rubrica:* 3 = se os controles foram construídos do jeito certo;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 <a id="ch-31"></a>
 
 ## Capítulo 31 — Governança de dados: implementação II
@@ -1354,8 +1354,8 @@ Selos podem enganar quando as regras são fracas; vincule-os à descrição das 
 ### Exercícios
 
 - **EX091 — Campos automatizados.** Quais metadados são puxados automaticamente? *Rubrica:* 3 = detalhes de esquema, horários de atualização e resultados de qualidade;; 2 = a maioria;; 1 = um;; 0 = nenhuma.
-- **EX092 — Regra de herança.** Que classificação recebe uma tabela derivada? *Rubrica:* 3 = nunca inferior à de suas entradas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX093 — Efeito dos selos.** Como os selos mudaram o comportamento dos engenheiros? *Rubrica:* 3 = eles consultam os selos e questionam os donos sobre notas ruins;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX092 — Regra de herança.** Que classificação recebe uma tabela derivada? *Rubrica:* 3 = nunca inferior à de suas entradas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX093 — Efeito dos selos.** Como os selos mudaram o comportamento dos engenheiros? *Rubrica:* 3 = eles consultam os selos e questionam os donos sobre notas ruins;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-32"></a>
 
@@ -1456,9 +1456,9 @@ Tratar dados de segurança como dados de negócio subestima o dano.
 
 ### Exercícios
 
-- **EX097 — Revisor adicional.** Quem mais revisa mudanças em dados relevantes para a segurança? *Rubrica:* 3 = o engenheiro de segurança operacional;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX098 — Dependência do painel.** Por que a resposta a incidentes não deve depender do painel de perdas? *Rubrica:* 3 = ele depende de um único servidor do *data warehouse*;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX099 — Constatação do exercício de mesa.** O que os operadores apontaram? *Rubrica:* 3 = as leituras manuais precisam de formulários e unidades padronizados;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX097 — Revisor adicional.** Quem mais revisa mudanças em dados relevantes para a segurança? *Rubrica:* 3 = o engenheiro de segurança operacional;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX098 — Dependência do painel.** Por que a resposta a incidentes não deve depender do painel de perdas? *Rubrica:* 3 = ele depende de um único servidor do *data warehouse*;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX099 — Constatação do exercício de mesa.** O que os operadores apontaram? *Rubrica:* 3 = as leituras manuais precisam de formulários e unidades padronizados;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-34"></a>
 
@@ -1497,7 +1497,7 @@ Testes de componentes aprovados não significam que o sistema funciona.
 ### Exercícios
 
 - **EX100 — Prazo do aviso.** Com quanta antecedência as mudanças de interface precisam ser avisadas? *Rubrica:* 3 = duas semanas, com um arquivo de teste;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
-- **EX101 — Constatação de ponta a ponta.** O que a primeira execução de ponta a ponta revelou? *Rubrica:* 3 = os resultados da conciliação não chegavam ao catálogo;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX101 — Constatação de ponta a ponta.** O que a primeira execução de ponta a ponta revelou? *Rubrica:* 3 = os resultados da conciliação não chegavam ao catálogo;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX102 — Dono da integração.** Quem é dono do teste de ponta a ponta? *Rubrica:* 3 = o líder de governança de dados;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 
 <a id="ch-35"></a>
@@ -1536,9 +1536,9 @@ Garantias de fornecedores precisam de verificação; consulte as especificaçõe
 
 ### Exercícios
 
-- **EX103 — Componente novo.** Que componente novo Kofi acrescentou? *Rubrica:* 3 = um *model card* para o algoritmo de vazamentos;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX103 — Componente novo.** Que componente novo Kofi acrescentou? *Rubrica:* 3 = um *model card* para o algoritmo de vazamentos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX104 — Verificação de áudio.** Os registradores gravam áudio? *Rubrica:* 3 = não, apenas resumos de frequência;; 2 = correto;; 1 = sim;; 0 = nenhuma.
-- **EX105 — Elogio da banca.** Que melhora a banca notou? *Rubrica:* 3 = a antecipação de falhas e das preocupações das pessoas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX105 — Elogio da banca.** Que melhora a banca notou? *Rubrica:* 3 = a antecipação de falhas e das preocupações das pessoas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-36"></a>
 
@@ -1577,8 +1577,8 @@ Aposentar controles silenciosos sem testá-los pode remover uma proteção neces
 ### Exercícios
 
 - **EX106 — Crescimento do volume.** Por quanto a leitura horária multiplica o volume? *Rubrica:* 3 = vinte e quatro vezes;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX107 — Mudança de eficiência.** Cite uma mudança de eficiência. *Rubrica:* 3 = processamento incremental, partições por distrito ou verificações na ingestão;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
-- **EX108 — Controles silenciosos.** O que Kofi fez antes de aposentar controles silenciosos? *Rubrica:* 3 = testou-os por injeção;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX107 — Mudança de eficiência.** Cite uma mudança de eficiência. *Rubrica:* 3 = processamento incremental, partições por distrito ou verificações na ingestão;; 2 = uma;; 1 = vago;; 0 = nenhuma.
+- **EX108 — Controles silenciosos.** O que Kofi fez antes de aposentar controles silenciosos? *Rubrica:* 3 = testou-os por injeção;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-37"></a>
 
@@ -1617,8 +1617,8 @@ Enviar estimativas em silêncio destrói a confiança; comunique os atrasos.
 ### Exercícios
 
 - **EX109 — Horário da triagem.** Até quando os curadores fazem a triagem dos alertas? *Rubrica:* 3 = até as nove da manhã;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX110 — Falha no dia do relatório.** O que o líder do incidente fez quando uma extração falhou no dia do relatório? *Rubrica:* 3 = avisou o regulador de que os números atrasariam um dia;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX111 — Teste dos runbooks.** Como os *runbooks* são testados? *Rubrica:* 3 = um curador que não os escreveu os segue diante de um incidente sintético;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX110 — Falha no dia do relatório.** O que o líder do incidente fez quando uma extração falhou no dia do relatório? *Rubrica:* 3 = avisou o regulador de que os números atrasariam um dia;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX111 — Teste dos runbooks.** Como os *runbooks* são testados? *Rubrica:* 3 = um curador que não os escreveu os segue diante de um incidente sintético;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-38"></a>
 
@@ -1656,9 +1656,9 @@ A satisfação dos usuários, sozinha, não demonstra eficácia; combine-a com m
 
 ### Exercícios
 
-- **EX112 — Queixa do faturamento.** O que confundia os analistas de faturamento? *Rubrica:* 3 = os nomes técnicos das regras nos alertas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX113 — Correção para a operação.** Como Kofi alcançou a equipe de operação? *Rubrica:* 3 = com as informações principais do catálogo no painel da sala de controle;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX114 — Cautela causal.** Contra o que a Profa. Varga alertou? *Rubrica:* 3 = afirmar que a governança causou a melhora na localização de vazamentos sem evidências mais fortes;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX112 — Queixa do faturamento.** O que confundia os analistas de faturamento? *Rubrica:* 3 = os nomes técnicos das regras nos alertas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX113 — Correção para a operação.** Como Kofi alcançou a equipe de operação? *Rubrica:* 3 = com as informações principais do catálogo no painel da sala de controle;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX114 — Cautela causal.** Contra o que a Profa. Varga alertou? *Rubrica:* 3 = afirmar que a governança causou a melhora na localização de vazamentos sem evidências mais fortes;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-39"></a>
 
@@ -1696,8 +1696,8 @@ Uma governança que depende de poucos entusiastas é frágil; planeje a rotativi
 
 ### Exercícios
 
-- **EX115 — Saída da curadora.** O que aconteceu quando a curadora do faturamento saiu? *Rubrica:* 3 = os dados de referência das tarifas ficaram dois meses sem atualização;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX116 — Gatilho do desligamento.** O que dispara a designação de um sucessor? *Rubrica:* 3 = os vínculos com o diretório, que lembram o líder de governança;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX115 — Saída da curadora.** O que aconteceu quando a curadora do faturamento saiu? *Rubrica:* 3 = os dados de referência das tarifas ficaram dois meses sem atualização;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX116 — Gatilho do desligamento.** O que dispara a designação de um sucessor? *Rubrica:* 3 = os vínculos com o diretório, que lembram o líder de governança;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX117 — Risco do esforço.** Que risco o esforço concentrado criava? *Rubrica:* 3 = esgotamento e pontos únicos de falha;; 2 = ambos;; 1 = um;; 0 = nenhuma.
 
 <a id="ch-40"></a>
@@ -1737,8 +1737,8 @@ Testar só o caminho principal deixa escapar rotas laterais para os dados govern
 ### Exercícios
 
 - **EX118 — Falhas novas.** Quantos testes novos falharam? *Rubrica:* 3 = dois;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX119 — Correção dos contatos.** O que substituiu a lista de contatos desatualizada? *Rubrica:* 3 = links para a escala de plantão;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX120 — Lição das rotas laterais.** De onde vieram as duas falhas? *Rubrica:* 3 = de componentes fora do caminho principal;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX119 — Correção dos contatos.** O que substituiu a lista de contatos desatualizada? *Rubrica:* 3 = links para a escala de plantão;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX120 — Lição das rotas laterais.** De onde vieram as duas falhas? *Rubrica:* 3 = de componentes fora do caminho principal;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-41"></a>
 
@@ -1776,8 +1776,8 @@ Otimizar a medida de uma equipe pode prejudicar o sistema; meça a cadeia.
 
 ### Exercícios
 
-- **EX121 — Atalho do faturamento.** O que o atalho do faturamento causou? *Rubrica:* 3 = erros empurrados para a conciliação, mais lenta;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX122 — Gargalo.** Qual era o gargalo? *Rubrica:* 3 = a aprovação manual das correções por um único supervisor;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX121 — Atalho do faturamento.** O que o atalho do faturamento causou? *Rubrica:* 3 = erros empurrados para a conciliação, mais lenta;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX122 — Gargalo.** Qual era o gargalo? *Rubrica:* 3 = a aprovação manual das correções por um único supervisor;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX123 — Medidas da cadeia.** Cite as três medidas da cadeia. *Rubrica:* 3 = tempo da leitura ao número, parcela no prazo e reapresentações;; 2 = todas;; 1 = algumas;; 0 = nenhuma.
 
 <a id="ch-42"></a>
@@ -1816,9 +1816,9 @@ Recuperar um efeito plantado não prova um efeito real.
 
 ### Exercícios
 
-- **EX124 — Pergunta de pesquisa.** O que Kofi perguntou? *Rubrica:* 3 = se as quebras preveem correções posteriores das perdas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX125 — Propósito do sintético.** Por que usar dados sintéticos com respostas conhecidas? *Rubrica:* 3 = para verificar se o método consegue encontrar um efeito real;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX126 — Explicação alternativa.** Cite uma explicação alternativa a verificar. *Rubrica:* 3 = o tamanho do distrito;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX124 — Pergunta de pesquisa.** O que Kofi perguntou? *Rubrica:* 3 = se as quebras preveem correções posteriores das perdas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX125 — Propósito do sintético.** Por que usar dados sintéticos com respostas conhecidas? *Rubrica:* 3 = para verificar se o método consegue encontrar um efeito real;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX126 — Explicação alternativa.** Cite uma explicação alternativa a verificar. *Rubrica:* 3 = o tamanho do distrito;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-43"></a>
 
@@ -1856,9 +1856,9 @@ Contornar controles sob pressão de prazo os corrói; manifeste suas preocupaç�
 
 ### Exercícios
 
-- **EX127 — Tempo dos donos.** Como Kofi respeitou o tempo do gerente de medição? *Rubrica:* 3 = com uma revisão mensal em lote das mudanças de regras;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX128 — Pergunta do regulador.** O que o revisor do regulador perguntou? *Rubrica:* 3 = como a Tidewater sabe que os sensores de vazão são precisos;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX129 — Edição não aprovada.** Como Kofi lidou com a edição não aprovada? *Rubrica:* 3 = tratou do assunto em particular e a edição foi submetida à aprovação;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX127 — Tempo dos donos.** Como Kofi respeitou o tempo do gerente de medição? *Rubrica:* 3 = com uma revisão mensal em lote das mudanças de regras;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX128 — Pergunta do regulador.** O que o revisor do regulador perguntou? *Rubrica:* 3 = como a Tidewater sabe que os sensores de vazão são precisos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX129 — Edição não aprovada.** Como Kofi lidou com a edição não aprovada? *Rubrica:* 3 = tratou do assunto em particular e a edição foi submetida à aprovação;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-44"></a>
 
@@ -1896,8 +1896,8 @@ Escopo pouco claro é a falha mais comum em projetos finais; escreva-o.
 
 ### Exercícios
 
-- **EX130 — Área excluída.** O que Kofi excluiu do escopo? *Rubrica:* 3 = a lógica de controle das válvulas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX131 — Resposta ao risco sintético.** Como Kofi vai verificar os dados sintéticos de pressão? *Rubrica:* 3 = validando cedo os padrões com um engenheiro de operação;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX130 — Área excluída.** O que Kofi excluiu do escopo? *Rubrica:* 3 = a lógica de controle das válvulas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX131 — Resposta ao risco sintético.** Como Kofi vai verificar os dados sintéticos de pressão? *Rubrica:* 3 = validando cedo os padrões com um engenheiro de operação;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX132 — Critério de público.** Quem precisa compreender a demonstração? *Rubrica:* 3 = um público da operação;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 
 <a id="ch-45"></a>
@@ -1936,9 +1936,9 @@ Esconder fragilidades conhecidas desperdiça o tempo dos revisores.
 
 ### Exercícios
 
-- **EX133 — Constatação sobre limiares.** O que os revisores disseram sobre os limiares? *Rubrica:* 3 = sensores críticos precisam de limiares mais rigorosos;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX133 — Constatação sobre limiares.** O que os revisores disseram sobre os limiares? *Rubrica:* 3 = sensores críticos precisam de limiares mais rigorosos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX134 — Mudança de titularidade.** Como a titularidade foi dividida? *Rubrica:* 3 = gerente de operação para os locais críticos, gerentes distritais para os demais;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
-- **EX135 — Por que revisar.** Por que os revisores independentes são valiosos? *Rubrica:* 3 = eles não têm as premissas do projetista;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX135 — Por que revisar.** Por que os revisores independentes são valiosos? *Rubrica:* 3 = eles não têm as premissas do projetista;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-46"></a>
 
@@ -1976,9 +1976,9 @@ Demonstrações que escondem falhas enganam; mostre o registro de testes.
 
 ### Exercícios
 
-- **EX136 — Detecção tardia.** O que foi detectado com atraso no início? *Rubrica:* 3 = horas ausentes em um distrito;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX137 — Correção da detecção tardia.** O que a corrigiu? *Rubrica:* 3 = verificações horárias de completude nos locais críticos;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX138 — Limites declarados.** Cite um limite declarado por Kofi. *Rubrica:* 3 = dados sintéticos ou operação de longo prazo não testada;; 2 = um;; 1 = nenhuma;; 0 = nenhuma.
+- **EX136 — Detecção tardia.** O que foi detectado com atraso no início? *Rubrica:* 3 = horas ausentes em um distrito;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX137 — Correção da detecção tardia.** O que a corrigiu? *Rubrica:* 3 = verificações horárias de completude nos locais críticos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX138 — Limites declarados.** Cite um limite declarado por Kofi. *Rubrica:* 3 = dados sintéticos ou operação de longo prazo não testada;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-47"></a>
 
@@ -2016,8 +2016,8 @@ Declarar a recuperação quando os sistemas reiniciam ignora os dados perdidos; 
 
 ### Exercícios
 
-- **EX139 — Problema das instruções.** Onde estavam guardadas as instruções de recuperação? *Rubrica:* 3 = no servidor que falhou;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX140 — Causa da lacuna.** O que causou a lacuna de dados? *Rubrica:* 3 = um *buffer* ficou cheio e sobrescreveu dados mais antigos;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX139 — Problema das instruções.** Onde estavam guardadas as instruções de recuperação? *Rubrica:* 3 = no servidor que falhou;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX140 — Causa da lacuna.** O que causou a lacuna de dados? *Rubrica:* 3 = um *buffer* ficou cheio e sobrescreveu dados mais antigos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX141 — Definição de recuperação.** Quando a recuperação está completa? *Rubrica:* 3 = quando os dados estão conciliados;; 2 = correto;; 1 = ao reiniciar;; 0 = nenhuma.
 
 <a id="ch-48"></a>
@@ -2056,9 +2056,9 @@ Afirmações sem evidência enfraquecem o dossiê inteiro; retire-as ou sustente
 
 ### Exercícios
 
-- **EX142 — Propósito do hash.** Por que os arquivos de evidência recebem *hash*? *Rubrica:* 3 = para confirmar que não mudaram;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX143 — Lacuna de retenção.** O que a afirmação sobre retenção revelou? *Rubrica:* 3 = a regra nunca foi configurada para os dados de pressão;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX144 — Teste de navegação.** Como a navegação foi testada? *Rubrica:* 3 = uma colega que não conhecia o projeto encontrou as evidências de afirmações aleatórias;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX142 — Propósito do hash.** Por que os arquivos de evidência recebem *hash*? *Rubrica:* 3 = para confirmar que não mudaram;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX143 — Lacuna de retenção.** O que a afirmação sobre retenção revelou? *Rubrica:* 3 = a regra nunca foi configurada para os dados de pressão;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX144 — Teste de navegação.** Como a navegação foi testada? *Rubrica:* 3 = uma colega que não conhecia o projeto encontrou as evidências de afirmações aleatórias;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-49"></a>
 
@@ -2096,9 +2096,9 @@ Trabalhos organizados como diários escondem o argumento; organize-os em torno d
 
 ### Exercícios
 
-- **EX145 — Tese do trabalho.** O que o trabalho sustenta? *Rubrica:* 3 = que métodos de engenharia tornam a governança de dados em saneamento mais confiável;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX146 — Trabalho futuro.** Cite um item de trabalho futuro. *Rubrica:* 3 = dados reais anonimizados, comparação com outras empresas ou custos de longo prazo;; 2 = um;; 1 = nenhuma;; 0 = nenhuma.
-- **EX147 — Mudança pelos comentários.** Como os comentários mudaram as versões? *Rubrica:* 3 = reorganizadas em torno do argumento;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX145 — Tese do trabalho.** O que o trabalho sustenta? *Rubrica:* 3 = que métodos de engenharia tornam a governança de dados em saneamento mais confiável;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX146 — Trabalho futuro.** Cite um item de trabalho futuro. *Rubrica:* 3 = dados reais anonimizados, comparação com outras empresas ou custos de longo prazo;; 2 = um;; 1 = vago;; 0 = nenhuma.
+- **EX147 — Mudança pelos comentários.** Como os comentários mudaram as versões? *Rubrica:* 3 = reorganizadas em torno do argumento;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-50"></a>
 
@@ -2136,8 +2136,8 @@ Defender uma afirmação exagerada prejudica a credibilidade; corrija-a.
 
 ### Exercícios
 
-- **EX148 — Pergunta sobre emergências.** Como os procedimentos de segurança tratam as emergências? *Rubrica:* 3 = as ações de emergência ficam independentes da aprovação, mas são registradas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX149 — Questionamento sobre precisão.** O que o examinador do regulador contestou? *Rubrica:* 3 = afirmou-se precisão, mas mostrou-se consistência;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX148 — Pergunta sobre emergências.** Como os procedimentos de segurança tratam as emergências? *Rubrica:* 3 = as ações de emergência ficam independentes da aprovação, mas são registradas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX149 — Questionamento sobre precisão.** O que o examinador do regulador contestou? *Rubrica:* 3 = afirmou-se precisão, mas mostrou-se consistência;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX150 — Hábitos valorizados.** Quais hábitos Kofi mais valoriza? *Rubrica:* 3 = evidência, revisão e honestidade sobre os limites;; 2 = todos;; 1 = alguns;; 0 = nenhuma.
 
 

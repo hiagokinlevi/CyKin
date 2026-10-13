@@ -87,13 +87,13 @@ A vague definition of drift would let the result depend on how settings are coun
 
 ### Exercises
 
-- **EX001 — Problem.** What operational problem started the study? *Rubric:* 3 = ~quarter of laptops drift from baseline; 2 = partial; 1 = none; 0 = none.
-- **EX002 — Question wording.** State Chloé's research question. *Rubric:* 3 = characteristics associated with drift; 2 = partial; 1 = none; 0 = none.
-- **EX003 — Drift definition.** How is drift defined? *Rubric:* 3 = any setting differs at monthly check; 2 = partial; 1 = none; 0 = none.
-- **EX004 — Search log.** Why keep a search log? *Rubric:* 3 = repeatability; 2 = partial; 1 = none; 0 = none.
-- **EX005 — SP 800-128.** What does SP 800-128 contribute? *Rubric:* 3 = baselines and change monitoring; 2 = partial; 1 = none; 0 = none.
-- **EX006 — Never-compliant.** Why separate never-compliant devices? *Rubric:* 3 = deployment problem not drift; 2 = partial; 1 = none; 0 = none.
-- **EX007 — Association.** Why say "associated with"? *Rubric:* 3 = observational design; 2 = partial; 1 = none; 0 = none.
+- **EX001 — Problem.** What operational problem started the study? *Rubric:* 3 = ~quarter of laptops drift from baseline; 2 = partial; 1 = vague; 0 = none.
+- **EX002 — Question wording.** State Chloé's research question. *Rubric:* 3 = characteristics associated with drift; 2 = partial; 1 = vague; 0 = none.
+- **EX003 — Drift definition.** How is drift defined? *Rubric:* 3 = any setting differs at monthly check; 2 = partial; 1 = vague; 0 = none.
+- **EX004 — Search log.** Why keep a search log? *Rubric:* 3 = repeatability; 2 = partial; 1 = vague; 0 = none.
+- **EX005 — SP 800-128.** What does SP 800-128 contribute? *Rubric:* 3 = baselines and change monitoring; 2 = partial; 1 = vague; 0 = none.
+- **EX006 — Never-compliant.** Why separate never-compliant devices? *Rubric:* 3 = deployment problem not drift; 2 = partial; 1 = vague; 0 = none.
+- **EX007 — Association.** Why say "associated with"? *Rubric:* 3 = observational design; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -185,11 +185,11 @@ Six laptops illustrate the method; they cannot estimate rates.
 
 - **EX008 — Baseline sources.** Name three baseline sources. *Rubric:* 3 = CIS, STIGs, Microsoft baselines; 2 = two; 1 = one; 0 = none.
 - **EX009 — Six settings.** List Halvorsen's six settings. *Rubric:* 3 = encryption, firewall, SMB1 off, autorun off, lock ≤10, no extra admins; 2 = five; 1 = three; 0 = none.
-- **EX010 — Lab result.** What did the sample show? *Rubric:* 3 = 3 compliant, 3 drifted; admin users on all 3; 2 = partial; 1 = none; 0 = none.
-- **EX011 — SMB1.** Why disable SMB1? *Rubric:* 3 = old protocol with known weaknesses; 2 = partial; 1 = none; 0 = none.
-- **EX012 — Admin ambiguity.** What two explanations fit the admin link? *Rubric:* 3 = admin causes drift; work needs cause both; 2 = partial; 1 = none; 0 = none.
-- **EX013 — Screen lock.** Why does 15 minutes count as drift? *Rubric:* 3 = baseline requires ≤10; 2 = partial; 1 = none; 0 = none.
-- **EX014 — Sample limit.** Why can the sample not estimate rates? *Rubric:* 3 = only six laptops; 2 = partial; 1 = none; 0 = none.
+- **EX010 — Lab result.** What did the sample show? *Rubric:* 3 = 3 compliant, 3 drifted; admin users on all 3; 2 = partial; 1 = vague; 0 = none.
+- **EX011 — SMB1.** Why disable SMB1? *Rubric:* 3 = old protocol with known weaknesses; 2 = partial; 1 = vague; 0 = none.
+- **EX012 — Admin ambiguity.** What two explanations fit the admin link? *Rubric:* 3 = admin causes drift; work needs cause both; 2 = partial; 1 = vague; 0 = none.
+- **EX013 — Screen lock.** Why does 15 minutes count as drift? *Rubric:* 3 = baseline requires ≤10; 2 = partial; 1 = vague; 0 = none.
+- **EX014 — Sample limit.** Why can the sample not estimate rates? *Rubric:* 3 = only six laptops; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -263,12 +263,12 @@ Pseudonymisation reduces but does not remove re-identification risk in small dep
 
 ### Exercises
 
-- **EX015 — Data.** What data does the design use? *Rubric:* 3 = 6 months records for 600 laptops with attributes; 2 = partial; 1 = none; 0 = none.
-- **EX016 — Pseudonymisation.** How are users protected? *Rubric:* 3 = pseudonymised IDs, department-level reporting; 2 = partial; 1 = none; 0 = none.
-- **EX017 — Approvals.** Who approved the plan? *Rubric:* 3 = ethics committee, data protection lead; 2 = partial; 1 = none; 0 = none.
+- **EX015 — Data.** What data does the design use? *Rubric:* 3 = 6 months records for 600 laptops with attributes; 2 = partial; 1 = vague; 0 = none.
+- **EX016 — Pseudonymisation.** How are users protected? *Rubric:* 3 = pseudonymised IDs, department-level reporting; 2 = partial; 1 = vague; 0 = none.
+- **EX017 — Approvals.** Who approved the plan? *Rubric:* 3 = ethics committee, data protection lead; 2 = partial; 1 = vague; 0 = none.
 - **EX018 — Explanations.** Name the three candidate explanations. *Rubric:* 3 = local admin, remote, department; 2 = two; 1 = one; 0 = none.
-- **EX019 — Exclusions.** How are replaced devices handled? *Rubric:* 3 = excluded and counted; 2 = partial; 1 = none; 0 = none.
-- **EX020 — Works council.** What did the works council ask? *Rubric:* 3 = discipline use; 2 = partial; 1 = none; 0 = none.
+- **EX019 — Exclusions.** How are replaced devices handled? *Rubric:* 3 = excluded and counted; 2 = partial; 1 = vague; 0 = none.
+- **EX020 — Works council.** What did the works council ask? *Rubric:* 3 = discipline use; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -342,12 +342,12 @@ Explanations that predict the same pattern cannot be distinguished; seek distinc
 
 ### Exercises
 
-- **EX021 — Least privilege.** Who stated the least privilege principle cited? *Rubric:* 3 = Saltzer and Schroeder 1975; 2 = partial; 1 = none; 0 = none.
-- **EX022 — Remote mechanism.** What mechanism links remote work to drift? *Rubric:* 3 = missed policy refreshes; 2 = partial; 1 = none; 0 = none.
-- **EX023 — Department mechanism.** Why might engineering drift more? *Rubric:* 3 = software needs settings changes; 2 = partial; 1 = none; 0 = none.
-- **EX024 — Overlap.** Why are the explanations hard to separate? *Rubric:* 3 = engineers often admins and remote; 2 = partial; 1 = none; 0 = none.
+- **EX021 — Least privilege.** Who stated the least privilege principle cited? *Rubric:* 3 = Saltzer and Schroeder 1975; 2 = partial; 1 = vague; 0 = none.
+- **EX022 — Remote mechanism.** What mechanism links remote work to drift? *Rubric:* 3 = missed policy refreshes; 2 = partial; 1 = vague; 0 = none.
+- **EX023 — Department mechanism.** Why might engineering drift more? *Rubric:* 3 = software needs settings changes; 2 = partial; 1 = vague; 0 = none.
+- **EX024 — Overlap.** Why are the explanations hard to separate? *Rubric:* 3 = engineers often admins and remote; 2 = partial; 1 = vague; 0 = none.
 - **EX025 — Distinct predictions.** How do settings patterns differ? *Rubric:* 3 = admins many; refresh recent; engineering firewall; 2 = two; 1 = one; 0 = none.
-- **EX026 — Prediction timing.** Why write predictions before data? *Rubric:* 3 = avoid fitting after; 2 = partial; 1 = none; 0 = none.
+- **EX026 — Prediction timing.** Why write predictions before data? *Rubric:* 3 = avoid fitting after; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -450,11 +450,11 @@ Dropping incomplete rows silently can remove the cases that matter most.
 ### Exercises
 
 - **EX027 — Analysis plan.** Which tests does the plan use? *Rubric:* 3 = risk ratios, chi-square, stratification; 2 = two; 1 = one; 0 = none.
-- **EX028 — Pilot size.** How large was the pilot extract? *Rubric:* 3 = 120 laptops one month; 2 = partial; 1 = none; 0 = none.
-- **EX029 — Lab figures.** How many rows were complete on all fields? *Rubric:* 3 = 107/120 (89.2%); 2 = partial; 1 = none; 0 = none.
-- **EX030 — Refresh gaps.** Why were refresh dates missing? *Rubric:* 3 = laptops did not check in; 2 = partial; 1 = none; 0 = none.
-- **EX031 — Handling.** How were missing refresh dates recorded? *Rubric:* 3 = no refresh in month; 2 = partial; 1 = none; 0 = none.
-- **EX032 — Bias.** Why not drop them? *Rubric:* 3 = they are the cases for Explanation B; 2 = partial; 1 = none; 0 = none.
+- **EX028 — Pilot size.** How large was the pilot extract? *Rubric:* 3 = 120 laptops one month; 2 = partial; 1 = vague; 0 = none.
+- **EX029 — Lab figures.** How many rows were complete on all fields? *Rubric:* 3 = 107/120 (89.2%); 2 = partial; 1 = vague; 0 = none.
+- **EX030 — Refresh gaps.** Why were refresh dates missing? *Rubric:* 3 = laptops did not check in; 2 = partial; 1 = vague; 0 = none.
+- **EX031 — Handling.** How were missing refresh dates recorded? *Rubric:* 3 = no refresh in month; 2 = partial; 1 = vague; 0 = none.
+- **EX032 — Bias.** Why not drop them? *Rubric:* 3 = they are the cases for Explanation B; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -560,12 +560,12 @@ Association does not prove that removing admin rights will reduce drift; re-meas
 
 ### Exercises
 
-- **EX033 — Overall drift.** What overall drift rate was observed? *Rubric:* 3 = 138/600 (23%); 2 = partial; 1 = none; 0 = none.
+- **EX033 — Overall drift.** What overall drift rate was observed? *Rubric:* 3 = 138/600 (23%); 2 = partial; 1 = vague; 0 = none.
 - **EX034 — Admin result.** Report the admin comparison. *Rubric:* 3 = 55% vs 15%, RR 3.67, chi2 86.7; 2 = two; 1 = one; 0 = none.
-- **EX035 — Department result.** Why is the department result not significant? *Rubric:* 3 = chi2 2.1 below 3.84; 2 = partial; 1 = none; 0 = none.
-- **EX036 — Stratified finding.** What did stratification show about remote work? *Rubric:* 3 = effect largely reflects admin rights; 2 = partial; 1 = none; 0 = none.
+- **EX035 — Department result.** Why is the department result not significant? *Rubric:* 3 = chi2 2.1 below 3.84; 2 = partial; 1 = vague; 0 = none.
+- **EX036 — Stratified finding.** What did stratification show about remote work? *Rubric:* 3 = effect largely reflects admin rights; 2 = partial; 1 = vague; 0 = none.
 - **EX037 — Recommendation.** What did Chloé recommend? *Rubric:* 3 = remove standing admin, temporary elevation, re-measure; 2 = two; 1 = one; 0 = none.
-- **EX038 — Caution.** What caution applies? *Rubric:* 3 = association not proof; 2 = partial; 1 = none; 0 = none.
+- **EX038 — Caution.** What caution applies? *Rubric:* 3 = association not proof; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -651,12 +651,12 @@ Limitations written last are often weak; draft them alongside results.
 
 ### Exercises
 
-- **EX039 — Literature link.** Which sources support the admin finding? *Rubric:* 3 = Saltzer-Schroeder, CIS Controls v8; 2 = partial; 1 = none; 0 = none.
-- **EX040 — Dietrich role.** How does Dietrich et al. (2018) help? *Rubric:* 3 = explains why admin rights were granted; 2 = partial; 1 = none; 0 = none.
+- **EX039 — Literature link.** Which sources support the admin finding? *Rubric:* 3 = Saltzer-Schroeder, CIS Controls v8; 2 = partial; 1 = vague; 0 = none.
+- **EX040 — Dietrich role.** How does Dietrich et al. (2018) help? *Rubric:* 3 = explains why admin rights were granted; 2 = partial; 1 = vague; 0 = none.
 - **EX041 — Limitations.** List the four limitations. *Rubric:* 3 = one org, six months, observational, monthly checks; 2 = three; 1 = two; 0 = none.
-- **EX042 — Monthly gap.** What do monthly checks miss? *Rubric:* 3 = changes reverted within a month; 2 = partial; 1 = none; 0 = none.
-- **EX043 — Wording fix.** How was the causal sentence fixed? *Rubric:* 3 = strongly associated with; 2 = partial; 1 = none; 0 = none.
-- **EX044 — Next step.** What should Halvorsen do next? *Rubric:* 3 = reduce admin, re-measure; 2 = partial; 1 = none; 0 = none.
+- **EX042 — Monthly gap.** What do monthly checks miss? *Rubric:* 3 = changes reverted within a month; 2 = partial; 1 = vague; 0 = none.
+- **EX043 — Wording fix.** How was the causal sentence fixed? *Rubric:* 3 = strongly associated with; 2 = partial; 1 = vague; 0 = none.
+- **EX044 — Next step.** What should Halvorsen do next? *Rubric:* 3 = reduce admin, re-measure; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -746,12 +746,12 @@ A defense is stronger when weaknesses are named before examiners raise them.
 
 ### Exercises
 
-- **EX045 — Reproduction.** How was the analysis independently checked? *Rubric:* 3 = examiner re-ran code; 2 = partial; 1 = none; 0 = none.
+- **EX045 — Reproduction.** How was the analysis independently checked? *Rubric:* 3 = examiner re-ran code; 2 = partial; 1 = vague; 0 = none.
 - **EX046 — Questions.** Which topics did examiners raise? *Rubric:* 3 = remote result, missing data, generalisation; 2 = two; 1 = one; 0 = none.
-- **EX047 — Scope of findings.** To which organisations do findings apply? *Rubric:* 3 = centrally managed similar fleets; 2 = partial; 1 = none; 0 = none.
-- **EX048 — Follow-up.** What follow-up is planned? *Rubric:* 3 = remove admin from 120, re-measure in six months; 2 = partial; 1 = none; 0 = none.
-- **EX049 — Resistance.** How was user resistance handled? *Rubric:* 3 = same-day elevation; 2 = partial; 1 = none; 0 = none.
-- **EX050 — Lesson.** What kept the analysis focused? *Rubric:* 3 = pre-stated predictions; 2 = partial; 1 = none; 0 = none.
+- **EX047 — Scope of findings.** To which organisations do findings apply? *Rubric:* 3 = centrally managed similar fleets; 2 = partial; 1 = vague; 0 = none.
+- **EX048 — Follow-up.** What follow-up is planned? *Rubric:* 3 = remove admin from 120, re-measure in six months; 2 = partial; 1 = vague; 0 = none.
+- **EX049 — Resistance.** How was user resistance handled? *Rubric:* 3 = same-day elevation; 2 = partial; 1 = vague; 0 = none.
+- **EX050 — Lesson.** What kept the analysis focused? *Rubric:* 3 = pre-stated predictions; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 

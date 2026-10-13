@@ -375,7 +375,7 @@ Counts without denominators mislead; always convert to rates. Stratifying on one
 - **EX021 — Three explanations.** Name the three rival explanations. *Rubric:* 3 = renewal mode, ownership, change collision;; 2 = two;; 1 = one;; 0 = none.
 - **EX022 — Cross-tab shares.** What owner-missing shares did the lab report for each mode? *Rubric:* 3 = 61 percent manual, 71 percent ACME;; 2 = one;; 1 = counts only;; 0 = none.
 - **EX023 — Why counts fail.** Why can raw incident counts not separate the explanations? *Rubric:* 3 = no denominators; counts may reflect how many certificates each cell holds;; 2 = need rates;; 1 = small sample;; 0 = none.
-- **EX024 — Confounder evidence.** What inventory figures make ownership a confounder? *Rubric:* 3 = 38 percent manual vs 21 percent ACME lack owners;; 2 = direction;; 1 = none;; 0 = none.
+- **EX024 — Confounder evidence.** What inventory figures make ownership a confounder? *Rubric:* 3 = 38 percent manual vs 21 percent ACME lack owners;; 2 = direction;; 1 = vague;; 0 = none.
 - **EX025 — Change collisions.** How many ACME incidents followed infrastructure changes, and why? *Rubric:* 3 = five of seven; client could not complete challenge, errors unwatched;; 2 = number;; 1 = reason;; 0 = none.
 - **EX026 — Unmeasured confounder.** Which confounder can the data not address? *Rubric:* 3 = service criticality, not consistently recorded;; 2 = "unmeasured";; 1 = ownership;; 0 = none.
 
@@ -571,7 +571,7 @@ Recommending more than the evidence supports is the most common dissertation fla
 
 - **EX039 — Paragraph test.** What test did Dr. Solberg apply to every paragraph? *Rubric:* 3 = would removing it weaken the main claim; if not, move or cut;; 2 = relevance;; 1 = length;; 0 = none.
 - **EX040 — Table contents.** What must each results table state? *Rubric:* 3 = unit, exposure, number of events, interval method;; 2 = three;; 1 = one;; 0 = none.
-- **EX041 — Ticket bias.** Which direction does ticket under-recording probably bias results, and why? *Rubric:* 3 = under-counts manual incidents more, as hand fixes happen in minutes without tickets;; 2 = direction;; 1 = none;; 0 = none.
+- **EX041 — Ticket bias.** Which direction does ticket under-recording probably bias results, and why? *Rubric:* 3 = under-counts manual incidents more, as hand fixes happen in minutes without tickets;; 2 = direction;; 1 = vague;; 0 = none.
 - **EX042 — Strong versus weak recommendations.** Which recommendations rest on strong evidence and which on weak? *Rubric:* 3 = automate renewal and assign owners strong; alerting and change reviews weaker;; 2 = partial;; 1 = all strong;; 0 = none.
 - **EX043 — CT recommendation.** How is Certificate Transparency monitoring framed and why? *Rubric:* 3 = as a future-work hypothesis because the study did not measure it;; 2 = framed cautiously;; 1 = proven;; 0 = none.
 - **EX044 — What it does not say.** Give two things the clarification box says the study does not imply. *Rubric:* 3 = two of: TLS is weak, extend lifetimes, write custom renewal scripts;; 2 = one;; 1 = vague;; 0 = none.

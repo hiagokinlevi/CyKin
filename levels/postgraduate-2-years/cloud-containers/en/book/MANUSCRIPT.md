@@ -99,11 +99,11 @@ Expected-cost models give false precision when inputs are guesses; show ranges.
 
 ### Exercises
 
-- **EX001 — Opening gap.** What caused the enforcement gap? *Rubric:* 3 = PSP removed in 1.25; replacement not configured; 2 = partial; 1 = none; 0 = none.
+- **EX001 — Opening gap.** What caused the enforcement gap? *Rubric:* 3 = PSP removed in 1.25; replacement not configured; 2 = partial; 1 = vague; 0 = none.
 - **EX002 — Lab totals.** Give the three expected totals. *Rubric:* 3 = A 130k, B 131k, C 237k; 2 = two; 1 = one; 0 = none.
 - **EX003 — Why B.** Why choose B despite the tie? *Rubric:* 3 = registry/signature rules, less label dependence, narrower range; 2 = two; 1 = one; 0 = none.
-- **EX004 — Sensitivity ranges.** What were the ranges for A and B? *Rubric:* 3 = A 85-175k; B 113-149k; 2 = partial; 1 = none; 0 = none.
-- **EX005 — Impact source.** What did Prof. Rao ask Inês to note? *Rubric:* 3 = impact from one estimate; add range; 2 = partial; 1 = none; 0 = none.
+- **EX004 — Sensitivity ranges.** What were the ranges for A and B? *Rubric:* 3 = A 85-175k; B 113-149k; 2 = partial; 1 = vague; 0 = none.
+- **EX005 — Impact source.** What did Prof. Rao ask Inês to note? *Rubric:* 3 = impact from one estimate; add range; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -165,10 +165,10 @@ Inês presents a gap table to Beacon's platform team: current practice, Beacon's
 
 ### Exercises
 
-- **EX006 — PSA profiles.** Name the Pod Security profiles. *Rubric:* 3 = Privileged, Baseline, Restricted; 2 = partial; 1 = none; 0 = none.
-- **EX007 — Identity practice.** What is current identity practice for services? *Rubric:* 3 = workload identity, short-lived credentials; 2 = partial; 1 = none; 0 = none.
-- **EX008 — Beacon gaps.** List two Beacon gaps. *Rubric:* 3 = signing, cluster posture, labels, partial workload identity; 2 = one; 1 = none; 0 = none.
-- **EX009 — Shared fate.** What does shared fate add? *Rubric:* 3 = provider secure defaults; 2 = partial; 1 = none; 0 = none.
+- **EX006 — PSA profiles.** Name the Pod Security profiles. *Rubric:* 3 = Privileged, Baseline, Restricted; 2 = partial; 1 = vague; 0 = none.
+- **EX007 — Identity practice.** What is current identity practice for services? *Rubric:* 3 = workload identity, short-lived credentials; 2 = partial; 1 = vague; 0 = none.
+- **EX008 — Beacon gaps.** List two Beacon gaps. *Rubric:* 3 = signing, cluster posture, labels, partial workload identity; 2 = one; 1 = vague; 0 = none.
+- **EX009 — Shared fate.** What does shared fate add? *Rubric:* 3 = provider secure defaults; 2 = partial; 1 = vague; 0 = none.
 - **EX010 — Top three.** Which three gaps were prioritised? *Rubric:* 3 = labels, cluster posture, signing; 2 = two; 1 = one; 0 = none.
 
 ### Synthesis
@@ -251,11 +251,11 @@ Labels show intended enforcement; test behaviour to confirm.
 
 ### Exercises
 
-- **EX011 — Estate coverage.** What was estate coverage? *Rubric:* 3 = 4/11, 36%; 2 = partial; 1 = none; 0 = none.
-- **EX012 — quotes-prod.** What was quotes-prod's state? *Rubric:* 3 = 0/2 enforced; 2 = partial; 1 = none; 0 = none.
-- **EX013 — monitoring.** Why does monitoring's label not count? *Rubric:* 3 = Privileged enforces nothing; 2 = partial; 1 = none; 0 = none.
-- **EX014 — analytics priority.** Why rank analytics first? *Rubric:* 3 = arbitrary code in notebooks; 2 = partial; 1 = none; 0 = none.
-- **EX015 — Evidence check.** How did Inês check evidence quality? *Rubric:* 3 = recorded export time; manual sample; 2 = partial; 1 = none; 0 = none.
+- **EX011 — Estate coverage.** What was estate coverage? *Rubric:* 3 = 4/11, 36%; 2 = partial; 1 = vague; 0 = none.
+- **EX012 — quotes-prod.** What was quotes-prod's state? *Rubric:* 3 = 0/2 enforced; 2 = partial; 1 = vague; 0 = none.
+- **EX013 — monitoring.** Why does monitoring's label not count? *Rubric:* 3 = Privileged enforces nothing; 2 = partial; 1 = vague; 0 = none.
+- **EX014 — analytics priority.** Why rank analytics first? *Rubric:* 3 = arbitrary code in notebooks; 2 = partial; 1 = vague; 0 = none.
+- **EX015 — Evidence check.** How did Inês check evidence quality? *Rubric:* 3 = recorded export time; manual sample; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -313,11 +313,11 @@ Ethical choices often lack a single right answer; make reasoning visible.
 
 ### Exercises
 
-- **EX016 — Risk ranges.** Why use ranges for likelihood and impact? *Rubric:* 3 = uncertainty in estimates; 2 = partial; 1 = none; 0 = none.
-- **EX017 — Process framing.** How was the finding framed? *Rubric:* 3 = process gap in upgrade checklist; 2 = partial; 1 = none; 0 = none.
-- **EX018 — Disclosure.** How was the gap disclosed? *Rubric:* 3 = board and regulator contact via risk report; 2 = partial; 1 = none; 0 = none.
-- **EX019 — Proportionality.** How is proportionality applied? *Rubric:* 3 = staged changes so claims continue; 2 = partial; 1 = none; 0 = none.
-- **EX020 — Engineer outcome.** What happened with the worried engineer? *Rubric:* 3 = co-wrote checklist; led rollout; 2 = partial; 1 = none; 0 = none.
+- **EX016 — Risk ranges.** Why use ranges for likelihood and impact? *Rubric:* 3 = uncertainty in estimates; 2 = partial; 1 = vague; 0 = none.
+- **EX017 — Process framing.** How was the finding framed? *Rubric:* 3 = process gap in upgrade checklist; 2 = partial; 1 = vague; 0 = none.
+- **EX018 — Disclosure.** How was the gap disclosed? *Rubric:* 3 = board and regulator contact via risk report; 2 = partial; 1 = vague; 0 = none.
+- **EX019 — Proportionality.** How is proportionality applied? *Rubric:* 3 = staged changes so claims continue; 2 = partial; 1 = vague; 0 = none.
+- **EX020 — Engineer outcome.** What happened with the worried engineer? *Rubric:* 3 = co-wrote checklist; led rollout; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -384,10 +384,10 @@ Central control can become a bottleneck; staff the exception process.
 ### Exercises
 
 - **EX021 — Three designs.** Describe the three designs. *Rubric:* 3 = team labels; central GitOps with default; plus engine; 2 = two; 1 = one; 0 = none.
-- **EX022 — Default benefit.** Why set a cluster-wide Restricted default? *Rubric:* 3 = new namespaces protected automatically; 2 = partial; 1 = none; 0 = none.
-- **EX023 — Built-in availability.** Why does built-in admission add no separate availability risk? *Rubric:* 3 = runs inside API server; 2 = partial; 1 = none; 0 = none.
-- **EX024 — Chosen design.** Which design was chosen? *Rubric:* 3 = Design 3; 2 = partial; 1 = none; 0 = none.
-- **EX025 — Quotes objection.** How was the quotes team persuaded? *Rubric:* 3 = exceptions within a day; prevents gap; 2 = partial; 1 = none; 0 = none.
+- **EX022 — Default benefit.** Why set a cluster-wide Restricted default? *Rubric:* 3 = new namespaces protected automatically; 2 = partial; 1 = vague; 0 = none.
+- **EX023 — Built-in availability.** Why does built-in admission add no separate availability risk? *Rubric:* 3 = runs inside API server; 2 = partial; 1 = vague; 0 = none.
+- **EX024 — Chosen design.** Which design was chosen? *Rubric:* 3 = Design 3; 2 = partial; 1 = vague; 0 = none.
+- **EX025 — Quotes objection.** How was the quotes team persuaded? *Rubric:* 3 = exceptions within a day; prevents gap; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -469,9 +469,9 @@ A corpus from past deployments may not represent future workloads.
 
 - **EX026 — Lab figures.** Give recall and precision for P1 and P2. *Rubric:* 3 = P1 0.75/0.64; P2 0.92/0.96; 2 = two; 1 = one; 0 = none.
 - **EX027 — Fairness.** How was the comparison kept fair? *Rubric:* 3 = same corpus, fixed labels, separate tuning sample; 2 = two; 1 = one; 0 = none.
-- **EX028 — Misses.** What did the two misses share? *Rubric:* 3 = host path pattern not covered; 2 = partial; 1 = none; 0 = none.
-- **EX029 — False rejection cost.** How did Inês estimate false rejection cost? *Rubric:* 3 = hour each, ~40/month, trust; 2 = partial; 1 = none; 0 = none.
-- **EX030 — Decision.** What was decided? *Rubric:* 3 = enforce P2 plus new rule, quarterly re-evaluation; 2 = partial; 1 = none; 0 = none.
+- **EX028 — Misses.** What did the two misses share? *Rubric:* 3 = host path pattern not covered; 2 = partial; 1 = vague; 0 = none.
+- **EX029 — False rejection cost.** How did Inês estimate false rejection cost? *Rubric:* 3 = hour each, ~40/month, trust; 2 = partial; 1 = vague; 0 = none.
+- **EX030 — Decision.** What was decided? *Rubric:* 3 = enforce P2 plus new rule, quarterly re-evaluation; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -533,11 +533,11 @@ Integration succeeds when controls fit existing processes.
 
 ### Exercises
 
-- **EX031 — Owners.** Who owns central policies and exceptions? *Rubric:* 3 = platform team; product teams; 2 = partial; 1 = none; 0 = none.
-- **EX032 — Upgrade step.** What upgrade checklist step was added? *Rubric:* 3 = confirm admission config and behaviour tests; 2 = partial; 1 = none; 0 = none.
-- **EX033 — Metric.** What monthly metric is reported? *Rubric:* 3 = namespaces enforced, exceptions and age; 2 = partial; 1 = none; 0 = none.
-- **EX034 — Shared responsibility.** What does the provider secure versus Beacon? *Rubric:* 3 = control plane; admission and workloads; 2 = partial; 1 = none; 0 = none.
-- **EX035 — Change board.** What convinced the change board? *Rubric:* 3 = ten-minute test caught missing label; 2 = partial; 1 = none; 0 = none.
+- **EX031 — Owners.** Who owns central policies and exceptions? *Rubric:* 3 = platform team; product teams; 2 = partial; 1 = vague; 0 = none.
+- **EX032 — Upgrade step.** What upgrade checklist step was added? *Rubric:* 3 = confirm admission config and behaviour tests; 2 = partial; 1 = vague; 0 = none.
+- **EX033 — Metric.** What monthly metric is reported? *Rubric:* 3 = namespaces enforced, exceptions and age; 2 = partial; 1 = vague; 0 = none.
+- **EX034 — Shared responsibility.** What does the provider secure versus Beacon? *Rubric:* 3 = control plane; admission and workloads; 2 = partial; 1 = vague; 0 = none.
+- **EX035 — Change board.** What convinced the change board? *Rubric:* 3 = ten-minute test caught missing label; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -600,10 +600,10 @@ Exceptions are part of a good control, not a failure of it, when governed.
 ### Exercises
 
 - **EX036 — Batch controls.** What compensating controls applied to legacy batch? *Rubric:* 3 = dedicated nodes, limited network, monitoring; 2 = two; 1 = one; 0 = none.
-- **EX037 — Vendor.** How was the vendor agent handled? *Rubric:* 3 = documentation, own namespace, annual review; 2 = partial; 1 = none; 0 = none.
-- **EX038 — Break-glass.** What is the break-glass path? *Rubric:* 3 = preapproved debug namespace at Baseline, logged, removed; 2 = partial; 1 = none; 0 = none.
+- **EX037 — Vendor.** How was the vendor agent handled? *Rubric:* 3 = documentation, own namespace, annual review; 2 = partial; 1 = vague; 0 = none.
+- **EX038 — Break-glass.** What is the break-glass path? *Rubric:* 3 = preapproved debug namespace at Baseline, logged, removed; 2 = partial; 1 = vague; 0 = none.
 - **EX039 — Register fields.** What does each exception record contain? *Rubric:* 3 = owner, reason, controls, expiry; 2 = two; 1 = one; 0 = none.
-- **EX040 — Extension.** How was the batch extension governed? *Rubric:* 3 = one 3-month extension; further needs committee; 2 = partial; 1 = none; 0 = none.
+- **EX040 — Extension.** How was the batch extension governed? *Rubric:* 3 = one 3-month extension; further needs committee; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -682,10 +682,10 @@ Small samples limit claims; say so.
 ### Exercises
 
 - **EX041 — Lab trend.** Give pass rates for Q1 to Q3. *Rubric:* 3 = 40%, 73%, 100%; 2 = two; 1 = one; 0 = none.
-- **EX042 — Exceptions trend.** How did exceptions change? *Rubric:* 3 = 21 to 9 to 4; age 61 to 12; 2 = partial; 1 = none; 0 = none.
-- **EX043 — Sample caution.** Why note the sampling method? *Rubric:* 3 = small sample of 15; 2 = partial; 1 = none; 0 = none.
-- **EX044 — Independent check.** What did internal audit do? *Rubric:* 3 = repeated tests on different sample; 2 = partial; 1 = none; 0 = none.
-- **EX045 — Resistance.** How was the product lead's concern resolved? *Rubric:* 3 = tests on staging mirrors plus one prod check; 2 = partial; 1 = none; 0 = none.
+- **EX042 — Exceptions trend.** How did exceptions change? *Rubric:* 3 = 21 to 9 to 4; age 61 to 12; 2 = partial; 1 = vague; 0 = none.
+- **EX043 — Sample caution.** Why note the sampling method? *Rubric:* 3 = small sample of 15; 2 = partial; 1 = vague; 0 = none.
+- **EX044 — Independent check.** What did internal audit do? *Rubric:* 3 = repeated tests on different sample; 2 = partial; 1 = vague; 0 = none.
+- **EX045 — Resistance.** How was the product lead's concern resolved? *Rubric:* 3 = tests on staging mirrors plus one prod check; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -745,11 +745,11 @@ Old data can mislead when quoted as current.
 
 ### Exercises
 
-- **EX046 — Burns relevance.** How is Burns 2016 relevant? *Rubric:* 3 = design context, not security evaluation; 2 = partial; 1 = none; 0 = none.
-- **EX047 — Shu caution.** What caution applies to Shu 2017? *Rubric:* 3 = data age; 2 = partial; 1 = none; 0 = none.
-- **EX048 — Rahman.** What does Rahman 2019 support? *Rubric:* 3 = scanning GitOps repo for smells; 2 = partial; 1 = none; 0 = none.
-- **EX049 — Standards.** How should standards be treated? *Rubric:* 3 = guidance, not evidence of effectiveness; 2 = partial; 1 = none; 0 = none.
-- **EX050 — Slide.** How was the slide corrected? *Rubric:* 3 = cite as historical, add own data; 2 = partial; 1 = none; 0 = none.
+- **EX046 — Burns relevance.** How is Burns 2016 relevant? *Rubric:* 3 = design context, not security evaluation; 2 = partial; 1 = vague; 0 = none.
+- **EX047 — Shu caution.** What caution applies to Shu 2017? *Rubric:* 3 = data age; 2 = partial; 1 = vague; 0 = none.
+- **EX048 — Rahman.** What does Rahman 2019 support? *Rubric:* 3 = scanning GitOps repo for smells; 2 = partial; 1 = vague; 0 = none.
+- **EX049 — Standards.** How should standards be treated? *Rubric:* 3 = guidance, not evidence of effectiveness; 2 = partial; 1 = vague; 0 = none.
+- **EX050 — Slide.** How was the slide corrected? *Rubric:* 3 = cite as historical, add own data; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -814,10 +814,10 @@ Define success before starting.
 ### Exercises
 
 - **EX051 — Deliverables.** What did the baseline include? *Rubric:* 3 = labels, engine rules, checklist, tests; 2 = two; 1 = one; 0 = none.
-- **EX052 — Exclusions.** What was out of scope? *Rubric:* 3 = control plane, laptops; 2 = partial; 1 = none; 0 = none.
+- **EX052 — Exclusions.** What was out of scope? *Rubric:* 3 = control plane, laptops; 2 = partial; 1 = vague; 0 = none.
 - **EX053 — Success.** What were success criteria? *Rubric:* 3 = recall, all enforced, ≥90% assurance; 2 = two; 1 = one; 0 = none.
-- **EX054 — Outcome.** What remained at the end? *Rubric:* 3 = two exceptions with expiry; 2 = partial; 1 = none; 0 = none.
-- **EX055 — Second provider.** What changes with a second provider? *Rubric:* 3 = re-check shared responsibility; 2 = partial; 1 = none; 0 = none.
+- **EX054 — Outcome.** What remained at the end? *Rubric:* 3 = two exceptions with expiry; 2 = partial; 1 = vague; 0 = none.
+- **EX055 — Second provider.** What changes with a second provider? *Rubric:* 3 = re-check shared responsibility; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -881,11 +881,11 @@ Lessons transfer when stated as methods.
 
 ### Exercises
 
-- **EX056 — Pattern.** Name the course pattern. *Rubric:* 3 = finding to assurance; 2 = partial; 1 = none; 0 = none.
-- **EX057 — Transfer area.** Where will Inês apply it next? *Rubric:* 3 = identity permissions; 2 = partial; 1 = none; 0 = none.
-- **EX058 — Release notes.** Why read release notes? *Rubric:* 3 = removed features; 2 = partial; 1 = none; 0 = none.
-- **EX059 — Sharing.** How does she share? *Rubric:* 3 = anonymised case; 2 = partial; 1 = none; 0 = none.
-- **EX060 — Lesson.** What is the one lesson? *Rubric:* 3 = controls survive change; 2 = partial; 1 = none; 0 = none.
+- **EX056 — Pattern.** Name the course pattern. *Rubric:* 3 = finding to assurance; 2 = partial; 1 = vague; 0 = none.
+- **EX057 — Transfer area.** Where will Inês apply it next? *Rubric:* 3 = identity permissions; 2 = partial; 1 = vague; 0 = none.
+- **EX058 — Release notes.** Why read release notes? *Rubric:* 3 = removed features; 2 = partial; 1 = vague; 0 = none.
+- **EX059 — Sharing.** How does she share? *Rubric:* 3 = anonymised case; 2 = partial; 1 = vague; 0 = none.
+- **EX060 — Lesson.** What is the one lesson? *Rubric:* 3 = controls survive change; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 

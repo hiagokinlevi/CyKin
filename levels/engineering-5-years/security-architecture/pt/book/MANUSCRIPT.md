@@ -89,7 +89,7 @@ O crescimento real raramente é suave; a implantação de novos dispositivos cau
 
 - **EX001 — Crescimento proporcional.** O que dV/dt = kV diz a Sofia sobre o crescimento dos logs? *Rubrica:* 3 = o aumento de cada mês é proporcional ao volume atual, então o crescimento absoluto se acelera;; 2 = proporcional;; 1 = crescimento constante;; 0 = nenhuma.
 
-- **EX002 — Mês do orçamento.** No laboratório, em que mês o orçamento de armazenamento é ultrapassado pela primeira vez no modelo exponencial? *Rubrica:* 3 = mês 24, contra o mês 39 da previsão linear;; 2 = mês 24;; 1 = nenhuma;; 0 = nenhuma.
+- **EX002 — Mês do orçamento.** No laboratório, em que mês o orçamento de armazenamento é ultrapassado pela primeira vez no modelo exponencial? *Rubrica:* 3 = mês 24, contra o mês 39 da previsão linear;; 2 = mês 24;; 1 = vago;; 0 = nenhuma.
 
 - **EX003 — Planejamento linear.** Por que é arriscado planejar o armazenamento de logs a partir do aumento do ano anterior? *Rubrica:* 3 = aplica uma visão linear a um processo exponencial e subestima o crescimento;; 2 = subestima;; 1 = é preciso;; 0 = nenhuma.
 
@@ -159,7 +159,7 @@ O fecho supõe que as participações estão atualizadas; dados desatualizados e
 
 ### Exercícios
 
-- **EX004 — Direito oculto.** Que conta ganhou direitos sobre tarifas indiretamente no laboratório, e por quantos níveis? *Rubrica:* 3 = contractor-07, por uma cadeia de quatro grupos que termina em fare-admins;; 2 = a conta;; 1 = nenhuma;; 0 = nenhuma.
+- **EX004 — Direito oculto.** Que conta ganhou direitos sobre tarifas indiretamente no laboratório, e por quantos níveis? *Rubrica:* 3 = contractor-07, por uma cadeia de quatro grupos que termina em fare-admins;; 2 = a conta;; 1 = vago;; 0 = nenhuma.
 
 - **EX005 — Teste de SoD.** Como a segregação de funções é expressa com conjuntos? *Rubrica:* 3 = os conjuntos de criadores e de aprovadores devem ser disjuntos; interseção vazia;; 2 = disjuntos;; 1 = união;; 0 = nenhuma.
 
@@ -289,7 +289,7 @@ Os registros de decisão ficam desatualizados se não forem revistos quando as d
 
 - **EX014 — Posição da fronteira.** Onde uma fronteira de confiança deve ser desenhada num diagrama de fluxo de dados? *Rubrica:* 3 = onde a confiança muda, como entre um ônibus e a rede da garagem;; 2 = mudança de confiança;; 1 = em qualquer lugar;; 0 = nenhuma.
 
-- **EX015 — Janela de bloqueio.** Que risco Sofia declarou à diretora financeira? *Rubrica:* 3 = um cartão roubado pode ser usado por até uma hora;; 2 = uma hora;; 1 = nenhuma;; 0 = nenhuma.
+- **EX015 — Janela de bloqueio.** Que risco Sofia declarou à diretora financeira? *Rubrica:* 3 = um cartão roubado pode ser usado por até uma hora;; 2 = uma hora;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -455,7 +455,7 @@ As proteções de hardware já tiveram falhas que exigiram correções de microc
 
 ### Exercícios
 
-- **EX022 — Tempo de cache.** Por que os caches podem criar problemas de segurança? *Rubrica:* 3 = diferenças de tempo entre acessos em cache e fora dele podem vazar informação;; 2 = tempo;; 1 = nenhuma;; 0 = nenhuma.
+- **EX022 — Tempo de cache.** Por que os caches podem criar problemas de segurança? *Rubrica:* 3 = diferenças de tempo entre acessos em cache e fora dele podem vazar informação;; 2 = tempo;; 1 = vago;; 0 = nenhuma.
 
 - **EX023 — Gravidade de bugs de kernel.** Por que vulnerabilidades de kernel são tratadas como críticas? *Rubrica:* 3 = quebram as fronteiras de privilégio e memória das quais os outros controles dependem;; 2 = fronteiras;; 1 = menores;; 0 = nenhuma.
 
@@ -497,7 +497,7 @@ Os testes mostram a presença de verificações, não a ausência de todos os bu
 
 ### Exercícios
 
-- **EX025 — Benefício da interface estreita.** Como interfaces de módulo estreitas ajudam a revisão de segurança? *Rubrica:* 3 = menos para revisar, e dados validados não precisam ser verificados de novo em toda parte;; 2 = revisão;; 1 = nenhuma;; 0 = nenhuma.
+- **EX025 — Benefício da interface estreita.** Como interfaces de módulo estreitas ajudam a revisão de segurança? *Rubrica:* 3 = menos para revisar, e dados validados não precisam ser verificados de novo em toda parte;; 2 = revisão;; 1 = vago;; 0 = nenhuma.
 
 - **EX026 — Exemplo de teste negativo.** Dê um teste negativo do motor de Sofia. *Rubrica:* 3 = desconto infantil em cartão de adulto rejeitado, erro para zona fora da rede ou valor com três casas recusado;; 2 = um;; 1 = teste positivo;; 0 = nenhuma.
 
@@ -817,7 +817,7 @@ Tabelas de rastreabilidade ficam onerosas se forem detalhadas demais. Os modelos
 
 - **EX046 — Etapas negligenciadas.** Que etapas do ciclo de vida costumam ser negligenciadas na segurança? *Rubrica:* 3 = suporte e desativação;; 2 = as duas;; 1 = desenvolvimento;; 0 = nenhuma.
 
-- **EX047 — Fluxo do SP 800-160.** Que cadeia o SP 800-160 Vol. 1 Rev. 1 enfatiza? *Rubrica:* 3 = necessidades de proteção para requisitos, para projeto, para garantia;; 2 = cadeia;; 1 = nenhuma;; 0 = nenhuma.
+- **EX047 — Fluxo do SP 800-160.** Que cadeia o SP 800-160 Vol. 1 Rev. 1 enfatiza? *Rubrica:* 3 = necessidades de proteção para requisitos, para projeto, para garantia;; 2 = cadeia;; 1 = vago;; 0 = nenhuma.
 
 - **EX048 — Valor da rastreabilidade.** O que a rastreabilidade mostra quando um requisito muda? *Rubrica:* 3 = quais elementos de projeto e testes são afetados;; 2 = itens afetados;; 1 = nada;; 0 = nenhuma.
 
@@ -885,11 +885,11 @@ Modelos proporcionais simples ignoram a adaptação do atacante. Os resultados d
 
 ### Exercícios
 
-- **EX049 — Exploração da automação.** Como atacantes poderiam explorar uma automação de segurança mal ajustada? *Rubrica:* 3 = dispará-la de propósito para causar indisponibilidade aos usuários legítimos;; 2 = disparar;; 1 = nenhuma;; 0 = nenhuma.
+- **EX049 — Exploração da automação.** Como atacantes poderiam explorar uma automação de segurança mal ajustada? *Rubrica:* 3 = dispará-la de propósito para causar indisponibilidade aos usuários legítimos;; 2 = disparar;; 1 = vago;; 0 = nenhuma.
 
 - **EX050 — Resultado do ganho alto.** O que aconteceu no laboratório com o ganho alto? *Rubrica:* 3 = a taxa permitida oscilou, alternando entre bloquear usuários e deixar ataques entrarem;; 2 = oscilou;; 1 = estabilizou;; 0 = nenhuma.
 
-- **EX051 — Proposta de estabilização.** Cite duas salvaguardas que Sofia propõe para controles automatizados. *Rubrica:* 3 = ajustes limitados, limites mínimo e máximo, revisão humana nos limites (duas);; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+- **EX051 — Proposta de estabilização.** Cite duas salvaguardas que Sofia propõe para controles automatizados. *Rubrica:* 3 = ajustes limitados, limites mínimo e máximo, revisão humana nos limites (duas);; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -929,7 +929,7 @@ As visões em camadas simplificam preocupações transversais. Os rastreamentos 
 
 - **EX052 — Ponto de partida do SABSA.** Por onde o SABSA começa uma arquitetura? *Rubrica:* 3 = por requisitos de negócio expressos como atributos;; 2 = atributos;; 1 = tecnologia;; 0 = nenhuma.
 
-- **EX053 — Lacuna encontrada.** Que lacuna a visão em camadas de Sofia expôs? *Rubrica:* 3 = nenhum responsável operacional pela gestão de chaves;; 2 = responsável;; 1 = nenhuma;; 0 = nenhuma.
+- **EX053 — Lacuna encontrada.** Que lacuna a visão em camadas de Sofia expôs? *Rubrica:* 3 = nenhum responsável operacional pela gestão de chaves;; 2 = responsável;; 1 = vago;; 0 = nenhuma.
 
 - **EX054 — Remoção de um controle.** O que o rastreamento de atributos mostra quando uma mudança remove um controle? *Rubrica:* 3 = qual atributo de negócio é enfraquecido;; 2 = atributo;; 1 = nada;; 0 = nenhuma.
 
@@ -969,9 +969,9 @@ Passkeys e certificados ainda dependem de processos de recuperação que podem s
 
 ### Exercícios
 
-- **EX055 — Lacuna de identidade.** Que lacuna de identidade Sofia encontrou? *Rubrica:* 3 = uma conta de suporte compartilhada de fornecedor contornando o single sign-on dos funcionários;; 2 = conta compartilhada;; 1 = nenhuma;; 0 = nenhuma.
+- **EX055 — Lacuna de identidade.** Que lacuna de identidade Sofia encontrou? *Rubrica:* 3 = uma conta de suporte compartilhada de fornecedor contornando o single sign-on dos funcionários;; 2 = conta compartilhada;; 1 = vago;; 0 = nenhuma.
 
-- **EX056 — Benefício da tokenização.** Por que a tokenização ajuda a Corvia? *Rubrica:* 3 = ela nunca armazena números de cartão, o que reduz a exposição;; 2 = sem números de cartão;; 1 = nenhuma;; 0 = nenhuma.
+- **EX056 — Benefício da tokenização.** Por que a tokenização ajuda a Corvia? *Rubrica:* 3 = ela nunca armazena números de cartão, o que reduz a exposição;; 2 = sem números de cartão;; 1 = vago;; 0 = nenhuma.
 
 - **EX057 — Ciclo de vida das chaves.** Liste quatro fases da gestão de chaves. *Rubrica:* 3 = quatro entre geração, armazenamento, distribuição, rotação, revogação, destruição;; 2 = três;; 1 = uma;; 0 = nenhuma.
 
@@ -1011,7 +1011,7 @@ A interpretação jurídica exige aconselhamento qualificado. O contexto muda ao
 
 ### Exercícios
 
-- **EX058 — Exemplo de obrigação.** Dê uma obrigação e seu efeito na arquitetura. *Rubrica:* 3 = obrigações de pagamento exigem segmentar os sistemas de pagamento; a privacidade exige suporte à exclusão;; 2 = um par;; 1 = nenhuma;; 0 = nenhuma.
+- **EX058 — Exemplo de obrigação.** Dê uma obrigação e seu efeito na arquitetura. *Rubrica:* 3 = obrigações de pagamento exigem segmentar os sistemas de pagamento; a privacidade exige suporte à exclusão;; 2 = um par;; 1 = vago;; 0 = nenhuma.
 
 - **EX059 — Restrição legada.** Que restrição limita as mudanças nos validadores? *Rubrica:* 3 = os validadores legados só podem ser substituídos no quinto ano;; 2 = legado;; 1 = orçamento;; 0 = nenhuma.
 
@@ -1055,7 +1055,7 @@ Os requisitos podem entrar em conflito, como logging versus privacidade. Os cat�
 
 - **EX061 — Reescrita verificável.** Reescreva o sistema deve ser seguro como um requisito verificável para reembolsos. *Rubrica:* 3 = reembolsos acima de 50 euros exigem um segundo aprovador distinto do solicitante, verificado por teste;; 2 = verificável;; 1 = vago;; 0 = nenhuma.
 
-- **EX062 — Derivação do caso de abuso.** Que requisito decorre do caso de abuso dos registros de validação repetidos? *Rubrica:* 3 = identificadores únicos de registro com detecção de replay;; 2 = detecção de replay;; 1 = nenhuma;; 0 = nenhuma.
+- **EX062 — Derivação do caso de abuso.** Que requisito decorre do caso de abuso dos registros de validação repetidos? *Rubrica:* 3 = identificadores únicos de registro com detecção de replay;; 2 = detecção de replay;; 1 = vago;; 0 = nenhuma.
 
 - **EX063 — Uso do catálogo.** Como Sofia usou o SP 800-53 Rev. 5? *Rubrica:* 3 = para procurar lacunas, encontrando um requisito de proteção e revisão de logs que faltava;; 2 = verificação de lacunas;; 1 = copiou tudo;; 0 = nenhuma.
 
@@ -1095,9 +1095,9 @@ Os modelos abstraem detalhes onde falhas podem se esconder. Os fluxos observados
 
 ### Exercícios
 
-- **EX064 — Problema de contorno.** Que problema de projeto o modelo de componentes revelou? *Rubrica:* 3 = relatórios lendo diretamente o banco de viagens, contornando os controles de acesso;; 2 = contorno;; 1 = nenhuma;; 0 = nenhuma.
+- **EX064 — Problema de contorno.** Que problema de projeto o modelo de componentes revelou? *Rubrica:* 3 = relatórios lendo diretamente o banco de viagens, contornando os controles de acesso;; 2 = contorno;; 1 = vago;; 0 = nenhuma.
 
-- **EX065 — Fluxos de dados pessoais.** De que precisam os fluxos que levam dados pessoais através de fronteiras? *Rubrica:* 3 = criptografia e autenticação;; 2 = as duas;; 1 = nenhuma;; 0 = nenhuma.
+- **EX065 — Fluxos de dados pessoais.** De que precisam os fluxos que levam dados pessoais através de fronteiras? *Rubrica:* 3 = criptografia e autenticação;; 2 = as duas;; 1 = vago;; 0 = nenhuma.
 
 - **EX066 — Resposta à deriva.** O que significa quando os fluxos observados incluem um que não está no modelo? *Rubrica:* 3 = ou o modelo ou o sistema está errado; investigar os dois;; 2 = investigar;; 1 = ignorar;; 0 = nenhuma.
 
@@ -1161,7 +1161,7 @@ As probabilidades das árvores de falhas muitas vezes são palpites; sua ordena�
 
 ### Exercícios
 
-- **EX067 — Validadores desativados.** Que ameaça de spoofing a sessão STRIDE encontrou? *Rubrica:* 3 = validadores desativados com certificados internos ainda podiam enviar registros;; 2 = dispositivos desativados;; 1 = nenhuma;; 0 = nenhuma.
+- **EX067 — Validadores desativados.** Que ameaça de spoofing a sessão STRIDE encontrou? *Rubrica:* 3 = validadores desativados com certificados internos ainda podiam enviar registros;; 2 = dispositivos desativados;; 1 = vago;; 0 = nenhuma.
 
 - **EX068 — Ramo dominante.** Que ramo dominou a árvore de falhas no laboratório? *Rubrica:* 3 = erro de cálculo da tarifa depois de mudança de tarifa;; 2 = cálculo;; 1 = registros perdidos;; 0 = nenhuma.
 
@@ -1203,7 +1203,7 @@ As escalas de risco significam coisas diferentes para pessoas diferentes, a meno
 
 ### Exercícios
 
-- **EX070 — Fraqueza qualitativa.** Qual é uma fraqueza das escalas de risco qualitativas? *Rubrica:* 3 = escondem grandes diferenças dentro de uma mesma categoria;; 2 = esconde diferenças;; 1 = nenhuma;; 0 = nenhuma.
+- **EX070 — Fraqueza qualitativa.** Qual é uma fraqueza das escalas de risco qualitativas? *Rubrica:* 3 = escondem grandes diferenças dentro de uma mesma categoria;; 2 = esconde diferenças;; 1 = vago;; 0 = nenhuma.
 
 - **EX071 — Etapas do SP 800-30.** Cite as quatro etapas principais do SP 800-30 Rev. 1. *Rubrica:* 3 = preparar, conduzir, comunicar, manter;; 2 = três;; 1 = uma;; 0 = nenhuma.
 
@@ -1249,7 +1249,7 @@ Os projetos de ateliê não têm o detalhamento de produção; restrições reai
 
 - **EX074 — Questionamento sem resposta.** Como a equipe lidou com o questionamento que não sabia responder? *Rubrica:* 3 = disse isso com honestidade e o registrou como questão em aberto;; 2 = questão em aberto;; 1 = inventou uma resposta;; 0 = nenhuma.
 
-- **EX075 — Mitigações finais.** Cite duas mitigações acrescentadas depois da crítica. *Rubrica:* 3 = limites de hardware não sobreponíveis nos carregadores, separação de rede, aprovação de duas pessoas para as regras de contingência (duas);; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+- **EX075 — Mitigações finais.** Cite duas mitigações acrescentadas depois da crítica. *Rubrica:* 3 = limites de hardware não sobreponíveis nos carregadores, separação de rede, aprovação de duas pessoas para as regras de contingência (duas);; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1291,7 +1291,7 @@ A pontuação ponderada pode esconder divergências por trás das médias. Dados
 
 - **EX077 — Resultado da sensibilidade.** O que acontece com a decisão se o peso do custo dobrar? *Rubrica:* 3 = a alternativa A vence no lugar da C;; 2 = A vence;; 1 = C continua;; 0 = nenhuma.
 
-- **EX078 — Novo risco.** Que novo risco a alternativa C introduz? *Rubrica:* 3 = o processo de pseudonimização vira um ponto único de falha para a privacidade;; 2 = pseudonimização;; 1 = nenhuma;; 0 = nenhuma.
+- **EX078 — Novo risco.** Que novo risco a alternativa C introduz? *Rubrica:* 3 = o processo de pseudonimização vira um ponto único de falha para a privacidade;; 2 = pseudonimização;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1333,7 +1333,7 @@ Chaves fixadas complicam a rotação de emergência. Os controles detectivos dep
 
 - **EX080 — Verificação de independência.** Por que comparar as versões carregadas com a lista independente do financeiro? *Rubrica:* 3 = ainda detecta o uso indevido se a chave de assinatura for roubada;; 2 = independente;; 1 = redundante;; 0 = nenhuma.
 
-- **EX081 — Teste da especificação.** Dê um caso de teste da especificação. *Rubrica:* 3 = tabela corretamente assinada carrega, tabela modificada é rejeitada ou chave desconhecida é rejeitada;; 2 = um;; 1 = nenhuma;; 0 = nenhuma.
+- **EX081 — Teste da especificação.** Dê um caso de teste da especificação. *Rubrica:* 3 = tabela corretamente assinada carrega, tabela modificada é rejeitada ou chave desconhecida é rejeitada;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1371,7 +1371,7 @@ Os repositórios de segredos se tornam dependências críticas que precisam de a
 
 ### Exercícios
 
-- **EX082 — Referências das tarefas.** Por que cada tarefa referencia um requisito? *Rubrica:* 3 = evita adiar os controles difíceis e permite que os revisores verifiquem a cobertura;; 2 = cobertura;; 1 = nenhuma;; 0 = nenhuma.
+- **EX082 — Referências das tarefas.** Por que cada tarefa referencia um requisito? *Rubrica:* 3 = evita adiar os controles difíceis e permite que os revisores verifiquem a cobertura;; 2 = cobertura;; 1 = vago;; 0 = nenhuma.
 
 - **EX083 — Credencial commitada.** Que passos se seguiram à descoberta de uma credencial de teste commitada? *Rubrica:* 3 = removida do histórico e rotacionada, com o incidente registrado;; 2 = as duas;; 1 = só removida;; 0 = nenhuma.
 
@@ -1441,7 +1441,7 @@ As métricas medem indicadores indiretos, não a segurança em si. Denominadores
 
 - **EX086 — Resultado da revogação no laboratório.** O que o laboratório mostrou sobre a tempestividade da revogação? *Rubrica:* 3 = mediana de 8 dias entre os revogados, 3 de 20 nunca revogados, só 8 de 20 em até uma semana;; 2 = os dois;; 1 = boa;; 0 = nenhuma.
 
-- **EX087 — Métrica em par.** Que métrica deve acompanhar a velocidade de fechamento de tickets? *Rubrica:* 3 = a taxa de reabertura;; 2 = reabertura;; 1 = nenhuma;; 0 = nenhuma.
+- **EX087 — Métrica em par.** Que métrica deve acompanhar a velocidade de fechamento de tickets? *Rubrica:* 3 = a taxa de reabertura;; 2 = reabertura;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1515,7 +1515,7 @@ Os ambientes de laboratório diferem da produção em escala e em tempo. Testes 
 
 - **EX089 — Resultados do laboratório.** Quais dos quatro registros do laboratório foram aceitos? *Rubrica:* 3 = só o registro novo e autêntico; duplicado, alterado e desativado rejeitados;; 2 = só o primeiro;; 1 = vários;; 0 = nenhuma.
 
-- **EX090 — Não verificado.** Cite uma área que o relatório de Sofia lista como não verificada. *Rubrica:* 3 = carga de pico, failover do banco de dados ou caminho das assinaturas de produção;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+- **EX090 — Não verificado.** Cite uma área que o relatório de Sofia lista como não verificada. *Rubrica:* 3 = carga de pico, failover do banco de dados ou caminho das assinaturas de produção;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1553,11 +1553,11 @@ O enrolment automatizado se torna um alvo de alto valor. A conciliação depende
 
 ### Exercícios
 
-- **EX091 — Condição de enrolment.** O que precisa existir antes que um validador receba um certificado? *Rubrica:* 3 = um registro de ativo e um ticket de instalação aprovado;; 2 = os dois;; 1 = nenhuma;; 0 = nenhuma.
+- **EX091 — Condição de enrolment.** O que precisa existir antes que um validador receba um certificado? *Rubrica:* 3 = um registro de ativo e um ticket de instalação aprovado;; 2 = os dois;; 1 = vago;; 0 = nenhuma.
 
 - **EX092 — Propósito da conciliação.** O que a conciliação diária capta? *Rubrica:* 3 = divergências entre certificados ativos e ativos em serviço causadas por eventos perdidos;; 2 = divergências;; 1 = nada;; 0 = nenhuma.
 
-- **EX093 — Conteúdo da exceção.** O que cada exceção legada inclui? *Rubrica:* 3 = controles compensatórios, responsável e data de expiração ou substituição;; 2 = três;; 1 = nenhuma;; 0 = nenhuma.
+- **EX093 — Conteúdo da exceção.** O que cada exceção legada inclui? *Rubrica:* 3 = controles compensatórios, responsável e data de expiração ou substituição;; 2 = três;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1664,7 +1664,7 @@ Procedimentos manuais se deterioram sem prática. A própria degradação pode c
 
 - **EX098 — Canal diverso.** Que técnica de resiliência um canal de comunicação de reserva para os motoristas representa? *Rubrica:* 3 = diversidade ou redundância da comunicação;; 2 = diversidade;; 1 = segmentação;; 0 = nenhuma.
 
-- **EX099 — Pressão do resgate.** Como níveis de degradação ensaiados reduzem a pressão para pagar resgates? *Rubrica:* 3 = a equipe sabe que os serviços podem continuar manualmente, então há menos urgência para pagar;; 2 = continuidade;; 1 = nenhuma;; 0 = nenhuma.
+- **EX099 — Pressão do resgate.** Como níveis de degradação ensaiados reduzem a pressão para pagar resgates? *Rubrica:* 3 = a equipe sabe que os serviços podem continuar manualmente, então há menos urgência para pagar;; 2 = continuidade;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1706,7 +1706,7 @@ Os gateways se tornam pontos únicos de falha e precisam ser resilientes. Os con
 
 - **EX101 — Exemplo de escopo.** O que os tokens do aplicativo de mobilidade podem permitir, e o que não? *Rubrica:* 3 = vender passagens e consultar tarifas, não ler históricos de viagem;; 2 = as duas partes;; 1 = acesso total;; 0 = nenhuma.
 
-- **EX102 — Matriz no vazamento.** Como a matriz de responsabilidades ajudou durante o vazamento do parceiro? *Rubrica:* 3 = esclareceu quem notifica os passageiros e quais tokens a Corvia revoga;; 2 = clareza;; 1 = nenhuma;; 0 = nenhuma.
+- **EX102 — Matriz no vazamento.** Como a matriz de responsabilidades ajudou durante o vazamento do parceiro? *Rubrica:* 3 = esclareceu quem notifica os passageiros e quais tokens a Corvia revoga;; 2 = clareza;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1812,7 +1812,7 @@ As medições de laboratório podem não refletir o hardware de produção. Os c
 
 - **EX107 — Comparação dos buckets.** Como os dois tamanhos de bucket lidaram com a rajada sintética? *Rubrica:* 3 = capacidade 20 rejeitou 200 de 450; capacidade 200 rejeitou 20;; 2 = os dois;; 1 = iguais;; 0 = nenhuma.
 
-- **EX108 — Tradeoff do cache.** Que tradeoff o cache das decisões de autorização introduz? *Rubrica:* 3 = direitos revogados podem continuar funcionando até o cache expirar;; 2 = atraso na revogação;; 1 = nenhuma;; 0 = nenhuma.
+- **EX108 — Tradeoff do cache.** Que tradeoff o cache das decisões de autorização introduz? *Rubrica:* 3 = direitos revogados podem continuar funcionando até o cache expirar;; 2 = atraso na revogação;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -1852,7 +1852,7 @@ Os limiares de detecção precisam de ajuste depois do lançamento. Os processos
 
 - **EX109 — Funções do CSF.** Liste as seis funções do CSF 2.0. *Rubrica:* 3 = governar, identificar, proteger, detectar, responder, recuperar (govern, identify, protect, detect, respond, recover);; 2 = cinco;; 1 = três;; 0 = nenhuma.
 
-- **EX110 — Detecção de exportação por insider.** Como a exportação de dados de viagem por um insider é detectada? *Rubrica:* 3 = alerta sobre volume de exportação incomum ou exportações fora do horário;; 2 = volume ou horário;; 1 = nenhuma;; 0 = nenhuma.
+- **EX110 — Detecção de exportação por insider.** Como a exportação de dados de viagem por um insider é detectada? *Rubrica:* 3 = alerta sobre volume de exportação incomum ou exportações fora do horário;; 2 = volume ou horário;; 1 = vago;; 0 = nenhuma.
 
 - **EX111 — Gatilho de revisão.** Que mudanças precisam de revisão de segurança e nova verificação? *Rubrica:* 3 = as que tocam autenticação, criptografia, regras de rede ou logging;; 2 = três;; 1 = todas as triviais;; 0 = nenhuma.
 
@@ -1934,11 +1934,11 @@ A agilidade acrescenta complexidade e riscos de downgrade se algoritmos antigos 
 
 ### Exercícios
 
-- **EX115 — Problema do código fixo.** Que problema de manutenibilidade Sofia encontrou na verificação das tarifas? *Rubrica:* 3 = algoritmo de assinatura e chave fixos no código;; 2 = fixo no código;; 1 = nenhuma;; 0 = nenhuma.
+- **EX115 — Problema do código fixo.** Que problema de manutenibilidade Sofia encontrou na verificação das tarifas? *Rubrica:* 3 = algoritmo de assinatura e chave fixos no código;; 2 = fixo no código;; 1 = vago;; 0 = nenhuma.
 
-- **EX116 — Viabilizador da agilidade.** Que características do formato viabilizam a agilidade criptográfica das assinaturas de tarifas? *Rubrica:* 3 = um campo de versão e um identificador de algoritmo;; 2 = os dois;; 1 = nenhuma;; 0 = nenhuma.
+- **EX116 — Viabilizador da agilidade.** Que características do formato viabilizam a agilidade criptográfica das assinaturas de tarifas? *Rubrica:* 3 = um campo de versão e um identificador de algoritmo;; 2 = os dois;; 1 = vago;; 0 = nenhuma.
 
-- **EX117 — Registro de dívida.** O que cada entrada do registro de dívida de segurança inclui? *Rubrica:* 3 = risco, responsável e plano de remoção;; 2 = três;; 1 = nenhuma;; 0 = nenhuma.
+- **EX117 — Registro de dívida.** O que cada entrada do registro de dívida de segurança inclui? *Rubrica:* 3 = risco, responsável e plano de remoção;; 2 = três;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -2109,7 +2109,7 @@ Desenhos antes e depois não conseguem excluir mudanças simultâneas. Contagens
 
 - **EX125 — Cuidado com a lista de dispositivos.** Por que o relatório evita listar dispositivos individuais? *Rubrica:* 3 = uma lista assim poderia guiar atacantes até os pontos fracos;; 2 = mapa para atacantes;; 1 = sem motivo;; 0 = nenhuma.
 
-- **EX126 — Fator de confusão.** Que fator de confusão limita a conclusão? *Rubrica:* 3 = as melhorias nos registros de ativos aconteceram ao mesmo tempo;; 2 = registros de ativos;; 1 = nenhuma;; 0 = nenhuma.
+- **EX126 — Fator de confusão.** Que fator de confusão limita a conclusão? *Rubrica:* 3 = as melhorias nos registros de ativos aconteceram ao mesmo tempo;; 2 = registros de ativos;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -2149,9 +2149,9 @@ Revisões proporcionais podem deixar passar problemas; seus limites precisam ser
 
 - **EX127 — Constatação sobre facilitação.** Em que Sofia constatou que consistia boa parte do seu trabalho de revisão? *Rubrica:* 3 = fazer perguntas de contexto e requisitos a gerentes de projeto ocupados;; 2 = perguntas;; 1 = programar;; 0 = nenhuma.
 
-- **EX128 — Revisão proporcional.** O que incluiu a revisão da integração com bicicletas compartilhadas? *Rubrica:* 3 = verificação do gateway e dos tokens com escopo, verificação da classificação dos dados, modelagem de ameaças de uma hora, dois riscos residuais aceitos;; 2 = três;; 1 = nenhuma;; 0 = nenhuma.
+- **EX128 — Revisão proporcional.** O que incluiu a revisão da integração com bicicletas compartilhadas? *Rubrica:* 3 = verificação do gateway e dos tokens com escopo, verificação da classificação dos dados, modelagem de ameaças de uma hora, dois riscos residuais aceitos;; 2 = três;; 1 = vago;; 0 = nenhuma.
 
-- **EX129 — Área de desenvolvimento.** Que área de desenvolvimento seu supervisor apontou? *Rubrica:* 3 = negociação;; 2 = negociação;; 1 = escrita;; 0 = nenhuma.
+- **EX129 — Área de desenvolvimento.** Que área de desenvolvimento seu supervisor apontou? *Rubrica:* 3 = negociação;; 2 = negociação, sem justificativa;; 1 = escrita;; 0 = nenhuma.
 
 ### Síntese
 
@@ -2189,7 +2189,7 @@ Os critérios de sucesso podem ser manipulados se forem estreitos demais. Os esp
 
 ### Exercícios
 
-- **EX130 — Critérios de sucesso.** Cite dois critérios de sucesso do projeto final de Sofia. *Rubrica:* 3 = dois entre ameaças mitigadas ou aceitas, testes de verificação aprovados, tempo de recuperação cumprido, revisão sem achados críticos;; 2 = um;; 1 = nenhuma;; 0 = nenhuma.
+- **EX130 — Critérios de sucesso.** Cite dois critérios de sucesso do projeto final de Sofia. *Rubrica:* 3 = dois entre ameaças mitigadas ou aceitas, testes de verificação aprovados, tempo de recuperação cumprido, revisão sem achados críticos;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
 - **EX131 — Fracasso comum.** Segundo Daniel, por que os projetos finais costumam fracassar? *Rubrica:* 3 = evidências produzidas tarde demais para corrigir o que revelam;; 2 = evidências atrasadas;; 1 = projeto ruim;; 0 = nenhuma.
 
@@ -2231,11 +2231,11 @@ Um único revisor tem pontos cegos; projetos importantes se beneficiam de vário
 
 ### Exercícios
 
-- **EX133 — Guia de leitura.** O que o guia de leitura de Sofia inclui? *Rubrica:* 3 = escopo, decisões principais, questões em aberto, perguntas específicas, itens fora do escopo;; 2 = três;; 1 = nenhuma;; 0 = nenhuma.
+- **EX133 — Guia de leitura.** O que o guia de leitura de Sofia inclui? *Rubrica:* 3 = escopo, decisões principais, questões em aberto, perguntas específicas, itens fora do escopo;; 2 = três;; 1 = vago;; 0 = nenhuma.
 
-- **EX134 — Achado crítico.** Qual foi o achado crítico e sua correção? *Rubrica:* 3 = atendentes ajustando tarifas sem segunda aprovação; dupla aprovação acima de um limite;; 2 = os dois;; 1 = nenhuma;; 0 = nenhuma.
+- **EX134 — Achado crítico.** Qual foi o achado crítico e sua correção? *Rubrica:* 3 = atendentes ajustando tarifas sem segunda aprovação; dupla aprovação acima de um limite;; 2 = os dois;; 1 = vago;; 0 = nenhuma.
 
-- **EX135 — Achado no projeto do colega.** Que fraqueza Sofia encontrou no projeto do colega? *Rubrica:* 3 = a revogação em lote noturno deixa até um dia de acesso para funcionários demitidos;; 2 = lote;; 1 = nenhuma;; 0 = nenhuma.
+- **EX135 — Achado no projeto do colega.** Que fraqueza Sofia encontrou no projeto do colega? *Rubrica:* 3 = a revogação em lote noturno deixa até um dia de acesso para funcionários demitidos;; 2 = lote;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -2273,9 +2273,9 @@ Assurance cases podem dar falsa confiança se as evidências forem fracas. As ex
 
 ### Exercícios
 
-- **EX136 — Exceções do laboratório.** Quantos requisitos não puderam ser testados no laboratório, e por quê? *Rubrica:* 3 = dois, porque o laboratório não consegue reproduzir o hardware de produção;; 2 = contagem e motivo;; 1 = nenhuma;; 0 = nenhuma.
+- **EX136 — Exceções do laboratório.** Quantos requisitos não puderam ser testados no laboratório, e por quê? *Rubrica:* 3 = dois, porque o laboratório não consegue reproduzir o hardware de produção;; 2 = contagem e motivo;; 1 = vago;; 0 = nenhuma.
 
-- **EX137 — Lacuna do assurance case.** Que lacuna o assurance case revelou? *Rubrica:* 3 = uma subafirmação dependia apenas da revisão de projeto; foi acrescentado um teste;; 2 = só revisão;; 1 = nenhuma;; 0 = nenhuma.
+- **EX137 — Lacuna do assurance case.** Que lacuna o assurance case revelou? *Rubrica:* 3 = uma subafirmação dependia apenas da revisão de projeto; foi acrescentado um teste;; 2 = só revisão;; 1 = vago;; 0 = nenhuma.
 
 - **EX138 — Resposta ao escopo.** Como Sofia respondeu ao pedido tardio dos reembolsos? *Rubrica:* 3 = propôs documentar a extensão como trabalho futuro em vez de implementá-la;; 2 = alternativa;; 1 = aceitou;; 0 = nenhuma.
 
@@ -2406,7 +2406,7 @@ Os manifestos detectam alterações, mas não se a evidência original era sóli
 
 - **EX142 — Organização do dossiê.** Como o dossiê é organizado, e por quê? *Rubrica:* 3 = pela estrutura do assurance case, para que qualquer afirmação possa ser rastreada até a evidência;; 2 = estrutura;; 1 = alfabética;; 0 = nenhuma.
 
-- **EX143 — Resultado do manifesto no laboratório.** Que arquivo o laboratório do dossiê sinalizou? *Rubrica:* 3 = verification_report.md, editado depois que o manifesto foi criado;; 2 = arquivo nomeado;; 1 = nenhuma;; 0 = nenhuma.
+- **EX143 — Resultado do manifesto no laboratório.** Que arquivo o laboratório do dossiê sinalizou? *Rubrica:* 3 = verification_report.md, editado depois que o manifesto foi criado;; 2 = arquivo nomeado;; 1 = vago;; 0 = nenhuma.
 
 - **EX144 — Ressalva do mapeamento.** Que ressalva acompanha o mapeamento para normas? *Rubrica:* 3 = mostra cobertura de temas, não certificação ou conformidade;; 2 = cobertura;; 1 = conformidade;; 0 = nenhuma.
 
@@ -2450,7 +2450,7 @@ Padrões abstraídos de um único caso podem não se transferir. Os resultados d
 
 - **EX146 — Contexto da recuperação.** Que contexto Sofia dá para o tempo de recuperação melhorado? *Rubrica:* 3 = só foi demonstrado num espelho de laboratório;; 2 = só laboratório;; 1 = produção;; 0 = nenhuma.
 
-- **EX147 — Padrão reutilizável.** Cite um padrão reutilizável da tese. *Rubrica:* 3 = configuração assinada com verificações de publicação independentes, revogação disparada pelo ativo com conciliação ou revisão proporcional;; 2 = um;; 1 = nenhuma;; 0 = nenhuma.
+- **EX147 — Padrão reutilizável.** Cite um padrão reutilizável da tese. *Rubrica:* 3 = configuração assinada com verificações de publicação independentes, revogação disparada pelo ativo com conciliação ou revisão proporcional;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -2490,7 +2490,7 @@ O desempenho na defesa não é o mesmo que a qualidade do projeto. As correçõe
 
 - **EX148 — Foco da apresentação.** Em que a apresentação de Sofia se concentra? *Rubrica:* 3 = problema, decisões principais, evidências e limites, e não tudo o que foi feito;; 2 = foco;; 1 = tudo;; 0 = nenhuma.
 
-- **EX149 — Resposta sobre o roubo da chave.** Que limite Sofia admite sobre chaves de tarifas roubadas? *Rubrica:* 3 = um comprometimento coordenado da chave e da lista de publicações do financeiro derrotaria os controles;; 2 = comprometimento conjunto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX149 — Resposta sobre o roubo da chave.** Que limite Sofia admite sobre chaves de tarifas roubadas? *Rubrica:* 3 = um comprometimento coordenado da chave e da lista de publicações do financeiro derrotaria os controles;; 2 = comprometimento conjunto;; 1 = vago;; 0 = nenhuma.
 
 - **EX150 — Reflexão final.** Como Sofia resume a arquitetura de segurança em sua reflexão? *Rubrica:* 3 = tornar os tradeoffs explícitos, fundamentados em evidências e com responsáveis;; 2 = três partes;; 1 = tecnologia;; 0 = nenhuma.
 

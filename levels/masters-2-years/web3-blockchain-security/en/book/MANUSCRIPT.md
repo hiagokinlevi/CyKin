@@ -76,10 +76,10 @@ Reading only well-known blog posts without a search method produces a biased pic
 - **EX001 — Control types.** Which three control types does Tariq compare? *Rubric:* 3 = single key, multisig, multisig with timelock;; 2 = three;; 1 = two;; 0 = none.
 - **EX002 — Incident definition.** How is a key-related incident defined? *Rubric:* 3 = unauthorised or mistaken privileged use that harmed users per public report;; 2 = privileged misuse;; 1 = any bug;; 0 = none.
 - **EX003 — Grey literature.** Name one grey-literature source searched. *Rubric:* 3 = EEA EthTrust;; 2 = OWASP;; 1 = novels;; 0 = none.
-- **EX004 — Screening check.** How was screening consistency checked? *Rubric:* 3 = supervisor double-screened a random 10%;; 2 = 10%;; 1 = none;; 0 = none.
+- **EX004 — Screening check.** How was screening consistency checked? *Rubric:* 3 = supervisor double-screened a random 10%;; 2 = 10%;; 1 = vague;; 0 = none.
 - **EX005 — Included count.** How many records were included? *Rubric:* 3 = 31 of 212;; 2 = 31;; 1 = 212;; 0 = none.
 - **EX006 — EthTrust recommendation.** What does EthTrust recommend for sensitive operations? *Rubric:* 3 = timelock delays;; 2 = timelock;; 1 = single key;; 0 = none.
-- **EX007 — Literature gap.** What gap did Tariq find? *Rubric:* 3 = no comparison of incident rates across control types with confounding;; 2 = measurement;; 1 = none;; 0 = none.
+- **EX007 — Literature gap.** What gap did Tariq find? *Rubric:* 3 = no comparison of incident rates across control types with confounding;; 2 = measurement;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -130,11 +130,11 @@ Assuming a contract is immutable without checking for upgrade authority misjudge
 ### Exercises
 
 - **EX008 — Permissioned difference.** What does NIST IR 8202 say about permissioned ledgers? *Rubric:* 3 = different trust assumptions from permissionless;; 2 = trust;; 1 = identical;; 0 = none.
-- **EX009 — Proxy effect.** Why does a proxy pattern break immutability? *Rubric:* 3 = upgrade authority can point to new code;; 2 = replaceable code;; 1 = none;; 0 = none.
+- **EX009 — Proxy effect.** Why does a proxy pattern break immutability? *Rubric:* 3 = upgrade authority can point to new code;; 2 = replaceable code;; 1 = vague;; 0 = none.
 - **EX010 — Multisig purpose.** What does multi-signature reduce? *Rubric:* 3 = single-key compromise and mistakes;; 2 = single key risk;; 1 = delay;; 0 = none.
 - **EX011 — Timelock purpose.** What does a timelock add? *Rubric:* 3 = time for users and monitors to see and respond;; 2 = visibility;; 1 = speed;; 0 = none.
 - **EX012 — Collusion limit.** When do neither control help? *Rubric:* 3 = when keyholders collude;; 2 = collusion;; 1 = never;; 0 = none.
-- **EX013 — Secondary aim.** What secondary aim did Tariq add? *Rubric:* 3 = whether timelock window allows detection and response;; 2 = window;; 1 = none;; 0 = none.
+- **EX013 — Secondary aim.** What secondary aim did Tariq add? *Rubric:* 3 = whether timelock window allows detection and response;; 2 = window;; 1 = vague;; 0 = none.
 - **EX014 — Care confounder.** What competing explanation did peers raise? *Rubric:* 3 = careful, well-funded teams adopt timelocks;; 2 = care;; 1 = luck;; 0 = none.
 
 ### Synthesis
@@ -270,7 +270,7 @@ Reporting a crude risk ratio as the effect of a control ignores confounding by s
 
 - **EX021 — Crude rates.** What were the crude incident rates? *Rubric:* 3 = 41.7%, 18.8%, 8.3%;; 2 = falling;; 1 = equal;; 0 = none.
 - **EX022 — Risk ratio.** What crude risk ratio did the lab report? *Rubric:* 3 = 5.0;; 2 = five;; 1 = 1.0;; 0 = none.
-- **EX023 — Fragility.** Why is the estimate fragile? *Rubric:* 3 = few events, one incident would change it a lot;; 2 = small counts;; 1 = none;; 0 = none.
+- **EX023 — Fragility.** Why is the estimate fragile? *Rubric:* 3 = few events, one incident would change it a lot;; 2 = small counts;; 1 = vague;; 0 = none.
 - **EX024 — Reporting direction.** How might reporting bias work here? *Rubric:* 3 = against the finding, larger protocols report more;; 2 = against;; 1 = for;; 0 = none.
 - **EX025 — Care proxy.** What proxy measures care? *Rubric:* 3 = audit count before the window;; 2 = audits;; 1 = age;; 0 = none.
 - **EX026 — Size test.** How is the size explanation tested? *Rubric:* 3 = stratify by value managed;; 2 = stratify;; 1 = ignore;; 0 = none.
@@ -350,7 +350,7 @@ Assuming a timelock is long enough without measuring detection and response time
 
 ### Exercises
 
-- **EX027 — Review addition.** What rule did the proposal review add? *Rubric:* 3 = code exposure time under each control;; 2 = exposure time;; 1 = none;; 0 = none.
+- **EX027 — Review addition.** What rule did the proposal review add? *Rubric:* 3 = code exposure time under each control;; 2 = exposure time;; 1 = vague;; 0 = none.
 - **EX028 — Pilot disagreement.** What did coders disagree on? *Rubric:* 3 = a quickly reversed mistaken parameter change;; 2 = reversed change;; 1 = control type;; 0 = none.
 - **EX029 — Within window.** How many changes were confirmed within 48 hours? *Rubric:* 3 = 12 of 14, 85.7%;; 2 = 12;; 1 = 14;; 0 = none.
 - **EX030 — Median time.** What was the median detection time? *Rubric:* 3 = 16 hours;; 2 = 16;; 1 = 48;; 0 = none.
@@ -444,7 +444,7 @@ Presenting crude rates as the final result hides the role of protocol size.
 - **EX034 — Small strata.** What were the small-protocol rates? *Rubric:* 3 = 4/9, 2/6, 1/3;; 2 = small;; 1 = zero;; 0 = none.
 - **EX035 — Large strata.** What were the large-protocol rates? *Rubric:* 3 = 1/3, 1/10, 0/9;; 2 = large;; 1 = equal;; 0 = none.
 - **EX036 — Size imbalance.** How many single-key protocols were small? *Rubric:* 3 = 9 of 12;; 2 = nine;; 1 = three;; 0 = none.
-- **EX037 — Unreported incidents.** What did Lumen's alerts reveal? *Rubric:* 3 = two unreported small incidents in single-key protocols;; 2 = two;; 1 = none;; 0 = none.
+- **EX037 — Unreported incidents.** What did Lumen's alerts reveal? *Rubric:* 3 = two unreported small incidents in single-key protocols;; 2 = two;; 1 = vague;; 0 = none.
 - **EX038 — Final claim.** What is Tariq's conclusion about causation? *Rubric:* 3 = association shown, causation not proven;; 2 = association;; 1 = proven;; 0 = none.
 
 ### Synthesis
@@ -492,7 +492,7 @@ Writing vague limitations hides the specific weaknesses future researchers need 
 ### Exercises
 
 - **EX039 — Results and discussion.** Why keep results and discussion separate? *Rubric:* 3 = readers see observations before interpretation;; 2 = clarity;; 1 = length;; 0 = none.
-- **EX040 — Limitation example.** Name one stated limitation. *Rubric:* 3 = nine incidents give imprecise estimates;; 2 = underreporting;; 1 = none;; 0 = none.
+- **EX040 — Limitation example.** Name one stated limitation. *Rubric:* 3 = nine incidents give imprecise estimates;; 2 = underreporting;; 1 = vague;; 0 = none.
 - **EX041 — Bias direction.** What does Tariq state for each limitation? *Rubric:* 3 = likely direction of bias;; 2 = direction;; 1 = cost;; 0 = none.
 - **EX042 — Weekend implication.** What did the pilot suggest about 48 hours? *Rubric:* 3 = may be too short over weekends;; 2 = weekends;; 1 = too long;; 0 = none.
 - **EX043 — Guidance relation.** How do findings relate to guidance? *Rubric:* 3 = consistent with but not independently proving it;; 2 = consistent;; 1 = contradict;; 0 = none.
@@ -543,7 +543,7 @@ Disseminating protocol-level results could direct attackers to weakly controlled
 ### Exercises
 
 - **EX045 — Review checklist.** What does the independent review checklist ask? *Rubric:* 3 = question answered, reproducible, supported, honest limitations;; 2 = four checks;; 1 = style;; 0 = none.
-- **EX046 — Sensitivity analysis.** What sensitivity analysis was added? *Rubric:* 3 = treat reversed parameter change as non-incident;; 2 = reversed change;; 1 = none;; 0 = none.
+- **EX046 — Sensitivity analysis.** What sensitivity analysis was added? *Rubric:* 3 = treat reversed parameter change as non-incident;; 2 = reversed change;; 1 = vague;; 0 = none.
 - **EX047 — More-time answer.** What would Tariq do with more time? *Rubric:* 3 = larger multi-firm timelock study with notification times;; 2 = bigger study;; 1 = nothing;; 0 = none.
 - **EX048 — Dissemination rule.** How are results disseminated? *Rubric:* 3 = aggregate only, no protocol named;; 2 = aggregate;; 1 = named;; 0 = none.
 - **EX049 — Security check.** Who checks the brief before sharing? *Rubric:* 3 = Lumen's security lead;; 2 = security lead;; 1 = nobody;; 0 = none.

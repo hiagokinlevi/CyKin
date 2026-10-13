@@ -70,7 +70,7 @@ Um primeiro inventário é incompleto; planeje revisitá-lo.
 ### Exercícios
 
 - **EX001 — Lista de sistemas.** Cite quatro sistemas que guardam dados de alunos da Quayside. *Rubrica:* 3 = matrículas, aplicativo, catraca/reservas das unidades, vestíveis, CFTV;; 2 = três;; 1 = um;; 0 = nenhuma.
-- **EX002 — Lacuna do CFTV.** Que lacuna de governança o inventário mostrou? *Rubrica:* 3 = nenhum responsável central pelos gravadores de CFTV;; 2 = menciona CFTV;; 1 = nenhuma;; 0 = nenhuma.
+- **EX002 — Lacuna do CFTV.** Que lacuna de governança o inventário mostrou? *Rubrica:* 3 = nenhum responsável central pelos gravadores de CFTV;; 2 = menciona CFTV;; 1 = vago;; 0 = nenhuma.
 - **EX003 — Prática versus política.** Por que os tecnólogos importam para a privacidade? *Rubrica:* 3 = veem como os sistemas se comportam e podem conferir a prática diante da política;; 2 = menciona sistemas;; 1 = nada;; 0 = nenhuma.
 
 <a id="ch-02"></a>
@@ -310,7 +310,7 @@ Revisões feitas por gerentes ocupados podem virar carimbo; confira as respostas
 ### Exercícios
 
 - **EX019 — Acesso dos trainers.** O que os personal trainers podem ver? *Rubrica:* 3 = reservas e dados de treino dos seus alunos;; 2 = menciona alunos;; 1 = todos os alunos;; 0 = nenhuma.
-- **EX020 — Ex-funcionários.** Quantas contas de ex-funcionários estavam ativas? *Rubrica:* 3 = quarenta;; 2 = aproximadamente;; 1 = nenhuma;; 0 = nenhuma.
+- **EX020 — Ex-funcionários.** Quantas contas de ex-funcionários estavam ativas? *Rubrica:* 3 = quarenta;; 2 = aproximadamente;; 1 = vago;; 0 = nenhuma.
 - **EX021 — Alcance da autenticação multifator.** Que contas recebem a autenticação multifator? *Rubrica:* 3 = sede e gerentes que podem exportar listas;; 2 = menciona gerentes;; 1 = todas;; 0 = nenhuma.
 
 <a id="ch-08"></a>
@@ -431,7 +431,7 @@ A escolha da base legal depende dos fatos; revise-a com o jurídico.
 
 - **EX028 — Finalidade do CFTV.** Por que as imagens de CFTV não podem ser usadas para a produtividade da equipe? *Rubrica:* 3 = limitação da finalidade;; 2 = menciona finalidade;; 1 = é permitido;; 0 = nenhuma.
 - **EX029 — Base do marketing.** Que base legal os e-mails de marketing usam? *Rubrica:* 3 = consentimento;; 2 = correta;; 1 = contrato;; 0 = nenhuma.
-- **EX030 — Condição para a frequência cardíaca.** Que condição os dados de saúde de frequência cardíaca podem exigir? *Rubrica:* 3 = consentimento explícito pelo artigo 9;; 2 = menciona consentimento;; 1 = nenhuma;; 0 = nenhuma.
+- **EX030 — Condição para a frequência cardíaca.** Que condição os dados de saúde de frequência cardíaca podem exigir? *Rubrica:* 3 = consentimento explícito pelo artigo 9;; 2 = menciona consentimento;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-11"></a>
 
@@ -469,7 +469,7 @@ Vinte voluntários não são representativos.
 
 ### Exercícios
 
-- **EX031 — Classes de ativos.** Cite quatro classes de ativos. *Rubrica:* 3 = identidade, pagamento, treino, frequência cardíaca, CFTV, marketing;; 2 = três;; 1 = nenhuma;; 0 = nenhuma.
+- **EX031 — Classes de ativos.** Cite quatro classes de ativos. *Rubrica:* 3 = identidade, pagamento, treino, frequência cardíaca, CFTV, marketing;; 2 = três;; 1 = vago;; 0 = nenhuma.
 - **EX032 — Expectativa dos alunos.** O que a maioria dos voluntários esperava sobre os dados de treino? *Rubrica:* 3 = ficam no aplicativo e são excluídos na saída;; 2 = uma parte;; 1 = nada;; 0 = nenhuma.
 - **EX033 — Prioridades.** Que ativos ficam no topo? *Rubrica:* 3 = frequência cardíaca e CFTV;; 2 = um;; 1 = errado;; 0 = nenhuma.
 
@@ -535,8 +535,8 @@ A inspeção de rede pode deixar escapar dados enviados mais tarde ou em lotes.
 ### Exercícios
 
 - **EX034 — Pior SDK.** Que SDK é o achado mais grave? *Rubrica:* 3 = a rede de anúncios, que recebe zona cardíaca e localização sem aviso nem contrato;; 2 = cita-o;; 1 = outro;; 0 = nenhuma.
-- **EX035 — Lacuna do login social.** Que lacuna o login social tem? *Rubrica:* 3 = não tem contrato;; 2 = correta;; 1 = nenhuma;; 0 = nenhuma.
-- **EX036 — Regra para SDKs.** Que regra Aisha recomendou? *Rubrica:* 3 = nenhum SDK entra sem revisão de privacidade;; 2 = menciona revisão;; 1 = nenhuma;; 0 = nenhuma.
+- **EX035 — Lacuna do login social.** Que lacuna o login social tem? *Rubrica:* 3 = não tem contrato;; 2 = correta;; 1 = vago;; 0 = nenhuma.
+- **EX036 — Regra para SDKs.** Que regra Aisha recomendou? *Rubrica:* 3 = nenhum SDK entra sem revisão de privacidade;; 2 = menciona revisão;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-13"></a>
 
@@ -738,7 +738,7 @@ As avaliações precisam ser atualizadas se a funcionalidade mudar.
 ### Exercícios
 
 - **EX046 — Gatilho da DPIA.** Por que a funcionalidade precisa de uma avaliação? *Rubrica:* 3 = tratamento sistemático de dados de saúde em escala;; 2 = menciona saúde;; 1 = nada;; 0 = nenhuma.
-- **EX047 — Mitigação principal.** Cite uma mitigação. *Rubrica:* 3 = tratamento no aparelho, nenhum compartilhamento, explicações claras;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+- **EX047 — Mitigação principal.** Cite uma mitigação. *Rubrica:* 3 = tratamento no aparelho, nenhum compartilhamento, explicações claras;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 - **EX048 — Resultado da consulta.** O que os alunos pediram? *Rubrica:* 3 = um jeito fácil de desligar;; 2 = correta;; 1 = nada;; 0 = nenhuma.
 
 <a id="ch-17"></a>
@@ -847,7 +847,7 @@ Um controle mapeado não é necessariamente eficaz.
 ### Exercícios
 
 - **EX052 — Princípio do CFTV.** Que princípio a exclusão do CFTV apoia? *Rubrica:* 3 = limitação da conservação;; 2 = correto;; 1 = outro;; 0 = nenhuma.
-- **EX053 — Norma de referência.** Cite uma norma usada como referência. *Rubrica:* 3 = ISO/IEC 27701 ou NIST Privacy Framework;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+- **EX053 — Norma de referência.** Cite uma norma usada como referência. *Rubrica:* 3 = ISO/IEC 27701 ou NIST Privacy Framework;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 - **EX054 — Benefício do mapeamento.** Por que mapear os controles para os princípios? *Rubrica:* 3 = revela lacunas de cobertura;; 2 = menciona lacunas;; 1 = nada;; 0 = nenhuma.
 
 <a id="ch-19"></a>
@@ -927,7 +927,7 @@ Corrigir só o sintoma convida a recorrência.
 ### Exercícios
 
 - **EX058 — Causa.** Por que o aluno recebeu o e-mail? *Rubrica:* 3 = a rotina de sincronização falhou depois de uma troca de senha;; 2 = menciona a rotina;; 1 = nada;; 0 = nenhuma.
-- **EX059 — Correção.** Que correções Aisha acrescentou? *Rubrica:* 3 = um alerta e uma reconciliação semanal;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+- **EX059 — Correção.** Que correções Aisha acrescentou? *Rubrica:* 3 = um alerta e uma reconciliação semanal;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 - **EX060 — Princípio.** O que exige o artigo 7(3)? *Rubrica:* 3 = revogar tão facilmente quanto consentir;; 2 = correta;; 1 = nada;; 0 = nenhuma.
 
 <a id="ch-21"></a>
@@ -1063,8 +1063,8 @@ As melhorias podem refletir mudanças na forma de medir.
 
 ### Exercícios
 
-- **EX067 — Melhoria.** Cite uma melhoria. *Rubrica:* 3 = contas esquecidas de quarenta para duas; retenção do CFTV cumprida; cobertura completa dos pedidos de acesso;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
-- **EX068 — Lacuna restante.** Cite uma lacuna restante. *Rubrica:* 3 = anotações de saúde em texto livre; monitoramento manual dos fornecedores;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
+- **EX067 — Melhoria.** Cite uma melhoria. *Rubrica:* 3 = contas esquecidas de quarenta para duas; retenção do CFTV cumprida; cobertura completa dos pedidos de acesso;; 2 = uma;; 1 = vago;; 0 = nenhuma.
+- **EX068 — Lacuna restante.** Cite uma lacuna restante. *Rubrica:* 3 = anotações de saúde em texto livre; monitoramento manual dos fornecedores;; 2 = uma;; 1 = vago;; 0 = nenhuma.
 - **EX069 — Prioridade.** O que Aisha recomendou? *Rubrica:* 3 = treinamento dos trainers e verificações automáticas dos fornecedores;; 2 = uma;; 1 = nada;; 0 = nenhuma.
 
 <a id="ch-24"></a>

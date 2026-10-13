@@ -66,15 +66,15 @@ Definições em linguagem simples simplificam. As listas de encaminhamento preci
 
 ### Exercícios
 
-- **EX001 — A definição de Owen.** Como Owen descreveu a segurança com suas próprias palavras? *Rubrica:* 3 = manter as informações dos inquilinos privadas, os registros corretos e os serviços funcionando;; 2 = três partes;; 1 = nenhuma;; 0 = nenhuma.
+- **EX001 — A definição de Owen.** Como Owen descreveu a segurança com suas próprias palavras? *Rubrica:* 3 = manter as informações dos inquilinos privadas, os registros corretos e os serviços funcionando;; 2 = três partes;; 1 = vago;; 0 = nenhuma.
 
-- **EX002 — Exemplo de integridade.** Por que a integridade importa para as contas de aluguel? *Rubrica:* 3 = um saldo errado poderia causar cartas indevidas de cobrança;; 2 = cobrança;; 1 = nenhuma;; 0 = nenhuma.
+- **EX002 — Exemplo de integridade.** Por que a integridade importa para as contas de aluguel? *Rubrica:* 3 = um saldo errado poderia causar cartas indevidas de cobrança;; 2 = cobrança;; 1 = vago;; 0 = nenhuma.
 
 - **EX003 — Exemplo de disponibilidade.** Que serviço mostra a importância da disponibilidade? *Rubrica:* 3 = reparos, como uma caldeira quebrada no inverno;; 2 = reparos;; 1 = portal;; 0 = nenhuma.
 
 - **EX004 — Limite do curso.** O que o curso fará de Owen? *Rubrica:* 3 = um profissional capaz que sabe quando consultar especialistas;; 2 = profissional;; 1 = especialista;; 0 = nenhuma.
 
-- **EX005 — Temas para especialistas.** Cite um tema que Owen vai encaminhar a especialistas. *Rubrica:* 3 = criptografia, configuração de nuvem ou questões jurídicas;; 2 = um;; 1 = nenhuma;; 0 = nenhuma.
+- **EX005 — Temas para especialistas.** Cite um tema que Owen vai encaminhar a especialistas. *Rubrica:* 3 = criptografia, configuração de nuvem ou questões jurídicas;; 2 = um;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -112,15 +112,15 @@ Entrevistas curtas deixam detalhes de fora. Os responsáveis podem não prever t
 
 ### Exercícios
 
-- **EX006 — Por que nomear responsáveis.** Por que nomear os responsáveis de negócio pelos serviços? *Rubrica:* 3 = só eles podem aceitar trade-offs;; 2 = trade-offs;; 1 = nenhuma;; 0 = nenhuma.
+- **EX006 — Por que nomear responsáveis.** Por que nomear os responsáveis de negócio pelos serviços? *Rubrica:* 3 = só eles podem aceitar trade-offs;; 2 = trade-offs;; 1 = vago;; 0 = nenhuma.
 
-- **EX007 — Preocupação de proteção.** O que a responsável por proteção enfatizou? *Rubrica:* 3 = um novo endereço vazado poderia pôr em perigo alguém fugindo de violência;; 2 = endereço;; 1 = nenhuma;; 0 = nenhuma.
+- **EX007 — Preocupação de proteção.** O que a responsável por proteção enfatizou? *Rubrica:* 3 = um novo endereço vazado poderia pôr em perigo alguém fugindo de violência;; 2 = endereço;; 1 = vago;; 0 = nenhuma.
 
-- **EX008 — Acordo no portal.** Como o conflito do portal foi resolvido? *Rubrica:* 3 = verificação extra só para visualizar ou alterar os dados de contato;; 2 = verificação adicional;; 1 = nenhuma;; 0 = nenhuma.
+- **EX008 — Acordo no portal.** Como o conflito do portal foi resolvido? *Rubrica:* 3 = verificação extra só para visualizar ou alterar os dados de contato;; 2 = verificação adicional;; 1 = vago;; 0 = nenhuma.
 
-- **EX009 — Dissolver o conflito.** Por que muitos conflitos desaparecem em bons projetos? *Rubrica:* 3 = dados diferentes são protegidos de forma diferente;; 2 = diferenciar;; 1 = nenhuma;; 0 = nenhuma.
+- **EX009 — Dissolver o conflito.** Por que muitos conflitos desaparecem em bons projetos? *Rubrica:* 3 = dados diferentes são protegidos de forma diferente;; 2 = diferenciar;; 1 = vago;; 0 = nenhuma.
 
-- **EX010 — Método das entrevistas.** Como Owen manteve as entrevistas comparáveis? *Rubrica:* 3 = vinte minutos com as mesmas perguntas para todos os responsáveis;; 2 = mesmas perguntas;; 1 = nenhuma;; 0 = nenhuma.
+- **EX010 — Método das entrevistas.** Como Owen manteve as entrevistas comparáveis? *Rubrica:* 3 = vinte minutos com as mesmas perguntas para todos os responsáveis;; 2 = mesmas perguntas;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -158,7 +158,7 @@ As autorizações podem ser vagas. Os checksums provam a integridade, e não a c
 
 ### Exercícios
 
-- **EX011 — Quem autorizou.** Quem autorizou a revisão de Owen? *Rubrica:* 3 = o responsável pelo sistema e Kwame Asante, chefe de TI;; 2 = os dois;; 1 = nenhuma;; 0 = nenhuma.
+- **EX011 — Quem autorizou.** Quem autorizou a revisão de Owen? *Rubrica:* 3 = o responsável pelo sistema e Kwame Asante, chefe de TI;; 2 = os dois;; 1 = vago;; 0 = nenhuma.
 
 - **EX012 — Propósito do checksum.** Por que calcular um checksum de cada exportação? *Rubrica:* 3 = para mostrar depois que ela não foi alterada;; 2 = integridade;; 1 = sigilo;; 0 = nenhuma.
 
@@ -226,15 +226,15 @@ Notas multiplicadas sugerem uma falsa precisão. Os modelos deixam de fora canai
 
 ### Exercícios
 
-- **EX016 — Anotação sensível.** Que dado sensível aparecia nas anotações de acesso dos reparos? *Rubrica:* 3 = códigos dos cofres de chaves;; 2 = códigos;; 1 = nenhuma;; 0 = nenhuma.
+- **EX016 — Anotação sensível.** Que dado sensível aparecia nas anotações de acesso dos reparos? *Rubrica:* 3 = códigos dos cofres de chaves;; 2 = códigos;; 1 = vago;; 0 = nenhuma.
 
-- **EX017 — Ameaça de divulgação.** Que ameaça de divulgação o STRIDE encontrou? *Rubrica:* 3 = códigos dos cofres de chaves visíveis para todos os contratados;; 2 = códigos;; 1 = nenhuma;; 0 = nenhuma.
+- **EX017 — Ameaça de divulgação.** Que ameaça de divulgação o STRIDE encontrou? *Rubrica:* 3 = códigos dos cofres de chaves visíveis para todos os contratados;; 2 = códigos;; 1 = vago;; 0 = nenhuma.
 
 - **EX018 — Primeiro lugar.** Que ameaça ficou em primeiro no laboratório, e com que nota? *Rubrica:* 3 = divulgação dos códigos dos cofres de chaves, 9;; 2 = códigos;; 1 = indisponibilidade do portal;; 0 = nenhuma.
 
-- **EX019 — Cautela com as notas.** Que cautela Owen fez sobre as notas? *Rubrica:* 3 = orientam a ordem, mas não são medições precisas;; 2 = ordenação;; 1 = nenhuma;; 0 = nenhuma.
+- **EX019 — Cautela com as notas.** Que cautela Owen fez sobre as notas? *Rubrica:* 3 = orientam a ordem, mas não são medições precisas;; 2 = ordenação;; 1 = vago;; 0 = nenhuma.
 
-- **EX020 — Segundo lugar.** Que ameaça ficou em segundo no laboratório? *Rubrica:* 3 = contas de ex-funcionários dos contratados ainda ativas, 6;; 2 = contas antigas;; 1 = nenhuma;; 0 = nenhuma.
+- **EX020 — Segundo lugar.** Que ameaça ficou em segundo no laboratório? *Rubrica:* 3 = contas de ex-funcionários dos contratados ainda ativas, 6;; 2 = contas antigas;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -272,15 +272,15 @@ Os rótulos de severidade são genéricos. As lacunas de cobertura das ferrament
 
 ### Exercícios
 
-- **EX021 — Capacidade existente.** Por que aprender primeiro as ferramentas existentes? *Rubrica:* 3 = as organizações muitas vezes possuem capacidades não usadas;; 2 = já possuídas;; 1 = nenhuma;; 0 = nenhuma.
+- **EX021 — Capacidade existente.** Por que aprender primeiro as ferramentas existentes? *Rubrica:* 3 = as organizações muitas vezes possuem capacidades não usadas;; 2 = já possuídas;; 1 = vago;; 0 = nenhuma.
 
-- **EX022 — Achados reais.** Que dois achados do scanner importavam? *Rubrica:* 3 = uma biblioteca desatualizada e TLS fraco num antigo subdomínio de teste ativo;; 2 = dois;; 1 = nenhuma;; 0 = nenhuma.
+- **EX022 — Achados reais.** Que dois achados do scanner importavam? *Rubrica:* 3 = uma biblioteca desatualizada e TLS fraco num antigo subdomínio de teste ativo;; 2 = dois;; 1 = vago;; 0 = nenhuma.
 
 - **EX023 — Secure score.** O que uma secure score alta na nuvem não significa? *Rubrica:* 3 = que os dados dos inquilinos estejam seguros;; 2 = não é segurança;; 1 = seguro;; 0 = nenhuma.
 
 - **EX024 — Varredura vazia.** O que pode significar nenhum achado num servidor? *Rubrica:* 3 = o scanner não conseguiu alcançá-lo;; 2 = alcançabilidade;; 1 = seguro;; 0 = nenhuma.
 
-- **EX025 — Anotações das ferramentas.** Que três coisas Owen registra para cada ferramenta? *Rubrica:* 3 = o que mede, o que não consegue ver, como confirmar surpresas;; 2 = duas;; 1 = nenhuma;; 0 = nenhuma.
+- **EX025 — Anotações das ferramentas.** Que três coisas Owen registra para cada ferramenta? *Rubrica:* 3 = o que mede, o que não consegue ver, como confirmar surpresas;; 2 = duas;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -318,15 +318,15 @@ As cláusulas contratuais dependem de cobrança. A expiração automática pode 
 
 ### Exercícios
 
-- **EX026 — Etapas entrelaçadas.** Por que acrescentar etapas aos processos existentes? *Rubrica:* 3 = são cumpridas com mais confiabilidade do que procedimentos separados;; 2 = confiabilidade;; 1 = nenhuma;; 0 = nenhuma.
+- **EX026 — Etapas entrelaçadas.** Por que acrescentar etapas aos processos existentes? *Rubrica:* 3 = são cumpridas com mais confiabilidade do que procedimentos separados;; 2 = confiabilidade;; 1 = vago;; 0 = nenhuma.
 
 - **EX027 — Prazo de expiração.** Quando as contas dos contratados expiram? *Rubrica:* 3 = após noventa dias, a menos que sejam renovadas;; 2 = noventa dias;; 1 = nunca;; 0 = nenhuma.
 
-- **EX028 — Mudança nos códigos.** Como os códigos dos cofres de chaves foram restringidos? *Rubrica:* 3 = só para o contratado designado e no dia da visita;; 2 = designado;; 1 = nenhuma;; 0 = nenhuma.
+- **EX028 — Mudança nos códigos.** Como os códigos dos cofres de chaves foram restringidos? *Rubrica:* 3 = só para o contratado designado e no dia da visita;; 2 = designado;; 1 = vago;; 0 = nenhuma.
 
-- **EX029 — Redução de contas.** Como mudaram as contas ativas de contratados? *Rubrica:* 3 = de 210 para 135;; 2 = caíram;; 1 = nenhuma;; 0 = nenhuma.
+- **EX029 — Redução de contas.** Como mudaram as contas ativas de contratados? *Rubrica:* 3 = de 210 para 135;; 2 = caíram;; 1 = vago;; 0 = nenhuma.
 
-- **EX030 — Comunicação de desligamentos.** Em que prazo os contratados precisam comunicar desligamentos? *Rubrica:* 3 = em até dois dias úteis, por contrato;; 2 = dois dias;; 1 = nenhuma;; 0 = nenhuma.
+- **EX030 — Comunicação de desligamentos.** Em que prazo os contratados precisam comunicar desligamentos? *Rubrica:* 3 = em até dois dias úteis, por contrato;; 2 = dois dias;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -389,15 +389,15 @@ As contas de teste podem não refletir o volume real de dados. As configuraçõe
 
 ### Exercícios
 
-- **EX031 — Controle contra adulteração.** Que controle trata as anotações alteradas? *Rubrica:* 3 = um histórico de mudanças que os contratados não conseguem editar;; 2 = histórico;; 1 = nenhuma;; 0 = nenhuma.
+- **EX031 — Controle contra adulteração.** Que controle trata as anotações alteradas? *Rubrica:* 3 = um histórico de mudanças que os contratados não conseguem editar;; 2 = histórico;; 1 = vago;; 0 = nenhuma.
 
-- **EX032 — Requisito vago.** Por que "o acesso dos contratados deve ser seguro" é um requisito ruim? *Rubrica:* 3 = não pode ser testado;; 2 = não testável;; 1 = nenhuma;; 0 = nenhuma.
+- **EX032 — Requisito vago.** Por que "o acesso dos contratados deve ser seguro" é um requisito ruim? *Rubrica:* 3 = não pode ser testado;; 2 = não testável;; 1 = vago;; 0 = nenhuma.
 
-- **EX033 — Cobertura no laboratório.** O que a primeira rodada de testes mostrou no laboratório? *Rubrica:* 3 = 3 de 4 requisitos passaram; a visibilidade do código falhou;; 2 = 3 de 4;; 1 = nenhuma;; 0 = nenhuma.
+- **EX033 — Cobertura no laboratório.** O que a primeira rodada de testes mostrou no laboratório? *Rubrica:* 3 = 3 de 4 requisitos passaram; a visibilidade do código falhou;; 2 = 3 de 4;; 1 = vago;; 0 = nenhuma.
 
-- **EX034 — Causa da falha.** Por que o teste de visibilidade do código falhou? *Rubrica:* 3 = o fornecedor cortava no fim do dia seguinte;; 2 = corte;; 1 = nenhuma;; 0 = nenhuma.
+- **EX034 — Causa da falha.** Por que o teste de visibilidade do código falhou? *Rubrica:* 3 = o fornecedor cortava no fim do dia seguinte;; 2 = corte;; 1 = vago;; 0 = nenhuma.
 
-- **EX035 — Resultado do novo teste.** O que a segunda rodada mostrou no laboratório? *Rubrica:* 3 = os 4 requisitos passaram depois da correção do fornecedor;; 2 = 4 de 4;; 1 = nenhuma;; 0 = nenhuma.
+- **EX035 — Resultado do novo teste.** O que a segunda rodada mostrou no laboratório? *Rubrica:* 3 = os 4 requisitos passaram depois da correção do fornecedor;; 2 = 4 de 4;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -435,15 +435,15 @@ Casos históricos têm evidências faltantes. As retenções podem atrasar reemb
 
 ### Exercícios
 
-- **EX036 — Perguntas fracas.** Por que as perguntas de identificação eram fracas? *Rubrica:* 3 = criminosos conseguem encontrar a data de nascimento e o endereço;; 2 = dados públicos;; 1 = nenhuma;; 0 = nenhuma.
+- **EX036 — Perguntas fracas.** Por que as perguntas de identificação eram fracas? *Rubrica:* 3 = criminosos conseguem encontrar a data de nascimento e o endereço;; 2 = dados públicos;; 1 = vago;; 0 = nenhuma.
 
-- **EX037 — Causa no sistema.** Que característica do sistema permitiu a fraude? *Rubrica:* 3 = mudança bancária e reembolso no mesmo dia sem notificação;; 2 = mesmo dia;; 1 = nenhuma;; 0 = nenhuma.
+- **EX037 — Causa no sistema.** Que característica do sistema permitiu a fraude? *Rubrica:* 3 = mudança bancária e reembolso no mesmo dia sem notificação;; 2 = mesmo dia;; 1 = vago;; 0 = nenhuma.
 
 - **EX038 — Princípio.** Que princípio Owen aplicou? *Rubrica:* 3 = separação de privilégio;; 2 = separação;; 1 = menor privilégio;; 0 = nenhuma.
 
-- **EX039 — Mudança nas métricas.** Por que ajustar as métricas da central de atendimento? *Rubrica:* 3 = as metas de tempo de atendimento desestimulavam verificações extras;; 2 = incentivos;; 1 = nenhuma;; 0 = nenhuma.
+- **EX039 — Mudança nas métricas.** Por que ajustar as métricas da central de atendimento? *Rubrica:* 3 = as metas de tempo de atendimento desestimulavam verificações extras;; 2 = incentivos;; 1 = vago;; 0 = nenhuma.
 
-- **EX040 — Retenção do reembolso.** Por quanto tempo o reembolso fica retido após uma mudança bancária? *Rubrica:* 3 = sete dias;; 2 = sete;; 1 = nenhuma;; 0 = nenhuma.
+- **EX040 — Retenção do reembolso.** Por quanto tempo o reembolso fica retido após uma mudança bancária? *Rubrica:* 3 = sete dias;; 2 = sete;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -481,15 +481,15 @@ Os resumos podem omitir ressalvas importantes. Relatar preocupações pode tensi
 
 ### Exercícios
 
-- **EX041 — Conteúdo do resumo.** O que contém o resumo de uma página? *Rubrica:* 3 = achados, ações tomadas, o que falta e decisões necessárias;; 2 = três;; 1 = nenhuma;; 0 = nenhuma.
+- **EX041 — Conteúdo do resumo.** O que contém o resumo de uma página? *Rubrica:* 3 = achados, ações tomadas, o que falta e decisões necessárias;; 2 = três;; 1 = vago;; 0 = nenhuma.
 
-- **EX042 — Material de apêndice.** O que Ines pediu que Owen levasse para um apêndice? *Rubrica:* 3 = descrições longas dos métodos;; 2 = métodos;; 1 = nenhuma;; 0 = nenhuma.
+- **EX042 — Material de apêndice.** O que Ines pediu que Owen levasse para um apêndice? *Rubrica:* 3 = descrições longas dos métodos;; 2 = métodos;; 1 = vago;; 0 = nenhuma.
 
 - **EX043 — Preocupação com acesso.** Como Owen tratou o acesso da gerente às anotações de proteção? *Rubrica:* 3 = relatou os fatos ao encarregado de proteção de dados sem investigar nem confrontar;; 2 = canal adequado;; 1 = confrontou;; 0 = nenhuma.
 
 - **EX044 — Resposta honesta.** Como Owen respondeu se a Thornbury está protegida contra fraude em reembolsos? *Rubrica:* 3 = os controles bloqueiam o método passado, mas restam outras rotas;; 2 = incerteza;; 1 = sim;; 0 = nenhuma.
 
-- **EX045 — Sigilo.** Por que manter em sigilo a preocupação com o acesso? *Rubrica:* 3 = para proteger as pessoas até que os fatos sejam estabelecidos;; 2 = proteger;; 1 = nenhuma;; 0 = nenhuma.
+- **EX045 — Sigilo.** Por que manter em sigilo a preocupação com o acesso? *Rubrica:* 3 = para proteger as pessoas até que os fatos sejam estabelecidos;; 2 = proteger;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -527,15 +527,15 @@ As exceções podem ser abusadas se as verificações enfraquecerem. Três meses
 
 ### Exercícios
 
-- **EX046 — Lacunas da autorrevisão.** O que a autorrevisão de Owen encontrou? *Rubrica:* 3 = duas decisões sem responsável e um requisito testado uma vez antes de uma atualização;; 2 = lacunas;; 1 = nenhuma;; 0 = nenhuma.
+- **EX046 — Lacunas da autorrevisão.** O que a autorrevisão de Owen encontrou? *Rubrica:* 3 = duas decisões sem responsável e um requisito testado uma vez antes de uma atualização;; 2 = lacunas;; 1 = vago;; 0 = nenhuma.
 
-- **EX047 — Casos legítimos.** Quantos casos urgentes legítimos ocorrem por mês? *Rubrica:* 3 = cerca de doze;; 2 = doze;; 1 = nenhuma;; 0 = nenhuma.
+- **EX047 — Casos legítimos.** Quantos casos urgentes legítimos ocorrem por mês? *Rubrica:* 3 = cerca de doze;; 2 = doze;; 1 = vago;; 0 = nenhuma.
 
 - **EX048 — Caminho de exceção.** Como a retenção pode ser reduzida? *Rubrica:* 3 = ligação de retorno ao número cadastrado por outra equipe, e então um dia;; 2 = ligação de retorno;; 1 = removida;; 0 = nenhuma.
 
-- **EX049 — Princípio mantido.** Que princípio a exceção preserva? *Rubrica:* 3 = a separação de privilégio, ao exigir duas pessoas;; 2 = duas pessoas;; 1 = nenhuma;; 0 = nenhuma.
+- **EX049 — Princípio mantido.** Que princípio a exceção preserva? *Rubrica:* 3 = a separação de privilégio, ao exigir duas pessoas;; 2 = duas pessoas;; 1 = vago;; 0 = nenhuma.
 
-- **EX050 — Primeiros resultados.** O que aconteceu nos três primeiros meses da exceção? *Rubrica:* 3 = as reclamações caíram e nenhuma fraude usou a exceção;; 2 = os dois;; 1 = nenhuma;; 0 = nenhuma.
+- **EX050 — Primeiros resultados.** O que aconteceu nos três primeiros meses da exceção? *Rubrica:* 3 = as reclamações caíram e nenhuma fraude usou a exceção;; 2 = os dois;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -599,15 +599,15 @@ As definições de papéis podem estar erradas. O acesso fora do sistema continu
 
 ### Exercícios
 
-- **EX051 — Definição primeiro.** Por que definir as permissões esperadas antes da revisão? *Rubrica:* 3 = uma revisão só é tão boa quanto sua definição das necessidades;; 2 = referência;; 1 = nenhuma;; 0 = nenhuma.
+- **EX051 — Definição primeiro.** Por que definir as permissões esperadas antes da revisão? *Rubrica:* 3 = uma revisão só é tão boa quanto sua definição das necessidades;; 2 = referência;; 1 = vago;; 0 = nenhuma.
 
-- **EX052 — Número de achados.** Quantos usuários tinham permissões excessivas no laboratório? *Rubrica:* 3 = 4 de 9;; 2 = quatro;; 1 = nenhuma;; 0 = nenhuma.
+- **EX052 — Número de achados.** Quantos usuários tinham permissões excessivas no laboratório? *Rubrica:* 3 = 4 de 9;; 2 = quatro;; 1 = vago;; 0 = nenhuma.
 
 - **EX053 — Maiores riscos.** Que achados ficaram no topo? *Rubrica:* 3 = a conta ativa de quem saiu e o acesso desnecessário às anotações de proteção;; 2 = dois;; 1 = financeiro;; 0 = nenhuma.
 
 - **EX054 — Estrutura do relatório.** Onde ficam os nomes individuais no relatório de Owen? *Rubrica:* 3 = num apêndice restrito;; 2 = apêndice;; 1 = texto principal;; 0 = nenhuma.
 
-- **EX055 — Ponto cego do laboratório.** O que o laboratório não conseguia ver? *Rubrica:* 3 = permissões dentro de documentos ou pastas compartilhadas fora do sistema;; 2 = acesso externo;; 1 = nenhuma;; 0 = nenhuma.
+- **EX055 — Ponto cego do laboratório.** O que o laboratório não conseguia ver? *Rubrica:* 3 = permissões dentro de documentos ou pastas compartilhadas fora do sistema;; 2 = acesso externo;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 
@@ -645,15 +645,15 @@ Os portfólios podem exagerar a contribuição individual. Os resultados de curt
 
 ### Exercícios
 
-- **EX056 — Notas do portfólio.** Que nota acompanha cada item do portfólio? *Rubrica:* 3 = o que fez, o que aprendeu e o que mudaria;; 2 = três;; 1 = nenhuma;; 0 = nenhuma.
+- **EX056 — Notas do portfólio.** Que nota acompanha cada item do portfólio? *Rubrica:* 3 = o que fez, o que aprendeu e o que mudaria;; 2 = três;; 1 = vago;; 0 = nenhuma.
 
 - **EX057 — Cautela sobre a fraude.** Por que a ausência de fraude relatada não é prova de sucesso? *Rubrica:* 3 = alguns meses sem fraude não provam que o risco desapareceu;; 2 = período curto;; 1 = prova;; 0 = nenhuma.
 
-- **EX058 — Próximo estudo.** O que Owen vai estudar em seguida? *Rubrica:* 3 = identidade e segurança em nuvem;; 2 = identidade;; 1 = nenhuma;; 0 = nenhuma.
+- **EX058 — Próximo estudo.** O que Owen vai estudar em seguida? *Rubrica:* 3 = identidade e segurança em nuvem;; 2 = identidade;; 1 = vago;; 0 = nenhuma.
 
-- **EX059 — Força da formação.** Por que a formação de Owen se tornou uma força? *Rubrica:* 3 = a arquitetura consiste em grande parte em coordenar pessoas, decisões e evidências;; 2 = coordenação;; 1 = nenhuma;; 0 = nenhuma.
+- **EX059 — Força da formação.** Por que a formação de Owen se tornou uma força? *Rubrica:* 3 = a arquitetura consiste em grande parte em coordenar pessoas, decisões e evidências;; 2 = coordenação;; 1 = vago;; 0 = nenhuma.
 
-- **EX060 — Dados no portfólio.** Como os dados pessoais são tratados no portfólio? *Rubrica:* 3 = removidos ou substituídos por exemplos sintéticos;; 2 = removidos;; 1 = nenhuma;; 0 = nenhuma.
+- **EX060 — Dados no portfólio.** Como os dados pessoais são tratados no portfólio? *Rubrica:* 3 = removidos ou substituídos por exemplos sintéticos;; 2 = removidos;; 1 = vago;; 0 = nenhuma.
 
 ### Síntese
 

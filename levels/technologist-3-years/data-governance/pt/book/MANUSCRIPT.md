@@ -150,8 +150,8 @@ Convenções sem orientação e sem verificação são ignoradas.
 ### Exercícios
 
 - **EX007 — Versões da lista de preços.** Quantas versões da lista de preços Ravi encontrou? *Rubrica:* 3 = quatro;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX008 — Ordem das datas.** Por que usar datas no formato ano-mês-dia? *Rubrica:* 3 = elas ficam corretamente ordenadas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX009 — Listas de ligações.** O que Ravi encontrou em pastas abertas? *Rubrica:* 3 = listas antigas de ligações com nomes e telefones de inquilinos;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX008 — Ordem das datas.** Por que usar datas no formato ano-mês-dia? *Rubrica:* 3 = elas ficam corretamente ordenadas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX009 — Listas de ligações.** O que Ravi encontrou em pastas abertas? *Rubrica:* 3 = listas antigas de ligações com nomes e telefones de inquilinos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-04"></a>
 
@@ -189,9 +189,9 @@ Consultas sem comentário perdem seu propósito; escreva a pergunta.
 
 ### Exercícios
 
-- **EX010 — Causa dos órfãos.** Por que existiam ordens órfãs? *Rubrica:* 3 = imóveis vendidos e removidos com ordens abertas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX010 — Causa dos órfãos.** Por que existiam ordens órfãs? *Rubrica:* 3 = imóveis vendidos e removidos com ordens abertas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX011 — Regra de duplicata.** Como Ravi definiu uma ordem duplicada? *Rubrica:* 3 = mesmo imóvel e mesmo problema em até dois dias;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
-- **EX012 — Correção na central.** Que etapa a central de atendimento acrescentou? *Rubrica:* 3 = verificar antes se há ordens abertas no imóvel;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX012 — Correção na central.** Que etapa a central de atendimento acrescentou? *Rubrica:* 3 = verificar antes se há ordens abertas no imóvel;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-05"></a>
 
@@ -229,9 +229,9 @@ Scripts que continuam em silêncio diante de entradas ruins produzem resultados 
 
 ### Exercícios
 
-- **EX013 — Conselho sobre nomes.** Que conselho sobre nomes a Sra. Moreau deu? *Rubrica:* 3 = usar nomes descritivos como count_jobs_by_status;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX013 — Conselho sobre nomes.** Que conselho sobre nomes a Sra. Moreau deu? *Rubrica:* 3 = usar nomes descritivos como count_jobs_by_status;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX014 — Coluna ausente.** O que o script faz quando falta uma coluna? *Rubrica:* 3 = para e informa qual é;; 2 = correto;; 1 = continua;; 0 = nenhuma.
-- **EX015 — Confusão de datas.** Que problema de datas Ravi encontrou? *Rubrica:* 3 = prestadoras usavam as ordens dia-mês e mês-dia;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX015 — Confusão de datas.** Que problema de datas Ravi encontrou? *Rubrica:* 3 = prestadoras usavam as ordens dia-mês e mês-dia;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-06"></a>
 
@@ -269,9 +269,9 @@ Aceitar arquivos sem validação leva os erros da origem para os relatórios.
 
 ### Exercícios
 
-- **EX016 — Fraqueza do CSV.** Qual é a principal fraqueza do CSV? *Rubrica:* 3 = não ter tipos de dados;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX016 — Fraqueza do CSV.** Qual é a principal fraqueza do CSV? *Rubrica:* 3 = não ter tipos de dados;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX017 — Arquivos reprovados.** O que acontece com os arquivos que falham na validação? *Rubrica:* 3 = ficam retidos e a prestadora recebe um relatório por e-mail;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
-- **EX018 — Mudança da versão dois.** O que a versão dois da especificação passou a permitir? *Rubrica:* 3 = uma coluna extra opcional;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX018 — Mudança da versão dois.** O que a versão dois da especificação passou a permitir? *Rubrica:* 3 = uma coluna extra opcional;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-07"></a>
 
@@ -309,9 +309,9 @@ Uma única nota de qualidade para todos os usos esconde o que importa para cada 
 
 ### Exercícios
 
-- **EX019 — Medida de consistência.** Como a consistência é medida? *Rubrica:* 3 = parcela de ordens com a mesma situação nos dois sistemas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX019 — Medida de consistência.** Como a consistência é medida? *Rubrica:* 3 = parcela de ordens com a mesma situação nos dois sistemas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX020 — Foco do regulador.** Que dimensões importam para os relatórios ao regulador? *Rubrica:* 3 = datas de conclusão e prioridades;; 2 = ambas;; 1 = uma;; 0 = nenhuma.
-- **EX021 — Melhores melhorias.** De onde vieram as melhores melhorias? *Rubrica:* 3 = de pequenas mudanças de processo na origem;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX021 — Melhores melhorias.** De onde vieram as melhores melhorias? *Rubrica:* 3 = de pequenas mudanças de processo na origem;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-08"></a>
 
@@ -373,8 +373,8 @@ Somar as contagens de falhas conta duas vezes os registros que falham em mais de
 ### Exercícios
 
 - **EX022 — Parcela válida.** Que parcela das ordens passa nas duas regras? *Rubrica:* 3 = 95,3% (5.719);; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX023 — Causa do minúsculo.** De onde vem o e minúsculo? *Rubrica:* 3 = de um portal que não converte maiúsculas e minúsculas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX024 — Causa das datas.** Por que algumas ordens foram concluídas antes de serem abertas? *Rubrica:* 3 = ordens de emergência criadas depois do conserto;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX023 — Causa do minúsculo.** De onde vem o e minúsculo? *Rubrica:* 3 = de um portal que não converte maiúsculas e minúsculas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX024 — Causa das datas.** Por que algumas ordens foram concluídas antes de serem abertas? *Rubrica:* 3 = ordens de emergência criadas depois do conserto;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-09"></a>
 
@@ -412,9 +412,9 @@ Correções silenciosas feitas depois escondem erros recorrentes na origem.
 
 ### Exercícios
 
-- **EX025 — Problema da limpeza.** Por que a limpeza noturna não basta? *Rubrica:* 3 = os mesmos erros voltam e os palpites podem estar errados;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX026 — Campo para emergências.** Que campo novo apoia as ordens de emergência? *Rubrica:* 3 = o horário em que o inquilino relatou o problema pela primeira vez;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX027 — Correções históricas.** Como as correções históricas são marcadas? *Rubrica:* 3 = com um código de motivo;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX025 — Problema da limpeza.** Por que a limpeza noturna não basta? *Rubrica:* 3 = os mesmos erros voltam e os palpites podem estar errados;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX026 — Campo para emergências.** Que campo novo apoia as ordens de emergência? *Rubrica:* 3 = o horário em que o inquilino relatou o problema pela primeira vez;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX027 — Correções históricas.** Como as correções históricas são marcadas? *Rubrica:* 3 = com um código de motivo;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-10"></a>
 
@@ -453,7 +453,7 @@ Apagar códigos antigos quebra os relatórios históricos; encerre-os com uma da
 ### Exercícios
 
 - **EX028 — Dono da lista mestra.** Quem é o dono da lista mestra de tipos de serviço? *Rubrica:* 3 = o curador de reparos;; 2 = correto;; 1 = outro;; 0 = nenhuma.
-- **EX029 — Ordem das mudanças.** Que ordem se segue para novos tipos de serviço? *Rubrica:* 3 = primeiro a lista mestra, depois os sistemas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX029 — Ordem das mudanças.** Que ordem se segue para novos tipos de serviço? *Rubrica:* 3 = primeiro a lista mestra, depois os sistemas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX030 — Tipos fundidos.** Que tipos de serviço foram fundidos? *Rubrica:* 3 = reparo de reboco e reparo de parede;; 2 = ambos;; 1 = um;; 0 = nenhuma.
 
 <a id="ch-11"></a>
@@ -492,7 +492,7 @@ Fundir sem revisão pode juntar os dados de pessoas diferentes.
 
 ### Exercícios
 
-- **EX031 — Efeitos das duplicatas.** Cite um efeito das duplicatas de inquilinos. *Rubrica:* 3 = cartas repetidas, contas de aluguel divididas ou pedidos de dados incompletos;; 2 = um;; 1 = nenhuma;; 0 = nenhuma.
+- **EX031 — Efeitos das duplicatas.** Cite um efeito das duplicatas de inquilinos. *Rubrica:* 3 = cartas repetidas, contas de aluguel divididas ou pedidos de dados incompletos;; 2 = um;; 1 = vago;; 0 = nenhuma.
 - **EX032 — Etapas de normalização.** Como os nomes são normalizados? *Rubrica:* 3 = removendo espaços e convertendo para minúsculas;; 2 = ambas;; 1 = uma;; 0 = nenhuma.
 - **EX033 — Parcela rejeitada.** Que parcela das correspondências possíveis era de pessoas diferentes? *Rubrica:* 3 = cerca de um quinto;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 
@@ -533,8 +533,8 @@ Dicionários sem verificações automáticas ficam desatualizados e perdem a con
 ### Exercícios
 
 - **EX034 — Significados do indicador.** Que dois significados tinha o indicador de conclusão? *Rubrica:* 3 = serviço terminado pela prestadora versus satisfação do inquilino;; 2 = ambos;; 1 = um;; 0 = nenhuma.
-- **EX035 — Verificação de desatualização.** Como Ravi mantém o dicionário atualizado? *Rubrica:* 3 = um script semanal que compara o esquema com os verbetes;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX036 — Resposta ao regulador.** O que o dicionário ajudou a responder? *Rubrica:* 3 = a definição de reparo emergencial concluído;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX035 — Verificação de desatualização.** Como Ravi mantém o dicionário atualizado? *Rubrica:* 3 = um script semanal que compara o esquema com os verbetes;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX036 — Resposta ao regulador.** O que o dicionário ajudou a responder? *Rubrica:* 3 = a definição de reparo emergencial concluído;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-13"></a>
 
@@ -572,8 +572,8 @@ Cálculos feitos só com a data distorcem metas baseadas em tempo.
 
 ### Exercícios
 
-- **EX037 — Exclusão não documentada.** O que era excluído sem documentação? *Rubrica:* 3 = as ordens sem horário de conclusão;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX038 — Problema dos horários.** Por que usar carimbos de data e hora completos? *Rubrica:* 3 = cálculos só com a data distorcem o tempo decorrido;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX037 — Exclusão não documentada.** O que era excluído sem documentação? *Rubrica:* 3 = as ordens sem horário de conclusão;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX038 — Problema dos horários.** Por que usar carimbos de data e hora completos? *Rubrica:* 3 = cálculos só com a data distorcem o tempo decorrido;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX039 — Tratamento dos desconhecidos.** Como as ordens sem horário de conclusão são relatadas agora? *Rubrica:* 3 = separadamente, como desconhecidas;; 2 = correto;; 1 = como atrasadas;; 0 = nenhuma.
 
 <a id="ch-14"></a>
@@ -612,9 +612,9 @@ Tecnólogos que mudam políticas sozinhos contornam a responsabilização.
 
 ### Exercícios
 
-- **EX040 — Pedido recusado.** Que mudança o dono recusou? *Rubrica:* 3 = excluir do relatório de emergências as ordens sem acesso ao imóvel;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX040 — Pedido recusado.** Que mudança o dono recusou? *Rubrica:* 3 = excluir do relatório de emergências as ordens sem acesso ao imóvel;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX041 — Substituição nas férias.** Quem decide quando o curador está de férias? *Rubrica:* 3 = o substituto;; 2 = correto;; 1 = o tecnólogo;; 0 = nenhuma.
-- **EX042 — Constatação sobre o gás.** O que a investigação dos registros de gás encontrou? *Rubrica:* 3 = erros de digitação, e não verificações deixadas de fazer;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX042 — Constatação sobre o gás.** O que a investigação dos registros de gás encontrou? *Rubrica:* 3 = erros de digitação, e não verificações deixadas de fazer;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-15"></a>
 
@@ -652,9 +652,9 @@ Procedimentos escritos por especialistas pulam passos de que os iniciantes preci
 
 ### Exercícios
 
-- **EX043 — Caso ausente.** Que caso a Sra. Moreau pediu que Ravi incluísse? *Rubrica:* 3 = o que acontece se o validador falhar;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX044 — Passo problemático.** Onde a testadora empacou? *Rubrica:* 3 = no passo quatro, local dos arquivos retidos;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX045 — Risco da desatualização.** Por que procedimentos desatualizados podem ser nocivos? *Rubrica:* 3 = as pessoas os seguem com confiança rumo ao erro;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX043 — Caso ausente.** Que caso a Sra. Moreau pediu que Ravi incluísse? *Rubrica:* 3 = o que acontece se o validador falhar;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX044 — Passo problemático.** Onde a testadora empacou? *Rubrica:* 3 = no passo quatro, local dos arquivos retidos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX045 — Risco da desatualização.** Por que procedimentos desatualizados podem ser nocivos? *Rubrica:* 3 = as pessoas os seguem com confiança rumo ao erro;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-16"></a>
 
@@ -692,7 +692,7 @@ Donos que aprovam listas sem examiná-las tornam as revisões inúteis.
 
 ### Exercícios
 
-- **EX046 — Acesso mascarado.** Como os analistas de reparos veem os nomes dos inquilinos? *Rubrica:* 3 = por meio de uma visão que os mascara;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX046 — Acesso mascarado.** Como os analistas de reparos veem os nomes dos inquilinos? *Rubrica:* 3 = por meio de uma visão que os mascara;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX047 — Padrões nos logs.** Que padrões incomuns são revisados? *Rubrica:* 3 = grandes exportações ou acessos fora do horário;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
 - **EX048 — Visão financeira.** O que continha a visão financeira? *Rubrica:* 3 = identificadores das ordens, prestadoras e custos;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
 
@@ -792,7 +792,7 @@ Correções feitas só no sistema principal deixam cópias desatualizadas em out
 
 - **EX052 — Dados escondidos.** Que dados escondidos Ravi encontrou para o pedido de acesso? *Rubrica:* 3 = um registro duplicado e uma planilha de reclamações;; 2 = ambos;; 1 = um;; 0 = nenhuma.
 - **EX053 — Cópia do telefone.** Onde havia uma cópia do telefone? *Rubrica:* 3 = no portal das prestadoras;; 2 = correto;; 1 = outro;; 0 = nenhuma.
-- **EX054 — Registros mantidos.** Que registros foram mantidos apesar da eliminação? *Rubrica:* 3 = os registros de aluguel para obrigações financeiras;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX054 — Registros mantidos.** Que registros foram mantidos apesar da eliminação? *Rubrica:* 3 = os registros de aluguel para obrigações financeiras;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-19"></a>
 
@@ -870,8 +870,8 @@ Exportar tabelas inteiras envia às prestadoras campos de que elas não precisam
 
 ### Exercícios
 
-- **EX058 — Lacuna no contrato.** O que faltava nos contratos das prestadoras? *Rubrica:* 3 = requisitos de qualidade dos dados;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX059 — Causa das fotos.** Por que a taxa de fotos de uma prestadora era baixa? *Rubrica:* 3 = seu aplicativo travava com imagens grandes;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX058 — Lacuna no contrato.** O que faltava nos contratos das prestadoras? *Rubrica:* 3 = requisitos de qualidade dos dados;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX059 — Causa das fotos.** Por que a taxa de fotos de uma prestadora era baixa? *Rubrica:* 3 = seu aplicativo travava com imagens grandes;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX060 — Campo removido.** Que campo Ravi removeu das exportações? *Rubrica:* 3 = a data de nascimento completa;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 
 <a id="ch-21"></a>
@@ -928,7 +928,7 @@ Relatar apenas uma parcela esconde o quanto as ordens atrasadas atrasam.
 
 - **EX061 — Parcela do sul.** Que parcela a prestadora do sul concluiu em até vinte e quatro horas? *Rubrica:* 3 = 74,2%;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 - **EX062 — Mediana do norte.** Qual foi o tempo mediano da prestadora do norte? *Rubrica:* 3 = 7,2 horas;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX063 — Causa noturna.** O que a prestadora do sul revelou? *Rubrica:* 3 = apenas uma equipe de emergência à noite;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX063 — Causa noturna.** O que a prestadora do sul revelou? *Rubrica:* 3 = apenas uma equipe de emergência à noite;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-22"></a>
 
@@ -967,7 +967,7 @@ Painéis sem indicadores de qualidade convidam a confiar demais em números inco
 ### Exercícios
 
 - **EX064 — Visão do conselho.** O que mostra o painel do conselho? *Rubrica:* 3 = doze meses de tendência em relação às metas;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
-- **EX065 — Indicador âmbar.** Quando o indicador de qualidade fica âmbar? *Rubrica:* 3 = quando a qualidade cai abaixo do limite;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX065 — Indicador âmbar.** Quando o indicador de qualidade fica âmbar? *Rubrica:* 3 = quando a qualidade cai abaixo do limite;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX066 — Painéis desativados.** Quantos painéis sem uso foram desativados? *Rubrica:* 3 = dois;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 
 <a id="ch-23"></a>
@@ -1006,8 +1006,8 @@ Usar definições internas em números regulatórios informa mal o desempenho.
 
 ### Exercícios
 
-- **EX067 — Diferença de definição.** Em que as definições diferiam? *Rubrica:* 3 = data de conclusão versus data de abertura;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX068 — Causa da diferença anual.** O que explicava a mudança em relação ao ano anterior? *Rubrica:* 3 = ordens de uma prestadora ausentes no ano anterior;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX067 — Diferença de definição.** Em que as definições diferiam? *Rubrica:* 3 = data de conclusão versus data de abertura;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX068 — Causa da diferença anual.** O que explicava a mudança em relação ao ano anterior? *Rubrica:* 3 = ordens de uma prestadora ausentes no ano anterior;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX069 — Dono que assina.** Quem aprova os números de reparo? *Rubrica:* 3 = o chefe de reparos;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 
 <a id="ch-24"></a>
@@ -1046,8 +1046,8 @@ Corrigir sintomas sem chegar às causas-raiz deixa os problemas voltarem.
 
 ### Exercícios
 
-- **EX070 — Causa-raiz dos telefones.** Qual era a causa-raiz dos telefones errados? *Rubrica:* 3 = o leiaute do sistema escondia o campo de telefone durante as ligações;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX071 — Medida de reabertura.** O que a taxa de reabertura mostra? *Rubrica:* 3 = se as correções funcionam de fato;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX070 — Causa-raiz dos telefones.** Qual era a causa-raiz dos telefones errados? *Rubrica:* 3 = o leiaute do sistema escondia o campo de telefone durante as ligações;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX071 — Medida de reabertura.** O que a taxa de reabertura mostra? *Rubrica:* 3 = se as correções funcionam de fato;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX072 — Principais causas.** Que causas geraram a maioria dos problemas? *Rubrica:* 3 = digitação manual e dados de parceiros;; 2 = ambas;; 1 = uma;; 0 = nenhuma.
 
 <a id="ch-25"></a>
@@ -1086,7 +1086,7 @@ Atrasar o relato de incidentes pode estourar prazos legais.
 
 ### Exercícios
 
-- **EX073 — Causa da exportação.** O que causou a exportação errada? *Rubrica:* 3 = uma lista de códigos postais desatualizada após a mudança de limites;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX073 — Causa da exportação.** O que causou a exportação errada? *Rubrica:* 3 = uma lista de códigos postais desatualizada após a mudança de limites;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX074 — Correção do filtro.** Por qual campo Ravi passou a filtrar? *Rubrica:* 3 = o campo de designação da prestadora;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 - **EX075 — Estilo da revisão.** Em que se concentram as revisões sem culpados? *Rubrica:* 3 = em como os sistemas permitiram o erro;; 2 = correto;; 1 = em quem errou;; 0 = nenhuma.
 
@@ -1127,7 +1127,7 @@ Tarefas que rodam apesar da falha das anteriores publicam números incompletos.
 ### Exercícios
 
 - **EX076 — Horário das verificações.** A que horas rodam as verificações? *Rubrica:* 3 = às três da manhã;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX077 — Correção da lentidão.** Como Ravi corrigiu a lentidão da tarefa de verificação? *Rubrica:* 3 = acrescentando um índice;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX077 — Correção da lentidão.** Como Ravi corrigiu a lentidão da tarefa de verificação? *Rubrica:* 3 = acrescentando um índice;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX078 — Etapas da mudança.** Cite as etapas do controle de mudanças. *Rubrica:* 3 = testar, revisar, registrar e implantar em horário tranquilo;; 2 = a maioria;; 1 = poucas;; 0 = nenhuma.
 
 <a id="ch-27"></a>
@@ -1166,8 +1166,8 @@ Documentação não testada esconde lacunas até alguém precisar dela com urgê
 
 ### Exercícios
 
-- **EX079 — Lacuna na passagem.** Que lacuna a passagem de trabalho revelou? *Rubrica:* 3 = como liberar um arquivo retido depois do reenvio;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX080 — Acompanhamento de competências.** Como a Sra. Okonjo acompanha quem sabe fazer cada tarefa? *Rubrica:* 3 = com uma matriz de competências;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX079 — Lacuna na passagem.** Que lacuna a passagem de trabalho revelou? *Rubrica:* 3 = como liberar um arquivo retido depois do reenvio;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX080 — Acompanhamento de competências.** Como a Sra. Okonjo acompanha quem sabe fazer cada tarefa? *Rubrica:* 3 = com uma matriz de competências;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX081 — Revisão da documentação.** Com que frequência uma amostra de documentos é conferida? *Rubrica:* 3 = a cada trimestre;; 2 = correto;; 1 = errado;; 0 = nenhuma.
 
 <a id="ch-28"></a>
@@ -1206,9 +1206,9 @@ Enviar dados para contas pessoais contorna os controles de segurança.
 
 ### Exercícios
 
-- **EX082 — Lição sobre processos.** O que fez Ravi valorizar os processos de aprovação? *Rubrica:* 3 = a mudança não testada de um colega quebrou um relatório;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX083 — Resposta ao e-mail pessoal.** O que Ravi sugeriu em vez do e-mail pessoal? *Rubrica:* 3 = o sistema de acesso remoto aprovado;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX084 — Tema do projeto.** Qual é o tema do projeto aplicado de Ravi? *Rubrica:* 3 = reduzir o atraso entre a conclusão e a atualização no sistema;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX082 — Lição sobre processos.** O que fez Ravi valorizar os processos de aprovação? *Rubrica:* 3 = a mudança não testada de um colega quebrou um relatório;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX083 — Resposta ao e-mail pessoal.** O que Ravi sugeriu em vez do e-mail pessoal? *Rubrica:* 3 = o sistema de acesso remoto aprovado;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX084 — Tema do projeto.** Qual é o tema do projeto aplicado de Ravi? *Rubrica:* 3 = reduzir o atraso entre a conclusão e a atualização no sistema;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-29"></a>
 
@@ -1286,8 +1286,8 @@ Afirmar efeitos que os dados sintéticos não conseguem mostrar compromete a cre
 
 ### Exercícios
 
-- **EX088 — Resposta sobre sazonalidade.** Como a sazonalidade será tratada? *Rubrica:* 3 = pelo monitoramento mensal do curador ao longo de um ano;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX089 — Sugestão dos avaliadores.** O que os avaliadores sugeriram? *Rubrica:* 3 = envolver as prestadoras mais cedo;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX088 — Resposta sobre sazonalidade.** Como a sazonalidade será tratada? *Rubrica:* 3 = pelo monitoramento mensal do curador ao longo de um ano;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX089 — Sugestão dos avaliadores.** O que os avaliadores sugeriram? *Rubrica:* 3 = envolver as prestadoras mais cedo;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX090 — Emprego de Ravi.** Que emprego Ravi aceita? *Rubrica:* 3 = tecnólogo de dados na Calder Valley;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 
 <a id="worked-results"></a>

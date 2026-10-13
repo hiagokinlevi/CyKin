@@ -389,7 +389,7 @@ Inventories drift from reality; confirm expiry against the live endpoint. Transp
 ### Exercises
 
 - **EX025 — Three sources.** Which source shows certificates a CA issued for Lumen even if Lumen did not request them? *Rubric:* 3 = certificate transparency logs;; 2 = names CT;; 1 = names config;; 0 = none.
-- **EX026 — Expired row.** In the lab, which certificate had already expired and by how many days? *Rubric:* 3 = staging.lumen.example, expired 12 days before the review date;; 2 = host only;; 1 = none;; 0 = none.
+- **EX026 — Expired row.** In the lab, which certificate had already expired and by how many days? *Rubric:* 3 = staging.lumen.example, expired 12 days before the review date;; 2 = host only;; 1 = vague;; 0 = none.
 - **EX027 — Fixed review date.** Why does the lab use a fixed review date? *Rubric:* 3 = so the output is reproducible; production uses today;; 2 = reproducible;; 1 = no reason;; 0 = none.
 - **EX028 — Debug header logging.** What went wrong with the portal's debug logging? *Rubric:* 3 = it logged session cookies and an API key into a widely readable file;; 2 = mentions secrets;; 1 = nothing;; 0 = none.
 
@@ -434,7 +434,7 @@ Classes overlap; an expired certificate replaced in a hurry with a self-signed o
 ### Exercises
 
 - **EX029 — Loud and silent.** Which failure class is often silent, and what does that imply? *Rubric:* 3 = compromise; needs detection controls such as CT and key-access logs;; 2 = names compromise;; 1 = names expiry;; 0 = none.
-- **EX030 — GCM nonce rule.** What rule does AES-GCM impose on nonces? *Rubric:* 3 = never repeat a nonce under the same key;; 2 = uniqueness;; 1 = none;; 0 = none.
+- **EX030 — GCM nonce rule.** What rule does AES-GCM impose on nonces? *Rubric:* 3 = never repeat a nonce under the same key;; 2 = uniqueness;; 1 = vague;; 0 = none.
 - **EX031 — random module.** Why is Python's random module wrong for keys? *Rubric:* 3 = it is predictable; use secrets, which wraps the OS CSPRNG;; 2 = predictable;; 1 = fine;; 0 = none.
 - **EX032 — Unsure case.** What should a technician do when unsure if a case is compromise? *Rubric:* 3 = treat it as compromise until a senior engineer decides;; 2 = escalate;; 1 = wait;; 0 = none.
 
@@ -666,7 +666,7 @@ Virtual isolation can fail through shared clipboards or bridged networks. Lab re
 
 ### Exercises
 
-- **EX045 — Lab boundaries.** State two lab boundaries Tomás writes down. *Rubric:* 3 = two of no real customer data, no production keys, no outbound partner connections;; 2 = one;; 1 = none;; 0 = none.
+- **EX045 — Lab boundaries.** State two lab boundaries Tomás writes down. *Rubric:* 3 = two of no real customer data, no production keys, no outbound partner connections;; 2 = one;; 1 = vague;; 0 = none.
 - **EX046 — Three results.** Which three handshake outcomes did Tomás reproduce? *Rubric:* 3 = valid verifies, expired fails, missing intermediate fails to build chain;; 2 = two;; 1 = one;; 0 = none.
 - **EX047 — Root placement.** Where may the lab root be installed? *Rubric:* 3 = only in the lab client's trust store, never on a laptop or shared image;; 2 = lab only;; 1 = anywhere;; 0 = none.
 - **EX048 — Forgotten root risk.** Why is a forgotten lab root dangerous? *Rubric:* 3 = whoever holds its key can intercept traffic of machines trusting it;; 2 = interception;; 1 = harmless;; 0 = none.
@@ -739,7 +739,7 @@ Logs may truncate or omit reasons; counts can mislead if one client retries rapi
 ### Exercises
 
 - **EX049 — One test rule.** Why change only one thing per test? *Rubric:* 3 = so the result can be attributed to that change and the cause becomes visible;; 2 = attribution;; 1 = speed;; 0 = none.
-- **EX050 — Triage top reason.** In the lab, which reason and client group dominated? *Rubric:* 3 = unknown_ca from handheld clients, 12 of 20 lines;; 2 = reason only;; 1 = none;; 0 = none.
+- **EX050 — Triage top reason.** In the lab, which reason and client group dominated? *Rubric:* 3 = unknown_ca from handheld clients, 12 of 20 lines;; 2 = reason only;; 1 = vague;; 0 = none.
 - **EX051 — RADIUS cause.** What caused the handheld Wi-Fi failures? *Rubric:* 3 = RADIUS certificate renewed under a new intermediate unknown to devices;; 2 = mentions RADIUS;; 1 = client cert expired;; 0 = none.
 - **EX052 — Handover contents.** Name four items in an escalation note. *Rubric:* 3 = four of symptom and start time, affected systems, hypotheses with results, changes made, recommendation;; 2 = three;; 1 = one;; 0 = none.
 
@@ -809,7 +809,7 @@ Automated renewal still depends on DNS, firewalls and account keys. Cryptoperiod
 ### Exercises
 
 - **EX053 — ACME role.** What does an ACME client automate? *Rubric:* 3 = proving domain control, requesting and renewing certificates;; 2 = renewal;; 1 = manual;; 0 = none.
-- **EX054 — Overdue key.** In the lab, which key was overdue and by how many days? *Rubric:* 3 = sftp-partner-b ssh key, overdue by 41 days;; 2 = key only;; 1 = none;; 0 = none.
+- **EX054 — Overdue key.** In the lab, which key was overdue and by how many days? *Rubric:* 3 = sftp-partner-b ssh key, overdue by 41 days;; 2 = key only;; 1 = vague;; 0 = none.
 - **EX055 — Plan not rotate.** Why does the script only plan rotations? *Rubric:* 3 = rotations need coordination with partners and providers;; 2 = coordination;; 1 = lazy;; 0 = none.
 - **EX056 — Keep old cert.** Why keep the old certificate until the new one is verified? *Rubric:* 3 = so a failed renewal does not cause an outage;; 2 = avoid outage;; 1 = no reason;; 0 = none.
 
@@ -901,7 +901,7 @@ Runbooks age as systems change; review them after each use. Secret scanners miss
 - **EX061 — Runbook test.** How is a runbook properly tested? *Rubric:* 3 = someone other than the author follows it and reports gaps;; 2 = colleague follows;; 1 = author rereads;; 0 = none.
 - **EX062 — Kerckhoffs.** Why can TLS settings and key sizes be documented openly? *Rubric:* 3 = security should rest on keys, not secrecy of design (Kerckhoffs);; 2 = names principle;; 1 = settings secret;; 0 = none.
 - **EX063 — Secret entry.** How should the runbook refer to the callback secret? *Rubric:* 3 = by vault path, accessing account and rotation period, never the value;; 2 = path;; 1 = includes value;; 0 = none.
-- **EX064 — Never restore by.** Name one shortcut the safety rules forbid when restoring service. *Rubric:* 3 = disabling verification, or moving keys by email or chat;; 2 = one shortcut;; 1 = none;; 0 = none.
+- **EX064 — Never restore by.** Name one shortcut the safety rules forbid when restoring service. *Rubric:* 3 = disabling verification, or moving keys by email or chat;; 2 = one shortcut;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -972,7 +972,7 @@ Lab parameters are deliberately small; production needs policy-set cost. Upgrade
 - **EX065 — Fast hash weakness.** Why is unsalted SHA-256 poor for passwords? *Rubric:* 3 = it is fast, so attackers test billions of guesses; no salt allows precomputation;; 2 = fast;; 1 = fine;; 0 = none.
 - **EX066 — Salt effect.** What did the lab show for two users with the same password? *Rubric:* 3 = different stored values because salts differ, both verify;; 2 = different values;; 1 = same values;; 0 = none.
 - **EX067 — Vector check first.** Why check hashlib.scrypt against the RFC 7914 vector first? *Rubric:* 3 = to confirm the call and parameters are wired correctly;; 2 = correctness;; 1 = not needed;; 0 = none.
-- **EX068 — Dormant accounts.** What limitation does upgrade-at-login leave? *Rubric:* 3 = accounts that never log in keep old hashes and need a separate plan;; 2 = dormant;; 1 = none;; 0 = none.
+- **EX068 — Dormant accounts.** What limitation does upgrade-at-login leave? *Rubric:* 3 = accounts that never log in keep old hashes and need a separate plan;; 2 = dormant;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1014,10 +1014,10 @@ Sample checks may miss devices; full coverage needs management reports. Out-of-s
 
 ### Exercises
 
-- **EX069 — Out of scope.** What did Tomás leave out of scope and why? *Rubric:* 3 = the internal root redesign, because it needs engineer authority;; 2 = names item;; 1 = none;; 0 = none.
+- **EX069 — Out of scope.** What did Tomás leave out of scope and why? *Rubric:* 3 = the internal root redesign, because it needs engineer authority;; 2 = names item;; 1 = vague;; 0 = none.
 - **EX070 — Measurable goals.** Give two of Tomás's measurable goals. *Rubric:* 3 = no unplanned outages from cert changes, renewal 30 days early, tested runbook (two);; 2 = one;; 1 = vague goal;; 0 = none.
-- **EX071 — After evidence.** Name two pieces of after evidence. *Rubric:* 3 = updated trust store sample, lab renewal rehearsal, alert test firing (two);; 2 = one;; 1 = none;; 0 = none.
-- **EX072 — Open risks.** Which open risks did the handover list? *Rubric:* 3 = root key on general-purpose server, two handhelds cannot update;; 2 = one;; 1 = none;; 0 = none.
+- **EX071 — After evidence.** Name two pieces of after evidence. *Rubric:* 3 = updated trust store sample, lab renewal rehearsal, alert test firing (two);; 2 = one;; 1 = vague;; 0 = none.
+- **EX072 — Open risks.** Which open risks did the handover list? *Rubric:* 3 = root key on general-purpose server, two handhelds cannot update;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

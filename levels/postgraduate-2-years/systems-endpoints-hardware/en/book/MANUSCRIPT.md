@@ -149,9 +149,9 @@ Matching on hostname double-counts reimaged machines; matching on serial is more
 ### Exercises
 
 - **EX006 — Choosing a join key.** Why join on serial number rather than hostname? *Rubric:* 3 = explains renaming and reimaging;; 2 = says serials are unique;; 1 = no reason;; 0 = none.
-- **EX007 — Dating the evidence.** Why record when you checked a vendor's support date? *Rubric:* 3 = explains dates change and audit traceability;; 2 = one reason;; 1 = none;; 0 = none.
+- **EX007 — Dating the evidence.** Why record when you checked a vendor's support date? *Rubric:* 3 = explains dates change and audit traceability;; 2 = one reason;; 1 = vague;; 0 = none.
 - **EX008 — Interpreting concentration.** What does the concentration of unsupported systems in imaging suggest about the fix? *Rubric:* 3 = links to vendor dependency and planning with the vendor;; 2 = mentions imaging only;; 1 = no inference;; 0 = none.
-- **EX009 — Coverage check.** Describe one test that the inventory covers every clinic. *Rubric:* 3 = compares counts per clinic to an independent source;; 2 = visits one clinic;; 1 = none;; 0 = none.
+- **EX009 — Coverage check.** Describe one test that the inventory covers every clinic. *Rubric:* 3 = compares counts per clinic to an independent source;; 2 = visits one clinic;; 1 = vague;; 0 = none.
 - **EX010 — Safeguard mapping.** Map the inventory work to two CIS Controls v8 safeguards. *Rubric:* 3 = 1.1 and 2.2 explained;; 2 = correct numbers only;; 1 = one;; 0 = none.
 
 ### Synthesis
@@ -202,10 +202,10 @@ Upgrading the operating system without the vendor's confirmation can break imagi
 
 ### Exercises
 
-- **EX011 — Certification risk.** What risk arises from upgrading an imaging PC's OS without vendor certification? *Rubric:* 3 = loss of support and possible clinical disruption;; 2 = one of those;; 1 = none;; 0 = none.
-- **EX012 — Batching.** Why batch upgrades by clinic? *Rubric:* 3 = reduces engineer visits and disruption;; 2 = reduces cost;; 1 = none;; 0 = none.
-- **EX013 — Evidence.** Why ask for written vendor commitments? *Rubric:* 3 = audit evidence and reliability;; 2 = one;; 1 = none;; 0 = none.
-- **EX014 — Contract terms.** Suggest one clause for contract renewal. *Rubric:* 3 = specific notice period before end of support;; 2 = general clause;; 1 = none;; 0 = none.
+- **EX011 — Certification risk.** What risk arises from upgrading an imaging PC's OS without vendor certification? *Rubric:* 3 = loss of support and possible clinical disruption;; 2 = one of those;; 1 = vague;; 0 = none.
+- **EX012 — Batching.** Why batch upgrades by clinic? *Rubric:* 3 = reduces engineer visits and disruption;; 2 = reduces cost;; 1 = vague;; 0 = none.
+- **EX013 — Evidence.** Why ask for written vendor commitments? *Rubric:* 3 = audit evidence and reliability;; 2 = one;; 1 = vague;; 0 = none.
+- **EX014 — Contract terms.** Suggest one clause for contract renewal. *Rubric:* 3 = specific notice period before end of support;; 2 = general clause;; 1 = vague;; 0 = none.
 - **EX015 — Control reference.** Which SP 800-53 control addresses unsupported components? *Rubric:* 3 = SA-22 with its expectation;; 2 = SA-22 only;; 1 = wrong control;; 0 = none.
 
 ### Synthesis
@@ -277,8 +277,8 @@ Exceptions without expiry silently become permanent; the quarterly review exists
 ### Exercises
 
 - **EX016 — Register fields.** List five fields an exception entry needs. *Rubric:* 3 = device, reason, owner, controls, expiry;; 2 = four;; 1 = fewer;; 0 = none.
-- **EX017 — Isolation design.** Describe the network access an isolated imaging PC should have. *Rubric:* 3 = only to the image server, no internet;; 2 = restricted but vague;; 1 = none;; 0 = none.
-- **EX018 — Who approves.** Why should a manager rather than the supplier approve exceptions? *Rubric:* 3 = business owns risk acceptance;; 2 = vague;; 1 = none;; 0 = none.
+- **EX017 — Isolation design.** Describe the network access an isolated imaging PC should have. *Rubric:* 3 = only to the image server, no internet;; 2 = restricted but vague;; 1 = vague;; 0 = none.
+- **EX018 — Who approves.** Why should a manager rather than the supplier approve exceptions? *Rubric:* 3 = business owns risk acceptance;; 2 = vague;; 1 = minimal attempt;; 0 = none.
 - **EX019 — Expired entries.** What should happen to an expired exception? *Rubric:* 3 = renewed by a new decision or the device replaced;; 2 = one option;; 1 = ignore;; 0 = none.
 - **EX020 — Lab reading.** What did the review find? *Rubric:* 3 = two expired and one missing control, named;; 2 = counts only;; 1 = wrong;; 0 = none.
 
@@ -332,11 +332,11 @@ A baseline applied without a pilot can stop clinical work; a pilot without measu
 
 ### Exercises
 
-- **EX021 — Baseline source.** Name two sources for a Windows desktop baseline. *Rubric:* 3 = CIS Benchmark and Microsoft security baseline;; 2 = one;; 1 = none;; 0 = none.
+- **EX021 — Baseline source.** Name two sources for a Windows desktop baseline. *Rubric:* 3 = CIS Benchmark and Microsoft security baseline;; 2 = one;; 1 = vague;; 0 = none.
 - **EX022 — Adjusting a setting.** How should a baseline deviation be recorded? *Rubric:* 3 = setting, value, reason, approver;; 2 = partial;; 1 = not recorded;; 0 = none.
-- **EX023 — Drift handling.** Why investigate drift before reverting? *Rubric:* 3 = it may reflect a real need;; 2 = generic;; 1 = none;; 0 = none.
-- **EX024 — Admin rights.** Explain one benefit of removing local admin rights. *Rubric:* 3 = limits installation and setting changes;; 2 = vague;; 1 = none;; 0 = none.
-- **EX025 — Compliance metric.** Propose a weekly compliance metric. *Rubric:* 3 = share fully compliant with denominator;; 2 = count only;; 1 = none;; 0 = none.
+- **EX023 — Drift handling.** Why investigate drift before reverting? *Rubric:* 3 = it may reflect a real need;; 2 = generic;; 1 = vague;; 0 = none.
+- **EX024 — Admin rights.** Explain one benefit of removing local admin rights. *Rubric:* 3 = limits installation and setting changes;; 2 = vague;; 1 = minimal attempt;; 0 = none.
+- **EX025 — Compliance metric.** Propose a weekly compliance metric. *Rubric:* 3 = share fully compliant with denominator;; 2 = count only;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -392,11 +392,11 @@ Averages hide the tail; always report the slowest machines separately.
 
 ### Exercises
 
-- **EX026 — Restart policy.** Propose a restart policy for clinics. *Rubric:* 3 = evening time with deadline;; 2 = time only;; 1 = none;; 0 = none.
-- **EX027 — Rings.** Why use a first ring? *Rubric:* 3 = detect problems before clinics;; 2 = vague;; 1 = none;; 0 = none.
-- **EX028 — Tail.** Why report the slowest machines? *Rubric:* 3 = averages hide them;; 2 = generic;; 1 = none;; 0 = none.
-- **EX029 — Wake-on-LAN.** How does waking machines help? *Rubric:* 3 = allows overnight installs on switched-off PCs;; 2 = vague;; 1 = none;; 0 = none.
-- **EX030 — Pause rule.** Write a rule for pausing the second ring. *Rubric:* 3 = specific trigger and owner;; 2 = trigger only;; 1 = none;; 0 = none.
+- **EX026 — Restart policy.** Propose a restart policy for clinics. *Rubric:* 3 = evening time with deadline;; 2 = time only;; 1 = vague;; 0 = none.
+- **EX027 — Rings.** Why use a first ring? *Rubric:* 3 = detect problems before clinics;; 2 = vague;; 1 = minimal attempt;; 0 = none.
+- **EX028 — Tail.** Why report the slowest machines? *Rubric:* 3 = averages hide them;; 2 = generic;; 1 = vague;; 0 = none.
+- **EX029 — Wake-on-LAN.** How does waking machines help? *Rubric:* 3 = allows overnight installs on switched-off PCs;; 2 = vague;; 1 = minimal attempt;; 0 = none.
+- **EX030 — Pause rule.** Write a rule for pausing the second ring. *Rubric:* 3 = specific trigger and owner;; 2 = trigger only;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -452,11 +452,11 @@ Suspended encryption looks fine in some reports; always check protection status,
 
 ### Exercises
 
-- **EX031 — Suspended protection.** Why check for suspended BitLocker protection? *Rubric:* 3 = updates suspend it; data exposed;; 2 = vague;; 1 = none;; 0 = none.
+- **EX031 — Suspended protection.** Why check for suspended BitLocker protection? *Rubric:* 3 = updates suspend it; data exposed;; 2 = vague;; 1 = minimal attempt;; 0 = none.
 - **EX032 — Key access.** Who should access recovery keys? *Rubric:* 3 = limited IT staff with logging;; 2 = IT only;; 1 = anyone;; 0 = none.
 - **EX033 — Theft steps.** List three theft response steps. *Rubric:* 3 = confirm encryption, revoke sessions, record;; 2 = two;; 1 = one;; 0 = none.
-- **EX034 — Sampling.** Why check a sample by hand? *Rubric:* 3 = validate console accuracy;; 2 = generic;; 1 = none;; 0 = none.
-- **EX035 — Imaging PCs.** Should imaging desktops be encrypted? *Rubric:* 3 = reasons and vendor compatibility check;; 2 = yes or no only;; 1 = none;; 0 = none.
+- **EX034 — Sampling.** Why check a sample by hand? *Rubric:* 3 = validate console accuracy;; 2 = generic;; 1 = vague;; 0 = none.
+- **EX035 — Imaging PCs.** Should imaging desktops be encrypted? *Rubric:* 3 = reasons and vendor compatibility check;; 2 = yes or no only;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -513,10 +513,10 @@ Collecting everything overwhelms a small team; collecting nothing leaves inciden
 ### Exercises
 
 - **EX036 — Event choice.** Name three useful endpoint events. *Rubric:* 3 = three relevant with reasons;; 2 = three;; 1 = fewer;; 0 = none.
-- **EX037 — Clocks.** Why synchronise clocks? *Rubric:* 3 = correlation across sites;; 2 = vague;; 1 = none;; 0 = none.
-- **EX038 — Retention.** Justify a 90-day retention period. *Rubric:* 3 = balances investigation and privacy;; 2 = one side;; 1 = none;; 0 = none.
-- **EX039 — Review questions.** Write two weekly review questions. *Rubric:* 3 = specific and answerable;; 2 = vague;; 1 = none;; 0 = none.
-- **EX040 — Exception devices.** Why watch exception devices closely? *Rubric:* 3 = higher residual risk;; 2 = vague;; 1 = none;; 0 = none.
+- **EX037 — Clocks.** Why synchronise clocks? *Rubric:* 3 = correlation across sites;; 2 = vague;; 1 = minimal attempt;; 0 = none.
+- **EX038 — Retention.** Justify a 90-day retention period. *Rubric:* 3 = balances investigation and privacy;; 2 = one side;; 1 = vague;; 0 = none.
+- **EX039 — Review questions.** Write two weekly review questions. *Rubric:* 3 = specific and answerable;; 2 = vague;; 1 = minimal attempt;; 0 = none.
+- **EX040 — Exception devices.** Why watch exception devices closely? *Rubric:* 3 = higher residual risk;; 2 = vague;; 1 = minimal attempt;; 0 = none.
 
 ### Synthesis
 
@@ -576,11 +576,11 @@ Untested backups often lack something; the licence file shows why.
 
 ### Exercises
 
-- **EX041 — Targets.** Who should set recovery targets? *Rubric:* 3 = business owner with IT input;; 2 = IT;; 1 = none;; 0 = none.
-- **EX042 — Spare PCs.** Explain the value of pre-built spares. *Rubric:* 3 = fast replacement;; 2 = vague;; 1 = none;; 0 = none.
-- **EX043 — Missing file.** What lesson does the missing licence file teach? *Rubric:* 3 = test restores fully;; 2 = vague;; 1 = none;; 0 = none.
-- **EX044 — Offline copy.** Why keep an offline backup? *Rubric:* 3 = ransomware resistance;; 2 = vague;; 1 = none;; 0 = none.
-- **EX045 — Imaging rebuild.** Why document imaging rebuild steps? *Rubric:* 3 = vendor dependence;; 2 = vague;; 1 = none;; 0 = none.
+- **EX041 — Targets.** Who should set recovery targets? *Rubric:* 3 = business owner with IT input;; 2 = IT;; 1 = vague;; 0 = none.
+- **EX042 — Spare PCs.** Explain the value of pre-built spares. *Rubric:* 3 = fast replacement;; 2 = vague;; 1 = minimal attempt;; 0 = none.
+- **EX043 — Missing file.** What lesson does the missing licence file teach? *Rubric:* 3 = test restores fully;; 2 = vague;; 1 = minimal attempt;; 0 = none.
+- **EX044 — Offline copy.** Why keep an offline backup? *Rubric:* 3 = ransomware resistance;; 2 = vague;; 1 = minimal attempt;; 0 = none.
+- **EX045 — Imaging rebuild.** Why document imaging rebuild steps? *Rubric:* 3 = vendor dependence;; 2 = vague;; 1 = minimal attempt;; 0 = none.
 
 ### Synthesis
 
@@ -641,10 +641,10 @@ Reports full of jargon go unread; keep them short and plain.
 ### Exercises
 
 - **EX046 — Report measures.** Choose four report measures. *Rubric:* 3 = four relevant;; 2 = three;; 1 = fewer;; 0 = none.
-- **EX047 — Mapping value.** Why map to CIS and NIST? *Rubric:* 3 = recognised structure for auditors;; 2 = vague;; 1 = none;; 0 = none.
-- **EX048 — Ownership.** Why separate operator and owner? *Rubric:* 3 = accountability;; 2 = vague;; 1 = none;; 0 = none.
-- **EX049 — Review frequency.** Justify quarterly exception reviews. *Rubric:* 3 = matches expiry periods;; 2 = vague;; 1 = none;; 0 = none.
-- **EX050 — Plain language.** Rewrite "SA-22 residual risk" for leaders. *Rubric:* 3 = plain sentence;; 2 = partial;; 1 = none;; 0 = none.
+- **EX047 — Mapping value.** Why map to CIS and NIST? *Rubric:* 3 = recognised structure for auditors;; 2 = vague;; 1 = minimal attempt;; 0 = none.
+- **EX048 — Ownership.** Why separate operator and owner? *Rubric:* 3 = accountability;; 2 = vague;; 1 = minimal attempt;; 0 = none.
+- **EX049 — Review frequency.** Justify quarterly exception reviews. *Rubric:* 3 = matches expiry periods;; 2 = vague;; 1 = minimal attempt;; 0 = none.
+- **EX050 — Plain language.** Rewrite "SA-22 residual risk" for leaders. *Rubric:* 3 = plain sentence;; 2 = partial;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -702,11 +702,11 @@ Claiming causation from overlapping changes overstates the evidence.
 
 ### Exercises
 
-- **EX051 — Comparison.** Why compare with the baseline? *Rubric:* 3 = shows change fairly;; 2 = vague;; 1 = none;; 0 = none.
-- **EX052 — Attribution.** Explain why attribution is cautious. *Rubric:* 3 = overlapping changes;; 2 = vague;; 1 = none;; 0 = none.
-- **EX053 — Limits.** Name two limits. *Rubric:* 3 = two specific;; 2 = one;; 1 = none;; 0 = none.
-- **EX054 — Remaining risk.** How should the last three exceptions be reported? *Rubric:* 3 = with dates and controls;; 2 = vague;; 1 = none;; 0 = none.
-- **EX055 — Next step.** Propose one next step. *Rubric:* 3 = justified;; 2 = unjustified;; 1 = none;; 0 = none.
+- **EX051 — Comparison.** Why compare with the baseline? *Rubric:* 3 = shows change fairly;; 2 = vague;; 1 = minimal attempt;; 0 = none.
+- **EX052 — Attribution.** Explain why attribution is cautious. *Rubric:* 3 = overlapping changes;; 2 = vague;; 1 = minimal attempt;; 0 = none.
+- **EX053 — Limits.** Name two limits. *Rubric:* 3 = two specific;; 2 = one;; 1 = vague;; 0 = none.
+- **EX054 — Remaining risk.** How should the last three exceptions be reported? *Rubric:* 3 = with dates and controls;; 2 = vague;; 1 = minimal attempt;; 0 = none.
+- **EX055 — Next step.** Propose one next step. *Rubric:* 3 = justified;; 2 = unjustified;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -765,10 +765,10 @@ Hiding unfinished work weakens credibility; she reports it openly.
 ### Exercises
 
 - **EX056 — Report order.** List the report sections. *Rubric:* 3 = five in order;; 2 = unordered;; 1 = partial;; 0 = none.
-- **EX057 — Defence.** Defend isolation as a temporary measure. *Rubric:* 3 = evidence-based;; 2 = vague;; 1 = none;; 0 = none.
+- **EX057 — Defence.** Defend isolation as a temporary measure. *Rubric:* 3 = evidence-based;; 2 = vague;; 1 = minimal attempt;; 0 = none.
 - **EX058 — Handover.** Name three handover items. *Rubric:* 3 = three;; 2 = two;; 1 = one;; 0 = none.
-- **EX059 — Reflection.** Why did vendor work take longest? *Rubric:* 3 = dependencies and scheduling;; 2 = vague;; 1 = none;; 0 = none.
-- **EX060 — Honesty.** Why report unfinished items openly? *Rubric:* 3 = credibility;; 2 = vague;; 1 = none;; 0 = none.
+- **EX059 — Reflection.** Why did vendor work take longest? *Rubric:* 3 = dependencies and scheduling;; 2 = vague;; 1 = minimal attempt;; 0 = none.
+- **EX060 — Honesty.** Why report unfinished items openly? *Rubric:* 3 = credibility;; 2 = vague;; 1 = minimal attempt;; 0 = none.
 
 ### Synthesis
 

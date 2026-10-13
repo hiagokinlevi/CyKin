@@ -144,7 +144,7 @@ Encryption at rest does not protect data in use by a compromised application. Lo
 
 - **EX004 — Layer limits.** Why does disk encryption not protect data moving between branches? *Rubric:* 3 = it protects data at rest only; transit needs TLS;; 2 = layers differ;; 1 = it does;; 0 = none.
 - **EX005 — Data in use.** What mainly protects data in use? *Rubric:* 3 = access control and operating-system isolation, since data is decrypted in memory;; 2 = access control;; 1 = encryption;; 0 = none.
-- **EX006 — Backup gap.** What gap did Priya find and what did she recommend? *Rubric:* 3 = unencrypted backup tapes; encrypt with consortium-held keys and back up keys;; 2 = gap;; 1 = none;; 0 = none.
+- **EX006 — Backup gap.** What gap did Priya find and what did she recommend? *Rubric:* 3 = unencrypted backup tapes; encrypt with consortium-held keys and back up keys;; 2 = gap;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -188,7 +188,7 @@ Hashes do not hide data and do not authenticate by themselves. Encoding mistakes
 
 - **EX007 — UTF-8 length.** Why is "café" five bytes in UTF-8? *Rubric:* 3 = é takes two bytes;; 2 = encoding;; 1 = four;; 0 = none.
 - **EX008 — Test vector check.** How did Priya confirm she used SHA-256 correctly? *Rubric:* 3 = matched the FIPS 180-4 "abc" example digest beginning ba7816bf;; 2 = matched vector;; 1 = guessed;; 0 = none.
-- **EX009 — Integrity tool limit.** What limit does the integrity checker have? *Rubric:* 3 = attacker modifying files and the digest list hides changes; list must be protected or signed;; 2 = protect list;; 1 = none;; 0 = none.
+- **EX009 — Integrity tool limit.** What limit does the integrity checker have? *Rubric:* 3 = attacker modifying files and the digest list hides changes; list must be protected or signed;; 2 = protect list;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -320,7 +320,7 @@ Unauthenticated Diffie-Hellman is open to man-in-the-middle attacks. Toy groups 
 
 - **EX016 — Group properties.** List the four group properties. *Rubric:* 3 = closure, associativity, identity, inverses;; 2 = three;; 1 = one;; 0 = none.
 - **EX017 — Toy shared secret.** What shared secret did the toy exchange produce, and from which public values? *Rubric:* 3 = 2, from public values 8 and 19;; 2 = secret only;; 1 = wrong;; 0 = none.
-- **EX018 — Quantum threat.** Why does Shor's algorithm matter here? *Rubric:* 3 = it would solve discrete logarithms on a large quantum computer, motivating FIPS 203;; 2 = quantum;; 1 = none;; 0 = none.
+- **EX018 — Quantum threat.** Why does Shor's algorithm matter here? *Rubric:* 3 = it would solve discrete logarithms on a large quantum computer, motivating FIPS 203;; 2 = quantum;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -523,7 +523,7 @@ Public availability of leaked data does not make its use ethical. Disclosure wit
 
 ### Exercises
 
-- **EX028 — Authorisation content.** What did Grace's signed scope list? *Rubric:* 3 = hosts, dates and allowed tools;; 2 = two;; 1 = none;; 0 = none.
+- **EX028 — Authorisation content.** What did Grace's signed scope list? *Rubric:* 3 = hosts, dates and allowed tools;; 2 = two;; 1 = vague;; 0 = none.
 - **EX029 — Leaked databases.** Why must students not use real leaked password databases? *Rubric:* 3 = they contain real people's secrets even if public;; 2 = privacy;; 1 = allowed;; 0 = none.
 - **EX030 — Disclosure steps.** How did Priya handle the HTTP login flaw? *Rubric:* 3 = stopped testing, reported to vendor security contact with ninety-day window, informed lecturer;; 2 = reported;; 1 = exploited;; 0 = none.
 
@@ -846,7 +846,7 @@ Layers that share a weakness, such as one admin account controlling all, do not 
 
 ### Exercises
 
-- **EX046 — Trust boundary.** Name two trust boundaries in Tidewell's architecture. *Rubric:* 3 = two of internet-portal, portal-database, consortium-provider;; 2 = one;; 1 = none;; 0 = none.
+- **EX046 — Trust boundary.** Name two trust boundaries in Tidewell's architecture. *Rubric:* 3 = two of internet-portal, portal-database, consortium-provider;; 2 = one;; 1 = vague;; 0 = none.
 - **EX047 — Portal bug.** What would an attacker still face after exploiting a portal bug? *Rubric:* 3 = database permissions and field encryption;; 2 = one layer;; 1 = nothing;; 0 = none.
 - **EX048 — Missing keys.** What did earlier architecture documents omit and why did it matter? *Rubric:* 3 = key locations; rotation and access to decryption could not be assessed;; 2 = keys;; 1 = nothing;; 0 = none.
 
@@ -1011,7 +1011,7 @@ Trusting many roots widens risk. Signatures prove approval of bytes, not intent 
 ### Exercises
 
 - **EX055 — Four services.** Name four kinds of trust service. *Rubric:* 3 = certificate authorities, timestamping, signature services, key management;; 2 = three;; 1 = one;; 0 = none.
-- **EX056 — Root weakness.** What is the main weakness of delegated trust? *Rubric:* 3 = any trusted root can issue for any name, so one bad authority undermines all;; 2 = any root;; 1 = none;; 0 = none.
+- **EX056 — Root weakness.** What is the main weakness of delegated trust? *Rubric:* 3 = any trusted root can issue for any name, so one bad authority undermines all;; 2 = any root;; 1 = vague;; 0 = none.
 - **EX057 — Contract misunderstanding.** What did staff misunderstand about the signed PDF? *Rubric:* 3 = assumed signature covered terms in an unsigned attachment;; 2 = coverage;; 1 = nothing;; 0 = none.
 
 ### Synthesis
@@ -1142,7 +1142,7 @@ Inventories decay without regular discovery scans. Supplier answers need evidenc
 
 ### Exercises
 
-- **EX064 — Inventory findings.** What did the inventory uncover? *Rubric:* 3 = two forgotten certificates and a backup key in a shared folder;; 2 = one;; 1 = none;; 0 = none.
+- **EX064 — Inventory findings.** What did the inventory uncover? *Rubric:* 3 = two forgotten certificates and a backup key in a shared folder;; 2 = one;; 1 = vague;; 0 = none.
 - **EX065 — SHA-1 tool.** What did Priya decide about the SHA-1 reporting tool and which guidance supports it? *Rubric:* 3 = schedule replacement; SP 800-131A transition guidance;; 2 = replace;; 1 = keep;; 0 = none.
 - **EX066 — Supplier risk.** How did she treat a supplier unable to answer about post-quantum plans? *Rubric:* 3 = recorded as a risk, not a failure, given early migration stage;; 2 = risk;; 1 = dropped supplier;; 0 = none.
 
@@ -1187,7 +1187,7 @@ Nonce reuse breaks GCM badly. Associated data must be identical at encryption an
 ### Exercises
 
 - **EX067 — Associated data.** Why include the record identifier as associated data? *Rubric:* 3 = to stop encrypted records being swapped between patrons undetected;; 2 = binding;; 1 = encrypts it;; 0 = none.
-- **EX068 — Random nonce limit.** What limit applies to random 96-bit GCM nonces? *Rubric:* 3 = about 2^32 encryptions per key;; 2 = limit;; 1 = none;; 0 = none.
+- **EX068 — Random nonce limit.** What limit applies to random 96-bit GCM nonces? *Rubric:* 3 = about 2^32 encryptions per key;; 2 = limit;; 1 = vague;; 0 = none.
 - **EX069 — Parameter source.** Why does Priya call verifying parameters the point? *Rubric:* 3 = engineers should verify, not invent, parameters; recipes choose most;; 2 = verify;; 1 = invent;; 0 = none.
 
 ### Synthesis
@@ -1231,8 +1231,8 @@ Controls without evidence fail audits. Dual control erodes if staff share creden
 ### Exercises
 
 - **EX070 — Priority keys.** Which keys did Priya prioritise for controls? *Rubric:* 3 = the internal authority and backup keys;; 2 = one;; 1 = all equally;; 0 = none.
-- **EX071 — Dual control example.** Give one dual control Priya applied. *Rubric:* 3 = restoring backup keys requires two administrators;; 2 = example;; 1 = none;; 0 = none.
-- **EX072 — Audit gap.** What audit gap was found and how was it fixed? *Rubric:* 3 = evidence in personal email; moved to shared access-controlled storage;; 2 = gap;; 1 = none;; 0 = none.
+- **EX071 — Dual control example.** Give one dual control Priya applied. *Rubric:* 3 = restoring backup keys requires two administrators;; 2 = example;; 1 = vague;; 0 = none.
+- **EX072 — Audit gap.** What audit gap was found and how was it fixed? *Rubric:* 3 = evidence in personal email; moved to shared access-controlled storage;; 2 = gap;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1275,8 +1275,8 @@ Example code often contains fixed keys or nonces for demonstration; never copy t
 ### Exercises
 
 - **EX073 — Five tests.** List three of the five tests. *Rubric:* 3 = three of correct decryption, tamper fails, swapped AD fails, wrong key fails, different outputs;; 2 = two;; 1 = one;; 0 = none.
-- **EX074 — Nonce bug.** What bug did testing reveal? *Rubric:* 3 = a fixed nonce copied from an example snippet, making repeated encryptions identical;; 2 = fixed nonce;; 1 = none;; 0 = none.
-- **EX075 — Report limitations.** Name one limitation in the report. *Rubric:* 3 = manual key transfer or no side-channel review;; 2 = one;; 1 = none;; 0 = none.
+- **EX074 — Nonce bug.** What bug did testing reveal? *Rubric:* 3 = a fixed nonce copied from an example snippet, making repeated encryptions identical;; 2 = fixed nonce;; 1 = vague;; 0 = none.
+- **EX075 — Report limitations.** Name one limitation in the report. *Rubric:* 3 = manual key transfer or no side-channel review;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1320,7 +1320,7 @@ Signatures are useless if private keys leak or public keys are not authenticated
 
 - **EX076 — Three operations.** Name the three operations of a signature scheme. *Rubric:* 3 = key generation, signing, verification;; 2 = two;; 1 = one;; 0 = none.
 - **EX077 — Script signing.** What do branch servers do with scripts, and where is the signing key kept? *Rubric:* 3 = refuse unsigned scripts; key in key service with approved requests;; 2 = both;; 1 = one;; 0 = none.
-- **EX078 — Ed25519 advantage.** What failure mode does Ed25519 avoid? *Rubric:* 3 = per-signature secret derived deterministically, avoiding reused/leaked nonces exposing keys;; 2 = nonce;; 1 = none;; 0 = none.
+- **EX078 — Ed25519 advantage.** What failure mode does Ed25519 avoid? *Rubric:* 3 = per-signature secret derived deterministically, avoiding reused/leaked nonces exposing keys;; 2 = nonce;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1568,7 +1568,7 @@ Post-quantum migration timelines are uncertain; avoid panic and complacency. End
 ### Exercises
 
 - **EX091 — Harvest now.** What does "harvest now, decrypt later" mean? *Rubric:* 3 = recorded traffic decrypted later when large quantum computers exist;; 2 = future decryption;; 1 = nothing;; 0 = none.
-- **EX092 — E2E cost.** Name two costs of end-to-end encrypted patron messaging. *Rubric:* 3 = two of message loss with devices, shared inbox difficulty, no abuse scanning;; 2 = one;; 1 = none;; 0 = none.
+- **EX092 — E2E cost.** Name two costs of end-to-end encrypted patron messaging. *Rubric:* 3 = two of message loss with devices, shared inbox difficulty, no abuse scanning;; 2 = one;; 1 = vague;; 0 = none.
 - **EX093 — Priority advice.** What did Priya advise before adopting advanced options? *Rubric:* 3 = finish basic controls first (inventory, renewal, backup encryption);; 2 = basics;; 1 = rush;; 0 = none.
 
 ### Synthesis
@@ -1612,7 +1612,7 @@ Legal requirements differ by jurisdiction; consult qualified advisers. Usability
 ### Exercises
 
 - **EX094 — Digital versus electronic.** Distinguish a digital signature from an electronic signature. *Rubric:* 3 = digital is cryptographic mechanism; electronic is legal concept that can include typed names;; 2 = partial;; 1 = same;; 0 = none.
-- **EX095 — Timestamp purpose.** Why add trusted timestamps to signed contracts? *Rubric:* 3 = so signatures can be validated after the signing certificate expires;; 2 = long-term;; 1 = none;; 0 = none.
+- **EX095 — Timestamp purpose.** Why add trusted timestamps to signed contracts? *Rubric:* 3 = so signatures can be validated after the signing certificate expires;; 2 = long-term;; 1 = vague;; 0 = none.
 - **EX096 — Usability link.** Why is usability part of security? *Rubric:* 3 = confusing security drives unsafe workarounds;; 2 = workarounds;; 1 = unrelated;; 0 = none.
 
 ### Synthesis
@@ -1657,7 +1657,7 @@ Small samples give unstable estimates. Simulated settings may not reflect real b
 
 - **EX097 — Study results.** Report the share proceeding in each group. *Rubric:* 3 = 60 percent control (18/30) and 30 percent explanation (9/30);; 2 = one;; 1 = wrong;; 0 = none.
 - **EX098 — Careful wording.** How does Priya describe the effect? *Rubric:* 3 = associated with fewer staff proceeding in this simulation, not "works";; 2 = careful;; 1 = "works";; 0 = none.
-- **EX099 — Validity threat.** Name two validity threats. *Rubric:* 3 = two of guessing purpose, simulation vs real pressure, small sample, single consortium;; 2 = one;; 1 = none;; 0 = none.
+- **EX099 — Validity threat.** Name two validity threats. *Rubric:* 3 = two of guessing purpose, simulation vs real pressure, small sample, single consortium;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1745,7 +1745,7 @@ Scanning beyond authorised hosts is not allowed even for good purposes. Overly b
 
 - **EX103 — Capstone aim.** State the capstone's aim. *Rubric:* 3 = every in-scope certificate and key listed with owner; no expiry without alerts at 30 and 7 days;; 2 = aim;; 1 = vague;; 0 = none.
 - **EX104 — Out of scope.** What is out of scope? *Rubric:* 3 = staff security keys and supplier-held keys;; 2 = one;; 1 = nothing;; 0 = none.
-- **EX105 — Added measure.** What change did Dr. Echeverría require? *Rubric:* 3 = add a measure of false alerts;; 2 = false alerts;; 1 = none;; 0 = none.
+- **EX105 — Added measure.** What change did Dr. Echeverría require? *Rubric:* 3 = add a measure of false alerts;; 2 = false alerts;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1788,7 +1788,7 @@ Well-meant personal help can expose participants' data. Demonstrations must neve
 ### Exercises
 
 - **EX106 — Dice demonstration.** Why use dice to generate a passphrase in workshops? *Rubric:* 3 = shows that random choices are stronger than chosen ones;; 2 = randomness;; 1 = fun;; 0 = none.
-- **EX107 — Workshop revision.** How did Priya revise the workshop? *Rubric:* 3 = more time on password managers based on feedback;; 2 = feedback;; 1 = none;; 0 = none.
+- **EX107 — Workshop revision.** How did Priya revise the workshop? *Rubric:* 3 = more time on password managers based on feedback;; 2 = feedback;; 1 = vague;; 0 = none.
 - **EX108 — Boundary.** How did she respond to requests to fix personal accounts? *Rubric:* 3 = explained limits, pointed to official recovery and referrals, never asked for passwords;; 2 = boundary;; 1 = fixed them;; 0 = none.
 
 ### Synthesis
@@ -1833,7 +1833,7 @@ Evidence that is repeated widely is not necessarily strong. Local data rarely ge
 
 - **EX109 — Specification limit.** What can RFC 8555 tell Priya, and what not? *Rubric:* 3 = how ACME works, not whether it reduces outages;; 2 = partial;; 1 = outcomes;; 0 = none.
 - **EX110 — Vendor weight.** Why did vendor reports receive low weight? *Rubric:* 3 = they give no method and may have conflicts of interest;; 2 = no method;; 1 = high weight;; 0 = none.
-- **EX111 — Synthesis caveat.** What caveat does the synthesis include about automation? *Rubric:* 3 = automation introduces silent failure modes requiring monitoring;; 2 = silent failures;; 1 = none;; 0 = none.
+- **EX111 — Synthesis caveat.** What caveat does the synthesis include about automation? *Rubric:* 3 = automation introduces silent failure modes requiring monitoring;; 2 = silent failures;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1875,7 +1875,7 @@ Time handling causes subtle errors; store UTC. Scans must stay within authorisat
 
 ### Exercises
 
-- **EX112 — Discovery gap.** What did discovery miss at first and how was it fixed? *Rubric:* 3 = two certificates on unusual ports; added authorised ports to scan profile;; 2 = missed;; 1 = none;; 0 = none.
+- **EX112 — Discovery gap.** What did discovery miss at first and how was it fixed? *Rubric:* 3 = two certificates on unusual ports; added authorised ports to scan profile;; 2 = missed;; 1 = vague;; 0 = none.
 - **EX113 — False alert cause.** What caused the false alert? *Rubric:* 3 = a time-zone error, fixed by storing dates in UTC;; 2 = time zone;; 1 = bug;; 0 = none.
 - **EX114 — Scope request.** How did Priya handle the code-signing request? *Rubric:* 3 = recorded as future enhancement, kept scope, designed for easy addition;; 2 = deferred;; 1 = added;; 0 = none.
 
@@ -1921,7 +1921,7 @@ Two months is short for evaluating reliability. Tools without maintainers decay.
 
 - **EX115 — Production findings.** How many certificates were found in production, and how many were unrecorded? *Rubric:* 3 = 42, including 3 unrecorded;; 2 = one number;; 1 = wrong;; 0 = none.
 - **EX116 — Alert routing.** Why were alerts moved to a shared mailbox? *Rubric:* 3 = volunteers ignored alerts sent to personal addresses;; 2 = ignored;; 1 = preference;; 0 = none.
-- **EX117 — Second alert value.** What showed the value of the seven-day reminder? *Rubric:* 3 = one alert was acted on only after the seven-day reminder;; 2 = reminder;; 1 = none;; 0 = none.
+- **EX117 — Second alert value.** What showed the value of the seven-day reminder? *Rubric:* 3 = one alert was acted on only after the seven-day reminder;; 2 = reminder;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

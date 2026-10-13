@@ -70,10 +70,10 @@ Observational designs cannot prove cause. Search logs miss grey literature.
 ### Exercises
 
 - **EX001 — Unit of analysis.** What is the unit of analysis in Lucas's study? *Rubric:* 3 = the account;; 2 = accounts;; 1 = people;; 0 = none.
-- **EX002 — Excess definition.** How is excess access defined? *Rubric:* 3 = a permission the owner's current role does not need, per the role catalogue;; 2 = role catalogue;; 1 = none;; 0 = none.
-- **EX003 — Cost measure.** How does Lucas measure cost? *Rubric:* 3 = reviewer hours logged;; 2 = hours;; 1 = none;; 0 = none.
-- **EX004 — Design limit.** Why can the study not prove cause? *Rubric:* 3 = units chose their review frequency;; 2 = observational;; 1 = none;; 0 = none.
-- **EX005 — Search log fields.** What does Lucas record for each search? *Rubric:* 3 = date, database, string and hit count;; 2 = log;; 1 = none;; 0 = none.
+- **EX002 — Excess definition.** How is excess access defined? *Rubric:* 3 = a permission the owner's current role does not need, per the role catalogue;; 2 = role catalogue;; 1 = vague;; 0 = none.
+- **EX003 — Cost measure.** How does Lucas measure cost? *Rubric:* 3 = reviewer hours logged;; 2 = hours;; 1 = vague;; 0 = none.
+- **EX004 — Design limit.** Why can the study not prove cause? *Rubric:* 3 = units chose their review frequency;; 2 = observational;; 1 = vague;; 0 = none.
+- **EX005 — Search log fields.** What does Lucas record for each search? *Rubric:* 3 = date, database, string and hit count;; 2 = log;; 1 = vague;; 0 = none.
 - **EX006 — Frequency guidance.** Does ISO/IEC 27002:2022 prescribe a review frequency? *Rubric:* 3 = no, it asks for planned intervals;; 2 = no;; 1 = yes;; 0 = none.
 - **EX007 — Standards role.** What can standards do for this question? *Rubric:* 3 = define it but not answer it;; 2 = context;; 1 = evidence of effect;; 0 = none.
 
@@ -147,12 +147,12 @@ Coverage percentages hide control quality. Frameworks change editions.
 ### Exercises
 
 - **EX008 — Certifiable standard.** Which of the frameworks discussed specifies certifiable ISMS requirements? *Rubric:* 3 = ISO/IEC 27001:2022;; 2 = 27001;; 1 = CSF;; 0 = none.
-- **EX009 — COBIT separation.** What does COBIT 2019 separate? *Rubric:* 3 = governance from management;; 2 = governance;; 1 = none;; 0 = none.
+- **EX009 — COBIT separation.** What does COBIT 2019 separate? *Rubric:* 3 = governance from management;; 2 = governance;; 1 = vague;; 0 = none.
 - **EX010 — Mapped count.** How many requirements did the lab find mapped? *Rubric:* 3 = eight of ten;; 2 = 8;; 1 = 10;; 0 = none.
 - **EX011 — Evidenced coverage.** What share of requirements had evidence? *Rubric:* 3 = 60%;; 2 = six;; 1 = 80%;; 0 = none.
-- **EX012 — Unmapped items.** Which requirements were unmapped? *Rubric:* 3 = R3 and R8;; 2 = two;; 1 = none;; 0 = none.
-- **EX013 — Illusion of assurance.** Why can mapping create an illusion of assurance? *Rubric:* 3 = mapped controls may be badly designed, operated or evidenced;; 2 = quality hidden;; 1 = none;; 0 = none.
-- **EX014 — Refined claim.** How did Lucas refine his claim after discussion? *Rubric:* 3 = mapping is necessary, assurance needs risk-based tested evidence;; 2 = refined;; 1 = none;; 0 = none.
+- **EX012 — Unmapped items.** Which requirements were unmapped? *Rubric:* 3 = R3 and R8;; 2 = two;; 1 = vague;; 0 = none.
+- **EX013 — Illusion of assurance.** Why can mapping create an illusion of assurance? *Rubric:* 3 = mapped controls may be badly designed, operated or evidenced;; 2 = quality hidden;; 1 = vague;; 0 = none.
+- **EX014 — Refined claim.** How did Lucas refine his claim after discussion? *Rubric:* 3 = mapping is necessary, assurance needs risk-based tested evidence;; 2 = refined;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -198,12 +198,12 @@ Measured confounders do not remove unmeasured ones. Catalogue quality limits val
 
 ### Exercises
 
-- **EX015 — Group sizes.** How many accounts are sampled per group? *Rubric:* 3 = 300;; 2 = three hundred;; 1 = none;; 0 = none.
-- **EX016 — Key confounder.** Which confounder could raise excess access regardless of frequency? *Rubric:* 3 = staff turnover;; 2 = turnover;; 1 = none;; 0 = none.
-- **EX017 — Approvals needed.** Whose approval did Lucas obtain? *Rubric:* 3 = Marlow's ethics committee and Tessaly's data protection officer;; 2 = both;; 1 = none;; 0 = none.
+- **EX015 — Group sizes.** How many accounts are sampled per group? *Rubric:* 3 = 300;; 2 = three hundred;; 1 = vague;; 0 = none.
+- **EX016 — Key confounder.** Which confounder could raise excess access regardless of frequency? *Rubric:* 3 = staff turnover;; 2 = turnover;; 1 = vague;; 0 = none.
+- **EX017 — Approvals needed.** Whose approval did Lucas obtain? *Rubric:* 3 = Marlow's ethics committee and Tessaly's data protection officer;; 2 = both;; 1 = vague;; 0 = none.
 - **EX018 — Serious finding rule.** What happens if serious excess access is found? *Rubric:* 3 = reported immediately to security as an operational issue;; 2 = report;; 1 = ignore;; 0 = none.
-- **EX019 — Pilot agreement.** How many of 40 pilot accounts did reviewers agree on? *Rubric:* 3 = 36;; 2 = 90%;; 1 = none;; 0 = none.
-- **EX020 — Catalogue fix.** What rule did Lucas add after the pilot? *Rubric:* 3 = a rule for shared resources such as mailboxes;; 2 = shared mailboxes;; 1 = none;; 0 = none.
+- **EX019 — Pilot agreement.** How many of 40 pilot accounts did reviewers agree on? *Rubric:* 3 = 36;; 2 = 90%;; 1 = vague;; 0 = none.
+- **EX020 — Catalogue fix.** What rule did Lucas add after the pilot? *Rubric:* 3 = a rule for shared resources such as mailboxes;; 2 = shared mailboxes;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -249,12 +249,12 @@ Some rivals cannot be tested. Diligence measures are crude.
 
 ### Exercises
 
-- **EX021 — Rubber-stamp test.** How will Lucas detect rubber-stamping? *Rubric:* 3 = removals per review and time per account;; 2 = removals;; 1 = none;; 0 = none.
-- **EX022 — Diligence proxy.** What proxy does Lucas use for general diligence? *Rubric:* 3 = on-time completion of other controls such as training;; 2 = training;; 1 = none;; 0 = none.
-- **EX023 — Cost lens.** Which source reminds Lucas that more control is not always worth its cost? *Rubric:* 3 = Gordon and Loeb (2002);; 2 = Gordon-Loeb;; 1 = none;; 0 = none.
-- **EX024 — Falsifiability.** Why does Lucas cite Herley and van Oorschot? *Rubric:* 3 = to insist his hypothesis could fail;; 2 = falsifiable;; 1 = none;; 0 = none.
-- **EX025 — Judgement categories.** Which three judgements will each rival receive? *Rubric:* 3 = ruled less likely, still plausible or untested;; 2 = three;; 1 = none;; 0 = none.
-- **EX026 — Disconfirming result.** What result would count against the hypothesis? *Rubric:* 3 = no meaningful difference, or one that disappears at similar turnover;; 2 = stated;; 1 = none;; 0 = none.
+- **EX021 — Rubber-stamp test.** How will Lucas detect rubber-stamping? *Rubric:* 3 = removals per review and time per account;; 2 = removals;; 1 = vague;; 0 = none.
+- **EX022 — Diligence proxy.** What proxy does Lucas use for general diligence? *Rubric:* 3 = on-time completion of other controls such as training;; 2 = training;; 1 = vague;; 0 = none.
+- **EX023 — Cost lens.** Which source reminds Lucas that more control is not always worth its cost? *Rubric:* 3 = Gordon and Loeb (2002);; 2 = Gordon-Loeb;; 1 = vague;; 0 = none.
+- **EX024 — Falsifiability.** Why does Lucas cite Herley and van Oorschot? *Rubric:* 3 = to insist his hypothesis could fail;; 2 = falsifiable;; 1 = vague;; 0 = none.
+- **EX025 — Judgement categories.** Which three judgements will each rival receive? *Rubric:* 3 = ruled less likely, still plausible or untested;; 2 = three;; 1 = vague;; 0 = none.
+- **EX026 — Disconfirming result.** What result would count against the hypothesis? *Rubric:* 3 = no meaningful difference, or one that disappears at similar turnover;; 2 = stated;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -328,12 +328,12 @@ Sampling cannot detect rare systematic failures. Tolerable rates are judgement c
 
 ### Exercises
 
-- **EX027 — Proposal length.** How long is Lucas's proposal and its timeline? *Rubric:* 3 = twelve pages, nine months;; 2 = 12 pages;; 1 = none;; 0 = none.
-- **EX028 — Tolerable rate.** Which tolerable deviation rate did Lucas set? *Rubric:* 3 = 5%;; 2 = 0.05;; 1 = none;; 0 = none.
-- **EX029 — Clean sample bound.** With 60 records and no deviations, what is the upper bound? *Rubric:* 3 = 0.049;; 2 = under 5%;; 1 = none;; 0 = none.
-- **EX030 — One deviation bound.** How high is the bound with one deviation in 60? *Rubric:* 3 = 0.077;; 2 = above 5%;; 1 = none;; 0 = none.
+- **EX027 — Proposal length.** How long is Lucas's proposal and its timeline? *Rubric:* 3 = twelve pages, nine months;; 2 = 12 pages;; 1 = vague;; 0 = none.
+- **EX028 — Tolerable rate.** Which tolerable deviation rate did Lucas set? *Rubric:* 3 = 5%;; 2 = 0.05;; 1 = vague;; 0 = none.
+- **EX029 — Clean sample bound.** With 60 records and no deviations, what is the upper bound? *Rubric:* 3 = 0.049;; 2 = under 5%;; 1 = vague;; 0 = none.
+- **EX030 — One deviation bound.** How high is the bound with one deviation in 60? *Rubric:* 3 = 0.077;; 2 = above 5%;; 1 = vague;; 0 = none.
 - **EX031 — Small sample.** Can a sample of 25 with one deviation support effective operation? *Rubric:* 3 = no, the bound is 0.176;; 2 = no;; 1 = yes;; 0 = none.
-- **EX032 — Deviation types.** List the three deviation types Lucas defined. *Rubric:* 3 = no sign-off, late sign-off, wrong signer;; 2 = three;; 1 = none;; 0 = none.
+- **EX032 — Deviation types.** List the three deviation types Lucas defined. *Rubric:* 3 = no sign-off, late sign-off, wrong signer;; 2 = three;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -405,11 +405,11 @@ Diligence remains a partial rival. Cost-benefit depends on asset value.
 ### Exercises
 
 - **EX033 — Missing judgements.** How did Lucas handle accounts that could not be judged? *Rubric:* 3 = recorded them as missing;; 2 = missing;; 1 = guessed;; 0 = none.
-- **EX034 — Group rates.** What excess-access rates did each group show? *Rubric:* 3 = quarterly 0.060, annual 0.130;; 2 = 18 and 39;; 1 = none;; 0 = none.
-- **EX035 — Bootstrap interval.** Give the 95% bootstrap interval for the difference. *Rubric:* 3 = 0.023 to 0.117;; 2 = excludes zero;; 1 = none;; 0 = none.
+- **EX034 — Group rates.** What excess-access rates did each group show? *Rubric:* 3 = quarterly 0.060, annual 0.130;; 2 = 18 and 39;; 1 = vague;; 0 = none.
+- **EX035 — Bootstrap interval.** Give the 95% bootstrap interval for the difference. *Rubric:* 3 = 0.023 to 0.117;; 2 = excludes zero;; 1 = vague;; 0 = none.
 - **EX036 — Turnover check.** What happened to the difference among mid-turnover units? *Rubric:* 3 = it shrank but remained;; 2 = remained;; 1 = vanished;; 0 = none.
-- **EX037 — Rubber-stamp evidence.** Why does rubber-stamping look unlikely? *Rubric:* 3 = nine removals per review and forty seconds per account;; 2 = removals;; 1 = none;; 0 = none.
-- **EX038 — Risk-based option.** Which compromise does Lucas suggest? *Rubric:* 3 = quarterly for high-risk systems, annual elsewhere;; 2 = risk-based;; 1 = none;; 0 = none.
+- **EX037 — Rubber-stamp evidence.** Why does rubber-stamping look unlikely? *Rubric:* 3 = nine removals per review and forty seconds per account;; 2 = removals;; 1 = vague;; 0 = none.
+- **EX038 — Risk-based option.** Which compromise does Lucas suggest? *Rubric:* 3 = quarterly for high-risk systems, annual elsewhere;; 2 = risk-based;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -455,12 +455,12 @@ Practitioner summaries can oversimplify. Framework links are interpretations.
 
 ### Exercises
 
-- **EX039 — Main text length.** Roughly how long is the main text? *Rubric:* 3 = about 20,000 words;; 2 = 20k;; 1 = none;; 0 = none.
+- **EX039 — Main text length.** Roughly how long is the main text? *Rubric:* 3 = about 20,000 words;; 2 = 20k;; 1 = vague;; 0 = none.
 - **EX040 — Limit style.** How does Lucas present each limitation? *Rubric:* 3 = with its likely bias and direction;; 2 = bias;; 1 = list only;; 0 = none.
-- **EX041 — Self-logged hours.** Which limitation affects the cost estimate? *Rubric:* 3 = hours were self-logged;; 2 = self-report;; 1 = none;; 0 = none.
-- **EX042 — Summary length.** How long is the practitioner summary? *Rubric:* 3 = four pages;; 2 = 4;; 1 = none;; 0 = none.
-- **EX043 — Manager feedback.** Why did Lucas rewrite a phrase in the summary? *Rubric:* 3 = it implied units were careless;; 2 = blame;; 1 = none;; 0 = none.
-- **EX044 — Board suggestion.** What does Lucas suggest boards ask for? *Rubric:* 3 = outcome measures such as excess-access rates;; 2 = outcomes;; 1 = none;; 0 = none.
+- **EX041 — Self-logged hours.** Which limitation affects the cost estimate? *Rubric:* 3 = hours were self-logged;; 2 = self-report;; 1 = vague;; 0 = none.
+- **EX042 — Summary length.** How long is the practitioner summary? *Rubric:* 3 = four pages;; 2 = 4;; 1 = vague;; 0 = none.
+- **EX043 — Manager feedback.** Why did Lucas rewrite a phrase in the summary? *Rubric:* 3 = it implied units were careless;; 2 = blame;; 1 = vague;; 0 = none.
+- **EX044 — Board suggestion.** What does Lucas suggest boards ask for? *Rubric:* 3 = outcome measures such as excess-access rates;; 2 = outcomes;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -508,10 +508,10 @@ Reproduction checks code, not truth. Follow-up results may differ.
 
 - **EX045 — Reproduction result.** Did the independent reviewer reproduce the tables? *Rubric:* 3 = yes, exactly, due to fixed seeds;; 2 = yes;; 1 = no;; 0 = none.
 - **EX046 — Worst-case check.** What did the worst-case missing-data check show? *Rubric:* 3 = the difference fell slightly but the interval still excluded zero;; 2 = robust;; 1 = reversed;; 0 = none.
-- **EX047 — No randomisation.** Why was frequency not randomised? *Rubric:* 3 = Tessaly could not change schedules for research;; 2 = practical;; 1 = none;; 0 = none.
-- **EX048 — Outcome limit.** What does excess access not measure? *Rubric:* 3 = whether access was misused;; 2 = misuse;; 1 = none;; 0 = none.
+- **EX047 — No randomisation.** Why was frequency not randomised? *Rubric:* 3 = Tessaly could not change schedules for research;; 2 = practical;; 1 = vague;; 0 = none.
+- **EX048 — Outcome limit.** What does excess access not measure? *Rubric:* 3 = whether access was misused;; 2 = misuse;; 1 = vague;; 0 = none.
 - **EX049 — Tessaly decision.** Which systems will Tessaly pilot quarterly reviews on? *Rubric:* 3 = warehouse management and finance;; 2 = high-risk;; 1 = all;; 0 = none.
-- **EX050 — Next study.** What follow-up does Dr. Solberg suggest? *Rubric:* 3 = a randomised multi-company study;; 2 = randomise;; 1 = none;; 0 = none.
+- **EX050 — Next study.** What follow-up does Dr. Solberg suggest? *Rubric:* 3 = a randomised multi-company study;; 2 = randomise;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

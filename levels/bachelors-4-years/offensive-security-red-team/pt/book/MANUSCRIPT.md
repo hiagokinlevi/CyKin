@@ -314,7 +314,7 @@ Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pag
 
 - **EX010 — Reescrita.** Transforme "reutilização estúpida de senhas" em linguagem profissional de achado. *Rubrica:* 3 = condição do sistema + impacto + nenhum insulto; 2 = parcial; 1 = mantém o insulto; 0 = nada.
 - **EX011 — Afirmação especulativa.** Como Sam deve rotular "atacantes já roubaram fundos"? *Rubrica:* 3 = especulativa/não confirmada; separada dos fatos; 2 = parcial; 1 = como fato; 0 = nada.
-- **EX012 — Regra de citação.** O que Sam nunca pode inventar ao citar? *Rubrica:* 3 = DOIs / referências falsas; 2 = parcial; 1 = nada; 0 = nada.
+- **EX012 — Regra de citação.** O que Sam nunca pode inventar ao citar? *Rubrica:* 3 = DOIs / referências falsas; 2 = parcial; 1 = vago; 0 = nada.
 
 ### Síntese
 
@@ -1186,7 +1186,7 @@ Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pag
 ### Exercícios
 
 - **EX040 — Minimização.** Por que não exportar a tabela completa de clientes para um achado? *Rubrica:* 3 = privacidade/finalidade/ROE; 2 = parcial; 1 = precisamos dela; 0 = nada.
-- **EX041 — Redação.** O que Sam redige no exemplo da captura de tela? *Rubrica:* 3 = números de conta, exceto os quatro últimos dígitos / identificadores pessoais; 2 = parcial; 1 = nada; 0 = nada.
+- **EX041 — Redação.** O que Sam redige no exemplo da captura de tela? *Rubrica:* 3 = números de conta, exceto os quatro últimos dígitos / identificadores pessoais; 2 = parcial; 1 = vago; 0 = nada.
 - **EX042 — Cofre.** Por que proteger fortemente os cofres de evidências? *Rubrica:* 3 = concentram dados sensíveis de prova; 2 = parcial; 1 = não precisa; 0 = nada.
 
 ### Síntese
@@ -1465,7 +1465,7 @@ Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pag
 
 ### Exercícios
 
-- **EX049 — TLS vs AuthZ.** O TLS corrige um IDOR? *Rubrica:* 3 = não; 2 = não; 1 = sim; 0 = nada.
+- **EX049 — TLS vs AuthZ.** O TLS corrige um IDOR? *Rubrica:* 3 = não; 2 = não, sem justificativa; 1 = sim; 0 = nada.
 - **EX050 — Chave fixa no código.** Por que rejeitar chaves AES fixas no código-fonte? *Rubrica:* 3 = exposição da chave no repositório; sem controle dual; 2 = parcial; 1 = tudo bem; 0 = nada.
 - **EX051 — Uso do hash aqui.** Para que servem os digests SHA-256 neste curso? *Rubrica:* 3 = integridade das evidências; 2 = parcial; 1 = cifrar o tráfego; 0 = nada.
 
@@ -1554,7 +1554,7 @@ Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pag
 ### Exercícios
 
 - **EX052 — Pergunta ruim.** Por que "a segurança é boa?" é uma pergunta de pesquisa ruim? *Rubrica:* 3 = não é mensurável/específica; 2 = parcial; 1 = tudo bem; 0 = nada.
-- **EX053 — Pré-registro.** O que deve ser escrito antes dos resultados? *Rubrica:* 3 = métrica e limiar (e desenho); 2 = parcial; 1 = nada; 0 = nada.
+- **EX053 — Pré-registro.** O que deve ser escrito antes dos resultados? *Rubrica:* 3 = métrica e limiar (e desenho); 2 = parcial; 1 = vago; 0 = nada.
 - **EX054 — Phishing com funcionários.** Que aprovações são necessárias antes de um phishing simulado? *Rubrica:* 3 = CISO/RH (e ROE); 2 = uma; 1 = nenhuma; 0 = nada.
 
 ### Síntese
@@ -1735,7 +1735,7 @@ Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pag
 
 - **EX058 — Fato vs palpite.** Rotule: "um funcionário relatou reutilização" vs "um Estado-nação tem o hash". *Rubrica:* 3 = fato vs palpite; 2 = parcial; 1 = ambos fatos; 0 = nada.
 - **EX059 — E-mail pessoal.** Por que não ler o e-mail pessoal do funcionário? *Rubrica:* 3 = fora do escopo/privacidade; 2 = parcial; 1 = deveria ler; 0 = nada.
-- **EX060 — Gatilho de escalonamento.** O que dispara aqui o escalonamento ao CISO no mesmo dia? *Rubrica:* 3 = reutilização de credencial que arrisca acesso ao banco/pagamentos; 2 = parcial; 1 = nada; 0 = nada.
+- **EX060 — Gatilho de escalonamento.** O que dispara aqui o escalonamento ao CISO no mesmo dia? *Rubrica:* 3 = reutilização de credencial que arrisca acesso ao banco/pagamentos; 2 = parcial; 1 = vago; 0 = nada.
 
 ### Síntese
 
@@ -2290,7 +2290,7 @@ Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pag
 
 - **EX076 — Prova mínima.** O que significa prova mínima? *Rubrica:* 3 = parar assim que o impacto é demonstrado; nenhum pivô extra; 2 = parcial; 1 = tomada completa sempre; 0 = nada.
 - **EX077 — Perto de pagamentos.** Que passo extra vem antes de testes adjacentes a pagamentos? *Rubrica:* 3 = aprovações extras/verificação das ROE; 2 = parcial; 1 = nenhum; 0 = nada.
-- **EX078 — Documentação da cadeia.** O que pertence ao apêndice da cadeia? *Rubrica:* 3 = passos/horários/links de evidência; 2 = parcial; 1 = nada; 0 = nada.
+- **EX078 — Documentação da cadeia.** O que pertence ao apêndice da cadeia? *Rubrica:* 3 = passos/horários/links de evidência; 2 = parcial; 1 = vago; 0 = nada.
 
 ### Síntese
 
@@ -2687,7 +2687,7 @@ Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pag
 
 - **EX088 — Contagens do reteste.** Quantos FIXED e quantos STILL OPEN? *Rubrica:* 3 = 2 FIXED, 1 STILL OPEN; 2 = parcial; 1 = todos corrigidos; 0 = nada.
 - **EX089 — Limite da parada.** Qual é o limite de tempo da mensagem de parada? *Rubrica:* 3 = dois minutos; 2 = rápido; 1 = no dia seguinte; 0 = nada.
-- **EX090 — Tratamento do F3.** O relatório pode encerrar o F3 sem evidência? *Rubrica:* 3 = não; 2 = não; 1 = sim; 0 = nada.
+- **EX090 — Tratamento do F3.** O relatório pode encerrar o F3 sem evidência? *Rubrica:* 3 = não; 2 = não, sem justificativa; 1 = sim; 0 = nada.
 
 ### Síntese
 
@@ -3216,7 +3216,7 @@ Este livro não concede nenhuma autoridade para testar bancos ou sistemas de pag
 
 ### Exercícios
 
-- **EX106 — Sanitizar.** O que os textos acadêmicos precisam remover? *Rubrica:* 3 = identificadores de clientes / especificidades sensíveis; 2 = parcial; 1 = nada; 0 = nada.
+- **EX106 — Sanitizar.** O que os textos acadêmicos precisam remover? *Rubrica:* 3 = identificadores de clientes / especificidades sensíveis; 2 = parcial; 1 = vago; 0 = nada.
 - **EX107 — Trio do diário.** Quais três linhas vão no diário semanal? *Rubrica:* 3 = aprendizado, premissa quebrada, pergunta; 2 = duas; 1 = uma; 0 = nada.
 - **EX108 — O que se deixa.** Cite algo útil para deixar. *Rubrica:* 3 = melhoria de runbook / checklist; 2 = parcial; 1 = malware; 0 = nada.
 

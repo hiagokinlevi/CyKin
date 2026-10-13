@@ -94,13 +94,13 @@ Database choice limits coverage; practitioner knowledge may sit outside indexed 
 
 ### Exercises
 
-- **EX001 — Question parts.** Name the population, intervention, comparison and outcome in Kenji's question. *Rubric:* 3 = simulated Vantor-like networks; identity micro-segmentation; zone segmentation; reachable servers from one foothold;; 2 = three;; 1 = none;; 0 = none.
+- **EX001 — Question parts.** Name the population, intervention, comparison and outcome in Kenji's question. *Rubric:* 3 = simulated Vantor-like networks; identity micro-segmentation; zone segmentation; reachable servers from one foothold;; 2 = three;; 1 = vague;; 0 = none.
 - **EX002 — Simulation choice.** Why use simulation instead of changing Vantor's network? *Rubric:* 3 = fits the timeline and avoids ethical and operational risks to live systems;; 2 = one reason;; 1 = no reason;; 0 = none.
-- **EX003 — Proxy limit.** What limitation does Kenji write into the question document? *Rubric:* 3 = reachability is a proxy for attacker progress, not real incidents;; 2 = proxy;; 1 = none;; 0 = none.
+- **EX003 — Proxy limit.** What limitation does Kenji write into the question document? *Rubric:* 3 = reachability is a proxy for attacker progress, not real incidents;; 2 = proxy;; 1 = vague;; 0 = none.
 - **EX004 — Criteria first.** Why write inclusion criteria before searching? *Rubric:* 3 = to prevent selectively including agreeable studies;; 2 = bias;; 1 = no reason;; 0 = none.
 - **EX005 — Screening lab.** How many records entered screening and how many studies were included? *Rubric:* 3 = 312 records, 27 included;; 2 = one number;; 1 = wrong;; 0 = none.
 - **EX006 — Flat-network evidence.** What does Anderson (2020) contribute to Kenji's review? *Rubric:* 3 = case studies where flat networks allowed wide movement after one compromise;; 2 = cases;; 1 = nothing;; 0 = none.
-- **EX007 — Comparison gap.** What gap did Kenji identify? *Rubric:* 3 = few studies compare segmentation strategies on the same networks under the same assumptions;; 2 = gap;; 1 = none;; 0 = none.
+- **EX007 — Comparison gap.** What gap did Kenji identify? *Rubric:* 3 = few studies compare segmentation strategies on the same networks under the same assumptions;; 2 = gap;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -151,11 +151,11 @@ Rule count is a crude proxy for operational complexity. Seminar tagging can over
 ### Exercises
 
 - **EX008 — First questions.** What first question does each architecture view ask? *Rubric:* 3 = enterprise: business attributes; systems engineering: life-cycle assurance; threat-driven: what can go wrong;; 2 = two;; 1 = one;; 0 = none.
-- **EX009 — Principle tension.** Which principle pulls against fine segmentation, and why? *Rubric:* 3 = economy of mechanism, because finer segmentation creates more rules to verify;; 2 = named;; 1 = none;; 0 = none.
-- **EX010 — Zero trust threats.** Name a threat to zero trust deployments acknowledged in SP 800-207. *Rubric:* 3 = compromise of the policy decision point or stolen credentials;; 2 = one;; 1 = none;; 0 = none.
+- **EX009 — Principle tension.** Which principle pulls against fine segmentation, and why? *Rubric:* 3 = economy of mechanism, because finer segmentation creates more rules to verify;; 2 = named;; 1 = vague;; 0 = none.
+- **EX010 — Zero trust threats.** Name a threat to zero trust deployments acknowledged in SP 800-207. *Rubric:* 3 = compromise of the policy decision point or stolen credentials;; 2 = one;; 1 = vague;; 0 = none.
 - **EX011 — Fair zero trust claim.** What is the fair version of zero trust eliminates lateral movement? *Rubric:* 3 = it can reduce reachable paths and make movement easier to observe;; 2 = reduced;; 1 = eliminates;; 0 = none.
 - **EX012 — Evidence tags.** Which four tags does Dr Aydın require on claims? *Rubric:* 3 = principle, framework guidance, case evidence, measured result;; 2 = three;; 1 = one;; 0 = none.
-- **EX013 — Complexity measure.** How does Kenji measure rule complexity, and what is its weakness? *Rubric:* 3 = count of distinct allow rules; crude proxy;; 2 = measure;; 1 = none;; 0 = none.
+- **EX013 — Complexity measure.** How does Kenji measure rule complexity, and what is its weakness? *Rubric:* 3 = count of distinct allow rules; crude proxy;; 2 = measure;; 1 = vague;; 0 = none.
 - **EX014 — Dual outcome reason.** Why compare strategies on reach and rule count together? *Rubric:* 3 = a strategy can reduce reach but be unmanageable in operation;; 2 = both;; 1 = reach only;; 0 = none.
 
 ### Synthesis
@@ -302,8 +302,8 @@ No list of rivals is complete. Parameters added to model reality can multiply ru
 - **EX021 — Edge-count rival.** What does the random-edge control test? *Rubric:* 3 = whether identity's advantage comes from structure or just fewer edges;; 2 = structure;; 1 = nothing;; 0 = none.
 - **EX022 — Generation artefact.** How does Kenji test the identity-rule generation artefact? *Rubric:* 3 = varies how many servers each identity may reach from one to four;; 2 = varies;; 1 = ignores;; 0 = none.
 - **EX023 — Misconfiguration parameter.** Why add a misconfiguration rate to the model? *Rubric:* 3 = real enforcement errs, and complex rule sets offer more chances for error;; 2 = errors;; 1 = not needed;; 0 = none.
-- **EX024 — Overturn thresholds.** State one pre-set condition that would overturn Kenji's expectation. *Rubric:* 3 = identity within one server of random control, or two per cent misconfiguration erasing most of the gain;; 2 = one;; 1 = none;; 0 = none.
-- **EX025 — Practitioner rival.** Which rival did the engineers add? *Rubric:* 3 = template copying gives many workstations the same broad access;; 2 = template;; 1 = none;; 0 = none.
+- **EX024 — Overturn thresholds.** State one pre-set condition that would overturn Kenji's expectation. *Rubric:* 3 = identity within one server of random control, or two per cent misconfiguration erasing most of the gain;; 2 = one;; 1 = vague;; 0 = none.
+- **EX025 — Practitioner rival.** Which rival did the engineers add? *Rubric:* 3 = template copying gives many workstations the same broad access;; 2 = template;; 1 = vague;; 0 = none.
 - **EX026 — Maturity sign.** What does Dr Aydın call a clear sign of research maturity? *Rubric:* 3 = stating in advance what would change the conclusion;; 2 = advance conditions;; 1 = long thesis;; 0 = none.
 
 ### Synthesis
@@ -354,10 +354,10 @@ Sample-size estimates from a small pilot are themselves uncertain. Dropping a ne
 
 ### Exercises
 
-- **EX027 — Committee condition.** What condition did the committee attach to approval? *Rubric:* 3 = a pilot confirming the simulation fits the available computing time;; 2 = pilot;; 1 = none;; 0 = none.
-- **EX028 — Known-answer bug.** What bug did the known-answer test catch? *Rubric:* 3 = jump-host edges added twice, inflating reach;; 2 = jump-host;; 1 = none;; 0 = none.
+- **EX027 — Committee condition.** What condition did the committee attach to approval? *Rubric:* 3 = a pilot confirming the simulation fits the available computing time;; 2 = pilot;; 1 = vague;; 0 = none.
+- **EX028 — Known-answer bug.** What bug did the known-answer test catch? *Rubric:* 3 = jump-host edges added twice, inflating reach;; 2 = jump-host;; 1 = vague;; 0 = none.
 - **EX029 — Networks needed.** How many networks per size did the estimate require, and how many were chosen? *Rubric:* 3 = about sixty needed; two hundred chosen;; 2 = one figure;; 1 = wrong;; 0 = none.
-- **EX030 — Dropped size.** Why was the smallest network size dropped? *Rubric:* 3 = one server per department made zone and identity reach identical;; 2 = reason;; 1 = none;; 0 = none.
+- **EX030 — Dropped size.** Why was the smallest network size dropped? *Rubric:* 3 = one server per department made zone and identity reach identical;; 2 = reason;; 1 = vague;; 0 = none.
 - **EX031 — Misconfiguration range.** What range was set for misconfiguration, and why? *Rubric:* 3 = zero to five per cent, considered realistic by engineers;; 2 = range;; 1 = ten per cent;; 0 = none.
 - **EX032 — Tagging pilot code.** Why tag the pilot code version? *Rubric:* 3 = so main experiments start from a known tested state;; 2 = known state;; 1 = no reason;; 0 = none.
 
@@ -438,7 +438,7 @@ Bootstrap intervals describe variation across generated networks, not uncertaint
 ### Exercises
 
 - **EX033 — Early peeking.** Why avoid looking at results before runs finish? *Rubric:* 3 = early peeking tends to shape later decisions;; 2 = bias;; 1 = no reason;; 0 = none.
-- **EX034 — Bootstrap steps.** Describe the bootstrap Kenji uses. *Rubric:* 3 = resample networks with replacement, recompute mean difference, take middle 95%;; 2 = partial;; 1 = none;; 0 = none.
+- **EX034 — Bootstrap steps.** Describe the bootstrap Kenji uses. *Rubric:* 3 = resample networks with replacement, recompute mean difference, take middle 95%;; 2 = partial;; 1 = vague;; 0 = none.
 - **EX035 — Lab intervals.** What mean differences did the lab report for zone minus identity and control minus identity? *Rubric:* 3 = about 2.4 and 1.6 servers, both intervals above zero;; 2 = one;; 1 = wrong;; 0 = none.
 - **EX036 — Strongest rival.** Which rival check removed most of the advantage? *Rubric:* 3 = template copying of broad rules for a third of workstations;; 2 = template;; 1 = size;; 0 = none.
 - **EX037 — Rule ratio.** Roughly how many more rules did identity policies need than zone policies in the lab? *Rubric:* 3 = about three times as many;; 2 = ratio;; 1 = fewer;; 0 = none.

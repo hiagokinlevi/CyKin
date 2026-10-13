@@ -135,7 +135,7 @@ A machine can have a TPM that is disabled in firmware settings; always record wh
 ### Exercises
 
 - **EX004 — Firmware role.** In your own words, what does firmware do? *Rubric:* 3 = starts hardware before the OS and is updatable;; 2 = starts the machine;; 1 = vague;; 0 = none.
-- **EX005 — TPM use.** Give one practical use of a TPM on a staff laptop. *Rubric:* 3 = explains BitLocker unlocking based on measured startup;; 2 = names BitLocker;; 1 = none;; 0 = none.
+- **EX005 — TPM use.** Give one practical use of a TPM on a staff laptop. *Rubric:* 3 = explains BitLocker unlocking based on measured startup;; 2 = names BitLocker;; 1 = vague;; 0 = none.
 - **EX006 — Inventory fields.** Which three hardware fields help plan encryption and replacement? *Rubric:* 3 = TPM enabled, Secure Boot, firmware version or model age, explained;; 2 = three fields;; 1 = fewer;; 0 = none.
 
 ### Synthesis
@@ -190,9 +190,9 @@ Removing admin rights without offering a way to get needed software leads staff 
 
 ### Exercises
 
-- **EX007 — Kernel separation.** Why does the OS separate the kernel from ordinary programs? *Rubric:* 3 = protects system from a misbehaving program;; 2 = mentions protection;; 1 = none;; 0 = none.
-- **EX008 — Admin risk.** Explain why malware running as administrator is more harmful. *Rubric:* 3 = can change security settings, install, read all files;; 2 = one example;; 1 = none;; 0 = none.
-- **EX009 — Replacing rights.** Suggest how teachers can get classroom apps once admin rights are removed. *Rubric:* 3 = central installation or self-service catalogue with approval;; 2 = ask IT;; 1 = none;; 0 = none.
+- **EX007 — Kernel separation.** Why does the OS separate the kernel from ordinary programs? *Rubric:* 3 = protects system from a misbehaving program;; 2 = mentions protection;; 1 = vague;; 0 = none.
+- **EX008 — Admin risk.** Explain why malware running as administrator is more harmful. *Rubric:* 3 = can change security settings, install, read all files;; 2 = one example;; 1 = vague;; 0 = none.
+- **EX009 — Replacing rights.** Suggest how teachers can get classroom apps once admin rights are removed. *Rubric:* 3 = central installation or self-service catalogue with approval;; 2 = ask IT;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -251,8 +251,8 @@ Copying commands from the internet onto live servers is risky; test first and un
 ### Exercises
 
 - **EX010 — Config location.** Where is most Linux system configuration stored, and who should be able to change it? *Rubric:* 3 = /etc, root only, with reason;; 2 = /etc;; 1 = wrong;; 0 = none.
-- **EX011 — Safe update check.** Describe a safe way to see pending updates without installing them. *Rubric:* 3 = list upgradable packages read-only;; 2 = vague;; 1 = none;; 0 = none.
-- **EX012 — Service review.** Why disable unused services? *Rubric:* 3 = less to patch and configure, per SP 800-123;; 2 = less risk;; 1 = none;; 0 = none.
+- **EX011 — Safe update check.** Describe a safe way to see pending updates without installing them. *Rubric:* 3 = list upgradable packages read-only;; 2 = vague;; 1 = minimal attempt;; 0 = none.
+- **EX012 — Service review.** Why disable unused services? *Rubric:* 3 = less to patch and configure, per SP 800-123;; 2 = less risk;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -311,8 +311,8 @@ Applying a full baseline at once can break classroom software; differences are r
 ### Exercises
 
 - **EX013 — Why centralise.** Give two reasons central policy beats manual configuration. *Rubric:* 3 = consistency and speed of change, explained;; 2 = two reasons;; 1 = one;; 0 = none.
-- **EX014 — LAPS purpose.** What problem does LAPS solve? *Rubric:* 3 = shared local admin password risk;; 2 = mentions passwords;; 1 = none;; 0 = none.
-- **EX015 — Recording differences.** Why record baseline differences before changing them? *Rubric:* 3 = understand impact, plan pilot;; 2 = safer;; 1 = none;; 0 = none.
+- **EX014 — LAPS purpose.** What problem does LAPS solve? *Rubric:* 3 = shared local admin password risk;; 2 = mentions passwords;; 1 = vague;; 0 = none.
+- **EX015 — Recording differences.** Why record baseline differences before changing them? *Rubric:* 3 = understand impact, plan pilot;; 2 = safer;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -371,8 +371,8 @@ A port open on a server is not automatically a problem; the question is whether 
 ### Exercises
 
 - **EX016 — Reading exposure.** What does a list of listening ports tell you? *Rubric:* 3 = which services can be reached, to compare against needs;; 2 = services;; 1 = vague;; 0 = none.
-- **EX017 — Segment purpose.** Why keep classroom devices off the server segment? *Rubric:* 3 = limits spread and access to pupil data;; 2 = security;; 1 = none;; 0 = none.
-- **EX018 — Shared VPN account.** Explain the problem with a shared VPN account. *Rubric:* 3 = no accountability, hard to revoke one person;; 2 = accountability;; 1 = none;; 0 = none.
+- **EX017 — Segment purpose.** Why keep classroom devices off the server segment? *Rubric:* 3 = limits spread and access to pupil data;; 2 = security;; 1 = vague;; 0 = none.
+- **EX018 — Shared VPN account.** Explain the problem with a shared VPN account. *Rubric:* 3 = no accountability, hard to revoke one person;; 2 = accountability;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -450,8 +450,8 @@ Deleting accounts immediately can lose files that colleagues need; disabling fir
 ### Exercises
 
 - **EX019 — Lifecycle stages.** Name the three lifecycle events that should change an account. *Rubric:* 3 = join, role change, leave with actions;; 2 = three events;; 1 = fewer;; 0 = none.
-- **EX020 — Stale threshold.** Why might ninety days be a sensible stale threshold for a school? *Rubric:* 3 = covers holidays but catches leavers;; 2 = reasonable;; 1 = none;; 0 = none.
-- **EX021 — Disable or delete.** Why disable before deleting? *Rubric:* 3 = preserves data and allows reversal;; 2 = reversibility;; 1 = none;; 0 = none.
+- **EX020 — Stale threshold.** Why might ninety days be a sensible stale threshold for a school? *Rubric:* 3 = covers holidays but catches leavers;; 2 = reasonable;; 1 = vague;; 0 = none.
+- **EX021 — Disable or delete.** Why disable before deleting? *Rubric:* 3 = preserves data and allows reversal;; 2 = reversibility;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -509,9 +509,9 @@ Scripts that change systems need much more care, review and approval; keep check
 
 ### Exercises
 
-- **EX022 — Library choice.** Which standard library modules help read an account export with dates? *Rubric:* 3 = csv and datetime with roles;; 2 = names one;; 1 = none;; 0 = none.
-- **EX023 — Output design.** Write the final summary line for a script that found 3 of 50 laptops unencrypted. *Rubric:* 3 = clear count and denominator;; 2 = count only;; 1 = none;; 0 = none.
-- **EX024 — Edge cases.** Name two edge cases to test. *Rubric:* 3 = empty file and missing or malformed date;; 2 = one;; 1 = none;; 0 = none.
+- **EX022 — Library choice.** Which standard library modules help read an account export with dates? *Rubric:* 3 = csv and datetime with roles;; 2 = names one;; 1 = vague;; 0 = none.
+- **EX023 — Output design.** Write the final summary line for a script that found 3 of 50 laptops unencrypted. *Rubric:* 3 = clear count and denominator;; 2 = count only;; 1 = vague;; 0 = none.
+- **EX024 — Edge cases.** Name two edge cases to test. *Rubric:* 3 = empty file and missing or malformed date;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -697,7 +697,7 @@ An inventory that is not maintained becomes wrong within months.
 
 - **EX031 — Source weaknesses.** Give one weakness of each of the three inventory sources. *Rubric:* 3 = three correct;; 2 = two;; 1 = one;; 0 = none.
 - **EX032 — Matching key.** What key should match records across sources? *Rubric:* 3 = serial with reason;; 2 = serial;; 1 = hostname;; 0 = none.
-- **EX033 — Monthly check.** Describe what the monthly script compares. *Rubric:* 3 = management list against directory and purchasing, reporting differences;; 2 = lists;; 1 = none;; 0 = none.
+- **EX033 — Monthly check.** Describe what the monthly script compares. *Rubric:* 3 = management list against directory and purchasing, reporting differences;; 2 = lists;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -784,9 +784,9 @@ Changing SSH settings without testing a second session can lock out the administ
 
 ### Exercises
 
-- **EX034 — Key over password.** Why prefer SSH keys over passwords? *Rubric:* 3 = resist guessing and reuse;; 2 = stronger;; 1 = none;; 0 = none.
+- **EX034 — Key over password.** Why prefer SSH keys over passwords? *Rubric:* 3 = resist guessing and reuse;; 2 = stronger;; 1 = vague;; 0 = none.
 - **EX035 — Lab result.** Summarise the lab's findings. *Rubric:* 3 = 2 of 4 compliant, naming deviations;; 2 = counts;; 1 = wrong;; 0 = none.
-- **EX036 — Safe change.** Describe how to change SSH settings without lockout. *Rubric:* 3 = keep session open, test new session, keys confirmed;; 2 = test;; 1 = none;; 0 = none.
+- **EX036 — Safe change.** Describe how to change SSH settings without lockout. *Rubric:* 3 = keep session open, test new session, keys confirmed;; 2 = test;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -844,9 +844,9 @@ Relaxing a setting to suit old software is sometimes needed, but updating the so
 
 ### Exercises
 
-- **EX037 — Picking settings.** Why choose fifteen settings rather than the whole benchmark at first? *Rubric:* 3 = manageable, focus on impact, measurable;; 2 = easier;; 1 = none;; 0 = none.
-- **EX038 — Old software conflict.** How was the SMBv1 conflict resolved and why? *Rubric:* 3 = app updated rather than setting relaxed;; 2 = app updated;; 1 = none;; 0 = none.
-- **EX039 — Compliance measure.** Write the compliance result before and after as a fraction. *Rubric:* 3 = 31/94 to 93/94;; 2 = one;; 1 = none;; 0 = none.
+- **EX037 — Picking settings.** Why choose fifteen settings rather than the whole benchmark at first? *Rubric:* 3 = manageable, focus on impact, measurable;; 2 = easier;; 1 = vague;; 0 = none.
+- **EX038 — Old software conflict.** How was the SMBv1 conflict resolved and why? *Rubric:* 3 = app updated rather than setting relaxed;; 2 = app updated;; 1 = vague;; 0 = none.
+- **EX039 — Compliance measure.** Write the compliance result before and after as a fraction. *Rubric:* 3 = 31/94 to 93/94;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -906,9 +906,9 @@ Pausing updates for exam weeks must have an end date; otherwise pauses become pe
 
 ### Exercises
 
-- **EX040 — Ring benefit.** What does the first ring protect against? *Rubric:* 3 = bad updates reaching everyone;; 2 = problems;; 1 = none;; 0 = none.
-- **EX041 — Kernel updates.** Why schedule kernel update reboots? *Rubric:* 3 = needed to apply, avoid disruption;; 2 = reboot;; 1 = none;; 0 = none.
-- **EX042 — Measuring improvement.** Express the improvement as before and after counts. *Rubric:* 3 = 70 to 88 of 94;; 2 = one;; 1 = none;; 0 = none.
+- **EX040 — Ring benefit.** What does the first ring protect against? *Rubric:* 3 = bad updates reaching everyone;; 2 = problems;; 1 = vague;; 0 = none.
+- **EX041 — Kernel updates.** Why schedule kernel update reboots? *Rubric:* 3 = needed to apply, avoid disruption;; 2 = reboot;; 1 = vague;; 0 = none.
+- **EX042 — Measuring improvement.** Express the improvement as before and after counts. *Rubric:* 3 = 70 to 88 of 94;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -970,9 +970,9 @@ Firmware updates can fail if a laptop loses power; apply them only on mains powe
 
 ### Exercises
 
-- **EX043 — Application sprawl.** Why do multiple versions of one app cause risk? *Rubric:* 3 = old versions miss fixes, harder to manage;; 2 = old;; 1 = none;; 0 = none.
-- **EX044 — Firmware care.** Give one precaution for firmware updates. *Rubric:* 3 = mains power with reason;; 2 = precaution;; 1 = none;; 0 = none.
-- **EX045 — Unmaintained app.** What should happen with an unmaintained classroom app? *Rubric:* 3 = exception with deadline and replacement;; 2 = replace;; 1 = none;; 0 = none.
+- **EX043 — Application sprawl.** Why do multiple versions of one app cause risk? *Rubric:* 3 = old versions miss fixes, harder to manage;; 2 = old;; 1 = vague;; 0 = none.
+- **EX044 — Firmware care.** Give one precaution for firmware updates. *Rubric:* 3 = mains power with reason;; 2 = precaution;; 1 = vague;; 0 = none.
+- **EX045 — Unmaintained app.** What should happen with an unmaintained classroom app? *Rubric:* 3 = exception with deadline and replacement;; 2 = replace;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1110,7 +1110,7 @@ Backup success emails are easily ignored; a check that lists only failures is mo
 
 ### Exercises
 
-- **EX049 — Offline copy.** Why keep one backup copy offline? *Rubric:* 3 = ransomware cannot reach or change it;; 2 = safety;; 1 = none;; 0 = none.
+- **EX049 — Offline copy.** Why keep one backup copy offline? *Rubric:* 3 = ransomware cannot reach or change it;; 2 = safety;; 1 = vague;; 0 = none.
 - **EX050 — Lab findings.** Which servers were late and which matters more? *Rubric:* 3 = mis01 and print01, mis01 more due to pupil data;; 2 = names both;; 1 = wrong;; 0 = none.
 - **EX051 — Restore test record.** List three things to record in a restore test. *Rubric:* 3 = what, time taken, data verified;; 2 = two;; 1 = one;; 0 = none.
 
@@ -1176,7 +1176,7 @@ Collecting logs nobody reads gives false comfort; a short regular review is wort
 
 ### Exercises
 
-- **EX052 — Why centralise.** Explain why logs should leave the machine that created them. *Rubric:* 3 = attacker could delete local logs;; 2 = safety;; 1 = none;; 0 = none.
+- **EX052 — Why centralise.** Explain why logs should leave the machine that created them. *Rubric:* 3 = attacker could delete local logs;; 2 = safety;; 1 = vague;; 0 = none.
 - **EX053 — Review checklist.** Write four items for a weekly log review. *Rubric:* 3 = four relevant;; 2 = three;; 1 = fewer;; 0 = none.
 - **EX054 — Night sign-in.** How should a night-time sign-in by a supplier be handled? *Rubric:* 3 = verify with supplier, record, improve process;; 2 = ask;; 1 = ignore;; 0 = none.
 
@@ -1236,9 +1236,9 @@ Turning on blocking rules without audit can stop legitimate teaching tools.
 
 ### Exercises
 
-- **EX055 — Coverage gap.** Why compare the protection console with the inventory? *Rubric:* 3 = find devices without protection;; 2 = coverage;; 1 = none;; 0 = none.
-- **EX056 — Tamper protection.** What does tamper protection prevent? *Rubric:* 3 = users or malware turning off protection;; 2 = disabling;; 1 = none;; 0 = none.
-- **EX057 — Audit before enforce.** Explain why rules start in audit mode. *Rubric:* 3 = see impact before blocking;; 2 = safer;; 1 = none;; 0 = none.
+- **EX055 — Coverage gap.** Why compare the protection console with the inventory? *Rubric:* 3 = find devices without protection;; 2 = coverage;; 1 = vague;; 0 = none.
+- **EX056 — Tamper protection.** What does tamper protection prevent? *Rubric:* 3 = users or malware turning off protection;; 2 = disabling;; 1 = vague;; 0 = none.
+- **EX057 — Audit before enforce.** Explain why rules start in audit mode. *Rubric:* 3 = see impact before blocking;; 2 = safer;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1298,7 +1298,7 @@ Allowlists based on file paths are weaker than those based on publisher signatur
 
 - **EX058 — Allow versus block.** Contrast allowlisting with blocklisting. *Rubric:* 3 = allow known good vs block known bad, implications;; 2 = definitions;; 1 = vague;; 0 = none.
 - **EX059 — Candidate devices.** Which trust devices suit allowlisting first, and why? *Rubric:* 3 = office PCs, stable software;; 2 = office;; 1 = teachers;; 0 = none.
-- **EX060 — Rule type.** Why prefer publisher rules to path rules? *Rubric:* 3 = path writable risk, updates handled;; 2 = stronger;; 1 = none;; 0 = none.
+- **EX060 — Rule type.** Why prefer publisher rules to path rules? *Rubric:* 3 = path writable risk, updates handled;; 2 = stronger;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1356,9 +1356,9 @@ Wiping a whole personal phone to remove school data damages trust; app-level pro
 
 ### Exercises
 
-- **EX061 — Shared account fix.** What changes when supplier engineers get individual accounts? *Rubric:* 3 = traceability and per-person revocation;; 2 = accountability;; 1 = none;; 0 = none.
-- **EX062 — Personal phones.** How can school email on personal phones be protected without full device control? *Rubric:* 3 = app protection policies with selective wipe;; 2 = policies;; 1 = none;; 0 = none.
-- **EX063 — Public wireless.** Write the three-step guide for teachers on public wireless. *Rubric:* 3 = clear steps;; 2 = partial;; 1 = none;; 0 = none.
+- **EX061 — Shared account fix.** What changes when supplier engineers get individual accounts? *Rubric:* 3 = traceability and per-person revocation;; 2 = accountability;; 1 = vague;; 0 = none.
+- **EX062 — Personal phones.** How can school email on personal phones be protected without full device control? *Rubric:* 3 = app protection policies with selective wipe;; 2 = policies;; 1 = vague;; 0 = none.
+- **EX063 — Public wireless.** Write the three-step guide for teachers on public wireless. *Rubric:* 3 = clear steps;; 2 = partial;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1423,8 +1423,8 @@ Unrecorded changes make every later problem harder to investigate.
 ### Exercises
 
 - **EX064 — Change log fields.** List four fields of a change log entry. *Rubric:* 3 = date, who, what, why;; 2 = three;; 1 = fewer;; 0 = none.
-- **EX065 — Drift reason.** Why investigate drift before reverting? *Rubric:* 3 = may be legitimate need;; 2 = caution;; 1 = none;; 0 = none.
-- **EX066 — Emergency rule.** How should emergency changes be handled? *Rubric:* 3 = allowed, recorded within a day, reviewed;; 2 = recorded;; 1 = none;; 0 = none.
+- **EX065 — Drift reason.** Why investigate drift before reverting? *Rubric:* 3 = may be legitimate need;; 2 = caution;; 1 = vague;; 0 = none.
+- **EX066 — Emergency rule.** How should emergency changes be handled? *Rubric:* 3 = allowed, recorded within a day, reviewed;; 2 = recorded;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1484,7 +1484,7 @@ Switching off or wiping an affected device too early can destroy information nee
 
 - **EX067 — Incident examples.** Give three endpoint incident examples. *Rubric:* 3 = three distinct;; 2 = two;; 1 = one;; 0 = none.
 - **EX068 — First action.** What is the first action for a suspected infected laptop? *Rubric:* 3 = isolate and record;; 2 = isolate;; 1 = wipe;; 0 = none.
-- **EX069 — Exercise value.** What did the tabletop exercise reveal? *Rubric:* 3 = missing out-of-hours contact;; 2 = a gap;; 1 = none;; 0 = none.
+- **EX069 — Exercise value.** What did the tabletop exercise reveal? *Rubric:* 3 = missing out-of-hours contact;; 2 = a gap;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1547,7 +1547,7 @@ Buying cheapest devices can mean shorter firmware support and earlier replacemen
 ### Exercises
 
 - **EX070 — Buying criteria.** List three security purchase criteria. *Rubric:* 3 = TPM, Secure Boot, firmware support duration;; 2 = two;; 1 = one;; 0 = none.
-- **EX071 — Disposal evidence.** What evidence should disposal produce? *Rubric:* 3 = certificate linked to serial;; 2 = certificate;; 1 = none;; 0 = none.
+- **EX071 — Disposal evidence.** What evidence should disposal produce? *Rubric:* 3 = certificate linked to serial;; 2 = certificate;; 1 = vague;; 0 = none.
 - **EX072 — Donations.** How should donated laptops be handled? *Rubric:* 3 = same criteria and enrolment;; 2 = check;; 1 = accept;; 0 = none.
 
 ### Synthesis
@@ -1613,8 +1613,8 @@ Measures chosen after results can be selected to look good; fixing them first pr
 ### Exercises
 
 - **EX073 — Measure list.** Name the five project measures. *Rubric:* 3 = all five;; 2 = four;; 1 = fewer;; 0 = none.
-- **EX074 — Scope exclusion.** Why exclude pupil records? *Rubric:* 3 = privacy and authorisation;; 2 = privacy;; 1 = none;; 0 = none.
-- **EX075 — Sign-off.** Who signs the plan and why each? *Rubric:* 3 = operator, business, assessor roles;; 2 = names;; 1 = none;; 0 = none.
+- **EX074 — Scope exclusion.** Why exclude pupil records? *Rubric:* 3 = privacy and authorisation;; 2 = privacy;; 1 = vague;; 0 = none.
+- **EX075 — Sign-off.** Who signs the plan and why each? *Rubric:* 3 = operator, business, assessor roles;; 2 = names;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1676,9 +1676,9 @@ Counting unknowns as compliant flatters the result.
 
 ### Exercises
 
-- **EX076 — Repeatability.** Why record the script and date for each measure? *Rubric:* 3 = exact repeat later;; 2 = repeat;; 1 = none;; 0 = none.
+- **EX076 — Repeatability.** Why record the script and date for each measure? *Rubric:* 3 = exact repeat later;; 2 = repeat;; 1 = vague;; 0 = none.
 - **EX077 — Unknown handling.** How should offline laptops be counted? *Rubric:* 3 = separately as unknown;; 2 = excluded;; 1 = compliant;; 0 = none.
-- **EX078 — Presentation.** What makes a baseline table useful to managers? *Rubric:* 3 = counts with totals and plain notes;; 2 = counts;; 1 = none;; 0 = none.
+- **EX078 — Presentation.** What makes a baseline table useful to managers? *Rubric:* 3 = counts with totals and plain notes;; 2 = counts;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1752,9 +1752,9 @@ Doing all changes at once makes problems hard to trace.
 
 ### Exercises
 
-- **EX079 — Ordering.** Why do stale accounts first? *Rubric:* 3 = high risk, low effort;; 2 = quick;; 1 = none;; 0 = none.
-- **EX080 — Rollback.** Why prepare rollback steps? *Rubric:* 3 = recover quickly from problems;; 2 = safety;; 1 = none;; 0 = none.
-- **EX081 — Communication value.** What does notifying staff achieve? *Rubric:* 3 = fewer surprises and support calls;; 2 = awareness;; 1 = none;; 0 = none.
+- **EX079 — Ordering.** Why do stale accounts first? *Rubric:* 3 = high risk, low effort;; 2 = quick;; 1 = vague;; 0 = none.
+- **EX080 — Rollback.** Why prepare rollback steps? *Rubric:* 3 = recover quickly from problems;; 2 = safety;; 1 = vague;; 0 = none.
+- **EX081 — Communication value.** What does notifying staff achieve? *Rubric:* 3 = fewer surprises and support calls;; 2 = awareness;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1816,9 +1816,9 @@ Improvements may fade without routines; chapter 29 addresses this.
 
 ### Exercises
 
-- **EX082 — Comparison table.** Write two rows of the comparison table. *Rubric:* 3 = correct values;; 2 = one;; 1 = none;; 0 = none.
-- **EX083 — Linking causes.** Why is attribution easier here? *Rubric:* 3 = separate changes per measure;; 2 = simpler;; 1 = none;; 0 = none.
-- **EX084 — Sustaining.** What risk remains after measurement? *Rubric:* 3 = fading without routine;; 2 = drift;; 1 = none;; 0 = none.
+- **EX082 — Comparison table.** Write two rows of the comparison table. *Rubric:* 3 = correct values;; 2 = one;; 1 = vague;; 0 = none.
+- **EX083 — Linking causes.** Why is attribution easier here? *Rubric:* 3 = separate changes per measure;; 2 = simpler;; 1 = vague;; 0 = none.
+- **EX084 — Sustaining.** What risk remains after measurement? *Rubric:* 3 = fading without routine;; 2 = drift;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1890,7 +1890,7 @@ Routines that rely on one person stop when that person is away.
 
 - **EX085 — Weekly items.** List three weekly routine items. *Rubric:* 3 = three;; 2 = two;; 1 = one;; 0 = none.
 - **EX086 — Termly items.** List termly tasks. *Rubric:* 3 = restore, baseline, inventory;; 2 = two;; 1 = one;; 0 = none.
-- **EX087 — Single person risk.** How can the trust reduce dependence on Dev? *Rubric:* 3 = train another, document;; 2 = document;; 1 = none;; 0 = none.
+- **EX087 — Single person risk.** How can the trust reduce dependence on Dev? *Rubric:* 3 = train another, document;; 2 = document;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1959,8 +1959,8 @@ Overstating results damages trust.
 ### Exercises
 
 - **EX088 — Report structure.** List the report sections. *Rubric:* 3 = five;; 2 = four;; 1 = fewer;; 0 = none.
-- **EX089 — Key lesson.** State the main lesson. *Rubric:* 3 = process over tools, explained;; 2 = stated;; 1 = none;; 0 = none.
-- **EX090 — Recommendation.** Give one recommendation with reason. *Rubric:* 3 = justified;; 2 = unjustified;; 1 = none;; 0 = none.
+- **EX089 — Key lesson.** State the main lesson. *Rubric:* 3 = process over tools, explained;; 2 = stated;; 1 = vague;; 0 = none.
+- **EX090 — Recommendation.** Give one recommendation with reason. *Rubric:* 3 = justified;; 2 = unjustified;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

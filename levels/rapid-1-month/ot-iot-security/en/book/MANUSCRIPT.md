@@ -353,7 +353,7 @@ These habits reduce risk but cannot remove it. Procedures differ by site; follow
 - **EX044 — Firmware timing.** Why is firmware applied at planned times rather than immediately? *Rubric:* 3 = needs compatibility check and safe stop; disruption risk; 2 = partial; 1 = no reason; 0 = none.
 - **EX045 — Practice environment.** Where should Jonah practise using industrial protocols? *Rubric:* 3 = simulator/lab equipment, not live site; 2 = partial; 1 = live site at night; 0 = none.
 - **EX046 — Safety bypass.** A colleague suggests disabling battery protection to "test" an alarm. Your answer? *Rubric:* 3 = refuse; safety systems untouched; escalate; 2 = refuse; 1 = agree with care; 0 = agree.
-- **EX047 — Drill lesson.** What improvement did Jonah suggest after the drill, and why does it help? *Rubric:* 3 = add vendor support number to card; faster correct call; 2 = item only; 1 = none; 0 = none.
+- **EX047 — Drill lesson.** What improvement did Jonah suggest after the drill, and why does it help? *Rubric:* 3 = add vendor support number to card; faster correct call; 2 = item only; 1 = vague; 0 = none.
 - **EX048 — Isolation effect.** Why could the control zone keep running when the camera zone was isolated? *Rubric:* 3 = zones separated; cameras not needed for control; 2 = partial; 1 = it stopped; 0 = none.
 - **EX049 — Sharing exploits.** Why does this course refuse to share exploit code? *Rubric:* 3 = dual-use; could harm real sites; learning goal is defence; 2 = partial; 1 = no reason; 0 = none.
 - **EX050 — Next course.** What does the next course in the curriculum cover? *Rubric:* 3 = critical infrastructure and sector security (course 023); 2 = vague; 1 = wrong; 0 = none.

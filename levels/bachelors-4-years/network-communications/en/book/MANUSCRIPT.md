@@ -682,7 +682,7 @@ A shared secret known by many people cannot be revoked for one person without ch
 
 - **EX037 — Shared passphrase weakness.** Why can't a shared passphrase remove one leaver's access? *Rubric:* 3 = everyone shares it; changing affects all;; 2 = shared;; 1 = vague;; 0 = none.
 - **EX038 — Device identity.** How should devices that cannot use passwords be handled? *Rubric:* 3 = certificates or restricted network limiting reach;; 2 = restricted;; 1 = ignore;; 0 = none.
-- **EX039 — Stale accounts.** What process catches accounts of former staff? *Rubric:* 3 = monthly comparison with HR staff list;; 2 = review;; 1 = none;; 0 = none.
+- **EX039 — Stale accounts.** What process catches accounts of former staff? *Rubric:* 3 = monthly comparison with HR staff list;; 2 = review;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -777,7 +777,7 @@ Comparing a single week before and after a change confuses normal variation with
 ### Exercises
 
 - **EX043 — Indicator qualities.** Name three qualities of a good security indicator. *Rubric:* 3 = cheap, understandable, hard to game or linked to risk;; 2 = two;; 1 = one;; 0 = none.
-- **EX044 — Holiday effect.** Why check guest usage when denied guest connections fall? *Rubric:* 3 = fall may reflect fewer guests, not the control;; 2 = other causes;; 1 = none;; 0 = none.
+- **EX044 — Holiday effect.** Why check guest usage when denied guest connections fall? *Rubric:* 3 = fall may reflect fewer guests, not the control;; 2 = other causes;; 1 = vague;; 0 = none.
 - **EX045 — Reproducibility record.** What should be recorded for each measurement? *Rubric:* 3 = source, date range, script and version;; 2 = source;; 1 = result only;; 0 = none.
 
 ### Synthesis
@@ -825,7 +825,7 @@ Zones defined by building location rather than trust and purpose tend to mix dev
 ### Exercises
 
 - **EX046 — Layer failure.** What still protects clinical devices if guest separation is misconfigured? *Rubric:* 3 = host firewalls and logging;; 2 = host firewall;; 1 = nothing;; 0 = none.
-- **EX047 — Default deny basis.** Which publication guides default-deny firewall policy here? *Rubric:* 3 = NIST SP 800-41r1;; 2 = NIST;; 1 = none;; 0 = none.
+- **EX047 — Default deny basis.** Which publication guides default-deny firewall policy here? *Rubric:* 3 = NIST SP 800-41r1;; 2 = NIST;; 1 = vague;; 0 = none.
 - **EX048 — Management zone purpose.** Why must management interfaces be in their own zone? *Rubric:* 3 = reaching them allows changing the network, undoing controls;; 2 = protect;; 1 = convenience;; 0 = none.
 
 ### Synthesis
@@ -900,7 +900,7 @@ Encryption on the wire does not protect data on an infected endpoint.
 
 - **EX049 — Audit result.** What share of services fall below TLS 1.2 in the lab? *Rubric:* 3 = 3 of 8, 37.5%, naming them;; 2 = 37.5%;; 1 = some;; 0 = none.
 - **EX050 — Printer fix.** Why restrict rather than upgrade the printer interface? *Rubric:* 3 = device limitation; reduce exposure via management zone;; 2 = cannot upgrade;; 1 = ignore;; 0 = none.
-- **EX051 — Expiry harm.** Why do expired certificates harm security beyond outages? *Rubric:* 3 = users learn to ignore warnings;; 2 = warnings;; 1 = none;; 0 = none.
+- **EX051 — Expiry harm.** Why do expired certificates harm security beyond outages? *Rubric:* 3 = users learn to ignore warnings;; 2 = warnings;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -948,7 +948,7 @@ Choosing a convenient but unusual sample period can make results unrepresentativ
 
 - **EX052 — Narrowing a question.** Rewrite "is the network secure?" as an answerable question. *Rubric:* 3 = names population, measure and time frame;; 2 = narrower;; 1 = still vague;; 0 = none.
 - **EX053 — Interview need.** Why use interviews alongside log analysis? *Rubric:* 3 = explain why people act, not just what;; 2 = reasons;; 1 = unnecessary;; 0 = none.
-- **EX054 — Sample bias example.** Give one way a log sample could be biased. *Rubric:* 3 = unusual week such as holiday or outage;; 2 = bad week;; 1 = none;; 0 = none.
+- **EX054 — Sample bias example.** Give one way a log sample could be biased. *Rubric:* 3 = unusual week such as holiday or outage;; 2 = bad week;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1043,8 +1043,8 @@ Treating cases as stories rather than extracting controls leaves no practical le
 ### Exercises
 
 - **EX058 — Flat spread lessons.** List three controls that would have limited the flat network case. *Rubric:* 3 = separation, host firewall, logging;; 2 = two;; 1 = one;; 0 = none.
-- **EX059 — Supplier access question.** What question did the remote access case add to the clinic review? *Rubric:* 3 = which suppliers have remote access now;; 2 = suppliers;; 1 = none;; 0 = none.
-- **EX060 — Warning fatigue.** How did the expired certificate later help a fake site? *Rubric:* 3 = users trained to ignore warnings;; 2 = warnings;; 1 = none;; 0 = none.
+- **EX059 — Supplier access question.** What question did the remote access case add to the clinic review? *Rubric:* 3 = which suppliers have remote access now;; 2 = suppliers;; 1 = vague;; 0 = none.
+- **EX060 — Warning fatigue.** How did the expired certificate later help a fake site? *Rubric:* 3 = users trained to ignore warnings;; 2 = warnings;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1091,8 +1091,8 @@ Models that omit supporting services such as DNS and time lead to outages when r
 ### Exercises
 
 - **EX061 — Model detail choice.** Why does the model omit cable routes and device brands? *Rubric:* 3 = they do not affect reachability questions;; 2 = irrelevant;; 1 = simplify;; 0 = none.
-- **EX062 — Forgotten dependency.** Name a supporting service commonly forgotten in segmentation. *Rubric:* 3 = DNS, DHCP or time;; 2 = DNS;; 1 = none;; 0 = none.
-- **EX063 — Shared DNS risk.** Why is a DNS server shared by guest and clinical groups a concern? *Rubric:* 3 = guest load or misuse could affect clinical lookups;; 2 = shared;; 1 = none;; 0 = none.
+- **EX062 — Forgotten dependency.** Name a supporting service commonly forgotten in segmentation. *Rubric:* 3 = DNS, DHCP or time;; 2 = DNS;; 1 = vague;; 0 = none.
+- **EX063 — Shared DNS risk.** Why is a DNS server shared by guest and clinical groups a concern? *Rubric:* 3 = guest load or misuse could affect clinical lookups;; 2 = shared;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1175,7 +1175,7 @@ Parsing logs without counting malformed lines hides data loss.
 
 - **EX064 — Priority arithmetic.** Which severity does priority 132 represent, and why? *Rubric:* 3 = warning: 132 mod 8 = 4;; 2 = warning;; 1 = guesses;; 0 = none.
 - **EX065 — Items to review.** Which parsed events deserve human review first? *Rubric:* 3 = critical config change and guest denies;; 2 = config change;; 1 = all;; 0 = none.
-- **EX066 — Silent logging failure.** How can a silent logging failure be detected? *Rubric:* 3 = compare device line counts with usual range;; 2 = monitor volume;; 1 = none;; 0 = none.
+- **EX066 — Silent logging failure.** How can a silent logging failure be detected? *Rubric:* 3 = compare device line counts with usual range;; 2 = monitor volume;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1341,8 +1341,8 @@ Testing only that permitted flows work misses rules that allow too much.
 ### Exercises
 
 - **EX073 — Over-blocking check.** Why test that guests can still reach the internet? *Rubric:* 3 = detect over-blocking as well as under-blocking;; 2 = both;; 1 = unnecessary;; 0 = none.
-- **EX074 — Typo failure.** What did the guest-to-management failure reveal? *Rubric:* 3 = subnet typo allowing access;; 2 = typo;; 1 = none;; 0 = none.
-- **EX075 — Lab limits.** Name one difference between the lab and real clinics. *Rubric:* 3 = shared printer, more devices, hidden equipment;; 2 = one;; 1 = none;; 0 = none.
+- **EX074 — Typo failure.** What did the guest-to-management failure reveal? *Rubric:* 3 = subnet typo allowing access;; 2 = typo;; 1 = vague;; 0 = none.
+- **EX075 — Lab limits.** Name one difference between the lab and real clinics. *Rubric:* 3 = shared printer, more devices, hidden equipment;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1438,7 +1438,7 @@ Verifying only by reading one's own configuration misses errors the author expec
 
 ### Exercises
 
-- **EX079 — Untested rule.** What kind of problem does configuration verification catch that testing misses? *Rubric:* 3 = rules nobody knew existed so never tested;; 2 = hidden rules;; 1 = none;; 0 = none.
+- **EX079 — Untested rule.** What kind of problem does configuration verification catch that testing misses? *Rubric:* 3 = rules nobody knew existed so never tested;; 2 = hidden rules;; 1 = vague;; 0 = none.
 - **EX080 — DNS control value.** Give two security benefits of controlling DNS. *Rubric:* 3 = block malware resolvers; logs reveal infections;; 2 = two;; 1 = one;; 0 = none.
 - **EX081 — Drift handling.** What happens to each difference found in a drift check? *Rubric:* 3 = approved via change process or reverted;; 2 = fix;; 1 = ignore;; 0 = none.
 
@@ -1536,7 +1536,7 @@ Routines too long for the staff available are skipped first when work is busy.
 
 - **EX085 — Routine length.** Why keep the weekly routine around forty minutes? *Rubric:* 3 = realistic for part-time role, won't be skipped;; 2 = short;; 1 = arbitrary;; 0 = none.
 - **EX086 — Emergency changes.** How are emergency changes controlled? *Rubric:* 3 = recorded same day, reviewed later;; 2 = recorded;; 1 = not allowed;; 0 = none.
-- **EX087 — Single-person risk.** What reduces dependence on the single IT lead? *Rubric:* 3 = documentation, controlled credential record, external support;; 2 = documentation;; 1 = none;; 0 = none.
+- **EX087 — Single-person risk.** What reduces dependence on the single IT lead? *Rubric:* 3 = documentation, controlled credential record, external support;; 2 = documentation;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1583,7 +1583,7 @@ A rollback plan that was never practised often fails when needed.
 ### Exercises
 
 - **EX088 — Rehearsal timing value.** What did timing the rehearsal tell the clinics? *Rubric:* 3 = required change window length;; 2 = window;; 1 = nothing;; 0 = none.
-- **EX089 — Rollback decision point.** What is the purpose of a decision point in the window? *Rubric:* 3 = revert calmly if tests not passed;; 2 = stop;; 1 = none;; 0 = none.
+- **EX089 — Rollback decision point.** What is the purpose of a decision point in the window? *Rubric:* 3 = revert calmly if tests not passed;; 2 = stop;; 1 = vague;; 0 = none.
 - **EX090 — Report audience.** Who is the lab report written for? *Rubric:* 3 = IT lead and tutor;; 2 = IT lead;; 1 = tutor only;; 0 = none.
 
 ### Synthesis
@@ -1678,9 +1678,9 @@ Presenting technical detail to non-technical decision makers usually delays deci
 
 ### Exercises
 
-- **EX094 — Clinical constraint.** How did clinical needs shape authentication for carts? *Rubric:* 3 = device certificates, no staff login mid-procedure;; 2 = certificates;; 1 = none;; 0 = none.
-- **EX095 — Legal value of evidence.** Why are test results useful to the data protection officer? *Rubric:* 3 = evidence that risks are managed;; 2 = evidence;; 1 = none;; 0 = none.
-- **EX096 — Phased option.** What cheaper first phase was offered to managers? *Rubric:* 3 = guest separation alone;; 2 = guest network;; 1 = none;; 0 = none.
+- **EX094 — Clinical constraint.** How did clinical needs shape authentication for carts? *Rubric:* 3 = device certificates, no staff login mid-procedure;; 2 = certificates;; 1 = vague;; 0 = none.
+- **EX095 — Legal value of evidence.** Why are test results useful to the data protection officer? *Rubric:* 3 = evidence that risks are managed;; 2 = evidence;; 1 = vague;; 0 = none.
+- **EX096 — Phased option.** What cheaper first phase was offered to managers? *Rubric:* 3 = guest separation alone;; 2 = guest network;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1727,7 +1727,7 @@ Changing measurement sources at the same time as the intervention can create fal
 ### Exercises
 
 - **EX097 — Plan timing.** Why write the analysis plan before collecting data? *Rubric:* 3 = prevents bending analysis to fit results;; 2 = avoid bias;; 1 = tidiness;; 0 = none.
-- **EX098 — Source change risk.** Why check flow records against firewall logs on one day? *Rubric:* 3 = confirm sources count alike, avoid false change;; 2 = validity;; 1 = none;; 0 = none.
+- **EX098 — Source change risk.** Why check flow records against firewall logs on one day? *Rubric:* 3 = confirm sources count alike, avoid false change;; 2 = validity;; 1 = vague;; 0 = none.
 - **EX099 — Agreement statistic.** Which statistic measures agreement between two reviewers beyond chance? *Rubric:* 3 = Cohen's kappa, Landis and Koch bands;; 2 = kappa;; 1 = percentage only;; 0 = none.
 
 ### Synthesis
@@ -1824,7 +1824,7 @@ Capstones that try to cover every site and every control rarely finish with soli
 
 - **EX103 — Two-clinic scope.** Why deploy at two clinics rather than four? *Rubric:* 3 = achievable in a term with real evidence;; 2 = time;; 1 = cost;; 0 = none.
 - **EX104 — Pending requirement.** Why is R6 reported as pending? *Rubric:* 3 = ninety days falls after capstone; configuration checked instead;; 2 = timing;; 1 = failed;; 0 = none.
-- **EX105 — Clinic change.** What change did the clinics request? *Rubric:* 3 = guest separation first, a week earlier;; 2 = guest first;; 1 = none;; 0 = none.
+- **EX105 — Clinic change.** What change did the clinics request? *Rubric:* 3 = guest separation first, a week earlier;; 2 = guest first;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1871,8 +1871,8 @@ Unplugging unknown equipment without checking can cause outages to unexpected se
 ### Exercises
 
 - **EX106 — Unknown router response.** Why didn't Priya unplug the unknown router? *Rubric:* 3 = might support something important; report instead;; 2 = risk;; 1 = forgot;; 0 = none.
-- **EX107 — Missed device.** What was the waiting room television issue and fix? *Rubric:* 3 = used old network; moved to guest;; 2 = moved;; 1 = none;; 0 = none.
-- **EX108 — Site photography.** Why avoid photographing screens and rooms on site? *Rubric:* 3 = patient privacy and clinic rules;; 2 = privacy;; 1 = none;; 0 = none.
+- **EX107 — Missed device.** What was the waiting room television issue and fix? *Rubric:* 3 = used old network; moved to guest;; 2 = moved;; 1 = vague;; 0 = none.
+- **EX108 — Site photography.** Why avoid photographing screens and rooms on site? *Rubric:* 3 = patient privacy and clinic rules;; 2 = privacy;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2032,9 +2032,9 @@ Claiming permanent improvement from four weeks of data overstates the evidence.
 
 ### Exercises
 
-- **EX115 — Reachability outcome.** How did reachable group pairs change? *Rubric:* 3 = twelve to four needed pairs;; 2 = reduced;; 1 = none;; 0 = none.
+- **EX115 — Reachability outcome.** How did reachable group pairs change? *Rubric:* 3 = twelve to four needed pairs;; 2 = reduced;; 1 = vague;; 0 = none.
 - **EX116 — Continuing denies.** Why do denied guest attempts continue after separation? *Rubric:* 3 = devices keep retrying discovery; fall slowly;; 2 = retries;; 1 = attack;; 0 = none.
-- **EX117 — Remaining TLS gap.** Which TLS gap remains and how is it handled? *Rubric:* 3 = old intranet on TLS 1.1, scheduled for retirement;; 2 = old intranet;; 1 = none;; 0 = none.
+- **EX117 — Remaining TLS gap.** Which TLS gap remains and how is it handled? *Rubric:* 3 = old intranet on TLS 1.1, scheduled for retirement;; 2 = old intranet;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

@@ -82,12 +82,12 @@ Spending the first week researching expensive products delays cheap steps that w
 ### Exercises
 
 - **EX001 — Bakery assets.** Name three things network security protects at the bakery. *Rubric:* 3 = card payments, orders, accounts or Wi-Fi;; 2 = two;; 1 = one;; 0 = none.
-- **EX002 — Main weakness.** What weakness does the one-page drawing reveal? *Rubric:* 3 = customer phones share network with tills and office PC;; 2 = shared network;; 1 = none;; 0 = none.
-- **EX003 — Goal for tills.** Which security goal matters most for tills during opening hours? *Rubric:* 3 = availability;; 2 = availability;; 1 = confidentiality;; 0 = none.
+- **EX002 — Main weakness.** What weakness does the one-page drawing reveal? *Rubric:* 3 = customer phones share network with tills and office PC;; 2 = shared network;; 1 = vague;; 0 = none.
+- **EX003 — Goal for tills.** Which security goal matters most for tills during opening hours? *Rubric:* 3 = availability;; 2 = availability, without explanation;; 1 = confidentiality;; 0 = none.
 - **EX004 — Opportunistic threats.** Why are basic controls effective for small businesses? *Rubric:* 3 = most harm from automated, opportunistic attacks;; 2 = automated;; 1 = not targeted;; 0 = none.
 - **EX005 — Decision questions.** List Leo's three questions for each step. *Rubric:* 3 = harm prevented, cost, disruption;; 2 = two;; 1 = one;; 0 = none.
 - **EX006 — First step choice.** Why separate customer Wi-Fi first? *Rubric:* 3 = high value, low cost, low disruption;; 2 = cheap and effective;; 1 = required;; 0 = none.
-- **EX007 — Default password threat.** Why is a factory-default router password dangerous? *Rubric:* 3 = easily guessed, gives control of router;; 2 = guessable;; 1 = none;; 0 = none.
+- **EX007 — Default password threat.** Why is a factory-default router password dangerous? *Rubric:* 3 = easily guessed, gives control of router;; 2 = guessable;; 1 = vague;; 0 = none.
 - **EX008 — Firewall guidance.** Which publication explains default-deny firewall policy? *Rubric:* 3 = NIST SP 800-41r1;; 2 = 800-41r1;; 1 = other;; 0 = none.
 - **EX009 — Wireless guidance.** Which publication covers securing wireless networks? *Rubric:* 3 = NIST SP 800-153;; 2 = 800-153;; 1 = other;; 0 = none.
 - **EX010 — Inventory first.** What do the CIS Controls start with? *Rubric:* 3 = knowing which devices you have;; 2 = inventory;; 1 = passwords;; 0 = none.
@@ -242,7 +242,7 @@ Assuming every connected device is known misses equipment added by staff or visi
 
 ### Exercises
 
-- **EX027 — Unknown count.** How many unknown devices does the lab find? *Rubric:* 3 = two, bb:77 and cc:19;; 2 = two;; 1 = none;; 0 = none.
+- **EX027 — Unknown count.** How many unknown devices does the lab find? *Rubric:* 3 = two, bb:77 and cc:19;; 2 = two;; 1 = vague;; 0 = none.
 - **EX028 — Lease meaning.** What does a DHCP lease show? *Rubric:* 3 = hardware address and address given;; 2 = device and address;; 1 = password;; 0 = none.
 - **EX029 — Export timing.** Why export leases after closing? *Rubric:* 3 = customer phones gone, fewer unknowns to sort;; 2 = clarity;; 1 = speed;; 0 = none.
 - **EX030 — Unknown device outcome.** What were the two unknown devices? *Rubric:* 3 = smart speaker and delivery scanner;; 2 = identified;; 1 = malware;; 0 = none.
@@ -252,8 +252,8 @@ Assuming every connected device is known misses equipment added by staff or visi
 - **EX034 — Most protected items.** Which three items need most protection? *Rubric:* 3 = office computer, email account, order platform login;; 2 = two;; 1 = one;; 0 = none.
 - **EX035 — Monthly check.** How often should Ellen check the device list? *Rubric:* 3 = monthly after closing;; 2 = monthly;; 1 = yearly;; 0 = none.
 - **EX036 — Lab practice reason.** Why practise the comparison on synthetic data first? *Rubric:* 3 = avoid mistakes affecting real check;; 2 = safety;; 1 = required;; 0 = none.
-- **EX037 — Mobile backup.** What backup does Leo suggest for card payments? *Rubric:* 3 = mobile data backup for card reader;; 2 = mobile;; 1 = none;; 0 = none.
-- **EX038 — Inventory dependency.** Why does every later step depend on the device list? *Rubric:* 3 = decisions about where devices connect need it;; 2 = foundation;; 1 = none;; 0 = none.
+- **EX037 — Mobile backup.** What backup does Leo suggest for card payments? *Rubric:* 3 = mobile data backup for card reader;; 2 = mobile;; 1 = vague;; 0 = none.
+- **EX038 — Inventory dependency.** Why does every later step depend on the device list? *Rubric:* 3 = decisions about where devices connect need it;; 2 = foundation;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -344,7 +344,7 @@ Making several router changes at once during opening hours risks stopping card p
 - **EX039 — Initial checklist result.** How many checks pass before changes? *Rubric:* 3 = 2 of 7, Wi-Fi security and guest network exists;; 2 = two;; 1 = seven;; 0 = none.
 - **EX040 — First fix.** Which fix comes first, and why? *Rubric:* 3 = admin password; controls everything else;; 2 = password;; 1 = firmware;; 0 = none.
 - **EX041 — UPnP reason.** Why turn off UPnP? *Rubric:* 3 = lets devices open ports automatically;; 2 = ports;; 1 = speed;; 0 = none.
-- **EX042 — Guest isolation test.** How is guest isolation tested? *Rubric:* 3 = phone on guest reaches internet not office PC, with permission;; 2 = test;; 1 = none;; 0 = none.
+- **EX042 — Guest isolation test.** How is guest isolation tested? *Rubric:* 3 = phone on guest reaches internet not office PC, with permission;; 2 = test;; 1 = vague;; 0 = none.
 - **EX043 — Password storage.** Where is the new router password stored? *Rubric:* 3 = Ellen's password manager;; 2 = manager;; 1 = note;; 0 = none.
 - **EX044 — After-change test.** What is tested after each change? *Rubric:* 3 = tills, card reader, office PC and test payment;; 2 = payments;; 1 = nothing;; 0 = none.
 - **EX045 — Final checklist.** How many checks pass after changes? *Rubric:* 3 = 7 of 7;; 2 = all;; 1 = six;; 0 = none.

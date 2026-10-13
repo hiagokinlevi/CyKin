@@ -76,8 +76,8 @@ Real traffic is bursty, not smooth; derivatives of fitted curves describe trends
 ### Exercises
 
 - **EX001 — Throughput derivative.** If B(t) = 5t + t² GB, what is throughput at t = 4 hours? *Rubric:* 3 = 13 GB/h with method;; 2 = correct value only;; 1 = method without value;; 0 = none.
-- **EX002 — Utilisation intuition.** Explain why delay rises sharply as utilisation approaches 1. *Rubric:* 3 = waiting time grows without bound in queue models;; 2 = queues grow;; 1 = none;; 0 = none.
-- **EX003 — Security link.** How does a firewall's service rate relate to queue growth? *Rubric:* 3 = slower inspection lowers service rate, queues at peaks;; 2 = slows traffic;; 1 = none;; 0 = none.
+- **EX002 — Utilisation intuition.** Explain why delay rises sharply as utilisation approaches 1. *Rubric:* 3 = waiting time grows without bound in queue models;; 2 = queues grow;; 1 = vague;; 0 = none.
+- **EX003 — Security link.** How does a firewall's service rate relate to queue growth? *Rubric:* 3 = slower inspection lowers service rate, queues at peaks;; 2 = slows traffic;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -132,7 +132,7 @@ Reachability on zones ignores which services are permitted; a full model needs t
 ### Exercises
 
 - **EX004 — Excess access.** Given allowed A and needed N, which set shows excess access? *Rubric:* 3 = A minus N with explanation;; 2 = A−N;; 1 = other;; 0 = none.
-- **EX005 — Indirect path.** Find the closure for a→b, b→c, c→d and list new pairs. *Rubric:* 3 = a→c, a→d, b→d;; 2 = two;; 1 = none;; 0 = none.
+- **EX005 — Indirect path.** Find the closure for a→b, b→c, c→d and list new pairs. *Rubric:* 3 = a→c, a→d, b→d;; 2 = two;; 1 = vague;; 0 = none.
 - **EX006 — Pair count.** How many directed pairs exist among 8 zones? *Rubric:* 3 = 56 with reasoning;; 2 = 56;; 1 = wrong;; 0 = none.
 
 ### Synthesis
@@ -191,9 +191,9 @@ Copper and wireless have different propagation and loss characteristics; do not 
 
 ### Exercises
 
-- **EX007 — Propagation estimate.** Estimate one-way propagation over 120 km of fibre. *Rubric:* 3 = 0.6 ms with method;; 2 = value;; 1 = none;; 0 = none.
-- **EX008 — Car park coverage.** Why does Wi-Fi reaching a car park matter for security? *Rubric:* 3 = outsiders can connect or listen; need auth and encryption;; 2 = exposure;; 1 = none;; 0 = none.
-- **EX009 — Unused ports.** Give one physical layer control for office cabinets. *Rubric:* 3 = locked cabinets or disabled unused ports;; 2 = lock;; 1 = none;; 0 = none.
+- **EX007 — Propagation estimate.** Estimate one-way propagation over 120 km of fibre. *Rubric:* 3 = 0.6 ms with method;; 2 = value;; 1 = vague;; 0 = none.
+- **EX008 — Car park coverage.** Why does Wi-Fi reaching a car park matter for security? *Rubric:* 3 = outsiders can connect or listen; need auth and encryption;; 2 = exposure;; 1 = vague;; 0 = none.
+- **EX009 — Unused ports.** Give one physical layer control for office cabinets. *Rubric:* 3 = locked cabinets or disabled unused ports;; 2 = lock;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -251,9 +251,9 @@ Strings like "10.40.12.0/25" with host bits set raise errors unless strict=False
 
 ### Exercises
 
-- **EX010 — Membership check.** Write the expression testing whether 192.168.5.9 is in 192.168.5.0/24. *Rubric:* 3 = correct code;; 2 = near;; 1 = none;; 0 = none.
-- **EX011 — Edge cases.** Name two edge cases for a subnet-splitting script. *Rubric:* 3 = /32 and overlapping input;; 2 = one;; 1 = none;; 0 = none.
-- **EX012 — Library choice.** Why prefer ipaddress over manual bit operations? *Rubric:* 3 = tested, fewer errors;; 2 = easier;; 1 = none;; 0 = none.
+- **EX010 — Membership check.** Write the expression testing whether 192.168.5.9 is in 192.168.5.0/24. *Rubric:* 3 = correct code;; 2 = near;; 1 = vague;; 0 = none.
+- **EX011 — Edge cases.** Name two edge cases for a subnet-splitting script. *Rubric:* 3 = /32 and overlapping input;; 2 = one;; 1 = vague;; 0 = none.
+- **EX012 — Library choice.** Why prefer ipaddress over manual bit operations? *Rubric:* 3 = tested, fewer errors;; 2 = easier;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -312,8 +312,8 @@ Diagrams without legends or direction arrows are often misread.
 ### Exercises
 
 - **EX013 — Manager summary.** What three things should a manager summary contain? *Rubric:* 3 = problem, proposal, decision/cost;; 2 = two;; 1 = one;; 0 = none.
-- **EX014 — Logical vs physical.** Why separate logical and physical diagrams? *Rubric:* 3 = readability, different purposes;; 2 = clarity;; 1 = none;; 0 = none.
-- **EX015 — Trade-off cells.** Why justify each trade-off cell? *Rubric:* 3 = allow targeted disagreement;; 2 = clarity;; 1 = none;; 0 = none.
+- **EX014 — Logical vs physical.** Why separate logical and physical diagrams? *Rubric:* 3 = readability, different purposes;; 2 = clarity;; 1 = vague;; 0 = none.
+- **EX015 — Trade-off cells.** Why justify each trade-off cell? *Rubric:* 3 = allow targeted disagreement;; 2 = clarity;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -373,9 +373,9 @@ Integrating a poor model gives precise-looking wrong answers; validate against m
 
 ### Exercises
 
-- **EX016 — Integral total.** Integrate r(t) = 3 GB/h over 8 hours. *Rubric:* 3 = 24 GB;; 2 = value;; 1 = none;; 0 = none.
-- **EX017 — Storage estimate.** If flow logs total 2 GB per day, estimate 90-day storage. *Rubric:* 3 = 180 GB with headroom note;; 2 = 180 GB;; 1 = none;; 0 = none.
-- **EX018 — Model check.** What should Kofi do when a model underpredicts measured volume? *Rubric:* 3 = revise model;; 2 = note;; 1 = none;; 0 = none.
+- **EX016 — Integral total.** Integrate r(t) = 3 GB/h over 8 hours. *Rubric:* 3 = 24 GB;; 2 = value;; 1 = vague;; 0 = none.
+- **EX017 — Storage estimate.** If flow logs total 2 GB per day, estimate 90-day storage. *Rubric:* 3 = 180 GB with headroom note;; 2 = 180 GB;; 1 = vague;; 0 = none.
+- **EX018 — Model check.** What should Kofi do when a model underpredicts measured volume? *Rubric:* 3 = revise model;; 2 = note;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -455,9 +455,9 @@ Poisson assumes independence; storms or shared ducts cause correlated failures.
 
 ### Exercises
 
-- **EX019 — Total rate.** What is the combined yearly failure rate for 6 links at 1.2 each? *Rubric:* 3 = 7.2;; 2 = value;; 1 = none;; 0 = none.
+- **EX019 — Total rate.** What is the combined yearly failure rate for 6 links at 1.2 each? *Rubric:* 3 = 7.2;; 2 = value;; 1 = vague;; 0 = none.
 - **EX020 — Tail probability.** What is P(≥10 failures) in the lab? *Rubric:* 3 = 0.1904;; 2 = about 0.19;; 1 = wrong;; 0 = none.
-- **EX021 — Independence limit.** Give one reason link failures may not be independent. *Rubric:* 3 = shared duct or weather;; 2 = correlation;; 1 = none;; 0 = none.
+- **EX021 — Independence limit.** Give one reason link failures may not be independent. *Rubric:* 3 = shared duct or weather;; 2 = correlation;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -521,9 +521,9 @@ Datasheet figures are measured under ideal conditions; plan with margin.
 
 ### Exercises
 
-- **EX022 — Connection surge.** Why can many new connections stress a firewall more than high throughput? *Rubric:* 3 = slow path per new connection;; 2 = slow path;; 1 = none;; 0 = none.
-- **EX023 — State table.** What happens when the state table is full? *Rubric:* 3 = new connections dropped or evicted;; 2 = failures;; 1 = none;; 0 = none.
-- **EX024 — Margin.** Why size firewalls with margin over datasheet figures? *Rubric:* 3 = ideal conditions, growth;; 2 = safety;; 1 = none;; 0 = none.
+- **EX022 — Connection surge.** Why can many new connections stress a firewall more than high throughput? *Rubric:* 3 = slow path per new connection;; 2 = slow path;; 1 = vague;; 0 = none.
+- **EX023 — State table.** What happens when the state table is full? *Rubric:* 3 = new connections dropped or evicted;; 2 = failures;; 1 = vague;; 0 = none.
+- **EX024 — Margin.** Why size firewalls with margin over datasheet figures? *Rubric:* 3 = ideal conditions, growth;; 2 = safety;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -594,8 +594,8 @@ Skipping unparseable lines can silently omit rules from analysis.
 ### Exercises
 
 - **EX025 — Module split.** Name three modules for a policy analysis tool. *Rubric:* 3 = parse, evaluate, report;; 2 = two;; 1 = one;; 0 = none.
-- **EX026 — Silent skip risk.** Why reject unparseable lines? *Rubric:* 3 = avoid missing rules;; 2 = safety;; 1 = none;; 0 = none.
-- **EX027 — Error message.** What should an error message include? *Rubric:* 3 = line number and content;; 2 = line;; 1 = none;; 0 = none.
+- **EX026 — Silent skip risk.** Why reject unparseable lines? *Rubric:* 3 = avoid missing rules;; 2 = safety;; 1 = vague;; 0 = none.
+- **EX027 — Error message.** What should an error message include? *Rubric:* 3 = line number and content;; 2 = line;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -662,8 +662,8 @@ Good intentions do not replace authorisation.
 ### Exercises
 
 - **EX028 — Probing request.** How should Kofi handle a request to probe the network himself? *Rubric:* 3 = decline, route to authorised team;; 2 = decline;; 1 = accept;; 0 = none.
-- **EX029 — Rollback.** Why must every change have rollback? *Rubric:* 3 = restore service quickly;; 2 = safety;; 1 = none;; 0 = none.
-- **EX030 — Public harm.** Give one way a council network outage could harm residents. *Rubric:* 3 = service example;; 2 = vague;; 1 = none;; 0 = none.
+- **EX029 — Rollback.** Why must every change have rollback? *Rubric:* 3 = restore service quickly;; 2 = safety;; 1 = vague;; 0 = none.
+- **EX030 — Public harm.** Give one way a council network outage could harm residents. *Rubric:* 3 = service example;; 2 = vague;; 1 = minimal attempt;; 0 = none.
 
 ### Synthesis
 
@@ -752,9 +752,9 @@ Tight subnets leave no growth room; renumbering later is disruptive.
 
 ### Exercises
 
-- **EX031 — Usable hosts.** How many usable addresses in a /25? *Rubric:* 3 = 126;; 2 = value;; 1 = none;; 0 = none.
-- **EX032 — Boundary choice.** Why start each zone on a /22 boundary? *Rubric:* 3 = growth and simple rules;; 2 = growth;; 1 = none;; 0 = none.
-- **EX033 — Layer mapping.** Match TLS and firewall rules to layers. *Rubric:* 3 = application vs network/transport;; 2 = one;; 1 = none;; 0 = none.
+- **EX031 — Usable hosts.** How many usable addresses in a /25? *Rubric:* 3 = 126;; 2 = value;; 1 = vague;; 0 = none.
+- **EX032 — Boundary choice.** Why start each zone on a /22 boundary? *Rubric:* 3 = growth and simple rules;; 2 = growth;; 1 = vague;; 0 = none.
+- **EX033 — Layer mapping.** Match TLS and firewall rules to layers. *Rubric:* 3 = application vs network/transport;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -820,9 +820,9 @@ Host firewalls disabled for troubleshooting are often never re-enabled; track su
 
 ### Exercises
 
-- **EX034 — Defence in depth.** Why keep host firewalls in a segmented network? *Rubric:* 3 = backup if network rule fails;; 2 = layers;; 1 = none;; 0 = none.
+- **EX034 — Defence in depth.** Why keep host firewalls in a segmented network? *Rubric:* 3 = backup if network rule fails;; 2 = layers;; 1 = vague;; 0 = none.
 - **EX035 — Management restriction.** Where should SSH be reachable from? *Rubric:* 3 = management zone only;; 2 = restricted;; 1 = anywhere;; 0 = none.
-- **EX036 — Troubleshooting risk.** What risk does troubleshooting create for host firewalls? *Rubric:* 3 = left disabled;; 2 = changes;; 1 = none;; 0 = none.
+- **EX036 — Troubleshooting risk.** What risk does troubleshooting create for host firewalls? *Rubric:* 3 = left disabled;; 2 = changes;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -885,8 +885,8 @@ Storing raw payloads creates privacy risk without benefit for policy analysis.
 ### Exercises
 
 - **EX037 — Schema fields.** List six schema fields. *Rubric:* 3 = six;; 2 = five;; 1 = fewer;; 0 = none.
-- **EX038 — Zone aggregation.** Why record zones rather than addresses? *Rubric:* 3 = simpler queries, less personal data;; 2 = simpler;; 1 = none;; 0 = none.
-- **EX039 — Retention rule.** What happens after 90 days? *Rubric:* 3 = aggregated summaries kept;; 2 = deleted;; 1 = none;; 0 = none.
+- **EX038 — Zone aggregation.** Why record zones rather than addresses? *Rubric:* 3 = simpler queries, less personal data;; 2 = simpler;; 1 = vague;; 0 = none.
+- **EX039 — Retention rule.** What happens after 90 days? *Rubric:* 3 = aggregated summaries kept;; 2 = deleted;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -953,8 +953,8 @@ Tests only cover cases written; maintain them as requirements change.
 ### Exercises
 
 - **EX040 — Version control benefits.** List three benefits of version-controlled policy. *Rubric:* 3 = history, review, rollback;; 2 = two;; 1 = one;; 0 = none.
-- **EX041 — Policy test.** Write one policy test case. *Rubric:* 3 = flow and expected result;; 2 = partial;; 1 = none;; 0 = none.
-- **EX042 — Test limits.** What is the limit of automated policy tests? *Rubric:* 3 = only cover written cases;; 2 = incomplete;; 1 = none;; 0 = none.
+- **EX041 — Policy test.** Write one policy test case. *Rubric:* 3 = flow and expected result;; 2 = partial;; 1 = vague;; 0 = none.
+- **EX042 — Test limits.** What is the limit of automated policy tests? *Rubric:* 3 = only cover written cases;; 2 = incomplete;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1016,8 +1016,8 @@ Encryption alone does not stop lateral movement inside a network.
 
 ### Exercises
 
-- **EX043 — Integrity protocol.** Name a protocol that protects integrity in transit. *Rubric:* 3 = TLS or IPsec with RFC;; 2 = name;; 1 = none;; 0 = none.
-- **EX044 — Encryption limit.** Why doesn't encryption stop lateral movement? *Rubric:* 3 = controls content, not reachability;; 2 = different;; 1 = none;; 0 = none.
+- **EX043 — Integrity protocol.** Name a protocol that protects integrity in transit. *Rubric:* 3 = TLS or IPsec with RFC;; 2 = name;; 1 = vague;; 0 = none.
+- **EX044 — Encryption limit.** Why doesn't encryption stop lateral movement? *Rubric:* 3 = controls content, not reachability;; 2 = different;; 1 = vague;; 0 = none.
 - **EX045 — Threat list.** List three network threats for the council. *Rubric:* 3 = three;; 2 = two;; 1 = one;; 0 = none.
 
 ### Synthesis
@@ -1087,8 +1087,8 @@ Vague requirements like "secure network" cannot be verified.
 ### Exercises
 
 - **EX046 — Testable rewrite.** Rewrite "guest is safe" as testable. *Rubric:* 3 = specific measurable statement;; 2 = partial;; 1 = vague;; 0 = none.
-- **EX047 — Traceability value.** What does traceability reveal? *Rubric:* 3 = untested requirements;; 2 = gaps;; 1 = none;; 0 = none.
-- **EX048 — Interface example.** Name one external interface. *Rubric:* 3 = phone provider or CCTV supplier;; 2 = one;; 1 = none;; 0 = none.
+- **EX047 — Traceability value.** What does traceability reveal? *Rubric:* 3 = untested requirements;; 2 = gaps;; 1 = vague;; 0 = none.
+- **EX048 — Interface example.** Name one external interface. *Rubric:* 3 = phone provider or CCTV supplier;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1156,9 +1156,9 @@ Automated blocking without damping can cut off legitimate services.
 
 ### Exercises
 
-- **EX049 — Threshold trade-off.** Describe the threshold trade-off. *Rubric:* 3 = noise vs misses;; 2 = one;; 1 = none;; 0 = none.
-- **EX050 — Damping.** Give an example of damping. *Rubric:* 3 = minimum block duration or hold-off;; 2 = example;; 1 = none;; 0 = none.
-- **EX051 — Runbook role.** How do runbooks affect the feedback loop? *Rubric:* 3 = reduce human delay;; 2 = faster;; 1 = none;; 0 = none.
+- **EX049 — Threshold trade-off.** Describe the threshold trade-off. *Rubric:* 3 = noise vs misses;; 2 = one;; 1 = vague;; 0 = none.
+- **EX050 — Damping.** Give an example of damping. *Rubric:* 3 = minimum block duration or hold-off;; 2 = example;; 1 = vague;; 0 = none.
+- **EX051 — Runbook role.** How do runbooks affect the feedback loop? *Rubric:* 3 = reduce human delay;; 2 = faster;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1209,8 +1209,8 @@ Calling a design zero trust when it only adds segmentation overstates its protec
 ### Exercises
 
 - **EX052 — Zone vocabulary.** Define zone and conduit in one sentence each. *Rubric:* 3 = both correct with example;; 2 = both;; 1 = one;; 0 = none.
-- **EX053 — Zero trust claim.** Why does Kofi avoid calling his design zero trust? *Rubric:* 3 = only partial adoption, honesty;; 2 = partial;; 1 = none;; 0 = none.
-- **EX054 — Zone count.** Argue for six zones rather than fifteen. *Rubric:* 3 = manageability and error risk with citation;; 2 = simpler;; 1 = none;; 0 = none.
+- **EX053 — Zero trust claim.** Why does Kofi avoid calling his design zero trust? *Rubric:* 3 = only partial adoption, honesty;; 2 = partial;; 1 = vague;; 0 = none.
+- **EX054 — Zone count.** Argue for six zones rather than fifteen. *Rubric:* 3 = manageability and error risk with citation;; 2 = simpler;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1264,9 +1264,9 @@ Strong algorithms do not help if private keys are stored unprotected on shared d
 
 ### Exercises
 
-- **EX055 — Certificates vs passwords.** Give two advantages of certificate authentication for site VPNs. *Rubric:* 3 = per-device revocation and no shared secrets;; 2 = one;; 1 = none;; 0 = none.
-- **EX056 — Guidance mapping.** Which documents guide IPsec and TLS choices? *Rubric:* 3 = SP 800-77r1/RFC 7296 and SP 800-52r2/RFC 8446;; 2 = some;; 1 = none;; 0 = none.
-- **EX057 — Expiry alerts.** Why alert sixty days before certificate expiry? *Rubric:* 3 = time to renew without outage;; 2 = warning;; 1 = none;; 0 = none.
+- **EX055 — Certificates vs passwords.** Give two advantages of certificate authentication for site VPNs. *Rubric:* 3 = per-device revocation and no shared secrets;; 2 = one;; 1 = vague;; 0 = none.
+- **EX056 — Guidance mapping.** Which documents guide IPsec and TLS choices? *Rubric:* 3 = SP 800-77r1/RFC 7296 and SP 800-52r2/RFC 8446;; 2 = some;; 1 = vague;; 0 = none.
+- **EX057 — Expiry alerts.** Why alert sixty days before certificate expiry? *Rubric:* 3 = time to renew without outage;; 2 = warning;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1326,8 +1326,8 @@ Documenting current state from old diagrams alone misses undocumented changes; u
 
 ### Exercises
 
-- **EX058 — Supplier bypass.** Why is the CCTV supplier's appliance a concern? *Rubric:* 3 = bypasses edge firewall, uncontrolled entry;; 2 = risk;; 1 = none;; 0 = none.
-- **EX059 — Constraint impact.** How do team constraints shape the design? *Rubric:* 3 = simple, operable by two engineers;; 2 = simpler;; 1 = none;; 0 = none.
+- **EX058 — Supplier bypass.** Why is the CCTV supplier's appliance a concern? *Rubric:* 3 = bypasses edge firewall, uncontrolled entry;; 2 = risk;; 1 = vague;; 0 = none.
+- **EX059 — Constraint impact.** How do team constraints shape the design? *Rubric:* 3 = simple, operable by two engineers;; 2 = simpler;; 1 = vague;; 0 = none.
 - **EX060 — Measure list.** List five success measures. *Rubric:* 3 = five;; 2 = four;; 1 = fewer;; 0 = none.
 
 ### Synthesis
@@ -1389,8 +1389,8 @@ Requirements without verification methods often turn out to be untestable late i
 ### Exercises
 
 - **EX061 — Requirement style.** Rewrite "VPNs should be secure" as a verifiable requirement. *Rubric:* 3 = specific protocol and auth;; 2 = partial;; 1 = vague;; 0 = none.
-- **EX062 — Operational importance.** Why include operational requirements like log retention? *Rubric:* 3 = design must survive daily operation;; 2 = important;; 1 = none;; 0 = none.
-- **EX063 — Verification method.** Choose a verification method for R6 and explain. *Rubric:* 3 = test, timed failover;; 2 = test;; 1 = none;; 0 = none.
+- **EX062 — Operational importance.** Why include operational requirements like log retention? *Rubric:* 3 = design must survive daily operation;; 2 = important;; 1 = vague;; 0 = none.
+- **EX063 — Verification method.** Choose a verification method for R6 and explain. *Rubric:* 3 = test, timed failover;; 2 = test;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1469,9 +1469,9 @@ A zone-level model can hide host-level exceptions; record any host-specific rule
 
 ### Exercises
 
-- **EX064 — Reduction value.** State the reduction in reachable zone pairs. *Rubric:* 3 = 30 to 7, 76.7%;; 2 = percent;; 1 = none;; 0 = none.
-- **EX065 — Management sensitivity.** Why is the management zone most sensitive? *Rubric:* 3 = reaches many zones;; 2 = access;; 1 = none;; 0 = none.
-- **EX066 — Closure check.** Why compute transitive closure? *Rubric:* 3 = detect indirect paths;; 2 = completeness;; 1 = none;; 0 = none.
+- **EX064 — Reduction value.** State the reduction in reachable zone pairs. *Rubric:* 3 = 30 to 7, 76.7%;; 2 = percent;; 1 = vague;; 0 = none.
+- **EX065 — Management sensitivity.** Why is the management zone most sensitive? *Rubric:* 3 = reaches many zones;; 2 = access;; 1 = vague;; 0 = none.
+- **EX066 — Closure check.** Why compute transitive closure? *Rubric:* 3 = detect indirect paths;; 2 = completeness;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1539,9 +1539,9 @@ Threat analysis that ignores operational failures produces designs that are secu
 
 ### Exercises
 
-- **EX067 — Threat example.** Describe one threat that segmentation does not address. *Rubric:* 3 = compromised staff laptop over permitted services;; 2 = example;; 1 = none;; 0 = none.
-- **EX068 — Failure effect.** What is the effect of main-office firewall failure without redundancy? *Rubric:* 3 = branches isolated;; 2 = outage;; 1 = none;; 0 = none.
-- **EX069 — Residual risk.** How is residual risk from permitted flows handled? *Rubric:* 3 = host controls and monitoring, stated explicitly;; 2 = monitoring;; 1 = none;; 0 = none.
+- **EX067 — Threat example.** Describe one threat that segmentation does not address. *Rubric:* 3 = compromised staff laptop over permitted services;; 2 = example;; 1 = vague;; 0 = none.
+- **EX068 — Failure effect.** What is the effect of main-office firewall failure without redundancy? *Rubric:* 3 = branches isolated;; 2 = outage;; 1 = vague;; 0 = none.
+- **EX069 — Residual risk.** How is residual risk from permitted flows handled? *Rubric:* 3 = host controls and monitoring, stated explicitly;; 2 = monitoring;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1607,8 +1607,8 @@ Copying old rules into a new design imports old mistakes; derive rules from need
 
 ### Exercises
 
-- **EX070 — Derivation.** Why derive rules from needed flows rather than old rules? *Rubric:* 3 = avoid importing mistakes;; 2 = cleaner;; 1 = none;; 0 = none.
-- **EX071 — Ordering rule.** State one ordering principle for first-match policies. *Rubric:* 3 = specific before general;; 2 = order;; 1 = none;; 0 = none.
+- **EX070 — Derivation.** Why derive rules from needed flows rather than old rules? *Rubric:* 3 = avoid importing mistakes;; 2 = cleaner;; 1 = vague;; 0 = none.
+- **EX071 — Ordering rule.** State one ordering principle for first-match policies. *Rubric:* 3 = specific before general;; 2 = order;; 1 = vague;; 0 = none.
 - **EX072 — Rule metadata.** List three metadata fields for each rule. *Rubric:* 3 = ID, owner, reason;; 2 = two;; 1 = one;; 0 = none.
 
 ### Synthesis
@@ -1679,9 +1679,9 @@ Ignoring critique to protect a design leads to problems in implementation.
 
 ### Exercises
 
-- **EX073 — Recorder placement.** Why move the recorder into the CCTV zone? *Rubric:* 3 = cameras stay within zone;; 2 = simpler;; 1 = none;; 0 = none.
-- **EX074 — Viewing rule.** What rule supports staff viewing footage? *Rubric:* 3 = staff to recorder viewing service only;; 2 = staff access;; 1 = none;; 0 = none.
-- **EX075 — Studio value.** What does studio critique provide? *Rubric:* 3 = early detection of design issues;; 2 = feedback;; 1 = none;; 0 = none.
+- **EX073 — Recorder placement.** Why move the recorder into the CCTV zone? *Rubric:* 3 = cameras stay within zone;; 2 = simpler;; 1 = vague;; 0 = none.
+- **EX074 — Viewing rule.** What rule supports staff viewing footage? *Rubric:* 3 = staff to recorder viewing service only;; 2 = staff access;; 1 = vague;; 0 = none.
+- **EX075 — Studio value.** What does studio critique provide? *Rubric:* 3 = early detection of design issues;; 2 = feedback;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1749,9 +1749,9 @@ Scoring without weights hides priorities; agree weights with stakeholders.
 
 ### Exercises
 
-- **EX076 — Option A weakness.** What is the main weakness of central firewalls only? *Rubric:* 3 = single dependency and latency;; 2 = dependency;; 1 = none;; 0 = none.
-- **EX077 — Option C risk.** What new dependency does option C introduce? *Rubric:* 3 = internet links and new skills;; 2 = cloud;; 1 = none;; 0 = none.
-- **EX078 — Weights.** Why agree criterion weights with stakeholders? *Rubric:* 3 = reflect priorities;; 2 = fairness;; 1 = none;; 0 = none.
+- **EX076 — Option A weakness.** What is the main weakness of central firewalls only? *Rubric:* 3 = single dependency and latency;; 2 = dependency;; 1 = vague;; 0 = none.
+- **EX077 — Option C risk.** What new dependency does option C introduce? *Rubric:* 3 = internet links and new skills;; 2 = cloud;; 1 = vague;; 0 = none.
+- **EX078 — Weights.** Why agree criterion weights with stakeholders? *Rubric:* 3 = reflect priorities;; 2 = fairness;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1849,9 +1849,9 @@ Logging every allow on busy links can overwhelm storage; sample or summarise.
 
 ### Exercises
 
-- **EX079 — Allowed count.** How many flows were allowed? *Rubric:* 3 = 4 of 8;; 2 = four;; 1 = none;; 0 = none.
-- **EX080 — RDP decision.** Why is staff→servers RDP denied? *Rubric:* 3 = only management may administer;; 2 = policy;; 1 = none;; 0 = none.
-- **EX081 — Allow sampling.** Why sample allowed flows rather than log all? *Rubric:* 3 = volume;; 2 = storage;; 1 = none;; 0 = none.
+- **EX079 — Allowed count.** How many flows were allowed? *Rubric:* 3 = 4 of 8;; 2 = four;; 1 = vague;; 0 = none.
+- **EX080 — RDP decision.** Why is staff→servers RDP denied? *Rubric:* 3 = only management may administer;; 2 = policy;; 1 = vague;; 0 = none.
+- **EX081 — Allow sampling.** Why sample allowed flows rather than log all? *Rubric:* 3 = volume;; 2 = storage;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1919,9 +1919,9 @@ Skipping monitor mode risks blocking needed but undocumented flows.
 
 ### Exercises
 
-- **EX082 — Monitor mode.** What does monitor mode do? *Rubric:* 3 = logs would-be denies without blocking;; 2 = logs;; 1 = none;; 0 = none.
-- **EX083 — Missing flows.** Name the two missing flows found. *Rubric:* 3 = printer scans and phone config;; 2 = one;; 1 = none;; 0 = none.
-- **EX084 — Enforcement criterion.** When is enforcement enabled? *Rubric:* 3 = after a week with no unexpected denies;; 2 = later;; 1 = none;; 0 = none.
+- **EX082 — Monitor mode.** What does monitor mode do? *Rubric:* 3 = logs would-be denies without blocking;; 2 = logs;; 1 = vague;; 0 = none.
+- **EX083 — Missing flows.** Name the two missing flows found. *Rubric:* 3 = printer scans and phone config;; 2 = one;; 1 = vague;; 0 = none.
+- **EX084 — Enforcement criterion.** When is enforcement enabled? *Rubric:* 3 = after a week with no unexpected denies;; 2 = later;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2007,9 +2007,9 @@ Treating all denies as attacks wastes effort; most reveal configuration or habit
 
 ### Exercises
 
-- **EX085 — Expected share.** What share of denies were expected? *Rubric:* 3 = 118 of 173;; 2 = most;; 1 = none;; 0 = none.
-- **EX086 — Camera denies.** What caused cameras to contact staff devices? *Rubric:* 3 = email alerts misconfigured;; 2 = config;; 1 = none;; 0 = none.
-- **EX087 — Interpretation.** Why not treat all denies as attacks? *Rubric:* 3 = most are configuration or habits;; 2 = noise;; 1 = none;; 0 = none.
+- **EX085 — Expected share.** What share of denies were expected? *Rubric:* 3 = 118 of 173;; 2 = most;; 1 = vague;; 0 = none.
+- **EX086 — Camera denies.** What caused cameras to contact staff devices? *Rubric:* 3 = email alerts misconfigured;; 2 = config;; 1 = vague;; 0 = none.
+- **EX087 — Interpretation.** Why not treat all denies as attacks? *Rubric:* 3 = most are configuration or habits;; 2 = noise;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2079,9 +2079,9 @@ Lab differences from production must be noted.
 
 ### Exercises
 
-- **EX088 — Lab scope.** Why test only within the lab? *Rubric:* 3 = authorisation and safety;; 2 = safe;; 1 = none;; 0 = none.
+- **EX088 — Lab scope.** Why test only within the lab? *Rubric:* 3 = authorisation and safety;; 2 = safe;; 1 = vague;; 0 = none.
 - **EX089 — Evidence fields.** List four evidence fields. *Rubric:* 3 = four;; 2 = three;; 1 = fewer;; 0 = none.
-- **EX090 — Lab finding.** What did the lab reveal? *Rubric:* 3 = unnecessary management port;; 2 = issue;; 1 = none;; 0 = none.
+- **EX090 — Lab finding.** What did the lab reveal? *Rubric:* 3 = unnecessary management port;; 2 = issue;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2155,9 +2155,9 @@ Removing supplier access abruptly can break maintenance contracts; agree changes
 
 ### Exercises
 
-- **EX091 — VPN standard.** Which guidance governs the VPN configuration? *Rubric:* 3 = SP 800-77r1;; 2 = NIST;; 1 = none;; 0 = none.
-- **EX092 — Supplier change.** How does the supplier now connect? *Rubric:* 3 = jump host with named, time-limited accounts;; 2 = jump host;; 1 = none;; 0 = none.
-- **EX093 — Agreement first.** Why agree supplier changes in advance? *Rubric:* 3 = contract obligations;; 2 = cooperation;; 1 = none;; 0 = none.
+- **EX091 — VPN standard.** Which guidance governs the VPN configuration? *Rubric:* 3 = SP 800-77r1;; 2 = NIST;; 1 = vague;; 0 = none.
+- **EX092 — Supplier change.** How does the supplier now connect? *Rubric:* 3 = jump host with named, time-limited accounts;; 2 = jump host;; 1 = vague;; 0 = none.
+- **EX093 — Agreement first.** Why agree supplier changes in advance? *Rubric:* 3 = contract obligations;; 2 = cooperation;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2240,9 +2240,9 @@ Two links in the same duct are not independent.
 
 ### Exercises
 
-- **EX094 — Downtime calculation.** Compute downtime for 99.5% availability. *Rubric:* 3 = 43.8 h;; 2 = value;; 1 = none;; 0 = none.
-- **EX095 — Redundant result.** What does the lab give for two tunnels? *Rubric:* 3 = 0.999975, 0.22 h;; 2 = value;; 1 = none;; 0 = none.
-- **EX096 — Independence condition.** What makes tunnels independent? *Rubric:* 3 = different providers and paths;; 2 = different;; 1 = none;; 0 = none.
+- **EX094 — Downtime calculation.** Compute downtime for 99.5% availability. *Rubric:* 3 = 43.8 h;; 2 = value;; 1 = vague;; 0 = none.
+- **EX095 — Redundant result.** What does the lab give for two tunnels? *Rubric:* 3 = 0.999975, 0.22 h;; 2 = value;; 1 = vague;; 0 = none.
+- **EX096 — Independence condition.** What makes tunnels independent? *Rubric:* 3 = different providers and paths;; 2 = different;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2318,9 +2318,9 @@ Resilience untested in exercises often fails in reality.
 
 ### Exercises
 
-- **EX097 — Degraded mode.** Describe one degraded mode. *Rubric:* 3 = branches local, phones to mobile;; 2 = one;; 1 = none;; 0 = none.
-- **EX098 — Exercise finding.** What did the exercise reveal? *Rubric:* 3 = out-of-hours line dependency;; 2 = dependency;; 1 = none;; 0 = none.
-- **EX099 — Rebuild target.** What is the firewall rebuild target? *Rubric:* 3 = four hours from backups;; 2 = hours;; 1 = none;; 0 = none.
+- **EX097 — Degraded mode.** Describe one degraded mode. *Rubric:* 3 = branches local, phones to mobile;; 2 = one;; 1 = vague;; 0 = none.
+- **EX098 — Exercise finding.** What did the exercise reveal? *Rubric:* 3 = out-of-hours line dependency;; 2 = dependency;; 1 = vague;; 0 = none.
+- **EX099 — Rebuild target.** What is the firewall rebuild target? *Rubric:* 3 = four hours from backups;; 2 = hours;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2396,9 +2396,9 @@ Integration gaps appear between teams, not devices.
 
 ### Exercises
 
-- **EX100 — Log protocol.** Which protocol carries logs? *Rubric:* 3 = syslog RFC 5424;; 2 = syslog;; 1 = none;; 0 = none.
+- **EX100 — Log protocol.** Which protocol carries logs? *Rubric:* 3 = syslog RFC 5424;; 2 = syslog;; 1 = vague;; 0 = none.
 - **EX101 — Alert list.** List three alerts. *Rubric:* 3 = three;; 2 = two;; 1 = one;; 0 = none.
-- **EX102 — Service desk.** Why train the service desk? *Rubric:* 3 = recognise segmentation issues;; 2 = support;; 1 = none;; 0 = none.
+- **EX102 — Service desk.** Why train the service desk? *Rubric:* 3 = recognise segmentation issues;; 2 = support;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2444,9 +2444,9 @@ Temporary rules added during migration tend to become permanent unless each has 
 
 ### Exercises
 
-- **EX103 — Temporary rule risk.** Why must migration-time temporary rules have expiries? *Rubric:* 3 = otherwise become permanent excess access;; 2 = cleanup;; 1 = none;; 0 = none.
-- **EX104 — Printer solution.** How is the shared printer problem solved? *Rubric:* 3 = dedicated guest-reachable printer, rule removed;; 2 = separate printer;; 1 = none;; 0 = none.
-- **EX105 — Management boundary.** Why route the monitoring server's updates via the web filter? *Rubric:* 3 = keep management zone without direct internet;; 2 = boundary;; 1 = none;; 0 = none.
+- **EX103 — Temporary rule risk.** Why must migration-time temporary rules have expiries? *Rubric:* 3 = otherwise become permanent excess access;; 2 = cleanup;; 1 = vague;; 0 = none.
+- **EX104 — Printer solution.** How is the shared printer problem solved? *Rubric:* 3 = dedicated guest-reachable printer, rule removed;; 2 = separate printer;; 1 = vague;; 0 = none.
+- **EX105 — Management boundary.** Why route the monitoring server's updates via the web filter? *Rubric:* 3 = keep management zone without direct internet;; 2 = boundary;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2508,9 +2508,9 @@ Twenty samples describe one period; repeat at different times before concluding 
 
 ### Exercises
 
-- **EX106 — Budget check.** Is the 1.0 ms budget met in the lab, and how close is the tail? *Rubric:* 3 = met, max 0.95, p95 0.918;; 2 = met;; 1 = none;; 0 = none.
-- **EX107 — Slow sample cause.** What caused the slow sample and what fixes it? *Rubric:* 3 = connection burst at backup start, stagger;; 2 = backups;; 1 = none;; 0 = none.
-- **EX108 — Growth trigger.** Why trigger a review when rule count rises 20 percent? *Rubric:* 3 = more rules, more errors;; 2 = size;; 1 = none;; 0 = none.
+- **EX106 — Budget check.** Is the 1.0 ms budget met in the lab, and how close is the tail? *Rubric:* 3 = met, max 0.95, p95 0.918;; 2 = met;; 1 = vague;; 0 = none.
+- **EX107 — Slow sample cause.** What caused the slow sample and what fixes it? *Rubric:* 3 = connection burst at backup start, stagger;; 2 = backups;; 1 = vague;; 0 = none.
+- **EX108 — Growth trigger.** Why trigger a review when rule count rises 20 percent? *Rubric:* 3 = more rules, more errors;; 2 = size;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2561,8 +2561,8 @@ Routines that rely on one engineer fail during leave; train both engineers and d
 ### Exercises
 
 - **EX109 — Weekly items.** List three weekly operational checks. *Rubric:* 3 = three;; 2 = two;; 1 = one;; 0 = none.
-- **EX110 — Silent logging.** Why alert on a drop in log arrival? *Rubric:* 3 = logging failure blinds monitoring;; 2 = visibility;; 1 = none;; 0 = none.
-- **EX111 — Paging policy.** Why page only for critical alerts out of hours? *Rubric:* 3 = keep pages meaningful;; 2 = fatigue;; 1 = none;; 0 = none.
+- **EX110 — Silent logging.** Why alert on a drop in log arrival? *Rubric:* 3 = logging failure blinds monitoring;; 2 = visibility;; 1 = vague;; 0 = none.
+- **EX111 — Paging policy.** Why page only for critical alerts out of hours? *Rubric:* 3 = keep pages meaningful;; 2 = fatigue;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2640,9 +2640,9 @@ Untested operational requirements often fail silently until needed in an inciden
 
 ### Exercises
 
-- **EX112 — Coverage figure.** What coverage does the lab report before fixes? *Rubric:* 3 = 6 of 8 covered, R5 and R8 untested, R6 pending;; 2 = 6 of 8;; 1 = none;; 0 = none.
-- **EX113 — R8 test.** Describe a test for daily configuration backups. *Rubric:* 3 = restore yesterday's backup to lab;; 2 = restore;; 1 = none;; 0 = none.
-- **EX114 — Validation vs verification.** How does the managers' form differ from tests? *Rubric:* 3 = validates needs, not requirements;; 2 = users;; 1 = none;; 0 = none.
+- **EX112 — Coverage figure.** What coverage does the lab report before fixes? *Rubric:* 3 = 6 of 8 covered, R5 and R8 untested, R6 pending;; 2 = 6 of 8;; 1 = vague;; 0 = none.
+- **EX113 — R8 test.** Describe a test for daily configuration backups. *Rubric:* 3 = restore yesterday's backup to lab;; 2 = restore;; 1 = vague;; 0 = none.
+- **EX114 — Validation vs verification.** How does the managers' form differ from tests? *Rubric:* 3 = validates needs, not requirements;; 2 = users;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2693,8 +2693,8 @@ Documentation written at the end of a project is usually incomplete; write it al
 ### Exercises
 
 - **EX115 — Document list.** List five documents in the set. *Rubric:* 3 = five;; 2 = four;; 1 = fewer;; 0 = none.
-- **EX116 — Knowledge transfer method.** How did Kofi transfer knowledge? *Rubric:* 3 = engineers led migrations with observation;; 2 = training;; 1 = none;; 0 = none.
-- **EX117 — Maintainability test.** How was documentation tested? *Rubric:* 3 = outside engineer completed a task using it;; 2 = tried;; 1 = none;; 0 = none.
+- **EX116 — Knowledge transfer method.** How did Kofi transfer knowledge? *Rubric:* 3 = engineers led migrations with observation;; 2 = training;; 1 = vague;; 0 = none.
+- **EX117 — Maintainability test.** How was documentation tested? *Rubric:* 3 = outside engineer completed a task using it;; 2 = tried;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2748,9 +2748,9 @@ Reconstructing incidents must be done only in the lab with synthetic devices.
 
 ### Exercises
 
-- **EX118 — Incident result.** What happened in the reconstructed incident? *Rubric:* 3 = denied, logged, alerted under two minutes;; 2 = blocked;; 1 = none;; 0 = none.
+- **EX118 — Incident result.** What happened in the reconstructed incident? *Rubric:* 3 = denied, logged, alerted under two minutes;; 2 = blocked;; 1 = vague;; 0 = none.
 - **EX119 — Failure tests.** Name three failure tests. *Rubric:* 3 = tunnel, firewall, certificate;; 2 = two;; 1 = one;; 0 = none.
-- **EX120 — Lab-only reconstruction.** Why reconstruct the incident only in the lab? *Rubric:* 3 = authorisation and safety;; 2 = safe;; 1 = none;; 0 = none.
+- **EX120 — Lab-only reconstruction.** Why reconstruct the incident only in the lab? *Rubric:* 3 = authorisation and safety;; 2 = safe;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2804,9 +2804,9 @@ Optimising logs can remove evidence needed later; check investigation needs firs
 
 ### Exercises
 
-- **EX121 — Rule removal check.** How is behaviour confirmed unchanged after removing rules? *Rubric:* 3 = regression suite;; 2 = tests;; 1 = none;; 0 = none.
-- **EX122 — Logging change.** What logging change saved storage? *Rubric:* 3 = summaries for allows, full for denies;; 2 = summaries;; 1 = none;; 0 = none.
-- **EX123 — Alert tuning.** How was the deny-spike alert improved? *Rubric:* 3 = grouping by source and zone-specific threshold;; 2 = threshold;; 1 = none;; 0 = none.
+- **EX121 — Rule removal check.** How is behaviour confirmed unchanged after removing rules? *Rubric:* 3 = regression suite;; 2 = tests;; 1 = vague;; 0 = none.
+- **EX122 — Logging change.** What logging change saved storage? *Rubric:* 3 = summaries for allows, full for denies;; 2 = summaries;; 1 = vague;; 0 = none.
+- **EX123 — Alert tuning.** How was the deny-spike alert improved? *Rubric:* 3 = grouping by source and zone-specific threshold;; 2 = threshold;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2860,9 +2860,9 @@ Eight data points cannot support strong claims.
 
 ### Exercises
 
-- **EX124 — Research question.** State Kofi's research question. *Rubric:* 3 = denies predict complaints;; 2 = partial;; 1 = none;; 0 = none.
+- **EX124 — Research question.** State Kofi's research question. *Rubric:* 3 = denies predict complaints;; 2 = partial;; 1 = vague;; 0 = none.
 - **EX125 — Claim strength.** How strongly can he claim the association? *Rubric:* 3 = suggestive only, eight offices;; 2 = weak;; 1 = strong;; 0 = none.
-- **EX126 — Practical use.** How could engineers use the finding? *Rubric:* 3 = prioritise investigation of offices with many denies;; 2 = prioritise;; 1 = none;; 0 = none.
+- **EX126 — Practical use.** How could engineers use the finding? *Rubric:* 3 = prioritise investigation of offices with many denies;; 2 = prioritise;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2916,9 +2916,9 @@ Ignoring governance delays projects more than technical problems.
 
 ### Exercises
 
-- **EX127 — Monitoring consultation.** Why consult unions on monitoring? *Rubric:* 3 = staff privacy and trust;; 2 = privacy;; 1 = none;; 0 = none.
-- **EX128 — Procurement planning.** Why plan for procurement time? *Rubric:* 3 = weeks-long frameworks;; 2 = delays;; 1 = none;; 0 = none.
-- **EX129 — Accountability.** Why record decisions in public bodies? *Rubric:* 3 = accountability for spending and data;; 2 = audit;; 1 = none;; 0 = none.
+- **EX127 — Monitoring consultation.** Why consult unions on monitoring? *Rubric:* 3 = staff privacy and trust;; 2 = privacy;; 1 = vague;; 0 = none.
+- **EX128 — Procurement planning.** Why plan for procurement time? *Rubric:* 3 = weeks-long frameworks;; 2 = delays;; 1 = vague;; 0 = none.
+- **EX129 — Accountability.** Why record decisions in public bodies? *Rubric:* 3 = accountability for spending and data;; 2 = audit;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2979,8 +2979,8 @@ Changing criteria after results undermines credibility.
 ### Exercises
 
 - **EX130 — Criteria list.** List four success criteria. *Rubric:* 3 = four;; 2 = three;; 1 = fewer;; 0 = none.
-- **EX131 — Criteria timing.** Why fix criteria early? *Rubric:* 3 = avoid moving goalposts;; 2 = credibility;; 1 = none;; 0 = none.
-- **EX132 — Capstone risk.** Name one capstone risk. *Rubric:* 3 = procurement delay;; 2 = risk;; 1 = none;; 0 = none.
+- **EX131 — Criteria timing.** Why fix criteria early? *Rubric:* 3 = avoid moving goalposts;; 2 = credibility;; 1 = vague;; 0 = none.
+- **EX132 — Capstone risk.** Name one capstone risk. *Rubric:* 3 = procurement delay;; 2 = risk;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -3038,9 +3038,9 @@ Reviews by people involved in the design miss blind spots.
 
 ### Exercises
 
-- **EX133 — Jump host finding.** What was the jump host finding? *Rubric:* 3 = single point of failure;; 2 = availability;; 1 = none;; 0 = none.
-- **EX134 — Client isolation.** What does client isolation add? *Rubric:* 3 = guests cannot reach each other;; 2 = isolation;; 1 = none;; 0 = none.
-- **EX135 — Independence.** Why use a reviewer from another council? *Rubric:* 3 = fresh perspective;; 2 = independent;; 1 = none;; 0 = none.
+- **EX133 — Jump host finding.** What was the jump host finding? *Rubric:* 3 = single point of failure;; 2 = availability;; 1 = vague;; 0 = none.
+- **EX134 — Client isolation.** What does client isolation add? *Rubric:* 3 = guests cannot reach each other;; 2 = isolation;; 1 = vague;; 0 = none.
+- **EX135 — Independence.** Why use a reviewer from another council? *Rubric:* 3 = fresh perspective;; 2 = independent;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -3098,9 +3098,9 @@ Short measurement periods can overstate availability.
 
 ### Exercises
 
-- **EX136 — Reachability outcome.** State the reachability outcome. *Rubric:* 3 = 30 to 7;; 2 = reduced;; 1 = none;; 0 = none.
-- **EX137 — Availability limit.** Why is three months a limitation? *Rubric:* 3 = short period may overstate;; 2 = short;; 1 = none;; 0 = none.
-- **EX138 — Criteria met.** Were all criteria met? *Rubric:* 3 = yes with evidence;; 2 = yes;; 1 = none;; 0 = none.
+- **EX136 — Reachability outcome.** State the reachability outcome. *Rubric:* 3 = 30 to 7;; 2 = reduced;; 1 = vague;; 0 = none.
+- **EX137 — Availability limit.** Why is three months a limitation? *Rubric:* 3 = short period may overstate;; 2 = short;; 1 = vague;; 0 = none.
+- **EX138 — Criteria met.** Were all criteria met? *Rubric:* 3 = yes with evidence;; 2 = yes;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -3158,9 +3158,9 @@ Recovery plans untested in reality often miss small but time-consuming steps.
 
 ### Exercises
 
-- **EX139 — Trial time.** How long did recovery take? *Rubric:* 3 = 2h50 within 4h;; 2 = under 4h;; 1 = none;; 0 = none.
-- **EX140 — Firmware issue.** What issue slowed recovery? *Rubric:* 3 = old firmware on spare;; 2 = firmware;; 1 = none;; 0 = none.
-- **EX141 — Approval.** Why was approval needed? *Rubric:* 3 = live service change;; 2 = policy;; 1 = none;; 0 = none.
+- **EX139 — Trial time.** How long did recovery take? *Rubric:* 3 = 2h50 within 4h;; 2 = under 4h;; 1 = vague;; 0 = none.
+- **EX140 — Firmware issue.** What issue slowed recovery? *Rubric:* 3 = old firmware on spare;; 2 = firmware;; 1 = vague;; 0 = none.
+- **EX141 — Approval.** Why was approval needed? *Rubric:* 3 = live service change;; 2 = policy;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -3219,8 +3219,8 @@ Unindexed evidence is hard for examiners to use.
 ### Exercises
 
 - **EX142 — Dossier contents.** List four dossier items. *Rubric:* 3 = four;; 2 = three;; 1 = fewer;; 0 = none.
-- **EX143 — Sensitivity.** How are sensitive details protected? *Rubric:* 3 = synthetic replacements;; 2 = removed;; 1 = none;; 0 = none.
-- **EX144 — Council approval.** Why does the council approve it? *Rubric:* 3 = confirm no sensitive data;; 2 = permission;; 1 = none;; 0 = none.
+- **EX143 — Sensitivity.** How are sensitive details protected? *Rubric:* 3 = synthetic replacements;; 2 = removed;; 1 = vague;; 0 = none.
+- **EX144 — Council approval.** Why does the council approve it? *Rubric:* 3 = confirm no sensitive data;; 2 = permission;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -3279,8 +3279,8 @@ Claims without evidence weaken the thesis.
 ### Exercises
 
 - **EX145 — Thesis structure.** List the seven parts. *Rubric:* 3 = seven;; 2 = five;; 1 = fewer;; 0 = none.
-- **EX146 — Contribution.** State the contribution. *Rubric:* 3 = documented verified approach;; 2 = design;; 1 = none;; 0 = none.
-- **EX147 — Limits.** Name two limits. *Rubric:* 3 = two;; 2 = one;; 1 = none;; 0 = none.
+- **EX146 — Contribution.** State the contribution. *Rubric:* 3 = documented verified approach;; 2 = design;; 1 = vague;; 0 = none.
+- **EX147 — Limits.** Name two limits. *Rubric:* 3 = two;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -3338,9 +3338,9 @@ Defensive answers undermine strong work.
 
 ### Exercises
 
-- **EX148 — Zero trust answer.** How does Kofi describe zero trust? *Rubric:* 3 = principles applied, not full;; 2 = partial;; 1 = none;; 0 = none.
-- **EX149 — Scaling answer.** How does the design scale? *Rubric:* 3 = templates;; 2 = easily;; 1 = none;; 0 = none.
-- **EX150 — Reflection.** State Kofi's reflection. *Rubric:* 3 = governance and people mattered;; 2 = stated;; 1 = none;; 0 = none.
+- **EX148 — Zero trust answer.** How does Kofi describe zero trust? *Rubric:* 3 = principles applied, not full;; 2 = partial;; 1 = vague;; 0 = none.
+- **EX149 — Scaling answer.** How does the design scale? *Rubric:* 3 = templates;; 2 = easily;; 1 = vague;; 0 = none.
+- **EX150 — Reflection.** State Kofi's reflection. *Rubric:* 3 = governance and people mattered;; 2 = stated;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

@@ -552,7 +552,7 @@ A calculation step with no independent check can pass errors straight to signing
 ### Exercises
 
 - **EX034 — Unchecked step.** Which step had no independent check? *Rubric:* 3 = the credit calculation;; 2 = calculation;; 1 = signing;; 0 = none.
-- **EX035 — Timing issue.** What timing problem could occur? *Rubric:* 3 = reading partial data mid-update;; 2 = partial reads;; 1 = none;; 0 = none.
+- **EX035 — Timing issue.** What timing problem could occur? *Rubric:* 3 = reading partial data mid-update;; 2 = partial reads;; 1 = vague;; 0 = none.
 - **EX036 — Post-grant check.** What happens after credits are granted? *Rubric:* 3 = a script compares events with the batch;; 2 = event comparison;; 1 = nothing;; 0 = none.
 
 ### Synthesis
@@ -1178,7 +1178,7 @@ Claiming a single change caused an improvement ignores other changes in the same
 
 - **EX070 — Research measure.** How is time to action measured? *Rubric:* 3 = hours from first log evidence to first recorded action;; 2 = hours to action;; 1 = minutes of downtime;; 0 = none.
 - **EX071 — Before and after medians.** What were the median times? *Rubric:* 3 = 26 hours before, 7 after;; 2 = 26/7;; 1 = equal;; 0 = none.
-- **EX072 — Alternative explanation.** Name one alternative explanation. *Rubric:* 3 = more experienced volunteers;; 2 = holidays;; 1 = none;; 0 = none.
+- **EX072 — Alternative explanation.** Name one alternative explanation. *Rubric:* 3 = more experienced volunteers;; 2 = holidays;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1309,7 +1309,7 @@ Deploying without a rehearsed rollback assumes success that may not come.
 ### Exercises
 
 - **EX079 — New contract feature.** What does version 1.4 add? *Rubric:* 3 = a per-member identity check;; 2 = identity check;; 1 = higher cap;; 0 = none.
-- **EX080 — Hash check.** What hash check is done before release? *Rubric:* 3 = reviewed build hash matches the proposed upgrade;; 2 = code hash;; 1 = none;; 0 = none.
+- **EX080 — Hash check.** What hash check is done before release? *Rubric:* 3 = reviewed build hash matches the proposed upgrade;; 2 = code hash;; 1 = vague;; 0 = none.
 - **EX081 — Rollback target.** What would rollback return to? *Rubric:* 3 = version 1.3;; 2 = 1.3;; 1 = version 1.0;; 0 = none.
 
 ### Synthesis
@@ -1440,9 +1440,9 @@ A monitoring service with no visible status can fail silently without anyone not
 
 ### Exercises
 
-- **EX088 — Time saving.** How much did manual checking fall? *Rubric:* 3 = from about two hours to forty minutes, two thirds;; 2 = two thirds;; 1 = none;; 0 = none.
+- **EX088 — Time saving.** How much did manual checking fall? *Rubric:* 3 = from about two hours to forty minutes, two thirds;; 2 = two thirds;; 1 = vague;; 0 = none.
 - **EX089 — Feedback implemented.** Which feedback did Lucas implement? *Rubric:* 3 = a status page showing the last successful run;; 2 = status page;; 1 = alert grouping;; 0 = none.
-- **EX090 — Stated limitation.** What limitation did Lucas state? *Rubric:* 3 = dependence on a single node for ledger data;; 2 = single node;; 1 = none;; 0 = none.
+- **EX090 — Stated limitation.** What limitation did Lucas state? *Rubric:* 3 = dependence on a single node for ledger data;; 2 = single node;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

@@ -69,9 +69,9 @@ A first map misses informal copies; interview staff as well as reading system li
 
 ### Exercises
 
-- **EX001 — Health data.** Why are dental treatment notes data concerning health? *Rubric:* 3 = they reveal information about a person's health status;; 2 = mentions health;; 1 = none;; 0 = none.
+- **EX001 — Health data.** Why are dental treatment notes data concerning health? *Rubric:* 3 = they reveal information about a person's health status;; 2 = mentions health;; 1 = vague;; 0 = none.
 - **EX002 — Service and component.** What is the difference between a service and a component? *Rubric:* 3 = a service is what users experience; components deliver it;; 2 = both;; 1 = one;; 0 = none.
-- **EX003 — Copies matter.** Why does every copy of a record matter? *Rubric:* 3 = protection, retention and access requests must cover all copies;; 2 = mentions copies;; 1 = none;; 0 = none.
+- **EX003 — Copies matter.** Why does every copy of a record matter? *Rubric:* 3 = protection, retention and access requests must cover all copies;; 2 = mentions copies;; 1 = vague;; 0 = none.
 - **EX004 — SMS content.** What does the SMS gateway learn about patients? *Rubric:* 3 = names, phone numbers, appointment times and that they are dental patients;; 2 = most;; 1 = one;; 0 = none.
 
 <a id="ch-02"></a>
@@ -110,10 +110,10 @@ Separation can break workflows; test with clinic staff before rolling out.
 
 ### Exercises
 
-- **EX005 — Guest risk.** Why was the shared guest network a problem? *Rubric:* 3 = patients could reach the imaging server;; 2 = mentions server;; 1 = none;; 0 = none.
-- **EX006 — DICOM.** How did Leila treat unencrypted DICOM traffic? *Rubric:* 3 = as a risk managed by separation first;; 2 = mentions separation;; 1 = none;; 0 = none.
+- **EX005 — Guest risk.** Why was the shared guest network a problem? *Rubric:* 3 = patients could reach the imaging server;; 2 = mentions server;; 1 = vague;; 0 = none.
+- **EX006 — DICOM.** How did Leila treat unencrypted DICOM traffic? *Rubric:* 3 = as a risk managed by separation first;; 2 = mentions separation;; 1 = vague;; 0 = none.
 - **EX007 — Three zones.** Name the three zones Leila proposed. *Rubric:* 3 = clinical, office and guest;; 2 = all;; 1 = two;; 0 = none.
-- **EX008 — Confirming the change.** How did Leila confirm the separation worked? *Rubric:* 3 = tested from guest Wi-Fi that the server was unreachable;; 2 = mentions test;; 1 = none;; 0 = none.
+- **EX008 — Confirming the change.** How did Leila confirm the separation worked? *Rubric:* 3 = tested from guest Wi-Fi that the server was unreachable;; 2 = mentions test;; 1 = vague;; 0 = none.
 
 <a id="ch-03"></a>
 
@@ -151,10 +151,10 @@ Narrow roles can block urgent tasks; define a recorded emergency access route.
 
 ### Exercises
 
-- **EX009 — Shared login problem.** Why are shared logins a privacy problem? *Rubric:* 3 = nobody can tell who opened a record;; 2 = mentions accountability;; 1 = none;; 0 = none.
+- **EX009 — Shared login problem.** Why are shared logins a privacy problem? *Rubric:* 3 = nobody can tell who opened a record;; 2 = mentions accountability;; 1 = vague;; 0 = none.
 - **EX010 — Reception access.** What does reception need in the practice system? *Rubric:* 3 = appointments, contact details, payment status;; 2 = most;; 1 = notes;; 0 = none.
 - **EX011 — Admin count.** How many administrator accounts remained? *Rubric:* 3 = four of twenty-three;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX012 — Locum control.** How are locum accounts controlled now? *Rubric:* 3 = end dates linked to the rota;; 2 = mentions end date;; 1 = none;; 0 = none.
+- **EX012 — Locum control.** How are locum accounts controlled now? *Rubric:* 3 = end dates linked to the rota;; 2 = mentions end date;; 1 = vague;; 0 = none.
 
 <a id="ch-04"></a>
 
@@ -192,8 +192,8 @@ Validation rules need updating when systems change their export formats.
 
 ### Exercises
 
-- **EX013 — Nested field.** What unnecessary field did Leila find in the JSON export? *Rubric:* 3 = medical history inside appointments;; 2 = correct;; 1 = none;; 0 = none.
-- **EX014 — Script output.** Why should scripts avoid printing names? *Rubric:* 3 = outputs end up in tickets and chats;; 2 = mentions spread;; 1 = none;; 0 = none.
+- **EX013 — Nested field.** What unnecessary field did Leila find in the JSON export? *Rubric:* 3 = medical history inside appointments;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX014 — Script output.** Why should scripts avoid printing names? *Rubric:* 3 = outputs end up in tickets and chats;; 2 = mentions spread;; 1 = vague;; 0 = none.
 - **EX015 — Validation action.** What does the script do when validation fails? *Rubric:* 3 = stops with a clear message;; 2 = correct;; 1 = guesses;; 0 = none.
 - **EX016 — Temporary files.** How are temporary files handled? *Rubric:* 3 = tempfile module, removed at the end;; 2 = mentions removal;; 1 = kept;; 0 = none.
 
@@ -234,7 +234,7 @@ Scope creep happens gradually; recheck the scope before each new task.
 ### Exercises
 
 - **EX017 — Scope exclusion.** What did Leila's first scope exclude? *Rubric:* 3 = live patient records and vendor infrastructure;; 2 = both;; 1 = one;; 0 = none.
-- **EX018 — Declined request.** Why did Leila decline to view a live record? *Rubric:* 3 = outside scope; reproduce with synthetic data;; 2 = mentions scope;; 1 = none;; 0 = none.
+- **EX018 — Declined request.** Why did Leila decline to view a live record? *Rubric:* 3 = outside scope; reproduce with synthetic data;; 2 = mentions scope;; 1 = vague;; 0 = none.
 - **EX019 — Evidence fields.** What does each finding record include? *Rubric:* 3 = date, time, system, method, observation, screenshot;; 2 = most;; 1 = few;; 0 = none.
 - **EX020 — Hash purpose.** What does hashing evidence prove? *Rubric:* 3 = integrity, not confidentiality;; 2 = correct;; 1 = confidentiality;; 0 = none.
 
@@ -276,8 +276,8 @@ Lawful bases are decided by the controller with advice; technical staff document
 
 - **EX021 — Model structure.** How is Leila's processing model organised? *Rubric:* 3 = by purpose, like the Article 30 record;; 2 = mentions purpose;; 1 = systems only;; 0 = none.
 - **EX022 — Care condition.** Which Article 9 condition supports care? *Rubric:* 3 = Article 9(2)(h);; 2 = correct;; 1 = consent;; 0 = none.
-- **EX023 — Courier gap.** What gap did Leila find with the courier? *Rubric:* 3 = no processor contract;; 2 = correct;; 1 = none;; 0 = none.
-- **EX024 — Possible transfer.** What possible transfer did Leila flag? *Rubric:* 3 = SMS provider support outside the EU;; 2 = correct;; 1 = none;; 0 = none.
+- **EX023 — Courier gap.** What gap did Leila find with the courier? *Rubric:* 3 = no processor contract;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX024 — Possible transfer.** What possible transfer did Leila flag? *Rubric:* 3 = SMS provider support outside the EU;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-07"></a>
 
@@ -347,8 +347,8 @@ Regular expressions miss unusual formats; review samples by hand as well.
 ### Exercises
 
 - **EX025 — Log share.** What share of log lines held personal data? *Rubric:* 3 = 95 of 400, 23.8%;; 2 = approximate;; 1 = wrong;; 0 = none.
-- **EX026 — Source fix.** What did the developer change? *Rubric:* 3 = log booking references, partial phone digits;; 2 = mentions references;; 1 = none;; 0 = none.
-- **EX027 — Why logs travel.** Why do logs spread further than records? *Rubric:* 3 = copied to monitoring tools and shared in support cases;; 2 = mentions copies;; 1 = none;; 0 = none.
+- **EX026 — Source fix.** What did the developer change? *Rubric:* 3 = log booking references, partial phone digits;; 2 = mentions references;; 1 = vague;; 0 = none.
+- **EX027 — Why logs travel.** Why do logs spread further than records? *Rubric:* 3 = copied to monitoring tools and shared in support cases;; 2 = mentions copies;; 1 = vague;; 0 = none.
 - **EX028 — Log retention.** What retention did Leila propose for detailed logs? *Rubric:* 3 = thirty days;; 2 = correct;; 1 = ninety;; 0 = none.
 
 <a id="ch-08"></a>
@@ -388,9 +388,9 @@ Detection depends on people acting on alerts; assign owners.
 ### Exercises
 
 - **EX029 — Four types.** Name the four failure types. *Rubric:* 3 = wrong recipient, over-retention, over-access, silent failure;; 2 = all;; 1 = two;; 0 = none.
-- **EX030 — Silent detection.** How are silent failures detected? *Rubric:* 3 = jobs report success daily; missing report alerts;; 2 = mentions daily;; 1 = none;; 0 = none.
+- **EX030 — Silent detection.** How are silent failures detected? *Rubric:* 3 = jobs report success daily; missing report alerts;; 2 = mentions daily;; 1 = vague;; 0 = none.
 - **EX031 — Reminder content.** What should reminders contain now? *Rubric:* 3 = only clinic name and time;; 2 = correct;; 1 = full details;; 0 = none.
-- **EX032 — Breach recording.** Why was the wrong-number case recorded? *Rubric:* 3 = it was a personal data breach even if low risk;; 2 = mentions breach;; 1 = none;; 0 = none.
+- **EX032 — Breach recording.** Why was the wrong-number case recorded? *Rubric:* 3 = it was a personal data breach even if low risk;; 2 = mentions breach;; 1 = vague;; 0 = none.
 
 <a id="ch-09"></a>
 
@@ -428,10 +428,10 @@ Built-in tools have limits; document what a method cannot detect.
 
 ### Exercises
 
-- **EX033 — Tool question.** What question did Leila add to her tool checklist? *Rubric:* 3 = where does the tool send the data it reads;; 2 = correct;; 1 = none;; 0 = none.
+- **EX033 — Tool question.** What question did Leila add to her tool checklist? *Rubric:* 3 = where does the tool send the data it reads;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX034 — Method parts.** What does each method define? *Rubric:* 3 = question, source, steps, expected output, interpretation;; 2 = most;; 1 = few;; 0 = none.
-- **EX035 — Fixed seeds.** Why use fixed random seeds? *Rubric:* 3 = identical synthetic data across runs;; 2 = mentions repeatability;; 1 = none;; 0 = none.
-- **EX036 — Tools as processing.** Why are privacy tools themselves a risk? *Rubric:* 3 = they process personal data too;; 2 = mentions processing;; 1 = none;; 0 = none.
+- **EX035 — Fixed seeds.** Why use fixed random seeds? *Rubric:* 3 = identical synthetic data across runs;; 2 = mentions repeatability;; 1 = vague;; 0 = none.
+- **EX036 — Tools as processing.** Why are privacy tools themselves a risk? *Rubric:* 3 = they process personal data too;; 2 = mentions processing;; 1 = vague;; 0 = none.
 
 <a id="ch-10"></a>
 
@@ -503,9 +503,9 @@ Cookie names do not prove purpose; check what each script actually does.
 ### Exercises
 
 - **EX037 — Before consent.** How many cookies were set before consent without exemption? *Rubric:* 3 = 3 of 7;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX038 — Language cookie.** Why was the language cookie a problem? *Rubric:* 3 = set before the visitor chose a language;; 2 = mentions choice;; 1 = none;; 0 = none.
+- **EX038 — Language cookie.** Why was the language cookie a problem? *Rubric:* 3 = set before the visitor chose a language;; 2 = mentions choice;; 1 = vague;; 0 = none.
 - **EX039 — Pixel decision.** What happened to the advertising pixel? *Rubric:* 3 = removed; nobody needed it;; 2 = mentions removal;; 1 = delayed;; 0 = none.
-- **EX040 — Release check.** Why add the cookie test to the release checklist? *Rubric:* 3 = changes often reintroduce early tags;; 2 = mentions regressions;; 1 = none;; 0 = none.
+- **EX040 — Release check.** Why add the cookie test to the release checklist? *Rubric:* 3 = changes often reintroduce early tags;; 2 = mentions regressions;; 1 = vague;; 0 = none.
 
 <a id="ch-11"></a>
 
@@ -545,7 +545,7 @@ Samples estimate rates; they do not certify every account.
 
 - **EX041 — Three questions.** What three questions does verification answer? *Rubric:* 3 = designed correctly, implemented as designed, operating over time;; 2 = all;; 1 = one;; 0 = none.
 - **EX042 — Sample result.** How many sampled accounts matched? *Rubric:* 3 = 18 of 20;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX043 — Missed runs.** Why did the deletion job miss two days? *Rubric:* 3 = server restarts for updates;; 2 = correct;; 1 = none;; 0 = none.
+- **EX043 — Missed runs.** Why did the deletion job miss two days? *Rubric:* 3 = server restarts for updates;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX044 — Separation status.** How did Leila report network separation? *Rubric:* 3 = verified in one clinic, not yet in seven;; 2 = correct;; 1 = verified;; 0 = none.
 
 <a id="ch-12"></a>
@@ -653,9 +653,9 @@ A quick fix to the query alone would not stop the next similar mistake.
 ### Exercises
 
 - **EX049 — First step.** What did Leila do before guessing causes? *Rubric:* 3 = wrote down known facts;; 2 = mentions facts;; 1 = guessed;; 0 = none.
-- **EX050 — Wrong field.** Which field did the export wrongly use? *Rubric:* 3 = the reminder field, contact_ok;; 2 = correct;; 1 = none;; 0 = none.
+- **EX050 — Wrong field.** Which field did the export wrongly use? *Rubric:* 3 = the reminder field, contact_ok;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX051 — Three causes.** Name the three causes Leila found. *Rubric:* 3 = confusing names, no review, no automated check;; 2 = all;; 1 = one;; 0 = none.
-- **EX052 — Automated check.** What does the new check do? *Rubric:* 3 = stops exports with non-consenting patients;; 2 = correct;; 1 = none;; 0 = none.
+- **EX052 — Automated check.** What does the new check do? *Rubric:* 3 = stops exports with non-consenting patients;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-14"></a>
 
@@ -717,8 +717,8 @@ Backups may still hold deleted records until they expire; document backup retent
 
 - **EX053 — Past retention.** How many reminder records were past retention? *Rubric:* 3 = 712 of 1,200, 59.3%;; 2 = approximate;; 1 = wrong;; 0 = none.
 - **EX054 — Oldest record.** How old was the oldest record? *Rubric:* 3 = 900 days;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX055 — Report-only.** Why run in report-only mode first? *Rubric:* 3 = catch rule mistakes before data are lost;; 2 = mentions mistakes;; 1 = none;; 0 = none.
-- **EX056 — Exception.** Which records are held? *Rubric:* 3 = those linked to open complaints;; 2 = correct;; 1 = none;; 0 = none.
+- **EX055 — Report-only.** Why run in report-only mode first? *Rubric:* 3 = catch rule mistakes before data are lost;; 2 = mentions mistakes;; 1 = vague;; 0 = none.
+- **EX056 — Exception.** Which records are held? *Rubric:* 3 = those linked to open complaints;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-15"></a>
 
@@ -757,9 +757,9 @@ Vendors change defaults in upgrades; retest after each one.
 ### Exercises
 
 - **EX057 — Default fields.** What did the vendor's default integration request? *Rubric:* 3 = names, emails, appointment types, dentist names;; 2 = most;; 1 = one;; 0 = none.
-- **EX058 — Appointment type.** Why remove appointment type? *Rubric:* 3 = it reveals health information and is unnecessary;; 2 = mentions health;; 1 = none;; 0 = none.
+- **EX058 — Appointment type.** Why remove appointment type? *Rubric:* 3 = it reveals health information and is unnecessary;; 2 = mentions health;; 1 = vague;; 0 = none.
 - **EX059 — Opt-out filter.** Where are opted-out patients filtered? *Rubric:* 3 = at the source export;; 2 = correct;; 1 = at vendor;; 0 = none.
-- **EX060 — Deletion test.** What deletion behaviour was tested? *Rubric:* 3 = deletion reaches the review service within thirty days;; 2 = correct;; 1 = none;; 0 = none.
+- **EX060 — Deletion test.** What deletion behaviour was tested? *Rubric:* 3 = deletion reaches the review service within thirty days;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-16"></a>
 
@@ -797,10 +797,10 @@ Documents written once and never reviewed become misleading.
 
 ### Exercises
 
-- **EX061 — Single knowledge.** Why was single-person knowledge a risk? *Rubric:* 3 = nobody could explain controls if that person left;; 2 = mentions leaving;; 1 = none;; 0 = none.
+- **EX061 — Single knowledge.** Why was single-person knowledge a risk? *Rubric:* 3 = nobody could explain controls if that person left;; 2 = mentions leaving;; 1 = vague;; 0 = none.
 - **EX062 — Document fields.** Name four parts of a control document. *Rubric:* 3 = purpose, risk, location, checks, results, actions, owner, review date;; 2 = four;; 1 = two;; 0 = none.
-- **EX063 — Irreversible steps.** Why do irreversible steps need extra checks? *Rubric:* 3 = mistakes cannot be undone after deletion;; 2 = mentions deletion;; 1 = none;; 0 = none.
-- **EX064 — Staying current.** How are documents kept current? *Rubric:* 3 = review dates and change tickets must update them;; 2 = mentions tickets;; 1 = none;; 0 = none.
+- **EX063 — Irreversible steps.** Why do irreversible steps need extra checks? *Rubric:* 3 = mistakes cannot be undone after deletion;; 2 = mentions deletion;; 1 = vague;; 0 = none.
+- **EX064 — Staying current.** How are documents kept current? *Rubric:* 3 = review dates and change tickets must update them;; 2 = mentions tickets;; 1 = vague;; 0 = none.
 
 <a id="ch-17"></a>
 
@@ -839,9 +839,9 @@ Erasure does not apply to records Marlow must keep by law; explain this clearly.
 ### Exercises
 
 - **EX065 — Missing items.** Which items were missing from the access response? *Rubric:* 3 = reminder history, review record, referral letter;; 2 = two;; 1 = one;; 0 = none.
-- **EX066 — New systems.** Why were the missed items in recent systems? *Rubric:* 3 = checklist not updated when systems changed;; 2 = mentions checklist;; 1 = none;; 0 = none.
+- **EX066 — New systems.** Why were the missed items in recent systems? *Rubric:* 3 = checklist not updated when systems changed;; 2 = mentions checklist;; 1 = vague;; 0 = none.
 - **EX067 — Reminder erasure.** What did Leila recommend for reminders on erasure? *Rubric:* 3 = delete immediately on request;; 2 = correct;; 1 = yearly;; 0 = none.
-- **EX068 — Clinical records.** Why are clinical records kept after erasure requests? *Rubric:* 3 = professional rules require retention;; 2 = mentions rules;; 1 = none;; 0 = none.
+- **EX068 — Clinical records.** Why are clinical records kept after erasure requests? *Rubric:* 3 = professional rules require retention;; 2 = mentions rules;; 1 = vague;; 0 = none.
 
 <a id="ch-18"></a>
 
@@ -879,9 +879,9 @@ Projects that end without handover lose their controls; agree owners before clos
 
 ### Exercises
 
-- **EX069 — Project choice.** Why did Leila choose network separation? *Rubric:* 3 = largest unverified control with patient image exposure;; 2 = mentions exposure;; 1 = none;; 0 = none.
-- **EX070 — Camera failure.** What failed at the fourth clinic? *Rubric:* 3 = intraoral cameras could not send images;; 2 = correct;; 1 = none;; 0 = none.
-- **EX071 — Remaining risk.** What risk remains after the project? *Rubric:* 3 = unencrypted DICOM inside the clinical zone;; 2 = correct;; 1 = none;; 0 = none.
+- **EX069 — Project choice.** Why did Leila choose network separation? *Rubric:* 3 = largest unverified control with patient image exposure;; 2 = mentions exposure;; 1 = vague;; 0 = none.
+- **EX070 — Camera failure.** What failed at the fourth clinic? *Rubric:* 3 = intraoral cameras could not send images;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX071 — Remaining risk.** What risk remains after the project? *Rubric:* 3 = unencrypted DICOM inside the clinical zone;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX072 — Handover.** Who receives the handover? *Rubric:* 3 = IT contractor and data protection officer;; 2 = both;; 1 = one;; 0 = none.
 
 <a id="worked-results"></a>

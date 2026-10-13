@@ -89,18 +89,18 @@ Four signals will not catch everything; they target the most likely problems.
 
 ### Exercises
 
-- **EX001 — Monday call.** What did the client's call reveal? *Rubric:* 3 = email from Elaine asking payment to new bank account; she did not send it; 2 = partial; 1 = none; 0 = none.
+- **EX001 — Monday call.** What did the client's call reveal? *Rubric:* 3 = email from Elaine asking payment to new bank account; she did not send it; 2 = partial; 1 = vague; 0 = none.
 - **EX002 — Security operations meaning.** Define security operations in one sentence. *Rubric:* 3 = watch, decide, act quickly; 2 = partial; 1 = vague; 0 = none.
-- **EX003 — Most important asset.** Why does email matter most here? *Rubric:* 3 = criminals use it to request money; 2 = partial; 1 = none; 0 = none.
+- **EX003 — Most important asset.** Why does email matter most here? *Rubric:* 3 = criminals use it to request money; 2 = partial; 1 = vague; 0 = none.
 - **EX004 — Four signals.** List Leo's four signals. *Rubric:* 3 = unusual sign-ins; forwarding rules; MFA changes; staff reports; 2 = three; 1 = one; 0 = none.
-- **EX005 — Watcher.** Who watches alerts and who approves actions? *Rubric:* 3 = BrightPath watches; Leo approves; 2 = partial; 1 = none; 0 = none.
-- **EX006 — Night authority.** Can Leo act before telling partners? *Rubric:* 3 = yes; partners told afterwards; 2 = partial; 1 = none; 0 = none.
-- **EX007 — CSF mapping.** Map MFA and backups to CSF functions. *Rubric:* 3 = MFA Protect; backups Recover; 2 = one; 1 = none; 0 = none.
-- **EX008 — Plan length.** Why keep the plan to one page? *Rubric:* 3 = people read and use it; 2 = partial; 1 = none; 0 = none.
-- **EX009 — Signal limits.** What is the limit of four signals? *Rubric:* 3 = won't catch everything; 2 = partial; 1 = none; 0 = none.
-- **EX010 — Partner review.** How often do the partners review? *Rubric:* 3 = monthly; 2 = one; 1 = none; 0 = none.
-- **EX011 — 11 Strategies lesson.** Which idea from the 11 Strategies applies to a small firm? *Rubric:* 3 = know what you protect and who has authority; 2 = partial; 1 = none; 0 = none.
-- **EX012 — First task.** What did Elaine ask to be done first? *Rubric:* 3 = investigate the fraud; 2 = partial; 1 = none; 0 = none.
+- **EX005 — Watcher.** Who watches alerts and who approves actions? *Rubric:* 3 = BrightPath watches; Leo approves; 2 = partial; 1 = vague; 0 = none.
+- **EX006 — Night authority.** Can Leo act before telling partners? *Rubric:* 3 = yes; partners told afterwards; 2 = partial; 1 = vague; 0 = none.
+- **EX007 — CSF mapping.** Map MFA and backups to CSF functions. *Rubric:* 3 = MFA Protect; backups Recover; 2 = one; 1 = vague; 0 = none.
+- **EX008 — Plan length.** Why keep the plan to one page? *Rubric:* 3 = people read and use it; 2 = partial; 1 = vague; 0 = none.
+- **EX009 — Signal limits.** What is the limit of four signals? *Rubric:* 3 = won't catch everything; 2 = partial; 1 = vague; 0 = none.
+- **EX010 — Partner review.** How often do the partners review? *Rubric:* 3 = monthly; 2 = one; 1 = vague; 0 = none.
+- **EX011 — 11 Strategies lesson.** Which idea from the 11 Strategies applies to a small firm? *Rubric:* 3 = know what you protect and who has authority; 2 = partial; 1 = vague; 0 = none.
+- **EX012 — First task.** What did Elaine ask to be done first? *Rubric:* 3 = investigate the fraud; 2 = partial; 1 = vague; 0 = none.
 - **EX013 — Protected items.** Name the three things to protect. *Rubric:* 3 = client data, email, accounts software; 2 = two; 1 = one; 0 = none.
 
 ### Synthesis
@@ -195,19 +195,19 @@ Country information is approximate and can be hidden by services that route traf
 
 ### Exercises
 
-- **EX014 — Lab flags.** Which sign-ins did the lab flag? *Rubric:* 3 = Elaine Fri 23:47 and Sat 00:02 BR night; 2 = partial; 1 = none; 0 = none.
-- **EX015 — Rule details.** Describe the forwarding rule. *Rubric:* 3 = 23:51; forwards invoice/payment emails outside; deletes copy; 2 = partial; 1 = none; 0 = none.
-- **EX016 — Password theft.** How was the password stolen? *Rubric:* 3 = fake document-shared page Thursday; 2 = partial; 1 = none; 0 = none.
-- **EX017 — Missing protection.** Which protection was missing? *Rubric:* 3 = MFA; 2 = one; 1 = none; 0 = none.
-- **EX018 — Travel check.** Why check whether Elaine travelled? *Rubric:* 3 = new country could be travel; 2 = partial; 1 = none; 0 = none.
-- **EX019 — Phone syncing.** Why might a night sign-in be innocent? *Rubric:* 3 = phone syncing; 2 = partial; 1 = none; 0 = none.
-- **EX020 — Scope check.** Were other mailboxes affected? *Rubric:* 3 = no rules or unusual sign-ins elsewhere; 2 = partial; 1 = none; 0 = none.
-- **EX021 — Log retention.** How long are sign-in logs kept? *Rubric:* 3 = 90 days; 2 = one; 1 = none; 0 = none.
-- **EX022 — Hiding effect.** Why did the rule delete copies? *Rubric:* 3 = to hide replies from Elaine; 2 = partial; 1 = none; 0 = none.
-- **EX023 — Clients targeted.** How many clients got the fake invoice? *Rubric:* 3 = two; 2 = one; 1 = none; 0 = none.
-- **EX024 — Technique source.** Which framework lists forwarding rules as a technique? *Rubric:* 3 = MITRE ATT&CK; 2 = one; 1 = none; 0 = none.
-- **EX025 — Country limits.** Give one limit of country data. *Rubric:* 3 = approximate; hidden by routing services; 2 = partial; 1 = none; 0 = none.
-- **EX026 — Night threshold.** What hours count as night in the lab? *Rubric:* 3 = before 06:00 or from 22:00; 2 = partial; 1 = none; 0 = none.
+- **EX014 — Lab flags.** Which sign-ins did the lab flag? *Rubric:* 3 = Elaine Fri 23:47 and Sat 00:02 BR night; 2 = partial; 1 = vague; 0 = none.
+- **EX015 — Rule details.** Describe the forwarding rule. *Rubric:* 3 = 23:51; forwards invoice/payment emails outside; deletes copy; 2 = partial; 1 = vague; 0 = none.
+- **EX016 — Password theft.** How was the password stolen? *Rubric:* 3 = fake document-shared page Thursday; 2 = partial; 1 = vague; 0 = none.
+- **EX017 — Missing protection.** Which protection was missing? *Rubric:* 3 = MFA; 2 = one; 1 = vague; 0 = none.
+- **EX018 — Travel check.** Why check whether Elaine travelled? *Rubric:* 3 = new country could be travel; 2 = partial; 1 = vague; 0 = none.
+- **EX019 — Phone syncing.** Why might a night sign-in be innocent? *Rubric:* 3 = phone syncing; 2 = partial; 1 = vague; 0 = none.
+- **EX020 — Scope check.** Were other mailboxes affected? *Rubric:* 3 = no rules or unusual sign-ins elsewhere; 2 = partial; 1 = vague; 0 = none.
+- **EX021 — Log retention.** How long are sign-in logs kept? *Rubric:* 3 = 90 days; 2 = one; 1 = vague; 0 = none.
+- **EX022 — Hiding effect.** Why did the rule delete copies? *Rubric:* 3 = to hide replies from Elaine; 2 = partial; 1 = vague; 0 = none.
+- **EX023 — Clients targeted.** How many clients got the fake invoice? *Rubric:* 3 = two; 2 = one; 1 = vague; 0 = none.
+- **EX024 — Technique source.** Which framework lists forwarding rules as a technique? *Rubric:* 3 = MITRE ATT&CK; 2 = one; 1 = vague; 0 = none.
+- **EX025 — Country limits.** Give one limit of country data. *Rubric:* 3 = approximate; hidden by routing services; 2 = partial; 1 = vague; 0 = none.
+- **EX026 — Night threshold.** What hours count as night in the lab? *Rubric:* 3 = before 06:00 or from 22:00; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -278,17 +278,17 @@ Recovery of paid money is uncertain; speed is the best help.
 ### Exercises
 
 - **EX027 — Correct order.** Give the containment order. *Rubric:* 3 = sign out sessions, reset, remove rule, MFA, review; 2 = four; 1 = two; 0 = none.
-- **EX028 — Why sessions first.** Why revoke sessions before reset? *Rubric:* 3 = otherwise criminal stays connected; 2 = partial; 1 = none; 0 = none.
-- **EX029 — Containment times.** When were sessions revoked and MFA enabled? *Rubric:* 3 = 10:08 and 10:20; 2 = one; 1 = none; 0 = none.
-- **EX030 — Paying client.** What happened with the client who paid? *Rubric:* 3 = paid £4,800; bank recall; £3,100 recovered; 2 = partial; 1 = none; 0 = none.
-- **EX031 — Client email.** Summarise the client warning. *Rubric:* 3 = never change bank details by email; phone usual number; 2 = partial; 1 = none; 0 = none.
-- **EX032 — No blame.** Why avoid technical detail and blame? *Rubric:* 3 = keeps message clear and calm; 2 = partial; 1 = none; 0 = none.
-- **EX033 — Fraud report.** Where was the fraud reported? *Rubric:* 3 = national fraud reporting service; 2 = partial; 1 = none; 0 = none.
-- **EX034 — Regulator decision.** Why was the regulator told? *Rubric:* 3 = client financial details in mailbox; 2 = partial; 1 = none; 0 = none.
-- **EX035 — Incident log value.** How did the log help? *Rubric:* 3 = made report quick; 2 = partial; 1 = none; 0 = none.
-- **EX036 — Approval time.** When did Leo approve action? *Rubric:* 3 = 10:05 Monday; 2 = one; 1 = none; 0 = none.
-- **EX037 — Speed matters.** What helps most with recovering money? *Rubric:* 3 = speed; 2 = one; 1 = none; 0 = none.
-- **EX038 — Review step.** What is reviewed after MFA? *Rubric:* 3 = sent items and rules; 2 = partial; 1 = none; 0 = none.
+- **EX028 — Why sessions first.** Why revoke sessions before reset? *Rubric:* 3 = otherwise criminal stays connected; 2 = partial; 1 = vague; 0 = none.
+- **EX029 — Containment times.** When were sessions revoked and MFA enabled? *Rubric:* 3 = 10:08 and 10:20; 2 = one; 1 = vague; 0 = none.
+- **EX030 — Paying client.** What happened with the client who paid? *Rubric:* 3 = paid £4,800; bank recall; £3,100 recovered; 2 = partial; 1 = vague; 0 = none.
+- **EX031 — Client email.** Summarise the client warning. *Rubric:* 3 = never change bank details by email; phone usual number; 2 = partial; 1 = vague; 0 = none.
+- **EX032 — No blame.** Why avoid technical detail and blame? *Rubric:* 3 = keeps message clear and calm; 2 = partial; 1 = vague; 0 = none.
+- **EX033 — Fraud report.** Where was the fraud reported? *Rubric:* 3 = national fraud reporting service; 2 = partial; 1 = vague; 0 = none.
+- **EX034 — Regulator decision.** Why was the regulator told? *Rubric:* 3 = client financial details in mailbox; 2 = partial; 1 = vague; 0 = none.
+- **EX035 — Incident log value.** How did the log help? *Rubric:* 3 = made report quick; 2 = partial; 1 = vague; 0 = none.
+- **EX036 — Approval time.** When did Leo approve action? *Rubric:* 3 = 10:05 Monday; 2 = one; 1 = vague; 0 = none.
+- **EX037 — Speed matters.** What helps most with recovering money? *Rubric:* 3 = speed; 2 = one; 1 = vague; 0 = none.
+- **EX038 — Review step.** What is reviewed after MFA? *Rubric:* 3 = sent items and rules; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -354,18 +354,18 @@ A small firm relies heavily on its provider; check the provider's work through t
 
 ### Exercises
 
-- **EX039 — Alert count.** How many alerts in the first month and how many attacks? *Rubric:* 3 = 11; none; 2 = one; 1 = none; 0 = none.
-- **EX040 — Sign-in alerts.** Explain the 8 sign-in alerts. *Rubric:* 3 = 6 holiday in Spain; 2 roaming phone; 2 = partial; 1 = none; 0 = none.
-- **EX041 — Policy finding.** What did the forwarding alert find? *Rubric:* 3 = staff forwarding to personal email; policy issue; 2 = partial; 1 = none; 0 = none.
-- **EX042 — Travel list.** How was travel noise reduced? *Rubric:* 3 = staff tell Leo; trip list for BrightPath; 2 = partial; 1 = none; 0 = none.
-- **EX043 — Realistic aim.** What is the aim with alerts? *Rubric:* 3 = quick checks, not zero alerts; 2 = partial; 1 = none; 0 = none.
+- **EX039 — Alert count.** How many alerts in the first month and how many attacks? *Rubric:* 3 = 11; none; 2 = one; 1 = vague; 0 = none.
+- **EX040 — Sign-in alerts.** Explain the 8 sign-in alerts. *Rubric:* 3 = 6 holiday in Spain; 2 roaming phone; 2 = partial; 1 = vague; 0 = none.
+- **EX041 — Policy finding.** What did the forwarding alert find? *Rubric:* 3 = staff forwarding to personal email; policy issue; 2 = partial; 1 = vague; 0 = none.
+- **EX042 — Travel list.** How was travel noise reduced? *Rubric:* 3 = staff tell Leo; trip list for BrightPath; 2 = partial; 1 = vague; 0 = none.
+- **EX043 — Realistic aim.** What is the aim with alerts? *Rubric:* 3 = quick checks, not zero alerts; 2 = partial; 1 = vague; 0 = none.
 - **EX044 — Lessons actions.** List three actions from the lessons review. *Rubric:* 3 = MFA all; phone-check bank changes; training; admin check (three); 2 = two; 1 = one; 0 = none.
-- **EX045 — Review length.** How long was the lessons meeting? *Rubric:* 3 = 30 minutes; 2 = one; 1 = none; 0 = none.
-- **EX046 — Continuous meaning.** What does continuous monitoring mean for Leo? *Rubric:* 3 = weekly summary, monthly review, yearly plan check; 2 = partial; 1 = none; 0 = none.
-- **EX047 — Later report.** What happened with the later phishing report? *Rubric:* 3 = no password entered; sender blocked; 2 = partial; 1 = none; 0 = none.
-- **EX048 — Success measure.** Why did Leo count reports as success? *Rubric:* 3 = people watching too; 2 = partial; 1 = none; 0 = none.
-- **EX049 — Provider check.** How does Leo check the provider? *Rubric:* 3 = weekly summaries; 2 = partial; 1 = none; 0 = none.
-- **EX050 — Admin rights.** How often are admin rights checked? *Rubric:* 3 = twice a year; 2 = one; 1 = none; 0 = none.
+- **EX045 — Review length.** How long was the lessons meeting? *Rubric:* 3 = 30 minutes; 2 = one; 1 = vague; 0 = none.
+- **EX046 — Continuous meaning.** What does continuous monitoring mean for Leo? *Rubric:* 3 = weekly summary, monthly review, yearly plan check; 2 = partial; 1 = vague; 0 = none.
+- **EX047 — Later report.** What happened with the later phishing report? *Rubric:* 3 = no password entered; sender blocked; 2 = partial; 1 = vague; 0 = none.
+- **EX048 — Success measure.** Why did Leo count reports as success? *Rubric:* 3 = people watching too; 2 = partial; 1 = vague; 0 = none.
+- **EX049 — Provider check.** How does Leo check the provider? *Rubric:* 3 = weekly summaries; 2 = partial; 1 = vague; 0 = none.
+- **EX050 — Admin rights.** How often are admin rights checked? *Rubric:* 3 = twice a year; 2 = one; 1 = vague; 0 = none.
 
 ### Synthesis
 

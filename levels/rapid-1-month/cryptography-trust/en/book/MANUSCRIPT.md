@@ -154,15 +154,15 @@ Permission does not make careless work safe. Rules on personal data vary by coun
 - **EX014 — Scan refusal.** Why did Inês stop Leo scanning the network? *Rubric:* 3 = no permission; could be illegal, break devices or affect partners;; 2 = one reason;; 1 = fine to scan;; 0 = none.
 - **EX015 — Who grants permission.** Who signs Leo's permission note? *Rubric:* 3 = the library manager;; 2 = manager;; 1 = Leo;; 0 = none.
 - **EX016 — Allowed checks.** List two checks Leo may do. *Rubric:* 3 = two of read website certificate, check laptop disk encryption, review password policy;; 2 = one;; 1 = scan network;; 0 = none.
-- **EX017 — Forbidden actions.** Name two actions outside Leo's scope. *Rubric:* 3 = two of scanning, trying passwords, supplier systems, council Wi-Fi equipment;; 2 = one;; 1 = none;; 0 = none.
-- **EX018 — Small scope benefit.** What does a small scope give a beginner? *Rubric:* 3 = a safe, finishable first task;; 2 = safe;; 1 = none;; 0 = none.
+- **EX017 — Forbidden actions.** Name two actions outside Leo's scope. *Rubric:* 3 = two of scanning, trying passwords, supplier systems, council Wi-Fi equipment;; 2 = one;; 1 = vague;; 0 = none.
+- **EX018 — Small scope benefit.** What does a small scope give a beginner? *Rubric:* 3 = a safe, finishable first task;; 2 = safe;; 1 = vague;; 0 = none.
 - **EX019 — Member record seen.** What should Leo do if a member's record appears on screen? *Rubric:* 3 = look only at what the task needs, close it and not copy it;; 2 = close it;; 1 = copy it;; 0 = none.
 - **EX020 — Sticky note.** How should Leo record a password found on a sticky note? *Rubric:* 3 = location and type only, then tell Inês to change it;; 2 = location;; 1 = writes password;; 0 = none.
 - **EX021 — Report contents.** What should Leo's report include? *Rubric:* 3 = what, where, when, why it matters and a next step;; 2 = three;; 1 = vague;; 0 = none.
 - **EX022 — Wrong audience.** Who should not hear about a weakness first? *Rubric:* 3 = friends or social media;; 2 = names;; 1 = the manager;; 0 = none.
 - **EX023 — Platform weakness.** How should a weakness in the e-book platform be handled? *Rubric:* 3 = coordinated disclosure to the supplier through the library;; 2 = supplier;; 1 = post online;; 0 = none.
-- **EX024 — Coordinated disclosure name.** What is the private-first reporting path called? *Rubric:* 3 = coordinated disclosure;; 2 = named;; 1 = none;; 0 = none.
-- **EX025 — Kiosk risk.** Which fragile device could an unapproved scan disrupt? *Rubric:* 3 = the old self-service kiosk;; 2 = kiosk;; 1 = none;; 0 = none.
+- **EX024 — Coordinated disclosure name.** What is the private-first reporting path called? *Rubric:* 3 = coordinated disclosure;; 2 = named;; 1 = vague;; 0 = none.
+- **EX025 — Kiosk risk.** Which fragile device could an unapproved scan disrupt? *Rubric:* 3 = the old self-service kiosk;; 2 = kiosk;; 1 = vague;; 0 = none.
 - **EX026 — Protection of asking.** Whom does asking permission protect? *Rubric:* 3 = the library, its members and Leo;; 2 = two;; 1 = nobody;; 0 = none.
 
 ### Synthesis
@@ -244,8 +244,8 @@ A shared Wi-Fi password gives limited protection between users. Supplier promise
 - **EX034 — Supplier key.** Who holds the email signing key? *Rubric:* 3 = the newsletter platform;; 2 = platform;; 1 = library;; 0 = none.
 - **EX035 — Checking a supplier.** Where can the library check a supplier's promises? *Rubric:* 3 = its security page or contract;; 2 = one place;; 1 = nowhere;; 0 = none.
 - **EX036 — Past outage cause.** Why did the library website show warnings last year? *Rubric:* 3 = the host's automatic renewal failed silently and the certificate expired;; 2 = expired;; 1 = hacked;; 0 = none.
-- **EX037 — Purpose of expiry.** Give one reason certificates expire. *Rubric:* 3 = limits use of a stolen key or forces refresh of settings;; 2 = one;; 1 = none;; 0 = none.
-- **EX038 — Calendar reminders.** How far ahead does Inês set expiry reminders? *Rubric:* 3 = a month;; 2 = month;; 1 = none;; 0 = none.
+- **EX037 — Purpose of expiry.** Give one reason certificates expire. *Rubric:* 3 = limits use of a stolen key or forces refresh of settings;; 2 = one;; 1 = vague;; 0 = none.
+- **EX038 — Calendar reminders.** How far ahead does Inês set expiry reminders? *Rubric:* 3 = a month;; 2 = month;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -319,11 +319,11 @@ A fingerprint from the same website as the file proves only that the two match. 
 - **EX043 — Same-site weakness.** When could a fingerprint check be fooled? *Rubric:* 3 = if an attacker changed both file and fingerprint on the same site;; 2 = both changed;; 1 = never;; 0 = none.
 - **EX044 — Signed releases.** Why do some projects also sign releases? *Rubric:* 3 = forging a signature needs the project's private key;; 2 = private key;; 1 = no reason;; 0 = none.
 - **EX045 — Mismatch action.** What should Leo do after a mismatch? *Rubric:* 3 = stop, do not install, download again from the official site, tell Inês if it fails again;; 2 = stop;; 1 = install anyway;; 0 = none.
-- **EX046 — Staged install.** Why is the tool installed on one laptop first? *Rubric:* 3 = a match does not prove the software is safe;; 2 = caution;; 1 = none;; 0 = none.
-- **EX047 — Earlier findings.** List the three earlier findings in Leo's summary. *Rubric:* 3 = sticky note password, expiry calendar, certificate warning advice;; 2 = two;; 1 = none;; 0 = none.
-- **EX048 — Admitted unknowns.** Name two topics Leo knows he has not learnt yet. *Rubric:* 3 = two of TLS key negotiation, certificate issuance, long-term key management;; 2 = one;; 1 = none;; 0 = none.
-- **EX049 — Free reading.** Which reference does Inês recommend with free chapters online? *Rubric:* 3 = Handbook of Applied Cryptography by Menezes, van Oorschot and Vanstone;; 2 = title;; 1 = none;; 0 = none.
-- **EX050 — Next course.** What course does Inês suggest next? *Rubric:* 3 = the Professional course;; 2 = named;; 1 = none;; 0 = none.
+- **EX046 — Staged install.** Why is the tool installed on one laptop first? *Rubric:* 3 = a match does not prove the software is safe;; 2 = caution;; 1 = vague;; 0 = none.
+- **EX047 — Earlier findings.** List the three earlier findings in Leo's summary. *Rubric:* 3 = sticky note password, expiry calendar, certificate warning advice;; 2 = two;; 1 = vague;; 0 = none.
+- **EX048 — Admitted unknowns.** Name two topics Leo knows he has not learnt yet. *Rubric:* 3 = two of TLS key negotiation, certificate issuance, long-term key management;; 2 = one;; 1 = vague;; 0 = none.
+- **EX049 — Free reading.** Which reference does Inês recommend with free chapters online? *Rubric:* 3 = Handbook of Applied Cryptography by Menezes, van Oorschot and Vanstone;; 2 = title;; 1 = vague;; 0 = none.
+- **EX050 — Next course.** What course does Inês suggest next? *Rubric:* 3 = the Professional course;; 2 = named;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

@@ -73,7 +73,7 @@ Presenting a security decision with false precision hides uncertainty that leade
 - **EX001 — Corran admins.** How many administrator accounts does Corran have, and how many are shared? *Rubric:* 3 = eight, two shared by night shift;; 2 = eight;; 1 = two;; 0 = none.
 - **EX002 — Uncertainty handling.** How does Marta handle uncertain likelihoods? *Rubric:* 3 = ranges and scenarios, not false precision;; 2 = scenarios;; 1 = exact numbers;; 0 = none.
 - **EX003 — Three faces.** What are the three faces of every option? *Rubric:* 3 = risk reduction, cost, disruption;; 2 = two;; 1 = one;; 0 = none.
-- **EX004 — Disruption example.** Give an example of disruption from privileged access controls. *Rubric:* 3 = warehouse update delayed by an access request;; 2 = delay;; 1 = none;; 0 = none.
+- **EX004 — Disruption example.** Give an example of disruption from privileged access controls. *Rubric:* 3 = warehouse update delayed by an access request;; 2 = delay;; 1 = vague;; 0 = none.
 - **EX005 — Decision record fields.** Name four fields in Marta's decision record. *Rubric:* 3 = question, options, criteria, evidence, decision, owner, review trigger (four);; 2 = three;; 1 = one;; 0 = none.
 
 ### Synthesis
@@ -238,7 +238,7 @@ Recording all administrator screens by default damages trust and collects far mo
 
 - **EX016 — Shared account impact.** Why is the shared night-shift account high impact? *Rubric:* 3 = actions cannot be traced to a person;; 2 = untraceable;; 1 = cost;; 0 = none.
 - **EX017 — Monitoring focus.** What does Marta's monitoring focus on? *Rubric:* 3 = actions such as off-window elevation and security setting changes;; 2 = actions;; 1 = keystrokes;; 0 = none.
-- **EX018 — Protection framing.** How does ending the shared account protect honest staff? *Rubric:* 3 = records show who did what, avoiding suspicion on all;; 2 = attribution;; 1 = none;; 0 = none.
+- **EX018 — Protection framing.** How does ending the shared account protect honest staff? *Rubric:* 3 = records show who did what, avoiding suspicion on all;; 2 = attribution;; 1 = vague;; 0 = none.
 - **EX019 — Log retention.** How long are privileged activity logs kept? *Rubric:* 3 = one year;; 2 = year;; 1 = forever;; 0 = none.
 - **EX020 — Log access.** Who may access privileged activity logs? *Rubric:* 3 = security lead and auditors, with access recorded;; 2 = limited;; 1 = everyone;; 0 = none.
 
@@ -371,10 +371,10 @@ Treating every out-of-window activation as misconduct ignores genuine emergencie
 
 ### Exercises
 
-- **EX026 — Pilot comparison.** How is the pilot comparison structured? *Rubric:* 3 = four admins on Design B, four unchanged, same weeks;; 2 = two groups;; 1 = none;; 0 = none.
+- **EX026 — Pilot comparison.** How is the pilot comparison structured? *Rubric:* 3 = four admins on Design B, four unchanged, same weeks;; 2 = two groups;; 1 = vague;; 0 = none.
 - **EX027 — Elevation time.** What is the median time to obtain elevation? *Rubric:* 3 = under two minutes;; 2 = minutes;; 1 = hours;; 0 = none.
 - **EX028 — Key fix.** How was the forgotten key problem solved? *Rubric:* 3 = second key kept in the office safe;; 2 = spare key;; 1 = password;; 0 = none.
-- **EX029 — Off-window count.** How many activations fall outside windows in the lab? *Rubric:* 3 = three of ten;; 2 = three;; 1 = none;; 0 = none.
+- **EX029 — Off-window count.** How many activations fall outside windows in the lab? *Rubric:* 3 = three of ten;; 2 = three;; 1 = vague;; 0 = none.
 - **EX030 — Off-window outcomes.** What did review find about the out-of-window activations? *Rubric:* 3 = two emergencies, one routine task to schedule;; 2 = mostly legitimate;; 1 = misconduct;; 0 = none.
 
 ### Synthesis
@@ -421,11 +421,11 @@ Introducing just-in-time elevation without linking it to change management loses
 
 ### Exercises
 
-- **EX031 — Change link.** How is elevation linked to change management? *Rubric:* 3 = requests name the change ticket; windows auto-approve;; 2 = tickets;; 1 = none;; 0 = none.
+- **EX031 — Change link.** How is elevation linked to change management? *Rubric:* 3 = requests name the change ticket; windows auto-approve;; 2 = tickets;; 1 = vague;; 0 = none.
 - **EX032 — Leaver admin.** When are a leaving administrator's account and keys removed? *Rubric:* 3 = same day as HR records it;; 2 = same day;; 1 = month;; 0 = none.
 - **EX033 — Tabletop finding.** What did the tabletop exercise reveal? *Rubric:* 3 = nobody knew night-time vault release procedure;; 2 = vault;; 1 = nothing;; 0 = none.
-- **EX034 — Owners named.** Name two owners in the design. *Rubric:* 3 = IT manager, security lead, HR, operations director (two);; 2 = one;; 1 = none;; 0 = none.
-- **EX035 — Training contents.** Name two topics in administrator training. *Rubric:* 3 = why, how to request, what is monitored, lost keys (two);; 2 = one;; 1 = none;; 0 = none.
+- **EX034 — Owners named.** Name two owners in the design. *Rubric:* 3 = IT manager, security lead, HR, operations director (two);; 2 = one;; 1 = vague;; 0 = none.
+- **EX035 — Training contents.** Name two topics in administrator training. *Rubric:* 3 = why, how to request, what is monitored, lost keys (two);; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -472,9 +472,9 @@ Pretending a legacy system meets the new design, instead of recording an excepti
 ### Exercises
 
 - **EX036 — Service account alert.** Which activity should alert for a service account? *Rubric:* 3 = interactive sign-in;; 2 = interactive;; 1 = any;; 0 = none.
-- **EX037 — Unused service accounts.** How many service accounts were found unused? *Rubric:* 3 = two;; 2 = 2;; 1 = none;; 0 = none.
+- **EX037 — Unused service accounts.** How many service accounts were found unused? *Rubric:* 3 = two;; 2 = 2;; 1 = vague;; 0 = none.
 - **EX038 — Supplier access window.** When is supplier engineer access enabled? *Rubric:* 3 = only while a support ticket is open;; 2 = ticket;; 1 = always;; 0 = none.
-- **EX039 — Legacy controls.** What compensating controls protect the legacy controller? *Rubric:* 3 = vault, logged release, rotation after use, physical limits;; 2 = vault;; 1 = none;; 0 = none.
+- **EX039 — Legacy controls.** What compensating controls protect the legacy controller? *Rubric:* 3 = vault, logged release, rotation after use, physical limits;; 2 = vault;; 1 = vague;; 0 = none.
 - **EX040 — Risk owner.** Who signs the residual risk list? *Rubric:* 3 = finance director as risk owner;; 2 = director;; 1 = Marta;; 0 = none.
 
 ### Synthesis
@@ -521,10 +521,10 @@ Overclaiming to an insurer, such as saying all privileged access is just-in-time
 
 ### Exercises
 
-- **EX041 — Board figures.** Name two figures in the board report. *Rubric:* 3 = privilege-hours, key coverage, off-window reviews, residual risks (two);; 2 = one;; 1 = none;; 0 = none.
+- **EX041 — Board figures.** Name two figures in the board report. *Rubric:* 3 = privilege-hours, key coverage, off-window reviews, residual risks (two);; 2 = one;; 1 = vague;; 0 = none.
 - **EX042 — Assurance meaning.** What is assurance? *Rubric:* 3 = confidence, based on evidence, that controls work;; 2 = evidence;; 1 = hope;; 0 = none.
 - **EX043 — Auditor recommendation.** What did the auditor recommend? *Rubric:* 3 = test vault emergency release twice a year;; 2 = testing;; 1 = nothing;; 0 = none.
-- **EX044 — Overclaim example.** What overclaim does Marta warn against? *Rubric:* 3 = saying all privileged access is just-in-time;; 2 = all JIT;; 1 = none;; 0 = none.
+- **EX044 — Overclaim example.** What overclaim does Marta warn against? *Rubric:* 3 = saying all privileged access is just-in-time;; 2 = all JIT;; 1 = vague;; 0 = none.
 - **EX045 — Ongoing assurance.** Why must assurance evidence be refreshed? *Rubric:* 3 = controls drift, people change, new systems arrive;; 2 = drift;; 1 = rules;; 0 = none.
 
 ### Synthesis
@@ -575,8 +575,8 @@ Treating a formal model as evidence of how organisations behave confuses logical
 
 - **EX046 — Critical questions.** What four questions does Marta ask of each paper? *Rubric:* 3 = question, method, evidence, applicability;; 2 = three;; 1 = one;; 0 = none.
 - **EX047 — Model limitation.** What can a formal model not show? *Rubric:* 3 = how organisations actually behave;; 2 = behaviour;; 1 = logic;; 0 = none.
-- **EX048 — Herley relevance.** How does Herley's argument help explain Corran? *Rubric:* 3 = admins resisted costly controls without visible benefit;; 2 = friction;; 1 = none;; 0 = none.
-- **EX049 — Research gap.** What further research does Marta suggest? *Rubric:* 3 = privileged access practices in small and medium organisations;; 2 = SMEs;; 1 = none;; 0 = none.
+- **EX048 — Herley relevance.** How does Herley's argument help explain Corran? *Rubric:* 3 = admins resisted costly controls without visible benefit;; 2 = friction;; 1 = vague;; 0 = none.
+- **EX049 — Research gap.** What further research does Marta suggest? *Rubric:* 3 = privileged access practices in small and medium organisations;; 2 = SMEs;; 1 = vague;; 0 = none.
 - **EX050 — Critique tone.** What should a good critique focus on? *Rubric:* 3 = what evidence can and cannot show, fairly and constructively;; 2 = evidence;; 1 = authors;; 0 = none.
 
 ### Synthesis
@@ -625,7 +625,7 @@ Reporting only intended outcomes hides side effects that point to the next impro
 
 - **EX051 — Rollout privilege-hours.** What were standing privilege-hours after rollout? *Rubric:* 3 = about 22 per week, from 1,344;; 2 = 22;; 1 = 18.5;; 0 = none.
 - **EX052 — Higher than pilot.** Why were rollout hours higher than the pilot estimate? *Rubric:* 3 = two incident weeks;; 2 = incidents;; 1 = error;; 0 = none.
-- **EX053 — Positive side effect.** What positive side effect did administrators report? *Rubric:* 3 = thinking twice caught two mistakes;; 2 = fewer mistakes;; 1 = none;; 0 = none.
+- **EX053 — Positive side effect.** What positive side effect did administrators report? *Rubric:* 3 = thinking twice caught two mistakes;; 2 = fewer mistakes;; 1 = vague;; 0 = none.
 - **EX054 — Night-shift fix.** What addresses night-shift key delays? *Rubric:* 3 = spare keys at each warehouse;; 2 = spare keys;; 1 = passwords;; 0 = none.
 - **EX055 — Hindsight.** What would Marta start earlier? *Rubric:* 3 = service account work;; 2 = service accounts;; 1 = nothing;; 0 = none.
 
@@ -673,11 +673,11 @@ Ending a project without sustaining routines lets standing privilege creep back 
 
 ### Exercises
 
-- **EX056 — Post-rollout limit.** Name one limit Marta states in the final review. *Rubric:* 3 = eight weeks of data, one organisation, legacy system (one);; 2 = one;; 1 = none;; 0 = none.
+- **EX056 — Post-rollout limit.** Name one limit Marta states in the final review. *Rubric:* 3 = eight weeks of data, one organisation, legacy system (one);; 2 = one;; 1 = vague;; 0 = none.
 - **EX057 — Register owner.** Who owns the residual risk register after transfer? *Rubric:* 3 = finance director;; 2 = director;; 1 = Marta;; 0 = none.
-- **EX058 — Sustaining routines.** Name two sustaining routines. *Rubric:* 3 = quarterly identity review, six-monthly vault test, yearly training, new-system check (two);; 2 = one;; 1 = none;; 0 = none.
+- **EX058 — Sustaining routines.** Name two sustaining routines. *Rubric:* 3 = quarterly identity review, six-monthly vault test, yearly training, new-system check (two);; 2 = one;; 1 = vague;; 0 = none.
 - **EX059 — Creep warning.** What happens without sustaining routines? *Rubric:* 3 = standing privilege creeps back;; 2 = drift;; 1 = nothing;; 0 = none.
-- **EX060 — Sharing plan.** How will Marta share her findings beyond Corran? *Rubric:* 3 = anonymised summary to a regional practitioner group;; 2 = practitioners;; 1 = none;; 0 = none.
+- **EX060 — Sharing plan.** How will Marta share her findings beyond Corran? *Rubric:* 3 = anonymised summary to a regional practitioner group;; 2 = practitioners;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

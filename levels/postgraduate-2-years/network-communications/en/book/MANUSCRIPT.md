@@ -269,7 +269,7 @@ Ignoring third-party harm because it does not affect one's own customers neglect
 
 - **EX016 — Benefit of ingress filtering.** Who mainly benefits from Fenwick Valley's ingress filtering? *Rubric:* 3 = other networks targeted by spoofed traffic;; 2 = others;; 1 = own customers;; 0 = none.
 - **EX017 — Conflict handling.** How was the director's conflict handled? *Rubric:* 3 = disclosed, director stepped back from decision;; 2 = stepped back;; 1 = ignored;; 0 = none.
-- **EX018 — Own bias.** What bias did Marta disclose about herself? *Rubric:* 3 = placement assessment tempts recommending change;; 2 = assessment;; 1 = none;; 0 = none.
+- **EX018 — Own bias.** What bias did Marta disclose about herself? *Rubric:* 3 = placement assessment tempts recommending change;; 2 = assessment;; 1 = vague;; 0 = none.
 - **EX019 — Proportionate validation.** Why mark invalid routes before rejecting them? *Rubric:* 3 = learn error rate first; proportionate;; 2 = gradual;; 1 = faster;; 0 = none.
 - **EX020 — Customer notice content.** Name three elements of the customer notice. *Rubric:* 3 = what changes, why, how to get help or how few affected;; 2 = two;; 1 = one;; 0 = none.
 
@@ -355,7 +355,7 @@ Moving straight to rejection without knowing error rates risks dropping legitima
 - **EX021 — Validation counts.** What counts does the validation lab report? *Rubric:* 3 = 4 valid, 3 invalid, 1 not found;; 2 = counts;; 1 = partial;; 0 = none.
 - **EX022 — Maximum length case.** Why is the /25 announcement invalid? *Rubric:* 3 = more specific than ROA maximum length /24;; 2 = too specific;; 1 = wrong AS;; 0 = none.
 - **EX023 — Not found meaning.** What does "not found" mean for an announcement? *Rubric:* 3 = no ROA covers the prefix;; 2 = no record;; 1 = invalid;; 0 = none.
-- **EX024 — Own records review.** Why review the provider's own published authorisations? *Rubric:* 3 = errors would make others reject its routes;; 2 = own reachability;; 1 = none;; 0 = none.
+- **EX024 — Own records review.** Why review the provider's own published authorisations? *Rubric:* 3 = errors would make others reject its routes;; 2 = own reachability;; 1 = vague;; 0 = none.
 - **EX025 — Rejection criteria.** What should be decided before moving to rejection? *Rubric:* 3 = success criteria and reversal procedure;; 2 = criteria;; 1 = nothing;; 0 = none.
 
 ### Synthesis
@@ -431,7 +431,7 @@ Enforcing filters without a counting period risks disrupting customers with unus
 - **EX026 — Drop share.** What share of the synthetic sample would be dropped? *Rubric:* 3 = 3 of 10, 30 percent, with sources;; 2 = 30%;; 1 = some;; 0 = none.
 - **EX027 — Private source.** What does a private source address from c3 suggest? *Rubric:* 3 = misconfigured customer router;; 2 = misconfiguration;; 1 = attack;; 0 = none.
 - **EX028 — Counting mode.** What does counting mode do? *Rubric:* 3 = records matches without dropping;; 2 = counts;; 1 = blocks;; 0 = none.
-- **EX029 — Stopping condition.** Give the trial's stopping condition. *Rubric:* 3 = ticket spike above threshold returns to counting;; 2 = spike;; 1 = none;; 0 = none.
+- **EX029 — Stopping condition.** Give the trial's stopping condition. *Rubric:* 3 = ticket spike above threshold returns to counting;; 2 = spike;; 1 = vague;; 0 = none.
 - **EX030 — Unmeasured benefit.** What can the trial not measure directly? *Rubric:* 3 = benefit to other networks;; 2 = others' benefit;; 1 = cost;; 0 = none.
 
 ### Synthesis
@@ -483,10 +483,10 @@ Controls owned only by a project member fade when the project ends.
 ### Exercises
 
 - **EX031 — Process reuse.** Why add tasks to existing processes rather than create new ones? *Rubric:* 3 = durability after placement, familiar to team;; 2 = durability;; 1 = speed;; 0 = none.
-- **EX032 — Shared contact role.** Why name a second external contact for route validation? *Rubric:* 3 = cover holidays and absences;; 2 = cover;; 1 = none;; 0 = none.
+- **EX032 — Shared contact role.** Why name a second external contact for route validation? *Rubric:* 3 = cover holidays and absences;; 2 = cover;; 1 = vague;; 0 = none.
 - **EX033 — Parallel tunnel.** How does a parallel tunnel reduce partner risk? *Rubric:* 3 = old tunnel remains as fallback until new confirmed;; 2 = fallback;; 1 = faster;; 0 = none.
 - **EX034 — Task-based training.** Why base training on actual tasks? *Rubric:* 3 = more effective and supports runbooks for later;; 2 = practical;; 1 = cheaper;; 0 = none.
-- **EX035 — Integration indicator.** Give one indicator that changes have become routine. *Rubric:* 3 = reports reviewed on time, tickets closed, migrations on schedule;; 2 = one;; 1 = none;; 0 = none.
+- **EX035 — Integration indicator.** Give one indicator that changes have become routine. *Rubric:* 3 = reports reviewed on time, tickets closed, migrations on schedule;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -645,7 +645,7 @@ Citing a paper for a claim it does not make misleads readers and damages credibi
 ### Exercises
 
 - **EX046 — Reading notes.** List four items Marta records for each paper. *Rubric:* 3 = question, data, method, findings or limits;; 2 = three;; 1 = fewer;; 0 = none.
-- **EX047 — Vantage point limit.** Why do internet measurement studies have vantage point limits? *Rubric:* 3 = observe from few locations, may miss behaviour elsewhere;; 2 = limited view;; 1 = none;; 0 = none.
+- **EX047 — Vantage point limit.** Why do internet measurement studies have vantage point limits? *Rubric:* 3 = observe from few locations, may miss behaviour elsewhere;; 2 = limited view;; 1 = vague;; 0 = none.
 - **EX048 — Base-rate relevance.** How does Axelsson's paper apply to routing anomaly tools? *Rubric:* 3 = rare events make false alarms dominate;; 2 = false alarms;; 1 = not relevant;; 0 = none.
 - **EX049 — Specific criticism.** Rewrite "the study is weak" as a specific criticism. *Rubric:* 3 = names the limit and its effect on applicability;; 2 = specific;; 1 = still vague;; 0 = none.
 - **EX050 — Thin research response.** What should a synthesis do where research is thin? *Rubric:* 3 = say so, rely on labelled practitioner experience;; 2 = state it;; 1 = invent;; 0 = none.
@@ -699,10 +699,10 @@ Reporting only met criteria hides information directors need to manage remaining
 ### Exercises
 
 - **EX051 — VPN outcome.** How many peers use IKEv2 with certificates at the end? *Rubric:* 3 = seven of eight, partner link pending;; 2 = seven;; 1 = all;; 0 = none.
-- **EX052 — Filter matches.** How did filter matches change after corrections? *Rubric:* 3 = forty to three customers;; 2 = fell;; 1 = none;; 0 = none.
+- **EX052 — Filter matches.** How did filter matches change after corrections? *Rubric:* 3 = forty to three customers;; 2 = fell;; 1 = vague;; 0 = none.
 - **EX053 — Runbook test.** How were runbooks tested? *Rubric:* 3 = engineer followed them unaided, two steps fixed;; 2 = tried;; 1 = reviewed;; 0 = none.
-- **EX054 — Unmet criterion.** Which criterion was not fully met, and why? *Rubric:* 3 = partner link, coordination delay;; 2 = partner link;; 1 = none;; 0 = none.
-- **EX055 — Reflection change.** Name one thing Marta would do differently. *Rubric:* 3 = start counting trial earlier or involve support sooner;; 2 = one;; 1 = none;; 0 = none.
+- **EX054 — Unmet criterion.** Which criterion was not fully met, and why? *Rubric:* 3 = partner link, coordination delay;; 2 = partner link;; 1 = vague;; 0 = none.
+- **EX055 — Reflection change.** Name one thing Marta would do differently. *Rubric:* 3 = start counting trial earlier or involve support sooner;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -755,7 +755,7 @@ Projects that end without formal transfer leave controls unowned.
 - **EX056 — Staging limit.** When does lower preference not protect customers? *Rubric:* 3 = invalid route is the only path;; 2 = only path;; 1 = never;; 0 = none.
 - **EX057 — Formal acceptance.** What does each owner's acceptance list? *Rubric:* 3 = documentation, open items, review dates;; 2 = documentation;; 1 = nothing;; 0 = none.
 - **EX058 — Improvement items.** Name two items in the improvement plan. *Rubric:* 3 = rejection decision, new sites, business filtering review, reciprocal review;; 2 = two;; 1 = one;; 0 = none.
-- **EX059 — Transferable lesson.** State one lesson for other small providers. *Rubric:* 3 = stage and measure, communicate, integrate with owners;; 2 = one;; 1 = none;; 0 = none.
+- **EX059 — Transferable lesson.** State one lesson for other small providers. *Rubric:* 3 = stage and measure, communicate, integrate with owners;; 2 = one;; 1 = vague;; 0 = none.
 - **EX060 — Practice change.** How did Marta's judgement of changes evolve? *Rubric:* 3 = beyond technical correctness to risk, evidence and durability;; 2 = broader;; 1 = unchanged;; 0 = none.
 
 ### Synthesis

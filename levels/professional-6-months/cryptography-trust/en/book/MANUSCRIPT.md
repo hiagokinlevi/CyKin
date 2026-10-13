@@ -67,7 +67,7 @@ The three goals simplify; some mechanisms serve several at once. Context changes
 
 - **EX001 — Analyst duties.** What does Dana's role at Copperleaf involve? *Rubric:* 3 = running repeatable checks, recording evidence and explaining findings, not designing cryptography;; 2 = partial;; 1 = designs ciphers;; 0 = none.
 - **EX002 — Signature and secrecy.** Does a digital signature on an invoice keep it confidential? *Rubric:* 3 = no; it gives integrity and authenticity, not confidentiality;; 2 = says no;; 1 = says yes;; 0 = none.
-- **EX003 — Harm to availability.** Give one way cryptography can reduce availability. *Rubric:* 3 = expired certificate or lost encryption key;; 2 = one example;; 1 = none;; 0 = none.
+- **EX003 — Harm to availability.** Give one way cryptography can reduce availability. *Rubric:* 3 = expired certificate or lost encryption key;; 2 = one example;; 1 = vague;; 0 = none.
 - **EX004 — Biggest incident.** What was Bayside's biggest recent incident, and what does it teach? *Rubric:* 3 = phishing; cryptography is one control among many;; 2 = names phishing;; 1 = names cipher;; 0 = none.
 - **EX005 — Weighting findings.** Why might an expired certificate outrank a cipher setting? *Rubric:* 3 = patients see warnings and service fails; impact matters more than theoretical strength;; 2 = impact;; 1 = always equal;; 0 = none.
 
@@ -112,7 +112,7 @@ Owner tables go stale when suppliers change. Plain language must not drop facts 
 ### Exercises
 
 - **EX006 — Patient concern.** What do patients care about most in the booking site's cryptography? *Rubric:* 3 = privacy and no browser warnings;; 2 = one;; 1 = cost;; 0 = none.
-- **EX007 — Two practical questions.** Which two questions does the owner table answer? *Rubric:* 3 = who must approve a change and who can make it;; 2 = one;; 1 = none;; 0 = none.
+- **EX007 — Two practical questions.** Which two questions does the owner table answer? *Rubric:* 3 = who must approve a change and who can make it;; 2 = one;; 1 = vague;; 0 = none.
 - **EX008 — Wasted day.** Why did Dana once waste a day on a certificate? *Rubric:* 3 = only the agency could renew it and she had not recorded the supplier;; 2 = supplier;; 1 = bad luck;; 0 = none.
 - **EX009 — Manager wording.** Rewrite incomplete certificate chain for the clinic manager. *Rubric:* 3 = some patients see warnings because a proving file is missing; agency can fix quickly;; 2 = warning effect;; 1 = technical only;; 0 = none.
 - **EX010 — Where details go.** Where does the technical detail of the finding go? *Rubric:* 3 = an appendix for the agency or technical reader;; 2 = appendix;; 1 = deleted;; 0 = none.
@@ -330,9 +330,9 @@ Monthly cycles miss short-lived problems between runs. Transparency logs cover p
 
 ### Exercises
 
-- **EX026 — Step three purpose.** Why check transparency logs in the monthly workflow? *Rubric:* 3 = to find certificates issued for client domains not in the inventory;; 2 = unlisted certs;; 1 = none;; 0 = none.
+- **EX026 — Step three purpose.** Why check transparency logs in the monthly workflow? *Rubric:* 3 = to find certificates issued for client domains not in the inventory;; 2 = unlisted certs;; 1 = vague;; 0 = none.
 - **EX027 — Closing rule.** When may a finding move to closed? *Rubric:* 3 = only after Dana verifies the fix herself;; 2 = verification;; 1 = when owner says;; 0 = none.
-- **EX028 — Half-fix.** What half-fix did Dana's retest catch? *Rubric:* 3 = intermediate still missing on one of two load-balanced servers;; 2 = one server;; 1 = none;; 0 = none.
+- **EX028 — Half-fix.** What half-fix did Dana's retest catch? *Rubric:* 3 = intermediate still missing on one of two load-balanced servers;; 2 = one server;; 1 = vague;; 0 = none.
 - **EX029 — Laptop handoff.** Who receives a laptop disk-encryption finding? *Rubric:* 3 = Copperleaf's desktop team;; 2 = desktop team;; 1 = agency;; 0 = none.
 - **EX030 — Propose not order.** Why does Marcus advise proposing fixes rather than ordering them? *Rubric:* 3 = suppliers who understand the reason act faster;; 2 = understanding;; 1 = no reason;; 0 = none.
 
@@ -399,11 +399,11 @@ Lab logic checks do not prove production code matches. Refusal of one old versio
 
 ### Exercises
 
-- **EX031 — Replay window.** What age limit does the verifier enforce on notifications? *Rubric:* 3 = five minutes (300 seconds);; 2 = five minutes;; 1 = none;; 0 = none.
+- **EX031 — Replay window.** What age limit does the verifier enforce on notifications? *Rubric:* 3 = five minutes (300 seconds);; 2 = five minutes;; 1 = vague;; 0 = none.
 - **EX032 — Changed amount.** What did the lab report for the notification with a changed amount? *Rubric:* 3 = rejected (False) because the tag no longer matched;; 2 = rejected;; 1 = accepted;; 0 = none.
 - **EX033 — TLS 1.1 probe.** How does Dana check that TLS 1.1 is refused? *Rubric:* 3 = openssl s_client with -tls1_1 and expect handshake failure;; 2 = command;; 1 = assumes;; 0 = none.
 - **EX034 — Imaging workstation.** What does Dana do about the untestable imaging workstation? *Rubric:* 3 = records the gap honestly instead of assuming;; 2 = records gap;; 1 = assumes fine;; 0 = none.
-- **EX035 — Banned words.** Which words does Marcus check for in statements, and why? *Rubric:* 3 = secure or compliant, because they claim more than tests show;; 2 = words named;; 1 = none;; 0 = none.
+- **EX035 — Banned words.** Which words does Marcus check for in statements, and why? *Rubric:* 3 = secure or compliant, because they claim more than tests show;; 2 = words named;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -562,11 +562,11 @@ Lab timing varies by machine; it shows relative cost, not attacker speed. Upgrad
 
 ### Exercises
 
-- **EX046 — Unsalted weakness.** Name two problems with unsalted SHA-256 password storage. *Rubric:* 3 = fast to guess and identical passwords share hashes;; 2 = one;; 1 = none;; 0 = none.
+- **EX046 — Unsalted weakness.** Name two problems with unsalted SHA-256 password storage. *Rubric:* 3 = fast to guess and identical passwords share hashes;; 2 = one;; 1 = vague;; 0 = none.
 - **EX047 — Lab equal passwords.** What did the PBKDF2 lab show for two staff with the same password? *Rubric:* 3 = stored values differed because salts differed;; 2 = differed;; 1 = same;; 0 = none.
 - **EX048 — Lab cost ratio.** According to the lab, how did PBKDF2 cost compare with one SHA-256? *Rubric:* 3 = over 10,000 times slower per guess, as printed;; 2 = slower;; 1 = faster;; 0 = none.
 - **EX049 — Production caveat.** What does the lab not prove about the agency's fix? *Rubric:* 3 = that production code implements it correctly; needs review;; 2 = code review;; 1 = proves all;; 0 = none.
-- **EX050 — Retrospective rule.** Which rule came from the retrospective? *Rubric:* 3 = test load-balanced endpoints once per backend;; 2 = rule;; 1 = none;; 0 = none.
+- **EX050 — Retrospective rule.** Which rule came from the retrospective? *Rubric:* 3 = test load-balanced endpoints once per backend;; 2 = rule;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -609,10 +609,10 @@ Labs cannot reproduce every production difference, such as provider caching. A r
 ### Exercises
 
 - **EX051 — What to mirror.** What matters most to mirror in the lab, and why? *Rubric:* 3 = configuration such as paths, chain order and reload behaviour, where renewal risk lies;; 2 = configuration;; 1 = content;; 0 = none.
-- **EX052 — Deliberate fault.** Which fault did Dana reproduce on purpose? *Rubric:* 3 = the chain installed in the wrong order;; 2 = chain order;; 1 = none;; 0 = none.
-- **EX053 — Renewal timing.** How long did the rehearsed renewal take, and how much was reload risk? *Rubric:* 3 = twelve minutes, two minutes of reload risk;; 2 = one figure;; 1 = none;; 0 = none.
+- **EX052 — Deliberate fault.** Which fault did Dana reproduce on purpose? *Rubric:* 3 = the chain installed in the wrong order;; 2 = chain order;; 1 = vague;; 0 = none.
+- **EX053 — Renewal timing.** How long did the rehearsed renewal take, and how much was reload risk? *Rubric:* 3 = twelve minutes, two minutes of reload risk;; 2 = one figure;; 1 = vague;; 0 = none.
 - **EX054 — Lab key deletion.** Why delete the lab authority's private key at closure? *Rubric:* 3 = so nobody can issue certificates that a machine still trusting the root would accept;; 2 = trust risk;; 1 = tidiness;; 0 = none.
-- **EX055 — Lesson carried over.** Name one lesson recorded for the real change. *Rubric:* 3 = check chain order explicitly;; 2 = lesson;; 1 = none;; 0 = none.
+- **EX055 — Lesson carried over.** Name one lesson recorded for the real change. *Rubric:* 3 = check chain order explicitly;; 2 = lesson;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -679,9 +679,9 @@ Six months of one client is a small sample for trends. Portfolios must stay anon
 
 - **EX056 — Why a portfolio.** Why does Marcus value a portfolio over a list of certificates? *Rubric:* 3 = it shows judgement in messy, uncertain situations;; 2 = judgement;; 1 = same;; 0 = none.
 - **EX057 — Commonest category.** According to the trends lab, which category had the most findings? *Rubric:* 3 = expiry/chain issues, as printed in the run;; 2 = category;; 1 = wrong;; 0 = none.
-- **EX058 — Longest open.** Which finding stayed open longest, and why? *Rubric:* 3 = the weak-key finding, needing a server replacement;; 2 = finding;; 1 = none;; 0 = none.
-- **EX059 — Admitted gaps.** Name two gaps Dana admits in her review. *Rubric:* 3 = two of no incident leadership, relies on mentor for unusual ratings, little PQC knowledge;; 2 = one;; 1 = none;; 0 = none.
-- **EX060 — PQC standards.** Which NIST post-quantum standards does her plan include? *Rubric:* 3 = FIPS 203, 204 and 205;; 2 = two;; 1 = none;; 0 = none.
+- **EX058 — Longest open.** Which finding stayed open longest, and why? *Rubric:* 3 = the weak-key finding, needing a server replacement;; 2 = finding;; 1 = vague;; 0 = none.
+- **EX059 — Admitted gaps.** Name two gaps Dana admits in her review. *Rubric:* 3 = two of no incident leadership, relies on mentor for unusual ratings, little PQC knowledge;; 2 = one;; 1 = vague;; 0 = none.
+- **EX060 — PQC standards.** Which NIST post-quantum standards does her plan include? *Rubric:* 3 = FIPS 203, 204 and 205;; 2 = two;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

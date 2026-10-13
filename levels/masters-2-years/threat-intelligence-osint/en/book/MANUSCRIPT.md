@@ -145,7 +145,7 @@ Treating every feed as "intelligence" confuses data with analysis. OSINT legalit
 - **EX008 — Broken stage.** Which intelligence-cycle stages most often break in a SOC, and why? *Rubric:* 3 = direction and feedback, with reason; 2 = one with reason; 1 = collection only; 0 = none.
 - **EX009 — Level call.** Classify "ransomware groups increasingly target logistics firms" by intelligence level. *Rubric:* 3 = strategic (trend for decision-makers); 2 = level only; 1 = tactical; 0 = none.
 - **EX010 — Durable layer.** Why is the ATT&CK mapping more durable than the bulletin's IP list? *Rubric:* 3 = behaviours costlier to change than IPs (Pyramid of Pain); 2 = partial; 1 = IPs more durable; 0 = none.
-- **EX011 — Diamond use.** Give a pivot the Diamond Model enables with the phishing bulletin's sender domain. *Rubric:* 3 = infrastructure → other events/victims using same domain/registrant; 2 = vague pivot; 1 = none; 0 = none.
+- **EX011 — Diamond use.** Give a pivot the Diamond Model enables with the phishing bulletin's sender domain. *Rubric:* 3 = infrastructure → other events/victims using same domain/registrant; 2 = vague pivot; 1 = minimal attempt; 0 = none.
 - **EX012 — TLP five.** List the five TLP 2.0 labels. *Rubric:* 3 = CLEAR, GREEN, AMBER, AMBER+STRICT, RED; 2 = four; 1 = old WHITE label; 0 = none.
 - **EX013 — Tip-off risk.** Why can careless OSINT collection harm an investigation? *Rubric:* 3 = may alert subject/adversary, causing changes or harm; 2 = vague risk; 1 = no risk; 0 = none.
 - **EX014 — Kill-chain placement.** Where in the kill chain does a phishing email arrive? *Rubric:* 3 = delivery; 2 = adjacent phase with reason; 1 = actions on objectives; 0 = none.
@@ -307,7 +307,7 @@ ACH depends on the hypotheses considered; a missing hypothesis cannot win. Count
 - **EX023 — Non-diagnostic.** Which evidence item is not diagnostic, and why? *Rubric:* 3 = E2; consistent with all hypotheses; 2 = E2 only; 1 = wrong item; 0 = none.
 - **EX024 — Survives, not proven.** Why is "H1 is proven" the wrong conclusion? *Rubric:* 3 = least contradicted only; hypotheses set may be incomplete; evidence limited; 2 = one reason; 1 = it is proven; 0 = none.
 - **EX025 — Scale entry.** Define "likely" on a published team scale and explain why the definition matters. *Rubric:* 3 = numeric range + readers interpret words differently (Kent); 2 = range only; 1 = no range; 0 = none.
-- **EX026 — Trigger.** Write one change trigger that would raise H2. *Rubric:* 3 = specific observable evidence favouring insider; 2 = vague; 1 = none; 0 = none.
+- **EX026 — Trigger.** Write one change trigger that would raise H2. *Rubric:* 3 = specific observable evidence favouring insider; 2 = vague; 1 = minimal attempt; 0 = none.
 - **EX027 — Missing hypothesis.** Propose a fourth hypothesis worth adding. *Rubric:* 3 = plausible distinct hypothesis (e.g. hacktivist, access broker reselling) with reason; 2 = name only; 1 = duplicate; 0 = none.
 - **EX028 — Technique ID.** Give the ATT&CK technique ID for data encrypted for impact. *Rubric:* 3 = T1486; 2 = name only; 1 = wrong ID; 0 = none.
 
@@ -622,7 +622,7 @@ A friend who helped with analysis is not independent. Presenting to the communit
 - **EX050 — Two reviews.** What do the two independent reviewers each check? *Rubric:* 3 = reproducibility of figures + leakage of restricted info; 2 = one; 1 = grammar; 0 = none.
 - **EX051 — Randomisation answer.** Draft a one-sentence viva answer to "why not randomise?" *Rubric:* 3 = cannot assign membership ethically/practically; used before-after and matching; 2 = partial; 1 = unaware; 0 = none.
 - **EX052 — Caption leak.** Why does naming a port's city break the agreement? *Rubric:* 3 = identifies member despite aggregation rule; 2 = privacy vaguely; 1 = harmless; 0 = none.
-- **EX053 — Correction log.** What does a correction-log entry contain? *Rubric:* 3 = what changed, why, date, effect on conclusions; 2 = two; 1 = none; 0 = none.
+- **EX053 — Correction log.** What does a correction-log entry contain? *Rubric:* 3 = what changed, why, date, effect on conclusions; 2 = two; 1 = vague; 0 = none.
 - **EX054 — Community first.** Why present to the board before public defence? *Rubric:* 3 = reciprocity/trust; agreement; chance to check aggregation; 2 = courtesy; 1 = unnecessary; 0 = none.
 - **EX055 — Deletion proof.** After marking, what must Lucía do with raw timings? *Rubric:* 3 = delete as agreed and record deletion; 2 = delete; 1 = keep; 0 = none.
 - **EX056 — Paper recheck.** What must be rechecked before turning the dissertation into a paper? *Rubric:* 3 = board conditions (aggregation, no names) still met in new text/figures; 2 = vague; 1 = nothing; 0 = none.

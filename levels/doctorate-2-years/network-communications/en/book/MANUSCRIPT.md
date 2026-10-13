@@ -92,11 +92,11 @@ Kappa summarises agreement but hides where disagreement lies; always inspect dis
 
 - **EX001 — Error categories.** Define the four rule categories Ines uses and give one decision rule for each. *Rubric:* 3 = all four with clear decision rules;; 2 = four categories without rules;; 1 = fewer than four;; 0 = none.
 - **EX002 — Kappa reading.** Interpret observed agreement 0.90 and kappa 0.86 for a committee. *Rubric:* 3 = explains chance correction and limits;; 2 = explains kappa;; 1 = restates numbers;; 0 = none.
-- **EX003 — Disagreement value.** Why are the four disagreements more useful than the kappa value? *Rubric:* 3 = show where the codebook is ambiguous and lead to fixes;; 2 = mention ambiguity;; 1 = none;; 0 = none.
-- **EX004 — Pseudonymisation.** Explain why partners pseudonymise configurations before sharing. *Rubric:* 3 = network design sensitivity, consistent mapping preserves analysis;; 2 = sensitivity;; 1 = none;; 0 = none.
-- **EX005 — Fixing definitions first.** What bias does fixing definitions before coding prevent? *Rubric:* 3 = post-hoc redefinition to fit results;; 2 = bias;; 1 = none;; 0 = none.
-- **EX006 — Observation boundary.** Why does Ines never probe partner networks? *Rubric:* 3 = authorisation, ethics, risk to operations;; 2 = not allowed;; 1 = none;; 0 = none.
-- **EX007 — Prior work link.** How does Wool (2004) shape the research question? *Rubric:* 3 = prior finding of complexity-error link to test and extend;; 2 = cites;; 1 = none;; 0 = none.
+- **EX003 — Disagreement value.** Why are the four disagreements more useful than the kappa value? *Rubric:* 3 = show where the codebook is ambiguous and lead to fixes;; 2 = mention ambiguity;; 1 = vague;; 0 = none.
+- **EX004 — Pseudonymisation.** Explain why partners pseudonymise configurations before sharing. *Rubric:* 3 = network design sensitivity, consistent mapping preserves analysis;; 2 = sensitivity;; 1 = vague;; 0 = none.
+- **EX005 — Fixing definitions first.** What bias does fixing definitions before coding prevent? *Rubric:* 3 = post-hoc redefinition to fit results;; 2 = bias;; 1 = vague;; 0 = none.
+- **EX006 — Observation boundary.** Why does Ines never probe partner networks? *Rubric:* 3 = authorisation, ethics, risk to operations;; 2 = not allowed;; 1 = vague;; 0 = none.
+- **EX007 — Prior work link.** How does Wool (2004) shape the research question? *Rubric:* 3 = prior finding of complexity-error link to test and extend;; 2 = cites;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -146,12 +146,12 @@ Surveys that list papers without comparing methods and limits do not reveal gaps
 
 ### Exercises
 
-- **EX008 — Guidance gap.** What gap exists between SP 800-41 Rev. 1 and research evidence? *Rubric:* 3 = recommends review but lacks evidence on methods;; 2 = mentions review;; 1 = none;; 0 = none.
-- **EX009 — Base rates.** Explain Axelsson's base-rate point in two sentences. *Rubric:* 3 = low prevalence makes false alarms dominate;; 2 = false alarms;; 1 = none;; 0 = none.
-- **EX010 — Closed-world problem.** Summarise one reason Sommer and Paxson give for ML difficulty in intrusion detection. *Rubric:* 3 = rarity, diversity or cost of errors explained;; 2 = named;; 1 = none;; 0 = none.
-- **EX011 — Zero trust relevance.** Why does rule-base quality matter during a zero trust transition? *Rubric:* 3 = old broad rules undermine new controls;; 2 = still matters;; 1 = none;; 0 = none.
+- **EX008 — Guidance gap.** What gap exists between SP 800-41 Rev. 1 and research evidence? *Rubric:* 3 = recommends review but lacks evidence on methods;; 2 = mentions review;; 1 = vague;; 0 = none.
+- **EX009 — Base rates.** Explain Axelsson's base-rate point in two sentences. *Rubric:* 3 = low prevalence makes false alarms dominate;; 2 = false alarms;; 1 = vague;; 0 = none.
+- **EX010 — Closed-world problem.** Summarise one reason Sommer and Paxson give for ML difficulty in intrusion detection. *Rubric:* 3 = rarity, diversity or cost of errors explained;; 2 = named;; 1 = vague;; 0 = none.
+- **EX011 — Zero trust relevance.** Why does rule-base quality matter during a zero trust transition? *Rubric:* 3 = old broad rules undermine new controls;; 2 = still matters;; 1 = vague;; 0 = none.
 - **EX012 — Positioning statement.** Write a one-sentence contribution statement for Ines's thesis. *Rubric:* 3 = names replication, codebook and evaluated intervention;; 2 = partial;; 1 = vague;; 0 = none.
-- **EX013 — Scope exclusions.** Why state what the thesis will not do? *Rubric:* 3 = helps examiners and partners judge scope;; 2 = clarity;; 1 = none;; 0 = none.
+- **EX013 — Scope exclusions.** Why state what the thesis will not do? *Rubric:* 3 = helps examiners and partners judge scope;; 2 = clarity;; 1 = vague;; 0 = none.
 - **EX014 — Comparison table.** List four columns for a literature comparison table. *Rubric:* 3 = method, setting, finding, limitation;; 2 = three;; 1 = fewer;; 0 = none.
 
 ### Synthesis
@@ -205,11 +205,11 @@ Without registered hypotheses, a study can drift toward whichever result looks s
 ### Exercises
 
 - **EX015 — Hypothesis wording.** Rewrite H2 so it names measure, groups and period. *Rubric:* 3 = all three;; 2 = two;; 1 = vague;; 0 = none.
-- **EX016 — Owner confirmation.** Why are unclear rules flagged rather than deleted? *Rubric:* 3 = avoid outages, confirm purpose;; 2 = safety;; 1 = none;; 0 = none.
-- **EX017 — Selection effects.** Why record team size and experience? *Rubric:* 3 = discuss non-random selection;; 2 = context;; 1 = none;; 0 = none.
-- **EX018 — Blinding.** What does a blinded recoding sample protect against? *Rubric:* 3 = coder expectation bias;; 2 = bias;; 1 = none;; 0 = none.
-- **EX019 — Review time.** Why measure how long reviews take? *Rubric:* 3 = adoption cost;; 2 = cost;; 1 = none;; 0 = none.
-- **EX020 — Generalisation limit.** State one limit on generalising from three partners. *Rubric:* 3 = same sector, similar practices;; 2 = limited;; 1 = none;; 0 = none.
+- **EX016 — Owner confirmation.** Why are unclear rules flagged rather than deleted? *Rubric:* 3 = avoid outages, confirm purpose;; 2 = safety;; 1 = vague;; 0 = none.
+- **EX017 — Selection effects.** Why record team size and experience? *Rubric:* 3 = discuss non-random selection;; 2 = context;; 1 = vague;; 0 = none.
+- **EX018 — Blinding.** What does a blinded recoding sample protect against? *Rubric:* 3 = coder expectation bias;; 2 = bias;; 1 = vague;; 0 = none.
+- **EX019 — Review time.** Why measure how long reviews take? *Rubric:* 3 = adoption cost;; 2 = cost;; 1 = vague;; 0 = none.
+- **EX020 — Generalisation limit.** State one limit on generalising from three partners. *Rubric:* 3 = same sector, similar practices;; 2 = limited;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -297,12 +297,12 @@ A strong correlation in a small sample can be driven by confounders such as age;
 
 ### Exercises
 
-- **EX021 — Rank correlation.** Why use Spearman rather than Pearson here? *Rubric:* 3 = robust to outliers and non-linear monotonic relation;; 2 = robust;; 1 = none;; 0 = none.
+- **EX021 — Rank correlation.** Why use Spearman rather than Pearson here? *Rubric:* 3 = robust to outliers and non-linear monotonic relation;; 2 = robust;; 1 = vague;; 0 = none.
 - **EX022 — Association claim.** Write a careful sentence reporting rho 0.977. *Rubric:* 3 = association, sample size, no causation;; 2 = association;; 1 = causal;; 0 = none.
-- **EX023 — Conflict versus redundancy.** Distinguish a conflicting from a redundant shadowed rule. *Rubric:* 3 = opposite vs same action, consequences;; 2 = definitions;; 1 = none;; 0 = none.
-- **EX024 — Confounders.** Name two confounders for the size-error link. *Rubric:* 3 = age and number of owners or change rate;; 2 = one;; 1 = none;; 0 = none.
-- **EX025 — Pilot finding.** What did the pilot reveal and how was it fixed? *Rubric:* 3 = owner identification slow, change-log lookup;; 2 = slow;; 1 = none;; 0 = none.
-- **EX026 — Test copy.** Why pilot on a test copy? *Rubric:* 3 = no risk to production;; 2 = safety;; 1 = none;; 0 = none.
+- **EX023 — Conflict versus redundancy.** Distinguish a conflicting from a redundant shadowed rule. *Rubric:* 3 = opposite vs same action, consequences;; 2 = definitions;; 1 = vague;; 0 = none.
+- **EX024 — Confounders.** Name two confounders for the size-error link. *Rubric:* 3 = age and number of owners or change rate;; 2 = one;; 1 = vague;; 0 = none.
+- **EX025 — Pilot finding.** What did the pilot reveal and how was it fixed? *Rubric:* 3 = owner identification slow, change-log lookup;; 2 = slow;; 1 = vague;; 0 = none.
+- **EX026 — Test copy.** Why pilot on a test copy? *Rubric:* 3 = no risk to production;; 2 = safety;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -377,12 +377,12 @@ A small p value says the difference is unlikely under random labelling; it does 
 
 ### Exercises
 
-- **EX027 — Permutation logic.** Explain the permutation test in plain words. *Rubric:* 3 = shuffle labels, compare differences;; 2 = shuffle;; 1 = none;; 0 = none.
-- **EX028 — Comparison group.** Why report the comparison group's change? *Rubric:* 3 = separate general attention from procedure effect;; 2 = context;; 1 = none;; 0 = none.
-- **EX029 — Operational translation.** Convert the difference into errors avoided for 500 rules. *Rubric:* 3 = about nine, shown;; 2 = roughly;; 1 = none;; 0 = none.
-- **EX030 — Blinded recoding.** What did blinded recoding confirm? *Rubric:* 3 = same direction, high agreement;; 2 = agreement;; 1 = none;; 0 = none.
-- **EX031 — Outsider test.** Why ask an outside engineer to apply the procedure? *Rubric:* 3 = usability beyond partners;; 2 = generalise;; 1 = none;; 0 = none.
-- **EX032 — Claim boundary.** What must Ines not claim from these results? *Rubric:* 3 = reduction in incidents;; 2 = causation broadly;; 1 = none;; 0 = none.
+- **EX027 — Permutation logic.** Explain the permutation test in plain words. *Rubric:* 3 = shuffle labels, compare differences;; 2 = shuffle;; 1 = vague;; 0 = none.
+- **EX028 — Comparison group.** Why report the comparison group's change? *Rubric:* 3 = separate general attention from procedure effect;; 2 = context;; 1 = vague;; 0 = none.
+- **EX029 — Operational translation.** Convert the difference into errors avoided for 500 rules. *Rubric:* 3 = about nine, shown;; 2 = roughly;; 1 = vague;; 0 = none.
+- **EX030 — Blinded recoding.** What did blinded recoding confirm? *Rubric:* 3 = same direction, high agreement;; 2 = agreement;; 1 = vague;; 0 = none.
+- **EX031 — Outsider test.** Why ask an outside engineer to apply the procedure? *Rubric:* 3 = usability beyond partners;; 2 = generalise;; 1 = vague;; 0 = none.
+- **EX032 — Claim boundary.** What must Ines not claim from these results? *Rubric:* 3 = reduction in incidents;; 2 = causation broadly;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -437,10 +437,10 @@ Treating every critique as an attack leads to defensive writing; recording and a
 ### Exercises
 
 - **EX033 — Motivation challenge.** How should Ines respond to the motivated-volunteers critique? *Rubric:* 3 = acknowledge as limitation, use comparison and variables;; 2 = acknowledge;; 1 = dismiss;; 0 = none.
-- **EX034 — Sensitivity analysis.** What is a sensitivity analysis here? *Rubric:* 3 = rerun excluding largest firewalls;; 2 = rerun;; 1 = none;; 0 = none.
-- **EX035 — Deliberate shadowing.** When might shadowing be deliberate, and how is it handled? *Rubric:* 3 = documentation purposes, flagged if undocumented;; 2 = deliberate;; 1 = none;; 0 = none.
-- **EX036 — Periodic rules.** Why might a ninety-day hit window misclassify rules? *Rubric:* 3 = quarterly or yearly processes;; 2 = missing rare use;; 1 = none;; 0 = none.
-- **EX037 — Decision log.** What does the decision log show examiners? *Rubric:* 3 = evolution and reasons, not outcome-driven;; 2 = history;; 1 = none;; 0 = none.
+- **EX034 — Sensitivity analysis.** What is a sensitivity analysis here? *Rubric:* 3 = rerun excluding largest firewalls;; 2 = rerun;; 1 = vague;; 0 = none.
+- **EX035 — Deliberate shadowing.** When might shadowing be deliberate, and how is it handled? *Rubric:* 3 = documentation purposes, flagged if undocumented;; 2 = deliberate;; 1 = vague;; 0 = none.
+- **EX036 — Periodic rules.** Why might a ninety-day hit window misclassify rules? *Rubric:* 3 = quarterly or yearly processes;; 2 = missing rare use;; 1 = vague;; 0 = none.
+- **EX037 — Decision log.** What does the decision log show examiners? *Rubric:* 3 = evolution and reasons, not outcome-driven;; 2 = history;; 1 = vague;; 0 = none.
 - **EX038 — Unanswered critiques.** How should critiques Ines cannot answer be treated? *Rubric:* 3 = stated as limitations;; 2 = noted;; 1 = ignored;; 0 = none.
 
 ### Synthesis
@@ -499,12 +499,12 @@ Releasing partner-derived data without checks risks exposing network designs.
 
 ### Exercises
 
-- **EX039 — Recommendation link.** Tie one recommendation to its evidence. *Rubric:* 3 = recommendation and finding;; 2 = one;; 1 = none;; 0 = none.
+- **EX039 — Recommendation link.** Tie one recommendation to its evidence. *Rubric:* 3 = recommendation and finding;; 2 = one;; 1 = vague;; 0 = none.
 - **EX040 — Archive contents.** List the five archive folders. *Rubric:* 3 = five;; 2 = four;; 1 = fewer;; 0 = none.
-- **EX041 — Reproduction scope.** What does the synthetic archive reproduce and what not? *Rubric:* 3 = analysis yes, original findings no;; 2 = partial;; 1 = none;; 0 = none.
-- **EX042 — Re-identification checks.** Name two checks before release. *Rubric:* 3 = documentation ranges and smoothed distributions;; 2 = one;; 1 = none;; 0 = none.
-- **EX043 — Independent reproduction.** Why have a colleague reproduce the results? *Rubric:* 3 = tests instructions are complete;; 2 = check;; 1 = none;; 0 = none.
-- **EX044 — Partner approval.** Why do partners review the archive? *Rubric:* 3 = ensure no sensitive details;; 2 = consent;; 1 = none;; 0 = none.
+- **EX041 — Reproduction scope.** What does the synthetic archive reproduce and what not? *Rubric:* 3 = analysis yes, original findings no;; 2 = partial;; 1 = vague;; 0 = none.
+- **EX042 — Re-identification checks.** Name two checks before release. *Rubric:* 3 = documentation ranges and smoothed distributions;; 2 = one;; 1 = vague;; 0 = none.
+- **EX043 — Independent reproduction.** Why have a colleague reproduce the results? *Rubric:* 3 = tests instructions are complete;; 2 = check;; 1 = vague;; 0 = none.
+- **EX044 — Partner approval.** Why do partners review the archive? *Rubric:* 3 = ensure no sensitive details;; 2 = consent;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -570,10 +570,10 @@ Overclaiming at a defense invites challenges that undermine sound results.
 
 - **EX045 — Talk structure.** List six parts of the defense talk. *Rubric:* 3 = six;; 2 = five;; 1 = fewer;; 0 = none.
 - **EX046 — Causation answer.** Answer the causation question briefly. *Rubric:* 3 = association plus controlled comparison, limits;; 2 = partial;; 1 = overclaim;; 0 = none.
-- **EX047 — Incidents answer.** Why were incidents not measured? *Rubric:* 3 = sparse and sensitive data;; 2 = unavailable;; 1 = none;; 0 = none.
-- **EX048 — Venue choice.** Why split into two papers? *Rubric:* 3 = different audiences and contributions;; 2 = two topics;; 1 = none;; 0 = none.
-- **EX049 — Future work.** Name the planned future study. *Rubric:* 3 = zero trust transition and rule hygiene;; 2 = zero trust;; 1 = none;; 0 = none.
-- **EX050 — Practitioner guide.** Why publish a practitioner guide? *Rubric:* 3 = make procedure usable;; 2 = share;; 1 = none;; 0 = none.
+- **EX047 — Incidents answer.** Why were incidents not measured? *Rubric:* 3 = sparse and sensitive data;; 2 = unavailable;; 1 = vague;; 0 = none.
+- **EX048 — Venue choice.** Why split into two papers? *Rubric:* 3 = different audiences and contributions;; 2 = two topics;; 1 = vague;; 0 = none.
+- **EX049 — Future work.** Name the planned future study. *Rubric:* 3 = zero trust transition and rule hygiene;; 2 = zero trust;; 1 = vague;; 0 = none.
+- **EX050 — Practitioner guide.** Why publish a practitioner guide? *Rubric:* 3 = make procedure usable;; 2 = share;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

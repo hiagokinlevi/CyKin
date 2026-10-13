@@ -175,7 +175,7 @@ Peer practice reflects their context; adopt practices for reasons that apply to 
 - **EX006 — Eleven strategies.** Name four of the eleven SOC strategy areas. *Rubric:* 3 = four of mission, authority, structure, staffing, response, intelligence, data, tools, communication, measurement, expansion; 2 = three; 1 = one; 0 = none.
 - **EX007 — Detection as code.** What shift does detection-as-code represent? *Rubric:* 3 = from buying content to engineering tested, versioned detections; 2 = partial; 1 = vague; 0 = none.
 - **EX008 — MDR risk.** What is the main risk of managed detection and response? *Rubric:* 3 = losing local knowledge; needs escalation and quality terms; 2 = partial; 1 = cost; 0 = none.
-- **EX009 — Maturity gap.** What did Meridian's SOC-CMM assessment reveal? *Rubric:* 3 = strong tooling, weak service definitions; 2 = partial; 1 = none; 0 = none.
+- **EX009 — Maturity gap.** What did Meridian's SOC-CMM assessment reveal? *Rubric:* 3 = strong tooling, weak service definitions; 2 = partial; 1 = vague; 0 = none.
 - **EX010 — Service catalogue.** What did Daniel's draft catalogue list? *Rubric:* 3 = monitoring, investigation, insider support, detection engineering, coordination with scope and levels; 2 = three; 1 = one; 0 = none.
 
 ### Synthesis
@@ -263,7 +263,7 @@ Peer baselines fail when a team is small or roles differ within it.
 - **EX012 — Lab flag.** Which handler was flagged and with what ratio? *Rubric:* 3 = h04, 1,260 vs 410, ratio 3.07; 2 = partial; 1 = wrong; 0 = none.
 - **EX013 — Outlier meaning.** What does a flag mean in insider monitoring? *Rubric:* 3 = a question to review, not an accusation; 2 = partial; 1 = guilt; 0 = none.
 - **EX014 — Governance.** Who agrees the insider-monitoring policy? *Rubric:* 3 = HR, legal, staff representatives (with SOC); 2 = two; 1 = one; 0 = none.
-- **EX015 — Flag resolution.** How was h04's flag resolved and what changed? *Rubric:* 3 = migration assignment; closed; assignment data added as enrichment; 2 = partial; 1 = none; 0 = none.
+- **EX015 — Flag resolution.** How was h04's flag resolved and what changed? *Rubric:* 3 = migration assignment; closed; assignment data added as enrichment; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -393,8 +393,8 @@ Scoring tables give an appearance of precision; the discussion around weights ma
 
 - **EX021 — Three options.** Describe options A, B and C. *Rubric:* 3 = in-house 24/7, MDR nights, hybrid with escalation and automation; 2 = two; 1 = one; 0 = none.
 - **EX022 — Criteria.** List the six evaluation criteria. *Rubric:* 3 = detection, speed, cost, knowledge, control, resilience; 2 = four; 1 = two; 0 = none.
-- **EX023 — Sensitivity.** What did the sensitivity check show? *Rubric:* 3 = C robust unless cost weight doubled (then B); 2 = partial; 1 = none; 0 = none.
-- **EX024 — Risks of C.** Name two risks of option C and their mitigations. *Rubric:* 3 = over/under escalation (reviews, targets); wrongful automation (limits); 2 = one; 1 = none; 0 = none.
+- **EX023 — Sensitivity.** What did the sensitivity check show? *Rubric:* 3 = C robust unless cost weight doubled (then B); 2 = partial; 1 = vague; 0 = none.
+- **EX024 — Risks of C.** Name two risks of option C and their mitigations. *Rubric:* 3 = over/under escalation (reviews, targets); wrongful automation (limits); 2 = one; 1 = vague; 0 = none.
 - **EX025 — Success measures.** What success measures were set? *Rubric:* 3 = night P1 ack ≤15 min, escalation precision >50%, no wrongful critical containments; 2 = two; 1 = one; 0 = none.
 
 ### Synthesis
@@ -486,7 +486,7 @@ Thirty-two alerts give a wide interval; operational change may wear off or impro
 - **EX027 — Lab result.** Report medians, difference and interval. *Rubric:* 3 = 24.5, 17.5, 7.0, [3.5, 11.0]; 2 = partial; 1 = wrong; 0 = none.
 - **EX028 — Why bootstrap.** Why use medians and bootstrap here? *Rubric:* 3 = skewed times; no distribution assumption; 2 = partial; 1 = habit; 0 = none.
 - **EX029 — Accuracy check.** Did speed cost accuracy? *Rubric:* 3 = no; one error per group; 2 = partial; 1 = unknown; 0 = none.
-- **EX030 — Remaining confound.** What confounding risk remains? *Rubric:* 3 = analysts not blind; may try harder with new; 2 = partial; 1 = none; 0 = none.
+- **EX030 — Remaining confound.** What confounding risk remains? *Rubric:* 3 = analysts not blind; may try harder with new; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -617,7 +617,7 @@ Cross-organisation evidence is often incomplete; contracts determine what can be
 - **EX036 — Defining difficulty.** What makes a SOC case difficult? *Rubric:* 3 = conflicting evidence, high stakes, short time; 2 = two; 1 = one; 0 = none.
 - **EX037 — Initial actions.** List the initial actions in the partner case. *Rubric:* 3 = preserve logs, suspend export rights, inform DPO and legal, request partner evidence; 2 = three; 1 = one; 0 = none.
 - **EX038 — Uncertainty message.** What elements did Daniel's message to the CISO contain? *Rubric:* 3 = known facts, unknowns, likelihood with basis, next update time; 2 = three; 1 = one; 0 = none.
-- **EX039 — Revision.** What evidence changed the case? *Rubric:* 3 = partner showed USB copy of export; 2 = partial; 1 = none; 0 = none.
+- **EX039 — Revision.** What evidence changed the case? *Rubric:* 3 = partner showed USB copy of export; 2 = partial; 1 = vague; 0 = none.
 - **EX040 — Early suspension.** Why was early suspension justified in hindsight and at the time? *Rubric:* 3 = limited harm at low cost under uncertainty; 2 = partial; 1 = hindsight only; 0 = none.
 
 ### Synthesis
@@ -765,10 +765,10 @@ Critiques by practitioners may overweight relevance and underweight rigour; bala
 ### Exercises
 
 - **EX046 — Kokulu finding.** Summarise Kokulu et al.'s main finding and one limit. *Rubric:* 3 = manager-analyst mismatches; interview sample representativeness; 2 = partial; 1 = one; 0 = none.
-- **EX047 — Alahmadi limit.** What is the main limit of Alahmadi et al.? *Rubric:* 3 = self-reported perceptions, not measured alerts; 2 = partial; 1 = none; 0 = none.
+- **EX047 — Alahmadi limit.** What is the main limit of Alahmadi et al.? *Rubric:* 3 = self-reported perceptions, not measured alerts; 2 = partial; 1 = vague; 0 = none.
 - **EX048 — NoDoze limit.** Why might NoDoze be hard to adopt? *Rubric:* 3 = needs detailed provenance data; 2 = partial; 1 = cost; 0 = none.
 - **EX049 — Critique structure.** List the critique structure elements. *Rubric:* 3 = question, method, sample, findings, validity, relevance, open questions; 2 = five; 1 = two; 0 = none.
-- **EX050 — Action taken.** What action followed the Alahmadi critique? *Rubric:* 3 = add benign-trigger closure code; measure own data first; 2 = partial; 1 = none; 0 = none.
+- **EX050 — Action taken.** What action followed the Alahmadi critique? *Rubric:* 3 = add benign-trigger closure code; measure own data first; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -836,7 +836,7 @@ Two real cases and six tests are few; the effect estimate is uncertain.
 
 - **EX051 — Baseline cause.** What caused the 3.5-hour baseline? *Rubric:* 3 = waiting for contractor managers to confirm activity; 2 = partial; 1 = unknown; 0 = none.
 - **EX052 — Interventions.** List the three interventions. *Rubric:* 3 = 24/7 directory, automated confirmation request, immediate export suspension with review; 2 = two; 1 = one; 0 = none.
-- **EX053 — Risk mitigation.** How was wrongful suspension risk limited? *Rubric:* 3 = fast review; suspend export rights only; 2 = partial; 1 = none; 0 = none.
+- **EX053 — Risk mitigation.** How was wrongful suspension risk limited? *Rubric:* 3 = fast review; suspend export rights only; 2 = partial; 1 = vague; 0 = none.
 - **EX054 — Outcome.** Report the outcome measures. *Rubric:* 3 = median 22 min over 2 real + 6 tests; 1 wrongful suspension 40 min; 2 = partial; 1 = one; 0 = none.
 - **EX055 — Procurement role.** What did procurement change? *Rubric:* 3 = added 24/7 contact clause to contracts; 2 = partial; 1 = nothing; 0 = none.
 
@@ -901,9 +901,9 @@ Reflection is partial; colleagues' feedback adds views one cannot see alone.
 ### Exercises
 
 - **EX056 — Transferable methods.** List four transferable methods from the programme. *Rubric:* 3 = expected cost, peer baselines, controlled evaluation, critique, assurance (four); 2 = three; 1 = one; 0 = none.
-- **EX057 — Transfer example.** Where did Daniel transfer controlled evaluation? *Rubric:* 3 = provider escalation quality before/after template change; 2 = partial; 1 = none; 0 = none.
+- **EX057 — Transfer example.** Where did Daniel transfer controlled evaluation? *Rubric:* 3 = provider escalation quality before/after template change; 2 = partial; 1 = vague; 0 = none.
 - **EX058 — Sustainability.** What makes improvements survive staff changes? *Rubric:* 3 = documented playbooks, owners, automated metrics, scheduled reviews; 2 = three; 1 = one; 0 = none.
-- **EX059 — Fairness signals.** How would Daniel know insider monitoring had become unfair? *Rubric:* 3 = flags concentrated without business reason; complaints via representatives; 2 = partial; 1 = none; 0 = none.
+- **EX059 — Fairness signals.** How would Daniel know insider monitoring had become unfair? *Rubric:* 3 = flags concentrated without business reason; complaints via representatives; 2 = partial; 1 = vague; 0 = none.
 - **EX060 — Differently.** What would Daniel do differently? *Rubric:* 3 = measure baselines before incidents force it; 2 = partial; 1 = nothing; 0 = none.
 
 ### Synthesis

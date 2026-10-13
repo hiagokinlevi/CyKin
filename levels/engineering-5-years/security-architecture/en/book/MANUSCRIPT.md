@@ -88,7 +88,7 @@ Real growth is rarely smooth; new device rollouts cause jumps. Models must be re
 ### Exercises
 
 - **EX001 — Proportional growth.** What does dV/dt = kV tell Sofia about log growth? *Rubric:* 3 = increase each month is proportional to current volume, so absolute growth accelerates;; 2 = proportional;; 1 = constant growth;; 0 = none.
-- **EX002 — Budget month.** In the lab, in which month is the storage budget first exceeded under the exponential model? *Rubric:* 3 = month 24, versus month 39 for the linear forecast;; 2 = month 24;; 1 = none;; 0 = none.
+- **EX002 — Budget month.** In the lab, in which month is the storage budget first exceeded under the exponential model? *Rubric:* 3 = month 24, versus month 39 for the linear forecast;; 2 = month 24;; 1 = vague;; 0 = none.
 - **EX003 — Linear planning.** Why is planning from last year's increase risky for log storage? *Rubric:* 3 = it applies a linear view to an exponential process and underestimates growth;; 2 = underestimates;; 1 = accurate;; 0 = none.
 
 ### Synthesis
@@ -161,7 +161,7 @@ Closure assumes memberships are current; stale data hide or invent rights. Disjo
 
 ### Exercises
 
-- **EX004 — Hidden right.** Which account gained tariff rights indirectly in the lab, and through how many levels? *Rubric:* 3 = contractor-07, through a chain of four groups ending in fare-admins;; 2 = account;; 1 = none;; 0 = none.
+- **EX004 — Hidden right.** Which account gained tariff rights indirectly in the lab, and through how many levels? *Rubric:* 3 = contractor-07, through a chain of four groups ending in fare-admins;; 2 = account;; 1 = vague;; 0 = none.
 - **EX005 — SoD test.** How is separation of duties expressed with sets? *Rubric:* 3 = creators and approvers sets must be disjoint; intersection empty;; 2 = disjoint;; 1 = union;; 0 = none.
 - **EX006 — Collusion gap.** What does a disjoint-set check fail to prevent? *Rubric:* 3 = collusion between two different people;; 2 = collusion;; 1 = nothing;; 0 = none.
 
@@ -295,7 +295,7 @@ Decision records go stale if not updated when decisions change. Plain explanatio
 
 - **EX013 — ADR fields.** List the fields of an architecture decision record. *Rubric:* 3 = context, decision, options, consequences, date;; 2 = four;; 1 = two;; 0 = none.
 - **EX014 — Boundary placement.** Where should a trust boundary be drawn in a data-flow diagram? *Rubric:* 3 = where trust changes, such as between a bus and the depot network;; 2 = trust change;; 1 = anywhere;; 0 = none.
-- **EX015 — Blocking window.** What risk did Sofia state to the finance director? *Rubric:* 3 = a stolen card may be used for up to an hour;; 2 = one hour;; 1 = none;; 0 = none.
+- **EX015 — Blocking window.** What risk did Sofia state to the finance director? *Rubric:* 3 = a stolen card may be used for up to an hour;; 2 = one hour;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -469,7 +469,7 @@ Hardware protections have had flaws requiring microcode and design fixes. Secure
 
 ### Exercises
 
-- **EX022 — Cache timing.** Why can caches create security problems? *Rubric:* 3 = timing differences between cached and uncached access can leak information;; 2 = timing;; 1 = none;; 0 = none.
+- **EX022 — Cache timing.** Why can caches create security problems? *Rubric:* 3 = timing differences between cached and uncached access can leak information;; 2 = timing;; 1 = vague;; 0 = none.
 - **EX023 — Kernel bug severity.** Why are kernel vulnerabilities treated as critical? *Rubric:* 3 = they break the privilege and memory boundaries other controls rely on;; 2 = boundaries;; 1 = minor;; 0 = none.
 - **EX024 — Signing key risk.** Why must firmware signing keys be protected? *Rubric:* 3 = whoever holds them can make any firmware trusted by secure boot;; 2 = trusted firmware;; 1 = not important;; 0 = none.
 
@@ -513,7 +513,7 @@ Tests show presence of checks, not absence of all bugs. Pinned dependencies stil
 
 ### Exercises
 
-- **EX025 — Narrow interface benefit.** How do narrow module interfaces help security review? *Rubric:* 3 = less to review and validated data need not be rechecked everywhere;; 2 = review;; 1 = none;; 0 = none.
+- **EX025 — Narrow interface benefit.** How do narrow module interfaces help security review? *Rubric:* 3 = less to review and validated data need not be rechecked everywhere;; 2 = review;; 1 = vague;; 0 = none.
 - **EX026 — Negative test example.** Give one negative test from Sofia's engine. *Rubric:* 3 = child discount on adult card rejected, out-of-network zone error or three-decimal amount refused;; 2 = one;; 1 = positive test;; 0 = none.
 - **EX027 — Dependency practice.** What does SP 800-218 recommend about third-party components? *Rubric:* 3 = track them and respond to vulnerabilities in them;; 2 = track;; 1 = ignore;; 0 = none.
 
@@ -846,7 +846,7 @@ Traceability tables become burdensome if too detailed. Life-cycle models are sim
 ### Exercises
 
 - **EX046 — Neglected stages.** Which life-cycle stages are often neglected for security? *Rubric:* 3 = support and retirement;; 2 = both;; 1 = development;; 0 = none.
-- **EX047 — SP 800-160 flow.** What chain does SP 800-160 Vol. 1 Rev. 1 emphasise? *Rubric:* 3 = protection needs to requirements to design to assurance;; 2 = chain;; 1 = none;; 0 = none.
+- **EX047 — SP 800-160 flow.** What chain does SP 800-160 Vol. 1 Rev. 1 emphasise? *Rubric:* 3 = protection needs to requirements to design to assurance;; 2 = chain;; 1 = vague;; 0 = none.
 - **EX048 — Traceability value.** What does traceability show when a requirement changes? *Rubric:* 3 = which design elements and tests are affected;; 2 = affected items;; 1 = nothing;; 0 = none.
 
 ### Synthesis
@@ -917,9 +917,9 @@ Simple proportional models ignore attacker adaptation. Simulation results depend
 
 ### Exercises
 
-- **EX049 — Automation exploit.** How might attackers exploit badly tuned security automation? *Rubric:* 3 = trigger it deliberately to cause outages for legitimate users;; 2 = trigger;; 1 = none;; 0 = none.
+- **EX049 — Automation exploit.** How might attackers exploit badly tuned security automation? *Rubric:* 3 = trigger it deliberately to cause outages for legitimate users;; 2 = trigger;; 1 = vague;; 0 = none.
 - **EX050 — High gain result.** What happened in the lab with the high gain? *Rubric:* 3 = allowed rate oscillated, swinging between blocking users and admitting attacks;; 2 = oscillated;; 1 = settled;; 0 = none.
-- **EX051 — Stabilising proposal.** Name two safeguards Sofia proposes for automated controls. *Rubric:* 3 = bounded adjustments, min and max limits, human review at limits (two);; 2 = one;; 1 = none;; 0 = none.
+- **EX051 — Stabilising proposal.** Name two safeguards Sofia proposes for automated controls. *Rubric:* 3 = bounded adjustments, min and max limits, human review at limits (two);; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -962,7 +962,7 @@ Layered views simplify cross-cutting concerns. Attribute traces can become paper
 ### Exercises
 
 - **EX052 — SABSA starting point.** Where does SABSA start an architecture? *Rubric:* 3 = business requirements expressed as attributes;; 2 = attributes;; 1 = technology;; 0 = none.
-- **EX053 — Gap found.** What gap did Sofia's layered view expose? *Rubric:* 3 = no operational owner for key management;; 2 = owner;; 1 = none;; 0 = none.
+- **EX053 — Gap found.** What gap did Sofia's layered view expose? *Rubric:* 3 = no operational owner for key management;; 2 = owner;; 1 = vague;; 0 = none.
 - **EX054 — Removing a control.** What does the attribute trace show when a change removes a control? *Rubric:* 3 = which business attribute is weakened;; 2 = attribute;; 1 = nothing;; 0 = none.
 
 ### Synthesis
@@ -1005,8 +1005,8 @@ Passkeys and certificates still depend on recovery processes that can be abused.
 
 ### Exercises
 
-- **EX055 — Identity gap.** What identity gap did Sofia find? *Rubric:* 3 = a shared vendor support account bypassing staff single sign-on;; 2 = shared account;; 1 = none;; 0 = none.
-- **EX056 — Tokenisation benefit.** Why does tokenisation help Corvia? *Rubric:* 3 = it never stores card numbers, reducing exposure;; 2 = no card numbers;; 1 = none;; 0 = none.
+- **EX055 — Identity gap.** What identity gap did Sofia find? *Rubric:* 3 = a shared vendor support account bypassing staff single sign-on;; 2 = shared account;; 1 = vague;; 0 = none.
+- **EX056 — Tokenisation benefit.** Why does tokenisation help Corvia? *Rubric:* 3 = it never stores card numbers, reducing exposure;; 2 = no card numbers;; 1 = vague;; 0 = none.
 - **EX057 — Key life cycle.** List four key management phases. *Rubric:* 3 = four of generation, storage, distribution, rotation, revocation, destruction;; 2 = three;; 1 = one;; 0 = none.
 
 ### Synthesis
@@ -1049,7 +1049,7 @@ Legal interpretation needs qualified advice. Context changes during long project
 
 ### Exercises
 
-- **EX058 — Obligation example.** Give one obligation and its architectural effect. *Rubric:* 3 = payment obligations require segmentation of payment systems; privacy requires deletion support;; 2 = one pair;; 1 = none;; 0 = none.
+- **EX058 — Obligation example.** Give one obligation and its architectural effect. *Rubric:* 3 = payment obligations require segmentation of payment systems; privacy requires deletion support;; 2 = one pair;; 1 = vague;; 0 = none.
 - **EX059 — Legacy constraint.** Which constraint limits validator changes? *Rubric:* 3 = legacy validators cannot be replaced until year five;; 2 = legacy;; 1 = budget;; 0 = none.
 - **EX060 — Corrected assumptions.** Which two assumptions did the board correct? *Rubric:* 3 = tokenisation already contracted; passenger app out of scope;; 2 = both;; 1 = one;; 0 = none.
 
@@ -1094,7 +1094,7 @@ Requirements can conflict, such as logging versus privacy. Catalogues are broad;
 ### Exercises
 
 - **EX061 — Verifiable rewrite.** Rewrite the system shall be secure as a verifiable requirement for refunds. *Rubric:* 3 = refunds above 50 euros require a second approver distinct from the requester, verified by test;; 2 = verifiable;; 1 = vague;; 0 = none.
-- **EX062 — Abuse case derivation.** Which requirement follows from the replayed tap record abuse case? *Rubric:* 3 = unique record identifiers with replay detection;; 2 = replay detection;; 1 = none;; 0 = none.
+- **EX062 — Abuse case derivation.** Which requirement follows from the replayed tap record abuse case? *Rubric:* 3 = unique record identifiers with replay detection;; 2 = replay detection;; 1 = vague;; 0 = none.
 - **EX063 — Catalogue use.** How did Sofia use SP 800-53 Rev. 5? *Rubric:* 3 = to check for gaps, finding a missing log protection and review requirement;; 2 = gap check;; 1 = copied all;; 0 = none.
 
 ### Synthesis
@@ -1137,8 +1137,8 @@ Models abstract away details where flaws can hide. Observed flows may miss rare 
 
 ### Exercises
 
-- **EX064 — Bypass issue.** What design issue did the component model reveal? *Rubric:* 3 = reporting reading the journey database directly, bypassing access controls;; 2 = bypass;; 1 = none;; 0 = none.
-- **EX065 — Personal data flows.** What do flows carrying personal data across boundaries need? *Rubric:* 3 = encryption and authentication;; 2 = both;; 1 = none;; 0 = none.
+- **EX064 — Bypass issue.** What design issue did the component model reveal? *Rubric:* 3 = reporting reading the journey database directly, bypassing access controls;; 2 = bypass;; 1 = vague;; 0 = none.
+- **EX065 — Personal data flows.** What do flows carrying personal data across boundaries need? *Rubric:* 3 = encryption and authentication;; 2 = both;; 1 = vague;; 0 = none.
 - **EX066 — Drift response.** What does it mean when observed flows include one not in the model? *Rubric:* 3 = either the model or the system is wrong; investigate both;; 2 = investigate;; 1 = ignore;; 0 = none.
 
 ### Synthesis
@@ -1205,7 +1205,7 @@ Fault-tree probabilities are often guesses; their ranking is more useful than ab
 
 ### Exercises
 
-- **EX067 — Retired validators.** Which spoofing threat did the STRIDE session find? *Rubric:* 3 = retired validators with internal certificates could still submit records;; 2 = retired devices;; 1 = none;; 0 = none.
+- **EX067 — Retired validators.** Which spoofing threat did the STRIDE session find? *Rubric:* 3 = retired validators with internal certificates could still submit records;; 2 = retired devices;; 1 = vague;; 0 = none.
 - **EX068 — Dominant branch.** Which branch dominated the fault tree in the lab? *Rubric:* 3 = fare calculation error after tariff change;; 2 = calculation;; 1 = lost records;; 0 = none.
 - **EX069 — Independence caveat.** Why can independence assumptions understate risk? *Rubric:* 3 = a common cause like a power cut can trigger several branches together;; 2 = common cause;; 1 = overstate;; 0 = none.
 
@@ -1249,7 +1249,7 @@ Risk scales mean different things to different people unless anchored with examp
 
 ### Exercises
 
-- **EX070 — Qualitative weakness.** What is a weakness of qualitative risk scales? *Rubric:* 3 = they hide large differences within one category;; 2 = hides differences;; 1 = none;; 0 = none.
+- **EX070 — Qualitative weakness.** What is a weakness of qualitative risk scales? *Rubric:* 3 = they hide large differences within one category;; 2 = hides differences;; 1 = vague;; 0 = none.
 - **EX071 — SP 800-30 steps.** Name the four main steps of SP 800-30 Rev. 1. *Rubric:* 3 = prepare, conduct, communicate, maintain;; 2 = three;; 1 = one;; 0 = none.
 - **EX072 — Who decides.** Who decides whether to accept a risk? *Rubric:* 3 = the business owner with authority, not the engineer;; 2 = owner;; 1 = engineer;; 0 = none.
 
@@ -1295,7 +1295,7 @@ Studio designs lack production detail; real constraints may change choices. Hard
 
 - **EX073 — Local control reason.** Why did the team choose depot-local charging control? *Rubric:* 3 = buses must charge even when internet links fail;; 2 = resilience;; 1 = cost;; 0 = none.
 - **EX074 — Unanswered challenge.** How did the team handle the challenge they could not answer? *Rubric:* 3 = said so honestly and recorded it as an open issue;; 2 = open issue;; 1 = invented answer;; 0 = none.
-- **EX075 — Final mitigations.** Name two mitigations added after critique. *Rubric:* 3 = non-overridable charger hardware limits, network separation, two-person approval for fallback rules (two);; 2 = one;; 1 = none;; 0 = none.
+- **EX075 — Final mitigations.** Name two mitigations added after critique. *Rubric:* 3 = non-overridable charger hardware limits, network separation, two-person approval for fallback rules (two);; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1339,7 +1339,7 @@ Weighted scoring can hide disagreements behind averages. Pseudonymised data may 
 
 - **EX076 — Three options.** Why does Daniel insist on at least three alternatives? *Rubric:* 3 = two options hide middle paths; a do-minimum gives a baseline;; 2 = middle path;; 1 = no reason;; 0 = none.
 - **EX077 — Sensitivity result.** What happens to the decision if the cost weight doubles? *Rubric:* 3 = alternative A wins instead of C;; 2 = A wins;; 1 = C still;; 0 = none.
-- **EX078 — New risk.** What new risk does alternative C introduce? *Rubric:* 3 = pseudonymisation process becomes a single point of failure for privacy;; 2 = pseudonymisation;; 1 = none;; 0 = none.
+- **EX078 — New risk.** What new risk does alternative C introduce? *Rubric:* 3 = pseudonymisation process becomes a single point of failure for privacy;; 2 = pseudonymisation;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1383,7 +1383,7 @@ Pinned keys complicate emergency rotation. Detective controls depend on someone 
 
 - **EX079 — Three control types.** Name the preventive, detective and corrective controls for tariff tables. *Rubric:* 3 = signature verification; version logging and alerts; rollback;; 2 = three;; 1 = one;; 0 = none.
 - **EX080 — Independence check.** Why compare loaded versions with finance's independent list? *Rubric:* 3 = it still detects misuse if the signing key is stolen;; 2 = independent;; 1 = redundant;; 0 = none.
-- **EX081 — Specification test.** Give one test case from the specification. *Rubric:* 3 = correctly signed loads, modified rejected or unknown key rejected;; 2 = one;; 1 = none;; 0 = none.
+- **EX081 — Specification test.** Give one test case from the specification. *Rubric:* 3 = correctly signed loads, modified rejected or unknown key rejected;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1425,7 +1425,7 @@ Secret stores become critical dependencies needing high availability. Removing s
 
 ### Exercises
 
-- **EX082 — Task references.** Why does each task reference a requirement? *Rubric:* 3 = prevents postponing hard controls and lets reviewers check coverage;; 2 = coverage;; 1 = none;; 0 = none.
+- **EX082 — Task references.** Why does each task reference a requirement? *Rubric:* 3 = prevents postponing hard controls and lets reviewers check coverage;; 2 = coverage;; 1 = vague;; 0 = none.
 - **EX083 — Committed credential.** What steps followed finding a committed test credential? *Rubric:* 3 = removed from history and rotated, incident recorded;; 2 = both;; 1 = removed only;; 0 = none.
 - **EX084 — Replay change route.** Why was skipping replay detection treated as an architecture change? *Rubric:* 3 = it weakens a requirement, so it needs architecture review;; 2 = requirement;; 1 = coding choice;; 0 = none.
 
@@ -1495,7 +1495,7 @@ Metrics measure proxies, not security itself. Small denominators make percentage
 
 - **EX085 — Goal-linked metric.** Give a metric for the goal of timely revocation of retired devices. *Rubric:* 3 = median days from retirement to revocation;; 2 = metric;; 1 = count of devices;; 0 = none.
 - **EX086 — Lab revocation result.** What did the lab show for revocation timeliness? *Rubric:* 3 = median 8 days for revoked devices, 3 of 20 never revoked, only 8 of 20 within a week;; 2 = both;; 1 = good;; 0 = none.
-- **EX087 — Paired metric.** Which metric should be paired with ticket closure speed? *Rubric:* 3 = reopen rate;; 2 = reopen;; 1 = none;; 0 = none.
+- **EX087 — Paired metric.** Which metric should be paired with ticket closure speed? *Rubric:* 3 = reopen rate;; 2 = reopen;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1571,7 +1571,7 @@ Lab environments differ from production in scale and timing. Passing tests depen
 
 - **EX088 — Verification question.** What question does verification answer? *Rubric:* 3 = was the system built as specified;; 2 = as specified;; 1 = is it useful;; 0 = none.
 - **EX089 — Lab outcomes.** Which of the four lab records were accepted? *Rubric:* 3 = only the authentic new record; duplicate, altered and retired rejected;; 2 = only first;; 1 = several;; 0 = none.
-- **EX090 — Not verified.** Name one area Sofia's report lists as not verified. *Rubric:* 3 = peak load, database failover or production signature path;; 2 = one;; 1 = none;; 0 = none.
+- **EX090 — Not verified.** Name one area Sofia's report lists as not verified. *Rubric:* 3 = peak load, database failover or production signature path;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1613,9 +1613,9 @@ Automated enrolment becomes a high-value target. Reconciliation depends on asset
 
 ### Exercises
 
-- **EX091 — Enrolment condition.** What must exist before a validator receives a certificate? *Rubric:* 3 = an asset record and an approved installation ticket;; 2 = both;; 1 = none;; 0 = none.
+- **EX091 — Enrolment condition.** What must exist before a validator receives a certificate? *Rubric:* 3 = an asset record and an approved installation ticket;; 2 = both;; 1 = vague;; 0 = none.
 - **EX092 — Reconciliation purpose.** What does the daily reconciliation catch? *Rubric:* 3 = mismatches between active certificates and in-service assets from missed events;; 2 = mismatches;; 1 = nothing;; 0 = none.
-- **EX093 — Exception contents.** What does each legacy exception include? *Rubric:* 3 = compensating controls, owner and expiry or replacement date;; 2 = three;; 1 = none;; 0 = none.
+- **EX093 — Exception contents.** What does each legacy exception include? *Rubric:* 3 = compensating controls, owner and expiry or replacement date;; 2 = three;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1726,7 +1726,7 @@ Manual procedures decay without practice. Degradation may itself create fraud op
 
 - **EX097 — Resilience definition.** Define resilience in this chapter's terms. *Rubric:* 3 = ability to anticipate, withstand, recover from and adapt to adverse conditions;; 2 = three parts;; 1 = security only;; 0 = none.
 - **EX098 — Diverse channel.** Which resilience technique does a backup driver communication channel represent? *Rubric:* 3 = diversity or redundancy of communication;; 2 = diversity;; 1 = segmentation;; 0 = none.
-- **EX099 — Ransom pressure.** How do rehearsed degradation levels reduce ransom pressure? *Rubric:* 3 = staff know services can continue manually, so there is less urgency to pay;; 2 = continuity;; 1 = none;; 0 = none.
+- **EX099 — Ransom pressure.** How do rehearsed degradation levels reduce ransom pressure? *Rubric:* 3 = staff know services can continue manually, so there is less urgency to pay;; 2 = continuity;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1770,7 +1770,7 @@ Gateways become single points of failure and must be resilient. Contracts cannot
 
 - **EX100 — Two weaknesses.** Which two integration weaknesses did Sofia find? *Rubric:* 3 = mobility app's shared long-lived API key; consultancy exports by email;; 2 = both;; 1 = one;; 0 = none.
 - **EX101 — Scope example.** What may the mobility app's tokens allow, and not allow? *Rubric:* 3 = sell tickets and query fares, not read journey histories;; 2 = both parts;; 1 = all access;; 0 = none.
-- **EX102 — Matrix in breach.** How did the responsibility matrix help during the partner breach? *Rubric:* 3 = clarified who notifies passengers and which tokens Corvia revokes;; 2 = clarity;; 1 = none;; 0 = none.
+- **EX102 — Matrix in breach.** How did the responsibility matrix help during the partner breach? *Rubric:* 3 = clarified who notifies passengers and which tokens Corvia revokes;; 2 = clarity;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1880,7 +1880,7 @@ Lab measurements may not reflect production hardware. Caches create windows wher
 
 - **EX106 — Hidden cost.** Which control would exceed storage budgets within weeks? *Rubric:* 3 = verbose debug logging;; 2 = logging;; 1 = TLS;; 0 = none.
 - **EX107 — Bucket comparison.** How did the two bucket sizes handle the synthetic burst? *Rubric:* 3 = capacity 20 rejected 200 of 450; capacity 200 rejected 20;; 2 = both;; 1 = same;; 0 = none.
-- **EX108 — Cache trade-off.** What trade-off does caching authorisation decisions introduce? *Rubric:* 3 = revoked rights may keep working until the cache expires;; 2 = revocation delay;; 1 = none;; 0 = none.
+- **EX108 — Cache trade-off.** What trade-off does caching authorisation decisions introduce? *Rubric:* 3 = revoked rights may keep working until the cache expires;; 2 = revocation delay;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1923,7 +1923,7 @@ Detection thresholds need tuning after launch. Change processes can become bottl
 ### Exercises
 
 - **EX109 — CSF functions.** List the six CSF 2.0 functions. *Rubric:* 3 = govern, identify, protect, detect, respond, recover;; 2 = five;; 1 = three;; 0 = none.
-- **EX110 — Insider export detection.** How is insider export of journey data detected? *Rubric:* 3 = alert on unusual export volume or out-of-hours exports;; 2 = volume or time;; 1 = none;; 0 = none.
+- **EX110 — Insider export detection.** How is insider export of journey data detected? *Rubric:* 3 = alert on unusual export volume or out-of-hours exports;; 2 = volume or time;; 1 = vague;; 0 = none.
 - **EX111 — Review trigger.** Which changes need security review and re-verification? *Rubric:* 3 = those touching authentication, cryptography, network rules or logging;; 2 = three;; 1 = all trivial;; 0 = none.
 
 ### Synthesis
@@ -2010,9 +2010,9 @@ Agility adds complexity and downgrade risks if old algorithms remain accepted to
 
 ### Exercises
 
-- **EX115 — Hard-coded issue.** What maintainability problem did Sofia find in tariff verification? *Rubric:* 3 = a hard-coded signature algorithm and key;; 2 = hard-coded;; 1 = none;; 0 = none.
-- **EX116 — Agility enabler.** Which format features enable cryptographic agility for tariff signatures? *Rubric:* 3 = a version field and algorithm identifier;; 2 = both;; 1 = none;; 0 = none.
-- **EX117 — Debt register.** What does each security debt register entry include? *Rubric:* 3 = risk, owner and removal plan;; 2 = three;; 1 = none;; 0 = none.
+- **EX115 — Hard-coded issue.** What maintainability problem did Sofia find in tariff verification? *Rubric:* 3 = a hard-coded signature algorithm and key;; 2 = hard-coded;; 1 = vague;; 0 = none.
+- **EX116 — Agility enabler.** Which format features enable cryptographic agility for tariff signatures? *Rubric:* 3 = a version field and algorithm identifier;; 2 = both;; 1 = vague;; 0 = none.
+- **EX117 — Debt register.** What does each security debt register entry include? *Rubric:* 3 = risk, owner and removal plan;; 2 = three;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2189,7 +2189,7 @@ Before-after designs cannot exclude simultaneous changes. Small device counts ma
 
 - **EX124 — Outcome definition.** What outcome did Sofia measure? *Rubric:* 3 = days between retirement and last successful authentication;; 2 = defined;; 1 = vague;; 0 = none.
 - **EX125 — Device list caution.** Why does the report avoid listing individual devices? *Rubric:* 3 = such a list could guide attackers to weak spots;; 2 = attacker map;; 1 = no reason;; 0 = none.
-- **EX126 — Confound.** What confound limits the conclusion? *Rubric:* 3 = asset-record improvements happened at the same time;; 2 = asset records;; 1 = none;; 0 = none.
+- **EX126 — Confound.** What confound limits the conclusion? *Rubric:* 3 = asset-record improvements happened at the same time;; 2 = asset records;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2232,8 +2232,8 @@ Proportionate reviews can miss issues; their limits must be recorded. Placement 
 ### Exercises
 
 - **EX127 — Facilitation finding.** What did Sofia find much of her review work consisted of? *Rubric:* 3 = asking context and requirement questions of busy project managers;; 2 = questions;; 1 = coding;; 0 = none.
-- **EX128 — Proportionate review.** What did the bike-share review include? *Rubric:* 3 = gateway and scoped tokens check, data classification check, one-hour threat model, two accepted residual risks;; 2 = three;; 1 = none;; 0 = none.
-- **EX129 — Development area.** What development area did her supervisor note? *Rubric:* 3 = negotiation;; 2 = negotiation;; 1 = writing;; 0 = none.
+- **EX128 — Proportionate review.** What did the bike-share review include? *Rubric:* 3 = gateway and scoped tokens check, data classification check, one-hour threat model, two accepted residual risks;; 2 = three;; 1 = vague;; 0 = none.
+- **EX129 — Development area.** What development area did her supervisor note? *Rubric:* 3 = negotiation;; 2 = negotiation, without explanation;; 1 = writing;; 0 = none.
 
 ### Synthesis
 
@@ -2275,7 +2275,7 @@ Success criteria can be gamed if too narrow. Lab mirrors may lack production com
 
 ### Exercises
 
-- **EX130 — Success criteria.** Name two of Sofia's capstone success criteria. *Rubric:* 3 = two of threats mitigated or accepted, verification tests passing, recovery time met, review with no critical findings;; 2 = one;; 1 = none;; 0 = none.
+- **EX130 — Success criteria.** Name two of Sofia's capstone success criteria. *Rubric:* 3 = two of threats mitigated or accepted, verification tests passing, recovery time met, review with no critical findings;; 2 = one;; 1 = vague;; 0 = none.
 - **EX131 — Common failure.** Why do capstones often fail, according to Daniel? *Rubric:* 3 = evidence produced too late to fix what it reveals;; 2 = late evidence;; 1 = bad design;; 0 = none.
 - **EX132 — Charter exclusion.** What does the charter exclude? *Rubric:* 3 = production changes; work happens in a lab mirror;; 2 = production;; 1 = nothing;; 0 = none.
 
@@ -2319,9 +2319,9 @@ One reviewer has blind spots; important designs benefit from several. Disagreeme
 
 ### Exercises
 
-- **EX133 — Reading guide.** What does Sofia's reading guide include? *Rubric:* 3 = scope, key decisions, open issues, specific questions, out-of-scope items;; 2 = three;; 1 = none;; 0 = none.
-- **EX134 — Critical finding.** What was the critical finding and its fix? *Rubric:* 3 = agents adjusting fares without second approval; dual approval above threshold;; 2 = both;; 1 = none;; 0 = none.
-- **EX135 — Classmate finding.** What weakness did Sofia find in the classmate's design? *Rubric:* 3 = nightly batch revocation leaves day-long access for dismissed staff;; 2 = batch;; 1 = none;; 0 = none.
+- **EX133 — Reading guide.** What does Sofia's reading guide include? *Rubric:* 3 = scope, key decisions, open issues, specific questions, out-of-scope items;; 2 = three;; 1 = vague;; 0 = none.
+- **EX134 — Critical finding.** What was the critical finding and its fix? *Rubric:* 3 = agents adjusting fares without second approval; dual approval above threshold;; 2 = both;; 1 = vague;; 0 = none.
+- **EX135 — Classmate finding.** What weakness did Sofia find in the classmate's design? *Rubric:* 3 = nightly batch revocation leaves day-long access for dismissed staff;; 2 = batch;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2363,8 +2363,8 @@ Assurance cases can give false confidence if evidence is weak. Lab exceptions mu
 
 ### Exercises
 
-- **EX136 — Lab exceptions.** How many requirements could not be tested in the lab, and why? *Rubric:* 3 = two, because the lab cannot reproduce production hardware;; 2 = count and reason;; 1 = none;; 0 = none.
-- **EX137 — Assurance gap.** What gap did the assurance case reveal? *Rubric:* 3 = one sub-claim relied only on design review; a test was added;; 2 = review only;; 1 = none;; 0 = none.
+- **EX136 — Lab exceptions.** How many requirements could not be tested in the lab, and why? *Rubric:* 3 = two, because the lab cannot reproduce production hardware;; 2 = count and reason;; 1 = vague;; 0 = none.
+- **EX137 — Assurance gap.** What gap did the assurance case reveal? *Rubric:* 3 = one sub-claim relied only on design review; a test was added;; 2 = review only;; 1 = vague;; 0 = none.
 - **EX138 — Scope response.** How did Sofia respond to the late refund request? *Rubric:* 3 = proposed documenting the extension as future work instead of implementing;; 2 = alternative;; 1 = accepted;; 0 = none.
 
 ### Synthesis
@@ -2499,7 +2499,7 @@ Manifests detect change but not whether original evidence was sound. Mappings ca
 ### Exercises
 
 - **EX142 — Dossier organisation.** How is the dossier organised and why? *Rubric:* 3 = by assurance-case structure so any claim can be traced to evidence;; 2 = structure;; 1 = alphabetical;; 0 = none.
-- **EX143 — Lab manifest result.** Which file did the dossier lab flag? *Rubric:* 3 = verification_report.md, edited after the manifest was created;; 2 = named file;; 1 = none;; 0 = none.
+- **EX143 — Lab manifest result.** Which file did the dossier lab flag? *Rubric:* 3 = verification_report.md, edited after the manifest was created;; 2 = named file;; 1 = vague;; 0 = none.
 - **EX144 — Mapping caveat.** What caveat accompanies the standards mapping? *Rubric:* 3 = it shows topic coverage, not certification or compliance;; 2 = coverage;; 1 = compliance;; 0 = none.
 
 ### Synthesis
@@ -2544,7 +2544,7 @@ Patterns abstracted from one case may not transfer. Lab results need production 
 
 - **EX145 — Not a diary.** How does a thesis differ from a project diary? *Rubric:* 3 = it argues claims with evidence rather than narrating events;; 2 = argument;; 1 = same;; 0 = none.
 - **EX146 — Recovery context.** What context does Sofia give for the improved recovery time? *Rubric:* 3 = demonstrated only in a lab mirror;; 2 = lab only;; 1 = production;; 0 = none.
-- **EX147 — Reusable pattern.** Name one reusable pattern from the thesis. *Rubric:* 3 = signed config with independent publication checks, asset-triggered revocation with reconciliation, or proportionate review;; 2 = one;; 1 = none;; 0 = none.
+- **EX147 — Reusable pattern.** Name one reusable pattern from the thesis. *Rubric:* 3 = signed config with independent publication checks, asset-triggered revocation with reconciliation, or proportionate review;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -2587,7 +2587,7 @@ Defense performance is not the same as design quality. Corrections should not ch
 ### Exercises
 
 - **EX148 — Presentation focus.** What does Sofia's presentation focus on? *Rubric:* 3 = problem, key decisions, evidence and limits rather than everything done;; 2 = focus;; 1 = everything;; 0 = none.
-- **EX149 — Key-theft answer.** What limit does Sofia concede about stolen tariff keys? *Rubric:* 3 = a coordinated compromise of the key and finance's publication list would defeat controls;; 2 = joint compromise;; 1 = none;; 0 = none.
+- **EX149 — Key-theft answer.** What limit does Sofia concede about stolen tariff keys? *Rubric:* 3 = a coordinated compromise of the key and finance's publication list would defeat controls;; 2 = joint compromise;; 1 = vague;; 0 = none.
 - **EX150 — Final reflection.** How does Sofia summarise security architecture in her reflection? *Rubric:* 3 = making trade-offs explicit, evidenced and owned;; 2 = three parts;; 1 = technology;; 0 = none.
 
 ### Synthesis

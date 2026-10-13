@@ -74,18 +74,18 @@ Principles can conflict, such as acceptability against separation of privilege. 
 ### Exercises
 
 - **EX001 — Plain definition.** How does Felix define security architecture? *Rubric:* 3 = the overall arrangement of protections across people, process and technology;; 2 = overall plan;; 1 = product list;; 0 = none.
-- **EX002 — Small organisations.** Why does a small credit union need architecture? *Rubric:* 3 = decisions made alone often contradict each other;; 2 = consistency;; 1 = none;; 0 = none.
-- **EX003 — Least privilege at Saltmarsh.** Give Saltmarsh's example of least privilege. *Rubric:* 3 = tellers view accounts but cannot change interest rates;; 2 = tellers;; 1 = none;; 0 = none.
-- **EX004 — Fail-safe example.** Which practice shows fail-safe defaults? *Rubric:* 3 = new staff accounts start empty and get roles on approval;; 2 = empty start;; 1 = none;; 0 = none.
-- **EX005 — Two-person rule.** Where does Saltmarsh use separation of privilege? *Rubric:* 3 = large transfers need a second approver;; 2 = transfers;; 1 = none;; 0 = none.
-- **EX006 — Shared mailbox gap.** Why is the shared branch email account a gap? *Rubric:* 3 = nobody can tell who sent what;; 2 = accountability;; 1 = none;; 0 = none.
-- **EX007 — Acceptability example.** Which control shows psychological acceptability? *Rubric:* 3 = the app-based second factor members find easy;; 2 = app factor;; 1 = none;; 0 = none.
-- **EX008 — Decision record parts.** List the parts of Leah's decision record. *Rubric:* 3 = context, options, choice, reasons, consequences, revisit date;; 2 = four;; 1 = none;; 0 = none.
+- **EX002 — Small organisations.** Why does a small credit union need architecture? *Rubric:* 3 = decisions made alone often contradict each other;; 2 = consistency;; 1 = vague;; 0 = none.
+- **EX003 — Least privilege at Saltmarsh.** Give Saltmarsh's example of least privilege. *Rubric:* 3 = tellers view accounts but cannot change interest rates;; 2 = tellers;; 1 = vague;; 0 = none.
+- **EX004 — Fail-safe example.** Which practice shows fail-safe defaults? *Rubric:* 3 = new staff accounts start empty and get roles on approval;; 2 = empty start;; 1 = vague;; 0 = none.
+- **EX005 — Two-person rule.** Where does Saltmarsh use separation of privilege? *Rubric:* 3 = large transfers need a second approver;; 2 = transfers;; 1 = vague;; 0 = none.
+- **EX006 — Shared mailbox gap.** Why is the shared branch email account a gap? *Rubric:* 3 = nobody can tell who sent what;; 2 = accountability;; 1 = vague;; 0 = none.
+- **EX007 — Acceptability example.** Which control shows psychological acceptability? *Rubric:* 3 = the app-based second factor members find easy;; 2 = app factor;; 1 = vague;; 0 = none.
+- **EX008 — Decision record parts.** List the parts of Leah's decision record. *Rubric:* 3 = context, options, choice, reasons, consequences, revisit date;; 2 = four;; 1 = vague;; 0 = none.
 - **EX009 — Chosen option.** Which option did the email decision select? *Rubric:* 3 = individual accounts with shared inbox access;; 2 = individual;; 1 = keep shared;; 0 = none.
 - **EX010 — Reason for choice.** Why did accountability drive the email choice? *Rubric:* 3 = member queries must be traceable to who answered;; 2 = traceable;; 1 = cost;; 0 = none.
 - **EX011 — Combined failures.** According to Anderson, where do many failures come from? *Rubric:* 3 = systems reasonable alone but unsafe together;; 2 = combination;; 1 = single bugs;; 0 = none.
-- **EX012 — Principle conflict.** Name two principles that can conflict. *Rubric:* 3 = acceptability and separation of privilege;; 2 = pair;; 1 = none;; 0 = none.
-- **EX013 — Value of writing.** Why write decisions down, according to Felix? *Rubric:* 3 = so others can understand and challenge them later;; 2 = challenge;; 1 = none;; 0 = none.
+- **EX012 — Principle conflict.** Name two principles that can conflict. *Rubric:* 3 = acceptability and separation of privilege;; 2 = pair;; 1 = vague;; 0 = none.
+- **EX013 — Value of writing.** Why write decisions down, according to Felix? *Rubric:* 3 = so others can understand and challenge them later;; 2 = challenge;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -135,19 +135,19 @@ Scopes can exclude where problems lie. Vendor logs may not show all access.
 
 ### Exercises
 
-- **EX014 — Excluded systems.** Which systems did the scope exclude? *Rubric:* 3 = core banking run by a service bureau and the card processor;; 2 = both;; 1 = none;; 0 = none.
+- **EX014 — Excluded systems.** Which systems did the scope exclude? *Rubric:* 3 = core banking run by a service bureau and the card processor;; 2 = both;; 1 = vague;; 0 = none.
 - **EX015 — Not allowed.** Which activities were outside Leah's permission? *Rubric:* 3 = attempting attacks or accessing member files;; 2 = attacks;; 1 = interviews;; 0 = none.
-- **EX016 — Approvers.** Who approved Leah's review in writing? *Rubric:* 3 = the chief executive and the loan system owner;; 2 = both;; 1 = none;; 0 = none.
-- **EX017 — Vendor check.** What did Leah confirm with the vendor? *Rubric:* 3 = that reading configuration screens does not breach the support contract;; 2 = contract;; 1 = none;; 0 = none.
-- **EX018 — Test application.** How did Leah avoid seeing real member data? *Rubric:* 3 = used a vendor test application with fictitious details;; 2 = test data;; 1 = none;; 0 = none.
-- **EX019 — Screenshot care.** What did Leah check before saving screenshots? *Rubric:* 3 = that no member information appears;; 2 = no data;; 1 = none;; 0 = none.
-- **EX020 — Three stop triggers.** Which three conditions make Leah stop? *Rubric:* 3 = signs of a break-in, member documents exposed online, disruption to the service;; 2 = two;; 1 = none;; 0 = none.
-- **EX021 — Why stop.** Why should a reviewer stop rather than investigate alone? *Rubric:* 3 = incident response needs different skills and authority;; 2 = authority;; 1 = none;; 0 = none.
-- **EX022 — Upload finding.** What exposure did the review find? *Rubric:* 3 = uploads in a cloud folder viewable by anyone with the link;; 2 = link sharing;; 1 = none;; 0 = none.
+- **EX016 — Approvers.** Who approved Leah's review in writing? *Rubric:* 3 = the chief executive and the loan system owner;; 2 = both;; 1 = vague;; 0 = none.
+- **EX017 — Vendor check.** What did Leah confirm with the vendor? *Rubric:* 3 = that reading configuration screens does not breach the support contract;; 2 = contract;; 1 = vague;; 0 = none.
+- **EX018 — Test application.** How did Leah avoid seeing real member data? *Rubric:* 3 = used a vendor test application with fictitious details;; 2 = test data;; 1 = vague;; 0 = none.
+- **EX019 — Screenshot care.** What did Leah check before saving screenshots? *Rubric:* 3 = that no member information appears;; 2 = no data;; 1 = vague;; 0 = none.
+- **EX020 — Three stop triggers.** Which three conditions make Leah stop? *Rubric:* 3 = signs of a break-in, member documents exposed online, disruption to the service;; 2 = two;; 1 = vague;; 0 = none.
+- **EX021 — Why stop.** Why should a reviewer stop rather than investigate alone? *Rubric:* 3 = incident response needs different skills and authority;; 2 = authority;; 1 = vague;; 0 = none.
+- **EX022 — Upload finding.** What exposure did the review find? *Rubric:* 3 = uploads in a cloud folder viewable by anyone with the link;; 2 = link sharing;; 1 = vague;; 0 = none.
 - **EX023 — Vendor log result.** What did the vendor's access logs show? *Rubric:* 3 = no access by unknown parties;; 2 = none found;; 1 = breach;; 0 = none.
 - **EX024 — Notes retention.** When are Leah's review notes deleted? *Rubric:* 3 = after the review is accepted;; 2 = after acceptance;; 1 = never;; 0 = none.
-- **EX025 — Response speed.** How quickly did the vendor fix the sharing setting? *Rubric:* 3 = within the hour;; 2 = hour;; 1 = none;; 0 = none.
-- **EX026 — Review exposure.** What must a security review never become? *Rubric:* 3 = a new source of data exposure;; 2 = exposure;; 1 = none;; 0 = none.
+- **EX025 — Response speed.** How quickly did the vendor fix the sharing setting? *Rubric:* 3 = within the hour;; 2 = hour;; 1 = vague;; 0 = none.
+- **EX026 — Review exposure.** What must a security review never become? *Rubric:* 3 = a new source of data exposure;; 2 = exposure;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -223,17 +223,17 @@ Maps go stale without updates. Supplier failures can cascade through fourth part
 ### Exercises
 
 - **EX027 — Where balances live.** Which system holds account balances and transactions? *Rubric:* 3 = core banking at the service bureau;; 2 = core banking;; 1 = loan system;; 0 = none.
-- **EX028 — Loan flow steps.** Describe the loan application flow. *Rubric:* 3 = upload, loan system, officer review, core banking payment, email;; 2 = most steps;; 1 = none;; 0 = none.
-- **EX029 — Crossing attention.** Why do supplier crossings need attention? *Rubric:* 3 = each relies on someone else's controls and assumptions;; 2 = assumptions;; 1 = none;; 0 = none.
-- **EX030 — Supplier record.** What does Leah record for each supplier? *Rubric:* 3 = role, data held, contract owner and failure impact;; 2 = three;; 1 = none;; 0 = none.
+- **EX028 — Loan flow steps.** Describe the loan application flow. *Rubric:* 3 = upload, loan system, officer review, core banking payment, email;; 2 = most steps;; 1 = vague;; 0 = none.
+- **EX029 — Crossing attention.** Why do supplier crossings need attention? *Rubric:* 3 = each relies on someone else's controls and assumptions;; 2 = assumptions;; 1 = vague;; 0 = none.
+- **EX030 — Supplier record.** What does Leah record for each supplier? *Rubric:* 3 = role, data held, contract owner and failure impact;; 2 = three;; 1 = vague;; 0 = none.
 - **EX031 — Identity count.** How many services depend on the identity provider in the lab? *Rubric:* 3 = six;; 2 = 6;; 1 = one;; 0 = none.
-- **EX032 — Bureau count.** How many services depend on the service bureau? *Rubric:* 3 = four;; 2 = 4;; 1 = none;; 0 = none.
-- **EX033 — Break-glass.** What fallback was agreed for the identity provider? *Rubric:* 3 = an offline break-glass account and tested sign-in procedure;; 2 = break-glass;; 1 = none;; 0 = none.
-- **EX034 — Bureau fallback.** What fallback exists for the service bureau? *Rubric:* 3 = contractual recovery and a manual branch withdrawal procedure;; 2 = manual;; 1 = none;; 0 = none.
+- **EX032 — Bureau count.** How many services depend on the service bureau? *Rubric:* 3 = four;; 2 = 4;; 1 = vague;; 0 = none.
+- **EX033 — Break-glass.** What fallback was agreed for the identity provider? *Rubric:* 3 = an offline break-glass account and tested sign-in procedure;; 2 = break-glass;; 1 = vague;; 0 = none.
+- **EX034 — Bureau fallback.** What fallback exists for the service bureau? *Rubric:* 3 = contractual recovery and a manual branch withdrawal procedure;; 2 = manual;; 1 = vague;; 0 = none.
 - **EX035 — Budgeting app.** What did the map reveal about the budgeting app? *Rubric:* 3 = a new supplier with transaction data and more identity dependency;; 2 = new supplier;; 1 = nothing;; 0 = none.
 - **EX036 — Board action.** How did the board respond to the budgeting app? *Rubric:* 3 = asked the vendor security questions before signing;; 2 = questions;; 1 = signed;; 0 = none.
 - **EX037 — Map payoff.** When does a simple map pay for itself? *Rubric:* 3 = the first time it shapes a decision before money is spent;; 2 = first decision;; 1 = never;; 0 = none.
-- **EX038 — Stale maps.** What limits the usefulness of the map over time? *Rubric:* 3 = it goes stale without updates;; 2 = staleness;; 1 = none;; 0 = none.
+- **EX038 — Stale maps.** What limits the usefulness of the map over time? *Rubric:* 3 = it goes stale without updates;; 2 = staleness;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -305,17 +305,17 @@ Baselines cover only listed settings. Quarterly checks lapse without an owner.
 
 ### Exercises
 
-- **EX039 — Baseline items.** Name three items in the lab's baseline. *Rubric:* 3 = multi-factor sign-in, session timeout, no shared accounts, link expiry, audit logging, two admins;; 2 = two;; 1 = none;; 0 = none.
-- **EX040 — First result.** How many settings met the baseline at first? *Rubric:* 3 = 4 of 7;; 2 = four;; 1 = none;; 0 = none.
-- **EX041 — Session gap.** What session setting failed? *Rubric:* 3 = sessions stayed open eight hours instead of thirty minutes;; 2 = eight hours;; 1 = none;; 0 = none.
+- **EX039 — Baseline items.** Name three items in the lab's baseline. *Rubric:* 3 = multi-factor sign-in, session timeout, no shared accounts, link expiry, audit logging, two admins;; 2 = two;; 1 = vague;; 0 = none.
+- **EX040 — First result.** How many settings met the baseline at first? *Rubric:* 3 = 4 of 7;; 2 = four;; 1 = vague;; 0 = none.
+- **EX041 — Session gap.** What session setting failed? *Rubric:* 3 = sessions stayed open eight hours instead of thirty minutes;; 2 = eight hours;; 1 = vague;; 0 = none.
 - **EX042 — Admin gap.** How many people held administrator rights? *Rubric:* 3 = five instead of two;; 2 = five;; 1 = two;; 0 = none.
-- **EX043 — Hidden weakness.** What did the earlier link fix not cover? *Rubric:* 3 = link expiry;; 2 = expiry;; 1 = none;; 0 = none.
-- **EX044 — Top priority.** Why are administrator rights the top priority? *Rubric:* 3 = any of five accounts could change settings or export all documents;; 2 = broad power;; 1 = none;; 0 = none.
-- **EX045 — Timeout rank.** Why is session timeout ranked third? *Rubric:* 3 = branch PCs already lock after five minutes;; 2 = PC lock;; 1 = none;; 0 = none.
-- **EX046 — Second run.** How many settings passed after the changes? *Rubric:* 3 = 7 of 7;; 2 = all;; 1 = none;; 0 = none.
+- **EX043 — Hidden weakness.** What did the earlier link fix not cover? *Rubric:* 3 = link expiry;; 2 = expiry;; 1 = vague;; 0 = none.
+- **EX044 — Top priority.** Why are administrator rights the top priority? *Rubric:* 3 = any of five accounts could change settings or export all documents;; 2 = broad power;; 1 = vague;; 0 = none.
+- **EX045 — Timeout rank.** Why is session timeout ranked third? *Rubric:* 3 = branch PCs already lock after five minutes;; 2 = PC lock;; 1 = vague;; 0 = none.
+- **EX046 — Second run.** How many settings passed after the changes? *Rubric:* 3 = 7 of 7;; 2 = all;; 1 = vague;; 0 = none.
 - **EX047 — Change made.** When is a requested change truly made, according to Felix? *Rubric:* 3 = when a check confirms it;; 2 = verified;; 1 = when requested;; 0 = none.
-- **EX048 — Quarterly rerun.** Why rerun the check each quarter? *Rubric:* 3 = updates and staff changes can undo settings;; 2 = drift;; 1 = none;; 0 = none.
-- **EX049 — Plan items.** Name two items in Leah's six-month plan. *Rubric:* 3 = individual email, quarterly baseline, break-glass test, overview update, supplier questions;; 2 = one;; 1 = none;; 0 = none.
+- **EX048 — Quarterly rerun.** Why rerun the check each quarter? *Rubric:* 3 = updates and staff changes can undo settings;; 2 = drift;; 1 = vague;; 0 = none.
+- **EX049 — Plan items.** Name two items in Leah's six-month plan. *Rubric:* 3 = individual email, quarterly baseline, break-glass test, overview update, supplier questions;; 2 = one;; 1 = vague;; 0 = none.
 - **EX050 — Course aim.** What was the course's aim, according to Felix? *Rubric:* 3 = a working habit of mapping, checking and recording;; 2 = habit;; 1 = expertise;; 0 = none.
 
 ### Synthesis

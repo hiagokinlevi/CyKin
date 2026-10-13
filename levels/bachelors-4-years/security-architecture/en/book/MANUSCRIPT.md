@@ -96,9 +96,9 @@ Real policies include context that formulas omit, such as emergencies. Enumerati
 
 ### Exercises
 
-- **EX001 — Two readings.** Write the two readings of the refund rule in logic. *Rubric:* 3 = M OR (S AND R) and (M OR S) AND R;; 2 = one;; 1 = none;; 0 = none.
-- **EX002 — Disagreeing rows.** According to the lab, in how many rows do the readings disagree, and what do they share? *Rubric:* 3 = 2 rows, both a manager without a receipt;; 2 = count and pattern;; 1 = none;; 0 = none.
-- **EX003 — Policy gap.** What gap did Lucas find in the remote-access policy? *Rubric:* 3 = contractors maintaining warehouse scanners;; 2 = case;; 1 = none;; 0 = none.
+- **EX001 — Two readings.** Write the two readings of the refund rule in logic. *Rubric:* 3 = M OR (S AND R) and (M OR S) AND R;; 2 = one;; 1 = vague;; 0 = none.
+- **EX002 — Disagreeing rows.** According to the lab, in how many rows do the readings disagree, and what do they share? *Rubric:* 3 = 2 rows, both a manager without a receipt;; 2 = count and pattern;; 1 = vague;; 0 = none.
+- **EX003 — Policy gap.** What gap did Lucas find in the remote-access policy? *Rubric:* 3 = contractors maintaining warehouse scanners;; 2 = case;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -141,7 +141,7 @@ Inventories are never complete on the first pass. Shared-responsibility boundari
 ### Exercises
 
 - **EX004 — Inherited weakness.** Why can a secure shop platform still be vulnerable? *Rubric:* 3 = it inherits weaknesses of an unpatched server below it;; 2 = lower layer;; 1 = it cannot;; 0 = none.
-- **EX005 — Unowned item.** Which responsibility had no owner at Fernway? *Rubric:* 3 = reviewing the delivery partner's access to customer addresses;; 2 = named;; 1 = none;; 0 = none.
+- **EX005 — Unowned item.** Which responsibility had no owner at Fernway? *Rubric:* 3 = reviewing the delivery partner's access to customer addresses;; 2 = named;; 1 = vague;; 0 = none.
 - **EX006 — Inventory surprises.** What two surprises did the inventory reveal? *Rubric:* 3 = old label-printing laptop with customer data; test database copy in cloud bucket;; 2 = both;; 1 = one;; 0 = none.
 
 ### Synthesis
@@ -273,7 +273,7 @@ Attack patterns change; lists need regular updating. Controls can shift attacks 
 ### Exercises
 
 - **EX013 — Integrity in retail.** Give a retail example of integrity. *Rubric:* 3 = prices and orders cannot be changed without permission;; 2 = example;; 1 = confidentiality;; 0 = none.
-- **EX014 — Credential stuffing.** What is credential stuffing and one control against it? *Rubric:* 3 = logging in with passwords leaked elsewhere; rate limiting, breached-password checks or MFA;; 2 = both;; 1 = none;; 0 = none.
+- **EX014 — Credential stuffing.** What is credential stuffing and one control against it? *Rubric:* 3 = logging in with passwords leaked elsewhere; rate limiting, breached-password checks or MFA;; 2 = both;; 1 = vague;; 0 = none.
 - **EX015 — Bank-detail control.** How should supplier bank-detail changes be verified? *Rubric:* 3 = phone call to a known number plus two approvals;; 2 = both;; 1 = email reply;; 0 = none.
 
 ### Synthesis
@@ -345,7 +345,7 @@ Graphs omit edges nobody knows about. Path length is a rough proxy for attacker 
 
 ### Exercises
 
-- **EX016 — Edge meaning.** What can edges represent in a security graph? *Rubric:* 3 = logins, network connections or permissions;; 2 = two;; 1 = none;; 0 = none.
+- **EX016 — Edge meaning.** What can edges represent in a security graph? *Rubric:* 3 = logins, network connections or permissions;; 2 = two;; 1 = vague;; 0 = none.
 - **EX017 — Lab path change.** What happened to the shortest path after removing the saved credential? *Rubric:* 3 = grew from 3 hops to 4 hops via the warehouse system;; 2 = longer;; 1 = unchanged;; 0 = none.
 - **EX018 — Choke points.** Which nodes did Lucas prioritise and why? *Rubric:* 3 = admin workstation and file server, which lie on many shortest paths;; 2 = both;; 1 = random;; 0 = none.
 
@@ -389,7 +389,7 @@ Separating networks can break undocumented dependencies; test first. Cloud servi
 
 ### Exercises
 
-- **EX019 — Bridged networks.** What risk does the bridged warehouse and office network create? *Rubric:* 3 = a compromised scanner can reach finance laptops directly;; 2 = reach;; 1 = none;; 0 = none.
+- **EX019 — Bridged networks.** What risk does the bridged warehouse and office network create? *Rubric:* 3 = a compromised scanner can reach finance laptops directly;; 2 = reach;; 1 = vague;; 0 = none.
 - **EX020 — Registrar account.** Why protect the domain registrar account strongly? *Rubric:* 3 = its compromise lets an attacker redirect customers and possibly obtain certificates;; 2 = redirect;; 1 = not important;; 0 = none.
 - **EX021 — Remote desktop fix.** What should replace internet-exposed remote desktop for the supplier? *Rubric:* 3 = a managed remote-access service with multi-factor authentication;; 2 = managed MFA;; 1 = leave it;; 0 = none.
 
@@ -434,7 +434,7 @@ Standard-library servers are for learning; production uses maintained frameworks
 ### Exercises
 
 - **EX022 — AuthN versus AuthZ.** What is the difference between authentication and authorisation? *Rubric:* 3 = authentication establishes identity; authorisation decides permitted actions;; 2 = both;; 1 = same;; 0 = none.
-- **EX023 — Failed test.** Which test failed and why? *Rubric:* 3 = manager adjusting another store's stock; store not checked;; 2 = named;; 1 = none;; 0 = none.
+- **EX023 — Failed test.** Which test failed and why? *Rubric:* 3 = manager adjusting another store's stock; store not checked;; 2 = named;; 1 = vague;; 0 = none.
 - **EX024 — Never logged.** What must never appear in logs? *Rubric:* 3 = passwords or session tokens;; 2 = both;; 1 = usernames;; 0 = none.
 
 ### Synthesis
@@ -477,8 +477,8 @@ Splitting accounts needs application changes and testing. Masked data can still 
 
 ### Exercises
 
-- **EX025 — Compromise impact.** How do separate database accounts limit a shop compromise? *Rubric:* 3 = attacker gains only the shop account's limited rights;; 2 = limited;; 1 = none;; 0 = none.
-- **EX026 — Injection count.** How many injectable queries did Lucas find in total? *Rubric:* 3 = three;; 2 = three;; 1 = one;; 0 = none.
+- **EX025 — Compromise impact.** How do separate database accounts limit a shop compromise? *Rubric:* 3 = attacker gains only the shop account's limited rights;; 2 = limited;; 1 = vague;; 0 = none.
+- **EX026 — Injection count.** How many injectable queries did Lucas find in total? *Rubric:* 3 = three;; 2 = three, without explanation;; 1 = one;; 0 = none.
 - **EX027 — Test data rule.** What data should test environments use? *Rubric:* 3 = synthetic or masked data;; 2 = synthetic;; 1 = real;; 0 = none.
 
 ### Synthesis
@@ -521,7 +521,7 @@ Laws differ by jurisdiction; seek advice when unsure. Staging environments may n
 
 ### Exercises
 
-- **EX028 — Authorisation contents.** What should a test authorisation specify? *Rubric:* 3 = what, how, when, by whom and an emergency contact;; 2 = four;; 1 = none;; 0 = none.
+- **EX028 — Authorisation contents.** What should a test authorisation specify? *Rubric:* 3 = what, how, when, by whom and an emergency contact;; 2 = four;; 1 = vague;; 0 = none.
 - **EX029 — Coursework data.** What does Lucas use for coursework examples? *Rubric:* 3 = synthetic records, not member data;; 2 = synthetic;; 1 = real;; 0 = none.
 - **EX030 — Friend's report.** What did Lucas advise his friend to do about the suspicious script? *Rubric:* 3 = report it internally to their own security team;; 2 = report;; 1 = probe it;; 0 = none.
 
@@ -565,7 +565,7 @@ Removing admin rights increases support requests at first. Some vendor devices c
 
 ### Exercises
 
-- **EX031 — Local admin risk.** Why is local administrator for every user risky? *Rubric:* 3 = malware runs with full rights;; 2 = full rights;; 1 = none;; 0 = none.
+- **EX031 — Local admin risk.** Why is local administrator for every user risky? *Rubric:* 3 = malware runs with full rights;; 2 = full rights;; 1 = vague;; 0 = none.
 - **EX032 — Shared root fix.** What replaces the shared root password? *Rubric:* 3 = individual accounts with logged elevation;; 2 = individual;; 1 = new shared password;; 0 = none.
 - **EX033 — Hardest updates.** Which updates does Lucas call hardest? *Rubric:* 3 = those for devices nobody thinks of as computers, like scanners and tills;; 2 = devices;; 1 = laptops;; 0 = none.
 
@@ -631,7 +631,7 @@ Intervals assume random sampling; convenience samples invalidate them. Problems 
 ### Exercises
 
 - **EX034 — Why random.** Why must the audit sample be random? *Rubric:* 3 = targeted samples bias the estimate;; 2 = bias;; 1 = faster;; 0 = none.
-- **EX035 — Lab interval.** What interval did the lab report? *Rubric:* 3 = about 9.0 to 18.4 per cent, roughly 361 to 735 accounts;; 2 = interval;; 1 = none;; 0 = none.
+- **EX035 — Lab interval.** What interval did the lab report? *Rubric:* 3 = about 9.0 to 18.4 per cent, roughly 361 to 735 accounts;; 2 = interval;; 1 = vague;; 0 = none.
 - **EX036 — Four to two.** Why is phishing clicks fell by half, four to two, weak evidence? *Rubric:* 3 = tiny counts make the change meaningless by chance;; 2 = small numbers;; 1 = strong;; 0 = none.
 
 ### Synthesis
@@ -674,8 +674,8 @@ Role models drift without regular review. Passkey recovery processes can become 
 
 ### Exercises
 
-- **EX037 — Privilege creep.** What is privilege creep and which process prevents it? *Rubric:* 3 = access accumulating over moves; mover process removes old roles;; 2 = both;; 1 = none;; 0 = none.
-- **EX038 — Toxic combination.** What toxic combination did Lucas block? *Rubric:* 3 = buyer who can also approve supplier payments;; 2 = named;; 1 = none;; 0 = none.
+- **EX037 — Privilege creep.** What is privilege creep and which process prevents it? *Rubric:* 3 = access accumulating over moves; mover process removes old roles;; 2 = both;; 1 = vague;; 0 = none.
+- **EX038 — Toxic combination.** What toxic combination did Lucas block? *Rubric:* 3 = buyer who can also approve supplier payments;; 2 = named;; 1 = vague;; 0 = none.
 - **EX039 — Text-code weakness.** Why are text-message codes weaker than passkeys? *Rubric:* 3 = they can be phished and relayed in real time; passkeys bind to the real site;; 2 = relay;; 1 = stronger;; 0 = none.
 
 ### Synthesis
@@ -813,7 +813,7 @@ Coverage metrics measure presence of controls, not their effectiveness. Missing 
 
 ### Exercises
 
-- **EX043 — Precise definition.** Why define meeting the baseline precisely? *Rubric:* 3 = so numbers mean the same each month and cannot be inflated by redefinition;; 2 = consistency;; 1 = none;; 0 = none.
+- **EX043 — Precise definition.** Why define meeting the baseline precisely? *Rubric:* 3 = so numbers mean the same each month and cannot be inflated by redefinition;; 2 = consistency;; 1 = vague;; 0 = none.
 - **EX044 — Weakest department.** Which department had the weakest phishing-resistant coverage in the lab, and why? *Rubric:* 3 = warehouse, 2 of 15, shared scanners without individual devices;; 2 = warehouse;; 1 = finance;; 0 = none.
 - **EX045 — Coverage caution.** What does high baseline coverage not prove? *Rubric:* 3 = that laptops are secure; only that they meet the baseline;; 2 = limit;; 1 = proves security;; 0 = none.
 
@@ -858,7 +858,7 @@ Overviews simplify; details live in supporting documents. Attributes need revisi
 ### Exercises
 
 - **EX046 — Not a product list.** Why is a security architecture not a product list? *Rubric:* 3 = it describes principles, attributes, services, connections and owners;; 2 = structure;; 1 = it is;; 0 = none.
-- **EX047 — Attribute use.** How does the attribute map help when someone proposes cutting a service? *Rubric:* 3 = it shows which business value would weaken;; 2 = value;; 1 = none;; 0 = none.
+- **EX047 — Attribute use.** How does the attribute map help when someone proposes cutting a service? *Rubric:* 3 = it shows which business value would weaken;; 2 = value;; 1 = vague;; 0 = none.
 - **EX048 — Board effect.** What did the overview change for Fernway's board? *Rubric:* 3 = they saw security as a coherent design rather than purchases;; 2 = coherent;; 1 = nothing;; 0 = none.
 
 ### Synthesis
@@ -902,7 +902,7 @@ Provider-managed keys reduce burden but add dependency. Rotation can break integ
 ### Exercises
 
 - **EX049 — Signature versus MAC.** What does a signature offer that a MAC does not? *Rubric:* 3 = public verification without the ability to sign;; 2 = public verification;; 1 = same;; 0 = none.
-- **EX050 — Shared webhook secret.** Why is one webhook secret for test and production a problem? *Rubric:* 3 = a test leak would allow forged production updates;; 2 = forged;; 1 = none;; 0 = none.
+- **EX050 — Shared webhook secret.** Why is one webhook secret for test and production a problem? *Rubric:* 3 = a test leak would allow forged production updates;; 2 = forged;; 1 = vague;; 0 = none.
 - **EX051 — Main failure source.** Where do most cryptographic failures in small organisations come from? *Rubric:* 3 = key handling rather than weak algorithms;; 2 = keys;; 1 = algorithms;; 0 = none.
 
 ### Synthesis
@@ -945,9 +945,9 @@ Non-random assignment limits causal claims. Report button use is only one indica
 
 ### Exercises
 
-- **EX052 — Question parts.** What four parts does Lucas's question name? *Rubric:* 3 = population, intervention, comparison and outcome;; 2 = three of four;; 1 = none;; 0 = none.
+- **EX052 — Question parts.** What four parts does Lucas's question name? *Rubric:* 3 = population, intervention, comparison and outcome;; 2 = three of four;; 1 = vague;; 0 = none.
 - **EX053 — Why not a survey.** Why did Lucas reject a survey as the main method? *Rubric:* 3 = self-reports overstate good behaviour;; 2 = bias;; 1 = cost;; 0 = none.
-- **EX054 — Small-cell condition.** Why did the committee require merging small stores? *Rubric:* 3 = so individual behaviour cannot be inferred from a store figure;; 2 = privacy;; 1 = none;; 0 = none.
+- **EX054 — Small-cell condition.** Why did the committee require merging small stores? *Rubric:* 3 = so individual behaviour cannot be inferred from a store figure;; 2 = privacy;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -990,7 +990,7 @@ Principles can conflict, such as least privilege versus acceptability. Judgement
 ### Exercises
 
 - **EX055 — Fail-safe default.** How does Fernway apply fail-safe defaults? *Rubric:* 3 = new staff accounts start with no access;; 2 = no access;; 1 = open access;; 0 = none.
-- **EX056 — Acceptability.** Why does psychological acceptability matter in stores? *Rubric:* 3 = controls that do not fit routines are bypassed;; 2 = bypass;; 1 = none;; 0 = none.
+- **EX056 — Acceptability.** Why does psychological acceptability matter in stores? *Rubric:* 3 = controls that do not fit routines are bypassed;; 2 = bypass;; 1 = vague;; 0 = none.
 - **EX057 — Rota app finding.** What did the principles reveal about the rota app? *Rubric:* 3 = every manager could see all stores, breaking least privilege;; 2 = least privilege;; 1 = nothing;; 0 = none.
 
 ### Synthesis
@@ -1033,7 +1033,7 @@ Generic patterns may miss local detail. Case lessons need checking against curre
 
 ### Exercises
 
-- **EX058 — Supplier pattern.** Which Fernway arrangement matched the supplier pattern? *Rubric:* 3 = the shopfitter's permanent broad VPN account;; 2 = contractor;; 1 = none;; 0 = none.
+- **EX058 — Supplier pattern.** Which Fernway arrangement matched the supplier pattern? *Rubric:* 3 = the shopfitter's permanent broad VPN account;; 2 = contractor;; 1 = vague;; 0 = none.
 - **EX059 — Bucket fix.** What did Lucas recommend for the cloud bucket? *Rubric:* 3 = move the export folder to a separate private bucket;; 2 = separate;; 1 = delete images;; 0 = none.
 - **EX060 — Value of a case.** Where does a case's value lie? *Rubric:* 3 = in the transferable design lesson;; 2 = lesson;; 1 = drama;; 0 = none.
 
@@ -1077,9 +1077,9 @@ Models age as systems change. STRIDE finds categories of threat, not every attac
 
 ### Exercises
 
-- **EX061 — Validating the model.** What did the developer and warehouse manager add? *Rubric:* 3 = a nightly supplier price import and a manual spreadsheet upload;; 2 = one flow;; 1 = none;; 0 = none.
-- **EX062 — Unvalidated crossing.** Why is the spreadsheet upload a concern? *Rubric:* 3 = it crosses a boundary unvalidated and could change prices;; 2 = validation;; 1 = none;; 0 = none.
-- **EX063 — Repudiation finding.** What repudiation gap did STRIDE find? *Rubric:* 3 = price changes are not logged with the user;; 2 = logging;; 1 = none;; 0 = none.
+- **EX061 — Validating the model.** What did the developer and warehouse manager add? *Rubric:* 3 = a nightly supplier price import and a manual spreadsheet upload;; 2 = one flow;; 1 = vague;; 0 = none.
+- **EX062 — Unvalidated crossing.** Why is the spreadsheet upload a concern? *Rubric:* 3 = it crosses a boundary unvalidated and could change prices;; 2 = validation;; 1 = vague;; 0 = none.
+- **EX063 — Repudiation finding.** What repudiation gap did STRIDE find? *Rubric:* 3 = price changes are not logged with the user;; 2 = logging;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1193,9 +1193,9 @@ Qualitative scales hide uncertainty. Small teams may share blind spots despite i
 
 ### Exercises
 
-- **EX067 — Why a store manager.** Why did Lucas involve a store manager? *Rubric:* 3 = people who run the process know where it fails;; 2 = local knowledge;; 1 = none;; 0 = none.
+- **EX067 — Why a store manager.** Why did Lucas involve a store manager? *Rubric:* 3 = people who run the process know where it fails;; 2 = local knowledge;; 1 = vague;; 0 = none.
 - **EX068 — Rating differences.** What did comparing independent ratings reveal? *Rubric:* 3 = past collection mistakes known only to the store manager;; 2 = new information;; 1 = nothing;; 0 = none.
-- **EX069 — Wrong-person treatment.** How was wrong-person collection treated? *Rubric:* 3 = a text collection code checked at the counter;; 2 = code;; 1 = none;; 0 = none.
+- **EX069 — Wrong-person treatment.** How was wrong-person collection treated? *Rubric:* 3 = a text collection code checked at the counter;; 2 = code;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1237,7 +1237,7 @@ Tailoring can slide into weakening controls. Evidence must be real, not a promis
 
 ### Exercises
 
-- **EX070 — Forgotten area.** Which area had Fernway never considered? *Rubric:* 3 = media disposal for old till hard drives;; 2 = disposal;; 1 = none;; 0 = none.
+- **EX070 — Forgotten area.** Which area had Fernway never considered? *Rubric:* 3 = media disposal for old till hard drives;; 2 = disposal;; 1 = vague;; 0 = none.
 - **EX071 — Tailored audit review.** How was audit review tailored? *Rubric:* 3 = a monthly thirty-minute review of identity alerts;; 2 = monthly review;; 1 = a security operations centre;; 0 = none.
 - **EX072 — Unlinked controls.** What happened to controls with no linked risk? *Rubric:* 3 = questioned; two leftovers were retired;; 2 = retired;; 1 = kept;; 0 = none.
 
@@ -1307,9 +1307,9 @@ Application-internal permissions are invisible to the checker. Exceptions need e
 
 ### Exercises
 
-- **EX073 — Excess found.** How many users had excess permissions and why? *Rubric:* 3 = three: two promotion leftovers and one urgent-fix database owner right;; 2 = three;; 1 = none;; 0 = none.
-- **EX074 — Checking definitions.** Why confirm job definitions before reporting? *Rubric:* 3 = wrong definitions cause false alarms;; 2 = accuracy;; 1 = none;; 0 = none.
-- **EX075 — Exception field.** What improvement did Lucas suggest for exceptions? *Rubric:* 3 = an approved-exception field with expiry dates;; 2 = expiry;; 1 = none;; 0 = none.
+- **EX073 — Excess found.** How many users had excess permissions and why? *Rubric:* 3 = three: two promotion leftovers and one urgent-fix database owner right;; 2 = three;; 1 = vague;; 0 = none.
+- **EX074 — Checking definitions.** Why confirm job definitions before reporting? *Rubric:* 3 = wrong definitions cause false alarms;; 2 = accuracy;; 1 = vague;; 0 = none.
+- **EX075 — Exception field.** What improvement did Lucas suggest for exceptions? *Rubric:* 3 = an approved-exception field with expiry dates;; 2 = expiry;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1353,7 +1353,7 @@ Effort estimates are rough judgements. Trees can miss branches no one imagined.
 
 - **EX076 — Low-skill branch.** Which branch needed no technical skill? *Rubric:* 3 = the stale export emailed to a marketing agency;; 2 = stale export;; 1 = password;; 0 = none.
 - **EX077 — Passkey weak point.** What became the cheapest path with passkeys? *Rubric:* 3 = the email fallback;; 2 = fallback;; 1 = passkeys;; 0 = none.
-- **EX078 — Method contributions.** What did STRIDE, the tree and ratings each contribute? *Rubric:* 3 = breadth, attacker paths and priority;; 2 = two of three;; 1 = none;; 0 = none.
+- **EX078 — Method contributions.** What did STRIDE, the tree and ratings each contribute? *Rubric:* 3 = breadth, attacker paths and priority;; 2 = two of three;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1439,9 +1439,9 @@ Blameless does not mean accountless; owners are still named for fixes. Timelines
 
 ### Exercises
 
-- **EX082 — Why no alert.** Why did no alert fire? *Rubric:* 3 = monitoring watched availability, not prices;; 2 = monitoring gap;; 1 = none;; 0 = none.
+- **EX082 — Why no alert.** Why did no alert fire? *Rubric:* 3 = monitoring watched availability, not prices;; 2 = monitoring gap;; 1 = vague;; 0 = none.
 - **EX083 — Not blaming the buyer.** Why avoid naming the buyer as the cause? *Rubric:* 3 = anyone under the same pressure and tools could err;; 2 = system;; 1 = blame;; 0 = none.
-- **EX084 — Later proof.** What showed the improvements worked? *Rubric:* 3 = the alert caught a currency conversion mistake;; 2 = alert;; 1 = none;; 0 = none.
+- **EX084 — Later proof.** What showed the improvements worked? *Rubric:* 3 = the alert caught a currency conversion mistake;; 2 = alert;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1483,9 +1483,9 @@ Rhythms slip under workload pressure. Change questions depend on honest answers.
 
 ### Exercises
 
-- **EX085 — Why a calendar.** Why write the operating rhythm down? *Rubric:* 3 = tasks survive holidays and staff changes;; 2 = continuity;; 1 = none;; 0 = none.
+- **EX085 — Why a calendar.** Why write the operating rhythm down? *Rubric:* 3 = tasks survive holidays and staff changes;; 2 = continuity;; 1 = vague;; 0 = none.
 - **EX086 — Change trigger.** What triggers a security review of a change? *Rubric:* 3 = adding a supplier, new data, a boundary crossing or privileged access;; 2 = trigger;; 1 = all changes;; 0 = none.
-- **EX087 — Loyalty app fix.** How was the loyalty app redesigned? *Rubric:* 3 = to receive only member numbers and points balances;; 2 = minimise;; 1 = none;; 0 = none.
+- **EX087 — Loyalty app fix.** How was the loyalty app redesigned? *Rubric:* 3 = to receive only member numbers and points balances;; 2 = minimise;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1558,7 +1558,7 @@ Synthetic data rarely matches real noise. VPNs and travel apps can confuse locat
 
 ### Exercises
 
-- **EX088 — First rule problem.** What was wrong with flagging all foreign sign-ins? *Rubric:* 3 = buyers on trips caused many false alarms;; 2 = false positives;; 1 = none;; 0 = none.
+- **EX088 — First rule problem.** What was wrong with flagging all foreign sign-ins? *Rubric:* 3 = buyers on trips caused many false alarms;; 2 = false positives;; 1 = vague;; 0 = none.
 - **EX089 — Window choice.** Why keep two hours rather than one? *Rubric:* 3 = one hour missed three of four attacks;; 2 = miss;; 1 = faster;; 0 = none.
 - **EX090 — Rule blind spot.** What does the rule miss? *Rubric:* 3 = attackers signing in from the user's own country;; 2 = same country;; 1 = nothing;; 0 = none.
 
@@ -1603,8 +1603,8 @@ Zero trust is a direction, not a product. Deferred resilience leaves the season 
 ### Exercises
 
 - **EX091 — Why finance first.** Why start zero trust with the finance app? *Rubric:* 3 = few users and high value, so lessons are learned safely;; 2 = pilot;; 1 = stores first;; 0 = none.
-- **EX092 — Four resilience goals.** What four resilience goals did Lucas use? *Rubric:* 3 = anticipate, withstand, recover and adapt;; 2 = three;; 1 = none;; 0 = none.
-- **EX093 — Deferred item.** What did the board defer and with what fallback? *Rubric:* 3 = the second hosting region; manual order process;; 2 = deferred;; 1 = none;; 0 = none.
+- **EX092 — Four resilience goals.** What four resilience goals did Lucas use? *Rubric:* 3 = anticipate, withstand, recover and adapt;; 2 = three;; 1 = vague;; 0 = none.
+- **EX093 — Deferred item.** What did the board defer and with what fallback? *Rubric:* 3 = the second hosting region; manual order process;; 2 = deferred;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1647,8 +1647,8 @@ Translation can oversell benefits. Compromises need review if conditions change.
 ### Exercises
 
 - **EX094 — Finance framing.** How did Lucas frame the proxy for finance? *Rubric:* 3 = reducing the chance of payment fraud;; 2 = fraud;; 1 = technical terms;; 0 = none.
-- **EX095 — Detection and law.** What did Lucas and the adviser document for the detection rule? *Rubric:* 3 = purpose, country-level minimisation, retention, notice and a legitimate-interest assessment;; 2 = three items;; 1 = none;; 0 = none.
-- **EX096 — Seasonal compromise.** What was the seasonal account compromise? *Rubric:* 3 = pre-created limited accounts activated on arrival, expiring at season end;; 2 = limited;; 1 = none;; 0 = none.
+- **EX095 — Detection and law.** What did Lucas and the adviser document for the detection rule? *Rubric:* 3 = purpose, country-level minimisation, retention, notice and a legitimate-interest assessment;; 2 = three items;; 1 = vague;; 0 = none.
+- **EX096 — Seasonal compromise.** What was the seasonal account compromise? *Rubric:* 3 = pre-created limited accounts activated on arrival, expiring at season end;; 2 = limited;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1707,9 +1707,9 @@ Few units make estimates unstable. Parallel trends cannot be proven, only checke
 
 ### Exercises
 
-- **EX097 — DiD result.** What was the difference-in-differences in the lab? *Rubric:* 3 = 0.29 reports per staff per month;; 2 = positive;; 1 = none;; 0 = none.
-- **EX098 — Construct threat.** What construct validity threat did Lucas name? *Rubric:* 3 = report-button use measures willingness, not detection ability;; 2 = construct;; 1 = none;; 0 = none.
-- **EX099 — Stronger design.** What did Lucas recommend next? *Rubric:* 3 = randomised rollout by lot;; 2 = randomise;; 1 = none;; 0 = none.
+- **EX097 — DiD result.** What was the difference-in-differences in the lab? *Rubric:* 3 = 0.29 reports per staff per month;; 2 = positive;; 1 = vague;; 0 = none.
+- **EX098 — Construct threat.** What construct validity threat did Lucas name? *Rubric:* 3 = report-button use measures willingness, not detection ability;; 2 = construct;; 1 = vague;; 0 = none.
+- **EX099 — Stronger design.** What did Lucas recommend next? *Rubric:* 3 = randomised rollout by lot;; 2 = randomise;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1772,7 +1772,7 @@ Weights reflect opinions. Scores from a small group may share bias.
 
 ### Exercises
 
-- **EX100 — Criteria first.** Why define criteria before scoring? *Rubric:* 3 = so the favoured option cannot shape them;; 2 = bias;; 1 = none;; 0 = none.
+- **EX100 — Criteria first.** Why define criteria before scoring? *Rubric:* 3 = so the favoured option cannot shape them;; 2 = bias;; 1 = vague;; 0 = none.
 - **EX101 — Totals.** What were the weighted totals in the lab? *Rubric:* 3 = A 3.05, B 4.10;; 2 = B higher;; 1 = A higher;; 0 = none.
 - **EX102 — Sensitivity result.** What happened when the cost weight doubled? *Rubric:* 3 = B still won, 3.83 to 3.30;; 2 = B wins;; 1 = A wins;; 0 = none.
 
@@ -1816,9 +1816,9 @@ Real projects slip, affecting student timelines. Sponsors may change priorities.
 
 ### Exercises
 
-- **EX103 — Excluded area.** What did Dr Bellini require to be excluded? *Rubric:* 3 = the robots' internal safety systems;; 2 = robot safety;; 1 = none;; 0 = none.
-- **EX104 — Why list exclusions.** Why write exclusions into the proposal? *Rubric:* 3 = to prevent scope creep and set sponsor expectations;; 2 = scope;; 1 = none;; 0 = none.
-- **EX105 — Advance criteria.** Why define evaluation criteria in the proposal? *Rubric:* 3 = so success is not defined after the fact;; 2 = advance;; 1 = none;; 0 = none.
+- **EX103 — Excluded area.** What did Dr Bellini require to be excluded? *Rubric:* 3 = the robots' internal safety systems;; 2 = robot safety;; 1 = vague;; 0 = none.
+- **EX104 — Why list exclusions.** Why write exclusions into the proposal? *Rubric:* 3 = to prevent scope creep and set sponsor expectations;; 2 = scope;; 1 = vague;; 0 = none.
+- **EX105 — Advance criteria.** Why define evaluation criteria in the proposal? *Rubric:* 3 = so success is not defined after the fact;; 2 = advance;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1860,9 +1860,9 @@ Volunteer turnover erodes changes. Free services can change terms.
 
 ### Exercises
 
-- **EX106 — First step.** Why did Lucas start by listening to volunteers? *Rubric:* 3 = advice that adds steps to busy shifts is ignored;; 2 = fit;; 1 = none;; 0 = none.
+- **EX106 — First step.** Why did Lucas start by listening to volunteers? *Rubric:* 3 = advice that adds steps to busy shifts is ignored;; 2 = fit;; 1 = vague;; 0 = none.
 - **EX107 — Dropped plan.** What did Lucas drop and why? *Rubric:* 3 = a password manager rollout volunteers would not sustain;; 2 = sustain;; 1 = cost;; 0 = none.
-- **EX108 — What transferred.** Name two things that transferred from Fernway. *Rubric:* 3 = classification, least privilege, asking who would notice;; 2 = one;; 1 = none;; 0 = none.
+- **EX108 — What transferred.** Name two things that transferred from Fernway. *Rubric:* 3 = classification, least privilege, asking who would notice;; 2 = one;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1904,7 +1904,7 @@ Absence of evidence is not evidence of absence. Reviewers can carry their own bi
 
 ### Exercises
 
-- **EX109 — Four questions.** What four questions did Lucas ask of each source? *Rubric:* 3 = author, method, data and interests;; 2 = three;; 1 = none;; 0 = none.
+- **EX109 — Four questions.** What four questions did Lucas ask of each source? *Rubric:* 3 = author, method, data and interests;; 2 = three;; 1 = vague;; 0 = none.
 - **EX110 — Standards limit.** What do standards not do? *Rubric:* 3 = measure outcomes;; 2 = outcomes;; 1 = everything;; 0 = none.
 - **EX111 — Conclusion.** What was Lucas's conclusion on segmentation? *Rubric:* 3 = reasonable practice backed by consensus and simulations, but thin real-world evidence for small organisations;; 2 = balanced;; 1 = proven;; 0 = none.
 
@@ -1948,9 +1948,9 @@ Vendor changes can invalidate earlier tests. Traceability tables need ownership 
 
 ### Exercises
 
-- **EX112 — Easiest path.** What was the easiest path to stopping picking? *Rubric:* 3 = the supplier's remote support link with a shared password;; 2 = support link;; 1 = none;; 0 = none.
+- **EX112 — Easiest path.** What was the easiest path to stopping picking? *Rubric:* 3 = the supplier's remote support link with a shared password;; 2 = support link;; 1 = vague;; 0 = none.
 - **EX113 — Vendor switch.** How did Lucas handle the vendor switch? *Rubric:* 3 = reviewed affected deliverables, agreed new milestones, reused method and updated what changed;; 2 = adapted;; 1 = restarted;; 0 = none.
-- **EX114 — Support link control.** What requirement replaced the shared support password? *Rubric:* 3 = named accounts with multi-factor authentication and session recording;; 2 = named;; 1 = none;; 0 = none.
+- **EX114 — Support link control.** What requirement replaced the shared support password? *Rubric:* 3 = named accounts with multi-factor authentication and session recording;; 2 = named;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1992,8 +1992,8 @@ Reviewer availability limits depth. Tests deferred to installation may be forgot
 
 ### Exercises
 
-- **EX115 — Unrun test.** Which test could not be run and why? *Rubric:* 3 = robot network isolation; robots had not arrived;; 2 = isolation;; 1 = none;; 0 = none.
-- **EX116 — Reviewer findings.** What two gaps did the reviewer find? *Rubric:* 3 = no robot controller patching plan and no vendor access revocation process;; 2 = one;; 1 = none;; 0 = none.
+- **EX115 — Unrun test.** Which test could not be run and why? *Rubric:* 3 = robot network isolation; robots had not arrived;; 2 = isolation;; 1 = vague;; 0 = none.
+- **EX116 — Reviewer findings.** What two gaps did the reviewer find? *Rubric:* 3 = no robot controller patching plan and no vendor access revocation process;; 2 = one;; 1 = vague;; 0 = none.
 - **EX117 — Remaining gap owners.** What happened to remaining gaps? *Rubric:* 3 = each received an owner at Fernway;; 2 = owners;; 1 = ignored;; 0 = none.
 
 ### Synthesis
@@ -2038,7 +2038,7 @@ Presentations simplify; written work holds the detail. Career plans change.
 
 - **EX118 — Thesis sources.** What rule did Lucas follow for citations? *Rubric:* 3 = cite only sources he actually read;; 2 = read;; 1 = any;; 0 = none.
 - **EX119 — Board questions.** What did the board ask about? *Rubric:* 3 = the identity provider risk;; 2 = identity;; 1 = validity;; 0 = none.
-- **EX120 — Final advice.** What was Lucas's advice to future students? *Rubric:* 3 = treat every design as a hypothesis and record unknowns carefully;; 2 = hypothesis;; 1 = none;; 0 = none.
+- **EX120 — Final advice.** What was Lucas's advice to future students? *Rubric:* 3 = treat every design as a hypothesis and record unknowns carefully;; 2 = hypothesis;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

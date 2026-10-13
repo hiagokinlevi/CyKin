@@ -2033,7 +2033,7 @@ Attempt each exercise before opening the [worked results](#worked-results). Ever
 
 **EX062 — RACI for containment.** *Steps:* write a RACI row for "isolate a production clinical server". *Rubric:* 3 = one Accountable role (incident lead or deputy), Responsible (IT operations), Consulted (service owner, clinical safety), Informed (communications, management); deputy named; 2 = multiple accountable; 1 = incomplete; 0 = none.
 
-**EX063 — Evaluate the change.** *Steps:* list two ways the proposed 15-minute rule could fail and how the tabletop test would detect them. *Rubric:* 3 = deputy also unavailable, owner bypasses decision, partial containment not technically ready; detection through injects and observer notes; 2 = one; 1 = none; 0 = none.
+**EX063 — Evaluate the change.** *Steps:* list two ways the proposed 15-minute rule could fail and how the tabletop test would detect them. *Rubric:* 3 = deputy also unavailable, owner bypasses decision, partial containment not technically ready; detection through injects and observer notes; 2 = one; 1 = vague; 0 = none.
 
 ### Chapter synthesis
 

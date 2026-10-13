@@ -66,10 +66,10 @@ Business framing can oversimplify technology. Threat lists change.
 ### Exercises
 
 - **EX001 — Member data priorities.** Which security objectives matter most for member account data? *Rubric:* 3 = confidentiality and integrity;; 2 = C and I;; 1 = availability only;; 0 = none.
-- **EX002 — App availability.** Why does availability matter for the mobile app? *Rubric:* 3 = members expect access at any time;; 2 = access;; 1 = none;; 0 = none.
-- **EX003 — Social engineering target.** Which staff are targeted by social engineering fraud? *Rubric:* 3 = call centre staff;; 2 = call centre;; 1 = none;; 0 = none.
-- **EX004 — Governance gaps.** Name two governance gaps Lena identified. *Rubric:* 3 = untested controls and informal risk decisions;; 2 = gaps;; 1 = none;; 0 = none.
-- **EX005 — Compliance strength.** Why is Lena's compliance background useful? *Rubric:* 3 = its discipline is a strong foundation;; 2 = discipline;; 1 = none;; 0 = none.
+- **EX002 — App availability.** Why does availability matter for the mobile app? *Rubric:* 3 = members expect access at any time;; 2 = access;; 1 = vague;; 0 = none.
+- **EX003 — Social engineering target.** Which staff are targeted by social engineering fraud? *Rubric:* 3 = call centre staff;; 2 = call centre;; 1 = vague;; 0 = none.
+- **EX004 — Governance gaps.** Name two governance gaps Lena identified. *Rubric:* 3 = untested controls and informal risk decisions;; 2 = gaps;; 1 = vague;; 0 = none.
+- **EX005 — Compliance strength.** Why is Lena's compliance background useful? *Rubric:* 3 = its discipline is a strong foundation;; 2 = discipline;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -111,11 +111,11 @@ Stakeholder views change. Purpose statements can be vague.
 
 ### Exercises
 
-- **EX006 — Regulator expectation.** What does the regulator expect? *Rubric:* 3 = sound risk management and timely incident reporting;; 2 = expectations;; 1 = none;; 0 = none.
-- **EX007 — Card scheme duty.** Which obligation comes from card schemes? *Rubric:* 3 = PCI DSS v4.0;; 2 = PCI;; 1 = none;; 0 = none.
-- **EX008 — Mapping benefit.** What does mapping expectations to evidence reveal? *Rubric:* 3 = expectations Marston cannot yet show it meets;; 2 = gaps;; 1 = none;; 0 = none.
-- **EX009 — Programme purpose.** What is the purpose of Marston's GRC programme? *Rubric:* 3 = keep risk within appetite, meet obligations, give reliable evidence;; 2 = purpose;; 1 = none;; 0 = none.
-- **EX010 — Success outcome.** Name one measurable outcome Lena added. *Rubric:* 3 = no overdue high findings;; 2 = outcome;; 1 = none;; 0 = none.
+- **EX006 — Regulator expectation.** What does the regulator expect? *Rubric:* 3 = sound risk management and timely incident reporting;; 2 = expectations;; 1 = vague;; 0 = none.
+- **EX007 — Card scheme duty.** Which obligation comes from card schemes? *Rubric:* 3 = PCI DSS v4.0;; 2 = PCI;; 1 = vague;; 0 = none.
+- **EX008 — Mapping benefit.** What does mapping expectations to evidence reveal? *Rubric:* 3 = expectations Marston cannot yet show it meets;; 2 = gaps;; 1 = vague;; 0 = none.
+- **EX009 — Programme purpose.** What is the purpose of Marston's GRC programme? *Rubric:* 3 = keep risk within appetite, meet obligations, give reliable evidence;; 2 = purpose;; 1 = vague;; 0 = none.
+- **EX010 — Success outcome.** Name one measurable outcome Lena added. *Rubric:* 3 = no overdue high findings;; 2 = outcome;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -157,10 +157,10 @@ Independence is relative in small teams. Evidence handling takes time.
 
 ### Exercises
 
-- **EX011 — Lena's limits.** What can Lena not do in her role? *Rubric:* 3 = change systems or approve exceptions;; 2 = limits;; 1 = none;; 0 = none.
+- **EX011 — Lena's limits.** What can Lena not do in her role? *Rubric:* 3 = change systems or approve exceptions;; 2 = limits;; 1 = vague;; 0 = none.
 - **EX012 — Member data access.** When may GRC staff access member data? *Rubric:* 3 = only when needed for a specific review, with approval and logging;; 2 = need;; 1 = always;; 0 = none.
-- **EX013 — Evidence protection.** What protections apply to evidence? *Rubric:* 3 = restricted folder, consistent names, source records, minimised data;; 2 = protection;; 1 = none;; 0 = none.
-- **EX014 — Conflict found.** What conflict did Lena have? *Rubric:* 3 = assessing procedures she wrote;; 2 = self-review;; 1 = none;; 0 = none.
+- **EX013 — Evidence protection.** What protections apply to evidence? *Rubric:* 3 = restricted folder, consistent names, source records, minimised data;; 2 = protection;; 1 = vague;; 0 = none.
+- **EX014 — Conflict found.** What conflict did Lena have? *Rubric:* 3 = assessing procedures she wrote;; 2 = self-review;; 1 = vague;; 0 = none.
 - **EX015 — Conflict response.** How did Lena manage the conflict? *Rubric:* 3 = disclosed it and asked a colleague to review;; 2 = disclose;; 1 = ignore;; 0 = none.
 
 ### Synthesis
@@ -203,11 +203,11 @@ Workshops depend on attendees. Appetite statements can be vague.
 
 ### Exercises
 
-- **EX016 — Process steps.** Name the main steps of the risk process. *Rubric:* 3 = context, identify, analyse, evaluate, treat, monitor;; 2 = steps;; 1 = none;; 0 = none.
+- **EX016 — Process steps.** Name the main steps of the risk process. *Rubric:* 3 = context, identify, analyse, evaluate, treat, monitor;; 2 = steps;; 1 = vague;; 0 = none.
 - **EX017 — Above appetite.** Which risk was above appetite? *Rubric:* 3 = account takeover leading to member losses;; 2 = takeover;; 1 = outages;; 0 = none.
-- **EX018 — Outage tolerance.** When are app outages within appetite? *Rubric:* 3 = if recovered within four hours;; 2 = 4 hours;; 1 = none;; 0 = none.
-- **EX019 — Takeover treatment.** What treatments were chosen for account takeover? *Rubric:* 3 = stronger new-payee authentication and transaction monitoring;; 2 = two;; 1 = none;; 0 = none.
-- **EX020 — Decision records.** Why record treatment decisions? *Rubric:* 3 = to show risks were managed deliberately;; 2 = evidence;; 1 = none;; 0 = none.
+- **EX018 — Outage tolerance.** When are app outages within appetite? *Rubric:* 3 = if recovered within four hours;; 2 = 4 hours;; 1 = vague;; 0 = none.
+- **EX019 — Takeover treatment.** What treatments were chosen for account takeover? *Rubric:* 3 = stronger new-payee authentication and transaction monitoring;; 2 = two;; 1 = vague;; 0 = none.
+- **EX020 — Decision records.** Why record treatment decisions? *Rubric:* 3 = to show risks were managed deliberately;; 2 = evidence;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -271,9 +271,9 @@ Small samples of controls. Reviewers can be strict.
 
 - **EX021 — Self-assessment bias.** What is the typical bias of self-assessment? *Rubric:* 3 = optimism;; 2 = optimistic;; 1 = pessimistic;; 0 = none.
 - **EX022 — Largest gap.** Which domain had the largest gap? *Rubric:* 3 = vendor management, +1.33;; 2 = vendor;; 1 = backup;; 0 = none.
-- **EX023 — Smallest gap.** Why did backups have the smallest gap? *Rubric:* 3 = restore tests produce clear evidence;; 2 = evidence;; 1 = none;; 0 = none.
-- **EX024 — Vendor cause.** Why did vendor owners overrate their controls? *Rubric:* 3 = contracts had clauses but nobody checked compliance;; 2 = assumption;; 1 = none;; 0 = none.
-- **EX025 — Recommendation.** What did Lena recommend? *Rubric:* 3 = evidence-based rating definitions and review focus on largest gaps;; 2 = two;; 1 = none;; 0 = none.
+- **EX023 — Smallest gap.** Why did backups have the smallest gap? *Rubric:* 3 = restore tests produce clear evidence;; 2 = evidence;; 1 = vague;; 0 = none.
+- **EX024 — Vendor cause.** Why did vendor owners overrate their controls? *Rubric:* 3 = contracts had clauses but nobody checked compliance;; 2 = assumption;; 1 = vague;; 0 = none.
+- **EX025 — Recommendation.** What did Lena recommend? *Rubric:* 3 = evidence-based rating definitions and review focus on largest gaps;; 2 = two;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -315,11 +315,11 @@ Targets can drive false closure. Committees may not act.
 
 ### Exercises
 
-- **EX026 — Closure check.** What happens when an owner claims completion? *Rubric:* 3 = Lena checks evidence before closing;; 2 = evidence;; 1 = none;; 0 = none.
-- **EX027 — High target.** What is the target for high findings? *Rubric:* 3 = thirty days;; 2 = 30;; 1 = none;; 0 = none.
-- **EX028 — Long fixes.** How should a high finding needing a system replacement be handled? *Rubric:* 3 = interim measure and longer agreed plan;; 2 = interim;; 1 = none;; 0 = none.
-- **EX029 — Report lead.** What does Lena's report lead with? *Rubric:* 3 = overdue high findings;; 2 = overdue;; 1 = none;; 0 = none.
-- **EX030 — Escalation path.** Where do overdue findings escalate? *Rubric:* 3 = the owner's executive;; 2 = executive;; 1 = none;; 0 = none.
+- **EX026 — Closure check.** What happens when an owner claims completion? *Rubric:* 3 = Lena checks evidence before closing;; 2 = evidence;; 1 = vague;; 0 = none.
+- **EX027 — High target.** What is the target for high findings? *Rubric:* 3 = thirty days;; 2 = 30;; 1 = vague;; 0 = none.
+- **EX028 — Long fixes.** How should a high finding needing a system replacement be handled? *Rubric:* 3 = interim measure and longer agreed plan;; 2 = interim;; 1 = vague;; 0 = none.
+- **EX029 — Report lead.** What does Lena's report lead with? *Rubric:* 3 = overdue high findings;; 2 = overdue;; 1 = vague;; 0 = none.
+- **EX030 — Escalation path.** Where do overdue findings escalate? *Rubric:* 3 = the owner's executive;; 2 = executive;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -379,10 +379,10 @@ Random sampling misses targeted abuse. Logs may be incomplete.
 ### Exercises
 
 - **EX031 — Five percent sample.** How many items with no deviations support a 5% tolerable rate? *Rubric:* 3 = fifty-nine;; 2 = 59;; 1 = 29;; 0 = none.
-- **EX032 — Three percent sample.** How many are needed for 3%? *Rubric:* 3 = ninety-nine;; 2 = 99;; 1 = none;; 0 = none.
-- **EX033 — Rate choice.** Why choose a 5% tolerable rate here? *Rubric:* 3 = the control protects member funds;; 2 = importance;; 1 = none;; 0 = none.
-- **EX034 — Check performed.** What did Lena check for each payment? *Rubric:* 3 = a successful second factor before payment in the log;; 2 = log check;; 1 = none;; 0 = none.
-- **EX035 — Test limits.** Name one limit of the conclusion. *Rubric:* 3 = covers the app channel only;; 2 = scope;; 1 = none;; 0 = none.
+- **EX032 — Three percent sample.** How many are needed for 3%? *Rubric:* 3 = ninety-nine;; 2 = 99;; 1 = vague;; 0 = none.
+- **EX033 — Rate choice.** Why choose a 5% tolerable rate here? *Rubric:* 3 = the control protects member funds;; 2 = importance;; 1 = vague;; 0 = none.
+- **EX034 — Check performed.** What did Lena check for each payment? *Rubric:* 3 = a successful second factor before payment in the log;; 2 = log check;; 1 = vague;; 0 = none.
+- **EX035 — Test limits.** Name one limit of the conclusion. *Rubric:* 3 = covers the app channel only;; 2 = scope;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -424,11 +424,11 @@ Single cases may not generalise. Hindsight makes failures look obvious.
 
 ### Exercises
 
-- **EX036 — Case trigger.** What triggered the regulator's question? *Rubric:* 3 = unreviewed exceptions in the supplier's assurance report;; 2 = exceptions;; 1 = none;; 0 = none.
-- **EX037 — Process failure.** What was the process-level failure? *Rubric:* 3 = assurance reports received but not read;; 2 = unread;; 1 = none;; 0 = none.
-- **EX038 — Governance failure.** What was the governance-level failure? *Rubric:* 3 = nobody owned supplier risk and the board never saw it;; 2 = ownership;; 1 = none;; 0 = none.
+- **EX036 — Case trigger.** What triggered the regulator's question? *Rubric:* 3 = unreviewed exceptions in the supplier's assurance report;; 2 = exceptions;; 1 = vague;; 0 = none.
+- **EX037 — Process failure.** What was the process-level failure? *Rubric:* 3 = assurance reports received but not read;; 2 = unread;; 1 = vague;; 0 = none.
+- **EX038 — Governance failure.** What was the governance-level failure? *Rubric:* 3 = nobody owned supplier risk and the board never saw it;; 2 = ownership;; 1 = vague;; 0 = none.
 - **EX039 — Exception tracking.** How should supplier exceptions be handled? *Rubric:* 3 = tracked as findings;; 2 = findings;; 1 = ignored;; 0 = none.
-- **EX040 — Success measure.** Give one measure of success Lena proposed. *Rubric:* 3 = share of critical suppliers with reviewed reports;; 2 = measure;; 1 = none;; 0 = none.
+- **EX040 — Success measure.** Give one measure of success Lena proposed. *Rubric:* 3 = share of critical suppliers with reviewed reports;; 2 = measure;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -471,10 +471,10 @@ Honest reports can strain relationships. Boards vary in engagement.
 ### Exercises
 
 - **EX041 — Report opening.** What does Lena's board report open with? *Rubric:* 3 = decisions needed;; 2 = decisions;; 1 = risks;; 0 = none.
-- **EX042 — Softening risk.** Why not call the weakness an improvement opportunity? *Rubric:* 3 = it could mislead directors with oversight duties;; 2 = honesty;; 1 = none;; 0 = none.
-- **EX043 — Honest framing.** How did Lena present the weakness? *Rubric:* 3 = with the remediation plan and progress;; 2 = plan;; 1 = none;; 0 = none.
-- **EX044 — Delay request.** What did a manager ask Lena to do? *Rubric:* 3 = delay logging a finding until after the regulator's visit;; 2 = delay;; 1 = none;; 0 = none.
-- **EX045 — Refusal help.** What did Lena offer instead? *Rubric:* 3 = help preparing a remediation plan;; 2 = help;; 1 = none;; 0 = none.
+- **EX042 — Softening risk.** Why not call the weakness an improvement opportunity? *Rubric:* 3 = it could mislead directors with oversight duties;; 2 = honesty;; 1 = vague;; 0 = none.
+- **EX043 — Honest framing.** How did Lena present the weakness? *Rubric:* 3 = with the remediation plan and progress;; 2 = plan;; 1 = vague;; 0 = none.
+- **EX044 — Delay request.** What did a manager ask Lena to do? *Rubric:* 3 = delay logging a finding until after the regulator's visit;; 2 = delay;; 1 = vague;; 0 = none.
+- **EX045 — Refusal help.** What did Lena offer instead? *Rubric:* 3 = help preparing a remediation plan;; 2 = help;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -537,11 +537,11 @@ Small numbers. Interviews may be defensive.
 
 ### Exercises
 
-- **EX046 — Overdue count.** How many open findings were overdue? *Rubric:* 3 = four of eight;; 2 = 4/8;; 1 = none;; 0 = none.
-- **EX047 — High overdue.** Which high findings were overdue? *Rubric:* 3 = those at 48 and 95 days;; 2 = two;; 1 = none;; 0 = none.
-- **EX048 — Orphan cause.** Why did the medium finding stall? *Rubric:* 3 = its owner left and nobody took it over;; 2 = orphaned;; 1 = none;; 0 = none.
-- **EX049 — Orphan fix.** How will orphaned findings be prevented? *Rubric:* 3 = automatic reassignment when owners leave;; 2 = reassign;; 1 = none;; 0 = none.
-- **EX050 — Low finding fix.** How should low findings be handled? *Rubric:* 3 = reviewed quarterly to fix or formally accept;; 2 = quarterly;; 1 = none;; 0 = none.
+- **EX046 — Overdue count.** How many open findings were overdue? *Rubric:* 3 = four of eight;; 2 = 4/8;; 1 = vague;; 0 = none.
+- **EX047 — High overdue.** Which high findings were overdue? *Rubric:* 3 = those at 48 and 95 days;; 2 = two;; 1 = vague;; 0 = none.
+- **EX048 — Orphan cause.** Why did the medium finding stall? *Rubric:* 3 = its owner left and nobody took it over;; 2 = orphaned;; 1 = vague;; 0 = none.
+- **EX049 — Orphan fix.** How will orphaned findings be prevented? *Rubric:* 3 = automatic reassignment when owners leave;; 2 = reassign;; 1 = vague;; 0 = none.
+- **EX050 — Low finding fix.** How should low findings be handled? *Rubric:* 3 = reviewed quarterly to fix or formally accept;; 2 = quarterly;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -583,11 +583,11 @@ Reports have limited scope. Bridge letters give limited assurance.
 
 ### Exercises
 
-- **EX051 — Scope gap.** What was outside the report's scope? *Rubric:* 3 = the fraud monitoring module;; 2 = fraud module;; 1 = none;; 0 = none.
-- **EX052 — Ageing period.** Why request a bridge letter? *Rubric:* 3 = the report period ended nine months ago;; 2 = ageing;; 1 = none;; 0 = none.
-- **EX053 — Exceptions.** Which two exceptions did the report note? *Rubric:* 3 = delayed leaver removal and a missed vulnerability scan;; 2 = two;; 1 = none;; 0 = none.
-- **EX054 — Complementary control.** Which complementary control had Marston never performed? *Rubric:* 3 = reviewing its own users' access to the supplier portal;; 2 = portal review;; 1 = none;; 0 = none.
-- **EX055 — Common mistake.** Why are complementary controls often missed? *Rubric:* 3 = organisations assume the supplier handles everything;; 2 = assumption;; 1 = none;; 0 = none.
+- **EX051 — Scope gap.** What was outside the report's scope? *Rubric:* 3 = the fraud monitoring module;; 2 = fraud module;; 1 = vague;; 0 = none.
+- **EX052 — Ageing period.** Why request a bridge letter? *Rubric:* 3 = the report period ended nine months ago;; 2 = ageing;; 1 = vague;; 0 = none.
+- **EX053 — Exceptions.** Which two exceptions did the report note? *Rubric:* 3 = delayed leaver removal and a missed vulnerability scan;; 2 = two;; 1 = vague;; 0 = none.
+- **EX054 — Complementary control.** Which complementary control had Marston never performed? *Rubric:* 3 = reviewing its own users' access to the supplier portal;; 2 = portal review;; 1 = vague;; 0 = none.
+- **EX055 — Common mistake.** Why are complementary controls often missed? *Rubric:* 3 = organisations assume the supplier handles everything;; 2 = assumption;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -629,11 +629,11 @@ Portfolios show selected work. Plans change with roles.
 
 ### Exercises
 
-- **EX056 — Portfolio note.** What note accompanies each portfolio item? *Rubric:* 3 = what she did, supporting evidence, what she learned;; 2 = note;; 1 = none;; 0 = none.
-- **EX057 — Data in portfolio.** What data did Lena remove from the portfolio? *Rubric:* 3 = real member or staff data;; 2 = real data;; 1 = none;; 0 = none.
-- **EX058 — Sample challenge.** How would Lena answer a regulator questioning her sample size? *Rubric:* 3 = explain tolerable rate and confidence, offer to extend;; 2 = explain;; 1 = none;; 0 = none.
-- **EX059 — Hardest part.** What did Lena find hardest? *Rubric:* 3 = resisting pressure to soften reports while keeping relationships;; 2 = pressure;; 1 = none;; 0 = none.
-- **EX060 — Next role.** Which ownership will Lena take on next? *Rubric:* 3 = supplier risk;; 2 = supplier risk;; 1 = none;; 0 = none.
+- **EX056 — Portfolio note.** What note accompanies each portfolio item? *Rubric:* 3 = what she did, supporting evidence, what she learned;; 2 = note;; 1 = vague;; 0 = none.
+- **EX057 — Data in portfolio.** What data did Lena remove from the portfolio? *Rubric:* 3 = real member or staff data;; 2 = real data;; 1 = vague;; 0 = none.
+- **EX058 — Sample challenge.** How would Lena answer a regulator questioning her sample size? *Rubric:* 3 = explain tolerable rate and confidence, offer to extend;; 2 = explain;; 1 = vague;; 0 = none.
+- **EX059 — Hardest part.** What did Lena find hardest? *Rubric:* 3 = resisting pressure to soften reports while keeping relationships;; 2 = pressure;; 1 = vague;; 0 = none.
+- **EX060 — Next role.** Which ownership will Lena take on next? *Rubric:* 3 = supplier risk;; 2 = supplier risk, without explanation;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

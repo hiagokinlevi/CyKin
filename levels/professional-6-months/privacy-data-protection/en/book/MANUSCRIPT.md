@@ -69,11 +69,11 @@ Checklists of basics do not show whether controls actually work; verify later.
 
 ### Exercises
 
-- **EX001 — Integrity example.** Give an example of an integrity failure at Halden. *Rubric:* 3 = a wrong note leads to rejection;; 2 = mentions accuracy;; 1 = none;; 0 = none.
-- **EX002 — Broader than security.** Why is data protection broader than security? *Rubric:* 3 = it also covers whether, why and how long data are kept;; 2 = mentions purpose;; 1 = none;; 0 = none.
-- **EX003 — Secured but unlawful.** How can a well-secured CV database still break the law? *Rubric:* 3 = kept too long, breaking storage limitation;; 2 = mentions retention;; 1 = none;; 0 = none.
+- **EX001 — Integrity example.** Give an example of an integrity failure at Halden. *Rubric:* 3 = a wrong note leads to rejection;; 2 = mentions accuracy;; 1 = vague;; 0 = none.
+- **EX002 — Broader than security.** Why is data protection broader than security? *Rubric:* 3 = it also covers whether, why and how long data are kept;; 2 = mentions purpose;; 1 = vague;; 0 = none.
+- **EX003 — Secured but unlawful.** How can a well-secured CV database still break the law? *Rubric:* 3 = kept too long, breaking storage limitation;; 2 = mentions retention;; 1 = vague;; 0 = none.
 - **EX004 — MFA coverage.** What share of consultants had multi-factor authentication? *Rubric:* 3 = about half;; 2 = correct;; 1 = all;; 0 = none.
-- **EX005 — Laptop gap.** What was found about laptop encryption? *Rubric:* 3 = two older machines unencrypted;; 2 = correct;; 1 = none;; 0 = none.
+- **EX005 — Laptop gap.** What was found about laptop encryption? *Rubric:* 3 = two older machines unencrypted;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-02"></a>
 
@@ -111,11 +111,11 @@ Roles depend on facts and contracts; record the reasoning for each.
 
 ### Exercises
 
-- **EX006 — Article 14 trigger.** When does Article 14 apply at Halden? *Rubric:* 3 = data obtained from job boards or networking sites;; 2 = mentions other sources;; 1 = none;; 0 = none.
+- **EX006 — Article 14 trigger.** When does Article 14 apply at Halden? *Rubric:* 3 = data obtained from job boards or networking sites;; 2 = mentions other sources;; 1 = vague;; 0 = none.
 - **EX007 — Forgotten subjects.** Which data subjects are often forgotten? *Rubric:* 3 = referees;; 2 = correct;; 1 = clients;; 0 = none.
 - **EX008 — Client role.** What role does a client employer have for its hiring decision? *Rubric:* 3 = separate controller;; 2 = correct;; 1 = processor;; 0 = none.
 - **EX009 — Role guidance.** Which guidelines help decide roles? *Rubric:* 3 = EDPB Guidelines 07/2020;; 2 = correct;; 1 = other;; 0 = none.
-- **EX010 — Expectation.** What do candidates expect before CVs go to a client? *Rubric:* 3 = to be asked;; 2 = correct;; 1 = none;; 0 = none.
+- **EX010 — Expectation.** What do candidates expect before CVs go to a client? *Rubric:* 3 = to be asked;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-03"></a>
 
@@ -153,10 +153,10 @@ Authority can be unclear in small firms; ask in writing before acting.
 
 ### Exercises
 
-- **EX011 — Out-of-scope request.** What request did Marta decline? *Rubric:* 3 = looking up a friend's application status;; 2 = correct;; 1 = none;; 0 = none.
-- **EX012 — Placement limits.** Name one thing Marta may not do. *Rubric:* 3 = contact candidates, change settings, search out of curiosity;; 2 = one;; 1 = none;; 0 = none.
-- **EX013 — Screenshot names.** How does Marta avoid capturing names in screenshots? *Rubric:* 3 = synthetic examples or cropping;; 2 = one;; 1 = none;; 0 = none.
-- **EX014 — Trust benefit.** Why does fair handling help practically? *Rubric:* 3 = people share problems more openly;; 2 = mentions openness;; 1 = none;; 0 = none.
+- **EX011 — Out-of-scope request.** What request did Marta decline? *Rubric:* 3 = looking up a friend's application status;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX012 — Placement limits.** Name one thing Marta may not do. *Rubric:* 3 = contact candidates, change settings, search out of curiosity;; 2 = one;; 1 = vague;; 0 = none.
+- **EX013 — Screenshot names.** How does Marta avoid capturing names in screenshots? *Rubric:* 3 = synthetic examples or cropping;; 2 = one;; 1 = vague;; 0 = none.
+- **EX014 — Trust benefit.** Why does fair handling help practically? *Rubric:* 3 = people share problems more openly;; 2 = mentions openness;; 1 = vague;; 0 = none.
 - **EX015 — Decision log.** What does Marta's decision log record? *Rubric:* 3 = request, decision, reason, approver;; 2 = most;; 1 = one;; 0 = none.
 
 <a id="ch-04"></a>
@@ -221,7 +221,7 @@ Some records may be needed for legal claims; agree exceptions before deleting.
 
 ### Exercises
 
-- **EX016 — Diversity data.** What did the map show about diversity answers? *Rubric:* 3 = stored with names though used anonymously;; 2 = mentions names;; 1 = none;; 0 = none.
+- **EX016 — Diversity data.** What did the map show about diversity answers? *Rubric:* 3 = stored with names though used anonymously;; 2 = mentions names;; 1 = vague;; 0 = none.
 - **EX017 — Expired CVs.** How many candidates were past six months without pool consent? *Rubric:* 3 = 1,792 of 2,500, 71.7%;; 2 = approximate;; 1 = wrong;; 0 = none.
 - **EX018 — Stale pool.** How many talent-pool candidates had no contact for over two years? *Rubric:* 3 = 216;; 2 = correct;; 1 = wrong;; 0 = none.
 - **EX019 — Talent pool basis.** What lawful basis supports the talent pool? *Rubric:* 3 = consent;; 2 = correct;; 1 = contract;; 0 = none.
@@ -263,10 +263,10 @@ Samples show patterns, not exact rates; say so.
 
 ### Exercises
 
-- **EX021 — Start with reports.** Why start with built-in reports? *Rubric:* 3 = exports create new copies;; 2 = mentions copies;; 1 = none;; 0 = none.
+- **EX021 — Start with reports.** Why start with built-in reports? *Rubric:* 3 = exports create new copies;; 2 = mentions copies;; 1 = vague;; 0 = none.
 - **EX022 — Sample result.** What did the sample of twenty show? *Rubric:* 3 = 17 agreed, 2 unconfirmed, 1 personal email;; 2 = most;; 1 = one;; 0 = none.
-- **EX023 — Main issue.** What was the main issue identified? *Rubric:* 3 = undocumented candidate agreement;; 2 = correct;; 1 = none;; 0 = none.
-- **EX024 — Careful phrase.** Give a phrase that signals uncertainty. *Rubric:* 3 = in the sample; could not be confirmed;; 2 = one;; 1 = none;; 0 = none.
+- **EX023 — Main issue.** What was the main issue identified? *Rubric:* 3 = undocumented candidate agreement;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX024 — Careful phrase.** Give a phrase that signals uncertainty. *Rubric:* 3 = in the sample; could not be confirmed;; 2 = one;; 1 = vague;; 0 = none.
 - **EX025 — Overstatement.** Which word did Ms. Lin challenge? *Rubric:* 3 = routinely;; 2 = correct;; 1 = other;; 0 = none.
 
 <a id="ch-06"></a>
@@ -334,7 +334,7 @@ The lab simplifies month calculation; check legal deadlines individually.
 
 - **EX026 — Late share.** What share of requests was answered late? *Rubric:* 3 = 7 of 36, 19.4%;; 2 = approximate;; 1 = wrong;; 0 = none.
 - **EX027 — Median.** What was the median time to answer? *Rubric:* 3 = 21 days;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX028 — Late cause.** What usually caused lateness? *Rubric:* 3 = searching several mailboxes and waiting for references;; 2 = mentions mailboxes;; 1 = none;; 0 = none.
+- **EX028 — Late cause.** What usually caused lateness? *Rubric:* 3 = searching several mailboxes and waiting for references;; 2 = mentions mailboxes;; 1 = vague;; 0 = none.
 - **EX029 — Response content.** Name two things a response must include. *Rubric:* 3 = purposes, recipients, retention, source;; 2 = two;; 1 = one;; 0 = none.
 - **EX030 — Extension timing.** When must extensions be decided? *Rubric:* 3 = within the first month;; 2 = correct;; 1 = later;; 0 = none.
 
@@ -374,11 +374,11 @@ A passed test can hide gaps if the test is too narrow; vary test cases.
 
 ### Exercises
 
-- **EX031 — Agreement control.** Which principle does recorded agreement support? *Rubric:* 3 = transparency and fairness;; 2 = one;; 1 = none;; 0 = none.
-- **EX032 — Failed test.** Which test failed? *Rubric:* 3 = diversity data copied by an old import script;; 2 = correct;; 1 = none;; 0 = none.
+- **EX031 — Agreement control.** Which principle does recorded agreement support? *Rubric:* 3 = transparency and fairness;; 2 = one;; 1 = vague;; 0 = none.
+- **EX032 — Failed test.** Which test failed? *Rubric:* 3 = diversity data copied by an old import script;; 2 = correct;; 1 = vague;; 0 = none.
 - **EX033 — Quarterly checks.** Name two quarterly checks. *Rubric:* 3 = MFA coverage, submission sample, deletion success, overdue requests;; 2 = two;; 1 = one;; 0 = none.
 - **EX034 — Sample result.** How many sampled submissions had recorded agreement? *Rubric:* 3 = 10 of 10;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX035 — Recording failures.** Why record failures clearly? *Rubric:* 3 = registers without problems are not believed;; 2 = mentions credibility;; 1 = none;; 0 = none.
+- **EX035 — Recording failures.** Why record failures clearly? *Rubric:* 3 = registers without problems are not believed;; 2 = mentions credibility;; 1 = vague;; 0 = none.
 
 <a id="ch-08"></a>
 
@@ -416,11 +416,11 @@ Risk assessment depends on facts that may change; update it as information arriv
 
 ### Exercises
 
-- **EX036 — Low-risk item.** Why was the laptop low risk? *Rubric:* 3 = encrypted, data unintelligible without key;; 2 = mentions encryption;; 1 = none;; 0 = none.
+- **EX036 — Low-risk item.** Why was the laptop low risk? *Rubric:* 3 = encrypted, data unintelligible without key;; 2 = mentions encryption;; 1 = vague;; 0 = none.
 - **EX037 — High-risk content.** What made the printed notes higher risk? *Rubric:* 3 = names, employers, salaries and health information;; 2 = most;; 1 = one;; 0 = none.
 - **EX038 — Notification.** Within what time must the authority be notified? *Rubric:* 3 = 72 hours;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX039 — Article 34.** Why must one candidate be informed directly? *Rubric:* 3 = high risk from disability information;; 2 = mentions health;; 1 = none;; 0 = none.
-- **EX040 — No blame.** Why was disciplinary action not recommended? *Rubric:* 3 = the consultant followed common practice;; 2 = correct;; 1 = none;; 0 = none.
+- **EX039 — Article 34.** Why must one candidate be informed directly? *Rubric:* 3 = high risk from disability information;; 2 = mentions health;; 1 = vague;; 0 = none.
+- **EX040 — No blame.** Why was disciplinary action not recommended? *Rubric:* 3 = the consultant followed common practice;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-09"></a>
 
@@ -460,9 +460,9 @@ Plain language must remain accurate; check legal points with the data protection
 
 - **EX041 — Report structure.** What appears on the first page of Marta's report? *Rubric:* 3 = decisions needed with reasons, costs and risks;; 2 = mentions decisions;; 1 = background;; 0 = none.
 - **EX042 — Disability request.** What did Marta recommend for the client's request? *Rubric:* 3 = ask candidates; share only adjustments;; 2 = mentions consent;; 1 = share;; 0 = none.
-- **EX043 — Naming staff.** Why not name consultants in the report? *Rubric:* 3 = focus on causes; naming discourages reporting;; 2 = mentions reporting;; 1 = none;; 0 = none.
+- **EX043 — Naming staff.** Why not name consultants in the report? *Rubric:* 3 = focus on causes; naming discourages reporting;; 2 = mentions reporting;; 1 = vague;; 0 = none.
 - **EX044 — Retention wording.** How does the new notice state retention? *Rubric:* 3 = in months;; 2 = correct;; 1 = vague;; 0 = none.
-- **EX045 — Notice testing.** How was the short notice tested? *Rubric:* 3 = with five synthetic personas;; 2 = correct;; 1 = none;; 0 = none.
+- **EX045 — Notice testing.** How was the short notice tested? *Rubric:* 3 = with five synthetic personas;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="ch-10"></a>
 
@@ -500,11 +500,11 @@ New buttons can be misused to keep data indefinitely; sample their use.
 
 ### Exercises
 
-- **EX046 — Cause of deletions.** Why were active candidates deleted? *Rubric:* 3 = last contact date not updated for networking messages;; 2 = mentions date;; 1 = none;; 0 = none.
+- **EX046 — Cause of deletions.** Why were active candidates deleted? *Rubric:* 3 = last contact date not updated for networking messages;; 2 = mentions date;; 1 = vague;; 0 = none.
 - **EX047 — Warning period.** How long before deletion is the consultant warned? *Rubric:* 3 = seven days;; 2 = correct;; 1 = wrong;; 0 = none.
 - **EX048 — Accuracy principle.** Which article requires accurate data? *Rubric:* 3 = Article 5(1)(d);; 2 = correct;; 1 = other;; 0 = none.
 - **EX049 — Flagged profiles.** How did flagged profiles change? *Rubric:* 3 = from thirty-one to six;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX050 — Button misuse.** How is misuse of mark active checked? *Rubric:* 3 = sampling extended profiles for reasons;; 2 = mentions sampling;; 1 = none;; 0 = none.
+- **EX050 — Button misuse.** How is misuse of mark active checked? *Rubric:* 3 = sampling extended profiles for reasons;; 2 = mentions sampling;; 1 = vague;; 0 = none.
 
 <a id="ch-11"></a>
 
@@ -573,10 +573,10 @@ A name search misses indirect identifiers such as job titles; read documents in 
 ### Exercises
 
 - **EX051 — Visible names.** How many third-party names remained visible? *Rubric:* 3 = three;; 2 = correct;; 1 = wrong;; 0 = none.
-- **EX052 — Staff names.** Why may staff names often remain? *Rubric:* 3 = they acted in professional roles;; 2 = mentions role;; 1 = none;; 0 = none.
+- **EX052 — Staff names.** Why may staff names often remain? *Rubric:* 3 = they acted in professional roles;; 2 = mentions role;; 1 = vague;; 0 = none.
 - **EX053 — Referee approach.** What did Marta recommend for the referee? *Rubric:* 3 = disclose substance; ask about the name;; 2 = both;; 1 = one;; 0 = none.
-- **EX054 — Shortlist names.** Why were other candidates redacted? *Rubric:* 3 = unrelated third parties;; 2 = correct;; 1 = none;; 0 = none.
-- **EX055 — Blanket redaction.** Why avoid blanket redaction? *Rubric:* 3 = makes responses useless and unfair;; 2 = mentions fairness;; 1 = none;; 0 = none.
+- **EX054 — Shortlist names.** Why were other candidates redacted? *Rubric:* 3 = unrelated third parties;; 2 = correct;; 1 = vague;; 0 = none.
+- **EX055 — Blanket redaction.** Why avoid blanket redaction? *Rubric:* 3 = makes responses useless and unfair;; 2 = mentions fairness;; 1 = vague;; 0 = none.
 
 <a id="ch-12"></a>
 
@@ -617,8 +617,8 @@ Portfolios can overstate individual contribution; credit colleagues accurately.
 - **EX056 — Portfolio items.** Name three portfolio items. *Rubric:* 3 = data map, retention analysis, access workflow, register, breach, ethics case, troubleshooting, redaction;; 2 = three;; 1 = one;; 0 = none.
 - **EX057 — Cover note.** What does each cover note explain? *Rubric:* 3 = problem, actions, evidence and outcome;; 2 = most;; 1 = one;; 0 = none.
 - **EX058 — Growth areas.** What two growth areas did Ms. Lin identify? *Rubric:* 3 = background check legal reasoning and scripting;; 2 = both;; 1 = one;; 0 = none.
-- **EX059 — Remaining gaps.** Name one remaining gap at Halden. *Rubric:* 3 = background check contracts; networking-site Article 14 notices;; 2 = one;; 1 = none;; 0 = none.
-- **EX060 — Next role.** What role does Halden offer Marta? *Rubric:* 3 = part-time privacy coordinator;; 2 = correct;; 1 = none;; 0 = none.
+- **EX059 — Remaining gaps.** Name one remaining gap at Halden. *Rubric:* 3 = background check contracts; networking-site Article 14 notices;; 2 = one;; 1 = vague;; 0 = none.
+- **EX060 — Next role.** What role does Halden offer Marta? *Rubric:* 3 = part-time privacy coordinator;; 2 = correct;; 1 = vague;; 0 = none.
 
 <a id="worked-results"></a>
 

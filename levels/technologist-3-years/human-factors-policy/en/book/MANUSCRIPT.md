@@ -67,7 +67,7 @@ One morning may not be typical. Observations must respect patient privacy.
 
 - **EX001 — Systems per booking.** How many systems do receptionists use for one booking? *Rubric:* 3 = four;; 2 = 4;; 1 = one;; 0 = none.
 - **EX002 — Sticky notes.** How does Lucas interpret sticky-note passwords? *Rubric:* 3 = a workaround for too many passwords and little time;; 2 = workaround;; 1 = carelessness;; 0 = none.
-- **EX003 — Competing demand.** What do security tasks compete with at reception? *Rubric:* 3 = patient care;; 2 = patients;; 1 = none;; 0 = none.
+- **EX003 — Competing demand.** What do security tasks compete with at reception? *Rubric:* 3 = patient care;; 2 = patients;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -109,9 +109,9 @@ Tags lose effect if overused. Bookmarks must be maintained.
 
 ### Exercises
 
-- **EX004 — Lookalike limit.** Why do lookalike domains pass authentication checks? *Rubric:* 3 = they are genuine domains owned by attackers;; 2 = own domain;; 1 = none;; 0 = none.
-- **EX005 — Bookmark benefit.** Why are bookmarks helpful? *Rubric:* 3 = staff never follow email links to log in;; 2 = avoid links;; 1 = none;; 0 = none.
-- **EX006 — Adoption factor.** Which cues are most likely to be adopted? *Rubric:* 3 = those that save time;; 2 = time;; 1 = none;; 0 = none.
+- **EX004 — Lookalike limit.** Why do lookalike domains pass authentication checks? *Rubric:* 3 = they are genuine domains owned by attackers;; 2 = own domain;; 1 = vague;; 0 = none.
+- **EX005 — Bookmark benefit.** Why are bookmarks helpful? *Rubric:* 3 = staff never follow email links to log in;; 2 = avoid links;; 1 = vague;; 0 = none.
+- **EX006 — Adoption factor.** Which cues are most likely to be adopted? *Rubric:* 3 = those that save time;; 2 = time;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -173,9 +173,9 @@ Categories depend on the reviewer. Scripts need maintenance.
 
 ### Exercises
 
-- **EX007 — Manual tally problem.** What problem did the script replace? *Rubric:* 3 = a slow, error-prone manual tally;; 2 = manual;; 1 = none;; 0 = none.
-- **EX008 — Top category.** Which category was most common in the lab? *Rubric:* 3 = fake invoice with 9;; 2 = invoices;; 1 = none;; 0 = none.
-- **EX009 — Subject removal.** Why remove email subjects from the export? *Rubric:* 3 = they can contain patient names;; 2 = privacy;; 1 = none;; 0 = none.
+- **EX007 — Manual tally problem.** What problem did the script replace? *Rubric:* 3 = a slow, error-prone manual tally;; 2 = manual;; 1 = vague;; 0 = none.
+- **EX008 — Top category.** Which category was most common in the lab? *Rubric:* 3 = fake invoice with 9;; 2 = invoices;; 1 = vague;; 0 = none.
+- **EX009 — Subject removal.** Why remove email subjects from the export? *Rubric:* 3 = they can contain patient names;; 2 = privacy;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -217,8 +217,8 @@ Random codes may still be linked through other data. Categories need review.
 
 ### Exercises
 
-- **EX010 — Cluster purpose.** What does the cluster identifier do? *Rubric:* 3 = groups reports of the same email;; 2 = grouping;; 1 = none;; 0 = none.
-- **EX011 — Fixed values.** Why use fixed allowed values? *Rubric:* 3 = to prevent spelling variants splitting counts;; 2 = consistency;; 1 = none;; 0 = none.
+- **EX010 — Cluster purpose.** What does the cluster identifier do? *Rubric:* 3 = groups reports of the same email;; 2 = grouping;; 1 = vague;; 0 = none.
+- **EX011 — Fixed values.** Why use fixed allowed values? *Rubric:* 3 = to prevent spelling variants splitting counts;; 2 = consistency;; 1 = vague;; 0 = none.
 - **EX012 — Reporter code.** Why use a random reporter code? *Rubric:* 3 = count repeat reporters without identifying them;; 2 = anonymity;; 1 = names;; 0 = none.
 
 ### Synthesis
@@ -262,8 +262,8 @@ Attack types change. Awareness fades.
 ### Exercises
 
 - **EX013 — Vendor call principles.** Which influence principles does the fake vendor call use? *Rubric:* 3 = authority and urgency;; 2 = two;; 1 = liking;; 0 = none.
-- **EX014 — Habits exploited.** Which staff habits do attackers exploit? *Rubric:* 3 = being helpful and quick;; 2 = helpfulness;; 1 = none;; 0 = none.
-- **EX015 — Awareness plus.** What must accompany awareness? *Rubric:* 3 = practical procedures such as callbacks;; 2 = procedures;; 1 = none;; 0 = none.
+- **EX014 — Habits exploited.** Which staff habits do attackers exploit? *Rubric:* 3 = being helpful and quick;; 2 = helpfulness;; 1 = vague;; 0 = none.
+- **EX015 — Awareness plus.** What must accompany awareness? *Rubric:* 3 = practical procedures such as callbacks;; 2 = procedures;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -320,9 +320,9 @@ Badge readers cost money. Night updates need computers left on.
 
 ### Exercises
 
-- **EX016 — Lock time change.** How did the screen lock time change? *Rubric:* 3 = from fifteen to three minutes;; 2 = shorter;; 1 = none;; 0 = none.
-- **EX017 — Virtual machine use.** Why test in virtual machines? *Rubric:* 3 = they can be reset without risking patient systems;; 2 = safe;; 1 = none;; 0 = none.
-- **EX018 — Prompt reduction.** How many daytime prompts per week did the lab show before and after? *Rubric:* 3 = 23 and 3;; 2 = fewer;; 1 = none;; 0 = none.
+- **EX016 — Lock time change.** How did the screen lock time change? *Rubric:* 3 = from fifteen to three minutes;; 2 = shorter;; 1 = vague;; 0 = none.
+- **EX017 — Virtual machine use.** Why test in virtual machines? *Rubric:* 3 = they can be reset without risking patient systems;; 2 = safe;; 1 = vague;; 0 = none.
+- **EX018 — Prompt reduction.** How many daytime prompts per week did the lab show before and after? *Rubric:* 3 = 23 and 3;; 2 = fewer;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -364,9 +364,9 @@ Role changes need updates. Keys can be lost.
 
 ### Exercises
 
-- **EX019 — Receptionist export.** What change applies to exports? *Rubric:* 3 = they require manager approval;; 2 = approval;; 1 = none;; 0 = none.
-- **EX020 — Key choice.** Why recommend keys for receptionists? *Rubric:* 3 = they share desks and may lack work phones;; 2 = no phones;; 1 = none;; 0 = none.
-- **EX021 — Leaver step.** When is a leaver's account disabled? *Rubric:* 3 = the same day HR notifies IT;; 2 = same day;; 1 = none;; 0 = none.
+- **EX019 — Receptionist export.** What change applies to exports? *Rubric:* 3 = they require manager approval;; 2 = approval;; 1 = vague;; 0 = none.
+- **EX020 — Key choice.** Why recommend keys for receptionists? *Rubric:* 3 = they share desks and may lack work phones;; 2 = no phones;; 1 = vague;; 0 = none.
+- **EX021 — Leaver step.** When is a leaver's account disabled? *Rubric:* 3 = the same day HR notifies IT;; 2 = same day;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -408,9 +408,9 @@ Untested layers give false confidence. Diagrams simplify.
 
 ### Exercises
 
-- **EX022 — Backup finding.** What problem did Lucas find with backups? *Rubric:* 3 = they had never been tested;; 2 = untested;; 1 = none;; 0 = none.
-- **EX023 — Reporting layer.** Which layer does staff reporting provide? *Rubric:* 3 = detection;; 2 = detection;; 1 = prevention;; 0 = none.
-- **EX024 — Payment containment.** What contains a fake payment change? *Rubric:* 3 = a hold with callback verification;; 2 = callback;; 1 = none;; 0 = none.
+- **EX022 — Backup finding.** What problem did Lucas find with backups? *Rubric:* 3 = they had never been tested;; 2 = untested;; 1 = vague;; 0 = none.
+- **EX023 — Reporting layer.** Which layer does staff reporting provide? *Rubric:* 3 = detection;; 2 = detection, without explanation;; 1 = prevention;; 0 = none.
+- **EX024 — Payment containment.** What contains a fake payment change? *Rubric:* 3 = a hold with callback verification;; 2 = callback;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -468,9 +468,9 @@ Unreported emails are missed. Monthly samples are small.
 
 ### Exercises
 
-- **EX025 — Ranking avoided.** Why avoid clinic rankings by click rate? *Rubric:* 3 = they embarrass staff and depend on difficulty;; 2 = fairness;; 1 = none;; 0 = none.
-- **EX026 — Lab medians.** What medians did the lab compute? *Rubric:* 3 = 11 minutes to report and 190 minutes to verdict;; 2 = slow verdict;; 1 = none;; 0 = none.
-- **EX027 — Verdict fix.** What fix does the slow verdict suggest? *Rubric:* 3 = notifications for new reports;; 2 = alerts;; 1 = none;; 0 = none.
+- **EX025 — Ranking avoided.** Why avoid clinic rankings by click rate? *Rubric:* 3 = they embarrass staff and depend on difficulty;; 2 = fairness;; 1 = vague;; 0 = none.
+- **EX026 — Lab medians.** What medians did the lab compute? *Rubric:* 3 = 11 minutes to report and 190 minutes to verdict;; 2 = slow verdict;; 1 = vague;; 0 = none.
+- **EX027 — Verdict fix.** What fix does the slow verdict suggest? *Rubric:* 3 = notifications for new reports;; 2 = alerts;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -512,9 +512,9 @@ Policy change needs approval. Plain language can lose precision.
 
 ### Exercises
 
-- **EX028 — Policy conflict.** Which two policy rules conflict? *Rubric:* 3 = monthly changes and no writing down;; 2 = conflict;; 1 = none;; 0 = none.
-- **EX029 — Reporting gap.** What is missing from the reporting policy? *Rubric:* 3 = how to report;; 2 = method;; 1 = none;; 0 = none.
-- **EX030 — Missing statement.** Which welcoming statement is missing? *Rubric:* 3 = that reporting mistakes is welcome;; 2 = no-blame;; 1 = none;; 0 = none.
+- **EX028 — Policy conflict.** Which two policy rules conflict? *Rubric:* 3 = monthly changes and no writing down;; 2 = conflict;; 1 = vague;; 0 = none.
+- **EX029 — Reporting gap.** What is missing from the reporting policy? *Rubric:* 3 = how to report;; 2 = method;; 1 = vague;; 0 = none.
+- **EX030 — Missing statement.** Which welcoming statement is missing? *Rubric:* 3 = that reporting mistakes is welcome;; 2 = no-blame;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -556,9 +556,9 @@ Rankings change as services change. Profiles generalise.
 
 ### Exercises
 
-- **EX031 — Hidden asset.** Which less obvious asset does Lucas name? *Rubric:* 3 = staff willingness to report;; 2 = trust;; 1 = none;; 0 = none.
-- **EX032 — Manager pressure.** When do managers face payment pressure? *Rubric:* 3 = near month-end deadlines;; 2 = month-end;; 1 = none;; 0 = none.
-- **EX033 — Payment decision.** Which single decision drives payment risk? *Rubric:* 3 = accepting a changed bank detail;; 2 = bank detail;; 1 = none;; 0 = none.
+- **EX031 — Hidden asset.** Which less obvious asset does Lucas name? *Rubric:* 3 = staff willingness to report;; 2 = trust;; 1 = vague;; 0 = none.
+- **EX032 — Manager pressure.** When do managers face payment pressure? *Rubric:* 3 = near month-end deadlines;; 2 = month-end;; 1 = vague;; 0 = none.
+- **EX033 — Payment decision.** Which single decision drives payment risk? *Rubric:* 3 = accepting a changed bank detail;; 2 = bank detail;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -600,8 +600,8 @@ System integration may be costly. Specialists must be registered.
 
 ### Exercises
 
-- **EX034 — Workaround cause.** Why do staff use personal email for letters? *Rubric:* 3 = the official method takes minutes and personal email seconds;; 2 = speed;; 1 = none;; 0 = none.
-- **EX035 — Referral fix.** What replaces the personal email workaround? *Rubric:* 3 = a one-click secure referral template;; 2 = template;; 1 = none;; 0 = none.
+- **EX034 — Workaround cause.** Why do staff use personal email for letters? *Rubric:* 3 = the official method takes minutes and personal email seconds;; 2 = speed;; 1 = vague;; 0 = none.
+- **EX035 — Referral fix.** What replaces the personal email workaround? *Rubric:* 3 = a one-click secure referral template;; 2 = template;; 1 = vague;; 0 = none.
 - **EX036 — Persuasive argument.** What persuaded the practice manager most? *Rubric:* 3 = estimated time savings;; 2 = time;; 1 = security;; 0 = none.
 
 ### Synthesis
@@ -661,8 +661,8 @@ Scores are subjective. Scenarios may miss new methods.
 ### Exercises
 
 - **EX037 — Vendor scenario.** What does the fake vendor caller want? *Rubric:* 3 = installation of remote access software;; 2 = remote access;; 1 = passwords;; 0 = none.
-- **EX038 — Top scenario.** Which scenario ranked highest in the lab? *Rubric:* 3 = fake supplier change with score 9;; 2 = supplier;; 1 = none;; 0 = none.
-- **EX039 — Remote access rule.** What rule counters the vendor call? *Rubric:* 3 = callback on a known number plus manager approval;; 2 = callback;; 1 = none;; 0 = none.
+- **EX038 — Top scenario.** Which scenario ranked highest in the lab? *Rubric:* 3 = fake supplier change with score 9;; 2 = supplier;; 1 = vague;; 0 = none.
+- **EX039 — Remote access rule.** What rule counters the vendor call? *Rubric:* 3 = callback on a known number plus manager approval;; 2 = callback;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -723,8 +723,8 @@ Survey answers are self-reported. Six interviews are few.
 ### Exercises
 
 - **EX040 — Response rate.** What was the survey response rate? *Rubric:* 3 = about 71%;; 2 = 150 of 210;; 1 = 150%;; 0 = none.
-- **EX041 — Top barrier.** What was the top barrier in the lab? *Rubric:* 3 = unsure IT wants it, 64 of 150 or 43%;; 2 = uncertainty;; 1 = none;; 0 = none.
-- **EX042 — Clinician story.** Why did the clinician stop reporting? *Rubric:* 3 = she never heard back;; 2 = no feedback;; 1 = none;; 0 = none.
+- **EX041 — Top barrier.** What was the top barrier in the lab? *Rubric:* 3 = unsure IT wants it, 64 of 150 or 43%;; 2 = uncertainty;; 1 = vague;; 0 = none.
+- **EX042 — Clinician story.** Why did the clinician stop reporting? *Rubric:* 3 = she never heard back;; 2 = no feedback;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -780,9 +780,9 @@ Calm lab conditions. Small sample.
 
 ### Exercises
 
-- **EX043 — Order alternation.** Why alternate the order of methods? *Rubric:* 3 = so learning does not favour one method;; 2 = fairness;; 1 = none;; 0 = none.
-- **EX044 — Lab times.** What mean times did the lab show? *Rubric:* 3 = 45 seconds forwarding and 7 seconds button;; 2 = 38 saved;; 1 = none;; 0 = none.
-- **EX045 — Missing confirmation.** What problem did the missing confirmation cause? *Rubric:* 3 = volunteers were unsure the report was sent;; 2 = uncertainty;; 1 = none;; 0 = none.
+- **EX043 — Order alternation.** Why alternate the order of methods? *Rubric:* 3 = so learning does not favour one method;; 2 = fairness;; 1 = vague;; 0 = none.
+- **EX044 — Lab times.** What mean times did the lab show? *Rubric:* 3 = 45 seconds forwarding and 7 seconds button;; 2 = 38 saved;; 1 = vague;; 0 = none.
+- **EX045 — Missing confirmation.** What problem did the missing confirmation cause? *Rubric:* 3 = volunteers were unsure the report was sent;; 2 = uncertainty;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -839,8 +839,8 @@ Non-random groups. Short periods.
 
 ### Exercises
 
-- **EX046 — Volume check.** How did Lucas check for changing attack volume? *Rubric:* 3 = filtering logs showed similar volume;; 2 = logs;; 1 = none;; 0 = none.
-- **EX047 — Lab shares.** What shares did early and late clinics report in the lab? *Rubric:* 3 = 80% versus 44%;; 2 = early higher;; 1 = none;; 0 = none.
+- **EX046 — Volume check.** How did Lucas check for changing attack volume? *Rubric:* 3 = filtering logs showed similar volume;; 2 = logs;; 1 = vague;; 0 = none.
+- **EX047 — Lab shares.** What shares did early and late clinics report in the lab? *Rubric:* 3 = 80% versus 44%;; 2 = early higher;; 1 = vague;; 0 = none.
 - **EX048 — Late cause.** Why were some clinics late? *Rubric:* 3 = older computers;; 2 = hardware;; 1 = random;; 0 = none.
 
 ### Synthesis
@@ -897,7 +897,7 @@ Automated verdicts can be wrong. Retention limits lose history.
 
 ### Exercises
 
-- **EX049 — Avoided feature.** Which tool feature did Lucas avoid? *Rubric:* 3 = scoring individual staff;; 2 = scoring;; 1 = none;; 0 = none.
+- **EX049 — Avoided feature.** Which tool feature did Lucas avoid? *Rubric:* 3 = scoring individual staff;; 2 = scoring;; 1 = vague;; 0 = none.
 - **EX050 — Retention.** How long are reports kept? *Rubric:* 3 = ninety days;; 2 = 90;; 1 = forever;; 0 = none.
 - **EX051 — Lab review load.** How many of 60 reports needed human review in the lab? *Rubric:* 3 = 9;; 2 = 15%;; 1 = 60;; 0 = none.
 
@@ -942,8 +942,8 @@ Cards can go missing. Callers may become aggressive.
 ### Exercises
 
 - **EX052 — Callback number.** Which number does the second person call? *Rubric:* 3 = the number already on file;; 2 = file;; 1 = the request;; 0 = none.
-- **EX053 — Support line.** What line was added to the cards? *Rubric:* 3 = staff will be supported for taking time to verify;; 2 = support;; 1 = none;; 0 = none.
-- **EX054 — Role-play ethics.** Why use role-play instead of secret tests? *Rubric:* 3 = builds confidence without deception or trust damage;; 2 = ethics;; 1 = none;; 0 = none.
+- **EX053 — Support line.** What line was added to the cards? *Rubric:* 3 = staff will be supported for taking time to verify;; 2 = support;; 1 = vague;; 0 = none.
+- **EX054 — Role-play ethics.** Why use role-play instead of secret tests? *Rubric:* 3 = builds confidence without deception or trust damage;; 2 = ethics;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1007,8 +1007,8 @@ Thresholds can be arbitrary. Trends need longer periods.
 ### Exercises
 
 - **EX055 — Data sources.** Where do monitoring data come from? *Rubric:* 3 = the triage tool and accounting log;; 2 = existing systems;; 1 = staff surveys;; 0 = none.
-- **EX056 — Lab flag.** Which month did the lab flag and why? *Rubric:* 3 = month 4, verdict time 165 minutes during leave;; 2 = month 4;; 1 = none;; 0 = none.
-- **EX057 — Reminder pattern.** What pattern followed refresher messages? *Rubric:* 3 = reports rose then settled;; 2 = rise;; 1 = none;; 0 = none.
+- **EX056 — Lab flag.** Which month did the lab flag and why? *Rubric:* 3 = month 4, verdict time 165 minutes during leave;; 2 = month 4;; 1 = vague;; 0 = none.
+- **EX057 — Reminder pattern.** What pattern followed refresher messages? *Rubric:* 3 = reports rose then settled;; 2 = rise;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1051,8 +1051,8 @@ Visits take time. Checks may miss other add-ins.
 ### Exercises
 
 - **EX058 — Drop cause.** What caused the reporting drop at three clinics? *Rubric:* 3 = an update reset the toolbar and removed the button;; 2 = update;; 1 = fewer attacks;; 0 = none.
-- **EX059 — Second clinic cause.** What caused the modest drop at another clinic? *Rubric:* 3 = a new receptionist was not told about reporting;; 2 = induction;; 1 = none;; 0 = none.
-- **EX060 — Post-update check.** What does the contractor now do after updates? *Rubric:* 3 = check that the button exists on every computer;; 2 = check;; 1 = none;; 0 = none.
+- **EX059 — Second clinic cause.** What caused the modest drop at another clinic? *Rubric:* 3 = a new receptionist was not told about reporting;; 2 = induction;; 1 = vague;; 0 = none.
+- **EX060 — Post-update check.** What does the contractor now do after updates? *Rubric:* 3 = check that the button exists on every computer;; 2 = check;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1094,8 +1094,8 @@ Vendors may ignore letters. Spreadsheets drift.
 
 ### Exercises
 
-- **EX061 — Response steps.** What happens when a malicious email reached several clinics? *Rubric:* 3 = removed, sender blocked and clicks checked;; 2 = three steps;; 1 = none;; 0 = none.
-- **EX062 — Vendor letter.** What does the vendor letter explain? *Rubric:* 3 = Brightwell always calls back on known numbers;; 2 = callback;; 1 = none;; 0 = none.
+- **EX061 — Response steps.** What happens when a malicious email reached several clinics? *Rubric:* 3 = removed, sender blocked and clicks checked;; 2 = three steps;; 1 = vague;; 0 = none.
+- **EX062 — Vendor letter.** What does the vendor letter explain? *Rubric:* 3 = Brightwell always calls back on known numbers;; 2 = callback;; 1 = vague;; 0 = none.
 - **EX063 — Maintainability.** Who must be able to maintain integrations? *Rubric:* 3 = the practice manager and IT contractor;; 2 = small team;; 1 = a security team;; 0 = none.
 
 ### Synthesis
@@ -1158,8 +1158,8 @@ Scripts break when systems change. Logs need reading.
 ### Exercises
 
 - **EX064 — Full automation rejected.** Why reject fully automated verdicts? *Rubric:* 3 = mislabelled genuine emails would damage trust;; 2 = trust;; 1 = cost;; 0 = none.
-- **EX065 — Lab missed week.** What did the lab find in eight weeks of logs? *Rubric:* 3 = one missed button check in week 5;; 2 = one;; 1 = none;; 0 = none.
-- **EX066 — Retry rule.** What rule was added after the missed run? *Rubric:* 3 = retry the next day;; 2 = retry;; 1 = none;; 0 = none.
+- **EX065 — Lab missed week.** What did the lab find in eight weeks of logs? *Rubric:* 3 = one missed button check in week 5;; 2 = one;; 1 = vague;; 0 = none.
+- **EX066 — Retry rule.** What rule was added after the missed run? *Rubric:* 3 = retry the next day;; 2 = retry;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1218,8 +1218,8 @@ Novelty effects. Survey samples differ over time.
 
 ### Exercises
 
-- **EX067 — Lab reported share.** How did the reported share change in the lab? *Rubric:* 3 = from 48% to 81%;; 2 = rise;; 1 = none;; 0 = none.
-- **EX068 — Key complaint.** What did some clinicians find awkward? *Rubric:* 3 = security keys when moving between rooms;; 2 = keys;; 1 = none;; 0 = none.
+- **EX067 — Lab reported share.** How did the reported share change in the lab? *Rubric:* 3 = from 48% to 81%;; 2 = rise;; 1 = vague;; 0 = none.
+- **EX068 — Key complaint.** What did some clinicians find awkward? *Rubric:* 3 = security keys when moving between rooms;; 2 = keys;; 1 = vague;; 0 = none.
 - **EX069 — Simulation condition.** Under what conditions might simulations be used? *Rubric:* 3 = announced, with rules agreed with staff;; 2 = agreed;; 1 = secret;; 0 = none.
 
 ### Synthesis
@@ -1276,9 +1276,9 @@ Carry-over effects. Few clinics.
 
 ### Exercises
 
-- **EX070 — Research question.** What did Lucas ask? *Rubric:* 3 = whether spoken huddle reminders lead to more reports than email;; 2 = reminders;; 1 = none;; 0 = none.
-- **EX071 — Crossover benefit.** Why use a crossover design? *Rubric:* 3 = each clinic serves as its own comparison;; 2 = self-comparison;; 1 = none;; 0 = none.
-- **EX072 — Lab totals.** What totals did the lab compare? *Rubric:* 3 = spoken 58 versus email 39 reports;; 2 = spoken higher;; 1 = none;; 0 = none.
+- **EX070 — Research question.** What did Lucas ask? *Rubric:* 3 = whether spoken huddle reminders lead to more reports than email;; 2 = reminders;; 1 = vague;; 0 = none.
+- **EX071 — Crossover benefit.** Why use a crossover design? *Rubric:* 3 = each clinic serves as its own comparison;; 2 = self-comparison;; 1 = vague;; 0 = none.
+- **EX072 — Lab totals.** What totals did the lab compare? *Rubric:* 3 = spoken 58 versus email 39 reports;; 2 = spoken higher;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1320,9 +1320,9 @@ Small user tests. Testers may try harder than usual.
 
 ### Exercises
 
-- **EX073 — Card rule.** What single rule does the card state? *Rubric:* 3 = Brightwell never asks for payment by text link;; 2 = rule;; 1 = none;; 0 = none.
-- **EX074 — Test improvement.** How did correct judgements change after revision? *Rubric:* 3 = from five to six of seven;; 2 = improved;; 1 = none;; 0 = none.
-- **EX075 — Tester request.** What did testers ask for? *Rubric:* 3 = larger text and a phone number;; 2 = readability;; 1 = none;; 0 = none.
+- **EX073 — Card rule.** What single rule does the card state? *Rubric:* 3 = Brightwell never asks for payment by text link;; 2 = rule;; 1 = vague;; 0 = none.
+- **EX074 — Test improvement.** How did correct judgements change after revision? *Rubric:* 3 = from five to six of seven;; 2 = improved;; 1 = vague;; 0 = none.
+- **EX075 — Tester request.** What did testers ask for? *Rubric:* 3 = larger text and a phone number;; 2 = readability;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1364,9 +1364,9 @@ Runbooks go out of date. Successors have other duties.
 
 ### Exercises
 
-- **EX076 — Handoff purpose.** What pattern does a clear handoff prevent? *Rubric:* 3 = improvements fading when their introducer leaves;; 2 = fading;; 1 = none;; 0 = none.
-- **EX077 — Runbook test.** How did Lucas test runbooks? *Rubric:* 3 = the practice manager followed them unaided;; 2 = walkthrough;; 1 = none;; 0 = none.
-- **EX078 — Reasons taught.** Why teach reasons as well as steps? *Rubric:* 3 = so successors can adapt when things change;; 2 = adaptation;; 1 = none;; 0 = none.
+- **EX076 — Handoff purpose.** What pattern does a clear handoff prevent? *Rubric:* 3 = improvements fading when their introducer leaves;; 2 = fading;; 1 = vague;; 0 = none.
+- **EX077 — Runbook test.** How did Lucas test runbooks? *Rubric:* 3 = the practice manager followed them unaided;; 2 = walkthrough;; 1 = vague;; 0 = none.
+- **EX078 — Reasons taught.** Why teach reasons as well as steps? *Rubric:* 3 = so successors can adapt when things change;; 2 = adaptation;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1424,9 +1424,9 @@ Two months is short. Culture changes slowly.
 
 ### Exercises
 
-- **EX079 — Missing steps.** What did using runbooks in new clinics reveal? *Rubric:* 3 = two missing steps;; 2 = gaps;; 1 = none;; 0 = none.
-- **EX080 — Lab comparison.** How did new clinics compare in the lab? *Rubric:* 3 = 45% then 62% versus 80% in existing clinics;; 2 = lower but rising;; 1 = none;; 0 = none.
-- **EX081 — Legacy cause.** Why were new clinic staff wary? *Rubric:* 3 = the previous owner disciplined people who clicked;; 2 = blame;; 1 = none;; 0 = none.
+- **EX079 — Missing steps.** What did using runbooks in new clinics reveal? *Rubric:* 3 = two missing steps;; 2 = gaps;; 1 = vague;; 0 = none.
+- **EX080 — Lab comparison.** How did new clinics compare in the lab? *Rubric:* 3 = 45% then 62% versus 80% in existing clinics;; 2 = lower but rising;; 1 = vague;; 0 = none.
+- **EX081 — Legacy cause.** Why were new clinic staff wary? *Rubric:* 3 = the previous owner disciplined people who clicked;; 2 = blame;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1469,8 +1469,8 @@ Supervision varies. Reflection needs honesty.
 ### Exercises
 
 - **EX082 — Key protection.** Why could the attacker not log in? *Rubric:* 3 = the security key prevented it;; 2 = key;; 1 = password reset;; 0 = none.
-- **EX083 — Later effect.** What did the receptionist do later? *Rubric:* 3 = reported another message within minutes;; 2 = reported;; 1 = none;; 0 = none.
-- **EX084 — Language lesson.** What did Lucas resolve to change? *Rubric:* 3 = use plainer language;; 2 = plain language;; 1 = none;; 0 = none.
+- **EX083 — Later effect.** What did the receptionist do later? *Rubric:* 3 = reported another message within minutes;; 2 = reported;; 1 = vague;; 0 = none.
+- **EX084 — Language lesson.** What did Lucas resolve to change? *Rubric:* 3 = use plainer language;; 2 = plain language;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1530,9 +1530,9 @@ Tools need maintenance. Re-verification needs time.
 
 ### Exercises
 
-- **EX085 — Tool purpose.** What is the tool's aim? *Rubric:* 3 = make callback verification quicker and more reliable;; 2 = callbacks;; 1 = none;; 0 = none.
-- **EX086 — Manager request.** What did a manager ask for? *Rubric:* 3 = a button to call directly from the screen;; 2 = call button;; 1 = none;; 0 = none.
-- **EX087 — Lab flags.** How many of 40 suppliers needed re-verification in the lab? *Rubric:* 3 = 7;; 2 = 7;; 1 = none;; 0 = none.
+- **EX085 — Tool purpose.** What is the tool's aim? *Rubric:* 3 = make callback verification quicker and more reliable;; 2 = callbacks;; 1 = vague;; 0 = none.
+- **EX086 — Manager request.** What did a manager ask for? *Rubric:* 3 = a button to call directly from the screen;; 2 = call button;; 1 = vague;; 0 = none.
+- **EX087 — Lab flags.** How many of 40 suppliers needed re-verification in the lab? *Rubric:* 3 = 7;; 2 = 7, without explanation;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -1574,9 +1574,9 @@ Six weeks is short. Assessors may favour polished presentations.
 
 ### Exercises
 
-- **EX088 — Callback logging.** How did callback logging change? *Rubric:* 3 = from about two thirds to all changes;; 2 = complete;; 1 = none;; 0 = none.
-- **EX089 — Callback time.** How did median callback time change? *Rubric:* 3 = from about six to about three minutes;; 2 = halved;; 1 = none;; 0 = none.
-- **EX090 — Fallback.** What is the fallback if the tool is down? *Rubric:* 3 = the printed list in the finance office;; 2 = printed list;; 1 = none;; 0 = none.
+- **EX088 — Callback logging.** How did callback logging change? *Rubric:* 3 = from about two thirds to all changes;; 2 = complete;; 1 = vague;; 0 = none.
+- **EX089 — Callback time.** How did median callback time change? *Rubric:* 3 = from about six to about three minutes;; 2 = halved;; 1 = vague;; 0 = none.
+- **EX090 — Fallback.** What is the fallback if the tool is down? *Rubric:* 3 = the printed list in the finance office;; 2 = printed list;; 1 = vague;; 0 = none.
 
 ### Synthesis
 

@@ -86,8 +86,8 @@ Risk rates are rarely known; the model compares options rather than giving absol
 ### Exercises
 
 - **EX001 — Growth rate.** What is the average yearly growth from 40 to 160 components over four years? *Rubric:* 3 = 30 per year; 2 = partial; 1 = wrong; 0 = none.
-- **EX002 — Exposure area.** How does faster upgrading reduce accumulated exposure? *Rubric:* 3 = shrinks area under risk curve; 2 = partial; 1 = none; 0 = none.
-- **EX003 — Flat line.** What does a flat non-zero advisory line mean? *Rubric:* 3 = arrivals equal fixes; 2 = partial; 1 = none; 0 = none.
+- **EX002 — Exposure area.** How does faster upgrading reduce accumulated exposure? *Rubric:* 3 = shrinks area under risk curve; 2 = partial; 1 = vague; 0 = none.
+- **EX003 — Flat line.** What does a flat non-zero advisory line mean? *Rubric:* 3 = arrivals equal fixes; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -175,9 +175,9 @@ Real graphs include optional and development-only dependencies, which may not ru
 
 ### Exercises
 
-- **EX004 — Lab counts.** How many direct and total dependencies does the lab find? *Rubric:* 3 = 3 direct, 9 total; 2 = one; 1 = none; 0 = none.
-- **EX005 — Shared node.** Why is zipx notable? *Rubric:* 3 = reached by two paths; coordinate parents; 2 = partial; 1 = none; 0 = none.
-- **EX006 — tmpl surprise.** Why did the tmpl advisory surprise the team? *Rubric:* 3 = transitive via framework; unknown; 2 = partial; 1 = none; 0 = none.
+- **EX004 — Lab counts.** How many direct and total dependencies does the lab find? *Rubric:* 3 = 3 direct, 9 total; 2 = one; 1 = vague; 0 = none.
+- **EX005 — Shared node.** Why is zipx notable? *Rubric:* 3 = reached by two paths; coordinate parents; 2 = partial; 1 = vague; 0 = none.
+- **EX006 — tmpl surprise.** Why did the tmpl advisory surprise the team? *Rubric:* 3 = transitive via framework; unknown; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -245,9 +245,9 @@ Digests detect change but not whether the original build was trustworthy.
 
 ### Exercises
 
-- **EX007 — Bit flips.** Name two causes of bit flips. *Rubric:* 3 = radiation, heat, wear (two); 2 = one; 1 = none; 0 = none.
-- **EX008 — Digest property.** What happens to a SHA-256 digest if one bit changes? *Rubric:* 3 = changes completely; 2 = partial; 1 = none; 0 = none.
-- **EX009 — Mirror cause.** What caused the mirror mismatch? *Rubric:* 3 = truncation in storage failure, not tampering; 2 = partial; 1 = none; 0 = none.
+- **EX007 — Bit flips.** Name two causes of bit flips. *Rubric:* 3 = radiation, heat, wear (two); 2 = one; 1 = vague; 0 = none.
+- **EX008 — Digest property.** What happens to a SHA-256 digest if one bit changes? *Rubric:* 3 = changes completely; 2 = partial; 1 = vague; 0 = none.
+- **EX009 — Mirror cause.** What caused the mirror mismatch? *Rubric:* 3 = truncation in storage failure, not tampering; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -321,9 +321,9 @@ Tests show presence of expected behaviour, not absence of all flaws.
 
 ### Exercises
 
-- **EX010 — Fail safely.** Why raise an error for an unknown zone? *Rubric:* 3 = returning zero would make tickets free; 2 = partial; 1 = none; 0 = none.
-- **EX011 — Default flaw.** What default caused the tmpl flaw? *Rubric:* 3 = skipped escaping for some attributes; 2 = partial; 1 = none; 0 = none.
-- **EX012 — Review comment.** What did Ingrid's review ask? *Rubric:* 3 = avoid echoing input into page in error; 2 = partial; 1 = none; 0 = none.
+- **EX010 — Fail safely.** Why raise an error for an unknown zone? *Rubric:* 3 = returning zero would make tickets free; 2 = partial; 1 = vague; 0 = none.
+- **EX011 — Default flaw.** What default caused the tmpl flaw? *Rubric:* 3 = skipped escaping for some attributes; 2 = partial; 1 = vague; 0 = none.
+- **EX012 — Review comment.** What did Ingrid's review ask? *Rubric:* 3 = avoid echoing input into page in error; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -392,8 +392,8 @@ Simplifying for managers must not change the meaning.
 ### Exercises
 
 - **EX013 — Report sections.** List the report sections. *Rubric:* 3 = summary, context, findings, evidence, recommendations, limitations; 2 = four; 1 = two; 0 = none.
-- **EX014 — Accurate phrasing.** Why say "no evidence it was used"? *Rubric:* 3 = not the same as not used; 2 = partial; 1 = none; 0 = none.
-- **EX015 — Responsible detail.** What do reports avoid? *Rubric:* 3 = step-by-step misuse instructions; 2 = partial; 1 = none; 0 = none.
+- **EX014 — Accurate phrasing.** Why say "no evidence it was used"? *Rubric:* 3 = not the same as not used; 2 = partial; 1 = vague; 0 = none.
+- **EX015 — Responsible detail.** What do reports avoid? *Rubric:* 3 = step-by-step misuse instructions; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -454,8 +454,8 @@ Series and decay models simplify behaviour; validate them against observed data 
 ### Exercises
 
 - **EX016 — Expected packages.** With branching 0.8, how many packages does one direct dependency add in expectation? *Rubric:* 3 = 5; 2 = partial; 1 = wrong; 0 = none.
-- **EX017 — Decay values.** What share remains after 10 and 30 days at 10% daily updating? *Rubric:* 3 = ~35% and ~4%; 2 = one; 1 = none; 0 = none.
-- **EX018 — Prompt decision.** Why did Coastline add an update prompt at day 14? *Rubric:* 3 = observed 7% above predicted 4%; tail long; 2 = partial; 1 = none; 0 = none.
+- **EX017 — Decay values.** What share remains after 10 and 30 days at 10% daily updating? *Rubric:* 3 = ~35% and ~4%; 2 = one; 1 = vague; 0 = none.
+- **EX018 — Prompt decision.** Why did Coastline add an update prompt at day 14? *Rubric:* 3 = observed 7% above predicted 4%; tail long; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -543,9 +543,9 @@ Similarity checks miss malicious packages with unrelated names and those introdu
 
 ### Exercises
 
-- **EX019 — Base-rate effect.** Why are most flags false alarms? *Rubric:* 3 = rare malicious packages; base rate; 2 = partial; 1 = none; 0 = none.
+- **EX019 — Base-rate effect.** Why are most flags false alarms? *Rubric:* 3 = rare malicious packages; base rate; 2 = partial; 1 = vague; 0 = none.
 - **EX020 — Lab flags.** Which names did the lab flag? *Rubric:* 3 = escape-htm1, qr-maker, requests; 2 = two; 1 = one; 0 = none.
-- **EX021 — Month results.** What did the month of use show? *Rubric:* 3 = 38 proposals, 4 flagged, 1 blocked; 2 = partial; 1 = none; 0 = none.
+- **EX021 — Month results.** What did the month of use show? *Rubric:* 3 = 38 proposals, 4 flagged, 1 blocked; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -609,9 +609,9 @@ Isolation adds complexity and overhead; it must be maintained as code changes.
 
 ### Exercises
 
-- **EX022 — Memory CWEs.** Name two memory-safety CWEs. *Rubric:* 3 = CWE-787, CWE-416; 2 = one; 1 = none; 0 = none.
-- **EX023 — Hardware limits.** What do hardware features not do? *Rubric:* 3 = remove the flaw; 2 = partial; 1 = none; 0 = none.
-- **EX024 — imgkit isolation.** How is imgkit isolated? *Rubric:* 3 = separate process, limited permissions, no network, time limit; 2 = partial; 1 = none; 0 = none.
+- **EX022 — Memory CWEs.** Name two memory-safety CWEs. *Rubric:* 3 = CWE-787, CWE-416; 2 = one; 1 = vague; 0 = none.
+- **EX023 — Hardware limits.** What do hardware features not do? *Rubric:* 3 = remove the flaw; 2 = partial; 1 = vague; 0 = none.
+- **EX024 — imgkit isolation.** How is imgkit isolated? *Rubric:* 3 = separate process, limited permissions, no network, time limit; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -696,9 +696,9 @@ Allowlists must be kept in sync with business rules or legitimate users are bloc
 
 ### Exercises
 
-- **EX025 — Allowlist meaning.** What is an allowlist? *Rubric:* 3 = exactly what is acceptable; reject rest; 2 = partial; 1 = none; 0 = none.
-- **EX026 — Lab rejections.** Why was form 3 rejected? *Rubric:* 3 = passengers 12; card_last4 not digits; 2 = partial; 1 = none; 0 = none.
-- **EX027 — Server side.** Why validate on the server? *Rubric:* 3 = browser checks bypassable; 2 = partial; 1 = none; 0 = none.
+- **EX025 — Allowlist meaning.** What is an allowlist? *Rubric:* 3 = exactly what is acceptable; reject rest; 2 = partial; 1 = vague; 0 = none.
+- **EX026 — Lab rejections.** Why was form 3 rejected? *Rubric:* 3 = passengers 12; card_last4 not digits; 2 = partial; 1 = vague; 0 = none.
+- **EX027 — Server side.** Why validate on the server? *Rubric:* 3 = browser checks bypassable; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -768,9 +768,9 @@ Ethics rarely gives one right answer; record reasoning and escalate when unsure.
 
 ### Exercises
 
-- **EX028 — Test account.** How did Kwame handle the old test account? *Rubric:* 3 = reported, did not explore; 2 = partial; 1 = none; 0 = none.
-- **EX029 — Coordinated disclosure.** Describe coordinated disclosure. *Rubric:* 3 = report privately; wait for fix before public; 2 = partial; 1 = none; 0 = none.
-- **EX030 — Risk acceptance.** How did Kwame respond to the risk-acceptance request? *Rubric:* 3 = lacks authority; escalated; 2 = partial; 1 = none; 0 = none.
+- **EX028 — Test account.** How did Kwame handle the old test account? *Rubric:* 3 = reported, did not explore; 2 = partial; 1 = vague; 0 = none.
+- **EX029 — Coordinated disclosure.** Describe coordinated disclosure. *Rubric:* 3 = report privately; wait for fix before public; 2 = partial; 1 = vague; 0 = none.
+- **EX030 — Risk acceptance.** How did Kwame respond to the risk-acceptance request? *Rubric:* 3 = lacks authority; escalated; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -840,9 +840,9 @@ Network controls cannot stop a malicious package that only uses allowed hosts.
 
 ### Exercises
 
-- **EX031 — TLS role.** What two things does TLS provide? *Rubric:* 3 = authentication of server and encryption; 2 = one; 1 = none; 0 = none.
-- **EX032 — Download protection.** How are package downloads protected? *Rubric:* 3 = HTTPS with checks; lockfile hash; 2 = partial; 1 = none; 0 = none.
-- **EX033 — Egress block.** What happened when a package tried to reach an unlisted host? *Rubric:* 3 = blocked; chose different package; 2 = partial; 1 = none; 0 = none.
+- **EX031 — TLS role.** What two things does TLS provide? *Rubric:* 3 = authentication of server and encryption; 2 = one; 1 = vague; 0 = none.
+- **EX032 — Download protection.** How are package downloads protected? *Rubric:* 3 = HTTPS with checks; lockfile hash; 2 = partial; 1 = vague; 0 = none.
+- **EX033 — Egress block.** What happened when a package tried to reach an unlisted host? *Rubric:* 3 = blocked; chose different package; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -912,9 +912,9 @@ Isolation is only as strong as the platform; keep the platform patched.
 
 ### Exercises
 
-- **EX034 — Service user.** Why run ticket-web as a dedicated user? *Rubric:* 3 = limit rights if compromised; 2 = partial; 1 = none; 0 = none.
-- **EX035 — Ephemeral builds.** Why use fresh build environments? *Rubric:* 3 = prevent leftover files affecting next build; 2 = partial; 1 = none; 0 = none.
-- **EX036 — Old agent fix.** How was the reused agent problem fixed? *Rubric:* 3 = ephemeral agents; image digest in record; 2 = partial; 1 = none; 0 = none.
+- **EX034 — Service user.** Why run ticket-web as a dedicated user? *Rubric:* 3 = limit rights if compromised; 2 = partial; 1 = vague; 0 = none.
+- **EX035 — Ephemeral builds.** Why use fresh build environments? *Rubric:* 3 = prevent leftover files affecting next build; 2 = partial; 1 = vague; 0 = none.
+- **EX036 — Old agent fix.** How was the reused agent problem fixed? *Rubric:* 3 = ephemeral agents; image digest in record; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1001,9 +1001,9 @@ Parameterisation does not help if table or column names come from users; use all
 
 ### Exercises
 
-- **EX037 — Card data.** What card data does ticket-web keep? *Rubric:* 3 = token and last four digits only; 2 = partial; 1 = none; 0 = none.
-- **EX038 — Lab contrast.** What did the lab show? *Rubric:* 3 = parameterised works; string-built fails on apostrophe; 2 = partial; 1 = none; 0 = none.
-- **EX039 — Dropdown reasoning.** Why parameterise a dropdown value? *Rubric:* 3 = inputs can be altered before server; 2 = partial; 1 = none; 0 = none.
+- **EX037 — Card data.** What card data does ticket-web keep? *Rubric:* 3 = token and last four digits only; 2 = partial; 1 = vague; 0 = none.
+- **EX038 — Lab contrast.** What did the lab show? *Rubric:* 3 = parameterised works; string-built fails on apostrophe; 2 = partial; 1 = vague; 0 = none.
+- **EX039 — Dropdown reasoning.** Why parameterise a dropdown value? *Rubric:* 3 = inputs can be altered before server; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1079,7 +1079,7 @@ A mapping shows practices exist, not that they work well.
 
 - **EX040 — SSDF groups.** Name the four SSDF groups. *Rubric:* 3 = PO, PS, PW, RV; 2 = three; 1 = one; 0 = none.
 - **EX041 — CI checks.** List CI checks on each change. *Rubric:* 3 = tests, static analysis, name check, advisory check; 2 = three; 1 = one; 0 = none.
-- **EX042 — Gap found.** What gap did the mapping reveal? *Rubric:* 3 = no secure-coding training (PO); 2 = partial; 1 = none; 0 = none.
+- **EX042 — Gap found.** What gap did the mapping reveal? *Rubric:* 3 = no secure-coding training (PO); 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1147,9 +1147,9 @@ The Top 10 is an awareness document, not a complete standard; use ASVS for verif
 
 ### Exercises
 
-- **EX043 — Integrity attack.** Why are supply-chain attacks mainly integrity attacks? *Rubric:* 3 = alter code that runs; 2 = partial; 1 = none; 0 = none.
-- **EX044 — Category mapping.** Map the tmpl advisory and mirror mismatch to Top 10 categories. *Rubric:* 3 = A06 and A08; 2 = one; 1 = none; 0 = none.
-- **EX045 — Top 10 limit.** What should be used instead of the Top 10 for verification? *Rubric:* 3 = ASVS; 2 = partial; 1 = none; 0 = none.
+- **EX043 — Integrity attack.** Why are supply-chain attacks mainly integrity attacks? *Rubric:* 3 = alter code that runs; 2 = partial; 1 = vague; 0 = none.
+- **EX044 — Category mapping.** Map the tmpl advisory and mirror mismatch to Top 10 categories. *Rubric:* 3 = A06 and A08; 2 = one; 1 = vague; 0 = none.
+- **EX045 — Top 10 limit.** What should be used instead of the Top 10 for verification? *Rubric:* 3 = ASVS; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1216,8 +1216,8 @@ Large systems change constantly; keep diagrams and tables current or they mislea
 ### Exercises
 
 - **EX046 — System parts.** List five parts of the ticket-web system. *Rubric:* 3 = source, CI, artifacts, deployment, servers, third parties, people (five); 2 = three; 1 = one; 0 = none.
-- **EX047 — Traceability gap.** What does a requirement with no traced component mean? *Rubric:* 3 = a gap; 2 = partial; 1 = none; 0 = none.
-- **EX048 — Hotfix fix.** How was the hotfix path handled? *Rubric:* 3 = second approver; review within 24 h; 2 = partial; 1 = none; 0 = none.
+- **EX047 — Traceability gap.** What does a requirement with no traced component mean? *Rubric:* 3 = a gap; 2 = partial; 1 = vague; 0 = none.
+- **EX048 — Hotfix fix.** How was the hotfix path handled? *Rubric:* 3 = second approver; review within 24 h; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1287,9 +1287,9 @@ Process loops involve people, who are less predictable than machines; use loops 
 
 ### Exercises
 
-- **EX049 — Loop parts.** Name the sensor and actuator of the advisory loop. *Rubric:* 3 = SBOM-based check; engineering time; 2 = one; 1 = none; 0 = none.
-- **EX050 — Delay effect.** What happens with long feedback delays? *Rubric:* 3 = late discovery, fixes in bursts; 2 = partial; 1 = none; 0 = none.
-- **EX051 — Noise fix.** What reduced the daily list from 40 to 12? *Rubric:* 3 = removing duplicate advisories; 2 = partial; 1 = none; 0 = none.
+- **EX049 — Loop parts.** Name the sensor and actuator of the advisory loop. *Rubric:* 3 = SBOM-based check; engineering time; 2 = one; 1 = vague; 0 = none.
+- **EX050 — Delay effect.** What happens with long feedback delays? *Rubric:* 3 = late discovery, fixes in bursts; 2 = partial; 1 = vague; 0 = none.
+- **EX051 — Noise fix.** What reduced the daily list from 40 to 12? *Rubric:* 3 = removing duplicate advisories; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1360,8 +1360,8 @@ Architecture on paper may differ from reality; verify with configuration reviews
 ### Exercises
 
 - **EX052 — Pipeline steps.** List the pipeline integrity steps. *Rubric:* 3 = review, isolated builds, signing, provenance, verified deployment; 2 = four; 1 = two; 0 = none.
-- **EX053 — Sigstore benefit.** What does Sigstore avoid? *Rubric:* 3 = long-lived keys that can leak; 2 = partial; 1 = none; 0 = none.
-- **EX054 — Staging finding.** What did the review find and fix? *Rubric:* 3 = shared DB account; split; 2 = partial; 1 = none; 0 = none.
+- **EX053 — Sigstore benefit.** What does Sigstore avoid? *Rubric:* 3 = long-lived keys that can leak; 2 = partial; 1 = vague; 0 = none.
+- **EX054 — Staging finding.** What did the review find and fix? *Rubric:* 3 = shared DB account; split; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1455,9 +1455,9 @@ A digest check is only as good as the source of the expected digest; protect tha
 
 ### Exercises
 
-- **EX055 — Lab result.** What did the lab report for the two copies? *Rubric:* 3 = release VERIFIED; mirror MISMATCH do not deploy; 2 = partial; 1 = none; 0 = none.
-- **EX056 — Signature purpose.** What does a signature add to a digest? *Rubric:* 3 = binds to publisher identity; 2 = partial; 1 = none; 0 = none.
-- **EX057 — Blocked deploy.** What did the deploy check block? *Rubric:* 3 = outdated cache build with reused label; no reuse rule; 2 = partial; 1 = none; 0 = none.
+- **EX055 — Lab result.** What did the lab report for the two copies? *Rubric:* 3 = release VERIFIED; mirror MISMATCH do not deploy; 2 = partial; 1 = vague; 0 = none.
+- **EX056 — Signature purpose.** What does a signature add to a digest? *Rubric:* 3 = binds to publisher identity; 2 = partial; 1 = vague; 0 = none.
+- **EX057 — Blocked deploy.** What did the deploy check block? *Rubric:* 3 = outdated cache build with reused label; no reuse rule; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1528,8 +1528,8 @@ A chain diagram simplifies; real chains include tools, plugins and services not 
 ### Exercises
 
 - **EX058 — Chain stages.** List the stages of the software supply chain. *Rubric:* 3 = source, dependencies, build, artifacts, distribution, deployment/update; 2 = four; 1 = two; 0 = none.
-- **EX059 — SSDF PS.2.** What does SSDF PS.2 ask? *Rubric:* 3 = way to verify release integrity; 2 = partial; 1 = none; 0 = none.
-- **EX060 — Mobile gap.** What gap did the diagram show? *Rubric:* 3 = mobile build on laptop; moved to CI; 2 = partial; 1 = none; 0 = none.
+- **EX059 — SSDF PS.2.** What does SSDF PS.2 ask? *Rubric:* 3 = way to verify release integrity; 2 = partial; 1 = vague; 0 = none.
+- **EX060 — Mobile gap.** What gap did the diagram show? *Rubric:* 3 = mobile build on laptop; moved to CI; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1599,9 +1599,9 @@ Requirements lists grow; review yearly and remove ones that no longer apply.
 
 ### Exercises
 
-- **EX061 — Good requirement.** Rewrite "artifacts shall be secure" as testable. *Rubric:* 3 = refuse artifact whose digest mismatches signed record; 2 = partial; 1 = none; 0 = none.
-- **EX062 — ASVS level.** Which ASVS level and why? *Rubric:* 3 = Level 2; handles payments; 2 = partial; 1 = none; 0 = none.
-- **EX063 — Acceptance test.** Give the acceptance test for the digest requirement. *Rubric:* 3 = deploy mismatched synthetic artifact in staging; confirm refusal; 2 = partial; 1 = none; 0 = none.
+- **EX061 — Good requirement.** Rewrite "artifacts shall be secure" as testable. *Rubric:* 3 = refuse artifact whose digest mismatches signed record; 2 = partial; 1 = vague; 0 = none.
+- **EX062 — ASVS level.** Which ASVS level and why? *Rubric:* 3 = Level 2; handles payments; 2 = partial; 1 = vague; 0 = none.
+- **EX063 — Acceptance test.** Give the acceptance test for the digest requirement. *Rubric:* 3 = deploy mismatched synthetic artifact in staging; confirm refusal; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1677,7 +1677,7 @@ Diagrams describe intended behaviour; actual flows must be verified with network
 
 - **EX064 — DFD elements.** Name the four DFD element types. *Rubric:* 3 = external entities, processes, data stores, flows; 2 = three; 1 = one; 0 = none.
 - **EX065 — NTIA elements.** List four NTIA SBOM minimum elements. *Rubric:* 3 = supplier, name, version, identifiers, relationship, author, timestamp (four); 2 = two; 1 = one; 0 = none.
-- **EX066 — Missed flow.** What flow was missed and fixed? *Rubric:* 3 = CI logs to third-party service; masked values; 2 = partial; 1 = none; 0 = none.
+- **EX066 — Missed flow.** What flow was missed and fixed? *Rubric:* 3 = CI logs to third-party service; masked values; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1752,8 +1752,8 @@ STRIDE prompts thinking but does not guarantee completeness.
 ### Exercises
 
 - **EX067 — STRIDE letters.** What does STRIDE stand for? *Rubric:* 3 = spoofing, tampering, repudiation, information disclosure, DoS, elevation of privilege; 2 = five; 1 = three; 0 = none.
-- **EX068 — Fork threat.** Which STRIDE category is the untrusted fork case? *Rubric:* 3 = elevation of privilege; 2 = partial; 1 = none; 0 = none.
-- **EX069 — New control.** What control was added for certificate expiry? *Rubric:* 3 = monitoring with 30 days' warning; 2 = partial; 1 = none; 0 = none.
+- **EX068 — Fork threat.** Which STRIDE category is the untrusted fork case? *Rubric:* 3 = elevation of privilege; 2 = partial; 1 = vague; 0 = none.
+- **EX069 — New control.** What control was added for certificate expiry? *Rubric:* 3 = monitoring with 30 days' warning; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1844,9 +1844,9 @@ Advisory data can be late or wrong; SBOMs can miss vendored or copied code.
 
 ### Exercises
 
-- **EX070 — Version comparison.** Why compare versions numerically? *Rubric:* 3 = text order wrong: 2.0.9 vs 2.0.10; 2 = partial; 1 = none; 0 = none.
-- **EX071 — Lab hits.** Which advisories applied? *Rubric:* 3 = ADV-101 tmpl, ADV-103 imgkit; 2 = one; 1 = none; 0 = none.
-- **EX072 — Priority reasoning.** Why fix tmpl before imgkit? *Rubric:* 3 = tmpl renders every page; imgkit isolated; 2 = partial; 1 = none; 0 = none.
+- **EX070 — Version comparison.** Why compare versions numerically? *Rubric:* 3 = text order wrong: 2.0.9 vs 2.0.10; 2 = partial; 1 = vague; 0 = none.
+- **EX071 — Lab hits.** Which advisories applied? *Rubric:* 3 = ADV-101 tmpl, ADV-103 imgkit; 2 = one; 1 = vague; 0 = none.
+- **EX072 — Priority reasoning.** Why fix tmpl before imgkit? *Rubric:* 3 = tmpl renders every page; imgkit isolated; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1921,8 +1921,8 @@ Studio prototypes are simplified; production adds monitoring and recovery.
 ### Exercises
 
 - **EX073 — Three options.** Describe the three options. *Rubric:* 3 = HSM long-lived key; keyless short-lived; app store only; 2 = two; 1 = one; 0 = none.
-- **EX074 — Option C weakness.** Why is option C weak alone? *Rubric:* 3 = no independent verification; 2 = partial; 1 = none; 0 = none.
-- **EX075 — Offline question.** What did peer review raise and how was it addressed? *Rubric:* 3 = offline verification on buses; cached material; 2 = partial; 1 = none; 0 = none.
+- **EX074 — Option C weakness.** Why is option C weak alone? *Rubric:* 3 = no independent verification; 2 = partial; 1 = vague; 0 = none.
+- **EX075 — Offline question.** What did peer review raise and how was it addressed? *Rubric:* 3 = offline verification on buses; cached material; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1988,9 +1988,9 @@ Architecture choices depend on organisation size; a small team may not sustain a
 
 ### Exercises
 
-- **EX076 — Option 3 cost.** Why was the curated repository rejected? *Rubric:* 3 = slows updates; ~5 days; critical target; 2 = partial; 1 = none; 0 = none.
-- **EX077 — Hosted runner benefit.** What do hosted runners provide? *Rubric:* 3 = fresh isolated environments; platform provenance; 2 = partial; 1 = none; 0 = none.
-- **EX078 — Reproducibility need.** What does reproducibility require for ticket-web? *Rubric:* 3 = fix timestamps and ordering; 2 = partial; 1 = none; 0 = none.
+- **EX076 — Option 3 cost.** Why was the curated repository rejected? *Rubric:* 3 = slows updates; ~5 days; critical target; 2 = partial; 1 = vague; 0 = none.
+- **EX077 — Hosted runner benefit.** What do hosted runners provide? *Rubric:* 3 = fresh isolated environments; platform provenance; 2 = partial; 1 = vague; 0 = none.
+- **EX078 — Reproducibility need.** What does reproducibility require for ticket-web? *Rubric:* 3 = fix timestamps and ordering; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2060,7 +2060,7 @@ Strict controls create pressure for exceptions; track the exception count as a h
 
 ### Exercises
 
-- **EX079 — Fail closed.** What happens if the advisory service is down? *Rubric:* 3 = build waits/retries; page after 1 h; 2 = partial; 1 = none; 0 = none.
+- **EX079 — Fail closed.** What happens if the advisory service is down? *Rubric:* 3 = build waits/retries; page after 1 h; 2 = partial; 1 = vague; 0 = none.
 - **EX080 — Exception rules.** What does an exception need? *Rubric:* 3 = owner, reason, expiry, approval; 2 = three; 1 = one; 0 = none.
 - **EX081 — Week one blocks.** Summarise the six blocks. *Rubric:* 3 = 4 test-only advisory (exception), 1 lookalike typo, 1 hand-edited lockfile; 2 = partial; 1 = one; 0 = none.
 
@@ -2132,9 +2132,9 @@ Explicit safe-markup helpers can be misused; restrict and review their use.
 
 ### Exercises
 
-- **EX082 — XSS defence.** What prevents cross-site scripting here? *Rubric:* 3 = context encoding by default; tests with special characters; 2 = partial; 1 = none; 0 = none.
-- **EX083 — Upgrade issue.** What did the tmpl upgrade break and how was it fixed? *Rubric:* 3 = two templates relying on unescaped icons; safe-markup helper; 2 = partial; 1 = none; 0 = none.
-- **EX084 — Speed gain.** Why was this fix faster than the original incident? *Rubric:* 3 = gate flagged at once; tests; 2 = partial; 1 = none; 0 = none.
+- **EX082 — XSS defence.** What prevents cross-site scripting here? *Rubric:* 3 = context encoding by default; tests with special characters; 2 = partial; 1 = vague; 0 = none.
+- **EX083 — Upgrade issue.** What did the tmpl upgrade break and how was it fixed? *Rubric:* 3 = two templates relying on unescaped icons; safe-markup helper; 2 = partial; 1 = vague; 0 = none.
+- **EX084 — Speed gain.** Why was this fix faster than the original incident? *Rubric:* 3 = gate flagged at once; tests; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2223,8 +2223,8 @@ Small counts make medians unstable; show the individual items too.
 ### Exercises
 
 - **EX085 — Lab late items.** How many items were late in each severity? *Rubric:* 3 = critical 1, high 2, medium 1; 2 = two; 1 = one; 0 = none.
-- **EX086 — Critical cause.** Why was the critical item late? *Rubric:* 3 = waited for vendor patch; 2 = partial; 1 = none; 0 = none.
-- **EX087 — Incentive control.** How are perverse incentives controlled? *Rubric:* 3 = monthly review of severity changes; 2 = partial; 1 = none; 0 = none.
+- **EX086 — Critical cause.** Why was the critical item late? *Rubric:* 3 = waited for vendor patch; 2 = partial; 1 = vague; 0 = none.
+- **EX087 — Incentive control.** How are perverse incentives controlled? *Rubric:* 3 = monthly review of severity changes; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2314,9 +2314,9 @@ Passing tests show the cases written work; they do not prove no other path exist
 
 ### Exercises
 
-- **EX088 — Lab results.** What did the lab report? *Rubric:* 3 = 4 run, 0 failures, 0 errors; 2 = partial; 1 = none; 0 = none.
-- **EX089 — Boundary pair.** Which tests check the boundary? *Rubric:* 3 = agent 50 allowed, 51 refused; 2 = partial; 1 = none; 0 = none.
-- **EX090 — Mutation check.** What did changing <= to < show? *Rubric:* 3 = test catches it; 2 = partial; 1 = none; 0 = none.
+- **EX088 — Lab results.** What did the lab report? *Rubric:* 3 = 4 run, 0 failures, 0 errors; 2 = partial; 1 = vague; 0 = none.
+- **EX089 — Boundary pair.** Which tests check the boundary? *Rubric:* 3 = agent 50 allowed, 51 refused; 2 = partial; 1 = vague; 0 = none.
+- **EX090 — Mutation check.** What did changing <= to < show? *Rubric:* 3 = test catches it; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2383,8 +2383,8 @@ Verification proves origin and integrity, not that the source code itself is fre
 ### Exercises
 
 - **EX091 — Provenance contents.** What does provenance record? *Rubric:* 3 = builder, repo, commit, steps, output digests; 2 = four; 1 = two; 0 = none.
-- **EX092 — Platform signing.** Why must the platform sign provenance? *Rubric:* 3 = build script cannot forge it; 2 = partial; 1 = none; 0 = none.
-- **EX093 — Warn mode.** What did the end-to-end test catch? *Rubric:* 3 = verification in warn mode; set enforce; CI check; 2 = partial; 1 = none; 0 = none.
+- **EX092 — Platform signing.** Why must the platform sign provenance? *Rubric:* 3 = build script cannot forge it; 2 = partial; 1 = vague; 0 = none.
+- **EX093 — Warn mode.** What did the end-to-end test catch? *Rubric:* 3 = verification in warn mode; set enforce; CI check; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2459,8 +2459,8 @@ Fallbacks add complexity; keep them simple and tested.
 ### Exercises
 
 - **EX094 — External dependencies.** List four external services the pipeline depends on. *Rubric:* 3 = registry, advisory feed, transparency log, CI provider; 2 = three; 1 = one; 0 = none.
-- **EX095 — Manual path.** When can manual verification be used? *Rubric:* 3 = check down >4 h; critical fix; Ingrid approves; two engineers; 2 = partial; 1 = none; 0 = none.
-- **EX096 — Simulation finding.** What did the outage simulation reveal? *Rubric:* 3 = cache expired after 24 h; extended to 7 days; 2 = partial; 1 = none; 0 = none.
+- **EX095 — Manual path.** When can manual verification be used? *Rubric:* 3 = check down >4 h; critical fix; Ingrid approves; two engineers; 2 = partial; 1 = vague; 0 = none.
+- **EX096 — Simulation finding.** What did the outage simulation reveal? *Rubric:* 3 = cache expired after 24 h; extended to 7 days; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2535,8 +2535,8 @@ Rollback restores code but not data altered during compromise; check data integr
 ### Exercises
 
 - **EX097 — Playbook steps.** List the playbook steps. *Rubric:* 3 = identify via SBOM/provenance; stop deploys; rollback; rotate credentials; notify; 2 = four; 1 = two; 0 = none.
-- **EX098 — Exercise finding.** What did SBOM search show in the exercise? *Rubric:* 3 = one release with 1.4.2, deployed two days; 4 minutes; 2 = partial; 1 = none; 0 = none.
-- **EX099 — Rotation lesson.** What lesson came from credential rotation? *Rubric:* 3 = scattered tokens; consolidate in secrets manager; 2 = partial; 1 = none; 0 = none.
+- **EX098 — Exercise finding.** What did SBOM search show in the exercise? *Rubric:* 3 = one release with 1.4.2, deployed two days; 4 minutes; 2 = partial; 1 = vague; 0 = none.
+- **EX099 — Rotation lesson.** What lesson came from credential rotation? *Rubric:* 3 = scattered tokens; consolidate in secrets manager; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2611,8 +2611,8 @@ Integration concentrates risk: one pipeline misconfiguration affects all checks;
 ### Exercises
 
 - **EX100 — Team roles.** Who owns policies, pipeline and fixes? *Rubric:* 3 = security, platform, product teams; 2 = two; 1 = one; 0 = none.
-- **EX101 — Duplication fix.** How was scanner duplication resolved? *Rubric:* 3 = one gate, other comparison only; 2 = partial; 1 = none; 0 = none.
-- **EX102 — Survey result.** What did the survey show? *Rubric:* 3 = 78% clear vs 41%; questions halved; 2 = partial; 1 = none; 0 = none.
+- **EX101 — Duplication fix.** How was scanner duplication resolved? *Rubric:* 3 = one gate, other comparison only; 2 = partial; 1 = vague; 0 = none.
+- **EX102 — Survey result.** What did the survey show? *Rubric:* 3 = 78% clear vs 41%; questions halved; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2691,8 +2691,8 @@ Contracts help after incidents but do not prevent them; technical isolation is t
 ### Exercises
 
 - **EX103 — Vendor questions.** List three vendor questions. *Rubric:* 3 = SSDF, SBOM/signing, fix speed, disclosure (three); 2 = two; 1 = one; 0 = none.
-- **EX104 — Isolation choice.** Why choose a sandboxed frame? *Rubric:* 3 = limits widget access to rider data; 2 = partial; 1 = none; 0 = none.
-- **EX105 — Negotiated outcome.** What compromise was reached on SBOMs? *Rubric:* 3 = quarterly; monitoring compensates; 2 = partial; 1 = none; 0 = none.
+- **EX104 — Isolation choice.** Why choose a sandboxed frame? *Rubric:* 3 = limits widget access to rider data; 2 = partial; 1 = vague; 0 = none.
+- **EX105 — Negotiated outcome.** What compromise was reached on SBOMs? *Rubric:* 3 = quarterly; monitoring compensates; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2762,9 +2762,9 @@ Speed optimisations can introduce gaps, such as skipped checks on unchanged comp
 
 ### Exercises
 
-- **EX106 — Incremental check.** How was gate time reduced? *Rubric:* 3 = check changed components; nightly full; 2 = partial; 1 = none; 0 = none.
-- **EX107 — Cache rule.** Which caches must never be shared? *Rubric:* 3 = untrusted PR builds and release builds; 2 = partial; 1 = none; 0 = none.
-- **EX108 — Control cost.** What share of CI time do security controls take? *Rubric:* 3 = under 10%; 2 = partial; 1 = none; 0 = none.
+- **EX106 — Incremental check.** How was gate time reduced? *Rubric:* 3 = check changed components; nightly full; 2 = partial; 1 = vague; 0 = none.
+- **EX107 — Cache rule.** Which caches must never be shared? *Rubric:* 3 = untrusted PR builds and release builds; 2 = partial; 1 = vague; 0 = none.
+- **EX108 — Control cost.** What share of CI time do security controls take? *Rubric:* 3 = under 10%; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2843,8 +2843,8 @@ Logs can contain personal data; collect what is needed and protect it.
 ### Exercises
 
 - **EX109 — Logged events.** List three app events logged for security. *Rubric:* 3 = authentication, authorisation failures, validation rejections, admin actions (three); 2 = two; 1 = one; 0 = none.
-- **EX110 — Drift.** What is configuration drift and how is it found? *Rubric:* 3 = running differs from code; nightly comparison; 2 = partial; 1 = none; 0 = none.
-- **EX111 — Manual deploy.** What happened with the manual deployment alert? *Rubric:* 3 = developer copied files; rebuilt; access removed; 2 = partial; 1 = none; 0 = none.
+- **EX110 — Drift.** What is configuration drift and how is it found? *Rubric:* 3 = running differs from code; nightly comparison; 2 = partial; 1 = vague; 0 = none.
+- **EX111 — Manual deploy.** What happened with the manual deployment alert? *Rubric:* 3 = developer copied files; rebuilt; access removed; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2934,8 +2934,8 @@ Validation depends on trustworthy provenance; if the builder is compromised, rec
 ### Exercises
 
 - **EX112 — Lab results.** Give the lab's three results. *Rubric:* 3 = 3.2.0 ALLOW; 3.2.1 DENY builder; 3.2.2 DENY unreviewed; 2 = two; 1 = one; 0 = none.
-- **EX113 — 3.2.2 fix.** How was 3.2.2 resolved? *Rubric:* 3 = review completed; rebuilt; 2 = partial; 1 = none; 0 = none.
-- **EX114 — Auditor answer.** What future check did Kwame mention? *Rubric:* 3 = reproducible builds; 2 = partial; 1 = none; 0 = none.
+- **EX113 — 3.2.2 fix.** How was 3.2.2 resolved? *Rubric:* 3 = review completed; rebuilt; 2 = partial; 1 = vague; 0 = none.
+- **EX114 — Auditor answer.** What future check did Kwame mention? *Rubric:* 3 = reproducible builds; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3013,9 +3013,9 @@ Copying code in means owning its flaws; only copy small, well-understood code.
 
 ### Exercises
 
-- **EX115 — Abandoned test.** What marks a component as abandoned? *Rubric:* 3 = no releases 2 years; unanswered issues; 2 = partial; 1 = none; 0 = none.
+- **EX115 — Abandoned test.** What marks a component as abandoned? *Rubric:* 3 = no releases 2 years; unanswered issues; 2 = partial; 1 = vague; 0 = none.
 - **EX116 — Options.** List the three options for abandoned components. *Rubric:* 3 = replace, maintain internally, remove feature; 2 = two; 1 = one; 0 = none.
-- **EX117 — Year outcome.** What changed after a year? *Rubric:* 3 = 220 to 196; versions-behind to 0; 2 = partial; 1 = none; 0 = none.
+- **EX117 — Year outcome.** What changed after a year? *Rubric:* 3 = 220 to 196; versions-behind to 0; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3095,7 +3095,7 @@ A test window samples the system at one time; continuous checks fill the gaps.
 
 - **EX118 — Authorisation contents.** What must test authorisation state? *Rubric:* 3 = scope, time window, contacts; 2 = two; 1 = one; 0 = none.
 - **EX119 — Results.** Summarise application and pipeline results. *Rubric:* 3 = app 27/2/1; pipeline 11/1; 2 = partial; 1 = one; 0 = none.
-- **EX120 — Pipeline failure.** What pipeline failure was found? *Rubric:* 3 = self-hosted runner for reporting job; 2 = partial; 1 = none; 0 = none.
+- **EX120 — Pipeline failure.** What pipeline failure was found? *Rubric:* 3 = self-hosted runner for reporting job; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3161,9 +3161,9 @@ Medians hide variation; a few slow items may need separate attention.
 
 ### Exercises
 
-- **EX121 — Bottleneck.** What was the bottleneck? *Rubric:* 3 = waiting for release window, median 6 days; 2 = partial; 1 = none; 0 = none.
-- **EX122 — Fast lane effect.** What effect did the fast lane have? *Rubric:* 3 = 10 to 4 days median; 2 = partial; 1 = none; 0 = none.
-- **EX123 — Next improvement.** What ranked next and why? *Rubric:* 3 = automatic owner assignment; days saved per effort; 2 = partial; 1 = none; 0 = none.
+- **EX121 — Bottleneck.** What was the bottleneck? *Rubric:* 3 = waiting for release window, median 6 days; 2 = partial; 1 = vague; 0 = none.
+- **EX122 — Fast lane effect.** What effect did the fast lane have? *Rubric:* 3 = 10 to 4 days median; 2 = partial; 1 = vague; 0 = none.
+- **EX123 — Next improvement.** What ranked next and why? *Rubric:* 3 = automatic owner assignment; days saved per effort; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3237,9 +3237,9 @@ Before-and-after studies are vulnerable to time trends; staged rollouts improve 
 
 ### Exercises
 
-- **EX124 — Research question.** State Kwame's research question. *Rubric:* 3 = justification reduces additions without lowering satisfaction; 2 = partial; 1 = none; 0 = none.
-- **EX125 — Results.** Give the two main results. *Rubric:* 3 = 34 to 19 additions; satisfaction 3.8 to 3.7; 2 = one; 1 = none; 0 = none.
-- **EX126 — Staged rollout.** Why roll out in stages? *Rubric:* 3 = stronger evidence; compare groups; 2 = partial; 1 = none; 0 = none.
+- **EX124 — Research question.** State Kwame's research question. *Rubric:* 3 = justification reduces additions without lowering satisfaction; 2 = partial; 1 = vague; 0 = none.
+- **EX125 — Results.** Give the two main results. *Rubric:* 3 = 34 to 19 additions; satisfaction 3.8 to 3.7; 2 = one; 1 = vague; 0 = none.
+- **EX126 — Staged rollout.** Why roll out in stages? *Rubric:* 3 = stronger evidence; compare groups; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3314,8 +3314,8 @@ Placements vary; learning goals should be agreed early.
 ### Exercises
 
 - **EX127 — Placement tasks.** List three of Kwame's placement tasks. *Rubric:* 3 = triage advisories, write tests, improve messages, on-call shadowing, security review (three); 2 = two; 1 = one; 0 = none.
-- **EX128 — Vendor issue.** How did Kwame handle the vendor widget issue? *Rubric:* 3 = reported to Ingrid; handled with vendor under contract; 2 = partial; 1 = none; 0 = none.
-- **EX129 — Message outcome.** What showed the gate messages worked? *Rubric:* 3 = retries without changes halved; 2 = partial; 1 = none; 0 = none.
+- **EX128 — Vendor issue.** How did Kwame handle the vendor widget issue? *Rubric:* 3 = reported to Ingrid; handled with vendor under contract; 2 = partial; 1 = vague; 0 = none.
+- **EX129 — Message outcome.** What showed the gate messages worked? *Rubric:* 3 = retries without changes halved; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3389,9 +3389,9 @@ Capstones must fit time; plan a minimum viable version first.
 
 ### Exercises
 
-- **EX130 — Capstone aim.** What does the capstone build? *Rubric:* 3 = service checking app store releases vs provenance/signatures; alerts; 2 = partial; 1 = none; 0 = none.
-- **EX131 — Success test.** Describe the test set. *Rubric:* 3 = 20 synthetic releases, 5 mismatches, zero missed; 2 = partial; 1 = none; 0 = none.
-- **EX132 — Revised requirement.** Why compare inner files? *Rubric:* 3 = stores may re-sign/repackage; 2 = partial; 1 = none; 0 = none.
+- **EX130 — Capstone aim.** What does the capstone build? *Rubric:* 3 = service checking app store releases vs provenance/signatures; alerts; 2 = partial; 1 = vague; 0 = none.
+- **EX131 — Success test.** Describe the test set. *Rubric:* 3 = 20 synthetic releases, 5 mismatches, zero missed; 2 = partial; 1 = vague; 0 = none.
+- **EX132 — Revised requirement.** Why compare inner files? *Rubric:* 3 = stores may re-sign/repackage; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3469,9 +3469,9 @@ Reviewers may disagree; the designer must weigh comments and justify choices.
 
 ### Exercises
 
-- **EX133 — Major finding.** What was the major finding? *Rubric:* 3 = verifier credentials; compromise could hide mismatches; 2 = partial; 1 = none; 0 = none.
-- **EX134 — Major fix.** How was the major finding addressed? *Rubric:* 3 = read-only credentials; alerts to separate system; 2 = partial; 1 = none; 0 = none.
-- **EX135 — Traceability.** How are review comments tracked? *Rubric:* 3 = linked to change or reason; 2 = partial; 1 = none; 0 = none.
+- **EX133 — Major finding.** What was the major finding? *Rubric:* 3 = verifier credentials; compromise could hide mismatches; 2 = partial; 1 = vague; 0 = none.
+- **EX134 — Major fix.** How was the major finding addressed? *Rubric:* 3 = read-only credentials; alerts to separate system; 2 = partial; 1 = vague; 0 = none.
+- **EX135 — Traceability.** How are review comments tracked? *Rubric:* 3 = linked to change or reason; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3546,8 +3546,8 @@ A test set represents known mismatch types; unknown types may evade it.
 ### Exercises
 
 - **EX136 — Mismatch types.** List the five mismatch types tested. *Rubric:* 3 = altered file, missing signature, wrong builder, unreviewed commit, extra file; 2 = four; 1 = two; 0 = none.
-- **EX137 — Timing results.** Give the timing results. *Rubric:* 3 = median 7 min; slowest 22 min; 2 = one; 1 = none; 0 = none.
-- **EX138 — Staging alert.** What did the staging alert reveal? *Rubric:* 3 = vendor tool added config file; added to signed build; 2 = partial; 1 = none; 0 = none.
+- **EX137 — Timing results.** Give the timing results. *Rubric:* 3 = median 7 min; slowest 22 min; 2 = one; 1 = vague; 0 = none.
+- **EX138 — Staging alert.** What did the staging alert reveal? *Rubric:* 3 = vendor tool added config file; added to signed build; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3625,9 +3625,9 @@ Staging trials may not reproduce production load or human behaviour exactly.
 
 ### Exercises
 
-- **EX139 — Trial setup.** What two failures were introduced? *Rubric:* 3 = tampered artifact on mirror; signing service down 2 h; 2 = one; 1 = none; 0 = none.
-- **EX140 — Bypass attempt.** What happened when a team tried to bypass signing? *Rubric:* 3 = policy blocked it; flag removed; 2 = partial; 1 = none; 0 = none.
-- **EX141 — Measures.** Give detection and recovery times. *Rubric:* 3 = 3 min; 25 min; 2 = one; 1 = none; 0 = none.
+- **EX139 — Trial setup.** What two failures were introduced? *Rubric:* 3 = tampered artifact on mirror; signing service down 2 h; 2 = one; 1 = vague; 0 = none.
+- **EX140 — Bypass attempt.** What happened when a team tried to bypass signing? *Rubric:* 3 = policy blocked it; flag removed; 2 = partial; 1 = vague; 0 = none.
+- **EX141 — Measures.** Give detection and recovery times. *Rubric:* 3 = 3 min; 25 min; 2 = one; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3706,8 +3706,8 @@ Evidence ages; keep dates on everything.
 ### Exercises
 
 - **EX142 — Requirement entry.** What does each requirement entry contain? *Rubric:* 3 = statement, implementation, method, evidence, status; 2 = four; 1 = two; 0 = none.
-- **EX143 — Partial items.** Which two requirements were partly met? *Rubric:* 3 = management review of reports; production alert response; 2 = one; 1 = none; 0 = none.
-- **EX144 — Assessor finding.** What did the assessor note? *Rubric:* 3 = traced in 10 min; honest gaps a strength; 2 = partial; 1 = none; 0 = none.
+- **EX143 — Partial items.** Which two requirements were partly met? *Rubric:* 3 = management review of reports; production alert response; 2 = one; 1 = vague; 0 = none.
+- **EX144 — Assessor finding.** What did the assessor note? *Rubric:* 3 = traced in 10 min; honest gaps a strength; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3785,9 +3785,9 @@ Engineering theses must avoid overclaiming security from a single deployment.
 
 ### Exercises
 
-- **EX145 — Positioning.** How is the verifier positioned? *Rubric:* 3 = consumer-side check complementing producer controls; 2 = partial; 1 = none; 0 = none.
-- **EX146 — Not covered.** Which attack class does the verifier not address? *Rubric:* 3 = malicious commits by authorised maintainers; 2 = partial; 1 = none; 0 = none.
-- **EX147 — Tutor change.** What did the tutor ask Kwame to change? *Rubric:* 3 = cut background; expand limitations; 2 = partial; 1 = none; 0 = none.
+- **EX145 — Positioning.** How is the verifier positioned? *Rubric:* 3 = consumer-side check complementing producer controls; 2 = partial; 1 = vague; 0 = none.
+- **EX146 — Not covered.** Which attack class does the verifier not address? *Rubric:* 3 = malicious commits by authorised maintainers; 2 = partial; 1 = vague; 0 = none.
+- **EX147 — Tutor change.** What did the tutor ask Kwame to change? *Rubric:* 3 = cut background; expand limitations; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3861,9 +3861,9 @@ A successful defense is the start of practice, not the end of learning.
 
 ### Exercises
 
-- **EX148 — CI provider answer.** How did Kwame answer the CI-provider question? *Rubric:* 3 = provenance untrustworthy; reproducible builds/second builder; 2 = partial; 1 = none; 0 = none.
-- **EX149 — Rider data.** Does the verifier handle rider data? *Rubric:* 3 = no, only releases; 2 = partial; 1 = none; 0 = none.
-- **EX150 — Next steps.** Name Kwame's next steps. *Rubric:* 3 = certification; working group; platform role; 2 = partial; 1 = none; 0 = none.
+- **EX148 — CI provider answer.** How did Kwame answer the CI-provider question? *Rubric:* 3 = provenance untrustworthy; reproducible builds/second builder; 2 = partial; 1 = vague; 0 = none.
+- **EX149 — Rider data.** Does the verifier handle rider data? *Rubric:* 3 = no, only releases; 2 = partial; 1 = vague; 0 = none.
+- **EX150 — Next steps.** Name Kwame's next steps. *Rubric:* 3 = certification; working group; platform role; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 

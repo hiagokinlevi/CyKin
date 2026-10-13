@@ -87,8 +87,8 @@ A model fitted to a few months may not hold during busy periods such as exam sea
 ### Exercises
 
 - **EX001 — Project goal.** What does Marta want the public PC service to do? *Rubric:* 3 = reset nightly to known hardened state; 2 = partial; 1 = vague; 0 = none.
-- **EX002 — Growth rate.** How fast did leftover-file cases grow between clean-ups? *Rubric:* 3 = about three per day, roughly linear; 2 = partial; 1 = none; 0 = none.
-- **EX003 — Saw-tooth.** Describe the curve under nightly restore. *Rubric:* 3 = saw-tooth limited to one day's cases; 2 = partial; 1 = none; 0 = none.
+- **EX002 — Growth rate.** How fast did leftover-file cases grow between clean-ups? *Rubric:* 3 = about three per day, roughly linear; 2 = partial; 1 = vague; 0 = none.
+- **EX003 — Saw-tooth.** Describe the curve under nightly restore. *Rubric:* 3 = saw-tooth limited to one day's cases; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -152,9 +152,9 @@ A graph from documentation may miss links added later; verify against switch con
 
 ### Exercises
 
-- **EX004 — Set difference.** What does E minus A represent? *Rubric:* 3 = executed but not allowed software; 2 = partial; 1 = none; 0 = none.
-- **EX005 — Configurations.** How many configurations do ten yes/no settings allow? *Rubric:* 3 = 1,024; 2 = partial; 1 = none; 0 = none.
-- **EX006 — Eastgate graph.** What did the graph reveal at Eastgate? *Rubric:* 3 = public PCs and staff laptops share segment; 2 = partial; 1 = none; 0 = none.
+- **EX004 — Set difference.** What does E minus A represent? *Rubric:* 3 = executed but not allowed software; 2 = partial; 1 = vague; 0 = none.
+- **EX005 — Configurations.** How many configurations do ten yes/no settings allow? *Rubric:* 3 = 1,024; 2 = partial; 1 = vague; 0 = none.
+- **EX006 — Eastgate graph.** What did the graph reveal at Eastgate? *Rubric:* 3 = public PCs and staff laptops share segment; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -218,9 +218,9 @@ Physical effects are complex; engineers rely on published research rather than s
 
 ### Exercises
 
-- **EX007 — Deletion.** Why is a deleted file often recoverable? *Rubric:* 3 = only index removed; 2 = partial; 1 = none; 0 = none.
-- **EX008 — Kim 2014.** What did Kim et al. (2014) show? *Rubric:* 3 = DRAM row access flips neighbouring bits; 2 = partial; 1 = none; 0 = none.
-- **EX009 — Physical access.** Why does physical access matter at public PCs? *Rubric:* 3 = attach devices, reboot, firmware menus; 2 = partial; 1 = none; 0 = none.
+- **EX007 — Deletion.** Why is a deleted file often recoverable? *Rubric:* 3 = only index removed; 2 = partial; 1 = vague; 0 = none.
+- **EX008 — Kim 2014.** What did Kim et al. (2014) show? *Rubric:* 3 = DRAM row access flips neighbouring bits; 2 = partial; 1 = vague; 0 = none.
+- **EX009 — Physical access.** Why does physical access matter at public PCs? *Rubric:* 3 = attach devices, reboot, firmware menus; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -290,9 +290,9 @@ Programs fail silently when data types differ; test with realistic inputs.
 
 ### Exercises
 
-- **EX010 — Repetition.** Why program the checks? *Rubric:* 3 = 300 PCs daily, repeatable; 2 = partial; 1 = none; 0 = none.
-- **EX011 — Known-answer test.** Describe Mateo's known-answer test. *Rubric:* 3 = one passing PC, one failing exactly two; 2 = partial; 1 = none; 0 = none.
-- **EX012 — Bug.** What caused every PC to fail auto-logoff? *Rubric:* 3 = minutes stored as text; 2 = partial; 1 = none; 0 = none.
+- **EX010 — Repetition.** Why program the checks? *Rubric:* 3 = 300 PCs daily, repeatable; 2 = partial; 1 = vague; 0 = none.
+- **EX011 — Known-answer test.** Describe Mateo's known-answer test. *Rubric:* 3 = one passing PC, one failing exactly two; 2 = partial; 1 = vague; 0 = none.
+- **EX012 — Bug.** What caused every PC to fail auto-logoff? *Rubric:* 3 = minutes stored as text; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -368,7 +368,7 @@ Technical accuracy without clarity leads to misunderstanding and resistance.
 
 - **EX013 — Three audiences.** Which three audiences need different documents? *Rubric:* 3 = Marta, branch managers, board; 2 = two; 1 = one; 0 = none.
 - **EX014 — Decision records.** What does a decision record contain? *Rubric:* 3 = options, choice, reasons; 2 = two; 1 = one; 0 = none.
-- **EX015 — Patron notice.** What notice did Mateo draft? *Rubric:* 3 = resets overnight; save to own storage; 2 = partial; 1 = none; 0 = none.
+- **EX015 — Patron notice.** What notice did Mateo draft? *Rubric:* 3 = resets overnight; save to own storage; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -442,9 +442,9 @@ Integrals of idealised functions give estimates, not measurements.
 
 ### Exercises
 
-- **EX016 — Area meaning.** What does the area under f represent? *Rubric:* 3 = total exposure in PC-days; 2 = partial; 1 = none; 0 = none.
-- **EX017 — Fortnight estimates.** Give the fortnight exposure for both designs. *Rubric:* 3 = 294 vs 21 PC-days; 2 = partial; 1 = none; 0 = none.
-- **EX018 — Assumptions.** Which assumptions underlie the estimate? *Rubric:* 3 = steady arrival, full removal; 2 = partial; 1 = none; 0 = none.
+- **EX016 — Area meaning.** What does the area under f represent? *Rubric:* 3 = total exposure in PC-days; 2 = partial; 1 = vague; 0 = none.
+- **EX017 — Fortnight estimates.** Give the fortnight exposure for both designs. *Rubric:* 3 = 294 vs 21 PC-days; 2 = partial; 1 = vague; 0 = none.
+- **EX018 — Assumptions.** Which assumptions underlie the estimate? *Rubric:* 3 = steady arrival, full removal; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -533,9 +533,9 @@ Real failure probabilities must be measured; p here is an assumption.
 
 ### Exercises
 
-- **EX019 — Expected failures.** What is the expected number of failures per night? *Rubric:* 3 = 1.2; 2 = partial; 1 = none; 0 = none.
+- **EX019 — Expected failures.** What is the expected number of failures per night? *Rubric:* 3 = 1.2; 2 = partial; 1 = vague; 0 = none.
 - **EX020 — Probabilities.** Give P(at least 1), P(at least 3), P(at least 5). *Rubric:* 3 = 0.700, 0.120, 0.008; 2 = two; 1 = one; 0 = none.
-- **EX021 — Incident threshold.** Why alert as an incident at five failures? *Rubric:* 3 = under 1% if healthy, suggests shared cause; 2 = partial; 1 = none; 0 = none.
+- **EX021 — Incident threshold.** Why alert as an incident at five failures? *Rubric:* 3 = under 1% if healthy, suggests shared cause; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -607,9 +607,9 @@ Hardware features help only if enabled and configured.
 
 ### Exercises
 
-- **EX022 — Boot order.** In what order do firmware, bootloader and OS start? *Rubric:* 3 = firmware, bootloader, OS; 2 = partial; 1 = none; 0 = none.
-- **EX023 — TPM role.** What does a TPM provide? *Rubric:* 3 = key storage, boot measurements; 2 = partial; 1 = none; 0 = none.
-- **EX024 — Inventory finding.** What did the inventory reveal? *Rubric:* 3 = TPM and Secure Boot supported; no firmware passwords; 2 = partial; 1 = none; 0 = none.
+- **EX022 — Boot order.** In what order do firmware, bootloader and OS start? *Rubric:* 3 = firmware, bootloader, OS; 2 = partial; 1 = vague; 0 = none.
+- **EX023 — TPM role.** What does a TPM provide? *Rubric:* 3 = key storage, boot measurements; 2 = partial; 1 = vague; 0 = none.
+- **EX024 — Inventory finding.** What did the inventory reveal? *Rubric:* 3 = TPM and Secure Boot supported; no firmware passwords; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -683,9 +683,9 @@ Hashing detects change but does not say whether the change is harmful.
 
 ### Exercises
 
-- **EX025 — Hash property.** What happens to a digest when a file changes? *Rubric:* 3 = it changes; 2 = partial; 1 = none; 0 = none.
-- **EX026 — Missing files.** How should a missing file be handled? *Rubric:* 3 = report it; 2 = partial; 1 = none; 0 = none.
-- **EX027 — Test.** How did Mateo test his compare function? *Rubric:* 3 = changed one file, expected one mismatch; 2 = partial; 1 = none; 0 = none.
+- **EX025 — Hash property.** What happens to a digest when a file changes? *Rubric:* 3 = it changes; 2 = partial; 1 = vague; 0 = none.
+- **EX026 — Missing files.** How should a missing file be handled? *Rubric:* 3 = report it; 2 = partial; 1 = vague; 0 = none.
+- **EX027 — Test.** How did Mateo test his compare function? *Rubric:* 3 = changed one file, expected one mismatch; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -763,9 +763,9 @@ Security designs can harm the people they protect if privacy and accessibility a
 
 ### Exercises
 
-- **EX028 — Privacy boundary.** What may logs record? *Rubric:* 3 = system events, not content; 2 = partial; 1 = none; 0 = none.
-- **EX029 — Accessibility.** Why include accessibility in requirements? *Rubric:* 3 = patrons use assistive tools; 2 = partial; 1 = none; 0 = none.
-- **EX030 — Screenshot idea.** How did Mateo respond to the screenshot suggestion? *Rubric:* 3 = refused; log installs and restores only; 2 = partial; 1 = none; 0 = none.
+- **EX028 — Privacy boundary.** What may logs record? *Rubric:* 3 = system events, not content; 2 = partial; 1 = vague; 0 = none.
+- **EX029 — Accessibility.** Why include accessibility in requirements? *Rubric:* 3 = patrons use assistive tools; 2 = partial; 1 = vague; 0 = none.
+- **EX030 — Screenshot idea.** How did Mateo respond to the screenshot suggestion? *Rubric:* 3 = refused; log installs and restores only; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -834,8 +834,8 @@ Segmentation reduces exposure but does not protect a PC from threats arriving th
 ### Exercises
 
 - **EX031 — Allowed traffic.** Which traffic should public PCs be allowed? *Rubric:* 3 = internet, printing, management; 2 = two; 1 = one; 0 = none.
-- **EX032 — Management link.** What must protect management traffic? *Rubric:* 3 = authentication and encryption; 2 = partial; 1 = none; 0 = none.
-- **EX033 — Segmentation limit.** What can segmentation not prevent? *Rubric:* 3 = threats through allowed traffic; 2 = partial; 1 = none; 0 = none.
+- **EX032 — Management link.** What must protect management traffic? *Rubric:* 3 = authentication and encryption; 2 = partial; 1 = vague; 0 = none.
+- **EX033 — Segmentation limit.** What can segmentation not prevent? *Rubric:* 3 = threats through allowed traffic; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -905,9 +905,9 @@ Disabling services without checking dependencies can break features; test each c
 
 ### Exercises
 
-- **EX034 — Patron account.** Why should patrons run as standard users? *Rubric:* 3 = cannot change system or install system-wide; 2 = partial; 1 = none; 0 = none.
-- **EX035 — Services.** What does SP 800-123 recommend about services? *Rubric:* 3 = disable unnecessary ones; 2 = partial; 1 = none; 0 = none.
-- **EX036 — Image updates.** Why must the golden image be updated? *Rubric:* 3 = PCs reset to it nightly; 2 = partial; 1 = none; 0 = none.
+- **EX034 — Patron account.** Why should patrons run as standard users? *Rubric:* 3 = cannot change system or install system-wide; 2 = partial; 1 = vague; 0 = none.
+- **EX035 — Services.** What does SP 800-123 recommend about services? *Rubric:* 3 = disable unnecessary ones; 2 = partial; 1 = vague; 0 = none.
+- **EX036 — Image updates.** Why must the golden image be updated? *Rubric:* 3 = PCs reset to it nightly; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -990,8 +990,8 @@ Data designed without questions in mind often cannot answer them later.
 ### Exercises
 
 - **EX037 — Inventory fields.** What fields does the inventory hold? *Rubric:* 3 = asset tag, branch, model, firmware; 2 = three; 1 = two; 0 = none.
-- **EX038 — Key choice.** Why use asset tags as keys? *Rubric:* 3 = unique even when hostnames change; 2 = partial; 1 = none; 0 = none.
-- **EX039 — Retention.** How long are records kept? *Rubric:* 3 = one year; 2 = partial; 1 = none; 0 = none.
+- **EX038 — Key choice.** Why use asset tags as keys? *Rubric:* 3 = unique even when hostnames change; 2 = partial; 1 = vague; 0 = none.
+- **EX039 — Retention.** How long are records kept? *Rubric:* 3 = one year; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1065,9 +1065,9 @@ Without tests tied to requirements, reviews check style rather than function.
 
 ### Exercises
 
-- **EX040 — Version control.** What does version control record? *Rubric:* 3 = every change with author and reason; 2 = partial; 1 = none; 0 = none.
-- **EX041 — Testable requirement.** Give an example of a testable requirement. *Rubric:* 3 = R3 USB storage blocked; 2 = partial; 1 = none; 0 = none.
-- **EX042 — Staged release.** Why release images in stages? *Rubric:* 3 = limit bad image impact; 2 = partial; 1 = none; 0 = none.
+- **EX040 — Version control.** What does version control record? *Rubric:* 3 = every change with author and reason; 2 = partial; 1 = vague; 0 = none.
+- **EX041 — Testable requirement.** Give an example of a testable requirement. *Rubric:* 3 = R3 USB storage blocked; 2 = partial; 1 = vague; 0 = none.
+- **EX042 — Staged release.** Why release images in stages? *Rubric:* 3 = limit bad image impact; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1225,8 +1225,8 @@ Unclear boundaries lead to gaps where nobody owns a component.
 
 ### Exercises
 
-- **EX046 — Boundary.** What lies outside the system boundary? *Rubric:* 3 = patron devices, internet; 2 = partial; 1 = none; 0 = none.
-- **EX047 — Baseline.** What serves as the configuration baseline? *Rubric:* 3 = golden image; 2 = partial; 1 = none; 0 = none.
+- **EX046 — Boundary.** What lies outside the system boundary? *Rubric:* 3 = patron devices, internet; 2 = partial; 1 = vague; 0 = none.
+- **EX047 — Baseline.** What serves as the configuration baseline? *Rubric:* 3 = golden image; 2 = partial; 1 = vague; 0 = none.
 - **EX048 — Verification methods.** Name three verification methods. *Rubric:* 3 = test, inspection, analysis; 2 = two; 1 = one; 0 = none.
 
 ### Synthesis
@@ -1306,8 +1306,8 @@ A control loop that is not monitored can fail without anyone noticing.
 ### Exercises
 
 - **EX049 — Loop steps.** Name the three steps of the restore loop. *Rubric:* 3 = measure, compare, act; 2 = two; 1 = one; 0 = none.
-- **EX050 — Delay effect.** How does delay affect a loop? *Rubric:* 3 = problems grow before correction; 2 = partial; 1 = none; 0 = none.
-- **EX051 — Nested loop.** What does the second loop do? *Rubric:* 3 = alert on failed restore, repair before opening; 2 = partial; 1 = none; 0 = none.
+- **EX050 — Delay effect.** How does delay affect a loop? *Rubric:* 3 = problems grow before correction; 2 = partial; 1 = vague; 0 = none.
+- **EX051 — Nested loop.** What does the second loop do? *Rubric:* 3 = alert on failed restore, repair before opening; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1382,8 +1382,8 @@ Layers that depend on each other can fail together; identify dependencies.
 ### Exercises
 
 - **EX052 — Layer list.** List the layers and one control each. *Rubric:* 3 = firmware, OS, app, data, network, monitoring; 2 = five; 1 = three; 0 = none.
-- **EX053 — Firmware guidance.** Which NIST publications cover firmware? *Rubric:* 3 = SP 800-193, SP 800-147; 2 = partial; 1 = none; 0 = none.
-- **EX054 — Backbone.** Why is restore the backbone? *Rubric:* 3 = corrects other layer failures; 2 = partial; 1 = none; 0 = none.
+- **EX053 — Firmware guidance.** Which NIST publications cover firmware? *Rubric:* 3 = SP 800-193, SP 800-147; 2 = partial; 1 = vague; 0 = none.
+- **EX054 — Backbone.** Why is restore the backbone? *Rubric:* 3 = corrects other layer failures; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1465,9 +1465,9 @@ Encryption without good key management protects little.
 
 ### Exercises
 
-- **EX055 — Staff accounts.** How do staff authenticate? *Rubric:* 3 = named accounts with MFA; 2 = partial; 1 = none; 0 = none.
-- **EX056 — Disk encryption.** What does disk encryption protect against? *Rubric:* 3 = stolen PC or disk; 2 = partial; 1 = none; 0 = none.
-- **EX057 — Unsigned image.** What happened when an unsigned image was offered? *Rubric:* 3 = refused and logged; 2 = partial; 1 = none; 0 = none.
+- **EX055 — Staff accounts.** How do staff authenticate? *Rubric:* 3 = named accounts with MFA; 2 = partial; 1 = vague; 0 = none.
+- **EX056 — Disk encryption.** What does disk encryption protect against? *Rubric:* 3 = stolen PC or disk; 2 = partial; 1 = vague; 0 = none.
+- **EX057 — Unsigned image.** What happened when an unsigned image was offered? *Rubric:* 3 = refused and logged; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1547,7 +1547,7 @@ Objectives that are not measurable cannot be verified.
 
 - **EX058 — Constraints.** List the three constraints. *Rubric:* 3 = reuse hardware, no disruption, accessibility; 2 = two; 1 = one; 0 = none.
 - **EX059 — Objectives.** State the four objectives. *Rubric:* 3 = no data beyond a day, approved software, ready at opening, less manual effort; 2 = three; 1 = two; 0 = none.
-- **EX060 — O4 reconciliation.** How does automation serve both security and effort? *Rubric:* 3 = consistent and less manual; 2 = partial; 1 = none; 0 = none.
+- **EX060 — O4 reconciliation.** How does automation serve both security and effort? *Rubric:* 3 = consistent and less manual; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1625,9 +1625,9 @@ Requirements written only by engineers often miss user needs.
 
 ### Exercises
 
-- **EX061 — Boot requirements.** Which requirements protect boot? *Rubric:* 3 = R1 Secure Boot, R2 firmware password; 2 = partial; 1 = none; 0 = none.
-- **EX062 — O2 requirements.** Which requirements implement O2? *Rubric:* 3 = R5 app control, R3 USB block; 2 = partial; 1 = none; 0 = none.
-- **EX063 — R10 refinement.** How was R10 refined? *Rubric:* 3 = reader available without staff help; 2 = partial; 1 = none; 0 = none.
+- **EX061 — Boot requirements.** Which requirements protect boot? *Rubric:* 3 = R1 Secure Boot, R2 firmware password; 2 = partial; 1 = vague; 0 = none.
+- **EX062 — O2 requirements.** Which requirements implement O2? *Rubric:* 3 = R5 app control, R3 USB block; 2 = partial; 1 = vague; 0 = none.
+- **EX063 — R10 refinement.** How was R10 refined? *Rubric:* 3 = reader available without staff help; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1725,9 +1725,9 @@ Measurements show difference, not cause.
 
 ### Exercises
 
-- **EX064 — Chain order.** Describe the boot chain verification order. *Rubric:* 3 = firmware→bootloader→kernel→initrd→policy; 2 = partial; 1 = none; 0 = none.
-- **EX065 — Lab result.** What did the measurement show? *Rubric:* 3 = 1 of 5 differ: kiosk-policy; 2 = partial; 1 = none; 0 = none.
-- **EX066 — Mismatch cause.** What caused the mismatch? *Rubric:* 3 = PC offline during update; 2 = partial; 1 = none; 0 = none.
+- **EX064 — Chain order.** Describe the boot chain verification order. *Rubric:* 3 = firmware→bootloader→kernel→initrd→policy; 2 = partial; 1 = vague; 0 = none.
+- **EX065 — Lab result.** What did the measurement show? *Rubric:* 3 = 1 of 5 differ: kiosk-policy; 2 = partial; 1 = vague; 0 = none.
+- **EX066 — Mismatch cause.** What caused the mismatch? *Rubric:* 3 = PC offline during update; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1823,8 +1823,8 @@ Scores are judgements; record reasons for each.
 ### Exercises
 
 - **EX067 — Top three.** Name the top three scenarios. *Rubric:* 3 = software install, files left, USB malware; 2 = two; 1 = one; 0 = none.
-- **EX068 — Silent failure.** Why does silent restore failure matter despite rank? *Rubric:* 3 = impact 5; 2 = partial; 1 = none; 0 = none.
-- **EX069 — Mapping.** Which requirement addresses USB malware? *Rubric:* 3 = R3; 2 = partial; 1 = none; 0 = none.
+- **EX068 — Silent failure.** Why does silent restore failure matter despite rank? *Rubric:* 3 = impact 5; 2 = partial; 1 = vague; 0 = none.
+- **EX069 — Mapping.** Which requirement addresses USB malware? *Rubric:* 3 = R3; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1917,9 +1917,9 @@ Copying benchmark settings without testing can break needed functions.
 
 ### Exercises
 
-- **EX070 — Lab gaps.** Which two gaps were found? *Rubric:* 3 = firmware password, app control audit; 2 = partial; 1 = none; 0 = none.
+- **EX070 — Lab gaps.** Which two gaps were found? *Rubric:* 3 = firmware password, app control audit; 2 = partial; 1 = vague; 0 = none.
 - **EX071 — Sources.** Name three sources for settings. *Rubric:* 3 = CIS, Microsoft baselines, STIGs; 2 = two; 1 = one; 0 = none.
-- **EX072 — Audit first.** Why keep application control in audit? *Rubric:* 3 = avoid blocking needed tools; 2 = partial; 1 = none; 0 = none.
+- **EX072 — Audit first.** Why keep application control in audit? *Rubric:* 3 = avoid blocking needed tools; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -1997,9 +1997,9 @@ Defending a design instead of listening wastes the studio.
 
 ### Exercises
 
-- **EX073 — Guest questions.** What two questions did guests ask? *Rubric:* 3 = saving work; server down; 2 = partial; 1 = none; 0 = none.
-- **EX074 — Server down.** How does the design handle server outage? *Rubric:* 3 = local protected copy; 2 = partial; 1 = none; 0 = none.
-- **EX075 — Read-only USB.** How was the read-only USB idea handled? *Rubric:* 3 = recorded as option to evaluate; 2 = partial; 1 = none; 0 = none.
+- **EX073 — Guest questions.** What two questions did guests ask? *Rubric:* 3 = saving work; server down; 2 = partial; 1 = vague; 0 = none.
+- **EX074 — Server down.** How does the design handle server outage? *Rubric:* 3 = local protected copy; 2 = partial; 1 = vague; 0 = none.
+- **EX075 — Read-only USB.** How was the read-only USB idea handled? *Rubric:* 3 = recorded as option to evaluate; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2087,7 +2087,7 @@ Choosing on a single criterion hides costs elsewhere.
 
 - **EX076 — Alternatives.** Name the three alternatives. *Rubric:* 3 = full reimage, patron restore, thin clients; 2 = two; 1 = one; 0 = none.
 - **EX077 — Criteria.** List the selection criteria. *Rubric:* 3 = security, time, network, cost, accessibility; 2 = four; 1 = two; 0 = none.
-- **EX078 — Choice.** What was chosen? *Rubric:* 3 = B plus weekly full reimage; 2 = partial; 1 = none; 0 = none.
+- **EX078 — Choice.** What was chosen? *Rubric:* 3 = B plus weekly full reimage; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2177,9 +2177,9 @@ Controls without defined failure behaviour fail open by accident.
 
 ### Exercises
 
-- **EX079 — Restore schedule.** When does restore run and what follows? *Rubric:* 3 = 22:00; verify digests; report; 2 = partial; 1 = none; 0 = none.
-- **EX080 — Failure behaviour.** What happens if restore fails? *Rubric:* 3 = out of service, alert, no session; 2 = partial; 1 = none; 0 = none.
-- **EX081 — Dependencies.** What does restore depend on? *Rubric:* 3 = boot integrity; 2 = partial; 1 = none; 0 = none.
+- **EX079 — Restore schedule.** When does restore run and what follows? *Rubric:* 3 = 22:00; verify digests; report; 2 = partial; 1 = vague; 0 = none.
+- **EX080 — Failure behaviour.** What happens if restore fails? *Rubric:* 3 = out of service, alert, no session; 2 = partial; 1 = vague; 0 = none.
+- **EX081 — Dependencies.** What does restore depend on? *Rubric:* 3 = boot integrity; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2283,9 +2283,9 @@ Restore scope must include every location patrons can write.
 
 ### Exercises
 
-- **EX082 — Lab changes.** What changed during the test session? *Rubric:* 3 = browser config, CV added; 2 = partial; 1 = none; 0 = none.
-- **EX083 — Post-restore.** How many differences remained after restore? *Rubric:* 3 = 0; 2 = partial; 1 = none; 0 = none.
-- **EX084 — Temp folder.** What did the temp folder test reveal? *Rubric:* 3 = files survived outside scope; 2 = partial; 1 = none; 0 = none.
+- **EX082 — Lab changes.** What changed during the test session? *Rubric:* 3 = browser config, CV added; 2 = partial; 1 = vague; 0 = none.
+- **EX083 — Post-restore.** How many differences remained after restore? *Rubric:* 3 = 0; 2 = partial; 1 = vague; 0 = none.
+- **EX084 — Temp folder.** What did the temp folder test reveal? *Rubric:* 3 = files survived outside scope; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2392,8 +2392,8 @@ Medians hide outliers; report maximum and spread too.
 ### Exercises
 
 - **EX085 — Lab medians.** Give the branch medians. *Rubric:* 3 = 6.3, 9.2, 5.3; 2 = two; 1 = one; 0 = none.
-- **EX086 — Window.** How many restores fit the window? *Rubric:* 3 = 21/21; 2 = partial; 1 = none; 0 = none.
-- **EX087 — Eastgate cause.** Why is Eastgate slower? *Rubric:* 3 = older disks, congested link; 2 = partial; 1 = none; 0 = none.
+- **EX086 — Window.** How many restores fit the window? *Rubric:* 3 = 21/21; 2 = partial; 1 = vague; 0 = none.
+- **EX087 — Eastgate cause.** Why is Eastgate slower? *Rubric:* 3 = older disks, congested link; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2485,9 +2485,9 @@ Verification by the designer alone can miss errors.
 
 ### Exercises
 
-- **EX088 — R3 test.** How was R3 verified? *Rubric:* 3 = insert synthetic USB, confirm block; 2 = partial; 1 = none; 0 = none.
-- **EX089 — Result states.** What states can a verification have? *Rubric:* 3 = pass, fail, untested; 2 = partial; 1 = none; 0 = none.
-- **EX090 — R7 finding.** Why did R7 fail? *Rubric:* 3 = firewall rule; 2 = partial; 1 = none; 0 = none.
+- **EX088 — R3 test.** How was R3 verified? *Rubric:* 3 = insert synthetic USB, confirm block; 2 = partial; 1 = vague; 0 = none.
+- **EX089 — Result states.** What states can a verification have? *Rubric:* 3 = pass, fail, untested; 2 = partial; 1 = vague; 0 = none.
+- **EX090 — R7 finding.** Why did R7 fail? *Rubric:* 3 = firewall rule; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2586,8 +2586,8 @@ Audit periods must be long enough to see weekly patterns.
 ### Exercises
 
 - **EX091 — Lab counts.** How many executions would be blocked and which? *Rubric:* 3 = 23: game 6, toolbar 3, reader 14; 2 = two; 1 = one; 0 = none.
-- **EX092 — Reader fix.** How was the reader added? *Rubric:* 3 = by publisher signature; 2 = partial; 1 = none; 0 = none.
-- **EX093 — Audit value.** What did the audit week prevent? *Rubric:* 3 = blocking accessibility users; 2 = partial; 1 = none; 0 = none.
+- **EX092 — Reader fix.** How was the reader added? *Rubric:* 3 = by publisher signature; 2 = partial; 1 = vague; 0 = none.
+- **EX093 — Audit value.** What did the audit week prevent? *Rubric:* 3 = blocking accessibility users; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2691,9 +2691,9 @@ Availability figures with four decimals can look more precise than data support.
 
 ### Exercises
 
-- **EX094 — Downtime.** Give downtime before and after. *Rubric:* 3 = 756 vs 21 PC-hours; 2 = partial; 1 = none; 0 = none.
-- **EX095 — Availability.** Give availability before and after. *Rubric:* 3 = 0.9965 vs 0.9999; 2 = partial; 1 = none; 0 = none.
-- **EX096 — MTBF.** What is MTBF per PC? *Rubric:* 3 = ~5,143 hours; 2 = partial; 1 = none; 0 = none.
+- **EX094 — Downtime.** Give downtime before and after. *Rubric:* 3 = 756 vs 21 PC-hours; 2 = partial; 1 = vague; 0 = none.
+- **EX095 — Availability.** Give availability before and after. *Rubric:* 3 = 0.9965 vs 0.9999; 2 = partial; 1 = vague; 0 = none.
+- **EX096 — MTBF.** What is MTBF per PC? *Rubric:* 3 = ~5,143 hours; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2783,9 +2783,9 @@ Recovery that depends on one person is fragile.
 
 ### Exercises
 
-- **EX097 — Bad image.** How is a bad image handled? *Rubric:* 3 = staged release, rollback to previous signed; 2 = partial; 1 = none; 0 = none.
-- **EX098 — Server outage.** How long can PCs work without the server? *Rubric:* 3 = up to a week; 2 = partial; 1 = none; 0 = none.
-- **EX099 — Drill finding.** What did the drill reveal? *Rubric:* 3 = key only with Marta; 2 = partial; 1 = none; 0 = none.
+- **EX097 — Bad image.** How is a bad image handled? *Rubric:* 3 = staged release, rollback to previous signed; 2 = partial; 1 = vague; 0 = none.
+- **EX098 — Server outage.** How long can PCs work without the server? *Rubric:* 3 = up to a week; 2 = partial; 1 = vague; 0 = none.
+- **EX099 — Drill finding.** What did the drill reveal? *Rubric:* 3 = key only with Marta; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2876,8 +2876,8 @@ Integration problems often appear only end to end.
 ### Exercises
 
 - **EX100 — Services.** Which services must integrate? *Rubric:* 3 = booking, print, catalogue; 2 = two; 1 = one; 0 = none.
-- **EX101 — Print issue.** Why did printing fail after restore? *Rubric:* 3 = mapping in patron area; 2 = partial; 1 = none; 0 = none.
-- **EX102 — Signature rules.** Why did the catalogue update work without changes? *Rubric:* 3 = publisher signature rule; 2 = partial; 1 = none; 0 = none.
+- **EX101 — Print issue.** Why did printing fail after restore? *Rubric:* 3 = mapping in patron area; 2 = partial; 1 = vague; 0 = none.
+- **EX102 — Signature rules.** Why did the catalogue update work without changes? *Rubric:* 3 = publisher signature rule; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -2975,9 +2975,9 @@ Improvements without priority compete for limited time.
 
 ### Exercises
 
-- **EX103 — Maintenance.** How much time does allowlist maintenance take? *Rubric:* 3 = about an hour a week; 2 = partial; 1 = none; 0 = none.
-- **EX104 — Requests.** How can librarians request software? *Rubric:* 3 = form reviewed weekly; 2 = partial; 1 = none; 0 = none.
-- **EX105 — USB decision.** Why keep USB storage blocked? *Rubric:* 3 = malware scenario 12; alternatives offered; 2 = partial; 1 = none; 0 = none.
+- **EX103 — Maintenance.** How much time does allowlist maintenance take? *Rubric:* 3 = about an hour a week; 2 = partial; 1 = vague; 0 = none.
+- **EX104 — Requests.** How can librarians request software? *Rubric:* 3 = form reviewed weekly; 2 = partial; 1 = vague; 0 = none.
+- **EX105 — USB decision.** Why keep USB storage blocked? *Rubric:* 3 = malware scenario 12; alternatives offered; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3075,9 +3075,9 @@ Scaling estimates must be checked after growth.
 
 ### Exercises
 
-- **EX106 — Reimage traffic.** How is reimage traffic managed? *Rubric:* 3 = staggered by branch; 2 = partial; 1 = none; 0 = none.
-- **EX107 — Capacity.** What is current peak server use and after growth? *Rubric:* 3 = 40% → ~48%; 2 = partial; 1 = none; 0 = none.
-- **EX108 — Bottleneck.** What is the main bottleneck? *Rubric:* 3 = Eastgate link; 2 = partial; 1 = none; 0 = none.
+- **EX106 — Reimage traffic.** How is reimage traffic managed? *Rubric:* 3 = staggered by branch; 2 = partial; 1 = vague; 0 = none.
+- **EX107 — Capacity.** What is current peak server use and after growth? *Rubric:* 3 = 40% → ~48%; 2 = partial; 1 = vague; 0 = none.
+- **EX108 — Bottleneck.** What is the main bottleneck? *Rubric:* 3 = Eastgate link; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3175,9 +3175,9 @@ Operations without runbooks depend on memory.
 
 ### Exercises
 
-- **EX109 — Morning task.** What does the technician do each morning? *Rubric:* 3 = check restore report, repair failures; 2 = partial; 1 = none; 0 = none.
-- **EX110 — Patching flow.** How are monthly updates released? *Rubric:* 3 = lab, one branch, all; 2 = partial; 1 = none; 0 = none.
-- **EX111 — First night.** What happened on the first night? *Rubric:* 3 = two failures, fixed by 08:30; 2 = partial; 1 = none; 0 = none.
+- **EX109 — Morning task.** What does the technician do each morning? *Rubric:* 3 = check restore report, repair failures; 2 = partial; 1 = vague; 0 = none.
+- **EX110 — Patching flow.** How are monthly updates released? *Rubric:* 3 = lab, one branch, all; 2 = partial; 1 = vague; 0 = none.
+- **EX111 — First night.** What happened on the first night? *Rubric:* 3 = two failures, fixed by 08:30; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3286,9 +3286,9 @@ Passing tests do not guarantee users are satisfied; ask them.
 
 ### Exercises
 
-- **EX112 — Lab status.** Give the traceability counts. *Rubric:* 3 = 8 pass, 1 fail, 1 untested; 2 = partial; 1 = none; 0 = none.
-- **EX113 — Failing items.** Which requirements failed or were untested? *Rubric:* 3 = R7, R9; 2 = partial; 1 = none; 0 = none.
-- **EX114 — User evidence.** What did librarians report? *Rubric:* 3 = fewer complaints, no leftover files; 2 = partial; 1 = none; 0 = none.
+- **EX112 — Lab status.** Give the traceability counts. *Rubric:* 3 = 8 pass, 1 fail, 1 untested; 2 = partial; 1 = vague; 0 = none.
+- **EX113 — Failing items.** Which requirements failed or were untested? *Rubric:* 3 = R7, R9; 2 = partial; 1 = vague; 0 = none.
+- **EX114 — User evidence.** What did librarians report? *Rubric:* 3 = fewer complaints, no leftover files; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3391,8 +3391,8 @@ Systems maintained by one expert become fragile when they leave.
 ### Exercises
 
 - **EX115 — Repository.** What does the repository hold? *Rubric:* 3 = image definitions, scripts, runbooks, decisions; 2 = three; 1 = two; 0 = none.
-- **EX116 — Staff resilience.** How is staff change handled? *Rubric:* 3 = two people per task, tested docs; 2 = partial; 1 = none; 0 = none.
-- **EX117 — Review.** How often is the design reviewed? *Rubric:* 3 = annually; 2 = partial; 1 = none; 0 = none.
+- **EX116 — Staff resilience.** How is staff change handled? *Rubric:* 3 = two people per task, tested docs; 2 = partial; 1 = vague; 0 = none.
+- **EX117 — Review.** How often is the design reviewed? *Rubric:* 3 = annually; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3502,9 +3502,9 @@ Resilience features that are never tested may not work when needed.
 
 ### Exercises
 
-- **EX118 — Rollback time.** How long did rollback take? *Rubric:* 3 = ten minutes; 2 = partial; 1 = none; 0 = none.
-- **EX119 — Outage test.** How long was the server disconnected? *Rubric:* 3 = three days; 2 = partial; 1 = none; 0 = none.
-- **EX120 — Firmware finding.** What did the firmware test reveal? *Rubric:* 3 = recovery needs USB stick; stored at branches; 2 = partial; 1 = none; 0 = none.
+- **EX118 — Rollback time.** How long did rollback take? *Rubric:* 3 = ten minutes; 2 = partial; 1 = vague; 0 = none.
+- **EX119 — Outage test.** How long was the server disconnected? *Rubric:* 3 = three days; 2 = partial; 1 = vague; 0 = none.
+- **EX120 — Firmware finding.** What did the firmware test reveal? *Rubric:* 3 = recovery needs USB stick; stored at branches; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3618,9 +3618,9 @@ Optimisation that skips verification can silently weaken security.
 
 ### Exercises
 
-- **EX121 — Eastgate.** How much did new disks improve Eastgate? *Rubric:* 3 = 9.2 → ~6 minutes; 2 = partial; 1 = none; 0 = none.
-- **EX122 — Traffic.** How much did differential reimaging cut traffic? *Rubric:* 3 = about two thirds; 2 = partial; 1 = none; 0 = none.
-- **EX123 — Catch.** What did re-verification catch? *Rubric:* 3 = missed boot file; 2 = partial; 1 = none; 0 = none.
+- **EX121 — Eastgate.** How much did new disks improve Eastgate? *Rubric:* 3 = 9.2 → ~6 minutes; 2 = partial; 1 = vague; 0 = none.
+- **EX122 — Traffic.** How much did differential reimaging cut traffic? *Rubric:* 3 = about two thirds; 2 = partial; 1 = vague; 0 = none.
+- **EX123 — Catch.** What did re-verification catch? *Rubric:* 3 = missed boot file; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3722,9 +3722,9 @@ Before-and-after studies cannot exclude other causes.
 
 ### Exercises
 
-- **EX124 — Question.** State the research question. *Rubric:* 3 = does nightly restore reduce help-desk calls; 2 = partial; 1 = none; 0 = none.
-- **EX125 — Findings.** What changed in calls? *Rubric:* 3 = broken PCs halved; saving work rose; 2 = partial; 1 = none; 0 = none.
-- **EX126 — Forrest link.** How does Forrest et al. (1996) relate? *Rubric:* 3 = fixed image makes normal easier to define; 2 = partial; 1 = none; 0 = none.
+- **EX124 — Question.** State the research question. *Rubric:* 3 = does nightly restore reduce help-desk calls; 2 = partial; 1 = vague; 0 = none.
+- **EX125 — Findings.** What changed in calls? *Rubric:* 3 = broken PCs halved; saving work rose; 2 = partial; 1 = vague; 0 = none.
+- **EX126 — Forrest link.** How does Forrest et al. (1996) relate? *Rubric:* 3 = fixed image makes normal easier to define; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3830,9 +3830,9 @@ Ignoring local timing can damage trust even if the change is good.
 
 ### Exercises
 
-- **EX127 — Governance.** Which governance applied? *Rubric:* 3 = change board, privacy policy; 2 = partial; 1 = none; 0 = none.
-- **EX128 — Conduct.** What did Mateo avoid? *Rubric:* 3 = patron accounts, unapproved tasks; 2 = partial; 1 = none; 0 = none.
-- **EX129 — Delay.** How was the exam-period request handled? *Rubric:* 3 = branch went last; 2 = partial; 1 = none; 0 = none.
+- **EX127 — Governance.** Which governance applied? *Rubric:* 3 = change board, privacy policy; 2 = partial; 1 = vague; 0 = none.
+- **EX128 — Conduct.** What did Mateo avoid? *Rubric:* 3 = patron accounts, unapproved tasks; 2 = partial; 1 = vague; 0 = none.
+- **EX129 — Delay.** How was the exam-period request handled? *Rubric:* 3 = branch went last; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -3952,7 +3952,7 @@ Leaving the riskiest task last risks failure at the end.
 
 - **EX130 — Remaining tasks.** What tasks remained? *Rubric:* 3 = dashboard, firmware process, documentation; 2 = two; 1 = one; 0 = none.
 - **EX131 — Criteria.** State the acceptance criteria. *Rubric:* 3 = 10 passing, 30 nights, docs tested; 2 = two; 1 = one; 0 = none.
-- **EX132 — Ordering.** Why schedule firmware first? *Rubric:* 3 = riskiest; surface problems early; 2 = partial; 1 = none; 0 = none.
+- **EX132 — Ordering.** Why schedule firmware first? *Rubric:* 3 = riskiest; surface problems early; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -4062,9 +4062,9 @@ Reviews only help if findings are acted on.
 
 ### Exercises
 
-- **EX133 — Weak points.** What weaknesses did the review find? *Rubric:* 3 = firmware monitoring, key storage; 2 = partial; 1 = none; 0 = none.
-- **EX134 — Key response.** How were signing keys improved? *Rubric:* 3 = HSM service; 2 = partial; 1 = none; 0 = none.
-- **EX135 — Downgrade check.** How is a firmware downgrade noticed? *Rubric:* 3 = nightly version comparison; 2 = partial; 1 = none; 0 = none.
+- **EX133 — Weak points.** What weaknesses did the review find? *Rubric:* 3 = firmware monitoring, key storage; 2 = partial; 1 = vague; 0 = none.
+- **EX134 — Key response.** How were signing keys improved? *Rubric:* 3 = HSM service; 2 = partial; 1 = vague; 0 = none.
+- **EX135 — Downgrade check.** How is a firmware downgrade noticed? *Rubric:* 3 = nightly version comparison; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -4170,9 +4170,9 @@ Acceptance criteria should define how to treat external events.
 
 ### Exercises
 
-- **EX136 — Acceptance results.** Were the criteria met? *Rubric:* 3 = yes: 10 pass, 30 nights, docs; 2 = partial; 1 = none; 0 = none.
-- **EX137 — Residual risks.** Name the residual risks. *Rubric:* 3 = older hardware, vendor firmware; 2 = partial; 1 = none; 0 = none.
-- **EX138 — Power cut.** How was the power cut treated? *Rubric:* 3 = documented external event; 2 = partial; 1 = none; 0 = none.
+- **EX136 — Acceptance results.** Were the criteria met? *Rubric:* 3 = yes: 10 pass, 30 nights, docs; 2 = partial; 1 = vague; 0 = none.
+- **EX137 — Residual risks.** Name the residual risks. *Rubric:* 3 = older hardware, vendor firmware; 2 = partial; 1 = vague; 0 = none.
+- **EX138 — Power cut.** How was the power cut treated? *Rubric:* 3 = documented external event; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -4282,9 +4282,9 @@ Trials outside opening hours protect patrons while testing realistically.
 
 ### Exercises
 
-- **EX139 — Detection.** How was the bad image detected? *Rubric:* 3 = digest failures, five-failure alert; 2 = partial; 1 = none; 0 = none.
-- **EX140 — Recovery time.** How long did branch rollback take? *Rubric:* 3 = 40 minutes; 2 = partial; 1 = none; 0 = none.
-- **EX141 — Lesson.** What did the trial reveal? *Rubric:* 3 = missing printer step; 2 = partial; 1 = none; 0 = none.
+- **EX139 — Detection.** How was the bad image detected? *Rubric:* 3 = digest failures, five-failure alert; 2 = partial; 1 = vague; 0 = none.
+- **EX140 — Recovery time.** How long did branch rollback take? *Rubric:* 3 = 40 minutes; 2 = partial; 1 = vague; 0 = none.
+- **EX141 — Lesson.** What did the trial reveal? *Rubric:* 3 = missing printer step; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -4399,8 +4399,8 @@ Claims without evidence weaken the thesis.
 ### Exercises
 
 - **EX142 — Contents.** List four dossier items. *Rubric:* 3 = requirements, designs, tests, measurements, reviews, trials, ops; 2 = four; 1 = two; 0 = none.
-- **EX143 — Privacy.** How is privacy protected? *Rubric:* 3 = no patron data, aggregated; 2 = partial; 1 = none; 0 = none.
-- **EX144 — Integrity.** How can assessors confirm files are unchanged? *Rubric:* 3 = digests; 2 = partial; 1 = none; 0 = none.
+- **EX143 — Privacy.** How is privacy protected? *Rubric:* 3 = no patron data, aggregated; 2 = partial; 1 = vague; 0 = none.
+- **EX144 — Integrity.** How can assessors confirm files are unchanged? *Rubric:* 3 = digests; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -4518,9 +4518,9 @@ Mixing estimates and measurements misleads readers.
 
 ### Exercises
 
-- **EX145 — Structure.** Give the thesis structure. *Rubric:* 3 = problem to lessons sequence; 2 = partial; 1 = none; 0 = none.
+- **EX145 — Structure.** Give the thesis structure. *Rubric:* 3 = problem to lessons sequence; 2 = partial; 1 = vague; 0 = none.
 - **EX146 — Results.** State two key results. *Rubric:* 3 = exposure estimate, availability, calls halved; 2 = two; 1 = one; 0 = none.
-- **EX147 — Labelling.** How were figures labelled? *Rubric:* 3 = estimate vs measurement; 2 = partial; 1 = none; 0 = none.
+- **EX147 — Labelling.** How were figures labelled? *Rubric:* 3 = estimate vs measurement; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 
@@ -4627,8 +4627,8 @@ Reflection should name specific changes.
 ### Exercises
 
 - **EX148 — Examiner topics.** Which topics did examiners raise? *Rubric:* 3 = privacy, accessibility, costs; 2 = two; 1 = one; 0 = none.
-- **EX149 — Accessibility answer.** How was accessibility protected? *Rubric:* 3 = audit-first allowlist; 2 = partial; 1 = none; 0 = none.
-- **EX150 — Change.** What would Mateo change? *Rubric:* 3 = involve librarians from week one; 2 = partial; 1 = none; 0 = none.
+- **EX149 — Accessibility answer.** How was accessibility protected? *Rubric:* 3 = audit-first allowlist; 2 = partial; 1 = vague; 0 = none.
+- **EX150 — Change.** What would Mateo change? *Rubric:* 3 = involve librarians from week one; 2 = partial; 1 = vague; 0 = none.
 
 ### Synthesis
 

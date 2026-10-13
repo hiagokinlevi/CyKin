@@ -380,7 +380,7 @@ A ETSI EN 303 645 tem como alvo a IoT de consumo; para controladores prediais de
 ### Exercícios
 
 - **EX021 — Por que as senhas de integradores importam.** Explique o risco de uma senha de integrador reutilizada em muitos hospitais. *Rubrica:* 3 = um vazamento ou um ex-funcionário abre todas as instalações; 2 = parcial; 1 = vago; 0 = nenhum.
-- **EX022 — Mudanças rastreáveis.** Como as contas nominais do BMS ajudam depois de uma mudança inesperada de valor de referência? *Rubrica:* 3 = o registro de tendências/auditoria mostra quem a fez; apoia a investigação; 2 = parcial; 1 = nenhum; 0 = nenhum.
+- **EX022 — Mudanças rastreáveis.** Como as contas nominais do BMS ajudam depois de uma mudança inesperada de valor de referência? *Rubrica:* 3 = o registro de tendências/auditoria mostra quem a fez; apoia a investigação; 2 = parcial; 1 = vago; 0 = nenhum.
 - **EX023 — Perguntas contratuais.** Transforme três provisões da ETSI EN 303 645 em perguntas para o contrato de compra. *Rubrica:* 3 = três perguntas precisas (senhas padrão, divulgação, atualizações/criptografia); 2 = duas; 1 = uma; 0 = nenhum.
 - **EX024 — Saída de um funcionário do empreiteiro.** Um engenheiro do empreiteiro que conhecia senhas do Millbrook sai da empresa. O que acontece? *Rubrica:* 3 = trocar no cofre as senhas afetadas, revisar os acessos, registrar; 2 = parte; 1 = nada; 0 = nenhum.
 - **EX025 — A norma certa.** Que norma se encaixa melhor do que a ETSI EN 303 645 num controlador industrial de BMS, e por quê? *Rubrica:* 3 = IEC 62443-4-2; requisitos de componentes para automação industrial; 2 = só o nome; 1 = errada; 0 = nenhum.
@@ -692,7 +692,7 @@ Os registros de tendências podem ter amostragem esparsa e perder mudanças curt
 - **EX041 — Lógica da janela.** Por que a mudança das 09:00 não é sinalizada? *Rubrica:* 3 = 09:00 está dentro da janela das 08:00 às 10:00; 2 = "permitida"; 1 = errado; 0 = nenhum.
 - **EX042 — Tendência modificada.** Se a janela fosse das 02:00 às 04:00, o que o laboratório imprimiria? *Rubrica:* 3 = 03:00 "in window", 09:00 "OUTSIDE WINDOW - review"; 2 = um; 1 = igual; 0 = nenhum.
 - **EX043 — Três fontes.** Quais três registros Aisha combina com a tendência? *Rubrica:* 3 = auditoria do BMS, gateway, firewall; 2 = dois; 1 = um; 0 = nenhum.
-- **EX044 — Impacto clínico.** Que impacto clínico um valor de referência de 26 °C num centro cirúrgico poderia ter durante a noite? *Rubrica:* 3 = sala inutilizável/fora da especificação no início da lista, atraso ou preocupação de controle de infecção; 2 = parcial; 1 = nenhum; 0 = nenhum.
+- **EX044 — Impacto clínico.** Que impacto clínico um valor de referência de 26 °C num centro cirúrgico poderia ter durante a noite? *Rubrica:* 3 = sala inutilizável/fora da especificação no início da lista, atraso ou preocupação de controle de infecção; 2 = parcial; 1 = vago; 0 = nenhum.
 - **EX045 — Melhoria do processo.** Que mudança evita a próxima mudança fora da janela sem explicação? *Rubrica:* 3 = registro obrigatório no livro do turno, alarme para mudança fora da janela; 2 = um; 1 = culpar; 0 = nenhum.
 
 ### Síntese

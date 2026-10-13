@@ -71,7 +71,7 @@ Descrever os problemas em termos técnicos, e não pelo efeito no negócio, faz 
 
 - **EX001 — Formato do curso.** Que tipo de curso Lucía está fazendo? *Rubrica:* 3 = uma pós-graduação para profissionais em tempo parcial;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
 - **EX002 — Volume de remessas.** Quantas remessas a Corran movimenta por dia, aproximadamente? *Rubrica:* 3 = cerca de doze mil;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX003 — Divergência do relatório.** O que há de errado com as definições do relatório ao conselho? *Rubrica:* 3 = diferem das definições dos contratos com os clientes;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX003 — Divergência do relatório.** O que há de errado com as definições do relatório ao conselho? *Rubrica:* 3 = diferem das definições dos contratos com os clientes;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX004 — Risco de quem está dentro.** Que risco corre quem pesquisa a própria organização? *Rubrica:* 3 = não ver o que quem está de fora vê e hesitar em questionar;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
 - **EX005 — Formulação dos problemas.** Como os problemas devem ser descritos? *Rubrica:* 3 = pelo efeito no negócio;; 2 = correto;; 1 = em termos técnicos;; 0 = nenhuma.
 
@@ -154,9 +154,9 @@ Atribuir a titularidade a quem mais usa os dados ignora quem controla sua criaç
 ### Exercícios
 
 - **EX011 — Dono do rastreamento.** Quem é dono dos eventos de rastreamento? *Rubrica:* 3 = o diretor de operações;; 2 = correto;; 1 = outro;; 0 = nenhuma.
-- **EX012 — Distinção dos parceiros.** O que fica com as transportadoras? *Rubrica:* 3 = a titularidade dos dados de origem;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX013 — Lacuna nas declarações.** Que lacuna as declarações revelaram? *Rubrica:* 3 = ninguém tinha autoridade para aprovar novos usos de dados;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX014 — Pergunta de teste.** Que pergunta de teste Lucía usou? *Rubrica:* 3 = se vendas pode compartilhar históricos de rastreamento com uma seguradora;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX012 — Distinção dos parceiros.** O que fica com as transportadoras? *Rubrica:* 3 = a titularidade dos dados de origem;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX013 — Lacuna nas declarações.** Que lacuna as declarações revelaram? *Rubrica:* 3 = ninguém tinha autoridade para aprovar novos usos de dados;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX014 — Pergunta de teste.** Que pergunta de teste Lucía usou? *Rubrica:* 3 = se vendas pode compartilhar históricos de rastreamento com uma seguradora;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX015 — Assinatura.** Quem assina as declarações de titularidade? *Rubrica:* 3 = os donos;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 
 <a id="ch-04"></a>
@@ -197,8 +197,8 @@ Medir a qualidade sem corrigir as causas apenas documenta o declínio.
 
 - **EX016 — Conteúdo do comprovante.** O que o comprovante de entrega precisa incluir? *Rubrica:* 3 = o horário e uma assinatura ou fotografia;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
 - **EX017 — Falha mais cara.** Que falha custava mais? *Rubrica:* 3 = a falta de comprovante de entrega;; 2 = correto;; 1 = outra;; 0 = nenhuma.
-- **EX018 — Causa na transportadora.** Por que faltavam os comprovantes de uma transportadora? *Rubrica:* 3 = anotações em papel digitalizadas dias depois;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX019 — Correção dos dispositivos.** Como os dispositivos da Corran foram corrigidos? *Rubrica:* 3 = guardando os comprovantes sem conexão e enviando-os depois;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX018 — Causa na transportadora.** Por que faltavam os comprovantes de uma transportadora? *Rubrica:* 3 = anotações em papel digitalizadas dias depois;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX019 — Correção dos dispositivos.** Como os dispositivos da Corran foram corrigidos? *Rubrica:* 3 = guardando os comprovantes sem conexão e enviando-os depois;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX020 — Valor do ciclo.** Onde está o valor do ciclo da qualidade? *Rubrica:* 3 = na etapa de correção;; 2 = correto;; 1 = na medição;; 0 = nenhuma.
 
 <a id="ch-05"></a>
@@ -257,11 +257,11 @@ Comparar parceiros sem considerar suas condições pode ser injusto.
 
 ### Exercícios
 
-- **EX021 — Definição de pontualidade.** Como Lucía definiu a pontualidade? *Rubrica:* 3 = o atraso entre o evento e seu recebimento pela Corran;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX021 — Definição de pontualidade.** Como Lucía definiu a pontualidade? *Rubrica:* 3 = o atraso entre o evento e seu recebimento pela Corran;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX022 — Parcela da Transportadora C.** Que parcela dos eventos da Transportadora C chegou em até quinze minutos? *Rubrica:* 3 = 51,0%;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX023 — Fator de justiça.** O que pode explicar em parte os atrasos da Transportadora C? *Rubrica:* 3 = mais rotas rurais, com sinal mais fraco;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX024 — Causa real.** Que causa a Transportadora C revelou? *Rubrica:* 3 = o envio dos eventos em lotes a cada meia hora;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX025 — Mudança nos acordos.** O que foi acrescentado aos acordos em renovação? *Rubrica:* 3 = metas de pontualidade;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX023 — Fator de justiça.** O que pode explicar em parte os atrasos da Transportadora C? *Rubrica:* 3 = mais rotas rurais, com sinal mais fraco;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX024 — Causa real.** Que causa a Transportadora C revelou? *Rubrica:* 3 = o envio dos eventos em lotes a cada meia hora;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX025 — Mudança nos acordos.** O que foi acrescentado aos acordos em renovação? *Rubrica:* 3 = metas de pontualidade;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-06"></a>
 
@@ -299,11 +299,11 @@ Excluir registros com eventos ausentes infla os números de desempenho.
 
 ### Exercícios
 
-- **EX026 — Definição dos contratos.** Como os contratos definem no prazo? *Rubrica:* 3 = dentro da janela de entrega prometida;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX027 — Constatação da exclusão.** O que a linhagem revelou? *Rubrica:* 3 = remessas sem evento de entrega eram excluídas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX026 — Definição dos contratos.** Como os contratos definem no prazo? *Rubrica:* 3 = dentro da janela de entrega prometida;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX027 — Constatação da exclusão.** O que a linhagem revelou? *Rubrica:* 3 = remessas sem evento de entrega eram excluídas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX028 — Plataforma do catálogo.** Onde Lucía montou as entradas de catálogo? *Rubrica:* 3 = na wiki da empresa;; 2 = correto;; 1 = outra;; 0 = nenhuma.
 - **EX029 — Período de transição.** Por quanto tempo os dois números foram mostrados? *Rubrica:* 3 = três meses;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX030 — Nome da medida antiga.** Como a medida antiga foi renomeada? *Rubrica:* 3 = entrega no mesmo dia;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX030 — Nome da medida antiga.** Como a medida antiga foi renomeada? *Rubrica:* 3 = entrega no mesmo dia;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-07"></a>
 
@@ -368,10 +368,10 @@ Limpezas sem mudança de processo se degradam depressa.
 ### Exercícios
 
 - **EX031 — Parcela inativa.** Que parcela das contas estava sem uso há mais de noventa dias? *Rubrica:* 3 = 12,5% (30 de 240);; 2 = correto;; 1 = parcial;; 0 = nenhuma.
-- **EX032 — Maior prioridade.** Que contas tinham a maior prioridade? *Rubrica:* 3 = as duas inativas e não aprovadas ao mesmo tempo;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX033 — Tratamento das licenças longas.** Como as contas de pessoas em licença longa foram tratadas? *Rubrica:* 3 = mantidas com uma anotação e uma data de expiração;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX034 — Mudança na solicitação.** Como a TI mudou o processo de solicitação? *Rubrica:* 3 = novos acessos exigem aprovação registrada do dono;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX035 — Controle dos desligamentos.** Como são tratadas as contas de quem sai? *Rubrica:* 3 = desativadas pelo processo de desligamento do RH;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX032 — Maior prioridade.** Que contas tinham a maior prioridade? *Rubrica:* 3 = as duas inativas e não aprovadas ao mesmo tempo;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX033 — Tratamento das licenças longas.** Como as contas de pessoas em licença longa foram tratadas? *Rubrica:* 3 = mantidas com uma anotação e uma data de expiração;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX034 — Mudança na solicitação.** Como a TI mudou o processo de solicitação? *Rubrica:* 3 = novos acessos exigem aprovação registrada do dono;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX035 — Controle dos desligamentos.** Como são tratadas as contas de quem sai? *Rubrica:* 3 = desativadas pelo processo de desligamento do RH;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-08"></a>
 
@@ -409,11 +409,11 @@ Novos usos de dados de empregados sem aviso violam a limitação da finalidade.
 
 ### Exercícios
 
-- **EX036 — Uso sem aviso.** Que uso sem aviso Lucía encontrou? *Rubrica:* 3 = o monitoramento dos horários de descanso dos motoristas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX036 — Uso sem aviso.** Que uso sem aviso Lucía encontrou? *Rubrica:* 3 = o monitoramento dos horários de descanso dos motoristas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX037 — Retenção da localização.** Por quanto tempo os dados detalhados de localização são guardados? *Rubrica:* 3 = noventa dias;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX038 — Objeção dos motoristas.** A que os motoristas se opuseram? *Rubrica:* 3 = ao monitoramento minuto a minuto dos descansos;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX038 — Objeção dos motoristas.** A que os motoristas se opuseram? *Rubrica:* 3 = ao monitoramento minuto a minuto dos descansos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX039 — Salvaguarda disciplinar.** Que salvaguarda se aplica ao uso disciplinar? *Rubrica:* 3 = revisão de um segundo gestor, com a presença do representante;; 2 = correto;; 1 = parcial;; 0 = nenhuma.
-- **EX040 — Dados fora do expediente.** O que acontece com a localização fora do horário de trabalho? *Rubrica:* 3 = é desligada;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX040 — Dados fora do expediente.** O que acontece com a localização fora do horário de trabalho? *Rubrica:* 3 = é desligada;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-09"></a>
 
@@ -451,11 +451,11 @@ Contratos negociados apenas em termos comerciais muitas vezes omitem as obrigaç
 
 ### Exercícios
 
-- **EX041 — Cláusulas ausentes.** O que faltava no contrato do fornecedor da plataforma? *Rubrica:* 3 = as cláusulas de operador do artigo 28 do GDPR;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX041 — Cláusulas ausentes.** O que faltava no contrato do fornecedor da plataforma? *Rubrica:* 3 = as cláusulas de operador do artigo 28 do GDPR;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX042 — Foco das cláusulas para transportadoras.** Que cláusulas importam mais para as transportadoras? *Rubrica:* 3 = as obrigações de qualidade;; 2 = correto;; 1 = outra;; 0 = nenhuma.
-- **EX043 — Garantia do fornecedor.** O que Lucía pede todo ano ao fornecedor? *Rubrica:* 3 = seu relatório independente de garantia de segurança;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX043 — Garantia do fornecedor.** O que Lucía pede todo ano ao fornecedor? *Rubrica:* 3 = seu relatório independente de garantia de segurança;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX044 — Três meses de descumprimento.** O que acontece depois de três meses de metas não cumpridas? *Rubrica:* 3 = um plano conjunto de melhoria;; 2 = correto;; 1 = penalidades;; 0 = nenhuma.
-- **EX045 — Verificação de saída.** O que Lucía confirmou ao trocar de fornecedor de cartões de combustível? *Rubrica:* 3 = a confirmação escrita da eliminação;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX045 — Verificação de saída.** O que Lucía confirmou ao trocar de fornecedor de cartões de combustível? *Rubrica:* 3 = a confirmação escrita da eliminação;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-10"></a>
 
@@ -493,11 +493,11 @@ Reivindicar todo o crédito por melhorias com várias causas prejudica a credibi
 
 ### Exercícios
 
-- **EX046 — Métrica de atividade.** Que tipo de métrica Lucía evitou? *Rubrica:* 3 = métricas apenas de atividade, como reuniões realizadas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX046 — Métrica de atividade.** Que tipo de métrica Lucía evitou? *Rubrica:* 3 = métricas apenas de atividade, como reuniões realizadas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX047 — Tamanho do relatório.** Qual é o tamanho do relatório trimestral? *Rubrica:* 3 = duas páginas;; 2 = correto;; 1 = errado;; 0 = nenhuma.
-- **EX048 — Outra causa.** Que outro fator pode reduzir as disputas? *Rubrica:* 3 = um novo modelo de contrato com os clientes;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX048 — Outra causa.** Que outro fator pode reduzir as disputas? *Rubrica:* 3 = um novo modelo de contrato com os clientes;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX049 — Aprovações do conselho.** O que o conselho aprovou? *Rubrica:* 3 = financiamento para os dados mestres de clientes e uma política de aprovação de compartilhamentos;; 2 = ambos;; 1 = um;; 0 = nenhuma.
-- **EX050 — Propósito do relatório.** O que transformou o relatório em ação? *Rubrica:* 3 = pedir decisões específicas;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX050 — Propósito do relatório.** O que transformou o relatório em ação? *Rubrica:* 3 = pedir decisões específicas;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-11"></a>
 
@@ -537,9 +537,9 @@ Avaliar sem uma linha de base torna impossível mostrar melhora.
 
 - **EX051 — Problema dos endereços.** Que problemas as diferenças de endereço causavam? *Rubrica:* 3 = faturas mal entregues e entregas falhas;; 2 = ambos;; 1 = um;; 0 = nenhuma.
 - **EX052 — Fonte dos endereços de entrega.** Que sistema é a fonte oficial dos endereços de entrega? *Rubrica:* 3 = o sistema de pedidos;; 2 = correto;; 1 = o de faturamento;; 0 = nenhuma.
-- **EX053 — Surpresa.** Que problema inesperado apareceu? *Rubrica:* 3 = clientes com vários locais de entrega válidos;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX054 — Mudança coincidente.** Que mudança coincidente Lucía encontrou? *Rubrica:* 3 = uma queda sazonal de volume;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX055 — Método de validação.** Como os endereços são validados na entrada? *Rubrica:* 3 = com uma consulta de CEP;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX053 — Surpresa.** Que problema inesperado apareceu? *Rubrica:* 3 = clientes com vários locais de entrega válidos;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX054 — Mudança coincidente.** Que mudança coincidente Lucía encontrou? *Rubrica:* 3 = uma queda sazonal de volume;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX055 — Método de validação.** Como os endereços são validados na entrada? *Rubrica:* 3 = com uma consulta de CEP;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 
 <a id="ch-12"></a>
 
@@ -578,8 +578,8 @@ Projetos finais que terminam sem um responsável por sustentar as mudanças se a
 ### Exercícios
 
 - **EX056 — Sustentando as regras.** Quem fica responsável pela revisão semanal dos endereços depois? *Rubrica:* 3 = o curador de vendas;; 2 = correto;; 1 = outro;; 0 = nenhuma.
-- **EX057 — Método para a sazonalidade.** Como Lucía tratou a sazonalidade? *Rubrica:* 3 = comparando com o mesmo período do ano anterior;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
-- **EX058 — Olhar retrospectivo.** O que Lucía faria diferente? *Rubrica:* 3 = verificar a estrutura de locais dos clientes antes de desenhar as regras;; 2 = correto;; 1 = nenhuma;; 0 = nenhuma.
+- **EX057 — Método para a sazonalidade.** Como Lucía tratou a sazonalidade? *Rubrica:* 3 = comparando com o mesmo período do ano anterior;; 2 = correto;; 1 = vago;; 0 = nenhuma.
+- **EX058 — Olhar retrospectivo.** O que Lucía faria diferente? *Rubrica:* 3 = verificar a estrutura de locais dos clientes antes de desenhar as regras;; 2 = correto;; 1 = vago;; 0 = nenhuma.
 - **EX059 — Nova função.** Que função Lucía assume em seguida? *Rubrica:* 3 = líder de governança de dados;; 2 = correto;; 1 = outra;; 0 = nenhuma.
 - **EX060 — Extensão proposta.** Que dados serão governados em seguida? *Rubrica:* 3 = os dados de faturas;; 2 = correto;; 1 = outro;; 0 = nenhuma.
 

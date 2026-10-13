@@ -95,10 +95,10 @@ Screening without criteria written in advance invites selection of studies that 
 
 - **EX001 — Reset risk.** Why are password resets a security concern as well as a cost? *Rubric:* 3 = social engineering can take over accounts via the desk;; 2 = social engineering;; 1 = cost only;; 0 = none.
 - **EX002 — Passkey basis.** Which standard are passkeys based on? *Rubric:* 3 = W3C Web Authentication;; 2 = WebAuthn;; 1 = SAML;; 0 = none.
-- **EX003 — Search record.** What must Jonah record for each search? *Rubric:* 3 = string, date and result count;; 2 = two;; 1 = none;; 0 = none.
+- **EX003 — Search record.** What must Jonah record for each search? *Rubric:* 3 = string, date and result count;; 2 = two;; 1 = vague;; 0 = none.
 - **EX004 — Screen counts.** How many records remain after screening in the lab? *Rubric:* 3 = 6 of 12, with stage counts 11, 9, 6;; 2 = 6;; 1 = 12;; 0 = none.
 - **EX005 — Exclusion reasons.** Why were three records excluded at the last stage? *Rubric:* 3 = they studied web users or students, not workplaces;; 2 = setting;; 1 = date;; 0 = none.
-- **EX006 — Normalisation reason.** Why normalise resets per hundred staff? *Rubric:* 3 = headcount changes over time;; 2 = headcount;; 1 = none;; 0 = none.
+- **EX006 — Normalisation reason.** Why normalise resets per hundred staff? *Rubric:* 3 = headcount changes over time;; 2 = headcount;; 1 = vague;; 0 = none.
 - **EX007 — Ticket check.** How does Jonah check reset-count reliability? *Rubric:* 3 = hand-check a sample of ticket categories;; 2 = sample;; 1 = trust;; 0 = none.
 
 ### Synthesis
@@ -205,11 +205,11 @@ A simple before-and-after comparison without a comparison group cannot separate 
 
 ### Exercises
 
-- **EX015 — Comparison group.** What serves as the comparison group? *Rubric:* 3 = departments not yet enrolled, same calendar weeks;; 2 = not enrolled;; 1 = none;; 0 = none.
+- **EX015 — Comparison group.** What serves as the comparison group? *Rubric:* 3 = departments not yet enrolled, same calendar weeks;; 2 = not enrolled;; 1 = vague;; 0 = none.
 - **EX016 — Small-group rule.** How are small departments handled? *Rubric:* 3 = merged if fewer than ten staff;; 2 = merged;; 1 = excluded;; 0 = none.
 - **EX017 — Main comparison.** What is the main comparison in the analysis plan? *Rubric:* 3 = enrolled change minus not-yet-enrolled change in reset rate;; 2 = difference of changes;; 1 = before/after;; 0 = none.
-- **EX018 — Falsifying result.** What result would count against the hypothesis? *Rubric:* 3 = similar reduction in both groups or lower sign-in success;; 2 = one;; 1 = none;; 0 = none.
-- **EX019 — Traceable numbers.** What makes a reported number reproducible here? *Rubric:* 3 = traceable to script and input, synthetic file published;; 2 = traceable;; 1 = none;; 0 = none.
+- **EX018 — Falsifying result.** What result would count against the hypothesis? *Rubric:* 3 = similar reduction in both groups or lower sign-in success;; 2 = one;; 1 = vague;; 0 = none.
+- **EX019 — Traceable numbers.** What makes a reported number reproducible here? *Rubric:* 3 = traceable to script and input, synthetic file published;; 2 = traceable;; 1 = vague;; 0 = none.
 - **EX020 — Rollout changes.** How are changes to Halyard's rollout treated? *Rubric:* 3 = shared, recorded and included as data;; 2 = recorded;; 1 = hidden;; 0 = none.
 
 ### Synthesis
@@ -281,7 +281,7 @@ Reporting raw counts when headcount changes can exaggerate or hide real effects.
 - **EX023 — Headcount direction.** Why does normalisation strengthen the finding here? *Rubric:* 3 = headcount rose, which would increase resets;; 2 = headcount rose;; 1 = it weakens;; 0 = none.
 - **EX024 — Portal check.** How was the self-service portal explanation tested? *Rubric:* 3 = change calendar showed no launch;; 2 = calendar;; 1 = assumed;; 0 = none.
 - **EX025 — Recovery rise.** How did recovery requests change? *Rubric:* 3 = rose to about three a week, each more involved;; 2 = rose;; 1 = fell;; 0 = none.
-- **EX026 — Second passkey advice.** What advice reduces lost-device recovery? *Rubric:* 3 = register a second passkey;; 2 = backup;; 1 = none;; 0 = none.
+- **EX026 — Second passkey advice.** What advice reduces lost-device recovery? *Rubric:* 3 = register a second passkey;; 2 = backup;; 1 = vague;; 0 = none.
 
 ### Synthesis
 
@@ -327,7 +327,7 @@ Treating pilot results as the main finding mistakes a pipeline test for an effec
 
 ### Exercises
 
-- **EX027 — Proposal risks.** Name two risks listed in the proposal. *Rubric:* 3 = rollout delay, missing log weeks, low interview participation (two);; 2 = one;; 1 = none;; 0 = none.
+- **EX027 — Proposal risks.** Name two risks listed in the proposal. *Rubric:* 3 = rollout delay, missing log weeks, low interview participation (two);; 2 = one;; 1 = vague;; 0 = none.
 - **EX028 — Pilot aim.** What is the pilot mainly testing? *Rubric:* 3 = the data pipeline, not the effect;; 2 = pipeline;; 1 = effect;; 0 = none.
 - **EX029 — Cancelled prompts.** How were cancelled passkey prompts mishandled? *Rubric:* 3 = counted as failures, inflating failure rate;; 2 = failures;; 1 = ignored;; 0 = none.
 - **EX030 — Shared terminal fix.** What fixed the shared-terminal problem? *Rubric:* 3 = hardware security keys offered;; 2 = security key;; 1 = passwords;; 0 = none.
@@ -449,8 +449,8 @@ Hiding limitations to make results look stronger undermines trust when examiners
 ### Exercises
 
 - **EX039 — Chapter order.** List the dissertation's main chapters in order. *Rubric:* 3 = introduction, literature, method, results, discussion, limitations, recommendations;; 2 = most;; 1 = few;; 0 = none.
-- **EX040 — Writing order.** Which chapters are written first and last? *Rubric:* 3 = method first, introduction last;; 2 = one;; 1 = none;; 0 = none.
-- **EX041 — Long-term gap.** Which long-term question remains unknown? *Rubric:* 3 = whether recovery requests keep rising;; 2 = long-term effects;; 1 = none;; 0 = none.
+- **EX040 — Writing order.** Which chapters are written first and last? *Rubric:* 3 = method first, introduction last;; 2 = one;; 1 = vague;; 0 = none.
+- **EX041 — Long-term gap.** Which long-term question remains unknown? *Rubric:* 3 = whether recovery requests keep rising;; 2 = long-term effects;; 1 = vague;; 0 = none.
 - **EX042 — Recovery recommendation.** Why keep the strong recovery check? *Rubric:* 3 = recovery is now the more attractive target;; 2 = target;; 1 = cost;; 0 = none.
 - **EX043 — Recommendation parts.** What does each recommendation name? *Rubric:* 3 = cost, owner and success measure;; 2 = two;; 1 = one;; 0 = none.
 - **EX044 — Summary reviewer.** Who reviews the practitioner summary? *Rubric:* 3 = a desk team leader, for clarity;; 2 = desk lead;; 1 = examiner;; 0 = none.
@@ -503,7 +503,7 @@ Skipping independent review leaves unexamined assumptions for examiners to find.
 - **EX046 — Sensitivity outcome.** What did excluding late departments show? *Rubric:* 3 = similar estimate, wider interval;; 2 = similar;; 1 = reversed;; 0 = none.
 - **EX047 — Contribution summary.** How many sentences does Jonah practise for his contribution? *Rubric:* 3 = three;; 2 = few;; 1 = one;; 0 = none.
 - **EX048 — Hospital question.** How does Jonah answer the hospital question? *Rubric:* 3 = cites shared-terminal pilot findings, effect may be smaller, no overclaim;; 2 = cautious;; 1 = yes;; 0 = none.
-- **EX049 — Corrections requested.** What corrections were requested? *Rubric:* 3 = clearer trend assumption, one extra reference;; 2 = one;; 1 = none;; 0 = none.
+- **EX049 — Corrections requested.** What corrections were requested? *Rubric:* 3 = clearer trend assumption, one extra reference;; 2 = one;; 1 = vague;; 0 = none.
 - **EX050 — Data closure.** What happens to university-held data at the end? *Rubric:* 3 = deleted on agreed date, confirmed in writing;; 2 = deleted;; 1 = published;; 0 = none.
 
 ### Synthesis

@@ -312,7 +312,7 @@ Never publish pilot numbers as findings. Indicator values here use documentation
 - **EX024 — Brier quote.** What Brier score does the pilot report, and what is the reference value for always saying 0.5? *Rubric:* 3 = 0.183 and 0.25; 2 = one; 1 = wrong; 0 = none.
 - **EX025 — Top bin.** What does the 0.9 bin suggest, and why is it not a finding? *Rubric:* 3 = possible overconfidence (0.67 observed); k=3 too small, pilot only; 2 = one half; 1 = proven overconfidence; 0 = none.
 - **EX026 — Hand check.** Compute (p−o)² for the first pilot item (0.9, 1). *Rubric:* 3 = 0.01; 2 = method right, arithmetic slip; 1 = wrong method; 0 = none.
-- **EX027 — Sampling change.** What sampling change does the pilot motivate? *Rubric:* 3 = over-sample high-confidence judgments for precision; 2 = bigger sample generally; 1 = none; 0 = none.
+- **EX027 — Sampling change.** What sampling change does the pilot motivate? *Rubric:* 3 = over-sample high-confidence judgments for precision; 2 = bigger sample generally; 1 = vague; 0 = none.
 - **EX028 — Pilot fails.** Name two observations that would make Tomas stop after the pilot. *Rubric:* 3 = two of mostly unresolvable outcomes / coding time far over budget / script mismatch with hand calc; 2 = one; 1 = low Brier; 0 = none.
 
 ### Synthesis
@@ -472,7 +472,7 @@ Critique is not personal; nor is every comment correct. Defend with evidence, no
 - **EX037 — Missing standard.** Which ICD 203 element did Tomas's draft fail before revision? *Rubric:* 3 = expressing uncertainty/sensitivity of own conclusion to assumptions; 2 = vague uncertainty; 1 = visuals; 0 = none.
 - **EX038 — Reply types.** List the three acceptable categories of response to a reviewer comment. *Rubric:* 3 = accepted with change, partially accepted, declined with reasons; 2 = two; 1 = ignore; 0 = none.
 - **EX039 — Substantive test.** A reanalysis moves Brier from 0.17 to 0.21. Where must that appear? *Rubric:* 3 = abstract/main results + explanation; 2 = results only; 1 = appendix only; 0 = none.
-- **EX040 — Competing story.** State one alternative explanation for apparent overconfidence in the top bin. *Rubric:* 3 = plausible alternative (selective follow-up, outcome-source bias, small k); 2 = vague; 1 = none; 0 = none.
+- **EX040 — Competing story.** State one alternative explanation for apparent overconfidence in the top bin. *Rubric:* 3 = plausible alternative (selective follow-up, outcome-source bias, small k); 2 = vague; 1 = minimal attempt; 0 = none.
 - **EX041 — ACH move.** In Heuer's analysis of competing hypotheses, what evidence matters most? *Rubric:* 3 = evidence inconsistent with hypotheses (disconfirming); 2 = diagnostic evidence vaguely; 1 = consistent evidence; 0 = none.
 - **EX042 — Decline well.** Write a one-sentence decline to a reviewer who asks for real victim names. *Rubric:* 3 = decline citing ethics/TLP/data protection; offer aggregate alternative; 2 = decline only; 1 = comply; 0 = none.
 
@@ -614,7 +614,7 @@ Publishing a "leaderboard" of vendors' calibration from licensed data may breach
 - **EX051 — Two venues.** Why might the calibration result go to both a journal and a practitioner conference? *Rubric:* 3 = method rigour/peer review + reach SOC decision-makers; 2 = one reason; 1 = more citations; 0 = none.
 - **EX052 — Preview veto.** A vendor asks to remove a negative finding during preview. Response? *Rubric:* 3 = decline removal; consider factual corrections only; document; 2 = decline; 1 = remove; 0 = none.
 - **EX053 — TLP of a paper.** What TLP level does a public paper effectively have, and what follows for restricted inputs? *Rubric:* 3 = CLEAR; restricted inputs only in non-reconstructable aggregate; 2 = CLEAR only; 1 = AMBER; 0 = none.
-- **EX054 — Leaderboard risk.** Give two reasons not to publish a named-vendor calibration ranking. *Rubric:* 3 = licence/agreement breach + small-sample instability (or fairness); 2 = one; 1 = none; 0 = none.
+- **EX054 — Leaderboard risk.** Give two reasons not to publish a named-vendor calibration ranking. *Rubric:* 3 = licence/agreement breach + small-sample instability (or fairness); 2 = one; 1 = vague; 0 = none.
 - **EX055 — Prospective design.** Describe the prospective follow-on study in one sentence. *Rubric:* 3 = analysts record numeric probability at writing; outcomes tracked forward; 2 = vague forward study; 1 = repeat thesis; 0 = none.
 - **EX056 — Pre-print rule.** What must a pre-print include that a conference abstract might omit? *Rubric:* 3 = full limits/validity section; 2 = methods; 1 = nothing; 0 = none.
 
