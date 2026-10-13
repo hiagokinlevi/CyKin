@@ -160,7 +160,7 @@ events detected  : (2, 2)
 
 Interpretation: both episodes were detected (event recall 1.0), which is genuinely useful, but the point-adjusted F1 of 0.988 hides that the first alarm in segment one came 20 samples after onset. Report event recall *with* delay, never point-adjusted F1 alone.
 
-The same five alarms produce three very different stories. Pointwise, the detector found three of forty attack samples and raised two false alarms. Point-adjusted, it looks almost perfect. By events, it found both episodes, one of them late. Only the third view, paired with delay, tells an operator what would have happened at the tank, so it is the one the Setpoint Study reports.
+The same five alarms produce three very different stories. Pointwise, the detector found four of forty attack samples and raised one false alarm. Point-adjusted, it looks almost perfect. By events, it found both episodes, one of them late. Only the third view, paired with delay, tells an operator what would have happened at the tank, so it is the one the Setpoint Study reports.
 
 ### 1.9 Common errors and limits
 
