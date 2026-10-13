@@ -2794,6 +2794,8 @@ You will (1) measure the performance cost of security controls; (2) analyse late
 
 Developers worry that admission checks and signature verification slow deployments. Measurement replaces worry with data and shows where optimisation is needed.
 
+Without numbers, the argument tends to be settled by whoever complains loudest, and a control can be switched off to calm a team that never measured anything. Elena frames the question narrowly: how many milliseconds does admission add to one deployment, at the median and in the slow tail? A narrow question can be answered with a small, repeatable test, and the answer can be checked again after every policy change instead of being argued from memory.
+
 ### Lab — Lab — admission overhead
 
 ```python
@@ -2815,21 +2817,31 @@ median 265.0 -> 284.5 ms; p95 505.5 -> 541.8 ms
 
 Across 20 synthetic deployments, median admission latency rises from 265.0 ms without the policy checks to 284.5 ms with them, about 20 ms. The 95th percentile rises from 505.5 to 541.8 ms, about 36 ms. Deployments take minutes overall, so the overhead is negligible; the tail grows more than the median because signature lookups occasionally miss the cache.
 
+The largest single delay in the synthetic list, 60 ms on the slowest deployment, is the kind of cache miss that pulls the 95th percentile up. Twenty samples are few for a tail estimate, so Elena treats the 36 ms as a rough figure and repeats the run before drawing conclusions.
+
 ### 36.3 Scaling
 
 As meters grow (chapter 6), ingest pods and deployments increase. Policy checks are per admission, not per request, so they scale with deployment frequency, not traffic.
+
+That distinction matters for planning. If meter numbers double, ingest traffic roughly doubles, but admission load rises only if teams deploy more often or the autoscaler adds pods more frequently. Elena therefore sizes the policy engine from deployment and scaling events per hour, which she reads from the API server's audit log, and keeps meter growth for sizing the ingest service itself. Each figure goes into the capacity plan with the date and the source it was read from.
 
 ### 36.4 Network policy cost
 
 Network policy enforcement happens in the node's data path; Elena measures ingest throughput with and without policies and sees under 2% difference.
 
+She runs the comparison on identical staging nodes with the same synthetic meter stream, alternating policy on and off so that background load affects both. Under two percent is small enough to accept, but she also notes what grows the cost: very long rule lists on a pod and frequent policy changes, which force the data path to reload rules. Keeping each namespace's policies short and grouped by label holds that cost down as the platform grows.
+
 ### 36.5 Optimisation
 
 Caching signature verification results by digest cuts repeated lookups; the policy engine's replicas scale with admission load.
 
+The cache key is the image digest, and the stored value records the verification result, the signing identity and the time of the check. An entry expires after a set period, so a revoked signing key is noticed when entries are refreshed rather than never. Replicas are added when admission queue time rises, which Elena watches as a metric, and at least two replicas always run so a single restart does not block deployments across the cluster.
+
 ### 36.6 Never trading away protection
 
 Optimisations must not skip checks; caching by digest is safe because the digest identifies exact content.
+
+A tag such as ingest:latest can point at different images from one day to the next, so a cache keyed on tags could approve an image that was never verified. A digest cannot change without the content changing. The rule Elena writes into the design notes is that an optimisation may remove repeated work, never a decision: if the engine is too slow to verify an unseen digest, the deployment waits or is rejected rather than being admitted unchecked.
 
 ### Measurement method
 
@@ -2871,29 +2883,43 @@ You will (1) run the secured platform day to day; (2) handle alerts, exceptions 
 
 The on-call engineer reviews overnight alerts, the exception expiry list and the drift report. Most days take under 30 minutes.
 
+The order is deliberate. Alerts come first because one might describe something still happening. Expiries come next, since an exception that lapses unnoticed can block a deployment or quietly be renewed without review. The drift report comes last: it lists resources whose live settings differ from the declared configuration, such as a namespace whose default-deny policy was removed by hand. A day that runs much longer than half an hour is noted, because it usually points at a noisy rule.
+
 ### 37.2 Upgrades
 
 Kubernetes minor versions are upgraded within the provider's support window. Each upgrade is tested in staging with the verification suite, since admission behaviour can change between versions.
+
+A new version may deprecate an API that a policy relies on, change a default for pod security, or alter how webhooks are called during admission. Running the verification suite in staging catches these before production does. Waiting until the support window is about to close is risky, because security fixes stop and several versions may then need to be crossed in a hurry. Elena plans upgrades a quarter ahead and records the suite's results with each one.
 
 ### 37.3 Exception handling
 
 Weekly, the platform lead reviews new requests and upcoming expiries. Exceptions near expiry trigger a message to owners.
 
+Each request must state the control being relaxed, the reason, the compensating measure, an owner and an end date. The review looks for patterns as well as individual cases: several services asking for the same exception usually means the platform is missing something, not that every team is careless. When an exception reaches its end date without renewal, the control applies again automatically, so a forgotten exception fails safe instead of lasting for ever.
+
 ### 37.4 Runbooks
 
 Each alert has a runbook with first steps, escalation and communication. Runbooks are tested in game days and updated after incidents.
+
+A good first step is concrete, for example 'check whether the denied image digest appears in the signing log', rather than 'investigate'. Escalation names a role, not a person, so the runbook survives staff changes. Each runbook records the date it was last exercised. During a game day an engineer who has never handled that alert follows the runbook without help, and every point where they hesitate becomes an edit.
 
 ### 37.5 Operational load
 
 Elena tracks time spent on security operations: in the first quarter after rollout, about 6 engineer-hours a week, falling to 3 as tooling improves.
 
+The hours are logged by category: alert handling, exception reviews, upgrades and drift fixes. The breakdown shows where tooling helps most. In this case much of the early time went on repeated exception renewals and alerts that needed manual lookups, both of which shrank once the underlying needs were removed and the lookups were added to the alerts. A rise in hours is treated as an early warning, since overloaded teams tend to relax controls to save time.
+
 ### 37.6 Incident example
 
 A developer accidentally creates a public test bucket in a sandbox account. The account-level block prevents public access; an alert still fires for the attempted change, and a short note reminds the developer of the sandbox rules.
 
+The sequence shows layered controls working as designed: the preventive block stopped exposure, and the detective alert made sure someone knew it had been tried. The response is proportionate, with no data at risk and no blame, only a reminder. Elena still records it, because a cluster of similar attempts from one team would suggest that a legitimate need, such as sharing test files with a partner, is not being met in a safe way.
+
 ### 37.7 Continuous improvement
 
 Each month the team picks one source of repetitive work and automates or removes it.
+
+Choosing one item a month keeps the effort steady and small enough to finish. Candidates come from the operational-load log and from handover notes, where the same annoyance tends to appear week after week. The repeated exceptions for a log path written to the root filesystem are a typical case: fixing the image removed both the exceptions and the review work they caused. Each change is recorded with the hours it saved, so the team can see the effect.
 
 ### Handover between shifts
 
@@ -2939,25 +2965,37 @@ You will (1) validate that the engineered system meets stakeholder needs, not ju
 
 Verification asks "did we build it right?" (requirements met). Validation asks "did we build the right thing?" (stakeholders' needs met). A system could pass every test yet frustrate developers so much that they bypass it.
 
+Verification uses the requirements and tests already written: admission rejects unsigned images, workload identities hold no long-lived keys. Validation needs evidence from people: developers who deploy every day, auditors who rely on the records, and the incident history. Both can fail independently. A platform that meets every requirement but takes a week to grant an exception will push teams towards workarounds, and those workarounds are where the next incident is likely to come from.
+
 ### 38.2 Goals review
 
 Elena compares results with chapter 20's goals: no long-lived workload keys (achieved), default-deny in all production namespaces (achieved), Restricted profile with documented exceptions (achieved, one exception), signed images only (achieved), detection within objectives (achieved after alert fixes).
+
+Each goal is marked with the evidence behind it: the key inventory, the namespace policy report, the exception register, the admission logs and the detection test results. The one Restricted-profile exception is listed with its owner and end date, so 'achieved' does not hide it. Detection was only met after alert fixes, and Elena says so, because a goal reached late tells reviewers where the original design was weak.
 
 ### 38.3 Developer validation
 
 A survey of 30 developers asks about deployment friction and clarity of rejections. 70% find rejection messages clear; complaints focus on exception request time.
 
+The survey is anonymous and short, with questions about specific moments, such as the last rejected deployment, rather than general opinions about security. Seventy percent clear also means about nine of the thirty found messages unclear, so Elena reads their comments and finds rejections that name a policy without saying how to fix the manifest. Complaints about exception time match the review data, which shows requests waiting several days for an answer.
+
 ### 38.4 Auditor validation
 
 An internal auditor reviews evidence against CSA CCM v4 mappings and finds evidence sufficient for identity and infrastructure domains, asking for more on key rotation records.
+
+The auditor works from the mappings to the matrix's controls, sampling evidence for each and checking that it is dated, complete and produced by the system rather than written up by hand afterwards. Rotation was the weak area because keys were rotated on schedule but the records were scattered across tickets and chat messages. The request is reasonable: a control nobody can show happened is hard to rely on in an audit.
 
 ### 38.5 Incident validation
 
 Six months without a credential or exposure incident is encouraging but short; Elena reports it with that caveat.
 
+Six months is a short window for events that may be rare in any case, so a quiet period could simply mean nobody tried. Elena adds the evidence that the controls were exercised: blocked attempts such as the public sandbox bucket, rejected unsigned images and alerts confirmed in game days. Together these show the controls acting, which says more than the absence of incidents alone, and she states which of them came from tests rather than real events.
+
 ### 38.6 Adjustments
 
 Exception requests get a 2-day service level; key rotation records are generated automatically.
+
+Each adjustment answers a specific validation finding. The service level addresses the developers' main complaint and is tracked as a metric, so slow responses become visible. Automatic records answer the auditor: every rotation now writes an entry with the key identifier, the time and the identity that performed it. The two changes are small, which is typical. Validation more often reveals friction and gaps in evidence than flaws in the controls themselves.
 
 ### Acting on validation
 
