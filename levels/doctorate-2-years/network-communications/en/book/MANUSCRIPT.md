@@ -130,6 +130,8 @@ NIST SP 800-207 describes zero trust architecture, in which access decisions are
 
 Ines writes a positioning statement: her thesis contributes an empirical replication of the complexity-error relationship on modern rule bases, a validated codebook, and a controlled evaluation of a structured review procedure. She states what she will not do, such as building a new analysis tool or studying attack detection directly. Clear boundaries help examiners judge the contribution against its aims, and help partners understand what they will receive.
 
+Ines states plainly which gap her work fills and which questions she leaves to others, so examiners can judge the contribution against its stated scope.
+
 ### Worked example
 
 Ines builds a table of twelve key works with method, setting, finding and limitation, then marks three gaps: little evaluation of review procedures, few modern replications and almost no study of rule hygiene during zero trust transitions.
@@ -170,6 +172,8 @@ You will (1) state hypotheses; (2) design the replication and the intervention s
 
 Ines states two hypotheses before seeing partner data. H1: across firewalls, rule-base size is positively correlated with the number of coded errors. H2: firewalls whose teams follow the structured review procedure for one quarter show fewer errors per hundred rules than they did before, and fewer than a comparison group reviewing in their usual way. Each hypothesis names its measure and test, and both are registered with her supervisor and the department's research office.
 
+Each hypothesis is written before data collection and registered with her supervisor.
+
 ### 3.2 The review procedure
 
 The structured review is a short, repeatable procedure. For each rule, the team confirms an owner and documented purpose, checks for shadowing with an analysis tool, compares the rule's scope with its purpose, and checks hit counts over ninety days. Unclear rules are flagged for owner confirmation rather than deleted. The procedure is written as a one-page checklist so that it can be followed by any competent engineer, which is essential if the result is to generalise beyond Ines's partners.
@@ -178,9 +182,13 @@ The structured review is a short, repeatable procedure. For each rule, the team 
 
 Twelve firewalls across the three partners are coded at baseline for H1. For H2, eight firewalls whose teams volunteer adopt the procedure, and their before-and-after rates are compared, with the other four as a comparison group. Random assignment is not possible because partners choose which teams take part, so Ines records team size, experience and workload to discuss selection effects. She also measures how long each review takes, because a procedure too costly to repeat would not be adopted.
 
+The design is documented before data is seen.
+
 ### 3.4 Threats to validity
 
 Ines lists threats and responses. Coders might know which firewalls were reviewed, so a second coder, blind to group, recodes a sample. Teams might change behaviour simply because they are observed; the comparison group helps estimate this. Rule bases change for reasons unrelated to the study, such as new projects; change logs are used to separate these. Finally, three partners in one sector may not represent others, a limit stated plainly in the proposal.
+
+Each threat is paired with the mitigation planned and any that remain.
 
 ### Worked example
 
@@ -220,6 +228,8 @@ You will (1) replicate the complexity-error relationship; (2) detect shadowed ru
 ### 4.1 Coding the baseline
 
 With the codebook fixed, two coders label every rule on the twelve firewalls, with an analysis tool assisting shadowing checks. Disagreements are resolved by discussion and recorded. Ines then counts errors per firewall and compares with rule-base size. To keep the analysis honest, she computes the correlation using ranks, which is robust to a few very large firewalls dominating the result.
+
+Coding the baseline means classifying every rule in each partner's rule base using the codebook, before any review takes place. Ines records each decision with the rule identifier and a short reason, so disagreements can be traced. A second coder independently codes a random sample, and agreement is measured before the full baseline is accepted.
 
 ### Lab — Size and errors
 
@@ -312,6 +322,8 @@ You will (1) run the intervention study; (2) compare before and after; (3) valid
 
 For one quarter, eight teams follow the review procedure while four continue their usual practice. Ines does not change any rules herself; teams make their own changes through their normal change process. She collects configurations at the start and end of the quarter, along with change logs and time records, and both coders recode all twelve firewalls at the end.
 
+Running the study follows the written protocol step by step. Ines logs every deviation, such as a delayed review session or a missing configuration snapshot, with its date and reason. Deviations are reported in the thesis rather than hidden, because examiners judge validity partly on how honestly departures from the plan are described.
+
 ### Lab — Before and after
 
 ```python
@@ -337,13 +349,19 @@ mean pre 6.17 post 4.35 per 100 rules; difference 1.83; one-sided p ~ 0.0006
 
 In the synthetic data, errors per hundred rules on reviewed firewalls fall from a mean of 6.17 to 4.35. A permutation test, which asks how often a difference this large would appear if the labels were shuffled at random, gives a one-sided p of about 0.0006. The comparison firewalls show a small fall over the same quarter, which Ines reports alongside, since part of the change may come from general attention to rule hygiene rather than the procedure itself.
 
+She reports the interval alongside the estimate.
+
 ### 5.3 Independent validation
 
 A second coder, blind to which firewalls were reviewed, recodes a random quarter of rules. Agreement remains high, and the blinded coder's error rates show the same direction of change. Ines also asks an engineer from a fourth organisation, not involved in the study, to apply the procedure to a synthetic rule base; the engineer finds similar categories of issue, suggesting the procedure is usable by outsiders. Both checks are reported in full, including where the blinded coder disagreed.
 
+Disagreements are documented, not quietly resolved.
+
 ### 5.4 Effect in context
 
 Ines translates the result into operational terms: for a firewall of five hundred rules, the reduction corresponds to about nine fewer problematic rules after one quarter. She reports the review time per hundred rules, so readers can weigh benefit against cost, and avoids claiming any reduction in incidents, which the study did not measure.
+
+An effect size only means something in context. Ines compares the reduction in error rate with the effort the review required, measured in engineer hours, and with variation between partners. A modest average reduction that is consistent across partners may be more useful in practice than a large effect seen in only one organisation.
 
 ### Worked example
 
@@ -384,17 +402,25 @@ You will (1) present results for critique; (2) respond to challenges; (3) revise
 
 Ines presents the study at a department seminar. Colleagues question whether volunteer teams were simply more motivated, whether one quarter is long enough to show lasting change, and whether the codebook favours issues that the procedure is designed to find. She records each challenge and her answer, and marks those she cannot fully answer as limitations rather than defending them.
 
+An internal seminar lets colleagues test the argument before outside reviewers do. Ines presents the design, results and limitations, then records questions she could not answer well. Those questions show where the thesis needs clearer explanation or further analysis, and preparing for them makes the eventual defense far less daunting.
+
 ### 6.2 Responding to reviewers
 
 A workshop paper based on the baseline replication receives three reviews. One reviewer asks for the rule-size distribution and a sensitivity analysis excluding the two largest firewalls. Ines runs it, finds the association remains strong, and adds it to the paper. Another asks whether shadowing should count as an error when engineers use it deliberately as documentation; she adds a discussion and keeps the category, noting that undocumented shadowing is the main concern.
+
+Each response cites the page where the change was made.
 
 ### 6.3 Revising the procedure
 
 Partner engineers suggest that hit counts over ninety days miss rules for quarterly or yearly processes, such as financial year-end transfers. Ines changes the procedure to flag such rules for owner confirmation rather than marking them unused, and checks whether this changes earlier results. It reclassifies three rules but leaves the conclusions unchanged.
 
+Feedback may show that parts of the review procedure were unclear or too slow. Ines revises the procedure, records each change with its reason, and keeps the original version, so readers know which version produced the results. Changes made after results are seen are labelled clearly as post hoc and are not presented as tested findings.
+
 ### 6.4 Keeping a decision log
 
 Every change to codebook, procedure or analysis is entered in a dated decision log with the reason and its effect on results. The log is part of the thesis appendix, so examiners can see how the study evolved and that changes were not made to improve outcomes.
+
+A decision log records every significant research choice with its date, the options considered, the choice made and the reason. Over a multi-year project memory fades, and examiners often ask why a particular choice was made. The log answers such questions with evidence, protects against unconscious rewriting of history, and makes the research easier for others to reproduce or extend.
 
 ### Worked example
 
@@ -435,17 +461,25 @@ You will (1) synthesise findings; (2) build a reproducibility archive; (3) share
 
 The thesis brings together three contributions: a modern replication of the complexity-error association, a validated codebook and an evaluated review procedure. Ines writes the synthesis chapter around what practitioners should do differently: measure rule-base hygiene periodically, use the procedure with owner confirmation, and expect larger rule bases to need more review effort. Each recommendation is tied to evidence and its limits.
 
+The synthesis chapter draws the separate studies together into one argument, showing how each result supports or qualifies the main claim. Ines states what is now known that was not known before, and how confident readers should be, rather than repeating each result in turn.
+
 ### 7.2 The archive
 
 Real partner configurations cannot be published, so Ines builds a synthetic archive that mirrors their structure: rule bases with the same size distribution and error proportions, generated by documented scripts. The archive includes the codebook, all analysis scripts, the decision log and instructions to reproduce every table. A colleague who has not seen the study follows the instructions and reproduces the main results from the synthetic data.
+
+The archive holds the codebook, scripts, synthetic examples and a readme explaining how to rerun each analysis. Partner configurations themselves are excluded under the data agreement.
 
 ### 7.3 What can and cannot be reproduced
 
 Ines is explicit that the synthetic archive reproduces the analysis, not the original findings, which depend on partner data. She describes how partners could rerun the scripts on their own configurations, and offers the procedure under an open licence so others can test it. This is the honest limit of reproducibility when data are sensitive.
 
+Ines states plainly which analyses others can rerun from the archive and which depend on partner data that cannot be shared. For the latter she provides summary statistics and synthetic data with the same structure, so methods can still be checked, even though exact figures cannot be reproduced.
+
 ### 7.4 Sharing responsibly
 
 Before release, she checks that synthetic rules cannot be mapped back to partners: pseudonymised ranges are replaced with documentation ranges, rule names are generic and size distributions are smoothed. The partners review the archive and approve publication.
+
+Sharing research outputs must not expose the partners. Before releasing anything, Ines removes identifying details such as names, address ranges and rule comments, checks that no combination of remaining fields reveals an organisation, and has partners confirm the release. She shares methods, codebooks and synthetic data openly, while keeping real configurations restricted, balancing openness with the duty of care she owes the organisations that trusted her.
 
 ### Versioning and citation
 
@@ -490,17 +524,27 @@ You will (1) prepare the defense; (2) anticipate questions; (3) plan publication
 
 Ines prepares a forty-minute talk: problem, contributions, methods, results, limits and implications. She rehearses with colleagues playing examiners and records the hardest questions. Each slide carries one claim and its evidence.
 
+Preparing for the defense, Ines rereads the whole thesis, notes its weakest points, and prepares concise explanations for each. She practises a short opening summary that states the question, approach, main findings and contribution in a few minutes. A mock defense with colleagues playing examiners exposes unclear answers and gives her practice staying calm under sustained questioning.
+
 ### 8.2 Anticipated questions
 
 Examiners are likely to ask about causation, generalisation beyond the sector, the cost of the procedure and why incidents were not measured. Ines prepares short, honest answers: the design supports association and a controlled before-after comparison, not broad causation; the sector limit is real; review costs are reported; incident data were too sparse and sensitive to analyse.
+
+She practises answering each one concisely, with evidence.
+
+Questions she cannot answer fully are acknowledged honestly, with what further work would settle them.
 
 ### 8.3 Publication plan
 
 Two papers are planned: the replication and codebook for a measurement venue, and the intervention study for a practitioner-oriented security venue, both with the synthetic archive. A short practitioner guide based on the procedure is offered to the partners and published openly.
 
+The publication plan identifies which chapters can become journal or conference papers, the likely venues, and the order of submission. Ines checks that data agreements permit each publication, involves partners in reviewing drafts, and plans to release the codebook and synthetic data alongside the papers so other researchers can build on the work.
+
 ### 8.4 After the defense
 
 Ines plans to extend the study to organisations moving toward zero trust, testing whether rule hygiene affects the transition, a gap identified in chapter 2.
+
+After the defense, Ines makes any corrections the examiners require, records each change, and submits the final thesis. She then sends partners a short summary of findings written for practitioners, closes the data agreement by deleting or returning partner data as promised, and archives her own records. Finally, she reflects on what she would do differently, which helps her supervise or advise future students on similar projects.
 
 ### Handling a hard question
 

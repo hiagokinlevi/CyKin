@@ -57,6 +57,8 @@ Amara chooses three measures. Alert volume is alerts per week, normalised by tra
 
 The study covers rule tuning only: suppressing known benign sources, adjusting thresholds and disabling rules for services Corvane does not run. It does not evaluate new detection products or machine learning. All observation uses alert exports and labelled records provided by Corvane under a data agreement; Amara does not run traffic against their sensors.
 
+Amara's scope covers alert rules on Corvane's two sensors over a fixed period, using synthetic replays where real data cannot leave the company. It excludes endpoint tools and the response process after triage. Stating these boundaries prevents the dissertation from overclaiming and tells readers which questions remain open.
+
 ### Worked example
 
 Amara's question statement, search log and three measure definitions fit on two pages and are approved by Dr Brandt and Corvane's security lead before data collection.
@@ -97,6 +99,8 @@ You will (1) explain how network intrusion detection works; (2) analyse the base
 
 Network intrusion detection systems inspect traffic or flow records and raise alerts when patterns match signatures or deviate from expected behaviour. NIST SP 800-94 distinguishes signature-based, anomaly-based and stateful protocol analysis methods. Signatures are precise for known patterns but miss novel ones; anomaly methods can find new patterns but produce more false alarms. Paxson's Bro, now Zeek, emphasised policy scripts that describe what the operator cares about, a philosophy that fits Amara's tuning focus.
 
+Understanding this explains why tuning matters.
+
 ### Lab — The base-rate problem
 
 ```python
@@ -123,6 +127,8 @@ With a rule that detects 95 percent of malicious events and falsely alerts on on
 ### 2.3 Triage in practice
 
 In seminar, Amara compares triage practices from published guidance and partner interviews. Effective teams group related alerts, enrich them with asset and owner information, and document why alerts are closed. Weak practice closes alerts without notes, which loses the information needed to tune rules. She notes that closure notes are also her best source of labels, linking triage quality to research quality.
+
+Triage means deciding quickly which alerts need investigation. Analysts check the rule, the hosts involved and recent context, then close, escalate or investigate. Time pressure makes bulk closing tempting, which is the behaviour Amara's study aims to reduce.
 
 ### Flow records as a second view
 
@@ -168,17 +174,27 @@ You will (1) design a before-after study with controls; (2) secure ethics and da
 
 Amara uses an interrupted time-series design: four weeks before tuning and four weeks after, measuring alerts per hundred gigabytes, precision and recall each week. A true randomised design is impossible because tuning applies to the whole sensor estate, so she strengthens inference by normalising for traffic, recording all other changes during the period and testing recall on the same labelled event set before and after.
 
+The design compares alert volume and detection of key events before and after documented tuning, using the same replay set. Measures and analysis are fixed in advance.
+
 ### 3.2 Ethics and data
 
 Alerts contain internal addresses, hostnames and sometimes usernames. Corvane exports alerts with addresses replaced by consistent pseudonyms and removes payload excerpts, which could contain personal data. Amara's ethics approval covers interviews with analysts and the use of pseudonymised alert data; no customer data are involved. Data remain on a Corvane-managed analysis machine she accesses remotely, and only aggregate results leave it.
+
+Alerts contain addresses and hostnames that can identify staff. Amara works under a data agreement, uses synthetic replays where possible, and stores extracts securely.
 
 ### 3.3 Tuning governance
 
 Every tuning change is proposed by Amara, reviewed by an analyst and approved by the security lead, then recorded with the rule identifier, the change and the reason. Changes that disable a rule require evidence that the protected service does not exist at Corvane. This governance prevents the study from weakening detection to improve its numbers.
 
+Every tuning change is proposed, reviewed by a second analyst, and recorded with its reason, so no detection is removed without justification.
+
+Changes can be reversed quickly.
+
 ### 3.4 Reproducibility
 
 All analysis is scripted, with scripts and synthetic sample data in a repository. Each figure is generated from code, and the dissertation lists the script version for each table, so examiners can rerun the analysis on the synthetic data.
+
+Reproducibility requires that someone else could repeat the analysis and get the same result. Amara keeps the rule set versions, replay set identifiers, scripts and settings in version control, records the environment used, and writes a short guide to rerunning each step. Where company data cannot be shared, she provides synthetic data with the same structure so the method itself can be checked.
 
 ### Analysis plan
 
@@ -223,6 +239,10 @@ You will (1) identify alternative explanations for falling alerts; (2) test them
 
 If alerts fall after tuning, tuning is the obvious explanation but not the only one. Traffic might have dropped, a sensor might have failed, a noisy server might have been retired, or analysts might have changed how alerts are exported. A dissertation that ignores these risks claiming an effect that is not there.
 
+A drop in alerts could come from tuning, but also from lower traffic, a holiday period or a sensor outage. Ruling these out strengthens the claim.
+
+Each is checked in turn.
+
 ### Lab — Normalising by traffic
 
 ```python
@@ -253,9 +273,13 @@ mean per100GB pre 512.1 post 190.9; traffic fell 25.5%
 
 Raw alerts fall from about 4,200 to 1,200 per week, a 72 percent drop. But traffic also fell by 25.5 percent in the post period, because a seasonal customer moved to another provider. Normalised alerts fall from 512 to 191 per hundred gigabytes, still a large reduction, so traffic explains only part of the raw change. The weekly series also shows a sharp step at week five, matching the tuning date, rather than a gradual decline.
 
+Normalising per unit of traffic removes volume effects.
+
 ### 4.3 Testing other explanations
 
 Sensor health logs show no outages. The change register shows no export changes. One noisy server was retired in week six, after the step, so it cannot explain the week-five change. Amara records each explanation, the evidence checked and her conclusion in a table.
+
+Amara tests each alternative explanation against the evidence. She compares traffic volume, sensor uptime and calendar periods across the before and after windows, and checks whether alert volume changed on rules that were not tuned. If untuned rules stayed stable while tuned rules fell, tuning becomes the most plausible explanation.
 
 ### Analyst behaviour
 
@@ -300,17 +324,31 @@ You will (1) write the dissertation proposal; (2) pilot tuning on one sensor; (3
 
 The proposal states the question, measures, design, governance, ethics and analysis plan. It sets success criteria in advance: at least a 50 percent reduction in normalised alert volume with recall no lower than 0.90 on the labelled set.
 
+The proposal sets out the question, design, measures, timeline, risks and data handling, and is approved by her supervisor and Corvane before work begins. It becomes the reference against which later changes are judged, and any departure is recorded with a reason.
+
 ### 5.2 Pilot sensor
 
 Tuning is piloted on one sensor for two weeks. Amara reviews the top twenty noisiest rules by volume, consulting closure notes. Most noise comes from three sources: a backup server's scheduled transfers matching a data-exfiltration rule, a monitoring system's scans of its own hosts and rules for services Corvane does not run.
+
+The pilot uses one sensor in one data centre, limiting impact if tuning removes something important, while giving realistic evidence.
+
+Analysts on that sensor agree to report anything unusual.
 
 ### 5.3 Pilot changes
 
 The backup server and monitoring system are added as documented exceptions to the specific rules they trigger, not globally. Rules for absent services are disabled with evidence. Thresholds for one scanning rule are raised from five to twenty connections per minute after analysts confirm legitimate tools exceed five.
 
+Each pilot change is logged with the rule, the reason, the reviewer and the expected effect, then compared with what actually happened.
+
+Unexpected effects are reviewed before further changes.
+
+Patterns guide rollout.
+
 ### 5.4 Pilot lessons
 
 The pilot shows that exceptions must be narrow: an early draft exempted the backup server from all rules, which reviewers rejected. The procedure is revised to require rule-specific exceptions with an expiry date.
+
+The pilot showed which parts of the method worked and which needed revision. Amara records lessons such as rules whose tuning needed more context than expected, and adjusts the procedure for the full rollout. Lessons are written down promptly with evidence, so the rollout plan is based on what happened rather than on recollection.
 
 ### Choosing what to tune first
 
@@ -355,6 +393,8 @@ You will (1) apply tuning estate-wide; (2) measure precision and recall; (3) ana
 
 After the pilot, the revised procedure is applied to all sensors in week five, with each change in the register. Amara collects four weeks of post-tuning data.
 
+The rollout extends tuning to both sensors in planned stages, using the revised procedure from the pilot. Each stage has the same review and logging, plus checks that alert volume and key detections behave as expected. Analysts are briefed before each stage, and any surprising drop in a rule's alerts is investigated before the next stage begins.
+
 ### Lab — Precision and recall
 
 ```python
@@ -378,9 +418,19 @@ alert reduction 72.0%; true detections lost 1
 
 Alerts fall 72 percent in raw terms. Precision rises from 0.009 to 0.031, meaning analysts now see about three actionable alerts per hundred instead of one. Recall falls from 0.950 to 0.925: one labelled event that previously alerted no longer does. Both success criteria are met, but the lost detection must be examined, not hidden.
 
+She reports both volume reduction and detection retention with intervals.
+
+She also notes which rules drove most of the reduction, because a few noisy rules often account for most volume.
+
 ### 6.3 Examining the miss
 
 The missed event was an authorised test of unusual file transfer from a server that the backup exception now covers. The exception was narrower than in the pilot draft but still too broad in time. Amara proposes restricting the backup exception to the scheduled backup window, and checks on the labelled set that this restores the detection without much increase in alerts.
+
+The miss is treated as a lesson, not hidden.
+
+Its cause informs the review procedure.
+
+Retesting confirms the fix.
 
 ### Weekly stability
 
@@ -429,17 +479,31 @@ You will (1) structure the dissertation; (2) write limitations; (3) make recomme
 
 The dissertation follows introduction, literature, method, results, competing explanations, discussion and conclusion, with appendices for the change register, scripts and synthetic data.
 
+The dissertation follows a clear structure: introduction and question, literature, method, results, discussion, limitations and recommendations. Each chapter opens by stating its purpose and closes by linking to the next. Readers can then find what they need quickly, and examiners can check that the argument flows from question to evidence to conclusion without gaps.
+
+Signposting helps busy readers.
+
 ### 7.2 Limitations
 
 One organisation, eight weeks, a labelled set of forty events, and a before-after design without randomisation. Labels depend on past incident records, which may miss events nobody noticed. Amara states each limit and its likely effect on results.
+
+Amara states her study's limitations honestly: a single partner, a limited period, synthetic replays that may not capture every real pattern, and a small set of key events. For each, she explains the likely effect on the results and how future work could address it.
 
 ### 7.3 Recommendations
 
 Corvane should keep the change register, review exceptions quarterly, maintain the labelled set by adding each new confirmed incident and rerun recall checks after any major tuning. Other organisations can adopt the procedure, but must build their own labelled sets.
 
+Recommendations follow from the evidence: adopt documented tuning with peer review, measure detection retention alongside volume, and review tuned rules periodically. Each is practical for a small team.
+
+Each states its cost, owner and how success would be measured.
+
+Priorities are stated.
+
 ### 7.4 Writing for practitioners
 
 A two-page summary for Corvane leads with the outcome in operational terms: analysts now handle about 1,200 alerts a week instead of 4,200, with the same detections.
+
+Practitioners need findings they can act on, so Amara also writes a short summary for Corvane's team. It explains in plain language what was done, what changed, what the risks were, and what to do next, with one table of key results. Technical detail stays in the dissertation, while the summary focuses on decisions and next steps that busy analysts and managers can apply directly.
 
 ### Ethical reflection
 
@@ -488,17 +552,27 @@ You will (1) obtain independent review; (2) prepare the viva; (3) plan follow-up
 
 A second analyst at Corvane, not involved in tuning, reviews a random sample of fifty changes against the register's justifications. Forty-eight are judged appropriate; two exceptions are tightened.
 
+Before submission, an independent reviewer who was not involved in the study reads the dissertation and checks whether conclusions follow from the evidence. Amara records each comment and her response, revising where the reviewer found claims stronger than the data supported. This step catches blind spots that close involvement makes hard to see, and it prepares her for examination.
+
 ### 8.2 Viva preparation
 
 Amara expects questions on causation, generalisability and the lost detection. She prepares a slide showing the normalised series and the explanations table.
+
+Preparing for the viva, Amara rereads the dissertation, lists likely questions about design, measures, alternatives and the missed detection, and prepares short evidence-based answers. She practises explaining her contribution in a few sentences. A mock viva with colleagues helps her handle unexpected questions calmly and admit uncertainty where evidence is limited, which examiners respect more than overconfident answers.
 
 ### 8.3 The viva
 
 Examiners ask why recall was measured on only forty events. Amara explains the trade-off between label quality and quantity and proposes growing the set over time.
 
+In the viva, examiners test whether Amara understands her work and its limits. She listens carefully, answers the question asked, and refers to specific evidence in the dissertation. When she does not know something, she says so and explains how it could be found out. She notes any corrections the examiners request, so they can be addressed promptly and accurately afterwards.
+
 ### 8.4 Follow-up
 
 Corvane adopts quarterly exception reviews. Amara plans a short paper with Dr Brandt.
+
+After the viva, Amara makes required corrections and records each change. She sends Corvane the practitioner summary, returns or deletes company data as the agreement requires, and archives her code and synthetic data. She also considers publishing a short paper, with the partner's agreement, so other small teams can benefit from the findings and method.
+
+She thanks the analysts who took part, and offers a short session explaining results to the team.
 
 ### Answering a hostile question
 
