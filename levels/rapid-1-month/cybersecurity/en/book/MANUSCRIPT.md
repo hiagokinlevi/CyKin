@@ -3,7 +3,7 @@
 - Edition: working draft, 11 October 2026
 - Language: English (`en`)
 - Course: rapid, one month; approximately 80 hours of planned study
-- Status: Eight English chapters drafted, with exercises EX001–EX024 and worked results. The rapid-course planning minimum is 20 lessons and there is no maximum. Technical, language and source review are **not complete**.
+- Status: Nine English chapters drafted, with exercises EX001–EX025 and worked results. The rapid-course planning minimum is 20 lessons and there is no maximum. Technical, language and source review are **not complete**.
 - Maintainer: [hiagokinlevi](https://github.com/hiagokinlevi)
 - Original text: [CC0 1.0](../../../../../LICENSE), within the [rights notice](../../../../../RIGHTS.md). External sources linked below retain their own rights.
 
@@ -11,7 +11,7 @@
 
 Read the explanation before attempting an exercise. Work only with the fictional library described here. Keep a short notebook with the facts you observe, the assumptions you make, and the question you would ask next. Compare your responses with the worked results at the end. A plausible alternative can be correct when it identifies its assumptions and supports its decision with evidence.
 
-This is the **one principal book** for the English rapid Cybersecurity course. It incorporates the earlier Security Literacy draft. Each authored chapter teaches one idea with an example and exercises. Worked results are in the final appendix. The planning minimum for this rapid book is 20 lessons, and there is no maximum. Eight drafted chapters are not that minimum and are not a finished qualification.
+This is the **one principal book** for the English rapid Cybersecurity course. It incorporates the earlier Security Literacy draft. Each authored chapter teaches one idea with an example and exercises. Worked results are in the final appendix. The planning minimum for this rapid book is 20 lessons, and there is no maximum. Nine drafted chapters are not that minimum and are not a finished qualification.
 
 | Subject-chapter | Authored exercises | Draft status |
 |---|---:|---|
@@ -23,6 +23,7 @@ This is the **one principal book** for the English rapid Cybersecurity course. I
 | 6. A handwritten change is not a correction | EX022 | Draft |
 | 7. A pending queue during an outage | EX023 | Draft |
 | 8. A weak procedure is not yet a vulnerability | EX024 | Draft |
+| 9. A verdict tally is not a severity | EX025 | Draft |
 
 <a id="ch-01"></a>
 
@@ -252,7 +253,7 @@ Use the fictional case only. Compare your work with the final worked-results app
 - **Rubric:** Credit for examples that match each function, recognize shared responsibility, and avoid treating the functions as a once-only sequence.
 
 <!-- cykin:chapter-navigation:start ch-01 -->
-### Continue studying — chapter 01 of 08
+### Continue studying — chapter 01 of 09
 
 [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 →](#ch-02)
 
@@ -455,7 +456,7 @@ Keep every activity within the synthetic paper-exercise boundary. Worked results
 - **Rubric:** Credit for an observable measure, a plausible decision difference, and limits about synthetic data and one-session scope.
 
 <!-- cykin:chapter-navigation:start ch-02 -->
-### Continue studying — chapter 02 of 08
+### Continue studying — chapter 02 of 09
 
 [← Chapter 01](#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 →](#ch-03)
 
@@ -710,7 +711,7 @@ Use the model and invented records above; do not test a live service. Worked res
 - **Rubric:** Full credit requires treating the new information as a report, not as independently observed fact; changing the stale-09:00-only conclusion conditionally; and keeping the worker's decision within the approved fallback rule.
 
 <!-- cykin:chapter-navigation:start ch-03 -->
-### Continue studying — chapter 03 of 08
+### Continue studying — chapter 03 of 09
 
 [← Chapter 02](#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 →](#ch-04)
 
@@ -945,7 +946,7 @@ Use the program and output in Section 4.4. Do not contact a real library. Worked
 - **Rubric:** Credit when each sentence stays inside the run, the 11:43 line is not redescribed as REFUSE, and the 11:40 report is still unverified.
 
 <!-- cykin:chapter-navigation:start ch-04 -->
-### Continue studying — chapter 04 of 08
+### Continue studying — chapter 04 of 09
 
 [← Chapter 03](#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 →](#ch-05)
 
@@ -1025,7 +1026,7 @@ A true booking state can be shared when it answers the asker's own question. A p
 - **Rubric:** Credit if the slot is described as booked and no person is named or invented.
 
 <!-- cykin:chapter-navigation:start ch-05 -->
-### Continue studying — chapter 05 of 08
+### Continue studying — chapter 05 of 09
 
 [← Chapter 04](#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 →](#ch-06)
 
@@ -1106,7 +1107,7 @@ Changing a snapshot so that a rule would have allowed the action destroys the ev
 - **Rubric:** Credit only if the mark is called an alteration, confirmation stays refused on that sheet, and the alternative is a pending request or an owner-checked later copy.
 
 <!-- cykin:chapter-navigation:start ch-06 -->
-### Continue studying — chapter 06 of 08
+### Continue studying — chapter 06 of 09
 
 [← Chapter 05](#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 →](#ch-07)
 
@@ -1189,7 +1190,7 @@ A down page removes one way to see bookings. It does not authorize memory, yeste
 - **Rubric:** Credit if the state is "not confirmed," no name is stored, and yesterday's sheet is excluded because it is a different snapshot.
 
 <!-- cykin:chapter-navigation:start ch-07 -->
-### Continue studying — chapter 07 of 08
+### Continue studying — chapter 07 of 09
 
 [← Chapter 06](#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 →](#ch-08)
 
@@ -1272,9 +1273,104 @@ Harbor Library's exercise shows a stale procedure and the harm that procedure ca
 - **Rubric:** Credit if the outage stays unexplained, the supported class is a weak procedure, and neither vulnerability nor incident is asserted as fact.
 
 <!-- cykin:chapter-navigation:start ch-08 -->
-### Continue studying — chapter 08 of 08
+### Continue studying — chapter 08 of 09
 
-[← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+[← Chapter 07](#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 →](#ch-09)
+
+Continue to the next authored lesson.
+<!-- cykin:chapter-navigation:end -->
+
+<a id="ch-09"></a>
+
+## Chapter 9 — A verdict tally is not a severity
+
+<!-- cykin:lesson-figures:start ch-09 -->
+### Lesson map
+
+Lesson 09 published. Map, example, EX025.
+
+```mermaid
+flowchart TD
+  A["One logged action"] --> R["Written rule returns one label"]
+  R --> C["That label's counter increases by one"]
+  C --> T["The line reports how many actions received each label"]
+  T --> K["Impact and likelihood stay unmeasured"]
+```
+
+The last box is the limit. Printing the counters ends the tally. The flowchart does not continue into a score.
+
+### Logical drawing
+
+```text
+Chapter 4 log, four actions
+        |
+        +-- REFUSE 1        one confirmation was not allowed
+        +-- ALLOW 1         the rule matched; the room was not declared free
+        +-- OUT OF SCOPE 1  one action asked a different question
+        +-- STOP 1          one action left the paper exercise
+        +-- UNKNOWN 0       no action missed every branch
+        |
+        +-- the line is a census of labels
+        +-- impact is not in the line
+        +-- likelihood is not in the line
+```
+<!-- cykin:lesson-figures:end ch-09 -->
+
+### Learning outcomes
+
+After this chapter, you should be able to:
+
+1. Read `STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0` as four counted labels and one empty remainder.
+2. Keep that census separate from adverse impact and from likelihood.
+3. Refuse a score, a percentage, or a rank built only from those five numbers.
+
+### 9.1 The program counts labels
+
+Chapter 4's program walks the synthetic log once. Each action receives one label, and that label's counter increases by one. The printed line is a census of this log:
+
+`STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0`
+
+Four actions entered. Four decided labels came out, one of each class, and the remainder stayed at zero. Those equal counts belong to the exercise design. The log was written with one action per class so every branch would appear. A later week at a real desk could show forty ALLOW lines and one REFUSE line. That single REFUSE could be the only line on which a resident would have been told that a taken room was free. Equal classroom counts do not make the classes weigh the same.
+
+`UNKNOWN 0` means every action in this log matched a branch of the written rule. The outage still has no tested cause. The reported 11:40 sheet is still unchecked. The library still has open questions. None of those facts was an action in the log, so none of them can move a counter.
+
+### 9.2 Worked example
+
+[NIST SP 800-30 Rev. 1](https://doi.org/10.6028/NIST.SP.800-30r1), as carried in the [CSRC glossary entry for risk](https://csrc.nist.gov/glossary/term/risk), treats risk as a measure of the extent to which a potential circumstance threatens an entity, typically a function of adverse impact and likelihood. Accessed 13 October 2026. The Harbor tally supplies neither input. It does not estimate how often staff would trust a stale printout, and it does not measure the harm of a wrong confirmation. This chapter uses that distinction only. It does not perform a risk assessment, and it does not assign the library a level.
+
+| Sentence a classmate proposed | What the printed line can support | Decision |
+|---|---|---|
+| "The run labeled one action of each class, and no action was UNKNOWN." | The five counters | Keep, as a count |
+| "Half the verdicts were adverse, so the figure is 50 percent." | No impact and no likelihood | Refuse the percentage |
+| "ALLOW 1 shows that one room was confirmed free." | The rule found no later booking for that slot | Refuse the availability claim |
+| "UNKNOWN 0 shows that the 11:30 outage is understood." | The log had no unmatched action | Refuse the causal claim |
+| "Give the library 2.5 and close the exercise." | No scale, and no owner has accepted a current source | Refuse the score and the closure |
+
+The report that survives is the four Chapter 4 decisions, named one by one, plus the statement that impact and likelihood were not measured. Chapter 8 kept the demonstrated problem in the class "weak procedure." This chapter leaves that class where it is.
+
+### 9.3 What the counters leave open
+
+A facilitator can still ask which approved source, if any, may replace the 09:00 paper. That question sits outside the tally. Treating the counters as balanced would hide the pending Room 2 at 15:00 request from Chapter 7. The arithmetic of this log is finished. The booking decision is still open.
+
+### Chapter 9 summary
+
+The tally is a census of labels on one synthetic log. Equal counts come from the way that log was built. They do not state a severity, a probability, or permission to stop asking which source is current.
+
+### Chapter 9 exercises
+
+### EX025 — Take the score off the dashboard
+
+- **Objective:** Keep the Chapter 4 tally as a count.
+- **Input:** A classmate's dashboard says, "Harbor risk score 25. Two adverse verdicts out of four is 50 percent, so the library is Medium and the exercise can close."
+- **Safe condition:** Use the printed tally from Chapter 4. Do not invent a second run or open a live site.
+- **Task:** Replace the dashboard with four sentences: what was counted, why 50 percent does not follow, why Medium does not follow, and which decision remains open.
+- **Expected evidence:** Four sentences a reader can check against the printed line and Chapters 4, 7 and 8.
+- **Rubric:** Credit when the tally stays a count of four labels, the percentage and the rank are both refused, and the pending confirmation is still unresolved. A replacement number does not earn credit.
+
+<!-- cykin:chapter-navigation:start ch-09 -->
+### Continue studying — chapter 09 of 09
+
+[← Chapter 08](#ch-08) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 The chapter index leads to the next course in the study path.
 <!-- cykin:chapter-navigation:end -->
@@ -1291,12 +1387,13 @@ The chapter index leads to the next course in the study path.
 - [OWASP, Threat Modeling Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html) — system-model elements, data flows, and trust boundaries. Accessed 11 October 2026.
 - [NIST CSRC glossary, “vulnerability”](https://csrc.nist.gov/glossary/term/vulnerability) — weakness that could be exploited or triggered by a threat source. Accessed 13 October 2026.
 - [NIST CSRC glossary, “threat”](https://csrc.nist.gov/glossary/term/threat) — circumstance or event with the potential to harm operations or assets. Accessed 13 October 2026.
+- [NIST SP 800-30 Rev. 1](https://doi.org/10.6028/NIST.SP.800-30r1), through the [CSRC glossary entry for “risk”](https://csrc.nist.gov/glossary/term/risk) — risk as impact together with likelihood. Accessed 13 October 2026. The Harbor tally is not an application of that method.
 
 Harbor Library, its services, event log, and worked decisions are original fictional teaching material. No text or figures from the linked sources are reproduced here. The definitions and framework descriptions are paraphrased and tied to those primary references.
 
 ## Final appendix — worked results and assessment notes
 
-These results match EX001–EX024. Equivalent answers earn credit when they keep the same evidence limits. Reaching the 20-lesson minimum is separate from this answer key.
+These results match EX001–EX025. Equivalent answers earn credit when they keep the same evidence limits. Reaching the 20-lesson minimum is separate from this answer key.
 
 ### EX001 — Worked result
 
@@ -1393,3 +1490,7 @@ Heard 09:12; room Room 2; start 15:00; state not confirmed. Yesterday's 09:00 pa
 ### EX024 — Worked result
 
 The exercise observed a 09:00 paper that omitted a later synthetic booking, and a booking view that was described as unavailable, with no tested cause. The supported class is a weak confirmation procedure. A software vulnerability, an attack, and an incident are unproven: no program flaw was demonstrated, and no owner declared an incident.
+
+### EX025 — Worked result
+
+The program counted one STOP, one OUT OF SCOPE, one REFUSE and one ALLOW on the four-action log, and left UNKNOWN at zero. Fifty percent would turn two of those labels into a harm rate. The printed line does not measure harm, and it does not measure how often staff would trust the stale paper. Medium names a rank this exercise never defined. The Room 2 at 15:00 request stays pending until an approved current source exists. Chapter 8's weak confirmation procedure is unchanged.

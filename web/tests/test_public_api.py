@@ -63,10 +63,11 @@ def test_public_guide_and_lesson(client):
 
 def test_unwritten_chapter_is_not_served_as_lesson(client):
     guide = client.get("/api/courses/rapid-1-month/cybersecurity/en").json()
-    assert guide["planned_chapters"] == 8
-    assert guide["published_chapters"] == 8
+    assert guide["planned_chapters"] == 9
+    assert guide["published_chapters"] == 9
     assert guide["lessons"][3]["published"] is True
-    response = client.get("/api/lessons/rapid-1-month/cybersecurity/en/9")
+    assert guide["lessons"][8]["published"] is True
+    response = client.get("/api/lessons/rapid-1-month/cybersecurity/en/10")
     assert response.status_code == 404
     assert response.json()["detail"] == "This chapter is still a plan"
 

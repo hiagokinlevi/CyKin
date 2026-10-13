@@ -6,7 +6,7 @@ license: CC0-1.0
 
 # Cybersecurity — Rapid course course skill
 
-Use this **one skill for the whole 1 month course**. The course has one principal book per language. Read the English manuscript's authored chapters and never present a plan as a completed lesson. The planning minimum is 20 lessons and there is no maximum; eight English chapters are drafted, which is not the minimum and not a finished book.
+Use this **one skill for the whole 1 month course**. The course has one principal book per language. Read the English manuscript's authored chapters and never present a plan as a completed lesson. The planning minimum is 20 lessons and there is no maximum; nine English chapters are drafted, which is not the minimum and not a finished book.
 
 ## Course sources
 
@@ -28,10 +28,10 @@ At the end of an authored chapter or a book-plan chapter summary, use its **Cont
 1. Ask for the learner's level and language; use this course's chapter index to select the relevant subject. English is the editorial reference until other editions are reviewed.
 2. Check whether that chapter is authored. If only the plan exists, say so and label any added explanation or practice as new supplementary material.
 3. Teach from the available chapter with a clear example, then use its authored exercises and worked answers. Keep the response at the course's planned depth.
-4. Cite the exact Markdown source and any underlying external reference. Use only authorized, synthetic or sanitized practical environments. Never claim accreditation or a completed 300-page book from a folder alone.
+4. Cite the exact Markdown source and any underlying external reference. Use only authorized, synthetic or sanitized practical environments. Never claim accreditation, or a finished book, from a folder alone. Page count is not proof of completion.
 
 ## Continue the curriculum
 
-After chapter 04, check the chapter index and the learner's exercise record. The next stop is [course 002: Information security / Rapid course](../../information-security/en/SUBJECTS.md). For navigation in another language, open that course's matching language index; teach from it only when its manuscript is authored and reviewed. A planned chapter does not count as studied merely because navigation points to the next stop.
+After the last authored chapter, check the chapter index and the learner's exercise record. The next stop is [course 002: Information security / Rapid course](../../information-security/en/SUBJECTS.md). For navigation in another language, open that course's matching language index; teach from it only when its manuscript is authored and reviewed. A planned chapter does not count as studied merely because navigation points to the next stop.
 
 Original maintainer-owned content is dedicated under [CC0 1.0](../../../../LICENSE); third-party sources retain their own rights.

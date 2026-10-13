@@ -8,13 +8,13 @@
 
 **Exit goal:** recognize and explain the core risks; complete one guided task in cybersecurity. **Practical work:** follow a contained worked example. **Assessment plan:** short quiz, observed lab and a small annotated artifact.
 
-This is one course. It has **one course skill** and **one principal book in each language edition**. Its **4 curricular subjects are the chapters of that book**. Every finished chapter must teach the subject, give worked examples and exercises; worked answers belong at the end of the same book. The 300-page A4 and 50-exercise requirements apply to a finished edition, not to the plans below.
+This is one course. It has **one course skill** and **one principal book in each language edition**. The older index has **4 subject modules**. The English book has grown past that index; its chapter index lists the authored lessons. Worked answers belong at the end of the same book. The planning minimum is 20 lessons, and there is no maximum. There is no page quota and no exercise quota.
 
 [Home](../../../README.md) · [Complete study path](../../../STUDY_PATH.md) · [All courses at this level](../README.md) · [Area map](../../../AREA_MAP.md) · [Project index](../../../PROJECTS.md) · [Course skill](skill/SKILL.md) · [Supplementary playbooks](../../../playbooks/cybersecurity/README.md)
 
 ## Position in the complete study path
 
-**Course 001 of 207.** Read chapters 01–04 in the chosen language's chapter index, then continue to the next course. This is the first course. Next: [Information security / Rapid course](../information-security/README.md).
+**Course 001 of 207.** Read the chosen language's chapter index from the first row through the last authored lesson, then continue to the next course. This is the first course. Next: [Information security / Rapid course](../information-security/README.md).
 
 ## Language editions
 

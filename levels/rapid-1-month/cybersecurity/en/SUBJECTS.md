@@ -1,6 +1,6 @@
 # Subjects and book chapters — Cybersecurity / Rapid course / English
 
-**One course, one principal book, one course skill.** Eight English lessons are authored. The rapid-course planning minimum is 20 lessons, and there is no maximum. Links marked Lesson open authored teaching; a planned chapter is a summary, not a completed lesson.
+**One course, one principal book, one course skill.** Nine English lessons are authored. The rapid-course planning minimum is 20 lessons, and there is no maximum. Links marked Lesson open authored teaching; a planned chapter is a summary, not a completed lesson.
 
 English is the reference edition.
 
@@ -17,6 +17,7 @@ English is the reference edition.
 | 5 | [05](book/PLAN.md#ch-05) | What may be said about a booking | 4 | — | 1 | [Lesson](book/MANUSCRIPT.md#ch-05) | [06 · Lesson](book/MANUSCRIPT.md#ch-06) |
 | 6 | [06](book/PLAN.md#ch-06) | A handwritten change is not a correction | 4 | — | 1 | [Lesson](book/MANUSCRIPT.md#ch-06) | [07 · Lesson](book/MANUSCRIPT.md#ch-07) |
 | 7 | [07](book/PLAN.md#ch-07) | A pending queue during an outage | 4 | — | 1 | [Lesson](book/MANUSCRIPT.md#ch-07) | [08 · Lesson](book/MANUSCRIPT.md#ch-08) |
-| 8 | [08](book/PLAN.md#ch-08) | A weak procedure is not yet a vulnerability | 4 | — | 1 | [Lesson](book/MANUSCRIPT.md#ch-08) | [Course 002 →](../../information-security/en/SUBJECTS.md) |
+| 8 | [08](book/PLAN.md#ch-08) | A weak procedure is not yet a vulnerability | 4 | — | 1 | [Lesson](book/MANUSCRIPT.md#ch-08) | [09 · Lesson](book/MANUSCRIPT.md#ch-09) |
+| 9 | [09](book/PLAN.md#ch-09) | A verdict tally is not a severity | 4 | — | 1 | [Lesson](book/MANUSCRIPT.md#ch-09) | [Course 002 →](../../information-security/en/SUBJECTS.md) |
 
-A planned next step is a navigation target, not an authored lesson. Keep the completion position at the first unwritten chapter. Page and exercise columns are editorial targets. The book is complete only after its content and A4 rendering meet the publication gate.
+A planned next step is a navigation target, not an authored lesson. Keep the completion position at the first unwritten chapter. Page and exercise columns are editorial targets. The planning minimum is 20 lessons. Page count is not the publication gate. The [book standard](../../../../BOOK_STANDARD.md) states what a finished edition still requires.

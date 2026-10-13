@@ -1,6 +1,6 @@
 # Principal book plan — Cybersecurity / Rapid course / English
 
-**One book for this course and language.** 4 curricular subjects are its chapters. Duration: 1 month; planned effort: approximately 80 hours. Audience: New learners. Entry knowledge: No prior security role; basic digital literacy. Intended outcome: recognize and explain the core risks; complete one guided task in cybersecurity.
+**One book for this course and language.** Nine English chapters are authored. The older index had four subject modules. The rapid-course planning minimum is 20 lessons, and there is no maximum. Duration: 1 month; planned effort: approximately 80 hours. Audience: New learners. Entry knowledge: No prior security role; basic digital literacy. Intended outcome: recognize and explain the core risks; complete one guided task in cybersecurity.
 
 **Editorial state:** draft manuscript exists; release A4 validation and review pending. English reference edition.
 
@@ -8,7 +8,7 @@
 
 ## Book requirements
 
-A finished book must contain at least 300 actual A4 pages and 50 substantive exercises with worked results. The current 320-page budget is a plan, not measured pages. Every chapter needs teaching, definitions, a worked example, practical activity, errors and limits, exercises and a synthesis. The final appendix holds answers keyed to the exercise IDs. Cite verifiable sources, label synthetic cases, and review for technical accuracy, rights and accessibility.
+Every authored chapter needs teaching, definitions, a worked example, a practical limit, an exercise and a synthesis. The final appendix holds answers keyed to the exercise IDs. Cite verifiable sources, label synthetic cases, and review for technical accuracy, rights and accessibility. There is no page quota and no exercise quota. The [book standard](../../../../../BOOK_STANDARD.md) states the publication rule. The planning minimum for this rapid book is 20 lessons, and there is no maximum.
 
 ## Primary source starting points
 
@@ -40,7 +40,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on the entry knowledge and prepares Chapter 02. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 01 of 08 (outline):** [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 (draft) →](MANUSCRIPT.md#ch-02)
+**Continue studying — chapter 01 of 09 (outline):** [← Course home](../../README.md) · [Course chapter index](../SUBJECTS.md) · [Chapter 02 (draft) →](MANUSCRIPT.md#ch-02)
 
 <a id="ch-02"></a>
 
@@ -60,7 +60,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 01 and prepares Chapter 03. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 02 of 08 (outline):** [← Chapter 01 (draft)](MANUSCRIPT.md#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 (draft) →](MANUSCRIPT.md#ch-03)
+**Continue studying — chapter 02 of 09 (outline):** [← Chapter 01 (draft)](MANUSCRIPT.md#ch-01) · [Course chapter index](../SUBJECTS.md) · [Chapter 03 (draft) →](MANUSCRIPT.md#ch-03)
 
 <a id="ch-03"></a>
 
@@ -80,7 +80,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 02 and prepares Chapter 04. This is an editorial brief, not a completed lesson.
 
-**Continue studying — chapter 03 of 08 (outline):** [← Chapter 02 (draft)](MANUSCRIPT.md#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 (draft) →](MANUSCRIPT.md#ch-04)
+**Continue studying — chapter 03 of 09 (outline):** [← Chapter 02 (draft)](MANUSCRIPT.md#ch-02) · [Course chapter index](../SUBJECTS.md) · [Chapter 04 (draft) →](MANUSCRIPT.md#ch-04)
 
 <a id="ch-04"></a>
 
@@ -100,7 +100,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Learning sequence:** Builds on Chapter 03 and prepares the worked-answer appendix. Read the authored chapter for the teaching.
 
-**Continue studying — chapter 04 of 08 (outline):** [← Chapter 03 (draft)](MANUSCRIPT.md#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 (draft) →](MANUSCRIPT.md#ch-05)
+**Continue studying — chapter 04 of 09 (outline):** [← Chapter 03 (draft)](MANUSCRIPT.md#ch-03) · [Course chapter index](../SUBJECTS.md) · [Chapter 05 (draft) →](MANUSCRIPT.md#ch-05)
 
 <a id="ch-05"></a>
 
@@ -108,7 +108,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Authored.** [Read the lesson](MANUSCRIPT.md#ch-05). A resident may learn that a slot is booked without receiving another person's name. The exercise stores no names.
 
-**Continue studying — chapter 05 of 08 (outline):** [← Chapter 04 (draft)](MANUSCRIPT.md#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 (draft) →](MANUSCRIPT.md#ch-06)
+**Continue studying — chapter 05 of 09 (outline):** [← Chapter 04 (draft)](MANUSCRIPT.md#ch-04) · [Course chapter index](../SUBJECTS.md) · [Chapter 06 (draft) →](MANUSCRIPT.md#ch-06)
 
 <a id="ch-06"></a>
 
@@ -116,7 +116,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Authored.** [Read the lesson](MANUSCRIPT.md#ch-06). Pencil on the 09:00 sheet destroys the snapshot. It is not an authorized refresh.
 
-**Continue studying — chapter 06 of 08 (outline):** [← Chapter 05 (draft)](MANUSCRIPT.md#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 (draft) →](MANUSCRIPT.md#ch-07)
+**Continue studying — chapter 06 of 09 (outline):** [← Chapter 05 (draft)](MANUSCRIPT.md#ch-05) · [Course chapter index](../SUBJECTS.md) · [Chapter 07 (draft) →](MANUSCRIPT.md#ch-07)
 
 <a id="ch-07"></a>
 
@@ -124,7 +124,7 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Authored.** [Read the lesson](MANUSCRIPT.md#ch-07). The booking view can be down while a four-field pending line still prevents a false confirmation.
 
-**Continue studying — chapter 07 of 08 (outline):** [← Chapter 06 (draft)](MANUSCRIPT.md#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 (draft) →](MANUSCRIPT.md#ch-08)
+**Continue studying — chapter 07 of 09 (outline):** [← Chapter 06 (draft)](MANUSCRIPT.md#ch-06) · [Course chapter index](../SUBJECTS.md) · [Chapter 08 (draft) →](MANUSCRIPT.md#ch-08)
 
 <a id="ch-08"></a>
 
@@ -132,7 +132,15 @@ These are editorial outlines. Each chapter summary ends with links to the previo
 
 **Authored.** [Read the lesson](MANUSCRIPT.md#ch-08). The stale-paper habit is a weakness in the exercise. The book does not establish a software vulnerability or an incident.
 
-**Continue studying — chapter 08 of 08 (outline):** [← Chapter 07 (draft)](MANUSCRIPT.md#ch-07) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
+**Continue studying — chapter 08 of 09 (outline):** [← Chapter 07 (draft)](MANUSCRIPT.md#ch-07) · [Course chapter index](../SUBJECTS.md) · [Chapter 09 (draft) →](MANUSCRIPT.md#ch-09)
+
+<a id="ch-09"></a>
+
+### Chapter 09 — A verdict tally is not a severity
+
+**Authored.** [Read the lesson](MANUSCRIPT.md#ch-09). The Chapter 4 line `STOP 1; OUT OF SCOPE 1; REFUSE 1; ALLOW 1; UNKNOWN 0` counts labels on one synthetic log. Equal counts are not a severity, a likelihood, or a reason to close the exercise.
+
+**Continue studying — chapter 09 of 09 (outline):** [← Chapter 08 (draft)](MANUSCRIPT.md#ch-08) · [Course chapter index](../SUBJECTS.md) · [Next course via chapter index →](../SUBJECTS.md)
 
 ## Practical and assessment plan
 
