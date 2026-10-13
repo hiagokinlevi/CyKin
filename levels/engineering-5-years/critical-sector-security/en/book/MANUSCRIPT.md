@@ -761,9 +761,13 @@ After this chapter you can (1) structure a program into modules with clear inter
 
 Equipment and protocols have modes: a pump is *stopped*, *starting*, *running*, *stopping* or *tripped*; a session is *unauthenticated*, *authenticated* or *closed*. A finite state machine lists states, the events that cause transitions, guards on transitions and actions. Write it as a table and implement it from the table, rejecting any event not listed for the current state. Unlisted transitions are where both bugs and attacks live: a "stop" command arriving while *starting*, or a "write setpoint" arriving before authentication.
 
+LRWA's pump controller in the worked example below is built exactly this way, so its tests can enumerate every pair.
+
 ### 9.3 Testing
 
 A unit test checks one behaviour of one unit. Good test suites include: typical cases; **boundaries** (minimum, maximum, just inside, just outside); invalid input; and **regression** tests reproducing past bugs. Coverage measures which statements or branches the tests executed; it tells you what was *not* tested, not that the tested code is correct. Python's `unittest` module, in the standard library, is enough for this book.
+
+For LRWA's pump controller, boundary tests include the 30-second start timeout at exactly 30 seconds and just beyond it, and regression tests reproduce every transition bug found in commissioning, so a fixed fault cannot quietly return in a later release.
 
 ### 9.4 Errors, time and concurrency
 
@@ -777,6 +781,8 @@ LRWA's pump controller accepts `start`, `stop`, `trip` and `reset`. The table: *
 
 Implement the table in §9.5 in about 40 lines of Python with a dictionary keyed by `(state, event)`. Write `unittest` cases for all listed transitions and a loop that asserts every unlisted `(state, event)` pair raises an error. Count the unlisted pairs.
 
+Your loop should print the number of unlisted pairs and confirm that each one raises an error and writes a log line. Then add a test showing that a remote reset after a trip is refused, because the guard requires a local operator. That test protects the property the worked example cares about most: an attacker who trips a pump remotely cannot restart it straight into the same fault. Keep the table and the tests in one file so a reviewer can compare them.
+
 ### 9.7 Common errors and limits
 
 - Implementing state logic with scattered flags instead of an explicit table.
@@ -784,6 +790,8 @@ Implement the table in §9.5 in about 40 lines of Python with a dictionary keyed
 - Using wall-clock time for timeouts.
 - Tests that only exercise the happy path; equating coverage with correctness.
 - Silent exception handling.
+
+Each error defeats a property of the pump state machine. Scattered flags make it impossible to list every transition. A default branch would let a start command through while the pump is tripped. A wall-clock timeout could fire early or never after a clock step, and an exception swallowed in the reset path would leave the pump in an unknown mode.
 
 ### Exercises — chapter 9
 
@@ -827,6 +835,8 @@ Testing a system you do not own or have written permission to test can be a crim
 
 A practical ethical decision procedure: (1) state the decision and who is affected; (2) identify duties and the facts that bear on them; (3) list options, including escalation and refusal; (4) assess consequences for the most vulnerable stakeholders; (5) choose, document the reasoning and the dissent, and set a review point. Engineers rarely face clean dilemmas; more often the problem is pressure to sign off on something not yet shown to work. "Not verified" is an honest and sufficient answer.
 
+In the worked example that follows, the TMRP verification engineer uses exactly these five steps.
+
 ### 10.5 Worked example: the deadline sign-off (synthetic)
 
 TMRP's commissioning deadline is Friday. Test T3 (setpoint bounds) has failed: the PS4 controller accepts a setpoint outside the safe range when sent as a NaN value. The vendor proposes commissioning with a note to fix in the next release. As the verification engineer, you apply the procedure: affected people include hospital patients if PS4 behaves unpredictably; your duty is to public safety and honest reporting; options are (a) sign, (b) refuse, (c) commission with a compensating control — remote setpoint writes disabled at the gateway, local-only operation for PS4 — and a dated fix. You recommend (c), record T3 as failed, not waived, and require re-test before remote writes are enabled. The decision is documented and signed by the operations manager, who owns the operational risk.
@@ -835,6 +845,8 @@ TMRP's commissioning deadline is Friday. Test T3 (setpoint bounds) has failed: t
 
 Write a one-page authorisation template for a test of a synthetic system: scope, methods excluded, time window, stop conditions, contacts, data handling and sign-off.
 
+Fill in the template for a bench test of LRWA's telemetry gateway rather than for a live station. Name who may sign it, list the methods that are excluded, such as any traffic towards real RTUs, and give stop conditions that a tester can recognise without interpretation. Include a contact who can halt the test at any time and a rule for what happens to captured data afterwards. A template that would let someone test PS4 during a high-demand period has failed its purpose.
+
 ### 10.7 Common errors and limits
 
 - Treating ethics as a compliance checklist rather than reasoning about harm.
@@ -842,6 +854,8 @@ Write a one-page authorisation template for a test of a synthetic system: scope,
 - Security controls designed without considering safety in emergencies.
 - Signing off what has not been verified because a schedule demands it.
 - Public disclosure of infrastructure weaknesses without coordination.
+
+The deadline sign-off in the worked example shows several of these at once: pressure to commission, a vendor offering a verbal promise to fix later, and a failed test that could easily have been marked waived. The engineer avoided each one by recording the failure and agreeing a compensating control in writing.
 
 ### Exercises — chapter 10
 
@@ -881,9 +895,13 @@ Classic industrial protocols were designed for closed serial networks. **Modbus/
 
 Telemetry is usually polled: the SCADA master asks each RTU in turn. End-to-end latency from a physical event to an operator's screen is the sum of sensor update, RTU scan, link round-trip, master polling wait, processing and display refresh. **Jitter** is variation in latency. Write a budget, measure each element, and compare the total with the requirement; Chapter 36 adds queueing.
 
+LRWA's budget in Lab 5 adds RTU scan, LTE round trip, polling wait and screen refresh to reach one second against a 1.5-second requirement, but the polling wait is the element that varies most, and EX022 shows how it dominates the worst case.
+
 ### 11.4 Zones, conduits and allowlists
 
 Segmentation divides a network into **zones** with similar security requirements and controls the **conduits** between them. This vocabulary comes from the [ISA/IEC 62443 series](https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards). A conduit policy is an **allowlist**: specific source zone, destination zone, protocol and port, everything else denied. Verification is not reading the firewall configuration; it is checking observed flows against intended policy, because configurations drift and undocumented paths (a vendor's remote-access modem, a dual-homed laptop) bypass firewalls.
+
+LRWA's flow review below shows why.
 
 ### 11.5 Worked example: LRWA flow review (synthetic)
 
@@ -922,6 +940,8 @@ Expected output:
 end-to-end latency budget ms: 1000 vs requirement 1500
 ```
 
+Three of the seven flows are violations, and each matches a finding in the worked example: the enterprise reporting script speaking Modbus to a field RTU, the engineering workstation opening SSH directly to an RTU instead of through the jump host, and a SCADA server querying a public DNS resolver. The latency budget line shows a total of one second against the 1.5-second requirement, but that figure uses typical values, so treat it as a starting point for the worst-case analysis in EX022 rather than evidence that R7 is met.
+
 ### 11.7 Common errors and limits
 
 - Equating encryption at one layer with end-to-end protection.
@@ -929,6 +949,8 @@ end-to-end latency budget ms: 1000 vs requirement 1500
 - Verifying segmentation by reading configurations only.
 - Latency budgets with averages instead of worst cases.
 - Allowlists by host instead of by function, which become unmaintainable.
+
+LRWA's flow review illustrates the third error directly: the firewall configuration looked correct, yet a week of flow records showed three violations. Reading configurations would have found none of them. Allowlists written by host would also have needed constant edits as RTUs were added.
 
 ### Exercises — chapter 11
 
@@ -960,6 +982,8 @@ After this chapter you can (1) explain processes, threads, scheduling, memory ma
 
 An OS multiplexes hardware among programs and provides abstractions: **processes** (isolated address spaces), **threads** (concurrent execution within a process), **virtual memory**, **files** and **devices**. The kernel runs privileged; applications request services through system calls. The scheduler decides which thread runs; its policy determines latency.
 
+For LRWA, the SCADA servers and engineering workstations run general-purpose operating systems, while the pump protection logic runs on the RTUs and PLCs at each station. Knowing which code runs where tells you which machines need real-time guarantees and which need hardening, patching and logging of the kind described below.
+
 ### 12.2 Real-time operating systems
 
 A **real-time** OS guarantees bounded response: tasks with deadlines are scheduled so that, if the analysis says they fit, they meet their deadlines. Fixed-priority scheduling with rate-monotonic priority assignment is a classic approach; Liu and Layland's analysis gives a sufficient utilisation bound for periodic tasks under that policy. General-purpose OSes (Windows, desktop Linux) optimise throughput and fairness; their worst-case latency is not bounded without special configuration. Rule: protection functions run on real-time controllers; supervisory functions (HMI, historian) can run on general-purpose systems.
@@ -985,6 +1009,8 @@ LRWA's two SCADA servers run a general-purpose OS. The TMRP baseline: dedicated 
 
 On a Linux virtual machine you own, list listening services (`ss -tulpn`), local accounts with login shells, and enabled services. Write a hardening note: which services you would disable on a single-purpose historian host and why. Do not run this against any system you do not own.
 
+Record the output with the date and the machine's name, and for each service you would disable, note what would break if you were wrong. A historian host at LRWA would need its database service and log forwarding, but rarely a mail server or a file-sharing service. Compare your list with the hardening measures in the SCADA example and explain any difference. The exercise trains the habit of asking why each service is running before deciding whether it should.
+
 ### 12.7 Common errors and limits
 
 - Running protection logic on a general-purpose OS.
@@ -992,6 +1018,8 @@ On a Linux virtual machine you own, list listening services (`ss -tulpn`), local
 - Patching by calendar without assessing exploitability — or never patching because "OT is special".
 - Logs kept only on the host an attacker controls.
 - Allowlisting switched on in production without a learning period.
+
+LRWA's SCADA hardening avoids each of these: named accounts replace shared ones, logs leave the host, allowlisting followed two weeks of learning in a test environment, and the monthly patch window alternates between the two servers. The residual risk is recorded.
 
 ### Exercises — chapter 12
 
@@ -1023,9 +1051,13 @@ After this chapter you can (1) design relational and time-series data models for
 
 [Codd (1970)](https://doi.org/10.1145/362384.362685) introduced the relational model: data as relations (tables) with keys, manipulated by set operations. Asset registers, work orders and user accounts fit it well. Process data — thousands of tags sampled every second — usually goes to a **historian**, a time-series store optimised for append and range queries, often with compression that discards changes smaller than a deadband. Know what your historian discards: forensic analysis may need values it never stored.
 
+LRWA's historian stores the Hollin Hill level with deadband compression, so changes smaller than the deadband are never kept.
+
 ### 13.2 Transactions, consistency and replication
 
 A **transaction** groups operations so that they all happen or none do (atomicity), leaving data valid (consistency), unaffected by concurrent transactions (isolation) and surviving crashes (durability). Replication copies data for availability; when replicas can disagree, systems choose between consistency and availability during a network partition. For operations: an operator's acknowledged alarm must not reappear as unacknowledged after failover; a setpoint change must not be applied twice.
+
+In LRWA's SCADA pair, failover is the moment these properties are tested: integration testing should confirm that acknowledged alarms and applied setpoints survive the switch exactly once.
 
 ### 13.3 Integrity: what each mechanism detects
 
@@ -1038,6 +1070,8 @@ A **transaction** groups operations so that they all happen or none do (atomicit
 ### 13.4 Getting data out without letting attacks in
 
 Enterprise teams want control data for reporting and analytics. The safe pattern is to push data outward — from the control zone to a DMZ historian replica — and let enterprise users query the replica, never the control historian. Where the consequence of control-zone compromise is severe, unidirectional gateways (data diodes) enforce outward-only flow physically. Lab 5's violation — an enterprise script polling an RTU directly — is the anti-pattern.
+
+At LRWA the DMZ historian replica serves finance and asset teams, and the forgotten enterprise script found in the flow review is being retired in its favour.
 
 ### 13.5 Worked example: protecting the incident timeline (synthetic)
 
@@ -1071,6 +1105,8 @@ first mismatch at index: 3 mismatches: 3
 truncated head matches stored index 4: True
 ```
 
+The head hash is what LRWA stores in the incident ticket. Editing the 4 March reading to hide the drop changes the hash at index three and at every later record, so the edit is detected wherever it occurs. The last line shows the weakness: a chain built from the first five records matches the stored hash at index four, so an attacker who deletes the final record and replaces the stored head would go unnoticed. EX025 closes that gap by adding the record count to the anchor.
+
 ### 13.7 Common errors and limits
 
 - Treating historian data as complete when compression or deadbands discard detail.
@@ -1078,6 +1114,8 @@ truncated head matches stored index 4: True
 - Believing integrity mechanisms prove truth; they prove non-modification since anchoring.
 - Bidirectional "reporting" connections into the control zone.
 - Losing time zone and clock-source information.
+
+The 4 March investigation depends on avoiding every one of these, from compression gaps to a missing time zone. A historian that drops small changes may have discarded the very values that would show how fast the level fell, an anchor kept on the historian server could be rewritten by the same administrator, and timestamps without a zone make the drop impossible to align with the operator log.
 
 ### Exercises — chapter 13
 
@@ -1109,6 +1147,8 @@ After this chapter you can (1) apply a secure software development lifecycle to 
 
 [Brooks (1987)](https://doi.org/10.1109/MC.1987.1663532) argued that software's essential difficulties — complexity, conformity, changeability, invisibility — admit no single breakthrough. Process does not remove them; it makes errors visible early, when fixing them is cheap, and leaves evidence that the work was done. For critical infrastructure the evidence is part of the product: regulators, insurers and asset owners will ask for it.
 
+For TMRP's gateway, that evidence includes the threat model review, the test results and the signed build, all of which go into the dossier.
+
 ### 14.2 A secure development lifecycle
 
 The [NIST Secure Software Development Framework (SP 800-218)](https://csrc.nist.gov/pubs/sp/800/218/final) groups practices into preparing the organisation, protecting the software, producing well-secured software and responding to vulnerabilities. Concretely: security requirements and threat models with every feature; secure coding standards; peer review; automated static analysis and tests in continuous integration; protected build systems; vulnerability intake and disclosure; and patches with clear advisories. [CISA's Secure by Design](https://www.cisa.gov/securebydesign) principles add that manufacturers should take ownership of customer security outcomes — secure defaults, no default passwords, memory-safe languages where feasible.
@@ -1116,6 +1156,8 @@ The [NIST Secure Software Development Framework (SP 800-218)](https://csrc.nist.
 ### 14.3 Reviews and inspections
 
 [Fagan (1976)](https://doi.org/10.1147/sj.153.0182) described formal design and code inspections with defined roles and checklists, reporting that they found defects earlier and more cheaply than testing. Modern code review is lighter but keeps the principles: a second competent person reads every change, with a checklist that includes input validation, authentication, error handling and logging. Complexity metrics such as McCabe's cyclomatic complexity ([McCabe, 1976](https://doi.org/10.1109/TSE.1976.233837)) flag functions that are hard to test.
+
+At LRWA every change to the gateway code is read by a second engineer with a checklist.
 
 ### 14.4 Dependencies and the supply chain
 
@@ -1125,6 +1167,8 @@ Most software is assembled from third-party components. A **software bill of mat
 
 OT software may be maintained for twenty years. Plan for: signed updates; rollback; staged deployment (test bench, one site, fleet); compatibility windows; end-of-support dates published in advance; and an update process that works when a site is reachable only intermittently. An update mechanism is itself an attack surface and must be authenticated.
 
+For TMRP the plan is concrete: the gateway moves from bench to PS2 to PS1, a rollback image is retained at each stage, and updates must reach stations that are only intermittently reachable over LTE. Because the gateways are recorded as technical debt with a three-year horizon, the end-of-support date is published from the start.
+
 ### 14.6 Worked example: the telemetry gateway project (synthetic)
 
 TMRP must build a small gateway that adds HMAC authentication for legacy RTUs at PS1 and PS2. The plan: requirements R1, R2 and R7 traced to tests; a threat model reviewed by a second engineer; Python standard library only, avoiding third-party dependencies; static analysis and unit tests in CI; builds on a dedicated runner with signed artifacts and an SBOM (trivially short here); deployment to a bench, then PS2, then PS1; and a rollback image retained. Each step leaves a record in the evidence dossier (Chapter 48).
@@ -1133,6 +1177,8 @@ TMRP must build a small gateway that adds HMAC authentication for legacy RTUs at
 
 Write a one-page SSDF-mapped plan for a small tool you have written: for each of the four practice groups, list two concrete practices and the evidence each produces.
 
+Choose something real that you have written, such as your Lab 3 parser, so the practices are concrete. For each practice, name the evidence it leaves: a review record, a test report, a signed build or an advisory template. If a practice would leave no evidence, either change it or admit that it is only an intention. Compare your plan with the TMRP gateway plan and note one practice you would add.
+
 ### 14.8 Common errors and limits
 
 - Process documents without the practices they describe.
@@ -1140,6 +1186,8 @@ Write a one-page SSDF-mapped plan for a small tool you have written: for each of
 - Dependencies pulled at build time without pinning or provenance.
 - Update mechanisms without authentication or rollback.
 - No published end-of-support date.
+
+The TMRP gateway plan was written to avoid each of these. It uses the standard library only, so there are no unpinned dependencies; reviews follow a checklist; builds are signed with an SBOM; deployment keeps a rollback image; and the gateways have a published three-year horizon.
 
 ### Exercises — chapter 14
 
@@ -1179,6 +1227,8 @@ A **threat** is a potential cause of harm (an actor with capability and intent, 
 
 Controls are preventive, detective, corrective or compensating, and technical, procedural or physical. Design principles from [Saltzer and Schroeder (1975)](https://doi.org/10.1109/PROC.1975.9939): economy of mechanism, fail-safe defaults, complete mediation, open design, separation of privilege, least privilege, least common mechanism and psychological acceptability. Add **defence in depth** (layers whose failures are independent) and **assume breach** (design so that a compromise of one layer is detected and contained).
 
+In TMRP's design, local manual mode with a physical key switch is an example of separation of privilege, and the independent chlorine analyser is a detection layer outside the systems it watches.
+
 ### 15.4 Frameworks
 
 Frameworks give structure and a common vocabulary. The [NIST Cybersecurity Framework 2.0](https://www.nist.gov/cyberframework) organises outcomes as Govern, Identify, Protect, Detect, Respond and Recover. The [NIST SP 800-53 Rev. 5](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final) catalogue lists controls; [ISA/IEC 62443](https://www.isa.org/standards-and-publications/isa-standards/isa-iec-62443-series-of-standards) specifies requirements for industrial automation systems and components, with security levels; the UK's [NCSC Cyber Assessment Framework](https://www.ncsc.gov.uk/collection/caf) is outcome-based for essential services. A framework is a checklist of outcomes, not evidence that a design achieves them.
@@ -1198,6 +1248,8 @@ Each row names a consequence in service terms first. The table is a hypothesis t
 
 Map each proposed control in §15.5 to one CSF 2.0 function and one SP 800-53 control family, citing the documents.
 
+For each row of the TMRP risk table, choose the CSF function that best describes the proposed control's main purpose, and note where a control serves two. Authenticated telemetry is mainly protective, the independent analyser alarm is mainly detective, and tested offline backups support recovery. Cite the framework documents with their versions. Then write one sentence for each row explaining what the mapping does not tell you, because a correct mapping is still not evidence that the control works at LRWA.
+
 ### 15.7 Common errors and limits
 
 - Copying enterprise priorities into OT.
@@ -1205,6 +1257,8 @@ Map each proposed control in §15.5 to one CSF 2.0 function and one SP 800-53 co
 - "Defence in depth" layers that share a single point of failure.
 - Treating framework mapping as proof of security.
 - Likelihood scores with no stated basis.
+
+The first TMRP risk table avoids these by naming each consequence in service terms first, so every vulnerability is tied to a harm, and by treating its likelihoods as hypotheses to refine in later chapters. Its layers are checked for shared dependencies before being called independent.
 
 ### Exercises — chapter 15
 
@@ -1244,9 +1298,13 @@ Stakeholder needs are what people need the system to achieve, in their language:
 
 Most system failures happen at interfaces — between subsystems, organisations or people. An **interface control document** specifies data, timing, protocols, power, physical connections and responsibilities on each side. **Configuration management** identifies each item (hardware, firmware versions, settings, documents), controls changes through review and keeps records so that the as-built system is known. In security, an unknown configuration is an unknown attack surface.
 
+TMRP's three interface control documents cover RTU to gateway, gateway to SCADA and SCADA to DMZ. Each names an owner on both sides.
+
 ### 16.4 Security as a systems engineering discipline
 
 [NIST SP 800-160 Vol. 1 Rev. 1](https://csrc.nist.gov/pubs/sp/800/160/v1/r1/final) frames systems security engineering as security activities embedded in the systems engineering technical processes: stakeholder protection needs, security requirements, architectural design for security, verification of security claims, and secure operation and disposal. Its companion, [SP 800-160 Vol. 2 Rev. 1](https://doi.org/10.6028/NIST.SP.800-160v2r1), addresses cyber resiliency: anticipating, withstanding, recovering from and adapting to adverse conditions including attack.
+
+TMRP follows this approach: N2 is a protection need decomposed into R1 and R2, and each has a planned verification.
 
 ### 16.5 Worked example: TMRP as a system (synthetic)
 
@@ -1256,6 +1314,8 @@ TMRP's top-level needs: N1 keep the hospital supplied (≤ 4 h interruption in c
 
 Draw a traceability matrix N1–N4 × R1–R9 and mark each requirement's parent(s). Identify any need with weak coverage.
 
+Use a simple grid with needs as columns and requirements as rows, and mark each requirement's parent or parents. Some requirements serve more than one need: R5 supports visibility during grid outages, and R1 supports both containment and hospital supply. When you have finished, count the requirements under each need. A need supported by only one requirement deserves a second look, because a single failed test would leave it unsupported in the dossier.
+
 ### 16.7 Common errors and limits
 
 - Requirements written after design to justify it.
@@ -1263,6 +1323,8 @@ Draw a traceability matrix N1–N4 × R1–R9 and mark each requirement's parent
 - Configuration known only by the commissioning engineer.
 - Security requirements in a separate document, never traced or verified.
 - Treating the V-model as a waterfall excuse to defer testing.
+
+In TMRP each of these has a counter-measure: requirements trace to N1 to N4, each interface has an owner, and RTU firmware and configuration are under change control. Verification is planned for every requirement before design starts, so the V is not used as a reason to defer testing.
 
 ### Exercises — chapter 16
 
