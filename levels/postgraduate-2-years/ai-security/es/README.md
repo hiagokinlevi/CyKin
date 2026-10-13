@@ -1,11 +1,11 @@
-# AI and machine-learning security — Postgraduate course — Español
+# Seguridad de la IA y del aprendizaje automático — Posgrado — Español
 
-**Duration:** 2 years · **Editorial state:** working English outline; translation and review pending.
+**Duración:** 2 años · **Estado editorial:** borrador escrito en español; revisión técnica, lingüística y A4 pendiente.
 
-[Home](../../../../README.md) · [Course home](../README.md) · [Chapter index](SUBJECTS.md) · [Materials](MATERIALS.md) · [Book plan](book/PLAN.md) · [One course skill](../skill/SKILL.md) · [Playbooks](../../../../playbooks/ai-security/README.md)
+[Inicio](../../../../README.md) · [Página del curso](../README.md) · [Índice de capítulos](SUBJECTS.md) · [Materiales](MATERIALS.md) · [Manuscrito](book/MANUSCRIPT.md) · [Plan del libro](book/PLAN.md) · [Skill del curso](../skill/SKILL.md) · [Playbooks](../../../../playbooks/ai-security/README.md)
 
-This language edition has one principal study book. Each curricular subject is one chapter with teaching, examples, exercises and, in the final book appendix, worked answers. The plan and chapter index map the intended material. They do not establish that unwritten chapters or translated lessons exist.
+Esta edición tiene un libro principal de estudio. Cada asignatura del plan de estudios es un capítulo con contenido didáctico, ejemplos, ejercicios y, en el apéndice final, resultados resueltos. Los capítulos 1–3 de 12 están escritos en borrador en el [manuscrito](book/MANUSCRIPT.md); los capítulos 4–12 siguen, por ahora, en la [edición en inglés](../en/book/MANUSCRIPT.md). Los casos, las personas y las organizaciones son sintéticos, y las salidas de los laboratorios y las citas son idénticas a las de la edición en inglés.
 
-English is the reference edition. The production order is English, Portuguese, Spanish, Hebrew, French, Russian, German, Chinese and Japanese; translations follow the completed English editorial review.
+El inglés es la edición de referencia. El orden de producción es inglés, portugués, español, hebreo, francés, ruso, alemán, chino y japonés.
 
-**Publication gate:** at least 300 actual A4 pages, 50 substantive exercises with worked results, verified sources, safe reproducible practice, technical and language review. Course titles do not confer accreditation.
+**Criterio de publicación:** al menos 300 páginas A4 reales, 50 ejercicios sustantivos con resultados resueltos, fuentes verificadas, práctica segura y reproducible, y revisión técnica y lingüística. Los títulos de los cursos no confieren acreditación académica.
