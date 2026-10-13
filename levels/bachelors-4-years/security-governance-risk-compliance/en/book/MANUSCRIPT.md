@@ -44,7 +44,7 @@ You will (1) use proportions and rates to describe governance facts; (2) avoid c
 
 ### 1.1 Numbers in governance
 
-Sofia Reyes is a bachelor's student at the fictional Brightwater College. Her tutor, Dr. Malik Haddad, uses one running case across the course: the fictional Elmfield Housing Association, a social landlord with three hundred staff and four thousand homes, which holds personal data about tenants and takes rent payments online. Elmfield's managers often describe security with numbers: most staff have done training, few laptops lack encryption. Sofia learns to turn such phrases into precise proportions with a stated numerator and denominator. Sofia records this point in her course notebook so that later chapters can build on it.
+Sofia Reyes is a bachelor's student at the fictional Brightwater College. Her tutor, Dr. Malik Haddad, uses one running case across the course: the fictional Elmfield Housing Association, a social landlord with three hundred staff and four thousand homes, which holds personal data about tenants and takes rent payments online. Elmfield's managers often describe security with numbers: most staff have done training, few laptops lack encryption. Sofia learns to turn such phrases into precise proportions with a stated numerator and denominator. A phrase like few laptops lack encryption, for example, becomes nine of one hundred and twenty laptops once both counts are known.
 
 ### 1.2 Percentage traps
 
@@ -52,7 +52,7 @@ Sofia studies common traps. A rise from two incidents to four is a hundred perce
 
 ### 1.3 Precise claims
 
-Dr. Haddad asks the class to write one precise claim about Elmfield. Sofia writes: on the first of October, two hundred and seventy of three hundred staff accounts had multi-factor authentication enabled, according to the identity system report. The claim names the date, the count, the base and the source. She learns that precise claims can be checked and challenged, while vague ones cannot, which is why auditors and boards prefer them and why governance writing should use them from the start. Dr. Haddad asks her to explain the idea aloud to a classmate before moving on.
+Dr. Haddad asks the class to write one precise claim about Elmfield. Sofia writes: on the first of October, two hundred and seventy of three hundred staff accounts had multi-factor authentication enabled, according to the identity system report. The claim names the date, the count, the base and the source. She learns that precise claims can be checked and challenged, while vague ones cannot, which is why auditors and boards prefer them and why governance writing should use them from the start. Dr. Haddad points out that the identity system report is named as the source, so anyone doubting the two hundred and seventy can rerun it.
 
 ### Worked example
 
@@ -88,15 +88,15 @@ You will (1) describe the components of an organisation's IT; (2) build a simple
 
 ### 2.1 Elmfield's systems
 
-Sofia visits Elmfield and lists its computing systems: laptops for office staff, tablets for repairs operatives, a file server, a housing management system hosted by a supplier, cloud email, a rent payment page run by a payment provider and a small board portal. She learns that each system has hardware, software, data and people who use it. Understanding these parts helps her see where things could go wrong and who would need to act if they did. She notes the assumption behind it so that a reviewer can challenge it later.
+Sofia visits Elmfield and lists its computing systems: laptops for office staff, tablets for repairs operatives, a file server, a housing management system hosted by a supplier, cloud email, a rent payment page run by a payment provider and a small board portal. She learns that each system has hardware, software, data and people who use it. Understanding these parts helps her see where things could go wrong and who would need to act if they did. The board portal, for instance, holds board papers, so a failure there would need an owner who can decide quickly.
 
 ### 2.2 The inventory
 
-Sofia builds an asset inventory as a table: asset name, type, owner, location, data held and supplier. She finds that nobody owns the board portal and that eleven tablets are missing from the repairs team's list. ISO/IEC 27002:2022 includes guidance on inventories of information and associated assets, and NIST CSF 2.0 places asset management under its Identify function. She learns that an inventory is not paperwork but the map every later control depends on. The same reasoning will return when Elmfield's auditors visit next year.
+Sofia builds an asset inventory as a table: asset name, type, owner, location, data held and supplier. She finds that nobody owns the board portal and that eleven tablets are missing from the repairs team's list. ISO/IEC 27002:2022 includes guidance on inventories of information and associated assets, and NIST CSF 2.0 places asset management under its Identify function. She learns that an inventory is not paperwork but the map every later control depends on. The eleven missing tablets matter because repairs operatives carry tenant addresses on them into the field.
 
 ### 2.3 Why first
 
-Dr. Haddad explains why governance starts with inventory. Risk assessment needs to know what could be harmed. Access control needs to know which systems to control. Incident response needs to know what to restore. Without an inventory, each of these guesses. Sofia notes that inventories decay as staff buy new devices or adopt new services, so the inventory needs an owner and a review date. She recommends a quarterly check against purchase records and the identity system to catch missing items. She adds a short note to the shared course wiki for other students.
+Dr. Haddad explains why governance starts with inventory. Risk assessment needs to know what could be harmed. Access control needs to know which systems to control. Incident response needs to know what to restore. Without an inventory, each of these guesses. Sofia notes that inventories decay as staff buy new devices or adopt new services, so the inventory needs an owner and a review date. She recommends a quarterly check against purchase records and the identity system to catch missing items. Comparing purchase records with the inventory would, for example, have caught the eleven repairs tablets before anyone went looking.
 
 ### Worked example
 
@@ -132,15 +132,15 @@ You will (1) read governance data with simple programs; (2) count and filter rec
 
 ### 3.1 First script
 
-Sofia writes her first Python program to read Elmfield's inventory from a CSV file. It prints how many assets exist and how many lack an owner. She learns basic structures: lists to hold records, loops to visit each one and conditions to test fields. Her lecturer stresses that even a simple count helps governance, because it replaces impressions with facts. The script also runs the same way every time, unlike manual counting, which may give different answers on different days. This makes the governance consequence visible to people outside the engineering team.
+Sofia writes her first Python program to read Elmfield's inventory from a CSV file. It prints how many assets exist and how many lack an owner. She learns basic structures: lists to hold records, loops to visit each one and conditions to test fields. Her lecturer stresses that even a simple count helps governance, because it replaces impressions with facts. The script also runs the same way every time, unlike manual counting, which may give different answers on different days. Run again after owners are assigned, the same script shows whether the number of unowned assets has actually fallen.
 
 ### 3.2 Filtering
 
-Next Sofia filters the inventory to list assets that hold tenant personal data and lack an owner. Two appear: the board portal, which stores board papers containing tenant complaints, and a shared drive folder. She prints each with its location so someone can follow up. She learns that filtering by the combination of sensitivity and missing ownership points managers to the most urgent gaps first, rather than overwhelming them with a long undifferentiated list of problems. Sofia keeps a dated copy of her working so that the result can be traced.
+Next Sofia filters the inventory to list assets that hold tenant personal data and lack an owner. Two appear: the board portal, which stores board papers containing tenant complaints, and a shared drive folder. She prints each with its location so someone can follow up. She learns that filtering by the combination of sensitivity and missing ownership points managers to the most urgent gaps first, rather than overwhelming them with a long undifferentiated list of problems. The board portal comes first because its board papers contain tenant complaints and nobody is responsible for it.
 
 ### 3.3 Actionable output
 
-Dr. Haddad reviews her output. A line saying two problems found is not useful; a line naming the asset, the problem and a suggested owner is. Sofia rewrites the output to include these fields and the date of the run. She learns to think of program output as a message to a busy manager. If the message needs explanation, it should be rewritten. This habit will matter throughout the course when scripts produce governance evidence. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Dr. Haddad reviews her output. A line saying two problems found is not useful; a line naming the asset, the problem and a suggested owner is. Sofia rewrites the output to include these fields and the date of the run. She learns to think of program output as a message to a busy manager. If the message needs explanation, it should be rewritten. This habit will matter throughout the course when scripts produce governance evidence. A useful line might read: board portal, no owner, suggested owner the company secretary, run on the date shown.
 
 ### Worked example
 
@@ -176,15 +176,15 @@ You will (1) write a short argument with evidence; (2) cite standards and source
 
 ### 4.1 Argument structure
 
-Sofia's first essay asks whether small organisations need formal security governance. She learns to structure an argument: a clear claim, reasons, evidence for each reason, a counterargument and a response. Her claim is that even small organisations need basic governance because they hold sensitive data and face the same threats as larger ones. Her counterargument is that formal frameworks cost too much for small teams. Her response proposes proportionate governance scaled to size and risk. She checks the idea against a second example before relying on it.
+Sofia's first essay asks whether small organisations need formal security governance. She learns to structure an argument: a clear claim, reasons, evidence for each reason, a counterargument and a response. Her claim is that even small organisations need basic governance because they hold sensitive data and face the same threats as larger ones. Her counterargument is that formal frameworks cost too much for small teams. Her response proposes proportionate governance scaled to size and risk. For Elmfield, proportionate governance might mean an owned inventory and a short risk register rather than full certification.
 
 ### 4.2 Citing sources
 
-Sofia cites NIST CSF 2.0 and its small business resources, ISO/IEC 27001:2022 and a paper by Spears and Barki (2010) on user participation in security risk management. Dr. Haddad teaches her to cite standards with their edition and year, because requirements change between editions, and to give a DOI or official link where one exists. He warns never to invent references or identifiers and to check each one against the publisher's record before submission. The point seems small, but it changes how owners act on the result.
+Sofia cites NIST CSF 2.0 and its small business resources, ISO/IEC 27001:2022 and a paper by Spears and Barki (2010) on user participation in security risk management. Dr. Haddad teaches her to cite standards with their edition and year, because requirements change between editions, and to give a DOI or official link where one exists. He warns never to invent references or identifiers and to check each one against the publisher's record before submission. Citing ISO/IEC 27001:2022 rather than an earlier edition matters because control numbering changed between editions.
 
 ### 4.3 Paraphrase
 
-Standards are copyrighted, and copying long passages is not allowed. Sofia learns to paraphrase in her own words and cite the source, quoting only short phrases where exact wording matters. She practises by summarising the idea of a risk treatment plan without copying any sentence. Paraphrasing also tests understanding: if she cannot explain an idea simply, she has not yet understood it. Her essay earns good marks for clear structure and accurate, honest citation. Elmfield's security manager later asks for a copy of this analysis.
+Standards are copyrighted, and copying long passages is not allowed. Sofia learns to paraphrase in her own words and cite the source, quoting only short phrases where exact wording matters. She practises by summarising the idea of a risk treatment plan without copying any sentence. Paraphrasing also tests understanding: if she cannot explain an idea simply, she has not yet understood it. Her essay earns good marks for clear structure and accurate, honest citation. Her summary of a risk treatment plan, written without the standard open, shows whether she can explain treatment options in her own words.
 
 ### Worked example
 
@@ -220,15 +220,15 @@ You will (1) explain basic threats to a small organisation; (2) relate them to e
 
 ### 5.1 Common threats
 
-Sofia learns the threats Elmfield faces most: emails that trick staff into giving passwords or paying fake invoices, ransomware that encrypts files, lost devices, mistakes such as sending tenant data to the wrong person and misuse of access by contractors. She notes that most incidents in small organisations come from ordinary failures, not sophisticated attacks. Understanding which threats are common helps Elmfield focus limited resources where they will prevent the most harm. She marks the open questions in red so that they are not forgotten.
+Sofia learns the threats Elmfield faces most: emails that trick staff into giving passwords or paying fake invoices, ransomware that encrypts files, lost devices, mistakes such as sending tenant data to the wrong person and misuse of access by contractors. She notes that most incidents in small organisations come from ordinary failures, not sophisticated attacks. Understanding which threats are common helps Elmfield focus limited resources where they will prevent the most harm. For Elmfield, a fake invoice that is paid or tenant data sent to the wrong person is far more likely than a targeted attack.
 
 ### 5.2 Everyday controls
 
-For each threat she lists everyday controls. Multi-factor authentication limits damage from stolen passwords. Backups kept offline allow recovery from ransomware. Encryption protects lost laptops. Checking recipient addresses and using secure sharing links reduce misdirected emails. Named contractor accounts with limited access reduce misuse. She learns that the NIST CSF 2.0 small business quick-start guidance stresses similar basics. Controls do not need to be complex to be effective, but they must be applied consistently. Writing the reasoning down also helps her spot a weak step in her argument.
+For each threat she lists everyday controls. Multi-factor authentication limits damage from stolen passwords. Backups kept offline allow recovery from ransomware. Encryption protects lost laptops. Checking recipient addresses and using secure sharing links reduce misdirected emails. Named contractor accounts with limited access reduce misuse. She learns that the NIST CSF 2.0 small business quick-start guidance stresses similar basics. Controls do not need to be complex to be effective, but they must be applied consistently. Multi-factor authentication helps only if it covers all three hundred accounts, which is why consistent application matters more than complexity.
 
 ### 5.3 Communicating well
 
-Sofia prepares a short talk for Elmfield's housing officers. She avoids frightening language and blame. Instead she explains why each control helps tenants and staff, gives simple instructions and invites questions. She learns that fear may cause short bursts of caution but often leads to hiding mistakes. Encouraging staff to report errors quickly, such as a misdirected email, lets Elmfield limit harm. Good communication is itself a control, because it shapes how people behave when something goes wrong. Sofia discusses the trade-off with a classmate who works in finance.
+Sofia prepares a short talk for Elmfield's housing officers. She avoids frightening language and blame. Instead she explains why each control helps tenants and staff, gives simple instructions and invites questions. She learns that fear may cause short bursts of caution but often leads to hiding mistakes. Encouraging staff to report errors quickly, such as a misdirected email, lets Elmfield limit harm. Good communication is itself a control, because it shapes how people behave when something goes wrong. A housing officer who reports a misdirected email within minutes may let Elmfield ask the recipient to delete it before harm occurs.
 
 ### Worked example
 
@@ -264,15 +264,15 @@ You will (1) represent roles and permissions as sets and relations; (2) find seg
 
 ### 6.1 Roles as sets
 
-Sofia represents Elmfield's finance roles as sets of permissions. The payments clerk can enter supplier invoices and record payments. The finance manager can approve payments and add new suppliers. She lists which staff hold which roles and computes each person's combined permissions. One person covering for a colleague holds both roles, giving permission to add a supplier and approve payment to it. Sets make this conflict visible immediately rather than relying on someone noticing. The class compares answers and finds that most differences come from unstated assumptions.
+Sofia represents Elmfield's finance roles as sets of permissions. The payments clerk can enter supplier invoices and record payments. The finance manager can approve payments and add new suppliers. She lists which staff hold which roles and computes each person's combined permissions. One person covering for a colleague holds both roles, giving permission to add a supplier and approve payment to it. Sets make this conflict visible immediately rather than relying on someone noticing. Here the cover arrangement is the source of the conflict, not anyone's intent.
 
 ### 6.2 Segregation of duties
 
-Segregation of duties prevents one person from completing a sensitive process alone. Sofia writes rules as forbidden pairs of permissions, such as add supplier with approve payment. She checks each person's permission set against the rules and finds the one conflict. She recommends that cover arrangements use temporary access with a second approver and an end date. She learns that this simple logic underlies many fraud controls and that it can be checked automatically each month. Sofia records this point in her course notebook so that later chapters can build on it.
+Segregation of duties prevents one person from completing a sensitive process alone. Sofia writes rules as forbidden pairs of permissions, such as add supplier with approve payment. She checks each person's permission set against the rules and finds the one conflict. She recommends that cover arrangements use temporary access with a second approver and an end date. She learns that this simple logic underlies many fraud controls and that it can be checked automatically each month. A monthly automated check would also catch a cover arrangement that was supposed to end but never did.
 
 ### 6.3 Dependency graphs
 
-Sofia draws a graph where nodes are systems and edges show dependencies. The housing management system depends on cloud identity, which depends on email. If cloud identity fails, staff cannot reach housing records. The graph shows that identity is a single point of failure for most services. She learns that graphs reveal hidden concentrations of risk that inventories alone do not show, and that resilience planning should focus on nodes with many dependents. Dr. Haddad asks her to explain the idea aloud to a classmate before moving on.
+Sofia draws a graph where nodes are systems and edges show dependencies. The housing management system depends on cloud identity, which depends on email. If cloud identity fails, staff cannot reach housing records. The graph shows that identity is a single point of failure for most services. She learns that graphs reveal hidden concentrations of risk that inventories alone do not show, and that resilience planning should focus on nodes with many dependents. Dr. Haddad suggests checking how staff would reach housing records if cloud identity failed, since the graph shows it supports most services.
 
 ### Worked example
 
@@ -308,15 +308,15 @@ You will (1) describe Elmfield's network and its external connections; (2) ident
 
 ### 7.1 The network
 
-Elmfield's office network connects laptops and the file server, with internet access through a firewall. Most services now run in the cloud, reached over the internet. Repairs tablets connect through mobile networks. Sofia learns that the old idea of a trusted internal network no longer fits, because staff and data are spread across many places. Governance must therefore focus on identity, devices and data protection wherever they are, not only on the office firewall. She notes the assumption behind it so that a reviewer can challenge it later.
+Elmfield's office network connects laptops and the file server, with internet access through a firewall. Most services now run in the cloud, reached over the internet. Repairs tablets connect through mobile networks. Sofia learns that the old idea of a trusted internal network no longer fits, because staff and data are spread across many places. Governance must therefore focus on identity, devices and data protection wherever they are, not only on the office firewall. Repairs tablets on mobile networks, for instance, never pass through the office firewall at all.
 
 ### 7.2 Data leaving
 
-Sofia traces where tenant data leave Elmfield: email to contractors, the housing system supplier's servers, the payment provider and the payroll bureau. Each flow needs a reason, a contract and protection in transit. She finds that repairs contractors receive full tenant records when they need only a name, address and phone number. She recommends sending only the necessary fields, applying the principle of data minimisation, which reduces harm if a contractor's systems are compromised. The same reasoning will return when Elmfield's auditors visit next year.
+Sofia traces where tenant data leave Elmfield: email to contractors, the housing system supplier's servers, the payment provider and the payroll bureau. Each flow needs a reason, a contract and protection in transit. She finds that repairs contractors receive full tenant records when they need only a name, address and phone number. She recommends sending only the necessary fields, applying the principle of data minimisation, which reduces harm if a contractor's systems are compromised. Sending only name, address and phone number would also shrink what Elmfield must report if a contractor is breached.
 
 ### 7.3 Network risk
 
-Sofia lists network risks: an exposed remote desktop service on the file server, a guest Wi-Fi network sharing the office network and no logging at the firewall. She ranks them by potential harm and ease of fixing. Closing the remote desktop exposure ranks first because attackers routinely scan for it. She learns that small fixes can remove large risks and that a network review is a quick way for a small organisation to find serious problems. She adds a short note to the shared course wiki for other students.
+Sofia lists network risks: an exposed remote desktop service on the file server, a guest Wi-Fi network sharing the office network and no logging at the firewall. She ranks them by potential harm and ease of fixing. Closing the remote desktop exposure ranks first because attackers routinely scan for it. She learns that small fixes can remove large risks and that a network review is a quick way for a small organisation to find serious problems. The guest Wi-Fi and firewall logging issues follow, as both are cheap to fix but less likely to be exploited first.
 
 ### Worked example
 
@@ -352,15 +352,15 @@ You will (1) structure governance scripts into functions with tests; (2) read se
 
 ### 8.1 Functions and tests
 
-Sofia restructures her scripts into functions, each doing one job: reading a file, checking a rule or printing a report. She writes small tests with known answers. For example, a test gives the owner check a record with an empty owner and expects it to be flagged. Tests catch mistakes when she changes code later. She learns that governance scripts need tests because their output may be used as evidence, and wrong evidence can mislead managers and auditors. This makes the governance consequence visible to people outside the engineering team.
+Sofia restructures her scripts into functions, each doing one job: reading a file, checking a rule or printing a report. She writes small tests with known answers. For example, a test gives the owner check a record with an empty owner and expects it to be flagged. Tests catch mistakes when she changes code later. She learns that governance scripts need tests because their output may be used as evidence, and wrong evidence can mislead managers and auditors. The empty-owner test, for example, would fail at once if a later change broke the owner check.
 
 ### 8.2 Several sources
 
-Real checks combine sources. Sofia reads the inventory, the identity system's account export and the human resources leaver list. Each uses different names for the same thing; the identity system uses email addresses, while human resources uses staff numbers. She writes a mapping table to join them. She learns that much governance work is reconciling sources that were never designed to match, and that documenting the mapping is essential so others can repeat the check. Sofia keeps a dated copy of her working so that the result can be traced.
+Real checks combine sources. Sofia reads the inventory, the identity system's account export and the human resources leaver list. Each uses different names for the same thing; the identity system uses email addresses, while human resources uses staff numbers. She writes a mapping table to join them. She learns that much governance work is reconciling sources that were never designed to match, and that documenting the mapping is essential so others can repeat the check. Her mapping table, linking staff numbers to email addresses, is itself evidence that should be kept with the check results.
 
 ### 8.3 Discrepancies
 
-Cross-checking reveals discrepancies: four accounts belong to staff on the leaver list, two laptops in the inventory are assigned to leavers and one active account matches no staff member. Sofia prints each discrepancy with both sources' details. Dr. Haddad notes that discrepancies are where risk hides, because each system looks fine on its own. Reconciliation turns separate records into a single picture, which is the basis for access reviews and asset audits. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Cross-checking reveals discrepancies: four accounts belong to staff on the leaver list, two laptops in the inventory are assigned to leavers and one active account matches no staff member. Sofia prints each discrepancy with both sources' details. Dr. Haddad notes that discrepancies are where risk hides, because each system looks fine on its own. Reconciliation turns separate records into a single picture, which is the basis for access reviews and asset audits. The active account matching no staff member is the most urgent, because nobody can say who is using it.
 
 ### Worked example
 
@@ -396,11 +396,11 @@ You will (1) store a risk register in a database; (2) query it for priorities an
 
 ### 9.1 Register in a database
 
-Elmfield's risk register is a spreadsheet with merged cells and free text. Sofia moves a sample of six risks into a small SQLite database with defined columns: identifier, title, owner, likelihood from one to five and impact from one to five. Defined columns let her run queries that would be slow and error-prone by hand. She learns that structure is what turns a register from a document into data that can answer questions. She checks the idea against a second example before relying on it.
+Elmfield's risk register is a spreadsheet with merged cells and free text. Sofia moves a sample of six risks into a small SQLite database with defined columns: identifier, title, owner, likelihood from one to five and impact from one to five. Defined columns let her run queries that would be slow and error-prone by hand. She learns that structure is what turns a register from a document into data that can answer questions. Merged cells and free text, for instance, make it impossible to sort risks by score or to list those without an owner.
 
 ### 9.2 Queries
 
-The lab runs two queries. The first ranks risks by score, likelihood times impact. Tenant data emailed to the wrong person and a lost laptop with case notes tie at twelve, followed by ransomware on the file server at ten. The second lists risks without an owner: the repairs contractor account misuse risk and the weak board portal passwords risk. Sofia notes that ties show the limits of a five-point scale, which cannot separate risks that may differ greatly in real consequences. The point seems small, but it changes how owners act on the result.
+The lab runs two queries. The first ranks risks by score, likelihood times impact. Tenant data emailed to the wrong person and a lost laptop with case notes tie at twelve, followed by ransomware on the file server at ten. The second lists risks without an owner: the repairs contractor account misuse risk and the weak board portal passwords risk. Sofia notes that ties show the limits of a five-point scale, which cannot separate risks that may differ greatly in real consequences. The two unowned risks are a clearer governance gap than the tie, since without an owner nobody will act on either.
 
 ### Lab — Querying a synthetic risk register
 
@@ -429,7 +429,7 @@ unowned: ['R3', 'R6']
 
 ### 9.3 Why structure helps
 
-With structured data, Elmfield can track how scores change over time, check that every risk has an owner and produce board reports automatically. Sofia also adds a constraint so that likelihood and impact must be between one and five, preventing typing errors. Dr. Haddad notes that databases do not make risk judgements better by themselves, but they make the judgements visible, consistent and easy to review, which improves governance by exposing gaps. Elmfield's security manager later asks for a copy of this analysis. She marks the open questions in red so that they are not forgotten.
+With structured data, Elmfield can track how scores change over time, check that every risk has an owner and produce board reports automatically. Sofia also adds a constraint so that likelihood and impact must be between one and five, preventing typing errors. Dr. Haddad notes that databases do not make risk judgements better by themselves, but they make the judgements visible, consistent and easy to review, which improves governance by exposing gaps. The one-to-five constraint, for instance, stops a likelihood of 33 being typed in by mistake and silently topping the ranking.
 
 ### Worked example
 
@@ -465,15 +465,15 @@ You will (1) work only within authorised scope; (2) handle personal data ethical
 
 ### 10.1 Authorisation
 
-Sofia's work at Elmfield needs written authorisation. Dr. Haddad explains that even well-meant checks, such as testing whether a password is weak, can break rules or laws if done without permission. Elmfield's director signs a letter defining what Sofia may do: read inventory and account exports, interview staff and review documents. Active testing of systems is excluded. She learns that a clear scope protects her, the organisation and the people whose data she may see. Writing the reasoning down also helps her spot a weak step in her argument.
+Sofia's work at Elmfield needs written authorisation. Dr. Haddad explains that even well-meant checks, such as testing whether a password is weak, can break rules or laws if done without permission. Elmfield's director signs a letter defining what Sofia may do: read inventory and account exports, interview staff and review documents. Active testing of systems is excluded. She learns that a clear scope protects her, the organisation and the people whose data she may see. Her letter also tells Elmfield staff what to expect, so an interview request does not look like an investigation.
 
 ### 10.2 Personal data
 
-Account exports and leaver lists contain personal data. Sofia stores them only on Elmfield's encrypted laptop provided for her placement, removes names when sharing results with her tutor and deletes copies at the end. She learns that governance work must follow the same data protection principles it promotes: use the minimum data needed, keep it secure and keep it only as long as necessary. Doing otherwise would undermine her credibility and could harm tenants and staff. Sofia discusses the trade-off with a classmate who works in finance.
+Account exports and leaver lists contain personal data. Sofia stores them only on Elmfield's encrypted laptop provided for her placement, removes names when sharing results with her tutor and deletes copies at the end. She learns that governance work must follow the same data protection principles it promotes: use the minimum data needed, keep it secure and keep it only as long as necessary. Doing otherwise would undermine her credibility and could harm tenants and staff. Removing names before sharing with her tutor shows the minimisation principle applied to her own placement work.
 
 ### 10.3 Responsible reporting
 
-When Sofia finds the exposed remote desktop service, she reports it immediately to Elmfield's IT lead rather than waiting for her final report, because attackers could exploit it at any time. She describes it factually, without blaming the person who set it up. She learns that urgent findings need fast, private reporting through agreed channels, while lower risks can wait for the written report. Responsible reporting balances speed, accuracy and respect for colleagues. The class compares answers and finds that most differences come from unstated assumptions.
+When Sofia finds the exposed remote desktop service, she reports it immediately to Elmfield's IT lead rather than waiting for her final report, because attackers could exploit it at any time. She describes it factually, without blaming the person who set it up. She learns that urgent findings need fast, private reporting through agreed channels, while lower risks can wait for the written report. Responsible reporting balances speed, accuracy and respect for colleagues. Reporting it privately to the IT lead, rather than in a meeting, also avoids drawing attention to the exposure before it is closed.
 
 ### Worked example
 
@@ -509,15 +509,15 @@ You will (1) relate operating system settings to policy; (2) check laptops again
 
 ### 11.1 Settings and policy
 
-Elmfield's policy says laptops must be encrypted, lock after a few minutes idle, receive updates automatically and give staff no administrator rights. Sofia learns that each statement corresponds to operating system settings. Encryption is a disk setting, screen lock is a power and security setting, updates are managed by the update service and administrator rights depend on group membership. Linking policy statements to settings is what makes a policy enforceable and checkable rather than a wish. Sofia records this point in her course notebook so that later chapters can build on it.
+Elmfield's policy says laptops must be encrypted, lock after a few minutes idle, receive updates automatically and give staff no administrator rights. Sofia learns that each statement corresponds to operating system settings. Encryption is a disk setting, screen lock is a power and security setting, updates are managed by the update service and administrator rights depend on group membership. Linking policy statements to settings is what makes a policy enforceable and checkable rather than a wish. The administrator rights statement, for example, can be checked by reading group membership on each laptop.
 
 ### 11.2 Baseline check
 
-Sofia uses the device management console to export settings for one hundred and twenty laptops and compares them with the policy baseline. Most comply, but nine lack encryption, all repairs team laptops bought locally, and fourteen users still have administrator rights granted for old software. She lists each with its owner. She learns that baseline checks reveal not only technical gaps but process gaps, such as devices bought outside the normal route, which explain why the technical gaps arose. Dr. Haddad asks her to explain the idea aloud to a classmate before moving on.
+Sofia uses the device management console to export settings for one hundred and twenty laptops and compares them with the policy baseline. Most comply, but nine lack encryption, all repairs team laptops bought locally, and fourteen users still have administrator rights granted for old software. She lists each with its owner. She learns that baseline checks reveal not only technical gaps but process gaps, such as devices bought outside the normal route, which explain why the technical gaps arose. Dr. Haddad asks the class who should own the fix for the nine repairs laptops, given that they were bought outside the normal route.
 
 ### 11.3 Updates as a process
 
-Updates fix vulnerabilities but can break software. Elmfield needs a governed process: test updates on a few devices, deploy to everyone within a set time and track exceptions. Sofia drafts the process with the IT lead, setting thirty days for critical updates. She learns that update policy is a balance between speed and stability, and that writing down the target and measuring against it lets Elmfield see whether its practice matches its intention. She notes the assumption behind it so that a reviewer can challenge it later.
+Updates fix vulnerabilities but can break software. Elmfield needs a governed process: test updates on a few devices, deploy to everyone within a set time and track exceptions. Sofia drafts the process with the IT lead, setting thirty days for critical updates. She learns that update policy is a balance between speed and stability, and that writing down the target and measuring against it lets Elmfield see whether its practice matches its intention. Thirty days for critical updates becomes the target that Sofia later measures in chapter 15.
 
 ### Worked example
 
@@ -553,11 +553,11 @@ You will (1) estimate a proportion with an interval; (2) compare teams fairly de
 
 ### 12.1 Proportions with intervals
 
-Elmfield asks each team to acknowledge its updated information handling policy. Sofia learns that a proportion from a sample or small team should come with an interval showing uncertainty. She uses the Wilson interval, which behaves well for small counts and proportions near zero or one. The interval tells managers the range of values consistent with the data, which is more honest than a single percentage and helps prevent decisions based on chance differences. The same reasoning will return when Elmfield's auditors visit next year.
+Elmfield asks each team to acknowledge its updated information handling policy. Sofia learns that a proportion from a sample or small team should come with an interval showing uncertainty. She uses the Wilson interval, which behaves well for small counts and proportions near zero or one. The interval tells managers the range of values consistent with the data, which is more honest than a single percentage and helps prevent decisions based on chance differences. For a team of fifteen, the interval will be much wider than for a team of sixty, as the next section shows.
 
 ### 12.2 Comparing teams
 
-The lab computes acknowledgement rates. Housing has fifty-two of sixty, eighty-seven percent, with an interval from seventy-six to ninety-three percent. Repairs has eighteen of thirty, sixty percent, with an interval from forty-two to seventy-five percent. Finance has fourteen of fifteen, ninety-three percent, but its interval runs from seventy to ninety-nine percent because the team is small. Repairs is clearly lower than housing, since their intervals barely touch. Finance and housing cannot be distinguished. She adds a short note to the shared course wiki for other students.
+The lab computes acknowledgement rates. Housing has fifty-two of sixty, eighty-seven percent, with an interval from seventy-six to ninety-three percent. Repairs has eighteen of thirty, sixty percent, with an interval from forty-two to seventy-five percent. Finance has fourteen of fifteen, ninety-three percent, but its interval runs from seventy to ninety-nine percent because the team is small. Repairs is clearly lower than housing, since their intervals barely touch. Finance and housing cannot be distinguished. Reporting the intervals stops finance's ninety-three percent being presented as better than housing when the data cannot show it.
 
 ### Lab — Wilson intervals for policy acknowledgement
 
@@ -581,7 +581,7 @@ finance: 14/15 = 93%, 95% interval 70% to 99%
 
 ### 12.3 Small samples
 
-Sofia notes that finance's high percentage looks impressive but rests on fifteen people; one more or one fewer acknowledgement would move it several points. She recommends that Elmfield focus support on repairs, where the gap is clear, and asks why repairs staff find acknowledgement harder. She discovers that they rarely use laptops and the policy was sent by email. Statistics revealed the gap; talking to staff revealed the cause and a simple fix: acknowledgement on tablets during team meetings. This makes the governance consequence visible to people outside the engineering team.
+Sofia notes that finance's high percentage looks impressive but rests on fifteen people; one more or one fewer acknowledgement would move it several points. She recommends that Elmfield focus support on repairs, where the gap is clear, and asks why repairs staff find acknowledgement harder. She discovers that they rarely use laptops and the policy was sent by email. Statistics revealed the gap; talking to staff revealed the cause and a simple fix: acknowledgement on tablets during team meetings. Acknowledgement on tablets during meetings fits how repairs staff already work.
 
 ### Worked example
 
@@ -617,15 +617,15 @@ You will (1) manage identities through joiners, movers and leavers; (2) apply le
 
 ### 13.1 Life cycle
 
-Sofia maps Elmfield's identity life cycle. Human resources tells IT when someone joins, and accounts are created. When staff move teams, they ask for new access but rarely lose old access. When staff leave, accounts should be disabled on their last day, but the leaver list reaches IT late. She finds four active accounts belonging to leavers. She proposes that HR send leaver notices automatically before the last day and that IT confirm each disablement in a ticket. Sofia keeps a dated copy of her working so that the result can be traced.
+Sofia maps Elmfield's identity life cycle. Human resources tells IT when someone joins, and accounts are created. When staff move teams, they ask for new access but rarely lose old access. When staff leave, accounts should be disabled on their last day, but the leaver list reaches IT late. She finds four active accounts belonging to leavers. She proposes that HR send leaver notices automatically before the last day and that IT confirm each disablement in a ticket. The movers' old access is a separate gap that her access review in section 13.3 is designed to catch.
 
 ### 13.2 Least privilege
 
-Least privilege means each person has only the access their role needs. Sofia reviews the housing management system and finds that all housing officers can see every tenant's full record, including support needs and safeguarding notes. Only the specialist support team needs those notes. She recommends role-based access that restricts sensitive fields. ISO/IEC 27002:2022 includes guidance on access control and access rights that supports this, and Elmfield's tenants have a strong interest in it. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Least privilege means each person has only the access their role needs. Sofia reviews the housing management system and finds that all housing officers can see every tenant's full record, including support needs and safeguarding notes. Only the specialist support team needs those notes. She recommends role-based access that restricts sensitive fields. ISO/IEC 27002:2022 includes guidance on access control and access rights that supports this, and Elmfield's tenants have a strong interest in it. Restricting safeguarding notes to the specialist support team protects tenants whose circumstances could put them at risk if seen widely.
 
 ### 13.3 Access review
 
-Sofia runs Elmfield's first access review for the finance system. She sends each manager a list of their staff's access and asks them to confirm or remove each item. Most respond within a week; two need reminders. Seven access rights are removed. She records the date, reviewer and changes as evidence. She learns that reviews work best when lists are short, clear and sent to people who actually know what their staff do. She checks the idea against a second example before relying on it.
+Sofia runs Elmfield's first access review for the finance system. She sends each manager a list of their staff's access and asks them to confirm or remove each item. Most respond within a week; two need reminders. Seven access rights are removed. She records the date, reviewer and changes as evidence. She learns that reviews work best when lists are short, clear and sent to people who actually know what their staff do. The seven removed rights show that access had built up over time, which is why the review should be repeated regularly.
 
 ### Worked example
 
@@ -661,15 +661,15 @@ You will (1) apply data protection principles to tenant data; (2) map personal d
 
 ### 14.1 Principles
 
-Sofia studies data protection principles common to modern privacy laws: lawful and fair processing, purpose limitation, data minimisation, accuracy, storage limitation, security and accountability. She applies them to Elmfield. Tenant data are collected to manage tenancies and repairs, so using them for unrelated marketing would breach purpose limitation. Old records of former tenants kept for decades breach storage limitation. She notes that these principles overlap with security but also cover fairness and individuals' rights. The point seems small, but it changes how owners act on the result.
+Sofia studies data protection principles common to modern privacy laws: lawful and fair processing, purpose limitation, data minimisation, accuracy, storage limitation, security and accountability. She applies them to Elmfield. Tenant data are collected to manage tenancies and repairs, so using them for unrelated marketing would breach purpose limitation. Old records of former tenants kept for decades breach storage limitation. She notes that these principles overlap with security but also cover fairness and individuals' rights. Fairness, for instance, has no direct security control, so it needs separate attention in Elmfield's governance.
 
 ### 14.2 Processing map
 
-Sofia builds a record of processing activities: what personal data Elmfield holds, why, where they come from, who receives them and how long they are kept. She finds that repairs contractors receive too much data, that support needs are stored in two systems and that nobody knows how long call recordings are kept. The NIST Privacy Framework offers a structure for managing privacy risk that she uses to organise her findings alongside security ones. Elmfield's security manager later asks for a copy of this analysis.
+Sofia builds a record of processing activities: what personal data Elmfield holds, why, where they come from, who receives them and how long they are kept. She finds that repairs contractors receive too much data, that support needs are stored in two systems and that nobody knows how long call recordings are kept. The NIST Privacy Framework offers a structure for managing privacy risk that she uses to organise her findings alongside security ones. Not knowing how long call recordings are kept is a storage limitation gap that needs a retention decision and an owner.
 
 ### 14.3 Joining privacy and security
 
-Sofia recommends that Elmfield run privacy and security governance together, with one risk register and shared owners. A misdirected email is both a security incident and a personal data breach that may need reporting. Retention rules reduce the data an attacker could steal. She learns that privacy and security are distinct but strongly linked, and that separate programmes often duplicate effort and miss risks that sit between them, such as excessive data sharing with suppliers. She marks the open questions in red so that they are not forgotten.
+Sofia recommends that Elmfield run privacy and security governance together, with one risk register and shared owners. A misdirected email is both a security incident and a personal data breach that may need reporting. Retention rules reduce the data an attacker could steal. She learns that privacy and security are distinct but strongly linked, and that separate programmes often duplicate effort and miss risks that sit between them, such as excessive data sharing with suppliers. Excessive data sharing with repairs contractors is exactly such a risk, found during both her network and privacy work.
 
 ### Worked example
 
@@ -705,11 +705,11 @@ You will (1) choose measures that reflect control performance; (2) use medians a
 
 ### 15.1 Choosing measures
 
-Elmfield wants to know whether its update process works. Sofia chooses two measures: the median number of days to apply critical updates and the share applied within the thirty-day target. She learns that measures should relate to the control's purpose, which is to shorten the time vulnerabilities remain open. Counting updates installed would be an activity measure; time to install is a performance measure closer to what matters for risk. Writing the reasoning down also helps her spot a weak step in her argument.
+Elmfield wants to know whether its update process works. Sofia chooses two measures: the median number of days to apply critical updates and the share applied within the thirty-day target. She learns that measures should relate to the control's purpose, which is to shorten the time vulnerabilities remain open. Counting updates installed would be an activity measure; time to install is a performance measure closer to what matters for risk. Ten of fifteen updates within thirty days is a performance figure; fifteen updates installed would only show activity.
 
 ### 15.2 Skewed data
 
-The lab examines fifteen critical updates. The median is twenty-one days and ten of fifteen, sixty-seven percent, were applied within thirty days. The three slowest took forty-eight, sixty-two and ninety days. Sofia notes that the mean would be pulled up by these long delays, so the median better describes a typical update while the slowest cases deserve separate attention. Most slow updates affected the file server, which staff avoid restarting during working hours. Sofia discusses the trade-off with a classmate who works in finance.
+The lab examines fifteen critical updates. The median is twenty-one days and ten of fifteen, sixty-seven percent, were applied within thirty days. The three slowest took forty-eight, sixty-two and ninety days. Sofia notes that the mean would be pulled up by these long delays, so the median better describes a typical update while the slowest cases deserve separate attention. Most slow updates affected the file server, which staff avoid restarting during working hours. This file server pattern links the skewed figures to a cause the maintenance window can address.
 
 ### Lab — Days to patch: median and share within target
 
@@ -732,7 +732,7 @@ slowest three [48, 62, 90]
 
 ### 15.3 Honest presentation
 
-Sofia presents both measures with the list of slow updates and their cause. She avoids saying that most updates are on time without adding that a third are not. She recommends a monthly maintenance window for the file server. Dr. Haddad notes that NIST SP 800-55v1 discusses selecting and using measures for information security, and that good measures prompt decisions rather than decorate reports. Sofia's measure leads directly to the maintenance window decision. The class compares answers and finds that most differences come from unstated assumptions.
+Sofia presents both measures with the list of slow updates and their cause. She avoids saying that most updates are on time without adding that a third are not. She recommends a monthly maintenance window for the file server. Dr. Haddad notes that NIST SP 800-55v1 discusses selecting and using measures for information security, and that good measures prompt decisions rather than decorate reports. Sofia's measure leads directly to the maintenance window decision. Showing the slow updates by name lets the IT lead act on the file server rather than on Elmfield's laptops in general.
 
 ### Worked example
 
@@ -768,15 +768,15 @@ You will (1) describe a simple security architecture for a small organisation; (
 
 ### 16.1 A simple architecture
 
-Sofia sketches Elmfield's target architecture. Identity is central: all staff sign in once with multi-factor authentication to reach cloud email, the housing system and files. Devices are managed and encrypted. Sensitive data live in a few well-controlled places. Backups are kept separately and tested. The office network is no longer trusted by default. She learns that small organisations can achieve strong security through a few well-chosen design decisions rather than many complex tools. Sofia records this point in her course notebook so that later chapters can build on it.
+Sofia sketches Elmfield's target architecture. Identity is central: all staff sign in once with multi-factor authentication to reach cloud email, the housing system and files. Devices are managed and encrypted. Sensitive data live in a few well-controlled places. Backups are kept separately and tested. The office network is no longer trusted by default. She learns that small organisations can achieve strong security through a few well-chosen design decisions rather than many complex tools. Each element answers a gap she found earlier, such as the unencrypted laptops and the exposed remote desktop service.
 
 ### 16.2 Layers
 
-Sofia applies layered defence to ransomware. Email filtering blocks many malicious messages. Multi-factor authentication limits stolen passwords. Device controls block unknown programs. Limited administrator rights reduce spread. Offline backups allow recovery. No single layer is perfect, but together they reduce the chance that one failure causes disaster. She notes that layers sharing a weakness, such as one administrator account controlling all of them, would weaken this protection considerably. Dr. Haddad asks her to explain the idea aloud to a classmate before moving on. She notes the assumption behind it so that a reviewer can challenge it later.
+Sofia applies layered defence to ransomware. Email filtering blocks many malicious messages. Multi-factor authentication limits stolen passwords. Device controls block unknown programs. Limited administrator rights reduce spread. Offline backups allow recovery. No single layer is perfect, but together they reduce the chance that one failure causes disaster. She notes that layers sharing a weakness, such as one administrator account controlling all of them, would weaken this protection considerably. Dr. Haddad asks which layer failed in a real ransomware case the class has read about, so students see that the offline backup was often the last one standing.
 
 ### 16.3 Documenting choices
 
-Sofia writes short decision notes for each major choice: why cloud identity was chosen, why the file server will move to a cloud service and why backups remain offline. Each note records the alternatives and accepted risks. She learns that documented decisions help future staff understand the architecture and help auditors see that risk was considered. Elmfield's director appreciates the notes because they explain technical decisions in language the board can follow. The same reasoning will return when Elmfield's auditors visit next year. She adds a short note to the shared course wiki for other students.
+Sofia writes short decision notes for each major choice: why cloud identity was chosen, why the file server will move to a cloud service and why backups remain offline. Each note records the alternatives and accepted risks. She learns that documented decisions help future staff understand the architecture and help auditors see that risk was considered. Elmfield's director appreciates the notes because they explain technical decisions in language the board can follow. The note on keeping backups offline, for example, records that a cloud-only backup was considered and rejected because ransomware could reach it.
 
 ### Worked example
 
@@ -812,15 +812,15 @@ You will (1) explain what encryption and hashing protect; (2) relate them to pol
 
 ### 17.1 What cryptography protects
 
-Sofia learns that encryption keeps data confidential from those without the key, while hashing produces a fingerprint that changes if data change, supporting integrity checks. Digital signatures combine both ideas to show who created something and that it was not altered. At Elmfield, laptop encryption protects lost devices, secure connections protect data in transit and hashes can show that evidence files were not changed after collection. This makes the governance consequence visible to people outside the engineering team. Sofia keeps a dated copy of her working so that the result can be traced.
+Sofia learns that encryption keeps data confidential from those without the key, while hashing produces a fingerprint that changes if data change, supporting integrity checks. Digital signatures combine both ideas to show who created something and that it was not altered. At Elmfield, laptop encryption protects lost devices, secure connections protect data in transit and hashes can show that evidence files were not changed after collection. Hashing the backup test evidence later in the course is a direct use of this integrity property.
 
 ### 17.2 Policy decisions
 
-Cryptography requires policy decisions: which data must be encrypted, where and with what approved methods. Sofia drafts a short cryptography standard for Elmfield referencing its data classification: tenant personal data encrypted at rest on devices and in transit; board papers encrypted when shared outside the portal. She learns that ISO/IEC 27002:2022 expects rules on the use of cryptography and on key management, and that simple, clear rules work better than long technical documents nobody reads. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Cryptography requires policy decisions: which data must be encrypted, where and with what approved methods. Sofia drafts a short cryptography standard for Elmfield referencing its data classification: tenant personal data encrypted at rest on devices and in transit; board papers encrypted when shared outside the portal. She learns that ISO/IEC 27002:2022 expects rules on the use of cryptography and on key management, and that simple, clear rules work better than long technical documents nobody reads. A two-line rule for board papers, for instance, is more likely to be followed than a chapter on cipher choices.
 
 ### 17.3 Keys and certificates
 
-Sofia lists Elmfield's certificates and recovery keys. The website certificate renews automatically, but laptop recovery keys are stored only in the device console, which one person administers. If that person left, recovery could fail. She recommends a second administrator and a documented recovery procedure. She learns that most cryptographic failures in small organisations are management failures, such as expired certificates or lost keys, not broken algorithms. She checks the idea against a second example before relying on it. The point seems small, but it changes how owners act on the result.
+Sofia lists Elmfield's certificates and recovery keys. The website certificate renews automatically, but laptop recovery keys are stored only in the device console, which one person administers. If that person left, recovery could fail. She recommends a second administrator and a documented recovery procedure. She learns that most cryptographic failures in small organisations are management failures, such as expired certificates or lost keys, not broken algorithms. A second administrator removes the single point of failure without any change to the encryption itself.
 
 ### Worked example
 
@@ -856,15 +856,15 @@ You will (1) form a researchable question about governance; (2) choose interview
 
 ### 18.1 A research question
 
-Sofia's first research project asks why some Elmfield teams complete security tasks on time and others do not. She narrows it to the quarterly access review: what helps or hinders managers in completing it? She learns that good questions are specific, answerable with available data and useful to someone. Asking whether security culture is good would be too vague; asking what helps managers complete a defined task can lead to practical improvements. Elmfield's security manager later asks for a copy of this analysis. She marks the open questions in red so that they are not forgotten.
+Sofia's first research project asks why some Elmfield teams complete security tasks on time and others do not. She narrows it to the quarterly access review: what helps or hinders managers in completing it? She learns that good questions are specific, answerable with available data and useful to someone. Asking whether security culture is good would be too vague; asking what helps managers complete a defined task can lead to practical improvements. Focusing on the quarterly access review also gives her a task with dates and completion records she can examine.
 
 ### 18.2 Choosing methods
 
-With only twelve managers, a survey would give little statistical power. Sofia chooses semi-structured interviews, which let managers explain their reasons in their own words. She writes an interview guide with open questions and prompts, pilots it with one manager and revises two confusing questions. She learns that interviews suit small groups and why questions, while surveys suit large groups and how-many questions, and that the choice should follow the question rather than habit. Writing the reasoning down also helps her spot a weak step in her argument.
+With only twelve managers, a survey would give little statistical power. Sofia chooses semi-structured interviews, which let managers explain their reasons in their own words. She writes an interview guide with open questions and prompts, pilots it with one manager and revises two confusing questions. She learns that interviews suit small groups and why questions, while surveys suit large groups and how-many questions, and that the choice should follow the question rather than habit. Piloting with one manager caught the two confusing questions before they could distort the other eleven interviews.
 
 ### 18.3 Ethics
 
-Sofia submits a short ethics application to Brightwater College. Participation is voluntary, interviews are recorded only with consent, transcripts remove names and Elmfield's director will see only themes, not who said what. She learns that even low-risk research about workplaces needs care, because managers might fear criticism. Protecting their identity encourages honest answers. Her ethics approval arrives within two weeks, and she begins interviews with clear information sheets for each participant. Sofia discusses the trade-off with a classmate who works in finance. The class compares answers and finds that most differences come from unstated assumptions.
+Sofia submits a short ethics application to Brightwater College. Participation is voluntary, interviews are recorded only with consent, transcripts remove names and Elmfield's director will see only themes, not who said what. She learns that even low-risk research about workplaces needs care, because managers might fear criticism. Protecting their identity encourages honest answers. Her ethics approval arrives within two weeks, and she begins interviews with clear information sheets for each participant. Showing the director only themes protects the managers who criticised the review process.
 
 ### Worked example
 
@@ -900,15 +900,15 @@ You will (1) define governance, risk management and compliance; (2) set the scop
 
 ### 19.1 Definitions
 
-Sofia now begins the GRC courses. Governance means direction and oversight: who decides what level of risk is acceptable and how performance is checked. Risk management means identifying, analysing, evaluating and treating risks, a process ISO 31000:2018 describes in general terms for any organisation. Compliance means meeting obligations from law, contracts and adopted standards. She learns that the three support each other: governance sets direction, risk management informs decisions and compliance confirms obligations are met. Sofia records this point in her course notebook so that later chapters can build on it.
+Sofia now begins the GRC courses. Governance means direction and oversight: who decides what level of risk is acceptable and how performance is checked. Risk management means identifying, analysing, evaluating and treating risks, a process ISO 31000:2018 describes in general terms for any organisation. Compliance means meeting obligations from law, contracts and adopted standards. She learns that the three support each other: governance sets direction, risk management informs decisions and compliance confirms obligations are met. At Elmfield, for example, the board's appetite sets direction, the register informs the director and the statement of applicability later shows compliance.
 
 ### 19.2 Scope
 
-Elmfield must decide what its programme covers. Sofia proposes a scope including all staff, devices, cloud services and suppliers that handle tenant data, plus the board portal. Excluded items, such as tenants' own devices, are listed with reasons. ISO/IEC 27001:2022 requires a defined scope for the management system, and she learns that clear scope prevents both gaps and wasted effort. A scope that is too narrow misses risks; one too broad cannot be managed with Elmfield's resources. Dr. Haddad asks her to explain the idea aloud to a classmate before moving on.
+Elmfield must decide what its programme covers. Sofia proposes a scope including all staff, devices, cloud services and suppliers that handle tenant data, plus the board portal. Excluded items, such as tenants' own devices, are listed with reasons. ISO/IEC 27001:2022 requires a defined scope for the management system, and she learns that clear scope prevents both gaps and wasted effort. A scope that is too narrow misses risks; one too broad cannot be managed with Elmfield's resources. Dr. Haddad asks why tenants' own devices are excluded, and Sofia answers that Elmfield cannot control them but can limit what the tenant portal exposes.
 
 ### 19.3 Theory
 
-Sofia reads about risk theory. Risk combines uncertainty about events with their consequences for objectives. Treatment options include avoiding, reducing, sharing and accepting risk. Cox (2008) shows that simple matrices can rank risks poorly, while Hubbard and Seiersen (2016) argue for quantitative estimates even with limited data. She learns that theory warns against false precision and false simplicity alike, and that small organisations should choose methods they can apply consistently and explain to their boards. She notes the assumption behind it so that a reviewer can challenge it later.
+Sofia reads about risk theory. Risk combines uncertainty about events with their consequences for objectives. Treatment options include avoiding, reducing, sharing and accepting risk. Cox (2008) shows that simple matrices can rank risks poorly, while Hubbard and Seiersen (2016) argue for quantitative estimates even with limited data. She learns that theory warns against false precision and false simplicity alike, and that small organisations should choose methods they can apply consistently and explain to their boards. Her later lab comparing matrix scores with expected loss tests exactly this warning on Elmfield's own risks.
 
 ### Worked example
 
@@ -948,11 +948,11 @@ Sofia studies governance lessons from public reports. GAO-21-105263, a 2021 test
 
 ### 20.2 Lessons for Elmfield
 
-From the cases, Sofia draws lessons scaled for Elmfield: name one person accountable for the security programme, write a short risk appetite statement approved by the board, keep a register reviewed quarterly and report progress to the board twice a year. She avoids copying large-organisation structures that Elmfield could not sustain. She learns that good lessons are about principles, such as clear accountability, rather than specific committees or tools. This makes the governance consequence visible to people outside the engineering team. Sofia keeps a dated copy of her working so that the result can be traced.
+From the cases, Sofia draws lessons scaled for Elmfield: name one person accountable for the security programme, write a short risk appetite statement approved by the board, keep a register reviewed quarterly and report progress to the board twice a year. She avoids copying large-organisation structures that Elmfield could not sustain. She learns that good lessons are about principles, such as clear accountability, rather than specific committees or tools. A twice-yearly board report, for example, suits a board that meets only a few times a year.
 
 ### 20.3 Root causes
 
-Sofia practises separating symptoms from causes. In a synthetic Elmfield incident, a contractor's account was used after the contract ended. The symptom was an active account. The root cause was that no one owned contractor offboarding, since contracts were managed by the repairs team while accounts were managed by IT. She recommends assigning ownership and linking contract end dates to account expiry. Fixing causes prevents repeats; fixing symptoms alone does not. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Sofia practises separating symptoms from causes. In a synthetic Elmfield incident, a contractor's account was used after the contract ended. The symptom was an active account. The root cause was that no one owned contractor offboarding, since contracts were managed by the repairs team while accounts were managed by IT. She recommends assigning ownership and linking contract end dates to account expiry. Fixing causes prevents repeats; fixing symptoms alone does not. Linking contract end dates to account expiry also closes the same gap for any future contractor.
 
 ### Worked example
 
@@ -988,15 +988,15 @@ You will (1) model Elmfield's governance system as roles, processes and informat
 
 ### 21.1 Roles and processes
 
-Sofia models Elmfield's governance as a system of roles and processes. The board approves risk appetite and receives reports. The director is accountable for the programme. The IT lead runs technical controls. Team managers own risks in their areas. A part-time data protection lead handles privacy. Processes link them: risk review, policy approval, incident handling and access review. Drawing the model shows who passes information to whom and where decisions are made. Sofia records this point in her course notebook so that later chapters can build on it.
+Sofia models Elmfield's governance as a system of roles and processes. The board approves risk appetite and receives reports. The director is accountable for the programme. The IT lead runs technical controls. Team managers own risks in their areas. A part-time data protection lead handles privacy. Processes link them: risk review, policy approval, incident handling and access review. Drawing the model shows who passes information to whom and where decisions are made. The drawing shows, for instance, that team managers own risks but have no defined route for reporting them to the board.
 
 ### 21.2 RACI
 
-Sofia builds a responsibility chart listing who is responsible, accountable, consulted and informed for each process. For access review, managers are responsible, the director is accountable, IT is consulted and the board is informed. She finds two problems. No one is accountable for supplier security, and incident handling has three people marked accountable, which means in practice no one is. COBIT 2019 uses similar responsibility mapping to clarify governance and management roles. Dr. Haddad asks her to explain the idea aloud to a classmate before moving on.
+Sofia builds a responsibility chart listing who is responsible, accountable, consulted and informed for each process. For access review, managers are responsible, the director is accountable, IT is consulted and the board is informed. She finds two problems. No one is accountable for supplier security, and incident handling has three people marked accountable, which means in practice no one is. COBIT 2019 uses similar responsibility mapping to clarify governance and management roles. Dr. Haddad points out that the supplier gap matters most because the repairs contractor connects remotely to the housing system.
 
 ### 21.3 Fixing gaps
 
-Sofia proposes that the director be accountable for supplier security, with the finance manager responsible for contracts and the IT lead consulted. For incidents, the IT lead becomes accountable, with the data protection lead responsible for breach notifications. The board approves the chart. She learns that accountability must rest with one role per process, and that charts are only useful if people know about them and they are reviewed when roles change. She notes the assumption behind it so that a reviewer can challenge it later.
+Sofia proposes that the director be accountable for supplier security, with the finance manager responsible for contracts and the IT lead consulted. For incidents, the IT lead becomes accountable, with the data protection lead responsible for breach notifications. The board approves the chart. She learns that accountability must rest with one role per process, and that charts are only useful if people know about them and they are reviewed when roles change. A review whenever roles change would, for example, have caught the three accountable names for incident handling earlier.
 
 ### Worked example
 
@@ -1032,11 +1032,11 @@ You will (1) map dependencies on suppliers; (2) tier suppliers by risk; (3) set 
 
 ### 22.1 Supplier dependencies
 
-Elmfield depends on suppliers for its housing system, email, payroll, repairs and printing. Sofia maps what each supplier accesses: data, systems or premises. She learns that NIST CSF 2.0 includes cybersecurity supply chain risk management in its Govern function, and that ISO/IEC 27002:2022 covers information security in supplier relationships. Small organisations depend heavily on suppliers, so their security often depends on suppliers' controls as much as their own. The same reasoning will return when Elmfield's auditors visit next year. She adds a short note to the shared course wiki for other students.
+Elmfield depends on suppliers for its housing system, email, payroll, repairs and printing. Sofia maps what each supplier accesses: data, systems or premises. She learns that NIST CSF 2.0 includes cybersecurity supply chain risk management in its Govern function, and that ISO/IEC 27002:2022 covers information security in supplier relationships. Small organisations depend heavily on suppliers, so their security often depends on suppliers' controls as much as their own. The repairs contractor's remote access to the housing system shows how a supplier's controls become part of Elmfield's own exposure.
 
 ### 22.2 Tiering
 
-Sofia scores five suppliers from zero to two on three factors: access to personal data, criticality to services and remote access to systems. The lab adds the scores and assigns tiers. The repairs contractor and cloud email score five, high tier. The payroll bureau scores four, also high. The printing firm scores one and the cleaning company zero, both low. Tiering lets Elmfield focus scrutiny on the three high-tier suppliers rather than treating all suppliers alike. This makes the governance consequence visible to people outside the engineering team.
+Sofia scores five suppliers from zero to two on three factors: access to personal data, criticality to services and remote access to systems. The lab adds the scores and assigns tiers. The repairs contractor and cloud email score five, high tier. The payroll bureau scores four, also high. The printing firm scores one and the cleaning company zero, both low. Tiering lets Elmfield focus scrutiny on the three high-tier suppliers rather than treating all suppliers alike. The scores also explain the tiers: the payroll bureau reaches four through personal data and criticality even without remote access.
 
 ### Lab — Supplier tiering by data, criticality and remote access
 
@@ -1061,7 +1061,7 @@ cleaning company: score 0 tier low
 
 ### 22.3 Proportionate controls
 
-For high-tier suppliers, Sofia recommends security questions before contracts, contract clauses on breach notification and data return, and an annual review of their assurance reports or certifications. For low-tier suppliers, a short confidentiality clause suffices. She notes that the repairs contractor's remote access needs particular attention, since its staff connect to the housing system from their own offices. She learns that proportionate supplier governance saves effort while focusing on real risk. Sofia keeps a dated copy of her working so that the result can be traced.
+For high-tier suppliers, Sofia recommends security questions before contracts, contract clauses on breach notification and data return, and an annual review of their assurance reports or certifications. For low-tier suppliers, a short confidentiality clause suffices. She notes that the repairs contractor's remote access needs particular attention, since its staff connect to the housing system from their own offices. She learns that proportionate supplier governance saves effort while focusing on real risk. Requiring the repairs contractor's staff to use named accounts would also support the contractor misuse controls chosen later.
 
 ### Worked example
 
@@ -1097,11 +1097,11 @@ You will (1) score risks on a 5x5 matrix; (2) compare matrix scores with expecte
 
 ### 23.1 Matrix scoring
 
-Elmfield scores risks on a five-by-five matrix: likelihood and impact each from one to five, multiplied for a score. Sofia scores five risks with managers. Misdirected tenant data scores twelve, the lost laptop twelve, ransomware ten, contractor misuse nine and payment page outage six. The matrix is quick and familiar, which is why many organisations use it. Sofia also asks managers for an annual probability and a typical loss for each risk, to compare methods. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Elmfield scores risks on a five-by-five matrix: likelihood and impact each from one to five, multiplied for a score. Sofia scores five risks with managers. Misdirected tenant data scores twelve, the lost laptop twelve, ransomware ten, contractor misuse nine and payment page outage six. The matrix is quick and familiar, which is why many organisations use it. Sofia also asks managers for an annual probability and a typical loss for each risk, to compare methods. Asking for a probability and a loss alongside each score is what makes the comparison in the next section possible.
 
 ### 23.2 Expected loss
 
-The lab computes expected loss as probability times loss. Ransomware, with a one-in-ten chance and a loss of two hundred and fifty thousand, has the highest expected loss at twenty-five thousand. Misdirected data follows at twelve thousand and the lost laptop at ten thousand. The matrix ranks misdirected data first, tied with the laptop, while expected loss ranks ransomware first. The disagreement arises because the matrix compresses a very large impact into a score of five. She checks the idea against a second example before relying on it.
+The lab computes expected loss as probability times loss. Ransomware, with a one-in-ten chance and a loss of two hundred and fifty thousand, has the highest expected loss at twenty-five thousand. Misdirected data follows at twelve thousand and the lost laptop at ten thousand. The matrix ranks misdirected data first, tied with the laptop, while expected loss ranks ransomware first. The disagreement arises because the matrix compresses a very large impact into a score of five. Because the matrix caps impact at five, ransomware's loss of two hundred and fifty thousand cannot be shown as many times larger than the smaller losses.
 
 ### Lab — Matrix scores versus expected loss
 
@@ -1127,7 +1127,7 @@ top by expected loss: ransomware
 
 ### 23.3 When they disagree
 
-Sofia reads Cox (2008), who shows that risk matrices can assign higher ratings to quantitatively smaller risks and can produce ties between very different risks. Her lab illustrates both problems. She does not conclude that matrices are useless: they help start conversations and are easy for non-specialists. She recommends that Elmfield keep the matrix for initial screening but add rough expected loss estimates for its top risks, so that rare but severe risks like ransomware are not underestimated. The point seems small, but it changes how owners act on the result.
+Sofia reads Cox (2008), who shows that risk matrices can assign higher ratings to quantitatively smaller risks and can produce ties between very different risks. Her lab illustrates both problems. She does not conclude that matrices are useless: they help start conversations and are easy for non-specialists. She recommends that Elmfield keep the matrix for initial screening but add rough expected loss estimates for its top risks, so that rare but severe risks like ransomware are not underestimated. Expected loss estimates for only the top five risks keep the extra work small for a team of Elmfield's size.
 
 ### Worked example
 
@@ -1163,15 +1163,15 @@ You will (1) select controls for Elmfield's top risks; (2) write a statement of 
 
 ### 24.1 Selecting controls
 
-For each top risk, Sofia selects controls from ISO/IEC 27002:2022. For misdirected data: secure sharing links, recipient checks and training. For lost laptops: encryption and remote wipe. For ransomware: offline backups, multi-factor authentication and limited administrator rights. For contractor misuse: named accounts and access reviews. She learns that selecting from a recognised catalogue makes choices easier to explain and helps ensure nothing obvious is missed. Elmfield's security manager later asks for a copy of this analysis. She marks the open questions in red so that they are not forgotten.
+For each top risk, Sofia selects controls from ISO/IEC 27002:2022. For misdirected data: secure sharing links, recipient checks and training. For lost laptops: encryption and remote wipe. For ransomware: offline backups, multi-factor authentication and limited administrator rights. For contractor misuse: named accounts and access reviews. She learns that selecting from a recognised catalogue makes choices easier to explain and helps ensure nothing obvious is missed. Mapping each control back to a named risk also lets her show auditors why each one was chosen.
 
 ### 24.2 Statement of applicability
 
-ISO/IEC 27001:2022 requires a statement of applicability listing reference controls, whether each is included and why. Sofia drafts one for Elmfield. Most controls are included. Some are excluded with reasons: secure development controls are excluded because Elmfield builds no software, though supplier controls cover its housing system. She learns that exclusions must be justified by scope and risk, not by convenience, and that the statement becomes a key document for auditors. Writing the reasoning down also helps her spot a weak step in her argument.
+ISO/IEC 27001:2022 requires a statement of applicability listing reference controls, whether each is included and why. Sofia drafts one for Elmfield. Most controls are included. Some are excluded with reasons: secure development controls are excluded because Elmfield builds no software, though supplier controls cover its housing system. She learns that exclusions must be justified by scope and risk, not by convenience, and that the statement becomes a key document for auditors. Excluding secure development is justified because Elmfield builds no software, not because the controls would be inconvenient.
 
 ### 24.3 Owners
 
-Each control needs an owner who ensures it operates. Sofia assigns owners: IT lead for backups and encryption, managers for access reviews, data protection lead for sharing rules and the finance manager for supplier contracts. She writes a one-line description of each control's operation. She learns that owners must have both authority and time; assigning everything to the IT lead would overload one person and leave controls unperformed when that person is absent. Sofia discusses the trade-off with a classmate who works in finance.
+Each control needs an owner who ensures it operates. Sofia assigns owners: IT lead for backups and encryption, managers for access reviews, data protection lead for sharing rules and the finance manager for supplier contracts. She writes a one-line description of each control's operation. She learns that owners must have both authority and time; assigning everything to the IT lead would overload one person and leave controls unperformed when that person is absent. Splitting ownership across the IT lead, managers, the data protection lead and the finance manager spreads the load across roles with the right knowledge.
 
 ### Worked example
 
@@ -1207,15 +1207,15 @@ You will (1) test a control in a safe environment; (2) record evidence properly;
 
 ### 25.1 Planning the test
 
-In the first laboratory, Sofia tests Elmfield's backup control using a test copy of the file share provided by the IT lead. The test checks that a backup exists for each day of the last week, that it is stored offline and that a sample of files can be restored. She writes the steps, expected results and evidence to collect before starting. Testing in a copy ensures that nothing in live use is disturbed. The class compares answers and finds that most differences come from unstated assumptions.
+In the first laboratory, Sofia tests Elmfield's backup control using a test copy of the file share provided by the IT lead. The test checks that a backup exists for each day of the last week, that it is stored offline and that a sample of files can be restored. She writes the steps, expected results and evidence to collect before starting. Testing in a copy ensures that nothing in live use is disturbed. Writing the expected results before starting means the test cannot quietly be redefined if something fails.
 
 ### 25.2 Running and recording
 
-Sofia restores twenty files chosen at random from different folders and dates. Nineteen restore correctly. One, a large spreadsheet, fails because the backup excluded files above a size limit. She records the date, steps, results, screenshots and file list. She stores the evidence in a folder that only she and the IT lead can change. She learns that evidence must allow someone else to understand what was tested and see the result for themselves. Sofia records this point in her course notebook so that later chapters can build on it.
+Sofia restores twenty files chosen at random from different folders and dates. Nineteen restore correctly. One, a large spreadsheet, fails because the backup excluded files above a size limit. She records the date, steps, results, screenshots and file list. She stores the evidence in a folder that only she and the IT lead can change. She learns that evidence must allow someone else to understand what was tested and see the result for themselves. Choosing files from different folders and dates made it more likely that a hidden exclusion such as the size limit would show.
 
 ### 25.3 Comparing with expectations
 
-The control description said all files are backed up nightly; the test shows large files are excluded. Sofia reports the gap with its likely impact: large spreadsheets include rent arrears records. The IT lead changes the setting and asks her to retest, which passes. She learns that testing reveals the difference between what a control is believed to do and what it does, and that this difference is often caused by a forgotten configuration choice. Dr. Haddad asks her to explain the idea aloud to a classmate before moving on.
+The control description said all files are backed up nightly; the test shows large files are excluded. Sofia reports the gap with its likely impact: large spreadsheets include rent arrears records. The IT lead changes the setting and asks her to retest, which passes. She learns that testing reveals the difference between what a control is believed to do and what it does, and that this difference is often caused by a forgotten configuration choice. Dr. Haddad asks why nobody noticed earlier, and Sofia points out that the nightly backup report showed success because excluded files were never counted as failures.
 
 ### Worked example
 
@@ -1251,11 +1251,11 @@ You will (1) run a gap assessment against NIST CSF 2.0; (2) summarise results by
 
 ### 26.1 Gap assessment
 
-Sofia runs a gap assessment using a sample of outcomes from each NIST CSF 2.0 function: Govern, Identify, Protect, Detect, Respond and Recover. With the IT lead and director, she rates each sampled outcome as achieved or not achieved, based on evidence rather than opinion. For example, an outcome about backups counts as achieved only because of the laboratory test. She records the evidence for each rating so that later reassessments can compare like with like. She notes the assumption behind it so that a reviewer can challenge it later.
+Sofia runs a gap assessment using a sample of outcomes from each NIST CSF 2.0 function: Govern, Identify, Protect, Detect, Respond and Recover. With the IT lead and director, she rates each sampled outcome as achieved or not achieved, based on evidence rather than opinion. For example, an outcome about backups counts as achieved only because of the laboratory test. She records the evidence for each rating so that later reassessments can compare like with like. Tying the backup outcome to the laboratory test means a later rating can be repeated using the same evidence.
 
 ### 26.2 Results
 
-The lab summarises twenty-eight rated outcomes. Protect is strongest at five of six, eighty-three percent. Identify reaches sixty percent. Govern and Respond reach fifty percent. Recover reaches thirty-three percent and Detect is weakest at one of four, twenty-five percent. Overall, fifteen of twenty-eight outcomes are achieved, fifty-four percent. Sofia notes that Elmfield invested in protection but has little ability to notice or recover from incidents, a common pattern in small organisations. The same reasoning will return when Elmfield's auditors visit next year. She adds a short note to the shared course wiki for other students.
+The lab summarises twenty-eight rated outcomes. Protect is strongest at five of six, eighty-three percent. Identify reaches sixty percent. Govern and Respond reach fifty percent. Recover reaches thirty-three percent and Detect is weakest at one of four, twenty-five percent. Overall, fifteen of twenty-eight outcomes are achieved, fifty-four percent. Sofia notes that Elmfield invested in protection but has little ability to notice or recover from incidents, a common pattern in small organisations. With only four Detect outcomes rated, one additional achieved outcome would move that figure by twenty-five points.
 
 ### Lab — Achieved CSF 2.0 outcomes by function
 
@@ -1282,7 +1282,7 @@ overall 15/28 = 54%; weakest Detect
 
 ### 26.3 Priorities
 
-Sofia proposes priorities based on the gaps and on risk. Detection comes first: enabling alerts in cloud email and identity services and assigning someone to review them. Recovery comes second: documenting and testing a restore plan for the housing system. Governance improvements, such as approving a risk appetite, follow. She warns that percentages from small samples are rough, so they should guide priorities rather than become targets. The board approves the plan for the coming year. This makes the governance consequence visible to people outside the engineering team.
+Sofia proposes priorities based on the gaps and on risk. Detection comes first: enabling alerts in cloud email and identity services and assigning someone to review them. Recovery comes second: documenting and testing a restore plan for the housing system. Governance improvements, such as approving a risk appetite, follow. She warns that percentages from small samples are rough, so they should guide priorities rather than become targets. The board approves the plan for the coming year. Putting detection first also answers the weakest function in the results, Detect at one of four.
 
 ### Worked example
 
@@ -1318,15 +1318,15 @@ You will (1) verify controls through inspection, observation and re-performance;
 
 ### 27.1 Test types
 
-Sofia learns three ways to verify a control. Inspection examines documents or records, such as access review sign-offs. Observation watches a control being performed, such as a manager reviewing access. Re-performance repeats the control independently, such as Sofia comparing the leaver list with active accounts herself. Re-performance gives the strongest evidence because it does not rely on the owner's records, but it takes the most time and access. Sofia keeps a dated copy of her working so that the result can be traced. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Sofia learns three ways to verify a control. Inspection examines documents or records, such as access review sign-offs. Observation watches a control being performed, such as a manager reviewing access. Re-performance repeats the control independently, such as Sofia comparing the leaver list with active accounts herself. Re-performance gives the strongest evidence because it does not rely on the owner's records, but it takes the most time and access. Her own comparison of the leaver list with active accounts is re-performance, which is why it later finds what the review missed.
 
 ### 27.2 Choosing tests
 
-For each key control Sofia chooses a test. For access reviews, she inspects sign-offs and re-performs a sample. For encryption, she inspects the device console report. For incident handling, she observes a tabletop exercise. She learns that the choice depends on the control's importance and the evidence available. Important controls deserve stronger tests. She also notes that relying only on inspection risks accepting records that look complete but describe controls nobody actually performed. She checks the idea against a second example before relying on it.
+For each key control Sofia chooses a test. For access reviews, she inspects sign-offs and re-performs a sample. For encryption, she inspects the device console report. For incident handling, she observes a tabletop exercise. She learns that the choice depends on the control's importance and the evidence available. Important controls deserve stronger tests. She also notes that relying only on inspection risks accepting records that look complete but describe controls nobody actually performed. Access reviews get both inspection and re-performance because they protect tenant data across every system.
 
 ### 27.3 Documenting results
 
-Sofia documents each test with its objective, method, sample, results and conclusion. Re-performing the leaver check reveals one account that the access review missed, so she concludes the review control operates with an exception. She recommends adding the leaver list to reviewers' materials. She learns that verification results should state clearly whether a control operated effectively, operated with exceptions or failed, so that management knows how much to rely on it. The point seems small, but it changes how owners act on the result.
+Sofia documents each test with its objective, method, sample, results and conclusion. Re-performing the leaver check reveals one account that the access review missed, so she concludes the review control operates with an exception. She recommends adding the leaver list to reviewers' materials. She learns that verification results should state clearly whether a control operated effectively, operated with exceptions or failed, so that management knows how much to rely on it. Her conclusion that the review operates with an exception tells management to rely on it, but not without the leaver list added.
 
 ### Worked example
 
@@ -1362,15 +1362,15 @@ You will (1) analyse an incident for control failures; (2) run a blameless revie
 
 ### 28.1 The incident
 
-A synthetic incident occurs: a housing officer emails a spreadsheet with tenants' arrears details to an external address with a similar name to a council contact. The recipient reports it, and the file is deleted. Sofia helps the data protection lead assess whether the breach must be reported to the regulator and whether tenants should be told, following Elmfield's procedure. The assessment considers the sensitivity of the data and the recipient's confirmation of deletion. Elmfield's security manager later asks for a copy of this analysis.
+A synthetic incident occurs: a housing officer emails a spreadsheet with tenants' arrears details to an external address with a similar name to a council contact. The recipient reports it, and the file is deleted. Sofia helps the data protection lead assess whether the breach must be reported to the regulator and whether tenants should be told, following Elmfield's procedure. The assessment considers the sensitivity of the data and the recipient's confirmation of deletion. The recipient's confirmed deletion lowers the risk to tenants but does not by itself remove the need for an assessment.
 
 ### 28.2 Blameless review
 
-Sofia facilitates a blameless review. The aim is to understand how the system allowed the error, not to punish the officer. They find that email auto-completed the wrong address, that spreadsheets with arrears data were routinely emailed rather than shared through the housing system and that no warning appeared for external recipients. Sofia learns that blameless reviews encourage honest accounts, which reveal design problems. Blaming individuals tends to hide information and leaves the same conditions in place. She marks the open questions in red so that they are not forgotten.
+Sofia facilitates a blameless review. The aim is to understand how the system allowed the error, not to punish the officer. They find that email auto-completed the wrong address, that spreadsheets with arrears data were routinely emailed rather than shared through the housing system and that no warning appeared for external recipients. Sofia learns that blameless reviews encourage honest accounts, which reveal design problems. Blaming individuals tends to hide information and leaves the same conditions in place. The auto-completed address and the missing external warning are system conditions that would catch any housing officer, not just this one.
 
 ### 28.3 Control changes
 
-The review leads to changes: an external recipient warning in email, a rule that arrears data are shared through secure links with expiry, and a short reminder in team meetings. Sofia updates the risk register, raising the likelihood estimate for misdirected data and recording the new controls. She learns that incidents are evidence about control effectiveness and should feed back into risk assessment, closing the loop between operations and governance. Writing the reasoning down also helps her spot a weak step in her argument.
+The review leads to changes: an external recipient warning in email, a rule that arrears data are shared through secure links with expiry, and a short reminder in team meetings. Sofia updates the risk register, raising the likelihood estimate for misdirected data and recording the new controls. She learns that incidents are evidence about control effectiveness and should feed back into risk assessment, closing the loop between operations and governance. Raising the likelihood estimate for misdirected data reflects that the incident showed the risk was more likely than scored earlier.
 
 ### Worked example
 
@@ -1406,15 +1406,15 @@ You will (1) run a governance calendar; (2) track actions to completion; (3) rep
 
 ### 29.1 Governance calendar
 
-Sofia helps Elmfield set a governance calendar. Monthly: review security alerts and incidents. Quarterly: access reviews, risk register review and supplier checks. Twice a year: board report. Annually: policy review, backup restore test and gap reassessment. Each activity has an owner and a reminder in the shared calendar. She learns that a calendar turns good intentions into routine, and that small organisations benefit from predictable rhythms because staff can plan around them. Sofia discusses the trade-off with a classmate who works in finance. The class compares answers and finds that most differences come from unstated assumptions.
+Sofia helps Elmfield set a governance calendar. Monthly: review security alerts and incidents. Quarterly: access reviews, risk register review and supplier checks. Twice a year: board report. Annually: policy review, backup restore test and gap reassessment. Each activity has an owner and a reminder in the shared calendar. She learns that a calendar turns good intentions into routine, and that small organisations benefit from predictable rhythms because staff can plan around them. Placing the annual backup restore test in the calendar, for example, ensures the lab test from chapter 25 is repeated.
 
 ### 29.2 Tracking actions
 
-Every finding and improvement becomes an action with an owner and a due date in a simple tracker. Sofia reviews the tracker monthly with the director. Overdue actions are discussed, not hidden. After three months, eighteen of twenty-four actions are complete. She learns that tracking is most useful when it prompts conversations about obstacles, such as an owner lacking time or budget, rather than simply listing overdue items. Sofia records this point in her course notebook so that later chapters can build on it.
+Every finding and improvement becomes an action with an owner and a due date in a simple tracker. Sofia reviews the tracker monthly with the director. Overdue actions are discussed, not hidden. After three months, eighteen of twenty-four actions are complete. She learns that tracking is most useful when it prompts conversations about obstacles, such as an owner lacking time or budget, rather than simply listing overdue items. For the six open actions, she notes for each whether the obstacle is time, budget or a missing decision.
 
 ### 29.3 Board reporting
 
-Sofia drafts Elmfield's first board security report. It covers top risks and changes, gap assessment progress, incidents and lessons, overdue actions and decisions requested. It is three pages with plain language. The board asks good questions, especially about supplier risk. Sofia learns that boards engage when reports are short, honest and ask for decisions. A report that only reassures gives the board nothing to govern, which undermines the purpose of oversight. Dr. Haddad asks her to explain the idea aloud to a classmate before moving on.
+Sofia drafts Elmfield's first board security report. It covers top risks and changes, gap assessment progress, incidents and lessons, overdue actions and decisions requested. It is three pages with plain language. The board asks good questions, especially about supplier risk. Sofia learns that boards engage when reports are short, honest and ask for decisions. A report that only reassures gives the board nothing to govern, which undermines the purpose of oversight. Dr. Haddad notes that the board's questions about supplier risk show the report gave directors enough to challenge.
 
 ### Worked example
 
@@ -1450,15 +1450,15 @@ You will (1) run a tabletop exercise; (2) evaluate response against the plan; (3
 
 ### 30.1 Exercise design
 
-In the second laboratory, Sofia designs a tabletop exercise for Elmfield's managers: ransomware has encrypted the file server on a Monday morning. The scenario unfolds in stages, with new information at each stage. Participants decide what to do using the incident plan. The exercise is announced, uses no real systems and lasts ninety minutes. Sofia prepares injects, such as a call from a journalist and a tenant asking about their data. She notes the assumption behind it so that a reviewer can challenge it later.
+In the second laboratory, Sofia designs a tabletop exercise for Elmfield's managers: ransomware has encrypted the file server on a Monday morning. The scenario unfolds in stages, with new information at each stage. Participants decide what to do using the incident plan. The exercise is announced, uses no real systems and lasts ninety minutes. Sofia prepares injects, such as a call from a journalist and a tenant asking about their data. The journalist call inject tests who may speak publicly, a question the incident plan had not answered.
 
 ### 30.2 Observations
 
-Sofia and a colleague observe. Managers quickly isolate the server but are unsure who decides whether to contact the police and the regulator. The backup restore plan exists but nobody knows where it is stored. Communication with tenants is improvised. The housing system, being a cloud service, keeps running, which reassures everyone. She records each observation with the time and compares actions with the incident plan. The same reasoning will return when Elmfield's auditors visit next year. She adds a short note to the shared course wiki for other students.
+Sofia and a colleague observe. Managers quickly isolate the server but are unsure who decides whether to contact the police and the regulator. The backup restore plan exists but nobody knows where it is stored. Communication with tenants is improvised. The housing system, being a cloud service, keeps running, which reassures everyone. She records each observation with the time and compares actions with the incident plan. The calm reaction to the cloud housing system staying up also reveals how much depends on that supplier.
 
 ### 30.3 Improvements
 
-After the exercise, the group agrees improvements: name the director as decision maker for external notifications, store the restore plan in two places including paper, and prepare template messages for tenants. Sofia records these as actions in the tracker. She learns that tabletop exercises are cheap and safe ways to test plans, and that they often reveal simple gaps, such as a plan nobody can find, that matter enormously in a real incident. This makes the governance consequence visible to people outside the engineering team.
+After the exercise, the group agrees improvements: name the director as decision maker for external notifications, store the restore plan in two places including paper, and prepare template messages for tenants. Sofia records these as actions in the tracker. She learns that tabletop exercises are cheap and safe ways to test plans, and that they often reveal simple gaps, such as a plan nobody can find, that matter enormously in a real incident. Storing the restore plan on paper as well answers the exercise's finding that nobody could locate it.
 
 ### Worked example
 
@@ -1494,15 +1494,15 @@ You will (1) analyse governance in payment and certification contexts; (2) under
 
 ### 31.1 Payments
 
-Elmfield takes rent payments by card through a hosted payment page run by a provider. Sofia learns that PCI DSS v4.0 applies to organisations that store, process or transmit cardholder data or could affect its security. By using a hosted page, Elmfield keeps card data off its own systems, greatly reducing its obligations, though it must still protect the website that links to the payment page and confirm the provider's compliance. She learns that architecture choices can shrink compliance scope substantially. Sofia records this point in her course notebook so that later chapters can build on it.
+Elmfield takes rent payments by card through a hosted payment page run by a provider. Sofia learns that PCI DSS v4.0 applies to organisations that store, process or transmit cardholder data or could affect its security. By using a hosted page, Elmfield keeps card data off its own systems, greatly reducing its obligations, though it must still protect the website that links to the payment page and confirm the provider's compliance. She learns that architecture choices can shrink compliance scope substantially. Her chosen architecture also shapes the board's later certification decision, since card data never touch Elmfield's own laptops.
 
 ### 31.2 Certification
 
-Elmfield's board asks whether it should seek ISO/IEC 27001:2022 certification. Sofia lists benefits: tenders from councils increasingly ask for it, and it would discipline the programme. Costs include audit fees, staff time and ongoing surveillance audits. She suggests first operating the management system for a year and measuring progress against the gap assessment, then deciding. She learns that certification is a means, not an end, and should be chosen for clear reasons. Dr. Haddad asks her to explain the idea aloud to a classmate before moving on.
+Elmfield's board asks whether it should seek ISO/IEC 27001:2022 certification. Sofia lists benefits: tenders from councils increasingly ask for it, and it would discipline the programme. Costs include audit fees, staff time and ongoing surveillance audits. She suggests first operating the management system for a year and measuring progress against the gap assessment, then deciding. She learns that certification is a means, not an end, and should be chosen for clear reasons. Dr. Haddad adds that operating the system for a year will also give Elmfield the evidence auditors would ask for in any certification audit.
 
 ### 31.3 Assurance types
 
-Sofia compares assurance types Elmfield receives from suppliers. Certification shows a management system met a standard at audit. SOC 2 reports, based on the AICPA trust services criteria, describe controls and, in a type two report, test their operation over a period. Questionnaires record what suppliers claim. She learns that each type provides different strength of evidence and that reading the scope and exceptions in a report matters more than its title. She notes the assumption behind it so that a reviewer can challenge it later.
+Sofia compares assurance types Elmfield receives from suppliers. Certification shows a management system met a standard at audit. SOC 2 reports, based on the AICPA trust services criteria, describe controls and, in a type two report, test their operation over a period. Questionnaires record what suppliers claim. She learns that each type provides different strength of evidence and that reading the scope and exceptions in a report matters more than its title. A type two report with exceptions in access management, for instance, says more than a clean certificate whose scope excludes the service used.
 
 ### Worked example
 
@@ -1538,15 +1538,15 @@ You will (1) work with legal, finance and HR on governance; (2) translate betwee
 
 ### 32.1 Legal
 
-Sofia works with Elmfield's external solicitor on data sharing agreements with councils. The solicitor focuses on lawful basis and liability; Sofia focuses on security controls and evidence. They agree a template that covers both. She learns that GRC staff should not give legal advice but must understand legal requirements well enough to ask the right questions and translate them into controls. The boundary between legal and security roles needs to be clear and respected. The same reasoning will return when Elmfield's auditors visit next year.
+Sofia works with Elmfield's external solicitor on data sharing agreements with councils. The solicitor focuses on lawful basis and liability; Sofia focuses on security controls and evidence. They agree a template that covers both. She learns that GRC staff should not give legal advice but must understand legal requirements well enough to ask the right questions and translate them into controls. The boundary between legal and security roles needs to be clear and respected. In the council agreements, the solicitor sets the lawful basis while Sofia specifies controls such as encryption in transit.
 
 ### 32.2 Finance and HR
 
-Finance cares about cost, insurance and fraud; HR cares about fair treatment of staff and accurate records. Sofia learns to frame security in their terms. For finance, she presents controls as reducing expected loss and insurance premiums. For HR, she presents the leaver process as protecting former staff from misuse of their accounts as well as protecting tenants. Framing in each discipline's language increases cooperation without changing the substance of the controls. She adds a short note to the shared course wiki for other students.
+Finance cares about cost, insurance and fraud; HR cares about fair treatment of staff and accurate records. Sofia learns to frame security in their terms. For finance, she presents controls as reducing expected loss and insurance premiums. For HR, she presents the leaver process as protecting former staff from misuse of their accounts as well as protecting tenants. Framing in each discipline's language increases cooperation without changing the substance of the controls. For finance, the size of a fake invoice payment is a familiar loss to weigh against the cost of payment approval controls.
 
 ### 32.3 Conflicting priorities
 
-Conflicts arise. Housing managers want staff to work quickly from anywhere; IT wants tighter device controls. Sofia facilitates a meeting where each side explains its concerns. They agree that managed devices may work from anywhere, while personal devices get access to email only. She learns that conflicts are best resolved by understanding underlying needs and agreeing a documented compromise, which the director approves as a risk decision with a review date. This makes the governance consequence visible to people outside the engineering team. Sofia keeps a dated copy of her working so that the result can be traced.
+Conflicts arise. Housing managers want staff to work quickly from anywhere; IT wants tighter device controls. Sofia facilitates a meeting where each side explains its concerns. They agree that managed devices may work from anywhere, while personal devices get access to email only. She learns that conflicts are best resolved by understanding underlying needs and agreeing a documented compromise, which the director approves as a risk decision with a review date. The review date lets the compromise on personal devices be revisited if email-only access proves too restrictive.
 
 ### Worked example
 
@@ -1582,15 +1582,15 @@ You will (1) analyse interview data thematically; (2) check reliability of codin
 
 ### 33.1 Thematic analysis
 
-Sofia returns to her interviews with twelve managers about access reviews. She reads transcripts several times, codes passages with short labels and groups codes into themes. Three themes emerge: lists were too long and used system jargon, managers did not know what their staff actually needed and reviews arrived at busy times. She learns that thematic analysis is systematic, not impressionistic, and requires a clear record of how codes became themes. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Sofia returns to her interviews with twelve managers about access reviews. She reads transcripts several times, codes passages with short labels and groups codes into themes. Three themes emerge: lists were too long and used system jargon, managers did not know what their staff actually needed and reviews arrived at busy times. She learns that thematic analysis is systematic, not impressionistic, and requires a clear record of how codes became themes. Her codebook and memos record, for example, how the code jargon in lists became part of the first theme.
 
 ### 33.2 Reliability
 
-To check her coding, a classmate independently codes four transcripts with Sofia's codebook. They agree on most passages, and discussion of disagreements refines two code definitions. She reports agreement using Cohen's kappa as discussed by Landis and Koch (1977) for interpreting agreement levels, while noting that qualitative research also values reflexivity: being aware of how her own role at Elmfield might shape what managers told her and what she noticed. She checks the idea against a second example before relying on it. The point seems small, but it changes how owners act on the result.
+To check her coding, a classmate independently codes four transcripts with Sofia's codebook. They agree on most passages, and discussion of disagreements refines two code definitions. She reports agreement using Cohen's kappa as discussed by Landis and Koch (1977) for interpreting agreement levels, while noting that qualitative research also values reflexivity: being aware of how her own role at Elmfield might shape what managers told her and what she noticed. Refining two code definitions after discussion with the classmate made the codebook clearer for her later analysis.
 
 ### 33.3 Reporting
 
-Sofia reports themes with illustrative anonymised quotes, counts of how many managers raised each and the contrary views she found. Two managers liked the reviews and found them easy. She recommends shorter lists with plain descriptions, a short guide on role needs and scheduling reviews outside month-end. She learns that qualitative findings are most persuasive when they show their evidence, include dissent and lead to concrete changes that can later be tested. Elmfield's security manager later asks for a copy of this analysis. She marks the open questions in red so that they are not forgotten.
+Sofia reports themes with illustrative anonymised quotes, counts of how many managers raised each and the contrary views she found. Two managers liked the reviews and found them easy. She recommends shorter lists with plain descriptions, a short guide on role needs and scheduling reviews outside month-end. She learns that qualitative findings are most persuasive when they show their evidence, include dissent and lead to concrete changes that can later be tested. Including the two managers who found reviews easy shows that her recommendations are not built on uniform complaints.
 
 ### Worked example
 
@@ -1626,15 +1626,15 @@ You will (1) compare governance approaches across organisations; (2) choose fair
 
 ### 34.1 Two organisations
 
-Sofia compares Elmfield with a second fictional organisation, Corbridge Community Trust, a charity of similar size. Both agree to share anonymised summaries of their governance practices. Corbridge uses a managed service provider for IT and security, while Elmfield has an in-house IT lead. Sofia wants to understand how the different models affect governance: who owns risks, how evidence is gathered and how boards are informed. Writing the reasoning down also helps her spot a weak step in her argument. Sofia discusses the trade-off with a classmate who works in finance.
+Sofia compares Elmfield with a second fictional organisation, Corbridge Community Trust, a charity of similar size. Both agree to share anonymised summaries of their governance practices. Corbridge uses a managed service provider for IT and security, while Elmfield has an in-house IT lead. Sofia wants to understand how the different models affect governance: who owns risks, how evidence is gathered and how boards are informed. Using anonymised summaries lets both organisations share honestly without exposing staff names or specific weaknesses.
 
 ### 34.2 Fair criteria
 
-Sofia chooses criteria that make sense for both: existence of an approved risk appetite, register review frequency, access review completion, backup testing and board reporting. She avoids comparing raw incident counts, because reporting cultures differ: a higher count may reflect better reporting rather than worse security. She learns that comparisons must account for context and measurement differences, or they will mislead the very people they aim to inform. The class compares answers and finds that most differences come from unstated assumptions. Sofia records this point in her course notebook so that later chapters can build on it.
+Sofia chooses criteria that make sense for both: existence of an approved risk appetite, register review frequency, access review completion, backup testing and board reporting. She avoids comparing raw incident counts, because reporting cultures differ: a higher count may reflect better reporting rather than worse security. She learns that comparisons must account for context and measurement differences, or they will mislead the very people they aim to inform. Register review frequency, for example, can be compared directly because both organisations keep a dated register.
 
 ### 34.3 Findings
 
-Corbridge has stronger technical monitoring through its provider but weaker ownership, since staff assume the provider handles everything. Elmfield has clearer ownership but less monitoring. Sofia presents these as complementary lessons rather than a ranking. She recommends that Elmfield consider buying monitoring services while keeping in-house ownership, and that Corbridge clarify which risks remain its own. Both organisations find the comparison useful because it avoided judging one as better. Dr. Haddad asks her to explain the idea aloud to a classmate before moving on.
+Corbridge has stronger technical monitoring through its provider but weaker ownership, since staff assume the provider handles everything. Elmfield has clearer ownership but less monitoring. Sofia presents these as complementary lessons rather than a ranking. She recommends that Elmfield consider buying monitoring services while keeping in-house ownership, and that Corbridge clarify which risks remain its own. Both organisations find the comparison useful because it avoided judging one as better. Dr. Haddad notes that Corbridge's provider model shows ownership cannot be outsourced even when operations are.
 
 ### Worked example
 
@@ -1670,15 +1670,15 @@ You will (1) propose a capstone that improves a governance control; (2) define m
 
 ### 35.1 The proposal
 
-For her capstone, Sofia proposes redesigning Elmfield's quarterly access review using her research findings: shorter lists with plain descriptions, a role guide, scheduling outside month-end and the leaver list included. She will measure whether completion time, completion rate and the number of excess rights found change compared with the previous two quarters. She writes the proposal with background, aims, methods, timeline, ethics and risks, in ten pages. She notes the assumption behind it so that a reviewer can challenge it later. The same reasoning will return when Elmfield's auditors visit next year.
+For her capstone, Sofia proposes redesigning Elmfield's quarterly access review using her research findings: shorter lists with plain descriptions, a role guide, scheduling outside month-end and the leaver list included. She will measure whether completion time, completion rate and the number of excess rights found change compared with the previous two quarters. She writes the proposal with background, aims, methods, timeline, ethics and risks, in ten pages. Comparing with the previous two quarters gives her a baseline to judge whether the redesign changed anything.
 
 ### 35.2 Outcomes
 
-Sofia defines outcomes before starting: completion rate by the deadline, median days to complete, rights removed per hundred reviewed and manager satisfaction on a short survey. She notes that rights removed might fall because earlier reviews already cleaned up access, not because the new design is worse, and records this as an interpretation risk. She learns that defining outcomes and their limits in advance prevents choosing flattering measures after results arrive. She adds a short note to the shared course wiki for other students.
+Sofia defines outcomes before starting: completion rate by the deadline, median days to complete, rights removed per hundred reviewed and manager satisfaction on a short survey. She notes that rights removed might fall because earlier reviews already cleaned up access, not because the new design is worse, and records this as an interpretation risk. She learns that defining outcomes and their limits in advance prevents choosing flattering measures after results arrive. Recording manager satisfaction as well keeps the evaluation from resting only on rights removed.
 
 ### 35.3 Ethics and risks
 
-The capstone involves managers' work but not personal data beyond what reviews already use. Sofia obtains Dr. Haddad's approval and Elmfield's agreement. Risks include a busy quarter, manager turnover and her own limited time. She plans responses, such as a fallback schedule. She also commits to keep the old process available if the new one fails, so that Elmfield's control is never weaker because of her project. This makes the governance consequence visible to people outside the engineering team. Sofia keeps a dated copy of her working so that the result can be traced.
+The capstone involves managers' work but not personal data beyond what reviews already use. Sofia obtains Dr. Haddad's approval and Elmfield's agreement. Risks include a busy quarter, manager turnover and her own limited time. She plans responses, such as a fallback schedule. She also commits to keep the old process available if the new one fails, so that Elmfield's control is never weaker because of her project. Keeping the old process available means Elmfield's quarterly access review will still run if the redesign fails.
 
 ### Worked example
 
@@ -1714,15 +1714,15 @@ You will (1) apply GRC skills in a community setting; (2) adapt guidance for ver
 
 ### 36.1 Community placement
 
-Sofia volunteers with a local tenants' association linked to Elmfield. It has a committee of eight volunteers, a laptop, a shared email account and a spreadsheet of member contacts. Its needs are small but real: it holds personal data and handles small amounts of money. Sofia learns that frameworks designed for organisations with staff and budgets must be adapted heavily for groups like this, focusing on a handful of high-value actions. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Sofia volunteers with a local tenants' association linked to Elmfield. It has a committee of eight volunteers, a laptop, a shared email account and a spreadsheet of member contacts. Its needs are small but real: it holds personal data and handles small amounts of money. Sofia learns that frameworks designed for organisations with staff and budgets must be adapted heavily for groups like this, focusing on a handful of high-value actions. Her chosen actions focus on the shared email account and the contact spreadsheet, the two places where members' data sit.
 
 ### 36.2 Simple guidance
 
-Sofia writes a one-page guide: give each committee member their own account instead of sharing one, turn on multi-factor authentication, keep the member list in one place with access for two people, back it up monthly and delete contacts of people who have left. She draws on the NIST CSF 2.0 small business quick-start materials but simplifies further. The committee adopts four of the five steps immediately and agrees to revisit the fifth. She checks the idea against a second example before relying on it.
+Sofia writes a one-page guide: give each committee member their own account instead of sharing one, turn on multi-factor authentication, keep the member list in one place with access for two people, back it up monthly and delete contacts of people who have left. She draws on the NIST CSF 2.0 small business quick-start materials but simplifies further. The committee adopts four of the five steps immediately and agrees to revisit the fifth. The member list with access for two people, for example, keeps the group running if one volunteer leaves.
 
 ### 36.3 Limits
 
-Sofia is careful about limits. She does not access members' personal data herself, does not set up accounts using her own credentials and does not promise ongoing support she cannot provide. Instead she teaches two committee members to do each step. She learns that volunteer help should build the group's own capacity rather than create dependence, and that good intentions must be matched by clear boundaries and handover. The point seems small, but it changes how owners act on the result. Elmfield's security manager later asks for a copy of this analysis.
+Sofia is careful about limits. She does not access members' personal data herself, does not set up accounts using her own credentials and does not promise ongoing support she cannot provide. Instead she teaches two committee members to do each step. She learns that volunteer help should build the group's own capacity rather than create dependence, and that good intentions must be matched by clear boundaries and handover. Teaching two committee members each step means the guide survives her leaving the placement.
 
 ### Worked example
 
@@ -1758,15 +1758,15 @@ You will (1) critique governance evidence presented by peers; (2) judge evidence
 
 ### 37.1 The seminar
 
-In the evidence review seminar, each student presents the evidence behind one governance claim from their placement. Sofia presents the claim that Elmfield's backups work, supported by the laboratory restore test, the retest after the fix and the monthly backup job reports. A classmate presents a claim that phishing risk fell, supported only by fewer reported suspicious emails. The class discusses which claims are well supported and why. She marks the open questions in red so that they are not forgotten. Writing the reasoning down also helps her spot a weak step in her argument.
+In the evidence review seminar, each student presents the evidence behind one governance claim from their placement. Sofia presents the claim that Elmfield's backups work, supported by the laboratory restore test, the retest after the fix and the monthly backup job reports. A classmate presents a claim that phishing risk fell, supported only by fewer reported suspicious emails. The class discusses which claims are well supported and why. Her backup claim draws on three types of evidence, while the phishing claim relies on one count.
 
 ### 37.2 Judging strength
 
-The group ranks evidence types. Independent re-performance and tests rank highest. System-generated reports rank next. Owner statements and questionnaires rank lowest. They note that fewer reported emails could mean less phishing, better filtering or less reporting, so the classmate's claim is weak. Sofia's claim is strong for the files tested but cannot prove every system is backed up. She learns that judging evidence means asking what else could explain it and how much it covers. Sofia discusses the trade-off with a classmate who works in finance.
+The group ranks evidence types. Independent re-performance and tests rank highest. System-generated reports rank next. Owner statements and questionnaires rank lowest. They note that fewer reported emails could mean less phishing, better filtering or less reporting, so the classmate's claim is weak. Sofia's claim is strong for the files tested but cannot prove every system is backed up. She learns that judging evidence means asking what else could explain it and how much it covers. Her claim's scope must exclude the housing system, which the supplier backs up and she never tested.
 
 ### 37.3 Constructive feedback
 
-Dr. Haddad asks students to give feedback that helps. Sofia suggests her classmate add data on filtered emails and a short survey of reporting habits. She receives feedback that her claim should state its scope: the file share only, not the housing system, which the supplier backs up. She revises the claim. She learns that peer review improves claims when feedback is specific, respectful and focused on evidence rather than on the person. The class compares answers and finds that most differences come from unstated assumptions.
+Dr. Haddad asks students to give feedback that helps. Sofia suggests her classmate add data on filtered emails and a short survey of reporting habits. She receives feedback that her claim should state its scope: the file share only, not the housing system, which the supplier backs up. She revises the claim. She learns that peer review improves claims when feedback is specific, respectful and focused on evidence rather than on the person. Stating that the claim covers only the file share keeps the board from assuming the housing system was tested as well.
 
 ### Worked example
 
@@ -1802,15 +1802,15 @@ You will (1) implement a redesigned governance process; (2) monitor it as it run
 
 ### 38.1 Implementation
 
-Sofia implements the redesigned access review for one quarter. She prepares shorter lists with plain descriptions of each permission, writes a two-page role guide with the data protection lead, schedules the review for the second week of the month and adds the leaver list. She briefs managers in a short meeting and offers help sessions. She keeps a log of every question managers ask, because questions reveal where the design is still unclear. Sofia records this point in her course notebook so that later chapters can build on it.
+Sofia implements the redesigned access review for one quarter. She prepares shorter lists with plain descriptions of each permission, writes a two-page role guide with the data protection lead, schedules the review for the second week of the month and adds the leaver list. She briefs managers in a short meeting and offers help sessions. She keeps a log of every question managers ask, because questions reveal where the design is still unclear. The help sessions also give her a direct view of where the role guide is still unclear.
 
 ### 38.2 Monitoring
 
-During the review, Sofia tracks completion daily. Most managers finish within a week. Two ask what a permission called case escalation means, so she clarifies its description for everyone. One manager is on leave, and a deputy completes the review. She records these events. She learns that monitoring a new process as it runs allows small fixes, but each change must be logged so that the evaluation can account for it later. Dr. Haddad asks her to explain the idea aloud to a classmate before moving on.
+During the review, Sofia tracks completion daily. Most managers finish within a week. Two ask what a permission called case escalation means, so she clarifies its description for everyone. One manager is on leave, and a deputy completes the review. She records these events. She learns that monitoring a new process as it runs allows small fixes, but each change must be logged so that the evaluation can account for it later. Dr. Haddad notes that the clarified case escalation description must be recorded as a mid-review change in her evaluation.
 
 ### 38.3 Comparability
 
-Sofia is tempted to change the measurement method when she notices the old completion data used different dates. Instead, she records completion using both the old and new definitions, so results can be compared fairly with previous quarters. She learns that improving a process and evaluating it are different tasks, and that keeping measurement consistent is essential if Elmfield is to learn whether the redesign actually helped. She notes the assumption behind it so that a reviewer can challenge it later. The same reasoning will return when Elmfield's auditors visit next year.
+Sofia is tempted to change the measurement method when she notices the old completion data used different dates. Instead, she records completion using both the old and new definitions, so results can be compared fairly with previous quarters. She learns that improving a process and evaluating it are different tasks, and that keeping measurement consistent is essential if Elmfield is to learn whether the redesign actually helped. Recording both definitions lets the comparison with the previous two quarters use like-for-like completion dates.
 
 ### Worked example
 
@@ -1846,15 +1846,15 @@ You will (1) evaluate a redesigned process against predefined outcomes; (2) inte
 
 ### 39.1 Results
 
-Sofia compares the redesigned quarter with the previous two. Completion by the deadline rose from eight of twelve managers to eleven of twelve. Median days to complete fell from fourteen to six. Rights removed per hundred reviewed fell slightly, from four to three. The manager survey shows most found the lists clearer. She presents each result with the counts behind it, avoiding percentages that would exaggerate small numbers. She adds a short note to the shared course wiki for other students. This makes the governance consequence visible to people outside the engineering team.
+Sofia compares the redesigned quarter with the previous two. Completion by the deadline rose from eight of twelve managers to eleven of twelve. Median days to complete fell from fourteen to six. Rights removed per hundred reviewed fell slightly, from four to three. The manager survey shows most found the lists clearer. She presents each result with the counts behind it, avoiding percentages that would exaggerate small numbers. Eleven of twelve, for instance, is clearer to a small board than a ninety-two percent that implies a large sample.
 
 ### 39.2 Interpretation
 
-Sofia interprets cautiously. Completion and speed improved clearly, consistent with the redesign helping. The small fall in removals matches her predefined interpretation risk: earlier reviews had already cleaned up much excess access. Other explanations exist; the quarter was quieter than usual and managers knew they were being studied. With twelve managers and one quarter, she cannot rule these out. She states the evidence supports the redesign without proving it caused the improvement. Sofia keeps a dated copy of her working so that the result can be traced.
+Sofia interprets cautiously. Completion and speed improved clearly, consistent with the redesign helping. The small fall in removals matches her predefined interpretation risk: earlier reviews had already cleaned up much excess access. Other explanations exist; the quarter was quieter than usual and managers knew they were being studied. With twelve managers and one quarter, she cannot rule these out. She states the evidence supports the redesign without proving it caused the improvement. Her predefined interpretation risk from chapter 35 is what lets her explain the fall in removals without special pleading.
 
 ### 39.3 Next steps
 
-Sofia recommends that Elmfield keep the redesign, continue measuring for three more quarters and extend the approach to the housing system review. She suggests adding a check that approved removals actually happen. Elmfield's director accepts the recommendations. Sofia learns that evaluation is valuable even when results cannot prove cause, because it tells the organisation whether to continue, adjust or stop and what to watch for next. Her lecturer reminds the class that clear reasoning matters more than a polished answer. She checks the idea against a second example before relying on it.
+Sofia recommends that Elmfield keep the redesign, continue measuring for three more quarters and extend the approach to the housing system review. She suggests adding a check that approved removals actually happen. Elmfield's director accepts the recommendations. Sofia learns that evaluation is valuable even when results cannot prove cause, because it tells the organisation whether to continue, adjust or stop and what to watch for next. The check that approved removals happen addresses a gap in the redesign itself, since removal requests could still be ignored.
 
 ### Worked example
 
@@ -1890,15 +1890,15 @@ You will (1) write a bachelor's thesis on a governance improvement; (2) present 
 
 ### 40.1 The thesis
 
-Sofia writes her thesis on improving access review in a small social landlord. It covers the problem, literature and standards, her interview study, the redesign, implementation, evaluation and conclusions. She cites ISO/IEC 27002:2022 on access rights, NIST CSF 2.0 and the research on user participation by Spears and Barki (2010). Each claim links to evidence, and limitations are stated plainly. Appendices hold the interview guide, codebook, role guide and measurement definitions. The point seems small, but it changes how owners act on the result. Elmfield's security manager later asks for a copy of this analysis.
+Sofia writes her thesis on improving access review in a small social landlord. It covers the problem, literature and standards, her interview study, the redesign, implementation, evaluation and conclusions. She cites ISO/IEC 27002:2022 on access rights, NIST CSF 2.0 and the research on user participation by Spears and Barki (2010). Each claim links to evidence, and limitations are stated plainly. Appendices hold the interview guide, codebook, role guide and measurement definitions. Placing the measurement definitions in an appendix lets a reader repeat her completion and removal counts.
 
 ### 40.2 Presentations
 
-Sofia presents twice. To examiners at Brightwater she focuses on methods, evidence and limits. To Elmfield's board she focuses on what changed, what it cost and what the board should decide. Examiners ask how she avoided bias given her placement role; she explains her reflexive notes and the second coder. The board asks whether the approach could work for repairs contractors; she suggests a pilot. Both audiences value clear evidence presented in their own terms. She marks the open questions in red so that they are not forgotten.
+Sofia presents twice. To examiners at Brightwater she focuses on methods, evidence and limits. To Elmfield's board she focuses on what changed, what it cost and what the board should decide. Examiners ask how she avoided bias given her placement role; she explains her reflexive notes and the second coder. The board asks whether the approach could work for repairs contractors; she suggests a pilot. Both audiences value clear evidence presented in their own terms. Her answer about the second coder points back to the reliability check in chapter 33.
 
 ### 40.3 Reflection
 
-Sofia reflects on her four years. She began counting laptops and ended redesigning a governance process with evidence. She learned that governance is mainly about people, clarity and follow-through, supported by data and standards. She also learned to state limits honestly and to give credit to the managers whose interviews shaped her work. Dr. Haddad notes that her habits of precise claims and fair evidence will serve her in any GRC role. Writing the reasoning down also helps her spot a weak step in her argument.
+Sofia reflects on her four years. She began counting laptops and ended redesigning a governance process with evidence. She learned that governance is mainly about people, clarity and follow-through, supported by data and standards. She also learned to state limits honestly and to give credit to the managers whose interviews shaped her work. Dr. Haddad notes that her habits of precise claims and fair evidence will serve her in any GRC role. Her claim in chapter 1 about two hundred and seventy of three hundred accounts is an early example of the same habits.
 
 ### Worked example
 

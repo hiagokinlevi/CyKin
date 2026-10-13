@@ -43,15 +43,15 @@ You will (1) describe the systems a multi-site business relies on; (2) list asse
 
 ### 1.1 Riverton's systems
 
-Priya Natarajan is a technologist student at the fictional Halden Institute of Technology. Her tutor, Mr. Oskar Lind, uses one running case: the fictional Riverton Dental Group, with fourteen clinics and two hundred and fifty staff. Each clinic has reception computers, dental imaging devices and a card terminal. A cloud practice management system holds patient records and appointments. A booking website lets patients schedule visits. Priya learns that governance starts by knowing which systems exist and what each one does. Priya records this point in her course notebook so that later chapters can build on it.
+Priya Natarajan is a technologist student at the fictional Halden Institute of Technology. Her tutor, Mr. Oskar Lind, uses one running case: the fictional Riverton Dental Group, with fourteen clinics and two hundred and fifty staff. Each clinic has reception computers, dental imaging devices and a card terminal. A cloud practice management system holds patient records and appointments. A booking website lets patients schedule visits. Priya learns that governance starts by knowing which systems exist and what each one does. With fourteen clinics, even a single unlisted device type repeated in every clinic would leave fourteen gaps at once.
 
 ### 1.2 Assets to cover
 
-Priya lists assets by type: hardware such as reception computers and imaging devices, software such as the practice management system, data such as patient records and X-ray images, and services such as email and the booking site. For each she notes an owner and the clinics that use it. She finds that imaging devices are missing from IT's list because dentists bought them directly from suppliers. She learns that purchases outside IT create blind spots in governance. Mr. Lind asks her to explain the idea aloud to a classmate before moving on.
+Priya lists assets by type: hardware such as reception computers and imaging devices, software such as the practice management system, data such as patient records and X-ray images, and services such as email and the booking site. For each she notes an owner and the clinics that use it. She finds that imaging devices are missing from IT's list because dentists bought them directly from suppliers. She learns that purchases outside IT create blind spots in governance. Mr. Lind asks who patches the imaging devices, and nobody at Riverton can answer, which shows why ownership must be recorded at purchase.
 
 ### 1.3 Systems and services
 
-Priya links each system to the patient services it supports. Booking depends on the website and practice system. Treatment depends on imaging and patient records. Billing depends on card terminals and the practice system. This map shows which failures would stop clinics from treating patients, which matters most to Riverton. She learns that governance priorities should follow services that matter to customers and the business, not simply the most expensive or technically complex systems. She notes the assumption behind it so that a reviewer can challenge it later.
+Priya links each system to the patient services it supports. Booking depends on the website and practice system. Treatment depends on imaging and patient records. Billing depends on card terminals and the practice system. This map shows which failures would stop clinics from treating patients, which matters most to Riverton. She learns that governance priorities should follow services that matter to customers and the business, not simply the most expensive or technically complex systems. The practice system, for instance, appears under booking, treatment and billing, so its failure would stop all three services.
 
 ### Worked example
 
@@ -87,15 +87,15 @@ You will (1) describe clinic networks and cloud connections; (2) identify where 
 
 ### 2.1 Clinic networks
 
-Each Riverton clinic has a small network: reception computers, imaging devices, a card terminal and guest Wi-Fi for patients. All connect through a router to the internet and to cloud services. Priya learns that card terminals should sit on a separate network segment from other devices, as PCI DSS v4.0 encourages segmentation to limit the scope of card data environments. In three clinics, the guest Wi-Fi shares the same network as reception computers, which creates unnecessary risk. The same reasoning will return when Riverton's auditors visit next year.
+Each Riverton clinic has a small network: reception computers, imaging devices, a card terminal and guest Wi-Fi for patients. All connect through a router to the internet and to cloud services. Priya learns that card terminals should sit on a separate network segment from other devices, as PCI DSS v4.0 encourages segmentation to limit the scope of card data environments. In three clinics, the guest Wi-Fi shares the same network as reception computers, which creates unnecessary risk. Patients on the guest Wi-Fi in those three clinics can reach the same network as computers that open patient records.
 
 ### 2.2 Data in transit
 
-Patient data travel from clinics to the cloud practice system, from imaging devices to the image archive and from reception to laboratories by email. Priya checks whether each path is encrypted. The practice system and image archive use encrypted connections. Laboratory orders sometimes go by ordinary email with patient names and treatment details. She records this as a risk and suggests the secure messaging feature that the practice system already includes but few staff use. She adds a short note to the shared course wiki for other students.
+Patient data travel from clinics to the cloud practice system, from imaging devices to the image archive and from reception to laboratories by email. Priya checks whether each path is encrypted. The practice system and image archive use encrypted connections. Laboratory orders sometimes go by ordinary email with patient names and treatment details. She records this as a risk and suggests the secure messaging feature that the practice system already includes but few staff use. Because the secure messaging feature is already licensed, the fix costs training time rather than money.
 
 ### 2.3 Network risks
 
-Priya lists network risks for governance: guest Wi-Fi mixed with clinic devices, card terminals not separated, routers with default passwords in two clinics and no central view of which clinic networks match the standard design. She ranks them by impact and ease of fixing. Separating guest Wi-Fi ranks first because it is simple and reduces exposure of clinical devices. She learns that clear network standards help multi-site organisations keep clinics consistent. This makes the governance consequence visible to people outside the specialist team. Priya keeps a dated copy of her working so that the result can be traced.
+Priya lists network risks for governance: guest Wi-Fi mixed with clinic devices, card terminals not separated, routers with default passwords in two clinics and no central view of which clinic networks match the standard design. She ranks them by impact and ease of fixing. Separating guest Wi-Fi ranks first because it is simple and reduces exposure of clinical devices. She learns that clear network standards help multi-site organisations keep clinics consistent. The default router passwords in two clinics rank close behind, since they are just as quick to change.
 
 ### Worked example
 
@@ -131,15 +131,15 @@ You will (1) write small scripts that read governance lists; (2) count and filte
 
 ### 3.1 Reading lists
 
-Priya writes her first Python script to read Riverton's asset list from a CSV file. It counts assets per clinic and lists those without an owner. She learns to use lists, loops and conditions, and to handle a missing value without crashing. Mr. Lind explains that scripts make governance checks repeatable: the same list checked next month will be checked the same way, which manual counting cannot guarantee when staff are busy. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Priya writes her first Python script to read Riverton's asset list from a CSV file. It counts assets per clinic and lists those without an owner. She learns to use lists, loops and conditions, and to handle a missing value without crashing. Mr. Lind explains that scripts make governance checks repeatable: the same list checked next month will be checked the same way, which manual counting cannot guarantee when staff are busy. When a new clinic is added to the CSV, the script counts it without any change to the code.
 
 ### 3.2 Filtering
 
-Priya filters assets holding patient data that lack an owner, and those whose last update date is more than a year old. The script prints each with its clinic. Two imaging devices and one old reception computer appear. She learns that combining conditions focuses attention on the riskiest gaps. Filtering by sensitivity and age helps managers decide what to fix first, rather than receiving a long list without priorities. She checks the idea against a second example before relying on it. The point seems small, but it changes how owners act on the result.
+Priya filters assets holding patient data that lack an owner, and those whose last update date is more than a year old. The script prints each with its clinic. Two imaging devices and one old reception computer appear. She learns that combining conditions focuses attention on the riskiest gaps. Filtering by sensitivity and age helps managers decide what to fix first, rather than receiving a long list without priorities. An imaging device holding patient images with no owner and no update for a year is exactly what the combined filter is meant to catch.
 
 ### 3.3 Clear output
 
-Mr. Lind reviews Priya's output and asks whether a clinic manager would understand it. She adds headings, the date of the check and a short explanation of each problem. She also sorts results by clinic so each manager sees their own items. She learns that output is part of the control: unclear results get ignored, while clear, sorted results with explanations prompt action from the people responsible. Riverton's security manager later asks for a copy of this analysis. She marks the open questions in red so that they are not forgotten.
+Mr. Lind reviews Priya's output and asks whether a clinic manager would understand it. She adds headings, the date of the check and a short explanation of each problem. She also sorts results by clinic so each manager sees their own items. She learns that output is part of the control: unclear results get ignored, while clear, sorted results with explanations prompt action from the people responsible. Sorting by clinic means each of the fourteen clinic managers can find their own items in seconds.
 
 ### Worked example
 
@@ -175,15 +175,15 @@ You will (1) model governance data as related tables; (2) define keys and relati
 
 ### 4.1 Tables
 
-Priya designs tables for Riverton's governance data: clinics, assets, owners, risks and controls. Each table has a key: a clinic code, an asset tag, an owner's staff number. Separate tables avoid repeating the same information many times, such as a clinic's address on every asset row. She learns that well-structured data make it easier to answer questions and harder to introduce errors when information changes. Writing the reasoning down also helps her spot a weak step in her argument. Priya discusses the trade-off with a classmate who works in finance.
+Priya designs tables for Riverton's governance data: clinics, assets, owners, risks and controls. Each table has a key: a clinic code, an asset tag, an owner's staff number. Separate tables avoid repeating the same information many times, such as a clinic's address on every asset row. She learns that well-structured data make it easier to answer questions and harder to introduce errors when information changes. If a clinic moves, for example, its address changes in one row of the clinics table rather than on every asset row.
 
 ### 4.2 Relationships
 
-Assets belong to clinics, owners are responsible for assets, risks affect assets and controls treat risks. Priya draws these relationships. She finds that one control, encrypted laptops, treats several risks, and one risk, ransomware, affects many assets. She learns that many-to-many relationships need linking tables. Getting relationships right lets Riverton answer questions like which risks depend on a control that failed, which is important for audits. The class compares answers and finds that most differences come from unstated assumptions. Priya records this point in her course notebook so that later chapters can build on it.
+Assets belong to clinics, owners are responsible for assets, risks affect assets and controls treat risks. Priya draws these relationships. She finds that one control, encrypted laptops, treats several risks, and one risk, ransomware, affects many assets. She learns that many-to-many relationships need linking tables. Getting relationships right lets Riverton answer questions like which risks depend on a control that failed, which is important for audits. A linking table between controls and risks, for instance, lets one encryption test update the status of every risk it treats.
 
 ### 4.3 Consistency
 
-In the old spreadsheet, the same clinic appears as North, North Clinic and N. Priya standardises names using codes and adds validation rules so only valid codes can be entered. She learns that inconsistency is a common source of reporting errors: counts per clinic were wrong because the same clinic was spelled differently. Simple data rules prevent problems that would otherwise appear in board reports and audit findings. Mr. Lind asks her to explain the idea aloud to a classmate before moving on. She notes the assumption behind it so that a reviewer can challenge it later.
+In the old spreadsheet, the same clinic appears as North, North Clinic and N. Priya standardises names using codes and adds validation rules so only valid codes can be entered. She learns that inconsistency is a common source of reporting errors: counts per clinic were wrong because the same clinic was spelled differently. Simple data rules prevent problems that would otherwise appear in board reports and audit findings. Mr. Lind points out that the three spellings of North had made that clinic appear smaller than it was in every per-clinic count.
 
 ### Worked example
 
@@ -219,15 +219,15 @@ You will (1) explain common threats to dental clinics; (2) link threats to simpl
 
 ### 5.1 Clinic threats
 
-Priya learns the threats most relevant to Riverton: phishing emails aimed at reception staff, ransomware that could stop clinics, misdirected patient information, lost laptops and fraud through fake supplier invoices. Healthcare data are valuable and clinics are busy, so mistakes happen under time pressure. She notes that understanding everyday threats helps Riverton spend limited effort on controls that prevent the most common harm rather than rare scenarios. The same reasoning will return when Riverton's auditors visit next year. She adds a short note to the shared course wiki for other students.
+Priya learns the threats most relevant to Riverton: phishing emails aimed at reception staff, ransomware that could stop clinics, misdirected patient information, lost laptops and fraud through fake supplier invoices. Healthcare data are valuable and clinics are busy, so mistakes happen under time pressure. She notes that understanding everyday threats helps Riverton spend limited effort on controls that prevent the most common harm rather than rare scenarios. Fake supplier invoices, for example, target the finance process rather than clinicians, so their controls sit elsewhere.
 
 ### 5.2 Simple controls
 
-For each threat Priya lists simple controls: multi-factor authentication for email, offline backups of the practice system and image archive, secure messaging for patient information, laptop encryption and a callback check for changed supplier bank details. She notes that most controls are already available in Riverton's systems but not consistently switched on. She learns that governance often means ensuring existing features are used rather than buying new tools. This makes the governance consequence visible to people outside the specialist team. Priya keeps a dated copy of her working so that the result can be traced.
+For each threat Priya lists simple controls: multi-factor authentication for email, offline backups of the practice system and image archive, secure messaging for patient information, laptop encryption and a callback check for changed supplier bank details. She notes that most controls are already available in Riverton's systems but not consistently switched on. She learns that governance often means ensuring existing features are used rather than buying new tools. Turning on the callback check for changed supplier bank details, for instance, needs a procedure, not a purchase.
 
 ### 5.3 Talking to clinicians
 
-Priya prepares a ten-minute talk for clinic staff. She uses examples from dental practice, avoids jargon and explains how each control protects patients. She encourages staff to report mistakes quickly, explaining that a misdirected email reported in minutes can often be recalled. She learns that clinicians respond to patient safety arguments and that respectful, practical messages work better than fear or blame. Her lecturer reminds the class that clear reasoning matters more than a polished answer. She checks the idea against a second example before relying on it.
+Priya prepares a ten-minute talk for clinic staff. She uses examples from dental practice, avoids jargon and explains how each control protects patients. She encourages staff to report mistakes quickly, explaining that a misdirected email reported in minutes can often be recalled. She learns that clinicians respond to patient safety arguments and that respectful, practical messages work better than fear or blame. Framing laptop encryption as protecting patient confidentiality, for example, speaks to what clinicians already care about. She ends the talk by showing staff exactly how to report a mistake.
 
 ### Worked example
 
@@ -263,15 +263,15 @@ You will (1) relate operating system settings to Riverton's policies; (2) unders
 
 ### 6.1 Settings and policies
 
-Riverton's policy requires screen locks, automatic updates, encryption and no local administrator rights on reception computers. Priya learns how each requirement maps to operating system settings managed centrally through device management. She also learns that imaging devices often run older operating systems that suppliers control, so they cannot follow the same settings. These exceptions need separate treatment, such as network isolation, recorded in the risk register. The point seems small, but it changes how owners act on the result. Riverton's security manager later asks for a copy of this analysis.
+Riverton's policy requires screen locks, automatic updates, encryption and no local administrator rights on reception computers. Priya learns how each requirement maps to operating system settings managed centrally through device management. She also learns that imaging devices often run older operating systems that suppliers control, so they cannot follow the same settings. These exceptions need separate treatment, such as network isolation, recorded in the risk register. Isolating imaging devices on their own segment lets them keep supplier-controlled software while limiting what can reach them.
 
 ### 6.2 Virtualisation and cloud
 
-The practice management system runs on virtual machines hosted by a cloud provider. Priya learns that virtualisation lets many systems share hardware, while the provider manages the physical layer. Governance must therefore define which security tasks belong to the provider and which belong to Riverton. Under a shared responsibility model, the provider secures the infrastructure, while Riverton controls user access and configuration. She notes that misunderstandings about this division are common sources of gaps. She marks the open questions in red so that they are not forgotten.
+The practice management system runs on virtual machines hosted by a cloud provider. Priya learns that virtualisation lets many systems share hardware, while the provider manages the physical layer. Governance must therefore define which security tasks belong to the provider and which belong to Riverton. Under a shared responsibility model, the provider secures the infrastructure, while Riverton controls user access and configuration. She notes that misunderstandings about this division are common sources of gaps. User access to the practice system, for example, stays Riverton's job even though the provider runs the servers.
 
 ### 6.3 Consistency
 
-Priya compares settings across fourteen clinics using the device management report. Eleven clinics match the baseline. Three have reception computers with screen locks disabled because staff found them inconvenient at busy times. She suggests a longer timeout with a quick unlock method rather than no lock at all. She learns that inconsistency often reflects real usability problems, and that adjusting the control can achieve compliance without fighting clinic staff. Writing the reasoning down also helps her spot a weak step in her argument. Priya discusses the trade-off with a classmate who works in finance.
+Priya compares settings across fourteen clinics using the device management report. Eleven clinics match the baseline. Three have reception computers with screen locks disabled because staff found them inconvenient at busy times. She suggests a longer timeout with a quick unlock method rather than no lock at all. She learns that inconsistency often reflects real usability problems, and that adjusting the control can achieve compliance without fighting clinic staff. A longer timeout with quick unlock keeps a lock in place in the three busy clinics instead of none at all.
 
 ### Worked example
 
@@ -307,15 +307,15 @@ You will (1) manage accounts through staff life-cycle events; (2) apply role-bas
 
 ### 7.1 Life cycle
 
-Dental clinics employ many part-time and temporary staff. Priya maps how Riverton creates, changes and removes accounts. New staff receive accounts quickly, but locum dentists and temporary nurses often keep access after their last shift because clinic managers forget to tell IT. She proposes that temporary accounts be created with an end date that disables them automatically, and that managers confirm extensions. This reduces reliance on memory. The class compares answers and finds that most differences come from unstated assumptions. Priya records this point in her course notebook so that later chapters can build on it.
+Dental clinics employ many part-time and temporary staff. Priya maps how Riverton creates, changes and removes accounts. New staff receive accounts quickly, but locum dentists and temporary nurses often keep access after their last shift because clinic managers forget to tell IT. She proposes that temporary accounts be created with an end date that disables them automatically, and that managers confirm extensions. This reduces reliance on memory. An end date set at creation means a locum's access lapses even when nobody remembers to tell IT.
 
 ### 7.2 Roles
 
-Priya defines roles for the practice system: receptionist, dental nurse, dentist, hygienist and clinic manager. Each role has the access needed for its tasks. Receptionists can see appointments and contact details but not clinical notes. Dentists can see full records for their patients. She learns that role-based access simplifies governance because reviews check role assignments rather than hundreds of individual permissions, making them faster and more accurate. Mr. Lind asks her to explain the idea aloud to a classmate before moving on. She notes the assumption behind it so that a reviewer can challenge it later.
+Priya defines roles for the practice system: receptionist, dental nurse, dentist, hygienist and clinic manager. Each role has the access needed for its tasks. Receptionists can see appointments and contact details but not clinical notes. Dentists can see full records for their patients. She learns that role-based access simplifies governance because reviews check role assignments rather than hundreds of individual permissions, making them faster and more accurate. Mr. Lind notes that keeping clinical notes out of the receptionist role also reduces how many staff could leak them by mistake.
 
 ### 7.3 Shared accounts
 
-Some clinics use a shared reception account so staff can switch quickly. Priya explains that shared accounts make it impossible to know who did what, which matters for patient record audits. She suggests quick user switching with individual accounts and short sign-in using badges. Clinics agree to try it in two sites first. She learns that removing shared accounts requires a usable alternative, or staff will recreate them. The same reasoning will return when Riverton's auditors visit next year. She adds a short note to the shared course wiki for other students.
+Some clinics use a shared reception account so staff can switch quickly. Priya explains that shared accounts make it impossible to know who did what, which matters for patient record audits. She suggests quick user switching with individual accounts and short sign-in using badges. Clinics agree to try it in two sites first. She learns that removing shared accounts requires a usable alternative, or staff will recreate them. Starting with two sites lets the badge sign-in be tested at busy reception desks before all fourteen clinics adopt it.
 
 ### Worked example
 
@@ -351,15 +351,15 @@ You will (1) describe a standard secure clinic design; (2) apply layered protect
 
 ### 8.1 Standard clinic
 
-Priya helps draft a standard design for Riverton clinics: separate network segments for clinical devices, reception, card terminals and guest Wi-Fi; managed and encrypted computers; individual accounts with multi-factor authentication for cloud services; and offline backups of the image archive. A standard design makes clinics easier to support and audit, because every clinic should look the same and differences stand out. This makes the governance consequence visible to people outside the specialist team. Priya keeps a dated copy of her working so that the result can be traced.
+Priya helps draft a standard design for Riverton clinics: separate network segments for clinical devices, reception, card terminals and guest Wi-Fi; managed and encrypted computers; individual accounts with multi-factor authentication for cloud services; and offline backups of the image archive. A standard design makes clinics easier to support and audit, because every clinic should look the same and differences stand out. Because every clinic should match, a guest Wi-Fi linked to reception computers in one clinic becomes an obvious exception to fix.
 
 ### 8.2 Layers
 
-Priya applies layered protection to ransomware. Email filtering blocks many attacks. Multi-factor authentication stops stolen passwords being reused. Device controls limit unknown software. Network segments limit spread from reception to imaging. Offline backups allow recovery. She learns that each layer catches some of what the others miss, and that a clinic with all layers is far more resilient than one relying on a single strong control. Her lecturer reminds the class that clear reasoning matters more than a polished answer. She checks the idea against a second example before relying on it.
+Priya applies layered protection to ransomware. Email filtering blocks many attacks. Multi-factor authentication stops stolen passwords being reused. Device controls limit unknown software. Network segments limit spread from reception to imaging. Offline backups allow recovery. She learns that each layer catches some of what the others miss, and that a clinic with all layers is far more resilient than one relying on a single strong control. Network segments between reception and imaging matter most when email filtering and authentication have already been bypassed.
 
 ### 8.3 Deviations
 
-Two clinics in old buildings cannot install separate network cabling soon. Priya records each deviation in a register: what differs, why, the risk and compensating measures, such as wireless segmentation, plus a date for review. She learns that recording deviations keeps them visible and managed. Without a register, exceptions spread quietly until the standard exists only on paper, which auditors quickly discover. The point seems small, but it changes how owners act on the result. Riverton's security manager later asks for a copy of this analysis.
+Two clinics in old buildings cannot install separate network cabling soon. Priya records each deviation in a register: what differs, why, the risk and compensating measures, such as wireless segmentation, plus a date for review. She learns that recording deviations keeps them visible and managed. Without a register, exceptions spread quietly until the standard exists only on paper, which auditors quickly discover. Wireless segmentation in the two old buildings, for example, gives partial separation until cabling can be installed. Each review date forces a decision on whether cabling can now be installed.
 
 ### Worked example
 
@@ -395,11 +395,11 @@ You will (1) keep an evidence log for controls; (2) check evidence freshness; (3
 
 ### 9.1 Evidence log
 
-Riverton collects evidence that controls work: backup restore tests, access reviews, firewall reviews, policy acknowledgements, supplier assurance reports and encryption reports. Priya builds a log recording each item, its date and the maximum age allowed before it must be refreshed. She learns that evidence has a shelf life: a backup test from last year says little about whether backups work today, so freshness rules matter as much as the evidence itself. She marks the open questions in red so that they are not forgotten.
+Riverton collects evidence that controls work: backup restore tests, access reviews, firewall reviews, policy acknowledgements, supplier assurance reports and encryption reports. Priya builds a log recording each item, its date and the maximum age allowed before it must be refreshed. She learns that evidence has a shelf life: a backup test from last year says little about whether backups work today, so freshness rules matter as much as the evidence itself. Each item's maximum age becomes the rule applied in the freshness check that follows.
 
 ### 9.2 Checking freshness
 
-The lab checks six items against their limits on the last day of September. Three are stale. The second-quarter access review is ninety-four days old against a ninety-day limit. The firewall rule review is two hundred and thirty-two days old against one hundred and eighty. The supplier SOC 2 report is four hundred and fifty-seven days old against a year. The backup test, policy acknowledgements and encryption report are fresh. Priya notes that the access review is only slightly late. Writing the reasoning down also helps her spot a weak step in her argument.
+The lab checks six items against their limits on the last day of September. Three are stale. The second-quarter access review is ninety-four days old against a ninety-day limit. The firewall rule review is two hundred and thirty-two days old against one hundred and eighty. The supplier SOC 2 report is four hundred and fifty-seven days old against a year. The backup test, policy acknowledgements and encryption report are fresh. Priya notes that the access review is only slightly late. Four days over ninety needs a reminder, while the SOC 2 report at four hundred and fifty-seven days needs escalation.
 
 ### Lab — Checking evidence freshness
 
@@ -426,7 +426,7 @@ items 6; stale 3; fresh 3
 
 ### 9.3 Reporting
 
-Priya reports stale items with their owners and how overdue each is. She treats the supplier report as most serious because it concerns the practice system provider, which holds all patient records. She requests the latest report from the provider. She learns that measuring evidence freshness turns an assurance file into a living control, and that small delays deserve a reminder while long gaps need escalation. Priya discusses the trade-off with a classmate who works in finance. The class compares answers and finds that most differences come from unstated assumptions.
+Priya reports stale items with their owners and how overdue each is. She treats the supplier report as most serious because it concerns the practice system provider, which holds all patient records. She requests the latest report from the provider. She learns that measuring evidence freshness turns an assurance file into a living control, and that small delays deserve a reminder while long gaps need escalation. Asking the provider for the latest report also tests whether the contract gives Riverton the right to receive it.
 
 ### Worked example
 
@@ -462,15 +462,15 @@ You will (1) explain governance, risk management and compliance in a clinic grou
 
 ### 10.1 Three parts
 
-Priya begins the GRC courses. Governance means Riverton's leaders set direction and check progress: they decide what risks are acceptable and who is responsible. Risk management means finding, assessing and treating risks in a structured way, following principles such as those in ISO 31000:2018. Compliance means meeting obligations from health data law, card payment rules and contracts. She learns that the three parts must work together for security to be managed rather than improvised. Priya records this point in her course notebook so that later chapters can build on it.
+Priya begins the GRC courses. Governance means Riverton's leaders set direction and check progress: they decide what risks are acceptable and who is responsible. Risk management means finding, assessing and treating risks in a structured way, following principles such as those in ISO 31000:2018. Compliance means meeting obligations from health data law, card payment rules and contracts. She learns that the three parts must work together for security to be managed rather than improvised. At Riverton, for example, the managing director deciding acceptable risk is governance, while checking PCI DSS obligations is compliance.
 
 ### 10.2 Obligations
 
-Priya lists Riverton's obligations: data protection law covering patient records, health sector confidentiality rules, PCI DSS v4.0 for card payments through its bank, and contracts with the practice system provider and dental laboratories. She separates legal duties from contractual ones and from voluntary standards Riverton may adopt, such as aligning with NIST CSF 2.0. She learns that knowing where an obligation comes from helps determine its priority and who must be involved. Mr. Lind asks her to explain the idea aloud to a classmate before moving on.
+Priya lists Riverton's obligations: data protection law covering patient records, health sector confidentiality rules, PCI DSS v4.0 for card payments through its bank, and contracts with the practice system provider and dental laboratories. She separates legal duties from contractual ones and from voluntary standards Riverton may adopt, such as aligning with NIST CSF 2.0. She learns that knowing where an obligation comes from helps determine its priority and who must be involved. Mr. Lind adds that the laboratory contracts belong in this list too, since two laboratories later turn out to have no written agreement.
 
 ### 10.3 Roles
 
-Riverton's managing director is accountable for risk. An operations manager coordinates security with a small IT team and an external support provider. Clinic managers own local controls, such as access for their staff. A data protection officer advises on patient data. Priya draws a simple chart of these roles and notes that the external provider's responsibilities are not written down anywhere. She recommends clarifying them in the contract. She notes the assumption behind it so that a reviewer can challenge it later. The same reasoning will return when Riverton's auditors visit next year.
+Riverton's managing director is accountable for risk. An operations manager coordinates security with a small IT team and an external support provider. Clinic managers own local controls, such as access for their staff. A data protection officer advises on patient data. Priya draws a simple chart of these roles and notes that the external provider's responsibilities are not written down anywhere. She recommends clarifying them in the contract. Unwritten provider duties mean, for example, that nobody can say whether the support provider must patch clinic routers.
 
 ### Worked example
 
@@ -506,15 +506,15 @@ You will (1) set the context for risk assessment; (2) classify information asset
 
 ### 11.1 Context
 
-Before assessing risks, Priya documents Riverton's context: its services, patients, regulators, suppliers, growth plans and attitude to risk. ISO 31000:2018 begins its process with establishing scope, context and criteria. The managing director explains that Riverton plans to open three new clinics next year and that reputation with patients is its greatest asset. These facts shape which risks matter most and how much disruption Riverton can accept. She adds a short note to the shared course wiki for other students. This makes the governance consequence visible to people outside the specialist team.
+Before assessing risks, Priya documents Riverton's context: its services, patients, regulators, suppliers, growth plans and attitude to risk. ISO 31000:2018 begins its process with establishing scope, context and criteria. The managing director explains that Riverton plans to open three new clinics next year and that reputation with patients is its greatest asset. These facts shape which risks matter most and how much disruption Riverton can accept. Three new clinics next year means the standard clinic design must be ready before they open.
 
 ### 11.2 Classification
 
-Priya classifies information into three levels: public, such as opening hours; internal, such as staff rotas; and confidential, such as patient records and images. Each level has handling rules for storage, sharing and disposal. Patient records require encryption and secure messaging; internal data stay within Riverton's systems. She learns that simple classifications are more likely to be followed than complex schemes with many levels that staff cannot remember. Priya keeps a dated copy of her working so that the result can be traced. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Priya classifies information into three levels: public, such as opening hours; internal, such as staff rotas; and confidential, such as patient records and images. Each level has handling rules for storage, sharing and disposal. Patient records require encryption and secure messaging; internal data stay within Riverton's systems. She learns that simple classifications are more likely to be followed than complex schemes with many levels that staff cannot remember. X-ray images fall under confidential, so they inherit the encryption and secure messaging rules automatically.
 
 ### 11.3 Risk criteria
 
-With management, Priya defines criteria for likelihood and impact. Impact levels describe effects on patients, finances, regulators and reputation. For example, a major impact means clinics closed for more than a day or a reportable data breach affecting many patients. Likelihood levels use frequency ranges. She learns that agreed criteria make assessments consistent across assessors, and that defining them with management ensures they reflect Riverton's real priorities. She checks the idea against a second example before relying on it. The point seems small, but it changes how owners act on the result.
+With management, Priya defines criteria for likelihood and impact. Impact levels describe effects on patients, finances, regulators and reputation. For example, a major impact means clinics closed for more than a day or a reportable data breach affecting many patients. Likelihood levels use frequency ranges. She learns that agreed criteria make assessments consistent across assessors, and that defining them with management ensures they reflect Riverton's real priorities. Defining a major impact as clinics closed for more than a day, for instance, lets two assessors score the same ransomware scenario alike.
 
 ### Worked example
 
@@ -550,15 +550,15 @@ You will (1) map flows of patient data; (2) identify third parties receiving dat
 
 ### 12.1 Mapping flows
 
-Priya maps how patient data move: from patients via the booking site to the practice system, from clinics to the image archive, from dentists to laboratories, from reception to insurers for claims and from the practice system to backups. For each flow she records the data involved, the method and the recipient. The map shows eleven flows, three of which involve external parties beyond the practice system provider. Riverton's security manager later asks for a copy of this analysis. She marks the open questions in red so that they are not forgotten.
+Priya maps how patient data move: from patients via the booking site to the practice system, from clinics to the image archive, from dentists to laboratories, from reception to insurers for claims and from the practice system to backups. For each flow she records the data involved, the method and the recipient. The map shows eleven flows, three of which involve external parties beyond the practice system provider. The three external flows to laboratories, insurers and the booking site provider are examined in the next section.
 
 ### 12.2 Third parties
 
-Laboratories, insurers and the booking site provider receive patient data. Priya checks whether each has a contract with data protection terms. Two laboratories have no written agreement. She recommends standard terms covering confidentiality, security and breach notification. She learns that third parties are often the weakest link in data flows because organisations assume suppliers protect data without checking. Writing the reasoning down also helps her spot a weak step in her argument. Priya discusses the trade-off with a classmate who works in finance. The class compares answers and finds that most differences come from unstated assumptions.
+Laboratories, insurers and the booking site provider receive patient data. Priya checks whether each has a contract with data protection terms. Two laboratories have no written agreement. She recommends standard terms covering confidentiality, security and breach notification. She learns that third parties are often the weakest link in data flows because organisations assume suppliers protect data without checking. Standard terms for the two laboratories without agreements would also give Riverton a contractual right to be told of breaches. She also asks the booking site provider to confirm its own breach notification terms.
 
 ### 12.3 Flow risks
 
-For each flow, Priya notes risks: misdirected laboratory emails, insurers receiving more data than needed and the booking site collecting medical history it does not need. She recommends reducing data at each step, using secure messaging and reviewing what the booking form asks. She learns that data flow analysis reveals risks invisible in an asset list, since harm often occurs while data move between systems and organisations. Priya records this point in her course notebook so that later chapters can build on it. Mr. Lind asks her to explain the idea aloud to a classmate before moving on.
+For each flow, Priya notes risks: misdirected laboratory emails, insurers receiving more data than needed and the booking site collecting medical history it does not need. She recommends reducing data at each step, using secure messaging and reviewing what the booking form asks. She learns that data flow analysis reveals risks invisible in an asset list, since harm often occurs while data move between systems and organisations. The booking form collecting medical history it does not need, for instance, can be fixed simply by removing fields.
 
 ### Worked example
 
@@ -594,15 +594,15 @@ You will (1) write risk scenarios for Riverton; (2) identify causes and conseque
 
 ### 13.1 Writing scenarios
 
-Priya writes risk scenarios as short stories with a cause, an event and consequences. Ransomware encrypts a clinic's reception computers and spreads to the image archive, stopping treatment for days. A receptionist sends a patient's records to the wrong laboratory. A malicious script on the booking site captures card details. A laptop with unencrypted patient lists is stolen from a car. She learns that scenarios help managers imagine risks concretely and judge them sensibly. She notes the assumption behind it so that a reviewer can challenge it later.
+Priya writes risk scenarios as short stories with a cause, an event and consequences. Ransomware encrypts a clinic's reception computers and spreads to the image archive, stopping treatment for days. A receptionist sends a patient's records to the wrong laboratory. A malicious script on the booking site captures card details. A laptop with unencrypted patient lists is stolen from a car. She learns that scenarios help managers imagine risks concretely and judge them sensibly. The stolen laptop story, for example, points straight to encryption as the control that would change its outcome.
 
 ### 13.2 Causes and consequences
 
-For each scenario Priya lists causes, such as phishing or missing segmentation, and consequences for patients, finances, regulators and reputation. For the ransomware scenario, consequences include cancelled appointments, lost income, notification to the regulator if records were affected and patient complaints. She learns that listing causes points to preventive controls, while listing consequences points to recovery and response planning. The same reasoning will return when Riverton's auditors visit next year. She adds a short note to the shared course wiki for other students. This makes the governance consequence visible to people outside the specialist team.
+For each scenario Priya lists causes, such as phishing or missing segmentation, and consequences for patients, finances, regulators and reputation. For the ransomware scenario, consequences include cancelled appointments, lost income, notification to the regulator if records were affected and patient complaints. She learns that listing causes points to preventive controls, while listing consequences points to recovery and response planning. In the ransomware scenario, phishing as a cause points to email controls, while cancelled appointments point to recovery planning. For misdirected records, the cause is often a hurried choice of recipient at reception.
 
 ### 13.3 Choosing scenarios
 
-With the operations manager, Priya chooses four scenarios for detailed analysis based on likely impact and management concern: ransomware at a clinic, misdirected patient records, card skimming on the booking site and lost laptops. Other scenarios are recorded for later review. She learns that analysis effort should focus on scenarios that matter most, and that a short, well-chosen list is more useful than a long list nobody analyses. Priya keeps a dated copy of her working so that the result can be traced. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+With the operations manager, Priya chooses four scenarios for detailed analysis based on likely impact and management concern: ransomware at a clinic, misdirected patient records, card skimming on the booking site and lost laptops. Other scenarios are recorded for later review. She learns that analysis effort should focus on scenarios that matter most, and that a short, well-chosen list is more useful than a long list nobody analyses. Recording the other scenarios keeps them on the register for the next review rather than discarding them.
 
 ### Worked example
 
@@ -638,11 +638,11 @@ You will (1) estimate expected annual loss for scenarios; (2) compare scenarios 
 
 ### 14.1 Estimating
 
-For the four chosen scenarios, Priya asks managers to estimate how often each might happen per year and a typical cost when it does. Ransomware at a clinic might happen once in about seven years at one hundred and eighty thousand. Misdirected records might happen twice a year at four thousand. Card skimming might happen once in twenty years at two hundred and twenty thousand. A lost laptop might happen once a year at nine thousand. She checks the idea against a second example before relying on it.
+For the four chosen scenarios, Priya asks managers to estimate how often each might happen per year and a typical cost when it does. Ransomware at a clinic might happen once in about seven years at one hundred and eighty thousand. Misdirected records might happen twice a year at four thousand. Card skimming might happen once in twenty years at two hundred and twenty thousand. A lost laptop might happen once a year at nine thousand. These rough frequencies and costs feed directly into the expected loss comparison in the next section.
 
 ### 14.2 Comparing
 
-The lab multiplies frequency by cost. Ransomware has the highest expected annual loss at twenty-seven thousand, card skimming eleven thousand, lost laptops nine thousand and misdirected records eight thousand. The total is fifty-five thousand a year. Priya notes that misdirected records happen most often but cost least per year, while ransomware is rare but most costly. Expected loss helps compare very different scenarios on one scale. The point seems small, but it changes how owners act on the result. Riverton's security manager later asks for a copy of this analysis.
+The lab multiplies frequency by cost. Ransomware has the highest expected annual loss at twenty-seven thousand, card skimming eleven thousand, lost laptops nine thousand and misdirected records eight thousand. The total is fifty-five thousand a year. Priya notes that misdirected records happen most often but cost least per year, while ransomware is rare but most costly. Expected loss helps compare very different scenarios on one scale. Being able to put ransomware at twenty-seven thousand and misdirected records at eight thousand on one scale is what makes the ranking possible.
 
 ### Lab — Expected annual loss for four Riverton scenarios
 
@@ -666,7 +666,7 @@ total 55,000
 
 ### 14.3 Uncertainty
 
-Mr. Lind asks how confident the managers were. Priya admits the estimates are rough and that ransomware's cost could be much higher if records were stolen and many patients notified. She records each estimate with a low and high value and notes the source. She learns that single numbers are useful for comparison but should always be read with their uncertainty, especially for rare, severe events where averages hide what could actually happen. She marks the open questions in red so that they are not forgotten.
+Mr. Lind asks how confident the managers were. Priya admits the estimates are rough and that ransomware's cost could be much higher if records were stolen and many patients notified. She records each estimate with a low and high value and notes the source. She learns that single numbers are useful for comparison but should always be read with their uncertainty, especially for rare, severe events where averages hide what could actually happen. For ransomware, for example, the high value would include notification costs if records were stolen.
 
 ### Worked example
 
@@ -702,15 +702,15 @@ You will (1) carry out a guided risk assessment workshop; (2) record results in 
 
 ### 15.1 Workshop
 
-Priya runs a guided workshop with the operations manager, two clinic managers, the IT lead and the data protection officer. They review the four scenarios, the expected loss estimates and the criteria. Each participant gives views on likelihood and impact before discussion, to avoid the first speaker anchoring everyone else. Differences are discussed and the group agrees ratings, recording any strong disagreement in the notes. Writing the reasoning down also helps her spot a weak step in her argument. Priya discusses the trade-off with a classmate who works in finance.
+Priya runs a guided workshop with the operations manager, two clinic managers, the IT lead and the data protection officer. They review the four scenarios, the expected loss estimates and the criteria. Each participant gives views on likelihood and impact before discussion, to avoid the first speaker anchoring everyone else. Differences are discussed and the group agrees ratings, recording any strong disagreement in the notes. Collecting views before discussion matters here because the IT lead and clinic managers may see ransomware's likelihood very differently.
 
 ### 15.2 Register
 
-Priya records results in Riverton's risk register: scenario, owner, current controls, ratings, expected loss range and proposed treatment. For ransomware, treatment includes completing network segmentation and testing offline backups. For misdirected records, it includes secure messaging and staff guidance. She learns that a register entry should be complete enough that someone who missed the workshop understands the risk and what will be done. The class compares answers and finds that most differences come from unstated assumptions. Priya records this point in her course notebook so that later chapters can build on it.
+Priya records results in Riverton's risk register: scenario, owner, current controls, ratings, expected loss range and proposed treatment. For ransomware, treatment includes completing network segmentation and testing offline backups. For misdirected records, it includes secure messaging and staff guidance. She learns that a register entry should be complete enough that someone who missed the workshop understands the risk and what will be done. The ransomware entry, for instance, should name segmentation and offline backup testing so a reader knows exactly what changes.
 
 ### 15.3 Owners and dates
 
-Each treatment receives an owner and a target date agreed in the workshop. The IT lead owns segmentation, due in four months; clinic managers own secure messaging adoption, due in two months. Priya schedules a follow-up review. She learns that treatments without owners and dates rarely happen, and that agreeing them in the room, rather than assigning them afterwards, increases commitment. Mr. Lind asks her to explain the idea aloud to a classmate before moving on. She notes the assumption behind it so that a reviewer can challenge it later.
+Each treatment receives an owner and a target date agreed in the workshop. The IT lead owns segmentation, due in four months; clinic managers own secure messaging adoption, due in two months. Priya schedules a follow-up review. She learns that treatments without owners and dates rarely happen, and that agreeing them in the room, rather than assigning them afterwards, increases commitment. Mr. Lind suggests checking the two-month secure messaging target first at the follow-up, since it falls due before segmentation.
 
 ### Worked example
 
@@ -750,11 +750,11 @@ Priya learns four treatment options: avoid the activity, reduce risk with contro
 
 ### 16.2 Residual risk
 
-After choosing treatments, Priya estimates residual risk. With segmentation and tested backups, the ransomware scenario's expected cost falls because spread is limited and recovery is faster. Moving to a hosted payment page reduces the card skimming risk sharply, since card data no longer pass through Riverton's site. She records residual estimates next to the original ones so managers can see what each treatment achieves and whether remaining risk is within appetite. Priya records this point in her course notebook so that later chapters can build on it.
+After choosing treatments, Priya estimates residual risk. With segmentation and tested backups, the ransomware scenario's expected cost falls because spread is limited and recovery is faster. Moving to a hosted payment page reduces the card skimming risk sharply, since card data no longer pass through Riverton's site. She records residual estimates next to the original ones so managers can see what each treatment achieves and whether remaining risk is within appetite. The card skimming estimate, for instance, should fall well below its original eleven thousand once card data leave Riverton's site.
 
 ### 16.3 Acceptance
 
-Some risk remains. The managing director formally accepts the residual risk of lost laptops, because encryption makes data exposure unlikely and replacement costs are modest. Priya records the acceptance with the date, reasons, conditions and a review date. ISO/IEC 27001:2022 expects risk owners to approve treatment plans and accept residual risks. She learns that formal acceptance makes decisions accountable and prevents risks from being silently ignored. Mr. Lind asks her to explain the idea aloud to a classmate before moving on. She notes the assumption behind it so that a reviewer can challenge it later.
+Some risk remains. The managing director formally accepts the residual risk of lost laptops, because encryption makes data exposure unlikely and replacement costs are modest. Priya records the acceptance with the date, reasons, conditions and a review date. ISO/IEC 27001:2022 expects risk owners to approve treatment plans and accept residual risks. She learns that formal acceptance makes decisions accountable and prevents risks from being silently ignored. Mr. Lind asks what would change the decision, and Priya records the condition that unencrypted laptops found later would reopen it.
 
 ### Worked example
 
@@ -790,11 +790,11 @@ You will (1) use scripts to process control test results; (2) summarise results 
 
 ### 17.1 Test results as data
 
-Riverton begins testing three controls in four pilot clinics: backups, screen locks and access reviews. Results are recorded in a shared CSV file with the clinic, the control and pass or fail. Priya writes a script using Python's standard csv module to read the file and summarise results. She learns that simple, consistent data formats make tooling easy, and that a CSV file with clear columns can support useful analysis without expensive software. The same reasoning will return when Riverton's auditors visit next year.
+Riverton begins testing three controls in four pilot clinics: backups, screen locks and access reviews. Results are recorded in a shared CSV file with the clinic, the control and pass or fail. Priya writes a script using Python's standard csv module to read the file and summarise results. She learns that simple, consistent data formats make tooling easy, and that a CSV file with clear columns can support useful analysis without expensive software. Twelve rows of clinic, control and result are enough to show which clinic needs help first.
 
 ### 17.2 Per-clinic summary
 
-The lab reads twelve results. South passes all three controls. North and West pass two of three. East passes only one of three. The failures are access review at North, screen lock and access review at East and backup at West. Priya prints the summary for the operations manager and sends each clinic manager their own failures with a note on what each control requires. She adds a short note to the shared course wiki for other students. This makes the governance consequence visible to people outside the specialist team.
+The lab reads twelve results. South passes all three controls. North and West pass two of three. East passes only one of three. The failures are access review at North, screen lock and access review at East and backup at West. Priya prints the summary for the operations manager and sends each clinic manager their own failures with a note on what each control requires. East, failing two of three, gets attention first, but the next section shows the access review failures share one cause.
 
 ### Lab — Pass rates per clinic from a CSV file
 
@@ -834,7 +834,7 @@ failures: North/access, East/screenlock, East/access, West/backup
 
 ### 17.3 Patterns
 
-Looking across clinics, Priya sees that access review failed in two of four clinics, more than any other control. She asks why and learns that clinic managers did not receive the account lists in time. This is a process problem, not a local one, so she recommends fixing the central list distribution rather than blaming individual clinics. She learns that tooling is most valuable when it helps find patterns that point to root causes. Priya keeps a dated copy of her working so that the result can be traced.
+Looking across clinics, Priya sees that access review failed in two of four clinics, more than any other control. She asks why and learns that clinic managers did not receive the account lists in time. This is a process problem, not a local one, so she recommends fixing the central list distribution rather than blaming individual clinics. She learns that tooling is most valuable when it helps find patterns that point to root causes. Fixing list distribution once should improve access review results in every clinic, not just North and East.
 
 ### Worked example
 
@@ -870,15 +870,15 @@ You will (1) document controls with owners and frequencies; (2) map controls to 
 
 ### 18.1 Documenting controls
 
-Priya documents Riverton's key controls in a control register: name, objective, owner, frequency, how it operates and the evidence produced. For example, the monthly backup test is owned by the IT lead, restores five sample files from the image archive and produces a dated test record. She learns that clear documentation lets anyone test a control and lets owners know exactly what is expected, which reduces disagreement during audits. Her lecturer reminds the class that clear reasoning matters more than a polished answer. She checks the idea against a second example before relying on it.
+Priya documents Riverton's key controls in a control register: name, objective, owner, frequency, how it operates and the evidence produced. For example, the monthly backup test is owned by the IT lead, restores five sample files from the image archive and produces a dated test record. She learns that clear documentation lets anyone test a control and lets owners know exactly what is expected, which reduces disagreement during audits. Five sample files from the image archive give a concrete, repeatable test that any technician can perform.
 
 ### 18.2 Mapping to obligations
 
-Priya maps each control to the obligations it supports. Encryption supports data protection law. Card terminal segmentation supports PCI DSS v4.0. Access reviews support both data protection and contractual commitments to the practice system provider. Mapping shows which obligations rely on which controls, so a failed control can be assessed for its compliance impact. She learns that one control often supports several obligations, which raises its importance. The point seems small, but it changes how owners act on the result. Riverton's security manager later asks for a copy of this analysis.
+Priya maps each control to the obligations it supports. Encryption supports data protection law. Card terminal segmentation supports PCI DSS v4.0. Access reviews support both data protection and contractual commitments to the practice system provider. Mapping shows which obligations rely on which controls, so a failed control can be assessed for its compliance impact. She learns that one control often supports several obligations, which raises its importance. Access reviews, supporting both law and the provider contract, therefore rank among Riverton's most important controls.
 
 ### 18.3 Statement of applicability
 
-Riverton is considering ISO/IEC 27001:2022 certification in two years. Priya prepares a draft statement of applicability listing reference controls from ISO/IEC 27002:2022 and whether each applies, with reasons. Controls for secure software development are marked not applicable because Riverton does not develop software, though supplier controls cover its providers. She learns that preparing the statement early clarifies scope and highlights gaps long before an audit. She marks the open questions in red so that they are not forgotten. Writing the reasoning down also helps her spot a weak step in her argument.
+Riverton is considering ISO/IEC 27001:2022 certification in two years. Priya prepares a draft statement of applicability listing reference controls from ISO/IEC 27002:2022 and whether each applies, with reasons. Controls for secure software development are marked not applicable because Riverton does not develop software, though supplier controls cover its providers. She learns that preparing the statement early clarifies scope and highlights gaps long before an audit. Marking supplier controls as applicable instead makes clear how Riverton covers its practice system provider.
 
 ### Worked example
 
@@ -914,11 +914,11 @@ You will (1) define key risk indicators; (2) track indicators over time against 
 
 ### 19.1 Choosing indicators
 
-Priya helps choose key risk indicators that give early warning of rising risk. One is the number of unpatched critical vulnerabilities across Riverton's computers at month end, with a threshold of ten. Others include overdue access reviews and stale evidence items. She learns that good indicators are measurable from existing systems, linked to specific risks and reviewed regularly, so that rising values prompt action before incidents occur. Priya discusses the trade-off with a classmate who works in finance. The class compares answers and finds that most differences come from unstated assumptions.
+Priya helps choose key risk indicators that give early warning of rising risk. One is the number of unpatched critical vulnerabilities across Riverton's computers at month end, with a threshold of ten. Others include overdue access reviews and stale evidence items. She learns that good indicators are measurable from existing systems, linked to specific risks and reviewed regularly, so that rising values prompt action before incidents occur. A threshold of ten for critical vulnerabilities, for instance, gives the monthly reviewer a clear point at which to act.
 
 ### 19.2 The trend
 
-The lab shows six months of the vulnerability indicator: six in April, eight in May, twelve in June, fourteen in July, nine in August and seven in September. June and July breach the threshold, with the peak of fourteen in July. Priya investigates and finds that a supplier update for imaging software was delayed, preventing operating system patches on reception computers that share software with imaging devices. Priya records this point in her course notebook so that later chapters can build on it. Mr. Lind asks her to explain the idea aloud to a classmate before moving on.
+The lab shows six months of the vulnerability indicator: six in April, eight in May, twelve in June, fourteen in July, nine in August and seven in September. June and July breach the threshold, with the peak of fourteen in July. Priya investigates and finds that a supplier update for imaging software was delayed, preventing operating system patches on reception computers that share software with imaging devices. The cause lay with a supplier, so the indicator pointed to a contract issue rather than to the IT team's patching.
 
 ### Lab — Vulnerability indicator trend against a threshold
 
@@ -943,7 +943,7 @@ breaches 2; peak 14 in Jul
 
 ### 19.3 Responding
 
-When the threshold was breached, the IT lead should have escalated, but no one was watching the indicator monthly. Priya recommends assigning an owner to review indicators each month and a rule that two consecutive breaches go to the operations manager. She also suggests asking the imaging supplier for update timelines in the contract. She learns that indicators help only if someone watches them and has agreed actions when thresholds are crossed. She notes the assumption behind it so that a reviewer can challenge it later.
+When the threshold was breached, the IT lead should have escalated, but no one was watching the indicator monthly. Priya recommends assigning an owner to review indicators each month and a rule that two consecutive breaches go to the operations manager. She also suggests asking the imaging supplier for update timelines in the contract. She learns that indicators help only if someone watches them and has agreed actions when thresholds are crossed. With monthly review, the June breach of twelve would have been escalated before July's peak of fourteen.
 
 ### Worked example
 
@@ -979,15 +979,15 @@ You will (1) investigate why a control is not working; (2) separate design, oper
 
 ### 20.1 A failing control
 
-Screen locks fail tests in several clinics despite policy and central settings. Priya investigates. She checks the device management configuration, visits two clinics and talks to receptionists. She learns to separate three kinds of problems: design, where the control itself is unsuitable; operation, where it is suitable but not performed; and evidence, where it works but proof is missing. Each needs a different fix, so diagnosis comes before action. The same reasoning will return when Riverton's auditors visit next year. She adds a short note to the shared course wiki for other students.
+Screen locks fail tests in several clinics despite policy and central settings. Priya investigates. She checks the device management configuration, visits two clinics and talks to receptionists. She learns to separate three kinds of problems: design, where the control itself is unsuitable; operation, where it is suitable but not performed; and evidence, where it works but proof is missing. Each needs a different fix, so diagnosis comes before action. Visiting two clinics, rather than reading reports only, is what lets her distinguish these three kinds of problem.
 
 ### 20.2 Diagnosis
 
-Priya finds that the central setting was correct, but receptionists had found a way to keep screens awake using a media player during busy periods, because unlocking repeatedly slowed patient check-in. The design did not fit the work. In another clinic, locks worked but the test recorded failure because the tester checked an unmanaged spare computer. That was an evidence problem. She learns that one symptom can hide different causes in different places. This makes the governance consequence visible to people outside the specialist team.
+Priya finds that the central setting was correct, but receptionists had found a way to keep screens awake using a media player during busy periods, because unlocking repeatedly slowed patient check-in. The design did not fit the work. In another clinic, locks worked but the test recorded failure because the tester checked an unmanaged spare computer. That was an evidence problem. She learns that one symptom can hide different causes in different places. The media player workaround is a design problem, while the unmanaged spare computer is an evidence problem.
 
 ### 20.3 Fixing
 
-For the design problem, Priya proposes badge unlocking that takes a second. For the evidence problem, she updates test instructions to check only managed reception computers and to record the spare as a separate asset. She avoids recommending disciplinary action against receptionists, since the workaround revealed a usability issue. She learns that troubleshooting governance controls resembles troubleshooting technology: test hypotheses, gather evidence and fix the actual cause. Priya keeps a dated copy of her working so that the result can be traced. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+For the design problem, Priya proposes badge unlocking that takes a second. For the evidence problem, she updates test instructions to check only managed reception computers and to record the spare as a separate asset. She avoids recommending disciplinary action against receptionists, since the workaround revealed a usability issue. She learns that troubleshooting governance controls resembles troubleshooting technology: test hypotheses, gather evidence and fix the actual cause. Recording the spare computer as a separate asset also brings it into the inventory, where it can be managed or retired.
 
 ### Worked example
 
@@ -1023,15 +1023,15 @@ You will (1) integrate GRC with IT service management; (2) link changes and inci
 
 ### 21.1 Integration
 
-Riverton's IT team uses a ticketing system for requests, incidents and changes. Priya proposes integrating governance tasks into it: control tests become scheduled tickets, risk treatments become tracked work items and exceptions become tickets with expiry dates. She learns that integrating with existing service management reduces duplicate effort and ensures governance work is visible to the people who do it, rather than living in a separate spreadsheet. She checks the idea against a second example before relying on it. The point seems small, but it changes how owners act on the result.
+Riverton's IT team uses a ticketing system for requests, incidents and changes. Priya proposes integrating governance tasks into it: control tests become scheduled tickets, risk treatments become tracked work items and exceptions become tickets with expiry dates. She learns that integrating with existing service management reduces duplicate effort and ensures governance work is visible to the people who do it, rather than living in a separate spreadsheet. Exception tickets with expiry dates, for example, make the deviation register from chapter 8 something the IT team sees daily.
 
 ### 21.2 Changes and incidents
 
-Priya links changes and incidents to risks. A change that alters clinic networks must reference the network segmentation risk and be checked against the standard design. An incident involving a misdirected email updates the likelihood of that risk. She learns that this linkage turns daily IT activity into evidence about risk and control effectiveness, helping governance stay current between formal reviews. Riverton's security manager later asks for a copy of this analysis. She marks the open questions in red so that they are not forgotten.
+Priya links changes and incidents to risks. A change that alters clinic networks must reference the network segmentation risk and be checked against the standard design. An incident involving a misdirected email updates the likelihood of that risk. She learns that this linkage turns daily IT activity into evidence about risk and control effectiveness, helping governance stay current between formal reviews. Linking the misdirected email incident to its risk, for instance, gives the next register review real evidence about likelihood.
 
 ### 21.3 Tickets as evidence
 
-Auditors can sample tickets to verify controls. A scheduled backup test ticket includes the date, steps, result and attached test record. Priya defines required fields so tickets contain enough information to serve as evidence. She learns that evidence built into normal work is more reliable and less burdensome than evidence assembled shortly before an audit, which often reveals gaps that cannot be fixed retrospectively. Writing the reasoning down also helps her spot a weak step in her argument. Priya discusses the trade-off with a classmate who works in finance.
+Auditors can sample tickets to verify controls. A scheduled backup test ticket includes the date, steps, result and attached test record. Priya defines required fields so tickets contain enough information to serve as evidence. She learns that evidence built into normal work is more reliable and less burdensome than evidence assembled shortly before an audit, which often reveals gaps that cannot be fixed retrospectively. Required fields such as the attached test record make a ticket usable by an auditor without asking the IT lead to explain it.
 
 ### Worked example
 
@@ -1067,11 +1067,11 @@ You will (1) automate a reconciliation check; (2) interpret automated findings; 
 
 ### 22.1 Reconciliation
 
-Priya automates a common check: comparing the human resources roster with accounts in the practice system. A script reads both lists and reports accounts belonging to people marked as leavers and accounts that match no one on the roster. Running it weekly replaces a manual comparison that took a clinic manager hours each quarter and was often skipped. The class compares answers and finds that most differences come from unstated assumptions. Priya records this point in her course notebook so that later chapters can build on it.
+Priya automates a common check: comparing the human resources roster with accounts in the practice system. A script reads both lists and reports accounts belonging to people marked as leavers and accounts that match no one on the roster. Running it weekly replaces a manual comparison that took a clinic manager hours each quarter and was often skipped. Weekly runs also mean a leaver's account is found within days, not at the next quarterly comparison. The script prints each finding with the clinic, so the right manager can confirm it.
 
 ### 22.2 Findings
 
-The lab compares a sample roster of five people with seven accounts. Two leavers, b.osei and d.wu, still have accounts. Two accounts, f.temp and g.test, match no one on the roster. That makes four issues among seven accounts. Priya investigates: f.temp was created for a locum and never removed, while g.test was left by the practice system provider after setup. Both orphan accounts are disabled after confirmation with their likely owners. Mr. Lind asks her to explain the idea aloud to a classmate before moving on.
+The lab compares a sample roster of five people with seven accounts. Two leavers, b.osei and d.wu, still have accounts. Two accounts, f.temp and g.test, match no one on the roster. That makes four issues among seven accounts. Priya investigates: f.temp was created for a locum and never removed, while g.test was left by the practice system provider after setup. Both orphan accounts are disabled after confirmation with their likely owners. Mr. Lind notes that g.test shows how a supplier's setup work can leave access behind, which the provider contract should address.
 
 ### Lab — Reconciling the HR roster with system accounts
 
@@ -1095,7 +1095,7 @@ accounts 7; issues 4
 
 ### 22.3 Humans in the loop
 
-Priya does not let the script disable accounts automatically. A human checks each finding first, because a leaver might have returned or an account might belong to a supplier with a valid reason. She learns that automation should handle repetitive comparison while people make decisions that need context. Automated findings also need owners, or they accumulate unread, which defeats the purpose of automating the check in the first place. She notes the assumption behind it so that a reviewer can challenge it later. The same reasoning will return when Riverton's auditors visit next year.
+Priya does not let the script disable accounts automatically. A human checks each finding first, because a leaver might have returned or an account might belong to a supplier with a valid reason. She learns that automation should handle repetitive comparison while people make decisions that need context. Automated findings also need owners, or they accumulate unread, which defeats the purpose of automating the check in the first place. A returning locum, for example, could appear as a leaver on the roster yet need the account next week.
 
 ### Worked example
 
@@ -1131,15 +1131,15 @@ You will (1) evaluate the GRC programme's first year; (2) use evidence to judge 
 
 ### 23.1 Evaluation questions
 
-After a year, Priya helps evaluate Riverton's programme. She asks: are top risks lower? Are controls operating? Is evidence fresh? Are owners engaged? She gathers data from the register, test results, indicator trends, evidence log and a short survey of clinic managers. She learns that evaluation should use several sources, since any single measure can be misleading, and that questions should be set before looking at the data. She adds a short note to the shared course wiki for other students. This makes the governance consequence visible to people outside the specialist team.
+After a year, Priya helps evaluate Riverton's programme. She asks: are top risks lower? Are controls operating? Is evidence fresh? Are owners engaged? She gathers data from the register, test results, indicator trends, evidence log and a short survey of clinic managers. She learns that evaluation should use several sources, since any single measure can be misleading, and that questions should be set before looking at the data. Setting questions in advance keeps the evaluation from highlighting only the measures that improved.
 
 ### 23.2 Findings
 
-Ransomware risk is lower: segmentation is complete in twelve of fourteen clinics and backups are tested monthly. Card skimming risk fell sharply after moving to a hosted payment page. Control tests pass more often than in the pilot. Evidence freshness improved, though supplier reports still lag. Clinic managers say tasks are clearer but the access review remains time-consuming. Priya presents findings with the evidence for each. Priya keeps a dated copy of her working so that the result can be traced. Her lecturer reminds the class that clear reasoning matters more than a polished answer.
+Ransomware risk is lower: segmentation is complete in twelve of fourteen clinics and backups are tested monthly. Card skimming risk fell sharply after moving to a hosted payment page. Control tests pass more often than in the pilot. Evidence freshness improved, though supplier reports still lag. Clinic managers say tasks are clearer but the access review remains time-consuming. Priya presents findings with the evidence for each. Supplier reports lagging repeats the freshness problem found in chapter 9, so the cause lies with contracts, not with the clinics.
 
 ### 23.3 Recommendations
 
-Priya recommends finishing segmentation in the last two clinics, automating access review lists, adding supplier report requests to contract renewals and simplifying the clinic manager checklist. She also recommends preparing for ISO/IEC 27001:2022 certification next year. She learns that evaluations are useful when they lead to specific improvements and that recognising progress motivates staff to continue the work. She checks the idea against a second example before relying on it. The point seems small, but it changes how owners act on the result. Riverton's security manager later asks for a copy of this analysis.
+Priya recommends finishing segmentation in the last two clinics, automating access review lists, adding supplier report requests to contract renewals and simplifying the clinic manager checklist. She also recommends preparing for ISO/IEC 27001:2022 certification next year. She learns that evaluations are useful when they lead to specific improvements and that recognising progress motivates staff to continue the work. Each recommendation answers a specific finding, such as the access review still being time-consuming. Specific recommendations can also be tracked as actions with owners in the ticketing system.
 
 ### Worked example
 
@@ -1175,15 +1175,15 @@ You will (1) design a small applied study in GRC; (2) choose suitable data and m
 
 ### 24.1 Question
 
-Priya designs a small study: does sending clinic managers pre-filled access review lists with role descriptions reduce the time they spend on reviews? She defines time spent as minutes reported in a short log, and quality as the number of inappropriate rights found by a second check. She learns that applied questions should be narrow, measurable and useful to the organisation, rather than broad questions that cannot be answered in a semester. She marks the open questions in red so that they are not forgotten.
+Priya designs a small study: does sending clinic managers pre-filled access review lists with role descriptions reduce the time they spend on reviews? She defines time spent as minutes reported in a short log, and quality as the number of inappropriate rights found by a second check. She learns that applied questions should be narrow, measurable and useful to the organisation, rather than broad questions that cannot be answered in a semester. Measuring quality by a second check guards against lists that save time by hiding inappropriate rights.
 
 ### 24.2 Method
 
-Seven clinics receive the new lists and seven continue with the old lists for one quarter, with clinics allocated by drawing names. Priya records time and quality for each. She notes threats: managers know they are being studied, clinics differ in size and one quarter may be unusual. She learns that random allocation helps comparability but cannot remove all differences when groups are small. Writing the reasoning down also helps her spot a weak step in her argument. Priya discusses the trade-off with a classmate who works in finance.
+Seven clinics receive the new lists and seven continue with the old lists for one quarter, with clinics allocated by drawing names. Priya records time and quality for each. She notes threats: managers know they are being studied, clinics differ in size and one quarter may be unusual. She learns that random allocation helps comparability but cannot remove all differences when groups are small. Drawing names avoids, for example, the larger clinics all ending up with the new lists. She records each threat in her report so readers can weigh the result themselves.
 
 ### 24.3 Findings
 
-Managers with new lists report a median of forty minutes compared with ninety for the old lists. The second check finds similar numbers of inappropriate rights in both groups. Priya reports that the new lists saved time without reducing quality in this small study, while stating the limits. She learns that honest reporting of a small study can still support a practical decision, provided its uncertainty is clear. The class compares answers and finds that most differences come from unstated assumptions. Priya records this point in her course notebook so that later chapters can build on it.
+Managers with new lists report a median of forty minutes compared with ninety for the old lists. The second check finds similar numbers of inappropriate rights in both groups. Priya reports that the new lists saved time without reducing quality in this small study, while stating the limits. She learns that honest reporting of a small study can still support a practical decision, provided its uncertainty is clear. Forty against ninety minutes is a large difference, but seven clinics per group is too few to rule out chance entirely.
 
 ### Worked example
 
@@ -1219,15 +1219,15 @@ You will (1) work in a team on a GRC deliverable; (2) divide work and review eac
 
 ### 25.1 The brief
 
-In the team studio, Priya's group is asked by Riverton to produce an onboarding pack for the three new clinics: a checklist for secure setup, a list of controls the clinic manager owns, evidence requirements and a short training session. The team has four members with different strengths: networks, documentation, training design and data. They agree roles, deadlines and a shared folder. Mr. Lind asks her to explain the idea aloud to a classmate before moving on. She notes the assumption behind it so that a reviewer can challenge it later.
+In the team studio, Priya's group is asked by Riverton to produce an onboarding pack for the three new clinics: a checklist for secure setup, a list of controls the clinic manager owns, evidence requirements and a short training session. The team has four members with different strengths: networks, documentation, training design and data. They agree roles, deadlines and a shared folder. Mr. Lind suggests that the data specialist check every evidence requirement can actually be produced by the new clinics' systems.
 
 ### 25.2 Peer review
 
-Each member's work is reviewed by another before submission. Priya's evidence requirements are reviewed by the documentation specialist, who finds two terms used inconsistently. The training design is reviewed by Priya, who suggests adding a scenario about misdirected laboratory emails. Peer review catches errors and improves clarity. She learns that reviewing others' work is a skill in itself, requiring specific and respectful feedback. The same reasoning will return when Riverton's auditors visit next year. She adds a short note to the shared course wiki for other students.
+Each member's work is reviewed by another before submission. Priya's evidence requirements are reviewed by the documentation specialist, who finds two terms used inconsistently. The training design is reviewed by Priya, who suggests adding a scenario about misdirected laboratory emails. Peer review catches errors and improves clarity. She learns that reviewing others' work is a skill in itself, requiring specific and respectful feedback. The misdirected laboratory email scenario draws on a risk Riverton has already recorded, so the training stays relevant.
 
 ### 25.3 Client presentation
 
-The team presents to Riverton's operations manager and a clinic manager. They walk through the checklist and demonstrate the training scenario. The clinic manager asks for a version of the checklist on one page, which the team produces the next day. Priya learns that clients value practical usability, and that listening to feedback during a presentation is as important as delivering it well. This makes the governance consequence visible to people outside the specialist team. Priya keeps a dated copy of her working so that the result can be traced.
+The team presents to Riverton's operations manager and a clinic manager. They walk through the checklist and demonstrate the training scenario. The clinic manager asks for a version of the checklist on one page, which the team produces the next day. Priya learns that clients value practical usability, and that listening to feedback during a presentation is as important as delivering it well. A one-page checklist is more likely to be used at a busy new clinic than a longer document.
 
 ### Worked example
 
@@ -1263,15 +1263,15 @@ You will (1) hand over GRC processes to operations staff; (2) write runbooks; (3
 
 ### 26.1 Runbooks
 
-Priya prepares runbooks for processes she helped build: the weekly roster reconciliation, monthly indicator review, evidence freshness check and quarterly access review. Each runbook lists the purpose, steps, tools, expected outputs, what to do when something fails and who to contact. She writes them for a person who has never done the task before. She learns that runbooks make processes independent of the people who designed them. Her lecturer reminds the class that clear reasoning matters more than a polished answer. She checks the idea against a second example before relying on it.
+Priya prepares runbooks for processes she helped build: the weekly roster reconciliation, monthly indicator review, evidence freshness check and quarterly access review. Each runbook lists the purpose, steps, tools, expected outputs, what to do when something fails and who to contact. She writes them for a person who has never done the task before. She learns that runbooks make processes independent of the people who designed them. The section on what to do when something fails matters most, since the coordinator will face it without Priya present.
 
 ### 26.2 Readiness
 
-Before handoff, Priya watches the IT team's new coordinator perform each process using only the runbook. The coordinator completes three of four without help. For the indicator review, the coordinator is unsure what counts as an escalation, so Priya adds examples. She learns that readiness should be demonstrated, not assumed, and that the best test of documentation is someone else using it successfully. The point seems small, but it changes how owners act on the result. Riverton's security manager later asks for a copy of this analysis.
+Before handoff, Priya watches the IT team's new coordinator perform each process using only the runbook. The coordinator completes three of four without help. For the indicator review, the coordinator is unsure what counts as an escalation, so Priya adds examples. She learns that readiness should be demonstrated, not assumed, and that the best test of documentation is someone else using it successfully. The added escalation examples close the only gap the coordinator found, so the runbooks are ready for handoff.
 
 ### 26.3 Ownership
 
-Priya confirms that each process has an owner, a backup person and a place in the governance calendar. She agrees that she will be available for questions for one month, after which the coordinator is fully responsible. She learns that a clear end to support helps the new owner take responsibility, while a short support period reduces the risk of early mistakes going unnoticed. She marks the open questions in red so that they are not forgotten. Writing the reasoning down also helps her spot a weak step in her argument.
+Priya confirms that each process has an owner, a backup person and a place in the governance calendar. She agrees that she will be available for questions for one month, after which the coordinator is fully responsible. She learns that a clear end to support helps the new owner take responsibility, while a short support period reduces the risk of early mistakes going unnoticed. Naming a backup person for each process prevents the weekly reconciliation stopping when the coordinator is away.
 
 ### Worked example
 
@@ -1307,15 +1307,15 @@ You will (1) deploy the standard clinic design at a new site; (2) validate contr
 
 ### 27.1 Deployment
 
-The first new clinic is ready to open. Priya supports the deployment of the standard design: network segments, managed computers, card terminals on their own segment, guest Wi-Fi separated, imaging devices isolated and accounts created with end dates for temporary staff. She follows the onboarding checklist her team produced and records each completed step with the date and the person responsible. Priya discusses the trade-off with a classmate who works in finance. The class compares answers and finds that most differences come from unstated assumptions.
+The first new clinic is ready to open. Priya supports the deployment of the standard design: network segments, managed computers, card terminals on their own segment, guest Wi-Fi separated, imaging devices isolated and accounts created with end dates for temporary staff. She follows the onboarding checklist her team produced and records each completed step with the date and the person responsible. Recording who completed each step gives the validation in the next section a trail to check against. The checklist also lists who owns each control once the clinic opens.
 
 ### 27.2 Validation
 
-Before the clinic opens, Priya validates key controls. She checks that guest Wi-Fi cannot reach clinic devices, that card terminals are on their segment, that reception computers are encrypted and lock correctly, that backups of the imaging archive run and that only authorised staff have accounts. One check fails: an imaging device was connected to the reception segment. The supplier corrects it and Priya retests successfully. Priya records this point in her course notebook so that later chapters can build on it. Mr. Lind asks her to explain the idea aloud to a classmate before moving on.
+Before the clinic opens, Priya validates key controls. She checks that guest Wi-Fi cannot reach clinic devices, that card terminals are on their segment, that reception computers are encrypted and lock correctly, that backups of the imaging archive run and that only authorised staff have accounts. One check fails: an imaging device was connected to the reception segment. The supplier corrects it and Priya retests successfully. An imaging device on the reception segment is exactly the spread path that the standard design's isolation is meant to block.
 
 ### 27.3 Evidence
 
-Priya records validation results with screenshots and test notes in the evidence log, marking them with the clinic code and date. The operations manager approves opening based on the validation report. She learns that validation before go-live is much cheaper than fixing problems after patients arrive, and that a signed-off validation report gives management a clear basis for the decision to open. She notes the assumption behind it so that a reviewer can challenge it later. The same reasoning will return when Riverton's auditors visit next year.
+Priya records validation results with screenshots and test notes in the evidence log, marking them with the clinic code and date. The operations manager approves opening based on the validation report. She learns that validation before go-live is much cheaper than fixing problems after patients arrive, and that a signed-off validation report gives management a clear basis for the decision to open. Marking evidence with the clinic code lets the new clinic's records be found alongside those of the other fourteen.
 
 ### Worked example
 
@@ -1351,15 +1351,15 @@ You will (1) apply GRC skills in a supervised placement; (2) support an external
 
 ### 28.1 Placement
 
-Priya spends a term on placement with Riverton's operations team. She supports routine work: reviewing indicators, checking evidence freshness, chasing overdue actions and helping clinic managers with access reviews. She learns that much GRC work is steady follow-up rather than dramatic analysis, and that patience and good relationships with busy clinic staff matter as much as technical knowledge. She adds a short note to the shared course wiki for other students. This makes the governance consequence visible to people outside the specialist team. Priya keeps a dated copy of her working so that the result can be traced.
+Priya spends a term on placement with Riverton's operations team. She supports routine work: reviewing indicators, checking evidence freshness, chasing overdue actions and helping clinic managers with access reviews. She learns that much GRC work is steady follow-up rather than dramatic analysis, and that patience and good relationships with busy clinic staff matter as much as technical knowledge. Chasing overdue actions, for instance, depends on clinic managers trusting that she is helping rather than policing them. Those relationships later make it easier to raise uncomfortable findings.
 
 ### 28.2 Assessment support
 
-Riverton's bank requests a PCI DSS self-assessment because of its card payments. With the hosted payment page and segmented terminals, Riverton's scope is small. Priya helps gather evidence: network diagrams, terminal inventories and confirmation from the payment provider of its compliance. She learns that the earlier architecture decisions made the assessment far easier, and that compliance work is shaped by design choices made long before assessment begins. Her lecturer reminds the class that clear reasoning matters more than a polished answer. She checks the idea against a second example before relying on it.
+Riverton's bank requests a PCI DSS self-assessment because of its card payments. With the hosted payment page and segmented terminals, Riverton's scope is small. Priya helps gather evidence: network diagrams, terminal inventories and confirmation from the payment provider of its compliance. She learns that the earlier architecture decisions made the assessment far easier, and that compliance work is shaped by design choices made long before assessment begins. Card data never touching Riverton's site removes most of the systems a larger assessment would otherwise examine.
 
 ### 28.3 Professional conduct
 
-During the placement, a clinic manager asks Priya to mark an overdue access review as complete to avoid an escalation. She declines politely, explains that the record must reflect reality and offers to help complete the review that afternoon. They finish it together. She reflects that professional conduct means keeping records honest while helping people meet their obligations, and that refusing gently and offering help preserves the working relationship. The point seems small, but it changes how owners act on the result. Riverton's security manager later asks for a copy of this analysis.
+During the placement, a clinic manager asks Priya to mark an overdue access review as complete to avoid an escalation. She declines politely, explains that the record must reflect reality and offers to help complete the review that afternoon. They finish it together. She reflects that professional conduct means keeping records honest while helping people meet their obligations, and that refusing gently and offering help preserves the working relationship. Completing the review that afternoon meant the record could honestly show it done, only a little late.
 
 ### Worked example
 
@@ -1395,15 +1395,15 @@ You will (1) build a capstone GRC tool for Riverton; (2) test it with users; (3)
 
 ### 29.1 The tool
 
-For her capstone, Priya builds a small governance dashboard using Python's standard library that reads the risk register, control test results, indicator values and evidence log, and produces a weekly HTML summary for the operations manager. It highlights overdue actions, stale evidence, threshold breaches and failed controls, each with its owner. She keeps the design simple so Riverton's IT coordinator can maintain it. She marks the open questions in red so that they are not forgotten. Writing the reasoning down also helps her spot a weak step in her argument.
+For her capstone, Priya builds a small governance dashboard using Python's standard library that reads the risk register, control test results, indicator values and evidence log, and produces a weekly HTML summary for the operations manager. It highlights overdue actions, stale evidence, threshold breaches and failed controls, each with its owner. She keeps the design simple so Riverton's IT coordinator can maintain it. Using only the standard library means the IT coordinator needs no extra packages to keep it running.
 
 ### 29.2 Testing
 
-Priya tests the tool with sample data containing known problems, checking that each is reported correctly. She then asks the operations manager and two clinic managers to use the summary for two weeks. They find it useful but ask for a clinic filter. One manager notices that a resolved action still appears because the source file was not updated, which leads Priya to add the last-updated date for each source to the summary. Priya discusses the trade-off with a classmate who works in finance.
+Priya tests the tool with sample data containing known problems, checking that each is reported correctly. She then asks the operations manager and two clinic managers to use the summary for two weeks. They find it useful but ask for a clinic filter. One manager notices that a resolved action still appears because the source file was not updated, which leads Priya to add the last-updated date for each source to the summary. The last-updated date lets a reader judge whether an item is truly open or simply based on stale data.
 
 ### 29.3 Documentation
 
-Priya documents the tool: purpose, inputs, outputs, how to run it, how to add a new check, known limitations and who maintains it. She stores the code in Riverton's repository with a change log. She learns that a capstone tool succeeds only if it remains useful after the student leaves, which depends on simplicity, documentation and a named maintainer. The class compares answers and finds that most differences come from unstated assumptions. Priya records this point in her course notebook so that later chapters can build on it.
+Priya documents the tool: purpose, inputs, outputs, how to run it, how to add a new check, known limitations and who maintains it. She stores the code in Riverton's repository with a change log. She learns that a capstone tool succeeds only if it remains useful after the student leaves, which depends on simplicity, documentation and a named maintainer. The section on adding a new check matters most, because Riverton's needs will change after she leaves. A change log in the repository shows what changed between versions and why.
 
 ### Worked example
 
@@ -1439,15 +1439,15 @@ You will (1) present a capstone to assessors; (2) evaluate it against criteria; 
 
 ### 30.1 Presentation
 
-Priya presents her capstone to Mr. Lind and Riverton's operations manager. She explains the problem, the design, testing, user feedback and documentation, then demonstrates a weekly summary. The assessors ask how the tool handles missing files; she shows that it reports missing sources clearly instead of silently omitting them. They also ask how she protected patient data; she explains that the tool reads governance records only, not patient records. Mr. Lind asks her to explain the idea aloud to a classmate before moving on.
+Priya presents her capstone to Mr. Lind and Riverton's operations manager. She explains the problem, the design, testing, user feedback and documentation, then demonstrates a weekly summary. The assessors ask how the tool handles missing files; she shows that it reports missing sources clearly instead of silently omitting them. They also ask how she protected patient data; she explains that the tool reads governance records only, not patient records. Mr. Lind adds that reading governance records only also keeps the tool outside the scope of patient data handling rules.
 
 ### 30.2 Evaluation
 
-Assessors evaluate against criteria agreed at the start: usefulness to Riverton, correctness, maintainability, documentation and professional conduct. The operations manager reports that the summary has replaced a weekly meeting agenda and that overdue actions fell after it was introduced, though other changes also contributed. Priya receives strong marks, with a suggestion to add simple trend charts in a future version. She notes the assumption behind it so that a reviewer can challenge it later. The same reasoning will return when Riverton's auditors visit next year.
+Assessors evaluate against criteria agreed at the start: usefulness to Riverton, correctness, maintainability, documentation and professional conduct. The operations manager reports that the summary has replaced a weekly meeting agenda and that overdue actions fell after it was introduced, though other changes also contributed. Priya receives strong marks, with a suggestion to add simple trend charts in a future version. The operations manager's caution that other changes also contributed is the same attribution limit Priya stated in her own study.
 
 ### 30.3 Reflection
 
-Priya reflects on three years. She learned to see GRC as practical work: knowing assets, mapping data, estimating risks, documenting controls, watching indicators and fixing root causes. She also learned that people make governance work and that clear, respectful communication matters as much as tools. Mr. Lind notes that her habit of checking evidence before claiming success will serve her well in any role. She adds a short note to the shared course wiki for other students. This makes the governance consequence visible to people outside the specialist team.
+Priya reflects on three years. She learned to see GRC as practical work: knowing assets, mapping data, estimating risks, documenting controls, watching indicators and fixing root causes. She also learned that people make governance work and that clear, respectful communication matters as much as tools. Mr. Lind notes that her habit of checking evidence before claiming success will serve her well in any role. Her refusal to mark an access review complete during her placement is one example of that habit in practice.
 
 ### Worked example
 
