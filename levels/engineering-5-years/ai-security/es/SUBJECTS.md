@@ -46,13 +46,13 @@ Edición en español neutro, escrita a partir de la edición de referencia en in
 | 7 | [34](book/PLAN.md#ch-34) | Seguridad de la IA y del aprendizaje automático: integración | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-34) | [35 · Borrador](book/MANUSCRIPT.md#ch-35) |
 | 7 | [35](book/PLAN.md#ch-35) | Taller de diseño II | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-35) | [36 · Borrador](book/MANUSCRIPT.md#ch-36) |
 | 8 | [36](book/PLAN.md#ch-36) | Seguridad de la IA y del aprendizaje automático: rendimiento y escala | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-36) | [37 · Borrador](book/MANUSCRIPT.md#ch-37) |
-| 8 | [37](book/PLAN.md#ch-37) | Seguridad de la IA y del aprendizaje automático: operaciones | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-37) | [38 · Plan](book/PLAN.md#ch-38) |
-| 8 | [38](book/PLAN.md#ch-38) | Seguridad de la IA y del aprendizaje automático: validación | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-38)) | [39 · Plan](book/PLAN.md#ch-39) |
-| 8 | [39](book/PLAN.md#ch-39) | Seguridad de la IA y del aprendizaje automático: mantenibilidad | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-39)) | [40 · Plan](book/PLAN.md#ch-40) |
-| 8 | [40](book/PLAN.md#ch-40) | Laboratorio de verificación II | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-40)) | [41 · Plan](book/PLAN.md#ch-41) |
-| 9 | [41](book/PLAN.md#ch-41) | Seguridad de la IA y del aprendizaje automático: optimización del sistema | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-41)) | [42 · Plan](book/PLAN.md#ch-42) |
-| 9 | [42](book/PLAN.md#ch-42) | Seguridad de la IA y del aprendizaje automático: investigación aplicada | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-42)) | [43 · Plan](book/PLAN.md#ch-43) |
-| 9 | [43](book/PLAN.md#ch-43) | Prácticas en la industria o el sector público | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-43)) | [44 · Plan](book/PLAN.md#ch-44) |
+| 8 | [37](book/PLAN.md#ch-37) | Seguridad de la IA y del aprendizaje automático: operaciones | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-37) | [38 · Borrador](book/MANUSCRIPT.md#ch-38) |
+| 8 | [38](book/PLAN.md#ch-38) | Seguridad de la IA y del aprendizaje automático: validación | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-38) | [39 · Borrador](book/MANUSCRIPT.md#ch-39) |
+| 8 | [39](book/PLAN.md#ch-39) | Seguridad de la IA y del aprendizaje automático: mantenibilidad | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-39) | [40 · Borrador](book/MANUSCRIPT.md#ch-40) |
+| 8 | [40](book/PLAN.md#ch-40) | Laboratorio de verificación II | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-40) | [41 · Borrador](book/MANUSCRIPT.md#ch-41) |
+| 9 | [41](book/PLAN.md#ch-41) | Seguridad de la IA y del aprendizaje automático: optimización del sistema | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-41) | [42 · Borrador](book/MANUSCRIPT.md#ch-42) |
+| 9 | [42](book/PLAN.md#ch-42) | Seguridad de la IA y del aprendizaje automático: investigación aplicada | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-42) | [43 · Borrador](book/MANUSCRIPT.md#ch-43) |
+| 9 | [43](book/PLAN.md#ch-43) | Prácticas en la industria o el sector público | 80 | 30 | 3 | [Borrador](book/MANUSCRIPT.md#ch-43) | [44 · Plan](book/PLAN.md#ch-44) |
 | 9 | [44](book/PLAN.md#ch-44) | Proyecto final de ingeniería I | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-44)) | [45 · Plan](book/PLAN.md#ch-45) |
 | 9 | [45](book/PLAN.md#ch-45) | Revisión de diseño independiente | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-45)) | [46 · Plan](book/PLAN.md#ch-46) |
 | 10 | [46](book/PLAN.md#ch-46) | Proyecto final de ingeniería II | 80 | 30 | 3 | En traducción ([inglés](../en/book/MANUSCRIPT.md#ch-46)) | [47 · Plan](book/PLAN.md#ch-47) |
