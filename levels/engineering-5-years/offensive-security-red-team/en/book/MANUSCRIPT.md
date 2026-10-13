@@ -1554,7 +1554,7 @@ Schema validation is the last line when a tired engineer invents a custom field.
 
 Models that try to encode all of ATT&CK as mandatory fields force junk tags. Keep technique tags optional and reviewed.
 
-Mandatory ATT&CK fields produce junk tags that pollute coverage charts. Optional, reviewed tags keep PulseMap honest. Sam's weekly tag review merges synonyms and drops tags nobody can define, and a tag without a one-line definition cannot be applied to a new finding. Tag definitions live in the same repo as PulseMap queries, so a deleted meaning cannot linger in charts.
+Junk tags then pollute the coverage charts, making techniques look tested when they were only labelled. Sam's weekly tag review merges synonyms and drops tags nobody can define, and a tag without a one-line definition cannot be applied to a new finding. Tag definitions live in the same repo as PulseMap queries, so a deleted meaning cannot linger in charts.
 
 ### 22.2b Time and actors
 
@@ -3867,7 +3867,7 @@ Runbook, ADR and operator tutorial with synthetic screenshots are part of done. 
 
 Demo magic on a laptop with hand-waved fail-closed does not pass.
 
-A laptop demo that hand-waves fail-closed does not pass Capstone II. The silent operator run and Lab II checklist are the proof. Sam's first acceptance attempt failed two documentation steps; magic was not offered as a substitute. Capstone II grading rubrics give zero for laptop magic without the checklist. Zero for magic is written in the published rubric students see in week one. Students see that zero in week one so laptop demos are not a surprise strategy.
+For Capstone II, the silent operator run and Lab II checklist are the proof. Sam's first acceptance attempt failed two documentation steps; magic was not offered as a substitute. The published rubric, which students see in week one, gives zero for a laptop demo without the checklist, so nobody can treat such a demo as a surprise strategy. Graders run the checklist themselves on the submitted build rather than accepting the student's account of a passing run.
 
 ### 46.2b Operator shadowing
 
@@ -4109,7 +4109,7 @@ No payloads, no live credentials, no personal data. If it cannot be shared with 
 
 > **Synthetic case — Riverstone Transit.** Dossier v3 re-hashed clean after the findings.json incident; process note included.
 
-If counsel cannot receive it, it does not belong in the dossier. Payloads, live credentials and personal data stay out. After the findings.json incident, dossier v3 re-hashed clean and the process note explained the exclusion check that now runs before seal. The exclusion check is a script, not a memory item on seal day.
+After the findings.json incident, dossier v3 re-hashed clean and the process note explained the exclusion check that now runs before seal. The exclusion check is a script, not a memory item on seal day. Anything the script flags is removed and logged before the dossier is sealed, and the log entry names who approved the removal.
 
 ### 48.4 Errors and limits
 
