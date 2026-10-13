@@ -2521,6 +2521,8 @@ You will (1) detect unstable queues where arrival exceeds service; (2) apply Lit
 
 If 120 objects per minute arrive at enrichment and only 100 per minute are served, the backlog grows by 20 each minute without limit. No amount of waiting fixes this; capacity or demand must change.
 
+The lab prints exactly this pattern, and after five minutes the backlog is a hundred items and still rising. Kofi watches the trend rather than the size: a long queue that is shrinking is recovering, while a short one growing every minute is a problem. His alert fires when the backlog has grown for ten minutes in a row, before it becomes large enough for analysts to notice.
+
 ### Lab 8 — queue growth
 
 ```python
@@ -2549,17 +2551,25 @@ Little's law wait W=L/lambda=240 s at L=400, lambda=1.67/s
 
 For a stable system, the average number in the system L equals throughput λ times average time in system W. With 400 items queued and 1.67 items per second served, average wait is about 240 seconds. The law needs no assumptions about arrival patterns, which makes it a robust check on dashboards.
 
+Kofi uses it to check whether the dashboard's figures agree with each other. If the queue length, the throughput and the reported wait do not fit the law, one of the measurements is wrong.
+
 ### 36.3 Options
 
 Scale up (faster hardware), scale out (more workers), or shed load (skip low-value enrichment, sample low-confidence indicators). Shedding by value is often cheapest: enrich high-confidence indicators first.
+
+Kofi compares the cost of each option against the gain. A faster machine helps only if the work is limited by processing. More workers help only if the work can be split and the provider allows more queries. Shedding low-value work needs a clear rule about what counts as low value, agreed with analysts, and a record of what was skipped so it can be done later if needed.
 
 ### 36.4 Protecting partners
 
 Scaling out collectors must not multiply load on partner TAXII servers. Lantern keeps one polling identity per partner and shares results internally, respecting partner rate limits.
 
+Kofi's design separates collection from processing for this reason. However many internal workers Lantern runs, one collector per partner polls at the agreed rate and places objects on an internal queue. Partners see the same traffic whether BEN is quiet or in the middle of a campaign. If a partner raises its limits, the configuration changes after the agreement does, not before.
+
 ### 36.5 Testing at scale
 
 Load tests use synthetic bundles generated to realistic sizes, run against the TAXII stub and internal components only.
+
+Kofi's generator creates bundles with the same mix of object types and sizes that partners send, including a share of malformed objects, so the test exercises the reject path as well. Running against real partner servers would test their capacity rather than BEN's, and would breach the agreements. The results record the hardware, the code version and the generated volumes, so a later test can be compared fairly. Each run ends by checking that queues drained completely.
 
 ### Practice note — priority queues
 
@@ -2605,21 +2615,31 @@ You will (1) write runbooks for routine and abnormal Lantern operations; (2) def
 
 Routine: daily review of collector health, reject spikes and certificate expiry. Abnormal: partner feed stops; poisoned indicators detected; enrichment provider outage; TLP breach suspected. Each runbook lists symptoms, checks, actions, escalation and closure steps.
 
+Kofi writes each runbook so that an engineer who has never seen the problem can follow it at three in the morning. Steps say what to check and what a normal result looks like, not just which command to run. After each real use, the engineer notes any step that was unclear or wrong, and the runbook is updated that week.
+
 ### 37.2 On-call
 
 One engineer is on call per week with a documented handover. Pages fire only for conditions needing action within an hour; everything else goes to a daily queue. Alert fatigue is a reliability risk.
+
+Kofi reviewed a month of pages and found that half were for conditions that could wait until morning, such as a single reject spike from a minor partner. Moving those to the daily queue halved the pages without missing anything urgent. The handover note lets the next engineer pick up open issues without having to ask what happened during the week.
 
 ### 37.3 Retractions
 
 Partners sometimes retract indicators published in error. Lantern must remove them from enforcement promptly, record the retraction and inform downstream recipients who received them. STIX 2.1 supports revocation through the `revoked` property on a new object version.
 
+Lantern treats a revoked version as an instruction to remove the indicator from every enforcement point and to stop scoring it. The original object remains in the archive, marked revoked, so analysts can see that it was once published and withdrawn. Forwarding the revocation to every member who received the indicator is tracked in the sharing log, which is how the worked example knows exactly which two members to inform.
+
 ### 37.4 Suspected TLP breach
 
 If restricted content appears where it should not, the runbook says: contain (remove access), assess what was exposed, notify the originator as the agreement requires, and review the gate. Honesty with partners protects the relationship that NIST SP 800-150 describes as the basis of sharing.
 
+Kofi's runbook names who leads each step and the deadline set in each partner agreement. Assessment uses the access log to show exactly who saw the material and when. A partner told quickly and accurately usually stays in the community; one who hears from someone else may not.
+
 ### 37.5 Reporting
 
 Monthly: availability against SLO, objects processed, reject rates, time-to-enforcement percentiles, false-positive tickets, partner feedback sent and received.
+
+Kofi's report puts each figure next to its target and last month's value, with a sentence explaining any large change. Reject rates are broken down by partner, which makes quality problems visible to the people who can fix them. The report goes to the CTI lead and the SOC manager, and a shorter version with aggregate figures only goes to partners who have asked for it. Each figure states its source and period.
 
 ### Practice note — blameless reviews
 
@@ -2665,21 +2685,31 @@ You will (1) validate Lantern against stakeholders' real needs; (2) design accep
 
 Does the SOC block threats sooner? Do OT engineers get vendor warnings they act on? Do executives understand strategic briefs? These questions concern outcomes; system metrics alone cannot answer them.
 
+Kofi takes each question to the people concerned and asks how they would recognise an answer. The SOC lead suggested comparing times from publication to enforcement before and after Lantern. The OT engineers wanted to count vendor warnings that led to an action. Executives were asked directly whether the strategic brief changed any decision during the quarter.
+
 ### 38.2 Acceptance scenarios
 
 With operators, Kofi writes scenarios: "A partner shares a phishing campaign against utilities at 09:00; by 09:30 domain blocks are active, a ticket with ATT&CK context exists and the duty analyst has hunted for prior contacts." Scenarios run on synthetic data in a staging environment that mirrors production.
+
+The scenario includes the human steps as well as the system's, because a block that arrives on time but leaves no ticket would still fail the duty analyst. Running it in staging means the operators can rehearse without risk to production.
 
 ### 38.3 Decision impact
 
 Measure before and after Lantern: median time from external publication to enforcement; percentage of incidents where intelligence context was available at triage; executive decisions that referenced a strategic brief. Some measures are rough; report them with their limits.
 
+Kofi gathered the earlier figures from tickets and email records of the manual process, which were less precise than Lantern's logs. He reported the comparison with that caveat. Counting executive decisions that cited a brief relies on minutes of meetings, which may not mention every influence. Rough measures are still better than none, as long as readers know how rough they are.
+
 ### 38.4 When requirements were wrong
 
 Validation may show that a verified requirement serves no one — for example, a daily digest nobody reads. That is a valuable finding: change the requirement, not the measurement.
 
+The worked example shows a second form of the same lesson: vendor alerts were delivered as required, but to an inbox that nobody watched. The system passed its verification test and still failed its users. Kofi changed the requirement to name the destination the OT team actually uses, then wrote a new verification procedure for it.
+
 ### 38.5 Independent observers
 
 Someone outside the build team observes scenario runs and interviews users, reducing the temptation to declare success.
+
+Kofi asked a colleague from BEN's internal audit team to observe. She noted that during one scenario an analyst took a manual step the design had not described, which revealed a gap in the interface. Her report was attached to the validation record without edits from the build team. Users also spoke more freely to her than to the engineers who had built the system, and two of their complaints became backlog items.
 
 ### Practice note — negative results
 
@@ -2725,21 +2755,31 @@ You will (1) measure and reduce maintenance burden; (2) document Lantern for suc
 
 Track hours spent on partner format changes, dependency updates, incident fixes and analyst requests. If maintenance consumes most of the team's time, new features should wait.
 
+Kofi's team logs time against these categories in their ticketing system. After one quarter the figures showed partner format changes taking more effort than expected, mostly because each partner's parser had its own code. That finding led to a shared parser with per-partner configuration, which cut the effort noticeably the following quarter. The categories are reviewed once a year.
+
 ### 39.2 Documentation for successors
 
 Architecture overview, ADRs, runbooks, partner configuration guide, data dictionary and a "first week" guide. Kofi tests documentation by asking a new engineer to add a synthetic partner using only the docs.
+
+The new engineer reads the documents without help and writes down every question. Those questions show where the documents assume knowledge that only the current team has. Kofi keeps the documents in the same repository as the code, so a change that alters behaviour must also update the description in the same review.
 
 ### 39.3 Technical debt register
 
 Each shortcut is recorded with its cost, risk and a target date: "Proxy integration uses polling instead of the vendor's push API; risk low; revisit Q3". Debt hidden in code comments is forgotten.
 
+Kofi reviews the register at each planning meeting. Items whose target date has passed are either scheduled, given a new date with a reason or accepted as permanent with the risk recorded. The register also shows the team's total debt at a glance, which helps when arguing for time to pay some of it back.
+
 ### 39.4 Standards evolution
 
 ATT&CK publishes new versions periodically, renaming or deprecating techniques. Lantern stores the ATT&CK version alongside each mapping and runs a migration report when a new version appears. STIX and TAXII versions are tracked similarly; supporting 2.1 does not guarantee compatibility with a future version.
 
+The worked example shows the effect: fourteen mappings needed new technique identifiers, and the migration report found all of them in minutes. Analysts then checked each one by hand, because a renamed technique sometimes splits into two and the right choice depends on the evidence.
+
 ### 39.5 Simplicity
 
 The simplest design that meets requirements is easiest to maintain. Remove unused features found during validation.
+
+Kofi removed the daily digest feature after validation showed nobody read it, along with its template, its scheduled job and its tests. The code base became smaller and the next dependency update touched fewer files. Each feature kept should have a user who would notice its removal. A design that adds options for possible future needs usually leaves code that nobody remembers how to change safely.
 
 ### Practice note — bus factor
 
@@ -2785,21 +2825,31 @@ You will (1) verify non-functional requirements — performance, availability, s
 
 Performance: inject synthetic bundles at 150% of peak rate and verify time-to-enforcement percentiles. Availability: kill one enrichment instance and verify continued service. Security: attempt restricted exports with test accounts lacking permission.
 
+Kofi chose the load figure to cover a busy campaign day with margin. The availability test stops one instance while synthetic traffic continues, and checks that the time-to-enforcement percentiles stay within target. The security tests use accounts created for testing, so their permissions are known exactly, and every attempt is logged.
+
 ### 40.2 Fault injection
 
 Faults are injected in staging: partner stub returns errors, clock skew is introduced, storage fills up. Each test states the expected degraded behaviour and verifies it. Fault injection never targets production or partner systems.
+
+Kofi's fault list came from the failure analysis: each high-ranked failure mode has at least one injection test. The clock skew test in the worked example found a real problem that would otherwise have shown up only in production. Tests restore the normal state afterwards and check that recovery is complete.
 
 ### 40.3 Negative tests for controls
 
 Try to export a RED report to a non-named recipient; try to push an OT rule without approval; try to store a personal social-media profile via the OSINT module. Every attempt must fail and be logged.
 
+Kofi writes the expected log entry for each test before running it, so a test that fails but leaves no log counts as a failure too. The OSINT test uses an invented profile on the local stub, so no real platform is contacted. Logs are checked afterwards.
+
 ### 40.4 Verification report
 
 Summary of procedures executed, passes, failures, deviations, blocked items, open defects with severity and owners, and residual risks. The report goes to the design review in Chapter 45.
 
+Kofi writes the summary for readers who will not open the procedures. It starts with the overall result and the residual risks, then lists failures with their severity. Blocked items are reported separately from passes, because a procedure that could not run tells the reviewers nothing about the requirement. The full procedures and evidence are linked for anyone who wants to check a claim.
+
 ### 40.5 Re-verification
 
 After fixes, failed procedures rerun, and the regression suite runs in full.
+
+Running the full suite, not just the failed procedures, catches fixes that break something else. After the clock fix in the worked example, Kofi reran the skew test and then the whole regression suite. Both passed, and the report records the rerun with its date, the code version and the evidence hashes. A fix that has not been re-verified stays open in the defect list, however confident the engineer who made it may be.
 
 ### Practice note — evidence packaging
 
