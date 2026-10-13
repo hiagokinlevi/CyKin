@@ -1,7 +1,7 @@
 # Cloud and Container Security: Postgraduate Course
 
 - Language: English (`en`); course 151, Postgraduate course (2 years).
-- Editorial state: **draft**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; Four offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
+- Editorial state: **draft**. Chapters 1–12 of 12 have hand-written teaching text; exercises EX001–EX060 have matching worked results with 0–3 rubrics; four offline labs use only the Python 3 standard library on synthetic evidence, and their outputs are embedded from real runs. Independent review and the 300-page A4 verification remain open.
 - Audience: working professionals who lead cloud and container security decisions and must justify them with evidence.
 - Author: [hiagokinlevi](https://github.com/hiagokinlevi). Original text [CC0 1.0](../../../../../LICENSE); cited works keep their rights.
 - Ethical and legal boundary: review and test only cloud accounts, clusters and workloads you are authorised to assess; no exploit code, no payloads, no attack procedures and no instructions for bypassing controls. Misconfigurations are taught from the defender's side using synthetic configurations, logs and data. All evidence, people and organisations are **synthetic** unless a sentence cites a public source.
@@ -48,9 +48,9 @@ Inês Carvalho leads cloud security at the fictional insurer Beacon Mutual and i
 
 ### 1.2 The decision
 
-Inês must choose how Beacon enforces workload security from now on. Option A: built-in Pod Security admission only. Option B: admission plus a policy engine for checks the built-in profiles do not cover, such as image registry and signature rules. Option C: B plus runtime monitoring of container behaviour.
+Inês must choose how Beacon enforces workload security from now on. Option A: built-in Pod Security admission only. Option B: admission plus a policy engine for checks the built-in profiles do not cover, such as image registry and signature rules. Option C: B plus runtime monitoring of container behaviour. Each option answers the audit finding differently: A relies entirely on correct namespace labels, B adds rules for where images come from and whether they are signed, and C adds detection of behaviour after a container starts. Prof. Rao asks Inês to compare them on cost, risk and how well each would survive the next cluster upgrade.
 
-### Lab — Lab — expected costs
+### Lab — expected costs
 
 ```python
 """Expected annual cost of three pod security options (synthetic figures, stdlib only)."""
@@ -73,19 +73,19 @@ C admission + engine + runtime monitoring  control  210k + risk    27k =   237k
 
 ### 1.3 Lab result
 
-With synthetic estimates, A costs 40k a year plus an expected incident cost of 90k (10% × 900k) = 130k. B costs 95k plus 36k = 131k. C costs 210k plus 27k = 237k. A and B are almost equal on expected cost; C costs much more for a small further reduction.
+With synthetic estimates, A costs 40k a year plus an expected incident cost of 90k (10% × 900k) = 130k. B costs 95k plus 36k = 131k. C costs 210k plus 27k = 237k. A and B are almost equal on expected cost; C costs much more for a small further reduction. The figures are estimates, so Inês treats the near-tie between A and B as a reason to look beyond expected cost rather than as a decision. Each number in the lab is listed with its source, including the 900k impact estimate, so the risk committee can see which inputs drive the result.
 
 ### 1.4 Beyond expected cost
 
-A and B tie on numbers, but B also covers registry and signature rules that regulators ask about, and reduces dependence on correct namespace labels. It also gives one policy language for future checks. Expected cost ignores how bad the worst case is and how confident the estimates are.
+A and B tie on numbers, but B also covers registry and signature rules that regulators ask about, and reduces dependence on correct namespace labels. It also gives one policy language for future checks. Expected cost ignores how bad the worst case is and how confident the estimates are. For an insurer regulated on how it protects health and claims data, being able to show registry and signature checks matters beyond the numbers. Inês writes these non-financial reasons into the decision record next to the expected costs, so the committee can see that B was chosen for coverage and confidence, not because the arithmetic favoured it.
 
 ### 1.5 Sensitivity
 
-Inês varies the incident probability for A from 5% to 15%. A's total ranges from 85k to 175k; B's from 113k to 149k. B's narrower range is attractive for a risk-averse insurer.
+Inês varies the incident probability for A from 5% to 15%. A's total ranges from 85k to 175k; B's from 113k to 149k. B's narrower range is attractive for a risk-averse insurer. A's cost depends heavily on how likely an incident is, because its only protection is labels that the audit showed can be lost. B depends less on that probability, since the policy engine adds checks of its own. Inês shows both ranges in one chart for the committee. Prof. Rao asks her to note that the probabilities are judgements, not measured rates, and Inês adds the source of each one to the decision record.
 
 ### 1.6 Recording
 
-The decision record lists options, estimates, sources, sensitivity, the choice (B) and conditions that would reopen it.
+The decision record lists options, estimates, sources, sensitivity, the choice (B) and conditions that would reopen it. Conditions that would reopen the decision include a large change in the incident estimate, a new regulatory requirement for runtime monitoring, or Kubernetes adding registry and signature checks to its built-in admission. Inês also records the range around the 900k impact figure and who produced it, as Prof. Rao asked. The record is stored with the risk committee's minutes and reviewed each year with the risk register.
 
 ### Worked example
 
@@ -123,31 +123,31 @@ You will (1) survey current practice in workload security, identity and posture 
 
 ### 2.1 Workload security
 
-Kubernetes now provides Pod Security admission with Privileged, Baseline and Restricted profiles applied by namespace labels. Many organisations add a policy engine for custom rules. NIST SP 800-190 remains the reference for container risk areas: image, registry, orchestrator, container and host.
+Kubernetes now provides Pod Security admission with Privileged, Baseline and Restricted profiles applied by namespace labels. Many organisations add a policy engine for custom rules. NIST SP 800-190 remains the reference for container risk areas: image, registry, orchestrator, container and host. These areas give Inês a checklist for Beacon's estate: whether images are trusted, whether the registry is controlled, whether the orchestrator enforces safe settings, whether containers run with limited rights, and whether hosts are protected. The audit finding sits in the orchestrator area, where admission decides what may run.
 
 ### 2.2 Identity
 
-Current practice favours federated human access with multi-factor authentication and workload identity for services, issuing short-lived credentials instead of stored keys. NIST SP 800-210 and SP 800-207 provide the access control and zero trust framing.
+Current practice favours federated human access with multi-factor authentication and workload identity for services, issuing short-lived credentials instead of stored keys. NIST SP 800-210 and SP 800-207 provide the access control and zero trust framing. Short-lived credentials mean a leaked token stops working quickly, while a stored key can be used until someone notices and revokes it. Beacon already uses workload identity in two clusters, so Inês knows the approach works in its environment and can be extended to the others. The access control framing helps her explain to engineers why service identities need the same care as human ones.
 
 ### 2.3 Posture management
 
-Organisations continuously compare cloud configuration with benchmarks such as the CIS Benchmarks and control catalogues such as CSA CCM v4, alerting on drift.
+Organisations continuously compare cloud configuration with benchmarks such as the CIS Benchmarks and control catalogues such as CSA CCM v4, alerting on drift. Continuous comparison catches drift between audits, which is exactly what Beacon lacked: Pod Security labels went missing during an upgrade and nobody noticed until the audit. Beacon already checks its cloud accounts this way but not its clusters, which is one of the three gaps the platform team agrees to close. Inês asks for alerts on cluster drift to go to the platform team's queue rather than a shared mailbox.
 
 ### 2.4 Supply chain for images
 
-Signing images, verifying at admission and keeping images in private registries are increasingly common, along with scanning and inventories of components.
+Signing images, verifying at admission and keeping images in private registries are increasingly common, along with scanning and inventories of components. Signing lets the cluster check at admission that an image was built by Beacon's own pipeline and has not been changed since. A private registry limits Beacon's clusters to images its own pipeline has stored. Beacon has no image signing yet, so this becomes one of the top three gaps in the platform team's plan, alongside Pod Security labels everywhere and cluster posture checks. Inês notes which parts the policy engine in option B would enforce.
 
 ### 2.5 Shared responsibility
 
-Provider documentation from AWS, Microsoft and Google stresses that customers own workload and identity configuration; Google's "shared fate" language adds provider responsibility for secure defaults.
+Provider documentation from AWS, Microsoft and Google stresses that customers own workload and identity configuration; Google's "shared fate" language adds provider responsibility for secure defaults. For Beacon, this means the audit finding cannot be passed to the provider: the missing labels were Beacon's configuration. Shared fate suggests providers should make secure defaults easier, but customers still have to choose and keep them. Inês cites each provider's page in the control record, so auditors can see where Beacon's responsibility begins.
 
 ### 2.6 Where Beacon differs
 
-Beacon has workload identity in two clusters, no image signing, posture checks on accounts but not clusters, and incomplete Pod Security labels.
+Beacon has workload identity in two clusters, no image signing, posture checks on accounts but not clusters, and incomplete Pod Security labels. Comparing Beacon with current practice turns a long list of possible improvements into specific gaps. Inês presents the comparison as a table with current practice, Beacon's state and priority, so the platform team can agree which gaps to close first. The table also shows strengths, such as workload identity in two clusters, which can be extended rather than built from nothing.
 
 ### 2.7 Critical view
 
-Practice is shaped by vendors; Inês distinguishes what standards require from what products market.
+Practice is shaped by vendors; Inês distinguishes what standards require from what products market. For example, runtime monitoring is heavily marketed, but no standard Beacon follows requires it for its risk level, which is one reason option C was not chosen. Inês checks each claimed practice against the standard behind it, such as NIST SP 800-190 or CSA CCM v4, before adding it to the gap table. Where only vendor material supports a practice, she labels it as such, so the committee can weigh it accordingly.
 
 ### Learning from peers
 
@@ -189,9 +189,9 @@ You will (1) gather specialist evidence about workload security across clusters;
 
 ### 3.1 Evidence needed
 
-To plan the fix, Inês needs to know exactly which namespaces enforce which profile in each cluster. The audit gave a summary; she needs the detail.
+To plan the fix, Inês needs to know exactly which namespaces enforce which profile in each cluster. The audit gave a summary; she needs the detail. The summary gave a single figure for the estate, which could hide a cluster with no enforcement at all. The fix has to be applied namespace by namespace, so Inês needs to know each namespace's label and whether it actually enforces a profile. She collects this from the clusters directly rather than from documentation, since the audit showed that documentation and reality had drifted apart.
 
-### Lab — Lab — enforcement coverage
+### Lab — enforcement coverage
 
 ```python
 """Pod security enforcement coverage per synthetic cluster after the upgrade (stdlib only)."""
@@ -221,19 +221,19 @@ estate 4/11 = 36%
 
 ### 3.2 Lab result
 
-claims-prod enforces on 2 of 3 namespaces (batch unenforced). quotes-prod enforces on 0 of 2 (quotes and pricing). shared-prod enforces on 2 of 4 (ingress at Baseline, web at Restricted; monitoring is labelled Privileged, which enforces nothing; api unenforced). analytics enforces on 0 of 2. Across the estate, 4 of 11 namespaces enforce Baseline or Restricted, 36%.
+claims-prod enforces on 2 of 3 namespaces (batch unenforced). quotes-prod enforces on 0 of 2 (quotes and pricing). shared-prod enforces on 2 of 4 (ingress at Baseline, web at Restricted; monitoring is labelled Privileged, which enforces nothing; api unenforced). analytics enforces on 0 of 2. Across the estate, 4 of 11 namespaces enforce Baseline or Restricted, 36%. The overall figure hides large differences between clusters: two clusters enforce nothing at all, while claims-prod enforces on most of its namespaces. Inês notes that monitoring counts as labelled but not enforcing, so a label check alone would have overstated coverage at shared-prod.
 
 ### 3.3 Interpreting
 
-Unenforced namespaces include pricing and quotes, which handle customer data. monitoring's Privileged label is deliberate for its node agents but should be confined to that namespace.
+Unenforced namespaces include pricing and quotes, which handle customer data. monitoring's Privileged label is deliberate for its node agents but should be confined to that namespace. Pricing and quotes face the internet and process customer data, so their missing enforcement matters most for policyholders. Confining Privileged to the monitoring namespace means the exception does not spread to other workloads. Inês also notes that analytics enforces nothing while running code written by data scientists, which raises its priority. She marks pricing and quotes as the first namespaces to move to audit mode.
 
 ### 3.4 Evidence quality
 
-The data come from live namespace labels exported on one date; Inês records the export time and checks a sample manually.
+The data come from live namespace labels exported on one date; Inês records the export time and checks a sample manually. Labels can change at any time, so a single export shows the state on one day only. Recording the time lets later exports be compared with this one. The manual sample checks that the export reflects what the API server actually enforces, not just what labels say. Inês keeps the export and her notes with the evidence for the risk committee, so the figure can be traced to its source if questioned.
 
 ### 3.5 Communicating
 
-For the risk committee, a single coverage figure and a list of customer-data namespaces unenforced; for engineers, the full table.
+For the risk committee, a single coverage figure and a list of customer-data namespaces unenforced; for engineers, the full table. The risk committee needs to know how much of the estate is protected and whether customer data is exposed, not the label of every namespace. Engineers need the full namespace table, because each fix is applied one namespace at a time. Inês keeps both versions consistent by producing them from the same export, and she includes the export date on each, so nobody compares figures from different days without knowing it.
 
 ### Behaviour tests
 
@@ -275,27 +275,27 @@ You will (1) assess risk across the cloud estate with uncertainty; (2) consider 
 
 ### 4.1 Risk with uncertainty
 
-For each unenforced namespace, Inês estimates likelihood and impact as ranges, noting the evidence for each. Pricing and quotes hold customer data and face the internet, so their impact range is high; analytics runs user code, so its likelihood range is higher.
+For each unenforced namespace, Inês estimates likelihood and impact as ranges, noting the evidence for each. Pricing and quotes hold customer data and face the internet, so their impact range is high; analytics runs user code, so its likelihood range is higher. Ranges reflect what Inês actually knows: she cannot give an exact probability that an unenforced namespace will be exploited, but she can explain why one is more exposed than another. Writing down the evidence for each range lets others challenge it. The result ranks analytics with quotes-prod as first priority, even though analytics holds less customer data.
 
 ### 4.2 Duties to policyholders
 
-Beacon holds health and claims information. Policyholders cannot protect themselves from configuration gaps; Beacon has a duty of care to fix them promptly and to report breaches honestly.
+Beacon holds health and claims information. Policyholders cannot protect themselves from configuration gaps; Beacon has a duty of care to fix them promptly and to report breaches honestly. A policyholder submitting a claim has no way to check how Beacon configures its clusters, so they rely on Beacon to do it properly. That reliance is why Inês treats unenforced namespaces holding health and claims information as urgent, and why honest reporting matters if something goes wrong. Her plan therefore moves pricing and quotes, which hold customer data, through enforcement first.
 
 ### 4.3 Duties to staff
 
-The audit finding could be framed as someone's failure. Inês frames it as a process gap: the upgrade checklist lacked a step for the PodSecurityPolicy replacement. Blame would discourage people from reporting future problems.
+The audit finding could be framed as someone's failure. Inês frames it as a process gap: the upgrade checklist lacked a step for the PodSecurityPolicy replacement. Blame would discourage people from reporting future problems. Framing the finding as a process gap also points to the fix: a checklist step that confirms admission configuration during upgrades. When the engineer who ran the upgrade worried he would be blamed, Inês showed him the review wording and invited him to co-write the new step. He later led the rollout for two of Beacon's four clusters. Inês notes that the same gap could have occurred with anyone running the upgrade.
 
 ### 4.4 Disclosure
 
-No misuse was detected, so regulatory notification is not required, but Beacon's board and the regulator's supervisory contact are informed in the regular risk report, as Beacon's policy requires for significant control gaps.
+No misuse was detected, so regulatory notification is not required, but Beacon's board and the regulator's supervisory contact are informed in the regular risk report, as Beacon's policy requires for significant control gaps. Informing the board and supervisory contact through the regular report keeps them aware without treating the gap as a breach. The report states what was found, that no misuse was detected, and what is being done. Inês records the disclosure decision with its reasons and the policy it follows, so it can be reviewed if new evidence appears. If later evidence showed misuse, the notification question would be reopened.
 
 ### 4.5 Proportionality
 
-Controls must not stop claims processing; changes are staged to avoid harming policyholders waiting for payments.
+Controls must not stop claims processing; changes are staged to avoid harming policyholders waiting for payments. Claims processing pays policyholders, so a control that blocks a claims job could delay money people are waiting for. Staging changes means each namespace moves through audit and warn modes before enforcement, giving teams time to fix workloads. The legacy claims batch receives a time-limited exception with compensating controls rather than being blocked outright, so payments continue while the rewrite proceeds. Claims-prod is moved last, after the other clusters have shown the staged approach works.
 
 ### 4.6 Recording judgements
 
-Each ethical judgement, such as the disclosure decision, is written with reasons and who made it.
+Each ethical judgement, such as the disclosure decision, is written with reasons and who made it. Writing judgements down makes them open to review, which matters because ethical decisions are easy to make quietly and hard to check later. For the disclosure decision, the record names Inês and Beacon's risk officer, cites the policy for significant control gaps, and explains why notification was not required. Prof. Rao reviews the records as part of the course, asking whether each reason would convince an outsider. The records are kept with the risk committee's minutes, so later reviewers find them alongside the decisions they explain.
 
 ### Reviewing the risk view
 
@@ -337,31 +337,31 @@ You will (1) compare designs for enforcing workload security across clusters; (2
 
 ### 5.1 Alternatives
 
-Design 1: Pod Security admission labels set by each team. Design 2: labels set centrally by GitOps, with a cluster-wide default of Restricted for unlabelled namespaces. Design 3: Design 2 plus a policy engine for extra rules, its policies distributed from one repository.
+Design 1: Pod Security admission labels set by each team. Design 2: labels set centrally by GitOps, with a cluster-wide default of Restricted for unlabelled namespaces. Design 3: Design 2 plus a policy engine for extra rules, its policies distributed from one repository. Each design answers the audit finding in a different way. Design 1 keeps the current approach, which relies on teams remembering labels. Design 2 makes the safe setting the default, so a forgotten label leaves a namespace protected rather than exposed. Design 3 adds the policy engine from option B, so registry and signature rules are enforced from the same central repository.
 
 ### 5.2 Central versus local
 
-Local control lets teams move quickly but recreates the original gap: labels forgotten. Central defaults make the safe choice automatic.
+Local control lets teams move quickly but recreates the original gap: labels forgotten. Central defaults make the safe choice automatic. The audit finding came from exactly this: labels set locally were lost during an upgrade. With central defaults, a new or forgotten namespace starts at Restricted, and teams ask for exceptions when they need less. The quotes team at first preferred local control, but agreed once Inês showed exceptions could be granted within a day. Inês records the quotes team's objection and her answer in the design document.
 
 ### 5.3 Default level
 
-Kubernetes allows configuring cluster-wide defaults for the admission controller. Setting the default to Restricted means a new namespace is protected unless an exception is approved.
+Kubernetes allows configuring cluster-wide defaults for the admission controller. Setting the default to Restricted means a new namespace is protected unless an exception is approved. With a Restricted default, the upgrade gap that caused the audit finding would have left namespaces protected rather than unenforced. Teams that need a weaker profile, such as monitoring, request an exception, which is recorded with its reason. The default is set in the cluster configuration managed by GitOps, so it cannot be changed without review.
 
 ### 5.4 Failure modes
 
-If the policy engine fails, Design 3 can fail closed for production namespaces; built-in admission runs inside the API server and has no separate availability risk.
+If the policy engine fails, Design 3 can fail closed for production namespaces; built-in admission runs inside the API server and has no separate availability risk. Failing closed means that if the policy engine is unavailable, production deployments wait rather than running unchecked. This protects customer data but could delay urgent fixes, so the incident runbook includes a break-glass path. Built-in admission keeps working even if the engine fails, so Pod Security profiles still apply. Inês documents both behaviours, so engineers know what to expect during an outage.
 
 ### 5.5 Exceptions
 
-Monitoring and node agents need Privileged; they get their own namespace with an exception record.
+Monitoring and node agents need Privileged; they get their own namespace with an exception record. Node agents need access to the host to collect data, which Restricted and Baseline do not allow. Placing them in their own namespace keeps the Privileged label away from workloads that do not need it. The exception record names the agents, the reason and the owner, and it is reviewed with the other exceptions. Any new agent must go into the same namespace or justify a separate exception.
 
 ### 5.6 Choice
 
-Design 3, with built-in admission as the foundation and the engine for registry and signature rules.
+Design 3, with built-in admission as the foundation and the engine for registry and signature rules. Design 3 combines the protection of central defaults with the extra checks option B was chosen for. Built-in admission handles Pod Security profiles without a separate service to fail, while the policy engine adds rules the profiles cannot express. Inês records the choice with the alternatives and the reasons in the design document, which the platform team and quotes team both review. The platform team confirms it can operate the engine within the funded engineer's year.
 
 ### 5.7 Rollout
 
-Audit and warn modes first, then enforce.
+Audit and warn modes first, then enforce. Audit mode logs workloads that would break the policy without stopping them, and warn mode tells the deploying engineer. These steps let teams find and fix problems before enforcement begins. Each cluster moves to enforce only when its audit logs show no unexplained violations. Inês tracks each cluster's mode in the plan, so the working group can see progress and spot clusters that stall. Inês sets a minimum of two weeks in warn mode for each cluster, so teams see warnings on their normal deployment cycle before anything is blocked.
 
 ### Testing the design on paper
 
@@ -407,13 +407,13 @@ You will (1) evaluate policy sets on a labelled corpus; (2) measure recall and f
 
 ### 6.1 The question
 
-Before enforcing, Inês compares two policy-engine rule sets on past deployments: P1, a broad set copied from an example, and P2, tuned to Beacon's workloads.
+Before enforcing, Inês compares two policy-engine rule sets on past deployments: P1, a broad set copied from an example, and P2, tuned to Beacon's workloads. Comparing rule sets on past deployments shows how each would behave before it can block real work. An example set copied from documentation may include rules that do not fit Beacon's workloads, while a tuned set may miss risks its authors did not think of. Measuring both on the same deployments gives evidence for the choice instead of opinion.
 
 ### 6.2 Corpus
 
-200 synthetic deployment manifests based on Beacon's recent changes, each labelled risky or not by two reviewers who agreed on the label guide beforehand.
+200 synthetic deployment manifests based on Beacon's recent changes, each labelled risky or not by two reviewers who agreed on the label guide beforehand. Labelling before running the rule sets means the labels cannot be influenced by which set caught what. The two reviewers agreed a guide that defines a risky deployment, such as one running as root or using an unapproved registry. Basing manifests on Beacon's recent changes keeps the corpus close to what developers actually deploy. The label guide and the 200 labels are kept with the evaluation, so later quarters reuse them.
 
-### Lab — Lab — policy evaluation
+### Lab — policy evaluation
 
 ```python
 """Compare two policy sets on a labelled synthetic deployment corpus (stdlib only)."""
@@ -437,19 +437,19 @@ corpus 200 deployments, 24 risky
 
 ### 6.3 Lab result
 
-Of 200 deployments, 24 are risky. P1 catches 18 (recall 0.75) with 10 false rejections (precision 0.64). P2 catches 22 (recall 0.92) with 1 false rejection (precision 0.96). P2 is better on both measures: it covers Beacon's actual risky patterns and avoids rules that misfire on Beacon's normal workloads.
+Of 200 deployments, 24 are risky. P1 catches 18 (recall 0.75) with 10 false rejections (precision 0.64). P2 catches 22 (recall 0.92) with 1 false rejection (precision 0.96). P2 is better on both measures: it covers Beacon's actual risky patterns and avoids rules that misfire on Beacon's normal workloads. The precision difference matters in practice, because each false rejection costs a developer time and weakens trust in the controls. At Beacon's deployment rate, P1's misfiring rules would have caused about 40 false rejections a month, which is why precision weighs as heavily as recall here. Inês records both results with the rule versions, so the quarterly re-evaluation can compare against them.
 
 ### 6.4 Fairness of comparison
 
-Both sets run on the same corpus, labels were fixed before running, and the tuning of P2 used a different sample to avoid fitting the test set.
+Both sets run on the same corpus, labels were fixed before running, and the tuning of P2 used a different sample to avoid fitting the test set. Using a separate sample for tuning prevents P2 from looking good only because it was fitted to the same deployments it was tested on. Fixing labels first stops reviewers adjusting them after seeing results. Inês records the corpus, labels, rule versions and tuning sample, so the comparison can be repeated when rules change. The quarterly re-evaluation uses the same method on newly added manifests from Beacon's recent changes.
 
 ### 6.5 Remaining misses
 
-Two risky deployments pass both sets; both use a host path volume pattern not yet covered, which becomes a new rule.
+Two risky deployments pass both sets; both use a host path volume pattern not yet covered, which becomes a new rule. A miss that both sets share shows a gap in Beacon's rules rather than a weakness of one set. Adding a rule for the host path pattern closes that gap, and Inês checks the new rule against the corpus to confirm it catches both deployments without adding false rejections. She records the host path rule and its corpus result in the policy repository's change log. The new host path rule enters P2 before any cluster moves to enforce mode.
 
 ### 6.6 Decision
 
-Enforce P2, add the new rule, and re-evaluate quarterly.
+Enforce P2, add the new rule, and re-evaluate quarterly. Enforcing P2 gives Beacon the better recall and far fewer false rejections. Adding the host path rule closes the gap both sets shared. Re-evaluating each quarter keeps the rules matched to Beacon's changing workloads, because a rule set tuned today may misfire on new deployment patterns next year. Inês adds the quarterly evaluation to the security team's assurance schedule. The platform team signs off the decision, and the evaluation report goes to the risk committee with the corpus description and both rule sets' results, so the choice can be checked later.
 
 ### Reporting the evaluation
 
@@ -491,31 +491,31 @@ You will (1) integrate cluster security into Beacon's governance; (2) assign own
 
 ### 7.1 Ownership
 
-The platform team owns the central policies; each product team owns its namespace exceptions; the security team owns evaluation and assurance; the risk committee owns acceptance of residual risk.
+The platform team owns the central policies; each product team owns its namespace exceptions; the security team owns evaluation and assurance; the risk committee owns acceptance of residual risk. Splitting ownership this way matches who at Beacon can actually make each kind of change. The platform team controls the central repository and cluster configuration, product teams know why their workloads need exceptions, the security team can test independently, and only the risk committee can accept residual risk on Beacon's behalf. Inês writes the split into the control record, so each owner knows their part.
 
 ### 7.2 Change management
 
-Cluster upgrades now include a checklist step: confirm admission configuration and run the behaviour tests before and after. The change board will not approve an upgrade without the test record.
+Cluster upgrades now include a checklist step: confirm admission configuration and run the behaviour tests before and after. The change board will not approve an upgrade without the test record. The checklist step answers the cause of the audit finding directly: the upgrade that removed PodSecurityPolicy had no step to confirm its replacement was configured. Running behaviour tests before and after shows whether admission still rejects unsafe workloads. In a test run, the step took ten minutes and caught a missing label in a staging upgrade, and the change board made it standard.
 
 ### 7.3 Risk reporting
 
-A monthly metric: share of namespaces enforced at the intended level, open exceptions and their age.
+A monthly metric: share of namespaces enforced at the intended level, open exceptions and their age. The metric shows the risk committee whether enforcement is holding and whether exceptions are being cleared or accumulating. Exception age matters because an old exception may no longer have a valid reason. The platform team produces the figures from live cluster data each month, and Inês adds a short note on any change. Expired exceptions are flagged in red, so they cannot quietly continue past their agreed date. Exception age is shown in bands, so the committee can see at a glance which exceptions are nearing expiry.
 
 ### 7.4 Framework mapping
 
-Beacon maps the controls to CSA CCM v4 domains and NIST SP 800-190 recommendations, so auditors can see coverage without new documents.
+Beacon maps the controls to CSA CCM v4 domains and NIST SP 800-190 recommendations, so auditors can see coverage without new documents. Mapping to existing frameworks avoids writing new documents for auditors who already know CSA CCM and NIST guidance. Each control in the baseline is listed with the domain or recommendation it supports, and the evidence that it works, such as behaviour test records. Inês notes where a framework recommendation is not covered, so gaps are visible. Internal audit reviews the mapping before it is used in any external audit response.
 
 ### 7.5 Shared responsibility
 
-Beacon uses a managed Kubernetes service; the provider secures the control plane, while Beacon configures admission and workloads. The provider's shared responsibility page is cited in the control record.
+Beacon uses a managed Kubernetes service; the provider secures the control plane, while Beacon configures admission and workloads. The provider's shared responsibility page is cited in the control record. Citing the provider's page shows auditors where Beacon's responsibility begins and confirms that the audit finding falls on Beacon's side. If Beacon moved to another provider, the split would need to be checked again, as Inês later explained to an examiner. The control record is reviewed each year with the provider's current documentation, in case the split changes.
 
 ### 7.6 Training
 
-Short guidance for product teams explains levels and how to request exceptions.
+Short guidance for product teams explains levels and how to request exceptions. Product teams do not need to understand every rule, but they need to know what each Pod Security level allows and how to ask for an exception if a workload needs more. The guidance gives examples from Beacon's own workloads, such as why monitoring is Privileged and how the quotes team requested an exception. It is published where teams already look for platform documentation. Product leads review the guidance before it is published, so its examples match their workloads.
 
 ### 7.7 Funding
 
-Option B's budget covers one engineer for a year; ongoing work goes into the platform team's plan.
+Option B's budget covers one engineer for a year; ongoing work goes into the platform team's plan. Funding one engineer for a year covers the rollout across four clusters, the policy engine and the assurance tests. After that, maintaining the baseline becomes part of the platform team's normal work rather than a separate project. Inês records the funding decision and the hand-over date in the plan, so it is clear when the project ends and routine ownership begins. The risk committee approves the hand-over date, after which the platform team's plan carries the work.
 
 ### Auditor walkthrough
 
@@ -557,27 +557,27 @@ You will (1) handle conflicts between enforcement and operations; (2) manage leg
 
 ### 8.1 Legacy batch
 
-Claims batch jobs run as root using an old image. Rewriting takes months. Inês grants a time-limited exception with compensating controls: dedicated nodes, no network access beyond the database, and monitoring.
+Claims batch jobs run as root using an old image. Rewriting takes months. Inês grants a time-limited exception with compensating controls: dedicated nodes, no network access beyond the database, and monitoring. The compensating controls reduce what a compromise of the batch jobs could reach: dedicated nodes keep them away from other workloads, limited network access stops them reaching the internet or other services, and monitoring shows unusual behaviour. The exception has an expiry date tied to the rewrite. When the rewrite was incomplete at expiry, the committee extended it once for three months.
 
 ### 8.2 Vendor agent
 
-A vendor monitoring agent needs privileged access. Inês asks the vendor for documentation on why, limits it to its own namespace, and records the exception with annual review.
+A vendor monitoring agent needs privileged access. Inês asks the vendor for documentation on why, limits it to its own namespace, and records the exception with annual review. Asking for documentation turns a vendor's request into evidence that can be reviewed. If the vendor cannot explain why privileged access is needed, that is a reason to question the agent itself. Keeping it in its own namespace limits the effect of a compromise. The annual review checks whether a newer version of the agent needs less access, which some vendors introduce over time.
 
 ### 8.3 Incident pressure
 
-During a claims outage, an engineer wants to disable enforcement to deploy a debug pod. The runbook gives a break-glass path: a pre-approved debug namespace at Baseline, logged and removed afterwards.
+During a claims outage, an engineer wants to disable enforcement to deploy a debug pod. The runbook gives a break-glass path: a pre-approved debug namespace at Baseline, logged and removed afterwards. A break-glass path lets engineers act quickly during an outage without disabling the controls that protect customer data. The debug namespace is approved in advance, runs at Baseline, and is logged, so its use can be reviewed afterwards. Removing it after the incident ensures it does not become a permanent gap. The runbook names who may use the path and how its use is reported.
 
 ### 8.4 Analytics notebooks
 
-Analysts need flexible environments. Restricted applies, and common needs are met by preapproved images.
+Analysts need flexible environments. Restricted applies, and common needs are met by preapproved images. Data scientists often install packages and run code that platform teams cannot predict, which is why analytics was a first priority. Pre-approved images give analysts their common notebook tools without needing an exception from Restricted. When an analyst needs something not covered, they request a new image, which is reviewed and added for everyone. Inês checks with the analytics lead that the images cover most daily work, so Restricted does not push analysts towards workarounds.
 
 ### 8.5 Exceptions register
 
-Each exception has an owner, reason, compensating controls and expiry date.
+Each exception has an owner, reason, compensating controls and expiry date. Recording all four fields turns an exception into a decision others can check. The owner is the product team that needs the exception, the reason explains why the standard profile does not fit, compensating controls show how risk is reduced, and the expiry forces a fresh decision. The register lives in the central repository, so it is reviewed with policy changes and visible to auditors. Inês checks the register against live cluster labels each month.
 
 ### 8.6 Expiry
 
-Expired exceptions are flagged in the monthly metric.
+Expired exceptions are flagged in the monthly metric. Flagging expired exceptions in the monthly metric means the risk committee sees them, not just the security team. The owner must renew the exception with a fresh reason, close it, or explain the delay. The claims batch exception was flagged at expiry, and the committee extended it once while recording that any further extension requires the risk committee. The metric is designed so that every expiry reaches the committee in the month it falls due. Owners receive a reminder a month before each expiry date.
 
 ### Patterns across cases
 
@@ -623,13 +623,13 @@ You will (1) lead the programme across teams; (2) provide assurance with measure
 
 ### 9.1 Leadership
 
-Inês chairs a fortnightly working group with platform and product leads, keeping a visible plan and celebrating milestones.
+Inês chairs a fortnightly working group with platform and product leads, keeping a visible plan and celebrating milestones. A fortnightly group keeps the platform and product leads talking, so problems such as a team resisting enforcement are raised early. The visible plan shows which clusters have moved through audit, warn and enforce, and celebrating milestones, such as the first cluster fully enforced, keeps momentum during a long rollout. When one product lead resisted tests in Q2, the group helped Inês find a compromise.
 
 ### 9.2 Assurance
 
-Each quarter the security team runs behaviour tests on 15 sample namespaces, measures exception age and counts exceptions.
+Each quarter the security team runs behaviour tests on 15 sample namespaces, measures exception age and counts exceptions. Behaviour tests show whether admission actually rejects unsafe workloads, not just whether labels are set. Sampling 15 namespaces each quarter keeps the work manageable while covering every cluster. Exception age and count show whether exceptions are being cleared. Inês designs the tests to run in staging mirrors where possible, with one production check, after a product lead raised concerns about disruption. Results go to the working group and the risk committee.
 
-### Lab — Lab — quarterly assurance
+### Lab — quarterly assurance
 
 ```python
 """Quarterly assurance indicators for the cloud estate (synthetic, stdlib only)."""
@@ -649,19 +649,19 @@ Q3: enforced 15/15 (100%), median days risky config live 12, open exceptions 4
 
 ### 9.3 Lab result
 
-Q1: 6/15 namespaces pass (40%), mean exception age 61 days, 21 exceptions. Q2: 11/15 (73%), 38 days, 9. Q3: 15/15 (100%), 12 days, 4. Improvement is steady; the sample is small, so the board report gives counts and notes the sampling method.
+Q1: 6/15 namespaces pass (40%), mean exception age 61 days, 21 exceptions. Q2: 11/15 (73%), 38 days, 9. Q3: 15/15 (100%), 12 days, 4. Improvement is steady; the sample is small, so the board report gives counts and notes the sampling method. The improvement follows the rollout: as clusters moved to enforce, more sampled namespaces passed, and exceptions fell as teams fixed workloads. Inês reports how the 15 namespaces were sampled beside each quarter's figure. With 15 namespaces per quarter, one failing namespace changes the pass rate by about seven points, so Inês reports counts alongside each percentage and warns the board against reading small changes as trends. The Q3 result is checked independently by internal audit before it is presented as final.
 
 ### 9.4 Independent check
 
-Internal audit repeats the Q3 tests on a different sample and finds the same result.
+Internal audit repeats the Q3 tests on a different sample and finds the same result. Using a different sample tests whether the security team's result depended on which namespaces it chose. Internal audit works independently of the platform and security teams, so its result adds confidence for the board and regulator. Internal audit's report is filed with the security team's Q3 records, so both samples sit together. Inês notes that agreement on one quarter does not guarantee future results, which is why assurance continues. Internal audit's report names the namespaces it tested, so the two samples can be compared.
 
 ### 9.5 Board report
 
-A one-page summary: what happened, what changed, measured results, remaining exceptions.
+A one-page summary: what happened, what changed, measured results, remaining exceptions. The board needs to know whether the audit finding is closed and what risk remains, not technical detail. Inês keeps the summary to one page, reports the assurance figures as counts with the sample size, and lists remaining exceptions with their owners and expiry dates. The report is reviewed by Beacon's risk officer before it goes to the board. Prof. Rao reviews the draft as an example of reporting for a non-technical audience, and Inês shortens the technical terms after her comments.
 
 ### 9.6 Sustaining
 
-Assurance continues quarterly; results feed the risk register.
+Assurance continues quarterly; results feed the risk register. Quarterly assurance keeps checking that controls still work after changes such as cluster upgrades, which caused the original gap. Results feed the risk register, so a falling pass rate raises the risk rating and draws the committee's attention. The security team owns the tests, and their schedule is written into the control record. Inês hands the test scripts and method to the security team at the end of the project. The first post-project quarter is tested by the security team alone.
 
 ### Reading the trend carefully
 
@@ -705,27 +705,27 @@ You will (1) read research on cloud security critically; (2) judge relevance to 
 
 ### 10.1 Choosing papers
 
-Inês reads Burns et al. (2016) on Borg, Omega and Kubernetes, Shu et al. (2017) on Docker Hub image vulnerabilities and Rahman et al. (2019) on security smells in infrastructure as code.
+Inês reads Burns et al. (2016) on Borg, Omega and Kubernetes, Shu et al. (2017) on Docker Hub image vulnerabilities and Rahman et al. (2019) on security smells in infrastructure as code. Each paper covers a different part of Inês's work: Burns et al. explain why Kubernetes is designed the way it is, Shu et al. measure risks in public images that Beacon's registry rules address, and Rahman et al. describe mistakes in infrastructure code like Beacon's GitOps repository. She reads each for method and limits, not just conclusions.
 
 ### 10.2 Burns 2016
 
-Explains the design history of cluster managers. Useful context for why namespaces and admission exist; not a security evaluation.
+Explains the design history of cluster managers. Useful context for why namespaces and admission exist; not a security evaluation. The paper helps Inês explain to the risk committee why admission control exists and why namespaces are the unit Pod Security works on. She does not cite it as evidence that any control works, because it describes design, not security outcomes. Her notes record what the paper supports and what it does not, so she cites it only for design history in the final report.
 
 ### 10.3 Shu 2017
 
-Measured vulnerabilities in public images. Supports Beacon's registry rules; the data is several years old, so figures should not be quoted as current.
+Measured vulnerabilities in public images. Supports Beacon's registry rules; the data is several years old, so figures should not be quoted as current. Shu et al.'s findings support the policy engine's rule that images must come from Beacon's private registry. Because public images change constantly, Inês does not repeat the paper's percentages as current figures. When a colleague quoted them in a slide as today's numbers, she suggested citing them as historical and adding Beacon's own scan data instead.
 
 ### 10.4 Rahman 2019
 
-Identified recurring security smells such as hard-coded secrets in scripts. Supports scanning Beacon's GitOps repository.
+Identified recurring security smells such as hard-coded secrets in scripts. Supports scanning Beacon's GitOps repository. Hard-coded secrets in Beacon's GitOps repository could expose credentials to anyone who can read it. Rahman et al.'s categories give Inês a checklist for scanning the repository. The paper studied scripts from open-source projects, so Inês checks whether its smells appear in Beacon's own code before relying on it. She records which smells the scan found, if any, with the date. Inês asks the platform team to add a secrets scan to the GitOps pipeline, so new commits are checked automatically.
 
 ### 10.5 Standards
 
-NIST SP 800-190 and SP 800-207 give frameworks; they are guidance, not evidence of effectiveness.
+NIST SP 800-190 and SP 800-207 give frameworks; they are guidance, not evidence of effectiveness. Inês uses the standards to organise the baseline and to explain it to auditors, but she does not claim that following them proves Beacon is secure. Evidence that controls work comes from Beacon's own behaviour tests and the policy evaluation. Her final report keeps the two kinds of source apart, citing standards for structure and her own measurements for results. Prof. Rao asks her to keep this distinction in her viva answers, since examiners may challenge claims that standards prove effectiveness.
 
 ### 10.6 Critique
 
-For each, Inês notes method, data age, and whether results transfer to a managed service.
+For each, Inês notes method, data age, and whether results transfer to a managed service. Method shows how much weight a result can bear, data age shows whether it still applies, and transfer shows whether it fits Beacon's managed Kubernetes service. A study of self-managed clusters may not apply where the provider runs the control plane. Inês records her notes for each paper in a short table, which appears in the final report's literature chapter. Prof. Rao checks the table against the papers themselves and queries one data-age entry.
 
 ### A structured critique template
 
@@ -769,27 +769,27 @@ You will (1) plan and complete a substantial project; (2) define scope, method a
 
 ### 11.1 Project
 
-Inês's final project: a reusable cluster security baseline for Beacon, with central labels, policy engine rules, upgrade checklist and assurance tests.
+Inês's final project: a reusable cluster security baseline for Beacon, with central labels, policy engine rules, upgrade checklist and assurance tests. Making the baseline reusable means Beacon can apply it to any new cluster, rather than repeating the analysis each time. It brings together the central labels and Restricted default, the P2 rules with the host path addition, the upgrade checklist step and the quarterly behaviour tests. Prof. Rao approves the project scope as the course's final assessment. The baseline is stored in the central repository as one versioned package.
 
 ### 11.2 Scope
 
-Four clusters; excludes provider control plane and developer laptops.
+Four clusters; excludes provider control plane and developer laptops. Limiting the scope to four clusters keeps the project achievable within the course and covers every cluster in the audit finding. The provider's control plane is excluded because the provider secures it, while developer laptops are a separate risk with different controls. Inês records both exclusions with their reasons in the project plan, so examiners can see the boundaries were chosen deliberately. Analytics stays in scope despite holding less customer data, because arbitrary code runs there.
 
 ### 11.3 Method
 
-Build in staging, evaluate on the corpus, roll out by cluster in audit, warn, enforce order.
+Build in staging, evaluate on the corpus, roll out by cluster in audit, warn, enforce order. Building in staging first means problems are found before production is affected. Evaluating on the 200-manifest corpus tests the rules before any deployment can be blocked. Rolling out cluster by cluster through audit, warn and enforce gives each team time to fix workloads and lets the working group learn from early clusters before later ones. Inês records each cluster's dates in audit, warn and enforce mode, with any problems found. Claims-prod goes last because its legacy batch jobs need the time-limited exception before enforcement begins.
 
 ### 11.4 Evaluation
 
-Success means P2-level recall on the corpus, all four clusters enforced, and quarterly assurance at least 90%.
+Success means P2-level recall on the corpus, all four clusters enforced, and quarterly assurance at least 90%. Each of the three criteria tests a different part of the baseline. Recall on the corpus checks the rules, enforcement on all four clusters checks the rollout, and assurance of at least 90% checks that controls keep working over time. The criteria were set before rollout, so they could not be adjusted to match results. Inês reports each criterion against the evidence that shows whether it was met. Prof. Rao approved the criteria with the scope, so the examiners can check them against the original plan.
 
 ### 11.5 Outcome
 
-All criteria met by Q3; two exceptions remain with expiry dates.
+All criteria met by Q3; four exceptions remain with expiry dates. The evidence comes from the corpus evaluation, the cluster configuration and the Q3 behaviour tests, repeated by internal audit on a different sample. The four remaining exceptions are recorded in the register with owners, compensating controls and expiry dates, and they are reported to the risk committee each month. Inês's results table lists which criterion each piece of evidence supports, so examiners can check them one by one. Internal audit's repeat of the Q3 tests on a different sample supports the assurance criterion, and the remaining exceptions include the claims batch jobs awaiting their rewrite.
 
 ### 11.6 Presentation
 
-She presents to Fenwick examiners and Beacon's risk committee, with limits stated.
+She presents to Fenwick examiners and Beacon's risk committee, with limits stated. The examiners assess the method and evidence, while the risk committee decides whether the baseline is ready to become Beacon's standard. Stating limits, such as the small assurance sample and estimates behind the cost comparison, lets both audiences judge the results fairly. An examiner asked what would happen if Beacon moved to a second provider, and Inês explained which parts of the baseline would need re-checking. The risk committee's questions focus on the remaining exceptions and when each will close.
 
 ### Project timeline
 
@@ -837,23 +837,23 @@ You will (1) review the course; (2) transfer methods to other contexts; (3) plan
 
 ### 12.1 Review
 
-The course moved from an audit finding to a decision, evidence, design, evaluation, integration, difficult cases, assurance, research and a project.
+The course moved from an audit finding to a decision, evidence, design, evaluation, integration, difficult cases, assurance, research and a project. Each step of Inês's work at Beacon built on the one before it. The audit finding led to a decision between options, which needed evidence about enforcement. The evidence shaped the design, which was evaluated before enforcement. Integration made the design part of Beacon's routines, difficult cases tested its limits, and assurance showed whether it worked. Research tested her choices against published work, and the final project turned them into a reusable baseline.
 
 ### 12.2 Transfer
 
-The same pattern applies to other cloud controls: storage access, identity, network policy.
+The same pattern applies to other cloud controls: storage access, identity, network policy. For storage access, the same steps would apply: measure which buckets have the intended settings, choose between local and central control, evaluate rules before enforcement, and test that controls survive change. Inês notes that the pattern is not specific to Kubernetes, which is why she plans to use it for identity permissions next. Her final report includes the pattern as a short checklist. For network policy, the same idea applies: deny by default and grant exceptions centrally.
 
 ### 12.3 Next steps
 
-Inês plans to apply the method to identity permissions next.
+Inês plans to apply the method to identity permissions next. Identity permissions at Beacon share the same risk as admission: settings that drift without anyone noticing. Inês plans to start by measuring which roles have more permissions than they use, then choose a design and evaluate it before enforcement, as she did for workloads. She discusses the plan with the platform team and the risk committee before starting. The identity work would reuse the decision record format, the evaluation method and the quarterly assurance routine, with identity owners taking the places the platform and product teams held here.
 
 ### 12.4 Learning
 
-She keeps reading standards updates and Kubernetes release notes for removed features.
+She keeps reading standards updates and Kubernetes release notes for removed features. The audit finding came from a removed feature: PodSecurityPolicy was dropped and its replacement not configured. Reading release notes for removed or changed features helps Inês spot similar risks before an upgrade. She shares relevant changes with the platform team, so the upgrade checklist can be updated in advance. Standards updates, such as new CSA CCM versions, may also change the framework mapping. She checks release notes before each planned Beacon cluster upgrade, so any removed feature reaches the checklist in advance.
 
 ### 12.5 Sharing
 
-She writes an anonymised case for the practitioners' group.
+She writes an anonymised case for the practitioners' group. The case removes Beacon's name and any details that could identify it, while keeping the decision, evidence and lessons. Other practitioners can use it to plan their own baselines. Inês asks Beacon's risk officer to approve the anonymised version before sharing, and she cites only public sources in it. The case ends with her answer to a peer: check that controls survive change. The practitioners' group publishes it with the upgrade checklist step as an example others can adapt to their own clusters.
 
 ### Self-assessment
 
