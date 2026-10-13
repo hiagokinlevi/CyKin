@@ -301,8 +301,8 @@ comp = [(b, round(b - 0.3 + random.gauss(0, 0.9), 2)) for b, _ in comp]
 def did(a, c):
     return statistics.mean(y - x for x, y in a) - statistics.mean(y - x for x, y in c)
 est = did(adopt, comp)
-print(f"adopting: {statistics.mean(x for x,_ in adopt):.1f} -> {statistics.mean(y for _,y in adopt):.1f}")
-print(f"comparison: {statistics.mean(x for x,_ in comp):.1f} -> {statistics.mean(y for _,y in comp):.1f}")
+print(f"adopting: {statistics.mean(x for x,_ in adopt):.2f} -> {statistics.mean(y for _,y in adopt):.2f}")
+print(f"comparison: {statistics.mean(x for x,_ in comp):.2f} -> {statistics.mean(y for _,y in comp):.2f}")
 print(f"DiD estimate: {est:.2f} per 100 changes")
 allt = adopt + comp; hits = 0; R = 5000
 for _ in range(R):
@@ -314,15 +314,15 @@ print(f"permutation share as extreme: {hits / R:.3f}")
 Run with `python3 lab_did.py`. Verified output:
 
 ```text
-adopting: 3.7 -> 2.8
-comparison: 3.8 -> 3.6
+adopting: 3.75 -> 2.80
+comparison: 3.83 -> 3.65
 DiD estimate: -0.77 per 100 changes
 permutation share as extreme: 0.022
 ```
 
 ### 5.3 Reading the estimate
 
-On the synthetic data, adopting teams fell from 3.7 to 2.8 defects per hundred changes while comparison teams fell from 3.8 to 3.6. The difference-in-differences is about minus 0.8, roughly a fifth fewer defects relative to baseline. The permutation check shows a difference this large in about two per cent of shuffles. Amara reports the estimate with that uncertainty and notes it is slightly smaller than the quarter Tessaro hoped for. She avoids the word proves and writes that the data are consistent with a modest reduction under the stated assumptions.
+On the synthetic data, adopting teams fell from 3.75 to 2.80 defects per hundred changes (a change of -0.95) while comparison teams fell from 3.83 to 3.65 (-0.18). The difference-in-differences is -0.77, about minus 0.8, roughly a fifth fewer defects relative to baseline. The permutation check shows a difference this large in about two per cent of shuffles. Amara reports the estimate with that uncertainty and notes it is slightly smaller than the quarter Tessaro hoped for. She avoids the word proves and writes that the data are consistent with a modest reduction under the stated assumptions.
 
 ### 5.4 Independent validation
 
