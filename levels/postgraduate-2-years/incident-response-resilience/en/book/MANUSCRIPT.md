@@ -67,17 +67,35 @@ Framing is the specialist's main lever. A badly framed decision ("shut it down o
 
 Some uncertainty shrinks with effort before the deadline — whether a log shows outbound transfer, whether a backup is intact. Some does not — the attacker's next move, whether a regulator will view a choice as reasonable. Spend investigative effort on reducible uncertainty that could change the decision (the **value of information**, introduced at bachelor's level), and decide through the rest with explicit assumptions. A useful discipline is to write: "If we learn X by 14:00, we choose A; otherwise B."
 
+Section one point four develops advanced security decision-making with a Calder Group note the specialist can demo offline.
+
 ### 1.5 Decision quality versus outcome quality
 
 A good decision can have a bad outcome and vice versa. Judge decisions by the information, options and reasoning available at the time, not by what happened. This is not an excuse: it is the only fair basis for learning, and it is how a well-prepared decision record protects the people who made the decision. Hindsight bias (Fischhoff, 1975) will otherwise rewrite history.
+
+Section one point five develops advanced security decision-making with a Calder Group note the specialist can demo offline.
+
+Under section one point five, the incident commander expects advanced claims to carry owners and dates.
 
 ### 1.6 Residual risk and acceptance
 
 Every option leaves **residual risk**. The owner must accept it explicitly, in writing, with its expected duration and the conditions under which it will be re-examined. Unaccepted residual risk is a common finding in post-incident and audit reviews.
 
+Section one point six develops advanced security decision-making with a Calder Group note the specialist can demo offline.
+
+Under section one point six, the incident commander expects advanced claims to carry owners and dates.
+
+Section one point six treats advanced security decision-making as testable only when evidence and ticket IDs are recorded.
+
 ### 1.7 Revisit conditions
 
 Decisions under uncertainty must state **revisit triggers**: new facts (evidence of exfiltration), elapsed time (every 6 hours), threshold breaches (customer complaints above a level), or stakeholder events (regulator inquiry). Triggers prevent both stubbornness and churn.
+
+Section one point seven develops advanced security decision-making with a Calder Group note the specialist can demo offline.
+
+Under section one point seven, the incident commander expects advanced claims to carry owners and dates.
+
+Section one point seven treats advanced security decision-making as testable only when evidence and ticket IDs are recorded.
 
 ### 1.8 Worked example and lab (synthetic): the order API during a critical period
 
@@ -132,6 +150,10 @@ Interpretation: O4 is best in 9 of 15 combinations, including every combination 
 **Decision record (excerpt).** Decision: O4. Owner: Group incident commander (deputy named). Time: 10:25. Information used: API gateway logs 00:00–09:40; partner list; board appetite statement v3. Key assumptions: payment data not reachable via this API (confirmed by architecture review 2025, re-checked today with the API owner); allow-list covers all legitimate partners (owner confirmation 10:15). Residual risk accepted: records retrieved before rotation may already be exposed; under investigation. Revisit triggers: any bulk retrieval after rotation (→ O3 immediately, pre-approved); confirmation of overnight extraction (→ privacy/legal notification workflow); every 6 hours.
 
 ### 1.9 Common errors and limits
+Section one point nine develops advanced security decision-making with a Calder Group note the specialist can demo offline.
+
+Under section one point nine, the incident commander expects advanced claims to carry owners and dates.
+
 
 - Binary framing that omits staged or partial options.
 - Appetite statements that never become operational thresholds.
@@ -181,25 +203,45 @@ Large incidents fail more often from coordination than from technical ignorance.
 
 The **incident commander** owns the incident: sets objectives, approves the action plan, makes or delegates decisions within pre-approved thresholds (Chapter 1) and escalates the rest. The commander is not the best technician; doing hands-on analysis is a common failure because it consumes attention needed for coordination. A **deputy** shares load and provides continuity.
 
+Section two point two develops current practice in enterprise incident with a Calder Group note the specialist can demo offline.
+
+Under section two point two, the incident commander expects current claims to carry owners and dates.
+
 ### 2.3 Functional sections
 
 A typical enterprise cyber structure: **Operations** (technical investigation, containment, recovery — often split into workstreams), **Planning** (situation status, timeline, action plan, documentation), **Communications** (internal, customers, media, regulators via legal), **Legal and privacy** (advice, notification analysis, privilege), **Business liaison** (division leaders, service owners), and **Logistics** (people, tools, external retainer firms, rest rotations). In smaller incidents one person may hold several functions; the roles still exist.
+
+Section two point three develops current practice in enterprise incident with a Calder Group note the specialist can demo offline.
 
 ### 2.4 Conflicting reporting lines
 
 In enterprises, people in the incident report to divisional managers outside it. Unity of command during the incident must be agreed in policy: for the incident's duration, participants take incident tasking from the incident structure, while their line managers retain HR authority. Divisional leaders join as liaisons, not as parallel commanders. Without this agreement, the most senior person in the room becomes the de facto commander regardless of competence.
 
+Section two point four develops current practice in enterprise incident with a Calder Group note the specialist can demo offline.
+
 ### 2.5 Information cadence
 
 Set a **battle rhythm**: fixed times for situation updates (for example every 2 hours for the core team, every 6 for executives), a standard situation report format (facts, assessment, actions, decisions needed, next update), and a single source of truth (case record or shared document) that Planning maintains. Ad hoc requests for updates are redirected to the next scheduled update unless a decision is pending.
+
+Section two point five develops current practice in enterprise incident with a Calder Group note the specialist can demo offline.
 
 ### 2.6 Delegation and thresholds
 
 Delegate decisions with explicit bounds: "Operations lead may isolate any non-production host; production isolation requires commander approval unless the Chapter 1 threshold applies." Record delegations so that responsibility is clear in review.
 
+Section two point six develops current practice in enterprise incident with a Calder Group note the specialist can demo offline.
+
+Under section two point six, the incident commander expects current claims to carry owners and dates.
+
+Section two point six treats current practice in enterprise incident as testable only when evidence and ticket IDs are recorded.
+
 ### 2.7 Handoffs and fatigue
 
 Long incidents need **operational periods** (for example 12 hours) with formal handoffs. A handoff includes: current objectives, situation summary, active workstreams and owners, pending decisions, recent decisions and their reasons, risks and watch items, and contacts. The incoming commander reads back the key points. Fatigue degrades judgement; schedule rest deliberately, including for leaders.
+
+Section two point seven develops current practice in enterprise incident with a Calder Group note the specialist can demo offline.
+
+Under section two point seven, the incident commander expects current claims to carry owners and dates.
 
 ### 2.8 Worked example (synthetic): a multi-division charter
 
@@ -217,6 +259,12 @@ Charter (excerpt):
 Stress test — shift change at 19:00 during active containment: the incoming commander finds a pending decision (whether to force-reset all Logistics passwords) without the context of why it was deferred. Fix: pending decisions in the handoff must include options, the reason for deferral and the deadline. The test also reveals that the deputy roster lacks coverage for weekends in one region — a logistics action.
 
 ### 2.9 Common errors and limits
+Section two point nine develops current practice in enterprise incident with a Calder Group note the specialist can demo offline.
+
+Under section two point nine, the incident commander expects current claims to carry owners and dates.
+
+Section two point nine treats current practice in enterprise incident as testable only when evidence and ticket IDs are recorded.
+
 
 - The commander doing technical work.
 - Divisional leaders acting as parallel commanders.
@@ -262,29 +310,55 @@ You will be able to (1) read forensic, cloud-audit and identity-trace reports cr
 
 At this level, much evidence reaches you as reports written by others: internal forensic analysts, external retained firms, cloud providers, vendors. A report is a chain of claims built on artefacts, tools and interpretation. Reading it well means separating (a) the artefacts examined, (b) the methods and tools (with versions), (c) the observations, (d) the interpretations, and (e) the stated limitations — and noticing when one is missing.
 
+Section three point one develops specialist evidence in complex investigations with a Calder Group note the specialist can demo offline.
+
 ### 3.2 Forensic reports
 
 A host forensic report should state the acquisition method (live response, disk image, memory capture), hashes, the timeline of artefacts (process execution, file creation, registry or configuration changes), interpretation (for example "initial execution via a malicious document at 10:02") and limits (timestamp reliability, anti-forensics, missing logs). NIST SP 800-86 describes the integration of forensic techniques into response; standards such as ISO/IEC 27037 cover identification, collection, acquisition and preservation of digital evidence.
+
+Section three point two develops specialist evidence in complex investigations with a Calder Group note the specialist can demo offline.
 
 ### 3.3 Cloud audit reports
 
 Cloud evidence comes from provider logs whose completeness depends on configuration and licence (bachelor's Chapter 31 showed the effect of missing data-read logs). A cloud report should state which log types were available, their retention, any gaps, and the query logic used. Provider statements about their own systems are evidence too, but with limited verifiability.
 
+Section three point three develops specialist evidence in complex investigations with a Calder Group note the specialist can demo offline.
+
+Under section three point three, the incident commander expects specialist claims to carry owners and dates.
+
 ### 3.4 Identity traces
 
 Identity investigations follow principals across IdP sign-ins, token issuance, application sessions and privileged operations. Common pitfalls: assuming a sign-in location is the user's location; ignoring non-interactive token refreshes; confusing the account that authenticated with the service that acted on its behalf.
+
+Section three point four develops specialist evidence in complex investigations with a Calder Group note the specialist can demo offline.
+
+Under section three point four, the incident commander expects specialist claims to carry owners and dates.
+
+Section three point four treats specialist evidence in complex investigations as testable only when evidence and ticket IDs are recorded.
 
 ### 3.5 Expert limitation
 
 Experts are fallible and have incentives: an external firm may be cautious to limit liability; an internal team may be reluctant to find gaps in its own controls; a vendor may minimize its product's role. Ask each expert: *What did you examine? What did you not examine? What would change your conclusion? How confident are you, and why?*
 
+Section three point five develops specialist evidence in complex investigations with a Calder Group note the specialist can demo offline.
+
+Under section three point five, the incident commander expects specialist claims to carry owners and dates.
+
 ### 3.6 Reconciling disagreements
 
 When reports disagree, tabulate: claim, report A's position and basis, report B's position and basis, what explains the difference (different artefacts, different time windows, different assumptions), and what evidence would discriminate. Often the disagreement dissolves into "they examined different things".
 
+Section three point six develops specialist evidence in complex investigations with a Calder Group note the specialist can demo offline.
+
+Under section three point six, the incident commander expects specialist claims to carry owners and dates.
+
+Section three point six treats specialist evidence in complex investigations as testable only when evidence and ticket IDs are recorded.
+
 ### 3.7 Confidence statements
 
 A confidence statement gives the conclusion, the confidence level on a defined scale, the main supporting evidence, the main alternative and why it is less likely, and what would change the assessment. Analytic standards in intelligence (for example the US Intelligence Community Directive 203) require such expressions of confidence and the distinction between assumptions and judgements; the same discipline is useful in incident reports.
+
+Section three point seven develops specialist evidence in complex investigations with a Calder Group note the specialist can demo offline.
 
 ### 3.8 Worked example (synthetic): initial access disputed
 
@@ -307,6 +381,12 @@ Possible synthesis after responses (fictional): the 01:12 VPN session authentica
 Confidence statement: "We assess with moderate confidence that initial access occurred on 28 May through phishing of a cloud administrator. Supporting evidence: IdP sign-ins from an anonymizing service, an access key created minutes later, and a password reset of the account later used on the VPN. The alternative — an exploited VPN vulnerability on 3 June — is less likely because the VPN session authenticated with valid credentials and no exploit signature was found. Our assessment would change if an earlier compromise of the cloud admin's device were found or if the VPN vendor confirms an authentication-bypass vulnerability affecting our version."
 
 ### 3.9 Common errors and limits
+Section three point nine develops specialist evidence in complex investigations with a Calder Group note the specialist can demo offline.
+
+Under section three point nine, the incident commander expects specialist claims to carry owners and dates.
+
+Section three point nine treats specialist evidence in complex investigations as testable only when evidence and ticket IDs are recorded.
+
 
 - Accepting the more authoritative-sounding report without checking what it examined.
 - Forcing a single narrative before discriminating evidence is obtained.
@@ -351,6 +431,10 @@ You will be able to (1) apply proportionality, necessity and least intrusion to 
 
 Specialists receive requests from executives that practitioners never see: "monitor everyone in finance", "read the union representative's email", "keep all logs forever". They also hold the technical means to comply. Ethical competence here is the ability to say "not like that — here is a way that answers your real question" and to document why.
 
+Section four point one develops advanced risk and ethics with a Calder Group note the specialist can demo offline.
+
+Under section four point one, the incident commander expects advanced claims to carry owners and dates.
+
 ### 4.2 Proportionality and necessity
 
 Data-protection law and human-rights frameworks commonly test interferences with privacy by asking whether they pursue a **legitimate aim**, are **necessary** (no less intrusive means would work) and **proportionate** (the intrusion is balanced against the benefit). The European Data Protection Board's and earlier Article 29 Working Party's guidance on employee monitoring (for example Opinion 2/2017 on data processing at work) applies these ideas to workplace monitoring: blanket, continuous monitoring is rarely proportionate; targeted, time-limited, transparent measures are more defensible. Jurisdictions differ; counsel decides legality, but the specialist designs options that can pass the test.
@@ -359,17 +443,39 @@ Data-protection law and human-rights frameworks commonly test interferences with
 
 Responders owe duties to the employer (protect assets), to employees (fair treatment, privacy), to customers and data subjects (protect their data, be honest about breaches), and to the law (preservation, cooperation, non-interference). These conflict: protecting the organization's reputation can tempt under-reporting; protecting assets can tempt over-monitoring. Name the duties in the decision record and show how the plan honours each.
 
+Section four point three develops advanced risk and ethics with a Calder Group note the specialist can demo offline.
+
+Under section four point three, the incident commander expects advanced claims to carry owners and dates.
+
 ### 4.4 Confidentiality and privilege
 
 Investigations may involve information subject to legal privilege, trade secrets or third-party confidentiality. Route such matters through counsel; structure engagement of external investigators so that confidentiality is protected (in some jurisdictions, through counsel), without using privilege to hide facts that must be disclosed.
+
+Section four point four develops advanced risk and ethics with a Calder Group note the specialist can demo offline.
+
+Under section four point four, the incident commander expects advanced claims to carry owners and dates.
+
+Section four point four treats advanced risk and ethics as testable only when evidence and ticket IDs are recorded.
 
 ### 4.5 Consent and its limits
 
 In employment, consent is rarely "freely given" because of the power imbalance; data-protection authorities generally discourage relying on employee consent for monitoring. Prefer other legal bases established by counsel, combined with transparency (policy notices) and safeguards.
 
+Section four point five develops advanced risk and ethics with a Calder Group note the specialist can demo offline.
+
+Under section four point five, the incident commander expects advanced claims to carry owners and dates.
+
+Section four point five treats advanced risk and ethics as testable only when evidence and ticket IDs are recorded.
+
 ### 4.6 The review record
 
 An auditable ethical decision records: the request and requester; the stated aim; options considered with intrusion and effectiveness; legal basis (from counsel); safeguards (scope, duration, access, retention, oversight); the decision and decider; and a review date. This record protects the people affected and the people deciding.
+
+Section four point six develops advanced risk and ethics with a Calder Group note the specialist can demo offline.
+
+Under section four point six, the incident commander expects advanced claims to carry owners and dates.
+
+Section four point six treats advanced risk and ethics as testable only when evidence and ticket IDs are recorded.
 
 ### 4.7 Worked example (synthetic): broad monitoring request
 
@@ -388,6 +494,12 @@ Recommendation: B immediately; C as standing improvement; D if B finds evidence 
 Review record (excerpt): Request (division head, 14 June); aim; options A–D with intrusion and effectiveness; legal basis to be confirmed by counsel for D; safeguards for D (30 days, export events only, two named investigators, deletion after case closure, staff notice); decision B+C, D conditional; decider: CISO with counsel and HR; review 1 July.
 
 ### 4.8 Common errors and limits
+Section four point eight develops advanced risk and ethics with a Calder Group note the specialist can demo offline.
+
+Under section four point eight, the incident commander expects advanced claims to carry owners and dates.
+
+Section four point eight treats advanced risk and ethics as testable only when evidence and ticket IDs are recorded.
+
 
 - Treating the requester's proposed method as the requirement rather than their aim.
 - Relying on employee consent as a legal basis.
@@ -432,9 +544,17 @@ You will be able to (1) design containment across cloud and on-premises environm
 
 Piecemeal containment — each team acting as it discovers something — warns the adversary and leaves alternative footholds. **Coordinated containment** gathers enough scoping information, then executes a planned set of actions within a short window so that the adversary loses access everywhere at once. The trade-off is time: waiting to coordinate allows harm to continue. The commander decides where on this spectrum to sit, using the thresholds of Chapter 1.
 
+Section five point one develops alternatives for coordinated containment with a Calder Group note the specialist can demo offline.
+
 ### 5.2 Scoping before acting
 
 Coordinated containment needs a scope: compromised identities (users, service principals, keys), hosts, persistence mechanisms, external infrastructure and data at risk. Scope is never complete; decide what level of confidence is "enough" and what monitoring will catch what you missed.
+
+Section five point two develops alternatives for coordinated containment with a Calder Group note the specialist can demo offline.
+
+Under section five point two, the incident commander expects alternatives claims to carry owners and dates.
+
+Section five point two treats alternatives for coordinated containment as testable only when evidence and ticket IDs are recorded.
 
 ### 5.3 Identity first
 
@@ -444,13 +564,31 @@ When identity spans cloud and on-premises (for example, directory synchronizatio
 
 Each action has dependants. Rotating a service-account secret used by twenty integrations breaks them unless updated in step; disabling a federation trust may cut off a partner. Build an action-dependency table with owners who will update dependants in the window.
 
+Section five point four develops alternatives for coordinated containment with a Calder Group note the specialist can demo offline.
+
+Under section five point four, the incident commander expects alternatives claims to carry owners and dates.
+
+Section five point four treats alternatives for coordinated containment as testable only when evidence and ticket IDs are recorded.
+
 ### 5.5 Approval and rollback gates
 
 Gates are points where the commander confirms preconditions: scope accepted; dependants ready; communications drafted; monitoring in place. Each action has a rollback plan and a rollback trigger (for example, failure of a critical integration for more than 15 minutes).
 
+Section five point five develops alternatives for coordinated containment with a Calder Group note the specialist can demo offline.
+
+Under section five point five, the incident commander expects alternatives claims to carry owners and dates.
+
+Section five point five treats alternatives for coordinated containment as testable only when evidence and ticket IDs are recorded.
+
 ### 5.6 Execution and verification
 
 Execute in a defined window with a single coordinator calling steps and recording completion times. Verify immediately: no successful authentication with old credentials, no activity from revoked sessions, alerts for re-entry attempts.
+
+Section five point six develops alternatives for coordinated containment with a Calder Group note the specialist can demo offline.
+
+Under section five point six, the incident commander expects alternatives claims to carry owners and dates.
+
+Section five point six treats alternatives for coordinated containment as testable only when evidence and ticket IDs are recorded.
 
 ### 5.7 Worked example (synthetic): identity compromise across cloud and on-premises
 
@@ -465,6 +603,12 @@ Gate checklist for S1: scope review signed off; partner engaged; user communicat
 Recommendation (fictional): S1, with one immediate action pulled forward — disabling the OAuth application — because mail reading of executive mailboxes is ongoing harm and the action reveals little about the rest of the plan. This is a hybrid justified by the specific harm and its low signalling cost.
 
 ### 5.8 Common errors and limits
+Section five point eight develops alternatives for coordinated containment with a Calder Group note the specialist can demo offline.
+
+Under section five point eight, the incident commander expects alternatives claims to carry owners and dates.
+
+Section five point eight treats alternatives for coordinated containment as testable only when evidence and ticket IDs are recorded.
+
 
 - Cleaning hosts before containing identity.
 - Rotating shared secrets without dependants ready.
@@ -510,17 +654,35 @@ You will be able to (1) design a controlled comparison of recovery strategies be
 
 Specialists rarely have one obvious recovery path. Restoring a database from a verified backup may lose recent transactions; replaying logs may reintroduce attacker changes; rebuilding from upstream systems may be incomplete. Rather than choose by intuition, run a **controlled evaluation**: restore candidates into isolated environments, measure them against the same validation suite, and compare. NIST SP 800-184 emphasizes planning, testing and improvement of recovery; SP 800-209 discusses storage infrastructure security including backup protection.
 
+Section six point one develops controlled evaluation of recovery strategies with a Calder Group note the specialist can demo offline.
+
 ### 6.2 Validation references
 
 Validate restored data against references that the adversary did not control: upstream systems of record, partner records, financial reconciliations, previously exported reports with hashes, and samples confirmed by business users. Each reference has its own errors; disagreements must be investigated, not averaged.
+
+Section six point two develops controlled evaluation of recovery strategies with a Calder Group note the specialist can demo offline.
+
+Under section six point two, the incident commander expects controlled claims to carry owners and dates.
+
+Section six point two treats controlled evaluation of recovery strategies as testable only when evidence and ticket IDs are recorded.
 
 ### 6.3 Downstream synchronization
 
 Restored systems feed others: a restored order database must re-synchronize with warehouse, invoicing and customer-notification systems. If downstream systems processed data after the restore point, the two can diverge (duplicate shipments, missing invoices). Map the synchronization paths and decide, per path, whether to replay, reconcile or freeze.
 
+Section six point three develops controlled evaluation of recovery strategies with a Calder Group note the specialist can demo offline.
+
+Under section six point three, the incident commander expects controlled claims to carry owners and dates.
+
 ### 6.4 Acceptance and fallback
 
 Acceptance criteria: data validation thresholds, functional tests, security checks, performance, and owner sign-off. Fallback: if a criterion fails after go-live, what is the path — revert to manual operation, switch to the alternative candidate, or partial operation?
+
+Section six point four develops controlled evaluation of recovery strategies with a Calder Group note the specialist can demo offline.
+
+Under section six point four, the incident commander expects controlled claims to carry owners and dates.
+
+Section six point four treats controlled evaluation of recovery strategies as testable only when evidence and ticket IDs are recorded.
 
 ### 6.5 Worked example and lab (synthetic): two restore candidates
 
@@ -560,6 +722,12 @@ Interpretation: R2 saves re-entry of about 900 legitimate orders but contains al
 Acceptance criteria (excerpt): restored base hash matches backup manifest; reconstructed orders equal WMS legit set (960) minus orders cancelled by customers; zero orders to the fraud drop address; invoicing reconciliation difference zero; owner sign-off. Fallback: if WMS reconstruction fails validation, continue manual dispatch from WMS for 24 hours while investigating.
 
 ### 6.6 Common errors and limits
+Section six point six develops controlled evaluation of recovery strategies with a Calder Group note the specialist can demo offline.
+
+Under section six point six, the incident commander expects controlled claims to carry owners and dates.
+
+Section six point six treats controlled evaluation of recovery strategies as testable only when evidence and ticket IDs are recorded.
+
 
 - Choosing the most recent copy by default.
 - Validating a restore against itself.
@@ -604,6 +772,10 @@ You will be able to (1) identify notification triggers across overlapping regime
 
 In large incidents, three functions pull in different directions: operations wants to restore quickly (which can destroy evidence), legal wants to preserve and control communications (which can slow operations), and privacy wants to determine exposure precisely (which needs investigative effort). The specialist's job is to make these demands explicit, sequence them and record who decided what.
 
+Section seven point one develops integration across legal privacy and with a Calder Group note the specialist can demo offline.
+
+Under section seven point one, the incident commander expects integration claims to carry owners and dates.
+
 ### 7.2 Notification triggers
 
 Triggers vary by regime. Examples to verify for your jurisdictions: the GDPR (personal-data breach notification to the supervisory authority within 72 hours of awareness where feasible, unless unlikely to result in risk); the EU NIS2 Directive (Directive (EU) 2022/2555) for essential and important entities — an early warning within 24 hours of becoming aware of a significant incident, an incident notification within 72 hours and a final report within one month; US public companies' Form 8-K Item 1.05 disclosure within four business days after determining a cybersecurity incident is material (SEC rule adopted 2023); sector rules (health, finance) and contracts with customers and partners. Each regime defines "awareness" and "significant" differently. The specialist ensures that the facts needed for each determination are produced on time — and that awareness timestamps are recorded.
@@ -612,17 +784,37 @@ Triggers vary by regime. Examples to verify for your jurisdictions: the GDPR (pe
 
 When counsel issues a hold, operations must preserve specified data. Conflicts arise when recovery reimages systems or rotates logs. Resolve by preserving before changing: capture images, export logs, snapshot cloud resources, record hashes, then proceed. Build this into recovery runbooks so it is not negotiated under pressure.
 
+Section seven point three develops integration across legal privacy and with a Calder Group note the specialist can demo offline.
+
+Under section seven point three, the incident commander expects integration claims to carry owners and dates.
+
 ### 7.4 Minimization in the investigation
 
 Investigations themselves process personal data. Apply minimization: collect what the question requires, restrict access to investigation repositories, pseudonymize in working analyses, and set retention for case data (bachelor's Chapter 14 covers the basics). Over-collection increases the breach surface of the investigation.
+
+Section seven point four develops integration across legal privacy and with a Calder Group note the specialist can demo offline.
+
+Under section seven point four, the incident commander expects integration claims to carry owners and dates.
+
+Section seven point four treats integration across legal privacy and as testable only when evidence and ticket IDs are recorded.
 
 ### 7.5 The decision log
 
 Maintain one log in which each entry has: time; type (fact, assessment, determination, decision, action); content; source or basis; owner; and, for determinations, the specialist responsible (for example, "Privacy officer determined notification to authority required under GDPR Art. 33"). Facts come from evidence; assessments from analysts; determinations from qualified specialists; decisions from the authorized owner.
 
+Section seven point five develops integration across legal privacy and with a Calder Group note the specialist can demo offline.
+
+Under section seven point five, the incident commander expects integration claims to carry owners and dates.
+
 ### 7.6 Avoiding speculation in records
 
 Incident records may be disclosed in litigation or regulatory inquiry. Write precisely: facts with sources, assessments with confidence, no guesses about motives or blame, no casual statements ("we totally missed this"). This is not concealment; it is accuracy.
+
+Section seven point six develops integration across legal privacy and with a Calder Group note the specialist can demo offline.
+
+Under section seven point six, the incident commander expects integration claims to carry owners and dates.
+
+Section seven point six treats integration across legal privacy and as testable only when evidence and ticket IDs are recorded.
 
 ### 7.7 Worked example (synthetic): customer contact records
 
@@ -640,6 +832,12 @@ Decision log (excerpt):
 Note what is absent: no speculation about who downloaded the data, no characterization of the misconfiguration as anyone's negligence.
 
 ### 7.8 Common errors and limits
+Section seven point eight develops integration across legal privacy and with a Calder Group note the specialist can demo offline.
+
+Under section seven point eight, the incident commander expects integration claims to carry owners and dates.
+
+Section seven point eight treats integration across legal privacy and as testable only when evidence and ticket IDs are recorded.
+
 
 - Not recording awareness time, making deadlines indefensible.
 - Responders making legal determinations.
@@ -685,17 +883,35 @@ You will be able to (1) build a hypothesis–evidence matrix and use it to find 
 
 Conflict has a limited number of sources: different things were measured; one source is wrong (clock error, parsing, configuration); one source was manipulated; the world is more complex than the hypotheses (both sources right, hypotheses incomplete). Each predicts different follow-up results; that is how you discriminate.
 
+Section eight point one develops difficult cases with conflicting evidence with a Calder Group note the specialist can demo offline.
+
+Under section eight point one, the incident commander expects difficult claims to carry owners and dates.
+
 ### 8.2 Analysis of competing hypotheses
 
 Heuer's *Psychology of Intelligence Analysis* (CIA Center for the Study of Intelligence, 1999) describes **Analysis of Competing Hypotheses** (ACH): list hypotheses, list evidence, mark each cell as consistent, inconsistent or neutral, focus on evidence that is **diagnostic** (consistent with some hypotheses and inconsistent with others), and prefer the hypothesis with the least inconsistent evidence rather than the most consistent. ACH does not produce truth; it structures attention and exposes assumptions.
+
+Section eight point two develops difficult cases with conflicting evidence with a Calder Group note the specialist can demo offline.
 
 ### 8.3 Provenance and missingness
 
 Weight evidence by provenance (who recorded it, how, with which dependencies) and by what could have been missing. A log that would have recorded an event if it occurred, but did not, is diagnostic; a log that was not collecting at the time is neutral.
 
+Section eight point three develops difficult cases with conflicting evidence with a Calder Group note the specialist can demo offline.
+
+Under section eight point three, the incident commander expects difficult claims to carry owners and dates.
+
+Section eight point three treats difficult cases with conflicting evidence as testable only when evidence and ticket IDs are recorded.
+
 ### 8.4 Seeking disconfirmation
 
 For the leading hypothesis, ask "what would we expect to see if it were false?" and look for that. Confirmation bias pushes teams to collect more consistent evidence, which is often non-diagnostic.
+
+Section eight point four develops difficult cases with conflicting evidence with a Calder Group note the specialist can demo offline.
+
+Under section eight point four, the incident commander expects difficult claims to carry owners and dates.
+
+Section eight point four treats difficult cases with conflicting evidence as testable only when evidence and ticket IDs are recorded.
 
 ### 8.5 Worked example and lab (synthetic): two accounts, one timeline
 
@@ -739,6 +955,12 @@ Interpretation: H2 has no inconsistent evidence; H1 and H4 one each; H3 two. E1 
 Confidence statement: "The export at 22:47 was most likely performed using `hr-lead-2`'s credentials from the HR workstation while `hr-assist-5` was logged on there (moderate confidence). Remote credential theft is less likely because the sign-in came from the workstation's address. This assessment depends on the workstation address mapping and on the application recording the session user; both are being verified. No conclusion about any individual's intent is drawn."
 
 ### 8.6 Common errors and limits
+Section eight point six develops difficult cases with conflicting evidence with a Calder Group note the specialist can demo offline.
+
+Under section eight point six, the incident commander expects difficult claims to carry owners and dates.
+
+Section eight point six treats difficult cases with conflicting evidence as testable only when evidence and ticket IDs are recorded.
+
 
 - Counting consistent evidence instead of focusing on inconsistent and diagnostic evidence.
 - Treating the matrix as a calculator; the marks are judgements that need provenance.
@@ -783,25 +1005,53 @@ You will be able to (1) brief executives and boards with fact-limited statements
 
 After containment, pressure shifts: executives want to know "are we safe?", "who did it?", "what will it cost?" — often before the investigation can answer. Leaders who over-promise ("we are fully secure") create reputational and legal risk; leaders who say nothing lose trust and control of the narrative. The specialist provides fact-limited briefings that are useful without being speculative.
 
+Section nine point one develops response leadership and assurance decisions with a Calder Group note the specialist can demo offline.
+
+Under section nine point one, the incident commander expects response claims to carry owners and dates.
+
 ### 9.2 Assurance claims
 
 An **assurance claim** is a statement that a property holds ("the adversary no longer has access to our identity platform") with a basis (tests, evidence, coverage) and a confidence. Assurance cases in safety engineering structure claims, arguments and evidence (for example Goal Structuring Notation). For incidents, a simple table suffices: claim, evidence, coverage gaps, confidence, owner. Never make an assurance claim whose evidence you cannot show.
+
+Section nine point two develops response leadership and assurance decisions with a Calder Group note the specialist can demo offline.
 
 ### 9.3 Briefing structure
 
 For executives: bottom line (one sentence), what we know (with confidence), what we don't know yet (and when we expect to), what we have done, decisions needed from you, risks to watch, next briefing. Keep technical detail in an appendix. For boards: add implications for strategy, regulation and oversight duties, and the residual risks they are being asked to accept.
 
+Section nine point three develops response leadership and assurance decisions with a Calder Group note the specialist can demo offline.
+
+Under section nine point three, the incident commander expects response claims to carry owners and dates.
+
 ### 9.4 Closure conditions
 
 An incident should close when measurable conditions are met, not when attention fades. Typical conditions: containment verified for a defined period with monitoring; eradication tests passed; recovery accepted by owners; notifications completed; evidence preserved; corrective actions assigned with owners and dates; post-incident review scheduled. Residual risks transferred to the risk register.
+
+Section nine point four develops response leadership and assurance decisions with a Calder Group note the specialist can demo offline.
+
+Under section nine point four, the incident commander expects response claims to carry owners and dates.
 
 ### 9.5 Delegation and residual risk acceptance
 
 Residual risk must be accepted by someone with authority proportional to its size. Define in advance which levels accept what (for example, the CISO up to a threshold; the executive committee above it; the board for risks affecting strategy).
 
+Section nine point five develops response leadership and assurance decisions with a Calder Group note the specialist can demo offline.
+
+Under section nine point five, the incident commander expects response claims to carry owners and dates.
+
+Section nine point five treats response leadership and assurance decisions as testable only when evidence and ticket IDs are recorded.
+
 ### 9.6 Review cadence
 
 After closure: 30-day check of monitoring results and corrective actions; 90-day review of effectiveness; inclusion in quarterly risk reporting.
+
+Section nine point six develops response leadership and assurance decisions with a Calder Group note the specialist can demo offline.
+
+Under section nine point six, the incident commander expects response claims to carry owners and dates.
+
+Section nine point six treats response leadership and assurance decisions as testable only when evidence and ticket IDs are recorded.
+
+For section nine point six, Calder Group will not accept response work without a written trail.
 
 ### 9.7 Worked example (synthetic): executive briefing before root cause
 
@@ -820,6 +1070,12 @@ Assurance table (excerpt): Claim "no attacker access to identity platform" — e
 Closure conditions: 30 days without re-entry indicators; initial access identified and remediated or documented as unknown with compensating controls; mailbox exposure determined and notifications completed; corrective actions assigned; review held.
 
 ### 9.8 Common errors and limits
+Section nine point eight develops response leadership and assurance decisions with a Calder Group note the specialist can demo offline.
+
+Under section nine point eight, the incident commander expects response claims to carry owners and dates.
+
+Section nine point eight treats response leadership and assurance decisions as testable only when evidence and ticket IDs are recorded.
+
 
 - "We are secure" without basis.
 - Closing when attention fades rather than when conditions are met.
@@ -872,6 +1128,12 @@ Each has typical strengths and biases; none is "the evidence" alone.
 
 For any study, record: (1) question; (2) population and how it was sampled; (3) unit of analysis (incident, organization, analyst); (4) outcome and how measured; (5) comparison and design; (6) confounders addressed; (7) results with uncertainty; (8) limitations stated and unstated; (9) funding and interests; (10) applicability to your setting.
 
+Section ten point two develops research reading and critique with a Calder Group note the specialist can demo offline.
+
+Under section ten point two, the incident commander expects research claims to carry owners and dates.
+
+Section ten point two treats research reading and critique as testable only when evidence and ticket IDs are recorded.
+
 ### 10.3 Typical biases
 
 - **Selection**: provider datasets include only incidents the provider was hired for — usually larger, more severe, or in organizations that buy such services. Survey participants are organizations willing to participate.
@@ -884,6 +1146,10 @@ For any study, record: (1) question; (2) population and how it was sampled; (3) 
 
 A finding transfers when the mechanism plausibly operates in your setting and your population resembles the study's. Rather than adopting a headline number ("IR testing saves $X"), formulate a local question your own data can address: "Did our tabletop-tested playbooks shorten our time from detection to containment for comparable incidents?" — with the methods of bachelor's Chapter 33 and master's-level design if needed.
 
+Section ten point four develops research reading and critique with a Calder Group note the specialist can demo offline.
+
+Under section ten point four, the incident commander expects research claims to carry owners and dates.
+
 ### 10.5 Worked example: two published sources, different populations
 
 *Sources (read the current editions yourself; figures change annually):* IBM, *Cost of a Data Breach Report*; Mandiant (Google Cloud), *M-Trends*.
@@ -895,6 +1161,12 @@ Claim type B (provider report): global median dwell time has declined over the y
 Transfer to Calder Group (synthetic): Calder's 400 incidents a year are mostly small and internally handled — unlike B's population. Calder is a large retailer and logistics firm; A's sample includes similar organizations but cost drivers (regulation, region) differ. Local validation question: "For Calder incidents of severity 2 or higher in 2025–2026, is time from detection to containment shorter for incident types with a tabletop-tested playbook than for those without, after accounting for incident type and division?"
 
 ### 10.6 Common errors and limits
+Section ten point six develops research reading and critique with a Calder Group note the specialist can demo offline.
+
+Under section ten point six, the incident commander expects research claims to carry owners and dates.
+
+Section ten point six treats research reading and critique as testable only when evidence and ticket IDs are recorded.
+
 
 - Quoting headline numbers without population and method.
 - Treating year-over-year changes in provider datasets as global trends.
@@ -939,21 +1211,51 @@ You will be able to (1) conduct a gap assessment of an incident program using ev
 
 Assess the program against a reference (NIST SP 800-61 Rev. 3 and CSF 2.0 outcomes; the FIRST CSIRT Services Framework for service scope) and against its own incident data. Evidence sources: case records, after-action reports, interviews, exercise results, metrics. A gap is a difference between required and actual capability, backed by evidence, with an impact statement.
 
+Section eleven point one develops applied project redesign an incident with a Calder Group note the specialist can demo offline.
+
+Under section eleven point one, the incident commander expects applied claims to carry owners and dates.
+
 ### 11.2 Prioritization
 
 Prioritize gaps by impact, frequency and feasibility. Recurring findings across after-action reports are strong signals; one dramatic incident is a weaker one.
+
+Section eleven point two develops applied project redesign an incident with a Calder Group note the specialist can demo offline.
+
+Under section eleven point two, the incident commander expects applied claims to carry owners and dates.
+
+Section eleven point two treats applied project redesign an incident as testable only when evidence and ticket IDs are recorded.
+
+For section eleven point two, Calder Group will not accept applied work without a written trail.
 
 ### 11.3 Design options
 
 For each priority gap, generate at least two options with different cost and disruption profiles (process change, tooling, staffing, training, contractual). Evaluate them with the multi-criteria method used at bachelor's level, weights agreed with stakeholders.
 
+Section eleven point three develops applied project redesign an incident with a Calder Group note the specialist can demo offline.
+
+Under section eleven point three, the incident commander expects applied claims to carry owners and dates.
+
+Section eleven point three treats applied project redesign an incident as testable only when evidence and ticket IDs are recorded.
+
 ### 11.4 Piloting
 
 Choose one change to pilot in a bounded part of the organization for a defined period, with criteria fixed in advance, a comparison (another division or the pre-period, ideally both), data collection plan and stop rules.
 
+Section eleven point four develops applied project redesign an incident with a Calder Group note the specialist can demo offline.
+
+Under section eleven point four, the incident commander expects applied claims to carry owners and dates.
+
+Section eleven point four treats applied project redesign an incident as testable only when evidence and ticket IDs are recorded.
+
 ### 11.5 Evaluation
 
 Evaluate against the criteria; include process measures (was the change used as designed?), outcome measures, and unintended effects. Report uncertainty; small pilots rarely give precise effects.
+
+Section eleven point five develops applied project redesign an incident with a Calder Group note the specialist can demo offline.
+
+Under section eleven point five, the incident commander expects applied claims to carry owners and dates.
+
+Section eleven point five treats applied project redesign an incident as testable only when evidence and ticket IDs are recorded.
 
 ### 11.6 Worked example and lab (synthetic): handoff delays
 
@@ -994,6 +1296,12 @@ Retail completeness 31/49 = 63%
 Interpretation: in Logistics, median minutes to first action fell 36% while Retail fell 5% over the same weeks; the difference (about 32 points) suggests most of the improvement is associated with the pilot rather than seasonal factors. Completeness reached 87% against an 85% criterion. Caveats: 10–12 handoffs per period are few; divisions differ; staff knew they were in a pilot; the template also prompts record completion, so the two outcomes are not independent. Time to containment (not shown) must be checked for adverse effects before rollout. Recommendation: extend the template group-wide with option B scoped for the next budget cycle, and continue measurement.
 
 ### 11.7 Common errors and limits
+Section eleven point seven develops applied project redesign an incident with a Calder Group note the specialist can demo offline.
+
+Under section eleven point seven, the incident commander expects applied claims to carry owners and dates.
+
+Section eleven point seven treats applied project redesign an incident as testable only when evidence and ticket IDs are recorded.
+
 
 - Gaps asserted without evidence.
 - Piloting several changes at once, so effects cannot be separated.
@@ -1038,25 +1346,55 @@ You will be able to (1) assemble a transfer package that lets the organization o
 
 Programs designed by specialists often decay: templates stop being used, owners change jobs, metrics are no longer collected, exercises lapse. Transfer fails when ownership, resources and feedback are not built in. The aim is a program the organization runs without you, with signals that tell it when it is drifting.
 
+Section twelve point one develops final review and organizational transfer with a Calder Group note the specialist can demo offline.
+
+Under section twelve point one, the incident commander expects final claims to carry owners and dates.
+
 ### 12.2 The transfer package
 
 Contents: (1) design rationale — the problem, evidence, options considered and why the chosen design; (2) operating documents — procedures, templates, RACI, thresholds; (3) measurement plan — definitions, data sources, owners, reporting cadence; (4) training materials and records; (5) pilot evaluation report with limitations; (6) open issues and residual risks register; (7) reassessment schedule; (8) contacts and decision rights for future changes. Each item has a named owner in the receiving organization.
+
+Section twelve point two develops final review and organizational transfer with a Calder Group note the specialist can demo offline.
+
+Under section twelve point two, the incident commander expects final claims to carry owners and dates.
 
 ### 12.3 Training and acceptance
 
 Train by role, with exercises not just slides; measure acceptance by observed use (for example, percentage of handoffs using the template) rather than attendance. Acceptance by the receiving owner should be explicit and recorded, like service acceptance after recovery.
 
+Section twelve point three develops final review and organizational transfer with a Calder Group note the specialist can demo offline.
+
+Under section twelve point three, the incident commander expects final claims to carry owners and dates.
+
+Section twelve point three treats final review and organizational transfer as testable only when evidence and ticket IDs are recorded.
+
 ### 12.4 Residual issues
 
 List what the redesign did not solve and why: budget, dependencies on other programs, unresolved evidence questions. Assign each to an owner and a review date, or explicitly accept it at the right level (Chapter 9).
+
+Section twelve point four develops final review and organizational transfer with a Calder Group note the specialist can demo offline.
+
+Under section twelve point four, the incident commander expects final claims to carry owners and dates.
+
+Section twelve point four treats final review and organizational transfer as testable only when evidence and ticket IDs are recorded.
 
 ### 12.5 Defending trade-offs
 
 Stakeholders will challenge choices: "why not the tool?", "why this metric?", "the template slows us down". Prepare a trade-off register: decision, alternatives, reasons, evidence, conditions under which you would decide differently. Concede where evidence is weak.
 
+Section twelve point five develops final review and organizational transfer with a Calder Group note the specialist can demo offline.
+
+Under section twelve point five, the incident commander expects final claims to carry owners and dates.
+
+Section twelve point five treats final review and organizational transfer as testable only when evidence and ticket IDs are recorded.
+
 ### 12.6 Reassessment
 
 Schedule reassessment based on evidence: a 90-day review of adoption and outcome measures, a 6-month exercise testing the redesigned process, and an annual program review. Define triggers for earlier review: a major incident where the process failed, a significant drop in adoption, organizational change (merger, outsourcing).
+
+Section twelve point six develops final review and organizational transfer with a Calder Group note the specialist can demo offline.
+
+Under section twelve point six, the incident commander expects final claims to carry owners and dates.
 
 ### 12.7 Worked example (synthetic): transferring the handoff redesign
 
@@ -1073,6 +1411,14 @@ Schedule reassessment based on evidence: a 90-day review of adoption and outcome
 Stakeholder defense (fictional): Retail CIO: "The template adds paperwork." Response: "The pilot measured about 4 minutes per handoff on average and reduced time to first action by about 15 minutes. We will track template time and revisit if it exceeds 10 minutes."
 
 ### 12.8 Common errors and limits
+Section twelve point eight develops final review and organizational transfer with a Calder Group note the specialist can demo offline.
+
+Under section twelve point eight, the incident commander expects final claims to carry owners and dates.
+
+Section twelve point eight treats final review and organizational transfer as testable only when evidence and ticket IDs are recorded.
+
+For section twelve point eight, Calder Group will not accept final work without a written trail.
+
 
 - Transfer packages that are document dumps without owners.
 - Training measured by attendance.
