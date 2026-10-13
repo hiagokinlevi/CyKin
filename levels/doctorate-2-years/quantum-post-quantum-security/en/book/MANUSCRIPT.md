@@ -89,6 +89,8 @@ The Menlo Report's principles ([Dittrich and Kenneally 2012](https://www.dhs.gov
 
 Classify every artefact before it exists. **Tier 0** (public): code, synthetic data, aggregate counts. **Tier 1** (restricted): de-identified handshake metadata with hostnames replaced by stable pseudonyms. **Tier 2** (confidential): raw packet captures, configuration files, certificate inventories that reveal internal architecture. **Tier 3** (never collected): private keys, session keys, application payload, patient data. A protocol that cannot say which tier an artefact belongs to is not ready for review.
 
+In the Ciphertrail Study the pseudonymized handshake export is tier 1 and the raw captures from HRHN segments stay at tier 2 on HRHN premises. Any credential discovered in code scanning moves to tier 3 handling at once: it is deleted, its owner is told, and the incident is logged without the value. The tier is written on the file itself as well as in the protocol.
+
 ### 1.6 Metrics that resist gaming
 
 "Percentage of systems migrated" is the metric most likely to mislead. It can be raised by redefining "system", by counting configured rather than negotiated algorithms, or by excluding devices the scanner cannot reach. Prefer metrics with a denominator someone else can audit: **recall** of quantum-vulnerable uses against an adjudicated ground truth; **precision** of reported findings; **negotiated-hybrid share** weighted by data sensitivity; **unknown share** — the fraction of assets whose cryptography could not be determined, reported separately rather than silently treated as safe; and **time-to-replace** for a chosen algorithm, which measures agility rather than a one-time migration.
@@ -141,6 +143,8 @@ Read the output as a statement about the *model*, not about the world. The genom
 - Silent denominators. Assets the scanner cannot see must appear as "unknown", not disappear.
 - Harmful observation. Active scans and downgrade tests on production can cause outages and weaken protection.
 - Lab 1's distribution is arbitrary. Its value is the method of sensitivity analysis, not the probabilities.
+
+- Turning a sensitivity table into a single headline probability.
 
 ### Exercises — chapter 1
 
@@ -233,9 +237,13 @@ families with no independently validated study: agility, inventory
 
 Extend the coding scheme with a fourth column for "ground truth independent of tool" and re-run; a gap that survives two codings is more defensible than one that appears under a single scheme.
 
+The table makes the gap visible in one glance: four inventory studies, none validated on an independent corpus. The coding is only as good as its rules, so write down what counts as same-vendor or independent before coding and ask a second person to code the eight studies separately. If the second coder moves a study into the independent column, the gap statement must change before it goes into the proposal.
+
 ### 2.7 A falsifiable gap
 
 A gap is not "nobody has studied PQC inventories". It is a specific, testable absence: *no published inventory method reports recall of quantum-vulnerable key-establishment and signature uses against blind adjudication on a corpus independent of its development corpus, with unknown share reported.* The statement is falsifiable — one counter-example in the literature would close it — and it names the measurements a contribution must make.
+
+Check the gap against the literature again just before submission, because a counter-example published during the thesis would close it. Record the date and the search used for that final check. If a study appears that partly fills the gap, the contribution can still stand, but it must be repositioned as replication or extension rather than first measurement.
 
 ### 2.8 Common errors and limits
 
@@ -297,7 +305,7 @@ Note the TLS 1.3 subtlety: certificates travel encrypted in TLS 1.3, so a purely
 
 Pre-register, before seeing the main corpus:
 
-- **H1** — Dual-source recall of quantum-vulnerable uses exceeds static-only recall by at least 0.10 on the HRHN corpus (paired comparison, 95% CI of the difference excludes 0.10's lower bound of 0).
+- **H1** — Dual-source recall of quantum-vulnerable uses exceeds static-only recall by at least 0.10 on the HRHN corpus (paired comparison; the lower bound of the 95% CI of the difference is at least 0.10).
 - **H2** — Dual-source precision is at least 0.90 (passive findings can produce duplicates and misattributions).
 - **H3** — The recall gain is concentrated in vendor appliances; in data-at-rest uses the gain is below 0.02. *This hypothesis predicts a failure.*
 - **H4** — Results transfer: on the untouched Marrow corpus, with thresholds and fusion rules frozen, the recall gain remains at least 0.05.
@@ -307,6 +315,8 @@ Each hypothesis has a stated condition under which it is rejected. H3 is include
 ### 3.5 Baselines and rivals
 
 The baseline is static-only analysis configured by a competent engineer with the same access, not a deliberately weak scanner. A second baseline is passive-only. Rival explanations for an observed gain include: passive findings duplicating static findings under different names (inflating counts), the adjudicators being influenced by which tool found an item (inflating precision), and the corpus over-representing appliances (inflating aggregate gain). The design answers each: canonical identifiers per use, blinded adjudication, and per-class reporting.
+
+Write each rival with the result that would support it, so the design can be judged before data arrive.
 
 ### 3.6 Worked example and Lab 3
 
@@ -357,6 +367,8 @@ The model shows the predicted pattern: a large gain on vendor appliances, almost
 - Ignoring that TLS 1.3 hides certificates from passive observers.
 - Model studies prove only internal consistency; Lab 3's numbers are assumptions.
 
+Each error has a visible symptom in a proposal: a method described without saying where it should fail, a hypothesis that a union guarantees, a static baseline run with default settings by someone unfamiliar with it, or a passive coverage claim for signatures under TLS 1.3. Check the proposal for those symptoms before the committee does.
+
 ### Exercises — chapter 3
 
 - **EX015 — Contribution type.** Classify the Ciphertrail contribution and one alternative framing; argue which an examiner would find stronger. Rubric: 3 = justified with reference to testability.
@@ -385,6 +397,8 @@ After this chapter you can (1) distinguish repeatability, reproducibility and re
 ### 4.1 Terms
 
 Following the ACM's [artifact review and badging](https://www.acm.org/publications/policies/artifact-review-and-badging-current) vocabulary: **repeatability** — the same team obtains the same result with the same setup; **reproducibility** — a different team obtains it with the original artefacts; **replicability** — a different team obtains it with independently developed artefacts. A doctoral baseline should at least be reproduced, and the reproduction log should record every deviation, including versions of scanners, parsers and the TLS group registry used to classify codepoints.
+
+In the Ciphertrail Study the InvBench-22 work is a reproduction, because it reuses the released corpus.
 
 ### 4.2 Diagnosing a failed reproduction: InvBench-22
 
@@ -430,9 +444,13 @@ canonical uses found:   2  -> recall 0.67
 
 A "recall" above 1 is the clearest possible signal of a unit error, but subtler inflation — say from 0.61 to 0.97 — looks plausible and survives review unless the counting unit is stated. The missing SSH use on `srv-040` also illustrates the observer model: the TLS sensor cannot find it.
 
+The lab separates two checks that are easy to confuse. The unit tests show the classifier maps known codepoints correctly, including an unknown one. The counting step shows how the same server under four names and addresses can inflate recall. Keep both in the instrument's test suite and run them before every collection, recording the IANA registry retrieval date beside the results.
+
 ### 4.5 Tuning without leakage
 
 The fusion rule has parameters: how long a passive observation remains valid, how hostnames are matched to code repositories, and the confidence threshold for attributing a negotiated group to an asset. Tune them on a **development split** (in the Ciphertrail Study, HRHN hospital 1), freeze them, and evaluate on the held-out hospitals 2 and 3. Record every tuning run, including those that were abandoned; a garden of forking paths that is hidden is indistinguishable from p-hacking.
+
+Keep a tuning log with the date, the parameter values and the result on hospital 1 for every run. When the rules are frozen, record the configuration hash in the same log.
 
 ### 4.6 A bounded pilot
 
@@ -445,6 +463,8 @@ The pilot runs for two weeks on one HRHN segment with 140 services. Pre-stated g
 - Using an outdated codepoint registry; record its retrieval date.
 - Tuning on test data, even informally by "looking at a few results".
 - A pilot without pre-stated criteria cannot fail and therefore teaches little.
+
+Each error has a guard in this study: canonical identifiers for uses, adjudication blind to the tool, a dated registry, a split by hospital with frozen rules, and pre-stated pilot criteria. The pilot's low agreement of 0.62 is an example of a criterion doing its job; it forced a codebook amendment before the main study rather than after.
 
 ### Exercises — chapter 4
 
@@ -483,9 +503,13 @@ Both methods are applied to the *same* adjudicated items, so the quantity of int
 
 The Marrow Logistics corpus was never examined during development. The fusion rules, thresholds and codebook are frozen and hashed (SHA-256 of the configuration file recorded in the thesis log) before Marrow data are opened. Marrow differs deliberately: fewer vendor appliances, more embedded handheld scanners in warehouses, and an SSH-heavy operations team. The mechanism of Chapter 3 therefore predicts a smaller aggregate gain — a successful prediction of *reduced* benefit is evidence for the mechanism, not against the method.
 
+Record the date Marrow data were first opened next to the frozen configuration hash.
+
 ### 5.4 Blinded adjudication
 
 Engineers E01–E10 (synthetic) receive each candidate use with tool provenance removed and randomized order, plus owner documentation. Two engineers adjudicate every item; a third resolves disagreements. On the main study, synthetic agreement is κ = 0.78 after the codebook amendment from the pilot. Items no engineer can determine are coded *unknown*: 9% of HRHN assets and 14% of Marrow assets, reported alongside recall rather than dropped.
+
+Report agreement per asset class as well as overall, because adjudicators may find appliances harder to judge than in-house code. Keep the third engineer's resolutions in a separate file, so that a reader can see how many items needed one and whether any class was disputed more than the others.
 
 ### 5.5 Practical activity — Lab 5: paired bootstrap
 
@@ -521,6 +545,8 @@ Marrow (frozen rules)    recall gain = 0.097  95% CI [0.079, 0.116]
 
 Under these synthetic assumptions, H1 (gain ≥ 0.10 on HRHN) is supported, and H4 (gain ≥ 0.05 on Marrow) is supported, with the smaller Marrow gain predicted by its class mix. The bootstrap interval reflects sampling only; it says nothing about adjudication error or about whether Marrow resembles any real company.
 
+The lab draws per-class detections from the same arbitrary probabilities used in Lab 3 and applies them to two class mixes. The HRHN mix of 700 uses matches the held-out corpus size; Marrow's mix has fewer appliances and more embedded devices. The paired bootstrap resamples items, keeping each item's static and dual outcomes together, which is why the intervals are narrow.
+
 ### 5.6 Worked example: the honest results paragraph
 
 "On the held-out HRHN corpus (synthetic; 700 adjudicated quantum-vulnerable uses), dual-source inventory increased recall by 0.21 (95% bootstrap CI 0.18–0.24) over a competently configured static baseline; precision was 0.93. The gain was concentrated in vendor appliances (0.66) and absent for data at rest (0.00), as predicted (H3). With rules frozen, the gain on an independent corpus was 0.10 (0.08–0.12). Nine and fourteen per cent of assets, respectively, could not be adjudicated and are excluded from the recall denominators; under a worst-case assumption that all unknown assets hold undiscovered vulnerable uses, recall falls by up to 0.12. These results describe two synthetic organizations and a model of detection; they are not estimates for real enterprises." Note what the paragraph refuses to say: it does not claim either organization is "quantum-safe" or that dual-source inventory is sufficient.
@@ -532,6 +558,8 @@ Under these synthetic assumptions, H1 (gain ≥ 0.10 on HRHN) is supported, and 
 - Touching the validation corpus before freezing rules — even to "check the format".
 - Dropping unknown assets from the denominator without saying so.
 - Lab 5 simulates detection probabilities; real asset classes are messier.
+
+Each error has a concrete guard in this study: the paired design, the three-uncertainty report, the frozen and hashed configuration before Marrow was opened, and the unknown shares of nine and fourteen per cent printed beside recall. A reviewer should be able to confirm all four from the archive without asking the candidate.
 
 ### Exercises — chapter 5
 
@@ -570,9 +598,13 @@ Before external review, assign a colleague to argue that each claim is false. A 
 
 Every method has a place it cannot see. For dual-source inventory the boundary includes: TLS 1.3 certificate signatures unless endpoints cooperate; firmware-update signatures verified offline inside devices; data at rest encrypted by third-party services; and protocols carried inside VPN tunnels the sensor cannot open. State the boundary as a diagram and a list in the thesis. Examiners respect a candidate who shows where the method stops more than one who implies it covers everything.
 
+Draw the diagram with each blind zone labelled by the observer that misses it.
+
 ### 6.4 Narrowing a claim
 
 Original claim: "Dual-source inventory substantially improves discovery of quantum-vulnerable cryptography." Narrowed claim after critique: "Where passive sensors observe the relevant segments, dual-source inventory increased recall of quantum-vulnerable key-establishment and TLS-1.2-visible signature uses by 0.10–0.21 in two synthetic organizations, concentrated in vendor appliances; it did not improve discovery of data-at-rest or offline firmware-signature uses." The narrowed claim is smaller and much harder to refute — exactly the trade a thesis should make.
+
+Check the title, abstract and conclusions against the narrowed claim before submission.
 
 ### 6.5 Dual-use review
 
@@ -589,6 +621,8 @@ The synthetic response letter opens with a table mapping each objection to a cha
 - Confusing inventory of negotiated algorithms with resistance to downgrade.
 - Publishing per-organization findings that become a targeting list.
 - Red-teaming only by friends who share your assumptions.
+
+Each error has a remedy already used in the Ciphertrail review: objections O1 and O2 became tests, the narrowed claim moved into the abstract, downgrade resistance was named as outside the method, and the dual-use review removed organization-identifying data. For red-teaming, ask someone from the threat-model side who does not share your assumptions.
 
 ### Exercises — chapter 6
 
@@ -623,9 +657,13 @@ Use Toulmin's structure for each major claim: **data** (Lab 5 paired differences
 
 A conventional order works: introduction and gap; background on quantum threat, standards and hybrid deployment; method and observer model; replication; main study; validation; critique and limits; conclusions. Put the narrowed claim in the first paragraph of the abstract. Put the architectural boundary in the method chapter, not hidden in limitations. Keep a single source of truth for every number — a results file generated by code — so that the abstract, tables and text cannot disagree.
 
+Write the method chapter before the results chapter.
+
 ### 7.3 A tiered archive
 
 Release tier 0 and tier 1 artefacts publicly; keep tier 2 with the data owner under an access agreement; never hold tier 3. The archive's manifest records each file's tier and SHA-256 hash, and the release process is **fail-closed**: any tier-2 file or hash mismatch blocks the release. Include the frozen configuration hash from Chapter 5 so that examiners can confirm validation used the frozen rules.
+
+Run the release check on the exact archive that will be published, not on a working copy.  Keep the manifest under version control.
 
 ### 7.4 Practical activity — Lab 7: a fail-closed manifest
 
@@ -662,9 +700,13 @@ Expected output (the hash prefix is deterministic):
 {"tier": 0, "sha256": "db6dd8db390974cdd06e19b00d7fe35d26836...
 ```
 
+The first call blocks the release because a tier-2 capture is in the manifest; removing it allows release. In a real archive, removing the file is not enough: check that no tier-0 or tier-1 file contains extracts from it, and record the removal in the archive's change log. The printed hash prefix lets an examiner confirm that the fusion rules in the archive match those frozen before validation.  Run it again after every change to the archive.
+
 ### 7.5 Dataset cards
 
 For each corpus, write a card covering: provenance (synthetic generator and seed, or owner and authorization), collection period, instruments and versions, pseudonymization method, known gaps (segments without sensors), label definitions (the amended codebook), agreement statistics, intended uses and prohibited uses (for example, no re-identification and no use as a target list). Synthetic corpora also need cards, because readers otherwise mistake generated distributions for field data.
+
+Store each card beside its corpus and update it when errata are found.  Date every card revision.
 
 ### 7.6 Directional limits
 
@@ -674,12 +716,16 @@ A limit without a direction is a ritual. State which way it pushes the estimate.
 
 The defensible practical implication is narrow: migration programmes that rely on static analysis alone are likely to under-find quantum-vulnerable uses in closed vendor appliances, and should combine sources where they can observe traffic and should report unknown shares. It does not follow that any organization is ready, that hybrid negotiation is downgrade-resistant, or that inventory replaces crypto-agility planning as described in [NIST CSWP 39](https://doi.org/10.6028/NIST.CSWP.39-upd1).
 
+Write the implication as a recommendation with its condition attached, so that a practitioner reading only that paragraph still sees the scope: where sensors can observe traffic, and with unknown shares reported.
+
 ### 7.8 Common errors and limits
 
 - Numbers typed by hand into the text that drift from the results file.
 - Archives that silently include restricted captures.
 - Limits listed without direction or magnitude.
 - Implications that leap from "found more" to "safer".
+
+Each error has a simple guard. Generate every number in the text from the results file. Run the fail-closed manifest check on the release archive. Add a direction and, where possible, a magnitude to each limit. Read the implications paragraph aloud and stop at any verb that implies safety rather than discovery.
 
 ### Exercises — chapter 7
 
@@ -710,6 +756,8 @@ After this chapter you can (1) audit every claim in a thesis against its evidenc
 
 List every sentence in the abstract, introduction and conclusion that asserts something. For each, record the rung (Chapter 1), the supporting table or figure, the uncertainty and the scope qualifier. Any claim without a supporting artefact is cut or rewritten. In the synthetic Ciphertrail audit, two sentences fail: one says "organizations" where the evidence covers two synthetic organizations, and one says "signatures" where passive evidence covers only TLS-1.2-visible certificate chains. Both are corrected before submission.
 
+Repeat the audit after each round of revision.
+
 ### 8.2 Examiner questions
 
 Prepare answers, with slide or page references, to the questions examiners in this field reliably ask. *Why should I believe your ground truth?* (blinding, κ, unknowns). *What happens with an organization that has no vendor appliances?* (mechanism predicts little gain; Marrow evidence). *Does your result depend on the CRQC date?* (no — inventory recall is independent of z; the prioritization implications are not, and are presented as a sweep). *What if ML-KEM is broken?* (inventory remains useful; hybrid deployment and agility are the architectural answer; cite the Rainbow and SIKE breaks as precedent for surprise). *What did you get wrong?* (the pilot's κ, the original construct of "use"). Rehearse with a hostile mock examiner and record which answers needed a page reference you did not have.
@@ -724,11 +772,13 @@ During the synthetic study, the team observed that one appliance model accepted 
 
 ### 8.5 Briefing a decision-maker
 
-A one-page brief for HRHN's executive board (synthetic) states: what was measured (where quantum-vulnerable cryptography is used, not whether the network is "safe"); the main finding (static scanning alone missed most vendor-appliance uses; combining sources found about two-thirds of them where sensors existed); what remains unknown (9% of assets; data at rest; offline device firmware); the decision requested (fund sensors on two unmonitored segments and require vendors to declare cryptographic algorithms in procurement); and what the brief does *not* claim (any date for a quantum computer). It uses no unexplained acronyms and attaches the limits table.
+A one-page brief for HRHN's executive board (synthetic) states: what was measured (where quantum-vulnerable cryptography is used, not whether the network is "safe"); the main finding (static scanning alone missed most vendor-appliance uses; combining sources raised the share found from about one in five to more than four in five where sensors existed); what remains unknown (9% of assets; data at rest; offline device firmware); the decision requested (fund sensors on two unmonitored segments and require vendors to declare cryptographic algorithms in procurement); and what the brief does *not* claim (any date for a quantum computer). It uses no unexplained acronyms and attaches the limits table.
 
 ### 8.6 After the defense
 
 Archive the final versions, update the dataset card with any errata, and schedule a re-verification of cited standards' status — FN-DSA and HQC will by then likely have final standards, and NIST IR 8547 may have been revised. A thesis about a transition should end with a statement of what would change its conclusions.
+
+Note in the archive which conclusions depend on standards status, so that a reader after the next revision knows what to recheck.  List those conclusions explicitly with their dependencies.
 
 ### 8.7 Common errors and limits
 
@@ -736,6 +786,8 @@ Archive the final versions, update the dataset card with any errata, and schedul
 - Preparing answers to friendly questions only.
 - Publishing a weakness before the vendor and owner are informed.
 - Executive briefs that turn uncertainty into a single date or score.
+
+Each error has a guard used earlier in this study: the claim audit, a hostile mock examiner, the disclosure timeline agreed with the vendor and the owner, and a brief that presents unknowns and ranges rather than a date. Review the brief with someone outside the project before it reaches the board.
 
 ### Exercises — chapter 8
 
