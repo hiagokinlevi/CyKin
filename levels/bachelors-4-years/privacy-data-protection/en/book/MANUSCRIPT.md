@@ -436,7 +436,7 @@ The lab joins apps with shared fields and filters apps without agreements. Three
 
 ### 9.3 Reading the result
 
-Elena notes that ReadAlong is the most serious case. It receives a special educational needs flag, which may be health data, sends data outside the EEA and has no agreement. ClassChat affects the most pupils but holds less sensitive data. She ranks the apps by sensitivity, transfer and scale rather than scale alone. She explains that a database query gives facts, but judgement is needed to decide which facts matter most for children. QuizBlitz ranks first despite smaller numbers. Its data leave Europe.
+Elena notes that ReadAlong is the most serious case. It receives a special educational needs flag, which may be health data, sends data outside the EEA and has no agreement. ClassChat affects the most pupils but holds less sensitive data. She ranks the apps by sensitivity, transfer and scale rather than scale alone. She explains that a database query gives facts, but judgement is needed to decide which facts matter most for children. QuizBlitz needs attention too despite smaller numbers, because its data leave Europe.
 
 ### 9.4 Recommendations
 
