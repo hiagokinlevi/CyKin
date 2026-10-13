@@ -1356,6 +1356,8 @@ After this chapter you can (1) describe open- and closed-loop control, setpoints
 
 A **closed-loop** controller measures a process variable, compares it with a setpoint and adjusts an actuator to reduce the error. Feedback makes systems robust to disturbances and model errors — and makes them trust their sensors completely. [Åström and Murray's *Feedback Systems*](https://fbswiki.org/wiki/index.php/Main_Page), freely available online, is the reference text for this chapter.
 
+At Hollin Hill, the PI controller adjusts PS3's inlet flow to hold the reservoir level at its setpoint. It sees the reservoir only through the level transmitter, so whatever that transmitter reports is, for the controller, the truth. The rest of this chapter follows the consequence of that trust.
+
 ### 17.2 PI control
 
 A proportional controller sets actuator output $u = K_p e$; it leaves a steady-state error when a constant disturbance must be balanced. Adding an integral term, $u = K_p e + K_i\int e\,dt$, removes steady-state error because the integral keeps growing until the error is zero. Actuators saturate — a pump cannot deliver more than its maximum flow — and while saturated, the integral keeps growing (**wind-up**), causing overshoot when the actuator comes out of saturation. Anti-wind-up stops integration while saturated.
@@ -1363,6 +1365,8 @@ A proportional controller sets actuator output $u = K_p e$; it leaves a steady-s
 ### 17.3 False data and the trusting controller
 
 If an attacker adds a bias $b$ to the level measurement, the controller regulates the *measured* level to the setpoint, so the *true* level settles at setpoint minus $b$. The controller is functioning perfectly; the process is not. This is the core of process-aware attacks: Stuxnet, as analysed by [Langner (2011)](https://doi.org/10.1109/MSP.2011.67), manipulated centrifuge speeds while replaying normal-looking values to operators. Defences cannot rely on the same sensor stream the attacker controls.
+
+At Hollin Hill, a biased level transmitter would lower the true level while the operator's screen showed the setpoint, so the defence must come from an independent measurement.
 
 ### 17.4 Residual-based detection
 
@@ -1413,6 +1417,8 @@ step bias +0.04 m (2.96, 2.95, None, 10.0)
 ramp 0.05 m/h     (1.1, 1.1, None, 10.6)
 ```
 
+Read the four rows against the worked example. Without an attack the level stays at three metres and neither detector fires. The large step bias is caught by both detectors at once, and the true level settles a metre and a half too low. The small step and the slow ramp are where the detectors differ: only the cumulative detector sees them, and the ramp, left alone, drags the true level to about one metre. Remember that the lab's flow meters are perfect, so real detection times would be later.
+
 ### 17.7 Common errors and limits
 
 - Equating "the controller worked" with "the process is safe".
@@ -1420,6 +1426,8 @@ ramp 0.05 m/h     (1.1, 1.1, None, 10.6)
 - Thresholds set without measuring normal noise and drift.
 - Ignoring wind-up and saturation in safety reasoning.
 - Simulation results presented as plant behaviour; Lab 7 is a simplified model with perfect flow meters.
+
+For Hollin Hill, EX034 shows the dependence problem plainly: the level sensor and the inlet flow meter are both wired to RTU3, so compromising one RTU defeats both sides of the residual.
 
 ### Exercises — chapter 17
 
@@ -1451,9 +1459,13 @@ After this chapter you can (1) describe reference architectures for operational 
 
 OT architectures are commonly described in levels: physical process (level 0), sensors and actuators with basic control (1), supervisory control (2), site operations (3), a demilitarised zone, and enterprise (4–5). The model, which descends from the Purdue reference architecture and appears in the [NIST OT guide](https://csrc.nist.gov/pubs/sp/800/82/r3/final), is a tool for placing assets and conduits, not a law. Modern systems blur levels: cloud-connected sensors, vendor remote services and field devices with direct cellular links.
 
+At LRWA, the SCADA servers sit in the control zone, the RTUs in the field zone and the historian replica in the DMZ.
+
 ### 18.2 The DMZ and data brokering
 
 The OT DMZ sits between control and enterprise networks. No direct traffic crosses it: enterprise systems talk to DMZ services (historian replica, patch server, remote-access gateway), which talk to control systems. A useful test: if any enterprise host is compromised, can it send a packet that reaches a controller? If yes, the DMZ is decorative.
+
+At LRWA the flow review applied this test and failed: an enterprise reporting script reached a field RTU directly. Moving that data to the DMZ historian replica is how LRWA makes its DMZ real rather than decorative, and the test is repeated after every new conduit is added.
 
 ### 18.3 Zero trust in OT
 
@@ -1467,6 +1479,8 @@ Vendor and staff remote access is a leading entry path into OT. Architect it as:
 
 Network security monitoring in OT is usually passive: copies of traffic from switch mirror ports or taps feed sensors that understand industrial protocols and baseline normal behaviour. Logs from servers, firewalls and gateways go to a collector in the DMZ or a dedicated security zone. Monitoring must not create new paths into control: sensors receive copies only, and management interfaces sit on a separate network.
 
+At LRWA, the passive taps sit at the control zone switch and the LTE head-end, and their management interfaces are kept off the monitored network.
+
 ### 18.6 Worked example: TMRP target architecture (synthetic)
 
 LRWA's target: enterprise — firewall — DMZ (historian replica, remote-access gateway with MFA, patch staging, log collector) — firewall — control zone (SCADA pair, engineering jump host) — field conduit over private LTE with application-layer authentication (gateways for legacy RTUs) — RTUs and local control panels with manual mode. Passive monitoring taps sit at the control zone switch and the LTE head-end. The architecture is evaluated against consequences: forged commands require compromising either a field gateway key or the SCADA servers; enterprise compromise yields historian replica data but no packet path to field devices; loss of LTE leaves sites in local automatic or manual mode with 24 h telemetry batteries.
@@ -1475,6 +1489,8 @@ LRWA's target: enterprise — firewall — DMZ (historian replica, remote-access
 
 Draw the target architecture in text or a simple diagram and annotate each conduit with the allowlist entries from Lab 5. Then apply the DMZ test of §18.2.
 
+Mark each conduit with its direction and protocol, and show where the passive taps sit. For every allowlist entry, ask which zone initiates the connection and whether the DMZ test still passes if that zone is compromised. Then add the engineering path through the jump host and check that no rule lets an engineering workstation reach a field RTU directly, which was one of LRWA's three flow violations. A diagram that hides direction cannot show whether the DMZ actually works.
+
 ### 18.8 Common errors and limits
 
 - DMZs with "temporary" direct rules.
@@ -1482,6 +1498,8 @@ Draw the target architecture in text or a simple diagram and annotate each condu
 - Remote access that bypasses the gateway (vendor modems, desktop-sharing tools).
 - Monitoring sensors with management interfaces on the monitored network.
 - Architectures judged by number of controls rather than consequences prevented.
+
+At LRWA, the third and first errors are the most likely: a vendor wanting quick access to RTU-B for diagnostics, and a temporary direct rule added during an outage. The target architecture answers both with the DMZ access gateway and change control on every conduit.
 
 ### Exercises — chapter 18
 
@@ -1531,6 +1549,8 @@ Keys are where cryptography meets operations. Decide: who generates keys and whe
 
 People need named accounts, strong authentication (phishing-resistant multi-factor where possible — see [NIST SP 800-63B](https://csrc.nist.gov/pubs/sp/800/63/b/upd2/final)), roles mapped to tasks, and prompt removal on departure. Devices need identities too — certificates or provisioned keys — so that a gateway knows which RTU it is talking to. Shared or default credentials are the most common identity failure in OT.
 
+In TMRP, operators use named accounts with strong authentication at the SCADA servers, and each RTU has its own key, so the gateway knows which station sent each message.
+
 ### 19.5 Worked example: TMRP message format (synthetic)
 
 ADR-007 chose HMAC with counters. The frame in Lab 8 carries an 8-byte counter, 2-byte station ID, 2-byte level and a 16-byte truncated HMAC-SHA256: 28 bytes, of which 22 are overhead relative to a 6-byte unauthenticated payload. Per-station keys are generated in the gateway's secure element at enrolment and stored in the RTU's key store; the SCADA side holds them in a hardware security module. Keys rotate annually and immediately on suspected compromise; the counter is persisted in non-volatile memory at each increment of 1,000 with a forward skip on restart, so replay of old messages remains impossible.
@@ -1570,6 +1590,8 @@ frame bytes: 28 overhead vs 6-byte payload: 22
 
 The key in the lab is a published demonstration value; real keys must never appear in source code.
 
+The first two messages from station three are accepted with increasing counters. Replaying the first message is refused because its counter is not greater than the last accepted value, and the forged message, with its level changed from 309 to 150 centimetres, fails the tag check. The final line confirms the frame size used in ADR-007: twenty-eight bytes, twenty-two of them overhead. The lab keeps state only in memory, which is why EX018 asks what happens after a restart.
+
 ### 19.7 Common errors and limits
 
 - Hashes or CRCs used as if they were MACs.
@@ -1578,6 +1600,8 @@ The key in the lab is a published demonstration value; real keys must never appe
 - Fleet-wide shared keys; keys in configuration files or source code.
 - Default passwords and shared accounts.
 - Cryptographic choices without a plan for the system's lifetime (algorithm agility).
+
+TMRP's design answers each item: tags are compared in constant time, counters persist across restarts, keys are per station in secure hardware, and the message format gains a suite identifier for future algorithm changes. Each choice has a test.
 
 ### Exercises — chapter 19
 
@@ -1640,6 +1664,8 @@ LRWA is a water utility with a hospital among its critical customers. Its conseq
 
 Choose one sector other than water. From public sources only, build its row of §20.2 in more detail: three consequence units, three typical technologies, two key regulations with version and date, and one documented incident with its source.
 
+Keep the profile at the level of your sources. For each regulation, give the version, the date you consulted it and the entities it covers. For the incident, state only what the cited report says, and note any later revision, as with Oldsmar. Then compare your sector's consequence unit with LRWA's people-hours without safe water, and note one interdependency your sector shares with water, such as electricity, communications or time.
+
 ### 20.7 Common errors and limits
 
 - Treating "critical infrastructure" as a technology category rather than a consequence category.
@@ -1647,6 +1673,8 @@ Choose one sector other than water. From public sources only, build its row of �
 - Incident narratives repeated beyond what sources support.
 - Ignoring IT dependencies of physical operations.
 - One-sector thinking in an interdependent world.
+
+LRWA's own context shows why these matter. Its critical status comes from St Brenna's and its other customers, not from the technology it runs. Its operations depend on electricity, LTE, chlorine supply and accurate time, so analysing water in isolation would miss the hidden feeder dependency found earlier. Any regulatory duty it relies on must be cited with a version and a date.
 
 ### Exercises — chapter 20
 
@@ -1690,6 +1718,8 @@ IEC 62443-3-3 and 62443-4-2 express system and component requirements against **
 
 Requirements conflict: fast operator access versus strong authentication; frequent patching versus availability; detailed logging versus storage at remote sites; vendor support versus network isolation. Do not resolve conflicts silently in design. Record each, its options, and the decision with its owner — usually the person who owns the operational risk.
 
+TMRP's first recorded conflict is between R4's local manual mode and R1's authentication, resolved with a key switch, an alarm and a local log. The owner is operations, which carries the risk of slower manual access.
+
 ### 21.5 Worked example: TMRP requirement set v1.0 (synthetic)
 
 | ID | Requirement | Source | Verification |
@@ -1710,6 +1740,8 @@ Conflict recorded: R4's local manual mode creates a path that bypasses R1's auth
 
 Choose one degraded state not yet covered (e.g., loss of the chlorine supplier for 7 days) and write a requirement, its source, and verification method.
 
+Write the requirement in the same form as the TMRP table: an identifier, a single verifiable statement, its source and a verification method. A seven-day loss of chlorine supply, for example, might lead to a minimum on-site chemical stock with an inspection, and a procedure for an alternative supplier tested by exercise. Check that your requirement does not conflict with an existing one, and if it does, record the conflict and who should decide it.
+
 ### 21.7 Common errors and limits
 
 - Requirements for protection only, none for degradation and recovery.
@@ -1717,6 +1749,8 @@ Choose one degraded state not yet covered (e.g., loss of the chlorine supplier f
 - Citing standard clauses without access to the text.
 - Conflicts resolved silently by whoever writes the design.
 - Requirements that cannot be verified within the programme's means.
+
+TMRP's set avoids the first error by including R4, R5 and R6 for degraded operation and recovery, and avoids the fourth by recording the local manual conflict openly. Every requirement in the set can be verified with the programme's own bench, trial or demonstration.
 
 ### Exercises — chapter 21
 
@@ -1748,6 +1782,8 @@ After this chapter you can (1) build an asset inventory and a system model that 
 
 You cannot protect what you do not know. An OT asset inventory records, for each device: identity, location, function, zone, network addresses, hardware and firmware versions, communication relationships, owner, criticality and support status. Build it from several sources and reconcile: design documents, passive network monitoring, configuration exports and site walk-downs. Each source misses things — documents drift, passive monitoring misses quiet devices, walk-downs miss virtual ones.
 
+For LRWA, the inventory covers all 42 field stations, the SCADA pair and the gateways, built from design documents, passive monitoring at the control switch and LTE head-end, and site visits.
+
 ### 22.2 Three views of a system
 
 - **Functional view:** what the system does — functions such as "maintain reservoir level", "disinfect", "provide operator visibility" — and which functions depend on which (Lab 2's graph).
@@ -1760,9 +1796,13 @@ Keep the views linked: every function maps to the assets that implement it; ever
 
 Up/down graphs are useful (Chapter 2) but insufficient. A pumping station may be in *remote automatic*, *local automatic*, *local manual*, *degraded* (one pump of two) or *out of service*; the reservoir may be *normal*, *low* or *below floor*. A **state model** for each critical function, with transitions caused by faults, attacks and operator actions, lets you ask: from normal operation, what sequence of events reaches an unacceptable state, and which control interrupts it?
 
+PS4 is the obvious first candidate at LRWA, because it feeds the hospital directly.
+
 ### 22.4 The model as sensitive information
 
 An accurate system model is a map for an adversary. Store it with access control, version it, and publish only abstractions. Treat exports to vendors and consultants under agreements. Keep a **model change log** linked to configuration management (Chapter 16) so that the model stays current; a model that is a year out of date is a liability presented as an asset.
+
+LRWA's model, including the dependency graph and the zone allowlists, is held with access control and versioned with each configuration change.
 
 ### 22.5 Worked example: Hollin Hill functional model (synthetic)
 
@@ -1772,6 +1812,8 @@ Function F1 "supply St Brenna's" is satisfied if either path A (PS4 direct) or p
 
 Extend Lab 2 so that each node has an AND or OR dependency type, and implement an availability function that evaluates whether `hospital_supply` works given a set of failed nodes. Test with the failures `{grid_f1}`, `{ps4}` and `{ps4, grid_f1}`.
 
+Model the hospital supply as an OR of its two paths, with PS4's power as an OR of feeder F2 and the generator. Keep telemetry out of the supply function, as the worked example argues, but keep it in a separate visibility function so its loss still shows up. Then check your three results against EX043: the supply should survive losing feeder F1 or losing PS4, and fail only when both are lost.
+
 ### 22.7 Common errors and limits
 
 - Inventory from one source only.
@@ -1779,6 +1821,8 @@ Extend Lab 2 so that each node has an AND or OR dependency type, and implement a
 - Up/down models where degraded modes decide outcomes.
 - Models that are never updated, or that are shared freely.
 - Treating telemetry loss and control misuse as the same consequence.
+
+The Hollin Hill model shows the last error clearly: treating telemetry loss as loss of supply would send TMRP's budget to communications redundancy, when the property that actually protects the hospital is that pumps cannot be commanded remotely into an unsafe state.
 
 ### Exercises — chapter 22
 
@@ -1867,6 +1911,8 @@ Expected output:
 rare-event approx 9.360e-05  exact 9.101e-05
 ```
 
+The six cut sets each contain TANK, so the hospital's on-site storage appears in every route to the top event. The largest single contributor combines feeder F1, PS4 and the tank. The two probability figures differ slightly because the rare-event approximation counts overlapping cut sets twice, so it gives a small upper bound on the exact value. The adversarial reading in the worked example comes from setting PS3 and PS4 to certain failure and rerunning, which EX045 asks you to do yourself.
+
 ### 23.7 Common errors and limits
 
 - Fault trees with dependent basic events treated as independent (common power, common software).
@@ -1874,6 +1920,8 @@ rare-event approx 9.360e-05  exact 9.101e-05
 - Threat models without trust boundaries.
 - STRIDE lists never checked against observed adversary behaviour.
 - Treating the rare-event approximation as exact when probabilities are large.
+
+Lab 9 itself assumes independence, so a shared software flaw in both stations' RTUs would make its figures optimistic. Its probabilities for PS3 and PS4 failing are frequencies of random faults, so they say nothing about how likely an attacker is to stop both stations, which is why the adversarial case is handled by conditioning rather than by adding an attack probability.
 
 ### Exercises — chapter 23
 
@@ -1918,13 +1966,19 @@ Engineering projects use several; a common mistake is using one method to answer
 
 A reproducible assessment documents: scope and assumptions; system model version; threat sources and their assumed capabilities; scenarios (threat event → vulnerability → consequence); existing controls; likelihood and consequence scales with definitions; ratings with rationale; and recommended controls. Scales must be defined in the organisation's terms (people-hours without water, not "high"). Ratings without rationale are opinions; with rationale, they can be challenged and improved.
 
+TMRP's scales use people-hours without water at the hospital and other customers, so ratings mean the same thing to operators and managers.
+
 ### 24.3 Simulation with verification and validation
 
 **Verification** asks whether the model is implemented correctly (does the code do what the model says?); **validation** asks whether the model represents reality well enough for its purpose. [Sargent (2013)](https://doi.org/10.1057/jos.2012.20) describes techniques: comparison with analytic results (Lab 1's Euler versus exact), extreme-condition tests, comparison with historical data, face validity with operators, and sensitivity analysis. State the model's intended use; a model valid for hold-up estimation may be invalid for transient pressure analysis.
 
+For TMRP, the hold-up model is validated against a historical planned outage before it is used for the combined grid and telemetry scenario.
+
 ### 24.4 Exercises with people
 
 Tabletop exercises walk a team through a scenario to test plans, roles and decisions; functional exercises perform some actions for real. Design them with objectives, injects, observers and an after-action report that records gaps without blame. They show whether people know what to do and where plans are ambiguous; they do not measure equipment performance.
+
+TMRP's night functional exercise of local manual mode at PS3 and PS4 is the example: it uses real night staffing, records the time taken to establish manual operation, and reports the gaps it finds, but it cannot show whether the pumps or gateways meet their own requirements.
 
 ### 24.5 Worked example: choosing methods for TMRP (synthetic)
 
@@ -1934,6 +1988,8 @@ TMRP has four open questions: (1) which scenarios deserve funding — risk asses
 
 Run a 45-minute tabletop with two classmates on the scenario "SCADA servers encrypted at 02:00", using the TMRP requirement set. Record decisions, times and gaps in an after-action report.
 
+Assign roles before you start: the night operator, the duty manager and a facilitator who delivers injects. Use TMRP's requirements as the yardstick, especially local manual operation within one hour and restoration of remote operation within eight. Record each decision with its time and who made it. The after-action report should list what the plan did not cover, without naming anyone as the cause, and should state that a tabletop cannot show whether the eight-hour restoration is achievable.
+
 ### 24.7 Common errors and limits
 
 - One method stretched to answer all questions.
@@ -1941,6 +1997,8 @@ Run a 45-minute tabletop with two classmates on the scenario "SCADA servers encr
 - Simulation presented without V&V or intended use.
 - Exercise reports that blame individuals or record only successes.
 - Evidence disproportionate to the decision (too little for safety-critical, too much for trivial).
+
+TMRP's method plan guards against the first error by naming each method's limit, so a tabletop is never cited as proof that R6 is met. Its likelihood and consequence scales are defined in people-hours, and the hold-up simulation states its intended use.
 
 ### Exercises — chapter 24
 
@@ -1972,13 +2030,19 @@ After this chapter you can (1) run a structured design studio from brief to revi
 
 A design studio is an iterative, critiqued design exercise. Teams receive a brief, produce concepts, present them to reviewers who challenge assumptions, and revise. Its value is the critique: designs improve fastest when someone competent tries to break them early. In this course, each studio produces a **concept dossier**: problem statement, requirements excerpt, alternatives, evaluation, selected concept, risk register, verification plan and open questions.
 
+For TMRP, Studio I's dossier covers remote operation of all six pumping stations and the Fenwick works.
+
 ### 25.2 The brief
 
 **Studio I brief (synthetic):** LRWA must secure remote operation of PS1–PS6 and the Fenwick works. Constraints: budget 250 k (Lab 16); PS1 and PS2 have legacy RTU-A units that cannot be replaced for three years; private LTE is the only economical link; one control room, staffed 24/7 with one operator at night; the hospital needs ≤ 4 h interruption. Deliver: two to four concepts, evaluation, selection and verification plan.
 
+The night staffing constraint is the one that most shapes the concepts, because any design that needs someone to drive to a station for every change leaves a single operator unable to keep up across six sites.
+
 ### 25.3 Generating alternatives
 
 Generate concepts that differ in principle, not detail: (A) carrier-encrypted LTE with central firewalling only; (B) IPsec tunnels from new RTUs, gateways for legacy; (C) application-layer authentication with gateways and strong local autonomy; (D) no remote control at all — monitoring only, with operators dispatched for every change. Including an extreme (D) clarifies what remote control is worth.
+
+The four concepts differ in where authentication happens and whether remote control exists at all. Concept D's very low operability score in the evaluation shows why an extreme is worth including.
 
 ### 25.4 Weighted evaluation
 
@@ -1999,9 +2063,13 @@ D scores close to C because it is very secure, but its operability score reflect
 
 Present: the problem in one sentence, constraints, alternatives, evaluation, selection, risks, and what you have not verified. Reviewers will attack assumptions; record each finding, respond (accept, reject with reason, defer with owner) and revise. A defensive team learns nothing; a team that accepts every comment has no design.
 
+The panel findings in EX050 are typical for TMRP: the gateway as a single point of failure, local manual mode bypassing authentication, and missing key-management staffing costs. Each needs a logged response with an owner. The second can be answered with evidence that already exists, because the key switch, alarm and local log were recorded when the conflict between R4 and R1 was resolved.
+
 ### 25.6 Practical activity
 
 Produce the concept dossier for the Studio I brief in no more than eight pages and hold a 20-minute review with two peers acting as panel.
+
+Keep to eight pages so the panel can read it before the review. Present the four concepts in the weighted table, show the sensitivity check and state what has not been verified. Ask the peers to attack one assumption each, such as the cost estimate or the night operability score. Record their findings in a response log with accept, reject or defer and an owner, as EX050 asks, and revise the concept before submitting the dossier.
 
 ### 25.7 Common errors and limits
 
@@ -2010,6 +2078,8 @@ Produce the concept dossier for the Studio I brief in no more than eight pages a
 - Scores without evidence.
 - No sensitivity check.
 - Treating review as a test to pass rather than information.
+
+Studio I guards against these: its four concepts differ in principle, its weights were fixed before scoring, and EX049 tests whether concept C's lead survives other weights. The panel's challenge to concept D, which scores well on security but fails night operability, is the kind of finding a review should produce. Every score cites evidence.
 
 ### Exercises — chapter 25
 
@@ -2041,6 +2111,8 @@ After this chapter you can (1) compare architectural patterns for critical syste
 
 Centralised control (one SCADA directing simple field devices) gives operators a single view and makes coordination easy, but concentrates both failure and attack. Distributed control (capable field controllers that run locally and accept supervisory targets) degrades gracefully when the centre or network is lost, at the cost of more devices to secure and configure. Most resilient designs are hierarchical: local control maintains safe operation autonomously; the centre optimises and coordinates.
 
+TMRP's choice, the hierarchical C2, keeps local automatic control at every station.
+
 ### 26.2 Redundancy patterns
 
 - **Hot standby:** a second unit running and ready to take over automatically (SCADA server pairs).
@@ -2054,9 +2126,13 @@ Each pattern must be judged against common causes (Chapter 7): two identical ser
 
 Diversity — different technologies, vendors, paths or teams — reduces common causes. It costs more and increases the skills needed, and can add attack surface. Use it where a common cause would be unacceptable: a second communication path via a different carrier and different power; a hard-wired safety trip independent of software; a manual gauge an operator can read when all electronics are suspect.
 
+At LRWA, the case for diversity is clearest on the telemetry path, where a second carrier on separate power would remove the shared feeder F1 dependency, and at Hollin Hill, where a manual level gauge gives operators a reading they can trust when all electronics are suspect.
+
 ### 26.4 Unidirectional flows and local autonomy
 
 Unidirectional gateways enforce outward-only data flow physically; they remove a whole class of inbound attacks on the protected side but also remove remote control through that path. Local autonomy — the ability of a site to run safely without the centre — is a resilience pattern that also limits attack consequence: a compromised centre can disrupt optimisation but should not be able to drive a site outside safe limits if those limits are enforced locally (R3).
+
+TMRP's C3 option takes this to its limit for monitoring.
 
 ### 26.5 Worked example: three TMRP architectures compared (synthetic)
 
@@ -2075,6 +2151,8 @@ The table makes the residual risk of C2 explicit: a compromised SCADA centre can
 
 Write an ADR selecting between C2 and C3 for PS4 specifically (the hospital feed), considering that PS4's setpoints change rarely.
 
+Start from the comparison table and from what makes PS4 special: it feeds St Brenna's directly and its setpoints change rarely. Weigh the security of removing remote setpoint writes against the cost of sending a technician for each change, especially at night with one operator on duty. State what would make you revisit the decision, such as more frequent setpoint changes. The defense in Chapter 50 later refers to an ADR with exactly this local-only option for PS4.
+
 ### 26.7 Common errors and limits
 
 - Redundancy without diversity, claimed as resilience against attack.
@@ -2082,6 +2160,8 @@ Write an ADR selecting between C2 and C3 for PS4 specifically (the hospital feed
 - Centralisation for convenience without local safe limits.
 - Ignoring the operational cost of architectures that remove remote control.
 - Architectural comparisons without numbers where numbers are available.
+
+TMRP's table avoids the last error by putting numbers where they exist, such as communications unavailability with a common-cause factor, and by stating the staffing cost of C3 plainly. It also accepts C2's residual openly instead of claiming its redundancy protects against attack.
 
 ### Exercises — chapter 26
 
