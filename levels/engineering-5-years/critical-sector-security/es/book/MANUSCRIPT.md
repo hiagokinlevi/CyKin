@@ -52,10 +52,10 @@ Toda afirmación factual sobre una ley, una norma, un incidente o un estudio pub
 14. [Ingeniería de software](#ch-14)
 15. [Fundamentos de seguridad](#ch-15)
 16. [Ingeniería de sistemas](#ch-16)
-17. [Fundamentos de control y realimentación](../../en/book/MANUSCRIPT.md#ch-17)
-18. [Arquitectura de seguridad](../../en/book/MANUSCRIPT.md#ch-18)
-19. [Identidad y criptografía](../../en/book/MANUSCRIPT.md#ch-19)
-20. [Infraestructura crítica y seguridad sectorial: contexto de ingeniería](../../en/book/MANUSCRIPT.md#ch-20)
+17. [Fundamentos de control y realimentación](#ch-17)
+18. [Arquitectura de seguridad](#ch-18)
+19. [Identidad y criptografía](#ch-19)
+20. [Infraestructura crítica y seguridad sectorial: contexto de ingeniería](#ch-20)
 21. [Infraestructura crítica y seguridad sectorial: requisitos](../../en/book/MANUSCRIPT.md#ch-21)
 22. [Infraestructura crítica y seguridad sectorial: modelos de sistema y de datos](../../en/book/MANUSCRIPT.md#ch-22)
 23. [Infraestructura crítica y seguridad sectorial: análisis de amenazas y fallas](../../en/book/MANUSCRIPT.md#ch-23)
@@ -1304,7 +1304,347 @@ La ingeniería de sistemas pasa de las necesidades a sistemas verificados y vali
 <!-- cyberabc:chapter-navigation:start ch-16 -->
 ### Siga estudiando — capítulo 16 de 50
 
-[← Capítulo 15](#ch-15) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 17 →](../../en/book/MANUSCRIPT.md#ch-17)
+[← Capítulo 15](#ch-15) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 17 →](#ch-17)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-17"></a>
+
+## Capítulo 17 — Fundamentos de control y realimentación
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) describir el control en lazo abierto y en lazo cerrado, las consignas, el error y los límites de los actuadores; (2) explicar el control proporcional-integral (PI) y la saturación del integrador (*wind-up*); (3) analizar cómo los datos de sensor falsos, una inyección de datos falsos, llevan a un controlador correcto a un estado inseguro; y (4) diseñar una detección basada en residuos con mediciones físicas independientes e indicar sus puntos ciegos. Se apoya en el capítulo 6 y prepara los capítulos 27 y 33.
+
+### 17.1 Realimentación
+
+Un controlador en **lazo cerrado** mide una variable de proceso, la compara con una consigna y ajusta un actuador para reducir el error. La realimentación hace que los sistemas sean robustos frente a las perturbaciones y los errores de modelo, y hace que confíen por completo en sus sensores. [*Feedback Systems*, de Åström y Murray](https://fbswiki.org/wiki/index.php/Main_Page), disponible gratuitamente en línea, es el texto de referencia de este capítulo. En Hollin Hill, el controlador PI ajusta el caudal de entrada de PS3 para mantener el nivel del depósito en su consigna. Ve el depósito solo a través del transmisor de nivel, de modo que lo que informe ese transmisor es, para el controlador, la verdad. El resto de este capítulo sigue las consecuencias de esa confianza.
+
+### 17.2 Control PI
+
+Un controlador proporcional fija la salida del actuador en $u = K_p e$; deja un error en régimen permanente cuando debe compensarse una perturbación constante. Añadir un término integral, $u = K_p e + K_i\int e\,dt$, elimina el error en régimen permanente porque la integral sigue creciendo hasta que el error es cero. Los actuadores se saturan (una bomba no puede dar más que su caudal máximo) y, mientras están saturados, la integral sigue creciendo (**saturación del integrador**), lo que causa un sobreimpulso cuando el actuador sale de la saturación. El antisaturación (*anti-wind-up*) detiene la integración mientras dura la saturación.
+
+### 17.3 Datos falsos y el controlador confiado
+
+Si un atacante añade un sesgo $b$ a la medición de nivel, el controlador regula el nivel *medido* a la consigna, de modo que el nivel *real* se estabiliza en la consigna menos $b$. El controlador funciona perfectamente; el proceso no. Este es el núcleo de los ataques conscientes del proceso: Stuxnet, según el análisis de [Langner (2011)](https://doi.org/10.1109/MSP.2011.67), manipuló las velocidades de las centrifugadoras mientras reproducía ante los operadores valores de apariencia normal. Las defensas no pueden basarse en el mismo flujo de datos del sensor que controla el atacante.
+
+En Hollin Hill, un transmisor de nivel sesgado bajaría el nivel real mientras la pantalla del operador mostraba la consigna, así que la defensa debe venir de una medición independiente.
+
+### 17.4 Detección basada en residuos
+
+Un **residuo** es la diferencia entre lo que dice una medición y lo que predice un modelo independiente. Para un depósito, el balance de masa predice el cambio de nivel a partir de los caudales de entrada y de salida medidos de forma independiente: $\Delta h = (q_{in} - q_{out})\Delta t / A$. Dos detectores: un **residuo por paso** compara el cambio del nivel medido con el cambio predicho en un paso; un **residuo acumulado** compara el nivel medido con el nivel integrado a partir de los caudales desde la última calibración de confianza. El detector por paso detecta un sesgo abrupto, pero no una deriva lenta; el detector acumulado detecta la deriva, pero acumula el error de los medidores, así que necesita recalibraciones periódicas y un umbral por encima de la deriva normal de los medidores. Un atacante que también controle los caudalímetros anula ambos: la independencia de los caminos de medición es el verdadero control.
+
+### 17.5 Ejemplo resuelto: ataque al nivel de Hollin Hill (sintético)
+
+El Lab 7 simula durante 48 h el control PI de Hollin Hill (superficie en planta de 1.000 m², consigna de 3,0 m, caudal de salida de 300 m³/h, bomba de entrada de 0–600 m³/h). Un sesgo escalón de +1,5 m a las 10 h lleva el nivel real a 1,5 m; ambos detectores alarman a las 10,0 h. Un sesgo de +0,04 m, lo bastante pequeño para parecer un error del sensor, solo lo detecta el detector acumulado. Una rampa lenta de 0,05 m/h elude por completo al detector por paso; el detector acumulado alarma a las 10,6 h, cuando el sesgo es de unos 0,03 m. Sin detección, la rampa deja el nivel real en 1,1 m al cabo de 48 h.
+
+### 17.6 Actividad práctica: Lab 7
+
+```python
+# Lab 7 - PI level control under sensor-bias attacks, and two residual detectors (synthetic, offline)
+def run(attack=None, hours=48, dt=0.1):
+    A = 1000.0                         # m2 reservoir plan area: level h (m), volume A*h (m3)
+    h, integ, sp, kp, ki = 3.0, 7.5, 3.0, 400.0, 40.0   # integ preloaded so u = 300 at start
+    est = h                            # mass-balance estimate from independently metered flows
+    prev_meas, step_t, cum_t, hmin = h, None, None, h
+    for k in range(int(hours / dt)):
+        t = k * dt
+        b = attack(t) if attack else 0.0
+        meas = h + b
+        err = sp - meas
+        u = kp * err + ki * integ
+        q_in = min(max(u, 0.0), 600.0)              # pump limits 0..600 m3/h
+        if 0.0 < u < 600.0: integ += err * dt         # anti-windup
+        q_out = 300.0
+        if k > 0 and step_t is None and abs((meas - prev_meas) - (est - est_prev)) > 0.05: step_t = round(t, 1)
+        if cum_t is None and abs(meas - est) > 0.03: cum_t = round(t, 1)
+        prev_meas, est_prev = meas, est
+        h += (q_in - q_out) / A * dt; est += (q_in - q_out) / A * dt
+        hmin = min(hmin, h)
+    return round(h, 2), round(hmin, 2), step_t, cum_t
+print("columns: true final level m, true min level m, step-detector alarm h, cumulative-detector alarm h")
+print("no attack        ", run())
+print("step bias +1.5 m ", run(lambda t: 1.5 if t >= 10 else 0.0))
+print("step bias +0.04 m", run(lambda t: 0.04 if t >= 10 else 0.0))
+print("ramp 0.05 m/h    ", run(lambda t: 0.05 * (t - 10) if t >= 10 else 0.0))
+```
+
+Salida esperada:
+
+```text
+columns: true final level m, true min level m, step-detector alarm h, cumulative-detector alarm h
+no attack         (3.0, 3.0, None, None)
+step bias +1.5 m  (1.5, 1.4, 10.0, 10.0)
+step bias +0.04 m (2.96, 2.95, None, 10.0)
+ramp 0.05 m/h     (1.1, 1.1, None, 10.6)
+```
+
+Lea las cuatro filas a la luz del ejemplo resuelto. Sin ataque, el nivel se mantiene en tres metros y ningún detector se activa. El sesgo escalón grande lo detectan ambos detectores a la vez, y el nivel real se estabiliza metro y medio por debajo. El escalón pequeño y la rampa lenta son los casos en que los detectores difieren: solo el detector acumulado los ve, y la rampa, si no se hace nada, arrastra el nivel real hasta alrededor de un metro. Recuerde que los caudalímetros del laboratorio son perfectos, de modo que los tiempos de detección reales serían más tardíos.
+
+### 17.7 Errores comunes y límites
+
+- Equiparar «el controlador funcionó» con «el proceso es seguro».
+- Una detección que usa el mismo camino de datos que el lazo de control.
+- Umbrales fijados sin medir el ruido y la deriva normales.
+- Ignorar la saturación del integrador y del actuador en el razonamiento de seguridad funcional.
+- Presentar resultados de simulación como comportamiento de la planta; el Lab 7 es un modelo simplificado con caudalímetros perfectos.
+
+Para Hollin Hill, el EX034 muestra claramente el problema de la dependencia: el sensor de nivel y el caudalímetro de entrada están cableados ambos a la RTU3, de modo que comprometer una sola RTU anula los dos lados del residuo.
+
+### Ejercicios — capítulo 17
+
+**EX033 — Compromiso del umbral.** *Objetivo:* ajustar un detector. *Entradas:* Lab 7. *Pasos:* (1) añada ruido gaussiano de desviación típica 0,01 m al nivel medido (semilla 17) y cuente las falsas alarmas del detector acumulado en el caso sin ataque con umbrales de 0,03 y 0,05; (2) informe el tiempo de detección de la rampa con ambos umbrales; (3) recomiende un umbral. *Evidencia esperada:* tabla y recomendación. *Rúbrica:* 3 = experimento implementado correctamente, compromiso explicado, recomendación ligada al tiempo de respuesta; 2 = un solo umbral; 1 = no ejecutado; 0 = nada.
+
+**EX034 — Argumento de independencia.** *Objetivo:* argumentar la independencia de la detección. *Entradas:* la arquitectura de LRWA: el sensor de nivel y el caudalímetro de entrada, ambos cableados a la RTU3; el caudalímetro de salida en PS4, en la RTU4. *Pasos:* identifique qué posiciones del atacante anulan el detector de residuos y proponga un cambio de arquitectura que mejore la independencia. *Evidencia esperada:* media página. *Rúbrica:* 3 = el compromiso de la RTU3 anula tanto el nivel como el caudal de entrada, el cambio propone un camino separado (p. ej., un transmisor de nivel independiente hacia un registrador separado o una comprobación física con indicador de nivel); 2 = parcial; 1 = genérico; 0 = nada.
+
+### Síntesis del capítulo
+
+La realimentación hace que los sistemas sean robustos y crédulos. Un sensor sesgado lleva a un controlador correcto a un estado físico incorrecto. Detecte con residuos construidos a partir de una física independiente, use pruebas por paso y acumuladas para los ataques abruptos y lentos, fije los umbrales a partir del ruido medido y recuerde que la independencia de los caminos de medición, y no la astucia del algoritmo, es lo que derrota a un atacante capaz.
+
+<!-- cyberabc:chapter-navigation:start ch-17 -->
+### Siga estudiando — capítulo 17 de 50
+
+[← Capítulo 16](#ch-16) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 18 →](#ch-18)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-18"></a>
+
+## Capítulo 18 — Arquitectura de seguridad
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) describir arquitecturas de referencia para la tecnología operativa, incluidos los modelos por niveles y las DMZ; (2) aplicar los principios de confianza cero donde encajan en la TO y explicar dónde no encajan; (3) diseñar arquitecturas de acceso remoto, registro y monitoreo; y (4) evaluar una arquitectura según las consecuencias, no solo según el número de controles. Se apoya en los capítulos 11, 12 y 15 y prepara los capítulos 26 y 27.
+
+### 18.1 Arquitecturas de TO por niveles
+
+Las arquitecturas de TO suelen describirse por niveles: proceso físico (nivel 0), sensores y actuadores con control básico (1), control de supervisión (2), operaciones del sitio (3), una zona desmilitarizada y la empresa (4–5). El modelo, que desciende de la arquitectura de referencia de Purdue y aparece en la [guía de TO del NIST](https://csrc.nist.gov/pubs/sp/800/82/r3/final), es una herramienta para ubicar activos y conductos, no una ley. Los sistemas modernos difuminan los niveles: sensores conectados a la nube, servicios remotos de los proveedores y dispositivos de campo con enlaces celulares directos.
+
+En LRWA, los servidores SCADA están en la zona de control, las RTU en la zona de campo y la réplica del historiador en la DMZ.
+
+### 18.2 La DMZ y la intermediación de datos
+
+La DMZ de TO se sitúa entre las redes de control y las corporativas. Ningún tráfico directo la atraviesa: los sistemas corporativos hablan con los servicios de la DMZ (réplica del historiador, servidor de parches, pasarela de acceso remoto), que hablan con los sistemas de control. Una prueba útil: si se compromete cualquier equipo corporativo, ¿puede enviar un paquete que llegue a un controlador? Si la respuesta es sí, la DMZ es decorativa. En LRWA, la revisión de flujos aplicó esta prueba y no la superó: un script corporativo de informes llegaba directamente a una RTU de campo. Trasladar esos datos a la réplica del historiador en la DMZ es la forma en que LRWA hace que su DMZ sea real y no decorativa, y la prueba se repite cada vez que se añade un conducto nuevo.
+
+### 18.3 Confianza cero en la TO
+
+La confianza cero, tal como la describe [NIST SP 800-207](https://csrc.nist.gov/pubs/sp/800/207/final), elimina la confianza implícita basada en la ubicación en la red; cada acceso se autentica, se autoriza y se evalúa por sesión. En la TO, el principio es valioso para el acceso humano y de ingeniería (identidades nominativas, autenticación fuerte, privilegio justo a tiempo, grabación de sesiones) y para los dispositivos nuevos que lo admiten. Encaja mal donde los controladores heredados no pueden autenticarse en absoluto y donde los lazos de control no toleran un punto de decisión de políticas en su camino. La respuesta de ingeniería es aplicar la confianza cero en las fronteras donde se puede (acceso de ingeniería, intermediación de datos, pasarelas) y usar la segmentación y el monitoreo alrededor de lo que no puede autenticarse.
+
+### 18.4 Acceso remoto
+
+El acceso remoto de proveedores y personal es una de las principales vías de entrada a la TO. Diséñelo así: una pasarela de acceso en la DMZ; autenticación multifactor; cuentas nominativas; acceso aprobado por sesión; conexiones a un servidor de salto, nunca directamente a los controladores; grabación de sesiones; y caducidad automática. El [incidente de la planta de tratamiento de agua de Oldsmar](https://www.cisa.gov/news-events/cybersecurity-advisories/aa21-042a) se atribuyó inicialmente a un acceso remoto no autorizado mediante software de escritorio compartido; declaraciones posteriores, recogidas por [WUSF Public Media (2023)](https://www.wusf.org/local-state/2023-04-13/official-hack-oldsmar-city-water-treatment-plant-2021), indicaron que probablemente se trató de un error de un empleado. En cualquier caso, el caso ilustra por qué el escritorio compartido sin control en las estaciones de los operadores es una debilidad de arquitectura, y por qué los primeros relatos de un incidente deben tomarse como provisionales.
+
+### 18.5 Arquitectura de monitoreo
+
+El monitoreo de la seguridad de la red en la TO suele ser pasivo: copias del tráfico procedentes de puertos espejo de los conmutadores o de derivadores (*taps*) alimentan sensores que entienden los protocolos industriales y establecen una línea base del comportamiento normal. Los registros de servidores, cortafuegos y pasarelas van a un recolector en la DMZ o en una zona de seguridad dedicada. El monitoreo no debe crear caminos nuevos hacia el control: los sensores reciben solo copias, y las interfaces de gestión están en una red separada.
+
+En LRWA, los derivadores pasivos están en el conmutador de la zona de control y en la cabecera LTE, y sus interfaces de gestión se mantienen fuera de la red monitoreada.
+
+### 18.6 Ejemplo resuelto: la arquitectura objetivo del TMRP (sintético)
+
+El objetivo de LRWA: empresa — cortafuegos — DMZ (réplica del historiador, pasarela de acceso remoto con MFA, preparación de parches, recolector de registros) — cortafuegos — zona de control (par SCADA, servidor de salto de ingeniería) — conducto de campo sobre LTE privada con autenticación en la capa de aplicación (pasarelas para las RTU heredadas) — RTU y paneles de control locales con modo manual. Los derivadores pasivos de monitoreo están en el conmutador de la zona de control y en la cabecera LTE. La arquitectura se evalúa según las consecuencias: las órdenes falsificadas exigen comprometer la clave de una pasarela de campo o los servidores SCADA; el compromiso corporativo da acceso a los datos de la réplica del historiador, pero a ningún camino de paquetes hacia los dispositivos de campo; la pérdida de LTE deja los sitios en modo automático local o manual, con baterías de telemetría de 24 h.
+
+### 18.7 Actividad práctica
+
+Dibuje la arquitectura objetivo en texto o en un diagrama sencillo y anote cada conducto con las entradas de la lista de permitidos del Lab 5. Después aplique la prueba de la DMZ de §18.2. Marque cada conducto con su dirección y su protocolo, y muestre dónde están los derivadores pasivos. Para cada entrada de la lista de permitidos, pregúntese qué zona inicia la conexión y si la prueba de la DMZ sigue superándose si esa zona se compromete. Después añada el camino de ingeniería a través del servidor de salto y compruebe que ninguna regla permite que una estación de ingeniería llegue directamente a una RTU de campo, que fue una de las tres infracciones de flujo de LRWA. Un diagrama que oculta la dirección no puede mostrar si la DMZ funciona realmente.
+
+### 18.8 Errores comunes y límites
+
+- DMZ con reglas directas «temporales».
+- Confianza cero declarada para sistemas que no pueden autenticarse.
+- Acceso remoto que elude la pasarela (módems de proveedores, herramientas de escritorio compartido).
+- Sensores de monitoreo con interfaces de gestión en la red monitoreada.
+- Arquitecturas juzgadas por el número de controles y no por las consecuencias que evitan.
+
+En LRWA, el tercer y el primer error son los más probables: un proveedor que quiere acceso rápido a RTU-B para hacer diagnósticos, y una regla directa temporal añadida durante una interrupción. La arquitectura objetivo responde a ambos con la pasarela de acceso de la DMZ y con control de cambios en cada conducto.
+
+### Ejercicios — capítulo 18
+
+**EX035 — Prueba de la DMZ.** *Objetivo:* probar un diseño de DMZ. *Entradas:* una regla propuesta que permite al servidor ERP corporativo escribir el estado de las órdenes de trabajo directamente en la base de datos del SCADA por TCP/1433. *Pasos:* aplique la prueba de la DMZ; proponga un diseño alternativo que satisfaga la necesidad del negocio. *Evidencia esperada:* análisis y diseño. *Rúbrica:* 3 = regla rechazada con su motivo, la alternativa intermedia los datos a través de la DMZ, con el lado de control recogiéndolos o con una exportación unidireccional; 2 = la alternativa sigue siendo entrante; 1 = acepta la regla; 0 = nada.
+
+**EX036 — Arquitectura de acceso remoto.** *Objetivo:* diseñar el acceso del proveedor. *Entradas:* el proveedor de RTU-B necesita acceso trimestral para diagnósticos. *Pasos:* especifique el camino de acceso, la autenticación, la aprobación, el monitoreo y la caducidad; enumere la evidencia que mostraría que el diseño funciona. *Evidencia esperada:* especificación y lista de evidencias. *Rúbrica:* 3 = pasarela, MFA, aprobación por sesión, servidor de salto, grabación, caducidad y evidencia (registros, prueba de que el camino directo está denegado); 2 = sin evidencia; 1 = VPN directa hacia el control; 0 = nada.
+
+### Síntesis del capítulo
+
+Use los modelos por niveles para ubicar activos y conductos, haga real la DMZ sin permitir ningún cruce directo, aplique la confianza cero donde los sistemas puedan autenticarse y la segmentación donde no puedan, haga pasar todo el acceso remoto por una pasarela controlada, monitoree de forma pasiva sin crear caminos y juzgue la arquitectura por las consecuencias que hace difíciles de provocar.
+
+<!-- cyberabc:chapter-navigation:start ch-18 -->
+### Siga estudiando — capítulo 18 de 50
+
+[← Capítulo 17](#ch-17) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 19 →](#ch-19)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-19"></a>
+
+## Capítulo 19 — Identidad y criptografía
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) explicar la criptografía simétrica y de clave pública, los hashes y los MAC, y elegir entre ellos; (2) diseñar la autenticación de mensajes con protección contra repeticiones para telemetría con recursos limitados; (3) planificar la gestión de claves (generación, distribución, almacenamiento, rotación, revocación) para una flota de campo; y (4) diseñar la identidad y la autenticación de personas y dispositivos. Se apoya en los capítulos 4, 13 y 18 y prepara los capítulos 27–28.
+
+### 19.1 Primitivas
+
+- Las **funciones de hash** (SHA-256, [FIPS 180-4](https://csrc.nist.gov/pubs/fips/180-4/upd1/final)) transforman los datos en un resumen de tamaño fijo; encontrar colisiones o preimágenes debe ser inviable. Un hash por sí solo no autentica nada.
+- El **cifrado simétrico** (AES, [FIPS 197](https://csrc.nist.gov/pubs/fips/197/final)) usa una única clave compartida para la confidencialidad.
+- Los **códigos de autenticación de mensajes** (HMAC, [FIPS 198-1](https://csrc.nist.gov/pubs/fips/198-1/final); [RFC 2104](https://www.rfc-editor.org/rfc/rfc2104)) permiten a quienes poseen una clave compartida verificar que un mensaje no se ha alterado y que procede de un poseedor de la clave.
+- La **criptografía de clave pública**, introducida por [Diffie y Hellman (1976)](https://doi.org/10.1109/TIT.1976.1055638) y llevada a las firmas por [Rivest, Shamir y Adleman (1978)](https://doi.org/10.1145/359340.359342), usa pares de claves: cualquiera puede verificar una firma con la clave pública; solo quien posee la clave privada puede firmar.
+- El **cifrado autenticado** (p. ej., AES-GCM) proporciona a la vez confidencialidad e integridad.
+
+Nunca diseñe sus propias primitivas o protocolos cuando haya uno estándar que sirva; TLS 1.3 ([RFC 8446](https://www.rfc-editor.org/rfc/rfc8446)) es la opción predeterminada para los enlaces IP que puedan ejecutarlo.
+
+### 19.2 Autenticar la telemetría
+
+Para un enlace con recursos limitados, un diseño habitual es: carga útil más un contador monótono (o una marca de tiempo), un MAC sobre ambos; el receptor comprueba el MAC en tiempo constante y después comprueba que el contador supere el último valor aceptado. El contador derrota la repetición; una marca de tiempo con una ventana de frescura derrota los ataques de retardo, pero necesita relojes sincronizados. Truncar HMAC-SHA256 a 128 bits es habitual para ahorrar ancho de banda, con un margen contra la falsificación reducido en proporción pero todavía muy grande. Persista el último contador o rote las claves al reiniciar; de lo contrario, un reinicio vuelve a abrir la puerta a la repetición (EX018).
+
+### 19.3 Gestión de claves
+
+Las claves son el punto donde la criptografía se encuentra con la operación. Decida: quién genera las claves y dónde (idealmente en hardware, nunca a mano); cómo llegan a los dispositivos (aprovisionamiento en fábrica, inscripción segura); dónde se almacenan (elementos seguros, no archivos de configuración); cómo rotan (de forma programada y tras una sospecha de compromiso); cómo se revocan; y quién puede acceder a ellas. Una clave por cada par de dispositivos limita el radio de impacto: comprometer una RTU no debe permitir a un atacante suplantar a otra. Una única clave para toda la flota es una causa común con $\beta \approx 1$ (capítulo 7).
+
+### 19.4 Identidad de personas y dispositivos
+
+Las personas necesitan cuentas nominativas, autenticación fuerte (multifactor resistente al phishing cuando sea posible; véase [NIST SP 800-63B](https://csrc.nist.gov/pubs/sp/800/63/b/upd2/final)), roles asignados según las tareas y una baja inmediata cuando se van. Los dispositivos también necesitan identidades (certificados o claves aprovisionadas), para que una pasarela sepa con qué RTU está hablando. Las credenciales compartidas o predeterminadas son la falla de identidad más común en la TO. En el TMRP, los operadores usan cuentas nominativas con autenticación fuerte en los servidores SCADA, y cada RTU tiene su propia clave, de modo que la pasarela sabe qué estación envió cada mensaje.
+
+### 19.5 Ejemplo resuelto: el formato de mensaje del TMRP (sintético)
+
+El ADR-007 eligió HMAC con contadores. La trama del Lab 8 lleva un contador de 8 bytes, un ID de estación de 2 bytes, un nivel de 2 bytes y un HMAC-SHA256 truncado de 16 bytes: 28 bytes, de los cuales 22 son sobrecarga respecto de una carga útil sin autenticar de 6 bytes. Las claves por estación se generan en el elemento seguro de la pasarela durante la inscripción y se almacenan en el almacén de claves de la RTU; el lado SCADA las guarda en un módulo de seguridad de hardware. Las claves rotan anualmente y de inmediato ante una sospecha de compromiso; el contador se persiste en memoria no volátil cada 1.000 incrementos, con un salto hacia delante al reiniciar, de modo que la repetición de mensajes antiguos sigue siendo imposible.
+
+### 19.6 Actividad práctica: Lab 8
+
+```python
+# Lab 8 - authenticated telemetry with a counter: tamper and replay are rejected (synthetic key, offline)
+import hmac, hashlib, struct
+KEY = bytes.fromhex("00112233445566778899aabbccddeeff00112233445566778899aabbccddeeff")  # demo key only
+def seal(ctr, station, level_cm):
+    body = struct.pack(">QHH", ctr, station, level_cm)
+    return body + hmac.new(KEY, body, hashlib.sha256).digest()[:16]
+class Receiver:
+    def __init__(self): self.last = {}
+    def accept(self, msg):
+        body, tag = msg[:12], msg[12:]
+        if not hmac.compare_digest(tag, hmac.new(KEY, body, hashlib.sha256).digest()[:16]): return "reject: tag"
+        ctr, st, lvl = struct.unpack(">QHH", body)
+        if ctr <= self.last.get(st, -1): return "reject: replay"
+        self.last[st] = ctr; return f"ok st={st} ctr={ctr} level={lvl}cm"
+r = Receiver(); m1, m2 = seal(1, 3, 312), seal(2, 3, 309)
+forged = m2[:10] + struct.pack(">H", 150) + m2[12:]
+for name, m in [("m1", m1), ("m2", m2), ("replay m1", m1), ("forged", forged)]: print(f"{name:10}", r.accept(m))
+print("frame bytes:", len(m1), "overhead vs 6-byte payload:", len(m1) - 6)
+```
+
+Salida esperada:
+
+```text
+m1         ok st=3 ctr=1 level=312cm
+m2         ok st=3 ctr=2 level=309cm
+replay m1  reject: replay
+forged     reject: tag
+frame bytes: 28 overhead vs 6-byte payload: 22
+```
+
+La clave del laboratorio es un valor de demostración publicado; las claves reales nunca deben aparecer en el código fuente.
+
+Los dos primeros mensajes de la estación tres se aceptan con contadores crecientes. La repetición del primer mensaje se rechaza porque su contador no es mayor que el último valor aceptado, y el mensaje falsificado, con su nivel cambiado de 309 a 150 centímetros, no supera la comprobación de la etiqueta. La última línea confirma el tamaño de trama usado en el ADR-007: veintiocho bytes, veintidós de ellos de sobrecarga. El laboratorio guarda el estado solo en memoria, y por eso el EX018 pregunta qué ocurre tras un reinicio.
+
+### 19.7 Errores comunes y límites
+
+- Usar hashes o CRC como si fueran MAC.
+- Comparar etiquetas en un tiempo que no es constante.
+- Perder la protección contra repeticiones al reiniciar.
+- Claves compartidas por toda la flota; claves en archivos de configuración o en el código fuente.
+- Contraseñas predeterminadas y cuentas compartidas.
+- Decisiones criptográficas sin un plan para la vida útil del sistema (agilidad criptográfica).
+
+El diseño del TMRP responde a cada punto: las etiquetas se comparan en tiempo constante, los contadores persisten entre reinicios, las claves son por estación y están en hardware seguro, y el formato de mensaje incorpora un identificador de suite para futuros cambios de algoritmo. Cada decisión tiene una prueba.
+
+### Ejercicios — capítulo 19
+
+**EX037 — Persistencia del contador.** *Objetivo:* diseñar una protección contra repeticiones que resista los reinicios. *Entradas:* §19.5 (persistir cada 1.000 incrementos). *Pasos:* explique por qué la RTU debe saltar hacia delante al reiniciar y, como mínimo, cuánto; indique qué debe persistir el receptor. *Evidencia esperada:* explicación. *Rúbrica:* 3 = salto ≥ 1.000 más allá del último valor persistido para que ningún contador se reutilice, el receptor persiste el último aceptado por estación o rota las claves; 2 = solo un lado; 1 = vago; 0 = nada.
+
+**EX038 — Radio de impacto.** *Objetivo:* comparar diseños de claves. *Entradas:* 42 estaciones de campo; opción A, una clave para toda la flota; opción B, una clave por estación. *Pasos:* compare la consecuencia de extraer una clave de una RTU robada, el esfuerzo de rotación tras ese robo y el almacenamiento necesario en el SCADA. *Evidencia esperada:* tabla y recomendación. *Rúbrica:* 3 = A permite al ladrón falsificar cualquier estación y obliga a rotar en toda la flota; B limita la falsificación a una estación con una sola rotación; almacenamiento trivial; recomendación B; 2 = falta una dimensión; 1 = recomendación sin razonamiento; 0 = nada.
+
+### Síntesis del capítulo
+
+Elija primitivas estándar para la propiedad que necesite: hashes para las huellas, MAC o firmas para la autenticidad, cifrado autenticado para la confidencialidad con integridad. Añada frescura para derrotar la repetición y consérvela entre reinicios. La gestión de claves es el verdadero sistema: claves por dispositivo en hardware, rotación y revocación. Dé a las personas y a los dispositivos identidades distintas y con autenticación fuerte.
+
+<!-- cyberabc:chapter-navigation:start ch-19 -->
+### Siga estudiando — capítulo 19 de 50
+
+[← Capítulo 18](#ch-18) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 20 →](#ch-20)
+
+Continúe con la siguiente lección escrita.
+<!-- cyberabc:chapter-navigation:end -->
+
+<a id="ch-20"></a>
+
+## Capítulo 20 — Infraestructura crítica y seguridad sectorial: contexto de ingeniería
+
+### Resultados de aprendizaje y conexión
+
+Al terminar este capítulo, usted podrá (1) describir cómo se define la infraestructura crítica y cómo se organiza en sectores, así como el panorama regulatorio en el que trabajan los ingenieros; (2) caracterizar los sectores por sus procesos físicos, sus unidades de consecuencia y su tecnología; (3) describir las interdependencias entre sectores; y (4) aprender de los incidentes documentados al nivel que sus fuentes públicas permiten. Es el puente entre los fundamentos (capítulos 1–19) y los capítulos del campo (21–50).
+
+### 20.1 Qué hace «crítica» a una infraestructura
+
+Los gobiernos designan como críticos los activos, sistemas y redes cuya incapacidad dañaría gravemente la seguridad, la economía, la salud pública o la seguridad de las personas. Estados Unidos identifica dieciséis [sectores de infraestructura crítica](https://www.cisa.gov/topics/critical-infrastructure-security-and-resilience/critical-infrastructure-sectors) y, más recientemente, un conjunto de [funciones críticas nacionales](https://www.cisa.gov/national-critical-functions-set) que atraviesan las organizaciones. La [Directiva NIS2 (2022/2555)](https://eur-lex.europa.eu/eli/dir/2022/2555/oj/) de la Unión Europea fija obligaciones de ciberseguridad para las entidades esenciales e importantes, y la [Directiva CER (2022/2557)](https://eur-lex.europa.eu/eli/dir/2022/2557/oj) aborda de forma más amplia la resiliencia de las entidades críticas. Las normas sectoriales añaden detalle: las [normas NERC CIP](https://www.nerc.com/pa/Stand/Pages/CIPStandards.aspx) para los sistemas eléctricos mayoristas de Norteamérica, los [requisitos de evaluación de riesgos de la America's Water Infrastructure Act de 2018](https://www.epa.gov/waterresilience/americas-water-infrastructure-act-2018-risk-assessments-and-emergency-response-plans) para los sistemas comunitarios de agua de Estados Unidos, [DORA (2022/2554)](https://eur-lex.europa.eu/eli/reg/2022/2554/oj) para las finanzas de la UE y los [HHS Healthcare and Public Health Cybersecurity Performance Goals](https://hphcyber.hhs.gov/performance-goals.html). Todo esto cambia; cite versión y fecha, y vuelva a verificar.
+
+### 20.2 Los sectores como sistemas de ingeniería
+
+Cada sector tiene un proceso físico o de servicio, una **unidad de consecuencia** y una tecnología característica.
+
+| Sector | Proceso | Unidad de consecuencia | Tecnología típica |
+|---|---|---|---|
+| Agua | Tratar y distribuir agua | Personas sin agua segura × horas | PLC/RTU, SCADA, dosificación, telemetría |
+| Electricidad | Generar, transmitir, distribuir | MW o clientes interrumpidos × horas | Relés de protección, EMS/DMS, automatización de subestaciones |
+| Salud | Diagnosticar y tratar | Atención retrasada, derivaciones, daño | Historia clínica electrónica, dispositivos médicos, sistemas del edificio |
+| Transporte | Mover personas y mercancías | Viajes interrumpidos, incidentes de seguridad | Señalización, control de tráfico, venta de billetes |
+| Finanzas | Compensar y liquidar | Transacciones fallidas o retrasadas | Sistemas de pago, infraestructuras de mercado |
+| Comunicaciones | Transportar voz y datos | Abonados afectados × horas | Redes troncales, acceso radio, sincronización |
+
+La tabla es una simplificación para orientarse en ingeniería; cada fila es una carrera profesional.
+
+### 20.3 Interdependencia
+
+[Rinaldi, Peerenboom y Kelly (2001)](https://doi.org/10.1109/37.969131) clasifican las interdependencias en físicas, cibernéticas, geográficas y lógicas. El agua necesita electricidad para el bombeo; el restablecimiento eléctrico necesita comunicaciones; los hospitales necesitan agua, energía y comunicaciones; casi todo necesita una hora exacta. La interdependencia convierte las fallas locales en regionales y los proveedores compartidos en causas comunes. La actualización defectuosa de CrowdStrike de julio de 2024, que según la estimación de Microsoft afectó a unos 8,5 millones de dispositivos Windows ([Microsoft, 2024](https://blogs.microsoft.com/blog/2024/07/20/helping-our-customers-through-the-crowdstrike-outage/)), no fue un ataque, pero perturbó a la vez aerolíneas, hospitales y otros servicios a través de una dependencia de software compartida.
+
+### 20.4 Aprender de los incidentes documentados
+
+Los informes públicos de incidentes son valiosos y parciales. Úselos al nivel de sus fuentes. El [incidente de Colonial Pipeline](https://www.cisa.gov/news-events/news/attack-colonial-pipeline-what-weve-learned-what-weve-done-over-past-two-years) de 2021 implicó *ransomware* en la TI de gestión; la empresa detuvo las operaciones del oleoducto como precaución, lo que recuerda que la dependencia de las operaciones respecto de los sistemas de TI (facturación, programación) puede detener el servicio físico sin ningún compromiso de la TO. El [ataque a la red eléctrica ucraniana de 2015](https://www.cisa.gov/news-events/ics-alerts/ir-alert-h-16-056-01) usó acceso remoto para operar interruptores y dañó las capacidades de recuperación. El brote de [WannaCry de 2017](https://www.nao.org.uk/reports/investigation-wannacry-cyber-attack-and-the-nhs/) perturbó los servicios del NHS en Inglaterra. Cada uno tiene detalles documentados y preguntas abiertas; cuando los primeros relatos se revisaron, como en Oldsmar, cite ambos.
+
+### 20.5 Ejemplo resuelto: situar a LRWA en su contexto (sintético)
+
+LRWA es una empresa de agua con un hospital entre sus clientes críticos. Su unidad de consecuencia son las personas-hora sin agua segura, ponderadas para los usuarios vulnerables; el almacenamiento propio de St Brenna's da unas cuatro horas de reserva. Sus interdependencias: electricidad (bombeo, tratamiento), comunicaciones (telemetría LTE), suministro químico (cloro) y tiempo (correlación de registros). Se supone que su contexto regulatorio incluye una obligación de evaluación de riesgos y resiliencia similar a la de la AWIA. El alcance del TMRP queda definido por todo esto: el programa no consiste en «proteger el SCADA», sino en «mantener el agua segura llegando a las personas en condiciones adversas creíbles, incluido un ataque».
+
+### 20.6 Actividad práctica
+
+Elija un sector distinto del agua. Solo con fuentes públicas, construya con más detalle su fila de §20.2: tres unidades de consecuencia, tres tecnologías típicas, dos regulaciones clave con versión y fecha, y un incidente documentado con su fuente. Mantenga el perfil al nivel de sus fuentes. Para cada regulación, dé la versión, la fecha en que la consultó y las entidades que abarca. Para el incidente, indique solo lo que dice el informe citado y anote cualquier revisión posterior, como en Oldsmar. Después compare la unidad de consecuencia de su sector con las personas-hora sin agua segura de LRWA, y anote una interdependencia que su sector comparta con el agua, como la electricidad, las comunicaciones o el tiempo.
+
+### 20.7 Errores comunes y límites
+
+- Tratar la «infraestructura crítica» como una categoría tecnológica y no como una categoría de consecuencias.
+- Citar regulaciones sin versión ni fecha.
+- Repetir relatos de incidentes más allá de lo que las fuentes respaldan.
+- Ignorar las dependencias de TI de las operaciones físicas.
+- Pensar en un solo sector en un mundo interdependiente.
+
+El propio contexto de LRWA muestra por qué esto importa. Su condición de crítica procede de St Brenna's y de sus demás clientes, no de la tecnología que opera. Sus operaciones dependen de la electricidad, de LTE, del suministro de cloro y de una hora exacta, de modo que analizar el agua de forma aislada pasaría por alto la dependencia oculta del alimentador encontrada antes. Cualquier obligación regulatoria en la que se apoye debe citarse con versión y fecha.
+
+### Ejercicios — capítulo 20
+
+**EX039 — Perfil de un sector.** *Objetivo:* elaborar el perfil de un sector a partir de fuentes públicas. *Entradas:* §20.6. *Pasos:* elabore el perfil con citas. *Evidencia esperada:* una página. *Rúbrica:* 3 = exacto, citado, con unidades de consecuencia medibles y el incidente descrito dentro de sus fuentes; 2 = una afirmación sin citar; 1 = genérico; 0 = nada.
+
+**EX040 — Dependencia compartida.** *Objetivo:* razonar sobre las causas comunes entre sectores. *Entradas:* la caída de CrowdStrike de julio de 2024 tal como la describe Microsoft. *Pasos:* explique en 200 palabras por qué una actualización de software no maliciosa provocó una perturbación intersectorial, qué propiedad de ingeniería revela y una práctica de diseño que limite estos eventos. *Evidencia esperada:* texto. *Rúbrica:* 3 = dependencia compartida o causa común, componente privilegiado con actualización automática, despliegue por etapas o diversidad como práctica, afirmaciones dentro de las fuentes; 2 = práctica genérica; 1 = lo llama ataque; 0 = nada.
+
+### Síntesis del capítulo
+
+La infraestructura crítica se define por las consecuencias. Los sectores difieren en procesos, unidades de consecuencia y tecnología, pero comparten la interdependencia respecto de la energía, las comunicaciones, el tiempo y los proveedores comunes. Trabaje dentro de las regulaciones según versión y fecha, aprenda de los incidentes solo hasta donde llegan sus fuentes y defina cada programa de seguridad por el servicio y las personas que protege.
+
+<!-- cyberabc:chapter-navigation:start ch-20 -->
+### Siga estudiando — capítulo 20 de 50
+
+[← Capítulo 19](#ch-19) · [Índice de capítulos del curso](../SUBJECTS.md) · [Capítulo 21 →](../../en/book/MANUSCRIPT.md#ch-21)
 
 Continúe con la siguiente lección escrita.
 <!-- cyberabc:chapter-navigation:end -->
@@ -1410,6 +1750,30 @@ Cada resultado muestra una respuesta defendible. Los resultados numéricos se ob
 **EX031.** Un mapeo posible: N1 ← R3, R4, R5 (en parte), R9; N2 ← R1, R2, R3, R7, R8; N3 ← R6, R8; N4 ← R5, R7. N3 y N4 empatan con el menor número (dos cada una); la propuesta refuerza N3: «R10 — Se deberán hacer semanalmente copias de seguridad fuera de línea de las configuraciones del SCADA y de los controladores, guardadas fuera de los dominios de control y corporativo, con pruebas de restauración trimestrales».
 
 **EX032.** Elementos de datos (ID de estación, contador, nivel, presión, alarmas); codificación (binaria, *big-endian*, trama de 28 bytes más ID de la suite); frecuencia (1 cada 10 s por estación, más alarmas por excepción); latencia (≤ 1 s en la pasarela); autenticación (HMAC-SHA256-128, clave por estación); manejo de errores (rechazar y registrar; alarma tras 3 rechazos en 10 min; alarma de estación sin datos a los 60 s); fuente de tiempo (NTP interno a través de un conducto permitido; marcas de tiempo en UTC); responsabilidad (pasarela: ingeniería del TMRP; lado SCADA: operaciones); proceso de cambio (revisión del ICD bajo control de configuración con la aprobación de ambos responsables).
+
+### Capítulo 17
+
+**EX033.** Semilla 17, ruido σ = 0,01 m, 48 h: umbral de 0,03 m → 2 episodios de falsa alarma sin ataque (≈ 1 por día), primera alarma de la rampa de 0,05 m/h a las 10,7 h; umbral de 0,05 m → 0 episodios de falsa alarma, primera alarma de la rampa a las 10,9 h. Recomendación: 0,05 m; el retardo de detección de 0,2 h es pequeño frente a horas de autonomía, mientras que las falsas alarmas diarias enseñarían a los operadores a ignorar el detector. Vuelva a comprobarlo con datos de ruido reales.
+
+**EX034.** Comprometer la RTU3 permite a un atacante falsificar tanto el nivel como el caudal de entrada, de modo que puede hacer coherente el balance de masa y el residuo sigue siendo pequeño; comprometer solo la RTU4 falsifica el caudal de salida y es detectable. Mejora: un transmisor de nivel independiente cableado a un registrador separado (otro controlador y otro camino de comunicaciones), o una lectura física periódica del indicador de nivel comparada con el SCADA.
+
+### Capítulo 18
+
+**EX035.** La regla no supera la prueba de la DMZ: un servidor ERP comprometido podría enviar paquetes directamente a la base de datos del SCADA. Alternativa: el ERP escribe el estado de las órdenes de trabajo en un servicio de la DMZ; un proceso de la zona de control recoge las actualizaciones (o las recibe a través de un intermediario con una validación estricta), validando el formato y el contenido; ninguna conexión entrante desde la empresa hacia el control.
+
+**EX036.** Camino: proveedor → pasarela de acceso de la DMZ (MFA, cuentas nominativas del proveedor) → sesión aprobada en cada solicitud por el responsable de turno → servidor de salto en la zona de control → solo la interfaz de diagnóstico de RTU-B; sesión grabada; el acceso caduca al final de la ventana aprobada; la cuenta del proveedor se deshabilita entre sesiones. Evidencia: registros de la pasarela y del servidor de salto, sesiones grabadas, una prueba que muestre que la conexión directa del proveedor a las RTU está bloqueada y una revisión trimestral de las cuentas.
+
+### Capítulo 19
+
+**EX037.** Si la RTU persiste su contador cada 1.000 incrementos y se reinicia, el último valor persistido puede ir hasta 999 por detrás del último valor usado. Para no reutilizar un contador (que el receptor rechazaría, o que podría permitir una repetición tras un reinicio del receptor), la RTU salta hacia delante al menos 1.000 más allá del valor persistido. El receptor debe persistir el último contador aceptado por estación, o ambos lados deben rotar las claves tras el reinicio.
+
+**EX038.** A (clave de flota): una RTU robada permite al ladrón falsificar mensajes de las 42 estaciones; la recuperación exige cambiar las claves de todas las estaciones. B (claves por estación): la falsificación se limita a la estación robada; se revoca y sustituye una sola clave. Almacenar 42 claves en un HSM es trivial para el SCADA. Recomendación: B.
+
+### Capítulo 20
+
+**EX039.** Se evalúa con la rúbrica; por ejemplo, distribución eléctrica: unidades de consecuencia: clientes interrumpidos × horas, MW no suministrados, clientes críticos afectados; tecnologías: relés de protección, sistemas de gestión de la distribución, RTU de subestaciones; regulaciones: normas NERC CIP (cite versión y fecha) y NIS2 (2022/2555) para los operadores de la UE; incidente: Ucrania 2015, descrito a partir de CISA IR-ALERT-H-16-056-01.
+
+**EX040.** Modelo: un único producto de seguridad con acceso privilegiado al núcleo estaba instalado en muchas organizaciones de distintos sectores y se actualizaba automáticamente; una actualización de contenido defectuosa hizo fallar a la vez los equipos Windows, y Microsoft estimó que resultaron afectados unos 8,5 millones de dispositivos. La propiedad es una causa común a través de una dependencia compartida, privilegiada y actualizada automáticamente. Práctica: despliegues por etapas (canario) de las actualizaciones, por parte de los proveedores y, cuando sea posible, controlados por los clientes en los sistemas críticos, más procedimientos de recuperación que no dependan de los equipos afectados. No fue un ataque.
 
 <a id="glossary"></a>
 
