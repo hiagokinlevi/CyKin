@@ -93,6 +93,10 @@ O crescimento real raramente é suave; a implantação de novos dispositivos cau
 
 - **EX003 — Planejamento linear.** Por que é arriscado planejar o armazenamento de logs a partir do aumento do ano anterior? *Rubrica:* 3 = aplica uma visão linear a um processo exponencial e subestima o crescimento;; 2 = subestima;; 1 = é preciso;; 0 = nenhuma.
 
+### Síntese
+
+O cálculo permite aos arquitetos ver com que rapidez as cargas de trabalho de segurança crescem e evitar planos lineares para sistemas exponenciais.
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Matemática discreta
@@ -161,6 +165,10 @@ O fecho supõe que as participações estão atualizadas; dados desatualizados e
 
 - **EX006 — Lacuna do conluio.** O que uma verificação de conjuntos disjuntos não consegue impedir? *Rubrica:* 3 = o conluio entre duas pessoas diferentes;; 2 = conluio;; 1 = nada;; 0 = nenhuma.
 
+### Síntese
+
+Relações, fechamento e testes de conjuntos transformam regras de acesso emaranhadas em enunciados precisos e verificáveis.
+
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Física para computação
@@ -198,6 +206,10 @@ O risco de side channel depende do acesso e da habilidade do atacante; nem todo 
 - **EX008 — Papel do arquiteto.** Qual é a responsabilidade do arquiteto quanto à análise de consumo de energia? *Rubrica:* 3 = escolher componentes avaliados contra ela onde houver acesso físico;; 2 = escolher componentes;; 1 = construir bancadas;; 0 = nenhuma.
 
 - **EX009 — Offline pela física.** Por que os validadores de passagens precisam tomar algumas decisões offline? *Rubrica:* 3 = limites de latência e conectividade fazem com que o servidor possa não ser alcançado a tempo;; 2 = latência;; 1 = preferência;; 0 = nenhuma.
+
+### Síntese
+
+A física molda tanto as ameaças aos dispositivos quanto as restrições aos desenhos de arquitetura segura.
 
 <a id="ch-04"></a>
 
@@ -237,6 +249,10 @@ As allow-lists precisam de manutenção quando os formatos mudam. Os logs intern
 
 - **EX012 — Módulo secrets.** Por que os identificadores de cartões de teste devem usar secrets em vez de random? *Rubrica:* 3 = secrets usa a fonte segura do sistema operacional; random é previsível;; 2 = fonte segura;; 1 = nenhuma diferença;; 0 = nenhuma.
 
+### Síntese
+
+Os primeiros programas ensinam segurança quando validam as entradas, mantêm internos os detalhes de erro e se apoiam em funções de bibliotecas avaliadas.
+
 <a id="ch-05"></a>
 
 ## Capítulo 5 — Comunicação em engenharia
@@ -274,6 +290,10 @@ Os registros de decisão ficam desatualizados se não forem revistos quando as d
 - **EX014 — Posição da fronteira.** Onde uma fronteira de confiança deve ser desenhada num diagrama de fluxo de dados? *Rubrica:* 3 = onde a confiança muda, como entre um ônibus e a rede da garagem;; 2 = mudança de confiança;; 1 = em qualquer lugar;; 0 = nenhuma.
 
 - **EX015 — Janela de bloqueio.** Que risco Sofia declarou à diretora financeira? *Rubrica:* 3 = um cartão roubado pode ser usado por até uma hora;; 2 = uma hora;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+Registros claros, diagramas revisáveis e explicações simples dos trade-offs tornam as decisões de segurança visíveis e passíveis de prestação de contas.
 
 <a id="ch-06"></a>
 
@@ -338,6 +358,10 @@ Integrais de taxas estimadas herdam os erros das estimativas. A aproximação n 
 
 - **EX018 — Pelo menos um erro.** Com p = 0,001 e n = 800, qual é a chance aproximada de pelo menos um erro? *Rubrica:* 3 = cerca de 0,55 (exata) ou 0,8 por n p, que aqui superestima;; 2 = aproximação;; 1 = 0,001;; 0 = nenhuma.
 
+### Síntese
+
+A integração e as séries transformam taxas e pequenos riscos repetidos em totais que justificam as escolhas de arquitetura.
+
 <a id="ch-07"></a>
 
 ## Capítulo 7 — Probabilidade e estatística
@@ -395,6 +419,10 @@ Taxas do fornecedor medidas em outros dados podem não valer na Corvia. As premi
 
 - **EX021 — Resumo de dados assimétricos.** Por que relatar a mediana e o percentil 90 dos tempos de revisão? *Rubrica:* 3 = os dados são assimétricos e a média é puxada pelos casos lentos;; 2 = assimetria;; 1 = só a média;; 0 = nenhuma.
 
+### Síntese
+
+O raciocínio probabilístico sobre taxas de base transforma afirmações impressionantes sobre detectores em desenhos realistas de alertas.
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Arquitetura de computadores
@@ -432,6 +460,10 @@ As proteções de hardware já tiveram falhas que exigiram correções de microc
 - **EX023 — Gravidade de bugs de kernel.** Por que vulnerabilidades de kernel são tratadas como críticas? *Rubrica:* 3 = quebram as fronteiras de privilégio e memória das quais os outros controles dependem;; 2 = fronteiras;; 1 = menores;; 0 = nenhuma.
 
 - **EX024 — Risco da chave de assinatura.** Por que as chaves de assinatura de firmware precisam ser protegidas? *Rubrica:* 3 = quem as possui pode tornar qualquer firmware confiável para o secure boot;; 2 = firmware confiável;; 1 = não é importante;; 0 = nenhuma.
+
+### Síntese
+
+Camadas de hardware, mecanismos de privilégio e raízes de confiança formam a base sobre a qual se apoia todo controle de segurança de nível superior.
 
 <a id="ch-09"></a>
 
@@ -471,6 +503,10 @@ Os testes mostram a presença de verificações, não a ausência de todos os bu
 
 - **EX027 — Prática com dependências.** O que o SP 800-218 recomenda sobre componentes de terceiros? *Rubrica:* 3 = rastreá-los e responder às vulnerabilidades encontradas neles;; 2 = rastrear;; 1 = ignorar;; 0 = nenhuma.
 
+### Síntese
+
+Desenho modular, testes negativos e dependências gerenciadas tornam os programas mais fáceis de confiar e de manter confiáveis.
+
 <a id="ch-10"></a>
 
 ## Capítulo 10 — Ética e segurança na engenharia
@@ -508,6 +544,10 @@ Os códigos de ética variam por país e por órgão. Levantar uma preocupação
 - **EX029 — Padrão das catracas.** Durante um alarme de incêndio, as catracas devem falhar abertas ou fechadas, e por quê? *Rubrica:* 3 = abertas, para que os passageiros possam evacuar; a segurança física prevalece sobre a proteção da tarifa;; 2 = abertas;; 1 = fechadas;; 0 = nenhuma.
 
 - **EX030 — Ação da estudante.** O que Sofia podia fazer quanto ao lançamento prematuro? *Rubrica:* 3 = registrar o risco específico por escrito a Daniel para escalonamento;; 2 = preocupação por escrito;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+A engenharia ética coloca a segurança pública em primeiro lugar, adapta os padrões ao contexto de segurança física e torna os riscos visíveis por escrito.
 
 <a id="ch-11"></a>
 
@@ -547,6 +587,10 @@ Mapas de rede ficam desatualizados rapidamente. As regras de segmentação preci
 
 - **EX033 — Base das regras.** Em que as regras de segmentação devem se basear? *Rubrica:* 3 = nos fluxos de que cada zona legitimamente precisa;; 2 = fluxos necessários;; 1 = todos os fluxos;; 0 = nenhuma.
 
+### Síntese
+
+A arquitetura de rede posiciona protocolos e segmentação onde o tráfego atravessa fronteiras de confiança, e não apenas onde atravessa a internet.
+
 <a id="ch-12"></a>
 
 ## Capítulo 12 — Sistemas operacionais
@@ -584,6 +628,10 @@ Baselines podem quebrar software legado; teste antes de implantar. Logs centrais
 - **EX035 — Verificações de deriva.** Por que agendar verificações semanais de configuração depois do hardening? *Rubrica:* 3 = para detectar desvios da baseline ao longo do tempo;; 2 = deriva;; 1 = não são necessárias;; 0 = nenhuma.
 
 - **EX036 — Imutabilidade dos logs.** Por que enviar os logs a um coletor que os administradores do servidor não podem modificar? *Rubrica:* 3 = um intruso no servidor não consegue apagar as evidências;; 2 = evidências;; 1 = velocidade;; 0 = nenhuma.
+
+### Síntese
+
+O isolamento do sistema operacional, as linhas de base reforçadas e os logs protegidos fornecem a base da arquitetura de segurança no nível do host.
 
 <a id="ch-13"></a>
 
@@ -647,6 +695,10 @@ A agregação ainda pode permitir a reidentificação em grupos pequenos. As reg
 
 - **EX039 — Lógica da minimização.** Por que a minimização de dados é um controle de segurança? *Rubrica:* 3 = dados não armazenados não podem ser roubados, e conjuntos menores são mais fáceis de proteger;; 2 = não roubados;; 1 = não é um controle;; 0 = nenhuma.
 
+### Síntese
+
+A arquitetura de dados classifica antes de projetar, mantém a entrada como dado e armazena apenas o necessário pelo tempo necessário.
+
 <a id="ch-14"></a>
 
 ## Capítulo 14 — Engenharia de software
@@ -684,6 +736,10 @@ Revisões leves deixam passar problemas fora do diagrama. As ferramentas produze
 - **EX041 — Achados do reembolso.** Que dois problemas a revisão de projeto encontrou? *Rubrica:* 3 = replay de solicitações de reembolso e autoaprovação pela equipe de suporte;; 2 = os dois;; 1 = um;; 0 = nenhuma.
 
 - **EX042 — Ferramentas versus pessoas.** Que tipo de falha as ferramentas costumam deixar passar? *Rubrica:* 3 = falhas de projeto, como a lógica de autoaprovação;; 2 = falhas de projeto;; 1 = sintaxe;; 0 = nenhuma.
+
+### Síntese
+
+A segurança cabe em todas as fases do ciclo de vida, com revisões de desenho curtas e verificações humanas e automatizadas combinadas detectando falhas diferentes.
 
 <a id="ch-15"></a>
 
@@ -723,6 +779,10 @@ O vocabulário varia entre as normas; defina os termos em cada documento. Os pri
 
 - **EX045 — Temas da ISO.** Que quatro temas a ISO/IEC 27002:2022 usa para agrupar os controles? *Rubrica:* 3 = organizacional, de pessoas, físico, tecnológico;; 2 = três;; 1 = um;; 0 = nenhuma.
 
+### Síntese
+
+Vocabulário preciso, princípios explícitos e tipos de controle equilibrados formam os fundamentos que toda decisão de arquitetura utiliza.
+
 <a id="ch-16"></a>
 
 ## Capítulo 16 — Engenharia de sistemas
@@ -760,6 +820,10 @@ Tabelas de rastreabilidade ficam onerosas se forem detalhadas demais. Os modelos
 - **EX047 — Fluxo do SP 800-160.** Que cadeia o SP 800-160 Vol. 1 Rev. 1 enfatiza? *Rubrica:* 3 = necessidades de proteção para requisitos, para projeto, para garantia;; 2 = cadeia;; 1 = nenhuma;; 0 = nenhuma.
 
 - **EX048 — Valor da rastreabilidade.** O que a rastreabilidade mostra quando um requisito muda? *Rubrica:* 3 = quais elementos de projeto e testes são afetados;; 2 = itens afetados;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+A engenharia de sistemas distribui a segurança por todo o ciclo de vida e mantém ligadas necessidades, desenhos e evidências.
 
 <a id="ch-17"></a>
 
@@ -827,6 +891,10 @@ Modelos proporcionais simples ignoram a adaptação do atacante. Os resultados d
 
 - **EX051 — Proposta de estabilização.** Cite duas salvaguardas que Sofia propõe para controles automatizados. *Rubrica:* 3 = ajustes limitados, limites mínimo e máximo, revisão humana nos limites (duas);; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+A automação de segurança é um sistema de realimentação e precisa de ajuste e de limites para evitar atraso e oscilação.
+
 <a id="ch-18"></a>
 
 ## Capítulo 18 — Arquitetura de segurança
@@ -864,6 +932,10 @@ As visões em camadas simplificam preocupações transversais. Os rastreamentos 
 - **EX053 — Lacuna encontrada.** Que lacuna a visão em camadas de Sofia expôs? *Rubrica:* 3 = nenhum responsável operacional pela gestão de chaves;; 2 = responsável;; 1 = nenhuma;; 0 = nenhuma.
 
 - **EX054 — Remoção de um controle.** O que o rastreamento de atributos mostra quando uma mudança remove um controle? *Rubrica:* 3 = qual atributo de negócio é enfraquecido;; 2 = atributo;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+A arquitetura de segurança liga atributos de negócio a controles em todas as camadas, para que lacunas e trade-offs se tornem visíveis.
 
 <a id="ch-19"></a>
 
@@ -903,6 +975,10 @@ Passkeys e certificados ainda dependem de processos de recuperação que podem s
 
 - **EX057 — Ciclo de vida das chaves.** Liste quatro fases da gestão de chaves. *Rubrica:* 3 = quatro entre geração, armazenamento, distribuição, rotação, revogação, destruição;; 2 = três;; 1 = uma;; 0 = nenhuma.
 
+### Síntese
+
+Identidade e criptografia são serviços arquiteturais cujos fluxos, posicionamentos e ciclos de vida de chaves precisam ser projetados e ter donos.
+
 <a id="ch-20"></a>
 
 ## Capítulo 20 — Arquitetura e engenharia de segurança: contexto de engenharia
@@ -940,6 +1016,10 @@ A interpretação jurídica exige aconselhamento qualificado. O contexto muda ao
 - **EX059 — Restrição legada.** Que restrição limita as mudanças nos validadores? *Rubrica:* 3 = os validadores legados só podem ser substituídos no quinto ano;; 2 = legado;; 1 = orçamento;; 0 = nenhuma.
 
 - **EX060 — Premissas corrigidas.** Que duas premissas o comitê corrigiu? *Rubrica:* 3 = a tokenização já está contratada; o aplicativo de passageiros está fora do escopo;; 2 = as duas;; 1 = uma;; 0 = nenhuma.
+
+### Síntese
+
+O contexto de engenharia define as obrigações, as partes interessadas e as restrições que toda decisão de arquitetura precisa respeitar.
 
 <a id="ch-21"></a>
 
@@ -979,6 +1059,10 @@ Os requisitos podem entrar em conflito, como logging versus privacidade. Os cat�
 
 - **EX063 — Uso do catálogo.** Como Sofia usou o SP 800-53 Rev. 5? *Rubrica:* 3 = para procurar lacunas, encontrando um requisito de proteção e revisão de logs que faltava;; 2 = verificação de lacunas;; 1 = copiou tudo;; 0 = nenhuma.
 
+### Síntese
+
+Bons requisitos de segurança são verificáveis, fundamentados em casos de abuso e conferidos com catálogos, com justificativa.
+
 <a id="ch-22"></a>
 
 ## Capítulo 22 — Arquitetura e engenharia de segurança: modelos de sistema e de dados
@@ -1016,6 +1100,10 @@ Os modelos abstraem detalhes onde falhas podem se esconder. Os fluxos observados
 - **EX065 — Fluxos de dados pessoais.** De que precisam os fluxos que levam dados pessoais através de fronteiras? *Rubrica:* 3 = criptografia e autenticação;; 2 = as duas;; 1 = nenhuma;; 0 = nenhuma.
 
 - **EX066 — Resposta à deriva.** O que significa quando os fluxos observados incluem um que não está no modelo? *Rubrica:* 3 = ou o modelo ou o sistema está errado; investigar os dois;; 2 = investigar;; 1 = ignorar;; 0 = nenhuma.
+
+### Síntese
+
+Modelos precisos de sistemas e de dados, com fronteiras e classificações, são a base da análise de ameaças e das respostas a auditorias.
 
 <a id="ch-23"></a>
 
@@ -1079,6 +1167,10 @@ As probabilidades das árvores de falhas muitas vezes são palpites; sua ordena�
 
 - **EX069 — Ressalva da independência.** Por que as premissas de independência podem subestimar o risco? *Rubrica:* 3 = uma causa comum, como uma queda de energia, pode disparar vários ramos juntos;; 2 = causa comum;; 1 = superestimam;; 0 = nenhuma.
 
+### Síntese
+
+A modelagem de ameaças e as árvores de falhas, juntas, revelam quais mitigações reduzem tanto as falhas maliciosas quanto as acidentais.
+
 <a id="ch-24"></a>
 
 ## Capítulo 24 — Arquitetura e engenharia de segurança: métodos I
@@ -1116,6 +1208,10 @@ As escalas de risco significam coisas diferentes para pessoas diferentes, a meno
 - **EX071 — Etapas do SP 800-30.** Cite as quatro etapas principais do SP 800-30 Rev. 1. *Rubrica:* 3 = preparar, conduzir, comunicar, manter;; 2 = três;; 1 = uma;; 0 = nenhuma.
 
 - **EX072 — Quem decide.** Quem decide se um risco é aceito? *Rubrica:* 3 = o responsável do negócio com autoridade, não o engenheiro;; 2 = responsável;; 1 = engenheiro;; 0 = nenhuma.
+
+### Síntese
+
+Métodos de risco sólidos combinam uma classificação rápida com estimativas explícitas e colocam as decisões nas mãos de donos responsáveis.
 
 <a id="ch-25"></a>
 
@@ -1155,6 +1251,10 @@ Os projetos de ateliê não têm o detalhamento de produção; restrições reai
 
 - **EX075 — Mitigações finais.** Cite duas mitigações acrescentadas depois da crítica. *Rubrica:* 3 = limites de hardware não sobreponíveis nos carregadores, separação de rede, aprovação de duas pessoas para as regras de contingência (duas);; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+Um ateliê de projeto ensina arquitetura por meio de opções, questões em aberto tratadas com honestidade e revisões que respondem explicitamente à crítica.
+
 <a id="ch-26"></a>
 
 ## Capítulo 26 — Arquitetura e engenharia de segurança: alternativas de arquitetura
@@ -1192,6 +1292,10 @@ A pontuação ponderada pode esconder divergências por trás das médias. Dados
 - **EX077 — Resultado da sensibilidade.** O que acontece com a decisão se o peso do custo dobrar? *Rubrica:* 3 = a alternativa A vence no lugar da C;; 2 = A vence;; 1 = C continua;; 0 = nenhuma.
 
 - **EX078 — Novo risco.** Que novo risco a alternativa C introduz? *Rubrica:* 3 = o processo de pseudonimização vira um ponto único de falha para a privacidade;; 2 = pseudonimização;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+Comparar várias alternativas com pesos explícitos e análise de sensibilidade torna as decisões de arquitetura transparentes e revisáveis.
 
 <a id="ch-27"></a>
 
@@ -1231,6 +1335,10 @@ Chaves fixadas complicam a rotação de emergência. Os controles detectivos dep
 
 - **EX081 — Teste da especificação.** Dê um caso de teste da especificação. *Rubrica:* 3 = tabela corretamente assinada carrega, tabela modificada é rejeitada ou chave desconhecida é rejeitada;; 2 = um;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+Um bom desenho de controles liga cada controle a um requisito, sobrepõe em camadas controles que falham de forma independente e os especifica com precisão.
+
 <a id="ch-28"></a>
 
 ## Capítulo 28 — Arquitetura e engenharia de segurança: implementação I
@@ -1268,6 +1376,10 @@ Os repositórios de segredos se tornam dependências críticas que precisam de a
 - **EX083 — Credencial commitada.** Que passos se seguiram à descoberta de uma credencial de teste commitada? *Rubrica:* 3 = removida do histórico e rotacionada, com o incidente registrado;; 2 = as duas;; 1 = só removida;; 0 = nenhuma.
 
 - **EX084 — Encaminhamento da mudança de replay.** Por que pular a detecção de replay foi tratado como uma mudança de arquitetura? *Rubrica:* 3 = enfraquece um requisito, então precisa de revisão de arquitetura;; 2 = requisito;; 1 = escolha de codificação;; 0 = nenhuma.
+
+### Síntese
+
+A implementação honra a arquitetura quando as tarefas remontam aos requisitos, os segredos ficam fora do código e as descobertas retornam ao desenho.
 
 <a id="ch-29"></a>
 
@@ -1330,6 +1442,10 @@ As métricas medem indicadores indiretos, não a segurança em si. Denominadores
 - **EX086 — Resultado da revogação no laboratório.** O que o laboratório mostrou sobre a tempestividade da revogação? *Rubrica:* 3 = mediana de 8 dias entre os revogados, 3 de 20 nunca revogados, só 8 de 20 em até uma semana;; 2 = os dois;; 1 = boa;; 0 = nenhuma.
 
 - **EX087 — Métrica em par.** Que métrica deve acompanhar a velocidade de fechamento de tickets? *Rubrica:* 3 = a taxa de reabertura;; 2 = reabertura;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+As métricas de segurança devem seguir os objetivos, mostrar os denominadores e vir em pares, para recompensar a melhoria real.
 
 <a id="ch-30"></a>
 
@@ -1401,6 +1517,10 @@ Os ambientes de laboratório diferem da produção em escala e em tempo. Testes 
 
 - **EX090 — Não verificado.** Cite uma área que o relatório de Sofia lista como não verificada. *Rubrica:* 3 = carga de pico, failover do banco de dados ou caminho das assinaturas de produção;; 2 = uma;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+A verificação testa os controles em relação às suas especificações com casos positivos e negativos e registra evidências honestas sobre o escopo.
+
 <a id="ch-31"></a>
 
 ## Capítulo 31 — Arquitetura e engenharia de segurança: implementação II
@@ -1438,6 +1558,10 @@ O enrolment automatizado se torna um alvo de alto valor. A conciliação depende
 - **EX092 — Propósito da conciliação.** O que a conciliação diária capta? *Rubrica:* 3 = divergências entre certificados ativos e ativos em serviço causadas por eventos perdidos;; 2 = divergências;; 1 = nada;; 0 = nenhuma.
 
 - **EX093 — Conteúdo da exceção.** O que cada exceção legada inclui? *Rubrica:* 3 = controles compensatórios, responsável e data de expiração ou substituição;; 2 = três;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+A implementação II fecha as lacunas medidas por meio de automação e integração, enquanto gerencia com honestidade as exceções legadas.
 
 <a id="ch-32"></a>
 
@@ -1500,6 +1624,10 @@ As premissas de independência superestimam os benefícios do paralelo quando as
 
 - **EX096 — Decisão de falha.** Que caminho faz soft-fail nas verificações de revogação, e qual faz hard-fail? *Rubrica:* 3 = a ingestão das validações faz soft-fail por pouco tempo; o acesso administrativo faz hard-fail;; 2 = os dois;; 1 = invertido;; 0 = nenhuma.
 
+### Síntese
+
+A engenharia de confiabilidade se aplica aos serviços de segurança, e as escolhas entre falhar aberto ou falhar fechado precisam decorrer dos ativos e das ameaças.
+
 <a id="ch-33"></a>
 
 ## Capítulo 33 — Arquitetura e engenharia de segurança: segurança e resiliência
@@ -1537,6 +1665,10 @@ Procedimentos manuais se deterioram sem prática. A própria degradação pode c
 - **EX098 — Canal diverso.** Que técnica de resiliência um canal de comunicação de reserva para os motoristas representa? *Rubrica:* 3 = diversidade ou redundância da comunicação;; 2 = diversidade;; 1 = segmentação;; 0 = nenhuma.
 
 - **EX099 — Pressão do resgate.** Como níveis de degradação ensaiados reduzem a pressão para pagar resgates? *Rubrica:* 3 = a equipe sabe que os serviços podem continuar manualmente, então há menos urgência para pagar;; 2 = continuidade;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+Uma arquitetura resiliente presume que a prevenção pode falhar e projeta formas seguras e ensaiadas de a missão continuar.
 
 <a id="ch-34"></a>
 
@@ -1576,6 +1708,10 @@ Os gateways se tornam pontos únicos de falha e precisam ser resilientes. Os con
 
 - **EX102 — Matriz no vazamento.** Como a matriz de responsabilidades ajudou durante o vazamento do parceiro? *Rubrica:* 3 = esclareceu quem notifica os passageiros e quais tokens a Corvia revoga;; 2 = clareza;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+A integração segura combina, nos gateways, credenciais com escopo e de curta duração com responsabilidade compartilhada por escrito.
+
 <a id="ch-35"></a>
 
 ## Capítulo 35 — Ateliê de projeto II
@@ -1613,6 +1749,10 @@ Os acordos do ateliê podem não sobreviver a negociações reais. A completude 
 - **EX104 — Acordo de retenção.** A que acordo de retenção a equipe chegou? *Rubrica:* 3 = dados detalhados por 90 dias, atributos agregados de fraude por dois anos;; 2 = os dois;; 1 = um;; 0 = nenhuma.
 
 - **EX105 — Lacunas do revisor.** Que duas lacunas o revisor independente encontrou? *Rubrica:* 3 = nenhum plano de comprometimento de chaves para a tokenização; responsável pouco claro pelas solicitações de exclusão;; 2 = as duas;; 1 = uma;; 0 = nenhuma.
+
+### Síntese
+
+Grandes desenhos dão certo quando as necessidades por trás de requisitos conflitantes vêm à tona e o resultado é empacotado para revisão independente.
 
 <a id="ch-36"></a>
 
@@ -1674,6 +1814,10 @@ As medições de laboratório podem não refletir o hardware de produção. Os c
 
 - **EX108 — Tradeoff do cache.** Que tradeoff o cache das decisões de autorização introduz? *Rubrica:* 3 = direitos revogados podem continuar funcionando até o cache expirar;; 2 = atraso na revogação;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+Medidas de segurança escaláveis controlam custos, dimensionam limites a partir do tráfego real e documentam os trade-offs de distribuir os controles.
+
 <a id="ch-37"></a>
 
 ## Capítulo 37 — Arquitetura e engenharia de segurança: operações
@@ -1711,6 +1855,10 @@ Os limiares de detecção precisam de ajuste depois do lançamento. Os processos
 - **EX110 — Detecção de exportação por insider.** Como a exportação de dados de viagem por um insider é detectada? *Rubrica:* 3 = alerta sobre volume de exportação incomum ou exportações fora do horário;; 2 = volume ou horário;; 1 = nenhuma;; 0 = nenhuma.
 
 - **EX111 — Gatilho de revisão.** Que mudanças precisam de revisão de segurança e nova verificação? *Rubrica:* 3 = as que tocam autenticação, criptografia, regras de rede ou logging;; 2 = três;; 1 = todas as triviais;; 0 = nenhuma.
+
+### Síntese
+
+A segurança operacional é projetada junto com a arquitetura, com detecção derivada das ameaças e um controle de mudanças que protege as propriedades de segurança.
 
 <a id="ch-38"></a>
 
@@ -1750,6 +1898,10 @@ Os exercícios de red team cobrem apenas os caminhos tentados. Usuários observa
 
 - **EX114 — Causa do contorno.** Por que os atendentes copiavam dados para o chat? *Rubrica:* 3 = as telas eram confusas e não tinham anotações de caso;; 2 = usabilidade;; 1 = má-fé;; 0 = nenhuma.
 
+### Síntese
+
+A validação testa se a arquitetura atende a necessidades reais e resiste a atacantes reais, revelando lacunas de requisitos que a verificação não consegue revelar.
+
 <a id="ch-39"></a>
 
 ## Capítulo 39 — Arquitetura e engenharia de segurança: manutenibilidade
@@ -1787,6 +1939,10 @@ A agilidade acrescenta complexidade e riscos de downgrade se algoritmos antigos 
 - **EX116 — Viabilizador da agilidade.** Que características do formato viabilizam a agilidade criptográfica das assinaturas de tarifas? *Rubrica:* 3 = um campo de versão e um identificador de algoritmo;; 2 = os dois;; 1 = nenhuma;; 0 = nenhuma.
 
 - **EX117 — Registro de dívida.** O que cada entrada do registro de dívida de segurança inclui? *Rubrica:* 3 = risco, responsável e plano de remoção;; 2 = três;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+Uma segurança sustentável planeja mudanças em algoritmos, componentes e regras e mantém visível a dívida de segurança.
 
 <a id="ch-40"></a>
 
@@ -1846,6 +2002,10 @@ As exportações de configuração podem não refletir as regras em vigor. As ma
 - **EX119 — Desvios do laboratório.** Que desvios o laboratório relatou? *Rubrica:* 3 = excesso estação-da-equipe-para-banco-de-viagens e any-to-any; ausência ingestão-para-logging;; 2 = três;; 1 = um;; 0 = nenhuma.
 
 - **EX120 — Declaração de cobertura.** O que a verificação de configuração não cobre? *Rubrica:* 3 = o comportamento de aplicação em tempo de execução;; 2 = tempo de execução;; 1 = tudo coberto;; 0 = nenhuma.
+
+### Síntese
+
+A comparação automatizada das configurações com os fluxos aprovados transforma a segmentação em uma arquitetura verificada continuamente.
 
 <a id="ch-41"></a>
 
@@ -1909,6 +2069,10 @@ A redução de risco aditiva é irrealista quando os controles se sobrepõem. Os
 
 - **EX123 — Escolha robusta.** O que torna um controle uma escolha robusta? *Rubrica:* 3 = ele é selecionado tanto com as estimativas baixas quanto com as altas;; 2 = os dois cenários;; 1 = maior pontuação;; 0 = nenhuma.
 
+### Síntese
+
+A otimização enquadra com clareza o investimento em segurança, mas estimativas incertas e que interagem fazem do seu resultado um conselho, e não um veredito.
+
 <a id="ch-42"></a>
 
 ## Capítulo 42 — Arquitetura e engenharia de segurança: pesquisa aplicada
@@ -1946,6 +2110,10 @@ Desenhos antes e depois não conseguem excluir mudanças simultâneas. Contagens
 - **EX125 — Cuidado com a lista de dispositivos.** Por que o relatório evita listar dispositivos individuais? *Rubrica:* 3 = uma lista assim poderia guiar atacantes até os pontos fracos;; 2 = mapa para atacantes;; 1 = sem motivo;; 0 = nenhuma.
 
 - **EX126 — Fator de confusão.** Que fator de confusão limita a conclusão? *Rubrica:* 3 = as melhorias nos registros de ativos aconteceram ao mesmo tempo;; 2 = registros de ativos;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+A pesquisa aplicada transforma mudanças de engenharia em afirmações testadas quando perguntas, tratamento de dados e limites são explícitos.
 
 <a id="ch-43"></a>
 
@@ -1985,6 +2153,10 @@ Revisões proporcionais podem deixar passar problemas; seus limites precisam ser
 
 - **EX129 — Área de desenvolvimento.** Que área de desenvolvimento seu supervisor apontou? *Rubrica:* 3 = negociação;; 2 = negociação;; 1 = escrita;; 0 = nenhuma.
 
+### Síntese
+
+A prática profissional aplica os métodos do curso de forma proporcional, registra os limites e depende tanto da facilitação quanto da técnica.
+
 <a id="ch-44"></a>
 
 ## Capítulo 44 — Projeto final de engenharia I
@@ -2022,6 +2194,10 @@ Os critérios de sucesso podem ser manipulados se forem estreitos demais. Os esp
 - **EX131 — Fracasso comum.** Segundo Daniel, por que os projetos finais costumam fracassar? *Rubrica:* 3 = evidências produzidas tarde demais para corrigir o que revelam;; 2 = evidências atrasadas;; 1 = projeto ruim;; 0 = nenhuma.
 
 - **EX132 — Exclusão do termo.** O que o termo exclui? *Rubrica:* 3 = mudanças em produção; o trabalho acontece num espelho de laboratório;; 2 = produção;; 1 = nada;; 0 = nenhuma.
+
+### Síntese
+
+Um projeto final começa com um problema delimitado, critérios de sucesso mensuráveis, uma trilha de evidências planejada e um termo de abertura assinado.
 
 <a id="ch-45"></a>
 
@@ -2061,6 +2237,10 @@ Um único revisor tem pontos cegos; projetos importantes se beneficiam de vário
 
 - **EX135 — Achado no projeto do colega.** Que fraqueza Sofia encontrou no projeto do colega? *Rubrica:* 3 = a revogação em lote noturno deixa até um dia de acesso para funcionários demitidos;; 2 = lote;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+A revisão independente é mais valiosa quando é guiada, respondida com correções ou evidências e praticada nos dois sentidos.
+
 <a id="ch-46"></a>
 
 ## Capítulo 46 — Projeto final de engenharia II
@@ -2098,6 +2278,10 @@ Assurance cases podem dar falsa confiança se as evidências forem fracas. As ex
 - **EX137 — Lacuna do assurance case.** Que lacuna o assurance case revelou? *Rubrica:* 3 = uma subafirmação dependia apenas da revisão de projeto; foi acrescentado um teste;; 2 = só revisão;; 1 = nenhuma;; 0 = nenhuma.
 
 - **EX138 — Resposta ao escopo.** Como Sofia respondeu ao pedido tardio dos reembolsos? *Rubrica:* 3 = propôs documentar a extensão como trabalho futuro em vez de implementá-la;; 2 = alternativa;; 1 = aceitou;; 0 = nenhuma.
+
+### Síntese
+
+Um projeto final se torna convincente quando implementação, verificação e um caso de garantia ligam cada afirmação a evidências dentro de um escopo protegido.
 
 <a id="ch-47"></a>
 
@@ -2162,6 +2346,10 @@ Os ensaios de laboratório omitem o estresse e os problemas de coordenação do 
 
 - **EX141 — Duas correções.** Que duas correções Sofia propôs? *Rubrica:* 3 = mudar a compressão do backup para permitir restauração paralela; reprocessar os registros em lotes;; 2 = as duas;; 1 = uma;; 0 = nenhuma.
 
+### Síntese
+
+Testes de recuperação substituem estimativas otimistas por tempos medidos e impulsionam melhorias concretas nos procedimentos de recuperação.
+
 <a id="ch-48"></a>
 
 ## Capítulo 48 — Dossiê de evidências
@@ -2222,6 +2410,10 @@ Os manifestos detectam alterações, mas não se a evidência original era sóli
 
 - **EX144 — Ressalva do mapeamento.** Que ressalva acompanha o mapeamento para normas? *Rubrica:* 3 = mostra cobertura de temas, não certificação ou conformidade;; 2 = cobertura;; 1 = conformidade;; 0 = nenhuma.
 
+### Síntese
+
+Um dossiê de evidências torna o caso de garantia auditável, à prova de adulteração e compreensível em normas conhecidas.
+
 <a id="ch-49"></a>
 
 ## Capítulo 49 — Tese de engenharia
@@ -2260,6 +2452,10 @@ Padrões abstraídos de um único caso podem não se transferir. Os resultados d
 
 - **EX147 — Padrão reutilizável.** Cite um padrão reutilizável da tese. *Rubrica:* 3 = configuração assinada com verificações de publicação independentes, revogação disparada pelo ativo com conciliação ou revisão proporcional;; 2 = um;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+Uma tese de engenharia argumenta a partir de evidências, explica a justificativa com honestidade e deixa padrões reutilizáveis para a prática.
+
 <a id="ch-50"></a>
 
 ## Capítulo 50 — Defesa final
@@ -2297,6 +2493,10 @@ O desempenho na defesa não é o mesmo que a qualidade do projeto. As correçõe
 - **EX149 — Resposta sobre o roubo da chave.** Que limite Sofia admite sobre chaves de tarifas roubadas? *Rubrica:* 3 = um comprometimento coordenado da chave e da lista de publicações do financeiro derrotaria os controles;; 2 = comprometimento conjunto;; 1 = nenhuma;; 0 = nenhuma.
 
 - **EX150 — Reflexão final.** Como Sofia resume a arquitetura de segurança em sua reflexão? *Rubrica:* 3 = tornar os tradeoffs explícitos, fundamentados em evidências e com responsáveis;; 2 = três partes;; 1 = tecnologia;; 0 = nenhuma.
+
+### Síntese
+
+Uma defesa final mostra domínio ao explicar decisões, reconhecer limites com precisão e transformar o estudo em prática profissional.
 
 <a id="worked-results"></a>
 

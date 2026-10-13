@@ -104,6 +104,10 @@ O kappa depende da prevalência das classes e pode enganar quando uma classe dom
 
 - **EX007 — Kappa do piloto.** Que kappa o laboratório relatou e como ele é lido? *Rubrica:* 3 = 0,79, concordância substancial nas faixas de Landis e Koch;; 2 = só o valor;; 1 = abaixo de 0,4;; 0 = nenhuma.
 
+### Síntese
+
+A pesquisa de doutorado em arquitetura começa com uma pergunta falseável, um desenho capaz de separar as explicações rivais, regras de integridade fixadas de antemão e uma medida de resultado confiável.
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Arquitetura e engenharia de segurança: fronteira da pesquisa
@@ -158,6 +162,10 @@ As buscas na literatura deixam passar a literatura cinzenta e os trabalhos fora 
 
 - **EX014 — Uso das fontes de nota baixa.** Como as fontes de nota baixa podem ser usadas? *Rubrica:* 3 = só para gerar hipóteses, nunca como evidência de efeito;; 2 = hipóteses;; 1 = como evidência;; 0 = nenhuma.
 
+### Síntese
+
+A fronteira em arquitetura de segurança é rica em princípios e frameworks, mas pobre em evidências de resultado, o que define onde o trabalho de doutorado pode contribuir.
+
 <a id="ch-03"></a>
 
 ## Capítulo 3 — Proposta de contribuição original
@@ -210,6 +218,10 @@ O poder simulado depende da variação suposta entre as equipes. Os checklists d
 
 - **EX020 — Medida de ameaças encontradas.** Por que as ameaças encontradas nas sessões são medida de processo, e não de desfecho? *Rubrica:* 3 = encontrar mais ameaças não prova que haja menos defeitos;; 2 = não é desfecho;; 1 = é desfecho;; 0 = nenhuma.
 
+### Síntese
+
+Uma proposta forte fixa por escrito hipóteses, intervenção, plano amostral e ameaças à validade antes que os dados de resultado sejam vistos.
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Replicação da linha de base e piloto
@@ -261,6 +273,10 @@ Um piloto com equipes voluntárias pode ser mais motivado do que as equipes típ
 - **EX025 — Analogia dos chamados de teste.** Com o que os chamados sintéticos se parecem na prática criptográfica? *Rubrica:* 3 = vetores de teste de resposta conhecida;; 2 = vetores de teste;; 1 = nada;; 0 = nenhuma.
 
 - **EX026 — Mudanças grandes.** Como o protocolo foi revisado para as mudanças grandes? *Rubrica:* 3 = permitiu dividi-las em duas sessões;; 2 = divisão;; 1 = encurtado;; 0 = nenhuma.
+
+### Síntese
+
+Replicar a linha de base e pilotar os procedimentos expõe erros de medição antes que eles possam se passar por efeitos.
 
 <a id="ch-05"></a>
 
@@ -346,6 +362,10 @@ As tendências paralelas podem valer antes da adoção e falhar depois. As verif
 
 - **EX032 — Afirmação evitada.** Que recomendação Amara evita, e o que declara no lugar? *Rubrica:* 3 = evita a adoção universal; declara uma redução modesta na Tessaro a cerca de noventa minutos por mudança;; 2 = parcial;; 1 = recomenda a adoção universal;; 0 = nenhuma.
 
+### Síntese
+
+Um estudo principal ganha credibilidade com grupos de comparação, medição cega, validação independente e incerteza relatada com clareza.
+
 <a id="ch-06"></a>
 
 ## Capítulo 6 — Crítica por pares e revisão
@@ -397,6 +417,10 @@ A ausência da assinatura de uma objeção não prova que ela esteja errada. Rev
 - **EX037 — Pedido recusado.** Que pedido de revisor ela recusou, e por quê? *Rubrica:* 3 = retirar as equipes de fidelidade baixa, pois enviesaria a estimativa para cima;; 2 = recusado;; 1 = aceito;; 0 = nenhuma.
 
 - **EX038 — Valor da tabela de revisões.** Por que os examinadores leem as tabelas de revisões com atenção? *Rubrica:* 3 = mostram como o candidato lida com a discordância;; 2 = discordância;; 1 = formatação;; 0 = nenhuma.
+
+### Síntese
+
+A crítica é mais valiosa quando convidada de opositores, ordenada por consequência e respondida com testes e afirmações mais estreitas.
 
 <a id="ch-07"></a>
 
@@ -472,6 +496,10 @@ Os conjuntos de dados sintéticos podem omitir correlações que importam para a
 
 - **EX044 — Limitação específica.** Reescreva de forma específica os resultados podem não se generalizar. *Rubrica:* 3 = a Tessaro tem um conselho central de arquitetura e rastreamento maduro; organizações sem isso podem ser diferentes;; 2 = específica;; 1 = vaga;; 0 = nenhuma.
 
+### Síntese
+
+A síntese de uma tese argumenta de forma proporcional a partir de evidências encadeadas e deixa um arquivo verificado e anonimizado com responsabilidade.
+
 <a id="ch-08"></a>
 
 ## Capítulo 8 — Defesa e plano de publicação
@@ -523,6 +551,10 @@ Os prazos de publicação são incertos; os planos não devem atrasar o comparti
 - **EX049 — Recusa ao fornecedor.** Por que recusar o convite do fornecedor? *Rubrica:* 3 = o estudo não testou nenhuma ferramenta, então não pode endossar uma;; 2 = nenhuma ferramenta testada;; 1 = aceita;; 0 = nenhuma.
 
 - **EX050 — Hábito duradouro.** Que habilidade Amara aponta como a mais valiosa? *Rubrica:* 3 = perguntar que observação falsearia cada afirmação e buscá-la;; 2 = hábito de falseamento;; 1 = estatística;; 0 = nenhuma.
+
+### Síntese
+
+Uma defesa e um plano de publicação dão certo quando reconhecem limites reais, ordenam as produções por dependência e se recusam a deixar que os resultados sejam exagerados.
 
 <a id="worked-results"></a>
 

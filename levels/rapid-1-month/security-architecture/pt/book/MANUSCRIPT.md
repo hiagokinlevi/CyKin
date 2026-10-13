@@ -99,6 +99,10 @@ Os princípios podem entrar em conflito, como a aceitabilidade contra a separaç
 
 - **EX013 — Valor de registrar.** Segundo Felix, por que registrar as decisões por escrito? *Rubrica:* 3 = para que outros possam entendê-las e questioná-las depois;; 2 = questionar;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+A arquitetura de segurança é um plano escrito, fundamentado em alguns princípios duradouros e em decisões registradas.
+
 <a id="ch-02"></a>
 
 ## Capítulo 2 — Escopo, permissão e prática segura
@@ -164,6 +168,10 @@ Os escopos podem excluir justamente onde estão os problemas. Os logs do fornece
 - **EX025 — Rapidez da resposta.** Com que rapidez o fornecedor corrigiu a configuração de compartilhamento? *Rubrica:* 3 = em menos de uma hora;; 2 = hora;; 1 = nenhuma;; 0 = nenhuma.
 
 - **EX026 — Exposição pela revisão.** O que uma revisão de segurança nunca deve se tornar? *Rubrica:* 3 = uma nova fonte de exposição de dados;; 2 = exposição;; 1 = nenhuma;; 0 = nenhuma.
+
+### Síntese
+
+Escopo, permissão, manuseio seguro dos dados e condições de parada tornam as revisões úteis e seguras.
 
 <a id="ch-03"></a>
 
@@ -254,6 +262,10 @@ Os mapas ficam desatualizados sem atualizações. As falhas de fornecedores pode
 
 - **EX038 — Mapas desatualizados.** O que limita a utilidade do mapa ao longo do tempo? *Rubrica:* 3 = fica desatualizado sem atualizações;; 2 = desatualização;; 1 = nenhuma;; 0 = nenhuma.
 
+### Síntese
+
+Mapear sistemas, fluxos de dados e dependências mostra onde a proteção e os planos alternativos importam mais.
+
 <a id="ch-04"></a>
 
 ## Capítulo 4 — Arquitetura e engenharia de segurança: laboratório guiado e síntese aplicada
@@ -339,6 +351,10 @@ As baselines cobrem apenas as configurações listadas. As verificações trimes
 - **EX049 — Itens do plano.** Cite dois itens do plano de seis meses de Leah. *Rubrica:* 3 = e-mail individual, baseline trimestral, teste de break-glass, atualização da visão geral, perguntas aos fornecedores;; 2 = um;; 1 = nenhuma;; 0 = nenhuma.
 
 - **EX050 — Objetivo do curso.** Segundo Felix, qual era o objetivo do curso? *Rubrica:* 3 = um hábito de trabalho de mapear, verificar e registrar;; 2 = hábito;; 1 = especialização;; 0 = nenhuma.
+
+### Síntese
+
+Uma verificação de linha de base guiada, correções priorizadas, verificação e um plano curto transformam um mês de aprendizado em prática duradoura.
 
 <a id="worked-results"></a>
 
