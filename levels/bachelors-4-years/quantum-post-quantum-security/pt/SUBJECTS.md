@@ -39,16 +39,16 @@ Edição em português do Brasil, escrita a partir da edição de referência em
 | 6 | [27](book/PLAN.md#ch-27) | Segurança quântica e pós-quântica: verificação | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-27) | [28 · Rascunho](book/MANUSCRIPT.md#ch-28) |
 | 6 | [28](book/PLAN.md#ch-28) | Segurança quântica e pós-quântica: análise de falhas | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-28) | [29 · Rascunho](book/MANUSCRIPT.md#ch-29) |
 | 6 | [29](book/PLAN.md#ch-29) | Segurança quântica e pós-quântica: operações | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-29) | [30 · Rascunho](book/MANUSCRIPT.md#ch-30) |
-| 6 | [30](book/PLAN.md#ch-30) | Laboratório II | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-30) | [31 · Plano](book/PLAN.md#ch-31) |
-| 7 | [31](book/PLAN.md#ch-31) | Segurança quântica e pós-quântica: casos avançados | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-31)) | [32 · Plano](book/PLAN.md#ch-32) |
-| 7 | [32](book/PLAN.md#ch-32) | Segurança quântica e pós-quântica: interfaces interdisciplinares | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-32)) | [33 · Plano](book/PLAN.md#ch-33) |
-| 7 | [33](book/PLAN.md#ch-33) | Métodos de pesquisa II | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-33)) | [34 · Plano](book/PLAN.md#ch-34) |
-| 7 | [34](book/PLAN.md#ch-34) | Projeto comparativo | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-34)) | [35 · Plano](book/PLAN.md#ch-35) |
-| 7 | [35](book/PLAN.md#ch-35) | Proposta de trabalho final | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-35)) | [36 · Plano](book/PLAN.md#ch-36) |
-| 8 | [36](book/PLAN.md#ch-36) | Prática de campo ou comunitária | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-36)) | [37 · Plano](book/PLAN.md#ch-37) |
-| 8 | [37](book/PLAN.md#ch-37) | Seminário de revisão de evidências | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-37)) | [38 · Plano](book/PLAN.md#ch-38) |
-| 8 | [38](book/PLAN.md#ch-38) | Implementação do trabalho final | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-38)) | [39 · Plano](book/PLAN.md#ch-39) |
-| 8 | [39](book/PLAN.md#ch-39) | Avaliação do trabalho final | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-39)) | [40 · Plano](book/PLAN.md#ch-40) |
-| 8 | [40](book/PLAN.md#ch-40) | Monografia e apresentação | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-40)) | [Curso 114 →](../../ot-iot-security/pt/SUBJECTS.md) |
+| 6 | [30](book/PLAN.md#ch-30) | Laboratório II | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-30) | [31 · Rascunho](book/MANUSCRIPT.md#ch-31) |
+| 7 | [31](book/PLAN.md#ch-31) | Segurança quântica e pós-quântica: casos avançados | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-31) | [32 · Rascunho](book/MANUSCRIPT.md#ch-32) |
+| 7 | [32](book/PLAN.md#ch-32) | Segurança quântica e pós-quântica: interfaces interdisciplinares | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-32) | [33 · Rascunho](book/MANUSCRIPT.md#ch-33) |
+| 7 | [33](book/PLAN.md#ch-33) | Métodos de pesquisa II | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-33) | [34 · Rascunho](book/MANUSCRIPT.md#ch-34) |
+| 7 | [34](book/PLAN.md#ch-34) | Projeto comparativo | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-34) | [35 · Rascunho](book/MANUSCRIPT.md#ch-35) |
+| 7 | [35](book/PLAN.md#ch-35) | Proposta de trabalho final | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-35) | [36 · Rascunho](book/MANUSCRIPT.md#ch-36) |
+| 8 | [36](book/PLAN.md#ch-36) | Prática de campo ou comunitária | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-36) | [37 · Rascunho](book/MANUSCRIPT.md#ch-37) |
+| 8 | [37](book/PLAN.md#ch-37) | Seminário de revisão de evidências | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-37) | [38 · Rascunho](book/MANUSCRIPT.md#ch-38) |
+| 8 | [38](book/PLAN.md#ch-38) | Implementação do trabalho final | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-38) | [39 · Rascunho](book/MANUSCRIPT.md#ch-39) |
+| 8 | [39](book/PLAN.md#ch-39) | Avaliação do trabalho final | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-39) | [40 · Rascunho](book/MANUSCRIPT.md#ch-40) |
+| 8 | [40](book/PLAN.md#ch-40) | Monografia e apresentação | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-40) | [Curso 114 →](../../ot-iot-security/pt/SUBJECTS.md) |
 
 Um próximo passo planejado é um destino de navegação, não uma lição escrita. As colunas de páginas e exercícios são metas editoriais. O livro só estará completo quando seu conteúdo e a renderização em A4 atenderem ao critério de publicação.
