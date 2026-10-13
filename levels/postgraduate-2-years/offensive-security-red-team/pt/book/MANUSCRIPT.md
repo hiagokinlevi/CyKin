@@ -1,7 +1,7 @@
 # Segurança Ofensiva Autorizada e Red Team: Um Livro para o Especialista de Pós-Graduação
 
 - Idioma: português do Brasil (`pt`); curso de pós-graduação, dois anos; aproximadamente 600 horas de estudo planejado. Edição de referência: [inglês](../../en/book/MANUSCRIPT.md).
-- Estado editorial: **rascunho parcial em português**. Os capítulos 1–8 de 12 já estão escritos em português, com os exercícios EX001–EX040 e suas resoluções com rubricas de 0 a 3 e 1 laboratório(s) com saídas idênticas às da edição em inglês; os capítulos 9–12 (EX041–EX060) estão, por enquanto, apenas na [edição em inglês](../../en/book/MANUSCRIPT.md) e serão acrescentados em lotes. Os laboratórios usam apenas a biblioteca padrão do Python 3 sobre dados sintéticos. Revisão independente, revisão linguística e a verificação de páginas A4 continuam em aberto.
+- Estado editorial: **rascunho**. Os capítulos 1–12 de 12 têm texto didático escrito à mão; os exercícios EX001–EX060 têm resoluções correspondentes; os laboratórios offline usam a biblioteca padrão do Python 3, e suas saídas foram incorporadas a partir de execuções reais. A revisão independente e a verificação de 300 páginas A4 continuam em aberto.
 - Público: especialistas experientes que conduzem escolhas de testes autorizados em escala organizacional.
 - Relação com os livros vizinhos: o [livro do bacharelado](../../../../bachelors-4-years/offensive-security-red-team/pt/book/MANUSCRIPT.md) constrói os fundamentos e um projeto final; o [livro do mestrado](../../../../masters-2-years/offensive-security-red-team/pt/book/MANUSCRIPT.md) enfatiza o desenho de pesquisa. **Este livro enfatiza o julgamento do especialista, a leitura de testes guiados por ameaças e a liderança em garantia.**
 - Autor: [hiagokinlevi](https://github.com/hiagokinlevi). Texto original sob [CC0 1.0](../../../../../LICENSE); as obras citadas mantêm seus direitos.
@@ -28,9 +28,7 @@ NIST [SP 800-115](https://doi.org/10.6028/NIST.SP.800-115); [PTES](https://pente
 
 | Capítulos |
 |---|
-| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) |
-
-Capítulos 9–12: [edição em inglês](../../en/book/MANUSCRIPT.md#ch-09), até a chegada dos próximos lotes.
+| [1](#ch-01) · [2](#ch-02) · [3](#ch-03) · [4](#ch-04) · [5](#ch-05) · [6](#ch-06) · [7](#ch-07) · [8](#ch-08) · [9](#ch-09) · [10](#ch-10) · [11](#ch-11) · [12](#ch-12) |
 
 [Resoluções](#worked-results) · [Referências](#references)
 
@@ -609,11 +607,346 @@ Os casos difíceis param à espera de algo escrito, protegem as pessoas e deixam
 
 [← Capítulo 07 (rascunho)](#ch-07) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 09 (rascunho) →](#ch-09)
 
+<a id="ch-09"></a>
+
+## Capítulo 9 — Liderança e garantia
+
+### Objetivos de aprendizagem
+
+Você vai (1) escrever declarações de garantia que resistam à auditoria; (2) liderar sem teatro; (3) treinar a habilidade de recusar; (4) validar declarações com um laboratório de verificação automática.
+
+### 9.1 Linguagem de garantia
+
+A linguagem de garantia na Meridian Clearing House é limitada no tempo, no escopo e no método. Proibido: `fully secure` (totalmente seguro), `guaranteed` (garantido), `hack-proof` (à prova de invasão) e `100% coverage` (cobertura de 100%); o verificador procura exatamente essas expressões em inglês.
+
+```python
+"""Lab 9: validate a synthetic assurance statement against a forbidden-phrase list."""
+forbidden = ["fully secure", "guaranteed", "hack-proof", "100% coverage"]
+text = "Quarterly web tests and a 2025 threat-led exercise provide time-bounded assurance; SWIFT remains excluded from ordinary tests."
+hits = [f for f in forbidden if f in text.lower()]
+print("CLEAN" if not hits else "FORBIDDEN: " + ", ".join(hits))
+print("chars", len(text))
+```
+
+Execute com `python3 lab_assurance.py`. Saída verificada:
+
+```text
+CLEAN
+chars 126
+```
+
+O lab_assurance confere uma declaração sintética contra essas quatro expressões proibidas e imprime `CLEAN` com `chars 126` para a redação sobre testes web trimestrais e um exercício guiado por ameaças em 2025. Amira roda a mesma verificação em cada exportação de material do conselho, para que expressões proibidas nunca saiam em um material. Uma declaração reprovada é reescrita com seus limites de tempo, escopo e método explícitos e verificada de novo antes de a exportação continuar.
+
+### 9.2 Verificador na integração contínua
+
+O verificador é pequeno de propósito, para que os adjuntos consigam rodar o lab_assurance sem Amira e a verificação não dependa de uma só pessoa antes de um material sair. Ele fica na integração contínua, antes do envio ao portal do conselho, e o material não pode ser enviado enquanto a tarefa de exportação não informar `CLEAN`. Certa vez, um trecho colado de um fornecedor introduziu "hack-proof" em um rascunho de material, e a integração contínua o bloqueou. Amira mantém esse bloqueio como caso didático para mostrar por que a verificação roda antes de o material sair, e não depois que um diretor já o leu.
+
+### 9.3 Comportamentos de liderança
+
+Os comportamentos de liderança definem o que os juniores perseguem. Amira elogia paradas precoces, resultados negativos financiados e catálogos limpos mais do que descobertas dramáticas; na revisão trimestral, ela cita uma parada precoce e um resultado negativo financiado antes de mencionar qualquer achado. Os estudantes que pararam o exercício de mesa no atraso simulado da liquidação são elogiados na mesma reunião que o melhor achado do trimestre. Uma cultura que só celebra fogos de artifício vai enterrar pausas e recusar resultados negativos, e é assim que exercícios inseguros continuam em busca de aplausos numa organização como a Meridian Clearing House.
+
+### 9.4 Treinar a recusa
+
+Uma dramatização mensal põe pressão sobre um especialista para suavizar a redação. Amira quer tom calmo e recusa firme, por isso a folha de pontuação avalia o tom e a recusa separadamente, de zero a três cada, com frases de exemplo para cada nível. Eles são pontuados separadamente de propósito, porque uma pessoa pode estar calma sem sustentar o limite. O pânico brando e o colapso irritado reprovam igualmente. A folha é compartilhada com antecedência, para que as pessoas saibam como é um bom desempenho antes de chegar o próximo e-mail de pressão real.
+
+### 9.5 Formação do conselho
+
+Os diretores precisam aprender o que os testes comuns não podem alegar, sobretudo que eles não cobrem os sistemas adjacentes ao SWIFT. O material de formação do conselho preparado por Amira usa as frases do catálogo sobre o que não pode ser alegado e o slide reescrito do exercício inspirado no CBEST. A formação acontece antes da temporada de exames, e não durante uma discussão sobre um achado, e o slide reescrito faz parte do material de formação, em vez de ser um folheto de emergência no meio de uma disputa. Os diretores que aprendem antes as frases do que não pode ser alegado não discutem achados a partir de mitos sobre o SWIFT quando um achado real chega até eles.
+
+### 9.6 Sucessão
+
+Amira documenta as decisões para que um sucessor possa continuar sem folclore. Decisões documentadas, como a DEC-14 e o calendário de dois anos, valem mais do que conselhos de corredor. As pastas de sucessão guardam três declarações `CLEAN` e três contraexemplos `FORBIDDEN` com explicações, para que os adjuntos aprendam por contraste e as regras de redação acompanhem as decisões. Os exemplos `CLEAN` incluem a declaração do laboratório que imprimiu `CLEAN` com 126 caracteres, com seus limites de tempo e de escopo destacados. Amira responde a perguntas durante a transferência, mas não guarda regras paralelas secretas. Cada explicação nomeia o limite que a versão `FORBIDDEN` violou.
+
+### 9.7 Narrativa
+
+O verificador de expressões proibidas roda em cada exportação de material do conselho. Quando a integração contínua bloqueou "hack-proof" vindo de um trecho colado de fornecedor, Amira encaminhou o log bruto ao fornecedor sem repreendê-lo. As pastas de sucessão mantêm os pares `CLEAN` e `FORBIDDEN`; cada exemplo `FORBIDDEN` usa uma expressão proibida, como "fully secure" ou "100% coverage", com a redação corrigida ao lado. Os adjuntos que estudam os pares conseguem explicar por que uma frase é reprovada antes de rodar o verificador nela. Amira trata essa habilidade, e não a saída do verificador, como o verdadeiro objetivo da pasta.
+
+### 9.8 Cartas de advertência a fornecedores
+
+As cartas de advertência a fornecedores trazem a lista de expressões proibidas como Apêndice A, com as quatro expressões exatamente como o verificador as reconhece: `fully secure`, `guaranteed`, `hack-proof` e `100% coverage`. Anexar a lista torna a advertência específica: o fornecedor vê exatamente quais alegações a equipe não vai aceitar, enquanto uma carta vaga do tipo "por favor, tenham cuidado" não muda nada. Alguns fornecedores atualizaram suas apresentações comerciais depois de recebê-la. O seminário de Amira sobre influência discreta usa um desses pares de apresentações, antes e depois, como exemplo principal. Cada carta é arquivada na entrada do fornecedor no catálogo.
+
+### 9.9 Influência discreta
+
+O log da integração contínua que Amira encaminhou mostrava a expressão reconhecida e a linha do texto colado do fornecedor, e foi toda a explicação de que o fornecedor precisou. A apresentação seguinte do fornecedor usou garantia limitada no tempo, e a mudança chegou sem reunião. Ela guarda esse par de antes e depois para seminários de liderança sobre influência discreta e se recusa a contar a história como uma vitória sobre o fornecedor. Nos seminários, ela mostra primeiro o log e depois a nova apresentação, deixando que os adjuntos tirem a conclusão sozinhos.
+
+### 9.10 Registros de influência
+
+As apresentações de fornecedores de antes e depois são guardadas como evidência de influência, e não de zombaria. As duas apresentações são arquivadas, com data, junto com o log da integração contínua e a carta de advertência, na entrada daquele fornecedor no catálogo. Manter as duas versões mostra aos auditores que a advertência mudou as alegações do fornecedor, que é o objetivo de enviá-la. Amira consegue apresentar o par quando perguntam como a Meridian Clearing House lida com a linguagem de garantia dos fornecedores. Influência com registro é trabalho de garantia; influência sem registro é apenas uma história. O arquivo também anota a data em que a nova apresentação foi vista pela primeira vez.
+
+### Exemplo resolvido (MCH sintética)
+
+O lab_assurance imprime `CLEAN` para a declaração de Amira; um rascunho com "fully secure" seria reprovado.
+
+> **Caso sintético — Meridian Clearing House (MCH).** A organização de compensação, Amira Hassan e todos os números foram inventados para fins didáticos.
+
+### Erros e limites
+
+Testes guiados por ameaças e de sistemas de compensação exigem autorização jurídica especializada. Este livro só usa casos sintéticos e não traz código de exploração nem roteiro de ataque ao mercado.
+
+### Exercícios
+
+- **EX041 — Lista proibida.** Cite três expressões de garantia proibidas. *Rubrica:* 3 = três entre `fully secure`, `guaranteed`, `hack-proof` e `100% coverage`; 2 = duas; 1 = uma; 0 = nada.
+- **EX042 — Resultado do laboratório.** O que o laboratório imprime para a declaração de exemplo? *Rubrica:* 3 = `CLEAN`; 2 = proibida; 1 = erro; 0 = nada.
+- **EX043 — Alvos de elogio.** Cite dois comportamentos que Amira elogia. *Rubrica:* 3 = dois entre paradas precoces, resultados negativos e catálogos limpos; 2 = um; 1 = só drama; 0 = nada.
+- **EX044 — Lição para o conselho.** O que os diretores precisam aprender sobre os sistemas adjacentes ao SWIFT? *Rubrica:* 3 = os testes comuns não os cobrem; 2 = parcial; 1 = estão totalmente cobertos; 0 = nada.
+- **EX045 — Se houver expressão proibida.** O que o laboratório imprimiria se "fully secure" aparecesse? *Rubrica:* 3 = `FORBIDDEN: fully secure`; 2 = `CLEAN`; 1 = vago; 0 = nada.
+
+### Síntese
+
+Liderança é linguagem de garantia honesta, recusa treinada e elogio à contenção.
+
+### Continue estudando — capítulo 09 de 12
+
+[← Capítulo 08 (rascunho)](#ch-08) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 10 (rascunho) →](#ch-10)
+
+<a id="ch-10"></a>
+
+## Capítulo 10 — Leitura e crítica de pesquisa
+
+### Objetivos de aprendizagem
+
+Você vai (1) criticar resumos sobre métodos de purple team e de testes guiados por ameaças; (2) exigir n e limitações; (3) ligar artigos às decisões da MCH; (4) rejeitar o teatro de citações.
+
+### 10.1 Propósito da leitura
+
+Amira lê para melhorar as decisões da MCH, e não para decorar relatórios com nomes, e abre as fontes que cita.
+
+```python
+"""Lab 10: checklist score for a synthetic paper abstract on purple-team methods."""
+abs_ = {"question":True,"method":True,"n":False,"limits":True,"ethics":True}
+for k,v in abs_.items():
+    print(f"{k:8} {'ok' if v else 'MISSING'}")
+print("pass" if all(abs_.values()) else "revise")
+```
+
+Execute com `python3 lab_critique.py`. Saída verificada:
+
+```text
+question ok
+method   ok
+n        MISSING
+limits   ok
+ethics   ok
+revise
+```
+
+O lab_critique avalia um resumo sintético quanto a pergunta, método, n, limitações e ética; o n ausente imprime `MISSING` e o veredito `revise`. Sem n, ninguém consegue saber se a alegação do resumo sobre purple team se apoia em três exercícios ou em trinta, então o artigo ainda não pode informar uma decisão na Meridian Clearing House. O resumo volta aos autores com essa única pergunta.
+
+### 10.2 Lista de verificação do resumo
+
+A lista de verificação do resumo pergunta se pergunta, método, n, limitações e ética estão presentes, e o lab_critique marca cada campo como `ok` ou `MISSING`. Cada campo marcado como `MISSING` vira uma pergunta que o apresentador precisa responder antes que o artigo possa informar um registro DEC. Os apresentadores são pontuados com essa mesma lista, de modo que o laboratório e o seminário recompensam hábitos idênticos. As limitações que um apresentador omite são acrescentadas por escrito à folha de feedback, e a gentileza com o nervosismo não se estende às limitações ausentes.
+
+### 10.3 Teatro de citações
+
+Notas de rodapé para artigos não lidos são antiéticas em contextos de garantia, porque notas não lidas viram confiança não lida na linguagem do conselho. Cada citação em um material do conselho leva a uma fonte que alguém da equipe de fato abriu e resumiu, e quem cita os guias do TIBER-EU ou do CBEST para executivos deve ter lido o guia pertinente por inteiro. Uma cultura de clube de leitura que blefa nas citações acabará blefando na linguagem de garantia para o conselho, por isso Amira abre as fontes e espera que os juniores façam o mesmo.
+
+### 10.4 Transferência
+
+Um artigo sem ações operacionalizáveis recebe uma tag de "observação", e não uma mudança no programa. A transferência para o trabalho da Meridian Clearing House exige uma ação clara, um responsável e encaixe no catálogo. Amira não reescreve a DEC-14 porque um artigo pareceu empolgante. Um artigo com tag de observação é revisto na próxima revisão semestral do catálogo, para ver se surgiu uma ação; se surgiu, ela entra no catálogo por meio de um objeto de decisão, como qualquer outra mudança, com opções, evidências e um responsável.
+
+### 10.5 Empatia com as limitações
+
+Uma leitura generosa ainda exige uma seção de limitações, e limitações ausentes reprovam na lista de verificação mesmo quando o resumo é bom em todo o resto. No resumo sintético, o campo de limitações está presente, e por isso só o n ausente o impede de passar. Amira é gentil com o nervosismo e dura com limitações ausentes, porque empatia sem padrões produz uma garantia frouxa que os examinadores não aceitam. Espera-se que um apresentador que lê um artigo com simpatia ainda diga o que ele não consegue mostrar. Um artigo cujos autores declaram suas limitações com clareza ganha mais confiança no clube, e não menos.
+
+### 10.6 Seminário
+
+O clube de leitura mensal funciona com a lista de verificação da crítica na parede: uma saída impressa do lab_critique, colada ao lado da agenda do clube, que mostra pergunta, método, limitações e ética marcados como `ok` e termina com `revise`. A única linha `MISSING`, a do n, salta aos olhos de qualquer ponto da sala. Quando alguém pula o n, Amira aponta para `MISSING` sem falar, o que mantém a correção centrada na lista, e não na competência do apresentador. Os operadores agora conferem o n antes de se oferecerem para apresentar, o que elevou as taxas de verificação prévia sem expor ninguém.
+
+### 10.7 Narrativa
+
+O clube de leitura reprova qualquer apresentador que, depois de ler, não consiga dizer o n de memória. A regra vale também para Amira quando ela apresenta, o que impede que pareça uma prova só para juniores. Transferir a habilidade de crítica inclui deixar um júnior conduzir o clube enquanto ela fica em silêncio nos primeiros trinta minutos. Durante esses trinta minutos, é o júnior que conduz, e não Amira, quem decide se um apresentador que esqueceu o n pode continuar. Ela anota o minuto em que fala pela primeira vez, que é o número acompanhado pela métrica dos trinta minutos de silêncio.
+
+### 10.8 Métrica dos trinta minutos de silêncio
+
+A métrica dos trinta minutos de silêncio acompanha quanto tempo Amira fica calada no clube de leitura; a meta é um número maior a cada trimestre, à medida que os juniores conduzem. O número de cada trimestre vai para o log do clube ao lado do nome do júnior que conduziu. Um número crescente é evidência de que os juniores conduzem os debriefings sem esperar por ela, e ela o celebra no mesmo tom que usa para catálogos limpos. A sucessão da habilidade de crítica importa tanto quanto a sucessão da DEC-14, e esse número é a evidência de que ela está acontecendo.
+
+### 10.9 Taxas de verificação prévia
+
+Desde que o cartaz com a lista de verificação foi colado, os apresentadores chegam com o n escrito no primeiro slide. Amira mede as taxas de verificação prévia a cada período — a parcela de apresentadores que conferiram o n antes de se oferecer — e as publica sem nomear pessoas, para que o hábito se espalhe sem uma lista de culpados. Uma taxa em queda gera um lembrete no clube seguinte, e não uma conversa com alguém em particular. As taxas também mostram aos recém-chegados que conferir o n é o padrão normal do clube, e não uma regra inventada para eles.
+
+### 10.10 Cartazes por turma
+
+Os cartazes com as taxas de verificação prévia usam letras de turma, nunca nomes, para que as equipes comparem as taxas sem destacar nenhum operador e para que uma taxa baixa leve a orientação, e não a culpa. A turma A e a turma B aparecem lado a lado, cada taxa impressa com o número de apresentações por trás dela. Amira já rejeitou um rascunho de cartaz que usava iniciais. A regra segue a disciplina do slide da anistia: contagens e padrões, nunca iniciais em um cartaz público. Os números brutos por pessoa ficam com quem conduz o clube, apenas para orientação.
+
+### Exemplo resolvido (MCH sintética)
+
+O lab_critique retorna `revise` porque o n está `MISSING`; Amira devolve o resumo à equipe autora.
+
+> **Caso sintético — Meridian Clearing House (MCH).** A organização de compensação, Amira Hassan e todos os números foram inventados para fins didáticos.
+
+### Erros e limites
+
+Testes guiados por ameaças e de sistemas de compensação exigem autorização jurídica especializada. Este livro só usa casos sintéticos e não traz código de exploração nem roteiro de ataque ao mercado.
+
+### Exercícios
+
+- **EX046 — Campo ausente.** Qual campo da lista de verificação está `MISSING` no laboratório? *Rubrica:* 3 = n; 2 = ética; 1 = pergunta; 0 = nada.
+- **EX047 — Veredito do laboratório.** Que palavra final o laboratório imprime? *Rubrica:* 3 = `revise`; 2 = `pass`; 1 = `CLEAN`; 0 = nada.
+- **EX048 — Teatro de citações.** Por que citar sem ler é antiético em garantia? *Rubrica:* 3 = engana os leitores sobre a base de evidências; 2 = parcial; 1 = não há problema; 0 = nada.
+- **EX049 — Tag de observação.** Quando um artigo recebe apenas uma tag de observação? *Rubrica:* 3 = quando não há ação operacionalizável; 2 = parcial; 1 = sempre mudar o programa; 0 = nada.
+- **EX050 — Os cinco da lista.** Liste os cinco campos da lista de verificação do resumo. *Rubrica:* 3 = pergunta, método, n, limitações, ética; 2 = quatro; 1 = dois; 0 = nada.
+
+### Síntese
+
+A crítica exige n, limitações e ética; citações não lidas são teatro.
+
+### Continue estudando — capítulo 10 de 12
+
+[← Capítulo 09 (rascunho)](#ch-09) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 11 (rascunho) →](#ch-11)
+
+<a id="ch-11"></a>
+
+## Capítulo 11 — Projeto aplicado
+
+### Objetivos de aprendizagem
+
+Você vai (1) entregar um projeto de especialista para a MCH; (2) manter os não objetivos; (3) avaliar com pré-registro; (4) transferir o resultado para as operações.
+
+### 11.1 Escopo do projeto
+
+O projeto aplicado constrói uma planilha de pontuação de cenários e um verificador de garantia integrados aos campos do FindingsDesk, avaliados sobre exercícios passados sintéticos. A planilha de pontuação reaproveita a fórmula do lab_scenario, duas vezes o aprendizado menos o risco, e o verificador reaproveita as quatro expressões proibidas. A integração com os campos do FindingsDesk faz parte do escopo, e não é um acabamento opcional. O escopo proíbe varredura real de participantes, módulos de exploração e enterro automático de achados por LLM, e a entrega precisa funcionar quando Amira não puder digitar durante a semana de execução solo, que é como o projeto prova que pode ser transferido.
+
+### 11.2 Não objetivos
+
+O projeto tem três não objetivos: nenhuma varredura real de participantes, nenhum módulo de exploração e nenhum enterro automático de achados por LLM. Eles são conferidos de novo em cada ponto de controle quinzenal, onde um questionário pergunta qual não objetivo você quase violou neste sprint. Amira responde primeiro, com o próprio quase erro com um recurso de resumo por LLM, para que os juniores vejam que a franqueza é esperada; ouvir uma pessoa sênior admitir um quase erro torna mais fácil para os juniores contarem os seus. Um quase erro repetido no mesmo não objetivo vira tema do ponto de controle seguinte.
+
+### 11.3 Pré-registro
+
+Duas medidas são pré-registradas: a precisão na detecção de expressões proibidas e a correlação da classificação com a ordem definida pelos especialistas do white team em um conjunto congelado. O conjunto congelado é um lote fixo de exercícios passados sintéticos que ninguém pode editar depois que a tag é enviada, e as tags vão para o git antes de a avaliação rodar. Amira não ajusta limiares depois de ver como seus cenários favoritos pontuam. Qualquer tag emendada exigiria uma nota no log de decisões, a mesma regra que governa os limiares de cenários na avaliação controlada.
+
+### 11.4 Transferência para as operações
+
+Na transferência, os operadores rodam o verificador sozinhos e Amira não pode digitar. A preparação é uma conta de operador recém-criada, com histórico do shell vazio, o README e um envelope lacrado com trechos das ROE; o operador precisa produzir, só com isso, um material do conselho verificado. Amira só pode ser contatada por telefone nessa semana, e, se o operador ligar para ela, a ligação é registrada como defeito de documentação contra o README, e não tratada como um resgate discreto que esconde lacunas. O log de defeitos é o principal resultado da semana de transferência.
+
+### 11.5 Folha de rosto de ética
+
+Todo pacote de projeto começa com uma declaração de "somente sintético" na primeira página, e os revisores conferem essa declaração antes de ler qualquer código do repositório. A verificação é mecânica: os merges rejeitam folhas de rosto sem a palavra "sintético", e um merge rejeitado volta ao autor com o modelo da folha de rosto anexado. A mesma franqueza vale para os quase erros: as respostas dos outros ficam anônimas, enquanto o quase erro da própria Amira fica identificado, para que a franqueza venha de cima. A folha de rosto é a primeira coisa que um revisor lê.
+
+### 11.6 Limite de tempo
+
+O projeto dura oito semanas, com pontos de controle quinzenais, que o mantêm dentro de um limite de tempo de especialista. Amira recusa tempo de construção sem prazo que consuma o trabalho do catálogo, mesmo quando as ferramentas parecem promissoras. Os pontos de controle questionam os não objetivos e mostram se a prontidão para a execução solo é real antes de o prazo acabar. As execuções solo da sétima semana, no exemplo resolvido, ficaram dentro desse prazo e deixaram um ponto de controle para correções. Um projeto que precisa de uma nona semana tem de pedi-la por meio de um objeto de decisão, e não tomá-la por deriva.
+
+### 11.7 Narrativa
+
+O questionário dos pontos de controle leva cinco minutos no início de cada ponto quinzenal, antes de qualquer demonstração de novos recursos, para que os não objetivos sejam discutidos antes de alguém se entusiasmar com o que foi construído. Amira responde primeiro com o quase erro do resumo por LLM. As folhas de rosto de ética são conferidas quanto à palavra "sintético" antes que os repositórios do projeto aceitem merges. A semana de execução solo proíbe que ela digite, então os operadores precisam ter sucesso apenas com a documentação. Cada um desses hábitos é pequeno, e juntos eles mantêm os não objetivos visíveis em cada sprint do projeto.
+
+### 11.8 Log de quase erros
+
+As respostas sobre quase erros são guardadas anonimamente quando outras pessoas as compartilham, registradas apenas pelo número do sprint, para que os padrões ao longo das oito semanas fiquem visíveis. O quase erro da própria Amira continua identificado, o que sinaliza aos juniores que admitir um não traz punição; franqueza que só os juniores demonstram não é franqueza, e os líderes vão primeiro. Ela repete o hábito nas clínicas de decisão, abrindo com o recurso de resumo por LLM que quase construiu e, em seguida, pedindo à sala que cada um conte um seu. O log é revisto no último ponto de controle em busca de padrões repetidos.
+
+### 11.9 Semana de execução solo
+
+Na primeira turma, o operador ligou duas vezes para Amira durante a semana de execução solo. As duas ligações foram registradas como defeitos de documentação e viraram correções no README na mesma tarde, seguidas de um agradecimento ao operador. Cada correção cita o passo do README que o operador não conseguiu concluir, exatamente como ele o leu, para que a correção trate da lacuna real, e não da lembrança que Amira tem dela. A conta do operador é apagada depois da semana, para que a turma seguinte não herde nenhum histórico do shell. A segunda turma fez só uma ligação, sobre a mesma seção do README.
+
+### 11.10 Envelopes lacrados
+
+Os envelopes lacrados das ROE levam selos de cera, uma peça deliberada de teatro que lembra às pessoas que as ROE são especiais: abrir um deles deve parecer diferente de abrir a papelada de rotina. Os juniores se lembram dessa sensação quando mais tarde lidam com ROE de produção, então aqui o teatro serve ao cuidado, e não à bravata. O selo só é rompido pelo operador na manhã da semana de execução solo, diante de uma testemunha que registra o horário, o que também dá à transferência um registro claro de início. O selo rompido e o horário registrado são arquivados com as notas da transferência.
+
+### Exemplo resolvido (MCH sintética)
+
+O projeto de Amira detecta 100% das expressões proibidas plantadas no conjunto congelado; os operadores concluem as execuções solo na sétima semana; os não objetivos se mantêm.
+
+> **Caso sintético — Meridian Clearing House (MCH).** A organização de compensação, Amira Hassan e todos os números foram inventados para fins didáticos.
+
+### Erros e limites
+
+Testes guiados por ameaças e de sistemas de compensação exigem autorização jurídica especializada. Este livro só usa casos sintéticos e não traz código de exploração nem roteiro de ataque ao mercado.
+
+### Exercícios
+
+- **EX051 — Não objetivos.** Cite dois não objetivos do projeto. *Rubrica:* 3 = dois entre nenhuma varredura real, nenhuma exploração e nenhum enterro automático por LLM; 2 = um; 1 = vago; 0 = nada.
+- **EX052 — Métrica.** Dê uma métrica pré-registrada. *Rubrica:* 3 = precisão na detecção de expressões proibidas ou correlação da classificação; 2 = vago; 1 = impressões; 0 = nada.
+- **EX053 — Execução solo.** Por que Amira não pode digitar durante a transferência? *Rubrica:* 3 = a documentação precisa bastar para os operadores; 2 = parcial; 1 = ela deveria digitar; 0 = nada.
+- **EX054 — Folha de rosto.** Que declaração abre o pacote do projeto? *Rubrica:* 3 = somente sintético; 2 = parcial; 1 = uso real liberado; 0 = nada.
+- **EX055 — Sétima semana.** O que acontece na sétima semana no exemplo resolvido? *Rubrica:* 3 = execuções solo pelo operador; 2 = parcial; 1 = entrar em produção com participantes; 0 = nada.
+
+### Síntese
+
+O projeto aplicado entrega ferramentas com salvaguardas, prova de execução solo e não objetivos intactos.
+
+### Continue estudando — capítulo 11 de 12
+
+[← Capítulo 10 (rascunho)](#ch-10) · [Índice de capítulos do curso](../SUBJECTS.md) · [Capítulo 12 (rascunho) →](#ch-12)
+
+<a id="ch-12"></a>
+
+## Capítulo 12 — Revisão final e transferência
+
+### Objetivos de aprendizagem
+
+Você vai (1) montar um portfólio de especialista; (2) transferir a responsabilidade pelo programa; (3) declarar as questões de pesquisa que continuam abertas; (4) reafirmar os limites do uso dual.
+
+### 12.1 Portfólio
+
+O portfólio de especialista reúne registros de decisão, a página do catálogo, os padrões de evidência, um trecho do estatuto de ética, resultados de avaliação, exemplos de garantia, notas de crítica e a transferência do projeto. O sumário segue a ordem do curso, da DEC-14 e da página do catálogo até a nota de transferência e o log de defeitos da execução solo. Amira revisa o portfólio uma vez em busca de dados sensíveis residuais, e exemplos sintéticos substituem tudo o que poderia identificar participantes antes que ele saia da revisão dela. Cada item traz seu hash, para que o sucessor possa confirmar que nada foi alterado depois.
+
+### 12.2 Transferência
+
+Na transferência, o sucessor lê em voz alta a DEC-14 e o calendário de dois anos; Amira responde a perguntas, mas não guarda folclore secreto. As perguntas que o sucessor faz durante a leitura são acrescentadas ao registro da DEC-14 como esclarecimentos, e não mantidas como respostas verbais. O dia da transferência inclui apresentações pessoais ao SOC e à área jurídica, porque e-mail sozinho não é transferência. A primeira atualização do catálogo feita pelo sucessor é a revisão semestral seguinte, datada, com riscos e publicada em seu próprio nome, com Amira apenas em cópia. Um sucessor que só recebeu os arquivos por e-mail ainda não recebeu o programa.
+
+### 12.3 Questões de pesquisa
+
+Continua em aberto como medir o aprendizado de detecção ao longo de exercícios bienais guiados por ameaças sem esgotar a capacidade do white team. As medidas de purple team entre exercícios são uma candidata, mas testam regras de detecção, e não o aprendizado ao longo de um intervalo de dois anos. Deixar a questão sem responsável a transformaria em folclore que morre quando Amira sair. Por isso, antes de sair, ela nomeia um observador e agenda um convite trimestral, para que a questão continue viva na Meridian Clearing House e tenha alguém responsável por relatar o que mudou.
+
+### 12.4 Uso dual
+
+O último slide de Amira lista suas recusas: nenhum detalhe público de exploração da compensação, nenhuma demonstração ao vivo contra participantes, nenhuma garantia sem denominadores. A recusa a números sem denominador é a razão de cada contagem dos materiais dela, dos resultados da anistia às taxas de verificação prévia, trazer o número por trás dela. Ela não troca essas recusas por um convite para uma conferência. A disciplina do uso dual encerra o curso da mesma forma que a integridade o abriu, e o slide faz parte do portfólio que o sucessor herda. Espera-se que o sucessor mantenha o slide inalterado até que um objeto de decisão diga o contrário.
+
+### 12.5 Próximo curso
+
+Segurança de IA (158) é o próximo curso da trilha curricular. Amira diz aos sucessores quais habilidades deste curso se transferem — objetos de decisão, honestidade do catálogo, linguagem de garantia — e quais não se transferem. Os sucessores que começam Segurança de IA levam a clínica de decisões e o hábito do catálogo, mas começam um novo caminho de autorização: a autoridade para tocar sistemas novos não se transfere, e o próximo curso não concede autorização para testar sistemas reais de IA sem novas ROE. Nada neste livro é herdado como permissão. Cada sistema novo começa com seu próprio escopo escrito.
+
+### 12.6 Cuidado
+
+A transferência inclui apresentar pessoalmente o sucessor ao SOC e à área jurídica; essas apresentações fazem parte do cuidado, e não são uma cortesia opcional quando as agendas resistem. Amira as marca ela mesma, para que o sucessor conheça o líder do SOC e o contato jurídico na primeira semana. A área jurídica usa sua apresentação para mostrar ao sucessor os modelos pré-aprovados de aviso aos participantes. A apresentação ao SOC inclui acompanhar por cinco minutos a reunião diária do SOC, para que o sucessor tenha visto trabalho real do SOC antes de assumir o papel. As duas apresentações são registradas no formulário de transferência com suas datas.
+
+### 12.7 Narrativa
+
+O folclore acaba quando nomes e datas substituem os conselhos de corredor. O dia da transferência inclui apresentações pessoais ao SOC e à área jurídica, porque e-mail sozinho não é transferência. As questões de pesquisa em aberto recebem observadores nomeados antes de Amira sair. A primeira atualização do catálogo feita pelo sucessor é publicada em seu próprio nome, com Amira apenas em cópia — a passagem visível. Juntos, esses passos fazem com que a transferência deixe documentos escritos, e não um culto à personalidade, e um examinador futuro consegue ver quando a responsabilidade mudou e quem cuida de cada questão em aberto. O nome de Amira passa para a linha de cópia em cada registro que antes era dela.
+
+### 12.8 Convite do observador
+
+O observador da questão de pesquisa em aberto recebe um convite trimestral no calendário, com a presença de Amira opcional — a sucessão da curiosidade. A pauta tem um único item: o que mudou desde o último trimestre na medição do aprendizado de detecção ao longo dos exercícios bienais. Deixar Amira como opcional testa se a questão sobrevive sem que ela a conduza. Se a participação desabar, o observador escala ao CISO para que seja nomeado um novo responsável, em vez de abandonar o tema em silêncio; a curiosidade também precisa de governança. O primeiro convite sai antes do último dia dela, para que a série comece enquanto ela ainda pode responder a perguntas.
+
+### 12.9 Acompanhamento do SOC
+
+Amira não considera a transferência concluída enquanto o sucessor não tiver acompanhado cinco minutos da reunião diária do SOC e ouvido ao vivo a conversa sobre orçamento de ruído, e não apenas num slide. Ouvir um analista discutir um orçamento de ruído ensina ao sucessor para que serve de fato a sincronização trimestral com o SOC. Ela agenda o acompanhamento mesmo quando as agendas resistem; ele leva cinco minutos, então uma agenda cheia nunca é motivo real para pulá-lo. Uma transferência sem a realidade do SOC está incompleta. A data do acompanhamento é escrita no formulário de transferência ao lado das iniciais do sucessor.
+
+### 12.10 Formulário de transferência
+
+O formulário de transferência tem uma caixa de seleção, "acompanhamento do SOC concluído", que bloqueia a assinatura enquanto estiver vazia, o que faz do acompanhamento uma pré-condição, e não uma recomendação. O sucessor e Amira rubricam a caixa; rubricas sem a caixa marcada nunca encerram uma transferência na Meridian Clearing House. O formulário é arquivado com o portfólio, e uma caixa desmarcada o devolve a Amira com o acompanhamento ainda pendente. A linguagem de pré-condição é como a transferência evita virar uma ficção de papelada. Não existe caminho de exceção no formulário, nem para um sucessor que já trabalhou no SOC.
+
+### Exemplo resolvido (MCH sintética)
+
+O dia da transferência de Amira termina com o sucessor publicando a primeira atualização do catálogo em seu próprio nome; Amira fica apenas em cópia.
+
+> **Caso sintético — Meridian Clearing House (MCH).** A organização de compensação, Amira Hassan e todos os números foram inventados para fins didáticos.
+
+### Erros e limites
+
+Testes guiados por ameaças e de sistemas de compensação exigem autorização jurídica especializada. Este livro só usa casos sintéticos e não traz código de exploração nem roteiro de ataque ao mercado.
+
+### Exercícios
+
+- **EX056 — Contagem do portfólio.** Liste cinco artefatos do portfólio. *Rubrica:* 3 = cinco da lista; 2 = três; 1 = um; 0 = nada.
+- **EX057 — Folclore.** O que não pode ficar apenas na cabeça de Amira? *Rubrica:* 3 = as justificativas das decisões / as regras do programa; 2 = parcial; 1 = tudo em segredo; 0 = nada.
+- **EX058 — Questão em aberto.** Declare uma questão de pesquisa que continua aberta. *Rubrica:* 3 = medir o aprendizado de detecção versus a capacidade do white team; 2 = vago; 1 = tentativa mínima; 0 = nada.
+- **EX059 — Lista de recusas.** Cite duas recusas finais. *Rubrica:* 3 = duas entre nenhuma exploração pública, nenhuma demonstração ao vivo com participantes e nenhuma garantia sem denominadores; 2 = uma; 1 = vago; 0 = nada.
+- **EX060 — Próximo curso.** Qual é o curso 158? *Rubrica:* 3 = Segurança de IA; 2 = IA; 1 = errado; 0 = nada.
+
+### Síntese
+
+A transferência deixa documentos escritos, recusas e uma questão de pesquisa em aberto — e não um culto à personalidade.
+
+### Continue estudando — capítulo 12 de 12
+
+[← Capítulo 11 (rascunho)](#ch-11) · [Índice de capítulos do curso](../SUBJECTS.md) · [Resoluções ↓](#worked-results) · [Próximo curso pelo índice de capítulos →](../SUBJECTS.md)
+
 <a id="worked-results"></a>
 
 ## Resoluções
 
-Respostas-modelo para EX001–EX040 (as de EX041–EX060 estão na edição em inglês até a tradução dos capítulos correspondentes). A Meridian Clearing House, Amira Hassan e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
+Respostas-modelo para EX001–EX060. A Meridian Clearing House, Amira Hassan e todos os números são sintéticos. Qualquer resposta que atenda à rubrica recebe a mesma pontuação.
 
 **EX001.** Opções, evidências, incertezas, recomendação e responsável (as opções rejeitadas também contam).
 
@@ -694,6 +1027,46 @@ Respostas-modelo para EX001–EX040 (as de EX041–EX060 estão na edição em i
 **EX039.** Para o endereço do CISO, com um cabeçalho factual.
 
 **EX040.** Em minutos (cerca de quatro) depois de perceber a ambiguidade.
+
+**EX041.** `fully secure`, `guaranteed` e `hack-proof` (`100% coverage` também conta).
+
+**EX042.** `CLEAN`
+
+**EX043.** Paradas precoces e resultados negativos financiados (catálogos limpos também contam).
+
+**EX044.** Que os testes comuns não cobrem os sistemas adjacentes ao SWIFT.
+
+**EX045.** `FORBIDDEN: fully secure`
+
+**EX046.** `n`
+
+**EX047.** `revise`
+
+**EX048.** Engana os leitores sobre a base de evidências das alegações.
+
+**EX049.** Quando ele não oferece nenhuma ação operacionalizável para a MCH.
+
+**EX050.** Pergunta, método, n, limitações e ética.
+
+**EX051.** Nenhuma varredura real de participantes e nenhum módulo de exploração (nenhum enterro automático por LLM também conta).
+
+**EX052.** A precisão na detecção de expressões proibidas (ou a correlação da classificação com a ordem do white team).
+
+**EX053.** Se os operadores precisam das mãos dela, a documentação falhou.
+
+**EX054.** Uma declaração de somente sintético.
+
+**EX055.** Os operadores concluem as execuções solo.
+
+**EX056.** Registros de decisão, página do catálogo, padrões de evidência, trecho do estatuto de ética e resultados de avaliação (outros também contam).
+
+**EX057.** As justificativas das decisões e as regras do programa — elas precisam estar escritas.
+
+**EX058.** Como medir o aprendizado de detecção ao longo dos exercícios bienais guiados por ameaças sem esgotar a capacidade do white team.
+
+**EX059.** Nenhum detalhe público de exploração da compensação e nenhuma demonstração ao vivo contra participantes.
+
+**EX060.** Segurança de IA.
 
 <a id="references"></a>
 ## Referências
