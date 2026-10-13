@@ -21,16 +21,16 @@ Edição em português do Brasil, escrita a partir da edição de referência em
 | 2 | [09](book/PLAN.md#ch-09) | Evidências e medição | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-09) | [10 · Rascunho](book/MANUSCRIPT.md#ch-10) |
 | 2 | [10](book/PLAN.md#ch-10) | Governança, riscos e compliance de segurança: orientação | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-10) | [11 · Rascunho](book/MANUSCRIPT.md#ch-11) |
 | 3 | [11](book/PLAN.md#ch-11) | Governança, riscos e compliance de segurança: ativos e contexto | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-11) | [12 · Rascunho](book/MANUSCRIPT.md#ch-12) |
-| 3 | [12](book/PLAN.md#ch-12) | Governança, riscos e compliance de segurança: fluxos de dados | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-12) | [13 · Plano](book/PLAN.md#ch-13) |
-| 3 | [13](book/PLAN.md#ch-13) | Governança, riscos e compliance de segurança: cenários de risco | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-13)) | [14 · Plano](book/PLAN.md#ch-14) |
-| 3 | [14](book/PLAN.md#ch-14) | Governança, riscos e compliance de segurança: métodos I | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-14)) | [15 · Plano](book/PLAN.md#ch-15) |
-| 3 | [15](book/PLAN.md#ch-15) | Governança, riscos e compliance de segurança: laboratório guiado | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-15)) | [16 · Plano](book/PLAN.md#ch-16) |
-| 4 | [16](book/PLAN.md#ch-16) | Governança, riscos e compliance de segurança: métodos II | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-16)) | [17 · Plano](book/PLAN.md#ch-17) |
-| 4 | [17](book/PLAN.md#ch-17) | Governança, riscos e compliance de segurança: ferramentas | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-17)) | [18 · Plano](book/PLAN.md#ch-18) |
-| 4 | [18](book/PLAN.md#ch-18) | Governança, riscos e compliance de segurança: controles | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-18)) | [19 · Plano](book/PLAN.md#ch-19) |
-| 4 | [19](book/PLAN.md#ch-19) | Governança, riscos e compliance de segurança: monitoramento | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-19)) | [20 · Plano](book/PLAN.md#ch-20) |
-| 4 | [20](book/PLAN.md#ch-20) | Governança, riscos e compliance de segurança: solução de problemas | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-20)) | [21 · Plano](book/PLAN.md#ch-21) |
-| 5 | [21](book/PLAN.md#ch-21) | Governança, riscos e compliance de segurança: integração de serviços | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-21)) | [22 · Plano](book/PLAN.md#ch-22) |
+| 3 | [12](book/PLAN.md#ch-12) | Governança, riscos e compliance de segurança: fluxos de dados | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-12) | [13 · Rascunho](book/MANUSCRIPT.md#ch-13) |
+| 3 | [13](book/PLAN.md#ch-13) | Governança, riscos e compliance de segurança: cenários de risco | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-13) | [14 · Rascunho](book/MANUSCRIPT.md#ch-14) |
+| 3 | [14](book/PLAN.md#ch-14) | Governança, riscos e compliance de segurança: métodos I | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-14) | [15 · Rascunho](book/MANUSCRIPT.md#ch-15) |
+| 3 | [15](book/PLAN.md#ch-15) | Governança, riscos e compliance de segurança: laboratório guiado | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-15) | [16 · Rascunho](book/MANUSCRIPT.md#ch-16) |
+| 4 | [16](book/PLAN.md#ch-16) | Governança, riscos e compliance de segurança: métodos II | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-16) | [17 · Rascunho](book/MANUSCRIPT.md#ch-17) |
+| 4 | [17](book/PLAN.md#ch-17) | Governança, riscos e compliance de segurança: ferramentas | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-17) | [18 · Rascunho](book/MANUSCRIPT.md#ch-18) |
+| 4 | [18](book/PLAN.md#ch-18) | Governança, riscos e compliance de segurança: controles | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-18) | [19 · Rascunho](book/MANUSCRIPT.md#ch-19) |
+| 4 | [19](book/PLAN.md#ch-19) | Governança, riscos e compliance de segurança: monitoramento | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-19) | [20 · Rascunho](book/MANUSCRIPT.md#ch-20) |
+| 4 | [20](book/PLAN.md#ch-20) | Governança, riscos e compliance de segurança: solução de problemas | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-20) | [21 · Rascunho](book/MANUSCRIPT.md#ch-21) |
+| 5 | [21](book/PLAN.md#ch-21) | Governança, riscos e compliance de segurança: integração de serviços | 80 | 30 | 3 | [Rascunho](book/MANUSCRIPT.md#ch-21) | [22 · Plano](book/PLAN.md#ch-22) |
 | 5 | [22](book/PLAN.md#ch-22) | Governança, riscos e compliance de segurança: automação | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-22)) | [23 · Plano](book/PLAN.md#ch-23) |
 | 5 | [23](book/PLAN.md#ch-23) | Governança, riscos e compliance de segurança: avaliação | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-23)) | [24 · Plano](book/PLAN.md#ch-24) |
 | 5 | [24](book/PLAN.md#ch-24) | Métodos de pesquisa aplicada | 80 | 30 | 3 | Em tradução ([inglês](../en/book/MANUSCRIPT.md#ch-24)) | [25 · Plano](book/PLAN.md#ch-25) |
